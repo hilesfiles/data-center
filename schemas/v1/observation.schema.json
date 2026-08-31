@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dccio.org/schemas/v1/observation.schema.json",
+  "title": "Long-form observation",
+  "type": "object",
+  "required": ["schema_version", "observation_id", "metric_code", "subject", "period", "value_status", "created_at", "updated_at", "record_status"],
+  "properties": {
+    "schema_version": {"$ref": "common.schema.json#/$defs/schema_version"},
+    "observation_id": {"$ref": "common.schema.json#/$defs/entity_id"},
+    "metric_code": {"type": "string", "pattern": "^[a-z][a-z0-9_.-]*$"},
+    "subject": {
+      "type": "object",
+      "required": ["subject_type", "subject_id"],
+      "properties": {
+        "subject_type": {"type": "string", "enum": ["campus", "facility", "project", "project_phase", "county", "state", "cbsa", "utility_territory", "balancing_authority", "nation"]},
+        "subject_id": {"type": "string", "minLength": 1}
+      },
+      "additionalProperties": false
+    },
+    "period": {"$ref": "common.schema.json#/$defs/temporal_extent"},
+    "value": {"$ref": "common.schema.json#/$defs/typed_value"},
+    "value_status": {"$ref": "common.schema.json#/$defs/value_status"},
+    "missingness_reason": {"type": "string", "enum": ["suppressed", "not_applicable", "not_available", "not_yet_released", "parser_error", "unknown"]},
+    "uncertainty": {"$ref": "common.schema.json#/$defs/uncertainty"},
+    "source_ids": {"type": "array", "items": {"$ref": "common.schema.json#/$defs/entity_id"}, "uniqueItems": true},
+    "source_claim_ids": {"type": "array", "items": {"$ref": "common.schema.json#/$defs/entity_id"}, "uniqueItems": true},
+    "derivation": {
+      "type": "object",
+      "required": ["method", "version"],
+      "properties": {
+        "method": {"type": "string", "minLength": 1},
+        "version": {"type": "string", "minLength": 1},
+        "input_observation_ids": {"type": "array", "items": {"$ref": "common.schema.json#/$defs/entity_id"}, "uniqueItems": true},
+        "formula": {"type": "string"}
+      },
+      "additionalProperties": false
+    },
+    "release_vintage": {"type": "string"},
+    "revision_number": {"type": "integer", "minimum": 0},
+    "supersedes_observation_id": {"$ref": "common.schema.json#/$defs/entity_id"},
+    "created_at": {"$ref": "common.schema.json#/$defs/timestamp"},
+    "updated_at": {"$ref": "common.schema.json#/$defs/timestamp"},
+    "record_status": {"type": "string", "enum": ["active", "provisional", "superseded", "withdrawn"]}
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"value_status": {"enum": ["observed", "derived", "estimated", "modeled", "imputed"]}}},
+      "then": {"required": ["value"]}
+    },
+    {
+      "if": {"properties": {"value_status": {"enum": ["suppressed", "not_available", "not_applicable", "not_yet_released", "parser_error", "unknown"]}}},
+      "then": {"required": ["missingness_reason"]}
+    },
+    {
+      "if": {"properties": {"value_status": {"const": "observed"}}},
+      "then": {"anyOf": [{"required": ["source_ids"]}, {"required": ["source_claim_ids"]}]}
+    },
+    {
+      "if": {"properties": {"value_status": {"enum": ["derived", "estimated", "modeled", "imputed"]}}},
+      "then": {"required": ["derivation"]}
+    }
+  ],
+  "additionalProperties": false
+}
+

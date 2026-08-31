@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dccio.org/schemas/v1/model-specification.schema.json",
+  "title": "Model specification",
+  "type": "object",
+  "required": ["schema_version", "model_specification_id", "name", "version", "model_family", "estimator", "outcome_metric_code", "treatment_definition_id", "sample_definition", "inference", "required_diagnostics", "created_at", "updated_at", "record_status"],
+  "properties": {
+    "schema_version": {"$ref": "common.schema.json#/$defs/schema_version"},
+    "model_specification_id": {"$ref": "common.schema.json#/$defs/entity_id"},
+    "name": {"type": "string", "minLength": 1},
+    "version": {"type": "string", "minLength": 1},
+    "model_family": {"type": "string", "enum": ["descriptive", "staggered_did", "event_study", "matched_control", "synthetic_control", "intensity_fixed_effects", "spatial", "instrumental_variable", "index"]},
+    "estimator": {"type": "string", "minLength": 1},
+    "outcome_metric_code": {"type": "string", "minLength": 1},
+    "outcome_transform": {"type": "string", "enum": ["level", "log", "log1p", "growth_rate", "percentage_point", "standardized"]},
+    "treatment_definition_id": {"$ref": "common.schema.json#/$defs/entity_id"},
+    "sample_definition": {
+      "type": "object",
+      "required": ["geography_unit", "start_year", "end_year", "control_group"],
+      "properties": {
+        "geography_unit": {"type": "string", "enum": ["county", "cbsa", "state", "utility_territory"]},
+        "start_year": {"$ref": "common.schema.json#/$defs/year"},
+        "end_year": {"$ref": "common.schema.json#/$defs/year"},
+        "control_group": {"type": "string", "enum": ["never_treated", "not_yet_treated", "matched_not_yet_treated", "synthetic_donor_pool", "custom"]},
+        "minimum_pre_periods": {"type": "integer", "minimum": 1},
+        "minimum_post_periods": {"type": "integer", "minimum": 0},
+        "filters": {"type": "object"}
+      },
+      "additionalProperties": false
+    },
+    "event_window": {
+      "type": "object",
+      "required": ["lead", "lag", "reference_period"],
+      "properties": {
+        "lead": {"type": "integer", "minimum": 0},
+        "lag": {"type": "integer", "minimum": 0},
+        "reference_period": {"type": "integer"},
+        "bin_endpoints": {"type": "boolean"}
+      },
+      "additionalProperties": false
+    },
+    "covariate_metric_codes": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "fixed_effects": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "inference": {
+      "type": "object",
+      "required": ["confidence_level", "cluster_method"],
+      "properties": {
+        "confidence_level": {"type": "number", "exclusiveMinimum": 0, "exclusiveMaximum": 1},
+        "cluster_method": {"type": "string", "enum": ["none", "county", "state", "two_way", "spatial_hac", "wild_cluster_bootstrap"]},
+        "bootstrap_repetitions": {"type": "integer", "minimum": 1}
+      },
+      "additionalProperties": false
+    },
+    "required_diagnostics": {"type": "array", "items": {"type": "string"}, "minItems": 1, "uniqueItems": true},
+    "created_at": {"$ref": "common.schema.json#/$defs/timestamp"},
+    "updated_at": {"$ref": "common.schema.json#/$defs/timestamp"},
+    "record_status": {"type": "string", "enum": ["active", "provisional", "superseded", "withdrawn"]}
+  },
+  "additionalProperties": false
+}
+

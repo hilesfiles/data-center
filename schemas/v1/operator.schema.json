@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dccio.org/schemas/v1/operator.schema.json",
+  "title": "Operator",
+  "type": "object",
+  "required": ["schema_version", "operator_id", "canonical_name", "organization_type", "created_at", "updated_at", "record_status"],
+  "properties": {
+    "schema_version": {"$ref": "common.schema.json#/$defs/schema_version"},
+    "operator_id": {"$ref": "common.schema.json#/$defs/entity_id"},
+    "canonical_name": {"type": "string", "minLength": 1},
+    "parent_operator_id": {"$ref": "common.schema.json#/$defs/entity_id"},
+    "organization_type": {
+      "type": "string",
+      "enum": ["public_company", "private_company", "government", "nonprofit", "joint_venture", "unknown"]
+    },
+    "aliases": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
+    "former_names": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
+    "website": {"type": "string", "format": "uri"},
+    "external_identifiers": {
+      "type": "array",
+      "items": {"$ref": "common.schema.json#/$defs/external_identifier"},
+      "uniqueItems": true
+    },
+    "created_at": {"$ref": "common.schema.json#/$defs/timestamp"},
+    "updated_at": {"$ref": "common.schema.json#/$defs/timestamp"},
+    "record_status": {"type": "string", "enum": ["active", "provisional", "superseded", "withdrawn"]}
+  },
+  "additionalProperties": false
+}
+

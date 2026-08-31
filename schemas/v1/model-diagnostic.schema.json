@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dccio.org/schemas/v1/model-diagnostic.schema.json",
+  "title": "Model diagnostic",
+  "type": "object",
+  "required": ["schema_version", "diagnostic_id", "model_run_id", "diagnostic_type", "status", "result", "created_at", "updated_at", "record_status"],
+  "properties": {
+    "schema_version": {"$ref": "common.schema.json#/$defs/schema_version"},
+    "diagnostic_id": {"$ref": "common.schema.json#/$defs/entity_id"},
+    "model_run_id": {"$ref": "common.schema.json#/$defs/entity_id"},
+    "diagnostic_type": {"type": "string", "enum": ["pretrend_joint_test", "covariate_balance", "rmspe", "placebo", "permutation", "parallel_trends", "sample_attrition", "influence", "spillover_sensitivity", "weight_sensitivity", "leave_one_out", "other"]},
+    "geography_id": {"type": "string"},
+    "status": {"type": "string", "enum": ["passed", "warning", "failed", "not_applicable"]},
+    "result": {"$ref": "common.schema.json#/$defs/typed_value"},
+    "threshold": {"$ref": "common.schema.json#/$defs/typed_value"},
+    "p_value": {"type": "number", "minimum": 0, "maximum": 1},
+    "details": {"type": "object"},
+    "created_at": {"$ref": "common.schema.json#/$defs/timestamp"},
+    "updated_at": {"$ref": "common.schema.json#/$defs/timestamp"},
+    "record_status": {"type": "string", "enum": ["active", "provisional", "superseded", "withdrawn"]}
+  },
+  "additionalProperties": false
+}
+

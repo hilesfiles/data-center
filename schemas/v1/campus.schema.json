@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dccio.org/schemas/v1/campus.schema.json",
+  "title": "Campus",
+  "type": "object",
+  "required": ["schema_version", "campus_id", "canonical_name", "geography_assignments", "created_at", "updated_at", "record_status"],
+  "properties": {
+    "schema_version": {"$ref": "common.schema.json#/$defs/schema_version"},
+    "campus_id": {"$ref": "common.schema.json#/$defs/entity_id"},
+    "canonical_name": {"type": "string", "minLength": 1},
+    "aliases": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
+    "coordinates": {"$ref": "common.schema.json#/$defs/coordinates"},
+    "geometry": {"type": "object"},
+    "geography_assignments": {
+      "type": "array",
+      "items": {"$ref": "common.schema.json#/$defs/geography_assignment"},
+      "minItems": 1
+    },
+    "external_identifiers": {
+      "type": "array",
+      "items": {"$ref": "common.schema.json#/$defs/external_identifier"},
+      "uniqueItems": true
+    },
+    "data_quality": {"$ref": "common.schema.json#/$defs/data_quality"},
+    "created_at": {"$ref": "common.schema.json#/$defs/timestamp"},
+    "updated_at": {"$ref": "common.schema.json#/$defs/timestamp"},
+    "record_status": {"type": "string", "enum": ["active", "provisional", "superseded", "withdrawn"]}
+  },
+  "additionalProperties": false
+}
+

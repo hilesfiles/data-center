@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dccio.org/schemas/v1/claim.schema.json",
+  "title": "Source claim",
+  "type": "object",
+  "required": ["schema_version", "claim_id", "source_id", "subject", "attribute_path", "raw_value", "extraction_method", "claim_confidence", "review_status", "created_at", "updated_at", "record_status"],
+  "properties": {
+    "schema_version": {"$ref": "common.schema.json#/$defs/schema_version"},
+    "claim_id": {"$ref": "common.schema.json#/$defs/entity_id"},
+    "source_id": {"$ref": "common.schema.json#/$defs/entity_id"},
+    "source_artifact_id": {"$ref": "common.schema.json#/$defs/entity_id"},
+    "subject": {
+      "type": "object",
+      "required": ["entity_type"],
+      "properties": {
+        "entity_type": {"type": "string", "enum": ["campus", "facility", "project", "project_phase", "operator", "event", "geography", "policy_action", "discovery_candidate"]},
+        "entity_id": {"$ref": "common.schema.json#/$defs/entity_id"},
+        "candidate_key": {"type": "string", "minLength": 1}
+      },
+      "oneOf": [{"required": ["entity_id"]}, {"required": ["candidate_key"]}],
+      "additionalProperties": false
+    },
+    "attribute_path": {"type": "string", "pattern": "^[a-z][a-z0-9_.-]*$"},
+    "raw_value": {"$ref": "common.schema.json#/$defs/typed_value"},
+    "normalized_value": {"$ref": "common.schema.json#/$defs/typed_value"},
+    "source_excerpt_reference": {
+      "type": "object",
+      "properties": {
+        "page": {"type": "integer", "minimum": 1},
+        "section": {"type": "string"},
+        "selector": {"type": "string"},
+        "short_excerpt": {"type": "string", "maxLength": 500}
+      },
+      "additionalProperties": false
+    },
+    "claim_date": {"$ref": "common.schema.json#/$defs/temporal_extent"},
+    "extraction_method": {"type": "string", "enum": ["manual", "deterministic_parser", "rule_based", "ml_classifier", "llm_structured_output", "imported"]},
+    "extractor_version": {"type": "string"},
+    "prompt_version": {"type": "string"},
+    "source_quality_score": {"type": "number", "minimum": 0, "maximum": 1},
+    "claim_confidence": {"type": "number", "minimum": 0, "maximum": 1},
+    "conflict_group": {"type": "string"},
+    "review_status": {"type": "string", "enum": ["unreviewed", "accepted", "rejected", "needs_review", "superseded"]},
+    "notes": {"type": "string"},
+    "created_at": {"$ref": "common.schema.json#/$defs/timestamp"},
+    "updated_at": {"$ref": "common.schema.json#/$defs/timestamp"},
+    "record_status": {"type": "string", "enum": ["active", "provisional", "superseded", "withdrawn"]}
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dccio.org/schemas/v1/project-phase.schema.json",
+  "title": "Project phase",
+  "type": "object",
+  "required": ["schema_version", "phase_id", "project_id", "phase_name", "sequence", "current_status", "created_at", "updated_at", "record_status"],
+  "properties": {
+    "schema_version": {"$ref": "common.schema.json#/$defs/schema_version"},
+    "phase_id": {"$ref": "common.schema.json#/$defs/entity_id"},
+    "project_id": {"$ref": "common.schema.json#/$defs/entity_id"},
+    "facility_id": {"$ref": "common.schema.json#/$defs/entity_id"},
+    "phase_name": {"type": "string", "minLength": 1},
+    "sequence": {"type": "integer", "minimum": 1},
+    "current_status": {"type": "string", "enum": ["proposed", "approved", "under_construction", "energized", "operational", "delayed", "withdrawn", "rejected", "cancelled", "closed", "unknown"]},
+    "created_at": {"$ref": "common.schema.json#/$defs/timestamp"},
+    "updated_at": {"$ref": "common.schema.json#/$defs/timestamp"},
+    "record_status": {"type": "string", "enum": ["active", "provisional", "superseded", "withdrawn"]}
+  },
+  "additionalProperties": false
+}
+

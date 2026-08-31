@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dccio.org/schemas/v1/metric-definition.schema.json",
+  "title": "Metric definition",
+  "type": "object",
+  "required": ["schema_version", "metric_code", "name", "domain", "value_type", "allowed_subject_types", "temporal_grains", "directionality", "created_at", "updated_at", "record_status"],
+  "properties": {
+    "schema_version": {"$ref": "common.schema.json#/$defs/schema_version"},
+    "metric_code": {"type": "string", "pattern": "^[a-z][a-z0-9_.-]*$"},
+    "name": {"type": "string", "minLength": 1},
+    "description": {"type": "string"},
+    "domain": {"type": "string", "enum": ["facility_exposure", "economic", "fiscal", "housing", "utility", "water", "environment", "opposition", "policy", "demographic", "quality"]},
+    "value_type": {"type": "string", "enum": ["number", "quantity", "boolean", "classification", "text"]},
+    "canonical_unit": {"type": "string"},
+    "allowed_subject_types": {"type": "array", "items": {"type": "string"}, "minItems": 1, "uniqueItems": true},
+    "temporal_grains": {"type": "array", "items": {"type": "string", "enum": ["instant", "month", "quarter", "year", "range"]}, "minItems": 1, "uniqueItems": true},
+    "directionality": {"type": "string", "enum": ["higher_is_better", "higher_is_worse", "ambiguous", "neutral"]},
+    "aggregation": {"type": "string", "enum": ["sum", "mean", "weighted_mean", "median", "last", "ratio", "none"]},
+    "denominator_metric_code": {"type": "string"},
+    "source_family": {"type": "string"},
+    "suppression_sensitive": {"type": "boolean"},
+    "created_at": {"$ref": "common.schema.json#/$defs/timestamp"},
+    "updated_at": {"$ref": "common.schema.json#/$defs/timestamp"},
+    "record_status": {"type": "string", "enum": ["active", "provisional", "superseded", "withdrawn"]}
+  },
+  "additionalProperties": false
+}
+

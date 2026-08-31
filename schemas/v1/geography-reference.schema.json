@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dccio.org/schemas/v1/geography-reference.schema.json",
+  "title": "Geography reference",
+  "type": "object",
+  "required": ["schema_version", "geography_id", "geography_type", "name", "effective_interval", "created_at", "updated_at", "record_status"],
+  "properties": {
+    "schema_version": {"$ref": "common.schema.json#/$defs/schema_version"},
+    "geography_id": {"type": "string", "minLength": 1},
+    "geography_type": {"type": "string", "enum": ["county", "state", "municipality", "tract", "zip", "cbsa", "utility_territory", "balancing_authority", "nation"]},
+    "name": {"type": "string", "minLength": 1},
+    "county_fips": {"$ref": "common.schema.json#/$defs/county_fips"},
+    "state_fips": {"$ref": "common.schema.json#/$defs/state_fips"},
+    "state_abbr": {"$ref": "common.schema.json#/$defs/state_abbr"},
+    "parent_geography_ids": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "effective_interval": {"$ref": "common.schema.json#/$defs/effective_interval"},
+    "reference_vintage": {"type": "string"},
+    "geometry_artifact_path": {"type": "string"},
+    "external_identifiers": {"type": "array", "items": {"$ref": "common.schema.json#/$defs/external_identifier"}, "uniqueItems": true},
+    "created_at": {"$ref": "common.schema.json#/$defs/timestamp"},
+    "updated_at": {"$ref": "common.schema.json#/$defs/timestamp"},
+    "record_status": {"type": "string", "enum": ["active", "provisional", "superseded", "withdrawn"]}
+  },
+  "additionalProperties": false
+}
+

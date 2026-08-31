@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dccio.org/schemas/v1/panel-row.schema.json",
+  "title": "Analytical panel row",
+  "type": "object",
+  "required": ["schema_version", "panel_row_id", "panel_name", "geography", "period", "observation_refs", "build_version", "created_at", "updated_at", "record_status"],
+  "properties": {
+    "schema_version": {"$ref": "common.schema.json#/$defs/schema_version"},
+    "panel_row_id": {"$ref": "common.schema.json#/$defs/entity_id"},
+    "panel_name": {"type": "string", "minLength": 1},
+    "geography": {
+      "type": "object",
+      "required": ["geography_type", "geography_id"],
+      "properties": {
+        "geography_type": {"type": "string", "enum": ["county", "state", "cbsa", "utility_territory", "nation"]},
+        "geography_id": {"type": "string", "minLength": 1}
+      },
+      "additionalProperties": false
+    },
+    "period": {"$ref": "common.schema.json#/$defs/temporal_extent"},
+    "observation_refs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["metric_code", "observation_id"],
+        "properties": {
+          "metric_code": {"type": "string", "minLength": 1},
+          "observation_id": {"$ref": "common.schema.json#/$defs/entity_id"},
+          "role": {"type": "string", "enum": ["outcome", "covariate", "treatment_exposure", "weight", "context"]}
+        },
+        "additionalProperties": false
+      },
+      "uniqueItems": true
+    },
+    "completeness": {
+      "type": "object",
+      "properties": {
+        "required_metric_count": {"type": "integer", "minimum": 0},
+        "available_metric_count": {"type": "integer", "minimum": 0},
+        "coverage": {"type": "number", "minimum": 0, "maximum": 1}
+      },
+      "additionalProperties": false
+    },
+    "build_version": {"type": "string", "minLength": 1},
+    "created_at": {"$ref": "common.schema.json#/$defs/timestamp"},
+    "updated_at": {"$ref": "common.schema.json#/$defs/timestamp"},
+    "record_status": {"type": "string", "enum": ["active", "provisional", "superseded", "withdrawn"]}
+  },
+  "additionalProperties": false
+}
+

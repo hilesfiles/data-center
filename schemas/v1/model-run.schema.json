@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dccio.org/schemas/v1/model-run.schema.json",
+  "title": "Model run",
+  "type": "object",
+  "required": ["schema_version", "model_run_id", "model_specification_id", "run_status", "started_at", "software", "seed", "code_commit_sha", "input_artifacts", "sample_counts", "validation_status", "created_at", "updated_at", "record_status"],
+  "properties": {
+    "schema_version": {"$ref": "common.schema.json#/$defs/schema_version"},
+    "model_run_id": {"$ref": "common.schema.json#/$defs/entity_id"},
+    "model_specification_id": {"$ref": "common.schema.json#/$defs/entity_id"},
+    "run_status": {"type": "string", "enum": ["queued", "running", "succeeded", "failed", "rejected"]},
+    "started_at": {"$ref": "common.schema.json#/$defs/timestamp"},
+    "completed_at": {"$ref": "common.schema.json#/$defs/timestamp"},
+    "software": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["name", "version"],
+        "properties": {"name": {"type": "string"}, "version": {"type": "string"}},
+        "additionalProperties": false
+      }
+    },
+    "seed": {"type": "integer", "minimum": 0},
+    "code_commit_sha": {"type": "string", "pattern": "^[a-f0-9]{7,64}$"},
+    "input_artifacts": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["path", "sha256"],
+        "properties": {
+          "path": {"type": "string", "minLength": 1},
+          "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+          "schema_version": {"type": "string"}
+        },
+        "additionalProperties": false
+      }
+    },
+    "output_artifacts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["path", "sha256"],
+        "properties": {
+          "path": {"type": "string", "minLength": 1},
+          "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+        },
+        "additionalProperties": false
+      }
+    },
+    "sample_counts": {
+      "type": "object",
+      "required": ["observations", "geographies", "treated_geographies"],
+      "properties": {
+        "observations": {"type": "integer", "minimum": 0},
+        "geographies": {"type": "integer", "minimum": 0},
+        "treated_geographies": {"type": "integer", "minimum": 0},
+        "control_geographies": {"type": "integer", "minimum": 0}
+      },
+      "additionalProperties": false
+    },
+    "validation_status": {"type": "string", "enum": ["pending", "passed", "failed", "passed_with_warnings"]},
+    "created_at": {"$ref": "common.schema.json#/$defs/timestamp"},
+    "updated_at": {"$ref": "common.schema.json#/$defs/timestamp"},
+    "record_status": {"type": "string", "enum": ["active", "provisional", "superseded", "withdrawn"]}
+  },
+  "additionalProperties": false
+}
+

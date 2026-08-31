@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dccio.org/schemas/v1/model-estimate.schema.json",
+  "title": "Model estimate",
+  "type": "object",
+  "required": ["schema_version", "estimate_id", "model_run_id", "estimand", "outcome_metric_code", "estimate", "interpretation_unit", "sample_counts", "publication_status", "created_at", "updated_at", "record_status"],
+  "properties": {
+    "schema_version": {"$ref": "common.schema.json#/$defs/schema_version"},
+    "estimate_id": {"$ref": "common.schema.json#/$defs/entity_id"},
+    "model_run_id": {"$ref": "common.schema.json#/$defs/entity_id"},
+    "estimand": {"type": "string", "enum": ["att", "group_time_att", "event_time_att", "average_post_att", "counterfactual_gap", "intensity_coefficient", "descriptive_change", "index_component"]},
+    "outcome_metric_code": {"type": "string", "minLength": 1},
+    "geography": {
+      "type": "object",
+      "required": ["geography_type", "geography_id"],
+      "properties": {
+        "geography_type": {"type": "string", "enum": ["county", "state", "cbsa", "utility_territory", "nation", "cohort"]},
+        "geography_id": {"type": "string", "minLength": 1}
+      },
+      "additionalProperties": false
+    },
+    "cohort_year": {"$ref": "common.schema.json#/$defs/year"},
+    "event_time": {"type": "integer"},
+    "period": {"$ref": "common.schema.json#/$defs/temporal_extent"},
+    "estimate": {"type": "number"},
+    "uncertainty": {"$ref": "common.schema.json#/$defs/uncertainty"},
+    "interpretation_unit": {"type": "string", "enum": ["outcome_units", "log_points", "percent_change", "percentage_points", "standard_deviations", "index_points"]},
+    "sample_counts": {
+      "type": "object",
+      "required": ["observations", "treated_geographies"],
+      "properties": {
+        "observations": {"type": "integer", "minimum": 0},
+        "treated_geographies": {"type": "integer", "minimum": 0},
+        "control_geographies": {"type": "integer", "minimum": 0}
+      },
+      "additionalProperties": false
+    },
+    "publication_status": {"type": "string", "enum": ["publishable", "provisional", "diagnostic_only", "insufficient_evidence", "rejected"]},
+    "created_at": {"$ref": "common.schema.json#/$defs/timestamp"},
+    "updated_at": {"$ref": "common.schema.json#/$defs/timestamp"},
+    "record_status": {"type": "string", "enum": ["active", "provisional", "superseded", "withdrawn"]}
+  },
+  "additionalProperties": false
+}

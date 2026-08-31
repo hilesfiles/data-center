@@ -1,0 +1,620 @@
+{
+  "fixture_version": "1.0.0",
+  "description": "Cross-county campus, renamed facility, phased project, conflicting opening years, capacity statuses, and operator succession.",
+  "geography_reference": [
+    {
+      "schema_version": "1.0.0",
+      "geography_id": "51059",
+      "geography_type": "county",
+      "name": "Example County",
+      "county_fips": "51059",
+      "state_fips": "51",
+      "state_abbr": "VA",
+      "effective_interval": {"start": {"year": 2000, "precision": "year"}, "ongoing": true},
+      "reference_vintage": "2026",
+      "created_at": "2026-08-31T12:00:00Z",
+      "updated_at": "2026-08-31T12:00:00Z",
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "geography_id": "51107",
+      "geography_type": "county",
+      "name": "Adjacent County",
+      "county_fips": "51107",
+      "state_fips": "51",
+      "state_abbr": "VA",
+      "effective_interval": {"start": {"year": 2000, "precision": "year"}, "ongoing": true},
+      "reference_vintage": "2026",
+      "created_at": "2026-08-31T12:00:00Z",
+      "updated_at": "2026-08-31T12:00:00Z",
+      "record_status": "active"
+    }
+  ],
+  "metric_definition": [
+    {
+      "schema_version": "1.0.0",
+      "metric_code": "facility.capacity.mw",
+      "name": "Facility capacity",
+      "domain": "facility_exposure",
+      "value_type": "quantity",
+      "canonical_unit": "MW",
+      "allowed_subject_types": ["facility", "project_phase"],
+      "temporal_grains": ["instant", "year"],
+      "directionality": "neutral",
+      "aggregation": "sum",
+      "suppression_sensitive": false,
+      "created_at": "2026-08-31T12:00:00Z",
+      "updated_at": "2026-08-31T12:00:00Z",
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "metric_code": "economic.employment.total",
+      "name": "Total employment",
+      "domain": "economic",
+      "value_type": "number",
+      "canonical_unit": "jobs",
+      "allowed_subject_types": ["county"],
+      "temporal_grains": ["year"],
+      "directionality": "ambiguous",
+      "aggregation": "sum",
+      "suppression_sensitive": true,
+      "created_at": "2026-08-31T12:00:00Z",
+      "updated_at": "2026-08-31T12:00:00Z",
+      "record_status": "active"
+    }
+  ],
+  "source": [
+    {
+      "schema_version": "1.0.0",
+      "source_id": "src_00000001",
+      "source_type": "permit_record",
+      "publisher": "Example County",
+      "title": "Occupancy permit for Project Nova",
+      "url": "https://example.gov/permits/nova",
+      "publication_date": {"date": "2014-11-03", "precision": "day"},
+      "license": "Public record",
+      "copyright_policy": "redistributable",
+      "source_quality_prior": 0.98,
+      "created_at": "2026-08-31T12:00:00Z",
+      "updated_at": "2026-08-31T12:00:00Z",
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "source_id": "src_00000002",
+      "source_type": "operator_release",
+      "publisher": "Example Cloud",
+      "title": "Example Cloud opens Virginia region",
+      "url": "https://example.com/news/virginia-region",
+      "archive_url": "https://web.archive.org/web/201501/example.com/news/virginia-region",
+      "publication_date": {"year": 2015, "precision": "year"},
+      "license": "All rights reserved",
+      "copyright_policy": "metadata_only",
+      "source_quality_prior": 0.92,
+      "created_at": "2026-08-31T12:00:00Z",
+      "updated_at": "2026-08-31T12:00:00Z",
+      "record_status": "active"
+    }
+  ],
+  "source_artifact": [
+    {
+      "schema_version": "1.0.0",
+      "artifact_id": "art_00000001",
+      "source_id": "src_00000001",
+      "request_url": "https://example.gov/permits/nova",
+      "retrieved_at": "2026-08-31T12:00:00Z",
+      "content_type": "application/pdf",
+      "http_status": 200,
+      "sha256": "1111111111111111111111111111111111111111111111111111111111111111",
+      "byte_size": 12345,
+      "local_path": "data/raw/example/nova-permit.pdf",
+      "storage_policy": "public",
+      "parser_version": "pdf-v1",
+      "created_at": "2026-08-31T12:00:00Z",
+      "updated_at": "2026-08-31T12:00:00Z",
+      "record_status": "active"
+    }
+  ],
+  "campus": [
+    {
+      "schema_version": "1.0.0",
+      "campus_id": "cam_00000001",
+      "canonical_name": "Example Cloud Virginia Campus",
+      "aliases": ["Project Nova Campus"],
+      "coordinates": {"latitude": 38.9501, "longitude": -77.4501, "precision": "campus", "source_claim_ids": ["clm_00000005"]},
+      "geography_assignments": [
+        {"geography_type": "county", "geography_id": "51059", "assignment_method": "geometry_intersection", "allocation_share": 0.8, "confidence": 0.96},
+        {"geography_type": "county", "geography_id": "51107", "assignment_method": "geometry_intersection", "allocation_share": 0.2, "confidence": 0.96}
+      ],
+      "data_quality": {"score": 86, "grade": "B", "method_version": "dqs-1.0", "component_scores": {"location": 0.96, "timeline": 0.80}},
+      "created_at": "2026-08-31T12:00:00Z",
+      "updated_at": "2026-08-31T12:00:00Z",
+      "record_status": "active"
+    }
+  ],
+  "facility": [
+    {
+      "schema_version": "1.0.0",
+      "facility_id": "fac_00000001",
+      "campus_id": "cam_00000001",
+      "canonical_name": "Example Cloud VA-1",
+      "aliases": ["Project Nova", "Legacy Hosting DC-7"],
+      "facility_type": "hyperscale",
+      "current_status": "operational",
+      "coordinates": {"latitude": 38.951, "longitude": -77.449, "precision": "parcel", "source_claim_ids": ["clm_00000005"]},
+      "address": {"line1": "100 Example Way", "city": "Example", "state_abbr": "VA", "postal_code": "20166", "country_code": "US"},
+      "parcel_ids": ["EX-100-01"],
+      "geography_assignments": [
+        {"geography_type": "county", "geography_id": "51059", "assignment_method": "point_in_polygon", "allocation_share": 1, "confidence": 0.99, "source_claim_ids": ["clm_00000005"]}
+      ],
+      "external_identifiers": [{"namespace": "example-permit", "value": "NOVA-2014-77", "source_id": "src_00000001"}],
+      "data_quality": {"score": 88, "grade": "B", "method_version": "dqs-1.0", "component_scores": {"location": 0.99, "timeline": 0.82, "capacity": 0.75}},
+      "created_at": "2026-08-31T12:00:00Z",
+      "updated_at": "2026-08-31T12:00:00Z",
+      "record_status": "active"
+    }
+  ],
+  "operator": [
+    {
+      "schema_version": "1.0.0",
+      "operator_id": "opr_00000001",
+      "canonical_name": "Legacy Hosting",
+      "organization_type": "private_company",
+      "aliases": ["Legacy DC"],
+      "created_at": "2026-08-31T12:00:00Z",
+      "updated_at": "2026-08-31T12:00:00Z",
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "operator_id": "opr_00000002",
+      "canonical_name": "Example Cloud",
+      "organization_type": "public_company",
+      "website": "https://example.com",
+      "created_at": "2026-08-31T12:00:00Z",
+      "updated_at": "2026-08-31T12:00:00Z",
+      "record_status": "active"
+    }
+  ],
+  "project": [
+    {
+      "schema_version": "1.0.0",
+      "project_id": "prj_00000001",
+      "canonical_name": "Project Nova",
+      "aliases": ["Virginia Region Phase I"],
+      "project_type": "new_facility",
+      "current_status": "operational",
+      "target_refs": [
+        {"entity_type": "campus", "entity_id": "cam_00000001"},
+        {"entity_type": "facility", "entity_id": "fac_00000001"}
+      ],
+      "geography_assignments": [{"geography_type": "county", "geography_id": "51059", "assignment_method": "manual_review", "allocation_share": 1, "confidence": 0.99}],
+      "data_quality": {"score": 84, "grade": "B", "method_version": "dqs-1.0", "component_scores": {"timeline": 0.80}},
+      "created_at": "2026-08-31T12:00:00Z",
+      "updated_at": "2026-08-31T12:00:00Z",
+      "record_status": "active"
+    }
+  ],
+  "project_phase": [
+    {
+      "schema_version": "1.0.0",
+      "phase_id": "phs_00000001",
+      "project_id": "prj_00000001",
+      "facility_id": "fac_00000001",
+      "phase_name": "Phase 1",
+      "sequence": 1,
+      "current_status": "operational",
+      "created_at": "2026-08-31T12:00:00Z",
+      "updated_at": "2026-08-31T12:00:00Z",
+      "record_status": "active"
+    }
+  ],
+  "claim": [
+    {
+      "schema_version": "1.0.0",
+      "claim_id": "clm_00000001",
+      "source_id": "src_00000001",
+      "source_artifact_id": "art_00000001",
+      "subject": {"entity_type": "facility", "entity_id": "fac_00000001"},
+      "attribute_path": "first_operational_date",
+      "raw_value": {"type": "text", "value": "approved for occupancy in 2014"},
+      "normalized_value": {"type": "date", "value": {"year": 2014, "precision": "year"}},
+      "source_excerpt_reference": {"page": 3, "section": "Certificate", "short_excerpt": "Occupancy approved during calendar year 2014."},
+      "extraction_method": "manual",
+      "source_quality_score": 0.98,
+      "claim_confidence": 0.95,
+      "conflict_group": "fac_00000001:first_operational_date",
+      "review_status": "accepted",
+      "created_at": "2026-08-31T12:00:00Z",
+      "updated_at": "2026-08-31T12:00:00Z",
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "claim_id": "clm_00000002",
+      "source_id": "src_00000002",
+      "subject": {"entity_type": "facility", "entity_id": "fac_00000001"},
+      "attribute_path": "first_operational_date",
+      "raw_value": {"type": "text", "value": "opened in 2015"},
+      "normalized_value": {"type": "date", "value": {"year": 2015, "precision": "year"}},
+      "extraction_method": "manual",
+      "source_quality_score": 0.92,
+      "claim_confidence": 0.85,
+      "conflict_group": "fac_00000001:first_operational_date",
+      "review_status": "needs_review",
+      "created_at": "2026-08-31T12:00:00Z",
+      "updated_at": "2026-08-31T12:00:00Z",
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "claim_id": "clm_00000003",
+      "source_id": "src_00000002",
+      "subject": {"entity_type": "project_phase", "entity_id": "phs_00000001"},
+      "attribute_path": "capacity.announced_mw",
+      "raw_value": {"type": "text", "value": "approximately 48 MW"},
+      "normalized_value": {"type": "quantity", "value": 48, "unit": "MW"},
+      "extraction_method": "manual",
+      "source_quality_score": 0.92,
+      "claim_confidence": 0.72,
+      "review_status": "accepted",
+      "created_at": "2026-08-31T12:00:00Z",
+      "updated_at": "2026-08-31T12:00:00Z",
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "claim_id": "clm_00000004",
+      "source_id": "src_00000002",
+      "subject": {"entity_type": "facility", "entity_id": "fac_00000001"},
+      "attribute_path": "operator.current",
+      "raw_value": {"type": "text", "value": "Example Cloud"},
+      "normalized_value": {"type": "identifier", "value": "opr_00000002"},
+      "extraction_method": "manual",
+      "source_quality_score": 0.92,
+      "claim_confidence": 0.94,
+      "review_status": "accepted",
+      "created_at": "2026-08-31T12:00:00Z",
+      "updated_at": "2026-08-31T12:00:00Z",
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "claim_id": "clm_00000005",
+      "source_id": "src_00000001",
+      "source_artifact_id": "art_00000001",
+      "subject": {"entity_type": "facility", "entity_id": "fac_00000001"},
+      "attribute_path": "location.coordinates",
+      "raw_value": {"type": "text", "value": "Parcel EX-100-01"},
+      "normalized_value": {"type": "json", "value": {"latitude": 38.951, "longitude": -77.449}},
+      "extraction_method": "manual",
+      "source_quality_score": 0.98,
+      "claim_confidence": 0.99,
+      "review_status": "accepted",
+      "created_at": "2026-08-31T12:00:00Z",
+      "updated_at": "2026-08-31T12:00:00Z",
+      "record_status": "active"
+    }
+  ],
+  "claim_resolution": [
+    {
+      "schema_version": "1.0.0",
+      "resolution_id": "res_00000001",
+      "subject": {"entity_type": "facility", "entity_id": "fac_00000001"},
+      "attribute_path": "first_operational_date",
+      "resolution_status": "provisional",
+      "resolved_value": {"type": "date", "value": {"year": 2014, "precision": "year"}},
+      "claim_refs": {"winning": "clm_00000001", "supporting": ["clm_00000001"], "conflicting": ["clm_00000002"]},
+      "resolution_method": "authoritative_source_rule",
+      "resolution_confidence": 0.88,
+      "rationale": "The occupancy permit is stronger evidence for physical operability; the 2015 release may refer to commercial launch.",
+      "resolved_at": "2026-08-31T12:00:00Z",
+      "created_at": "2026-08-31T12:00:00Z",
+      "updated_at": "2026-08-31T12:00:00Z",
+      "record_status": "provisional"
+    }
+  ],
+  "operator_relationship": [
+    {
+      "schema_version": "1.0.0",
+      "relationship_id": "rel_00000001",
+      "operator_id": "opr_00000001",
+      "subject_type": "facility",
+      "subject_id": "fac_00000001",
+      "relationship_type": "operator",
+      "effective_interval": {"start": {"year": 2014, "precision": "year"}, "end": {"date": "2019-07-01", "precision": "day"}, "ongoing": false},
+      "source_claim_ids": ["clm_00000001"],
+      "confidence": 0.75,
+      "created_at": "2026-08-31T12:00:00Z",
+      "updated_at": "2026-08-31T12:00:00Z",
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "relationship_id": "rel_00000002",
+      "operator_id": "opr_00000002",
+      "subject_type": "facility",
+      "subject_id": "fac_00000001",
+      "relationship_type": "operator",
+      "effective_interval": {"start": {"date": "2019-07-01", "precision": "day"}, "ongoing": true},
+      "source_claim_ids": ["clm_00000004"],
+      "confidence": 0.94,
+      "created_at": "2026-08-31T12:00:00Z",
+      "updated_at": "2026-08-31T12:00:00Z",
+      "record_status": "active"
+    }
+  ],
+  "event": [
+    {
+      "schema_version": "1.0.0",
+      "event_id": "evt_00000001",
+      "event_type": "construction_started",
+      "subjects": [{"entity_type": "project_phase", "entity_id": "phs_00000001"}],
+      "when": {"date_lower": "2013-04-01", "date_upper": "2013-06-30", "precision": "range"},
+      "resolution_status": "provisional",
+      "confidence": 0.76,
+      "source_claim_ids": ["clm_00000001"],
+      "created_at": "2026-08-31T12:00:00Z",
+      "updated_at": "2026-08-31T12:00:00Z",
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "event_id": "evt_00000002",
+      "event_type": "operational",
+      "subjects": [{"entity_type": "facility", "entity_id": "fac_00000001"}, {"entity_type": "project_phase", "entity_id": "phs_00000001"}],
+      "when": {"year": 2014, "precision": "year"},
+      "resolution_status": "provisional",
+      "confidence": 0.88,
+      "source_claim_ids": ["clm_00000001", "clm_00000002"],
+      "created_at": "2026-08-31T12:00:00Z",
+      "updated_at": "2026-08-31T12:00:00Z",
+      "record_status": "provisional"
+    },
+    {
+      "schema_version": "1.0.0",
+      "event_id": "evt_00000003",
+      "event_type": "operator_changed",
+      "subjects": [{"entity_type": "facility", "entity_id": "fac_00000001"}, {"entity_type": "operator", "entity_id": "opr_00000002"}],
+      "when": {"date": "2019-07-01", "precision": "day"},
+      "resolution_status": "resolved",
+      "confidence": 0.94,
+      "source_claim_ids": ["clm_00000004"],
+      "created_at": "2026-08-31T12:00:00Z",
+      "updated_at": "2026-08-31T12:00:00Z",
+      "record_status": "active"
+    }
+  ],
+  "observation": [
+    {
+      "schema_version": "1.0.0",
+      "observation_id": "obs_00000001",
+      "metric_code": "facility.capacity.mw",
+      "subject": {"subject_type": "project_phase", "subject_id": "phs_00000001"},
+      "period": {"year": 2015, "precision": "year"},
+      "value": {"type": "quantity", "value": 48, "unit": "MW"},
+      "value_status": "observed",
+      "uncertainty": {"lower": 44, "upper": 52, "method": "source language range"},
+      "source_ids": ["src_00000002"],
+      "source_claim_ids": ["clm_00000003"],
+      "release_vintage": "2015",
+      "revision_number": 0,
+      "created_at": "2026-08-31T12:00:00Z",
+      "updated_at": "2026-08-31T12:00:00Z",
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "observation_id": "obs_00000002",
+      "metric_code": "facility.capacity.mw",
+      "subject": {"subject_type": "facility", "subject_id": "fac_00000001"},
+      "period": {"year": 2020, "precision": "year"},
+      "value": {"type": "quantity", "value": 52, "unit": "MW"},
+      "value_status": "modeled",
+      "uncertainty": {"lower": 40, "upper": 64, "confidence_level": 0.95, "method": "bootstrap"},
+      "derivation": {"method": "capacity-model", "version": "1.0", "input_observation_ids": ["obs_00000001"], "formula": "observed phase MW plus modeled expansion"},
+      "release_vintage": "2026-08-31",
+      "revision_number": 0,
+      "created_at": "2026-08-31T12:00:00Z",
+      "updated_at": "2026-08-31T12:00:00Z",
+      "record_status": "provisional"
+    },
+    {
+      "schema_version": "1.0.0",
+      "observation_id": "obs_00000003",
+      "metric_code": "economic.employment.total",
+      "subject": {"subject_type": "county", "subject_id": "51059"},
+      "period": {"year": 2024, "precision": "year"},
+      "value_status": "suppressed",
+      "missingness_reason": "suppressed",
+      "source_ids": ["src_00000001"],
+      "release_vintage": "2024",
+      "revision_number": 0,
+      "created_at": "2026-08-31T12:00:00Z",
+      "updated_at": "2026-08-31T12:00:00Z",
+      "record_status": "active"
+    }
+  ],
+  "panel_row": [
+    {
+      "schema_version": "1.0.0",
+      "panel_row_id": "pnl_00000001",
+      "panel_name": "county_year_core_v1",
+      "geography": {"geography_type": "county", "geography_id": "51059"},
+      "period": {"year": 2024, "precision": "year"},
+      "observation_refs": [{"metric_code": "economic.employment.total", "observation_id": "obs_00000003", "role": "outcome"}],
+      "completeness": {"required_metric_count": 1, "available_metric_count": 0, "coverage": 0},
+      "build_version": "2026-08-31+fixture",
+      "created_at": "2026-08-31T12:00:00Z",
+      "updated_at": "2026-08-31T12:00:00Z",
+      "record_status": "active"
+    }
+  ],
+  "treatment_definition": [
+    {
+      "schema_version": "1.0.0",
+      "treatment_definition_id": "trt_00000001",
+      "name": "First high-confidence operational entry",
+      "version": "1.0.0",
+      "description": "First operational event meeting headline evidence requirements.",
+      "treatment_type": "first_entry",
+      "qualifying_event_types": ["operational"],
+      "exposure_metric_codes": ["facility.capacity.mw"],
+      "eligibility": {"tier": "headline", "minimum_dqs": 80, "minimum_date_precision": "year", "minimum_authoritative_sources": 1, "minimum_source_count": 1},
+      "spillover_rules": {"exclude_control_within_miles": 25, "exclude_same_utility_territory": false},
+      "time_unit": "year",
+      "created_at": "2026-08-31T12:00:00Z",
+      "updated_at": "2026-08-31T12:00:00Z",
+      "record_status": "active"
+    }
+  ],
+  "model_specification": [
+    {
+      "schema_version": "1.0.0",
+      "model_specification_id": "msp_00000001",
+      "name": "Employment first-entry event study",
+      "version": "1.0.0",
+      "model_family": "staggered_did",
+      "estimator": "group_time_att",
+      "outcome_metric_code": "economic.employment.total",
+      "outcome_transform": "log",
+      "treatment_definition_id": "trt_00000001",
+      "sample_definition": {"geography_unit": "county", "start_year": 2000, "end_year": 2024, "control_group": "not_yet_treated", "minimum_pre_periods": 7, "minimum_post_periods": 3},
+      "event_window": {"lead": 7, "lag": 10, "reference_period": -1, "bin_endpoints": true},
+      "covariate_metric_codes": [],
+      "fixed_effects": ["county", "year"],
+      "inference": {"confidence_level": 0.95, "cluster_method": "county"},
+      "required_diagnostics": ["pretrend_joint_test", "sample_attrition"],
+      "created_at": "2026-08-31T12:00:00Z",
+      "updated_at": "2026-08-31T12:00:00Z",
+      "record_status": "active"
+    }
+  ],
+  "model_run": [
+    {
+      "schema_version": "1.0.0",
+      "model_run_id": "run_00000001",
+      "model_specification_id": "msp_00000001",
+      "run_status": "succeeded",
+      "started_at": "2026-08-31T13:00:00Z",
+      "completed_at": "2026-08-31T13:05:00Z",
+      "software": [{"name": "illustrative-estimator", "version": "1.0"}],
+      "seed": 20260831,
+      "code_commit_sha": "abcdef1",
+      "input_artifacts": [{"path": "data/gold/county-observations.jsonl", "sha256": "2222222222222222222222222222222222222222222222222222222222222222", "schema_version": "1.0.0"}],
+      "output_artifacts": [{"path": "data/gold/model-estimates.jsonl", "sha256": "3333333333333333333333333333333333333333333333333333333333333333"}],
+      "sample_counts": {"observations": 12000, "geographies": 800, "treated_geographies": 100, "control_geographies": 700},
+      "validation_status": "passed",
+      "created_at": "2026-08-31T13:05:00Z",
+      "updated_at": "2026-08-31T13:05:00Z",
+      "record_status": "active"
+    }
+  ],
+  "analysis_unit": [
+    {
+      "schema_version": "1.0.0",
+      "analysis_unit_id": "anu_00000001",
+      "model_run_id": "run_00000001",
+      "panel_row_id": "pnl_00000001",
+      "geography": {"geography_type": "county", "geography_id": "51059"},
+      "period": {"year": 2024, "precision": "year"},
+      "sample_role": "treated",
+      "inclusion_status": "included",
+      "treatment_definition_id": "trt_00000001",
+      "treatment_period": {"year": 2014, "precision": "year"},
+      "cohort_year": 2014,
+      "relative_event_time": 10,
+      "treatment_quality_tier": "headline",
+      "created_at": "2026-08-31T13:05:00Z",
+      "updated_at": "2026-08-31T13:05:00Z",
+      "record_status": "active"
+    }
+  ],
+  "model_estimate": [
+    {
+      "schema_version": "1.0.0",
+      "estimate_id": "est_00000001",
+      "model_run_id": "run_00000001",
+      "estimand": "counterfactual_gap",
+      "outcome_metric_code": "economic.employment.total",
+      "geography": {"geography_type": "county", "geography_id": "51059"},
+      "period": {"year": 2024, "precision": "year"},
+      "estimate": 0.025,
+      "uncertainty": {"lower": -0.01, "upper": 0.06, "confidence_level": 0.95, "standard_error": 0.017, "method": "clustered"},
+      "interpretation_unit": "log_points",
+      "sample_counts": {"observations": 24, "treated_geographies": 1, "control_geographies": 12},
+      "publication_status": "provisional",
+      "created_at": "2026-08-31T13:05:00Z",
+      "updated_at": "2026-08-31T13:05:00Z",
+      "record_status": "provisional"
+    }
+  ],
+  "model_diagnostic": [
+    {
+      "schema_version": "1.0.0",
+      "diagnostic_id": "dia_00000001",
+      "model_run_id": "run_00000001",
+      "diagnostic_type": "pretrend_joint_test",
+      "status": "passed",
+      "result": {"type": "number", "value": 0.42},
+      "p_value": 0.42,
+      "details": {"null": "all pre-treatment effects are zero"},
+      "created_at": "2026-08-31T13:05:00Z",
+      "updated_at": "2026-08-31T13:05:00Z",
+      "record_status": "active"
+    }
+  ],
+  "donor_weight": [
+    {
+      "schema_version": "1.0.0",
+      "donor_weight_id": "dnr_00000001",
+      "model_run_id": "run_00000001",
+      "treated_geography_id": "51059",
+      "donor_geography_id": "51107",
+      "weight": 0.35,
+      "distance": 1.2,
+      "selection_method": "synthetic_control",
+      "created_at": "2026-08-31T13:05:00Z",
+      "updated_at": "2026-08-31T13:05:00Z",
+      "record_status": "active"
+    }
+  ],
+  "index_score": [
+    {
+      "schema_version": "1.0.0",
+      "index_score_id": "idx_00000001",
+      "index_code": "DCEDI",
+      "methodology_version": "0.1.0",
+      "subject": {"geography_type": "county", "geography_id": "51059"},
+      "period": {"year": 2024, "precision": "year"},
+      "score": 57.4,
+      "uncertainty": {"lower": 42.1, "upper": 69.8, "confidence_level": 0.95, "method": "bootstrap"},
+      "coverage": {"eligible_weight": 0.65, "required_weight": 0.6, "meets_threshold": true},
+      "components": [{"component_code": "employment", "configured_weight": 0.25, "effective_weight": 0.3846, "raw_value": 0.025, "scaled_score": 57.4, "estimate_id": "est_00000001", "availability_status": "available"}],
+      "calibration": {"version": "cal-0.1", "method": "robust_z_normal_cdf", "reference_sample_hash": "4444444444444444444444444444444444444444444444444444444444444444"},
+      "stability": {"classification": "moderately_sensitive", "minimum_alternative_score": 51.2, "maximum_alternative_score": 61.8, "rank_correlation_minimum": 0.84},
+      "confidence_grade": "C",
+      "publication_status": "provisional",
+      "created_at": "2026-08-31T13:05:00Z",
+      "updated_at": "2026-08-31T13:05:00Z",
+      "record_status": "provisional"
+    }
+  ],
+  "public_county_summary": [
+    {
+      "schema_version": "1.0.0",
+      "county_fips": "51059",
+      "county_name": "Example County",
+      "state_abbr": "VA",
+      "as_of_year": 2024,
+      "facility_exposure": {"operating_count": 1, "proposed_count": 0, "cancelled_or_rejected_count": 0, "first_operational_year": 2014, "last_major_expansion_year": 2020, "operational_mw_observed": 48, "operational_mw_coverage": 0.8},
+      "indices": {"DCEDI": {"score": 57.4, "ci_low": 42.1, "ci_high": 69.8, "coverage": 0.65, "status": "provisional", "index_score_id": "idx_00000001"}, "DCOI": {"status": "insufficient_data"}},
+      "quality": {"data_quality_grade": "B", "model_confidence_grade": "C", "component_coverage": 0.65},
+      "data_version": "2026-08-31+fixture",
+      "model_versions": ["run_00000001"],
+      "generated_at": "2026-08-31T13:05:00Z"
+    }
+  ]
+}

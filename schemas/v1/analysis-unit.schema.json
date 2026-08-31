@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dccio.org/schemas/v1/analysis-unit.schema.json",
+  "title": "Model sample membership and treatment assignment",
+  "type": "object",
+  "required": ["schema_version", "analysis_unit_id", "model_run_id", "geography", "period", "sample_role", "inclusion_status", "created_at", "updated_at", "record_status"],
+  "properties": {
+    "schema_version": {"$ref": "common.schema.json#/$defs/schema_version"},
+    "analysis_unit_id": {"$ref": "common.schema.json#/$defs/entity_id"},
+    "model_run_id": {"$ref": "common.schema.json#/$defs/entity_id"},
+    "panel_row_id": {"$ref": "common.schema.json#/$defs/entity_id"},
+    "geography": {
+      "type": "object",
+      "required": ["geography_type", "geography_id"],
+      "properties": {
+        "geography_type": {"type": "string", "enum": ["county", "state", "cbsa", "utility_territory"]},
+        "geography_id": {"type": "string", "minLength": 1}
+      },
+      "additionalProperties": false
+    },
+    "period": {"$ref": "common.schema.json#/$defs/temporal_extent"},
+    "sample_role": {"type": "string", "enum": ["treated", "control_never_treated", "control_not_yet_treated", "donor", "excluded"]},
+    "inclusion_status": {"type": "string", "enum": ["included", "excluded", "sensitivity_only"]},
+    "exclusion_reasons": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "treatment_definition_id": {"$ref": "common.schema.json#/$defs/entity_id"},
+    "treatment_period": {"$ref": "common.schema.json#/$defs/temporal_extent"},
+    "cohort_year": {"$ref": "common.schema.json#/$defs/year"},
+    "relative_event_time": {"type": "integer"},
+    "treatment_quality_tier": {"type": "string", "enum": ["headline", "expanded", "discovery", "not_treated"]},
+    "created_at": {"$ref": "common.schema.json#/$defs/timestamp"},
+    "updated_at": {"$ref": "common.schema.json#/$defs/timestamp"},
+    "record_status": {"type": "string", "enum": ["active", "provisional", "superseded", "withdrawn"]}
+  },
+  "additionalProperties": false
+}
+

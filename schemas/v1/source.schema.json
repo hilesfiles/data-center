@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dccio.org/schemas/v1/source.schema.json",
+  "title": "Evidence source",
+  "type": "object",
+  "required": ["schema_version", "source_id", "source_type", "title", "publication_date", "copyright_policy", "created_at", "updated_at", "record_status"],
+  "properties": {
+    "schema_version": {"$ref": "common.schema.json#/$defs/schema_version"},
+    "source_id": {"$ref": "common.schema.json#/$defs/entity_id"},
+    "source_type": {
+      "type": "string",
+      "enum": ["federal_dataset", "state_record", "local_government_record", "planning_record", "zoning_record", "permit_record", "assessor_record", "utility_filing", "regulatory_filing", "court_record", "sec_filing", "incentive_agreement", "operator_release", "local_news", "national_news", "trade_press", "news_archive", "legislative_record", "poll", "petition", "advocacy_site", "other"]
+    },
+    "publisher": {"type": "string"},
+    "agency": {"type": "string"},
+    "jurisdiction": {"type": "string"},
+    "title": {"type": "string", "minLength": 1},
+    "url": {"type": "string", "format": "uri"},
+    "archive_url": {"type": "string", "format": "uri"},
+    "publication_date": {"$ref": "common.schema.json#/$defs/temporal_extent"},
+    "language": {"type": "string", "default": "en"},
+    "license": {"type": "string"},
+    "copyright_policy": {"type": "string", "enum": ["redistributable", "metadata_only", "short_excerpt_only", "local_cache_only", "unknown"]},
+    "robots_notes": {"type": "string"},
+    "source_quality_prior": {"type": "number", "minimum": 0, "maximum": 1},
+    "created_at": {"$ref": "common.schema.json#/$defs/timestamp"},
+    "updated_at": {"$ref": "common.schema.json#/$defs/timestamp"},
+    "record_status": {"type": "string", "enum": ["active", "provisional", "superseded", "withdrawn"]}
+  },
+  "anyOf": [{"required": ["url"]}, {"required": ["archive_url"]}],
+  "additionalProperties": false
+}
+

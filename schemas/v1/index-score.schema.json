@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dccio.org/schemas/v1/index-score.schema.json",
+  "title": "Index score",
+  "type": "object",
+  "required": ["schema_version", "index_score_id", "index_code", "methodology_version", "subject", "period", "publication_status", "coverage", "components", "created_at", "updated_at", "record_status"],
+  "properties": {
+    "schema_version": {"$ref": "common.schema.json#/$defs/schema_version"},
+    "index_score_id": {"$ref": "common.schema.json#/$defs/entity_id"},
+    "index_code": {"type": "string", "enum": ["OEM", "DCEDI", "DCFDi", "DCCCI", "DCOI", "BSG", "NCB"]},
+    "methodology_version": {"type": "string", "minLength": 1},
+    "subject": {
+      "type": "object",
+      "required": ["geography_type", "geography_id"],
+      "properties": {
+        "geography_type": {"type": "string", "enum": ["county", "state", "cbsa", "nation"]},
+        "geography_id": {"type": "string", "minLength": 1}
+      },
+      "additionalProperties": false
+    },
+    "period": {"$ref": "common.schema.json#/$defs/temporal_extent"},
+    "score": {"type": "number", "minimum": -100, "maximum": 100},
+    "uncertainty": {"$ref": "common.schema.json#/$defs/uncertainty"},
+    "coverage": {
+      "type": "object",
+      "required": ["eligible_weight", "required_weight", "meets_threshold"],
+      "properties": {
+        "eligible_weight": {"type": "number", "minimum": 0, "maximum": 1},
+        "required_weight": {"type": "number", "minimum": 0, "maximum": 1},
+        "meets_threshold": {"type": "boolean"}
+      },
+      "additionalProperties": false
+    },
+    "components": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["component_code", "configured_weight", "availability_status"],
+        "properties": {
+          "component_code": {"type": "string", "minLength": 1},
+          "configured_weight": {"type": "number", "minimum": 0, "maximum": 1},
+          "effective_weight": {"type": "number", "minimum": 0, "maximum": 1},
+          "raw_value": {"type": "number"},
+          "scaled_score": {"type": "number", "minimum": 0, "maximum": 100},
+          "estimate_id": {"$ref": "common.schema.json#/$defs/entity_id"},
+          "observation_id": {"$ref": "common.schema.json#/$defs/entity_id"},
+          "input_index_score_id": {"$ref": "common.schema.json#/$defs/entity_id"},
+          "availability_status": {"type": "string", "enum": ["available", "missing", "suppressed", "failed_quality", "not_applicable"]}
+        },
+        "additionalProperties": false
+      }
+    },
+    "calibration": {
+      "type": "object",
+      "required": ["version", "method", "reference_sample_hash"],
+      "properties": {
+        "version": {"type": "string"},
+        "method": {"type": "string", "enum": ["robust_z_normal_cdf", "direct_difference", "other"]},
+        "reference_sample_hash": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+      },
+      "additionalProperties": false
+    },
+    "stability": {
+      "type": "object",
+      "properties": {
+        "classification": {"type": "string", "enum": ["stable", "moderately_sensitive", "unstable", "not_assessed"]},
+        "minimum_alternative_score": {"type": "number"},
+        "maximum_alternative_score": {"type": "number"},
+        "rank_correlation_minimum": {"type": "number", "minimum": -1, "maximum": 1}
+      },
+      "additionalProperties": false
+    },
+    "confidence_grade": {"type": "string", "enum": ["A", "B", "C", "D", "P"]},
+    "publication_status": {"type": "string", "enum": ["publishable", "provisional", "insufficient_data", "diagnostic_only", "rejected"]},
+    "created_at": {"$ref": "common.schema.json#/$defs/timestamp"},
+    "updated_at": {"$ref": "common.schema.json#/$defs/timestamp"},
+    "record_status": {"type": "string", "enum": ["active", "provisional", "superseded", "withdrawn"]}
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"publication_status": {"enum": ["publishable", "provisional"]}}},
+      "then": {"required": ["score", "confidence_grade"]}
+    },
+    {
+      "if": {"properties": {"index_code": {"enum": ["OEM", "DCEDI", "DCFDi", "DCCCI", "DCOI"]}}},
+      "then": {"properties": {"score": {"type": "number", "minimum": 0, "maximum": 100}}}
+    }
+  ],
+  "additionalProperties": false
+}

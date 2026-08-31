@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dccio.org/schemas/v1/facility.schema.json",
+  "title": "Facility",
+  "type": "object",
+  "required": ["schema_version", "facility_id", "canonical_name", "facility_type", "current_status", "geography_assignments", "created_at", "updated_at", "record_status"],
+  "properties": {
+    "schema_version": {"$ref": "common.schema.json#/$defs/schema_version"},
+    "facility_id": {"$ref": "common.schema.json#/$defs/entity_id"},
+    "campus_id": {"$ref": "common.schema.json#/$defs/entity_id"},
+    "canonical_name": {"type": "string", "minLength": 1},
+    "aliases": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
+    "facility_type": {
+      "type": "string",
+      "enum": ["building", "multi_building_site", "edge", "enterprise", "colocation", "hyperscale", "government", "unknown"]
+    },
+    "current_status": {
+      "type": "string",
+      "enum": ["proposed", "approved", "under_construction", "operational", "delayed", "withdrawn", "cancelled", "closed", "unknown"]
+    },
+    "coordinates": {"$ref": "common.schema.json#/$defs/coordinates"},
+    "address": {
+      "type": "object",
+      "properties": {
+        "line1": {"type": "string"},
+        "line2": {"type": "string"},
+        "city": {"type": "string"},
+        "state_abbr": {"$ref": "common.schema.json#/$defs/state_abbr"},
+        "postal_code": {"type": "string"},
+        "country_code": {"type": "string", "const": "US"}
+      },
+      "additionalProperties": false
+    },
+    "parcel_ids": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
+    "geography_assignments": {
+      "type": "array",
+      "items": {"$ref": "common.schema.json#/$defs/geography_assignment"},
+      "minItems": 1
+    },
+    "external_identifiers": {
+      "type": "array",
+      "items": {"$ref": "common.schema.json#/$defs/external_identifier"},
+      "uniqueItems": true
+    },
+    "data_quality": {"$ref": "common.schema.json#/$defs/data_quality"},
+    "created_at": {"$ref": "common.schema.json#/$defs/timestamp"},
+    "updated_at": {"$ref": "common.schema.json#/$defs/timestamp"},
+    "record_status": {"type": "string", "enum": ["active", "provisional", "superseded", "withdrawn"]}
+  },
+  "additionalProperties": false
+}
+

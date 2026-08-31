@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dccio.org/schemas/v1/project.schema.json",
+  "title": "Project",
+  "type": "object",
+  "required": ["schema_version", "project_id", "canonical_name", "project_type", "current_status", "target_refs", "created_at", "updated_at", "record_status"],
+  "properties": {
+    "schema_version": {"$ref": "common.schema.json#/$defs/schema_version"},
+    "project_id": {"$ref": "common.schema.json#/$defs/entity_id"},
+    "canonical_name": {"type": "string", "minLength": 1},
+    "aliases": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
+    "project_type": {"type": "string", "enum": ["new_campus", "new_facility", "expansion", "conversion", "decommissioning", "unknown"]},
+    "current_status": {"type": "string", "enum": ["discovered", "proposed", "filed", "approved", "under_construction", "partially_operational", "operational", "delayed", "litigated", "withdrawn", "rejected", "cancelled", "closed", "unknown"]},
+    "target_refs": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["entity_type", "entity_id"],
+        "properties": {
+          "entity_type": {"type": "string", "enum": ["campus", "facility"]},
+          "entity_id": {"$ref": "common.schema.json#/$defs/entity_id"}
+        },
+        "additionalProperties": false
+      }
+    },
+    "geography_assignments": {
+      "type": "array",
+      "items": {"$ref": "common.schema.json#/$defs/geography_assignment"}
+    },
+    "external_identifiers": {
+      "type": "array",
+      "items": {"$ref": "common.schema.json#/$defs/external_identifier"},
+      "uniqueItems": true
+    },
+    "data_quality": {"$ref": "common.schema.json#/$defs/data_quality"},
+    "created_at": {"$ref": "common.schema.json#/$defs/timestamp"},
+    "updated_at": {"$ref": "common.schema.json#/$defs/timestamp"},
+    "record_status": {"type": "string", "enum": ["active", "provisional", "superseded", "withdrawn"]}
+  },
+  "additionalProperties": false
+}
+

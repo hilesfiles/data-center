@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dccio.org/schemas/v1/public-county-summary.schema.json",
+  "title": "Public county summary",
+  "type": "object",
+  "required": ["schema_version", "county_fips", "county_name", "state_abbr", "as_of_year", "facility_exposure", "indices", "quality", "data_version", "generated_at"],
+  "properties": {
+    "schema_version": {"$ref": "common.schema.json#/$defs/schema_version"},
+    "county_fips": {"$ref": "common.schema.json#/$defs/county_fips"},
+    "county_name": {"type": "string", "minLength": 1},
+    "state_abbr": {"$ref": "common.schema.json#/$defs/state_abbr"},
+    "as_of_year": {"$ref": "common.schema.json#/$defs/year"},
+    "facility_exposure": {
+      "type": "object",
+      "required": ["operating_count", "proposed_count"],
+      "properties": {
+        "operating_count": {"type": "integer", "minimum": 0},
+        "proposed_count": {"type": "integer", "minimum": 0},
+        "cancelled_or_rejected_count": {"type": "integer", "minimum": 0},
+        "first_operational_year": {"$ref": "common.schema.json#/$defs/year"},
+        "last_major_expansion_year": {"$ref": "common.schema.json#/$defs/year"},
+        "operational_mw_observed": {"type": "number", "minimum": 0},
+        "operational_mw_coverage": {"type": "number", "minimum": 0, "maximum": 1}
+      },
+      "additionalProperties": false
+    },
+    "indices": {
+      "type": "object",
+      "properties": {
+        "OEM": {"$ref": "#/$defs/public_index"},
+        "DCEDI": {"$ref": "#/$defs/public_index"},
+        "DCFDi": {"$ref": "#/$defs/public_index"},
+        "DCCCI": {"$ref": "#/$defs/public_index"},
+        "DCOI": {"$ref": "#/$defs/public_index"},
+        "BSG": {"$ref": "#/$defs/public_index"},
+        "NCB": {"$ref": "#/$defs/public_index"}
+      },
+      "additionalProperties": false
+    },
+    "quality": {
+      "type": "object",
+      "required": ["data_quality_grade", "model_confidence_grade", "component_coverage"],
+      "properties": {
+        "data_quality_grade": {"type": "string", "enum": ["A", "B", "C", "D", "P"]},
+        "model_confidence_grade": {"type": "string", "enum": ["A", "B", "C", "D", "P"]},
+        "component_coverage": {"type": "number", "minimum": 0, "maximum": 1}
+      },
+      "additionalProperties": false
+    },
+    "data_version": {"type": "string", "minLength": 1},
+    "model_versions": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "generated_at": {"$ref": "common.schema.json#/$defs/timestamp"}
+  },
+  "$defs": {
+    "public_index": {
+      "type": "object",
+      "required": ["status"],
+      "properties": {
+        "score": {"type": "number", "minimum": -100, "maximum": 100},
+        "ci_low": {"type": "number"},
+        "ci_high": {"type": "number"},
+        "coverage": {"type": "number", "minimum": 0, "maximum": 1},
+        "status": {"type": "string", "enum": ["publishable", "provisional", "insufficient_data", "not_applicable"]},
+        "index_score_id": {"$ref": "common.schema.json#/$defs/entity_id"}
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

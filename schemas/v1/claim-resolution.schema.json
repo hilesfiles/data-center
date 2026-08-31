@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dccio.org/schemas/v1/claim-resolution.schema.json",
+  "title": "Claim resolution",
+  "type": "object",
+  "required": ["schema_version", "resolution_id", "subject", "attribute_path", "resolution_status", "claim_refs", "resolution_method", "resolved_at", "created_at", "updated_at", "record_status"],
+  "properties": {
+    "schema_version": {"$ref": "common.schema.json#/$defs/schema_version"},
+    "resolution_id": {"$ref": "common.schema.json#/$defs/entity_id"},
+    "subject": {
+      "type": "object",
+      "required": ["entity_type", "entity_id"],
+      "properties": {
+        "entity_type": {"type": "string", "enum": ["campus", "facility", "project", "project_phase", "operator", "event"]},
+        "entity_id": {"$ref": "common.schema.json#/$defs/entity_id"}
+      },
+      "additionalProperties": false
+    },
+    "attribute_path": {"type": "string", "pattern": "^[a-z][a-z0-9_.-]*$"},
+    "resolution_status": {"type": "string", "enum": ["resolved", "provisional", "disputed", "unresolved"]},
+    "resolved_value": {"$ref": "common.schema.json#/$defs/typed_value"},
+    "claim_refs": {
+      "type": "object",
+      "required": ["supporting", "conflicting"],
+      "properties": {
+        "winning": {"$ref": "common.schema.json#/$defs/entity_id"},
+        "supporting": {"type": "array", "items": {"$ref": "common.schema.json#/$defs/entity_id"}, "uniqueItems": true},
+        "conflicting": {"type": "array", "items": {"$ref": "common.schema.json#/$defs/entity_id"}, "uniqueItems": true}
+      },
+      "additionalProperties": false
+    },
+    "resolution_method": {"type": "string", "enum": ["human_review", "authoritative_source_rule", "corroboration_rule", "deterministic_transform", "manual_override", "unresolved"]},
+    "resolution_confidence": {"type": "number", "minimum": 0, "maximum": 1},
+    "rationale": {"type": "string"},
+    "review_decision_id": {"$ref": "common.schema.json#/$defs/entity_id"},
+    "model_version": {"type": "string"},
+    "resolved_at": {"$ref": "common.schema.json#/$defs/timestamp"},
+    "created_at": {"$ref": "common.schema.json#/$defs/timestamp"},
+    "updated_at": {"$ref": "common.schema.json#/$defs/timestamp"},
+    "record_status": {"type": "string", "enum": ["active", "provisional", "superseded", "withdrawn"]}
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"resolution_status": {"enum": ["resolved", "provisional"]}}},
+      "then": {"required": ["resolved_value", "resolution_confidence"]}
+    }
+  ],
+  "additionalProperties": false
+}
+
