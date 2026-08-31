@@ -30,7 +30,19 @@ coverage. Missing evidence is displayed as insufficient evidence rather than zer
 
 ## Current implementation status
 
-The current site uses fictional fixtures to prove the JSON contract and static delivery
-path. It contains no empirical finding. Network source verification, national geography,
-facility ingestion, outcome panels, and econometric estimation remain future work.
+The current site combines authoritative Census 2025 county geography with the OSM-derived
+IM3 Open Source Data Center Atlas v2026.02.09 seed. IM3 rows are imported as provisional
+source objects, not silently promoted to verified operating facilities. The public county
+measure is therefore labeled “source records,” and a zero means no record in that release,
+not evidence that no facility exists.
 
+The ingest preserves all 1,479 source rows in bronze JSON, including five deliberate
+cross-county duplicates and two Puerto Rico rows outside the current publication scope.
+Canonical/public projections contain 1,472 distinct in-scope source objects. Single-county
+centroids are assigned against the published Census polygons; source-reported assignments
+remain preserved in evidence. Cross-county polygons retain multiple assignments without
+inventing allocation shares.
+
+The seed does not establish operating dates, lifecycle status, historical completeness,
+MW capacity, or causal effects. Entity review, historical reconstruction, outcome panels,
+and econometric estimation remain future work.

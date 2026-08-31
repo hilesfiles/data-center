@@ -20,6 +20,29 @@ Territories are present in the upstream service but intentionally excluded from 
 analytical geography scope. This prevents coverage from being implied where downstream
 economic sources may not have compatible county-equivalent observations.
 
+## Implemented IM3 facility seed
+
+- Dataset: IM3 Open Source Data Center Atlas v2026.02.09
+- Publisher: Pacific Northwest National Laboratory
+- DOI: `10.57931/3017294`
+- Upstream basis: OpenStreetMap-derived locations and footprints
+- Source layers: point, building, and campus
+- Source rows: 1,479; distinct in-scope source objects: 1,472
+- Current publication scope: 50 states and District of Columbia
+- License: Open Database License 1.0 (ODbL)
+- Adapter: `scripts/acquire_im3_facilities.py`
+
+The adapter pins the exact upstream repository commit and verifies the GeoPackage byte
+size and SHA-256 before processing. The GeoPackage is temporary transport input only.
+All retained source-shaped rows, provisional entities, evidence links, observations,
+diagnostics, manifests, county coverage, and map features are JSON or GeoJSON.
+
+Four source rows reported Prince William County, Virginia, while their centroids fall in
+Manassas under the published 2025 Census polygons. Both values remain auditable: bronze
+records preserve the source report and canonical/public geography uses point-in-polygon.
+Five polygon objects span two counties; their multi-county assignments are retained
+without an unsupported area allocation.
+
 Each acquisition adapter must create an acquisition manifest and source artifact record
 containing the request URL, retrieval time, response status, content hash, storage policy,
 license, and parser version. A mutable URL without retrieval metadata is insufficient.

@@ -51,3 +51,21 @@ export interface SiteMetadata {
   notices: string[];
 }
 
+export interface FacilitySourceCoverage {
+  schema_version: "1.0.0";
+  county_fips: string;
+  county_name: string;
+  state_abbr: string;
+  source_id: string;
+  release_vintage: string;
+  source_record_count: number;
+  point_record_count: number;
+  building_record_count: number;
+  campus_record_count: number;
+  named_record_count: number;
+  operator_named_record_count: number;
+  observed_footprint_sqft: number;
+  cross_county_source_record_count: number;
+  coverage_status: "source_records_present" | "no_source_record";
+  generated_at: string;
+}

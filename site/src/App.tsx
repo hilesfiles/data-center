@@ -1,16 +1,19 @@
 import { lazy, Suspense, useEffect, useMemo, useState } from "react";
-import type { CountySummary, SiteMetadata } from "./types";
+import type { FacilitySourceCoverage, SiteMetadata } from "./types";
 
 const MapPanel = lazy(() =>
   import("./MapPanel").then((module) => ({ default: module.MapPanel })),
 );
 
-const formatScore = (value: number | undefined) =>
-  value === undefined ? "—" : value.toFixed(1);
+const integerFormat = new Intl.NumberFormat("en-US");
+const compactFormat = new Intl.NumberFormat("en-US", {
+  notation: "compact",
+  maximumFractionDigits: 1,
+});
 
 export default function App() {
   const [metadata, setMetadata] = useState<SiteMetadata | null>(null);
-  const [counties, setCounties] = useState<CountySummary[]>([]);
+  const [counties, setCounties] = useState<FacilitySourceCoverage[]>([]);
   const [selectedFips, setSelectedFips] = useState<string | null>("51107");
   const [error, setError] = useState<string | null>(null);
 
@@ -18,14 +21,14 @@ export default function App() {
     const base = import.meta.env.BASE_URL;
     Promise.all([
       fetch(`${base}data/v1/metadata.json`),
-      fetch(`${base}data/v1/counties/index.json`),
+      fetch(`${base}data/v1/counties/facility-source-coverage.json`),
     ])
-      .then(async ([metadataResponse, countiesResponse]) => {
-        if (!metadataResponse.ok || !countiesResponse.ok) {
+      .then(async ([metadataResponse, coverageResponse]) => {
+        if (!metadataResponse.ok || !coverageResponse.ok) {
           throw new Error("The static data contract could not be loaded.");
         }
         setMetadata((await metadataResponse.json()) as SiteMetadata);
-        setCounties((await countiesResponse.json()) as CountySummary[]);
+        setCounties((await coverageResponse.json()) as FacilitySourceCoverage[]);
       })
       .catch((reason: unknown) =>
         setError(reason instanceof Error ? reason.message : "Static data could not be loaded."),
@@ -51,85 +54,82 @@ export default function App() {
       </header>
 
       <div className="fixture-banner" role="status">
-        <strong>Boundary layer is authoritative.</strong> Census 2025 county geometry is real; facility and analytical records remain fictional fixtures, not research findings.
+        <strong>Provisional source inventory.</strong> Census boundaries are authoritative; IM3 location records are OSM-derived observations, not a deduplicated or lifecycle-verified operating-facility census.
       </div>
 
       <main className="workspace">
         <aside className="sidebar">
           <section className="control-section">
             <label htmlFor="metric">Map measure</label>
-            <select id="metric" defaultValue="active-facilities">
-              <option value="active-facilities">Operating facilities</option>
+            <select id="metric" defaultValue="im3-source-records">
+              <option value="im3-source-records">IM3 source records</option>
             </select>
-            <p className="control-note">Additional measures activate only after validated artifacts exist.</p>
+            <p className="control-note">Counts describe records in IM3 v2026.02.09. Absence from the source is not evidence that a county has no data center.</p>
           </section>
 
           <section className="county-section" aria-live="polite">
             {error && <div className="error-panel">{error}</div>}
-            {!error && !selectedCounty && (
-              <div className="empty-panel">
-                {selectedFips
-                  ? `Boundary selected. No analytical fixture is published for FIPS ${selectedFips}.`
-                  : "Select a county on the map."}
-              </div>
-            )}
+            {!error && !selectedCounty && <div className="empty-panel">Select a county on the map.</div>}
             {selectedCounty && (
               <>
                 <div className="county-heading">
                   <div>
-                    <span className="eyebrow">County evidence profile</span>
+                    <span className="eyebrow">IM3 source inventory</span>
                     <h2>{selectedCounty.county_name}</h2>
                     <p>{selectedCounty.state_abbr} · FIPS {selectedCounty.county_fips}</p>
                   </div>
-                  <span className={`quality-badge grade-${selectedCounty.quality.data_quality_grade.toLowerCase()}`}>
-                    Quality {selectedCounty.quality.data_quality_grade}
-                  </span>
+                  <span className="quality-badge grade-p">Provisional</span>
                 </div>
 
                 <div className="stat-grid">
                   <article>
-                    <span>Operating</span>
-                    <strong>{selectedCounty.facility_exposure.operating_count}</strong>
-                    <small>facilities</small>
+                    <span>Source records</span>
+                    <strong>{integerFormat.format(selectedCounty.source_record_count)}</strong>
+                    <small>not deduplicated facilities</small>
                   </article>
                   <article>
-                    <span>First verified</span>
-                    <strong>{selectedCounty.facility_exposure.first_operational_year ?? "—"}</strong>
-                    <small>operational year</small>
+                    <span>Building records</span>
+                    <strong>{integerFormat.format(selectedCounty.building_record_count)}</strong>
+                    <small>mapped footprints</small>
                   </article>
                   <article>
-                    <span>Observed capacity</span>
-                    <strong>{selectedCounty.facility_exposure.operational_mw_observed ?? "—"}</strong>
-                    <small>MW</small>
+                    <span>Campus records</span>
+                    <strong>{integerFormat.format(selectedCounty.campus_record_count)}</strong>
+                    <small>mapped campus areas</small>
                   </article>
                   <article>
-                    <span>Coverage</span>
-                    <strong>{Math.round(selectedCounty.quality.component_coverage * 100)}%</strong>
-                    <small>eligible components</small>
+                    <span>Observed footprint</span>
+                    <strong>{compactFormat.format(selectedCounty.observed_footprint_sqft)}</strong>
+                    <small>sq ft · single-county records</small>
                   </article>
                 </div>
 
                 <div className="index-list">
                   <div>
-                    <span>Economic dividend</span>
-                    <strong>{formatScore(selectedCounty.indices.DCEDI?.score)}</strong>
-                    <em>{selectedCounty.indices.DCEDI?.status ?? "insufficient_data"}</em>
+                    <span>Point-only records</span>
+                    <strong>{integerFormat.format(selectedCounty.point_record_count)}</strong>
+                    <em>location without footprint</em>
                   </div>
                   <div>
-                    <span>Opposition</span>
-                    <strong>{formatScore(selectedCounty.indices.DCOI?.score)}</strong>
-                    <em>{selectedCounty.indices.DCOI?.status ?? "insufficient_data"}</em>
+                    <span>Records with source name</span>
+                    <strong>{integerFormat.format(selectedCounty.named_record_count)}</strong>
+                    <em>source completeness</em>
                   </div>
                   <div>
-                    <span>Community cost</span>
-                    <strong>{formatScore(selectedCounty.indices.DCCCI?.score)}</strong>
-                    <em>{selectedCounty.indices.DCCCI?.status ?? "insufficient_data"}</em>
+                    <span>Records with source operator</span>
+                    <strong>{integerFormat.format(selectedCounty.operator_named_record_count)}</strong>
+                    <em>unresolved operator text</em>
+                  </div>
+                  <div>
+                    <span>Cross-county records</span>
+                    <strong>{integerFormat.format(selectedCounty.cross_county_source_record_count)}</strong>
+                    <em>footprint not allocated</em>
                   </div>
                 </div>
 
                 <div className="evidence-note">
                   <span>Interpretation</span>
-                  <p>Scores remain unavailable unless evidence, model fit, uncertainty, and component coverage pass publication thresholds.</p>
+                  <p>These are provisional source objects derived from OpenStreetMap. They establish a reproducible location seed, not operating status, opening dates, historical completeness, capacity, or causal community impact.</p>
                 </div>
               </>
             )}
@@ -141,10 +141,10 @@ export default function App() {
             <MapPanel selectedFips={selectedFips} onSelectCounty={setSelectedFips} />
           </Suspense>
           <div className="map-caption">
-            <span>As of {metadata?.latest_facility_year ?? "—"}</span>
+            <span>IM3 v2026.02.09 · 1,472 source objects</span>
             <span>Census boundaries · Jan. 1, 2025</span>
             <span>Static JSON · No runtime database</span>
-            <span>Method {metadata?.methodology_version ?? "—"}</span>
+            <span>ODbL · © OpenStreetMap contributors</span>
           </div>
         </section>
       </main>

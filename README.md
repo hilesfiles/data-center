@@ -2,8 +2,9 @@
 
 This repository contains the schema-first foundation and first static application slice
 for the Observatory. County boundaries and identity fields come from the authoritative
-2025 Census TIGERweb release. Facility and analytical records remain fictional fixtures;
-the application contains no research findings.
+2025 Census TIGERweb release. The facility seed is a provisional, OSM-derived projection
+of IM3 Atlas v2026.02.09 source records. It is not a complete or lifecycle-verified
+operating-facility inventory, and the application contains no impact findings.
 
 The initial deliverables are:
 
@@ -32,6 +33,16 @@ That adapter has no third-party dependency and writes only JSON-family artifacts
 acquisition manifest, normalized geography JSON, a dataset manifest, and the compact
 GeoJSON consumed by the browser.
 
+Rebuild the provisional IM3 facility seed:
+
+```powershell
+python scripts/acquire_im3_facilities.py
+```
+
+The pinned GeoPackage is used only as a temporary transport input and is deleted after
+processing. Durable bronze, silver, provenance, observation, manifest, and public outputs
+are JSON or GeoJSON.
+
 Build the static site:
 
 ```powershell
@@ -51,16 +62,19 @@ validation can be added later to CI with a standards-compliant Draft 2020-12 val
 
 - JSON-only domain and analytical contracts: implemented as schema v1.0.0.
 - Configuration and taxonomy validation: implemented.
-- Static map/application build: implemented with authoritative geography and clearly
-  labeled fictional facility/analytical fixtures.
+- Static map/application build: implemented with authoritative geography and provisional
+  IM3 source-record coverage.
 - National Census boundaries: implemented for 3,144 county and county-equivalent records
   across the 50 states and District of Columbia, January 1, 2025 vintage.
-- PNNL/IM3 facilities: not yet ingested.
+- PNNL/IM3 facility seed: implemented from v2026.02.09 with 1,479 source rows, 1,472
+  in-scope source objects, 1,340 provisional facility candidates, and 132 campuses.
+- Facility coverage: 249 counties have one or more source records; absence from the source
+  is not interpreted as zero facilities.
 - Economic, fiscal, utility, housing, environmental, or opposition observations: not yet ingested.
 - Econometric estimates and public indices: fixture-only; not substantive.
 
 ## Next priority
 
-Ingest the PNNL/IM3 facility seed while preserving source identifiers, evidence lineage,
-and ODbL attribution. Facility-to-county assignment must use the published Census
-geography and remain a precomputed JSON join.
+Resolve duplicate/overlapping source objects, building-to-campus containment, and raw
+operator strings through reviewable attribute-level claims. Then reconstruct verified
+opening and project dates needed for the first historical treatment panel.

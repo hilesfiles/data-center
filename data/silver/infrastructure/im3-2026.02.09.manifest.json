@@ -1,0 +1,66 @@
+{
+  "schema_version": "1.0.0",
+  "dataset_id": "im3_facility_seed_20260209",
+  "artifact_type": "provisional_facility_seed",
+  "artifact_version": "2026.02.09",
+  "generated_at": "2026-08-31T22:43:00Z",
+  "data_vintage": "2026-02-09",
+  "record_schema": "https://dccio.org/schemas/v1/catalog.json",
+  "format": "json",
+  "parts": [
+    {
+      "path": "data/bronze/im3-atlas/2026.02.09-source-rows.json",
+      "sha256": "3ed36ba80e60d49a98c81bf6653607620e8679f234e0180b12694de8d5c43d04",
+      "byte_size": 1417348,
+      "record_count": 1479,
+      "partition_values": {
+        "zone": "bronze"
+      }
+    },
+    {
+      "path": "data/silver/infrastructure/im3-2026.02.09.json",
+      "sha256": "09972adda2d7da879f2f556a03aedf4b325a2769f28c57d06e7bf1e8225efac5",
+      "byte_size": 5825460,
+      "record_count": 5890,
+      "partition_values": {
+        "zone": "silver"
+      }
+    },
+    {
+      "path": "site/public/data/v1/maps/facilities.geojson",
+      "sha256": "95dd646822f62d65eec793fefcff982584ecb12f2f72b5619de83b4f1ca7c551",
+      "byte_size": 946137,
+      "record_count": 1472,
+      "partition_values": {
+        "zone": "public",
+        "projection": "map"
+      }
+    },
+    {
+      "path": "site/public/data/v1/facilities/index.json",
+      "sha256": "2f8ebfca297549cf1bb464611bd604a8080bd534e712de6524c6b6151678157a",
+      "byte_size": 815174,
+      "record_count": 1472,
+      "partition_values": {
+        "zone": "public",
+        "projection": "facility_index"
+      }
+    },
+    {
+      "path": "site/public/data/v1/counties/facility-source-coverage.json",
+      "sha256": "13c741d67b77651a73eb0ef6da53c344427c5c933537f0ab38be97243f43c68e",
+      "byte_size": 1443410,
+      "record_count": 3144,
+      "partition_values": {
+        "zone": "public",
+        "projection": "county_coverage"
+      }
+    }
+  ],
+  "record_count": 13457,
+  "license_metadata": {
+    "license": "Open Database License 1.0 (ODbL)",
+    "redistribution_status": "allowed",
+    "attribution": "© OpenStreetMap contributors; IM3 Open Source Data Center Atlas (PNNL/DOE)"
+  }
+}

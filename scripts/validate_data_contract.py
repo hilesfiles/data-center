@@ -8,11 +8,12 @@ full validator in addition to this deterministic baseline.
 
 from __future__ import annotations
 
-import json
 import hashlib
+import json
 import math
 import re
 import sys
+from collections import Counter
 from dataclasses import dataclass
 from datetime import date, datetime
 from pathlib import Path
@@ -598,14 +599,6 @@ def validate_public_data(
     validator: ContractValidator, schema_paths: dict[str, Path]
 ) -> list[Issue]:
     issues: list[Issue] = []
-    index_path = PUBLIC_DATA_DIR / "counties" / "index.json"
-    records = load_json(index_path)
-    fips_values: set[str] = set()
-    for index, record in enumerate(records):
-        fips_values.add(record.get("county_fips", ""))
-        for issue in validator.validate_record(record, schema_paths["public_county_summary"]):
-            issues.append(Issue("public_data_validation", f"counties/index.json[{index}]{issue.path[1:]}", issue.message))
-
     counties_path = PUBLIC_DATA_DIR / "maps" / "counties.geojson"
     counties_geojson = load_json(counties_path)
     if counties_geojson.get("type") != "FeatureCollection":
@@ -629,27 +622,12 @@ def validate_public_data(
     metadata = counties_geojson.get("metadata", {})
     if metadata.get("record_count") != len(features) or metadata.get("reference_vintage") != "2025-01-01":
         issues.append(Issue("public_data_validation", "maps/counties.geojson.metadata", "record count or Census reference vintage is inconsistent"))
-    if not fips_values.issubset(feature_fips):
-        issues.append(Issue("public_data_validation", "maps/counties.geojson", "a published county summary has no matching Census boundary"))
 
     features_by_fips = {
         feature["properties"]["county_fips"]: feature["properties"]
         for feature in features
         if feature.get("properties", {}).get("county_fips")
     }
-    for index, record in enumerate(records):
-        boundary = features_by_fips.get(record.get("county_fips"), {})
-        if record.get("county_name") != boundary.get("county_name") or record.get("state_abbr") != boundary.get("state_abbr"):
-            issues.append(Issue("public_data_validation", f"counties/index.json[{index}]", "county name or state does not match the Census boundary"))
-
-    facilities_geojson = load_json(PUBLIC_DATA_DIR / "maps" / "facilities.geojson")
-    if facilities_geojson.get("type") != "FeatureCollection":
-        issues.append(Issue("public_data_validation", "maps/facilities.geojson", "must be a FeatureCollection"))
-    for index, feature in enumerate(facilities_geojson.get("features", [])):
-        county_fips = feature.get("properties", {}).get("county_fips")
-        if county_fips and county_fips not in feature_fips:
-            issues.append(Issue("public_data_validation", f"maps/facilities.geojson.features[{index}]", "facility county FIPS has no Census boundary"))
-
     geography_path = DATA_DIR / "silver" / "geography" / "counties-2025.json"
     geography_document = load_json(geography_path)
     geography_records = geography_document.get("records", [])
@@ -679,6 +657,168 @@ def validate_public_data(
         or map_part.get("sha256") != actual_map_hash
     ):
         issues.append(Issue("public_data_validation", "counties-2025.manifest.json", "map count, byte size, or SHA-256 does not match the artifact"))
+
+    coverage_path = PUBLIC_DATA_DIR / "counties" / "facility-source-coverage.json"
+    coverage_records = load_json(coverage_path)
+    coverage_fips = [record.get("county_fips") for record in coverage_records]
+    if len(coverage_records) != 3144 or set(coverage_fips) != feature_fips:
+        issues.append(Issue("public_data_validation", "counties/facility-source-coverage.json", "coverage must contain every Census county exactly once"))
+    if len(coverage_fips) != len(set(coverage_fips)):
+        issues.append(Issue("public_data_validation", "counties/facility-source-coverage.json", "coverage county FIPS values must be unique"))
+    coverage_by_fips: dict[str, dict[str, Any]] = {}
+    for index, record in enumerate(coverage_records):
+        county_fips = record.get("county_fips", "")
+        coverage_by_fips[county_fips] = record
+        for issue in validator.validate_record(
+            record, schema_paths["public_facility_source_coverage"]
+        ):
+            issues.append(Issue("public_data_validation", f"facility-source-coverage.json[{index}]{issue.path[1:]}", issue.message))
+        boundary = features_by_fips.get(county_fips, {})
+        if record.get("county_name") != boundary.get("county_name") or record.get("state_abbr") != boundary.get("state_abbr"):
+            issues.append(Issue("public_data_validation", f"facility-source-coverage.json[{index}]", "county identity does not match the Census boundary"))
+        expected_status = "source_records_present" if record.get("source_record_count", 0) > 0 else "no_source_record"
+        if record.get("coverage_status") != expected_status:
+            issues.append(Issue("public_data_validation", f"facility-source-coverage.json[{index}]", "coverage status and source record count disagree"))
+
+    facilities_map_path = PUBLIC_DATA_DIR / "maps" / "facilities.geojson"
+    facilities_geojson = load_json(facilities_map_path)
+    facility_features = facilities_geojson.get("features", [])
+    facility_ids = [feature.get("properties", {}).get("entity_id") for feature in facility_features]
+    if facilities_geojson.get("type") != "FeatureCollection" or len(facility_features) != 1472:
+        issues.append(Issue("public_data_validation", "maps/facilities.geojson", "must contain 1,472 IM3 source-object points"))
+    if len(facility_ids) != len(set(facility_ids)):
+        issues.append(Issue("public_data_validation", "maps/facilities.geojson", "entity IDs must be unique"))
+    facility_metadata = facilities_geojson.get("metadata", {})
+    if (
+        facility_metadata.get("record_count") != len(facility_features)
+        or facility_metadata.get("release_vintage") != "2026.02.09"
+        or facility_metadata.get("license") != "ODbL 1.0"
+    ):
+        issues.append(Issue("public_data_validation", "maps/facilities.geojson.metadata", "record count, release, or ODbL metadata is inconsistent"))
+
+    expected_coverage: dict[str, Counter[str]] = {
+        fips: Counter() for fips in feature_fips if isinstance(fips, str)
+    }
+    expected_footprint: Counter[str] = Counter()
+    for index, feature in enumerate(facility_features):
+        properties = feature.get("properties", {})
+        counties = properties.get("county_fipses", [])
+        primary = properties.get("primary_county_fips")
+        layer = properties.get("source_layer")
+        if feature.get("geometry", {}).get("type") != "Point":
+            issues.append(Issue("public_data_validation", f"maps/facilities.geojson.features[{index}]", "public facility geometry must be a centroid point"))
+        if not counties or any(county not in feature_fips for county in counties):
+            issues.append(Issue("public_data_validation", f"maps/facilities.geojson.features[{index}]", "county assignment is missing from Census geography"))
+        if primary not in counties:
+            issues.append(Issue("public_data_validation", f"maps/facilities.geojson.features[{index}]", "primary county must be one of the assigned counties"))
+        if layer not in {"point", "building", "campus"}:
+            issues.append(Issue("public_data_validation", f"maps/facilities.geojson.features[{index}]", "unknown IM3 source layer"))
+            continue
+        for county_fips in counties:
+            expected_coverage[county_fips]["source_record_count"] += 1
+            expected_coverage[county_fips][f"{layer}_record_count"] += 1
+            expected_coverage[county_fips]["named_record_count"] += int(bool(properties.get("source_name")))
+            expected_coverage[county_fips]["operator_named_record_count"] += int(bool(properties.get("source_operator")))
+            expected_coverage[county_fips]["cross_county_source_record_count"] += int(len(counties) > 1)
+            if len(counties) == 1 and isinstance(properties.get("footprint_sqft"), (int, float)):
+                expected_footprint[county_fips] += properties["footprint_sqft"]
+
+    for county_fips, expected in expected_coverage.items():
+        actual = coverage_by_fips.get(county_fips, {})
+        for field, value in expected.items():
+            if actual.get(field) != value:
+                issues.append(Issue("public_data_validation", f"facility-source-coverage.json[{county_fips}]", f"{field} does not match facility source records"))
+        if actual.get("observed_footprint_sqft") != expected_footprint[county_fips]:
+            issues.append(Issue("public_data_validation", f"facility-source-coverage.json[{county_fips}]", "observed footprint does not match single-county source records"))
+
+    facility_index_path = PUBLIC_DATA_DIR / "facilities" / "index.json"
+    facility_index = load_json(facility_index_path)
+    index_ids = [record.get("entity_id") for record in facility_index]
+    if len(facility_index) != 1472 or set(index_ids) != set(facility_ids):
+        issues.append(Issue("public_data_validation", "facilities/index.json", "facility index and map must contain the same 1,472 source objects"))
+
+    im3_acquisition_path = DATA_DIR / "raw" / "im3-atlas" / "2026.02.09.acquisition.json"
+    im3_acquisition = load_json(im3_acquisition_path)
+    for issue in validator.validate_record(im3_acquisition, schema_paths["acquisition_manifest"]):
+        issues.append(Issue("public_data_validation", f"2026.02.09.acquisition.json{issue.path[1:]}", issue.message))
+    if im3_acquisition.get("sha256") != "1c0d8c206eb2070785e594784fda90f615e6ed7fd9646d67e1a9de237b8cc9f4":
+        issues.append(Issue("public_data_validation", "2026.02.09.acquisition.json", "pinned IM3 artifact hash changed"))
+
+    bronze_path = DATA_DIR / "bronze" / "im3-atlas" / "2026.02.09-source-rows.json"
+    bronze = load_json(bronze_path)
+    source_rows = bronze.get("records", [])
+    source_row_ids = [record.get("source_row_id") for record in source_rows]
+    layer_counts = Counter(record.get("source_layer") for record in source_rows)
+    if (
+        bronze.get("record_count") != 1479
+        or bronze.get("in_scope_row_count") != 1477
+        or bronze.get("excluded_from_public_scope_count") != 2
+        or layer_counts != Counter({"point": 105, "building": 1239, "campus": 135})
+        or len(source_row_ids) != len(set(source_row_ids))
+    ):
+        issues.append(Issue("public_data_validation", "2026.02.09-source-rows.json", "source row counts, layers, scope, or row IDs are inconsistent"))
+    for index, record in enumerate(source_rows):
+        for issue in validator.validate_record(record, schema_paths["facility_seed_source_record"]):
+            issues.append(Issue("public_data_validation", f"2026.02.09-source-rows.json.records[{index}]{issue.path[1:]}", issue.message))
+
+    silver_path = DATA_DIR / "silver" / "infrastructure" / "im3-2026.02.09.json"
+    silver = load_json(silver_path)
+    collections = silver.get("collections", {})
+    expected_collection_counts = {
+        "source": 1,
+        "source_artifact": 1,
+        "campus": 132,
+        "facility": 1340,
+        "claim": 1472,
+        "claim_resolution": 1472,
+        "observation": 1472,
+    }
+    actual_collection_counts = {name: len(collections.get(name, [])) for name in expected_collection_counts}
+    if actual_collection_counts != expected_collection_counts or silver.get("record_count") != sum(expected_collection_counts.values()):
+        issues.append(Issue("public_data_validation", "im3-2026.02.09.json", "silver collection counts are inconsistent"))
+    for collection, expected_count in expected_collection_counts.items():
+        if expected_count == 0:
+            continue
+        for index, record in enumerate(collections.get(collection, [])):
+            for issue in validator.validate_record(record, schema_paths[collection]):
+                issues.append(Issue("public_data_validation", f"im3-2026.02.09.json.{collection}[{index}]{issue.path[1:]}", issue.message))
+
+    reference_fixture = {
+        **collections,
+        "geography_reference": geography_records,
+        "metric_definition": load_json(CONFIG_DIR / "metric-registry.json")["metrics"],
+    }
+    for issue in validate_references(reference_fixture):
+        issues.append(Issue("public_data_validation", f"im3-2026.02.09.json:{issue.path}", issue.message))
+
+    processing_report = load_json(
+        DATA_DIR / "silver" / "infrastructure" / "im3-2026.02.09.processing-report.json"
+    )
+    if (
+        processing_report.get("source_row_count") != 1479
+        or processing_report.get("distinct_in_scope_source_record_count") != 1472
+        or processing_report.get("cross_county_source_record_count") != 5
+        or processing_report.get("centroid_county_mismatch_count") != 4
+        or processing_report.get("county_name_mismatch_count") != 0
+    ):
+        issues.append(Issue("public_data_validation", "im3-2026.02.09.processing-report.json", "expected scope, cross-county, or geography diagnostics changed"))
+
+    im3_manifest_path = DATA_DIR / "silver" / "infrastructure" / "im3-2026.02.09.manifest.json"
+    im3_manifest = load_json(im3_manifest_path)
+    for issue in validator.validate_record(im3_manifest, schema_paths["dataset_manifest"]):
+        issues.append(Issue("public_data_validation", f"im3-2026.02.09.manifest.json{issue.path[1:]}", issue.message))
+    total_manifest_records = 0
+    for index, part in enumerate(im3_manifest.get("parts", [])):
+        part_path = (ROOT / part.get("path", "")).resolve()
+        if not part_path.is_relative_to(ROOT) or not part_path.is_file():
+            issues.append(Issue("public_data_validation", f"im3-2026.02.09.manifest.json.parts[{index}]", "part path is missing or outside the repository"))
+            continue
+        payload = part_path.read_bytes()
+        total_manifest_records += part.get("record_count", 0)
+        if part.get("byte_size") != len(payload) or part.get("sha256") != hashlib.sha256(payload).hexdigest():
+            issues.append(Issue("public_data_validation", f"im3-2026.02.09.manifest.json.parts[{index}]", "byte size or SHA-256 does not match the artifact"))
+    if im3_manifest.get("record_count") != total_manifest_records:
+        issues.append(Issue("public_data_validation", "im3-2026.02.09.manifest.json", "manifest record count does not equal its parts"))
     return issues
 
 
