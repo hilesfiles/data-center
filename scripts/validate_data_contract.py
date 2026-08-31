@@ -23,6 +23,8 @@ ROOT = Path(__file__).resolve().parents[1]
 SCHEMA_DIR = ROOT / "schemas" / "v1"
 VALID_FIXTURE_DIR = ROOT / "fixtures" / "v1" / "valid"
 INVALID_FIXTURE_DIR = ROOT / "fixtures" / "v1" / "invalid"
+CONFIG_DIR = ROOT / "config" / "v1"
+PUBLIC_DATA_DIR = ROOT / "site" / "public" / "data" / "v1"
 
 
 @dataclass(frozen=True)
@@ -508,6 +510,109 @@ def validate_fixture(
     return issues
 
 
+def validate_project_config(
+    validator: ContractValidator, schema_paths: dict[str, Path]
+) -> list[Issue]:
+    issues: list[Issue] = []
+    config_files = {
+        path.stem: load_json(path) for path in sorted(CONFIG_DIR.glob("*.json"))
+    }
+    required = {
+        "event-taxonomy",
+        "index-methodology",
+        "metric-registry",
+        "model-specifications",
+        "opposition-taxonomy",
+        "source-quality",
+        "source-registry",
+        "treatment-definitions",
+    }
+    for name in sorted(required - config_files.keys()):
+        issues.append(Issue("config_validation", f"config/{name}.json", "required config is missing"))
+
+    if issues:
+        return issues
+
+    events = config_files["event-taxonomy"]["events"]
+    event_codes = [row["code"] for row in events]
+    if len(event_codes) != len(set(event_codes)):
+        issues.append(Issue("config_validation", "event-taxonomy.events", "event codes are not unique"))
+    event_schema = load_json(schema_paths["event"])
+    schema_event_codes = set(event_schema["properties"]["event_type"]["enum"])
+    if set(event_codes) != schema_event_codes:
+        issues.append(Issue("config_validation", "event-taxonomy.events", "taxonomy and event schema enums differ"))
+
+    metrics = config_files["metric-registry"]["metrics"]
+    metric_codes = [row["metric_code"] for row in metrics]
+    metric_code_set = set(metric_codes)
+    if len(metric_codes) != len(metric_code_set):
+        issues.append(Issue("config_validation", "metric-registry.metrics", "metric codes are not unique"))
+    for index, metric in enumerate(metrics):
+        denominator = metric.get("denominator_metric_code")
+        if denominator and denominator not in metric_code_set:
+            issues.append(Issue("config_validation", f"metric-registry.metrics[{index}]", f"unknown denominator {denominator!r}"))
+
+    treatments = config_files["treatment-definitions"]["treatments"]
+    treatment_ids: set[str] = set()
+    for index, record in enumerate(treatments):
+        treatment_ids.add(record.get("treatment_definition_id", ""))
+        for issue in validator.validate_record(record, schema_paths["treatment_definition"]):
+            issues.append(Issue("config_validation", f"treatment-definitions.treatments[{index}]{issue.path[1:]}", issue.message))
+        for event_type in record.get("qualifying_event_types", []):
+            if event_type not in schema_event_codes:
+                issues.append(Issue("config_validation", f"treatment-definitions.treatments[{index}]", f"unknown event type {event_type!r}"))
+        for metric_code in record.get("exposure_metric_codes", []):
+            if metric_code not in metric_code_set:
+                issues.append(Issue("config_validation", f"treatment-definitions.treatments[{index}]", f"unknown exposure metric {metric_code!r}"))
+
+    for index, record in enumerate(config_files["model-specifications"]["models"]):
+        for issue in validator.validate_record(record, schema_paths["model_specification"]):
+            issues.append(Issue("config_validation", f"model-specifications.models[{index}]{issue.path[1:]}", issue.message))
+        if record.get("treatment_definition_id") not in treatment_ids:
+            issues.append(Issue("config_validation", f"model-specifications.models[{index}]", "unknown treatment definition"))
+        for metric_code in [record.get("outcome_metric_code"), *record.get("covariate_metric_codes", [])]:
+            if metric_code not in metric_code_set:
+                issues.append(Issue("config_validation", f"model-specifications.models[{index}]", f"unknown metric {metric_code!r}"))
+
+    for code, definition in config_files["index-methodology"]["indices"].items():
+        components = definition.get("components")
+        if components and not math.isclose(sum(components.values()), 1.0, abs_tol=1e-9):
+            issues.append(Issue("config_validation", f"index-methodology.indices.{code}.components", "weights must sum to 1"))
+
+    source_codes = [row["code"] for row in config_files["source-registry"]["sources"]]
+    if len(source_codes) != len(set(source_codes)):
+        issues.append(Issue("config_validation", "source-registry.sources", "source codes are not unique"))
+    return issues
+
+
+def validate_public_data(
+    validator: ContractValidator, schema_paths: dict[str, Path]
+) -> list[Issue]:
+    issues: list[Issue] = []
+    index_path = PUBLIC_DATA_DIR / "counties" / "index.json"
+    records = load_json(index_path)
+    fips_values: set[str] = set()
+    for index, record in enumerate(records):
+        fips_values.add(record.get("county_fips", ""))
+        for issue in validator.validate_record(record, schema_paths["public_county_summary"]):
+            issues.append(Issue("public_data_validation", f"counties/index.json[{index}]{issue.path[1:]}", issue.message))
+
+    counties_geojson = load_json(PUBLIC_DATA_DIR / "maps" / "counties.geojson")
+    if counties_geojson.get("type") != "FeatureCollection":
+        issues.append(Issue("public_data_validation", "maps/counties.geojson", "must be a FeatureCollection"))
+    feature_fips = {
+        feature.get("properties", {}).get("county_fips")
+        for feature in counties_geojson.get("features", [])
+    }
+    if fips_values != feature_fips:
+        issues.append(Issue("public_data_validation", "maps/counties.geojson", "county index and map FIPS sets differ"))
+
+    facilities_geojson = load_json(PUBLIC_DATA_DIR / "maps" / "facilities.geojson")
+    if facilities_geojson.get("type") != "FeatureCollection":
+        issues.append(Issue("public_data_validation", "maps/facilities.geojson", "must be a FeatureCollection"))
+    return issues
+
+
 def main() -> int:
     validator = ContractValidator(SCHEMA_DIR)
     catalog = load_json(SCHEMA_DIR / "catalog.json")
@@ -547,6 +652,12 @@ def main() -> int:
     if valid_count == 0 or invalid_count == 0:
         failures.append("At least one valid and one invalid fixture are required")
 
+    project_issues = validate_project_config(validator, schema_paths)
+    project_issues.extend(validate_public_data(validator, schema_paths))
+    if project_issues:
+        failures.append("Project configuration or public data failed:")
+        failures.extend(f"  {issue}" for issue in project_issues)
+
     if failures:
         print("Data contract validation FAILED")
         print("\n".join(failures))
@@ -555,7 +666,8 @@ def main() -> int:
     print(
         "Data contract validation passed: "
         f"{len(validator.schemas_by_path)} schemas, "
-        f"{valid_count} valid fixture(s), {invalid_count} invalid fixture(s)."
+        f"{valid_count} valid fixture(s), {invalid_count} invalid fixture(s), "
+        "configuration and public JSON."
     )
     return 0
 

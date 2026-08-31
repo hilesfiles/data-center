@@ -1,0 +1,47 @@
+{
+  "schema_version": "1.0.0",
+  "methodology_version": "0.1.0",
+  "status": "provisional",
+  "scaling": {"method": "robust_z_normal_cdf", "mad_multiplier": 1.4826, "winsorize_z_min": -3, "winsorize_z_max": 3, "freeze_calibration_at_v1": true},
+  "indices": {
+    "DCEDI": {
+      "range": [0, 100],
+      "minimum_coverage": 0.6,
+      "components": {
+        "employment_effect": 0.25,
+        "real_gdp_effect": 0.2,
+        "resident_income_effect": 0.2,
+        "wage_effect": 0.15,
+        "establishment_business_effect": 0.15,
+        "migration_dynamism_effect": 0.05
+      }
+    },
+    "DCOI": {
+      "range": [0, 100],
+      "minimum_provisional_coverage": 0.5,
+      "minimum_published_coverage": 0.7,
+      "components": {
+        "news_public_discourse": 0.2,
+        "civic_public_hearing": 0.25,
+        "grassroots_mobilization": 0.15,
+        "project_resistance": 0.25,
+        "restrictive_policy_legal": 0.15
+      }
+    },
+    "DCCCI": {
+      "range": [0, 100],
+      "minimum_coverage": 0.6,
+      "components": {
+        "electricity_price_pressure": 0.3,
+        "housing_affordability_pressure": 0.25,
+        "water_resource_context": 0.15,
+        "grid_emissions_context": 0.15,
+        "subsidy_incentive_burden": 0.15
+      },
+      "weight_note": "Initial provisional weights require methodological review before publication."
+    },
+    "BSG": {"range": [-100, 100], "formula": "DCEDI - DCOI", "required_inputs": ["DCEDI", "DCOI"]},
+    "NCB": {"range": [-100, 100], "formula": "DCEDI - DCCCI", "required_inputs": ["DCEDI", "DCCCI"]}
+  }
+}
+

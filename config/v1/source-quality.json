@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.0.0",
+  "methodology_version": "1.0.0",
+  "notes": "Starting priors only. Attribute-specific relevance and source dependence must modify these values.",
+  "priors": {
+    "federal_dataset": 0.98,
+    "state_record": 0.96,
+    "local_government_record": 0.92,
+    "planning_record": 0.98,
+    "zoning_record": 0.98,
+    "permit_record": 0.98,
+    "assessor_record": 0.98,
+    "utility_filing": 0.98,
+    "regulatory_filing": 0.98,
+    "court_record": 0.98,
+    "sec_filing": 0.98,
+    "incentive_agreement": 0.96,
+    "operator_release": 0.92,
+    "local_news": 0.82,
+    "national_news": 0.80,
+    "trade_press": 0.78,
+    "news_archive": 0.75,
+    "legislative_record": 0.95,
+    "poll": 0.90,
+    "petition": 0.65,
+    "advocacy_site": 0.45,
+    "other": 0.40
+  },
+  "date_precision_multipliers": {
+    "day": 1.0,
+    "month": 0.95,
+    "quarter": 0.9,
+    "year": 0.8,
+    "approximate_year": 0.65,
+    "range": 0.65,
+    "unknown": 0.45
+  },
+  "corroboration": {
+    "method": "one_minus_product",
+    "maximum_confidence": 0.99,
+    "require_independent_sources": true,
+    "detect_shared_origin": true
+  }
+}
+
