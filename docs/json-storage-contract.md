@@ -65,10 +65,14 @@ public/data/v1/metadata.json
 public/data/v1/national/summary.json
 public/data/v1/states/{state_abbr}.json
 public/data/v1/counties/index.json
+public/data/v1/counties/facility-source-coverage.json
+public/data/v1/counties/entity-resolution-coverage.json
 public/data/v1/counties/{county_fips}/summary.json
 public/data/v1/counties/{county_fips}/timeseries.json
 public/data/v1/counties/{county_fips}/evidence.json
 public/data/v1/facilities/index.json
+public/data/v1/entity-resolution/index.json
+public/data/v1/entity-resolution/metadata.json
 public/data/v1/facilities/{facility_id}.json
 public/data/v1/maps/counties.geojson
 public/data/v1/maps/facilities.geojson
@@ -104,4 +108,3 @@ aggregation occur before publication. A public artifact cannot require a runtime
 
 Every record has `schema_version`. Consumers reject unsupported major versions and may
 accept later compatible minor versions. Public artifact paths are major-versioned.
-

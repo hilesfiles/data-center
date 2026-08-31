@@ -43,6 +43,19 @@ centroids are assigned against the published Census polygons; source-reported as
 remain preserved in evidence. Cross-county polygons retain multiple assignments without
 inventing allocation shares.
 
+The first identity-resolution pass is intentionally conservative. A governed rule links
+252 building footprints wholly inside exactly one campus polygon and one point inside
+exactly one campus. It groups 953 source operator assertions into 161 provisional
+operator entities using Unicode, case, and whitespace normalization only. It does not
+infer parent companies, ownership, or corporate aliases.
+
+Spatial plausibility is not treated as proof of physical identity. Eleven point records
+inside building footprints remain possible-duplicate review candidates, and five
+building/campus intersections remain membership candidates because the footprint is not
+wholly inside exactly one campus. No source object is merged automatically. The site
+loads this resolution state from separate static JSON so the pinned ingest artifacts and
+their manifest remain immutable.
+
 The seed does not establish operating dates, lifecycle status, historical completeness,
-MW capacity, or causal effects. Entity review, historical reconstruction, outcome panels,
-and econometric estimation remain future work.
+MW capacity, or causal effects. Candidate review, historical reconstruction, outcome
+panels, and econometric estimation remain future work.

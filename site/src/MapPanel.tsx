@@ -9,6 +9,7 @@ import {
   type StyleSpecification,
 } from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
+import type { PublicEntityResolutionRecord } from "./types";
 
 interface MapPanelProps {
   selectedFips: string | null;
@@ -71,17 +72,19 @@ export function MapPanel({ selectedFips, onSelectCounty }: MapPanelProps) {
     map.on("load", async () => {
       try {
         const base = import.meta.env.BASE_URL;
-        const [countiesResponse, facilitiesResponse, coverageResponse] = await Promise.all([
+        const [countiesResponse, facilitiesResponse, coverageResponse, resolutionResponse] = await Promise.all([
           fetch(`${base}data/v1/maps/counties.geojson`),
           fetch(`${base}data/v1/maps/facilities.geojson`),
           fetch(`${base}data/v1/counties/facility-source-coverage.json`),
+          fetch(`${base}data/v1/entity-resolution/index.json`),
         ]);
-        if (!countiesResponse.ok || !facilitiesResponse.ok || !coverageResponse.ok) {
+        if (!countiesResponse.ok || !facilitiesResponse.ok || !coverageResponse.ok || !resolutionResponse.ok) {
           throw new Error("A required map artifact could not be loaded.");
         }
         const counties = await countiesResponse.json();
         const facilities = await facilitiesResponse.json();
         const coverage = await coverageResponse.json();
+        const resolution = (await resolutionResponse.json()) as PublicEntityResolutionRecord[];
         const coverageByFips = new globalThis.Map(
           coverage.map((record: { county_fips: string; source_record_count: number }) => [
             record.county_fips,
@@ -98,6 +101,24 @@ export function MapPanel({ selectedFips, onSelectCounty }: MapPanelProps) {
               properties: {
                 ...feature.properties,
                 source_record_count: record?.source_record_count ?? 0,
+              },
+            };
+          },
+        );
+        const resolutionByEntity = new globalThis.Map(
+          resolution.map((record) => [record.entity_id, record]),
+        );
+        facilities.features = facilities.features.map(
+          (feature: { properties: Record<string, unknown> }) => {
+            const record = resolutionByEntity.get(feature.properties.entity_id as string);
+            return {
+              ...feature,
+              properties: {
+                ...feature.properties,
+                campus_id: record?.campus_id ?? null,
+                operator_canonical_name: record?.operator_canonical_name ?? null,
+                pending_candidate_count: record?.pending_candidate_ids.length ?? 0,
+                resolution_status: record?.resolution_status ?? "source_only",
               },
             };
           },
@@ -164,8 +185,18 @@ export function MapPanel({ selectedFips, onSelectCounty }: MapPanelProps) {
               "#ffbf69",
               "#f7e2b2",
             ],
-            "circle-stroke-color": "#172a33",
-            "circle-stroke-width": 1.25,
+            "circle-stroke-color": [
+              "case",
+              [">", ["get", "pending_candidate_count"], 0],
+              "#c7522a",
+              "#172a33",
+            ],
+            "circle-stroke-width": [
+              "case",
+              [">", ["get", "pending_candidate_count"], 0],
+              2.75,
+              1.25,
+            ],
             "circle-opacity": 0.88,
           },
         });
@@ -202,6 +233,16 @@ export function MapPanel({ selectedFips, onSelectCounty }: MapPanelProps) {
           const operator = properties.source_operator
             ? `<br/>Source operator: ${escapeHtml(properties.source_operator)}`
             : "";
+          const normalizedOperator = properties.operator_canonical_name
+            ? `<br/>Normalized operator: ${escapeHtml(properties.operator_canonical_name)}`
+            : "";
+          const campusLink = properties.campus_id
+            ? `<br/>Campus link: governed spatial rule`
+            : "";
+          const pending = Number(properties.pending_candidate_count ?? 0);
+          const review = pending
+            ? `<br/><strong>${pending} pending identity review${pending === 1 ? "" : "s"}</strong>`
+            : "";
           const footprint = typeof properties.footprint_sqft === "number"
             ? `<br/>Mapped footprint: ${properties.footprint_sqft.toLocaleString()} sq ft`
             : "";
@@ -209,7 +250,7 @@ export function MapPanel({ selectedFips, onSelectCounty }: MapPanelProps) {
             .setLngLat(event.lngLat)
             .setHTML(
               `<strong>${escapeHtml(properties.display_name)}</strong><br/>` +
-                `IM3 ${layer} source record${operator}${footprint}`,
+                `IM3 ${layer} source record${operator}${normalizedOperator}${campusLink}${footprint}${review}`,
             )
             .addTo(map);
         });

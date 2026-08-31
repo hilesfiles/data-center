@@ -1,5 +1,9 @@
 import { lazy, Suspense, useEffect, useMemo, useState } from "react";
-import type { FacilitySourceCoverage, SiteMetadata } from "./types";
+import type {
+  CountyEntityResolutionCoverage,
+  FacilitySourceCoverage,
+  SiteMetadata,
+} from "./types";
 
 const MapPanel = lazy(() =>
   import("./MapPanel").then((module) => ({ default: module.MapPanel })),
@@ -14,6 +18,7 @@ const compactFormat = new Intl.NumberFormat("en-US", {
 export default function App() {
   const [metadata, setMetadata] = useState<SiteMetadata | null>(null);
   const [counties, setCounties] = useState<FacilitySourceCoverage[]>([]);
+  const [resolution, setResolution] = useState<CountyEntityResolutionCoverage[]>([]);
   const [selectedFips, setSelectedFips] = useState<string | null>("51107");
   const [error, setError] = useState<string | null>(null);
 
@@ -22,13 +27,17 @@ export default function App() {
     Promise.all([
       fetch(`${base}data/v1/metadata.json`),
       fetch(`${base}data/v1/counties/facility-source-coverage.json`),
+      fetch(`${base}data/v1/counties/entity-resolution-coverage.json`),
     ])
-      .then(async ([metadataResponse, coverageResponse]) => {
-        if (!metadataResponse.ok || !coverageResponse.ok) {
+      .then(async ([metadataResponse, coverageResponse, resolutionResponse]) => {
+        if (!metadataResponse.ok || !coverageResponse.ok || !resolutionResponse.ok) {
           throw new Error("The static data contract could not be loaded.");
         }
         setMetadata((await metadataResponse.json()) as SiteMetadata);
         setCounties((await coverageResponse.json()) as FacilitySourceCoverage[]);
+        setResolution(
+          (await resolutionResponse.json()) as CountyEntityResolutionCoverage[],
+        );
       })
       .catch((reason: unknown) =>
         setError(reason instanceof Error ? reason.message : "Static data could not be loaded."),
@@ -38,6 +47,10 @@ export default function App() {
   const selectedCounty = useMemo(
     () => counties.find((county) => county.county_fips === selectedFips) ?? null,
     [counties, selectedFips],
+  );
+  const selectedResolution = useMemo(
+    () => resolution.find((county) => county.county_fips === selectedFips) ?? null,
+    [resolution, selectedFips],
   );
 
   return (
@@ -118,18 +131,33 @@ export default function App() {
                   <div>
                     <span>Records with source operator</span>
                     <strong>{integerFormat.format(selectedCounty.operator_named_record_count)}</strong>
-                    <em>unresolved operator text</em>
+                    <em>raw source assertions</em>
                   </div>
                   <div>
                     <span>Cross-county records</span>
                     <strong>{integerFormat.format(selectedCounty.cross_county_source_record_count)}</strong>
                     <em>footprint not allocated</em>
                   </div>
+                  <div>
+                    <span>Campus-linked facilities</span>
+                    <strong>{integerFormat.format(selectedResolution?.campus_linked_facility_count ?? 0)}</strong>
+                    <em>unambiguous spatial rule</em>
+                  </div>
+                  <div>
+                    <span>Normalized operator links</span>
+                    <strong>{integerFormat.format(selectedResolution?.operator_linked_record_count ?? 0)}</strong>
+                    <em>case and whitespace only</em>
+                  </div>
+                  <div>
+                    <span>Pending identity reviews</span>
+                    <strong>{integerFormat.format(selectedResolution?.pending_candidate_count ?? 0)}</strong>
+                    <em>{integerFormat.format(selectedResolution?.point_building_candidate_count ?? 0)} possible point/building duplicates</em>
+                  </div>
                 </div>
 
                 <div className="evidence-note">
                   <span>Interpretation</span>
-                  <p>These are provisional source objects derived from OpenStreetMap. They establish a reproducible location seed, not operating status, opening dates, historical completeness, capacity, or causal community impact.</p>
+                  <p>These remain provisional source objects derived from OpenStreetMap. Governed links are traceable, and spatially plausible duplicates stay separate until reviewed. The data do not establish operating status, opening dates, historical completeness, capacity, or causal community impact.</p>
                 </div>
               </>
             )}

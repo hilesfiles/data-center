@@ -116,6 +116,13 @@ left unresolved. A resolution never deletes a losing claim.
 A human or governed automated decision about entity matching, claim resolution,
 classification, or publication eligibility. Revisions supersede earlier decisions by ID.
 
+### Entity-resolution candidate
+
+A non-decision work item linking two or more existing entities to the evidence that made
+them plausible matches. Candidates retain the governed rule and spatial predicate that
+created them, a recommended review action, and an explicit pending/accepted/rejected
+state. Candidate generation never changes canonical identity by itself.
+
 ## Measurement domain
 
 An observation stores one metric value for one subject and period. Subjects may be a
@@ -193,6 +200,7 @@ Recommended prefixes:
 | claim | `clm_` |
 | resolution | `res_` |
 | review decision | `rev_` |
+| entity-resolution candidate | `erc_` |
 | observation | `obs_` |
 | treatment definition | `trt_` |
 | model specification | `msp_` |
@@ -221,4 +229,3 @@ The initial contract is `1.0.0`. Additive optional fields may increment the mino
 version. Changed meaning, removed fields, or incompatible enumeration changes require a
 new major schema directory. Migrations must be explicit; generated public artifacts must
 state both their schema version and build version.
-

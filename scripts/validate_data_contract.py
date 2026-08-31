@@ -320,6 +320,7 @@ ID_FIELDS = {
     "claim": "claim_id",
     "claim_resolution": "resolution_id",
     "review_decision": "review_decision_id",
+    "entity_resolution_candidate": "resolution_candidate_id",
     "observation": "observation_id",
     "panel_row": "panel_row_id",
     "acquisition_manifest": "manifest_id",
@@ -408,6 +409,16 @@ def validate_references(fixture: dict[str, Any]) -> list[Issue]:
         for group in ("supporting", "conflicting"):
             for j, claim_id in enumerate(refs.get(group, [])):
                 check_reference(claim_id, ids, f"$.claim_resolution[{i}].claim_refs.{group}[{j}]", issues)
+    for i, record in enumerate(fixture.get("review_decision", [])):
+        for j, subject in enumerate(record.get("subject_refs", [])):
+            check_reference(subject.get("entity_id"), ids, f"$.review_decision[{i}].subject_refs[{j}].entity_id", issues)
+        for j, claim_id in enumerate(record.get("evidence_claim_ids", [])):
+            check_reference(claim_id, ids, f"$.review_decision[{i}].evidence_claim_ids[{j}]", issues)
+    for i, record in enumerate(fixture.get("entity_resolution_candidate", [])):
+        for j, subject in enumerate(record.get("subject_refs", [])):
+            check_reference(subject.get("entity_id"), ids, f"$.entity_resolution_candidate[{i}].subject_refs[{j}].entity_id", issues)
+        for j, claim_id in enumerate(record.get("evidence_claim_ids", [])):
+            check_reference(claim_id, ids, f"$.entity_resolution_candidate[{i}].evidence_claim_ids[{j}]", issues)
     for i, record in enumerate(fixture.get("observation", [])):
         subject = record.get("subject", {})
         if subject.get("subject_type") in {"campus", "facility", "project", "project_phase"}:
@@ -819,6 +830,113 @@ def validate_public_data(
             issues.append(Issue("public_data_validation", f"im3-2026.02.09.manifest.json.parts[{index}]", "byte size or SHA-256 does not match the artifact"))
     if im3_manifest.get("record_count") != total_manifest_records:
         issues.append(Issue("public_data_validation", "im3-2026.02.09.manifest.json", "manifest record count does not equal its parts"))
+
+    resolution_path = DATA_DIR / "silver" / "infrastructure" / "im3-2026.02.09-entity-resolution.json"
+    resolution = load_json(resolution_path)
+    resolution_collections = resolution.get("collections", {})
+    expected_resolution_counts = {
+        "campus": 132,
+        "facility": 1340,
+        "operator": 161,
+        "operator_relationship": 953,
+        "review_decision": 414,
+        "entity_resolution_candidate": 16,
+    }
+    actual_resolution_counts = {
+        name: len(resolution_collections.get(name, []))
+        for name in expected_resolution_counts
+    }
+    if (
+        actual_resolution_counts != expected_resolution_counts
+        or resolution.get("record_count") != sum(expected_resolution_counts.values())
+    ):
+        issues.append(Issue("public_data_validation", resolution_path.name, "entity-resolution collection counts are inconsistent"))
+    for collection, expected_count in expected_resolution_counts.items():
+        if expected_count == 0:
+            continue
+        for index, record in enumerate(resolution_collections.get(collection, [])):
+            for issue in validator.validate_record(record, schema_paths[collection]):
+                issues.append(Issue("public_data_validation", f"{resolution_path.name}.{collection}[{index}]{issue.path[1:]}", issue.message))
+
+    resolution_reference_fixture = {
+        **resolution_collections,
+        "claim": collections.get("claim", []),
+        "source": collections.get("source", []),
+        "source_artifact": collections.get("source_artifact", []),
+        "geography_reference": geography_records,
+        "metric_definition": load_json(CONFIG_DIR / "metric-registry.json")["metrics"],
+    }
+    for issue in validate_references(resolution_reference_fixture):
+        issues.append(Issue("public_data_validation", f"{resolution_path.name}:{issue.path}", issue.message))
+
+    resolution_report_path = DATA_DIR / "silver" / "infrastructure" / "im3-2026.02.09-entity-resolution.processing-report.json"
+    resolution_report = load_json(resolution_report_path)
+    expected_report_counts = {
+        "source_object_count": 1472,
+        "facility_count": 1340,
+        "campus_count": 132,
+        "campus_linked_facility_count": 253,
+        "campus_linked_building_count": 252,
+        "campus_linked_point_count": 1,
+        "operator_source_record_count": 953,
+        "normalized_operator_count": 161,
+        "raw_operator_variant_count": 163,
+        "operator_groups_with_multiple_raw_variants": 2,
+        "pending_candidate_count": 16,
+        "point_building_candidate_count": 11,
+        "campus_membership_candidate_count": 5,
+        "governed_review_decision_count": 414,
+    }
+    if resolution_report.get("counts") != expected_report_counts:
+        issues.append(Issue("public_data_validation", resolution_report_path.name, "entity-resolution diagnostics changed"))
+
+    public_resolution_path = PUBLIC_DATA_DIR / "entity-resolution" / "index.json"
+    public_resolution = load_json(public_resolution_path)
+    resolution_ids = [record.get("entity_id") for record in public_resolution]
+    if len(public_resolution) != 1472 or set(resolution_ids) != set(facility_ids):
+        issues.append(Issue("public_data_validation", "entity-resolution/index.json", "resolution index and map must contain the same source objects"))
+    for index, record in enumerate(public_resolution):
+        for issue in validator.validate_record(record, schema_paths["public_entity_resolution_record"]):
+            issues.append(Issue("public_data_validation", f"entity-resolution/index.json[{index}]{issue.path[1:]}", issue.message))
+
+    resolution_coverage_path = PUBLIC_DATA_DIR / "counties" / "entity-resolution-coverage.json"
+    resolution_coverage = load_json(resolution_coverage_path)
+    resolution_coverage_fips = [record.get("county_fips") for record in resolution_coverage]
+    if len(resolution_coverage) != 3144 or set(resolution_coverage_fips) != feature_fips:
+        issues.append(Issue("public_data_validation", "counties/entity-resolution-coverage.json", "resolution coverage must contain every Census county exactly once"))
+    if len(resolution_coverage_fips) != len(set(resolution_coverage_fips)):
+        issues.append(Issue("public_data_validation", "counties/entity-resolution-coverage.json", "resolution coverage county FIPS values must be unique"))
+    for index, record in enumerate(resolution_coverage):
+        for issue in validator.validate_record(record, schema_paths["public_entity_resolution_coverage"]):
+            issues.append(Issue("public_data_validation", f"entity-resolution-coverage.json[{index}]{issue.path[1:]}", issue.message))
+        boundary = features_by_fips.get(record.get("county_fips", ""), {})
+        if record.get("county_name") != boundary.get("county_name") or record.get("state_abbr") != boundary.get("state_abbr"):
+            issues.append(Issue("public_data_validation", f"entity-resolution-coverage.json[{index}]", "county identity does not match the Census boundary"))
+        if record.get("source_record_count") != coverage_by_fips.get(record.get("county_fips", ""), {}).get("source_record_count"):
+            issues.append(Issue("public_data_validation", f"entity-resolution-coverage.json[{index}]", "source record count does not match source coverage"))
+    if (
+        sum(record.get("campus_linked_facility_count", 0) for record in resolution_coverage) < 253
+        or sum(record.get("operator_linked_record_count", 0) for record in resolution_coverage) < 953
+        or sum(record.get("pending_candidate_count", 0) for record in resolution_coverage) != 16
+    ):
+        issues.append(Issue("public_data_validation", "counties/entity-resolution-coverage.json", "national entity-resolution totals are inconsistent"))
+
+    resolution_manifest_path = DATA_DIR / "silver" / "infrastructure" / "im3-2026.02.09-entity-resolution.manifest.json"
+    resolution_manifest = load_json(resolution_manifest_path)
+    for issue in validator.validate_record(resolution_manifest, schema_paths["dataset_manifest"]):
+        issues.append(Issue("public_data_validation", f"{resolution_manifest_path.name}{issue.path[1:]}", issue.message))
+    total_resolution_manifest_records = 0
+    for index, part in enumerate(resolution_manifest.get("parts", [])):
+        part_path = (ROOT / part.get("path", "")).resolve()
+        if not part_path.is_relative_to(ROOT) or not part_path.is_file():
+            issues.append(Issue("public_data_validation", f"{resolution_manifest_path.name}.parts[{index}]", "part path is missing or outside the repository"))
+            continue
+        payload = part_path.read_bytes()
+        total_resolution_manifest_records += part.get("record_count", 0)
+        if part.get("byte_size") != len(payload) or part.get("sha256") != hashlib.sha256(payload).hexdigest():
+            issues.append(Issue("public_data_validation", f"{resolution_manifest_path.name}.parts[{index}]", "byte size or SHA-256 does not match the artifact"))
+    if resolution_manifest.get("record_count") != total_resolution_manifest_records:
+        issues.append(Issue("public_data_validation", resolution_manifest_path.name, "manifest record count does not equal its parts"))
     return issues
 
 

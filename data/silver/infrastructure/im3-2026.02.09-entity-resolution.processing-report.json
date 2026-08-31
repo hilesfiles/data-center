@@ -1,0 +1,28 @@
+{
+  "schema_version": "1.0.0",
+  "artifact_type": "entity_resolution_processing_report",
+  "artifact_version": "2026.02.09",
+  "generated_at": "2026-08-31T22:43:00Z",
+  "governed_rule_id": "im3_identity_resolution_v1",
+  "policies": {
+    "physical_record_merge": "No automatic merges; proximity and containment produce review candidates only.",
+    "campus_membership": "Auto-link only a building wholly within exactly one campus geometry or a point within exactly one campus geometry.",
+    "operator_identity": "Group Unicode/case/whitespace-equivalent source strings only; do not infer corporate aliases, ownership, or parentage."
+  },
+  "counts": {
+    "source_object_count": 1472,
+    "facility_count": 1340,
+    "campus_count": 132,
+    "campus_linked_facility_count": 253,
+    "campus_linked_building_count": 252,
+    "campus_linked_point_count": 1,
+    "operator_source_record_count": 953,
+    "normalized_operator_count": 161,
+    "raw_operator_variant_count": 163,
+    "operator_groups_with_multiple_raw_variants": 2,
+    "pending_candidate_count": 16,
+    "point_building_candidate_count": 11,
+    "campus_membership_candidate_count": 5,
+    "governed_review_decision_count": 414
+  }
+}

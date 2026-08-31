@@ -69,3 +69,44 @@ export interface FacilitySourceCoverage {
   coverage_status: "source_records_present" | "no_source_record";
   generated_at: string;
 }
+
+export interface CountyEntityResolutionCoverage {
+  schema_version: "1.0.0";
+  county_fips: string;
+  county_name: string;
+  state_abbr: string;
+  release_vintage: string;
+  source_record_count: number;
+  campus_linked_facility_count: number;
+  operator_linked_record_count: number;
+  pending_candidate_count: number;
+  point_building_candidate_count: number;
+  campus_membership_candidate_count: number;
+  resolution_status:
+    | "review_pending"
+    | "governed_links_present"
+    | "source_only"
+    | "no_source_record";
+  generated_at: string;
+}
+
+export interface PublicEntityResolutionRecord {
+  schema_version: "1.0.0";
+  entity_id: string;
+  entity_type: "facility" | "campus";
+  source_layer: "point" | "building" | "campus";
+  source_record_id: string;
+  campus_id?: string;
+  campus_membership_status:
+    | "linked_by_governed_rule"
+    | "review_pending"
+    | "not_linked"
+    | "not_applicable";
+  operator_id?: string;
+  operator_canonical_name?: string;
+  operator_resolution_status: "exact_text_normalized" | "source_operator_absent";
+  pending_candidate_ids: string[];
+  resolution_status: "governed_links_present" | "review_pending" | "source_only";
+  release_vintage: string;
+  generated_at: string;
+}

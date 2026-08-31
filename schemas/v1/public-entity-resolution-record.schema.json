@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dccio.org/schemas/v1/public-entity-resolution-record.schema.json",
+  "title": "Public entity-resolution record",
+  "type": "object",
+  "required": ["schema_version", "entity_id", "entity_type", "source_layer", "source_record_id", "campus_membership_status", "operator_resolution_status", "pending_candidate_ids", "resolution_status", "release_vintage", "generated_at"],
+  "properties": {
+    "schema_version": {"$ref": "common.schema.json#/$defs/schema_version"},
+    "entity_id": {"$ref": "common.schema.json#/$defs/entity_id"},
+    "entity_type": {"type": "string", "enum": ["facility", "campus"]},
+    "source_layer": {"type": "string", "enum": ["point", "building", "campus"]},
+    "source_record_id": {"type": "string", "minLength": 1},
+    "campus_id": {"$ref": "common.schema.json#/$defs/entity_id"},
+    "campus_membership_status": {"type": "string", "enum": ["linked_by_governed_rule", "review_pending", "not_linked", "not_applicable"]},
+    "operator_id": {"$ref": "common.schema.json#/$defs/entity_id"},
+    "operator_canonical_name": {"type": "string", "minLength": 1},
+    "operator_resolution_status": {"type": "string", "enum": ["exact_text_normalized", "source_operator_absent"]},
+    "pending_candidate_ids": {"type": "array", "items": {"$ref": "common.schema.json#/$defs/entity_id"}, "uniqueItems": true},
+    "resolution_status": {"type": "string", "enum": ["governed_links_present", "review_pending", "source_only"]},
+    "release_vintage": {"type": "string", "minLength": 1},
+    "generated_at": {"$ref": "common.schema.json#/$defs/timestamp"}
+  },
+  "additionalProperties": false
+}

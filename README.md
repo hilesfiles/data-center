@@ -43,6 +43,16 @@ The pinned GeoPackage is used only as a temporary transport input and is deleted
 processing. Durable bronze, silver, provenance, observation, manifest, and public outputs
 are JSON or GeoJSON.
 
+Rebuild the conservative IM3 identity-resolution layer from those JSON artifacts:
+
+```powershell
+python scripts/resolve_im3_entities.py
+```
+
+This offline step links only unambiguous campus containment, normalizes operator strings
+only for Unicode/case/whitespace equivalence, and emits ambiguous spatial matches as a
+JSON review queue. It does not merge physical source records.
+
 Build the static site:
 
 ```powershell
@@ -70,11 +80,14 @@ validation can be added later to CI with a standards-compliant Draft 2020-12 val
   in-scope source objects, 1,340 provisional facility candidates, and 132 campuses.
 - Facility coverage: 249 counties have one or more source records; absence from the source
   is not interpreted as zero facilities.
+- Entity resolution: 253 facility-to-campus links and 953 source-backed operator
+  relationships are represented as provisional governed decisions. Sixteen spatial
+  candidates remain pending review; no physical source objects are automatically merged.
 - Economic, fiscal, utility, housing, environmental, or opposition observations: not yet ingested.
 - Econometric estimates and public indices: fixture-only; not substantive.
 
 ## Next priority
 
-Resolve duplicate/overlapping source objects, building-to-campus containment, and raw
-operator strings through reviewable attribute-level claims. Then reconstruct verified
-opening and project dates needed for the first historical treatment panel.
+Review the 16 spatial identity candidates and enrich operator organizations beyond
+exact-text normalization. Then reconstruct verified opening and project dates needed for
+the first historical treatment panel.

@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dccio.org/schemas/v1/entity-resolution-candidate.schema.json",
+  "title": "Entity resolution candidate",
+  "type": "object",
+  "required": ["schema_version", "resolution_candidate_id", "candidate_type", "subject_refs", "evidence_claim_ids", "spatial_evidence", "recommended_action", "candidate_status", "governed_rule_id", "created_at", "updated_at", "record_status"],
+  "properties": {
+    "schema_version": {"$ref": "common.schema.json#/$defs/schema_version"},
+    "resolution_candidate_id": {"$ref": "common.schema.json#/$defs/entity_id"},
+    "candidate_type": {
+      "type": "string",
+      "enum": ["point_building_identity", "building_campus_membership", "point_campus_membership", "operator_alias"]
+    },
+    "subject_refs": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "type": "object",
+        "required": ["entity_type", "entity_id"],
+        "properties": {
+          "entity_type": {"type": "string", "enum": ["facility", "campus", "operator"]},
+          "entity_id": {"$ref": "common.schema.json#/$defs/entity_id"}
+        },
+        "additionalProperties": false
+      }
+    },
+    "evidence_claim_ids": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "common.schema.json#/$defs/entity_id"},
+      "uniqueItems": true
+    },
+    "spatial_evidence": {
+      "type": "object",
+      "required": ["predicate"],
+      "properties": {
+        "predicate": {
+          "type": "string",
+          "enum": ["point_within_building", "centroid_within_campus", "geometry_intersects_campus", "not_applicable"]
+        },
+        "match_count": {"type": "integer", "minimum": 1},
+        "notes": {"type": "string", "minLength": 1}
+      },
+      "additionalProperties": false
+    },
+    "recommended_action": {"type": "string", "enum": ["review_merge", "review_membership", "review_alias"]},
+    "candidate_status": {"type": "string", "enum": ["pending", "accepted", "rejected", "superseded"]},
+    "governed_rule_id": {"type": "string", "minLength": 1},
+    "created_at": {"$ref": "common.schema.json#/$defs/timestamp"},
+    "updated_at": {"$ref": "common.schema.json#/$defs/timestamp"},
+    "record_status": {"type": "string", "enum": ["active", "provisional", "superseded", "withdrawn"]}
+  },
+  "additionalProperties": false
+}
