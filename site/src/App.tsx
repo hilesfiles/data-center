@@ -11,7 +11,7 @@ const formatScore = (value: number | undefined) =>
 export default function App() {
   const [metadata, setMetadata] = useState<SiteMetadata | null>(null);
   const [counties, setCounties] = useState<CountySummary[]>([]);
-  const [selectedFips, setSelectedFips] = useState<string | null>("51059");
+  const [selectedFips, setSelectedFips] = useState<string | null>("51107");
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
@@ -51,7 +51,7 @@ export default function App() {
       </header>
 
       <div className="fixture-banner" role="status">
-        <strong>Schema demonstration.</strong> These records are fictional fixtures and are not research findings.
+        <strong>Boundary layer is authoritative.</strong> Census 2025 county geometry is real; facility and analytical records remain fictional fixtures, not research findings.
       </div>
 
       <main className="workspace">
@@ -66,7 +66,13 @@ export default function App() {
 
           <section className="county-section" aria-live="polite">
             {error && <div className="error-panel">{error}</div>}
-            {!error && !selectedCounty && <div className="empty-panel">Select a county on the map.</div>}
+            {!error && !selectedCounty && (
+              <div className="empty-panel">
+                {selectedFips
+                  ? `Boundary selected. No analytical fixture is published for FIPS ${selectedFips}.`
+                  : "Select a county on the map."}
+              </div>
+            )}
             {selectedCounty && (
               <>
                 <div className="county-heading">
@@ -136,6 +142,7 @@ export default function App() {
           </Suspense>
           <div className="map-caption">
             <span>As of {metadata?.latest_facility_year ?? "—"}</span>
+            <span>Census boundaries · Jan. 1, 2025</span>
             <span>Static JSON · No runtime database</span>
             <span>Method {metadata?.methodology_version ?? "—"}</span>
           </div>

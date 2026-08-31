@@ -9,6 +9,7 @@ full validator in addition to this deterministic baseline.
 from __future__ import annotations
 
 import json
+import hashlib
 import math
 import re
 import sys
@@ -25,6 +26,14 @@ VALID_FIXTURE_DIR = ROOT / "fixtures" / "v1" / "valid"
 INVALID_FIXTURE_DIR = ROOT / "fixtures" / "v1" / "invalid"
 CONFIG_DIR = ROOT / "config" / "v1"
 PUBLIC_DATA_DIR = ROOT / "site" / "public" / "data" / "v1"
+DATA_DIR = ROOT / "data"
+CORE_STATE_FIPS = {
+    "01", "02", "04", "05", "06", "08", "09", "10", "11", "12", "13",
+    "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25",
+    "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36",
+    "37", "38", "39", "40", "41", "42", "44", "45", "46", "47", "48",
+    "49", "50", "51", "53", "54", "55", "56",
+}
 
 
 @dataclass(frozen=True)
@@ -597,19 +606,79 @@ def validate_public_data(
         for issue in validator.validate_record(record, schema_paths["public_county_summary"]):
             issues.append(Issue("public_data_validation", f"counties/index.json[{index}]{issue.path[1:]}", issue.message))
 
-    counties_geojson = load_json(PUBLIC_DATA_DIR / "maps" / "counties.geojson")
+    counties_path = PUBLIC_DATA_DIR / "maps" / "counties.geojson"
+    counties_geojson = load_json(counties_path)
     if counties_geojson.get("type") != "FeatureCollection":
         issues.append(Issue("public_data_validation", "maps/counties.geojson", "must be a FeatureCollection"))
-    feature_fips = {
-        feature.get("properties", {}).get("county_fips")
-        for feature in counties_geojson.get("features", [])
+    features = counties_geojson.get("features", [])
+    feature_fips_list = [
+        feature.get("properties", {}).get("county_fips") for feature in features
+    ]
+    feature_fips = set(feature_fips_list)
+    if len(features) != 3144:
+        issues.append(Issue("public_data_validation", "maps/counties.geojson", f"expected 3,144 Census 2025 counties; found {len(features)}"))
+    if len(feature_fips_list) != len(feature_fips):
+        issues.append(Issue("public_data_validation", "maps/counties.geojson", "county FIPS values must be unique"))
+    if any(not isinstance(fips, str) or re.fullmatch(r"\d{5}", fips) is None for fips in feature_fips):
+        issues.append(Issue("public_data_validation", "maps/counties.geojson", "every feature must have a five-digit county FIPS"))
+    states_present = {
+        feature.get("properties", {}).get("state_fips") for feature in features
     }
-    if fips_values != feature_fips:
-        issues.append(Issue("public_data_validation", "maps/counties.geojson", "county index and map FIPS sets differ"))
+    if states_present != CORE_STATE_FIPS:
+        issues.append(Issue("public_data_validation", "maps/counties.geojson", "scope must be the 50 states and District of Columbia"))
+    metadata = counties_geojson.get("metadata", {})
+    if metadata.get("record_count") != len(features) or metadata.get("reference_vintage") != "2025-01-01":
+        issues.append(Issue("public_data_validation", "maps/counties.geojson.metadata", "record count or Census reference vintage is inconsistent"))
+    if not fips_values.issubset(feature_fips):
+        issues.append(Issue("public_data_validation", "maps/counties.geojson", "a published county summary has no matching Census boundary"))
+
+    features_by_fips = {
+        feature["properties"]["county_fips"]: feature["properties"]
+        for feature in features
+        if feature.get("properties", {}).get("county_fips")
+    }
+    for index, record in enumerate(records):
+        boundary = features_by_fips.get(record.get("county_fips"), {})
+        if record.get("county_name") != boundary.get("county_name") or record.get("state_abbr") != boundary.get("state_abbr"):
+            issues.append(Issue("public_data_validation", f"counties/index.json[{index}]", "county name or state does not match the Census boundary"))
 
     facilities_geojson = load_json(PUBLIC_DATA_DIR / "maps" / "facilities.geojson")
     if facilities_geojson.get("type") != "FeatureCollection":
         issues.append(Issue("public_data_validation", "maps/facilities.geojson", "must be a FeatureCollection"))
+    for index, feature in enumerate(facilities_geojson.get("features", [])):
+        county_fips = feature.get("properties", {}).get("county_fips")
+        if county_fips and county_fips not in feature_fips:
+            issues.append(Issue("public_data_validation", f"maps/facilities.geojson.features[{index}]", "facility county FIPS has no Census boundary"))
+
+    geography_path = DATA_DIR / "silver" / "geography" / "counties-2025.json"
+    geography_document = load_json(geography_path)
+    geography_records = geography_document.get("records", [])
+    geography_fips = {record.get("county_fips") for record in geography_records}
+    if geography_document.get("record_count") != len(geography_records) or geography_fips != feature_fips:
+        issues.append(Issue("public_data_validation", "data/silver/geography/counties-2025.json", "geography collection and public map must contain the same counties"))
+    for index, record in enumerate(geography_records):
+        for issue in validator.validate_record(record, schema_paths["geography_reference"]):
+            issues.append(Issue("public_data_validation", f"counties-2025.json.records[{index}]{issue.path[1:]}", issue.message))
+
+    acquisition_path = DATA_DIR / "raw" / "census-tigerweb" / "2025-counties-5m.acquisition.json"
+    acquisition = load_json(acquisition_path)
+    for issue in validator.validate_record(acquisition, schema_paths["acquisition_manifest"]):
+        issues.append(Issue("public_data_validation", f"2025-counties-5m.acquisition.json{issue.path[1:]}", issue.message))
+
+    dataset_manifest_path = DATA_DIR / "silver" / "geography" / "counties-2025.manifest.json"
+    dataset_manifest = load_json(dataset_manifest_path)
+    for issue in validator.validate_record(dataset_manifest, schema_paths["dataset_manifest"]):
+        issues.append(Issue("public_data_validation", f"counties-2025.manifest.json{issue.path[1:]}", issue.message))
+    map_part = dataset_manifest.get("parts", [{}])[0]
+    actual_map_payload = counties_path.read_bytes()
+    actual_map_hash = hashlib.sha256(actual_map_payload).hexdigest()
+    if (
+        dataset_manifest.get("record_count") != len(features)
+        or map_part.get("record_count") != len(features)
+        or map_part.get("byte_size") != len(actual_map_payload)
+        or map_part.get("sha256") != actual_map_hash
+    ):
+        issues.append(Issue("public_data_validation", "counties-2025.manifest.json", "map count, byte size, or SHA-256 does not match the artifact"))
     return issues
 
 
