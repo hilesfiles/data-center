@@ -1,5 +1,6 @@
 import { lazy, Suspense, useEffect, useMemo, useState } from "react";
 import type {
+  CountyEntityAdjudicationCoverage,
   CountyEntityResolutionCoverage,
   FacilitySourceCoverage,
   SiteMetadata,
@@ -19,6 +20,7 @@ export default function App() {
   const [metadata, setMetadata] = useState<SiteMetadata | null>(null);
   const [counties, setCounties] = useState<FacilitySourceCoverage[]>([]);
   const [resolution, setResolution] = useState<CountyEntityResolutionCoverage[]>([]);
+  const [adjudication, setAdjudication] = useState<CountyEntityAdjudicationCoverage[]>([]);
   const [selectedFips, setSelectedFips] = useState<string | null>("51107");
   const [error, setError] = useState<string | null>(null);
 
@@ -28,15 +30,19 @@ export default function App() {
       fetch(`${base}data/v1/metadata.json`),
       fetch(`${base}data/v1/counties/facility-source-coverage.json`),
       fetch(`${base}data/v1/counties/entity-resolution-coverage.json`),
+      fetch(`${base}data/v1/counties/entity-adjudication-coverage.json`),
     ])
-      .then(async ([metadataResponse, coverageResponse, resolutionResponse]) => {
-        if (!metadataResponse.ok || !coverageResponse.ok || !resolutionResponse.ok) {
+      .then(async ([metadataResponse, coverageResponse, resolutionResponse, adjudicationResponse]) => {
+        if (!metadataResponse.ok || !coverageResponse.ok || !resolutionResponse.ok || !adjudicationResponse.ok) {
           throw new Error("The static data contract could not be loaded.");
         }
         setMetadata((await metadataResponse.json()) as SiteMetadata);
         setCounties((await coverageResponse.json()) as FacilitySourceCoverage[]);
         setResolution(
           (await resolutionResponse.json()) as CountyEntityResolutionCoverage[],
+        );
+        setAdjudication(
+          (await adjudicationResponse.json()) as CountyEntityAdjudicationCoverage[],
         );
       })
       .catch((reason: unknown) =>
@@ -51,6 +57,10 @@ export default function App() {
   const selectedResolution = useMemo(
     () => resolution.find((county) => county.county_fips === selectedFips) ?? null,
     [resolution, selectedFips],
+  );
+  const selectedAdjudication = useMemo(
+    () => adjudication.find((county) => county.county_fips === selectedFips) ?? null,
+    [adjudication, selectedFips],
   );
 
   return (
@@ -67,7 +77,7 @@ export default function App() {
       </header>
 
       <div className="fixture-banner" role="status">
-        <strong>Provisional source inventory.</strong> Census boundaries are authoritative; IM3 location records are OSM-derived observations, not a deduplicated or lifecycle-verified operating-facility census.
+        <strong>Provisional, reviewed source inventory.</strong> Fourteen of sixteen spatial identity candidates are resolved; two campus-boundary cases were escalated and remain explicitly pending. This is not a lifecycle-verified operating-facility census.
       </div>
 
       <main className="workspace">
@@ -140,8 +150,8 @@ export default function App() {
                   </div>
                   <div>
                     <span>Campus-linked facilities</span>
-                    <strong>{integerFormat.format(selectedResolution?.campus_linked_facility_count ?? 0)}</strong>
-                    <em>unambiguous spatial rule</em>
+                    <strong>{integerFormat.format(selectedAdjudication?.campus_linked_facility_count ?? selectedResolution?.campus_linked_facility_count ?? 0)}</strong>
+                    <em>governed spatial decisions</em>
                   </div>
                   <div>
                     <span>Normalized operator links</span>
@@ -150,14 +160,24 @@ export default function App() {
                   </div>
                   <div>
                     <span>Pending identity reviews</span>
-                    <strong>{integerFormat.format(selectedResolution?.pending_candidate_count ?? 0)}</strong>
-                    <em>{integerFormat.format(selectedResolution?.point_building_candidate_count ?? 0)} possible point/building duplicates</em>
+                    <strong>{integerFormat.format(selectedAdjudication?.pending_candidate_count ?? 0)}</strong>
+                    <em>{integerFormat.format(selectedAdjudication?.reviewed_candidate_count ?? 0)} candidates reviewed</em>
+                  </div>
+                  <div>
+                    <span>Merged source records</span>
+                    <strong>{integerFormat.format(selectedAdjudication?.merged_source_record_count ?? 0)}</strong>
+                    <em>redirected, never deleted</em>
+                  </div>
+                  <div>
+                    <span>Distinct sites in buildings</span>
+                    <strong>{integerFormat.format(selectedAdjudication?.distinct_contained_facility_count ?? 0)}</strong>
+                    <em>contained but not merged</em>
                   </div>
                 </div>
 
                 <div className="evidence-note">
                   <span>Interpretation</span>
-                  <p>These remain provisional source objects derived from OpenStreetMap. Governed links are traceable, and spatially plausible duplicates stay separate until reviewed. The data do not establish operating status, opening dates, historical completeness, capacity, or causal community impact.</p>
+                  <p>Source objects remain preserved even after review. True duplicate points redirect to a canonical building; tenant sites and computing systems remain distinct with a containment relationship. The data still do not establish operating status, opening dates, historical completeness, capacity, or causal community impact.</p>
                 </div>
               </>
             )}

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dccio.org/schemas/v1/public-entity-adjudication-coverage.schema.json",
+  "title": "Public county entity-adjudication coverage",
+  "type": "object",
+  "required": ["schema_version", "county_fips", "county_name", "state_abbr", "reviewed_candidate_count", "pending_candidate_count", "merged_source_record_count", "distinct_contained_facility_count", "campus_linked_facility_count", "adjudication_status", "generated_at"],
+  "properties": {
+    "schema_version": {"$ref": "common.schema.json#/$defs/schema_version"},
+    "county_fips": {"$ref": "common.schema.json#/$defs/county_fips"},
+    "county_name": {"type": "string", "minLength": 1},
+    "state_abbr": {"$ref": "common.schema.json#/$defs/state_abbr"},
+    "reviewed_candidate_count": {"type": "integer", "minimum": 0},
+    "pending_candidate_count": {"type": "integer", "minimum": 0},
+    "merged_source_record_count": {"type": "integer", "minimum": 0},
+    "distinct_contained_facility_count": {"type": "integer", "minimum": 0},
+    "campus_linked_facility_count": {"type": "integer", "minimum": 0},
+    "adjudication_status": {"type": "string", "enum": ["review_pending", "reviewed", "no_candidate", "no_source_record"]},
+    "generated_at": {"$ref": "common.schema.json#/$defs/timestamp"}
+  },
+  "additionalProperties": false
+}

@@ -22,3 +22,8 @@ The IM3 facility seed is derived from OpenStreetMap and is redistributed under O
 Its public and research manifests carry the attribution `© OpenStreetMap contributors;
 IM3 Open Source Data Center Atlas (PNNL/DOE)`. The upstream repository's BSD 2-Clause
 software license does not replace the ODbL terms that apply to the derived location data.
+
+Candidate adjudication adds official operator, SEC, and federal-source metadata. The
+public layer retains URLs and original paraphrased findings rather than page bodies. Its
+manifest therefore declares mixed licensing and `metadata_only` redistribution while
+continuing to carry the ODbL attribution for every IM3-derived record.

@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dccio.org/schemas/v1/public-entity-adjudication-record.schema.json",
+  "title": "Public entity-adjudication record",
+  "type": "object",
+  "required": ["schema_version", "source_entity_id", "resolved_entity_id", "identity_status", "candidate_outcomes", "generated_at"],
+  "properties": {
+    "schema_version": {"$ref": "common.schema.json#/$defs/schema_version"},
+    "source_entity_id": {"$ref": "common.schema.json#/$defs/entity_id"},
+    "resolved_entity_id": {"$ref": "common.schema.json#/$defs/entity_id"},
+    "identity_status": {"type": "string", "enum": ["merged", "distinct_within_building", "unchanged", "review_pending"]},
+    "container_facility_id": {"$ref": "common.schema.json#/$defs/entity_id"},
+    "campus_id": {"$ref": "common.schema.json#/$defs/entity_id"},
+    "candidate_outcomes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["resolution_candidate_id", "decision"],
+        "properties": {
+          "resolution_candidate_id": {"$ref": "common.schema.json#/$defs/entity_id"},
+          "decision": {"type": "string", "enum": ["merge", "do_not_merge", "accept", "reject", "escalate"]}
+        },
+        "additionalProperties": false
+      },
+      "uniqueItems": true
+    },
+    "generated_at": {"$ref": "common.schema.json#/$defs/timestamp"}
+  },
+  "additionalProperties": false
+}

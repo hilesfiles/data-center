@@ -1,0 +1,32 @@
+{
+  "schema_version": "1.0.0",
+  "artifact_type": "candidate_adjudication_processing_report",
+  "artifact_version": "2026.08.31",
+  "generated_at": "2026-08-31T22:43:00Z",
+  "governed_rule_id": "im3_candidate_adjudication_v1",
+  "counts": {
+    "candidate_count": 16,
+    "accepted_candidate_count": 5,
+    "rejected_candidate_count": 9,
+    "pending_candidate_count": 2,
+    "merged_source_record_count": 3,
+    "distinct_contained_facility_count": 8,
+    "campus_linked_facility_count": 255,
+    "canonical_non_superseded_facility_count": 1337,
+    "external_evidence_source_count": 10,
+    "external_evidence_claim_count": 10,
+    "adjudication_decision_count": 16
+  },
+  "decision_counts": {
+    "accept": 2,
+    "do_not_merge": 8,
+    "escalate": 2,
+    "merge": 3,
+    "reject": 1
+  },
+  "notices": [
+    "A located-within-building relationship is not an identity merge or ownership assertion.",
+    "Superseded source records remain preserved and redirect to their reviewed canonical facility.",
+    "Escalated candidates remain pending and do not change campus or facility identity."
+  ]
+}

@@ -1,0 +1,191 @@
+{
+  "schema_version": "1.0.0",
+  "artifact_type": "candidate_adjudication_collection",
+  "artifact_version": "2026.08.31",
+  "generated_at": "2026-08-31T22:43:00Z",
+  "record_schema": "https://dccio.org/schemas/v1/candidate-adjudication.schema.json",
+  "record_count": 16,
+  "records": [
+    {
+      "schema_version": "1.0.0",
+      "resolution_candidate_id": "erc_im3_003d8bb111fc5d2f641d",
+      "decision": "do_not_merge",
+      "container_facility_id": "fac_im3_building_00156520409",
+      "rationale": "Centersquare ORD1 is a separately branded operator site occupying specified floors inside the larger 350 East Cermak building; containment does not make it the same facility identity as the building shell.",
+      "evidence": [
+        {"source_id": "src_im3_atlas_20260209", "finding": "The source point falls within the Lakeside Technology Center footprint."},
+        {"source_id": "src_centersquare_ord1_web", "finding": "The operator specification identifies ORD1 at 350 East Cermak on the 4th, 7th, and 8th floors."}
+      ],
+      "governed_rule_id": "im3_candidate_adjudication_v1"
+    },
+    {
+      "schema_version": "1.0.0",
+      "resolution_candidate_id": "erc_im3_0102da3e736e838db886",
+      "decision": "do_not_merge",
+      "container_facility_id": "fac_im3_building_00156520409",
+      "rationale": "Digital Realty ORD10 is a branded data-center operation at 350 East Cermak, while the polygon represents the larger multi-operator building; preserve the contained operating site separately.",
+      "evidence": [
+        {"source_id": "src_im3_atlas_20260209", "finding": "The source point falls within the Lakeside Technology Center footprint."},
+        {"source_id": "src_digitalrealty_ord10_web", "finding": "Digital Realty identifies ORD10 at 350 East Cermak and describes the larger building."}
+      ],
+      "governed_rule_id": "im3_candidate_adjudication_v1"
+    },
+    {
+      "schema_version": "1.0.0",
+      "resolution_candidate_id": "erc_im3_02bbbd68aab841ed72c7",
+      "decision": "reject",
+      "rationale": "The QTS building and Google campus have conflicting named operators, the QTS centroid is outside the campus, and only one of nine building vertices falls inside the campus polygon.",
+      "evidence": [
+        {"source_id": "src_im3_atlas_20260209", "finding": "IM3 identifies different QTS and Google operators and only a marginal geometry intersection."},
+        {"source_id": "src_qts_nal1_web", "finding": "QTS identifies NAL1 DC2 as its New Albany facility at 1225 Beech Road."}
+      ],
+      "governed_rule_id": "im3_candidate_adjudication_v1"
+    },
+    {
+      "schema_version": "1.0.0",
+      "resolution_candidate_id": "erc_im3_27723406d32b38ef2a01",
+      "decision": "accept",
+      "rationale": "The building and campus use equivalent AWS names, the building centroid is inside the campus, and six of eight footprint vertices are inside; the partial boundary is treated as a source-geometry discrepancy.",
+      "evidence": [
+        {"source_id": "src_im3_atlas_20260209", "finding": "IM3 identifies both records as AWS and supplies the overlapping geometries."}
+      ],
+      "governed_rule_id": "im3_candidate_adjudication_v1"
+    },
+    {
+      "schema_version": "1.0.0",
+      "resolution_candidate_id": "erc_im3_4deddd376b4392bcaf07",
+      "decision": "merge",
+      "canonical_entity_id": "fac_im3_building_00156468497",
+      "rationale": "The point uses the exact property address, lies 4.5 meters from the unnamed building centroid, and a Digital Realty filing identifies 8100 Boone Boulevard as a data-center property with comparable area.",
+      "evidence": [
+        {"source_id": "src_im3_atlas_20260209", "finding": "The address-named point lies within the unnamed building footprint."},
+        {"source_id": "src_digitalrealty_8100_sec", "finding": "Digital Realty lists 8100 Boone Boulevard as a data center property."}
+      ],
+      "governed_rule_id": "im3_candidate_adjudication_v1"
+    },
+    {
+      "schema_version": "1.0.0",
+      "resolution_candidate_id": "erc_im3_62102081f4bf6466a9af",
+      "decision": "escalate",
+      "rationale": "The unnamed campus centroid nearly coincides with One Wilshire, but its area is smaller than the building and only one of seventeen building vertices is inside; no stable source identifier resolves the mismatch.",
+      "evidence": [
+        {"source_id": "src_im3_atlas_20260209", "finding": "IM3 provides coincident but geometrically inconsistent building and campus records."}
+      ],
+      "governed_rule_id": "im3_candidate_adjudication_v1"
+    },
+    {
+      "schema_version": "1.0.0",
+      "resolution_candidate_id": "erc_im3_67135e1c90a7f1a38820",
+      "decision": "do_not_merge",
+      "container_facility_id": "fac_im3_building_00156520409",
+      "rationale": "Equinix CH1 is a separately operated fifth-floor data center within 350 East Cermak, not the same identity as the multi-operator building shell.",
+      "evidence": [
+        {"source_id": "src_im3_atlas_20260209", "finding": "The CH1 point lies within the Lakeside Technology Center footprint."},
+        {"source_id": "src_equinix_ch1_web", "finding": "Equinix identifies CH1 at 350 East Cermak, fifth floor."}
+      ],
+      "governed_rule_id": "im3_candidate_adjudication_v1"
+    },
+    {
+      "schema_version": "1.0.0",
+      "resolution_candidate_id": "erc_im3_705961754a8de416cb06",
+      "decision": "escalate",
+      "rationale": "The Lumen building intersects an unnamed campus but its centroid is outside and only four of seven building vertices are inside; there is no corroborating identifier or campus name.",
+      "evidence": [
+        {"source_id": "src_im3_atlas_20260209", "finding": "IM3 supplies a partial overlap without a campus name or operator."}
+      ],
+      "governed_rule_id": "im3_candidate_adjudication_v1"
+    },
+    {
+      "schema_version": "1.0.0",
+      "resolution_candidate_id": "erc_im3_70cd5a82ce81aaa98dfc",
+      "decision": "accept",
+      "rationale": "Building ref A has its centroid inside the named NSA campus and fifteen of twenty vertices inside; federal project data confirms that the Texas Cryptologic Center is a multi-facility campus containing a data center.",
+      "evidence": [
+        {"source_id": "src_im3_atlas_20260209", "finding": "The building carries source ref A and substantially overlaps the Texas Cryptologic Center campus."},
+        {"source_id": "src_nsa_tcc_budget_fy2026", "finding": "Federal budget data describes the Texas Cryptologic Center as a six-facility campus including a data center."}
+      ],
+      "governed_rule_id": "im3_candidate_adjudication_v1"
+    },
+    {
+      "schema_version": "1.0.0",
+      "resolution_candidate_id": "erc_im3_737962b112460c3a390d",
+      "decision": "do_not_merge",
+      "container_facility_id": "fac_im3_building_00429782814",
+      "rationale": "HiPerGator is a named computing system operated inside the UF Research Computing Center; the system/site and its containing building are distinct identities.",
+      "evidence": [
+        {"source_id": "src_im3_atlas_20260209", "finding": "The HiPerGator point and UF Research Computing Center building share the University of Florida operator and are spatially nested."}
+      ],
+      "governed_rule_id": "im3_candidate_adjudication_v1"
+    },
+    {
+      "schema_version": "1.0.0",
+      "resolution_candidate_id": "erc_im3_7dbd7f558eba09bfeade",
+      "decision": "do_not_merge",
+      "container_facility_id": "fac_im3_building_00028544618",
+      "rationale": "Flexential operates a separately identified data-center suite at 1950 North Stemmons inside the multi-operator Infomart building; retain the contained facility separately.",
+      "evidence": [
+        {"source_id": "src_im3_atlas_20260209", "finding": "The Flexential point lies inside the Equinix Infomart footprint."},
+        {"source_id": "src_flexential_locations_soc", "finding": "Flexential identifies its Downtown Dallas operation at 1950 North Stemmons Freeway."}
+      ],
+      "governed_rule_id": "im3_candidate_adjudication_v1"
+    },
+    {
+      "schema_version": "1.0.0",
+      "resolution_candidate_id": "erc_im3_d1d11d8190fb04a3a0a0",
+      "decision": "merge",
+      "canonical_entity_id": "fac_im3_building_00030666790",
+      "rationale": "CoreSite explicitly states that LA2 occupies the former USPS Terminal Annex at 900 North Alameda, resolving the old-building-name point/footprint pair as one persistent physical facility.",
+      "evidence": [
+        {"source_id": "src_im3_atlas_20260209", "finding": "The CoreSite LA2 point lies inside the USPO Terminal Annex footprint."},
+        {"source_id": "src_coresite_la2_web", "finding": "CoreSite identifies LA2 at 900 North Alameda and states it is the former USPS Postal Annex."}
+      ],
+      "governed_rule_id": "im3_candidate_adjudication_v1"
+    },
+    {
+      "schema_version": "1.0.0",
+      "resolution_candidate_id": "erc_im3_f1f708d45584d58ad29b",
+      "decision": "do_not_merge",
+      "container_facility_id": "fac_im3_building_00435324552",
+      "rationale": "The AWS IAD69 point and CyrusOne NVA building have conflicting operator and facility identifiers; spatial containment supports a location relationship but not identity equivalence.",
+      "evidence": [
+        {"source_id": "src_im3_atlas_20260209", "finding": "IM3 places the AWS point within the CyrusOne footprint while preserving conflicting source names and operators."}
+      ],
+      "governed_rule_id": "im3_candidate_adjudication_v1"
+    },
+    {
+      "schema_version": "1.0.0",
+      "resolution_candidate_id": "erc_im3_f6d789493e5576c92718",
+      "decision": "do_not_merge",
+      "container_facility_id": "fac_im3_building_00369452572",
+      "rationale": "The Pittock Internet Exchange is an exchange operation located within the Pittock Block building; function and container are distinct facility identities.",
+      "evidence": [
+        {"source_id": "src_im3_atlas_20260209", "finding": "The exchange point lies inside the Pittock Block footprint and the source names distinguish the operation from the building."}
+      ],
+      "governed_rule_id": "im3_candidate_adjudication_v1"
+    },
+    {
+      "schema_version": "1.0.0",
+      "resolution_candidate_id": "erc_im3_fc35f56bcbfcb0d78e5e",
+      "decision": "merge",
+      "canonical_entity_id": "fac_im3_building_00250052753",
+      "rationale": "Digital Realty identifies JFK13 at the exact building address, 32 Avenue of the Americas; the address-named footprint and branded point represent one persistent physical facility.",
+      "evidence": [
+        {"source_id": "src_im3_atlas_20260209", "finding": "The JFK13 point lies within the 32 Avenue of the Americas footprint."},
+        {"source_id": "src_digitalrealty_jfk13_web", "finding": "Digital Realty identifies JFK13 at 32 Avenue of the Americas."}
+      ],
+      "governed_rule_id": "im3_candidate_adjudication_v1"
+    },
+    {
+      "schema_version": "1.0.0",
+      "resolution_candidate_id": "erc_im3_fd657aab679008c8d138",
+      "decision": "do_not_merge",
+      "container_facility_id": "fac_im3_building_00030827429",
+      "rationale": "Rad Web Hosting identifies itself as a hosted operation inside DataBank DFW1, whose owner and building remain a distinct facility identity.",
+      "evidence": [
+        {"source_id": "src_im3_atlas_20260209", "finding": "The Rad Web Hosting point lies within the DataBank building footprint."},
+        {"source_id": "src_radweb_dallas_web", "finding": "Rad Web Hosting identifies its Dallas site as DAL-1 inside owner DataBank DFW1 at 400 South Akard."}
+      ],
+      "governed_rule_id": "im3_candidate_adjudication_v1"
+    }
+  ]
+}

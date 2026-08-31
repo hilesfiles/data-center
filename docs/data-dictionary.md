@@ -5,7 +5,7 @@ The machine-readable source of truth is the schema catalog at
 
 | Family | Principal records | Purpose |
 |---|---|---|
-| Infrastructure | campus, facility, project, project phase, event, operator relationship | Preserve physical identity and lifecycle history |
+| Infrastructure | campus, facility, project, project phase, event, operator relationship, facility containment relationship | Preserve physical identity, spatial nesting, and lifecycle history |
 | Evidence and governance | source, source artifact, claim, claim resolution, review decision, entity-resolution candidate | Trace every material assertion, governed decision, and unresolved match |
 | Source ingest | facility seed source record | Preserve source-shaped point, building, and campus rows before canonical projection |
 | Measurement | metric definition, observation | Store observed, derived, estimated, modeled, suppressed, and missing values distinctly |

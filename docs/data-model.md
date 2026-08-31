@@ -123,6 +123,14 @@ them plausible matches. Candidates retain the governed rule and spatial predicat
 created them, a recommended review action, and an explicit pending/accepted/rejected
 state. Candidate generation never changes canonical identity by itself.
 
+### Facility containment relationship
+
+A reviewed spatial relationship between a separately identified facility or operator
+site and the larger building that contains it. `located_within_building` is deliberately
+different from an identity merge, campus membership, ownership, or tenancy. It preserves
+multi-operator carrier hotels and computing systems without counting the building shell
+and its contained sites as interchangeable records.
+
 ## Measurement domain
 
 An observation stores one metric value for one subject and period. Subjects may be a
@@ -201,6 +209,7 @@ Recommended prefixes:
 | resolution | `res_` |
 | review decision | `rev_` |
 | entity-resolution candidate | `erc_` |
+| facility containment relationship | `fcr_` |
 | observation | `obs_` |
 | treatment definition | `trt_` |
 | model specification | `msp_` |

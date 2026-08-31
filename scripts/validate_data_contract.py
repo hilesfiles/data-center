@@ -312,6 +312,7 @@ ID_FIELDS = {
     "facility": "facility_id",
     "operator": "operator_id",
     "operator_relationship": "relationship_id",
+    "facility_containment_relationship": "relationship_id",
     "project": "project_id",
     "project_phase": "phase_id",
     "event": "event_id",
@@ -385,6 +386,12 @@ def validate_references(fixture: dict[str, Any]) -> list[Issue]:
         check_reference(record.get("subject_id"), ids, f"$.operator_relationship[{i}].subject_id", issues)
         for j, claim_id in enumerate(record.get("source_claim_ids", [])):
             check_reference(claim_id, ids, f"$.operator_relationship[{i}].source_claim_ids[{j}]", issues)
+    for i, record in enumerate(fixture.get("facility_containment_relationship", [])):
+        check_reference(record.get("contained_facility_id"), ids, f"$.facility_containment_relationship[{i}].contained_facility_id", issues)
+        check_reference(record.get("container_facility_id"), ids, f"$.facility_containment_relationship[{i}].container_facility_id", issues)
+        check_reference(record.get("review_decision_id"), ids, f"$.facility_containment_relationship[{i}].review_decision_id", issues)
+        for j, claim_id in enumerate(record.get("source_claim_ids", [])):
+            check_reference(claim_id, ids, f"$.facility_containment_relationship[{i}].source_claim_ids[{j}]", issues)
     for i, record in enumerate(fixture.get("project", [])):
         for j, target in enumerate(record.get("target_refs", [])):
             check_reference(target.get("entity_id"), ids, f"$.project[{i}].target_refs[{j}]", issues)
@@ -937,6 +944,150 @@ def validate_public_data(
             issues.append(Issue("public_data_validation", f"{resolution_manifest_path.name}.parts[{index}]", "byte size or SHA-256 does not match the artifact"))
     if resolution_manifest.get("record_count") != total_resolution_manifest_records:
         issues.append(Issue("public_data_validation", resolution_manifest_path.name, "manifest record count does not equal its parts"))
+
+    evidence_sources_path = CONFIG_DIR / "im3-candidate-evidence-sources.json"
+    evidence_sources_document = load_json(evidence_sources_path)
+    evidence_sources = evidence_sources_document.get("records", [])
+    if evidence_sources_document.get("record_count") != 10 or len(evidence_sources) != 10:
+        issues.append(Issue("public_data_validation", evidence_sources_path.name, "expected ten curated evidence sources"))
+    for index, record in enumerate(evidence_sources):
+        for issue in validator.validate_record(record, schema_paths["source"]):
+            issues.append(Issue("public_data_validation", f"{evidence_sources_path.name}.records[{index}]{issue.path[1:]}", issue.message))
+
+    adjudication_config_path = CONFIG_DIR / "im3-candidate-adjudications.json"
+    adjudication_config_document = load_json(adjudication_config_path)
+    adjudication_config = adjudication_config_document.get("records", [])
+    if adjudication_config_document.get("record_count") != 16 or len(adjudication_config) != 16:
+        issues.append(Issue("public_data_validation", adjudication_config_path.name, "every candidate must have one adjudication"))
+    configured_candidate_ids = [record.get("resolution_candidate_id") for record in adjudication_config]
+    resolution_candidate_ids = [record.get("resolution_candidate_id") for record in resolution_collections.get("entity_resolution_candidate", [])]
+    if len(configured_candidate_ids) != len(set(configured_candidate_ids)) or set(configured_candidate_ids) != set(resolution_candidate_ids):
+        issues.append(Issue("public_data_validation", adjudication_config_path.name, "configured adjudications must map one-to-one to resolution candidates"))
+    configured_source_ids = {record.get("source_id") for record in evidence_sources} | {"src_im3_atlas_20260209"}
+    for index, record in enumerate(adjudication_config):
+        for issue in validator.validate_record(record, schema_paths["candidate_adjudication"]):
+            issues.append(Issue("public_data_validation", f"{adjudication_config_path.name}.records[{index}]{issue.path[1:]}", issue.message))
+        for evidence in record.get("evidence", []):
+            if evidence.get("source_id") not in configured_source_ids:
+                issues.append(Issue("referential_integrity", f"{adjudication_config_path.name}.records[{index}].evidence", "unknown adjudication evidence source"))
+
+    adjudicated_path = DATA_DIR / "silver" / "infrastructure" / "im3-2026.02.09-entity-adjudication.json"
+    adjudicated = load_json(adjudicated_path)
+    adjudicated_collections = adjudicated.get("collections", {})
+    expected_adjudicated_counts = {
+        "campus": 132,
+        "facility": 1340,
+        "operator": 161,
+        "operator_relationship": 953,
+        "facility_containment_relationship": 8,
+        "review_decision": 430,
+        "entity_resolution_candidate": 16,
+        "source": 10,
+        "claim": 10,
+    }
+    actual_adjudicated_counts = {
+        name: len(adjudicated_collections.get(name, []))
+        for name in expected_adjudicated_counts
+    }
+    if actual_adjudicated_counts != expected_adjudicated_counts or adjudicated.get("record_count") != sum(expected_adjudicated_counts.values()):
+        issues.append(Issue("public_data_validation", adjudicated_path.name, "adjudicated collection counts are inconsistent"))
+    for collection, expected_count in expected_adjudicated_counts.items():
+        if expected_count == 0:
+            continue
+        for index, record in enumerate(adjudicated_collections.get(collection, [])):
+            for issue in validator.validate_record(record, schema_paths[collection]):
+                issues.append(Issue("public_data_validation", f"{adjudicated_path.name}.{collection}[{index}]{issue.path[1:]}", issue.message))
+
+    adjudicated_reference_fixture = {
+        **adjudicated_collections,
+        "claim": collections.get("claim", []) + adjudicated_collections.get("claim", []),
+        "source": collections.get("source", []) + adjudicated_collections.get("source", []),
+        "source_artifact": collections.get("source_artifact", []),
+        "geography_reference": geography_records,
+        "metric_definition": load_json(CONFIG_DIR / "metric-registry.json")["metrics"],
+    }
+    for issue in validate_references(adjudicated_reference_fixture):
+        issues.append(Issue("public_data_validation", f"{adjudicated_path.name}:{issue.path}", issue.message))
+
+    adjudication_report_path = DATA_DIR / "silver" / "infrastructure" / "im3-2026.02.09-entity-adjudication.processing-report.json"
+    adjudication_report = load_json(adjudication_report_path)
+    expected_adjudication_counts = {
+        "candidate_count": 16,
+        "accepted_candidate_count": 5,
+        "rejected_candidate_count": 9,
+        "pending_candidate_count": 2,
+        "merged_source_record_count": 3,
+        "distinct_contained_facility_count": 8,
+        "campus_linked_facility_count": 255,
+        "canonical_non_superseded_facility_count": 1337,
+        "external_evidence_source_count": 10,
+        "external_evidence_claim_count": 10,
+        "adjudication_decision_count": 16,
+    }
+    if adjudication_report.get("counts") != expected_adjudication_counts or adjudication_report.get("decision_counts") != {"accept": 2, "do_not_merge": 8, "escalate": 2, "merge": 3, "reject": 1}:
+        issues.append(Issue("public_data_validation", adjudication_report_path.name, "candidate adjudication diagnostics changed"))
+
+    public_adjudication_path = PUBLIC_DATA_DIR / "entity-resolution" / "adjudication-index.json"
+    public_adjudication = load_json(public_adjudication_path)
+    public_adjudication_ids = [record.get("source_entity_id") for record in public_adjudication]
+    if len(public_adjudication) != 1472 or set(public_adjudication_ids) != set(facility_ids):
+        issues.append(Issue("public_data_validation", "entity-resolution/adjudication-index.json", "adjudication index and map must contain the same source objects"))
+    for index, record in enumerate(public_adjudication):
+        for issue in validator.validate_record(record, schema_paths["public_entity_adjudication_record"]):
+            issues.append(Issue("public_data_validation", f"adjudication-index.json[{index}]{issue.path[1:]}", issue.message))
+
+    adjudication_coverage_path = PUBLIC_DATA_DIR / "counties" / "entity-adjudication-coverage.json"
+    adjudication_coverage = load_json(adjudication_coverage_path)
+    adjudication_coverage_fips = [record.get("county_fips") for record in adjudication_coverage]
+    if len(adjudication_coverage) != 3144 or set(adjudication_coverage_fips) != feature_fips or len(adjudication_coverage_fips) != len(set(adjudication_coverage_fips)):
+        issues.append(Issue("public_data_validation", "counties/entity-adjudication-coverage.json", "adjudication coverage must contain every Census county exactly once"))
+    for index, record in enumerate(adjudication_coverage):
+        for issue in validator.validate_record(record, schema_paths["public_entity_adjudication_coverage"]):
+            issues.append(Issue("public_data_validation", f"entity-adjudication-coverage.json[{index}]{issue.path[1:]}", issue.message))
+        boundary = features_by_fips.get(record.get("county_fips", ""), {})
+        if record.get("county_name") != boundary.get("county_name") or record.get("state_abbr") != boundary.get("state_abbr"):
+            issues.append(Issue("public_data_validation", f"entity-adjudication-coverage.json[{index}]", "county identity does not match the Census boundary"))
+    if (
+        sum(record.get("reviewed_candidate_count", 0) for record in adjudication_coverage) != 14
+        or sum(record.get("pending_candidate_count", 0) for record in adjudication_coverage) != 2
+        or sum(record.get("merged_source_record_count", 0) for record in adjudication_coverage) != 3
+        or sum(record.get("distinct_contained_facility_count", 0) for record in adjudication_coverage) != 8
+    ):
+        issues.append(Issue("public_data_validation", "counties/entity-adjudication-coverage.json", "national adjudication totals are inconsistent"))
+
+    review_queue = load_json(PUBLIC_DATA_DIR / "entity-resolution" / "review-queue.json")
+    if len(review_queue) != 2 or any(record.get("candidate_status") != "pending" for record in review_queue):
+        issues.append(Issue("public_data_validation", "entity-resolution/review-queue.json", "review queue must contain the two escalated candidates"))
+    for index, record in enumerate(review_queue):
+        for issue in validator.validate_record(record, schema_paths["entity_resolution_candidate"]):
+            issues.append(Issue("public_data_validation", f"review-queue.json[{index}]{issue.path[1:]}", issue.message))
+
+    public_review_decisions = load_json(PUBLIC_DATA_DIR / "entity-resolution" / "review-decisions.json")
+    if len(public_review_decisions) != 16:
+        issues.append(Issue("public_data_validation", "entity-resolution/review-decisions.json", "public review decisions must contain all adjudications"))
+    for index, record in enumerate(public_review_decisions):
+        for issue in validator.validate_record(record, schema_paths["review_decision"]):
+            issues.append(Issue("public_data_validation", f"review-decisions.json[{index}]{issue.path[1:]}", issue.message))
+    dossier = load_json(PUBLIC_DATA_DIR / "entity-resolution" / "review-dossier.json")
+    if len(dossier) != 16 or {record.get("resolution_candidate_id") for record in dossier} != set(resolution_candidate_ids):
+        issues.append(Issue("public_data_validation", "entity-resolution/review-dossier.json", "review dossier must cover all candidates"))
+
+    adjudication_manifest_path = DATA_DIR / "silver" / "infrastructure" / "im3-2026.02.09-entity-adjudication.manifest.json"
+    adjudication_manifest = load_json(adjudication_manifest_path)
+    for issue in validator.validate_record(adjudication_manifest, schema_paths["dataset_manifest"]):
+        issues.append(Issue("public_data_validation", f"{adjudication_manifest_path.name}{issue.path[1:]}", issue.message))
+    total_adjudication_manifest_records = 0
+    for index, part in enumerate(adjudication_manifest.get("parts", [])):
+        part_path = (ROOT / part.get("path", "")).resolve()
+        if not part_path.is_relative_to(ROOT) or not part_path.is_file():
+            issues.append(Issue("public_data_validation", f"{adjudication_manifest_path.name}.parts[{index}]", "part path is missing or outside the repository"))
+            continue
+        payload = part_path.read_bytes()
+        total_adjudication_manifest_records += part.get("record_count", 0)
+        if part.get("byte_size") != len(payload) or part.get("sha256") != hashlib.sha256(payload).hexdigest():
+            issues.append(Issue("public_data_validation", f"{adjudication_manifest_path.name}.parts[{index}]", "byte size or SHA-256 does not match the artifact"))
+    if adjudication_manifest.get("record_count") != total_adjudication_manifest_records:
+        issues.append(Issue("public_data_validation", adjudication_manifest_path.name, "manifest record count does not equal its parts"))
     return issues
 
 

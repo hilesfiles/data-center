@@ -110,3 +110,31 @@ export interface PublicEntityResolutionRecord {
   release_vintage: string;
   generated_at: string;
 }
+
+export interface CountyEntityAdjudicationCoverage {
+  schema_version: "1.0.0";
+  county_fips: string;
+  county_name: string;
+  state_abbr: string;
+  reviewed_candidate_count: number;
+  pending_candidate_count: number;
+  merged_source_record_count: number;
+  distinct_contained_facility_count: number;
+  campus_linked_facility_count: number;
+  adjudication_status: "review_pending" | "reviewed" | "no_candidate" | "no_source_record";
+  generated_at: string;
+}
+
+export interface PublicEntityAdjudicationRecord {
+  schema_version: "1.0.0";
+  source_entity_id: string;
+  resolved_entity_id: string;
+  identity_status: "merged" | "distinct_within_building" | "unchanged" | "review_pending";
+  container_facility_id?: string;
+  campus_id?: string;
+  candidate_outcomes: Array<{
+    resolution_candidate_id: string;
+    decision: "merge" | "do_not_merge" | "accept" | "reject" | "escalate";
+  }>;
+  generated_at: string;
+}

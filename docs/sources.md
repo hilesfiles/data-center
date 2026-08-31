@@ -37,6 +37,19 @@ size and SHA-256 before processing. The GeoPackage is temporary transport input 
 All retained source-shaped rows, provisional entities, evidence links, observations,
 diagnostics, manifests, county coverage, and map features are JSON or GeoJSON.
 
+## Candidate-adjudication evidence
+
+The entity-review layer uses ten additional official or first-party source records:
+operator facility pages and specification sheets from Centersquare, Digital Realty,
+Equinix, Flexential, CoreSite, Rad Web Hosting, and QTS; a Digital Realty SEC filing; and
+FY 2026 Department of Defense project data for the Texas Cryptologic Center. Only source
+metadata and paraphrased findings are retained. Page bodies are not copied into the
+repository.
+
+Curated evidence metadata lives in `config/v1/im3-candidate-evidence-sources.json`, and
+the one-to-one candidate decisions live in `config/v1/im3-candidate-adjudications.json`.
+The deterministic builder is `scripts/adjudicate_im3_candidates.py`.
+
 Four source rows reported Prince William County, Virginia, while their centroids fall in
 Manassas under the published 2025 Census polygons. Both values remain auditable: bronze
 records preserve the source report and canonical/public geography uses point-in-polygon.

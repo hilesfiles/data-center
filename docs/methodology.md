@@ -49,13 +49,17 @@ exactly one campus. It groups 953 source operator assertions into 161 provisiona
 operator entities using Unicode, case, and whitespace normalization only. It does not
 infer parent companies, ownership, or corporate aliases.
 
-Spatial plausibility is not treated as proof of physical identity. Eleven point records
-inside building footprints remain possible-duplicate review candidates, and five
-building/campus intersections remain membership candidates because the footprint is not
-wholly inside exactly one campus. No source object is merged automatically. The site
-loads this resolution state from separate static JSON so the pinned ingest artifacts and
-their manifest remain immutable.
+Spatial plausibility is not treated as proof of physical identity. A curated second pass
+reviewed all sixteen candidates against source attributes, geometry diagnostics, and ten
+official operator, SEC, or federal sources. Three address/name pairs were merged into
+canonical physical facilities while preserving the superseded source record and redirect.
+Eight point sites were explicitly not merged because they represent separately operated
+sites, suites, exchanges, or computing systems inside a larger building; these now use a
+`located_within_building` relationship. Two partial campus links were accepted, one
+cross-operator campus link was rejected, and two geometrically inconsistent unnamed
+campuses remain pending. The pinned ingest and first-pass resolution artifacts remain
+immutable; adjudication is a downstream JSON layer.
 
 The seed does not establish operating dates, lifecycle status, historical completeness,
-MW capacity, or causal effects. Candidate review, historical reconstruction, outcome
-panels, and econometric estimation remain future work.
+MW capacity, or causal effects. The two escalated candidate reviews, historical
+reconstruction, outcome panels, and econometric estimation remain future work.

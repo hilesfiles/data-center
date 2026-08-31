@@ -9,7 +9,10 @@ import {
   type StyleSpecification,
 } from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
-import type { PublicEntityResolutionRecord } from "./types";
+import type {
+  PublicEntityAdjudicationRecord,
+  PublicEntityResolutionRecord,
+} from "./types";
 
 interface MapPanelProps {
   selectedFips: string | null;
@@ -72,19 +75,21 @@ export function MapPanel({ selectedFips, onSelectCounty }: MapPanelProps) {
     map.on("load", async () => {
       try {
         const base = import.meta.env.BASE_URL;
-        const [countiesResponse, facilitiesResponse, coverageResponse, resolutionResponse] = await Promise.all([
+        const [countiesResponse, facilitiesResponse, coverageResponse, resolutionResponse, adjudicationResponse] = await Promise.all([
           fetch(`${base}data/v1/maps/counties.geojson`),
           fetch(`${base}data/v1/maps/facilities.geojson`),
           fetch(`${base}data/v1/counties/facility-source-coverage.json`),
           fetch(`${base}data/v1/entity-resolution/index.json`),
+          fetch(`${base}data/v1/entity-resolution/adjudication-index.json`),
         ]);
-        if (!countiesResponse.ok || !facilitiesResponse.ok || !coverageResponse.ok || !resolutionResponse.ok) {
+        if (!countiesResponse.ok || !facilitiesResponse.ok || !coverageResponse.ok || !resolutionResponse.ok || !adjudicationResponse.ok) {
           throw new Error("A required map artifact could not be loaded.");
         }
         const counties = await countiesResponse.json();
         const facilities = await facilitiesResponse.json();
         const coverage = await coverageResponse.json();
         const resolution = (await resolutionResponse.json()) as PublicEntityResolutionRecord[];
+        const adjudication = (await adjudicationResponse.json()) as PublicEntityAdjudicationRecord[];
         const coverageByFips = new globalThis.Map(
           coverage.map((record: { county_fips: string; source_record_count: number }) => [
             record.county_fips,
@@ -108,17 +113,26 @@ export function MapPanel({ selectedFips, onSelectCounty }: MapPanelProps) {
         const resolutionByEntity = new globalThis.Map(
           resolution.map((record) => [record.entity_id, record]),
         );
+        const adjudicationByEntity = new globalThis.Map(
+          adjudication.map((record) => [record.source_entity_id, record]),
+        );
         facilities.features = facilities.features.map(
           (feature: { properties: Record<string, unknown> }) => {
             const record = resolutionByEntity.get(feature.properties.entity_id as string);
+            const adjudicated = adjudicationByEntity.get(feature.properties.entity_id as string);
+            const pendingCount = adjudicated?.candidate_outcomes.filter(
+              (outcome) => outcome.decision === "escalate",
+            ).length ?? 0;
             return {
               ...feature,
               properties: {
                 ...feature.properties,
-                campus_id: record?.campus_id ?? null,
+                campus_id: adjudicated?.campus_id ?? record?.campus_id ?? null,
                 operator_canonical_name: record?.operator_canonical_name ?? null,
-                pending_candidate_count: record?.pending_candidate_ids.length ?? 0,
-                resolution_status: record?.resolution_status ?? "source_only",
+                pending_candidate_count: pendingCount,
+                resolution_status: adjudicated?.identity_status ?? record?.resolution_status ?? "source_only",
+                resolved_entity_id: adjudicated?.resolved_entity_id ?? feature.properties.entity_id,
+                container_facility_id: adjudicated?.container_facility_id ?? null,
               },
             };
           },
@@ -185,12 +199,7 @@ export function MapPanel({ selectedFips, onSelectCounty }: MapPanelProps) {
               "#ffbf69",
               "#f7e2b2",
             ],
-            "circle-stroke-color": [
-              "case",
-              [">", ["get", "pending_candidate_count"], 0],
-              "#c7522a",
-              "#172a33",
-            ],
+            "circle-stroke-color": ["match", ["get", "resolution_status"], "review_pending", "#c7522a", "merged", "#76518f", "distinct_within_building", "#277da1", "#172a33"],
             "circle-stroke-width": [
               "case",
               [">", ["get", "pending_candidate_count"], 0],
@@ -243,6 +252,11 @@ export function MapPanel({ selectedFips, onSelectCounty }: MapPanelProps) {
           const review = pending
             ? `<br/><strong>${pending} pending identity review${pending === 1 ? "" : "s"}</strong>`
             : "";
+          const identityStatus = properties.resolution_status === "merged"
+            ? `<br/><strong>Merged:</strong> redirects to ${escapeHtml(properties.resolved_entity_id)}`
+            : properties.resolution_status === "distinct_within_building"
+              ? `<br/><strong>Reviewed:</strong> distinct site within a larger building`
+              : "";
           const footprint = typeof properties.footprint_sqft === "number"
             ? `<br/>Mapped footprint: ${properties.footprint_sqft.toLocaleString()} sq ft`
             : "";
@@ -250,7 +264,7 @@ export function MapPanel({ selectedFips, onSelectCounty }: MapPanelProps) {
             .setLngLat(event.lngLat)
             .setHTML(
               `<strong>${escapeHtml(properties.display_name)}</strong><br/>` +
-                `IM3 ${layer} source record${operator}${normalizedOperator}${campusLink}${footprint}${review}`,
+                `IM3 ${layer} source record${operator}${normalizedOperator}${campusLink}${footprint}${identityStatus}${review}`,
             )
             .addTo(map);
         });
@@ -288,6 +302,11 @@ export function MapPanel({ selectedFips, onSelectCounty }: MapPanelProps) {
         <span className="legend-title">IM3 source records</span>
         <div className="legend-ramp" aria-hidden="true" />
         <div className="legend-labels"><span>no source record</span><span>100+</span></div>
+        <div className="review-key">
+          <span><i className="key-dot key-pending" />pending</span>
+          <span><i className="key-dot key-merged" />merged</span>
+          <span><i className="key-dot key-contained" />contained</span>
+        </div>
       </div>
     </div>
   );
