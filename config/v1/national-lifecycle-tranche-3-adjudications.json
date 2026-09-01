@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "artifact_type": "national_lifecycle_tranche_adjudications",
-  "generated_at": "2026-09-01T23:30:00Z",
+  "generated_at": "2026-09-02T00:00:00Z",
   "record_count": 8,
   "records": [
     {
@@ -11,7 +11,7 @@
       "decision": "accept",
       "resolved_current_status": "operational",
       "confidence": 0.98,
-      "rationale": "FirstLight's current data-center page identifies its active Brunswick facility and publishes present operating specifications. A MaineDOT utility record independently associates FirstLight with 14 Resilient Circle, matching the mapped building. The current 52,000-square-foot facility figure is accepted as an exact-facility observation; Oxford Networks is retained only as the historical seed name.",
+      "rationale": "FirstLight's current data-center page identifies its active Brunswick facility and publishes present operating specifications. A MaineDOT utility record independently associates FirstLight with 14 Resilient Circle, matching the mapped building. Contemporaneous local reporting states that Resilient Tier-V had opened its doors at the former Brunswick Naval Air Station by September 28, 2011, supplying an operational-no-later-than event for the exact facility. The current 52,000-square-foot facility figure is accepted as an exact-facility observation; Oxford Networks is retained only as the historical seed name.",
       "evidence": [
         {
           "source_id": "src_firstlight_brunswick_current_2026",
@@ -38,10 +38,27 @@
           "finding": "FirstLight reports 52,000 square feet for the Brunswick facility.",
           "disposition": "supporting",
           "claim_confidence": 0.98
+        },
+        {
+          "source_id": "src_bdn_oxford_resilient_open_20110928",
+          "attribute_path": "event.operational",
+          "raw_value": {"type": "date", "value": {"date": "2011-09-28", "precision": "day"}},
+          "finding": "Bangor Daily News reported on September 28, 2011 that Resilient Tier-V had opened its doors at the former Brunswick Naval Air Station, establishing operation no later than the article date.",
+          "disposition": "supporting",
+          "claim_confidence": 0.96
         }
       ],
       "observations": [
         {"metric_code": "facility.area.building_sqft_observed", "value": 52000, "unit": "square foot", "period": {"year": 2026, "precision": "year"}, "source_id": "src_firstlight_brunswick_current_2026"}
+      ],
+      "events": [
+        {
+          "event_type": "operational",
+          "when": {"date": "2011-09-28", "precision": "day"},
+          "source_id": "src_bdn_oxford_resilient_open_20110928",
+          "confidence": 0.96,
+          "notes": "Operational no later than the September 28, 2011 contemporaneous report. The article states that Resilient Tier-V had opened earlier that spring, but the publication date is retained as the conservative day-precision bound rather than inventing an opening date."
+        }
       ],
       "record_status": "active"
     },

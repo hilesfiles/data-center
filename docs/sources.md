@@ -106,7 +106,7 @@ county profiles lazy-load only their selected state partition.
 
 - Treatment definition: `trt_first_entry_v1`
 - Geography: 3,144 current Census counties and county equivalents
-- Reviewed dated operational events: 9
+- Reviewed dated operational events: 10
 - Evidence- and history-window-qualified events: 4
 - Verified county first-entry dates: 0
 - Eligible treatment counties: 0
@@ -118,8 +118,9 @@ operation at QTS Atlanta DC1, SunGard's signed March 27, 2002 filing documenting
 at the exact present NY7 site in North Bergen, and Switch's year-level account of SUPERNAP/NAP7's
 2009 debut, EdgeConneX's March 11, 2015 release establishing operation of its Southfield
 facility no later than that date, FiberNet's signed March 28, 2003 filing documenting a
-carrier-hotel operation at the exact present ORD11 address, and UFIT's maintained history placing
-the East Campus Research Computing Center's opening in 2012. Clark County's September 3, 2008 franchise filing identifies NAP4 as an existing
+carrier-hotel operation at the exact present ORD11 address, UFIT's maintained history placing
+the East Campus Research Computing Center's opening in 2012, and contemporaneous reporting that
+Resilient Tier-V's Brunswick facility had opened by September 28, 2011. Clark County's September 3, 2008 franchise filing identifies NAP4 as an existing
 data center while NAP7 was still under construction, so NAP7 cannot be the county's first entry.
 The Clark candidate passes the panel window but fails the year-precision evidence gate. Fulton
 also fails the evidence and pre-period gates; Hudson passes the evidence gate but has only one
@@ -137,7 +138,10 @@ two pre-periods; Digital Realty's SEC filing documents the separate 350 East Cer
 1999–2000 data-center conversion, so ORD11 is also rejected as first entry. Alachua's year-only
 2012 candidate passes the panel window but fails the evidence threshold; UF's March 31, 2003
 administrative record independently identifies the Northeast Regional Data Center as a separate
-24/365 multipurpose computing facility, so the East Campus anchor is rejected too. These counties'
+24/365 multipurpose computing facility, so the East Campus anchor is rejected too. Cumberland's
+Brunswick anchor passes the panel window but fails the authoritative-source gate; the University of
+Maine System's 2009 report identifies the separate 340 Cumberland Avenue site as an existing Portland
+colocation facility, so the Brunswick anchor is also rejected. These counties'
 true first entries remain unresolved. Public county
 assessments
 are JSON-only and split into 51 state/DC partitions. Missing reviewed events do not establish

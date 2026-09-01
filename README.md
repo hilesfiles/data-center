@@ -88,7 +88,7 @@ python scripts/build_county_first_entry_treatments.py
 The registry evaluates reviewed dated operational events against the configured evidence
 and panel-window rules, then requires a separate explicit verification that the event is the
 county's first data-center entry. It publishes 51 lazy-loaded state/DC JSON partitions.
-The current evidence contains nine reviewed dated facility events. Four pass both the evidence
+The current evidence contains ten reviewed dated facility events. Four pass both the evidence
 and panel-window gates, but zero have verified county-first-entry status, so model readiness is
 `insufficient_eligible_treatments` and no model run is authorized. Absence of a reviewed event
 is never interpreted as never treated.
@@ -239,7 +239,7 @@ validation can be added later to CI with a standards-compliant Draft 2020-12 val
   301,824 governed observations for 2001–2024. It is complete for 3,064 counties, partial
   for 79, and unavailable for Kalawao County. It is research infrastructure, not a model run.
 - County first-entry treatment: all 3,144 counties have governed assessments. Dated candidates
-  in Santa Clara, Maricopa, Fulton, Clark, Monroe, Oakland, Cook, and Alachua counties are each rejected by
+  in Santa Clara, Maricopa, Fulton, Clark, Monroe, Oakland, Cook, Alachua, and Cumberland counties are each rejected by
   documented earlier operations. Hudson County has an exact-facility operational-no-later-than anchor dated
   March 27, 2002, but its true first entry remains unresolved. The Santa Clara and Maricopa
   events pass evidence and history-window thresholds; Clark passes the history window but not
@@ -247,8 +247,9 @@ validation can be added later to CI with a standards-compliant Draft 2020-12 val
   predecessor operation, Oakland passes both gates but has a documented earlier 123NET operation,
   Cook passes the evidence gate but has only two pre-periods and a documented earlier 350 East
   Cermak operation, Alachua passes the history window but its year-only date fails the evidence
-  threshold and a separate UF data center was operating in 2003, and Fulton and Hudson also do
-  not pass both gates.
+  threshold and a separate UF data center was operating in 2003, and Cumberland passes the history
+  window but its local-news anchor fails the authoritative-source gate and 340 Cumberland Avenue was
+  already an existing Portland colocation facility in 2009. Fulton and Hudson also do not pass both gates.
   Zero counties are currently treatment-eligible and no county is classified as never treated.
 - County first-entry research: 217 facility counties meet the complete-history prerequisite.
   Twenty-four are in the balanced initial tranche and 193 remain in the national backlog;
@@ -259,7 +260,7 @@ validation can be added later to CI with a standards-compliant Draft 2020-12 val
 
 ## Next priority
 
-Continue the remaining 15 counties in the initial tranche against local-government, permit,
+Continue the remaining 14 counties in the initial tranche against local-government, permit,
 planning, assessor, utility, regulatory, operator, and contemporaneous news records. Each
 adjudication must
 identify the earliest dated operation, establish exact facility identity, assess county

@@ -2,9 +2,9 @@
   "schema_version": "1.0.0",
   "artifact_type": "county_first_entry_anchor_adjudications",
   "artifact_version": "2026.09.01",
-  "generated_at": "2026-09-01T23:30:00Z",
+  "generated_at": "2026-09-02T00:00:00Z",
   "record_schema": "https://dccio.org/schemas/v1/county-first-entry-adjudication.schema.json",
-  "record_count": 9,
+  "record_count": 10,
   "records": [
     {
       "schema_version": "1.0.0",
@@ -401,6 +401,53 @@
       "rationale": "UFIT's maintained history supplies a year-precision 2012 operational anchor for the exact East Campus Research Computing Center, and UF's 2011 construction announcement establishes that building's data-center and HPC identity. The candidate cannot be Alachua County's first data-center entry because UF's March 31, 2003 administrative record describes the separate Northeast Regional Data Center as a large multipurpose computing facility operating 24/365. The current two-record canonical inventory is co-located at East Campus and does not establish a complete legacy inventory, so the county's true first entry remains unresolved and no treatment date is assigned.",
       "created_at": "2026-09-01T23:30:00Z",
       "updated_at": "2026-09-01T23:30:00Z",
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "county_first_entry_adjudication_id": "fea_23005_firstlight_brunswick_20110928_rejected",
+      "first_entry_research_candidate_id": "fer_5807887e30e0ba33dcef",
+      "treatment_definition_id": "trt_first_entry_v1",
+      "candidate_event_evaluation_id": "tev_0089745fc5f12751bbdd",
+      "county_fips": "23005",
+      "county_name": "Cumberland County",
+      "state_abbr": "ME",
+      "resolution_state": "candidate_rejected_first_entry",
+      "decision": "reject_candidate_as_first_entry",
+      "county_first_entry_verified": false,
+      "inventory_completeness_status": "not_established",
+      "earlier_operations_search_status": "documented_incomplete",
+      "required_finding_status": {
+        "earliest_dated_operational_event": "partial",
+        "exact_facility_identity_for_earliest_event": "resolved",
+        "county_inventory_completeness": "unresolved",
+        "documented_search_for_earlier_operations": "resolved"
+      },
+      "earlier_operational_findings": [
+        {
+          "facility_id": "fac_im3_point_07171975407",
+          "canonical_name": "340 Cumberland Avenue Portland carrier hotel",
+          "temporal_relation": "operational_no_later_than",
+          "when": {"date": "2009-06-08", "precision": "day"},
+          "source_ids": [
+            "src_ums_340_cumberland_colocation_20090608",
+            "src_mca_340_cumberland_carrier_hotel_2022"
+          ],
+          "finding": "The University of Maine System's June 8, 2009 report includes a May 14 network status update naming 340 Cumberland as one of Portland's two existing colocation facilities. Maine Connectivity Authority later identifies the exact address as Maine's carrier hotel and names FirstLight among the carriers housed there, corroborating the canonical point's address and operator relationship.",
+          "confidence": 0.96
+        }
+      ],
+      "source_ids": [
+        "src_firstlight_brunswick_current_2026",
+        "src_mainedot_firstlight_utility_2023",
+        "src_bdn_oxford_resilient_open_20110928",
+        "src_ums_340_cumberland_colocation_20090608",
+        "src_mca_340_cumberland_carrier_hotel_2022"
+      ],
+      "authoritative_source_types": ["legislative_record", "state_record", "operator_release"],
+      "rationale": "Bangor Daily News supplies a conservative September 28, 2011 operational-no-later-than anchor for the Resilient Tier-V facility at the former Brunswick Naval Air Station; FirstLight's current facility page and MaineDOT's address record establish continuity to the exact mapped building at 14 Resilient Circle. The Brunswick candidate cannot be Cumberland County's first entry because the University of Maine System's June 8, 2009 report identifies 340 Cumberland in Portland as an existing colocation facility. Maine Connectivity Authority's later official application corroborates the exact address as Maine's carrier hotel and names FirstLight among its occupants. The two-record current canonical inventory does not establish a complete historical county inventory, so the true first entry remains unresolved and no treatment date is assigned.",
+      "created_at": "2026-09-02T00:00:00Z",
+      "updated_at": "2026-09-02T00:00:00Z",
       "record_status": "active"
     }
   ]
