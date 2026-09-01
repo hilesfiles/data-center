@@ -137,7 +137,7 @@ post-treatment years.
 
 Passing those checks is necessary but not sufficient. A facility opening becomes a county
 first-entry treatment only when the reviewed adjudication explicitly verifies that it is the
-first data-center operation in that county. The current registry retains eight facility-event
+first data-center operation in that county. The current registry retains nine facility-event
 candidates: NTT SV1 in Santa Clara County (2021-04-13, DQS 93.10, 20 pre/3 post years),
 Apple's Mesa facility in Maricopa County (2017-03 month precision, DQS 85.74, 16 pre/7 post
 years), and a contemporaneous observation of QTS Atlanta DC1 in Fulton County (2006-10-03,
@@ -147,7 +147,9 @@ NAP7 in Clark County (2009 year precision, DQS 72.96, 8 pre/15 post years), IU's
 Bloomington Data Center dedication (2009-11-05, DQS 96.04, 8 pre/15 post years), and an
 operational-no-later-than observation for EdgeConneX DET01 in Oakland County (2015-03-11,
 DQS 96.04, 14 pre/9 post years), and an operational-no-later-than observation for Digital
-Realty ORD11 in Cook County (2003-03-28, DQS 95.06, 2 pre/21 post years). The Santa
+Realty ORD11 in Cook County (2003-03-28, DQS 95.06, 2 pre/21 post years), and the UF East
+Campus Research Computing Center in Alachua County (2012 year precision, DQS 76.05, 11 pre/12
+post years). The Santa
 Clara and Maricopa candidates pass the evidence and panel-window gates but fail county-first-entry
 verification. Fulton's trade-press candidate fails the authoritative-source and seven-pre-period
 gates and is independently rejected by documented earlier operation. Hudson passes the evidence
@@ -161,7 +163,10 @@ operation on October 24, 2001. Oakland passes both quantitative gates but is rej
 123NET documents a separate operating and recently expanded Southfield data center on June 20,
 2014, before the DET01 anchor. Cook passes the evidence gate but fails the seven-pre-period gate
 and is independently rejected because the Lakeside Technology Center at 350 East Cermak was
-converted into an operating data-center facility in 1999–2000, before the ORD11 anchor. Therefore
+converted into an operating data-center facility in 1999–2000, before the ORD11 anchor. Alachua's
+year-only candidate passes the panel window but fails the evidence threshold and is independently
+rejected because UF identifies its separate Northeast Regional Data Center as an operating 24/365
+computing facility on March 31, 2003. Therefore
 all 3,144 counties have an assessment, zero are eligible,
 and no model run is authorized. Counties without a reviewed dated event remain unknown for
 treatment purposes; they are not labeled never treated.
@@ -178,8 +183,9 @@ the feasibility of auditing the county's current facility inventory (20%), panel
 (15%), and source-identity coverage (10%). Inventory feasibility is inversely scaled by the
 log of the active facility count, so a smaller inventory is treated as easier to audit—not as
 more likely to be newly treated. The initial tranche contains 24 counties, six per Census
-region and no more than two per state. Fulton, Hudson, Clark, Monroe, Oakland, Cook, Maricopa, and
-Santa Clara counties are `research_status: evidence_collected`; the other 209 records remain queued.
+region and no more than two per state. Fulton, Hudson, Clark, Monroe, Oakland, Cook, Alachua,
+Maricopa, and Santa Clara counties are `research_status: evidence_collected`; the other 208 records
+remain queued.
 
 Every adjudication must establish an earliest dated operational event, exact facility identity,
 county inventory completeness, and a documented search for earlier operations. Failure to
@@ -271,11 +277,12 @@ Current first-party facility records support exact identity for six; Sandia reso
 confidence from an official Building 880 Annex data-center record combined with Sandia's
 maintained HPC location page for the same building.
 
-The batch now contains twenty-four claims, one dated operational event, and seven normalized
-observations. The dated event conservatively records DET01 as operational no later than March 11,
-2015: EdgeConneX's release describes the Southfield facility in an active connectivity partnership,
+The batch now contains twenty-five claims, two dated operational events, and seven normalized
+observations. One event conservatively records DET01 as operational no later than March 11, 2015:
+EdgeConneX's release describes the Southfield facility in an active connectivity partnership,
 the current data sheet maps DET01 to 21005 Lahser Road, and Southfield's 2012-2013 financial report
-documents that exact address as a vacant shell before the interior build-out.
+documents that exact address as a vacant shell before the interior build-out. The other retains
+UFIT's year-precision 2012 opening for the East Campus Research Computing Center.
 
 SAP COS02 remains unresolved. SAP's current cloud-location list establishes Colorado Springs
 operation, and a local building record establishes a data-center project at the mapped address,

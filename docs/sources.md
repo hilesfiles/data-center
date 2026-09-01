@@ -106,7 +106,7 @@ county profiles lazy-load only their selected state partition.
 
 - Treatment definition: `trt_first_entry_v1`
 - Geography: 3,144 current Census counties and county equivalents
-- Reviewed dated operational events: 8
+- Reviewed dated operational events: 9
 - Evidence- and history-window-qualified events: 4
 - Verified county first-entry dates: 0
 - Eligible treatment counties: 0
@@ -117,8 +117,9 @@ Mesa customer service beginning in March 2017, a contemporaneous October 2006 ob
 operation at QTS Atlanta DC1, SunGard's signed March 27, 2002 filing documenting operation
 at the exact present NY7 site in North Bergen, and Switch's year-level account of SUPERNAP/NAP7's
 2009 debut, EdgeConneX's March 11, 2015 release establishing operation of its Southfield
-facility no later than that date, and FiberNet's signed March 28, 2003 filing documenting a
-carrier-hotel operation at the exact present ORD11 address. Clark County's September 3, 2008 franchise filing identifies NAP4 as an existing
+facility no later than that date, FiberNet's signed March 28, 2003 filing documenting a
+carrier-hotel operation at the exact present ORD11 address, and UFIT's maintained history placing
+the East Campus Research Computing Center's opening in 2012. Clark County's September 3, 2008 franchise filing identifies NAP4 as an existing
 data center while NAP7 was still under construction, so NAP7 cannot be the county's first entry.
 The Clark candidate passes the panel window but fails the year-precision evidence gate. Fulton
 also fails the evidence and pre-period gates; Hudson passes the evidence gate but has only one
@@ -133,8 +134,11 @@ while 123NET's June 20, 2014 operator release documents a separate operating and
 data center at 24700 Northwestern Highway. Oakland's 2015 DET01 anchor passes both quantitative
 gates but is rejected as first entry. Cook's ORD11 anchor passes the evidence gate but has only
 two pre-periods; Digital Realty's SEC filing documents the separate 350 East Cermak facility's
-1999–2000 data-center conversion, so ORD11 is also rejected as first entry. Both counties' true
-first entries remain unresolved. Public county
+1999–2000 data-center conversion, so ORD11 is also rejected as first entry. Alachua's year-only
+2012 candidate passes the panel window but fails the evidence threshold; UF's March 31, 2003
+administrative record independently identifies the Northeast Regional Data Center as a separate
+24/365 multipurpose computing facility, so the East Campus anchor is rejected too. These counties'
+true first entries remain unresolved. Public county
 assessments
 are JSON-only and split into 51 state/DC partitions. Missing reviewed events do not establish
 a never-treated comparison group.
@@ -265,7 +269,8 @@ observations are building area for FirstLight Brunswick, Element Critical Chicag
 Lowell, EdgeConneX DET01, and CoreSite AT2, plus power capacity for Chicago Two and DET01.
 EdgeConneX's March 11, 2015 connectivity-partnership release supplies DET01's conservative
 operational-no-later-than event, while Southfield's 2012-2013 financial report establishes that
-the exact 21005 Lahser Road site was still a vacant shell before build-out.
+the exact 21005 Lahser Road site was still a vacant shell before build-out. UFIT's maintained
+history supplies the second event, a year-precision 2012 opening for the East Campus facility.
 
 SAP's current list establishes a Colorado Springs data-center location, and a Pikes Peak Regional
 Building Department record establishes data-center construction at 2345 Windswept View. The

@@ -2,9 +2,9 @@
   "schema_version": "1.0.0",
   "artifact_type": "county_first_entry_anchor_adjudications",
   "artifact_version": "2026.09.01",
-  "generated_at": "2026-09-01T23:00:00Z",
+  "generated_at": "2026-09-01T23:30:00Z",
   "record_schema": "https://dccio.org/schemas/v1/county-first-entry-adjudication.schema.json",
-  "record_count": 8,
+  "record_count": 9,
   "records": [
     {
       "schema_version": "1.0.0",
@@ -359,6 +359,48 @@
       "rationale": "FiberNet Telecom Group's signed March 28, 2003 Form 10-K supplies an operational-no-later-than anchor for the exact 600 South Federal Street carrier hotel, and Digital Realty's current page maps that address to ORD11. The candidate cannot be Cook County's first data-center entry because Digital Realty's SEC property history states that the separate 350 East Cermak Road building was completely renovated in 1999-2000 to create a data center and Internet gateway. Cook County's 28-facility current canonical inventory and earlier predecessor inventory have not been proven complete, so the county's true first entry remains unresolved and no treatment date is assigned.",
       "created_at": "2026-09-01T23:00:00Z",
       "updated_at": "2026-09-01T23:00:00Z",
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "county_first_entry_adjudication_id": "fea_12001_uf_east_campus_2012_rejected",
+      "first_entry_research_candidate_id": "fer_b666cd59edc37c91af3d",
+      "treatment_definition_id": "trt_first_entry_v1",
+      "candidate_event_evaluation_id": "tev_7fdf4e8071cc8fe8267d",
+      "county_fips": "12001",
+      "county_name": "Alachua County",
+      "state_abbr": "FL",
+      "resolution_state": "candidate_rejected_first_entry",
+      "decision": "reject_candidate_as_first_entry",
+      "county_first_entry_verified": false,
+      "inventory_completeness_status": "not_established",
+      "earlier_operations_search_status": "documented_incomplete",
+      "required_finding_status": {
+        "earliest_dated_operational_event": "partial",
+        "exact_facility_identity_for_earliest_event": "resolved",
+        "county_inventory_completeness": "unresolved",
+        "documented_search_for_earlier_operations": "resolved"
+      },
+      "earlier_operational_findings": [
+        {
+          "facility_id": "fac_ca99e5f85cda2c9d8aa8",
+          "canonical_name": "University of Florida Northeast Regional Data Center",
+          "temporal_relation": "operational_no_later_than",
+          "when": {"date": "2003-03-31", "precision": "day"},
+          "source_ids": ["src_uf_nerdc_operating_20030331"],
+          "finding": "UF's March 31, 2003 administrative record identifies the Northeast Regional Data Center as a large multipurpose computing and network services facility operating continuously, 24 hours a day and 365 days a year.",
+          "confidence": 0.98
+        }
+      ],
+      "source_ids": [
+        "src_uf_research_computing_history_current_2026",
+        "src_uf_east_campus_groundbreaking_2011",
+        "src_uf_nerdc_operating_20030331"
+      ],
+      "authoritative_source_types": ["operator_release", "state_record"],
+      "rationale": "UFIT's maintained history supplies a year-precision 2012 operational anchor for the exact East Campus Research Computing Center, and UF's 2011 construction announcement establishes that building's data-center and HPC identity. The candidate cannot be Alachua County's first data-center entry because UF's March 31, 2003 administrative record describes the separate Northeast Regional Data Center as a large multipurpose computing facility operating 24/365. The current two-record canonical inventory is co-located at East Campus and does not establish a complete legacy inventory, so the county's true first entry remains unresolved and no treatment date is assigned.",
+      "created_at": "2026-09-01T23:30:00Z",
+      "updated_at": "2026-09-01T23:30:00Z",
       "record_status": "active"
     }
   ]

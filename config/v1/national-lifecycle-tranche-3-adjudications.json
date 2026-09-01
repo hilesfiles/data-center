@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "artifact_type": "national_lifecycle_tranche_adjudications",
-  "generated_at": "2026-09-01T22:00:00Z",
+  "generated_at": "2026-09-01T23:30:00Z",
   "record_count": 8,
   "records": [
     {
@@ -95,7 +95,7 @@
       "decision": "accept",
       "resolved_current_status": "operational",
       "confidence": 0.97,
-      "rationale": "UF's construction record defines the East Campus building as a data center with a dedicated High Performance Computing Center. UFIT's maintained history then identifies the East Campus facility as opened in 2012, HiPerGator production there from 2013, and later generations through the 2025 retirement of HiPerGator 2.0. Together the first-party records establish the mapped East Campus research-computing facility and current operation. The 2011 area figure was prospective and is not normalized.",
+      "rationale": "UF's construction record defines the East Campus building as a data center with a dedicated High Performance Computing Center. UFIT's maintained history identifies the East Campus facility as opened in 2012, HiPerGator production there from 2013, and later generations through the 2025 retirement of HiPerGator 2.0. The 2012 opening is retained as a year-precision operational event; together the first-party records establish the mapped East Campus research-computing facility and current operation. The 2011 area figure was prospective and is not normalized.",
       "evidence": [
         {
           "source_id": "src_uf_research_computing_history_current_2026",
@@ -113,6 +113,23 @@
           "finding": "UF's construction announcement establishes the building's data-center and HPC identity; its prospective 15,000-square-foot figure is retained only as context.",
           "disposition": "supporting",
           "claim_confidence": 0.98
+        },
+        {
+          "source_id": "src_uf_research_computing_history_current_2026",
+          "attribute_path": "event.operational",
+          "raw_value": {"type": "date", "value": {"year": 2012, "precision": "year"}},
+          "finding": "UFIT's maintained history identifies the East Campus facility as opened in 2012, establishing operation no later than that year without asserting a more precise opening date.",
+          "disposition": "supporting",
+          "claim_confidence": 0.97
+        }
+      ],
+      "events": [
+        {
+          "event_type": "operational",
+          "when": {"year": 2012, "precision": "year"},
+          "source_id": "src_uf_research_computing_history_current_2026",
+          "confidence": 0.97,
+          "notes": "Operational no later than the year 2012 based on UFIT's maintained opening history. The source does not provide a month or day."
         }
       ],
       "record_status": "active"
