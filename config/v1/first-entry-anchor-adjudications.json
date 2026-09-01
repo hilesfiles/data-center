@@ -4,7 +4,7 @@
   "artifact_version": "2026.09.01",
   "generated_at": "2026-09-02T04:00:00Z",
   "record_schema": "https://dccio.org/schemas/v1/county-first-entry-adjudication.schema.json",
-  "record_count": 31,
+  "record_count": 37,
   "records": [
     {
       "schema_version": "1.0.0",
@@ -1251,6 +1251,214 @@
       "created_at": "2026-09-02T06:00:00Z",
       "updated_at": "2026-09-02T06:00:00Z",
       "record_status": "provisional"
+    },
+    {
+      "schema_version": "1.0.0",
+      "county_first_entry_adjudication_id": "fea_06079_digitalwest_20130424_rejected",
+      "first_entry_research_candidate_id": "fer_a30237fd85a063ff6243",
+      "treatment_definition_id": "trt_first_entry_v1",
+      "candidate_event_evaluation_id": "tev_3cc4f4b33dc66cb2d5ba",
+      "county_fips": "06079",
+      "county_name": "San Luis Obispo County",
+      "state_abbr": "CA",
+      "resolution_state": "candidate_rejected_first_entry",
+      "decision": "reject_candidate_as_first_entry",
+      "county_first_entry_verified": false,
+      "inventory_completeness_status": "not_established",
+      "earlier_operations_search_status": "documented_incomplete",
+      "required_finding_status": {
+        "earliest_dated_operational_event": "partial",
+        "exact_facility_identity_for_earliest_event": "partial",
+        "county_inventory_completeness": "unresolved",
+        "documented_search_for_earlier_operations": "resolved"
+      },
+      "earlier_operational_findings": [
+        {
+          "facility_id": "fac_digitalwest_slo_historic_2003",
+          "canonical_name": "Digital West San Luis Obispo data center",
+          "temporal_relation": "operational_no_later_than",
+          "when": {"date": "2003-03-10", "precision": "day"},
+          "source_ids": ["src_internetnews_digitalwest_slo_20030310"],
+          "finding": "Contemporaneous trade reporting states that Digital West was serving customers worldwide from its San Luis Obispo data center on March 10, 2003. The report establishes an earlier county operation, although it does not print the street address needed to prove whether it was the exact later mapped suite.",
+          "confidence": 0.92
+        }
+      ],
+      "source_ids": ["src_digitalwest_soc2_audit_20130424", "src_internetnews_digitalwest_slo_20030310"],
+      "authoritative_source_types": ["operator_release", "trade_press"],
+      "rationale": "Digital West's exact-address release establishes the mapped operation by April 24, 2013, but contemporaneous reporting documents a Digital West data center operating somewhere in San Luis Obispo by March 10, 2003. The 2013 observation cannot be the county's first entry. The historical facility address and complete county inventory remain unresolved, so no treatment date is assigned.",
+      "created_at": "2026-09-01T22:45:00Z",
+      "updated_at": "2026-09-01T22:45:00Z",
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "county_first_entry_adjudication_id": "fea_06095_pge_2006_unresolved",
+      "first_entry_research_candidate_id": "fer_11e8c046a29713d38062",
+      "treatment_definition_id": "trt_first_entry_v1",
+      "candidate_event_evaluation_id": "tev_728ece5d08381c8556a2",
+      "county_fips": "06095",
+      "county_name": "Solano County",
+      "state_abbr": "CA",
+      "resolution_state": "unresolved",
+      "decision": "continue_research",
+      "county_first_entry_verified": false,
+      "inventory_completeness_status": "not_established",
+      "earlier_operations_search_status": "documented_incomplete",
+      "required_finding_status": {
+        "earliest_dated_operational_event": "partial",
+        "exact_facility_identity_for_earliest_event": "resolved",
+        "county_inventory_completeness": "unresolved",
+        "documented_search_for_earlier_operations": "partial"
+      },
+      "earlier_operational_findings": [],
+      "source_ids": ["src_cpuc_pge_nielsen_425_beck_2021", "src_bkf_pge_425_beck_data_center_current_2026", "src_im3_atlas_20260209"],
+      "authoritative_source_types": ["regulatory_filing", "other"],
+      "rationale": "PG&E's CPUC testimony and BKF's exact-address project record establish the 425 Beck Avenue data center operating no later than 2006. The governed map contains no other current Solano County facility, but neither the map nor the reviewed sources exclude earlier enterprise, institutional, carrier, utility, or decommissioned operations. Research therefore continues and no first-entry treatment date is assigned.",
+      "created_at": "2026-09-01T22:45:00Z",
+      "updated_at": "2026-09-01T22:45:00Z",
+      "record_status": "provisional"
+    },
+    {
+      "schema_version": "1.0.0",
+      "county_first_entry_adjudication_id": "fea_06099_mjc_2013_rejected",
+      "first_entry_research_candidate_id": "fer_be280a90d5cff1e50f54",
+      "treatment_definition_id": "trt_first_entry_v1",
+      "candidate_event_evaluation_id": "tev_ec03c0035768fa7ab8c4",
+      "county_fips": "06099",
+      "county_name": "Stanislaus County",
+      "state_abbr": "CA",
+      "resolution_state": "candidate_rejected_first_entry",
+      "decision": "reject_candidate_as_first_entry",
+      "county_first_entry_verified": false,
+      "inventory_completeness_status": "not_established",
+      "earlier_operations_search_status": "documented_incomplete",
+      "required_finding_status": {
+        "earliest_dated_operational_event": "partial",
+        "exact_facility_identity_for_earliest_event": "resolved",
+        "county_inventory_completeness": "unresolved",
+        "documented_search_for_earlier_operations": "resolved"
+      },
+      "earlier_operational_findings": [
+        {
+          "facility_id": "fac_yccd_mjc_west_data_center_historic",
+          "canonical_name": "YCCD existing MJC West Campus data center",
+          "temporal_relation": "operational_no_later_than",
+          "when": {"year": 2012, "precision": "year"},
+          "source_ids": ["src_yccd_primary_data_center_2013"],
+          "finding": "The district states that the Fall 2013 Primary Data Center was built to replace an existing West Campus facility that had outlived its functional use. Because new construction began in Summer 2012, the predecessor was operational no later than 2012.",
+          "confidence": 0.97
+        }
+      ],
+      "source_ids": ["src_yccd_primary_data_center_2013", "src_im3_atlas_20260209"],
+      "authoritative_source_types": ["local_government_record", "other"],
+      "rationale": "The mapped Primary Data Center opened in Fall 2013, but the district explicitly states that it replaced an existing West Campus data center already beyond its functional life. The 2013 event is therefore not Stanislaus County's first entry. The predecessor's commissioning date and the broader historical inventory remain unresolved.",
+      "created_at": "2026-09-01T22:45:00Z",
+      "updated_at": "2026-09-01T22:45:00Z",
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "county_first_entry_adjudication_id": "fea_08001_doubleclick_20070201_unresolved",
+      "first_entry_research_candidate_id": "fer_e84d482ae9ad2e46e137",
+      "treatment_definition_id": "trt_first_entry_v1",
+      "candidate_event_evaluation_id": "tev_ff7ba0533fd45260cf9f",
+      "county_fips": "08001",
+      "county_name": "Adams County",
+      "state_abbr": "CO",
+      "resolution_state": "unresolved",
+      "decision": "continue_research",
+      "county_first_entry_verified": false,
+      "inventory_completeness_status": "not_established",
+      "earlier_operations_search_status": "documented_incomplete",
+      "required_finding_status": {
+        "earliest_dated_operational_event": "partial",
+        "exact_facility_identity_for_earliest_event": "resolved",
+        "county_inventory_completeness": "unresolved",
+        "documented_search_for_earlier_operations": "partial"
+      },
+      "earlier_operational_findings": [],
+      "source_ids": ["src_doubleclick_epsilon_thornton_lease_20070201", "src_epa_doubleclick_thornton_order_200805"],
+      "authoritative_source_types": ["sec_filing", "regulatory_filing"],
+      "rationale": "The executed lease establishes the exact 12396 Grant Street building in critical data-center use on February 1, 2007, and EPA independently confirms the facility identity after Google's acquisition. The one-facility governed map does not establish a complete history of Adams County enterprise, institutional, carrier, or decommissioned data centers, so the county's true first entry remains unresolved.",
+      "created_at": "2026-09-01T22:45:00Z",
+      "updated_at": "2026-09-01T22:45:00Z",
+      "record_status": "provisional"
+    },
+    {
+      "schema_version": "1.0.0",
+      "county_first_entry_adjudication_id": "fea_11001_coresite_2006_rejected",
+      "first_entry_research_candidate_id": "fer_dc53d78e49e6b3ff146c",
+      "treatment_definition_id": "trt_first_entry_v1",
+      "candidate_event_evaluation_id": "tev_1aeff1561c9d3ac664fe",
+      "county_fips": "11001",
+      "county_name": "District of Columbia",
+      "state_abbr": "DC",
+      "resolution_state": "candidate_rejected_first_entry",
+      "decision": "reject_candidate_as_first_entry",
+      "county_first_entry_verified": false,
+      "inventory_completeness_status": "not_established",
+      "earlier_operations_search_status": "documented_incomplete",
+      "required_finding_status": {
+        "earliest_dated_operational_event": "partial",
+        "exact_facility_identity_for_earliest_event": "resolved",
+        "county_inventory_completeness": "unresolved",
+        "documented_search_for_earlier_operations": "resolved"
+      },
+      "earlier_operational_findings": [
+        {
+          "facility_id": "fac_dc_share_computer_center_historic",
+          "canonical_name": "District of Columbia SHARE Computer Center",
+          "temporal_relation": "operational_no_later_than",
+          "when": {"year": 1999, "precision": "year"},
+          "source_ids": ["src_dc_ocfo_share_y2k_1999", "src_dc_council_octo_share_center_2017"],
+          "finding": "The District's 1999 Y2K release states that its payroll application resided on the SHARE data-center mainframe, while the Council oversight record maps the SHARE Computer Center to 222 Massachusetts Avenue NW and documents a facility-upgrade project beginning in 2000.",
+          "confidence": 0.97
+        }
+      ],
+      "source_ids": ["src_sec_coresite_1275_k_2010", "src_dc_ocfo_share_y2k_1999", "src_dc_council_octo_share_center_2017"],
+      "authoritative_source_types": ["sec_filing", "local_government_record"],
+      "rationale": "CoreSite's 1275 K Street operation is established by 2006, but the District government documents its SHARE Computer Center and resident data-center mainframe operating by 1999. The CoreSite event cannot be the District's first operational entry. The complete historical inventory remains unverified, so no treatment date is assigned.",
+      "created_at": "2026-09-01T22:45:00Z",
+      "updated_at": "2026-09-01T22:45:00Z",
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "county_first_entry_adjudication_id": "fea_13117_ups_2019_rejected",
+      "first_entry_research_candidate_id": "fer_6fd9f935bf6164957d33",
+      "treatment_definition_id": "trt_first_entry_v1",
+      "candidate_event_evaluation_id": "tev_0b5acdc8073df8435122",
+      "county_fips": "13117",
+      "county_name": "Forsyth County",
+      "state_abbr": "GA",
+      "resolution_state": "candidate_rejected_first_entry",
+      "decision": "reject_candidate_as_first_entry",
+      "county_first_entry_verified": false,
+      "inventory_completeness_status": "not_established",
+      "earlier_operations_search_status": "documented_incomplete",
+      "required_finding_status": {
+        "earliest_dated_operational_event": "partial",
+        "exact_facility_identity_for_earliest_event": "resolved",
+        "county_inventory_completeness": "unresolved",
+        "documented_search_for_earlier_operations": "resolved"
+      },
+      "earlier_operational_findings": [
+        {
+          "facility_id": "fac_new_york_life_forsyth_historic",
+          "canonical_name": "New York Life Forsyth County data center",
+          "temporal_relation": "exact_operational_date",
+          "when": {"date": "2004-06-14", "precision": "day"},
+          "source_ids": ["src_forsyth_comp_plan_nylife_2004", "src_siteselection_nylife_forsyth_opening_2004"],
+          "finding": "The county comprehensive plan identifies New York Life's 5965 Cabot Parkway acquisition for a data center, and Site Selection reports the facility's June 14, 2004 opening ceremony in Forsyth County.",
+          "confidence": 0.96
+        }
+      ],
+      "source_ids": ["src_forsyth_economic_plan_data_centers_2019", "src_forsyth_comp_plan_nylife_2004", "src_siteselection_nylife_forsyth_opening_2004"],
+      "authoritative_source_types": ["planning_record", "trade_press"],
+      "rationale": "The county partnership documents UPS as an existing Forsyth County data-center facility by 2019, but New York Life opened a separate county data center on June 14, 2004. The UPS observation is therefore rejected as the county's first entry. Because the historical inventory may contain still earlier facilities, no verified first-entry treatment date is assigned.",
+      "created_at": "2026-09-01T22:45:00Z",
+      "updated_at": "2026-09-01T22:45:00Z",
+      "record_status": "active"
     }
   ]
 }

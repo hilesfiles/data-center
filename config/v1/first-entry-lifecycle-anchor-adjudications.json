@@ -4,7 +4,7 @@
   "artifact_version": "2026.09.02",
   "generated_at": "2026-09-02T04:00:00Z",
   "record_schema": "https://dccio.org/schemas/v1/national-lifecycle-evidence-adjudication.schema.json",
-  "record_count": 6,
+  "record_count": 14,
   "records": [
     {
       "schema_version": "1.0.0",
@@ -189,6 +189,260 @@
           "source_id": "src_kaiser_napa_green_it_20111024",
           "confidence": 0.98,
           "notes": "Operational no later than the operator's dated release documenting completed efficiency work and an existing Energy Star rating at the Napa data center."
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_3c7b2880b55fb17c0201",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "rejected",
+      "confidence": 0.99,
+      "rationale": "La Sierra University's official campus map expands the mapped label IT as Information Technology, and the university's IT page identifies the location as the IT Modular/Annex and a help-desk office. Neither source describes a purpose-built data-center facility. The OpenStreetMap data-center tag conflates a university department abbreviation with a data center, so the seed is rejected as a false positive.",
+      "evidence": [
+        {
+          "source_id": "src_lasierra_campus_map_current_2026",
+          "attribute_path": "facility.facility_type",
+          "raw_value": {"type": "text", "value": "Campus building code IT means Information Technology"},
+          "normalized_value": {"type": "classification", "code": "rejected"},
+          "finding": "The university's own map resolves the ambiguous IT label to its Information Technology department rather than a data-center facility.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        },
+        {
+          "source_id": "src_lasierra_it_current_2026",
+          "attribute_path": "facility.facility_type",
+          "raw_value": {"type": "text", "value": "Information Technology help desk at IT Modular/Annex and Ambs Hall"},
+          "finding": "The department page identifies an office and support function at the mapped location and publishes no data-center operation.",
+          "disposition": "supporting",
+          "claim_confidence": 0.98
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_484e511dd337ff5df4d2",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.96,
+      "rationale": "Digital West's contemporaneous April 24, 2013 release, issued from 3620 Sacramento Drive, reports completion of an independent SOC 2 examination focused on its data-center and colocation controls. The operator, address, and service description align with the mapped Digital West point and establish operation no later than the release date.",
+      "evidence": [
+        {
+          "source_id": "src_digitalwest_soc2_audit_20130424",
+          "attribute_path": "facility.current_status",
+          "raw_value": {"type": "classification", "code": "operational", "label": "Operating carrier-neutral data center with audited controls"},
+          "normalized_value": {"type": "classification", "code": "operational"},
+          "finding": "The exact-address operator release documents an operating San Luis Obispo data center and completed controls audit.",
+          "disposition": "supporting",
+          "claim_confidence": 0.96
+        }
+      ],
+      "events": [
+        {
+          "event_type": "operational",
+          "when": {"date": "2013-04-24", "precision": "day"},
+          "source_id": "src_digitalwest_soc2_audit_20130424",
+          "confidence": 0.96,
+          "notes": "Operational no later than Digital West's dated release documenting completion of a SOC 2 examination of the exact-address data-center and colocation operation."
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_760a97e362e71118502b",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.91,
+      "rationale": "BKF Engineers identifies an existing PG&E data center at the exact 425 Beck Avenue address and documents cooling, utility, resilience, and efficiency upgrades. PG&E's CPUC testimony supplies the same 425 Beck business address and states that its witness managed Data Center Facilities and led a significant retrofit beginning within his 2006-2016 tenure. Together the records establish the mapped facility operating no later than 2006, with year precision.",
+      "evidence": [
+        {
+          "source_id": "src_bkf_pge_425_beck_data_center_current_2026",
+          "attribute_path": "facility.current_status",
+          "raw_value": {"type": "classification", "code": "operational", "label": "Existing PG&E data center at 425 Beck Avenue"},
+          "normalized_value": {"type": "classification", "code": "operational"},
+          "finding": "The engineering project page maps PG&E data-center infrastructure and active resilience work to the exact governed address.",
+          "disposition": "supporting",
+          "claim_confidence": 0.96
+        },
+        {
+          "source_id": "src_cpuc_pge_nielsen_425_beck_2021",
+          "attribute_path": "facility.operational_date",
+          "raw_value": {"type": "text", "value": "425 Beck business address; managed Data Center Facilities and retrofit work during 2006-2016"},
+          "finding": "The sworn regulatory testimony supplies the earliest reviewed year anchor, although it does not state a commissioning date.",
+          "disposition": "supporting",
+          "claim_confidence": 0.88
+        }
+      ],
+      "events": [
+        {
+          "event_type": "operational",
+          "when": {"year": 2006, "precision": "year"},
+          "source_id": "src_cpuc_pge_nielsen_425_beck_2021",
+          "confidence": 0.88,
+          "notes": "Operational no later than 2006 based on the witness's 425 Beck address and stated 2006-2016 data-center-facilities management and retrofit responsibilities, corroborated by BKF's exact-address project record."
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_946d48cbf00f61447187",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.99,
+      "rationale": "Yosemite Community College District's official Measure E project record identifies the exact Modesto Junior College West Campus Primary Data Center, marks the project complete, and gives a Fall 2013 opening. It also states that the new facility replaced an existing West Campus data center that had exceeded its functional life.",
+      "evidence": [
+        {
+          "source_id": "src_yccd_primary_data_center_2013",
+          "attribute_path": "facility.current_status",
+          "raw_value": {"type": "classification", "code": "operational", "label": "Complete Primary Data Center opened Fall 2013"},
+          "normalized_value": {"type": "classification", "code": "operational"},
+          "finding": "The district directly identifies the mapped project, completion status, West Campus location, and opening season.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        }
+      ],
+      "events": [
+        {
+          "event_type": "operational",
+          "when": {"year": 2013, "precision": "year"},
+          "source_id": "src_yccd_primary_data_center_2013",
+          "confidence": 0.99,
+          "notes": "Opened in Fall 2013; the governed temporal model records the event at year precision because season precision is not supported."
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_ff77d671fbbeb9800ec7",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.99,
+      "rationale": "A February 1, 2007 SEC-filed lease identifies 12396 Grant Street as a building then used by DoubleClick as a critical data-center facility and leases equipped data-center space to Epsilon. EPA's 2008 compliance order independently maps DoubleClick and successor Google to the exact address. These records establish the mapped Thornton facility operating no later than February 1, 2007.",
+      "evidence": [
+        {
+          "source_id": "src_doubleclick_epsilon_thornton_lease_20070201",
+          "attribute_path": "facility.current_status",
+          "raw_value": {"type": "classification", "code": "operational", "label": "Building presently used as a critical data center facility"},
+          "normalized_value": {"type": "classification", "code": "operational"},
+          "finding": "The executed lease states the exact-address building was already in critical data-center use and details racks, power distribution, cooling, cabling, and security.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        },
+        {
+          "source_id": "src_epa_doubleclick_thornton_order_200805",
+          "attribute_path": "facility.identity",
+          "raw_value": {"type": "text", "value": "DoubleClick facility at 12396 Grant Street, Thornton, Colorado"},
+          "finding": "The federal order independently confirms the operator and exact facility address after Google's acquisition of DoubleClick.",
+          "disposition": "supporting",
+          "claim_confidence": 0.98
+        }
+      ],
+      "events": [
+        {
+          "event_type": "operational",
+          "when": {"date": "2007-02-01", "precision": "day"},
+          "source_id": "src_doubleclick_epsilon_thornton_lease_20070201",
+          "confidence": 0.99,
+          "notes": "Operational no later than the execution date of the exact-address lease describing the building's present critical data-center use."
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_8c6e30a7a3bf4b7f3c1d",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.99,
+      "rationale": "CoreSite's SEC registration statement identifies its leasehold at 1275 K Street, states that the lease commenced in June 2006, and reports 22,137 net rentable square feet of operating data-center and support space. The exact address and facility scale align with the mapped CoreSite DC1 point.",
+      "evidence": [
+        {
+          "source_id": "src_sec_coresite_1275_k_2010",
+          "attribute_path": "facility.current_status",
+          "raw_value": {"type": "classification", "code": "operational", "label": "22,137 square feet of operating data-center space at 1275 K Street"},
+          "normalized_value": {"type": "classification", "code": "operational"},
+          "finding": "The SEC filing supplies the exact address, lease commencement, operating area, occupancy, utility power, and customer count.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        }
+      ],
+      "events": [
+        {
+          "event_type": "operational",
+          "when": {"year": 2006, "precision": "year"},
+          "source_id": "src_sec_coresite_1275_k_2010",
+          "confidence": 0.99,
+          "notes": "Operational no later than 2006; the filing reports a June 2006 lease commencement and year-end operating data-center area and occupancy."
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_4296ccb16ceb849d13c2",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.93,
+      "rationale": "Forsyth County's economic-development partnership identifies UPS among the county's existing high-profile data-center facilities in its 2019 strategic plan. The operator and county align with the sole mapped UPS Data Center footprint, establishing operation no later than the plan year while retaining modest identity uncertainty because the plan does not print the street address.",
+      "evidence": [
+        {
+          "source_id": "src_forsyth_economic_plan_data_centers_2019",
+          "attribute_path": "facility.current_status",
+          "raw_value": {"type": "classification", "code": "operational", "label": "Existing UPS data-center facility in Forsyth County"},
+          "normalized_value": {"type": "classification", "code": "operational"},
+          "finding": "The county partnership names UPS as an existing data-center operator in a county with one governed UPS facility footprint.",
+          "disposition": "supporting",
+          "claim_confidence": 0.93
+        }
+      ],
+      "events": [
+        {
+          "event_type": "operational",
+          "when": {"year": 2019, "precision": "year"},
+          "source_id": "src_forsyth_economic_plan_data_centers_2019",
+          "confidence": 0.93,
+          "notes": "Operational no later than publication of the county partnership's strategic plan naming UPS among Forsyth County's existing data-center facilities."
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_fab56b758d0a51f9887d",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "rejected",
+      "confidence": 0.99,
+      "rationale": "FamilySearch's official location page identifies the mapped 661 Washington Street building as the Bear Lake Idaho FamilySearch Center, a public genealogy-research facility with limited hours, volunteers, computers, internet, and access to family-history records. FamilySearch's center description confirms this service model. The OpenStreetMap data-center tag is therefore rejected as a semantic false positive.",
+      "evidence": [
+        {
+          "source_id": "src_familysearch_bear_lake_center_current_2026",
+          "attribute_path": "facility.facility_type",
+          "raw_value": {"type": "text", "value": "Public FamilySearch center offering genealogy records, technology, and volunteer assistance"},
+          "normalized_value": {"type": "classification", "code": "rejected"},
+          "finding": "The operator's exact-address page describes a public family-history research center, not a data-center operation.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        },
+        {
+          "source_id": "src_familysearch_centers_about_current_2026",
+          "attribute_path": "facility.facility_type",
+          "raw_value": {"type": "text", "value": "FamilySearch centers provide genealogy help and public access to computers, internet, and records"},
+          "finding": "The operator's service definition explains the center label and rules out data-center infrastructure as the intended facility type.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
         }
       ],
       "record_status": "active"
