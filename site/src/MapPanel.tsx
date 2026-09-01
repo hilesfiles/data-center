@@ -14,6 +14,7 @@ import "maplibre-gl/dist/maplibre-gl.css";
 import maplibreWorkerUrl from "maplibre-gl/dist/maplibre-gl-worker.mjs?worker&url";
 import type {
   CountyEconomicBaseline,
+  CountyEmploymentWagesBaseline,
   CountyMapMetric,
   PublicEntityAdjudicationRecord,
   PublicEntityResolutionRecord,
@@ -93,6 +94,41 @@ const METRIC_CONFIG: Record<CountyMapMetric, {
     highLabel: "$200k+",
     stops: [[30_000, "#d8ddd5"], [50_000, "#9cc8c0"], [75_000, "#4c9892"], [100_000, "#17687a"], [200_000, "#0d3544"]],
   },
+  "covered-employment": {
+    property: "annual_avg_covered_employment",
+    title: "Covered employment · 2025",
+    lowLabel: "unavailable / low",
+    highLabel: "1M+",
+    stops: [[5_000, "#d8ddd5"], [25_000, "#9cc8c0"], [100_000, "#4c9892"], [500_000, "#17687a"], [1_000_000, "#0d3544"]],
+  },
+  establishments: {
+    property: "annual_avg_establishments",
+    title: "Covered establishments · 2025",
+    lowLabel: "unavailable / low",
+    highLabel: "100k+",
+    stops: [[500, "#d8ddd5"], [2_500, "#9cc8c0"], [10_000, "#4c9892"], [50_000, "#17687a"], [100_000, "#0d3544"]],
+  },
+  "total-wages": {
+    property: "total_annual_wages_nominal_usd",
+    title: "Total wages · 2025",
+    lowLabel: "unavailable / low",
+    highLabel: "$100B+",
+    stops: [[250_000_000, "#d8ddd5"], [1_000_000_000, "#9cc8c0"], [5_000_000_000, "#4c9892"], [25_000_000_000, "#17687a"], [100_000_000_000, "#0d3544"]],
+  },
+  "weekly-wage": {
+    property: "annual_avg_weekly_wage_nominal_usd",
+    title: "Average weekly wage · 2025",
+    lowLabel: "unavailable / low",
+    highLabel: "$2.5k+",
+    stops: [[500, "#d8ddd5"], [750, "#9cc8c0"], [1_000, "#4c9892"], [1_500, "#17687a"], [2_500, "#0d3544"]],
+  },
+  "private-construction-employment": {
+    property: "private_construction_annual_avg_employment",
+    title: "Private construction employment · 2025",
+    lowLabel: "suppressed / low",
+    highLabel: "100k+",
+    stops: [[250, "#d8ddd5"], [1_000, "#9cc8c0"], [5_000, "#4c9892"], [25_000, "#17687a"], [100_000, "#0d3544"]],
+  },
 };
 
 const countyFillExpression = (metric: CountyMapMetric): ExpressionSpecification => {
@@ -115,13 +151,19 @@ const wholeDollars = new Intl.NumberFormat("en-US", { style: "currency", currenc
 
 const countyPopupValue = (metric: CountyMapMetric, properties: Record<string, string | number | null>) => {
   const value = properties[METRIC_CONFIG[metric].property];
-  if (value == null) return "BEA value unavailable for this Census geography";
+  const qcewMetric = ["covered-employment", "establishments", "total-wages", "weekly-wage", "private-construction-employment"].includes(metric);
+  if (value == null) return qcewMetric ? "BLS QCEW value suppressed or unavailable" : "BEA value unavailable for this Census geography";
   const number = Number(value);
   if (metric === "im3-source-records") {
     return `${number} IM3 source record${number === 1 ? "" : "s"}`;
   }
   if (metric === "population") return `2024 population: ${number.toLocaleString("en-US")}`;
   if (metric === "per-capita-income") return `2024 nominal per-capita personal income: ${wholeDollars.format(number)}`;
+  if (metric === "covered-employment") return `2025 annual-average covered employment: ${number.toLocaleString("en-US")}`;
+  if (metric === "establishments") return `2025 annual-average covered establishments: ${number.toLocaleString("en-US")}`;
+  if (metric === "total-wages") return `2025 nominal total annual wages: $${compactNumber.format(number)}`;
+  if (metric === "weekly-wage") return `2025 nominal average weekly wage: ${wholeDollars.format(number)}`;
+  if (metric === "private-construction-employment") return `2025 annual-average private construction employment: ${number.toLocaleString("en-US")}`;
   const label = metric === "real-gdp" ? "real GDP (chained 2017 dollars)" : "nominal personal income";
   return `2024 ${label}: $${compactNumber.format(number)}`;
 };
@@ -171,11 +213,12 @@ export function MapPanel({ metric, selectedFips, onSelectCounty }: MapPanelProps
     map.on("load", async () => {
       try {
         const base = import.meta.env.BASE_URL;
-        const [countiesResponse, facilitiesResponse, coverageResponse, economicResponse, resolutionResponse, adjudicationResponse, lifecycleResponse, lifecycleResultsResponse, nationalLifecycleResponse, nationalLifecycleResultsResponse, nationalLifecycleResults2Response, nationalLifecycleResults3Response, nationalLifecycleResults4Response, nationalLifecycleResults5Response, nationalLifecycleResults6Response] = await Promise.all([
+        const [countiesResponse, facilitiesResponse, coverageResponse, economicResponse, employmentWagesResponse, resolutionResponse, adjudicationResponse, lifecycleResponse, lifecycleResultsResponse, nationalLifecycleResponse, nationalLifecycleResultsResponse, nationalLifecycleResults2Response, nationalLifecycleResults3Response, nationalLifecycleResults4Response, nationalLifecycleResults5Response, nationalLifecycleResults6Response] = await Promise.all([
           fetch(`${base}data/v1/maps/counties.geojson`),
           fetch(`${base}data/v1/maps/facilities.geojson`),
           fetch(`${base}data/v1/counties/facility-source-coverage.json`),
           fetch(`${base}data/v1/counties/economic-baseline-2024.json`),
+          fetch(`${base}data/v1/counties/employment-wages-baseline-2025.json`),
           fetch(`${base}data/v1/entity-resolution/index.json`),
           fetch(`${base}data/v1/entity-resolution/final-index.json`),
           fetch(`${base}data/v1/lifecycle/tranche-2-queue.json`),
@@ -188,13 +231,14 @@ export function MapPanel({ metric, selectedFips, onSelectCounty }: MapPanelProps
           fetch(`${base}data/v1/lifecycle/national-tranche-5-results.json`),
           fetch(`${base}data/v1/lifecycle/national-tranche-6-results.json`),
         ]);
-        if (!countiesResponse.ok || !facilitiesResponse.ok || !coverageResponse.ok || !economicResponse.ok || !resolutionResponse.ok || !adjudicationResponse.ok || !lifecycleResponse.ok || !lifecycleResultsResponse.ok || !nationalLifecycleResponse.ok || !nationalLifecycleResultsResponse.ok || !nationalLifecycleResults2Response.ok || !nationalLifecycleResults3Response.ok || !nationalLifecycleResults4Response.ok || !nationalLifecycleResults5Response.ok || !nationalLifecycleResults6Response.ok) {
+        if (!countiesResponse.ok || !facilitiesResponse.ok || !coverageResponse.ok || !economicResponse.ok || !employmentWagesResponse.ok || !resolutionResponse.ok || !adjudicationResponse.ok || !lifecycleResponse.ok || !lifecycleResultsResponse.ok || !nationalLifecycleResponse.ok || !nationalLifecycleResultsResponse.ok || !nationalLifecycleResults2Response.ok || !nationalLifecycleResults3Response.ok || !nationalLifecycleResults4Response.ok || !nationalLifecycleResults5Response.ok || !nationalLifecycleResults6Response.ok) {
           throw new Error("A required map artifact could not be loaded.");
         }
         const counties = await countiesResponse.json();
         const facilities = await facilitiesResponse.json();
         const coverage = await coverageResponse.json();
         const economic = (await economicResponse.json()) as CountyEconomicBaseline[];
+        const employmentWages = (await employmentWagesResponse.json()) as CountyEmploymentWagesBaseline[];
         const resolution = (await resolutionResponse.json()) as PublicEntityResolutionRecord[];
         const adjudication = (await adjudicationResponse.json()) as PublicEntityAdjudicationRecord[];
         const lifecycle = (await lifecycleResponse.json()) as LifecycleVerificationCandidate[];
@@ -215,12 +259,16 @@ export function MapPanel({ metric, selectedFips, onSelectCounty }: MapPanelProps
         const economicByFips = new globalThis.Map(
           economic.map((record) => [record.county_fips, record]),
         );
+        const employmentWagesByFips = new globalThis.Map(
+          employmentWages.map((record) => [record.county_fips, record]),
+        );
         counties.features = counties.features.map(
           (feature: { properties: Record<string, unknown> }) => {
             const record = coverageByFips.get(feature.properties.county_fips as string) as
               | { source_record_count: number }
               | undefined;
             const economicRecord = economicByFips.get(feature.properties.county_fips as string);
+            const employmentWagesRecord = employmentWagesByFips.get(feature.properties.county_fips as string);
             return {
               ...feature,
               properties: {
@@ -230,6 +278,11 @@ export function MapPanel({ metric, selectedFips, onSelectCounty }: MapPanelProps
                 personal_income_nominal_usd: economicRecord?.personal_income_nominal_usd ?? null,
                 population: economicRecord?.population ?? null,
                 per_capita_personal_income_nominal_usd: economicRecord?.per_capita_personal_income_nominal_usd ?? null,
+                annual_avg_covered_employment: employmentWagesRecord?.annual_avg_covered_employment ?? null,
+                annual_avg_establishments: employmentWagesRecord?.annual_avg_establishments ?? null,
+                total_annual_wages_nominal_usd: employmentWagesRecord?.total_annual_wages_nominal_usd ?? null,
+                annual_avg_weekly_wage_nominal_usd: employmentWagesRecord?.annual_avg_weekly_wage_nominal_usd ?? null,
+                private_construction_annual_avg_employment: employmentWagesRecord?.private_construction_annual_avg_employment ?? null,
               },
             };
           },

@@ -89,6 +89,25 @@ unavailable and are not divided, copied, or treated as zero. The 2024 baseline i
 context only; it does not measure a data-center effect and is insufficient for pre/post or
 quasi-causal analysis without historical observations and treatment dates.
 
+## County employment and wage baseline
+
+The second substantive outcome-source increment uses the final BLS QCEW annual release for
+data year 2025. County total-covered rows supply the annual average of monthly employment,
+the annual average of quarterly establishment counts, total annual wages, and average weekly
+wages. Wage measures are current-dollar observations and are registered as nominal; they are
+not assigned to the real-wage metric before a governed deflator is implemented.
+
+Private construction employment comes from ownership code 5 and NAICS 23 because QCEW does
+not publish an all-ownership county-industry aggregation. It therefore must not be described
+as total construction employment. BLS disclosure code `N` is authoritative missingness: all
+922 protected construction cells are suppressed, never parsed from their placeholder zeros.
+Fourteen additional county records lack the private-construction row. Kalawao County lacks an
+annual-by-area member and remains wholly unavailable.
+
+The public projection retains all 3,144 Census counties: 2,207 are complete across the five
+published measures, 936 are partial, and one is unavailable. As with the BEA baseline, these
+are descriptive conditions and not evidence of a data-center effect.
+
 ## Lifecycle verification pilot
 
 The first historical-reconstruction increment is a governed 24-facility research queue.

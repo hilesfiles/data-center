@@ -1,0 +1,61 @@
+{
+  "schema_version": "1.0.0",
+  "dataset_id": "bls_qcew_county_baseline_2025",
+  "artifact_type": "county_employment_wages_baseline",
+  "artifact_version": "2025.1",
+  "generated_at": "2026-09-01T04:20:16Z",
+  "data_vintage": "2025",
+  "record_schema": "https://dccio.org/schemas/v1/public-county-employment-wages-baseline.schema.json",
+  "format": "json",
+  "parts": [
+    {
+      "path": "data/bronze/economic/bls-qcew-county-2025-source-rows.json",
+      "sha256": "eee3885596d14ade37350b6c1af236b7972cdf0424bfe89805a8e596cbaef21b",
+      "byte_size": 4888538,
+      "record_count": 3144,
+      "partition_values": {
+        "zone": "bronze",
+        "projection": "source_rows"
+      }
+    },
+    {
+      "path": "data/silver/economic/bls-qcew-county-2025.json",
+      "sha256": "3e38569f3bca2bc13ce9f9b066455e41f77c683912cff27a7a313eab8b34e3c9",
+      "byte_size": 7708018,
+      "record_count": 15721,
+      "partition_values": {
+        "zone": "silver",
+        "projection": "observations"
+      }
+    },
+    {
+      "path": "site/public/data/v1/counties/employment-wages-baseline-2025.json",
+      "sha256": "64f8d5607daa20dd7e4ea07c9e5ac9ca1483ec8cdded4a3e48dbb14b47142307",
+      "byte_size": 1452664,
+      "record_count": 3144,
+      "partition_values": {
+        "zone": "public",
+        "projection": "county_baseline"
+      }
+    },
+    {
+      "path": "data/silver/economic/bls-qcew-county-2025.processing-report.json",
+      "sha256": "fe569fa3b4ea2ac8e248d7db6c1a23ae13fe61038ad433545c8ac2f7b9e7398b",
+      "byte_size": 1772,
+      "record_count": 1,
+      "partition_values": {
+        "zone": "silver",
+        "projection": "processing_report"
+      }
+    }
+  ],
+  "record_count": 22010,
+  "input_dataset_ids": [
+    "geo_counties_2025_5m"
+  ],
+  "license_metadata": {
+    "license": "U.S. government data",
+    "redistribution_status": "allowed",
+    "attribution": "Source: U.S. Bureau of Labor Statistics, Quarterly Census of Employment and Wages"
+  }
+}

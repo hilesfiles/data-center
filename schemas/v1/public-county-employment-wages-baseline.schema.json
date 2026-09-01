@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dccio.org/schemas/v1/public-county-employment-wages-baseline.schema.json",
+  "title": "Public county employment and wages baseline",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "county_fips",
+    "county_name",
+    "state_abbr",
+    "year",
+    "annual_avg_covered_employment",
+    "annual_avg_establishments",
+    "total_annual_wages_nominal_usd",
+    "annual_avg_weekly_wage_nominal_usd",
+    "private_construction_annual_avg_employment",
+    "coverage_status",
+    "source_ids",
+    "release_vintage",
+    "generated_at"
+  ],
+  "properties": {
+    "schema_version": {"$ref": "common.schema.json#/$defs/schema_version"},
+    "county_fips": {"$ref": "common.schema.json#/$defs/county_fips"},
+    "county_name": {"type": "string", "minLength": 1},
+    "state_abbr": {"$ref": "common.schema.json#/$defs/state_abbr"},
+    "year": {"type": "integer", "minimum": 1900, "maximum": 2200},
+    "annual_avg_covered_employment": {"type": ["integer", "null"], "minimum": 0},
+    "annual_avg_establishments": {"type": ["integer", "null"], "minimum": 0},
+    "total_annual_wages_nominal_usd": {"type": ["integer", "null"], "minimum": 0},
+    "annual_avg_weekly_wage_nominal_usd": {"type": ["integer", "null"], "minimum": 0},
+    "private_construction_annual_avg_employment": {"type": ["integer", "null"], "minimum": 0},
+    "coverage_status": {"type": "string", "enum": ["complete", "partial", "unavailable"]},
+    "source_ids": {"type": "array", "items": {"$ref": "common.schema.json#/$defs/entity_id"}, "minItems": 1, "uniqueItems": true},
+    "release_vintage": {"type": "string", "minLength": 1},
+    "generated_at": {"$ref": "common.schema.json#/$defs/timestamp"}
+  },
+  "additionalProperties": false
+}

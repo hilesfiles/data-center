@@ -54,6 +54,17 @@ and CSV files only as temporary transport inputs, and publishes governed JSON fo
 real GDP, nominal personal income, population, and nominal per-capita personal income.
 BEA combined geographies are not allocated to individual Census counties.
 
+Rebuild the BLS QCEW 2025 county employment and wage baseline:
+
+```powershell
+python scripts/acquire_bls_qcew_county_baseline.py
+```
+
+The adapter pins the final official annual-by-area archive, uses ZIP and CSV only as
+temporary transport formats, and publishes governed JSON for annual-average covered
+employment, establishments, nominal total and weekly wages, and private construction
+employment. Disclosure-protected cells remain suppressed rather than becoming zero.
+
 Rebuild the conservative IM3 identity-resolution layer from those JSON artifacts:
 
 ```powershell
@@ -180,12 +191,15 @@ validation can be added later to CI with a standards-compliant Draft 2020-12 val
   nominal per-capita personal income are implemented for 3,091 exact current Census
   counties. Fifty-three nonmatching or BEA-combined county equivalents are retained as
   unavailable, never zero. These are descriptive source observations, not impact estimates.
+- Employment and wage observations: BLS QCEW 2025 annual totals are implemented for
+  3,143 counties, with Kalawao County unavailable. Private construction employment is
+  complete for 2,207 counties; 922 disclosure-protected cells remain suppressed and
+  fourteen additional county construction rows are absent. Suppressed values are never zero.
 - Fiscal, utility, housing, environmental, or opposition observations: not yet ingested.
 - Econometric estimates and public indices: fixture-only; not substantive.
 
 ## Next priority
 
-Add the BLS Quarterly Census of Employment and Wages county baseline, preserving
-suppressed cells as suppressed, then construct the first historical county-year panel from
-the BEA and BLS observations. Do not estimate impacts until treatment dates and minimum
-pre/post-period requirements are satisfied.
+Construct the first historical county-year panel from the BEA and BLS observations, then
+add governed treatment dates. Do not estimate impacts until minimum pre/post-period and
+comparison-county requirements are satisfied.

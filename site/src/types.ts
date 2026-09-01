@@ -75,7 +75,12 @@ export type CountyMapMetric =
   | "real-gdp"
   | "personal-income"
   | "population"
-  | "per-capita-income";
+  | "per-capita-income"
+  | "covered-employment"
+  | "establishments"
+  | "total-wages"
+  | "weekly-wage"
+  | "private-construction-employment";
 
 export interface CountyEconomicBaseline {
   schema_version: "1.0.0";
@@ -87,6 +92,23 @@ export interface CountyEconomicBaseline {
   personal_income_nominal_usd: number | null;
   population: number | null;
   per_capita_personal_income_nominal_usd: number | null;
+  coverage_status: "complete" | "partial" | "unavailable";
+  source_ids: string[];
+  release_vintage: string;
+  generated_at: string;
+}
+
+export interface CountyEmploymentWagesBaseline {
+  schema_version: "1.0.0";
+  county_fips: string;
+  county_name: string;
+  state_abbr: string;
+  year: number;
+  annual_avg_covered_employment: number | null;
+  annual_avg_establishments: number | null;
+  total_annual_wages_nominal_usd: number | null;
+  annual_avg_weekly_wage_nominal_usd: number | null;
+  private_construction_annual_avg_employment: number | null;
   coverage_status: "complete" | "partial" | "unavailable";
   source_ids: string[];
   release_vintage: string;

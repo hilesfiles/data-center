@@ -59,6 +59,30 @@ Real GDP is converted from thousands of chained 2017 dollars to chained 2017 dol
 Personal income is a current-dollar series, so the metric registry and public field names
 label it nominal; it is not written to the registered real-personal-income metric.
 
+## Implemented BLS QCEW county employment and wage baseline
+
+- Dataset: Quarterly Census of Employment and Wages annual averages by area
+- Publisher: U.S. Bureau of Labor Statistics
+- Data year: 2025
+- Final release vintage: August 28, 2026
+- Measures: annual-average covered employment, annual-average establishments,
+  current-dollar total annual wages, current-dollar average weekly wages, and
+  private-sector construction employment (NAICS 23)
+- Total-covered county coverage: 3,143 of 3,144
+- Adapter: `scripts/acquire_bls_qcew_county_baseline.py`
+
+The adapter pins the official annual-by-area ZIP byte size and SHA-256. ZIP and CSV inputs
+are deleted with the temporary working directory after parsing; all durable acquisition,
+bronze, silver, diagnostic, manifest, and public outputs are JSON. QCEW uses current Census
+county codes, including Connecticut planning regions. Kalawao County has no source member
+and is explicitly unavailable.
+
+County total-covered rows are ownership code 0, industry code 10, aggregation level 70.
+QCEW does not publish an all-ownership county-industry aggregate, so construction is
+explicitly limited to private ownership code 5, NAICS 23, aggregation level 74. The 922
+construction cells carrying BLS disclosure code `N` are published as suppressed rather
+than zero; fourteen more counties have no private-construction row.
+
 ## Candidate-adjudication evidence
 
 The entity-review layer uses ten additional official or first-party source records:

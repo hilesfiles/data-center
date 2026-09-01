@@ -805,6 +805,140 @@ def validate_public_data(
     if bea_manifest.get("record_count") != 18867 or bea_manifest_total != 18867:
         issues.append(Issue("public_data_validation", bea_manifest_path.name, "BEA manifest record count is inconsistent"))
 
+    qcew_acquisition_path = DATA_DIR / "raw" / "bls-qcew" / "2025-annual-by-area.acquisition.json"
+    qcew_acquisition = load_json(qcew_acquisition_path)
+    for issue in validator.validate_record(qcew_acquisition, schema_paths["acquisition_manifest"]):
+        issues.append(Issue("public_data_validation", f"{qcew_acquisition_path.name}{issue.path[1:]}", issue.message))
+    if qcew_acquisition.get("sha256") != "b2f6ed3b854af15bea207c1ef5ab8f1c22ee5b7abf79687505292beb44585921":
+        issues.append(Issue("public_data_validation", qcew_acquisition_path.name, "pinned BLS QCEW release hash changed"))
+
+    qcew_bronze_path = DATA_DIR / "bronze" / "economic" / "bls-qcew-county-2025-source-rows.json"
+    qcew_bronze = load_json(qcew_bronze_path)
+    qcew_source_rows = qcew_bronze.get("records", [])
+    qcew_source_fips = [record.get("county_fips") for record in qcew_source_rows]
+    if (
+        qcew_bronze.get("record_count") != 3144
+        or len(qcew_source_rows) != 3144
+        or set(qcew_source_fips) != feature_fips
+        or len(qcew_source_fips) != len(set(qcew_source_fips))
+        or any(record.get("year") != 2025 for record in qcew_source_rows)
+    ):
+        issues.append(Issue("public_data_validation", qcew_bronze_path.name, "QCEW bronze rows must cover every Census county exactly once for 2025"))
+
+    qcew_silver_path = DATA_DIR / "silver" / "economic" / "bls-qcew-county-2025.json"
+    qcew_silver = load_json(qcew_silver_path)
+    qcew_collections = qcew_silver.get("collections", {})
+    qcew_sources = qcew_collections.get("source", [])
+    qcew_observations = qcew_collections.get("observation", [])
+    qcew_source_ids = {record.get("source_id") for record in qcew_sources}
+    expected_qcew_metric_codes = {
+        "economic.employment.total",
+        "economic.establishments.total",
+        "economic.wages.total.nominal",
+        "economic.wages.average_weekly.nominal",
+        "economic.employment.construction.private",
+    }
+    if (
+        len(qcew_sources) != 1
+        or len(qcew_observations) != 15720
+        or qcew_silver.get("record_count") != 15721
+        or qcew_source_ids != {"src_bls_qcew_annual_by_area_2025"}
+        or {record.get("metric_code") for record in qcew_observations} != expected_qcew_metric_codes
+    ):
+        issues.append(Issue("public_data_validation", qcew_silver_path.name, "QCEW source or observation counts and metric coverage are inconsistent"))
+    for index, record in enumerate(qcew_sources):
+        for issue in validator.validate_record(record, schema_paths["source"]):
+            issues.append(Issue("public_data_validation", f"{qcew_silver_path.name}.source[{index}]{issue.path[1:]}", issue.message))
+    qcew_observation_keys: set[tuple[str, str]] = set()
+    qcew_observations_by_key: dict[tuple[str, str], dict[str, Any]] = {}
+    qcew_value_status_counts: Counter[str] = Counter()
+    for index, record in enumerate(qcew_observations):
+        for issue in validator.validate_record(record, schema_paths["observation"]):
+            issues.append(Issue("public_data_validation", f"{qcew_silver_path.name}.observation[{index}]{issue.path[1:]}", issue.message))
+        subject = record.get("subject", {})
+        key = (subject.get("subject_id", ""), record.get("metric_code", ""))
+        qcew_observation_keys.add(key)
+        qcew_observations_by_key[key] = record
+        qcew_value_status_counts[record.get("value_status", "")] += 1
+        if (
+            subject.get("subject_type") != "county"
+            or subject.get("subject_id") not in feature_fips
+            or not set(record.get("source_ids", [])).issubset(qcew_source_ids)
+            or record.get("period") != {"year": 2025, "precision": "year"}
+        ):
+            issues.append(Issue("referential_integrity", f"{qcew_silver_path.name}.observation[{index}]", "QCEW observation has an invalid county, source, or period"))
+    if len(qcew_observation_keys) != 15720:
+        issues.append(Issue("public_data_validation", qcew_silver_path.name, "QCEW county-metric observation keys must be unique"))
+    if qcew_value_status_counts != Counter({"observed": 14779, "suppressed": 922, "not_available": 19}):
+        issues.append(Issue("public_data_validation", qcew_silver_path.name, "QCEW observed, suppressed, and unavailable counts are inconsistent"))
+
+    qcew_public_path = PUBLIC_DATA_DIR / "counties" / "employment-wages-baseline-2025.json"
+    qcew_public = load_json(qcew_public_path)
+    qcew_public_fips = [record.get("county_fips") for record in qcew_public]
+    qcew_status_counts = Counter(record.get("coverage_status") for record in qcew_public)
+    qcew_public_fields = {
+        "economic.employment.total": "annual_avg_covered_employment",
+        "economic.establishments.total": "annual_avg_establishments",
+        "economic.wages.total.nominal": "total_annual_wages_nominal_usd",
+        "economic.wages.average_weekly.nominal": "annual_avg_weekly_wage_nominal_usd",
+        "economic.employment.construction.private": "private_construction_annual_avg_employment",
+    }
+    if (
+        len(qcew_public) != 3144
+        or set(qcew_public_fips) != feature_fips
+        or len(qcew_public_fips) != len(set(qcew_public_fips))
+        or qcew_status_counts != Counter({"complete": 2207, "partial": 936, "unavailable": 1})
+    ):
+        issues.append(Issue("public_data_validation", qcew_public_path.name, "QCEW public baseline county coverage or statuses are inconsistent"))
+    for index, record in enumerate(qcew_public):
+        for issue in validator.validate_record(record, schema_paths["public_county_employment_wages_baseline"]):
+            issues.append(Issue("public_data_validation", f"{qcew_public_path.name}[{index}]{issue.path[1:]}", issue.message))
+        fips = record.get("county_fips", "")
+        boundary = features_by_fips.get(fips, {})
+        if record.get("county_name") != boundary.get("county_name") or record.get("state_abbr") != boundary.get("state_abbr"):
+            issues.append(Issue("public_data_validation", f"{qcew_public_path.name}[{index}]", "county identity does not match the Census boundary"))
+        populated = 0
+        for metric_code, field in qcew_public_fields.items():
+            observation = qcew_observations_by_key.get((fips, metric_code), {})
+            expected_value = observation.get("value", {}).get("value")
+            if record.get(field) != expected_value:
+                issues.append(Issue("public_data_validation", f"{qcew_public_path.name}[{index}].{field}", "public value does not match the governed observation"))
+            populated += int(record.get(field) is not None)
+        expected_status = "complete" if populated == 5 else "unavailable" if populated == 0 else "partial"
+        if record.get("coverage_status") != expected_status:
+            issues.append(Issue("public_data_validation", f"{qcew_public_path.name}[{index}].coverage_status", "coverage status does not match populated QCEW values"))
+    unavailable_qcew_fips = {record.get("county_fips") for record in qcew_public if record.get("coverage_status") == "unavailable"}
+    if unavailable_qcew_fips != {"15005"}:
+        issues.append(Issue("public_data_validation", qcew_public_path.name, "only Kalawao County should be unavailable in the pinned QCEW release"))
+
+    qcew_report_path = DATA_DIR / "silver" / "economic" / "bls-qcew-county-2025.processing-report.json"
+    qcew_report = load_json(qcew_report_path)
+    if (
+        qcew_report.get("county_count") != 3144
+        or qcew_report.get("observation_count") != 15720
+        or qcew_report.get("missing_value_count") != 941
+        or qcew_report.get("suppressed_value_count") != 922
+        or qcew_report.get("coverage_counts") != {"complete": 2207, "partial": 936, "unavailable": 1}
+    ):
+        issues.append(Issue("public_data_validation", qcew_report_path.name, "QCEW processing diagnostics are inconsistent"))
+
+    qcew_manifest_path = DATA_DIR / "silver" / "economic" / "bls-qcew-county-2025.manifest.json"
+    qcew_manifest = load_json(qcew_manifest_path)
+    for issue in validator.validate_record(qcew_manifest, schema_paths["dataset_manifest"]):
+        issues.append(Issue("public_data_validation", f"{qcew_manifest_path.name}{issue.path[1:]}", issue.message))
+    qcew_manifest_total = 0
+    for index, part in enumerate(qcew_manifest.get("parts", [])):
+        part_path = (ROOT / part.get("path", "")).resolve()
+        if not part_path.is_relative_to(ROOT) or not part_path.is_file():
+            issues.append(Issue("public_data_validation", f"{qcew_manifest_path.name}.parts[{index}]", "part path is missing or outside the repository"))
+            continue
+        payload = part_path.read_bytes()
+        qcew_manifest_total += part.get("record_count", 0)
+        if part.get("byte_size") != len(payload) or part.get("sha256") != hashlib.sha256(payload).hexdigest():
+            issues.append(Issue("public_data_validation", f"{qcew_manifest_path.name}.parts[{index}]", "byte size or SHA-256 does not match the artifact"))
+    if qcew_manifest.get("record_count") != 22010 or qcew_manifest_total != 22010:
+        issues.append(Issue("public_data_validation", qcew_manifest_path.name, "QCEW manifest record count is inconsistent"))
+
     coverage_path = PUBLIC_DATA_DIR / "counties" / "facility-source-coverage.json"
     coverage_records = load_json(coverage_path)
     coverage_fips = [record.get("county_fips") for record in coverage_records]

@@ -2,6 +2,7 @@ import { lazy, Suspense, useEffect, useMemo, useState } from "react";
 import type {
   CountyEntityAdjudicationCoverage,
   CountyEconomicBaseline,
+  CountyEmploymentWagesBaseline,
   CountyEntityResolutionCoverage,
   CountyLifecycleVerificationCoverage,
   CountyMapMetric,
@@ -34,6 +35,7 @@ export default function App() {
   const [metadata, setMetadata] = useState<SiteMetadata | null>(null);
   const [counties, setCounties] = useState<FacilitySourceCoverage[]>([]);
   const [economic, setEconomic] = useState<CountyEconomicBaseline[]>([]);
+  const [employmentWages, setEmploymentWages] = useState<CountyEmploymentWagesBaseline[]>([]);
   const [resolution, setResolution] = useState<CountyEntityResolutionCoverage[]>([]);
   const [adjudication, setAdjudication] = useState<CountyEntityAdjudicationCoverage[]>([]);
   const [lifecycle, setLifecycle] = useState<CountyLifecycleVerificationCoverage[]>([]);
@@ -47,17 +49,19 @@ export default function App() {
       fetch(`${base}data/v1/metadata.json`),
       fetch(`${base}data/v1/counties/facility-source-coverage.json`),
       fetch(`${base}data/v1/counties/economic-baseline-2024.json`),
+      fetch(`${base}data/v1/counties/employment-wages-baseline-2025.json`),
       fetch(`${base}data/v1/counties/entity-resolution-coverage.json`),
       fetch(`${base}data/v1/counties/final-review-coverage.json`),
       fetch(`${base}data/v1/counties/lifecycle-national-tranche-6-coverage.json`),
     ])
-      .then(async ([metadataResponse, coverageResponse, economicResponse, resolutionResponse, adjudicationResponse, lifecycleResponse]) => {
-        if (!metadataResponse.ok || !coverageResponse.ok || !economicResponse.ok || !resolutionResponse.ok || !adjudicationResponse.ok || !lifecycleResponse.ok) {
+      .then(async ([metadataResponse, coverageResponse, economicResponse, employmentWagesResponse, resolutionResponse, adjudicationResponse, lifecycleResponse]) => {
+        if (!metadataResponse.ok || !coverageResponse.ok || !economicResponse.ok || !employmentWagesResponse.ok || !resolutionResponse.ok || !adjudicationResponse.ok || !lifecycleResponse.ok) {
           throw new Error("The static data contract could not be loaded.");
         }
         setMetadata((await metadataResponse.json()) as SiteMetadata);
         setCounties((await coverageResponse.json()) as FacilitySourceCoverage[]);
         setEconomic((await economicResponse.json()) as CountyEconomicBaseline[]);
+        setEmploymentWages((await employmentWagesResponse.json()) as CountyEmploymentWagesBaseline[]);
         setResolution(
           (await resolutionResponse.json()) as CountyEntityResolutionCoverage[],
         );
@@ -85,6 +89,10 @@ export default function App() {
     () => economic.find((county) => county.county_fips === selectedFips) ?? null,
     [economic, selectedFips],
   );
+  const selectedEmploymentWages = useMemo(
+    () => employmentWages.find((county) => county.county_fips === selectedFips) ?? null,
+    [employmentWages, selectedFips],
+  );
   const selectedAdjudication = useMemo(
     () => adjudication.find((county) => county.county_fips === selectedFips) ?? null,
     [adjudication, selectedFips],
@@ -108,7 +116,7 @@ export default function App() {
       </header>
 
       <div className="fixture-banner" role="status">
-        <strong>The first county economic baseline is published.</strong> BEA 2024 values cover 3,091 exact current Census counties; 53 nonmatching or combined BEA geographies remain unavailable rather than being displayed as zero. These measures are descriptive context, not estimated data-center impacts.
+        <strong>County economic baselines now include BEA and BLS.</strong> QCEW 2025 totals cover 3,143 of 3,144 counties; 922 private-construction cells remain suppressed and are never displayed as zero. These measures are descriptive context, not estimated data-center impacts.
       </div>
 
       <main className="workspace">
@@ -125,8 +133,13 @@ export default function App() {
               <option value="personal-income">Personal income, nominal (2024)</option>
               <option value="population">Population (2024)</option>
               <option value="per-capita-income">Per-capita personal income, nominal (2024)</option>
+              <option value="covered-employment">Covered employment (2025)</option>
+              <option value="establishments">Covered establishments (2025)</option>
+              <option value="total-wages">Total wages, nominal (2025)</option>
+              <option value="weekly-wage">Average weekly wage, nominal (2025)</option>
+              <option value="private-construction-employment">Private construction jobs (2025)</option>
             </select>
-            <p className="control-note">Facility counts use IM3 v2026.02.09. Economic measures use BEA's February 2026 county release for 2024. Missing values are never displayed as zero.</p>
+            <p className="control-note">Facility counts use IM3 v2026.02.09. Economic measures use BEA 2024 and BLS QCEW 2025 annual data. Missing and suppressed values are never displayed as zero.</p>
           </section>
 
           <section className="county-section" aria-live="polite">
@@ -233,6 +246,31 @@ export default function App() {
                     <em>current dollars per person</em>
                   </div>
                   <div className="lifecycle-row lifecycle-start">
+                    <span>Covered employment · 2025</span>
+                    <strong>{selectedEmploymentWages?.annual_avg_covered_employment == null ? "Unavailable" : integerFormat.format(selectedEmploymentWages.annual_avg_covered_employment)}</strong>
+                    <em>annual average of monthly levels</em>
+                  </div>
+                  <div className="lifecycle-row">
+                    <span>Covered establishments · 2025</span>
+                    <strong>{selectedEmploymentWages?.annual_avg_establishments == null ? "Unavailable" : integerFormat.format(selectedEmploymentWages.annual_avg_establishments)}</strong>
+                    <em>annual average of quarterly counts</em>
+                  </div>
+                  <div className="lifecycle-row">
+                    <span>Total wages · 2025</span>
+                    <strong>{compactCurrency(selectedEmploymentWages?.total_annual_wages_nominal_usd)}</strong>
+                    <em>current dollars</em>
+                  </div>
+                  <div className="lifecycle-row">
+                    <span>Average weekly wage · 2025</span>
+                    <strong>{wholeCurrency(selectedEmploymentWages?.annual_avg_weekly_wage_nominal_usd)}</strong>
+                    <em>current dollars per week</em>
+                  </div>
+                  <div className="lifecycle-row">
+                    <span>Private construction employment · 2025</span>
+                    <strong>{selectedEmploymentWages?.private_construction_annual_avg_employment == null ? "Suppressed or unavailable" : integerFormat.format(selectedEmploymentWages.private_construction_annual_avg_employment)}</strong>
+                    <em>annual average · NAICS 23</em>
+                  </div>
+                  <div className="lifecycle-row lifecycle-start">
                     <span>Canonical facilities</span>
                     <strong>{integerFormat.format(selectedLifecycle?.active_canonical_facility_count ?? 0)}</strong>
                     <em>deduplicated research entities</em>
@@ -281,6 +319,7 @@ export default function App() {
             <span>IM3 v2026.02.09 · 1,472 source objects</span>
             <span>Census boundaries · Jan. 1, 2025</span>
             <span>BEA county economy · 2024</span>
+            <span>BLS QCEW employment and wages · 2025</span>
             <span>Static JSON · No runtime database</span>
             <span>ODbL · © OpenStreetMap contributors</span>
           </div>
