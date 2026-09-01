@@ -2,9 +2,9 @@
   "schema_version": "1.0.0",
   "artifact_type": "county_first_entry_anchor_adjudications",
   "artifact_version": "2026.09.01",
-  "generated_at": "2026-09-02T00:30:00Z",
+  "generated_at": "2026-09-02T01:00:00Z",
   "record_schema": "https://dccio.org/schemas/v1/county-first-entry-adjudication.schema.json",
-  "record_count": 11,
+  "record_count": 12,
   "records": [
     {
       "schema_version": "1.0.0",
@@ -497,6 +497,53 @@
       "rationale": "Markley's November 23, 2015 operator post supplies an operational-no-later-than anchor for the Lowell facility and states that Phase One had opened with customers already occupying space; Markley's current facility and contact pages establish continuity to the exact mapped building at One Markley Way. The Lowell candidate cannot be Middlesex County's first entry because CoreSite's SEC prospectus identifies 70 Innerbelt in Somerville as operating data-center space when it was acquired on April 11, 2007, and Somerville's permit history independently describes an existing colocation data center at that address later in 2007. CoreSite's current page maps BO1 to 70 Inner Belt Road. The current two-record canonical inventory and the records reviewed do not establish a complete historical county inventory or the original opening date of the Somerville facility, so the true first entry remains unresolved and no treatment date is assigned.",
       "created_at": "2026-09-02T00:30:00Z",
       "updated_at": "2026-09-02T00:30:00Z",
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "county_first_entry_adjudication_id": "fea_12057_csquare_tpa1_20160120_rejected",
+      "first_entry_research_candidate_id": "fer_b44b5d31920d137f7a29",
+      "treatment_definition_id": "trt_first_entry_v1",
+      "candidate_event_evaluation_id": "tev_b0aaf58a68afcbed0990",
+      "county_fips": "12057",
+      "county_name": "Hillsborough County",
+      "state_abbr": "FL",
+      "resolution_state": "candidate_rejected_first_entry",
+      "decision": "reject_candidate_as_first_entry",
+      "county_first_entry_verified": false,
+      "inventory_completeness_status": "not_established",
+      "earlier_operations_search_status": "documented_incomplete",
+      "required_finding_status": {
+        "earliest_dated_operational_event": "partial",
+        "exact_facility_identity_for_earliest_event": "resolved",
+        "county_inventory_completeness": "unresolved",
+        "documented_search_for_earlier_operations": "resolved"
+      },
+      "earlier_operational_findings": [
+        {
+          "facility_id": "fac_im3_point_12112380995",
+          "canonical_name": "Flexential Tampa - West at 9417 Corporate Lake Drive",
+          "temporal_relation": "operational_no_later_than",
+          "when": {"date": "2006-05-09", "precision": "day"},
+          "source_ids": [
+            "src_kentucky_psc_peak10_tampa_20060509",
+            "src_florida_edr_datacenter_inventory_20160120",
+            "src_flexential_tampa_west_current_2026"
+          ],
+          "finding": "A Peak 10 Ethernet service agreement received by the Kentucky Public Service Commission on May 9, 2006 lists the exact 9417 Corporate Lake Drive Tampa site. Florida's 2016 state data-center inventory identifies Peak 10 at that exact address as a Hillsborough County data center, and Flexential's current page establishes continuity to the mapped Tampa - West facility.",
+          "confidence": 0.97
+        }
+      ],
+      "source_ids": [
+        "src_csquare_tpa1_specsheet_2026",
+        "src_florida_edr_datacenter_inventory_20160120",
+        "src_kentucky_psc_peak10_tampa_20060509",
+        "src_flexential_tampa_west_current_2026"
+      ],
+      "authoritative_source_types": ["legislative_record", "regulatory_filing", "operator_release"],
+      "rationale": "Florida's January 20, 2016 state impact-conference inventory supplies a conservative operational-no-later-than anchor for the CenturyLink Tampa data center, while Csquare's current specification sheet maps TPA1 to the exact canonical building at 9310 Florida Palm Drive. The TPA1 candidate cannot be Hillsborough County's first entry because the Kentucky Public Service Commission's May 9, 2006 filing lists Peak 10 at 9417 Corporate Lake Drive, Florida's 2016 inventory identifies Peak 10 at that exact address as a data center, and Flexential's current page establishes continuity to the mapped Tampa - West facility. The state inventory also lists numerous additional Hillsborough data centers omitted from the three-record current canonical inventory, so the true first entry remains unresolved and no treatment date is assigned.",
+      "created_at": "2026-09-02T01:00:00Z",
+      "updated_at": "2026-09-02T01:00:00Z",
       "record_status": "active"
     }
   ]

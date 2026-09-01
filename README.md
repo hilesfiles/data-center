@@ -239,7 +239,7 @@ validation can be added later to CI with a standards-compliant Draft 2020-12 val
   301,824 governed observations for 2001–2024. It is complete for 3,064 counties, partial
   for 79, and unavailable for Kalawao County. It is research infrastructure, not a model run.
 - County first-entry treatment: all 3,144 counties have governed assessments. Dated candidates
-  in Santa Clara, Maricopa, Fulton, Clark, Monroe, Oakland, Cook, Alachua, Cumberland, and Middlesex counties are each rejected by
+  in Santa Clara, Maricopa, Fulton, Clark, Monroe, Oakland, Cook, Alachua, Cumberland, Middlesex, and Hillsborough counties are each rejected by
   documented earlier operations. Hudson County has an exact-facility operational-no-later-than anchor dated
   March 27, 2002, but its true first entry remains unresolved. The Santa Clara and Maricopa
   events pass evidence and history-window thresholds; Clark passes the history window but not
@@ -250,7 +250,9 @@ validation can be added later to CI with a standards-compliant Draft 2020-12 val
   threshold and a separate UF data center was operating in 2003, and Cumberland passes the history
   window but its local-news anchor fails the authoritative-source gate and 340 Cumberland Avenue was
   already an existing Portland colocation facility in 2009. Middlesex passes both gates but its
-  Markley Lowell anchor follows CoreSite BO1's documented 2007 operation. Fulton and Hudson also do
+  Markley Lowell anchor follows CoreSite BO1's documented 2007 operation. Hillsborough passes both
+  gates, but its TPA1 anchor follows the mapped Tampa–West facility's documented presence at 9417
+  Corporate Lake Drive by 2006. Fulton and Hudson also do
   not pass both gates.
   Zero counties are currently treatment-eligible and no county is classified as never treated.
 - County first-entry research: 217 facility counties meet the complete-history prerequisite.
@@ -262,7 +264,7 @@ validation can be added later to CI with a standards-compliant Draft 2020-12 val
 
 ## Next priority
 
-Continue the remaining 13 counties in the initial tranche against local-government, permit,
+Continue the remaining 12 counties in the initial tranche against local-government, permit,
 planning, assessor, utility, regulatory, operator, and contemporaneous news records. Each
 adjudication must
 identify the earliest dated operation, establish exact facility identity, assess county

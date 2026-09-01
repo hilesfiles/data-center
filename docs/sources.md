@@ -106,8 +106,8 @@ county profiles lazy-load only their selected state partition.
 
 - Treatment definition: `trt_first_entry_v1`
 - Geography: 3,144 current Census counties and county equivalents
-- Reviewed dated operational events: 11
-- Evidence- and history-window-qualified events: 5
+- Reviewed dated operational events: 12
+- Evidence- and history-window-qualified events: 6
 - Verified county first-entry dates: 0
 - Eligible treatment counties: 0
 - Builder: `scripts/build_county_first_entry_treatments.py`
@@ -145,6 +145,11 @@ Maine System's 2009 report identifies the separate 340 Cumberland Avenue site as
 colocation facility, so the Brunswick anchor is also rejected. Middlesex's Markley Lowell anchor
 passes both quantitative gates, but CoreSite's SEC property history and Somerville's permit record
 document operating colocation space at 70 Inner Belt Road in 2007, so the Lowell anchor is rejected.
+Hillsborough's TPA1 anchor passes both quantitative gates, but the Kentucky Public Service
+Commission's May 9, 2006 filing places Peak 10 at 9417 Corporate Lake Drive; Florida's 2016
+state inventory identifies the exact address as a Peak 10 data center, and Flexential's current
+page connects that site to the mapped Tampa–West facility. TPA1 is therefore rejected as county
+first entry.
 These counties'
 true first entries remain unresolved. Public county
 assessments
