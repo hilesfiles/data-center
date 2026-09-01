@@ -65,6 +65,17 @@ temporary transport formats, and publishes governed JSON for annual-average cove
 employment, establishments, nominal total and weekly wages, and private construction
 employment. Disclosure-protected cells remain suppressed rather than becoming zero.
 
+Rebuild the first BEA–BLS county-year panel:
+
+```powershell
+python scripts/build_county_economic_history_panel.py
+```
+
+The panel materializes 2021–2024 observations and schema-valid panel-row references for
+real GDP, population, annual-average covered employment, and nominal average weekly wages.
+It is explicitly marked `insufficient_history`; four years do not meet the configured
+seven-pre/three-post rule, and treatment dates are not yet available.
+
 Rebuild the conservative IM3 identity-resolution layer from those JSON artifacts:
 
 ```powershell
@@ -195,11 +206,14 @@ validation can be added later to CI with a standards-compliant Draft 2020-12 val
   3,143 counties, with Kalawao County unavailable. Private construction employment is
   complete for 2,207 counties; 922 disclosure-protected cells remain suppressed and
   fourteen additional county construction rows are absent. Suppressed values are never zero.
+- Historical panel: the first BEA–BLS core panel contains 12,576 county-year rows and
+  50,304 governed observations for 2021–2024. It is complete for 3,081 counties, partial
+  for 62, and unavailable for Kalawao County. It is research infrastructure, not a model run.
 - Fiscal, utility, housing, environmental, or opposition observations: not yet ingested.
 - Econometric estimates and public indices: fixture-only; not substantive.
 
 ## Next priority
 
-Construct the first historical county-year panel from the BEA and BLS observations, then
-add governed treatment dates. Do not estimate impacts until minimum pre/post-period and
-comparison-county requirements are satisfied.
+Backfill BLS QCEW 2001–2020 from the official historical archives so the common BEA–BLS
+panel can span 2001–2024, then add governed treatment dates. Do not estimate impacts until
+minimum pre/post-period and comparison-county requirements are satisfied.

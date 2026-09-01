@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dccio.org/schemas/v1/public-county-economic-history.schema.json",
+  "title": "Public county economic history summary",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "county_fips",
+    "county_name",
+    "state_abbr",
+    "start_year",
+    "end_year",
+    "years",
+    "complete_year_count",
+    "coverage_status",
+    "generated_at"
+  ],
+  "properties": {
+    "schema_version": {"$ref": "common.schema.json#/$defs/schema_version"},
+    "county_fips": {"$ref": "common.schema.json#/$defs/county_fips"},
+    "county_name": {"type": "string", "minLength": 1},
+    "state_abbr": {"$ref": "common.schema.json#/$defs/state_abbr"},
+    "start_year": {"type": "integer", "const": 2021},
+    "end_year": {"type": "integer", "const": 2024},
+    "years": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "items": {
+        "type": "object",
+        "required": [
+          "year",
+          "real_gdp_usd",
+          "population",
+          "annual_avg_covered_employment",
+          "annual_avg_weekly_wage_nominal_usd",
+          "coverage_status"
+        ],
+        "properties": {
+          "year": {"type": "integer", "minimum": 2021, "maximum": 2024},
+          "real_gdp_usd": {"type": ["integer", "null"], "minimum": 0},
+          "population": {"type": ["integer", "null"], "minimum": 0},
+          "annual_avg_covered_employment": {"type": ["integer", "null"], "minimum": 0},
+          "annual_avg_weekly_wage_nominal_usd": {"type": ["integer", "null"], "minimum": 0},
+          "coverage_status": {"type": "string", "enum": ["complete", "partial", "unavailable"]}
+        },
+        "additionalProperties": false
+      }
+    },
+    "complete_year_count": {"type": "integer", "minimum": 0, "maximum": 4},
+    "coverage_status": {"type": "string", "enum": ["complete", "partial", "unavailable"]},
+    "generated_at": {"$ref": "common.schema.json#/$defs/timestamp"}
+  },
+  "additionalProperties": false
+}

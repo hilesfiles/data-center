@@ -115,6 +115,26 @@ export interface CountyEmploymentWagesBaseline {
   generated_at: string;
 }
 
+export interface CountyEconomicHistory {
+  schema_version: "1.0.0";
+  county_fips: string;
+  county_name: string;
+  state_abbr: string;
+  start_year: 2021;
+  end_year: 2024;
+  years: Array<{
+    year: number;
+    real_gdp_usd: number | null;
+    population: number | null;
+    annual_avg_covered_employment: number | null;
+    annual_avg_weekly_wage_nominal_usd: number | null;
+    coverage_status: "complete" | "partial" | "unavailable";
+  }>;
+  complete_year_count: number;
+  coverage_status: "complete" | "partial" | "unavailable";
+  generated_at: string;
+}
+
 export interface CountyEntityResolutionCoverage {
   schema_version: "1.0.0";
   county_fips: string;

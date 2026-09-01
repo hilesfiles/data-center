@@ -83,6 +83,28 @@ explicitly limited to private ownership code 5, NAICS 23, aggregation level 74. 
 construction cells carrying BLS disclosure code `N` are published as suppressed rather
 than zero; fourteen more counties have no private-construction row.
 
+## Implemented BEA–BLS county-year panel
+
+- Panel: `county-economic-core-2021-2024`
+- Geography: 3,144 current Census counties and county equivalents
+- Years: 2021–2024
+- Rows: 12,576 county-years
+- Governed observations: 50,304
+- Measures: real GDP, population, annual-average covered employment, and nominal average
+  weekly wage
+- Public coverage: 3,081 complete counties, 62 partial counties, one unavailable county
+- Builder: `scripts/build_county_economic_history_panel.py`
+
+BEA observations are read from the already pinned February 2026 CAGDP1 and CAINC1
+archives. Four BLS total-all-industries annual slices are independently pinned by byte size
+and SHA-256. The source services expose 2021 onward as direct slices; older years require
+the substantially larger historical archive route and are therefore a separate backfill.
+
+The panel retains current Census identities without crosswalking legacy source geographies.
+Connecticut planning regions consequently lack BLS rows before their 2024 adoption, and the
+BEA combined/legacy geography limitations remain. Missing cells and the two suppressed
+total-covered observations are explicit rather than zero.
+
 ## Candidate-adjudication evidence
 
 The entity-review layer uses ten additional official or first-party source records:

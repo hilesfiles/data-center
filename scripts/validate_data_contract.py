@@ -939,6 +939,203 @@ def validate_public_data(
     if qcew_manifest.get("record_count") != 22010 or qcew_manifest_total != 22010:
         issues.append(Issue("public_data_validation", qcew_manifest_path.name, "QCEW manifest record count is inconsistent"))
 
+    panel_acquisition_specs = {
+        "2021-total-all-industries.acquisition.json": "331d81786235e57217ef1498efc64d5e3abf39f1cbca1cf841ea10533920db51",
+        "2022-total-all-industries.acquisition.json": "9a95487df1dd1ded3f2dc712b5d19747e2aacfc30102869cd3a0b985501e739a",
+        "2023-total-all-industries.acquisition.json": "0115a20a201b821d29f731340976aad8fc8dac16cb6a0c13df0f7f52afe108b1",
+        "2024-total-all-industries.acquisition.json": "e73da8f6b2b415180b1910351327faa51183589021357535fd880f8761e12a12",
+    }
+    for filename, expected_sha in panel_acquisition_specs.items():
+        panel_acquisition_path = DATA_DIR / "raw" / "bls-qcew" / "history" / filename
+        panel_acquisition = load_json(panel_acquisition_path)
+        for issue in validator.validate_record(panel_acquisition, schema_paths["acquisition_manifest"]):
+            issues.append(Issue("public_data_validation", f"{filename}{issue.path[1:]}", issue.message))
+        if panel_acquisition.get("sha256") != expected_sha:
+            issues.append(Issue("public_data_validation", filename, "pinned historical BLS QCEW slice hash changed"))
+
+    panel_bronze_path = DATA_DIR / "bronze" / "economic" / "county-history-2021-2024-source-rows.json"
+    panel_bronze = load_json(panel_bronze_path)
+    panel_bronze_rows = panel_bronze.get("records", [])
+    panel_bronze_keys = {
+        (record.get("county_fips"), record.get("year")) for record in panel_bronze_rows
+    }
+    expected_panel_keys = {(fips, year) for fips in feature_fips for year in range(2021, 2025)}
+    if (
+        panel_bronze.get("record_count") != 12576
+        or len(panel_bronze_rows) != 12576
+        or panel_bronze_keys != expected_panel_keys
+    ):
+        issues.append(Issue("public_data_validation", panel_bronze_path.name, "historical panel bronze rows must cover every county-year from 2021 through 2024 exactly once"))
+
+    panel_silver_path = DATA_DIR / "silver" / "panels" / "county-economic-core-2021-2024.json"
+    panel_silver = load_json(panel_silver_path)
+    panel_collections = panel_silver.get("collections", {})
+    panel_sources = panel_collections.get("source", [])
+    panel_observations = panel_collections.get("observation", [])
+    panel_rows = panel_collections.get("panel_row", [])
+    panel_source_ids = {record.get("source_id") for record in panel_sources}
+    expected_panel_source_ids = {
+        "src_bea_cagdp1_2024",
+        "src_bea_cainc1_2024",
+        "src_bls_qcew_total_2021",
+        "src_bls_qcew_total_2022",
+        "src_bls_qcew_total_2023",
+        "src_bls_qcew_total_2024",
+    }
+    expected_panel_metric_codes = {
+        "economic.gdp.real",
+        "demographic.population",
+        "economic.employment.total",
+        "economic.wages.average_weekly.nominal",
+    }
+    if (
+        len(panel_sources) != 6
+        or len(panel_observations) != 50304
+        or len(panel_rows) != 12576
+        or panel_silver.get("record_count") != 62886
+        or panel_source_ids != expected_panel_source_ids
+        or {record.get("metric_code") for record in panel_observations} != expected_panel_metric_codes
+    ):
+        issues.append(Issue("public_data_validation", panel_silver_path.name, "historical panel source, observation, or row counts are inconsistent"))
+    for index, record in enumerate(panel_sources):
+        for issue in validator.validate_record(record, schema_paths["source"]):
+            issues.append(Issue("public_data_validation", f"{panel_silver_path.name}.source[{index}]{issue.path[1:]}", issue.message))
+    panel_observation_ids: set[str] = set()
+    panel_observations_by_key: dict[tuple[str, int, str], dict[str, Any]] = {}
+    panel_value_status_counts: Counter[str] = Counter()
+    for index, record in enumerate(panel_observations):
+        for issue in validator.validate_record(record, schema_paths["observation"]):
+            issues.append(Issue("public_data_validation", f"{panel_silver_path.name}.observation[{index}]{issue.path[1:]}", issue.message))
+        subject = record.get("subject", {})
+        period = record.get("period", {})
+        observation_id = record.get("observation_id", "")
+        key = (subject.get("subject_id", ""), period.get("year", 0), record.get("metric_code", ""))
+        panel_observation_ids.add(observation_id)
+        panel_observations_by_key[key] = record
+        panel_value_status_counts[record.get("value_status", "")] += 1
+        if (
+            subject.get("subject_type") != "county"
+            or subject.get("subject_id") not in feature_fips
+            or period.get("year") not in range(2021, 2025)
+            or period.get("precision") != "year"
+            or not set(record.get("source_ids", [])).issubset(panel_source_ids)
+        ):
+            issues.append(Issue("referential_integrity", f"{panel_silver_path.name}.observation[{index}]", "historical observation has an invalid county, source, or period"))
+    if len(panel_observation_ids) != 50304 or len(panel_observations_by_key) != 50304:
+        issues.append(Issue("public_data_validation", panel_silver_path.name, "historical observation IDs and county-year-metric keys must be unique"))
+    if panel_value_status_counts != Counter({"observed": 49762, "not_available": 540, "suppressed": 2}):
+        issues.append(Issue("public_data_validation", panel_silver_path.name, "historical observation value-status counts are inconsistent"))
+
+    panel_row_ids: set[str] = set()
+    panel_rows_by_key: dict[tuple[str, int], dict[str, Any]] = {}
+    for index, record in enumerate(panel_rows):
+        for issue in validator.validate_record(record, schema_paths["panel_row"]):
+            issues.append(Issue("public_data_validation", f"{panel_silver_path.name}.panel_row[{index}]{issue.path[1:]}", issue.message))
+        geography = record.get("geography", {})
+        period = record.get("period", {})
+        key = (geography.get("geography_id", ""), period.get("year", 0))
+        panel_row_ids.add(record.get("panel_row_id", ""))
+        panel_rows_by_key[key] = record
+        references = record.get("observation_refs", [])
+        if (
+            geography.get("geography_type") != "county"
+            or key not in expected_panel_keys
+            or len(references) != 4
+            or {reference.get("metric_code") for reference in references} != expected_panel_metric_codes
+            or any(reference.get("observation_id") not in panel_observation_ids for reference in references)
+        ):
+            issues.append(Issue("referential_integrity", f"{panel_silver_path.name}.panel_row[{index}]", "historical panel row has invalid geography, metrics, or observation references"))
+        available = sum(
+            panel_observations_by_key.get((key[0], key[1], reference.get("metric_code", "")), {}).get("value") is not None
+            for reference in references
+        )
+        completeness = record.get("completeness", {})
+        if (
+            completeness.get("required_metric_count") != 4
+            or completeness.get("available_metric_count") != available
+            or completeness.get("coverage") != available / 4
+        ):
+            issues.append(Issue("public_data_validation", f"{panel_silver_path.name}.panel_row[{index}].completeness", "panel completeness does not match referenced observations"))
+    if len(panel_row_ids) != 12576 or set(panel_rows_by_key) != expected_panel_keys:
+        issues.append(Issue("public_data_validation", panel_silver_path.name, "historical panel row IDs and county-year keys must be unique"))
+
+    panel_public_path = PUBLIC_DATA_DIR / "panels" / "county-economic-history-2021-2024.json"
+    panel_public = load_json(panel_public_path)
+    panel_public_fips = [record.get("county_fips") for record in panel_public]
+    panel_public_status_counts = Counter(record.get("coverage_status") for record in panel_public)
+    panel_public_fields = {
+        "economic.gdp.real": "real_gdp_usd",
+        "demographic.population": "population",
+        "economic.employment.total": "annual_avg_covered_employment",
+        "economic.wages.average_weekly.nominal": "annual_avg_weekly_wage_nominal_usd",
+    }
+    if (
+        len(panel_public) != 3144
+        or set(panel_public_fips) != feature_fips
+        or len(panel_public_fips) != len(set(panel_public_fips))
+        or panel_public_status_counts != Counter({"complete": 3081, "partial": 62, "unavailable": 1})
+    ):
+        issues.append(Issue("public_data_validation", panel_public_path.name, "public historical panel county coverage or statuses are inconsistent"))
+    for index, record in enumerate(panel_public):
+        for issue in validator.validate_record(record, schema_paths["public_county_economic_history"]):
+            issues.append(Issue("public_data_validation", f"{panel_public_path.name}[{index}]{issue.path[1:]}", issue.message))
+        fips = record.get("county_fips", "")
+        boundary = features_by_fips.get(fips, {})
+        if record.get("county_name") != boundary.get("county_name") or record.get("state_abbr") != boundary.get("state_abbr"):
+            issues.append(Issue("public_data_validation", f"{panel_public_path.name}[{index}]", "county identity does not match the Census boundary"))
+        complete_year_count = 0
+        populated_year_count = 0
+        if [year.get("year") for year in record.get("years", [])] != [2021, 2022, 2023, 2024]:
+            issues.append(Issue("public_data_validation", f"{panel_public_path.name}[{index}].years", "public panel years must be ordered 2021 through 2024"))
+        for public_year in record.get("years", []):
+            year = public_year.get("year", 0)
+            populated = 0
+            for metric_code, field in panel_public_fields.items():
+                observation = panel_observations_by_key.get((fips, year, metric_code), {})
+                expected_value = observation.get("value", {}).get("value")
+                if public_year.get(field) != expected_value:
+                    issues.append(Issue("public_data_validation", f"{panel_public_path.name}[{index}].years[{year}].{field}", "public panel value does not match governed observation"))
+                populated += int(public_year.get(field) is not None)
+            expected_year_status = "complete" if populated == 4 else "unavailable" if populated == 0 else "partial"
+            if public_year.get("coverage_status") != expected_year_status:
+                issues.append(Issue("public_data_validation", f"{panel_public_path.name}[{index}].years[{year}].coverage_status", "year coverage status does not match populated values"))
+            complete_year_count += int(expected_year_status == "complete")
+            populated_year_count += int(expected_year_status != "unavailable")
+        expected_county_status = "complete" if complete_year_count == 4 else "unavailable" if populated_year_count == 0 else "partial"
+        if record.get("complete_year_count") != complete_year_count or record.get("coverage_status") != expected_county_status:
+            issues.append(Issue("public_data_validation", f"{panel_public_path.name}[{index}]", "county historical coverage does not match year records"))
+
+    panel_report_path = DATA_DIR / "silver" / "panels" / "county-economic-core-2021-2024.processing-report.json"
+    panel_report = load_json(panel_report_path)
+    if (
+        panel_report.get("county_count") != 3144
+        or panel_report.get("year_count") != 4
+        or panel_report.get("panel_row_count") != 12576
+        or panel_report.get("observation_count") != 50304
+        or panel_report.get("value_status_counts") != {"observed": 49762, "not_available": 540, "suppressed": 2}
+        or panel_report.get("public_coverage_counts") != {"complete": 3081, "partial": 62, "unavailable": 1}
+        or panel_report.get("model_readiness", {}).get("status") != "insufficient_history"
+        or panel_report.get("model_readiness", {}).get("treatment_dates_available") is not False
+    ):
+        issues.append(Issue("public_data_validation", panel_report_path.name, "historical panel processing diagnostics are inconsistent"))
+
+    panel_manifest_path = DATA_DIR / "silver" / "panels" / "county-economic-core-2021-2024.manifest.json"
+    panel_manifest = load_json(panel_manifest_path)
+    for issue in validator.validate_record(panel_manifest, schema_paths["dataset_manifest"]):
+        issues.append(Issue("public_data_validation", f"{panel_manifest_path.name}{issue.path[1:]}", issue.message))
+    panel_manifest_total = 0
+    for index, part in enumerate(panel_manifest.get("parts", [])):
+        part_path = (ROOT / part.get("path", "")).resolve()
+        if not part_path.is_relative_to(ROOT) or not part_path.is_file():
+            issues.append(Issue("public_data_validation", f"{panel_manifest_path.name}.parts[{index}]", "part path is missing or outside the repository"))
+            continue
+        payload = part_path.read_bytes()
+        panel_manifest_total += part.get("record_count", 0)
+        if part.get("byte_size") != len(payload) or part.get("sha256") != hashlib.sha256(payload).hexdigest():
+            issues.append(Issue("public_data_validation", f"{panel_manifest_path.name}.parts[{index}]", "byte size or SHA-256 does not match the artifact"))
+    if panel_manifest.get("record_count") != 78607 or panel_manifest_total != 78607:
+        issues.append(Issue("public_data_validation", panel_manifest_path.name, "historical panel manifest record count is inconsistent"))
+
     coverage_path = PUBLIC_DATA_DIR / "counties" / "facility-source-coverage.json"
     coverage_records = load_json(coverage_path)
     coverage_fips = [record.get("county_fips") for record in coverage_records]

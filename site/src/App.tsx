@@ -1,6 +1,7 @@
 import { lazy, Suspense, useEffect, useMemo, useState } from "react";
 import type {
   CountyEntityAdjudicationCoverage,
+  CountyEconomicHistory,
   CountyEconomicBaseline,
   CountyEmploymentWagesBaseline,
   CountyEntityResolutionCoverage,
@@ -31,11 +32,18 @@ const compactCurrency = (value: number | null | undefined) =>
 const wholeCurrency = (value: number | null | undefined) =>
   value == null ? "Unavailable" : currencyFormat.format(value);
 
+const percentChange = (start: number | null | undefined, end: number | null | undefined) =>
+  start == null || end == null || start === 0 ? null : ((end - start) / start) * 100;
+
+const formatPercentChange = (value: number | null) =>
+  value == null ? "Unavailable" : `${value >= 0 ? "+" : ""}${value.toFixed(1)}%`;
+
 export default function App() {
   const [metadata, setMetadata] = useState<SiteMetadata | null>(null);
   const [counties, setCounties] = useState<FacilitySourceCoverage[]>([]);
   const [economic, setEconomic] = useState<CountyEconomicBaseline[]>([]);
   const [employmentWages, setEmploymentWages] = useState<CountyEmploymentWagesBaseline[]>([]);
+  const [economicHistory, setEconomicHistory] = useState<CountyEconomicHistory[]>([]);
   const [resolution, setResolution] = useState<CountyEntityResolutionCoverage[]>([]);
   const [adjudication, setAdjudication] = useState<CountyEntityAdjudicationCoverage[]>([]);
   const [lifecycle, setLifecycle] = useState<CountyLifecycleVerificationCoverage[]>([]);
@@ -50,18 +58,20 @@ export default function App() {
       fetch(`${base}data/v1/counties/facility-source-coverage.json`),
       fetch(`${base}data/v1/counties/economic-baseline-2024.json`),
       fetch(`${base}data/v1/counties/employment-wages-baseline-2025.json`),
+      fetch(`${base}data/v1/panels/county-economic-history-2021-2024.json`),
       fetch(`${base}data/v1/counties/entity-resolution-coverage.json`),
       fetch(`${base}data/v1/counties/final-review-coverage.json`),
       fetch(`${base}data/v1/counties/lifecycle-national-tranche-6-coverage.json`),
     ])
-      .then(async ([metadataResponse, coverageResponse, economicResponse, employmentWagesResponse, resolutionResponse, adjudicationResponse, lifecycleResponse]) => {
-        if (!metadataResponse.ok || !coverageResponse.ok || !economicResponse.ok || !employmentWagesResponse.ok || !resolutionResponse.ok || !adjudicationResponse.ok || !lifecycleResponse.ok) {
+      .then(async ([metadataResponse, coverageResponse, economicResponse, employmentWagesResponse, economicHistoryResponse, resolutionResponse, adjudicationResponse, lifecycleResponse]) => {
+        if (!metadataResponse.ok || !coverageResponse.ok || !economicResponse.ok || !employmentWagesResponse.ok || !economicHistoryResponse.ok || !resolutionResponse.ok || !adjudicationResponse.ok || !lifecycleResponse.ok) {
           throw new Error("The static data contract could not be loaded.");
         }
         setMetadata((await metadataResponse.json()) as SiteMetadata);
         setCounties((await coverageResponse.json()) as FacilitySourceCoverage[]);
         setEconomic((await economicResponse.json()) as CountyEconomicBaseline[]);
         setEmploymentWages((await employmentWagesResponse.json()) as CountyEmploymentWagesBaseline[]);
+        setEconomicHistory((await economicHistoryResponse.json()) as CountyEconomicHistory[]);
         setResolution(
           (await resolutionResponse.json()) as CountyEntityResolutionCoverage[],
         );
@@ -93,6 +103,20 @@ export default function App() {
     () => employmentWages.find((county) => county.county_fips === selectedFips) ?? null,
     [employmentWages, selectedFips],
   );
+  const selectedEconomicHistory = useMemo(
+    () => economicHistory.find((county) => county.county_fips === selectedFips) ?? null,
+    [economicHistory, selectedFips],
+  );
+  const selectedHistoryChange = useMemo(() => {
+    const start = selectedEconomicHistory?.years.find((record) => record.year === 2021);
+    const end = selectedEconomicHistory?.years.find((record) => record.year === 2024);
+    return {
+      employment: percentChange(start?.annual_avg_covered_employment, end?.annual_avg_covered_employment),
+      realGdp: percentChange(start?.real_gdp_usd, end?.real_gdp_usd),
+      population: percentChange(start?.population, end?.population),
+      weeklyWage: percentChange(start?.annual_avg_weekly_wage_nominal_usd, end?.annual_avg_weekly_wage_nominal_usd),
+    };
+  }, [selectedEconomicHistory]);
   const selectedAdjudication = useMemo(
     () => adjudication.find((county) => county.county_fips === selectedFips) ?? null,
     [adjudication, selectedFips],
@@ -116,7 +140,7 @@ export default function App() {
       </header>
 
       <div className="fixture-banner" role="status">
-        <strong>County economic baselines now include BEA and BLS.</strong> QCEW 2025 totals cover 3,143 of 3,144 counties; 922 private-construction cells remain suppressed and are never displayed as zero. These measures are descriptive context, not estimated data-center impacts.
+        <strong>The first BEA–BLS county-year panel is published.</strong> It covers 2021–2024 with 12,576 county-year rows, but four years do not satisfy the configured seven-pre/three-post rule. It is descriptive research infrastructure, not an impact estimate.
       </div>
 
       <main className="workspace">
@@ -271,6 +295,31 @@ export default function App() {
                     <em>annual average · NAICS 23</em>
                   </div>
                   <div className="lifecycle-row lifecycle-start">
+                    <span>Panel completeness · 2021–2024</span>
+                    <strong>{selectedEconomicHistory == null ? "Unavailable" : `${selectedEconomicHistory.complete_year_count}/4 years`}</strong>
+                    <em>model readiness remains insufficient</em>
+                  </div>
+                  <div className="lifecycle-row">
+                    <span>Covered employment change · 2021–2024</span>
+                    <strong>{formatPercentChange(selectedHistoryChange.employment)}</strong>
+                    <em>descriptive change</em>
+                  </div>
+                  <div className="lifecycle-row">
+                    <span>Real GDP change · 2021–2024</span>
+                    <strong>{formatPercentChange(selectedHistoryChange.realGdp)}</strong>
+                    <em>chained 2017 dollars</em>
+                  </div>
+                  <div className="lifecycle-row">
+                    <span>Population change · 2021–2024</span>
+                    <strong>{formatPercentChange(selectedHistoryChange.population)}</strong>
+                    <em>descriptive change</em>
+                  </div>
+                  <div className="lifecycle-row">
+                    <span>Weekly wage change · 2021–2024</span>
+                    <strong>{formatPercentChange(selectedHistoryChange.weeklyWage)}</strong>
+                    <em>nominal descriptive change</em>
+                  </div>
+                  <div className="lifecycle-row lifecycle-start">
                     <span>Canonical facilities</span>
                     <strong>{integerFormat.format(selectedLifecycle?.active_canonical_facility_count ?? 0)}</strong>
                     <em>deduplicated research entities</em>
@@ -320,6 +369,7 @@ export default function App() {
             <span>Census boundaries · Jan. 1, 2025</span>
             <span>BEA county economy · 2024</span>
             <span>BLS QCEW employment and wages · 2025</span>
+            <span>BEA–BLS core panel · 2021–2024</span>
             <span>Static JSON · No runtime database</span>
             <span>ODbL · © OpenStreetMap contributors</span>
           </div>

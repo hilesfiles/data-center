@@ -1,0 +1,63 @@
+{
+  "schema_version": "1.0.0",
+  "dataset_id": "county_economic_core_panel_2021_2024",
+  "artifact_type": "county_year_panel",
+  "artifact_version": "2021-2024.1",
+  "generated_at": "2026-09-01T05:14:01Z",
+  "data_vintage": "2021-2024",
+  "record_schema": "https://dccio.org/schemas/v1/panel-row.schema.json",
+  "format": "json",
+  "parts": [
+    {
+      "path": "data/bronze/economic/county-history-2021-2024-source-rows.json",
+      "sha256": "2b0d46aaf09854a6078adb2843b192d55a8681a1aefd066ac9d0a497632e6931",
+      "byte_size": 7162233,
+      "record_count": 12576,
+      "partition_values": {
+        "zone": "bronze",
+        "projection": "source_rows"
+      }
+    },
+    {
+      "path": "data/silver/panels/county-economic-core-2021-2024.json",
+      "sha256": "92cb450ec73bfa897d4fd3fe37079564b87d209e6327901477274ed3d0368a99",
+      "byte_size": 35028761,
+      "record_count": 62886,
+      "partition_values": {
+        "zone": "silver",
+        "projection": "observations_and_panel_rows"
+      }
+    },
+    {
+      "path": "site/public/data/v1/panels/county-economic-history-2021-2024.json",
+      "sha256": "2b0dfa5574c9168b36159bf0a50b0d5029f74cef83af51c951c8371aeb391f86",
+      "byte_size": 2823652,
+      "record_count": 3144,
+      "partition_values": {
+        "zone": "public",
+        "projection": "county_history_summary"
+      }
+    },
+    {
+      "path": "data/silver/panels/county-economic-core-2021-2024.processing-report.json",
+      "sha256": "fc8d632f3350e31b30379058099e40003a3138f5d375f82f3240711bccab6988",
+      "byte_size": 5426,
+      "record_count": 1,
+      "partition_values": {
+        "zone": "silver",
+        "projection": "processing_report"
+      }
+    }
+  ],
+  "record_count": 78607,
+  "input_dataset_ids": [
+    "geo_counties_2025_5m",
+    "bea_county_economic_baseline_2024",
+    "bls_qcew_county_baseline_2025"
+  ],
+  "license_metadata": {
+    "license": "U.S. government data",
+    "redistribution_status": "allowed",
+    "attribution": "Sources: U.S. Bureau of Economic Analysis and U.S. Bureau of Labor Statistics"
+  }
+}
