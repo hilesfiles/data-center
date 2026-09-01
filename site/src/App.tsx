@@ -386,7 +386,7 @@ export default function App() {
       </header>
 
       <div className="fixture-banner" role="status">
-        <strong>The first four dated anchors have been adjudicated.</strong> Earlier exact operations reject the Fulton, Maricopa, and Santa Clara anchors; Hudson's 2002 exact-facility anchor remains unresolved as county first entry. Complete historical inventories remain unresolved, zero treatment counties are eligible, and no impact model has been run.
+        <strong>The first five dated anchors have been adjudicated.</strong> Earlier exact operations reject the Fulton, Maricopa, Santa Clara, and Clark anchors; Hudson's 2002 exact-facility anchor remains unresolved as county first entry. Complete historical inventories remain unresolved, zero treatment counties are eligible, and no impact model has been run.
       </div>
 
       <main className="workspace">

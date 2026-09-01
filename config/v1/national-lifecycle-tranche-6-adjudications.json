@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "artifact_type": "national_lifecycle_tranche_adjudications",
-  "generated_at": "2026-09-01T18:00:00Z",
+  "generated_at": "2026-09-01T20:00:00Z",
   "record_count": 8,
   "records": [
     {
@@ -144,6 +144,23 @@
           "finding": "The operator currently markets the encompassing Las Vegas Core Campus; the county permit supplies the exact-building match.",
           "disposition": "supporting",
           "claim_confidence": 0.97
+        },
+        {
+          "source_id": "src_switch_supernap_debut_2009",
+          "attribute_path": "event.operational",
+          "raw_value": {"type": "date", "value": {"year": 2009, "precision": "year"}},
+          "finding": "Switch states that its SUPERNAP data center debuted in 2009; the exact NAP 7 identity and 7135 South Decatur address are supplied by Clark County's operating permit.",
+          "disposition": "supporting",
+          "claim_confidence": 0.96
+        }
+      ],
+      "events": [
+        {
+          "event_type": "operational",
+          "when": {"year": 2009, "precision": "year"},
+          "source_id": "src_switch_supernap_debut_2009",
+          "confidence": 0.96,
+          "notes": "Year of SUPERNAP/NAP 7 debut. The operator history supplies year precision; the county permit supplies the exact current facility-number and address match."
         }
       ],
       "record_status": "active"

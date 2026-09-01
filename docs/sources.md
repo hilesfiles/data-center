@@ -106,7 +106,7 @@ county profiles lazy-load only their selected state partition.
 
 - Treatment definition: `trt_first_entry_v1`
 - Geography: 3,144 current Census counties and county equivalents
-- Reviewed dated operational events: 4
+- Reviewed dated operational events: 5
 - Evidence- and history-window-qualified events: 2
 - Verified county first-entry dates: 0
 - Eligible treatment counties: 0
@@ -114,12 +114,15 @@ county profiles lazy-load only their selected state partition.
 
 The registry retains NTT's dated SV1 opening release, Apple's environmental report describing
 Mesa customer service beginning in March 2017, a contemporaneous October 2006 observation of
-operation at QTS Atlanta DC1, and SunGard's signed March 27, 2002 filing documenting operation
-at the exact present NY7 site in North Bergen. The Fulton candidate fails the authoritative-
-source and pre-period gates; Hudson passes the evidence gate but has only one available pre-
-period. Santa Clara, Maricopa, and Fulton are rejected as county first entries by documented
-earlier operation. Hudson remains unresolved because the 1987 lease history is not an opening
-date and a complete historical inventory has not been established. Public county assessments
+operation at QTS Atlanta DC1, SunGard's signed March 27, 2002 filing documenting operation
+at the exact present NY7 site in North Bergen, and Switch's year-level account of SUPERNAP/NAP7's
+2009 debut. Clark County's September 3, 2008 franchise filing identifies NAP4 as an existing
+data center while NAP7 was still under construction, so NAP7 cannot be the county's first entry.
+The Clark candidate passes the panel window but fails the year-precision evidence gate. Fulton
+also fails the evidence and pre-period gates; Hudson passes the evidence gate but has only one
+available pre-period. Santa Clara, Maricopa, Fulton, and Clark are rejected as county first entries
+by documented earlier operation. Hudson remains unresolved because the 1987 lease history is not
+an opening date and a complete historical inventory has not been established. Public county assessments
 are JSON-only and split into 51 state/DC partitions. Missing reviewed events do not establish
 a never-treated comparison group.
 
