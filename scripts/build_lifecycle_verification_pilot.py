@@ -156,6 +156,7 @@ def build_pilot() -> tuple[list[dict[str, Any]], list[dict[str, Any]], dict[str,
                 "active_canonical_facility_count": active_count,
                 "queued_facility_count": queued_count,
                 "in_research_facility_count": 0,
+                "needs_review_facility_count": 0,
                 "verified_facility_count": 0,
                 "unknown_status_facility_count": active_count,
                 "coverage_status": (

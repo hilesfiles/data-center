@@ -82,7 +82,14 @@ uses county density, source naming, normalized operator linkage, mapped building
 footprints, campus membership, and source quality. The policy and its weights are stored
 in JSON and the public queue is rebuildable from the final identity snapshot.
 
-All 1,337 canonical facilities still have `current_status: unknown`. Queue membership is
-therefore not evidence that a facility operates, was announced, or ever completed. The
-pilot exists to collect source claims and test reviewed lifecycle resolutions before the
-workflow expands nationally.
+The immutable pilot baseline begins with all 1,337 canonical facilities at
+`current_status: unknown`. Queue membership is therefore not evidence that a facility
+operates, was announced, or ever completed.
+
+The first downstream evidence tranche reviews one facility in each pilot county. Six
+facility statuses resolve as operational from facility-specific operator, regulatory, or
+local-government records. One record remains partial because campus evidence cannot be
+mapped to its specific building; one remains disputed because two Prince William County
+records assign conflicting status. Site-wide capacity or area is not allocated to a
+building unless the source identifies that building. The result is six verified statuses,
+1,331 unknown statuses, and sixteen remaining queue records.

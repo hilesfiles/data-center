@@ -85,6 +85,18 @@ highest-density counties—and publishes a static research queue plus national c
 coverage. Selection changes research priority only; all lifecycle statuses remain unknown
 until source claims are reviewed.
 
+Acquire the current Prince William County GIS evidence snapshot and rebuild the first
+governed evidence tranche:
+
+```powershell
+python scripts/acquire_pwc_lifecycle_gis.py
+python scripts/adjudicate_lifecycle_tranche_1.py
+```
+
+The downstream tranche keeps the original queue immutable, records source claims and
+human review decisions in JSON, and publishes separate verified, partial, disputed, and
+remaining-queue states.
+
 Build the static site:
 
 ```powershell
@@ -116,12 +128,13 @@ validation can be added later to CI with a standards-compliant Draft 2020-12 val
   relationships are represented as provisional governed decisions. All sixteen spatial
   candidates are resolved: four source-record merges, eight distinct contained sites,
   two accepted campus links, and two rejected campus links. No candidate remains pending.
-- Lifecycle verification: a 24-facility pilot queue is implemented across eight counties;
-  1,337 canonical facilities remain unknown and zero statuses are yet verified.
+- Lifecycle verification: eight of 24 pilot facilities have been reviewed across eight
+  counties. Six are resolved operational, one remains in research, one is disputed, and
+  16 remain queued; 1,331 canonical facilities still have unknown status.
 - Economic, fiscal, utility, housing, environmental, or opposition observations: not yet ingested.
 - Econometric estimates and public indices: fixture-only; not substantive.
 
 ## Next priority
 
-Collect and review lifecycle evidence for the 24 pilot facilities, then use the resulting
-claims and decisions to produce the first verified project events and opening dates.
+Review the remaining 16 lifecycle-pilot facilities, prioritizing building-specific
+government and operator records and retaining partial or conflicting evidence explicitly.

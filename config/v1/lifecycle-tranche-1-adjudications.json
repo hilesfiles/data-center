@@ -1,0 +1,133 @@
+{
+  "schema_version": "1.0.0",
+  "artifact_type": "lifecycle_tranche_1_adjudications",
+  "artifact_version": "2026.08.31",
+  "generated_at": "2026-09-01T01:00:00Z",
+  "record_schema": "https://dccio.org/schemas/v1/lifecycle-evidence-adjudication.schema.json",
+  "record_count": 8,
+  "records": [
+    {
+      "schema_version": "1.0.0",
+      "verification_candidate_id": "lvc_im3_b76219fb8ae194b36166",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.9,
+      "rationale": "Centersquare's current IAD4 specification identifies the Beaumeade address pair that includes IAD4-B and advertises active data-center services. Site-wide capacity and area are not assigned to the individual building.",
+      "evidence": [
+        {"source_id": "src_centersquare_iad4_specs_2025", "attribute_path": "facility.current_status", "raw_value": {"type": "classification", "code": "operational", "label": "Current IAD4 data-center service"}, "normalized_value": {"type": "classification", "code": "operational"}, "finding": "The current operator specification identifies IAD4 at 21571 and 21561 Beaumeade Circle and describes active facility services and 24/7 support.", "disposition": "supporting", "claim_confidence": 0.9}
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "verification_candidate_id": "lvc_im3_c556437093508d2f96ad",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.98,
+      "rationale": "NTT's current facility page and dated opening release independently identify SV1 at 1160 Walsh Avenue. The opening date, critical IT load, and data-floor area are facility-specific.",
+      "evidence": [
+        {"source_id": "src_ntt_sv1_facility_page_2026", "attribute_path": "facility.current_status", "raw_value": {"type": "classification", "code": "operational", "label": "Current facility service"}, "normalized_value": {"type": "classification", "code": "operational"}, "finding": "NTT currently markets colocation and related services at Silicon Valley SV1, 1160 Walsh Avenue.", "disposition": "supporting", "claim_confidence": 0.98},
+        {"source_id": "src_ntt_sv1_opening_20210413", "attribute_path": "event.operational", "raw_value": {"type": "date", "value": {"date": "2021-04-13", "precision": "day"}}, "finding": "NTT announced that the 16 MW SV1 facility had opened.", "disposition": "supporting", "claim_confidence": 0.98},
+        {"source_id": "src_ntt_sv1_facility_page_2026", "attribute_path": "observation.capacity_mw", "raw_value": {"type": "quantity", "value": 16, "unit": "MW"}, "finding": "The facility page reports 16 MW of critical IT load.", "disposition": "supporting", "claim_confidence": 0.98},
+        {"source_id": "src_ntt_sv1_facility_page_2026", "attribute_path": "observation.floor_area_sqft", "raw_value": {"type": "quantity", "value": 64000, "unit": "square foot"}, "finding": "The facility page reports 64,000 square feet of data floor space.", "disposition": "supporting", "claim_confidence": 0.98}
+      ],
+      "events": [
+        {"event_type": "operational", "when": {"date": "2021-04-13", "precision": "day"}, "source_id": "src_ntt_sv1_opening_20210413", "confidence": 0.98, "notes": "Opening announcement date; the release says the facility had opened."}
+      ],
+      "observations": [
+        {"metric_code": "facility.capacity.mw_observed", "value": 16, "unit": "MW", "period": {"precision": "unknown"}, "source_id": "src_ntt_sv1_facility_page_2026"},
+        {"metric_code": "facility.area.building_sqft_observed", "value": 64000, "unit": "square foot", "period": {"precision": "unknown"}, "source_id": "src_ntt_sv1_facility_page_2026"}
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "verification_candidate_id": "lvc_im3_0c4cc0c5a20ff47edd30",
+      "resolution_state": "conflicting",
+      "decision": "escalate",
+      "confidence": 0.5,
+      "rationale": "Current Prince William County GIS labels IAD14 planned, while a county presentation identifies the same address and parcel as operational. The official-source conflict prevents a lifecycle classification.",
+      "evidence": [
+        {"source_id": "src_pwc_data_center_gis_20260831", "attribute_path": "facility.current_status", "raw_value": {"type": "classification", "code": "planned", "label": "BuildingStatus and PermitStatus"}, "normalized_value": {"type": "classification", "code": "proposed"}, "finding": "The county GIS result for Amazon AWS IAD-14 at 11801 Brewers Spring Road reports BuildingStatus=Planned and PermitStatus=Planned, with no occupancy date.", "disposition": "conflicting", "claim_confidence": 0.95},
+        {"source_id": "src_pwc_data_center_inventory_20240605", "attribute_path": "facility.current_status", "raw_value": {"type": "classification", "code": "operational", "label": "County inventory status O"}, "normalized_value": {"type": "classification", "code": "operational"}, "finding": "The county's 2024 presentation lists 11801 Brewers Spring Road and parcel 7597-42-2107 as operational, conflicting with the current GIS layer.", "disposition": "conflicting", "claim_confidence": 0.9}
+      ],
+      "record_status": "provisional"
+    },
+    {
+      "schema_version": "1.0.0",
+      "verification_candidate_id": "lvc_im3_6b818c18a9ae4520babf",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.97,
+      "rationale": "Apple's reports identify the Mesa data center as Apple-operated, place it online in 2016, and state that it began servicing customers in March 2017. March 2017 is used as the operational event because it is the most specific service date.",
+      "evidence": [
+        {"source_id": "src_apple_environment_report_2024", "attribute_path": "facility.current_status", "raw_value": {"type": "classification", "code": "operational", "label": "Apple-owned and operated data center"}, "normalized_value": {"type": "classification", "code": "operational"}, "finding": "Apple's 2024 report identifies Mesa as an Apple-owned and operated data center.", "disposition": "supporting", "claim_confidence": 0.97},
+        {"source_id": "src_apple_environment_report_2019", "attribute_path": "event.operational", "raw_value": {"type": "date", "value": {"date": "2017-03-01", "precision": "month"}}, "finding": "Apple reports that Mesa came online in 2016 and began servicing customers in March 2017.", "disposition": "supporting", "claim_confidence": 0.95}
+      ],
+      "events": [
+        {"event_type": "operational", "when": {"date": "2017-03-01", "precision": "month"}, "source_id": "src_apple_environment_report_2019", "confidence": 0.95, "notes": "Month customers began receiving service; Apple also describes the site as having come online in 2016."}
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "verification_candidate_id": "lvc_im3_f0e9be51cf92a0ad51ee",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.9,
+      "rationale": "Washington Ecology lists an active permit record for NTT Data Services in Quincy, and NTT's service description lists the Western Technology Center in Quincy as a colocation location.",
+      "evidence": [
+        {"source_id": "src_wa_ecology_data_centers_2026", "attribute_path": "facility.current_status", "raw_value": {"type": "text", "value": "NTT Data Services permit 11AQ-E421"}, "normalized_value": {"type": "classification", "code": "operational"}, "finding": "The state regulatory page lists NTT Data Services data-center permit documents for Quincy.", "disposition": "supporting", "claim_confidence": 0.9},
+        {"source_id": "src_ntt_dedicated_cloud_description_2026", "attribute_path": "facility.current_status", "raw_value": {"type": "classification", "code": "operational", "label": "Current colocation location"}, "normalized_value": {"type": "classification", "code": "operational"}, "finding": "NTT lists the Western Technology Center in Quincy as a current colocation location.", "disposition": "supporting", "claim_confidence": 0.9}
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "verification_candidate_id": "lvc_im3_6ee159764dffae8538fb",
+      "resolution_state": "partial",
+      "decision": "provisional",
+      "confidence": 0.55,
+      "rationale": "New Albany reports two staffed buildings and additional construction on Amazon's newest campus, but the public record does not map those buildings to the IM3 code CMH50. Campus evidence is retained without assigning a building status.",
+      "evidence": [
+        {"source_id": "src_new_albany_amazon_update_20250807", "attribute_path": "facility.current_status", "raw_value": {"type": "classification", "code": "unknown", "label": "Facility-specific status not identified"}, "finding": "The city identifies a mixed-status Amazon campus—two completed and staffed buildings plus remaining facilities under construction—but does not identify CMH50.", "disposition": "context", "claim_confidence": 0.8}
+      ],
+      "record_status": "provisional"
+    },
+    {
+      "schema_version": "1.0.0",
+      "verification_candidate_id": "lvc_im3_0ac3beea66638de2c56f",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.95,
+      "rationale": "City records identify the existing PDX2 site and later fiscal activity for its buildings. The records support site operation but do not provide a defensible facility opening date or building-level capacity.",
+      "evidence": [
+        {"source_id": "src_umatilla_pdx2_feasibility_2018", "attribute_path": "facility.current_status", "raw_value": {"type": "classification", "code": "operational", "label": "Existing PDX2 site"}, "normalized_value": {"type": "classification", "code": "operational"}, "finding": "The city's feasibility study describes the existing PDX2 site and its cooling-water flows.", "disposition": "supporting", "claim_confidence": 0.95},
+        {"source_id": "src_umatilla_budget_2024_2025", "attribute_path": "facility.current_status", "raw_value": {"type": "text", "value": "PDX2 enterprise-zone and strategic-investment payments"}, "normalized_value": {"type": "classification", "code": "operational"}, "finding": "The adopted budget documents current fiscal activity for PDX2 and its fifth building.", "disposition": "supporting", "claim_confidence": 0.9}
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "verification_candidate_id": "lvc_im3_808fac5c05614d73d508",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.97,
+      "rationale": "H5's current facility page identifies active service at 100 Taylor Street, and its dated release records the acquisition. The published 85,000 square feet covers two facilities and is not assigned to this individual building.",
+      "evidence": [
+        {"source_id": "src_h5_san_antonio_facility_2026", "attribute_path": "facility.current_status", "raw_value": {"type": "classification", "code": "operational", "label": "Current facility service"}, "normalized_value": {"type": "classification", "code": "operational"}, "finding": "H5 currently markets data-center and interconnection services at 100 Taylor Street.", "disposition": "supporting", "claim_confidence": 0.97},
+        {"source_id": "src_h5_san_antonio_acquisition_20181128", "attribute_path": "event.acquired", "raw_value": {"type": "date", "value": {"date": "2018-11-28", "precision": "day"}}, "finding": "H5 announced its acquisition of the 100 Taylor Street carrier-hotel facility.", "disposition": "supporting", "claim_confidence": 0.97}
+      ],
+      "events": [
+        {"event_type": "acquired", "when": {"date": "2018-11-28", "precision": "day"}, "source_id": "src_h5_san_antonio_acquisition_20181128", "confidence": 0.97, "notes": "Date of H5 acquisition announcement for the 100 Taylor Street facility."}
+      ],
+      "record_status": "active"
+    }
+  ]
+}

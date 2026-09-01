@@ -147,9 +147,10 @@ export interface CountyLifecycleVerificationCoverage {
   active_canonical_facility_count: number;
   queued_facility_count: number;
   in_research_facility_count: number;
+  needs_review_facility_count: number;
   verified_facility_count: number;
   unknown_status_facility_count: number;
-  coverage_status: "pilot_queued" | "backlog" | "no_active_facility";
+  coverage_status: "pilot_queued" | "pilot_in_progress" | "pilot_reviewed" | "backlog" | "no_active_facility";
   generated_at: string;
 }
 
@@ -165,4 +166,14 @@ export interface LifecycleVerificationCandidate {
   priority_tier: "pilot_high" | "pilot_standard" | "backlog";
   evidence_status: "no_external_evidence" | "partial" | "sufficient" | "conflicting";
   review_status: "queued" | "in_research" | "evidence_collected" | "needs_review" | "verified" | "blocked";
+}
+
+export interface PublicLifecycleVerificationRecord {
+  schema_version: "1.0.0";
+  verification_candidate_id: string;
+  facility_id: string;
+  canonical_name: string;
+  resolution_status: "resolved" | "provisional" | "disputed" | "unresolved";
+  resolved_current_status?: string;
+  resolution_confidence?: number;
 }

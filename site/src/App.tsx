@@ -33,7 +33,7 @@ export default function App() {
       fetch(`${base}data/v1/counties/facility-source-coverage.json`),
       fetch(`${base}data/v1/counties/entity-resolution-coverage.json`),
       fetch(`${base}data/v1/counties/final-review-coverage.json`),
-      fetch(`${base}data/v1/counties/lifecycle-verification-coverage.json`),
+      fetch(`${base}data/v1/counties/lifecycle-tranche-1-coverage.json`),
     ])
       .then(async ([metadataResponse, coverageResponse, resolutionResponse, adjudicationResponse, lifecycleResponse]) => {
         if (!metadataResponse.ok || !coverageResponse.ok || !resolutionResponse.ok || !adjudicationResponse.ok || !lifecycleResponse.ok) {
@@ -87,7 +87,7 @@ export default function App() {
       </header>
 
       <div className="fixture-banner" role="status">
-        <strong>Lifecycle verification has started.</strong> All sixteen spatial identity candidates are resolved, and 24 canonical facilities across eight high-density counties are now queued for a controlled evidence pilot. Zero facilities have a verified lifecycle status yet.
+        <strong>The first lifecycle evidence tranche is reviewed.</strong> Six of eight reviewed facilities now have an operational resolution; one remains in research and one is disputed. Sixteen pilot facilities remain queued.
       </div>
 
       <main className="workspace">
@@ -199,6 +199,16 @@ export default function App() {
                     <em>reviewed claims required</em>
                   </div>
                   <div className="lifecycle-row">
+                    <span>Lifecycle in research</span>
+                    <strong>{integerFormat.format(selectedLifecycle?.in_research_facility_count ?? 0)}</strong>
+                    <em>evidence does not identify the building</em>
+                  </div>
+                  <div className="lifecycle-row">
+                    <span>Lifecycle needs review</span>
+                    <strong>{integerFormat.format(selectedLifecycle?.needs_review_facility_count ?? 0)}</strong>
+                    <em>official evidence conflicts</em>
+                  </div>
+                  <div className="lifecycle-row">
                     <span>Unknown lifecycle status</span>
                     <strong>{integerFormat.format(selectedLifecycle?.unknown_status_facility_count ?? 0)}</strong>
                     <em>unknown is never treated as zero</em>
@@ -207,7 +217,7 @@ export default function App() {
 
                 <div className="evidence-note">
                   <span>Interpretation</span>
-                  <p>Amber map halos identify research priority only—not operating status. Each queued facility still requires independent source claims and a reviewed resolution for status, dates, operator roles, and capacity before it can enter a historical treatment panel.</p>
+                  <p>Halo color shows research state: amber is queued, blue is still in research, red marks conflicting evidence, and green marks a reviewed status. Only green facilities count as verified; unknown and disputed records are never treated as zero.</p>
                 </div>
               </>
             )}

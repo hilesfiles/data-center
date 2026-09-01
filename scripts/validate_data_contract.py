@@ -1375,6 +1375,137 @@ def validate_public_data(
             issues.append(Issue("public_data_validation", f"{lifecycle_manifest_path.name}.parts[{index}]", "byte size or SHA-256 does not match the artifact"))
     if lifecycle_manifest.get("record_count") != total_lifecycle_manifest_records:
         issues.append(Issue("public_data_validation", lifecycle_manifest_path.name, "manifest record count does not equal its parts"))
+
+    tranche_sources_path = CONFIG_DIR / "lifecycle-tranche-1-evidence-sources.json"
+    tranche_sources_document = load_json(tranche_sources_path)
+    tranche_sources = tranche_sources_document.get("records", [])
+    if tranche_sources_document.get("record_count") != 14 or len(tranche_sources) != 14:
+        issues.append(Issue("public_data_validation", tranche_sources_path.name, "expected fourteen governed evidence sources"))
+    for index, record in enumerate(tranche_sources):
+        for issue in validator.validate_record(record, schema_paths["source"]):
+            issues.append(Issue("public_data_validation", f"{tranche_sources_path.name}.records[{index}]{issue.path[1:]}", issue.message))
+
+    tranche_adjudications_path = CONFIG_DIR / "lifecycle-tranche-1-adjudications.json"
+    tranche_adjudications_document = load_json(tranche_adjudications_path)
+    tranche_adjudications = tranche_adjudications_document.get("records", [])
+    if tranche_adjudications_document.get("record_count") != 8 or len(tranche_adjudications) != 8:
+        issues.append(Issue("public_data_validation", tranche_adjudications_path.name, "expected one adjudication per pilot county"))
+    tranche_source_ids = {record.get("source_id") for record in tranche_sources}
+    for index, record in enumerate(tranche_adjudications):
+        for issue in validator.validate_record(record, schema_paths["lifecycle_evidence_adjudication"]):
+            issues.append(Issue("public_data_validation", f"{tranche_adjudications_path.name}.records[{index}]{issue.path[1:]}", issue.message))
+        if record.get("verification_candidate_id") not in set(lifecycle_candidate_ids):
+            issues.append(Issue("referential_integrity", f"{tranche_adjudications_path.name}.records[{index}]", "unknown lifecycle candidate"))
+        for evidence in record.get("evidence", []):
+            if evidence.get("source_id") not in tranche_source_ids:
+                issues.append(Issue("referential_integrity", f"{tranche_adjudications_path.name}.records[{index}]", "unknown evidence source"))
+
+    pwc_acquisition_path = DATA_DIR / "raw" / "prince-william-county" / "lifecycle-tranche-1-iad14.acquisition.json"
+    pwc_acquisition = load_json(pwc_acquisition_path)
+    for issue in validator.validate_record(pwc_acquisition, schema_paths["acquisition_manifest"]):
+        issues.append(Issue("public_data_validation", f"{pwc_acquisition_path.name}{issue.path[1:]}", issue.message))
+    pwc_raw_path = ROOT / pwc_acquisition.get("local_path", "")
+    if not pwc_raw_path.is_file() or pwc_acquisition.get("sha256") != hashlib.sha256(pwc_raw_path.read_bytes()).hexdigest():
+        issues.append(Issue("public_data_validation", pwc_acquisition_path.name, "raw GIS response is missing or its SHA-256 changed"))
+    else:
+        pwc_features = load_json(pwc_raw_path).get("features", [])
+        iad14 = [item.get("attributes", {}) for item in pwc_features if item.get("attributes", {}).get("BuildingID") == "IAD14"]
+        if len(iad14) != 1 or iad14[0].get("BuildingStatus") != "Planned" or iad14[0].get("PermitStatus") != "Planned":
+            issues.append(Issue("public_data_validation", pwc_raw_path.name, "governed IAD14 conflict evidence changed"))
+
+    tranche_path = DATA_DIR / "silver" / "infrastructure" / "im3-2026.02.09-lifecycle-tranche-1.json"
+    tranche = load_json(tranche_path)
+    tranche_collections = tranche.get("collections", {})
+    expected_tranche_collection_counts = {
+        "source": 14,
+        "claim": 16,
+        "claim_resolution": 8,
+        "review_decision": 8,
+        "event": 3,
+        "observation": 2,
+        "facility": 6,
+    }
+    if {name: len(tranche_collections.get(name, [])) for name in expected_tranche_collection_counts} != expected_tranche_collection_counts:
+        issues.append(Issue("public_data_validation", tranche_path.name, "lifecycle tranche collection counts changed"))
+    if tranche.get("record_count") != sum(expected_tranche_collection_counts.values()):
+        issues.append(Issue("public_data_validation", tranche_path.name, "lifecycle tranche record count is inconsistent"))
+    for collection, expected_count in expected_tranche_collection_counts.items():
+        for index, record in enumerate(tranche_collections.get(collection, [])):
+            for issue in validator.validate_record(record, schema_paths[collection]):
+                issues.append(Issue("public_data_validation", f"{tranche_path.name}.{collection}[{index}]{issue.path[1:]}", issue.message))
+
+    updated_facility_by_id = {item["facility_id"]: item for item in tranche_collections.get("facility", [])}
+    reference_facilities = [updated_facility_by_id.get(item["facility_id"], item) for item in final_collections.get("facility", [])]
+    tranche_reference_fixture = {
+        **tranche_collections,
+        "facility": reference_facilities,
+        "campus": final_collections.get("campus", []),
+        "operator": final_collections.get("operator", []),
+        "lifecycle_verification_candidate": lifecycle_candidates,
+        "geography_reference": geography_records,
+        "metric_definition": load_json(CONFIG_DIR / "metric-registry.json")["metrics"],
+    }
+    for issue in validate_references(tranche_reference_fixture):
+        issues.append(Issue("public_data_validation", f"{tranche_path.name}:{issue.path}", issue.message))
+    review_ids = {record.get("review_decision_id") for record in tranche_collections.get("review_decision", [])}
+    if any(record.get("review_decision_id") not in review_ids for record in tranche_collections.get("claim_resolution", [])):
+        issues.append(Issue("referential_integrity", tranche_path.name, "claim resolution references an unknown review decision"))
+
+    tranche_queue_path = PUBLIC_DATA_DIR / "lifecycle" / "tranche-1-queue.json"
+    tranche_queue = load_json(tranche_queue_path)
+    queue_status_counts = Counter(record.get("review_status") for record in tranche_queue)
+    if len(tranche_queue) != 24 or queue_status_counts != Counter({"queued": 16, "verified": 6, "in_research": 1, "needs_review": 1}):
+        issues.append(Issue("public_data_validation", tranche_queue_path.name, "lifecycle tranche queue states changed"))
+    for index, record in enumerate(tranche_queue):
+        for issue in validator.validate_record(record, schema_paths["lifecycle_verification_candidate"]):
+            issues.append(Issue("public_data_validation", f"{tranche_queue_path.name}[{index}]{issue.path[1:]}", issue.message))
+
+    tranche_results_path = PUBLIC_DATA_DIR / "lifecycle" / "tranche-1-results.json"
+    tranche_results = load_json(tranche_results_path)
+    result_status_counts = Counter(record.get("resolution_status") for record in tranche_results)
+    if len(tranche_results) != 8 or result_status_counts != Counter({"resolved": 6, "unresolved": 1, "disputed": 1}):
+        issues.append(Issue("public_data_validation", tranche_results_path.name, "public lifecycle result states changed"))
+    for index, record in enumerate(tranche_results):
+        for issue in validator.validate_record(record, schema_paths["public_lifecycle_verification_record"]):
+            issues.append(Issue("public_data_validation", f"{tranche_results_path.name}[{index}]{issue.path[1:]}", issue.message))
+        if record.get("facility_id") not in active_final_facility_ids or record.get("verification_candidate_id") not in set(lifecycle_candidate_ids):
+            issues.append(Issue("referential_integrity", f"{tranche_results_path.name}[{index}]", "public lifecycle result references an unknown facility or candidate"))
+
+    tranche_coverage_path = PUBLIC_DATA_DIR / "counties" / "lifecycle-tranche-1-coverage.json"
+    tranche_coverage = load_json(tranche_coverage_path)
+    tranche_coverage_fips = [record.get("county_fips") for record in tranche_coverage]
+    if len(tranche_coverage) != 3144 or set(tranche_coverage_fips) != feature_fips or len(tranche_coverage_fips) != len(set(tranche_coverage_fips)):
+        issues.append(Issue("public_data_validation", tranche_coverage_path.name, "tranche coverage must contain every Census county exactly once"))
+    for index, record in enumerate(tranche_coverage):
+        for issue in validator.validate_record(record, schema_paths["public_lifecycle_verification_coverage"]):
+            issues.append(Issue("public_data_validation", f"{tranche_coverage_path.name}[{index}]{issue.path[1:]}", issue.message))
+    if (
+        sum(record.get("active_canonical_facility_count", 0) for record in tranche_coverage) != 1337
+        or sum(record.get("queued_facility_count", 0) for record in tranche_coverage) != 16
+        or sum(record.get("in_research_facility_count", 0) for record in tranche_coverage) != 1
+        or sum(record.get("needs_review_facility_count", 0) for record in tranche_coverage) != 1
+        or sum(record.get("verified_facility_count", 0) for record in tranche_coverage) != 6
+        or sum(record.get("unknown_status_facility_count", 0) for record in tranche_coverage) != 1331
+        or sum(record.get("coverage_status") == "pilot_in_progress" for record in tranche_coverage) != 8
+    ):
+        issues.append(Issue("public_data_validation", tranche_coverage_path.name, "national lifecycle tranche totals are inconsistent"))
+
+    tranche_manifest_path = DATA_DIR / "silver" / "infrastructure" / "im3-2026.02.09-lifecycle-tranche-1.manifest.json"
+    tranche_manifest = load_json(tranche_manifest_path)
+    for issue in validator.validate_record(tranche_manifest, schema_paths["dataset_manifest"]):
+        issues.append(Issue("public_data_validation", f"{tranche_manifest_path.name}{issue.path[1:]}", issue.message))
+    total_tranche_manifest_records = 0
+    for index, part in enumerate(tranche_manifest.get("parts", [])):
+        part_path = (ROOT / part.get("path", "")).resolve()
+        if not part_path.is_relative_to(ROOT) or not part_path.is_file():
+            issues.append(Issue("public_data_validation", f"{tranche_manifest_path.name}.parts[{index}]", "part path is missing or outside the repository"))
+            continue
+        payload = part_path.read_bytes()
+        total_tranche_manifest_records += part.get("record_count", 0)
+        if part.get("byte_size") != len(payload) or part.get("sha256") != hashlib.sha256(payload).hexdigest():
+            issues.append(Issue("public_data_validation", f"{tranche_manifest_path.name}.parts[{index}]", "byte size or SHA-256 does not match the artifact"))
+    if tranche_manifest.get("record_count") != total_tranche_manifest_records:
+        issues.append(Issue("public_data_validation", tranche_manifest_path.name, "manifest record count does not equal its parts"))
     return issues
 
 
