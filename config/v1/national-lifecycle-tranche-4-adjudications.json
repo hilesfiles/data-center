@@ -145,7 +145,7 @@
       "decision": "accept",
       "resolved_current_status": "operational",
       "confidence": 0.95,
-      "rationale": "Phillips Exeter's current campus map identifies the exact mapped building as the Data Center, and its current handbook lists active Information Technology support at that Data Center. The operator, facility name, campus location, and current institutional use align; no defensible capacity or floor-area value is published.",
+      "rationale": "Phillips Exeter's current campus map identifies the exact mapped building as the Data Center, and its current handbook lists active Information Technology support at that Data Center. The Academy's 2008–2009 handbook also places the ITS support desk in the Academy's Data Center, establishing operation no later than the end of that academic year. The operator, facility name, campus location, and institutional use align; no defensible capacity or floor-area value is published.",
       "evidence": [
         {
           "source_id": "src_exeter_campus_map_2025",
@@ -163,6 +163,23 @@
           "finding": "The current school handbook independently documents active IT functions at the named Data Center.",
           "disposition": "supporting",
           "claim_confidence": 0.94
+        },
+        {
+          "source_id": "src_exeter_ebook_2008_2009",
+          "attribute_path": "event.operational",
+          "raw_value": {"type": "date", "value": {"date": "2009-06-30", "precision": "day"}},
+          "finding": "The Academy's official 2008–2009 handbook says the ITS support desk was located in the Academy's Data Center, establishing that the exact institutional facility was operational no later than the end of the academic year.",
+          "disposition": "supporting",
+          "claim_confidence": 0.93
+        }
+      ],
+      "events": [
+        {
+          "event_type": "operational",
+          "when": {"date": "2009-06-30", "precision": "day"},
+          "source_id": "src_exeter_ebook_2008_2009",
+          "confidence": 0.93,
+          "notes": "Operational no later than June 30, 2009. The dated 2008–2009 Academy handbook locates the ITS support desk in the Academy's Data Center; the academic-year end is retained as a conservative day-precision upper bound rather than asserted as an opening date."
         }
       ],
       "record_status": "active"
