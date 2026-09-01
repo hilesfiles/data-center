@@ -137,16 +137,20 @@ post-treatment years.
 
 Passing those checks is necessary but not sufficient. A facility opening becomes a county
 first-entry treatment only when the reviewed adjudication explicitly verifies that it is the
-first data-center operation in that county. The current registry retains three facility-event
+first data-center operation in that county. The current registry retains four facility-event
 candidates: NTT SV1 in Santa Clara County (2021-04-13, DQS 93.10, 20 pre/3 post years),
 Apple's Mesa facility in Maricopa County (2017-03 month precision, DQS 85.74, 16 pre/7 post
 years), and a contemporaneous observation of QTS Atlanta DC1 in Fulton County (2006-10-03,
-DQS 84.60, 5 pre/18 post years). The Santa Clara and Maricopa candidates pass the evidence
-and panel-window gates but fail county-first-entry verification. Fulton's trade-press candidate
-also fails the authoritative-source and seven-pre-period gates and is independently rejected
-by documented earlier operation. Therefore all 3,144 counties have an assessment, zero are
-eligible, and no model run is authorized. Counties without a reviewed dated event remain
-unknown for treatment purposes; they are not labeled never treated.
+DQS 84.60, 5 pre/18 post years), plus an operational-no-later-than observation for the exact
+present NY7 site in Hudson County (2002-03-27, DQS 95.06, 1 pre/22 post years). The Santa Clara
+and Maricopa candidates pass the evidence and panel-window gates but fail county-first-entry
+verification. Fulton's trade-press candidate fails the authoritative-source and seven-pre-period
+gates and is independently rejected by documented earlier operation. Hudson passes the evidence
+gate but fails the seven-pre-period gate; its first entry remains unresolved because the filing's
+1987 lease history does not establish an operational opening date and the historical county
+inventory is incomplete. Therefore all 3,144 counties have an assessment, zero are eligible,
+and no model run is authorized. Counties without a reviewed dated event remain unknown for
+treatment purposes; they are not labeled never treated.
 
 ### First-entry research prioritization
 

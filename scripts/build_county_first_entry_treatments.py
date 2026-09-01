@@ -349,10 +349,16 @@ def build() -> dict[str, Any]:
             assessment["inventory_completeness_status"] = adjudication_records[0][
                 "inventory_completeness_status"
             ]
-            assessment["first_entry_research_summary"] = (
-                "Earlier operation documented; the dated anchor is rejected as county first entry. "
-                "The complete historical county inventory is not established."
-            )
+            if any(record["resolution_state"] == "unresolved" for record in adjudication_records):
+                assessment["first_entry_research_summary"] = (
+                    "A dated exact-facility operation is documented, but county first entry remains unresolved. "
+                    "The complete historical county inventory and conclusive earlier-operations search are not established."
+                )
+            else:
+                assessment["first_entry_research_summary"] = (
+                    "Earlier operation documented; the dated anchor is rejected as county first entry. "
+                    "The complete historical county inventory is not established."
+                )
         if earliest:
             assessment["eligible_treatment_period"] = earliest["when"]
             assessment["eligible_cohort_year"] = cohort_year(earliest["when"])

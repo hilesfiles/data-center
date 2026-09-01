@@ -215,10 +215,16 @@ def build() -> dict[str, Any]:
             candidate["inventory_completeness_status"] = first_entry_adjudication[
                 "inventory_completeness_status"
             ]
-            candidate["research_summary"] = (
-                "Earlier operation documented; dated anchor rejected. "
-                "County first entry remains unresolved pending a complete historical inventory."
-            )
+            if first_entry_adjudication["resolution_state"] == "unresolved":
+                candidate["research_summary"] = (
+                    "A dated exact-facility operation is documented, but the county's first entry remains unresolved. "
+                    "Research must complete the historical inventory and search for earlier operations."
+                )
+            else:
+                candidate["research_summary"] = (
+                    "Earlier operation documented; dated anchor rejected. "
+                    "County first entry remains unresolved pending a complete historical inventory."
+                )
         candidates.append(candidate)
 
     candidates.sort(key=lambda record: (-record["priority_score"], record["county_fips"]))

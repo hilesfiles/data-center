@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "artifact_type": "national_lifecycle_tranche_adjudications",
-  "generated_at": "2026-09-01T03:00:00Z",
+  "generated_at": "2026-09-01T19:00:00Z",
   "record_count": 8,
   "records": [
     {
@@ -141,6 +141,23 @@
           "finding": "Equinix labels 71,946 square feet as colocation space; it is not normalized to total building area.",
           "disposition": "context",
           "claim_confidence": 0.99
+        },
+        {
+          "source_id": "src_sungard_2001_10k_north_bergen_20020327",
+          "attribute_path": "event.operational",
+          "raw_value": {"type": "date", "value": {"date": "2002-03-27", "precision": "day"}},
+          "finding": "SunGard's signed Form 10-K lists an operating 163,500-square-foot Availability Services MegaCenter in North Bergen and identifies its 5851 West Side Avenue facility in the same filing.",
+          "disposition": "supporting",
+          "claim_confidence": 0.97
+        }
+      ],
+      "events": [
+        {
+          "event_type": "operational",
+          "when": {"date": "2002-03-27", "precision": "day"},
+          "source_id": "src_sungard_2001_10k_north_bergen_20020327",
+          "confidence": 0.97,
+          "notes": "Operational no later than the signed filing date. This is a dated operating-state observation, not an asserted opening date; the filing's 1987 lease history does not by itself establish when operations began."
         }
       ],
       "record_status": "active"

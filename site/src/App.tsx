@@ -232,7 +232,9 @@ export default function App() {
     : selectedTreatment?.assessment_status === "candidate_events_not_first_entry"
       ? selectedTreatment.candidate_rejection_count
         ? "Anchor rejected"
-        : "Not eligible"
+        : selectedTreatment.first_entry_adjudication_ids?.length
+          ? "Anchor unresolved"
+          : "Not eligible"
       : selectedTreatment == null
         ? "Loading…"
         : "No reviewed dated event";
@@ -243,7 +245,9 @@ export default function App() {
       ? "governed county first-entry date"
       : "never-treated status is not inferred";
   const researchQueueStatus = selectedFirstEntryResearch?.research_status === "evidence_collected"
-    ? "Evidence collected · anchor rejected"
+    ? selectedFirstEntryResearch.adjudication_status === "candidate_rejected_first_entry"
+      ? "Evidence collected · anchor rejected"
+      : "Evidence collected · first entry unresolved"
     : selectedFirstEntryResearch?.queue_status === "initial_tranche"
       ? `Initial tranche · #${selectedFirstEntryResearch.initial_tranche_rank}`
     : selectedFirstEntryResearch != null
@@ -358,7 +362,7 @@ export default function App() {
                 </article>
               </section>
               <div className="evidence-note profile-note">
-                <span>{selectedFirstEntryResearch?.adjudication_status === "candidate_rejected_first_entry" ? "First-entry adjudication" : "Research status"}</span>
+                <span>{selectedFirstEntryResearch?.adjudication_status ? "First-entry adjudication" : "Research status"}</span>
                 <p>{selectedFirstEntryResearch?.research_summary ?? "The governed first-entry queue contains 217 research candidates and a region-balanced 24-county initial tranche. Queue rank orders evidence work only: it does not establish a treatment date, first entry, or never-treated comparison status."}</p>
               </div>
             </>
@@ -382,7 +386,7 @@ export default function App() {
       </header>
 
       <div className="fixture-banner" role="status">
-        <strong>The first three dated anchors have been adjudicated.</strong> Earlier exact operations reject the Fulton, Maricopa, and Santa Clara anchors as county first entries. Their complete historical inventories remain unresolved; zero treatment counties are eligible and no impact model has been run.
+        <strong>The first four dated anchors have been adjudicated.</strong> Earlier exact operations reject the Fulton, Maricopa, and Santa Clara anchors; Hudson's 2002 exact-facility anchor remains unresolved as county first entry. Complete historical inventories remain unresolved, zero treatment counties are eligible, and no impact model has been run.
       </div>
 
       <main className="workspace">

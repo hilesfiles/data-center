@@ -55,7 +55,7 @@
     },
     "earlier_operational_findings": {
       "type": "array",
-      "minItems": 1,
+      "minItems": 0,
       "items": {
         "type": "object",
         "required": [
@@ -101,6 +101,14 @@
         }
       },
       "else": {"properties": {"county_first_entry_verified": {"const": false}}}
+    },
+    {
+      "if": {"properties": {"resolution_state": {"const": "candidate_rejected_first_entry"}}},
+      "then": {
+        "properties": {
+          "earlier_operational_findings": {"minItems": 1}
+        }
+      }
     }
   ],
   "additionalProperties": false

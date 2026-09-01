@@ -88,9 +88,10 @@ python scripts/build_county_first_entry_treatments.py
 The registry evaluates reviewed dated operational events against the configured evidence
 and panel-window rules, then requires a separate explicit verification that the event is the
 county's first data-center entry. It publishes 51 lazy-loaded state/DC JSON partitions.
-The current evidence contains two qualifying facility openings but zero verified county
-first-entry dates, so model readiness is `insufficient_eligible_treatments` and no model run
-is authorized. Absence of a reviewed event is never interpreted as never treated.
+The current evidence contains four reviewed dated facility events. Two pass both the evidence
+and panel-window gates, but zero have verified county-first-entry status, so model readiness is
+`insufficient_eligible_treatments` and no model run is authorized. Absence of a reviewed event
+is never interpreted as never treated.
 
 Rebuild the governed county first-entry research queue:
 
@@ -239,9 +240,10 @@ validation can be added later to CI with a standards-compliant Draft 2020-12 val
   for 79, and unavailable for Kalawao County. It is research infrastructure, not a model run.
 - County first-entry treatment: all 3,144 counties have governed assessments. Dated candidates
   in Santa Clara, Maricopa, and Fulton counties are each rejected by documented earlier
-  operations. The Santa Clara and Maricopa events pass evidence and history-window thresholds;
-  Fulton's 2006 trade-press observation does not. Zero counties are currently treatment-eligible
-  and no county is classified as never treated.
+  operations. Hudson County has an exact-facility operational-no-later-than anchor dated
+  March 27, 2002, but its true first entry remains unresolved. The Santa Clara and Maricopa
+  events pass evidence and history-window thresholds; Fulton and Hudson do not pass both gates.
+  Zero counties are currently treatment-eligible and no county is classified as never treated.
 - County first-entry research: 217 facility counties meet the complete-history prerequisite.
   Twenty-four are in the balanced initial tranche and 193 remain in the national backlog;
   nine additional facility counties lack a complete 24-year panel. Queue membership is not
