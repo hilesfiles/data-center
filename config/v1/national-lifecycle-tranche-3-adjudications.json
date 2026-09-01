@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "artifact_type": "national_lifecycle_tranche_adjudications",
-  "generated_at": "2026-09-02T00:30:00Z",
+  "generated_at": "2026-09-02T02:30:00Z",
   "record_count": 8,
   "records": [
     {
@@ -340,10 +340,35 @@
           "finding": "CoreSite's integration announcement establishes continuity between the seed's historical name and the current AT2 record.",
           "disposition": "supporting",
           "claim_confidence": 0.99
+        },
+        {
+          "source_id": "src_costar_southtrust_powers_ferry_construction_20020109",
+          "attribute_path": "facility.identity",
+          "raw_value": {"type": "text", "value": "SouthTrust Atlanta Data Center at 1130 Powers Ferry Place, Marietta"},
+          "finding": "CoStar's contemporaneous construction report identifies the SouthTrust Atlanta Data Center at the exact current AT2 address and reports that site preparation began in December 2001.",
+          "disposition": "supporting",
+          "claim_confidence": 0.98
+        },
+        {
+          "source_id": "src_tradeline_southtrust_marietta_completion_20020711",
+          "attribute_path": "event.operational",
+          "raw_value": {"type": "date", "value": {"date": "2002-05-01", "precision": "month"}},
+          "finding": "Tradeline reported on July 11, 2002 that SouthTrust completed construction of its Marietta data center in May 2002.",
+          "disposition": "supporting",
+          "claim_confidence": 0.98
         }
       ],
       "observations": [
         {"metric_code": "facility.area.building_sqft_observed", "value": 67000, "unit": "square foot", "period": {"year": 2026, "precision": "year"}, "source_id": "src_coresite_at2_current_2026"}
+      ],
+      "events": [
+        {
+          "event_type": "operational",
+          "when": {"date": "2002-05-01", "precision": "month"},
+          "source_id": "src_tradeline_southtrust_marietta_completion_20020711",
+          "confidence": 0.98,
+          "notes": "Operational no later than May 2002, the month Tradeline reports construction of SouthTrust's Marietta data center was completed. CoStar's January 2002 report maps that project to the exact current AT2 address; the month is a conservative dated operating-state anchor, not an asserted opening day."
+        }
       ],
       "record_status": "active"
     },

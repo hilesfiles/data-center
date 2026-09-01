@@ -2,9 +2,9 @@
   "schema_version": "1.0.0",
   "artifact_type": "county_first_entry_anchor_adjudications",
   "artifact_version": "2026.09.01",
-  "generated_at": "2026-09-02T02:00:00Z",
+  "generated_at": "2026-09-02T02:30:00Z",
   "record_schema": "https://dccio.org/schemas/v1/county-first-entry-adjudication.schema.json",
-  "record_count": 14,
+  "record_count": 15,
   "records": [
     {
       "schema_version": "1.0.0",
@@ -638,6 +638,54 @@
       "rationale": "Windstream Hosted Solutions' March 3, 2014 operator release supplies the official opening date and matching dimensions for the exact TierPoint Charlotte Center Park CL4 candidate; TierPoint's current page establishes continuity to CL4 at 1805 Center Park Drive. The candidate cannot be Mecklenburg County's first entry because Data Center Knowledge reported the opening of Peak 10's second Charlotte data center at its headquarters location on July 28, 2006, and Flexential's 2023 SOC 3 report identifies the successor Charlotte - South data center at the exact mapped 8910 Lenox Pointe Drive address. The five-record current canonical inventory does not establish a complete historical county inventory, so the true first entry remains unresolved and no treatment date is assigned.",
       "created_at": "2026-09-02T02:00:00Z",
       "updated_at": "2026-09-02T02:00:00Z",
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "county_first_entry_adjudication_id": "fea_13067_coresite_at2_200205_rejected",
+      "first_entry_research_candidate_id": "fer_a758b67d6adad5ead893",
+      "treatment_definition_id": "trt_first_entry_v1",
+      "candidate_event_evaluation_id": "tev_0abba52254b389c11710",
+      "county_fips": "13067",
+      "county_name": "Cobb County",
+      "state_abbr": "GA",
+      "resolution_state": "candidate_rejected_first_entry",
+      "decision": "reject_candidate_as_first_entry",
+      "county_first_entry_verified": false,
+      "inventory_completeness_status": "not_established",
+      "earlier_operations_search_status": "documented_incomplete",
+      "required_finding_status": {
+        "earliest_dated_operational_event": "partial",
+        "exact_facility_identity_for_earliest_event": "resolved",
+        "county_inventory_completeness": "unresolved",
+        "documented_search_for_earlier_operations": "resolved"
+      },
+      "earlier_operational_findings": [
+        {
+          "facility_id": "fac_365_smyrna_5600_united_drive",
+          "canonical_name": "SunGard/365 Smyrna MegaCenter at 5600 United Drive",
+          "temporal_relation": "operational_no_later_than",
+          "when": {"date": "2001-11-15", "precision": "day"},
+          "source_ids": [
+            "src_sungard_10k_smyrna_megacenter_20030327",
+            "src_365_smyrna_current_2026"
+          ],
+          "finding": "SunGard's 2002 annual report identifies a 134,800-square-foot Smyrna Availability Services MegaCenter among the facilities acquired with Comdisco's operating Availability Solutions business on November 15, 2001. The current 365 Data Centers page identifies its Smyrna data center at 5600 United Drive with the same 134,800-square-foot area, establishing exact-site continuity.",
+          "confidence": 0.97
+        }
+      ],
+      "source_ids": [
+        "src_coresite_at2_current_2026",
+        "src_coresite_datasite_integration_2022",
+        "src_costar_southtrust_powers_ferry_construction_20020109",
+        "src_tradeline_southtrust_marietta_completion_20020711",
+        "src_sungard_10k_smyrna_megacenter_20030327",
+        "src_365_smyrna_current_2026"
+      ],
+      "authoritative_source_types": ["sec_filing", "operator_release", "trade_press"],
+      "rationale": "Tradeline's July 11, 2002 report supplies a May 2002 completion anchor for SouthTrust's Marietta data center, while CoStar's contemporaneous construction report maps that project to the exact current CoreSite AT2 address at 1130 Powers Ferry Place and CoreSite establishes continuity to the former DataSite facility. The candidate cannot be Cobb County's first entry because SunGard's 2002 annual report lists a 134,800-square-foot Smyrna Availability Services MegaCenter among the operating Availability Solutions facilities acquired from Comdisco on November 15, 2001, and 365 Data Centers' current page maps the same 134,800-square-foot Smyrna facility to 5600 United Drive. That earlier facility is absent from the three-record current canonical inventory, so the true first entry remains unresolved and no treatment date is assigned.",
+      "created_at": "2026-09-02T02:30:00Z",
+      "updated_at": "2026-09-02T02:30:00Z",
       "record_status": "active"
     }
   ]
