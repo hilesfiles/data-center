@@ -137,7 +137,7 @@ post-treatment years.
 
 Passing those checks is necessary but not sufficient. A facility opening becomes a county
 first-entry treatment only when the reviewed adjudication explicitly verifies that it is the
-first data-center operation in that county. The current registry retains seven facility-event
+first data-center operation in that county. The current registry retains eight facility-event
 candidates: NTT SV1 in Santa Clara County (2021-04-13, DQS 93.10, 20 pre/3 post years),
 Apple's Mesa facility in Maricopa County (2017-03 month precision, DQS 85.74, 16 pre/7 post
 years), and a contemporaneous observation of QTS Atlanta DC1 in Fulton County (2006-10-03,
@@ -146,7 +146,8 @@ present NY7 site in Hudson County (2002-03-27, DQS 95.06, 1 pre/22 post years), 
 NAP7 in Clark County (2009 year precision, DQS 72.96, 8 pre/15 post years), IU's
 Bloomington Data Center dedication (2009-11-05, DQS 96.04, 8 pre/15 post years), and an
 operational-no-later-than observation for EdgeConneX DET01 in Oakland County (2015-03-11,
-DQS 96.04, 14 pre/9 post years). The Santa
+DQS 96.04, 14 pre/9 post years), and an operational-no-later-than observation for Digital
+Realty ORD11 in Cook County (2003-03-28, DQS 95.06, 2 pre/21 post years). The Santa
 Clara and Maricopa candidates pass the evidence and panel-window gates but fail county-first-entry
 verification. Fulton's trade-press candidate fails the authoritative-source and seven-pre-period
 gates and is independently rejected by documented earlier operation. Hudson passes the evidence
@@ -158,7 +159,10 @@ NAP7 was still under construction in 2008. Monroe passes both quantitative gates
 because Indiana University documents the predecessor Wrubel Computing Center machine room in
 operation on October 24, 2001. Oakland passes both quantitative gates but is rejected because
 123NET documents a separate operating and recently expanded Southfield data center on June 20,
-2014, before the DET01 anchor. Therefore all 3,144 counties have an assessment, zero are eligible,
+2014, before the DET01 anchor. Cook passes the evidence gate but fails the seven-pre-period gate
+and is independently rejected because the Lakeside Technology Center at 350 East Cermak was
+converted into an operating data-center facility in 1999–2000, before the ORD11 anchor. Therefore
+all 3,144 counties have an assessment, zero are eligible,
 and no model run is authorized. Counties without a reviewed dated event remain unknown for
 treatment purposes; they are not labeled never treated.
 
@@ -174,8 +178,8 @@ the feasibility of auditing the county's current facility inventory (20%), panel
 (15%), and source-identity coverage (10%). Inventory feasibility is inversely scaled by the
 log of the active facility count, so a smaller inventory is treated as easier to audit—not as
 more likely to be newly treated. The initial tranche contains 24 counties, six per Census
-region and no more than two per state. Fulton, Hudson, Clark, Monroe, Oakland, Maricopa, and Santa
-Clara counties are `research_status: evidence_collected`; the other 210 records remain queued.
+region and no more than two per state. Fulton, Hudson, Clark, Monroe, Oakland, Cook, Maricopa, and
+Santa Clara counties are `research_status: evidence_collected`; the other 209 records remain queued.
 
 Every adjudication must establish an earliest dated operational event, exact facility identity,
 county inventory completeness, and a documented search for earlier operations. Failure to
@@ -235,14 +239,14 @@ the expansion measures new evidence yield rather than repeating completed genera
 
 The first national review batch adjudicates initial-tranche ranks 1–8, two from each Census
 region. All eight resolve as operational from current operator pages, exact-address local
-government records, or facility-code rack-installation permits. The review does not infer an
-opening date from present operation, and it does not treat Equinix colocation-space figures
+government records, facility-code rack-installation permits, or signed SEC filings. The review
+does not infer an opening date from present operation, and it does not treat Equinix colocation-space figures
 as total building area. For the former Digital Realty HVN10 label, the current municipal
 record supports operation at the building but also shows that the seed's operator name is
 historical; no current Digital Realty relationship is asserted.
 
-The batch adds fifteen governed claims, eight review decisions, and four facility-specific
-observations. Cumulative lifecycle coverage is now eighteen verified operational facilities,
+The batch adds seventeen governed claims, eight review decisions, two dated operational events,
+and four facility-specific observations. Cumulative lifecycle coverage is now eighteen verified operational facilities,
 eleven unresolved pilot facilities still in research, three disputed pilot facilities, and
 1,319 facilities with unknown status. The original 48-record tranche remains immutable and
 the separate downstream queue contains the forty records at ranks 9–48.

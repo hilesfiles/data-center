@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "artifact_type": "national_lifecycle_tranche_adjudications",
-  "generated_at": "2026-09-01T19:00:00Z",
+  "generated_at": "2026-09-01T23:00:00Z",
   "record_count": 8,
   "records": [
     {
@@ -169,7 +169,7 @@
       "decision": "accept",
       "resolved_current_status": "operational",
       "confidence": 0.99,
-      "rationale": "Digital Realty's current ORD11 page identifies the exact 600 South Federal Street facility and offers active data-center space, support, compliance, and 24x7 security. The page's 146,000-square-foot value is explicitly total building size and is accepted as a facility observation.",
+      "rationale": "Digital Realty's current ORD11 page identifies the exact 600 South Federal Street facility and offers active data-center space, support, compliance, and 24x7 security. FiberNet Telecom Group's signed March 28, 2003 Form 10-K identifies leased space in the same exact building as a major Chicago carrier hotel used for its colocation business, establishing operation no later than the filing date without asserting an opening date. The current page's 146,000-square-foot value is explicitly total building size and is accepted as a facility observation.",
       "evidence": [
         {
           "source_id": "src_digital_realty_ord11_current_2026",
@@ -188,10 +188,27 @@
           "finding": "Digital Realty reports 146,000 square feet as ORD11's total building size.",
           "disposition": "supporting",
           "claim_confidence": 0.99
+        },
+        {
+          "source_id": "src_fibernet_2002_10k_600_federal_20030328",
+          "attribute_path": "event.operational",
+          "raw_value": {"type": "date", "value": {"date": "2003-03-28", "precision": "day"}},
+          "finding": "FiberNet's signed Form 10-K identifies its leased colocation space in the major carrier hotel at 600 South Federal Street, establishing operation of the exact facility no later than March 28, 2003.",
+          "disposition": "supporting",
+          "claim_confidence": 0.97
         }
       ],
       "observations": [
         {"metric_code": "facility.area.building_sqft_observed", "value": 146000, "unit": "square foot", "period": {"precision": "unknown"}, "source_id": "src_digital_realty_ord11_current_2026"}
+      ],
+      "events": [
+        {
+          "event_type": "operational",
+          "when": {"date": "2003-03-28", "precision": "day"},
+          "source_id": "src_fibernet_2002_10k_600_federal_20030328",
+          "confidence": 0.97,
+          "notes": "Operational no later than the signed filing date. FiberNet identifies active leased colocation space in the exact 600 South Federal Street carrier hotel; this is a dated operating-state observation, not an asserted opening date."
+        }
       ],
       "record_status": "active"
     },

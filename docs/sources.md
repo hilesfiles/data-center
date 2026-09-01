@@ -106,7 +106,7 @@ county profiles lazy-load only their selected state partition.
 
 - Treatment definition: `trt_first_entry_v1`
 - Geography: 3,144 current Census counties and county equivalents
-- Reviewed dated operational events: 7
+- Reviewed dated operational events: 8
 - Evidence- and history-window-qualified events: 4
 - Verified county first-entry dates: 0
 - Eligible treatment counties: 0
@@ -116,8 +116,9 @@ The registry retains NTT's dated SV1 opening release, Apple's environmental repo
 Mesa customer service beginning in March 2017, a contemporaneous October 2006 observation of
 operation at QTS Atlanta DC1, SunGard's signed March 27, 2002 filing documenting operation
 at the exact present NY7 site in North Bergen, and Switch's year-level account of SUPERNAP/NAP7's
-2009 debut, and EdgeConneX's March 11, 2015 release establishing operation of its Southfield
-facility no later than that date. Clark County's September 3, 2008 franchise filing identifies NAP4 as an existing
+2009 debut, EdgeConneX's March 11, 2015 release establishing operation of its Southfield
+facility no later than that date, and FiberNet's signed March 28, 2003 filing documenting a
+carrier-hotel operation at the exact present ORD11 address. Clark County's September 3, 2008 franchise filing identifies NAP4 as an existing
 data center while NAP7 was still under construction, so NAP7 cannot be the county's first entry.
 The Clark candidate passes the panel window but fails the year-precision evidence gate. Fulton
 also fails the evidence and pre-period gates; Hudson passes the evidence gate but has only one
@@ -130,7 +131,10 @@ record documents an operating Wrubel Computing Center machine room on October 24
 2012-2013 financial report maps the later DET01 site to 21005 Lahser Road before its build-out,
 while 123NET's June 20, 2014 operator release documents a separate operating and recently expanded
 data center at 24700 Northwestern Highway. Oakland's 2015 DET01 anchor passes both quantitative
-gates but is rejected as first entry; the county's true first entry remains unresolved. Public county
+gates but is rejected as first entry. Cook's ORD11 anchor passes the evidence gate but has only
+two pre-periods; Digital Realty's SEC filing documents the separate 350 East Cermak facility's
+1999–2000 data-center conversion, so ORD11 is also rejected as first entry. Both counties' true
+first entries remain unresolved. Public county
 assessments
 are JSON-only and split into 51 state/DC partitions. Missing reviewed events do not establish
 a never-treated comparison group.
@@ -212,10 +216,11 @@ copied source page bodies.
 
 ## First national lifecycle evidence batch
 
-Initial-tranche ranks 1–8 use eight exact-facility sources: current Digital Realty pages for
+Initial-tranche ranks 1–8 use ten exact-facility sources: current Digital Realty pages for
 CH1 and ORD11, current Equinix pages for SV2 and NY7, the current Cologix SV1 page, a Town of
 Trumbull statement for the 80 Merritt Boulevard building, and Loudoun County permit reports
-for IAD10 and IAD32 rack installations. Only governed metadata, paraphrased findings, claims,
+for IAD10 and IAD32 rack installations, plus signed SunGard and FiberNet SEC filings establishing
+dated operation at the current NY7 and ORD11 addresses. Only governed metadata, paraphrased findings, claims,
 review decisions, and normalized observations are retained; source page bodies are not
 copied.
 
@@ -227,8 +232,8 @@ is `scripts/adjudicate_national_lifecycle_tranche_1.py`.
 The Trumbull record establishes present operation at the exact building but describes
 Digital Realty as the former operator, so the legacy seed label is retained only for record
 continuity. Equinix publishes colocation space for SV2 and NY7; those figures remain source
-context and are not normalized as total building area. No source in this batch establishes
-a defensible operational start date.
+context and are not normalized as total building area. The SEC filings establish conservative
+operational-no-later-than dates for NY7 and ORD11; the other sources do not establish opening dates.
 
 ## Second national lifecycle evidence batch
 

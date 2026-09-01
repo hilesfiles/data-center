@@ -374,5 +374,55 @@
     "created_at": "2026-09-01T22:00:00Z",
     "updated_at": "2026-09-01T22:00:00Z",
     "record_status": "active"
+  },
+  {
+    "schema_version": "1.0.0",
+    "county_first_entry_adjudication_id": "fea_17031_ord11_20030328_rejected",
+    "first_entry_research_candidate_id": "fer_7d5173c4f04bc5bf84be",
+    "treatment_definition_id": "trt_first_entry_v1",
+    "candidate_event_evaluation_id": "tev_21a58da650a8ff8702c5",
+    "county_fips": "17031",
+    "county_name": "Cook County",
+    "state_abbr": "IL",
+    "resolution_state": "candidate_rejected_first_entry",
+    "decision": "reject_candidate_as_first_entry",
+    "county_first_entry_verified": false,
+    "inventory_completeness_status": "not_established",
+    "earlier_operations_search_status": "documented_incomplete",
+    "required_finding_status": {
+      "earliest_dated_operational_event": "partial",
+      "exact_facility_identity_for_earliest_event": "resolved",
+      "county_inventory_completeness": "unresolved",
+      "documented_search_for_earlier_operations": "resolved"
+    },
+    "earlier_operational_findings": [
+      {
+        "facility_id": "fac_im3_building_00156520409",
+        "canonical_name": "Lakeside Technology Center",
+        "temporal_relation": "operational_no_later_than",
+        "when": {
+          "year": 2000,
+          "precision": "year"
+        },
+        "source_ids": [
+          "src_digital_realty_s4_350_cermak_history_20100628"
+        ],
+        "finding": "Digital Realty's SEC property history identifies 350 East Cermak Road as an eight-story data center and Internet gateway created by a complete 1999-2000 renovation, establishing operation no later than 2000.",
+        "confidence": 0.97
+      }
+    ],
+    "source_ids": [
+      "src_fibernet_2002_10k_600_federal_20030328",
+      "src_digital_realty_ord11_current_2026",
+      "src_digital_realty_s4_350_cermak_history_20100628"
+    ],
+    "authoritative_source_types": [
+      "operator_release",
+      "sec_filing"
+    ],
+    "rationale": "FiberNet Telecom Group's signed March 28, 2003 Form 10-K supplies an operational-no-later-than anchor for the exact 600 South Federal Street carrier hotel, and Digital Realty's current page maps that address to ORD11. The candidate cannot be Cook County's first data-center entry because Digital Realty's SEC property history states that the separate 350 East Cermak Road building was completely renovated in 1999-2000 to create a data center and Internet gateway. Cook County's 28-facility current canonical inventory and earlier predecessor inventory have not been proven complete, so the county's true first entry remains unresolved and no treatment date is assigned.",
+    "created_at": "2026-09-01T23:00:00Z",
+    "updated_at": "2026-09-01T23:00:00Z",
+    "record_status": "active"
   }
 ]
