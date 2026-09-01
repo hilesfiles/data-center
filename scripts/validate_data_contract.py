@@ -1187,6 +1187,161 @@ def validate_public_data(
     if panel_manifest.get("record_count") != 455908 or panel_manifest_total != 455908:
         issues.append(Issue("public_data_validation", panel_manifest_path.name, "historical panel manifest record count is inconsistent"))
 
+    treatment_path = DATA_DIR / "silver" / "treatments" / "county-first-entry-v1.json"
+    treatment_registry = load_json(treatment_path)
+    treatment_collections = treatment_registry.get("collections", {})
+    treatment_events = treatment_collections.get("event", [])
+    treatment_evaluations = treatment_collections.get("treatment_event_evaluation", [])
+    treatment_assessments = treatment_collections.get("county_treatment_assessment", [])
+    if (
+        treatment_registry.get("record_count") != 3148
+        or len(treatment_events) != 2
+        or len(treatment_evaluations) != 2
+        or len(treatment_assessments) != 3144
+    ):
+        issues.append(Issue("public_data_validation", treatment_path.name, "county first-entry registry collection counts are inconsistent"))
+    for index, record in enumerate(treatment_events):
+        for issue in validator.validate_record(record, schema_paths["event"]):
+            issues.append(Issue("public_data_validation", f"{treatment_path.name}.event[{index}]{issue.path[1:]}", issue.message))
+    for index, record in enumerate(treatment_evaluations):
+        for issue in validator.validate_record(record, schema_paths["treatment_event_evaluation"]):
+            issues.append(Issue("public_data_validation", f"{treatment_path.name}.treatment_event_evaluation[{index}]{issue.path[1:]}", issue.message))
+    for index, record in enumerate(treatment_assessments):
+        for issue in validator.validate_record(record, schema_paths["county_treatment_assessment"]):
+            issues.append(Issue("public_data_validation", f"{treatment_path.name}.county_treatment_assessment[{index}]{issue.path[1:]}", issue.message))
+
+    treatment_evaluation_ids = [record.get("treatment_event_evaluation_id") for record in treatment_evaluations]
+    treatment_event_ids = [record.get("event_id") for record in treatment_events]
+    treatment_assessment_fips = [record.get("county_fips") for record in treatment_assessments]
+    assessment_status_counts = Counter(record.get("assessment_status") for record in treatment_assessments)
+    if (
+        len(treatment_evaluation_ids) != len(set(treatment_evaluation_ids))
+        or len(treatment_event_ids) != len(set(treatment_event_ids))
+        or set(record.get("event_id") for record in treatment_evaluations) != set(treatment_event_ids)
+        or len(treatment_assessment_fips) != len(set(treatment_assessment_fips))
+        or set(treatment_assessment_fips) != feature_fips
+        or assessment_status_counts != Counter({"candidate_events_not_first_entry": 2, "no_reviewed_dated_operational_event": 3142})
+        or any(record.get("first_entry_verified") is not False for record in treatment_assessments)
+        or any("eligible_treatment_period" in record or "eligible_cohort_year" in record for record in treatment_assessments)
+    ):
+        issues.append(Issue("public_data_validation", treatment_path.name, "county treatment identity, status, or eligibility invariants are inconsistent"))
+    for index, record in enumerate(treatment_assessments):
+        boundary = features_by_fips.get(record.get("county_fips", ""), {})
+        if record.get("county_name") != boundary.get("county_name") or record.get("state_abbr") != boundary.get("state_abbr"):
+            issues.append(Issue("public_data_validation", f"{treatment_path.name}.county_treatment_assessment[{index}]", "county identity does not match the Census boundary"))
+        if not set(record.get("candidate_event_evaluation_ids", [])).issubset(set(treatment_evaluation_ids)):
+            issues.append(Issue("referential_integrity", f"{treatment_path.name}.county_treatment_assessment[{index}]", "assessment references an unknown treatment event evaluation"))
+
+    evaluations_by_fips = {record.get("county_fips"): record for record in treatment_evaluations}
+    expected_treatment_evaluations = {
+        "06085": {
+            "facility_id": "fac_im3_building_00888253616",
+            "source_id": "src_ntt_sv1_opening_20210413",
+            "when": {"date": "2021-04-13", "precision": "day"},
+            "data_quality_score": 93.1,
+            "available_pre_periods": 20,
+            "available_post_periods": 3,
+        },
+        "04013": {
+            "facility_id": "fac_im3_building_00300974499",
+            "source_id": "src_apple_environment_report_2019",
+            "when": {"date": "2017-03-01", "precision": "month"},
+            "data_quality_score": 85.74,
+            "available_pre_periods": 16,
+            "available_post_periods": 7,
+        },
+    }
+    if set(evaluations_by_fips) != set(expected_treatment_evaluations):
+        issues.append(Issue("public_data_validation", treatment_path.name, "reviewed treatment candidate counties changed"))
+    for county_fips, expected in expected_treatment_evaluations.items():
+        actual = evaluations_by_fips.get(county_fips, {})
+        if (
+            any(actual.get(key) != value for key, value in expected.items())
+            or actual.get("evidence_threshold_status") != "passed"
+            or actual.get("period_requirement_status") != "passed"
+            or actual.get("first_entry_verification_status") != "not_verified"
+            or actual.get("eligibility_status") != "excluded"
+            or actual.get("exclusion_reasons") != ["county_first_entry_not_verified"]
+        ):
+            issues.append(Issue("public_data_validation", f"{treatment_path.name}.treatment_event_evaluation[{county_fips}]", "candidate evidence score, history window, or exclusion state changed"))
+
+    treatment_public_path = PUBLIC_DATA_DIR / "treatments" / "county-first-entry" / "index.json"
+    treatment_public_index = load_json(treatment_public_path)
+    treatment_public_assessments: list[dict[str, Any]] = []
+    if (
+        treatment_public_index.get("partition_count") != 51
+        or treatment_public_index.get("record_count") != 3144
+        or len(treatment_public_index.get("partitions", [])) != 51
+    ):
+        issues.append(Issue("public_data_validation", treatment_public_path.name, "county treatment partition index counts are inconsistent"))
+    for partition in treatment_public_index.get("partitions", []):
+        partition_path = (PUBLIC_DATA_DIR / "treatments" / partition.get("path", "")).resolve()
+        if not partition_path.is_relative_to(PUBLIC_DATA_DIR) or not partition_path.is_file():
+            issues.append(Issue("public_data_validation", treatment_public_path.name, "county treatment partition is missing or outside the public data directory"))
+            continue
+        payload = partition_path.read_bytes()
+        records = json.loads(payload)
+        if (
+            partition.get("byte_size") != len(payload)
+            or partition.get("sha256") != hashlib.sha256(payload).hexdigest()
+            or partition.get("record_count") != len(records)
+            or any(record.get("state_abbr") != partition.get("state_abbr") for record in records)
+        ):
+            issues.append(Issue("public_data_validation", partition_path.name, "county treatment partition metadata or state scope is inconsistent"))
+        treatment_public_assessments.extend(records)
+    treatment_public_by_fips = {
+        record.get("county_fips"): record for record in treatment_public_assessments
+    }
+    treatment_governed_by_fips = {
+        record.get("county_fips"): record for record in treatment_assessments
+    }
+    if (
+        len(treatment_public_assessments) != len(treatment_public_by_fips)
+        or treatment_public_by_fips != treatment_governed_by_fips
+    ):
+        issues.append(Issue("public_data_validation", treatment_public_path.name, "public county treatment partitions must match the governed assessment collection"))
+    treatment_candidate_public_path = PUBLIC_DATA_DIR / "treatments" / "county-first-entry" / "candidate-events.json"
+    if load_json(treatment_candidate_public_path) != treatment_evaluations:
+        issues.append(Issue("public_data_validation", treatment_candidate_public_path.name, "public treatment candidates must match the governed evaluation collection"))
+
+    treatment_report_path = DATA_DIR / "silver" / "treatments" / "county-first-entry-v1.processing-report.json"
+    treatment_report = load_json(treatment_report_path)
+    if (
+        treatment_report.get("county_count") != 3144
+        or treatment_report.get("model_specification_id") != "msp_employment_entry_v1"
+        or treatment_report.get("panel_years") != {"start": 2001, "end": 2024}
+        or treatment_report.get("period_requirements") != {"minimum_pre_periods": 7, "minimum_post_periods": 3}
+        or treatment_report.get("reviewed_dated_operational_event_count") != 2
+        or treatment_report.get("evidence_threshold_pass_count") != 2
+        or treatment_report.get("period_requirement_pass_count") != 2
+        or treatment_report.get("first_entry_verified_event_count") != 0
+        or treatment_report.get("eligible_treatment_event_count") != 0
+        or treatment_report.get("eligible_county_count") != 0
+        or treatment_report.get("assessment_status_counts") != {"candidate_events_not_first_entry": 2, "no_reviewed_dated_operational_event": 3142}
+        or treatment_report.get("model_readiness", {}).get("status") != "insufficient_eligible_treatments"
+        or treatment_report.get("model_readiness", {}).get("governed_treatment_registry_available") is not True
+        or treatment_report.get("model_readiness", {}).get("eligible_treatment_dates_available") is not False
+        or treatment_report.get("model_readiness", {}).get("model_run_authorized") is not False
+    ):
+        issues.append(Issue("public_data_validation", treatment_report_path.name, "county first-entry processing diagnostics are inconsistent"))
+
+    treatment_manifest_path = DATA_DIR / "silver" / "treatments" / "county-first-entry-v1.manifest.json"
+    treatment_manifest = load_json(treatment_manifest_path)
+    for issue in validator.validate_record(treatment_manifest, schema_paths["dataset_manifest"]):
+        issues.append(Issue("public_data_validation", f"{treatment_manifest_path.name}{issue.path[1:]}", issue.message))
+    treatment_manifest_total = 0
+    for index, part in enumerate(treatment_manifest.get("parts", [])):
+        part_path = (ROOT / part.get("path", "")).resolve()
+        if not part_path.is_relative_to(ROOT) or not part_path.is_file():
+            issues.append(Issue("public_data_validation", f"{treatment_manifest_path.name}.parts[{index}]", "part path is missing or outside the repository"))
+            continue
+        payload = part_path.read_bytes()
+        treatment_manifest_total += part.get("record_count", 0)
+        if part.get("byte_size") != len(payload) or part.get("sha256") != hashlib.sha256(payload).hexdigest():
+            issues.append(Issue("public_data_validation", f"{treatment_manifest_path.name}.parts[{index}]", "byte size or SHA-256 does not match the artifact"))
+    if treatment_manifest.get("record_count") != 6296 or treatment_manifest_total != 6296:
+        issues.append(Issue("public_data_validation", treatment_manifest_path.name, "county first-entry manifest record count is inconsistent"))
+
     coverage_path = PUBLIC_DATA_DIR / "counties" / "facility-source-coverage.json"
     coverage_records = load_json(coverage_path)
     coverage_fips = [record.get("county_fips") for record in coverage_records]

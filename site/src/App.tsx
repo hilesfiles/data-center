@@ -2,6 +2,7 @@ import { lazy, Suspense, useEffect, useMemo, useState } from "react";
 import type {
   CountyEntityAdjudicationCoverage,
   CountyEconomicHistory,
+  CountyTreatmentAssessment,
   CountyEconomicBaseline,
   CountyEmploymentWagesBaseline,
   CountyEntityResolutionCoverage,
@@ -50,6 +51,9 @@ export default function App() {
   const [employmentWages, setEmploymentWages] = useState<CountyEmploymentWagesBaseline[]>([]);
   const [economicHistoryByState, setEconomicHistoryByState] = useState<
     Record<string, CountyEconomicHistory[]>
+  >({});
+  const [treatmentByState, setTreatmentByState] = useState<
+    Record<string, CountyTreatmentAssessment[]>
   >({});
   const [resolution, setResolution] = useState<CountyEntityResolutionCoverage[]>([]);
   const [adjudication, setAdjudication] = useState<CountyEntityAdjudicationCoverage[]>([]);
@@ -131,6 +135,28 @@ export default function App() {
       cancelled = true;
     };
   }, [selectedCounty, economicHistoryByState]);
+  useEffect(() => {
+    const stateAbbr = selectedCounty?.state_abbr;
+    if (stateAbbr == null || treatmentByState[stateAbbr] != null) return;
+    let cancelled = false;
+    const base = import.meta.env.BASE_URL;
+    fetch(`${base}data/v1/treatments/county-first-entry/by-state/${stateAbbr.toLowerCase()}.json`)
+      .then(async (response) => {
+        if (!response.ok) throw new Error(`Treatment assessments could not be loaded for ${stateAbbr}.`);
+        const records = (await response.json()) as CountyTreatmentAssessment[];
+        if (!cancelled) {
+          setTreatmentByState((current) => ({...current, [stateAbbr]: records}));
+        }
+      })
+      .catch((reason: unknown) => {
+        if (!cancelled) {
+          setError(reason instanceof Error ? reason.message : "Treatment assessments could not be loaded.");
+        }
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [selectedCounty, treatmentByState]);
   const selectedResolution = useMemo(
     () => resolution.find((county) => county.county_fips === selectedFips) ?? null,
     [resolution, selectedFips],
@@ -151,6 +177,26 @@ export default function App() {
         ) ?? null,
     [economicHistoryByState, selectedCounty, selectedFips],
   );
+  const selectedTreatment = useMemo(
+    () => selectedCounty == null
+      ? null
+      : treatmentByState[selectedCounty.state_abbr]?.find(
+          (county) => county.county_fips === selectedFips,
+        ) ?? null,
+    [selectedCounty, selectedFips, treatmentByState],
+  );
+  const treatmentStatus = selectedTreatment?.assessment_status === "eligible"
+    ? `Eligible · ${selectedTreatment.eligible_cohort_year}`
+    : selectedTreatment?.assessment_status === "candidate_events_not_first_entry"
+      ? "Not eligible"
+      : selectedTreatment == null
+        ? "Loading…"
+        : "No reviewed dated event";
+  const treatmentNote = selectedTreatment?.assessment_status === "candidate_events_not_first_entry"
+    ? `${selectedTreatment.candidate_event_count} dated facility opening${selectedTreatment.candidate_event_count === 1 ? "" : "s"}; county first entry unverified`
+    : selectedTreatment?.assessment_status === "eligible"
+      ? "governed county first-entry date"
+      : "never-treated status is not inferred";
   const selectedHistoryChange = useMemo(() => {
     const start = selectedEconomicHistory?.years.find((record) => record.year === 2001);
     const end = selectedEconomicHistory?.years.find((record) => record.year === 2024);
@@ -173,6 +219,8 @@ export default function App() {
   if (profileFips != null) {
     const historyLoaded = selectedCounty != null
       && economicHistoryByState[selectedCounty.state_abbr] != null;
+    const treatmentLoaded = selectedCounty != null
+      && treatmentByState[selectedCounty.state_abbr] != null;
     return (
       <div className="app-shell county-profile-shell">
         <header className="topbar">
@@ -226,6 +274,11 @@ export default function App() {
                   <small>four governed measures per year</small>
                 </article>
                 <article>
+                  <span>County first-entry treatment</span>
+                  <strong>{!treatmentLoaded ? "Loading…" : treatmentStatus}</strong>
+                  <small>{!treatmentLoaded ? "loading governed assessment" : treatmentNote}</small>
+                </article>
+                <article>
                   <span>Employment change · 2001–2024</span>
                   <strong>{!historyLoaded ? "Loading…" : formatPercentChange(selectedHistoryChange.employment)}</strong>
                   <small>descriptive, not a causal estimate</small>
@@ -248,7 +301,7 @@ export default function App() {
               </section>
               <div className="evidence-note profile-note">
                 <span>Research status</span>
-                <p>The history span can support configured pre/post windows, but governed treatment dates and comparison samples are still required before estimation.</p>
+                <p>The governed registry contains zero eligible county first-entry dates. Two dated facility events pass evidence and history-window thresholds, but neither verifies the county's first data-center entry; no model run is authorized.</p>
               </div>
             </>
           )}
@@ -271,7 +324,7 @@ export default function App() {
       </header>
 
       <div className="fixture-banner" role="status">
-        <strong>The BEA–BLS county-year history now spans 2001–2024.</strong> Its 75,456 rows can support the configured seven-pre/three-post windows, but governed treatment dates and comparison samples are still required. It remains descriptive research infrastructure, not an impact estimate.
+        <strong>The county first-entry registry is now governed and explicit.</strong> Two dated facility openings pass evidence and history-window thresholds, but neither proves the county's first data-center entry. There are zero eligible treatment counties, so no impact model has been run.
       </div>
 
       <main className="workspace">
@@ -431,7 +484,12 @@ export default function App() {
                   <div className="lifecycle-row lifecycle-start">
                     <span>Panel completeness · 2001–2024</span>
                     <strong>{selectedEconomicHistory == null ? "Unavailable" : `${selectedEconomicHistory.complete_year_count}/24 years`}</strong>
-                    <em>treatment dates still required</em>
+                    <em>governed descriptive history</em>
+                  </div>
+                  <div className="lifecycle-row">
+                    <span>County first-entry treatment</span>
+                    <strong>{treatmentStatus}</strong>
+                    <em>{treatmentNote}</em>
                   </div>
                   <div className="lifecycle-row">
                     <span>Covered employment change · 2001–2024</span>
@@ -504,6 +562,7 @@ export default function App() {
             <span>BEA county economy · 2024</span>
             <span>BLS QCEW employment and wages · 2025</span>
             <span>BEA–BLS core panel · 2001–2024</span>
+            <span>First-entry treatment registry · 0 eligible counties</span>
             <span>Static JSON · No runtime database</span>
             <span>ODbL · © OpenStreetMap contributors</span>
           </div>

@@ -73,11 +73,24 @@ python scripts/build_county_economic_history_panel.py
 
 The panel materializes 2001–2024 observations and schema-valid panel-row references for
 real GDP, population, annual-average covered employment, and nominal average weekly wages.
-Its history can support the configured seven-pre/three-post windows, but it is explicitly
-marked `missing_treatment_dates` and remains descriptive rather than model-ready.
+Its history can support the configured seven-pre/three-post windows and remains descriptive
+rather than model-ready.
 The public history is split into 51 state/DC JSON partitions. The browser loads a partition
 only after a county in that state is selected, and `#/county/{FIPS}` provides a shareable
 county profile without requiring thousands of duplicate HTML pages.
+
+Rebuild the governed county first-entry treatment registry:
+
+```powershell
+python scripts/build_county_first_entry_treatments.py
+```
+
+The registry evaluates reviewed dated operational events against the configured evidence
+and panel-window rules, then requires a separate explicit verification that the event is the
+county's first data-center entry. It publishes 51 lazy-loaded state/DC JSON partitions.
+The current evidence contains two qualifying facility openings but zero verified county
+first-entry dates, so model readiness is `insufficient_eligible_treatments` and no model run
+is authorized. Absence of a reviewed event is never interpreted as never treated.
 
 Rebuild the conservative IM3 identity-resolution layer from those JSON artifacts:
 
@@ -212,11 +225,15 @@ validation can be added later to CI with a standards-compliant Draft 2020-12 val
 - Historical panel: the BEA–BLS core panel contains 75,456 county-year rows and
   301,824 governed observations for 2001–2024. It is complete for 3,064 counties, partial
   for 79, and unavailable for Kalawao County. It is research infrastructure, not a model run.
+- County first-entry treatment: all 3,144 counties have governed assessments. Dated openings
+  for NTT SV1 in Santa Clara County and Apple's Mesa facility in Maricopa County pass evidence
+  and history-window thresholds, but neither verifies the county's first entry. Zero counties
+  are currently treatment-eligible and no county is classified as never treated.
 - Fiscal, utility, housing, environmental, or opposition observations: not yet ingested.
 - Econometric estimates and public indices: fixture-only; not substantive.
 
 ## Next priority
 
-Build the governed treatment-date collection from facility lifecycle evidence, beginning
-with first operational entry at county-year precision. Do not estimate impacts until
-treatment evidence, minimum pre/post periods, and comparison-county requirements are satisfied.
+Adjudicate county-level historical facility inventories to verify true first operational
+entry dates. Do not estimate impacts until enough first-entry treatments and defensible
+comparison counties satisfy the registered evidence and period requirements.

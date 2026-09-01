@@ -135,6 +135,28 @@ export interface CountyEconomicHistory {
   generated_at: string;
 }
 
+export interface CountyTreatmentAssessment {
+  schema_version: "1.0.0";
+  treatment_assessment_id: string;
+  treatment_definition_id: "trt_first_entry_v1";
+  county_fips: string;
+  county_name: string;
+  state_abbr: string;
+  assessment_status:
+    | "eligible"
+    | "candidate_events_not_first_entry"
+    | "no_reviewed_dated_operational_event";
+  candidate_event_count: number;
+  candidate_event_evaluation_ids: string[];
+  first_entry_verified: boolean;
+  review_scope: "reviewed_facility_events_only";
+  eligible_treatment_period?: { date?: string; year?: number; precision: string };
+  eligible_cohort_year?: number;
+  created_at: string;
+  updated_at: string;
+  record_status: "active" | "provisional";
+}
+
 export interface CountyEntityResolutionCoverage {
   schema_version: "1.0.0";
   county_fips: string;

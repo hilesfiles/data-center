@@ -102,6 +102,23 @@ data slices. Only temporary ZIP/CSV transport inputs are used, and durable data 
 The public projection is delivered as 51 state/DC partitions with a hash-and-size index;
 county profiles lazy-load only their selected state partition.
 
+## Governed county first-entry treatment registry
+
+- Treatment definition: `trt_first_entry_v1`
+- Geography: 3,144 current Census counties and county equivalents
+- Reviewed dated operational events: 2
+- Evidence- and history-window-qualified events: 2
+- Verified county first-entry dates: 0
+- Eligible treatment counties: 0
+- Builder: `scripts/build_county_first_entry_treatments.py`
+
+The two retained candidates come from first-party operator evidence already governed in the
+lifecycle review: NTT's dated SV1 opening release and Apple's environmental report describing
+Mesa customer service beginning in March 2017. These sources establish facility events, not
+the first data-center entry in Santa Clara or Maricopa County. Public county assessments are
+JSON-only and split into 51 state/DC partitions. Missing reviewed events do not establish a
+never-treated comparison group.
+
 The panel retains current Census identities without crosswalking legacy source geographies.
 Connecticut planning regions consequently lack BLS rows before their 2024 adoption, and the
 BEA combined/legacy geography limitations remain. Missing cells and 26 suppressed

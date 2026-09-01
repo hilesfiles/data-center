@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dccio.org/schemas/v1/county-treatment-assessment.schema.json",
+  "title": "County first-entry treatment assessment",
+  "type": "object",
+  "required": [
+    "schema_version", "treatment_assessment_id", "treatment_definition_id",
+    "county_fips", "county_name", "state_abbr", "assessment_status",
+    "candidate_event_count", "candidate_event_evaluation_ids",
+    "first_entry_verified", "review_scope", "created_at", "updated_at",
+    "record_status"
+  ],
+  "properties": {
+    "schema_version": {"$ref": "common.schema.json#/$defs/schema_version"},
+    "treatment_assessment_id": {"$ref": "common.schema.json#/$defs/entity_id"},
+    "treatment_definition_id": {"$ref": "common.schema.json#/$defs/entity_id"},
+    "county_fips": {"$ref": "common.schema.json#/$defs/county_fips"},
+    "county_name": {"type": "string", "minLength": 1},
+    "state_abbr": {"$ref": "common.schema.json#/$defs/state_abbr"},
+    "assessment_status": {
+      "type": "string",
+      "enum": ["eligible", "candidate_events_not_first_entry", "no_reviewed_dated_operational_event"]
+    },
+    "candidate_event_count": {"type": "integer", "minimum": 0},
+    "candidate_event_evaluation_ids": {
+      "type": "array", "items": {"$ref": "common.schema.json#/$defs/entity_id"}, "uniqueItems": true
+    },
+    "first_entry_verified": {"type": "boolean"},
+    "eligible_treatment_period": {"$ref": "common.schema.json#/$defs/temporal_extent"},
+    "eligible_cohort_year": {"$ref": "common.schema.json#/$defs/year"},
+    "review_scope": {"type": "string", "const": "reviewed_facility_events_only"},
+    "created_at": {"$ref": "common.schema.json#/$defs/timestamp"},
+    "updated_at": {"$ref": "common.schema.json#/$defs/timestamp"},
+    "record_status": {"type": "string", "enum": ["active", "provisional", "superseded", "withdrawn"]}
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"assessment_status": {"const": "eligible"}}},
+      "then": {
+        "required": ["eligible_treatment_period", "eligible_cohort_year"],
+        "properties": {"first_entry_verified": {"const": true}}
+      },
+      "else": {"properties": {"first_entry_verified": {"const": false}}}
+    }
+  ],
+  "additionalProperties": false
+}

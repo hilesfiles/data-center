@@ -122,11 +122,27 @@ counties have all four measures in all 24 years, 79 are partial, and Kalawao Cou
 unavailable. This is preferable to inventing a longitudinal crosswalk without an explicit
 allocation method and uncertainty model.
 
-The processing report sets model readiness to `missing_treatment_dates`. The 24-year span
-can support the configured minimum of seven pre-treatment and three post-treatment periods,
-but no governed treatment-date collection exists. The panel supports descriptive trend
-inspection only; no treatment assignment, comparison group, estimate, index, or causal
-claim is produced.
+The 24-year span can support the configured minimum of seven pre-treatment and three
+post-treatment periods. The separate governed first-entry registry currently sets model
+readiness to `insufficient_eligible_treatments`: no treatment assignment, comparison group,
+estimate, index, or causal claim is produced.
+
+## County first-entry treatment governance
+
+`trt_first_entry_v1` requires a high-confidence operational event with at least year
+precision, a data-quality score of 80, and at least one authoritative source. Candidate
+quality is calculated as `source quality × claim confidence × date-precision multiplier ×
+100`. The configured model also requires seven available pre-treatment and three available
+post-treatment years.
+
+Passing those checks is necessary but not sufficient. A facility opening becomes a county
+first-entry treatment only when the reviewed adjudication explicitly verifies that it is the
+first data-center operation in that county. The current registry retains two facility-event
+candidates: NTT SV1 in Santa Clara County (2021-04-13, DQS 93.10, 20 pre/3 post years) and
+Apple's Mesa facility in Maricopa County (2017-03 month precision, DQS 85.74, 16 pre/7 post
+years). Both fail only the county-first-entry verification gate. Therefore all 3,144 counties
+have an assessment, zero are eligible, and no model run is authorized. Counties without a
+reviewed dated event remain unknown for treatment purposes; they are not labeled never treated.
 
 ## Lifecycle verification pilot
 
