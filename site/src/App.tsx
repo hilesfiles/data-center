@@ -386,7 +386,7 @@ export default function App() {
       </header>
 
       <div className="fixture-banner" role="status">
-        <strong>Twenty-four dated anchors have been adjudicated.</strong> Earlier operations reject 21 candidate anchors; Hudson, Rockingham, and Lake counties remain unresolved as county first entry. Complete historical inventories remain unresolved, zero treatment counties are eligible, and no impact model has been run.
+        <strong>Thirty-one dated anchors have been adjudicated across 32 researched counties.</strong> Earlier operations reject 25 candidate anchors; Hudson, Rockingham, Lake, Houston, White, and Napa counties remain unresolved as county first entry. Contra Costa's e360 seed was rejected as an office-location false positive. Complete historical inventories remain unresolved, zero treatment counties are eligible, and no impact model has been run.
       </div>
 
       <main className="workspace">

@@ -117,6 +117,21 @@ def build() -> dict[str, Any]:
     }
     if len(adjudication_by_fips) != len(first_entry_adjudications):
         raise RuntimeError("Duplicate county in first-entry adjudications")
+    national_index = load_json(
+        ROOT / "site" / "public" / "data" / "v1" / "lifecycle" / "national-priority-index.json"
+    )
+    national_fips_by_id = {
+        record["national_priority_id"]: record["primary_county_fips"]
+        for record in national_index
+    }
+    lifecycle_anchor_adjudications = load_json(
+        ROOT / "config" / "v1" / "first-entry-lifecycle-anchor-adjudications.json"
+    ).get("records", [])
+    rejected_seed_fips = {
+        national_fips_by_id[record["national_priority_id"]]
+        for record in lifecycle_anchor_adjudications
+        if record.get("resolved_current_status") == "rejected"
+    }
     source_by_fips = {record["county_fips"]: record for record in source_coverage}
     reviewed_operational_counts = load_reviewed_operational_counts()
     state_to_region = {
@@ -147,6 +162,7 @@ def build() -> dict[str, Any]:
         source = source_by_fips[county_fips]
         assessment = treatment_assessments[county_fips]
         first_entry_adjudication = adjudication_by_fips.get(county_fips)
+        rejected_seed = county_fips in rejected_seed_fips
         reviewed_operational_count = reviewed_operational_counts[county_fips]
         dated_candidate_count = int(assessment["candidate_event_count"])
         complete_year_count = int(history[county_fips]["complete_year_count"])
@@ -198,7 +214,7 @@ def build() -> dict[str, Any]:
                 "national_rank": 0,
                 "region_rank": 0,
                 "queue_status": "national_backlog",
-                "research_status": "evidence_collected" if first_entry_adjudication else "queued",
+                "research_status": "evidence_collected" if first_entry_adjudication or rejected_seed else "queued",
                 "research_objective": "verify_county_first_operational_entry",
                 "required_findings": policy["research_protocol"]["required_findings"],
                 "suggested_source_types": policy["research_protocol"]["suggested_source_types"],
@@ -225,6 +241,11 @@ def build() -> dict[str, Any]:
                     "Earlier operation documented; dated anchor rejected. "
                     "County first entry remains unresolved pending a complete historical inventory."
                 )
+        elif rejected_seed:
+            candidate["research_summary"] = (
+                "The county's only mapped seed was adjudicated as a non-data-center false positive. "
+                "County first entry remains unresolved pending a corrected historical facility inventory."
+            )
         candidates.append(candidate)
 
     candidates.sort(key=lambda record: (-record["priority_score"], record["county_fips"]))

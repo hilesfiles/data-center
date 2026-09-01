@@ -4,7 +4,7 @@
   "artifact_version": "2026.09.02",
   "generated_at": "2026-09-02T04:00:00Z",
   "record_schema": "https://dccio.org/schemas/v1/national-lifecycle-evidence-adjudication.schema.json",
-  "record_count": 1,
+  "record_count": 6,
   "records": [
     {
       "schema_version": "1.0.0",
@@ -40,6 +40,155 @@
           "source_id": "src_t5_digital_crossroad_launch_20200825",
           "confidence": 0.98,
           "notes": "T5's contemporaneous announcement supplies the stated DX-1 launch date. The event establishes operation of the exact mapped Digital Crossroad facility no later than October 31, 2020."
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_576eb08b2bbcc927a7d4",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.95,
+      "rationale": "Sourcewell's executed public master agreement identifies AngelTrax at 119 South Woodburn Drive in Dothan and states that AngelTrax provides cloud hosting from its own SOC 2 Type II-compliant data center with access limited to its data-center team. This establishes an operating AngelTrax data center at the mapped headquarters no later than the agreement's April 22, 2025 effective date.",
+      "evidence": [
+        {
+          "source_id": "src_sourcewell_angeltrax_contract_20250422",
+          "attribute_path": "facility.current_status",
+          "raw_value": {"type": "classification", "code": "operational", "label": "AngelTrax provides active cloud hosting in its own SOC 2 Type II-compliant data center"},
+          "normalized_value": {"type": "classification", "code": "operational"},
+          "finding": "The local-government cooperative contract identifies the operator, Dothan headquarters, active hosting service, dedicated servers, backups, and restricted data-center operations team.",
+          "disposition": "supporting",
+          "claim_confidence": 0.95
+        }
+      ],
+      "events": [
+        {
+          "event_type": "operational",
+          "when": {"date": "2025-04-22", "precision": "day"},
+          "source_id": "src_sourcewell_angeltrax_contract_20250422",
+          "confidence": 0.95,
+          "notes": "Operational no later than the effective date of the public agreement describing AngelTrax's active Dothan-hosted data-center service."
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_7273dd8fd518fe1d0569",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.99,
+      "rationale": "Windstream's contemporaneous release announces the opening of its new 30,000-square-foot Little Rock data center on April 12, 2012. The address, facility scale, and later TierPoint identity align with the exact mapped TierPoint Little Rock facility.",
+      "evidence": [
+        {
+          "source_id": "src_windstream_little_rock_opening_20120412",
+          "attribute_path": "facility.current_status",
+          "raw_value": {"type": "classification", "code": "operational", "label": "Windstream opened its new Little Rock data center"},
+          "normalized_value": {"type": "classification", "code": "operational"},
+          "finding": "The predecessor operator supplies a contemporaneous exact-city opening, facility size, operating features, and grand-opening schedule.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        }
+      ],
+      "events": [
+        {
+          "event_type": "operational",
+          "when": {"date": "2012-04-12", "precision": "day"},
+          "source_id": "src_windstream_little_rock_opening_20120412",
+          "confidence": 0.99,
+          "notes": "Windstream announced the new Little Rock facility open on April 12, 2012; the formal opening ceremony followed on April 19."
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_c42850921165b56afea3",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.94,
+      "rationale": "The City of Searcy's current Information Technology page identifies the IT Building at 107 North Elm and describes its protected NOC, redundant cooling, emergency generation, server farm, storage arrays, and automated backups. This is the exact mapped municipal facility. Because the page is undated, September 1, 2026 is an observation-date anchor rather than a claimed commissioning date.",
+      "evidence": [
+        {
+          "source_id": "src_searcy_it_data_center_current_2026",
+          "attribute_path": "facility.current_status",
+          "raw_value": {"type": "classification", "code": "operational", "label": "Current municipal NOC, server farm, and data center at 107 North Elm"},
+          "normalized_value": {"type": "classification", "code": "operational"},
+          "finding": "The city directly identifies current data-center infrastructure and operations at the mapped Information Technology Building.",
+          "disposition": "supporting",
+          "claim_confidence": 0.94
+        }
+      ],
+      "events": [
+        {
+          "event_type": "operational",
+          "when": {"date": "2026-09-01", "precision": "day"},
+          "source_id": "src_searcy_it_data_center_current_2026",
+          "confidence": 0.92,
+          "notes": "Operational no later than the September 1, 2026 research observation. The page does not publish a commissioning date, so this is an observation anchor only."
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_8165c20a22aa82fa1a3a",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "rejected",
+      "confidence": 0.99,
+      "rationale": "The point coordinates resolve to e360's former headquarters at Suite 730, 1855 Gateway Boulevard. e360 identifies the location as its prior corporate headquarters, and the building owner identifies 1855 Gateway as one of two ten-story Class A office towers. e360 is an IT consultancy whose services include data-center transformation; neither source supports a data-center facility at this point. The seed is rejected as a company-office false positive.",
+      "evidence": [
+        {
+          "source_id": "src_e360_change_of_address_202506",
+          "attribute_path": "facility.current_status",
+          "raw_value": {"type": "text", "value": "e360 relocated its corporate headquarters from Concord to Irvine effective July 1, 2025"},
+          "normalized_value": {"type": "classification", "code": "rejected"},
+          "finding": "The named entity at the mapped point is e360's former corporate office, not a published data-center operation.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        },
+        {
+          "source_id": "src_concord_gateway_office_tower_current_2026",
+          "attribute_path": "facility.facility_type",
+          "raw_value": {"type": "classification", "code": "office", "label": "Ten-story Class A office building"},
+          "finding": "The property owner identifies 1855 Gateway Boulevard as a multi-tenant Class A office tower.",
+          "disposition": "supporting",
+          "claim_confidence": 0.98
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_baf5cf5c6b2c0d848260",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.98,
+      "rationale": "Kaiser Permanente's October 24, 2011 release identifies its Napa data center as an operating facility whose cooling-efficiency project had already generated measured energy and cost savings and received a 2010-2011 Energy Star rating. The facility identity and Napa location align with the exact mapped Kaiser building.",
+      "evidence": [
+        {
+          "source_id": "src_kaiser_napa_green_it_20111024",
+          "attribute_path": "facility.current_status",
+          "raw_value": {"type": "classification", "code": "operational", "label": "Operating Napa data center with measured cooling-efficiency results"},
+          "normalized_value": {"type": "classification", "code": "operational"},
+          "finding": "The operator release identifies active Napa data-center operations and completed efficiency work by October 24, 2011.",
+          "disposition": "supporting",
+          "claim_confidence": 0.98
+        }
+      ],
+      "events": [
+        {
+          "event_type": "operational",
+          "when": {"date": "2011-10-24", "precision": "day"},
+          "source_id": "src_kaiser_napa_green_it_20111024",
+          "confidence": 0.98,
+          "notes": "Operational no later than the operator's dated release documenting completed efficiency work and an existing Energy Star rating at the Napa data center."
         }
       ],
       "record_status": "active"

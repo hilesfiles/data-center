@@ -111,7 +111,7 @@
     },
     {
       "schema_version": "1.0.0",
-      "national_priority_id": "lnp_im3_db7273b4f00f6651f22f",
+  "national_priority_id": "lnp_im3_db7273b4f00f6651f22f",
       "resolution_state": "resolved",
       "decision": "accept",
       "resolved_current_status": "operational",
@@ -134,9 +134,26 @@
           "finding": "Equinix labels 36,457 square feet as colocation space, so it is not normalized to total building area.",
           "disposition": "context",
           "claim_confidence": 0.99
+        },
+        {
+          "source_id": "src_equinix_se3_opening_20130314",
+          "attribute_path": "event.operational",
+          "raw_value": {"type": "date", "value": {"date": "2013-03-14", "precision": "day"}},
+          "finding": "Equinix's launch post states that the new SE3 IBX opened its doors on March 14, 2013.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
         }
       ],
-      "record_status": "active"
+  "events": [
+    {
+      "event_type": "operational",
+      "when": {"date": "2013-03-14", "precision": "day"},
+      "source_id": "src_equinix_se3_opening_20130314",
+      "confidence": 0.99,
+      "notes": "Equinix's contemporaneous launch post states that SE3 opened its doors on March 14, 2013 and identifies it as the new downtown Seattle IBX adjacent to SE2."
+    }
+  ],
+  "record_status": "active"
     },
     {
       "schema_version": "1.0.0",

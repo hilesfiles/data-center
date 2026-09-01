@@ -149,7 +149,7 @@
     },
     {
       "schema_version": "1.0.0",
-      "national_priority_id": "lnp_im3_5df1f33773dd644ddc03",
+  "national_priority_id": "lnp_im3_5df1f33773dd644ddc03",
       "resolution_state": "resolved",
       "decision": "accept",
       "resolved_current_status": "operational",
@@ -181,10 +181,27 @@
           "finding": "Current QTS figures describe the wider Piscataway property and expansion context and are not normalized to this building.",
           "disposition": "context",
           "claim_confidence": 0.98
+        },
+        {
+          "source_id": "src_qts_2016_annual_report_piscataway_acquisition",
+          "attribute_path": "event.operational",
+          "raw_value": {"type": "date", "value": {"date": "2016-06-06", "precision": "day"}},
+          "finding": "QTS reports closing its acquisition of the existing operating Piscataway data center on June 6, 2016.",
+          "disposition": "supporting",
+          "claim_confidence": 0.98
         }
       ],
-      "observations": [
+  "observations": [
         {"metric_code": "facility.area.building_sqft_observed", "value": 360000, "unit": "square foot", "period": {"year": 2024, "precision": "year"}, "source_id": "src_qts_piscataway_dc1_datasheet_2024"}
+      ],
+      "events": [
+        {
+          "event_type": "operational",
+          "when": {"date": "2016-06-06", "precision": "day"},
+          "source_id": "src_qts_2016_annual_report_piscataway_acquisition",
+          "confidence": 0.98,
+          "notes": "QTS's annual report states that it closed the acquisition of the operating 360,000-square-foot Piscataway data center on June 6, 2016. The event establishes operation of the exact mapped QTS facility no later than that date."
+        }
       ],
       "record_status": "active"
     },
@@ -277,9 +294,9 @@
           "source_id": "src_florida_edr_datacenter_inventory_20160120",
           "confidence": 0.99,
           "notes": "Operational no later than Florida's January 20, 2016 state impact-conference inventory, which identifies the CenturyLink Tampa data center in ZIP code 33619 and supplies facility capacity and colocation details. The state-record date is retained as the conservative day-precision bound."
-        }
-      ],
-      "record_status": "active"
+    }
+  ],
+  "record_status": "active"
     },
     {
       "schema_version": "1.0.0",

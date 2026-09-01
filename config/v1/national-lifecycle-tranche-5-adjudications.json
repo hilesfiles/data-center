@@ -79,7 +79,7 @@
     },
     {
       "schema_version": "1.0.0",
-      "national_priority_id": "lnp_im3_19c4bfd7178a5c4a98b6",
+  "national_priority_id": "lnp_im3_19c4bfd7178a5c4a98b6",
       "resolution_state": "resolved",
       "decision": "accept",
       "resolved_current_status": "operational",
@@ -111,10 +111,27 @@
           "finding": "The operator labels 43,366 square feet as raised-floor space, so it is retained as context.",
           "disposition": "context",
           "claim_confidence": 0.98
+        },
+        {
+          "source_id": "src_evoque_allen_da1_brief_2018",
+          "attribute_path": "event.operational",
+          "raw_value": {"type": "date", "value": {"year": 1999, "precision": "year"}},
+          "finding": "Evoque's data-center facility brief identifies the exact Allen DA1 site and reports it built in 1999.",
+          "disposition": "supporting",
+          "claim_confidence": 0.9
         }
       ],
-      "observations": [
+  "observations": [
         {"metric_code": "facility.capacity.mw_observed", "value": 8.6, "unit": "MW", "period": {"year": 2025, "precision": "year"}, "source_id": "src_csquare_dfw2_specsheet_2025"}
+      ],
+      "events": [
+        {
+          "event_type": "operational",
+          "when": {"year": 1999, "precision": "year"},
+          "source_id": "src_evoque_allen_da1_brief_2018",
+          "confidence": 0.9,
+          "notes": "Evoque's facility brief identifies the exact Allen DA1 data center at 900 Guardians Way and reports it built in 1999. The year is accepted as an operational-no-later-than anchor at year precision, with reduced confidence because no commissioning day is supplied."
+        }
       ],
       "record_status": "active"
     },
@@ -182,9 +199,9 @@
           "source_id": "src_serverfarm_lax1_acquisition_20210420",
           "confidence": 0.98,
           "notes": "Operational no later than Serverfarm's April 20, 2021 acquisition announcement, which describes the exact Los Angeles facility as an existing multi-tenant data center with operating customers. This is a dated operating-state observation, not the original opening date."
-        }
-      ],
-      "record_status": "active"
+    }
+  ],
+  "record_status": "active"
     },
     {
       "schema_version": "1.0.0",
