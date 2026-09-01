@@ -161,11 +161,28 @@
           "finding": "Serverfarm reports 17.3 MW of IT capacity for LAX1.",
           "disposition": "supporting",
           "claim_confidence": 0.99
+        },
+        {
+          "source_id": "src_serverfarm_lax1_acquisition_20210420",
+          "attribute_path": "event.operational",
+          "raw_value": {"type": "date", "value": {"date": "2021-04-20", "precision": "day"}},
+          "finding": "The acquisition announcement describes the exact LAX1 property as an existing multi-tenant data center with operating customers on April 20, 2021.",
+          "disposition": "supporting",
+          "claim_confidence": 0.98
         }
       ],
       "observations": [
         {"metric_code": "facility.area.building_sqft_observed", "value": 117500, "unit": "square foot", "period": {"year": 2026, "precision": "year"}, "source_id": "src_serverfarm_lax1_current_2026"},
         {"metric_code": "facility.capacity.mw_observed", "value": 17.3, "unit": "MW", "period": {"year": 2026, "precision": "year"}, "source_id": "src_serverfarm_lax1_current_2026"}
+      ],
+      "events": [
+        {
+          "event_type": "operational",
+          "when": {"date": "2021-04-20", "precision": "day"},
+          "source_id": "src_serverfarm_lax1_acquisition_20210420",
+          "confidence": 0.98,
+          "notes": "Operational no later than Serverfarm's April 20, 2021 acquisition announcement, which describes the exact Los Angeles facility as an existing multi-tenant data center with operating customers. This is a dated operating-state observation, not the original opening date."
+        }
       ],
       "record_status": "active"
     },

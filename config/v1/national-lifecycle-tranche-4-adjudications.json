@@ -209,6 +209,23 @@
           "finding": "The current permit independently ties active maintained electrical infrastructure and the Fidelity facility name to the exact address.",
           "disposition": "supporting",
           "claim_confidence": 0.97
+        },
+        {
+          "source_id": "src_papillion_fidelity_permit_2025",
+          "attribute_path": "event.operational",
+          "raw_value": {"type": "date", "value": {"date": "2025-08-05", "precision": "day"}},
+          "finding": "The permit packet establishes maintained Fidelity electrical infrastructure at the exact facility no later than August 5, 2025.",
+          "disposition": "supporting",
+          "claim_confidence": 0.97
+        }
+      ],
+      "events": [
+        {
+          "event_type": "operational",
+          "when": {"date": "2025-08-05", "precision": "day"},
+          "source_id": "src_papillion_fidelity_permit_2025",
+          "confidence": 0.97,
+          "notes": "Operational no later than the City of Papillion's August 5, 2025 permit packet, which identifies maintained Fidelity electrical infrastructure at the exact 11050 Cornhusker Road facility. This is a dated operating-state observation, not an opening date."
         }
       ],
       "record_status": "active"
@@ -290,10 +307,27 @@
           "finding": "The directory preserves the legacy code-to-address mapping and is used only to explain seed continuity, not lifecycle status.",
           "disposition": "context",
           "claim_confidence": 0.45
+        },
+        {
+          "source_id": "src_csquare_seattle_specsheet_2025",
+          "attribute_path": "event.operational",
+          "raw_value": {"type": "date", "value": {"date": "2025-12-31", "precision": "day"}},
+          "finding": "The operator's 2025 specification establishes the exact Lynnwood facility in an operating state no later than the end of that publication year.",
+          "disposition": "supporting",
+          "claim_confidence": 0.98
         }
       ],
       "observations": [
         {"metric_code": "facility.capacity.mw_observed", "value": 17.3, "unit": "MW", "period": {"year": 2025, "precision": "year"}, "source_id": "src_csquare_seattle_specsheet_2025"}
+      ],
+      "events": [
+        {
+          "event_type": "operational",
+          "when": {"date": "2025-12-31", "precision": "day"},
+          "source_id": "src_csquare_seattle_specsheet_2025",
+          "confidence": 0.98,
+          "notes": "Operational no later than the end of the operator specification sheet's 2025 publication year. The exact SEA3 address and operating specifications establish the facility observation; December 31 is a conservative year-end bound, not an asserted opening or publication day."
+        }
       ],
       "record_status": "active"
     }

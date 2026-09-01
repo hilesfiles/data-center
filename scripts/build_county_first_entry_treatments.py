@@ -111,6 +111,19 @@ def load_candidate_results() -> dict[str, dict[str, Any]]:
             if candidate_id in records and records[candidate_id] != record:
                 raise RuntimeError(f"Conflicting lifecycle result {candidate_id}")
             records[candidate_id] = record
+    # First-entry research may date a national-backlog facility without promoting it
+    # into a numbered lifecycle tranche. Supply the stable facility/county identity
+    # from the governed national index while preserving reviewed tranche results as
+    # the authoritative lifecycle projection whenever both are present.
+    national_index_path = directory / "national-priority-index.json"
+    for record in load_json(national_index_path):
+        candidate_id = record["national_priority_id"]
+        if candidate_id in records:
+            continue
+        records[candidate_id] = {
+            **record,
+            "county_fips": record["primary_county_fips"],
+        }
     return records
 
 

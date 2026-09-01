@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.0.0",
+  "artifact_type": "first_entry_lifecycle_anchor_adjudications",
+  "artifact_version": "2026.09.02",
+  "generated_at": "2026-09-02T04:00:00Z",
+  "record_schema": "https://dccio.org/schemas/v1/national-lifecycle-evidence-adjudication.schema.json",
+  "record_count": 1,
+  "records": [
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_7cc8844813f71c2f4f8f",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.98,
+      "rationale": "T5's contemporaneous operating-partner announcement identifies Digital Crossroad's DX-1 facility in Hammond and gives its October 31, 2020 launch date, 20 MW of critical power, and 108,000 square feet. Hammond's current official record independently identifies the existing 105,000-square-foot data center at the Digital Crossroads site. The small area difference is treated as reported gross-area variation and is not normalized here.",
+      "evidence": [
+        {
+          "source_id": "src_t5_digital_crossroad_launch_20200825",
+          "attribute_path": "facility.current_status",
+          "raw_value": {"type": "classification", "code": "operational", "label": "DX-1 launch scheduled for October 31, 2020 with T5 facility-management services"},
+          "normalized_value": {"type": "classification", "code": "operational"},
+          "finding": "The operating partner identifies the exact Hammond campus, facility name, launch date, capacity, and facility-management role.",
+          "disposition": "supporting",
+          "claim_confidence": 0.98
+        },
+        {
+          "source_id": "src_hammond_digital_crossroad_current_20250610",
+          "attribute_path": "facility.current_status",
+          "raw_value": {"type": "text", "value": "Hammond's current 105,000-square-foot data center at Digital Crossroads"},
+          "finding": "The city independently confirms that the existing Hammond facility remains a current data center.",
+          "disposition": "supporting",
+          "claim_confidence": 0.95
+        }
+      ],
+      "events": [
+        {
+          "event_type": "operational",
+          "when": {"date": "2020-10-31", "precision": "day"},
+          "source_id": "src_t5_digital_crossroad_launch_20200825",
+          "confidence": 0.98,
+          "notes": "T5's contemporaneous announcement supplies the stated DX-1 launch date. The event establishes operation of the exact mapped Digital Crossroad facility no later than October 31, 2020."
+        }
+      ],
+      "record_status": "active"
+    }
+  ]
+}

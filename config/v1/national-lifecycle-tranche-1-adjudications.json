@@ -83,6 +83,23 @@
           "finding": "The county permit matches facility code IAD10, the mapped address, and data-center use while documenting rack installation work.",
           "disposition": "supporting",
           "claim_confidence": 0.95
+        },
+        {
+          "source_id": "src_loudoun_iad10_permit_202404",
+          "attribute_path": "event.operational",
+          "raw_value": {"type": "date", "value": {"date": "2024-04-30", "precision": "day"}},
+          "finding": "The county's issued-permit report establishes an exact-address IAD10 operating-state observation no later than April 30, 2024.",
+          "disposition": "supporting",
+          "claim_confidence": 0.95
+        }
+      ],
+      "events": [
+        {
+          "event_type": "operational",
+          "when": {"date": "2024-04-30", "precision": "day"},
+          "source_id": "src_loudoun_iad10_permit_202404",
+          "confidence": 0.95,
+          "notes": "Operational no later than Loudoun County's April 30, 2024 issued-permit report. The exact IAD10 code, 45360 West Severn Way address, data-center structure type, and rack-installation work establish an operating-state observation; this is not asserted as the facility opening date."
         }
       ],
       "record_status": "active"

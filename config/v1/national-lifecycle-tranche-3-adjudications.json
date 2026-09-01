@@ -97,11 +97,28 @@
           "finding": "Element Critical reports 5 MW of power for Chicago Two.",
           "disposition": "supporting",
           "claim_confidence": 0.99
+        },
+        {
+          "source_id": "src_element_critical_chicago_acquisition_20190108",
+          "attribute_path": "event.operational",
+          "raw_value": {"type": "date", "value": {"date": "2019-01-08", "precision": "day"}},
+          "finding": "The acquisition announcement identifies both Wood Dale properties as staffed operating enterprise data centers on January 8, 2019.",
+          "disposition": "supporting",
+          "claim_confidence": 0.98
         }
       ],
       "observations": [
         {"metric_code": "facility.area.building_sqft_observed", "value": 45000, "unit": "square foot", "period": {"year": 2026, "precision": "year"}, "source_id": "src_element_critical_chicago_two_current_2026"},
         {"metric_code": "facility.capacity.mw_observed", "value": 5, "unit": "MW", "period": {"year": 2026, "precision": "year"}, "source_id": "src_element_critical_chicago_two_current_2026"}
+      ],
+      "events": [
+        {
+          "event_type": "operational",
+          "when": {"date": "2019-01-08", "precision": "day"},
+          "source_id": "src_element_critical_chicago_acquisition_20190108",
+          "confidence": 0.98,
+          "notes": "Operational no later than Element Critical's January 8, 2019 acquisition announcement, which identifies two staffed enterprise data centers in Wood Dale. This dated operating-state observation is not asserted as Chicago Two's opening date."
+        }
       ],
       "record_status": "active"
     },
@@ -176,6 +193,23 @@
           "finding": "The maintained HPC site confirms ongoing Sandia HPC functions in the exact building, but does not separately describe the annex equipment floor.",
           "disposition": "context",
           "claim_confidence": 0.86
+        },
+        {
+          "source_id": "src_sandia_building_880_family_day_2019",
+          "attribute_path": "event.operational",
+          "raw_value": {"type": "date", "value": {"year": 2019, "precision": "year"}},
+          "finding": "Sandia's dated 2019 facility map identifies Building 880 Annex as an operating enterprise and HPC data center.",
+          "disposition": "supporting",
+          "claim_confidence": 0.9
+        }
+      ],
+      "events": [
+        {
+          "event_type": "operational",
+          "when": {"year": 2019, "precision": "year"},
+          "source_id": "src_sandia_building_880_family_day_2019",
+          "confidence": 0.9,
+          "notes": "Operational no later than 2019, when Sandia's official facility map identified the exact Building 880 Annex as an enterprise and HPC data center. The source supplies year precision only and does not establish an opening date."
         }
       ],
       "record_status": "active"
