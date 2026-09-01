@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "artifact_type": "national_lifecycle_tranche_adjudications",
-  "generated_at": "2026-09-02T00:00:00Z",
+  "generated_at": "2026-09-02T00:30:00Z",
   "record_count": 8,
   "records": [
     {
@@ -187,7 +187,7 @@
       "decision": "accept",
       "resolved_current_status": "operational",
       "confidence": 0.99,
-      "rationale": "Markley's current facility page identifies its active Lowell data center, describes 24x7 staffing and operating infrastructure, and reports 352,000 square feet. Its current contact page maps the Lowell location to One Markley Way, matching the mapped building.",
+      "rationale": "Markley's current facility page identifies its active Lowell data center, describes 24x7 staffing and operating infrastructure, and reports 352,000 square feet. Its current contact page maps the Lowell location to One Markley Way, matching the mapped building. Markley's November 23, 2015 operator post states that Phase One had opened and customers had begun occupying the Lowell facility, supplying a conservative operational-no-later-than event.",
       "evidence": [
         {
           "source_id": "src_markley_lowell_current_2026",
@@ -214,10 +214,27 @@
           "finding": "Markley reports 352,000 square feet for the Lowell data center.",
           "disposition": "supporting",
           "claim_confidence": 0.99
+        },
+        {
+          "source_id": "src_markley_lowell_phase_one_open_20151123",
+          "attribute_path": "event.operational",
+          "raw_value": {"type": "date", "value": {"date": "2015-11-23", "precision": "day"}},
+          "finding": "Markley's November 23, 2015 operator post states that Phase One of the Lowell facility had opened and that customers had already begun occupying space.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
         }
       ],
       "observations": [
         {"metric_code": "facility.area.building_sqft_observed", "value": 352000, "unit": "square foot", "period": {"year": 2026, "precision": "year"}, "source_id": "src_markley_lowell_current_2026"}
+      ],
+      "events": [
+        {
+          "event_type": "operational",
+          "when": {"date": "2015-11-23", "precision": "day"},
+          "source_id": "src_markley_lowell_phase_one_open_20151123",
+          "confidence": 0.99,
+          "notes": "Operational no later than Markley's November 23, 2015 operator post, which says Phase One had opened and customers had begun occupying the Lowell facility. The publication date is retained as the conservative day-precision bound."
+        }
       ],
       "record_status": "active"
     },

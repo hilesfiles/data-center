@@ -528,5 +528,61 @@
     "created_at": "2026-09-02T00:00:00Z",
     "updated_at": "2026-09-02T00:00:00Z",
     "record_status": "active"
+  },
+  {
+    "schema_version": "1.0.0",
+    "county_first_entry_adjudication_id": "fea_25017_markley_lowell_20151123_rejected",
+    "first_entry_research_candidate_id": "fer_bde7533aacb49a720f30",
+    "treatment_definition_id": "trt_first_entry_v1",
+    "candidate_event_evaluation_id": "tev_3c5835f4aa23d19777f3",
+    "county_fips": "25017",
+    "county_name": "Middlesex County",
+    "state_abbr": "MA",
+    "resolution_state": "candidate_rejected_first_entry",
+    "decision": "reject_candidate_as_first_entry",
+    "county_first_entry_verified": false,
+    "inventory_completeness_status": "not_established",
+    "earlier_operations_search_status": "documented_incomplete",
+    "required_finding_status": {
+      "earliest_dated_operational_event": "partial",
+      "exact_facility_identity_for_earliest_event": "resolved",
+      "county_inventory_completeness": "unresolved",
+      "documented_search_for_earlier_operations": "resolved"
+    },
+    "earlier_operational_findings": [
+      {
+        "facility_id": "fac_im3_building_00029827954",
+        "canonical_name": "CoreSite BO1 at 70 Inner Belt Road",
+        "temporal_relation": "operational_no_later_than",
+        "when": {
+          "date": "2007-04-11",
+          "precision": "day"
+        },
+        "source_ids": [
+          "src_coresite_bo1_current_2026",
+          "src_coresite_424b1_70_innerbelt_20100922",
+          "src_somerville_70_innerbelt_history_20180620"
+        ],
+        "finding": "CoreSite's SEC prospectus records the April 11, 2007 acquisition of 70 Innerbelt with operating data-center space, and Somerville's permit history says a December 2007 application expanded an existing 22,667-square-foot colocation data center. CoreSite's current page maps BO1 to the exact address.",
+        "confidence": 0.99
+      }
+    ],
+    "source_ids": [
+      "src_markley_lowell_current_2026",
+      "src_markley_contact_current_2026",
+      "src_markley_lowell_phase_one_open_20151123",
+      "src_coresite_bo1_current_2026",
+      "src_coresite_424b1_70_innerbelt_20100922",
+      "src_somerville_70_innerbelt_history_20180620"
+    ],
+    "authoritative_source_types": [
+      "operator_release",
+      "sec_filing",
+      "local_government_record"
+    ],
+    "rationale": "Markley's November 23, 2015 operator post supplies an operational-no-later-than anchor for the Lowell facility and states that Phase One had opened with customers already occupying space; Markley's current facility and contact pages establish continuity to the exact mapped building at One Markley Way. The Lowell candidate cannot be Middlesex County's first entry because CoreSite's SEC prospectus identifies 70 Innerbelt in Somerville as operating data-center space when it was acquired on April 11, 2007, and Somerville's permit history independently describes an existing colocation data center at that address later in 2007. CoreSite's current page maps BO1 to 70 Inner Belt Road. The current two-record canonical inventory and the records reviewed do not establish a complete historical county inventory or the original opening date of the Somerville facility, so the true first entry remains unresolved and no treatment date is assigned.",
+    "created_at": "2026-09-02T00:30:00Z",
+    "updated_at": "2026-09-02T00:30:00Z",
+    "record_status": "active"
   }
 ]
