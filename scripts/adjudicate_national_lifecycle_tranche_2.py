@@ -86,6 +86,7 @@ def build() -> tuple[
     claims: list[dict[str, Any]] = []
     resolutions: list[dict[str, Any]] = []
     reviews: list[dict[str, Any]] = []
+    events: list[dict[str, Any]] = []
     observations: list[dict[str, Any]] = []
     updated_facilities: list[dict[str, Any]] = []
     public_results: list[dict[str, Any]] = []
@@ -185,6 +186,32 @@ def build() -> tuple[
             updated_facilities.append(facility)
         resolutions.append(resolution)
 
+        for event_index, event_spec in enumerate(adjudication.get("events", [])):
+            matching_claims = [
+                claim["claim_id"]
+                for claim in evidence_claims
+                if claim["source_id"] == event_spec["source_id"]
+                and claim["attribute_path"] == f"event.{event_spec['event_type']}"
+            ]
+            if not matching_claims:
+                raise RuntimeError(f"Event for {priority_id} lacks a matching source claim")
+            events.append(
+                {
+                    "schema_version": "1.0.0",
+                    "event_id": make_id("evt", priority_id, str(event_index)),
+                    "event_type": event_spec["event_type"],
+                    "subjects": [{"entity_type": "facility", "entity_id": facility_id}],
+                    "when": event_spec["when"],
+                    "resolution_status": "resolved",
+                    "confidence": event_spec["confidence"],
+                    "source_claim_ids": matching_claims,
+                    "notes": event_spec["notes"],
+                    "created_at": generated_at,
+                    "updated_at": generated_at,
+                    "record_status": "active",
+                }
+            )
+
         for index, spec in enumerate(adjudication.get("observations", [])):
             attribute_path = {
                 "facility.capacity.mw_observed": "observation.capacity_mw",
@@ -241,6 +268,12 @@ def build() -> tuple[
         if resolution_status == "resolved":
             result["resolved_current_status"] = adjudication["resolved_current_status"]
             result["resolution_confidence"] = adjudication["confidence"]
+        operational_events = [
+            event for event in adjudication.get("events", [])
+            if event["event_type"] == "operational"
+        ]
+        if operational_events:
+            result["operational_date"] = operational_events[0]["when"]
         for spec in adjudication.get("observations", []):
             if spec["metric_code"] == "facility.capacity.mw_observed":
                 result["capacity_mw"] = spec["value"]
@@ -299,7 +332,7 @@ def build() -> tuple[
             "unknown_status_facility_count": sum(record["unknown_status_facility_count"] for record in coverage),
             "source_count": len(sources),
             "claim_count": len(claims),
-            "event_count": 0,
+            "event_count": len(events),
             "observation_count": len(observations),
         },
         "reviewed_by_region": dict(sorted(reviewed_by_region.items())),
@@ -310,13 +343,13 @@ def build() -> tuple[
         "artifact_type": "national_lifecycle_verification_tranche",
         "artifact_version": ARTIFACT_VERSION,
         "generated_at": generated_at,
-        "record_count": sum(map(len, [sources, claims, resolutions, reviews, observations, updated_facilities])),
+        "record_count": sum(map(len, [sources, claims, resolutions, reviews, events, observations, updated_facilities])),
         "collections": {
             "source": sources,
             "claim": claims,
             "claim_resolution": resolutions,
             "review_decision": reviews,
-            "event": [],
+            "event": events,
             "observation": observations,
             "facility": updated_facilities,
         },

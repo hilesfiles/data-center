@@ -21,7 +21,7 @@ from acquire_census_counties import write_json
 
 
 ROOT = Path(__file__).resolve().parents[1]
-BUILD_VERSION = "first-entry-v1.2"
+BUILD_VERSION = "first-entry-v1.3"
 TREATMENT_ID = "trt_first_entry_v1"
 PANEL_YEARS = tuple(range(2001, 2025))
 AUTHORITATIVE_SOURCE_TYPES = {
@@ -105,10 +105,8 @@ def load_candidate_results() -> dict[str, dict[str, Any]]:
     directory = ROOT / "site" / "public" / "data" / "v1" / "lifecycle"
     for path in sorted(directory.glob("*results.json")):
         for record in load_json(path):
-            candidate_id = record.get("verification_candidate_id")
+            candidate_id = record.get("verification_candidate_id") or record.get("national_priority_id")
             if candidate_id is None:
-                # National-priority reviews use national_priority_id and are not
-                # referenced by the facility-verification adjudications below.
                 continue
             if candidate_id in records and records[candidate_id] != record:
                 raise RuntimeError(f"Conflicting lifecycle result {candidate_id}")
@@ -124,6 +122,7 @@ def load_adjudications() -> list[dict[str, Any]]:
             record
             for record in load_json(Path(filename)).get("records", [])
             if record.get("verification_candidate_id") is not None
+            or record.get("national_priority_id") is not None
         )
     return records
 
@@ -170,7 +169,15 @@ def build() -> dict[str, Any]:
     evaluations_by_county: dict[str, list[dict[str, Any]]] = defaultdict(list)
 
     for adjudication in adjudications:
-        candidate_id = adjudication["verification_candidate_id"]
+        reference_type = (
+            "facility_verification_candidate"
+            if adjudication.get("verification_candidate_id") is not None
+            else "national_priority"
+        )
+        candidate_id = (
+            adjudication.get("verification_candidate_id")
+            or adjudication["national_priority_id"]
+        )
         result = candidate_results.get(candidate_id)
         if result is None:
             raise RuntimeError(f"Lifecycle adjudication has no public result: {candidate_id}")
@@ -247,7 +254,10 @@ def build() -> dict[str, Any]:
                 "treatment_event_evaluation_id": evaluation_id,
                 "event_id": event_id,
                 "treatment_definition_id": TREATMENT_ID,
-                "verification_candidate_id": candidate_id,
+                "lifecycle_review_reference": {
+                    "reference_type": reference_type,
+                    "reference_id": candidate_id,
+                },
                 "facility_id": facility_id,
                 "canonical_name": result["canonical_name"],
                 "county_fips": result["county_fips"],
@@ -277,6 +287,10 @@ def build() -> dict[str, Any]:
                 "updated_at": generated_at,
                 "record_status": "active" if eligibility_status == "eligible" else "provisional",
             }
+            if reference_type == "facility_verification_candidate":
+                evaluation["verification_candidate_id"] = candidate_id
+            else:
+                evaluation["national_priority_id"] = candidate_id
             if first_entry_adjudication is not None:
                 evaluation["county_first_entry_adjudication_id"] = (
                     first_entry_adjudication["county_first_entry_adjudication_id"]

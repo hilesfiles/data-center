@@ -237,10 +237,11 @@ validation can be added later to CI with a standards-compliant Draft 2020-12 val
 - Historical panel: the BEA–BLS core panel contains 75,456 county-year rows and
   301,824 governed observations for 2001–2024. It is complete for 3,064 counties, partial
   for 79, and unavailable for Kalawao County. It is research infrastructure, not a model run.
-- County first-entry treatment: all 3,144 counties have governed assessments. Dated openings
-  for NTT SV1 in Santa Clara County and Apple's Mesa facility in Maricopa County pass evidence
-  and history-window thresholds, but neither verifies the county's first entry. Zero counties
-  are currently treatment-eligible and no county is classified as never treated.
+- County first-entry treatment: all 3,144 counties have governed assessments. Dated candidates
+  in Santa Clara, Maricopa, and Fulton counties are each rejected by documented earlier
+  operations. The Santa Clara and Maricopa events pass evidence and history-window thresholds;
+  Fulton's 2006 trade-press observation does not. Zero counties are currently treatment-eligible
+  and no county is classified as never treated.
 - County first-entry research: 217 facility counties meet the complete-history prerequisite.
   Twenty-four are in the balanced initial tranche and 193 remain in the national backlog;
   nine additional facility counties lack a complete 24-year panel. Queue membership is not
@@ -250,8 +251,9 @@ validation can be added later to CI with a standards-compliant Draft 2020-12 val
 
 ## Next priority
 
-Research the 24-county initial tranche against local-government, permit, planning, assessor,
-utility, regulatory, operator, and contemporaneous news records. Each adjudication must
+Continue the remaining 21 counties in the initial tranche against local-government, permit,
+planning, assessor, utility, regulatory, operator, and contemporaneous news records. Each
+adjudication must
 identify the earliest dated operation, establish exact facility identity, assess county
 inventory completeness, and document the search for earlier operations. Do not estimate
 impacts until enough treatments and defensible comparison counties satisfy the registered

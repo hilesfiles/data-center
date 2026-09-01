@@ -106,18 +106,18 @@ county profiles lazy-load only their selected state partition.
 
 - Treatment definition: `trt_first_entry_v1`
 - Geography: 3,144 current Census counties and county equivalents
-- Reviewed dated operational events: 2
+- Reviewed dated operational events: 3
 - Evidence- and history-window-qualified events: 2
 - Verified county first-entry dates: 0
 - Eligible treatment counties: 0
 - Builder: `scripts/build_county_first_entry_treatments.py`
 
-The two retained candidates come from first-party operator evidence already governed in the
-lifecycle review: NTT's dated SV1 opening release and Apple's environmental report describing
-Mesa customer service beginning in March 2017. These sources establish facility events, not
-the first data-center entry in Santa Clara or Maricopa County. Public county assessments are
-JSON-only and split into 51 state/DC partitions. Missing reviewed events do not establish a
-never-treated comparison group.
+The registry retains NTT's dated SV1 opening release, Apple's environmental report describing
+Mesa customer service beginning in March 2017, and a contemporaneous October 2006 observation
+of operation at QTS Atlanta DC1. The Fulton candidate fails the authoritative-source and
+pre-period gates; all three candidates are rejected as county first entries by documented
+earlier operation. Public county assessments are JSON-only and split into 51 state/DC
+partitions. Missing reviewed events do not establish a never-treated comparison group.
 
 ## Governed county first-entry research queue
 

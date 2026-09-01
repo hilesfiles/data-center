@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "artifact_type": "national_lifecycle_tranche_adjudications",
-  "generated_at": "2026-09-01T14:00:00Z",
+  "generated_at": "2026-09-01T18:00:00Z",
   "record_count": 8,
   "records": [
     {
@@ -245,6 +245,14 @@
           "claim_confidence": 0.99
         },
         {
+          "source_id": "src_dck_qts_atlanta_acquisition_20061003",
+          "attribute_path": "event.operational",
+          "raw_value": {"type": "text", "value": "On October 3, 2006, 1033 Jefferson Street currently housed a 100,000-square-foot Level 3 data center"},
+          "finding": "The contemporaneous exact-address report establishes that data-center operations existed in the selected building no later than October 3, 2006; it does not establish the building's first operational date.",
+          "disposition": "supporting",
+          "claim_confidence": 0.94
+        },
+        {
           "source_id": "src_qts_atl1_dc1_datasheet_2026",
           "attribute_path": "observation.floor_area_sqft",
           "raw_value": {"type": "quantity", "value": 990000, "unit": "square foot"},
@@ -264,6 +272,9 @@
       ],
       "observations": [
         {"metric_code": "facility.area.building_sqft_observed", "value": 990000, "unit": "square foot", "period": {"year": 2026, "precision": "year"}, "source_id": "src_qts_atl1_dc1_datasheet_2026"}
+      ],
+      "events": [
+        {"event_type": "operational", "when": {"date": "2006-10-03", "precision": "day"}, "source_id": "src_dck_qts_atlanta_acquisition_20061003", "confidence": 0.94, "notes": "Contemporaneous observation date establishing operation no later than October 3, 2006; this is not asserted as the opening date."}
       ],
       "record_status": "active"
     },

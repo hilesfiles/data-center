@@ -137,12 +137,16 @@ post-treatment years.
 
 Passing those checks is necessary but not sufficient. A facility opening becomes a county
 first-entry treatment only when the reviewed adjudication explicitly verifies that it is the
-first data-center operation in that county. The current registry retains two facility-event
-candidates: NTT SV1 in Santa Clara County (2021-04-13, DQS 93.10, 20 pre/3 post years) and
+first data-center operation in that county. The current registry retains three facility-event
+candidates: NTT SV1 in Santa Clara County (2021-04-13, DQS 93.10, 20 pre/3 post years),
 Apple's Mesa facility in Maricopa County (2017-03 month precision, DQS 85.74, 16 pre/7 post
-years). Both fail only the county-first-entry verification gate. Therefore all 3,144 counties
-have an assessment, zero are eligible, and no model run is authorized. Counties without a
-reviewed dated event remain unknown for treatment purposes; they are not labeled never treated.
+years), and a contemporaneous observation of QTS Atlanta DC1 in Fulton County (2006-10-03,
+DQS 84.60, 5 pre/18 post years). The Santa Clara and Maricopa candidates pass the evidence
+and panel-window gates but fail county-first-entry verification. Fulton's trade-press candidate
+also fails the authoritative-source and seven-pre-period gates and is independently rejected
+by documented earlier operation. Therefore all 3,144 counties have an assessment, zero are
+eligible, and no model run is authorized. Counties without a reviewed dated event remain
+unknown for treatment purposes; they are not labeled never treated.
 
 ### First-entry research prioritization
 
@@ -156,7 +160,8 @@ the feasibility of auditing the county's current facility inventory (20%), panel
 (15%), and source-identity coverage (10%). Inventory feasibility is inversely scaled by the
 log of the active facility count, so a smaller inventory is treated as easier to audit—not as
 more likely to be newly treated. The initial tranche contains 24 counties, six per Census
-region and no more than two per state. All 217 records remain `research_status: queued`.
+region and no more than two per state. Fulton, Maricopa, and Santa Clara counties are
+`research_status: evidence_collected`; the other 214 records remain queued.
 
 Every adjudication must establish an earliest dated operational event, exact facility identity,
 county inventory completeness, and a documented search for earlier operations. Failure to

@@ -2,9 +2,9 @@
   "schema_version": "1.0.0",
   "artifact_type": "county_first_entry_anchor_adjudications",
   "artifact_version": "2026.09.01",
-  "generated_at": "2026-09-01T16:00:00Z",
+  "generated_at": "2026-09-01T18:00:00Z",
   "record_schema": "https://dccio.org/schemas/v1/county-first-entry-adjudication.schema.json",
-  "record_count": 2,
+  "record_count": 3,
   "records": [
     {
       "schema_version": "1.0.0",
@@ -102,6 +102,58 @@
       "rationale": "Two exact Maricopa County facilities are documented operational before Apple's March 2017 service date. The Apple event is therefore rejected as the county's first operational entry. The broader 55-facility historical inventory has not been proven complete, so the county's true first entry remains unresolved and no treatment date is assigned.",
       "created_at": "2026-09-01T16:00:00Z",
       "updated_at": "2026-09-01T16:00:00Z",
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "county_first_entry_adjudication_id": "fea_13121_qts_atl1_2006_rejected",
+      "first_entry_research_candidate_id": "fer_640c3c07aca64ff2baeb",
+      "treatment_definition_id": "trt_first_entry_v1",
+      "candidate_event_evaluation_id": "tev_c8308e6735bf6e37ecfb",
+      "county_fips": "13121",
+      "county_name": "Fulton County",
+      "state_abbr": "GA",
+      "resolution_state": "candidate_rejected_first_entry",
+      "decision": "reject_candidate_as_first_entry",
+      "county_first_entry_verified": false,
+      "inventory_completeness_status": "not_established",
+      "earlier_operations_search_status": "documented_incomplete",
+      "required_finding_status": {
+        "earliest_dated_operational_event": "partial",
+        "exact_facility_identity_for_earliest_event": "resolved",
+        "county_inventory_completeness": "unresolved",
+        "documented_search_for_earlier_operations": "resolved"
+      },
+      "earlier_operational_findings": [
+        {
+          "facility_id": "fac_im3_building_00269847438",
+          "canonical_name": "QTS Atlanta Data Center 1",
+          "temporal_relation": "operational_no_later_than",
+          "when": {"year": 2001, "precision": "year"},
+          "source_ids": ["src_dck_qts_atlanta_acquisition_20061003", "src_qts_2020_10k_atlanta_dc1_2006"],
+          "finding": "The exact 1033 Jefferson Street building was converted in part for telecom and data-center use beginning in 2000 and housed Sprint's approximately 100,000-square-foot e|Solutions center in 2001. QTS's SEC property schedule independently maps Atlanta DC1 to a 2006 acquisition year.",
+          "confidence": 0.91
+        },
+        {
+          "facility_id": "fac_im3_point_08109664813",
+          "canonical_name": "Atlanta ATL13",
+          "temporal_relation": "operational_no_later_than",
+          "when": {"date": "2003-04-01", "precision": "month"},
+          "source_ids": ["src_fatpipe_56_marietta_200304", "src_digital_realty_atl13_current_2026"],
+          "finding": "An April 2003 industry account identifies 56 Marietta as a carrier-neutral colocation facility with an adjacent enterprise data center, while Digital Realty's current operator record maps the governed ATL13 facility to that exact address.",
+          "confidence": 0.93
+        }
+      ],
+      "source_ids": [
+        "src_dck_qts_atlanta_acquisition_20061003",
+        "src_qts_2020_10k_atlanta_dc1_2006",
+        "src_fatpipe_56_marietta_200304",
+        "src_digital_realty_atl13_current_2026"
+      ],
+      "authoritative_source_types": ["operator_release", "sec_filing"],
+      "rationale": "The October 2006 QTS observation is not Fulton County's first operational entry. The same exact Jefferson Street building hosted a Sprint data center in 2001, and 56 Marietta was operating as a carrier-neutral colocation and data-center complex by April 2003. The broader 13-facility current inventory and historical predecessor inventory have not been proven complete, so the county's true first entry remains unresolved and no treatment date is assigned.",
+      "created_at": "2026-09-01T18:00:00Z",
+      "updated_at": "2026-09-01T18:00:00Z",
       "record_status": "active"
     }
   ]

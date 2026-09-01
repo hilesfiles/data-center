@@ -5,7 +5,7 @@
   "type": "object",
   "required": [
     "schema_version", "treatment_event_evaluation_id", "event_id",
-    "treatment_definition_id", "verification_candidate_id", "facility_id",
+    "treatment_definition_id", "lifecycle_review_reference", "facility_id",
     "canonical_name", "county_fips", "county_name", "state_abbr", "when",
     "source_id", "source_type", "source_quality_score", "claim_confidence",
     "date_precision_multiplier", "data_quality_score", "authoritative_source_count",
@@ -20,6 +20,16 @@
     "event_id": {"$ref": "common.schema.json#/$defs/entity_id"},
     "treatment_definition_id": {"$ref": "common.schema.json#/$defs/entity_id"},
     "verification_candidate_id": {"$ref": "common.schema.json#/$defs/entity_id"},
+    "national_priority_id": {"$ref": "common.schema.json#/$defs/entity_id"},
+    "lifecycle_review_reference": {
+      "type": "object",
+      "required": ["reference_type", "reference_id"],
+      "properties": {
+        "reference_type": {"type": "string", "enum": ["facility_verification_candidate", "national_priority"]},
+        "reference_id": {"$ref": "common.schema.json#/$defs/entity_id"}
+      },
+      "additionalProperties": false
+    },
     "facility_id": {"$ref": "common.schema.json#/$defs/entity_id"},
     "canonical_name": {"type": "string", "minLength": 1},
     "county_fips": {"$ref": "common.schema.json#/$defs/county_fips"},
@@ -46,5 +56,17 @@
     "updated_at": {"$ref": "common.schema.json#/$defs/timestamp"},
     "record_status": {"type": "string", "enum": ["active", "provisional", "superseded", "withdrawn"]}
   },
+  "oneOf": [
+    {
+      "required": ["verification_candidate_id"],
+      "not": {"required": ["national_priority_id"]},
+      "properties": {"lifecycle_review_reference": {"properties": {"reference_type": {"const": "facility_verification_candidate"}}}}
+    },
+    {
+      "required": ["national_priority_id"],
+      "not": {"required": ["verification_candidate_id"]},
+      "properties": {"lifecycle_review_reference": {"properties": {"reference_type": {"const": "national_priority"}}}}
+    }
+  ],
   "additionalProperties": false
 }
