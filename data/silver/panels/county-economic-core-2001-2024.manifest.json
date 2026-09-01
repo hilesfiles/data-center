@@ -1,0 +1,654 @@
+{
+  "schema_version": "1.0.0",
+  "dataset_id": "county_economic_core_panel_2001_2024",
+  "artifact_type": "county_year_panel",
+  "artifact_version": "2001-2024.1",
+  "generated_at": "2026-09-01T05:54:46Z",
+  "data_vintage": "2001-2024",
+  "record_schema": "https://dccio.org/schemas/v1/panel-row.schema.json",
+  "format": "json",
+  "parts": [
+    {
+      "path": "data/bronze/economic/county-history-2001-2024-source-rows.json",
+      "sha256": "49fb10ada90ed6645ec2d293bba0bf0b9dfbe27b26139996a6a6b9ab73857672",
+      "byte_size": 42906660,
+      "record_count": 75456,
+      "partition_values": {
+        "zone": "bronze",
+        "projection": "source_rows"
+      }
+    },
+    {
+      "path": "data/silver/panels/county-economic-core-2001-2024.sources.json",
+      "sha256": "6db5d854238f0daf603c606d080940b384146f4e1dd90c35d6847187464293fb",
+      "byte_size": 16676,
+      "record_count": 26,
+      "partition_values": {
+        "zone": "silver",
+        "projection": "sources"
+      }
+    },
+    {
+      "path": "site/public/data/v1/panels/county-economic-history/index.json",
+      "sha256": "71e9efd88041860479da0106517a312cc80c7357f60e505bc95a4485f66f9107",
+      "byte_size": 12145,
+      "record_count": 1,
+      "partition_values": {
+        "zone": "public",
+        "projection": "partition_index"
+      }
+    },
+    {
+      "path": "data/silver/panels/county-economic-core-2001-2024.processing-report.json",
+      "sha256": "94e6230daa12b397397d270b6dda07a1b73ef29d0a51d32941be2803eb944034",
+      "byte_size": 22861,
+      "record_count": 1,
+      "partition_values": {
+        "zone": "silver",
+        "projection": "processing_report"
+      }
+    },
+    {
+      "path": "data/silver/panels/county-economic-core-2001-2008.json",
+      "sha256": "84b027ff21aea11bc15534b00316cb88d390c64a6342bdf00e8592d15feab5f2",
+      "byte_size": 71997222,
+      "record_count": 125760,
+      "partition_values": {
+        "zone": "silver",
+        "projection": "observations_and_panel_rows"
+      }
+    },
+    {
+      "path": "data/silver/panels/county-economic-core-2009-2016.json",
+      "sha256": "7cc379ace9431e02b663f63dea6fe2244bd19cfbf2ef6aedebbdb6a6c0ec9ab8",
+      "byte_size": 72000950,
+      "record_count": 125760,
+      "partition_values": {
+        "zone": "silver",
+        "projection": "observations_and_panel_rows"
+      }
+    },
+    {
+      "path": "data/silver/panels/county-economic-core-2017-2024.json",
+      "sha256": "e8c086facef67ce4a958855112b67f9cd346555cd8caa948974c120520885ee4",
+      "byte_size": 71026971,
+      "record_count": 125760,
+      "partition_values": {
+        "zone": "silver",
+        "projection": "observations_and_panel_rows"
+      }
+    },
+    {
+      "path": "site/public/data/v1/panels/county-economic-history/by-state/ak.json",
+      "sha256": "cf73a5605328d986c5e66381195e98bc72eb8df18d0c6c12d9f0cb380b2b8815",
+      "byte_size": 125732,
+      "record_count": 30,
+      "partition_values": {
+        "zone": "public",
+        "projection": "county_history_summary",
+        "state_abbr": "AK"
+      }
+    },
+    {
+      "path": "site/public/data/v1/panels/county-economic-history/by-state/al.json",
+      "sha256": "ff0c92036680deda446714527be8e01c5ca3df60c19bb88af1b95a6083f5f9eb",
+      "byte_size": 283150,
+      "record_count": 67,
+      "partition_values": {
+        "zone": "public",
+        "projection": "county_history_summary",
+        "state_abbr": "AL"
+      }
+    },
+    {
+      "path": "site/public/data/v1/panels/county-economic-history/by-state/ar.json",
+      "sha256": "9e60fc99fe832951ae472431ebf826351522b997b24d00be4ea3765d4e2a3fc6",
+      "byte_size": 315588,
+      "record_count": 75,
+      "partition_values": {
+        "zone": "public",
+        "projection": "county_history_summary",
+        "state_abbr": "AR"
+      }
+    },
+    {
+      "path": "site/public/data/v1/panels/county-economic-history/by-state/az.json",
+      "sha256": "6cc0987a2db557b227bf3cef44e2cf20a5a26819ffed9b0c577ac2c88277c065",
+      "byte_size": 63937,
+      "record_count": 15,
+      "partition_values": {
+        "zone": "public",
+        "projection": "county_history_summary",
+        "state_abbr": "AZ"
+      }
+    },
+    {
+      "path": "site/public/data/v1/panels/county-economic-history/by-state/ca.json",
+      "sha256": "4ca0d3c0237fcd2f7d1659ba7591caf7b9c686a211b27519a27b64150228e8c2",
+      "byte_size": 248356,
+      "record_count": 58,
+      "partition_values": {
+        "zone": "public",
+        "projection": "county_history_summary",
+        "state_abbr": "CA"
+      }
+    },
+    {
+      "path": "site/public/data/v1/panels/county-economic-history/by-state/co.json",
+      "sha256": "7f54c37ed7e3f8b6ede9f533cbc797117793fc309be474757001075ea1e2a28c",
+      "byte_size": 269250,
+      "record_count": 64,
+      "partition_values": {
+        "zone": "public",
+        "projection": "county_history_summary",
+        "state_abbr": "CO"
+      }
+    },
+    {
+      "path": "site/public/data/v1/panels/county-economic-history/by-state/ct.json",
+      "sha256": "4a3f783eec5c57fa95228026be50b2086d001e96df13ed28306ea087fc0850e5",
+      "byte_size": 37560,
+      "record_count": 9,
+      "partition_values": {
+        "zone": "public",
+        "projection": "county_history_summary",
+        "state_abbr": "CT"
+      }
+    },
+    {
+      "path": "site/public/data/v1/panels/county-economic-history/by-state/dc.json",
+      "sha256": "f905c28309fd4a32797ee7bb811c268e248662df8ffa3d58bd49d05ed6aa1056",
+      "byte_size": 4368,
+      "record_count": 1,
+      "partition_values": {
+        "zone": "public",
+        "projection": "county_history_summary",
+        "state_abbr": "DC"
+      }
+    },
+    {
+      "path": "site/public/data/v1/panels/county-economic-history/by-state/de.json",
+      "sha256": "c484c74f19338c0b578e2533cad9db0e17db810b3ae760f96bd04d87c447aad9",
+      "byte_size": 12890,
+      "record_count": 3,
+      "partition_values": {
+        "zone": "public",
+        "projection": "county_history_summary",
+        "state_abbr": "DE"
+      }
+    },
+    {
+      "path": "site/public/data/v1/panels/county-economic-history/by-state/fl.json",
+      "sha256": "74765afde11d5f5cfd68d7f00e3b07d785d73d354f248959dc53990d3af952b8",
+      "byte_size": 285259,
+      "record_count": 67,
+      "partition_values": {
+        "zone": "public",
+        "projection": "county_history_summary",
+        "state_abbr": "FL"
+      }
+    },
+    {
+      "path": "site/public/data/v1/panels/county-economic-history/by-state/ga.json",
+      "sha256": "f16a3179e9791fc536f3d44a8755b3891869b12e0e3e0dffa12f48cce3a06d21",
+      "byte_size": 669404,
+      "record_count": 159,
+      "partition_values": {
+        "zone": "public",
+        "projection": "county_history_summary",
+        "state_abbr": "GA"
+      }
+    },
+    {
+      "path": "site/public/data/v1/panels/county-economic-history/by-state/hi.json",
+      "sha256": "dc1f80c05d70232544e6c6c5a639d15aed61f6fe7388e695c3cb352e2e76e141",
+      "byte_size": 21042,
+      "record_count": 5,
+      "partition_values": {
+        "zone": "public",
+        "projection": "county_history_summary",
+        "state_abbr": "HI"
+      }
+    },
+    {
+      "path": "site/public/data/v1/panels/county-economic-history/by-state/ia.json",
+      "sha256": "ac1d427c6810488e660e1bdf797bb14dde8286e4a698be55cfa66a5eda9de981",
+      "byte_size": 416310,
+      "record_count": 99,
+      "partition_values": {
+        "zone": "public",
+        "projection": "county_history_summary",
+        "state_abbr": "IA"
+      }
+    },
+    {
+      "path": "site/public/data/v1/panels/county-economic-history/by-state/id.json",
+      "sha256": "cc44abb88e8978cf39003cc4dcdcb4ec6a86d626306532a9f8f7fa343c5906cc",
+      "byte_size": 184847,
+      "record_count": 44,
+      "partition_values": {
+        "zone": "public",
+        "projection": "county_history_summary",
+        "state_abbr": "ID"
+      }
+    },
+    {
+      "path": "site/public/data/v1/panels/county-economic-history/by-state/il.json",
+      "sha256": "8025fc19f9f110460f25b2af54bc84e1071906f304467bbb0bfe317349f6137f",
+      "byte_size": 430809,
+      "record_count": 102,
+      "partition_values": {
+        "zone": "public",
+        "projection": "county_history_summary",
+        "state_abbr": "IL"
+      }
+    },
+    {
+      "path": "site/public/data/v1/panels/county-economic-history/by-state/in.json",
+      "sha256": "5d833e1dd1986778e648408c548b098612c9339e23723e5b306b51fa41ada996",
+      "byte_size": 389265,
+      "record_count": 92,
+      "partition_values": {
+        "zone": "public",
+        "projection": "county_history_summary",
+        "state_abbr": "IN"
+      }
+    },
+    {
+      "path": "site/public/data/v1/panels/county-economic-history/by-state/ks.json",
+      "sha256": "7b24d6e988cb1a760cb6e68bd960136bd5b78517282a205c68080da865d8795b",
+      "byte_size": 439467,
+      "record_count": 105,
+      "partition_values": {
+        "zone": "public",
+        "projection": "county_history_summary",
+        "state_abbr": "KS"
+      }
+    },
+    {
+      "path": "site/public/data/v1/panels/county-economic-history/by-state/ky.json",
+      "sha256": "9100985fa550757547df69bb8b2d110d2895c00e7290c34f0eac14571af0cb5d",
+      "byte_size": 504590,
+      "record_count": 120,
+      "partition_values": {
+        "zone": "public",
+        "projection": "county_history_summary",
+        "state_abbr": "KY"
+      }
+    },
+    {
+      "path": "site/public/data/v1/panels/county-economic-history/by-state/la.json",
+      "sha256": "74be862d50a106a843a29340da5f34b84c3ecc228dc61df64100cff808d1a212",
+      "byte_size": 270857,
+      "record_count": 64,
+      "partition_values": {
+        "zone": "public",
+        "projection": "county_history_summary",
+        "state_abbr": "LA"
+      }
+    },
+    {
+      "path": "site/public/data/v1/panels/county-economic-history/by-state/ma.json",
+      "sha256": "e17fef4b98041193bfce9fe58272372dee8db719cd698c8759faa432b1036342",
+      "byte_size": 60220,
+      "record_count": 14,
+      "partition_values": {
+        "zone": "public",
+        "projection": "county_history_summary",
+        "state_abbr": "MA"
+      }
+    },
+    {
+      "path": "site/public/data/v1/panels/county-economic-history/by-state/md.json",
+      "sha256": "76dc3edcdb92611daa10c398e2f7c96bdef54b7a9e720fd323c993e009d916b4",
+      "byte_size": 102531,
+      "record_count": 24,
+      "partition_values": {
+        "zone": "public",
+        "projection": "county_history_summary",
+        "state_abbr": "MD"
+      }
+    },
+    {
+      "path": "site/public/data/v1/panels/county-economic-history/by-state/me.json",
+      "sha256": "8eb95776216eda7103c599a294b3c2f068d6d93b753b487dbb40a05ba0ada29f",
+      "byte_size": 68037,
+      "record_count": 16,
+      "partition_values": {
+        "zone": "public",
+        "projection": "county_history_summary",
+        "state_abbr": "ME"
+      }
+    },
+    {
+      "path": "site/public/data/v1/panels/county-economic-history/by-state/mi.json",
+      "sha256": "f9483c3e7684de04419cf030a2776d4de10caa79a02ce068eacbd753f33ab8cf",
+      "byte_size": 351449,
+      "record_count": 83,
+      "partition_values": {
+        "zone": "public",
+        "projection": "county_history_summary",
+        "state_abbr": "MI"
+      }
+    },
+    {
+      "path": "site/public/data/v1/panels/county-economic-history/by-state/mn.json",
+      "sha256": "390bbe80c4788bc397a24c737c68123e8fc29e417a5edc95eb940da67c360496",
+      "byte_size": 367034,
+      "record_count": 87,
+      "partition_values": {
+        "zone": "public",
+        "projection": "county_history_summary",
+        "state_abbr": "MN"
+      }
+    },
+    {
+      "path": "site/public/data/v1/panels/county-economic-history/by-state/mo.json",
+      "sha256": "ebf5c3e11b4168d59bf59cbe0f6ee840eaae4a8eca6afc8f3f01ee7d2cf31e77",
+      "byte_size": 483754,
+      "record_count": 115,
+      "partition_values": {
+        "zone": "public",
+        "projection": "county_history_summary",
+        "state_abbr": "MO"
+      }
+    },
+    {
+      "path": "site/public/data/v1/panels/county-economic-history/by-state/ms.json",
+      "sha256": "4f3174c0ed1ee831c7ae245fc3f22614c3f4ee682434bd3160d951ca7c4e5d93",
+      "byte_size": 345128,
+      "record_count": 82,
+      "partition_values": {
+        "zone": "public",
+        "projection": "county_history_summary",
+        "state_abbr": "MS"
+      }
+    },
+    {
+      "path": "site/public/data/v1/panels/county-economic-history/by-state/mt.json",
+      "sha256": "11f8660877f1ed7df9c94ed42281bfe553f7150870b7cd4a37294f1c75fc86c7",
+      "byte_size": 233804,
+      "record_count": 56,
+      "partition_values": {
+        "zone": "public",
+        "projection": "county_history_summary",
+        "state_abbr": "MT"
+      }
+    },
+    {
+      "path": "site/public/data/v1/panels/county-economic-history/by-state/nc.json",
+      "sha256": "73715e71be2cf4a4aaf4e6a559e2a0af9692bafe1445edad7829bf33f330480a",
+      "byte_size": 423589,
+      "record_count": 100,
+      "partition_values": {
+        "zone": "public",
+        "projection": "county_history_summary",
+        "state_abbr": "NC"
+      }
+    },
+    {
+      "path": "site/public/data/v1/panels/county-economic-history/by-state/nd.json",
+      "sha256": "6140ac05da99ffa2e89ec9459ab032adda8cf280776dacfc8d1115d863ee9822",
+      "byte_size": 221285,
+      "record_count": 53,
+      "partition_values": {
+        "zone": "public",
+        "projection": "county_history_summary",
+        "state_abbr": "ND"
+      }
+    },
+    {
+      "path": "site/public/data/v1/panels/county-economic-history/by-state/ne.json",
+      "sha256": "cc2a2c6cccd4ef5d1562965f996c509f7c039a79d6f2165c8804e1c106b9f60b",
+      "byte_size": 387759,
+      "record_count": 93,
+      "partition_values": {
+        "zone": "public",
+        "projection": "county_history_summary",
+        "state_abbr": "NE"
+      }
+    },
+    {
+      "path": "site/public/data/v1/panels/county-economic-history/by-state/nh.json",
+      "sha256": "b6d63f163cddba3dd8158263dd31c8454e86d20af6dae4bf36f7290b320183c3",
+      "byte_size": 42689,
+      "record_count": 10,
+      "partition_values": {
+        "zone": "public",
+        "projection": "county_history_summary",
+        "state_abbr": "NH"
+      }
+    },
+    {
+      "path": "site/public/data/v1/panels/county-economic-history/by-state/nj.json",
+      "sha256": "df162f253eb619b227350e16392ad05120fc896c29151762b96902bb903acd00",
+      "byte_size": 90520,
+      "record_count": 21,
+      "partition_values": {
+        "zone": "public",
+        "projection": "county_history_summary",
+        "state_abbr": "NJ"
+      }
+    },
+    {
+      "path": "site/public/data/v1/panels/county-economic-history/by-state/nm.json",
+      "sha256": "63d4e3c34b1dcff4714ddb8303c812bd530429886bac4ac4836f8d828cfcadbe",
+      "byte_size": 138938,
+      "record_count": 33,
+      "partition_values": {
+        "zone": "public",
+        "projection": "county_history_summary",
+        "state_abbr": "NM"
+      }
+    },
+    {
+      "path": "site/public/data/v1/panels/county-economic-history/by-state/nv.json",
+      "sha256": "bc8dc1df5ee1166623cee9567f31519b2392385c0a761c7efb990f077bbc7cc0",
+      "byte_size": 71751,
+      "record_count": 17,
+      "partition_values": {
+        "zone": "public",
+        "projection": "county_history_summary",
+        "state_abbr": "NV"
+      }
+    },
+    {
+      "path": "site/public/data/v1/panels/county-economic-history/by-state/ny.json",
+      "sha256": "7630a3bfcbca52c8df857ec68a17c7d74598b333f9a56d881762f80a4ef21590",
+      "byte_size": 264756,
+      "record_count": 62,
+      "partition_values": {
+        "zone": "public",
+        "projection": "county_history_summary",
+        "state_abbr": "NY"
+      }
+    },
+    {
+      "path": "site/public/data/v1/panels/county-economic-history/by-state/oh.json",
+      "sha256": "77786ab073c036f48359bd9b4f6520b0aaf5ae1ef6709e5b99782f18bba2b5c2",
+      "byte_size": 373936,
+      "record_count": 88,
+      "partition_values": {
+        "zone": "public",
+        "projection": "county_history_summary",
+        "state_abbr": "OH"
+      }
+    },
+    {
+      "path": "site/public/data/v1/panels/county-economic-history/by-state/ok.json",
+      "sha256": "df29b144a5079bbb7505f125e37e0339063d9dc29c3eb0c586bcc7b7395fa67f",
+      "byte_size": 323978,
+      "record_count": 77,
+      "partition_values": {
+        "zone": "public",
+        "projection": "county_history_summary",
+        "state_abbr": "OK"
+      }
+    },
+    {
+      "path": "site/public/data/v1/panels/county-economic-history/by-state/or.json",
+      "sha256": "46d7439731303a3edd689db00c487a4a493ded3130353fe5a38d7417c4aff932",
+      "byte_size": 152340,
+      "record_count": 36,
+      "partition_values": {
+        "zone": "public",
+        "projection": "county_history_summary",
+        "state_abbr": "OR"
+      }
+    },
+    {
+      "path": "site/public/data/v1/panels/county-economic-history/by-state/pa.json",
+      "sha256": "e322c4e96a156b03eb0d1f75ceae14469ed87aa13bf11c2d76b922850865c688",
+      "byte_size": 285603,
+      "record_count": 67,
+      "partition_values": {
+        "zone": "public",
+        "projection": "county_history_summary",
+        "state_abbr": "PA"
+      }
+    },
+    {
+      "path": "site/public/data/v1/panels/county-economic-history/by-state/ri.json",
+      "sha256": "c21afe688aca50a2f57011b9e4c2643656604717e01d15f2f24561e642dbd49c",
+      "byte_size": 21364,
+      "record_count": 5,
+      "partition_values": {
+        "zone": "public",
+        "projection": "county_history_summary",
+        "state_abbr": "RI"
+      }
+    },
+    {
+      "path": "site/public/data/v1/panels/county-economic-history/by-state/sc.json",
+      "sha256": "4c8a5c070cd03c0bbf35b361e682320b5a37b2b70403f03027d0281bc1e2460a",
+      "byte_size": 194990,
+      "record_count": 46,
+      "partition_values": {
+        "zone": "public",
+        "projection": "county_history_summary",
+        "state_abbr": "SC"
+      }
+    },
+    {
+      "path": "site/public/data/v1/panels/county-economic-history/by-state/sd.json",
+      "sha256": "acde5e5cebc1356ca984b2474f22f3815257d3e458efe8472209fa7eaa74eb82",
+      "byte_size": 275395,
+      "record_count": 66,
+      "partition_values": {
+        "zone": "public",
+        "projection": "county_history_summary",
+        "state_abbr": "SD"
+      }
+    },
+    {
+      "path": "site/public/data/v1/panels/county-economic-history/by-state/tn.json",
+      "sha256": "57e17fbc1f33dcea86124de8af76205966f6e77cab622d18fffb12a144edbbfb",
+      "byte_size": 400829,
+      "record_count": 95,
+      "partition_values": {
+        "zone": "public",
+        "projection": "county_history_summary",
+        "state_abbr": "TN"
+      }
+    },
+    {
+      "path": "site/public/data/v1/panels/county-economic-history/by-state/tx.json",
+      "sha256": "68990f961f92f838697c5775d578a3e29ac2942cddaf9ca15862daa99c331d56",
+      "byte_size": 1069552,
+      "record_count": 254,
+      "partition_values": {
+        "zone": "public",
+        "projection": "county_history_summary",
+        "state_abbr": "TX"
+      }
+    },
+    {
+      "path": "site/public/data/v1/panels/county-economic-history/by-state/ut.json",
+      "sha256": "dd0c6efb46547215e5b85f0559883e285ef6e2501830deeecf1dc8ae0b6cfed1",
+      "byte_size": 122173,
+      "record_count": 29,
+      "partition_values": {
+        "zone": "public",
+        "projection": "county_history_summary",
+        "state_abbr": "UT"
+      }
+    },
+    {
+      "path": "site/public/data/v1/panels/county-economic-history/by-state/va.json",
+      "sha256": "25e22df078c9d4addbcffea4e1cf6c07586a97732a034796112d37aa61684067",
+      "byte_size": 552506,
+      "record_count": 133,
+      "partition_values": {
+        "zone": "public",
+        "projection": "county_history_summary",
+        "state_abbr": "VA"
+      }
+    },
+    {
+      "path": "site/public/data/v1/panels/county-economic-history/by-state/vt.json",
+      "sha256": "3b0a24a50b39f2245743d0cff812fe3bcb2209a741f4e4b66b67d5e0e47fe4af",
+      "byte_size": 59271,
+      "record_count": 14,
+      "partition_values": {
+        "zone": "public",
+        "projection": "county_history_summary",
+        "state_abbr": "VT"
+      }
+    },
+    {
+      "path": "site/public/data/v1/panels/county-economic-history/by-state/wa.json",
+      "sha256": "cc4b2ddc177e3483c65581515185fe559131f709301b3b1a264ad4384fc8d5f4",
+      "byte_size": 165515,
+      "record_count": 39,
+      "partition_values": {
+        "zone": "public",
+        "projection": "county_history_summary",
+        "state_abbr": "WA"
+      }
+    },
+    {
+      "path": "site/public/data/v1/panels/county-economic-history/by-state/wi.json",
+      "sha256": "b1035bc03497bcfd57cafca503bee2d7bb18b882036b83a909cce2e980f97cdf",
+      "byte_size": 304643,
+      "record_count": 72,
+      "partition_values": {
+        "zone": "public",
+        "projection": "county_history_summary",
+        "state_abbr": "WI"
+      }
+    },
+    {
+      "path": "site/public/data/v1/panels/county-economic-history/by-state/wv.json",
+      "sha256": "8e05f0e62d3f59711725b39c8430292bccd069040607a2b658058cda266de8d2",
+      "byte_size": 231385,
+      "record_count": 55,
+      "partition_values": {
+        "zone": "public",
+        "projection": "county_history_summary",
+        "state_abbr": "WV"
+      }
+    },
+    {
+      "path": "site/public/data/v1/panels/county-economic-history/by-state/wy.json",
+      "sha256": "a21acec85a8472bdfc01a1426d6236908e546f389147de3078ca9231501215b4",
+      "byte_size": 96826,
+      "record_count": 23,
+      "partition_values": {
+        "zone": "public",
+        "projection": "county_history_summary",
+        "state_abbr": "WY"
+      }
+    }
+  ],
+  "record_count": 455908,
+  "input_dataset_ids": [
+    "geo_counties_2025_5m",
+    "bea_county_economic_baseline_2024",
+    "bls_qcew_county_baseline_2025"
+  ],
+  "license_metadata": {
+    "license": "U.S. government data",
+    "redistribution_status": "allowed",
+    "attribution": "Sources: U.S. Bureau of Economic Analysis and U.S. Bureau of Labor Statistics"
+  }
+}

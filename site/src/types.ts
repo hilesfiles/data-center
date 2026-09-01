@@ -120,7 +120,7 @@ export interface CountyEconomicHistory {
   county_fips: string;
   county_name: string;
   state_abbr: string;
-  start_year: 2021;
+  start_year: 2001;
   end_year: 2024;
   years: Array<{
     year: number;

@@ -63,6 +63,20 @@ button, select { font: inherit; }
 .county-heading p { margin: 0; font-family: "DM Mono", monospace; color: var(--muted); font-size: .69rem; }
 .quality-badge { flex: 0 0 auto; padding: 5px 7px; border-radius: 3px; background: #dbe7df; font-family: "DM Mono", monospace; font-size: .64rem; text-transform: uppercase; }
 .grade-p { background: #ece9e1; color: #69655c; }
+.profile-link, .back-link { color: var(--teal); font-family: "DM Mono", monospace; font-size: .68rem; text-decoration: none; }
+.profile-link { display: inline-block; margin-top: 14px; }
+.profile-link:hover, .back-link:hover { text-decoration: underline; }
+
+.county-profile-page { width: min(1080px, calc(100% - 40px)); margin: 0 auto; padding: 28px 0 56px; }
+.profile-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; margin: 36px 0 24px; }
+.profile-heading h2 { margin: 7px 0 4px; font-size: clamp(2rem, 5vw, 4rem); letter-spacing: -.065em; }
+.profile-heading p { margin: 0; color: var(--muted); }
+.profile-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1px; border: 1px solid var(--line); background: var(--line); }
+.profile-grid article { min-height: 155px; display: flex; flex-direction: column; padding: 18px; background: #fff; }
+.profile-grid span { color: var(--muted); font-size: .72rem; }
+.profile-grid strong { margin-top: auto; font-size: clamp(1.5rem, 3vw, 2.15rem); font-weight: 600; letter-spacing: -.055em; }
+.profile-grid small { color: var(--muted); font-size: .66rem; }
+.profile-note { max-width: 680px; }
 
 .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; margin: 24px 0; background: var(--line); border: 1px solid var(--line); }
 .stat-grid article { min-height: 112px; display: flex; flex-direction: column; padding: 15px; background: #fff; }
@@ -117,6 +131,9 @@ button, select { font: inherit; }
   .map-section { grid-row: 1; min-height: 480px; }
   .sidebar { grid-row: 2; border-right: 0; border-top: 1px solid var(--line); }
   .map-caption { overflow-x: auto; }
+  .county-profile-page { width: min(100% - 28px, 1080px); padding-top: 20px; }
+  .profile-heading { margin-top: 26px; }
+  .profile-grid { grid-template-columns: 1fr 1fr; }
 }
 
 @media (prefers-reduced-motion: reduce) {

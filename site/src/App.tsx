@@ -38,17 +38,27 @@ const percentChange = (start: number | null | undefined, end: number | null | un
 const formatPercentChange = (value: number | null) =>
   value == null ? "Unavailable" : `${value >= 0 ? "+" : ""}${value.toFixed(1)}%`;
 
+const countyFipsFromHash = () => {
+  const match = window.location.hash.match(/^#\/county\/(\d{5})$/);
+  return match?.[1] ?? null;
+};
+
 export default function App() {
   const [metadata, setMetadata] = useState<SiteMetadata | null>(null);
   const [counties, setCounties] = useState<FacilitySourceCoverage[]>([]);
   const [economic, setEconomic] = useState<CountyEconomicBaseline[]>([]);
   const [employmentWages, setEmploymentWages] = useState<CountyEmploymentWagesBaseline[]>([]);
-  const [economicHistory, setEconomicHistory] = useState<CountyEconomicHistory[]>([]);
+  const [economicHistoryByState, setEconomicHistoryByState] = useState<
+    Record<string, CountyEconomicHistory[]>
+  >({});
   const [resolution, setResolution] = useState<CountyEntityResolutionCoverage[]>([]);
   const [adjudication, setAdjudication] = useState<CountyEntityAdjudicationCoverage[]>([]);
   const [lifecycle, setLifecycle] = useState<CountyLifecycleVerificationCoverage[]>([]);
   const [mapMetric, setMapMetric] = useState<CountyMapMetric>("im3-source-records");
-  const [selectedFips, setSelectedFips] = useState<string | null>("51107");
+  const [profileFips, setProfileFips] = useState<string | null>(() => countyFipsFromHash());
+  const [selectedFips, setSelectedFips] = useState<string | null>(
+    () => countyFipsFromHash() ?? "51107",
+  );
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
@@ -58,20 +68,18 @@ export default function App() {
       fetch(`${base}data/v1/counties/facility-source-coverage.json`),
       fetch(`${base}data/v1/counties/economic-baseline-2024.json`),
       fetch(`${base}data/v1/counties/employment-wages-baseline-2025.json`),
-      fetch(`${base}data/v1/panels/county-economic-history-2021-2024.json`),
       fetch(`${base}data/v1/counties/entity-resolution-coverage.json`),
       fetch(`${base}data/v1/counties/final-review-coverage.json`),
       fetch(`${base}data/v1/counties/lifecycle-national-tranche-6-coverage.json`),
     ])
-      .then(async ([metadataResponse, coverageResponse, economicResponse, employmentWagesResponse, economicHistoryResponse, resolutionResponse, adjudicationResponse, lifecycleResponse]) => {
-        if (!metadataResponse.ok || !coverageResponse.ok || !economicResponse.ok || !employmentWagesResponse.ok || !economicHistoryResponse.ok || !resolutionResponse.ok || !adjudicationResponse.ok || !lifecycleResponse.ok) {
+      .then(async ([metadataResponse, coverageResponse, economicResponse, employmentWagesResponse, resolutionResponse, adjudicationResponse, lifecycleResponse]) => {
+        if (!metadataResponse.ok || !coverageResponse.ok || !economicResponse.ok || !employmentWagesResponse.ok || !resolutionResponse.ok || !adjudicationResponse.ok || !lifecycleResponse.ok) {
           throw new Error("The static data contract could not be loaded.");
         }
         setMetadata((await metadataResponse.json()) as SiteMetadata);
         setCounties((await coverageResponse.json()) as FacilitySourceCoverage[]);
         setEconomic((await economicResponse.json()) as CountyEconomicBaseline[]);
         setEmploymentWages((await employmentWagesResponse.json()) as CountyEmploymentWagesBaseline[]);
-        setEconomicHistory((await economicHistoryResponse.json()) as CountyEconomicHistory[]);
         setResolution(
           (await resolutionResponse.json()) as CountyEntityResolutionCoverage[],
         );
@@ -87,10 +95,42 @@ export default function App() {
       );
   }, []);
 
+  useEffect(() => {
+    const syncRoute = () => {
+      const countyFips = countyFipsFromHash();
+      setProfileFips(countyFips);
+      if (countyFips != null) setSelectedFips(countyFips);
+    };
+    window.addEventListener("hashchange", syncRoute);
+    return () => window.removeEventListener("hashchange", syncRoute);
+  }, []);
+
   const selectedCounty = useMemo(
     () => counties.find((county) => county.county_fips === selectedFips) ?? null,
     [counties, selectedFips],
   );
+  useEffect(() => {
+    const stateAbbr = selectedCounty?.state_abbr;
+    if (stateAbbr == null || economicHistoryByState[stateAbbr] != null) return;
+    let cancelled = false;
+    const base = import.meta.env.BASE_URL;
+    fetch(`${base}data/v1/panels/county-economic-history/by-state/${stateAbbr.toLowerCase()}.json`)
+      .then(async (response) => {
+        if (!response.ok) throw new Error(`Historical panel data could not be loaded for ${stateAbbr}.`);
+        const records = (await response.json()) as CountyEconomicHistory[];
+        if (!cancelled) {
+          setEconomicHistoryByState((current) => ({...current, [stateAbbr]: records}));
+        }
+      })
+      .catch((reason: unknown) => {
+        if (!cancelled) {
+          setError(reason instanceof Error ? reason.message : "Historical panel data could not be loaded.");
+        }
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [selectedCounty, economicHistoryByState]);
   const selectedResolution = useMemo(
     () => resolution.find((county) => county.county_fips === selectedFips) ?? null,
     [resolution, selectedFips],
@@ -104,11 +144,15 @@ export default function App() {
     [employmentWages, selectedFips],
   );
   const selectedEconomicHistory = useMemo(
-    () => economicHistory.find((county) => county.county_fips === selectedFips) ?? null,
-    [economicHistory, selectedFips],
+    () => selectedCounty == null
+      ? null
+      : economicHistoryByState[selectedCounty.state_abbr]?.find(
+          (county) => county.county_fips === selectedFips,
+        ) ?? null,
+    [economicHistoryByState, selectedCounty, selectedFips],
   );
   const selectedHistoryChange = useMemo(() => {
-    const start = selectedEconomicHistory?.years.find((record) => record.year === 2021);
+    const start = selectedEconomicHistory?.years.find((record) => record.year === 2001);
     const end = selectedEconomicHistory?.years.find((record) => record.year === 2024);
     return {
       employment: percentChange(start?.annual_avg_covered_employment, end?.annual_avg_covered_employment),
@@ -126,6 +170,93 @@ export default function App() {
     [lifecycle, selectedFips],
   );
 
+  if (profileFips != null) {
+    const historyLoaded = selectedCounty != null
+      && economicHistoryByState[selectedCounty.state_abbr] != null;
+    return (
+      <div className="app-shell county-profile-shell">
+        <header className="topbar">
+          <div className="brand-block">
+            <span className="eyebrow">County profile</span>
+            <h1>Data Center Community Impact Observatory</h1>
+          </div>
+          <div className="version-block">
+            <span className="status-dot" />
+            <span>{metadata?.data_version ?? "Loading data version"}</span>
+          </div>
+        </header>
+        <main className="county-profile-page">
+          <a className="back-link" href="#">← Back to national map</a>
+          {error && <div className="error-panel">{error}</div>}
+          {!error && counties.length > 0 && selectedCounty == null && (
+            <div className="empty-panel">No current Census county exists for FIPS {profileFips}.</div>
+          )}
+          {!error && selectedCounty == null && counties.length === 0 && (
+            <div className="empty-panel">Loading county profile…</div>
+          )}
+          {selectedCounty && (
+            <>
+              <div className="profile-heading">
+                <div>
+                  <span className="eyebrow">{selectedCounty.state_abbr} · FIPS {selectedCounty.county_fips}</span>
+                  <h2>{selectedCounty.county_name}</h2>
+                  <p>Shareable static profile with history loaded only for {selectedCounty.state_abbr}.</p>
+                </div>
+                <span className="quality-badge grade-p">Provisional</span>
+              </div>
+              <section className="profile-grid" aria-label="County profile measures">
+                <article>
+                  <span>IM3 source records</span>
+                  <strong>{integerFormat.format(selectedCounty.source_record_count)}</strong>
+                  <small>source observations, not deduplicated facilities</small>
+                </article>
+                <article>
+                  <span>Real GDP · 2024</span>
+                  <strong>{compactCurrency(selectedEconomic?.real_gdp_usd)}</strong>
+                  <small>chained 2017 dollars</small>
+                </article>
+                <article>
+                  <span>Covered employment · 2025</span>
+                  <strong>{selectedEmploymentWages?.annual_avg_covered_employment == null ? "Unavailable" : integerFormat.format(selectedEmploymentWages.annual_avg_covered_employment)}</strong>
+                  <small>annual average of monthly levels</small>
+                </article>
+                <article>
+                  <span>History completeness · 2001–2024</span>
+                  <strong>{!historyLoaded ? "Loading…" : selectedEconomicHistory == null ? "Unavailable" : `${selectedEconomicHistory.complete_year_count}/24`}</strong>
+                  <small>four governed measures per year</small>
+                </article>
+                <article>
+                  <span>Employment change · 2001–2024</span>
+                  <strong>{!historyLoaded ? "Loading…" : formatPercentChange(selectedHistoryChange.employment)}</strong>
+                  <small>descriptive, not a causal estimate</small>
+                </article>
+                <article>
+                  <span>Real GDP change · 2001–2024</span>
+                  <strong>{!historyLoaded ? "Loading…" : formatPercentChange(selectedHistoryChange.realGdp)}</strong>
+                  <small>chained 2017 dollars</small>
+                </article>
+                <article>
+                  <span>Population change · 2001–2024</span>
+                  <strong>{!historyLoaded ? "Loading…" : formatPercentChange(selectedHistoryChange.population)}</strong>
+                  <small>descriptive change</small>
+                </article>
+                <article>
+                  <span>Weekly wage change · 2001–2024</span>
+                  <strong>{!historyLoaded ? "Loading…" : formatPercentChange(selectedHistoryChange.weeklyWage)}</strong>
+                  <small>nominal descriptive change</small>
+                </article>
+              </section>
+              <div className="evidence-note profile-note">
+                <span>Research status</span>
+                <p>The history span can support configured pre/post windows, but governed treatment dates and comparison samples are still required before estimation.</p>
+              </div>
+            </>
+          )}
+        </main>
+      </div>
+    );
+  }
+
   return (
     <div className="app-shell">
       <header className="topbar">
@@ -140,7 +271,7 @@ export default function App() {
       </header>
 
       <div className="fixture-banner" role="status">
-        <strong>The first BEA–BLS county-year panel is published.</strong> It covers 2021–2024 with 12,576 county-year rows, but four years do not satisfy the configured seven-pre/three-post rule. It is descriptive research infrastructure, not an impact estimate.
+        <strong>The BEA–BLS county-year history now spans 2001–2024.</strong> Its 75,456 rows can support the configured seven-pre/three-post windows, but governed treatment dates and comparison samples are still required. It remains descriptive research infrastructure, not an impact estimate.
       </div>
 
       <main className="workspace">
@@ -179,6 +310,9 @@ export default function App() {
                   </div>
                   <span className="quality-badge grade-p">Provisional</span>
                 </div>
+                <a className="profile-link" href={`#/county/${selectedCounty.county_fips}`}>
+                  Open shareable county profile →
+                </a>
 
                 <div className="stat-grid">
                   <article>
@@ -295,27 +429,27 @@ export default function App() {
                     <em>annual average · NAICS 23</em>
                   </div>
                   <div className="lifecycle-row lifecycle-start">
-                    <span>Panel completeness · 2021–2024</span>
-                    <strong>{selectedEconomicHistory == null ? "Unavailable" : `${selectedEconomicHistory.complete_year_count}/4 years`}</strong>
-                    <em>model readiness remains insufficient</em>
+                    <span>Panel completeness · 2001–2024</span>
+                    <strong>{selectedEconomicHistory == null ? "Unavailable" : `${selectedEconomicHistory.complete_year_count}/24 years`}</strong>
+                    <em>treatment dates still required</em>
                   </div>
                   <div className="lifecycle-row">
-                    <span>Covered employment change · 2021–2024</span>
+                    <span>Covered employment change · 2001–2024</span>
                     <strong>{formatPercentChange(selectedHistoryChange.employment)}</strong>
                     <em>descriptive change</em>
                   </div>
                   <div className="lifecycle-row">
-                    <span>Real GDP change · 2021–2024</span>
+                    <span>Real GDP change · 2001–2024</span>
                     <strong>{formatPercentChange(selectedHistoryChange.realGdp)}</strong>
                     <em>chained 2017 dollars</em>
                   </div>
                   <div className="lifecycle-row">
-                    <span>Population change · 2021–2024</span>
+                    <span>Population change · 2001–2024</span>
                     <strong>{formatPercentChange(selectedHistoryChange.population)}</strong>
                     <em>descriptive change</em>
                   </div>
                   <div className="lifecycle-row">
-                    <span>Weekly wage change · 2021–2024</span>
+                    <span>Weekly wage change · 2001–2024</span>
                     <strong>{formatPercentChange(selectedHistoryChange.weeklyWage)}</strong>
                     <em>nominal descriptive change</em>
                   </div>
@@ -369,7 +503,7 @@ export default function App() {
             <span>Census boundaries · Jan. 1, 2025</span>
             <span>BEA county economy · 2024</span>
             <span>BLS QCEW employment and wages · 2025</span>
-            <span>BEA–BLS core panel · 2021–2024</span>
+            <span>BEA–BLS core panel · 2001–2024</span>
             <span>Static JSON · No runtime database</span>
             <span>ODbL · © OpenStreetMap contributors</span>
           </div>

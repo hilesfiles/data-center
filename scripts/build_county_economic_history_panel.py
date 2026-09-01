@@ -1,10 +1,9 @@
 #!/usr/bin/env python3
-"""Build the first governed BEA-BLS county-year panel for 2021-2024.
+"""Build the governed BEA-BLS county-year panel for 2001-2024.
 
-The panel is deliberately a four-year research scaffold, not a model-ready
-sample. Official BEA ZIPs and BLS CSV slices are temporary transport inputs;
-all durable artifacts are JSON. Current Census county identities are retained,
-and historical source geographies are never allocated or back-cast.
+Official BEA ZIPs and BLS CSV/ZIP members are temporary transport inputs; all
+durable artifacts are JSON. Current Census county identities are retained, and
+historical source geographies are never allocated or back-cast.
 """
 
 from __future__ import annotations
@@ -14,8 +13,10 @@ import hashlib
 import io
 import json
 import re
+import struct
 import tempfile
 import zipfile
+import zlib
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
@@ -26,10 +27,13 @@ from acquire_census_counties import write_json
 
 
 ROOT = Path(__file__).resolve().parents[1]
-PARSER_VERSION = "county-economic-history-panel-v1"
-PANEL_NAME = "county-economic-core-2021-2024"
-BUILD_VERSION = "2021-2024.1"
-YEARS = tuple(range(2021, 2025))
+PARSER_VERSION = "county-economic-history-panel-v2"
+PANEL_NAME = "county-economic-core-2001-2024"
+BUILD_VERSION = "2001-2024.1"
+YEARS = tuple(range(2001, 2025))
+ARCHIVE_YEARS = tuple(range(2001, 2021))
+DIRECT_SLICE_YEARS = tuple(range(2021, 2025))
+SILVER_PARTITIONS = ((2001, 2008), (2009, 2016), (2017, 2024))
 
 BEA_TABLES = {
     "CAGDP1": {
@@ -80,6 +84,10 @@ BLS_SLICES = {
         "release_date": "2025-09-02",
     },
 }
+
+
+def bls_archive_url(year: int) -> str:
+    return f"https://data.bls.gov/cew/data/files/{year}/csv/{year}_annual_by_industry.zip"
 
 METRICS = {
     "real_gdp_usd": {
@@ -164,6 +172,153 @@ def download(
     if metadata["sha256"] != expected_sha256 or byte_size != expected_bytes:
         raise RuntimeError(f"Pinned source changed at {url}; review the upstream revision before ingesting")
     return metadata
+
+
+def request_bytes(url: str, byte_range: str | None = None) -> tuple[bytes, dict[str, Any]]:
+    headers = {
+        "User-Agent": "DCCIO-panel-adapter/2.0 (+https://github.com/hilesfiles/data-center)"
+    }
+    if byte_range:
+        headers["Range"] = f"bytes={byte_range}"
+    request = Request(url, headers=headers)
+    try:
+        with urlopen(request, timeout=180) as response:
+            payload = response.read()
+            return payload, {
+                "http_status": response.status,
+                "etag": response.headers.get("ETag"),
+                "last_modified": response.headers.get("Last-Modified"),
+                "content_length": response.headers.get("Content-Length"),
+                "content_range": response.headers.get("Content-Range"),
+            }
+    except (HTTPError, URLError, TimeoutError) as exc:
+        raise RuntimeError(f"Download failed for {url}: {exc}") from exc
+
+
+def retrieve_remote_zip_member(year: int) -> tuple[bytes, dict[str, Any]]:
+    """Retrieve one member from a remote ZIP using HTTP byte ranges."""
+    url = bls_archive_url(year)
+    head_request = Request(
+        url,
+        method="HEAD",
+        headers={"User-Agent": "DCCIO-panel-adapter/2.0 (+https://github.com/hilesfiles/data-center)"},
+    )
+    try:
+        with urlopen(head_request, timeout=180) as response:
+            archive_size = int(response.headers["Content-Length"])
+            archive_etag = response.headers.get("ETag")
+            archive_last_modified = response.headers.get("Last-Modified")
+    except (HTTPError, URLError, TimeoutError, KeyError, ValueError) as exc:
+        raise RuntimeError(f"Could not inspect historical QCEW archive {url}: {exc}") from exc
+
+    tail_start = max(0, archive_size - 65_557)
+    tail, tail_metadata = request_bytes(url, f"{tail_start}-{archive_size - 1}")
+    if tail_metadata["http_status"] != 206:
+        raise RuntimeError(f"Historical QCEW archive does not support byte ranges: {url}")
+    eocd_offset = tail.rfind(b"PK\x05\x06")
+    if eocd_offset < 0 or len(tail) - eocd_offset < 22:
+        raise RuntimeError(f"ZIP end-of-central-directory record is missing: {url}")
+    (
+        _, disk_number, central_disk, disk_entries, total_entries,
+        central_size, central_offset, comment_length,
+    ) = struct.unpack_from("<4s4H2LH", tail, eocd_offset)
+    if disk_number or central_disk or disk_entries != total_entries:
+        raise RuntimeError(f"Unsupported multi-disk QCEW ZIP archive: {url}")
+    if eocd_offset + 22 + comment_length > len(tail):
+        raise RuntimeError(f"Truncated ZIP end record: {url}")
+
+    if central_offset >= tail_start and central_offset + central_size <= archive_size:
+        relative = central_offset - tail_start
+        central = tail[relative:relative + central_size]
+    else:
+        central, central_metadata = request_bytes(
+            url, f"{central_offset}-{central_offset + central_size - 1}"
+        )
+        if central_metadata["http_status"] != 206:
+            raise RuntimeError(f"Could not retrieve ZIP central directory: {url}")
+
+    member: dict[str, Any] | None = None
+    total_industry_candidates: list[str] = []
+    cursor = 0
+    while cursor < len(central):
+        if central[cursor:cursor + 4] != b"PK\x01\x02" or cursor + 46 > len(central):
+            raise RuntimeError(f"Malformed ZIP central directory: {url}")
+        fields = struct.unpack_from("<4s6H3L5H2L", central, cursor)
+        flags, compression = fields[3], fields[4]
+        crc32, compressed_size, uncompressed_size = fields[7:10]
+        filename_length, extra_length, file_comment_length = fields[10:13]
+        local_offset = fields[16]
+        name_start = cursor + 46
+        name_bytes = central[name_start:name_start + filename_length]
+        encoding = "utf-8" if flags & 0x800 else "cp437"
+        filename = name_bytes.decode(encoding)
+        if f"{year}.annual 10" in filename:
+            total_industry_candidates.append(filename)
+        if re.search(rf"{year}\.annual 10(?: |\.).*industries\.csv$", filename, re.IGNORECASE):
+            member = {
+                "filename": filename,
+                "compression": compression,
+                "crc32": crc32,
+                "compressed_size": compressed_size,
+                "uncompressed_size": uncompressed_size,
+                "local_offset": local_offset,
+            }
+            break
+        cursor = name_start + filename_length + extra_length + file_comment_length
+    if member is None:
+        raise RuntimeError(
+            f"All-industries annual member is missing from {url}; "
+            f"candidates={total_industry_candidates[:10]}"
+        )
+
+    local_header, local_metadata = request_bytes(
+        url, f"{member['local_offset']}-{member['local_offset'] + 29}"
+    )
+    if local_metadata["http_status"] != 206 or local_header[:4] != b"PK\x03\x04":
+        raise RuntimeError(f"Could not retrieve ZIP local header: {url}")
+    local_fields = struct.unpack_from("<4s5H3L2H", local_header)
+    filename_length, extra_length = local_fields[9:11]
+    data_start = member["local_offset"] + 30 + filename_length + extra_length
+    compressed, data_metadata = request_bytes(
+        url, f"{data_start}-{data_start + member['compressed_size'] - 1}"
+    )
+    if data_metadata["http_status"] != 206:
+        raise RuntimeError(f"Could not retrieve ZIP member bytes: {url}")
+    if member["compression"] == 0:
+        payload = compressed
+    elif member["compression"] == 8:
+        payload = zlib.decompress(compressed, -15)
+    else:
+        raise RuntimeError(f"Unsupported ZIP compression method {member['compression']}: {url}")
+    if len(payload) != member["uncompressed_size"] or zlib.crc32(payload) != member["crc32"]:
+        raise RuntimeError(f"Historical QCEW ZIP member integrity check failed: {url}")
+    return payload, {
+        "http_status": 206,
+        "etag": archive_etag,
+        "last_modified": archive_last_modified,
+        "archive_byte_size": archive_size,
+        "source_member": member["filename"],
+        "member_byte_size": len(payload),
+        "member_crc32": f"{member['crc32']:08x}",
+        "sha256": digest(payload),
+    }
+
+
+def verify_existing_pin(year: int, metadata: dict[str, Any]) -> None:
+    path = ROOT / "data" / "raw" / "bls-qcew" / "history" / f"{year}-total-all-industries.acquisition.json"
+    if not path.exists():
+        return
+    existing = json.loads(path.read_text(encoding="utf-8"))
+    pinned_fields = (
+        "etag", "last_modified", "archive_byte_size", "source_member",
+        "member_byte_size", "member_crc32", "sha256",
+    )
+    changed = [field for field in pinned_fields if existing.get(field) != metadata.get(field)]
+    if changed:
+        raise RuntimeError(
+            f"Pinned historical QCEW source changed for {year} ({', '.join(changed)}); "
+            "review the upstream revision before ingesting"
+        )
 
 
 def parse_integer(raw_value: str) -> int | None:
@@ -314,6 +469,27 @@ def source_records(generated_at: str) -> list[dict[str, Any]]:
             "record_status": "active",
         },
     ]
+    for year in ARCHIVE_YEARS:
+        records.append(
+            {
+                "schema_version": "1.0.0",
+                "source_id": f"src_bls_qcew_total_{year}",
+                "source_type": "federal_dataset",
+                "publisher": "U.S. Bureau of Labor Statistics",
+                "agency": "U.S. Bureau of Labor Statistics",
+                "jurisdiction": "United States",
+                "title": f"QCEW {year} annual averages: total covered employment, all industries",
+                "url": bls_archive_url(year),
+                "publication_date": {"year": year + 1, "precision": "year"},
+                "language": "en",
+                "license": "U.S. government data",
+                "copyright_policy": "redistributable",
+                "source_quality_prior": 1.0,
+                "created_at": generated_at,
+                "updated_at": generated_at,
+                "record_status": "active",
+            }
+        )
     for year, spec in BLS_SLICES.items():
         records.append(
             {
@@ -358,6 +534,15 @@ def build() -> dict[str, Any]:
             bea_values[table_name], bea_reports[table_name] = parse_bea(
                 table_name, target, county_fips
             )
+        for year in ARCHIVE_YEARS:
+            payload, metadata = retrieve_remote_zip_member(year)
+            verify_existing_pin(year, metadata)
+            target = temporary_directory / f"qcew-{year}-10.csv"
+            target.write_bytes(payload)
+            downloads[f"BLS-{year}"] = metadata
+            bls_values[year], bls_reports[str(year)] = parse_bls_slice(
+                year, target, county_fips
+            )
         for year, spec in BLS_SLICES.items():
             target = temporary_directory / f"qcew-{year}-10.csv"
             downloads[f"BLS-{year}"] = download(
@@ -367,14 +552,16 @@ def build() -> dict[str, Any]:
                 year, target, county_fips
             )
 
-    for year, spec in BLS_SLICES.items():
+    for year in YEARS:
+        spec = BLS_SLICES.get(year)
+        source_url = spec["url"] if spec else bls_archive_url(year)
         downloaded = downloads[f"BLS-{year}"]
         acquisition = {
             "schema_version": "1.0.0",
             "manifest_id": f"acq_bls_qcew_total_{year}",
             "source_id": f"src_bls_qcew_total_{year}",
-            "source_url": spec["url"],
-            "request_url": spec["url"],
+            "source_url": source_url,
+            "request_url": source_url,
             "retrieved_at": generated_at,
             "http_status": downloaded["http_status"],
             "sha256": downloaded["sha256"],
@@ -389,6 +576,11 @@ def build() -> dict[str, Any]:
             acquisition["etag"] = downloaded["etag"]
         if downloaded.get("last_modified"):
             acquisition["last_modified"] = downloaded["last_modified"]
+        for field in (
+            "archive_byte_size", "source_member", "member_byte_size", "member_crc32"
+        ):
+            if downloaded.get(field) is not None:
+                acquisition[field] = downloaded[field]
         write_json(
             ROOT / "data" / "raw" / "bls-qcew" / "history" / f"{year}-total-all-industries.acquisition.json",
             acquisition,
@@ -464,7 +656,13 @@ def build() -> dict[str, Any]:
                     "period": {"year": year, "precision": "year"},
                     "value_status": value_status,
                     "source_ids": [source_id],
-                    "release_vintage": "2026-02-05" if metric["source_family"] == "bea" else BLS_SLICES[year]["release_date"],
+                    "release_vintage": (
+                        "2026-02-05"
+                        if metric["source_family"] == "bea"
+                        else BLS_SLICES[year]["release_date"]
+                        if year in BLS_SLICES
+                        else f"{year + 1} annual release; archive retrieved {generated_at[:10]}"
+                    ),
                     "revision_number": 0,
                     "created_at": generated_at,
                     "updated_at": generated_at,
@@ -535,28 +733,86 @@ def build() -> dict[str, Any]:
         "record_count": len(bronze_records),
         "records": bronze_records,
     }
-    bronze_path = ROOT / "data" / "bronze" / "economic" / "county-history-2021-2024-source-rows.json"
+    bronze_path = ROOT / "data" / "bronze" / "economic" / "county-history-2001-2024-source-rows.json"
     bronze_payload = write_json(bronze_path, bronze_document, compact=True)
 
     sources = source_records(generated_at)
-    silver_document = {
+    sources_document = {
         "schema_version": "1.0.0",
-        "artifact_type": "county_economic_history_panel",
+        "artifact_type": "county_economic_history_sources",
         "artifact_version": BUILD_VERSION,
         "generated_at": generated_at,
         "data_vintage": f"{YEARS[0]}-{YEARS[-1]}",
-        "record_count": len(sources) + len(observations) + len(panel_rows),
-        "collections": {
-            "source": sources,
-            "observation": observations,
-            "panel_row": panel_rows,
-        },
+        "record_count": len(sources),
+        "collections": {"source": sources},
     }
-    silver_path = ROOT / "data" / "silver" / "panels" / "county-economic-core-2021-2024.json"
-    silver_payload = write_json(silver_path, silver_document, compact=True)
+    sources_path = ROOT / "data" / "silver" / "panels" / "county-economic-core-2001-2024.sources.json"
+    sources_payload = write_json(sources_path, sources_document, compact=True)
 
-    public_path = ROOT / "site" / "public" / "data" / "v1" / "panels" / "county-economic-history-2021-2024.json"
-    public_payload = write_json(public_path, public_records, compact=True)
+    silver_parts: list[tuple[Path, bytes, int]] = []
+    for start_year, end_year in SILVER_PARTITIONS:
+        partition_observations = [
+            record for record in observations
+            if start_year <= record["period"]["year"] <= end_year
+        ]
+        partition_rows = [
+            record for record in panel_rows
+            if start_year <= record["period"]["year"] <= end_year
+        ]
+        partition_document = {
+            "schema_version": "1.0.0",
+            "artifact_type": "county_economic_history_panel_partition",
+            "artifact_version": BUILD_VERSION,
+            "generated_at": generated_at,
+            "data_vintage": f"{start_year}-{end_year}",
+            "record_count": len(partition_observations) + len(partition_rows),
+            "partition": {"start_year": start_year, "end_year": end_year},
+            "collections": {
+                "observation": partition_observations,
+                "panel_row": partition_rows,
+            },
+        }
+        partition_path = ROOT / "data" / "silver" / "panels" / f"county-economic-core-{start_year}-{end_year}.json"
+        partition_payload = write_json(partition_path, partition_document, compact=True)
+        silver_parts.append((partition_path, partition_payload, partition_document["record_count"]))
+
+    public_directory = (
+        ROOT / "site" / "public" / "data" / "v1" / "panels"
+        / "county-economic-history" / "by-state"
+    )
+    public_parts: list[tuple[Path, bytes, int]] = []
+    public_index_parts: list[dict[str, Any]] = []
+    for state_abbr in sorted({record["state_abbr"] for record in public_records}):
+        state_records = [
+            record for record in public_records if record["state_abbr"] == state_abbr
+        ]
+        state_path = public_directory / f"{state_abbr.lower()}.json"
+        state_payload = write_json(state_path, state_records, compact=True)
+        public_parts.append((state_path, state_payload, len(state_records)))
+        public_index_parts.append(
+            {
+                "state_abbr": state_abbr,
+                "path": f"county-economic-history/by-state/{state_abbr.lower()}.json",
+                "record_count": len(state_records),
+                "byte_size": len(state_payload),
+                "sha256": digest(state_payload),
+            }
+        )
+    public_index = {
+        "schema_version": "1.0.0",
+        "artifact_type": "county_economic_history_public_index",
+        "artifact_version": BUILD_VERSION,
+        "generated_at": generated_at,
+        "data_vintage": f"{YEARS[0]}-{YEARS[-1]}",
+        "partition_count": len(public_index_parts),
+        "record_count": len(public_records),
+        "partitions": public_index_parts,
+    }
+    public_index_path = (
+        ROOT / "site" / "public" / "data" / "v1" / "panels"
+        / "county-economic-history" / "index.json"
+    )
+    public_index_payload = write_json(public_index_path, public_index)
 
     public_coverage_counts = {
         status: sum(record["coverage_status"] == status for record in public_records)
@@ -576,32 +832,35 @@ def build() -> dict[str, Any]:
         "metric_count": len(METRICS),
         "value_status_counts": value_status_counts,
         "public_coverage_counts": public_coverage_counts,
+        "public_partition_count": len(public_index_parts),
         "bea_parse_reports": bea_reports,
         "bls_parse_reports": bls_reports,
         "model_readiness": {
-            "status": "insufficient_history",
+            "status": "missing_treatment_dates",
             "available_years": len(YEARS),
             "required_minimum_pre_periods": 7,
             "required_minimum_post_periods": 3,
+            "history_span_can_satisfy_period_requirements": True,
             "treatment_dates_available": False,
         },
         "notices": [
-            "This four-year panel is a research scaffold and is not eligible for econometric estimation.",
+            "The 24-year panel can support configured pre/post windows, but it is not eligible for econometric estimation until governed treatment dates and comparison samples exist.",
             "BEA historical values use the February 2026 release and therefore share its current revision vintage.",
-            "BLS direct data slices are pinned independently by year.",
+            "BLS 2001-2020 all-industries members are independently pinned from official historical annual-by-industry ZIP archives.",
+            "BLS 2021-2024 direct data slices are pinned independently by year.",
             "Current Census county identities are retained; legacy source geographies are never allocated or back-cast.",
             "Missing and disclosure-protected values are never treated as zero.",
             "All upstream ZIP and CSV files are temporary transport inputs; durable outputs are JSON only.",
         ],
     }
-    report_path = ROOT / "data" / "silver" / "panels" / "county-economic-core-2021-2024.processing-report.json"
+    report_path = ROOT / "data" / "silver" / "panels" / "county-economic-core-2001-2024.processing-report.json"
     report_payload = write_json(report_path, report)
 
     parts = []
     for path, payload, count, zone, projection in [
         (bronze_path, bronze_payload, len(bronze_records), "bronze", "source_rows"),
-        (silver_path, silver_payload, silver_document["record_count"], "silver", "observations_and_panel_rows"),
-        (public_path, public_payload, len(public_records), "public", "county_history_summary"),
+        (sources_path, sources_payload, len(sources), "silver", "sources"),
+        (public_index_path, public_index_payload, 1, "public", "partition_index"),
         (report_path, report_payload, 1, "silver", "processing_report"),
     ]:
         parts.append(
@@ -613,9 +872,36 @@ def build() -> dict[str, Any]:
                 "partition_values": {"zone": zone, "projection": projection},
             }
         )
+    for path, payload, count in silver_parts:
+        parts.append(
+            {
+                "path": path.relative_to(ROOT).as_posix(),
+                "sha256": digest(payload),
+                "byte_size": len(payload),
+                "record_count": count,
+                "partition_values": {
+                    "zone": "silver",
+                    "projection": "observations_and_panel_rows",
+                },
+            }
+        )
+    for path, payload, count in public_parts:
+        parts.append(
+            {
+                "path": path.relative_to(ROOT).as_posix(),
+                "sha256": digest(payload),
+                "byte_size": len(payload),
+                "record_count": count,
+                "partition_values": {
+                    "zone": "public",
+                    "projection": "county_history_summary",
+                    "state_abbr": path.stem.upper(),
+                },
+            }
+        )
     manifest = {
         "schema_version": "1.0.0",
-        "dataset_id": "county_economic_core_panel_2021_2024",
+        "dataset_id": "county_economic_core_panel_2001_2024",
         "artifact_type": "county_year_panel",
         "artifact_version": BUILD_VERSION,
         "generated_at": generated_at,
@@ -636,7 +922,7 @@ def build() -> dict[str, Any]:
         },
     }
     write_json(
-        ROOT / "data" / "silver" / "panels" / "county-economic-core-2021-2024.manifest.json",
+        ROOT / "data" / "silver" / "panels" / "county-economic-core-2001-2024.manifest.json",
         manifest,
     )
     return report

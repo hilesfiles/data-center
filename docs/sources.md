@@ -85,24 +85,26 @@ than zero; fourteen more counties have no private-construction row.
 
 ## Implemented BEA–BLS county-year panel
 
-- Panel: `county-economic-core-2021-2024`
+- Panel: `county-economic-core-2001-2024`
 - Geography: 3,144 current Census counties and county equivalents
-- Years: 2021–2024
-- Rows: 12,576 county-years
-- Governed observations: 50,304
+- Years: 2001–2024
+- Rows: 75,456 county-years
+- Governed observations: 301,824
 - Measures: real GDP, population, annual-average covered employment, and nominal average
   weekly wage
-- Public coverage: 3,081 complete counties, 62 partial counties, one unavailable county
+- Public coverage: 3,064 complete counties, 79 partial counties, one unavailable county
 - Builder: `scripts/build_county_economic_history_panel.py`
 
 BEA observations are read from the already pinned February 2026 CAGDP1 and CAINC1
-archives. Four BLS total-all-industries annual slices are independently pinned by byte size
-and SHA-256. The source services expose 2021 onward as direct slices; older years require
-the substantially larger historical archive route and are therefore a separate backfill.
+archives. BLS 2001–2020 all-industries members are independently retrieved and pinned from
+the official annual-by-industry ZIP archives; 2021–2024 use independently pinned direct
+data slices. Only temporary ZIP/CSV transport inputs are used, and durable data remain JSON.
+The public projection is delivered as 51 state/DC partitions with a hash-and-size index;
+county profiles lazy-load only their selected state partition.
 
 The panel retains current Census identities without crosswalking legacy source geographies.
 Connecticut planning regions consequently lack BLS rows before their 2024 adoption, and the
-BEA combined/legacy geography limitations remain. Missing cells and the two suppressed
+BEA combined/legacy geography limitations remain. Missing cells and 26 suppressed
 total-covered observations are explicit rather than zero.
 
 ## Candidate-adjudication evidence

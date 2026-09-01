@@ -108,23 +108,23 @@ The public projection retains all 3,144 Census counties: 2,207 are complete acro
 published measures, 936 are partial, and one is unavailable. As with the BEA baseline, these
 are descriptive conditions and not evidence of a data-center effect.
 
-## First county-year panel
+## County-year history panel
 
-The first governed analytical materialization joins BEA and BLS observations at the current
-Census county-year grain for 2021–2024. Each of the 12,576 panel rows references four
+The governed analytical materialization joins BEA and BLS observations at the current
+Census county-year grain for 2001–2024. Each of the 75,456 panel rows references four
 schema-valid observations: real GDP and population as covariates, annual-average covered
 employment as the configured outcome, and nominal average weekly wage as context. The
 public projection groups the same values by county for static delivery.
 
 Current county identity is authoritative. No legacy county, combined geography, or former
-Connecticut county is allocated into a present-day county equivalent. As a result, 3,081
-counties have all four measures in all four years, 62 are partial, and Kalawao County is
+Connecticut county is allocated into a present-day county equivalent. As a result, 3,064
+counties have all four measures in all 24 years, 79 are partial, and Kalawao County is
 unavailable. This is preferable to inventing a longitudinal crosswalk without an explicit
 allocation method and uncertainty model.
 
-The processing report sets model readiness to `insufficient_history`. Four annual periods
-cannot meet the configured minimum of seven pre-treatment and three post-treatment periods,
-and no governed treatment-date collection exists. The panel supports descriptive trend
+The processing report sets model readiness to `missing_treatment_dates`. The 24-year span
+can support the configured minimum of seven pre-treatment and three post-treatment periods,
+but no governed treatment-date collection exists. The panel supports descriptive trend
 inspection only; no treatment assignment, comparison group, estimate, index, or causal
 claim is produced.
 
