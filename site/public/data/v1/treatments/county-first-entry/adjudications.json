@@ -638,5 +638,60 @@
     "created_at": "2026-09-02T01:00:00Z",
     "updated_at": "2026-09-02T01:00:00Z",
     "record_status": "active"
+  },
+  {
+    "schema_version": "1.0.0",
+    "county_first_entry_adjudication_id": "fea_42091_tierpoint_vfo_20130430_rejected",
+    "first_entry_research_candidate_id": "fer_afdc46c251d985456d95",
+    "treatment_definition_id": "trt_first_entry_v1",
+    "candidate_event_evaluation_id": "tev_6e71691137aa08b3a58a",
+    "county_fips": "42091",
+    "county_name": "Montgomery County",
+    "state_abbr": "PA",
+    "resolution_state": "candidate_rejected_first_entry",
+    "decision": "reject_candidate_as_first_entry",
+    "county_first_entry_verified": false,
+    "inventory_completeness_status": "not_established",
+    "earlier_operations_search_status": "documented_incomplete",
+    "required_finding_status": {
+      "earliest_dated_operational_event": "partial",
+      "exact_facility_identity_for_earliest_event": "resolved",
+      "county_inventory_completeness": "unresolved",
+      "documented_search_for_earlier_operations": "resolved"
+    },
+    "earlier_operational_findings": [
+      {
+        "facility_id": "fac_im3_building_00366049843",
+        "canonical_name": "Focal Communications switch and colocation space at 1000 Forge Avenue, Building C",
+        "temporal_relation": "operational_no_later_than",
+        "when": {
+          "date": "2000-12-31",
+          "precision": "day"
+        },
+        "source_ids": [
+          "src_focal_credit_agreement_20000825",
+          "src_focal_10k_20010330",
+          "src_baxtel_lumen_norristown_current_2026"
+        ],
+        "finding": "Focal's August 2000 credit agreement identifies 1000 Forge Avenue, Building C as Focal Communications of Pennsylvania switch space under a July 1, 2000 lease. Its 2000 annual report says Focal operated the Philadelphia market, owned and operated its switches, and offered customer colocation in its switching centers as of December 31, 2000. The current mapped Lumen Norristown record and directory address align to the same exact building.",
+        "confidence": 0.92
+      }
+    ],
+    "source_ids": [
+      "src_tierpoint_valley_forge_current_2026",
+      "src_kentucky_psc_dbsi_valley_forge_20130430",
+      "src_focal_credit_agreement_20000825",
+      "src_focal_10k_20010330",
+      "src_baxtel_lumen_norristown_current_2026"
+    ],
+    "authoritative_source_types": [
+      "regulatory_filing",
+      "sec_filing",
+      "operator_release"
+    ],
+    "rationale": "The Kentucky Public Service Commission's April 30, 2013 filing identifies DBSi at 1000 Adams Avenue as Level One's data center and full operational-redundancy provider, supplying a conservative operational-no-later-than anchor for the exact TierPoint Valley Forge candidate; TierPoint's current page establishes continuity to VFO at that address. The candidate cannot be Montgomery County's first entry because Focal's August 2000 credit agreement identifies the exact 1000 Forge Avenue, Building C site as Focal Communications switch space, and Focal's 2000 annual report states that it operated the Philadelphia market, owned and operated its switches, and offered colocation in its switching centers by December 31, 2000. The current four-record canonical inventory does not establish a complete historical county inventory, and the current Lumen building remains unresolved under the stricter national lifecycle policy, so the true first entry remains unresolved and no treatment date is assigned.",
+    "created_at": "2026-09-02T01:30:00Z",
+    "updated_at": "2026-09-02T01:30:00Z",
+    "record_status": "active"
   }
 ]

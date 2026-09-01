@@ -151,8 +151,9 @@ Realty ORD11 in Cook County (2003-03-28, DQS 95.06, 2 pre/21 post years), and th
 Campus Research Computing Center in Alachua County (2012 year precision, DQS 76.05, 11 pre/12
 post years), and an operational-no-later-than observation for FirstLight's Brunswick facility in
 Cumberland County (2011-09-28, DQS 86.40, 10 pre/13 post years), Markley's Lowell
-facility in Middlesex County (2015-11-23, DQS 97.02, 14 pre/9 post years), and Csquare
-TPA1 in Hillsborough County (2016-01-20, DQS 97.02, 15 pre/8 post years). The Santa
+facility in Middlesex County (2015-11-23, DQS 97.02, 14 pre/9 post years), Csquare
+TPA1 in Hillsborough County (2016-01-20, DQS 97.02, 15 pre/8 post years), and TierPoint
+Valley Forge in Montgomery County (2013-04-30, DQS 97.02, 12 pre/11 post years). The Santa
 Clara and Maricopa candidates pass the evidence and panel-window gates but fail county-first-entry
 verification. Fulton's trade-press candidate fails the authoritative-source and seven-pre-period
 gates and is independently rejected by documented earlier operation. Hudson passes the evidence
@@ -179,6 +180,10 @@ Hillsborough passes both quantitative gates but is rejected because a Kentucky P
 Commission filing places Peak 10 at the exact mapped 9417 Corporate Lake Drive site by May 9,
 2006; Florida's 2016 state inventory identifies that address as a Peak 10 data center and the
 current Flexential page establishes continuity to Tampa–West.
+Montgomery passes both quantitative gates but is rejected because Focal's August 2000 credit
+agreement identifies 1000 Forge Avenue, Building C as Focal Communications switch space, while
+its 2000 annual report documents operating switches and colocation in the Philadelphia market by
+December 31, 2000—well before the TierPoint Valley Forge anchor.
 Therefore
 all 3,144 counties have an assessment, zero are eligible,
 and no model run is authorized. Counties without a reviewed dated event remain unknown for
@@ -197,7 +202,7 @@ the feasibility of auditing the county's current facility inventory (20%), panel
 log of the active facility count, so a smaller inventory is treated as easier to audit—not as
 more likely to be newly treated. The initial tranche contains 24 counties, six per Census
 region and no more than two per state. Fulton, Hudson, Clark, Monroe, Oakland, Cook, Alachua,
-Cumberland, Middlesex, Hillsborough, Maricopa, and Santa Clara counties are `research_status: evidence_collected`; the other 205 records
+Cumberland, Middlesex, Hillsborough, Montgomery, Maricopa, and Santa Clara counties are `research_status: evidence_collected`; the other 204 records
 remain queued.
 
 Every adjudication must establish an earliest dated operational event, exact facility identity,

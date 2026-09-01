@@ -150,6 +150,11 @@ Commission's May 9, 2006 filing places Peak 10 at 9417 Corporate Lake Drive; Flo
 state inventory identifies the exact address as a Peak 10 data center, and Flexential's current
 page connects that site to the mapped Tampa–West facility. TPA1 is therefore rejected as county
 first entry.
+Montgomery's TierPoint Valley Forge anchor passes both quantitative gates. A Kentucky Public
+Service Commission filing received April 30, 2013 identifies DBSi at 1000 Adams Avenue as an
+operational-redundancy data center, while Focal's August 2000 credit agreement and 2000 annual
+report document switch and colocation operations at the separate exact 1000 Forge Avenue,
+Building C site by December 31, 2000. Valley Forge is therefore rejected as county first entry.
 These counties'
 true first entries remain unresolved. Public county
 assessments
