@@ -131,6 +131,14 @@ different from an identity merge, campus membership, ownership, or tenancy. It p
 multi-operator carrier hotels and computing systems without counting the building shell
 and its contained sites as interchangeable records.
 
+### Lifecycle verification candidate
+
+A bounded research work item for a canonical facility whose lifecycle attributes remain
+unresolved. It records the attributes to verify, suggested source classes, governed
+priority score, selection rationale, evidence state, and workflow status. Entering the
+queue never changes `facility.current_status`; only accepted claims and an auditable
+review decision may resolve status, dates, operator roles, or capacity.
+
 ## Measurement domain
 
 An observation stores one metric value for one subject and period. Subjects may be a

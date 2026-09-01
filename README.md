@@ -74,6 +74,17 @@ The acquisition retains only JSON. Finalization is offline and downstream: it pr
 the initial adjudication, marks the two earlier escalation decisions superseded, and emits
 the final static review projections consumed by the site.
 
+Build the deterministic lifecycle-verification pilot from the final identity snapshot:
+
+```powershell
+python scripts/build_lifecycle_verification_pilot.py
+```
+
+The governed JSON policy selects 24 canonical facilities—three in each of the eight
+highest-density counties—and publishes a static research queue plus national county
+coverage. Selection changes research priority only; all lifecycle statuses remain unknown
+until source claims are reviewed.
+
 Build the static site:
 
 ```powershell
@@ -105,10 +116,12 @@ validation can be added later to CI with a standards-compliant Draft 2020-12 val
   relationships are represented as provisional governed decisions. All sixteen spatial
   candidates are resolved: four source-record merges, eight distinct contained sites,
   two accepted campus links, and two rejected campus links. No candidate remains pending.
+- Lifecycle verification: a 24-facility pilot queue is implemented across eight counties;
+  1,337 canonical facilities remain unknown and zero statuses are yet verified.
 - Economic, fiscal, utility, housing, environmental, or opposition observations: not yet ingested.
 - Econometric estimates and public indices: fixture-only; not substantive.
 
 ## Next priority
 
-Enrich operator organizations beyond exact-text normalization, then reconstruct verified
-opening and project dates needed for the first historical treatment panel.
+Collect and review lifecycle evidence for the 24 pilot facilities, then use the resulting
+claims and decisions to produce the first verified project events and opening dates.

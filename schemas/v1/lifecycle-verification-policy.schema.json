@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dccio.org/schemas/v1/lifecycle-verification-policy.schema.json",
+  "title": "Lifecycle verification pilot selection policy",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "policy_id",
+    "policy_version",
+    "input_dataset_id",
+    "pilot_size",
+    "county_count",
+    "per_county_quota",
+    "eligibility",
+    "scoring_weights",
+    "target_attributes",
+    "suggested_source_types",
+    "created_at",
+    "updated_at",
+    "record_status"
+  ],
+  "properties": {
+    "schema_version": {"$ref": "common.schema.json#/$defs/schema_version"},
+    "policy_id": {"$ref": "common.schema.json#/$defs/entity_id"},
+    "policy_version": {"type": "string", "minLength": 1},
+    "input_dataset_id": {"type": "string", "minLength": 1},
+    "pilot_size": {"type": "integer", "minimum": 1},
+    "county_count": {"type": "integer", "minimum": 1},
+    "per_county_quota": {"type": "integer", "minimum": 1},
+    "eligibility": {
+      "type": "object",
+      "required": ["active_canonical_facility_only", "unknown_lifecycle_status_only", "primary_county_required"],
+      "properties": {
+        "active_canonical_facility_only": {"type": "boolean", "const": true},
+        "unknown_lifecycle_status_only": {"type": "boolean", "const": true},
+        "primary_county_required": {"type": "boolean", "const": true}
+      },
+      "additionalProperties": false
+    },
+    "scoring_weights": {
+      "type": "object",
+      "required": ["county_density", "named_source", "operator_link", "building_footprint", "campus_membership", "source_quality"],
+      "properties": {
+        "county_density": {"type": "number", "minimum": 0, "maximum": 100},
+        "named_source": {"type": "number", "minimum": 0, "maximum": 100},
+        "operator_link": {"type": "number", "minimum": 0, "maximum": 100},
+        "building_footprint": {"type": "number", "minimum": 0, "maximum": 100},
+        "campus_membership": {"type": "number", "minimum": 0, "maximum": 100},
+        "source_quality": {"type": "number", "minimum": 0, "maximum": 100}
+      },
+      "additionalProperties": false
+    },
+    "target_attributes": {
+      "$ref": "lifecycle-verification-candidate.schema.json#/properties/target_attributes"
+    },
+    "suggested_source_types": {
+      "$ref": "lifecycle-verification-candidate.schema.json#/properties/suggested_source_types"
+    },
+    "created_at": {"$ref": "common.schema.json#/$defs/timestamp"},
+    "updated_at": {"$ref": "common.schema.json#/$defs/timestamp"},
+    "record_status": {"type": "string", "enum": ["active", "provisional", "superseded", "withdrawn"]}
+  },
+  "additionalProperties": false
+}

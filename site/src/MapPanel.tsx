@@ -12,6 +12,7 @@ import "maplibre-gl/dist/maplibre-gl.css";
 import type {
   PublicEntityAdjudicationRecord,
   PublicEntityResolutionRecord,
+  LifecycleVerificationCandidate,
 } from "./types";
 
 interface MapPanelProps {
@@ -75,14 +76,15 @@ export function MapPanel({ selectedFips, onSelectCounty }: MapPanelProps) {
     map.on("load", async () => {
       try {
         const base = import.meta.env.BASE_URL;
-        const [countiesResponse, facilitiesResponse, coverageResponse, resolutionResponse, adjudicationResponse] = await Promise.all([
+        const [countiesResponse, facilitiesResponse, coverageResponse, resolutionResponse, adjudicationResponse, lifecycleResponse] = await Promise.all([
           fetch(`${base}data/v1/maps/counties.geojson`),
           fetch(`${base}data/v1/maps/facilities.geojson`),
           fetch(`${base}data/v1/counties/facility-source-coverage.json`),
           fetch(`${base}data/v1/entity-resolution/index.json`),
           fetch(`${base}data/v1/entity-resolution/final-index.json`),
+          fetch(`${base}data/v1/lifecycle/pilot-queue.json`),
         ]);
-        if (!countiesResponse.ok || !facilitiesResponse.ok || !coverageResponse.ok || !resolutionResponse.ok || !adjudicationResponse.ok) {
+        if (!countiesResponse.ok || !facilitiesResponse.ok || !coverageResponse.ok || !resolutionResponse.ok || !adjudicationResponse.ok || !lifecycleResponse.ok) {
           throw new Error("A required map artifact could not be loaded.");
         }
         const counties = await countiesResponse.json();
@@ -90,6 +92,7 @@ export function MapPanel({ selectedFips, onSelectCounty }: MapPanelProps) {
         const coverage = await coverageResponse.json();
         const resolution = (await resolutionResponse.json()) as PublicEntityResolutionRecord[];
         const adjudication = (await adjudicationResponse.json()) as PublicEntityAdjudicationRecord[];
+        const lifecycle = (await lifecycleResponse.json()) as LifecycleVerificationCandidate[];
         const coverageByFips = new globalThis.Map(
           coverage.map((record: { county_fips: string; source_record_count: number }) => [
             record.county_fips,
@@ -116,6 +119,9 @@ export function MapPanel({ selectedFips, onSelectCounty }: MapPanelProps) {
         const adjudicationByEntity = new globalThis.Map(
           adjudication.map((record) => [record.source_entity_id, record]),
         );
+        const lifecycleByFacility = new globalThis.Map(
+          lifecycle.map((record) => [record.facility_id, record]),
+        );
         facilities.features = facilities.features.map(
           (feature: { properties: Record<string, unknown> }) => {
             const record = resolutionByEntity.get(feature.properties.entity_id as string);
@@ -123,6 +129,8 @@ export function MapPanel({ selectedFips, onSelectCounty }: MapPanelProps) {
             const pendingCount = adjudicated?.candidate_outcomes.filter(
               (outcome) => outcome.decision === "escalate",
             ).length ?? 0;
+            const resolvedEntityId = adjudicated?.resolved_entity_id ?? (feature.properties.entity_id as string);
+            const lifecycleCandidate = lifecycleByFacility.get(resolvedEntityId);
             return {
               ...feature,
               properties: {
@@ -130,8 +138,10 @@ export function MapPanel({ selectedFips, onSelectCounty }: MapPanelProps) {
                 campus_id: adjudicated?.campus_id ?? record?.campus_id ?? null,
                 operator_canonical_name: record?.operator_canonical_name ?? null,
                 pending_candidate_count: pendingCount,
+                lifecycle_review_status: lifecycleCandidate?.review_status ?? "not_queued",
+                lifecycle_priority_score: lifecycleCandidate?.priority_score ?? null,
                 resolution_status: adjudicated?.identity_status ?? record?.resolution_status ?? "source_only",
-                resolved_entity_id: adjudicated?.resolved_entity_id ?? feature.properties.entity_id,
+                resolved_entity_id: resolvedEntityId,
                 container_facility_id: adjudicated?.container_facility_id ?? null,
               },
             };
@@ -209,6 +219,19 @@ export function MapPanel({ selectedFips, onSelectCounty }: MapPanelProps) {
             "circle-opacity": 0.88,
           },
         });
+        map.addLayer({
+          id: "lifecycle-pilot-halo",
+          type: "circle",
+          source: "facilities",
+          filter: ["==", ["get", "lifecycle_review_status"], "queued"],
+          paint: {
+            "circle-radius": ["interpolate", ["linear"], ["zoom"], 3, 5.5, 9, 11],
+            "circle-color": "rgba(0,0,0,0)",
+            "circle-stroke-color": "#c66a16",
+            "circle-stroke-width": 2.25,
+            "circle-opacity": 0.95,
+          },
+        });
 
         const popup = new Popup({ closeButton: false, closeOnClick: false, offset: 12 });
         map.on("mousemove", "county-fill", (event: FeaturePointerEvent) => {
@@ -252,6 +275,9 @@ export function MapPanel({ selectedFips, onSelectCounty }: MapPanelProps) {
           const review = pending
             ? `<br/><strong>${pending} pending identity review${pending === 1 ? "" : "s"}</strong>`
             : "";
+          const lifecycleReview = properties.lifecycle_review_status === "queued"
+            ? `<br/><strong>Lifecycle pilot:</strong> queued for evidence review (priority ${escapeHtml(properties.lifecycle_priority_score)})`
+            : "";
           const identityStatus = properties.resolution_status === "merged"
             ? `<br/><strong>Merged:</strong> redirects to ${escapeHtml(properties.resolved_entity_id)}`
             : properties.resolution_status === "distinct_within_building"
@@ -264,7 +290,7 @@ export function MapPanel({ selectedFips, onSelectCounty }: MapPanelProps) {
             .setLngLat(event.lngLat)
             .setHTML(
               `<strong>${escapeHtml(properties.display_name)}</strong><br/>` +
-                `IM3 ${layer} source record${operator}${normalizedOperator}${campusLink}${footprint}${identityStatus}${review}`,
+                `IM3 ${layer} source record${operator}${normalizedOperator}${campusLink}${footprint}${identityStatus}${review}${lifecycleReview}`,
             )
             .addTo(map);
         });
@@ -306,6 +332,7 @@ export function MapPanel({ selectedFips, onSelectCounty }: MapPanelProps) {
           <span><i className="key-dot key-pending" />pending (0)</span>
           <span><i className="key-dot key-merged" />merged</span>
           <span><i className="key-dot key-contained" />contained</span>
+          <span><i className="key-ring" />lifecycle pilot</span>
         </div>
       </div>
     </div>

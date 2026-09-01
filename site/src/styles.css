@@ -75,6 +75,8 @@ button, select { font: inherit; }
 .index-list span { font-size: .78rem; }
 .index-list strong { grid-row: span 2; font-size: 1.2rem; }
 .index-list em { font-family: "DM Mono", monospace; font-size: .6rem; color: var(--muted); font-style: normal; text-transform: uppercase; }
+.index-list .lifecycle-row { background: #fff7e9; margin-inline: -8px; padding-inline: 8px; border-bottom-color: #e8c99c; }
+.index-list .lifecycle-start { margin-top: 8px; border-top: 2px solid #c66a16; }
 
 .evidence-note { margin-top: 22px; padding: 14px; border-left: 3px solid var(--aqua); background: #edf2ee; }
 .evidence-note span { font-family: "DM Mono", monospace; font-size: .62rem; color: var(--teal); text-transform: uppercase; }
@@ -89,12 +91,13 @@ button, select { font: inherit; }
 .legend-title { display: block; margin-bottom: 7px; font-family: "DM Mono", monospace; font-size: .62rem; text-transform: uppercase; }
 .legend-ramp { height: 7px; background: linear-gradient(90deg, #d8ddd5, #64a6a0, #17687a, #0d3544); }
 .legend-labels { display: flex; justify-content: space-between; margin-top: 4px; font-family: "DM Mono", monospace; font-size: .58rem; color: var(--muted); }
-.review-key { display: flex; gap: 10px; margin-top: 9px; padding-top: 8px; border-top: 1px solid var(--line); font-family: "DM Mono", monospace; font-size: .55rem; color: var(--muted); text-transform: uppercase; }
+.review-key { display: flex; flex-wrap: wrap; gap: 8px 10px; margin-top: 9px; padding-top: 8px; border-top: 1px solid var(--line); font-family: "DM Mono", monospace; font-size: .55rem; color: var(--muted); text-transform: uppercase; }
 .review-key span { display: inline-flex; align-items: center; gap: 4px; }
 .key-dot { width: 7px; height: 7px; border-radius: 50%; border: 2px solid currentColor; }
 .key-pending { color: #c7522a; }
 .key-merged { color: #76518f; }
 .key-contained { color: #277da1; }
+.key-ring { width: 9px; height: 9px; border-radius: 50%; border: 2px solid #c66a16; }
 .map-caption { display: flex; justify-content: space-between; gap: 16px; padding: 9px 16px; border-top: 1px solid var(--line); background: #f7f6f1; font-family: "DM Mono", monospace; font-size: .61rem; color: var(--muted); }
 
 .maplibregl-popup-content { border-radius: 3px; padding: 10px 12px; font-family: "Manrope", sans-serif; font-size: .72rem; box-shadow: 0 8px 24px rgb(13 27 34 / 18%); }

@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dccio.org/schemas/v1/public-lifecycle-verification-coverage.schema.json",
+  "title": "Public county lifecycle-verification coverage",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "county_fips",
+    "county_name",
+    "state_abbr",
+    "active_canonical_facility_count",
+    "queued_facility_count",
+    "in_research_facility_count",
+    "verified_facility_count",
+    "unknown_status_facility_count",
+    "coverage_status",
+    "generated_at"
+  ],
+  "properties": {
+    "schema_version": {"$ref": "common.schema.json#/$defs/schema_version"},
+    "county_fips": {"$ref": "common.schema.json#/$defs/county_fips"},
+    "county_name": {"type": "string", "minLength": 1},
+    "state_abbr": {"$ref": "common.schema.json#/$defs/state_abbr"},
+    "active_canonical_facility_count": {"type": "integer", "minimum": 0},
+    "queued_facility_count": {"type": "integer", "minimum": 0},
+    "in_research_facility_count": {"type": "integer", "minimum": 0},
+    "verified_facility_count": {"type": "integer", "minimum": 0},
+    "unknown_status_facility_count": {"type": "integer", "minimum": 0},
+    "coverage_status": {"type": "string", "enum": ["pilot_queued", "backlog", "no_active_facility"]},
+    "generated_at": {"$ref": "common.schema.json#/$defs/timestamp"}
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,93 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dccio.org/schemas/v1/lifecycle-verification-candidate.schema.json",
+  "title": "Facility lifecycle verification candidate",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "verification_candidate_id",
+    "facility_id",
+    "canonical_name",
+    "primary_county_fips",
+    "county_name",
+    "state_abbr",
+    "source_layer",
+    "target_attributes",
+    "suggested_source_types",
+    "priority_score",
+    "priority_tier",
+    "selection_reasons",
+    "evidence_status",
+    "review_status",
+    "created_at",
+    "updated_at",
+    "record_status"
+  ],
+  "properties": {
+    "schema_version": {"$ref": "common.schema.json#/$defs/schema_version"},
+    "verification_candidate_id": {"$ref": "common.schema.json#/$defs/entity_id"},
+    "facility_id": {"$ref": "common.schema.json#/$defs/entity_id"},
+    "canonical_name": {"type": "string", "minLength": 1},
+    "primary_county_fips": {"$ref": "common.schema.json#/$defs/county_fips"},
+    "county_name": {"type": "string", "minLength": 1},
+    "state_abbr": {"$ref": "common.schema.json#/$defs/state_abbr"},
+    "source_layer": {"type": "string", "enum": ["point", "building"]},
+    "campus_id": {"$ref": "common.schema.json#/$defs/entity_id"},
+    "operator_id": {"$ref": "common.schema.json#/$defs/entity_id"},
+    "operator_canonical_name": {"type": "string", "minLength": 1},
+    "target_attributes": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "enum": [
+          "facility.current_status",
+          "facility.facility_type",
+          "event.announced",
+          "event.construction_started",
+          "event.operational",
+          "event.expansion_operational",
+          "event.closed",
+          "operator_relationship.roles",
+          "observation.capacity_mw",
+          "observation.floor_area_sqft"
+        ]
+      }
+    },
+    "suggested_source_types": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "enum": [
+          "operator_release",
+          "planning_record",
+          "zoning_record",
+          "permit_record",
+          "assessor_record",
+          "utility_filing",
+          "regulatory_filing",
+          "sec_filing",
+          "local_news",
+          "trade_press"
+        ]
+      }
+    },
+    "priority_score": {"type": "number", "minimum": 0, "maximum": 100},
+    "priority_tier": {"type": "string", "enum": ["pilot_high", "pilot_standard", "backlog"]},
+    "selection_reasons": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 1}
+    },
+    "evidence_status": {"type": "string", "enum": ["no_external_evidence", "partial", "sufficient", "conflicting"]},
+    "review_status": {"type": "string", "enum": ["queued", "in_research", "evidence_collected", "needs_review", "verified", "blocked"]},
+    "created_at": {"$ref": "common.schema.json#/$defs/timestamp"},
+    "updated_at": {"$ref": "common.schema.json#/$defs/timestamp"},
+    "record_status": {"type": "string", "enum": ["active", "provisional", "superseded", "withdrawn"]}
+  },
+  "additionalProperties": false
+}

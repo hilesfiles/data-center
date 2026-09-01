@@ -1,0 +1,71 @@
+{
+  "schema_version": "1.0.0",
+  "dataset_id": "im3_lifecycle_verification_pilot_20260831",
+  "artifact_type": "lifecycle_verification_pilot",
+  "artifact_version": "2026.08.31",
+  "generated_at": "2026-09-01T00:30:00Z",
+  "data_vintage": "2026-08-31",
+  "record_schema": "https://dccio.org/schemas/v1/lifecycle-verification-candidate.schema.json",
+  "format": "json",
+  "parts": [
+    {
+      "path": "data/silver/infrastructure/im3-2026.02.09-lifecycle-pilot.json",
+      "sha256": "b680549103afaba2b95bd481ac04be84a6416bea0b155fff71084d1ef9245322",
+      "byte_size": 33466,
+      "record_count": 24,
+      "partition_values": {
+        "zone": "silver",
+        "projection": "lifecycle_pilot"
+      }
+    },
+    {
+      "path": "data/silver/infrastructure/im3-2026.02.09-lifecycle-pilot.processing-report.json",
+      "sha256": "16dd69770e5415d614ad0dd0c6617854f58c91e2d2d579ff2444440e269e5fe3",
+      "byte_size": 2388,
+      "record_count": 1,
+      "partition_values": {
+        "zone": "silver",
+        "projection": "processing_report"
+      }
+    },
+    {
+      "path": "site/public/data/v1/lifecycle/pilot-queue.json",
+      "sha256": "a4b1c0a02efa7eb2421dab515b8c8e30c4dd00d3825914add1ad91ed4898d702",
+      "byte_size": 33253,
+      "record_count": 24,
+      "partition_values": {
+        "zone": "public",
+        "projection": "lifecycle_pilot_queue"
+      }
+    },
+    {
+      "path": "site/public/data/v1/counties/lifecycle-verification-coverage.json",
+      "sha256": "973423260dbd21168d77c958fe585403f215453065f8c8875a371172ed50e537",
+      "byte_size": 1035404,
+      "record_count": 3144,
+      "partition_values": {
+        "zone": "public",
+        "projection": "lifecycle_coverage"
+      }
+    },
+    {
+      "path": "site/public/data/v1/lifecycle/metadata.json",
+      "sha256": "4e16dd0ba2108847f35750b2d449c00d77701f1ce8cb4ac46cd234f0203ac5b9",
+      "byte_size": 2385,
+      "record_count": 1,
+      "partition_values": {
+        "zone": "public",
+        "projection": "lifecycle_metadata"
+      }
+    }
+  ],
+  "record_count": 3194,
+  "input_dataset_ids": [
+    "im3_final_boundary_review_20260831"
+  ],
+  "license_metadata": {
+    "license": "ODbL applies to IM3-derived records",
+    "redistribution_status": "allowed",
+    "attribution": "© OpenStreetMap contributors; IM3 Open Source Data Center Atlas (PNNL/DOE)"
+  }
+}

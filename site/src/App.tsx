@@ -2,6 +2,7 @@ import { lazy, Suspense, useEffect, useMemo, useState } from "react";
 import type {
   CountyEntityAdjudicationCoverage,
   CountyEntityResolutionCoverage,
+  CountyLifecycleVerificationCoverage,
   FacilitySourceCoverage,
   SiteMetadata,
 } from "./types";
@@ -21,6 +22,7 @@ export default function App() {
   const [counties, setCounties] = useState<FacilitySourceCoverage[]>([]);
   const [resolution, setResolution] = useState<CountyEntityResolutionCoverage[]>([]);
   const [adjudication, setAdjudication] = useState<CountyEntityAdjudicationCoverage[]>([]);
+  const [lifecycle, setLifecycle] = useState<CountyLifecycleVerificationCoverage[]>([]);
   const [selectedFips, setSelectedFips] = useState<string | null>("51107");
   const [error, setError] = useState<string | null>(null);
 
@@ -31,9 +33,10 @@ export default function App() {
       fetch(`${base}data/v1/counties/facility-source-coverage.json`),
       fetch(`${base}data/v1/counties/entity-resolution-coverage.json`),
       fetch(`${base}data/v1/counties/final-review-coverage.json`),
+      fetch(`${base}data/v1/counties/lifecycle-verification-coverage.json`),
     ])
-      .then(async ([metadataResponse, coverageResponse, resolutionResponse, adjudicationResponse]) => {
-        if (!metadataResponse.ok || !coverageResponse.ok || !resolutionResponse.ok || !adjudicationResponse.ok) {
+      .then(async ([metadataResponse, coverageResponse, resolutionResponse, adjudicationResponse, lifecycleResponse]) => {
+        if (!metadataResponse.ok || !coverageResponse.ok || !resolutionResponse.ok || !adjudicationResponse.ok || !lifecycleResponse.ok) {
           throw new Error("The static data contract could not be loaded.");
         }
         setMetadata((await metadataResponse.json()) as SiteMetadata);
@@ -43,6 +46,9 @@ export default function App() {
         );
         setAdjudication(
           (await adjudicationResponse.json()) as CountyEntityAdjudicationCoverage[],
+        );
+        setLifecycle(
+          (await lifecycleResponse.json()) as CountyLifecycleVerificationCoverage[],
         );
       })
       .catch((reason: unknown) =>
@@ -62,6 +68,10 @@ export default function App() {
     () => adjudication.find((county) => county.county_fips === selectedFips) ?? null,
     [adjudication, selectedFips],
   );
+  const selectedLifecycle = useMemo(
+    () => lifecycle.find((county) => county.county_fips === selectedFips) ?? null,
+    [lifecycle, selectedFips],
+  );
 
   return (
     <div className="app-shell">
@@ -77,7 +87,7 @@ export default function App() {
       </header>
 
       <div className="fixture-banner" role="status">
-        <strong>Provisional, fully reviewed source inventory.</strong> All sixteen spatial identity candidates now have evidence-backed outcomes. The One Wilshire inner polygon was corrected from campus to a superseded building part; the 4010 Data Center campus remains separate from Lumen. This is not a lifecycle-verified operating-facility census.
+        <strong>Lifecycle verification has started.</strong> All sixteen spatial identity candidates are resolved, and 24 canonical facilities across eight high-density counties are now queued for a controlled evidence pilot. Zero facilities have a verified lifecycle status yet.
       </div>
 
       <main className="workspace">
@@ -173,11 +183,31 @@ export default function App() {
                     <strong>{integerFormat.format(selectedAdjudication?.distinct_contained_facility_count ?? 0)}</strong>
                     <em>contained but not merged</em>
                   </div>
+                  <div className="lifecycle-row lifecycle-start">
+                    <span>Canonical facilities</span>
+                    <strong>{integerFormat.format(selectedLifecycle?.active_canonical_facility_count ?? 0)}</strong>
+                    <em>deduplicated research entities</em>
+                  </div>
+                  <div className="lifecycle-row">
+                    <span>Lifecycle pilot queue</span>
+                    <strong>{integerFormat.format(selectedLifecycle?.queued_facility_count ?? 0)}</strong>
+                    <em>priority for evidence collection</em>
+                  </div>
+                  <div className="lifecycle-row">
+                    <span>Verified lifecycle statuses</span>
+                    <strong>{integerFormat.format(selectedLifecycle?.verified_facility_count ?? 0)}</strong>
+                    <em>reviewed claims required</em>
+                  </div>
+                  <div className="lifecycle-row">
+                    <span>Unknown lifecycle status</span>
+                    <strong>{integerFormat.format(selectedLifecycle?.unknown_status_facility_count ?? 0)}</strong>
+                    <em>unknown is never treated as zero</em>
+                  </div>
                 </div>
 
                 <div className="evidence-note">
                   <span>Interpretation</span>
-                  <p>Source objects and superseded decisions remain preserved after review. Duplicate records and misclassified building parts redirect to a canonical building; tenant sites, computing systems, and neighboring campuses remain distinct. The data still do not establish operating status, opening dates, historical completeness, capacity, or causal community impact.</p>
+                  <p>Amber map halos identify research priority only—not operating status. Each queued facility still requires independent source claims and a reviewed resolution for status, dates, operator roles, and capacity before it can enter a historical treatment panel.</p>
                 </div>
               </>
             )}

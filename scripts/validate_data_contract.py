@@ -322,6 +322,7 @@ ID_FIELDS = {
     "claim_resolution": "resolution_id",
     "review_decision": "review_decision_id",
     "entity_resolution_candidate": "resolution_candidate_id",
+    "lifecycle_verification_candidate": "verification_candidate_id",
     "observation": "observation_id",
     "panel_row": "panel_row_id",
     "acquisition_manifest": "manifest_id",
@@ -426,6 +427,10 @@ def validate_references(fixture: dict[str, Any]) -> list[Issue]:
             check_reference(subject.get("entity_id"), ids, f"$.entity_resolution_candidate[{i}].subject_refs[{j}].entity_id", issues)
         for j, claim_id in enumerate(record.get("evidence_claim_ids", [])):
             check_reference(claim_id, ids, f"$.entity_resolution_candidate[{i}].evidence_claim_ids[{j}]", issues)
+    for i, record in enumerate(fixture.get("lifecycle_verification_candidate", [])):
+        check_reference(record.get("facility_id"), ids, f"$.lifecycle_verification_candidate[{i}].facility_id", issues)
+        check_reference(record.get("campus_id"), ids, f"$.lifecycle_verification_candidate[{i}].campus_id", issues)
+        check_reference(record.get("operator_id"), ids, f"$.lifecycle_verification_candidate[{i}].operator_id", issues)
     for i, record in enumerate(fixture.get("observation", [])):
         subject = record.get("subject", {})
         if subject.get("subject_type") in {"campus", "facility", "project", "project_phase"}:
@@ -1264,6 +1269,112 @@ def validate_public_data(
             issues.append(Issue("public_data_validation", f"{final_manifest_path.name}.parts[{index}]", "byte size or SHA-256 does not match the artifact"))
     if final_manifest.get("record_count") != total_final_manifest_records:
         issues.append(Issue("public_data_validation", final_manifest_path.name, "manifest record count does not equal its parts"))
+
+    lifecycle_policy_path = CONFIG_DIR / "lifecycle-pilot-policy.json"
+    lifecycle_policy = load_json(lifecycle_policy_path)
+    for issue in validator.validate_record(lifecycle_policy, schema_paths["lifecycle_verification_policy"]):
+        issues.append(Issue("public_data_validation", f"{lifecycle_policy_path.name}{issue.path[1:]}", issue.message))
+    if (
+        lifecycle_policy.get("pilot_size") != 24
+        or lifecycle_policy.get("county_count") != 8
+        or lifecycle_policy.get("per_county_quota") != 3
+        or sum(lifecycle_policy.get("scoring_weights", {}).values()) != 100
+    ):
+        issues.append(Issue("public_data_validation", lifecycle_policy_path.name, "lifecycle pilot policy size, quota, or scoring weights are inconsistent"))
+
+    lifecycle_path = DATA_DIR / "silver" / "infrastructure" / "im3-2026.02.09-lifecycle-pilot.json"
+    lifecycle_pilot = load_json(lifecycle_path)
+    lifecycle_candidates = lifecycle_pilot.get("collections", {}).get("lifecycle_verification_candidate", [])
+    active_final_facility_ids = {
+        item.get("facility_id")
+        for item in final_collections.get("facility", [])
+        if item.get("record_status") != "superseded"
+    }
+    lifecycle_candidate_ids = [item.get("verification_candidate_id") for item in lifecycle_candidates]
+    lifecycle_facility_ids = [item.get("facility_id") for item in lifecycle_candidates]
+    lifecycle_counties = Counter(item.get("primary_county_fips") for item in lifecycle_candidates)
+    if (
+        lifecycle_pilot.get("record_count") != 24
+        or len(lifecycle_candidates) != 24
+        or len(lifecycle_candidate_ids) != len(set(lifecycle_candidate_ids))
+        or len(lifecycle_facility_ids) != len(set(lifecycle_facility_ids))
+        or not set(lifecycle_facility_ids).issubset(active_final_facility_ids)
+        or len(lifecycle_counties) != 8
+        or set(lifecycle_counties.values()) != {3}
+        or any(item.get("review_status") != "queued" or item.get("evidence_status") != "no_external_evidence" for item in lifecycle_candidates)
+    ):
+        issues.append(Issue("public_data_validation", lifecycle_path.name, "lifecycle pilot selection, identity, or initial state is inconsistent"))
+    for index, record in enumerate(lifecycle_candidates):
+        for issue in validator.validate_record(record, schema_paths["lifecycle_verification_candidate"]):
+            issues.append(Issue("public_data_validation", f"{lifecycle_path.name}.lifecycle_verification_candidate[{index}]{issue.path[1:]}", issue.message))
+    lifecycle_reference_fixture = {
+        "facility": final_collections.get("facility", []),
+        "campus": final_collections.get("campus", []),
+        "operator": final_collections.get("operator", []),
+        "lifecycle_verification_candidate": lifecycle_candidates,
+        "geography_reference": geography_records,
+        "metric_definition": load_json(CONFIG_DIR / "metric-registry.json")["metrics"],
+    }
+    for issue in validate_references(lifecycle_reference_fixture):
+        issues.append(Issue("public_data_validation", f"{lifecycle_path.name}:{issue.path}", issue.message))
+
+    lifecycle_report_path = DATA_DIR / "silver" / "infrastructure" / "im3-2026.02.09-lifecycle-pilot.processing-report.json"
+    lifecycle_report = load_json(lifecycle_report_path)
+    expected_lifecycle_counts = {
+        "active_canonical_facility_count": 1337,
+        "eligible_facility_count": 1337,
+        "unknown_status_facility_count": 1337,
+        "pilot_facility_count": 24,
+        "pilot_county_count": 8,
+        "verified_facility_count": 0,
+    }
+    if lifecycle_report.get("counts") != expected_lifecycle_counts or len(lifecycle_report.get("pilot_counties", [])) != 8:
+        issues.append(Issue("public_data_validation", lifecycle_report_path.name, "lifecycle pilot diagnostics changed"))
+
+    public_lifecycle_queue_path = PUBLIC_DATA_DIR / "lifecycle" / "pilot-queue.json"
+    public_lifecycle_queue = load_json(public_lifecycle_queue_path)
+    if public_lifecycle_queue != lifecycle_candidates:
+        issues.append(Issue("public_data_validation", "lifecycle/pilot-queue.json", "public lifecycle queue must match the governed silver queue"))
+    for index, record in enumerate(public_lifecycle_queue):
+        for issue in validator.validate_record(record, schema_paths["lifecycle_verification_candidate"]):
+            issues.append(Issue("public_data_validation", f"pilot-queue.json[{index}]{issue.path[1:]}", issue.message))
+
+    lifecycle_coverage_path = PUBLIC_DATA_DIR / "counties" / "lifecycle-verification-coverage.json"
+    lifecycle_coverage = load_json(lifecycle_coverage_path)
+    lifecycle_coverage_fips = [record.get("county_fips") for record in lifecycle_coverage]
+    if len(lifecycle_coverage) != 3144 or set(lifecycle_coverage_fips) != feature_fips or len(lifecycle_coverage_fips) != len(set(lifecycle_coverage_fips)):
+        issues.append(Issue("public_data_validation", "counties/lifecycle-verification-coverage.json", "lifecycle coverage must contain every Census county exactly once"))
+    for index, record in enumerate(lifecycle_coverage):
+        for issue in validator.validate_record(record, schema_paths["public_lifecycle_verification_coverage"]):
+            issues.append(Issue("public_data_validation", f"lifecycle-verification-coverage.json[{index}]{issue.path[1:]}", issue.message))
+        boundary = features_by_fips.get(record.get("county_fips", ""), {})
+        if record.get("county_name") != boundary.get("county_name") or record.get("state_abbr") != boundary.get("state_abbr"):
+            issues.append(Issue("public_data_validation", f"lifecycle-verification-coverage.json[{index}]", "county identity does not match the Census boundary"))
+    if (
+        sum(record.get("active_canonical_facility_count", 0) for record in lifecycle_coverage) != 1337
+        or sum(record.get("queued_facility_count", 0) for record in lifecycle_coverage) != 24
+        or sum(record.get("verified_facility_count", 0) for record in lifecycle_coverage) != 0
+        or sum(record.get("unknown_status_facility_count", 0) for record in lifecycle_coverage) != 1337
+        or sum(record.get("coverage_status") == "pilot_queued" for record in lifecycle_coverage) != 8
+    ):
+        issues.append(Issue("public_data_validation", "counties/lifecycle-verification-coverage.json", "national lifecycle coverage totals are inconsistent"))
+
+    lifecycle_manifest_path = DATA_DIR / "silver" / "infrastructure" / "im3-2026.02.09-lifecycle-pilot.manifest.json"
+    lifecycle_manifest = load_json(lifecycle_manifest_path)
+    for issue in validator.validate_record(lifecycle_manifest, schema_paths["dataset_manifest"]):
+        issues.append(Issue("public_data_validation", f"{lifecycle_manifest_path.name}{issue.path[1:]}", issue.message))
+    total_lifecycle_manifest_records = 0
+    for index, part in enumerate(lifecycle_manifest.get("parts", [])):
+        part_path = (ROOT / part.get("path", "")).resolve()
+        if not part_path.is_relative_to(ROOT) or not part_path.is_file():
+            issues.append(Issue("public_data_validation", f"{lifecycle_manifest_path.name}.parts[{index}]", "part path is missing or outside the repository"))
+            continue
+        payload = part_path.read_bytes()
+        total_lifecycle_manifest_records += part.get("record_count", 0)
+        if part.get("byte_size") != len(payload) or part.get("sha256") != hashlib.sha256(payload).hexdigest():
+            issues.append(Issue("public_data_validation", f"{lifecycle_manifest_path.name}.parts[{index}]", "byte size or SHA-256 does not match the artifact"))
+    if lifecycle_manifest.get("record_count") != total_lifecycle_manifest_records:
+        issues.append(Issue("public_data_validation", lifecycle_manifest_path.name, "manifest record count does not equal its parts"))
     return issues
 
 

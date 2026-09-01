@@ -72,3 +72,17 @@ immutable; final boundary review is another downstream JSON layer.
 The seed does not establish operating dates, lifecycle status, historical completeness,
 MW capacity, or causal effects. Historical reconstruction, outcome panels, and
 econometric estimation remain future work.
+
+## Lifecycle verification pilot
+
+The first historical-reconstruction increment is a governed 24-facility research queue.
+It selects three active canonical facilities from each of the eight counties with the
+largest canonical-facility counts. Within each county, deterministic priority scoring
+uses county density, source naming, normalized operator linkage, mapped building
+footprints, campus membership, and source quality. The policy and its weights are stored
+in JSON and the public queue is rebuildable from the final identity snapshot.
+
+All 1,337 canonical facilities still have `current_status: unknown`. Queue membership is
+therefore not evidence that a facility operates, was announced, or ever completed. The
+pilot exists to collect source claims and test reviewed lifecycle resolutions before the
+workflow expands nationally.

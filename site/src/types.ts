@@ -138,3 +138,31 @@ export interface PublicEntityAdjudicationRecord {
   }>;
   generated_at: string;
 }
+
+export interface CountyLifecycleVerificationCoverage {
+  schema_version: "1.0.0";
+  county_fips: string;
+  county_name: string;
+  state_abbr: string;
+  active_canonical_facility_count: number;
+  queued_facility_count: number;
+  in_research_facility_count: number;
+  verified_facility_count: number;
+  unknown_status_facility_count: number;
+  coverage_status: "pilot_queued" | "backlog" | "no_active_facility";
+  generated_at: string;
+}
+
+export interface LifecycleVerificationCandidate {
+  schema_version: "1.0.0";
+  verification_candidate_id: string;
+  facility_id: string;
+  canonical_name: string;
+  primary_county_fips: string;
+  county_name: string;
+  state_abbr: string;
+  priority_score: number;
+  priority_tier: "pilot_high" | "pilot_standard" | "backlog";
+  evidence_status: "no_external_evidence" | "partial" | "sufficient" | "conflicting";
+  review_status: "queued" | "in_research" | "evidence_collected" | "needs_review" | "verified" | "blocked";
+}
