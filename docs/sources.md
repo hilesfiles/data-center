@@ -119,6 +119,21 @@ the first data-center entry in Santa Clara or Maricopa County. Public county ass
 JSON-only and split into 51 state/DC partitions. Missing reviewed events do not establish a
 never-treated comparison group.
 
+## Governed county first-entry research queue
+
+- Policy: `config/v1/first-entry-research-policy.json`
+- Eligible research counties: 217
+- Initial tranche: 24 counties, six per Census region
+- National backlog: 193 counties
+- Active-facility counties excluded for incomplete history: 9
+- Builder: `scripts/build_first_entry_research_queue.py`
+
+The prioritization uses only governed local inputs: canonical facility counts, reviewed
+lifecycle results, treatment-candidate counts, 2001–2024 panel completeness, and IM3 source
+identity coverage. It introduces no new external factual claims. Public queue records are
+JSON-only and split into 51 state/DC partitions. Evidence collection for the initial tranche
+must use the source protocol in the policy; ranking alone cannot establish first entry.
+
 The panel retains current Census identities without crosswalking legacy source geographies.
 Connecticut planning regions consequently lack BLS rows before their 2024 adoption, and the
 BEA combined/legacy geography limitations remain. Missing cells and 26 suppressed

@@ -157,6 +157,29 @@ export interface CountyTreatmentAssessment {
   record_status: "active" | "provisional";
 }
 
+export interface FirstEntryResearchCandidate {
+  schema_version: "1.0.0";
+  first_entry_research_candidate_id: string;
+  treatment_definition_id: "trt_first_entry_v1";
+  county_fips: string;
+  county_name: string;
+  state_abbr: string;
+  census_region: "Northeast" | "Midwest" | "South" | "West";
+  active_canonical_facility_count: number;
+  reviewed_operational_facility_count: number;
+  dated_operational_candidate_count: number;
+  panel_complete_year_count: number;
+  source_record_count: number;
+  named_source_record_count: number;
+  priority_score: number;
+  priority_tier: "first_entry_high" | "first_entry_standard" | "first_entry_deferred";
+  national_rank: number;
+  region_rank: number;
+  initial_tranche_rank?: number;
+  queue_status: "initial_tranche" | "national_backlog";
+  research_status: "queued" | "in_research" | "evidence_collected" | "needs_review" | "verified" | "blocked";
+}
+
 export interface CountyEntityResolutionCoverage {
   schema_version: "1.0.0";
   county_fips: string;

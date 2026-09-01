@@ -144,6 +144,24 @@ years). Both fail only the county-first-entry verification gate. Therefore all 3
 have an assessment, zero are eligible, and no model run is authorized. Counties without a
 reviewed dated event remain unknown for treatment purposes; they are not labeled never treated.
 
+### First-entry research prioritization
+
+The research queue is a governance tool, not a treatment model. Counties are eligible for
+ranking only when the current canonical inventory contains at least one facility, all 24
+core panel years are complete, and the county is not already treatment-eligible. This yields
+217 candidates from 226 facility counties; nine facility counties fail the history gate.
+
+Priority combines a governed dated-event anchor (30%), reviewed operational evidence (25%),
+the feasibility of auditing the county's current facility inventory (20%), panel completeness
+(15%), and source-identity coverage (10%). Inventory feasibility is inversely scaled by the
+log of the active facility count, so a smaller inventory is treated as easier to audit—not as
+more likely to be newly treated. The initial tranche contains 24 counties, six per Census
+region and no more than two per state. All 217 records remain `research_status: queued`.
+
+Every adjudication must establish an earliest dated operational event, exact facility identity,
+county inventory completeness, and a documented search for earlier operations. Failure to
+verify those findings yields `unresolved_not_never_treated`; it never establishes a control.
+
 ## Lifecycle verification pilot
 
 The first historical-reconstruction increment is a governed 24-facility research queue.

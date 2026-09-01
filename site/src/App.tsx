@@ -3,6 +3,7 @@ import type {
   CountyEntityAdjudicationCoverage,
   CountyEconomicHistory,
   CountyTreatmentAssessment,
+  FirstEntryResearchCandidate,
   CountyEconomicBaseline,
   CountyEmploymentWagesBaseline,
   CountyEntityResolutionCoverage,
@@ -54,6 +55,9 @@ export default function App() {
   >({});
   const [treatmentByState, setTreatmentByState] = useState<
     Record<string, CountyTreatmentAssessment[]>
+  >({});
+  const [firstEntryResearchByState, setFirstEntryResearchByState] = useState<
+    Record<string, FirstEntryResearchCandidate[]>
   >({});
   const [resolution, setResolution] = useState<CountyEntityResolutionCoverage[]>([]);
   const [adjudication, setAdjudication] = useState<CountyEntityAdjudicationCoverage[]>([]);
@@ -157,6 +161,28 @@ export default function App() {
       cancelled = true;
     };
   }, [selectedCounty, treatmentByState]);
+  useEffect(() => {
+    const stateAbbr = selectedCounty?.state_abbr;
+    if (stateAbbr == null || firstEntryResearchByState[stateAbbr] != null) return;
+    let cancelled = false;
+    const base = import.meta.env.BASE_URL;
+    fetch(`${base}data/v1/treatments/county-first-entry-research/by-state/${stateAbbr.toLowerCase()}.json`)
+      .then(async (response) => {
+        if (!response.ok) throw new Error(`First-entry research queue could not be loaded for ${stateAbbr}.`);
+        const records = (await response.json()) as FirstEntryResearchCandidate[];
+        if (!cancelled) {
+          setFirstEntryResearchByState((current) => ({...current, [stateAbbr]: records}));
+        }
+      })
+      .catch((reason: unknown) => {
+        if (!cancelled) {
+          setError(reason instanceof Error ? reason.message : "First-entry research queue could not be loaded.");
+        }
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [firstEntryResearchByState, selectedCounty]);
   const selectedResolution = useMemo(
     () => resolution.find((county) => county.county_fips === selectedFips) ?? null,
     [resolution, selectedFips],
@@ -185,6 +211,22 @@ export default function App() {
         ) ?? null,
     [selectedCounty, selectedFips, treatmentByState],
   );
+  const selectedFirstEntryResearch = useMemo(
+    () => selectedCounty == null
+      ? null
+      : firstEntryResearchByState[selectedCounty.state_abbr]?.find(
+          (county) => county.county_fips === selectedFips,
+        ) ?? null,
+    [firstEntryResearchByState, selectedCounty, selectedFips],
+  );
+  const selectedAdjudication = useMemo(
+    () => adjudication.find((county) => county.county_fips === selectedFips) ?? null,
+    [adjudication, selectedFips],
+  );
+  const selectedLifecycle = useMemo(
+    () => lifecycle.find((county) => county.county_fips === selectedFips) ?? null,
+    [lifecycle, selectedFips],
+  );
   const treatmentStatus = selectedTreatment?.assessment_status === "eligible"
     ? `Eligible · ${selectedTreatment.eligible_cohort_year}`
     : selectedTreatment?.assessment_status === "candidate_events_not_first_entry"
@@ -197,6 +239,18 @@ export default function App() {
     : selectedTreatment?.assessment_status === "eligible"
       ? "governed county first-entry date"
       : "never-treated status is not inferred";
+  const researchQueueStatus = selectedFirstEntryResearch?.queue_status === "initial_tranche"
+    ? `Initial tranche · #${selectedFirstEntryResearch.initial_tranche_rank}`
+    : selectedFirstEntryResearch != null
+      ? `Backlog · national #${selectedFirstEntryResearch.national_rank}`
+      : selectedCounty != null && firstEntryResearchByState[selectedCounty.state_abbr] == null
+        ? "Loading…"
+        : "Not queued";
+  const researchQueueNote = selectedFirstEntryResearch != null
+    ? `priority ${selectedFirstEntryResearch.priority_score.toFixed(2)} · research ordering only`
+    : (selectedLifecycle?.active_canonical_facility_count ?? 0) > 0
+      ? "complete 24-year history requirement not met"
+      : "no active canonical facility in current inventory";
   const selectedHistoryChange = useMemo(() => {
     const start = selectedEconomicHistory?.years.find((record) => record.year === 2001);
     const end = selectedEconomicHistory?.years.find((record) => record.year === 2024);
@@ -207,20 +261,13 @@ export default function App() {
       weeklyWage: percentChange(start?.annual_avg_weekly_wage_nominal_usd, end?.annual_avg_weekly_wage_nominal_usd),
     };
   }, [selectedEconomicHistory]);
-  const selectedAdjudication = useMemo(
-    () => adjudication.find((county) => county.county_fips === selectedFips) ?? null,
-    [adjudication, selectedFips],
-  );
-  const selectedLifecycle = useMemo(
-    () => lifecycle.find((county) => county.county_fips === selectedFips) ?? null,
-    [lifecycle, selectedFips],
-  );
-
   if (profileFips != null) {
     const historyLoaded = selectedCounty != null
       && economicHistoryByState[selectedCounty.state_abbr] != null;
     const treatmentLoaded = selectedCounty != null
       && treatmentByState[selectedCounty.state_abbr] != null;
+    const researchQueueLoaded = selectedCounty != null
+      && firstEntryResearchByState[selectedCounty.state_abbr] != null;
     return (
       <div className="app-shell county-profile-shell">
         <header className="topbar">
@@ -279,6 +326,11 @@ export default function App() {
                   <small>{!treatmentLoaded ? "loading governed assessment" : treatmentNote}</small>
                 </article>
                 <article>
+                  <span>First-entry research queue</span>
+                  <strong>{!researchQueueLoaded ? "Loading…" : researchQueueStatus}</strong>
+                  <small>{!researchQueueLoaded ? "loading governed priority" : researchQueueNote}</small>
+                </article>
+                <article>
                   <span>Employment change · 2001–2024</span>
                   <strong>{!historyLoaded ? "Loading…" : formatPercentChange(selectedHistoryChange.employment)}</strong>
                   <small>descriptive, not a causal estimate</small>
@@ -301,7 +353,7 @@ export default function App() {
               </section>
               <div className="evidence-note profile-note">
                 <span>Research status</span>
-                <p>The governed registry contains zero eligible county first-entry dates. Two dated facility events pass evidence and history-window thresholds, but neither verifies the county's first data-center entry; no model run is authorized.</p>
+                <p>The governed first-entry queue contains 217 research candidates and a region-balanced 24-county initial tranche. Queue rank orders evidence work only: it does not establish a treatment date, first entry, or never-treated comparison status.</p>
               </div>
             </>
           )}
@@ -324,7 +376,7 @@ export default function App() {
       </header>
 
       <div className="fixture-banner" role="status">
-        <strong>The county first-entry registry is now governed and explicit.</strong> Two dated facility openings pass evidence and history-window thresholds, but neither proves the county's first data-center entry. There are zero eligible treatment counties, so no impact model has been run.
+        <strong>County first-entry research is now queued under a governed policy.</strong> The initial tranche contains 24 counties—six per Census region—from 217 eligible research candidates. Rank orders research only; zero treatment counties are eligible and no impact model has been run.
       </div>
 
       <main className="workspace">
@@ -492,6 +544,11 @@ export default function App() {
                     <em>{treatmentNote}</em>
                   </div>
                   <div className="lifecycle-row">
+                    <span>First-entry research queue</span>
+                    <strong>{researchQueueStatus}</strong>
+                    <em>{researchQueueNote}</em>
+                  </div>
+                  <div className="lifecycle-row">
                     <span>Covered employment change · 2001–2024</span>
                     <strong>{formatPercentChange(selectedHistoryChange.employment)}</strong>
                     <em>descriptive change</em>
@@ -563,6 +620,7 @@ export default function App() {
             <span>BLS QCEW employment and wages · 2025</span>
             <span>BEA–BLS core panel · 2001–2024</span>
             <span>First-entry treatment registry · 0 eligible counties</span>
+            <span>First-entry research · 24 initial / 193 backlog</span>
             <span>Static JSON · No runtime database</span>
             <span>ODbL · © OpenStreetMap contributors</span>
           </div>

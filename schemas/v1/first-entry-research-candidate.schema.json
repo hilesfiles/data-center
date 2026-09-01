@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dccio.org/schemas/v1/first-entry-research-candidate.schema.json",
+  "title": "County first-entry research candidate",
+  "type": "object",
+  "required": [
+    "schema_version", "first_entry_research_candidate_id", "treatment_definition_id",
+    "county_fips", "county_name", "state_abbr", "census_region",
+    "active_canonical_facility_count", "reviewed_operational_facility_count",
+    "dated_operational_candidate_count", "panel_complete_year_count",
+    "source_record_count", "named_source_record_count", "score_components",
+    "priority_score", "priority_tier", "national_rank", "region_rank",
+    "queue_status", "research_status", "research_objective", "required_findings",
+    "suggested_source_types", "selection_reasons", "created_at", "updated_at",
+    "record_status"
+  ],
+  "properties": {
+    "schema_version": {"$ref": "common.schema.json#/$defs/schema_version"},
+    "first_entry_research_candidate_id": {"$ref": "common.schema.json#/$defs/entity_id"},
+    "treatment_definition_id": {"$ref": "common.schema.json#/$defs/entity_id"},
+    "county_fips": {"$ref": "common.schema.json#/$defs/county_fips"},
+    "county_name": {"type": "string", "minLength": 1},
+    "state_abbr": {"$ref": "common.schema.json#/$defs/state_abbr"},
+    "census_region": {"type": "string", "enum": ["Northeast", "Midwest", "South", "West"]},
+    "active_canonical_facility_count": {"type": "integer", "minimum": 1},
+    "reviewed_operational_facility_count": {"type": "integer", "minimum": 0},
+    "dated_operational_candidate_count": {"type": "integer", "minimum": 0},
+    "panel_complete_year_count": {"type": "integer", "minimum": 0, "maximum": 24},
+    "source_record_count": {"type": "integer", "minimum": 1},
+    "named_source_record_count": {"type": "integer", "minimum": 0},
+    "score_components": {
+      "type": "object",
+      "required": [
+        "dated_event_anchor", "reviewed_operational_evidence", "inventory_audit_feasibility",
+        "panel_completeness", "source_identity_coverage"
+      ],
+      "properties": {
+        "dated_event_anchor": {"type": "number", "minimum": 0, "maximum": 100},
+        "reviewed_operational_evidence": {"type": "number", "minimum": 0, "maximum": 100},
+        "inventory_audit_feasibility": {"type": "number", "minimum": 0, "maximum": 100},
+        "panel_completeness": {"type": "number", "minimum": 0, "maximum": 100},
+        "source_identity_coverage": {"type": "number", "minimum": 0, "maximum": 100}
+      },
+      "additionalProperties": false
+    },
+    "priority_score": {"type": "number", "minimum": 0, "maximum": 100},
+    "priority_tier": {"type": "string", "enum": ["first_entry_high", "first_entry_standard", "first_entry_deferred"]},
+    "national_rank": {"type": "integer", "minimum": 1},
+    "region_rank": {"type": "integer", "minimum": 1},
+    "initial_tranche_rank": {"type": "integer", "minimum": 1},
+    "queue_status": {"type": "string", "enum": ["initial_tranche", "national_backlog"]},
+    "research_status": {"type": "string", "enum": ["queued", "in_research", "evidence_collected", "needs_review", "verified", "blocked"]},
+    "research_objective": {"type": "string", "const": "verify_county_first_operational_entry"},
+    "required_findings": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+    "suggested_source_types": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+    "selection_reasons": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+    "created_at": {"$ref": "common.schema.json#/$defs/timestamp"},
+    "updated_at": {"$ref": "common.schema.json#/$defs/timestamp"},
+    "record_status": {"type": "string", "enum": ["active", "provisional", "superseded", "withdrawn"]}
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"queue_status": {"const": "initial_tranche"}}},
+      "then": {"required": ["initial_tranche_rank"]}
+    }
+  ],
+  "additionalProperties": false
+}

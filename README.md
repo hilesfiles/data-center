@@ -92,6 +92,18 @@ The current evidence contains two qualifying facility openings but zero verified
 first-entry dates, so model readiness is `insufficient_eligible_treatments` and no model run
 is authorized. Absence of a reviewed event is never interpreted as never treated.
 
+Rebuild the governed county first-entry research queue:
+
+```powershell
+python scripts/build_first_entry_research_queue.py
+```
+
+The queue contains 217 counties that have at least one active canonical facility and all 24
+years of core panel history. A deterministic policy selects a 24-county initial tranche with
+six counties per Census region and no more than two per state. Scores order evidence work
+only; they do not assign a treatment date, first-entry status, or comparison-group status.
+The browser lazy-loads the queue through 51 state/DC JSON partitions.
+
 Rebuild the conservative IM3 identity-resolution layer from those JSON artifacts:
 
 ```powershell
@@ -229,11 +241,18 @@ validation can be added later to CI with a standards-compliant Draft 2020-12 val
   for NTT SV1 in Santa Clara County and Apple's Mesa facility in Maricopa County pass evidence
   and history-window thresholds, but neither verifies the county's first entry. Zero counties
   are currently treatment-eligible and no county is classified as never treated.
+- County first-entry research: 217 facility counties meet the complete-history prerequisite.
+  Twenty-four are in the balanced initial tranche and 193 remain in the national backlog;
+  nine additional facility counties lack a complete 24-year panel. Queue membership is not
+  evidence of treatment eligibility.
 - Fiscal, utility, housing, environmental, or opposition observations: not yet ingested.
 - Econometric estimates and public indices: fixture-only; not substantive.
 
 ## Next priority
 
-Adjudicate county-level historical facility inventories to verify true first operational
-entry dates. Do not estimate impacts until enough first-entry treatments and defensible
-comparison counties satisfy the registered evidence and period requirements.
+Research the 24-county initial tranche against local-government, permit, planning, assessor,
+utility, regulatory, operator, and contemporaneous news records. Each adjudication must
+identify the earliest dated operation, establish exact facility identity, assess county
+inventory completeness, and document the search for earlier operations. Do not estimate
+impacts until enough treatments and defensible comparison counties satisfy the registered
+evidence and period requirements.

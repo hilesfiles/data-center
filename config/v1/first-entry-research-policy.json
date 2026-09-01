@@ -1,0 +1,75 @@
+{
+  "schema_version": "1.0.0",
+  "policy_id": "pol_first_entry_research_20260901",
+  "policy_version": "1.0.0",
+  "treatment_definition_id": "trt_first_entry_v1",
+  "input_dataset_ids": [
+    "im3_2026_02_09_final_boundary_review",
+    "im3_2026_02_09_lifecycle_review",
+    "county_economic_core_panel_2001_2024",
+    "county_first_entry_treatment_registry_v1"
+  ],
+  "eligibility": {
+    "active_canonical_facility_required": true,
+    "complete_history_years_required": 24,
+    "eligible_treatments_excluded": true
+  },
+  "regional_frame": [
+    {"region": "Northeast", "state_abbrs": ["CT", "ME", "MA", "NH", "RI", "VT", "NJ", "NY", "PA"]},
+    {"region": "Midwest", "state_abbrs": ["IN", "IL", "MI", "OH", "WI", "IA", "KS", "MN", "MO", "NE", "ND", "SD"]},
+    {"region": "South", "state_abbrs": ["DE", "DC", "FL", "GA", "MD", "NC", "SC", "VA", "WV", "AL", "KY", "MS", "TN", "AR", "LA", "OK", "TX"]},
+    {"region": "West", "state_abbrs": ["AZ", "CO", "ID", "MT", "NV", "NM", "UT", "WY", "AK", "CA", "HI", "OR", "WA"]}
+  ],
+  "initial_tranche": {
+    "size": 24,
+    "per_region_quota": 6,
+    "max_per_state": 2,
+    "selection_order": ["priority_score_desc", "county_fips_asc"]
+  },
+  "scoring": {
+    "weights": {
+      "dated_event_anchor": 30,
+      "reviewed_operational_evidence": 25,
+      "inventory_audit_feasibility": 20,
+      "panel_completeness": 15,
+      "source_identity_coverage": 10
+    },
+    "normalization": {
+      "dated_event_anchor": "100 when a governed dated operational candidate exists for the county; otherwise 0",
+      "reviewed_operational_evidence": "minimum of 100 and 50 times the count of uniquely reviewed operational facilities",
+      "inventory_audit_feasibility": "100 times one minus log(active facility count) divided by log(maximum eligible county facility count)",
+      "panel_completeness": "complete panel years divided by 24 times 100",
+      "source_identity_coverage": "named IM3 source records divided by all IM3 source records times 100"
+    }
+  },
+  "priority_tiers": [
+    {"tier": "first_entry_high", "minimum_score": 65, "maximum_score": 100, "research_action": "Eligible for the balanced initial research tranche."},
+    {"tier": "first_entry_standard", "minimum_score": 45, "maximum_score": 64.99, "research_action": "Eligible when regional and state-diversity constraints require it."},
+    {"tier": "first_entry_deferred", "minimum_score": 0, "maximum_score": 44.99, "research_action": "Retain in the national backlog pending stronger identity context or tranche capacity."}
+  ],
+  "research_protocol": {
+    "required_findings": [
+      "earliest_dated_operational_event",
+      "exact_facility_identity_for_earliest_event",
+      "county_inventory_completeness",
+      "documented_search_for_earlier_operations"
+    ],
+    "suggested_source_types": [
+      "local_government_record",
+      "permit_record",
+      "planning_record",
+      "assessor_record",
+      "utility_filing",
+      "regulatory_filing",
+      "operator_release",
+      "sec_filing",
+      "local_news"
+    ],
+    "maximum_search_rounds": 4,
+    "minimum_authoritative_source_types": 2,
+    "unverified_outcome": "unresolved_not_never_treated"
+  },
+  "created_at": "2026-09-01T14:15:00Z",
+  "updated_at": "2026-09-01T14:15:00Z",
+  "record_status": "active"
+}

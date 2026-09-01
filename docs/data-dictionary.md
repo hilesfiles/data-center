@@ -6,13 +6,13 @@ The machine-readable source of truth is the schema catalog at
 | Family | Principal records | Purpose |
 |---|---|---|
 | Infrastructure | campus, facility, project, project phase, event, operator relationship, facility containment relationship | Preserve physical identity, spatial nesting, and lifecycle history |
-| Evidence and governance | source, source artifact, claim, claim resolution, review decision, entity-resolution candidate | Trace every material assertion, governed decision, and unresolved match |
+| Evidence and governance | source, source artifact, claim, claim resolution, review decision, entity-resolution candidate, first-entry research policy, first-entry research candidate | Trace every material assertion, governed decision, unresolved match, and evidence-work priority |
 | Source ingest | facility seed source record | Preserve source-shaped point, building, and campus rows before canonical projection |
 | Measurement | metric definition, observation | Store observed, derived, estimated, modeled, suppressed, and missing values distinctly |
 | Analytical input | panel row, county economic history, treatment definition, treatment event evaluation, county treatment assessment, analysis unit | Build reproducible samples and make treatment eligibility or exclusion explicit without mixing model outputs into observations |
 | Modeling | model specification, model run, estimate, diagnostic, donor weight | Record assumptions, inputs, uncertainty, fit, and reproducibility |
 | Indices | index score | Preserve components, weights, coverage, calibration, uncertainty, and publication status |
-| Publication | public county summary, county economic baseline, county employment-and-wages baseline, county economic history, county treatment assessment, facility-source coverage, entity-resolution record/coverage, dataset manifest | Deliver small versioned JSON projections to GitHub Pages |
+| Publication | public county summary, county economic baseline, county employment-and-wages baseline, county economic history, county treatment assessment, first-entry research candidate, facility-source coverage, entity-resolution record/coverage, dataset manifest | Deliver small versioned JSON projections to GitHub Pages |
 
 Field definitions, constraints, enumerations, and required relationships are maintained
 in the corresponding JSON Schema. Additions must follow the compatibility policy in

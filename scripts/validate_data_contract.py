@@ -615,6 +615,26 @@ def validate_project_config(
     source_codes = [row["code"] for row in config_files["source-registry"]["sources"]]
     if len(source_codes) != len(set(source_codes)):
         issues.append(Issue("config_validation", "source-registry.sources", "source codes are not unique"))
+
+    first_entry_policy_path = CONFIG_DIR / "first-entry-research-policy.json"
+    first_entry_policy = load_json(first_entry_policy_path)
+    for issue in validator.validate_record(first_entry_policy, schema_paths["first_entry_research_policy"]):
+        issues.append(Issue("config_validation", f"{first_entry_policy_path.name}{issue.path[1:]}", issue.message))
+    first_entry_weights = first_entry_policy.get("scoring", {}).get("weights", {})
+    first_entry_regions = first_entry_policy.get("regional_frame", [])
+    first_entry_states = [state for frame in first_entry_regions for state in frame.get("state_abbrs", [])]
+    first_entry_tranche = first_entry_policy.get("initial_tranche", {})
+    if (
+        not math.isclose(sum(first_entry_weights.values()), 100.0, abs_tol=1e-9)
+        or {frame.get("region") for frame in first_entry_regions} != {"Northeast", "Midwest", "South", "West"}
+        or len(first_entry_states) != 51
+        or len(first_entry_states) != len(set(first_entry_states))
+        or first_entry_tranche.get("size") != 24
+        or first_entry_tranche.get("per_region_quota") != 6
+        or first_entry_tranche.get("max_per_state") != 2
+        or first_entry_tranche.get("size") != first_entry_tranche.get("per_region_quota") * 4
+    ):
+        issues.append(Issue("config_validation", first_entry_policy_path.name, "first-entry research weights, regional frame, or tranche constraints are inconsistent"))
     return issues
 
 
@@ -1341,6 +1361,180 @@ def validate_public_data(
             issues.append(Issue("public_data_validation", f"{treatment_manifest_path.name}.parts[{index}]", "byte size or SHA-256 does not match the artifact"))
     if treatment_manifest.get("record_count") != 6296 or treatment_manifest_total != 6296:
         issues.append(Issue("public_data_validation", treatment_manifest_path.name, "county first-entry manifest record count is inconsistent"))
+
+    research_path = DATA_DIR / "silver" / "treatments" / "county-first-entry-research-priority-v1.json"
+    research_registry = load_json(research_path)
+    research_candidates = research_registry.get("collections", {}).get("first_entry_research_candidate", [])
+    if research_registry.get("record_count") != 217 or len(research_candidates) != 217:
+        issues.append(Issue("public_data_validation", research_path.name, "first-entry research registry count is inconsistent"))
+    for index, record in enumerate(research_candidates):
+        for issue in validator.validate_record(record, schema_paths["first_entry_research_candidate"]):
+            issues.append(Issue("public_data_validation", f"{research_path.name}.first_entry_research_candidate[{index}]{issue.path[1:]}", issue.message))
+
+    research_ids = [record.get("first_entry_research_candidate_id") for record in research_candidates]
+    research_fips = [record.get("county_fips") for record in research_candidates]
+    research_queue_counts = Counter(record.get("queue_status") for record in research_candidates)
+    research_tier_counts = Counter(record.get("priority_tier") for record in research_candidates)
+    research_region_counts = Counter(record.get("census_region") for record in research_candidates)
+    research_initial = [record for record in research_candidates if record.get("queue_status") == "initial_tranche"]
+    research_initial_region_counts = Counter(record.get("census_region") for record in research_initial)
+    research_initial_state_counts = Counter(record.get("state_abbr") for record in research_initial)
+    if (
+        len(research_ids) != len(set(research_ids))
+        or len(research_fips) != len(set(research_fips))
+        or [record.get("national_rank") for record in research_candidates] != list(range(1, 218))
+        or research_queue_counts != Counter({"national_backlog": 193, "initial_tranche": 24})
+        or research_tier_counts != Counter({"first_entry_deferred": 124, "first_entry_standard": 91, "first_entry_high": 2})
+        or research_region_counts != Counter({"South": 67, "Midwest": 63, "West": 58, "Northeast": 29})
+        or research_initial_region_counts != Counter({"Northeast": 6, "Midwest": 6, "South": 6, "West": 6})
+        or max(research_initial_state_counts.values(), default=0) > 2
+        or sum(record.get("reviewed_operational_facility_count", 0) for record in research_candidates) != 44
+        or sum(record.get("dated_operational_candidate_count", 0) for record in research_candidates) != 2
+    ):
+        issues.append(Issue("public_data_validation", research_path.name, "first-entry research identity, rank, tier, or balanced-tranche invariants are inconsistent"))
+
+    expected_research_initial_fips = [
+        "04013", "06085", "13121", "34017", "32003", "18105", "26125", "17031",
+        "12001", "23005", "25017", "12057", "42091", "37119", "13067", "33015",
+        "36087", "53061", "51107", "35001", "31153", "06037", "17043", "18089",
+    ]
+    if (
+        [record.get("county_fips") for record in research_initial] != expected_research_initial_fips
+        or [record.get("initial_tranche_rank") for record in research_initial] != list(range(1, 25))
+    ):
+        issues.append(Issue("public_data_validation", research_path.name, "first-entry initial tranche membership or rank changed"))
+
+    research_lifecycle_coverage = load_json(
+        PUBLIC_DATA_DIR / "counties" / "lifecycle-national-tranche-6-coverage.json"
+    )
+    research_lifecycle_by_fips = {
+        record.get("county_fips"): record for record in research_lifecycle_coverage
+    }
+    research_history_by_fips = {record.get("county_fips"): record for record in panel_public}
+    research_source_coverage = load_json(PUBLIC_DATA_DIR / "counties" / "facility-source-coverage.json")
+    research_source_by_fips = {
+        record.get("county_fips"): record for record in research_source_coverage
+    }
+    expected_research_fips = {
+        county_fips for county_fips, coverage in research_lifecycle_by_fips.items()
+        if coverage.get("active_canonical_facility_count", 0) > 0
+        and research_history_by_fips.get(county_fips, {}).get("complete_year_count") == 24
+        and next(
+            assessment for assessment in treatment_assessments
+            if assessment.get("county_fips") == county_fips
+        ).get("assessment_status") != "eligible"
+    }
+    if set(research_fips) != expected_research_fips:
+        issues.append(Issue("public_data_validation", research_path.name, "first-entry research eligibility does not match facility, panel, and treatment inputs"))
+
+    research_max_facilities = max(
+        (record.get("active_canonical_facility_count", 0) for record in research_candidates),
+        default=1,
+    )
+    for index, record in enumerate(research_candidates):
+        county_fips = record.get("county_fips", "")
+        boundary = features_by_fips.get(county_fips, {})
+        source = research_source_by_fips.get(county_fips, {})
+        facility_count = record.get("active_canonical_facility_count", 0)
+        expected_components = {
+            "dated_event_anchor": 100.0 if record.get("dated_operational_candidate_count", 0) else 0.0,
+            "reviewed_operational_evidence": min(100.0, 50.0 * record.get("reviewed_operational_facility_count", 0)),
+            "inventory_audit_feasibility": round(
+                100.0 * (1.0 - math.log(facility_count) / math.log(research_max_facilities)), 2
+            ),
+            "panel_completeness": round(record.get("panel_complete_year_count", 0) / 24.0 * 100.0, 2),
+            "source_identity_coverage": round(
+                record.get("named_source_record_count", 0) / record.get("source_record_count", 1) * 100.0, 2
+            ),
+        }
+        weights = {
+            "dated_event_anchor": 30,
+            "reviewed_operational_evidence": 25,
+            "inventory_audit_feasibility": 20,
+            "panel_completeness": 15,
+            "source_identity_coverage": 10,
+        }
+        expected_score = round(sum(expected_components[name] * weight / 100.0 for name, weight in weights.items()), 2)
+        if (
+            record.get("county_name") != boundary.get("county_name")
+            or record.get("state_abbr") != boundary.get("state_abbr")
+            or facility_count != research_lifecycle_by_fips.get(county_fips, {}).get("active_canonical_facility_count")
+            or record.get("panel_complete_year_count") != 24
+            or record.get("source_record_count") != source.get("source_record_count")
+            or record.get("named_source_record_count") != source.get("named_record_count")
+            or record.get("score_components") != expected_components
+            or record.get("priority_score") != expected_score
+            or record.get("research_status") != "queued"
+            or record.get("research_objective") != "verify_county_first_operational_entry"
+        ):
+            issues.append(Issue("public_data_validation", f"{research_path.name}.first_entry_research_candidate[{index}]", "first-entry research identity, input metrics, or score is inconsistent"))
+
+    research_public_index_path = PUBLIC_DATA_DIR / "treatments" / "county-first-entry-research" / "index.json"
+    research_public_index = load_json(research_public_index_path)
+    research_public_candidates: list[dict[str, Any]] = []
+    if (
+        research_public_index.get("partition_count") != 51
+        or research_public_index.get("record_count") != 217
+        or research_public_index.get("initial_tranche_count") != 24
+        or len(research_public_index.get("partitions", [])) != 51
+    ):
+        issues.append(Issue("public_data_validation", research_public_index_path.name, "first-entry research public index counts are inconsistent"))
+    for partition in research_public_index.get("partitions", []):
+        partition_path = (PUBLIC_DATA_DIR / "treatments" / partition.get("path", "")).resolve()
+        if not partition_path.is_relative_to(PUBLIC_DATA_DIR) or not partition_path.is_file():
+            issues.append(Issue("public_data_validation", research_public_index_path.name, "first-entry research partition is missing or outside public data"))
+            continue
+        payload = partition_path.read_bytes()
+        records = json.loads(payload)
+        if (
+            partition.get("byte_size") != len(payload)
+            or partition.get("sha256") != hashlib.sha256(payload).hexdigest()
+            or partition.get("record_count") != len(records)
+            or any(record.get("state_abbr") != partition.get("state_abbr") for record in records)
+        ):
+            issues.append(Issue("public_data_validation", partition_path.name, "first-entry research partition metadata or state scope is inconsistent"))
+        research_public_candidates.extend(records)
+    if {
+        record.get("county_fips"): record for record in research_public_candidates
+    } != {
+        record.get("county_fips"): record for record in research_candidates
+    }:
+        issues.append(Issue("public_data_validation", research_public_index_path.name, "public first-entry research partitions must match the governed registry"))
+    research_public_tranche_path = PUBLIC_DATA_DIR / "treatments" / "county-first-entry-research" / "initial-tranche.json"
+    if load_json(research_public_tranche_path) != research_initial:
+        issues.append(Issue("public_data_validation", research_public_tranche_path.name, "public first-entry tranche must match governed initial-tranche records"))
+
+    research_report_path = DATA_DIR / "silver" / "treatments" / "county-first-entry-research-priority-v1.processing-report.json"
+    research_report = load_json(research_report_path)
+    if (
+        research_report.get("county_count") != 3144
+        or research_report.get("active_facility_county_count") != 226
+        or research_report.get("eligible_research_candidate_count") != 217
+        or research_report.get("initial_tranche_count") != 24
+        or research_report.get("national_backlog_count") != 193
+        or research_report.get("exclusion_counts") != {"no_active_canonical_facility": 2918, "incomplete_24_year_panel": 9, "already_eligible_treatment": 0}
+        or research_report.get("priority_tier_counts") != {"first_entry_deferred": 124, "first_entry_high": 2, "first_entry_standard": 91}
+        or research_report.get("initial_tranche_region_counts") != {"Midwest": 6, "Northeast": 6, "South": 6, "West": 6}
+        or research_report.get("treatment_effect") != {"treatment_dates_assigned": 0, "eligible_treatment_count_changed": False, "model_run_authorized": False}
+    ):
+        issues.append(Issue("public_data_validation", research_report_path.name, "first-entry research processing diagnostics are inconsistent"))
+
+    research_manifest_path = DATA_DIR / "silver" / "treatments" / "county-first-entry-research-priority-v1.manifest.json"
+    research_manifest = load_json(research_manifest_path)
+    for issue in validator.validate_record(research_manifest, schema_paths["dataset_manifest"]):
+        issues.append(Issue("public_data_validation", f"{research_manifest_path.name}{issue.path[1:]}", issue.message))
+    research_manifest_total = 0
+    for index, part in enumerate(research_manifest.get("parts", [])):
+        part_path = (ROOT / part.get("path", "")).resolve()
+        if not part_path.is_relative_to(ROOT) or not part_path.is_file():
+            issues.append(Issue("public_data_validation", f"{research_manifest_path.name}.parts[{index}]", "part path is missing or outside the repository"))
+            continue
+        payload = part_path.read_bytes()
+        research_manifest_total += part.get("record_count", 0)
+        if part.get("byte_size") != len(payload) or part.get("sha256") != hashlib.sha256(payload).hexdigest():
+            issues.append(Issue("public_data_validation", f"{research_manifest_path.name}.parts[{index}]", "byte size or SHA-256 does not match the artifact"))
+    if research_manifest.get("record_count") != 460 or research_manifest_total != 460:
+        issues.append(Issue("public_data_validation", research_manifest_path.name, "first-entry research manifest record count is inconsistent"))
 
     coverage_path = PUBLIC_DATA_DIR / "counties" / "facility-source-coverage.json"
     coverage_records = load_json(coverage_path)
