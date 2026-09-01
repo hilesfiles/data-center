@@ -166,3 +166,18 @@ are normalized: five building-area values and two power-capacity values. Cumulat
 thirty-one verified operational facilities, fourteen unresolved facilities in research, three
 disputed facilities, and 1,306 unknown statuses. The immutable initial tranche now has
 twenty-four unreviewed records at ranks 25–48.
+
+The fourth national review batch adjudicates ranks 25–32. Five facilities resolve
+operational: Prime DFW01-01, Equinix SE3, the Phillips Exeter IT Data Center, Fidelity's
+Papillion facility, and Csquare's Lynnwood facility. Current operator, institutional, or
+municipal records support the exact building in each case. The Csquare record resolves the
+seed's legacy SE1 label to the current SEA3 label at the same address without treating the
+legacy code itself as current.
+
+Lumen Norristown, CyrusOne CIN3, and QTS DAL10 remain unresolved. Current sources establish
+regional service, a legacy facility, or a current multi-building campus, but do not map the
+operator or facility code to the mapped building with policy-compliant evidence. The batch
+adds twenty-one claims, eight review decisions, and three normalized exact-facility
+observations. Cumulative coverage is thirty-six verified operational facilities, seventeen
+unresolved facilities in research, three disputed facilities, and 1,301 unknown statuses.
+The immutable initial tranche now has sixteen unreviewed records at ranks 33–48.

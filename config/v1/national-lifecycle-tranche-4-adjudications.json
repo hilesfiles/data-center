@@ -1,0 +1,284 @@
+{
+  "schema_version": "1.0.0",
+  "artifact_type": "national_lifecycle_tranche_adjudications",
+  "generated_at": "2026-09-01T07:00:00Z",
+  "record_count": 8,
+  "records": [
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_3ceaf399b1debe7617bc",
+      "resolution_state": "partial",
+      "decision": "provisional",
+      "confidence": 0.45,
+      "rationale": "Lumen's current materials establish active colocation services and list Philadelphia among its served markets, while a directory identifies an operational Lumen Norristown facility at 1000 Forge Avenue, Building C. The operator materials do not name Norristown or the street address, so the exact building and directory lifecycle claim cannot be independently corroborated under the national policy.",
+      "evidence": [
+        {
+          "source_id": "src_lumen_colocation_current_2026",
+          "attribute_path": "facility.current_status",
+          "raw_value": {"type": "text", "value": "Current Lumen colocation services across more than 175 North American locations"},
+          "finding": "The operator offers current data-center services but does not identify the Norristown building.",
+          "disposition": "context",
+          "claim_confidence": 0.8
+        },
+        {
+          "source_id": "src_lumen_colocation_markets_2025",
+          "attribute_path": "facility.identity",
+          "raw_value": {"type": "text", "value": "Philadelphia, Pennsylvania listed as a Lumen network colocation market"},
+          "finding": "The current market list supplies regional context but no Norristown name or exact address.",
+          "disposition": "context",
+          "claim_confidence": 0.75
+        },
+        {
+          "source_id": "src_baxtel_lumen_norristown_current_2026",
+          "attribute_path": "facility.current_status",
+          "raw_value": {"type": "classification", "code": "operational", "label": "Directory-reported operation at 1000 Forge Avenue, Building C"},
+          "finding": "The directory supplies an exact address and operational label but is discovery-only for lifecycle status.",
+          "disposition": "context",
+          "claim_confidence": 0.45
+        }
+      ],
+      "record_status": "provisional"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_0f8a5b2108ab8777c523",
+      "resolution_state": "partial",
+      "decision": "provisional",
+      "confidence": 0.5,
+      "rationale": "CyrusOne's 2014 filing establishes its Mason facility on Parkway Drive, and a current public-records tracker maps CyrusOne to 4800 Parkway Drive and labels it operational. The reviewed current CyrusOne materials do not publish an exact CIN3 or Mason facility record, and recent property-market signals make the legacy operator relationship uncertain. The third-party current-status claim is therefore not sufficient to resolve the building.",
+      "evidence": [
+        {
+          "source_id": "src_cyrusone_annual_report_2014",
+          "attribute_path": "facility.identity",
+          "raw_value": {"type": "text", "value": "CyrusOne Mason facility on Parkway Drive"},
+          "finding": "The filing establishes historical CyrusOne operation and location identity but not current status.",
+          "disposition": "context",
+          "claim_confidence": 0.9
+        },
+        {
+          "source_id": "src_interconnection_cyrusone_mason_current_2026",
+          "attribute_path": "facility.current_status",
+          "raw_value": {"type": "classification", "code": "operational", "label": "Tracker-reported CyrusOne operation at 4800 Parkway Drive"},
+          "finding": "The tracker supplies a current exact-address lifecycle lead but is not an operator or official record capable of resolving status alone.",
+          "disposition": "context",
+          "claim_confidence": 0.55
+        }
+      ],
+      "record_status": "provisional"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_4a9ac7ebf844d9eb29cd",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.99,
+      "rationale": "Prime's current Dallas page identifies DFW01-01 at 1515 Round Table, explicitly labels it operational, and publishes current capacity, size, use, and availability. The exact 107,000-square-foot size and 8 MW capacity are accepted as facility observations.",
+      "evidence": [
+        {
+          "source_id": "src_prime_dfw01_current_2026",
+          "attribute_path": "facility.current_status",
+          "raw_value": {"type": "classification", "code": "operational", "label": "DFW01-01 explicitly listed operational"},
+          "normalized_value": {"type": "classification", "code": "operational"},
+          "finding": "The operator page maps DFW01-01 to 1515 Round Table and explicitly reports operational status.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        },
+        {
+          "source_id": "src_prime_dfw01_current_2026",
+          "attribute_path": "observation.floor_area_sqft",
+          "raw_value": {"type": "quantity", "value": 107000, "unit": "square foot"},
+          "normalized_value": {"type": "quantity", "value": 107000, "unit": "square foot"},
+          "finding": "Prime reports a 107,000-square-foot size for DFW01-01.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        },
+        {
+          "source_id": "src_prime_dfw01_current_2026",
+          "attribute_path": "observation.capacity_mw",
+          "raw_value": {"type": "quantity", "value": 8, "unit": "MW"},
+          "normalized_value": {"type": "quantity", "value": 8, "unit": "MW"},
+          "finding": "Prime reports 8 MW of capacity for DFW01-01.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        }
+      ],
+      "observations": [
+        {"metric_code": "facility.area.building_sqft_observed", "value": 107000, "unit": "square foot", "period": {"year": 2026, "precision": "year"}, "source_id": "src_prime_dfw01_current_2026"},
+        {"metric_code": "facility.capacity.mw_observed", "value": 8, "unit": "MW", "period": {"year": 2026, "precision": "year"}, "source_id": "src_prime_dfw01_current_2026"}
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_db7273b4f00f6651f22f",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.99,
+      "rationale": "Equinix's current SE3 page identifies the exact facility code and 2020 Fifth Avenue address and offers active products, support, security, power, cooling, and sustainability information. The reported 36,457 square feet is explicitly colocation space and is retained as context rather than total building area.",
+      "evidence": [
+        {
+          "source_id": "src_equinix_se3_current_2026",
+          "attribute_path": "facility.current_status",
+          "raw_value": {"type": "classification", "code": "operational", "label": "Current SE3 products and operating specifications"},
+          "normalized_value": {"type": "classification", "code": "operational"},
+          "finding": "The current operator page maps SE3 to 2020 Fifth Avenue and offers active facility and interconnection products.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        },
+        {
+          "source_id": "src_equinix_se3_current_2026",
+          "attribute_path": "facility.colocation_space_sqft",
+          "raw_value": {"type": "quantity", "value": 36457, "unit": "square foot"},
+          "finding": "Equinix labels 36,457 square feet as colocation space, so it is not normalized to total building area.",
+          "disposition": "context",
+          "claim_confidence": 0.99
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_db6dc7fa5d42e9cd6288",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.95,
+      "rationale": "Phillips Exeter's current campus map identifies the exact mapped building as the Data Center, and its current handbook lists active Information Technology support at that Data Center. The operator, facility name, campus location, and current institutional use align; no defensible capacity or floor-area value is published.",
+      "evidence": [
+        {
+          "source_id": "src_exeter_campus_map_2025",
+          "attribute_path": "facility.current_status",
+          "raw_value": {"type": "classification", "code": "operational", "label": "Current campus map identifies the building as Data Center"},
+          "normalized_value": {"type": "classification", "code": "operational"},
+          "finding": "The 2025 official campus map places a Data Center at the exact mapped campus location.",
+          "disposition": "supporting",
+          "claim_confidence": 0.95
+        },
+        {
+          "source_id": "src_exeter_ebook_2024",
+          "attribute_path": "facility.current_status",
+          "raw_value": {"type": "text", "value": "Information Technology support location at the Data Center"},
+          "finding": "The current school handbook independently documents active IT functions at the named Data Center.",
+          "disposition": "supporting",
+          "claim_confidence": 0.94
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_1376da7e15a8cd4f1150",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.97,
+      "rationale": "Papillion's planning record states that Fidelity completed the data center in 2014 and an expansion in 2016. A 2025 city permit report identifies a Fidelity facility electrical-circuit outage permit at 11050 Cornhusker Road, matching the mapped building and demonstrating current maintained infrastructure at the exact site.",
+      "evidence": [
+        {
+          "source_id": "src_papillion_growth_plan_fidelity",
+          "attribute_path": "facility.current_status",
+          "raw_value": {"type": "classification", "code": "operational", "label": "Completed Fidelity data center and completed expansion"},
+          "normalized_value": {"type": "classification", "code": "operational"},
+          "finding": "The city documents completed Fidelity data-center construction and a later completed expansion.",
+          "disposition": "supporting",
+          "claim_confidence": 0.95
+        },
+        {
+          "source_id": "src_papillion_fidelity_permit_2025",
+          "attribute_path": "facility.current_status",
+          "raw_value": {"type": "text", "value": "Issued electrical outage permit for Fidelity facility circuit 842 at 11050 Cornhusker Road"},
+          "finding": "The current permit independently ties active maintained electrical infrastructure and the Fidelity facility name to the exact address.",
+          "disposition": "supporting",
+          "claim_confidence": 0.97
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_3cac04b41d4699c4de0b",
+      "resolution_state": "partial",
+      "decision": "provisional",
+      "confidence": 0.6,
+      "rationale": "IBM's certification scope identifies DAL10 as a current data center managed by QTS in Irving, and QTS's current operator page identifies an active six-facility Irving 1 campus with individual building addresses. Neither source maps the IBM DAL10 code to one of those six buildings or to the mapped footprint. The campus-level evidence therefore cannot establish this building's lifecycle status.",
+      "evidence": [
+        {
+          "source_id": "src_ibm_hitrust_dal10_2024",
+          "attribute_path": "facility.current_status",
+          "raw_value": {"type": "text", "value": "DAL10 data center managed by QTS in Irving within current IBM certification scope"},
+          "finding": "IBM confirms a current QTS-managed DAL10 deployment in Irving but provides no building address.",
+          "disposition": "context",
+          "claim_confidence": 0.9
+        },
+        {
+          "source_id": "src_qts_irving_current_2026",
+          "attribute_path": "facility.current_status",
+          "raw_value": {"type": "text", "value": "Current QTS Irving 1 campus with six facilities and active tour and service offerings"},
+          "finding": "QTS confirms current operation of the multi-building campus but does not use the DAL10 identifier.",
+          "disposition": "context",
+          "claim_confidence": 0.95
+        },
+        {
+          "source_id": "src_qts_irving_current_2026",
+          "attribute_path": "facility.campus_capacity_context",
+          "raw_value": {"type": "text", "value": "56-acre, six-facility campus with 165 MW+ critical campus capacity"},
+          "finding": "Campus capacity and acreage cannot be allocated to the mapped building and are retained only as context.",
+          "disposition": "context",
+          "claim_confidence": 0.98
+        }
+      ],
+      "record_status": "provisional"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_210134eb731b8afd2ca6",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.98,
+      "rationale": "Csquare's current Seattle page and specification sheet identify a single active Lynnwood facility at 17300 Highway 99, with current colocation services, 24/7 support, and 17.3 MW of utility capacity. Csquare now calls the facility SEA3, while a directory preserves the legacy SEA1 mapping represented by the seed. The exact name, address, and footprint establish continuity despite the code change. Raised-floor space is not normalized as total building area.",
+      "evidence": [
+        {
+          "source_id": "src_csquare_lynnwood_current_2026",
+          "attribute_path": "facility.current_status",
+          "raw_value": {"type": "classification", "code": "operational", "label": "Current Lynnwood SEA3 services and operating specifications"},
+          "normalized_value": {"type": "classification", "code": "operational"},
+          "finding": "Csquare offers current colocation services, remote hands, security, and an SLA for its unique Lynnwood facility.",
+          "disposition": "supporting",
+          "claim_confidence": 0.98
+        },
+        {
+          "source_id": "src_csquare_seattle_specsheet_2025",
+          "attribute_path": "facility.address",
+          "raw_value": {"type": "text", "value": "SEA3, 17300 Highway 99, Lynnwood, Washington 98037"},
+          "finding": "The current operator specification sheet maps the unique Lynnwood facility to the exact address and SEA3 code.",
+          "disposition": "supporting",
+          "claim_confidence": 0.98
+        },
+        {
+          "source_id": "src_csquare_seattle_specsheet_2025",
+          "attribute_path": "observation.capacity_mw",
+          "raw_value": {"type": "quantity", "value": 17.3, "unit": "MW"},
+          "normalized_value": {"type": "quantity", "value": 17.3, "unit": "MW"},
+          "finding": "Csquare reports 17.3 MW of utility capacity for the Lynnwood facility.",
+          "disposition": "supporting",
+          "claim_confidence": 0.98
+        },
+        {
+          "source_id": "src_baxtel_csquare_lynnwood_sea1_2026",
+          "attribute_path": "facility.identity",
+          "raw_value": {"type": "text", "value": "Legacy Lynnwood SEA1 mapping at 17300 Highway 99"},
+          "finding": "The directory preserves the legacy code-to-address mapping and is used only to explain seed continuity, not lifecycle status.",
+          "disposition": "context",
+          "claim_confidence": 0.45
+        }
+      ],
+      "observations": [
+        {"metric_code": "facility.capacity.mw_observed", "value": 17.3, "unit": "MW", "period": {"year": 2025, "precision": "year"}, "source_id": "src_csquare_seattle_specsheet_2025"}
+      ],
+      "record_status": "active"
+    }
+  ]
+}

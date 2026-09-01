@@ -152,6 +152,27 @@ Evidence metadata is versioned in
 `scripts/adjudicate_national_lifecycle_tranche_3.py`. Only metadata and paraphrased findings are
 retained.
 
+## Fourth national lifecycle evidence batch
+
+Initial-tranche ranks 25–32 use current first-party or official records from Prime Data
+Centers, Equinix, Phillips Exeter Academy, the City of Papillion, IBM, QTS, Lumen, and
+Csquare, supplemented by historical filings and directory records for identity discovery.
+Prime DFW01-01, Equinix SE3, Phillips Exeter's Data Center, Fidelity Papillion, and the
+Csquare Lynnwood building resolve operational. Three exact-facility observations are
+normalized: building area and power capacity for Prime DFW01-01, and power capacity for
+Csquare Lynnwood.
+
+Lumen's current materials do not name its Norristown building, current CyrusOne material
+does not corroborate the legacy CIN3 mapping, and QTS's current Irving campus page does not
+map DAL10 to one of its six buildings. Those three records remain unresolved rather than
+projecting regional or campus evidence onto a building.
+
+Evidence metadata is versioned in
+`config/v1/national-lifecycle-tranche-4-evidence-sources.json`, decisions are in
+`config/v1/national-lifecycle-tranche-4-adjudications.json`, and the deterministic builder is
+`scripts/adjudicate_national_lifecycle_tranche_4.py`. Only metadata and paraphrased findings
+are retained.
+
 Four source rows reported Prince William County, Virginia, while their centroids fall in
 Manassas under the published 2025 Census polygons. Both values remain auditable: bronze
 records preserve the source report and canonical/public geography uses point-in-polygon.
