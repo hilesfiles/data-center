@@ -681,6 +681,130 @@ def validate_public_data(
     ):
         issues.append(Issue("public_data_validation", "counties-2025.manifest.json", "map count, byte size, or SHA-256 does not match the artifact"))
 
+    bea_acquisition_specs = {
+        "2024-cagdp1.acquisition.json": "95b49283df20772ded04ea53e1142955b8ade5e7f93047c0a3dfaf403b166fe1",
+        "2024-cainc1.acquisition.json": "e1465c8b0e7e75f541241fe2fa64364b784dd6d2223901f9d576c4c5d49480b5",
+    }
+    for filename, expected_sha in bea_acquisition_specs.items():
+        bea_acquisition_path = DATA_DIR / "raw" / "bea-regional" / filename
+        bea_acquisition = load_json(bea_acquisition_path)
+        for issue in validator.validate_record(bea_acquisition, schema_paths["acquisition_manifest"]):
+            issues.append(Issue("public_data_validation", f"{filename}{issue.path[1:]}", issue.message))
+        if bea_acquisition.get("sha256") != expected_sha:
+            issues.append(Issue("public_data_validation", filename, "pinned BEA release hash changed"))
+
+    bea_bronze_path = DATA_DIR / "bronze" / "economic" / "bea-county-2024-source-rows.json"
+    bea_bronze = load_json(bea_bronze_path)
+    bea_source_rows = bea_bronze.get("records", [])
+    bea_source_fips = [record.get("county_fips") for record in bea_source_rows]
+    if (
+        bea_bronze.get("record_count") != 3144
+        or len(bea_source_rows) != 3144
+        or set(bea_source_fips) != feature_fips
+        or len(bea_source_fips) != len(set(bea_source_fips))
+        or any(record.get("year") != 2024 for record in bea_source_rows)
+    ):
+        issues.append(Issue("public_data_validation", bea_bronze_path.name, "BEA bronze rows must cover every Census county exactly once for 2024"))
+
+    bea_silver_path = DATA_DIR / "silver" / "economic" / "bea-county-2024.json"
+    bea_silver = load_json(bea_silver_path)
+    bea_collections = bea_silver.get("collections", {})
+    bea_sources = bea_collections.get("source", [])
+    bea_observations = bea_collections.get("observation", [])
+    bea_source_ids = {record.get("source_id") for record in bea_sources}
+    expected_bea_metric_codes = {
+        "economic.gdp.real",
+        "economic.personal_income.nominal",
+        "economic.personal_income.per_capita.nominal",
+        "demographic.population",
+    }
+    if (
+        len(bea_sources) != 2
+        or len(bea_observations) != 12576
+        or bea_silver.get("record_count") != 12578
+        or bea_source_ids != {"src_bea_cagdp1_2024", "src_bea_cainc1_2024"}
+        or {record.get("metric_code") for record in bea_observations} != expected_bea_metric_codes
+    ):
+        issues.append(Issue("public_data_validation", bea_silver_path.name, "BEA source or observation counts and metric coverage are inconsistent"))
+    for index, record in enumerate(bea_sources):
+        for issue in validator.validate_record(record, schema_paths["source"]):
+            issues.append(Issue("public_data_validation", f"{bea_silver_path.name}.source[{index}]{issue.path[1:]}", issue.message))
+    bea_observation_keys: set[tuple[str, str]] = set()
+    bea_observations_by_key: dict[tuple[str, str], dict[str, Any]] = {}
+    for index, record in enumerate(bea_observations):
+        for issue in validator.validate_record(record, schema_paths["observation"]):
+            issues.append(Issue("public_data_validation", f"{bea_silver_path.name}.observation[{index}]{issue.path[1:]}", issue.message))
+        subject = record.get("subject", {})
+        key = (subject.get("subject_id", ""), record.get("metric_code", ""))
+        bea_observation_keys.add(key)
+        bea_observations_by_key[key] = record
+        if (
+            subject.get("subject_type") != "county"
+            or subject.get("subject_id") not in feature_fips
+            or not set(record.get("source_ids", [])).issubset(bea_source_ids)
+            or record.get("period") != {"year": 2024, "precision": "year"}
+        ):
+            issues.append(Issue("referential_integrity", f"{bea_silver_path.name}.observation[{index}]", "BEA observation has an invalid county, source, or period"))
+    if len(bea_observation_keys) != 12576:
+        issues.append(Issue("public_data_validation", bea_silver_path.name, "BEA county-metric observation keys must be unique"))
+
+    bea_public_path = PUBLIC_DATA_DIR / "counties" / "economic-baseline-2024.json"
+    bea_public = load_json(bea_public_path)
+    bea_public_fips = [record.get("county_fips") for record in bea_public]
+    bea_status_counts = Counter(record.get("coverage_status") for record in bea_public)
+    bea_public_fields = {
+        "economic.gdp.real": "real_gdp_usd",
+        "economic.personal_income.nominal": "personal_income_nominal_usd",
+        "demographic.population": "population",
+        "economic.personal_income.per_capita.nominal": "per_capita_personal_income_nominal_usd",
+    }
+    if (
+        len(bea_public) != 3144
+        or set(bea_public_fips) != feature_fips
+        or len(bea_public_fips) != len(set(bea_public_fips))
+        or bea_status_counts != Counter({"complete": 3091, "unavailable": 53})
+    ):
+        issues.append(Issue("public_data_validation", bea_public_path.name, "BEA public baseline county coverage or statuses are inconsistent"))
+    for index, record in enumerate(bea_public):
+        for issue in validator.validate_record(record, schema_paths["public_county_economic_baseline"]):
+            issues.append(Issue("public_data_validation", f"{bea_public_path.name}[{index}]{issue.path[1:]}", issue.message))
+        fips = record.get("county_fips", "")
+        boundary = features_by_fips.get(fips, {})
+        if record.get("county_name") != boundary.get("county_name") or record.get("state_abbr") != boundary.get("state_abbr"):
+            issues.append(Issue("public_data_validation", f"{bea_public_path.name}[{index}]", "county identity does not match the Census boundary"))
+        for metric_code, field in bea_public_fields.items():
+            observation = bea_observations_by_key.get((fips, metric_code), {})
+            expected_value = observation.get("value", {}).get("value")
+            if record.get(field) != expected_value:
+                issues.append(Issue("public_data_validation", f"{bea_public_path.name}[{index}].{field}", "public value does not match the governed observation"))
+
+    bea_report_path = DATA_DIR / "silver" / "economic" / "bea-county-2024.processing-report.json"
+    bea_report = load_json(bea_report_path)
+    if (
+        bea_report.get("county_count") != 3144
+        or bea_report.get("observation_count") != 12576
+        or bea_report.get("missing_value_count") != 212
+        or bea_report.get("complete_county_count") != 3091
+    ):
+        issues.append(Issue("public_data_validation", bea_report_path.name, "BEA processing diagnostics are inconsistent"))
+
+    bea_manifest_path = DATA_DIR / "silver" / "economic" / "bea-county-2024.manifest.json"
+    bea_manifest = load_json(bea_manifest_path)
+    for issue in validator.validate_record(bea_manifest, schema_paths["dataset_manifest"]):
+        issues.append(Issue("public_data_validation", f"{bea_manifest_path.name}{issue.path[1:]}", issue.message))
+    bea_manifest_total = 0
+    for index, part in enumerate(bea_manifest.get("parts", [])):
+        part_path = (ROOT / part.get("path", "")).resolve()
+        if not part_path.is_relative_to(ROOT) or not part_path.is_file():
+            issues.append(Issue("public_data_validation", f"{bea_manifest_path.name}.parts[{index}]", "part path is missing or outside the repository"))
+            continue
+        payload = part_path.read_bytes()
+        bea_manifest_total += part.get("record_count", 0)
+        if part.get("byte_size") != len(payload) or part.get("sha256") != hashlib.sha256(payload).hexdigest():
+            issues.append(Issue("public_data_validation", f"{bea_manifest_path.name}.parts[{index}]", "byte size or SHA-256 does not match the artifact"))
+    if bea_manifest.get("record_count") != 18867 or bea_manifest_total != 18867:
+        issues.append(Issue("public_data_validation", bea_manifest_path.name, "BEA manifest record count is inconsistent"))
+
     coverage_path = PUBLIC_DATA_DIR / "counties" / "facility-source-coverage.json"
     coverage_records = load_json(coverage_path)
     coverage_fips = [record.get("county_fips") for record in coverage_records]

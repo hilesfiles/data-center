@@ -1,8 +1,10 @@
 import { lazy, Suspense, useEffect, useMemo, useState } from "react";
 import type {
   CountyEntityAdjudicationCoverage,
+  CountyEconomicBaseline,
   CountyEntityResolutionCoverage,
   CountyLifecycleVerificationCoverage,
+  CountyMapMetric,
   FacilitySourceCoverage,
   SiteMetadata,
 } from "./types";
@@ -16,13 +18,26 @@ const compactFormat = new Intl.NumberFormat("en-US", {
   notation: "compact",
   maximumFractionDigits: 1,
 });
+const currencyFormat = new Intl.NumberFormat("en-US", {
+  style: "currency",
+  currency: "USD",
+  maximumFractionDigits: 0,
+});
+
+const compactCurrency = (value: number | null | undefined) =>
+  value == null ? "Unavailable" : `$${compactFormat.format(value)}`;
+
+const wholeCurrency = (value: number | null | undefined) =>
+  value == null ? "Unavailable" : currencyFormat.format(value);
 
 export default function App() {
   const [metadata, setMetadata] = useState<SiteMetadata | null>(null);
   const [counties, setCounties] = useState<FacilitySourceCoverage[]>([]);
+  const [economic, setEconomic] = useState<CountyEconomicBaseline[]>([]);
   const [resolution, setResolution] = useState<CountyEntityResolutionCoverage[]>([]);
   const [adjudication, setAdjudication] = useState<CountyEntityAdjudicationCoverage[]>([]);
   const [lifecycle, setLifecycle] = useState<CountyLifecycleVerificationCoverage[]>([]);
+  const [mapMetric, setMapMetric] = useState<CountyMapMetric>("im3-source-records");
   const [selectedFips, setSelectedFips] = useState<string | null>("51107");
   const [error, setError] = useState<string | null>(null);
 
@@ -31,16 +46,18 @@ export default function App() {
     Promise.all([
       fetch(`${base}data/v1/metadata.json`),
       fetch(`${base}data/v1/counties/facility-source-coverage.json`),
+      fetch(`${base}data/v1/counties/economic-baseline-2024.json`),
       fetch(`${base}data/v1/counties/entity-resolution-coverage.json`),
       fetch(`${base}data/v1/counties/final-review-coverage.json`),
       fetch(`${base}data/v1/counties/lifecycle-national-tranche-6-coverage.json`),
     ])
-      .then(async ([metadataResponse, coverageResponse, resolutionResponse, adjudicationResponse, lifecycleResponse]) => {
-        if (!metadataResponse.ok || !coverageResponse.ok || !resolutionResponse.ok || !adjudicationResponse.ok || !lifecycleResponse.ok) {
+      .then(async ([metadataResponse, coverageResponse, economicResponse, resolutionResponse, adjudicationResponse, lifecycleResponse]) => {
+        if (!metadataResponse.ok || !coverageResponse.ok || !economicResponse.ok || !resolutionResponse.ok || !adjudicationResponse.ok || !lifecycleResponse.ok) {
           throw new Error("The static data contract could not be loaded.");
         }
         setMetadata((await metadataResponse.json()) as SiteMetadata);
         setCounties((await coverageResponse.json()) as FacilitySourceCoverage[]);
+        setEconomic((await economicResponse.json()) as CountyEconomicBaseline[]);
         setResolution(
           (await resolutionResponse.json()) as CountyEntityResolutionCoverage[],
         );
@@ -63,6 +80,10 @@ export default function App() {
   const selectedResolution = useMemo(
     () => resolution.find((county) => county.county_fips === selectedFips) ?? null,
     [resolution, selectedFips],
+  );
+  const selectedEconomic = useMemo(
+    () => economic.find((county) => county.county_fips === selectedFips) ?? null,
+    [economic, selectedFips],
   );
   const selectedAdjudication = useMemo(
     () => adjudication.find((county) => county.county_fips === selectedFips) ?? null,
@@ -87,17 +108,25 @@ export default function App() {
       </header>
 
       <div className="fixture-banner" role="status">
-        <strong>The balanced national lifecycle tranche is complete.</strong> Five of the final eight records are verified operational, one former Flexential operation is verified closed, and two remain in research. The cumulative verified total is 47, with no facility left in the 48-record initial queue.
+        <strong>The first county economic baseline is published.</strong> BEA 2024 values cover 3,091 exact current Census counties; 53 nonmatching or combined BEA geographies remain unavailable rather than being displayed as zero. These measures are descriptive context, not estimated data-center impacts.
       </div>
 
       <main className="workspace">
         <aside className="sidebar">
           <section className="control-section">
             <label htmlFor="metric">Map measure</label>
-            <select id="metric" defaultValue="im3-source-records">
+            <select
+              id="metric"
+              value={mapMetric}
+              onChange={(event) => setMapMetric(event.target.value as CountyMapMetric)}
+            >
               <option value="im3-source-records">IM3 source records</option>
+              <option value="real-gdp">Real GDP (2024)</option>
+              <option value="personal-income">Personal income, nominal (2024)</option>
+              <option value="population">Population (2024)</option>
+              <option value="per-capita-income">Per-capita personal income, nominal (2024)</option>
             </select>
-            <p className="control-note">Counts describe records in IM3 v2026.02.09. Absence from the source is not evidence that a county has no data center.</p>
+            <p className="control-note">Facility counts use IM3 v2026.02.09. Economic measures use BEA's February 2026 county release for 2024. Missing values are never displayed as zero.</p>
           </section>
 
           <section className="county-section" aria-live="polite">
@@ -184,6 +213,26 @@ export default function App() {
                     <em>contained but not merged</em>
                   </div>
                   <div className="lifecycle-row lifecycle-start">
+                    <span>Real GDP · 2024</span>
+                    <strong>{compactCurrency(selectedEconomic?.real_gdp_usd)}</strong>
+                    <em>chained 2017 dollars</em>
+                  </div>
+                  <div className="lifecycle-row">
+                    <span>Personal income · 2024</span>
+                    <strong>{compactCurrency(selectedEconomic?.personal_income_nominal_usd)}</strong>
+                    <em>current dollars</em>
+                  </div>
+                  <div className="lifecycle-row">
+                    <span>Population · 2024</span>
+                    <strong>{selectedEconomic?.population == null ? "Unavailable" : integerFormat.format(selectedEconomic.population)}</strong>
+                    <em>BEA county estimate</em>
+                  </div>
+                  <div className="lifecycle-row">
+                    <span>Per-capita personal income · 2024</span>
+                    <strong>{wholeCurrency(selectedEconomic?.per_capita_personal_income_nominal_usd)}</strong>
+                    <em>current dollars per person</em>
+                  </div>
+                  <div className="lifecycle-row lifecycle-start">
                     <span>Canonical facilities</span>
                     <strong>{integerFormat.format(selectedLifecycle?.active_canonical_facility_count ?? 0)}</strong>
                     <em>deduplicated research entities</em>
@@ -226,11 +275,12 @@ export default function App() {
 
         <section className="map-section">
           <Suspense fallback={<div className="map-loading">Preparing interactive map…</div>}>
-            <MapPanel selectedFips={selectedFips} onSelectCounty={setSelectedFips} />
+            <MapPanel metric={mapMetric} selectedFips={selectedFips} onSelectCounty={setSelectedFips} />
           </Suspense>
           <div className="map-caption">
             <span>IM3 v2026.02.09 · 1,472 source objects</span>
             <span>Census boundaries · Jan. 1, 2025</span>
+            <span>BEA county economy · 2024</span>
             <span>Static JSON · No runtime database</span>
             <span>ODbL · © OpenStreetMap contributors</span>
           </div>

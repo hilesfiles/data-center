@@ -70,6 +70,29 @@ export interface FacilitySourceCoverage {
   generated_at: string;
 }
 
+export type CountyMapMetric =
+  | "im3-source-records"
+  | "real-gdp"
+  | "personal-income"
+  | "population"
+  | "per-capita-income";
+
+export interface CountyEconomicBaseline {
+  schema_version: "1.0.0";
+  county_fips: string;
+  county_name: string;
+  state_abbr: string;
+  year: number;
+  real_gdp_usd: number | null;
+  personal_income_nominal_usd: number | null;
+  population: number | null;
+  per_capita_personal_income_nominal_usd: number | null;
+  coverage_status: "complete" | "partial" | "unavailable";
+  source_ids: string[];
+  release_vintage: string;
+  generated_at: string;
+}
+
 export interface CountyEntityResolutionCoverage {
   schema_version: "1.0.0";
   county_fips: string;

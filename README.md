@@ -43,6 +43,17 @@ The pinned GeoPackage is used only as a temporary transport input and is deleted
 processing. Durable bronze, silver, provenance, observation, manifest, and public outputs
 are JSON or GeoJSON.
 
+Rebuild the BEA 2024 county economic baseline:
+
+```powershell
+python scripts/acquire_bea_county_economic_baseline.py
+```
+
+The adapter pins BEA's February 5, 2026 CAGDP1 and CAINC1 releases, uses the ZIP
+and CSV files only as temporary transport inputs, and publishes governed JSON for
+real GDP, nominal personal income, population, and nominal per-capita personal income.
+BEA combined geographies are not allocated to individual Census counties.
+
 Rebuild the conservative IM3 identity-resolution layer from those JSON artifacts:
 
 ```powershell
@@ -165,11 +176,16 @@ validation can be added later to CI with a standards-compliant Draft 2020-12 val
   twenty-one remain in research, four are disputed or need review, and 1,290 statuses remain
   unknown. The immutable initial national tranche spans 23 states, 37 counties, and 32 known
   operators; no record remains queued.
-- Economic, fiscal, utility, housing, environmental, or opposition observations: not yet ingested.
+- Economic observations: BEA 2024 real GDP, nominal personal income, population, and
+  nominal per-capita personal income are implemented for 3,091 exact current Census
+  counties. Fifty-three nonmatching or BEA-combined county equivalents are retained as
+  unavailable, never zero. These are descriptive source observations, not impact estimates.
+- Fiscal, utility, housing, environmental, or opposition observations: not yet ingested.
 - Econometric estimates and public indices: fixture-only; not substantive.
 
 ## Next priority
 
-Use the completed 48-record tranche's evidence yield to select the next governed lifecycle
-research batch while preserving the original queue, completed pilot, and six national review
-batches as immutable inputs.
+Add the BLS Quarterly Census of Employment and Wages county baseline, preserving
+suppressed cells as suppressed, then construct the first historical county-year panel from
+the BEA and BLS observations. Do not estimate impacts until treatment dates and minimum
+pre/post-period requirements are satisfied.

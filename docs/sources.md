@@ -37,6 +37,28 @@ size and SHA-256 before processing. The GeoPackage is temporary transport input 
 All retained source-shaped rows, provisional entities, evidence links, observations,
 diagnostics, manifests, county coverage, and map features are JSON or GeoJSON.
 
+## Implemented BEA county economic baseline
+
+- Tables: CAGDP1 County GDP Summary and CAINC1 County Personal Income Summary
+- Publisher: U.S. Bureau of Economic Analysis
+- Data year: 2024
+- Release vintage: February 5, 2026
+- Measures: real GDP in chained 2017 dollars, current-dollar personal income,
+  population, and current-dollar per-capita personal income
+- Exact current Census county coverage: 3,091 of 3,144
+- Adapter: `scripts/acquire_bea_county_economic_baseline.py`
+
+The adapter pins both official ZIP byte sizes and SHA-256 hashes. ZIP and Windows-1252
+CSV inputs are deleted with the temporary working directory after parsing. Durable bronze,
+silver, acquisition, diagnostic, manifest, and public outputs are JSON. BEA aggregate or
+legacy geographies—including Connecticut's former counties, Maui/Kalawao, and several
+Virginia city/county combinations—are not allocated to current Census units. Their 53
+current Census records carry explicit unavailable values.
+
+Real GDP is converted from thousands of chained 2017 dollars to chained 2017 dollars.
+Personal income is a current-dollar series, so the metric registry and public field names
+label it nominal; it is not written to the registered real-personal-income metric.
+
 ## Candidate-adjudication evidence
 
 The entity-review layer uses ten additional official or first-party source records:

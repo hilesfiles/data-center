@@ -5,6 +5,7 @@ import {
   NavigationControl,
   Popup,
   setWorkerUrl,
+  type ExpressionSpecification,
   type MapGeoJSONFeature,
   type MapMouseEvent,
   type StyleSpecification,
@@ -12,6 +13,8 @@ import {
 import "maplibre-gl/dist/maplibre-gl.css";
 import maplibreWorkerUrl from "maplibre-gl/dist/maplibre-gl-worker.mjs?worker&url";
 import type {
+  CountyEconomicBaseline,
+  CountyMapMetric,
   PublicEntityAdjudicationRecord,
   PublicEntityResolutionRecord,
   LifecycleVerificationCandidate,
@@ -21,6 +24,7 @@ import type {
 } from "./types";
 
 interface MapPanelProps {
+  metric: CountyMapMetric;
   selectedFips: string | null;
   onSelectCounty: (fips: string) => void;
 }
@@ -47,17 +51,101 @@ const EMPTY_STYLE: StyleSpecification = {
   ],
 };
 
+const METRIC_CONFIG: Record<CountyMapMetric, {
+  property: string;
+  title: string;
+  lowLabel: string;
+  highLabel: string;
+  stops: Array<[number, string]>;
+}> = {
+  "im3-source-records": {
+    property: "source_record_count",
+    title: "IM3 source records",
+    lowLabel: "no source record",
+    highLabel: "100+",
+    stops: [[0, "#d8ddd5"], [1, "#9cc8c0"], [10, "#4c9892"], [50, "#17687a"], [100, "#0d3544"]],
+  },
+  "real-gdp": {
+    property: "real_gdp_usd",
+    title: "Real GDP · 2024",
+    lowLabel: "unavailable / low",
+    highLabel: "$1T+",
+    stops: [[1_000_000_000, "#d8ddd5"], [10_000_000_000, "#9cc8c0"], [50_000_000_000, "#4c9892"], [200_000_000_000, "#17687a"], [1_000_000_000_000, "#0d3544"]],
+  },
+  "personal-income": {
+    property: "personal_income_nominal_usd",
+    title: "Personal income · 2024",
+    lowLabel: "unavailable / low",
+    highLabel: "$1T+",
+    stops: [[1_000_000_000, "#d8ddd5"], [10_000_000_000, "#9cc8c0"], [50_000_000_000, "#4c9892"], [200_000_000_000, "#17687a"], [1_000_000_000_000, "#0d3544"]],
+  },
+  population: {
+    property: "population",
+    title: "Population · 2024",
+    lowLabel: "unavailable / low",
+    highLabel: "10M+",
+    stops: [[10_000, "#d8ddd5"], [100_000, "#9cc8c0"], [500_000, "#4c9892"], [2_000_000, "#17687a"], [10_000_000, "#0d3544"]],
+  },
+  "per-capita-income": {
+    property: "per_capita_personal_income_nominal_usd",
+    title: "Per-capita income · 2024",
+    lowLabel: "unavailable / low",
+    highLabel: "$200k+",
+    stops: [[30_000, "#d8ddd5"], [50_000, "#9cc8c0"], [75_000, "#4c9892"], [100_000, "#17687a"], [200_000, "#0d3544"]],
+  },
+};
+
+const countyFillExpression = (metric: CountyMapMetric): ExpressionSpecification => {
+  const config = METRIC_CONFIG[metric];
+  return [
+    "case",
+    ["==", ["get", config.property], null],
+    "#d8ddd5",
+    [
+      "interpolate",
+      ["linear"],
+      ["get", config.property],
+      ...config.stops.flatMap(([value, color]) => [value, color]),
+    ],
+  ] as ExpressionSpecification;
+};
+
+const compactNumber = new Intl.NumberFormat("en-US", { notation: "compact", maximumFractionDigits: 1 });
+const wholeDollars = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 });
+
+const countyPopupValue = (metric: CountyMapMetric, properties: Record<string, string | number | null>) => {
+  const value = properties[METRIC_CONFIG[metric].property];
+  if (value == null) return "BEA value unavailable for this Census geography";
+  const number = Number(value);
+  if (metric === "im3-source-records") {
+    return `${number} IM3 source record${number === 1 ? "" : "s"}`;
+  }
+  if (metric === "population") return `2024 population: ${number.toLocaleString("en-US")}`;
+  if (metric === "per-capita-income") return `2024 nominal per-capita personal income: ${wholeDollars.format(number)}`;
+  const label = metric === "real-gdp" ? "real GDP (chained 2017 dollars)" : "nominal personal income";
+  return `2024 ${label}: $${compactNumber.format(number)}`;
+};
+
 setWorkerUrl(maplibreWorkerUrl);
 
-export function MapPanel({ selectedFips, onSelectCounty }: MapPanelProps) {
+export function MapPanel({ metric, selectedFips, onSelectCounty }: MapPanelProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<Map | null>(null);
   const selectRef = useRef(onSelectCounty);
+  const metricRef = useRef(metric);
   const [message, setMessage] = useState("Loading map data…");
 
   useEffect(() => {
     selectRef.current = onSelectCounty;
   }, [onSelectCounty]);
+
+  useEffect(() => {
+    metricRef.current = metric;
+    const map = mapRef.current;
+    if (map?.getLayer("county-fill")) {
+      map.setPaintProperty("county-fill", "fill-color", countyFillExpression(metric));
+    }
+  }, [metric]);
 
   useEffect(() => {
     if (!containerRef.current || mapRef.current) return;
@@ -83,10 +171,11 @@ export function MapPanel({ selectedFips, onSelectCounty }: MapPanelProps) {
     map.on("load", async () => {
       try {
         const base = import.meta.env.BASE_URL;
-        const [countiesResponse, facilitiesResponse, coverageResponse, resolutionResponse, adjudicationResponse, lifecycleResponse, lifecycleResultsResponse, nationalLifecycleResponse, nationalLifecycleResultsResponse, nationalLifecycleResults2Response, nationalLifecycleResults3Response, nationalLifecycleResults4Response, nationalLifecycleResults5Response, nationalLifecycleResults6Response] = await Promise.all([
+        const [countiesResponse, facilitiesResponse, coverageResponse, economicResponse, resolutionResponse, adjudicationResponse, lifecycleResponse, lifecycleResultsResponse, nationalLifecycleResponse, nationalLifecycleResultsResponse, nationalLifecycleResults2Response, nationalLifecycleResults3Response, nationalLifecycleResults4Response, nationalLifecycleResults5Response, nationalLifecycleResults6Response] = await Promise.all([
           fetch(`${base}data/v1/maps/counties.geojson`),
           fetch(`${base}data/v1/maps/facilities.geojson`),
           fetch(`${base}data/v1/counties/facility-source-coverage.json`),
+          fetch(`${base}data/v1/counties/economic-baseline-2024.json`),
           fetch(`${base}data/v1/entity-resolution/index.json`),
           fetch(`${base}data/v1/entity-resolution/final-index.json`),
           fetch(`${base}data/v1/lifecycle/tranche-2-queue.json`),
@@ -99,12 +188,13 @@ export function MapPanel({ selectedFips, onSelectCounty }: MapPanelProps) {
           fetch(`${base}data/v1/lifecycle/national-tranche-5-results.json`),
           fetch(`${base}data/v1/lifecycle/national-tranche-6-results.json`),
         ]);
-        if (!countiesResponse.ok || !facilitiesResponse.ok || !coverageResponse.ok || !resolutionResponse.ok || !adjudicationResponse.ok || !lifecycleResponse.ok || !lifecycleResultsResponse.ok || !nationalLifecycleResponse.ok || !nationalLifecycleResultsResponse.ok || !nationalLifecycleResults2Response.ok || !nationalLifecycleResults3Response.ok || !nationalLifecycleResults4Response.ok || !nationalLifecycleResults5Response.ok || !nationalLifecycleResults6Response.ok) {
+        if (!countiesResponse.ok || !facilitiesResponse.ok || !coverageResponse.ok || !economicResponse.ok || !resolutionResponse.ok || !adjudicationResponse.ok || !lifecycleResponse.ok || !lifecycleResultsResponse.ok || !nationalLifecycleResponse.ok || !nationalLifecycleResultsResponse.ok || !nationalLifecycleResults2Response.ok || !nationalLifecycleResults3Response.ok || !nationalLifecycleResults4Response.ok || !nationalLifecycleResults5Response.ok || !nationalLifecycleResults6Response.ok) {
           throw new Error("A required map artifact could not be loaded.");
         }
         const counties = await countiesResponse.json();
         const facilities = await facilitiesResponse.json();
         const coverage = await coverageResponse.json();
+        const economic = (await economicResponse.json()) as CountyEconomicBaseline[];
         const resolution = (await resolutionResponse.json()) as PublicEntityResolutionRecord[];
         const adjudication = (await adjudicationResponse.json()) as PublicEntityAdjudicationRecord[];
         const lifecycle = (await lifecycleResponse.json()) as LifecycleVerificationCandidate[];
@@ -122,16 +212,24 @@ export function MapPanel({ selectedFips, onSelectCounty }: MapPanelProps) {
             record,
           ]),
         );
+        const economicByFips = new globalThis.Map(
+          economic.map((record) => [record.county_fips, record]),
+        );
         counties.features = counties.features.map(
           (feature: { properties: Record<string, unknown> }) => {
             const record = coverageByFips.get(feature.properties.county_fips as string) as
               | { source_record_count: number }
               | undefined;
+            const economicRecord = economicByFips.get(feature.properties.county_fips as string);
             return {
               ...feature,
               properties: {
                 ...feature.properties,
                 source_record_count: record?.source_record_count ?? 0,
+                real_gdp_usd: economicRecord?.real_gdp_usd ?? null,
+                personal_income_nominal_usd: economicRecord?.personal_income_nominal_usd ?? null,
+                population: economicRecord?.population ?? null,
+                per_capita_personal_income_nominal_usd: economicRecord?.per_capita_personal_income_nominal_usd ?? null,
               },
             };
           },
@@ -193,21 +291,7 @@ export function MapPanel({ selectedFips, onSelectCounty }: MapPanelProps) {
           type: "fill",
           source: "counties",
           paint: {
-            "fill-color": [
-              "interpolate",
-              ["linear"],
-              ["get", "source_record_count"],
-              0,
-              "#d8ddd5",
-              1,
-              "#9cc8c0",
-              10,
-              "#4c9892",
-              50,
-              "#17687a",
-              100,
-              "#0d3544",
-            ],
+            "fill-color": countyFillExpression(metricRef.current),
             "fill-opacity": 0.9,
           },
         });
@@ -286,13 +370,12 @@ export function MapPanel({ selectedFips, onSelectCounty }: MapPanelProps) {
           map.getCanvas().style.cursor = "pointer";
           const feature = event.features?.[0];
           if (!feature) return;
-          const properties = feature.properties as Record<string, string | number>;
-          const recordCount = Number(properties.source_record_count ?? 0);
+          const properties = feature.properties as Record<string, string | number | null>;
           popup
             .setLngLat(event.lngLat)
             .setHTML(
               `<strong>${escapeHtml(properties.county_name)}, ${escapeHtml(properties.state_abbr)}</strong><br/>` +
-                `${recordCount} IM3 source record${recordCount === 1 ? "" : "s"}`,
+                countyPopupValue(metricRef.current, properties),
             )
             .addTo(map);
         });
@@ -382,9 +465,9 @@ export function MapPanel({ selectedFips, onSelectCounty }: MapPanelProps) {
       <div ref={containerRef} className="map" aria-label="Interactive county facility map" />
       {message && <div className="map-message">{message}</div>}
       <div className="legend" aria-label="Map legend">
-        <span className="legend-title">IM3 source records</span>
+        <span className="legend-title">{METRIC_CONFIG[metric].title}</span>
         <div className="legend-ramp" aria-hidden="true" />
-        <div className="legend-labels"><span>no source record</span><span>100+</span></div>
+        <div className="legend-labels"><span>{METRIC_CONFIG[metric].lowLabel}</span><span>{METRIC_CONFIG[metric].highLabel}</span></div>
         <div className="review-key">
           <span><i className="key-dot key-pending" />pending (0)</span>
           <span><i className="key-dot key-merged" />merged</span>

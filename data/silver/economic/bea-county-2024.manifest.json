@@ -1,0 +1,61 @@
+{
+  "schema_version": "1.0.0",
+  "dataset_id": "bea_county_economic_baseline_2024",
+  "artifact_type": "county_economic_baseline",
+  "artifact_version": "2024.1",
+  "generated_at": "2026-09-01T03:55:38Z",
+  "data_vintage": "2024",
+  "record_schema": "https://dccio.org/schemas/v1/public-county-economic-baseline.schema.json",
+  "format": "json",
+  "parts": [
+    {
+      "path": "data/bronze/economic/bea-county-2024-source-rows.json",
+      "sha256": "8ff90086923431e2c978abe0b39b2dc7d9e58f21b97d44bf627b27c3d89c64ae",
+      "byte_size": 3108293,
+      "record_count": 3144,
+      "partition_values": {
+        "zone": "bronze",
+        "projection": "source_rows"
+      }
+    },
+    {
+      "path": "data/silver/economic/bea-county-2024.json",
+      "sha256": "c90827d8cf556fecbc30e249714b8eff4ffffafe3098033e7a2344be35bf702e",
+      "byte_size": 6070479,
+      "record_count": 12578,
+      "partition_values": {
+        "zone": "silver",
+        "projection": "observations"
+      }
+    },
+    {
+      "path": "site/public/data/v1/counties/economic-baseline-2024.json",
+      "sha256": "4ed418a422160d5fd303df7e9a4372b3df72310e76451e71e3a39c19c473cd77",
+      "byte_size": 1255244,
+      "record_count": 3144,
+      "partition_values": {
+        "zone": "public",
+        "projection": "county_baseline"
+      }
+    },
+    {
+      "path": "data/silver/economic/bea-county-2024.processing-report.json",
+      "sha256": "04652eebf2bbe88f7395c8f5d4a4ea15cec68e8db5d684160326dd91b7d4ce05",
+      "byte_size": 2627,
+      "record_count": 1,
+      "partition_values": {
+        "zone": "silver",
+        "projection": "processing_report"
+      }
+    }
+  ],
+  "record_count": 18867,
+  "input_dataset_ids": [
+    "geo_counties_2025_5m"
+  ],
+  "license_metadata": {
+    "license": "U.S. government data",
+    "redistribution_status": "allowed",
+    "attribution": "Source: U.S. Bureau of Economic Analysis"
+  }
+}

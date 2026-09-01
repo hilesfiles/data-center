@@ -70,8 +70,24 @@ The pinned ingest, first-pass resolution, and initial adjudication artifacts rem
 immutable; final boundary review is another downstream JSON layer.
 
 The seed does not establish operating dates, lifecycle status, historical completeness,
-MW capacity, or causal effects. Historical reconstruction, outcome panels, and
-econometric estimation remain future work.
+MW capacity, or causal effects. Historical outcome panels and econometric estimation
+remain future work.
+
+## County economic baseline
+
+The first substantive outcome-source increment uses BEA's February 5, 2026 county release
+for data year 2024. CAGDP1 line 1 supplies real GDP in thousands of chained 2017 dollars;
+the adapter converts it to chained 2017 dollars. CAINC1 supplies current-dollar personal
+income, population, and current-dollar per-capita personal income. Current-dollar measures
+are explicitly registered and published as nominal rather than being assigned to real-value
+metrics.
+
+All 3,144 Census 2025 county and county-equivalent records remain in the projection. BEA
+publishes exact compatible values for 3,091. Fifty-three current Census units do not receive
+an exact source row because BEA uses combined or legacy geographies. Those values are marked
+unavailable and are not divided, copied, or treated as zero. The 2024 baseline is descriptive
+context only; it does not measure a data-center effect and is insufficient for pre/post or
+quasi-causal analysis without historical observations and treatment dates.
 
 ## Lifecycle verification pilot
 
