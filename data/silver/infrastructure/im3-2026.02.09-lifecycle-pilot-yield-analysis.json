@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.0.0",
+  "analysis_id": "ana_lifecycle_pilot_yield_20260831",
+  "input_dataset_id": "im3_lifecycle_tranche_2_20260831",
+  "generated_at": "2026-09-01T02:30:00Z",
+  "overall": {
+    "reviewed_count": 24,
+    "resolved_count": 10,
+    "unresolved_count": 11,
+    "disputed_count": 3,
+    "resolution_rate": 0.4167
+  },
+  "by_research_archetype": [
+    {
+      "research_archetype": "campus_member_mapping",
+      "reviewed_count": 14,
+      "resolved_count": 6,
+      "unresolved_count": 5,
+      "disputed_count": 3,
+      "resolution_rate": 0.4286
+    },
+    {
+      "research_archetype": "exact_reference_building",
+      "reviewed_count": 4,
+      "resolved_count": 2,
+      "unresolved_count": 2,
+      "disputed_count": 0,
+      "resolution_rate": 0.5
+    },
+    {
+      "research_archetype": "named_operator_building",
+      "reviewed_count": 6,
+      "resolved_count": 2,
+      "unresolved_count": 4,
+      "disputed_count": 0,
+      "resolution_rate": 0.3333
+    }
+  ],
+  "failure_modes": [
+    {
+      "failure_mode": "building_identity_not_established",
+      "count": 11,
+      "policy_response": "Require two matching facility identifiers and stop without projecting campus or market evidence onto a building."
+    },
+    {
+      "failure_mode": "official_source_conflict",
+      "count": 3,
+      "policy_response": "Retain all claims, prohibit majority voting, and route the facility to needs_review."
+    }
+  ],
+  "policy_implications": [
+    "Prioritize named buildings with operator or exact source-reference context.",
+    "Treat campus-member buildings as a distinct identity-mapping research archetype.",
+    "Exclude completed unresolved and disputed pilot records from the next general-purpose tranche.",
+    "Use regional, state, county, and operator caps so evidence yield is tested beyond the densest markets."
+  ]
+}

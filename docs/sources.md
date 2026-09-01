@@ -79,6 +79,19 @@ campus or market evidence is not projected onto an unnamed building. The tranche
 are `scripts/adjudicate_lifecycle_tranche_1.py` and
 `scripts/adjudicate_lifecycle_tranche_2.py`.
 
+## National lifecycle expansion policy
+
+The national queue adds no new source claims. It is a deterministic research-order layer
+built from the final identity snapshot and completed pilot results. The governed policy is
+`config/v1/lifecycle-national-expansion-policy.json`; it defines source precedence by
+permitted use, requires two matching facility identifiers, prohibits campus-to-building and
+market-to-building projection, and routes official-source conflicts to disputed review.
+
+The builder `scripts/build_national_lifecycle_queue.py` publishes the complete priority
+index, the balanced 48-facility initial tranche, the pilot-yield analysis, national county
+coverage, metadata, and a content-hashed manifest. These outputs are JSON and contain no
+copied source page bodies.
+
 Four source rows reported Prince William County, Virginia, while their centroids fall in
 Manassas under the published 2025 Census polygons. Both values remain auditable: bronze
 records preserve the source report and canonical/public geography uses point-in-polygon.

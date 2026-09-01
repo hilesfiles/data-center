@@ -101,3 +101,26 @@ available, and two additional Prince William County records remain disputed beca
 current county GIS conflicts with the county's 2024 inventory. Across the complete pilot,
 ten facilities are verified operational, eleven remain in research, three are disputed,
 and 1,327 canonical facilities retain unknown status.
+
+## National lifecycle expansion
+
+The completed pilot produced a 41.67% status-resolution rate: ten of twenty-four reviewed
+facilities resolved, eleven lacked a defensible building-level match, and three contained
+conflicting official evidence. The expansion policy therefore makes exact-facility identity,
+source precedence, conflict handling, and stop conditions explicit. A lifecycle claim must
+match at least two accepted identifiers; campus or market evidence cannot be projected onto
+an individual building; and conflicting official claims remain disputed rather than being
+resolved by majority vote.
+
+The deterministic national index contains all 1,327 facilities whose lifecycle status
+remains unknown. Scoring combines source-name specificity, operator linkage, building
+geometry, a source reference, non-campus specificity, source quality, state coverage need,
+and county density. Records are also classified into research archetypes so campus mapping,
+exact-reference buildings, named buildings, points, and low-context records can be evaluated
+separately.
+
+The first national evidence tranche contains 48 facilities, twelve from each Census region.
+Selection is capped at three per state, two per county, and four per known operator. The
+result covers 23 states, 37 counties, and 32 known operators. The fourteen unresolved or
+disputed pilot records remain in the national backlog but are excluded from this tranche so
+the expansion measures new evidence yield rather than repeating completed general research.

@@ -139,6 +139,20 @@ priority score, selection rationale, evidence state, and workflow status. Enteri
 queue never changes `facility.current_status`; only accepted claims and an auditable
 review decision may resolve status, dates, operator roles, or capacity.
 
+### National lifecycle priority record
+
+A deterministic research-priority projection for every active canonical facility whose
+lifecycle status remains unknown. It records Census region, research archetype, weighted
+score components, national and regional ranks, priority tier, prior pilot outcome, and
+initial-tranche selection state. The initial tranche is a constrained view of this index;
+it is not a separate facility sample and does not imply lifecycle status.
+
+The associated national expansion policy is a versioned governance record. It defines
+eligibility, regional quotas, state/county/operator caps, source precedence, exact-facility
+matching requirements, conflict handling, and research stop rules. This keeps queue
+membership and researcher decisions reproducible from JSON rather than undocumented
+workflow convention.
+
 ## Measurement domain
 
 An observation stores one metric value for one subject and period. Subjects may be a

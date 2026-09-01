@@ -28,7 +28,7 @@
     "needs_review_facility_count": {"type": "integer", "minimum": 0},
     "verified_facility_count": {"type": "integer", "minimum": 0},
     "unknown_status_facility_count": {"type": "integer", "minimum": 0},
-    "coverage_status": {"type": "string", "enum": ["pilot_queued", "pilot_in_progress", "pilot_reviewed", "backlog", "no_active_facility"]},
+    "coverage_status": {"type": "string", "enum": ["pilot_queued", "pilot_in_progress", "pilot_reviewed", "national_initial_tranche", "national_backlog", "backlog", "no_active_facility"]},
     "generated_at": {"$ref": "common.schema.json#/$defs/timestamp"}
   },
   "additionalProperties": false

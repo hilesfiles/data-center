@@ -98,6 +98,17 @@ The downstream tranches keep earlier queue snapshots immutable, record source cl
 human review decisions in JSON, and publish separate verified, partial, disputed, and
 remaining-queue states. Tranche two completes the governed review of the pilot.
 
+Build the governed national lifecycle priority index and balanced first tranche:
+
+```powershell
+python scripts/build_national_lifecycle_queue.py
+```
+
+The national policy converts the pilot findings into explicit JSON rules for evidence
+precedence, exact-building attribution, source conflicts, stop conditions, scoring, and
+regional/operator diversity. It ranks all 1,327 facilities whose status remains unknown
+and selects a 48-facility first tranche with twelve records from each Census region.
+
 Build the static site:
 
 ```powershell
@@ -131,11 +142,13 @@ validation can be added later to CI with a standards-compliant Draft 2020-12 val
   two accepted campus links, and two rejected campus links. No candidate remains pending.
 - Lifecycle verification: all 24 pilot facilities have been reviewed across eight counties.
   Ten are resolved operational, eleven remain in research because evidence does not map to
-  the building, and three are disputed; 1,327 canonical facilities still have unknown status.
+  the building, and three are disputed. All 1,327 remaining unknown-status facilities are
+  represented in the governed national priority index; the initial 48-record tranche spans
+  23 states, 37 counties, and 32 known operators.
 - Economic, fiscal, utility, housing, environmental, or opposition observations: not yet ingested.
 - Econometric estimates and public indices: fixture-only; not substantive.
 
 ## Next priority
 
-Evaluate the completed pilot's source yield and adjudication outcomes, then expand
-lifecycle verification with a governed national sampling and prioritization policy.
+Collect and adjudicate evidence for the 48-facility initial national tranche, preserving
+the national queue snapshot and the completed pilot as immutable inputs.

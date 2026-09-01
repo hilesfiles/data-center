@@ -1,0 +1,102 @@
+{
+  "schema_version": "1.0.0",
+  "dataset_id": "im3_lifecycle_national_priority_20260831",
+  "artifact_type": "lifecycle_national_priority_queue",
+  "artifact_version": "2026.08.31",
+  "generated_at": "2026-09-01T02:30:00Z",
+  "data_vintage": "2026-08-31",
+  "record_schema": "https://dccio.org/schemas/v1/lifecycle-national-priority-record.schema.json",
+  "format": "json",
+  "parts": [
+    {
+      "path": "data/silver/infrastructure/im3-2026.02.09-lifecycle-national-priority.json",
+      "sha256": "5782efbeac2f4b00a915d641c79e859d192e385dbdb63091c0b7936695d6e7b5",
+      "byte_size": 2043793,
+      "record_count": 1327,
+      "partition_values": {
+        "zone": "silver",
+        "projection": "national_priority_queue"
+      }
+    },
+    {
+      "path": "data/silver/infrastructure/im3-2026.02.09-lifecycle-national-priority.processing-report.json",
+      "sha256": "405d90f049e0facfd05b570d69e2bd5951d7c8da94beffe75cd1625c4c6ab995",
+      "byte_size": 2027,
+      "record_count": 1,
+      "partition_values": {
+        "zone": "silver",
+        "projection": "processing_report"
+      }
+    },
+    {
+      "path": "data/silver/infrastructure/im3-2026.02.09-lifecycle-pilot-yield-analysis.json",
+      "sha256": "60dddeb32d7d62291a7b290ca4779db8a4de2b2f2121a9418305c873aaf339d4",
+      "byte_size": 1865,
+      "record_count": 1,
+      "partition_values": {
+        "zone": "silver",
+        "projection": "pilot_yield_analysis"
+      }
+    },
+    {
+      "path": "site/public/data/v1/lifecycle/national-priority-index.json",
+      "sha256": "a262f18017ce5d5265aad5f78436c136f78d8d4577dca36f6538d7b320ed6b3c",
+      "byte_size": 2043571,
+      "record_count": 1327,
+      "partition_values": {
+        "zone": "public",
+        "projection": "national_priority_index"
+      }
+    },
+    {
+      "path": "site/public/data/v1/lifecycle/national-initial-tranche.json",
+      "sha256": "0624fbf7cbb0a74a2409ab5a0b50b6874f18840d90de27c8c816558090eb059e",
+      "byte_size": 79409,
+      "record_count": 48,
+      "partition_values": {
+        "zone": "public",
+        "projection": "national_initial_tranche"
+      }
+    },
+    {
+      "path": "site/public/data/v1/lifecycle/national-pilot-yield-analysis.json",
+      "sha256": "60dddeb32d7d62291a7b290ca4779db8a4de2b2f2121a9418305c873aaf339d4",
+      "byte_size": 1865,
+      "record_count": 1,
+      "partition_values": {
+        "zone": "public",
+        "projection": "pilot_yield_analysis"
+      }
+    },
+    {
+      "path": "site/public/data/v1/counties/lifecycle-national-expansion-coverage.json",
+      "sha256": "cea08232e0b37558e85caf068638f40e72a6f4f6822073241de2dc5fd25af8fd",
+      "byte_size": 1138296,
+      "record_count": 3144,
+      "partition_values": {
+        "zone": "public",
+        "projection": "national_lifecycle_coverage"
+      }
+    },
+    {
+      "path": "site/public/data/v1/lifecycle/national-expansion-metadata.json",
+      "sha256": "405d90f049e0facfd05b570d69e2bd5951d7c8da94beffe75cd1625c4c6ab995",
+      "byte_size": 2027,
+      "record_count": 1,
+      "partition_values": {
+        "zone": "public",
+        "projection": "national_expansion_metadata"
+      }
+    }
+  ],
+  "record_count": 5850,
+  "input_dataset_ids": [
+    "im3_final_boundary_review_20260831",
+    "im3_lifecycle_tranche_2_20260831"
+  ],
+  "license_metadata": {
+    "license": "ODbL applies to IM3-derived records",
+    "redistribution_status": "allowed",
+    "attribution": "© OpenStreetMap contributors; IM3 Open Source Data Center Atlas (PNNL/DOE)"
+  }
+}

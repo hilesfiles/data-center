@@ -1,0 +1,237 @@
+{
+  "schema_version": "1.0.0",
+  "policy_id": "pol_lifecycle_national_20260831",
+  "policy_version": "1.0.0",
+  "input_dataset_ids": [
+    "im3_final_boundary_review_20260831",
+    "im3_lifecycle_tranche_2_20260831"
+  ],
+  "eligibility": {
+    "active_canonical_facility_only": true,
+    "unknown_lifecycle_status_only": true,
+    "primary_county_required": true,
+    "include_unresolved_pilot_records": true,
+    "exclude_resolved_pilot_records": true,
+    "exclude_completed_pilot_from_initial_tranche": true
+  },
+  "regional_frame": [
+    {
+      "region": "Northeast",
+      "state_abbrs": ["CT", "ME", "MA", "NH", "RI", "VT", "NJ", "NY", "PA"]
+    },
+    {
+      "region": "Midwest",
+      "state_abbrs": ["IN", "IL", "MI", "OH", "WI", "IA", "KS", "MN", "MO", "NE", "ND", "SD"]
+    },
+    {
+      "region": "South",
+      "state_abbrs": ["DE", "DC", "FL", "GA", "MD", "NC", "SC", "VA", "WV", "AL", "KY", "MS", "TN", "AR", "LA", "OK", "TX"]
+    },
+    {
+      "region": "West",
+      "state_abbrs": ["AZ", "CO", "ID", "MT", "NV", "NM", "UT", "WY", "AK", "CA", "HI", "OR", "WA"]
+    }
+  ],
+  "initial_tranche": {
+    "size": 48,
+    "per_region_quota": 12,
+    "max_per_state": 3,
+    "max_per_county": 2,
+    "max_per_operator": 4,
+    "eligible_priority_tiers": ["national_high", "national_standard"],
+    "selection_order": ["priority_score_desc", "facility_id_asc"]
+  },
+  "scoring": {
+    "weights": {
+      "source_name_specificity": 20,
+      "operator_link": 15,
+      "building_footprint": 15,
+      "source_reference": 10,
+      "non_campus_specificity": 10,
+      "source_quality": 15,
+      "state_coverage_need": 5,
+      "county_density": 10
+    },
+    "normalization": {
+      "source_quality": "facility data-quality score divided by 100",
+      "state_coverage_need": "one minus the state's eligible-facility count divided by the maximum state count",
+      "county_density": "county eligible-facility count divided by the maximum county count",
+      "prior_pilot_override": "completed unresolved or disputed pilot records are assigned national_deferred and excluded from the initial tranche"
+    }
+  },
+  "priority_tiers": [
+    {
+      "tier": "national_high",
+      "minimum_score": 75,
+      "maximum_score": 100,
+      "research_action": "Eligible for the initial balanced national tranche."
+    },
+    {
+      "tier": "national_standard",
+      "minimum_score": 50,
+      "maximum_score": 74.99,
+      "research_action": "Eligible when regional and diversity constraints require it."
+    },
+    {
+      "tier": "national_deferred",
+      "minimum_score": 0,
+      "maximum_score": 49.99,
+      "research_action": "Retain in the national backlog pending better identity context or a targeted escalation strategy."
+    }
+  ],
+  "research_archetypes": [
+    {
+      "archetype": "prior_review_followup",
+      "classification_order": 1,
+      "match_rule": "The completed pilot ended unresolved or disputed.",
+      "source_strategy": ["planning_record", "permit_record", "assessor_record", "operator_release", "regulatory_filing"]
+    },
+    {
+      "archetype": "campus_member_mapping",
+      "classification_order": 2,
+      "match_rule": "The facility is a building member of a mapped campus and requires building-specific mapping.",
+      "source_strategy": ["planning_record", "permit_record", "assessor_record", "zoning_record", "operator_release"]
+    },
+    {
+      "archetype": "exact_reference_building",
+      "classification_order": 3,
+      "match_rule": "The mapped building has a source reference suitable for exact-record lookup.",
+      "source_strategy": ["operator_release", "permit_record", "assessor_record", "planning_record", "regulatory_filing"]
+    },
+    {
+      "archetype": "named_operator_building",
+      "classification_order": 4,
+      "match_rule": "The mapped building has both a specific name and a normalized operator link.",
+      "source_strategy": ["operator_release", "planning_record", "permit_record", "assessor_record", "utility_filing"]
+    },
+    {
+      "archetype": "named_building",
+      "classification_order": 5,
+      "match_rule": "The mapped building is named but lacks a normalized operator link.",
+      "source_strategy": ["assessor_record", "permit_record", "planning_record", "zoning_record", "local_news"]
+    },
+    {
+      "archetype": "operator_point",
+      "classification_order": 6,
+      "match_rule": "The point record has an operator link but no building footprint.",
+      "source_strategy": ["operator_release", "regulatory_filing", "planning_record", "permit_record", "local_news"]
+    },
+    {
+      "archetype": "low_context",
+      "classification_order": 7,
+      "match_rule": "The record lacks enough source identity context for a more specific archetype.",
+      "source_strategy": ["assessor_record", "planning_record", "permit_record", "local_news", "trade_press"]
+    }
+  ],
+  "source_precedence": [
+    {
+      "rank": 1,
+      "source_type": "regulatory_filing",
+      "authority": "official",
+      "permitted_use": "Establish regulated status, dates, or capacity only for the named facility or parcel."
+    },
+    {
+      "rank": 2,
+      "source_type": "permit_record",
+      "authority": "official",
+      "permitted_use": "Establish permitting, construction, occupancy, or address facts for the identified building."
+    },
+    {
+      "rank": 3,
+      "source_type": "planning_record",
+      "authority": "official",
+      "permitted_use": "Establish project and phase facts; campus facts require a separate building match."
+    },
+    {
+      "rank": 4,
+      "source_type": "assessor_record",
+      "authority": "official",
+      "permitted_use": "Establish parcel, owner, address, and building-area facts; not operational status by itself."
+    },
+    {
+      "rank": 5,
+      "source_type": "operator_release",
+      "authority": "primary",
+      "permitted_use": "Establish operator-asserted status, dates, services, and exact-facility specifications."
+    },
+    {
+      "rank": 6,
+      "source_type": "utility_filing",
+      "authority": "official",
+      "permitted_use": "Establish service, load, and interconnection facts when the facility match is explicit."
+    },
+    {
+      "rank": 7,
+      "source_type": "sec_filing",
+      "authority": "primary",
+      "permitted_use": "Establish company-reported transactions or portfolio facts; require a facility identifier for building attribution."
+    },
+    {
+      "rank": 8,
+      "source_type": "zoning_record",
+      "authority": "official",
+      "permitted_use": "Establish approvals and land-use facts, not completion or operation without later evidence."
+    },
+    {
+      "rank": 9,
+      "source_type": "local_news",
+      "authority": "independent_secondary",
+      "permitted_use": "Corroborate dates and local context when the facility is explicitly identified."
+    },
+    {
+      "rank": 10,
+      "source_type": "trade_press",
+      "authority": "discovery_only",
+      "permitted_use": "Discover leads and corroborate context; do not establish a canonical fact alone."
+    }
+  ],
+  "exact_facility_match": {
+    "minimum_identifier_matches": 2,
+    "acceptable_identifiers": ["facility_code", "facility_name", "street_address", "parcel_id", "permit_id", "coordinates", "campus_and_building_label"],
+    "campus_to_building_projection_allowed": false,
+    "market_to_building_projection_allowed": false,
+    "capacity_and_area_require_exact_facility": true
+  },
+  "conflict_resolution": {
+    "official_source_conflict_outcome": "disputed",
+    "majority_vote_allowed": false,
+    "retain_all_claims": true,
+    "required_review_status": "needs_review",
+    "temporal_precedence_rule": "A newer source supersedes an older claim only when both unambiguously describe the same physical facility and the later source explicitly reports a changed condition."
+  },
+  "stop_rules": {
+    "maximum_search_rounds": 3,
+    "minimum_distinct_source_types_reviewed": 3,
+    "stop_if_exact_match_absent": true,
+    "no_exact_match_outcome": "unresolved",
+    "inaccessible_evidence_outcome": "blocked",
+    "conflicting_evidence_outcome": "disputed"
+  },
+  "target_attributes": [
+    "facility.current_status",
+    "facility.facility_type",
+    "event.announced",
+    "event.construction_started",
+    "event.operational",
+    "event.expansion_operational",
+    "event.closed",
+    "operator_relationship.roles",
+    "observation.capacity_mw",
+    "observation.floor_area_sqft"
+  ],
+  "suggested_source_types": [
+    "operator_release",
+    "planning_record",
+    "zoning_record",
+    "permit_record",
+    "assessor_record",
+    "utility_filing",
+    "regulatory_filing",
+    "sec_filing",
+    "local_news",
+    "trade_press"
+  ],
+  "created_at": "2026-09-01T02:30:00Z",
+  "updated_at": "2026-09-01T02:30:00Z",
+  "record_status": "active"
+}

@@ -1,0 +1,261 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dccio.org/schemas/v1/lifecycle-national-expansion-policy.schema.json",
+  "title": "National lifecycle-verification expansion policy",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "policy_id",
+    "policy_version",
+    "input_dataset_ids",
+    "eligibility",
+    "regional_frame",
+    "initial_tranche",
+    "scoring",
+    "priority_tiers",
+    "research_archetypes",
+    "source_precedence",
+    "exact_facility_match",
+    "conflict_resolution",
+    "stop_rules",
+    "target_attributes",
+    "suggested_source_types",
+    "created_at",
+    "updated_at",
+    "record_status"
+  ],
+  "properties": {
+    "schema_version": {"$ref": "common.schema.json#/$defs/schema_version"},
+    "policy_id": {"$ref": "common.schema.json#/$defs/entity_id"},
+    "policy_version": {"type": "string", "minLength": 1},
+    "input_dataset_ids": {
+      "type": "array",
+      "minItems": 2,
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 1}
+    },
+    "eligibility": {
+      "type": "object",
+      "required": [
+        "active_canonical_facility_only",
+        "unknown_lifecycle_status_only",
+        "primary_county_required",
+        "include_unresolved_pilot_records",
+        "exclude_resolved_pilot_records",
+        "exclude_completed_pilot_from_initial_tranche"
+      ],
+      "properties": {
+        "active_canonical_facility_only": {"type": "boolean", "const": true},
+        "unknown_lifecycle_status_only": {"type": "boolean", "const": true},
+        "primary_county_required": {"type": "boolean", "const": true},
+        "include_unresolved_pilot_records": {"type": "boolean", "const": true},
+        "exclude_resolved_pilot_records": {"type": "boolean", "const": true},
+        "exclude_completed_pilot_from_initial_tranche": {"type": "boolean", "const": true}
+      },
+      "additionalProperties": false
+    },
+    "regional_frame": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "items": {
+        "type": "object",
+        "required": ["region", "state_abbrs"],
+        "properties": {
+          "region": {"type": "string", "enum": ["Northeast", "Midwest", "South", "West"]},
+          "state_abbrs": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {"$ref": "common.schema.json#/$defs/state_abbr"}
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "initial_tranche": {
+      "type": "object",
+      "required": [
+        "size",
+        "per_region_quota",
+        "max_per_state",
+        "max_per_county",
+        "max_per_operator",
+        "eligible_priority_tiers",
+        "selection_order"
+      ],
+      "properties": {
+        "size": {"type": "integer", "minimum": 1},
+        "per_region_quota": {"type": "integer", "minimum": 1},
+        "max_per_state": {"type": "integer", "minimum": 1},
+        "max_per_county": {"type": "integer", "minimum": 1},
+        "max_per_operator": {"type": "integer", "minimum": 1},
+        "eligible_priority_tiers": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"type": "string", "enum": ["national_high", "national_standard", "national_deferred"]}
+        },
+        "selection_order": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"type": "string", "enum": ["priority_score_desc", "facility_id_asc"]}
+        }
+      },
+      "additionalProperties": false
+    },
+    "scoring": {
+      "type": "object",
+      "required": ["weights", "normalization"],
+      "properties": {
+        "weights": {
+          "type": "object",
+          "required": [
+            "source_name_specificity",
+            "operator_link",
+            "building_footprint",
+            "source_reference",
+            "non_campus_specificity",
+            "source_quality",
+            "state_coverage_need",
+            "county_density"
+          ],
+          "properties": {
+            "source_name_specificity": {"type": "number", "minimum": 0, "maximum": 100},
+            "operator_link": {"type": "number", "minimum": 0, "maximum": 100},
+            "building_footprint": {"type": "number", "minimum": 0, "maximum": 100},
+            "source_reference": {"type": "number", "minimum": 0, "maximum": 100},
+            "non_campus_specificity": {"type": "number", "minimum": 0, "maximum": 100},
+            "source_quality": {"type": "number", "minimum": 0, "maximum": 100},
+            "state_coverage_need": {"type": "number", "minimum": 0, "maximum": 100},
+            "county_density": {"type": "number", "minimum": 0, "maximum": 100}
+          },
+          "additionalProperties": false
+        },
+        "normalization": {
+          "type": "object",
+          "required": ["source_quality", "state_coverage_need", "county_density", "prior_pilot_override"],
+          "properties": {
+            "source_quality": {"type": "string", "minLength": 1},
+            "state_coverage_need": {"type": "string", "minLength": 1},
+            "county_density": {"type": "string", "minLength": 1},
+            "prior_pilot_override": {"type": "string", "minLength": 1}
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "priority_tiers": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "items": {
+        "type": "object",
+        "required": ["tier", "minimum_score", "maximum_score", "research_action"],
+        "properties": {
+          "tier": {"type": "string", "enum": ["national_high", "national_standard", "national_deferred"]},
+          "minimum_score": {"type": "number", "minimum": 0, "maximum": 100},
+          "maximum_score": {"type": "number", "minimum": 0, "maximum": 100},
+          "research_action": {"type": "string", "minLength": 1}
+        },
+        "additionalProperties": false
+      }
+    },
+    "research_archetypes": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["archetype", "classification_order", "match_rule", "source_strategy"],
+        "properties": {
+          "archetype": {
+            "type": "string",
+            "enum": [
+              "prior_review_followup",
+              "campus_member_mapping",
+              "exact_reference_building",
+              "named_operator_building",
+              "named_building",
+              "operator_point",
+              "low_context"
+            ]
+          },
+          "classification_order": {"type": "integer", "minimum": 1},
+          "match_rule": {"type": "string", "minLength": 1},
+          "source_strategy": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {"$ref": "lifecycle-verification-candidate.schema.json#/properties/suggested_source_types/items"}
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "source_precedence": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["rank", "source_type", "authority", "permitted_use"],
+        "properties": {
+          "rank": {"type": "integer", "minimum": 1},
+          "source_type": {"$ref": "lifecycle-verification-candidate.schema.json#/properties/suggested_source_types/items"},
+          "authority": {"type": "string", "enum": ["primary", "official", "independent_secondary", "discovery_only"]},
+          "permitted_use": {"type": "string", "minLength": 1}
+        },
+        "additionalProperties": false
+      }
+    },
+    "exact_facility_match": {
+      "type": "object",
+      "required": ["minimum_identifier_matches", "acceptable_identifiers", "campus_to_building_projection_allowed", "market_to_building_projection_allowed", "capacity_and_area_require_exact_facility"],
+      "properties": {
+        "minimum_identifier_matches": {"type": "integer", "minimum": 1},
+        "acceptable_identifiers": {
+          "type": "array",
+          "minItems": 2,
+          "uniqueItems": true,
+          "items": {"type": "string", "enum": ["facility_code", "facility_name", "street_address", "parcel_id", "permit_id", "coordinates", "campus_and_building_label"]}
+        },
+        "campus_to_building_projection_allowed": {"type": "boolean", "const": false},
+        "market_to_building_projection_allowed": {"type": "boolean", "const": false},
+        "capacity_and_area_require_exact_facility": {"type": "boolean", "const": true}
+      },
+      "additionalProperties": false
+    },
+    "conflict_resolution": {
+      "type": "object",
+      "required": ["official_source_conflict_outcome", "majority_vote_allowed", "retain_all_claims", "required_review_status", "temporal_precedence_rule"],
+      "properties": {
+        "official_source_conflict_outcome": {"type": "string", "const": "disputed"},
+        "majority_vote_allowed": {"type": "boolean", "const": false},
+        "retain_all_claims": {"type": "boolean", "const": true},
+        "required_review_status": {"type": "string", "const": "needs_review"},
+        "temporal_precedence_rule": {"type": "string", "minLength": 1}
+      },
+      "additionalProperties": false
+    },
+    "stop_rules": {
+      "type": "object",
+      "required": ["maximum_search_rounds", "minimum_distinct_source_types_reviewed", "stop_if_exact_match_absent", "no_exact_match_outcome", "inaccessible_evidence_outcome", "conflicting_evidence_outcome"],
+      "properties": {
+        "maximum_search_rounds": {"type": "integer", "minimum": 1},
+        "minimum_distinct_source_types_reviewed": {"type": "integer", "minimum": 1},
+        "stop_if_exact_match_absent": {"type": "boolean", "const": true},
+        "no_exact_match_outcome": {"type": "string", "const": "unresolved"},
+        "inaccessible_evidence_outcome": {"type": "string", "const": "blocked"},
+        "conflicting_evidence_outcome": {"type": "string", "const": "disputed"}
+      },
+      "additionalProperties": false
+    },
+    "target_attributes": {"$ref": "lifecycle-verification-candidate.schema.json#/properties/target_attributes"},
+    "suggested_source_types": {"$ref": "lifecycle-verification-candidate.schema.json#/properties/suggested_source_types"},
+    "created_at": {"$ref": "common.schema.json#/$defs/timestamp"},
+    "updated_at": {"$ref": "common.schema.json#/$defs/timestamp"},
+    "record_status": {"type": "string", "enum": ["active", "provisional", "superseded", "withdrawn"]}
+  },
+  "additionalProperties": false
+}

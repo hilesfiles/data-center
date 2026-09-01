@@ -1628,6 +1628,132 @@ def validate_public_data(
             issues.append(Issue("public_data_validation", f"{tranche_2_manifest_path.name}.parts[{index}]", "byte size or SHA-256 does not match the artifact"))
     if tranche_2_manifest.get("record_count") != total_tranche_2_manifest_records:
         issues.append(Issue("public_data_validation", tranche_2_manifest_path.name, "manifest record count does not equal its parts"))
+
+    national_policy_path = CONFIG_DIR / "lifecycle-national-expansion-policy.json"
+    national_policy = load_json(national_policy_path)
+    for issue in validator.validate_record(national_policy, schema_paths["lifecycle_national_expansion_policy"]):
+        issues.append(Issue("public_data_validation", f"{national_policy_path.name}{issue.path[1:]}", issue.message))
+    regional_states = [
+        state_abbr
+        for frame in national_policy.get("regional_frame", [])
+        for state_abbr in frame.get("state_abbrs", [])
+    ]
+    national_tranche_policy = national_policy.get("initial_tranche", {})
+    if (
+        sum(national_policy.get("scoring", {}).get("weights", {}).values()) != 100
+        or len(regional_states) != 51
+        or len(regional_states) != len(set(regional_states))
+        or national_tranche_policy.get("size") != 48
+        or national_tranche_policy.get("per_region_quota") != 12
+    ):
+        issues.append(Issue("public_data_validation", national_policy_path.name, "national scoring, regional frame, or tranche quota is inconsistent"))
+
+    national_path = DATA_DIR / "silver" / "infrastructure" / "im3-2026.02.09-lifecycle-national-priority.json"
+    national_document = load_json(national_path)
+    national_candidates = national_document.get("collections", {}).get("lifecycle_national_priority_record", [])
+    resolved_pilot_facility_ids = {
+        record.get("facility_id")
+        for record in tranche_2_results
+        if record.get("resolution_status") == "resolved"
+    }
+    expected_unknown_facility_ids = active_final_facility_ids - resolved_pilot_facility_ids
+    national_ids = [record.get("national_priority_id") for record in national_candidates]
+    national_facility_ids = [record.get("facility_id") for record in national_candidates]
+    if (
+        national_document.get("record_count") != 1327
+        or len(national_candidates) != 1327
+        or len(national_ids) != len(set(national_ids))
+        or len(national_facility_ids) != len(set(national_facility_ids))
+        or set(national_facility_ids) != expected_unknown_facility_ids
+        or sorted(record.get("national_rank") for record in national_candidates) != list(range(1, 1328))
+        or Counter(record.get("queue_status") for record in national_candidates) != Counter({"national_backlog": 1279, "initial_tranche": 48})
+    ):
+        issues.append(Issue("public_data_validation", national_path.name, "national lifecycle priority identity, ranks, or queue states are inconsistent"))
+    for index, record in enumerate(national_candidates):
+        for issue in validator.validate_record(record, schema_paths["lifecycle_national_priority_record"]):
+            issues.append(Issue("public_data_validation", f"{national_path.name}.lifecycle_national_priority_record[{index}]{issue.path[1:]}", issue.message))
+
+    national_public_path = PUBLIC_DATA_DIR / "lifecycle" / "national-priority-index.json"
+    national_public = load_json(national_public_path)
+    if national_public != national_candidates:
+        issues.append(Issue("public_data_validation", national_public_path.name, "public national priority index must match the governed silver queue"))
+
+    national_initial_path = PUBLIC_DATA_DIR / "lifecycle" / "national-initial-tranche.json"
+    national_initial = load_json(national_initial_path)
+    initial_region_counts = Counter(record.get("census_region") for record in national_initial)
+    initial_state_counts = Counter(record.get("state_abbr") for record in national_initial)
+    initial_county_counts = Counter(record.get("primary_county_fips") for record in national_initial)
+    initial_operator_counts = Counter(record.get("operator_id") for record in national_initial if record.get("operator_id"))
+    if (
+        len(national_initial) != 48
+        or set(record.get("facility_id") for record in national_initial)
+        != {record.get("facility_id") for record in national_candidates if record.get("queue_status") == "initial_tranche"}
+        or sorted(record.get("initial_tranche_rank") for record in national_initial) != list(range(1, 49))
+        or initial_region_counts != Counter({"Northeast": 12, "Midwest": 12, "South": 12, "West": 12})
+        or max(initial_state_counts.values()) > 3
+        or max(initial_county_counts.values()) > 2
+        or max(initial_operator_counts.values()) > 4
+        or any(record.get("prior_pilot_outcome") != "not_reviewed" for record in national_initial)
+    ):
+        issues.append(Issue("public_data_validation", national_initial_path.name, "initial national tranche violates size, balance, diversity, or pilot-exclusion rules"))
+    for index, record in enumerate(national_initial):
+        for issue in validator.validate_record(record, schema_paths["lifecycle_national_priority_record"]):
+            issues.append(Issue("public_data_validation", f"{national_initial_path.name}[{index}]{issue.path[1:]}", issue.message))
+
+    pilot_yield_path = PUBLIC_DATA_DIR / "lifecycle" / "national-pilot-yield-analysis.json"
+    pilot_yield = load_json(pilot_yield_path)
+    for issue in validator.validate_record(pilot_yield, schema_paths["lifecycle_pilot_yield_analysis"]):
+        issues.append(Issue("public_data_validation", f"{pilot_yield_path.name}{issue.path[1:]}", issue.message))
+    if pilot_yield.get("overall") != {
+        "reviewed_count": 24,
+        "resolved_count": 10,
+        "unresolved_count": 11,
+        "disputed_count": 3,
+        "resolution_rate": 0.4167,
+    }:
+        issues.append(Issue("public_data_validation", pilot_yield_path.name, "pilot yield totals changed"))
+
+    national_coverage_path = PUBLIC_DATA_DIR / "counties" / "lifecycle-national-expansion-coverage.json"
+    national_coverage = load_json(national_coverage_path)
+    national_coverage_fips = [record.get("county_fips") for record in national_coverage]
+    if len(national_coverage) != 3144 or set(national_coverage_fips) != feature_fips or len(national_coverage_fips) != len(set(national_coverage_fips)):
+        issues.append(Issue("public_data_validation", national_coverage_path.name, "national expansion coverage must contain every Census county exactly once"))
+    for index, record in enumerate(national_coverage):
+        for issue in validator.validate_record(record, schema_paths["public_lifecycle_verification_coverage"]):
+            issues.append(Issue("public_data_validation", f"{national_coverage_path.name}[{index}]{issue.path[1:]}", issue.message))
+    if (
+        sum(record.get("active_canonical_facility_count", 0) for record in national_coverage) != 1337
+        or sum(record.get("queued_facility_count", 0) for record in national_coverage) != 48
+        or sum(record.get("in_research_facility_count", 0) for record in national_coverage) != 11
+        or sum(record.get("needs_review_facility_count", 0) for record in national_coverage) != 3
+        or sum(record.get("verified_facility_count", 0) for record in national_coverage) != 10
+        or sum(record.get("unknown_status_facility_count", 0) for record in national_coverage) != 1327
+    ):
+        issues.append(Issue("public_data_validation", national_coverage_path.name, "national expansion coverage totals are inconsistent"))
+
+    national_metadata_path = PUBLIC_DATA_DIR / "lifecycle" / "national-expansion-metadata.json"
+    national_metadata = load_json(national_metadata_path)
+    for issue in validator.validate_record(national_metadata, schema_paths["lifecycle_national_expansion_summary"]):
+        issues.append(Issue("public_data_validation", f"{national_metadata_path.name}{issue.path[1:]}", issue.message))
+    if national_metadata.get("counts", {}).get("national_priority_record_count") != 1327 or national_metadata.get("counts", {}).get("initial_tranche_facility_count") != 48:
+        issues.append(Issue("public_data_validation", national_metadata_path.name, "national expansion summary counts are inconsistent"))
+
+    national_manifest_path = DATA_DIR / "silver" / "infrastructure" / "im3-2026.02.09-lifecycle-national-priority.manifest.json"
+    national_manifest = load_json(national_manifest_path)
+    for issue in validator.validate_record(national_manifest, schema_paths["dataset_manifest"]):
+        issues.append(Issue("public_data_validation", f"{national_manifest_path.name}{issue.path[1:]}", issue.message))
+    total_national_manifest_records = 0
+    for index, part in enumerate(national_manifest.get("parts", [])):
+        part_path = (ROOT / part.get("path", "")).resolve()
+        if not part_path.is_relative_to(ROOT) or not part_path.is_file():
+            issues.append(Issue("public_data_validation", f"{national_manifest_path.name}.parts[{index}]", "part path is missing or outside the repository"))
+            continue
+        payload = part_path.read_bytes()
+        total_national_manifest_records += part.get("record_count", 0)
+        if part.get("byte_size") != len(payload) or part.get("sha256") != hashlib.sha256(payload).hexdigest():
+            issues.append(Issue("public_data_validation", f"{national_manifest_path.name}.parts[{index}]", "byte size or SHA-256 does not match the artifact"))
+    if national_manifest.get("record_count") != total_national_manifest_records:
+        issues.append(Issue("public_data_validation", national_manifest_path.name, "manifest record count does not equal its parts"))
     return issues
 
 
