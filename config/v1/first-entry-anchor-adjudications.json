@@ -2,9 +2,9 @@
   "schema_version": "1.0.0",
   "artifact_type": "county_first_entry_anchor_adjudications",
   "artifact_version": "2026.09.01",
-  "generated_at": "2026-09-01T21:00:00Z",
+  "generated_at": "2026-09-01T22:00:00Z",
   "record_schema": "https://dccio.org/schemas/v1/county-first-entry-adjudication.schema.json",
-  "record_count": 6,
+  "record_count": 7,
   "records": [
     {
       "schema_version": "1.0.0",
@@ -274,6 +274,49 @@
       "rationale": "Indiana University's official ceremonies record supplies a November 5, 2009 operational-no-later-than anchor for the new Bloomington Data Center, corroborated by the university's May 2009 capital-project completion record. The candidate cannot be Monroe County's first data-center entry because an IU state record documents the named Wrubel Computing Center machine room and its upgraded operating supercomputer on October 24, 2001, and IU's facility history identifies Wrubel as the predecessor old center. IU's archives trace county computing facilities further back, while the full historical facility inventory has not been established, so the true first entry remains unresolved and no treatment date is assigned.",
       "created_at": "2026-09-01T21:00:00Z",
       "updated_at": "2026-09-01T21:00:00Z",
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "county_first_entry_adjudication_id": "fea_26125_edgeconnex_det01_20150311_rejected",
+      "first_entry_research_candidate_id": "fer_036da98560f3d088fafa",
+      "treatment_definition_id": "trt_first_entry_v1",
+      "candidate_event_evaluation_id": "tev_052c5ec0176be73a9cd2",
+      "county_fips": "26125",
+      "county_name": "Oakland County",
+      "state_abbr": "MI",
+      "resolution_state": "candidate_rejected_first_entry",
+      "decision": "reject_candidate_as_first_entry",
+      "county_first_entry_verified": false,
+      "inventory_completeness_status": "not_established",
+      "earlier_operations_search_status": "documented_incomplete",
+      "required_finding_status": {
+        "earliest_dated_operational_event": "partial",
+        "exact_facility_identity_for_earliest_event": "resolved",
+        "county_inventory_completeness": "unresolved",
+        "documented_search_for_earlier_operations": "resolved"
+      },
+      "earlier_operational_findings": [
+        {
+          "facility_id": "fac_d68591bbe7baee90e10b",
+          "canonical_name": "123NET Southfield Data Center at 24700 Northwestern Highway",
+          "temporal_relation": "operational_no_later_than",
+          "when": {"date": "2014-06-20", "precision": "day"},
+          "source_ids": ["src_123net_southfield_expansion_20140620"],
+          "finding": "123NET's June 20, 2014 operator release identifies its 24700 Northwestern Highway headquarters as an operating data center and records a recent 15,000-square-foot expansion of data-center space.",
+          "confidence": 0.98
+        }
+      ],
+      "source_ids": [
+        "src_edgeconnex_det01_fibertech_20150311",
+        "src_edgeconnex_det01_datasheet_2024",
+        "src_southfield_cafr_det01_shell_2013",
+        "src_123net_southfield_expansion_20140620"
+      ],
+      "authoritative_source_types": ["local_government_record", "operator_release"],
+      "rationale": "EdgeConneX's March 11, 2015 release supplies an operational-no-later-than anchor for its Southfield Edge Data Center; the current DET01 data sheet maps that facility to 21005 Lahser Road, and Southfield's 2012-2013 financial report documents the same address as a vacant shell awaiting complete data-center build-out. DET01 cannot be Oakland County's first entry because 123NET's June 20, 2014 operator release identifies a separate operating and recently expanded data center at 24700 Northwestern Highway. 123NET's current inventory also identifies multiple Southfield facilities, while the complete historical county inventory has not been established, so the true first entry remains unresolved and no treatment date is assigned.",
+      "created_at": "2026-09-01T22:00:00Z",
+      "updated_at": "2026-09-01T22:00:00Z",
       "record_status": "active"
     }
   ]

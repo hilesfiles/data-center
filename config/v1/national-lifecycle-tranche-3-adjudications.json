@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "artifact_type": "national_lifecycle_tranche_adjudications",
-  "generated_at": "2026-09-01T05:30:00Z",
+  "generated_at": "2026-09-01T22:00:00Z",
   "record_count": 8,
   "records": [
     {
@@ -194,7 +194,7 @@
       "decision": "accept",
       "resolved_current_status": "operational",
       "confidence": 0.99,
-      "rationale": "EdgeConneX's DET01 data sheet identifies the exact facility code and 21005 Lahser Road address and publishes active operating, security, compliance, space, and power specifications. Its 39,900-square-foot facility size and 3 MW value are accepted as exact-facility observations.",
+      "rationale": "EdgeConneX's DET01 data sheet identifies the exact facility code and 21005 Lahser Road address and publishes active operating, security, compliance, space, and power specifications. The City of Southfield identifies that address as a vacant shell planned for conversion to a Tier III data center in its 2012-2013 financial report, while EdgeConneX's March 11, 2015 release describes its Southfield Edge Data Center in service-provider partnership terms. Together these records establish operation no later than March 11, 2015 without treating the earlier forecast as an opening date. The 39,900-square-foot facility size and 3 MW value are accepted as exact-facility observations.",
       "evidence": [
         {
           "source_id": "src_edgeconnex_det01_datasheet_2024",
@@ -222,11 +222,36 @@
           "finding": "EdgeConneX reports 3 MW for DET01.",
           "disposition": "supporting",
           "claim_confidence": 0.99
+        },
+        {
+          "source_id": "src_southfield_cafr_det01_shell_2013",
+          "attribute_path": "facility.identity",
+          "raw_value": {"type": "text", "value": "Cybernetix planned Tier III data center in a vacant shell at 21005 Lahser Road"},
+          "finding": "Southfield's 2012-2013 financial report identifies the exact DET01 address and records the facility as a vacant shell requiring a complete interior build-out before data-center use.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        },
+        {
+          "source_id": "src_edgeconnex_det01_fibertech_20150311",
+          "attribute_path": "event.operational",
+          "raw_value": {"type": "date", "value": {"date": "2015-03-11", "precision": "day"}},
+          "finding": "EdgeConneX's March 11, 2015 release describes a fiber-services partnership for its Southfield Edge Data Center, establishing facility operation no later than the release date.",
+          "disposition": "supporting",
+          "claim_confidence": 0.98
         }
       ],
       "observations": [
         {"metric_code": "facility.area.building_sqft_observed", "value": 39900, "unit": "square foot", "period": {"year": 2024, "precision": "year"}, "source_id": "src_edgeconnex_det01_datasheet_2024"},
         {"metric_code": "facility.capacity.mw_observed", "value": 3, "unit": "MW", "period": {"year": 2024, "precision": "year"}, "source_id": "src_edgeconnex_det01_datasheet_2024"}
+      ],
+      "events": [
+        {
+          "event_type": "operational",
+          "when": {"date": "2015-03-11", "precision": "day"},
+          "source_id": "src_edgeconnex_det01_fibertech_20150311",
+          "confidence": 0.98,
+          "notes": "Operational no later than EdgeConneX's March 11, 2015 service-partnership release. This is a dated operating-state observation, not an asserted opening date; Southfield's 2012-2013 report documents the exact address as a vacant shell before build-out."
+        }
       ],
       "record_status": "active"
     },

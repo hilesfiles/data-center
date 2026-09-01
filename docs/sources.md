@@ -106,8 +106,8 @@ county profiles lazy-load only their selected state partition.
 
 - Treatment definition: `trt_first_entry_v1`
 - Geography: 3,144 current Census counties and county equivalents
-- Reviewed dated operational events: 6
-- Evidence- and history-window-qualified events: 3
+- Reviewed dated operational events: 7
+- Evidence- and history-window-qualified events: 4
 - Verified county first-entry dates: 0
 - Eligible treatment counties: 0
 - Builder: `scripts/build_county_first_entry_treatments.py`
@@ -116,7 +116,8 @@ The registry retains NTT's dated SV1 opening release, Apple's environmental repo
 Mesa customer service beginning in March 2017, a contemporaneous October 2006 observation of
 operation at QTS Atlanta DC1, SunGard's signed March 27, 2002 filing documenting operation
 at the exact present NY7 site in North Bergen, and Switch's year-level account of SUPERNAP/NAP7's
-2009 debut. Clark County's September 3, 2008 franchise filing identifies NAP4 as an existing
+2009 debut, and EdgeConneX's March 11, 2015 release establishing operation of its Southfield
+facility no later than that date. Clark County's September 3, 2008 franchise filing identifies NAP4 as an existing
 data center while NAP7 was still under construction, so NAP7 cannot be the county's first entry.
 The Clark candidate passes the panel window but fails the year-precision evidence gate. Fulton
 also fails the evidence and pre-period gates; Hudson passes the evidence gate but has only one
@@ -125,7 +126,11 @@ by documented earlier operation. Hudson remains unresolved because the 1987 leas
 an opening date and a complete historical inventory has not been established. Indiana University's
 November 5, 2009 Data Center dedication passes both evidence and panel gates, but a 2003 IU state
 record documents an operating Wrubel Computing Center machine room on October 24, 2001. Monroe's
-2009 anchor is therefore rejected while its true first entry remains unresolved. Public county
+2009 anchor is therefore rejected while its true first entry remains unresolved. Southfield's
+2012-2013 financial report maps the later DET01 site to 21005 Lahser Road before its build-out,
+while 123NET's June 20, 2014 operator release documents a separate operating and recently expanded
+data center at 24700 Northwestern Highway. Oakland's 2015 DET01 anchor passes both quantitative
+gates but is rejected as first entry; the county's true first entry remains unresolved. Public county
 assessments
 are JSON-only and split into 51 state/DC partitions. Missing reviewed events do not establish
 a never-treated comparison group.
@@ -253,6 +258,9 @@ CoreSite, supplemented by state or local records where a current operator page d
 the mapped street address. Seven facilities resolve operational. The normalized exact-facility
 observations are building area for FirstLight Brunswick, Element Critical Chicago Two, Markley
 Lowell, EdgeConneX DET01, and CoreSite AT2, plus power capacity for Chicago Two and DET01.
+EdgeConneX's March 11, 2015 connectivity-partnership release supplies DET01's conservative
+operational-no-later-than event, while Southfield's 2012-2013 financial report establishes that
+the exact 21005 Lahser Road site was still a vacant shell before build-out.
 
 SAP's current list establishes a Colorado Springs data-center location, and a Pikes Peak Regional
 Building Department record establishes data-center construction at 2345 Windswept View. The
