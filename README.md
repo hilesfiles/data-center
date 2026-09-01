@@ -91,11 +91,12 @@ governed evidence tranche:
 ```powershell
 python scripts/acquire_pwc_lifecycle_gis.py
 python scripts/adjudicate_lifecycle_tranche_1.py
+python scripts/adjudicate_lifecycle_tranche_2.py
 ```
 
-The downstream tranche keeps the original queue immutable, records source claims and
-human review decisions in JSON, and publishes separate verified, partial, disputed, and
-remaining-queue states.
+The downstream tranches keep earlier queue snapshots immutable, record source claims and
+human review decisions in JSON, and publish separate verified, partial, disputed, and
+remaining-queue states. Tranche two completes the governed review of the pilot.
 
 Build the static site:
 
@@ -128,13 +129,13 @@ validation can be added later to CI with a standards-compliant Draft 2020-12 val
   relationships are represented as provisional governed decisions. All sixteen spatial
   candidates are resolved: four source-record merges, eight distinct contained sites,
   two accepted campus links, and two rejected campus links. No candidate remains pending.
-- Lifecycle verification: eight of 24 pilot facilities have been reviewed across eight
-  counties. Six are resolved operational, one remains in research, one is disputed, and
-  16 remain queued; 1,331 canonical facilities still have unknown status.
+- Lifecycle verification: all 24 pilot facilities have been reviewed across eight counties.
+  Ten are resolved operational, eleven remain in research because evidence does not map to
+  the building, and three are disputed; 1,327 canonical facilities still have unknown status.
 - Economic, fiscal, utility, housing, environmental, or opposition observations: not yet ingested.
 - Econometric estimates and public indices: fixture-only; not substantive.
 
 ## Next priority
 
-Review the remaining 16 lifecycle-pilot facilities, prioritizing building-specific
-government and operator records and retaining partial or conflicting evidence explicitly.
+Evaluate the completed pilot's source yield and adjudication outcomes, then expand
+lifecycle verification with a governed national sampling and prioritization policy.

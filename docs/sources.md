@@ -64,6 +64,21 @@ The reproducible acquisition adapter is `scripts/acquire_osm_boundary_histories.
 Final decisions are versioned in `config/v1/im3-final-boundary-decisions.json`, and the
 downstream snapshot is built by `scripts/finalize_im3_boundary_reviews.py`.
 
+## Lifecycle-pilot evidence
+
+The completed 24-facility pilot uses official operator pages and local, state, regulatory,
+permit, and assessor records. Evidence metadata and paraphrased findings are versioned in
+`config/v1/lifecycle-tranche-1-*` and `config/v1/lifecycle-tranche-2-*`; copyrighted page
+bodies are not retained. A reproducible JSON snapshot is retained for the Prince William
+County GIS query because its current IAD14, IAD52, and IAD59 statuses conflict with the
+county’s June 2024 inventory.
+
+Facility-specific capacity or floor area is accepted only when the source defines the
+measure for that facility. Colocation space is not treated as total building area, and
+campus or market evidence is not projected onto an unnamed building. The tranche builders
+are `scripts/adjudicate_lifecycle_tranche_1.py` and
+`scripts/adjudicate_lifecycle_tranche_2.py`.
+
 Four source rows reported Prince William County, Virginia, while their centroids fall in
 Manassas under the published 2025 Census polygons. Both values remain auditable: bronze
 records preserve the source report and canonical/public geography uses point-in-polygon.

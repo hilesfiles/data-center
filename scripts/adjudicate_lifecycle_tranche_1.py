@@ -27,8 +27,8 @@ def digest(payload: bytes) -> str:
     return hashlib.sha256(payload).hexdigest()
 
 
-def claim_id(candidate_id: str, index: int) -> str:
-    return stable_id("clm", "lifecycle_tranche_1", candidate_id, str(index))
+def claim_id(namespace: str, candidate_id: str, index: int) -> str:
+    return stable_id("clm", namespace, candidate_id, str(index))
 
 
 def validate_pwc_snapshot() -> None:
@@ -45,18 +45,30 @@ def validate_pwc_snapshot() -> None:
         raise RuntimeError("The governed IAD14 conflict must be revisited because the GIS status changed")
 
 
-def build() -> tuple[dict[str, Any], list[dict[str, Any]], list[dict[str, Any]], dict[str, Any]]:
+def build(
+    queue_path: str = "data/silver/infrastructure/im3-2026.02.09-lifecycle-pilot.json",
+    coverage_path: str = "site/public/data/v1/counties/lifecycle-verification-coverage.json",
+    sources_path: str = "config/v1/lifecycle-tranche-1-evidence-sources.json",
+    adjudications_path: str = "config/v1/lifecycle-tranche-1-adjudications.json",
+    previous_results_path: str | None = None,
+    notices: list[str] | None = None,
+    namespace: str = "lifecycle_tranche_1",
+) -> tuple[dict[str, Any], list[dict[str, Any]], list[dict[str, Any]], dict[str, Any]]:
     validate_pwc_snapshot()
-    pilot = load("data/silver/infrastructure/im3-2026.02.09-lifecycle-pilot.json")
+    queue_document = load(queue_path)
     final_review = load("data/silver/infrastructure/im3-2026.02.09-final-boundary-review.json")
-    baseline_coverage = load("site/public/data/v1/counties/lifecycle-verification-coverage.json")
-    source_document = load("config/v1/lifecycle-tranche-1-evidence-sources.json")
-    adjudication_document = load("config/v1/lifecycle-tranche-1-adjudications.json")
+    baseline_coverage = load(coverage_path)
+    source_document = load(sources_path)
+    adjudication_document = load(adjudications_path)
     generated_at = adjudication_document["generated_at"]
 
     sources = source_document["records"]
     source_ids = {record["source_id"] for record in sources}
-    candidates = pilot["collections"]["lifecycle_verification_candidate"]
+    candidates = (
+        queue_document["collections"]["lifecycle_verification_candidate"]
+        if isinstance(queue_document, dict)
+        else queue_document
+    )
     candidate_by_id = {record["verification_candidate_id"]: record for record in candidates}
     facilities_by_id = {
         record["facility_id"]: record
@@ -64,8 +76,8 @@ def build() -> tuple[dict[str, Any], list[dict[str, Any]], list[dict[str, Any]],
         if record["record_status"] != "superseded"
     }
     adjudications = adjudication_document["records"]
-    if len(adjudications) != 8 or len({a["verification_candidate_id"] for a in adjudications}) != 8:
-        raise RuntimeError("Lifecycle tranche 1 must contain eight distinct adjudications")
+    if not adjudications or len({a["verification_candidate_id"] for a in adjudications}) != len(adjudications):
+        raise RuntimeError("Lifecycle tranche must contain distinct adjudications")
 
     claims: list[dict[str, Any]] = []
     resolutions: list[dict[str, Any]] = []
@@ -73,7 +85,9 @@ def build() -> tuple[dict[str, Any], list[dict[str, Any]], list[dict[str, Any]],
     events: list[dict[str, Any]] = []
     observations: list[dict[str, Any]] = []
     updated_facilities: list[dict[str, Any]] = []
-    public_results: list[dict[str, Any]] = []
+    public_results: list[dict[str, Any]] = (
+        deepcopy(load(previous_results_path)) if previous_results_path else []
+    )
     queue_by_id = {record["verification_candidate_id"]: deepcopy(record) for record in candidates}
 
     for adjudication in adjudications:
@@ -86,7 +100,7 @@ def build() -> tuple[dict[str, Any], list[dict[str, Any]], list[dict[str, Any]],
         for index, evidence in enumerate(adjudication["evidence"]):
             if evidence["source_id"] not in source_ids:
                 raise RuntimeError(f"Unknown source {evidence['source_id']}")
-            current_claim_id = claim_id(candidate_id, index)
+            current_claim_id = claim_id(namespace, candidate_id, index)
             claim = {
                 "schema_version": "1.0.0",
                 "claim_id": current_claim_id,
@@ -111,7 +125,7 @@ def build() -> tuple[dict[str, Any], list[dict[str, Any]], list[dict[str, Any]],
             claims.append(claim)
             evidence_claims.append(claim)
 
-        review_id = stable_id("rvw", "lifecycle_tranche_1", candidate_id)
+        review_id = stable_id("rvw", namespace, candidate_id)
         review = {
             "schema_version": "1.0.0",
             "review_decision_id": review_id,
@@ -149,7 +163,7 @@ def build() -> tuple[dict[str, Any], list[dict[str, Any]], list[dict[str, Any]],
         ]
         resolution = {
             "schema_version": "1.0.0",
-            "resolution_id": stable_id("res", "lifecycle_tranche_1", candidate_id),
+            "resolution_id": stable_id("res", namespace, candidate_id),
             "subject": {"entity_type": "facility", "entity_id": facility_id},
             "attribute_path": "facility.current_status",
             "resolution_status": resolution_status,
@@ -181,7 +195,7 @@ def build() -> tuple[dict[str, Any], list[dict[str, Any]], list[dict[str, Any]],
             events.append(
                 {
                     "schema_version": "1.0.0",
-                    "event_id": stable_id("evt", "lifecycle_tranche_1", candidate_id, str(event_index)),
+                    "event_id": stable_id("evt", namespace, candidate_id, str(event_index)),
                     "event_type": event_spec["event_type"],
                     "subjects": [{"entity_type": "facility", "entity_id": facility_id}],
                     "when": event_spec["when"],
@@ -208,7 +222,7 @@ def build() -> tuple[dict[str, Any], list[dict[str, Any]], list[dict[str, Any]],
             observations.append(
                 {
                     "schema_version": "1.0.0",
-                    "observation_id": stable_id("obs", "lifecycle_tranche_1", candidate_id, str(observation_index)),
+                    "observation_id": stable_id("obs", namespace, candidate_id, str(observation_index)),
                     "metric_code": observation_spec["metric_code"],
                     "subject": {"subject_type": "facility", "subject_id": facility_id},
                     "period": observation_spec["period"],
@@ -263,7 +277,7 @@ def build() -> tuple[dict[str, Any], list[dict[str, Any]], list[dict[str, Any]],
     for record in queue:
         queue_counts_by_county.setdefault(record["primary_county_fips"], Counter())[record["review_status"]] += 1
     coverage = []
-    verified_total = len(updated_facilities)
+    verified_total = sum(record["review_status"] == "verified" for record in queue)
     for baseline in baseline_coverage:
         record = deepcopy(baseline)
         counts = queue_counts_by_county.get(record["county_fips"], Counter())
@@ -273,7 +287,7 @@ def build() -> tuple[dict[str, Any], list[dict[str, Any]], list[dict[str, Any]],
         record["verified_facility_count"] = counts["verified"]
         record["unknown_status_facility_count"] = record["active_canonical_facility_count"] - counts["verified"]
         if sum(counts.values()):
-            record["coverage_status"] = "pilot_reviewed" if counts["verified"] == sum(counts.values()) else "pilot_in_progress"
+            record["coverage_status"] = "pilot_reviewed" if counts["queued"] == 0 else "pilot_in_progress"
         record["generated_at"] = generated_at
         coverage.append(record)
 
@@ -297,7 +311,7 @@ def build() -> tuple[dict[str, Any], list[dict[str, Any]], list[dict[str, Any]],
             "event_count": len(events),
             "observation_count": len(observations),
         },
-        "notices": [
+        "notices": notices or [
             "Six facility statuses are resolved as operational from reviewed first-party or government evidence.",
             "Amazon IAD14 remains disputed because current Prince William County GIS conflicts with a 2024 county inventory.",
             "Amazon CMH50 remains in research because available evidence identifies mixed campus status but not the specific building.",

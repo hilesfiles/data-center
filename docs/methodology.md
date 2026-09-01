@@ -93,3 +93,11 @@ mapped to its specific building; one remains disputed because two Prince William
 records assign conflicting status. Site-wide capacity or area is not allocated to a
 building unless the source identifies that building. The result is six verified statuses,
 1,331 unknown statuses, and sixteen remaining queue records.
+
+The second tranche reviews the sixteen remaining queue records and closes the pilot queue.
+Four additional facilities resolve as operational from exact facility or address evidence.
+Nine records remain unresolved because only operator-market or campus-level evidence is
+available, and two additional Prince William County records remain disputed because the
+current county GIS conflicts with the county's 2024 inventory. Across the complete pilot,
+ten facilities are verified operational, eleven remain in research, three are disputed,
+and 1,327 canonical facilities retain unknown status.

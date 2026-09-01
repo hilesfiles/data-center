@@ -33,7 +33,7 @@ export default function App() {
       fetch(`${base}data/v1/counties/facility-source-coverage.json`),
       fetch(`${base}data/v1/counties/entity-resolution-coverage.json`),
       fetch(`${base}data/v1/counties/final-review-coverage.json`),
-      fetch(`${base}data/v1/counties/lifecycle-tranche-1-coverage.json`),
+      fetch(`${base}data/v1/counties/lifecycle-tranche-2-coverage.json`),
     ])
       .then(async ([metadataResponse, coverageResponse, resolutionResponse, adjudicationResponse, lifecycleResponse]) => {
         if (!metadataResponse.ok || !coverageResponse.ok || !resolutionResponse.ok || !adjudicationResponse.ok || !lifecycleResponse.ok) {
@@ -87,7 +87,7 @@ export default function App() {
       </header>
 
       <div className="fixture-banner" role="status">
-        <strong>The first lifecycle evidence tranche is reviewed.</strong> Six of eight reviewed facilities now have an operational resolution; one remains in research and one is disputed. Sixteen pilot facilities remain queued.
+        <strong>The lifecycle pilot is fully reviewed.</strong> Ten of 24 facilities have an operational resolution; eleven remain in research because building-level evidence is incomplete, and three are disputed because official records conflict.
       </div>
 
       <main className="workspace">
@@ -191,7 +191,7 @@ export default function App() {
                   <div className="lifecycle-row">
                     <span>Lifecycle pilot queue</span>
                     <strong>{integerFormat.format(selectedLifecycle?.queued_facility_count ?? 0)}</strong>
-                    <em>priority for evidence collection</em>
+                    <em>pilot research queue complete</em>
                   </div>
                   <div className="lifecycle-row">
                     <span>Verified lifecycle statuses</span>
@@ -217,7 +217,7 @@ export default function App() {
 
                 <div className="evidence-note">
                   <span>Interpretation</span>
-                  <p>Halo color shows research state: amber is queued, blue is still in research, red marks conflicting evidence, and green marks a reviewed status. Only green facilities count as verified; unknown and disputed records are never treated as zero.</p>
+                  <p>Halo color shows reviewed evidence state: blue means available evidence does not identify the building, red marks conflicting official records, and green marks a verified status. Unknown and disputed records are never treated as zero.</p>
                 </div>
               </>
             )}

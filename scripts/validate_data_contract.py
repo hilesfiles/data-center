@@ -1506,6 +1506,128 @@ def validate_public_data(
             issues.append(Issue("public_data_validation", f"{tranche_manifest_path.name}.parts[{index}]", "byte size or SHA-256 does not match the artifact"))
     if tranche_manifest.get("record_count") != total_tranche_manifest_records:
         issues.append(Issue("public_data_validation", tranche_manifest_path.name, "manifest record count does not equal its parts"))
+
+    tranche_2_sources_path = CONFIG_DIR / "lifecycle-tranche-2-evidence-sources.json"
+    tranche_2_sources_document = load_json(tranche_2_sources_path)
+    tranche_2_sources = tranche_2_sources_document.get("records", [])
+    if tranche_2_sources_document.get("record_count") != 15 or len(tranche_2_sources) != 15:
+        issues.append(Issue("public_data_validation", tranche_2_sources_path.name, "expected fifteen governed evidence sources"))
+    for index, record in enumerate(tranche_2_sources):
+        for issue in validator.validate_record(record, schema_paths["source"]):
+            issues.append(Issue("public_data_validation", f"{tranche_2_sources_path.name}.records[{index}]{issue.path[1:]}", issue.message))
+
+    tranche_2_adjudications_path = CONFIG_DIR / "lifecycle-tranche-2-adjudications.json"
+    tranche_2_adjudications_document = load_json(tranche_2_adjudications_path)
+    tranche_2_adjudications = tranche_2_adjudications_document.get("records", [])
+    tranche_2_source_ids = {record.get("source_id") for record in tranche_2_sources}
+    if tranche_2_adjudications_document.get("record_count") != 16 or len(tranche_2_adjudications) != 16:
+        issues.append(Issue("public_data_validation", tranche_2_adjudications_path.name, "expected sixteen distinct adjudications"))
+    for index, record in enumerate(tranche_2_adjudications):
+        for issue in validator.validate_record(record, schema_paths["lifecycle_evidence_adjudication"]):
+            issues.append(Issue("public_data_validation", f"{tranche_2_adjudications_path.name}.records[{index}]{issue.path[1:]}", issue.message))
+        if record.get("verification_candidate_id") not in set(lifecycle_candidate_ids):
+            issues.append(Issue("referential_integrity", f"{tranche_2_adjudications_path.name}.records[{index}]", "unknown lifecycle candidate"))
+        for evidence in record.get("evidence", []):
+            if evidence.get("source_id") not in tranche_2_source_ids:
+                issues.append(Issue("referential_integrity", f"{tranche_2_adjudications_path.name}.records[{index}]", "unknown evidence source"))
+
+    tranche_2_path = DATA_DIR / "silver" / "infrastructure" / "im3-2026.02.09-lifecycle-tranche-2.json"
+    tranche_2 = load_json(tranche_2_path)
+    tranche_2_collections = tranche_2.get("collections", {})
+    expected_tranche_2_collection_counts = {
+        "source": 15,
+        "claim": 25,
+        "claim_resolution": 16,
+        "review_decision": 16,
+        "event": 0,
+        "observation": 2,
+        "facility": 4,
+    }
+    if {name: len(tranche_2_collections.get(name, [])) for name in expected_tranche_2_collection_counts} != expected_tranche_2_collection_counts:
+        issues.append(Issue("public_data_validation", tranche_2_path.name, "lifecycle tranche two collection counts changed"))
+    if tranche_2.get("record_count") != sum(expected_tranche_2_collection_counts.values()):
+        issues.append(Issue("public_data_validation", tranche_2_path.name, "lifecycle tranche two record count is inconsistent"))
+    for collection in expected_tranche_2_collection_counts:
+        for index, record in enumerate(tranche_2_collections.get(collection, [])):
+            for issue in validator.validate_record(record, schema_paths[collection]):
+                issues.append(Issue("public_data_validation", f"{tranche_2_path.name}.{collection}[{index}]{issue.path[1:]}", issue.message))
+
+    all_updated_facilities = {
+        item["facility_id"]: item
+        for item in tranche_collections.get("facility", []) + tranche_2_collections.get("facility", [])
+    }
+    tranche_2_reference_facilities = [all_updated_facilities.get(item["facility_id"], item) for item in final_collections.get("facility", [])]
+    tranche_2_reference_fixture = {
+        **tranche_2_collections,
+        "facility": tranche_2_reference_facilities,
+        "campus": final_collections.get("campus", []),
+        "operator": final_collections.get("operator", []),
+        "lifecycle_verification_candidate": lifecycle_candidates,
+        "geography_reference": geography_records,
+        "metric_definition": load_json(CONFIG_DIR / "metric-registry.json")["metrics"],
+    }
+    for issue in validate_references(tranche_2_reference_fixture):
+        issues.append(Issue("public_data_validation", f"{tranche_2_path.name}:{issue.path}", issue.message))
+    tranche_2_review_ids = {record.get("review_decision_id") for record in tranche_2_collections.get("review_decision", [])}
+    if any(record.get("review_decision_id") not in tranche_2_review_ids for record in tranche_2_collections.get("claim_resolution", [])):
+        issues.append(Issue("referential_integrity", tranche_2_path.name, "claim resolution references an unknown review decision"))
+
+    tranche_2_queue_path = PUBLIC_DATA_DIR / "lifecycle" / "tranche-2-queue.json"
+    tranche_2_queue = load_json(tranche_2_queue_path)
+    tranche_2_queue_status_counts = Counter(record.get("review_status") for record in tranche_2_queue)
+    if len(tranche_2_queue) != 24 or tranche_2_queue_status_counts != Counter({"verified": 10, "in_research": 11, "needs_review": 3}):
+        issues.append(Issue("public_data_validation", tranche_2_queue_path.name, "completed lifecycle pilot states changed"))
+    for index, record in enumerate(tranche_2_queue):
+        for issue in validator.validate_record(record, schema_paths["lifecycle_verification_candidate"]):
+            issues.append(Issue("public_data_validation", f"{tranche_2_queue_path.name}[{index}]{issue.path[1:]}", issue.message))
+
+    tranche_2_results_path = PUBLIC_DATA_DIR / "lifecycle" / "tranche-2-results.json"
+    tranche_2_results = load_json(tranche_2_results_path)
+    tranche_2_result_status_counts = Counter(record.get("resolution_status") for record in tranche_2_results)
+    if len(tranche_2_results) != 24 or tranche_2_result_status_counts != Counter({"resolved": 10, "unresolved": 11, "disputed": 3}):
+        issues.append(Issue("public_data_validation", tranche_2_results_path.name, "completed public lifecycle result states changed"))
+    if len({record.get("verification_candidate_id") for record in tranche_2_results}) != 24:
+        issues.append(Issue("public_data_validation", tranche_2_results_path.name, "public lifecycle results must contain every pilot candidate exactly once"))
+    for index, record in enumerate(tranche_2_results):
+        for issue in validator.validate_record(record, schema_paths["public_lifecycle_verification_record"]):
+            issues.append(Issue("public_data_validation", f"{tranche_2_results_path.name}[{index}]{issue.path[1:]}", issue.message))
+
+    tranche_2_coverage_path = PUBLIC_DATA_DIR / "counties" / "lifecycle-tranche-2-coverage.json"
+    tranche_2_coverage = load_json(tranche_2_coverage_path)
+    tranche_2_coverage_fips = [record.get("county_fips") for record in tranche_2_coverage]
+    if len(tranche_2_coverage) != 3144 or set(tranche_2_coverage_fips) != feature_fips or len(tranche_2_coverage_fips) != len(set(tranche_2_coverage_fips)):
+        issues.append(Issue("public_data_validation", tranche_2_coverage_path.name, "tranche coverage must contain every Census county exactly once"))
+    for index, record in enumerate(tranche_2_coverage):
+        for issue in validator.validate_record(record, schema_paths["public_lifecycle_verification_coverage"]):
+            issues.append(Issue("public_data_validation", f"{tranche_2_coverage_path.name}[{index}]{issue.path[1:]}", issue.message))
+    if (
+        sum(record.get("active_canonical_facility_count", 0) for record in tranche_2_coverage) != 1337
+        or sum(record.get("queued_facility_count", 0) for record in tranche_2_coverage) != 0
+        or sum(record.get("in_research_facility_count", 0) for record in tranche_2_coverage) != 11
+        or sum(record.get("needs_review_facility_count", 0) for record in tranche_2_coverage) != 3
+        or sum(record.get("verified_facility_count", 0) for record in tranche_2_coverage) != 10
+        or sum(record.get("unknown_status_facility_count", 0) for record in tranche_2_coverage) != 1327
+        or sum(record.get("coverage_status") == "pilot_in_progress" for record in tranche_2_coverage) != 0
+        or sum(record.get("coverage_status") == "pilot_reviewed" for record in tranche_2_coverage) != 8
+    ):
+        issues.append(Issue("public_data_validation", tranche_2_coverage_path.name, "completed national lifecycle pilot totals are inconsistent"))
+
+    tranche_2_manifest_path = DATA_DIR / "silver" / "infrastructure" / "im3-2026.02.09-lifecycle-tranche-2.manifest.json"
+    tranche_2_manifest = load_json(tranche_2_manifest_path)
+    for issue in validator.validate_record(tranche_2_manifest, schema_paths["dataset_manifest"]):
+        issues.append(Issue("public_data_validation", f"{tranche_2_manifest_path.name}{issue.path[1:]}", issue.message))
+    total_tranche_2_manifest_records = 0
+    for index, part in enumerate(tranche_2_manifest.get("parts", [])):
+        part_path = (ROOT / part.get("path", "")).resolve()
+        if not part_path.is_relative_to(ROOT) or not part_path.is_file():
+            issues.append(Issue("public_data_validation", f"{tranche_2_manifest_path.name}.parts[{index}]", "part path is missing or outside the repository"))
+            continue
+        payload = part_path.read_bytes()
+        total_tranche_2_manifest_records += part.get("record_count", 0)
+        if part.get("byte_size") != len(payload) or part.get("sha256") != hashlib.sha256(payload).hexdigest():
+            issues.append(Issue("public_data_validation", f"{tranche_2_manifest_path.name}.parts[{index}]", "byte size or SHA-256 does not match the artifact"))
+    if tranche_2_manifest.get("record_count") != total_tranche_2_manifest_records:
+        issues.append(Issue("public_data_validation", tranche_2_manifest_path.name, "manifest record count does not equal its parts"))
     return issues
 
 

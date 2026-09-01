@@ -83,8 +83,8 @@ export function MapPanel({ selectedFips, onSelectCounty }: MapPanelProps) {
           fetch(`${base}data/v1/counties/facility-source-coverage.json`),
           fetch(`${base}data/v1/entity-resolution/index.json`),
           fetch(`${base}data/v1/entity-resolution/final-index.json`),
-          fetch(`${base}data/v1/lifecycle/tranche-1-queue.json`),
-          fetch(`${base}data/v1/lifecycle/tranche-1-results.json`),
+          fetch(`${base}data/v1/lifecycle/tranche-2-queue.json`),
+          fetch(`${base}data/v1/lifecycle/tranche-2-results.json`),
         ]);
         if (!countiesResponse.ok || !facilitiesResponse.ok || !coverageResponse.ok || !resolutionResponse.ok || !adjudicationResponse.ok || !lifecycleResponse.ok || !lifecycleResultsResponse.ok) {
           throw new Error("A required map artifact could not be loaded.");

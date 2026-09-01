@@ -1,0 +1,221 @@
+{
+  "schema_version": "1.0.0",
+  "artifact_type": "lifecycle_tranche_2_adjudications",
+  "artifact_version": "2026.08.31",
+  "generated_at": "2026-09-01T02:00:00Z",
+  "record_schema": "https://dccio.org/schemas/v1/lifecycle-evidence-adjudication.schema.json",
+  "record_count": 16,
+  "records": [
+    {
+      "schema_version": "1.0.0",
+      "verification_candidate_id": "lvc_im3_4f270efeef5fd794b292",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.99,
+      "rationale": "Digital Realty's current facility page identifies IAD14 at 43791 Devin Shafron Drive, Building D, matching the mapped facility and advertising current data-center services. The stated 135,000 square feet is explicitly the total building size.",
+      "evidence": [
+        {"source_id": "src_digital_realty_iad14_current_2026", "attribute_path": "facility.current_status", "raw_value": {"type": "classification", "code": "operational", "label": "Current IAD14 data-center service"}, "normalized_value": {"type": "classification", "code": "operational"}, "finding": "Digital Realty currently markets IAD14 at 43791 Devin Shafron Drive, Building D, with active colocation capabilities and 24/7 security.", "disposition": "supporting", "claim_confidence": 0.99},
+        {"source_id": "src_digital_realty_iad14_current_2026", "attribute_path": "observation.floor_area_sqft", "raw_value": {"type": "quantity", "value": 135000, "unit": "square foot"}, "finding": "The facility page reports a total building size of 135,000 square feet.", "disposition": "supporting", "claim_confidence": 0.99}
+      ],
+      "observations": [
+        {"metric_code": "facility.area.building_sqft_observed", "value": 135000, "unit": "square foot", "period": {"precision": "unknown"}, "source_id": "src_digital_realty_iad14_current_2026"}
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "verification_candidate_id": "lvc_im3_985b78b666a2aeec60d6",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.94,
+      "rationale": "A 2024 Loudoun County permit identifies the exact 43831 Devin Shafron Drive data-center building and Amazon Data Services as applicant for a $2.5 million alteration. Exact-address data-center work supports current operation; no third-party capacity estimate is accepted.",
+      "evidence": [
+        {"source_id": "src_loudoun_43831_permits_202402", "attribute_path": "facility.current_status", "raw_value": {"type": "text", "value": "Issued data-center alteration permit at 43831 Devin Shafron Drive; applicant Amazon Data Services"}, "normalized_value": {"type": "classification", "code": "operational"}, "finding": "Loudoun County issued a 2024 alteration permit for the exact mapped address, identifying Amazon Data Services as applicant and the structure as a data center.", "disposition": "supporting", "claim_confidence": 0.94}
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "verification_candidate_id": "lvc_im3_bf4b1b13555102a99953",
+      "resolution_state": "conflicting",
+      "decision": "escalate",
+      "confidence": 0.5,
+      "rationale": "Prince William County's current GIS labels IAD59 planned with no occupancy date, while the county's 2024 inventory identifies the same address and parcel as operational. The official-source conflict prevents classification.",
+      "evidence": [
+        {"source_id": "src_pwc_data_center_gis_20260831", "attribute_path": "facility.current_status", "raw_value": {"type": "classification", "code": "planned", "label": "BuildingStatus and PermitStatus"}, "normalized_value": {"type": "classification", "code": "proposed"}, "finding": "The county GIS record for Amazon AWS IAD-59 at 7600 Doane Drive reports BuildingStatus=Planned and PermitStatus=Planned, with no occupancy date.", "disposition": "conflicting", "claim_confidence": 0.95},
+        {"source_id": "src_pwc_data_center_inventory_20240605", "attribute_path": "facility.current_status", "raw_value": {"type": "classification", "code": "operational", "label": "County inventory status O"}, "normalized_value": {"type": "classification", "code": "operational"}, "finding": "The county's 2024 presentation lists IAD59 at the same address and parcel as operational.", "disposition": "conflicting", "claim_confidence": 0.9}
+      ],
+      "record_status": "provisional"
+    },
+    {
+      "schema_version": "1.0.0",
+      "verification_candidate_id": "lvc_im3_3cf4b766431d7ec1d82e",
+      "resolution_state": "conflicting",
+      "decision": "escalate",
+      "confidence": 0.5,
+      "rationale": "Prince William County's current GIS labels IAD52 planned with no occupancy date, while the county's 2024 inventory identifies the same address and parcel as operational. The official-source conflict prevents classification.",
+      "evidence": [
+        {"source_id": "src_pwc_data_center_gis_20260831", "attribute_path": "facility.current_status", "raw_value": {"type": "classification", "code": "planned", "label": "BuildingStatus and PermitStatus"}, "normalized_value": {"type": "classification", "code": "proposed"}, "finding": "The county GIS record for Amazon AWS IAD-52 at 11800 Brewers Spring Road reports BuildingStatus=Planned and PermitStatus=Planned, with no occupancy date.", "disposition": "conflicting", "claim_confidence": 0.95},
+        {"source_id": "src_pwc_data_center_inventory_20240605", "attribute_path": "facility.current_status", "raw_value": {"type": "classification", "code": "operational", "label": "County inventory status O"}, "normalized_value": {"type": "classification", "code": "operational"}, "finding": "The county's 2024 presentation lists IAD52 at the same address and parcel as operational.", "disposition": "conflicting", "claim_confidence": 0.9}
+      ],
+      "record_status": "provisional"
+    },
+    {
+      "schema_version": "1.0.0",
+      "verification_candidate_id": "lvc_im3_e4b94f80ede964723ccc",
+      "resolution_state": "partial",
+      "decision": "provisional",
+      "confidence": 0.65,
+      "rationale": "Microsoft reports active operations across two Quincy campuses with more than twenty buildings, and Washington Ecology maintains current Microsoft Quincy permit records. Neither source maps this unnamed IM3 building footprint to a facility code, so building status remains unresolved.",
+      "evidence": [
+        {"source_id": "src_microsoft_quincy_growth_20260529", "attribute_path": "facility.current_status", "raw_value": {"type": "text", "value": "Two active Quincy campuses with more than twenty buildings"}, "finding": "Microsoft reports current Quincy operations but does not identify this individual building.", "disposition": "context", "claim_confidence": 0.9},
+        {"source_id": "src_wa_ecology_microsoft_quincy_2026", "attribute_path": "facility.current_status", "raw_value": {"type": "text", "value": "Current Columbia and MWH campus permit records"}, "finding": "Washington Ecology identifies regulated Microsoft campuses in Quincy but does not map the candidate footprint to a named building.", "disposition": "context", "claim_confidence": 0.9}
+      ],
+      "record_status": "provisional"
+    },
+    {
+      "schema_version": "1.0.0",
+      "verification_candidate_id": "lvc_im3_01e5a50d202acde8427d",
+      "resolution_state": "partial",
+      "decision": "provisional",
+      "confidence": 0.65,
+      "rationale": "Microsoft reports active operations across two Quincy campuses with more than twenty buildings, and Washington Ecology maintains current Microsoft Quincy permit records. Neither source maps this second unnamed IM3 building footprint to a facility code, so building status remains unresolved.",
+      "evidence": [
+        {"source_id": "src_microsoft_quincy_growth_20260529", "attribute_path": "facility.current_status", "raw_value": {"type": "text", "value": "Two active Quincy campuses with more than twenty buildings"}, "finding": "Microsoft reports current Quincy operations but does not identify this individual building.", "disposition": "context", "claim_confidence": 0.9},
+        {"source_id": "src_wa_ecology_microsoft_quincy_2026", "attribute_path": "facility.current_status", "raw_value": {"type": "text", "value": "Current Columbia and MWH campus permit records"}, "finding": "Washington Ecology identifies regulated Microsoft campuses in Quincy but does not map the candidate footprint to a named building.", "disposition": "context", "claim_confidence": 0.9}
+      ],
+      "record_status": "provisional"
+    },
+    {
+      "schema_version": "1.0.0",
+      "verification_candidate_id": "lvc_im3_913cfcb00cccb7f1c7cf",
+      "resolution_state": "partial",
+      "decision": "provisional",
+      "confidence": 0.7,
+      "rationale": "New Albany identifies an active Google data-center site, and Google recruits operations staff in New Albany. Neither source maps the active buildings to the IM3 label NBY-1, so campus evidence is retained without a building classification.",
+      "evidence": [
+        {"source_id": "src_new_albany_data_centers_current_2026", "attribute_path": "facility.current_status", "raw_value": {"type": "text", "value": "Active Google data-center site"}, "finding": "The city describes an active Google site and current operational noise mitigation, but does not identify building NBY-1.", "disposition": "context", "claim_confidence": 0.92}
+      ],
+      "record_status": "provisional"
+    },
+    {
+      "schema_version": "1.0.0",
+      "verification_candidate_id": "lvc_im3_b9e200fd5d6bcf85d3d6",
+      "resolution_state": "partial",
+      "decision": "provisional",
+      "confidence": 0.6,
+      "rationale": "New Albany publishes multiple AWS building projects and mixed campus lifecycle evidence, but it does not map CMH53 to a named building. Project evidence is retained without assigning a building status.",
+      "evidence": [
+        {"source_id": "src_new_albany_project_updates_2026", "attribute_path": "facility.current_status", "raw_value": {"type": "classification", "code": "unknown", "label": "Building-code mapping unavailable"}, "finding": "The city lists AWS data-center buildings by letters and addresses, not the operator code CMH53.", "disposition": "context", "claim_confidence": 0.85}
+      ],
+      "record_status": "provisional"
+    },
+    {
+      "schema_version": "1.0.0",
+      "verification_candidate_id": "lvc_im3_ef41f863fca5ab7198ea",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.99,
+      "rationale": "Equinix's current facility page identifies SV1 at 11 Great Oaks Boulevard and offers active colocation and interconnection products with 24/7 security. The reported 82,850 square feet is colocation space, not total building area, and is therefore not published as building floor area.",
+      "evidence": [
+        {"source_id": "src_equinix_sv1_current_2026", "attribute_path": "facility.current_status", "raw_value": {"type": "classification", "code": "operational", "label": "Current IBX products and operations"}, "normalized_value": {"type": "classification", "code": "operational"}, "finding": "Equinix currently offers SV1 products and describes operational security and infrastructure at the exact facility address.", "disposition": "supporting", "claim_confidence": 0.99},
+        {"source_id": "src_equinix_sv1_current_2026", "attribute_path": "facility.colocation_space_sqft", "raw_value": {"type": "quantity", "value": 82850, "unit": "square foot"}, "finding": "Equinix reports 82,850 square feet of colocation space; this is not normalized to total building area.", "disposition": "context", "claim_confidence": 0.99}
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "verification_candidate_id": "lvc_im3_f19e80f6c31ef798e83b",
+      "resolution_state": "partial",
+      "decision": "provisional",
+      "confidence": 0.7,
+      "rationale": "Lumen's 2025 data sheet confirms a current Sunnyvale colocation market, and a legacy CenturyLink guide lists SN1 and SN2. The current source does not identify which Sunnyvale building remains represented by the IM3 label Sunnyvale 1, so status remains unresolved.",
+      "evidence": [
+        {"source_id": "src_lumen_colocation_locations_2025", "attribute_path": "facility.current_status", "raw_value": {"type": "text", "value": "Current Sunnyvale colocation market"}, "finding": "Lumen lists Sunnyvale as a current colocation market without facility codes or addresses.", "disposition": "context", "claim_confidence": 0.9},
+        {"source_id": "src_lumen_colocation_guide_2015", "attribute_path": "facility.identity", "raw_value": {"type": "text", "value": "Legacy SN1 and SN2 Sunnyvale facilities"}, "finding": "The legacy guide supports the historical facility naming pattern but does not prove present operation of the mapped building.", "disposition": "context", "claim_confidence": 0.8}
+      ],
+      "record_status": "provisional"
+    },
+    {
+      "schema_version": "1.0.0",
+      "verification_candidate_id": "lvc_im3_d92b5034d19e4def6498",
+      "resolution_state": "partial",
+      "decision": "provisional",
+      "confidence": 0.55,
+      "rationale": "Lumen lists Phoenix as a current colocation market, but the record supplies no site address or facility code linking that market to the mapped building at 215 East Indian School Road.",
+      "evidence": [
+        {"source_id": "src_lumen_colocation_locations_2025", "attribute_path": "facility.current_status", "raw_value": {"type": "text", "value": "Current Phoenix colocation market"}, "finding": "Current operator evidence establishes market presence but not the status of this specific building.", "disposition": "context", "claim_confidence": 0.85}
+      ],
+      "record_status": "provisional"
+    },
+    {
+      "schema_version": "1.0.0",
+      "verification_candidate_id": "lvc_im3_0672a0f72bf75a0f720b",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.99,
+      "rationale": "Flexential's current Deer Valley facility page offers tours and active colocation services and reports facility-specific critical-load capacity.",
+      "evidence": [
+        {"source_id": "src_flexential_deer_valley_current_2026", "attribute_path": "facility.current_status", "raw_value": {"type": "classification", "code": "operational", "label": "Current facility services"}, "normalized_value": {"type": "classification", "code": "operational"}, "finding": "Flexential currently markets the Phoenix Deer Valley data center and offers facility tours and services.", "disposition": "supporting", "claim_confidence": 0.99},
+        {"source_id": "src_flexential_deer_valley_current_2026", "attribute_path": "observation.capacity_mw", "raw_value": {"type": "quantity", "value": 5.02, "unit": "MW"}, "finding": "The facility page reports 5.02 MW of critical-load UPS capacity.", "disposition": "supporting", "claim_confidence": 0.99}
+      ],
+      "observations": [
+        {"metric_code": "facility.capacity.mw_observed", "value": 5.02, "unit": "MW", "period": {"precision": "unknown"}, "source_id": "src_flexential_deer_valley_current_2026"}
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "verification_candidate_id": "lvc_im3_30230cfcdf60d6a02810",
+      "resolution_state": "partial",
+      "decision": "provisional",
+      "confidence": 0.65,
+      "rationale": "Umatilla's wastewater plan establishes an existing PDX2 campus with measured flows, but the public record does not map the combined operator code PDX51/54 to this building footprint.",
+      "evidence": [
+        {"source_id": "src_umatilla_wastewater_plan_2021", "attribute_path": "facility.current_status", "raw_value": {"type": "text", "value": "Existing PDX2 campus with measured wastewater flows"}, "finding": "The city identifies the operating campus but not building codes PDX51/54.", "disposition": "context", "claim_confidence": 0.9}
+      ],
+      "record_status": "provisional"
+    },
+    {
+      "schema_version": "1.0.0",
+      "verification_candidate_id": "lvc_im3_9f60720c57f716b19855",
+      "resolution_state": "partial",
+      "decision": "provisional",
+      "confidence": 0.65,
+      "rationale": "Umatilla's wastewater plan establishes an existing PDX2 campus with measured flows, but the public record does not map the combined operator code PDX57/60 to this building footprint.",
+      "evidence": [
+        {"source_id": "src_umatilla_wastewater_plan_2021", "attribute_path": "facility.current_status", "raw_value": {"type": "text", "value": "Existing PDX2 campus with measured wastewater flows"}, "finding": "The city identifies the operating campus but not building codes PDX57/60.", "disposition": "context", "claim_confidence": 0.9}
+      ],
+      "record_status": "provisional"
+    },
+    {
+      "schema_version": "1.0.0",
+      "verification_candidate_id": "lvc_im3_99f904e2901e7ce00f3e",
+      "resolution_state": "partial",
+      "decision": "provisional",
+      "confidence": 0.55,
+      "rationale": "Lumen lists San Antonio as a current colocation market, but the record supplies no site address or facility code linking that market to the mapped building at 215 Rivas Street.",
+      "evidence": [
+        {"source_id": "src_lumen_colocation_locations_2025", "attribute_path": "facility.current_status", "raw_value": {"type": "text", "value": "Current San Antonio colocation market"}, "finding": "Current operator evidence establishes market presence but not the status of this specific building.", "disposition": "context", "claim_confidence": 0.85}
+      ],
+      "record_status": "provisional"
+    },
+    {
+      "schema_version": "1.0.0",
+      "verification_candidate_id": "lvc_im3_9f1cc4f3eb013a70c737",
+      "resolution_state": "partial",
+      "decision": "provisional",
+      "confidence": 0.7,
+      "rationale": "Microsoft confirms operating datacenters in Bexar County and identifies the mapped Wiseman Boulevard project, but its construction update explicitly says construction completion does not indicate operation or availability. The specific building remains unresolved.",
+      "evidence": [
+        {"source_id": "src_microsoft_texas_community_2026", "attribute_path": "facility.current_status", "raw_value": {"type": "text", "value": "Microsoft operates datacenters in Bexar and Medina counties"}, "finding": "Current operator evidence establishes metro operations but does not identify this building.", "disposition": "context", "claim_confidence": 0.95},
+        {"source_id": "src_microsoft_wiseman_update_2026", "attribute_path": "facility.current_status", "raw_value": {"type": "classification", "code": "unknown", "label": "Construction completion does not indicate operation"}, "finding": "The exact Wiseman Boulevard project page estimates construction completion in March 2026 and explicitly warns that completion is not evidence of operation or availability.", "disposition": "context", "claim_confidence": 0.95}
+      ],
+      "record_status": "provisional"
+    }
+  ]
+}
