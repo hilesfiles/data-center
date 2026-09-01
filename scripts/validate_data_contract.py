@@ -635,6 +635,37 @@ def validate_project_config(
         or first_entry_tranche.get("size") != first_entry_tranche.get("per_region_quota") * 4
     ):
         issues.append(Issue("config_validation", first_entry_policy_path.name, "first-entry research weights, regional frame, or tranche constraints are inconsistent"))
+
+    first_entry_source_path = CONFIG_DIR / "first-entry-anchor-evidence-sources.json"
+    first_entry_source_document = load_json(first_entry_source_path)
+    first_entry_sources = first_entry_source_document.get("records", [])
+    if first_entry_source_document.get("record_count") != len(first_entry_sources):
+        issues.append(Issue("config_validation", first_entry_source_path.name, "record count is inconsistent"))
+    for index, record in enumerate(first_entry_sources):
+        for issue in validator.validate_record(record, schema_paths["source"]):
+            issues.append(Issue("config_validation", f"{first_entry_source_path.name}.records[{index}]{issue.path[1:]}", issue.message))
+
+    first_entry_adjudication_path = CONFIG_DIR / "first-entry-anchor-adjudications.json"
+    first_entry_adjudication_document = load_json(first_entry_adjudication_path)
+    first_entry_adjudications = first_entry_adjudication_document.get("records", [])
+    if first_entry_adjudication_document.get("record_count") != len(first_entry_adjudications):
+        issues.append(Issue("config_validation", first_entry_adjudication_path.name, "record count is inconsistent"))
+    all_evidence_source_ids: set[str] = set()
+    for evidence_path in CONFIG_DIR.glob("*evidence-sources.json"):
+        all_evidence_source_ids.update(
+            record.get("source_id", "") for record in load_json(evidence_path).get("records", [])
+        )
+    for index, record in enumerate(first_entry_adjudications):
+        for issue in validator.validate_record(record, schema_paths["county_first_entry_adjudication"]):
+            issues.append(Issue("config_validation", f"{first_entry_adjudication_path.name}.records[{index}]{issue.path[1:]}", issue.message))
+        if not set(record.get("source_ids", [])).issubset(all_evidence_source_ids):
+            issues.append(Issue("referential_integrity", f"{first_entry_adjudication_path.name}.records[{index}]", "adjudication references an unknown evidence source"))
+    if (
+        {record.get("county_fips") for record in first_entry_adjudications} != {"04013", "06085"}
+        or any(record.get("decision") != "reject_candidate_as_first_entry" for record in first_entry_adjudications)
+        or any(record.get("inventory_completeness_status") != "not_established" for record in first_entry_adjudications)
+    ):
+        issues.append(Issue("config_validation", first_entry_adjudication_path.name, "anchor adjudication outcomes are inconsistent"))
     return issues
 
 
@@ -1251,6 +1282,13 @@ def validate_public_data(
             issues.append(Issue("public_data_validation", f"{treatment_path.name}.county_treatment_assessment[{index}]", "county identity does not match the Census boundary"))
         if not set(record.get("candidate_event_evaluation_ids", [])).issubset(set(treatment_evaluation_ids)):
             issues.append(Issue("referential_integrity", f"{treatment_path.name}.county_treatment_assessment[{index}]", "assessment references an unknown treatment event evaluation"))
+    adjudicated_assessments = [record for record in treatment_assessments if record.get("first_entry_adjudication_ids")]
+    if (
+        {record.get("county_fips") for record in adjudicated_assessments} != {"04013", "06085"}
+        or any(record.get("candidate_rejection_count") != 1 for record in adjudicated_assessments)
+        or any(record.get("inventory_completeness_status") != "not_established" for record in adjudicated_assessments)
+    ):
+        issues.append(Issue("public_data_validation", treatment_path.name, "county first-entry adjudication summaries are inconsistent"))
 
     evaluations_by_fips = {record.get("county_fips"): record for record in treatment_evaluations}
     expected_treatment_evaluations = {
@@ -1279,9 +1317,10 @@ def validate_public_data(
             any(actual.get(key) != value for key, value in expected.items())
             or actual.get("evidence_threshold_status") != "passed"
             or actual.get("period_requirement_status") != "passed"
-            or actual.get("first_entry_verification_status") != "not_verified"
+            or actual.get("first_entry_verification_status") != "rejected_as_first_entry"
             or actual.get("eligibility_status") != "excluded"
-            or actual.get("exclusion_reasons") != ["county_first_entry_not_verified"]
+            or actual.get("exclusion_reasons") != ["candidate_event_not_county_first_entry"]
+            or actual.get("county_first_entry_adjudication_id") is None
         ):
             issues.append(Issue("public_data_validation", f"{treatment_path.name}.treatment_event_evaluation[{county_fips}]", "candidate evidence score, history window, or exclusion state changed"))
 
@@ -1291,6 +1330,7 @@ def validate_public_data(
     if (
         treatment_public_index.get("partition_count") != 51
         or treatment_public_index.get("record_count") != 3144
+        or treatment_public_index.get("adjudication_count") != 2
         or len(treatment_public_index.get("partitions", [])) != 51
     ):
         issues.append(Issue("public_data_validation", treatment_public_path.name, "county treatment partition index counts are inconsistent"))
@@ -1323,6 +1363,22 @@ def validate_public_data(
     treatment_candidate_public_path = PUBLIC_DATA_DIR / "treatments" / "county-first-entry" / "candidate-events.json"
     if load_json(treatment_candidate_public_path) != treatment_evaluations:
         issues.append(Issue("public_data_validation", treatment_candidate_public_path.name, "public treatment candidates must match the governed evaluation collection"))
+    governed_first_entry_adjudications = load_json(
+        CONFIG_DIR / "first-entry-anchor-adjudications.json"
+    ).get("records", [])
+    public_first_entry_adjudications = load_json(
+        PUBLIC_DATA_DIR / "treatments" / "county-first-entry" / "adjudications.json"
+    )
+    if public_first_entry_adjudications != governed_first_entry_adjudications:
+        issues.append(Issue("public_data_validation", "county-first-entry/adjudications.json", "public adjudications must match governed records"))
+    public_first_entry_sources = load_json(
+        PUBLIC_DATA_DIR / "treatments" / "county-first-entry" / "evidence-sources.json"
+    )
+    expected_first_entry_source_ids = {
+        source_id for record in governed_first_entry_adjudications for source_id in record.get("source_ids", [])
+    }
+    if {record.get("source_id") for record in public_first_entry_sources} != expected_first_entry_source_ids:
+        issues.append(Issue("public_data_validation", "county-first-entry/evidence-sources.json", "public evidence-source coverage is inconsistent"))
 
     treatment_report_path = DATA_DIR / "silver" / "treatments" / "county-first-entry-v1.processing-report.json"
     treatment_report = load_json(treatment_report_path)
@@ -1335,6 +1391,7 @@ def validate_public_data(
         or treatment_report.get("evidence_threshold_pass_count") != 2
         or treatment_report.get("period_requirement_pass_count") != 2
         or treatment_report.get("first_entry_verified_event_count") != 0
+        or treatment_report.get("candidate_rejected_as_first_entry_count") != 2
         or treatment_report.get("eligible_treatment_event_count") != 0
         or treatment_report.get("eligible_county_count") != 0
         or treatment_report.get("assessment_status_counts") != {"candidate_events_not_first_entry": 2, "no_reviewed_dated_operational_event": 3142}
@@ -1359,7 +1416,7 @@ def validate_public_data(
         treatment_manifest_total += part.get("record_count", 0)
         if part.get("byte_size") != len(payload) or part.get("sha256") != hashlib.sha256(payload).hexdigest():
             issues.append(Issue("public_data_validation", f"{treatment_manifest_path.name}.parts[{index}]", "byte size or SHA-256 does not match the artifact"))
-    if treatment_manifest.get("record_count") != 6296 or treatment_manifest_total != 6296:
+    if treatment_manifest.get("record_count") != 6305 or treatment_manifest_total != 6305:
         issues.append(Issue("public_data_validation", treatment_manifest_path.name, "county first-entry manifest record count is inconsistent"))
 
     research_path = DATA_DIR / "silver" / "treatments" / "county-first-entry-research-priority-v1.json"
@@ -1464,7 +1521,7 @@ def validate_public_data(
             or record.get("named_source_record_count") != source.get("named_record_count")
             or record.get("score_components") != expected_components
             or record.get("priority_score") != expected_score
-            or record.get("research_status") != "queued"
+            or record.get("research_status") != ("evidence_collected" if county_fips in {"04013", "06085"} else "queued")
             or record.get("research_objective") != "verify_county_first_operational_entry"
         ):
             issues.append(Issue("public_data_validation", f"{research_path.name}.first_entry_research_candidate[{index}]", "first-entry research identity, input metrics, or score is inconsistent"))
@@ -1515,6 +1572,7 @@ def validate_public_data(
         or research_report.get("exclusion_counts") != {"no_active_canonical_facility": 2918, "incomplete_24_year_panel": 9, "already_eligible_treatment": 0}
         or research_report.get("priority_tier_counts") != {"first_entry_deferred": 124, "first_entry_high": 2, "first_entry_standard": 91}
         or research_report.get("initial_tranche_region_counts") != {"Midwest": 6, "Northeast": 6, "South": 6, "West": 6}
+        or research_report.get("adjudication_status_counts") != {"candidate_rejected_first_entry": 2, "not_adjudicated": 215}
         or research_report.get("treatment_effect") != {"treatment_dates_assigned": 0, "eligible_treatment_count_changed": False, "model_run_authorized": False}
     ):
         issues.append(Issue("public_data_validation", research_report_path.name, "first-entry research processing diagnostics are inconsistent"))

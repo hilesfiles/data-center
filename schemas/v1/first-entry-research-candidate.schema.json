@@ -50,6 +50,14 @@
     "initial_tranche_rank": {"type": "integer", "minimum": 1},
     "queue_status": {"type": "string", "enum": ["initial_tranche", "national_backlog"]},
     "research_status": {"type": "string", "enum": ["queued", "in_research", "evidence_collected", "needs_review", "verified", "blocked"]},
+    "county_first_entry_adjudication_id": {"$ref": "common.schema.json#/$defs/entity_id"},
+    "adjudication_status": {
+      "type": "string", "enum": ["candidate_rejected_first_entry", "first_entry_verified", "unresolved", "conflicting"]
+    },
+    "inventory_completeness_status": {
+      "type": "string", "enum": ["verified_complete", "partial", "not_established"]
+    },
+    "research_summary": {"type": "string", "minLength": 1},
     "research_objective": {"type": "string", "const": "verify_county_first_operational_entry"},
     "required_findings": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
     "suggested_source_types": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1}},

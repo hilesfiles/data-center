@@ -230,24 +230,30 @@ export default function App() {
   const treatmentStatus = selectedTreatment?.assessment_status === "eligible"
     ? `Eligible · ${selectedTreatment.eligible_cohort_year}`
     : selectedTreatment?.assessment_status === "candidate_events_not_first_entry"
-      ? "Not eligible"
+      ? selectedTreatment.candidate_rejection_count
+        ? "Anchor rejected"
+        : "Not eligible"
       : selectedTreatment == null
         ? "Loading…"
         : "No reviewed dated event";
   const treatmentNote = selectedTreatment?.assessment_status === "candidate_events_not_first_entry"
-    ? `${selectedTreatment.candidate_event_count} dated facility opening${selectedTreatment.candidate_event_count === 1 ? "" : "s"}; county first entry unverified`
+    ? selectedTreatment.first_entry_research_summary
+      ?? `${selectedTreatment.candidate_event_count} dated facility opening${selectedTreatment.candidate_event_count === 1 ? "" : "s"}; county first entry unverified`
     : selectedTreatment?.assessment_status === "eligible"
       ? "governed county first-entry date"
       : "never-treated status is not inferred";
-  const researchQueueStatus = selectedFirstEntryResearch?.queue_status === "initial_tranche"
-    ? `Initial tranche · #${selectedFirstEntryResearch.initial_tranche_rank}`
+  const researchQueueStatus = selectedFirstEntryResearch?.research_status === "evidence_collected"
+    ? "Evidence collected · anchor rejected"
+    : selectedFirstEntryResearch?.queue_status === "initial_tranche"
+      ? `Initial tranche · #${selectedFirstEntryResearch.initial_tranche_rank}`
     : selectedFirstEntryResearch != null
       ? `Backlog · national #${selectedFirstEntryResearch.national_rank}`
       : selectedCounty != null && firstEntryResearchByState[selectedCounty.state_abbr] == null
         ? "Loading…"
         : "Not queued";
   const researchQueueNote = selectedFirstEntryResearch != null
-    ? `priority ${selectedFirstEntryResearch.priority_score.toFixed(2)} · research ordering only`
+    ? selectedFirstEntryResearch.research_summary
+      ?? `priority ${selectedFirstEntryResearch.priority_score.toFixed(2)} · research ordering only`
     : (selectedLifecycle?.active_canonical_facility_count ?? 0) > 0
       ? "complete 24-year history requirement not met"
       : "no active canonical facility in current inventory";
@@ -352,8 +358,8 @@ export default function App() {
                 </article>
               </section>
               <div className="evidence-note profile-note">
-                <span>Research status</span>
-                <p>The governed first-entry queue contains 217 research candidates and a region-balanced 24-county initial tranche. Queue rank orders evidence work only: it does not establish a treatment date, first entry, or never-treated comparison status.</p>
+                <span>{selectedFirstEntryResearch?.adjudication_status === "candidate_rejected_first_entry" ? "First-entry adjudication" : "Research status"}</span>
+                <p>{selectedFirstEntryResearch?.research_summary ?? "The governed first-entry queue contains 217 research candidates and a region-balanced 24-county initial tranche. Queue rank orders evidence work only: it does not establish a treatment date, first entry, or never-treated comparison status."}</p>
               </div>
             </>
           )}
@@ -376,7 +382,7 @@ export default function App() {
       </header>
 
       <div className="fixture-banner" role="status">
-        <strong>County first-entry research is now queued under a governed policy.</strong> The initial tranche contains 24 counties—six per Census region—from 217 eligible research candidates. Rank orders research only; zero treatment counties are eligible and no impact model has been run.
+        <strong>The first two dated anchors have been adjudicated.</strong> Earlier exact operations reject the Maricopa and Santa Clara anchors as county first entries. Their complete historical inventories remain unresolved; zero treatment counties are eligible and no impact model has been run.
       </div>
 
       <main className="workspace">

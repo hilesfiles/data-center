@@ -25,6 +25,14 @@
     "candidate_event_evaluation_ids": {
       "type": "array", "items": {"$ref": "common.schema.json#/$defs/entity_id"}, "uniqueItems": true
     },
+    "first_entry_adjudication_ids": {
+      "type": "array", "items": {"$ref": "common.schema.json#/$defs/entity_id"}, "uniqueItems": true
+    },
+    "candidate_rejection_count": {"type": "integer", "minimum": 0},
+    "inventory_completeness_status": {
+      "type": "string", "enum": ["verified_complete", "partial", "not_established"]
+    },
+    "first_entry_research_summary": {"type": "string", "minLength": 1},
     "first_entry_verified": {"type": "boolean"},
     "eligible_treatment_period": {"$ref": "common.schema.json#/$defs/temporal_extent"},
     "eligible_cohort_year": {"$ref": "common.schema.json#/$defs/year"},

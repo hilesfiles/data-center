@@ -148,6 +148,10 @@ export interface CountyTreatmentAssessment {
     | "no_reviewed_dated_operational_event";
   candidate_event_count: number;
   candidate_event_evaluation_ids: string[];
+  first_entry_adjudication_ids?: string[];
+  candidate_rejection_count?: number;
+  inventory_completeness_status?: "verified_complete" | "partial" | "not_established";
+  first_entry_research_summary?: string;
   first_entry_verified: boolean;
   review_scope: "reviewed_facility_events_only";
   eligible_treatment_period?: { date?: string; year?: number; precision: string };
@@ -178,6 +182,10 @@ export interface FirstEntryResearchCandidate {
   initial_tranche_rank?: number;
   queue_status: "initial_tranche" | "national_backlog";
   research_status: "queued" | "in_research" | "evidence_collected" | "needs_review" | "verified" | "blocked";
+  county_first_entry_adjudication_id?: string;
+  adjudication_status?: "candidate_rejected_first_entry" | "first_entry_verified" | "unresolved" | "conflicting";
+  inventory_completeness_status?: "verified_complete" | "partial" | "not_established";
+  research_summary?: string;
 }
 
 export interface CountyEntityResolutionCoverage {

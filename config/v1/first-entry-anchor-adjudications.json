@@ -1,0 +1,108 @@
+{
+  "schema_version": "1.0.0",
+  "artifact_type": "county_first_entry_anchor_adjudications",
+  "artifact_version": "2026.09.01",
+  "generated_at": "2026-09-01T16:00:00Z",
+  "record_schema": "https://dccio.org/schemas/v1/county-first-entry-adjudication.schema.json",
+  "record_count": 2,
+  "records": [
+    {
+      "schema_version": "1.0.0",
+      "county_first_entry_adjudication_id": "fea_06085_ntt_sv1_2021_rejected",
+      "first_entry_research_candidate_id": "fer_f0cd901bc533aa885311",
+      "treatment_definition_id": "trt_first_entry_v1",
+      "candidate_event_evaluation_id": "tev_d5d23d0f0e0460bc3002",
+      "county_fips": "06085",
+      "county_name": "Santa Clara County",
+      "state_abbr": "CA",
+      "resolution_state": "candidate_rejected_first_entry",
+      "decision": "reject_candidate_as_first_entry",
+      "county_first_entry_verified": false,
+      "inventory_completeness_status": "not_established",
+      "earlier_operations_search_status": "documented_incomplete",
+      "required_finding_status": {
+        "earliest_dated_operational_event": "partial",
+        "exact_facility_identity_for_earliest_event": "resolved",
+        "county_inventory_completeness": "unresolved",
+        "documented_search_for_earlier_operations": "resolved"
+      },
+      "earlier_operational_findings": [
+        {
+          "facility_id": "fac_im3_building_00035491576",
+          "canonical_name": "Equinix SV1",
+          "temporal_relation": "exact_operational_date",
+          "when": {"date": "2000-03-01", "precision": "month"},
+          "source_ids": [
+            "src_equinix_s4a_san_jose_opening_20000420",
+            "src_equinix_10q_original_silicon_valley_20071107",
+            "src_equinix_sv1_current_2026"
+          ],
+          "finding": "Equinix's contemporaneous SEC filing says its San Jose IBX opened in March 2000; a later SEC filing identifies the San Jose property as its original Silicon Valley IBX, and the current operator page maps SV1 to the exact governed facility.",
+          "confidence": 0.97
+        }
+      ],
+      "source_ids": [
+        "src_equinix_s4a_san_jose_opening_20000420",
+        "src_equinix_10q_original_silicon_valley_20071107",
+        "src_equinix_sv1_current_2026"
+      ],
+      "authoritative_source_types": ["operator_release", "sec_filing"],
+      "rationale": "Equinix SV1 was operational in Santa Clara County more than twenty-one years before NTT SV1 opened. The NTT event is therefore rejected as the county's first operational entry. The broader 74-facility historical inventory has not been proven complete, so the county's true first entry remains unresolved and no treatment date is assigned.",
+      "created_at": "2026-09-01T16:00:00Z",
+      "updated_at": "2026-09-01T16:00:00Z",
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "county_first_entry_adjudication_id": "fea_04013_apple_mesa_2017_rejected",
+      "first_entry_research_candidate_id": "fer_33c39f3b32f9f95e75ea",
+      "treatment_definition_id": "trt_first_entry_v1",
+      "candidate_event_evaluation_id": "tev_979a3704079a0b2d2c34",
+      "county_fips": "04013",
+      "county_name": "Maricopa County",
+      "state_abbr": "AZ",
+      "resolution_state": "candidate_rejected_first_entry",
+      "decision": "reject_candidate_as_first_entry",
+      "county_first_entry_verified": false,
+      "inventory_completeness_status": "not_established",
+      "earlier_operations_search_status": "documented_incomplete",
+      "required_finding_status": {
+        "earliest_dated_operational_event": "partial",
+        "exact_facility_identity_for_earliest_event": "resolved",
+        "county_inventory_completeness": "unresolved",
+        "documented_search_for_earlier_operations": "resolved"
+      },
+      "earlier_operational_findings": [
+        {
+          "facility_id": "fac_im3_building_00300959969",
+          "canonical_name": "H5 Phoenix",
+          "temporal_relation": "operational_no_later_than",
+          "when": {"date": "2016-11-30", "precision": "day"},
+          "source_ids": ["src_h5_phoenix_expansion_20161130", "src_h5_phoenix_current_2026"],
+          "finding": "H5's dated release identifies its exact 2600 West Germann Road facility, reports nearly 40 customers and new deployments, and announces an expansion; its current facility page confirms the governed H5 Phoenix identity.",
+          "confidence": 0.96
+        },
+        {
+          "facility_id": "fac_im3_building_00300952513",
+          "canonical_name": "Digital Realty Phoenix PHX15",
+          "temporal_relation": "operational_no_later_than",
+          "when": {"date": "2016-12-31", "precision": "day"},
+          "source_ids": ["src_digital_realty_2016_10k_phx15", "src_digital_realty_phx15_current_2026"],
+          "finding": "Digital Realty's 2016 Form 10-K lists 2121 South Price Road as an occupied Phoenix data center, and its current operator page maps that exact address to governed facility PHX15.",
+          "confidence": 0.97
+        }
+      ],
+      "source_ids": [
+        "src_h5_phoenix_expansion_20161130",
+        "src_h5_phoenix_current_2026",
+        "src_digital_realty_2016_10k_phx15",
+        "src_digital_realty_phx15_current_2026"
+      ],
+      "authoritative_source_types": ["operator_release", "sec_filing"],
+      "rationale": "Two exact Maricopa County facilities are documented operational before Apple's March 2017 service date. The Apple event is therefore rejected as the county's first operational entry. The broader 55-facility historical inventory has not been proven complete, so the county's true first entry remains unresolved and no treatment date is assigned.",
+      "created_at": "2026-09-01T16:00:00Z",
+      "updated_at": "2026-09-01T16:00:00Z",
+      "record_status": "active"
+    }
+  ]
+}

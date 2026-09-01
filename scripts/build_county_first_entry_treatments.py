@@ -21,7 +21,7 @@ from acquire_census_counties import write_json
 
 
 ROOT = Path(__file__).resolve().parents[1]
-BUILD_VERSION = "first-entry-v1.1"
+BUILD_VERSION = "first-entry-v1.2"
 TREATMENT_ID = "trt_first_entry_v1"
 PANEL_YEARS = tuple(range(2001, 2025))
 AUTHORITATIVE_SOURCE_TYPES = {
@@ -85,7 +85,7 @@ def load_model_specification() -> dict[str, Any]:
 
 def load_sources() -> dict[str, dict[str, Any]]:
     records: dict[str, dict[str, Any]] = {}
-    pattern = str(ROOT / "config" / "v1" / "*lifecycle*evidence-sources.json")
+    pattern = str(ROOT / "config" / "v1" / "*evidence-sources.json")
     for filename in sorted(glob.glob(pattern)):
         for record in load_json(Path(filename)).get("records", []):
             source_id = record["source_id"]
@@ -93,6 +93,11 @@ def load_sources() -> dict[str, dict[str, Any]]:
                 raise RuntimeError(f"Conflicting lifecycle source record {source_id}")
             records[source_id] = record
     return records
+
+
+def load_first_entry_adjudications() -> list[dict[str, Any]]:
+    path = ROOT / "config" / "v1" / "first-entry-anchor-adjudications.json"
+    return load_json(path).get("records", [])
 
 
 def load_candidate_results() -> dict[str, dict[str, Any]]:
@@ -145,6 +150,20 @@ def build() -> dict[str, Any]:
     sources = load_sources()
     candidate_results = load_candidate_results()
     adjudications = load_adjudications()
+    first_entry_adjudications = load_first_entry_adjudications()
+    first_entry_by_evaluation = {
+        record["candidate_event_evaluation_id"]: record
+        for record in first_entry_adjudications
+    }
+    if len(first_entry_by_evaluation) != len(first_entry_adjudications):
+        raise RuntimeError("Duplicate candidate evaluation in first-entry adjudications")
+    for record in first_entry_adjudications:
+        unknown_sources = set(record["source_ids"]) - set(sources)
+        if unknown_sources:
+            raise RuntimeError(
+                f"First-entry adjudication {record['county_first_entry_adjudication_id']} "
+                f"references unknown sources: {sorted(unknown_sources)}"
+            )
 
     events: list[dict[str, Any]] = []
     evaluations: list[dict[str, Any]] = []
@@ -186,18 +205,28 @@ def build() -> dict[str, Any]:
                 available_pre >= minimum_pre_periods
                 and available_post >= minimum_post_periods
             )
-            first_entry_verified = adjudication.get("county_first_entry_verified") is True
+            facility_id = result["facility_id"]
+            event_id = stable_id("evt", facility_id, "operational", json.dumps(when, sort_keys=True))
+            evaluation_id = stable_id("tev", TREATMENT_ID, event_id)
+            first_entry_adjudication = first_entry_by_evaluation.get(evaluation_id)
+            first_entry_verified = (
+                first_entry_adjudication is not None
+                and first_entry_adjudication["decision"] == "accept_candidate_as_first_entry"
+            ) or adjudication.get("county_first_entry_verified") is True
+            candidate_rejected = (
+                first_entry_adjudication is not None
+                and first_entry_adjudication["decision"] == "reject_candidate_as_first_entry"
+            )
             exclusion_reasons: list[str] = []
             if not evidence_passed:
                 exclusion_reasons.append("evidence_threshold_not_met")
             if not period_passed:
                 exclusion_reasons.append("panel_period_requirement_not_met")
-            if not first_entry_verified:
+            if candidate_rejected:
+                exclusion_reasons.append("candidate_event_not_county_first_entry")
+            elif not first_entry_verified:
                 exclusion_reasons.append("county_first_entry_not_verified")
             eligibility_status = "eligible" if not exclusion_reasons else "excluded"
-            facility_id = result["facility_id"]
-            event_id = stable_id("evt", facility_id, "operational", json.dumps(when, sort_keys=True))
-            evaluation_id = stable_id("tev", TREATMENT_ID, event_id)
             events.append(
                 {
                     "schema_version": "1.0.0",
@@ -234,7 +263,11 @@ def build() -> dict[str, Any]:
                 "authoritative_source_count": authoritative_count,
                 "source_count": source_count,
                 "evidence_threshold_status": "passed" if evidence_passed else "failed",
-                "first_entry_verification_status": "verified" if first_entry_verified else "not_verified",
+                "first_entry_verification_status": (
+                    "verified" if first_entry_verified
+                    else "rejected_as_first_entry" if candidate_rejected
+                    else "not_verified"
+                ),
                 "eligibility_status": eligibility_status,
                 "exclusion_reasons": exclusion_reasons,
                 "available_pre_periods": available_pre,
@@ -244,6 +277,10 @@ def build() -> dict[str, Any]:
                 "updated_at": generated_at,
                 "record_status": "active" if eligibility_status == "eligible" else "provisional",
             }
+            if first_entry_adjudication is not None:
+                evaluation["county_first_entry_adjudication_id"] = (
+                    first_entry_adjudication["county_first_entry_adjudication_id"]
+                )
             evaluations.append(evaluation)
             evaluations_by_county[result["county_fips"]].append(evaluation)
 
@@ -281,6 +318,27 @@ def build() -> dict[str, Any]:
             "updated_at": generated_at,
             "record_status": "active" if eligible else "provisional",
         }
+        adjudication_records = [
+            first_entry_by_evaluation[record["treatment_event_evaluation_id"]]
+            for record in candidate_evaluations
+            if record["treatment_event_evaluation_id"] in first_entry_by_evaluation
+        ]
+        if adjudication_records:
+            assessment["first_entry_adjudication_ids"] = [
+                record["county_first_entry_adjudication_id"]
+                for record in adjudication_records
+            ]
+            assessment["candidate_rejection_count"] = sum(
+                record["decision"] == "reject_candidate_as_first_entry"
+                for record in adjudication_records
+            )
+            assessment["inventory_completeness_status"] = adjudication_records[0][
+                "inventory_completeness_status"
+            ]
+            assessment["first_entry_research_summary"] = (
+                "Earlier operation documented; the dated anchor is rejected as county first entry. "
+                "The complete historical county inventory is not established."
+            )
         if earliest:
             assessment["eligible_treatment_period"] = earliest["when"]
             assessment["eligible_cohort_year"] = cohort_year(earliest["when"])
@@ -328,6 +386,9 @@ def build() -> dict[str, Any]:
         "generated_at": generated_at,
         "partition_count": len(index_parts),
         "record_count": len(assessments),
+        "adjudication_count": len(first_entry_adjudications),
+        "adjudications_path": "county-first-entry/adjudications.json",
+        "evidence_sources_path": "county-first-entry/evidence-sources.json",
         "partitions": index_parts,
     }
     index_path = (
@@ -340,6 +401,26 @@ def build() -> dict[str, Any]:
         / "county-first-entry" / "candidate-events.json"
     )
     evaluation_payload = write_json(evaluation_path, evaluations)
+    public_adjudication_path = (
+        ROOT / "site" / "public" / "data" / "v1" / "treatments"
+        / "county-first-entry" / "adjudications.json"
+    )
+    public_adjudication_payload = write_json(
+        public_adjudication_path, first_entry_adjudications
+    )
+    adjudication_source_ids = {
+        source_id
+        for record in first_entry_adjudications
+        for source_id in record["source_ids"]
+    }
+    public_evidence_sources = [
+        sources[source_id] for source_id in sorted(adjudication_source_ids)
+    ]
+    public_evidence_path = (
+        ROOT / "site" / "public" / "data" / "v1" / "treatments"
+        / "county-first-entry" / "evidence-sources.json"
+    )
+    public_evidence_payload = write_json(public_evidence_path, public_evidence_sources)
 
     assessment_counts = Counter(record["assessment_status"] for record in assessments)
     report = {
@@ -359,6 +440,7 @@ def build() -> dict[str, Any]:
         "evidence_threshold_pass_count": sum(record["evidence_threshold_status"] == "passed" for record in evaluations),
         "period_requirement_pass_count": sum(record["period_requirement_status"] == "passed" for record in evaluations),
         "first_entry_verified_event_count": sum(record["first_entry_verification_status"] == "verified" for record in evaluations),
+        "candidate_rejected_as_first_entry_count": sum(record["first_entry_verification_status"] == "rejected_as_first_entry" for record in evaluations),
         "eligible_treatment_event_count": sum(record["eligibility_status"] == "eligible" for record in evaluations),
         "eligible_county_count": assessment_counts.get("eligible", 0),
         "assessment_status_counts": dict(sorted(assessment_counts.items())),
@@ -386,6 +468,8 @@ def build() -> dict[str, Any]:
         (silver_path, silver_payload, silver_document["record_count"], "silver", "treatment_registry"),
         (index_path, index_payload, 1, "public", "partition_index"),
         (evaluation_path, evaluation_payload, len(evaluations), "public", "candidate_events"),
+        (public_adjudication_path, public_adjudication_payload, len(first_entry_adjudications), "public", "first_entry_adjudications"),
+        (public_evidence_path, public_evidence_payload, len(public_evidence_sources), "public", "first_entry_evidence_sources"),
         (report_path, report_payload, 1, "silver", "processing_report"),
     ]:
         parts.append(

@@ -19,7 +19,7 @@ from acquire_census_counties import write_json
 
 
 ROOT = Path(__file__).resolve().parents[1]
-BUILD_VERSION = "first-entry-research-v1.0"
+BUILD_VERSION = "first-entry-research-v1.1"
 TREATMENT_ID = "trt_first_entry_v1"
 
 
@@ -109,6 +109,14 @@ def build() -> dict[str, Any]:
         record["county_fips"]: record
         for record in treatment_registry["collections"]["county_treatment_assessment"]
     }
+    first_entry_adjudications = load_json(
+        ROOT / "config" / "v1" / "first-entry-anchor-adjudications.json"
+    ).get("records", [])
+    adjudication_by_fips = {
+        record["county_fips"]: record for record in first_entry_adjudications
+    }
+    if len(adjudication_by_fips) != len(first_entry_adjudications):
+        raise RuntimeError("Duplicate county in first-entry adjudications")
     source_by_fips = {record["county_fips"]: record for record in source_coverage}
     reviewed_operational_counts = load_reviewed_operational_counts()
     state_to_region = {
@@ -138,6 +146,7 @@ def build() -> dict[str, Any]:
         facility_count = int(coverage["active_canonical_facility_count"])
         source = source_by_fips[county_fips]
         assessment = treatment_assessments[county_fips]
+        first_entry_adjudication = adjudication_by_fips.get(county_fips)
         reviewed_operational_count = reviewed_operational_counts[county_fips]
         dated_candidate_count = int(assessment["candidate_event_count"])
         complete_year_count = int(history[county_fips]["complete_year_count"])
@@ -169,8 +178,7 @@ def build() -> dict[str, Any]:
             reasons.append("manageable_inventory_audit_scope")
         if identity_coverage >= 0.75:
             reasons.append("strong_source_identity_coverage")
-        candidates.append(
-            {
+        candidate = {
                 "schema_version": "1.0.0",
                 "first_entry_research_candidate_id": stable_id("fer", TREATMENT_ID, county_fips),
                 "treatment_definition_id": TREATMENT_ID,
@@ -190,7 +198,7 @@ def build() -> dict[str, Any]:
                 "national_rank": 0,
                 "region_rank": 0,
                 "queue_status": "national_backlog",
-                "research_status": "queued",
+                "research_status": "evidence_collected" if first_entry_adjudication else "queued",
                 "research_objective": "verify_county_first_operational_entry",
                 "required_findings": policy["research_protocol"]["required_findings"],
                 "suggested_source_types": policy["research_protocol"]["suggested_source_types"],
@@ -199,7 +207,19 @@ def build() -> dict[str, Any]:
                 "updated_at": generated_at,
                 "record_status": "provisional",
             }
-        )
+        if first_entry_adjudication is not None:
+            candidate["county_first_entry_adjudication_id"] = (
+                first_entry_adjudication["county_first_entry_adjudication_id"]
+            )
+            candidate["adjudication_status"] = first_entry_adjudication["resolution_state"]
+            candidate["inventory_completeness_status"] = first_entry_adjudication[
+                "inventory_completeness_status"
+            ]
+            candidate["research_summary"] = (
+                "Earlier operation documented; dated anchor rejected. "
+                "County first entry remains unresolved pending a complete historical inventory."
+            )
+        candidates.append(candidate)
 
     candidates.sort(key=lambda record: (-record["priority_score"], record["county_fips"]))
     region_ranks: Counter[str] = Counter()
@@ -323,6 +343,9 @@ def build() -> dict[str, Any]:
         "region_counts": dict(sorted(region_counts.items())),
         "initial_tranche_region_counts": dict(sorted(tranche_region_counts.items())),
         "public_partition_count": len(index_parts),
+        "adjudication_status_counts": dict(sorted(Counter(
+            record.get("adjudication_status", "not_adjudicated") for record in candidates
+        ).items())),
         "treatment_effect": {
             "treatment_dates_assigned": 0,
             "eligible_treatment_count_changed": False,
