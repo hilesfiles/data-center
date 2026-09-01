@@ -137,21 +137,24 @@ post-treatment years.
 
 Passing those checks is necessary but not sufficient. A facility opening becomes a county
 first-entry treatment only when the reviewed adjudication explicitly verifies that it is the
-first data-center operation in that county. The current registry retains five facility-event
+first data-center operation in that county. The current registry retains six facility-event
 candidates: NTT SV1 in Santa Clara County (2021-04-13, DQS 93.10, 20 pre/3 post years),
 Apple's Mesa facility in Maricopa County (2017-03 month precision, DQS 85.74, 16 pre/7 post
 years), and a contemporaneous observation of QTS Atlanta DC1 in Fulton County (2006-10-03,
 DQS 84.60, 5 pre/18 post years), plus an operational-no-later-than observation for the exact
-present NY7 site in Hudson County (2002-03-27, DQS 95.06, 1 pre/22 post years), and Switch
-NAP7 in Clark County (2009 year precision, DQS 72.96, 8 pre/15 post years). The Santa Clara
-and Maricopa candidates pass the evidence and panel-window gates but fail county-first-entry
+present NY7 site in Hudson County (2002-03-27, DQS 95.06, 1 pre/22 post years), Switch
+NAP7 in Clark County (2009 year precision, DQS 72.96, 8 pre/15 post years), and IU's
+Bloomington Data Center dedication (2009-11-05, DQS 96.04, 8 pre/15 post years). The Santa
+Clara and Maricopa candidates pass the evidence and panel-window gates but fail county-first-entry
 verification. Fulton's trade-press candidate fails the authoritative-source and seven-pre-period
 gates and is independently rejected by documented earlier operation. Hudson passes the evidence
 gate but fails the seven-pre-period gate; its first entry remains unresolved because the filing's
 1987 lease history does not establish an operational opening date and the historical county
 inventory is incomplete. Clark's year-only date fails the evidence threshold, passes the panel
 window, and is independently rejected because a county filing identifies NAP4 as existing while
-NAP7 was still under construction in 2008. Therefore all 3,144 counties have an assessment, zero are eligible,
+NAP7 was still under construction in 2008. Monroe passes both quantitative gates but is rejected
+because Indiana University documents the predecessor Wrubel Computing Center machine room in
+operation on October 24, 2001. Therefore all 3,144 counties have an assessment, zero are eligible,
 and no model run is authorized. Counties without a reviewed dated event remain unknown for
 treatment purposes; they are not labeled never treated.
 
@@ -167,8 +170,8 @@ the feasibility of auditing the county's current facility inventory (20%), panel
 (15%), and source-identity coverage (10%). Inventory feasibility is inversely scaled by the
 log of the active facility count, so a smaller inventory is treated as easier to audit—not as
 more likely to be newly treated. The initial tranche contains 24 counties, six per Census
-region and no more than two per state. Fulton, Hudson, Clark, Maricopa, and Santa Clara counties are
-`research_status: evidence_collected`; the other 212 records remain queued.
+region and no more than two per state. Fulton, Hudson, Clark, Monroe, Maricopa, and Santa Clara
+counties are `research_status: evidence_collected`; the other 211 records remain queued.
 
 Every adjudication must establish an earliest dated operational event, exact facility identity,
 county inventory completeness, and a documented search for earlier operations. Failure to

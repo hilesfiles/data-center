@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "artifact_type": "national_lifecycle_tranche_adjudications",
-  "generated_at": "2026-09-01T20:00:00Z",
+  "generated_at": "2026-09-01T21:00:00Z",
   "record_count": 8,
   "records": [
     {
@@ -201,7 +201,7 @@
       "decision": "accept",
       "resolved_current_status": "operational",
       "confidence": 0.99,
-      "rationale": "Indiana University's current UITS contact page identifies the IU Bloomington Data Center at 2737 East 10th Street and provides active operations contacts. The current facilities page describes the building as housing IU supercomputing resources. IU's facility account reports a 90,000-square-foot building and 24-hour operation; the area is normalized as an operator-reported building value with its 2017 period.",
+      "rationale": "Indiana University's current UITS contact page identifies the IU Bloomington Data Center at 2737 East 10th Street and provides active operations contacts. The current facilities page describes the building as housing IU supercomputing resources. IU's facility account reports a 90,000-square-foot building and 24-hour operation; the area is normalized as an operator-reported building value with its 2017 period. IU's capital record reports May 2009 completion, and its official November 5, 2009 dedication supplies an operational-no-later-than anchor for the exact facility.",
       "evidence": [
         {
           "source_id": "src_iu_data_center_contact_current_2026",
@@ -228,10 +228,35 @@
           "finding": "Indiana University reports a 90,000-square-foot data-center building.",
           "disposition": "supporting",
           "claim_confidence": 0.98
+        },
+        {
+          "source_id": "src_iu_data_center_completion_200905",
+          "attribute_path": "event.construction_completed",
+          "raw_value": {"type": "date", "value": {"date": "2009-05-01", "precision": "month"}},
+          "finding": "Indiana University's capital-project record identifies the Bloomington Data Center as a completed major new building in May 2009.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        },
+        {
+          "source_id": "src_iu_data_center_dedication_20091105",
+          "attribute_path": "event.operational",
+          "raw_value": {"type": "date", "value": {"date": "2009-11-05", "precision": "day"}},
+          "finding": "Indiana University's official ceremonies record identifies November 5, 2009 as the dedication of IU's new data center, establishing operation no later than that date.",
+          "disposition": "supporting",
+          "claim_confidence": 0.98
         }
       ],
       "observations": [
         {"metric_code": "facility.area.building_sqft_observed", "value": 90000, "unit": "square foot", "period": {"year": 2017, "precision": "year"}, "source_id": "src_iu_data_center_facility_20170221"}
+      ],
+      "events": [
+        {
+          "event_type": "operational",
+          "when": {"date": "2009-11-05", "precision": "day"},
+          "source_id": "src_iu_data_center_dedication_20091105",
+          "confidence": 0.98,
+          "notes": "Indiana University's dedication date establishes operation of the exact Bloomington Data Center no later than November 5, 2009; the capital record independently reports May 2009 building completion."
+        }
       ],
       "record_status": "active"
     },

@@ -2,9 +2,9 @@
   "schema_version": "1.0.0",
   "artifact_type": "county_first_entry_anchor_adjudications",
   "artifact_version": "2026.09.01",
-  "generated_at": "2026-09-01T20:00:00Z",
+  "generated_at": "2026-09-01T21:00:00Z",
   "record_schema": "https://dccio.org/schemas/v1/county-first-entry-adjudication.schema.json",
-  "record_count": 5,
+  "record_count": 6,
   "records": [
     {
       "schema_version": "1.0.0",
@@ -228,6 +228,52 @@
       "rationale": "NAP7 cannot be Clark County's first operational data-center entry. Clark County's September 3, 2008 filing identifies NAP4 at 4495 East Sahara Avenue as an existing Switch data center and NAP7 at 7135 South Decatur Boulevard as a new facility still under construction; Switch places the SUPERNAP/NAP7 debut in 2009. The broader 20-facility current inventory and historical predecessor inventory have not been proven complete, so the county's true first entry remains unresolved and no treatment date is assigned.",
       "created_at": "2026-09-01T20:00:00Z",
       "updated_at": "2026-09-01T20:00:00Z",
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "county_first_entry_adjudication_id": "fea_18105_iu_data_center_20091105_rejected",
+      "first_entry_research_candidate_id": "fer_bdd2954f6fc126a08beb",
+      "treatment_definition_id": "trt_first_entry_v1",
+      "candidate_event_evaluation_id": "tev_62eedf01f990b8f68982",
+      "county_fips": "18105",
+      "county_name": "Monroe County",
+      "state_abbr": "IN",
+      "resolution_state": "candidate_rejected_first_entry",
+      "decision": "reject_candidate_as_first_entry",
+      "county_first_entry_verified": false,
+      "inventory_completeness_status": "not_established",
+      "earlier_operations_search_status": "documented_incomplete",
+      "required_finding_status": {
+        "earliest_dated_operational_event": "partial",
+        "exact_facility_identity_for_earliest_event": "resolved",
+        "county_inventory_completeness": "unresolved",
+        "documented_search_for_earlier_operations": "resolved"
+      },
+      "earlier_operational_findings": [
+        {
+          "facility_id": "fac_211922448f2fea912440",
+          "canonical_name": "Wrubel Computing Center",
+          "temporal_relation": "operational_no_later_than",
+          "when": {"date": "2001-10-24", "precision": "day"},
+          "source_ids": [
+            "src_iu_wrubel_machine_room_20011024",
+            "src_iu_data_center_facility_20170221"
+          ],
+          "finding": "Indiana University's 2003 state record documents an October 24, 2001 reception and tour of the operational Wrubel Computing Center machine room and its recently upgraded IBM SP supercomputer. IU's later facility history identifies Wrubel as the predecessor old center replaced by the 2009 Data Center.",
+          "confidence": 0.99
+        }
+      ],
+      "source_ids": [
+        "src_iu_data_center_dedication_20091105",
+        "src_iu_data_center_completion_200905",
+        "src_iu_wrubel_machine_room_20011024",
+        "src_iu_data_center_facility_20170221"
+      ],
+      "authoritative_source_types": ["operator_release", "planning_record", "state_record"],
+      "rationale": "Indiana University's official ceremonies record supplies a November 5, 2009 operational-no-later-than anchor for the new Bloomington Data Center, corroborated by the university's May 2009 capital-project completion record. The candidate cannot be Monroe County's first data-center entry because an IU state record documents the named Wrubel Computing Center machine room and its upgraded operating supercomputer on October 24, 2001, and IU's facility history identifies Wrubel as the predecessor old center. IU's archives trace county computing facilities further back, while the full historical facility inventory has not been established, so the true first entry remains unresolved and no treatment date is assigned.",
+      "created_at": "2026-09-01T21:00:00Z",
+      "updated_at": "2026-09-01T21:00:00Z",
       "record_status": "active"
     }
   ]

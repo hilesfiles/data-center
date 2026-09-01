@@ -106,8 +106,8 @@ county profiles lazy-load only their selected state partition.
 
 - Treatment definition: `trt_first_entry_v1`
 - Geography: 3,144 current Census counties and county equivalents
-- Reviewed dated operational events: 5
-- Evidence- and history-window-qualified events: 2
+- Reviewed dated operational events: 6
+- Evidence- and history-window-qualified events: 3
 - Verified county first-entry dates: 0
 - Eligible treatment counties: 0
 - Builder: `scripts/build_county_first_entry_treatments.py`
@@ -120,9 +120,13 @@ at the exact present NY7 site in North Bergen, and Switch's year-level account o
 data center while NAP7 was still under construction, so NAP7 cannot be the county's first entry.
 The Clark candidate passes the panel window but fails the year-precision evidence gate. Fulton
 also fails the evidence and pre-period gates; Hudson passes the evidence gate but has only one
-available pre-period. Santa Clara, Maricopa, Fulton, and Clark are rejected as county first entries
+available pre-period. Santa Clara, Maricopa, Fulton, Clark, and Monroe are rejected as county first entries
 by documented earlier operation. Hudson remains unresolved because the 1987 lease history is not
-an opening date and a complete historical inventory has not been established. Public county assessments
+an opening date and a complete historical inventory has not been established. Indiana University's
+November 5, 2009 Data Center dedication passes both evidence and panel gates, but a 2003 IU state
+record documents an operating Wrubel Computing Center machine room on October 24, 2001. Monroe's
+2009 anchor is therefore rejected while its true first entry remains unresolved. Public county
+assessments
 are JSON-only and split into 51 state/DC partitions. Missing reviewed events do not establish
 a never-treated comparison group.
 
