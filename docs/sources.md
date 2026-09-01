@@ -194,6 +194,27 @@ Evidence metadata is versioned in
 `scripts/adjudicate_national_lifecycle_tranche_5.py`. Only metadata and paraphrased findings are
 retained.
 
+## Sixth national lifecycle evidence batch
+
+Initial-tranche ranks 41–48 use current operator records from Flexential, Switch, Indiana
+University, QTS, Comcast, and Verizon, supplemented by New York Power Authority, Orangetown,
+Clark County, property-discovery, location, and market-availability records. Flexential
+Alpharetta, Switch Las Vegas 7, Bloomberg Orangeburg, IU Bloomington, and QTS ATL1 DC1 resolve
+operational. The former Flexential operation at 744 Roble Road resolves closed; the building's
+availability is not treated as closure of the physical asset.
+
+The Comcast Southgate property lead describes an office-scale improvement, and Comcast's current
+local service page does not establish a data center at that building. Verizon's current material
+establishes Colorado data-center capacity only at state level, while the selected Centennial
+footprint is adjacent to a communications tower. Both records remain unresolved rather than
+projecting market-level or telecommunications evidence onto a building.
+
+Evidence metadata is versioned in
+`config/v1/national-lifecycle-tranche-6-evidence-sources.json`, decisions are in
+`config/v1/national-lifecycle-tranche-6-adjudications.json`, and the deterministic builder is
+`scripts/adjudicate_national_lifecycle_tranche_6.py`. Only metadata and paraphrased findings are
+retained.
+
 Four source rows reported Prince William County, Virginia, while their centroids fall in
 Manassas under the published 2025 Census polygons. Both values remain auditable: bronze
 records preserve the source report and canonical/public geography uses point-in-polygon.

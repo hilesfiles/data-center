@@ -1,0 +1,298 @@
+{
+  "schema_version": "1.0.0",
+  "artifact_type": "national_lifecycle_tranche_adjudications",
+  "generated_at": "2026-09-01T14:00:00Z",
+  "record_count": 8,
+  "records": [
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_8ac74fba44ff0039449d",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "closed",
+      "confidence": 0.93,
+      "rationale": "Current reporting identifies 744 Roble Road as a former Flexential data center that Flexential recently vacated and that is now offered for sale or lease. Five 9s Digital independently markets an Allentown power-ready data-center opportunity, while Flexential's current location portfolio no longer lists Allentown. The closed classification applies to the former Flexential operation, not to the physical shell or a future operator.",
+      "evidence": [
+        {
+          "source_id": "src_dcd_former_flexential_allentown_20260703",
+          "attribute_path": "facility.current_status",
+          "raw_value": {"type": "classification", "code": "closed", "label": "Former Flexential operation at 744 Roble Road recently vacated"},
+          "normalized_value": {"type": "classification", "code": "closed"},
+          "finding": "The exact-address report states that Flexential vacated the data-center property and that the site is available for a new user.",
+          "disposition": "supporting",
+          "claim_confidence": 0.93
+        },
+        {
+          "source_id": "src_five9s_allentown_available_2026",
+          "attribute_path": "facility.current_status",
+          "raw_value": {"type": "text", "value": "Allentown power-ready data-center opportunity offered for lease"},
+          "finding": "The current broker inventory supports vacancy and reuse marketing in the same market but does not identify a future operator.",
+          "disposition": "supporting",
+          "claim_confidence": 0.82
+        },
+        {
+          "source_id": "src_flexential_locations_current_2026",
+          "attribute_path": "facility.current_status",
+          "raw_value": {"type": "text", "value": "Current Flexential portfolio lists Collegeville as its Pennsylvania location and does not list Allentown"},
+          "finding": "The operator's current location portfolio is consistent with the end of Flexential operation in Allentown but is not sufficient by itself.",
+          "disposition": "context",
+          "claim_confidence": 0.9
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_1b9a9ced8575166d9415",
+      "resolution_state": "partial",
+      "decision": "provisional",
+      "confidence": 0.45,
+      "rationale": "A property-record lead maps Comcast ownership to 14312 Northline Road near the selected footprint but describes a very small office-class improvement rather than a data center. Comcast's current local service page establishes network service in the area but does not identify this building or a data-center function. No reviewed first-party, assessor, permit, or regulatory record establishes current data-center operation at the selected footprint.",
+      "evidence": [
+        {
+          "source_id": "src_crexi_comcast_southgate_property_2026",
+          "attribute_path": "facility.identity",
+          "raw_value": {"type": "text", "value": "Comcast Cable property at 14312 Northline Road, Southgate, Michigan; office use; approximately 788 square feet"},
+          "finding": "The discovery record supports a Comcast property match but describes an office-scale improvement and cannot establish data-center identity or lifecycle status.",
+          "disposition": "context",
+          "claim_confidence": 0.55
+        },
+        {
+          "source_id": "src_xfinity_riverview_current_2026",
+          "attribute_path": "facility.current_status",
+          "raw_value": {"type": "text", "value": "Current Xfinity service availability in the neighboring Riverview market"},
+          "finding": "Current market service does not identify the selected building or establish that it operates as a data center.",
+          "disposition": "context",
+          "claim_confidence": 0.4
+        }
+      ],
+      "record_status": "provisional"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_ebaf0a3134d7b28ac14c",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.99,
+      "rationale": "Flexential's current location portfolio identifies the Alpharetta facility and offers active services and tours, while its fleet guide maps the site to 12655 Edison Drive. The current portfolio reports a 142,475-square-foot data-center footprint and 6 MW of capacity; both facility-specific values are normalized.",
+      "evidence": [
+        {
+          "source_id": "src_flexential_locations_current_2026",
+          "attribute_path": "facility.current_status",
+          "raw_value": {"type": "classification", "code": "operational", "label": "Current Alpharetta facility services, specifications, and tour availability"},
+          "normalized_value": {"type": "classification", "code": "operational"},
+          "finding": "The operator currently markets and supports the Alpharetta data center.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        },
+        {
+          "source_id": "src_flexential_alpharetta_fleet_2025",
+          "attribute_path": "facility.address",
+          "raw_value": {"type": "text", "value": "12655 Edison Drive, Alpharetta, Georgia 30005"},
+          "finding": "The operator fleet guide maps the Alpharetta facility to the exact selected building.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        },
+        {
+          "source_id": "src_flexential_locations_current_2026",
+          "attribute_path": "observation.floor_area_sqft",
+          "raw_value": {"type": "quantity", "value": 142475, "unit": "square foot"},
+          "normalized_value": {"type": "quantity", "value": 142475, "unit": "square foot"},
+          "finding": "Flexential reports a 142,475-square-foot data-center footprint for Alpharetta.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        },
+        {
+          "source_id": "src_flexential_locations_current_2026",
+          "attribute_path": "observation.capacity_mw",
+          "raw_value": {"type": "quantity", "value": 6, "unit": "MW"},
+          "normalized_value": {"type": "quantity", "value": 6, "unit": "MW"},
+          "finding": "Flexential reports 6 MW of capacity for the Alpharetta facility.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        }
+      ],
+      "observations": [
+        {"metric_code": "facility.area.building_sqft_observed", "value": 142475, "unit": "square foot", "period": {"year": 2026, "precision": "year"}, "source_id": "src_flexential_locations_current_2026"},
+        {"metric_code": "facility.capacity.mw_observed", "value": 6, "unit": "MW", "period": {"year": 2026, "precision": "year"}, "source_id": "src_flexential_locations_current_2026"}
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_ec112d3d358d4416b201",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.99,
+      "rationale": "Clark County's current Part 70 operating permit states that Switch owns and operates NAP 7 among six adjacent data-center facilities at 7135 South Decatur Boulevard. Switch's current Las Vegas page independently presents the Core Campus as an active data-center campus. The permit's exact NAP 7 identifier resolves the selected Switch Las Vegas 7 footprint.",
+      "evidence": [
+        {
+          "source_id": "src_clark_county_switch_operating_permit_20250515_t6",
+          "attribute_path": "facility.current_status",
+          "raw_value": {"type": "classification", "code": "operational", "label": "Switch owns and operates NAP 7 at 7135 South Decatur Boulevard"},
+          "normalized_value": {"type": "classification", "code": "operational"},
+          "finding": "The current county permit identifies NAP 7 by exact facility number among Switch's owned and operated data centers.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        },
+        {
+          "source_id": "src_switch_las_vegas_current_2026",
+          "attribute_path": "facility.current_status",
+          "raw_value": {"type": "text", "value": "Current Switch Las Vegas Core Campus services and operating campus specifications"},
+          "finding": "The operator currently markets the encompassing Las Vegas Core Campus; the county permit supplies the exact-building match.",
+          "disposition": "supporting",
+          "claim_confidence": 0.97
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_deef06bfff98126f0f34",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.98,
+      "rationale": "New York Power Authority's 2025 ReCharge New York allocation list identifies Bloomberg L.P.'s data center at 155 Corporate Drive, matching the selected building. An Orangetown record independently identifies the same exact address as Bloomberg's data center and documents the need to keep it functioning. Together the official records establish exact identity and continuing operation.",
+      "evidence": [
+        {
+          "source_id": "src_nypa_bloomberg_recharge_202503",
+          "attribute_path": "facility.current_status",
+          "raw_value": {"type": "classification", "code": "operational", "label": "Bloomberg L.P. data center at 155 Corporate Drive in the 2025 power-allocation list"},
+          "normalized_value": {"type": "classification", "code": "operational"},
+          "finding": "The current state authority record identifies an operating-category Bloomberg data center at the exact address.",
+          "disposition": "supporting",
+          "claim_confidence": 0.98
+        },
+        {
+          "source_id": "src_orangetown_bloomberg_agenda_20181023",
+          "attribute_path": "facility.current_status",
+          "raw_value": {"type": "text", "value": "Bloomberg data center at 155 Corporate Drive required to remain functioning during site work"},
+          "finding": "The local record independently confirms the exact-address facility identity and historical operation.",
+          "disposition": "supporting",
+          "claim_confidence": 0.95
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_f79ea207492ca1ea7b27",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.99,
+      "rationale": "Indiana University's current UITS contact page identifies the IU Bloomington Data Center at 2737 East 10th Street and provides active operations contacts. The current facilities page describes the building as housing IU supercomputing resources. IU's facility account reports a 90,000-square-foot building and 24-hour operation; the area is normalized as an operator-reported building value with its 2017 period.",
+      "evidence": [
+        {
+          "source_id": "src_iu_data_center_contact_current_2026",
+          "attribute_path": "facility.current_status",
+          "raw_value": {"type": "classification", "code": "operational", "label": "Current IU Bloomington Data Center operations contact at 2737 East 10th Street"},
+          "normalized_value": {"type": "classification", "code": "operational"},
+          "finding": "The current institutional page supplies the exact address and active operations contact channel.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        },
+        {
+          "source_id": "src_iu_data_center_facilities_current_2026",
+          "attribute_path": "facility.current_status",
+          "raw_value": {"type": "text", "value": "IU facility currently houses institutional supercomputing resources"},
+          "finding": "The current institutional facilities page independently confirms the building's data-center function.",
+          "disposition": "supporting",
+          "claim_confidence": 0.98
+        },
+        {
+          "source_id": "src_iu_data_center_facility_20170221",
+          "attribute_path": "observation.floor_area_sqft",
+          "raw_value": {"type": "quantity", "value": 90000, "unit": "square foot"},
+          "normalized_value": {"type": "quantity", "value": 90000, "unit": "square foot"},
+          "finding": "Indiana University reports a 90,000-square-foot data-center building.",
+          "disposition": "supporting",
+          "claim_confidence": 0.98
+        }
+      ],
+      "observations": [
+        {"metric_code": "facility.area.building_sqft_observed", "value": 90000, "unit": "square foot", "period": {"year": 2017, "precision": "year"}, "source_id": "src_iu_data_center_facility_20170221"}
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_d01a351671b0af814f67",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.99,
+      "rationale": "QTS's current ATL1 DC1 data sheet maps the facility to 1033 Jefferson Street NW, matching the selected building, and publishes active services, security, and a 990,000-square-foot total facility area. QTS's 2025 compliance matrix independently lists ATL1 DC1 at the same address with current certifications. The total facility area is normalized; the separately reported data-center footprint is retained only as context.",
+      "evidence": [
+        {
+          "source_id": "src_qts_atl1_dc1_datasheet_2026",
+          "attribute_path": "facility.current_status",
+          "raw_value": {"type": "classification", "code": "operational", "label": "Current ATL1 DC1 services and operating specifications at 1033 Jefferson Street NW"},
+          "normalized_value": {"type": "classification", "code": "operational"},
+          "finding": "The current operator data sheet maps ATL1 DC1 to the exact address and offers active facility services.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        },
+        {
+          "source_id": "src_qts_compliance_matrix_202503",
+          "attribute_path": "facility.current_status",
+          "raw_value": {"type": "text", "value": "ATL1 DC1 at 1033 Jefferson Street NW listed with current compliance certifications"},
+          "finding": "The current operator compliance matrix independently corroborates the facility code, address, and continuing operation.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        },
+        {
+          "source_id": "src_qts_atl1_dc1_datasheet_2026",
+          "attribute_path": "observation.floor_area_sqft",
+          "raw_value": {"type": "quantity", "value": 990000, "unit": "square foot"},
+          "normalized_value": {"type": "quantity", "value": 990000, "unit": "square foot"},
+          "finding": "QTS reports a 990,000-square-foot total facility area for ATL1 DC1.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        },
+        {
+          "source_id": "src_qts_atl1_dc1_datasheet_2026",
+          "attribute_path": "facility.data_center_footprint_sqft",
+          "raw_value": {"type": "quantity", "value": 531000, "unit": "square foot"},
+          "finding": "The separately labeled data-center footprint is retained as context and is not substituted for total facility area.",
+          "disposition": "context",
+          "claim_confidence": 0.99
+        }
+      ],
+      "observations": [
+        {"metric_code": "facility.area.building_sqft_observed", "value": 990000, "unit": "square foot", "period": {"year": 2026, "precision": "year"}, "source_id": "src_qts_atl1_dc1_datasheet_2026"}
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_0d34067875c7f87c5093",
+      "resolution_state": "partial",
+      "decision": "provisional",
+      "confidence": 0.4,
+      "rationale": "Verizon currently advertises data-center and colocation capacity in Colorado, but its material does not identify the selected South Clinton Street footprint. A reverse-geocode result places a mobile and microwave communications tower immediately beside the selected building, which is consistent with telecommunications infrastructure but does not establish a data-center function. No reviewed operator, assessor, permit, or regulatory record maps a current Verizon data center to this exact building.",
+      "evidence": [
+        {
+          "source_id": "src_verizon_global_colo_2025",
+          "attribute_path": "facility.current_status",
+          "raw_value": {"type": "text", "value": "Verizon advertises available data-center capacity in Colorado"},
+          "finding": "The first-party record establishes state-level data-center activity but supplies no exact-building identifier or South Clinton Street address.",
+          "disposition": "context",
+          "claim_confidence": 0.65
+        },
+        {
+          "source_id": "src_nominatim_verizon_centennial_20260831",
+          "attribute_path": "facility.identity",
+          "raw_value": {"type": "text", "value": "Mobile-phone and microwave communications tower on South Clinton Street immediately adjacent to the selected footprint"},
+          "finding": "The exact-location result supports a telecommunications use context but neither names Verizon nor identifies a data center.",
+          "disposition": "context",
+          "claim_confidence": 0.6
+        }
+      ],
+      "record_status": "provisional"
+    }
+  ]
+}

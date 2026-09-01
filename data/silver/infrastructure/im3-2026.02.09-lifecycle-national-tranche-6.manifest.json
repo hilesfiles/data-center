@@ -1,0 +1,81 @@
+{
+  "schema_version": "1.0.0",
+  "dataset_id": "im3_lifecycle_national_tranche_6_20260831",
+  "artifact_type": "national_lifecycle_verification_tranche",
+  "artifact_version": "2026.08.31",
+  "generated_at": "2026-09-01T14:00:00Z",
+  "data_vintage": "2026-08-31",
+  "record_schema": "https://dccio.org/schemas/v1/public-national-lifecycle-verification-record.schema.json",
+  "format": "json",
+  "parts": [
+    {
+      "path": "data/silver/infrastructure/im3-2026.02.09-lifecycle-national-tranche-6.json",
+      "sha256": "0754dc1d98964720f4395214b0a8df84b5db92b1484cdba5798b6e7bea3ebae6",
+      "byte_size": 50466,
+      "record_count": 65,
+      "partition_values": {
+        "zone": "silver",
+        "projection": "national_lifecycle_tranche"
+      }
+    },
+    {
+      "path": "data/silver/infrastructure/im3-2026.02.09-lifecycle-national-tranche-6.processing-report.json",
+      "sha256": "606d56826e3199112d36f31db518628d3e83eee5b194d8049bc71703aca00c64",
+      "byte_size": 1507,
+      "record_count": 1,
+      "partition_values": {
+        "zone": "silver",
+        "projection": "processing_report"
+      }
+    },
+    {
+      "path": "site/public/data/v1/lifecycle/national-tranche-6-results.json",
+      "sha256": "3785343782dc4085549d0f524067a82a565f5e868d1623a0485860679b06e415",
+      "byte_size": 8553,
+      "record_count": 8,
+      "partition_values": {
+        "zone": "public",
+        "projection": "national_lifecycle_results"
+      }
+    },
+    {
+      "path": "site/public/data/v1/lifecycle/national-tranche-6-remaining-queue.json",
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "byte_size": 3,
+      "record_count": 0,
+      "partition_values": {
+        "zone": "public",
+        "projection": "national_lifecycle_remaining_queue"
+      }
+    },
+    {
+      "path": "site/public/data/v1/counties/lifecycle-national-tranche-6-coverage.json",
+      "sha256": "8ef604c9de966527e7bc7b3be1e6bb3ab1f129660e97d6893df28b5089c63290",
+      "byte_size": 1138037,
+      "record_count": 3144,
+      "partition_values": {
+        "zone": "public",
+        "projection": "national_lifecycle_coverage"
+      }
+    },
+    {
+      "path": "site/public/data/v1/lifecycle/national-tranche-6-metadata.json",
+      "sha256": "7a3f71d0f71b7443258e66b9a2870692ae22bfd06d5960302e1de3da11a10ded",
+      "byte_size": 1504,
+      "record_count": 1,
+      "partition_values": {
+        "zone": "public",
+        "projection": "national_lifecycle_metadata"
+      }
+    }
+  ],
+  "record_count": 3219,
+  "input_dataset_ids": [
+    "im3_lifecycle_national_tranche_5_20260831"
+  ],
+  "license_metadata": {
+    "license": "Mixed source metadata; IM3-derived records remain ODbL",
+    "redistribution_status": "mixed",
+    "attribution": "© OpenStreetMap contributors; IM3 Open Source Data Center Atlas (PNNL/DOE)"
+  }
+}

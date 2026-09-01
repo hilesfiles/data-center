@@ -197,3 +197,17 @@ batch adds twenty-two claims, eight review decisions, and five observations. Cum
 is forty-one verified operational facilities, nineteen unresolved facilities in research, four
 disputed or needs-review facilities, and 1,296 unknown statuses. The immutable initial tranche
 now has eight unreviewed records at ranks 41–48.
+
+The sixth national review batch adjudicates ranks 41–48 and completes the immutable balanced
+initial tranche. Five facilities resolve operational: Flexential Alpharetta, Switch Las Vegas 7,
+Bloomberg Orangeburg, the IU Bloomington Data Center, and QTS ATL1 DC1. Current operator,
+institutional, utility, or regulatory records support each exact building. The former Flexential
+Allentown operation resolves closed from exact-address vacancy evidence and the operator's current
+portfolio; that status does not imply demolition or preclude reuse by another operator.
+
+The Comcast Southgate and Verizon Centennial labels remain unresolved because local network or
+telecommunications evidence does not establish data-center operation at either selected footprint.
+Four exact-facility observations are normalized: area and capacity for Flexential Alpharetta,
+building area for IU Bloomington, and total facility area for QTS ATL1 DC1. Cumulative coverage is
+forty-seven verified lifecycle statuses, twenty-one unresolved facilities in research, four
+disputed facilities, and 1,290 unknown statuses. No record remains in the 48-facility queue.

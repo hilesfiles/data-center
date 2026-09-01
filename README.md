@@ -118,10 +118,11 @@ python scripts/adjudicate_national_lifecycle_tranche_2.py
 python scripts/adjudicate_national_lifecycle_tranche_3.py
 python scripts/adjudicate_national_lifecycle_tranche_4.py
 python scripts/adjudicate_national_lifecycle_tranche_5.py
+python scripts/adjudicate_national_lifecycle_tranche_6.py
 ```
 
-These downstream builds preserve the original 48-record tranche, publish forty reviewed
-results and an 8-record remaining queue, and roll the verified, unresolved, and disputed states into
+These downstream builds preserve the original 48-record tranche, publish all forty-eight reviewed
+results and an empty remaining queue, and roll the verified, unresolved, and disputed states into
 national county coverage. All generated artifacts remain JSON.
 
 Build the static site:
@@ -155,22 +156,20 @@ validation can be added later to CI with a standards-compliant Draft 2020-12 val
   relationships are represented as provisional governed decisions. All sixteen spatial
   candidates are resolved: four source-record merges, eight distinct contained sites,
   two accepted campus links, and two rejected campus links. No candidate remains pending.
-- Lifecycle verification: all 24 pilot facilities have been reviewed across eight counties.
-  Ten are resolved operational, eleven remain in research because evidence does not map to
-  the building, and three are disputed. Thirty-one of the first forty national-tranche records
-  are resolved operational from exact-building evidence. The fifth batch resolves TierPoint
-  Valley Forge, Csquare Allen DFW2, Serverfarm LAX1, CyrusOne NYM5, and Switch Las Vegas 12.
-  Google Papillion and Union Pacific's Jack Koraleski center remain in research, while the mapped
-  Microsoft Data Center 1 point is disputed because county GIS identifies the exact building as
-  Corscale GCDC1. Cumulative verified facilities now total 41, nineteen remain in research, four
-  are disputed or need review, and 1,296 statuses remain unknown. The
-  immutable initial national tranche spans 23 states, 37 counties, and 32 known operators;
-  8 records remain queued.
+- Lifecycle verification: all 24 pilot facilities and all 48 records in the balanced initial
+  national tranche have been reviewed. The final batch resolves Flexential Alpharetta, Switch
+  Las Vegas 7, Bloomberg Orangeburg, the IU Bloomington Data Center, and QTS ATL1 DC1 as
+  operational, and the former Flexential Allentown operation as closed. The small Comcast and
+  Verizon-labeled footprints remain in research because reviewed evidence does not establish
+  data-center operation at either exact building. Cumulative verified facilities now total 47,
+  twenty-one remain in research, four are disputed or need review, and 1,290 statuses remain
+  unknown. The immutable initial national tranche spans 23 states, 37 counties, and 32 known
+  operators; no record remains queued.
 - Economic, fiscal, utility, housing, environmental, or opposition observations: not yet ingested.
 - Econometric estimates and public indices: fixture-only; not substantive.
 
 ## Next priority
 
-Collect and adjudicate evidence for national initial-tranche ranks 41–48, preserving the
-48-record national queue snapshot, the completed pilot, and the first five completed national
-review batches as immutable inputs.
+Use the completed 48-record tranche's evidence yield to select the next governed lifecycle
+research batch while preserving the original queue, completed pilot, and six national review
+batches as immutable inputs.
