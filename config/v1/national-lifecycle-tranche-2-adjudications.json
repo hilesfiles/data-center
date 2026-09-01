@@ -1,0 +1,294 @@
+{
+  "schema_version": "1.0.0",
+  "artifact_type": "national_lifecycle_tranche_adjudications",
+  "generated_at": "2026-09-01T04:00:00Z",
+  "record_count": 8,
+  "records": [
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_0ee3cec4e338e5086164",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.99,
+      "rationale": "Equinix's current NY4 page identifies the exact facility code and 755 Secaucus Road address and publishes active products, support, security, power, and cooling specifications. Its 151,771-square-foot figure is explicitly colocation space, so it is retained as context rather than total building area.",
+      "evidence": [
+        {
+          "source_id": "src_equinix_ny4_current_2026",
+          "attribute_path": "facility.current_status",
+          "raw_value": {"type": "classification", "code": "operational", "label": "Current facility products and operating specifications"},
+          "normalized_value": {"type": "classification", "code": "operational"},
+          "finding": "The current operator page maps NY4 to 755 Secaucus Road and offers active facility products with 24/7 security and operating specifications.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        },
+        {
+          "source_id": "src_equinix_ny4_current_2026",
+          "attribute_path": "facility.colocation_space_sqft",
+          "raw_value": {"type": "quantity", "value": 151771, "unit": "square foot"},
+          "finding": "Equinix labels 151,771 square feet as colocation space; it is not normalized to total building area.",
+          "disposition": "context",
+          "claim_confidence": 0.99
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_e23c273c067fbca81e7f",
+      "resolution_state": "partial",
+      "decision": "provisional",
+      "confidence": 0.45,
+      "rationale": "Official New Albany planning records and independent reporting establish active AWS data-center development and operation in the Beech Road area, while a directory labels CMH56 operational. None of the reviewed sources maps the CMH56 code to this exact building with a second accepted identifier, so campus and directory evidence cannot establish the building's lifecycle status.",
+      "evidence": [
+        {
+          "source_id": "src_new_albany_project_updates_current_2026",
+          "attribute_path": "facility.current_status",
+          "raw_value": {"type": "text", "value": "Current AWS Building A, F, H, and other data-center project entries in the Beech Road corridor"},
+          "finding": "The city documents AWS data-center buildings in the area but does not identify CMH56 or map a listed building label to the IM3 footprint.",
+          "disposition": "context",
+          "claim_confidence": 0.75
+        },
+        {
+          "source_id": "src_dcd_aws_new_albany_campus_2023",
+          "attribute_path": "facility.current_status",
+          "raw_value": {"type": "text", "value": "AWS operation reported at 2570 Beech Road and additional New Albany campus development"},
+          "finding": "The report establishes AWS activity in the local campus area but does not associate CMH56 with an exact address or building label.",
+          "disposition": "context",
+          "claim_confidence": 0.6
+        },
+        {
+          "source_id": "src_baxtel_amazon_cmh56_current_2026",
+          "attribute_path": "facility.current_status",
+          "raw_value": {"type": "classification", "code": "operational", "label": "Directory-reported CMH56 operational"},
+          "finding": "The directory uses the exact CMH56 code but withholds the street address and is discovery-only under the national source policy.",
+          "disposition": "context",
+          "claim_confidence": 0.45
+        }
+      ],
+      "record_status": "provisional"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_8468f0b4bc4a7014b2b1",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.99,
+      "rationale": "TierPoint's current Charlotte Center Park page identifies CL4 at 1805 Center Park Drive, marks capacity available, and publishes active managed services, remote hands, security, and uptime specifications. The 60,000-plus-square-foot figure is a lower bound and is retained as context rather than normalized as an exact building-area observation.",
+      "evidence": [
+        {
+          "source_id": "src_tierpoint_charlotte_cl4_current_2026",
+          "attribute_path": "facility.current_status",
+          "raw_value": {"type": "classification", "code": "operational", "label": "Current CL4 services and facility availability"},
+          "normalized_value": {"type": "classification", "code": "operational"},
+          "finding": "The current operator page matches CL4 and 1805 Center Park Drive and offers active services, 24/7 support, and facility capacity.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        },
+        {
+          "source_id": "src_tierpoint_charlotte_cl4_current_2026",
+          "attribute_path": "facility.reported_total_space",
+          "raw_value": {"type": "text", "value": "60,000+ total square feet; 20,000+ square feet raised floor"},
+          "finding": "The operator reports lower-bound total and raised-floor figures, which are retained without converting either to an exact building-area observation.",
+          "disposition": "context",
+          "claim_confidence": 0.99
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_2d259b486a2edbc6e2a2",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.99,
+      "rationale": "Digital Realty's current PHX15 page identifies the exact 2121 South Price Road facility and offers active space, compliance, and 24x7 security. Its 508,000-square-foot value is explicitly total building size and is accepted as a facility observation.",
+      "evidence": [
+        {
+          "source_id": "src_digital_realty_phx15_current_2026",
+          "attribute_path": "facility.current_status",
+          "raw_value": {"type": "classification", "code": "operational", "label": "Current facility capabilities and services"},
+          "normalized_value": {"type": "classification", "code": "operational"},
+          "finding": "The current operator page maps PHX15 to 2121 South Price Road and offers active space, security, and facility services.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        },
+        {
+          "source_id": "src_digital_realty_phx15_current_2026",
+          "attribute_path": "observation.floor_area_sqft",
+          "raw_value": {"type": "quantity", "value": 508000, "unit": "square foot"},
+          "normalized_value": {"type": "quantity", "value": 508000, "unit": "square foot"},
+          "finding": "Digital Realty reports 508,000 square feet as PHX15's total building size.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        }
+      ],
+      "observations": [
+        {"metric_code": "facility.area.building_sqft_observed", "value": 508000, "unit": "square foot", "period": {"year": 2026, "precision": "year"}, "source_id": "src_digital_realty_phx15_current_2026"}
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_5df1f33773dd644ddc03",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.99,
+      "rationale": "QTS's current Piscataway 1 page and its DC1 data sheet identify 101 Possumtown Road and publish active facility, tour, security, connectivity, and power information. The data sheet's 360,000-square-foot facility value is accepted; the page's campus and expansion capacity figures are not allocated to the mapped building.",
+      "evidence": [
+        {
+          "source_id": "src_qts_piscataway_1_current_2026",
+          "attribute_path": "facility.current_status",
+          "raw_value": {"type": "classification", "code": "operational", "label": "Current Piscataway 1 facility services"},
+          "normalized_value": {"type": "classification", "code": "operational"},
+          "finding": "The current operator page identifies Piscataway 1 at 101 Possumtown Road and offers active facility services and tours.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        },
+        {
+          "source_id": "src_qts_piscataway_dc1_datasheet_2024",
+          "attribute_path": "observation.floor_area_sqft",
+          "raw_value": {"type": "quantity", "value": 360000, "unit": "square foot"},
+          "normalized_value": {"type": "quantity", "value": 360000, "unit": "square foot"},
+          "finding": "The exact QTS Piscataway 1 DC1 data sheet reports a 360,000-square-foot facility.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        },
+        {
+          "source_id": "src_qts_piscataway_1_current_2026",
+          "attribute_path": "facility.campus_capacity_context",
+          "raw_value": {"type": "text", "value": "65 MW+ critical power capacity; 38-acre campus; additional 50,000-square-foot 15 MW expansion"},
+          "finding": "Current QTS figures describe the wider Piscataway property and expansion context and are not normalized to this building.",
+          "disposition": "context",
+          "claim_confidence": 0.98
+        }
+      ],
+      "observations": [
+        {"metric_code": "facility.area.building_sqft_observed", "value": 360000, "unit": "square foot", "period": {"year": 2024, "precision": "year"}, "source_id": "src_qts_piscataway_dc1_datasheet_2024"}
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_da823dd4deea90ca4f91",
+      "resolution_state": "partial",
+      "decision": "provisional",
+      "confidence": 0.45,
+      "rationale": "Official New Albany records and independent reporting establish AWS data-center activity in the Beech Road area, while a directory associates CMH59 with 2560 Beech Road. The reviewed evidence does not independently confirm the CMH59 building-code mapping or current status with a second accepted identifier, so the record remains unresolved.",
+      "evidence": [
+        {
+          "source_id": "src_new_albany_project_updates_current_2026",
+          "attribute_path": "facility.current_status",
+          "raw_value": {"type": "text", "value": "Current AWS Building A, F, H, and other data-center project entries in the Beech Road corridor"},
+          "finding": "The city documents AWS data-center buildings in the area but does not identify CMH59 or map a listed building label to the IM3 footprint.",
+          "disposition": "context",
+          "claim_confidence": 0.75
+        },
+        {
+          "source_id": "src_dcd_aws_new_albany_campus_2023",
+          "attribute_path": "facility.current_status",
+          "raw_value": {"type": "text", "value": "AWS operation reported at 2570 Beech Road and additional New Albany campus development"},
+          "finding": "The report establishes AWS activity in the local campus area but does not associate CMH59 with an exact address or building label.",
+          "disposition": "context",
+          "claim_confidence": 0.6
+        },
+        {
+          "source_id": "src_datacentermap_amazon_cmh59_current_2026",
+          "attribute_path": "facility.current_status",
+          "raw_value": {"type": "text", "value": "Directory association of site code CMH59 with 2560 Beech Road"},
+          "finding": "The directory supplies an exact code-to-address lead but is not an accepted official or operator source for lifecycle status.",
+          "disposition": "context",
+          "claim_confidence": 0.45
+        }
+      ],
+      "record_status": "provisional"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_e9ae7d224c24ce90fdfd",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.98,
+      "rationale": "Csquare's current TPA1 specification sheet identifies the exact facility code and 9310 Florida Palm Drive address and publishes active support, security, network, and capacity specifications. Cyxtera remains a historical seed label; the current operator is Csquare.",
+      "evidence": [
+        {
+          "source_id": "src_csquare_tpa1_specsheet_2026",
+          "attribute_path": "facility.current_status",
+          "raw_value": {"type": "classification", "code": "operational", "label": "Current TPA1 products and operating specifications"},
+          "normalized_value": {"type": "classification", "code": "operational"},
+          "finding": "The current operator specification sheet maps TPA1 to 9310 Florida Palm Drive and offers active 24/7 support and facility services.",
+          "disposition": "supporting",
+          "claim_confidence": 0.98
+        },
+        {
+          "source_id": "src_csquare_tpa1_specsheet_2026",
+          "attribute_path": "operator_relationship.roles",
+          "raw_value": {"type": "text", "value": "Current Csquare facility; Cyxtera retained as a historical seed label"},
+          "finding": "The current first-party facility record is published by Csquare, so the seed's Cyxtera operator relationship should not be treated as current without a separate relationship update.",
+          "disposition": "context",
+          "claim_confidence": 0.98
+        },
+        {
+          "source_id": "src_csquare_tpa1_specsheet_2026",
+          "attribute_path": "observation.capacity_mw",
+          "raw_value": {"type": "quantity", "value": 9, "unit": "MW"},
+          "normalized_value": {"type": "quantity", "value": 9, "unit": "MW"},
+          "finding": "Csquare reports 9 MW of utility capacity for TPA1.",
+          "disposition": "supporting",
+          "claim_confidence": 0.98
+        }
+      ],
+      "observations": [
+        {"metric_code": "facility.capacity.mw_observed", "value": 9, "unit": "MW", "period": {"year": 2026, "precision": "year"}, "source_id": "src_csquare_tpa1_specsheet_2026"}
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_bd1d3899d8c87b14a348",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.99,
+      "rationale": "H5 Data Centers' current Phoenix page identifies the exact 2600 West Germann Road facility, active customer and connectivity services, and a 100% uptime track record. Its 180,000-square-foot facility size and 26 MW capacity are accepted as exact-facility observations.",
+      "evidence": [
+        {
+          "source_id": "src_h5_phoenix_current_2026",
+          "attribute_path": "facility.current_status",
+          "raw_value": {"type": "classification", "code": "operational", "label": "Current customers, services, and uptime record"},
+          "normalized_value": {"type": "classification", "code": "operational"},
+          "finding": "The current operator page maps the Phoenix facility to 2600 West Germann Road and reports active customers, services, and operating infrastructure.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        },
+        {
+          "source_id": "src_h5_phoenix_current_2026",
+          "attribute_path": "observation.floor_area_sqft",
+          "raw_value": {"type": "quantity", "value": 180000, "unit": "square foot"},
+          "normalized_value": {"type": "quantity", "value": 180000, "unit": "square foot"},
+          "finding": "H5 reports a 180,000-square-foot purpose-built colocation facility.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        },
+        {
+          "source_id": "src_h5_phoenix_current_2026",
+          "attribute_path": "observation.capacity_mw",
+          "raw_value": {"type": "quantity", "value": 26, "unit": "MW"},
+          "normalized_value": {"type": "quantity", "value": 26, "unit": "MW"},
+          "finding": "H5 reports 26 MW of capacity for the exact Phoenix facility.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        }
+      ],
+      "observations": [
+        {"metric_code": "facility.area.building_sqft_observed", "value": 180000, "unit": "square foot", "period": {"year": 2026, "precision": "year"}, "source_id": "src_h5_phoenix_current_2026"},
+        {"metric_code": "facility.capacity.mw_observed", "value": 26, "unit": "MW", "period": {"year": 2026, "precision": "year"}, "source_id": "src_h5_phoenix_current_2026"}
+      ],
+      "record_status": "active"
+    }
+  ]
+}

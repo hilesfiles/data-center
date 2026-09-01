@@ -33,7 +33,7 @@ export default function App() {
       fetch(`${base}data/v1/counties/facility-source-coverage.json`),
       fetch(`${base}data/v1/counties/entity-resolution-coverage.json`),
       fetch(`${base}data/v1/counties/final-review-coverage.json`),
-      fetch(`${base}data/v1/counties/lifecycle-national-tranche-1-coverage.json`),
+      fetch(`${base}data/v1/counties/lifecycle-national-tranche-2-coverage.json`),
     ])
       .then(async ([metadataResponse, coverageResponse, resolutionResponse, adjudicationResponse, lifecycleResponse]) => {
         if (!metadataResponse.ok || !coverageResponse.ok || !resolutionResponse.ok || !adjudicationResponse.ok || !lifecycleResponse.ok) {
@@ -87,7 +87,7 @@ export default function App() {
       </header>
 
       <div className="fixture-banner" role="status">
-        <strong>National lifecycle verification is underway.</strong> The first eight national records are verified operational, bringing the cumulative total to 18; 40 facilities remain in the balanced initial tranche.
+        <strong>National lifecycle verification is underway.</strong> Six of the latest eight records are verified operational and two remain in research, bringing the cumulative verified total to 24; 32 facilities remain in the balanced initial tranche.
       </div>
 
       <main className="workspace">

@@ -138,3 +138,16 @@ observations. Cumulative lifecycle coverage is now eighteen verified operational
 eleven unresolved pilot facilities still in research, three disputed pilot facilities, and
 1,319 facilities with unknown status. The original 48-record tranche remains immutable and
 the separate downstream queue contains the forty records at ranks 9–48.
+
+The second national review batch adjudicates ranks 9–16. Six facilities resolve operational:
+Equinix NY4, TierPoint Charlotte CL4, Digital Realty PHX15, QTS Piscataway 1, Csquare TPA1,
+and H5 Phoenix. Exact first-party records support each facility code or name plus its street
+address. CMH56 and CMH59 remain unresolved because official New Albany records identify AWS
+projects only by generic building labels and the reviewed exact-code mappings are directory
+leads, not independently corroborated official or operator records.
+
+This batch adds twenty-one claims, eight review decisions, and five normalized observations.
+Lower-bound total-space figures and colocation or raised-floor space are not promoted to exact
+building area. Cumulative coverage is twenty-four verified operational facilities, thirteen
+unresolved facilities in research, three disputed facilities, and 1,313 unknown statuses.
+The immutable initial tranche now has thirty-two unreviewed records at ranks 17–48.

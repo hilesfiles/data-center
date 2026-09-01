@@ -112,6 +112,26 @@ continuity. Equinix publishes colocation space for SV2 and NY7; those figures re
 context and are not normalized as total building area. No source in this batch establishes
 a defensible operational start date.
 
+## Second national lifecycle evidence batch
+
+Initial-tranche ranks 9–16 use current first-party pages or specification sheets from
+Equinix, TierPoint, Digital Realty, QTS, Csquare, and H5 Data Centers. They establish exact
+facility identity and current operation for six buildings. Five exact-facility observations
+are normalized: building area for PHX15, QTS Piscataway DC1, and H5 Phoenix, plus capacity for
+Csquare TPA1 and H5 Phoenix. Colocation space, raised-floor space, lower-bound totals, and
+campus or expansion capacity remain contextual.
+
+CMH56 and CMH59 use a City of New Albany project list, independent reporting on the Beech
+Road AWS development, and exact-code directory leads. The official and independent sources
+do not map either code to the IM3 building, and the directory records cannot establish status
+alone under the national policy; both therefore remain unresolved.
+
+Evidence metadata is versioned in
+`config/v1/national-lifecycle-tranche-2-evidence-sources.json`, decisions are in
+`config/v1/national-lifecycle-tranche-2-adjudications.json`, and the deterministic builder is
+`scripts/adjudicate_national_lifecycle_tranche_2.py`. Only metadata and paraphrased findings
+are retained.
+
 Four source rows reported Prince William County, Virginia, while their centroids fall in
 Manassas under the published 2025 Census polygons. Both values remain auditable: bronze
 records preserve the source report and canonical/public geography uses point-in-polygon.

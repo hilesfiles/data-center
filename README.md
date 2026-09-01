@@ -114,11 +114,12 @@ metadata and review decisions:
 
 ```powershell
 python scripts/adjudicate_national_lifecycle_tranche_1.py
+python scripts/adjudicate_national_lifecycle_tranche_2.py
 ```
 
-This downstream build preserves the original 48-record tranche, publishes eight reviewed
-results and a 40-record remaining queue, and rolls the verified statuses into national
-county coverage. All generated artifacts remain JSON.
+These downstream builds preserve the original 48-record tranche, publish sixteen reviewed
+results and a 32-record remaining queue, and roll the verified and unresolved states into
+national county coverage. All generated artifacts remain JSON.
 
 Build the static site:
 
@@ -153,15 +154,17 @@ validation can be added later to CI with a standards-compliant Draft 2020-12 val
   two accepted campus links, and two rejected campus links. No candidate remains pending.
 - Lifecycle verification: all 24 pilot facilities have been reviewed across eight counties.
   Ten are resolved operational, eleven remain in research because evidence does not map to
-  the building, and three are disputed. The first eight records in the national tranche are
-  also resolved operational from exact-building evidence, bringing cumulative verified
-  facilities to 18 and reducing unknown statuses to 1,319. The immutable initial national
-  tranche spans 23 states, 37 counties, and 32 known operators; 40 records remain queued.
+  the building, and three are disputed. Fourteen of the first sixteen national-tranche
+  records are resolved operational from exact-building evidence; CMH56 and CMH59 remain in
+  research because exact-code directory leads could not be corroborated at building level.
+  Cumulative verified facilities now total 24 and 1,313 statuses remain unknown. The
+  immutable initial national tranche spans 23 states, 37 counties, and 32 known operators;
+  32 records remain queued.
 - Economic, fiscal, utility, housing, environmental, or opposition observations: not yet ingested.
 - Econometric estimates and public indices: fixture-only; not substantive.
 
 ## Next priority
 
-Collect and adjudicate evidence for national initial-tranche ranks 9–16, preserving the
-48-record national queue snapshot, the completed pilot, and the first eight national
-results as immutable inputs.
+Collect and adjudicate evidence for national initial-tranche ranks 17–24, preserving the
+48-record national queue snapshot, the completed pilot, and both completed national review
+batches as immutable inputs.
