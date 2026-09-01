@@ -173,6 +173,27 @@ Evidence metadata is versioned in
 `scripts/adjudicate_national_lifecycle_tranche_4.py`. Only metadata and paraphrased findings
 are retained.
 
+## Fifth national lifecycle evidence batch
+
+Initial-tranche ranks 33–40 use current operator records from TierPoint, Google, Csquare,
+Serverfarm, CyrusOne, Union Pacific, Microsoft, and Switch, supplemented by Papillion permits,
+PeeringDB, Prince William County's live data-center building layer, and Clark County's Switch
+operating permit. TierPoint Valley Forge, Csquare DFW2, Serverfarm LAX1, CyrusOne NYM5, and
+Switch Las Vegas 12 resolve operational. Five exact-facility observations are normalized:
+capacity for DFW2, area and capacity for LAX1, and area and capacity for NYM5.
+
+Google's current record remains campus-level, and the exact Union Pacific claim remains supported
+only by a directory, so those buildings are unresolved. Prince William County's GIS creates a
+material identity conflict for Microsoft Data Center 1: the selected point is completed Corscale
+GCDC1, while Microsoft's named MNZ08 is a separate pending building. The record is disputed and
+reserved for entity correction rather than assigned either building's lifecycle status.
+
+Evidence metadata is versioned in
+`config/v1/national-lifecycle-tranche-5-evidence-sources.json`, decisions are in
+`config/v1/national-lifecycle-tranche-5-adjudications.json`, and the deterministic builder is
+`scripts/adjudicate_national_lifecycle_tranche_5.py`. Only metadata and paraphrased findings are
+retained.
+
 Four source rows reported Prince William County, Virginia, while their centroids fall in
 Manassas under the published 2025 Census polygons. Both values remain auditable: bronze
 records preserve the source report and canonical/public geography uses point-in-polygon.

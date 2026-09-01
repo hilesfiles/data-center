@@ -117,10 +117,11 @@ python scripts/adjudicate_national_lifecycle_tranche_1.py
 python scripts/adjudicate_national_lifecycle_tranche_2.py
 python scripts/adjudicate_national_lifecycle_tranche_3.py
 python scripts/adjudicate_national_lifecycle_tranche_4.py
+python scripts/adjudicate_national_lifecycle_tranche_5.py
 ```
 
-These downstream builds preserve the original 48-record tranche, publish thirty-two reviewed
-results and a 16-record remaining queue, and roll the verified and unresolved states into
+These downstream builds preserve the original 48-record tranche, publish forty reviewed
+results and an 8-record remaining queue, and roll the verified, unresolved, and disputed states into
 national county coverage. All generated artifacts remain JSON.
 
 Build the static site:
@@ -156,19 +157,20 @@ validation can be added later to CI with a standards-compliant Draft 2020-12 val
   two accepted campus links, and two rejected campus links. No candidate remains pending.
 - Lifecycle verification: all 24 pilot facilities have been reviewed across eight counties.
   Ten are resolved operational, eleven remain in research because evidence does not map to
-  the building, and three are disputed. Twenty-one of the first twenty-four national-tranche
-  records are resolved operational from exact-building evidence. The fourth batch resolves
-  Prime DFW01-01, Equinix SE3, Phillips Exeter's Data Center, Fidelity Papillion, and Csquare
-  Lynnwood; Lumen Norristown, CyrusOne CIN3, and QTS DAL10 remain in research because current
-  evidence does not map the operator or facility code to the exact building. Cumulative verified
-  facilities now total 36 and 1,301 statuses remain unknown. The
+  the building, and three are disputed. Thirty-one of the first forty national-tranche records
+  are resolved operational from exact-building evidence. The fifth batch resolves TierPoint
+  Valley Forge, Csquare Allen DFW2, Serverfarm LAX1, CyrusOne NYM5, and Switch Las Vegas 12.
+  Google Papillion and Union Pacific's Jack Koraleski center remain in research, while the mapped
+  Microsoft Data Center 1 point is disputed because county GIS identifies the exact building as
+  Corscale GCDC1. Cumulative verified facilities now total 41, nineteen remain in research, four
+  are disputed or need review, and 1,296 statuses remain unknown. The
   immutable initial national tranche spans 23 states, 37 counties, and 32 known operators;
-  16 records remain queued.
+  8 records remain queued.
 - Economic, fiscal, utility, housing, environmental, or opposition observations: not yet ingested.
 - Econometric estimates and public indices: fixture-only; not substantive.
 
 ## Next priority
 
-Collect and adjudicate evidence for national initial-tranche ranks 33–40, preserving the
-48-record national queue snapshot, the completed pilot, and the first four completed national
+Collect and adjudicate evidence for national initial-tranche ranks 41–48, preserving the
+48-record national queue snapshot, the completed pilot, and the first five completed national
 review batches as immutable inputs.

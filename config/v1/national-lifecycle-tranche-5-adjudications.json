@@ -1,0 +1,300 @@
+{
+  "schema_version": "1.0.0",
+  "artifact_type": "national_lifecycle_tranche_adjudications",
+  "generated_at": "2026-09-01T12:00:00Z",
+  "record_count": 8,
+  "records": [
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_c686eced19d84850baf1",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.99,
+      "rationale": "TierPoint's current facility page identifies Valley Forge VFO at 1000 Adams Avenue, matching the mapped building, and offers active colocation, cloud, managed-service, support, and tour functions. Its 137,000-plus-square-foot figure is a lower bound and is retained as context rather than normalized as exact building area.",
+      "evidence": [
+        {
+          "source_id": "src_tierpoint_valley_forge_current_2026",
+          "attribute_path": "facility.current_status",
+          "raw_value": {"type": "classification", "code": "operational", "label": "Current VFO products, support, and tour availability at 1000 Adams Avenue"},
+          "normalized_value": {"type": "classification", "code": "operational"},
+          "finding": "The current operator page maps Valley Forge VFO to the exact address and offers active facility services.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        },
+        {
+          "source_id": "src_tierpoint_valley_forge_current_2026",
+          "attribute_path": "facility.total_space_sqft_lower_bound",
+          "raw_value": {"type": "text", "value": "137,000+ total square feet"},
+          "finding": "The lower-bound total is not promoted to an exact building-area observation.",
+          "disposition": "context",
+          "claim_confidence": 0.99
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_cb78795762784f501fca",
+      "resolution_state": "partial",
+      "decision": "provisional",
+      "confidence": 0.7,
+      "rationale": "Google's current Nebraska page establishes active Papillion data-center operation, and Papillion's permit report identifies continuing Google data-center work at 14865 Gold Coast Road. The Papillion campus contains multiple buildings, while neither source identifies the selected footprint or assigns it a building code. Campus evidence therefore cannot establish this building's status.",
+      "evidence": [
+        {
+          "source_id": "src_google_nebraska_current_2026",
+          "attribute_path": "facility.current_status",
+          "raw_value": {"type": "text", "value": "Papillion data center built in 2019 with current site operations and investment"},
+          "finding": "Google confirms the active Papillion campus but does not identify the selected building.",
+          "disposition": "context",
+          "claim_confidence": 0.95
+        },
+        {
+          "source_id": "src_papillion_google_permit_20241119",
+          "attribute_path": "facility.current_status",
+          "raw_value": {"type": "text", "value": "Google Datacenter Addition permit review at 14865 Gold Coast Road"},
+          "finding": "The city record confirms continuing campus development at an exact campus address but does not map the selected footprint.",
+          "disposition": "context",
+          "claim_confidence": 0.9
+        }
+      ],
+      "record_status": "provisional"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_19c4bfd7178a5c4a98b6",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.98,
+      "rationale": "Csquare's current Dallas/Fort Worth specification identifies its unique Allen DFW2 facility at 900 Guardians Way, matching the mapped former Evoque DA1 building, and publishes active services, 24/7 support, an SLA, and 8.6 MW of utility capacity. The 43,366-square-foot figure is explicitly raised-floor space and is not treated as total building area.",
+      "evidence": [
+        {
+          "source_id": "src_csquare_dfw2_specsheet_2025",
+          "attribute_path": "facility.current_status",
+          "raw_value": {"type": "classification", "code": "operational", "label": "Current DFW2 services and support at 900 Guardians Way"},
+          "normalized_value": {"type": "classification", "code": "operational"},
+          "finding": "The current operator specification maps Allen DFW2 to the exact building and offers active facility services.",
+          "disposition": "supporting",
+          "claim_confidence": 0.98
+        },
+        {
+          "source_id": "src_csquare_dfw2_specsheet_2025",
+          "attribute_path": "observation.capacity_mw",
+          "raw_value": {"type": "quantity", "value": 8.6, "unit": "MW"},
+          "normalized_value": {"type": "quantity", "value": 8.6, "unit": "MW"},
+          "finding": "Csquare reports 8.6 MW of utility capacity for DFW2.",
+          "disposition": "supporting",
+          "claim_confidence": 0.98
+        },
+        {
+          "source_id": "src_csquare_dfw2_specsheet_2025",
+          "attribute_path": "facility.raised_floor_space_sqft",
+          "raw_value": {"type": "quantity", "value": 43366, "unit": "square foot"},
+          "finding": "The operator labels 43,366 square feet as raised-floor space, so it is retained as context.",
+          "disposition": "context",
+          "claim_confidence": 0.98
+        }
+      ],
+      "observations": [
+        {"metric_code": "facility.capacity.mw_observed", "value": 8.6, "unit": "MW", "period": {"year": 2025, "precision": "year"}, "source_id": "src_csquare_dfw2_specsheet_2025"}
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_de854a102e90c8f9ecb7",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.99,
+      "rationale": "Serverfarm's current LAX1 page publishes active facility services and exact building-specific capacity and area, while PeeringDB maps LAX1 to 444 North Nash Street and coordinates matching the selected footprint. The 117,500-square-foot building area and 17.3 MW IT capacity are normalized.",
+      "evidence": [
+        {
+          "source_id": "src_serverfarm_lax1_current_2026",
+          "attribute_path": "facility.current_status",
+          "raw_value": {"type": "classification", "code": "operational", "label": "Current LAX1 facility services and operating specifications"},
+          "normalized_value": {"type": "classification", "code": "operational"},
+          "finding": "Serverfarm currently offers LAX1 data-center services and publishes its operating specifications.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        },
+        {
+          "source_id": "src_peeringdb_serverfarm_lax1_2025",
+          "attribute_path": "facility.address",
+          "raw_value": {"type": "text", "value": "Serverfarm LAX1, 444 North Nash Street, El Segundo, California 90245"},
+          "finding": "The independent facility registry maps LAX1 to the exact address and matching coordinates.",
+          "disposition": "supporting",
+          "claim_confidence": 0.9
+        },
+        {
+          "source_id": "src_serverfarm_lax1_current_2026",
+          "attribute_path": "observation.floor_area_sqft",
+          "raw_value": {"type": "quantity", "value": 117500, "unit": "square foot"},
+          "normalized_value": {"type": "quantity", "value": 117500, "unit": "square foot"},
+          "finding": "Serverfarm reports a 117,500-square-foot building for LAX1.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        },
+        {
+          "source_id": "src_serverfarm_lax1_current_2026",
+          "attribute_path": "observation.capacity_mw",
+          "raw_value": {"type": "quantity", "value": 17.3, "unit": "MW"},
+          "normalized_value": {"type": "quantity", "value": 17.3, "unit": "MW"},
+          "finding": "Serverfarm reports 17.3 MW of IT capacity for LAX1.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        }
+      ],
+      "observations": [
+        {"metric_code": "facility.area.building_sqft_observed", "value": 117500, "unit": "square foot", "period": {"year": 2026, "precision": "year"}, "source_id": "src_serverfarm_lax1_current_2026"},
+        {"metric_code": "facility.capacity.mw_observed", "value": 17.3, "unit": "MW", "period": {"year": 2026, "precision": "year"}, "source_id": "src_serverfarm_lax1_current_2026"}
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_e0f1fdc7bccd1e5f2374",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.99,
+      "rationale": "CyrusOne's current page identifies its operating Norwalk facility as NYM5 and publishes current services and 4 MW of IT capacity. Its operator specification maps NYM5 to 6 Norden Place, matching the selected footprint, and reports a 168,000-square-foot facility. Both exact observations are normalized.",
+      "evidence": [
+        {
+          "source_id": "src_cyrusone_nym5_current_2026",
+          "attribute_path": "facility.current_status",
+          "raw_value": {"type": "classification", "code": "operational", "label": "Current NYM5 services and operating specifications"},
+          "normalized_value": {"type": "classification", "code": "operational"},
+          "finding": "CyrusOne currently offers services at its named NYM5 Norwalk facility.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        },
+        {
+          "source_id": "src_cyrusone_nym5_specsheet_2022",
+          "attribute_path": "facility.address",
+          "raw_value": {"type": "text", "value": "NYM5, 6 Norden Place, Norwalk, Connecticut 06855"},
+          "finding": "The operator specification maps NYM5 to the exact selected building.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        },
+        {
+          "source_id": "src_cyrusone_nym5_specsheet_2022",
+          "attribute_path": "observation.floor_area_sqft",
+          "raw_value": {"type": "quantity", "value": 168000, "unit": "square foot"},
+          "normalized_value": {"type": "quantity", "value": 168000, "unit": "square foot"},
+          "finding": "CyrusOne reports a 168,000-square-foot facility for NYM5.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        },
+        {
+          "source_id": "src_cyrusone_nym5_current_2026",
+          "attribute_path": "observation.capacity_mw",
+          "raw_value": {"type": "quantity", "value": 4, "unit": "MW"},
+          "normalized_value": {"type": "quantity", "value": 4, "unit": "MW"},
+          "finding": "CyrusOne reports 4 MW of total IT capacity for NYM5.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        }
+      ],
+      "observations": [
+        {"metric_code": "facility.area.building_sqft_observed", "value": 168000, "unit": "square foot", "period": {"year": 2022, "precision": "year"}, "source_id": "src_cyrusone_nym5_specsheet_2022"},
+        {"metric_code": "facility.capacity.mw_observed", "value": 4, "unit": "MW", "period": {"year": 2026, "precision": "year"}, "source_id": "src_cyrusone_nym5_current_2026"}
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_74d19cfd837d509e3965",
+      "resolution_state": "partial",
+      "decision": "provisional",
+      "confidence": 0.4,
+      "rationale": "Union Pacific's current Omaha page establishes the railroad's continuing Omaha operations but does not identify the Jack Koraleski Technology, Research & Development Center. A directory maps that name and an operational label to the selected coordinates, but no reviewed operator, assessor, permit, or other official record corroborates the exact building. The directory claim cannot resolve status alone.",
+      "evidence": [
+        {
+          "source_id": "src_union_pacific_omaha_current_2026",
+          "attribute_path": "facility.current_status",
+          "raw_value": {"type": "text", "value": "Current Union Pacific Omaha operations and facilities"},
+          "finding": "The operator confirms a current Omaha presence but does not identify the selected building.",
+          "disposition": "context",
+          "claim_confidence": 0.75
+        },
+        {
+          "source_id": "src_dchub_union_pacific_koraleski_2026",
+          "attribute_path": "facility.current_status",
+          "raw_value": {"type": "classification", "code": "operational", "label": "Directory-reported operation at the selected coordinates"},
+          "finding": "The directory supplies the exact name, operator, coordinates, and operational label but is discovery-only for status.",
+          "disposition": "context",
+          "claim_confidence": 0.4
+        }
+      ],
+      "record_status": "provisional"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_943276d4b6f8faa67ced",
+      "resolution_state": "conflicting",
+      "decision": "escalate",
+      "confidence": 0.99,
+      "rationale": "Microsoft reports Prince William County construction, but the county's live building GIS identifies the selected coordinates as completed Corscale Gainesville Crossing 1 at 13760 University Boulevard, with a finaled permit and 2024 occupancy. The same GIS places Microsoft's MNZ08 at a different nearby point and labels it pending. The exact-coordinate official record therefore conflicts with the seed's Microsoft name and operator, so lifecycle status is disputed pending entity correction.",
+      "evidence": [
+        {
+          "source_id": "src_microsoft_virginia_datacenters_202510",
+          "attribute_path": "facility.current_status",
+          "raw_value": {"type": "text", "value": "Microsoft constructing a datacenter in Prince William County"},
+          "finding": "Microsoft confirms county-level construction but supplies no building identifier or address for the seed.",
+          "disposition": "context",
+          "claim_confidence": 0.9
+        },
+        {
+          "source_id": "src_pwc_data_center_buildings_gis_20260831",
+          "attribute_path": "facility.current_status",
+          "raw_value": {"type": "classification", "code": "operational", "label": "Completed Corscale GCDC1 with finaled permit and 2024 occupancy at the selected coordinates"},
+          "normalized_value": {"type": "classification", "code": "operational"},
+          "finding": "The official live GIS reports a completed, occupied Corscale building at the exact seed point, conflicting with the seed's Microsoft identity.",
+          "disposition": "conflicting",
+          "claim_confidence": 0.99
+        },
+        {
+          "source_id": "src_pwc_data_center_buildings_gis_20260831",
+          "attribute_path": "facility.identity",
+          "raw_value": {"type": "text", "value": "Corscale Gainesville Crossing 1, GCDC1, 13760 University Boulevard; Microsoft Azure MNZ08 is a separate pending building"},
+          "finding": "The county assigns the exact point to Corscale GCDC1 and locates Microsoft's named MNZ08 building separately.",
+          "disposition": "conflicting",
+          "claim_confidence": 0.99
+        }
+      ],
+      "record_status": "provisional"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_919cea9a4aff348b5931",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.99,
+      "rationale": "Switch's current MOD page identifies LAS VEGAS 12 as a completed Core Campus data-center facility, and Clark County's current operating permit independently states that Switch owns and operates NAP 12 among the adjacent Las Vegas facilities. The exact facility number, operator, campus, and selected footprint align.",
+      "evidence": [
+        {
+          "source_id": "src_switch_las_vegas_12_current_2026",
+          "attribute_path": "facility.current_status",
+          "raw_value": {"type": "classification", "code": "operational", "label": "Current Switch LAS VEGAS 12 MOD 100 facility at the Core Campus"},
+          "normalized_value": {"type": "classification", "code": "operational"},
+          "finding": "The operator's current product page identifies the exact LAS VEGAS 12 facility as its completed MOD 100 example.",
+          "disposition": "supporting",
+          "claim_confidence": 0.98
+        },
+        {
+          "source_id": "src_clark_county_switch_operating_permit_20250515",
+          "attribute_path": "facility.current_status",
+          "raw_value": {"type": "classification", "code": "operational", "label": "Switch owns and operates NAP 12 at the Las Vegas source"},
+          "normalized_value": {"type": "classification", "code": "operational"},
+          "finding": "The county operating permit independently includes NAP 12 among Switch's owned and operated adjacent facilities.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        }
+      ],
+      "record_status": "active"
+    }
+  ]
+}

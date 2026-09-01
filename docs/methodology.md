@@ -181,3 +181,19 @@ adds twenty-one claims, eight review decisions, and three normalized exact-facil
 observations. Cumulative coverage is thirty-six verified operational facilities, seventeen
 unresolved facilities in research, three disputed facilities, and 1,301 unknown statuses.
 The immutable initial tranche now has sixteen unreviewed records at ranks 33–48.
+
+The fifth national review batch adjudicates ranks 33–40. Five facilities resolve operational:
+TierPoint Valley Forge, Csquare Allen DFW2, Serverfarm LAX1, CyrusOne Norwalk NYM5, and Switch
+Las Vegas 12. Current operator records and exact-address operator specifications or official
+records establish each building. Five observations are normalized: utility capacity for DFW2,
+building area and IT capacity for LAX1, and building area and IT capacity for NYM5. Lower-bound
+total space and raised-floor space remain contextual.
+
+Google's Papillion campus and Union Pacific's Omaha presence do not map current operation to the
+selected buildings, so both remain in research. The Microsoft Data Center 1 record is disputed:
+Prince William County's current GIS identifies the exact selected point as completed Corscale
+Gainesville Crossing 1 and places Microsoft's pending MNZ08 at a different nearby point. The
+batch adds twenty-two claims, eight review decisions, and five observations. Cumulative coverage
+is forty-one verified operational facilities, nineteen unresolved facilities in research, four
+disputed or needs-review facilities, and 1,296 unknown statuses. The immutable initial tranche
+now has eight unreviewed records at ranks 41–48.

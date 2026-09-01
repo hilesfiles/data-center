@@ -79,7 +79,7 @@ export function MapPanel({ selectedFips, onSelectCounty }: MapPanelProps) {
     map.on("load", async () => {
       try {
         const base = import.meta.env.BASE_URL;
-        const [countiesResponse, facilitiesResponse, coverageResponse, resolutionResponse, adjudicationResponse, lifecycleResponse, lifecycleResultsResponse, nationalLifecycleResponse, nationalLifecycleResultsResponse, nationalLifecycleResults2Response, nationalLifecycleResults3Response, nationalLifecycleResults4Response] = await Promise.all([
+        const [countiesResponse, facilitiesResponse, coverageResponse, resolutionResponse, adjudicationResponse, lifecycleResponse, lifecycleResultsResponse, nationalLifecycleResponse, nationalLifecycleResultsResponse, nationalLifecycleResults2Response, nationalLifecycleResults3Response, nationalLifecycleResults4Response, nationalLifecycleResults5Response] = await Promise.all([
           fetch(`${base}data/v1/maps/counties.geojson`),
           fetch(`${base}data/v1/maps/facilities.geojson`),
           fetch(`${base}data/v1/counties/facility-source-coverage.json`),
@@ -92,8 +92,9 @@ export function MapPanel({ selectedFips, onSelectCounty }: MapPanelProps) {
           fetch(`${base}data/v1/lifecycle/national-tranche-2-results.json`),
           fetch(`${base}data/v1/lifecycle/national-tranche-3-results.json`),
           fetch(`${base}data/v1/lifecycle/national-tranche-4-results.json`),
+          fetch(`${base}data/v1/lifecycle/national-tranche-5-results.json`),
         ]);
-        if (!countiesResponse.ok || !facilitiesResponse.ok || !coverageResponse.ok || !resolutionResponse.ok || !adjudicationResponse.ok || !lifecycleResponse.ok || !lifecycleResultsResponse.ok || !nationalLifecycleResponse.ok || !nationalLifecycleResultsResponse.ok || !nationalLifecycleResults2Response.ok || !nationalLifecycleResults3Response.ok || !nationalLifecycleResults4Response.ok) {
+        if (!countiesResponse.ok || !facilitiesResponse.ok || !coverageResponse.ok || !resolutionResponse.ok || !adjudicationResponse.ok || !lifecycleResponse.ok || !lifecycleResultsResponse.ok || !nationalLifecycleResponse.ok || !nationalLifecycleResultsResponse.ok || !nationalLifecycleResults2Response.ok || !nationalLifecycleResults3Response.ok || !nationalLifecycleResults4Response.ok || !nationalLifecycleResults5Response.ok) {
           throw new Error("A required map artifact could not be loaded.");
         }
         const counties = await countiesResponse.json();
@@ -108,6 +109,7 @@ export function MapPanel({ selectedFips, onSelectCounty }: MapPanelProps) {
         const nationalLifecycleResults2 = (await nationalLifecycleResults2Response.json()) as PublicNationalLifecycleVerificationRecord[];
         const nationalLifecycleResults3 = (await nationalLifecycleResults3Response.json()) as PublicNationalLifecycleVerificationRecord[];
         const nationalLifecycleResults4 = (await nationalLifecycleResults4Response.json()) as PublicNationalLifecycleVerificationRecord[];
+        const nationalLifecycleResults5 = (await nationalLifecycleResults5Response.json()) as PublicNationalLifecycleVerificationRecord[];
         const coverageByFips = new globalThis.Map(
           coverage.map((record: { county_fips: string; source_record_count: number }) => [
             record.county_fips,
@@ -144,7 +146,7 @@ export function MapPanel({ selectedFips, onSelectCounty }: MapPanelProps) {
           nationalLifecycle.map((record) => [record.facility_id, record]),
         );
         const nationalLifecycleResultByFacility = new globalThis.Map(
-          [...nationalLifecycleResults, ...nationalLifecycleResults2, ...nationalLifecycleResults3, ...nationalLifecycleResults4].map((record) => [record.facility_id, record]),
+          [...nationalLifecycleResults, ...nationalLifecycleResults2, ...nationalLifecycleResults3, ...nationalLifecycleResults4, ...nationalLifecycleResults5].map((record) => [record.facility_id, record]),
         );
         facilities.features = facilities.features.map(
           (feature: { properties: Record<string, unknown> }) => {
