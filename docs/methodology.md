@@ -151,3 +151,18 @@ Lower-bound total-space figures and colocation or raised-floor space are not pro
 building area. Cumulative coverage is twenty-four verified operational facilities, thirteen
 unresolved facilities in research, three disputed facilities, and 1,313 unknown statuses.
 The immutable initial tranche now has thirty-two unreviewed records at ranks 17–48.
+
+The third national review batch adjudicates ranks 17–24. Seven facilities resolve
+operational: FirstLight Brunswick, Element Critical Chicago Two, the UF East Campus Research
+Computing Center, Sandia Building 880 HPC, Markley Lowell, EdgeConneX DET01, and CoreSite AT2.
+Current first-party facility records support exact identity for six; Sandia resolves at lower
+confidence from an official Building 880 Annex data-center record combined with Sandia's
+maintained HPC location page for the same building.
+
+SAP COS02 remains unresolved. SAP's current cloud-location list establishes Colorado Springs
+operation, and a local building record establishes a data-center project at the mapped address,
+but only a directory joins the COS02 code to that building. Seven exact-facility observations
+are normalized: five building-area values and two power-capacity values. Cumulative coverage is
+thirty-one verified operational facilities, fourteen unresolved facilities in research, three
+disputed facilities, and 1,306 unknown statuses. The immutable initial tranche now has
+twenty-four unreviewed records at ranks 25–48.

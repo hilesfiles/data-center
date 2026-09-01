@@ -1,0 +1,310 @@
+{
+  "schema_version": "1.0.0",
+  "artifact_type": "national_lifecycle_tranche_adjudications",
+  "generated_at": "2026-09-01T05:30:00Z",
+  "record_count": 8,
+  "records": [
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_a05386e32ffd7b46a3ad",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.98,
+      "rationale": "FirstLight's current data-center page identifies its active Brunswick facility and publishes present operating specifications. A MaineDOT utility record independently associates FirstLight with 14 Resilient Circle, matching the mapped building. The current 52,000-square-foot facility figure is accepted as an exact-facility observation; Oxford Networks is retained only as the historical seed name.",
+      "evidence": [
+        {
+          "source_id": "src_firstlight_brunswick_current_2026",
+          "attribute_path": "facility.current_status",
+          "raw_value": {"type": "classification", "code": "operational", "label": "Current Brunswick data-center services and specifications"},
+          "normalized_value": {"type": "classification", "code": "operational"},
+          "finding": "FirstLight offers current colocation services for its named Brunswick facility and publishes active power, cooling, connectivity, and compliance specifications.",
+          "disposition": "supporting",
+          "claim_confidence": 0.98
+        },
+        {
+          "source_id": "src_mainedot_firstlight_utility_2023",
+          "attribute_path": "facility.address",
+          "raw_value": {"type": "text", "value": "FirstLight, 14 Resilient Circle, Brunswick, Maine 04011"},
+          "finding": "The state utility report ties the current operator name to the exact mapped address.",
+          "disposition": "supporting",
+          "claim_confidence": 0.95
+        },
+        {
+          "source_id": "src_firstlight_brunswick_current_2026",
+          "attribute_path": "observation.floor_area_sqft",
+          "raw_value": {"type": "quantity", "value": 52000, "unit": "square foot"},
+          "normalized_value": {"type": "quantity", "value": 52000, "unit": "square foot"},
+          "finding": "FirstLight reports 52,000 square feet for the Brunswick facility.",
+          "disposition": "supporting",
+          "claim_confidence": 0.98
+        }
+      ],
+      "observations": [
+        {"metric_code": "facility.area.building_sqft_observed", "value": 52000, "unit": "square foot", "period": {"year": 2026, "precision": "year"}, "source_id": "src_firstlight_brunswick_current_2026"}
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_ca1b9f1cf8b7b7ca6c30",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.99,
+      "rationale": "Element Critical's current Chicago page identifies Chicago Two at 341 Haynes Drive, matching the CH2 seed and mapped building, and offers active colocation, support, security, and tour services. Its 45,000-square-foot property size and 5 MW power value are exact-facility observations.",
+      "evidence": [
+        {
+          "source_id": "src_element_critical_chicago_two_current_2026",
+          "attribute_path": "facility.current_status",
+          "raw_value": {"type": "classification", "code": "operational", "label": "Current Chicago Two services and operating specifications"},
+          "normalized_value": {"type": "classification", "code": "operational"},
+          "finding": "The operator page identifies Chicago Two at 341 Haynes Drive and offers current facility services with continuous on-site support.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        },
+        {
+          "source_id": "src_element_critical_chicago_two_current_2026",
+          "attribute_path": "observation.floor_area_sqft",
+          "raw_value": {"type": "quantity", "value": 45000, "unit": "square foot"},
+          "normalized_value": {"type": "quantity", "value": 45000, "unit": "square foot"},
+          "finding": "Element Critical labels 45,000 square feet as Chicago Two's property size.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        },
+        {
+          "source_id": "src_element_critical_chicago_two_current_2026",
+          "attribute_path": "observation.capacity_mw",
+          "raw_value": {"type": "quantity", "value": 5, "unit": "MW"},
+          "normalized_value": {"type": "quantity", "value": 5, "unit": "MW"},
+          "finding": "Element Critical reports 5 MW of power for Chicago Two.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        }
+      ],
+      "observations": [
+        {"metric_code": "facility.area.building_sqft_observed", "value": 45000, "unit": "square foot", "period": {"year": 2026, "precision": "year"}, "source_id": "src_element_critical_chicago_two_current_2026"},
+        {"metric_code": "facility.capacity.mw_observed", "value": 5, "unit": "MW", "period": {"year": 2026, "precision": "year"}, "source_id": "src_element_critical_chicago_two_current_2026"}
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_a6181121abfc1e75a25f",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.97,
+      "rationale": "UF's construction record defines the East Campus building as a data center with a dedicated High Performance Computing Center. UFIT's maintained history then identifies the East Campus facility as opened in 2012, HiPerGator production there from 2013, and later generations through the 2025 retirement of HiPerGator 2.0. Together the first-party records establish the mapped East Campus research-computing facility and current operation. The 2011 area figure was prospective and is not normalized.",
+      "evidence": [
+        {
+          "source_id": "src_uf_research_computing_history_current_2026",
+          "attribute_path": "facility.current_status",
+          "raw_value": {"type": "classification", "code": "operational", "label": "East Campus facility and later HiPerGator production history"},
+          "normalized_value": {"type": "classification", "code": "operational"},
+          "finding": "UFIT identifies the East Campus facility as opened and documents production systems and later hardware generations through 2025.",
+          "disposition": "supporting",
+          "claim_confidence": 0.97
+        },
+        {
+          "source_id": "src_uf_east_campus_groundbreaking_2011",
+          "attribute_path": "facility.identity",
+          "raw_value": {"type": "text", "value": "East Campus data center including a dedicated High Performance Computing Center"},
+          "finding": "UF's construction announcement establishes the building's data-center and HPC identity; its prospective 15,000-square-foot figure is retained only as context.",
+          "disposition": "supporting",
+          "claim_confidence": 0.98
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_b397c880e7413a0cee6c",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.88,
+      "rationale": "Sandia's 2019 facility map explicitly identifies the Building 880 Annex as a data center serving enterprise and HPC systems. Sandia's current HPC site independently places active HPC training and support activity in Building 880/A1N. The exact building number, operator, and HPC function match the seed; the combined first-party evidence supports continued operation, with lower confidence because the current page describes the training room rather than the annex equipment floor.",
+      "evidence": [
+        {
+          "source_id": "src_sandia_building_880_family_day_2019",
+          "attribute_path": "facility.current_status",
+          "raw_value": {"type": "classification", "code": "operational", "label": "Building 880 Annex data center serving enterprise and HPC systems"},
+          "normalized_value": {"type": "classification", "code": "operational"},
+          "finding": "The official map identifies the exact Building 880 Annex as an operating enterprise and HPC data center available for facility tours.",
+          "disposition": "supporting",
+          "claim_confidence": 0.9
+        },
+        {
+          "source_id": "src_sandia_hpc_training_current_2026",
+          "attribute_path": "facility.current_status",
+          "raw_value": {"type": "text", "value": "Current Sandia HPC meeting and training room in Building 880/A1N"},
+          "finding": "The maintained HPC site confirms ongoing Sandia HPC functions in the exact building, but does not separately describe the annex equipment floor.",
+          "disposition": "context",
+          "claim_confidence": 0.86
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_1e30d04b3b5ed48fb783",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.99,
+      "rationale": "Markley's current facility page identifies its active Lowell data center, describes 24x7 staffing and operating infrastructure, and reports 352,000 square feet. Its current contact page maps the Lowell location to One Markley Way, matching the mapped building.",
+      "evidence": [
+        {
+          "source_id": "src_markley_lowell_current_2026",
+          "attribute_path": "facility.current_status",
+          "raw_value": {"type": "classification", "code": "operational", "label": "Current Lowell data-center services and 24x7 operations"},
+          "normalized_value": {"type": "classification", "code": "operational"},
+          "finding": "Markley offers current colocation and disaster-recovery services at its Lowell data center with continuous on-site staffing and active infrastructure.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        },
+        {
+          "source_id": "src_markley_contact_current_2026",
+          "attribute_path": "facility.address",
+          "raw_value": {"type": "text", "value": "One Markley Way, Lowell, Massachusetts 01852"},
+          "finding": "Markley's current location list supplies the exact address for its Lowell facility.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        },
+        {
+          "source_id": "src_markley_lowell_current_2026",
+          "attribute_path": "observation.floor_area_sqft",
+          "raw_value": {"type": "quantity", "value": 352000, "unit": "square foot"},
+          "normalized_value": {"type": "quantity", "value": 352000, "unit": "square foot"},
+          "finding": "Markley reports 352,000 square feet for the Lowell data center.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        }
+      ],
+      "observations": [
+        {"metric_code": "facility.area.building_sqft_observed", "value": 352000, "unit": "square foot", "period": {"year": 2026, "precision": "year"}, "source_id": "src_markley_lowell_current_2026"}
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_16b2dad765023b43e497",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.99,
+      "rationale": "EdgeConneX's DET01 data sheet identifies the exact facility code and 21005 Lahser Road address and publishes active operating, security, compliance, space, and power specifications. Its 39,900-square-foot facility size and 3 MW value are accepted as exact-facility observations.",
+      "evidence": [
+        {
+          "source_id": "src_edgeconnex_det01_datasheet_2024",
+          "attribute_path": "facility.current_status",
+          "raw_value": {"type": "classification", "code": "operational", "label": "Current DET01 operating specifications"},
+          "normalized_value": {"type": "classification", "code": "operational"},
+          "finding": "The operator data sheet maps DET01 to 21005 Lahser Road and publishes current facility operations and security specifications.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        },
+        {
+          "source_id": "src_edgeconnex_det01_datasheet_2024",
+          "attribute_path": "observation.floor_area_sqft",
+          "raw_value": {"type": "quantity", "value": 39900, "unit": "square foot"},
+          "normalized_value": {"type": "quantity", "value": 39900, "unit": "square foot"},
+          "finding": "EdgeConneX reports a 39,900-square-foot facility size for DET01.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        },
+        {
+          "source_id": "src_edgeconnex_det01_datasheet_2024",
+          "attribute_path": "observation.capacity_mw",
+          "raw_value": {"type": "quantity", "value": 3, "unit": "MW"},
+          "normalized_value": {"type": "quantity", "value": 3, "unit": "MW"},
+          "finding": "EdgeConneX reports 3 MW for DET01.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        }
+      ],
+      "observations": [
+        {"metric_code": "facility.area.building_sqft_observed", "value": 39900, "unit": "square foot", "period": {"year": 2024, "precision": "year"}, "source_id": "src_edgeconnex_det01_datasheet_2024"},
+        {"metric_code": "facility.capacity.mw_observed", "value": 3, "unit": "MW", "period": {"year": 2024, "precision": "year"}, "source_id": "src_edgeconnex_det01_datasheet_2024"}
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_bdd2c0713ece2ae6f217",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.99,
+      "rationale": "CoreSite's current AT2 page identifies 1130 Powers Ferry Place and offers active facility services, staffing, security, and specifications. CoreSite's 2022 integration announcement independently ties that exact address to the former DataSite Atlanta facility. The current 67,000-square-foot facility figure is accepted; DataSite is retained as a historical seed label and CoreSite is the current operator record.",
+      "evidence": [
+        {
+          "source_id": "src_coresite_at2_current_2026",
+          "attribute_path": "facility.current_status",
+          "raw_value": {"type": "classification", "code": "operational", "label": "Current AT2 facility services and specifications"},
+          "normalized_value": {"type": "classification", "code": "operational"},
+          "finding": "CoreSite's current page maps AT2 to 1130 Powers Ferry Place and offers active data-center services with continuous support and security.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        },
+        {
+          "source_id": "src_coresite_at2_current_2026",
+          "attribute_path": "observation.floor_area_sqft",
+          "raw_value": {"type": "quantity", "value": 67000, "unit": "square foot"},
+          "normalized_value": {"type": "quantity", "value": 67000, "unit": "square foot"},
+          "finding": "CoreSite reports 67,000 square feet for AT2.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        },
+        {
+          "source_id": "src_coresite_datasite_integration_2022",
+          "attribute_path": "operator_relationship.roles",
+          "raw_value": {"type": "text", "value": "Former DataSite Atlanta facility integrated as CoreSite AT2 at 1130 Powers Ferry Place"},
+          "finding": "CoreSite's integration announcement establishes continuity between the seed's historical name and the current AT2 record.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        }
+      ],
+      "observations": [
+        {"metric_code": "facility.area.building_sqft_observed", "value": 67000, "unit": "square foot", "period": {"year": 2026, "precision": "year"}, "source_id": "src_coresite_at2_current_2026"}
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_0ff5f38c75b73c5fa5d1",
+      "resolution_state": "partial",
+      "decision": "provisional",
+      "confidence": 0.55,
+      "rationale": "SAP's 2025 first-party list establishes that a Colorado Springs data center currently operates SAP cloud services, and a local building-department record documents a data-center project at 2345 Windswept View. A directory maps the COS02 code to that address and calls it operational, but the reviewed official and operator sources do not make the code-to-building link. Under the national policy, market-level operation plus an uncorroborated directory mapping cannot establish this exact building's lifecycle status.",
+      "evidence": [
+        {
+          "source_id": "src_sap_cloud_locations_2025",
+          "attribute_path": "facility.current_status",
+          "raw_value": {"type": "text", "value": "Colorado Springs listed among data centers currently operating SAP cloud services"},
+          "finding": "The operator confirms current SAP data-center operation in Colorado Springs but does not identify COS02 or a street address.",
+          "disposition": "context",
+          "claim_confidence": 0.9
+        },
+        {
+          "source_id": "src_pprbd_windswept_project_history_2019",
+          "attribute_path": "facility.identity",
+          "raw_value": {"type": "text", "value": "Data-center electrical project at 2345 Windswept View completed in 2018 project history"},
+          "finding": "The local record establishes a data-center project at the mapped address but does not identify SAP, COS02, or current operation.",
+          "disposition": "context",
+          "claim_confidence": 0.8
+        },
+        {
+          "source_id": "src_baxtel_sap_cos02_current_2026",
+          "attribute_path": "facility.current_status",
+          "raw_value": {"type": "classification", "code": "operational", "label": "Directory-reported COS02 operational at 2345 Windswept View"},
+          "finding": "The directory supplies the exact code-to-address mapping but is discovery-only and cannot establish lifecycle status by itself.",
+          "disposition": "context",
+          "claim_confidence": 0.45
+        }
+      ],
+      "record_status": "provisional"
+    }
+  ]
+}

@@ -132,6 +132,26 @@ Evidence metadata is versioned in
 `scripts/adjudicate_national_lifecycle_tranche_2.py`. Only metadata and paraphrased findings
 are retained.
 
+## Third national lifecycle evidence batch
+
+Initial-tranche ranks 17–24 use current first-party records from FirstLight, Element Critical,
+the University of Florida, Sandia National Laboratories, Markley Group, EdgeConneX, and
+CoreSite, supplemented by state or local records where a current operator page does not publish
+the mapped street address. Seven facilities resolve operational. The normalized exact-facility
+observations are building area for FirstLight Brunswick, Element Critical Chicago Two, Markley
+Lowell, EdgeConneX DET01, and CoreSite AT2, plus power capacity for Chicago Two and DET01.
+
+SAP's current list establishes a Colorado Springs data-center location, and a Pikes Peak Regional
+Building Department record establishes data-center construction at 2345 Windswept View. The
+reviewed official sources do not map COS02 to that address; because the exact mapping comes only
+from a directory, the building remains unresolved under the national policy.
+
+Evidence metadata is versioned in
+`config/v1/national-lifecycle-tranche-3-evidence-sources.json`, decisions are in
+`config/v1/national-lifecycle-tranche-3-adjudications.json`, and the deterministic builder is
+`scripts/adjudicate_national_lifecycle_tranche_3.py`. Only metadata and paraphrased findings are
+retained.
+
 Four source rows reported Prince William County, Virginia, while their centroids fall in
 Manassas under the published 2025 Census polygons. Both values remain auditable: bronze
 records preserve the source report and canonical/public geography uses point-in-polygon.

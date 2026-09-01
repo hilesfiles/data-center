@@ -20,6 +20,21 @@ TRANCHE_ID = "trn_lifecycle_national_2_20260831"
 POLICY_ID = "pol_lifecycle_national_20260831"
 ARTIFACT_VERSION = "2026.08.31"
 NAMESPACE = "national_lifecycle_tranche_2"
+PRIOR_QUEUE_PATH = "site/public/data/v1/lifecycle/national-tranche-1-remaining-queue.json"
+BASELINE_COVERAGE_PATH = "site/public/data/v1/counties/lifecycle-national-tranche-1-coverage.json"
+SOURCE_CONFIG_PATH = "config/v1/national-lifecycle-tranche-2-evidence-sources.json"
+ADJUDICATION_CONFIG_PATH = "config/v1/national-lifecycle-tranche-2-adjudications.json"
+EXPECTED_RANKS = set(range(9, 17))
+EXPECTED_RANK_LABEL = "nine through sixteen"
+INPUT_DATASET_ID = "im3_lifecycle_national_tranche_1_20260831"
+OUTPUT_TRANCHE_NUMBER = "2"
+EXTRACTOR_VERSION = "national-lifecycle-tranche-2-v1"
+METADATA_NOTICES = [
+    "National initial-tranche ranks nine through sixteen are reviewed: six resolve operational and two remain unresolved.",
+    "CMH56 and CMH59 lack a policy-compliant exact-building match from an official or first-party source.",
+    "Cyxtera is retained as a historical TPA1 seed label; Csquare publishes the current facility record.",
+    "Thirty-two facilities remain queued in the balanced initial national tranche.",
+]
 
 
 def load(relative_path: str) -> Any:
@@ -44,11 +59,11 @@ def build() -> tuple[
     list[dict[str, Any]],
     dict[str, Any],
 ]:
-    prior_queue = load("site/public/data/v1/lifecycle/national-tranche-1-remaining-queue.json")
-    baseline_coverage = load("site/public/data/v1/counties/lifecycle-national-tranche-1-coverage.json")
+    prior_queue = load(PRIOR_QUEUE_PATH)
+    baseline_coverage = load(BASELINE_COVERAGE_PATH)
     final_review = load("data/silver/infrastructure/im3-2026.02.09-final-boundary-review.json")
-    source_document = load("config/v1/national-lifecycle-tranche-2-evidence-sources.json")
-    adjudication_document = load("config/v1/national-lifecycle-tranche-2-adjudications.json")
+    source_document = load(SOURCE_CONFIG_PATH)
+    adjudication_document = load(ADJUDICATION_CONFIG_PATH)
     generated_at = adjudication_document["generated_at"]
 
     candidates_by_id = {record["national_priority_id"]: record for record in prior_queue}
@@ -65,8 +80,8 @@ def build() -> tuple[
         raise RuntimeError("The second national tranche must contain eight distinct adjudications")
     if any(priority_id not in candidates_by_id for priority_id in adjudication_ids):
         raise RuntimeError("National adjudication references a candidate outside the prior remaining queue")
-    if {candidates_by_id[priority_id]["initial_tranche_rank"] for priority_id in adjudication_ids} != set(range(9, 17)):
-        raise RuntimeError("The second national tranche must review initial queue ranks nine through sixteen")
+    if {candidates_by_id[priority_id]["initial_tranche_rank"] for priority_id in adjudication_ids} != EXPECTED_RANKS:
+        raise RuntimeError(f"The national tranche must review initial queue ranks {EXPECTED_RANK_LABEL}")
 
     claims: list[dict[str, Any]] = []
     resolutions: list[dict[str, Any]] = []
@@ -92,7 +107,7 @@ def build() -> tuple[
                 "attribute_path": evidence["attribute_path"],
                 "raw_value": evidence["raw_value"],
                 "extraction_method": "manual",
-                "extractor_version": "national-lifecycle-tranche-2-v1",
+                "extractor_version": EXTRACTOR_VERSION,
                 "source_quality_score": source["source_quality_prior"],
                 "claim_confidence": evidence["claim_confidence"],
                 "review_status": "accepted" if adjudication["decision"] == "accept" else "needs_review",
@@ -271,7 +286,7 @@ def build() -> tuple[
         "generated_at": generated_at,
         "tranche_id": TRANCHE_ID,
         "policy_id": POLICY_ID,
-        "input_dataset_ids": ["im3_lifecycle_national_tranche_1_20260831"],
+        "input_dataset_ids": [INPUT_DATASET_ID],
         "counts": {
             "active_canonical_facility_count": sum(record["active_canonical_facility_count"] for record in coverage),
             "initial_tranche_facility_count": 48,
@@ -288,12 +303,7 @@ def build() -> tuple[
             "observation_count": len(observations),
         },
         "reviewed_by_region": dict(sorted(reviewed_by_region.items())),
-        "notices": [
-            "National initial-tranche ranks nine through sixteen are reviewed: six resolve operational and two remain unresolved.",
-            "CMH56 and CMH59 lack a policy-compliant exact-building match from an official or first-party source.",
-            "Cyxtera is retained as a historical TPA1 seed label; Csquare publishes the current facility record.",
-            "Thirty-two facilities remain queued in the balanced initial national tranche.",
-        ],
+        "notices": METADATA_NOTICES,
     }
     document = {
         "schema_version": "1.0.0",
@@ -318,12 +328,12 @@ def main() -> int:
     document, results, remaining_queue, coverage, metadata = build()
     report = {**metadata, "artifact_type": "national_lifecycle_verification_tranche_processing_report"}
     outputs = [
-        ("data/silver/infrastructure/im3-2026.02.09-lifecycle-national-tranche-2.json", document, True, document["record_count"], "silver", "national_lifecycle_tranche"),
-        ("data/silver/infrastructure/im3-2026.02.09-lifecycle-national-tranche-2.processing-report.json", report, False, 1, "silver", "processing_report"),
-        ("site/public/data/v1/lifecycle/national-tranche-2-results.json", results, True, len(results), "public", "national_lifecycle_results"),
-        ("site/public/data/v1/lifecycle/national-tranche-2-remaining-queue.json", remaining_queue, True, len(remaining_queue), "public", "national_lifecycle_remaining_queue"),
-        ("site/public/data/v1/counties/lifecycle-national-tranche-2-coverage.json", coverage, True, len(coverage), "public", "national_lifecycle_coverage"),
-        ("site/public/data/v1/lifecycle/national-tranche-2-metadata.json", metadata, False, 1, "public", "national_lifecycle_metadata"),
+        (f"data/silver/infrastructure/im3-2026.02.09-lifecycle-national-tranche-{OUTPUT_TRANCHE_NUMBER}.json", document, True, document["record_count"], "silver", "national_lifecycle_tranche"),
+        (f"data/silver/infrastructure/im3-2026.02.09-lifecycle-national-tranche-{OUTPUT_TRANCHE_NUMBER}.processing-report.json", report, False, 1, "silver", "processing_report"),
+        (f"site/public/data/v1/lifecycle/national-tranche-{OUTPUT_TRANCHE_NUMBER}-results.json", results, True, len(results), "public", "national_lifecycle_results"),
+        (f"site/public/data/v1/lifecycle/national-tranche-{OUTPUT_TRANCHE_NUMBER}-remaining-queue.json", remaining_queue, True, len(remaining_queue), "public", "national_lifecycle_remaining_queue"),
+        (f"site/public/data/v1/counties/lifecycle-national-tranche-{OUTPUT_TRANCHE_NUMBER}-coverage.json", coverage, True, len(coverage), "public", "national_lifecycle_coverage"),
+        (f"site/public/data/v1/lifecycle/national-tranche-{OUTPUT_TRANCHE_NUMBER}-metadata.json", metadata, False, 1, "public", "national_lifecycle_metadata"),
     ]
     parts = []
     for relative_path, value, compact, record_count, zone, projection in outputs:
@@ -348,7 +358,7 @@ def main() -> int:
         "format": "json",
         "parts": parts,
         "record_count": sum(part["record_count"] for part in parts),
-        "input_dataset_ids": ["im3_lifecycle_national_tranche_1_20260831"],
+        "input_dataset_ids": [INPUT_DATASET_ID],
         "license_metadata": {
             "license": "Mixed source metadata; IM3-derived records remain ODbL",
             "redistribution_status": "mixed",
@@ -356,7 +366,7 @@ def main() -> int:
         },
     }
     write_json(
-        ROOT / "data/silver/infrastructure/im3-2026.02.09-lifecycle-national-tranche-2.manifest.json",
+        ROOT / f"data/silver/infrastructure/im3-2026.02.09-lifecycle-national-tranche-{OUTPUT_TRANCHE_NUMBER}.manifest.json",
         manifest,
     )
     print(json.dumps(metadata, indent=2))
