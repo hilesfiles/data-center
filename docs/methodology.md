@@ -153,7 +153,8 @@ post years), and an operational-no-later-than observation for FirstLight's Bruns
 Cumberland County (2011-09-28, DQS 86.40, 10 pre/13 post years), Markley's Lowell
 facility in Middlesex County (2015-11-23, DQS 97.02, 14 pre/9 post years), Csquare
 TPA1 in Hillsborough County (2016-01-20, DQS 97.02, 15 pre/8 post years), and TierPoint
-Valley Forge in Montgomery County (2013-04-30, DQS 97.02, 12 pre/11 post years). The Santa
+Valley Forge in Montgomery County (2013-04-30, DQS 97.02, 12 pre/11 post years), and TierPoint
+CL4 in Mecklenburg County (2014-03-03, DQS 98.01, 13 pre/10 post years). The Santa
 Clara and Maricopa candidates pass the evidence and panel-window gates but fail county-first-entry
 verification. Fulton's trade-press candidate fails the authoritative-source and seven-pre-period
 gates and is independently rejected by documented earlier operation. Hudson passes the evidence
@@ -184,6 +185,10 @@ Montgomery passes both quantitative gates but is rejected because Focal's August
 agreement identifies 1000 Forge Avenue, Building C as Focal Communications switch space, while
 its 2000 annual report documents operating switches and colocation in the Philadelphia market by
 December 31, 2000—well before the TierPoint Valley Forge anchor.
+Mecklenburg passes both quantitative gates but is rejected because Peak 10's second Charlotte
+data center was operating at its headquarters by July 28, 2006, and Flexential's SOC 3 report
+maps the successor Charlotte - South facility to the exact canonical 8910 Lenox Pointe Drive
+site—well before Windstream officially opened the CL4 candidate on March 3, 2014.
 Therefore
 all 3,144 counties have an assessment, zero are eligible,
 and no model run is authorized. Counties without a reviewed dated event remain unknown for
@@ -202,7 +207,7 @@ the feasibility of auditing the county's current facility inventory (20%), panel
 log of the active facility count, so a smaller inventory is treated as easier to audit—not as
 more likely to be newly treated. The initial tranche contains 24 counties, six per Census
 region and no more than two per state. Fulton, Hudson, Clark, Monroe, Oakland, Cook, Alachua,
-Cumberland, Middlesex, Hillsborough, Montgomery, Maricopa, and Santa Clara counties are `research_status: evidence_collected`; the other 204 records
+Cumberland, Middlesex, Hillsborough, Montgomery, Mecklenburg, Maricopa, and Santa Clara counties are `research_status: evidence_collected`; the other 203 records
 remain queued.
 
 Every adjudication must establish an earliest dated operational event, exact facility identity,

@@ -155,6 +155,11 @@ Service Commission filing received April 30, 2013 identifies DBSi at 1000 Adams 
 operational-redundancy data center, while Focal's August 2000 credit agreement and 2000 annual
 report document switch and colocation operations at the separate exact 1000 Forge Avenue,
 Building C site by December 31, 2000. Valley Forge is therefore rejected as county first entry.
+Mecklenburg's TierPoint CL4 anchor also passes both quantitative gates. Windstream's official
+release dates the candidate opening to March 3, 2014; Data Center Knowledge documents Peak 10's
+second Charlotte data center operating at its headquarters by July 28, 2006, and Flexential's
+SOC 3 report identifies the successor Charlotte - South facility at the exact mapped 8910 Lenox
+Pointe Drive address. CL4 is therefore rejected as county first entry.
 These counties'
 true first entries remain unresolved. Public county
 assessments

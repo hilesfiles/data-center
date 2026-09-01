@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "artifact_type": "national_lifecycle_tranche_adjudications",
-  "generated_at": "2026-09-02T01:00:00Z",
+  "generated_at": "2026-09-02T02:00:00Z",
   "record_count": 8,
   "records": [
     {
@@ -75,7 +75,7 @@
       "decision": "accept",
       "resolved_current_status": "operational",
       "confidence": 0.99,
-      "rationale": "TierPoint's current Charlotte Center Park page identifies CL4 at 1805 Center Park Drive, marks capacity available, and publishes active managed services, remote hands, security, and uptime specifications. The 60,000-plus-square-foot figure is a lower bound and is retained as context rather than normalized as an exact building-area observation.",
+      "rationale": "TierPoint's current Charlotte Center Park page identifies CL4 at 1805 Center Park Drive, marks capacity available, and publishes active managed services, remote hands, security, and uptime specifications. Windstream Hosted Solutions' March 3, 2014 operator release announces the official opening of its fourth Charlotte data center and gives dimensions matching CL4, supplying the dated operational event. The 60,000-plus-square-foot figure is a lower bound and is retained as context rather than normalized as an exact building-area observation.",
       "evidence": [
         {
           "source_id": "src_tierpoint_charlotte_cl4_current_2026",
@@ -93,6 +93,23 @@
           "finding": "The operator reports lower-bound total and raised-floor figures, which are retained without converting either to an exact building-area observation.",
           "disposition": "context",
           "claim_confidence": 0.99
+        },
+        {
+          "source_id": "src_windstream_charlotte_four_opening_20140303",
+          "attribute_path": "event.operational",
+          "raw_value": {"type": "date", "value": {"date": "2014-03-03", "precision": "day"}},
+          "finding": "Windstream Hosted Solutions announced the official opening of its fourth Charlotte data center at 39,300 square feet with 10,380 square feet of raised floor and a planned expansion to 60,800 total square feet, matching the CL4 facility.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        }
+      ],
+      "events": [
+        {
+          "event_type": "operational",
+          "when": {"date": "2014-03-03", "precision": "day"},
+          "source_id": "src_windstream_charlotte_four_opening_20140303",
+          "confidence": 0.99,
+          "notes": "Official opening date published by the then-operator. The release's 39,300-square-foot initial size and planned 60,800-square-foot buildout align with TierPoint's current CL4 specifications and exact 1805 Center Park Drive identity."
         }
       ],
       "record_status": "active"

@@ -239,7 +239,7 @@ validation can be added later to CI with a standards-compliant Draft 2020-12 val
   301,824 governed observations for 2001–2024. It is complete for 3,064 counties, partial
   for 79, and unavailable for Kalawao County. It is research infrastructure, not a model run.
 - County first-entry treatment: all 3,144 counties have governed assessments. Dated candidates
-  in Santa Clara, Maricopa, Fulton, Clark, Monroe, Oakland, Cook, Alachua, Cumberland, Middlesex, Hillsborough, and Montgomery counties are each rejected by
+  in Santa Clara, Maricopa, Fulton, Clark, Monroe, Oakland, Cook, Alachua, Cumberland, Middlesex, Hillsborough, Montgomery, and Mecklenburg counties are each rejected by
   documented earlier operations. Hudson County has an exact-facility operational-no-later-than anchor dated
   March 27, 2002, but its true first entry remains unresolved. The Santa Clara and Maricopa
   events pass evidence and history-window thresholds; Clark passes the history window but not
@@ -254,7 +254,9 @@ validation can be added later to CI with a standards-compliant Draft 2020-12 val
   gates, but its TPA1 anchor follows the mapped Tampa–West facility's documented presence at 9417
   Corporate Lake Drive by 2006. Montgomery passes both gates, but its TierPoint Valley Forge
   anchor follows Focal Communications switch and colocation operations documented at the exact
-  1000 Forge Avenue, Building C site by the end of 2000. Fulton and Hudson also do
+  1000 Forge Avenue, Building C site by the end of 2000. Mecklenburg passes both gates, but its
+  TierPoint CL4 anchor follows Peak 10's documented Charlotte headquarters data-center operation
+  at the exact mapped 8910 Lenox Pointe Drive site by July 2006. Fulton and Hudson also do
   not pass both gates.
   Zero counties are currently treatment-eligible and no county is classified as never treated.
 - County first-entry research: 217 facility counties meet the complete-history prerequisite.
@@ -266,7 +268,7 @@ validation can be added later to CI with a standards-compliant Draft 2020-12 val
 
 ## Next priority
 
-Continue the remaining 11 counties in the initial tranche against local-government, permit,
+Continue the remaining 10 counties in the initial tranche against local-government, permit,
 planning, assessor, utility, regulatory, operator, and contemporaneous news records. Each
 adjudication must
 identify the earliest dated operation, establish exact facility identity, assess county

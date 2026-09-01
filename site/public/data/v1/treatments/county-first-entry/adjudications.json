@@ -693,5 +693,57 @@
     "created_at": "2026-09-02T01:30:00Z",
     "updated_at": "2026-09-02T01:30:00Z",
     "record_status": "active"
+  },
+  {
+    "schema_version": "1.0.0",
+    "county_first_entry_adjudication_id": "fea_37119_tierpoint_cl4_20140303_rejected",
+    "first_entry_research_candidate_id": "fer_61cb444b1672a2290767",
+    "treatment_definition_id": "trt_first_entry_v1",
+    "candidate_event_evaluation_id": "tev_4f9b7314fcb7c4ac29ef",
+    "county_fips": "37119",
+    "county_name": "Mecklenburg County",
+    "state_abbr": "NC",
+    "resolution_state": "candidate_rejected_first_entry",
+    "decision": "reject_candidate_as_first_entry",
+    "county_first_entry_verified": false,
+    "inventory_completeness_status": "not_established",
+    "earlier_operations_search_status": "documented_incomplete",
+    "required_finding_status": {
+      "earliest_dated_operational_event": "partial",
+      "exact_facility_identity_for_earliest_event": "resolved",
+      "county_inventory_completeness": "unresolved",
+      "documented_search_for_earlier_operations": "resolved"
+    },
+    "earlier_operational_findings": [
+      {
+        "facility_id": "fac_im3_building_00215630401",
+        "canonical_name": "Flexential Charlotte - South at 8910 Lenox Pointe Drive",
+        "temporal_relation": "operational_no_later_than",
+        "when": {
+          "date": "2006-07-28",
+          "precision": "day"
+        },
+        "source_ids": [
+          "src_dck_peak10_second_charlotte_opening_20060728",
+          "src_flexential_soc3_charlotte_south_2023"
+        ],
+        "finding": "Data Center Knowledge reported on July 28, 2006 that Peak 10 had officially opened its second data center at its Charlotte headquarters location. Flexential's 2023 SOC 3 report identifies the successor Charlotte - South data center at 8910 Lenox Pointe Drive, the exact address of the mapped facility, and records Peak 10 as the predecessor combined into Flexential.",
+        "confidence": 0.94
+      }
+    ],
+    "source_ids": [
+      "src_tierpoint_charlotte_cl4_current_2026",
+      "src_windstream_charlotte_four_opening_20140303",
+      "src_dck_peak10_second_charlotte_opening_20060728",
+      "src_flexential_soc3_charlotte_south_2023"
+    ],
+    "authoritative_source_types": [
+      "operator_release",
+      "trade_press"
+    ],
+    "rationale": "Windstream Hosted Solutions' March 3, 2014 operator release supplies the official opening date and matching dimensions for the exact TierPoint Charlotte Center Park CL4 candidate; TierPoint's current page establishes continuity to CL4 at 1805 Center Park Drive. The candidate cannot be Mecklenburg County's first entry because Data Center Knowledge reported the opening of Peak 10's second Charlotte data center at its headquarters location on July 28, 2006, and Flexential's 2023 SOC 3 report identifies the successor Charlotte - South data center at the exact mapped 8910 Lenox Pointe Drive address. The five-record current canonical inventory does not establish a complete historical county inventory, so the true first entry remains unresolved and no treatment date is assigned.",
+    "created_at": "2026-09-02T02:00:00Z",
+    "updated_at": "2026-09-02T02:00:00Z",
+    "record_status": "active"
   }
 ]
