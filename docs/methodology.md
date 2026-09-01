@@ -124,3 +124,17 @@ Selection is capped at three per state, two per county, and four per known opera
 result covers 23 states, 37 counties, and 32 known operators. The fourteen unresolved or
 disputed pilot records remain in the national backlog but are excluded from this tranche so
 the expansion measures new evidence yield rather than repeating completed general research.
+
+The first national review batch adjudicates initial-tranche ranks 1–8, two from each Census
+region. All eight resolve as operational from current operator pages, exact-address local
+government records, or facility-code rack-installation permits. The review does not infer an
+opening date from present operation, and it does not treat Equinix colocation-space figures
+as total building area. For the former Digital Realty HVN10 label, the current municipal
+record supports operation at the building but also shows that the seed's operator name is
+historical; no current Digital Realty relationship is asserted.
+
+The batch adds fifteen governed claims, eight review decisions, and four facility-specific
+observations. Cumulative lifecycle coverage is now eighteen verified operational facilities,
+eleven unresolved pilot facilities still in research, three disputed pilot facilities, and
+1,319 facilities with unknown status. The original 48-record tranche remains immutable and
+the separate downstream queue contains the forty records at ranks 9–48.

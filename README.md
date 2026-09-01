@@ -109,6 +109,17 @@ precedence, exact-building attribution, source conflicts, stop conditions, scori
 regional/operator diversity. It ranks all 1,327 facilities whose status remains unknown
 and selects a 48-facility first tranche with twelve records from each Census region.
 
+Adjudicate the first eight records in that national tranche from the governed evidence
+metadata and review decisions:
+
+```powershell
+python scripts/adjudicate_national_lifecycle_tranche_1.py
+```
+
+This downstream build preserves the original 48-record tranche, publishes eight reviewed
+results and a 40-record remaining queue, and rolls the verified statuses into national
+county coverage. All generated artifacts remain JSON.
+
 Build the static site:
 
 ```powershell
@@ -142,13 +153,15 @@ validation can be added later to CI with a standards-compliant Draft 2020-12 val
   two accepted campus links, and two rejected campus links. No candidate remains pending.
 - Lifecycle verification: all 24 pilot facilities have been reviewed across eight counties.
   Ten are resolved operational, eleven remain in research because evidence does not map to
-  the building, and three are disputed. All 1,327 remaining unknown-status facilities are
-  represented in the governed national priority index; the initial 48-record tranche spans
-  23 states, 37 counties, and 32 known operators.
+  the building, and three are disputed. The first eight records in the national tranche are
+  also resolved operational from exact-building evidence, bringing cumulative verified
+  facilities to 18 and reducing unknown statuses to 1,319. The immutable initial national
+  tranche spans 23 states, 37 counties, and 32 known operators; 40 records remain queued.
 - Economic, fiscal, utility, housing, environmental, or opposition observations: not yet ingested.
 - Econometric estimates and public indices: fixture-only; not substantive.
 
 ## Next priority
 
-Collect and adjudicate evidence for the 48-facility initial national tranche, preserving
-the national queue snapshot and the completed pilot as immutable inputs.
+Collect and adjudicate evidence for national initial-tranche ranks 9–16, preserving the
+48-record national queue snapshot, the completed pilot, and the first eight national
+results as immutable inputs.

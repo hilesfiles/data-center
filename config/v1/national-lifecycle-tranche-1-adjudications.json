@@ -1,0 +1,246 @@
+{
+  "schema_version": "1.0.0",
+  "artifact_type": "national_lifecycle_tranche_adjudications",
+  "generated_at": "2026-09-01T03:00:00Z",
+  "record_count": 8,
+  "records": [
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_94bf626e7d3e66ab0db9",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.99,
+      "rationale": "Trumbull identifies the exact 80 Merritt Boulevard property as an existing data center that is currently operating. The town also identifies Aphorio Carter as the ownership group and 365 Data Centers as a prospective long-term tenant, so the IM3 canonical name is retained as a legacy label rather than evidence that Digital Realty remains the operator.",
+      "evidence": [
+        {
+          "source_id": "src_trumbull_merritt_data_center_20260807",
+          "attribute_path": "facility.current_status",
+          "raw_value": {"type": "classification", "code": "operational", "label": "Existing data center currently in operation"},
+          "normalized_value": {"type": "classification", "code": "operational"},
+          "finding": "The Town states that the existing data center at 80 Merritt Boulevard is currently in operation and is undergoing modernization rather than new construction.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        },
+        {
+          "source_id": "src_trumbull_merritt_data_center_20260807",
+          "attribute_path": "operator_relationship.roles",
+          "raw_value": {"type": "text", "value": "Former Digital Realty site; Aphorio Carter ownership group; 365 Data Centers prospective long-term tenant"},
+          "finding": "Current municipal evidence shows that Digital Realty is a former operator label and should not be asserted as the current operator without a separate reviewed relationship update.",
+          "disposition": "context",
+          "claim_confidence": 0.98
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_209a9d00de63856e166a",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.99,
+      "rationale": "Digital Realty's current CH1 page identifies the exact 2200 Busse Road facility and offers active data-center space, support, compliance, and 24x7 security. The page's 485,000-square-foot value is explicitly total building size and is accepted as a facility observation.",
+      "evidence": [
+        {
+          "source_id": "src_digital_realty_ch1_current_2026",
+          "attribute_path": "facility.current_status",
+          "raw_value": {"type": "classification", "code": "operational", "label": "Current facility capabilities and services"},
+          "normalized_value": {"type": "classification", "code": "operational"},
+          "finding": "The current operator page maps CH1 to 2200 Busse Road and offers active space, support, and security at the facility.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        },
+        {
+          "source_id": "src_digital_realty_ch1_current_2026",
+          "attribute_path": "observation.floor_area_sqft",
+          "raw_value": {"type": "quantity", "value": 485000, "unit": "square foot"},
+          "normalized_value": {"type": "quantity", "value": 485000, "unit": "square foot"},
+          "finding": "Digital Realty reports 485,000 square feet as CH1's total building size.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        }
+      ],
+      "observations": [
+        {"metric_code": "facility.area.building_sqft_observed", "value": 485000, "unit": "square foot", "period": {"precision": "unknown"}, "source_id": "src_digital_realty_ch1_current_2026"}
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_69d169a9ad7bcc9d4e19",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.95,
+      "rationale": "Loudoun County issued a 2024 alteration permit for rack installations at the exact 45360 West Severn Way data-center building and explicitly labels the work IAD 10. Exact-code, address, and data-center structure matches support current operation; no third-party capacity or area is accepted.",
+      "evidence": [
+        {
+          "source_id": "src_loudoun_iad10_permit_202404",
+          "attribute_path": "facility.current_status",
+          "raw_value": {"type": "text", "value": "Issued alteration permit for IAD 10 rack installations at 45360 W Severn Way; structure type Data Center"},
+          "normalized_value": {"type": "classification", "code": "operational"},
+          "finding": "The county permit matches facility code IAD10, the mapped address, and data-center use while documenting rack installation work.",
+          "disposition": "supporting",
+          "claim_confidence": 0.95
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_2384442d5be1eed457fd",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.99,
+      "rationale": "Equinix's current SV2 page identifies the exact 1350 Duane Avenue facility and offers active data-center, interconnection, and digital products with staffed security. The reported 74,971 square feet is colocation space, not total building area, so it is retained only as context.",
+      "evidence": [
+        {
+          "source_id": "src_equinix_sv2_current_2026",
+          "attribute_path": "facility.current_status",
+          "raw_value": {"type": "classification", "code": "operational", "label": "Current products and facility services"},
+          "normalized_value": {"type": "classification", "code": "operational"},
+          "finding": "Equinix currently offers products and facility services at SV2's exact address.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        },
+        {
+          "source_id": "src_equinix_sv2_current_2026",
+          "attribute_path": "facility.colocation_space_sqft",
+          "raw_value": {"type": "quantity", "value": 74971, "unit": "square foot"},
+          "finding": "Equinix labels 74,971 square feet as colocation space; it is not normalized to total building area.",
+          "disposition": "context",
+          "claim_confidence": 0.99
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_95b3ff18edf1df6f24a6",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.99,
+      "rationale": "Equinix's current NY7 page identifies the exact 5851 West Side Avenue facility and offers active data-center and interconnection products with staffed security. The reported 71,946 square feet is colocation space, not total building area, so it is retained only as context.",
+      "evidence": [
+        {
+          "source_id": "src_equinix_ny7_current_2026",
+          "attribute_path": "facility.current_status",
+          "raw_value": {"type": "classification", "code": "operational", "label": "Current products and facility services"},
+          "normalized_value": {"type": "classification", "code": "operational"},
+          "finding": "Equinix currently offers products and facility services at NY7's exact address.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        },
+        {
+          "source_id": "src_equinix_ny7_current_2026",
+          "attribute_path": "facility.colocation_space_sqft",
+          "raw_value": {"type": "quantity", "value": 71946, "unit": "square foot"},
+          "finding": "Equinix labels 71,946 square feet as colocation space; it is not normalized to total building area.",
+          "disposition": "context",
+          "claim_confidence": 0.99
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_01669d7e5205d2013de1",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.99,
+      "rationale": "Digital Realty's current ORD11 page identifies the exact 600 South Federal Street facility and offers active data-center space, support, compliance, and 24x7 security. The page's 146,000-square-foot value is explicitly total building size and is accepted as a facility observation.",
+      "evidence": [
+        {
+          "source_id": "src_digital_realty_ord11_current_2026",
+          "attribute_path": "facility.current_status",
+          "raw_value": {"type": "classification", "code": "operational", "label": "Current facility capabilities and services"},
+          "normalized_value": {"type": "classification", "code": "operational"},
+          "finding": "The current operator page maps ORD11 to 600 South Federal Street and offers active space, support, and security at the facility.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        },
+        {
+          "source_id": "src_digital_realty_ord11_current_2026",
+          "attribute_path": "observation.floor_area_sqft",
+          "raw_value": {"type": "quantity", "value": 146000, "unit": "square foot"},
+          "normalized_value": {"type": "quantity", "value": 146000, "unit": "square foot"},
+          "finding": "Digital Realty reports 146,000 square feet as ORD11's total building size.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        }
+      ],
+      "observations": [
+        {"metric_code": "facility.area.building_sqft_observed", "value": 146000, "unit": "square foot", "period": {"precision": "unknown"}, "source_id": "src_digital_realty_ord11_current_2026"}
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_c601fc462291bc2ca990",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.95,
+      "rationale": "Loudoun County issued a 2025 alteration permit for rack installations at the exact 1304 Squire Court data-center building and explicitly labels the work IAD 32. Exact-code, address, parcel, and data-center structure matches support current operation; no third-party capacity or area is accepted.",
+      "evidence": [
+        {
+          "source_id": "src_loudoun_iad32_permit_202501",
+          "attribute_path": "facility.current_status",
+          "raw_value": {"type": "text", "value": "Issued alteration permit for IAD 32 rack installations at 1304 Squire Ct; parcel 042295813000; structure type Data Center"},
+          "normalized_value": {"type": "classification", "code": "operational"},
+          "finding": "The county permit matches facility code IAD32, the mapped address and parcel, and data-center use while documenting rack installation work.",
+          "disposition": "supporting",
+          "claim_confidence": 0.95
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_1afb32dd07fe0f663960",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.99,
+      "rationale": "Cologix's current SV1 page identifies the exact 2050 Martin Avenue facility, reports 24/7/365 local operations, and publishes facility-specific area and scalable power. The 84,000-square-foot facility area and 9 MW capacity are accepted as observations.",
+      "evidence": [
+        {
+          "source_id": "src_cologix_sv1_current_2026",
+          "attribute_path": "facility.current_status",
+          "raw_value": {"type": "classification", "code": "operational", "label": "24/7/365 local operations and production-ready services"},
+          "normalized_value": {"type": "classification", "code": "operational"},
+          "finding": "Cologix identifies SV1 at 2050 Martin Avenue and reports continuous local operations and active facility services.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        },
+        {
+          "source_id": "src_cologix_sv1_current_2026",
+          "attribute_path": "observation.floor_area_sqft",
+          "raw_value": {"type": "quantity", "value": 84000, "unit": "square foot"},
+          "normalized_value": {"type": "quantity", "value": 84000, "unit": "square foot"},
+          "finding": "Cologix reports SV1 as an 84,000-square-foot facility.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        },
+        {
+          "source_id": "src_cologix_sv1_current_2026",
+          "attribute_path": "observation.capacity_mw",
+          "raw_value": {"type": "quantity", "value": 9, "unit": "MW"},
+          "normalized_value": {"type": "quantity", "value": 9, "unit": "MW"},
+          "finding": "Cologix reports 9 MW of scalable facility power.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        }
+      ],
+      "observations": [
+        {"metric_code": "facility.area.building_sqft_observed", "value": 84000, "unit": "square foot", "period": {"precision": "unknown"}, "source_id": "src_cologix_sv1_current_2026"},
+        {"metric_code": "facility.capacity.mw_observed", "value": 9, "unit": "MW", "period": {"precision": "unknown"}, "source_id": "src_cologix_sv1_current_2026"}
+      ],
+      "record_status": "active"
+    }
+  ]
+}

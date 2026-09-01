@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dccio.org/schemas/v1/public-national-lifecycle-tranche-summary.schema.json",
+  "title": "Public national lifecycle tranche summary",
+  "type": "object",
+  "required": ["schema_version", "artifact_type", "artifact_version", "generated_at", "tranche_id", "policy_id", "input_dataset_ids", "counts", "reviewed_by_region", "notices"],
+  "properties": {
+    "schema_version": {"$ref": "common.schema.json#/$defs/schema_version"},
+    "artifact_type": {"type": "string", "const": "public_national_lifecycle_verification_tranche_summary"},
+    "artifact_version": {"type": "string", "minLength": 1},
+    "generated_at": {"$ref": "common.schema.json#/$defs/timestamp"},
+    "tranche_id": {"$ref": "common.schema.json#/$defs/entity_id"},
+    "policy_id": {"$ref": "common.schema.json#/$defs/entity_id"},
+    "input_dataset_ids": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+    "counts": {
+      "type": "object",
+      "required": ["active_canonical_facility_count", "initial_tranche_facility_count", "reviewed_facility_count", "tranche_verified_facility_count", "cumulative_verified_facility_count", "in_research_facility_count", "needs_review_facility_count", "remaining_queue_facility_count", "unknown_status_facility_count", "source_count", "claim_count", "event_count", "observation_count"],
+      "properties": {
+        "active_canonical_facility_count": {"type": "integer", "minimum": 0},
+        "initial_tranche_facility_count": {"type": "integer", "minimum": 0},
+        "reviewed_facility_count": {"type": "integer", "minimum": 0},
+        "tranche_verified_facility_count": {"type": "integer", "minimum": 0},
+        "cumulative_verified_facility_count": {"type": "integer", "minimum": 0},
+        "in_research_facility_count": {"type": "integer", "minimum": 0},
+        "needs_review_facility_count": {"type": "integer", "minimum": 0},
+        "remaining_queue_facility_count": {"type": "integer", "minimum": 0},
+        "unknown_status_facility_count": {"type": "integer", "minimum": 0},
+        "source_count": {"type": "integer", "minimum": 0},
+        "claim_count": {"type": "integer", "minimum": 0},
+        "event_count": {"type": "integer", "minimum": 0},
+        "observation_count": {"type": "integer", "minimum": 0}
+      },
+      "additionalProperties": false
+    },
+    "reviewed_by_region": {"type": "object"},
+    "notices": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1}}
+  },
+  "additionalProperties": false
+}

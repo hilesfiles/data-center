@@ -92,6 +92,26 @@ index, the balanced 48-facility initial tranche, the pilot-yield analysis, natio
 coverage, metadata, and a content-hashed manifest. These outputs are JSON and contain no
 copied source page bodies.
 
+## First national lifecycle evidence batch
+
+Initial-tranche ranks 1–8 use eight exact-facility sources: current Digital Realty pages for
+CH1 and ORD11, current Equinix pages for SV2 and NY7, the current Cologix SV1 page, a Town of
+Trumbull statement for the 80 Merritt Boulevard building, and Loudoun County permit reports
+for IAD10 and IAD32 rack installations. Only governed metadata, paraphrased findings, claims,
+review decisions, and normalized observations are retained; source page bodies are not
+copied.
+
+Evidence metadata is versioned in
+`config/v1/national-lifecycle-tranche-1-evidence-sources.json`, and the one-to-one decisions
+are in `config/v1/national-lifecycle-tranche-1-adjudications.json`. The deterministic builder
+is `scripts/adjudicate_national_lifecycle_tranche_1.py`.
+
+The Trumbull record establishes present operation at the exact building but describes
+Digital Realty as the former operator, so the legacy seed label is retained only for record
+continuity. Equinix publishes colocation space for SV2 and NY7; those figures remain source
+context and are not normalized as total building area. No source in this batch establishes
+a defensible operational start date.
+
 Four source rows reported Prince William County, Virginia, while their centroids fall in
 Manassas under the published 2025 Census polygons. Both values remain auditable: bronze
 records preserve the source report and canonical/public geography uses point-in-polygon.

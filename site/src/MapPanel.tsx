@@ -13,7 +13,9 @@ import type {
   PublicEntityAdjudicationRecord,
   PublicEntityResolutionRecord,
   LifecycleVerificationCandidate,
+  NationalLifecyclePriorityRecord,
   PublicLifecycleVerificationRecord,
+  PublicNationalLifecycleVerificationRecord,
 } from "./types";
 
 interface MapPanelProps {
@@ -77,7 +79,7 @@ export function MapPanel({ selectedFips, onSelectCounty }: MapPanelProps) {
     map.on("load", async () => {
       try {
         const base = import.meta.env.BASE_URL;
-        const [countiesResponse, facilitiesResponse, coverageResponse, resolutionResponse, adjudicationResponse, lifecycleResponse, lifecycleResultsResponse] = await Promise.all([
+        const [countiesResponse, facilitiesResponse, coverageResponse, resolutionResponse, adjudicationResponse, lifecycleResponse, lifecycleResultsResponse, nationalLifecycleResponse, nationalLifecycleResultsResponse] = await Promise.all([
           fetch(`${base}data/v1/maps/counties.geojson`),
           fetch(`${base}data/v1/maps/facilities.geojson`),
           fetch(`${base}data/v1/counties/facility-source-coverage.json`),
@@ -85,8 +87,10 @@ export function MapPanel({ selectedFips, onSelectCounty }: MapPanelProps) {
           fetch(`${base}data/v1/entity-resolution/final-index.json`),
           fetch(`${base}data/v1/lifecycle/tranche-2-queue.json`),
           fetch(`${base}data/v1/lifecycle/tranche-2-results.json`),
+          fetch(`${base}data/v1/lifecycle/national-initial-tranche.json`),
+          fetch(`${base}data/v1/lifecycle/national-tranche-1-results.json`),
         ]);
-        if (!countiesResponse.ok || !facilitiesResponse.ok || !coverageResponse.ok || !resolutionResponse.ok || !adjudicationResponse.ok || !lifecycleResponse.ok || !lifecycleResultsResponse.ok) {
+        if (!countiesResponse.ok || !facilitiesResponse.ok || !coverageResponse.ok || !resolutionResponse.ok || !adjudicationResponse.ok || !lifecycleResponse.ok || !lifecycleResultsResponse.ok || !nationalLifecycleResponse.ok || !nationalLifecycleResultsResponse.ok) {
           throw new Error("A required map artifact could not be loaded.");
         }
         const counties = await countiesResponse.json();
@@ -96,6 +100,8 @@ export function MapPanel({ selectedFips, onSelectCounty }: MapPanelProps) {
         const adjudication = (await adjudicationResponse.json()) as PublicEntityAdjudicationRecord[];
         const lifecycle = (await lifecycleResponse.json()) as LifecycleVerificationCandidate[];
         const lifecycleResults = (await lifecycleResultsResponse.json()) as PublicLifecycleVerificationRecord[];
+        const nationalLifecycle = (await nationalLifecycleResponse.json()) as NationalLifecyclePriorityRecord[];
+        const nationalLifecycleResults = (await nationalLifecycleResultsResponse.json()) as PublicNationalLifecycleVerificationRecord[];
         const coverageByFips = new globalThis.Map(
           coverage.map((record: { county_fips: string; source_record_count: number }) => [
             record.county_fips,
@@ -128,6 +134,12 @@ export function MapPanel({ selectedFips, onSelectCounty }: MapPanelProps) {
         const lifecycleResultByFacility = new globalThis.Map(
           lifecycleResults.map((record) => [record.facility_id, record]),
         );
+        const nationalLifecycleByFacility = new globalThis.Map(
+          nationalLifecycle.map((record) => [record.facility_id, record]),
+        );
+        const nationalLifecycleResultByFacility = new globalThis.Map(
+          nationalLifecycleResults.map((record) => [record.facility_id, record]),
+        );
         facilities.features = facilities.features.map(
           (feature: { properties: Record<string, unknown> }) => {
             const record = resolutionByEntity.get(feature.properties.entity_id as string);
@@ -138,6 +150,9 @@ export function MapPanel({ selectedFips, onSelectCounty }: MapPanelProps) {
             const resolvedEntityId = adjudicated?.resolved_entity_id ?? (feature.properties.entity_id as string);
             const lifecycleCandidate = lifecycleByFacility.get(resolvedEntityId);
             const lifecycleResult = lifecycleResultByFacility.get(resolvedEntityId);
+            const nationalLifecycleCandidate = nationalLifecycleByFacility.get(resolvedEntityId);
+            const nationalLifecycleResult = nationalLifecycleResultByFacility.get(resolvedEntityId);
+            const currentLifecycleResult = nationalLifecycleResult ?? lifecycleResult;
             return {
               ...feature,
               properties: {
@@ -145,10 +160,10 @@ export function MapPanel({ selectedFips, onSelectCounty }: MapPanelProps) {
                 campus_id: adjudicated?.campus_id ?? record?.campus_id ?? null,
                 operator_canonical_name: record?.operator_canonical_name ?? null,
                 pending_candidate_count: pendingCount,
-                lifecycle_review_status: lifecycleCandidate?.review_status ?? "not_queued",
-                lifecycle_priority_score: lifecycleCandidate?.priority_score ?? null,
-                lifecycle_current_status: lifecycleResult?.resolved_current_status ?? null,
-                lifecycle_resolution_status: lifecycleResult?.resolution_status ?? null,
+                lifecycle_review_status: nationalLifecycleResult?.review_status ?? (nationalLifecycleCandidate ? "queued" : lifecycleCandidate?.review_status ?? "not_queued"),
+                lifecycle_priority_score: nationalLifecycleCandidate?.priority_score ?? lifecycleCandidate?.priority_score ?? null,
+                lifecycle_current_status: currentLifecycleResult?.resolved_current_status ?? null,
+                lifecycle_resolution_status: currentLifecycleResult?.resolution_status ?? null,
                 resolution_status: adjudicated?.identity_status ?? record?.resolution_status ?? "source_only",
                 resolved_entity_id: resolvedEntityId,
                 container_facility_id: adjudicated?.container_facility_id ?? null,
@@ -302,7 +317,7 @@ export function MapPanel({ selectedFips, onSelectCounty }: MapPanelProps) {
             verified: `verified ${String(properties.lifecycle_current_status ?? "lifecycle status")}`,
           };
           const lifecycleReview = lifecycleLabels[lifecycleState]
-            ? `<br/><strong>Lifecycle pilot:</strong> ${escapeHtml(lifecycleLabels[lifecycleState])} (priority ${escapeHtml(properties.lifecycle_priority_score)})`
+            ? `<br/><strong>Lifecycle review:</strong> ${escapeHtml(lifecycleLabels[lifecycleState])} (priority ${escapeHtml(properties.lifecycle_priority_score)})`
             : "";
           const identityStatus = properties.resolution_status === "merged"
             ? `<br/><strong>Merged:</strong> redirects to ${escapeHtml(properties.resolved_entity_id)}`

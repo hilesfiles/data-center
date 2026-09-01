@@ -33,7 +33,7 @@ export default function App() {
       fetch(`${base}data/v1/counties/facility-source-coverage.json`),
       fetch(`${base}data/v1/counties/entity-resolution-coverage.json`),
       fetch(`${base}data/v1/counties/final-review-coverage.json`),
-      fetch(`${base}data/v1/counties/lifecycle-tranche-2-coverage.json`),
+      fetch(`${base}data/v1/counties/lifecycle-national-tranche-1-coverage.json`),
     ])
       .then(async ([metadataResponse, coverageResponse, resolutionResponse, adjudicationResponse, lifecycleResponse]) => {
         if (!metadataResponse.ok || !coverageResponse.ok || !resolutionResponse.ok || !adjudicationResponse.ok || !lifecycleResponse.ok) {
@@ -87,7 +87,7 @@ export default function App() {
       </header>
 
       <div className="fixture-banner" role="status">
-        <strong>The lifecycle pilot is fully reviewed.</strong> Ten of 24 facilities have an operational resolution; eleven remain in research because building-level evidence is incomplete, and three are disputed because official records conflict.
+        <strong>National lifecycle verification is underway.</strong> The first eight national records are verified operational, bringing the cumulative total to 18; 40 facilities remain in the balanced initial tranche.
       </div>
 
       <main className="workspace">
@@ -189,9 +189,9 @@ export default function App() {
                     <em>deduplicated research entities</em>
                   </div>
                   <div className="lifecycle-row">
-                    <span>Lifecycle pilot queue</span>
+                    <span>National lifecycle queue</span>
                     <strong>{integerFormat.format(selectedLifecycle?.queued_facility_count ?? 0)}</strong>
-                    <em>pilot research queue complete</em>
+                    <em>remaining in the initial tranche</em>
                   </div>
                   <div className="lifecycle-row">
                     <span>Verified lifecycle statuses</span>

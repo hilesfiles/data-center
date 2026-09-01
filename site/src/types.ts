@@ -150,7 +150,16 @@ export interface CountyLifecycleVerificationCoverage {
   needs_review_facility_count: number;
   verified_facility_count: number;
   unknown_status_facility_count: number;
-  coverage_status: "pilot_queued" | "pilot_in_progress" | "pilot_reviewed" | "backlog" | "no_active_facility";
+  coverage_status:
+    | "pilot_queued"
+    | "pilot_in_progress"
+    | "pilot_reviewed"
+    | "national_initial_tranche"
+    | "national_in_progress"
+    | "national_reviewed"
+    | "national_backlog"
+    | "backlog"
+    | "no_active_facility";
   generated_at: string;
 }
 
@@ -173,6 +182,33 @@ export interface PublicLifecycleVerificationRecord {
   verification_candidate_id: string;
   facility_id: string;
   canonical_name: string;
+  resolution_status: "resolved" | "provisional" | "disputed" | "unresolved";
+  resolved_current_status?: string;
+  resolution_confidence?: number;
+}
+
+export interface NationalLifecyclePriorityRecord {
+  schema_version: "1.0.0";
+  national_priority_id: string;
+  initial_tranche_rank: number;
+  facility_id: string;
+  canonical_name: string;
+  primary_county_fips: string;
+  county_name: string;
+  state_abbr: string;
+  census_region: "Northeast" | "Midwest" | "South" | "West";
+  priority_score: number;
+  priority_tier: "national_high" | "national_standard" | "national_deferred";
+}
+
+export interface PublicNationalLifecycleVerificationRecord {
+  schema_version: "1.0.0";
+  national_priority_id: string;
+  initial_tranche_rank: number;
+  facility_id: string;
+  canonical_name: string;
+  census_region: "Northeast" | "Midwest" | "South" | "West";
+  review_status: "in_research" | "needs_review" | "verified";
   resolution_status: "resolved" | "provisional" | "disputed" | "unresolved";
   resolved_current_status?: string;
   resolution_confidence?: number;

@@ -1754,6 +1754,165 @@ def validate_public_data(
             issues.append(Issue("public_data_validation", f"{national_manifest_path.name}.parts[{index}]", "byte size or SHA-256 does not match the artifact"))
     if national_manifest.get("record_count") != total_national_manifest_records:
         issues.append(Issue("public_data_validation", national_manifest_path.name, "manifest record count does not equal its parts"))
+
+    national_tranche_sources_path = CONFIG_DIR / "national-lifecycle-tranche-1-evidence-sources.json"
+    national_tranche_sources_document = load_json(national_tranche_sources_path)
+    national_tranche_sources = national_tranche_sources_document.get("records", [])
+    national_tranche_source_ids = {record.get("source_id") for record in national_tranche_sources}
+    if national_tranche_sources_document.get("record_count") != 8 or len(national_tranche_sources) != 8:
+        issues.append(Issue("public_data_validation", national_tranche_sources_path.name, "expected eight governed evidence sources"))
+    for index, record in enumerate(national_tranche_sources):
+        for issue in validator.validate_record(record, schema_paths["source"]):
+            issues.append(Issue("public_data_validation", f"{national_tranche_sources_path.name}.records[{index}]{issue.path[1:]}", issue.message))
+
+    national_tranche_adjudications_path = CONFIG_DIR / "national-lifecycle-tranche-1-adjudications.json"
+    national_tranche_adjudications_document = load_json(national_tranche_adjudications_path)
+    national_tranche_adjudications = national_tranche_adjudications_document.get("records", [])
+    expected_reviewed_priority_ids = {
+        record.get("national_priority_id")
+        for record in national_initial
+        if record.get("initial_tranche_rank") in range(1, 9)
+    }
+    adjudicated_priority_ids = {record.get("national_priority_id") for record in national_tranche_adjudications}
+    if (
+        national_tranche_adjudications_document.get("record_count") != 8
+        or len(national_tranche_adjudications) != 8
+        or adjudicated_priority_ids != expected_reviewed_priority_ids
+    ):
+        issues.append(Issue("public_data_validation", national_tranche_adjudications_path.name, "adjudications must cover national initial-tranche ranks one through eight exactly once"))
+    for index, record in enumerate(national_tranche_adjudications):
+        for issue in validator.validate_record(record, schema_paths["national_lifecycle_evidence_adjudication"]):
+            issues.append(Issue("public_data_validation", f"{national_tranche_adjudications_path.name}.records[{index}]{issue.path[1:]}", issue.message))
+        for evidence in record.get("evidence", []):
+            if evidence.get("source_id") not in national_tranche_source_ids:
+                issues.append(Issue("referential_integrity", f"{national_tranche_adjudications_path.name}.records[{index}]", "unknown evidence source"))
+
+    national_tranche_path = DATA_DIR / "silver" / "infrastructure" / "im3-2026.02.09-lifecycle-national-tranche-1.json"
+    national_tranche = load_json(national_tranche_path)
+    national_tranche_collections = national_tranche.get("collections", {})
+    expected_national_tranche_collection_counts = {
+        "source": 8,
+        "claim": 15,
+        "claim_resolution": 8,
+        "review_decision": 8,
+        "event": 0,
+        "observation": 4,
+        "facility": 8,
+    }
+    if {
+        name: len(national_tranche_collections.get(name, []))
+        for name in expected_national_tranche_collection_counts
+    } != expected_national_tranche_collection_counts:
+        issues.append(Issue("public_data_validation", national_tranche_path.name, "national lifecycle tranche collection counts changed"))
+    if national_tranche.get("record_count") != sum(expected_national_tranche_collection_counts.values()):
+        issues.append(Issue("public_data_validation", national_tranche_path.name, "national lifecycle tranche record count is inconsistent"))
+    for collection in expected_national_tranche_collection_counts:
+        for index, record in enumerate(national_tranche_collections.get(collection, [])):
+            for issue in validator.validate_record(record, schema_paths[collection]):
+                issues.append(Issue("public_data_validation", f"{national_tranche_path.name}.{collection}[{index}]{issue.path[1:]}", issue.message))
+    national_tranche_review_ids = {
+        record.get("review_decision_id")
+        for record in national_tranche_collections.get("review_decision", [])
+    }
+    if any(
+        record.get("review_decision_id") not in national_tranche_review_ids
+        for record in national_tranche_collections.get("claim_resolution", [])
+    ):
+        issues.append(Issue("referential_integrity", national_tranche_path.name, "claim resolution references an unknown review decision"))
+
+    national_tranche_results_path = PUBLIC_DATA_DIR / "lifecycle" / "national-tranche-1-results.json"
+    national_tranche_results = load_json(national_tranche_results_path)
+    result_priority_ids = {record.get("national_priority_id") for record in national_tranche_results}
+    if (
+        len(national_tranche_results) != 8
+        or result_priority_ids != expected_reviewed_priority_ids
+        or sorted(record.get("initial_tranche_rank") for record in national_tranche_results) != list(range(1, 9))
+        or any(record.get("resolution_status") != "resolved" for record in national_tranche_results)
+        or any(record.get("review_status") != "verified" for record in national_tranche_results)
+        or any(record.get("resolved_current_status") != "operational" for record in national_tranche_results)
+    ):
+        issues.append(Issue("public_data_validation", national_tranche_results_path.name, "national tranche results must resolve ranks one through eight as verified operational facilities"))
+    for index, record in enumerate(national_tranche_results):
+        for issue in validator.validate_record(record, schema_paths["public_national_lifecycle_verification_record"]):
+            issues.append(Issue("public_data_validation", f"{national_tranche_results_path.name}[{index}]{issue.path[1:]}", issue.message))
+        if not set(record.get("evidence_source_ids", [])).issubset(national_tranche_source_ids):
+            issues.append(Issue("referential_integrity", f"{national_tranche_results_path.name}[{index}]", "result references an unknown evidence source"))
+
+    national_remaining_path = PUBLIC_DATA_DIR / "lifecycle" / "national-tranche-1-remaining-queue.json"
+    national_remaining = load_json(national_remaining_path)
+    initial_priority_ids = {record.get("national_priority_id") for record in national_initial}
+    remaining_priority_ids = {record.get("national_priority_id") for record in national_remaining}
+    if (
+        len(national_remaining) != 40
+        or len(remaining_priority_ids) != 40
+        or remaining_priority_ids & result_priority_ids
+        or remaining_priority_ids | result_priority_ids != initial_priority_ids
+    ):
+        issues.append(Issue("public_data_validation", national_remaining_path.name, "remaining queue must be the forty unreviewed records from the initial national tranche"))
+    for index, record in enumerate(national_remaining):
+        for issue in validator.validate_record(record, schema_paths["lifecycle_national_priority_record"]):
+            issues.append(Issue("public_data_validation", f"{national_remaining_path.name}[{index}]{issue.path[1:]}", issue.message))
+
+    national_tranche_coverage_path = PUBLIC_DATA_DIR / "counties" / "lifecycle-national-tranche-1-coverage.json"
+    national_tranche_coverage = load_json(national_tranche_coverage_path)
+    national_tranche_coverage_fips = [record.get("county_fips") for record in national_tranche_coverage]
+    if (
+        len(national_tranche_coverage) != 3144
+        or set(national_tranche_coverage_fips) != feature_fips
+        or len(national_tranche_coverage_fips) != len(set(national_tranche_coverage_fips))
+    ):
+        issues.append(Issue("public_data_validation", national_tranche_coverage_path.name, "national tranche coverage must contain every Census county exactly once"))
+    for index, record in enumerate(national_tranche_coverage):
+        for issue in validator.validate_record(record, schema_paths["public_lifecycle_verification_coverage"]):
+            issues.append(Issue("public_data_validation", f"{national_tranche_coverage_path.name}[{index}]{issue.path[1:]}", issue.message))
+    if (
+        sum(record.get("active_canonical_facility_count", 0) for record in national_tranche_coverage) != 1337
+        or sum(record.get("queued_facility_count", 0) for record in national_tranche_coverage) != 40
+        or sum(record.get("in_research_facility_count", 0) for record in national_tranche_coverage) != 11
+        or sum(record.get("needs_review_facility_count", 0) for record in national_tranche_coverage) != 3
+        or sum(record.get("verified_facility_count", 0) for record in national_tranche_coverage) != 18
+        or sum(record.get("unknown_status_facility_count", 0) for record in national_tranche_coverage) != 1319
+    ):
+        issues.append(Issue("public_data_validation", national_tranche_coverage_path.name, "national tranche coverage totals are inconsistent"))
+
+    national_tranche_metadata_path = PUBLIC_DATA_DIR / "lifecycle" / "national-tranche-1-metadata.json"
+    national_tranche_metadata = load_json(national_tranche_metadata_path)
+    for issue in validator.validate_record(national_tranche_metadata, schema_paths["public_national_lifecycle_tranche_summary"]):
+        issues.append(Issue("public_data_validation", f"{national_tranche_metadata_path.name}{issue.path[1:]}", issue.message))
+    expected_national_tranche_counts = {
+        "active_canonical_facility_count": 1337,
+        "initial_tranche_facility_count": 48,
+        "reviewed_facility_count": 8,
+        "tranche_verified_facility_count": 8,
+        "cumulative_verified_facility_count": 18,
+        "in_research_facility_count": 11,
+        "needs_review_facility_count": 3,
+        "remaining_queue_facility_count": 40,
+        "unknown_status_facility_count": 1319,
+        "source_count": 8,
+        "claim_count": 15,
+        "event_count": 0,
+        "observation_count": 4,
+    }
+    if national_tranche_metadata.get("counts") != expected_national_tranche_counts:
+        issues.append(Issue("public_data_validation", national_tranche_metadata_path.name, "national tranche summary counts are inconsistent"))
+
+    national_tranche_manifest_path = DATA_DIR / "silver" / "infrastructure" / "im3-2026.02.09-lifecycle-national-tranche-1.manifest.json"
+    national_tranche_manifest = load_json(national_tranche_manifest_path)
+    for issue in validator.validate_record(national_tranche_manifest, schema_paths["dataset_manifest"]):
+        issues.append(Issue("public_data_validation", f"{national_tranche_manifest_path.name}{issue.path[1:]}", issue.message))
+    total_national_tranche_manifest_records = 0
+    for index, part in enumerate(national_tranche_manifest.get("parts", [])):
+        part_path = (ROOT / part.get("path", "")).resolve()
+        if not part_path.is_relative_to(ROOT) or not part_path.is_file():
+            issues.append(Issue("public_data_validation", f"{national_tranche_manifest_path.name}.parts[{index}]", "part path is missing or outside the repository"))
+            continue
+        payload = part_path.read_bytes()
+        total_national_tranche_manifest_records += part.get("record_count", 0)
+        if part.get("byte_size") != len(payload) or part.get("sha256") != hashlib.sha256(payload).hexdigest():
+            issues.append(Issue("public_data_validation", f"{national_tranche_manifest_path.name}.parts[{index}]", "byte size or SHA-256 does not match the artifact"))
+    if national_tranche_manifest.get("record_count") != total_national_tranche_manifest_records:
+        issues.append(Issue("public_data_validation", national_tranche_manifest_path.name, "manifest record count does not equal its parts"))
     return issues
 
 
