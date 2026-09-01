@@ -4,11 +4,13 @@ import {
   Map,
   NavigationControl,
   Popup,
+  setWorkerUrl,
   type MapGeoJSONFeature,
   type MapMouseEvent,
   type StyleSpecification,
 } from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
+import maplibreWorkerUrl from "maplibre-gl/dist/maplibre-gl-worker.mjs?worker&url";
 import type {
   PublicEntityAdjudicationRecord,
   PublicEntityResolutionRecord,
@@ -44,6 +46,8 @@ const EMPTY_STYLE: StyleSpecification = {
     },
   ],
 };
+
+setWorkerUrl(maplibreWorkerUrl);
 
 export function MapPanel({ selectedFips, onSelectCounty }: MapPanelProps) {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -351,6 +355,8 @@ export function MapPanel({ selectedFips, onSelectCounty }: MapPanelProps) {
           const fips = event.features?.[0]?.properties?.primary_county_fips as string | undefined;
           if (fips) selectRef.current(fips);
         });
+        map.resize();
+        map.triggerRepaint();
         setMessage("");
       } catch (error) {
         setMessage(error instanceof Error ? error.message : "The map could not be loaded.");

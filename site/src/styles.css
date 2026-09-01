@@ -85,7 +85,7 @@ button, select { font: inherit; }
 .map-section { min-width: 0; display: grid; grid-template-rows: minmax(0, 1fr) auto; background: #e6e9e3; }
 .map-loading { display: grid; place-items: center; color: var(--muted); font-family: "DM Mono", monospace; font-size: .72rem; }
 .map-frame { position: relative; min-height: 0; }
-.map { position: absolute; inset: 0; }
+.map-frame > .map { position: absolute; inset: 0; }
 .map-message { position: absolute; top: 18px; left: 50%; transform: translateX(-50%); padding: 10px 14px; border: 1px solid var(--line); background: rgb(247 246 241 / 94%); font-size: .78rem; }
 .legend { position: absolute; left: 20px; bottom: 20px; width: 210px; padding: 11px; background: rgb(247 246 241 / 94%); border: 1px solid #bac2bd; box-shadow: 0 8px 24px rgb(13 27 34 / 10%); }
 .legend-title { display: block; margin-bottom: 7px; font-family: "DM Mono", monospace; font-size: .62rem; text-transform: uppercase; }
