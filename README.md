@@ -63,6 +63,17 @@ The adjudication input is itself versioned JSON under `config/v1/`. Source recor
 never deleted: reviewed duplicates redirect to a canonical facility, while separately
 operated sites inside larger buildings receive an explicit containment relationship.
 
+Acquire the official OSM histories and resolve the two final boundary escalations:
+
+```powershell
+python scripts/acquire_osm_boundary_histories.py
+python scripts/finalize_im3_boundary_reviews.py
+```
+
+The acquisition retains only JSON. Finalization is offline and downstream: it preserves
+the initial adjudication, marks the two earlier escalation decisions superseded, and emits
+the final static review projections consumed by the site.
+
 Build the static site:
 
 ```powershell
@@ -91,15 +102,13 @@ validation can be added later to CI with a standards-compliant Draft 2020-12 val
 - Facility coverage: 249 counties have one or more source records; absence from the source
   is not interpreted as zero facilities.
 - Entity resolution: 255 facility-to-campus links and 953 source-backed operator
-  relationships are represented as provisional governed decisions. Fourteen of sixteen
-  spatial candidates are resolved: three merges, eight distinct contained sites, two
-  accepted campus links, and one rejected campus link. Two cases were escalated and
-  remain pending.
+  relationships are represented as provisional governed decisions. All sixteen spatial
+  candidates are resolved: four source-record merges, eight distinct contained sites,
+  two accepted campus links, and two rejected campus links. No candidate remains pending.
 - Economic, fiscal, utility, housing, environmental, or opposition observations: not yet ingested.
 - Econometric estimates and public indices: fixture-only; not substantive.
 
 ## Next priority
 
-Resolve the two remaining campus-boundary cases and enrich operator organizations beyond
-exact-text normalization. Then reconstruct verified opening and project dates needed for
-the first historical treatment panel.
+Enrich operator organizations beyond exact-text normalization, then reconstruct verified
+opening and project dates needed for the first historical treatment panel.

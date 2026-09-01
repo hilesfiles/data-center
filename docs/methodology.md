@@ -57,9 +57,18 @@ Eight point sites were explicitly not merged because they represent separately o
 sites, suites, exchanges, or computing systems inside a larger building; these now use a
 `located_within_building` relationship. Two partial campus links were accepted, one
 cross-operator campus link was rejected, and two geometrically inconsistent unnamed
-campuses remain pending. The pinned ingest and first-pass resolution artifacts remain
-immutable; adjudication is a downstream JSON layer.
+campuses were escalated for source-history review.
+
+A final boundary pass resolved both escalations from official OpenStreetMap way histories
+and first-party site evidence. The smaller One Wilshire polygon had been explicitly
+retagged as `building:part=yes`; it is now a fourth superseded source record that redirects
+to the One Wilshire building rather than an active campus. The Phoenix boundary is the
+separate, multi-building 4010 Data Center campus at 4010 North 3rd Street, not the Lumen
+building at 215 East Indian School Road, so that proposed campus link was rejected. The
+earlier escalation decisions remain in the downstream snapshot with superseded status.
+The pinned ingest, first-pass resolution, and initial adjudication artifacts remain
+immutable; final boundary review is another downstream JSON layer.
 
 The seed does not establish operating dates, lifecycle status, historical completeness,
-MW capacity, or causal effects. The two escalated candidate reviews, historical
-reconstruction, outcome panels, and econometric estimation remain future work.
+MW capacity, or causal effects. Historical reconstruction, outcome panels, and
+econometric estimation remain future work.

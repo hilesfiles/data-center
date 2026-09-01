@@ -1088,6 +1088,182 @@ def validate_public_data(
             issues.append(Issue("public_data_validation", f"{adjudication_manifest_path.name}.parts[{index}]", "byte size or SHA-256 does not match the artifact"))
     if adjudication_manifest.get("record_count") != total_adjudication_manifest_records:
         issues.append(Issue("public_data_validation", adjudication_manifest_path.name, "manifest record count does not equal its parts"))
+
+    osm_history_path = DATA_DIR / "raw" / "openstreetmap" / "im3-final-boundary-way-history.json"
+    osm_history = load_json(osm_history_path)
+    osm_records = osm_history.get("records", [])
+    expected_osm_way_ids = {428021816, 495115494, 151179323, 1052182309}
+    if (
+        osm_history.get("record_count") != 4
+        or len(osm_records) != 4
+        or {record.get("way_id") for record in osm_records} != expected_osm_way_ids
+        or any(record.get("version_count") != len(record.get("elements", [])) for record in osm_records)
+    ):
+        issues.append(Issue("public_data_validation", osm_history_path.name, "OSM boundary history collection is incomplete"))
+    osm_acquisition_path = DATA_DIR / "raw" / "openstreetmap" / "im3-final-boundary-way-history.acquisition.json"
+    osm_acquisition = load_json(osm_acquisition_path)
+    for issue in validator.validate_record(osm_acquisition, schema_paths["acquisition_manifest"]):
+        issues.append(Issue("public_data_validation", f"{osm_acquisition_path.name}{issue.path[1:]}", issue.message))
+    if (
+        osm_acquisition.get("local_path") != osm_history_path.relative_to(ROOT).as_posix()
+        or osm_acquisition.get("sha256") != hashlib.sha256(osm_history_path.read_bytes()).hexdigest()
+    ):
+        issues.append(Issue("public_data_validation", osm_acquisition_path.name, "OSM acquisition hash or local path is inconsistent"))
+
+    final_sources_path = CONFIG_DIR / "im3-final-boundary-evidence-sources.json"
+    final_sources_document = load_json(final_sources_path)
+    final_sources = final_sources_document.get("records", [])
+    if final_sources_document.get("record_count") != 3 or len(final_sources) != 3:
+        issues.append(Issue("public_data_validation", final_sources_path.name, "expected three final boundary evidence sources"))
+    for index, record in enumerate(final_sources):
+        for issue in validator.validate_record(record, schema_paths["source"]):
+            issues.append(Issue("public_data_validation", f"{final_sources_path.name}.records[{index}]{issue.path[1:]}", issue.message))
+
+    final_decisions_path = CONFIG_DIR / "im3-final-boundary-decisions.json"
+    final_decisions_document = load_json(final_decisions_path)
+    final_decisions = final_decisions_document.get("records", [])
+    expected_final_candidate_ids = {
+        "erc_im3_62102081f4bf6466a9af",
+        "erc_im3_705961754a8de416cb06",
+    }
+    if (
+        final_decisions_document.get("record_count") != 2
+        or len(final_decisions) != 2
+        or {record.get("resolution_candidate_id") for record in final_decisions} != expected_final_candidate_ids
+    ):
+        issues.append(Issue("public_data_validation", final_decisions_path.name, "final decisions must resolve the two escalated candidates"))
+    final_source_ids = {record.get("source_id") for record in final_sources} | {"src_im3_atlas_20260209"}
+    for index, record in enumerate(final_decisions):
+        for issue in validator.validate_record(record, schema_paths["candidate_adjudication"]):
+            issues.append(Issue("public_data_validation", f"{final_decisions_path.name}.records[{index}]{issue.path[1:]}", issue.message))
+        for evidence in record.get("evidence", []):
+            if evidence.get("source_id") not in final_source_ids:
+                issues.append(Issue("referential_integrity", f"{final_decisions_path.name}.records[{index}].evidence", "unknown final boundary evidence source"))
+
+    final_path = DATA_DIR / "silver" / "infrastructure" / "im3-2026.02.09-final-boundary-review.json"
+    final_review = load_json(final_path)
+    final_collections = final_review.get("collections", {})
+    expected_final_counts = {
+        "campus": 132,
+        "facility": 1340,
+        "operator": 161,
+        "operator_relationship": 953,
+        "facility_containment_relationship": 8,
+        "review_decision": 432,
+        "entity_resolution_candidate": 16,
+        "source": 13,
+        "claim": 14,
+    }
+    actual_final_counts = {name: len(final_collections.get(name, [])) for name in expected_final_counts}
+    if actual_final_counts != expected_final_counts or final_review.get("record_count") != sum(expected_final_counts.values()):
+        issues.append(Issue("public_data_validation", final_path.name, "final boundary review collection counts are inconsistent"))
+    for collection, expected_count in expected_final_counts.items():
+        if expected_count == 0:
+            continue
+        for index, record in enumerate(final_collections.get(collection, [])):
+            for issue in validator.validate_record(record, schema_paths[collection]):
+                issues.append(Issue("public_data_validation", f"{final_path.name}.{collection}[{index}]{issue.path[1:]}", issue.message))
+    final_reference_fixture = {
+        **final_collections,
+        "claim": collections.get("claim", []) + final_collections.get("claim", []),
+        "source": collections.get("source", []) + final_collections.get("source", []),
+        "source_artifact": collections.get("source_artifact", []),
+        "geography_reference": geography_records,
+        "metric_definition": load_json(CONFIG_DIR / "metric-registry.json")["metrics"],
+    }
+    for issue in validate_references(final_reference_fixture):
+        issues.append(Issue("public_data_validation", f"{final_path.name}:{issue.path}", issue.message))
+    active_campus_ids = {
+        item.get("campus_id")
+        for item in final_collections.get("campus", [])
+        if item.get("record_status") != "superseded"
+    }
+    if len(active_campus_ids) != 131 or "cam_im3_campus_00495115494" in active_campus_ids:
+        issues.append(Issue("public_data_validation", final_path.name, "One Wilshire building part must be the only newly superseded campus"))
+
+    final_report_path = DATA_DIR / "silver" / "infrastructure" / "im3-2026.02.09-final-boundary-review.processing-report.json"
+    final_report = load_json(final_report_path)
+    expected_final_report_counts = {
+        "candidate_count": 16,
+        "accepted_candidate_count": 6,
+        "rejected_candidate_count": 10,
+        "pending_candidate_count": 0,
+        "merged_source_record_count": 4,
+        "distinct_contained_facility_count": 8,
+        "campus_linked_facility_count": 255,
+        "canonical_non_superseded_facility_count": 1337,
+        "active_campus_count": 131,
+        "final_evidence_source_count": 3,
+        "final_evidence_claim_count": 4,
+        "final_review_decision_count": 2,
+        "total_review_decision_count": 432,
+    }
+    if final_report.get("counts") != expected_final_report_counts or final_report.get("final_decision_counts") != {"merge": 1, "reject": 1}:
+        issues.append(Issue("public_data_validation", final_report_path.name, "final boundary review diagnostics changed"))
+
+    final_public_path = PUBLIC_DATA_DIR / "entity-resolution" / "final-index.json"
+    final_public = load_json(final_public_path)
+    final_public_ids = [record.get("source_entity_id") for record in final_public]
+    if len(final_public) != 1472 or set(final_public_ids) != set(facility_ids):
+        issues.append(Issue("public_data_validation", "entity-resolution/final-index.json", "final index and map must contain the same source objects"))
+    for index, record in enumerate(final_public):
+        for issue in validator.validate_record(record, schema_paths["public_entity_adjudication_record"]):
+            issues.append(Issue("public_data_validation", f"final-index.json[{index}]{issue.path[1:]}", issue.message))
+    if (
+        sum(record.get("identity_status") == "merged" for record in final_public) != 4
+        or any(record.get("identity_status") == "review_pending" for record in final_public)
+    ):
+        issues.append(Issue("public_data_validation", "entity-resolution/final-index.json", "final identity outcomes are inconsistent"))
+
+    final_coverage_path = PUBLIC_DATA_DIR / "counties" / "final-review-coverage.json"
+    final_coverage = load_json(final_coverage_path)
+    final_coverage_fips = [record.get("county_fips") for record in final_coverage]
+    if len(final_coverage) != 3144 or set(final_coverage_fips) != feature_fips or len(final_coverage_fips) != len(set(final_coverage_fips)):
+        issues.append(Issue("public_data_validation", "counties/final-review-coverage.json", "final review coverage must contain every Census county exactly once"))
+    for index, record in enumerate(final_coverage):
+        for issue in validator.validate_record(record, schema_paths["public_entity_adjudication_coverage"]):
+            issues.append(Issue("public_data_validation", f"final-review-coverage.json[{index}]{issue.path[1:]}", issue.message))
+        boundary = features_by_fips.get(record.get("county_fips", ""), {})
+        if record.get("county_name") != boundary.get("county_name") or record.get("state_abbr") != boundary.get("state_abbr"):
+            issues.append(Issue("public_data_validation", f"final-review-coverage.json[{index}]", "county identity does not match the Census boundary"))
+    if (
+        sum(record.get("reviewed_candidate_count", 0) for record in final_coverage) != 16
+        or sum(record.get("pending_candidate_count", 0) for record in final_coverage) != 0
+        or sum(record.get("merged_source_record_count", 0) for record in final_coverage) != 4
+        or sum(record.get("distinct_contained_facility_count", 0) for record in final_coverage) != 8
+        or sum(record.get("campus_linked_facility_count", 0) for record in final_coverage) != 256
+    ):
+        issues.append(Issue("public_data_validation", "counties/final-review-coverage.json", "national final review totals are inconsistent"))
+
+    final_queue = load_json(PUBLIC_DATA_DIR / "entity-resolution" / "final-review-queue.json")
+    if final_queue != []:
+        issues.append(Issue("public_data_validation", "entity-resolution/final-review-queue.json", "final review queue must be empty"))
+    final_public_decisions = load_json(PUBLIC_DATA_DIR / "entity-resolution" / "final-review-decisions.json")
+    if len(final_public_decisions) != 2 or any(not record.get("supersedes_decision_id") for record in final_public_decisions):
+        issues.append(Issue("public_data_validation", "entity-resolution/final-review-decisions.json", "final decisions must supersede both escalations"))
+    for index, record in enumerate(final_public_decisions):
+        for issue in validator.validate_record(record, schema_paths["review_decision"]):
+            issues.append(Issue("public_data_validation", f"final-review-decisions.json[{index}]{issue.path[1:]}", issue.message))
+    final_dossier = load_json(PUBLIC_DATA_DIR / "entity-resolution" / "final-review-dossier.json")
+    if len(final_dossier) != 16 or {record.get("resolution_candidate_id") for record in final_dossier} != set(resolution_candidate_ids):
+        issues.append(Issue("public_data_validation", "entity-resolution/final-review-dossier.json", "final dossier must cover all candidates"))
+
+    final_manifest_path = DATA_DIR / "silver" / "infrastructure" / "im3-2026.02.09-final-boundary-review.manifest.json"
+    final_manifest = load_json(final_manifest_path)
+    for issue in validator.validate_record(final_manifest, schema_paths["dataset_manifest"]):
+        issues.append(Issue("public_data_validation", f"{final_manifest_path.name}{issue.path[1:]}", issue.message))
+    total_final_manifest_records = 0
+    for index, part in enumerate(final_manifest.get("parts", [])):
+        part_path = (ROOT / part.get("path", "")).resolve()
+        if not part_path.is_relative_to(ROOT) or not part_path.is_file():
+            issues.append(Issue("public_data_validation", f"{final_manifest_path.name}.parts[{index}]", "part path is missing or outside the repository"))
+            continue
+        payload = part_path.read_bytes()
+        total_final_manifest_records += part.get("record_count", 0)
+        if part.get("byte_size") != len(payload) or part.get("sha256") != hashlib.sha256(payload).hexdigest():
+            issues.append(Issue("public_data_validation", f"{final_manifest_path.name}.parts[{index}]", "byte size or SHA-256 does not match the artifact"))
+    if final_manifest.get("record_count") != total_final_manifest_records:
+        issues.append(Issue("public_data_validation", final_manifest_path.name, "manifest record count does not equal its parts"))
     return issues
 
 

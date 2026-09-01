@@ -50,6 +50,20 @@ Curated evidence metadata lives in `config/v1/im3-candidate-evidence-sources.jso
 the one-to-one candidate decisions live in `config/v1/im3-candidate-adjudications.json`.
 The deterministic builder is `scripts/adjudicate_im3_candidates.py`.
 
+## Final campus-boundary evidence
+
+The two escalated campus-boundary cases use three additional evidence sources: official
+OpenStreetMap way revision histories, the One Wilshire building-management page, and the
+4010 Data Center facility-specification page. The four complete OSM histories are retained
+as JSON at `data/raw/openstreetmap/im3-final-boundary-way-history.json`, with a separate
+JSON acquisition manifest containing the request URL, retrieval time, response status,
+content hash, license, and parser version. No page body from the first-party sites is
+stored; only source metadata and paraphrased findings are retained.
+
+The reproducible acquisition adapter is `scripts/acquire_osm_boundary_histories.py`.
+Final decisions are versioned in `config/v1/im3-final-boundary-decisions.json`, and the
+downstream snapshot is built by `scripts/finalize_im3_boundary_reviews.py`.
+
 Four source rows reported Prince William County, Virginia, while their centroids fall in
 Manassas under the published 2025 Census polygons. Both values remain auditable: bronze
 records preserve the source report and canonical/public geography uses point-in-polygon.

@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0.0",
+  "artifact_type": "final_boundary_review_decision_collection",
+  "artifact_version": "2026.08.31",
+  "generated_at": "2026-08-31T23:30:00Z",
+  "record_schema": "https://dccio.org/schemas/v1/candidate-adjudication.schema.json",
+  "record_count": 2,
+  "records": [
+    {
+      "schema_version": "1.0.0",
+      "resolution_candidate_id": "erc_im3_62102081f4bf6466a9af",
+      "decision": "merge",
+      "canonical_entity_id": "fac_im3_building_00428021816",
+      "rationale": "The inner One Wilshire polygon is not a campus: its OSM history changed it from a commercial building to building:part=yes, and it carries the same 624 South Grand Avenue address, 30 levels, 120-meter height, and data-center use as the parent One Wilshire building. Preserve the source object as superseded and redirect it to the building facility.",
+      "evidence": [
+        {"source_id": "src_im3_atlas_20260209", "finding": "IM3 classified the smaller intersecting polygon as a campus and the enclosing One Wilshire footprint as a building."},
+        {"source_id": "src_osm_boundary_way_history_20260831", "finding": "OSM way 495115494 was retagged from building=commercial to building:part=yes in 2021 and now shares the parent building's exact address, height, levels, and data-center use."},
+        {"source_id": "src_one_wilshire_management_web", "finding": "The official building site identifies One Wilshire Building at 624 South Grand Avenue."}
+      ],
+      "governed_rule_id": "im3_final_boundary_review_v1"
+    },
+    {
+      "schema_version": "1.0.0",
+      "resolution_candidate_id": "erc_im3_705961754a8de416cb06",
+      "decision": "reject",
+      "rationale": "The intersecting objects are separate sites. OSM history identifies the Lumen building at 215 East Indian School Road and the campus boundary as building=no at 4010 North 3rd Street; 4010 Data Center independently identifies that address as its multi-building PHX02/PHX04 campus. Do not assign the Lumen building to the 4010 campus.",
+      "evidence": [
+        {"source_id": "src_im3_atlas_20260209", "finding": "IM3 supplied a partial geometry overlap between the Lumen building and an unnamed campus boundary."},
+        {"source_id": "src_osm_boundary_way_history_20260831", "finding": "OSM way histories preserve different addresses and identities: Lumen at 215 East Indian School Road and a non-building data-center boundary at 4010 North 3rd Street."},
+        {"source_id": "src_4010_datacenter_specs_web", "finding": "4010 Data Center identifies 4010 North 3rd Street as its own data-center site with multiple facility buildings."}
+      ],
+      "governed_rule_id": "im3_final_boundary_review_v1"
+    }
+  ]
+}

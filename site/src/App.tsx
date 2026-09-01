@@ -30,7 +30,7 @@ export default function App() {
       fetch(`${base}data/v1/metadata.json`),
       fetch(`${base}data/v1/counties/facility-source-coverage.json`),
       fetch(`${base}data/v1/counties/entity-resolution-coverage.json`),
-      fetch(`${base}data/v1/counties/entity-adjudication-coverage.json`),
+      fetch(`${base}data/v1/counties/final-review-coverage.json`),
     ])
       .then(async ([metadataResponse, coverageResponse, resolutionResponse, adjudicationResponse]) => {
         if (!metadataResponse.ok || !coverageResponse.ok || !resolutionResponse.ok || !adjudicationResponse.ok) {
@@ -77,7 +77,7 @@ export default function App() {
       </header>
 
       <div className="fixture-banner" role="status">
-        <strong>Provisional, reviewed source inventory.</strong> Fourteen of sixteen spatial identity candidates are resolved; two campus-boundary cases were escalated and remain explicitly pending. This is not a lifecycle-verified operating-facility census.
+        <strong>Provisional, fully reviewed source inventory.</strong> All sixteen spatial identity candidates now have evidence-backed outcomes. The One Wilshire inner polygon was corrected from campus to a superseded building part; the 4010 Data Center campus remains separate from Lumen. This is not a lifecycle-verified operating-facility census.
       </div>
 
       <main className="workspace">
@@ -177,7 +177,7 @@ export default function App() {
 
                 <div className="evidence-note">
                   <span>Interpretation</span>
-                  <p>Source objects remain preserved even after review. True duplicate points redirect to a canonical building; tenant sites and computing systems remain distinct with a containment relationship. The data still do not establish operating status, opening dates, historical completeness, capacity, or causal community impact.</p>
+                  <p>Source objects and superseded decisions remain preserved after review. Duplicate records and misclassified building parts redirect to a canonical building; tenant sites, computing systems, and neighboring campuses remain distinct. The data still do not establish operating status, opening dates, historical completeness, capacity, or causal community impact.</p>
                 </div>
               </>
             )}

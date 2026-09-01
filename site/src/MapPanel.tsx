@@ -80,7 +80,7 @@ export function MapPanel({ selectedFips, onSelectCounty }: MapPanelProps) {
           fetch(`${base}data/v1/maps/facilities.geojson`),
           fetch(`${base}data/v1/counties/facility-source-coverage.json`),
           fetch(`${base}data/v1/entity-resolution/index.json`),
-          fetch(`${base}data/v1/entity-resolution/adjudication-index.json`),
+          fetch(`${base}data/v1/entity-resolution/final-index.json`),
         ]);
         if (!countiesResponse.ok || !facilitiesResponse.ok || !coverageResponse.ok || !resolutionResponse.ok || !adjudicationResponse.ok) {
           throw new Error("A required map artifact could not be loaded.");
@@ -303,7 +303,7 @@ export function MapPanel({ selectedFips, onSelectCounty }: MapPanelProps) {
         <div className="legend-ramp" aria-hidden="true" />
         <div className="legend-labels"><span>no source record</span><span>100+</span></div>
         <div className="review-key">
-          <span><i className="key-dot key-pending" />pending</span>
+          <span><i className="key-dot key-pending" />pending (0)</span>
           <span><i className="key-dot key-merged" />merged</span>
           <span><i className="key-dot key-contained" />contained</span>
         </div>
