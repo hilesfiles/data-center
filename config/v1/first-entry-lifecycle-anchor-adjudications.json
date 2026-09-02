@@ -2,9 +2,9 @@
   "schema_version": "1.0.0",
   "artifact_type": "first_entry_lifecycle_anchor_adjudications",
   "artifact_version": "2026.09.02",
-  "generated_at": "2026-09-03T02:00:00Z",
+  "generated_at": "2026-09-03T03:00:00Z",
   "record_schema": "https://dccio.org/schemas/v1/national-lifecycle-evidence-adjudication.schema.json",
-  "record_count": 110,
+  "record_count": 118,
   "records": [
     {
       "schema_version": "1.0.0",
@@ -4468,6 +4468,206 @@
         "source_id": "src_asa_supercomputer_center_history_198710",
         "confidence": 0.99,
         "notes": "Month of building completion and first supercomputer installation."
+      }],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_be548b45843713c59622",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.99,
+      "rationale": "Hurricane Electric's dated operator release announces the grand opening of its new Fremont colocation facility and gives the 760 Mission Court address matching the mapped Fremont 1 facility.",
+      "evidence": [{
+        "source_id": "src_he_fremont_open_20010717",
+        "attribute_path": "event.operational",
+        "raw_value": {"type": "date", "value": {"date": "2001-07-17", "precision": "day"}},
+        "finding": "The operator announces the grand opening of its new 42,000-square-foot Fremont colocation facility.",
+        "disposition": "supporting",
+        "claim_confidence": 0.99
+      }],
+      "events": [{
+        "event_type": "operational",
+        "when": {"date": "2001-07-17", "precision": "day"},
+        "source_id": "src_he_fremont_open_20010717",
+        "confidence": 0.99,
+        "notes": "Exact operator-reported grand-opening date."
+      }],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_4920fa4094a18a951c54",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.99,
+      "rationale": "The NTT DC REIT valuation certificate filed through the Monetary Authority of Singapore identifies CA1 at 1200 Striker Avenue as a colocation data center completed and ready for occupancy in 2001, matching the mapped facility.",
+      "evidence": [{
+        "source_id": "src_mas_ntt_ca1_valuation_2025",
+        "attribute_path": "event.operational",
+        "raw_value": {"type": "date", "value": {"year": 2001, "precision": "year"}},
+        "finding": "The valuation certificate states that CA1 was completed and ready for occupancy in 2001.",
+        "disposition": "supporting",
+        "claim_confidence": 0.99
+      }],
+      "events": [{
+        "event_type": "operational",
+        "when": {"year": 2001, "precision": "year"},
+        "source_id": "src_mas_ntt_ca1_valuation_2025",
+        "confidence": 0.99,
+        "notes": "Year the regulatory-filed valuation says CA1 was ready for occupancy."
+      }],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_9f833143eb9913bcefc6",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.98,
+      "rationale": "West Des Moines' FY22-23 development retrospective states that buildings one through four of Microsoft's Osmium data center were finished, matching the mapped Warren County Microsoft campus.",
+      "evidence": [{
+        "source_id": "src_wdm_development_retrospective_2023",
+        "attribute_path": "event.operational",
+        "raw_value": {"type": "date", "value": {"date": "2023-09-01", "precision": "month"}},
+        "finding": "The city reports four finished buildings at the Osmium Microsoft data center while identifying it among the city's five data centers.",
+        "disposition": "supporting",
+        "claim_confidence": 0.97
+      }],
+      "events": [{
+        "event_type": "operational",
+        "when": {"date": "2023-09-01", "precision": "month"},
+        "source_id": "src_wdm_development_retrospective_2023",
+        "confidence": 0.97,
+        "notes": "Operational no later than the municipal retrospective's publication month."
+      }],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_b6d66ddc51193f6947d8",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.99,
+      "rationale": "Meta's dated engineering post celebrates the grand opening of its six-building Los Lunas data center campus and identifies Valencia County as its host community, matching the mapped campus.",
+      "evidence": [{
+        "source_id": "src_meta_los_lunas_open_20190207",
+        "attribute_path": "event.operational",
+        "raw_value": {"type": "date", "value": {"date": "2019-02-07", "precision": "day"}},
+        "finding": "Meta announces the grand opening of its newest data center in Los Lunas and describes the six-building campus.",
+        "disposition": "supporting",
+        "claim_confidence": 0.99
+      }],
+      "events": [{
+        "event_type": "operational",
+        "when": {"date": "2019-02-07", "precision": "day"},
+        "source_id": "src_meta_los_lunas_open_20190207",
+        "confidence": 0.99,
+        "notes": "Exact operator-reported grand-opening date."
+      }],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_8374f64e8094e925414f",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.99,
+      "rationale": "Flexential's independent SOC 3 report lists Nashville Franklin at 4600 Carothers Parkway within the audited Data Center and Cloud Operations system for the period ending October 31, 2023, matching the mapped facility.",
+      "evidence": [{
+        "source_id": "src_flexential_soc3_locations_2023",
+        "attribute_path": "event.operational",
+        "raw_value": {"type": "date", "value": {"date": "2023-10-31", "precision": "day"}},
+        "finding": "The auditor's in-scope address list includes Flexential Nashville Franklin and concludes controls operated throughout the reviewed period.",
+        "disposition": "supporting",
+        "claim_confidence": 0.99
+      }],
+      "events": [{
+        "event_type": "operational",
+        "when": {"date": "2023-10-31", "precision": "day"},
+        "source_id": "src_flexential_soc3_locations_2023",
+        "confidence": 0.99,
+        "notes": "Audited operating-scope endpoint."
+      }],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_e10e849401a0f7f50f1b",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.99,
+      "rationale": "Microsoft's Central Washington community material states that it established its first Quincy data center in 2007 and reports ongoing operations employment, matching the mapped Quincy campus in Grant County.",
+      "evidence": [{
+        "source_id": "src_microsoft_quincy_since_2007_202305",
+        "attribute_path": "event.operational",
+        "raw_value": {"type": "date", "value": {"year": 2007, "precision": "year"}},
+        "finding": "Microsoft states that it established its first Quincy data center in 2007.",
+        "disposition": "supporting",
+        "claim_confidence": 0.99
+      }],
+      "events": [{
+        "event_type": "operational",
+        "when": {"year": 2007, "precision": "year"},
+        "source_id": "src_microsoft_quincy_since_2007_202305",
+        "confidence": 0.99,
+        "notes": "Operator-reported year of its first Quincy data center."
+      }],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_27d255c92f26064c3074",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.94,
+      "rationale": "Data Center Knowledge reported in March 2006 that Alabanza opened Baltimore Technology Park, a 30,000-square-foot carrier-neutral colocation center, matching the mapped facility.",
+      "evidence": [{
+        "source_id": "src_dck_baltimore_technology_park_open_20060308",
+        "attribute_path": "event.operational",
+        "raw_value": {"type": "date", "value": {"date": "2006-03-01", "precision": "month"}},
+        "finding": "The trade publication reports that Baltimore Technology Park opened its doors during the week of March 8, 2006.",
+        "disposition": "supporting",
+        "claim_confidence": 0.94
+      }],
+      "events": [{
+        "event_type": "operational",
+        "when": {"date": "2006-03-01", "precision": "month"},
+        "source_id": "src_dck_baltimore_technology_park_open_20060308",
+        "confidence": 0.94,
+        "notes": "Opening month; the source gives only the week relative to its March 8 publication."
+      }],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_2d89bc38f87ab09b1298",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.99,
+      "rationale": "Flexential's independent SOC 3 report lists Salt Lake City South Valley at 3949 South 200 East within the audited Data Center and Cloud Operations system for the period ending October 31, 2023, matching the mapped facility.",
+      "evidence": [{
+        "source_id": "src_flexential_soc3_locations_2023",
+        "attribute_path": "event.operational",
+        "raw_value": {"type": "date", "value": {"date": "2023-10-31", "precision": "day"}},
+        "finding": "The auditor's in-scope address list includes Flexential Salt Lake City South Valley and concludes controls operated throughout the reviewed period.",
+        "disposition": "supporting",
+        "claim_confidence": 0.99
+      }],
+      "events": [{
+        "event_type": "operational",
+        "when": {"date": "2023-10-31", "precision": "day"},
+        "source_id": "src_flexential_soc3_locations_2023",
+        "confidence": 0.99,
+        "notes": "Audited operating-scope endpoint."
       }],
       "record_status": "active"
     }

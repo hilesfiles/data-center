@@ -386,7 +386,7 @@ export default function App() {
       </header>
 
       <div className="fixture-banner" role="status">
-        <strong>One hundred eight dated anchors have been adjudicated across 136 researched counties.</strong> Earlier operations reject 51 candidate anchors; fifty-seven counties remain unresolved as county first entry. The latest tranche adds dated anchors in Muscogee and Douglas GA, Wake NC, Cuyahoga OH, Montgomery TN, Henrico VA, Clay MO, and Madison AL. Complete historical inventories remain unresolved, zero treatment counties are eligible, and no impact model has been run.
+        <strong>One hundred sixteen dated anchors have been adjudicated across 144 researched counties.</strong> Earlier operations reject 51 candidate anchors; sixty-five counties remain unresolved as county first entry. The latest tranche adds dated anchors in Alameda and Sacramento CA, Warren IA, Baltimore city MD, Valencia NM, Williamson TN, Salt Lake UT, and Grant WA. Complete historical inventories remain unresolved, 73 counties remain queued, zero treatment counties are eligible, and no impact model has been run.
       </div>
 
       <main className="workspace">

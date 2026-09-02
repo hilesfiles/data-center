@@ -88,8 +88,8 @@ python scripts/build_county_first_entry_treatments.py
 The registry evaluates reviewed dated operational events against the configured evidence
 and panel-window rules, then requires a separate explicit verification that the event is the
 county's first data-center entry. It publishes 51 lazy-loaded state/DC JSON partitions.
-The current evidence contains 108 reviewed dated facility events. Sixty-seven pass the evidence
-gate and 62 pass the panel-window gate, but zero have verified county-first-entry status, so model readiness is
+The current evidence contains 116 reviewed dated facility events. Seventy-two pass the evidence
+gate and 63 pass the panel-window gate, but zero have verified county-first-entry status, so model readiness is
 `insufficient_eligible_treatments` and no model run is authorized. Absence of a reviewed event
 is never interpreted as never treated.
 
@@ -261,14 +261,15 @@ validation can be added later to CI with a standards-compliant Draft 2020-12 val
   Zero counties are currently treatment-eligible and no county is classified as never treated.
 - County first-entry research: 217 facility counties meet the complete-history prerequisite.
   Twenty-four are in the balanced initial tranche and 193 remain in the national backlog;
-  nine additional facility counties lack a complete 24-year panel. Queue membership is not
-  evidence of treatment eligibility.
+  nine additional facility counties lack a complete 24-year panel. Research has covered 144
+  candidates: 51 dated anchors were rejected as county first entry and 65 remain unresolved,
+  leaving 73 queued. Queue membership is not evidence of treatment eligibility.
 - Fiscal, utility, housing, environmental, or opposition observations: not yet ingested.
 - Econometric estimates and public indices: fixture-only; not substantive.
 
 ## Next priority
 
-Continue the remaining 10 counties in the initial tranche against local-government, permit,
+Continue the remaining 73 queued counties in national-rank tranches against local-government, permit,
 planning, assessor, utility, regulatory, operator, and contemporaneous news records. Each
 adjudication must
 identify the earliest dated operation, establish exact facility identity, assess county
