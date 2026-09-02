@@ -685,7 +685,7 @@ def validate_project_config(
         if not set(record.get("source_ids", [])).issubset(all_evidence_source_ids):
             issues.append(Issue("referential_integrity", f"{first_entry_adjudication_path.name}.records[{index}]", "adjudication references an unknown evidence source"))
     if (
-        {record.get("county_fips") for record in first_entry_adjudications} != {"01069", "04013", "05119", "05145", "06037", "06055", "06079", "06085", "06095", "06099", "08001", "11001", "12001", "12057", "13067", "13117", "13121", "17019", "17031", "17043", "18089", "18105", "21071", "23005", "24005", "24031", "24033", "25017", "26125", "27019", "27109", "27123", "27137", "29019", "30017", "31153", "32003", "33015", "34003", "34017", "34023", "34039", "35001", "35049", "36047", "36067", "36087", "37119", "38017", "39017", "39023", "42091", "48085", "51107", "53033", "53061"}
+        {record.get("county_fips") for record in first_entry_adjudications} != {"01069", "04013", "05119", "05145", "06037", "06055", "06079", "06085", "06095", "06099", "08001", "11001", "12001", "12057", "13067", "13117", "13121", "17019", "17031", "17043", "18089", "18105", "21071", "23005", "24005", "24031", "24033", "25017", "26125", "27019", "27109", "27123", "27137", "29019", "30017", "31153", "32003", "33015", "34003", "34017", "34023", "34039", "35001", "35049", "36047", "36067", "36087", "37119", "38017", "39017", "39023", "39045", "39153", "40013", "40109", "41005", "42091", "48085", "51107", "53033", "53061"}
         or {
             record.get("county_fips"): record.get("decision")
             for record in first_entry_adjudications
@@ -741,6 +741,11 @@ def validate_project_config(
             "38017": "reject_candidate_as_first_entry",
             "39017": "continue_research",
             "39023": "reject_candidate_as_first_entry",
+            "39045": "continue_research",
+            "39153": "reject_candidate_as_first_entry",
+            "40013": "continue_research",
+            "40109": "reject_candidate_as_first_entry",
+            "41005": "continue_research",
             "42091": "reject_candidate_as_first_entry",
             "48085": "reject_candidate_as_first_entry",
             "51107": "reject_candidate_as_first_entry",
@@ -1329,9 +1334,9 @@ def validate_public_data(
     treatment_evaluations = treatment_collections.get("treatment_event_evaluation", [])
     treatment_assessments = treatment_collections.get("county_treatment_assessment", [])
     if (
-        treatment_registry.get("record_count") != 3256
-        or len(treatment_events) != 56
-        or len(treatment_evaluations) != 56
+        treatment_registry.get("record_count") != 3266
+        or len(treatment_events) != 61
+        or len(treatment_evaluations) != 61
         or len(treatment_assessments) != 3144
     ):
         issues.append(Issue("public_data_validation", treatment_path.name, "county first-entry registry collection counts are inconsistent"))
@@ -1355,7 +1360,7 @@ def validate_public_data(
         or set(record.get("event_id") for record in treatment_evaluations) != set(treatment_event_ids)
         or len(treatment_assessment_fips) != len(set(treatment_assessment_fips))
         or set(treatment_assessment_fips) != feature_fips
-        or assessment_status_counts != Counter({"candidate_events_not_first_entry": 56, "no_reviewed_dated_operational_event": 3088})
+        or assessment_status_counts != Counter({"candidate_events_not_first_entry": 61, "no_reviewed_dated_operational_event": 3083})
         or any(record.get("first_entry_verified") is not False for record in treatment_assessments)
         or any("eligible_treatment_period" in record or "eligible_cohort_year" in record for record in treatment_assessments)
     ):
@@ -1368,11 +1373,11 @@ def validate_public_data(
             issues.append(Issue("referential_integrity", f"{treatment_path.name}.county_treatment_assessment[{index}]", "assessment references an unknown treatment event evaluation"))
     adjudicated_assessments = [record for record in treatment_assessments if record.get("first_entry_adjudication_ids")]
     if (
-        {record.get("county_fips") for record in adjudicated_assessments} != {"01069", "04013", "05119", "05145", "06037", "06055", "06079", "06085", "06095", "06099", "08001", "11001", "12001", "12057", "13067", "13117", "13121", "17019", "17031", "17043", "18089", "18105", "21071", "23005", "24005", "24031", "24033", "25017", "26125", "27019", "27109", "27123", "27137", "29019", "30017", "31153", "32003", "33015", "34003", "34017", "34023", "34039", "35001", "35049", "36047", "36067", "36087", "37119", "38017", "39017", "39023", "42091", "48085", "51107", "53033", "53061"}
+        {record.get("county_fips") for record in adjudicated_assessments} != {"01069", "04013", "05119", "05145", "06037", "06055", "06079", "06085", "06095", "06099", "08001", "11001", "12001", "12057", "13067", "13117", "13121", "17019", "17031", "17043", "18089", "18105", "21071", "23005", "24005", "24031", "24033", "25017", "26125", "27019", "27109", "27123", "27137", "29019", "30017", "31153", "32003", "33015", "34003", "34017", "34023", "34039", "35001", "35049", "36047", "36067", "36087", "37119", "38017", "39017", "39023", "39045", "39153", "40013", "40109", "41005", "42091", "48085", "51107", "53033", "53061"}
         or {
             record.get("county_fips"): record.get("candidate_rejection_count")
             for record in adjudicated_assessments
-        } != {"01069": 0, "04013": 1, "05119": 1, "05145": 0, "06037": 1, "06055": 0, "06079": 1, "06085": 1, "06095": 0, "06099": 1, "08001": 0, "11001": 1, "12001": 1, "12057": 1, "13067": 1, "13117": 1, "13121": 1, "17019": 1, "17031": 1, "17043": 1, "18089": 0, "18105": 1, "21071": 0, "23005": 1, "24005": 1, "24031": 1, "24033": 1, "25017": 1, "26125": 1, "27019": 1, "27109": 1, "27123": 1, "27137": 1, "29019": 1, "30017": 0, "31153": 1, "32003": 1, "33015": 0, "34003": 1, "34017": 0, "34023": 1, "34039": 0, "35001": 1, "35049": 0, "36047": 0, "36067": 1, "36087": 1, "37119": 1, "38017": 1, "39017": 0, "39023": 1, "42091": 1, "48085": 1, "51107": 1, "53033": 1, "53061": 1}
+        } != {"01069": 0, "04013": 1, "05119": 1, "05145": 0, "06037": 1, "06055": 0, "06079": 1, "06085": 1, "06095": 0, "06099": 1, "08001": 0, "11001": 1, "12001": 1, "12057": 1, "13067": 1, "13117": 1, "13121": 1, "17019": 1, "17031": 1, "17043": 1, "18089": 0, "18105": 1, "21071": 0, "23005": 1, "24005": 1, "24031": 1, "24033": 1, "25017": 1, "26125": 1, "27019": 1, "27109": 1, "27123": 1, "27137": 1, "29019": 1, "30017": 0, "31153": 1, "32003": 1, "33015": 0, "34003": 1, "34017": 0, "34023": 1, "34039": 0, "35001": 1, "35049": 0, "36047": 0, "36067": 1, "36087": 1, "37119": 1, "38017": 1, "39017": 0, "39023": 1, "39045": 0, "39153": 1, "40013": 0, "40109": 1, "41005": 0, "42091": 1, "48085": 1, "51107": 1, "53033": 1, "53061": 1}
         or any(record.get("inventory_completeness_status") != "not_established" for record in adjudicated_assessments)
     ):
         issues.append(Issue("public_data_validation", treatment_path.name, "county first-entry adjudication summaries are inconsistent"))
@@ -2020,6 +2025,61 @@ def validate_public_data(
             "period_requirement_status": "failed",
             "exclusion_reasons": ["evidence_threshold_not_met", "panel_period_requirement_not_met", "candidate_event_not_county_first_entry"],
         },
+        "39045": {
+            "facility_id": "fac_im3_building_01252196824",
+            "source_id": "src_lancaster_acfr_2023_google_operational",
+            "when": {"year": 2023, "precision": "year"},
+            "data_quality_score": 78.41,
+            "available_pre_periods": 22,
+            "available_post_periods": 1,
+            "evidence_threshold_status": "failed",
+            "period_requirement_status": "failed",
+            "exclusion_reasons": ["evidence_threshold_not_met", "panel_period_requirement_not_met", "county_first_entry_not_verified"],
+        },
+        "39153": {
+            "facility_id": "fac_im3_building_01278541792",
+            "source_id": "src_summit_involta_opened_2012",
+            "when": {"year": 2012, "precision": "year"},
+            "data_quality_score": 78.41,
+            "available_pre_periods": 11,
+            "available_post_periods": 12,
+            "evidence_threshold_status": "failed",
+            "period_requirement_status": "passed",
+            "exclusion_reasons": ["evidence_threshold_not_met", "candidate_event_not_county_first_entry"],
+        },
+        "40013": {
+            "facility_id": "fac_im3_building_00726150321",
+            "source_id": "src_choctaw_hq_move_201804",
+            "when": {"year": 2018, "precision": "year"},
+            "data_quality_score": 73.7,
+            "available_pre_periods": 17,
+            "available_post_periods": 6,
+            "evidence_threshold_status": "failed",
+            "period_requirement_status": "passed",
+            "exclusion_reasons": ["evidence_threshold_not_met", "county_first_entry_not_verified"],
+        },
+        "40109": {
+            "facility_id": "fac_im3_point_06401035673",
+            "source_id": "src_rack59_about_current_2026",
+            "when": {"year": 2009, "precision": "year"},
+            "data_quality_score": 78.41,
+            "available_pre_periods": 8,
+            "available_post_periods": 15,
+            "evidence_threshold_status": "failed",
+            "period_requirement_status": "passed",
+            "exclusion_reasons": ["evidence_threshold_not_met", "candidate_event_not_county_first_entry"],
+        },
+        "41005": {
+            "facility_id": "fac_im3_building_00480762078",
+            "source_id": "src_plannet_mentor_wilsonville_data_center_20121205",
+            "when": {"year": 2012, "precision": "approximate_year"},
+            "data_quality_score": 57.43,
+            "available_pre_periods": 11,
+            "available_post_periods": 12,
+            "evidence_threshold_status": "failed",
+            "period_requirement_status": "passed",
+            "exclusion_reasons": ["evidence_threshold_not_met", "county_first_entry_not_verified"],
+        },
     })
     if set(evaluations_by_fips) != set(expected_treatment_evaluations):
         issues.append(Issue("public_data_validation", treatment_path.name, "reviewed treatment candidate counties changed"))
@@ -2030,7 +2090,7 @@ def validate_public_data(
             or actual.get("evidence_threshold_status") != expected["evidence_threshold_status"]
             or actual.get("period_requirement_status") != expected["period_requirement_status"]
             or actual.get("first_entry_verification_status") != (
-                "not_verified" if county_fips in {"01069", "05145", "06055", "06095", "08001", "18089", "21071", "30017", "33015", "34017", "34039", "35049", "36047", "39017"} else "rejected_as_first_entry"
+                "not_verified" if county_fips in {"01069", "05145", "06055", "06095", "08001", "18089", "21071", "30017", "33015", "34017", "34039", "35049", "36047", "39017", "39045", "40013", "41005"} else "rejected_as_first_entry"
             )
             or actual.get("eligibility_status") != "excluded"
             or actual.get("exclusion_reasons") != expected["exclusion_reasons"]
@@ -2044,7 +2104,7 @@ def validate_public_data(
     if (
         treatment_public_index.get("partition_count") != 51
         or treatment_public_index.get("record_count") != 3144
-        or treatment_public_index.get("adjudication_count") != 56
+        or treatment_public_index.get("adjudication_count") != 61
         or len(treatment_public_index.get("partitions", [])) != 51
     ):
         issues.append(Issue("public_data_validation", treatment_public_path.name, "county treatment partition index counts are inconsistent"))
@@ -2101,14 +2161,14 @@ def validate_public_data(
         or treatment_report.get("model_specification_id") != "msp_employment_entry_v1"
         or treatment_report.get("panel_years") != {"start": 2001, "end": 2024}
         or treatment_report.get("period_requirements") != {"minimum_pre_periods": 7, "minimum_post_periods": 3}
-        or treatment_report.get("reviewed_dated_operational_event_count") != 56
+        or treatment_report.get("reviewed_dated_operational_event_count") != 61
         or treatment_report.get("evidence_threshold_pass_count") != 37
-        or treatment_report.get("period_requirement_pass_count") != 36
+        or treatment_report.get("period_requirement_pass_count") != 40
         or treatment_report.get("first_entry_verified_event_count") != 0
-        or treatment_report.get("candidate_rejected_as_first_entry_count") != 42
+        or treatment_report.get("candidate_rejected_as_first_entry_count") != 44
         or treatment_report.get("eligible_treatment_event_count") != 0
         or treatment_report.get("eligible_county_count") != 0
-        or treatment_report.get("assessment_status_counts") != {"candidate_events_not_first_entry": 56, "no_reviewed_dated_operational_event": 3088}
+        or treatment_report.get("assessment_status_counts") != {"candidate_events_not_first_entry": 61, "no_reviewed_dated_operational_event": 3083}
         or treatment_report.get("model_readiness", {}).get("status") != "insufficient_eligible_treatments"
         or treatment_report.get("model_readiness", {}).get("governed_treatment_registry_available") is not True
         or treatment_report.get("model_readiness", {}).get("eligible_treatment_dates_available") is not False
@@ -2130,7 +2190,7 @@ def validate_public_data(
         treatment_manifest_total += part.get("record_count", 0)
         if part.get("byte_size") != len(payload) or part.get("sha256") != hashlib.sha256(payload).hexdigest():
             issues.append(Issue("public_data_validation", f"{treatment_manifest_path.name}.parts[{index}]", "byte size or SHA-256 does not match the artifact"))
-    if treatment_manifest.get("record_count") != 6675 or treatment_manifest_total != 6675:
+    if treatment_manifest.get("record_count") != 6709 or treatment_manifest_total != 6709:
         issues.append(Issue("public_data_validation", treatment_manifest_path.name, "county first-entry manifest record count is inconsistent"))
 
     research_path = DATA_DIR / "silver" / "treatments" / "county-first-entry-research-priority-v1.json"
@@ -2155,12 +2215,12 @@ def validate_public_data(
         or len(research_fips) != len(set(research_fips))
         or [record.get("national_rank") for record in research_candidates] != list(range(1, 218))
         or research_queue_counts != Counter({"national_backlog": 193, "initial_tranche": 24})
-        or research_tier_counts != Counter({"first_entry_deferred": 124, "first_entry_standard": 37, "first_entry_high": 56})
+        or research_tier_counts != Counter({"first_entry_deferred": 124, "first_entry_standard": 32, "first_entry_high": 61})
         or research_region_counts != Counter({"South": 67, "Midwest": 63, "West": 58, "Northeast": 29})
         or research_initial_region_counts != Counter({"Northeast": 6, "Midwest": 6, "South": 6, "West": 6})
         or max(research_initial_state_counts.values(), default=0) > 2
         or sum(record.get("reviewed_operational_facility_count", 0) for record in research_candidates) != 44
-        or sum(record.get("dated_operational_candidate_count", 0) for record in research_candidates) != 56
+        or sum(record.get("dated_operational_candidate_count", 0) for record in research_candidates) != 61
     ):
         issues.append(Issue("public_data_validation", research_path.name, "first-entry research identity, rank, tier, or balanced-tranche invariants are inconsistent"))
 
@@ -2235,7 +2295,7 @@ def validate_public_data(
             or record.get("named_source_record_count") != source.get("named_record_count")
             or record.get("score_components") != expected_components
             or record.get("priority_score") != expected_score
-            or record.get("research_status") != ("evidence_collected" if county_fips in {"01069", "04013", "05119", "05145", "06013", "06037", "06055", "06065", "06079", "06085", "06095", "06099", "08001", "11001", "12001", "12057", "13067", "13117", "13121", "16007", "16065", "17019", "17031", "17043", "17097", "18089", "18105", "19103", "19163", "20051", "21071", "22033", "23005", "24005", "24031", "24033", "25017", "26099", "26125", "27003", "27019", "27109", "27123", "27137", "28033", "29019", "29025", "30017", "31153", "32003", "33015", "34003", "34017", "34021", "34023", "34025", "34039", "35001", "35049", "36047", "36067", "36087", "36103", "37119", "38017", "39017", "39023", "42091", "48085", "51107", "53033", "53061"} else "queued")
+            or record.get("research_status") != ("evidence_collected" if county_fips in {"01069", "04013", "05119", "05145", "06013", "06037", "06055", "06065", "06079", "06085", "06095", "06099", "08001", "11001", "12001", "12057", "13067", "13117", "13121", "16007", "16065", "17019", "17031", "17043", "17097", "18089", "18105", "19103", "19163", "20051", "21071", "22033", "23005", "24005", "24031", "24033", "25017", "26099", "26125", "27003", "27019", "27109", "27123", "27137", "28033", "29019", "29025", "30017", "31153", "32003", "33015", "34003", "34017", "34021", "34023", "34025", "34039", "35001", "35049", "36047", "36067", "36087", "36103", "37119", "38017", "39017", "39023", "39045", "39099", "39153", "40013", "40109", "41005", "41033", "41039", "42091", "48085", "51107", "53033", "53061"} else "queued")
             or record.get("research_objective") != "verify_county_first_operational_entry"
         ):
             issues.append(Issue("public_data_validation", f"{research_path.name}.first_entry_research_candidate[{index}]", "first-entry research identity, input metrics, or score is inconsistent"))
@@ -2284,9 +2344,9 @@ def validate_public_data(
         or research_report.get("initial_tranche_count") != 24
         or research_report.get("national_backlog_count") != 193
         or research_report.get("exclusion_counts") != {"no_active_canonical_facility": 2918, "incomplete_24_year_panel": 9, "already_eligible_treatment": 0}
-        or research_report.get("priority_tier_counts") != {"first_entry_deferred": 124, "first_entry_high": 56, "first_entry_standard": 37}
+        or research_report.get("priority_tier_counts") != {"first_entry_deferred": 124, "first_entry_high": 61, "first_entry_standard": 32}
         or research_report.get("initial_tranche_region_counts") != {"Midwest": 6, "Northeast": 6, "South": 6, "West": 6}
-        or research_report.get("adjudication_status_counts") != {"candidate_rejected_first_entry": 42, "not_adjudicated": 161, "unresolved": 14}
+        or research_report.get("adjudication_status_counts") != {"candidate_rejected_first_entry": 44, "not_adjudicated": 156, "unresolved": 17}
         or research_report.get("treatment_effect") != {"treatment_dates_assigned": 0, "eligible_treatment_count_changed": False, "model_run_authorized": False}
     ):
         issues.append(Issue("public_data_validation", research_report_path.name, "first-entry research processing diagnostics are inconsistent"))

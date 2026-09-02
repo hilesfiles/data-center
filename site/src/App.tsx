@@ -386,7 +386,7 @@ export default function App() {
       </header>
 
       <div className="fixture-banner" role="status">
-        <strong>Fifty-six dated anchors have been adjudicated across 72 researched counties.</strong> Earlier operations reject 42 candidate anchors; fourteen counties remain unresolved as county first entry. The latest tranche also rejects a submarine cable landing station as a false-positive seed and records the former LexisNexis Springfield site as an under-construction 5C redevelopment. Complete historical inventories remain unresolved, zero treatment counties are eligible, and no impact model has been run.
+        <strong>Sixty-one dated anchors have been adjudicated across 80 researched counties.</strong> Earlier operations reject 44 candidate anchors; seventeen counties remain unresolved as county first entry. The latest tranche rejects three false-positive seeds—a telecom headquarters and warehouse, a call center, and an ISP office—and documents earlier AT&amp;T and Lucent data-center operations. Complete historical inventories remain unresolved, zero treatment counties are eligible, and no impact model has been run.
       </div>
 
       <main className="workspace">

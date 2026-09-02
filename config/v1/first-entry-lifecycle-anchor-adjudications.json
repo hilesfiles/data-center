@@ -2,9 +2,9 @@
   "schema_version": "1.0.0",
   "artifact_type": "first_entry_lifecycle_anchor_adjudications",
   "artifact_version": "2026.09.02",
-  "generated_at": "2026-09-02T16:00:00Z",
+  "generated_at": "2026-09-02T18:00:00Z",
   "record_schema": "https://dccio.org/schemas/v1/national-lifecycle-evidence-adjudication.schema.json",
-  "record_count": 46,
+  "record_count": 54,
   "records": [
     {
       "schema_version": "1.0.0",
@@ -1454,6 +1454,384 @@
           "source_id": "src_h5_vxchnge_acquisition_20210131",
           "confidence": 0.99,
           "notes": "Operational no later than H5's dated acquisition announcement; this is not asserted as the site's first data-center operation."
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_5da3f56431202acc8d59",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.99,
+      "rationale": "Google identifies Lancaster as an Ohio data-center community, and Lancaster's official 2023 financial report states that phase 1 of the Google Data Center was up and running. The year-level anchor is operational no later than the end of 2023, not an asserted commissioning date.",
+      "evidence": [
+        {
+          "source_id": "src_google_ohio_locations_current_2026",
+          "attribute_path": "facility.current_status",
+          "raw_value": {
+            "type": "classification",
+            "code": "operational",
+            "label": "Lancaster, Ohio data-center community"
+          },
+          "normalized_value": {
+            "type": "classification",
+            "code": "operational"
+          },
+          "finding": "The operator currently lists Lancaster among its Ohio data-center communities.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        },
+        {
+          "source_id": "src_lancaster_acfr_2023_google_operational",
+          "attribute_path": "event.operational",
+          "raw_value": {
+            "type": "date",
+            "value": {
+              "year": 2023,
+              "precision": "year"
+            }
+          },
+          "finding": "Lancaster's 2023 ACFR states that phase 1 was up and running.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        }
+      ],
+      "events": [
+        {
+          "event_type": "operational",
+          "when": {
+            "year": 2023,
+            "precision": "year"
+          },
+          "source_id": "src_lancaster_acfr_2023_google_operational",
+          "confidence": 0.99,
+          "notes": "Operational no later than the 2023 reporting year; this is not asserted as the commissioning date."
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_3ab84322d5a216ec006d",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "rejected",
+      "confidence": 0.99,
+      "rationale": "Carrier Services Group's official contact page identifies 5635 South Avenue as its corporate headquarters and Boardman warehouse, while listing its data center separately on East Commerce Street in Youngstown. The mapped South Avenue building is therefore not the company's data center.",
+      "evidence": [
+        {
+          "source_id": "src_csg_contacts_current_2026",
+          "attribute_path": "facility.facility_type",
+          "raw_value": {
+            "type": "text",
+            "value": "Corporate headquarters and Boardman warehouse at 5635 South Avenue; separate data center on East Commerce Street"
+          },
+          "normalized_value": {
+            "type": "classification",
+            "code": "rejected"
+          },
+          "finding": "The operator's own location list distinguishes the mapped headquarters/warehouse from its separately located data center.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_e1c9b059e8db2df6a344",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.99,
+      "rationale": "ark currently operates two purpose-built Akron data centers, and Summit County's official annual statement reports that Involta first opened its Akron location in 2012. The mapped Involta-Akron facility is assigned a year-level operational anchor.",
+      "evidence": [
+        {
+          "source_id": "src_ark_akron_data_centers_current_2026",
+          "attribute_path": "facility.current_status",
+          "raw_value": {
+            "type": "classification",
+            "code": "operational",
+            "label": "Two operating Akron data centers"
+          },
+          "normalized_value": {
+            "type": "classification",
+            "code": "operational"
+          },
+          "finding": "The current operator markets two purpose-built Akron data centers.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        },
+        {
+          "source_id": "src_summit_involta_opened_2012",
+          "attribute_path": "event.operational",
+          "raw_value": {
+            "type": "date",
+            "value": {
+              "year": 2012,
+              "precision": "year"
+            }
+          },
+          "finding": "Summit County reports that Involta first opened its Akron location in 2012.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        }
+      ],
+      "events": [
+        {
+          "event_type": "operational",
+          "when": {
+            "year": 2012,
+            "precision": "year"
+          },
+          "source_id": "src_summit_involta_opened_2012",
+          "confidence": 0.99,
+          "notes": "Year Involta first opened its Akron location, as reported by Summit County."
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_19ccb72e37ae412f0878",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.94,
+      "rationale": "Choctaw Nation announced that its new Durant headquarters campus would contain a data center, documented the campus move and ribbon cutting in 2018, and the project contractor identifies a support data center in the completed complex. Together these establish operation no later than 2018 at year precision.",
+      "evidence": [
+        {
+          "source_id": "src_choctaw_hq_data_center_plan_201602",
+          "attribute_path": "facility.identity",
+          "raw_value": {
+            "type": "text",
+            "value": "New tribal headquarters campus will be home to a data center"
+          },
+          "finding": "The Nation's 2016 project description explicitly includes a data center on the selected campus.",
+          "disposition": "supporting",
+          "claim_confidence": 0.98
+        },
+        {
+          "source_id": "src_choctaw_hq_move_201804",
+          "attribute_path": "event.operational",
+          "raw_value": {
+            "type": "date",
+            "value": {
+              "year": 2018,
+              "precision": "year"
+            }
+          },
+          "finding": "The Nation documents occupancy and ribbon cutting for the new headquarters complex in 2018.",
+          "disposition": "supporting",
+          "claim_confidence": 0.94
+        },
+        {
+          "source_id": "src_manhattan_choctaw_tribal_complex_current_2026",
+          "attribute_path": "facility.identity",
+          "raw_value": {
+            "type": "text",
+            "value": "Completed Choctaw Nation Tribal Complex with support data center"
+          },
+          "finding": "The project record independently confirms that the completed complex includes a support data center.",
+          "disposition": "supporting",
+          "claim_confidence": 0.96
+        }
+      ],
+      "events": [
+        {
+          "event_type": "operational",
+          "when": {
+            "year": 2018,
+            "precision": "year"
+          },
+          "source_id": "src_choctaw_hq_move_201804",
+          "confidence": 0.94,
+          "notes": "Operational no later than occupation of the completed headquarters complex in 2018; no more precise data-center commissioning date is asserted."
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_12932e4c6b1b59f1a981",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.99,
+      "rationale": "RACK59 currently markets the exact 7725 West Reno facility and states that it has operated locally since 2009. Oklahoma's Department of Commerce independently identifies the company, address, operating data-center use, and 2009 founding year.",
+      "evidence": [
+        {
+          "source_id": "src_rack59_about_current_2026",
+          "attribute_path": "event.operational",
+          "raw_value": {
+            "type": "date",
+            "value": {
+              "year": 2009,
+              "precision": "year"
+            }
+          },
+          "finding": "The operator describes its colocation data center as locally owned and operated since 2009.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        },
+        {
+          "source_id": "src_okcommerce_rack59_20190910",
+          "attribute_path": "facility.identity",
+          "raw_value": {
+            "type": "text",
+            "value": "RACK59 at the 7725 Connect campus, founded in 2009"
+          },
+          "finding": "The state commerce record independently resolves the exact facility and operating use.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        }
+      ],
+      "events": [
+        {
+          "event_type": "operational",
+          "when": {
+            "year": 2009,
+            "precision": "year"
+          },
+          "source_id": "src_rack59_about_current_2026",
+          "confidence": 0.99,
+          "notes": "Operator-reported first year of RACK59 operation."
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_9935bf1b4c443467f135",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.95,
+      "rationale": "The mapped Wilsonville building resolves to the former Mentor Graphics corporate data center, now on Siemens' Wilsonville campus, rather than to Juniper. A contemporaneous project update placed opening in December 2012, and Oregon Public Broadcasting confirms Siemens currently operates a data center on the campus.",
+      "evidence": [
+        {
+          "source_id": "src_plannet_mentor_wilsonville_data_center_20121205",
+          "attribute_path": "event.operational",
+          "raw_value": {
+            "type": "date",
+            "value": {
+              "year": 2012,
+              "precision": "approximate_year"
+            }
+          },
+          "finding": "Construction was complete, migration was underway, and the Wilsonville corporate data center was due to open in December 2012.",
+          "disposition": "supporting",
+          "claim_confidence": 0.94
+        },
+        {
+          "source_id": "src_opb_siemens_wilsonville_20260707",
+          "attribute_path": "facility.current_status",
+          "raw_value": {
+            "type": "classification",
+            "code": "operational",
+            "label": "Siemens data center on its Wilsonville campus"
+          },
+          "normalized_value": {
+            "type": "classification",
+            "code": "operational"
+          },
+          "finding": "Current reporting confirms that Siemens operates a data center on the Wilsonville campus.",
+          "disposition": "supporting",
+          "claim_confidence": 0.97
+        },
+        {
+          "source_id": "src_siemens_wilsonville_location_current_2026",
+          "attribute_path": "facility.identity",
+          "raw_value": {
+            "type": "text",
+            "value": "Siemens, 27930 SW Parkway Avenue, Wilsonville"
+          },
+          "finding": "The operator's location directory resolves the current campus identity and address.",
+          "disposition": "supporting",
+          "claim_confidence": 0.97
+        }
+      ],
+      "events": [
+        {
+          "event_type": "operational",
+          "when": {
+            "year": 2012,
+            "precision": "approximate_year"
+          },
+          "source_id": "src_plannet_mentor_wilsonville_data_center_20121205",
+          "confidence": 0.94,
+          "notes": "Opening was scheduled for December 2012 with construction complete and migration underway; approximate-year precision preserves that qualification."
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_74068225b2456cb64b93",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "rejected",
+      "confidence": 0.99,
+      "rationale": "TTEC's official history identifies FCR as a customer-support outsourcing company, and an Oregon municipal record describes FCR's Grants Pass operations as live-agent call centers. The mapped FCR location is a call center, not a data center.",
+      "evidence": [
+        {
+          "source_id": "src_ttec_fcr_rebrand_current_2026",
+          "attribute_path": "facility.facility_type",
+          "raw_value": {
+            "type": "text",
+            "value": "Outsourced customer support company acquired by TTEC"
+          },
+          "normalized_value": {
+            "type": "classification",
+            "code": "rejected"
+          },
+          "finding": "The operator describes FCR as a customer-experience and support business rather than data-center infrastructure.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        },
+        {
+          "source_id": "src_coosbay_fcr_call_center_record",
+          "attribute_path": "facility.facility_type",
+          "raw_value": {
+            "type": "text",
+            "value": "Live-agent call-center operations, including Grants Pass"
+          },
+          "normalized_value": {
+            "type": "classification",
+            "code": "rejected"
+          },
+          "finding": "The municipal record independently classifies FCR's Oregon facilities as call centers.",
+          "disposition": "supporting",
+          "claim_confidence": 0.98
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_fdc093056209302895df",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "rejected",
+      "confidence": 0.97,
+      "rationale": "Earthclick's official company history identifies the mapped Cottage Grove address as the office of a small, family-owned ISP and hosting provider. Although it manages servers and bandwidth, the source does not identify a dedicated data-center facility at the mapped commercial storefront, so the seed is rejected as an ISP-office false positive.",
+      "evidence": [
+        {
+          "source_id": "src_earthclick_about_current_2026",
+          "attribute_path": "facility.facility_type",
+          "raw_value": {
+            "type": "text",
+            "value": "Small family-owned ISP and hosting provider at 1133 East Main Street"
+          },
+          "normalized_value": {
+            "type": "classification",
+            "code": "rejected"
+          },
+          "finding": "The company's own description resolves the point to its commercial office and service business, not a dedicated data-center facility.",
+          "disposition": "supporting",
+          "claim_confidence": 0.97
         }
       ],
       "record_status": "active"
