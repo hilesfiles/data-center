@@ -1804,5 +1804,88 @@
     "created_at": "2026-09-01T22:45:00Z",
     "updated_at": "2026-09-01T22:45:00Z",
     "record_status": "active"
+  },
+  {
+    "schema_version": "1.0.0",
+    "county_first_entry_adjudication_id": "fea_17019_ncsa_npcf_20100601_rejected",
+    "first_entry_research_candidate_id": "fer_0f32486d1266089cbc4a",
+    "treatment_definition_id": "trt_first_entry_v1",
+    "candidate_event_evaluation_id": "tev_d0bf433bb94d355932dd",
+    "county_fips": "17019",
+    "county_name": "Champaign County",
+    "state_abbr": "IL",
+    "resolution_state": "candidate_rejected_first_entry",
+    "decision": "reject_candidate_as_first_entry",
+    "county_first_entry_verified": false,
+    "inventory_completeness_status": "not_established",
+    "earlier_operations_search_status": "documented_incomplete",
+    "required_finding_status": {
+      "earliest_dated_operational_event": "partial",
+      "exact_facility_identity_for_earliest_event": "resolved",
+      "county_inventory_completeness": "unresolved",
+      "documented_search_for_earlier_operations": "resolved"
+    },
+    "earlier_operational_findings": [
+      {
+        "facility_id": "fac_ncsa_supercomputer_center_historic",
+        "canonical_name": "National Center for Supercomputing Applications",
+        "temporal_relation": "operational_no_later_than",
+        "when": {
+          "year": 1986,
+          "precision": "year"
+        },
+        "source_ids": [
+          "src_ncsa_history_opened_1986"
+        ],
+        "finding": "NCSA's official history states that the center opened in early 1986 and users began remotely accessing its supercomputer, establishing county computing-facility operation decades before NPCF.",
+        "confidence": 0.99
+      }
+    ],
+    "source_ids": [
+      "src_ncsa_npcf_completion_20100402",
+      "src_ncsa_history_opened_1986"
+    ],
+    "authoritative_source_types": [
+      "operator_release",
+      "other"
+    ],
+    "rationale": "The National Petascale Computing Facility is dated to June 1, 2010, but NCSA's official history documents its Champaign County supercomputing operation beginning in 1986. The 2010 event cannot be the county's first operational entry. The complete historical inventory remains unverified, so no treatment date is assigned.",
+    "created_at": "2026-09-02T10:00:00Z",
+    "updated_at": "2026-09-02T10:00:00Z",
+    "record_status": "active"
+  },
+  {
+    "schema_version": "1.0.0",
+    "county_first_entry_adjudication_id": "fea_21071_ekn_20230501_unresolved",
+    "first_entry_research_candidate_id": "fer_09b69c5d2b3da8560cd8",
+    "treatment_definition_id": "trt_first_entry_v1",
+    "candidate_event_evaluation_id": "tev_b15337702cfa472a3424",
+    "county_fips": "21071",
+    "county_name": "Floyd County",
+    "state_abbr": "KY",
+    "resolution_state": "unresolved",
+    "decision": "continue_research",
+    "county_first_entry_verified": false,
+    "inventory_completeness_status": "not_established",
+    "earlier_operations_search_status": "documented_incomplete",
+    "required_finding_status": {
+      "earliest_dated_operational_event": "partial",
+      "exact_facility_identity_for_earliest_event": "resolved",
+      "county_inventory_completeness": "unresolved",
+      "documented_search_for_earlier_operations": "partial"
+    },
+    "earlier_operational_findings": [],
+    "source_ids": [
+      "src_idi_ekn_data_center_20230501",
+      "src_gearheart_about_data_center_current_2026"
+    ],
+    "authoritative_source_types": [
+      "operator_release",
+      "other"
+    ],
+    "rationale": "The dated partner release establishes EKN's exact Floyd County data center operating by May 1, 2023, and affiliated-provider evidence indicates additional county data-center activity without a usable earlier commissioning date. The county inventory and search for earlier operations are not complete, so the true first entry remains unresolved.",
+    "created_at": "2026-09-02T10:00:00Z",
+    "updated_at": "2026-09-02T10:00:00Z",
+    "record_status": "provisional"
   }
 ]

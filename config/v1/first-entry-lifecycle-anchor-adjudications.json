@@ -4,7 +4,7 @@
   "artifact_version": "2026.09.02",
   "generated_at": "2026-09-02T04:00:00Z",
   "record_schema": "https://dccio.org/schemas/v1/national-lifecycle-evidence-adjudication.schema.json",
-  "record_count": 14,
+  "record_count": 22,
   "records": [
     {
       "schema_version": "1.0.0",
@@ -441,6 +441,216 @@
           "attribute_path": "facility.facility_type",
           "raw_value": {"type": "text", "value": "FamilySearch centers provide genealogy help and public access to computers, internet, and records"},
           "finding": "The operator's service definition explains the center label and rules out data-center infrastructure as the intended facility type.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_bcea57653a38f1e774eb",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "rejected",
+      "confidence": 0.98,
+      "rationale": "Venture Data's official site identifies the company as a telephone data-collection and market-research business. The mapped Rexburg building is a call-center/company-name semantic false positive rather than a data-center facility.",
+      "evidence": [
+        {
+          "source_id": "src_venturedata_company_contact_current_2026",
+          "attribute_path": "facility.facility_type",
+          "raw_value": {"type": "text", "value": "Telephone data collection and market research company"},
+          "normalized_value": {"type": "classification", "code": "rejected"},
+          "finding": "The operator's own service description identifies a survey call-center business, not data-center infrastructure.",
+          "disposition": "supporting",
+          "claim_confidence": 0.98
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_1b6df0bc0fd4d6e749b3",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.99,
+      "rationale": "NCSA's contemporaneous announcement states that the National Petascale Computing Facility reached substantial completion and would be ready for operations on June 1, 2010. Its descriptions of the data-center power, cooling, networking, and computing systems align with the mapped NCSA facility.",
+      "evidence": [
+        {
+          "source_id": "src_ncsa_npcf_completion_20100402",
+          "attribute_path": "facility.current_status",
+          "raw_value": {"type": "classification", "code": "operational", "label": "Ready for operations June 1, 2010"},
+          "normalized_value": {"type": "classification", "code": "operational"},
+          "finding": "The university operator gives a specific operations-ready date and describes the mapped facility's data-center systems.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        }
+      ],
+      "events": [
+        {
+          "event_type": "operational",
+          "when": {"date": "2010-06-01", "precision": "day"},
+          "source_id": "src_ncsa_npcf_completion_20100402",
+          "confidence": 0.99,
+          "notes": "NCSA stated that the National Petascale Computing Facility would be ready for operations on June 1, 2010."
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_4c1767ac47d59ec94baf",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "rejected",
+      "confidence": 0.98,
+      "rationale": "Lake County's assessor record maps the footprint to 1500 E Lake Cook Road, while an SEC filing identifies ANGUS Chemical Company at that exact address and classifies its business as chemicals. The source label VISA is not supported at the mapped property, so the feature is rejected as an identity/type false positive.",
+      "evidence": [
+        {
+          "source_id": "src_lake_county_1500_lake_cook_assessor_current_2026",
+          "attribute_path": "facility.identity",
+          "raw_value": {"type": "text", "value": "Commercial property at 1500 E Lake Cook Road"},
+          "finding": "The county property record establishes the exact mapped address.",
+          "disposition": "supporting",
+          "claim_confidence": 0.98
+        },
+        {
+          "source_id": "src_sec_angus_1500_lake_cook_2022",
+          "attribute_path": "facility.facility_type",
+          "raw_value": {"type": "text", "value": "ANGUS Chemical Company at 1500 E Lake Cook Road; chemicals industry"},
+          "normalized_value": {"type": "classification", "code": "rejected"},
+          "finding": "The federal filing identifies a chemical company at the exact mapped address rather than a Visa data center.",
+          "disposition": "supporting",
+          "claim_confidence": 0.98
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_1c1ed082a958ecdac7c8",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "rejected",
+      "confidence": 0.99,
+      "rationale": "CData's acquisition announcement explains that forceAmp developed DBAmp, a Salesforce-to-SQL Server connectivity product, and that its team joined CData as a software and data-integration business. The mapped building is a company-name semantic false positive, not a data center.",
+      "evidence": [
+        {
+          "source_id": "src_cdata_forceamp_dbamp_acquisition_current_2026",
+          "attribute_path": "facility.facility_type",
+          "raw_value": {"type": "text", "value": "Software company producing Salesforce data-connectivity and integration technology"},
+          "normalized_value": {"type": "classification", "code": "rejected"},
+          "finding": "The successor company's official description establishes forceAmp as a software product company rather than a data-center operator.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_edc62e969fb6b5f09c20",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "rejected",
+      "confidence": 0.96,
+      "rationale": "Geneseo Communications' official pages describe a regional fiber, internet, phone, and business-communications provider and list its public offices in Illinois, not at the mapped Scott County footprint. No data-center service or facility is claimed. The feature is rejected as a telecommunications company/service-label false positive.",
+      "evidence": [
+        {
+          "source_id": "src_geneseo_communications_business_current_2026",
+          "attribute_path": "facility.facility_type",
+          "raw_value": {"type": "text", "value": "Fiber internet, phone, and business communications provider"},
+          "normalized_value": {"type": "classification", "code": "rejected"},
+          "finding": "The operator describes communications services rather than data-center operations.",
+          "disposition": "supporting",
+          "claim_confidence": 0.96
+        },
+        {
+          "source_id": "src_geneseo_communications_contact_current_2026",
+          "attribute_path": "facility.identity",
+          "raw_value": {"type": "text", "value": "Official offices at 111 E First Street, Geneseo, Illinois and 2011 Rock Street, Peru, Illinois"},
+          "finding": "The operator's location list does not identify the mapped Scott County building as a company facility.",
+          "disposition": "supporting",
+          "claim_confidence": 0.95
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_0f4c0ce63da17b385294",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "rejected",
+      "confidence": 0.99,
+      "rationale": "The Hays Chamber's exact-address directory entry identifies Cloud Storage Corp as an IT-parts distributor with a large warehouse that stocks and ships server components. The business name was misread as facility function; this is not an operating data center.",
+      "evidence": [
+        {
+          "source_id": "src_hays_chamber_cloud_storage_current_2026",
+          "attribute_path": "facility.facility_type",
+          "raw_value": {"type": "text", "value": "IT-parts distributor and warehouse at 1305 Canterbury Drive"},
+          "normalized_value": {"type": "classification", "code": "rejected"},
+          "finding": "The local business directory establishes both the exact address and the warehouse/distribution use.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_2f2e581fa2defcacb986",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.98,
+      "rationale": "A dated IDI partner release identifies East Kentucky Network at Ivel, Kentucky and describes its 16,700-square-foot Tier III Design Certified data center. EKN's official site independently gives the 271 Technology Trail address and the same data-center area, matching the mapped Floyd County facility.",
+      "evidence": [
+        {
+          "source_id": "src_idi_ekn_data_center_20230501",
+          "attribute_path": "facility.current_status",
+          "raw_value": {"type": "classification", "code": "operational", "label": "16,700-square-foot Tier III Design Certified Data Center in Ivel"},
+          "normalized_value": {"type": "classification", "code": "operational"},
+          "finding": "The dated partner release identifies the operator, locality, facility type, certification, and area.",
+          "disposition": "supporting",
+          "claim_confidence": 0.98
+        },
+        {
+          "source_id": "src_gearheart_about_data_center_current_2026",
+          "attribute_path": "facility.identity",
+          "raw_value": {"type": "text", "value": "Gearheart-affiliated eastern Kentucky data-center operations"},
+          "finding": "The affiliated provider confirms data-center operations in the county, while not supplying a usable commissioning date.",
+          "disposition": "supporting",
+          "claim_confidence": 0.94
+        }
+      ],
+      "events": [
+        {
+          "event_type": "operational",
+          "when": {"date": "2023-05-01", "precision": "day"},
+          "source_id": "src_idi_ekn_data_center_20230501",
+          "confidence": 0.98,
+          "notes": "Operational no later than the dated partner release identifying EKN's 16,700-square-foot Tier III Design Certified facility in Ivel."
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_26b1ebd054c39a9658db",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "rejected",
+      "confidence": 0.99,
+      "rationale": "LSU's official description identifies the Center for Computation & Technology as an interdisciplinary academic research center supporting research, education, and economic development. The word 'computation' in the institution name does not identify a data-center facility, so the mapped point is rejected as a semantic false positive.",
+      "evidence": [
+        {
+          "source_id": "src_lsu_cct_about_current_2026",
+          "attribute_path": "facility.facility_type",
+          "raw_value": {"type": "text", "value": "Interdisciplinary academic research center"},
+          "normalized_value": {"type": "classification", "code": "rejected"},
+          "finding": "The university describes a research organization rather than a data-center building or operation.",
           "disposition": "supporting",
           "claim_confidence": 0.99
         }

@@ -386,7 +386,7 @@ export default function App() {
       </header>
 
       <div className="fixture-banner" role="status">
-        <strong>Thirty-seven dated anchors have been adjudicated across 40 researched counties.</strong> Earlier operations reject 29 candidate anchors; Hudson, Rockingham, Lake, Houston, White, Napa, Solano, and Adams counties remain unresolved as county first entry. Contra Costa's e360 office, Riverside's university IT office, and Bear Lake's FamilySearch center were rejected as false-positive seeds. Complete historical inventories remain unresolved, zero treatment counties are eligible, and no impact model has been run.
+        <strong>Thirty-nine dated anchors have been adjudicated across 48 researched counties.</strong> Earlier operations reject 30 candidate anchors; nine counties remain unresolved as county first entry, including Floyd County's dated EKN facility. Six newly reviewed source records—VentureData, VISA, ForceAmp, Geneseo Communications, Cloud Storage Corp, and LSU CCT—were rejected as false-positive seeds. Complete historical inventories remain unresolved, zero treatment counties are eligible, and no impact model has been run.
       </div>
 
       <main className="workspace">
