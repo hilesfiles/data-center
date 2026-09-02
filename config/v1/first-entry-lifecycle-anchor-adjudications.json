@@ -2,9 +2,9 @@
   "schema_version": "1.0.0",
   "artifact_type": "first_entry_lifecycle_anchor_adjudications",
   "artifact_version": "2026.09.02",
-  "generated_at": "2026-09-03T06:00:00Z",
+  "generated_at": "2026-09-03T07:00:00Z",
   "record_schema": "https://dccio.org/schemas/v1/national-lifecycle-evidence-adjudication.schema.json",
-  "record_count": 143,
+  "record_count": 151,
   "records": [
     {
       "schema_version": "1.0.0",
@@ -5393,6 +5393,366 @@
         "disposition": "supporting",
         "claim_confidence": 0.96
       }],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_a5b383b664bd27371550",
+      "resolution_state": "partial",
+      "decision": "provisional",
+      "confidence": 0.58,
+      "rationale": "The seed and a derivative directory identify Verizon Wireless at 7510 West Stinemyer Road, but the reviewed material traces back to the same OpenStreetMap tag and provides no independent operator, permit, assessor, or regulatory confirmation that the building performs computing data-center functions rather than cellular-network switching. The site remains provisional.",
+      "evidence": [
+        {
+          "source_id": "src_osm_verizon_new_palestine_way_349925359_20260903",
+          "attribute_path": "facility.identity",
+          "raw_value": {
+            "type": "text",
+            "value": "Verizon Wireless at 7510 West Stinemyer Road tagged telecom=data_center"
+          },
+          "finding": "The exact mapped object supplies the facility name and address but not independent functional verification.",
+          "disposition": "context",
+          "claim_confidence": 0.65
+        },
+        {
+          "source_id": "src_dce_verizon_new_palestine_20260614",
+          "attribute_path": "facility.current_status",
+          "raw_value": {
+            "type": "text",
+            "value": "Mapped Verizon edge data center at the exact address"
+          },
+          "finding": "The directory repeats the map-derived classification and estimates capacity without a cited operator record.",
+          "disposition": "context",
+          "claim_confidence": 0.55
+        }
+      ],
+      "record_status": "provisional"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_ebc03715518a366d5426",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "closed",
+      "confidence": 0.98,
+      "rationale": "A 2008 Federal Register notice locates the Federal Transit Administration OASIS system in the Integrated Communication Solutions data center at 5260 Westview Drive. Frederick County’s 2019 permit record for the same address then authorizes conversion from office/data-center use to an office/research laboratory, establishing that the reviewed data-center use is historical rather than current.",
+      "evidence": [
+        {
+          "source_id": "src_federal_register_ics_frederick_20080605",
+          "attribute_path": "event.operational",
+          "raw_value": {
+            "type": "date",
+            "value": {
+              "date": "2008-06-05",
+              "precision": "day"
+            }
+          },
+          "finding": "The federal system-of-records notice identifies an operating data center at the exact address on June 5, 2008.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        },
+        {
+          "source_id": "src_frederick_permit_5260_westview_20190705",
+          "attribute_path": "facility.current_status",
+          "raw_value": {
+            "type": "classification",
+            "code": "closed",
+            "label": "Office/data center converted to office/research lab"
+          },
+          "normalized_value": {
+            "type": "classification",
+            "code": "closed"
+          },
+          "finding": "The exact-address county permit documents the end of the former data-center use.",
+          "disposition": "supporting",
+          "claim_confidence": 0.98
+        }
+      ],
+      "events": [
+        {
+          "event_type": "operational",
+          "when": {
+            "date": "2008-06-05",
+            "precision": "day"
+          },
+          "source_id": "src_federal_register_ics_frederick_20080605",
+          "confidence": 0.99,
+          "notes": "Operational no later than the dated federal notice; this is not asserted as the opening date."
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_af85b545d0dad23d1a78",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.96,
+      "rationale": "Howard County’s 2026 fiscal analysis identifies the county’s data processing center at 9800 Eternal Rings Drive and reports data-processing-center tax revenue beginning in tax year 2023. The exact-address property record independently reports a 110,336-square-foot industrial building constructed in 2022.",
+      "evidence": [
+        {
+          "source_id": "src_howard_fiscal_analysis_cb31_2026",
+          "attribute_path": "event.operational",
+          "raw_value": {
+            "type": "date",
+            "value": {
+              "year": 2023,
+              "precision": "year"
+            }
+          },
+          "finding": "The county attributes data-processing-center tax revenue to the exact address beginning in tax year 2023.",
+          "disposition": "supporting",
+          "claim_confidence": 0.96
+        },
+        {
+          "source_id": "src_compass_9800_eternal_rings_2026",
+          "attribute_path": "observation.floor_area_sqft",
+          "raw_value": {
+            "type": "quantity",
+            "value": 110336,
+            "unit": "square foot"
+          },
+          "normalized_value": {
+            "type": "quantity",
+            "value": 110336,
+            "unit": "square foot"
+          },
+          "finding": "The public-record aggregation reports the exact building’s area and 2022 construction year.",
+          "disposition": "supporting",
+          "claim_confidence": 0.9
+        }
+      ],
+      "observations": [
+        {
+          "metric_code": "facility.area.building_sqft_observed",
+          "value": 110336,
+          "unit": "square foot",
+          "period": {
+            "year": 2026,
+            "precision": "year"
+          },
+          "source_id": "src_compass_9800_eternal_rings_2026"
+        }
+      ],
+      "events": [
+        {
+          "event_type": "operational",
+          "when": {
+            "year": 2023,
+            "precision": "year"
+          },
+          "source_id": "src_howard_fiscal_analysis_cb31_2026",
+          "confidence": 0.96,
+          "notes": "Operational no later than tax year 2023; this is not asserted as the opening year."
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_4ff15bb0c855921dbbbf",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.99,
+      "rationale": "TierPoint’s current operator page identifies its Boston–Andover data center at 15 Shattuck Road. A state-hosted independent-audit bridge letter lists TierPoint site AND at the exact address within the audit population through October 31, 2019, establishing operation by that date.",
+      "evidence": [
+        {
+          "source_id": "src_tierpoint_boston_andover_current_2026",
+          "attribute_path": "facility.current_status",
+          "raw_value": {
+            "type": "classification",
+            "code": "operational",
+            "label": "Current Boston–Andover data-center services at 15 Shattuck Road"
+          },
+          "normalized_value": {
+            "type": "classification",
+            "code": "operational"
+          },
+          "finding": "The operator currently markets the exact facility and its services.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        },
+        {
+          "source_id": "src_maine_tierpoint_soc_bridge_20191031",
+          "attribute_path": "event.operational",
+          "raw_value": {
+            "type": "date",
+            "value": {
+              "date": "2019-10-31",
+              "precision": "day"
+            }
+          },
+          "finding": "The audit material includes site AND at 15 Shattuck Road in TierPoint’s controlled data-center service environment through the period end.",
+          "disposition": "supporting",
+          "claim_confidence": 0.96
+        }
+      ],
+      "events": [
+        {
+          "event_type": "operational",
+          "when": {
+            "date": "2019-10-31",
+            "precision": "day"
+          },
+          "source_id": "src_maine_tierpoint_soc_bridge_20191031",
+          "confidence": 0.96,
+          "notes": "Operational no later than the independent audit period end; this is not asserted as the opening date."
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_56cf26d997abbd419855",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.98,
+      "rationale": "OTAVA’s facility history states that the former EDS/GM disaster-recovery site became Online Tech’s Mid-Michigan data center after a 2005 investment. Mapletree’s current property page independently identifies 5225 Exchange Drive as a single-storey data centre.",
+      "evidence": [
+        {
+          "source_id": "src_otava_flint_history_2013",
+          "attribute_path": "event.operational",
+          "raw_value": {
+            "type": "date",
+            "value": {
+              "year": 2005,
+              "precision": "year"
+            }
+          },
+          "finding": "The operator’s history says the Flint Township facility became its Mid-Michigan data center following a 2005 investment.",
+          "disposition": "supporting",
+          "claim_confidence": 0.98
+        },
+        {
+          "source_id": "src_mapletree_5225_exchange_current_2026",
+          "attribute_path": "facility.current_status",
+          "raw_value": {
+            "type": "classification",
+            "code": "operational",
+            "label": "Current single-storey data centre at 5225 Exchange Drive"
+          },
+          "normalized_value": {
+            "type": "classification",
+            "code": "operational"
+          },
+          "finding": "The current owner identifies the exact property as a data-centre asset.",
+          "disposition": "supporting",
+          "claim_confidence": 0.98
+        }
+      ],
+      "events": [
+        {
+          "event_type": "operational",
+          "when": {
+            "year": 2005,
+            "precision": "year"
+          },
+          "source_id": "src_otava_flint_history_2013",
+          "confidence": 0.98,
+          "notes": "The operator dates conversion to the Mid-Michigan data center to 2005; no month or day is asserted."
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_b0603868756060e6aca0",
+      "resolution_state": "partial",
+      "decision": "provisional",
+      "confidence": 0.35,
+      "rationale": "The selected Monroe County record is an unnamed OpenStreetMap point on Samaria Road with only telecom=data_center. Reverse geocoding places it beside an unrelated music-school point and supplies no operator, street number, footprint, permit, or institutional record. The point remains unverified rather than being accepted or rejected.",
+      "evidence": [
+        {
+          "source_id": "src_nominatim_monroe_samaria_20260903",
+          "attribute_path": "facility.identity",
+          "raw_value": {
+            "type": "text",
+            "value": "Unnamed telecom=data_center point on Samaria Road beside Main Studio"
+          },
+          "finding": "The exact-location result cannot resolve the mapped point to an independently documented computing facility.",
+          "disposition": "context",
+          "claim_confidence": 0.35
+        }
+      ],
+      "record_status": "provisional"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_998d0bcfe6588f26f8c5",
+      "resolution_state": "partial",
+      "decision": "provisional",
+      "confidence": 0.35,
+      "rationale": "The selected Granite County object is an unnamed small building in downtown Philipsburg with only building=yes and telecom=data_center tags. Reverse geocoding associates the location with nearby retail uses and supplies no operator, address, permit, assessor, or institutional confirmation. The object remains unverified.",
+      "evidence": [
+        {
+          "source_id": "src_nominatim_granite_philipsburg_20260903",
+          "attribute_path": "facility.identity",
+          "raw_value": {
+            "type": "text",
+            "value": "Unnamed telecom=data_center building beside downtown Philipsburg retail uses"
+          },
+          "finding": "The exact-location result does not independently establish a computing data-center function.",
+          "disposition": "context",
+          "claim_confidence": 0.35
+        }
+      ],
+      "record_status": "provisional"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_6a24d07e460bc64775ce",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.99,
+      "rationale": "A federal NTIA progress report identifies the University of New Hampshire Data Center at 1 Leavitt Lane and states that installed network equipment was in use as of December 31, 2012. UNH’s current Research Computing Center page independently identifies active computing equipment in the same data center.",
+      "evidence": [
+        {
+          "source_id": "src_ntia_usnh_progress_report_20130320",
+          "attribute_path": "event.operational",
+          "raw_value": {
+            "type": "date",
+            "value": {
+              "date": "2012-12-31",
+              "precision": "day"
+            }
+          },
+          "finding": "The federal grant report identifies the exact UNH data center and documents installed equipment in current use as of the reporting cutoff.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        },
+        {
+          "source_id": "src_unh_research_computing_center_current_2026",
+          "attribute_path": "facility.current_status",
+          "raw_value": {
+            "type": "classification",
+            "code": "operational",
+            "label": "Current HPC equipment in the 1 Leavitt Lane data center"
+          },
+          "normalized_value": {
+            "type": "classification",
+            "code": "operational"
+          },
+          "finding": "UNH currently describes the exact facility as hosting research-computing equipment.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        }
+      ],
+      "events": [
+        {
+          "event_type": "operational",
+          "when": {
+            "date": "2012-12-31",
+            "precision": "day"
+          },
+          "source_id": "src_ntia_usnh_progress_report_20130320",
+          "confidence": 0.99,
+          "notes": "Operational no later than the federal report’s December 31, 2012 status cutoff; this is not asserted as the opening date."
+        }
+      ],
       "record_status": "active"
     }
   ]
