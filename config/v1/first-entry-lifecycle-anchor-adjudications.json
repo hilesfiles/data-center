@@ -2,9 +2,9 @@
   "schema_version": "1.0.0",
   "artifact_type": "first_entry_lifecycle_anchor_adjudications",
   "artifact_version": "2026.09.02",
-  "generated_at": "2026-09-03T07:00:00Z",
+  "generated_at": "2026-09-03T08:00:00Z",
   "record_schema": "https://dccio.org/schemas/v1/national-lifecycle-evidence-adjudication.schema.json",
-  "record_count": 151,
+  "record_count": 159,
   "records": [
     {
       "schema_version": "1.0.0",
@@ -5754,6 +5754,252 @@
         }
       ],
       "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_a092e49524f2436eb271",
+      "resolution_state": "partial",
+      "decision": "provisional",
+      "confidence": 0.48,
+      "rationale": "The selected West Deptford footprint is an unnamed OpenStreetMap building tagged telecom=data_center. The exact industrial property also contains Techbuyer’s 10,000-square-foot server-equipment warehouse, but the reviewed evidence does not establish that the mapped 41,058-square-foot building operates as a computing data center rather than a multi-tenant warehouse.",
+      "evidence": [
+        {
+          "source_id": "src_osm_west_deptford_way_607483487_20260903",
+          "attribute_path": "facility.identity",
+          "raw_value": { "type": "text", "value": "Unnamed building=yes; telecom=data_center object at the 1299–1301 Metropolitan Avenue industrial property" },
+          "finding": "The exact mapped way provides only a generic data-center tag and no operator or facility name.",
+          "disposition": "context",
+          "claim_confidence": 0.5
+        },
+        {
+          "source_id": "src_techbuyer_west_deptford_warehouse_20190225",
+          "attribute_path": "facility.facility_type",
+          "raw_value": { "type": "text", "value": "10,000-square-foot warehouse and engineering facility at 1301 Metropolitan Avenue" },
+          "finding": "A known occupant describes its use as inventory storage and engineering, not hosted computing operations.",
+          "disposition": "context",
+          "claim_confidence": 0.88
+        }
+      ],
+      "record_status": "provisional"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_493f3cb825aa0d3350e7",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "rejected",
+      "confidence": 0.97,
+      "rationale": "The IM3 centroid reverse-geocodes to 1099 Candeleras Street inside the Villas Candeleras residential subdivision. Street-level property records identify the surrounding addresses as individual residential townhouses, so the CenturyLink-attributed polygon is rejected as a data-center classification false positive.",
+      "evidence": [
+        {
+          "source_id": "src_nominatim_villas_candeleras_20260903",
+          "attribute_path": "facility.identity",
+          "raw_value": { "type": "text", "value": "1099 Candeleras Street, Villas Candelaras, Las Cruces" },
+          "finding": "The mapped centroid resolves to a residential street address within Villas Candeleras rather than a CenturyLink facility address.",
+          "disposition": "supporting",
+          "claim_confidence": 0.95
+        },
+        {
+          "source_id": "src_realtor_candeleras_residential_202607",
+          "attribute_path": "facility.facility_type",
+          "raw_value": { "type": "classification", "code": "residential_townhouse_subdivision", "label": "Individual townhouse properties on Candeleras Street" },
+          "normalized_value": { "type": "classification", "code": "rejected" },
+          "finding": "The property directory classifies the street’s parcels as residential homes, contradicting a dedicated data-center use.",
+          "disposition": "supporting",
+          "claim_confidence": 0.96
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_ea36af5c438a7a0f5d01",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "rejected",
+      "confidence": 0.99,
+      "rationale": "A New York court decision identifies the exact 201 Ravine Avenue property as Trevor Park Terrace, a seven-story multifamily residential building. The mapped footprint is an apartment building, not a data center, and is rejected as a classification false positive.",
+      "evidence": [
+        {
+          "source_id": "src_ny_court_201_ravine_multifamily_2008",
+          "attribute_path": "facility.facility_type",
+          "raw_value": { "type": "classification", "code": "multifamily_residential", "label": "Seven-story multifamily building at 201 Ravine Avenue" },
+          "normalized_value": { "type": "classification", "code": "rejected" },
+          "finding": "The court record directly establishes the exact property’s residential use.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_d03bd9db38a8b063f2ed",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.98,
+      "rationale": "Delaware County’s 2006 agreement identifies Citigroup’s planned 300,000-square-foot data center at the Park at Greif. A federal court later records that Citi completed the facility and began operating it in August 2008, while the county’s current comprehensive plan continues to identify Citigroup Technology at 306 Greif Parkway.",
+      "evidence": [
+        {
+          "source_id": "src_delaware_oh_citi_project_20060619",
+          "attribute_path": "facility.identity",
+          "raw_value": { "type": "text", "value": "Citigroup Technology data center at the Park at Greif, parcel 41944005007000" },
+          "finding": "The county agreement establishes the facility identity, location, intended data-center function, and approximately 300,000-square-foot scale.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        },
+        {
+          "source_id": "src_sdoh_paulus_citi_operating_20130930",
+          "attribute_path": "event.operational",
+          "raw_value": { "type": "date", "value": { "date": "2008-08-01", "precision": "month" } },
+          "finding": "The court states that Citi completed construction and began operating the nearby data center in August 2008.",
+          "disposition": "supporting",
+          "claim_confidence": 0.98
+        },
+        {
+          "source_id": "src_delaware_county_comp_plan_citi_20260323",
+          "attribute_path": "facility.current_status",
+          "raw_value": { "type": "classification", "code": "operational", "label": "Citigroup Technology Inc. at 306 Greif Parkway in current county property table" },
+          "normalized_value": { "type": "classification", "code": "operational" },
+          "finding": "The current county plan continues to identify Citigroup Technology at the exact property.",
+          "disposition": "supporting",
+          "claim_confidence": 0.96
+        }
+      ],
+      "events": [
+        {
+          "event_type": "operational",
+          "when": { "date": "2008-08-01", "precision": "month" },
+          "source_id": "src_sdoh_paulus_citi_operating_20130930",
+          "confidence": 0.98,
+          "notes": "Operating in August 2008; the court does not provide a day."
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_0506fb4a252dab2b1a52",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "under_construction",
+      "confidence": 0.94,
+      "rationale": "Aligned identifies NEO-01 at 2509 Hayes Avenue on the exact former industrial campus represented by the mapped footprint. Current project tracking reports continuing construction and a prospective late-September 2026 activation, so the facility is not treated as an operational first-entry anchor.",
+      "evidence": [
+        {
+          "source_id": "src_aligned_neo01_current_2026",
+          "attribute_path": "facility.identity",
+          "raw_value": { "type": "text", "value": "NEO-01 data center, 2509 Hayes Avenue, Sandusky" },
+          "finding": "The operator resolves the mapped building to its 129-acre NEO-01 campus.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        },
+        {
+          "source_id": "src_aterio_neo01_construction_20260902",
+          "attribute_path": "facility.current_status",
+          "raw_value": { "type": "classification", "code": "under_construction", "label": "Construction stage with estimated activation after the research date" },
+          "normalized_value": { "type": "classification", "code": "under_construction" },
+          "finding": "Current project tracking reports the building remains in construction and does not yet document full commissioning.",
+          "disposition": "supporting",
+          "claim_confidence": 0.9
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_3d7e817c2a5c320c1a30",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.95,
+      "rationale": "Oklahoma’s transportation record ties YZY Capital’s planned $80 million Oktaha data center to West 133rd Street South, matching the mapped 112,466-square-foot building. The Southwest Ledger subsequently reported on February 20, 2024 that YZY had completed the 50 MW Oktaha project and that it was operational.",
+      "evidence": [
+        {
+          "source_id": "src_okdot_yzy_oktaha_202205",
+          "attribute_path": "facility.identity",
+          "raw_value": { "type": "text", "value": "YZY Capital Oktaha data center on West 133rd Street South" },
+          "finding": "The state road-project record resolves the mapped rural site to YZY Capital’s Oktaha data-center development.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        },
+        {
+          "source_id": "src_southwest_ledger_yzy_operational_20240220",
+          "attribute_path": "event.operational",
+          "raw_value": { "type": "date", "value": { "date": "2024-02-20", "precision": "day" } },
+          "finding": "Local reporting quotes the port authority that the 50 MW Oktaha facility was complete and currently operational.",
+          "disposition": "supporting",
+          "claim_confidence": 0.95
+        }
+      ],
+      "events": [
+        {
+          "event_type": "operational",
+          "when": { "date": "2024-02-20", "precision": "day" },
+          "source_id": "src_southwest_ledger_yzy_operational_20240220",
+          "confidence": 0.95,
+          "notes": "Operational no later than the publication date; this is not asserted as the opening date."
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_93d4f8914550cebdb7ff",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.98,
+      "rationale": "Data Center Dynamics identifies an operating Cascade Divide colocation data center at the exact 207 SW Columbia Street building by July 30, 2021. Fort Rock Data Center’s current operator page confirms continuing enterprise data-center operation at the same address.",
+      "evidence": [
+        {
+          "source_id": "src_dcd_cascade_divide_bend_20210730",
+          "attribute_path": "event.operational",
+          "raw_value": { "type": "date", "value": { "date": "2021-07-30", "precision": "day" } },
+          "finding": "The facility-specific report describes leased customer load in the operating data center at the exact address.",
+          "disposition": "supporting",
+          "claim_confidence": 0.96
+        },
+        {
+          "source_id": "src_fortrock_bend_current_2026",
+          "attribute_path": "facility.current_status",
+          "raw_value": { "type": "classification", "code": "operational", "label": "Current 24/7 Fort Rock data center at 207 SW Columbia Street" },
+          "normalized_value": { "type": "classification", "code": "operational" },
+          "finding": "The current operator identifies the exact facility and its active colocation and resilience services.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        }
+      ],
+      "events": [
+        {
+          "event_type": "operational",
+          "when": { "date": "2021-07-30", "precision": "day" },
+          "source_id": "src_dcd_cascade_divide_bend_20210730",
+          "confidence": 0.96,
+          "notes": "Operational no later than the dated report; this is not asserted as the opening date."
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_58d441e08843217f1c24",
+      "resolution_state": "partial",
+      "decision": "provisional",
+      "confidence": 0.38,
+      "rationale": "The selected Grainger County object is a 1,232-square-foot unnamed building tagged telecom=data_center inside the Miller Auto Parts scrap yard. No operator, street number, permit, utility, assessor, or institutional source independently verifies a computing data-center function, so the object remains provisional.",
+      "evidence": [
+        {
+          "source_id": "src_osm_grainger_way_904453635_20260903",
+          "attribute_path": "facility.identity",
+          "raw_value": { "type": "text", "value": "Unnamed building=yes; telecom=data_center way inside Miller Auto Parts industrial=scrap_yard landuse" },
+          "finding": "The exact map object supplies only a generic data-center tag within an auto-parts yard and no independent facility identity.",
+          "disposition": "context",
+          "claim_confidence": 0.38
+        }
+      ],
+      "record_status": "provisional"
     }
   ]
 }

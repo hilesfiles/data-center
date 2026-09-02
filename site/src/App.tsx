@@ -386,7 +386,7 @@ export default function App() {
       </header>
 
       <div className="fixture-banner" role="status">
-        <strong>One hundred forty-one dated anchors have been adjudicated across 176 researched counties.</strong> Earlier operations reject 52 candidate anchors; 89 counties remain unresolved as county first entry. The latest tranche adds dated anchors in Frederick MD, Howard MD, Essex MA, Genesee MI, and Strafford NH; the Hancock IN, Monroe MI, and Granite MT map-only telecom sites remain provisional. Complete historical inventories remain unresolved, 41 counties remain queued, zero treatment counties are eligible, and no impact model has been run.
+        <strong>One hundred forty-four dated anchors have been adjudicated across 184 researched counties.</strong> Earlier operations reject 52 candidate anchors; 92 counties remain unresolved as county first entry. The latest tranche adds dated anchors in Delaware OH, Muskogee OK, and Deschutes OR; Erie OH remains under construction, Doña Ana NM and Westchester NY are rejected map false positives, and Gloucester NJ and Grainger TN remain provisional. Complete historical inventories remain unresolved, 33 counties remain queued, zero treatment counties are eligible, and no impact model has been run.
       </div>
 
       <main className="workspace">
