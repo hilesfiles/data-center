@@ -4,7 +4,7 @@
   "artifact_version": "2026.09.02",
   "generated_at": "2026-09-02T04:00:00Z",
   "record_schema": "https://dccio.org/schemas/v1/national-lifecycle-evidence-adjudication.schema.json",
-  "record_count": 22,
+  "record_count": 30,
   "records": [
     {
       "schema_version": "1.0.0",
@@ -653,6 +653,274 @@
           "finding": "The university describes a research organization rather than a data-center building or operation.",
           "disposition": "supporting",
           "claim_confidence": 0.99
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_86414086d07f6cd5d987",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.99,
+      "rationale": "Expedient currently operates BWI1 at 11155 Red Run Boulevard. Its contemporaneous announcement identifies the same Owings Mills facility, states that a grand opening was planned for October 2013, and its corporate history records the opening in November 2013. The month-level operational anchor reflects the operator opening, not the building's first data-center use.",
+      "evidence": [
+        {
+          "source_id": "src_expedient_baltimore_current_2026",
+          "attribute_path": "facility.current_status",
+          "raw_value": {"type": "classification", "code": "operational", "label": "Current BWI1 data center at 11155 Red Run Boulevard"},
+          "normalized_value": {"type": "classification", "code": "operational"},
+          "finding": "The operator's current facility page maps BWI1 to the selected Owings Mills location and markets active data-center services.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        },
+        {
+          "source_id": "src_expedient_owings_mills_opening_20130528",
+          "attribute_path": "event.operational",
+          "raw_value": {"type": "date", "value": {"date": "2013-11-01", "precision": "month"}},
+          "finding": "Expedient's announcement and corporate history establish the Owings Mills facility opening under Expedient in November 2013.",
+          "disposition": "supporting",
+          "claim_confidence": 0.98
+        }
+      ],
+      "events": [
+        {
+          "event_type": "operational",
+          "when": {"date": "2013-11-01", "precision": "month"},
+          "source_id": "src_expedient_owings_mills_opening_20130528",
+          "confidence": 0.98,
+          "notes": "Expedient opening month for the exact Owings Mills facility. The source also states that the building had recently been used as a private data center, so this is not the site's first data-center operation."
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_6c176f7a4b9bff1117c3",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.98,
+      "rationale": "A federal system-of-record notice places Department of Homeland Security servers at the ByteGrid Data Center, 12401 Prosperity Drive, on July 6, 2015. Lincoln Rackhouse's facility brochure independently maps its Maryland facility to that exact address and describes a server-ready data center. The federal notice supplies an operational-no-later-than anchor rather than an opening date.",
+      "evidence": [
+        {
+          "source_id": "src_federal_register_bytegrid_vdei_20150706",
+          "attribute_path": "event.operational",
+          "raw_value": {"type": "date", "value": {"date": "2015-07-06", "precision": "day"}},
+          "finding": "The federal notice identifies operational government servers at the exact-address ByteGrid Data Center.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        },
+        {
+          "source_id": "src_lincoln_rackhouse_maryland_brochure_2019",
+          "attribute_path": "facility.identity",
+          "raw_value": {"type": "text", "value": "Rackhouse D.C. at 12401 Prosperity Drive, Silver Spring, Maryland"},
+          "finding": "The later operator brochure independently resolves the selected building and continuing data-center use.",
+          "disposition": "supporting",
+          "claim_confidence": 0.97
+        }
+      ],
+      "events": [
+        {
+          "event_type": "operational",
+          "when": {"date": "2015-07-06", "precision": "day"},
+          "source_id": "src_federal_register_bytegrid_vdei_20150706",
+          "confidence": 0.99,
+          "notes": "Operational no later than the dated federal notice; this is not asserted as the opening date."
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_022f9c92504f2d9d5d69",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.99,
+      "rationale": "Prince George's County's official inventory identifies AiNET Beltsville WDC-1 at 11700 Montgomery Road as an existing data center with tenant move-in on April 1, 2004. AiNET's current data-center page independently confirms the operator's continuing data-center business.",
+      "evidence": [
+        {
+          "source_id": "src_pgcounty_known_data_centers_20250625",
+          "attribute_path": "event.operational",
+          "raw_value": {"type": "date", "value": {"date": "2004-04-01", "precision": "day"}},
+          "finding": "The county inventory maps WDC-1 to the exact address and reports an April 1, 2004 tenant move-in date.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        },
+        {
+          "source_id": "src_ainet_data_center_current_2026",
+          "attribute_path": "facility.current_status",
+          "raw_value": {"type": "classification", "code": "operational", "label": "Current AiNET data-center services"},
+          "normalized_value": {"type": "classification", "code": "operational"},
+          "finding": "The operator currently markets data-center infrastructure and services.",
+          "disposition": "supporting",
+          "claim_confidence": 0.96
+        }
+      ],
+      "events": [
+        {
+          "event_type": "operational",
+          "when": {"date": "2004-04-01", "precision": "day"},
+          "source_id": "src_pgcounty_known_data_centers_20250625",
+          "confidence": 0.99,
+          "notes": "County-reported tenant move-in date for AiNET Beltsville WDC-1 at the exact mapped address."
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_2f9864e953596f615862",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "rejected",
+      "confidence": 0.99,
+      "rationale": "Chick-fil-A's official careers material identifies hiring and restaurant employment functions. The mapped 'Chick-fil-A Hiring Center' label describes a recruiting location, not computing infrastructure; it is a semantic false positive.",
+      "evidence": [
+        {
+          "source_id": "src_chickfila_careers_current_2026",
+          "attribute_path": "facility.facility_type",
+          "raw_value": {"type": "text", "value": "Restaurant and corporate employment recruiting"},
+          "normalized_value": {"type": "classification", "code": "rejected"},
+          "finding": "The operator's official material establishes a hiring function and provides no data-center identity or service.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_ccd7482696e74cb92b8d",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "rejected",
+      "confidence": 0.99,
+      "rationale": "Encompass Digital Media's official Minneapolis page identifies the Lino Lakes site as a broadcast transmission, fiber, and teleport facility. Its managed-video function is not evidence of a data-center facility, so the mapped record is rejected as a media-infrastructure false positive.",
+      "evidence": [
+        {
+          "source_id": "src_encompass_minneapolis_current_2026",
+          "attribute_path": "facility.facility_type",
+          "raw_value": {"type": "text", "value": "Broadcast transmission, fiber hub, and teleport facility"},
+          "normalized_value": {"type": "classification", "code": "rejected"},
+          "finding": "The operator's exact-facility description establishes broadcast and video-distribution use rather than a data-center operation.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_f7a42a6798ceffc4747a",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.99,
+      "rationale": "Flexential currently markets the Minneapolis-Chaska facility as a 160,838-square-foot, 9 MW data center. Stream Data Centers' market history identifies the predecessor Minneapolis I facility at 1708 West Creek Lane and reports completion in June 2014, resolving the selected building's historical identity and operational month.",
+      "evidence": [
+        {
+          "source_id": "src_flexential_chaska_current_2026",
+          "attribute_path": "facility.current_status",
+          "raw_value": {"type": "classification", "code": "operational", "label": "Current Minneapolis-Chaska data center"},
+          "normalized_value": {"type": "classification", "code": "operational"},
+          "finding": "The current operator markets active data-center services and publishes facility specifications.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        },
+        {
+          "source_id": "src_stream_chaska_history_current_2026",
+          "attribute_path": "event.operational",
+          "raw_value": {"type": "date", "value": {"date": "2014-06-01", "precision": "month"}},
+          "finding": "The predecessor operator maps Minneapolis I to 1708 West Creek Lane and reports construction completed in June 2014.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        }
+      ],
+      "events": [
+        {
+          "event_type": "operational",
+          "when": {"date": "2014-06-01", "precision": "month"},
+          "source_id": "src_stream_chaska_history_current_2026",
+          "confidence": 0.99,
+          "notes": "Completion month for the predecessor Minneapolis I facility at the exact mapped address."
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_c04e43b376be4af122a4",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.94,
+      "rationale": "Contemporaneous local reporting identifies Mayo Clinic's 62,000-square-foot data center at 4710 West Circle Drive NW, states that Mayo built it in 2012, and documents the later sale-leaseback to Epic. The exact address and mapped identity are resolved; year precision is retained because no more precise commissioning date was established from the reviewed source.",
+      "evidence": [
+        {
+          "source_id": "src_finance_commerce_mayo_epic_20160104",
+          "attribute_path": "facility.identity",
+          "raw_value": {"type": "text", "value": "62,000-square-foot Mayo Clinic Data Center at 4710 West Circle Drive NW, built in 2012"},
+          "finding": "The exact-address report establishes the mapped facility's data-center identity, 2012 construction, continued leaseback use, and transfer to Epic.",
+          "disposition": "supporting",
+          "claim_confidence": 0.94
+        },
+        {
+          "source_id": "src_finance_commerce_mayo_epic_20160104",
+          "attribute_path": "event.operational",
+          "raw_value": {"type": "date", "value": {"year": 2012, "precision": "year"}},
+          "finding": "The report states that Mayo built the operational data center in 2012.",
+          "disposition": "supporting",
+          "claim_confidence": 0.92
+        }
+      ],
+      "events": [
+        {
+          "event_type": "operational",
+          "when": {"year": 2012, "precision": "year"},
+          "source_id": "src_finance_commerce_mayo_epic_20160104",
+          "confidence": 0.92,
+          "notes": "Year of construction and operation reported for the exact Mayo/Epic data center; no more precise opening date is asserted."
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_97e9a4ff6bb1915c3d37",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.99,
+      "rationale": "H5 currently markets an operating Minneapolis data center at 1125 Energy Park Drive. Its January 31, 2021 acquisition release identifies the St. Paul facility among operating vXchnge data centers transferred to H5, supplying a dated operational-no-later-than anchor for the current operation.",
+      "evidence": [
+        {
+          "source_id": "src_h5_minneapolis_current_2026",
+          "attribute_path": "facility.current_status",
+          "raw_value": {"type": "classification", "code": "operational", "label": "Current H5 Minneapolis data center at 1125 Energy Park Drive"},
+          "normalized_value": {"type": "classification", "code": "operational"},
+          "finding": "The operator's current page maps the active facility to the selected address.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        },
+        {
+          "source_id": "src_h5_vxchnge_acquisition_20210131",
+          "attribute_path": "event.operational",
+          "raw_value": {"type": "date", "value": {"date": "2021-01-31", "precision": "day"}},
+          "finding": "H5's dated release identifies the St. Paul data center among the operating facilities acquired from vXchnge.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        }
+      ],
+      "events": [
+        {
+          "event_type": "operational",
+          "when": {"date": "2021-01-31", "precision": "day"},
+          "source_id": "src_h5_vxchnge_acquisition_20210131",
+          "confidence": 0.99,
+          "notes": "Operational no later than H5's dated acquisition announcement; this is not asserted as the site's first data-center operation."
         }
       ],
       "record_status": "active"

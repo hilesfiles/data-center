@@ -386,7 +386,7 @@ export default function App() {
       </header>
 
       <div className="fixture-banner" role="status">
-        <strong>Thirty-nine dated anchors have been adjudicated across 48 researched counties.</strong> Earlier operations reject 30 candidate anchors; nine counties remain unresolved as county first entry, including Floyd County's dated EKN facility. Six newly reviewed source records—VentureData, VISA, ForceAmp, Geneseo Communications, Cloud Storage Corp, and LSU CCT—were rejected as false-positive seeds. Complete historical inventories remain unresolved, zero treatment counties are eligible, and no impact model has been run.
+        <strong>Forty-five dated anchors have been adjudicated across 56 researched counties.</strong> Earlier operations reject 36 candidate anchors; nine counties remain unresolved as county first entry. The latest tranche also rejects Chick-fil-A's hiring center and Encompass's broadcast teleport as false-positive seeds. Complete historical inventories remain unresolved, zero treatment counties are eligible, and no impact model has been run.
       </div>
 
       <main className="workspace">
