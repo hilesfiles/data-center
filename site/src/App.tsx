@@ -386,7 +386,7 @@ export default function App() {
       </header>
 
       <div className="fixture-banner" role="status">
-        <strong>One hundred thirty-two dated anchors have been adjudicated across 160 researched counties.</strong> Earlier operations reject 52 candidate anchors; eighty counties remain unresolved as county first entry. The latest tranche adds dated anchors in Montgomery TX, Dane WI, San Francisco CA, El Paso CO, Miami-Dade FL, Tarrant TX, Dallas IA, and Union OH; the San Francisco candidate is rejected because 365 Main was already operating. Complete historical inventories remain unresolved, 57 counties remain queued, zero treatment counties are eligible, and no impact model has been run.
+        <strong>One hundred thirty-six dated anchors have been adjudicated across 168 researched counties.</strong> Earlier operations reject 52 candidate anchors; 84 counties remain unresolved as county first entry. The latest tranche adds dated anchors for Google in Berkeley SC, Meta in Utah UT, and DirecTV in Cochise and Pima AZ; Meta campuses in Ada ID and Dakota MN remain under construction, while the Polk FL wireless site and Madison IL home are rejected as map false positives. Complete historical inventories remain unresolved, 49 counties remain queued, zero treatment counties are eligible, and no impact model has been run.
       </div>
 
       <main className="workspace">

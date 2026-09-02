@@ -2,9 +2,9 @@
   "schema_version": "1.0.0",
   "artifact_type": "first_entry_lifecycle_anchor_adjudications",
   "artifact_version": "2026.09.02",
-  "generated_at": "2026-09-03T05:00:00Z",
+  "generated_at": "2026-09-03T06:00:00Z",
   "record_schema": "https://dccio.org/schemas/v1/national-lifecycle-evidence-adjudication.schema.json",
-  "record_count": 135,
+  "record_count": 143,
   "records": [
     {
       "schema_version": "1.0.0",
@@ -5206,6 +5206,192 @@
         "source_id": "src_baxtel_aws_industrial_parkway_2024",
         "confidence": 0.94,
         "notes": "Operational in 2024; public evidence does not provide a month or day."
+      }],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_1ee84e51648bd227e03a",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "under_construction",
+      "confidence": 0.99,
+      "rationale": "Meta's dated construction update identifies the Kuna Data Center and describes construction ramping up, with operational employment only once completed. The mapped Ada County building is therefore a construction-stage facility, not an operational first-entry anchor.",
+      "evidence": [{
+        "source_id": "src_meta_kuna_construction_20231012",
+        "attribute_path": "facility.current_status",
+        "raw_value": { "type": "classification", "code": "under_construction", "label": "Kuna Data Center construction ramping up" },
+        "normalized_value": { "type": "classification", "code": "under_construction" },
+        "finding": "The operator explicitly describes the campus as under construction and uses future-tense language for completion and operational jobs.",
+        "disposition": "supporting",
+        "claim_confidence": 0.99
+      }],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_d3efb71b984445fe2ac6",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "under_construction",
+      "confidence": 0.99,
+      "rationale": "Meta's Rosemount announcement identifies the 715,000-square-foot campus and describes its benefits and AI workloads in future tense once completed and operational. The mapped Dakota County building is therefore not yet an operational anchor.",
+      "evidence": [{
+        "source_id": "src_meta_rosemount_announcement_20240314",
+        "attribute_path": "facility.current_status",
+        "raw_value": { "type": "classification", "code": "under_construction", "label": "Rosemount Data Center will operate once completed" },
+        "normalized_value": { "type": "classification", "code": "under_construction" },
+        "finding": "The operator identifies the exact campus and repeatedly describes operation as contingent on future completion.",
+        "disposition": "supporting",
+        "claim_confidence": 0.99
+      }],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_4e183b446d9ce8f8496a",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.99,
+      "rationale": "Google's current South Carolina location page identifies the Berkeley County data center, states it was built in 2007, and describes ongoing data-center operations, matching the mapped Google campus building.",
+      "evidence": [{
+        "source_id": "src_google_berkeley_built_2007",
+        "attribute_path": "event.operational",
+        "raw_value": { "type": "date", "value": { "year": 2007, "precision": "year" } },
+        "finding": "The operator states that its Berkeley County data center was built in 2007 and describes the facilities as current operations.",
+        "disposition": "supporting",
+        "claim_confidence": 0.99
+      }],
+      "events": [{
+        "event_type": "operational",
+        "when": { "year": 2007, "precision": "year" },
+        "source_id": "src_google_berkeley_built_2007",
+        "confidence": 0.99,
+        "notes": "Operational in 2007; the operator does not provide a month or day."
+      }],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_5fd72558515ab5e6c563",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.99,
+      "rationale": "Meta's dated announcement states that the Eagle Mountain Data Center in Utah County began serving traffic on July 14, 2021, matching the mapped Meta campus building.",
+      "evidence": [{
+        "source_id": "src_meta_utah_online_20210714",
+        "attribute_path": "event.operational",
+        "raw_value": { "type": "date", "value": { "date": "2021-07-14", "precision": "day" } },
+        "finding": "The operator announced that the Eagle Mountain Data Center was serving traffic on the publication date.",
+        "disposition": "supporting",
+        "claim_confidence": 0.99
+      }],
+      "events": [{
+        "event_type": "operational",
+        "when": { "date": "2021-07-14", "precision": "day" },
+        "source_id": "src_meta_utah_online_20210714",
+        "confidence": 0.99,
+        "notes": "Serving traffic on the dated operator announcement."
+      }],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_5754dea2194a1b602d62",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.94,
+      "rationale": "Data Center Dynamics identifies the exact 401 Direct Drive Benson property as a DirecTV data-center, uplink, and broadcast facility built in 2006 and occupied under a lease running to 2043, matching the mapped Cochise County building.",
+      "evidence": [{
+        "source_id": "src_dcd_directv_arizona_20240725",
+        "attribute_path": "event.operational",
+        "raw_value": { "type": "date", "value": { "year": 2006, "precision": "year" } },
+        "finding": "Facility-specific reporting identifies the Benson property as a currently occupied data-center and broadcast site built in 2006.",
+        "disposition": "supporting",
+        "claim_confidence": 0.94
+      }],
+      "events": [{
+        "event_type": "operational",
+        "when": { "year": 2006, "precision": "year" },
+        "source_id": "src_dcd_directv_arizona_20240725",
+        "confidence": 0.94,
+        "notes": "Built and operating in 2006; public evidence does not provide a month or day."
+      }],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_19dda0b111ee9e514206",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.94,
+      "rationale": "Data Center Dynamics identifies the exact 9608 East Old Vail Road Tucson property as a DirecTV data-center, uplink, and broadcast facility built in 2007 and occupied under a lease running to 2043, matching the mapped Pima County building.",
+      "evidence": [{
+        "source_id": "src_dcd_directv_arizona_20240725",
+        "attribute_path": "event.operational",
+        "raw_value": { "type": "date", "value": { "year": 2007, "precision": "year" } },
+        "finding": "Facility-specific reporting identifies the Tucson property as a currently occupied data-center and broadcast site built in 2007.",
+        "disposition": "supporting",
+        "claim_confidence": 0.94
+      }],
+      "events": [{
+        "event_type": "operational",
+        "when": { "year": 2007, "precision": "year" },
+        "source_id": "src_dcd_directv_arizona_20240725",
+        "confidence": 0.94,
+        "notes": "Built and operating in 2007; public evidence does not provide a month or day."
+      }],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_6b17d78c3a4df2bb9d95",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "rejected",
+      "confidence": 0.98,
+      "rationale": "Federal AT&T facility schedules identify the exact Commonwealth Avenue property as a Legacy Wireless Services site, while its permit history documents antenna, radio, fiber, and tower upgrades. The mapped footprint is a wireless communications site rather than a computing data center and is rejected as a false positive.",
+      "evidence": [
+        {
+          "source_id": "src_epa_att_commonwealth_wireless_site_2012",
+          "attribute_path": "facility.identity",
+          "raw_value": { "type": "text", "value": "Legacy AT&T Wireless Services facility at 16182 Commonwealth Avenue North" },
+          "finding": "The federal order's facility schedule resolves the exact address to AT&T's legacy wireless network inventory.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        },
+        {
+          "source_id": "src_propertyreports_commonwealth_tower_20231013",
+          "attribute_path": "facility.facility_type",
+          "raw_value": { "type": "classification", "code": "wireless_communications_site", "label": "AT&T antenna and radio equipment on an existing wireless tower" },
+          "normalized_value": { "type": "classification", "code": "rejected" },
+          "finding": "The exact-address permit history describes wireless-tower antenna, radio, power, and fiber work rather than data-center construction or operation.",
+          "disposition": "supporting",
+          "claim_confidence": 0.94
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_a6f4602946b4a77acfdb",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "rejected",
+      "confidence": 0.96,
+      "rationale": "The exact 201 South Brown Avenue property record identifies a 728-square-foot, two-bedroom private home with individual ownership. The mapped footprint is a residence, not a data center, and is rejected as a classification false positive.",
+      "evidence": [{
+        "source_id": "src_homes_201_s_brown_residence_2026",
+        "attribute_path": "facility.facility_type",
+        "raw_value": { "type": "classification", "code": "single_family_residence", "label": "Two-bedroom, 728-square-foot private home" },
+        "normalized_value": { "type": "classification", "code": "rejected" },
+        "finding": "The exact-address public-record aggregation identifies a small privately owned residence rather than computing infrastructure.",
+        "disposition": "supporting",
+        "claim_confidence": 0.96
       }],
       "record_status": "active"
     }
