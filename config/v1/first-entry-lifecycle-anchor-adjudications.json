@@ -2,9 +2,9 @@
   "schema_version": "1.0.0",
   "artifact_type": "first_entry_lifecycle_anchor_adjudications",
   "artifact_version": "2026.09.02",
-  "generated_at": "2026-09-03T08:00:00Z",
+  "generated_at": "2026-09-03T16:00:00Z",
   "record_schema": "https://dccio.org/schemas/v1/national-lifecycle-evidence-adjudication.schema.json",
-  "record_count": 159,
+  "record_count": 167,
   "records": [
     {
       "schema_version": "1.0.0",
@@ -6000,6 +6000,296 @@
         }
       ],
       "record_status": "provisional"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_6bab897752bc4844a9ef",
+      "resolution_state": "partial",
+      "decision": "provisional",
+      "confidence": 0.5,
+      "rationale": "The selected Angelina County footprint is an unnamed OpenStreetMap building tagged building=data_center and data_centre=crypto near Pine Valley Road in Diboll. No operator, street number, permit, utility record, or independent report was found to establish the owner, commissioning date, or continuing operation, so the object remains provisional.",
+      "evidence": [
+        {
+          "source_id": "src_osm_angelina_way_1457383500_20260903",
+          "attribute_path": "facility.identity",
+          "raw_value": { "type": "text", "value": "Unnamed building=data_center; data_centre=crypto object near Pine Valley Road, Diboll" },
+          "finding": "The exact mapped way asserts a cryptocurrency data-center use but supplies no operator or independently verifiable facility identity.",
+          "disposition": "context",
+          "claim_confidence": 0.5
+        }
+      ],
+      "record_status": "provisional"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_809e7299769cfc5b06e7",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "under_construction",
+      "confidence": 0.94,
+      "rationale": "The exact 2236 Airport Drive footprint is DataNovaX’s Pioneer Park Phase I building. Although a 2024 operator sheet projected service by December 2024, Wichita Falls reporting records only an August 2026 conditional-use approval to convert the former grocery store and call center into a data center. The current evidence therefore supports an in-development, not operational, classification.",
+      "evidence": [
+        {
+          "source_id": "src_osm_wichita_way_747985149_20260903",
+          "attribute_path": "facility.identity",
+          "raw_value": { "type": "text", "value": "2236 Airport Drive, Wichita Falls; building=yes; telecom=data_center" },
+          "finding": "The exact mapped building address matches the proposed Pioneer Park Phase I property.",
+          "disposition": "supporting",
+          "claim_confidence": 0.96
+        },
+        {
+          "source_id": "src_datanovax_pioneer_park_spec_202406",
+          "attribute_path": "facility.identity",
+          "raw_value": { "type": "text", "value": "Pioneer Park Phase I, 2236 Airport Drive, 37,000 square feet" },
+          "finding": "The developer identifies the existing building as the first phase of its planned Wichita Falls campus.",
+          "disposition": "supporting",
+          "claim_confidence": 0.98
+        },
+        {
+          "source_id": "src_wftrn_datanovax_conditional_use_20260812",
+          "attribute_path": "facility.current_status",
+          "raw_value": { "type": "classification", "code": "under_construction", "label": "Conditional use approved for conversion of former grocery store and call center" },
+          "normalized_value": { "type": "classification", "code": "under_construction" },
+          "finding": "The August 2026 approval shows that the conversion remained a development project rather than an operating data center.",
+          "disposition": "supporting",
+          "claim_confidence": 0.93
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_f51cc264ed17b74952bb",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.99,
+      "rationale": "Ark Data Centers identifies its operational Wisconsin data center on the former Kimberly-Clark campus in the Village of Harrison, matching the mapped Involta footprint. Ark’s dated release states that the company celebrated the campus grand opening on June 12, 2024, and its current location page continues to market move-in-ready colocation space.",
+      "evidence": [
+        {
+          "source_id": "src_osm_calumet_way_766768556_20260903",
+          "attribute_path": "facility.identity",
+          "raw_value": { "type": "text", "value": "Exact Village of Harrison building tagged operator=Involta; telecom=data_center" },
+          "finding": "The mapped footprint and legacy operator name align with Ark’s acquired Wisconsin facility.",
+          "disposition": "supporting",
+          "claim_confidence": 0.94
+        },
+        {
+          "source_id": "src_ark_wisconsin_opening_20240613",
+          "attribute_path": "event.operational",
+          "raw_value": { "type": "date", "value": { "date": "2024-06-12", "precision": "day" } },
+          "finding": "Ark’s release dates the Wisconsin campus grand opening to June 12, 2024.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        },
+        {
+          "source_id": "src_ark_wisconsin_current_2026",
+          "attribute_path": "facility.current_status",
+          "raw_value": { "type": "classification", "code": "operational", "label": "Move-in-ready Wisconsin data center with 24/7 monitoring" },
+          "normalized_value": { "type": "classification", "code": "operational" },
+          "finding": "The current operator page confirms continued data-center service at the Wisconsin campus.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        }
+      ],
+      "events": [
+        {
+          "event_type": "operational",
+          "when": { "date": "2024-06-12", "precision": "day" },
+          "source_id": "src_ark_wisconsin_opening_20240613",
+          "confidence": 0.99,
+          "notes": "Operator-stated grand-opening date for the acquired and relaunched Wisconsin campus."
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_21f9e2bbd3b3a7faf9bc",
+      "resolution_state": "partial",
+      "decision": "provisional",
+      "confidence": 0.42,
+      "rationale": "The Columbia County seed is a 361-square-foot unnamed structure carrying only an OpenStreetMap telecom=data_center tag beside Holzem Boulevard. The town assessment roll places the surrounding Holzem subdivision in residential use, but does not identify the small utility structure or establish a computing data-center function, so the candidate remains provisional.",
+      "evidence": [
+        {
+          "source_id": "src_osm_columbia_way_1211362828_20260903",
+          "attribute_path": "facility.identity",
+          "raw_value": { "type": "text", "value": "Unnamed 361-square-foot building=yes; telecom=data_center object beside Holzem Boulevard" },
+          "finding": "The exact map object has no operator, name, address, or supporting facility attributes.",
+          "disposition": "context",
+          "claim_confidence": 0.44
+        },
+        {
+          "source_id": "src_newport_holzem_assessment_roll_2024",
+          "attribute_path": "facility.facility_type",
+          "raw_value": { "type": "text", "value": "Holzem subdivision parcels are assessed as residential lots and public roadway or park outlots" },
+          "finding": "The surrounding official land record provides residential context but does not conclusively classify the small mapped structure.",
+          "disposition": "context",
+          "claim_confidence": 0.82
+        }
+      ],
+      "record_status": "provisional"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_84c20fa9fd04d1c33f5d",
+      "resolution_state": "partial",
+      "decision": "provisional",
+      "confidence": 0.5,
+      "rationale": "OpenStreetMap attributes the 3,368-square-foot commercial building at 816 6th Avenue East to West Wisconsin Telcom and tags it as a data center. The operator’s current public site confirms its telecommunications business but lists its Menomonie office at 912 Crescent Street and does not identify 816 6th Avenue as a computing facility, leaving the mapped building provisional.",
+      "evidence": [
+        {
+          "source_id": "src_osm_dunn_way_1157356188_20260903",
+          "attribute_path": "facility.identity",
+          "raw_value": { "type": "text", "value": "816 6th Avenue East; operator=West Wisconsin Telcom; telecom=data_center" },
+          "finding": "The exact map object supplies a telecom operator and generic data-center tag but no independently sourced operational detail.",
+          "disposition": "context",
+          "claim_confidence": 0.58
+        },
+        {
+          "source_id": "src_wwt_current_locations_2026",
+          "attribute_path": "facility.identity",
+          "raw_value": { "type": "text", "value": "West Wisconsin Telcom is a current fiber and telecommunications provider; Menomonie office at 912 Crescent Street" },
+          "finding": "The operator is real, but its current site does not corroborate a data center at the mapped 816 6th Avenue address.",
+          "disposition": "context",
+          "claim_confidence": 0.9
+        }
+      ],
+      "record_status": "provisional"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_879986156e17897523e2",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.96,
+      "rationale": "Wisconsin DNR identifies the Fii Data Center as the Globe and FoxMOD operation in Mount Pleasant, and the project architect describes the exact spherical building as Foxconn’s high-performance computing data center and network-operations hub. Data Center Dynamics documented its opening ceremony by May 19, 2021.",
+      "evidence": [
+        {
+          "source_id": "src_osm_racine_way_919948160_20260903",
+          "attribute_path": "facility.identity",
+          "raw_value": { "type": "text", "value": "Dome-shaped Wisconn Valley Science and Technology Park building tagged telecom=data_center" },
+          "finding": "The exact circular footprint aligns with the distinctive Foxconn HPCDC Globe.",
+          "disposition": "supporting",
+          "claim_confidence": 0.98
+        },
+        {
+          "source_id": "src_widnr_foxconn_fii_data_center_20201209",
+          "attribute_path": "facility.identity",
+          "raw_value": { "type": "text", "value": "Fii Data Center consisting of The Globe and FoxMOD in Mount Pleasant" },
+          "finding": "The state permit record identifies the facility and its data-center operations.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        },
+        {
+          "source_id": "src_dcd_foxconn_globe_opening_20210519",
+          "attribute_path": "event.operational",
+          "raw_value": { "type": "date", "value": { "date": "2021-05-19", "precision": "day" } },
+          "finding": "Facility-specific reporting documents an opening ceremony during the week of publication.",
+          "disposition": "supporting",
+          "claim_confidence": 0.94
+        },
+        {
+          "source_id": "src_eua_foxconn_hpcdc_current_2026",
+          "attribute_path": "facility.facility_type",
+          "raw_value": { "type": "text", "value": "Foxconn High-Performance Computing Data Center Globe with server room and network operations center" },
+          "finding": "The project architect confirms the exact building’s computing and network-operations functions.",
+          "disposition": "supporting",
+          "claim_confidence": 0.97
+        }
+      ],
+      "events": [
+        {
+          "event_type": "operational",
+          "when": { "date": "2021-05-19", "precision": "day" },
+          "source_id": "src_dcd_foxconn_globe_opening_20210519",
+          "confidence": 0.94,
+          "notes": "Operational no later than the dated opening report; the ceremony occurred earlier that week."
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_ef1a2eaf751ca07483d5",
+      "resolution_state": "partial",
+      "decision": "provisional",
+      "confidence": 0.72,
+      "rationale": "The selected Highway 50 footprint closely matches a roughly 5,200-square-foot cryptocurrency mine documented under construction south of Bell Road on Powder River Energy property in June 2023. The lessee and operator were undisclosed, and no reviewed source establishes commissioning or current operation, so the lifecycle remains provisional.",
+      "evidence": [
+        {
+          "source_id": "src_osm_campbell_way_1414729942_20260903",
+          "attribute_path": "facility.identity",
+          "raw_value": { "type": "text", "value": "Highway 50 building described as a Bitcoin mining operation" },
+          "finding": "The exact map object identifies cryptocurrency use but no operator or status.",
+          "disposition": "context",
+          "claim_confidence": 0.72
+        },
+        {
+          "source_id": "src_gillette_news_highway50_crypto_20230613",
+          "attribute_path": "event.construction_started",
+          "raw_value": { "type": "date", "value": { "date": "2023-06-08", "precision": "day" } },
+          "finding": "Local reporting identifies a 5,200-square-foot cryptocurrency mine under construction along Highway 50 south of Bell Road, but says its operator was undisclosed.",
+          "disposition": "supporting",
+          "claim_confidence": 0.94
+        }
+      ],
+      "record_status": "provisional"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_528ae7f57cc2555ec1a4",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.96,
+      "rationale": "The exact mapped Google footprint lies at the Midlothian campus in Ellis County. Google’s official Texas location page identifies Midlothian as its first Texas data-center location, Google Cloud launched the Dallas region on June 7, 2022, and Midlothian Economic Development subsequently confirmed that the facility is fully operational.",
+      "evidence": [
+        {
+          "source_id": "src_osm_ellis_way_844386860_20260903",
+          "attribute_path": "facility.identity",
+          "raw_value": { "type": "text", "value": "Exact Midlothian footprint tagged name=Google; operator=Google; telecom=data_center" },
+          "finding": "The mapped building resolves to Google’s Midlothian campus.",
+          "disposition": "supporting",
+          "claim_confidence": 0.98
+        },
+        {
+          "source_id": "src_google_texas_locations_current_2026",
+          "attribute_path": "facility.identity",
+          "raw_value": { "type": "text", "value": "Google data center location in Midlothian, Ellis County, Texas" },
+          "finding": "Google’s current directory confirms the operator and county-level facility identity.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        },
+        {
+          "source_id": "src_google_dallas_cloud_region_20220607",
+          "attribute_path": "event.operational",
+          "raw_value": { "type": "date", "value": { "date": "2022-06-07", "precision": "day" } },
+          "finding": "Google announced that its Dallas Cloud region was open to customers on June 7, 2022.",
+          "disposition": "supporting",
+          "claim_confidence": 0.92
+        },
+        {
+          "source_id": "src_midlothian_edc_google_operational_2024",
+          "attribute_path": "facility.current_status",
+          "raw_value": { "type": "classification", "code": "operational", "label": "Midlothian facility is fully operational" },
+          "normalized_value": { "type": "classification", "code": "operational" },
+          "finding": "The local economic-development authority confirms full operation at the Midlothian facility.",
+          "disposition": "supporting",
+          "claim_confidence": 0.98
+        }
+      ],
+      "events": [
+        {
+          "event_type": "operational",
+          "when": { "date": "2022-06-07", "precision": "day" },
+          "source_id": "src_google_dallas_cloud_region_20220607",
+          "confidence": 0.92,
+          "notes": "Operational no later than the Dallas Cloud region launch; local government later confirms the Midlothian facility is fully operational."
+        }
+      ],
+      "record_status": "active"
     }
   ]
 }
