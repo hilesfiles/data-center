@@ -386,7 +386,7 @@ export default function App() {
       </header>
 
       <div className="fixture-banner" role="status">
-        <strong>Forty-five dated anchors have been adjudicated across 56 researched counties.</strong> Earlier operations reject 36 candidate anchors; nine counties remain unresolved as county first entry. The latest tranche also rejects Chick-fil-A's hiring center and Encompass's broadcast teleport as false-positive seeds. Complete historical inventories remain unresolved, zero treatment counties are eligible, and no impact model has been run.
+        <strong>Forty-nine dated anchors have been adjudicated across 64 researched counties.</strong> Earlier operations reject 39 candidate anchors; ten counties remain unresolved as county first entry. The latest tranche also rejects a telephone central office, a residential apartment building, and a submarine cable landing station as false-positive seeds. Complete historical inventories remain unresolved, zero treatment counties are eligible, and no impact model has been run.
       </div>
 
       <main className="workspace">

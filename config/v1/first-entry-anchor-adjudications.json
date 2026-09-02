@@ -2,10 +2,152 @@
   "schema_version": "1.0.0",
   "artifact_type": "county_first_entry_anchor_adjudications",
   "artifact_version": "2026.09.01",
-  "generated_at": "2026-09-02T04:00:00Z",
+  "generated_at": "2026-09-02T14:00:00Z",
   "record_schema": "https://dccio.org/schemas/v1/county-first-entry-adjudication.schema.json",
-  "record_count": 45,
+  "record_count": 49,
   "records": [
+    {
+      "schema_version": "1.0.0",
+      "county_first_entry_adjudication_id": "fea_27137_ark_201209_rejected",
+      "first_entry_research_candidate_id": "fer_bff007d43dbd17ce5e0b",
+      "treatment_definition_id": "trt_first_entry_v1",
+      "candidate_event_evaluation_id": "tev_6f8fb25ba39d89750d98",
+      "county_fips": "27137",
+      "county_name": "St. Louis County",
+      "state_abbr": "MN",
+      "resolution_state": "candidate_rejected_first_entry",
+      "decision": "reject_candidate_as_first_entry",
+      "county_first_entry_verified": false,
+      "inventory_completeness_status": "not_established",
+      "earlier_operations_search_status": "documented_incomplete",
+      "required_finding_status": {
+        "earliest_dated_operational_event": "partial",
+        "exact_facility_identity_for_earliest_event": "partial",
+        "county_inventory_completeness": "unresolved",
+        "documented_search_for_earlier_operations": "resolved"
+      },
+      "earlier_operational_findings": [
+        {
+          "facility_id": "fac_duluth_municipal_primary_data_center_historic",
+          "canonical_name": "City of Duluth primary data center",
+          "temporal_relation": "operational_no_later_than",
+          "when": {"year": 2011, "precision": "year"},
+          "source_ids": ["src_duluth_2011_budget_primary_data_center"],
+          "finding": "Duluth's 2011 budget states that the city currently depended on an existing primary data center while lacking a backup site, documenting a separate county operation before Ark's September 2012 facility anchor.",
+          "confidence": 0.96
+        }
+      ],
+      "source_ids": ["src_ark_duluth_apex_history_current_2026", "src_duluth_2011_budget_primary_data_center"],
+      "authoritative_source_types": ["operator_release", "local_government_record"],
+      "rationale": "Ark documents both of its Duluth facilities operating by September 2012, but the city's official 2011 budget already identifies a separate primary data center. The mapped Ark event therefore cannot be St. Louis County's first operational entry. The exact identity of the earlier municipal facility and the complete historical inventory remain unresolved.",
+      "created_at": "2026-09-02T14:00:00Z",
+      "updated_at": "2026-09-02T14:00:00Z",
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "county_first_entry_adjudication_id": "fea_29019_carfax_2004_rejected",
+      "first_entry_research_candidate_id": "fer_c227743ebc2048853c33",
+      "treatment_definition_id": "trt_first_entry_v1",
+      "candidate_event_evaluation_id": "tev_31319566ae45f9261cf2",
+      "county_fips": "29019",
+      "county_name": "Boone County",
+      "state_abbr": "MO",
+      "resolution_state": "candidate_rejected_first_entry",
+      "decision": "reject_candidate_as_first_entry",
+      "county_first_entry_verified": false,
+      "inventory_completeness_status": "not_established",
+      "earlier_operations_search_status": "documented_incomplete",
+      "required_finding_status": {
+        "earliest_dated_operational_event": "partial",
+        "exact_facility_identity_for_earliest_event": "partial",
+        "county_inventory_completeness": "unresolved",
+        "documented_search_for_earlier_operations": "resolved"
+      },
+      "earlier_operational_findings": [
+        {
+          "facility_id": "fac_mu_columbia_computer_center_historic",
+          "canonical_name": "University of Missouri-Columbia Computer Center",
+          "temporal_relation": "operational_no_later_than",
+          "when": {"year": 1957, "precision": "year"},
+          "source_ids": ["src_mu_archives_computer_center_since_1957"],
+          "finding": "The University of Missouri Archives catalogs institutional histories of computers on the Columbia campus since 1957 under its Computer Center records, documenting county computing-center operations decades before CARFAX.",
+          "confidence": 0.92
+        }
+      ],
+      "source_ids": ["src_dcd_carfax_columbia_20241002", "src_mo_supreme_court_carfax_20220318", "src_mu_archives_computer_center_since_1957"],
+      "authoritative_source_types": ["trade_press", "court_record", "other"],
+      "rationale": "The exact CARFAX facility is operational no later than 2004, but the University of Missouri's official archive documents a Columbia Computer Center history beginning in 1957. CARFAX therefore cannot be Boone County's first operational entry. The historical center's exact building identity and the complete county inventory remain unresolved.",
+      "created_at": "2026-09-02T14:00:00Z",
+      "updated_at": "2026-09-02T14:00:00Z",
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "county_first_entry_adjudication_id": "fea_30017_mcdc_201204_unresolved",
+      "first_entry_research_candidate_id": "fer_15624cebe66ba2228517",
+      "treatment_definition_id": "trt_first_entry_v1",
+      "candidate_event_evaluation_id": "tev_97047321a11e8b2e88bc",
+      "county_fips": "30017",
+      "county_name": "Custer County",
+      "state_abbr": "MT",
+      "resolution_state": "unresolved",
+      "decision": "continue_research",
+      "county_first_entry_verified": false,
+      "inventory_completeness_status": "not_established",
+      "earlier_operations_search_status": "documented_incomplete",
+      "required_finding_status": {
+        "earliest_dated_operational_event": "partial",
+        "exact_facility_identity_for_earliest_event": "resolved",
+        "county_inventory_completeness": "unresolved",
+        "documented_search_for_earlier_operations": "partial"
+      },
+      "earlier_operational_findings": [],
+      "source_ids": ["src_montana_biennial_miles_city_2015", "src_montana_dli_miles_city_construction_2009"],
+      "authoritative_source_types": ["state_record", "other"],
+      "rationale": "State records resolve the exact Miles City facility, trace its purpose-built construction from 2009, and date operation to April 2012. No earlier Custer County operation was established in the reviewed evidence, but neither the historical county inventory nor a conclusive earlier-operations search is complete. The date remains a candidate anchor only and no treatment is assigned.",
+      "created_at": "2026-09-02T14:00:00Z",
+      "updated_at": "2026-09-02T14:00:00Z",
+      "record_status": "provisional"
+    },
+    {
+      "schema_version": "1.0.0",
+      "county_first_entry_adjudication_id": "fea_34003_nyse_2010_rejected",
+      "first_entry_research_candidate_id": "fer_6d454aae21f725b564c6",
+      "treatment_definition_id": "trt_first_entry_v1",
+      "candidate_event_evaluation_id": "tev_958a1666993a9dc4124a",
+      "county_fips": "34003",
+      "county_name": "Bergen County",
+      "state_abbr": "NJ",
+      "resolution_state": "candidate_rejected_first_entry",
+      "decision": "reject_candidate_as_first_entry",
+      "county_first_entry_verified": false,
+      "inventory_completeness_status": "not_established",
+      "earlier_operations_search_status": "documented_incomplete",
+      "required_finding_status": {
+        "earliest_dated_operational_event": "partial",
+        "exact_facility_identity_for_earliest_event": "resolved",
+        "county_inventory_completeness": "unresolved",
+        "documented_search_for_earlier_operations": "resolved"
+      },
+      "earlier_operational_findings": [
+        {
+          "facility_id": "fac_ups_ramapo_ridge_historic",
+          "canonical_name": "UPS Ramapo Ridge information technology facility",
+          "temporal_relation": "operational_no_later_than",
+          "when": {"date": "2006-12-31", "precision": "day"},
+          "source_ids": ["src_ups_2006_10k_ramapo_ridge"],
+          "finding": "UPS's 2006 Form 10-K identifies its owned 435,000-square-foot Ramapo Ridge facility in Mahwah as the company's consolidated primary information-technology operation, establishing a separate county operation before NYSE opened in 2010.",
+          "confidence": 0.99
+        }
+      ],
+      "source_ids": ["src_nyse_2012_10k_mahwah_operational", "src_nyse_mahwah_colocation_current_2026", "src_ups_2006_10k_ramapo_ridge"],
+      "authoritative_source_types": ["sec_filing", "operator_release"],
+      "rationale": "NYSE's Mahwah facility became operational in 2010, but UPS's SEC filing documents its separate Ramapo Ridge primary information-technology facility operating in Mahwah by the end of 2006. NYSE therefore cannot be Bergen County's first entry. The complete historical inventory remains unverified.",
+      "created_at": "2026-09-02T14:00:00Z",
+      "updated_at": "2026-09-02T14:00:00Z",
+      "record_status": "active"
+    },
     {
       "schema_version": "1.0.0",
       "county_first_entry_adjudication_id": "fea_06085_ntt_sv1_2021_rejected",

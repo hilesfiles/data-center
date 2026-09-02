@@ -2,10 +2,243 @@
   "schema_version": "1.0.0",
   "artifact_type": "first_entry_lifecycle_anchor_adjudications",
   "artifact_version": "2026.09.02",
-  "generated_at": "2026-09-02T04:00:00Z",
+  "generated_at": "2026-09-02T14:00:00Z",
   "record_schema": "https://dccio.org/schemas/v1/national-lifecycle-evidence-adjudication.schema.json",
-  "record_count": 30,
+  "record_count": 38,
   "records": [
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_b2b011d17f1c83df2f80",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.98,
+      "rationale": "Ark's current facility page identifies its operating 26,000-plus-square-foot Duluth data center and its operator history states that both Duluth facilities were operational by September 2012. The dimensions and use match the mapped 27,162-square-foot Technology Drive building, so September 2012 is retained as the exact facility's operational-no-later-than month.",
+      "evidence": [
+        {
+          "source_id": "src_ark_duluth_facility_current_2026",
+          "attribute_path": "facility.current_status",
+          "raw_value": {"type": "classification", "code": "operational", "label": "Current 26,000-plus-square-foot Duluth colocation data center"},
+          "normalized_value": {"type": "classification", "code": "operational"},
+          "finding": "Ark identifies the current Duluth facility, its conditioned floor area, rack count, power capacity, and continuous operations controls.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        },
+        {
+          "source_id": "src_ark_duluth_apex_history_current_2026",
+          "attribute_path": "event.operational",
+          "raw_value": {"type": "date", "value": {"date": "2012-09-01", "precision": "month"}},
+          "finding": "Ark states that both of its Duluth facilities were operational by September 2012.",
+          "disposition": "supporting",
+          "claim_confidence": 0.97
+        }
+      ],
+      "events": [
+        {
+          "event_type": "operational",
+          "when": {"date": "2012-09-01", "precision": "month"},
+          "source_id": "src_ark_duluth_apex_history_current_2026",
+          "confidence": 0.97,
+          "notes": "Operational no later than September 2012, when Ark reports both Duluth facilities were in service."
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_cb2977377f864c7236b0",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "under_construction",
+      "confidence": 0.99,
+      "rationale": "Mississippi's economic-development authority identifies xAI's MACROHARDRR data center in Southaven, states that xAI purchased and is retrofitting the building, and describes February 2026 operations as an expectation. The reviewed authoritative evidence therefore supports an active retrofit, not a completed operational event.",
+      "evidence": [
+        {
+          "source_id": "src_mda_xai_macrohardrr_20260108",
+          "attribute_path": "facility.current_status",
+          "raw_value": {"type": "classification", "code": "under_construction", "label": "Purchased building undergoing retrofit for future MACROHARDRR operations"},
+          "normalized_value": {"type": "classification", "code": "under_construction"},
+          "finding": "The state record resolves the project identity and location and explicitly distinguishes ongoing retrofit work from expected future operation.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_079f457954ba2c3a4539",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.94,
+      "rationale": "Data Center Dynamics identifies the exact 2301 Maguire Boulevard facility as a CARFAX-leased data center built in 2003 and occupied for two decades by October 2024. A Missouri Supreme Court filing independently documents CARFAX's active Columbia data-center operations and server-room equipment. Year 2004 is retained as a conservative operational-no-later-than anchor from the reported two-decade tenancy.",
+      "evidence": [
+        {
+          "source_id": "src_dcd_carfax_columbia_20241002",
+          "attribute_path": "facility.identity",
+          "raw_value": {"type": "text", "value": "CARFAX data center at 2301 Maguire Boulevard, leased for the past two decades"},
+          "finding": "The exact-address trade record matches the mapped Columbia building and documents long-running data-center use.",
+          "disposition": "supporting",
+          "claim_confidence": 0.94
+        },
+        {
+          "source_id": "src_mo_supreme_court_carfax_20220318",
+          "attribute_path": "facility.current_status",
+          "raw_value": {"type": "classification", "code": "operational", "label": "CARFAX data-center operations using servers, storage, network equipment, and UPS equipment"},
+          "normalized_value": {"type": "classification", "code": "operational"},
+          "finding": "The court filing independently documents the company's active data-center operations in Columbia.",
+          "disposition": "supporting",
+          "claim_confidence": 0.92
+        }
+      ],
+      "events": [
+        {
+          "event_type": "operational",
+          "when": {"year": 2004, "precision": "year"},
+          "source_id": "src_dcd_carfax_columbia_20241002",
+          "confidence": 0.90,
+          "notes": "Operational no later than 2004 based on the exact facility's reported two-decade CARFAX tenancy as of October 2024; this is not asserted as a commissioning date."
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_f863b796387b4953cdd7",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "rejected",
+      "confidence": 0.99,
+      "rationale": "CenturyLink's own Missouri territory map classifies Hamilton as a central-office location. The mapped 1,433-square-foot footprint is therefore a local telephone exchange facility rather than an independently evidenced data center and is rejected from the lifecycle candidate set.",
+      "evidence": [
+        {
+          "source_id": "src_centurylink_missouri_central_offices_2010",
+          "attribute_path": "facility.facility_type",
+          "raw_value": {"type": "classification", "code": "telephone_central_office", "label": "Hamilton central office location"},
+          "finding": "The operator's network map explicitly places Hamilton in its list of Missouri central offices.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_64ad3fa38dd33f68829b",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.99,
+      "rationale": "Montana's biennial infrastructure report identifies the Miles City Data Center as the state's disaster-recovery site, states that it opened in April 2012, and documents its production environment, mainframe, storage replication, server racks, and hosted agencies.",
+      "evidence": [
+        {
+          "source_id": "src_montana_biennial_miles_city_2015",
+          "attribute_path": "facility.current_status",
+          "raw_value": {"type": "classification", "code": "operational", "label": "Miles City Data Center disaster-recovery and production environment"},
+          "normalized_value": {"type": "classification", "code": "operational"},
+          "finding": "The state report identifies active compute, storage, replication, hosting, and recovery functions at the mapped Miles City facility.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        },
+        {
+          "source_id": "src_montana_biennial_miles_city_2015",
+          "attribute_path": "event.operational",
+          "raw_value": {"type": "date", "value": {"date": "2012-04-01", "precision": "month"}},
+          "finding": "The state report says MCDC opened and its production environment was established in April 2012.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        }
+      ],
+      "events": [
+        {
+          "event_type": "operational",
+          "when": {"date": "2012-04-01", "precision": "month"},
+          "source_id": "src_montana_biennial_miles_city_2015",
+          "confidence": 0.99,
+          "notes": "The official state report dates opening and establishment of the production environment to April 2012."
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_fde832cef6adb1990cb4",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.99,
+      "rationale": "NYSE currently identifies Mahwah as its U.S. liquidity-center data center, while its 2012 Form 10-K states that the Mahwah data center became operational in the second half of 2010. Year precision is retained because the filing does not supply a month or day.",
+      "evidence": [
+        {
+          "source_id": "src_nyse_mahwah_colocation_current_2026",
+          "attribute_path": "facility.current_status",
+          "raw_value": {"type": "classification", "code": "operational", "label": "Current NYSE Mahwah colocation and trading data center"},
+          "normalized_value": {"type": "classification", "code": "operational"},
+          "finding": "The operator's current service page identifies the active Mahwah facility and its colocation operations.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        },
+        {
+          "source_id": "src_nyse_2012_10k_mahwah_operational",
+          "attribute_path": "event.operational",
+          "raw_value": {"type": "date", "value": {"year": 2010, "precision": "year"}},
+          "finding": "The SEC filing states that Mahwah became operational in the second half of 2010.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        }
+      ],
+      "events": [
+        {
+          "event_type": "operational",
+          "when": {"year": 2010, "precision": "year"},
+          "source_id": "src_nyse_2012_10k_mahwah_operational",
+          "confidence": 0.99,
+          "notes": "Operational in the second half of 2010; only year precision is encoded."
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_44935308d074b1b28329",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "rejected",
+      "confidence": 0.99,
+      "rationale": "Princeton Theological Seminary identifies 501 Farber Road as a 66-unit residential apartment building within its Charlotte Rachel Wilson housing complex. The mapped point named '501 West' is therefore an address-derived false positive, not a data center.",
+      "evidence": [
+        {
+          "source_id": "src_ptsem_501_farber_housing_current_2026",
+          "attribute_path": "facility.facility_type",
+          "raw_value": {"type": "classification", "code": "residential_apartments", "label": "501 Farber Road, 66-unit seminary apartment building"},
+          "finding": "The property operator's current housing record establishes residential use at the exact address represented by the mapped point.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_839fb6eb0627a730b650",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "rejected",
+      "confidence": 0.99,
+      "rationale": "The FCC's cable landing license identifies the exact Wall Township coordinates as Apollo's New Jersey submarine fiber-optic cable landing station and describes its function as telecommunications transmission infrastructure. It is not independently evidenced as a compute or colocation data center and is rejected from the lifecycle candidate set.",
+      "evidence": [
+        {
+          "source_id": "src_fcc_apollo_cable_license_20010608",
+          "attribute_path": "facility.facility_type",
+          "raw_value": {"type": "classification", "code": "submarine_cable_landing_station", "label": "Apollo non-common-carrier fiber-optic cable landing station"},
+          "finding": "The federal order supplies the Wall Township coordinates and establishes the site's cable-landing and transmission function.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        }
+      ],
+      "record_status": "active"
+    },
     {
       "schema_version": "1.0.0",
       "national_priority_id": "lnp_im3_7cc8844813f71c2f4f8f",
