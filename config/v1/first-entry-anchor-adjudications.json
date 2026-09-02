@@ -2,9 +2,9 @@
   "schema_version": "1.0.0",
   "artifact_type": "county_first_entry_anchor_adjudications",
   "artifact_version": "2026.09.01",
-  "generated_at": "2026-09-02T20:00:00Z",
+  "generated_at": "2026-09-02T21:00:00Z",
   "record_schema": "https://dccio.org/schemas/v1/county-first-entry-adjudication.schema.json",
-  "record_count": 67,
+  "record_count": 72,
   "records": [
     {
       "schema_version": "1.0.0",
@@ -2606,6 +2606,229 @@
       "created_at": "2026-09-02T20:00:00Z",
       "updated_at": "2026-09-02T20:00:00Z",
       "record_status": "provisional"
+    },
+    {
+      "schema_version": "1.0.0",
+      "county_first_entry_adjudication_id": "fea_53073_css_20231219_rejected",
+      "first_entry_research_candidate_id": "fer_dc14d48887a0eb126ed5",
+      "treatment_definition_id": "trt_first_entry_v1",
+      "candidate_event_evaluation_id": "tev_fe59e45098d0d26ae2f0",
+      "county_fips": "53073",
+      "county_name": "Whatcom County",
+      "state_abbr": "WA",
+      "resolution_state": "candidate_rejected_first_entry",
+      "decision": "reject_candidate_as_first_entry",
+      "county_first_entry_verified": false,
+      "inventory_completeness_status": "not_established",
+      "earlier_operations_search_status": "documented_incomplete",
+      "required_finding_status": {
+        "earliest_dated_operational_event": "partial",
+        "exact_facility_identity_for_earliest_event": "resolved",
+        "county_inventory_completeness": "unresolved",
+        "documented_search_for_earlier_operations": "resolved"
+      },
+      "earlier_operational_findings": [
+        {
+          "facility_id": "fac_whatcom_courthouse_data_center_historic",
+          "canonical_name": "Whatcom County Courthouse Data Center",
+          "temporal_relation": "operational_no_later_than",
+          "when": {
+            "year": 2009,
+            "precision": "year"
+          },
+          "source_ids": [
+            "src_whatcom_budget_2009_2010"
+          ],
+          "finding": "The county budget directs installation of additional cooling in the courthouse data center by the end of 2009, establishing an earlier operating computing facility.",
+          "confidence": 0.99
+        }
+      ],
+      "source_ids": [
+        "src_css_bellingham_current_2026",
+        "src_astound_data_center_list_20231219",
+        "src_whatcom_budget_2009_2010",
+        "src_im3_atlas_20260209"
+      ],
+      "authoritative_source_types": [
+        "operator_release",
+        "local_government_record",
+        "federal_dataset"
+      ],
+      "rationale": "CSSNW is documented at the exact mapped address by December 2023, but Whatcom County's 2009–2010 budget required additional cooling in an already existing courthouse data center. The CSSNW date therefore cannot be county first entry; the complete historical inventory remains unresolved.",
+      "created_at": "2026-09-02T21:00:00Z",
+      "updated_at": "2026-09-02T21:00:00Z",
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "county_first_entry_adjudication_id": "fea_55133_pewaukee_we_20130516_unresolved",
+      "first_entry_research_candidate_id": "fer_d78abd874d544ccb7bf7",
+      "treatment_definition_id": "trt_first_entry_v1",
+      "candidate_event_evaluation_id": "tev_468c62d64c90063b6289",
+      "county_fips": "55133",
+      "county_name": "Waukesha County",
+      "state_abbr": "WI",
+      "resolution_state": "unresolved",
+      "decision": "continue_research",
+      "county_first_entry_verified": false,
+      "inventory_completeness_status": "not_established",
+      "earlier_operations_search_status": "documented_incomplete",
+      "required_finding_status": {
+        "earliest_dated_operational_event": "partial",
+        "exact_facility_identity_for_earliest_event": "resolved",
+        "county_inventory_completeness": "unresolved",
+        "documented_search_for_earlier_operations": "partial"
+      },
+      "earlier_operational_findings": [],
+      "source_ids": [
+        "src_pewaukee_we_data_center_minutes_20130516",
+        "src_im3_atlas_20260209"
+      ],
+      "authoritative_source_types": [
+        "local_government_record",
+        "federal_dataset"
+      ],
+      "rationale": "Municipal minutes resolve the exact We Energies Pewaukee Data Center and establish operation by May 16, 2013. The reviewed evidence does not establish the original commissioning date, exclude earlier utility or institutional computing facilities, or complete the county inventory, so first entry remains unresolved.",
+      "created_at": "2026-09-02T21:00:00Z",
+      "updated_at": "2026-09-02T21:00:00Z",
+      "record_status": "provisional"
+    },
+    {
+      "schema_version": "1.0.0",
+      "county_first_entry_adjudication_id": "fea_48113_equinix_infomart_2000_rejected",
+      "first_entry_research_candidate_id": "fer_808f26bf09fa86416482",
+      "treatment_definition_id": "trt_first_entry_v1",
+      "candidate_event_evaluation_id": "tev_a3ee27bff8ed31719cbc",
+      "county_fips": "48113",
+      "county_name": "Dallas County",
+      "state_abbr": "TX",
+      "resolution_state": "candidate_rejected_first_entry",
+      "decision": "reject_candidate_as_first_entry",
+      "county_first_entry_verified": false,
+      "inventory_completeness_status": "not_established",
+      "earlier_operations_search_status": "documented_incomplete",
+      "required_finding_status": {
+        "earliest_dated_operational_event": "partial",
+        "exact_facility_identity_for_earliest_event": "resolved",
+        "county_inventory_completeness": "unresolved",
+        "documented_search_for_earlier_operations": "resolved"
+      },
+      "earlier_operational_findings": [
+        {
+          "facility_id": "fac_dallas_mayflower_data_processing_historic",
+          "canonical_name": "Mayflower Building electronic data-processing center",
+          "temporal_relation": "operational_no_later_than",
+          "when": {
+            "year": 1965,
+            "precision": "year"
+          },
+          "source_ids": [
+            "src_dallas_mayflower_nr_current_2026"
+          ],
+          "finding": "The city-hosted National Register report states that the Mayflower Building opened in 1965 for electronic data-processing systems and outside data-center services.",
+          "confidence": 0.99
+        }
+      ],
+      "source_ids": [
+        "src_equinix_infomart_history_20200604",
+        "src_dallas_mayflower_nr_current_2026",
+        "src_im3_atlas_20260209"
+      ],
+      "authoritative_source_types": [
+        "operator_release",
+        "local_government_record",
+        "federal_dataset"
+      ],
+      "rationale": "Equinix dates its first Infomart data center to 2000, but the City of Dallas historic record documents the Mayflower Building's purpose-built electronic data-processing spaces and outside data-center tenants from 1965. The Infomart event cannot be Dallas County's first computing-facility entry.",
+      "created_at": "2026-09-02T21:00:00Z",
+      "updated_at": "2026-09-02T21:00:00Z",
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "county_first_entry_adjudication_id": "fea_01071_google_bridgeport_2018_unresolved",
+      "first_entry_research_candidate_id": "fer_b4a5f73cfa865c23297a",
+      "treatment_definition_id": "trt_first_entry_v1",
+      "candidate_event_evaluation_id": "tev_abbb37aab12a60babb4c",
+      "county_fips": "01071",
+      "county_name": "Jackson County",
+      "state_abbr": "AL",
+      "resolution_state": "unresolved",
+      "decision": "continue_research",
+      "county_first_entry_verified": false,
+      "inventory_completeness_status": "not_established",
+      "earlier_operations_search_status": "documented_incomplete",
+      "required_finding_status": {
+        "earliest_dated_operational_event": "partial",
+        "exact_facility_identity_for_earliest_event": "resolved",
+        "county_inventory_completeness": "unresolved",
+        "documented_search_for_earlier_operations": "partial"
+      },
+      "earlier_operational_findings": [],
+      "source_ids": [
+        "src_google_alabama_location_current_2026",
+        "src_im3_atlas_20260209"
+      ],
+      "authoritative_source_types": [
+        "operator_release",
+        "federal_dataset"
+      ],
+      "rationale": "Google's official location history resolves the Bridgeport campus and dates its first data-center opening to 2018. The reviewed evidence does not establish a complete Jackson County inventory or conclusively exclude earlier institutional, industrial, or telecom computing operations, so first entry remains unresolved.",
+      "created_at": "2026-09-02T21:00:00Z",
+      "updated_at": "2026-09-02T21:00:00Z",
+      "record_status": "provisional"
+    },
+    {
+      "schema_version": "1.0.0",
+      "county_first_entry_adjudication_id": "fea_06059_tpx_santa_ana_20110531_rejected",
+      "first_entry_research_candidate_id": "fer_668cc896f68349e9aff9",
+      "treatment_definition_id": "trt_first_entry_v1",
+      "candidate_event_evaluation_id": "tev_ed3fbbba646a729ee7f5",
+      "county_fips": "06059",
+      "county_name": "Orange County",
+      "state_abbr": "CA",
+      "resolution_state": "candidate_rejected_first_entry",
+      "decision": "reject_candidate_as_first_entry",
+      "county_first_entry_verified": false,
+      "inventory_completeness_status": "not_established",
+      "earlier_operations_search_status": "documented_incomplete",
+      "required_finding_status": {
+        "earliest_dated_operational_event": "partial",
+        "exact_facility_identity_for_earliest_event": "resolved",
+        "county_inventory_completeness": "unresolved",
+        "documented_search_for_earlier_operations": "resolved"
+      },
+      "earlier_operational_findings": [
+        {
+          "facility_id": "fac_uci_computer_facility_historic",
+          "canonical_name": "UC Irvine Computer Facility",
+          "temporal_relation": "operational_no_later_than",
+          "when": {
+            "year": 1965,
+            "precision": "year"
+          },
+          "source_ids": [
+            "src_uci_first_computer_20231201"
+          ],
+          "finding": "UC Irvine documents its first IBM 1410/1440 computer system and computer facility operating in 1965.",
+          "confidence": 0.98
+        }
+      ],
+      "source_ids": [
+        "src_tpx_ocix_acquisition_20110531",
+        "src_tpx_datacenters_current_2026",
+        "src_uci_first_computer_20231201",
+        "src_im3_atlas_20260209"
+      ],
+      "authoritative_source_types": [
+        "operator_release",
+        "other",
+        "federal_dataset"
+      ],
+      "rationale": "The operating Santa Ana OCiX/TPx colocation facility is documented by May 31, 2011, but UC Irvine records its first campus computer system in 1965 and a dedicated ICS Computer Center by 1968. The 2011 facility cannot be Orange County's first computing-facility entry.",
+      "created_at": "2026-09-02T21:00:00Z",
+      "updated_at": "2026-09-02T21:00:00Z",
+      "record_status": "active"
     }
   ]
 }

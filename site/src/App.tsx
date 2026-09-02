@@ -386,7 +386,7 @@ export default function App() {
       </header>
 
       <div className="fixture-banner" role="status">
-        <strong>Sixty-seven dated anchors have been adjudicated across 88 researched counties.</strong> Earlier operations reject 47 candidate anchors; twenty counties remain unresolved as county first entry. The latest tranche rejects two telecom-utility false positives, dates six genuine facilities, and documents earlier Philadelphia, Oak Ridge, and Microsoft campus computing operations. Complete historical inventories remain unresolved, zero treatment counties are eligible, and no impact model has been run.
+        <strong>Seventy-two dated anchors have been adjudicated across 96 researched counties.</strong> Earlier operations reject 50 candidate anchors; twenty-two counties remain unresolved as county first entry. The latest tranche rejects three telecom false positives, dates five genuine facilities, and documents earlier Whatcom County courthouse, Dallas data-processing, and UC Irvine computing operations. Complete historical inventories remain unresolved, zero treatment counties are eligible, and no impact model has been run.
       </div>
 
       <main className="workspace">
