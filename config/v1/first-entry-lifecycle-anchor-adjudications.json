@@ -2,9 +2,9 @@
   "schema_version": "1.0.0",
   "artifact_type": "first_entry_lifecycle_anchor_adjudications",
   "artifact_version": "2026.09.02",
-  "generated_at": "2026-09-02T18:00:00Z",
+  "generated_at": "2026-09-02T20:00:00Z",
   "record_schema": "https://dccio.org/schemas/v1/national-lifecycle-evidence-adjudication.schema.json",
-  "record_count": 54,
+  "record_count": 62,
   "records": [
     {
       "schema_version": "1.0.0",
@@ -1832,6 +1832,399 @@
           "finding": "The company's own description resolves the point to its commercial office and service business, not a dedicated data-center facility.",
           "disposition": "supporting",
           "claim_confidence": 0.97
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_e2b30c3c8877da9200a2",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "rejected",
+      "confidence": 0.98,
+      "rationale": "The mapped 2,521-square-foot PTC building resolves to People's Telephone Company in Lyons. Oregon utility and municipal records identify PTC as the local telephone utility; neither identifies a dedicated data-center facility, so the telecom office/exchange seed is rejected.",
+      "evidence": [
+        {
+          "source_id": "src_orpuc_peoples_telephone_lyons_20000314",
+          "attribute_path": "facility.facility_type",
+          "raw_value": {
+            "type": "text",
+            "value": "People's Telephone Company — Lyons exchange"
+          },
+          "normalized_value": {
+            "type": "classification",
+            "code": "rejected"
+          },
+          "finding": "The Oregon utility order classifies PTC as the telephone company serving the Lyons exchange, not as a data-center operator.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        },
+        {
+          "source_id": "src_lyons_business_directory_2010",
+          "attribute_path": "facility.identity",
+          "raw_value": {
+            "type": "text",
+            "value": "People's Telephone Co (Lyons), business and repair telephone service"
+          },
+          "normalized_value": {
+            "type": "classification",
+            "code": "rejected"
+          },
+          "finding": "The City of Lyons directory independently resolves the mapped name and location to the local telephone utility.",
+          "disposition": "supporting",
+          "claim_confidence": 0.98
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_283f9d52b833682ee055",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.97,
+      "rationale": "Netrality identifies 401 North Broad as Philadelphia's most interconnected operating data center and traces its carrier-hotel conversion to the 1990s. Philadelphia Historical Commission holdings list Verio and e.spire telecommunications projects in 1998, supporting operation no later than 1998 at year precision.",
+      "evidence": [
+        {
+          "source_id": "src_netrality_401nbroad_history_20230627",
+          "attribute_path": "facility.current_status",
+          "raw_value": {
+            "type": "classification",
+            "code": "operational",
+            "label": "401 North Broad operating colocation and interconnection data center"
+          },
+          "normalized_value": {
+            "type": "classification",
+            "code": "operational"
+          },
+          "finding": "The current operator resolves the exact building and confirms present data-center operation.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        },
+        {
+          "source_id": "src_philadelphia_401nbroad_permit_archive",
+          "attribute_path": "event.operational",
+          "raw_value": {
+            "type": "date",
+            "value": {
+              "year": 1998,
+              "precision": "year"
+            }
+          },
+          "finding": "Municipal historical files list Verio and e.spire telecommunications build-outs at the building in 1998.",
+          "disposition": "supporting",
+          "claim_confidence": 0.95
+        }
+      ],
+      "events": [
+        {
+          "event_type": "operational",
+          "when": {
+            "year": 1998,
+            "precision": "year"
+          },
+          "source_id": "src_philadelphia_401nbroad_permit_archive",
+          "confidence": 0.95,
+          "notes": "Operational no later than documented carrier/data-center tenant projects in 1998; the exact initial commissioning date remains unknown."
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_cdaf841979dd9a46fceb",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.99,
+      "rationale": "DC BLOX's dated announcement states that the purpose-built Myrtle Beach cable landing station opened on October 10, 2023, and identifies its colocation and network-equipment functions. A regional economic-development record corroborates the exact Horry County project and its data-center use.",
+      "evidence": [
+        {
+          "source_id": "src_dcblox_myrtle_open_20231010",
+          "attribute_path": "event.operational",
+          "raw_value": {
+            "type": "date",
+            "value": {
+              "date": "2023-10-10",
+              "precision": "day"
+            }
+          },
+          "finding": "The operator announced the facility's opening on October 10, 2023.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        },
+        {
+          "source_id": "src_mbredc_dcblox_plan_20220510",
+          "attribute_path": "facility.identity",
+          "raw_value": {
+            "type": "text",
+            "value": "Specialized cable landing station data center in Horry County"
+          },
+          "finding": "The local economic-development record independently resolves the facility, geography, and data-center function.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        }
+      ],
+      "events": [
+        {
+          "event_type": "operational",
+          "when": {
+            "date": "2023-10-10",
+            "precision": "day"
+          },
+          "source_id": "src_dcblox_myrtle_open_20231010",
+          "confidence": 0.99,
+          "notes": "Operator-announced opening date."
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_572e6f9ae270a32295e1",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.99,
+      "rationale": "Oak Ridge National Laboratory's August 17, 2022 release identifies the exact Frontier system, its OLCF home, active day-one science, and the official launch. ORNL's computing history independently traces the facility and its predecessor systems.",
+      "evidence": [
+        {
+          "source_id": "src_ornl_frontier_launch_20220817",
+          "attribute_path": "event.operational",
+          "raw_value": {
+            "type": "date",
+            "value": {
+              "date": "2022-08-17",
+              "precision": "day"
+            }
+          },
+          "finding": "ORNL celebrated Frontier's launch and reported that it was already delivering science on day one.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        },
+        {
+          "source_id": "src_ornl_computing_history_current_2026",
+          "attribute_path": "facility.identity",
+          "raw_value": {
+            "type": "text",
+            "value": "Frontier at the Oak Ridge Leadership Computing Facility"
+          },
+          "finding": "ORNL's institutional history resolves Frontier to the OLCF computing facility and predecessor lineage.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        }
+      ],
+      "events": [
+        {
+          "event_type": "operational",
+          "when": {
+            "date": "2022-08-17",
+            "precision": "day"
+          },
+          "source_id": "src_ornl_frontier_launch_20220817",
+          "confidence": 0.99,
+          "notes": "Official launch with day-one scientific work; broader full user access followed in 2023."
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_8383c31a007546bbecc3",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.94,
+      "rationale": "The facility identity resolves to Microsoft's SAT46/TRP3 building at the Texas Research Park campus. The industry facility record reports a 2022 build and current operation, while the Texas environmental filing independently identifies SAT46 as one of the campus's regulated data-center buildings.",
+      "evidence": [
+        {
+          "source_id": "src_baxtel_microsoft_trp3_current_2026",
+          "attribute_path": "event.operational",
+          "raw_value": {
+            "type": "date",
+            "value": {
+              "year": 2022,
+              "precision": "year"
+            }
+          },
+          "finding": "The facility directory identifies TRP3/SAT46 as operational and reports 2022 as its build year.",
+          "disposition": "supporting",
+          "claim_confidence": 0.9
+        },
+        {
+          "source_id": "src_tceq_microsoft_sat_campus_2026",
+          "attribute_path": "facility.identity",
+          "raw_value": {
+            "type": "text",
+            "value": "Microsoft SAT Campus — SAT46 data-center building"
+          },
+          "finding": "The state environmental filing independently resolves SAT46 as a data-center building on the Microsoft SAT campus.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        }
+      ],
+      "events": [
+        {
+          "event_type": "operational",
+          "when": {
+            "year": 2022,
+            "precision": "year"
+          },
+          "source_id": "src_baxtel_microsoft_trp3_current_2026",
+          "confidence": 0.9,
+          "notes": "Operational year reported by the industry facility record; a day-level commissioning date was not found."
+        }
+      ],
+      "record_status": "provisional"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_9c33e67307d1b47310a4",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.99,
+      "rationale": "Ionic Digital's SEC-filed Ward County update states that the Cedarvale campus has been energized and operating since 2023. The operator's August 2024 release independently documents active mining in the first newly constructed 50 MW building.",
+      "evidence": [
+        {
+          "source_id": "src_sec_ionic_q2_2026",
+          "attribute_path": "event.operational",
+          "raw_value": {
+            "type": "date",
+            "value": {
+              "year": 2023,
+              "precision": "year"
+            }
+          },
+          "finding": "The SEC-filed company update states that the Ward County campus has been energized and operating since 2023.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        },
+        {
+          "source_id": "src_ionic_cedarvale_energized_20240827",
+          "attribute_path": "facility.current_status",
+          "raw_value": {
+            "type": "classification",
+            "code": "operational",
+            "label": "Building 1 energized and mining"
+          },
+          "normalized_value": {
+            "type": "classification",
+            "code": "operational"
+          },
+          "finding": "The operator's release confirms active computing loads at Cedarvale in August 2024.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        }
+      ],
+      "events": [
+        {
+          "event_type": "operational",
+          "when": {
+            "year": 2023,
+            "precision": "year"
+          },
+          "source_id": "src_sec_ionic_q2_2026",
+          "confidence": 0.99,
+          "notes": "Company's SEC-filed statement of campus operation since 2023; Building 1 energization was separately announced in August 2024."
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_0cf9983cde7f02b32ce3",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.98,
+      "rationale": "Strata Networks currently markets its dedicated Uintah Basin data center, and a dated municipal procurement proposal states that Strata owns and operates the Vernal facility. Operation is established no later than May 17, 2022.",
+      "evidence": [
+        {
+          "source_id": "src_strata_data_center_current_2026",
+          "attribute_path": "facility.current_status",
+          "raw_value": {
+            "type": "classification",
+            "code": "operational",
+            "label": "Strata Networks Data Center"
+          },
+          "normalized_value": {
+            "type": "classification",
+            "code": "operational"
+          },
+          "finding": "The operator currently offers backup, dedicated hosting, and cloud hosting from the facility.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        },
+        {
+          "source_id": "src_americanfork_strata_proposal_20220517",
+          "attribute_path": "event.operational",
+          "raw_value": {
+            "type": "date",
+            "value": {
+              "date": "2022-05-17",
+              "precision": "day"
+            }
+          },
+          "finding": "The city-filed proposal states that Strata owns and operates its Vernal data-center facility.",
+          "disposition": "supporting",
+          "claim_confidence": 0.98
+        }
+      ],
+      "events": [
+        {
+          "event_type": "operational",
+          "when": {
+            "date": "2022-05-17",
+            "precision": "day"
+          },
+          "source_id": "src_americanfork_strata_proposal_20220517",
+          "confidence": 0.98,
+          "notes": "Operational no later than the dated municipal proposal; the original commissioning date remains unknown."
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_70231688488c8a6da393",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "rejected",
+      "confidence": 0.99,
+      "rationale": "The mapped 1,833-square-foot Lumen building resolves to incumbent telephone-network infrastructure in St. George. Lumen's own network disclosure identifies the St. George asset as a 5ESS local tandem, and Utah identifies Lumen as the incumbent local exchange carrier; the seed is rejected as a telecom central-office/tandem false positive.",
+      "evidence": [
+        {
+          "source_id": "src_lumen_utah_tandem_notice_20250108",
+          "attribute_path": "facility.facility_type",
+          "raw_value": {
+            "type": "text",
+            "value": "St George, UT (STGRUTMA00T) 5ESS Local Tandem"
+          },
+          "normalized_value": {
+            "type": "classification",
+            "code": "rejected"
+          },
+          "finding": "Lumen's network disclosure classifies the St. George asset as a telephone local tandem rather than a dedicated data center.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        },
+        {
+          "source_id": "src_utah_lumen_ilec_current_2026",
+          "attribute_path": "facility.identity",
+          "raw_value": {
+            "type": "text",
+            "value": "Lumen is the incumbent local exchange carrier for most Utah population centers"
+          },
+          "normalized_value": {
+            "type": "classification",
+            "code": "rejected"
+          },
+          "finding": "The state utility description corroborates the seed's telephone-network function.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
         }
       ],
       "record_status": "active"

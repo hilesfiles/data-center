@@ -2,9 +2,9 @@
   "schema_version": "1.0.0",
   "artifact_type": "county_first_entry_anchor_adjudications",
   "artifact_version": "2026.09.01",
-  "generated_at": "2026-09-02T18:00:00Z",
+  "generated_at": "2026-09-02T20:00:00Z",
   "record_schema": "https://dccio.org/schemas/v1/county-first-entry-adjudication.schema.json",
-  "record_count": 61,
+  "record_count": 67,
   "records": [
     {
       "schema_version": "1.0.0",
@@ -2341,6 +2341,270 @@
       "rationale": "The selected Wilsonville building resolves to the Mentor Graphics/Siemens corporate data center, with construction complete and opening expected in December 2012 and current operation independently confirmed. The reviewed sources do not establish a complete Clackamas County inventory or exclude earlier corporate and public-sector operations, so first entry remains unresolved.",
       "created_at": "2026-09-02T18:00:00Z",
       "updated_at": "2026-09-02T18:00:00Z",
+      "record_status": "provisional"
+    },
+    {
+      "schema_version": "1.0.0",
+      "county_first_entry_adjudication_id": "fea_42101_terminal_commerce_1998_rejected",
+      "first_entry_research_candidate_id": "fer_8bf75792e273cee78859",
+      "treatment_definition_id": "trt_first_entry_v1",
+      "candidate_event_evaluation_id": "tev_4ec300bf46ee15f90c74",
+      "county_fips": "42101",
+      "county_name": "Philadelphia County",
+      "state_abbr": "PA",
+      "resolution_state": "candidate_rejected_first_entry",
+      "decision": "reject_candidate_as_first_entry",
+      "county_first_entry_verified": false,
+      "inventory_completeness_status": "not_established",
+      "earlier_operations_search_status": "documented_incomplete",
+      "required_finding_status": {
+        "earliest_dated_operational_event": "partial",
+        "exact_facility_identity_for_earliest_event": "resolved",
+        "county_inventory_completeness": "unresolved",
+        "documented_search_for_earlier_operations": "resolved"
+      },
+      "earlier_operational_findings": [
+        {
+          "facility_id": "fac_upenn_eniac_historic",
+          "canonical_name": "University of Pennsylvania ENIAC computing room",
+          "temporal_relation": "operational_no_later_than",
+          "when": {
+            "year": 1945,
+            "precision": "year"
+          },
+          "source_ids": [
+            "src_upenn_eniac_history_19960130"
+          ],
+          "finding": "The University of Pennsylvania history documents ENIAC calculations running in Philadelphia in November 1945, decades before Terminal Commerce became a carrier hotel.",
+          "confidence": 0.98
+        }
+      ],
+      "source_ids": [
+        "src_netrality_401nbroad_history_20230627",
+        "src_philadelphia_401nbroad_permit_archive",
+        "src_upenn_eniac_history_19960130",
+        "src_im3_atlas_20260209"
+      ],
+      "authoritative_source_types": [
+        "operator_release",
+        "local_government_record",
+        "other",
+        "federal_dataset"
+      ],
+      "rationale": "Terminal Commerce was operating as a carrier/data-center building by 1998 and remains operational, but University of Pennsylvania records document room-scale ENIAC computing operations in Philadelphia in 1945. The 1998 event therefore cannot be the county's first computing-facility entry; the complete historical inventory remains unresolved.",
+      "created_at": "2026-09-02T20:00:00Z",
+      "updated_at": "2026-09-02T20:00:00Z",
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "county_first_entry_adjudication_id": "fea_45051_dcblox_myrtle_20231010_unresolved",
+      "first_entry_research_candidate_id": "fer_b0e48bf68ff6b4e89663",
+      "treatment_definition_id": "trt_first_entry_v1",
+      "candidate_event_evaluation_id": "tev_d9eb9a290bde3f5b5892",
+      "county_fips": "45051",
+      "county_name": "Horry County",
+      "state_abbr": "SC",
+      "resolution_state": "unresolved",
+      "decision": "continue_research",
+      "county_first_entry_verified": false,
+      "inventory_completeness_status": "not_established",
+      "earlier_operations_search_status": "documented_incomplete",
+      "required_finding_status": {
+        "earliest_dated_operational_event": "partial",
+        "exact_facility_identity_for_earliest_event": "resolved",
+        "county_inventory_completeness": "unresolved",
+        "documented_search_for_earlier_operations": "partial"
+      },
+      "earlier_operational_findings": [],
+      "source_ids": [
+        "src_dcblox_myrtle_open_20231010",
+        "src_mbredc_dcblox_plan_20220510",
+        "src_im3_atlas_20260209"
+      ],
+      "authoritative_source_types": [
+        "operator_release",
+        "local_government_record",
+        "federal_dataset"
+      ],
+      "rationale": "DC BLOX's exact Horry County cable landing station opened on October 10, 2023. The reviewed operator and local development records establish the facility and date but do not provide a complete county inventory or exclude earlier enterprise, telecommunications, or public-sector computing facilities, so first entry remains unresolved.",
+      "created_at": "2026-09-02T20:00:00Z",
+      "updated_at": "2026-09-02T20:00:00Z",
+      "record_status": "provisional"
+    },
+    {
+      "schema_version": "1.0.0",
+      "county_first_entry_adjudication_id": "fea_47145_frontier_20220817_rejected",
+      "first_entry_research_candidate_id": "fer_c52eb678c7359da41b5f",
+      "treatment_definition_id": "trt_first_entry_v1",
+      "candidate_event_evaluation_id": "tev_c99b49d59eb1a5222e6f",
+      "county_fips": "47145",
+      "county_name": "Roane County",
+      "state_abbr": "TN",
+      "resolution_state": "candidate_rejected_first_entry",
+      "decision": "reject_candidate_as_first_entry",
+      "county_first_entry_verified": false,
+      "inventory_completeness_status": "not_established",
+      "earlier_operations_search_status": "documented_incomplete",
+      "required_finding_status": {
+        "earliest_dated_operational_event": "partial",
+        "exact_facility_identity_for_earliest_event": "resolved",
+        "county_inventory_completeness": "unresolved",
+        "documented_search_for_earlier_operations": "resolved"
+      },
+      "earlier_operational_findings": [
+        {
+          "facility_id": "fac_ornl_olcf_predecessor_historic",
+          "canonical_name": "Oak Ridge Leadership Computing Facility predecessor systems",
+          "temporal_relation": "operational_no_later_than",
+          "when": {
+            "year": 2004,
+            "precision": "year"
+          },
+          "source_ids": [
+            "src_ornl_computing_history_current_2026"
+          ],
+          "finding": "ORNL documents the OLCF computing bay and predecessor high-performance systems from 2004, well before Frontier's 2022 launch.",
+          "confidence": 0.99
+        }
+      ],
+      "source_ids": [
+        "src_ornl_frontier_launch_20220817",
+        "src_ornl_computing_history_current_2026",
+        "src_im3_atlas_20260209"
+      ],
+      "authoritative_source_types": [
+        "federal_dataset",
+        "operator_release"
+      ],
+      "rationale": "Frontier's official launch supplies a dated 2022 operational anchor, but ORNL's institutional history documents the OLCF computing facility and predecessor systems beginning in 2004. Frontier cannot be Roane County's first entry, and the county's complete earlier computing-facility inventory remains unresolved.",
+      "created_at": "2026-09-02T20:00:00Z",
+      "updated_at": "2026-09-02T20:00:00Z",
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "county_first_entry_adjudication_id": "fea_48325_microsoft_trp3_2022_rejected",
+      "first_entry_research_candidate_id": "fer_6762186644fa72e7cccd",
+      "treatment_definition_id": "trt_first_entry_v1",
+      "candidate_event_evaluation_id": "tev_0cbdd5677de02d57a2b9",
+      "county_fips": "48325",
+      "county_name": "Medina County",
+      "state_abbr": "TX",
+      "resolution_state": "candidate_rejected_first_entry",
+      "decision": "reject_candidate_as_first_entry",
+      "county_first_entry_verified": false,
+      "inventory_completeness_status": "not_established",
+      "earlier_operations_search_status": "documented_incomplete",
+      "required_finding_status": {
+        "earliest_dated_operational_event": "partial",
+        "exact_facility_identity_for_earliest_event": "resolved",
+        "county_inventory_completeness": "unresolved",
+        "documented_search_for_earlier_operations": "resolved"
+      },
+      "earlier_operational_findings": [
+        {
+          "facility_id": "fac_microsoft_texas_research_park_prior",
+          "canonical_name": "Microsoft Texas Research Park data-center campus",
+          "temporal_relation": "operational_no_later_than",
+          "when": {
+            "date": "2021-04-06",
+            "precision": "day"
+          },
+          "source_ids": [
+            "src_dcd_microsoft_sat46_20210406"
+          ],
+          "finding": "Contemporaneous reporting described SAT46 as a new building at Microsoft's existing Texas Research Park data-center campus, establishing earlier campus operation before SAT46's 2022 completion.",
+          "confidence": 0.95
+        }
+      ],
+      "source_ids": [
+        "src_baxtel_microsoft_trp3_current_2026",
+        "src_tceq_microsoft_sat_campus_2026",
+        "src_dcd_microsoft_sat46_20210406",
+        "src_im3_atlas_20260209"
+      ],
+      "authoritative_source_types": [
+        "regulatory_filing",
+        "federal_dataset"
+      ],
+      "rationale": "TRP3/SAT46 resolves to an operating Microsoft data-center building with a 2022 year anchor. The contemporaneous project record describes it as an addition to an existing Texas Research Park data-center campus, so SAT46 cannot be the county's first entry; the earlier campus commissioning date and complete inventory remain unresolved.",
+      "created_at": "2026-09-02T20:00:00Z",
+      "updated_at": "2026-09-02T20:00:00Z",
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "county_first_entry_adjudication_id": "fea_48475_ionic_cedarvale_2023_unresolved",
+      "first_entry_research_candidate_id": "fer_45636f791904b9b71d18",
+      "treatment_definition_id": "trt_first_entry_v1",
+      "candidate_event_evaluation_id": "tev_5e7e76d32ff2f3e3ec0f",
+      "county_fips": "48475",
+      "county_name": "Ward County",
+      "state_abbr": "TX",
+      "resolution_state": "unresolved",
+      "decision": "continue_research",
+      "county_first_entry_verified": false,
+      "inventory_completeness_status": "not_established",
+      "earlier_operations_search_status": "documented_incomplete",
+      "required_finding_status": {
+        "earliest_dated_operational_event": "partial",
+        "exact_facility_identity_for_earliest_event": "resolved",
+        "county_inventory_completeness": "unresolved",
+        "documented_search_for_earlier_operations": "partial"
+      },
+      "earlier_operational_findings": [],
+      "source_ids": [
+        "src_sec_ionic_q2_2026",
+        "src_ionic_cedarvale_energized_20240827",
+        "src_texas_comptroller_data_centers_current_2026",
+        "src_im3_atlas_20260209"
+      ],
+      "authoritative_source_types": [
+        "sec_filing",
+        "operator_release",
+        "state_record",
+        "federal_dataset"
+      ],
+      "rationale": "The SEC-filed company record establishes Cedarvale operation since 2023, the operator documents active mining in its first new 50 MW building in 2024, and the Texas Comptroller independently lists the project. These sources do not establish a complete Ward County inventory or exclude earlier computing facilities, so first entry remains unresolved.",
+      "created_at": "2026-09-02T20:00:00Z",
+      "updated_at": "2026-09-02T20:00:00Z",
+      "record_status": "provisional"
+    },
+    {
+      "schema_version": "1.0.0",
+      "county_first_entry_adjudication_id": "fea_49047_strata_20220517_unresolved",
+      "first_entry_research_candidate_id": "fer_41fd2570d9c0b963b84a",
+      "treatment_definition_id": "trt_first_entry_v1",
+      "candidate_event_evaluation_id": "tev_d02b9f6800e666d2e7fe",
+      "county_fips": "49047",
+      "county_name": "Uintah County",
+      "state_abbr": "UT",
+      "resolution_state": "unresolved",
+      "decision": "continue_research",
+      "county_first_entry_verified": false,
+      "inventory_completeness_status": "not_established",
+      "earlier_operations_search_status": "documented_incomplete",
+      "required_finding_status": {
+        "earliest_dated_operational_event": "partial",
+        "exact_facility_identity_for_earliest_event": "resolved",
+        "county_inventory_completeness": "unresolved",
+        "documented_search_for_earlier_operations": "partial"
+      },
+      "earlier_operational_findings": [],
+      "source_ids": [
+        "src_strata_data_center_current_2026",
+        "src_americanfork_strata_proposal_20220517",
+        "src_im3_atlas_20260209"
+      ],
+      "authoritative_source_types": [
+        "operator_release",
+        "local_government_record",
+        "federal_dataset"
+      ],
+      "rationale": "Strata currently markets the exact Vernal data center, and a city-filed proposal establishes operation no later than May 17, 2022. The original commissioning date, earlier local carrier computing infrastructure, and complete Uintah County inventory remain unverified, so first entry remains unresolved.",
+      "created_at": "2026-09-02T20:00:00Z",
+      "updated_at": "2026-09-02T20:00:00Z",
       "record_status": "provisional"
     }
   ]

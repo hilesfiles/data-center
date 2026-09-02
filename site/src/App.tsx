@@ -386,7 +386,7 @@ export default function App() {
       </header>
 
       <div className="fixture-banner" role="status">
-        <strong>Sixty-one dated anchors have been adjudicated across 80 researched counties.</strong> Earlier operations reject 44 candidate anchors; seventeen counties remain unresolved as county first entry. The latest tranche rejects three false-positive seeds—a telecom headquarters and warehouse, a call center, and an ISP office—and documents earlier AT&amp;T and Lucent data-center operations. Complete historical inventories remain unresolved, zero treatment counties are eligible, and no impact model has been run.
+        <strong>Sixty-seven dated anchors have been adjudicated across 88 researched counties.</strong> Earlier operations reject 47 candidate anchors; twenty counties remain unresolved as county first entry. The latest tranche rejects two telecom-utility false positives, dates six genuine facilities, and documents earlier Philadelphia, Oak Ridge, and Microsoft campus computing operations. Complete historical inventories remain unresolved, zero treatment counties are eligible, and no impact model has been run.
       </div>
 
       <main className="workspace">
