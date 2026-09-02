@@ -2,9 +2,9 @@
   "schema_version": "1.0.0",
   "artifact_type": "first_entry_lifecycle_anchor_adjudications",
   "artifact_version": "2026.09.02",
-  "generated_at": "2026-09-02T23:00:00Z",
+  "generated_at": "2026-09-03T01:00:00Z",
   "record_schema": "https://dccio.org/schemas/v1/national-lifecycle-evidence-adjudication.schema.json",
-  "record_count": 94,
+  "record_count": 102,
   "records": [
     {
       "schema_version": "1.0.0",
@@ -4035,6 +4035,238 @@
           "source_id": "src_digitalrealty_2015_10k_clifton",
           "confidence": 0.99,
           "notes": "Operational no later than the 2015 SEC property snapshot."
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_874109c4a8d22bde3f40",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.95,
+      "rationale": "NYSERDA identifies the mapped TurnKey Internet facility in Latham as a populated data center serving clients, while contemporaneous local reporting dates its public grand-opening week to April 2012. The mapped facility was operational by that month.",
+      "evidence": [
+        {
+          "source_id": "src_nyserda_turnkey_latham_case_study_2012",
+          "attribute_path": "facility.identity",
+          "raw_value": {"type": "text", "value": "TurnKey Internet data center, Latham, New York"},
+          "finding": "The state case study identifies the facility and describes it as populated and serving clients.",
+          "disposition": "supporting",
+          "claim_confidence": 0.97
+        },
+        {
+          "source_id": "src_timesunion_turnkey_latham_opening_20120416",
+          "attribute_path": "event.operational",
+          "raw_value": {"type": "date", "value": {"date": "2012-04-01", "precision": "month"}},
+          "finding": "Contemporaneous reporting announces the grand opening of TurnKey's new Latham data center during April 2012.",
+          "disposition": "supporting",
+          "claim_confidence": 0.94
+        }
+      ],
+      "events": [
+        {
+          "event_type": "operational",
+          "when": {"date": "2012-04-01", "precision": "month"},
+          "source_id": "src_timesunion_turnkey_latham_opening_20120416",
+          "confidence": 0.94,
+          "notes": "Operational by the April 2012 grand-opening month; day precision is intentionally not inferred from the article's relative weekday reference."
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_8b917e8e0a5518009202",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.95,
+      "rationale": "New York City's Landmarks Preservation Commission identifies the mapped 33 Thomas Street Long Lines Building and dates completion to 1974. Its purpose-built telecommunications infrastructure supports an operational anchor no later than that year, while the county-wide first-entry claim remains unresolved.",
+      "evidence": [
+        {
+          "source_id": "src_nyc_lpc_33_thomas_completed_1974",
+          "attribute_path": "event.operational",
+          "raw_value": {"type": "date", "value": {"year": 1974, "precision": "year"}},
+          "finding": "The city designation report identifies the AT&T Long Lines Building at 33 Thomas Street and states that it was completed in 1974.",
+          "disposition": "supporting",
+          "claim_confidence": 0.95
+        }
+      ],
+      "events": [
+        {
+          "event_type": "operational",
+          "when": {"year": 1974, "precision": "year"},
+          "source_id": "src_nyc_lpc_33_thomas_completed_1974",
+          "confidence": 0.95,
+          "notes": "Operational no later than the reported completion year for the purpose-built Long Lines facility."
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_6a369648bab50ed1f59c",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "rejected",
+      "confidence": 0.99,
+      "rationale": "Duke University Libraries describes the mapped Brandaleone Lab as a public-facing academic visualization workspace with twelve workstations. It is not a dedicated data center and is rejected as a map-classification false positive.",
+      "evidence": [
+        {
+          "source_id": "src_duke_brandaleone_lab_20150107",
+          "attribute_path": "facility.facility_type",
+          "raw_value": {"type": "text", "value": "Academic data-visualization lab with twelve workstations in Bostock Library"},
+          "normalized_value": {"type": "classification", "code": "rejected"},
+          "finding": "The university's own description establishes that this is a staffed library computer lab, not data-center infrastructure.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_b938c58f2a51d218f5f3",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.99,
+      "rationale": "Meta's dated operator announcement states that its Forest City data center officially opened and began serving traffic on April 19, 2012, directly establishing the mapped campus building's operation.",
+      "evidence": [
+        {
+          "source_id": "src_meta_forest_city_open_20120419",
+          "attribute_path": "event.operational",
+          "raw_value": {"type": "date", "value": {"date": "2012-04-19", "precision": "day"}},
+          "finding": "Meta reports that the Forest City data center officially opened and was serving traffic that day.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        }
+      ],
+      "events": [
+        {
+          "event_type": "operational",
+          "when": {"date": "2012-04-19", "precision": "day"},
+          "source_id": "src_meta_forest_city_open_20120419",
+          "confidence": 0.99,
+          "notes": "Exact operator-reported opening date."
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_c1b58bc73a5434f4a9d5",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.99,
+      "rationale": "Meta announced on November 14, 2024 that its Gallatin Data Center was online and serving traffic, directly establishing operation of the mapped campus.",
+      "evidence": [
+        {
+          "source_id": "src_meta_gallatin_online_20241114",
+          "attribute_path": "event.operational",
+          "raw_value": {"type": "date", "value": {"date": "2024-11-14", "precision": "day"}},
+          "finding": "Meta states that the Gallatin Data Center is online and serving traffic.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        }
+      ],
+      "events": [
+        {
+          "event_type": "operational",
+          "when": {"date": "2024-11-14", "precision": "day"},
+          "source_id": "src_meta_gallatin_online_20241114",
+          "confidence": 0.99,
+          "notes": "Exact operator-reported online date."
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_78eb6baf93a4dd72fbe9",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "under_construction",
+      "confidence": 0.99,
+      "rationale": "Microsoft's Malaga site plan identifies EAT12, EAT13, and EAT14, while Washington Ecology's exact EAT12 facility record shows active construction-stormwater permitting. The mapped building is therefore under construction, not an operational first-entry anchor.",
+      "evidence": [
+        {
+          "source_id": "src_microsoft_malaga_eat12_14_site_plan_202305",
+          "attribute_path": "facility.identity",
+          "raw_value": {"type": "text", "value": "Malaga datacenter conceptual site plan labeled EAT12, EAT13, and EAT14"},
+          "finding": "Microsoft's site plan resolves the mapped EAT12–14 campus identity.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        },
+        {
+          "source_id": "src_wa_ecology_eat12_construction_20230524",
+          "attribute_path": "facility.current_status",
+          "raw_value": {"type": "classification", "code": "under_construction", "label": "EAT12 active construction stormwater permit"},
+          "normalized_value": {"type": "classification", "code": "under_construction"},
+          "finding": "The state facility record ties EAT12 to an active construction permit rather than a completed operating facility.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_ccc2cebfc481e5cecbaa",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.97,
+      "rationale": "TierPoint's operator page identifies its current Spokane facilities at 23403 and 23017 East Mission Avenue and describes their operational colocation services. This establishes the mapped TierPoint building as operational no later than the current operator record.",
+      "evidence": [
+        {
+          "source_id": "src_tierpoint_spokane_current_2026",
+          "attribute_path": "event.operational",
+          "raw_value": {"type": "date", "value": {"year": 2026, "precision": "year"}},
+          "finding": "TierPoint lists the two Spokane addresses, production space, reliability, connectivity, security, and available colocation services.",
+          "disposition": "supporting",
+          "claim_confidence": 0.97
+        }
+      ],
+      "events": [
+        {
+          "event_type": "operational",
+          "when": {"year": 2026, "precision": "year"},
+          "source_id": "src_tierpoint_spokane_current_2026",
+          "confidence": 0.97,
+          "notes": "Operational no later than the 2026 research snapshot of TierPoint's current facility page."
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_8be7703d7f7203fc8ca5",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.99,
+      "rationale": "Expedient's dated operator announcement states that it opened its Franklin, Wisconsin data center in Milwaukee County on October 20, 2021, matching the mapped Expedient Milwaukee building.",
+      "evidence": [
+        {
+          "source_id": "src_expedient_milwaukee_open_20211020",
+          "attribute_path": "event.operational",
+          "raw_value": {"type": "date", "value": {"date": "2021-10-20", "precision": "day"}},
+          "finding": "Expedient announces the opening of its Franklin facility in Milwaukee County and immediate service availability.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        }
+      ],
+      "events": [
+        {
+          "event_type": "operational",
+          "when": {"date": "2021-10-20", "precision": "day"},
+          "source_id": "src_expedient_milwaukee_open_20211020",
+          "confidence": 0.99,
+          "notes": "Exact operator-reported opening date."
         }
       ],
       "record_status": "active"

@@ -243,7 +243,7 @@ def build() -> dict[str, Any]:
         elif lifecycle_review:
             if lifecycle_review.get("resolved_current_status") == "rejected":
                 candidate["research_summary"] = (
-                    "The county's only mapped seed was adjudicated as a non-data-center false positive. "
+                    "The reviewed mapped seed was adjudicated as a non-data-center false positive. "
                     "County first entry remains unresolved pending a corrected historical facility inventory."
                 )
             else:
