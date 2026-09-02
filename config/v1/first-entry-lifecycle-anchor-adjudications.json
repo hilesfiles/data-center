@@ -2,10 +2,310 @@
   "schema_version": "1.0.0",
   "artifact_type": "first_entry_lifecycle_anchor_adjudications",
   "artifact_version": "2026.09.02",
-  "generated_at": "2026-09-02T14:00:00Z",
+  "generated_at": "2026-09-02T16:00:00Z",
   "record_schema": "https://dccio.org/schemas/v1/national-lifecycle-evidence-adjudication.schema.json",
-  "record_count": 38,
+  "record_count": 46,
   "records": [
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_8b7e1ae1f8dd5f40d403",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.99,
+      "rationale": "A New Jersey Board of Public Utilities order identifies Barclays Capital's existing data center at 27 Commerce Drive in Cranford and describes replacement of five chillers serving the facility. The underlying incentive application was submitted June 19, 2020, establishing exact-site data-center operation no later than that date.",
+      "evidence": [
+        {
+          "source_id": "src_njbpu_barclays_cranford_20211117",
+          "attribute_path": "facility.identity",
+          "raw_value": {"type": "text", "value": "Barclays Capital data center at 27 Commerce Drive, Cranford, New Jersey"},
+          "finding": "The state regulatory order matches the mapped building to an operating Barclays data center and its dedicated rooftop chiller plant.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        },
+        {
+          "source_id": "src_njbpu_barclays_cranford_20211117",
+          "attribute_path": "event.operational",
+          "raw_value": {"type": "date", "value": {"date": "2020-06-19", "precision": "day"}},
+          "finding": "The order records the filing date of an efficiency application for equipment serving the existing data center.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        }
+      ],
+      "events": [
+        {
+          "event_type": "operational",
+          "when": {"date": "2020-06-19", "precision": "day"},
+          "source_id": "src_njbpu_barclays_cranford_20211117",
+          "confidence": 0.99,
+          "notes": "Operational no later than the dated energy-efficiency application for the exact data center."
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_f501c9928faf9ab7ecac",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.99,
+      "rationale": "New Mexico DoIT identifies the John F. Simms Jr. Building as its central office and one of its two data centers. A Legislative Finance Committee fiscal-year 2008 report states that the Simms Building hosts the state's data and communications center, providing a dated operational-no-later-than anchor at year precision.",
+      "evidence": [
+        {
+          "source_id": "src_nm_doit_simms_current_2026",
+          "attribute_path": "facility.current_status",
+          "raw_value": {"type": "classification", "code": "operational", "label": "State data center housed in the John F. Simms Jr. Building"},
+          "normalized_value": {"type": "classification", "code": "operational"},
+          "finding": "The responsible state department identifies an operating data center at the mapped building.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        },
+        {
+          "source_id": "src_nm_lfc_simms_data_center_fy2008",
+          "attribute_path": "event.operational",
+          "raw_value": {"type": "date", "value": {"year": 2007, "precision": "year"}},
+          "finding": "The fiscal-year 2008 budget recommendation describes the Simms Building as hosting the state's data and communications center.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        }
+      ],
+      "events": [
+        {
+          "event_type": "operational",
+          "when": {"year": 2007, "precision": "year"},
+          "source_id": "src_nm_lfc_simms_data_center_fy2008",
+          "confidence": 0.99,
+          "notes": "Operational no later than the fiscal-year 2008 legislative budget record; year precision is retained."
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_d844da7c698b80ebc4c4",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.97,
+      "rationale": "DataVerge identifies its operating 50,000-square-foot carrier-neutral data center at Industry City in Brooklyn. Data Center Dynamics matches the site to 882 Third Avenue and reports that the company opened the location around 2003; year precision and qualified confidence preserve the source's approximate dating.",
+      "evidence": [
+        {
+          "source_id": "src_dataverge_about_current_2026",
+          "attribute_path": "facility.current_status",
+          "raw_value": {"type": "classification", "code": "operational", "label": "Operating DataVerge carrier-neutral data center at Industry City"},
+          "normalized_value": {"type": "classification", "code": "operational"},
+          "finding": "The operator identifies the active Brooklyn data-center footprint and operating services.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        },
+        {
+          "source_id": "src_dcd_dataverge_brooklyn_20240110",
+          "attribute_path": "event.operational",
+          "raw_value": {"type": "date", "value": {"year": 2003, "precision": "year"}},
+          "finding": "Trade reporting matches the facility to 882 Third Avenue and dates the site's opening to around 2003.",
+          "disposition": "supporting",
+          "claim_confidence": 0.92
+        }
+      ],
+      "events": [
+        {
+          "event_type": "operational",
+          "when": {"year": 2003, "precision": "year"},
+          "source_id": "src_dcd_dataverge_brooklyn_20240110",
+          "confidence": 0.92,
+          "notes": "Approximate opening year reported for the exact 882 Third Avenue location."
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_9aa2c8c107db182faedc",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.99,
+      "rationale": "Syracuse University Archives identifies the mapped Green Data Center at 623 Skytop Road, dates its dedication to December 2, 2009, and states that the building was occupied in December 2009. Exact identity, purpose, and operational date are resolved from the university record.",
+      "evidence": [
+        {
+          "source_id": "src_su_archives_green_data_center_current_2026",
+          "attribute_path": "facility.identity",
+          "raw_value": {"type": "text", "value": "Green Data Center, 623 Skytop Road, dedicated December 2, 2009 and occupied December 2009"},
+          "finding": "The university archive matches the building, address, data-center purpose, and occupancy date.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        },
+        {
+          "source_id": "src_su_archives_green_data_center_current_2026",
+          "attribute_path": "event.operational",
+          "raw_value": {"type": "date", "value": {"date": "2009-12-02", "precision": "day"}},
+          "finding": "The university dates formal dedication to December 2, 2009 and occupancy to the same month.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        }
+      ],
+      "events": [
+        {
+          "event_type": "operational",
+          "when": {"date": "2009-12-02", "precision": "day"},
+          "source_id": "src_su_archives_green_data_center_current_2026",
+          "confidence": 0.99,
+          "notes": "Dedicated on December 2 and occupied in December 2009."
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_a857d23ec6f88503b217",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "rejected",
+      "confidence": 0.99,
+      "rationale": "The FCC's Apollo cable license identifies the exact Brookhaven Technology Center coordinates in Shirley as a submarine fiber-optic cable landing station. The mapped building is transmission infrastructure and lacks independent evidence of compute or colocation data-center use, so it is rejected from the lifecycle candidate set.",
+      "evidence": [
+        {
+          "source_id": "src_fcc_apollo_brookhaven_20010608",
+          "attribute_path": "facility.facility_type",
+          "raw_value": {"type": "classification", "code": "submarine_cable_landing_station", "label": "Apollo submarine cable landing station at Brookhaven Technology Center"},
+          "finding": "The federal order supplies the Shirley coordinates and establishes the site's cable-landing function.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_3d5287148166f2285423",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.99,
+      "rationale": "Dakota Carrier Network identifies its Fargo Great Plains facility as a hardened Tier III data center and states that it has provided colocation data-center services since 2006. The operator's dated release resolves the mapped facility and provides a year-precision operational anchor.",
+      "evidence": [
+        {
+          "source_id": "src_dcn_fargo_history_20190819",
+          "attribute_path": "facility.identity",
+          "raw_value": {"type": "text", "value": "Fargo Great Plains data center, 3901 Great Plains Drive South"},
+          "finding": "The operator identifies the mapped Fargo facility as one of its hardened Tier III data centers.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        },
+        {
+          "source_id": "src_dcn_fargo_history_20190819",
+          "attribute_path": "event.operational",
+          "raw_value": {"type": "date", "value": {"year": 2006, "precision": "year"}},
+          "finding": "The operator states that its Bismarck and Fargo data-center service has been provided since 2006.",
+          "disposition": "supporting",
+          "claim_confidence": 0.96
+        }
+      ],
+      "events": [
+        {
+          "event_type": "operational",
+          "when": {"year": 2006, "precision": "year"},
+          "source_id": "src_dcn_fargo_history_20190819",
+          "confidence": 0.96,
+          "notes": "Operator-reported start year for data-center services at its Bismarck and Fargo facilities."
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_826132b382cca9f55723",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.99,
+      "rationale": "West Chester Township records identify Peak 10's data center at 5307 Muhlhauser Road, first as a planned 2007 opening and later as an existing operating facility expanding in 2014. Flexential's SOC report confirms the same address in its controlled data-center environment. Operation is conservatively dated no later than 2014.",
+      "evidence": [
+        {
+          "source_id": "src_west_chester_peak10_2007",
+          "attribute_path": "event.announced",
+          "raw_value": {"type": "date", "value": {"year": 2007, "precision": "year"}},
+          "finding": "The township announced Peak 10's planned around-the-clock data center at the exact address in 2007.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        },
+        {
+          "source_id": "src_west_chester_peak10_2014",
+          "attribute_path": "event.operational",
+          "raw_value": {"type": "date", "value": {"year": 2014, "precision": "year"}},
+          "finding": "The township's 2014 development record describes an expansion to Peak 10's existing 5307 Muhlhauser Road data center.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        },
+        {
+          "source_id": "src_flexential_soc3_locations_2023",
+          "attribute_path": "facility.current_status",
+          "raw_value": {"type": "classification", "code": "operational", "label": "Flexential Cincinnati data center at 5307 Muhlhauser Road"},
+          "normalized_value": {"type": "classification", "code": "operational"},
+          "finding": "The operator's assurance report lists Cincinnati at the exact mapped address among its data centers.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        }
+      ],
+      "events": [
+        {
+          "event_type": "operational",
+          "when": {"year": 2014, "precision": "year"},
+          "source_id": "src_west_chester_peak10_2014",
+          "confidence": 0.99,
+          "notes": "Operational no later than the township's record of expansion to the existing facility."
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_0e2ddd6820baa6753bb2",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "under_construction",
+      "confidence": 0.97,
+      "rationale": "Trade reporting dates the mapped LexisNexis Springfield data center to 2005. Later local reporting establishes that LexisNexis left, that 5C is redeveloping the same former facility, and that construction was underway in December 2025; the City of Springfield describes the replacement facility as pre-operational. The current lifecycle status is therefore under construction while the historical operational event is retained.",
+      "evidence": [
+        {
+          "source_id": "src_dcd_lexis_springfield_20070128",
+          "attribute_path": "event.operational",
+          "raw_value": {"type": "date", "value": {"year": 2005, "precision": "year"}},
+          "finding": "Trade reporting states that LexisNexis opened its second Ohio data center in Springfield in 2005.",
+          "disposition": "supporting",
+          "claim_confidence": 0.94
+        },
+        {
+          "source_id": "src_wyso_5c_springfield_20251209",
+          "attribute_path": "facility.current_status",
+          "raw_value": {"type": "classification", "code": "under_construction", "label": "5C redevelopment of the former LexisNexis data center"},
+          "normalized_value": {"type": "classification", "code": "under_construction"},
+          "finding": "Local public-radio reporting states that LexisNexis left and construction was underway for 5C's replacement operation at the former facility.",
+          "disposition": "supporting",
+          "claim_confidence": 0.97
+        },
+        {
+          "source_id": "src_springfield_5c_faq_20260209",
+          "attribute_path": "facility.current_status",
+          "raw_value": {"type": "classification", "code": "under_construction", "label": "Facility not yet operating pending infrastructure approval"},
+          "normalized_value": {"type": "classification", "code": "under_construction"},
+          "finding": "The city's project FAQ describes future operation contingent on completion and approval of supporting infrastructure.",
+          "disposition": "supporting",
+          "claim_confidence": 0.96
+        }
+      ],
+      "events": [
+        {
+          "event_type": "operational",
+          "when": {"year": 2005, "precision": "year"},
+          "source_id": "src_dcd_lexis_springfield_20070128",
+          "confidence": 0.94,
+          "notes": "Historical opening year for the LexisNexis data center at the mapped site."
+        }
+      ],
+      "record_status": "active"
+    },
     {
       "schema_version": "1.0.0",
       "national_priority_id": "lnp_im3_b2b011d17f1c83df2f80",
