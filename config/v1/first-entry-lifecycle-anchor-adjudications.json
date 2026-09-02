@@ -2,9 +2,9 @@
   "schema_version": "1.0.0",
   "artifact_type": "first_entry_lifecycle_anchor_adjudications",
   "artifact_version": "2026.09.02",
-  "generated_at": "2026-09-03T04:00:00Z",
+  "generated_at": "2026-09-03T05:00:00Z",
   "record_schema": "https://dccio.org/schemas/v1/national-lifecycle-evidence-adjudication.schema.json",
-  "record_count": 127,
+  "record_count": 135,
   "records": [
     {
       "schema_version": "1.0.0",
@@ -4997,6 +4997,216 @@
           "notes": "Operational no later than the SEC filing date."
         }
       ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_c955e61cfc184d49fb25",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.99,
+      "rationale": "Stream's facility page identifies Houston I at 4001 Technology Forest Boulevard in The Woodlands and states that the campus has operated since 2013, matching the mapped Stream point.",
+      "evidence": [{
+        "source_id": "src_stream_houston_i_since_2013",
+        "attribute_path": "event.operational",
+        "raw_value": { "type": "date", "value": { "year": 2013, "precision": "year" } },
+        "finding": "The operator identifies the exact Houston I address and reports campus operations since 2013.",
+        "disposition": "supporting",
+        "claim_confidence": 0.99
+      }],
+      "events": [{
+        "event_type": "operational",
+        "when": { "year": 2013, "precision": "year" },
+        "source_id": "src_stream_houston_i_since_2013",
+        "confidence": 0.99,
+        "notes": "Operational by 2013; the source does not provide a month or day."
+      }],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_5d89afffbe859e68f4e0",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.99,
+      "rationale": "Lumen's independently audited ISO certificate lists its Madison Data Center as a certified colocation and edge-compute site, matching the mapped Lumen Madison 1 point.",
+      "evidence": [{
+        "source_id": "src_lumen_iso_madison_20250617",
+        "attribute_path": "event.operational",
+        "raw_value": { "type": "date", "value": { "date": "2025-06-17", "precision": "day" } },
+        "finding": "The certified-site schedule lists an operating Lumen Madison Data Center providing colocation services.",
+        "disposition": "supporting",
+        "claim_confidence": 0.99
+      }],
+      "events": [{
+        "event_type": "operational",
+        "when": { "date": "2025-06-17", "precision": "day" },
+        "source_id": "src_lumen_iso_madison_20250617",
+        "confidence": 0.99,
+        "notes": "Operational no later than the certificate issue date."
+      }],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_8af88e357b05342f93c5",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.99,
+      "rationale": "Digital Realty's SEC-filed Form 10-K identifies the exact 200 Paul Avenue property as an operating San Francisco Internet Gateway with occupied space, matching the mapped SFO10 building.",
+      "evidence": [{
+        "source_id": "src_sec_digital_200_paul_20120228",
+        "attribute_path": "event.operational",
+        "raw_value": { "type": "date", "value": { "date": "2012-02-28", "precision": "day" } },
+        "finding": "The federal filing lists 200 Paul Avenue as an Internet Gateway and reports operating occupancy metrics.",
+        "disposition": "supporting",
+        "claim_confidence": 0.99
+      }],
+      "events": [{
+        "event_type": "operational",
+        "when": { "date": "2012-02-28", "precision": "day" },
+        "source_id": "src_sec_digital_200_paul_20120228",
+        "confidence": 0.99,
+        "notes": "Operational no later than the Form 10-K filing date."
+      }],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_0ff5f38c75b73c5fa5d1",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.99,
+      "rationale": "SAP's October 2022 cloud-services data-center list identifies Colorado Springs as an SAP-operated cloud location, corroborating the mapped SAP COS02 reference building.",
+      "evidence": [{
+        "source_id": "src_sap_cloud_dc_list_202210",
+        "attribute_path": "event.operational",
+        "raw_value": { "type": "date", "value": { "date": "2022-10-01", "precision": "month" } },
+        "finding": "The operator's service-location schedule lists Colorado Springs as an SAP cloud data center.",
+        "disposition": "supporting",
+        "claim_confidence": 0.99
+      }],
+      "events": [{
+        "event_type": "operational",
+        "when": { "date": "2022-10-01", "precision": "month" },
+        "source_id": "src_sap_cloud_dc_list_202210",
+        "confidence": 0.99,
+        "notes": "Operational no later than October 2022; the public schedule does not provide a day."
+      }],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_ea48d49569f1e3b8f490",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.99,
+      "rationale": "Equinix's history identifies MI1 as the NAP of the Americas at its Miami campus and states that Telcordia and Terremark opened it in 2001, matching the mapped downtown facility.",
+      "evidence": [{
+        "source_id": "src_equinix_mi1_history_20180820",
+        "attribute_path": "event.operational",
+        "raw_value": { "type": "date", "value": { "year": 2001, "precision": "year" } },
+        "finding": "The current operator states that the partnership opened MI1 in 2001 as the East Coast gateway.",
+        "disposition": "supporting",
+        "claim_confidence": 0.99
+      }],
+      "events": [{
+        "event_type": "operational",
+        "when": { "year": 2001, "precision": "year" },
+        "source_id": "src_equinix_mi1_history_20180820",
+        "confidence": 0.99,
+        "notes": "Opened in 2001; the operator history does not provide a month or day."
+      }],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_7cdb96db2cea6936a67d",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.99,
+      "rationale": "Meta's 2017 engineering review states that its Fort Worth data center began serving traffic that year, matching the mapped Facebook Fort Worth campus building.",
+      "evidence": [{
+        "source_id": "src_meta_fort_worth_traffic_20171211",
+        "attribute_path": "event.operational",
+        "raw_value": { "type": "date", "value": { "date": "2017-12-11", "precision": "day" } },
+        "finding": "The operator reports that the Fort Worth data center had started serving production traffic.",
+        "disposition": "supporting",
+        "claim_confidence": 0.99
+      }],
+      "events": [{
+        "event_type": "operational",
+        "when": { "date": "2017-12-11", "precision": "day" },
+        "source_id": "src_meta_fort_worth_traffic_20171211",
+        "confidence": 0.99,
+        "notes": "Operational no later than the dated year-in-review post."
+      }],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_65023de7d4668bf01a48",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.99,
+      "rationale": "Iowa DNR's facility record identifies an active data-processing site at 8855 Grand Avenue, gives coordinates matching the mapped Microsoft building, and records Microsoft and Alluvium Data Center aliases.",
+      "evidence": [{
+        "source_id": "src_iowa_dnr_alluvium_current_20260831",
+        "attribute_path": "event.operational",
+        "raw_value": { "type": "date", "value": { "date": "2026-08-31", "precision": "day" } },
+        "finding": "The state facility system identifies the exact address, matching coordinates, Microsoft aliases, and data-hosting industrial classification.",
+        "disposition": "supporting",
+        "claim_confidence": 0.99
+      }],
+      "events": [{
+        "event_type": "operational",
+        "when": { "date": "2026-08-31", "precision": "day" },
+        "source_id": "src_iowa_dnr_alluvium_current_20260831",
+        "confidence": 0.99,
+        "notes": "Operational no later than the state facility record's last-updated date."
+      }],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_91f60140c0929a4fddcc",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.94,
+      "rationale": "Baxtel identifies the exact 8619 Industrial Parkway AWS campus as operational and dates its buildings to 2024; WOSU independently reports two current AWS data centers in Jerome Township.",
+      "evidence": [
+        {
+          "source_id": "src_baxtel_aws_industrial_parkway_2024",
+          "attribute_path": "event.operational",
+          "raw_value": { "type": "date", "value": { "year": 2024, "precision": "year" } },
+          "finding": "The facility registry identifies the exact Industrial Parkway campus, operational status, and 2024 build year.",
+          "disposition": "supporting",
+          "claim_confidence": 0.94
+        },
+        {
+          "source_id": "src_wosu_jerome_aws_operating_20250909",
+          "attribute_path": "facility.current_status",
+          "raw_value": { "type": "classification", "code": "operational", "label": "Two current AWS data centers in Jerome Township" },
+          "finding": "Local public media independently confirms that AWS already operates two data centers in the township.",
+          "disposition": "supporting",
+          "claim_confidence": 0.98
+        }
+      ],
+      "events": [{
+        "event_type": "operational",
+        "when": { "year": 2024, "precision": "year" },
+        "source_id": "src_baxtel_aws_industrial_parkway_2024",
+        "confidence": 0.94,
+        "notes": "Operational in 2024; public evidence does not provide a month or day."
+      }],
       "record_status": "active"
     }
   ]
