@@ -2,9 +2,9 @@
   "schema_version": "1.0.0",
   "artifact_type": "first_entry_lifecycle_anchor_adjudications",
   "artifact_version": "2026.09.02",
-  "generated_at": "2026-09-03T03:00:00Z",
+  "generated_at": "2026-09-03T04:00:00Z",
   "record_schema": "https://dccio.org/schemas/v1/national-lifecycle-evidence-adjudication.schema.json",
-  "record_count": 118,
+  "record_count": 127,
   "records": [
     {
       "schema_version": "1.0.0",
@@ -4669,6 +4669,334 @@
         "confidence": 0.99,
         "notes": "Audited operating-scope endpoint."
       }],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_1ee19ac08a183bb51d2f",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.94,
+      "rationale": "Contemporaneous trade reporting identifies AIS's newly opened $48 million, 80,000-square-foot Lightwave data center in San Diego, matching the mapped LightEdge SAN1 facility at 9305 Lightwave Avenue.",
+      "evidence": [
+        {
+          "source_id": "src_dck_ais_lightwave_open_20080919",
+          "attribute_path": "event.operational",
+          "raw_value": {
+            "type": "date",
+            "value": {
+              "date": "2008-09-18",
+              "precision": "day"
+            }
+          },
+          "finding": "Data Center Knowledge reports that AIS opened the Lightwave facility when the acquisition transaction was disclosed the previous day.",
+          "disposition": "supporting",
+          "claim_confidence": 0.94
+        }
+      ],
+      "events": [
+        {
+          "event_type": "operational",
+          "when": {
+            "date": "2008-09-18",
+            "precision": "day"
+          },
+          "source_id": "src_dck_ais_lightwave_open_20080919",
+          "confidence": 0.94,
+          "notes": "Exact facility reported open one day before publication."
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_3c343bc1ecaac69d4633",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.99,
+      "rationale": "DataBank's dated announcement documents the grand opening of MSP3 at its Brooklyn Park campus, matching the mapped DataBank building at 8111 Oxbow Creek North.",
+      "evidence": [
+        {
+          "source_id": "src_databank_msp3_open_20211104",
+          "attribute_path": "event.operational",
+          "raw_value": {
+            "type": "date",
+            "value": {
+              "date": "2021-11-04",
+              "precision": "day"
+            }
+          },
+          "finding": "DataBank announces MSP3's grand opening and identifies its Brooklyn Park location and capacity.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        }
+      ],
+      "events": [
+        {
+          "event_type": "operational",
+          "when": {
+            "date": "2021-11-04",
+            "precision": "day"
+          },
+          "source_id": "src_databank_msp3_open_20211104",
+          "confidence": 0.99,
+          "notes": "Exact operator-reported grand-opening date."
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_fbdbcc8bde798f2985c7",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.99,
+      "rationale": "TulsaConnect's independent SOC 1 Type 2 report places DC-3 and DC-3B at 4500 South 129th East Avenue within the audited data-center hosting system through April 30, 2024, matching the mapped TulsaConnect DC3 point.",
+      "evidence": [
+        {
+          "source_id": "src_tulsaconnect_soc1_dc3_20240430",
+          "attribute_path": "event.operational",
+          "raw_value": {
+            "type": "date",
+            "value": {
+              "date": "2024-04-30",
+              "precision": "day"
+            }
+          },
+          "finding": "The audit identifies DC-3/DC-3B at the mapped address and evaluates controls for the data-center hosting service throughout the review period.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        }
+      ],
+      "events": [
+        {
+          "event_type": "operational",
+          "when": {
+            "date": "2024-04-30",
+            "precision": "day"
+          },
+          "source_id": "src_tulsaconnect_soc1_dc3_20240430",
+          "confidence": 0.99,
+          "notes": "Audited operating-scope endpoint."
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_944325a42a7dc896bb02",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.99,
+      "rationale": "Flexential's independent SOC 3 report includes its Denver-Englewood facility in the audited Data Center and Cloud Operations system for the period ending October 31, 2023, matching the mapped Douglas County building.",
+      "evidence": [
+        {
+          "source_id": "src_flexential_soc3_locations_2023",
+          "attribute_path": "event.operational",
+          "raw_value": {
+            "type": "date",
+            "value": {
+              "date": "2023-10-31",
+              "precision": "day"
+            }
+          },
+          "finding": "The auditor's in-scope location list includes Denver-Englewood and concludes controls operated throughout the reviewed period.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        }
+      ],
+      "events": [
+        {
+          "event_type": "operational",
+          "when": {
+            "date": "2023-10-31",
+            "precision": "day"
+          },
+          "source_id": "src_flexential_soc3_locations_2023",
+          "confidence": 0.99,
+          "notes": "Audited operating-scope endpoint."
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_74975d7b0ce3d7d5aa55",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.99,
+      "rationale": "HostDime's dated operator post identifies its existing Orlando data center at 440 West Kennedy Boulevard, matching the unnamed mapped data-center footprint at that address.",
+      "evidence": [
+        {
+          "source_id": "src_hostdime_orlando_existing_20210624",
+          "attribute_path": "event.operational",
+          "raw_value": {
+            "type": "date",
+            "value": {
+              "date": "2021-06-24",
+              "precision": "day"
+            }
+          },
+          "finding": "HostDime explicitly identifies the 440 West Kennedy Boulevard facility as its Orlando data center.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        }
+      ],
+      "events": [
+        {
+          "event_type": "operational",
+          "when": {
+            "date": "2021-06-24",
+            "precision": "day"
+          },
+          "source_id": "src_hostdime_orlando_existing_20210624",
+          "confidence": 0.99,
+          "notes": "Operational no later than the dated operator post."
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_8c7a72d29c3bed16b7c2",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "rejected",
+      "confidence": 0.98,
+      "rationale": "E-Foam's own site identifies the business at 550 Susan B. Britt Court as an architectural-foam fabricator providing foam cutting, spray foam, precast, and related services. The mapped E-Foam building is not a computing or colocation data center and is rejected as a false positive.",
+      "evidence": [
+        {
+          "source_id": "src_efoam_services_current_2026",
+          "attribute_path": "facility.facility_type",
+          "raw_value": {
+            "type": "classification",
+            "code": "architectural_foam_manufacturer",
+            "label": "Architectural foam fabrication and installation business"
+          },
+          "finding": "The business's service catalog and matching address establish a foam-manufacturing use rather than a data-center use.",
+          "disposition": "supporting",
+          "claim_confidence": 0.98
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_ee510a5bbbdd04019558",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.99,
+      "rationale": "Netrality's dated operator announcement identifies its operating interconnected data center at 1102 Grand in Kansas City and documents completed power, fiber, rack, and meet-me-room upgrades, matching the mapped Netrality point.",
+      "evidence": [
+        {
+          "source_id": "src_netrality_1102_grand_upgrade_20200427",
+          "attribute_path": "event.operational",
+          "raw_value": {
+            "type": "date",
+            "value": {
+              "date": "2020-04-27",
+              "precision": "day"
+            }
+          },
+          "finding": "Netrality reports completed upgrades to the exact 1102 Grand data center and describes its active interconnection customers and infrastructure.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        }
+      ],
+      "events": [
+        {
+          "event_type": "operational",
+          "when": {
+            "date": "2020-04-27",
+            "precision": "day"
+          },
+          "source_id": "src_netrality_1102_grand_upgrade_20200427",
+          "confidence": 0.99,
+          "notes": "Operational no later than the dated completed-upgrade announcement."
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_f8bd614e67ef6209faa0",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.96,
+      "rationale": "Uniland's dated CrossPoint Business Park brochure maps 350 CrossPoint Parkway as an existing 46,000-square-foot data center, matching the unnamed mapped building in Erie County.",
+      "evidence": [
+        {
+          "source_id": "src_uniland_crosspoint_existing_dc_2017",
+          "attribute_path": "event.operational",
+          "raw_value": {
+            "type": "date",
+            "value": {
+              "year": 2017,
+              "precision": "year"
+            }
+          },
+          "finding": "The site developer's parcel-level plan labels the exact mapped building as an existing data center.",
+          "disposition": "supporting",
+          "claim_confidence": 0.96
+        }
+      ],
+      "events": [
+        {
+          "event_type": "operational",
+          "when": {
+            "year": 2017,
+            "precision": "year"
+          },
+          "source_id": "src_uniland_crosspoint_existing_dc_2017",
+          "confidence": 0.96,
+          "notes": "Operational no later than the brochure's 2017 publication year."
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_6e041c5f3d7b842c267a",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.99,
+      "rationale": "CyrusOne's SEC-filed registration statement describes 229 West Seventh Street as a customer-leased data-center property with 11 MW of power, matching the mapped CyrusOne CIN2 building.",
+      "evidence": [
+        {
+          "source_id": "src_sec_cyrusone_7th_street_20130510",
+          "attribute_path": "event.operational",
+          "raw_value": {
+            "type": "date",
+            "value": {
+              "date": "2013-05-10",
+              "precision": "day"
+            }
+          },
+          "finding": "The federal filing identifies the exact address, data-center use, occupied customer space, and ongoing building operations.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        }
+      ],
+      "events": [
+        {
+          "event_type": "operational",
+          "when": {
+            "date": "2013-05-10",
+            "precision": "day"
+          },
+          "source_id": "src_sec_cyrusone_7th_street_20130510",
+          "confidence": 0.99,
+          "notes": "Operational no later than the SEC filing date."
+        }
+      ],
       "record_status": "active"
     }
   ]

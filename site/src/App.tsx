@@ -386,7 +386,7 @@ export default function App() {
       </header>
 
       <div className="fixture-banner" role="status">
-        <strong>One hundred sixteen dated anchors have been adjudicated across 144 researched counties.</strong> Earlier operations reject 51 candidate anchors; sixty-five counties remain unresolved as county first entry. The latest tranche adds dated anchors in Alameda and Sacramento CA, Warren IA, Baltimore city MD, Valencia NM, Williamson TN, Salt Lake UT, and Grant WA. Complete historical inventories remain unresolved, 73 counties remain queued, zero treatment counties are eligible, and no impact model has been run.
+        <strong>One hundred twenty-four dated anchors have been adjudicated across 152 researched counties.</strong> Earlier operations reject 51 candidate anchors; seventy-three counties remain unresolved as county first entry. The latest tranche adds dated anchors in San Diego CA, Hennepin MN, Tulsa OK, Douglas CO, Orange FL, Jackson MO, Erie NY, and Hamilton OH; Orange County also rejects E-Foam as a non-data-center false positive. Complete historical inventories remain unresolved, 65 counties remain queued, zero treatment counties are eligible, and no impact model has been run.
       </div>
 
       <main className="workspace">
