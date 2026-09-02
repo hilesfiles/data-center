@@ -386,7 +386,7 @@ export default function App() {
       </header>
 
       <div className="fixture-banner" role="status">
-        <strong>Eighty-six dated anchors have been adjudicated across 112 researched counties.</strong> Earlier operations reject 51 candidate anchors; thirty-five counties remain unresolved as county first entry. The latest tranche dates facilities in Richmond NY, Warren OH, Marion OR, Multnomah OR, Allegheny PA, Lehigh PA, Minnehaha SD, and Shelby TN. Complete historical inventories remain unresolved, zero treatment counties are eligible, and no impact model has been run.
+        <strong>Ninety-four dated anchors have been adjudicated across 120 researched counties.</strong> Earlier operations reject 51 candidate anchors; forty-three counties remain unresolved as county first entry. The latest tranche dates facilities in Denton TX, Pierce WA, Umatilla OR, Bexar TX, Denver CO, Gwinnett GA, St. Louis city MO, and Passaic NJ. Complete historical inventories remain unresolved, zero treatment counties are eligible, and no impact model has been run.
       </div>
 
       <main className="workspace">

@@ -4,7 +4,7 @@
   "artifact_version": "2026.09.02",
   "generated_at": "2026-09-02T23:00:00Z",
   "record_schema": "https://dccio.org/schemas/v1/national-lifecycle-evidence-adjudication.schema.json",
-  "record_count": 86,
+  "record_count": 94,
   "records": [
     {
       "schema_version": "1.0.0",
@@ -3709,6 +3709,332 @@
           "source_id": "src_xai_series_c_20241223",
           "confidence": 0.98,
           "notes": "Operational no later than xAI's December 23, 2024 announcement."
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_5ad2417d3f88861124bd",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.94,
+      "rationale": "Texas's accessibility project registry identifies the exact 931 Litsey Road property as the existing CITI Southwest Data Center when kiosk modifications were registered on August 9, 2016, establishing data-center operation no later than that date.",
+      "evidence": [
+        {
+          "source_id": "src_tdlr_citi_southwest_kiosk_20160809",
+          "attribute_path": "event.operational",
+          "raw_value": {
+            "type": "date",
+            "value": {
+              "date": "2016-08-09",
+              "precision": "day"
+            }
+          },
+          "finding": "The state project record names CITI Southwest Data Center at 931 Litsey Road and describes modifications to its existing secured entry kiosk.",
+          "disposition": "supporting",
+          "claim_confidence": 0.94
+        }
+      ],
+      "events": [
+        {
+          "event_type": "operational",
+          "when": {
+            "date": "2016-08-09",
+            "precision": "day"
+          },
+          "source_id": "src_tdlr_citi_southwest_kiosk_20160809",
+          "confidence": 0.94,
+          "notes": "Operational no later than the registration date for modifications to the existing data-center entry kiosk."
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_a9293907d2c102a52153",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.96,
+      "rationale": "The City of Puyallup's official calendar identifies a Centeris SH1 open house at 1023 39th Avenue SE on August 3, 2016, matching the mapped SH1 facility and establishing operation no later than that date.",
+      "evidence": [
+        {
+          "source_id": "src_puyallup_centeris_sh1_open_house_20160803",
+          "attribute_path": "event.operational",
+          "raw_value": {
+            "type": "date",
+            "value": {
+              "date": "2016-08-03",
+              "precision": "day"
+            }
+          },
+          "finding": "The municipal event record names Centeris SH1, gives its exact Puyallup address, and schedules an on-site open house.",
+          "disposition": "supporting",
+          "claim_confidence": 0.96
+        }
+      ],
+      "events": [
+        {
+          "event_type": "operational",
+          "when": {
+            "date": "2016-08-03",
+            "precision": "day"
+          },
+          "source_id": "src_puyallup_centeris_sh1_open_house_20160803",
+          "confidence": 0.96,
+          "notes": "Operational no later than the city's dated SH1 open-house event."
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_723611fa73d41a3a1d10",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.93,
+      "rationale": "A federal court filing's facility-level employment table identifies PDX51 and PDX54 as Amazon data centers in Umatilla, Oregon. Because the mapped building is labeled Amazon PDX51/54, the filing establishes operation no later than July 19, 2021.",
+      "evidence": [
+        {
+          "source_id": "src_or_federal_court_pdx51_pdx54_20210719",
+          "attribute_path": "event.operational",
+          "raw_value": {
+            "type": "date",
+            "value": {
+              "date": "2021-07-19",
+              "precision": "day"
+            }
+          },
+          "finding": "The filed table identifies PDX51 and PDX54 as Amazon data centers in Umatilla and reports employees and work activity at both facilities.",
+          "disposition": "supporting",
+          "claim_confidence": 0.93
+        }
+      ],
+      "events": [
+        {
+          "event_type": "operational",
+          "when": {
+            "date": "2021-07-19",
+            "precision": "day"
+          },
+          "source_id": "src_or_federal_court_pdx51_pdx54_20210719",
+          "confidence": 0.93,
+          "notes": "Operational no later than the filing date of the facility-level employment evidence."
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_c060883fcf6410f3d8ea",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.98,
+      "rationale": "Microsoft's November 4, 2013 energy announcement explicitly describes electricity consumed by its San Antonio datacenter, establishing the mapped Microsoft San Antonio facility as operational no later than that date.",
+      "evidence": [
+        {
+          "source_id": "src_microsoft_san_antonio_energy_20131104",
+          "attribute_path": "event.operational",
+          "raw_value": {
+            "type": "date",
+            "value": {
+              "date": "2013-11-04",
+              "precision": "day"
+            }
+          },
+          "finding": "Microsoft discusses the electricity consumed by its San Antonio datacenter in a dated operator announcement.",
+          "disposition": "supporting",
+          "claim_confidence": 0.98
+        }
+      ],
+      "events": [
+        {
+          "event_type": "operational",
+          "when": {
+            "date": "2013-11-04",
+            "precision": "day"
+          },
+          "source_id": "src_microsoft_san_antonio_energy_20131104",
+          "confidence": 0.98,
+          "notes": "Operational no later than Microsoft's dated discussion of the facility's electricity consumption."
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_7a0cfa6e13577bae9353",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.97,
+      "rationale": "Flexential's 2023 SOC 3 report includes its Denver - Downtown colocation environment in the audited service scope, establishing the mapped operation no later than 2023.",
+      "evidence": [
+        {
+          "source_id": "src_flexential_soc3_locations_2023",
+          "attribute_path": "event.operational",
+          "raw_value": {
+            "type": "date",
+            "value": {
+              "year": 2023,
+              "precision": "year"
+            }
+          },
+          "finding": "The operator's audited location table includes its Denver - Downtown colocation environment in 2023.",
+          "disposition": "supporting",
+          "claim_confidence": 0.97
+        }
+      ],
+      "events": [
+        {
+          "event_type": "operational",
+          "when": {
+            "year": 2023,
+            "precision": "year"
+          },
+          "source_id": "src_flexential_soc3_locations_2023",
+          "confidence": 0.97,
+          "notes": "Operational no later than its inclusion in Flexential's 2023 audited colocation scope."
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_df589a4e2f443148a7b6",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.98,
+      "rationale": "QTS's facility sheet identifies Suwanee 1 DC1 at 300 Satellite Boulevard, and its 2020 Form 10-K reports substantial operating raised-floor area and customers at the Atlanta-Suwanee facility as of December 31, 2020.",
+      "evidence": [
+        {
+          "source_id": "src_qts_suw1_dc1_facility_sheet_2024",
+          "attribute_path": "facility.identity",
+          "raw_value": {
+            "type": "text",
+            "value": "QTS Suwanee 1 DC1, 300 Satellite Boulevard NW"
+          },
+          "finding": "The operator facility sheet resolves the mapped building as QTS Suwanee 1 DC1 at 300 Satellite Boulevard NW.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        },
+        {
+          "source_id": "src_qts_2020_10k_suwanee",
+          "attribute_path": "event.operational",
+          "raw_value": {
+            "type": "date",
+            "value": {
+              "date": "2020-12-31",
+              "precision": "day"
+            }
+          },
+          "finding": "The SEC filing reports approximately 329,000 operating NRSF and 303 customers at Atlanta-Suwanee as of December 31, 2020.",
+          "disposition": "supporting",
+          "claim_confidence": 0.98
+        }
+      ],
+      "events": [
+        {
+          "event_type": "operational",
+          "when": {
+            "date": "2020-12-31",
+            "precision": "day"
+          },
+          "source_id": "src_qts_2020_10k_suwanee",
+          "confidence": 0.98,
+          "notes": "Operational no later than the SEC filing's December 31, 2020 facility snapshot."
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_0a978ebc0200d3c54bef",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.98,
+      "rationale": "Washington University published a dated maintenance notice for the exact Genome Data Center describing work on UPS systems serving critical loads, establishing operation no later than September 17, 2025.",
+      "evidence": [
+        {
+          "source_id": "src_wustl_genome_data_center_maintenance_20250917",
+          "attribute_path": "event.operational",
+          "raw_value": {
+            "type": "date",
+            "value": {
+              "date": "2025-09-17",
+              "precision": "day"
+            }
+          },
+          "finding": "The university's facilities department schedules UPS maintenance at the Genome Data Center while preserving its critical loads.",
+          "disposition": "supporting",
+          "claim_confidence": 0.98
+        }
+      ],
+      "events": [
+        {
+          "event_type": "operational",
+          "when": {
+            "date": "2025-09-17",
+            "precision": "day"
+          },
+          "source_id": "src_wustl_genome_data_center_maintenance_20250917",
+          "confidence": 0.98,
+          "notes": "Operational no later than the university's dated critical-infrastructure maintenance notice."
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_ef9cbd10312e96c5fd73",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.99,
+      "rationale": "Digital Realty currently identifies EWR20 at 100 Delawanna Avenue, while its 2015 Form 10-K lists that exact address as an occupied data-center property acquired in October 2015, establishing operation no later than year-end 2015.",
+      "evidence": [
+        {
+          "source_id": "src_digitalrealty_ewr20_current_2026",
+          "attribute_path": "facility.identity",
+          "raw_value": {
+            "type": "text",
+            "value": "EWR20, 100 Delawanna Avenue, Clifton, New Jersey"
+          },
+          "finding": "Digital Realty's facility page resolves the mapped EWR20 identity and exact address.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        },
+        {
+          "source_id": "src_digitalrealty_2015_10k_clifton",
+          "attribute_path": "event.operational",
+          "raw_value": {
+            "type": "date",
+            "value": {
+              "year": 2015,
+              "precision": "year"
+            }
+          },
+          "finding": "The SEC property table lists 100 Delawanna Avenue as a data center with occupied square footage in 2015.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        }
+      ],
+      "events": [
+        {
+          "event_type": "operational",
+          "when": {
+            "year": 2015,
+            "precision": "year"
+          },
+          "source_id": "src_digitalrealty_2015_10k_clifton",
+          "confidence": 0.99,
+          "notes": "Operational no later than the 2015 SEC property snapshot."
         }
       ],
       "record_status": "active"

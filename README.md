@@ -88,8 +88,8 @@ python scripts/build_county_first_entry_treatments.py
 The registry evaluates reviewed dated operational events against the configured evidence
 and panel-window rules, then requires a separate explicit verification that the event is the
 county's first data-center entry. It publishes 51 lazy-loaded state/DC JSON partitions.
-The current evidence contains 86 reviewed dated facility events. Fifty-one pass the evidence
-gate and 50 pass the panel-window gate, but zero have verified county-first-entry status, so model readiness is
+The current evidence contains 94 reviewed dated facility events. Fifty-seven pass the evidence
+gate and 56 pass the panel-window gate, but zero have verified county-first-entry status, so model readiness is
 `insufficient_eligible_treatments` and no model run is authorized. Absence of a reviewed event
 is never interpreted as never treated.
 
