@@ -2,9 +2,9 @@
   "schema_version": "1.0.0",
   "artifact_type": "first_entry_lifecycle_anchor_adjudications",
   "artifact_version": "2026.09.02",
-  "generated_at": "2026-09-03T01:00:00Z",
+  "generated_at": "2026-09-03T02:00:00Z",
   "record_schema": "https://dccio.org/schemas/v1/national-lifecycle-evidence-adjudication.schema.json",
-  "record_count": 102,
+  "record_count": 110,
   "records": [
     {
       "schema_version": "1.0.0",
@@ -4269,6 +4269,206 @@
           "notes": "Exact operator-reported opening date."
         }
       ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_b60d2ebac5935039ec75",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.9,
+      "rationale": "PeeringDB's dated facility record identifies DLI One at 8 Corporate Ridge Parkway in Columbus, matching the mapped DLI One campus building, and records an attached production network.",
+      "evidence": [{
+        "source_id": "src_peeringdb_dli_one_20250926",
+        "attribute_path": "event.operational",
+        "raw_value": {"type": "date", "value": {"date": "2025-09-26", "precision": "day"}},
+        "finding": "The current interconnection-directory record identifies DLI One at the mapped address and coordinates and reports a connected network.",
+        "disposition": "supporting",
+        "claim_confidence": 0.9
+      }],
+      "events": [{
+        "event_type": "operational",
+        "when": {"date": "2025-09-26", "precision": "day"},
+        "source_id": "src_peeringdb_dli_one_20250926",
+        "confidence": 0.9,
+        "notes": "Operational no later than the facility record's last-updated date."
+      }],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_41547dd38182779f024e",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.99,
+      "rationale": "Flexential's dated operator announcement names Atlanta-Douglasville 1 as the operating data-center facility selected for a high-density DigitalOcean deployment, matching the mapped Flexential building.",
+      "evidence": [{
+        "source_id": "src_flexential_douglasville_digitalocean_20250318",
+        "attribute_path": "event.operational",
+        "raw_value": {"type": "date", "value": {"date": "2025-03-18", "precision": "day"}},
+        "finding": "Flexential describes the mapped Douglasville 1 data center's commissioned infrastructure, security controls, and role in a customer deployment.",
+        "disposition": "supporting",
+        "claim_confidence": 0.99
+      }],
+      "events": [{
+        "event_type": "operational",
+        "when": {"date": "2025-03-18", "precision": "day"},
+        "source_id": "src_flexential_douglasville_digitalocean_20250318",
+        "confidence": 0.99,
+        "notes": "Operational no later than the dated operator deployment announcement."
+      }],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_2c6c57a79c599e8f5196",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.99,
+      "rationale": "Flexential's independent SOC 3 report lists the Raleigh facility at 5150 McCrimmon Parkway within the audited Data Center and Cloud Operations system for the period ending October 31, 2023, matching the mapped facility.",
+      "evidence": [{
+        "source_id": "src_flexential_soc3_locations_2023",
+        "attribute_path": "event.operational",
+        "raw_value": {"type": "date", "value": {"date": "2023-10-31", "precision": "day"}},
+        "finding": "The auditor's in-scope address list includes Flexential Raleigh and the report concludes controls operated throughout the reviewed period.",
+        "disposition": "supporting",
+        "claim_confidence": 0.99
+      }],
+      "events": [{
+        "event_type": "operational",
+        "when": {"date": "2023-10-31", "precision": "day"},
+        "source_id": "src_flexential_soc3_locations_2023",
+        "confidence": 0.99,
+        "notes": "Audited operating-scope endpoint."
+      }],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_6b32f6c257bd36219f0e",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.98,
+      "rationale": "T5's August 2020 facility sheet describes T5@Cleveland as an available, staffed data center with active capacity, matching the mapped Cleveland facility.",
+      "evidence": [{
+        "source_id": "src_t5_cleveland_onesheet_202008",
+        "attribute_path": "event.operational",
+        "raw_value": {"type": "date", "value": {"date": "2020-08-01", "precision": "month"}},
+        "finding": "The operator sheet reports immediately available data-center space and power plus 24/7 on-site operations and security.",
+        "disposition": "supporting",
+        "claim_confidence": 0.98
+      }],
+      "events": [{
+        "event_type": "operational",
+        "when": {"date": "2020-08-01", "precision": "month"},
+        "source_id": "src_t5_cleveland_onesheet_202008",
+        "confidence": 0.98,
+        "notes": "Operational no later than the dated facility sheet's publication month."
+      }],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_c9db16ee72d6a7458638",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.99,
+      "rationale": "Google's dated company post states that an employee was working at Google's Clarksville data center, establishing operation of the mapped Montgomery County Google campus by April 10, 2019.",
+      "evidence": [{
+        "source_id": "src_google_clarksville_working_20190410",
+        "attribute_path": "event.operational",
+        "raw_value": {"type": "date", "value": {"date": "2019-04-10", "precision": "day"}},
+        "finding": "Google identifies an employee currently working at its Clarksville, Tennessee data center.",
+        "disposition": "supporting",
+        "claim_confidence": 0.99
+      }],
+      "events": [{
+        "event_type": "operational",
+        "when": {"date": "2019-04-10", "precision": "day"},
+        "source_id": "src_google_clarksville_working_20190410",
+        "confidence": 0.99,
+        "notes": "Operational no later than the dated Google employment account."
+      }],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_d852287bb60de39cad3c",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.99,
+      "rationale": "Meta's dated operator announcement states that its Henrico Data Center began serving traffic on August 5, 2020, matching the mapped Meta Henrico building.",
+      "evidence": [{
+        "source_id": "src_meta_henrico_online_20200805",
+        "attribute_path": "event.operational",
+        "raw_value": {"type": "date", "value": {"date": "2020-08-05", "precision": "day"}},
+        "finding": "Meta announces that the Henrico Data Center is now serving traffic.",
+        "disposition": "supporting",
+        "claim_confidence": 0.99
+      }],
+      "events": [{
+        "event_type": "operational",
+        "when": {"date": "2020-08-05", "precision": "day"},
+        "source_id": "src_meta_henrico_online_20200805",
+        "confidence": 0.99,
+        "notes": "Exact operator-reported traffic-serving date."
+      }],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_883f8ee3cfe255b0cdcd",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.99,
+      "rationale": "Meta's dated operator announcement states that its Kansas City Data Center began serving traffic on August 20, 2025 and explicitly situates its community activity in Clay County, matching the mapped Meta campus.",
+      "evidence": [{
+        "source_id": "src_meta_kansas_city_online_20250820",
+        "attribute_path": "event.operational",
+        "raw_value": {"type": "date", "value": {"date": "2025-08-20", "precision": "day"}},
+        "finding": "Meta announces that the Kansas City Data Center is now serving traffic and identifies Clay County among its host communities.",
+        "disposition": "supporting",
+        "claim_confidence": 0.99
+      }],
+      "events": [{
+        "event_type": "operational",
+        "when": {"date": "2025-08-20", "precision": "day"},
+        "source_id": "src_meta_kansas_city_online_20250820",
+        "confidence": 0.99,
+        "notes": "Exact operator-reported traffic-serving date."
+      }],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_6aedef651f26c436142a",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.99,
+      "rationale": "The Alabama Supercomputer Authority states that the Huntsville Supercomputer Center building was completed and its first CRAY supercomputer installed in October 1987, matching the mapped facility.",
+      "evidence": [{
+        "source_id": "src_asa_supercomputer_center_history_198710",
+        "attribute_path": "event.operational",
+        "raw_value": {"type": "date", "value": {"date": "1987-10-01", "precision": "month"}},
+        "finding": "The state authority records building completion and installation of the first production supercomputer in October 1987.",
+        "disposition": "supporting",
+        "claim_confidence": 0.99
+      }],
+      "events": [{
+        "event_type": "operational",
+        "when": {"date": "1987-10-01", "precision": "month"},
+        "source_id": "src_asa_supercomputer_center_history_198710",
+        "confidence": 0.99,
+        "notes": "Month of building completion and first supercomputer installation."
+      }],
       "record_status": "active"
     }
   ]
