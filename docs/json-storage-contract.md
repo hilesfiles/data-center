@@ -82,6 +82,11 @@ public/data/v1/entity-resolution/review-dossier.json
 public/data/v1/facilities/{facility_id}.json
 public/data/v1/maps/counties.geojson
 public/data/v1/maps/facilities.geojson
+public/data/v1/treatments/county-first-entry-resolution/index.json
+public/data/v1/treatments/county-first-entry-resolution/initial-tranche.json
+public/data/v1/treatments/county-first-entry-resolution/adjudications.json
+public/data/v1/treatments/county-first-entry-resolution/evidence-sources.json
+public/data/v1/treatments/county-first-entry-resolution/by-state/{state_abbr}.json
 ```
 
 The initial map request downloads only metadata, simplified county geometry, and a compact

@@ -401,6 +401,42 @@ def build() -> dict[str, Any]:
         record["queue_status"] = "initial_tranche"
         record["initial_tranche_rank"] = initial_rank
 
+    resolution_adjudication_path = (
+        ROOT / "config" / "v1" / "first-entry-resolution-tranche-1-adjudications.json"
+    )
+    resolution_adjudication_document = load_json(resolution_adjudication_path)
+    resolution_adjudications = resolution_adjudication_document["records"]
+    if resolution_adjudication_document.get("record_count") != len(resolution_adjudications):
+        raise RuntimeError("Resolution adjudication record count is inconsistent")
+    adjudication_by_candidate_id = {
+        record["resolution_candidate_id"]: record for record in resolution_adjudications
+    }
+    if len(adjudication_by_candidate_id) != len(resolution_adjudications):
+        raise RuntimeError("Duplicate resolution candidate adjudication")
+    expected_adjudicated_ids = {
+        record["resolution_candidate_id"] for record in initial_tranche[:8]
+    }
+    if set(adjudication_by_candidate_id) != expected_adjudicated_ids:
+        raise RuntimeError("Tranche-one adjudications must cover initial-tranche ranks 1-8")
+    candidate_by_id = {record["resolution_candidate_id"]: record for record in candidates}
+    for adjudication in resolution_adjudications:
+        candidate = candidate_by_id[adjudication["resolution_candidate_id"]]
+        if (
+            adjudication["county_fips"] != candidate["county_fips"]
+            or adjudication["county_name"] != candidate["county_name"]
+            or adjudication["state_abbr"] != candidate["state_abbr"]
+            or adjudication["candidate_generation"] != candidate["candidate_generation"]
+            or adjudication["reviewed_anchor"] != candidate.get("candidate_anchor")
+            or adjudication.get("prior_adjudication_id") != candidate.get("prior_adjudication_id")
+        ):
+            raise RuntimeError(
+                f"Resolution adjudication lineage mismatch for {candidate['resolution_candidate_id']}"
+            )
+        candidate["resolution_status"] = "evidence_collected"
+        candidate["resolution_adjudication_id"] = adjudication["resolution_adjudication_id"]
+        candidate["latest_resolution_state"] = adjudication["resolution_state"]
+        candidate["updated_at"] = adjudication["updated_at"]
+
     silver_document = {
         "schema_version": "1.0.0",
         "artifact_type": "county_first_entry_resolution_priority_registry",
@@ -450,7 +486,11 @@ def build() -> dict[str, Any]:
         "partition_count": len(index_parts),
         "record_count": len(candidates),
         "initial_tranche_count": len(initial_tranche),
+        "adjudication_count": len(resolution_adjudications),
+        "adjudications_path": "county-first-entry-resolution/adjudications.json",
+        "evidence_sources_path": "county-first-entry-resolution/evidence-sources.json",
         "resolution_track_counts": dict(sorted(track_counts.items())),
+        "resolution_status_counts": dict(sorted(Counter(record["resolution_status"] for record in candidates).items())),
         "priority_tier_counts": dict(sorted(tier_counts.items())),
         "region_counts": dict(sorted(region_counts.items())),
         "initial_tranche_region_counts": dict(sorted(tranche_region_counts.items())),
@@ -460,6 +500,27 @@ def build() -> dict[str, Any]:
     index_payload = write_json(index_path, public_index)
     tranche_path = public_directory / "initial-tranche.json"
     tranche_payload = write_json(tranche_path, initial_tranche)
+    public_adjudication_path = public_directory / "adjudications.json"
+    public_adjudication_payload = write_json(
+        public_adjudication_path, resolution_adjudication_document
+    )
+    referenced_source_ids = sorted({
+        source_id
+        for adjudication in resolution_adjudications
+        for source_id in adjudication["source_ids"]
+    })
+    missing_public_sources = sorted(set(referenced_source_ids) - set(source_lookup))
+    if missing_public_sources:
+        raise RuntimeError(f"Resolution adjudications reference unknown sources: {missing_public_sources}")
+    public_evidence_document = {
+        "schema_version": "1.0.0",
+        "artifact_type": "first_entry_resolution_evidence_sources",
+        "generated_at": generated_at,
+        "record_count": len(referenced_source_ids),
+        "records": [source_lookup[source_id] for source_id in referenced_source_ids],
+    }
+    public_evidence_path = public_directory / "evidence-sources.json"
+    public_evidence_payload = write_json(public_evidence_path, public_evidence_document)
 
     report = {
         "schema_version": "1.0.0",
@@ -478,6 +539,9 @@ def build() -> dict[str, Any]:
         "region_counts": dict(sorted(region_counts.items())),
         "initial_tranche_region_counts": dict(sorted(tranche_region_counts.items())),
         "initial_tranche_track_counts": dict(sorted(tranche_track_counts.items())),
+        "resolution_status_counts": dict(sorted(Counter(record["resolution_status"] for record in candidates).items())),
+        "adjudication_count": len(resolution_adjudications),
+        "adjudication_resolution_counts": dict(sorted(Counter(record["resolution_state"] for record in resolution_adjudications).items())),
         "public_partition_count": len(index_parts),
         "treatment_effect": {
             "treatment_dates_assigned": 0,
@@ -498,6 +562,8 @@ def build() -> dict[str, Any]:
         (silver_path, silver_payload, len(candidates), "silver", "resolution_priority_registry"),
         (index_path, index_payload, 1, "public", "partition_index"),
         (tranche_path, tranche_payload, len(initial_tranche), "public", "initial_tranche"),
+        (public_adjudication_path, public_adjudication_payload, len(resolution_adjudications), "public", "resolution_adjudications"),
+        (public_evidence_path, public_evidence_payload, len(referenced_source_ids), "public", "resolution_evidence_sources"),
         (report_path, report_payload, 1, "silver", "processing_report"),
     ]:
         parts.append({

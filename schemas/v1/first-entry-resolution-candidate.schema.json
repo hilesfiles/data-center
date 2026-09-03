@@ -87,6 +87,8 @@
     "queue_status": {"type": "string", "enum": ["initial_tranche", "national_backlog"]},
     "initial_tranche_rank": {"type": "integer", "minimum": 1, "maximum": 24},
     "resolution_status": {"type": "string", "enum": ["queued", "in_research", "evidence_collected", "needs_review", "verified", "blocked"]},
+    "resolution_adjudication_id": {"$ref": "common.schema.json#/$defs/entity_id"},
+    "latest_resolution_state": {"type": "string", "enum": ["candidate_rejected_first_entry", "first_entry_verified", "unresolved", "conflicting"]},
     "resolution_objective": {"type": "string", "const": "verify_county_first_operational_entry"},
     "selection_reasons": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
     "research_summary": {"type": "string", "minLength": 1},
@@ -104,6 +106,11 @@
       "if": {"properties": {"resolution_track": {"enum": ["promote_predecessor", "resolve_existing_anchor"]}}, "required": ["resolution_track"]},
       "then": {"required": ["candidate_anchor", "prior_adjudication_id", "prior_candidate_event_evaluation_id"]},
       "else": {"not": {"anyOf": [{"required": ["candidate_anchor"]}, {"required": ["prior_adjudication_id"]}, {"required": ["prior_candidate_event_evaluation_id"]}]}}
+    },
+    {
+      "if": {"properties": {"resolution_status": {"enum": ["evidence_collected", "needs_review", "verified"]}}, "required": ["resolution_status"]},
+      "then": {"required": ["resolution_adjudication_id", "latest_resolution_state"]},
+      "else": {"not": {"anyOf": [{"required": ["resolution_adjudication_id"]}, {"required": ["latest_resolution_state"]}]}}
     }
   ],
   "$defs": {

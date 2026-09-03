@@ -704,15 +704,77 @@ def validate_project_config(
     if first_entry_adjudication_document.get("record_count") != len(first_entry_adjudications):
         issues.append(Issue("config_validation", first_entry_adjudication_path.name, "record count is inconsistent"))
     all_evidence_source_ids: set[str] = set()
+    all_evidence_source_records: dict[str, dict[str, Any]] = {}
     for evidence_path in CONFIG_DIR.glob("*evidence-sources.json"):
-        all_evidence_source_ids.update(
-            record.get("source_id", "") for record in load_json(evidence_path).get("records", [])
-        )
+        for record in load_json(evidence_path).get("records", []):
+            source_id = record.get("source_id", "")
+            all_evidence_source_ids.add(source_id)
+            previous = all_evidence_source_records.get(source_id)
+            if previous is not None and previous != record:
+                issues.append(Issue("config_validation", evidence_path.name, f"conflicting source definition {source_id}"))
+            all_evidence_source_records[source_id] = record
     for index, record in enumerate(first_entry_adjudications):
         for issue in validator.validate_record(record, schema_paths["county_first_entry_adjudication"]):
             issues.append(Issue("config_validation", f"{first_entry_adjudication_path.name}.records[{index}]{issue.path[1:]}", issue.message))
         if not set(record.get("source_ids", [])).issubset(all_evidence_source_ids):
             issues.append(Issue("referential_integrity", f"{first_entry_adjudication_path.name}.records[{index}]", "adjudication references an unknown evidence source"))
+
+    resolution_tranche_source_path = CONFIG_DIR / "first-entry-resolution-tranche-1-evidence-sources.json"
+    resolution_tranche_source_document = load_json(resolution_tranche_source_path)
+    resolution_tranche_sources = resolution_tranche_source_document.get("records", [])
+    if resolution_tranche_source_document.get("record_count") != 4 or len(resolution_tranche_sources) != 4:
+        issues.append(Issue("config_validation", resolution_tranche_source_path.name, "expected four new evidence sources"))
+    for index, record in enumerate(resolution_tranche_sources):
+        for issue in validator.validate_record(record, schema_paths["source"]):
+            issues.append(Issue("config_validation", f"{resolution_tranche_source_path.name}.records[{index}]{issue.path[1:]}", issue.message))
+
+    resolution_tranche_adjudication_path = CONFIG_DIR / "first-entry-resolution-tranche-1-adjudications.json"
+    resolution_tranche_adjudication_document = load_json(resolution_tranche_adjudication_path)
+    resolution_tranche_adjudications = resolution_tranche_adjudication_document.get("records", [])
+    if resolution_tranche_adjudication_document.get("record_count") != 8 or len(resolution_tranche_adjudications) != 8:
+        issues.append(Issue("config_validation", resolution_tranche_adjudication_path.name, "expected eight successor adjudications"))
+    expected_round_names = [
+        "local_official_record", "operator_and_corporate_history",
+        "contemporaneous_discovery", "county_inventory_closure",
+    ]
+    authoritative_resolution_types = {
+        "federal_dataset", "state_record", "local_government_record", "planning_record",
+        "zoning_record", "permit_record", "assessor_record", "utility_filing",
+        "regulatory_filing", "court_record", "sec_filing", "incentive_agreement",
+        "operator_release", "legislative_record",
+    }
+    resolution_adjudication_ids: set[str] = set()
+    resolution_adjudicated_candidate_ids: set[str] = set()
+    for index, record in enumerate(resolution_tranche_adjudications):
+        for issue in validator.validate_record(record, schema_paths["first_entry_resolution_adjudication"]):
+            issues.append(Issue("config_validation", f"{resolution_tranche_adjudication_path.name}.records[{index}]{issue.path[1:]}", issue.message))
+        resolution_adjudication_ids.add(record.get("resolution_adjudication_id", ""))
+        resolution_adjudicated_candidate_ids.add(record.get("resolution_candidate_id", ""))
+        source_ids = set(record.get("source_ids", []))
+        search_rounds = record.get("search_rounds", [])
+        round_source_ids = {
+            source_id for search_round in search_rounds for source_id in search_round.get("source_ids", [])
+        }
+        finding_source_ids = {
+            source_id for finding in record.get("earlier_operational_findings", [])
+            for source_id in finding.get("source_ids", [])
+        }
+        actual_authoritative_types = {
+            all_evidence_source_records[source_id].get("source_type")
+            for source_id in source_ids if source_id in all_evidence_source_records
+            and all_evidence_source_records[source_id].get("source_type") in authoritative_resolution_types
+        }
+        if (
+            not source_ids.issubset(all_evidence_source_ids)
+            or not round_source_ids.issubset(source_ids)
+            or not finding_source_ids.issubset(source_ids)
+            or [search_round.get("round") for search_round in search_rounds] != [1, 2, 3, 4]
+            or [search_round.get("name") for search_round in search_rounds] != expected_round_names
+            or set(record.get("authoritative_source_types", [])) != actual_authoritative_types
+        ):
+            issues.append(Issue("referential_integrity", f"{resolution_tranche_adjudication_path.name}.records[{index}]", "source lineage, authoritative types, or four-round protocol is inconsistent"))
+    if len(resolution_adjudication_ids) != 8 or len(resolution_adjudicated_candidate_ids) != 8:
+        issues.append(Issue("config_validation", resolution_tranche_adjudication_path.name, "adjudication and candidate identifiers must be unique"))
     new_first_entry_expected = {
         "08005", "13217", "17037", "20091", "31055", "37035", "39041",
         "40101", "41017", "48139", "48453", "51061", "55015", "55101",
@@ -3780,6 +3842,14 @@ def validate_public_data(
     if research_manifest.get("record_count") != 460 or research_manifest_total != 460:
         issues.append(Issue("public_data_validation", research_manifest_path.name, "first-entry research manifest record count is inconsistent"))
 
+    resolution_tranche_adjudication_path = CONFIG_DIR / "first-entry-resolution-tranche-1-adjudications.json"
+    resolution_tranche_adjudication_document = load_json(resolution_tranche_adjudication_path)
+    resolution_tranche_adjudications = resolution_tranche_adjudication_document.get("records", [])
+    all_evidence_source_records: dict[str, dict[str, Any]] = {}
+    for evidence_path in CONFIG_DIR.glob("*evidence-sources.json"):
+        for record in load_json(evidence_path).get("records", []):
+            all_evidence_source_records[record.get("source_id", "")] = record
+
     resolution_path = DATA_DIR / "silver" / "treatments" / "county-first-entry-resolution-priority-v1.json"
     resolution_registry = load_json(resolution_path)
     resolution_candidates = resolution_registry.get("collections", {}).get("first_entry_resolution_candidate", [])
@@ -3794,6 +3864,7 @@ def validate_public_data(
     resolution_queue_counts = Counter(record.get("queue_status") for record in resolution_candidates)
     resolution_track_counts = Counter(record.get("resolution_track") for record in resolution_candidates)
     resolution_tier_counts = Counter(record.get("priority_tier") for record in resolution_candidates)
+    resolution_status_counts = Counter(record.get("resolution_status") for record in resolution_candidates)
     resolution_region_counts = Counter(record.get("census_region") for record in resolution_candidates)
     resolution_initial = [record for record in resolution_candidates if record.get("queue_status") == "initial_tranche"]
     resolution_initial_region_counts = Counter(record.get("census_region") for record in resolution_initial)
@@ -3818,12 +3889,20 @@ def validate_public_data(
         or max(resolution_initial_state_counts.values(), default=0) > 2
         or [record.get("county_fips") for record in resolution_initial] != expected_resolution_initial_fips
         or [record.get("initial_tranche_rank") for record in resolution_initial] != list(range(1, 25))
-        or any(record.get("resolution_status") != "queued" for record in resolution_candidates)
+        or resolution_status_counts != Counter({"queued": 209, "evidence_collected": 8})
     ):
         issues.append(Issue("public_data_validation", resolution_path.name, "first-entry resolution identity, rank, tier, track, or balanced-tranche invariants are inconsistent"))
 
     predecessor_by_fips = {record.get("county_fips"): record for record in research_candidates}
     adjudication_by_fips = {record.get("county_fips"): record for record in governed_first_entry_adjudications}
+    successor_adjudication_by_candidate_id = {
+        record.get("resolution_candidate_id"): record
+        for record in resolution_tranche_adjudications
+    }
+    if set(successor_adjudication_by_candidate_id) != {
+        record.get("resolution_candidate_id") for record in resolution_initial[:8]
+    }:
+        issues.append(Issue("referential_integrity", resolution_tranche_adjudication_path.name, "successor adjudications must cover initial-tranche ranks 1-8"))
     resolution_policy = load_json(CONFIG_DIR / "first-entry-resolution-policy.json")
     resolution_weights = resolution_policy["scoring"]["weights"]
     resolution_max_facilities = max(
@@ -3834,6 +3913,7 @@ def validate_public_data(
         county_fips = record.get("county_fips", "")
         predecessor = predecessor_by_fips.get(county_fips, {})
         adjudication = adjudication_by_fips.get(county_fips)
+        successor_adjudication = successor_adjudication_by_candidate_id.get(record.get("resolution_candidate_id"))
         track = record.get("resolution_track")
         gate_status = record.get("gate_status", {})
         finding_status = record.get("required_finding_status", {})
@@ -3895,6 +3975,22 @@ def validate_public_data(
             and record.get("predecessor_count") == len(adjudication.get("earlier_operational_findings", []))
             and record.get("predecessor_count", 0) > 0
         )
+        successor_lineage_valid = (
+            successor_adjudication is not None
+            and record.get("resolution_status") == "evidence_collected"
+            and record.get("resolution_adjudication_id") == successor_adjudication.get("resolution_adjudication_id")
+            and record.get("latest_resolution_state") == successor_adjudication.get("resolution_state")
+            and successor_adjudication.get("county_fips") == county_fips
+            and successor_adjudication.get("county_name") == record.get("county_name")
+            and successor_adjudication.get("state_abbr") == record.get("state_abbr")
+            and successor_adjudication.get("candidate_generation") == record.get("candidate_generation")
+            and successor_adjudication.get("reviewed_anchor") == record.get("candidate_anchor")
+            and successor_adjudication.get("prior_adjudication_id") == record.get("prior_adjudication_id")
+        ) if successor_adjudication is not None else (
+            record.get("resolution_status") == "queued"
+            and "resolution_adjudication_id" not in record
+            and "latest_resolution_state" not in record
+        )
         if (
             record.get("first_entry_research_candidate_id") != predecessor.get("first_entry_research_candidate_id")
             or record.get("county_name") != predecessor.get("county_name")
@@ -3902,6 +3998,7 @@ def validate_public_data(
             or facility_count != predecessor.get("active_canonical_facility_count")
             or track != expected_track
             or not lineage_valid
+            or not successor_lineage_valid
             or record.get("score_components") != expected_components
             or record.get("priority_score") != expected_score
             or gate_status.get("both_model_gates_pass") != both_gates
@@ -3917,6 +4014,10 @@ def validate_public_data(
         resolution_public_index.get("partition_count") != 51
         or resolution_public_index.get("record_count") != 217
         or resolution_public_index.get("initial_tranche_count") != 24
+        or resolution_public_index.get("adjudication_count") != 8
+        or resolution_public_index.get("adjudications_path") != "county-first-entry-resolution/adjudications.json"
+        or resolution_public_index.get("evidence_sources_path") != "county-first-entry-resolution/evidence-sources.json"
+        or resolution_public_index.get("resolution_status_counts") != {"evidence_collected": 8, "queued": 209}
         or len(resolution_public_index.get("partitions", [])) != 51
     ):
         issues.append(Issue("public_data_validation", resolution_public_index_path.name, "first-entry resolution public index counts are inconsistent"))
@@ -3944,6 +4045,25 @@ def validate_public_data(
     resolution_public_tranche_path = PUBLIC_DATA_DIR / "treatments" / "county-first-entry-resolution" / "initial-tranche.json"
     if load_json(resolution_public_tranche_path) != resolution_initial:
         issues.append(Issue("public_data_validation", resolution_public_tranche_path.name, "public first-entry resolution tranche must match governed records"))
+    resolution_public_adjudication_path = PUBLIC_DATA_DIR / "treatments" / "county-first-entry-resolution" / "adjudications.json"
+    if load_json(resolution_public_adjudication_path) != resolution_tranche_adjudication_document:
+        issues.append(Issue("public_data_validation", resolution_public_adjudication_path.name, "public successor adjudications must match governed records"))
+    resolution_public_evidence_path = PUBLIC_DATA_DIR / "treatments" / "county-first-entry-resolution" / "evidence-sources.json"
+    resolution_public_evidence = load_json(resolution_public_evidence_path)
+    resolution_public_evidence_records = resolution_public_evidence.get("records", [])
+    expected_resolution_source_ids = sorted({
+        source_id for record in resolution_tranche_adjudications
+        for source_id in record.get("source_ids", [])
+    })
+    if (
+        resolution_public_evidence.get("record_count") != len(expected_resolution_source_ids)
+        or [record.get("source_id") for record in resolution_public_evidence_records] != expected_resolution_source_ids
+        or any(record != all_evidence_source_records.get(record.get("source_id")) for record in resolution_public_evidence_records)
+    ):
+        issues.append(Issue("public_data_validation", resolution_public_evidence_path.name, "public successor evidence-source projection is inconsistent"))
+    for index, record in enumerate(resolution_public_evidence_records):
+        for issue in validator.validate_record(record, schema_paths["source"]):
+            issues.append(Issue("public_data_validation", f"{resolution_public_evidence_path.name}.records[{index}]{issue.path[1:]}", issue.message))
 
     resolution_report_path = DATA_DIR / "silver" / "treatments" / "county-first-entry-resolution-priority-v1.processing-report.json"
     resolution_report = load_json(resolution_report_path)
@@ -3957,6 +4077,9 @@ def validate_public_data(
         or resolution_report.get("priority_tier_counts") != {"resolution_foundational": 54, "resolution_ready": 73, "resolution_standard": 90}
         or resolution_report.get("initial_tranche_region_counts") != {"Midwest": 6, "Northeast": 6, "South": 6, "West": 6}
         or resolution_report.get("initial_tranche_track_counts") != {"promote_predecessor": 6, "resolve_existing_anchor": 18}
+        or resolution_report.get("resolution_status_counts") != {"evidence_collected": 8, "queued": 209}
+        or resolution_report.get("adjudication_count") != 8
+        or resolution_report.get("adjudication_resolution_counts") != {"candidate_rejected_first_entry": 3, "unresolved": 5}
         or resolution_report.get("treatment_effect") != {"treatment_dates_assigned": 0, "eligible_treatment_count_changed": False, "model_run_authorized": False}
     ):
         issues.append(Issue("public_data_validation", resolution_report_path.name, "first-entry resolution processing diagnostics are inconsistent"))
@@ -3975,7 +4098,7 @@ def validate_public_data(
         resolution_manifest_total += part.get("record_count", 0)
         if part.get("byte_size") != len(payload) or part.get("sha256") != hashlib.sha256(payload).hexdigest():
             issues.append(Issue("public_data_validation", f"{resolution_manifest_path.name}.parts[{index}]", "byte size or SHA-256 does not match the artifact"))
-    if resolution_manifest.get("record_count") != 460 or resolution_manifest_total != 460:
+    if resolution_manifest.get("record_count") != resolution_manifest_total:
         issues.append(Issue("public_data_validation", resolution_manifest_path.name, "first-entry resolution manifest record count is inconsistent"))
 
     coverage_path = PUBLIC_DATA_DIR / "counties" / "facility-source-coverage.json"

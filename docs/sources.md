@@ -194,6 +194,8 @@ adjudicated dated anchor.
 - Tracks: 59 predecessor promotions, 113 retained anchors, 45 anchor-establishment cases
 - Initial tranche: 24 counties, six per Census region
 - National backlog: 193 counties
+- Evidence-collected: 8 (3 candidate rejections, 5 unresolved)
+- Remaining queued: 209
 - Builder: `scripts/build_first_entry_resolution_queue.py`
 
 The resolution queue preserves all prior adjudications and creates new candidate lineage.
@@ -202,6 +204,15 @@ initial tranche, and 51 state/DC partitions are static JSON. A successor candida
 that passes both quantitative gates—does not become a treatment until a new adjudication
 verifies exact facility identity, county inventory completeness, and a conclusive search for
 earlier operations.
+
+The first resolution evidence tranche is stored in
+`config/v1/first-entry-resolution-tranche-1-evidence-sources.json`, with its eight decisions in
+`config/v1/first-entry-resolution-tranche-1-adjudications.json`. New source metadata covers an
+Ameritech regulatory filing that documents Southfield and Pewaukee data centers by 2002, an Air
+Force history that preserves an unresolved Offutt computing-facility lead, a San Francisco
+planning address alias, and Indiana's Digital Crossroads groundbreaking record. Public copies and
+all referenced source metadata are emitted as static JSON under
+`public/data/v1/treatments/county-first-entry-resolution/`.
 
 The panel retains current Census identities without crosswalking legacy source geographies.
 Connecticut planning regions consequently lack BLS rows before their 2024 adoption, and the

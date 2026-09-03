@@ -115,7 +115,9 @@ The successor registry carries all 217 completed research records forward withou
 their adjudications. It separates 59 documented predecessor promotions, 113 retained dated
 anchors, and 45 counties that still need an anchor. Its first 24-county tranche is balanced
 six per Census region and no more than two per state, with JSON-only state partitions for
-static hosting.
+static hosting. The first eight candidates now have append-only successor adjudications:
+three candidate anchors are rejected by documented earlier county operations and five remain
+unresolved. The other 209 successor records remain queued; no treatment date was assigned.
 
 Rebuild the conservative IM3 identity-resolution layer from those JSON artifacts:
 
@@ -261,14 +263,16 @@ validation can be added later to CI with a standards-compliant Draft 2020-12 val
   additional facility counties lack a complete 24-year panel.
 - County first-entry resolution: the append-only successor queue contains the same 217 counties.
   The first balanced resolution tranche contains 24 counties and the national backlog contains
-  193. Forty-nine successor candidates currently pass both quantitative gates, but none is a
-  verified county first entry. Queue membership is not evidence of treatment eligibility.
+  193. Evidence has been collected for ranks 1–8: Oakland MI, Waukesha WI, and San Francisco CA
+  have rejected successor anchors, while Cumberland ME, Sarpy NE, Frederick MD, Strafford NH,
+  and Lake IN remain unresolved. Forty-nine successor candidates currently pass both quantitative
+  gates, but none is a verified county first entry. Queue membership is not evidence of treatment eligibility.
 - Fiscal, utility, housing, environmental, or opposition observations: not yet ingested.
 - Econometric estimates and public indices: fixture-only; not substantive.
 
 ## Next priority
 
-Work the 24-county successor resolution tranche through the four-round source protocol. For
+Work successor resolution ranks 9–16 through the four-round source protocol. For
 each county, test the promoted or retained anchor against earlier operations, close the county
 inventory, and issue a new append-only adjudication. Do not estimate impacts until enough
 treatments and defensible comparison counties satisfy the registered evidence and period

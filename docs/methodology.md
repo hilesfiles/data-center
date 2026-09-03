@@ -225,8 +225,12 @@ Priority combines model-gate readiness (30%), predecessor promotability (20%), i
 feasibility (20%), anchor evidence quality (15%), authoritative-source diversity (10%), and
 required-finding closure (5%). The deterministic first resolution tranche contains 24 counties,
 six per Census region and no more than two per state. A promoted predecessor is a new candidate
-generation, not a verified first entry. Every successor record remains `resolution_status: queued`,
-and no treatment date, comparison status, or model authorization is produced by the queue.
+generation, not a verified first entry. Every successor record remains `resolution_status: queued`
+until an append-only successor adjudication records the evidence result. Ranks 1–8 have completed
+all four search rounds: three promoted or retained anchors are rejected by documented earlier
+county operations and five remain unresolved. Their queue records are now
+`resolution_status: evidence_collected`; the remaining 209 records stay `queued`. None is verified,
+so no treatment date, comparison status, or model authorization is produced.
 
 ## Lifecycle verification pilot
 
