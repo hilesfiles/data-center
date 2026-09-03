@@ -205,14 +205,28 @@ Priority combines a governed dated-event anchor (30%), reviewed operational evid
 the feasibility of auditing the county's current facility inventory (20%), panel completeness
 (15%), and source-identity coverage (10%). Inventory feasibility is inversely scaled by the
 log of the active facility count, so a smaller inventory is treated as easier to audit—not as
-more likely to be newly treated. The initial tranche contains 24 counties, six per Census
-region and no more than two per state. Fulton, Hudson, Clark, Monroe, Oakland, Cook, Alachua,
-Cumberland, Middlesex, Hillsborough, Montgomery, Mecklenburg, Maricopa, and Santa Clara counties are `research_status: evidence_collected`; the other 203 records
-remain queued.
+more likely to be newly treated. The immutable initial tranche contains 24 counties, six per
+Census region and no more than two per state. Research is now complete for all 217 records:
+59 dated anchors were rejected after an earlier operation was documented, 113 dated anchors
+remain unresolved, and 45 counties still lack an adjudicated dated anchor.
 
 Every adjudication must establish an earliest dated operational event, exact facility identity,
 county inventory completeness, and a documented search for earlier operations. Failure to
 verify those findings yields `unresolved_not_never_treated`; it never establishes a control.
+
+### Successor first-entry resolution
+
+The successor queue is append-only. It does not revise or overwrite the completed research
+registry or its adjudications. Instead, each county enters one of three explicit tracks:
+`promote_predecessor` for the 59 rejected candidates, `resolve_existing_anchor` for the 113
+unresolved dated anchors, or `establish_anchor` for the 45 counties without a dated anchor.
+
+Priority combines model-gate readiness (30%), predecessor promotability (20%), inventory-audit
+feasibility (20%), anchor evidence quality (15%), authoritative-source diversity (10%), and
+required-finding closure (5%). The deterministic first resolution tranche contains 24 counties,
+six per Census region and no more than two per state. A promoted predecessor is a new candidate
+generation, not a verified first entry. Every successor record remains `resolution_status: queued`,
+and no treatment date, comparison status, or model authorization is produced by the queue.
 
 ## Lifecycle verification pilot
 

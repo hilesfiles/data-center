@@ -1,0 +1,102 @@
+{
+  "schema_version": "1.0.0",
+  "policy_id": "pol_first_entry_resolution_20260903",
+  "policy_version": "1.0.0",
+  "treatment_definition_id": "trt_first_entry_v1",
+  "predecessor_policy_id": "pol_first_entry_research_20260901",
+  "input_dataset_ids": [
+    "county_first_entry_research_priority_v1",
+    "county_first_entry_treatment_registry_v1",
+    "im3_2026_02_09_final_boundary_review"
+  ],
+  "eligibility": {
+    "predecessor_research_status": "evidence_collected",
+    "complete_history_years_required": 24,
+    "eligible_treatments_excluded": true
+  },
+  "resolution_tracks": [
+    {
+      "track": "promote_predecessor",
+      "source_resolution_state": "candidate_rejected_first_entry",
+      "action": "Promote the earliest documented predecessor operation as the next candidate and search for any still-earlier county operation."
+    },
+    {
+      "track": "resolve_existing_anchor",
+      "source_resolution_state": "unresolved",
+      "action": "Retain the dated exact-facility anchor and complete the county inventory and earlier-operation search."
+    },
+    {
+      "track": "establish_anchor",
+      "source_resolution_state": "not_adjudicated",
+      "action": "Establish a dated exact-facility operational anchor before attempting county first-entry verification."
+    }
+  ],
+  "regional_frame": [
+    {"region": "Northeast", "state_abbrs": ["CT", "ME", "MA", "NH", "RI", "VT", "NJ", "NY", "PA"]},
+    {"region": "Midwest", "state_abbrs": ["IN", "IL", "MI", "OH", "WI", "IA", "KS", "MN", "MO", "NE", "ND", "SD"]},
+    {"region": "South", "state_abbrs": ["DE", "DC", "FL", "GA", "MD", "NC", "SC", "VA", "WV", "AL", "KY", "MS", "TN", "AR", "LA", "OK", "TX"]},
+    {"region": "West", "state_abbrs": ["AZ", "CO", "ID", "MT", "NV", "NM", "UT", "WY", "AK", "CA", "HI", "OR", "WA"]}
+  ],
+  "initial_tranche": {
+    "size": 24,
+    "per_region_quota": 6,
+    "max_per_state": 2,
+    "exclude_tier": "resolution_foundational",
+    "selection_order": ["priority_score_desc", "county_fips_asc"]
+  },
+  "scoring": {
+    "weights": {
+      "model_gate_readiness": 30,
+      "predecessor_promotability": 20,
+      "inventory_audit_feasibility": 20,
+      "anchor_evidence_quality": 15,
+      "authoritative_source_diversity": 10,
+      "required_finding_closure": 5
+    },
+    "normalization": {
+      "model_gate_readiness": "100 when the target anchor passes both evidence and panel-window gates, 50 when it passes exactly one, otherwise 0",
+      "predecessor_promotability": "100 for a documented predecessor, 50 for an unresolved dated anchor, and 0 when no dated anchor exists",
+      "inventory_audit_feasibility": "100 times one minus log(active facility count) divided by log(maximum eligible county facility count)",
+      "anchor_evidence_quality": "governed target-anchor data-quality score, or 0 when no dated target anchor exists",
+      "authoritative_source_diversity": "minimum of 100 and 50 times the number of distinct authoritative source types supporting the current resolution record",
+      "required_finding_closure": "resolved required findings divided by four times 100"
+    }
+  },
+  "priority_tiers": [
+    {"tier": "resolution_ready", "minimum_score": 70, "maximum_score": 100, "research_action": "Eligible for the balanced first resolution tranche."},
+    {"tier": "resolution_standard", "minimum_score": 45, "maximum_score": 69.99, "research_action": "Retain for normal resolution tranches."},
+    {"tier": "resolution_foundational", "minimum_score": 0, "maximum_score": 44.99, "research_action": "Establish stronger identity or date evidence before inventory closure."}
+  ],
+  "research_protocol": {
+    "required_findings": [
+      "earliest_dated_operational_event",
+      "exact_facility_identity_for_earliest_event",
+      "county_inventory_completeness",
+      "documented_search_for_earlier_operations"
+    ],
+    "search_rounds": [
+      {"round": 1, "name": "local_official_record", "source_types": ["local_government_record", "planning_record", "zoning_record", "permit_record", "assessor_record", "regulatory_filing"]},
+      {"round": 2, "name": "operator_and_corporate_history", "source_types": ["operator_release", "sec_filing", "incentive_agreement", "utility_filing"]},
+      {"round": 3, "name": "contemporaneous_discovery", "source_types": ["local_news", "trade_press", "web_archive"]},
+      {"round": 4, "name": "county_inventory_closure", "source_types": ["local_government_record", "assessor_record", "permit_record", "utility_filing", "regulatory_filing"]}
+    ],
+    "maximum_search_rounds": 4,
+    "minimum_authoritative_source_types": 2,
+    "verification_requirements": {
+      "exact_dated_anchor": true,
+      "exact_facility_identity": true,
+      "inventory_completeness_status": "verified_complete",
+      "earlier_operations_search_status": "documented_complete"
+    },
+    "unverified_outcome": "unresolved_not_never_treated"
+  },
+  "lineage": {
+    "append_only": true,
+    "preserve_prior_adjudications": true,
+    "rejected_candidate_action": "create_successor_candidate",
+    "overwrite_prior_candidate": false
+  },
+  "created_at": "2026-09-03T02:00:00Z",
+  "updated_at": "2026-09-03T02:00:00Z",
+  "record_status": "active"
+}

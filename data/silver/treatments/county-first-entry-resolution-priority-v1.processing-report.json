@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.0.0",
+  "artifact_type": "county_first_entry_resolution_processing_report",
+  "artifact_version": "first-entry-resolution-v1.0",
+  "generated_at": "2026-09-03T02:00:00Z",
+  "policy_id": "pol_first_entry_resolution_20260903",
+  "treatment_definition_id": "trt_first_entry_v1",
+  "predecessor_candidate_count": 217,
+  "resolution_candidate_count": 217,
+  "initial_tranche_count": 24,
+  "national_backlog_count": 193,
+  "resolution_track_counts": {
+    "establish_anchor": 45,
+    "promote_predecessor": 59,
+    "resolve_existing_anchor": 113
+  },
+  "model_gate_counts": {
+    "both_passed": 49,
+    "not_both_passed": 168
+  },
+  "priority_tier_counts": {
+    "resolution_foundational": 54,
+    "resolution_ready": 73,
+    "resolution_standard": 90
+  },
+  "region_counts": {
+    "Midwest": 63,
+    "Northeast": 29,
+    "South": 67,
+    "West": 58
+  },
+  "initial_tranche_region_counts": {
+    "Midwest": 6,
+    "Northeast": 6,
+    "South": 6,
+    "West": 6
+  },
+  "initial_tranche_track_counts": {
+    "promote_predecessor": 6,
+    "resolve_existing_anchor": 18
+  },
+  "public_partition_count": 51,
+  "treatment_effect": {
+    "treatment_dates_assigned": 0,
+    "eligible_treatment_count_changed": false,
+    "model_run_authorized": false
+  },
+  "notices": [
+    "This append-only registry preserves every predecessor adjudication.",
+    "A promoted predecessor is a new candidate, not a verified county first entry.",
+    "Queue position does not assign treatment or never-treated status."
+  ]
+}

@@ -106,8 +106,10 @@ county profiles lazy-load only their selected state partition.
 
 - Treatment definition: `trt_first_entry_v1`
 - Geography: 3,144 current Census counties and county equivalents
-- Reviewed dated operational events: 12
-- Evidence- and history-window-qualified events: 6
+- Reviewed dated operational events: 172
+- Evidence-qualified events: 107
+- History-window-qualified events: 95
+- Evidence- and history-window-qualified events: 68
 - Verified county first-entry dates: 0
 - Eligible treatment counties: 0
 - Builder: `scripts/build_county_first_entry_treatments.py`
@@ -180,6 +182,26 @@ lifecycle results, treatment-candidate counts, 2001–2024 panel completeness, a
 identity coverage. It introduces no new external factual claims. Public queue records are
 JSON-only and split into 51 state/DC partitions. Evidence collection for the initial tranche
 must use the source protocol in the policy; ranking alone cannot establish first entry.
+
+Research is complete for all 217 candidates. The final baseline contains 59 rejected anchors
+with documented predecessors, 113 unresolved dated anchors, and 45 counties without an
+adjudicated dated anchor.
+
+## Governed county first-entry resolution queue
+
+- Policy: `config/v1/first-entry-resolution-policy.json`
+- Successor candidates: 217
+- Tracks: 59 predecessor promotions, 113 retained anchors, 45 anchor-establishment cases
+- Initial tranche: 24 counties, six per Census region
+- National backlog: 193 counties
+- Builder: `scripts/build_first_entry_resolution_queue.py`
+
+The resolution queue preserves all prior adjudications and creates new candidate lineage.
+Selection uses governed evidence and audit-feasibility metadata only. The complete registry,
+initial tranche, and 51 state/DC partitions are static JSON. A successor candidate—even one
+that passes both quantitative gates—does not become a treatment until a new adjudication
+verifies exact facility identity, county inventory completeness, and a conclusive search for
+earlier operations.
 
 The panel retains current Census identities without crosswalking legacy source geographies.
 Connecticut planning regions consequently lack BLS rows before their 2024 adoption, and the

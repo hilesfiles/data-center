@@ -88,8 +88,8 @@ python scripts/build_county_first_entry_treatments.py
 The registry evaluates reviewed dated operational events against the configured evidence
 and panel-window rules, then requires a separate explicit verification that the event is the
 county's first data-center entry. It publishes 51 lazy-loaded state/DC JSON partitions.
-The current evidence contains 141 reviewed dated facility events. Eighty-seven pass the evidence
-gate and 76 pass the panel-window gate, but zero have verified county-first-entry status, so model readiness is
+The current evidence contains 172 reviewed dated facility events. One hundred seven pass the evidence
+gate, 95 pass the panel-window gate, and 68 pass both; zero have verified county-first-entry status, so model readiness is
 `insufficient_eligible_treatments` and no model run is authorized. Absence of a reviewed event
 is never interpreted as never treated.
 
@@ -104,6 +104,18 @@ years of core panel history. A deterministic policy selects a 24-county initial 
 six counties per Census region and no more than two per state. Scores order evidence work
 only; they do not assign a treatment date, first-entry status, or comparison-group status.
 The browser lazy-loads the queue through 51 state/DC JSON partitions.
+
+Rebuild the append-only first-entry resolution queue:
+
+```powershell
+python scripts/build_first_entry_resolution_queue.py
+```
+
+The successor registry carries all 217 completed research records forward without changing
+their adjudications. It separates 59 documented predecessor promotions, 113 retained dated
+anchors, and 45 counties that still need an anchor. Its first 24-county tranche is balanced
+six per Census region and no more than two per state, with JSON-only state partitions for
+static hosting.
 
 Rebuild the conservative IM3 identity-resolution layer from those JSON artifacts:
 
@@ -238,44 +250,26 @@ validation can be added later to CI with a standards-compliant Draft 2020-12 val
 - Historical panel: the BEA–BLS core panel contains 75,456 county-year rows and
   301,824 governed observations for 2001–2024. It is complete for 3,064 counties, partial
   for 79, and unavailable for Kalawao County. It is research infrastructure, not a model run.
-- County first-entry treatment: all 3,144 counties have governed assessments. Dated candidates
-  in Santa Clara, Maricopa, Fulton, Clark, Monroe, Oakland, Cook, Alachua, Cumberland, Middlesex, Hillsborough, Montgomery, and Mecklenburg counties are each rejected by
-  documented earlier operations. Hudson County has an exact-facility operational-no-later-than anchor dated
-  March 27, 2002, but its true first entry remains unresolved. The Santa Clara and Maricopa
-  events pass evidence and history-window thresholds; Clark passes the history window but not
-  the year-precision evidence threshold, Monroe passes both gates but has a documented 2001
-  predecessor operation, Oakland passes both gates but has a documented earlier 123NET operation,
-  Cook passes the evidence gate but has only two pre-periods and a documented earlier 350 East
-  Cermak operation, Alachua passes the history window but its year-only date fails the evidence
-  threshold and a separate UF data center was operating in 2003, and Cumberland passes the history
-  window but its local-news anchor fails the authoritative-source gate and 340 Cumberland Avenue was
-  already an existing Portland colocation facility in 2009. Middlesex passes both gates but its
-  Markley Lowell anchor follows CoreSite BO1's documented 2007 operation. Hillsborough passes both
-  gates, but its TPA1 anchor follows the mapped Tampa–West facility's documented presence at 9417
-  Corporate Lake Drive by 2006. Montgomery passes both gates, but its TierPoint Valley Forge
-  anchor follows Focal Communications switch and colocation operations documented at the exact
-  1000 Forge Avenue, Building C site by the end of 2000. Mecklenburg passes both gates, but its
-  TierPoint CL4 anchor follows Peak 10's documented Charlotte headquarters data-center operation
-  at the exact mapped 8910 Lenox Pointe Drive site by July 2006. Fulton and Hudson also do
-  not pass both gates.
-  Zero counties are currently treatment-eligible and no county is classified as never treated.
+- County first-entry treatment: all 3,144 counties have governed assessments and 172 dated
+  candidates have been evaluated. Of those, 107 pass the evidence gate, 95 pass the history-window
+  gate, and 68 pass both. Fifty-nine dated anchors were rejected after earlier operations were
+  documented, while 113 remain unresolved. Zero counties are currently treatment-eligible and
+  no county is classified as never treated.
 - County first-entry research: 217 facility counties meet the complete-history prerequisite.
-  Twenty-four are in the balanced initial tranche and 193 remain in the national backlog;
-  nine additional facility counties lack a complete 24-year panel. Research has covered 176
-  candidates: 52 dated anchors were rejected as county first entry and 89 remain unresolved,
-  leaving 41 queued. The latest tranche establishes dated facility anchors in Frederick MD,
-  Howard MD, Essex MA, Genesee MI, and Strafford NH; Hancock IN, Monroe MI, and Granite MT remain
-  provisional because map-derived telecom labels lack independent exact-site corroboration.
-  Queue membership is not evidence of treatment eligibility.
+  Research is complete for all 217: 59 have a rejected dated anchor with a documented predecessor,
+  113 retain an unresolved dated anchor, and 45 still lack an adjudicated dated anchor. Nine
+  additional facility counties lack a complete 24-year panel.
+- County first-entry resolution: the append-only successor queue contains the same 217 counties.
+  The first balanced resolution tranche contains 24 counties and the national backlog contains
+  193. Forty-nine successor candidates currently pass both quantitative gates, but none is a
+  verified county first entry. Queue membership is not evidence of treatment eligibility.
 - Fiscal, utility, housing, environmental, or opposition observations: not yet ingested.
 - Econometric estimates and public indices: fixture-only; not substantive.
 
 ## Next priority
 
-Continue the remaining 41 queued counties in national-rank tranches against local-government, permit,
-planning, assessor, utility, regulatory, operator, and contemporaneous news records. Each
-adjudication must
-identify the earliest dated operation, establish exact facility identity, assess county
-inventory completeness, and document the search for earlier operations. Do not estimate
-impacts until enough treatments and defensible comparison counties satisfy the registered
-evidence and period requirements.
+Work the 24-county successor resolution tranche through the four-round source protocol. For
+each county, test the promoted or retained anchor against earlier operations, close the county
+inventory, and issue a new append-only adjudication. Do not estimate impacts until enough
+treatments and defensible comparison counties satisfy the registered evidence and period
+requirements.

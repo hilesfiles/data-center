@@ -636,6 +636,35 @@ def validate_project_config(
     ):
         issues.append(Issue("config_validation", first_entry_policy_path.name, "first-entry research weights, regional frame, or tranche constraints are inconsistent"))
 
+    resolution_policy_path = CONFIG_DIR / "first-entry-resolution-policy.json"
+    resolution_policy = load_json(resolution_policy_path)
+    for issue in validator.validate_record(resolution_policy, schema_paths["first_entry_resolution_policy"]):
+        issues.append(Issue("config_validation", f"{resolution_policy_path.name}{issue.path[1:]}", issue.message))
+    resolution_weights = resolution_policy.get("scoring", {}).get("weights", {})
+    resolution_regions = resolution_policy.get("regional_frame", [])
+    resolution_states = [state for frame in resolution_regions for state in frame.get("state_abbrs", [])]
+    resolution_tranche = resolution_policy.get("initial_tranche", {})
+    resolution_tracks = {
+        (record.get("track"), record.get("source_resolution_state"))
+        for record in resolution_policy.get("resolution_tracks", [])
+    }
+    if (
+        not math.isclose(sum(resolution_weights.values()), 100.0, abs_tol=1e-9)
+        or {frame.get("region") for frame in resolution_regions} != {"Northeast", "Midwest", "South", "West"}
+        or len(resolution_states) != 51
+        or len(resolution_states) != len(set(resolution_states))
+        or resolution_tranche.get("size") != 24
+        or resolution_tranche.get("per_region_quota") != 6
+        or resolution_tranche.get("max_per_state") != 2
+        or resolution_tranche.get("size") != resolution_tranche.get("per_region_quota") * 4
+        or resolution_tracks != {
+            ("promote_predecessor", "candidate_rejected_first_entry"),
+            ("resolve_existing_anchor", "unresolved"),
+            ("establish_anchor", "not_adjudicated"),
+        }
+    ):
+        issues.append(Issue("config_validation", resolution_policy_path.name, "first-entry resolution weights, tracks, regional frame, or tranche constraints are inconsistent"))
+
     first_entry_source_path = CONFIG_DIR / "first-entry-anchor-evidence-sources.json"
     first_entry_source_document = load_json(first_entry_source_path)
     first_entry_sources = first_entry_source_document.get("records", [])
@@ -3750,6 +3779,204 @@ def validate_public_data(
             issues.append(Issue("public_data_validation", f"{research_manifest_path.name}.parts[{index}]", "byte size or SHA-256 does not match the artifact"))
     if research_manifest.get("record_count") != 460 or research_manifest_total != 460:
         issues.append(Issue("public_data_validation", research_manifest_path.name, "first-entry research manifest record count is inconsistent"))
+
+    resolution_path = DATA_DIR / "silver" / "treatments" / "county-first-entry-resolution-priority-v1.json"
+    resolution_registry = load_json(resolution_path)
+    resolution_candidates = resolution_registry.get("collections", {}).get("first_entry_resolution_candidate", [])
+    if resolution_registry.get("record_count") != 217 or len(resolution_candidates) != 217:
+        issues.append(Issue("public_data_validation", resolution_path.name, "first-entry resolution registry count is inconsistent"))
+    for index, record in enumerate(resolution_candidates):
+        for issue in validator.validate_record(record, schema_paths["first_entry_resolution_candidate"]):
+            issues.append(Issue("public_data_validation", f"{resolution_path.name}.first_entry_resolution_candidate[{index}]{issue.path[1:]}", issue.message))
+
+    resolution_ids = [record.get("resolution_candidate_id") for record in resolution_candidates]
+    resolution_fips = [record.get("county_fips") for record in resolution_candidates]
+    resolution_queue_counts = Counter(record.get("queue_status") for record in resolution_candidates)
+    resolution_track_counts = Counter(record.get("resolution_track") for record in resolution_candidates)
+    resolution_tier_counts = Counter(record.get("priority_tier") for record in resolution_candidates)
+    resolution_region_counts = Counter(record.get("census_region") for record in resolution_candidates)
+    resolution_initial = [record for record in resolution_candidates if record.get("queue_status") == "initial_tranche"]
+    resolution_initial_region_counts = Counter(record.get("census_region") for record in resolution_initial)
+    resolution_initial_state_counts = Counter(record.get("state_abbr") for record in resolution_initial)
+    resolution_initial_track_counts = Counter(record.get("resolution_track") for record in resolution_initial)
+    expected_resolution_initial_fips = [
+        "23005", "26125", "55133", "31153", "24021", "33017", "06075", "18089",
+        "25009", "39041", "36087", "12095", "29095", "21111", "53053", "41047",
+        "12031", "48121", "33015", "41013", "37161", "34039", "32029", "06055",
+    ]
+    if (
+        len(resolution_ids) != len(set(resolution_ids))
+        or len(resolution_fips) != len(set(resolution_fips))
+        or set(resolution_fips) != set(research_fips)
+        or [record.get("national_rank") for record in resolution_candidates] != list(range(1, 218))
+        or resolution_queue_counts != Counter({"national_backlog": 193, "initial_tranche": 24})
+        or resolution_track_counts != Counter({"resolve_existing_anchor": 113, "promote_predecessor": 59, "establish_anchor": 45})
+        or resolution_tier_counts != Counter({"resolution_standard": 90, "resolution_ready": 73, "resolution_foundational": 54})
+        or resolution_region_counts != Counter({"South": 67, "Midwest": 63, "West": 58, "Northeast": 29})
+        or resolution_initial_region_counts != Counter({"Northeast": 6, "Midwest": 6, "South": 6, "West": 6})
+        or resolution_initial_track_counts != Counter({"resolve_existing_anchor": 18, "promote_predecessor": 6})
+        or max(resolution_initial_state_counts.values(), default=0) > 2
+        or [record.get("county_fips") for record in resolution_initial] != expected_resolution_initial_fips
+        or [record.get("initial_tranche_rank") for record in resolution_initial] != list(range(1, 25))
+        or any(record.get("resolution_status") != "queued" for record in resolution_candidates)
+    ):
+        issues.append(Issue("public_data_validation", resolution_path.name, "first-entry resolution identity, rank, tier, track, or balanced-tranche invariants are inconsistent"))
+
+    predecessor_by_fips = {record.get("county_fips"): record for record in research_candidates}
+    adjudication_by_fips = {record.get("county_fips"): record for record in governed_first_entry_adjudications}
+    resolution_policy = load_json(CONFIG_DIR / "first-entry-resolution-policy.json")
+    resolution_weights = resolution_policy["scoring"]["weights"]
+    resolution_max_facilities = max(
+        (record.get("active_canonical_facility_count", 0) for record in resolution_candidates),
+        default=1,
+    )
+    for index, record in enumerate(resolution_candidates):
+        county_fips = record.get("county_fips", "")
+        predecessor = predecessor_by_fips.get(county_fips, {})
+        adjudication = adjudication_by_fips.get(county_fips)
+        track = record.get("resolution_track")
+        gate_status = record.get("gate_status", {})
+        finding_status = record.get("required_finding_status", {})
+        facility_count = record.get("active_canonical_facility_count", 0)
+        expected_track = (
+            "establish_anchor" if adjudication is None
+            else "promote_predecessor" if adjudication.get("resolution_state") == "candidate_rejected_first_entry"
+            else "resolve_existing_anchor"
+        )
+        expected_components = {
+            "model_gate_readiness": float(50 * sum(
+                gate_status.get(key) == "passed"
+                for key in ("evidence_threshold_status", "period_requirement_status")
+            )),
+            "predecessor_promotability": {
+                "promote_predecessor": 100.0,
+                "resolve_existing_anchor": 50.0,
+                "establish_anchor": 0.0,
+            }.get(track, -1.0),
+            "inventory_audit_feasibility": round(
+                100.0 * (1.0 - math.log(facility_count) / math.log(resolution_max_facilities)), 2
+            ) if facility_count else -1.0,
+            "anchor_evidence_quality": round(float(record.get("candidate_anchor", {}).get("evidence_score", 0.0)), 2),
+            "authoritative_source_diversity": float(min(100, record.get("authoritative_source_type_count", 0) * 50)),
+            "required_finding_closure": round(
+                sum(status == "resolved" for status in finding_status.values()) / 4.0 * 100.0, 2
+            ) if len(finding_status) == 4 else -1.0,
+        }
+        expected_score = round(sum(
+            expected_components[name] * float(resolution_weights[name]) / 100.0
+            for name in resolution_weights
+        ), 2)
+        expected_remaining = [
+            finding for finding in resolution_policy["research_protocol"]["required_findings"]
+            if finding_status.get(finding) != "resolved"
+        ]
+        both_gates = (
+            gate_status.get("evidence_threshold_status") == "passed"
+            and gate_status.get("period_requirement_status") == "passed"
+        )
+        lineage_valid = (
+            track == "establish_anchor"
+            and record.get("candidate_generation") == 1
+            and "candidate_anchor" not in record
+            and record.get("predecessor_count") == 0
+        ) or (
+            track == "resolve_existing_anchor"
+            and record.get("candidate_generation") == 1
+            and record.get("candidate_anchor", {}).get("derivation") == "existing_dated_candidate"
+            and record.get("prior_adjudication_id") == adjudication.get("county_first_entry_adjudication_id")
+            and record.get("prior_candidate_event_evaluation_id") == adjudication.get("candidate_event_evaluation_id")
+            and record.get("predecessor_count") == 0
+        ) or (
+            track == "promote_predecessor"
+            and record.get("candidate_generation") == 2
+            and record.get("candidate_anchor", {}).get("derivation") == "promoted_earlier_finding"
+            and record.get("prior_adjudication_id") == adjudication.get("county_first_entry_adjudication_id")
+            and record.get("prior_candidate_event_evaluation_id") == adjudication.get("candidate_event_evaluation_id")
+            and record.get("predecessor_count") == len(adjudication.get("earlier_operational_findings", []))
+            and record.get("predecessor_count", 0) > 0
+        )
+        if (
+            record.get("first_entry_research_candidate_id") != predecessor.get("first_entry_research_candidate_id")
+            or record.get("county_name") != predecessor.get("county_name")
+            or record.get("state_abbr") != predecessor.get("state_abbr")
+            or facility_count != predecessor.get("active_canonical_facility_count")
+            or track != expected_track
+            or not lineage_valid
+            or record.get("score_components") != expected_components
+            or record.get("priority_score") != expected_score
+            or gate_status.get("both_model_gates_pass") != both_gates
+            or record.get("remaining_findings") != expected_remaining
+            or record.get("resolution_objective") != "verify_county_first_operational_entry"
+        ):
+            issues.append(Issue("public_data_validation", f"{resolution_path.name}.first_entry_resolution_candidate[{index}]", "first-entry resolution lineage, inputs, gates, or score is inconsistent"))
+
+    resolution_public_index_path = PUBLIC_DATA_DIR / "treatments" / "county-first-entry-resolution" / "index.json"
+    resolution_public_index = load_json(resolution_public_index_path)
+    resolution_public_candidates: list[dict[str, Any]] = []
+    if (
+        resolution_public_index.get("partition_count") != 51
+        or resolution_public_index.get("record_count") != 217
+        or resolution_public_index.get("initial_tranche_count") != 24
+        or len(resolution_public_index.get("partitions", [])) != 51
+    ):
+        issues.append(Issue("public_data_validation", resolution_public_index_path.name, "first-entry resolution public index counts are inconsistent"))
+    for partition in resolution_public_index.get("partitions", []):
+        partition_path = (PUBLIC_DATA_DIR / "treatments" / partition.get("path", "")).resolve()
+        if not partition_path.is_relative_to(PUBLIC_DATA_DIR) or not partition_path.is_file():
+            issues.append(Issue("public_data_validation", resolution_public_index_path.name, "first-entry resolution partition is missing or outside public data"))
+            continue
+        payload = partition_path.read_bytes()
+        records = json.loads(payload)
+        if (
+            partition.get("byte_size") != len(payload)
+            or partition.get("sha256") != hashlib.sha256(payload).hexdigest()
+            or partition.get("record_count") != len(records)
+            or any(record.get("state_abbr") != partition.get("state_abbr") for record in records)
+        ):
+            issues.append(Issue("public_data_validation", partition_path.name, "first-entry resolution partition metadata or state scope is inconsistent"))
+        resolution_public_candidates.extend(records)
+    if {
+        record.get("county_fips"): record for record in resolution_public_candidates
+    } != {
+        record.get("county_fips"): record for record in resolution_candidates
+    }:
+        issues.append(Issue("public_data_validation", resolution_public_index_path.name, "public first-entry resolution partitions must match the governed registry"))
+    resolution_public_tranche_path = PUBLIC_DATA_DIR / "treatments" / "county-first-entry-resolution" / "initial-tranche.json"
+    if load_json(resolution_public_tranche_path) != resolution_initial:
+        issues.append(Issue("public_data_validation", resolution_public_tranche_path.name, "public first-entry resolution tranche must match governed records"))
+
+    resolution_report_path = DATA_DIR / "silver" / "treatments" / "county-first-entry-resolution-priority-v1.processing-report.json"
+    resolution_report = load_json(resolution_report_path)
+    if (
+        resolution_report.get("predecessor_candidate_count") != 217
+        or resolution_report.get("resolution_candidate_count") != 217
+        or resolution_report.get("initial_tranche_count") != 24
+        or resolution_report.get("national_backlog_count") != 193
+        or resolution_report.get("resolution_track_counts") != {"establish_anchor": 45, "promote_predecessor": 59, "resolve_existing_anchor": 113}
+        or resolution_report.get("model_gate_counts") != {"both_passed": 49, "not_both_passed": 168}
+        or resolution_report.get("priority_tier_counts") != {"resolution_foundational": 54, "resolution_ready": 73, "resolution_standard": 90}
+        or resolution_report.get("initial_tranche_region_counts") != {"Midwest": 6, "Northeast": 6, "South": 6, "West": 6}
+        or resolution_report.get("initial_tranche_track_counts") != {"promote_predecessor": 6, "resolve_existing_anchor": 18}
+        or resolution_report.get("treatment_effect") != {"treatment_dates_assigned": 0, "eligible_treatment_count_changed": False, "model_run_authorized": False}
+    ):
+        issues.append(Issue("public_data_validation", resolution_report_path.name, "first-entry resolution processing diagnostics are inconsistent"))
+
+    resolution_manifest_path = DATA_DIR / "silver" / "treatments" / "county-first-entry-resolution-priority-v1.manifest.json"
+    resolution_manifest = load_json(resolution_manifest_path)
+    for issue in validator.validate_record(resolution_manifest, schema_paths["dataset_manifest"]):
+        issues.append(Issue("public_data_validation", f"{resolution_manifest_path.name}{issue.path[1:]}", issue.message))
+    resolution_manifest_total = 0
+    for index, part in enumerate(resolution_manifest.get("parts", [])):
+        part_path = (ROOT / part.get("path", "")).resolve()
+        if not part_path.is_relative_to(ROOT) or not part_path.is_file():
+            issues.append(Issue("public_data_validation", f"{resolution_manifest_path.name}.parts[{index}]", "part path is missing or outside the repository"))
+            continue
+        payload = part_path.read_bytes()
+        resolution_manifest_total += part.get("record_count", 0)
+        if part.get("byte_size") != len(payload) or part.get("sha256") != hashlib.sha256(payload).hexdigest():
+            issues.append(Issue("public_data_validation", f"{resolution_manifest_path.name}.parts[{index}]", "byte size or SHA-256 does not match the artifact"))
+    if resolution_manifest.get("record_count") != 460 or resolution_manifest_total != 460:
+        issues.append(Issue("public_data_validation", resolution_manifest_path.name, "first-entry resolution manifest record count is inconsistent"))
 
     coverage_path = PUBLIC_DATA_DIR / "counties" / "facility-source-coverage.json"
     coverage_records = load_json(coverage_path)

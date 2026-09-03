@@ -1,0 +1,114 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dccio.org/schemas/v1/first-entry-resolution-candidate.schema.json",
+  "title": "County first-entry resolution candidate",
+  "type": "object",
+  "required": [
+    "schema_version", "resolution_candidate_id", "first_entry_research_candidate_id",
+    "treatment_definition_id", "county_fips", "county_name", "state_abbr",
+    "census_region", "resolution_track", "candidate_generation",
+    "active_canonical_facility_count", "predecessor_count", "gate_status",
+    "authoritative_source_type_count", "required_finding_status", "remaining_findings",
+    "score_components", "priority_score", "priority_tier", "national_rank",
+    "region_rank", "queue_status", "resolution_status", "resolution_objective",
+    "selection_reasons", "research_summary", "created_at", "updated_at", "record_status"
+  ],
+  "properties": {
+    "schema_version": {"$ref": "common.schema.json#/$defs/schema_version"},
+    "resolution_candidate_id": {"$ref": "common.schema.json#/$defs/entity_id"},
+    "first_entry_research_candidate_id": {"$ref": "common.schema.json#/$defs/entity_id"},
+    "treatment_definition_id": {"$ref": "common.schema.json#/$defs/entity_id"},
+    "prior_adjudication_id": {"$ref": "common.schema.json#/$defs/entity_id"},
+    "prior_candidate_event_evaluation_id": {"$ref": "common.schema.json#/$defs/entity_id"},
+    "county_fips": {"$ref": "common.schema.json#/$defs/county_fips"},
+    "county_name": {"type": "string", "minLength": 1},
+    "state_abbr": {"$ref": "common.schema.json#/$defs/state_abbr"},
+    "census_region": {"type": "string", "enum": ["Northeast", "Midwest", "South", "West"]},
+    "resolution_track": {"type": "string", "enum": ["promote_predecessor", "resolve_existing_anchor", "establish_anchor"]},
+    "candidate_generation": {"type": "integer", "minimum": 1},
+    "candidate_anchor": {
+      "type": "object",
+      "required": ["facility_id", "canonical_name", "when", "source_ids", "derivation", "confidence", "evidence_score"],
+      "properties": {
+        "facility_id": {"$ref": "common.schema.json#/$defs/entity_id"},
+        "canonical_name": {"type": "string", "minLength": 1},
+        "when": {"$ref": "common.schema.json#/$defs/temporal_extent"},
+        "source_ids": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"$ref": "common.schema.json#/$defs/entity_id"}},
+        "derivation": {"type": "string", "enum": ["existing_dated_candidate", "promoted_earlier_finding"]},
+        "confidence": {"type": "number", "minimum": 0, "maximum": 1},
+        "evidence_score": {"type": "number", "minimum": 0, "maximum": 100}
+      },
+      "additionalProperties": false
+    },
+    "active_canonical_facility_count": {"type": "integer", "minimum": 1},
+    "predecessor_count": {"type": "integer", "minimum": 0},
+    "gate_status": {
+      "type": "object",
+      "required": ["evidence_threshold_status", "period_requirement_status", "both_model_gates_pass", "available_pre_periods", "available_post_periods"],
+      "properties": {
+        "evidence_threshold_status": {"type": "string", "enum": ["passed", "failed", "not_evaluated"]},
+        "period_requirement_status": {"type": "string", "enum": ["passed", "failed", "not_evaluated"]},
+        "both_model_gates_pass": {"type": "boolean"},
+        "available_pre_periods": {"type": "integer", "minimum": 0, "maximum": 24},
+        "available_post_periods": {"type": "integer", "minimum": 0, "maximum": 24}
+      },
+      "additionalProperties": false
+    },
+    "authoritative_source_type_count": {"type": "integer", "minimum": 0},
+    "required_finding_status": {
+      "type": "object",
+      "required": ["earliest_dated_operational_event", "exact_facility_identity_for_earliest_event", "county_inventory_completeness", "documented_search_for_earlier_operations"],
+      "properties": {
+        "earliest_dated_operational_event": {"$ref": "#/$defs/finding_status"},
+        "exact_facility_identity_for_earliest_event": {"$ref": "#/$defs/finding_status"},
+        "county_inventory_completeness": {"$ref": "#/$defs/finding_status"},
+        "documented_search_for_earlier_operations": {"$ref": "#/$defs/finding_status"}
+      },
+      "additionalProperties": false
+    },
+    "remaining_findings": {"type": "array", "uniqueItems": true, "items": {"type": "string", "enum": ["earliest_dated_operational_event", "exact_facility_identity_for_earliest_event", "county_inventory_completeness", "documented_search_for_earlier_operations"]}},
+    "score_components": {
+      "type": "object",
+      "required": ["model_gate_readiness", "predecessor_promotability", "inventory_audit_feasibility", "anchor_evidence_quality", "authoritative_source_diversity", "required_finding_closure"],
+      "properties": {
+        "model_gate_readiness": {"$ref": "#/$defs/score"},
+        "predecessor_promotability": {"$ref": "#/$defs/score"},
+        "inventory_audit_feasibility": {"$ref": "#/$defs/score"},
+        "anchor_evidence_quality": {"$ref": "#/$defs/score"},
+        "authoritative_source_diversity": {"$ref": "#/$defs/score"},
+        "required_finding_closure": {"$ref": "#/$defs/score"}
+      },
+      "additionalProperties": false
+    },
+    "priority_score": {"$ref": "#/$defs/score"},
+    "priority_tier": {"type": "string", "enum": ["resolution_ready", "resolution_standard", "resolution_foundational"]},
+    "national_rank": {"type": "integer", "minimum": 1},
+    "region_rank": {"type": "integer", "minimum": 1},
+    "queue_status": {"type": "string", "enum": ["initial_tranche", "national_backlog"]},
+    "initial_tranche_rank": {"type": "integer", "minimum": 1, "maximum": 24},
+    "resolution_status": {"type": "string", "enum": ["queued", "in_research", "evidence_collected", "needs_review", "verified", "blocked"]},
+    "resolution_objective": {"type": "string", "const": "verify_county_first_operational_entry"},
+    "selection_reasons": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+    "research_summary": {"type": "string", "minLength": 1},
+    "created_at": {"$ref": "common.schema.json#/$defs/timestamp"},
+    "updated_at": {"$ref": "common.schema.json#/$defs/timestamp"},
+    "record_status": {"type": "string", "enum": ["active", "provisional", "superseded", "withdrawn"]}
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"queue_status": {"const": "initial_tranche"}}, "required": ["queue_status"]},
+      "then": {"required": ["initial_tranche_rank"]},
+      "else": {"not": {"required": ["initial_tranche_rank"]}}
+    },
+    {
+      "if": {"properties": {"resolution_track": {"enum": ["promote_predecessor", "resolve_existing_anchor"]}}, "required": ["resolution_track"]},
+      "then": {"required": ["candidate_anchor", "prior_adjudication_id", "prior_candidate_event_evaluation_id"]},
+      "else": {"not": {"anyOf": [{"required": ["candidate_anchor"]}, {"required": ["prior_adjudication_id"]}, {"required": ["prior_candidate_event_evaluation_id"]}]}}
+    }
+  ],
+  "$defs": {
+    "score": {"type": "number", "minimum": 0, "maximum": 100},
+    "finding_status": {"type": "string", "enum": ["resolved", "partial", "unresolved"]}
+  },
+  "additionalProperties": false
+}
