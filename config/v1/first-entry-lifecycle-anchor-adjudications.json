@@ -2,9 +2,9 @@
   "schema_version": "1.0.0",
   "artifact_type": "first_entry_lifecycle_anchor_adjudications",
   "artifact_version": "2026.09.02",
-  "generated_at": "2026-09-03T16:00:00Z",
+  "generated_at": "2026-09-03T17:00:00Z",
   "record_schema": "https://dccio.org/schemas/v1/national-lifecycle-evidence-adjudication.schema.json",
-  "record_count": 167,
+  "record_count": 175,
   "records": [
     {
       "schema_version": "1.0.0",
@@ -6287,6 +6287,302 @@
           "source_id": "src_google_dallas_cloud_region_20220607",
           "confidence": 0.92,
           "notes": "Operational no later than the Dallas Cloud region launch; local government later confirms the Midlothian facility is fully operational."
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_3617653b978b49f2377e",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.98,
+      "rationale": "The exact mapped 6900 South Peoria Street footprint is the former zColo facility now operated as DataBank DEN2. DataBank's February 2, 2022 acquisition release identifies the address, states that the property currently housed DEN2, and describes it as an existing data center.",
+      "evidence": [
+        {
+          "source_id": "src_osm_arapahoe_way_292506452_20260903",
+          "attribute_path": "facility.identity",
+          "raw_value": { "type": "text", "value": "6900 South Peoria Street, Centennial; zColo by Zayo; telecom=data_center" },
+          "finding": "The map record supplies an exact address and predecessor facility name matching DataBank DEN2.",
+          "disposition": "supporting",
+          "claim_confidence": 0.96
+        },
+        {
+          "source_id": "src_databank_den2_purchase_20220202",
+          "attribute_path": "event.operational",
+          "raw_value": { "type": "date", "value": { "date": "2022-02-02", "precision": "day" } },
+          "finding": "DataBank states that the exact Centennial property currently housed its DEN2 data center.",
+          "disposition": "supporting",
+          "claim_confidence": 0.98
+        }
+      ],
+      "events": [
+        {
+          "event_type": "operational",
+          "when": { "date": "2022-02-02", "precision": "day" },
+          "source_id": "src_databank_den2_purchase_20220202",
+          "confidence": 0.98,
+          "notes": "Operational no later than DataBank's exact-address acquisition announcement; this is not asserted as the opening date."
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_5a918133015e4e67dbc0",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.98,
+      "rationale": "The mapped 6872 Watson Court building is explicitly identified as OVH US East Vint Hill. OVHcloud's May 17, 2023 fifth-anniversary release confirms the opening and continued operation of its Vint Hill data center in 2018.",
+      "evidence": [
+        {
+          "source_id": "src_osm_fauquier_way_225745958_20260903",
+          "attribute_path": "facility.identity",
+          "raw_value": { "type": "text", "value": "6872 Watson Court; OVH US East Vint Hill; telecom=data_center" },
+          "finding": "The exact-address map record resolves the building to OVHcloud's Vint Hill facility.",
+          "disposition": "supporting",
+          "claim_confidence": 0.98
+        },
+        {
+          "source_id": "src_ovhcloud_vint_hill_anniversary_20230517",
+          "attribute_path": "event.operational",
+          "raw_value": { "type": "date", "value": { "year": 2018, "precision": "year" } },
+          "finding": "OVHcloud's five-year anniversary release dates the opening of the Vint Hill and Hillsboro U.S. data centers to 2018 and confirms continued operation.",
+          "disposition": "supporting",
+          "claim_confidence": 0.98
+        }
+      ],
+      "events": [
+        {
+          "event_type": "operational",
+          "when": { "year": 2018, "precision": "year" },
+          "source_id": "src_ovhcloud_vint_hill_anniversary_20230517",
+          "confidence": 0.98,
+          "notes": "OVHcloud dates the U.S. data-center openings to 2018; no month or day is asserted."
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_b05130ac785ece3ce5a5",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.97,
+      "rationale": "The mapped Austin building is Data Foundry's Austin 1/Data Foundry 00 facility. The operator's history says this Austin disaster-recovery data center opened in 2003, and its facility directory continues to describe Austin 1 as an operating carrier-neutral data center.",
+      "evidence": [
+        {
+          "source_id": "src_osm_travis_way_379205427_20260903",
+          "attribute_path": "facility.identity",
+          "raw_value": { "type": "text", "value": "Data Foundry Austin 1 Data Center footprint" },
+          "finding": "The mapped footprint identifies the Austin 1 facility associated with Data Foundry 00.",
+          "disposition": "supporting",
+          "claim_confidence": 0.96
+        },
+        {
+          "source_id": "src_datafoundry_history_current_2026",
+          "attribute_path": "event.operational",
+          "raw_value": { "type": "date", "value": { "year": 2003, "precision": "year" } },
+          "finding": "Data Foundry's operator history records the Data Foundry 00 grand opening in Austin in 2003.",
+          "disposition": "supporting",
+          "claim_confidence": 0.97
+        }
+      ],
+      "events": [
+        {
+          "event_type": "operational",
+          "when": { "year": 2003, "precision": "year" },
+          "source_id": "src_datafoundry_history_current_2026",
+          "confidence": 0.97,
+          "notes": "The operator dates the Austin 1/Data Foundry 00 opening to 2003; no month or day is asserted."
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_2ed704add3428c657eb1",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.98,
+      "rationale": "The exact 1623 Farnam Street footprint is mapped as the Omaha carrier hotel and data hub. The operator's June 16, 2020 expansion announcement describes existing customers, operational data-center floors, colocation capacity, and an active interconnection facility.",
+      "evidence": [
+        {
+          "source_id": "src_osm_douglas_ne_way_818167571_20260903",
+          "attribute_path": "facility.identity",
+          "raw_value": { "type": "text", "value": "1623 Farnam Street; 1623 Farnam; former Nebraska Data Center; telecom=data_center" },
+          "finding": "The mapped building resolves to the exact Omaha carrier-hotel address.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        },
+        {
+          "source_id": "src_1623_farnam_expansion_20200616",
+          "attribute_path": "event.operational",
+          "raw_value": { "type": "date", "value": { "date": "2020-06-16", "precision": "day" } },
+          "finding": "The operator describes an existing, customer-serving edge data center undergoing expansion at the exact address.",
+          "disposition": "supporting",
+          "claim_confidence": 0.98
+        }
+      ],
+      "events": [
+        {
+          "event_type": "operational",
+          "when": { "date": "2020-06-16", "precision": "day" },
+          "source_id": "src_1623_farnam_expansion_20200616",
+          "confidence": 0.98,
+          "notes": "Operational no later than the dated expansion announcement; this is not asserted as the opening date."
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_2452b83abed7e0230271",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.97,
+      "rationale": "The selected 660,258-square-foot footprint is mapped as a Meta data-center building within the Stanton Springs campus. Meta's April 3, 2026 facility-specific publication describes ongoing operations, water service, and operational water efficiency at the Newton County site.",
+      "evidence": [
+        {
+          "source_id": "src_osm_newton_ga_way_1054387471_20260903",
+          "attribute_path": "facility.identity",
+          "raw_value": { "type": "text", "value": "Meta Stanton Springs Data Center building; operator=Meta; telecom=data_center" },
+          "finding": "The exact campus footprint is linked to Meta's Stanton Springs facility.",
+          "disposition": "supporting",
+          "claim_confidence": 0.96
+        },
+        {
+          "source_id": "src_meta_stanton_operating_20260403",
+          "attribute_path": "event.operational",
+          "raw_value": { "type": "date", "value": { "date": "2026-04-03", "precision": "day" } },
+          "finding": "Meta's facility-specific publication documents ongoing operations at Stanton Springs.",
+          "disposition": "supporting",
+          "claim_confidence": 0.97
+        }
+      ],
+      "events": [
+        {
+          "event_type": "operational",
+          "when": { "date": "2026-04-03", "precision": "day" },
+          "source_id": "src_meta_stanton_operating_20260403",
+          "confidence": 0.97,
+          "notes": "Operational no later than Meta's dated facility publication; this is not asserted as the opening date."
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_7308770e0ea94c039909",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.99,
+      "rationale": "The selected building is one of the mapped Meta data-center footprints in DeKalb. Illinois' November 29, 2023 opening release states that the DeKalb campus was fully operational and serving traffic that day.",
+      "evidence": [
+        {
+          "source_id": "src_osm_dekalb_il_way_1312792611_20260903",
+          "attribute_path": "facility.identity",
+          "raw_value": { "type": "text", "value": "DeKalb data-center building; operator=Meta; telecom=data_center" },
+          "finding": "The mapped footprint resolves to Meta's DeKalb campus.",
+          "disposition": "supporting",
+          "claim_confidence": 0.98
+        },
+        {
+          "source_id": "src_illinois_meta_dekalb_opening_20231129",
+          "attribute_path": "event.operational",
+          "raw_value": { "type": "date", "value": { "date": "2023-11-29", "precision": "day" } },
+          "finding": "The State of Illinois records the campus opening, full operation, and traffic service on November 29, 2023.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        }
+      ],
+      "events": [
+        {
+          "event_type": "operational",
+          "when": { "date": "2023-11-29", "precision": "day" },
+          "source_id": "src_illinois_meta_dekalb_opening_20231129",
+          "confidence": 0.99,
+          "notes": "The state opening release explicitly states that the facility was fully operational and serving traffic."
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_d1a8c5cbf93640be203b",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.96,
+      "rationale": "The selected 564,402-square-foot Maiden footprint is a data-center building whose map history identifies it as Apple Data Center. Catawba County's FY2012 financial report describes Apple's constructed 500,000-square-foot facility as housing its iCloud services and already supporting permanent operational employment.",
+      "evidence": [
+        {
+          "source_id": "src_osm_catawba_way_116005354_20260903",
+          "attribute_path": "facility.identity",
+          "raw_value": { "type": "text", "value": "Maiden building tagged building=data_center; revision history formerly names Apple Data Center" },
+          "finding": "The mapped footprint and revision history identify the large Maiden building as part of Apple's data-center campus.",
+          "disposition": "supporting",
+          "claim_confidence": 0.93
+        },
+        {
+          "source_id": "src_catawba_cafr_apple_operational_2012",
+          "attribute_path": "event.operational",
+          "raw_value": { "type": "date", "value": { "year": 2012, "precision": "year" } },
+          "finding": "The county reports the 500,000-square-foot Apple facility as constructed, housing iCloud services, and supporting phase-one operational employment by FY2012.",
+          "disposition": "supporting",
+          "claim_confidence": 0.96
+        }
+      ],
+      "events": [
+        {
+          "event_type": "operational",
+          "when": { "year": 2012, "precision": "year" },
+          "source_id": "src_catawba_cafr_apple_operational_2012",
+          "confidence": 0.96,
+          "notes": "Operational no later than the county's FY2012 report; this is not asserted as the opening year."
+        }
+      ],
+      "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0",
+      "national_priority_id": "lnp_im3_30b0acb9fe606d3453bd",
+      "resolution_state": "resolved",
+      "decision": "accept",
+      "resolved_current_status": "operational",
+      "confidence": 0.99,
+      "rationale": "The exact mapped State Farm Data Center footprint matches the 24400 West Valley Parkway Olathe property. A February 3, 2025 SEC filing identifies it as a 193,953-square-foot data center built for and fully occupied by State Farm, with the lease commencing November 3, 2016.",
+      "evidence": [
+        {
+          "source_id": "src_osm_johnson_ks_way_598261190_20260903",
+          "attribute_path": "facility.identity",
+          "raw_value": { "type": "text", "value": "24400 West Valley Parkway; State Farm Data Center" },
+          "finding": "The mapped address and facility name match the SEC-described Olathe data center.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        },
+        {
+          "source_id": "src_sec_state_farm_olathe_20250203",
+          "attribute_path": "event.operational",
+          "raw_value": { "type": "date", "value": { "date": "2016-11-03", "precision": "day" } },
+          "finding": "The SEC filing reports the exact facility was built in 2016, its State Farm lease commenced November 3, 2016, and it remained fully occupied in 2025.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
+        }
+      ],
+      "events": [
+        {
+          "event_type": "operational",
+          "when": { "date": "2016-11-03", "precision": "day" },
+          "source_id": "src_sec_state_farm_olathe_20250203",
+          "confidence": 0.99,
+          "notes": "Operational no later than the exact tenant lease commencement; the filing confirms continued full occupancy."
         }
       ],
       "record_status": "active"

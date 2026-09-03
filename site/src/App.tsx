@@ -386,7 +386,7 @@ export default function App() {
       </header>
 
       <div className="fixture-banner" role="status">
-        <strong>One hundred forty-seven dated anchors have been adjudicated across 192 researched counties.</strong> Earlier operations reject 52 candidate anchors; 95 counties remain unresolved as county first entry. The latest tranche adds dated anchors in Calumet WI, Racine WI, and Ellis TX; Wichita TX remains in development, and Angelina TX, Columbia WI, Dunn WI, and Campbell WY remain provisional. Complete historical inventories remain unresolved, 25 counties remain queued, zero treatment counties are eligible, and no impact model has been run.
+        <strong>One hundred fifty-five dated anchors have been adjudicated across 200 researched counties.</strong> Earlier operations reject 54 candidate anchors; 101 counties remain unresolved as county first entry. The latest tranche dates operational facilities in Arapahoe CO, Fauquier VA, Travis TX, Douglas NE, Newton GA, DeKalb IL, Catawba NC, and Johnson KS; the Travis and Douglas candidates are rejected as county first entry because earlier operations are documented. Complete historical inventories remain unresolved, 17 counties remain queued, zero treatment counties are eligible, and no impact model has been run.
       </div>
 
       <main className="workspace">
