@@ -115,9 +115,9 @@ The successor registry carries all 217 completed research records forward withou
 their adjudications. It separates 59 documented predecessor promotions, 113 retained dated
 anchors, and 45 counties that still need an anchor. Its first 24-county tranche is balanced
 six per Census region and no more than two per state, with JSON-only state partitions for
-static hosting. The first eight candidates now have append-only successor adjudications:
-three candidate anchors are rejected by documented earlier county operations and five remain
-unresolved. The other 209 successor records remain queued; no treatment date was assigned.
+static hosting. All 24 initial-tranche candidates now have append-only successor adjudications:
+nine candidate anchors are rejected by documented earlier county operations and fifteen remain
+unresolved. The other 193 successor records remain queued; no treatment date was assigned.
 
 Rebuild the conservative IM3 identity-resolution layer from those JSON artifacts:
 

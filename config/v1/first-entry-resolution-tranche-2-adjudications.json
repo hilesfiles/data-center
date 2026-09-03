@@ -1,0 +1,270 @@
+{
+  "schema_version": "1.0.0",
+  "artifact_type": "first_entry_resolution_tranche_adjudications",
+  "generated_at": "2026-09-03T09:00:00Z",
+  "record_count": 16,
+  "records": [
+    {
+      "schema_version": "1.0.0", "resolution_adjudication_id": "fra_25009_essex_generation_1", "resolution_candidate_id": "frc_443a187bb902503dc3c6", "prior_adjudication_id": "fea_25009_tierpoint_andover_20191031_unresolved", "treatment_definition_id": "trt_first_entry_v1",
+      "county_fips": "25009", "county_name": "Essex County", "state_abbr": "MA", "candidate_generation": 1,
+      "reviewed_anchor": {"facility_id": "fac_im3_building_00211832626", "canonical_name": "TierPoint", "when": {"date": "2019-10-31", "precision": "day"}, "source_ids": ["src_im3_atlas_20260209", "src_maine_tierpoint_soc_bridge_20191031", "src_tierpoint_boston_andover_current_2026"], "derivation": "existing_dated_candidate", "confidence": 0.96, "evidence_score": 94.08},
+      "anchor_disposition": "rejected_for_earlier_operation", "resolution_state": "candidate_rejected_first_entry", "decision": "reject_candidate_as_first_entry", "county_first_entry_verified": false, "inventory_completeness_status": "not_established", "earlier_operations_search_status": "documented_incomplete",
+      "search_rounds": [
+        {"round": 1, "name": "local_official_record", "status": "completed_evidence_found", "source_ids": ["src_mass_gdit_andover_data_center_20140523"], "finding": "A Commonwealth contract describes the exact 15 Shattuck Road facility as acquired by Windstream in 2010 and subsequently upgraded."},
+        {"round": 2, "name": "operator_and_corporate_history", "status": "completed_evidence_found", "source_ids": ["src_tierpoint_boston_andover_current_2026"], "finding": "TierPoint corroborates the current Andover facility identity and address."},
+        {"round": 3, "name": "contemporaneous_discovery", "status": "completed_no_qualifying_evidence", "source_ids": ["src_maine_tierpoint_soc_bridge_20191031"], "finding": "The later assurance record supports continuity but does not establish an opening date."},
+        {"round": 4, "name": "county_inventory_closure", "status": "completed_evidence_found", "source_ids": ["src_mass_gdit_andover_data_center_20140523"], "finding": "The earlier exact-facility operation rejects 2019, while the county-wide historical inventory remains incomplete."}
+      ],
+      "required_finding_status": {"earliest_dated_operational_event": "partial", "exact_facility_identity_for_earliest_event": "resolved", "county_inventory_completeness": "unresolved", "documented_search_for_earlier_operations": "resolved"},
+      "earlier_operational_findings": [{"facility_id": "fac_im3_building_00211832626", "canonical_name": "TierPoint / Windstream Andover data center", "temporal_relation": "operational_no_later_than", "when": {"year": 2010, "precision": "year"}, "source_ids": ["src_mass_gdit_andover_data_center_20140523"], "finding": "The state contract records Windstream's 2010 acquisition of the operating Andover data center, nine years before the candidate date.", "confidence": 0.98}],
+      "source_ids": ["src_im3_atlas_20260209", "src_maine_tierpoint_soc_bridge_20191031", "src_tierpoint_boston_andover_current_2026", "src_mass_gdit_andover_data_center_20140523"], "authoritative_source_types": ["regulatory_filing", "operator_release", "state_record"],
+      "rationale": "The 2019 candidate is rejected because an official Massachusetts contract places the same Andover facility in Windstream's portfolio by 2010. The evidence does not close the entire Essex County inventory, so no replacement treatment date is assigned.",
+      "created_at": "2026-09-03T09:00:00Z", "updated_at": "2026-09-03T09:00:00Z", "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0", "resolution_adjudication_id": "fra_39041_delaware_generation_1", "resolution_candidate_id": "frc_4d393c536724438c2f7a", "prior_adjudication_id": "fea_39041_citi_greif_200808_unresolved", "treatment_definition_id": "trt_first_entry_v1",
+      "county_fips": "39041", "county_name": "Delaware County", "state_abbr": "OH", "candidate_generation": 1,
+      "reviewed_anchor": {"facility_id": "fac_im3_building_01319724559", "canonical_name": "Unnamed IM3 building 01319724559", "when": {"date": "2008-08-01", "precision": "month"}, "source_ids": ["src_delaware_county_comp_plan_citi_20260323", "src_delaware_oh_citi_project_20060619", "src_im3_atlas_20260209", "src_sdoh_paulus_citi_operating_20130930"], "derivation": "existing_dated_candidate", "confidence": 0.98, "evidence_score": 91.24},
+      "anchor_disposition": "retained_unresolved", "resolution_state": "unresolved", "decision": "continue_research", "county_first_entry_verified": false, "inventory_completeness_status": "not_established", "earlier_operations_search_status": "documented_incomplete",
+      "search_rounds": [
+        {"round": 1, "name": "local_official_record", "status": "completed_evidence_found", "source_ids": ["src_delaware_oh_citi_project_20060619", "src_delaware_county_comp_plan_citi_20260323"], "finding": "County records establish the Citi project and its later operating role at Greif Parkway."},
+        {"round": 2, "name": "operator_and_corporate_history", "status": "completed_evidence_found", "source_ids": ["src_owu_catalog_computer_center_20052006"], "finding": "Ohio Wesleyan's catalog establishes an institutional Computer Center by 2005 but does not identify a qualifying dedicated facility or building."},
+        {"round": 3, "name": "contemporaneous_discovery", "status": "completed_evidence_found", "source_ids": ["src_sdoh_paulus_citi_operating_20130930"], "finding": "The court record corroborates operation of Citi's Delaware County facility but not county first entry."},
+        {"round": 4, "name": "county_inventory_closure", "status": "completed_no_qualifying_evidence", "source_ids": ["src_owu_catalog_computer_center_20052006"], "finding": "The university lead remains unresolved and the institutional, government, telecom, utility, healthcare, financial, and enterprise inventory is incomplete."}
+      ],
+      "required_finding_status": {"earliest_dated_operational_event": "partial", "exact_facility_identity_for_earliest_event": "resolved", "county_inventory_completeness": "unresolved", "documented_search_for_earlier_operations": "resolved"}, "earlier_operational_findings": [],
+      "source_ids": ["src_delaware_county_comp_plan_citi_20260323", "src_delaware_oh_citi_project_20060619", "src_im3_atlas_20260209", "src_sdoh_paulus_citi_operating_20130930", "src_owu_catalog_computer_center_20052006"], "authoritative_source_types": ["local_government_record", "court_record", "operator_release"],
+      "rationale": "The August 2008 Citi anchor remains the earliest qualifying exact-facility operation established. Ohio Wesleyan's earlier Computer Center is a material lead, but the reviewed record does not establish a qualifying dedicated facility, its exact identity, or a complete county inventory. No treatment date is assigned.",
+      "created_at": "2026-09-03T09:00:00Z", "updated_at": "2026-09-03T09:00:00Z", "record_status": "provisional"
+    },
+    {
+      "schema_version": "1.0.0", "resolution_adjudication_id": "fra_36087_rockland_generation_2", "resolution_candidate_id": "frc_5a12d72411cb9c6ab863", "prior_adjudication_id": "fea_36087_bloomberg_20181023_rejected", "treatment_definition_id": "trt_first_entry_v1",
+      "county_fips": "36087", "county_name": "Rockland County", "state_abbr": "NY", "candidate_generation": 2,
+      "reviewed_anchor": {"facility_id": "fac_verizon_orangeburg_historic", "canonical_name": "Verizon Orangeburg data center at 2000 Corporate Drive", "when": {"date": "2011-03-15", "precision": "day"}, "source_ids": ["src_dcd_verizon_orangeburg_sale_2021", "src_nysenate_verizon_orangeburg_existing_20110315"], "derivation": "promoted_earlier_finding", "confidence": 0.94, "evidence_score": 89.3},
+      "anchor_disposition": "retained_unresolved", "resolution_state": "unresolved", "decision": "continue_research", "county_first_entry_verified": false, "inventory_completeness_status": "not_established", "earlier_operations_search_status": "documented_incomplete",
+      "search_rounds": [
+        {"round": 1, "name": "local_official_record", "status": "completed_evidence_found", "source_ids": ["src_orangetown_verizon_nynex_20080409"], "finding": "The 2008 planning decision establishes Verizon/NYNEX ownership at 2000 and 40 Corporate Drive but does not identify an operating data center."},
+        {"round": 2, "name": "operator_and_corporate_history", "status": "completed_evidence_found", "source_ids": ["src_dcd_verizon_orangeburg_sale_2021"], "finding": "Later facility reporting corroborates the exact Orangeburg data-center identity and continuity."},
+        {"round": 3, "name": "contemporaneous_discovery", "status": "completed_evidence_found", "source_ids": ["src_nysenate_verizon_orangeburg_existing_20110315"], "finding": "The legislative record establishes the Verizon data center as existing by March 2011."},
+        {"round": 4, "name": "county_inventory_closure", "status": "completed_no_qualifying_evidence", "source_ids": ["src_orangetown_verizon_nynex_20080409"], "finding": "Earlier site ownership is not operational evidence, and the county-wide historical inventory remains incomplete."}
+      ],
+      "required_finding_status": {"earliest_dated_operational_event": "partial", "exact_facility_identity_for_earliest_event": "resolved", "county_inventory_completeness": "unresolved", "documented_search_for_earlier_operations": "resolved"}, "earlier_operational_findings": [],
+      "source_ids": ["src_dcd_verizon_orangeburg_sale_2021", "src_nysenate_verizon_orangeburg_existing_20110315", "src_orangetown_verizon_nynex_20080409"], "authoritative_source_types": ["legislative_record", "planning_record"],
+      "rationale": "The promoted March 2011 Verizon anchor remains the earliest qualifying Rockland County operation established. A 2008 planning record confirms site ownership but not data-center operation, and the county inventory remains incomplete; therefore the candidate stays unresolved.",
+      "created_at": "2026-09-03T09:00:00Z", "updated_at": "2026-09-03T09:00:00Z", "record_status": "provisional"
+    },
+    {
+      "schema_version": "1.0.0", "resolution_adjudication_id": "fra_12095_orange_generation_1", "resolution_candidate_id": "frc_889fe889b17bd162fe15", "prior_adjudication_id": "fea_12095_hostdime_orlando_20210624_unresolved", "treatment_definition_id": "trt_first_entry_v1",
+      "county_fips": "12095", "county_name": "Orange County", "state_abbr": "FL", "candidate_generation": 1,
+      "reviewed_anchor": {"facility_id": "fac_im3_building_00609126465", "canonical_name": "Unnamed IM3 building 00609126465", "when": {"date": "2021-06-24", "precision": "day"}, "source_ids": ["src_efoam_services_current_2026", "src_hostdime_orlando_existing_20210624", "src_im3_atlas_20260209"], "derivation": "existing_dated_candidate", "confidence": 0.99, "evidence_score": 98.01},
+      "anchor_disposition": "rejected_for_earlier_operation", "resolution_state": "candidate_rejected_first_entry", "decision": "reject_candidate_as_first_entry", "county_first_entry_verified": false, "inventory_completeness_status": "not_established", "earlier_operations_search_status": "documented_incomplete",
+      "search_rounds": [
+        {"round": 1, "name": "local_official_record", "status": "completed_evidence_found", "source_ids": ["src_orange_county_horizon_west_20120406"], "finding": "Orange County's retrospective records a parcel classified for telecom/data-center use in its September 2009 property-use analysis."},
+        {"round": 2, "name": "operator_and_corporate_history", "status": "completed_evidence_found", "source_ids": ["src_hostdime_orlando_existing_20210624"], "finding": "HostDime resolves the 2021 anchor as an existing Orlando gateway data center."},
+        {"round": 3, "name": "contemporaneous_discovery", "status": "completed_no_qualifying_evidence", "source_ids": ["src_efoam_services_current_2026"], "finding": "The reviewed commercial-services page does not establish a first operational date."},
+        {"round": 4, "name": "county_inventory_closure", "status": "completed_evidence_found", "source_ids": ["src_orange_county_horizon_west_20120406"], "finding": "The 2009 county property-use record rejects the 2021 candidate, but it does not resolve the earlier operator or exact facility and does not complete the county inventory."}
+      ],
+      "required_finding_status": {"earliest_dated_operational_event": "partial", "exact_facility_identity_for_earliest_event": "partial", "county_inventory_completeness": "unresolved", "documented_search_for_earlier_operations": "resolved"},
+      "earlier_operational_findings": [{"facility_id": "fac_orange_county_telecom_data_center_2009", "canonical_name": "Orange County telecom/data-center property-use record", "temporal_relation": "operational_no_later_than", "when": {"year": 2009, "precision": "year"}, "source_ids": ["src_orange_county_horizon_west_20120406"], "finding": "The county's property-use analysis identifies telecom/data-center use in 2009, twelve years before the candidate anchor; exact facility identity remains unresolved.", "confidence": 0.92}],
+      "source_ids": ["src_efoam_services_current_2026", "src_hostdime_orlando_existing_20210624", "src_im3_atlas_20260209", "src_orange_county_horizon_west_20120406"], "authoritative_source_types": ["operator_release", "local_government_record"],
+      "rationale": "The 2021 candidate is rejected because Orange County's own retrospective records telecom/data-center property use by 2009. Because that earlier record does not identify a specific operating facility and the county inventory remains incomplete, no replacement treatment date is assigned.",
+      "created_at": "2026-09-03T09:00:00Z", "updated_at": "2026-09-03T09:00:00Z", "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0", "resolution_adjudication_id": "fra_29095_jackson_generation_1", "resolution_candidate_id": "frc_d0f8af8a86826301d826", "prior_adjudication_id": "fea_29095_netrality_1102_grand_20200427_unresolved", "treatment_definition_id": "trt_first_entry_v1",
+      "county_fips": "29095", "county_name": "Jackson County", "state_abbr": "MO", "candidate_generation": 1,
+      "reviewed_anchor": {"facility_id": "fac_im3_point_09922928085", "canonical_name": "Netrality Data Centers", "when": {"date": "2020-04-27", "precision": "day"}, "source_ids": ["src_im3_atlas_20260209", "src_netrality_1102_grand_upgrade_20200427"], "derivation": "existing_dated_candidate", "confidence": 0.99, "evidence_score": 98.01},
+      "anchor_disposition": "rejected_for_earlier_operation", "resolution_state": "candidate_rejected_first_entry", "decision": "reject_candidate_as_first_entry", "county_first_entry_verified": false, "inventory_completeness_status": "not_established", "earlier_operations_search_status": "documented_incomplete",
+      "search_rounds": [
+        {"round": 1, "name": "local_official_record", "status": "completed_evidence_found", "source_ids": ["src_mo_oa_1102_grand_network_hub_2020"], "finding": "Missouri's network program identifies 1102 Grand as a regional Ethernet hub."},
+        {"round": 2, "name": "operator_and_corporate_history", "status": "completed_evidence_found", "source_ids": ["src_netrality_1102_grand_upgrade_20200427", "src_netrality_1102_grand_history_20260430"], "finding": "Netrality states that it acquired the operating, network-rich building in September 2012 and subsequently transformed and upgraded it."},
+        {"round": 3, "name": "contemporaneous_discovery", "status": "completed_no_qualifying_evidence", "source_ids": [], "finding": "No reviewed contemporaneous record established an exact earlier formal data-center opening date."},
+        {"round": 4, "name": "county_inventory_closure", "status": "completed_evidence_found", "source_ids": ["src_netrality_1102_grand_upgrade_20200427"], "finding": "The exact facility predates the 2020 candidate, but the broader county inventory remains incomplete."}
+      ],
+      "required_finding_status": {"earliest_dated_operational_event": "partial", "exact_facility_identity_for_earliest_event": "resolved", "county_inventory_completeness": "unresolved", "documented_search_for_earlier_operations": "resolved"},
+      "earlier_operational_findings": [{"facility_id": "fac_im3_point_09922928085", "canonical_name": "1102 Grand carrier hotel", "temporal_relation": "operational_no_later_than", "when": {"year": 2012, "precision": "year"}, "source_ids": ["src_netrality_1102_grand_upgrade_20200427", "src_netrality_1102_grand_history_20260430"], "finding": "Netrality's records place the same network and data-center asset in its portfolio by September 2012, before the 2020 candidate date.", "confidence": 0.94}],
+      "source_ids": ["src_im3_atlas_20260209", "src_netrality_1102_grand_upgrade_20200427", "src_netrality_1102_grand_history_20260430", "src_mo_oa_1102_grand_network_hub_2020"], "authoritative_source_types": ["operator_release", "state_record"],
+      "rationale": "The 2020 candidate is rejected because operator records establish the same 1102 Grand facility as an acquired interconnection asset by September 2012. The county-wide inventory and original formal data-center opening remain unresolved, so no replacement treatment date is assigned.",
+      "created_at": "2026-09-03T09:00:00Z", "updated_at": "2026-09-03T09:00:00Z", "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0", "resolution_adjudication_id": "fra_21111_jefferson_generation_1", "resolution_candidate_id": "frc_2aec6f1a8115db0f8192", "prior_adjudication_id": "fea_21111_flexential_louisville_east_20170109_unresolved", "treatment_definition_id": "trt_first_entry_v1",
+      "county_fips": "21111", "county_name": "Jefferson County", "state_abbr": "KY", "candidate_generation": 1,
+      "reviewed_anchor": {"facility_id": "fac_im3_building_00329551673", "canonical_name": "Flexential Louisville - East", "when": {"date": "2017-01-09", "precision": "day"}, "source_ids": ["src_flexential_louisville_acquisition_20170109", "src_im3_atlas_20260209"], "derivation": "existing_dated_candidate", "confidence": 0.98, "evidence_score": 96.04},
+      "anchor_disposition": "rejected_for_earlier_operation", "resolution_state": "candidate_rejected_first_entry", "decision": "reject_candidate_as_first_entry", "county_first_entry_verified": false, "inventory_completeness_status": "not_established", "earlier_operations_search_status": "documented_incomplete",
+      "search_rounds": [
+        {"round": 1, "name": "local_official_record", "status": "completed_evidence_found", "source_ids": ["src_louisville_fy2005_data_center_staff"], "finding": "Louisville Metro's FY2004-05 budget documents dedicated data-center staffing, corroborating earlier local data-center operations."},
+        {"round": 2, "name": "operator_and_corporate_history", "status": "completed_evidence_found", "source_ids": ["src_flexential_louisville_acquisition_20170109"], "finding": "Flexential establishes the 2017 acquisition anchor and later facility continuity."},
+        {"round": 3, "name": "contemporaneous_discovery", "status": "completed_evidence_found", "source_ids": ["src_dck_xodiax_peak10_louisville_20050925"], "finding": "Contemporaneous trade reporting states that Peak 10 acquired Louisville provider Xodiax in November 2004 and expanded its Louisville facility."},
+        {"round": 4, "name": "county_inventory_closure", "status": "completed_evidence_found", "source_ids": ["src_louisville_fy2005_data_center_staff", "src_dck_xodiax_peak10_louisville_20050925"], "finding": "The 2004-era operations reject the 2017 anchor, while exact earlier facility identity and the county inventory remain incomplete."}
+      ],
+      "required_finding_status": {"earliest_dated_operational_event": "partial", "exact_facility_identity_for_earliest_event": "partial", "county_inventory_completeness": "unresolved", "documented_search_for_earlier_operations": "resolved"},
+      "earlier_operational_findings": [{"facility_id": "fac_xodiax_peak10_louisville_2004", "canonical_name": "Xodiax / Peak 10 Louisville data center", "temporal_relation": "operational_no_later_than", "when": {"year": 2004, "precision": "year"}, "source_ids": ["src_dck_xodiax_peak10_louisville_20050925"], "finding": "The 2005 acquisition history places an operating Xodiax Louisville data-center facility in the county by November 2004.", "confidence": 0.94}],
+      "source_ids": ["src_flexential_louisville_acquisition_20170109", "src_im3_atlas_20260209", "src_dck_xodiax_peak10_louisville_20050925", "src_louisville_fy2005_data_center_staff"], "authoritative_source_types": ["operator_release", "local_government_record"],
+      "rationale": "The 2017 candidate cannot be county first entry because Xodiax/Peak 10 and Louisville Metro records establish qualifying local data-center operations by 2004-05. Exact facility lineage and inventory completeness remain unresolved, so no replacement treatment date is assigned.",
+      "created_at": "2026-09-03T09:00:00Z", "updated_at": "2026-09-03T09:00:00Z", "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0", "resolution_adjudication_id": "fra_53053_pierce_generation_1", "resolution_candidate_id": "frc_be26aef1aa10fd13e5d2", "prior_adjudication_id": "fea_53053_centeris_sh1_20160803_unresolved", "treatment_definition_id": "trt_first_entry_v1",
+      "county_fips": "53053", "county_name": "Pierce County", "state_abbr": "WA", "candidate_generation": 1,
+      "reviewed_anchor": {"facility_id": "fac_im3_building_00634638463", "canonical_name": "Centeris SH1 Colocation", "when": {"date": "2016-08-03", "precision": "day"}, "source_ids": ["src_im3_atlas_20260209", "src_puyallup_centeris_sh1_open_house_20160803"], "derivation": "existing_dated_candidate", "confidence": 0.96, "evidence_score": 94.08},
+      "anchor_disposition": "rejected_for_earlier_operation", "resolution_state": "candidate_rejected_first_entry", "decision": "reject_candidate_as_first_entry", "county_first_entry_verified": false, "inventory_completeness_status": "not_established", "earlier_operations_search_status": "documented_incomplete",
+      "search_rounds": [
+        {"round": 1, "name": "local_official_record", "status": "completed_evidence_found", "source_ids": ["src_puyallup_centeris_sh1_open_house_20160803"], "finding": "Puyallup's record identifies the Centeris SH1 facility and its 2016 public open house."},
+        {"round": 2, "name": "operator_and_corporate_history", "status": "completed_no_qualifying_evidence", "source_ids": [], "finding": "No additional operator history established an operation earlier than the Benaroya opening record."},
+        {"round": 3, "name": "contemporaneous_discovery", "status": "completed_evidence_found", "source_ids": ["src_dcd_benaroya_puyallup_20100720", "src_wa_jlarc_benaroya_puyallup_open_2026"], "finding": "Contemporaneous reporting placed the Puyallup Benaroya data center online in August 2010, and the legislative review independently records its 2011 opening year."},
+        {"round": 4, "name": "county_inventory_closure", "status": "completed_evidence_found", "source_ids": ["src_wa_jlarc_benaroya_puyallup_open_2026"], "finding": "The earlier same-campus operation rejects 2016, but the historical county inventory remains incomplete."}
+      ],
+      "required_finding_status": {"earliest_dated_operational_event": "partial", "exact_facility_identity_for_earliest_event": "resolved", "county_inventory_completeness": "unresolved", "documented_search_for_earlier_operations": "resolved"},
+      "earlier_operational_findings": [{"facility_id": "fac_im3_building_00634638463", "canonical_name": "Benaroya South Hill / Centeris SH1 data center", "temporal_relation": "operational_no_later_than", "when": {"date": "2010-08-01", "precision": "month"}, "source_ids": ["src_dcd_benaroya_puyallup_20100720", "src_wa_jlarc_benaroya_puyallup_open_2026"], "finding": "The exact Puyallup facility came online in the Benaroya era approximately six years before the 2016 candidate date.", "confidence": 0.96}],
+      "source_ids": ["src_im3_atlas_20260209", "src_puyallup_centeris_sh1_open_house_20160803", "src_wa_jlarc_benaroya_puyallup_open_2026", "src_dcd_benaroya_puyallup_20100720"], "authoritative_source_types": ["local_government_record", "legislative_record"],
+      "rationale": "The 2016 candidate is rejected because the same Puyallup facility was already operating in the Benaroya era by approximately August 2010. The broader Pierce County inventory is incomplete, so no replacement treatment date is assigned.",
+      "created_at": "2026-09-03T09:00:00Z", "updated_at": "2026-09-03T09:00:00Z", "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0", "resolution_adjudication_id": "fra_41047_marion_generation_1", "resolution_candidate_id": "frc_773560345e4bd23ab6e4", "prior_adjudication_id": "fea_41047_oregon_state_dc_200807_unresolved", "treatment_definition_id": "trt_first_entry_v1",
+      "county_fips": "41047", "county_name": "Marion County", "state_abbr": "OR", "candidate_generation": 1,
+      "reviewed_anchor": {"facility_id": "fac_im3_building_00733721782", "canonical_name": "Oregon State Data Center", "when": {"date": "2008-07-01", "precision": "month"}, "source_ids": ["src_im3_atlas_20260209", "src_oregon_sos_state_dc_audit_201811"], "derivation": "existing_dated_candidate", "confidence": 0.99, "evidence_score": 93.11},
+      "anchor_disposition": "retained_unresolved", "resolution_state": "unresolved", "decision": "continue_research", "county_first_entry_verified": false, "inventory_completeness_status": "not_established", "earlier_operations_search_status": "documented_incomplete",
+      "search_rounds": [
+        {"round": 1, "name": "local_official_record", "status": "completed_evidence_found", "source_ids": ["src_oregon_odot_salem_new_dc_plan_20050202"], "finding": "A 2005 state transportation planning record describes a planned new data center in Salem's Lottery Building but does not establish operation."},
+        {"round": 2, "name": "operator_and_corporate_history", "status": "completed_no_qualifying_evidence", "source_ids": [], "finding": "No operator history resolved an earlier qualifying exact-facility operation."},
+        {"round": 3, "name": "contemporaneous_discovery", "status": "completed_evidence_found", "source_ids": ["src_oregon_sos_state_dc_audit_201811"], "finding": "The state audit establishes agency migration into the Salem State Data Center by July 2008 and notes predecessor agency data centers."},
+        {"round": 4, "name": "county_inventory_closure", "status": "completed_no_qualifying_evidence", "source_ids": ["src_oregon_sos_state_dc_audit_201811", "src_oregon_odot_salem_new_dc_plan_20050202"], "finding": "The locations and qualification of predecessor state facilities and the wider Marion County inventory remain unresolved."}
+      ],
+      "required_finding_status": {"earliest_dated_operational_event": "partial", "exact_facility_identity_for_earliest_event": "resolved", "county_inventory_completeness": "unresolved", "documented_search_for_earlier_operations": "resolved"}, "earlier_operational_findings": [],
+      "source_ids": ["src_im3_atlas_20260209", "src_oregon_sos_state_dc_audit_201811", "src_oregon_odot_salem_new_dc_plan_20050202"], "authoritative_source_types": ["state_record", "planning_record"],
+      "rationale": "The July 2008 State Data Center anchor remains the earliest qualifying exact-facility operation established. A 2005 planned facility and the audit's predecessor references require further resolution, and the county inventory is incomplete; therefore no treatment date is assigned.",
+      "created_at": "2026-09-03T09:00:00Z", "updated_at": "2026-09-03T09:00:00Z", "record_status": "provisional"
+    },
+    {
+      "schema_version": "1.0.0", "resolution_adjudication_id": "fra_12031_duval_generation_1", "resolution_candidate_id": "frc_31ee59b46deb84c8518e", "prior_adjudication_id": "fea_12031_cologix_jax1_201309_unresolved", "treatment_definition_id": "trt_first_entry_v1",
+      "county_fips": "12031", "county_name": "Duval County", "state_abbr": "FL", "candidate_generation": 1,
+      "reviewed_anchor": {"facility_id": "fac_im3_building_00497151852", "canonical_name": "Cologix Jacksonville JAX1", "when": {"date": "2013-09-01", "precision": "month"}, "source_ids": ["src_cologix_jax1_upgrade_20151029", "src_im3_atlas_20260209"], "derivation": "existing_dated_candidate", "confidence": 0.99, "evidence_score": 92.17},
+      "anchor_disposition": "retained_unresolved", "resolution_state": "unresolved", "decision": "continue_research", "county_first_entry_verified": false, "inventory_completeness_status": "not_established", "earlier_operations_search_status": "documented_incomplete",
+      "search_rounds": [
+        {"round": 1, "name": "local_official_record", "status": "completed_evidence_found", "source_ids": ["src_florida_edr_data_center_inventory_20160120"], "finding": "Florida's legislative impact materials enumerate several Duval County data centers and properties, confirming that the current mapped inventory is incomplete."},
+        {"round": 2, "name": "operator_and_corporate_history", "status": "completed_evidence_found", "source_ids": ["src_cologix_jax1_upgrade_20151029"], "finding": "Cologix identifies JAX1 as an acquired existing facility and documents subsequent upgrades."},
+        {"round": 3, "name": "contemporaneous_discovery", "status": "completed_no_qualifying_evidence", "source_ids": [], "finding": "The reviewed record did not establish a qualifying Duval County operation before September 2013 with an operational date and exact identity."},
+        {"round": 4, "name": "county_inventory_closure", "status": "completed_no_qualifying_evidence", "source_ids": ["src_florida_edr_data_center_inventory_20160120"], "finding": "The state inventory identifies unresolved facilities and building histories, preventing county-inventory closure."}
+      ],
+      "required_finding_status": {"earliest_dated_operational_event": "partial", "exact_facility_identity_for_earliest_event": "resolved", "county_inventory_completeness": "unresolved", "documented_search_for_earlier_operations": "resolved"}, "earlier_operational_findings": [],
+      "source_ids": ["src_cologix_jax1_upgrade_20151029", "src_im3_atlas_20260209", "src_florida_edr_data_center_inventory_20160120"], "authoritative_source_types": ["operator_release", "legislative_record"],
+      "rationale": "The September 2013 JAX1 acquisition remains the earliest qualifying exact-facility operation established, but Florida's own materials enumerate several additional Duval data centers whose operational chronologies are unresolved. The county inventory is incomplete and no treatment date is assigned.",
+      "created_at": "2026-09-03T09:00:00Z", "updated_at": "2026-09-03T09:00:00Z", "record_status": "provisional"
+    },
+    {
+      "schema_version": "1.0.0", "resolution_adjudication_id": "fra_48121_denton_generation_1", "resolution_candidate_id": "frc_e565256f192b49a40e7b", "prior_adjudication_id": "fea_48121_citi_20160809_unresolved", "treatment_definition_id": "trt_first_entry_v1",
+      "county_fips": "48121", "county_name": "Denton County", "state_abbr": "TX", "candidate_generation": 1,
+      "reviewed_anchor": {"facility_id": "fac_im3_building_00507673418", "canonical_name": "CITIGROUP TECHNOLOGY INC", "when": {"date": "2016-08-09", "precision": "day"}, "source_ids": ["src_im3_atlas_20260209", "src_tdlr_citi_southwest_kiosk_20160809"], "derivation": "existing_dated_candidate", "confidence": 0.94, "evidence_score": 92.12},
+      "anchor_disposition": "retained_unresolved", "resolution_state": "unresolved", "decision": "continue_research", "county_first_entry_verified": false, "inventory_completeness_status": "not_established", "earlier_operations_search_status": "documented_incomplete",
+      "search_rounds": [
+        {"round": 1, "name": "local_official_record", "status": "completed_evidence_found", "source_ids": ["src_tdlr_citi_southwest_kiosk_20160809"], "finding": "Texas's project registry identifies the exact 931 Litsey Road facility and describes alterations to an existing secured entry kiosk."},
+        {"round": 2, "name": "operator_and_corporate_history", "status": "completed_evidence_found", "source_ids": ["src_citi_roanoke_renewable_power_20170919"], "finding": "Citi independently identifies its Roanoke data center as a key operating facility in 2017."},
+        {"round": 3, "name": "contemporaneous_discovery", "status": "completed_no_qualifying_evidence", "source_ids": [], "finding": "No reviewed contemporaneous source established an earlier qualifying Denton County operation."},
+        {"round": 4, "name": "county_inventory_closure", "status": "completed_no_qualifying_evidence", "source_ids": ["src_tdlr_citi_southwest_kiosk_20160809", "src_citi_roanoke_renewable_power_20170919"], "finding": "The exact anchor is corroborated, but the government, institutional, telecom, utility, healthcare, financial, and enterprise inventory remains incomplete."}
+      ],
+      "required_finding_status": {"earliest_dated_operational_event": "partial", "exact_facility_identity_for_earliest_event": "resolved", "county_inventory_completeness": "unresolved", "documented_search_for_earlier_operations": "resolved"}, "earlier_operational_findings": [],
+      "source_ids": ["src_im3_atlas_20260209", "src_tdlr_citi_southwest_kiosk_20160809", "src_citi_roanoke_renewable_power_20170919"], "authoritative_source_types": ["state_record", "operator_release"],
+      "rationale": "The August 2016 Citi Southwest anchor remains the earliest qualifying exact-facility operation established. State and operator sources corroborate it, but they do not constitute a complete Denton County inventory or exclude earlier private and institutional operations.",
+      "created_at": "2026-09-03T09:00:00Z", "updated_at": "2026-09-03T09:00:00Z", "record_status": "provisional"
+    },
+    {
+      "schema_version": "1.0.0", "resolution_adjudication_id": "fra_33015_rockingham_generation_1", "resolution_candidate_id": "frc_1925360b532b053a1318", "prior_adjudication_id": "fea_33015_exeter_20090630_unresolved", "treatment_definition_id": "trt_first_entry_v1",
+      "county_fips": "33015", "county_name": "Rockingham County", "state_abbr": "NH", "candidate_generation": 1,
+      "reviewed_anchor": {"facility_id": "fac_im3_building_00589070714", "canonical_name": "Information Technology Data Center", "when": {"date": "2009-06-30", "precision": "day"}, "source_ids": ["src_exeter_campus_map_2025", "src_exeter_ebook_2008_2009", "src_exeter_ebook_2024", "src_oxford_bayring_merger_20150901", "src_portsmouth_pease_npdes_20190621"], "derivation": "existing_dated_candidate", "confidence": 0.93, "evidence_score": 89.28},
+      "anchor_disposition": "retained_unresolved", "resolution_state": "unresolved", "decision": "continue_research", "county_first_entry_verified": false, "inventory_completeness_status": "not_established", "earlier_operations_search_status": "documented_incomplete",
+      "search_rounds": [
+        {"round": 1, "name": "local_official_record", "status": "completed_evidence_found", "source_ids": ["src_portsmouth_pease_npdes_20190621"], "finding": "Portsmouth's record resolves distinct BayRing properties but does not date the start of data-center operation."},
+        {"round": 2, "name": "operator_and_corporate_history", "status": "completed_evidence_found", "source_ids": ["src_exeter_campus_map_2025", "src_oxford_bayring_merger_20150901"], "finding": "Operator records corroborate the Exeter institutional facility and two later-documented Portsmouth data centers."},
+        {"round": 3, "name": "contemporaneous_discovery", "status": "completed_evidence_found", "source_ids": ["src_exeter_ebook_2008_2009"], "finding": "Phillips Exeter's 2008-09 handbook establishes its Data Center as operating by June 2009."},
+        {"round": 4, "name": "county_inventory_closure", "status": "completed_no_qualifying_evidence", "source_ids": ["src_oxford_bayring_merger_20150901", "src_portsmouth_pease_npdes_20190621"], "finding": "BayRing's two Portsmouth facilities still lack opening chronologies, preventing inventory closure and exclusion of earlier operations."}
+      ],
+      "required_finding_status": {"earliest_dated_operational_event": "partial", "exact_facility_identity_for_earliest_event": "resolved", "county_inventory_completeness": "unresolved", "documented_search_for_earlier_operations": "resolved"}, "earlier_operational_findings": [],
+      "source_ids": ["src_exeter_campus_map_2025", "src_exeter_ebook_2008_2009", "src_exeter_ebook_2024", "src_oxford_bayring_merger_20150901", "src_portsmouth_pease_npdes_20190621"], "authoritative_source_types": ["operator_release", "local_government_record"],
+      "rationale": "Phillips Exeter's June 2009 institutional Data Center remains the earliest qualifying exact-facility operation established. Two Portsmouth data centers are documented later but lack opening dates, and the broader county inventory remains incomplete; the candidate therefore remains unresolved.",
+      "created_at": "2026-09-03T09:00:00Z", "updated_at": "2026-09-03T09:00:00Z", "record_status": "provisional"
+    },
+    {
+      "schema_version": "1.0.0", "resolution_adjudication_id": "fra_41013_crook_generation_2", "resolution_candidate_id": "frc_e75d1f03c2b20b3dde89", "prior_adjudication_id": "fea_41013_apple_prineville_201205_rejected", "treatment_definition_id": "trt_first_entry_v1",
+      "county_fips": "41013", "county_name": "Crook County", "state_abbr": "OR", "candidate_generation": 2,
+      "reviewed_anchor": {"facility_id": "fac_meta_prineville_datacenter_historic", "canonical_name": "Facebook Prineville data center", "when": {"date": "2011-04-07", "precision": "day"}, "source_ids": ["src_meta_prineville_open_compute_20110407"], "derivation": "promoted_earlier_finding", "confidence": 0.99, "evidence_score": 98.01},
+      "anchor_disposition": "retained_unresolved", "resolution_state": "unresolved", "decision": "continue_research", "county_first_entry_verified": false, "inventory_completeness_status": "not_established", "earlier_operations_search_status": "documented_incomplete",
+      "search_rounds": [
+        {"round": 1, "name": "local_official_record", "status": "completed_evidence_found", "source_ids": ["src_prineville_airport_facebook_built_2011"], "finding": "The city airport narrative records the Facebook data center as built in 2011 and separately describes later Apple development."},
+        {"round": 2, "name": "operator_and_corporate_history", "status": "completed_evidence_found", "source_ids": ["src_meta_prineville_open_compute_20110407"], "finding": "Meta's contemporaneous announcement identifies the Prineville facility as its first dedicated data center and operational on April 7, 2011."},
+        {"round": 3, "name": "contemporaneous_discovery", "status": "completed_no_qualifying_evidence", "source_ids": [], "finding": "No reviewed source established another qualifying Crook County operation before April 2011."},
+        {"round": 4, "name": "county_inventory_closure", "status": "completed_no_qualifying_evidence", "source_ids": ["src_prineville_airport_facebook_built_2011"], "finding": "The reviewed economic-development record is not a complete historical inventory of government, utility, telecom, healthcare, financial, or enterprise facilities."}
+      ],
+      "required_finding_status": {"earliest_dated_operational_event": "partial", "exact_facility_identity_for_earliest_event": "resolved", "county_inventory_completeness": "unresolved", "documented_search_for_earlier_operations": "resolved"}, "earlier_operational_findings": [],
+      "source_ids": ["src_meta_prineville_open_compute_20110407", "src_prineville_airport_facebook_built_2011"], "authoritative_source_types": ["operator_release", "local_government_record"],
+      "rationale": "The promoted April 2011 Meta anchor remains the earliest qualifying exact-facility operation established. No earlier qualifying operation was found, but the evidence does not close every historical facility class in Crook County, so first entry remains unresolved.",
+      "created_at": "2026-09-03T09:00:00Z", "updated_at": "2026-09-03T09:00:00Z", "record_status": "provisional"
+    },
+    {
+      "schema_version": "1.0.0", "resolution_adjudication_id": "fra_37161_rutherford_generation_1", "resolution_candidate_id": "frc_ea358961e4a3e7ae6f90", "prior_adjudication_id": "fea_37161_meta_forest_city_20120419_unresolved", "treatment_definition_id": "trt_first_entry_v1",
+      "county_fips": "37161", "county_name": "Rutherford County", "state_abbr": "NC", "candidate_generation": 1,
+      "reviewed_anchor": {"facility_id": "fac_im3_building_00460089167", "canonical_name": "Meta Forest City datacenter", "when": {"date": "2012-04-19", "precision": "day"}, "source_ids": ["src_im3_atlas_20260209", "src_meta_forest_city_open_20120419"], "derivation": "existing_dated_candidate", "confidence": 0.99, "evidence_score": 98.01},
+      "anchor_disposition": "rejected_for_earlier_operation", "resolution_state": "candidate_rejected_first_entry", "decision": "reject_candidate_as_first_entry", "county_first_entry_verified": false, "inventory_completeness_status": "not_established", "earlier_operations_search_status": "documented_incomplete",
+      "search_rounds": [
+        {"round": 1, "name": "local_official_record", "status": "completed_evidence_found", "source_ids": ["src_ncleg_western_data_center_2009"], "finding": "A North Carolina legislative presentation identifies a new state-of-the-art state data center in Rutherford County before Meta's facility opened."},
+        {"round": 2, "name": "operator_and_corporate_history", "status": "completed_evidence_found", "source_ids": ["src_meta_forest_city_open_20120419"], "finding": "Meta establishes that its Forest City facility opened and began serving live traffic on April 19, 2012."},
+        {"round": 3, "name": "contemporaneous_discovery", "status": "completed_evidence_found", "source_ids": ["src_ncleg_western_data_center_2009"], "finding": "The official state IT overview documents the Western Data Center in Rutherford County by 2009, corroborating the reported 2008 opening."},
+        {"round": 4, "name": "county_inventory_closure", "status": "completed_evidence_found", "source_ids": ["src_ncleg_western_data_center_2009"], "finding": "The state facility rejects Meta as first entry, while its exact commissioning date and the complete county inventory remain unresolved."}
+      ],
+      "required_finding_status": {"earliest_dated_operational_event": "partial", "exact_facility_identity_for_earliest_event": "partial", "county_inventory_completeness": "unresolved", "documented_search_for_earlier_operations": "resolved"},
+      "earlier_operational_findings": [{"facility_id": "fac_nc_western_data_center_rutherford", "canonical_name": "North Carolina Western Data Center", "temporal_relation": "operational_no_later_than", "when": {"year": 2009, "precision": "year"}, "source_ids": ["src_ncleg_western_data_center_2009"], "finding": "North Carolina's official IT presentation lists the Western Data Center as an operating state facility in Rutherford County before Meta's 2012 opening.", "confidence": 0.98}],
+      "source_ids": ["src_im3_atlas_20260209", "src_meta_forest_city_open_20120419", "src_ncleg_western_data_center_2009"], "authoritative_source_types": ["operator_release", "legislative_record"],
+      "rationale": "The April 2012 Meta candidate is rejected because North Carolina's official IT record places the Western Data Center in Rutherford County by 2009. The exact earlier commissioning date and complete county inventory remain unresolved, so no replacement treatment date is assigned.",
+      "created_at": "2026-09-03T09:00:00Z", "updated_at": "2026-09-03T09:00:00Z", "record_status": "active"
+    },
+    {
+      "schema_version": "1.0.0", "resolution_adjudication_id": "fra_34039_union_generation_1", "resolution_candidate_id": "frc_42f1062575ec171d7dad", "prior_adjudication_id": "fea_34039_barclays_20200619_unresolved", "treatment_definition_id": "trt_first_entry_v1",
+      "county_fips": "34039", "county_name": "Union County", "state_abbr": "NJ", "candidate_generation": 1,
+      "reviewed_anchor": {"facility_id": "fac_im3_building_00015884451", "canonical_name": "Barclays Datacenter", "when": {"date": "2020-06-19", "precision": "day"}, "source_ids": ["src_im3_atlas_20260209", "src_njbpu_barclays_cranford_20211117"], "derivation": "existing_dated_candidate", "confidence": 0.99, "evidence_score": 98.01},
+      "anchor_disposition": "retained_unresolved", "resolution_state": "unresolved", "decision": "continue_research", "county_first_entry_verified": false, "inventory_completeness_status": "not_established", "earlier_operations_search_status": "documented_incomplete",
+      "search_rounds": [
+        {"round": 1, "name": "local_official_record", "status": "completed_evidence_found", "source_ids": ["src_cranford_barclays_data_center_20180718"], "finding": "Cranford planning minutes discuss Barclays and data-center building requirements in 2018 but do not conclusively identify an operating qualifying facility."},
+        {"round": 2, "name": "operator_and_corporate_history", "status": "completed_no_qualifying_evidence", "source_ids": [], "finding": "No reviewed operator history established a qualifying Union County operation before the candidate date."},
+        {"round": 3, "name": "contemporaneous_discovery", "status": "completed_evidence_found", "source_ids": ["src_njbpu_barclays_cranford_20211117"], "finding": "The regulatory filing establishes the exact Cranford facility as operating no later than its June 2020 efficiency application."},
+        {"round": 4, "name": "county_inventory_closure", "status": "completed_no_qualifying_evidence", "source_ids": ["src_cranford_barclays_data_center_20180718", "src_njbpu_barclays_cranford_20211117"], "finding": "The 2018 planning reference is insufficient to move the operational anchor, and the wider county inventory remains incomplete."}
+      ],
+      "required_finding_status": {"earliest_dated_operational_event": "partial", "exact_facility_identity_for_earliest_event": "resolved", "county_inventory_completeness": "unresolved", "documented_search_for_earlier_operations": "resolved"}, "earlier_operational_findings": [],
+      "source_ids": ["src_im3_atlas_20260209", "src_njbpu_barclays_cranford_20211117", "src_cranford_barclays_data_center_20180718"], "authoritative_source_types": ["regulatory_filing", "planning_record"],
+      "rationale": "The June 2020 Barclays anchor remains the earliest qualifying exact-facility operation established. Cranford's 2018 planning record is a lead but does not conclusively establish operation, and the county inventory remains incomplete; no treatment date is assigned.",
+      "created_at": "2026-09-03T09:00:00Z", "updated_at": "2026-09-03T09:00:00Z", "record_status": "provisional"
+    },
+    {
+      "schema_version": "1.0.0", "resolution_adjudication_id": "fra_32029_storey_generation_1", "resolution_candidate_id": "frc_eafd17ca55af44c1f057", "prior_adjudication_id": "fea_32029_switch_citadel_20170215_unresolved", "treatment_definition_id": "trt_first_entry_v1",
+      "county_fips": "32029", "county_name": "Storey County", "state_abbr": "NV", "candidate_generation": 1,
+      "reviewed_anchor": {"facility_id": "fac_im3_point_06685432442", "canonical_name": "Switch Tahoe Reno - The Citadel Campus", "when": {"date": "2017-02-15", "precision": "day"}, "source_ids": ["src_im3_atlas_20260209", "src_switch_tahoe_reno_open_20170215"], "derivation": "existing_dated_candidate", "confidence": 0.99, "evidence_score": 98.01},
+      "anchor_disposition": "retained_unresolved", "resolution_state": "unresolved", "decision": "continue_research", "county_first_entry_verified": false, "inventory_completeness_status": "not_established", "earlier_operations_search_status": "documented_incomplete",
+      "search_rounds": [
+        {"round": 1, "name": "local_official_record", "status": "completed_evidence_found", "source_ids": ["src_reno_airport_citadel_open_2017"], "finding": "The regional airport authority records the Storey County Citadel Campus as opened in 2017."},
+        {"round": 2, "name": "operator_and_corporate_history", "status": "completed_evidence_found", "source_ids": ["src_switch_tahoe_reno_open_20170215"], "finding": "Switch establishes the exact campus opening on February 15, 2017."},
+        {"round": 3, "name": "contemporaneous_discovery", "status": "completed_no_qualifying_evidence", "source_ids": [], "finding": "Earlier Northern Nevada data-center records reviewed were outside Storey County or described only proposed construction."},
+        {"round": 4, "name": "county_inventory_closure", "status": "completed_no_qualifying_evidence", "source_ids": ["src_reno_airport_citadel_open_2017"], "finding": "The sparse historical industrial, government, telecom, and enterprise inventory prevents definitive county first-entry verification."}
+      ],
+      "required_finding_status": {"earliest_dated_operational_event": "partial", "exact_facility_identity_for_earliest_event": "resolved", "county_inventory_completeness": "unresolved", "documented_search_for_earlier_operations": "resolved"}, "earlier_operational_findings": [],
+      "source_ids": ["src_im3_atlas_20260209", "src_switch_tahoe_reno_open_20170215", "src_reno_airport_citadel_open_2017"], "authoritative_source_types": ["operator_release", "local_government_record"],
+      "rationale": "The February 2017 Citadel opening remains the earliest qualifying exact-facility operation established in Storey County. No earlier qualifying operation was found, but the historical county inventory is not sufficiently complete for verification.",
+      "created_at": "2026-09-03T09:00:00Z", "updated_at": "2026-09-03T09:00:00Z", "record_status": "provisional"
+    },
+    {
+      "schema_version": "1.0.0", "resolution_adjudication_id": "fra_06055_napa_generation_1", "resolution_candidate_id": "frc_6411155298b511526ee8", "prior_adjudication_id": "fea_06055_kaiser_20111024_unresolved", "treatment_definition_id": "trt_first_entry_v1",
+      "county_fips": "06055", "county_name": "Napa County", "state_abbr": "CA", "candidate_generation": 1,
+      "reviewed_anchor": {"facility_id": "fac_im3_building_00464371693", "canonical_name": "Kaiser Data Center", "when": {"date": "2011-10-24", "precision": "day"}, "source_ids": ["src_im3_atlas_20260209", "src_kaiser_napa_green_it_20111024"], "derivation": "existing_dated_candidate", "confidence": 0.98, "evidence_score": 96.04},
+      "anchor_disposition": "retained_unresolved", "resolution_state": "unresolved", "decision": "continue_research", "county_first_entry_verified": false, "inventory_completeness_status": "not_established", "earlier_operations_search_status": "documented_incomplete",
+      "search_rounds": [
+        {"round": 1, "name": "local_official_record", "status": "completed_evidence_found", "source_ids": ["src_napa_second_data_center_plan_20120124"], "finding": "Napa County's January 2012 agenda letter states that a second county data center was being planned, implying an existing primary facility without resolving its location, class, or opening date."},
+        {"round": 2, "name": "operator_and_corporate_history", "status": "completed_evidence_found", "source_ids": ["src_kaiser_napa_green_it_20111024"], "finding": "Kaiser establishes the exact Napa data center as operating by October 2011."},
+        {"round": 3, "name": "contemporaneous_discovery", "status": "completed_no_qualifying_evidence", "source_ids": [], "finding": "No reviewed contemporaneous record established an earlier qualifying facility with a resolved identity and date."},
+        {"round": 4, "name": "county_inventory_closure", "status": "completed_no_qualifying_evidence", "source_ids": ["src_napa_second_data_center_plan_20120124"], "finding": "The unidentified primary county facility and other institutional, telecom, healthcare, utility, financial, and enterprise possibilities prevent inventory closure."}
+      ],
+      "required_finding_status": {"earliest_dated_operational_event": "partial", "exact_facility_identity_for_earliest_event": "resolved", "county_inventory_completeness": "unresolved", "documented_search_for_earlier_operations": "resolved"}, "earlier_operational_findings": [],
+      "source_ids": ["src_im3_atlas_20260209", "src_kaiser_napa_green_it_20111024", "src_napa_second_data_center_plan_20120124"], "authoritative_source_types": ["operator_release", "local_government_record"],
+      "rationale": "Kaiser's October 2011 facility remains the earliest qualifying exact-facility operation established. Napa County's reference to a primary county data center is a material unresolved lead, and the complete historical inventory is not established; no treatment date is assigned.",
+      "created_at": "2026-09-03T09:00:00Z", "updated_at": "2026-09-03T09:00:00Z", "record_status": "provisional"
+    }
+  ]
+}

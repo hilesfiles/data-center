@@ -401,23 +401,38 @@ def build() -> dict[str, Any]:
         record["queue_status"] = "initial_tranche"
         record["initial_tranche_rank"] = initial_rank
 
-    resolution_adjudication_path = (
-        ROOT / "config" / "v1" / "first-entry-resolution-tranche-1-adjudications.json"
+    resolution_adjudication_paths = sorted(
+        (ROOT / "config" / "v1").glob("first-entry-resolution-tranche-*-adjudications.json")
     )
-    resolution_adjudication_document = load_json(resolution_adjudication_path)
-    resolution_adjudications = resolution_adjudication_document["records"]
-    if resolution_adjudication_document.get("record_count") != len(resolution_adjudications):
-        raise RuntimeError("Resolution adjudication record count is inconsistent")
+    if not resolution_adjudication_paths:
+        raise RuntimeError("No resolution adjudication tranches are configured")
+    resolution_adjudications: list[dict[str, Any]] = []
+    for resolution_adjudication_path in resolution_adjudication_paths:
+        tranche_document = load_json(resolution_adjudication_path)
+        tranche_records = tranche_document["records"]
+        if tranche_document.get("record_count") != len(tranche_records):
+            raise RuntimeError(
+                f"Resolution adjudication record count is inconsistent in {resolution_adjudication_path.name}"
+            )
+        resolution_adjudications.extend(tranche_records)
+    resolution_adjudication_document = {
+        "schema_version": "1.0.0",
+        "artifact_type": "first_entry_resolution_adjudications",
+        "generated_at": generated_at,
+        "record_count": len(resolution_adjudications),
+        "records": resolution_adjudications,
+    }
     adjudication_by_candidate_id = {
         record["resolution_candidate_id"]: record for record in resolution_adjudications
     }
     if len(adjudication_by_candidate_id) != len(resolution_adjudications):
         raise RuntimeError("Duplicate resolution candidate adjudication")
     expected_adjudicated_ids = {
-        record["resolution_candidate_id"] for record in initial_tranche[:8]
+        record["resolution_candidate_id"]
+        for record in initial_tranche[:len(resolution_adjudications)]
     }
     if set(adjudication_by_candidate_id) != expected_adjudicated_ids:
-        raise RuntimeError("Tranche-one adjudications must cover initial-tranche ranks 1-8")
+        raise RuntimeError("Resolution adjudications must cover a contiguous prefix of the initial tranche")
     candidate_by_id = {record["resolution_candidate_id"]: record for record in candidates}
     for adjudication in resolution_adjudications:
         candidate = candidate_by_id[adjudication["resolution_candidate_id"]]
@@ -487,6 +502,7 @@ def build() -> dict[str, Any]:
         "record_count": len(candidates),
         "initial_tranche_count": len(initial_tranche),
         "adjudication_count": len(resolution_adjudications),
+        "adjudication_tranche_count": len(resolution_adjudication_paths),
         "adjudications_path": "county-first-entry-resolution/adjudications.json",
         "evidence_sources_path": "county-first-entry-resolution/evidence-sources.json",
         "resolution_track_counts": dict(sorted(track_counts.items())),
