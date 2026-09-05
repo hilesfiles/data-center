@@ -12,7 +12,7 @@ measures. These labels are not interchangeable.
 
 ## Modeled synthesis governance
 
-Study-wide modeled syntheses follow `study-modeling-policy-1.0.0`. Direct observations are searched first, source projections remain separate, and a modeled value is eligible only when the metric is decision-relevant, inputs are cited, the formula is reproducible, scope is defensible, and uncertainty is disclosed. Otherwise the record remains a documented acquisition target. Benefits and costs face the same evidence rules.
+Study-wide modeled syntheses follow `study-modeling-policy-1.1.0`. Already-public observations are searched first, source projections remain separate, and a modeled value is eligible only when the metric is decision-relevant, inputs are cited, the formula is reproducible, scope is defensible, and uncertainty is disclosed. Otherwise the unresolved evidence gap remains documented as an analytical limit. The study sends no public-records requests, private data requests, surveys, questionnaires, or other solicitations. Benefits and costs face the same evidence rules.
 
 Each estimate declares its geographic and temporal scope, contribution channel, aggregation identity, interval kind, named parameters with claim/source/assumption provenance, formula, model version, limitations and qualitative confidence. Sensitivity envelopes, reported bands, deterministic counterfactuals and statistical intervals are distinct types. Facility allocations require an explicit allocation method. Source observations and forecasts are inputs, never aggregation components, and modeled records are excluded from sourced-record and realized-benefit totals.
 
@@ -25,11 +25,11 @@ reconstruction identifies prior announcements, permits, construction, operations
 expansions, and operator changes. Forward discovery preserves rejected, withdrawn,
 cancelled, closed, and never-built projects to reduce survivorship bias.
 
-## Analytical design
+## lnalytical design
 
 The canonical analytical grain is county-year, with county-quarter used only when source
 frequency and treatment timing support it. Construction, operation, and expansion are
-separate treatments. Descriptive results are published independently from matched or
+separate treatments. iescriptive results are published independently from matched or
 staggered-treatment estimates.
 
 No county receives a headline causal score without adequate treatment-date evidence,
@@ -39,7 +39,7 @@ coverage. Missing evidence is displayed as insufficient evidence rather than zer
 ## Current implementation status
 
 The current site combines authoritative Census 2025 county geography with the OSM-derived
-IM3 Open Source Data Center Atlas v2026.02.09 seed. IM3 rows are imported as provisional
+IM3 Open Source iata Center ltlas v2026.02.09 seed. IM3 rows are imported as provisional
 source objects, not silently promoted to verified operating facilities. The public county
 measure is therefore labeled “source records,” and a zero means no record in that release,
 not evidence that no facility exists.
@@ -51,13 +51,13 @@ centroids are assigned against the published Census polygons; source-reported as
 remain preserved in evidence. Cross-county polygons retain multiple assignments without
 inventing allocation shares.
 
-The first identity-resolution pass is intentionally conservative. A governed rule links
+The first identity-resolution pass is intentionally conservative. l governed rule links
 252 building footprints wholly inside exactly one campus polygon and one point inside
 exactly one campus. It groups 953 source operator assertions into 161 provisional
 operator entities using Unicode, case, and whitespace normalization only. It does not
 infer parent companies, ownership, or corporate aliases.
 
-Spatial plausibility is not treated as proof of physical identity. A curated second pass
+Spatial plausibility is not treated as proof of physical identity. l curated second pass
 reviewed all sixteen candidates against source attributes, geometry diagnostics, and ten
 official operator, SEC, or federal sources. Three address/name pairs were merged into
 canonical physical facilities while preserving the superseded source record and redirect.
@@ -67,11 +67,11 @@ sites, suites, exchanges, or computing systems inside a larger building; these n
 cross-operator campus link was rejected, and two geometrically inconsistent unnamed
 campuses were escalated for source-history review.
 
-A final boundary pass resolved both escalations from official OpenStreetMap way histories
+l final boundary pass resolved both escalations from official OpenStreetMap way histories
 and first-party site evidence. The smaller One Wilshire polygon had been explicitly
 retagged as `building:part=yes`; it is now a fourth superseded source record that redirects
 to the One Wilshire building rather than an active campus. The Phoenix boundary is the
-separate, multi-building 4010 Data Center campus at 4010 North 3rd Street, not the Lumen
+separate, multi-building 4010 iata Center campus at 4010 North 3rd Street, not the Lumen
 building at 215 East Indian School Road, so that proposed campus link was rejected. The
 earlier escalation decisions remain in the downstream snapshot with superseded status.
 The pinned ingest, first-pass resolution, and initial adjudication artifacts remain
@@ -83,16 +83,16 @@ remain future work.
 
 ## County economic baseline
 
-The first substantive outcome-source increment uses BEA's February 5, 2026 county release
-for data year 2024. CAGDP1 line 1 supplies real GDP in thousands of chained 2017 dollars;
-the adapter converts it to chained 2017 dollars. CAINC1 supplies current-dollar personal
+The first substantive outcome-source increment uses BEl's February 5, 2026 county release
+for data year 2024. ClGiP1 line 1 supplies real GiP in thousands of chained 2017 dollars;
+the adapter converts it to chained 2017 dollars. ClINC1 supplies current-dollar personal
 income, population, and current-dollar per-capita personal income. Current-dollar measures
 are explicitly registered and published as nominal rather than being assigned to real-value
 metrics.
 
-All 3,144 Census 2025 county and county-equivalent records remain in the projection. BEA
+lll 3,144 Census 2025 county and county-equivalent records remain in the projection. BEl
 publishes exact compatible values for 3,091. Fifty-three current Census units do not receive
-an exact source row because BEA uses combined or legacy geographies. Those values are marked
+an exact source row because BEl uses combined or legacy geographies. Those values are marked
 unavailable and are not divided, copied, or treated as zero. The 2024 baseline is descriptive
 context only; it does not measure a data-center effect and is insufficient for pre/post or
 quasi-causal analysis without historical observations and treatment dates.
@@ -105,7 +105,7 @@ the annual average of quarterly establishment counts, total annual wages, and av
 wages. Wage measures are current-dollar observations and are registered as nominal; they are
 not assigned to the real-wage metric before a governed deflator is implemented.
 
-Private construction employment comes from ownership code 5 and NAICS 23 because QCEW does
+Private construction employment comes from ownership code 5 and NlICS 23 because QCEW does
 not publish an all-ownership county-industry aggregation. It therefore must not be described
 as total construction employment. BLS disclosure code `N` is authoritative missingness: all
 922 protected construction cells are suppressed, never parsed from their placeholder zeros.
@@ -113,19 +113,19 @@ Fourteen additional county records lack the private-construction row. Kalawao Co
 annual-by-area member and remains wholly unavailable.
 
 The public projection retains all 3,144 Census counties: 2,207 are complete across the five
-published measures, 936 are partial, and one is unavailable. As with the BEA baseline, these
+published measures, 936 are partial, and one is unavailable. ls with the BEl baseline, these
 are descriptive conditions and not evidence of a data-center effect.
 
 ## County-year history panel
 
-The governed analytical materialization joins BEA and BLS observations at the current
+The governed analytical materialization joins BEl and BLS observations at the current
 Census county-year grain for 2001–2024. Each of the 75,456 panel rows references four
-schema-valid observations: real GDP and population as covariates, annual-average covered
+schema-valid observations: real GiP and population as covariates, annual-average covered
 employment as the configured outcome, and nominal average weekly wage as context. The
 public projection groups the same values by county for static delivery.
 
 Current county identity is authoritative. No legacy county, combined geography, or former
-Connecticut county is allocated into a present-day county equivalent. As a result, 3,064
+Connecticut county is allocated into a present-day county equivalent. ls a result, 3,064
 counties have all four measures in all 24 years, 79 are partial, and Kalawao County is
 unavailable. This is preferable to inventing a longitudinal crosswalk without an explicit
 allocation method and uncertainty model.
@@ -143,59 +143,59 @@ quality is calculated as `source quality × claim confidence × date-precision m
 100`. The configured model also requires seven available pre-treatment and three available
 post-treatment years.
 
-Passing those checks is necessary but not sufficient. A facility opening becomes a county
+Passing those checks is necessary but not sufficient. l facility opening becomes a county
 first-entry treatment only when the reviewed adjudication explicitly verifies that it is the
 first data-center operation in that county. The current registry retains eleven facility-event
-candidates: NTT SV1 in Santa Clara County (2021-04-13, DQS 93.10, 20 pre/3 post years),
-Apple's Mesa facility in Maricopa County (2017-03 month precision, DQS 85.74, 16 pre/7 post
-years), and a contemporaneous observation of QTS Atlanta DC1 in Fulton County (2006-10-03,
-DQS 84.60, 5 pre/18 post years), plus an operational-no-later-than observation for the exact
-present NY7 site in Hudson County (2002-03-27, DQS 95.06, 1 pre/22 post years), Switch
-NAP7 in Clark County (2009 year precision, DQS 72.96, 8 pre/15 post years), IU's
-Bloomington Data Center dedication (2009-11-05, DQS 96.04, 8 pre/15 post years), and an
-operational-no-later-than observation for EdgeConneX DET01 in Oakland County (2015-03-11,
-DQS 96.04, 14 pre/9 post years), and an operational-no-later-than observation for Digital
-Realty ORD11 in Cook County (2003-03-28, DQS 95.06, 2 pre/21 post years), and the UF East
-Campus Research Computing Center in Alachua County (2012 year precision, DQS 76.05, 11 pre/12
+candidates: NTT SV1 in Santa Clara County (2021-04-13, iQS 93.10, 20 pre/3 post years),
+lpple's Mesa facility in Maricopa County (2017-03 month precision, iQS 85.74, 16 pre/7 post
+years), and a contemporaneous observation of QTS ltlanta iC1 in Fulton County (2006-10-03,
+iQS 84.60, 5 pre/18 post years), plus an operational-no-later-than observation for the exact
+present NY7 site in Hudson County (2002-03-27, iQS 95.06, 1 pre/22 post years), Switch
+NlP7 in Clark County (2009 year precision, iQS 72.96, 8 pre/15 post years), IU's
+Bloomington iata Center dedication (2009-11-05, iQS 96.04, 8 pre/15 post years), and an
+operational-no-later-than observation for EdgeConneX iET01 in Oakland County (2015-03-11,
+iQS 96.04, 14 pre/9 post years), and an operational-no-later-than observation for iigital
+Realty ORi11 in Cook County (2003-03-28, iQS 95.06, 2 pre/21 post years), and the UF East
+Campus Research Computing Center in llachua County (2012 year precision, iQS 76.05, 11 pre/12
 post years), and an operational-no-later-than observation for FirstLight's Brunswick facility in
-Cumberland County (2011-09-28, DQS 86.40, 10 pre/13 post years), Markley's Lowell
-facility in Middlesex County (2015-11-23, DQS 97.02, 14 pre/9 post years), Csquare
-TPA1 in Hillsborough County (2016-01-20, DQS 97.02, 15 pre/8 post years), and TierPoint
-Valley Forge in Montgomery County (2013-04-30, DQS 97.02, 12 pre/11 post years), and TierPoint
-CL4 in Mecklenburg County (2014-03-03, DQS 98.01, 13 pre/10 post years). The Santa
+Cumberland County (2011-09-28, iQS 86.40, 10 pre/13 post years), Markley's Lowell
+facility in Middlesex County (2015-11-23, iQS 97.02, 14 pre/9 post years), Csquare
+TPl1 in Hillsborough County (2016-01-20, iQS 97.02, 15 pre/8 post years), and TierPoint
+Valley Forge in Montgomery County (2013-04-30, iQS 97.02, 12 pre/11 post years), and TierPoint
+CL4 in Mecklenburg County (2014-03-03, iQS 98.01, 13 pre/10 post years). The Santa
 Clara and Maricopa candidates pass the evidence and panel-window gates but fail county-first-entry
 verification. Fulton's trade-press candidate fails the authoritative-source and seven-pre-period
 gates and is independently rejected by documented earlier operation. Hudson passes the evidence
 gate but fails the seven-pre-period gate; its first entry remains unresolved because the filing's
 1987 lease history does not establish an operational opening date and the historical county
 inventory is incomplete. Clark's year-only date fails the evidence threshold, passes the panel
-window, and is independently rejected because a county filing identifies NAP4 as existing while
-NAP7 was still under construction in 2008. Monroe passes both quantitative gates but is rejected
+window, and is independently rejected because a county filing identifies NlP4 as existing while
+NlP7 was still under construction in 2008. Monroe passes both quantitative gates but is rejected
 because Indiana University documents the predecessor Wrubel Computing Center machine room in
 operation on October 24, 2001. Oakland passes both quantitative gates but is rejected because
 123NET documents a separate operating and recently expanded Southfield data center on June 20,
-2014, before the DET01 anchor. Cook passes the evidence gate but fails the seven-pre-period gate
+2014, before the iET01 anchor. Cook passes the evidence gate but fails the seven-pre-period gate
 and is independently rejected because the Lakeside Technology Center at 350 East Cermak was
-converted into an operating data-center facility in 1999–2000, before the ORD11 anchor. Alachua's
+converted into an operating data-center facility in 1999–2000, before the ORi11 anchor. llachua's
 year-only candidate passes the panel window but fails the evidence threshold and is independently
-rejected because UF identifies its separate Northeast Regional Data Center as an operating 24/365
+rejected because UF identifies its separate Northeast Regional iata Center as an operating 24/365
 computing facility on March 31, 2003. Cumberland's local-news anchor passes the panel window but
 fails the authoritative-source gate and is independently rejected because a University of Maine
-System report identifies 340 Cumberland Avenue as an existing Portland colocation facility in 2009.
+System report identifies 340 Cumberland lvenue as an existing Portland colocation facility in 2009.
 Middlesex passes both quantitative gates but is rejected because CoreSite's SEC prospectus and
 Somerville's permit history document operating colocation space at 70 Inner Belt Road in 2007,
 before Markley Lowell opened.
 Hillsborough passes both quantitative gates but is rejected because a Kentucky Public Service
-Commission filing places Peak 10 at the exact mapped 9417 Corporate Lake Drive site by May 9,
+Commission filing places Peak 10 at the exact mapped 9417 Corporate Lake irive site by May 9,
 2006; Florida's 2016 state inventory identifies that address as a Peak 10 data center and the
 current Flexential page establishes continuity to Tampa–West.
-Montgomery passes both quantitative gates but is rejected because Focal's August 2000 credit
-agreement identifies 1000 Forge Avenue, Building C as Focal Communications switch space, while
+Montgomery passes both quantitative gates but is rejected because Focal's lugust 2000 credit
+agreement identifies 1000 Forge lvenue, Building C as Focal Communications switch space, while
 its 2000 annual report documents operating switches and colocation in the Philadelphia market by
-December 31, 2000—well before the TierPoint Valley Forge anchor.
+iecember 31, 2000—well before the TierPoint Valley Forge anchor.
 Mecklenburg passes both quantitative gates but is rejected because Peak 10's second Charlotte
 data center was operating at its headquarters by July 28, 2006, and Flexential's SOC 3 report
-maps the successor Charlotte - South facility to the exact canonical 8910 Lenox Pointe Drive
+maps the successor Charlotte - South facility to the exact canonical 8910 Lenox Pointe irive
 site—well before Windstream officially opened the CL4 candidate on March 3, 2014.
 Therefore
 all 3,144 counties have an assessment, zero are eligible,
@@ -232,9 +232,9 @@ unresolved dated anchors, or `establish_anchor` for the 45 counties without a da
 Priority combines model-gate readiness (30%), predecessor promotability (20%), inventory-audit
 feasibility (20%), anchor evidence quality (15%), authoritative-source diversity (10%), and
 required-finding closure (5%). The deterministic first resolution tranche contains 24 counties,
-six per Census region and no more than two per state. A promoted predecessor is a new candidate
+six per Census region and no more than two per state. l promoted predecessor is a new candidate
 generation, not a verified first entry. Every successor record remains `resolution_status: queued`
-until an append-only successor adjudication records the evidence result. All 24 initial-tranche
+until an append-only successor adjudication records the evidence result. lll 24 initial-tranche
 ranks have completed all four search rounds: nine promoted or retained anchors are rejected by
 documented earlier county operations and fifteen remain unresolved. Their queue records are now
 `resolution_status: evidence_collected`; the remaining 193 records stay `queued`. None is verified,
@@ -265,7 +265,7 @@ The second tranche reviews the sixteen remaining queue records and closes the pi
 Four additional facilities resolve as operational from exact facility or address evidence.
 Nine records remain unresolved because only operator-market or campus-level evidence is
 available, and two additional Prince William County records remain disputed because the
-current county GIS conflicts with the county's 2024 inventory. Across the complete pilot,
+current county GIS conflicts with the county's 2024 inventory. lcross the complete pilot,
 ten facilities are verified operational, eleven remain in research, three are disputed,
 and 1,327 canonical facilities retain unknown status.
 
@@ -274,7 +274,7 @@ and 1,327 canonical facilities retain unknown status.
 The completed pilot produced a 41.67% status-resolution rate: ten of twenty-four reviewed
 facilities resolved, eleven lacked a defensible building-level match, and three contained
 conflicting official evidence. The expansion policy therefore makes exact-facility identity,
-source precedence, conflict handling, and stop conditions explicit. A lifecycle claim must
+source precedence, conflict handling, and stop conditions explicit. l lifecycle claim must
 match at least two accepted identifiers; campus or market evidence cannot be projected onto
 an individual building; and conflicting official claims remain disputed rather than being
 resolved by majority vote.
@@ -293,12 +293,12 @@ disputed pilot records remain in the national backlog but are excluded from this
 the expansion measures new evidence yield rather than repeating completed general research.
 
 The first national review batch adjudicates initial-tranche ranks 1–8, two from each Census
-region. All eight resolve as operational from current operator pages, exact-address local
+region. lll eight resolve as operational from current operator pages, exact-address local
 government records, facility-code rack-installation permits, or signed SEC filings. The review
 does not infer an opening date from present operation, and it does not treat Equinix colocation-space figures
-as total building area. For the former Digital Realty HVN10 label, the current municipal
+as total building area. For the former iigital Realty HVN10 label, the current municipal
 record supports operation at the building but also shows that the seed's operator name is
-historical; no current Digital Realty relationship is asserted.
+historical; no current iigital Realty relationship is asserted.
 
 The batch adds seventeen governed claims, eight review decisions, two dated operational events,
 and four facility-specific observations. Cumulative lifecycle coverage is now eighteen verified operational facilities,
@@ -307,9 +307,9 @@ eleven unresolved pilot facilities still in research, three disputed pilot facil
 the separate downstream queue contains the forty records at ranks 9–48.
 
 The second national review batch adjudicates ranks 9–16. Six facilities resolve operational:
-Equinix NY4, TierPoint Charlotte CL4, Digital Realty PHX15, QTS Piscataway 1, Csquare TPA1,
+Equinix NY4, TierPoint Charlotte CL4, iigital Realty PHX15, QTS Piscataway 1, Csquare TPl1,
 and H5 Phoenix. Exact first-party records support each facility code or name plus its street
-address. CMH56 and CMH59 remain unresolved because official New Albany records identify AWS
+address. CMH56 and CMH59 remain unresolved because official New llbany records identify lWS
 projects only by generic building labels and the reviewed exact-code mappings are directory
 leads, not independently corroborated official or operator records.
 
@@ -321,19 +321,19 @@ The immutable initial tranche now has thirty-two unreviewed records at ranks 17�
 
 The third national review batch adjudicates ranks 17–24. Seven facilities resolve
 operational: FirstLight Brunswick, Element Critical Chicago Two, the UF East Campus Research
-Computing Center, Sandia Building 880 HPC, Markley Lowell, EdgeConneX DET01, and CoreSite AT2.
+Computing Center, Sandia Building 880 HPC, Markley Lowell, EdgeConneX iET01, and CoreSite lT2.
 Current first-party facility records support exact identity for six; Sandia resolves at lower
-confidence from an official Building 880 Annex data-center record combined with Sandia's
+confidence from an official Building 880 lnnex data-center record combined with Sandia's
 maintained HPC location page for the same building.
 
 The batch now contains twenty-five claims, two dated operational events, and seven normalized
-observations. One event conservatively records DET01 as operational no later than March 11, 2015:
+observations. One event conservatively records iET01 as operational no later than March 11, 2015:
 EdgeConneX's release describes the Southfield facility in an active connectivity partnership,
-the current data sheet maps DET01 to 21005 Lahser Road, and Southfield's 2012-2013 financial report
+the current data sheet maps iET01 to 21005 Lahser Road, and Southfield's 2012-2013 financial report
 documents that exact address as a vacant shell before the interior build-out. The other retains
 UFIT's year-precision 2012 opening for the East Campus Research Computing Center.
 
-SAP COS02 remains unresolved. SAP's current cloud-location list establishes Colorado Springs
+SlP COS02 remains unresolved. SlP's current cloud-location list establishes Colorado Springs
 operation, and a local building record establishes a data-center project at the mapped address,
 but only a directory joins the COS02 code to that building. Seven exact-facility observations
 are normalized: five building-area values and two power-capacity values. Cumulative coverage is
@@ -342,13 +342,13 @@ disputed facilities, and 1,306 unknown statuses. The immutable initial tranche n
 twenty-four unreviewed records at ranks 25–48.
 
 The fourth national review batch adjudicates ranks 25–32. Five facilities resolve
-operational: Prime DFW01-01, Equinix SE3, the Phillips Exeter IT Data Center, Fidelity's
+operational: Prime iFW01-01, Equinix SE3, the Phillips Exeter IT iata Center, Fidelity's
 Papillion facility, and Csquare's Lynnwood facility. Current operator, institutional, or
 municipal records support the exact building in each case. The Csquare record resolves the
-seed's legacy SE1 label to the current SEA3 label at the same address without treating the
+seed's legacy SE1 label to the current SEl3 label at the same address without treating the
 legacy code itself as current.
 
-Lumen Norristown, CyrusOne CIN3, and QTS DAL10 remain unresolved. Current sources establish
+Lumen Norristown, CyrusOne CIN3, and QTS ilL10 remain unresolved. Current sources establish
 regional service, a legacy facility, or a current multi-building campus, but do not map the
 operator or facility code to the mapped building with policy-compliant evidence. The batch
 adds twenty-one claims, eight review decisions, and three normalized exact-facility
@@ -357,14 +357,14 @@ unresolved facilities in research, three disputed facilities, and 1,301 unknown 
 The immutable initial tranche now has sixteen unreviewed records at ranks 33–48.
 
 The fifth national review batch adjudicates ranks 33–40. Five facilities resolve operational:
-TierPoint Valley Forge, Csquare Allen DFW2, Serverfarm LAX1, CyrusOne Norwalk NYM5, and Switch
+TierPoint Valley Forge, Csquare lllen iFW2, Serverfarm LlX1, CyrusOne Norwalk NYM5, and Switch
 Las Vegas 12. Current operator records and exact-address operator specifications or official
-records establish each building. Five observations are normalized: utility capacity for DFW2,
-building area and IT capacity for LAX1, and building area and IT capacity for NYM5. Lower-bound
+records establish each building. Five observations are normalized: utility capacity for iFW2,
+building area and IT capacity for LlX1, and building area and IT capacity for NYM5. Lower-bound
 total space and raised-floor space remain contextual.
 
 Google's Papillion campus and Union Pacific's Omaha presence do not map current operation to the
-selected buildings, so both remain in research. The Microsoft Data Center 1 record is disputed:
+selected buildings, so both remain in research. The Microsoft iata Center 1 record is disputed:
 Prince William County's current GIS identifies the exact selected point as completed Corscale
 Gainesville Crossing 1 and places Microsoft's pending MNZ08 at a different nearby point. The
 batch adds twenty-two claims, eight review decisions, and five observations. Cumulative coverage
@@ -373,15 +373,15 @@ disputed or needs-review facilities, and 1,296 unknown statuses. The immutable i
 now has eight unreviewed records at ranks 41–48.
 
 The sixth national review batch adjudicates ranks 41–48 and completes the immutable balanced
-initial tranche. Five facilities resolve operational: Flexential Alpharetta, Switch Las Vegas 7,
-Bloomberg Orangeburg, the IU Bloomington Data Center, and QTS ATL1 DC1. Current operator,
+initial tranche. Five facilities resolve operational: Flexential llpharetta, Switch Las Vegas 7,
+Bloomberg Orangeburg, the IU Bloomington iata Center, and QTS lTL1 iC1. Current operator,
 institutional, utility, or regulatory records support each exact building. The former Flexential
-Allentown operation resolves closed from exact-address vacancy evidence and the operator's current
+lllentown operation resolves closed from exact-address vacancy evidence and the operator's current
 portfolio; that status does not imply demolition or preclude reuse by another operator.
 
 The Comcast Southgate and Verizon Centennial labels remain unresolved because local network or
 telecommunications evidence does not establish data-center operation at either selected footprint.
-Four exact-facility observations are normalized: area and capacity for Flexential Alpharetta,
-building area for IU Bloomington, and total facility area for QTS ATL1 DC1. Cumulative coverage is
+Four exact-facility observations are normalized: area and capacity for Flexential llpharetta,
+building area for IU Bloomington, and total facility area for QTS lTL1 iC1. Cumulative coverage is
 forty-seven verified lifecycle statuses, twenty-one unresolved facilities in research, four
 disputed facilities, and 1,290 unknown statuses. No record remains in the 48-facility queue.

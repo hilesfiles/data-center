@@ -267,7 +267,7 @@ try {
   await page.locator(".project-research-update").filter({ hasText: "Annual state reports bound when Hammond's incentive balances changed" }).screenshot({ path: path.join(out, "hammond-incentive-timeline-mobile.png") });
   await page.locator(".project-research-update").filter({ hasText: "State debt register shows the existing TIF bond but no separate EID debt" }).screenshot({ path: path.join(out, "hammond-eid-debt-screen-mobile.png") });
   await page.locator(".project-research-update").filter({ hasText: "Quarterly local-labor records have a defined acquisition path" }).screenshot({ path: path.join(out, "hammond-local-labor-acquisition-mobile.png") });
-  check("Hammond account identifies the required quarterly local-labor records and preserves them as an unresolved acquisition target");
+  check("Hammond account identifies the required quarterly local-labor records and preserves them as an unresolved evidence gap");
 
   await page.goto(`${url}#/project/prj_study_im3_building_00364289074`);
   await page.getByRole("heading", { name: "Microsoft San Antonio", exact: true }).waitFor();

@@ -160,11 +160,11 @@
     },
     "evidence_search": {
       "type": "object",
-      "required": ["direct_observation_status", "source_projection_status", "acquisition_target"],
+      "required": ["direct_observation_status", "source_projection_status", "remaining_evidence_gap"],
       "properties": {
         "direct_observation_status": { "enum": ["not_found", "partial", "not_applicable"] },
         "source_projection_status": { "enum": ["not_found", "available_separately", "not_applicable"] },
-        "acquisition_target": { "type": "string", "minLength": 1 }
+        "remaining_evidence_gap": { "type": "string", "minLength": 1 }
       },
       "additionalProperties": false
     },

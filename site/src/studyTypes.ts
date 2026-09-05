@@ -106,7 +106,7 @@ export interface ModeledSynthesis {
   confidence: "low" | "medium" | "high";
   confidence_rationale: string;
   decision_relevance: string;
-  evidence_search: { direct_observation_status: "not_found" | "partial" | "not_applicable"; source_projection_status: "not_found" | "available_separately" | "not_applicable"; acquisition_target: string };
+  evidence_search: { direct_observation_status: "not_found" | "partial" | "not_applicable"; source_projection_status: "not_found" | "available_separately" | "not_applicable"; remaining_evidence_gap: string };
   derivation: { method: "band_midpoint" | "benchmark_application" | "allocation" | "interpolation" | "extrapolation" | "engineering_estimate" | "statutory_counterfactual" | "sensitivity_analysis" | "input_output_multiplier" | "contribution_analysis" | "difference_in_differences" | "event_study" | "synthetic_control" | "strategic_infrastructure_model"; model_version: string; formula: string; input_claim_ids: string[]; input_source_ids: string[]; assumptions: string[] };
   multiplier_provenance?: { source_id: string; model_name: string; model_version: string; geography: string; vintage: string; local_purchase_assumption: string; channel_separation: "direct_indirect_induced_reported_separately" };
   causal_design?: { treatment_timing: string; comparison_design: string; outcome_definition: string; pre_period: string; post_period: string; diagnostics: string[]; limitations: string[] };

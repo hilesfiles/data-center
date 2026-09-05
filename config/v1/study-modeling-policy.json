@@ -1,12 +1,13 @@
 {
   "schema_version": "1.0.0",
-  "policy_version": "study-modeling-policy-1.0.0",
+  "policy_version": "study-modeling-policy-1.1.0",
   "effective_release": "private-sector-study-1.38.0",
   "principles": [
-    { "code": "observations_first", "rule": "Search for and publish direct observations before constructing a modeled synthesis." },
+    { "code": "observations_first", "rule": "Search already-public sources for direct observations before constructing a modeled synthesis." },
     { "code": "preserve_projections", "rule": "Preserve source projections separately and never relabel them as modeled or realized values." },
     { "code": "eligibility_threshold", "rule": "Model only decision-relevant metrics with cited inputs, a reproducible formula, defensible scope, and disclosed uncertainty." },
-    { "code": "acquisition_fallback", "rule": "When modeling eligibility is not met, leave a documented acquisition target rather than manufacturing a value." },
+    { "code": "residual_gap_fallback", "rule": "When modeling eligibility is not met, document the unresolved evidence gap and analytical limit rather than manufacturing a value or requesting nonpublic data." },
+    { "code": "no_external_requests", "rule": "Do not send public-records requests, private data requests, surveys, questionnaires, or other solicitations; use already-public evidence and reproducible modeled synthesis only." },
     { "code": "allocation_required", "rule": "Never infer facility values from county, company, campus, utility, or multi-county totals without an explicit allocation model." },
     { "code": "publication_separation", "rule": "Exclude modeled outputs from sourced-record counts, canonical claims, and realized-benefit totals." },
     { "code": "symmetric_evidence", "rule": "Apply identical evidence and uncertainty rules to benefits and costs." },
@@ -23,7 +24,14 @@
     "reproducible_formula_required": true,
     "defensible_scope_required": true,
     "uncertainty_disclosure_required": true,
-    "fallback": "documented_acquisition_target"
+    "fallback": "documented_unmodeled_gap"
+  },
+  "source_policy": {
+    "evidence_access": "already_public_only",
+    "public_records_requests": "prohibited",
+    "private_data_requests": "prohibited",
+    "surveys_and_questionnaires": "prohibited",
+    "residual_gap_treatment": "model_if_eligible_otherwise_document_limit"
   },
   "publication_controls": {
     "canonical_claims": "exclude_modeled_syntheses",

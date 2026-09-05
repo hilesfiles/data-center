@@ -3,7 +3,7 @@
   "$id": "https://dccio.org/schemas/v1/study-modeling-policy.schema.json",
   "title": "Study-wide modeled synthesis governance policy",
   "type": "object",
-  "required": ["schema_version", "policy_version", "effective_release", "principles", "eligibility", "publication_controls", "multiplier_requirements", "causal_requirements", "aggregation_controls"],
+  "required": ["schema_version", "policy_version", "effective_release", "principles", "eligibility", "source_policy", "publication_controls", "multiplier_requirements", "causal_requirements", "aggregation_controls"],
   "properties": {
     "schema_version": { "const": "1.0.0" },
     "policy_version": { "type": "string", "minLength": 1 },
@@ -27,7 +27,19 @@
         "reproducible_formula_required": { "const": true },
         "defensible_scope_required": { "const": true },
         "uncertainty_disclosure_required": { "const": true },
-        "fallback": { "const": "documented_acquisition_target" }
+        "fallback": { "const": "documented_unmodeled_gap" }
+      },
+      "additionalProperties": false
+    },
+    "source_policy": {
+      "type": "object",
+      "required": ["evidence_access", "public_records_requests", "private_data_requests", "surveys_and_questionnaires", "residual_gap_treatment"],
+      "properties": {
+        "evidence_access": { "const": "already_public_only" },
+        "public_records_requests": { "const": "prohibited" },
+        "private_data_requests": { "const": "prohibited" },
+        "surveys_and_questionnaires": { "const": "prohibited" },
+        "residual_gap_treatment": { "const": "model_if_eligible_otherwise_document_limit" }
       },
       "additionalProperties": false
     },

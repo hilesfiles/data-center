@@ -1,10 +1,10 @@
 # Economic evidence acquisition and review
 
-Reviewed 5 September 2026. Application study release `private-sector-study-1.38.0` publishes 584 source records (532 reported and 52 source projections) and separately publishes eight modeled syntheses for Apple Mesa under the generic `study-modeled-synthesis-2.0.0` contract.
+Reviewed 5 September 2026. Application study release `private-sector-study-1.38.0` publishes 584 source records (532 reported and 52 source projections) and separately publishes eight modeled syntheses for Apple Mesa under the generic `study-modeled-synthesis-2.1.0` contract.
 
 ## Modeled synthesis boundary
 
-Modeled syntheses live in `config/v1/study-modeled-synthesis.json`, outside the source-evidence register and canonical claim artifact. The companion `config/v1/study-modeling-policy.json` requires direct-evidence search first, separate preservation of source projections, decision relevance, cited inputs, reproducible formulas, defensible scope, disclosed uncertainty and a documented acquisition fallback. Every synthesis is visibly labeled, includes an explicitly typed interval, named parameters with claim/source/assumption provenance, contribution channel, anti-overlap aggregation identity, formula, assumptions, limitations, acquisition target and qualitative confidence rationale. Sensitivity envelopes and deterministic counterfactuals are not statistical confidence intervals.
+Modeled syntheses live in `config/v1/study-modeled-synthesis.json`, outside the source-evidence register and canonical claim artifact. The companion `config/v1/study-modeling-policy.json` requires direct-evidence search first, separate preservation of source projections, decision relevance, cited inputs, reproducible formulas, defensible scope, disclosed uncertainty and a documented unresolved-gap fallback. Every synthesis is visibly labeled, includes an explicitly typed interval, named parameters with claim/source/assumption provenance, contribution channel, anti-overlap aggregation identity, formula, assumptions, limitations, unresolved evidence gap and qualitative confidence rationale. Sensitivity envelopes and deterministic counterfactuals are not statistical confidence intervals.
 
 The first synthesis batch covers Apple Mesa water use, FTZ-area employment and payroll, IOC tax-credit realization, a Class 1 property-tax counterfactual for tax years 2023–2025, and export-related duty avoidance. The FTZ employment and payroll scopes are zone-wide rather than Apple-only. The water estimate is benchmark-based rather than metered. Tax-credit and customs values are sensitivities rather than disclosed benefits. No modeled value is counted among the 584 source records or treated as a causal effect.
 
@@ -268,11 +268,11 @@ The fiscal-history table now displays a documented difference when a fiscal year
 7. Record public costs and the payer alongside receipts. Restricted developer payments and grant-funded infrastructure spending need funding/reimbursement context. A gross expenditure is not automatically a public subsidy.
 8. Advance analysis readiness only after a separate review of complete definitions, boundaries, dates and accounting coverage. Source collection alone does not establish attribution.
 
-## Remaining acquisition work
+## Remaining public-source research and modeled gaps
 
 All 36 candidates remain in the register and now have at least one quantitative record, but this is coverage breadth rather than completed economic accounting. Continue with annual actual capital spending, construction duration and payroll, permanent direct/contractor employment, local supplier purchases and residency, actual recipient-specific tax receipts, incentives and public service/financing costs. Reconcile campus phases and taxpayer parcels before project aggregation. SV1 has a cooling-design water estimate; Quicken has an unmetered zero-water cooling claim. Measured water/electricity use and attributable system costs remain uncollected. Supplier and household-spending models require disclosed inputs and assumptions before publication.
 
-A [source-screening log](study-economic-source-screening.md) records deferred leads and scope issues from the acquisition batches. It is a research trail, not a claim that every remaining candidate has been exhaustively searched.
+A [source-screening log](study-economic-source-screening.md) records deferred public-source leads and scope issues from the research batches. It is a research trail, not a claim that every remaining candidate has been exhaustively searched.
 
 ## Twenty-first evidence batch
 
