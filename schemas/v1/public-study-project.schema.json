@@ -1,0 +1,348 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dccio.org/schemas/v1/public-study-project.schema.json",
+  "title": "Provisional private-sector study project",
+  "allOf": [
+    {
+      "$ref": "#/$defs/summary"
+    }
+  ],
+  "type": "object",
+  "required": [
+    "schema_version",
+    "release_id",
+    "generated_at",
+    "inventory_name",
+    "research_value",
+    "history",
+    "sources",
+    "evidence_gaps",
+    "analysis_readiness",
+    "scope_note",
+    "economic_records",
+    "economic_sources",
+    "economic_scope_note",
+    "evidence_version",
+    "research_updates"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "release_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "inventory_name": {
+      "type": "string"
+    },
+    "research_value": {
+      "type": "string",
+      "minLength": 1
+    },
+    "scope_note": {
+      "type": "string",
+      "minLength": 1
+    },
+    "legacy_first_entry_note": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "history": {
+      "type": "object",
+      "required": [
+        "description",
+        "anchor",
+        "date_note"
+      ],
+      "properties": {
+        "description": {
+          "type": "string",
+          "minLength": 1
+        },
+        "anchor": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "common.schema.json#/$defs/temporal_extent"
+            }
+          ]
+        },
+        "date_note": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "sources": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "source_id",
+          "title",
+          "url"
+        ],
+        "properties": {
+          "source_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1
+          },
+          "url": {
+            "type": "string",
+            "format": "uri",
+            "pattern": "^https://"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "evidence_gaps": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "code",
+          "label",
+          "status",
+          "needed"
+        ],
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "not_yet_collected",
+              "partial",
+              "projections_only"
+            ]
+          },
+          "needed": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "analysis_readiness": {
+      "type": "object",
+      "required": [
+        "construction",
+        "operations",
+        "fiscal",
+        "causal"
+      ],
+      "properties": {
+        "construction": {
+          "const": "not_assessed"
+        },
+        "operations": {
+          "const": "not_assessed"
+        },
+        "fiscal": {
+          "const": "not_assessed"
+        },
+        "causal": {
+          "const": "not_assessed"
+        }
+      },
+      "additionalProperties": false
+    },
+    "economic_records": {
+      "type": "array",
+      "items": {
+        "$ref": "study-economic-evidence.schema.json#/$defs/public_record"
+      }
+    },
+    "economic_sources": {
+      "type": "array",
+      "items": {
+        "$ref": "study-economic-evidence.schema.json#/$defs/source"
+      }
+    },
+    "economic_scope_note": {
+      "type": "string",
+      "minLength": 1
+    },
+    "evidence_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "research_updates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "project_id",
+          "source_id",
+          "as_of",
+          "title",
+          "notes",
+          "source"
+        ],
+        "properties": {
+          "project_id": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^prj_study_[a-z0-9_]+$"
+          },
+          "source_id": {
+            "$ref": "common.schema.json#/$defs/entity_id"
+          },
+          "as_of": {
+            "type": "string",
+            "format": "date"
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1
+          },
+          "notes": {
+            "type": "string",
+            "minLength": 1
+          },
+          "source": {
+            "$ref": "study-economic-evidence.schema.json#/$defs/source"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "$defs": {
+    "summary": {
+      "type": "object",
+      "required": [
+        "project_id",
+        "name",
+        "inventory_entity_id",
+        "inventory_entity_type",
+        "county_fips",
+        "county_name",
+        "state_abbr",
+        "operator_label",
+        "study_group",
+        "membership_status",
+        "sector_status",
+        "history_status",
+        "documented_timing",
+        "panel_years",
+        "detail_path",
+        "latitude",
+        "longitude",
+        "economic_record_count",
+        "reported_actual_count",
+        "projection_count"
+      ],
+      "properties": {
+        "project_id": {
+          "type": "string",
+          "pattern": "^prj_study_[a-z0-9_]+$"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "inventory_entity_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "inventory_entity_type": {
+          "enum": [
+            "campus",
+            "facility"
+          ]
+        },
+        "county_fips": {
+          "type": "string",
+          "pattern": "^[0-9]{5}$"
+        },
+        "county_name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "state_abbr": {
+          "type": "string",
+          "pattern": "^[A-Z]{2}$"
+        },
+        "operator_label": {
+          "type": "string",
+          "minLength": 1
+        },
+        "study_group": {
+          "enum": [
+            "Hyperscale",
+            "Colocation",
+            "Private enterprise"
+          ]
+        },
+        "membership_status": {
+          "const": "research_candidate"
+        },
+        "sector_status": {
+          "const": "provisional_private_sector"
+        },
+        "history_status": {
+          "enum": [
+            "evidence_available",
+            "needs_research"
+          ]
+        },
+        "documented_timing": {
+          "type": "string",
+          "minLength": 1
+        },
+        "panel_years": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "detail_path": {
+          "type": "string",
+          "pattern": "^projects/prj_study_[a-z0-9_]+\\.json$"
+        },
+        "latitude": {
+          "type": "number",
+          "minimum": -90,
+          "maximum": 90
+        },
+        "longitude": {
+          "type": "number",
+          "minimum": -180,
+          "maximum": 180
+        },
+        "economic_record_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "reported_actual_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "projection_count": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    }
+  }
+}

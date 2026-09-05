@@ -1,0 +1,909 @@
+{
+  "project_id": "prj_study_im3_building_00598261190",
+  "name": "State Farm Olathe",
+  "inventory_entity_id": "fac_im3_building_00598261190",
+  "inventory_entity_type": "facility",
+  "county_fips": "20091",
+  "county_name": "Johnson County",
+  "state_abbr": "KS",
+  "operator_label": "State Farm",
+  "study_group": "Private enterprise",
+  "membership_status": "research_candidate",
+  "sector_status": "provisional_private_sector",
+  "history_status": "evidence_available",
+  "documented_timing": "2016 construction; lease began 2016-11-03",
+  "panel_years": 24,
+  "detail_path": "projects/prj_study_im3_building_00598261190.json",
+  "latitude": 38.94011284438559,
+  "longitude": -94.86768784080611,
+  "economic_record_count": 25,
+  "reported_actual_count": 25,
+  "projection_count": 0,
+  "schema_version": "1.0.0",
+  "release_id": "private-sector-study-1.35.0",
+  "generated_at": "2026-09-05T13:41:22+00:00",
+  "inventory_name": "State Farm Data Center",
+  "research_value": "SEC property evidence links capital asset, lease, and later occupancy; lease date is not commissioning.",
+  "history": {
+    "description": "2016 construction; lease began 2016-11-03",
+    "anchor": {
+      "date": "2016-11-03",
+      "precision": "day"
+    },
+    "date_note": "This is a stored historical observation. Completion, grand opening, lease and operating-by dates are not automatically commissioning dates. Campus timing does not date every building."
+  },
+  "sources": [
+    {
+      "source_id": "src_sec_state_farm_olathe_20250203",
+      "title": "Benchmark 2025-V13 Free Writing Prospectus",
+      "url": "https://www.sec.gov/Archives/edgar/data/2049534/000153949725000258/n4807-x5_ts.htm"
+    },
+    {
+      "source_id": "src_im3_atlas_20260209",
+      "title": "IM3 Open Source Data Center Atlas, release 2026.02.09",
+      "url": "https://doi.org/10.57931/3017294"
+    }
+  ],
+  "research_updates": [
+    {
+      "project_id": "prj_study_im3_building_00598261190",
+      "source_id": "src_study_johnson_county_state_farm_tax_account_2026",
+      "as_of": "2026-09-03",
+      "title": "County parcel links HMC ownership and the State Farm data center",
+      "notes": "Johnson County identifies HMC Data Center 2 LLC as parcel owner at 24400 W Valley Parkway and labels the commercial building STATE FARM MUTUAL AUTOMOBILE INSURANCE CO, Computer data center. The parcel account supports the value, bill and payment series. Paid totals cover multiple taxing entities and are not treated as city-only or county-only receipts.",
+      "source": {
+        "source_id": "src_study_johnson_county_state_farm_tax_account_2026",
+        "title": "Johnson County Property Tax Office — State Farm data-center parcel R662349",
+        "url": "https://taxbill.jocogov.org/Property-Detail/PropertyQuickRefID/R662349/PartyQuickRefID/O0584821",
+        "publisher": "Johnson County, Kansas Property Tax Office",
+        "source_type": "assessor_record",
+        "publication_date": {
+          "precision": "unknown"
+        },
+        "retrieved_on": "2026-09-03",
+        "review_method": "web_page",
+        "notes": "The official parcel page identifies owner HMC Data Center 2 LLC, situs 24400 W Valley Parkway, quick reference R662349 and real-estate tax ID DP69210000 0001. Its commercial-building section names STATE FARM MUTUAL AUTOMOBILE INSURANCE CO and classifies the structure as a computer data center. Value History reports 2021–2025 appraised and assessed totals. Bills report 2019–2025 total taxes due, equal amounts paid and zero balances; the 2025 installments show payment dates December 4, 2025 and May 19, 2026. Tax totals cover all listed taxing entities and are not allocated here to city, county, schools or other recipients."
+      }
+    }
+  ],
+  "evidence_gaps": [
+    {
+      "code": "investment",
+      "label": "Capital investment",
+      "status": "partial",
+      "needed": "Annual actual spending, local share, and phase allocation."
+    },
+    {
+      "code": "construction",
+      "label": "Construction jobs and payroll",
+      "status": "not_yet_collected",
+      "needed": "Workers, job-years, payroll, duration, and local participation."
+    },
+    {
+      "code": "suppliers",
+      "label": "Local suppliers and household spending",
+      "status": "not_yet_collected",
+      "needed": "Documented purchases and separately identified spending estimates."
+    },
+    {
+      "code": "operations",
+      "label": "Permanent jobs and compensation",
+      "status": "not_yet_collected",
+      "needed": "Realized direct and contractor employment, wages, and operating purchases."
+    },
+    {
+      "code": "fiscal",
+      "label": "Tax base and public revenue",
+      "status": "partial",
+      "needed": "Taxable values and actual receipts by year and recipient jurisdiction."
+    },
+    {
+      "code": "public_costs",
+      "label": "Incentives and public costs",
+      "status": "not_yet_collected",
+      "needed": "Agreements, abatements, infrastructure, financing, and service costs."
+    },
+    {
+      "code": "resources",
+      "label": "Electricity, water, and cooling",
+      "status": "not_yet_collected",
+      "needed": "Measured use, source, cooling design, and attributable system costs."
+    },
+    {
+      "code": "community",
+      "label": "Community institutions and direct funding",
+      "status": "not_yet_collected",
+      "needed": "Annual grants, recipients, program purposes, realized spending, and overlap with other transfers."
+    }
+  ],
+  "economic_records": [
+    {
+      "claim_id": "clm_study_state_farm_olathe_appraised_value_2021",
+      "project_id": "prj_study_im3_building_00598261190",
+      "metric_code": "study.appraised_property_value",
+      "value": 64326400,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2021,
+        "label": "2021 Johnson County real-property value history"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "HMC Data Center 2 LLC / State Farm parcel, 24400 W Valley Parkway, quick ref R662349",
+        "county_fips": "20091",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_johnson_county_state_farm_tax_account_2026",
+      "source_locator": "Details tab, Real property value history, 2021 Appraised Total",
+      "notes": "County appraised total for the parcel. This is a property-value stock, not capital spending, taxable assessed value, tax revenue or a change caused by the data center. The county page separately identifies the building as State Farm Mutual Automobile Insurance Co. and a computer data center; the amount is not allocated to the individual mapped building.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-03",
+      "annual_series_key": "state_farm_olathe_county_appraised_value",
+      "label": "County appraised property value",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_state_farm_olathe_appraised_value_2022",
+      "project_id": "prj_study_im3_building_00598261190",
+      "metric_code": "study.appraised_property_value",
+      "value": 63441740,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2022,
+        "label": "2022 Johnson County real-property value history"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "HMC Data Center 2 LLC / State Farm parcel, 24400 W Valley Parkway, quick ref R662349",
+        "county_fips": "20091",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_johnson_county_state_farm_tax_account_2026",
+      "source_locator": "Details tab, Real property value history, 2022 Appraised Total",
+      "notes": "County appraised total for the parcel. This is a property-value stock, not capital spending, taxable assessed value, tax revenue or a change caused by the data center. The county page separately identifies the building as State Farm Mutual Automobile Insurance Co. and a computer data center; the amount is not allocated to the individual mapped building.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-03",
+      "annual_series_key": "state_farm_olathe_county_appraised_value",
+      "label": "County appraised property value",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_state_farm_olathe_appraised_value_2023",
+      "project_id": "prj_study_im3_building_00598261190",
+      "metric_code": "study.appraised_property_value",
+      "value": 80414910,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2023,
+        "label": "2023 Johnson County real-property value history"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "HMC Data Center 2 LLC / State Farm parcel, 24400 W Valley Parkway, quick ref R662349",
+        "county_fips": "20091",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_johnson_county_state_farm_tax_account_2026",
+      "source_locator": "Details tab, Real property value history, 2023 Appraised Total",
+      "notes": "County appraised total for the parcel. This is a property-value stock, not capital spending, taxable assessed value, tax revenue or a change caused by the data center. The county page separately identifies the building as State Farm Mutual Automobile Insurance Co. and a computer data center; the amount is not allocated to the individual mapped building.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-03",
+      "annual_series_key": "state_farm_olathe_county_appraised_value",
+      "label": "County appraised property value",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_state_farm_olathe_appraised_value_2024",
+      "project_id": "prj_study_im3_building_00598261190",
+      "metric_code": "study.appraised_property_value",
+      "value": 91415000,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2024,
+        "label": "2024 Johnson County real-property value history"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "HMC Data Center 2 LLC / State Farm parcel, 24400 W Valley Parkway, quick ref R662349",
+        "county_fips": "20091",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_johnson_county_state_farm_tax_account_2026",
+      "source_locator": "Details tab, Real property value history, 2024 Appraised Total",
+      "notes": "County appraised total for the parcel. This is a property-value stock, not capital spending, taxable assessed value, tax revenue or a change caused by the data center. The county page separately identifies the building as State Farm Mutual Automobile Insurance Co. and a computer data center; the amount is not allocated to the individual mapped building.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-03",
+      "annual_series_key": "state_farm_olathe_county_appraised_value",
+      "label": "County appraised property value",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_state_farm_olathe_appraised_value_2025",
+      "project_id": "prj_study_im3_building_00598261190",
+      "metric_code": "study.appraised_property_value",
+      "value": 79979860,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2025,
+        "label": "2025 Johnson County real-property value history"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "HMC Data Center 2 LLC / State Farm parcel, 24400 W Valley Parkway, quick ref R662349",
+        "county_fips": "20091",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_johnson_county_state_farm_tax_account_2026",
+      "source_locator": "Details tab, Real property value history, 2025 Appraised Total",
+      "notes": "County appraised total for the parcel. This is a property-value stock, not capital spending, taxable assessed value, tax revenue or a change caused by the data center. The county page separately identifies the building as State Farm Mutual Automobile Insurance Co. and a computer data center; the amount is not allocated to the individual mapped building.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-03",
+      "annual_series_key": "state_farm_olathe_county_appraised_value",
+      "label": "County appraised property value",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_state_farm_olathe_assessed_value_2021",
+      "project_id": "prj_study_im3_building_00598261190",
+      "metric_code": "study.account_assessed_value",
+      "value": 16081601,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2021,
+        "label": "2021 Johnson County real-property value history"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "HMC Data Center 2 LLC / State Farm parcel, 24400 W Valley Parkway, quick ref R662349",
+        "county_fips": "20091",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_johnson_county_state_farm_tax_account_2026",
+      "source_locator": "Details tab, Real property value history, 2021 Assessed Total",
+      "notes": "County assessed total for the parcel. This is the assessment base shown by the source, not an appraisal, bill, cash receipt, capital expenditure or causal tax-base increase. The source identifies the parcel owner and State Farm computer data-center building; the amount remains unallocated to the individual mapped inventory feature.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-03",
+      "annual_series_key": "state_farm_olathe_account_assessed_value",
+      "label": "Account assessed property value",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_state_farm_olathe_assessed_value_2022",
+      "project_id": "prj_study_im3_building_00598261190",
+      "metric_code": "study.account_assessed_value",
+      "value": 15860436,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2022,
+        "label": "2022 Johnson County real-property value history"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "HMC Data Center 2 LLC / State Farm parcel, 24400 W Valley Parkway, quick ref R662349",
+        "county_fips": "20091",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_johnson_county_state_farm_tax_account_2026",
+      "source_locator": "Details tab, Real property value history, 2022 Assessed Total",
+      "notes": "County assessed total for the parcel. This is the assessment base shown by the source, not an appraisal, bill, cash receipt, capital expenditure or causal tax-base increase. The source identifies the parcel owner and State Farm computer data-center building; the amount remains unallocated to the individual mapped inventory feature.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-03",
+      "annual_series_key": "state_farm_olathe_account_assessed_value",
+      "label": "Account assessed property value",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_state_farm_olathe_assessed_value_2023",
+      "project_id": "prj_study_im3_building_00598261190",
+      "metric_code": "study.account_assessed_value",
+      "value": 20103728,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2023,
+        "label": "2023 Johnson County real-property value history"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "HMC Data Center 2 LLC / State Farm parcel, 24400 W Valley Parkway, quick ref R662349",
+        "county_fips": "20091",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_johnson_county_state_farm_tax_account_2026",
+      "source_locator": "Details tab, Real property value history, 2023 Assessed Total",
+      "notes": "County assessed total for the parcel. This is the assessment base shown by the source, not an appraisal, bill, cash receipt, capital expenditure or causal tax-base increase. The source identifies the parcel owner and State Farm computer data-center building; the amount remains unallocated to the individual mapped inventory feature.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-03",
+      "annual_series_key": "state_farm_olathe_account_assessed_value",
+      "label": "Account assessed property value",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_state_farm_olathe_assessed_value_2024",
+      "project_id": "prj_study_im3_building_00598261190",
+      "metric_code": "study.account_assessed_value",
+      "value": 22853751,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2024,
+        "label": "2024 Johnson County real-property value history"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "HMC Data Center 2 LLC / State Farm parcel, 24400 W Valley Parkway, quick ref R662349",
+        "county_fips": "20091",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_johnson_county_state_farm_tax_account_2026",
+      "source_locator": "Details tab, Real property value history, 2024 Assessed Total",
+      "notes": "County assessed total for the parcel. This is the assessment base shown by the source, not an appraisal, bill, cash receipt, capital expenditure or causal tax-base increase. The source identifies the parcel owner and State Farm computer data-center building; the amount remains unallocated to the individual mapped inventory feature.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-03",
+      "annual_series_key": "state_farm_olathe_account_assessed_value",
+      "label": "Account assessed property value",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_state_farm_olathe_assessed_value_2025",
+      "project_id": "prj_study_im3_building_00598261190",
+      "metric_code": "study.account_assessed_value",
+      "value": 19994965,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2025,
+        "label": "2025 Johnson County real-property value history"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "HMC Data Center 2 LLC / State Farm parcel, 24400 W Valley Parkway, quick ref R662349",
+        "county_fips": "20091",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_johnson_county_state_farm_tax_account_2026",
+      "source_locator": "Details tab, Real property value history, 2025 Assessed Total",
+      "notes": "County assessed total for the parcel. This is the assessment base shown by the source, not an appraisal, bill, cash receipt, capital expenditure or causal tax-base increase. The source identifies the parcel owner and State Farm computer data-center building; the amount remains unallocated to the individual mapped inventory feature.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-03",
+      "annual_series_key": "state_farm_olathe_account_assessed_value",
+      "label": "Account assessed property value",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_state_farm_olathe_property_taxes_billed_2019",
+      "project_id": "prj_study_im3_building_00598261190",
+      "metric_code": "study.property_taxes_billed",
+      "value": 1908562.84,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2019,
+        "label": "Johnson County parcel tax year 2019"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "HMC Data Center 2 LLC / State Farm parcel, 24400 W Valley Parkway, quick ref R662349",
+        "county_fips": "20091",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_johnson_county_state_farm_tax_account_2026",
+      "source_locator": "Bills tab, Bills for tax year 2019, TOTALS, Total Taxes Due",
+      "notes": "Total parcel tax charged across all taxing entities listed by the county. This is a bill, not a causal impact estimate or a receipt assigned to any one government. The corresponding Amount Paid is stored as a separate metric.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-03",
+      "annual_series_key": "state_farm_olathe_property_taxes_billed",
+      "label": "Account property taxes billed",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_state_farm_olathe_property_taxes_billed_2020",
+      "project_id": "prj_study_im3_building_00598261190",
+      "metric_code": "study.property_taxes_billed",
+      "value": 1945571.17,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2020,
+        "label": "Johnson County parcel tax year 2020"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "HMC Data Center 2 LLC / State Farm parcel, 24400 W Valley Parkway, quick ref R662349",
+        "county_fips": "20091",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_johnson_county_state_farm_tax_account_2026",
+      "source_locator": "Bills tab, Bills for tax year 2020, TOTALS, Total Taxes Due",
+      "notes": "Total parcel tax charged across all taxing entities listed by the county. This is a bill, not a causal impact estimate or a receipt assigned to any one government. The corresponding Amount Paid is stored as a separate metric.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-03",
+      "annual_series_key": "state_farm_olathe_property_taxes_billed",
+      "label": "Account property taxes billed",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_state_farm_olathe_property_taxes_billed_2021",
+      "project_id": "prj_study_im3_building_00598261190",
+      "metric_code": "study.property_taxes_billed",
+      "value": 2010360.94,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2021,
+        "label": "Johnson County parcel tax year 2021"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "HMC Data Center 2 LLC / State Farm parcel, 24400 W Valley Parkway, quick ref R662349",
+        "county_fips": "20091",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_johnson_county_state_farm_tax_account_2026",
+      "source_locator": "Bills tab, Bills for tax year 2021, TOTALS, Total Taxes Due",
+      "notes": "Total parcel tax charged across all taxing entities listed by the county. This is a bill, not a causal impact estimate or a receipt assigned to any one government. The corresponding Amount Paid is stored as a separate metric.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-03",
+      "annual_series_key": "state_farm_olathe_property_taxes_billed",
+      "label": "Account property taxes billed",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_state_farm_olathe_property_taxes_billed_2022",
+      "project_id": "prj_study_im3_building_00598261190",
+      "metric_code": "study.property_taxes_billed",
+      "value": 1908311.8,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2022,
+        "label": "Johnson County parcel tax year 2022"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "HMC Data Center 2 LLC / State Farm parcel, 24400 W Valley Parkway, quick ref R662349",
+        "county_fips": "20091",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_johnson_county_state_farm_tax_account_2026",
+      "source_locator": "Bills tab, Bills for tax year 2022, TOTALS, Total Taxes Due",
+      "notes": "Total parcel tax charged across all taxing entities listed by the county. This is a bill, not a causal impact estimate or a receipt assigned to any one government. The corresponding Amount Paid is stored as a separate metric.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-03",
+      "annual_series_key": "state_farm_olathe_property_taxes_billed",
+      "label": "Account property taxes billed",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_state_farm_olathe_property_taxes_billed_2023",
+      "project_id": "prj_study_im3_building_00598261190",
+      "metric_code": "study.property_taxes_billed",
+      "value": 2352477.94,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2023,
+        "label": "Johnson County parcel tax year 2023"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "HMC Data Center 2 LLC / State Farm parcel, 24400 W Valley Parkway, quick ref R662349",
+        "county_fips": "20091",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_johnson_county_state_farm_tax_account_2026",
+      "source_locator": "Bills tab, Bills for tax year 2023, TOTALS, Total Taxes Due",
+      "notes": "Total parcel tax charged across all taxing entities listed by the county. This is a bill, not a causal impact estimate or a receipt assigned to any one government. The corresponding Amount Paid is stored as a separate metric.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-03",
+      "annual_series_key": "state_farm_olathe_property_taxes_billed",
+      "label": "Account property taxes billed",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_state_farm_olathe_property_taxes_billed_2024",
+      "project_id": "prj_study_im3_building_00598261190",
+      "metric_code": "study.property_taxes_billed",
+      "value": 2661273.6,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2024,
+        "label": "Johnson County parcel tax year 2024"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "HMC Data Center 2 LLC / State Farm parcel, 24400 W Valley Parkway, quick ref R662349",
+        "county_fips": "20091",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_johnson_county_state_farm_tax_account_2026",
+      "source_locator": "Bills tab, Bills for tax year 2024, TOTALS, Total Taxes Due",
+      "notes": "Total parcel tax charged across all taxing entities listed by the county. This is a bill, not a causal impact estimate or a receipt assigned to any one government. The corresponding Amount Paid is stored as a separate metric.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-03",
+      "annual_series_key": "state_farm_olathe_property_taxes_billed",
+      "label": "Account property taxes billed",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_state_farm_olathe_property_taxes_billed_2025",
+      "project_id": "prj_study_im3_building_00598261190",
+      "metric_code": "study.property_taxes_billed",
+      "value": 2298781.14,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2025,
+        "label": "Johnson County parcel tax year 2025"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "HMC Data Center 2 LLC / State Farm parcel, 24400 W Valley Parkway, quick ref R662349",
+        "county_fips": "20091",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_johnson_county_state_farm_tax_account_2026",
+      "source_locator": "Bills tab, Bills for tax year 2025, TOTALS, Total Taxes Due",
+      "notes": "Total parcel tax charged across all taxing entities listed by the county. This is a bill, not a causal impact estimate or a receipt assigned to any one government. The corresponding Amount Paid is stored as a separate metric.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-03",
+      "annual_series_key": "state_farm_olathe_property_taxes_billed",
+      "label": "Account property taxes billed",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_state_farm_olathe_property_taxes_paid_2019",
+      "project_id": "prj_study_im3_building_00598261190",
+      "metric_code": "study.property_taxes_paid",
+      "value": 1908562.84,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2019,
+        "label": "Johnson County parcel tax year 2019; account paid with zero balance as displayed September 3, 2026"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "HMC Data Center 2 LLC / State Farm parcel, 24400 W Valley Parkway, quick ref R662349",
+        "county_fips": "20091",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_johnson_county_state_farm_tax_account_2026",
+      "source_locator": "Bills tab, Bills for tax year 2019, TOTALS, Amount Paid and Balance",
+      "notes": "The official account reports Amount Paid equal to Total Taxes Due and a zero balance for this tax year. This verifies payment at the parcel account level; it does not identify receipt dates for every distribution, allocate the amount among taxing entities, or establish net community benefit.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-03",
+      "annual_series_key": "state_farm_olathe_property_taxes_paid",
+      "label": "Account property taxes paid",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_state_farm_olathe_property_taxes_paid_2020",
+      "project_id": "prj_study_im3_building_00598261190",
+      "metric_code": "study.property_taxes_paid",
+      "value": 1945571.17,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2020,
+        "label": "Johnson County parcel tax year 2020; account paid with zero balance as displayed September 3, 2026"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "HMC Data Center 2 LLC / State Farm parcel, 24400 W Valley Parkway, quick ref R662349",
+        "county_fips": "20091",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_johnson_county_state_farm_tax_account_2026",
+      "source_locator": "Bills tab, Bills for tax year 2020, TOTALS, Amount Paid and Balance",
+      "notes": "The official account reports Amount Paid equal to Total Taxes Due and a zero balance for this tax year. This verifies payment at the parcel account level; it does not identify receipt dates for every distribution, allocate the amount among taxing entities, or establish net community benefit.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-03",
+      "annual_series_key": "state_farm_olathe_property_taxes_paid",
+      "label": "Account property taxes paid",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_state_farm_olathe_property_taxes_paid_2021",
+      "project_id": "prj_study_im3_building_00598261190",
+      "metric_code": "study.property_taxes_paid",
+      "value": 2010360.94,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2021,
+        "label": "Johnson County parcel tax year 2021; account paid with zero balance as displayed September 3, 2026"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "HMC Data Center 2 LLC / State Farm parcel, 24400 W Valley Parkway, quick ref R662349",
+        "county_fips": "20091",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_johnson_county_state_farm_tax_account_2026",
+      "source_locator": "Bills tab, Bills for tax year 2021, TOTALS, Amount Paid and Balance",
+      "notes": "The official account reports Amount Paid equal to Total Taxes Due and a zero balance for this tax year. This verifies payment at the parcel account level; it does not identify receipt dates for every distribution, allocate the amount among taxing entities, or establish net community benefit.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-03",
+      "annual_series_key": "state_farm_olathe_property_taxes_paid",
+      "label": "Account property taxes paid",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_state_farm_olathe_property_taxes_paid_2022",
+      "project_id": "prj_study_im3_building_00598261190",
+      "metric_code": "study.property_taxes_paid",
+      "value": 1908311.8,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2022,
+        "label": "Johnson County parcel tax year 2022; account paid with zero balance as displayed September 3, 2026"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "HMC Data Center 2 LLC / State Farm parcel, 24400 W Valley Parkway, quick ref R662349",
+        "county_fips": "20091",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_johnson_county_state_farm_tax_account_2026",
+      "source_locator": "Bills tab, Bills for tax year 2022, TOTALS, Amount Paid and Balance",
+      "notes": "The official account reports Amount Paid equal to Total Taxes Due and a zero balance for this tax year. This verifies payment at the parcel account level; it does not identify receipt dates for every distribution, allocate the amount among taxing entities, or establish net community benefit.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-03",
+      "annual_series_key": "state_farm_olathe_property_taxes_paid",
+      "label": "Account property taxes paid",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_state_farm_olathe_property_taxes_paid_2023",
+      "project_id": "prj_study_im3_building_00598261190",
+      "metric_code": "study.property_taxes_paid",
+      "value": 2352477.94,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2023,
+        "label": "Johnson County parcel tax year 2023; account paid with zero balance as displayed September 3, 2026"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "HMC Data Center 2 LLC / State Farm parcel, 24400 W Valley Parkway, quick ref R662349",
+        "county_fips": "20091",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_johnson_county_state_farm_tax_account_2026",
+      "source_locator": "Bills tab, Bills for tax year 2023, TOTALS, Amount Paid and Balance",
+      "notes": "The official account reports Amount Paid equal to Total Taxes Due and a zero balance for this tax year. This verifies payment at the parcel account level; it does not identify receipt dates for every distribution, allocate the amount among taxing entities, or establish net community benefit.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-03",
+      "annual_series_key": "state_farm_olathe_property_taxes_paid",
+      "label": "Account property taxes paid",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_state_farm_olathe_property_taxes_paid_2024",
+      "project_id": "prj_study_im3_building_00598261190",
+      "metric_code": "study.property_taxes_paid",
+      "value": 2661273.6,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2024,
+        "label": "Johnson County parcel tax year 2024; account paid with zero balance as displayed September 3, 2026"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "HMC Data Center 2 LLC / State Farm parcel, 24400 W Valley Parkway, quick ref R662349",
+        "county_fips": "20091",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_johnson_county_state_farm_tax_account_2026",
+      "source_locator": "Bills tab, Bills for tax year 2024, TOTALS, Amount Paid and Balance",
+      "notes": "The official account reports Amount Paid equal to Total Taxes Due and a zero balance for this tax year. This verifies payment at the parcel account level; it does not identify receipt dates for every distribution, allocate the amount among taxing entities, or establish net community benefit.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-03",
+      "annual_series_key": "state_farm_olathe_property_taxes_paid",
+      "label": "Account property taxes paid",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_state_farm_olathe_property_taxes_paid_2025",
+      "project_id": "prj_study_im3_building_00598261190",
+      "metric_code": "study.property_taxes_paid",
+      "value": 2298781.14,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2025,
+        "label": "Johnson County parcel tax year 2025; account paid with zero balance as displayed September 3, 2026"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "HMC Data Center 2 LLC / State Farm parcel, 24400 W Valley Parkway, quick ref R662349",
+        "county_fips": "20091",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_johnson_county_state_farm_tax_account_2026",
+      "source_locator": "Bills tab, Bills for tax year 2025, TOTALS, Amount Paid and Balance",
+      "notes": "The official account reports Amount Paid equal to Total Taxes Due and a zero balance for this tax year. This verifies payment at the parcel account level; it does not identify receipt dates for every distribution, allocate the amount among taxing entities, or establish net community benefit.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-03",
+      "annual_series_key": "state_farm_olathe_property_taxes_paid",
+      "label": "Account property taxes paid",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_state_farm_olathe_estimated_cumulative_capex_2025",
+      "project_id": "prj_study_im3_building_00598261190",
+      "metric_code": "study.estimated_cumulative_capex",
+      "value": 169778850,
+      "value_qualifier": "approximately",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "cumulative",
+        "report_date": "2025-02-03",
+        "label": "Estimated total capital expenditure reported in the February 3, 2025 filing; expenditure dates unavailable"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "HMC Data Center 2 LLC / State Farm parcel, 24400 W Valley Parkway, quick ref R662349",
+        "county_fips": "20091",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_sec_state_farm_olathe_2025",
+      "source_locator": "State Farm Data Center Portfolio Properties table, Olathe row, Total CapEx Spend; footnote 3",
+      "notes": "The filing reports a site-specific estimated Total CapEx Spend for the Olathe property and says the portfolio investment covered mechanical, electrical, plumbing and shell. It is retained as an approximate cumulative historical amount, not annual spending, a public investment, local supplier purchases or an independent audit. The filing and county account share the 24400 West Valley Parkway address.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-03",
+      "label": "Estimated cumulative capital expenditure",
+      "category": "investment",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    }
+  ],
+  "economic_sources": [
+    {
+      "source_id": "src_study_johnson_county_state_farm_tax_account_2026",
+      "title": "Johnson County Property Tax Office — State Farm data-center parcel R662349",
+      "url": "https://taxbill.jocogov.org/Property-Detail/PropertyQuickRefID/R662349/PartyQuickRefID/O0584821",
+      "publisher": "Johnson County, Kansas Property Tax Office",
+      "source_type": "assessor_record",
+      "publication_date": {
+        "precision": "unknown"
+      },
+      "retrieved_on": "2026-09-03",
+      "review_method": "web_page",
+      "notes": "The official parcel page identifies owner HMC Data Center 2 LLC, situs 24400 W Valley Parkway, quick reference R662349 and real-estate tax ID DP69210000 0001. Its commercial-building section names STATE FARM MUTUAL AUTOMOBILE INSURANCE CO and classifies the structure as a computer data center. Value History reports 2021–2025 appraised and assessed totals. Bills report 2019–2025 total taxes due, equal amounts paid and zero balances; the 2025 installments show payment dates December 4, 2025 and May 19, 2026. Tax totals cover all listed taxing entities and are not allocated here to city, county, schools or other recipients."
+    },
+    {
+      "source_id": "src_study_sec_state_farm_olathe_2025",
+      "title": "Benchmark 2025-V13 Free Writing Prospectus",
+      "url": "https://www.sec.gov/Archives/edgar/data/2049534/000153949725000258/n4807-x5_ts.htm",
+      "publisher": "U.S. Securities and Exchange Commission",
+      "source_type": "sec_filing",
+      "publication_date": {
+        "precision": "day",
+        "date": "2025-02-03"
+      },
+      "retrieved_on": "2026-09-03",
+      "review_method": "web_page",
+      "notes": "The filed collateral term sheet identifies the Olathe property at 24400 West Valley Parkway as a 193,953-square-foot, single-parcel data center built in 2016, occupied by State Farm. The Olathe row reports $169,778,850 of estimated Total CapEx Spend. The table footnote explicitly calls the CapEx figure estimated; expenditure dates, local supplier share and construction job-years are not supplied."
+    }
+  ],
+  "economic_scope_note": "Reviewed evidence batches at campus or company/county scope. No record is allocated to an individual inventory building. Source checking establishes what a document reports, not an independent audit or causal attribution. Monetary figures are nominal. Peak workforce is distinct from annual employment; source-year labels do not establish fiscal-year boundaries. Original forecasts remain forecasts until realization is verified. No cross-record benefit total is defined. Cumulative project costs are not annual expenditure. Tax receipts and incentive payments remain separate, with inferred taxpayer links disclosed. Contextual research updates do not count as economic amounts. Account tax bills are distinct from cash receipts and incentive-program fees. Tax years, calendar years and fiscal years retain their source basis; separate taxpayer accounts are not consolidated. Municipal developer rebates and taxpayer valuations have distinct subjects. Estimated actual property value and tax capacity are not tax receipts; payable-year valuations retain their earlier assessment date. Taxpayer values expressed in millions retain approximate precision and account-level separation. A current-year table can use an older valuation date and is not converted into an annual series. Facility real-property and business-personal-property accounts remain separate, and address-label discrepancies are disclosed. Michigan Industrial Facilities Tax accounts remain distinct from the underlying real parcel and from post-expiration personal-property accounts; annual account totals are not recipient-level government receipts. Permit construction values are administrative project amounts, not verified expenditure, and separate permits are not combined without proof that their scopes do not overlap. Repeated maintenance-year assessments are annual parcel stocks, not new investment flows. Mixed-use parcel assessments and taxable values are retained at whole-parcel scope and are not allocated to a data-center tenant or function by floor area. Operator-reported jobs supported remain distinct from direct employees and FTEs. Approved infrastructure grants are documented public commitments rather than verified disbursements or total public costs. Cumulative community funding remains separate from tax receipts, payroll and modeled multiplier effects. Reported facility power capacity is not measured electricity consumption or peak demand. Permit-listed emergency generators are not runtime, fuel-use or actual-emissions observations. A city largest-taxpayer table's personal-property assessment remains separate from the leasehold real-property account, tax bills, receipts and capital expenditure. TIF loan principal is financing rather than a grant or general-fund receipt; project-generated tax revenue pledged to repayment is retained as a separate public-financing flow and is not added to gross parcel distributions. Water-withdrawal and consumptive permit capacities are regulatory limits rather than measured use. Development-agreement local-labor preferences are requirements rather than realized participation, and operating employee snapshots remain distinct from customers' on-site staff and jobs forecasts. Audited City bond statements distinguish issuance draws, year-end principal, annual principal retired, interest and fees, pledged TIF revenue, debt-service-fund transfers and future principal-plus-interest commitments. These measures are not summed into a benefit or subsidy total. City pledged revenue, City debt-service-fund transfers and the private fund's project TIF revenue applied to loan repayment retain their separate source definitions because only the 2022 transfer and private-fund amount agree exactly. Developer testimony in public meeting minutes is retained as a source-attributed cumulative lower bound; local-contractor spending is not converted into payroll, worker counts, household spending or multiplier effects. Economic-improvement-district cost estimates and maximum owner assessments remain source projections until bond issuance, an assessment schedule, collections and expenditures are verified. A statutory financing cap is not a tax receipt, public expenditure or subsidy. Audited private equipment-financing balances are debt stocks rather than construction spending, public support or community benefit. Reported floor area and occupied-share values describe operating scale and utilization, not employment, revenue, power use or economic output. Contractor and engineer case studies document supplier roles and completion timing but do not establish payment amounts, worker residence, payroll or multiplier effects. State incentive contract amounts, expected jobs and paid-or-certified-to-date fields remain distinct; a zero paid/certified balance at an earlier reporting cutoff does not imply no later claims. Public charging-infrastructure awards are commitments rather than verified disbursements, private project investment or operating benefits. Qualitative payment descriptions without a defensible numeric bound remain research context rather than quantitative records. Program-reported actual qualified investment, certified tax-exemption value and certified tax-credit value remain separate cumulative measures; none is converted into annual spending, a cash grant, local revenue or causal impact. County Business Patterns observations are county-industry context, not project contributions: establishment counts are employer locations rather than data-center facilities, March employment is not an annual average, annual payroll spans the full NAICS cell, and disclosure noise, classification changes and geographic assignment limit comparisons. No CBP change is attributed to a study project.",
+  "evidence_version": "study-economic-evidence-1.34.0",
+  "analysis_readiness": {
+    "construction": "not_assessed",
+    "operations": "not_assessed",
+    "fiscal": "not_assessed",
+    "causal": "not_assessed"
+  },
+  "legacy_first_entry_note": "The SEC filing and exact mapped address establish the Olathe State Farm Data Center as built in 2016, leased from November 3, 2016, and still fully occupied in 2025. Johnson County's six mapped records do not establish a complete historical inventory or rule out earlier government, telecom, financial, healthcare, university, utility, or enterprise operations.",
+  "scope_note": "Provisional private-sector research candidate. Owner/operator history, project boundaries and lifecycle require review. Membership does not verify current operation or establish economic impact."
+}

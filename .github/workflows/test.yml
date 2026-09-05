@@ -18,6 +18,9 @@ jobs:
       - name: Validate JSON contracts, configuration, fixtures, and public data
         run: python scripts/validate_data_contract.py
 
+      - name: Check private-sector study regression cases
+        run: python -m unittest discover -s tests -p test_private_sector_study.py
+
       - uses: pnpm/action-setup@v4
         with:
           version: 11.19.0
@@ -35,4 +38,3 @@ jobs:
       - name: Type-check and build static site
         working-directory: site
         run: pnpm run build
-

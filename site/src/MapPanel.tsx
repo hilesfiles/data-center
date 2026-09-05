@@ -9,9 +9,11 @@ import {
   type MapGeoJSONFeature,
   type MapMouseEvent,
   type StyleSpecification,
+  type GeoJSONSource,
 } from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 import maplibreWorkerUrl from "maplibre-gl/dist/maplibre-gl-worker.mjs?worker&url";
+import type { StudyProjectSummary } from "./studyTypes";
 import type {
   CountyEconomicBaseline,
   CountyEmploymentWagesBaseline,
@@ -28,7 +30,16 @@ interface MapPanelProps {
   metric: CountyMapMetric;
   selectedFips: string | null;
   onSelectCounty: (fips: string) => void;
+  studyProjects?: StudyProjectSummary[];
 }
+
+const studyFeatures = (projects: StudyProjectSummary[]) => ({
+  type: "FeatureCollection" as const,
+  features: projects.map(p => ({ type: "Feature" as const,
+    geometry: { type: "Point" as const, coordinates: [p.longitude, p.latitude] },
+    properties: { project_id: p.project_id, name: p.name, county_fips: p.county_fips, study_group: p.study_group, inventory_entity_type: p.inventory_entity_type },
+  })),
+});
 
 type FeaturePointerEvent = MapMouseEvent & { features?: MapGeoJSONFeature[] };
 
@@ -170,12 +181,19 @@ const countyPopupValue = (metric: CountyMapMetric, properties: Record<string, st
 
 setWorkerUrl(maplibreWorkerUrl);
 
-export function MapPanel({ metric, selectedFips, onSelectCounty }: MapPanelProps) {
+export function MapPanel({ metric, selectedFips, onSelectCounty, studyProjects = [] }: MapPanelProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<Map | null>(null);
   const selectRef = useRef(onSelectCounty);
   const metricRef = useRef(metric);
   const [message, setMessage] = useState("Loading map data…");
+  const projectsRef = useRef(studyProjects);
+  const selectedRef = useRef(selectedFips);
+  useEffect(() => {
+    projectsRef.current = studyProjects;
+    const source = mapRef.current?.getSource<GeoJSONSource>("study-projects");
+    if (source) source.setData(studyFeatures(studyProjects));
+  }, [studyProjects]);
 
   useEffect(() => {
     selectRef.current = onSelectCounty;
@@ -493,9 +511,26 @@ export function MapPanel({ metric, selectedFips, onSelectCounty }: MapPanelProps
           const fips = event.features?.[0]?.properties?.primary_county_fips as string | undefined;
           if (fips) selectRef.current(fips);
         });
+        map.addSource("study-projects", { type: "geojson", data: studyFeatures(projectsRef.current) });
+        map.addLayer({ id: "study-project-points", type: "circle", source: "study-projects", paint: {
+          "circle-radius": ["interpolate", ["linear"], ["zoom"], 3, 6, 9, 10],
+          "circle-color": "#7145a0", "circle-stroke-color": "#fff", "circle-stroke-width": 2,
+        } });
+        map.on("mousemove", "study-project-points", (event: FeaturePointerEvent) => {
+          const p = event.features?.[0]?.properties;
+          if (!p) return;
+          map.getCanvas().style.cursor = "pointer";
+          popup.setLngLat(event.lngLat).setHTML(`<strong>${escapeHtml(p.name)}</strong><br/>${escapeHtml(p.study_group)} · Research candidate<br/>${escapeHtml(p.inventory_entity_type)} location from inventory<br/>Click to open project evidence`).addTo(map);
+        });
+        map.on("mouseleave", "study-project-points", () => { popup.remove(); map.getCanvas().style.cursor = ""; });
+        map.on("click", "study-project-points", (event: FeaturePointerEvent) => {
+          const id = event.features?.[0]?.properties?.project_id;
+          if (typeof id === "string" && /^prj_study_[a-z0-9_]+$/.test(id)) window.location.hash = `/project/${id}`;
+        });
+        map.setFilter("county-selected", ["==", ["get", "county_fips"], selectedRef.current ?? ""]);
         map.resize();
         map.triggerRepaint();
-        setMessage("");
+        map.once("idle", () => setMessage(""));
       } catch (error) {
         setMessage(error instanceof Error ? error.message : "The map could not be loaded.");
       }
@@ -508,6 +543,7 @@ export function MapPanel({ metric, selectedFips, onSelectCounty }: MapPanelProps
   }, []);
 
   useEffect(() => {
+    selectedRef.current = selectedFips;
     const map = mapRef.current;
     if (!map?.getLayer("county-selected")) return;
     map.setFilter("county-selected", ["==", ["get", "county_fips"], selectedFips ?? ""]);
@@ -522,6 +558,7 @@ export function MapPanel({ metric, selectedFips, onSelectCounty }: MapPanelProps
         <div className="legend-ramp" aria-hidden="true" />
         <div className="legend-labels"><span>{METRIC_CONFIG[metric].lowLabel}</span><span>{METRIC_CONFIG[metric].highLabel}</span></div>
         <div className="review-key">
+          <span><i className="key-dot key-study" />study candidates ({studyProjects.length})</span>
           <span><i className="key-dot key-pending" />pending (0)</span>
           <span><i className="key-dot key-merged" />merged</span>
           <span><i className="key-dot key-contained" />contained</span>

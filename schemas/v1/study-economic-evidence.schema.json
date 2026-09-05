@@ -1,0 +1,890 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dccio.org/schemas/v1/study-economic-evidence.schema.json",
+  "title": "Scoped economic source evidence",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "evidence_version",
+    "reviewed_on",
+    "scope_note",
+    "metrics",
+    "sources",
+    "records"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "evidence_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "reviewed_on": {
+      "type": "string",
+      "minLength": 1,
+      "format": "date"
+    },
+    "scope_note": {
+      "type": "string",
+      "minLength": 1
+    },
+    "metrics": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/metric"
+      }
+    },
+    "sources": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/source"
+      }
+    },
+    "records": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/record"
+      }
+    },
+    "project_updates": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/project_update"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "metric": {
+      "type": "object",
+      "required": [
+        "metric_code",
+        "label",
+        "category",
+        "unit",
+        "measure_type",
+        "aggregation"
+      ],
+      "properties": {
+        "metric_code": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^study\\.[a-z0-9_]+$"
+        },
+        "label": {
+          "type": "string",
+          "minLength": 1
+        },
+        "category": {
+          "enum": [
+            "investment",
+            "construction",
+            "suppliers",
+            "operations",
+            "fiscal",
+            "public_costs",
+            "resources",
+            "community"
+          ]
+        },
+        "unit": {
+          "enum": [
+            "USD",
+            "USD_per_hour",
+            "FTE",
+            "employees",
+            "workers",
+            "jobs",
+            "gallons_per_year",
+            "million_gallons_per_day",
+            "MW",
+            "generators",
+            "square_feet",
+            "percent",
+            "establishments"
+          ]
+        },
+        "measure_type": {
+          "enum": [
+            "stock",
+            "flow",
+            "rate",
+            "peak"
+          ]
+        },
+        "aggregation": {
+          "const": "none"
+        }
+      },
+      "additionalProperties": false
+    },
+    "source": {
+      "type": "object",
+      "required": [
+        "source_id",
+        "title",
+        "url",
+        "publisher",
+        "source_type",
+        "publication_date",
+        "retrieved_on",
+        "review_method",
+        "notes"
+      ],
+      "properties": {
+        "source_id": {
+          "$ref": "common.schema.json#/$defs/entity_id"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "url": {
+          "type": "string",
+          "minLength": 1,
+          "format": "uri",
+          "pattern": "^https://"
+        },
+        "publisher": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_type": {
+          "enum": [
+            "state_record",
+            "local_government_record",
+            "assessor_record",
+            "sec_filing",
+            "operator_release",
+            "other"
+          ]
+        },
+        "publication_date": {
+          "$ref": "common.schema.json#/$defs/temporal_extent"
+        },
+        "retrieved_on": {
+          "type": "string",
+          "minLength": 1,
+          "format": "date"
+        },
+        "review_method": {
+          "enum": [
+            "pdf_text_and_page_image",
+            "web_pdf_text",
+            "web_page",
+            "structured_data"
+          ]
+        },
+        "notes": {
+          "type": "string",
+          "minLength": 1
+        },
+        "artifact_sha256": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      },
+      "additionalProperties": false
+    },
+    "record": {
+      "type": "object",
+      "required": [
+        "claim_id",
+        "project_id",
+        "metric_code",
+        "value",
+        "basis",
+        "period",
+        "scope",
+        "source_id",
+        "source_locator",
+        "notes",
+        "review_status",
+        "reviewed_on"
+      ],
+      "properties": {
+        "claim_id": {
+          "$ref": "common.schema.json#/$defs/entity_id"
+        },
+        "project_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^prj_study_[a-z0-9_]+$"
+        },
+        "metric_code": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^study\\.[a-z0-9_]+$"
+        },
+        "value": {
+          "type": "number",
+          "minimum": 0
+        },
+        "basis": {
+          "enum": [
+            "reported_actual",
+            "source_projection"
+          ]
+        },
+        "period": {
+          "oneOf": [
+            {
+              "type": "object",
+              "required": [
+                "kind",
+                "year",
+                "label"
+              ],
+              "properties": {
+                "kind": {
+                  "const": "fiscal_year"
+                },
+                "year": {
+                  "type": "integer",
+                  "minimum": 1800,
+                  "maximum": 2200
+                },
+                "label": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "required": [
+                "kind",
+                "report_date",
+                "label"
+              ],
+              "properties": {
+                "kind": {
+                  "const": "reported_snapshot"
+                },
+                "report_date": {
+                  "type": "string",
+                  "minLength": 1,
+                  "format": "date"
+                },
+                "label": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "required": [
+                "kind",
+                "report_date",
+                "label"
+              ],
+              "properties": {
+                "kind": {
+                  "const": "projection_horizon"
+                },
+                "report_date": {
+                  "type": "string",
+                  "minLength": 1,
+                  "format": "date"
+                },
+                "horizon_years": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "label": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "required": [
+                "kind",
+                "year",
+                "label"
+              ],
+              "properties": {
+                "kind": {
+                  "const": "source_year"
+                },
+                "year": {
+                  "type": "integer",
+                  "minimum": 1800,
+                  "maximum": 2200
+                },
+                "label": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "required": [
+                "kind",
+                "label"
+              ],
+              "properties": {
+                "kind": {
+                  "const": "historical_peak"
+                },
+                "report_date": {
+                  "type": "string",
+                  "minLength": 1,
+                  "format": "date"
+                },
+                "label": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "required": [
+                "kind",
+                "label"
+              ],
+              "properties": {
+                "kind": {
+                  "const": "cumulative"
+                },
+                "report_date": {
+                  "type": "string",
+                  "minLength": 1,
+                  "format": "date"
+                },
+                "label": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "required": [
+                "kind",
+                "year",
+                "label"
+              ],
+              "properties": {
+                "kind": {
+                  "const": "calendar_year"
+                },
+                "year": {
+                  "type": "integer",
+                  "minimum": 1800,
+                  "maximum": 2200
+                },
+                "label": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "required": [
+                "kind",
+                "year",
+                "label"
+              ],
+              "properties": {
+                "kind": {
+                  "const": "tax_year"
+                },
+                "year": {
+                  "type": "integer",
+                  "minimum": 1800,
+                  "maximum": 2200
+                },
+                "label": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "additionalProperties": false
+            }
+          ]
+        },
+        "scope": {
+          "type": "object",
+          "required": [
+            "level",
+            "label",
+            "county_fips",
+            "inventory_allocation"
+          ],
+          "properties": {
+            "level": {
+              "enum": [
+                "campus",
+                "company_county",
+                "multi_campus_county",
+                "supporting_infrastructure",
+                "county_context"
+              ]
+            },
+            "label": {
+              "type": "string",
+              "minLength": 1
+            },
+            "county_fips": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^[0-9]{5}$"
+            },
+            "inventory_allocation": {
+              "const": "unallocated"
+            }
+          },
+          "additionalProperties": false
+        },
+        "source_id": {
+          "$ref": "common.schema.json#/$defs/entity_id"
+        },
+        "pdf_page": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "printed_page": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_locator": {
+          "type": "string",
+          "minLength": 1
+        },
+        "notes": {
+          "type": "string",
+          "minLength": 1
+        },
+        "review_status": {
+          "const": "source_checked"
+        },
+        "reviewed_on": {
+          "type": "string",
+          "minLength": 1,
+          "format": "date"
+        },
+        "annual_series_key": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[a-z0-9_]+$"
+        },
+        "value_qualifier": {
+          "enum": [
+            "exact",
+            "at_least",
+            "greater_than",
+            "up_to",
+            "approximately"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "public_record": {
+      "type": "object",
+      "required": [
+        "claim_id",
+        "project_id",
+        "metric_code",
+        "value",
+        "basis",
+        "period",
+        "scope",
+        "source_id",
+        "source_locator",
+        "notes",
+        "review_status",
+        "reviewed_on",
+        "label",
+        "category",
+        "unit",
+        "measure_type",
+        "aggregation"
+      ],
+      "properties": {
+        "claim_id": {
+          "$ref": "common.schema.json#/$defs/entity_id"
+        },
+        "project_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^prj_study_[a-z0-9_]+$"
+        },
+        "metric_code": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^study\\.[a-z0-9_]+$"
+        },
+        "value": {
+          "type": "number",
+          "minimum": 0
+        },
+        "basis": {
+          "enum": [
+            "reported_actual",
+            "source_projection"
+          ]
+        },
+        "period": {
+          "oneOf": [
+            {
+              "type": "object",
+              "required": [
+                "kind",
+                "year",
+                "label"
+              ],
+              "properties": {
+                "kind": {
+                  "const": "fiscal_year"
+                },
+                "year": {
+                  "type": "integer",
+                  "minimum": 1800,
+                  "maximum": 2200
+                },
+                "label": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "required": [
+                "kind",
+                "report_date",
+                "label"
+              ],
+              "properties": {
+                "kind": {
+                  "const": "reported_snapshot"
+                },
+                "report_date": {
+                  "type": "string",
+                  "minLength": 1,
+                  "format": "date"
+                },
+                "label": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "required": [
+                "kind",
+                "report_date",
+                "label"
+              ],
+              "properties": {
+                "kind": {
+                  "const": "projection_horizon"
+                },
+                "report_date": {
+                  "type": "string",
+                  "minLength": 1,
+                  "format": "date"
+                },
+                "horizon_years": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "label": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "required": [
+                "kind",
+                "year",
+                "label"
+              ],
+              "properties": {
+                "kind": {
+                  "const": "source_year"
+                },
+                "year": {
+                  "type": "integer",
+                  "minimum": 1800,
+                  "maximum": 2200
+                },
+                "label": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "required": [
+                "kind",
+                "label"
+              ],
+              "properties": {
+                "kind": {
+                  "const": "historical_peak"
+                },
+                "report_date": {
+                  "type": "string",
+                  "minLength": 1,
+                  "format": "date"
+                },
+                "label": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "required": [
+                "kind",
+                "label"
+              ],
+              "properties": {
+                "kind": {
+                  "const": "cumulative"
+                },
+                "report_date": {
+                  "type": "string",
+                  "minLength": 1,
+                  "format": "date"
+                },
+                "label": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "required": [
+                "kind",
+                "year",
+                "label"
+              ],
+              "properties": {
+                "kind": {
+                  "const": "calendar_year"
+                },
+                "year": {
+                  "type": "integer",
+                  "minimum": 1800,
+                  "maximum": 2200
+                },
+                "label": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "required": [
+                "kind",
+                "year",
+                "label"
+              ],
+              "properties": {
+                "kind": {
+                  "const": "tax_year"
+                },
+                "year": {
+                  "type": "integer",
+                  "minimum": 1800,
+                  "maximum": 2200
+                },
+                "label": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "additionalProperties": false
+            }
+          ]
+        },
+        "scope": {
+          "type": "object",
+          "required": [
+            "level",
+            "label",
+            "county_fips",
+            "inventory_allocation"
+          ],
+          "properties": {
+            "level": {
+              "enum": [
+                "campus",
+                "company_county",
+                "multi_campus_county",
+                "supporting_infrastructure",
+                "county_context"
+              ]
+            },
+            "label": {
+              "type": "string",
+              "minLength": 1
+            },
+            "county_fips": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^[0-9]{5}$"
+            },
+            "inventory_allocation": {
+              "const": "unallocated"
+            }
+          },
+          "additionalProperties": false
+        },
+        "source_id": {
+          "$ref": "common.schema.json#/$defs/entity_id"
+        },
+        "pdf_page": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "printed_page": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_locator": {
+          "type": "string",
+          "minLength": 1
+        },
+        "notes": {
+          "type": "string",
+          "minLength": 1
+        },
+        "review_status": {
+          "const": "source_checked"
+        },
+        "reviewed_on": {
+          "type": "string",
+          "minLength": 1,
+          "format": "date"
+        },
+        "annual_series_key": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[a-z0-9_]+$"
+        },
+        "label": {
+          "type": "string",
+          "minLength": 1
+        },
+        "category": {
+          "enum": [
+            "investment",
+            "construction",
+            "suppliers",
+            "operations",
+            "fiscal",
+            "public_costs",
+            "resources",
+            "community"
+          ]
+        },
+        "unit": {
+          "enum": [
+            "USD",
+            "USD_per_hour",
+            "FTE",
+            "employees",
+            "workers",
+            "jobs",
+            "gallons_per_year",
+            "million_gallons_per_day",
+            "MW",
+            "generators",
+            "square_feet",
+            "percent",
+            "establishments"
+          ]
+        },
+        "measure_type": {
+          "enum": [
+            "stock",
+            "flow",
+            "rate",
+            "peak"
+          ]
+        },
+        "aggregation": {
+          "const": "none"
+        },
+        "value_qualifier": {
+          "enum": [
+            "exact",
+            "at_least",
+            "greater_than",
+            "up_to",
+            "approximately"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "project_update": {
+      "type": "object",
+      "required": [
+        "project_id",
+        "source_id",
+        "as_of",
+        "title",
+        "notes"
+      ],
+      "properties": {
+        "project_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^prj_study_[a-z0-9_]+$"
+        },
+        "source_id": {
+          "$ref": "common.schema.json#/$defs/entity_id"
+        },
+        "as_of": {
+          "type": "string",
+          "format": "date"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "notes": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

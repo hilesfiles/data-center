@@ -1,4 +1,6 @@
 import { lazy, Suspense, useEffect, useMemo, useState } from "react";
+import { CountyStudyProjects, StudyNav } from "./StudyNav";
+import type { StudyIndex } from "./studyTypes";
 import type {
   CountyEntityAdjudicationCoverage,
   CountyEconomicHistory,
@@ -45,7 +47,7 @@ const countyFipsFromHash = () => {
   return match?.[1] ?? null;
 };
 
-export default function App() {
+export default function App({ study, studyError }: { study: StudyIndex | null; studyError: string | null }) {
   const [metadata, setMetadata] = useState<SiteMetadata | null>(null);
   const [counties, setCounties] = useState<FacilitySourceCoverage[]>([]);
   const [economic, setEconomic] = useState<CountyEconomicBaseline[]>([]);
@@ -63,6 +65,8 @@ export default function App() {
   const [adjudication, setAdjudication] = useState<CountyEntityAdjudicationCoverage[]>([]);
   const [lifecycle, setLifecycle] = useState<CountyLifecycleVerificationCoverage[]>([]);
   const [mapMetric, setMapMetric] = useState<CountyMapMetric>("im3-source-records");
+  const [studyGroup, setStudyGroup] = useState("");
+  const mappedProjects = useMemo(() => study?.projects.filter(p => !studyGroup || p.study_group === studyGroup), [study, studyGroup]);
   const [profileFips, setProfileFips] = useState<string | null>(() => countyFipsFromHash());
   const [selectedFips, setSelectedFips] = useState<string | null>(
     () => countyFipsFromHash() ?? "51107",
@@ -287,11 +291,12 @@ export default function App() {
           </div>
           <div className="version-block">
             <span className="status-dot" />
-            <span>{metadata?.data_version ?? "Loading data version"}</span>
+            <span title={metadata?.data_version}>{metadata ? "Source-linked county data" : "Loading county data"}</span>
           </div>
         </header>
+        <StudyNav />
         <main className="county-profile-page">
-          <a className="back-link" href="#">← Back to national map</a>
+          <a className="back-link" href="#/map">← Back to national map</a>
           {error && <div className="error-panel">{error}</div>}
           {!error && counties.length > 0 && selectedCounty == null && (
             <div className="empty-panel">No current Census county exists for FIPS {profileFips}.</div>
@@ -305,10 +310,11 @@ export default function App() {
                 <div>
                   <span className="eyebrow">{selectedCounty.state_abbr} · FIPS {selectedCounty.county_fips}</span>
                   <h2>{selectedCounty.county_name}</h2>
-                  <p>Shareable static profile with history loaded only for {selectedCounty.state_abbr}.</p>
+                  <p>Community economic history and linked data-center research.</p>
                 </div>
                 <span className="quality-badge grade-p">Provisional</span>
               </div>
+              <CountyStudyProjects study={study} fips={selectedCounty.county_fips} error={studyError} />
               <section className="profile-grid" aria-label="County profile measures">
                 <article>
                   <span>IM3 source records</span>
@@ -331,16 +337,6 @@ export default function App() {
                   <small>four governed measures per year</small>
                 </article>
                 <article>
-                  <span>County first-entry treatment</span>
-                  <strong>{!treatmentLoaded ? "Loading…" : treatmentStatus}</strong>
-                  <small>{!treatmentLoaded ? "loading governed assessment" : treatmentNote}</small>
-                </article>
-                <article>
-                  <span>First-entry research queue</span>
-                  <strong>{!researchQueueLoaded ? "Loading…" : researchQueueStatus}</strong>
-                  <small>{!researchQueueLoaded ? "loading governed priority" : researchQueueNote}</small>
-                </article>
-                <article>
                   <span>Employment change · 2001–2024</span>
                   <strong>{!historyLoaded ? "Loading…" : formatPercentChange(selectedHistoryChange.employment)}</strong>
                   <small>descriptive, not a causal estimate</small>
@@ -361,10 +357,14 @@ export default function App() {
                   <small>nominal descriptive change</small>
                 </article>
               </section>
-              <div className="evidence-note profile-note">
-                <span>{selectedFirstEntryResearch?.adjudication_status ? "First-entry adjudication" : "Research status"}</span>
-                <p>{selectedFirstEntryResearch?.research_summary ?? "The governed first-entry queue contains 217 research candidates and a region-balanced 24-county initial tranche. Queue rank orders evidence work only: it does not establish a treatment date, first entry, or never-treated comparison status."}</p>
-              </div>
+              <details className="research-details">
+                <summary>County first-entry methodology and research</summary>
+                <p>First-entry treatment: {!treatmentLoaded ? "Loading…" : treatmentStatus}</p>
+                <p>{treatmentNote}</p>
+                <p>Research: {!researchQueueLoaded ? "Loading…" : researchQueueStatus}</p>
+                <p>{researchQueueNote}</p>
+                <p>This assessment addresses the county's first entry. Project construction, operations and fiscal research have separate evidence requirements.</p>
+              </details>
             </>
           )}
         </main>
@@ -381,12 +381,13 @@ export default function App() {
         </div>
         <div className="version-block">
           <span className="status-dot" />
-          <span>{metadata?.data_version ?? "Loading data version"}</span>
+          <span title={metadata?.data_version}>{metadata ? "Source-linked county data" : "Loading county data"}</span>
         </div>
       </header>
 
+      <StudyNav />
       <div className="fixture-banner" role="status">
-        <strong>One hundred seventy-two dated anchors have been adjudicated across all 217 research-queue counties.</strong> Earlier operations reject 59 candidate anchors; 113 counties remain unresolved as county first entry. The final tranche dates operational facilities in Douglas WA, Somerset NJ, Licking OH, Davidson TN, Polk IA, Franklin OH, Laramie WY, Crook OR, and Washoe NV; the Licking, Polk, and Crook candidates are rejected as county first entry because earlier operations are documented. Complete historical inventories remain unresolved, the 217-county research queue is complete, zero treatment counties are eligible, and no impact model has been run.
+        {study ? <><strong>{study.counts.projects} private-sector research candidates across {study.counts.counties} counties.</strong> Select a study marker or county to explore projects. Economic evidence is available for {study.counts.projects_with_economic_evidence} projects; annual accounts remain incomplete.</> : studyError ?? "Loading the private-sector project register…"}
       </div>
 
       <main className="workspace">
@@ -409,7 +410,9 @@ export default function App() {
               <option value="weekly-wage">Average weekly wage, nominal (2025)</option>
               <option value="private-construction-employment">Private construction jobs (2025)</option>
             </select>
-            <p className="control-note">Facility counts use IM3 v2026.02.09. Economic measures use BEA 2024 and BLS QCEW 2025 annual data. Missing and suppressed values are never displayed as zero.</p>
+            <p className="control-note">Source-record coverage and county economic conditions provide context. The 2025 construction measure covers all private construction in the county, not just data-center work. Missing and suppressed values remain distinct from zero.</p>
+            <label className="study-map-filter" htmlFor="study-map-type">Study markers</label>
+            <select id="study-map-type" value={studyGroup} onChange={e => setStudyGroup(e.target.value)}><option value="">All project types</option>{Object.keys(study?.counts.groups ?? {}).map(group => <option key={group}>{group}</option>)}</select>
           </section>
 
           <section className="county-section" aria-live="polite">
@@ -428,6 +431,7 @@ export default function App() {
                 <a className="profile-link" href={`#/county/${selectedCounty.county_fips}`}>
                   Open shareable county profile →
                 </a>
+                <CountyStudyProjects study={study} fips={selectedCounty.county_fips} error={studyError} />
 
                 <div className="stat-grid">
                   <article>
@@ -549,16 +553,6 @@ export default function App() {
                     <em>governed descriptive history</em>
                   </div>
                   <div className="lifecycle-row">
-                    <span>County first-entry treatment</span>
-                    <strong>{treatmentStatus}</strong>
-                    <em>{treatmentNote}</em>
-                  </div>
-                  <div className="lifecycle-row">
-                    <span>First-entry research queue</span>
-                    <strong>{researchQueueStatus}</strong>
-                    <em>{researchQueueNote}</em>
-                  </div>
-                  <div className="lifecycle-row">
                     <span>Covered employment change · 2001–2024</span>
                     <strong>{formatPercentChange(selectedHistoryChange.employment)}</strong>
                     <em>descriptive change</em>
@@ -610,6 +604,12 @@ export default function App() {
                   </div>
                 </div>
 
+                <details className="research-details">
+                  <summary>County first-entry research</summary>
+                  <p>{treatmentStatus}: {treatmentNote}</p>
+                  <p>{researchQueueStatus}: {researchQueueNote}</p>
+                  <p>This historical assessment is separate from project-level economic research.</p>
+                </details>
                 <div className="evidence-note">
                   <span>Interpretation</span>
                   <p>Halo color shows reviewed evidence state: blue means available evidence does not identify the building, red marks conflicting official records, and green marks a verified status. Unknown and disputed records are never treated as zero.</p>
@@ -621,7 +621,7 @@ export default function App() {
 
         <section className="map-section">
           <Suspense fallback={<div className="map-loading">Preparing interactive map…</div>}>
-            <MapPanel metric={mapMetric} selectedFips={selectedFips} onSelectCounty={setSelectedFips} />
+            <MapPanel metric={mapMetric} selectedFips={selectedFips} onSelectCounty={setSelectedFips} studyProjects={mappedProjects} />
           </Suspense>
           <div className="map-caption">
             <span>IM3 v2026.02.09 · 1,472 source objects</span>
@@ -629,9 +629,7 @@ export default function App() {
             <span>BEA county economy · 2024</span>
             <span>BLS QCEW employment and wages · 2025</span>
             <span>BEA–BLS core panel · 2001–2024</span>
-            <span>First-entry treatment registry · 0 eligible counties</span>
-            <span>First-entry research · 24 initial / 193 backlog</span>
-            <span>Static JSON · No runtime database</span>
+            {study && <span>Study register · {study.counts.projects} candidate projects · {study.screen_date}</span>}
             <span>ODbL · © OpenStreetMap contributors</span>
           </div>
         </section>

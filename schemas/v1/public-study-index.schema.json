@@ -1,0 +1,116 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dccio.org/schemas/v1/public-study-index.schema.json",
+  "title": "Private-sector study register",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "release_id",
+    "generated_at",
+    "screen_date",
+    "selection_basis",
+    "scope",
+    "counts",
+    "economic_evidence_status",
+    "projects"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "release_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "screen_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "selection_basis": {
+      "type": "string",
+      "minLength": 1
+    },
+    "scope": {
+      "type": "string",
+      "minLength": 1
+    },
+    "economic_evidence_status": {
+      "enum": [
+        "not_yet_collected",
+        "partial"
+      ]
+    },
+    "counts": {
+      "type": "object",
+      "required": [
+        "projects",
+        "counties",
+        "states",
+        "campus_targets",
+        "history_evidence_available",
+        "groups",
+        "projects_with_economic_evidence",
+        "economic_records",
+        "reported_actual_records",
+        "projection_records"
+      ],
+      "properties": {
+        "projects": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "counties": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "states": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "campus_targets": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "history_evidence_available": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "groups": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "projects_with_economic_evidence": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "economic_records": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "reported_actual_records": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "projection_records": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "additionalProperties": false
+    },
+    "projects": {
+      "type": "array",
+      "items": {
+        "$ref": "public-study-project.schema.json#/$defs/summary"
+      }
+    }
+  },
+  "additionalProperties": false
+}

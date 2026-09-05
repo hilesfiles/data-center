@@ -6,6 +6,49 @@ for the Observatory. County boundaries and identity fields come from the authori
 of IM3 Atlas v2026.02.09 source records. It is not a complete or lifecycle-verified
 operating-facility inventory, and the application contains no impact findings.
 
+The first private-sector study release adds a searchable register of 36 provisional
+projects across 35 counties and 23 states, including five campus-linked candidates.
+The default page is the project register; `#/project/{project_id}` opens a sourced
+history and economic-evidence checklist, `#/map` retains the national map with study
+markers, and existing `#/county/{FIPS}` links remain available. First-entry decisions
+are retained as a separate research question. Study release 1.35 publishes 545 economic source records
+linked to all 36 candidates: 498 reported observations and 47 projections.
+Profiles show source pages/sections, campus/company scope, tax-base history with gaps,
+construction peaks, paired tax/incentive histories with a narrowly defined documented difference,
+qualified amounts, local-contractor spending and named supplier roles, community funding, operating scale, private financing, capacity and permit context, and a separate forecast view.
+Dated research updates flag developments such as expired expansion agreements, state incentive contract and payment status, an EID debt-register screen, and an unsubmitted annual report. Harmonized annual project accounts and attributable-effect
+estimates remain incomplete.
+
+The implementation sequence and remaining work are documented in
+`docs/application-remediation-plan.md` and
+`docs/revised-private-sector-economic-study-plan.md`.
+
+Rebuild the private-sector study release from its versioned candidate and economic-evidence inputs:
+
+```powershell
+python scripts/build_private_sector_study.py
+python scripts/validate_data_contract.py
+python -m unittest discover -s tests -p test_private_sector_study.py
+```
+
+The builder reuses inventory identifiers and preserves date wording and uncertainty.
+It emits provisional project entities, a compact register, individually loaded project
+profiles, and a hash manifest. The original advisory screen was imported once into
+`config/v1/private-sector-study-candidates.json`; subsequent research should update that
+versioned input explicitly. Register membership does not verify operation or authorize
+an impact model. `config/v1/study-economic-evidence.json` defines scoped measures,
+source metadata and reviewed facts. The builder also materializes the existing source
+and claim contracts in `data/silver/study/economic-sources.json` and
+`economic-claims.json`. Claims with unresolved campus/building allocation or snapshot
+timing are not promoted into annual project observations. The remaining evidence gaps
+are explicit, never zero-filled. See `docs/study-economic-evidence.md` for review rules
+and the first batch’s scope.
+
+Browser checks are available in `scripts/test_study_browser.mjs` against a running
+preview. Set `STUDY_PREVIEW_URL` for its URL and `PLAYWRIGHT_MODULE` if using a bundled
+Playwright installation. Screenshots and check results are written under
+`reports/application-remediation/`.
+
 The initial deliverables are:
 
 - a conceptual data model in `docs/data-model.md`;
