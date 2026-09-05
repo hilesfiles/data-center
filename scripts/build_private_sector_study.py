@@ -24,7 +24,7 @@ CONFIG = ROOT / "config/v1/private-sector-study-candidates.json"
 PUBLIC = ROOT / "site/public/data/v1"
 OUT = PUBLIC / "study"
 SILVER = ROOT / "data/silver/study"
-VERSION = "private-sector-study-1.40.0"
+VERSION = "private-sector-study-1.41.0"
 GAPS = [
     ("investment", "Capital investment", "Annual actual spending, local share, and phase allocation."),
     ("construction", "Construction jobs and payroll", "Workers, job-years, payroll, duration, and local participation."),
@@ -202,7 +202,7 @@ def main():
         paths.append((path, 1))
     manifest = {
         "schema_version": "1.0.0", "release_id": VERSION, "generated_at": stamp,
-        "inputs": [{"path": str(p.relative_to(ROOT)).replace("\\", "/"), "sha256": digest(p)} for p in [CONFIG, EVIDENCE, SYNTHESIS, MODELING_POLICY, inventory_path, *panel_paths, Path(__file__), Path(__file__).with_name("study_economic_evidence.py"), Path(__file__).with_name("study_modeled_synthesis.py")]],
+        "inputs": [{"path": str(p.relative_to(ROOT)).replace("\\", "/"), "sha256": digest(p)} for p in [CONFIG, EVIDENCE, SYNTHESIS, MODELING_POLICY, inventory_path, *panel_paths, Path(__file__), Path(__file__).with_name("build_hammond_modeled_synthesis.py"), Path(__file__).with_name("study_economic_evidence.py"), Path(__file__).with_name("study_modeled_synthesis.py")]],
         "parts": [{"path": str(p.relative_to(ROOT)).replace("\\", "/"), "record_count": count, "byte_size": p.stat().st_size, "sha256": digest(p)} for p, count in paths],
     }
     write(OUT / "manifest.json", manifest)

@@ -1,6 +1,6 @@
 {
-  "release_id": "private-sector-study-1.40.0",
-  "generated_at": "2026-09-05T19:20:12+00:00",
+  "release_id": "private-sector-study-1.41.0",
+  "generated_at": "2026-09-05T19:27:12+00:00",
   "counts": {
     "projects": 36,
     "counties": 35,
@@ -16,7 +16,7 @@
     "economic_records": 585,
     "reported_actual_records": 533,
     "projection_records": 52,
-    "modeled_synthesis_records": 33
+    "modeled_synthesis_records": 70
   },
   "data_contract": {
     "status": "passed",
@@ -26,7 +26,7 @@
   },
   "unittest": {
     "status": "passed",
-    "tests": 48
+    "tests": 49
   },
   "typescript": "passed",
   "vite_production_build": "passed",
@@ -45,7 +45,8 @@
       "county source-year value remains distinct from a fiscal-year series",
       "a forecast-only project never displays its plan as reported activity",
       "Forest City depth account separates fiscal arithmetic, current operator claims and original forecasts",
-      "Hammond account identifies the required quarterly local-labor records and preserves them as an unresolved evidence gap",
+      "Hammond keeps sourced, forecast and 37 modeled records separate while populating coverage and readiness",
+      "Hammond preserves missing local-labor submissions as a public-evidence gap without solicitation",
       "cumulative investment and the city's modeled net fiscal forecast retain distinct timing and basis",
       "water-reuse infrastructure cost preserves payer, system scope and non-annual timing",
       "tax bills retain two taxpayer accounts, source tax years and the distinction from cash receipts",
@@ -93,6 +94,8 @@
     "expedient-franklin-evidence-mobile.png",
     "fiscal-comparison-desktop.png",
     "fiscal-comparison-mobile.png",
+    "hammond-analysis-readiness-mobile.png",
+    "hammond-annual-account-coverage-mobile.png",
     "hammond-cbp-employment-mobile.png",
     "hammond-depth-evidence-mobile.png",
     "hammond-edge-closeout-mobile.png",
@@ -103,7 +106,9 @@
     "hammond-investment-cost-basis-mobile.png",
     "hammond-irtc-status-mobile.png",
     "hammond-local-contractors-mobile.png",
-    "hammond-local-labor-acquisition-mobile.png",
+    "hammond-local-labor-gap-mobile.png",
+    "hammond-modeled-synthesis-mobile.png",
+    "hammond-modeled-synthesis-viewport-mobile.png",
     "hammond-private-financing-mobile.png",
     "hammond-state-contract-mobile.png",
     "hammond-state-data-incentive-mobile.png",
@@ -173,6 +178,7 @@
     "Expedient Franklin evidence covers a pre-existing 2007 computer-center parcel and later alteration permits. Assessment stocks are not new investment; permit amounts are not verified expenditure or payroll; the 12-job statement remains an unverified hiring plan. Tax bills, payments, equipment value, realized employment, incentives and public costs remain uncollected.",
     "NTT SV1 County Verified values are positions in assessment appeals, not final assessments, tax bills or payments; the employee and annual-water figures are pre-opening forecasts, and the environmental document's inconsistent daily wastewater arithmetic is not resolved by inference.",
     "Meta Forest City cumulative investment, jobs supported and community funding are operator-reported; the water-line amount is an approved public grant rather than verified disbursement or total cost. The fiscal-table difference is arithmetic, not a complete net-benefit measure, and measured campus resource use remains uncollected.",
-    "Storey modeled syntheses use cited public evidence and explicit assumptions for capital floors, direct labor, fiscal reconciliation, resource ranges and a descriptive county employment change. They are not observed or audited facility values. Local purchasing, indirect and induced effects, recipient-level net fiscal results, metered resource use and a Switch-only causal effect remain unresolved and are not synthesized."
+    "Storey modeled syntheses use cited public evidence and explicit assumptions for capital floors, direct labor, fiscal reconciliation, resource ranges and a descriptive county employment change. They are not observed or audited facility values. Local purchasing, indirect and induced effects, recipient-level net fiscal results, metered resource use and a Switch-only causal effect remain unresolved and are not synthesized.",
+    "Hammond modeled syntheses use cited public evidence and explicit assumptions for construction and operating contribution channels, fiscal reconciliations, resident-worker proxies, resource engineering and descriptive county-industry changes. They are not observed or audited facility values and do not establish causation. Audited vendor payments, payroll, workforce residence, annual actual capital spending, current employment, complete net fiscal incidence, metered utilities and causal comparison diagnostics remain unresolved."
   ]
 }

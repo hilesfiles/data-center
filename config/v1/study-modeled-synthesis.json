@@ -1,9 +1,9 @@
 {
   "schema_version": "1.0.0",
-  "synthesis_version": "study-modeled-synthesis-2.3.0",
+  "synthesis_version": "study-modeled-synthesis-2.4.0",
   "modeling_policy_version": "study-modeling-policy-1.2.0",
   "reviewed_on": "2026-09-05",
-  "scope_note": "Decision-relevant modeled syntheses for Apple Mesa and Switch Citadel / Tahoe Reno 1. These values are derived from cited public evidence and explicit assumptions; they are not observed, audited, source-reported, or causal unless a record explicitly says otherwise. They remain outside canonical claims and source-record counts.",
+  "scope_note": "Decision-relevant modeled syntheses for Apple Mesa, Switch Citadel / Tahoe Reno 1, and Digital Crossroad Hammond. These values are derived from cited public evidence and explicit assumptions; they are not observed, audited, source-reported, or causal unless a record explicitly says otherwise. They remain outside canonical claims and source-record counts.",
   "sources": [
     {
       "source_id": "src_study_ftz_board_annual_report_2024",
@@ -265,6 +265,62 @@
       "retrieved_on": "2026-09-01",
       "review_method": "structured_data",
       "notes": "Study panel values use annual QCEW total covered employment for Storey County (FIPS 32029): 3,090, 3,424, 3,893 and 4,797 in 2011-2014; 11,105, 17,199 and 17,997 in 2017-2019. The series covers all employers and is strongly confounded by Tesla and broader Tahoe-Reno Industrial Center growth."
+    },
+    {
+      "source_id": "src_study_pwc_data_center_market_2021",
+      "title": "Prince William County Data Center Market Study",
+      "url": "https://www.pwcva.gov/assets/2021-12/Final%20Report%20-%20Prince%20William%20County%20Data%20Center%20Market%20Study%20120121%20.pdf",
+      "publisher": "Prince William County, Virginia",
+      "source_type": "local_government_record",
+      "publication_date": {
+        "precision": "year",
+        "year": 2021
+      },
+      "retrieved_on": "2026-09-05",
+      "review_method": "pdf_text_and_page_image",
+      "notes": "Tables 7 and 8 report direct, indirect, induced and total construction and operating employment, labor income and output for a county prototype using IMPLAN. Dollar values are 2021 dollars; the underlying IMPLAN data vintage is not disclosed."
+    },
+    {
+      "source_id": "src_study_nirpc_recovery_plan_2022",
+      "title": "Northwest Indiana Economic Recovery and Resilience Plan",
+      "url": "https://www.in.gov/nirpc/files/2022-09-14-NIRPC-Economic-Recovery-and-Resilience-Plan-1.pdf",
+      "publisher": "Northwestern Indiana Regional Planning Commission",
+      "source_type": "local_government_record",
+      "publication_date": {
+        "date": "2022-09-14",
+        "precision": "day"
+      },
+      "retrieved_on": "2026-09-05",
+      "review_method": "pdf_text_and_page_image",
+      "notes": "Reports that roughly 117,000, or about 55 percent, of resident workers also work in Lake County. This is a regional workforce benchmark, not project worker-residence evidence."
+    },
+    {
+      "source_id": "src_study_lbnl_dc_energy_2024",
+      "title": "2024 United States Data Center Energy Usage Report",
+      "url": "https://eta-publications.lbl.gov/sites/default/files/2024-12/lbnl-2024-united-states-data-center-energy-usage-report.pdf",
+      "publisher": "U.S. Department of Energy and Lawrence Berkeley National Laboratory",
+      "source_type": "other",
+      "publication_date": {
+        "date": "2024-12-19",
+        "precision": "day"
+      },
+      "retrieved_on": "2026-09-05",
+      "review_method": "pdf_text_and_page_image",
+      "notes": "Public national engineering benchmark: 2014 and 2023 average PUE values of 1.6 and 1.4; projected 2028 PUE range 1.15-1.35; WUE just over 0.36 L/kWh through 2023 and 0.45-0.48 thereafter; AI server operational power scenarios span 60-80 percent. These values are not Hammond measurements."
+    },
+    {
+      "source_id": "src_study_epa_egrid_2023_rev2",
+      "title": "eGRID2023 Summary Tables, Revision 2",
+      "url": "https://www.epa.gov/system/files/documents/2025-06/summary_tables_rev2.pdf",
+      "publisher": "U.S. Environmental Protection Agency",
+      "source_type": "other",
+      "publication_date": {
+        "date": "2025-06-12",
+        "precision": "day"
+      },
+      "retrieved_on": "2026-09-05",
+      "review_method": "pdf_text_and_page_image",
+      "notes": "Reports 2023 total output CO2e rates of 916.1 lb/MWh for RFC West and 1,465.5 lb/MWh for Indiana. The Hammond model treats these as a location-based sensitivity rather than a marginal or supplier-specific factor."
     }
   ],
   "estimates": [
@@ -3720,6 +3776,4480 @@
       ],
       "presentation": "modeled_not_observed_or_audited",
       "notes": "A causal record is intentionally withheld because treatment isolation, comparison design and diagnostics do not meet the contract.",
+      "reviewed_on": "2026-09-05"
+    },
+    {
+      "estimate_id": "est_study_dx_hammond_construction_spend_direct",
+      "project_id": "prj_study_im3_building_00978934687",
+      "metric_code": "study.modeled_construction_supplier_spending_direct",
+      "label": "Modeled direct local-contractor spending envelope",
+      "category": "suppliers",
+      "unit": "USD",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 100000000,
+      "period": {
+        "kind": "construction_period",
+        "start_date": "2018-08-14",
+        "end_date": "2025-06-09",
+        "label": "Observed first-groundbreaking through latest cumulative local-contractor statement"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Digital Crossroad Hammond Building 1 construction and later documented buildout activity",
+        "county_fips": "18089",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": 80000000,
+        "central": 100000000,
+        "high": 120000000,
+        "interpretation": "The observed greater-than-$80 million lower bound is paired with 1.25× and 1.50× sensitivity factors; endpoints are not audited totals."
+      },
+      "contribution_channel": "direct",
+      "aggregation": {
+        "aggregation_id": "dx_hammond_construction_spend",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "reported_local_spend_lower_bound",
+          "value": 80000000,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "detail": "Developer-reported cumulative lower bound",
+            "reference_id": "clm_study_digital_crossroad_local_contractor_spend_2025"
+          },
+          "transformation": "Multiplied by the scenario factor"
+        },
+        {
+          "name": "central_factor",
+          "value": 1.25,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Sensitivity factor above the strict lower bound"
+          },
+          "transformation": "Produces the central endpoint"
+        },
+        {
+          "name": "high_factor",
+          "value": 1.5,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Sensitivity factor above the strict lower bound"
+          },
+          "transformation": "Produces the high endpoint"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The lower bound is a public statement, but the upper endpoints and local geography are assumptions.",
+      "decision_relevance": "Carries supplier spending above the observed lower bound without converting it into capital expenditure.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Audited vendor payments by date, trade, vendor address, project phase and local-geography definition"
+      },
+      "derivation": {
+        "method": "sensitivity_analysis",
+        "model_version": "dx-hammond-local-spend-1.0.0",
+        "formula": "reported_lower_bound × scenario_factor (1.00, 1.25, 1.50)",
+        "input_claim_ids": [
+          "clm_study_digital_crossroad_local_contractor_spend_2025"
+        ],
+        "input_source_ids": [
+          "src_study_hammond_council_minutes_2025_06_09"
+        ],
+        "assumptions": [
+          "The source phrase 'well over' is represented only by disclosed sensitivity factors.",
+          "Local retains the source's undefined geography and does not mean Lake County payroll or worker residence."
+        ]
+      },
+      "limitations": [
+        "Not audited spending.",
+        "Accumulation start is unknown.",
+        "May include labor, materials and subcontractor margins."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Direct construction supplier-output scenario; do not add it to source-reported spending.",
+      "reviewed_on": "2026-09-05"
+    },
+    {
+      "estimate_id": "est_study_dx_hammond_construction_job_years_direct",
+      "project_id": "prj_study_im3_building_00978934687",
+      "metric_code": "study.modeled_construction_job_years_direct",
+      "label": "Modeled direct construction job-years",
+      "category": "construction",
+      "unit": "job_years",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 617.09,
+      "period": {
+        "kind": "construction_period",
+        "start_date": "2018-08-14",
+        "end_date": "2025-06-09",
+        "label": "Observed first-groundbreaking through latest cumulative local-contractor statement"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Digital Crossroad Hammond Building 1 construction and later documented buildout activity",
+        "county_fips": "18089",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": 493.67,
+        "central": 617.09,
+        "high": 740.51,
+        "interpretation": "Low, central and high scenario bases multiplied by the public direct-channel benchmark rate."
+      },
+      "contribution_channel": "direct",
+      "aggregation": {
+        "aggregation_id": "dx_hammond_construction_job_years",
+        "role": "component",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "scenario_base_low",
+          "value": 80000000,
+          "unit": "USD",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Low endpoint of the disclosed Hammond scenario base"
+          },
+          "transformation": "Multiplied by the channel benchmark rate"
+        },
+        {
+          "name": "scenario_base_central",
+          "value": 100000000,
+          "unit": "USD",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Central endpoint of the disclosed Hammond scenario base"
+          },
+          "transformation": "Multiplied by the channel benchmark rate"
+        },
+        {
+          "name": "scenario_base_high",
+          "value": 120000000,
+          "unit": "USD",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "High endpoint of the disclosed Hammond scenario base"
+          },
+          "transformation": "Multiplied by the channel benchmark rate"
+        },
+        {
+          "name": "direct_benchmark_numerator",
+          "value": 1697,
+          "unit": "job_years",
+          "provenance": {
+            "kind": "source",
+            "detail": "Prince William County prototype direct contribution",
+            "reference_id": "src_study_pwc_data_center_market_2021"
+          },
+          "transformation": "Divided by the benchmark denominator"
+        },
+        {
+          "name": "benchmark_denominator",
+          "value": 275000000,
+          "unit": "USD",
+          "provenance": {
+            "kind": "source",
+            "detail": "Prince William County prototype model denominator",
+            "reference_id": "src_study_pwc_data_center_market_2021"
+          },
+          "transformation": "Divides the channel benchmark numerator"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The Hammond spending amount is bounded only below and the Virginia county coefficients may not transfer.",
+      "decision_relevance": "Separates contribution channels without treating a source fact or forecast as a modeled total.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Certified Hammond worker-hours, payroll records, worker residence and phase dates"
+      },
+      "derivation": {
+        "method": "input_output_multiplier",
+        "model_version": "dx-hammond-construction_job_years-1.0.0",
+        "formula": "scenario_base × (direct_benchmark_numerator ÷ benchmark_denominator)",
+        "input_claim_ids": [
+          "clm_study_digital_crossroad_local_contractor_spend_2025"
+        ],
+        "input_source_ids": [
+          "src_study_pwc_data_center_market_2021",
+          "src_study_hammond_council_minutes_2025_06_09"
+        ],
+        "assumptions": [
+          "The transferred county benchmark is a sensitivity device, not a Lake County coefficient.",
+          "Dollar benchmarks remain in reported 2021 dollars because the Hammond spending accumulation dates are incomplete."
+        ]
+      },
+      "limitations": [
+        "Geographic structure and local purchasing differ between Prince William and Lake counties.",
+        "The public benchmark's underlying IMPLAN data vintage is not disclosed.",
+        "Contribution is not causation."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Temporary job-years over the full construction window; not peak workers or permanent jobs.",
+      "reviewed_on": "2026-09-05",
+      "multiplier_provenance": {
+        "source_id": "src_study_pwc_data_center_market_2021",
+        "model_name": "IMPLAN county contribution model reported by BAE",
+        "model_version": "Prince William County prototype-data-center study, 2021-dollar tables 7-8",
+        "geography": "Prince William County, Virginia benchmark transferred to Hammond/Lake County, Indiana",
+        "vintage": "IMPLAN model reported December 2021; underlying IMPLAN data vintage not disclosed",
+        "local_purchase_assumption": "The source-described local-contractor base is treated as eligible direct output, while the benchmark's county capture is transferred only as a sensitivity.",
+        "channel_separation": "direct_indirect_induced_reported_separately"
+      }
+    },
+    {
+      "estimate_id": "est_study_dx_hammond_construction_job_years_indirect",
+      "project_id": "prj_study_im3_building_00978934687",
+      "metric_code": "study.modeled_construction_job_years_indirect",
+      "label": "Modeled indirect supplier construction job-years",
+      "category": "construction",
+      "unit": "job_years",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 148.0,
+      "period": {
+        "kind": "construction_period",
+        "start_date": "2018-08-14",
+        "end_date": "2025-06-09",
+        "label": "Observed first-groundbreaking through latest cumulative local-contractor statement"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Digital Crossroad Hammond Building 1 construction and later documented buildout activity",
+        "county_fips": "18089",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": 118.4,
+        "central": 148.0,
+        "high": 177.6,
+        "interpretation": "Low, central and high scenario bases multiplied by the public indirect-channel benchmark rate."
+      },
+      "contribution_channel": "indirect",
+      "aggregation": {
+        "aggregation_id": "dx_hammond_construction_job_years",
+        "role": "component",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "scenario_base_low",
+          "value": 80000000,
+          "unit": "USD",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Low endpoint of the disclosed Hammond scenario base"
+          },
+          "transformation": "Multiplied by the channel benchmark rate"
+        },
+        {
+          "name": "scenario_base_central",
+          "value": 100000000,
+          "unit": "USD",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Central endpoint of the disclosed Hammond scenario base"
+          },
+          "transformation": "Multiplied by the channel benchmark rate"
+        },
+        {
+          "name": "scenario_base_high",
+          "value": 120000000,
+          "unit": "USD",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "High endpoint of the disclosed Hammond scenario base"
+          },
+          "transformation": "Multiplied by the channel benchmark rate"
+        },
+        {
+          "name": "indirect_benchmark_numerator",
+          "value": 407,
+          "unit": "job_years",
+          "provenance": {
+            "kind": "source",
+            "detail": "Prince William County prototype indirect contribution",
+            "reference_id": "src_study_pwc_data_center_market_2021"
+          },
+          "transformation": "Divided by the benchmark denominator"
+        },
+        {
+          "name": "benchmark_denominator",
+          "value": 275000000,
+          "unit": "USD",
+          "provenance": {
+            "kind": "source",
+            "detail": "Prince William County prototype model denominator",
+            "reference_id": "src_study_pwc_data_center_market_2021"
+          },
+          "transformation": "Divides the channel benchmark numerator"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The Hammond spending amount is bounded only below and the Virginia county coefficients may not transfer.",
+      "decision_relevance": "Separates contribution channels without treating a source fact or forecast as a modeled total.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Certified Hammond worker-hours, payroll records, worker residence and phase dates"
+      },
+      "derivation": {
+        "method": "input_output_multiplier",
+        "model_version": "dx-hammond-construction_job_years-1.0.0",
+        "formula": "scenario_base × (indirect_benchmark_numerator ÷ benchmark_denominator)",
+        "input_claim_ids": [
+          "clm_study_digital_crossroad_local_contractor_spend_2025"
+        ],
+        "input_source_ids": [
+          "src_study_pwc_data_center_market_2021",
+          "src_study_hammond_council_minutes_2025_06_09"
+        ],
+        "assumptions": [
+          "The transferred county benchmark is a sensitivity device, not a Lake County coefficient.",
+          "Dollar benchmarks remain in reported 2021 dollars because the Hammond spending accumulation dates are incomplete."
+        ]
+      },
+      "limitations": [
+        "Geographic structure and local purchasing differ between Prince William and Lake counties.",
+        "The public benchmark's underlying IMPLAN data vintage is not disclosed.",
+        "Contribution is not causation."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Temporary job-years over the full construction window; not peak workers or permanent jobs.",
+      "reviewed_on": "2026-09-05",
+      "multiplier_provenance": {
+        "source_id": "src_study_pwc_data_center_market_2021",
+        "model_name": "IMPLAN county contribution model reported by BAE",
+        "model_version": "Prince William County prototype-data-center study, 2021-dollar tables 7-8",
+        "geography": "Prince William County, Virginia benchmark transferred to Hammond/Lake County, Indiana",
+        "vintage": "IMPLAN model reported December 2021; underlying IMPLAN data vintage not disclosed",
+        "local_purchase_assumption": "The source-described local-contractor base is treated as eligible direct output, while the benchmark's county capture is transferred only as a sensitivity.",
+        "channel_separation": "direct_indirect_induced_reported_separately"
+      }
+    },
+    {
+      "estimate_id": "est_study_dx_hammond_construction_job_years_induced",
+      "project_id": "prj_study_im3_building_00978934687",
+      "metric_code": "study.modeled_construction_job_years_induced",
+      "label": "Modeled induced household-spending construction job-years",
+      "category": "construction",
+      "unit": "job_years",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 109.45,
+      "period": {
+        "kind": "construction_period",
+        "start_date": "2018-08-14",
+        "end_date": "2025-06-09",
+        "label": "Observed first-groundbreaking through latest cumulative local-contractor statement"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Digital Crossroad Hammond Building 1 construction and later documented buildout activity",
+        "county_fips": "18089",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": 87.56,
+        "central": 109.45,
+        "high": 131.35,
+        "interpretation": "Low, central and high scenario bases multiplied by the public induced-channel benchmark rate."
+      },
+      "contribution_channel": "induced",
+      "aggregation": {
+        "aggregation_id": "dx_hammond_construction_job_years",
+        "role": "component",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "scenario_base_low",
+          "value": 80000000,
+          "unit": "USD",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Low endpoint of the disclosed Hammond scenario base"
+          },
+          "transformation": "Multiplied by the channel benchmark rate"
+        },
+        {
+          "name": "scenario_base_central",
+          "value": 100000000,
+          "unit": "USD",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Central endpoint of the disclosed Hammond scenario base"
+          },
+          "transformation": "Multiplied by the channel benchmark rate"
+        },
+        {
+          "name": "scenario_base_high",
+          "value": 120000000,
+          "unit": "USD",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "High endpoint of the disclosed Hammond scenario base"
+          },
+          "transformation": "Multiplied by the channel benchmark rate"
+        },
+        {
+          "name": "induced_benchmark_numerator",
+          "value": 301,
+          "unit": "job_years",
+          "provenance": {
+            "kind": "source",
+            "detail": "Prince William County prototype induced contribution",
+            "reference_id": "src_study_pwc_data_center_market_2021"
+          },
+          "transformation": "Divided by the benchmark denominator"
+        },
+        {
+          "name": "benchmark_denominator",
+          "value": 275000000,
+          "unit": "USD",
+          "provenance": {
+            "kind": "source",
+            "detail": "Prince William County prototype model denominator",
+            "reference_id": "src_study_pwc_data_center_market_2021"
+          },
+          "transformation": "Divides the channel benchmark numerator"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The Hammond spending amount is bounded only below and the Virginia county coefficients may not transfer.",
+      "decision_relevance": "Separates contribution channels without treating a source fact or forecast as a modeled total.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Certified Hammond worker-hours, payroll records, worker residence and phase dates"
+      },
+      "derivation": {
+        "method": "input_output_multiplier",
+        "model_version": "dx-hammond-construction_job_years-1.0.0",
+        "formula": "scenario_base × (induced_benchmark_numerator ÷ benchmark_denominator)",
+        "input_claim_ids": [
+          "clm_study_digital_crossroad_local_contractor_spend_2025"
+        ],
+        "input_source_ids": [
+          "src_study_pwc_data_center_market_2021",
+          "src_study_hammond_council_minutes_2025_06_09"
+        ],
+        "assumptions": [
+          "The transferred county benchmark is a sensitivity device, not a Lake County coefficient.",
+          "Dollar benchmarks remain in reported 2021 dollars because the Hammond spending accumulation dates are incomplete."
+        ]
+      },
+      "limitations": [
+        "Geographic structure and local purchasing differ between Prince William and Lake counties.",
+        "The public benchmark's underlying IMPLAN data vintage is not disclosed.",
+        "Contribution is not causation."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Temporary job-years over the full construction window; not peak workers or permanent jobs.",
+      "reviewed_on": "2026-09-05",
+      "multiplier_provenance": {
+        "source_id": "src_study_pwc_data_center_market_2021",
+        "model_name": "IMPLAN county contribution model reported by BAE",
+        "model_version": "Prince William County prototype-data-center study, 2021-dollar tables 7-8",
+        "geography": "Prince William County, Virginia benchmark transferred to Hammond/Lake County, Indiana",
+        "vintage": "IMPLAN model reported December 2021; underlying IMPLAN data vintage not disclosed",
+        "local_purchase_assumption": "The source-described local-contractor base is treated as eligible direct output, while the benchmark's county capture is transferred only as a sensitivity.",
+        "channel_separation": "direct_indirect_induced_reported_separately"
+      }
+    },
+    {
+      "estimate_id": "est_study_dx_hammond_construction_job_years_total",
+      "project_id": "prj_study_im3_building_00978934687",
+      "metric_code": "study.modeled_construction_job_years_total",
+      "label": "Modeled total construction job-years",
+      "category": "construction",
+      "unit": "job_years",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 874.91,
+      "period": {
+        "kind": "construction_period",
+        "start_date": "2018-08-14",
+        "end_date": "2025-06-09",
+        "label": "Observed first-groundbreaking through latest cumulative local-contractor statement"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Digital Crossroad Hammond Building 1 construction and later documented buildout activity",
+        "county_fips": "18089",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": 699.93,
+        "central": 874.91,
+        "high": 1049.89,
+        "interpretation": "Low, central and high scenario bases multiplied by the public total-channel benchmark rate."
+      },
+      "contribution_channel": "total",
+      "aggregation": {
+        "aggregation_id": "dx_hammond_construction_job_years",
+        "role": "total",
+        "overlap_policy": "do_not_sum_outside_declared_total",
+        "component_estimate_ids": [
+          "est_study_dx_hammond_construction_job_years_direct",
+          "est_study_dx_hammond_construction_job_years_indirect",
+          "est_study_dx_hammond_construction_job_years_induced"
+        ]
+      },
+      "parameters": [
+        {
+          "name": "scenario_base_low",
+          "value": 80000000,
+          "unit": "USD",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Low endpoint of the disclosed Hammond scenario base"
+          },
+          "transformation": "Multiplied by the channel benchmark rate"
+        },
+        {
+          "name": "scenario_base_central",
+          "value": 100000000,
+          "unit": "USD",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Central endpoint of the disclosed Hammond scenario base"
+          },
+          "transformation": "Multiplied by the channel benchmark rate"
+        },
+        {
+          "name": "scenario_base_high",
+          "value": 120000000,
+          "unit": "USD",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "High endpoint of the disclosed Hammond scenario base"
+          },
+          "transformation": "Multiplied by the channel benchmark rate"
+        },
+        {
+          "name": "total_benchmark_numerator",
+          "value": 2406,
+          "unit": "job_years",
+          "provenance": {
+            "kind": "source",
+            "detail": "Prince William County prototype total contribution",
+            "reference_id": "src_study_pwc_data_center_market_2021"
+          },
+          "transformation": "Divided by the benchmark denominator"
+        },
+        {
+          "name": "benchmark_denominator",
+          "value": 275000000,
+          "unit": "USD",
+          "provenance": {
+            "kind": "source",
+            "detail": "Prince William County prototype model denominator",
+            "reference_id": "src_study_pwc_data_center_market_2021"
+          },
+          "transformation": "Divides the channel benchmark numerator"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The Hammond spending amount is bounded only below and the Virginia county coefficients may not transfer.",
+      "decision_relevance": "Separates contribution channels without treating a source fact or forecast as a modeled total.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Certified Hammond worker-hours, payroll records, worker residence and phase dates"
+      },
+      "derivation": {
+        "method": "input_output_multiplier",
+        "model_version": "dx-hammond-construction_job_years-1.0.0",
+        "formula": "scenario_base × (total_benchmark_numerator ÷ benchmark_denominator)",
+        "input_claim_ids": [
+          "clm_study_digital_crossroad_local_contractor_spend_2025"
+        ],
+        "input_source_ids": [
+          "src_study_pwc_data_center_market_2021",
+          "src_study_hammond_council_minutes_2025_06_09"
+        ],
+        "assumptions": [
+          "The transferred county benchmark is a sensitivity device, not a Lake County coefficient.",
+          "Dollar benchmarks remain in reported 2021 dollars because the Hammond spending accumulation dates are incomplete."
+        ]
+      },
+      "limitations": [
+        "Geographic structure and local purchasing differ between Prince William and Lake counties.",
+        "The public benchmark's underlying IMPLAN data vintage is not disclosed.",
+        "Contribution is not causation."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Temporary job-years over the full construction window; not peak workers or permanent jobs.",
+      "reviewed_on": "2026-09-05",
+      "multiplier_provenance": {
+        "source_id": "src_study_pwc_data_center_market_2021",
+        "model_name": "IMPLAN county contribution model reported by BAE",
+        "model_version": "Prince William County prototype-data-center study, 2021-dollar tables 7-8",
+        "geography": "Prince William County, Virginia benchmark transferred to Hammond/Lake County, Indiana",
+        "vintage": "IMPLAN model reported December 2021; underlying IMPLAN data vintage not disclosed",
+        "local_purchase_assumption": "The source-described local-contractor base is treated as eligible direct output, while the benchmark's county capture is transferred only as a sensitivity.",
+        "channel_separation": "direct_indirect_induced_reported_separately"
+      }
+    },
+    {
+      "estimate_id": "est_study_dx_hammond_construction_labor_income_direct",
+      "project_id": "prj_study_im3_building_00978934687",
+      "metric_code": "study.modeled_construction_labor_income_direct",
+      "label": "Modeled direct construction labor income",
+      "category": "construction",
+      "unit": "USD",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 40252727.27,
+      "period": {
+        "kind": "construction_period",
+        "start_date": "2018-08-14",
+        "end_date": "2025-06-09",
+        "label": "Observed first-groundbreaking through latest cumulative local-contractor statement"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Digital Crossroad Hammond Building 1 construction and later documented buildout activity",
+        "county_fips": "18089",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": 32202181.82,
+        "central": 40252727.27,
+        "high": 48303272.73,
+        "interpretation": "Low, central and high scenario bases multiplied by the public direct-channel benchmark rate."
+      },
+      "contribution_channel": "direct",
+      "aggregation": {
+        "aggregation_id": "dx_hammond_construction_labor_income",
+        "role": "component",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "scenario_base_low",
+          "value": 80000000,
+          "unit": "USD",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Low endpoint of the disclosed Hammond scenario base"
+          },
+          "transformation": "Multiplied by the channel benchmark rate"
+        },
+        {
+          "name": "scenario_base_central",
+          "value": 100000000,
+          "unit": "USD",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Central endpoint of the disclosed Hammond scenario base"
+          },
+          "transformation": "Multiplied by the channel benchmark rate"
+        },
+        {
+          "name": "scenario_base_high",
+          "value": 120000000,
+          "unit": "USD",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "High endpoint of the disclosed Hammond scenario base"
+          },
+          "transformation": "Multiplied by the channel benchmark rate"
+        },
+        {
+          "name": "direct_benchmark_numerator",
+          "value": 110695000,
+          "unit": "USD",
+          "provenance": {
+            "kind": "source",
+            "detail": "Prince William County prototype direct contribution",
+            "reference_id": "src_study_pwc_data_center_market_2021"
+          },
+          "transformation": "Divided by the benchmark denominator"
+        },
+        {
+          "name": "benchmark_denominator",
+          "value": 275000000,
+          "unit": "USD",
+          "provenance": {
+            "kind": "source",
+            "detail": "Prince William County prototype model denominator",
+            "reference_id": "src_study_pwc_data_center_market_2021"
+          },
+          "transformation": "Divides the channel benchmark numerator"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The wage-and-benefit coefficients are a cross-county 2021-dollar transfer applied to a cumulative amount with incomplete dates.",
+      "decision_relevance": "Separates contribution channels without treating a source fact or forecast as a modeled total.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Certified Hammond payroll, benefits, proprietor income, worker residence and annual phase allocation"
+      },
+      "derivation": {
+        "method": "input_output_multiplier",
+        "model_version": "dx-hammond-construction_labor_income-1.0.0",
+        "formula": "scenario_base × (direct_benchmark_numerator ÷ benchmark_denominator)",
+        "input_claim_ids": [
+          "clm_study_digital_crossroad_local_contractor_spend_2025"
+        ],
+        "input_source_ids": [
+          "src_study_pwc_data_center_market_2021",
+          "src_study_hammond_council_minutes_2025_06_09"
+        ],
+        "assumptions": [
+          "The transferred county benchmark is a sensitivity device, not a Lake County coefficient.",
+          "Dollar benchmarks remain in reported 2021 dollars because the Hammond spending accumulation dates are incomplete."
+        ]
+      },
+      "limitations": [
+        "Geographic structure and local purchasing differ between Prince William and Lake counties.",
+        "The public benchmark's underlying IMPLAN data vintage is not disclosed.",
+        "Contribution is not causation."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Labor income includes compensation and proprietor income under the source model; it is not payroll paid by DX Hammond.",
+      "reviewed_on": "2026-09-05",
+      "multiplier_provenance": {
+        "source_id": "src_study_pwc_data_center_market_2021",
+        "model_name": "IMPLAN county contribution model reported by BAE",
+        "model_version": "Prince William County prototype-data-center study, 2021-dollar tables 7-8",
+        "geography": "Prince William County, Virginia benchmark transferred to Hammond/Lake County, Indiana",
+        "vintage": "IMPLAN model reported December 2021; underlying IMPLAN data vintage not disclosed",
+        "local_purchase_assumption": "The source-described local-contractor base is treated as eligible direct output, while the benchmark's county capture is transferred only as a sensitivity.",
+        "channel_separation": "direct_indirect_induced_reported_separately"
+      }
+    },
+    {
+      "estimate_id": "est_study_dx_hammond_construction_labor_income_indirect",
+      "project_id": "prj_study_im3_building_00978934687",
+      "metric_code": "study.modeled_construction_labor_income_indirect",
+      "label": "Modeled indirect supplier construction labor income",
+      "category": "construction",
+      "unit": "USD",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 8424000.0,
+      "period": {
+        "kind": "construction_period",
+        "start_date": "2018-08-14",
+        "end_date": "2025-06-09",
+        "label": "Observed first-groundbreaking through latest cumulative local-contractor statement"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Digital Crossroad Hammond Building 1 construction and later documented buildout activity",
+        "county_fips": "18089",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": 6739200.0,
+        "central": 8424000.0,
+        "high": 10108800.0,
+        "interpretation": "Low, central and high scenario bases multiplied by the public indirect-channel benchmark rate."
+      },
+      "contribution_channel": "indirect",
+      "aggregation": {
+        "aggregation_id": "dx_hammond_construction_labor_income",
+        "role": "component",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "scenario_base_low",
+          "value": 80000000,
+          "unit": "USD",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Low endpoint of the disclosed Hammond scenario base"
+          },
+          "transformation": "Multiplied by the channel benchmark rate"
+        },
+        {
+          "name": "scenario_base_central",
+          "value": 100000000,
+          "unit": "USD",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Central endpoint of the disclosed Hammond scenario base"
+          },
+          "transformation": "Multiplied by the channel benchmark rate"
+        },
+        {
+          "name": "scenario_base_high",
+          "value": 120000000,
+          "unit": "USD",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "High endpoint of the disclosed Hammond scenario base"
+          },
+          "transformation": "Multiplied by the channel benchmark rate"
+        },
+        {
+          "name": "indirect_benchmark_numerator",
+          "value": 23166000,
+          "unit": "USD",
+          "provenance": {
+            "kind": "source",
+            "detail": "Prince William County prototype indirect contribution",
+            "reference_id": "src_study_pwc_data_center_market_2021"
+          },
+          "transformation": "Divided by the benchmark denominator"
+        },
+        {
+          "name": "benchmark_denominator",
+          "value": 275000000,
+          "unit": "USD",
+          "provenance": {
+            "kind": "source",
+            "detail": "Prince William County prototype model denominator",
+            "reference_id": "src_study_pwc_data_center_market_2021"
+          },
+          "transformation": "Divides the channel benchmark numerator"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The wage-and-benefit coefficients are a cross-county 2021-dollar transfer applied to a cumulative amount with incomplete dates.",
+      "decision_relevance": "Separates contribution channels without treating a source fact or forecast as a modeled total.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Certified Hammond payroll, benefits, proprietor income, worker residence and annual phase allocation"
+      },
+      "derivation": {
+        "method": "input_output_multiplier",
+        "model_version": "dx-hammond-construction_labor_income-1.0.0",
+        "formula": "scenario_base × (indirect_benchmark_numerator ÷ benchmark_denominator)",
+        "input_claim_ids": [
+          "clm_study_digital_crossroad_local_contractor_spend_2025"
+        ],
+        "input_source_ids": [
+          "src_study_pwc_data_center_market_2021",
+          "src_study_hammond_council_minutes_2025_06_09"
+        ],
+        "assumptions": [
+          "The transferred county benchmark is a sensitivity device, not a Lake County coefficient.",
+          "Dollar benchmarks remain in reported 2021 dollars because the Hammond spending accumulation dates are incomplete."
+        ]
+      },
+      "limitations": [
+        "Geographic structure and local purchasing differ between Prince William and Lake counties.",
+        "The public benchmark's underlying IMPLAN data vintage is not disclosed.",
+        "Contribution is not causation."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Labor income includes compensation and proprietor income under the source model; it is not payroll paid by DX Hammond.",
+      "reviewed_on": "2026-09-05",
+      "multiplier_provenance": {
+        "source_id": "src_study_pwc_data_center_market_2021",
+        "model_name": "IMPLAN county contribution model reported by BAE",
+        "model_version": "Prince William County prototype-data-center study, 2021-dollar tables 7-8",
+        "geography": "Prince William County, Virginia benchmark transferred to Hammond/Lake County, Indiana",
+        "vintage": "IMPLAN model reported December 2021; underlying IMPLAN data vintage not disclosed",
+        "local_purchase_assumption": "The source-described local-contractor base is treated as eligible direct output, while the benchmark's county capture is transferred only as a sensitivity.",
+        "channel_separation": "direct_indirect_induced_reported_separately"
+      }
+    },
+    {
+      "estimate_id": "est_study_dx_hammond_construction_labor_income_induced",
+      "project_id": "prj_study_im3_building_00978934687",
+      "metric_code": "study.modeled_construction_labor_income_induced",
+      "label": "Modeled induced household-spending construction labor income",
+      "category": "construction",
+      "unit": "USD",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 4271636.36,
+      "period": {
+        "kind": "construction_period",
+        "start_date": "2018-08-14",
+        "end_date": "2025-06-09",
+        "label": "Observed first-groundbreaking through latest cumulative local-contractor statement"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Digital Crossroad Hammond Building 1 construction and later documented buildout activity",
+        "county_fips": "18089",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": 3417309.09,
+        "central": 4271636.36,
+        "high": 5125963.64,
+        "interpretation": "Low, central and high scenario bases multiplied by the public induced-channel benchmark rate."
+      },
+      "contribution_channel": "induced",
+      "aggregation": {
+        "aggregation_id": "dx_hammond_construction_labor_income",
+        "role": "component",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "scenario_base_low",
+          "value": 80000000,
+          "unit": "USD",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Low endpoint of the disclosed Hammond scenario base"
+          },
+          "transformation": "Multiplied by the channel benchmark rate"
+        },
+        {
+          "name": "scenario_base_central",
+          "value": 100000000,
+          "unit": "USD",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Central endpoint of the disclosed Hammond scenario base"
+          },
+          "transformation": "Multiplied by the channel benchmark rate"
+        },
+        {
+          "name": "scenario_base_high",
+          "value": 120000000,
+          "unit": "USD",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "High endpoint of the disclosed Hammond scenario base"
+          },
+          "transformation": "Multiplied by the channel benchmark rate"
+        },
+        {
+          "name": "induced_benchmark_numerator",
+          "value": 11747000,
+          "unit": "USD",
+          "provenance": {
+            "kind": "source",
+            "detail": "Prince William County prototype induced contribution",
+            "reference_id": "src_study_pwc_data_center_market_2021"
+          },
+          "transformation": "Divided by the benchmark denominator"
+        },
+        {
+          "name": "benchmark_denominator",
+          "value": 275000000,
+          "unit": "USD",
+          "provenance": {
+            "kind": "source",
+            "detail": "Prince William County prototype model denominator",
+            "reference_id": "src_study_pwc_data_center_market_2021"
+          },
+          "transformation": "Divides the channel benchmark numerator"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The wage-and-benefit coefficients are a cross-county 2021-dollar transfer applied to a cumulative amount with incomplete dates.",
+      "decision_relevance": "Separates contribution channels without treating a source fact or forecast as a modeled total.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Certified Hammond payroll, benefits, proprietor income, worker residence and annual phase allocation"
+      },
+      "derivation": {
+        "method": "input_output_multiplier",
+        "model_version": "dx-hammond-construction_labor_income-1.0.0",
+        "formula": "scenario_base × (induced_benchmark_numerator ÷ benchmark_denominator)",
+        "input_claim_ids": [
+          "clm_study_digital_crossroad_local_contractor_spend_2025"
+        ],
+        "input_source_ids": [
+          "src_study_pwc_data_center_market_2021",
+          "src_study_hammond_council_minutes_2025_06_09"
+        ],
+        "assumptions": [
+          "The transferred county benchmark is a sensitivity device, not a Lake County coefficient.",
+          "Dollar benchmarks remain in reported 2021 dollars because the Hammond spending accumulation dates are incomplete."
+        ]
+      },
+      "limitations": [
+        "Geographic structure and local purchasing differ between Prince William and Lake counties.",
+        "The public benchmark's underlying IMPLAN data vintage is not disclosed.",
+        "Contribution is not causation."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Labor income includes compensation and proprietor income under the source model; it is not payroll paid by DX Hammond.",
+      "reviewed_on": "2026-09-05",
+      "multiplier_provenance": {
+        "source_id": "src_study_pwc_data_center_market_2021",
+        "model_name": "IMPLAN county contribution model reported by BAE",
+        "model_version": "Prince William County prototype-data-center study, 2021-dollar tables 7-8",
+        "geography": "Prince William County, Virginia benchmark transferred to Hammond/Lake County, Indiana",
+        "vintage": "IMPLAN model reported December 2021; underlying IMPLAN data vintage not disclosed",
+        "local_purchase_assumption": "The source-described local-contractor base is treated as eligible direct output, while the benchmark's county capture is transferred only as a sensitivity.",
+        "channel_separation": "direct_indirect_induced_reported_separately"
+      }
+    },
+    {
+      "estimate_id": "est_study_dx_hammond_construction_labor_income_total",
+      "project_id": "prj_study_im3_building_00978934687",
+      "metric_code": "study.modeled_construction_labor_income_total",
+      "label": "Modeled total construction labor income",
+      "category": "construction",
+      "unit": "USD",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 52948363.64,
+      "period": {
+        "kind": "construction_period",
+        "start_date": "2018-08-14",
+        "end_date": "2025-06-09",
+        "label": "Observed first-groundbreaking through latest cumulative local-contractor statement"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Digital Crossroad Hammond Building 1 construction and later documented buildout activity",
+        "county_fips": "18089",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": 42358690.91,
+        "central": 52948363.64,
+        "high": 63538036.36,
+        "interpretation": "Low, central and high scenario bases multiplied by the public total-channel benchmark rate."
+      },
+      "contribution_channel": "total",
+      "aggregation": {
+        "aggregation_id": "dx_hammond_construction_labor_income",
+        "role": "total",
+        "overlap_policy": "do_not_sum_outside_declared_total",
+        "component_estimate_ids": [
+          "est_study_dx_hammond_construction_labor_income_direct",
+          "est_study_dx_hammond_construction_labor_income_indirect",
+          "est_study_dx_hammond_construction_labor_income_induced"
+        ]
+      },
+      "parameters": [
+        {
+          "name": "scenario_base_low",
+          "value": 80000000,
+          "unit": "USD",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Low endpoint of the disclosed Hammond scenario base"
+          },
+          "transformation": "Multiplied by the channel benchmark rate"
+        },
+        {
+          "name": "scenario_base_central",
+          "value": 100000000,
+          "unit": "USD",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Central endpoint of the disclosed Hammond scenario base"
+          },
+          "transformation": "Multiplied by the channel benchmark rate"
+        },
+        {
+          "name": "scenario_base_high",
+          "value": 120000000,
+          "unit": "USD",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "High endpoint of the disclosed Hammond scenario base"
+          },
+          "transformation": "Multiplied by the channel benchmark rate"
+        },
+        {
+          "name": "total_benchmark_numerator",
+          "value": 145608000,
+          "unit": "USD",
+          "provenance": {
+            "kind": "source",
+            "detail": "Prince William County prototype total contribution",
+            "reference_id": "src_study_pwc_data_center_market_2021"
+          },
+          "transformation": "Divided by the benchmark denominator"
+        },
+        {
+          "name": "benchmark_denominator",
+          "value": 275000000,
+          "unit": "USD",
+          "provenance": {
+            "kind": "source",
+            "detail": "Prince William County prototype model denominator",
+            "reference_id": "src_study_pwc_data_center_market_2021"
+          },
+          "transformation": "Divides the channel benchmark numerator"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The wage-and-benefit coefficients are a cross-county 2021-dollar transfer applied to a cumulative amount with incomplete dates.",
+      "decision_relevance": "Separates contribution channels without treating a source fact or forecast as a modeled total.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Certified Hammond payroll, benefits, proprietor income, worker residence and annual phase allocation"
+      },
+      "derivation": {
+        "method": "input_output_multiplier",
+        "model_version": "dx-hammond-construction_labor_income-1.0.0",
+        "formula": "scenario_base × (total_benchmark_numerator ÷ benchmark_denominator)",
+        "input_claim_ids": [
+          "clm_study_digital_crossroad_local_contractor_spend_2025"
+        ],
+        "input_source_ids": [
+          "src_study_pwc_data_center_market_2021",
+          "src_study_hammond_council_minutes_2025_06_09"
+        ],
+        "assumptions": [
+          "The transferred county benchmark is a sensitivity device, not a Lake County coefficient.",
+          "Dollar benchmarks remain in reported 2021 dollars because the Hammond spending accumulation dates are incomplete."
+        ]
+      },
+      "limitations": [
+        "Geographic structure and local purchasing differ between Prince William and Lake counties.",
+        "The public benchmark's underlying IMPLAN data vintage is not disclosed.",
+        "Contribution is not causation."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Labor income includes compensation and proprietor income under the source model; it is not payroll paid by DX Hammond.",
+      "reviewed_on": "2026-09-05",
+      "multiplier_provenance": {
+        "source_id": "src_study_pwc_data_center_market_2021",
+        "model_name": "IMPLAN county contribution model reported by BAE",
+        "model_version": "Prince William County prototype-data-center study, 2021-dollar tables 7-8",
+        "geography": "Prince William County, Virginia benchmark transferred to Hammond/Lake County, Indiana",
+        "vintage": "IMPLAN model reported December 2021; underlying IMPLAN data vintage not disclosed",
+        "local_purchase_assumption": "The source-described local-contractor base is treated as eligible direct output, while the benchmark's county capture is transferred only as a sensitivity.",
+        "channel_separation": "direct_indirect_induced_reported_separately"
+      }
+    },
+    {
+      "estimate_id": "est_study_dx_hammond_construction_local_resident_job_years",
+      "project_id": "prj_study_im3_building_00978934687",
+      "metric_code": "study.modeled_construction_local_resident_job_years",
+      "label": "Modeled Lake County-resident construction job-years",
+      "category": "construction",
+      "unit": "job_years",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 339.4,
+      "period": {
+        "kind": "construction_period",
+        "start_date": "2018-08-14",
+        "end_date": "2025-06-09",
+        "label": "Observed first-groundbreaking through latest cumulative local-contractor statement"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Digital Crossroad Hammond Building 1 construction and later documented buildout activity",
+        "county_fips": "18089",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": 197.47,
+        "central": 339.4,
+        "high": 518.36,
+        "interpretation": "Direct job-year endpoints multiplied by 40%, 55% and 70% residence-share sensitivities; 55% is a regional workforce proxy."
+      },
+      "contribution_channel": "direct",
+      "aggregation": {
+        "aggregation_id": "dx_hammond_construction_local_resident",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "direct_job_years_low",
+          "value": 493.67,
+          "unit": "job_years",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Low direct job-year scenario from the Hammond contribution model"
+          },
+          "transformation": "Multiplied by low residence share"
+        },
+        {
+          "name": "direct_job_years_central",
+          "value": 617.09,
+          "unit": "job_years",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Central direct job-year scenario from the Hammond contribution model"
+          },
+          "transformation": "Multiplied by central residence share"
+        },
+        {
+          "name": "direct_job_years_high",
+          "value": 740.51,
+          "unit": "job_years",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "High direct job-year scenario from the Hammond contribution model"
+          },
+          "transformation": "Multiplied by high residence share"
+        },
+        {
+          "name": "regional_resident_worker_proxy",
+          "value": 0.55,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "source",
+            "detail": "NIRPC reports about 55% of resident workers also work in Lake County",
+            "reference_id": "src_study_nirpc_recovery_plan_2022"
+          },
+          "transformation": "Used as the central residence-share proxy"
+        },
+        {
+          "name": "low_residence_share",
+          "value": 0.4,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Sensitivity below the regional proxy"
+          },
+          "transformation": "Multiplies low job-years"
+        },
+        {
+          "name": "high_residence_share",
+          "value": 0.7,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Sensitivity above the regional proxy"
+          },
+          "transformation": "Multiplies high job-years"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "No project worker-residence record is public and the regional proxy measures a different population.",
+      "decision_relevance": "Makes the local-worker assumption visible instead of relabeling local-contractor spending as local labor.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Quarterly certified worker residence, hours, trades and employer records"
+      },
+      "derivation": {
+        "method": "benchmark_application",
+        "model_version": "dx-hammond-local-labor-1.0.0",
+        "formula": "direct_job_years × assumed_Lake_County_resident_share",
+        "input_claim_ids": [
+          "clm_study_digital_crossroad_local_contractor_spend_2025"
+        ],
+        "input_source_ids": [
+          "src_study_pwc_data_center_market_2021",
+          "src_study_nirpc_recovery_plan_2022",
+          "src_study_hammond_council_minutes_2025_06_09"
+        ],
+        "assumptions": [
+          "The regional resident-worker statistic is only a proxy for construction-worker residence.",
+          "The development-agreement preference is not treated as realized participation."
+        ]
+      },
+      "limitations": [
+        "Proxy population differs from project workers.",
+        "Local-contractor location does not establish worker residence.",
+        "Not a compliance finding."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "A residence sensitivity only; the 2018 local-labor requirement remains a separate source fact.",
+      "reviewed_on": "2026-09-05"
+    },
+    {
+      "estimate_id": "est_study_dx_hammond_operating_fte_direct",
+      "project_id": "prj_study_im3_building_00978934687",
+      "metric_code": "study.modeled_operating_fte_direct",
+      "label": "Modeled direct annual operating FTE",
+      "category": "operations",
+      "unit": "FTE",
+      "measure_type": "stock",
+      "basis": "modeled_synthesis",
+      "value": 31,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2025,
+        "label": "2025 operating scenario anchored by public 2020 employment and 2025 occupancy evidence"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Digital Crossroad Hammond operating facility",
+        "county_fips": "18089",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": 17,
+        "central": 31,
+        "high": 45,
+        "interpretation": "Low retains the 17-employee 2020 snapshot, high retains the separate 45-job EDGE expectation, and central is their midpoint."
+      },
+      "contribution_channel": "direct",
+      "aggregation": {
+        "aggregation_id": "dx_hammond_operating_fte",
+        "role": "component",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "reported_employee_snapshot",
+          "value": 17,
+          "unit": "employees",
+          "provenance": {
+            "kind": "claim",
+            "detail": "Contemporaneous 2020 facility employee count",
+            "reference_id": "clm_study_digital_crossroad_operating_employees_2020"
+          },
+          "transformation": "Used as low endpoint"
+        },
+        {
+          "name": "source_job_projection",
+          "value": 45,
+          "unit": "jobs",
+          "provenance": {
+            "kind": "claim",
+            "detail": "Separate EDGE job expectation",
+            "reference_id": "clm_study_digital_crossroad_edge_jobs_2018"
+          },
+          "transformation": "Used only as high scenario endpoint"
+        },
+        {
+          "name": "midpoint_fte",
+          "value": 31,
+          "unit": "FTE",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Arithmetic midpoint of the two anchors"
+          },
+          "transformation": "Used as central scenario"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The anchors differ in date and definition; current annual-average direct and contractor FTE are not public.",
+      "decision_relevance": "Bounds direct operating labor without converting the source forecast into an observation.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Current annual-average direct and contractor FTE, occupation, hours and work-location definitions"
+      },
+      "derivation": {
+        "method": "sensitivity_analysis",
+        "model_version": "dx-hammond-operating-fte-1.0.0",
+        "formula": "scenario endpoints = 17 observed employees, midpoint 31, and 45 source-projected jobs",
+        "input_claim_ids": [
+          "clm_study_digital_crossroad_operating_employees_2020",
+          "clm_study_digital_crossroad_edge_jobs_2018"
+        ],
+        "input_source_ids": [
+          "src_study_dcd_hammond_completion_2020",
+          "src_study_iedc_2018_annual_report_active_contracts"
+        ],
+        "assumptions": [
+          "Employees and jobs are treated as FTE sensitivity anchors only.",
+          "Neither anchor is asserted to equal 2025 annual-average FTE."
+        ]
+      },
+      "limitations": [
+        "Not a current headcount.",
+        "Source forecast remains separately displayed.",
+        "Customer staff are excluded."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "The high endpoint is not forecast realization.",
+      "reviewed_on": "2026-09-05"
+    },
+    {
+      "estimate_id": "est_study_dx_hammond_operating_fte_indirect",
+      "project_id": "prj_study_im3_building_00978934687",
+      "metric_code": "study.modeled_operating_fte_indirect",
+      "label": "Modeled indirect supplier annual operating FTE",
+      "category": "operations",
+      "unit": "FTE",
+      "measure_type": "stock",
+      "basis": "modeled_synthesis",
+      "value": 147.25,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2025,
+        "label": "2025 operating scenario anchored by public 2020 employment and 2025 occupancy evidence"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Digital Crossroad Hammond operating facility",
+        "county_fips": "18089",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": 80.75,
+        "central": 147.25,
+        "high": 213.75,
+        "interpretation": "Low, central and high scenario bases multiplied by the public indirect-channel benchmark rate."
+      },
+      "contribution_channel": "indirect",
+      "aggregation": {
+        "aggregation_id": "dx_hammond_operating_fte",
+        "role": "component",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "scenario_base_low",
+          "value": 17,
+          "unit": "FTE",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Low endpoint of the disclosed Hammond scenario base"
+          },
+          "transformation": "Multiplied by the channel benchmark rate"
+        },
+        {
+          "name": "scenario_base_central",
+          "value": 31,
+          "unit": "FTE",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Central endpoint of the disclosed Hammond scenario base"
+          },
+          "transformation": "Multiplied by the channel benchmark rate"
+        },
+        {
+          "name": "scenario_base_high",
+          "value": 45,
+          "unit": "FTE",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "High endpoint of the disclosed Hammond scenario base"
+          },
+          "transformation": "Multiplied by the channel benchmark rate"
+        },
+        {
+          "name": "indirect_benchmark_numerator",
+          "value": 133,
+          "unit": "FTE",
+          "provenance": {
+            "kind": "source",
+            "detail": "Prince William County prototype indirect contribution",
+            "reference_id": "src_study_pwc_data_center_market_2021"
+          },
+          "transformation": "Divided by the benchmark denominator"
+        },
+        {
+          "name": "benchmark_denominator",
+          "value": 28,
+          "unit": "FTE",
+          "provenance": {
+            "kind": "source",
+            "detail": "Prince William County prototype model denominator",
+            "reference_id": "src_study_pwc_data_center_market_2021"
+          },
+          "transformation": "Divides the channel benchmark numerator"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The direct FTE base is a scenario and the Virginia county operating coefficients may not transfer to Lake County.",
+      "decision_relevance": "Separates contribution channels without treating a source fact or forecast as a modeled total.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Current annual-average direct, contractor and supplier employment by work location"
+      },
+      "derivation": {
+        "method": "input_output_multiplier",
+        "model_version": "dx-hammond-operating_fte-1.0.0",
+        "formula": "scenario_base × (indirect_benchmark_numerator ÷ benchmark_denominator)",
+        "input_claim_ids": [
+          "clm_study_digital_crossroad_operating_employees_2020",
+          "clm_study_digital_crossroad_edge_jobs_2018"
+        ],
+        "input_source_ids": [
+          "src_study_pwc_data_center_market_2021",
+          "src_study_dcd_hammond_completion_2020",
+          "src_study_iedc_2018_annual_report_active_contracts"
+        ],
+        "assumptions": [
+          "The transferred county benchmark is a sensitivity device, not a Lake County coefficient.",
+          "The modeled FTE envelope is not a current headcount."
+        ]
+      },
+      "limitations": [
+        "Geographic structure and local purchasing differ between Prince William and Lake counties.",
+        "The public benchmark's underlying IMPLAN data vintage is not disclosed.",
+        "Contribution is not causation."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Operating contribution jobs, not jobs caused or guaranteed by the facility.",
+      "reviewed_on": "2026-09-05",
+      "multiplier_provenance": {
+        "source_id": "src_study_pwc_data_center_market_2021",
+        "model_name": "IMPLAN county contribution model reported by BAE",
+        "model_version": "Prince William County prototype-data-center study, 2021-dollar tables 7-8",
+        "geography": "Prince William County, Virginia benchmark transferred to Hammond/Lake County, Indiana",
+        "vintage": "IMPLAN model reported December 2021; underlying IMPLAN data vintage not disclosed",
+        "local_purchase_assumption": "No Hammond supplier-purchase matrix is public; the full Prince William local-capture structure is transferred as a low-confidence sensitivity.",
+        "channel_separation": "direct_indirect_induced_reported_separately"
+      }
+    },
+    {
+      "estimate_id": "est_study_dx_hammond_operating_fte_induced",
+      "project_id": "prj_study_im3_building_00978934687",
+      "metric_code": "study.modeled_operating_fte_induced",
+      "label": "Modeled induced household-spending annual operating FTE",
+      "category": "operations",
+      "unit": "FTE",
+      "measure_type": "stock",
+      "basis": "modeled_synthesis",
+      "value": 24.36,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2025,
+        "label": "2025 operating scenario anchored by public 2020 employment and 2025 occupancy evidence"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Digital Crossroad Hammond operating facility",
+        "county_fips": "18089",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": 13.36,
+        "central": 24.36,
+        "high": 35.36,
+        "interpretation": "Low, central and high scenario bases multiplied by the public induced-channel benchmark rate."
+      },
+      "contribution_channel": "induced",
+      "aggregation": {
+        "aggregation_id": "dx_hammond_operating_fte",
+        "role": "component",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "scenario_base_low",
+          "value": 17,
+          "unit": "FTE",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Low endpoint of the disclosed Hammond scenario base"
+          },
+          "transformation": "Multiplied by the channel benchmark rate"
+        },
+        {
+          "name": "scenario_base_central",
+          "value": 31,
+          "unit": "FTE",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Central endpoint of the disclosed Hammond scenario base"
+          },
+          "transformation": "Multiplied by the channel benchmark rate"
+        },
+        {
+          "name": "scenario_base_high",
+          "value": 45,
+          "unit": "FTE",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "High endpoint of the disclosed Hammond scenario base"
+          },
+          "transformation": "Multiplied by the channel benchmark rate"
+        },
+        {
+          "name": "induced_benchmark_numerator",
+          "value": 22,
+          "unit": "FTE",
+          "provenance": {
+            "kind": "source",
+            "detail": "Prince William County prototype induced contribution",
+            "reference_id": "src_study_pwc_data_center_market_2021"
+          },
+          "transformation": "Divided by the benchmark denominator"
+        },
+        {
+          "name": "benchmark_denominator",
+          "value": 28,
+          "unit": "FTE",
+          "provenance": {
+            "kind": "source",
+            "detail": "Prince William County prototype model denominator",
+            "reference_id": "src_study_pwc_data_center_market_2021"
+          },
+          "transformation": "Divides the channel benchmark numerator"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The direct FTE base is a scenario and the Virginia county operating coefficients may not transfer to Lake County.",
+      "decision_relevance": "Separates contribution channels without treating a source fact or forecast as a modeled total.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Current annual-average direct, contractor and supplier employment by work location"
+      },
+      "derivation": {
+        "method": "input_output_multiplier",
+        "model_version": "dx-hammond-operating_fte-1.0.0",
+        "formula": "scenario_base × (induced_benchmark_numerator ÷ benchmark_denominator)",
+        "input_claim_ids": [
+          "clm_study_digital_crossroad_operating_employees_2020",
+          "clm_study_digital_crossroad_edge_jobs_2018"
+        ],
+        "input_source_ids": [
+          "src_study_pwc_data_center_market_2021",
+          "src_study_dcd_hammond_completion_2020",
+          "src_study_iedc_2018_annual_report_active_contracts"
+        ],
+        "assumptions": [
+          "The transferred county benchmark is a sensitivity device, not a Lake County coefficient.",
+          "The modeled FTE envelope is not a current headcount."
+        ]
+      },
+      "limitations": [
+        "Geographic structure and local purchasing differ between Prince William and Lake counties.",
+        "The public benchmark's underlying IMPLAN data vintage is not disclosed.",
+        "Contribution is not causation."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Operating contribution jobs, not jobs caused or guaranteed by the facility.",
+      "reviewed_on": "2026-09-05",
+      "multiplier_provenance": {
+        "source_id": "src_study_pwc_data_center_market_2021",
+        "model_name": "IMPLAN county contribution model reported by BAE",
+        "model_version": "Prince William County prototype-data-center study, 2021-dollar tables 7-8",
+        "geography": "Prince William County, Virginia benchmark transferred to Hammond/Lake County, Indiana",
+        "vintage": "IMPLAN model reported December 2021; underlying IMPLAN data vintage not disclosed",
+        "local_purchase_assumption": "No Hammond supplier-purchase matrix is public; the full Prince William local-capture structure is transferred as a low-confidence sensitivity.",
+        "channel_separation": "direct_indirect_induced_reported_separately"
+      }
+    },
+    {
+      "estimate_id": "est_study_dx_hammond_operating_fte_total",
+      "project_id": "prj_study_im3_building_00978934687",
+      "metric_code": "study.modeled_operating_fte_total",
+      "label": "Modeled total annual operating FTE",
+      "category": "operations",
+      "unit": "FTE",
+      "measure_type": "stock",
+      "basis": "modeled_synthesis",
+      "value": 202.61,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2025,
+        "label": "2025 operating scenario anchored by public 2020 employment and 2025 occupancy evidence"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Digital Crossroad Hammond operating facility",
+        "county_fips": "18089",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": 111.11,
+        "central": 202.61,
+        "high": 294.11,
+        "interpretation": "Low, central and high scenario bases multiplied by the public total-channel benchmark rate."
+      },
+      "contribution_channel": "total",
+      "aggregation": {
+        "aggregation_id": "dx_hammond_operating_fte",
+        "role": "total",
+        "overlap_policy": "do_not_sum_outside_declared_total",
+        "component_estimate_ids": [
+          "est_study_dx_hammond_operating_fte_direct",
+          "est_study_dx_hammond_operating_fte_indirect",
+          "est_study_dx_hammond_operating_fte_induced"
+        ]
+      },
+      "parameters": [
+        {
+          "name": "scenario_base_low",
+          "value": 17,
+          "unit": "FTE",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Low endpoint of the disclosed Hammond scenario base"
+          },
+          "transformation": "Multiplied by the channel benchmark rate"
+        },
+        {
+          "name": "scenario_base_central",
+          "value": 31,
+          "unit": "FTE",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Central endpoint of the disclosed Hammond scenario base"
+          },
+          "transformation": "Multiplied by the channel benchmark rate"
+        },
+        {
+          "name": "scenario_base_high",
+          "value": 45,
+          "unit": "FTE",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "High endpoint of the disclosed Hammond scenario base"
+          },
+          "transformation": "Multiplied by the channel benchmark rate"
+        },
+        {
+          "name": "total_benchmark_numerator",
+          "value": 183,
+          "unit": "FTE",
+          "provenance": {
+            "kind": "source",
+            "detail": "Prince William County prototype total contribution",
+            "reference_id": "src_study_pwc_data_center_market_2021"
+          },
+          "transformation": "Divided by the benchmark denominator"
+        },
+        {
+          "name": "benchmark_denominator",
+          "value": 28,
+          "unit": "FTE",
+          "provenance": {
+            "kind": "source",
+            "detail": "Prince William County prototype model denominator",
+            "reference_id": "src_study_pwc_data_center_market_2021"
+          },
+          "transformation": "Divides the channel benchmark numerator"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The direct FTE base is a scenario and the Virginia county operating coefficients may not transfer to Lake County.",
+      "decision_relevance": "Separates contribution channels without treating a source fact or forecast as a modeled total.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Current annual-average direct, contractor and supplier employment by work location"
+      },
+      "derivation": {
+        "method": "input_output_multiplier",
+        "model_version": "dx-hammond-operating_fte-1.0.0",
+        "formula": "scenario_base × (total_benchmark_numerator ÷ benchmark_denominator)",
+        "input_claim_ids": [
+          "clm_study_digital_crossroad_operating_employees_2020",
+          "clm_study_digital_crossroad_edge_jobs_2018"
+        ],
+        "input_source_ids": [
+          "src_study_pwc_data_center_market_2021",
+          "src_study_dcd_hammond_completion_2020",
+          "src_study_iedc_2018_annual_report_active_contracts"
+        ],
+        "assumptions": [
+          "The transferred county benchmark is a sensitivity device, not a Lake County coefficient.",
+          "The modeled FTE envelope is not a current headcount."
+        ]
+      },
+      "limitations": [
+        "Geographic structure and local purchasing differ between Prince William and Lake counties.",
+        "The public benchmark's underlying IMPLAN data vintage is not disclosed.",
+        "Contribution is not causation."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Operating contribution jobs, not jobs caused or guaranteed by the facility.",
+      "reviewed_on": "2026-09-05",
+      "multiplier_provenance": {
+        "source_id": "src_study_pwc_data_center_market_2021",
+        "model_name": "IMPLAN county contribution model reported by BAE",
+        "model_version": "Prince William County prototype-data-center study, 2021-dollar tables 7-8",
+        "geography": "Prince William County, Virginia benchmark transferred to Hammond/Lake County, Indiana",
+        "vintage": "IMPLAN model reported December 2021; underlying IMPLAN data vintage not disclosed",
+        "local_purchase_assumption": "No Hammond supplier-purchase matrix is public; the full Prince William local-capture structure is transferred as a low-confidence sensitivity.",
+        "channel_separation": "direct_indirect_induced_reported_separately"
+      }
+    },
+    {
+      "estimate_id": "est_study_dx_hammond_operating_labor_income_direct",
+      "project_id": "prj_study_im3_building_00978934687",
+      "metric_code": "study.modeled_operating_labor_income_direct",
+      "label": "Modeled direct annual operating labor income",
+      "category": "operations",
+      "unit": "USD",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 5580000.0,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2025,
+        "label": "2025 operating scenario anchored by public 2020 employment and 2025 occupancy evidence"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Digital Crossroad Hammond operating facility",
+        "county_fips": "18089",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": 3060000.0,
+        "central": 5580000.0,
+        "high": 8100000.0,
+        "interpretation": "Low, central and high scenario bases multiplied by the public direct-channel benchmark rate."
+      },
+      "contribution_channel": "direct",
+      "aggregation": {
+        "aggregation_id": "dx_hammond_operating_labor_income",
+        "role": "component",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "scenario_base_low",
+          "value": 17,
+          "unit": "FTE",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Low endpoint of the disclosed Hammond scenario base"
+          },
+          "transformation": "Multiplied by the channel benchmark rate"
+        },
+        {
+          "name": "scenario_base_central",
+          "value": 31,
+          "unit": "FTE",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Central endpoint of the disclosed Hammond scenario base"
+          },
+          "transformation": "Multiplied by the channel benchmark rate"
+        },
+        {
+          "name": "scenario_base_high",
+          "value": 45,
+          "unit": "FTE",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "High endpoint of the disclosed Hammond scenario base"
+          },
+          "transformation": "Multiplied by the channel benchmark rate"
+        },
+        {
+          "name": "direct_benchmark_numerator",
+          "value": 5040000,
+          "unit": "USD",
+          "provenance": {
+            "kind": "source",
+            "detail": "Prince William County prototype direct contribution",
+            "reference_id": "src_study_pwc_data_center_market_2021"
+          },
+          "transformation": "Divided by the benchmark denominator"
+        },
+        {
+          "name": "benchmark_denominator",
+          "value": 28,
+          "unit": "FTE",
+          "provenance": {
+            "kind": "source",
+            "detail": "Prince William County prototype model denominator",
+            "reference_id": "src_study_pwc_data_center_market_2021"
+          },
+          "transformation": "Divides the channel benchmark numerator"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "Compensation includes benefits and proprietor income and relies on a cross-county benchmark.",
+      "decision_relevance": "Separates contribution channels without treating a source fact or forecast as a modeled total.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Current Hammond payroll, benefits, contractor compensation, supplier labor income and worker residence"
+      },
+      "derivation": {
+        "method": "input_output_multiplier",
+        "model_version": "dx-hammond-operating_labor_income-1.0.0",
+        "formula": "scenario_base × (direct_benchmark_numerator ÷ benchmark_denominator)",
+        "input_claim_ids": [
+          "clm_study_digital_crossroad_operating_employees_2020",
+          "clm_study_digital_crossroad_edge_jobs_2018"
+        ],
+        "input_source_ids": [
+          "src_study_pwc_data_center_market_2021",
+          "src_study_dcd_hammond_completion_2020",
+          "src_study_iedc_2018_annual_report_active_contracts"
+        ],
+        "assumptions": [
+          "The transferred county benchmark is a sensitivity device, not a Lake County coefficient.",
+          "The modeled FTE envelope is not a current headcount."
+        ]
+      },
+      "limitations": [
+        "Geographic structure and local purchasing differ between Prince William and Lake counties.",
+        "The public benchmark's underlying IMPLAN data vintage is not disclosed.",
+        "Contribution is not causation."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Annual labor-income contribution; not audited payroll and not additive to the separate payroll benchmark.",
+      "reviewed_on": "2026-09-05",
+      "multiplier_provenance": {
+        "source_id": "src_study_pwc_data_center_market_2021",
+        "model_name": "IMPLAN county contribution model reported by BAE",
+        "model_version": "Prince William County prototype-data-center study, 2021-dollar tables 7-8",
+        "geography": "Prince William County, Virginia benchmark transferred to Hammond/Lake County, Indiana",
+        "vintage": "IMPLAN model reported December 2021; underlying IMPLAN data vintage not disclosed",
+        "local_purchase_assumption": "No Hammond supplier-purchase matrix is public; the full Prince William local-capture structure is transferred as a low-confidence sensitivity.",
+        "channel_separation": "direct_indirect_induced_reported_separately"
+      }
+    },
+    {
+      "estimate_id": "est_study_dx_hammond_operating_labor_income_indirect",
+      "project_id": "prj_study_im3_building_00978934687",
+      "metric_code": "study.modeled_operating_labor_income_indirect",
+      "label": "Modeled indirect supplier annual operating labor income",
+      "category": "operations",
+      "unit": "USD",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 6519964.29,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2025,
+        "label": "2025 operating scenario anchored by public 2020 employment and 2025 occupancy evidence"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Digital Crossroad Hammond operating facility",
+        "county_fips": "18089",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": 3575464.29,
+        "central": 6519964.29,
+        "high": 9464464.29,
+        "interpretation": "Low, central and high scenario bases multiplied by the public indirect-channel benchmark rate."
+      },
+      "contribution_channel": "indirect",
+      "aggregation": {
+        "aggregation_id": "dx_hammond_operating_labor_income",
+        "role": "component",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "scenario_base_low",
+          "value": 17,
+          "unit": "FTE",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Low endpoint of the disclosed Hammond scenario base"
+          },
+          "transformation": "Multiplied by the channel benchmark rate"
+        },
+        {
+          "name": "scenario_base_central",
+          "value": 31,
+          "unit": "FTE",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Central endpoint of the disclosed Hammond scenario base"
+          },
+          "transformation": "Multiplied by the channel benchmark rate"
+        },
+        {
+          "name": "scenario_base_high",
+          "value": 45,
+          "unit": "FTE",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "High endpoint of the disclosed Hammond scenario base"
+          },
+          "transformation": "Multiplied by the channel benchmark rate"
+        },
+        {
+          "name": "indirect_benchmark_numerator",
+          "value": 5889000,
+          "unit": "USD",
+          "provenance": {
+            "kind": "source",
+            "detail": "Prince William County prototype indirect contribution",
+            "reference_id": "src_study_pwc_data_center_market_2021"
+          },
+          "transformation": "Divided by the benchmark denominator"
+        },
+        {
+          "name": "benchmark_denominator",
+          "value": 28,
+          "unit": "FTE",
+          "provenance": {
+            "kind": "source",
+            "detail": "Prince William County prototype model denominator",
+            "reference_id": "src_study_pwc_data_center_market_2021"
+          },
+          "transformation": "Divides the channel benchmark numerator"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "Compensation includes benefits and proprietor income and relies on a cross-county benchmark.",
+      "decision_relevance": "Separates contribution channels without treating a source fact or forecast as a modeled total.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Current Hammond payroll, benefits, contractor compensation, supplier labor income and worker residence"
+      },
+      "derivation": {
+        "method": "input_output_multiplier",
+        "model_version": "dx-hammond-operating_labor_income-1.0.0",
+        "formula": "scenario_base × (indirect_benchmark_numerator ÷ benchmark_denominator)",
+        "input_claim_ids": [
+          "clm_study_digital_crossroad_operating_employees_2020",
+          "clm_study_digital_crossroad_edge_jobs_2018"
+        ],
+        "input_source_ids": [
+          "src_study_pwc_data_center_market_2021",
+          "src_study_dcd_hammond_completion_2020",
+          "src_study_iedc_2018_annual_report_active_contracts"
+        ],
+        "assumptions": [
+          "The transferred county benchmark is a sensitivity device, not a Lake County coefficient.",
+          "The modeled FTE envelope is not a current headcount."
+        ]
+      },
+      "limitations": [
+        "Geographic structure and local purchasing differ between Prince William and Lake counties.",
+        "The public benchmark's underlying IMPLAN data vintage is not disclosed.",
+        "Contribution is not causation."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Annual labor-income contribution; not audited payroll and not additive to the separate payroll benchmark.",
+      "reviewed_on": "2026-09-05",
+      "multiplier_provenance": {
+        "source_id": "src_study_pwc_data_center_market_2021",
+        "model_name": "IMPLAN county contribution model reported by BAE",
+        "model_version": "Prince William County prototype-data-center study, 2021-dollar tables 7-8",
+        "geography": "Prince William County, Virginia benchmark transferred to Hammond/Lake County, Indiana",
+        "vintage": "IMPLAN model reported December 2021; underlying IMPLAN data vintage not disclosed",
+        "local_purchase_assumption": "No Hammond supplier-purchase matrix is public; the full Prince William local-capture structure is transferred as a low-confidence sensitivity.",
+        "channel_separation": "direct_indirect_induced_reported_separately"
+      }
+    },
+    {
+      "estimate_id": "est_study_dx_hammond_operating_labor_income_induced",
+      "project_id": "prj_study_im3_building_00978934687",
+      "metric_code": "study.modeled_operating_labor_income_induced",
+      "label": "Modeled induced household-spending annual operating labor income",
+      "category": "operations",
+      "unit": "USD",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 966535.71,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2025,
+        "label": "2025 operating scenario anchored by public 2020 employment and 2025 occupancy evidence"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Digital Crossroad Hammond operating facility",
+        "county_fips": "18089",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": 530035.71,
+        "central": 966535.71,
+        "high": 1403035.71,
+        "interpretation": "Low, central and high scenario bases multiplied by the public induced-channel benchmark rate."
+      },
+      "contribution_channel": "induced",
+      "aggregation": {
+        "aggregation_id": "dx_hammond_operating_labor_income",
+        "role": "component",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "scenario_base_low",
+          "value": 17,
+          "unit": "FTE",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Low endpoint of the disclosed Hammond scenario base"
+          },
+          "transformation": "Multiplied by the channel benchmark rate"
+        },
+        {
+          "name": "scenario_base_central",
+          "value": 31,
+          "unit": "FTE",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Central endpoint of the disclosed Hammond scenario base"
+          },
+          "transformation": "Multiplied by the channel benchmark rate"
+        },
+        {
+          "name": "scenario_base_high",
+          "value": 45,
+          "unit": "FTE",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "High endpoint of the disclosed Hammond scenario base"
+          },
+          "transformation": "Multiplied by the channel benchmark rate"
+        },
+        {
+          "name": "induced_benchmark_numerator",
+          "value": 873000,
+          "unit": "USD",
+          "provenance": {
+            "kind": "source",
+            "detail": "Prince William County prototype induced contribution",
+            "reference_id": "src_study_pwc_data_center_market_2021"
+          },
+          "transformation": "Divided by the benchmark denominator"
+        },
+        {
+          "name": "benchmark_denominator",
+          "value": 28,
+          "unit": "FTE",
+          "provenance": {
+            "kind": "source",
+            "detail": "Prince William County prototype model denominator",
+            "reference_id": "src_study_pwc_data_center_market_2021"
+          },
+          "transformation": "Divides the channel benchmark numerator"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "Compensation includes benefits and proprietor income and relies on a cross-county benchmark.",
+      "decision_relevance": "Separates contribution channels without treating a source fact or forecast as a modeled total.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Current Hammond payroll, benefits, contractor compensation, supplier labor income and worker residence"
+      },
+      "derivation": {
+        "method": "input_output_multiplier",
+        "model_version": "dx-hammond-operating_labor_income-1.0.0",
+        "formula": "scenario_base × (induced_benchmark_numerator ÷ benchmark_denominator)",
+        "input_claim_ids": [
+          "clm_study_digital_crossroad_operating_employees_2020",
+          "clm_study_digital_crossroad_edge_jobs_2018"
+        ],
+        "input_source_ids": [
+          "src_study_pwc_data_center_market_2021",
+          "src_study_dcd_hammond_completion_2020",
+          "src_study_iedc_2018_annual_report_active_contracts"
+        ],
+        "assumptions": [
+          "The transferred county benchmark is a sensitivity device, not a Lake County coefficient.",
+          "The modeled FTE envelope is not a current headcount."
+        ]
+      },
+      "limitations": [
+        "Geographic structure and local purchasing differ between Prince William and Lake counties.",
+        "The public benchmark's underlying IMPLAN data vintage is not disclosed.",
+        "Contribution is not causation."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Annual labor-income contribution; not audited payroll and not additive to the separate payroll benchmark.",
+      "reviewed_on": "2026-09-05",
+      "multiplier_provenance": {
+        "source_id": "src_study_pwc_data_center_market_2021",
+        "model_name": "IMPLAN county contribution model reported by BAE",
+        "model_version": "Prince William County prototype-data-center study, 2021-dollar tables 7-8",
+        "geography": "Prince William County, Virginia benchmark transferred to Hammond/Lake County, Indiana",
+        "vintage": "IMPLAN model reported December 2021; underlying IMPLAN data vintage not disclosed",
+        "local_purchase_assumption": "No Hammond supplier-purchase matrix is public; the full Prince William local-capture structure is transferred as a low-confidence sensitivity.",
+        "channel_separation": "direct_indirect_induced_reported_separately"
+      }
+    },
+    {
+      "estimate_id": "est_study_dx_hammond_operating_labor_income_total",
+      "project_id": "prj_study_im3_building_00978934687",
+      "metric_code": "study.modeled_operating_labor_income_total",
+      "label": "Modeled total annual operating labor income",
+      "category": "operations",
+      "unit": "USD",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 13066500.0,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2025,
+        "label": "2025 operating scenario anchored by public 2020 employment and 2025 occupancy evidence"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Digital Crossroad Hammond operating facility",
+        "county_fips": "18089",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": 7165500.0,
+        "central": 13066500.0,
+        "high": 18967500.0,
+        "interpretation": "Low, central and high scenario bases multiplied by the public total-channel benchmark rate."
+      },
+      "contribution_channel": "total",
+      "aggregation": {
+        "aggregation_id": "dx_hammond_operating_labor_income",
+        "role": "total",
+        "overlap_policy": "do_not_sum_outside_declared_total",
+        "component_estimate_ids": [
+          "est_study_dx_hammond_operating_labor_income_direct",
+          "est_study_dx_hammond_operating_labor_income_indirect",
+          "est_study_dx_hammond_operating_labor_income_induced"
+        ]
+      },
+      "parameters": [
+        {
+          "name": "scenario_base_low",
+          "value": 17,
+          "unit": "FTE",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Low endpoint of the disclosed Hammond scenario base"
+          },
+          "transformation": "Multiplied by the channel benchmark rate"
+        },
+        {
+          "name": "scenario_base_central",
+          "value": 31,
+          "unit": "FTE",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Central endpoint of the disclosed Hammond scenario base"
+          },
+          "transformation": "Multiplied by the channel benchmark rate"
+        },
+        {
+          "name": "scenario_base_high",
+          "value": 45,
+          "unit": "FTE",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "High endpoint of the disclosed Hammond scenario base"
+          },
+          "transformation": "Multiplied by the channel benchmark rate"
+        },
+        {
+          "name": "total_benchmark_numerator",
+          "value": 11802000,
+          "unit": "USD",
+          "provenance": {
+            "kind": "source",
+            "detail": "Prince William County prototype total contribution",
+            "reference_id": "src_study_pwc_data_center_market_2021"
+          },
+          "transformation": "Divided by the benchmark denominator"
+        },
+        {
+          "name": "benchmark_denominator",
+          "value": 28,
+          "unit": "FTE",
+          "provenance": {
+            "kind": "source",
+            "detail": "Prince William County prototype model denominator",
+            "reference_id": "src_study_pwc_data_center_market_2021"
+          },
+          "transformation": "Divides the channel benchmark numerator"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "Compensation includes benefits and proprietor income and relies on a cross-county benchmark.",
+      "decision_relevance": "Separates contribution channels without treating a source fact or forecast as a modeled total.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Current Hammond payroll, benefits, contractor compensation, supplier labor income and worker residence"
+      },
+      "derivation": {
+        "method": "input_output_multiplier",
+        "model_version": "dx-hammond-operating_labor_income-1.0.0",
+        "formula": "scenario_base × (total_benchmark_numerator ÷ benchmark_denominator)",
+        "input_claim_ids": [
+          "clm_study_digital_crossroad_operating_employees_2020",
+          "clm_study_digital_crossroad_edge_jobs_2018"
+        ],
+        "input_source_ids": [
+          "src_study_pwc_data_center_market_2021",
+          "src_study_dcd_hammond_completion_2020",
+          "src_study_iedc_2018_annual_report_active_contracts"
+        ],
+        "assumptions": [
+          "The transferred county benchmark is a sensitivity device, not a Lake County coefficient.",
+          "The modeled FTE envelope is not a current headcount."
+        ]
+      },
+      "limitations": [
+        "Geographic structure and local purchasing differ between Prince William and Lake counties.",
+        "The public benchmark's underlying IMPLAN data vintage is not disclosed.",
+        "Contribution is not causation."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Annual labor-income contribution; not audited payroll and not additive to the separate payroll benchmark.",
+      "reviewed_on": "2026-09-05",
+      "multiplier_provenance": {
+        "source_id": "src_study_pwc_data_center_market_2021",
+        "model_name": "IMPLAN county contribution model reported by BAE",
+        "model_version": "Prince William County prototype-data-center study, 2021-dollar tables 7-8",
+        "geography": "Prince William County, Virginia benchmark transferred to Hammond/Lake County, Indiana",
+        "vintage": "IMPLAN model reported December 2021; underlying IMPLAN data vintage not disclosed",
+        "local_purchase_assumption": "No Hammond supplier-purchase matrix is public; the full Prince William local-capture structure is transferred as a low-confidence sensitivity.",
+        "channel_separation": "direct_indirect_induced_reported_separately"
+      }
+    },
+    {
+      "estimate_id": "est_study_dx_hammond_operating_payroll_direct",
+      "project_id": "prj_study_im3_building_00978934687",
+      "metric_code": "study.modeled_operating_payroll_direct",
+      "label": "Modeled direct annual payroll",
+      "category": "operations",
+      "unit": "USD",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 2851295.45,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2025,
+        "label": "2025 operating scenario anchored by public 2020 employment and 2025 occupancy evidence"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Digital Crossroad Hammond operating facility",
+        "county_fips": "18089",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": 1563613.64,
+        "central": 2851295.45,
+        "high": 4138977.27,
+        "interpretation": "FTE scenario endpoints multiplied by 2023 Lake County NAICS 518210 payroll per March employee."
+      },
+      "contribution_channel": "direct",
+      "aggregation": {
+        "aggregation_id": "dx_hammond_operating_payroll",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "county_industry_payroll",
+          "value": 4047000,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "detail": "Lake County NAICS 518210 annual payroll in 2023",
+            "reference_id": "clm_study_lake_county_cbp_518210_annual_payroll_2023"
+          },
+          "transformation": "Divided by county-industry employment"
+        },
+        {
+          "name": "county_industry_employment",
+          "value": 44,
+          "unit": "employees",
+          "provenance": {
+            "kind": "claim",
+            "detail": "Lake County NAICS 518210 March employment in 2023",
+            "reference_id": "clm_study_lake_county_cbp_518210_employment_2023"
+          },
+          "transformation": "Denominator for payroll per employee"
+        },
+        {
+          "name": "payroll_per_employee",
+          "value": 91977.27,
+          "unit": "USD_per_FTE",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Quotient of the two source claims"
+          },
+          "transformation": "Multiplied by FTE endpoints"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "Both county inputs carry Census noise and cover the entire industry; the FTE base is a scenario.",
+      "decision_relevance": "Provides a local compensation benchmark distinct from the broader labor-income contribution model.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Facility wages, bonuses, benefits, hours, occupations, contractor compensation and residency"
+      },
+      "derivation": {
+        "method": "benchmark_application",
+        "model_version": "dx-hammond-operating-payroll-1.0.0",
+        "formula": "operating_FTE × ($4,047,000 county-industry payroll ÷ 44 March employees)",
+        "input_claim_ids": [
+          "clm_study_lake_county_cbp_518210_annual_payroll_2023",
+          "clm_study_lake_county_cbp_518210_employment_2023",
+          "clm_study_digital_crossroad_operating_employees_2020",
+          "clm_study_digital_crossroad_edge_jobs_2018"
+        ],
+        "input_source_ids": [
+          "src_study_census_cbp_2023_lake_county_naics_518210",
+          "src_study_dcd_hammond_completion_2020",
+          "src_study_iedc_2018_annual_report_active_contracts"
+        ],
+        "assumptions": [
+          "County NAICS payroll per March employee approximates facility payroll per FTE.",
+          "No inflation adjustment is applied."
+        ]
+      },
+      "limitations": [
+        "County-industry rather than facility payroll.",
+        "March employment is not annual-average FTE.",
+        "Do not add to modeled labor income."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Payroll excludes an explicit benefits estimate; the contribution-model labor-income rows use a different definition.",
+      "reviewed_on": "2026-09-05"
+    },
+    {
+      "estimate_id": "est_study_dx_hammond_operating_local_resident_fte",
+      "project_id": "prj_study_im3_building_00978934687",
+      "metric_code": "study.modeled_operating_local_resident_fte",
+      "label": "Modeled Lake County-resident operating FTE",
+      "category": "operations",
+      "unit": "FTE",
+      "measure_type": "stock",
+      "basis": "modeled_synthesis",
+      "value": 17.05,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2025,
+        "label": "2025 operating scenario anchored by public 2020 employment and 2025 occupancy evidence"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Digital Crossroad Hammond operating facility",
+        "county_fips": "18089",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": 6.8,
+        "central": 17.05,
+        "high": 31.5,
+        "interpretation": "Operating FTE endpoints multiplied by 40%, 55% and 70% residence-share sensitivities."
+      },
+      "contribution_channel": "direct",
+      "aggregation": {
+        "aggregation_id": "dx_hammond_operating_local_resident",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "operating_fte_low",
+          "value": 17,
+          "unit": "FTE",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Low direct operating-FTE scenario"
+          },
+          "transformation": "Multiplied by low residence share"
+        },
+        {
+          "name": "operating_fte_central",
+          "value": 31,
+          "unit": "FTE",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Central direct operating-FTE scenario"
+          },
+          "transformation": "Multiplied by central residence share"
+        },
+        {
+          "name": "operating_fte_high",
+          "value": 45,
+          "unit": "FTE",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "High direct operating-FTE scenario"
+          },
+          "transformation": "Multiplied by high residence share"
+        },
+        {
+          "name": "regional_resident_worker_proxy",
+          "value": 0.55,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "source",
+            "detail": "NIRPC regional proxy",
+            "reference_id": "src_study_nirpc_recovery_plan_2022"
+          },
+          "transformation": "Used as central residence share"
+        },
+        {
+          "name": "low_residence_share",
+          "value": 0.4,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Sensitivity below proxy"
+          },
+          "transformation": "Multiplies low FTE"
+        },
+        {
+          "name": "high_residence_share",
+          "value": 0.7,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Sensitivity above proxy"
+          },
+          "transformation": "Multiplies high FTE"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "No facility employee-residence distribution is public.",
+      "decision_relevance": "Makes resident-share uncertainty explicit.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Current employee and contractor residence by annual-average FTE"
+      },
+      "derivation": {
+        "method": "benchmark_application",
+        "model_version": "dx-hammond-operating-residence-1.0.0",
+        "formula": "operating_FTE × assumed_Lake_County_resident_share",
+        "input_claim_ids": [
+          "clm_study_digital_crossroad_operating_employees_2020",
+          "clm_study_digital_crossroad_edge_jobs_2018"
+        ],
+        "input_source_ids": [
+          "src_study_nirpc_recovery_plan_2022",
+          "src_study_dcd_hammond_completion_2020",
+          "src_study_iedc_2018_annual_report_active_contracts"
+        ],
+        "assumptions": [
+          "The regional workforce statistic is only a residence-share proxy.",
+          "Customer employees are outside scope."
+        ]
+      },
+      "limitations": [
+        "Proxy population differs from facility workers.",
+        "Not a local-hiring compliance finding."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Residence scenario only.",
+      "reviewed_on": "2026-09-05"
+    },
+    {
+      "estimate_id": "est_study_dx_hammond_operating_supplier_output_indirect",
+      "project_id": "prj_study_im3_building_00978934687",
+      "metric_code": "study.modeled_operating_supplier_output_indirect",
+      "label": "Modeled indirect supplier output",
+      "category": "suppliers",
+      "unit": "USD_per_year",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 19834464.29,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2025,
+        "label": "2025 operating scenario anchored by public 2020 employment and 2025 occupancy evidence"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Digital Crossroad Hammond operating facility",
+        "county_fips": "18089",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": 10876964.29,
+        "central": 19834464.29,
+        "high": 28791964.29,
+        "interpretation": "Operating FTE endpoints multiplied by the corresponding Prince William County output-per-direct-FTE coefficient."
+      },
+      "contribution_channel": "indirect",
+      "aggregation": {
+        "aggregation_id": "dx_hammond_operating_supplier_output_indirect",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "operating_fte_central",
+          "value": 31,
+          "unit": "FTE",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Central operating-FTE scenario"
+          },
+          "transformation": "Multiplied by benchmark output per FTE"
+        },
+        {
+          "name": "indirect_benchmark_output",
+          "value": 17915000,
+          "unit": "USD_per_year",
+          "provenance": {
+            "kind": "source",
+            "detail": "Prototype indirect annual output",
+            "reference_id": "src_study_pwc_data_center_market_2021"
+          },
+          "transformation": "Divided by 28 direct FTE"
+        },
+        {
+          "name": "benchmark_direct_fte",
+          "value": 28,
+          "unit": "FTE",
+          "provenance": {
+            "kind": "source",
+            "detail": "Prototype direct operating FTE",
+            "reference_id": "src_study_pwc_data_center_market_2021"
+          },
+          "transformation": "Divides benchmark output"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "Supplier structure, commuting and local purchase shares can differ materially between counties.",
+      "decision_relevance": "Separates supplier and household-spending channels.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Hammond annual operating purchases by vendor location and household expenditure capture"
+      },
+      "derivation": {
+        "method": "input_output_multiplier",
+        "model_version": "dx-hammond-operating_supplier_output_indirect-1.0.0",
+        "formula": "operating_FTE × ($17,915,000 benchmark_output ÷ 28 benchmark_direct_FTE)",
+        "input_claim_ids": [
+          "clm_study_digital_crossroad_operating_employees_2020",
+          "clm_study_digital_crossroad_edge_jobs_2018"
+        ],
+        "input_source_ids": [
+          "src_study_pwc_data_center_market_2021",
+          "src_study_dcd_hammond_completion_2020",
+          "src_study_iedc_2018_annual_report_active_contracts"
+        ],
+        "assumptions": [
+          "Prince William County output-per-FTE transfers to Lake County.",
+          "Reported 2021 dollars are not inflation-adjusted."
+        ]
+      },
+      "limitations": [
+        "Economic output is not vendor purchases or household income.",
+        "Contribution is not causation.",
+        "Cross-county 2021-dollar transfer."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "A channel-specific output scenario, not project revenue.",
+      "reviewed_on": "2026-09-05",
+      "multiplier_provenance": {
+        "source_id": "src_study_pwc_data_center_market_2021",
+        "model_name": "IMPLAN county contribution model reported by BAE",
+        "model_version": "Prince William County prototype-data-center study, 2021-dollar tables 7-8",
+        "geography": "Prince William County, Virginia benchmark transferred to Hammond/Lake County, Indiana",
+        "vintage": "IMPLAN model reported December 2021; underlying IMPLAN data vintage not disclosed",
+        "local_purchase_assumption": "No Hammond purchase matrix is public; the Prince William county-capture coefficient is transferred without asserting identical leakages.",
+        "channel_separation": "direct_indirect_induced_reported_separately"
+      }
+    },
+    {
+      "estimate_id": "est_study_dx_hammond_operating_household_output_induced",
+      "project_id": "prj_study_im3_building_00978934687",
+      "metric_code": "study.modeled_operating_household_output_induced",
+      "label": "Modeled induced household-spending output",
+      "category": "community",
+      "unit": "USD_per_year",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 3655785.71,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2025,
+        "label": "2025 operating scenario anchored by public 2020 employment and 2025 occupancy evidence"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Digital Crossroad Hammond operating facility",
+        "county_fips": "18089",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": 2004785.71,
+        "central": 3655785.71,
+        "high": 5306785.71,
+        "interpretation": "Operating FTE endpoints multiplied by the corresponding Prince William County output-per-direct-FTE coefficient."
+      },
+      "contribution_channel": "induced",
+      "aggregation": {
+        "aggregation_id": "dx_hammond_operating_household_output_induced",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "operating_fte_central",
+          "value": 31,
+          "unit": "FTE",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Central operating-FTE scenario"
+          },
+          "transformation": "Multiplied by benchmark output per FTE"
+        },
+        {
+          "name": "induced_benchmark_output",
+          "value": 3302000,
+          "unit": "USD_per_year",
+          "provenance": {
+            "kind": "source",
+            "detail": "Prototype induced annual output",
+            "reference_id": "src_study_pwc_data_center_market_2021"
+          },
+          "transformation": "Divided by 28 direct FTE"
+        },
+        {
+          "name": "benchmark_direct_fte",
+          "value": 28,
+          "unit": "FTE",
+          "provenance": {
+            "kind": "source",
+            "detail": "Prototype direct operating FTE",
+            "reference_id": "src_study_pwc_data_center_market_2021"
+          },
+          "transformation": "Divides benchmark output"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "Supplier structure, commuting and local purchase shares can differ materially between counties.",
+      "decision_relevance": "Separates supplier and household-spending channels.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Hammond annual operating purchases by vendor location and household expenditure capture"
+      },
+      "derivation": {
+        "method": "input_output_multiplier",
+        "model_version": "dx-hammond-operating_household_output_induced-1.0.0",
+        "formula": "operating_FTE × ($3,302,000 benchmark_output ÷ 28 benchmark_direct_FTE)",
+        "input_claim_ids": [
+          "clm_study_digital_crossroad_operating_employees_2020",
+          "clm_study_digital_crossroad_edge_jobs_2018"
+        ],
+        "input_source_ids": [
+          "src_study_pwc_data_center_market_2021",
+          "src_study_dcd_hammond_completion_2020",
+          "src_study_iedc_2018_annual_report_active_contracts"
+        ],
+        "assumptions": [
+          "Prince William County output-per-FTE transfers to Lake County.",
+          "Reported 2021 dollars are not inflation-adjusted."
+        ]
+      },
+      "limitations": [
+        "Economic output is not vendor purchases or household income.",
+        "Contribution is not causation.",
+        "Cross-county 2021-dollar transfer."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "A channel-specific output scenario, not project revenue.",
+      "reviewed_on": "2026-09-05",
+      "multiplier_provenance": {
+        "source_id": "src_study_pwc_data_center_market_2021",
+        "model_name": "IMPLAN county contribution model reported by BAE",
+        "model_version": "Prince William County prototype-data-center study, 2021-dollar tables 7-8",
+        "geography": "Prince William County, Virginia benchmark transferred to Hammond/Lake County, Indiana",
+        "vintage": "IMPLAN model reported December 2021; underlying IMPLAN data vintage not disclosed",
+        "local_purchase_assumption": "No Hammond purchase matrix is public; the Prince William county-capture coefficient is transferred without asserting identical leakages.",
+        "channel_separation": "direct_indirect_induced_reported_separately"
+      }
+    },
+    {
+      "estimate_id": "est_study_dx_hammond_cost_basis_change_2025",
+      "project_id": "prj_study_im3_building_00978934687",
+      "metric_code": "study.modeled_real_estate_cost_basis_change",
+      "label": "Modeled change in audited real-estate cost basis",
+      "category": "investment",
+      "unit": "USD",
+      "measure_type": "change",
+      "basis": "modeled_synthesis",
+      "value": 9702347,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2025,
+        "label": "Change between audited year-end 2024 and 2025 cost-basis stocks"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "PDREF Aggregator interest in Digital Crossroad Hammond real estate",
+        "county_fips": "18089",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "point_estimate",
+        "low": 9702347,
+        "central": 9702347,
+        "high": 9702347,
+        "interpretation": "Exact arithmetic difference between two audited accounting stocks."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "dx_hammond_cost_basis_change",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "cost_basis_2025",
+          "value": 220812911,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "detail": "Audited 2025 year-end cost basis",
+            "reference_id": "clm_study_digital_crossroad_cost_basis_2025"
+          },
+          "transformation": "Less 2024 cost basis"
+        },
+        {
+          "name": "cost_basis_2024",
+          "value": 211110564,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "detail": "Audited 2024 year-end cost basis",
+            "reference_id": "clm_study_digital_crossroad_cost_basis_2024"
+          },
+          "transformation": "Subtracted from 2025 cost basis"
+        }
+      ],
+      "confidence": "high",
+      "confidence_rationale": "The arithmetic is exact for the reported stocks, but its economic interpretation is deliberately limited.",
+      "decision_relevance": "Shows why a year-to-year accounting change must not be labeled construction spending.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Property-level cost-basis roll-forward separating acquisitions, improvements, depreciation, transfers and dispositions"
+      },
+      "derivation": {
+        "method": "benchmark_application",
+        "model_version": "dx-hammond-cost-basis-change-1.0.0",
+        "formula": "$220,812,911 - $211,110,564",
+        "input_claim_ids": [
+          "clm_study_digital_crossroad_cost_basis_2025",
+          "clm_study_digital_crossroad_cost_basis_2024"
+        ],
+        "input_source_ids": [
+          "src_study_principal_digital_real_estate_2025"
+        ],
+        "assumptions": [
+          "The subtraction is an accounting-stock reconciliation only."
+        ]
+      },
+      "limitations": [
+        "Not capital expenditure.",
+        "Not timed construction spending.",
+        "May reflect accounting changes unrelated to physical work."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "A stock change presented specifically to prevent expenditure misclassification.",
+      "reviewed_on": "2026-09-05"
+    },
+    {
+      "estimate_id": "est_study_dx_hammond_gross_tax_distribution_2025",
+      "project_id": "prj_study_im3_building_00978934687",
+      "metric_code": "study.modeled_gross_property_tax_distribution_total",
+      "label": "Modeled gross property-tax distribution total",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 751127.92,
+      "period": {
+        "kind": "tax_year",
+        "year": 2025,
+        "label": "Tax year 2025 gross distribution reconciliation"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Digital Crossroad Hammond fiscal account across named taxing units",
+        "county_fips": "18089",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "point_estimate",
+        "low": 751127.92,
+        "central": 751127.92,
+        "high": 751127.92,
+        "interpretation": "Exact sum of six separately reported taxing-unit gross distributions."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "dx_hammond_fiscal_gross_2025",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "distribution_1",
+          "value": 116985.32,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "detail": "Separately reported gross taxing-unit distribution",
+            "reference_id": "clm_study_digital_crossroad_gross_tax_distribution_county_2025"
+          },
+          "transformation": "Included once in gross total"
+        },
+        {
+          "name": "distribution_2",
+          "value": 14630.67,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "detail": "Separately reported gross taxing-unit distribution",
+            "reference_id": "clm_study_digital_crossroad_gross_tax_distribution_township_2025"
+          },
+          "transformation": "Included once in gross total"
+        },
+        {
+          "name": "distribution_3",
+          "value": 203548.49,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "detail": "Separately reported gross taxing-unit distribution",
+            "reference_id": "clm_study_digital_crossroad_gross_tax_distribution_school_2025"
+          },
+          "transformation": "Included once in gross total"
+        },
+        {
+          "name": "distribution_4",
+          "value": 336545.51,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "detail": "Separately reported gross taxing-unit distribution",
+            "reference_id": "clm_study_digital_crossroad_gross_tax_distribution_city_2025"
+          },
+          "transformation": "Included once in gross total"
+        },
+        {
+          "name": "distribution_5",
+          "value": 31102.69,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "detail": "Separately reported gross taxing-unit distribution",
+            "reference_id": "clm_study_digital_crossroad_gross_tax_distribution_library_2025"
+          },
+          "transformation": "Included once in gross total"
+        },
+        {
+          "name": "distribution_6",
+          "value": 48315.24,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "detail": "Separately reported gross taxing-unit distribution",
+            "reference_id": "clm_study_dx_gross_tax_special_2025"
+          },
+          "transformation": "Included once in gross total"
+        }
+      ],
+      "confidence": "high",
+      "confidence_rationale": "The arithmetic and source rows are exact, but gross distribution is not cash received by one government.",
+      "decision_relevance": "Exposes gross fiscal benefit before credits and cap savings.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Cash receipt timing and reconciliation by recipient government"
+      },
+      "derivation": {
+        "method": "benchmark_application",
+        "model_version": "dx-hammond-tax-reconciliation-1.0.0",
+        "formula": "sum(six named gross taxing-unit distributions)",
+        "input_claim_ids": [
+          "clm_study_digital_crossroad_gross_tax_distribution_county_2025",
+          "clm_study_digital_crossroad_gross_tax_distribution_township_2025",
+          "clm_study_digital_crossroad_gross_tax_distribution_school_2025",
+          "clm_study_digital_crossroad_gross_tax_distribution_city_2025",
+          "clm_study_digital_crossroad_gross_tax_distribution_library_2025",
+          "clm_study_dx_gross_tax_special_2025"
+        ],
+        "input_source_ids": [
+          "src_study_lake_county_digital_crossroad_tax_2026"
+        ],
+        "assumptions": [
+          "Each source line is mutually exclusive within the published gross distribution table."
+        ]
+      },
+      "limitations": [
+        "Gross rather than net of credits.",
+        "Multi-jurisdiction total.",
+        "Not a complete benefit-cost account."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Do not add the source distribution rows again.",
+      "reviewed_on": "2026-09-05"
+    },
+    {
+      "estimate_id": "est_study_dx_hammond_property_tax_reductions_2025",
+      "project_id": "prj_study_im3_building_00978934687",
+      "metric_code": "study.modeled_property_tax_reductions_total",
+      "label": "Modeled property-tax credits and cap savings",
+      "category": "public_costs",
+      "unit": "USD",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 110260.44,
+      "period": {
+        "kind": "tax_year",
+        "year": 2025,
+        "label": "Tax year 2025 reductions from gross distribution"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Digital Crossroad Hammond fiscal account across named taxing units",
+        "county_fips": "18089",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "point_estimate",
+        "low": 110260.44,
+        "central": 110260.44,
+        "high": 110260.44,
+        "interpretation": "Exact sum of local property-tax credits and circuit-breaker cap savings."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "dx_hammond_fiscal_reductions_2025",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "local_property_tax_credits",
+          "value": 95115.62,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "detail": "Source-reported local credits",
+            "reference_id": "clm_study_digital_crossroad_local_property_tax_credits_2025"
+          },
+          "transformation": "Added once"
+        },
+        {
+          "name": "property_tax_cap_savings",
+          "value": 15144.82,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "detail": "Source-reported cap savings",
+            "reference_id": "clm_study_digital_crossroad_property_tax_cap_savings_2025"
+          },
+          "transformation": "Added once"
+        }
+      ],
+      "confidence": "high",
+      "confidence_rationale": "Exact source arithmetic, though incidence across governments and taxpayers is not modeled.",
+      "decision_relevance": "Keeps a public-cost component separate from gross property-tax distribution.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Government-by-government incidence and any reimbursement of credits"
+      },
+      "derivation": {
+        "method": "benchmark_application",
+        "model_version": "dx-hammond-tax-reconciliation-1.0.0",
+        "formula": "$95,115.62 + $15,144.82",
+        "input_claim_ids": [
+          "clm_study_digital_crossroad_local_property_tax_credits_2025",
+          "clm_study_digital_crossroad_property_tax_cap_savings_2025"
+        ],
+        "input_source_ids": [
+          "src_study_lake_county_digital_crossroad_tax_2026"
+        ],
+        "assumptions": [
+          "The source fields represent distinct reductions on the same account."
+        ]
+      },
+      "limitations": [
+        "Not a cash grant.",
+        "Does not include state incentives or service costs."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Gross less this amount reconciles to the separately sourced tax bill; that bill is not duplicated as a modeled record.",
+      "reviewed_on": "2026-09-05"
+    },
+    {
+      "estimate_id": "est_study_dx_hammond_tif_debt_service_2024",
+      "project_id": "prj_study_im3_building_00978934687",
+      "metric_code": "study.modeled_tif_debt_service",
+      "label": "Modeled annual TIF bond debt service",
+      "category": "public_costs",
+      "unit": "USD",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 482700,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2024,
+        "label": "City fiscal year ended December 31, 2024"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "City of Hammond Series 2019 Data Center bond",
+        "county_fips": "18089",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "point_estimate",
+        "low": 482700,
+        "central": 482700,
+        "high": 482700,
+        "interpretation": "Exact sum of audited principal retired and interest/fees for 2024."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "dx_hammond_tif_debt_service_2024",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "principal_retired",
+          "value": 165000,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "detail": "Audited 2024 principal retired",
+            "reference_id": "clm_study_dx_principal_2024"
+          },
+          "transformation": "Added once"
+        },
+        {
+          "name": "interest_and_fees",
+          "value": 317700,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "detail": "Audited 2024 interest and fees",
+            "reference_id": "clm_study_dx_interest_2024"
+          },
+          "transformation": "Added once"
+        }
+      ],
+      "confidence": "high",
+      "confidence_rationale": "Audited components and arithmetic are exact.",
+      "decision_relevance": "Separates annual financing cost from bond balances, draws and future commitments.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Administrative costs, reserve changes and government service costs attributable to the project"
+      },
+      "derivation": {
+        "method": "benchmark_application",
+        "model_version": "dx-hammond-tif-debt-service-1.0.0",
+        "formula": "$165,000 + $317,700",
+        "input_claim_ids": [
+          "clm_study_dx_principal_2024",
+          "clm_study_dx_interest_2024"
+        ],
+        "input_source_ids": [
+          "src_study_hammond_2024_financial_audit"
+        ],
+        "assumptions": [
+          "Audited components are nonoverlapping within the bond note."
+        ]
+      },
+      "limitations": [
+        "Not the outstanding principal stock.",
+        "Not a subsidy total.",
+        "Does not identify ultimate tax incidence."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Annual debt-service flow only.",
+      "reviewed_on": "2026-09-05"
+    },
+    {
+      "estimate_id": "est_study_dx_hammond_tif_project_flow_2024",
+      "project_id": "prj_study_im3_building_00978934687",
+      "metric_code": "study.modeled_tif_project_revenue_flow_reconciliation",
+      "label": "Modeled TIF project-revenue flow reconciliation",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 289593.5,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2024,
+        "label": "Alternative 2024 audited and fund-accounting measures"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Digital Crossroad Hammond TIF repayment flow",
+        "county_fips": "18089",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "reported_band",
+        "low": 258200,
+        "central": 289593.5,
+        "high": 320987,
+        "interpretation": "Low is the private fund's project-tax repayment measure, high is the City's debt-service-fund transfer, and central is their midpoint; the measures are alternatives, not additive."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "dx_hammond_tif_flow_2024",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "private_fund_project_tax_repayment",
+          "value": 258200,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "detail": "Private audited fund statement",
+            "reference_id": "clm_study_digital_crossroad_tif_revenue_repayment_2024"
+          },
+          "transformation": "Used as low endpoint"
+        },
+        {
+          "name": "city_debt_service_fund_transfer",
+          "value": 320987,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "detail": "City audited statement",
+            "reference_id": "clm_study_dx_transfer_2024"
+          },
+          "transformation": "Used as high endpoint"
+        }
+      ],
+      "confidence": "medium",
+      "confidence_rationale": "Both endpoints are audited, but their definitions and reconciliation differ.",
+      "decision_relevance": "Prevents double counting while showing the documented range of project-linked TIF flows.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Transaction-level reconciliation among pledged revenue, City transfers and private loan repayment"
+      },
+      "derivation": {
+        "method": "band_midpoint",
+        "model_version": "dx-hammond-tif-flow-reconciliation-1.0.0",
+        "formula": "midpoint($258,200 private-fund measure, $320,987 City transfer)",
+        "input_claim_ids": [
+          "clm_study_digital_crossroad_tif_revenue_repayment_2024",
+          "clm_study_dx_transfer_2024"
+        ],
+        "input_source_ids": [
+          "src_study_principal_digital_real_estate_2025",
+          "src_study_hammond_2024_financial_audit"
+        ],
+        "assumptions": [
+          "The two public accounts measure related but not proven-identical flows.",
+          "No amount is added across accounts."
+        ]
+      },
+      "limitations": [
+        "Not a statistical interval.",
+        "Not evidence that both amounts accrued as separate benefits.",
+        "Does not establish a full TIF cash-flow account."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Alternative accounting measures only.",
+      "reviewed_on": "2026-09-05"
+    },
+    {
+      "estimate_id": "est_study_dx_hammond_state_incentives_certified_2026",
+      "project_id": "prj_study_im3_building_00978934687",
+      "metric_code": "study.modeled_state_incentives_certified_total",
+      "label": "Modeled cumulative state-incentive certified total",
+      "category": "public_costs",
+      "unit": "USD",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 37426935.09,
+      "period": {
+        "kind": "cumulative",
+        "report_date": "2026-09-04",
+        "label": "Current IEDC portal snapshot across three separately governed agreements"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "DX Hammond/Indiana NAP state incentive agreements",
+        "county_fips": "18089",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "point_estimate",
+        "low": 37426935.09,
+        "central": 37426935.09,
+        "high": 37426935.09,
+        "interpretation": "Exact arithmetic sum of portal-reported IRTC, DATA exemption and EDGE paid-or-certified fields."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "dx_hammond_state_incentives_2026",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "irtc_certified",
+          "value": 9045773.82,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "detail": "Current IRTC paid-or-certified field",
+            "reference_id": "clm_study_digital_crossroad_irtc_certified_2026"
+          },
+          "transformation": "Added once"
+        },
+        {
+          "name": "data_exemption_certified",
+          "value": 28369398.27,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "detail": "Current DATA exemption certified field",
+            "reference_id": "clm_study_digital_crossroad_data_exemption_certified_2026"
+          },
+          "transformation": "Added once"
+        },
+        {
+          "name": "edge_paid_certified",
+          "value": 11763,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "detail": "Current EDGE paid-or-certified field",
+            "reference_id": "clm_study_digital_crossroad_edge_paid_certified_2026"
+          },
+          "transformation": "Added once"
+        }
+      ],
+      "confidence": "medium",
+      "confidence_rationale": "Portal values are current and exact, but paid-versus-certified timing and fiscal incidence differ across programs.",
+      "decision_relevance": "Provides a bounded public-cost total without combining contract ceilings or local credits.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Tax-year realization, cash timing, recapture, carryforward and government incidence for each program"
+      },
+      "derivation": {
+        "method": "benchmark_application",
+        "model_version": "dx-hammond-state-incentive-total-1.0.0",
+        "formula": "$9,045,773.82 + $28,369,398.27 + $11,763",
+        "input_claim_ids": [
+          "clm_study_digital_crossroad_irtc_certified_2026",
+          "clm_study_digital_crossroad_data_exemption_certified_2026",
+          "clm_study_digital_crossroad_edge_paid_certified_2026"
+        ],
+        "input_source_ids": [
+          "src_study_iedc_dx_hammond_irtc_portal_2026",
+          "src_study_iedc_dx_hammond_data_portal_2026",
+          "src_study_iedc_dx_hammond_edge_portal_2026"
+        ],
+        "assumptions": [
+          "The portal fields are added as certified program value, not as cash disbursement.",
+          "Different tax mechanisms remain named and visible."
+        ]
+      },
+      "limitations": [
+        "Not a cash-grant total.",
+        "Does not include contract ceilings, local tax credits or EV award.",
+        "Cumulative rather than annual."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "A certified-value reconciliation, outside sourced-record and realized-benefit totals.",
+      "reviewed_on": "2026-09-05"
+    },
+    {
+      "estimate_id": "est_study_dx_hammond_occupied_critical_capacity_2025",
+      "project_id": "prj_study_im3_building_00978934687",
+      "metric_code": "study.modeled_occupied_critical_power_capacity",
+      "label": "Modeled occupied commissioned critical capacity",
+      "category": "resources",
+      "unit": "MW",
+      "measure_type": "stock",
+      "basis": "modeled_synthesis",
+      "value": 13.395,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2025,
+        "label": "Year-end 2025 operating-scale engineering scenario"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Digital Crossroad Hammond commissioned and occupied critical-power envelope",
+        "county_fips": "18089",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "point_estimate",
+        "low": 13.395,
+        "central": 13.395,
+        "high": 13.395,
+        "interpretation": "Exact product of 15 MW commissioned critical power and 89.3% leased-and-occupied share."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "dx_hammond_occupied_capacity_2025",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "commissioned_critical_capacity",
+          "value": 15,
+          "unit": "MW",
+          "provenance": {
+            "kind": "claim",
+            "detail": "Fund-reported commissioned critical power",
+            "reference_id": "clm_study_digital_crossroad_commissioned_capacity_2025"
+          },
+          "transformation": "Multiplied by occupied share"
+        },
+        {
+          "name": "occupied_share",
+          "value": 0.893,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "claim",
+            "detail": "Fund-reported occupied share converted from percent",
+            "reference_id": "clm_study_digital_crossroad_occupied_share_2025"
+          },
+          "transformation": "Multiplied by commissioned critical power"
+        }
+      ],
+      "confidence": "high",
+      "confidence_rationale": "Source inputs and arithmetic are exact, but occupancy is not electrical utilization.",
+      "decision_relevance": "Defines the IT-capacity basis without confusing it with the separate 20 MW utility-feed descriptor.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Metered IT load and coincident peak by interval"
+      },
+      "derivation": {
+        "method": "benchmark_application",
+        "model_version": "dx-hammond-occupied-capacity-1.0.0",
+        "formula": "15 MW × 89.3%",
+        "input_claim_ids": [
+          "clm_study_digital_crossroad_commissioned_capacity_2025",
+          "clm_study_digital_crossroad_occupied_share_2025"
+        ],
+        "input_source_ids": [
+          "src_study_principal_digital_real_estate_2025"
+        ],
+        "assumptions": [
+          "Leased and occupied critical capacity is not measured instantaneous IT load."
+        ]
+      },
+      "limitations": [
+        "Not measured load.",
+        "Not utility-feed capacity.",
+        "Not annual energy."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "A capacity-stock calculation only.",
+      "reviewed_on": "2026-09-05"
+    },
+    {
+      "estimate_id": "est_study_dx_hammond_it_electricity_2025",
+      "project_id": "prj_study_im3_building_00978934687",
+      "metric_code": "study.modeled_it_electricity_consumption",
+      "label": "Modeled annual IT electricity consumption",
+      "category": "resources",
+      "unit": "kWh_per_year",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 82138140,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2025,
+        "label": "Year-end 2025 operating-scale engineering scenario"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Digital Crossroad Hammond commissioned and occupied critical-power envelope",
+        "county_fips": "18089",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": 70404120,
+        "central": 82138140,
+        "high": 93872160,
+        "interpretation": "Occupied critical capacity operated at 60%, 70% and 80% annual load factors."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "dx_hammond_it_energy_2025",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "occupied_critical_capacity",
+          "value": 13.395,
+          "unit": "MW",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Product of public commissioned capacity and occupancy"
+          },
+          "transformation": "Multiplied by hours and load factor"
+        },
+        {
+          "name": "hours_per_year",
+          "value": 8760,
+          "unit": "hours",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Non-leap-year conversion"
+          },
+          "transformation": "Multiplies MW"
+        },
+        {
+          "name": "central_it_load_factor",
+          "value": 0.7,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Engineering sensitivity"
+          },
+          "transformation": "Produces central energy"
+        },
+        {
+          "name": "low_it_load_factor",
+          "value": 0.6,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Engineering sensitivity"
+          },
+          "transformation": "Produces low energy"
+        },
+        {
+          "name": "high_it_load_factor",
+          "value": 0.8,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "source",
+            "detail": "Upper operational-power share used in LBNL server scenarios",
+            "reference_id": "src_study_lbnl_dc_energy_2024"
+          },
+          "transformation": "Produces high energy"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "No facility meter or IT load series is public; occupancy is not utilization.",
+      "decision_relevance": "Bounds annual IT energy while preserving the difference between capacity and measured use.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Interval electricity meter data, IT load, curtailment and downtime"
+      },
+      "derivation": {
+        "method": "engineering_estimate",
+        "model_version": "dx-hammond-it-energy-1.0.0",
+        "formula": "15 MW × 89.3% × 8,760 hours × IT_load_factor × 1,000 kW/MW",
+        "input_claim_ids": [
+          "clm_study_digital_crossroad_commissioned_capacity_2025",
+          "clm_study_digital_crossroad_occupied_share_2025"
+        ],
+        "input_source_ids": [
+          "src_study_principal_digital_real_estate_2025",
+          "src_study_lbnl_dc_energy_2024"
+        ],
+        "assumptions": [
+          "Occupied capacity is available to IT equipment throughout the year.",
+          "Annual IT load factor ranges from 60% to 80%."
+        ]
+      },
+      "limitations": [
+        "Not a utility meter reading.",
+        "Does not include cooling or electrical overhead.",
+        "Load factors are assumptions."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Engineering scenario only.",
+      "reviewed_on": "2026-09-05"
+    },
+    {
+      "estimate_id": "est_study_dx_hammond_facility_electricity_2025",
+      "project_id": "prj_study_im3_building_00978934687",
+      "metric_code": "study.modeled_facility_electricity_consumption",
+      "label": "Modeled annual facility electricity consumption",
+      "category": "resources",
+      "unit": "kWh_per_year",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 114993396,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2025,
+        "label": "Year-end 2025 operating-scale engineering scenario"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Digital Crossroad Hammond commissioned and occupied critical-power envelope",
+        "county_fips": "18089",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": 80964738,
+        "central": 114993396,
+        "high": 150195456,
+        "interpretation": "IT-energy endpoints multiplied by PUE values 1.15, 1.40 and 1.60."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "dx_hammond_facility_energy_2025",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "it_energy_low",
+          "value": 70404120,
+          "unit": "kWh_per_year",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Low IT-energy scenario"
+          },
+          "transformation": "Multiplied by low PUE"
+        },
+        {
+          "name": "it_energy_central",
+          "value": 82138140,
+          "unit": "kWh_per_year",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Central IT-energy scenario"
+          },
+          "transformation": "Multiplied by central PUE"
+        },
+        {
+          "name": "it_energy_high",
+          "value": 93872160,
+          "unit": "kWh_per_year",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "High IT-energy scenario"
+          },
+          "transformation": "Multiplied by high PUE"
+        },
+        {
+          "name": "low_pue",
+          "value": 1.15,
+          "unit": "PUE_ratio",
+          "provenance": {
+            "kind": "source",
+            "detail": "Lower endpoint of LBNL 2028 all-data-center PUE range",
+            "reference_id": "src_study_lbnl_dc_energy_2024"
+          },
+          "transformation": "Multiplies low IT energy"
+        },
+        {
+          "name": "central_pue",
+          "value": 1.4,
+          "unit": "PUE_ratio",
+          "provenance": {
+            "kind": "source",
+            "detail": "LBNL 2023 annual-average PUE",
+            "reference_id": "src_study_lbnl_dc_energy_2024"
+          },
+          "transformation": "Multiplies central IT energy"
+        },
+        {
+          "name": "high_pue",
+          "value": 1.6,
+          "unit": "PUE_ratio",
+          "provenance": {
+            "kind": "source",
+            "detail": "LBNL 2014 annual-average PUE used as conservative sensitivity",
+            "reference_id": "src_study_lbnl_dc_energy_2024"
+          },
+          "transformation": "Multiplies high IT energy"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "Facility PUE and metered electricity are not public.",
+      "decision_relevance": "Provides an electricity envelope for water and emissions calculations.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Metered facility electricity, PUE, losses and renewable procurement by year"
+      },
+      "derivation": {
+        "method": "engineering_estimate",
+        "model_version": "dx-hammond-facility-energy-1.0.0",
+        "formula": "IT_electricity × PUE",
+        "input_claim_ids": [
+          "clm_study_digital_crossroad_commissioned_capacity_2025",
+          "clm_study_digital_crossroad_occupied_share_2025"
+        ],
+        "input_source_ids": [
+          "src_study_principal_digital_real_estate_2025",
+          "src_study_lbnl_dc_energy_2024"
+        ],
+        "assumptions": [
+          "National PUE benchmarks transfer to Hammond only as a broad envelope.",
+          "No renewable procurement or hourly grid matching is assumed."
+        ]
+      },
+      "limitations": [
+        "Not measured use.",
+        "National benchmark transfer.",
+        "Does not imply peak demand."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Whole-facility electricity scenario.",
+      "reviewed_on": "2026-09-05"
+    },
+    {
+      "estimate_id": "est_study_dx_hammond_peak_demand_2025",
+      "project_id": "prj_study_im3_building_00978934687",
+      "metric_code": "study.modeled_peak_electric_demand",
+      "label": "Modeled facility peak-demand envelope",
+      "category": "resources",
+      "unit": "MW",
+      "measure_type": "peak",
+      "basis": "modeled_synthesis",
+      "value": 18.753,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2025,
+        "label": "Year-end 2025 operating-scale engineering scenario"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Digital Crossroad Hammond commissioned and occupied critical-power envelope",
+        "county_fips": "18089",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": 15.40425,
+        "central": 18.753,
+        "high": 20,
+        "interpretation": "Occupied critical power multiplied by PUE, with the high endpoint capped at the separate 20 MW utility-feed/operating-capacity descriptor."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "dx_hammond_peak_demand_2025",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "occupied_critical_capacity",
+          "value": 13.395,
+          "unit": "MW",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Derived occupied commissioned critical capacity"
+          },
+          "transformation": "Multiplied by PUE"
+        },
+        {
+          "name": "low_pue",
+          "value": 1.15,
+          "unit": "PUE_ratio",
+          "provenance": {
+            "kind": "source",
+            "detail": "LBNL lower PUE sensitivity",
+            "reference_id": "src_study_lbnl_dc_energy_2024"
+          },
+          "transformation": "Produces low peak"
+        },
+        {
+          "name": "central_pue",
+          "value": 1.4,
+          "unit": "PUE_ratio",
+          "provenance": {
+            "kind": "source",
+            "detail": "LBNL 2023 average",
+            "reference_id": "src_study_lbnl_dc_energy_2024"
+          },
+          "transformation": "Produces central peak"
+        },
+        {
+          "name": "utility_feed_descriptor",
+          "value": 20,
+          "unit": "MW",
+          "provenance": {
+            "kind": "claim",
+            "detail": "Company witness operating-capacity descriptor",
+            "reference_id": "clm_study_digital_crossroad_operating_capacity_2025"
+          },
+          "transformation": "Caps high scenario"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "No interval meter or utility coincident-peak record is public.",
+      "decision_relevance": "Keeps commissioned critical power, occupancy, PUE and feed capacity distinct.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Utility meter coincident peak, demand ratchets, redundancy and losses"
+      },
+      "derivation": {
+        "method": "engineering_estimate",
+        "model_version": "dx-hammond-peak-demand-1.0.0",
+        "formula": "min(20 MW utility-feed descriptor, 13.395 MW occupied critical capacity × PUE)",
+        "input_claim_ids": [
+          "clm_study_digital_crossroad_commissioned_capacity_2025",
+          "clm_study_digital_crossroad_occupied_share_2025",
+          "clm_study_digital_crossroad_operating_capacity_2025"
+        ],
+        "input_source_ids": [
+          "src_study_principal_digital_real_estate_2025",
+          "src_study_dx_hammond_iurc_testimony_2025",
+          "src_study_lbnl_dc_energy_2024"
+        ],
+        "assumptions": [
+          "Critical capacity and PUE approximate coincident facility demand.",
+          "The 20 MW descriptor is treated as a cap, not measured peak."
+        ]
+      },
+      "limitations": [
+        "Not measured peak demand.",
+        "Feed descriptor may not be a contractual limit.",
+        "PUE transfer uncertainty."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Engineering peak envelope only.",
+      "reviewed_on": "2026-09-05"
+    },
+    {
+      "estimate_id": "est_study_dx_hammond_onsite_water_2025",
+      "project_id": "prj_study_im3_building_00978934687",
+      "metric_code": "study.modeled_onsite_water_use",
+      "label": "Modeled annual onsite water use",
+      "category": "resources",
+      "unit": "gallons_per_year",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 9113412.43,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2025,
+        "label": "Year-end 2025 operating-scale engineering scenario"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Digital Crossroad Hammond commissioned and occupied critical-power envelope",
+        "county_fips": "18089",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": 6695568.31,
+        "central": 9113412.43,
+        "high": 11903232.56,
+        "interpretation": "IT-energy endpoints multiplied by 0.36, 0.42 and 0.48 L/kWh WUE and converted to U.S. gallons."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "dx_hammond_water_2025",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "it_energy_low",
+          "value": 70404120,
+          "unit": "kWh_per_year",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Low IT-energy scenario"
+          },
+          "transformation": "Multiplied by low WUE"
+        },
+        {
+          "name": "it_energy_central",
+          "value": 82138140,
+          "unit": "kWh_per_year",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Central IT-energy scenario"
+          },
+          "transformation": "Multiplied by central WUE"
+        },
+        {
+          "name": "it_energy_high",
+          "value": 93872160,
+          "unit": "kWh_per_year",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "High IT-energy scenario"
+          },
+          "transformation": "Multiplied by high WUE"
+        },
+        {
+          "name": "low_wue",
+          "value": 0.36,
+          "unit": "WUE_liters_per_kWh",
+          "provenance": {
+            "kind": "source",
+            "detail": "LBNL 2023 annual average just over 0.36 L/kWh",
+            "reference_id": "src_study_lbnl_dc_energy_2024"
+          },
+          "transformation": "Multiplies low IT energy"
+        },
+        {
+          "name": "central_wue",
+          "value": 0.42,
+          "unit": "WUE_liters_per_kWh",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Midpoint sensitivity"
+          },
+          "transformation": "Multiplies central IT energy"
+        },
+        {
+          "name": "high_wue",
+          "value": 0.48,
+          "unit": "WUE_liters_per_kWh",
+          "provenance": {
+            "kind": "source",
+            "detail": "Upper LBNL post-2023 range",
+            "reference_id": "src_study_lbnl_dc_energy_2024"
+          },
+          "transformation": "Multiplies high IT energy"
+        },
+        {
+          "name": "liters_per_gallon",
+          "value": 3.785411784,
+          "unit": "liters_per_gallon",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Exact unit conversion"
+          },
+          "transformation": "Divides modeled liters"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "No water meter, cooling design, WUE, reuse or discharge series is public.",
+      "decision_relevance": "Bounds onsite use without treating the 910.85/18.202 MGD permit limits as consumption.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Potable/process/reclaimed intake, cooling cycles, blowdown, wastewater, reuse and meter records"
+      },
+      "derivation": {
+        "method": "engineering_estimate",
+        "model_version": "dx-hammond-water-1.0.0",
+        "formula": "IT_electricity × WUE ÷ 3.785411784",
+        "input_claim_ids": [
+          "clm_study_digital_crossroad_commissioned_capacity_2025",
+          "clm_study_digital_crossroad_occupied_share_2025",
+          "clm_study_dx_permitted_water_withdrawal_capacity_2018",
+          "clm_study_dx_permitted_water_consumptive_capacity_2018"
+        ],
+        "input_source_ids": [
+          "src_study_principal_digital_real_estate_2025",
+          "src_study_hammond_dx_development_agreement_2018",
+          "src_study_lbnl_dc_energy_2024"
+        ],
+        "assumptions": [
+          "National WUE benchmarks transfer to Hammond.",
+          "The permit capacities are comparison ceilings only and do not enter the use formula."
+        ]
+      },
+      "limitations": [
+        "Not measured water use.",
+        "Permit capacities are not modeled consumption.",
+        "Excludes indirect grid water."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Wastewater and reuse remain unmodeled because no public mass-balance inputs were found.",
+      "reviewed_on": "2026-09-05"
+    },
+    {
+      "estimate_id": "est_study_dx_hammond_grid_emissions_2025",
+      "project_id": "prj_study_im3_building_00978934687",
+      "metric_code": "study.modeled_location_based_grid_emissions",
+      "label": "Modeled location-based grid emissions",
+      "category": "resources",
+      "unit": "metric_tons_co2e_per_year",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 62112.28,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2025,
+        "label": "Year-end 2025 operating-scale engineering scenario"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Digital Crossroad Hammond commissioned and occupied critical-power envelope",
+        "county_fips": "18089",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": 33643.76,
+        "central": 62112.28,
+        "high": 99840.87,
+        "interpretation": "Facility-electricity endpoints multiplied by RFC West, midpoint and Indiana eGRID CO2e output rates."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "dx_hammond_grid_emissions_2025",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "facility_energy_low",
+          "value": 80964738,
+          "unit": "kWh_per_year",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Low facility-energy scenario"
+          },
+          "transformation": "Converted to MWh and multiplied by low emission rate"
+        },
+        {
+          "name": "facility_energy_central",
+          "value": 114993396,
+          "unit": "kWh_per_year",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Central facility-energy scenario"
+          },
+          "transformation": "Converted to MWh and multiplied by midpoint rate"
+        },
+        {
+          "name": "facility_energy_high",
+          "value": 150195456,
+          "unit": "kWh_per_year",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "High facility-energy scenario"
+          },
+          "transformation": "Converted to MWh and multiplied by high rate"
+        },
+        {
+          "name": "rfcw_co2e_rate",
+          "value": 916.1,
+          "unit": "lb_CO2e_per_MWh",
+          "provenance": {
+            "kind": "source",
+            "detail": "eGRID2023 RFC West total output rate",
+            "reference_id": "src_study_epa_egrid_2023_rev2"
+          },
+          "transformation": "Low emission factor"
+        },
+        {
+          "name": "indiana_co2e_rate",
+          "value": 1465.5,
+          "unit": "lb_CO2e_per_MWh",
+          "provenance": {
+            "kind": "source",
+            "detail": "eGRID2023 Indiana total output rate",
+            "reference_id": "src_study_epa_egrid_2023_rev2"
+          },
+          "transformation": "High emission factor"
+        },
+        {
+          "name": "pounds_per_metric_ton",
+          "value": 2204.62262185,
+          "unit": "lb_per_metric_ton",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Exact mass conversion"
+          },
+          "transformation": "Divides pounds"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "Electricity is modeled and the applicable grid rate is uncertain; backup operation is unmeasured.",
+      "decision_relevance": "Provides an operational emissions envelope with explicit grid-factor provenance.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Metered electricity, supplier-specific mix, hourly matching, losses, backup-generator ratings, fuel and runtime"
+      },
+      "derivation": {
+        "method": "engineering_estimate",
+        "model_version": "dx-hammond-grid-emissions-1.0.0",
+        "formula": "facility_kWh ÷ 1,000 × eGRID_lb_CO2e_per_MWh ÷ 2,204.62262185",
+        "input_claim_ids": [
+          "clm_study_digital_crossroad_commissioned_capacity_2025",
+          "clm_study_digital_crossroad_occupied_share_2025",
+          "clm_study_digital_crossroad_operating_capacity_2025",
+          "clm_study_digital_crossroad_permitted_generators_2022"
+        ],
+        "input_source_ids": [
+          "src_study_principal_digital_real_estate_2025",
+          "src_study_dx_hammond_iurc_testimony_2025",
+          "src_study_idem_dx_hammond_permit_2022",
+          "src_study_lbnl_dc_energy_2024",
+          "src_study_epa_egrid_2023_rev2"
+        ],
+        "assumptions": [
+          "Location-based annual output rates approximate delivered-electricity emissions.",
+          "No market-based renewable claim or marginal-emissions effect is assumed.",
+          "Backup generators are excluded because ratings, fuel and runtime are not public."
+        ]
+      },
+      "limitations": [
+        "Not a measured emissions inventory.",
+        "Excludes embodied emissions and backup generation.",
+        "Output-rate choice is a sensitivity, not a marginal causal effect."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Permit-listed eight generators remain a stock; no backup-generation effect is quantified.",
+      "reviewed_on": "2026-09-05"
+    },
+    {
+      "estimate_id": "est_study_dx_hammond_cbp_employment_pre_post",
+      "project_id": "prj_study_im3_building_00978934687",
+      "metric_code": "study.modeled_county_industry_employment_pre_post_change",
+      "label": "Modeled descriptive county-industry employment pre/post change",
+      "category": "county_outcome",
+      "unit": "percent",
+      "measure_type": "change",
+      "basis": "modeled_synthesis",
+      "value": -30.93,
+      "period": {
+        "kind": "cumulative",
+        "report_date": "2023-12-31",
+        "label": "Descriptive pre/post window around October 2020 operation; 2020 omitted"
+      },
+      "scope": {
+        "level": "county",
+        "label": "Lake County NAICS 518210 public CBP context",
+        "county_fips": "18089",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "point_estimate",
+        "low": -30.93,
+        "central": -30.93,
+        "high": -30.93,
+        "interpretation": "Deterministic percentage difference between 2016-2019 and 2021-2023 arithmetic means; not a statistical or causal interval."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "dx_hammond_cbp_employment_pre_post",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "pre_period_mean",
+          "value": 291.5,
+          "unit": "employees",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Arithmetic mean of public 2016-2019 county-industry employment"
+          },
+          "transformation": "Denominator for percentage change"
+        },
+        {
+          "name": "post_period_mean",
+          "value": 201.33,
+          "unit": "employees",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Arithmetic mean of public 2021-2023 county-industry employment"
+          },
+          "transformation": "Numerator for percentage change"
+        },
+        {
+          "name": "operating_event_year",
+          "value": 2020,
+          "unit": "year",
+          "provenance": {
+            "kind": "claim",
+            "detail": "October 2020 operating event anchors the excluded transition year",
+            "reference_id": "clm_study_digital_crossroad_operating_employees_2020"
+          },
+          "transformation": "Defines pre/post split"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The series is noisy, industry-wide and lacks a comparison group, pre-trend diagnostics and treatment-isolation design.",
+      "decision_relevance": "Provides longitudinal context while refusing a causal event-study claim.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Comparison counties, facility exposure inventory, harmonized industry definitions, diagnostics and longer post period"
+      },
+      "derivation": {
+        "method": "benchmark_application",
+        "model_version": "dx-hammond-cbp-pre-post-1.0.0",
+        "formula": "((mean(2021..2023) ÷ mean(2016..2019)) - 1) × 100",
+        "input_claim_ids": [
+          "clm_study_lake_county_cbp_518210_employment_2016",
+          "clm_study_lake_county_cbp_518210_employment_2017",
+          "clm_study_lake_county_cbp_518210_employment_2018",
+          "clm_study_lake_county_cbp_518210_employment_2019",
+          "clm_study_lake_county_cbp_518210_employment_2021",
+          "clm_study_lake_county_cbp_518210_employment_2022",
+          "clm_study_lake_county_cbp_518210_employment_2023",
+          "clm_study_digital_crossroad_operating_employees_2020"
+        ],
+        "input_source_ids": [
+          "src_study_census_cbp_2016_lake_county_naics_518210",
+          "src_study_census_cbp_2017_lake_county_naics_518210",
+          "src_study_census_cbp_2018_lake_county_naics_518210",
+          "src_study_census_cbp_2019_lake_county_naics_518210",
+          "src_study_census_cbp_2021_lake_county_naics_518210",
+          "src_study_census_cbp_2022_lake_county_naics_518210",
+          "src_study_census_cbp_2023_lake_county_naics_518210",
+          "src_study_dcd_hammond_completion_2020"
+        ],
+        "assumptions": [
+          "The 2020 transition year is excluded.",
+          "No facility attribution is made.",
+          "Published CBP noise and classification changes remain in the inputs."
+        ]
+      },
+      "limitations": [
+        "Not difference-in-differences, event study or synthetic control.",
+        "COVID-19 and classification changes confound the split.",
+        "County industry includes employers unrelated to DX-1."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "A descriptive transformation only; no causal_design is attached because causal requirements are not met.",
+      "reviewed_on": "2026-09-05"
+    },
+    {
+      "estimate_id": "est_study_dx_hammond_cbp_payroll_pre_post",
+      "project_id": "prj_study_im3_building_00978934687",
+      "metric_code": "study.modeled_county_industry_payroll_pre_post_change",
+      "label": "Modeled descriptive county-industry payroll pre/post change",
+      "category": "county_outcome",
+      "unit": "percent",
+      "measure_type": "change",
+      "basis": "modeled_synthesis",
+      "value": -23.52,
+      "period": {
+        "kind": "cumulative",
+        "report_date": "2023-12-31",
+        "label": "Descriptive pre/post window around October 2020 operation; 2020 omitted"
+      },
+      "scope": {
+        "level": "county",
+        "label": "Lake County NAICS 518210 public CBP context",
+        "county_fips": "18089",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "point_estimate",
+        "low": -23.52,
+        "central": -23.52,
+        "high": -23.52,
+        "interpretation": "Deterministic percentage difference between 2016-2019 and 2021-2023 arithmetic means; not a statistical or causal interval."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "dx_hammond_cbp_payroll_pre_post",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "pre_period_mean",
+          "value": 12346750.0,
+          "unit": "USD",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Arithmetic mean of public 2016-2019 county-industry annual payroll"
+          },
+          "transformation": "Denominator for percentage change"
+        },
+        {
+          "name": "post_period_mean",
+          "value": 9443333.33,
+          "unit": "USD",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Arithmetic mean of public 2021-2023 county-industry annual payroll"
+          },
+          "transformation": "Numerator for percentage change"
+        },
+        {
+          "name": "operating_event_year",
+          "value": 2020,
+          "unit": "year",
+          "provenance": {
+            "kind": "claim",
+            "detail": "October 2020 operating event anchors the excluded transition year",
+            "reference_id": "clm_study_digital_crossroad_operating_employees_2020"
+          },
+          "transformation": "Defines pre/post split"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The series is noisy, industry-wide and lacks a comparison group, pre-trend diagnostics and treatment-isolation design.",
+      "decision_relevance": "Provides longitudinal context while refusing a causal event-study claim.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Comparison counties, facility exposure inventory, harmonized industry definitions, diagnostics and longer post period"
+      },
+      "derivation": {
+        "method": "benchmark_application",
+        "model_version": "dx-hammond-cbp-pre-post-1.0.0",
+        "formula": "((mean(2021..2023) ÷ mean(2016..2019)) - 1) × 100",
+        "input_claim_ids": [
+          "clm_study_lake_county_cbp_518210_annual_payroll_2016",
+          "clm_study_lake_county_cbp_518210_annual_payroll_2017",
+          "clm_study_lake_county_cbp_518210_annual_payroll_2018",
+          "clm_study_lake_county_cbp_518210_annual_payroll_2019",
+          "clm_study_lake_county_cbp_518210_annual_payroll_2021",
+          "clm_study_lake_county_cbp_518210_annual_payroll_2022",
+          "clm_study_lake_county_cbp_518210_annual_payroll_2023",
+          "clm_study_digital_crossroad_operating_employees_2020"
+        ],
+        "input_source_ids": [
+          "src_study_census_cbp_2016_lake_county_naics_518210",
+          "src_study_census_cbp_2017_lake_county_naics_518210",
+          "src_study_census_cbp_2018_lake_county_naics_518210",
+          "src_study_census_cbp_2019_lake_county_naics_518210",
+          "src_study_census_cbp_2021_lake_county_naics_518210",
+          "src_study_census_cbp_2022_lake_county_naics_518210",
+          "src_study_census_cbp_2023_lake_county_naics_518210",
+          "src_study_dcd_hammond_completion_2020"
+        ],
+        "assumptions": [
+          "The 2020 transition year is excluded.",
+          "No facility attribution is made.",
+          "Published CBP noise and classification changes remain in the inputs."
+        ]
+      },
+      "limitations": [
+        "Not difference-in-differences, event study or synthetic control.",
+        "COVID-19 and classification changes confound the split.",
+        "County industry includes employers unrelated to DX-1."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "A descriptive transformation only; no causal_design is attached because causal requirements are not met.",
+      "reviewed_on": "2026-09-05"
+    },
+    {
+      "estimate_id": "est_study_dx_hammond_cbp_establishments_pre_post",
+      "project_id": "prj_study_im3_building_00978934687",
+      "metric_code": "study.modeled_county_industry_establishments_pre_post_change",
+      "label": "Modeled descriptive county-industry establishment pre/post change",
+      "category": "county_outcome",
+      "unit": "percent",
+      "measure_type": "change",
+      "basis": "modeled_synthesis",
+      "value": -9.33,
+      "period": {
+        "kind": "cumulative",
+        "report_date": "2023-12-31",
+        "label": "Descriptive pre/post window around October 2020 operation; 2020 omitted"
+      },
+      "scope": {
+        "level": "county",
+        "label": "Lake County NAICS 518210 public CBP context",
+        "county_fips": "18089",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "point_estimate",
+        "low": -9.33,
+        "central": -9.33,
+        "high": -9.33,
+        "interpretation": "Deterministic percentage difference between 2016-2019 and 2021-2023 arithmetic means; not a statistical or causal interval."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "dx_hammond_cbp_establishments_pre_post",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "pre_period_mean",
+          "value": 12.5,
+          "unit": "establishments",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Arithmetic mean of public 2016-2019 county-industry establishments"
+          },
+          "transformation": "Denominator for percentage change"
+        },
+        {
+          "name": "post_period_mean",
+          "value": 11.33,
+          "unit": "establishments",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Arithmetic mean of public 2021-2023 county-industry establishments"
+          },
+          "transformation": "Numerator for percentage change"
+        },
+        {
+          "name": "operating_event_year",
+          "value": 2020,
+          "unit": "year",
+          "provenance": {
+            "kind": "claim",
+            "detail": "October 2020 operating event anchors the excluded transition year",
+            "reference_id": "clm_study_digital_crossroad_operating_employees_2020"
+          },
+          "transformation": "Defines pre/post split"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The series is noisy, industry-wide and lacks a comparison group, pre-trend diagnostics and treatment-isolation design.",
+      "decision_relevance": "Provides longitudinal context while refusing a causal event-study claim.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Comparison counties, facility exposure inventory, harmonized industry definitions, diagnostics and longer post period"
+      },
+      "derivation": {
+        "method": "benchmark_application",
+        "model_version": "dx-hammond-cbp-pre-post-1.0.0",
+        "formula": "((mean(2021..2023) ÷ mean(2016..2019)) - 1) × 100",
+        "input_claim_ids": [
+          "clm_study_lake_county_cbp_518210_establishments_2016",
+          "clm_study_lake_county_cbp_518210_establishments_2017",
+          "clm_study_lake_county_cbp_518210_establishments_2018",
+          "clm_study_lake_county_cbp_518210_establishments_2019",
+          "clm_study_lake_county_cbp_518210_establishments_2021",
+          "clm_study_lake_county_cbp_518210_establishments_2022",
+          "clm_study_lake_county_cbp_518210_establishments_2023",
+          "clm_study_digital_crossroad_operating_employees_2020"
+        ],
+        "input_source_ids": [
+          "src_study_census_cbp_2016_lake_county_naics_518210",
+          "src_study_census_cbp_2017_lake_county_naics_518210",
+          "src_study_census_cbp_2018_lake_county_naics_518210",
+          "src_study_census_cbp_2019_lake_county_naics_518210",
+          "src_study_census_cbp_2021_lake_county_naics_518210",
+          "src_study_census_cbp_2022_lake_county_naics_518210",
+          "src_study_census_cbp_2023_lake_county_naics_518210",
+          "src_study_dcd_hammond_completion_2020"
+        ],
+        "assumptions": [
+          "The 2020 transition year is excluded.",
+          "No facility attribution is made.",
+          "Published CBP noise and classification changes remain in the inputs."
+        ]
+      },
+      "limitations": [
+        "Not difference-in-differences, event study or synthetic control.",
+        "COVID-19 and classification changes confound the split.",
+        "County industry includes employers unrelated to DX-1."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "A descriptive transformation only; no causal_design is attached because causal requirements are not met.",
       "reviewed_on": "2026-09-05"
     }
   ]
