@@ -77,7 +77,7 @@ class PrivateSectorStudyTest(unittest.TestCase):
         self.assertEqual(index["counts"]["economic_records"], 584)
         self.assertEqual(index["counts"]["reported_actual_records"], 532)
         self.assertEqual(index["counts"]["projection_records"], 52)
-        self.assertEqual(index["counts"]["modeled_synthesis_records"], 8)
+        self.assertEqual(index["counts"]["modeled_synthesis_records"], 13)
         self.assertTrue(all(r["analysis_readiness"]["causal"] == "not_assessed" for r in details))
         washoe = next(r for r in details if r["name"] == "Apple Washoe County campus")
         coverage = {g["code"]: g["status"] for g in washoe["evidence_gaps"]}
@@ -394,7 +394,7 @@ class PrivateSectorStudyTest(unittest.TestCase):
         self.assertEqual(next(r for r in actual if r["metric_code"] == "study.cumulative_facility_investment")["value_qualifier"], "approximately")
         self.assertTrue(any("separate Apple equipment" in u["title"] for u in project["research_updates"]))
         modeled = project["modeled_syntheses"]
-        self.assertEqual(project["modeled_synthesis_count"], 8)
+        self.assertEqual(project["modeled_synthesis_count"], 13)
         self.assertEqual({r["basis"] for r in modeled}, {"modeled_synthesis"})
         self.assertEqual(len(project["economic_records"]), 80)
         water = next(r for r in modeled if r["metric_code"] == "study.modeled_onsite_water_use")
@@ -407,6 +407,20 @@ class PrivateSectorStudyTest(unittest.TestCase):
                          (9579040.27, 11902668.85, 14226297.43))
         property_rows = [r for r in modeled if r["metric_code"] == "study.modeled_ftz_property_tax_reduction"]
         self.assertEqual([r["value"] for r in property_rows], [5358646.75, 4429801.10, 4121427.02])
+        apple_employment = next(r for r in modeled if r["metric_code"] == "study.modeled_apple_allocated_employment")
+        self.assertEqual((apple_employment["interval"]["low"], apple_employment["value"], apple_employment["interval"]["high"]),
+                         (98.05, 121.84, 145.62))
+        apple_payroll = next(r for r in modeled if r["metric_code"] == "study.modeled_apple_allocated_payroll")
+        self.assertEqual((apple_payroll["interval"]["low"], apple_payroll["value"], apple_payroll["interval"]["high"]),
+                         (9299507.17, 11555328.21, 13811149.26))
+        electricity_cost = next(r for r in modeled if r["metric_code"] == "study.modeled_electricity_cost")
+        self.assertEqual((electricity_cost["interval"]["low"], electricity_cost["value"], electricity_cost["interval"]["high"]),
+                         (44477000, 56665950, 68854900))
+        emissions = next(r for r in modeled if r["metric_code"] == "study.modeled_location_based_gross_emissions")
+        self.assertEqual((emissions["interval"]["kind"], emissions["value"]), ("point_estimate", 180341.25))
+        cooling = next(r for r in modeled if r["metric_code"] == "study.modeled_cooling_water_savings_potential")
+        self.assertEqual((cooling["interval"]["low"], cooling["value"], cooling["interval"]["high"]),
+                         (0, 16398310.81, 32796621.62))
         self.assertTrue(all(r["derivation"]["formula"] and r["derivation"]["assumptions"] for r in modeled))
 
     def test_modeled_synthesis_rejects_invalid_ranges_and_unknown_inputs(self):

@@ -11,8 +11,8 @@ projects across 35 counties and 23 states, including five campus-linked candidat
 The default page is the project register; `#/project/{project_id}` opens a sourced
 history and economic-evidence checklist, `#/map` retains the national map with study
 markers, and existing `#/county/{FIPS}` links remain available. First-entry decisions
-are retained as a separate research question. Study release 1.38 publishes 584 economic source
-records linked to all 36 candidates: 532 reported records and 52 projections, plus eight separately
+are retained as a separate research question. Study release 1.39 publishes 584 economic source
+records linked to all 36 candidates: 532 reported records and 52 projections, plus 13 separately
 labeled modeled syntheses for Apple Mesa.
 Profiles show source pages/sections, campus/company scope, tax-base history with gaps,
 construction peaks, paired tax/incentive histories with a narrowly defined documented difference,

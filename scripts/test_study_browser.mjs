@@ -529,7 +529,7 @@ try {
   await page.setViewportSize({ width: 1440, height: 1000 });
   await page.goto(`${url}#/project/prj_study_im3_building_00300974499`);
   await page.getByRole("heading", { name: "Economic evidence", exact: true }).waitFor();
-  await page.getByText("80 sourced records · 8 modeled syntheses", { exact: true }).waitFor();
+  await page.getByText("80 sourced records · 13 modeled syntheses", { exact: true }).waitFor();
   assert.equal(await page.locator(".economic-record").count(), 76);
   assert.equal(await page.locator(".tax-billing-history").count(), 2);
   assert.equal(await page.locator(".tax-billing-history tbody tr").count(), 22);
@@ -555,7 +555,7 @@ try {
   assert.match(await page.locator(".economic-record-list").innerText(), /\$2,000,000,000[\s\S]*150 jobs[\s\S]*Up to 500 jobs[\s\S]*\$25,000,000/);
   await page.locator(".economic-record-list").screenshot({ path: path.join(out, "apple-mesa-forecasts-mobile.png") });
   await page.getByRole("tab", { name: /Modeled synthesis/ }).click();
-  assert.equal(await page.locator(".modeled-record").count(), 8);
+  assert.equal(await page.locator(".modeled-record").count(), 13);
   assert.match(await page.locator(".modeled-note").innerText(), /not observed or audited/i);
   const appleModels = await page.locator(".modeled-record-list").innerText();
   assert.match(appleModels, /Modeled onsite water use[\s\S]*109,322,072\.06 gallons \/ year/);
@@ -563,10 +563,15 @@ try {
   assert.match(appleModels, /Modeled FTZ-area annual payroll[\s\S]*\$11,902,668\.85/);
   assert.match(appleModels, /Modeled IOC tax credits realized[\s\S]*\$12,500,000/);
   assert.match(appleModels, /Modeled FTZ export-duty avoidance[\s\S]*\$2,187,500/);
+  assert.match(appleModels, /Modeled Apple-only employment allocation[\s\S]*121\.84 FTE/);
+  assert.match(appleModels, /Modeled Apple-only annual payroll allocation[\s\S]*\$11,555,328\.21/);
+  assert.match(appleModels, /Modeled annual electricity-cost benchmark[\s\S]*\$56,665,950/);
+  assert.match(appleModels, /Modeled location-based gross electricity emissions[\s\S]*180,341\.25 metric tons CO₂e \/ year/);
+  assert.match(appleModels, /Modeled cooling-treatment water-savings potential[\s\S]*16,398,310\.81 gallons \/ year/);
   await page.locator(".modeled-record").first().locator("summary").click();
   assert.match(await page.locator(".modeled-record").first().innerText(), /Method:[\s\S]*Formula:[\s\S]*Sensitivity envelope:[\s\S]*Confidence:[\s\S]*Named parameters[\s\S]*Limitations[\s\S]*Apple Environmental Progress Report 2026/);
   await page.locator(".modeled-record-list").screenshot({ path: path.join(out, "apple-mesa-modeled-synthesis-mobile.png") });
-  check("Apple Mesa source records, forecasts and eight labeled modeled syntheses remain distinct");
+  check("Apple Mesa source records, forecasts and thirteen labeled modeled syntheses remain distinct");
   await page.setViewportSize({ width: 1440, height: 1000 });
   await page.goto(`${url}#/project/prj_study_im3_building_00664938835`);
   await page.getByRole("heading", { name: "Expedient Milwaukee / Franklin", exact: true }).waitFor();
