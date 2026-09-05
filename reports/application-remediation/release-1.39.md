@@ -14,10 +14,12 @@ The labor estimates use activated Foreign-Trade Zone acreage as a low-confidence
 
 Construction job-years, local purchasing shares, indirect and induced effects, recipient-level net fiscal effects, and Apple-only causal effects remain unresolved because the reviewed public inputs do not support defensible estimates. The study sends no public-records requests, private data requests, surveys, questionnaires, or other solicitations.
 
+The project profile now reconciles this evidence in two decision-facing sections. Annual-account cards display reported, forecast, and modeled counts, name the published source measures and modeled syntheses, and retain the remaining evidence gap. Analysis readiness is derived from those published categories and distinguishes partial source evidence, available modeled estimates, a partial modeled fiscal account, and the absence of a causal design.
+
 ## Verification
 
 - 65 schemas validated, including configuration and public JSON.
 - 48 repository tests passed.
 - TypeScript compilation and the production build passed.
-- 35 browser checks passed with no runtime errors.
+- 36 browser checks passed with no runtime errors.
 - Apple Mesa displays 80 sourced records and 13 separately labeled modeled syntheses.

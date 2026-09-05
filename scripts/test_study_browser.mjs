@@ -41,7 +41,7 @@ try {
   await page.getByRole("link", { name: "Quicken Loans Technology Center, Corktown", exact: true }).click();
   await page.getByRole("heading", { name: "Sources & research history" }).waitFor();
   assert.equal(await page.locator(".missing-badge").count(), 7);
-  assert.equal(await page.locator(".readiness-list strong").allTextContents().then(x => x.every(v => v === "Not assessed")), true);
+  assert.deepEqual(await page.locator(".readiness-list strong").allTextContents(), ["Evidence gap", "Evidence gap", "Partial source evidence", "Not model-ready"]);
   check("combined filters and enterprise profile preserve partial economic coverage");
 
   await page.getByRole("link", { name: "Project study", exact: true }).click();
@@ -571,6 +571,19 @@ try {
   await page.locator(".modeled-record").first().locator("summary").click();
   assert.match(await page.locator(".modeled-record").first().innerText(), /Method:[\s\S]*Formula:[\s\S]*Sensitivity envelope:[\s\S]*Confidence:[\s\S]*Named parameters[\s\S]*Limitations[\s\S]*Apple Environmental Progress Report 2026/);
   await page.locator(".modeled-record-list").screenshot({ path: path.join(out, "apple-mesa-modeled-synthesis-mobile.png") });
+  const appleCoverage = page.locator(".annual-account-coverage");
+  assert.equal(await appleCoverage.locator(".evidence-grid article").count(), 8);
+  assert.match(await appleCoverage.innerText(), /Permanent jobs and compensation[\s\S]*0 reported[\s\S]*1 forecast[\s\S]*5 modeled[\s\S]*Modeled Apple-only employment allocation/);
+  assert.match(await appleCoverage.innerText(), /Incentives and public costs[\s\S]*0 reported[\s\S]*1 forecast[\s\S]*5 modeled[\s\S]*Modeled FTZ property-tax reduction versus Class 1/);
+  assert.match(await appleCoverage.innerText(), /Electricity, water, and cooling[\s\S]*11 reported[\s\S]*0 forecast[\s\S]*3 modeled[\s\S]*Modeled cooling-treatment water-savings potential/);
+  const appleReadiness = page.locator(".analysis-readiness");
+  assert.match(await appleReadiness.innerText(), /Construction contribution[\s\S]*Partial source evidence[\s\S]*9 reported · 2 forecast · 0 modeled/);
+  assert.match(await appleReadiness.innerText(), /Operating employment[\s\S]*Modeled estimates available[\s\S]*0 reported · 1 forecast · 5 modeled/);
+  assert.match(await appleReadiness.innerText(), /Local fiscal balance[\s\S]*Partial modeled account[\s\S]*56 reported · 1 forecast · 5 modeled/);
+  assert.match(await appleReadiness.innerText(), /Attributable economic effects[\s\S]*Not model-ready[\s\S]*0 causal models/);
+  await appleCoverage.screenshot({ path: path.join(out, "apple-mesa-annual-account-coverage-mobile.png") });
+  await appleReadiness.screenshot({ path: path.join(out, "apple-mesa-analysis-readiness-mobile.png") });
+  check("Apple Mesa annual-account coverage and analysis readiness reflect its reported, forecast and modeled evidence");
   check("Apple Mesa source records, forecasts and thirteen labeled modeled syntheses remain distinct");
   await page.setViewportSize({ width: 1440, height: 1000 });
   await page.goto(`${url}#/project/prj_study_im3_building_00664938835`);

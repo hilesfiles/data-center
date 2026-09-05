@@ -66,6 +66,98 @@ function ProjectCard({ project: p }: { project: StudyProjectSummary }) {
   </article>;
 }
 
+const gapStatusLabels = {
+  not_yet_collected: "Not yet collected",
+  partial: "Partial evidence",
+  projections_only: "Projections only",
+} as const;
+
+function uniqueLabels(labels: string[]) {
+  return [...new Set(labels)];
+}
+
+function EvidenceCoverage({ project }: { project: StudyProject }) {
+  return <section className="project-section annual-account-coverage" aria-labelledby="gaps-title">
+    <div className="section-heading"><h3 id="gaps-title">Annual-account coverage and remaining evidence</h3></div>
+    <p className="study-intro">Each category shows what is already published as reported activity, source forecasts, or labeled modeled synthesis. The remaining gap states what is still required for a complete annual account.</p>
+    <div className="evidence-grid">{project.evidence_gaps.map(g => {
+      const reported = project.economic_records.filter(r => r.category === g.code && r.basis === "reported_actual");
+      const forecasts = project.economic_records.filter(r => r.category === g.code && r.basis === "source_projection");
+      const modeled = project.modeled_syntheses.filter(r => r.category === g.code);
+      const measures = uniqueLabels([...reported, ...forecasts].map(r => r.label));
+      const modelLabels = uniqueLabels(modeled.map(r => r.label));
+      const hasCoverage = reported.length + forecasts.length + modeled.length > 0;
+      const coverageLabel = modeled.length ? (reported.length ? "Reported + modeled" : forecasts.length ? "Forecast + modeled" : "Modeled coverage") : gapStatusLabels[g.status];
+      return <article key={g.code} className={hasCoverage ? "has-account-coverage" : "no-account-coverage"}>
+        <div className="coverage-card-heading"><h4>{g.label}</h4><span className={modeled.length ? "modeled-coverage-badge" : g.status === "not_yet_collected" ? "missing-badge" : "coverage-badge"}>{coverageLabel}</span></div>
+        <div className="coverage-counts" aria-label={`${g.label} published coverage`}>
+          <span className={reported.length ? "" : "zero"}><strong>{reported.length}</strong> reported</span>
+          <span className={forecasts.length ? "" : "zero"}><strong>{forecasts.length}</strong> forecast</span>
+          <span className={modeled.length ? "modeled" : "zero"}><strong>{modeled.length}</strong> modeled</span>
+        </div>
+        {measures.length > 0 && <p className="published-coverage"><strong>Published source measures</strong>{measures.join("; ")}</p>}
+        {modelLabels.length > 0 && <p className="published-models"><strong>Published modeled syntheses</strong>{modelLabels.join("; ")}</p>}
+        {!hasCoverage && <p className="published-coverage"><strong>Published coverage</strong>No reported, forecast, or modeled evidence is currently published for this category.</p>}
+        <p className="remaining-gap"><strong>Remaining evidence gap</strong>{g.needed}</p>
+      </article>;
+    })}</div>
+  </section>;
+}
+
+function AnalysisReadiness({ project }: { project: StudyProject }) {
+  const rows = [
+    {
+      key: "construction",
+      label: "Construction contribution",
+      categories: ["investment", "construction"],
+      modeledStatus: "Modeled estimate available",
+      sourceStatus: "Partial source evidence",
+      note: "Reported and forecast inputs do not by themselves establish construction job-years, local purchasing, or multiplier effects.",
+    },
+    {
+      key: "operations",
+      label: "Operating employment",
+      categories: ["operations", "suppliers"],
+      modeledStatus: "Modeled estimates available",
+      sourceStatus: "Partial source evidence",
+      note: "Operating models remain separate from observed headcount, compensation, supplier purchases, and household-spending effects.",
+    },
+    {
+      key: "fiscal",
+      label: "Local fiscal balance",
+      categories: ["fiscal", "public_costs"],
+      modeledStatus: "Partial modeled account",
+      sourceStatus: "Partial source evidence",
+      note: "A net fiscal result still requires recipient-level revenues, realized incentives, and attributable public-service and infrastructure costs.",
+    },
+  ].map(row => {
+    const records = project.economic_records.filter(r => row.categories.includes(r.category));
+    const reported = records.filter(r => r.basis === "reported_actual").length;
+    const forecasts = records.filter(r => r.basis === "source_projection").length;
+    const modeled = project.modeled_syntheses.filter(r => row.categories.includes(r.category)).length;
+    const status = modeled ? row.modeledStatus : reported ? row.sourceStatus : forecasts ? "Projections only" : "Evidence gap";
+    return { ...row, reported, forecasts, modeled, status };
+  });
+  const causalMethods = new Set(["difference_in_differences", "event_study", "synthetic_control"]);
+  const causalModels = project.modeled_syntheses.filter(r => causalMethods.has(r.derivation.method));
+  return <section className="project-section analysis-readiness" aria-labelledby="readiness-title">
+    <h3 id="readiness-title">Analysis readiness</h3>
+    <p className="study-intro">Readiness is derived from the evidence published on this profile. Modeled estimates can support deliberation while the annual account or causal design remains incomplete.</p>
+    <div className="readiness-list">
+      {rows.map(row => <article key={row.key}>
+        <div className="readiness-heading"><h4>{row.label}</h4><strong>{row.status}</strong></div>
+        <p className="readiness-counts">{row.reported} reported · {row.forecasts} forecast · {row.modeled} modeled</p>
+        <p>{row.note}</p>
+      </article>)}
+      <article>
+        <div className="readiness-heading"><h4>Attributable economic effects</h4><strong>{causalModels.length ? "Causal model available" : "Not model-ready"}</strong></div>
+        <p className="readiness-counts">{causalModels.length} causal model{causalModels.length === 1 ? "" : "s"}</p>
+        <p>{causalModels.length ? "Review the published treatment timing, comparison design, outcomes, diagnostics, and limitations before interpreting the estimate." : "No causal estimate is published. A dated treatment, comparison design, defined outcomes, pre/post periods, and diagnostics are still required."}</p>
+      </article>
+    </div>
+  </section>;
+}
+
 function ProjectProfile({ summary, release, generatedAt }: { summary: StudyProjectSummary; release: string; generatedAt: string }) {
   const [detail, setDetail] = useState<StudyProject | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -90,8 +182,8 @@ function ProjectProfile({ summary, release, generatedAt }: { summary: StudyProje
       </section>
       {detail.research_updates.map(update => <aside className="project-research-update" key={`${update.source_id}-${update.as_of}`}><span className="eyebrow">Research update · {update.as_of}</span><h3>{update.title}</h3><p>{update.notes}</p><a href={update.source.url} target="_blank" rel="noreferrer">{update.source.title} ↗</a><small>Source checked {update.source.retrieved_on}</small></aside>)}
       {(detail.economic_records.length > 0 || detail.modeled_syntheses.length > 0) && <EconomicAccounts key={detail.project_id} project={detail} />}
-      <section className="project-section" aria-labelledby="gaps-title"><div className="section-heading"><h3 id="gaps-title">Evidence needed for the annual accounts</h3></div><p className="study-intro">{detail.economic_records.length ? "Available records provide a starting point. Partial coverage includes unresolved periods, project allocation or definitions; forecasts and modeled syntheses do not establish realized activity." : "Economic records have not yet been collected for this project."} Each category below identifies the evidence still needed.</p><div className="evidence-grid">{detail.evidence_gaps.map(g => <article key={g.code}><h4>{g.label}</h4><span className={g.status === "not_yet_collected" ? "missing-badge" : "coverage-badge"}>{{ not_yet_collected: "Not yet collected", partial: "Partial evidence", projections_only: "Projections only" }[g.status]}</span><p>{g.needed}</p></article>)}</div></section>
-      <section className="project-section"><h3>Analysis readiness</h3><div className="readiness-list">{Object.keys(detail.analysis_readiness).map(key => <div key={key}><span>{{ construction: "Construction contribution", operations: "Operating employment", fiscal: "Local fiscal balance", causal: "Attributable economic effects" }[key]}</span><strong>Not assessed</strong></div>)}</div><p className="study-muted">Each analysis has its own evidence requirements. A county-first-entry decision does not determine whether this project's spending, jobs, or tax receipts can be documented.</p></section>
+      <EvidenceCoverage project={detail} />
+      <AnalysisReadiness project={detail} />
       <section className="project-section" id="project-sources"><div className="section-heading"><h3>Sources & research history</h3><a href={`${base}${summary.detail_path}`} download={`${summary.project_id}.json`}>Download project JSON ↓</a></div><p className="study-muted">These sources support the stored history, identity, or earlier county-entry research. Their presence does not verify every economic measure above.</p><ol className="source-list">{detail.sources.map((s, i) => <li key={`${s.source_id}-${i}`}><a href={s.url} target="_blank" rel="noreferrer">{s.title} ↗</a><small>{new URL(s.url).hostname}</small></li>)}</ol>
         <details className="research-details"><summary>Inventory identity and earlier first-entry research</summary><p>Inventory name: {detail.inventory_name}</p><p className="identity-id">{detail.inventory_entity_id}</p><p>{detail.legacy_first_entry_note ?? "This candidate was added through a campus record. A complete project and phase history remains to be assembled."}</p><p>Earlier adjudications retain their original meaning. This profile does not assign a county-first-entry date.</p></details>
       </section>
