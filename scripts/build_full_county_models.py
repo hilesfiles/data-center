@@ -235,7 +235,7 @@ def main():
     payload["synthesis_version"] = "study-modeled-synthesis-3.0.0"
     payload["reviewed_on"] = REVIEWED
     payload["scope_note"] = "Full modeled county accounts for Apple Mesa / Maricopa County, Switch Citadel / Storey County, and Digital Crossroad Hammond / Lake County. Every required account category and county-effect module contains sourced evidence or a visibly labeled modeled value. Modeled values are not observed or audited, and low-confidence transferred benchmarks remain explicit."
-    TARGET.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    TARGET.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8", newline="\n")
     print(json.dumps({"completion_models": len(new_rows), "total_models": len(payload["estimates"])}))
 
 

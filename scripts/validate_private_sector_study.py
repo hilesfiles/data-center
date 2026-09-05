@@ -2,11 +2,11 @@
 from pathlib import Path
 
 if __package__:
-    from .build_private_sector_study import CONFIG, OUT, PUBLIC, ROOT, SILVER, build_products, digest, read
+    from .build_private_sector_study import CONFIG, OUT, PUBLIC, ROOT, SILVER, build_products, digest, manifest_size, read
     from .study_economic_evidence import EVIDENCE, economic_products
     from .study_modeled_synthesis import MODELING_POLICY, SYNTHESIS, modeled_products
 else:
-    from build_private_sector_study import CONFIG, OUT, PUBLIC, ROOT, SILVER, build_products, digest, read
+    from build_private_sector_study import CONFIG, OUT, PUBLIC, ROOT, SILVER, build_products, digest, manifest_size, read
     from study_economic_evidence import EVIDENCE, economic_products
     from study_modeled_synthesis import MODELING_POLICY, SYNTHESIS, modeled_products
 
@@ -63,7 +63,7 @@ def validate_study(validator):
             path = (ROOT / part["path"]).resolve()
             if not path.is_relative_to(ROOT) or not path.is_file() or digest(path) != part["sha256"]:
                 errors.append(f"Study input/output hash mismatch: {part['path']}")
-            elif "byte_size" in part and path.stat().st_size != part["byte_size"]:
+            elif "byte_size" in part and manifest_size(path) != part["byte_size"]:
                 errors.append(f"Study byte-size mismatch: {part['path']}")
     except (KeyError, ValueError, OSError, TypeError) as exc:
         errors.append(f"Study publication invalid: {exc}")

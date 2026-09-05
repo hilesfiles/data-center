@@ -1,7 +1,9 @@
 import copy
+from pathlib import Path
+import tempfile
 import unittest
 
-from scripts.build_private_sector_study import CONFIG, PUBLIC, ROOT, build_products, read
+from scripts.build_private_sector_study import CONFIG, PUBLIC, ROOT, build_products, digest, manifest_size, read
 from scripts.validate_data_contract import ContractValidator
 from scripts.study_economic_evidence import EVIDENCE, economic_products, validate_evidence
 from scripts.study_modeled_synthesis import MODELING_POLICY, SYNTHESIS, modeled_products
@@ -19,6 +21,15 @@ class PrivateSectorStudyTest(unittest.TestCase):
 
     def build(self, config=None):
         return build_products(config or self.config, self.inventory, self.panels, "2026-09-03T00:00:00+00:00")
+
+    def test_study_manifest_hashes_are_stable_across_line_endings(self):
+        with tempfile.TemporaryDirectory() as directory:
+            lf = Path(directory) / "lf.json"
+            crlf = Path(directory) / "crlf.json"
+            lf.write_bytes(b'{\n  "value": 1\n}\n')
+            crlf.write_bytes(b'{\r\n  "value": 1\r\n}\r\n')
+            self.assertEqual(digest(lf), digest(crlf))
+            self.assertEqual(manifest_size(lf), manifest_size(crlf))
 
     def test_rejected_first_entry_remains_a_candidate(self):
         _, details, entities = self.build()

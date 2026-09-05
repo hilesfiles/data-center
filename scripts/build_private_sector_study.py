@@ -77,11 +77,20 @@ def read(path):
 
 def write(path, value):
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(value, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    path.write_text(json.dumps(value, ensure_ascii=False, indent=2) + "\n", encoding="utf-8", newline="\n")
+
+
+def manifest_bytes(path):
+    """Return the LF-normalized bytes Git stores for study text artifacts."""
+    return path.read_bytes().replace(b"\r\n", b"\n")
 
 
 def digest(path):
-    return hashlib.sha256(path.read_bytes()).hexdigest()
+    return hashlib.sha256(manifest_bytes(path)).hexdigest()
+
+
+def manifest_size(path):
+    return len(manifest_bytes(path))
 
 
 def import_screen():
@@ -245,7 +254,7 @@ def main():
     manifest = {
         "schema_version": "1.0.0", "release_id": VERSION, "generated_at": stamp,
         "inputs": [{"path": str(p.relative_to(ROOT)).replace("\\", "/"), "sha256": digest(p)} for p in [CONFIG, EVIDENCE, SYNTHESIS, MODELING_POLICY, inventory_path, *panel_paths, Path(__file__), Path(__file__).with_name("build_hammond_modeled_synthesis.py"), Path(__file__).with_name("build_full_county_models.py"), Path(__file__).with_name("study_economic_evidence.py"), Path(__file__).with_name("study_modeled_synthesis.py")]],
-        "parts": [{"path": str(p.relative_to(ROOT)).replace("\\", "/"), "record_count": count, "byte_size": p.stat().st_size, "sha256": digest(p)} for p, count in paths],
+        "parts": [{"path": str(p.relative_to(ROOT)).replace("\\", "/"), "record_count": count, "byte_size": manifest_size(p), "sha256": digest(p)} for p, count in paths],
     }
     write(OUT / "manifest.json", manifest)
     print(json.dumps(index["counts"]))

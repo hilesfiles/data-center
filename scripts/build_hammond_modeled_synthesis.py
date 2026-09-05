@@ -358,7 +358,7 @@ def main():
     payload["sources"] = [source for source in payload["sources"] if source["source_id"] not in source_ids] + new_sources
     payload["estimates"] = [row for row in payload["estimates"] if not row["estimate_id"].startswith("est_study_dx_hammond_")] + build_rows()
     payload["reviewed_on"] = REVIEWED
-    TARGET.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    TARGET.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8", newline="\n")
     print(json.dumps({"hammond_modeled_records": len(build_rows()), "total_modeled_records": len(payload["estimates"])}))
 
 
