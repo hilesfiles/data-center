@@ -74,10 +74,10 @@ class PrivateSectorStudyTest(unittest.TestCase):
         index, details, _ = self.build()
         self.assertEqual(index["counts"]["projects"], 36)
         self.assertEqual(index["counts"]["projects_with_economic_evidence"], 36)
-        self.assertEqual(index["counts"]["economic_records"], 584)
-        self.assertEqual(index["counts"]["reported_actual_records"], 532)
+        self.assertEqual(index["counts"]["economic_records"], 585)
+        self.assertEqual(index["counts"]["reported_actual_records"], 533)
         self.assertEqual(index["counts"]["projection_records"], 52)
-        self.assertEqual(index["counts"]["modeled_synthesis_records"], 13)
+        self.assertEqual(index["counts"]["modeled_synthesis_records"], 33)
         self.assertTrue(all(r["analysis_readiness"]["causal"] == "not_assessed" for r in details))
         washoe = next(r for r in details if r["name"] == "Apple Washoe County campus")
         coverage = {g["code"]: g["status"] for g in washoe["evidence_gaps"]}
@@ -256,7 +256,8 @@ class PrivateSectorStudyTest(unittest.TestCase):
                          "study.public_safety_equipment_cost_projection"]
         }
         self.assertEqual((project["economic_record_count"], project["reported_actual_count"],
-                          project["projection_count"]), (78, 71, 7))
+                          project["projection_count"], project["modeled_synthesis_count"]),
+                         (79, 72, 7, 20))
         self.assertEqual([len(by_metric[c]) for c in ["study.reported_asset_cost", "study.taxable_property_value",
                                                        "study.account_assessed_value", "study.property_taxes_billed"]],
                          [11, 14, 14, 14])
@@ -304,11 +305,30 @@ class PrivateSectorStudyTest(unittest.TestCase):
         self.assertEqual(by_metric["study.public_safety_equipment_cost_projection"][0]["basis"], "source_projection")
         coverage = {gap["code"]: gap["status"] for gap in project["evidence_gaps"]}
         self.assertEqual((coverage["community"], coverage["public_costs"]), ("partial", "projections_only"))
-        self.assertEqual(len(project["research_updates"]), 7)
+        self.assertEqual(len(project["research_updates"]), 8)
         self.assertFalse(any(r["source_id"] == "src_study_nevada_switch_combined_audit_2021"
                              for r in project["economic_records"]))
         self.assertTrue(all(r["source_id"] == "src_study_nevada_goed_switch_abatement_audit_2023"
                             for r in list(audit.values()) + [by_metric["study.operating_jobs_projection"][0]]))
+
+        q2_capex = next(r for r in project["economic_records"]
+                        if r["claim_id"] == "clm_study_switch_citadel_capex_2021_q2")
+        self.assertEqual((q2_capex["value"], q2_capex["scope"]["level"],
+                          q2_capex["period"]["report_date"]),
+                         (59400000, "campus", "2021-06-30"))
+        modeled = {r["metric_code"]: r for r in project["modeled_syntheses"]}
+        self.assertEqual(modeled["study.modeled_documented_capital_floor"]["value"], 239343184)
+        self.assertEqual(modeled["study.modeled_operating_payroll"]["interval"]["low"], 10636419.60)
+        self.assertEqual(modeled["study.modeled_operating_payroll"]["interval"]["high"], 11767953.60)
+        self.assertEqual(modeled["study.modeled_cumulative_verified_property_tax_paid"]["value"], 11324644.79)
+        self.assertEqual(modeled["study.modeled_planned_tax_abatement_total"]["value"], 107815753)
+        self.assertEqual(modeled["study.modeled_occupied_power_capacity_proxy"]["value"], 75.4)
+        self.assertEqual(modeled["study.modeled_annual_electricity_use"]["interval"]["high"], 660504)
+        self.assertEqual(modeled["study.modeled_onsite_water_use"]["interval"]["low"], 54838676.29)
+        self.assertIn("Not a causal effect.",
+                      modeled["study.modeled_county_covered_employment_descriptive_change"]["limitations"])
+        self.assertFalse(any(r["contribution_channel"] in {"indirect", "induced", "total"}
+                             for r in project["modeled_syntheses"]))
 
     def test_council_bluffs_keeps_taxpayer_accounts_and_award_plans_separate(self):
         _, details, _ = self.build()

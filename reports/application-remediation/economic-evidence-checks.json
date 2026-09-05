@@ -1,6 +1,6 @@
 {
-  "release_id": "private-sector-study-1.38.0",
-  "generated_at": "2026-09-05T17:38:45.7261295Z",
+  "release_id": "private-sector-study-1.40.0",
+  "generated_at": "2026-09-05T19:20:12+00:00",
   "counts": {
     "projects": 36,
     "counties": 35,
@@ -13,10 +13,10 @@
       "Private enterprise": 3
     },
     "projects_with_economic_evidence": 36,
-    "economic_records": 584,
-    "reported_actual_records": 532,
+    "economic_records": 585,
+    "reported_actual_records": 533,
     "projection_records": 52,
-    "modeled_synthesis_records": 8
+    "modeled_synthesis_records": 33
   },
   "data_contract": {
     "status": "passed",
@@ -26,12 +26,12 @@
   },
   "unittest": {
     "status": "passed",
-    "tests": 47
+    "tests": 48
   },
   "typescript": "passed",
   "vite_production_build": "passed",
   "browser_checks": {
-    "url": "http://localhost:4174/",
+    "url": "http://127.0.0.1:4175/",
     "checks": [
       "register shows 36 candidates without overflow",
       "economic coverage filter reports evidence on all 36 candidates",
@@ -57,11 +57,12 @@
       "TierPoint Little Rock preserves assessment gaps and the unpaid 2025 parcel charge",
       "Stream Houston preserves separate real-property and equipment values and paid-account histories",
       "EdgeConneX DET01 keeps real, IFT and former-IFT accounts separate from investment, job and wage forecasts",
-      "Citadel tax history, audited outcomes and agreement projections retain distinct scope and basis",
+      "Citadel source records, annual-account coverage and twenty models retain scope, provenance and noncausal limits",
       "Council Bluffs taxpayer stocks stay separate from state award commitments",
       "NYSE parcel assessments and prior-year tax charges remain distinct with 2025 tax uncollected",
       "State Farm parcel values, bills, paid account totals and estimated cumulative capex stay distinct",
-      "Apple Mesa source records, forecasts and eight labeled modeled syntheses remain distinct",
+      "Apple Mesa annual-account coverage and analysis readiness reflect its reported, forecast and modeled evidence",
+      "Apple Mesa source records, forecasts and thirteen labeled modeled syntheses remain distinct",
       "Expedient adaptive reuse keeps parcel stocks, permit values and the hiring plan separate",
       "NTT SV1 keeps assessment-appeal positions, job plans and water design estimates distinct",
       "Quicken Corktown keeps whole-parcel values separate from partial-building tenancy and water claims",
@@ -72,6 +73,8 @@
     "runtime_errors": []
   },
   "visual_review": [
+    "apple-mesa-analysis-readiness-mobile.png",
+    "apple-mesa-annual-account-coverage-mobile.png",
     "apple-mesa-electricity-history-mobile.png",
     "apple-mesa-forecasts-mobile.png",
     "apple-mesa-modeled-synthesis-mobile.png",
@@ -80,6 +83,10 @@
     "chaska-evidence-desktop.png",
     "chaska-fiscal-mobile.png",
     "council-bluffs-evidence-mobile.png",
+    "economic-forecasts-desktop.png",
+    "economic-forecasts-mobile.png",
+    "economic-history-desktop.png",
+    "economic-history-mobile.png",
     "edgeconnex-det01-forecasts-mobile.png",
     "edgeconnex-det01-tax-history-mobile.png",
     "expedient-franklin-actuals-mobile.png",
@@ -106,12 +113,17 @@
     "hammond-tif-debt-mobile.png",
     "hammond-tif-reconciliation-mobile.png",
     "hammond-update-mobile.png",
+    "map-desktop.png",
     "meta-forest-city-depth-mobile.png",
     "ntt-sv1-evidence-mobile.png",
     "nv-goed-switch-audit-page.png",
     "nyse-mahwah-tax-history-mobile.png",
+    "project-desktop.png",
+    "project-mobile.png",
     "qualified-plans-mobile.png",
     "quicken-corktown-evidence-mobile.png",
+    "register-desktop.png",
+    "register-mobile.png",
     "state-farm-olathe-tax-history-mobile.png",
     "storey-fire-cip-source-page.png",
     "storey-switch-donation-source-page.png",
@@ -122,8 +134,11 @@
     "switch-citadel-tax-history-mobile.png",
     "switch-las-vegas-evidence-mobile.png",
     "switch-storey-agreement-forecasts-mobile.png",
+    "switch-storey-analysis-readiness-mobile.png",
+    "switch-storey-annual-account-coverage-mobile.png",
     "switch-storey-audit-capex-mobile.png",
     "switch-storey-community-contribution-mobile.png",
+    "switch-storey-modeled-synthesis-mobile.png",
     "tax-billing-desktop.png",
     "tax-billing-mobile.png",
     "tierpoint-cl4-tax-history-mobile.png",
@@ -148,7 +163,7 @@
     "Apple Mesa tax accounts cover Apple Inc. business personal property and an Apple-associated real parcel separately. The 5% foreign-trade-zone assessment ratio is observed context, not a counterfactual estimate of foregone taxes. Apple's fiscal-2017 through fiscal-2025 electricity series is operator reported rather than independently meter verified; the 50 MW Bonnybrooke and 4.67 MW onsite PV figures are nameplate generation capacity rather than facility load or output. Eight finaled or certificate-issued Mesa permit valuations remain separate administrative amounts and are not expenditure. The City's approximate $2 billion cumulative statement is not an audited annual schedule and does not by itself reconcile the original $2 billion ten-year plan. Original operating and construction job promises remain forecasts. State claims for fiscal 2019 through fiscal 2023 are confidential, so the legislative $25 million credit cost remains an estimate. The current FTZ agreement verifies premises and permitted activities but not execution dates, fees paid or tax benefits. Water-system implementation and permits do not establish measured water use or savings.",
     "Digital Crossroad Hammond evidence keeps the lease-area real-property account separate from the city table’s personal-property assessment. The greater-than-$50-million facility descriptor is not annual spending; the developer-reported greater-than-$80-million local-contractor amount is cumulative, lacks a defined local geography and is not payroll or a multiplier effect; the audited fund cost basis and fair value are distinct year-end accounting stocks whose changes are not annual capital expenditure; the 17-employee figure is a dated snapshot without payroll or residency; and the $8.04 million TIF loan and bond draws are financing rather than grants or additional investment. City pledged revenue, debt-service-fund transfers and private-fund project-tax repayments retain separate definitions because their later values differ. Principal and interest are annual flows; outstanding principal and remaining principal-plus-interest are distinct year-end stocks. The 15 MW commissioned critical-power stock differs from the 20 MW utility-feed or operating-capacity descriptor; neither is measured use. Water-permit capacities are not measured use, and permit-listed generators are not runtime or actual emissions. The expired expansion amounts remain excluded. Ordinance 9496's Building 1 cost estimate and zone assessment caps remain forecasts because no EID bond, final schedule, collection or expenditure was verified; its generic typical-data-center multipliers are excluded. Indiana Gateway's Hammond outstanding-debt screen lists the existing Series 2019 Data Center bond but no separately named EID bond; the screen does not exclude private, unreported or separately administered financing. The unsubmitted 2025 Annual Financial Report prevents extending the audited City debt series past 2024. The audited private equipment-credit balances are debt stocks, not spending or public support; the 115,652-square-foot property size and 89.3% occupied share describe operating scale without proving jobs, revenue, measured load or output. ARCO, EMCOR Hyre, Executive Construction, AMS Industries and AHA roles support a supplier roster but not payment, payroll, worker-residence or local-share totals. The fund-wide real-estate-improvements roll-forward is excluded from Hammond. IEDC project 419942 separates the $750,000 EDGE ceiling, 45 expected jobs and $239,530,500 expected qualified investment from dated program-status fields. The 2018 report showed $0 paid/certified; annual compliance reports show $11,763 by 2021, unchanged through the September 27, 2023 contract end, when a $5,209 recapture also appears; the current portal preserves both amounts and now marks the contract compliant. The two amounts are not netted because the portal does not define their relationship, and none of the expected fields proves realized employment or spending. The portal zero actual-investment field is excluded because it is program-specific, its contract PDF remains in processing and the DATA record separately verifies campus qualified investment. Project 419963 separately reports $186,954,143 of actual qualified investment, $28,369,398.27 of DATA exemption paid/certified to date, and the full $9,045,773.82 IRTC maximum paid/certified to date. Annual reports show IRTC already at its full balance by 2021, DATA at $0 paid/certified in 2023, a blank DATA payment field but $0 actual qualified investment in 2024, and the current DATA balances by 2025; repeated balances are snapshots rather than annual flows. Qualified investment, tax-exemption value and credit certification are cumulative program measures, not annual spending, cash grants, local revenue or causal impact. The portal's $47,505,944.56 expected-investment field conflicts with agreement terms and is excluded pending reconciliation. The $8,000 IDEM charging-location award is a commitment with disbursement and installation unresolved. DX Hammond’s several-million-dollar NIPSCO payment description remains qualitative because no exact value or defensible bound is reported.",
     "Lake County County Business Patterns values cover the full NAICS 518210 industry, including hosting and data-processing establishments beyond data centers and beyond Hammond. Establishments are employer locations, employment is the pay-period count including March 12, and payroll is annual compensation for the county cell. Published employment and payroll values carry Census disclosure-noise flags; industry classification and establishment changes limit time-series interpretation. These observations are context and are not attributed to Digital Crossroad.",
-    "The 2018 Digital Crossroad agreement required quarterly local-labor compliance data to be provided to the Hammond Redevelopment Commission. No named filing was found in the indexed public archive, whose redevelopment categories begin in 2021. This does not establish that the records are absent, that reporting did not occur, or that the developer failed to comply; the underlying submissions require a direct public-records request.",
+    "The 2018 Digital Crossroad agreement required quarterly local-labor compliance data to be provided to the Hammond Redevelopment Commission. No named filing was found in the indexed public archive, whose redevelopment categories begin in 2021. This does not establish that the records are absent, that reporting did not occur, or that the developer failed to comply. The gap remains unresolved because the study uses already-public evidence and modeled synthesis without public-records requests or other solicitations.",
     "Switch Citadel evidence covers commercial personal-property account CM001611 at 1 Superloop Circle; other Switch accounts and campus real property remain outside the account series. The 2019 account reports a zero bill with assessed property, but the cause is not inferred. Nevada GOED identifies Switch, LTD #2 as the Storey County data-center agreement and reports a compliant five-year audit with 111 jobs, a $50.97 average hourly wage and $179,943,184 of capital expenditure. Those findings remain at company-county scope and unallocated to Tahoe Reno 1. The 2023 report repeats the same findings for the Clark County #3 agreement, while the 2021 report had combined Switch results, so the study preserves the official Storey allocation with an explicit reporting-quality caution.",
     "Switch Las Vegas evidence separates NAP7 real-property parcel 176-01-810-001 from multi-facility Core Campus capital expenditures. Treasurer bills and payments, personal property, local supplier shares, payroll and facility-level allocation remain uncollected; combined state audit totals remain contextual.",
     "TierPoint Charlotte CL4 evidence covers the real-property owner account for parcel 141-061-08 at the exact CL4 address. TierPoint is the tenant, the building predates the 2014 opening anchor, and assessed-value changes are not treated as TierPoint investment or causal effects. Personal property, employment, payroll, suppliers, incentives, utilities and public-service costs remain uncollected.",
@@ -157,6 +172,7 @@
     "EdgeConneX DET01 evidence keeps real parcel 76-24-33-476-055, IFT account 76-IP-13-000-088 and former-IFT commercial-personal account 76-99-43-004-025 separate. Account charges and paid totals are not recipient allocations; approved investment, planned jobs and planned salary remain forecasts pending final-cost and employment verification.",
     "Expedient Franklin evidence covers a pre-existing 2007 computer-center parcel and later alteration permits. Assessment stocks are not new investment; permit amounts are not verified expenditure or payroll; the 12-job statement remains an unverified hiring plan. Tax bills, payments, equipment value, realized employment, incentives and public costs remain uncollected.",
     "NTT SV1 County Verified values are positions in assessment appeals, not final assessments, tax bills or payments; the employee and annual-water figures are pre-opening forecasts, and the environmental document's inconsistent daily wastewater arithmetic is not resolved by inference.",
-    "Meta Forest City cumulative investment, jobs supported and community funding are operator-reported; the water-line amount is an approved public grant rather than verified disbursement or total cost. The fiscal-table difference is arithmetic, not a complete net-benefit measure, and measured campus resource use remains uncollected."
+    "Meta Forest City cumulative investment, jobs supported and community funding are operator-reported; the water-line amount is an approved public grant rather than verified disbursement or total cost. The fiscal-table difference is arithmetic, not a complete net-benefit measure, and measured campus resource use remains uncollected.",
+    "Storey modeled syntheses use cited public evidence and explicit assumptions for capital floors, direct labor, fiscal reconciliation, resource ranges and a descriptive county employment change. They are not observed or audited facility values. Local purchasing, indirect and induced effects, recipient-level net fiscal results, metered resource use and a Switch-only causal effect remain unresolved and are not synthesized."
   ]
 }

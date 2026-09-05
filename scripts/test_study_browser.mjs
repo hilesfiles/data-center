@@ -108,7 +108,7 @@ try {
 
   await page.goto(`${url}#/project/prj_study_im3_point_06685432442`);
   await page.getByRole("heading", { name: "Economic evidence", exact: true }).waitFor();
-  await page.getByText("78 sourced records · partial coverage", { exact: true }).waitFor();
+  await page.getByText("79 sourced records · 20 modeled syntheses", { exact: true }).waitFor();
   assert.match(await page.locator(".economic-record-list").innerText(), /111 employees[\s\S]*\$50\.97 \/ hour[\s\S]*\$179,943,184/);
   const switchAudit = page.locator(".economic-record").filter({ hasText: "State-audited capital expenditure" });
   await switchAudit.locator("summary").click();
@@ -457,8 +457,8 @@ try {
 
   await page.goto(`${url}#/project/prj_study_im3_point_06685432442`);
   await page.getByRole("heading", { name: "Switch Citadel / Tahoe Reno 1", exact: true }).waitFor();
-  await page.getByText("78 sourced records · partial coverage", { exact: true }).waitFor();
-  assert.equal(await page.locator(".economic-record").count(), 71);
+  await page.getByText("79 sourced records · 20 modeled syntheses", { exact: true }).waitFor();
+  assert.equal(await page.locator(".economic-record").count(), 72);
   const storeyTaxHistories = page.locator(".tax-billing-history");
   const storeyRealTaxHistory = storeyTaxHistories.filter({ hasText: "NV RNO 1, LLC real-property parcel 005-012-23" });
   assert.equal(await storeyTaxHistories.locator("tbody tr").count(), 14);
@@ -467,7 +467,7 @@ try {
   assert.match(await storeyRealTaxHistory.innerText(), /\$2,239,229\.35[\s\S]*\$2,369,299\.77[\s\S]*\$2,381,598\.47/);
   assert.equal(await page.locator(".economic-history").count(), 3);
   assert.equal(await page.locator(".history-bar-row").count(), 25);
-  assert.equal(await page.locator(".project-research-update").count(), 7);
+  assert.equal(await page.locator(".project-research-update").count(), 8);
   assert.match(await page.locator(".project-research-update").allInnerTexts().then(rows => rows.join(" ")), /resolves Switch personal property at the Citadel campus/);
   assert.match(await page.locator(".economic-record-list").innerText(), /\$356,000[\s\S]*More than \$2,000,000/);
   const storeyDonation = page.locator(".economic-record").filter({ hasText: "$356,000" });
@@ -480,8 +480,32 @@ try {
   await storeyDonation.screenshot({ path: path.join(out, "switch-storey-community-contribution-mobile.png") });
   await storeyTaxHistories.first().screenshot({ path: path.join(out, "switch-citadel-tax-history-mobile.png") });
   await storeyRealTaxHistory.screenshot({ path: path.join(out, "switch-citadel-real-property-tax-mobile.png") });
+  await page.getByRole("tab", { name: /Modeled synthesis/ }).click();
+  assert.equal(await page.locator(".modeled-record").count(), 20);
+  const storeyModels = await page.locator(".modeled-record-list").innerText();
+  assert.match(storeyModels, /Modeled documented cumulative capital floor[\s\S]*\$239,343,184/);
+  assert.match(storeyModels, /Modeled annual operating payroll[\s\S]*\$11,202,186\.6 \/ year/);
+  assert.match(storeyModels, /Modeled cumulative verified property tax paid[\s\S]*\$11,324,644\.79/);
+  assert.match(storeyModels, /Modeled annual facility electricity[\s\S]*594,453\.6 MWh \/ year/);
+  assert.match(storeyModels, /Storey County descriptive covered-employment change[\s\S]*11,632\.67 jobs/);
+  await page.locator(".modeled-record").first().locator("summary").click();
+  assert.match(await page.locator(".modeled-record").first().innerText(), /Formula:[\s\S]*Named parameters[\s\S]*Complete annual Citadel capital ledger/);
+  await page.locator(".modeled-record-list").screenshot({ path: path.join(out, "switch-storey-modeled-synthesis-mobile.png") });
+  const storeyCoverage = page.locator(".annual-account-coverage");
+  assert.equal(await storeyCoverage.locator(".evidence-grid article").count(), 8);
+  assert.match(await storeyCoverage.innerText(), /Capital investment[\s\S]*13 reported[\s\S]*2 forecast[\s\S]*2 modeled[\s\S]*Modeled documented cumulative capital floor/);
+  assert.match(await storeyCoverage.innerText(), /Construction jobs and payroll[\s\S]*0 reported[\s\S]*0 forecast[\s\S]*3 modeled[\s\S]*Modeled direct construction job-years/);
+  assert.match(await storeyCoverage.innerText(), /Electricity, water, and cooling[\s\S]*0 reported[\s\S]*0 forecast[\s\S]*5 modeled[\s\S]*Modeled onsite water use/);
+  assert.match(await storeyCoverage.innerText(), /Local suppliers and household spending[\s\S]*0 reported[\s\S]*0 forecast[\s\S]*0 modeled/);
+  const storeyReadiness = page.locator(".analysis-readiness");
+  assert.match(await storeyReadiness.innerText(), /Construction contribution[\s\S]*Modeled estimate available[\s\S]*13 reported · 2 forecast · 5 modeled/);
+  assert.match(await storeyReadiness.innerText(), /Operating employment[\s\S]*Modeled estimates available[\s\S]*2 reported · 2 forecast · 2 modeled/);
+  assert.match(await storeyReadiness.innerText(), /Local fiscal balance[\s\S]*Partial modeled account[\s\S]*55 reported · 3 forecast · 7 modeled/);
+  assert.match(await storeyReadiness.innerText(), /Attributable economic effects[\s\S]*Not model-ready[\s\S]*0 causal models/);
+  await storeyCoverage.screenshot({ path: path.join(out, "switch-storey-annual-account-coverage-mobile.png") });
+  await storeyReadiness.screenshot({ path: path.join(out, "switch-storey-analysis-readiness-mobile.png") });
   await page.setViewportSize({ width: 1440, height: 1000 });
-  check("Citadel tax history, audited outcomes and agreement projections retain distinct scope and basis");
+  check("Citadel source records, annual-account coverage and twenty models retain scope, provenance and noncausal limits");
   await page.goto(`${url}#/project/prj_study_im3_building_01073720208`);
   await page.getByRole("heading", { name: "Google Council Bluffs", exact: true }).waitFor();
   await page.locator(".economic-record").first().waitFor();

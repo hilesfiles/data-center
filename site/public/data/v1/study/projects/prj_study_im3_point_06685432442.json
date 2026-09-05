@@ -16,13 +16,13 @@
   "detail_path": "projects/prj_study_im3_point_06685432442.json",
   "latitude": 39.51409629999995,
   "longitude": -119.4795921,
-  "economic_record_count": 78,
-  "reported_actual_count": 71,
+  "economic_record_count": 79,
+  "reported_actual_count": 72,
   "projection_count": 7,
-  "modeled_synthesis_count": 0,
+  "modeled_synthesis_count": 20,
   "schema_version": "1.0.0",
-  "release_id": "private-sector-study-1.39.0",
-  "generated_at": "2026-09-05T18:41:08+00:00",
+  "release_id": "private-sector-study-1.40.0",
+  "generated_at": "2026-09-05T19:20:12+00:00",
   "inventory_name": "Switch Tahoe Reno - The Citadel Campus",
   "research_value": "Clear opening event; investigate construction payroll, recurring activity and fiscal agreements.",
   "history": {
@@ -194,6 +194,27 @@
         "review_method": "pdf_text_and_page_image",
         "artifact_sha256": "e1d63d132b2a3ba34fb8374d2a5a3e38be7633668411fd2b9efe0fcb2790acd3",
         "notes": "The Fire District capital plan budgets $100,000 in fiscal 2026–2027 to equip new Pierce Truck 75 and notes that the truck was purchased by Switch. This is a planned public cost for equipping the donated vehicle, not a Switch payment or a realized district expense."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_point_06685432442",
+      "source_id": "src_study_switch_sec_q2_2021_results",
+      "as_of": "2021-06-30",
+      "title": "SEC-filed quarter adds a non-overlapping Citadel capital phase",
+      "notes": "Switch reports $59.4 million invested in the Citadel Campus during Q2 2021, primarily for increased power and cooling capacity, a new sector and Tahoe Reno 2 site work. The campus flow follows the December 31, 2020 audit cutoff, so it can support a documented cumulative floor, but it is not allocated to Tahoe Reno 1, contractors, payroll or local suppliers.",
+      "source": {
+        "source_id": "src_study_switch_sec_q2_2021_results",
+        "title": "Switch Second Quarter 2021 Financial Results",
+        "url": "https://www.sec.gov/Archives/edgar/data/1710583/000171058321000035/exhibit991pressreleasedate.htm",
+        "publisher": "Switch, Inc. / U.S. Securities and Exchange Commission",
+        "source_type": "sec_filing",
+        "publication_date": {
+          "precision": "day",
+          "date": "2021-08-05"
+        },
+        "retrieved_on": "2026-09-03",
+        "review_method": "web_page",
+        "notes": "SEC-filed exhibit, Capital Expenditures and Development. The reported Core Campus amount concerns LAS VEGAS 15 construction and LAS VEGAS 14 and 16 site preparation, not NAP7-specific spending."
       }
     }
   ],
@@ -2604,6 +2625,35 @@
       "unit": "USD",
       "measure_type": "flow",
       "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_switch_citadel_capex_2021_q2",
+      "project_id": "prj_study_im3_point_06685432442",
+      "metric_code": "study.campus_capital_expenditure",
+      "value": 59400000,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "reported_snapshot",
+        "report_date": "2021-06-30",
+        "label": "Quarter ended 2021-06-30"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Switch Citadel Campus, Storey County; multiple facilities and no allocation to Tahoe Reno 1",
+        "county_fips": "32029",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_switch_sec_q2_2021_results",
+      "source_locator": "Capital Expenditures and Development, Citadel Campus amount",
+      "notes": "Switch reports this Q2 2021 campus flow primarily for increased power and cooling capacity, a new sector, and Tahoe Reno 2 site work. It is not allocated to Tahoe Reno 1, payroll, contractor residence or local suppliers and does not overlap the Storey five-year audit ending December 31, 2020.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-05",
+      "label": "Reported campus capital expenditure",
+      "category": "investment",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
     }
   ],
   "economic_sources": [
@@ -2633,6 +2683,20 @@
       "retrieved_on": "2026-09-03",
       "review_method": "web_pdf_text",
       "notes": "The one-page official county statement welcomed a planned $1 billion, three-million-square-foot Switch SUPERNAP campus. The amount predates construction and remains a source projection, not verified spending or an annual investment series."
+    },
+    {
+      "source_id": "src_study_switch_sec_q2_2021_results",
+      "title": "Switch Second Quarter 2021 Financial Results",
+      "url": "https://www.sec.gov/Archives/edgar/data/1710583/000171058321000035/exhibit991pressreleasedate.htm",
+      "publisher": "Switch, Inc. / U.S. Securities and Exchange Commission",
+      "source_type": "sec_filing",
+      "publication_date": {
+        "precision": "day",
+        "date": "2021-08-05"
+      },
+      "retrieved_on": "2026-09-03",
+      "review_method": "web_page",
+      "notes": "SEC-filed exhibit, Capital Expenditures and Development. The reported Core Campus amount concerns LAS VEGAS 15 construction and LAS VEGAS 14 and 16 site preparation, not NAP7-specific spending."
     },
     {
       "source_id": "src_study_nevada_goed_switch_abatement_audit_2023",
@@ -2710,10 +2774,2286 @@
   ],
   "economic_scope_note": "Reviewed evidence batches at campus or company/county scope. No record is allocated to an individual inventory building. Source checking establishes what a document reports, not an independent audit or causal attribution. Monetary figures are nominal. Peak workforce is distinct from annual employment; source-year labels do not establish fiscal-year boundaries. Original forecasts remain forecasts until realization is verified. No cross-record benefit total is defined. Cumulative project costs are not annual expenditure. Tax receipts and incentive payments remain separate, with inferred taxpayer links disclosed. Contextual research updates do not count as economic amounts. Account tax bills are distinct from cash receipts and incentive-program fees. Tax years, calendar years and fiscal years retain their source basis; separate taxpayer accounts are not consolidated. Municipal developer rebates and taxpayer valuations have distinct subjects. Estimated actual property value and tax capacity are not tax receipts; payable-year valuations retain their earlier assessment date. Taxpayer values expressed in millions retain approximate precision and account-level separation. A current-year table can use an older valuation date and is not converted into an annual series. Facility real-property and business-personal-property accounts remain separate, and address-label discrepancies are disclosed. Michigan Industrial Facilities Tax accounts remain distinct from the underlying real parcel and from post-expiration personal-property accounts; annual account totals are not recipient-level government receipts. Permit construction values are administrative project amounts, not verified expenditure, and separate permits are not combined without proof that their scopes do not overlap. Repeated maintenance-year assessments are annual parcel stocks, not new investment flows. Mixed-use parcel assessments and taxable values are retained at whole-parcel scope and are not allocated to a data-center tenant or function by floor area. Operator-reported jobs supported remain distinct from direct employees and FTEs. Approved infrastructure grants are documented public commitments rather than verified disbursements or total public costs. Cumulative community funding remains separate from tax receipts, payroll and modeled multiplier effects. Reported facility power capacity is not measured electricity consumption or peak demand. Permit-listed emergency generators are not runtime, fuel-use or actual-emissions observations. A city largest-taxpayer table's personal-property assessment remains separate from the leasehold real-property account, tax bills, receipts and capital expenditure. TIF loan principal is financing rather than a grant or general-fund receipt; project-generated tax revenue pledged to repayment is retained as a separate public-financing flow and is not added to gross parcel distributions. Water-withdrawal and consumptive permit capacities are regulatory limits rather than measured use. Development-agreement local-labor preferences are requirements rather than realized participation, and operating employee snapshots remain distinct from customers' on-site staff and jobs forecasts. Audited City bond statements distinguish issuance draws, year-end principal, annual principal retired, interest and fees, pledged TIF revenue, debt-service-fund transfers and future principal-plus-interest commitments. These measures are not summed into a benefit or subsidy total. City pledged revenue, City debt-service-fund transfers and the private fund's project TIF revenue applied to loan repayment retain their separate source definitions because only the 2022 transfer and private-fund amount agree exactly. Developer testimony in public meeting minutes is retained as a source-attributed cumulative lower bound; local-contractor spending is not converted into payroll, worker counts, household spending or multiplier effects. Economic-improvement-district cost estimates and maximum owner assessments remain source projections until bond issuance, an assessment schedule, collections and expenditures are verified. A statutory financing cap is not a tax receipt, public expenditure or subsidy. Audited private equipment-financing balances are debt stocks rather than construction spending, public support or community benefit. Reported floor area and occupied-share values describe operating scale and utilization, not employment, revenue, power use or economic output. Contractor and engineer case studies document supplier roles and completion timing but do not establish payment amounts, worker residence, payroll or multiplier effects. State incentive contract amounts, expected jobs and paid-or-certified-to-date fields remain distinct; a zero paid/certified balance at an earlier reporting cutoff does not imply no later claims. Public charging-infrastructure awards are commitments rather than verified disbursements, private project investment or operating benefits. Qualitative payment descriptions without a defensible numeric bound remain research context rather than quantitative records. Program-reported actual qualified investment, certified tax-exemption value and certified tax-credit value remain separate cumulative measures; none is converted into annual spending, a cash grant, local revenue or causal impact. County Business Patterns observations are county-industry context, not project contributions: establishment counts are employer locations rather than data-center facilities, March employment is not an annual average, annual payroll spans the full NAICS cell, and disclosure noise, classification changes and geographic assignment limit comparisons. No CBP change is attributed to a study project.",
   "evidence_version": "study-economic-evidence-1.37.0",
-  "modeled_syntheses": [],
-  "modeled_sources": [],
-  "modeled_scope_note": "Analyst-modeled syntheses use cited already-public source claims, reported bands, public benchmarks, statutes, and explicit assumptions. The study sends no public-records requests, private data requests, surveys, questionnaires, or other solicitations. Modeled values are not reported facts, metered observations, audited payroll, claimed tax credits, or causal impact estimates. Every interval identifies its kind; sensitivity envelopes and reported bands are not statistical confidence intervals.",
-  "synthesis_version": "study-modeled-synthesis-2.2.0",
+  "modeled_syntheses": [
+    {
+      "estimate_id": "est_study_switch_storey_documented_capital_floor_2021_q2",
+      "project_id": "prj_study_im3_point_06685432442",
+      "metric_code": "study.modeled_documented_capital_floor",
+      "label": "Modeled documented cumulative capital floor",
+      "category": "investment",
+      "unit": "USD",
+      "measure_type": "stock",
+      "basis": "modeled_synthesis",
+      "value": 239343184,
+      "period": {
+        "kind": "cumulative",
+        "report_date": "2021-06-30",
+        "label": "Non-overlapping public capital observations through Q2 2021"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Switch Storey agreement plus later Citadel Campus flow; unallocated to Tahoe Reno 1",
+        "county_fips": "32029",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "point_estimate",
+        "low": 239343184,
+        "central": 239343184,
+        "high": 239343184,
+        "interpretation": "Arithmetic floor equal to audited cumulative capex through 2020 plus the separately timed Q2 2021 Citadel Campus flow."
+      },
+      "contribution_channel": "direct",
+      "aggregation": {
+        "aggregation_id": "switch_storey_capital_floor_2021_q2",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "audited_capex_through_2020",
+          "value": 179943184,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_switch_storey_audit_capex_2020",
+            "detail": "GOED five-year audit cumulative capex"
+          },
+          "transformation": "Added once to the later non-overlapping quarterly flow"
+        },
+        {
+          "name": "citadel_capex_q2_2021",
+          "value": 59400000,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_switch_citadel_capex_2021_q2",
+            "detail": "SEC-filed Q2 2021 Citadel Campus capital flow"
+          },
+          "transformation": "Added once after the audit cutoff"
+        }
+      ],
+      "confidence": "medium",
+      "confidence_rationale": "Both public amounts are direct reports and do not overlap in time, but their accounting definitions and company/campus scopes may differ and later capital is missing.",
+      "decision_relevance": "Establishes a public-evidence floor without treating commitments, property values, asset-cost stocks or permit values as realized spending.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Complete annual Citadel capital ledger by facility, phase, asset class and contractor geography after Q2 2021"
+      },
+      "derivation": {
+        "method": "benchmark_application",
+        "model_version": "switch-storey-capital-floor-1.0.0",
+        "formula": "audited_capex_through_2020 + citadel_capex_q2_2021",
+        "input_claim_ids": [
+          "clm_study_switch_storey_audit_capex_2020",
+          "clm_study_switch_citadel_capex_2021_q2"
+        ],
+        "input_source_ids": [
+          "src_study_nevada_goed_switch_abatement_audit_2023",
+          "src_study_switch_sec_q2_2021_results"
+        ],
+        "assumptions": [
+          "The audit cutoff is December 31, 2020 and the quarterly flow is entirely after that cutoff.",
+          "No assessment, permit value, asset-cost stock or commitment is added."
+        ]
+      },
+      "limitations": [
+        "Not a complete cumulative total.",
+        "Not allocated to Tahoe Reno 1 or Tahoe Reno 2.",
+        "Accounting definitions may differ across the two source reports."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "A documented floor, not total realized investment and not evidence that the $1.386 billion commitment was fulfilled.",
+      "reviewed_on": "2026-09-05"
+    },
+    {
+      "estimate_id": "est_study_switch_storey_commitment_floor_ratio_2021_q2",
+      "project_id": "prj_study_im3_point_06685432442",
+      "metric_code": "study.modeled_capital_commitment_floor_ratio",
+      "label": "Documented-capital floor as share of agreement commitment",
+      "category": "investment",
+      "unit": "percent",
+      "measure_type": "rate",
+      "basis": "modeled_synthesis",
+      "value": 17.2602,
+      "period": {
+        "kind": "cumulative",
+        "report_date": "2021-06-30",
+        "label": "Publicly documented floor through Q2 2021 versus 2015 agreement commitment"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Switch Storey agreement and Citadel Campus, unallocated to Tahoe Reno 1",
+        "county_fips": "32029",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "point_estimate",
+        "low": 17.2602,
+        "central": 17.2602,
+        "high": 17.2602,
+        "interpretation": "Documented floor divided by the source commitment; it is neither a completion percentage nor an estimate of missing spending."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "switch_storey_commitment_floor_ratio_2021_q2",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "documented_capital_floor",
+          "value": 239343184,
+          "unit": "USD",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Arithmetic result of the separately published Storey capital-floor model"
+          },
+          "transformation": "Used as numerator"
+        },
+        {
+          "name": "agreement_capital_commitment",
+          "value": 1386677024,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_switch_storey_contract_capex_2015",
+            "detail": "GOED agreement capital commitment"
+          },
+          "transformation": "Used as denominator"
+        }
+      ],
+      "confidence": "medium",
+      "confidence_rationale": "The arithmetic is deterministic, but the numerator is only a documented floor and the denominator is a commitment rather than realized spending.",
+      "decision_relevance": "Prevents the agreement commitment from being presented as realized capital while showing how much public direct evidence can currently substantiate.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "A complete reconciled capital roll-forward against the agreement commitment"
+      },
+      "derivation": {
+        "method": "benchmark_application",
+        "model_version": "switch-storey-capital-ratio-1.0.0",
+        "formula": "100 × (audited_capex_through_2020 + citadel_capex_q2_2021) ÷ agreement_capital_commitment",
+        "input_claim_ids": [
+          "clm_study_switch_storey_audit_capex_2020",
+          "clm_study_switch_citadel_capex_2021_q2",
+          "clm_study_switch_storey_contract_capex_2015"
+        ],
+        "input_source_ids": [
+          "src_study_nevada_goed_switch_abatement_audit_2023",
+          "src_study_switch_sec_q2_2021_results"
+        ],
+        "assumptions": [
+          "The two numerator observations do not overlap in time.",
+          "The ratio is a public-documentation floor, not a completion estimate."
+        ]
+      },
+      "limitations": [
+        "Missing later and intervening capital flows depress the ratio.",
+        "The commitment may include applicant and tenant spending with a broader scope.",
+        "No facility allocation is available."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Do not interpret as 17.26% project completion.",
+      "reviewed_on": "2026-09-05"
+    },
+    {
+      "estimate_id": "est_study_switch_citadel_direct_construction_job_years_2021_q2",
+      "project_id": "prj_study_im3_point_06685432442",
+      "metric_code": "study.modeled_direct_construction_job_years",
+      "label": "Modeled direct construction job-years",
+      "category": "construction",
+      "unit": "job_years",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 344.3344,
+      "period": {
+        "kind": "construction_period",
+        "start_date": "2021-04-01",
+        "end_date": "2021-06-30",
+        "label": "Q2 2021 Citadel capital program benchmark equivalent"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Citadel Campus Q2 2021 construction and improvements; unallocated to Tahoe Reno 1",
+        "county_fips": "32029",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": 275.4675,
+        "central": 344.3344,
+        "high": 413.2013,
+        "interpretation": "Same-region industrial-construction coefficient with ±20% benchmark-transfer sensitivity."
+      },
+      "contribution_channel": "direct",
+      "aggregation": {
+        "aggregation_id": "switch_citadel_construction_jobs_2021_q2",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "citadel_capex_q2_2021",
+          "value": 59.4,
+          "unit": "million_USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_switch_citadel_capex_2021_q2",
+            "detail": "SEC-filed Citadel capital flow"
+          },
+          "transformation": "Multiplied by person-years per million dollars"
+        },
+        {
+          "name": "direct_person_years_per_million",
+          "value": 5.796875,
+          "unit": "job_years_per_million_USD",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_goed_tesla_storey_impact_2023",
+            "detail": "9,275 direct person-years divided by $1.6 billion construction spending"
+          },
+          "transformation": "Transferred from Washoe/Storey industrial construction"
+        },
+        {
+          "name": "low_transfer_factor",
+          "value": 0.8,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Sensitivity for data-center asset and contractor mix"
+          },
+          "transformation": "Applied to central benchmark"
+        },
+        {
+          "name": "high_transfer_factor",
+          "value": 1.2,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Sensitivity for data-center asset and contractor mix"
+          },
+          "transformation": "Applied to central benchmark"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The source coefficient is same-region and near-period but comes from a much larger manufacturing-campus construction program with a different asset and labor mix.",
+      "decision_relevance": "Provides a bounded direct labor-equivalent scenario for the only public phased Citadel capital flow.",
+      "evidence_search": {
+        "direct_observation_status": "not_found",
+        "source_projection_status": "not_found",
+        "remaining_evidence_gap": "Citadel certified payroll, worker hours, contractor rosters, trade mix and facility allocation"
+      },
+      "derivation": {
+        "method": "benchmark_application",
+        "model_version": "switch-citadel-construction-jobs-1.0.0",
+        "formula": "citadel_capex_million × (9275 direct_person_years ÷ 1600 million_USD) × transfer_factor",
+        "input_claim_ids": [
+          "clm_study_switch_citadel_capex_2021_q2"
+        ],
+        "input_source_ids": [
+          "src_study_switch_sec_q2_2021_results",
+          "src_study_goed_tesla_storey_impact_2023"
+        ],
+        "assumptions": [
+          "The full reported flow is construction and improvements eligible for the benchmark.",
+          "The same-region industrial-construction coefficient transfers within ±20%.",
+          "Jobs in the benchmark are person-year equivalents, not unique workers or permanent positions."
+        ]
+      },
+      "limitations": [
+        "Not observed worker count or hours.",
+        "Capital may include equipment with lower onsite labor intensity.",
+        "No Tahoe Reno 1 allocation.",
+        "No indirect or induced channel is included."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Direct channel only; the public benchmark combines indirect and induced results, so neither is fabricated here.",
+      "reviewed_on": "2026-09-05"
+    },
+    {
+      "estimate_id": "est_study_switch_citadel_direct_construction_payroll_2021_q2",
+      "project_id": "prj_study_im3_point_06685432442",
+      "metric_code": "study.modeled_direct_construction_payroll",
+      "label": "Modeled direct construction payroll",
+      "category": "construction",
+      "unit": "USD",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 34304353.88,
+      "period": {
+        "kind": "construction_period",
+        "start_date": "2021-04-01",
+        "end_date": "2021-06-30",
+        "label": "Q2 2021 Citadel capital program benchmark equivalent"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Citadel Campus Q2 2021 construction and improvements; unallocated to Tahoe Reno 1",
+        "county_fips": "32029",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": 27443483.1,
+        "central": 34304353.88,
+        "high": 41165224.65,
+        "interpretation": "Same-region direct construction labor-income coefficient with ±20% benchmark-transfer sensitivity."
+      },
+      "contribution_channel": "direct",
+      "aggregation": {
+        "aggregation_id": "switch_citadel_construction_payroll_2021_q2",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "citadel_capex_q2_2021",
+          "value": 59.4,
+          "unit": "million_USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_switch_citadel_capex_2021_q2",
+            "detail": "SEC-filed Citadel capital flow"
+          },
+          "transformation": "Multiplied by labor income per million dollars"
+        },
+        {
+          "name": "direct_labor_income_per_million",
+          "value": 577514.375,
+          "unit": "USD_per_million_USD",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_goed_tesla_storey_impact_2023",
+            "detail": "$924.023 million direct labor income divided by $1.6 billion construction spending"
+          },
+          "transformation": "Transferred from Washoe/Storey industrial construction"
+        },
+        {
+          "name": "low_transfer_factor",
+          "value": 0.8,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Sensitivity for data-center asset and contractor mix"
+          },
+          "transformation": "Applied to central benchmark"
+        },
+        {
+          "name": "high_transfer_factor",
+          "value": 1.2,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Sensitivity for data-center asset and contractor mix"
+          },
+          "transformation": "Applied to central benchmark"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The public coefficient is geographically relevant but derives from a different project and modeled labor-income mix.",
+      "decision_relevance": "Bounds direct construction labor income without reclassifying capital spending as payroll.",
+      "evidence_search": {
+        "direct_observation_status": "not_found",
+        "source_projection_status": "not_found",
+        "remaining_evidence_gap": "Citadel certified payroll by contractor, trade, residence and phase"
+      },
+      "derivation": {
+        "method": "benchmark_application",
+        "model_version": "switch-citadel-construction-payroll-1.0.0",
+        "formula": "citadel_capex_million × (924.023 million_USD direct_labor_income ÷ 1600 million_USD construction_spending) × transfer_factor",
+        "input_claim_ids": [
+          "clm_study_switch_citadel_capex_2021_q2"
+        ],
+        "input_source_ids": [
+          "src_study_switch_sec_q2_2021_results",
+          "src_study_goed_tesla_storey_impact_2023"
+        ],
+        "assumptions": [
+          "The reported Citadel flow is comparable to the benchmark construction spending.",
+          "The direct labor-income coefficient transfers within ±20%."
+        ]
+      },
+      "limitations": [
+        "Not audited Citadel payroll.",
+        "Benchmark labor income may include proprietor income and differs from payroll definitions.",
+        "No local-resident or Tahoe Reno 1 allocation.",
+        "No indirect or induced labor income is included."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Direct channel only and not additive to the capital-flow input.",
+      "reviewed_on": "2026-09-05"
+    },
+    {
+      "estimate_id": "est_study_switch_citadel_nevada_resident_job_years_2021_q2",
+      "project_id": "prj_study_im3_point_06685432442",
+      "metric_code": "study.modeled_nevada_resident_construction_job_years",
+      "label": "Modeled Nevada-resident construction job-year equivalent",
+      "category": "construction",
+      "unit": "job_years",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 258.2508,
+      "period": {
+        "kind": "construction_period",
+        "start_date": "2021-04-01",
+        "end_date": "2021-06-30",
+        "label": "Q2 2021 Citadel capital program residence-share scenario"
+      },
+      "scope": {
+        "level": "state",
+        "label": "Nevada-resident share of modeled Citadel direct construction labor; unallocated to Tahoe Reno 1",
+        "state_abbr": "NV",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": 172.1672,
+        "central": 258.2508,
+        "high": 344.3344,
+        "interpretation": "Applies 50% statutory minimum, 75% midpoint and 100% ceiling to central modeled direct job-years; assumes equal job duration by residence."
+      },
+      "contribution_channel": "direct",
+      "aggregation": {
+        "aggregation_id": "switch_citadel_nevada_job_years_2021_q2",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "central_direct_job_years",
+          "value": 344.3344,
+          "unit": "job_years",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Central output of the separately published direct construction job-year model"
+          },
+          "transformation": "Multiplied by resident-worker share"
+        },
+        {
+          "name": "minimum_nevada_worker_share",
+          "value": 0.5,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_goed_data_center_incentives_2026",
+            "detail": "Data-center program construction-worker residence requirement"
+          },
+          "transformation": "Used as low bound"
+        },
+        {
+          "name": "central_nevada_worker_share",
+          "value": 0.75,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Midpoint between statutory minimum and full Nevada participation"
+          },
+          "transformation": "Used as central scenario"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The 50% rule applies to workers, not hours; actual Switch compliance detail and job duration by residence are not public.",
+      "decision_relevance": "Makes the local-worker assumption explicit instead of silently treating all modeled construction labor as local.",
+      "evidence_search": {
+        "direct_observation_status": "not_found",
+        "source_projection_status": "not_found",
+        "remaining_evidence_gap": "Actual unique workers, Nevada residence, hours and job duration by contractor and phase"
+      },
+      "derivation": {
+        "method": "sensitivity_analysis",
+        "model_version": "switch-citadel-local-worker-1.0.0",
+        "formula": "central_direct_job_years × Nevada_resident_worker_share",
+        "input_claim_ids": [
+          "clm_study_switch_citadel_capex_2021_q2"
+        ],
+        "input_source_ids": [
+          "src_study_switch_sec_q2_2021_results",
+          "src_study_goed_tesla_storey_impact_2023",
+          "src_study_goed_data_center_incentives_2026"
+        ],
+        "assumptions": [
+          "Central direct job-years are used without compounding its ±20% transfer range.",
+          "Nevada-resident and nonresident workers have equal average job duration.",
+          "The low bound assumes the statutory minimum was met, not observed."
+        ]
+      },
+      "limitations": [
+        "Not an observed local-worker share.",
+        "Nevada is broader than Storey County or the Reno-Sparks labor market.",
+        "Worker-count compliance does not necessarily equal job-year share."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Local means Nevada resident here; no Storey County resident count is inferred.",
+      "reviewed_on": "2026-09-05"
+    },
+    {
+      "estimate_id": "est_study_switch_storey_operating_fte_2020",
+      "project_id": "prj_study_im3_point_06685432442",
+      "metric_code": "study.modeled_operating_fte",
+      "label": "Modeled annual operating FTE equivalent",
+      "category": "operations",
+      "unit": "FTE",
+      "measure_type": "stock",
+      "basis": "modeled_synthesis",
+      "value": 105.6635,
+      "period": {
+        "kind": "source_year",
+        "year": 2020,
+        "label": "FTE-equivalent scenario at December 31, 2020 audit snapshot"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Switch Storey agreement employment; unallocated to facility, occupation or contractor",
+        "county_fips": "32029",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": 100.3269,
+        "central": 105.6635,
+        "high": 111,
+        "interpretation": "Converts 111 audited jobs using 1,880, 1,980 and 2,080 annual paid-hour assumptions relative to a 2,080-hour FTE."
+      },
+      "contribution_channel": "direct",
+      "aggregation": {
+        "aggregation_id": "switch_storey_operating_fte_2020",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "audited_jobs",
+          "value": 111,
+          "unit": "jobs",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_switch_storey_audit_jobs_2020",
+            "detail": "GOED five-year audit jobs"
+          },
+          "transformation": "Multiplied by assumed annual paid hours"
+        },
+        {
+          "name": "low_paid_hours",
+          "value": 1880,
+          "unit": "hours_per_job_year",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "2,080 hours less 200 hours leave/absence"
+          },
+          "transformation": "Low FTE conversion"
+        },
+        {
+          "name": "central_paid_hours",
+          "value": 1980,
+          "unit": "hours_per_job_year",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Midpoint hours scenario"
+          },
+          "transformation": "Central FTE conversion"
+        },
+        {
+          "name": "fte_hours",
+          "value": 2080,
+          "unit": "hours_per_FTE_year",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "40 hours per week times 52 weeks"
+          },
+          "transformation": "Denominator"
+        }
+      ],
+      "confidence": "medium",
+      "confidence_rationale": "The job count is audited, but the source does not define job versus FTE, hours, part-time status, contractors or annual-average timing.",
+      "decision_relevance": "Provides an explicit FTE interpretation without relabeling the audited job snapshot.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Annual-average headcount, paid hours, FTE definition, employee/contractor split and facility allocation"
+      },
+      "derivation": {
+        "method": "sensitivity_analysis",
+        "model_version": "switch-storey-operating-fte-1.0.0",
+        "formula": "audited_jobs × assumed_paid_hours_per_job ÷ 2080 hours_per_FTE",
+        "input_claim_ids": [
+          "clm_study_switch_storey_audit_jobs_2020"
+        ],
+        "input_source_ids": [
+          "src_study_nevada_goed_switch_abatement_audit_2023"
+        ],
+        "assumptions": [
+          "Each audited job is active at the snapshot.",
+          "Paid hours range from 1,880 to 2,080.",
+          "The result is a scenario, not an annual average measured by payroll records."
+        ]
+      },
+      "limitations": [
+        "Audit job definition is not public.",
+        "No employee-versus-contractor breakdown.",
+        "No Tahoe Reno 1 allocation.",
+        "Snapshot timing may differ from annual average."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "The sourced 111-job audit remains the controlling observation.",
+      "reviewed_on": "2026-09-05"
+    },
+    {
+      "estimate_id": "est_study_switch_storey_operating_payroll_2020",
+      "project_id": "prj_study_im3_point_06685432442",
+      "metric_code": "study.modeled_operating_payroll",
+      "label": "Modeled annual operating payroll",
+      "category": "operations",
+      "unit": "USD_per_year",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 11202186.6,
+      "period": {
+        "kind": "source_year",
+        "year": 2020,
+        "label": "Annualized payroll scenario at December 31, 2020 audit snapshot"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Switch Storey agreement employment; unallocated to facility, occupation or contractor",
+        "county_fips": "32029",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": 10636419.6,
+        "central": 11202186.6,
+        "high": 11767953.6,
+        "interpretation": "111 audited jobs times $50.97 hourly wage times 1,880, 1,980 or 2,080 paid hours."
+      },
+      "contribution_channel": "direct",
+      "aggregation": {
+        "aggregation_id": "switch_storey_operating_payroll_2020",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "audited_jobs",
+          "value": 111,
+          "unit": "jobs",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_switch_storey_audit_jobs_2020",
+            "detail": "GOED five-year audit jobs"
+          },
+          "transformation": "Multiplied by wage and annual hours"
+        },
+        {
+          "name": "audited_average_hourly_wage",
+          "value": 50.97,
+          "unit": "USD_per_hour",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_switch_storey_audit_wage_2020",
+            "detail": "GOED five-year audit average hourly wage"
+          },
+          "transformation": "Multiplied by jobs and hours"
+        },
+        {
+          "name": "low_paid_hours",
+          "value": 1880,
+          "unit": "hours_per_job_year",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Low annual paid-hours scenario"
+          },
+          "transformation": "Low bound"
+        },
+        {
+          "name": "central_paid_hours",
+          "value": 1980,
+          "unit": "hours_per_job_year",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Central annual paid-hours scenario"
+          },
+          "transformation": "Central value"
+        },
+        {
+          "name": "high_paid_hours",
+          "value": 2080,
+          "unit": "hours_per_job_year",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "40 hours per week times 52 weeks"
+          },
+          "transformation": "High bound"
+        }
+      ],
+      "confidence": "medium",
+      "confidence_rationale": "Jobs and hourly wage are audited, while paid hours, job definition, benefits, overtime and contractor coverage are not disclosed.",
+      "decision_relevance": "Bounds direct annual wage payroll from the two audited workforce findings with transparent timing and hours assumptions.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Audited annual payroll, paid hours, benefits, overtime, contractor payroll and facility allocation"
+      },
+      "derivation": {
+        "method": "sensitivity_analysis",
+        "model_version": "switch-storey-operating-payroll-1.0.0",
+        "formula": "audited_jobs × audited_average_hourly_wage × assumed_paid_hours_per_job",
+        "input_claim_ids": [
+          "clm_study_switch_storey_audit_jobs_2020",
+          "clm_study_switch_storey_audit_wage_2020"
+        ],
+        "input_source_ids": [
+          "src_study_nevada_goed_switch_abatement_audit_2023"
+        ],
+        "assumptions": [
+          "The average hourly wage applies to all 111 jobs.",
+          "Annual paid hours range from 1,880 to 2,080.",
+          "No benefits, overtime premium or contractor payroll is added."
+        ]
+      },
+      "limitations": [
+        "Not audited payroll.",
+        "Wage and job population definitions may not align perfectly.",
+        "No benefits or contractor compensation.",
+        "No Tahoe Reno 1 allocation."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Annualized scenario anchored to a point-in-time compliance audit.",
+      "reviewed_on": "2026-09-05"
+    },
+    {
+      "estimate_id": "est_study_switch_citadel_combined_property_tax_billed_fy2024_25",
+      "project_id": "prj_study_im3_point_06685432442",
+      "metric_code": "study.modeled_combined_property_tax_billed",
+      "label": "Modeled combined real and personal property tax billed",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 3380719.65,
+      "period": {
+        "kind": "fiscal_year",
+        "year": 2025,
+        "label": "Storey County fiscal year 2024-2025"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Citadel parcel 005-012-23 plus Switch account CM001611 only; tenant accounts excluded",
+        "county_fips": "32029",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "point_estimate",
+        "low": 3380719.65,
+        "central": 3380719.65,
+        "high": 3380719.65,
+        "interpretation": "Exact arithmetic sum of separately preserved county bills aligned by fiscal-year label, not tax-year field."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "switch_citadel_property_billed_fy2024_25",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "personal_property_bill",
+          "value": 1141490.3,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_switch_citadel_property_taxes_billed_2025",
+            "detail": "CM001611 fiscal 2024-2025 bill"
+          },
+          "transformation": "Added once"
+        },
+        {
+          "name": "real_property_bill",
+          "value": 2239229.35,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_switch_citadel_real_property_taxes_billed_2024",
+            "detail": "Parcel 005-012-23 fiscal 2024-2025 bill"
+          },
+          "transformation": "Added once"
+        }
+      ],
+      "confidence": "high",
+      "confidence_rationale": "Both county bills are exact and share the same fiscal-year label; account scope is explicit.",
+      "decision_relevance": "Shows the known annual billed contribution while retaining the real and personal accounts as independent source observations.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "not_applicable",
+        "remaining_evidence_gap": "Tenant equipment accounts and recipient-jurisdiction allocation of the combined bill"
+      },
+      "derivation": {
+        "method": "benchmark_application",
+        "model_version": "switch-citadel-combined-property-tax-1.0.0",
+        "formula": "personal_property_bill + real_property_bill",
+        "input_claim_ids": [
+          "clm_study_switch_citadel_property_taxes_billed_2025",
+          "clm_study_switch_citadel_real_property_taxes_billed_2024"
+        ],
+        "input_source_ids": [
+          "src_study_storey_switch_cm001611_2026",
+          "src_study_storey_switch_parcel_00501223_2026"
+        ],
+        "assumptions": [
+          "Matching fiscal-year labels establish temporal alignment.",
+          "No tenant account or recipient allocation is implied."
+        ]
+      },
+      "limitations": [
+        "Excludes tenant equipment accounts.",
+        "Bill is not recipient-level revenue.",
+        "Do not add this modeled sum to either source component."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Aggregation aid only; source accounts remain canonical.",
+      "reviewed_on": "2026-09-05"
+    },
+    {
+      "estimate_id": "est_study_switch_citadel_combined_property_tax_paid_fy2024_25",
+      "project_id": "prj_study_im3_point_06685432442",
+      "metric_code": "study.modeled_combined_property_tax_paid",
+      "label": "Modeled combined real and personal property tax paid",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 3380719.65,
+      "period": {
+        "kind": "fiscal_year",
+        "year": 2025,
+        "label": "Storey County fiscal year 2024-2025; both accounts paid in full"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Citadel parcel 005-012-23 plus Switch account CM001611 only; tenant accounts excluded",
+        "county_fips": "32029",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "point_estimate",
+        "low": 3380719.65,
+        "central": 3380719.65,
+        "high": 3380719.65,
+        "interpretation": "Exact arithmetic sum of separately verified completed account payments."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "switch_citadel_property_paid_fy2024_25",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "personal_property_paid",
+          "value": 1141490.3,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_switch_citadel_property_taxes_paid_2025",
+            "detail": "CM001611 fiscal 2024-2025 completed payment"
+          },
+          "transformation": "Added once"
+        },
+        {
+          "name": "real_property_paid",
+          "value": 2239229.35,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_switch_citadel_real_property_taxes_paid_2024",
+            "detail": "Parcel fiscal 2024-2025 completed payment"
+          },
+          "transformation": "Added once"
+        }
+      ],
+      "confidence": "high",
+      "confidence_rationale": "County payment histories show both account balances paid in full.",
+      "decision_relevance": "Separates verified payment from billed liability and from forecast abatements.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "not_applicable",
+        "remaining_evidence_gap": "Tenant equipment payments, payment-date cash allocation and receipts by taxing entity"
+      },
+      "derivation": {
+        "method": "benchmark_application",
+        "model_version": "switch-citadel-combined-property-tax-1.0.0",
+        "formula": "personal_property_paid + real_property_paid",
+        "input_claim_ids": [
+          "clm_study_switch_citadel_property_taxes_paid_2025",
+          "clm_study_switch_citadel_real_property_taxes_paid_2024"
+        ],
+        "input_source_ids": [
+          "src_study_storey_switch_cm001611_2026",
+          "src_study_storey_switch_parcel_00501223_2026"
+        ],
+        "assumptions": [
+          "Matching fiscal-year labels establish temporal alignment.",
+          "Reported paid amounts are summed once without recipient allocation."
+        ]
+      },
+      "limitations": [
+        "Excludes tenant accounts.",
+        "Does not identify cash receipts by jurisdiction.",
+        "Do not add this modeled sum to either source component."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Payment aggregation, not a new county receipt observation.",
+      "reviewed_on": "2026-09-05"
+    },
+    {
+      "estimate_id": "est_study_switch_citadel_combined_property_tax_billed_fy2025_26",
+      "project_id": "prj_study_im3_point_06685432442",
+      "metric_code": "study.modeled_combined_property_tax_billed",
+      "label": "Modeled combined real and personal property tax billed",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 3452486.96,
+      "period": {
+        "kind": "fiscal_year",
+        "year": 2026,
+        "label": "Storey County fiscal year 2025-2026"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Citadel parcel 005-012-23 plus Switch account CM001611 only; tenant accounts excluded",
+        "county_fips": "32029",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "point_estimate",
+        "low": 3452486.96,
+        "central": 3452486.96,
+        "high": 3452486.96,
+        "interpretation": "Exact arithmetic sum of separately preserved county bills aligned by fiscal-year label."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "switch_citadel_property_billed_fy2025_26",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "personal_property_bill",
+          "value": 1083187.19,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_switch_citadel_property_taxes_billed_2026",
+            "detail": "CM001611 fiscal 2025-2026 bill"
+          },
+          "transformation": "Added once"
+        },
+        {
+          "name": "real_property_bill",
+          "value": 2369299.77,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_switch_citadel_real_property_taxes_billed_2025",
+            "detail": "Parcel fiscal 2025-2026 bill"
+          },
+          "transformation": "Added once"
+        }
+      ],
+      "confidence": "high",
+      "confidence_rationale": "Both county bills are exact and share the same fiscal-year label.",
+      "decision_relevance": "Provides the second complete known combined annual bill without collapsing the underlying accounts.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "not_applicable",
+        "remaining_evidence_gap": "Tenant equipment accounts and recipient-jurisdiction allocation"
+      },
+      "derivation": {
+        "method": "benchmark_application",
+        "model_version": "switch-citadel-combined-property-tax-1.0.0",
+        "formula": "personal_property_bill + real_property_bill",
+        "input_claim_ids": [
+          "clm_study_switch_citadel_property_taxes_billed_2026",
+          "clm_study_switch_citadel_real_property_taxes_billed_2025"
+        ],
+        "input_source_ids": [
+          "src_study_storey_switch_cm001611_2026",
+          "src_study_storey_switch_parcel_00501223_2026"
+        ],
+        "assumptions": [
+          "Matching fiscal-year labels establish temporal alignment.",
+          "No tenant account or recipient allocation is implied."
+        ]
+      },
+      "limitations": [
+        "Excludes tenant equipment accounts.",
+        "Bill is not recipient-level revenue.",
+        "Do not add this modeled sum to either source component."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "The 2026 real-property bill belongs to fiscal 2026-2027 and is deliberately not paired here.",
+      "reviewed_on": "2026-09-05"
+    },
+    {
+      "estimate_id": "est_study_switch_citadel_combined_property_tax_paid_fy2025_26",
+      "project_id": "prj_study_im3_point_06685432442",
+      "metric_code": "study.modeled_combined_property_tax_paid",
+      "label": "Modeled combined real and personal property tax paid",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 3452486.96,
+      "period": {
+        "kind": "fiscal_year",
+        "year": 2026,
+        "label": "Storey County fiscal year 2025-2026; both accounts paid in full"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Citadel parcel 005-012-23 plus Switch account CM001611 only; tenant accounts excluded",
+        "county_fips": "32029",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "point_estimate",
+        "low": 3452486.96,
+        "central": 3452486.96,
+        "high": 3452486.96,
+        "interpretation": "Exact arithmetic sum of separately verified completed account payments."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "switch_citadel_property_paid_fy2025_26",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "personal_property_paid",
+          "value": 1083187.19,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_switch_citadel_property_taxes_paid_2026",
+            "detail": "CM001611 fiscal 2025-2026 completed payment"
+          },
+          "transformation": "Added once"
+        },
+        {
+          "name": "real_property_paid",
+          "value": 2369299.77,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_switch_citadel_real_property_taxes_paid_2025",
+            "detail": "Parcel fiscal 2025-2026 completed payment"
+          },
+          "transformation": "Added once"
+        }
+      ],
+      "confidence": "high",
+      "confidence_rationale": "County payment histories show both account balances paid in full.",
+      "decision_relevance": "Separates verified payment from billed liability, the open 2026-2027 installment and forecast abatements.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "not_applicable",
+        "remaining_evidence_gap": "Tenant equipment payments and receipts by taxing entity"
+      },
+      "derivation": {
+        "method": "benchmark_application",
+        "model_version": "switch-citadel-combined-property-tax-1.0.0",
+        "formula": "personal_property_paid + real_property_paid",
+        "input_claim_ids": [
+          "clm_study_switch_citadel_property_taxes_paid_2026",
+          "clm_study_switch_citadel_real_property_taxes_paid_2025"
+        ],
+        "input_source_ids": [
+          "src_study_storey_switch_cm001611_2026",
+          "src_study_storey_switch_parcel_00501223_2026"
+        ],
+        "assumptions": [
+          "Matching fiscal-year labels establish temporal alignment.",
+          "Reported paid amounts are summed once without recipient allocation."
+        ]
+      },
+      "limitations": [
+        "Excludes tenant accounts.",
+        "Does not identify cash receipts by jurisdiction.",
+        "Do not add this modeled sum to either source component."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Completed-payment aggregation only.",
+      "reviewed_on": "2026-09-05"
+    },
+    {
+      "estimate_id": "est_study_switch_citadel_cumulative_tax_paid_fy2025_26",
+      "project_id": "prj_study_im3_point_06685432442",
+      "metric_code": "study.modeled_cumulative_verified_property_tax_paid",
+      "label": "Modeled cumulative verified property tax paid",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 11324644.79,
+      "period": {
+        "kind": "cumulative",
+        "report_date": "2026-06-30",
+        "label": "Completed county-account payments through fiscal 2025-2026"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Switch personal-property account CM001611 plus Citadel real-property parcel 005-012-23; tenant accounts excluded",
+        "county_fips": "32029",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "point_estimate",
+        "low": 11324644.79,
+        "central": 11324644.79,
+        "high": 11324644.79,
+        "interpretation": "Sum of ten completed personal-property payments and two completed real-property payments; the unexplained zero 2019 bill contributes zero and has no invented payment."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "switch_citadel_cumulative_property_paid_fy2025_26",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "completed_personal_property_payments",
+          "value": 6716115.67,
+          "unit": "USD",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Arithmetic sum of ten source-verified CM001611 paid records for fiscal 2015-2016 through 2025-2026, excluding the zero-bill year"
+          },
+          "transformation": "Added once"
+        },
+        {
+          "name": "completed_real_property_payments",
+          "value": 4608529.12,
+          "unit": "USD",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Arithmetic sum of parcel payments for fiscal 2024-2025 and 2025-2026"
+          },
+          "transformation": "Added once"
+        },
+        {
+          "name": "unexplained_2019_bill",
+          "value": 0,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_switch_citadel_property_taxes_billed_2019",
+            "detail": "County account shows zero billed for fiscal 2018-2019"
+          },
+          "transformation": "Retained as zero; no payment inferred"
+        }
+      ],
+      "confidence": "high",
+      "confidence_rationale": "Every nonzero component is a completed county-account payment, but the scope omits tenant equipment and recipient allocations.",
+      "decision_relevance": "Quantifies the known paid-property-tax floor while preserving payment status and the unexplained zero-bill year.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "not_applicable",
+        "remaining_evidence_gap": "Tenant accounts, recipient distributions, explanation of the zero 2019 bill and later 2026-2027 installments"
+      },
+      "derivation": {
+        "method": "benchmark_application",
+        "model_version": "switch-citadel-cumulative-property-tax-1.0.0",
+        "formula": "sum(completed_CM001611_payments) + sum(completed_parcel_payments)",
+        "input_claim_ids": [
+          "clm_study_switch_citadel_property_taxes_paid_2016",
+          "clm_study_switch_citadel_property_taxes_paid_2017",
+          "clm_study_switch_citadel_property_taxes_paid_2018",
+          "clm_study_switch_citadel_property_taxes_billed_2019",
+          "clm_study_switch_citadel_property_taxes_paid_2020",
+          "clm_study_switch_citadel_property_taxes_paid_2021",
+          "clm_study_switch_citadel_property_taxes_paid_2022",
+          "clm_study_switch_citadel_property_taxes_paid_2023",
+          "clm_study_switch_citadel_property_taxes_paid_2024",
+          "clm_study_switch_citadel_property_taxes_paid_2025",
+          "clm_study_switch_citadel_property_taxes_paid_2026",
+          "clm_study_switch_citadel_real_property_taxes_paid_2024",
+          "clm_study_switch_citadel_real_property_taxes_paid_2025"
+        ],
+        "input_source_ids": [
+          "src_study_storey_switch_cm001611_2026",
+          "src_study_storey_switch_parcel_00501223_2026"
+        ],
+        "assumptions": [
+          "Only completed payment records are summed.",
+          "The 2019 zero bill remains zero and is not explained or imputed.",
+          "The partial 2026-2027 parcel installment is excluded from the completed-year total."
+        ]
+      },
+      "limitations": [
+        "Excludes tenant equipment accounts.",
+        "Not a recipient-level revenue series.",
+        "Does not explain the zero 2019 bill.",
+        "Do not add annual modeled totals to this cumulative total."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Known payment floor; partial fiscal 2026-2027 payment remains a separate source fact.",
+      "reviewed_on": "2026-09-05"
+    },
+    {
+      "estimate_id": "est_study_switch_storey_planned_tax_abatement_total_2015",
+      "project_id": "prj_study_im3_point_06685432442",
+      "metric_code": "study.modeled_planned_tax_abatement_total",
+      "label": "Modeled total approved tax-abatement forecast",
+      "category": "public_costs",
+      "unit": "USD",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 107815753,
+      "period": {
+        "kind": "projection_horizon",
+        "report_date": "2015-07-09",
+        "horizon_years": 20,
+        "label": "Approved 20-year sales/use and personal-property abatement forecasts"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Switch LTD #2 Storey agreement; unallocated to Tahoe Reno 1 or recipient jurisdiction",
+        "county_fips": "32029",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "deterministic_counterfactual",
+        "low": 107815753,
+        "central": 107815753,
+        "high": 107815753,
+        "interpretation": "Arithmetic aggregation of two approved source forecasts; not tax actually foregone, claimed or realized."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "switch_storey_planned_abatement_total_2015",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "sales_use_abatement_forecast",
+          "value": 75720025,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_switch_storey_sales_tax_abatement_plan_2015",
+            "detail": "Approved 20-year sales and use tax abatement forecast"
+          },
+          "transformation": "Added once"
+        },
+        {
+          "name": "personal_property_abatement_forecast",
+          "value": 32095728,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_switch_storey_personal_property_abatement_plan_2015",
+            "detail": "Approved 20-year personal-property tax abatement forecast"
+          },
+          "transformation": "Added once"
+        }
+      ],
+      "confidence": "medium",
+      "confidence_rationale": "The arithmetic is exact, but both inputs are approval-stage forecasts and actual eligibility, purchases, property, timing and tax rates may differ.",
+      "decision_relevance": "Exposes the full planned public-cost envelope without netting it against tax bills or presenting it as realized taxpayer cost.",
+      "evidence_search": {
+        "direct_observation_status": "not_found",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Annual abatements actually claimed and allowed by tax type, jurisdiction, covered property and applicant/tenant"
+      },
+      "derivation": {
+        "method": "statutory_counterfactual",
+        "model_version": "switch-storey-abatement-plan-1.0.0",
+        "formula": "approved_sales_use_abatement_forecast + approved_personal_property_abatement_forecast",
+        "input_claim_ids": [
+          "clm_study_switch_storey_sales_tax_abatement_plan_2015",
+          "clm_study_switch_storey_personal_property_abatement_plan_2015"
+        ],
+        "input_source_ids": [
+          "src_study_nevada_goed_switch_abatement_audit_2023"
+        ],
+        "assumptions": [
+          "The two GOED forecast categories are non-overlapping.",
+          "No actual utilization or timing is inferred."
+        ]
+      },
+      "limitations": [
+        "Approval-stage forecast, not realized cost.",
+        "No annual schedule or jurisdiction split.",
+        "Cannot be netted against observed property payments without reconciling scope and covered property.",
+        "Duplicate Storey/Clark audit findings caution remains unresolved."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Source forecasts stay visible separately; this sum is not a realized-benefit or realized-cost total.",
+      "reviewed_on": "2026-09-05"
+    },
+    {
+      "estimate_id": "est_study_switch_storey_planned_tax_abatement_annual_equivalent_2015",
+      "project_id": "prj_study_im3_point_06685432442",
+      "metric_code": "study.modeled_planned_tax_abatement_annual_equivalent",
+      "label": "Modeled straight-line annual-equivalent abatement forecast",
+      "category": "public_costs",
+      "unit": "USD_per_year",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 5390787.65,
+      "period": {
+        "kind": "projection_horizon",
+        "report_date": "2015-07-09",
+        "horizon_years": 20,
+        "label": "Straight-line annual equivalent of approved 20-year forecasts"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Switch LTD #2 Storey agreement; analytical annual equivalent only",
+        "county_fips": "32029",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "deterministic_counterfactual",
+        "low": 5390787.65,
+        "central": 5390787.65,
+        "high": 5390787.65,
+        "interpretation": "Approved forecast total divided evenly by 20; actual abatements need not be level by year."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "switch_storey_planned_abatement_annual_equivalent_2015",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "approved_abatement_forecast_total",
+          "value": 107815753,
+          "unit": "USD",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Arithmetic sum of the two separately published source forecasts"
+          },
+          "transformation": "Divided by 20 years"
+        },
+        {
+          "name": "agreement_horizon",
+          "value": 20,
+          "unit": "years",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_switch_storey_sales_tax_abatement_plan_2015",
+            "detail": "Approved sales/use abatement horizon; personal-property forecast shares the 20-year horizon"
+          },
+          "transformation": "Denominator"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The total is source-based but straight-line timing is purely analytical and actual tax bases and abatements are likely uneven.",
+      "decision_relevance": "Provides a scale comparator for annual fiscal discussion while preventing a 20-year plan from being mistaken for one-year cost.",
+      "evidence_search": {
+        "direct_observation_status": "not_found",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Actual annual abatement schedule and realized amounts by tax and jurisdiction"
+      },
+      "derivation": {
+        "method": "statutory_counterfactual",
+        "model_version": "switch-storey-abatement-plan-1.0.0",
+        "formula": "(sales_use_abatement_forecast + personal_property_abatement_forecast) ÷ 20",
+        "input_claim_ids": [
+          "clm_study_switch_storey_sales_tax_abatement_plan_2015",
+          "clm_study_switch_storey_personal_property_abatement_plan_2015"
+        ],
+        "input_source_ids": [
+          "src_study_nevada_goed_switch_abatement_audit_2023"
+        ],
+        "assumptions": [
+          "Straight-line annualization is for scale only.",
+          "No actual annual abatement amount is inferred."
+        ]
+      },
+      "limitations": [
+        "Actual abatements are not straight-line.",
+        "Not comparable to a specific-year bill without scope reconciliation.",
+        "Not a realized public cost."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Analytical annual equivalent only; never sum with the 20-year total.",
+      "reviewed_on": "2026-09-05"
+    },
+    {
+      "estimate_id": "est_study_switch_tahoe_reno_1_occupied_power_proxy_2018",
+      "project_id": "prj_study_im3_point_06685432442",
+      "metric_code": "study.modeled_occupied_power_capacity_proxy",
+      "label": "Modeled occupied power-capacity proxy",
+      "category": "resources",
+      "unit": "MW",
+      "measure_type": "peak",
+      "basis": "modeled_synthesis",
+      "value": 75.4,
+      "period": {
+        "kind": "source_year",
+        "year": 2018,
+        "label": "Switch 2018 Tahoe Reno 1 capacity-utilization snapshot"
+      },
+      "scope": {
+        "level": "facility",
+        "label": "Tahoe Reno 1 power-capacity proxy",
+        "county_fips": "32029",
+        "inventory_allocation": "not_applicable"
+      },
+      "interval": {
+        "kind": "point_estimate",
+        "low": 75.4,
+        "central": 75.4,
+        "high": 75.4,
+        "interpretation": "130 MW full-build delivered capacity multiplied by the reported 58% power-capacity utilization; not measured peak demand."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "switch_tahoe_reno_1_power_proxy_2018",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "full_build_power_capacity",
+          "value": 130,
+          "unit": "MW",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_switch_sec_citadel_capacity_2018",
+            "detail": "Filed Tahoe Reno 1 delivered power capacity at full build-out"
+          },
+          "transformation": "Multiplied by reported utilization"
+        },
+        {
+          "name": "power_capacity_utilization",
+          "value": 0.58,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_switch_sec_citadel_capacity_2018",
+            "detail": "Filed 2018 utilization by available cabinets/power capacity"
+          },
+          "transformation": "Multiplied by capacity"
+        }
+      ],
+      "confidence": "medium",
+      "confidence_rationale": "Both inputs are filed operator figures for the facility and year, but the utilization definition is cabinet-based and is not a demand meter reading.",
+      "decision_relevance": "Provides a historical scale proxy for electricity and infrastructure scenarios without treating nameplate capacity as actual peak demand.",
+      "evidence_search": {
+        "direct_observation_status": "not_found",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Facility interval meter demand, coincident utility peak, energized capacity and current utilization"
+      },
+      "derivation": {
+        "method": "engineering_estimate",
+        "model_version": "switch-tahoe-reno-power-1.0.0",
+        "formula": "full_build_power_capacity_MW × reported_power_capacity_utilization",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_switch_sec_citadel_capacity_2018"
+        ],
+        "assumptions": [
+          "Reported utilization can proxy the occupied share of delivered capacity.",
+          "The proxy is not labeled measured or coincident peak demand."
+        ]
+      },
+      "limitations": [
+        "Cabinet utilization may not equal electrical demand utilization.",
+        "No load factor or time series.",
+        "Historical 2018 snapshot, not current demand."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Capacity proxy only; full-build 130 MW and 58% utilization remain source inputs, not study observations.",
+      "reviewed_on": "2026-09-05"
+    },
+    {
+      "estimate_id": "est_study_switch_tahoe_reno_1_electricity_2018",
+      "project_id": "prj_study_im3_point_06685432442",
+      "metric_code": "study.modeled_annual_electricity_use",
+      "label": "Modeled annual facility electricity",
+      "category": "resources",
+      "unit": "MWh_per_year",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 594453.6,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2018,
+        "label": "2018 annualized facility-electricity scenario"
+      },
+      "scope": {
+        "level": "facility",
+        "label": "Tahoe Reno 1 whole-facility electricity scenario",
+        "county_fips": "32029",
+        "inventory_allocation": "not_applicable"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": 528403.2,
+        "central": 594453.6,
+        "high": 660504,
+        "interpretation": "75.4 MW occupied-capacity proxy times 8,760 hours and 80%, 90% or 100% duty factor."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "switch_tahoe_reno_1_electricity_2018",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "occupied_power_proxy",
+          "value": 75.4,
+          "unit": "MW",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Product of public 130 MW capacity and 58% utilization inputs"
+          },
+          "transformation": "Multiplied by hours and duty factor"
+        },
+        {
+          "name": "hours_per_year",
+          "value": 8760,
+          "unit": "hours_per_year",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Non-leap calendar year"
+          },
+          "transformation": "Converts MW to MWh"
+        },
+        {
+          "name": "low_duty_factor",
+          "value": 0.8,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Low annual load relative to occupied-capacity proxy"
+          },
+          "transformation": "Low bound"
+        },
+        {
+          "name": "central_duty_factor",
+          "value": 0.9,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Central always-on load scenario"
+          },
+          "transformation": "Central value"
+        },
+        {
+          "name": "high_duty_factor",
+          "value": 1,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Upper bound at occupied-capacity proxy all year"
+          },
+          "transformation": "High bound"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "No facility meter series is public; cabinet utilization and assumed duty factor may not represent electrical load.",
+      "decision_relevance": "Bounds annual electricity scale for water, cooling and location-based emissions scenarios.",
+      "evidence_search": {
+        "direct_observation_status": "not_found",
+        "source_projection_status": "not_found",
+        "remaining_evidence_gap": "Tahoe Reno 1 annual utility-meter consumption, interval load and losses"
+      },
+      "derivation": {
+        "method": "engineering_estimate",
+        "model_version": "switch-tahoe-reno-electricity-1.0.0",
+        "formula": "130 MW × 0.58 utilization × 8760 hours × duty_factor",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_switch_sec_citadel_capacity_2018"
+        ],
+        "assumptions": [
+          "Power-capacity utilization proxies occupied electrical capacity.",
+          "Duty factor ranges from 80% to 100%.",
+          "No transmission or distribution loss adder is applied."
+        ]
+      },
+      "limitations": [
+        "Not metered consumption.",
+        "Utilization is cabinet-based.",
+        "No hourly load shape or utility coincidence.",
+        "Historical scenario only."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Do not present as current load or as proof of renewable-energy delivery.",
+      "reviewed_on": "2026-09-05"
+    },
+    {
+      "estimate_id": "est_study_switch_tahoe_reno_1_cooling_overhead_2018",
+      "project_id": "prj_study_im3_point_06685432442",
+      "metric_code": "study.modeled_cooling_and_facility_overhead_electricity",
+      "label": "Modeled cooling and facility-overhead electricity",
+      "category": "resources",
+      "unit": "MWh_per_year",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 134659.65,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2018,
+        "label": "2018 PUE-based overhead scenario"
+      },
+      "scope": {
+        "level": "facility",
+        "label": "Tahoe Reno 1 non-IT facility-energy overhead scenario",
+        "county_fips": "32029",
+        "inventory_allocation": "not_applicable"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": 80603.88,
+        "central": 134659.65,
+        "high": 188715.43,
+        "interpretation": "Low uses low facility energy and operator one-sector PUE 1.18; high uses high facility energy and 2023 industry-average PUE 1.4; central is endpoint midpoint."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "switch_tahoe_reno_1_cooling_overhead_2018",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "low_facility_electricity",
+          "value": 528403.2,
+          "unit": "MWh_per_year",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Low output of facility-electricity scenario"
+          },
+          "transformation": "Applied to low PUE overhead fraction"
+        },
+        {
+          "name": "high_facility_electricity",
+          "value": 660504,
+          "unit": "MWh_per_year",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "High output of facility-electricity scenario"
+          },
+          "transformation": "Applied to high PUE overhead fraction"
+        },
+        {
+          "name": "operator_one_sector_pue",
+          "value": 1.18,
+          "unit": "PUE_ratio",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_switch_tahoe_reno_2_one_sheet_2024",
+            "detail": "One-sector best annual average reported for Tahoe Reno 2"
+          },
+          "transformation": "Low benchmark; overhead fraction equals 1 - 1/PUE"
+        },
+        {
+          "name": "industry_average_pue",
+          "value": 1.4,
+          "unit": "PUE_ratio",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_lbnl_ai_waste_heat_2026",
+            "detail": "2023 industry-average PUE reported by LBNL"
+          },
+          "transformation": "High benchmark; overhead fraction equals 1 - 1/PUE"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "Neither PUE is a Tahoe Reno 1 whole-facility 2018 measurement, and overhead includes more than cooling.",
+      "decision_relevance": "Separates estimated IT-support overhead from total facility electricity without claiming a measured cooling load.",
+      "evidence_search": {
+        "direct_observation_status": "not_found",
+        "source_projection_status": "not_found",
+        "remaining_evidence_gap": "Tahoe Reno 1 whole-facility PUE and metered cooling, UPS, lighting and auxiliary loads"
+      },
+      "derivation": {
+        "method": "engineering_estimate",
+        "model_version": "switch-tahoe-reno-cooling-1.0.0",
+        "formula": "facility_MWh × (1 - 1 ÷ PUE)",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_switch_sec_citadel_capacity_2018",
+          "src_study_switch_tahoe_reno_2_one_sheet_2024",
+          "src_study_lbnl_ai_waste_heat_2026"
+        ],
+        "assumptions": [
+          "Tahoe Reno 2 one-sector PUE is an optimistic transfer bound.",
+          "Industry-average PUE is a conservative transfer bound.",
+          "All non-IT electricity is labeled facility overhead, not cooling alone."
+        ]
+      },
+      "limitations": [
+        "Not a cooling meter reading.",
+        "PUE boundary and measurement year differ.",
+        "Includes non-cooling auxiliary loads.",
+        "Historical facility electricity is itself modeled."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Cooling cannot be isolated from public inputs; the metric explicitly includes all facility overhead.",
+      "reviewed_on": "2026-09-05"
+    },
+    {
+      "estimate_id": "est_study_switch_tahoe_reno_1_onsite_water_2018",
+      "project_id": "prj_study_im3_point_06685432442",
+      "metric_code": "study.modeled_onsite_water_use",
+      "label": "Modeled onsite water use",
+      "category": "resources",
+      "unit": "gallons_per_year",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 175289420.58,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2018,
+        "label": "2018 onsite-water sensitivity scenario"
+      },
+      "scope": {
+        "level": "facility",
+        "label": "Tahoe Reno 1 onsite water scenario",
+        "county_fips": "32029",
+        "inventory_allocation": "not_applicable"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": 54838676.29,
+        "central": 175289420.58,
+        "high": 295740164.87,
+        "interpretation": "Low combines low facility energy, PUE 1.4 and WUE 0.55 L/IT-kWh; high combines high facility energy, PUE 1.18 and WUE 2.0 L/IT-kWh; central is endpoint midpoint."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "switch_tahoe_reno_1_water_2018",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "low_facility_electricity",
+          "value": 528403200,
+          "unit": "kWh_per_year",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Low output of facility-electricity scenario"
+          },
+          "transformation": "Divided by high PUE to estimate low IT energy"
+        },
+        {
+          "name": "high_facility_electricity",
+          "value": 660504000,
+          "unit": "kWh_per_year",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "High output of facility-electricity scenario"
+          },
+          "transformation": "Divided by low PUE to estimate high IT energy"
+        },
+        {
+          "name": "low_wue",
+          "value": 0.55,
+          "unit": "liters_per_IT_kWh",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_state_of_art_wue_2024",
+            "detail": "State-of-the-art WUE benchmark"
+          },
+          "transformation": "Low bound"
+        },
+        {
+          "name": "high_wue",
+          "value": 2,
+          "unit": "liters_per_IT_kWh",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_doe_am_tool_wue_2023",
+            "detail": "Approximate U.S. average data-center WUE reference"
+          },
+          "transformation": "High bound"
+        },
+        {
+          "name": "low_pue",
+          "value": 1.18,
+          "unit": "PUE_ratio",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_switch_tahoe_reno_2_one_sheet_2024",
+            "detail": "Operator one-sector benchmark used only as transfer bound"
+          },
+          "transformation": "High-water IT-energy conversion"
+        },
+        {
+          "name": "high_pue",
+          "value": 1.4,
+          "unit": "PUE_ratio",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_lbnl_ai_waste_heat_2026",
+            "detail": "2023 industry-average PUE benchmark"
+          },
+          "transformation": "Low-water IT-energy conversion"
+        },
+        {
+          "name": "liters_per_gallon",
+          "value": 3.785411784,
+          "unit": "liters_per_gallon",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Exact unit conversion"
+          },
+          "transformation": "Divides liters to U.S. gallons"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "No facility water meter or PUE is public; WUE benchmarks, modeled electricity and cross-facility PUE drive a wide range.",
+      "decision_relevance": "Bounds onsite water demand while preventing 3,300 acre-feet of campus effluent availability from being treated as consumption.",
+      "evidence_search": {
+        "direct_observation_status": "not_found",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Tahoe Reno 1 potable, reclaimed, effluent, process and total-water meters plus whole-facility PUE/WUE"
+      },
+      "derivation": {
+        "method": "engineering_estimate",
+        "model_version": "switch-tahoe-reno-water-1.0.0",
+        "formula": "facility_kWh ÷ PUE × WUE_liters_per_IT_kWh ÷ 3.785411784",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_switch_sec_citadel_capacity_2018",
+          "src_study_switch_tahoe_reno_2_one_sheet_2024",
+          "src_study_doe_am_tool_wue_2023",
+          "src_study_state_of_art_wue_2024",
+          "src_study_lbnl_ai_waste_heat_2026"
+        ],
+        "assumptions": [
+          "WUE and PUE benchmarks transfer to Tahoe Reno 1 only as sensitivity bounds.",
+          "Estimate covers onsite water and excludes indirect grid water.",
+          "Effluent-water availability is not used as consumption."
+        ]
+      },
+      "limitations": [
+        "Not a meter reading.",
+        "Does not separate water source or cooling design.",
+        "Benchmark transfer across facility and year.",
+        "Electricity input is modeled."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Wide engineering envelope; no savings claim and no use of effluent availability as demand.",
+      "reviewed_on": "2026-09-05"
+    },
+    {
+      "estimate_id": "est_study_switch_tahoe_reno_1_location_emissions_2018",
+      "project_id": "prj_study_im3_point_06685432442",
+      "metric_code": "study.modeled_location_based_electricity_emissions",
+      "label": "Modeled location-based electricity emissions",
+      "category": "resources",
+      "unit": "metric_tons_co2e_per_year",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 173297.38,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2018,
+        "label": "2018 electricity scenario using eGRID2023 Nevada output rate"
+      },
+      "scope": {
+        "level": "facility",
+        "label": "Tahoe Reno 1 location-based purchased-electricity scenario",
+        "county_fips": "32029",
+        "inventory_allocation": "not_applicable"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": 154042.12,
+        "central": 173297.38,
+        "high": 192552.65,
+        "interpretation": "Electricity scenario endpoints multiplied by the EPA Nevada 2023 total-output CO2e rate; central is endpoint midpoint."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "switch_tahoe_reno_1_location_emissions_2018",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "low_facility_electricity",
+          "value": 528403.2,
+          "unit": "MWh_per_year",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Low output of facility-electricity scenario"
+          },
+          "transformation": "Multiplied by emissions factor"
+        },
+        {
+          "name": "high_facility_electricity",
+          "value": 660504,
+          "unit": "MWh_per_year",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "High output of facility-electricity scenario"
+          },
+          "transformation": "Multiplied by emissions factor"
+        },
+        {
+          "name": "nevada_output_emission_rate",
+          "value": 642.7,
+          "unit": "lb_CO2e_per_MWh",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_epa_egrid_2023_nevada",
+            "detail": "eGRID2023 Nevada total-output rate"
+          },
+          "transformation": "Applied as location-based generation-average factor"
+        },
+        {
+          "name": "pounds_per_metric_ton",
+          "value": 2204.62262185,
+          "unit": "lb_per_metric_ton",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Exact unit conversion"
+          },
+          "transformation": "Divides pounds to metric tons"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "Facility electricity is modeled and the 2023 statewide generation-average factor does not represent 2018 supplier-specific or hourly emissions.",
+      "decision_relevance": "Provides a transparent location-based comparator while keeping Switch's renewable claim separate from a market-based emissions inventory.",
+      "evidence_search": {
+        "direct_observation_status": "not_found",
+        "source_projection_status": "not_found",
+        "remaining_evidence_gap": "Facility electricity, supplier-specific factors, hourly matching, contract instruments, residual mix and Scope 1 backup-generator emissions"
+      },
+      "derivation": {
+        "method": "engineering_estimate",
+        "model_version": "switch-tahoe-reno-emissions-1.0.0",
+        "formula": "facility_MWh × 642.7 lb_CO2e_per_MWh ÷ 2204.62262185",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_switch_sec_citadel_capacity_2018",
+          "src_study_epa_egrid_2023_nevada",
+          "src_study_switch_tahoe_reno_2_one_sheet_2024"
+        ],
+        "assumptions": [
+          "EPA statewide total-output rate is a location-based comparator.",
+          "No avoided-emissions or zero-emissions claim is made from renewable procurement.",
+          "Backup generation and embodied emissions are excluded."
+        ]
+      },
+      "limitations": [
+        "Not a market-based Scope 2 result.",
+        "Year and supplier mismatch.",
+        "Does not measure marginal emissions.",
+        "Excludes Scope 1 and embodied emissions."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "The 100% renewable operator statement is a separate procurement claim and does not set this location-based scenario to zero.",
+      "reviewed_on": "2026-09-05"
+    },
+    {
+      "estimate_id": "est_study_storey_covered_employment_change_2011_2019",
+      "project_id": "prj_study_im3_point_06685432442",
+      "metric_code": "study.modeled_county_covered_employment_descriptive_change",
+      "label": "Storey County descriptive covered-employment change",
+      "category": "county_outcome",
+      "unit": "jobs",
+      "measure_type": "change",
+      "basis": "modeled_synthesis",
+      "value": 11632.67,
+      "period": {
+        "kind": "historical_peak",
+        "report_date": "2019-12-31",
+        "label": "2011-2014 pre-agreement mean versus 2017-2019 post-opening mean"
+      },
+      "scope": {
+        "level": "county",
+        "label": "Storey County total covered employment, all industries",
+        "county_fips": "32029",
+        "inventory_allocation": "not_applicable"
+      },
+      "interval": {
+        "kind": "point_estimate",
+        "low": 11632.67,
+        "central": 11632.67,
+        "high": 11632.67,
+        "interpretation": "Post-period annual mean minus pre-period annual mean; descriptive arithmetic with no causal interpretation."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "storey_covered_employment_descriptive_2011_2019",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "pre_period_mean",
+          "value": 3801,
+          "unit": "jobs",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_bls_qcew_storey_2011_2019",
+            "detail": "Mean of 2011-2014 QCEW total covered employment"
+          },
+          "transformation": "Subtracted from post mean"
+        },
+        {
+          "name": "post_period_mean",
+          "value": 15433.6667,
+          "unit": "jobs",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_bls_qcew_storey_2011_2019",
+            "detail": "Mean of 2017-2019 QCEW total covered employment"
+          },
+          "transformation": "Minus pre mean"
+        },
+        {
+          "name": "switch_audited_jobs",
+          "value": 111,
+          "unit": "jobs",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_switch_storey_audit_jobs_2020",
+            "detail": "Scale check showing Switch jobs are a small subset of county change"
+          },
+          "transformation": "Diagnostic only; not subtracted or attributed"
+        }
+      ],
+      "confidence": "high",
+      "confidence_rationale": "The descriptive arithmetic uses complete public QCEW observations, but confidence applies only to the calculation—not attribution.",
+      "decision_relevance": "Shows county-scale change around the 2015 agreement and 2016 opening while making clear that it cannot identify a Switch effect.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "not_applicable",
+        "remaining_evidence_gap": "Eligible comparison geography, project-specific treatment isolation, industry detail, pretrend support and controls for Tesla/TRIC co-treatment"
+      },
+      "derivation": {
+        "method": "benchmark_application",
+        "model_version": "storey-descriptive-outcome-1.0.0",
+        "formula": "mean(QCEW covered employment 2017-2019) - mean(QCEW covered employment 2011-2014)",
+        "input_claim_ids": [
+          "clm_study_switch_storey_audit_jobs_2020"
+        ],
+        "input_source_ids": [
+          "src_study_bls_qcew_storey_2011_2019",
+          "src_study_nevada_goed_switch_abatement_audit_2023",
+          "src_study_switch_sec_citadel_capacity_2018"
+        ],
+        "assumptions": [
+          "2015 agreement and 2016 opening are timeline markers only.",
+          "No comparison county or parallel-trends claim is made.",
+          "Tesla and broader TRIC expansion are major concurrent treatments."
+        ]
+      },
+      "limitations": [
+        "Not a causal effect.",
+        "All-industry county outcome includes Tesla and other employers.",
+        "Small-county volatility and commuting are material.",
+        "No eligible untreated comparison or pretrend diagnostics."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "A causal record is intentionally withheld because treatment isolation, comparison design and diagnostics do not meet the contract.",
+      "reviewed_on": "2026-09-05"
+    }
+  ],
+  "modeled_sources": [
+    {
+      "source_id": "src_study_storey_switch_cm001611_2026",
+      "title": "Storey County Property Tax Inquiry — Switch Ltd. account CM001611",
+      "url": "https://storeynv.devnetwedge.com/personalproperty/view/CM001611/2026",
+      "publisher": "Storey County, Nevada",
+      "source_type": "assessor_record",
+      "publication_date": {
+        "precision": "unknown"
+      },
+      "retrieved_on": "2026-09-03",
+      "review_method": "web_page",
+      "notes": "The official account identifies Switch, Ltd., personal-property account CM001611, at 1 Superloop Circle. Tax-year pages 2016–2026 report total asset cost, taxable value and assessed value; the fiscal-year billing and payment history reports 2015–2016 through 2025–2026. Fiscal 2018–2019 shows zero tax on the 2019 page and no paid-history row. The future 2027 assessment is excluded. Data updated September 2, 2026."
+    },
+    {
+      "source_id": "src_study_switch_sec_q2_2021_results",
+      "title": "Switch Second Quarter 2021 Financial Results",
+      "url": "https://www.sec.gov/Archives/edgar/data/1710583/000171058321000035/exhibit991pressreleasedate.htm",
+      "publisher": "Switch, Inc. / U.S. Securities and Exchange Commission",
+      "source_type": "sec_filing",
+      "publication_date": {
+        "precision": "day",
+        "date": "2021-08-05"
+      },
+      "retrieved_on": "2026-09-03",
+      "review_method": "web_page",
+      "notes": "SEC-filed exhibit, Capital Expenditures and Development. The reported Core Campus amount concerns LAS VEGAS 15 construction and LAS VEGAS 14 and 16 site preparation, not NAP7-specific spending."
+    },
+    {
+      "source_id": "src_study_nevada_goed_switch_abatement_audit_2023",
+      "title": "Nevada GOED Biennial Report to Legislature of Abatements from Taxation, January 17, 2023",
+      "url": "https://www.leg.state.nv.us/Division/Research/Documents/RTTL_NRS231.0685_2023.pdf",
+      "publisher": "Nevada Governor's Office of Economic Development",
+      "source_type": "state_record",
+      "publication_date": {
+        "precision": "day",
+        "date": "2023-01-17"
+      },
+      "retrieved_on": "2026-09-05",
+      "review_method": "pdf_text_and_page_image",
+      "artifact_sha256": "5b1618bdb098301a9f051848c3a1e67d8d1d1cb918702df81f230407e74697e8",
+      "notes": "The approved-abatement table identifies Switch, LTD #2 as a new Storey County data-center project approved in July 2015. The five-year audit table marks its December 31, 2020 audit compliant and reports 111 jobs, a $50.97 average hourly wage and $179,943,184 of capital expenditure. The same audit findings also appear on the Switch, LTD #3 Clark County row; an earlier 2021 report left the separate Storey and Clark audit findings blank while reporting combined Switch results elsewhere. The 2023 values are retained as the state's company-county allocation, not an independently verified Tahoe Reno 1 building total."
+    },
+    {
+      "source_id": "src_study_storey_switch_parcel_00501223_2026",
+      "title": "Storey County Property Tax Inquiry — NV RNO 1, LLC parcel 005-012-23",
+      "url": "https://storeynv.devnetwedge.com/parcel/view/00501223/2026",
+      "publisher": "Storey County, Nevada",
+      "source_type": "assessor_record",
+      "publication_date": {
+        "precision": "unknown"
+      },
+      "retrieved_on": "2026-09-05",
+      "review_method": "web_page",
+      "notes": "The official parcel is 1 Superloop Circle and describes three Switch data-center modules: MODs 2 and 3 with 354,825 square feet built in 2016 and MOD 1 with 221,160 square feet built in 2020. The owner is NV RNO 1, LLC at Switch's legal address; deed history records the August 2024 transfer through Switch BBF entities to NV RNO 1, LLC. Selected tax-year pages 2024–2026 report real-property values, bills and payment history. The parcel page separately lists numerous data-center tenant-equipment accounts and Switch commercial-personal-property account CM001611, so those accounts are not consolidated here."
+    },
+    {
+      "source_id": "src_study_doe_am_tool_wue_2023",
+      "title": "Data Center Air Management Tool User's Manual v3.1",
+      "url": "https://datacenters.lbl.gov/sites/default/files/2023-07/DOE%20AM%20Tool--User%27s%20Manual%20v3.1%20%287-25-2023%29.pdf",
+      "publisher": "U.S. Department of Energy and Lawrence Berkeley National Laboratory",
+      "source_type": "other",
+      "publication_date": {
+        "precision": "year",
+        "year": 2023
+      },
+      "retrieved_on": "2026-09-05",
+      "review_method": "pdf_text_and_page_image",
+      "notes": "Defines onsite WUE as annual onsite water divided by annual IT-equipment energy and gives an approximately 2 L/kWh U.S. average data-center WUE reference point."
+    },
+    {
+      "source_id": "src_study_state_of_art_wue_2024",
+      "title": "The environmental footprint of data centers in the United States",
+      "url": "https://www.nature.com/articles/s41598-024-76682-6",
+      "publisher": "Scientific Reports",
+      "source_type": "other",
+      "publication_date": {
+        "precision": "year",
+        "year": 2024
+      },
+      "retrieved_on": "2026-09-05",
+      "review_method": "web_page",
+      "notes": "Provides state-of-the-art annualized PUE 1.17 and WUE 0.55 L/kWh benchmark inputs used for the low-water scenario."
+    },
+    {
+      "source_id": "src_study_lbnl_ai_waste_heat_2026",
+      "title": "Avoiding Waste Heat through AI Infrastructure Thermal Integration",
+      "url": "https://seta.lbl.gov/publications/avoiding-waste-heat-through-ai",
+      "publisher": "Lawrence Berkeley National Laboratory",
+      "source_type": "other",
+      "publication_date": {
+        "precision": "year",
+        "year": 2026
+      },
+      "retrieved_on": "2026-09-05",
+      "review_method": "web_page",
+      "notes": "Reports an industry-average data-center PUE of approximately 1.4 in 2023. The value is used only as a conservative sensitivity bound, not as a Tahoe Reno 1 observation."
+    },
+    {
+      "source_id": "src_study_goed_tesla_storey_impact_2023",
+      "title": "Tesla Expansion Economic Impact Analysis",
+      "url": "https://goed.nv.gov/wp-content/uploads/2024/01/3-A.-Tesla-Inc.-Board-Packet-PG-38-56.pdf",
+      "publisher": "Nevada Governor's Office of Economic Development",
+      "source_type": "state_record",
+      "publication_date": {
+        "precision": "year",
+        "year": 2023
+      },
+      "retrieved_on": "2026-09-05",
+      "review_method": "pdf_text_and_page_image",
+      "notes": "Public same-region IMPLAN analysis reports $1.6 billion of direct industrial-construction spending, 9,275 direct person-year jobs, and $924.023 million of direct labor income for 2023-2027 in Washoe and Storey Counties. Its asset mix, scale, timing and contractor mix differ from Citadel; the transfer is therefore sensitivity-tested and used only for direct construction channels. The report combines indirect and induced channels, so those channels are not transferred."
+    },
+    {
+      "source_id": "src_study_goed_data_center_incentives_2026",
+      "title": "Nevada Data Center Abatements",
+      "url": "https://goed.nv.gov/incentives/",
+      "publisher": "Nevada Governor's Office of Economic Development",
+      "source_type": "state_record",
+      "publication_date": {
+        "precision": "unknown"
+      },
+      "retrieved_on": "2026-09-05",
+      "review_method": "web_page",
+      "notes": "Current public program summary states that data-center applicants must ensure at least 50% of construction workers are Nevada residents. This is a compliance threshold, not an observation of Switch worker residence, hours, payroll or supplier location."
+    },
+    {
+      "source_id": "src_study_switch_sec_citadel_capacity_2018",
+      "title": "Switch February 2019 Investor Presentation",
+      "url": "https://www.sec.gov/Archives/edgar/data/1710583/000162828019002814/switchinvestorpresentati.htm",
+      "publisher": "Switch, Inc. / U.S. Securities and Exchange Commission",
+      "source_type": "sec_filing",
+      "publication_date": {
+        "precision": "year",
+        "year": 2019
+      },
+      "retrieved_on": "2026-09-05",
+      "review_method": "web_page",
+      "notes": "The filed presentation reports Tahoe Reno 1 opened in 2016, 1.36 million gross square feet, up to 130 MW delivered power at full build-out, 30% utilization by available data-center space and 58% utilization by available cabinets/power capacity for the 2018 operating snapshot. Capacity and utilization are not meter readings."
+    },
+    {
+      "source_id": "src_study_switch_tahoe_reno_2_one_sheet_2024",
+      "title": "Tahoe Reno 02 Citadel Campus One-Sheet",
+      "url": "https://switchdotcom.s3-sites.data.switch.com/media/one-sheets/COLO/Tahoe-Reno-2.pdf",
+      "publisher": "Switch",
+      "source_type": "operator_release",
+      "publication_date": {
+        "precision": "year",
+        "year": 2024
+      },
+      "retrieved_on": "2026-09-05",
+      "review_method": "pdf_text_and_page_image",
+      "notes": "Operator marketing reports 100% renewable campus power, more than 3,300 acre-feet of effluent-water availability, and 1.18 PUE for one sector. The PUE is a benchmark bound only; it is not a Tahoe Reno 1 whole-building annual measurement. Water availability is not consumption."
+    },
+    {
+      "source_id": "src_study_epa_egrid_2023_nevada",
+      "title": "eGRID2023 Summary Tables, Nevada State Output Emission Rate",
+      "url": "https://www.epa.gov/system/files/documents/2025-01/egrid2023_summary_tables_rev1.pdf",
+      "publisher": "U.S. Environmental Protection Agency",
+      "source_type": "other",
+      "publication_date": {
+        "precision": "day",
+        "date": "2025-01-17"
+      },
+      "retrieved_on": "2026-09-05",
+      "review_method": "pdf_text_and_page_image",
+      "notes": "eGRID2023 reports a Nevada total-output rate of 642.7 lb CO2e/MWh. The statewide 2023 generation-average factor is used for a location-based scenario and does not measure Citadel's supplier, contract instruments, hourly marginal emissions or market-based Scope 2 result."
+    },
+    {
+      "source_id": "src_study_bls_qcew_storey_2011_2019",
+      "title": "BLS QCEW annual averages, Storey County total covered employment, 2011-2019",
+      "url": "https://www.bls.gov/cew/downloadable-data-files.htm",
+      "publisher": "U.S. Bureau of Labor Statistics",
+      "source_type": "other",
+      "publication_date": {
+        "precision": "year",
+        "year": 2020
+      },
+      "retrieved_on": "2026-09-01",
+      "review_method": "structured_data",
+      "notes": "Study panel values use annual QCEW total covered employment for Storey County (FIPS 32029): 3,090, 3,424, 3,893 and 4,797 in 2011-2014; 11,105, 17,199 and 17,997 in 2017-2019. The series covers all employers and is strongly confounded by Tesla and broader Tahoe-Reno Industrial Center growth."
+    }
+  ],
+  "modeled_scope_note": "Decision-relevant modeled syntheses for Apple Mesa and Switch Citadel / Tahoe Reno 1. These values are derived from cited public evidence and explicit assumptions; they are not observed, audited, source-reported, or causal unless a record explicitly says otherwise. They remain outside canonical claims and source-record counts.",
+  "synthesis_version": "study-modeled-synthesis-2.3.0",
   "modeling_policy_version": "study-modeling-policy-1.2.0",
   "analysis_readiness": {
     "construction": "not_assessed",
