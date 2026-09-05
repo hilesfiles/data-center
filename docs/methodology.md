@@ -10,6 +10,14 @@ The system distinguishes observed conditions, observed changes, modeled counterf
 differences, quasi-causal estimates, perception/opposition indicators, and data-quality
 measures. These labels are not interchangeable.
 
+## Modeled synthesis governance
+
+Study-wide modeled syntheses follow `study-modeling-policy-1.0.0`. Direct observations are searched first, source projections remain separate, and a modeled value is eligible only when the metric is decision-relevant, inputs are cited, the formula is reproducible, scope is defensible, and uncertainty is disclosed. Otherwise the record remains a documented acquisition target. Benefits and costs face the same evidence rules.
+
+Each estimate declares its geographic and temporal scope, contribution channel, aggregation identity, interval kind, named parameters with claim/source/assumption provenance, formula, model version, limitations and qualitative confidence. Sensitivity envelopes, reported bands, deterministic counterfactuals and statistical intervals are distinct types. Facility allocations require an explicit allocation method. Source observations and forecasts are inputs, never aggregation components, and modeled records are excluded from sourced-record and realized-benefit totals.
+
+Input-output and contribution models require a named source, model/version, geography, vintage, local-purchase assumption and explicit direct/indirect/induced separation. Difference-in-differences, event-study and synthetic-control records additionally require treatment timing, comparison design, outcome definition, pre/post periods, diagnostics and limitations. Contribution estimates are not causal effects. Strategic-infrastructure narratives remain outside local economic totals unless a sourced quantitative model defines a defensible local channel.
+
 ## Historical reconstruction
 
 Present-day facilities are starting points, not a complete historical sample. Reverse

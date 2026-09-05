@@ -23,7 +23,12 @@
     "economic_sources",
     "economic_scope_note",
     "evidence_version",
-    "research_updates"
+    "research_updates",
+    "modeled_syntheses",
+    "modeled_sources",
+    "modeled_scope_note",
+    "synthesis_version",
+    "modeling_policy_version"
   ],
   "properties": {
     "schema_version": {
@@ -188,6 +193,26 @@
       "type": "string",
       "minLength": 1
     },
+    "modeled_syntheses": {
+      "type": "array",
+      "items": { "$ref": "study-modeled-synthesis.schema.json#/$defs/estimate" }
+    },
+    "modeled_sources": {
+      "type": "array",
+      "items": { "$ref": "study-economic-evidence.schema.json#/$defs/source" }
+    },
+    "modeled_scope_note": {
+      "type": "string",
+      "minLength": 1
+    },
+    "synthesis_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "modeling_policy_version": {
+      "type": "string",
+      "minLength": 1
+    },
     "research_updates": {
       "type": "array",
       "items": {
@@ -252,7 +277,8 @@
         "longitude",
         "economic_record_count",
         "reported_actual_count",
-        "projection_count"
+        "projection_count",
+        "modeled_synthesis_count"
       ],
       "properties": {
         "project_id": {
@@ -339,6 +365,10 @@
           "minimum": 0
         },
         "projection_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "modeled_synthesis_count": {
           "type": "integer",
           "minimum": 0
         }

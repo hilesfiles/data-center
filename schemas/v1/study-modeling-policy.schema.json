@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dccio.org/schemas/v1/study-modeling-policy.schema.json",
+  "title": "Study-wide modeled synthesis governance policy",
+  "type": "object",
+  "required": ["schema_version", "policy_version", "effective_release", "principles", "eligibility", "publication_controls", "multiplier_requirements", "causal_requirements", "aggregation_controls"],
+  "properties": {
+    "schema_version": { "const": "1.0.0" },
+    "policy_version": { "type": "string", "minLength": 1 },
+    "effective_release": { "type": "string", "pattern": "^private-sector-study-[0-9]+\\.[0-9]+\\.[0-9]+$" },
+    "principles": {
+      "type": "array", "minItems": 10, "uniqueItems": true,
+      "items": {
+        "type": "object", "required": ["code", "rule"],
+        "properties": { "code": { "type": "string", "pattern": "^[a-z0-9_]+$" }, "rule": { "type": "string", "minLength": 1 } },
+        "additionalProperties": false
+      }
+    },
+    "eligibility": {
+      "type": "object",
+      "required": ["direct_observation_search_required", "source_projection_preservation_required", "decision_relevance_required", "cited_inputs_required", "reproducible_formula_required", "defensible_scope_required", "uncertainty_disclosure_required", "fallback"],
+      "properties": {
+        "direct_observation_search_required": { "const": true },
+        "source_projection_preservation_required": { "const": true },
+        "decision_relevance_required": { "const": true },
+        "cited_inputs_required": { "const": true },
+        "reproducible_formula_required": { "const": true },
+        "defensible_scope_required": { "const": true },
+        "uncertainty_disclosure_required": { "const": true },
+        "fallback": { "const": "documented_acquisition_target" }
+      },
+      "additionalProperties": false
+    },
+    "publication_controls": {
+      "type": "object", "required": ["canonical_claims", "source_record_counts", "realized_benefit_totals", "presentation"],
+      "properties": {
+        "canonical_claims": { "const": "exclude_modeled_syntheses" },
+        "source_record_counts": { "const": "exclude_modeled_syntheses" },
+        "realized_benefit_totals": { "const": "exclude_modeled_syntheses" },
+        "presentation": { "const": "modeled_not_observed_or_audited" }
+      },
+      "additionalProperties": false
+    },
+    "multiplier_requirements": {
+      "type": "array", "minItems": 6, "uniqueItems": true,
+      "items": { "enum": ["source_id", "model_name", "model_version", "geography", "vintage", "local_purchase_assumption", "channel_separation"] }
+    },
+    "causal_requirements": {
+      "type": "array", "minItems": 7, "uniqueItems": true,
+      "items": { "enum": ["treatment_timing", "comparison_design", "outcome_definition", "pre_period", "post_period", "diagnostics", "limitations"] }
+    },
+    "aggregation_controls": {
+      "type": "object", "required": ["component_membership", "total_components", "source_model_separation", "overlap_rule"],
+      "properties": {
+        "component_membership": { "const": "one_aggregation_id_per_estimate" },
+        "total_components": { "const": "explicit_estimate_ids" },
+        "source_model_separation": { "const": "source_claims_are_inputs_not_components" },
+        "overlap_rule": { "const": "no_component_in_multiple_totals_within_aggregation" }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

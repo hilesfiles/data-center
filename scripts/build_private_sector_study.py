@@ -14,15 +14,17 @@ from pathlib import Path
 
 if __package__:
     from .study_economic_evidence import EVIDENCE, category_coverage, economic_products
+    from .study_modeled_synthesis import MODELING_POLICY, SYNTHESIS, modeled_products
 else:
     from study_economic_evidence import EVIDENCE, category_coverage, economic_products
+    from study_modeled_synthesis import MODELING_POLICY, SYNTHESIS, modeled_products
 
 ROOT = Path(__file__).resolve().parents[1]
 CONFIG = ROOT / "config/v1/private-sector-study-candidates.json"
 PUBLIC = ROOT / "site/public/data/v1"
 OUT = PUBLIC / "study"
 SILVER = ROOT / "data/silver/study"
-VERSION = "private-sector-study-1.37.0"
+VERSION = "private-sector-study-1.38.0"
 GAPS = [
     ("investment", "Capital investment", "Annual actual spending, local share, and phase allocation."),
     ("construction", "Construction jobs and payroll", "Workers, job-years, payroll, duration, and local participation."),
@@ -70,10 +72,15 @@ def import_screen():
     })
 
 
-def build_products(config, inventory, panels, generated_at, evidence=None):
+def build_products(config, inventory, panels, generated_at, evidence=None, synthesis=None, modeling_policy=None):
     candidates = config["candidates"]
     evidence = read(EVIDENCE) if evidence is None else evidence
+    synthesis = read(SYNTHESIS) if synthesis is None else synthesis
+    modeling_policy = read(MODELING_POLICY) if modeling_policy is None else modeling_policy
+    if modeling_policy["effective_release"] != VERSION:
+        raise ValueError("Modeling policy release mismatch")
     economic_by_project, _, _ = economic_products(evidence, candidates, generated_at)
+    modeled_by_project, modeled_sources = modeled_products(synthesis, candidates, evidence, modeling_policy)
     ids = [r["project_id"] for r in candidates]
     targets = [r["inventory_entity_id"] for r in candidates]
     if len(set(ids)) != len(ids) or len(set(targets)) != len(targets):
@@ -86,6 +93,7 @@ def build_products(config, inventory, panels, generated_at, evidence=None):
         panel = panels[row["county_fips"]]
         group = row["proposed_study_group"]
         records = economic_by_project[row["project_id"]]
+        modeled = modeled_by_project[row["project_id"]]
         summary = {
             "project_id": row["project_id"], "name": row["study_label"],
             "inventory_entity_id": target["entity_id"], "inventory_entity_type": target["entity_type"],
@@ -101,6 +109,7 @@ def build_products(config, inventory, panels, generated_at, evidence=None):
             "economic_record_count": len(records),
             "reported_actual_count": sum(r["basis"] == "reported_actual" for r in records),
             "projection_count": sum(r["basis"] == "source_projection" for r in records),
+            "modeled_synthesis_count": len(modeled),
         }
         sources = []
         for source in row["evidence_sources"]:
@@ -124,6 +133,11 @@ def build_products(config, inventory, panels, generated_at, evidence=None):
             "economic_records": records,
             "economic_sources": [s for s in evidence["sources"] if s["source_id"] in {r["source_id"] for r in records}],
             "economic_scope_note": evidence["scope_note"], "evidence_version": evidence["evidence_version"],
+            "modeled_syntheses": modeled,
+            "modeled_sources": [s for s in [*evidence["sources"], *modeled_sources]
+                                if s["source_id"] in {source_id for estimate in modeled for source_id in estimate["derivation"]["input_source_ids"]}],
+            "modeled_scope_note": synthesis["scope_note"], "synthesis_version": synthesis["synthesis_version"],
+            "modeling_policy_version": modeling_policy["policy_version"],
             "analysis_readiness": {"construction": "not_assessed", "operations": "not_assessed", "fiscal": "not_assessed", "causal": "not_assessed"},
             "legacy_first_entry_note": row.get("existing_first_entry_rationale"),
             "scope_note": "Provisional private-sector research candidate. Owner/operator history, project boundaries and lifecycle require review. Membership does not verify current operation or establish economic impact.",
@@ -149,8 +163,10 @@ def build_products(config, inventory, panels, generated_at, evidence=None):
             "economic_records": sum(r["economic_record_count"] for r in summaries),
             "reported_actual_records": sum(r["reported_actual_count"] for r in summaries),
             "projection_records": sum(r["projection_count"] for r in summaries),
+            "modeled_synthesis_records": sum(r["modeled_synthesis_count"] for r in summaries),
         },
-        "economic_evidence_status": "partial" if evidence["records"] else "not_yet_collected", "projects": summaries,
+        "economic_evidence_status": "partial" if evidence["records"] else "not_yet_collected",
+        "modeling_policy_version": modeling_policy["policy_version"], "projects": summaries,
     }
     return index, details, entities
 
@@ -163,12 +179,14 @@ def main():
         import_screen()
     config = read(CONFIG)
     evidence = read(EVIDENCE)
+    synthesis = read(SYNTHESIS)
+    modeling_policy = read(MODELING_POLICY)
     inventory_path = PUBLIC / "facilities/index.json"
     inventory = {r["entity_id"]: r for r in read(inventory_path)}
     panel_paths = sorted((PUBLIC / "panels/county-economic-history/by-state").glob("*.json"))
     panels = {r["county_fips"]: r for p in panel_paths for r in read(p)}
     stamp = datetime.now(timezone.utc).isoformat(timespec="seconds")
-    index, details, entities = build_products(config, inventory, panels, stamp, evidence)
+    index, details, entities = build_products(config, inventory, panels, stamp, evidence, synthesis, modeling_policy)
     _, claims, sources = economic_products(evidence, config["candidates"], stamp)
     write(SILVER / "projects.json", entities)
     write(OUT / "index.json", index)
@@ -176,13 +194,15 @@ def main():
     for name, payload in [("economic-claims.json", claims), ("economic-sources.json", sources)]:
         write(SILVER / name, payload)
         paths.append((SILVER / name, len(payload)))
+    write(SILVER / "modeled-syntheses.json", synthesis)
+    paths.append((SILVER / "modeled-syntheses.json", len(synthesis["estimates"])))
     for detail in details:
         path = OUT / detail["detail_path"]
         write(path, detail)
         paths.append((path, 1))
     manifest = {
         "schema_version": "1.0.0", "release_id": VERSION, "generated_at": stamp,
-        "inputs": [{"path": str(p.relative_to(ROOT)).replace("\\", "/"), "sha256": digest(p)} for p in [CONFIG, EVIDENCE, inventory_path, *panel_paths, Path(__file__), Path(__file__).with_name("study_economic_evidence.py")]],
+        "inputs": [{"path": str(p.relative_to(ROOT)).replace("\\", "/"), "sha256": digest(p)} for p in [CONFIG, EVIDENCE, SYNTHESIS, MODELING_POLICY, inventory_path, *panel_paths, Path(__file__), Path(__file__).with_name("study_economic_evidence.py"), Path(__file__).with_name("study_modeled_synthesis.py")]],
         "parts": [{"path": str(p.relative_to(ROOT)).replace("\\", "/"), "record_count": count, "byte_size": p.stat().st_size, "sha256": digest(p)} for p, count in paths],
     }
     write(OUT / "manifest.json", manifest)

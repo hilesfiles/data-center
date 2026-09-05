@@ -4,6 +4,9 @@ import unittest
 from scripts.build_private_sector_study import CONFIG, PUBLIC, ROOT, build_products, read
 from scripts.validate_data_contract import ContractValidator
 from scripts.study_economic_evidence import EVIDENCE, economic_products, validate_evidence
+from scripts.study_modeled_synthesis import MODELING_POLICY, SYNTHESIS, modeled_products
+
+GENERAL_SYNTHESIS_FIXTURE = ROOT / "tests/fixtures/study-modeled-synthesis-general-cases.json"
 
 
 class PrivateSectorStudyTest(unittest.TestCase):
@@ -71,9 +74,10 @@ class PrivateSectorStudyTest(unittest.TestCase):
         index, details, _ = self.build()
         self.assertEqual(index["counts"]["projects"], 36)
         self.assertEqual(index["counts"]["projects_with_economic_evidence"], 36)
-        self.assertEqual(index["counts"]["economic_records"], 560)
-        self.assertEqual(index["counts"]["reported_actual_records"], 512)
-        self.assertEqual(index["counts"]["projection_records"], 48)
+        self.assertEqual(index["counts"]["economic_records"], 584)
+        self.assertEqual(index["counts"]["reported_actual_records"], 532)
+        self.assertEqual(index["counts"]["projection_records"], 52)
+        self.assertEqual(index["counts"]["modeled_synthesis_records"], 8)
         self.assertTrue(all(r["analysis_readiness"]["causal"] == "not_assessed" for r in details))
         washoe = next(r for r in details if r["name"] == "Apple Washoe County campus")
         coverage = {g["code"]: g["status"] for g in washoe["evidence_gaps"]}
@@ -359,7 +363,12 @@ class PrivateSectorStudyTest(unittest.TestCase):
         assessed = [r for r in project["economic_records"] if r["metric_code"] == "study.account_assessed_value"]
         billed = [r for r in project["economic_records"] if r["metric_code"] == "study.property_taxes_billed"]
         paid = [r for r in project["economic_records"] if r["metric_code"] == "study.property_taxes_paid"]
-        self.assertEqual(project["economic_record_count"], 56)
+        actual = [r for r in project["economic_records"] if r["basis"] == "reported_actual"]
+        plans = [r for r in project["economic_records"] if r["basis"] == "source_projection"]
+        electricity = [r for r in actual if r["metric_code"] == "study.annual_electricity_use"]
+        permits = [r for r in actual if r["metric_code"] == "study.permitted_construction_value"]
+        solar = [r for r in actual if r["metric_code"] == "study.renewable_generation_capacity"]
+        self.assertEqual((project["economic_record_count"], len(actual), len(plans)), (80, 76, 4))
         self.assertEqual(len({r["scope"]["label"] for r in fcv}), 2)
         self.assertEqual([r["value"] for r in fcv if "business personal" in r["scope"]["label"]],
                          [287444961, 235963681, 165788022, 300733702])
@@ -369,7 +378,128 @@ class PrivateSectorStudyTest(unittest.TestCase):
         self.assertEqual([r["value"] for r in paid], [r["value"] for r in billed])
         self.assertEqual(len({r["scope"]["label"] for r in billed}), 2)
         self.assertTrue(all("zero total due" in r["period"]["label"] for r in paid))
-        self.assertIn("separate Apple equipment", project["research_updates"][0]["title"])
+        self.assertEqual([r["value"] for r in electricity],
+                         [45000000, 104000000, 163000000, 227000000, 332000000,
+                          379000000, 488000000, 530000000, 563000000])
+        self.assertTrue(all(r["unit"] == "kWh_per_year" and r["period"]["kind"] == "fiscal_year" for r in electricity))
+        self.assertEqual([r["value"] for r in permits],
+                         [22000000, 32991875.28, 28000000, 1000000, 2000000, 3000000, 2000000, 4918751.6])
+        self.assertEqual([r["value"] for r in solar], [50, 4.67])
+        self.assertEqual({(r["metric_code"], r["value"], r["value_qualifier"]) for r in plans}, {
+            ("study.campus_investment_projection", 2000000000, "exact"),
+            ("study.operating_jobs_projection", 150, "exact"),
+            ("study.construction_workers_projection", 500, "up_to"),
+            ("study.state_tax_credit_projection", 25000000, "exact"),
+        })
+        self.assertEqual(next(r for r in actual if r["metric_code"] == "study.cumulative_facility_investment")["value_qualifier"], "approximately")
+        self.assertTrue(any("separate Apple equipment" in u["title"] for u in project["research_updates"]))
+        modeled = project["modeled_syntheses"]
+        self.assertEqual(project["modeled_synthesis_count"], 8)
+        self.assertEqual({r["basis"] for r in modeled}, {"modeled_synthesis"})
+        self.assertEqual(len(project["economic_records"]), 80)
+        water = next(r for r in modeled if r["metric_code"] == "study.modeled_onsite_water_use")
+        self.assertEqual(water["interval"], {
+            "kind": "sensitivity_envelope", "low": 69915278.64, "central": 109322072.06, "high": 148728865.48,
+            "interpretation": "Low applies state-of-the-art WUE/PUE; high applies a 2.0 L/kWh WUE and 2.0 PUE reference; central is the endpoint midpoint.",
+        })
+        payroll = next(r for r in modeled if r["metric_code"] == "study.modeled_ftz_area_payroll")
+        self.assertEqual((payroll["interval"]["low"], payroll["value"], payroll["interval"]["high"]),
+                         (9579040.27, 11902668.85, 14226297.43))
+        property_rows = [r for r in modeled if r["metric_code"] == "study.modeled_ftz_property_tax_reduction"]
+        self.assertEqual([r["value"] for r in property_rows], [5358646.75, 4429801.10, 4121427.02])
+        self.assertTrue(all(r["derivation"]["formula"] and r["derivation"]["assumptions"] for r in modeled))
+
+    def test_modeled_synthesis_rejects_invalid_ranges_and_unknown_inputs(self):
+        payload = read(SYNTHESIS)
+        evidence = read(EVIDENCE)
+        bad_range = copy.deepcopy(payload)
+        bad_range["estimates"][0]["interval"]["low"] = bad_range["estimates"][0]["value"] + 1
+        with self.assertRaisesRegex(ValueError, "interval ordering"):
+            modeled_products(bad_range, self.config["candidates"], evidence)
+        bad_source = copy.deepcopy(payload)
+        bad_source["estimates"][0]["derivation"]["input_source_ids"].append("src_missing")
+        with self.assertRaisesRegex(ValueError, "Unknown modeled inputs"):
+            modeled_products(bad_source, self.config["candidates"], evidence)
+
+    def test_modeled_synthesis_schema_and_source_claim_separation(self):
+        payload = read(SYNTHESIS)
+        issues = self.validator.validate_record(payload, ROOT / "schemas/v1/study-modeled-synthesis.schema.json")
+        self.assertEqual(issues, [])
+        _, claims, _ = economic_products(read(EVIDENCE), self.config["candidates"], "2026-09-05T00:00:00+00:00")
+        self.assertFalse(any(row.get("basis") == "modeled_synthesis" for row in claims))
+        self.assertTrue({row["estimate_id"] for row in payload["estimates"]}.isdisjoint({row["claim_id"] for row in claims}))
+
+    def test_study_wide_modeled_contract_general_cases(self):
+        payload = read(GENERAL_SYNTHESIS_FIXTURE)
+        candidates = [{"project_id": project_id} for project_id in {
+            "prj_study_fixture_construction", "prj_study_fixture_engineering",
+            "prj_study_fixture_fiscal", "prj_study_fixture_causal",
+        }]
+        evidence = {"records": [], "sources": []}
+        self.assertEqual(self.validator.validate_record(payload, ROOT / "schemas/v1/study-modeled-synthesis.schema.json"), [])
+        self.assertEqual(self.validator.validate_record(read(MODELING_POLICY), ROOT / "schemas/v1/study-modeling-policy.schema.json"), [])
+        grouped, _ = modeled_products(payload, candidates, evidence)
+        self.assertEqual(sum(len(rows) for rows in grouped.values()), 4)
+        construction = grouped["prj_study_fixture_construction"][0]
+        self.assertEqual((construction["unit"], construction["period"]["kind"]), ("USD", "construction_period"))
+        self.assertEqual([p["name"] for p in construction["parameters"]][:2], ["direct_job_years", "payroll_per_job_year"])
+        engineering = grouped["prj_study_fixture_engineering"][0]
+        self.assertEqual((engineering["derivation"]["method"], engineering["scope"]["level"]), ("engineering_estimate", "facility"))
+        fiscal = grouped["prj_study_fixture_fiscal"][0]
+        self.assertEqual({p["name"] for p in fiscal["parameters"]}, {"gross_taxes", "tax_credits", "infrastructure_cost", "service_cost"})
+        causal = grouped["prj_study_fixture_causal"][0]
+        self.assertEqual((causal["derivation"]["method"], causal["interval"]["kind"]), ("event_study", "confidence_interval"))
+
+    def test_modeled_contract_rejects_unsupported_units_methods_and_periods(self):
+        payload = read(GENERAL_SYNTHESIS_FIXTURE)
+        for mutate in [
+            lambda row: row.__setitem__("unit", "bananas"),
+            lambda row: row["derivation"].__setitem__("method", "unsupported_model"),
+            lambda row: row["period"].pop("year"),
+        ]:
+            invalid = copy.deepcopy(payload)
+            mutate(invalid["estimates"][1])
+            issues = self.validator.validate_record(invalid, ROOT / "schemas/v1/study-modeled-synthesis.schema.json")
+            self.assertTrue(issues)
+
+    def test_modeled_contract_rejects_missing_causal_and_multiplier_metadata(self):
+        payload = read(GENERAL_SYNTHESIS_FIXTURE)
+        candidates = [{"project_id": row["project_id"]} for row in payload["estimates"]]
+        evidence = {"records": [], "sources": []}
+        no_causal = copy.deepcopy(payload)
+        no_causal["estimates"][3].pop("causal_design")
+        self.assertTrue(self.validator.validate_record(no_causal, ROOT / "schemas/v1/study-modeled-synthesis.schema.json"))
+        with self.assertRaisesRegex(ValueError, "Missing causal-design"):
+            modeled_products(no_causal, candidates, evidence)
+        no_multiplier = copy.deepcopy(payload)
+        no_multiplier["estimates"][0]["derivation"]["method"] = "input_output_multiplier"
+        self.assertTrue(self.validator.validate_record(no_multiplier, ROOT / "schemas/v1/study-modeled-synthesis.schema.json"))
+        with self.assertRaisesRegex(ValueError, "Incomplete multiplier provenance"):
+            modeled_products(no_multiplier, candidates, evidence)
+
+    def test_modeled_contract_rejects_overlapping_aggregation(self):
+        payload = read(GENERAL_SYNTHESIS_FIXTURE)
+        component = payload["estimates"][0]
+        component["aggregation"] = {"aggregation_id": "fixture_overlap", "role": "component", "overlap_policy": "do_not_sum_outside_declared_total"}
+        for suffix, metric in [("one", "study.modeled_construction_total_one"), ("two", "study.modeled_construction_total_two")]:
+            total = copy.deepcopy(component)
+            total["estimate_id"] = f"est_fixture_total_{suffix}"
+            total["metric_code"] = metric
+            total["contribution_channel"] = "total"
+            total["aggregation"] = {"aggregation_id": "fixture_overlap", "role": "total", "component_estimate_ids": [component["estimate_id"]], "overlap_policy": "do_not_sum_outside_declared_total"}
+            payload["estimates"].append(total)
+        candidates = [{"project_id": row["project_id"]} for row in payload["estimates"]]
+        with self.assertRaisesRegex(ValueError, "Overlapping aggregation component"):
+            modeled_products(payload, candidates, {"records": [], "sources": []})
+
+    def test_modeled_values_cannot_be_mixed_into_canonical_evidence(self):
+        payload = read(GENERAL_SYNTHESIS_FIXTURE)
+        evidence = read(EVIDENCE)
+        mixed = copy.deepcopy(evidence)
+        mixed["records"][0]["basis"] = "modeled_synthesis"
+        candidates = [{"project_id": row["project_id"]} for row in payload["estimates"]]
+        with self.assertRaisesRegex(ValueError, "cannot enter canonical source evidence"):
+            modeled_products(payload, candidates, mixed)
 
     def test_digital_crossroad_separates_assessment_liability_credits_and_payment(self):
         _, details, _ = self.build()

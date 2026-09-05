@@ -1,0 +1,216 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dccio.org/schemas/v1/study-modeled-synthesis.schema.json",
+  "title": "Study-wide modeled synthesis register",
+  "type": "object",
+  "required": ["schema_version", "synthesis_version", "modeling_policy_version", "reviewed_on", "scope_note", "sources", "estimates"],
+  "properties": {
+    "schema_version": { "const": "1.0.0" },
+    "synthesis_version": { "type": "string", "minLength": 1 },
+    "modeling_policy_version": { "type": "string", "minLength": 1 },
+    "reviewed_on": { "type": "string", "format": "date" },
+    "scope_note": { "type": "string", "minLength": 1 },
+    "sources": { "type": "array", "items": { "$ref": "study-economic-evidence.schema.json#/$defs/source" } },
+    "estimates": { "type": "array", "items": { "$ref": "#/$defs/estimate" } }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "unit": {
+      "enum": [
+        "USD", "USD_per_year", "USD_per_FTE", "USD_per_hour", "FTE", "job_years", "employees", "workers", "jobs",
+        "kWh_per_year", "MWh_per_year", "MW", "percent", "ratio", "PUE_ratio", "WUE_liters_per_kWh",
+        "gallons_per_year", "gallons_per_day", "million_gallons_per_day", "metric_tons_co2e_per_year",
+        "acre_feet_per_year", "square_feet", "establishments", "index_points", "percentage_points"
+      ]
+    },
+    "period": {
+      "type": "object",
+      "required": ["kind", "label"],
+      "properties": {
+        "kind": { "enum": ["calendar_year", "fiscal_year", "tax_year", "source_year", "construction_period", "historical_peak", "cumulative", "projection_horizon"] },
+        "year": { "type": "integer", "minimum": 1800, "maximum": 2200 },
+        "start_date": { "type": "string", "format": "date" },
+        "end_date": { "type": "string", "format": "date" },
+        "report_date": { "type": "string", "format": "date" },
+        "horizon_years": { "type": "integer", "minimum": 1 },
+        "label": { "type": "string", "minLength": 1 }
+      },
+      "allOf": [
+        { "if": { "properties": { "kind": { "enum": ["calendar_year", "fiscal_year", "tax_year", "source_year"] } } }, "then": { "required": ["year"] } },
+        { "if": { "properties": { "kind": { "const": "construction_period" } } }, "then": { "required": ["start_date", "end_date"] } },
+        { "if": { "properties": { "kind": { "enum": ["historical_peak", "cumulative"] } } }, "then": { "required": ["report_date"] } },
+        { "if": { "properties": { "kind": { "const": "projection_horizon" } } }, "then": { "required": ["report_date", "horizon_years"] } }
+      ],
+      "additionalProperties": false
+    },
+    "scope": {
+      "type": "object",
+      "required": ["level", "label", "inventory_allocation"],
+      "properties": {
+        "level": { "enum": ["facility", "campus", "company_county", "county", "multi_county", "utility_service_area", "state", "supporting_infrastructure", "ftz_activated_area"] },
+        "label": { "type": "string", "minLength": 1 },
+        "geography_id": { "type": "string", "minLength": 1 },
+        "county_fips": { "type": "string", "pattern": "^[0-9]{5}$" },
+        "state_abbr": { "type": "string", "pattern": "^[A-Z]{2}$" },
+        "inventory_allocation": { "enum": ["allocated", "unallocated", "not_applicable"] },
+        "allocation_method": { "type": "string", "minLength": 1 }
+      },
+      "anyOf": [{ "required": ["geography_id"] }, { "required": ["county_fips"] }, { "required": ["state_abbr"] }],
+      "allOf": [
+        { "if": { "properties": { "inventory_allocation": { "const": "allocated" } } }, "then": { "required": ["allocation_method"] } }
+      ],
+      "additionalProperties": false
+    },
+    "interval": {
+      "type": "object",
+      "required": ["kind", "low", "central", "high", "interpretation"],
+      "properties": {
+        "kind": { "enum": ["point_estimate", "deterministic_counterfactual", "sensitivity_envelope", "confidence_interval", "credible_interval", "reported_band"] },
+        "low": { "type": "number" },
+        "central": { "type": "number" },
+        "high": { "type": "number" },
+        "confidence_level": { "type": "number", "exclusiveMinimum": 0, "exclusiveMaximum": 1 },
+        "interpretation": { "type": "string", "minLength": 1 }
+      },
+      "allOf": [
+        { "if": { "properties": { "kind": { "enum": ["confidence_interval", "credible_interval"] } } }, "then": { "required": ["confidence_level"] } }
+      ],
+      "additionalProperties": false
+    },
+    "provenance": {
+      "type": "object",
+      "required": ["kind", "detail"],
+      "properties": {
+        "kind": { "enum": ["claim", "source", "assumption"] },
+        "reference_id": { "$ref": "common.schema.json#/$defs/entity_id" },
+        "detail": { "type": "string", "minLength": 1 }
+      },
+      "allOf": [
+        { "if": { "properties": { "kind": { "enum": ["claim", "source"] } } }, "then": { "required": ["reference_id"] } }
+      ],
+      "additionalProperties": false
+    },
+    "parameter": {
+      "type": "object",
+      "required": ["name", "value", "unit", "provenance", "transformation"],
+      "properties": {
+        "name": { "type": "string", "pattern": "^[a-z][a-z0-9_]*$" },
+        "value": { "type": "number" },
+        "unit": { "type": "string", "minLength": 1 },
+        "provenance": { "$ref": "#/$defs/provenance" },
+        "transformation": { "type": "string", "minLength": 1 }
+      },
+      "additionalProperties": false
+    },
+    "aggregation": {
+      "type": "object",
+      "required": ["aggregation_id", "role", "overlap_policy"],
+      "properties": {
+        "aggregation_id": { "type": "string", "pattern": "^[a-z0-9_]+$" },
+        "role": { "enum": ["standalone", "component", "total"] },
+        "component_estimate_ids": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "$ref": "common.schema.json#/$defs/entity_id" } },
+        "overlap_policy": { "const": "do_not_sum_outside_declared_total" }
+      },
+      "allOf": [
+        { "if": { "properties": { "role": { "const": "total" } } }, "then": { "required": ["component_estimate_ids"] } },
+        { "if": { "properties": { "role": { "enum": ["standalone", "component"] } } }, "then": { "not": { "required": ["component_estimate_ids"] } } }
+      ],
+      "additionalProperties": false
+    },
+    "derivation": {
+      "type": "object",
+      "required": ["method", "model_version", "formula", "input_claim_ids", "input_source_ids", "assumptions"],
+      "properties": {
+        "method": { "enum": ["band_midpoint", "benchmark_application", "allocation", "interpolation", "extrapolation", "engineering_estimate", "statutory_counterfactual", "sensitivity_analysis", "input_output_multiplier", "contribution_analysis", "difference_in_differences", "event_study", "synthetic_control", "strategic_infrastructure_model"] },
+        "model_version": { "type": "string", "minLength": 1 },
+        "formula": { "type": "string", "minLength": 1 },
+        "input_claim_ids": { "type": "array", "uniqueItems": true, "items": { "$ref": "common.schema.json#/$defs/entity_id" } },
+        "input_source_ids": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "$ref": "common.schema.json#/$defs/entity_id" } },
+        "assumptions": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } }
+      },
+      "additionalProperties": false
+    },
+    "multiplier_provenance": {
+      "type": "object",
+      "required": ["source_id", "model_name", "model_version", "geography", "vintage", "local_purchase_assumption", "channel_separation"],
+      "properties": {
+        "source_id": { "$ref": "common.schema.json#/$defs/entity_id" },
+        "model_name": { "type": "string", "minLength": 1 },
+        "model_version": { "type": "string", "minLength": 1 },
+        "geography": { "type": "string", "minLength": 1 },
+        "vintage": { "type": "string", "minLength": 1 },
+        "local_purchase_assumption": { "type": "string", "minLength": 1 },
+        "channel_separation": { "const": "direct_indirect_induced_reported_separately" }
+      },
+      "additionalProperties": false
+    },
+    "causal_design": {
+      "type": "object",
+      "required": ["treatment_timing", "comparison_design", "outcome_definition", "pre_period", "post_period", "diagnostics", "limitations"],
+      "properties": {
+        "treatment_timing": { "type": "string", "minLength": 1 },
+        "comparison_design": { "type": "string", "minLength": 1 },
+        "outcome_definition": { "type": "string", "minLength": 1 },
+        "pre_period": { "type": "string", "minLength": 1 },
+        "post_period": { "type": "string", "minLength": 1 },
+        "diagnostics": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } },
+        "limitations": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } }
+      },
+      "additionalProperties": false
+    },
+    "evidence_search": {
+      "type": "object",
+      "required": ["direct_observation_status", "source_projection_status", "acquisition_target"],
+      "properties": {
+        "direct_observation_status": { "enum": ["not_found", "partial", "not_applicable"] },
+        "source_projection_status": { "enum": ["not_found", "available_separately", "not_applicable"] },
+        "acquisition_target": { "type": "string", "minLength": 1 }
+      },
+      "additionalProperties": false
+    },
+    "estimate": {
+      "type": "object",
+      "required": ["estimate_id", "project_id", "metric_code", "label", "category", "unit", "measure_type", "basis", "value", "period", "scope", "interval", "contribution_channel", "aggregation", "parameters", "confidence", "confidence_rationale", "decision_relevance", "evidence_search", "derivation", "limitations", "presentation", "notes", "reviewed_on"],
+      "properties": {
+        "estimate_id": { "$ref": "common.schema.json#/$defs/entity_id" },
+        "project_id": { "type": "string", "pattern": "^prj_study_[a-z0-9_]+$" },
+        "metric_code": { "type": "string", "pattern": "^study\\.[a-z0-9_]+$" },
+        "label": { "type": "string", "minLength": 1 },
+        "category": { "enum": ["investment", "construction", "suppliers", "operations", "fiscal", "public_costs", "resources", "community", "county_outcome", "strategic_infrastructure"] },
+        "unit": { "$ref": "#/$defs/unit" },
+        "measure_type": { "enum": ["stock", "flow", "rate", "peak", "change", "effect"] },
+        "basis": { "const": "modeled_synthesis" },
+        "value": { "type": "number" },
+        "period": { "$ref": "#/$defs/period" },
+        "scope": { "$ref": "#/$defs/scope" },
+        "interval": { "$ref": "#/$defs/interval" },
+        "contribution_channel": { "enum": ["direct", "indirect", "induced", "total", "not_applicable"] },
+        "aggregation": { "$ref": "#/$defs/aggregation" },
+        "parameters": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/parameter" } },
+        "confidence": { "enum": ["low", "medium", "high"] },
+        "confidence_rationale": { "type": "string", "minLength": 1 },
+        "decision_relevance": { "type": "string", "minLength": 1 },
+        "evidence_search": { "$ref": "#/$defs/evidence_search" },
+        "derivation": { "$ref": "#/$defs/derivation" },
+        "multiplier_provenance": { "$ref": "#/$defs/multiplier_provenance" },
+        "causal_design": { "$ref": "#/$defs/causal_design" },
+        "limitations": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } },
+        "presentation": { "const": "modeled_not_observed_or_audited" },
+        "notes": { "type": "string", "minLength": 1 },
+        "annual_series_key": { "type": "string", "minLength": 1 },
+        "reviewed_on": { "type": "string", "format": "date" }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "derivation": { "properties": { "method": { "enum": ["input_output_multiplier", "contribution_analysis"] } } } } },
+          "then": { "required": ["multiplier_provenance"] }
+        },
+        {
+          "if": { "properties": { "derivation": { "properties": { "method": { "enum": ["difference_in_differences", "event_study", "synthetic_control"] } } } } },
+          "then": { "required": ["causal_design"] }
+        }
+      ],
+      "additionalProperties": false
+    }
+  }
+}

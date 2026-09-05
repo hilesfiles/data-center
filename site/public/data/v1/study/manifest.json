@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
-  "release_id": "private-sector-study-1.37.0",
-  "generated_at": "2026-09-05T14:28:26+00:00",
+  "release_id": "private-sector-study-1.38.0",
+  "generated_at": "2026-09-05T17:32:03+00:00",
   "inputs": [
     {
       "path": "config/v1/private-sector-study-candidates.json",
@@ -9,7 +9,15 @@
     },
     {
       "path": "config/v1/study-economic-evidence.json",
-      "sha256": "25432e6e3f623608aa42957386b5d80153dae54f752f5fa79d77daafe90e5b0a"
+      "sha256": "90ca6608c0c4528ef929953a0aaba3aa2d12c09fb6bd35d251a210db803ebf8e"
+    },
+    {
+      "path": "config/v1/study-modeled-synthesis.json",
+      "sha256": "a81dcf3c8c5848d5022d33a78bba2ca02d69978f15752c5ee2007b8a05664218"
+    },
+    {
+      "path": "config/v1/study-modeling-policy.json",
+      "sha256": "742219173d5b1e27e527834fdb693f65656a2eb19fdecb2457a2f809cafdf20a"
     },
     {
       "path": "site/public/data/v1/facilities/index.json",
@@ -221,253 +229,263 @@
     },
     {
       "path": "scripts/build_private_sector_study.py",
-      "sha256": "e3b9f31de6427c903f0158aa10ca7bf0bc62a6cd1093a0a577e84307c6ff69ab"
+      "sha256": "76b6678272b30bd1446a7a9dd4e624bdec2e188004895668d3126dc6bdf27a76"
     },
     {
       "path": "scripts/study_economic_evidence.py",
       "sha256": "7710b04446685c72bced1e9702ac231ca8751cc23ea46dc526885335f046503b"
+    },
+    {
+      "path": "scripts/study_modeled_synthesis.py",
+      "sha256": "e9eef3768c4f170e53a103731e0b7696916282ef2b01ed7abfff8505fef8d4a2"
     }
   ],
   "parts": [
     {
       "path": "site/public/data/v1/study/index.json",
       "record_count": 36,
-      "byte_size": 32587,
-      "sha256": "4004bc978b05941cdba901b604926a53e203afe5000464a460fb2c3e204e853f"
+      "byte_size": 34017,
+      "sha256": "84b6b7959ecb4e98a65f5bc45936332817d978a2c198191aec9afe3cf88ff72f"
     },
     {
       "path": "data/silver/study/projects.json",
       "record_count": 36,
       "byte_size": 17340,
-      "sha256": "3c25817a4a2f16fe9696682583f50d2629622ef29886065ece1377a2a99173c1"
+      "sha256": "8753eafaf197b071a1c843b14655e2438848ad2da5da7a2f1af89ca644d1d08d"
     },
     {
       "path": "data/silver/study/economic-claims.json",
-      "record_count": 560,
-      "byte_size": 864920,
-      "sha256": "acbca6cd61763070501ce6bb070eb3082d1975220d17c97f6222673aaf077e15"
+      "record_count": 584,
+      "byte_size": 900522,
+      "sha256": "622ec00aabd8b98c86584a0032fa0f72d60088c7fda50ba9ff41e06f6315f2b3"
     },
     {
       "path": "data/silver/study/economic-sources.json",
-      "record_count": 152,
-      "byte_size": 95620,
-      "sha256": "0402cbf6bdfd5a02bd31176a074096eac7ae9c8bbb1e628260e50d310fe5d2a0"
+      "record_count": 165,
+      "byte_size": 103408,
+      "sha256": "76ad85382b8c5d08a0ccd0459e3155b8ef6092eae8613c03366010f341357034"
+    },
+    {
+      "path": "data/silver/study/modeled-syntheses.json",
+      "record_count": 8,
+      "byte_size": 38732,
+      "sha256": "a12679d8db7ba5878d3eb6ee1ba015fd439625012ee85012a8ffe39b4dc4cb26"
     },
     {
       "path": "site/public/data/v1/study/projects/prj_study_im3_building_00460089167.json",
       "record_count": 1,
-      "byte_size": 60613,
-      "sha256": "6f16e257e6dd124c234c1845257f92aeff308bb2812e2122533560b64268fab2"
+      "byte_size": 61189,
+      "sha256": "266c9635d781478c8a5f40fe255d1725d6ae629fc760d4443ed7277a8b1692d6"
     },
     {
       "path": "site/public/data/v1/study/projects/prj_study_im3_building_00438078069.json",
       "record_count": 1,
-      "byte_size": 12803,
-      "sha256": "70d3d0ed6c40d13c7d37a4b64703f628bd85078c6d1e938886e5b6a7af55c79e"
+      "byte_size": 13379,
+      "sha256": "a87a269565481346708c81470b5880821bbdd8aadcc1c072606ccb021bfcf1f8"
     },
     {
       "path": "site/public/data/v1/study/projects/prj_study_im3_building_00500820007.json",
       "record_count": 1,
-      "byte_size": 12497,
-      "sha256": "02338235ba8e79ea5af441720b4df8c3a5ffaf655d24232ed93dbfd341aa0fc7"
+      "byte_size": 13073,
+      "sha256": "20fa4f9de519e4d5d63bc2a1354f36463d59585db208ac3ac255e567e9b9cc25"
     },
     {
       "path": "site/public/data/v1/study/projects/prj_study_im3_building_00626785488.json",
       "record_count": 1,
-      "byte_size": 13521,
-      "sha256": "5e6694dd344d0a40e18ad1a0d19694e0744d28dbb7bf8dd6ac6a800f9aded032"
+      "byte_size": 14097,
+      "sha256": "05f6e9d10a1322f3366312ad79b25dc29010ac80cdb861390ba862a937c6adf1"
     },
     {
       "path": "site/public/data/v1/study/projects/prj_study_im3_building_01132541700.json",
       "record_count": 1,
-      "byte_size": 14774,
-      "sha256": "47c2cecd78de743f5e4e668932319681b1a807af6179894f3d4ac74ea9f2c0c7"
+      "byte_size": 15350,
+      "sha256": "dd651fbc3989145aeeae1f6aedc15424a1c3b4e754011a831e49530b7608e323"
     },
     {
       "path": "site/public/data/v1/study/projects/prj_study_im3_building_01024051963.json",
       "record_count": 1,
-      "byte_size": 14896,
-      "sha256": "066e16e7995db525425972663aefeec5fe5ae8e20c43dd2dd161a00e1beac8f4"
+      "byte_size": 15472,
+      "sha256": "c5ff2d0071e8237b22e7940ed098774126194ef312039a512cb5e851d041ad43"
     },
     {
       "path": "site/public/data/v1/study/projects/prj_study_im3_building_00397914434.json",
       "record_count": 1,
-      "byte_size": 12782,
-      "sha256": "6b5b4abce92b126d74c03123694f1c82a4408047ce9354e6211b4d846cf155e8"
+      "byte_size": 13358,
+      "sha256": "7bc5e8efe7edf560d1ce194addbb6be38a0ca50db69ca8f3f00d11646f8731d8"
     },
     {
       "path": "site/public/data/v1/study/projects/prj_study_im3_building_00464097467.json",
       "record_count": 1,
-      "byte_size": 16501,
-      "sha256": "fe0df75fe53e20bdc664eaa965a070b4ae135f5ccefa780f61f89f888dd64828"
+      "byte_size": 17077,
+      "sha256": "31ba17974ab2bbba437f46125083a872f50eac7c72b7c2dfd1e8c16c4a57096b"
     },
     {
       "path": "site/public/data/v1/study/projects/prj_study_im3_building_00116005354.json",
       "record_count": 1,
-      "byte_size": 23910,
-      "sha256": "73d52f064d6b64e9f8339b098969a8023c6d946bd4fb317ababa8fbd1c4c97fe"
+      "byte_size": 24486,
+      "sha256": "36076d5c525bc690a1e99c3ab39f12576eb7783bf0aca9386c326c2e48c605b3"
     },
     {
       "path": "site/public/data/v1/study/projects/prj_study_im3_building_00300974499.json",
       "record_count": 1,
-      "byte_size": 101432,
-      "sha256": "3b6f3fa1f5ab1474d2149391e2343ee03d0c41eafa727f1ec95a22819a60731d"
+      "byte_size": 194422,
+      "sha256": "098565098f08204240fe6b6f19e40c9c2c7feeb80ebd2229186c05e26df3bd5f"
     },
     {
       "path": "site/public/data/v1/study/projects/prj_study_im3_building_01073720208.json",
       "record_count": 1,
-      "byte_size": 21840,
-      "sha256": "0b6346531b3e9138332fa924dfabe120e8df9d9b00fff5e2468f2c1d91428d9f"
+      "byte_size": 22416,
+      "sha256": "ec5db3943f9ba5777a96c13d7979361c1d99b779a1da9e66e78949366fde2a65"
     },
     {
       "path": "site/public/data/v1/study/projects/prj_study_im3_building_00844371952.json",
       "record_count": 1,
-      "byte_size": 12420,
-      "sha256": "93c455d87a59bd92ced0721e7c69523010325ed9c31ab0ac8d6a8de222ff9f87"
+      "byte_size": 12996,
+      "sha256": "da898a1a431c6fcd13752bc2adeb7d6d8675689bacef3048a3d396b2c62d3826"
     },
     {
       "path": "site/public/data/v1/study/projects/prj_study_im3_building_00844389014.json",
       "record_count": 1,
-      "byte_size": 14311,
-      "sha256": "08d22539a1cd32d664401e19eae1bede70b1f0f2448678abc3d18035ed6a3945"
+      "byte_size": 14887,
+      "sha256": "7493965dc6de058b8e56f6794245068721fca0778a09dd62d7089d0f8306b07c"
     },
     {
       "path": "site/public/data/v1/study/projects/prj_study_im3_building_00610827836.json",
       "record_count": 1,
-      "byte_size": 12421,
-      "sha256": "70786cca5ee24adf30102d9e87405d65de29507fd9c8a2e66d0d6164a0c065c1"
+      "byte_size": 12997,
+      "sha256": "0387be2bfb863700740d61bc9abda528abae7fa120de6ceee07a80044777ebb5"
     },
     {
       "path": "site/public/data/v1/study/projects/prj_study_im3_building_00499403180.json",
       "record_count": 1,
-      "byte_size": 12753,
-      "sha256": "2491c667e08109eb0ca325a3c6eb3d54f5fb8ebebc6b879f7ab16f713662ba78"
+      "byte_size": 13329,
+      "sha256": "8f100a80ca8a329479c9ec69f63c878f8cdcb5b6748226443d91d5f2e2d4c418"
     },
     {
       "path": "site/public/data/v1/study/projects/prj_study_im3_building_00364289074.json",
       "record_count": 1,
-      "byte_size": 20180,
-      "sha256": "f685cce261858fcc5457248001aadd815abb84964e63df9c8d3fe890459e6127"
+      "byte_size": 20756,
+      "sha256": "010a7cecf5911d0630aa349ca835179a6cbe13c2841cc0e37c5325ed8b89ef2c"
     },
     {
       "path": "site/public/data/v1/study/projects/prj_study_im3_point_06685432442.json",
       "record_count": 1,
-      "byte_size": 137175,
-      "sha256": "31231e1367aef61632f91591927fcd5db004a49914c61aa22f17e3e4831e8a91"
+      "byte_size": 137751,
+      "sha256": "db4e44c452be97212d1b216378267c127cb503e5588ece419c65ae3d4f22bc3d"
     },
     {
       "path": "site/public/data/v1/study/projects/prj_study_im3_building_00172739953.json",
       "record_count": 1,
-      "byte_size": 33682,
-      "sha256": "662c57b7066c3e501722493202b936d61fcfc13745791c567c9b1e3bdc766197"
+      "byte_size": 34258,
+      "sha256": "eae5f2fbf233ecfba21880e7520eba91a8c778cab2af106e13473aa72d6521ce"
     },
     {
       "path": "site/public/data/v1/study/projects/prj_study_im3_building_00978934687.json",
       "record_count": 1,
-      "byte_size": 277736,
-      "sha256": "1535cd3117869f513f26a01eebf257475bdbf2cc170c739b412bab43345c9575"
+      "byte_size": 278312,
+      "sha256": "60d5cc9d69078dddbd782c7ba879c59246ba2204504b07748e65c17f8c4cd4f8"
     },
     {
       "path": "site/public/data/v1/study/projects/prj_study_im3_building_00838817907.json",
       "record_count": 1,
-      "byte_size": 82467,
-      "sha256": "03b77facd98cb7e8fbc02cab7eb2761c32f606b62546013c3ff1266369c35eec"
+      "byte_size": 83043,
+      "sha256": "acf808ec3f5c906a9fd1d8e1546df42974d0f7e3872aeb7d7073a47d9475345e"
     },
     {
       "path": "site/public/data/v1/study/projects/prj_study_im3_building_00388148510.json",
       "record_count": 1,
-      "byte_size": 47229,
-      "sha256": "456881734422d6ead6effb3fef278d7d8a0d555d0e735ad8d921e41bb6d705b8"
+      "byte_size": 47805,
+      "sha256": "7bcc5696205bc62afbf7097f048d057388cf7f4d0d294c8954b2af59d387b464"
     },
     {
       "path": "site/public/data/v1/study/projects/prj_study_im3_building_00052227492.json",
       "record_count": 1,
-      "byte_size": 34855,
-      "sha256": "873f0948c47fa645758e5f49b0cd9928d1dfb7f2dcffee5caa6b9c76889d788c"
+      "byte_size": 35431,
+      "sha256": "ec907109251d5b778c6e89043f54b1effe3080905e0645c873b69c8ab111220c"
     },
     {
       "path": "site/public/data/v1/study/projects/prj_study_im3_building_00903236619.json",
       "record_count": 1,
-      "byte_size": 24117,
-      "sha256": "a428011762dce3451b088904981fea893f33135804dbd85ec569bd59bdbc1f10"
+      "byte_size": 24693,
+      "sha256": "a4301367bb01915d139e68c83385562a9a1224440047f68526113887198e702e"
     },
     {
       "path": "site/public/data/v1/study/projects/prj_study_im3_building_00214321737.json",
       "record_count": 1,
-      "byte_size": 15810,
-      "sha256": "b0fefd9de2f3a7dcec9bccbbaa1421c69f49f24ba3c5e2aa359bdf88d3b24afa"
+      "byte_size": 16386,
+      "sha256": "33c52f46a32a8e69535c30f6dd2baabad9cff811fd693d0debc2ec4a5d5c2dc4"
     },
     {
       "path": "site/public/data/v1/study/projects/prj_study_im3_building_00377585075.json",
       "record_count": 1,
-      "byte_size": 83425,
-      "sha256": "c670895b8c4418d8474795b566d5e467d30aaf65f2e697cab1e44117f429d986"
+      "byte_size": 84001,
+      "sha256": "df69d3eaa49a1d3c141176e63673acc4265c60dc3944fe02c3069ba11d69326d"
     },
     {
       "path": "site/public/data/v1/study/projects/prj_study_im3_building_00888253616.json",
       "record_count": 1,
-      "byte_size": 22103,
-      "sha256": "993c70f8be37725c65d479be3ed9234a6b740ed8c619ee81ebda04bbead56474"
+      "byte_size": 22679,
+      "sha256": "f943ad56894fc7c16f50a1e4aa840b1941e0b3e07dadbcbd40f8d3f0c4b40767"
     },
     {
       "path": "site/public/data/v1/study/projects/prj_study_im3_building_00664938835.json",
       "record_count": 1,
-      "byte_size": 23917,
-      "sha256": "147cd34dd61491f48d216ba91f1613e877bedbcde7c4e8708adacfe16f3cff1b"
+      "byte_size": 24493,
+      "sha256": "93479309be9e9ab430d766e919c56133ddd410bda67a0929ac1490994bb6602e"
     },
     {
       "path": "site/public/data/v1/study/projects/prj_study_im3_point_09190480200.json",
       "record_count": 1,
-      "byte_size": 80981,
-      "sha256": "fe49d02670575b970939b2a3b42d59b44e16ab22fa7ffd98929fe03d02568a1d"
+      "byte_size": 81557,
+      "sha256": "2791eb20f8878d52cbad56eb793ea764a423b92c9cadfa65d21f5a40248ced60"
     },
     {
       "path": "site/public/data/v1/study/projects/prj_study_im3_building_00359930465.json",
       "record_count": 1,
-      "byte_size": 12482,
-      "sha256": "b18432eb577ad24928354e6fe15b91fc62ad63d286765e045ab361f2860405e0"
+      "byte_size": 13058,
+      "sha256": "7a95712be0bff061a0594fe8ae85b370827d14430ecaff9c1dcddd6717696e76"
     },
     {
       "path": "site/public/data/v1/study/projects/prj_study_im3_building_00598261190.json",
       "record_count": 1,
-      "byte_size": 52053,
-      "sha256": "8ed9ab17cb6368efc5381077d8b5cd88bdc2bfcce339012ddd37225b4d19705f"
+      "byte_size": 52629,
+      "sha256": "8d20d34964029db3ee79e278b224a78d4a265ea3886edb3295f28a24cfc824a4"
     },
     {
       "path": "site/public/data/v1/study/projects/prj_study_im3_building_00472761713.json",
       "record_count": 1,
-      "byte_size": 28566,
-      "sha256": "0b0d9cdbfe7c21fea8adb04ce1a33c674d0beabaf1ee98214c0debe5784a4fb8"
+      "byte_size": 29142,
+      "sha256": "3c98a6373f48d619f9fec80201483aa3f04860ab6932803412b39b620ac4e0a9"
     },
     {
       "path": "site/public/data/v1/study/projects/prj_study_im3_campus_00009474864.json",
       "record_count": 1,
-      "byte_size": 12271,
-      "sha256": "625991e92fdce6972343f4288ecba26a70d79f222643d1d8da5cd1752041dee7"
+      "byte_size": 12847,
+      "sha256": "a134be3c77873f3ef113ad6f2efbfba97336429659f40504101dafd221e53614"
     },
     {
       "path": "site/public/data/v1/study/projects/prj_study_im3_campus_00019988712.json",
       "record_count": 1,
-      "byte_size": 14674,
-      "sha256": "8094c27d1c6e4ce3e267c787c635d1653acd8f57f86b5441ecec745d5b67360e"
+      "byte_size": 15250,
+      "sha256": "f8e548b34ab1c2d4ee2e4a9d5b5d3d18cd09d76691027302fdd11b70948459e3"
     },
     {
       "path": "site/public/data/v1/study/projects/prj_study_im3_campus_00231769626.json",
       "record_count": 1,
-      "byte_size": 35469,
-      "sha256": "728d293e0e6c3c02a27cb976c1be4c6ba57b15dcbdcc7490b888570af5a427dd"
+      "byte_size": 36045,
+      "sha256": "02630fda48301a0644216bda6788f36fda252b84338baa9ed5c108b471642f41"
     },
     {
       "path": "site/public/data/v1/study/projects/prj_study_im3_campus_00578435601.json",
       "record_count": 1,
-      "byte_size": 20199,
-      "sha256": "e6b93a230700eaae6496a1e0a0d1e94de59c98d08384dceaecb9aaa9c620e2d9"
+      "byte_size": 20775,
+      "sha256": "29404e224a513fccb3394772daf4c72c5cee11099a3c9040149b75d50165d75c"
     },
     {
       "path": "site/public/data/v1/study/projects/prj_study_im3_campus_00675108684.json",
       "record_count": 1,
-      "byte_size": 13539,
-      "sha256": "ac3540cb8cc71a0a1ea6276b9d428da621c8b6aa48c9d4551b5c4ba53d58f364"
+      "byte_size": 14115,
+      "sha256": "381efc02af9609cdf7eb7fc8dac78303ab4cecd0c22c01292beea2b40248770b"
     }
   ]
 }

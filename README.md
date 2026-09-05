@@ -11,11 +11,12 @@ projects across 35 counties and 23 states, including five campus-linked candidat
 The default page is the project register; `#/project/{project_id}` opens a sourced
 history and economic-evidence checklist, `#/map` retains the national map with study
 markers, and existing `#/county/{FIPS}` links remain available. First-entry decisions
-are retained as a separate research question. Study release 1.35 publishes 545 economic source records
-linked to all 36 candidates: 498 reported observations and 47 projections.
+are retained as a separate research question. Study release 1.38 publishes 584 economic source
+records linked to all 36 candidates: 532 reported records and 52 projections, plus eight separately
+labeled modeled syntheses for Apple Mesa.
 Profiles show source pages/sections, campus/company scope, tax-base history with gaps,
 construction peaks, paired tax/incentive histories with a narrowly defined documented difference,
-qualified amounts, local-contractor spending and named supplier roles, community funding, operating scale, private financing, capacity and permit context, and a separate forecast view.
+qualified amounts, local-contractor spending and named supplier roles, community funding, operating scale, private financing, capacity and permit context, and separate forecast and modeled-synthesis views.
 Dated research updates flag developments such as expired expansion agreements, state incentive contract and payment status, an EID debt-register screen, and an unsubmitted annual report. Harmonized annual project accounts and attributable-effect
 estimates remain incomplete.
 
@@ -40,7 +41,11 @@ an impact model. `config/v1/study-economic-evidence.json` defines scoped measure
 source metadata and reviewed facts. The builder also materializes the existing source
 and claim contracts in `data/silver/study/economic-sources.json` and
 `economic-claims.json`. Claims with unresolved campus/building allocation or snapshot
-timing are not promoted into annual project observations. The remaining evidence gaps
+timing are not promoted into annual project observations. `config/v1/study-modeled-synthesis.json`
+separately registers formulas, named parameters with provenance, explicitly typed intervals,
+contribution channels, anti-overlap aggregation identities, assumptions, limitations and confidence;
+`config/v1/study-modeling-policy.json` governs study-wide eligibility and publication separation.
+Modeled estimates never enter the canonical source-claim artifact. The remaining evidence gaps
 are explicit, never zero-filled. See `docs/study-economic-evidence.md` for review rules
 and the first batch’s scope.
 

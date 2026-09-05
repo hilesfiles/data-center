@@ -1,0 +1,914 @@
+{
+  "schema_version": "1.0.0",
+  "synthesis_version": "study-modeled-synthesis-2.0.0",
+  "modeling_policy_version": "study-modeling-policy-1.0.0",
+  "reviewed_on": "2026-09-05",
+  "scope_note": "Analyst-modeled syntheses are calculations from cited source claims, reported bands, public benchmarks, statutes, and explicit sensitivity assumptions. They are not reported facts, metered observations, audited payroll, claimed tax credits, or causal impact estimates. Each range is a scenario envelope, not a statistical confidence interval.",
+  "sources": [
+    {
+      "source_id": "src_study_ftz_board_annual_report_2024",
+      "title": "Foreign-Trade Zones Board Annual Report to Congress, 2024",
+      "url": "https://www.trade.gov/sites/default/files/2025-12/AR-2024%20%28002%29.pdf",
+      "publisher": "U.S. Foreign-Trade Zones Board",
+      "source_type": "other",
+      "publication_date": {
+        "precision": "year",
+        "year": 2025
+      },
+      "retrieved_on": "2026-09-05",
+      "review_method": "pdf_text_and_page_image",
+      "notes": "The Mesa FTZ 221 table reports 101–150 employees across all activated zone activity and reports Apple production exports in a $75–100 million band. The employee band is not Apple-only."
+    },
+    {
+      "source_id": "src_study_trade_ftz_annual_report_tips",
+      "title": "FTZ Annual Report Tips",
+      "url": "https://www.trade.gov/annual-report-tips",
+      "publisher": "U.S. International Trade Administration",
+      "source_type": "other",
+      "publication_date": {
+        "precision": "unknown"
+      },
+      "retrieved_on": "2026-09-05",
+      "review_method": "web_page",
+      "notes": "Defines reported FTZ employment as direct and contract employees within the activated area, with part-time workers stated as full-time equivalents."
+    },
+    {
+      "source_id": "src_study_census_cbp_2023_maricopa_518210",
+      "title": "2023 County Business Patterns: Maricopa County, NAICS 518210",
+      "url": "https://www.census.gov/data/datasets/2023/econ/cbp/2023-cbp.html",
+      "publisher": "U.S. Census Bureau",
+      "source_type": "other",
+      "publication_date": {
+        "precision": "year",
+        "year": 2023
+      },
+      "retrieved_on": "2026-09-05",
+      "review_method": "structured_data",
+      "notes": "County industry benchmark: 12,467 March employees and $1,182,395,000 annual payroll for computing $94,841.98 payroll per employee. Both employment and payroll carry the Census H noise flag."
+    },
+    {
+      "source_id": "src_study_doe_am_tool_wue_2023",
+      "title": "Data Center Air Management Tool User's Manual v3.1",
+      "url": "https://datacenters.lbl.gov/sites/default/files/2023-07/DOE%20AM%20Tool--User%27s%20Manual%20v3.1%20%287-25-2023%29.pdf",
+      "publisher": "U.S. Department of Energy and Lawrence Berkeley National Laboratory",
+      "source_type": "other",
+      "publication_date": {
+        "precision": "year",
+        "year": 2023
+      },
+      "retrieved_on": "2026-09-05",
+      "review_method": "pdf_text_and_page_image",
+      "notes": "Defines onsite WUE as annual onsite water divided by annual IT-equipment energy and gives an approximately 2 L/kWh U.S. average data-center WUE reference point."
+    },
+    {
+      "source_id": "src_study_state_of_art_wue_2024",
+      "title": "The environmental footprint of data centers in the United States",
+      "url": "https://www.nature.com/articles/s41598-024-76682-6",
+      "publisher": "Scientific Reports",
+      "source_type": "other",
+      "publication_date": {
+        "precision": "year",
+        "year": 2024
+      },
+      "retrieved_on": "2026-09-05",
+      "review_method": "web_page",
+      "notes": "Provides state-of-the-art annualized PUE 1.17 and WUE 0.55 L/kWh benchmark inputs used for the low-water scenario."
+    },
+    {
+      "source_id": "src_study_azdor_assessment_ratio_2026",
+      "title": "Historical Arizona Assessment Ratios",
+      "url": "https://azdor.gov/sites/default/files/document/PROPERTY_AbstractAssessmentRoll.pdf",
+      "publisher": "Arizona Department of Revenue",
+      "source_type": "state_record",
+      "publication_date": {
+        "precision": "year",
+        "year": 2026
+      },
+      "retrieved_on": "2026-09-05",
+      "review_method": "pdf_text_and_page_image",
+      "notes": "Reports Class 1 assessment ratios of 17% in 2023, 16.5% in 2024, and 16% in 2025, compared with the 5% Class 6 FTZ ratio."
+    },
+    {
+      "source_id": "src_study_trade_ftz_duty_savings_estimator",
+      "title": "Foreign-Trade Zone Duty Savings Estimator",
+      "url": "https://www.trade.gov/duty-savings-estimator",
+      "publisher": "U.S. International Trade Administration",
+      "source_type": "other",
+      "publication_date": {
+        "precision": "unknown"
+      },
+      "retrieved_on": "2026-09-05",
+      "review_method": "web_page",
+      "notes": "Describes FTZ duty-savings mechanisms. Public Apple Mesa records do not disclose HTS mix, foreign-status share, or effective duty rates, so the modeled export component is an assumption-driven sensitivity only."
+    }
+  ],
+  "estimates": [
+    {
+      "estimate_id": "est_study_apple_mesa_onsite_water_2025",
+      "project_id": "prj_study_im3_building_00300974499",
+      "metric_code": "study.modeled_onsite_water_use",
+      "label": "Modeled onsite water use",
+      "category": "resources",
+      "unit": "gallons_per_year",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 109322072.06,
+      "period": {
+        "kind": "fiscal_year",
+        "year": 2025,
+        "label": "Apple fiscal year 2025 scenario"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Apple Mesa whole-facility onsite water-use scenario derived from reported electricity",
+        "county_fips": "04013",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": 69915278.64,
+        "central": 109322072.06,
+        "high": 148728865.48,
+        "interpretation": "Low applies state-of-the-art WUE/PUE; high applies a 2.0 L/kWh WUE and 2.0 PUE reference; central is the endpoint midpoint."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "apple_mesa_water_2025",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "facility_electricity",
+          "value": 563000000,
+          "unit": "kWh_per_year",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_apple_mesa_electricity_use_2025",
+            "detail": "Apple-reported whole-facility electricity"
+          },
+          "transformation": "Used as facility-energy denominator basis"
+        },
+        {
+          "name": "low_wue",
+          "value": 0.55,
+          "unit": "liters_per_IT_kWh",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_state_of_art_wue_2024",
+            "detail": "State-of-the-art WUE benchmark"
+          },
+          "transformation": "Divided by low-scenario PUE"
+        },
+        {
+          "name": "low_pue",
+          "value": 1.17,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_state_of_art_wue_2024",
+            "detail": "State-of-the-art annualized PUE benchmark"
+          },
+          "transformation": "Converts facility electricity to estimated IT electricity"
+        },
+        {
+          "name": "liters_per_gallon",
+          "value": 3.785411784,
+          "unit": "liters_per_gallon",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Exact unit conversion constant"
+          },
+          "transformation": "Divides liters to produce U.S. gallons"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "No Apple Mesa meter reading or facility PUE is public, and the site's cooling improvements may materially change the benchmark relationship.",
+      "decision_relevance": "Bounds annual onsite water demand where no public meter series is available.",
+      "evidence_search": {
+        "direct_observation_status": "not_found",
+        "source_projection_status": "not_found",
+        "acquisition_target": "Apple Mesa annual potable, reclaimed, process, and total-water meter records"
+      },
+      "derivation": {
+        "method": "benchmark_application",
+        "model_version": "apple-mesa-water-1.0.0",
+        "formula": "facility_kWh × (WUE_liters_per_IT_kWh ÷ PUE) ÷ 3.785411784 liters_per_gallon",
+        "input_claim_ids": [
+          "clm_study_apple_mesa_electricity_use_2025"
+        ],
+        "input_source_ids": [
+          "src_study_apple_environment_2026",
+          "src_study_doe_am_tool_wue_2023",
+          "src_study_state_of_art_wue_2024"
+        ],
+        "assumptions": [
+          "Reported electricity is whole-facility energy.",
+          "WUE/PUE benchmark ratios transfer to Mesa.",
+          "Estimate covers onsite water only and excludes indirect grid water."
+        ]
+      },
+      "limitations": [
+        "Not a meter reading.",
+        "Benchmark WUE and PUE may not transfer to Mesa.",
+        "Excludes generation-related indirect water."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "A benchmark-based scenario, not measured water consumption or a permit capacity.",
+      "reviewed_on": "2026-09-05"
+    },
+    {
+      "estimate_id": "est_study_apple_mesa_ftz_employment_2024",
+      "project_id": "prj_study_im3_building_00300974499",
+      "metric_code": "study.modeled_ftz_area_employment",
+      "label": "Modeled FTZ-area employment midpoint",
+      "category": "operations",
+      "unit": "FTE",
+      "measure_type": "stock",
+      "basis": "modeled_synthesis",
+      "value": 125.5,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2024,
+        "label": "2024 FTZ reporting year"
+      },
+      "scope": {
+        "level": "ftz_activated_area",
+        "label": "All activated activity in Mesa FTZ 221; not Apple-only",
+        "county_fips": "04013",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "reported_band",
+        "low": 101,
+        "central": 125.5,
+        "high": 150,
+        "interpretation": "The official 101–150 FTE reporting band with its arithmetic midpoint."
+      },
+      "contribution_channel": "direct",
+      "aggregation": {
+        "aggregation_id": "mesa_ftz_employment_2024",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "reported_band_low",
+          "value": 101,
+          "unit": "FTE",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_ftz_board_annual_report_2024",
+            "detail": "Published lower endpoint"
+          },
+          "transformation": "Used as interval low"
+        },
+        {
+          "name": "reported_band_high",
+          "value": 150,
+          "unit": "FTE",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_ftz_board_annual_report_2024",
+            "detail": "Published upper endpoint"
+          },
+          "transformation": "Used as interval high and averaged with low"
+        }
+      ],
+      "confidence": "high",
+      "confidence_rationale": "The range is official, but the midpoint is synthesized and the zone-wide scope prevents Apple-only attribution.",
+      "decision_relevance": "Provides a transparent zone-wide employment range while Apple-only employment remains unavailable.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "acquisition_target": "Apple Mesa direct and contractor FTE by year and work location"
+      },
+      "derivation": {
+        "method": "band_midpoint",
+        "model_version": "ftz-band-midpoint-1.0.0",
+        "formula": "(reported_band_low + reported_band_high) ÷ 2",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_ftz_board_annual_report_2024",
+          "src_study_trade_ftz_annual_report_tips"
+        ],
+        "assumptions": [
+          "Published band endpoints are inclusive.",
+          "Employment is interpreted as FTE under FTZ reporting guidance."
+        ]
+      },
+      "limitations": [
+        "Zone-wide rather than Apple-only.",
+        "Includes direct and contract workers.",
+        "Midpoint is not a reported observation."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "The range includes direct and contract employees throughout the activated area and cannot be assigned wholly to Apple.",
+      "reviewed_on": "2026-09-05"
+    },
+    {
+      "estimate_id": "est_study_apple_mesa_ftz_payroll_2024",
+      "project_id": "prj_study_im3_building_00300974499",
+      "metric_code": "study.modeled_ftz_area_payroll",
+      "label": "Modeled FTZ-area annual payroll",
+      "category": "operations",
+      "unit": "USD",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 11902668.85,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2024,
+        "label": "2024 employment band × 2023 county industry pay benchmark"
+      },
+      "scope": {
+        "level": "ftz_activated_area",
+        "label": "All activated activity in Mesa FTZ 221; not Apple-only",
+        "county_fips": "04013",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": 9579040.27,
+        "central": 11902668.85,
+        "high": 14226297.43,
+        "interpretation": "FTZ employee band endpoints and midpoint multiplied by $94,841.98 county-industry payroll per employee."
+      },
+      "contribution_channel": "direct",
+      "aggregation": {
+        "aggregation_id": "mesa_ftz_payroll_2024",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "ftz_fte_midpoint",
+          "value": 125.5,
+          "unit": "FTE",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_ftz_board_annual_report_2024",
+            "detail": "Midpoint derived from the official employment band"
+          },
+          "transformation": "Multiplied by county industry payroll per employee"
+        },
+        {
+          "name": "county_industry_payroll",
+          "value": 1182395000,
+          "unit": "USD",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_census_cbp_2023_maricopa_518210",
+            "detail": "NAICS 518210 annual payroll"
+          },
+          "transformation": "Divided by county industry employment"
+        },
+        {
+          "name": "county_industry_employment",
+          "value": 12467,
+          "unit": "employees",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_census_cbp_2023_maricopa_518210",
+            "detail": "NAICS 518210 March employment"
+          },
+          "transformation": "Denominator for payroll per employee"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The employment band is zone-wide; the county NAICS benchmark is not Apple compensation and carries Census noise flags.",
+      "decision_relevance": "Bounds zone-wide labor compensation for an operating-contribution account.",
+      "evidence_search": {
+        "direct_observation_status": "not_found",
+        "source_projection_status": "not_found",
+        "acquisition_target": "Apple Mesa annual payroll, benefits, contractor compensation, and employee residence"
+      },
+      "derivation": {
+        "method": "benchmark_application",
+        "model_version": "ftz-payroll-1.0.0",
+        "formula": "FTZ_FTE × ($1,182,395,000 CBP payroll ÷ 12,467 CBP March employees)",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_ftz_board_annual_report_2024",
+          "src_study_trade_ftz_annual_report_tips",
+          "src_study_census_cbp_2023_maricopa_518210"
+        ],
+        "assumptions": [
+          "County NAICS 518210 average payroll approximates payroll per FTZ-area FTE.",
+          "The 2023 pay benchmark is applied without inflation adjustment to the 2024 employment band."
+        ]
+      },
+      "limitations": [
+        "Zone-wide rather than Apple-only.",
+        "County industry average is not Apple compensation.",
+        "Census employment and payroll carry noise flags."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "A county-industry benchmark application, not current Apple payroll, wages, or employee compensation disclosure.",
+      "reviewed_on": "2026-09-05"
+    },
+    {
+      "estimate_id": "est_study_apple_mesa_ioc_credit_realized",
+      "project_id": "prj_study_im3_building_00300974499",
+      "metric_code": "study.modeled_state_tax_credit_realization",
+      "label": "Modeled IOC tax credits realized",
+      "category": "public_costs",
+      "unit": "USD",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 12500000,
+      "period": {
+        "kind": "cumulative",
+        "report_date": "2024-12-31",
+        "label": "Five-year statutory realization sensitivity through the 2024 review"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Apple Mesa international operations center renewable-energy income-tax credit",
+        "county_fips": "04013",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": 0,
+        "central": 12500000,
+        "high": 25000000,
+        "interpretation": "Zero-to-full statutory-cost realization range; central is the midpoint, not a disclosed claim amount."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "apple_mesa_ioc_credit",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "statutory_cost_upper_bound",
+          "value": 25000000,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_apple_mesa_state_tax_credit_cost_plan_2024",
+            "detail": "Legislative five-year cost assumption absent recapture"
+          },
+          "transformation": "Multiplied by realization-rate scenarios"
+        },
+        {
+          "name": "central_realization_rate",
+          "value": 0.5,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Midpoint sensitivity assumption"
+          },
+          "transformation": "Multiplied by statutory upper bound"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "Taxpayer use is confidential; the legislative review supplies a $25 million five-year upper-bound assumption but no realized amount.",
+      "decision_relevance": "Bounds a potentially material public cost while confidential taxpayer records are unavailable.",
+      "evidence_search": {
+        "direct_observation_status": "not_found",
+        "source_projection_status": "available_separately",
+        "acquisition_target": "Taxpayer-level IOC credits claimed, allowed, recaptured, and carried forward by fiscal year"
+      },
+      "derivation": {
+        "method": "sensitivity_analysis",
+        "model_version": "ioc-credit-realization-1.0.0",
+        "formula": "realization_rate × $25,000,000, with realization_rate scenarios 0%, 50%, and 100%",
+        "input_claim_ids": [
+          "clm_study_apple_mesa_state_tax_credit_cost_plan_2024"
+        ],
+        "input_source_ids": [
+          "src_study_arizona_ioc_tax_credit_review_2024"
+        ],
+        "assumptions": [
+          "No recapture is assumed at the high endpoint.",
+          "Confidential realized credits may be anywhere within the stated range."
+        ]
+      },
+      "limitations": [
+        "Taxpayer use is confidential.",
+        "Central value is an analyst midpoint.",
+        "Does not observe recapture or carryforward timing."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Sensitivity analysis only; it does not assert that Apple claimed $12.5 million or any other amount.",
+      "reviewed_on": "2026-09-05"
+    },
+    {
+      "estimate_id": "est_study_apple_mesa_ftz_property_tax_reduction_2023",
+      "project_id": "prj_study_im3_building_00300974499",
+      "metric_code": "study.modeled_ftz_property_tax_reduction",
+      "label": "Modeled FTZ property-tax reduction versus Class 1",
+      "category": "public_costs",
+      "unit": "USD",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 5358646.75,
+      "period": {
+        "kind": "tax_year",
+        "year": 2023,
+        "label": "Tax year 2023 counterfactual"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Combined Apple Mesa business-personal and real-property accounts",
+        "county_fips": "04013",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "deterministic_counterfactual",
+        "low": 5358646.75,
+        "central": 5358646.75,
+        "high": 5358646.75,
+        "interpretation": "Deterministic Class 1 counterfactual holding the observed effective tax relation constant."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "apple_mesa_ftz_property_tax_2023",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "business_property_tax_paid",
+          "value": 1354526.88,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_apple_mesa_bpp_property_taxes_paid_2023",
+            "detail": "Paid business-personal-property account"
+          },
+          "transformation": "Added to real-property tax paid"
+        },
+        {
+          "name": "real_property_tax_paid",
+          "value": 878242.6,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_apple_mesa_real_property_taxes_paid_2023",
+            "detail": "Paid real-property account"
+          },
+          "transformation": "Added to business-personal-property tax paid"
+        },
+        {
+          "name": "class_1_ratio",
+          "value": 0.17,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_azdor_assessment_ratio_2026",
+            "detail": "Tax-year Class 1 assessment ratio"
+          },
+          "transformation": "Divided by the 5% FTZ ratio"
+        }
+      ],
+      "confidence": "medium",
+      "confidence_rationale": "Inputs and statutory ratios are observed, but a counterfactual reclassification could alter levies or eligibility in ways the model holds fixed.",
+      "decision_relevance": "Quantifies the assessment-ratio component of FTZ treatment for fiscal comparison.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "not_applicable",
+        "acquisition_target": "Taxing-jurisdiction levy simulation and assessor counterfactual without Class 6 FTZ treatment"
+      },
+      "derivation": {
+        "method": "statutory_counterfactual",
+        "model_version": "az-ftz-class1-1.0.0",
+        "formula": "combined_tax_paid × (Class_1_ratio ÷ 5% - 1)",
+        "input_claim_ids": [
+          "clm_study_apple_mesa_bpp_property_taxes_paid_2023",
+          "clm_study_apple_mesa_real_property_taxes_paid_2023"
+        ],
+        "input_source_ids": [
+          "src_study_maricopa_treasurer_apple_bpp_2026",
+          "src_study_maricopa_treasurer_apple_real_2026",
+          "src_study_azdor_assessment_ratio_2026"
+        ],
+        "assumptions": [
+          "Class 1 ratio is 17% and FTZ Class 6 ratio is 5%.",
+          "Effective tax rates, levies, valuation, and payment behavior remain unchanged."
+        ]
+      },
+      "limitations": [
+        "Holds levies and effective tax relations fixed.",
+        "Does not model behavioral response or alternative classification eligibility.",
+        "Not a cash grant or complete net fiscal benefit."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Counterfactual tax-account difference, not a cash grant or a comprehensive net fiscal benefit.",
+      "annual_series_key": "apple_mesa_ftz_property_tax_reduction",
+      "reviewed_on": "2026-09-05"
+    },
+    {
+      "estimate_id": "est_study_apple_mesa_ftz_property_tax_reduction_2024",
+      "project_id": "prj_study_im3_building_00300974499",
+      "metric_code": "study.modeled_ftz_property_tax_reduction",
+      "label": "Modeled FTZ property-tax reduction versus Class 1",
+      "category": "public_costs",
+      "unit": "USD",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 4429801.1,
+      "period": {
+        "kind": "tax_year",
+        "year": 2024,
+        "label": "Tax year 2024 counterfactual"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Combined Apple Mesa business-personal and real-property accounts",
+        "county_fips": "04013",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "deterministic_counterfactual",
+        "low": 4429801.1,
+        "central": 4429801.1,
+        "high": 4429801.1,
+        "interpretation": "Deterministic Class 1 counterfactual holding the observed effective tax relation constant."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "apple_mesa_ftz_property_tax_2024",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "business_property_tax_paid",
+          "value": 1052763.78,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_apple_mesa_bpp_property_taxes_paid_2024",
+            "detail": "Paid business-personal-property account"
+          },
+          "transformation": "Added to real-property tax paid"
+        },
+        {
+          "name": "real_property_tax_paid",
+          "value": 873236.7,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_apple_mesa_real_property_taxes_paid_2024",
+            "detail": "Paid real-property account"
+          },
+          "transformation": "Added to business-personal-property tax paid"
+        },
+        {
+          "name": "class_1_ratio",
+          "value": 0.165,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_azdor_assessment_ratio_2026",
+            "detail": "Tax-year Class 1 assessment ratio"
+          },
+          "transformation": "Divided by the 5% FTZ ratio"
+        }
+      ],
+      "confidence": "medium",
+      "confidence_rationale": "Inputs and statutory ratios are observed, but a counterfactual reclassification could alter levies or eligibility in ways the model holds fixed.",
+      "decision_relevance": "Quantifies the assessment-ratio component of FTZ treatment for fiscal comparison.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "not_applicable",
+        "acquisition_target": "Taxing-jurisdiction levy simulation and assessor counterfactual without Class 6 FTZ treatment"
+      },
+      "derivation": {
+        "method": "statutory_counterfactual",
+        "model_version": "az-ftz-class1-1.0.0",
+        "formula": "combined_tax_paid × (Class_1_ratio ÷ 5% - 1)",
+        "input_claim_ids": [
+          "clm_study_apple_mesa_bpp_property_taxes_paid_2024",
+          "clm_study_apple_mesa_real_property_taxes_paid_2024"
+        ],
+        "input_source_ids": [
+          "src_study_maricopa_treasurer_apple_bpp_2026",
+          "src_study_maricopa_treasurer_apple_real_2026",
+          "src_study_azdor_assessment_ratio_2026"
+        ],
+        "assumptions": [
+          "Class 1 ratio is 16.5% and FTZ Class 6 ratio is 5%.",
+          "Effective tax rates, levies, valuation, and payment behavior remain unchanged."
+        ]
+      },
+      "limitations": [
+        "Holds levies and effective tax relations fixed.",
+        "Does not model behavioral response or alternative classification eligibility.",
+        "Not a cash grant or complete net fiscal benefit."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Counterfactual tax-account difference, not a cash grant or a comprehensive net fiscal benefit.",
+      "annual_series_key": "apple_mesa_ftz_property_tax_reduction",
+      "reviewed_on": "2026-09-05"
+    },
+    {
+      "estimate_id": "est_study_apple_mesa_ftz_property_tax_reduction_2025",
+      "project_id": "prj_study_im3_building_00300974499",
+      "metric_code": "study.modeled_ftz_property_tax_reduction",
+      "label": "Modeled FTZ property-tax reduction versus Class 1",
+      "category": "public_costs",
+      "unit": "USD",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 4121427.02,
+      "period": {
+        "kind": "tax_year",
+        "year": 2025,
+        "label": "Tax year 2025 counterfactual"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Combined Apple Mesa business-personal and real-property accounts",
+        "county_fips": "04013",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "deterministic_counterfactual",
+        "low": 4121427.02,
+        "central": 4121427.02,
+        "high": 4121427.02,
+        "interpretation": "Deterministic Class 1 counterfactual holding the observed effective tax relation constant."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "apple_mesa_ftz_property_tax_2025",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "business_property_tax_paid",
+          "value": 966899.82,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_apple_mesa_bpp_property_taxes_paid_2025",
+            "detail": "Paid business-personal-property account"
+          },
+          "transformation": "Added to real-property tax paid"
+        },
+        {
+          "name": "real_property_tax_paid",
+          "value": 906476.1,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_apple_mesa_real_property_taxes_paid_2025",
+            "detail": "Paid real-property account"
+          },
+          "transformation": "Added to business-personal-property tax paid"
+        },
+        {
+          "name": "class_1_ratio",
+          "value": 0.16,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_azdor_assessment_ratio_2026",
+            "detail": "Tax-year Class 1 assessment ratio"
+          },
+          "transformation": "Divided by the 5% FTZ ratio"
+        }
+      ],
+      "confidence": "medium",
+      "confidence_rationale": "Inputs and statutory ratios are observed, but a counterfactual reclassification could alter levies or eligibility in ways the model holds fixed.",
+      "decision_relevance": "Quantifies the assessment-ratio component of FTZ treatment for fiscal comparison.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "not_applicable",
+        "acquisition_target": "Taxing-jurisdiction levy simulation and assessor counterfactual without Class 6 FTZ treatment"
+      },
+      "derivation": {
+        "method": "statutory_counterfactual",
+        "model_version": "az-ftz-class1-1.0.0",
+        "formula": "combined_tax_paid × (Class_1_ratio ÷ 5% - 1)",
+        "input_claim_ids": [
+          "clm_study_apple_mesa_bpp_property_taxes_paid_2025",
+          "clm_study_apple_mesa_real_property_taxes_paid_2025"
+        ],
+        "input_source_ids": [
+          "src_study_maricopa_treasurer_apple_bpp_2026",
+          "src_study_maricopa_treasurer_apple_real_2026",
+          "src_study_azdor_assessment_ratio_2026"
+        ],
+        "assumptions": [
+          "Class 1 ratio is 16% and FTZ Class 6 ratio is 5%.",
+          "Effective tax rates, levies, valuation, and payment behavior remain unchanged."
+        ]
+      },
+      "limitations": [
+        "Holds levies and effective tax relations fixed.",
+        "Does not model behavioral response or alternative classification eligibility.",
+        "Not a cash grant or complete net fiscal benefit."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Counterfactual tax-account difference, not a cash grant or a comprehensive net fiscal benefit.",
+      "annual_series_key": "apple_mesa_ftz_property_tax_reduction",
+      "reviewed_on": "2026-09-05"
+    },
+    {
+      "estimate_id": "est_study_apple_mesa_ftz_export_duty_avoidance_2024",
+      "project_id": "prj_study_im3_building_00300974499",
+      "metric_code": "study.modeled_ftz_export_duty_avoidance",
+      "label": "Modeled FTZ export-duty avoidance",
+      "category": "public_costs",
+      "unit": "USD",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 2187500,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2024,
+        "label": "2024 export-value sensitivity"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Apple production activity reported for Mesa FTZ 221",
+        "county_fips": "04013",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": 0,
+        "central": 2187500,
+        "high": 10000000,
+        "interpretation": "Low assumes no dutiable foreign-status exports; central uses $87.5M exports × 50% foreign share × 5% duty; high uses $100M × 100% × 10%."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "apple_mesa_ftz_export_duty_2024",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "central_export_value",
+          "value": 87500000,
+          "unit": "USD",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_ftz_board_annual_report_2024",
+            "detail": "Midpoint of the reported $75–100 million export band"
+          },
+          "transformation": "Multiplied by foreign-status share and effective duty rate"
+        },
+        {
+          "name": "central_foreign_status_share",
+          "value": 0.5,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Analyst sensitivity assumption"
+          },
+          "transformation": "Multiplied by export value"
+        },
+        {
+          "name": "central_effective_duty_rate",
+          "value": 0.05,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Analyst sensitivity assumption"
+          },
+          "transformation": "Multiplied by assumed foreign-status export value"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The public report supplies only an export-value band and does not disclose HTS mix, foreign-status share, or applicable duty rates.",
+      "decision_relevance": "Bounds one FTZ benefit channel without presenting it as a reported or total benefit.",
+      "evidence_search": {
+        "direct_observation_status": "not_found",
+        "source_projection_status": "not_found",
+        "acquisition_target": "Apple Mesa FTZ customs entries, foreign-status share, HTS mix, duties avoided, and compliance costs"
+      },
+      "derivation": {
+        "method": "sensitivity_analysis",
+        "model_version": "ftz-export-duty-1.0.0",
+        "formula": "reported_export_value × assumed_foreign_status_share × assumed_effective_duty_rate",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_ftz_board_annual_report_2024",
+          "src_study_trade_ftz_duty_savings_estimator"
+        ],
+        "assumptions": [
+          "Central foreign-status share is 50% and effective duty rate is 5%.",
+          "High foreign-status share is 100% and effective duty rate is 10%.",
+          "Estimate excludes deferral, inverted tariffs, weekly-entry savings, Section 301/232 effects, compliance costs, and property-tax treatment."
+        ]
+      },
+      "limitations": [
+        "HTS mix is unavailable.",
+        "Foreign-status share and duty rates are assumptions.",
+        "Excludes other FTZ savings and compliance costs."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Assumption-driven export component only; it is not a reported or total FTZ benefit.",
+      "reviewed_on": "2026-09-05"
+    }
+  ]
+}

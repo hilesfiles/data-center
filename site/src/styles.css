@@ -73,6 +73,17 @@ button, a, input, select, summary { touch-action: manipulation; }
 .economic-tabs button[aria-selected="true"] { border-color: var(--teal); color: var(--teal); background: #e8efe9; font-weight: 700; }
 .economic-tabs span { margin-left: 7px; font-family: "DM Mono", monospace; }
 .projection-note { background: #fbefde; padding: 18px; color: #75572e; font-size: .82rem; line-height: 1.7; }
+.modeled-note { background: #edf0fa; border-left: 4px solid #5969a5; padding: 18px; color: #3f496d; font-size: .82rem; line-height: 1.7; }
+.modeled-record { border-color: #cbd1e8; background: #fafbff; }
+.modeled-badge { display: inline-block; margin-bottom: 9px; padding: 4px 7px; background: #e2e6f5; color: #435284; font: .65rem "DM Mono", monospace; text-transform: uppercase; letter-spacing: .04em; }
+.scenario-range { margin-top: 8px !important; color: #435284 !important; font-variant-numeric: tabular-nums; }
+.modeled-record details ul { color: #586e6d; font-size: .77rem; line-height: 1.7; }
+.modeled-record details a { display: inline-block; margin-right: 18px; }
+.modeled-record details h5 { margin: 18px 0 8px; font-size: .76rem; color: #33436f; }
+.modeled-parameters { display: grid; gap: 8px; margin: 0; font-size: .72rem; }
+.modeled-parameters > div { display: grid; grid-template-columns: minmax(120px, .7fr) minmax(0, 1.8fr); gap: 12px; padding: 9px 0; border-bottom: 1px solid #e2e6f2; }
+.modeled-parameters dt { font-weight: 700; color: #33436f; }
+.modeled-parameters dd { margin: 0; color: #586e6d; line-height: 1.55; overflow-wrap: anywhere; }
 .economic-record-list { display: grid; gap: 12px; }
 .economic-record { display: grid; grid-template-columns: minmax(0, 1.7fr) minmax(150px, 1fr) minmax(0, 1.2fr); gap: 14px 24px; padding: 23px; border: 1px solid var(--line); background: white; }
 .economic-record h4 { font-size: .9rem; line-height: 1.5; margin: 0 0 8px; }

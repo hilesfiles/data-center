@@ -12,6 +12,7 @@
     "scope",
     "counts",
     "economic_evidence_status",
+    "modeling_policy_version",
     "projects"
   ],
   "properties": {
@@ -44,6 +45,10 @@
         "partial"
       ]
     },
+    "modeling_policy_version": {
+      "type": "string",
+      "minLength": 1
+    },
     "counts": {
       "type": "object",
       "required": [
@@ -56,7 +61,8 @@
         "projects_with_economic_evidence",
         "economic_records",
         "reported_actual_records",
-        "projection_records"
+        "projection_records",
+        "modeled_synthesis_records"
       ],
       "properties": {
         "projects": {
@@ -99,6 +105,10 @@
           "minimum": 0
         },
         "projection_records": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "modeled_synthesis_records": {
           "type": "integer",
           "minimum": 0
         }

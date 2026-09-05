@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "evidence_version": "study-economic-evidence-1.36.0",
+  "evidence_version": "study-economic-evidence-1.37.0",
   "reviewed_on": "2026-09-05",
   "scope_note": "Reviewed evidence batches at campus or company/county scope. No record is allocated to an individual inventory building. Source checking establishes what a document reports, not an independent audit or causal attribution. Monetary figures are nominal. Peak workforce is distinct from annual employment; source-year labels do not establish fiscal-year boundaries. Original forecasts remain forecasts until realization is verified. No cross-record benefit total is defined. Cumulative project costs are not annual expenditure. Tax receipts and incentive payments remain separate, with inferred taxpayer links disclosed. Contextual research updates do not count as economic amounts. Account tax bills are distinct from cash receipts and incentive-program fees. Tax years, calendar years and fiscal years retain their source basis; separate taxpayer accounts are not consolidated. Municipal developer rebates and taxpayer valuations have distinct subjects. Estimated actual property value and tax capacity are not tax receipts; payable-year valuations retain their earlier assessment date. Taxpayer values expressed in millions retain approximate precision and account-level separation. A current-year table can use an older valuation date and is not converted into an annual series. Facility real-property and business-personal-property accounts remain separate, and address-label discrepancies are disclosed. Michigan Industrial Facilities Tax accounts remain distinct from the underlying real parcel and from post-expiration personal-property accounts; annual account totals are not recipient-level government receipts. Permit construction values are administrative project amounts, not verified expenditure, and separate permits are not combined without proof that their scopes do not overlap. Repeated maintenance-year assessments are annual parcel stocks, not new investment flows. Mixed-use parcel assessments and taxable values are retained at whole-parcel scope and are not allocated to a data-center tenant or function by floor area. Operator-reported jobs supported remain distinct from direct employees and FTEs. Approved infrastructure grants are documented public commitments rather than verified disbursements or total public costs. Cumulative community funding remains separate from tax receipts, payroll and modeled multiplier effects. Reported facility power capacity is not measured electricity consumption or peak demand. Permit-listed emergency generators are not runtime, fuel-use or actual-emissions observations. A city largest-taxpayer table's personal-property assessment remains separate from the leasehold real-property account, tax bills, receipts and capital expenditure. TIF loan principal is financing rather than a grant or general-fund receipt; project-generated tax revenue pledged to repayment is retained as a separate public-financing flow and is not added to gross parcel distributions. Water-withdrawal and consumptive permit capacities are regulatory limits rather than measured use. Development-agreement local-labor preferences are requirements rather than realized participation, and operating employee snapshots remain distinct from customers' on-site staff and jobs forecasts. Audited City bond statements distinguish issuance draws, year-end principal, annual principal retired, interest and fees, pledged TIF revenue, debt-service-fund transfers and future principal-plus-interest commitments. These measures are not summed into a benefit or subsidy total. City pledged revenue, City debt-service-fund transfers and the private fund's project TIF revenue applied to loan repayment retain their separate source definitions because only the 2022 transfer and private-fund amount agree exactly. Developer testimony in public meeting minutes is retained as a source-attributed cumulative lower bound; local-contractor spending is not converted into payroll, worker counts, household spending or multiplier effects. Economic-improvement-district cost estimates and maximum owner assessments remain source projections until bond issuance, an assessment schedule, collections and expenditures are verified. A statutory financing cap is not a tax receipt, public expenditure or subsidy. Audited private equipment-financing balances are debt stocks rather than construction spending, public support or community benefit. Reported floor area and occupied-share values describe operating scale and utilization, not employment, revenue, power use or economic output. Contractor and engineer case studies document supplier roles and completion timing but do not establish payment amounts, worker residence, payroll or multiplier effects. State incentive contract amounts, expected jobs and paid-or-certified-to-date fields remain distinct; a zero paid/certified balance at an earlier reporting cutoff does not imply no later claims. Public charging-infrastructure awards are commitments rather than verified disbursements, private project investment or operating benefits. Qualitative payment descriptions without a defensible numeric bound remain research context rather than quantitative records. Program-reported actual qualified investment, certified tax-exemption value and certified tax-credit value remain separate cumulative measures; none is converted into annual spending, a cash grant, local revenue or causal impact. County Business Patterns observations are county-industry context, not project contributions: establishment counts are employer locations rather than data-center facilities, March employment is not an annual average, annual payroll spans the full NAICS cell, and disclosure noise, classification changes and geographic assignment limit comparisons. No CBP change is attributed to a study project.",
   "metrics": [
@@ -607,6 +607,38 @@
     {
       "metric_code": "study.public_safety_equipment_cost_projection",
       "label": "Planned public-safety equipment cost",
+      "category": "public_costs",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "metric_code": "study.annual_electricity_use",
+      "label": "Reported annual electricity use",
+      "category": "resources",
+      "unit": "kWh_per_year",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "metric_code": "study.renewable_generation_capacity",
+      "label": "Reported renewable-generation nameplate capacity",
+      "category": "resources",
+      "unit": "MW",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "metric_code": "study.construction_workers_projection",
+      "label": "Planned construction and trade jobs",
+      "category": "construction",
+      "unit": "jobs",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "metric_code": "study.state_tax_credit_projection",
+      "label": "Source-estimated state income-tax credit cost",
       "category": "public_costs",
       "unit": "USD",
       "measure_type": "flow",
@@ -2751,6 +2783,200 @@
       "review_method": "pdf_text_and_page_image",
       "artifact_sha256": "e1d63d132b2a3ba34fb8374d2a5a3e38be7633668411fd2b9efe0fcb2790acd3",
       "notes": "The Fire District capital plan budgets $100,000 in fiscal 2026–2027 to equip new Pierce Truck 75 and notes that the truck was purchased by Switch. This is a planned public cost for equipping the donated vehicle, not a Switch payment or a realized district expense."
+    },
+    {
+      "source_id": "src_study_apple_environment_2018",
+      "title": "Apple Environmental Responsibility Report 2018",
+      "url": "https://www.apple.com/environment/pdf/Apple_Environmental_Responsibility_Report_2018.pdf",
+      "publisher": "Apple Inc.",
+      "source_type": "operator_release",
+      "publication_date": {
+        "precision": "year",
+        "year": 2018
+      },
+      "retrieved_on": "2026-09-05",
+      "review_method": "pdf_text_and_page_image",
+      "notes": "Apple's annual environmental report supplies the fiscal-2017 Mesa electricity-use observation. It is an operator report, not an independently metered utility record.",
+      "artifact_sha256": "53191cce9fd6209a29361011137767518d40d33edeb5794534d9567a461ee1dc"
+    },
+    {
+      "source_id": "src_study_apple_environment_2019",
+      "title": "Apple Environmental Responsibility Report 2019",
+      "url": "https://www.apple.com/environment/pdf/Apple_Environmental_Responsibility_Report_2019.pdf",
+      "publisher": "Apple Inc.",
+      "source_type": "operator_release",
+      "publication_date": {
+        "precision": "year",
+        "year": 2019
+      },
+      "retrieved_on": "2026-09-05",
+      "review_method": "pdf_text_and_page_image",
+      "notes": "Apple's annual environmental report supplies the fiscal-2018 Mesa electricity-use observation. It is an operator report, not an independently metered utility record.",
+      "artifact_sha256": "db08930d58817ae1012a18597253a23d924744c1751c6f19ba0e1be25b91ba8c"
+    },
+    {
+      "source_id": "src_study_apple_environment_2020",
+      "title": "Apple Environmental Progress Report 2020",
+      "url": "https://www.apple.com/environment/pdf/Apple_Environmental_Progress_Report_2020.pdf",
+      "publisher": "Apple Inc.",
+      "source_type": "operator_release",
+      "publication_date": {
+        "precision": "year",
+        "year": 2020
+      },
+      "retrieved_on": "2026-09-05",
+      "review_method": "pdf_text_and_page_image",
+      "notes": "Apple's annual environmental report supplies the fiscal-2019 Mesa electricity-use observation. It is an operator report, not an independently metered utility record.",
+      "artifact_sha256": "467ab29db7e4aaa97855212afc9730540dffe5cf32606440221f270658551e44"
+    },
+    {
+      "source_id": "src_study_apple_environment_2021",
+      "title": "Apple Environmental Progress Report 2021",
+      "url": "https://www.apple.com/environment/pdf/Apple_Environmental_Progress_Report_2021.pdf",
+      "publisher": "Apple Inc.",
+      "source_type": "operator_release",
+      "publication_date": {
+        "precision": "year",
+        "year": 2021
+      },
+      "retrieved_on": "2026-09-05",
+      "review_method": "pdf_text_and_page_image",
+      "notes": "Apple's annual environmental report supplies the fiscal-2020 Mesa electricity-use observation. It is an operator report, not an independently metered utility record.",
+      "artifact_sha256": "c4fac52b45143b732d80129e559a7e748c543a32214ccd2d2602d39d917702bc"
+    },
+    {
+      "source_id": "src_study_apple_environment_2022",
+      "title": "Apple Environmental Progress Report 2022",
+      "url": "https://www.apple.com/environment/pdf/Apple_Environmental_Progress_Report_2022.pdf",
+      "publisher": "Apple Inc.",
+      "source_type": "operator_release",
+      "publication_date": {
+        "precision": "year",
+        "year": 2022
+      },
+      "retrieved_on": "2026-09-05",
+      "review_method": "pdf_text_and_page_image",
+      "notes": "Apple's annual environmental report supplies the fiscal-2021 Mesa electricity-use observation. It is an operator report, not an independently metered utility record.",
+      "artifact_sha256": "1c9419ce90115e8b1e386ff9f8892a8859f1dc7fe1f3e060959ea35c59f0d576"
+    },
+    {
+      "source_id": "src_study_apple_environment_2023",
+      "title": "Apple Environmental Progress Report 2023",
+      "url": "https://www.apple.com/environment/pdf/Apple_Environmental_Progress_Report_2023.pdf",
+      "publisher": "Apple Inc.",
+      "source_type": "operator_release",
+      "publication_date": {
+        "precision": "year",
+        "year": 2023
+      },
+      "retrieved_on": "2026-09-05",
+      "review_method": "pdf_text_and_page_image",
+      "notes": "Apple's annual environmental report supplies the fiscal-2022 Mesa electricity-use observation. It is an operator report, not an independently metered utility record.",
+      "artifact_sha256": "da75397bede881a2a58628328ea068d53b5c44f805f117a82d8f1f63be2b339d"
+    },
+    {
+      "source_id": "src_study_apple_environment_2024",
+      "title": "Apple Environmental Progress Report 2024",
+      "url": "https://www.apple.com/environment/pdf/Apple_Environmental_Progress_Report_2024.pdf",
+      "publisher": "Apple Inc.",
+      "source_type": "operator_release",
+      "publication_date": {
+        "precision": "year",
+        "year": 2024
+      },
+      "retrieved_on": "2026-09-05",
+      "review_method": "pdf_text_and_page_image",
+      "notes": "Apple's annual environmental report supplies the fiscal-2023 Mesa electricity-use observation. It is an operator report, not an independently metered utility record.",
+      "artifact_sha256": "87e86dbe8545c2006ad4e9af3e7e01b0ff713d4535171f924e06c32cc1bda5ba"
+    },
+    {
+      "source_id": "src_study_apple_environment_2025",
+      "title": "Apple Environmental Progress Report 2025",
+      "url": "https://www.apple.com/environment/pdf/Apple_Environmental_Progress_Report_2025.pdf",
+      "publisher": "Apple Inc.",
+      "source_type": "operator_release",
+      "publication_date": {
+        "precision": "year",
+        "year": 2025
+      },
+      "retrieved_on": "2026-09-05",
+      "review_method": "pdf_text_and_page_image",
+      "notes": "Apple's annual environmental report supplies the fiscal-2024 Mesa electricity-use observation and describes water-treatment work being implemented at Mesa without reporting Mesa-specific measured savings. It is an operator report.",
+      "artifact_sha256": "597676e8b48ac45529303abc7ef47425ca62ff4efc3a375962a077a033525f74"
+    },
+    {
+      "source_id": "src_study_apple_environment_2026",
+      "title": "Apple Environmental Progress Report 2026",
+      "url": "https://www.apple.com/environment/pdf/Apple_Environmental_Progress_Report_2026.pdf",
+      "publisher": "Apple Inc.",
+      "source_type": "operator_release",
+      "publication_date": {
+        "precision": "year",
+        "year": 2026
+      },
+      "retrieved_on": "2026-09-05",
+      "review_method": "pdf_text_and_page_image",
+      "notes": "Apple reports fiscal-2025 Mesa electricity use, the supporting Bonnybrooke project's capacity, onsite PV capacity and operating dates. Electricity is operator-reported use; generating capacities are nameplate resources and not data-center load or output observations.",
+      "artifact_sha256": "dc23e8cb593f42969689c206dc7624156918d766efbbc9b20a9fb1d1c0b54518"
+    },
+    {
+      "source_id": "src_study_mesa_building_permits_2026",
+      "title": "City of Mesa Building Permits dataset",
+      "url": "https://data.mesaaz.gov/Development-Services/Building-Permits/dzpk-hxfb",
+      "publisher": "City of Mesa Development Services",
+      "source_type": "local_government_record",
+      "publication_date": {
+        "precision": "day",
+        "date": "2026-09-04"
+      },
+      "retrieved_on": "2026-09-05",
+      "review_method": "structured_data",
+      "notes": "Official Socrata permit records were filtered to property_address 3740 S SIGNAL BUTTE RD and then to individually reviewed permit numbers. Retained rows have Finaled, C of O Issued or C of C Issued status. Total valuation is an administrative permit amount, not verified expenditure; related addenda, open Issued-only records and older pre-Apple industrial work are excluded. No permit values are summed."
+    },
+    {
+      "source_id": "src_study_mesa_economic_development_minutes_2020_12_01",
+      "title": "Mesa Economic Development Advisory Board meeting minutes, December 1, 2020",
+      "url": "https://apps.mesaaz.gov/meetingarchive/archivedocuments/documents/%7B12DE5006-2E46-4846-9567-C3A43990757F%7D_0.pdf",
+      "publisher": "City of Mesa",
+      "source_type": "local_government_record",
+      "publication_date": {
+        "precision": "day",
+        "date": "2020-12-01"
+      },
+      "retrieved_on": "2026-09-05",
+      "review_method": "pdf_text_and_page_image",
+      "notes": "Official minutes record the City Economic Development Director's approximate cumulative investment statement for Apple's 1.3-million-square-foot facility. It is a public-official statement, not an audited Apple expenditure schedule.",
+      "artifact_sha256": "beafeea434db0eed6d50bd7cf92e79f724bd6bfb61edab3c39c24db0354a0252"
+    },
+    {
+      "source_id": "src_study_arizona_ioc_tax_credit_review_2024",
+      "title": "Arizona Joint Legislative Income Tax Credit Review, 2024",
+      "url": "https://documents.ncsl.org/wwwncsl/Fiscal/evaluationDB/2024IncomeTaxCreditReview.pdf",
+      "publisher": "Arizona Joint Legislative Budget Committee Staff",
+      "source_type": "state_record",
+      "publication_date": {
+        "precision": "year",
+        "year": 2024
+      },
+      "retrieved_on": "2026-09-05",
+      "review_method": "pdf_text_and_page_image",
+      "notes": "The legislative review identifies Apple as the sole international operations center qualifying for the renewable-energy income-tax credit, estimates the confidential five-year credit cost from statute, and restates original Mesa investment and job promises from contemporaneous reporting. The review says available data cannot establish realization of those promises.",
+      "artifact_sha256": "425bb0adbb8134a3eba8e54a475ad7d8be9bbc0cb40b92ab353dec122389b606"
+    },
+    {
+      "source_id": "src_study_mesa_apple_ftz_operator_agreement_2026",
+      "title": "City of Mesa and Apple Inc. Foreign-Trade Zone Operator Agreement",
+      "url": "https://mesa.legistar.com/View.ashx?GUID=5E9B2B75-E8D4-47E5-9BA5-96C90088FDD4&ID=15409571&M=F",
+      "publisher": "City of Mesa",
+      "source_type": "local_government_record",
+      "publication_date": {
+        "precision": "day",
+        "date": "2026-05-18"
+      },
+      "retrieved_on": "2026-09-05",
+      "review_method": "pdf_text_and_page_image",
+      "notes": "Council-approved ten-year operator agreement for FTZ 221 identifies Apple Inc., the 3740 S Signal Butte Road premises, permitted data-center and equipment activities, and municipal administration fees. The reviewed attachment is an agreement form without populated signature dates; no fee payment or FTZ tax-benefit amount is inferred.",
+      "artifact_sha256": "1852ae45b8af1f29e9bd3b69c76188e983c7dba84053102e1d256a2a08a62627"
     }
   ],
   "records": [
@@ -16939,6 +17165,625 @@
       "notes": "The district budgets $100,000 to equip the new truck and notes that Switch purchased the truck. This is a planned public cost, not a realized expenditure and not a second Switch contribution.",
       "review_status": "source_checked",
       "reviewed_on": "2026-09-05"
+    },
+    {
+      "claim_id": "clm_study_apple_mesa_electricity_use_2017",
+      "project_id": "prj_study_im3_building_00300974499",
+      "metric_code": "study.annual_electricity_use",
+      "value": 45000000,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "fiscal_year",
+        "year": 2017,
+        "label": "Apple fiscal year 2017"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Apple Mesa data center at 3740 S Signal Butte Road; operator-reported whole-facility electricity use",
+        "county_fips": "04013",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_apple_environment_2018",
+      "pdf_page": 56,
+      "printed_page": "56",
+      "source_locator": "PDF page 56 / printed page 56, Mesa, Arizona, Electricity use in 2017",
+      "notes": "Apple reports 45 million kWh. This is operator-reported annual use, not independent utility-meter data, peak demand, electricity cost or a building allocation.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-05",
+      "annual_series_key": "apple_mesa_electricity_use"
+    },
+    {
+      "claim_id": "clm_study_apple_mesa_electricity_use_2018",
+      "project_id": "prj_study_im3_building_00300974499",
+      "metric_code": "study.annual_electricity_use",
+      "value": 104000000,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "fiscal_year",
+        "year": 2018,
+        "label": "Apple fiscal year 2018"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Apple Mesa data center at 3740 S Signal Butte Road; operator-reported whole-facility electricity use",
+        "county_fips": "04013",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_apple_environment_2019",
+      "pdf_page": 66,
+      "printed_page": "66",
+      "source_locator": "PDF page 66 / printed page 66, Mesa, Arizona, Electricity use in 2018",
+      "notes": "Apple reports 104 million kWh. This is operator-reported annual use, not independent utility-meter data, peak demand, electricity cost or a building allocation.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-05",
+      "annual_series_key": "apple_mesa_electricity_use"
+    },
+    {
+      "claim_id": "clm_study_apple_mesa_electricity_use_2019",
+      "project_id": "prj_study_im3_building_00300974499",
+      "metric_code": "study.annual_electricity_use",
+      "value": 163000000,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "fiscal_year",
+        "year": 2019,
+        "label": "Apple fiscal year 2019"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Apple Mesa data center at 3740 S Signal Butte Road; operator-reported whole-facility electricity use",
+        "county_fips": "04013",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_apple_environment_2020",
+      "pdf_page": 75,
+      "printed_page": "75",
+      "source_locator": "PDF page 75 / printed page 75, Mesa, Arizona, Electricity use in 2019",
+      "notes": "Apple reports 163 million kWh. This is operator-reported annual use, not independent utility-meter data, peak demand, electricity cost or a building allocation.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-05",
+      "annual_series_key": "apple_mesa_electricity_use"
+    },
+    {
+      "claim_id": "clm_study_apple_mesa_electricity_use_2020",
+      "project_id": "prj_study_im3_building_00300974499",
+      "metric_code": "study.annual_electricity_use",
+      "value": 227000000,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "fiscal_year",
+        "year": 2020,
+        "label": "Apple fiscal year 2020"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Apple Mesa data center at 3740 S Signal Butte Road; operator-reported whole-facility electricity use",
+        "county_fips": "04013",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_apple_environment_2021",
+      "pdf_page": 80,
+      "printed_page": "80",
+      "source_locator": "PDF page 80 / printed page 80, Mesa, Arizona, Electricity use in 2020",
+      "notes": "Apple reports 227 million kWh. This is operator-reported annual use, not independent utility-meter data, peak demand, electricity cost or a building allocation.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-05",
+      "annual_series_key": "apple_mesa_electricity_use"
+    },
+    {
+      "claim_id": "clm_study_apple_mesa_electricity_use_2021",
+      "project_id": "prj_study_im3_building_00300974499",
+      "metric_code": "study.annual_electricity_use",
+      "value": 332000000,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "fiscal_year",
+        "year": 2021,
+        "label": "Apple fiscal year 2021"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Apple Mesa data center at 3740 S Signal Butte Road; operator-reported whole-facility electricity use",
+        "county_fips": "04013",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_apple_environment_2022",
+      "pdf_page": 96,
+      "printed_page": "96",
+      "source_locator": "PDF page 96 / printed page 96, Mesa, Arizona, Electricity use in 2021",
+      "notes": "Apple reports 332 million kWh. This is operator-reported annual use, not independent utility-meter data, peak demand, electricity cost or a building allocation.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-05",
+      "annual_series_key": "apple_mesa_electricity_use"
+    },
+    {
+      "claim_id": "clm_study_apple_mesa_electricity_use_2022",
+      "project_id": "prj_study_im3_building_00300974499",
+      "metric_code": "study.annual_electricity_use",
+      "value": 379000000,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "fiscal_year",
+        "year": 2022,
+        "label": "Apple fiscal year 2022"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Apple Mesa data center at 3740 S Signal Butte Road; operator-reported whole-facility electricity use",
+        "county_fips": "04013",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_apple_environment_2023",
+      "pdf_page": 91,
+      "printed_page": "91",
+      "source_locator": "PDF page 91 / printed page 91, Mesa, Arizona, Electricity use in 2022",
+      "notes": "Apple reports 379 million kWh. This is operator-reported annual use, not independent utility-meter data, peak demand, electricity cost or a building allocation.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-05",
+      "annual_series_key": "apple_mesa_electricity_use"
+    },
+    {
+      "claim_id": "clm_study_apple_mesa_electricity_use_2023",
+      "project_id": "prj_study_im3_building_00300974499",
+      "metric_code": "study.annual_electricity_use",
+      "value": 488000000,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "fiscal_year",
+        "year": 2023,
+        "label": "Apple fiscal year 2023"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Apple Mesa data center at 3740 S Signal Butte Road; operator-reported whole-facility electricity use",
+        "county_fips": "04013",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_apple_environment_2024",
+      "pdf_page": 91,
+      "printed_page": "91",
+      "source_locator": "PDF page 91 / printed page 91, Mesa, Arizona, Electricity use in 2023",
+      "notes": "Apple reports 488 million kWh. This is operator-reported annual use, not independent utility-meter data, peak demand, electricity cost or a building allocation.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-05",
+      "annual_series_key": "apple_mesa_electricity_use"
+    },
+    {
+      "claim_id": "clm_study_apple_mesa_electricity_use_2024",
+      "project_id": "prj_study_im3_building_00300974499",
+      "metric_code": "study.annual_electricity_use",
+      "value": 530000000,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "fiscal_year",
+        "year": 2024,
+        "label": "Apple fiscal year 2024"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Apple Mesa data center at 3740 S Signal Butte Road; operator-reported whole-facility electricity use",
+        "county_fips": "04013",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_apple_environment_2025",
+      "pdf_page": 100,
+      "printed_page": "100",
+      "source_locator": "PDF page 100 / printed page 100, Mesa, Arizona, Electricity use in 2024",
+      "notes": "Apple reports 530 million kWh. This is operator-reported annual use, not independent utility-meter data, peak demand, electricity cost or a building allocation.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-05",
+      "annual_series_key": "apple_mesa_electricity_use"
+    },
+    {
+      "claim_id": "clm_study_apple_mesa_electricity_use_2025",
+      "project_id": "prj_study_im3_building_00300974499",
+      "metric_code": "study.annual_electricity_use",
+      "value": 563000000,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "fiscal_year",
+        "year": 2025,
+        "label": "Apple fiscal year 2025"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Apple Mesa data center at 3740 S Signal Butte Road; operator-reported whole-facility electricity use",
+        "county_fips": "04013",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_apple_environment_2026",
+      "pdf_page": 96,
+      "printed_page": "96",
+      "source_locator": "PDF page 96 / printed page 96, Mesa, Arizona, Electricity use in 2025",
+      "notes": "Apple reports 563 million kWh. This is operator-reported annual use, not independent utility-meter data, peak demand, electricity cost or a building allocation.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-05",
+      "annual_series_key": "apple_mesa_electricity_use"
+    },
+    {
+      "claim_id": "clm_study_apple_mesa_bonnybrooke_solar_capacity_2025",
+      "project_id": "prj_study_im3_building_00300974499",
+      "metric_code": "study.renewable_generation_capacity",
+      "value": 50,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "source_year",
+        "year": 2025,
+        "label": "Apple fiscal-2025 report; project operational since December 2016"
+      },
+      "scope": {
+        "level": "supporting_infrastructure",
+        "label": "Bonnybrooke solar project built with Salt River Project to support the Apple Mesa data center",
+        "county_fips": "04013",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_apple_environment_2026",
+      "pdf_page": 96,
+      "printed_page": "96",
+      "source_locator": "PDF page 96 / printed page 96, Mesa, Arizona, Bonnybrooke solar project",
+      "notes": "Reported nameplate capacity of supporting solar generation. It is not measured data-center load, annual generation, avoided cost or an Apple capital-spending amount.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-05"
+    },
+    {
+      "claim_id": "clm_study_apple_mesa_onsite_solar_capacity_2025",
+      "project_id": "prj_study_im3_building_00300974499",
+      "metric_code": "study.renewable_generation_capacity",
+      "value": 4.67,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "source_year",
+        "year": 2025,
+        "label": "Apple fiscal-2025 report; onsite PV operating since February 2019"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Onsite PV at the Apple Mesa data-center campus, five parking canopies and three ground-mounted arrays",
+        "county_fips": "04013",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_apple_environment_2026",
+      "pdf_page": 96,
+      "printed_page": "96",
+      "source_locator": "PDF page 96 / printed page 96, Mesa, Arizona, onsite PV system",
+      "notes": "Reported onsite PV nameplate capacity. It is not annual generation, facility demand, avoided cost or verified investment spending.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-05"
+    },
+    {
+      "claim_id": "clm_study_apple_mesa_permit_bld2016_00392",
+      "project_id": "prj_study_im3_building_00300974499",
+      "metric_code": "study.permitted_construction_value",
+      "value": 22000000,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "calendar_year",
+        "year": 2016,
+        "label": "Permit BLD2016-00392 issued March 1, 2016; finaled February 13, 2017"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Apple Mesa permit BLD2016-00392, architectural and roofing plans for Data Halls A and B",
+        "county_fips": "04013",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_mesa_building_permits_2026",
+      "source_locator": "Socrata row permit_number BLD2016-00392; fields property_address, description_of_work, issued_date, finaled_date, status, total_valuation",
+      "notes": "The finaled permit reports $22 million total valuation. It is an administrative permit value, not verified expenditure, local purchasing, payroll or an amount to add to related addenda.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-05"
+    },
+    {
+      "claim_id": "clm_study_apple_mesa_permit_pmt21_09173",
+      "project_id": "prj_study_im3_building_00300974499",
+      "metric_code": "study.permitted_construction_value",
+      "value": 32991875.28,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "calendar_year",
+        "year": 2021,
+        "label": "Permit PMT21-09173 issued July 1, 2021; certificate of occupancy issued after July 21, 2023 final"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Apple Mesa permit PMT21-09173, Tilden AZ4 data-center expansion and equipment fit-out",
+        "county_fips": "04013",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_mesa_building_permits_2026",
+      "source_locator": "Socrata row permit_number PMT21-09173; fields application_name, description_of_work, issued_date, finaled_date, status, total_valuation",
+      "notes": "The C of O Issued permit reports $32,991,875.28 total valuation. It is an administrative permit value, not verified spending. Deferred sub-permits are not added.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-05"
+    },
+    {
+      "claim_id": "clm_study_apple_mesa_permit_pmt22_03129",
+      "project_id": "prj_study_im3_building_00300974499",
+      "metric_code": "study.permitted_construction_value",
+      "value": 28000000,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "calendar_year",
+        "year": 2022,
+        "label": "Permit PMT22-03129 issued April 18, 2022; certificate of completion issued after July 28, 2023 final"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Apple Mesa permit PMT22-03129, Tilden AZ4 expansion to PMT21-09173",
+        "county_fips": "04013",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_mesa_building_permits_2026",
+      "source_locator": "Socrata row permit_number PMT22-03129; fields application_name, description_of_work, issued_date, finaled_date, status, total_valuation",
+      "notes": "The C of C Issued permit reports $28 million total valuation and explicitly calls its work an expansion to PMT21-09173. Both permit rows remain separate and are not summed or treated as spend.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-05"
+    },
+    {
+      "claim_id": "clm_study_apple_mesa_permit_pmt22_21032",
+      "project_id": "prj_study_im3_building_00300974499",
+      "metric_code": "study.permitted_construction_value",
+      "value": 1000000,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "calendar_year",
+        "year": 2023,
+        "label": "Permit PMT22-21032 issued September 20, 2023; certificate of completion issued after July 18, 2025 final"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Apple Mesa permit PMT22-21032, instrument-air-system upgrades",
+        "county_fips": "04013",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_mesa_building_permits_2026",
+      "source_locator": "Socrata row permit_number PMT22-21032; fields application_name, description_of_work, issued_date, finaled_date, status, total_valuation",
+      "notes": "The C of C Issued permit reports $1 million total valuation. It is an administrative permit value, not verified expenditure, supplier payments or payroll.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-05"
+    },
+    {
+      "claim_id": "clm_study_apple_mesa_permit_pmt23_00417",
+      "project_id": "prj_study_im3_building_00300974499",
+      "metric_code": "study.permitted_construction_value",
+      "value": 2000000,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "calendar_year",
+        "year": 2023,
+        "label": "Permit PMT23-00417 issued September 20, 2023; certificate of completion issued after August 11, 2025 final"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Apple Mesa permit PMT23-00417, domestic-water-loop upgrade",
+        "county_fips": "04013",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_mesa_building_permits_2026",
+      "source_locator": "Socrata row permit_number PMT23-00417; fields application_name, description_of_work, issued_date, finaled_date, status, total_valuation",
+      "notes": "The C of C Issued permit reports $2 million total valuation. It documents a water-system scope but not measured water use or savings, expenditure, supplier payments or payroll.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-05"
+    },
+    {
+      "claim_id": "clm_study_apple_mesa_permit_pmt23_00418",
+      "project_id": "prj_study_im3_building_00300974499",
+      "metric_code": "study.permitted_construction_value",
+      "value": 3000000,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "calendar_year",
+        "year": 2023,
+        "label": "Permit PMT23-00418 issued September 20, 2023; certificate of completion issued after July 18, 2025 final"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Apple Mesa permit PMT23-00418, chilled-water and condenser-water plant upgrades",
+        "county_fips": "04013",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_mesa_building_permits_2026",
+      "source_locator": "Socrata row permit_number PMT23-00418; fields application_name, description_of_work, issued_date, finaled_date, status, total_valuation",
+      "notes": "The C of C Issued permit reports $3 million total valuation. It documents cooling-plant scope but not measured water or energy savings, expenditure, supplier payments or payroll.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-05"
+    },
+    {
+      "claim_id": "clm_study_apple_mesa_permit_pmt23_11255",
+      "project_id": "prj_study_im3_building_00300974499",
+      "metric_code": "study.permitted_construction_value",
+      "value": 2000000,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "calendar_year",
+        "year": 2023,
+        "label": "Permit PMT23-11255 issued September 20, 2023; certificate of completion issued after June 12, 2026 final"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Apple Mesa permit PMT23-11255, emergency makeup-water-system upgrade",
+        "county_fips": "04013",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_mesa_building_permits_2026",
+      "source_locator": "Socrata row permit_number PMT23-11255; fields application_name, description_of_work, issued_date, finaled_date, status, total_valuation",
+      "notes": "The C of C Issued permit reports $2 million total valuation. It documents emergency-water-system scope but not measured use or savings, expenditure, supplier payments or payroll.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-05"
+    },
+    {
+      "claim_id": "clm_study_apple_mesa_permit_pmt24_17162",
+      "project_id": "prj_study_im3_building_00300974499",
+      "metric_code": "study.permitted_construction_value",
+      "value": 4918751.6,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "calendar_year",
+        "year": 2025,
+        "label": "Permit PMT24-17162 issued February 10, 2025; certificate of completion issued after August 31, 2026 final"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Apple Mesa permit PMT24-17162, canopy and industrial-grade soft-water treatment system",
+        "county_fips": "04013",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_mesa_building_permits_2026",
+      "source_locator": "Socrata row permit_number PMT24-17162; fields application_name, description_of_work, issued_date, finaled_date, status, total_valuation",
+      "notes": "The C of C Issued permit reports $4,918,751.60 total valuation. It documents treatment-system and canopy scope but not measured water savings, expenditure, supplier payments or payroll.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-05"
+    },
+    {
+      "claim_id": "clm_study_apple_mesa_facility_investment_2020",
+      "project_id": "prj_study_im3_building_00300974499",
+      "metric_code": "study.cumulative_facility_investment",
+      "value": 2000000000,
+      "value_qualifier": "approximately",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "cumulative",
+        "report_date": "2020-12-01",
+        "label": "Reported cumulative facility investment as of December 1, 2020"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Apple facility at 3740 S Signal Butte Road, approximately 1.3 million square feet",
+        "county_fips": "04013",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_mesa_economic_development_minutes_2020_12_01",
+      "pdf_page": 3,
+      "printed_page": "3",
+      "source_locator": "PDF page 3 / printed page 3, Elliott Road Tech Corridor discussion",
+      "notes": "The City's Economic Development Director said Apple had already invested about $2 billion in the facility. This is a public-official statement, not an audited annual spending schedule, local-spend allocation or amount derived from assessments or permits.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-05"
+    },
+    {
+      "claim_id": "clm_study_apple_mesa_investment_plan_2015",
+      "project_id": "prj_study_im3_building_00300974499",
+      "metric_code": "study.campus_investment_projection",
+      "value": 2000000000,
+      "value_qualifier": "exact",
+      "basis": "source_projection",
+      "period": {
+        "kind": "projection_horizon",
+        "report_date": "2015-02-05",
+        "horizon_years": 10,
+        "label": "Original promise to invest $2 billion over ten years"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Original Apple Mesa global command data-center plan",
+        "county_fips": "04013",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_arizona_ioc_tax_credit_review_2024",
+      "pdf_page": 29,
+      "printed_page": "24",
+      "source_locator": "PDF page 29 / printed page 24, Economic Benefits, original Mesa plan quoted from February 5, 2015 reporting",
+      "notes": "The legislative review restates the original $2 billion ten-year promise from contemporaneous reporting and says available data cannot determine realization. It remains a forecast despite the separate 2020 city statement reporting about $2 billion already invested.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-05"
+    },
+    {
+      "claim_id": "clm_study_apple_mesa_operating_jobs_plan_2015",
+      "project_id": "prj_study_im3_building_00300974499",
+      "metric_code": "study.operating_jobs_projection",
+      "value": 150,
+      "value_qualifier": "exact",
+      "basis": "source_projection",
+      "period": {
+        "kind": "projection_horizon",
+        "report_date": "2015-02-05",
+        "label": "Original expectation for 150 full-time jobs; realization date and current count unverified"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Original Apple Mesa global command data-center plan",
+        "county_fips": "04013",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_arizona_ioc_tax_credit_review_2024",
+      "pdf_page": 29,
+      "printed_page": "24",
+      "source_locator": "PDF page 29 / printed page 24, Economic Benefits, original Mesa jobs plan",
+      "notes": "The legislative review restates an expectation of 150 full-time jobs and says available data cannot determine realization. This is not a filled-position count, FTE series, payroll or worker-residence measure.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-05"
+    },
+    {
+      "claim_id": "clm_study_apple_mesa_construction_jobs_plan_2015",
+      "project_id": "prj_study_im3_building_00300974499",
+      "metric_code": "study.construction_workers_projection",
+      "value": 500,
+      "value_qualifier": "up_to",
+      "basis": "source_projection",
+      "period": {
+        "kind": "projection_horizon",
+        "report_date": "2015-02-05",
+        "label": "Original expectation of up to 500 construction and trade jobs; realization unverified"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Original Apple Mesa global command data-center plan",
+        "county_fips": "04013",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_arizona_ioc_tax_credit_review_2024",
+      "pdf_page": 29,
+      "printed_page": "24",
+      "source_locator": "PDF page 29 / printed page 24, Economic Benefits, original construction and trade jobs plan",
+      "notes": "The legislative review restates the original upper-bound expectation and says available data cannot determine realization. It is not a peak observation, job-year total, payroll amount or local-worker share.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-05"
+    },
+    {
+      "claim_id": "clm_study_apple_mesa_state_tax_credit_cost_plan_2024",
+      "project_id": "prj_study_im3_building_00300974499",
+      "metric_code": "study.state_tax_credit_projection",
+      "value": 25000000,
+      "value_qualifier": "exact",
+      "basis": "source_projection",
+      "period": {
+        "kind": "projection_horizon",
+        "report_date": "2024-01-01",
+        "horizon_years": 5,
+        "label": "2024 legislative-review estimate for five statutory claim years beginning in FY2019; publication day unspecified"
+      },
+      "scope": {
+        "level": "supporting_infrastructure",
+        "label": "Apple-qualified renewable-energy facility under Arizona's international-operations-center income-tax credit",
+        "county_fips": "04013",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_arizona_ioc_tax_credit_review_2024",
+      "pdf_page": 28,
+      "printed_page": "23",
+      "source_locator": "PDF page 28 / printed page 23, Revenue Impact, Corporate Income Tax Credit Use",
+      "notes": "JLBC Staff estimates $25 million absent credit recapture because Apple was the sole qualifier and statute provides $5 million per year for five years. FY2019-FY2023 claims are confidential, so this is not realized tax expenditure; the period anchor preserves only the report year because its publication day is unspecified.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-05"
     }
   ],
   "project_updates": [
@@ -17333,6 +18178,34 @@
       "as_of": "2026-09-05",
       "title": "Fire capital plan exposes a public cost paired with the donated truck",
       "notes": "The Fire District plans $100,000 in fiscal 2026–2027 to equip Pierce Truck 75 and identifies the truck as purchased by Switch. The application records the district amount as a forecast public cost, preserving both sides of the transaction without netting unlike periods."
+    },
+    {
+      "project_id": "prj_study_im3_building_00300974499",
+      "source_id": "src_study_apple_environment_2026",
+      "as_of": "2026-09-05",
+      "title": "Nine-year electricity series documents operating growth without converting use into cost",
+      "notes": "Apple reports Mesa electricity use rising from 45 million kWh in fiscal 2017 to 563 million kWh in fiscal 2025. The same report says Apple took operational control in October 2015, the converted data center began servicing customers in March 2017, and supporting renewable resources include the 50 MW Bonnybrooke solar project and 4.67 MW of onsite PV. Use is operator-reported rather than utility-meter verified; generation capacity is not load, annual output, avoided cost or capital spending."
+    },
+    {
+      "project_id": "prj_study_im3_building_00300974499",
+      "source_id": "src_study_mesa_building_permits_2026",
+      "as_of": "2026-09-05",
+      "title": "Finaled permits document conversion, expansion and water-system work",
+      "notes": "Mesa permit rows identify Apple-era data halls, the Tilden AZ4 expansion, instrument-air, domestic-water, chilled/condenser-water, emergency makeup-water and soft-water-treatment scopes at parcel 30433005S. The application retains eight finaled or certificate-issued permit valuations individually. It excludes related addenda, Issued-only records and pre-Apple industrial work; no permit values are summed or treated as verified expenditures."
+    },
+    {
+      "project_id": "prj_study_im3_building_00300974499",
+      "source_id": "src_study_mesa_apple_ftz_operator_agreement_2026",
+      "as_of": "2026-05-18",
+      "title": "Current FTZ agreement links the premises to data-center and equipment activities",
+      "notes": "The Council-approved operator agreement identifies Apple Inc. and 3740 S Signal Butte Road and permits local data-center operations plus data-center-equipment assembly and high-tech manufacturing or storage of FTZ goods. It specifies a $1,000 activation fee and $5,000 annual administration fee, but the reviewed form has blank execution dates and no evidence of payment. No FTZ savings amount is inferred, and the agreement does not merge the separate real-property and business-personal-property accounts."
+    },
+    {
+      "project_id": "prj_study_im3_building_00300974499",
+      "source_id": "src_study_apple_environment_2025",
+      "as_of": "2026-09-05",
+      "title": "Water-treatment implementation is documented without a Mesa savings claim",
+      "notes": "Apple describes resin-treatment and sphagnum-moss work being implemented at Mesa, but its percentage reductions come from a pilot elsewhere and are not Mesa facility measurements. The study therefore adds no quantitative Mesa water-use or water-savings record. Permit descriptions establish system work, not consumption or avoided use."
     }
   ]
 }

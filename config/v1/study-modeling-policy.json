@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.0.0",
+  "policy_version": "study-modeling-policy-1.0.0",
+  "effective_release": "private-sector-study-1.38.0",
+  "principles": [
+    { "code": "observations_first", "rule": "Search for and publish direct observations before constructing a modeled synthesis." },
+    { "code": "preserve_projections", "rule": "Preserve source projections separately and never relabel them as modeled or realized values." },
+    { "code": "eligibility_threshold", "rule": "Model only decision-relevant metrics with cited inputs, a reproducible formula, defensible scope, and disclosed uncertainty." },
+    { "code": "acquisition_fallback", "rule": "When modeling eligibility is not met, leave a documented acquisition target rather than manufacturing a value." },
+    { "code": "allocation_required", "rule": "Never infer facility values from county, company, campus, utility, or multi-county totals without an explicit allocation model." },
+    { "code": "publication_separation", "rule": "Exclude modeled outputs from sourced-record counts, canonical claims, and realized-benefit totals." },
+    { "code": "symmetric_evidence", "rule": "Apply identical evidence and uncertainty rules to benefits and costs." },
+    { "code": "contribution_not_causation", "rule": "Keep contribution estimates distinct from causal effects." },
+    { "code": "multiplier_provenance", "rule": "Multiplier models require a named source, model and version, geography, vintage, local-purchase assumption, and separated direct, indirect, and induced channels." },
+    { "code": "no_double_counting", "rule": "Do not sum overlapping modeled outputs, source observations, projections, contribution channels, or nested totals." },
+    { "code": "strategic_scope", "rule": "Keep national-security narratives outside local economic totals unless a sourced quantitative model defines the local channel and scope." }
+  ],
+  "eligibility": {
+    "direct_observation_search_required": true,
+    "source_projection_preservation_required": true,
+    "decision_relevance_required": true,
+    "cited_inputs_required": true,
+    "reproducible_formula_required": true,
+    "defensible_scope_required": true,
+    "uncertainty_disclosure_required": true,
+    "fallback": "documented_acquisition_target"
+  },
+  "publication_controls": {
+    "canonical_claims": "exclude_modeled_syntheses",
+    "source_record_counts": "exclude_modeled_syntheses",
+    "realized_benefit_totals": "exclude_modeled_syntheses",
+    "presentation": "modeled_not_observed_or_audited"
+  },
+  "multiplier_requirements": ["source_id", "model_name", "model_version", "geography", "vintage", "local_purchase_assumption", "channel_separation"],
+  "causal_requirements": ["treatment_timing", "comparison_design", "outcome_definition", "pre_period", "post_period", "diagnostics", "limitations"],
+  "aggregation_controls": {
+    "component_membership": "one_aggregation_id_per_estimate",
+    "total_components": "explicit_estimate_ids",
+    "source_model_separation": "source_claims_are_inputs_not_components",
+    "overlap_rule": "no_component_in_multiple_totals_within_aggregation"
+  }
+}
