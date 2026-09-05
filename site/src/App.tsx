@@ -10,7 +10,6 @@ import type {
   CountyEmploymentWagesBaseline,
   CountyEntityResolutionCoverage,
   CountyLifecycleVerificationCoverage,
-  CountyMapMetric,
   FacilitySourceCoverage,
   SiteMetadata,
 } from "./types";
@@ -64,19 +63,39 @@ export default function App({ study, studyError }: { study: StudyIndex | null; s
   const [resolution, setResolution] = useState<CountyEntityResolutionCoverage[]>([]);
   const [adjudication, setAdjudication] = useState<CountyEntityAdjudicationCoverage[]>([]);
   const [lifecycle, setLifecycle] = useState<CountyLifecycleVerificationCoverage[]>([]);
-  const [mapMetric, setMapMetric] = useState<CountyMapMetric>("im3-source-records");
   const [studyGroup, setStudyGroup] = useState("");
-  const mappedProjects = useMemo(() => study?.projects.filter(p => !studyGroup || p.study_group === studyGroup), [study, studyGroup]);
-  const [profileFips, setProfileFips] = useState<string | null>(() => countyFipsFromHash());
-  const [selectedFips, setSelectedFips] = useState<string | null>(
-    () => countyFipsFromHash() ?? "51107",
+  const completedProjects = useMemo(
+    () => study?.projects.filter(project => project.model_completeness.status === "full_modeled_account") ?? [],
+    [study],
   );
+  const mappedProjects = useMemo(
+    () => completedProjects.filter(project => !studyGroup || project.study_group === studyGroup),
+    [completedProjects, studyGroup],
+  );
+  const completedGroups = useMemo(
+    () => [...new Set(completedProjects.map(project => project.study_group))].sort(),
+    [completedProjects],
+  );
+  const [profileFips, setProfileFips] = useState<string | null>(() => countyFipsFromHash());
+  const [selectedFips, setSelectedFips] = useState<string | null>(() => countyFipsFromHash());
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const base = import.meta.env.BASE_URL;
+    fetch(`${base}data/v1/metadata.json`)
+      .then(async response => {
+        if (!response.ok) throw new Error("Site metadata could not be loaded.");
+        setMetadata((await response.json()) as SiteMetadata);
+      })
+      .catch((reason: unknown) =>
+        setError(reason instanceof Error ? reason.message : "Site metadata could not be loaded."),
+      );
+  }, []);
+
+  useEffect(() => {
+    if (profileFips == null) return;
+    const base = import.meta.env.BASE_URL;
     Promise.all([
-      fetch(`${base}data/v1/metadata.json`),
       fetch(`${base}data/v1/counties/facility-source-coverage.json`),
       fetch(`${base}data/v1/counties/economic-baseline-2024.json`),
       fetch(`${base}data/v1/counties/employment-wages-baseline-2025.json`),
@@ -84,11 +103,10 @@ export default function App({ study, studyError }: { study: StudyIndex | null; s
       fetch(`${base}data/v1/counties/final-review-coverage.json`),
       fetch(`${base}data/v1/counties/lifecycle-national-tranche-6-coverage.json`),
     ])
-      .then(async ([metadataResponse, coverageResponse, economicResponse, employmentWagesResponse, resolutionResponse, adjudicationResponse, lifecycleResponse]) => {
-        if (!metadataResponse.ok || !coverageResponse.ok || !economicResponse.ok || !employmentWagesResponse.ok || !resolutionResponse.ok || !adjudicationResponse.ok || !lifecycleResponse.ok) {
+      .then(async ([coverageResponse, economicResponse, employmentWagesResponse, resolutionResponse, adjudicationResponse, lifecycleResponse]) => {
+        if (!coverageResponse.ok || !economicResponse.ok || !employmentWagesResponse.ok || !resolutionResponse.ok || !adjudicationResponse.ok || !lifecycleResponse.ok) {
           throw new Error("The static data contract could not be loaded.");
         }
-        setMetadata((await metadataResponse.json()) as SiteMetadata);
         setCounties((await coverageResponse.json()) as FacilitySourceCoverage[]);
         setEconomic((await economicResponse.json()) as CountyEconomicBaseline[]);
         setEmploymentWages((await employmentWagesResponse.json()) as CountyEmploymentWagesBaseline[]);
@@ -105,7 +123,13 @@ export default function App({ study, studyError }: { study: StudyIndex | null; s
       .catch((reason: unknown) =>
         setError(reason instanceof Error ? reason.message : "Static data could not be loaded."),
       );
-  }, []);
+  }, [profileFips]);
+
+  useEffect(() => {
+    if (profileFips == null && mappedProjects.length > 0 && !mappedProjects.some(project => project.county_fips === selectedFips)) {
+      setSelectedFips(mappedProjects[0].county_fips);
+    }
+  }, [mappedProjects, profileFips, selectedFips]);
 
   useEffect(() => {
     const syncRoute = () => {
@@ -120,6 +144,10 @@ export default function App({ study, studyError }: { study: StudyIndex | null; s
   const selectedCounty = useMemo(
     () => counties.find((county) => county.county_fips === selectedFips) ?? null,
     [counties, selectedFips],
+  );
+  const selectedCompletedProject = useMemo(
+    () => completedProjects.find(project => project.county_fips === selectedFips) ?? null,
+    [completedProjects, selectedFips],
   );
   useEffect(() => {
     const stateAbbr = selectedCounty?.state_abbr;
@@ -387,233 +415,31 @@ export default function App({ study, studyError }: { study: StudyIndex | null; s
 
       <StudyNav />
       <div className="fixture-banner" role="status">
-        {study ? <><strong>{study.counts.projects} private-sector research candidates across {study.counts.counties} counties.</strong> Select a study marker or county to explore projects. Economic evidence is available for {study.counts.projects_with_economic_evidence} projects; annual accounts remain incomplete.</> : studyError ?? "Loading the private-sector project register…"}
+        {study ? <><strong>{completedProjects.length} completed private-sector county accounts are mapped.</strong> The broader {study.counts.projects}-project research register and legacy national inventory remain preserved off-map for future study.</> : studyError ?? "Loading the private-sector project register…"}
       </div>
 
       <main className="workspace">
         <aside className="sidebar">
           <section className="control-section">
-            <label htmlFor="metric">Map measure</label>
-            <select
-              id="metric"
-              value={mapMetric}
-              onChange={(event) => setMapMetric(event.target.value as CountyMapMetric)}
-            >
-              <option value="im3-source-records">IM3 source records</option>
-              <option value="real-gdp">Real GDP (2024)</option>
-              <option value="personal-income">Personal income, nominal (2024)</option>
-              <option value="population">Population (2024)</option>
-              <option value="per-capita-income">Per-capita personal income, nominal (2024)</option>
-              <option value="covered-employment">Covered employment (2025)</option>
-              <option value="establishments">Covered establishments (2025)</option>
-              <option value="total-wages">Total wages, nominal (2025)</option>
-              <option value="weekly-wage">Average weekly wage, nominal (2025)</option>
-              <option value="private-construction-employment">Private construction jobs (2025)</option>
-            </select>
-            <p className="control-note">Source-record coverage and county economic conditions provide context. The 2025 construction measure covers all private construction in the county, not just data-center work. Missing and suppressed values remain distinct from zero.</p>
-            <label className="study-map-filter" htmlFor="study-map-type">Study markers</label>
-            <select id="study-map-type" value={studyGroup} onChange={e => setStudyGroup(e.target.value)}><option value="">All project types</option>{Object.keys(study?.counts.groups ?? {}).map(group => <option key={group}>{group}</option>)}</select>
+            <label className="study-map-filter" htmlFor="study-map-type">Completed project markers</label>
+            <select id="study-map-type" value={studyGroup} onChange={e => setStudyGroup(e.target.value)}><option value="">All completed projects</option>{completedGroups.map(group => <option key={group}>{group}</option>)}</select>
+            <p className="control-note">Only projects that pass the full modeled county-account gate appear here. Legacy inventory records and incomplete research candidates remain stored but are excluded from this map.</p>
           </section>
 
           <section className="county-section" aria-live="polite">
-            {error && <div className="error-panel">{error}</div>}
-            {!error && !selectedCounty && <div className="empty-panel">Select a county on the map.</div>}
-            {selectedCounty && (
+            {studyError && <div className="error-panel">{studyError}</div>}
+            {!studyError && !selectedCompletedProject && <div className="empty-panel">Select a completed study on the map.</div>}
+            {selectedCompletedProject && (
               <>
                 <div className="county-heading">
                   <div>
-                    <span className="eyebrow">IM3 source inventory</span>
-                    <h2>{selectedCounty.county_name}</h2>
-                    <p>{selectedCounty.state_abbr} · FIPS {selectedCounty.county_fips}</p>
+                    <span className="eyebrow">Completed private-sector study</span>
+                    <h2>{selectedCompletedProject.county_name}</h2>
+                    <p>{selectedCompletedProject.state_abbr} · FIPS {selectedCompletedProject.county_fips}</p>
                   </div>
-                  <span className="quality-badge grade-p">Provisional</span>
+                  <span className="quality-badge grade-p">Full account</span>
                 </div>
-                <a className="profile-link" href={`#/county/${selectedCounty.county_fips}`}>
-                  Open shareable county profile →
-                </a>
-                <CountyStudyProjects study={study} fips={selectedCounty.county_fips} error={studyError} />
-
-                <div className="stat-grid">
-                  <article>
-                    <span>Source records</span>
-                    <strong>{integerFormat.format(selectedCounty.source_record_count)}</strong>
-                    <small>not deduplicated facilities</small>
-                  </article>
-                  <article>
-                    <span>Building records</span>
-                    <strong>{integerFormat.format(selectedCounty.building_record_count)}</strong>
-                    <small>mapped footprints</small>
-                  </article>
-                  <article>
-                    <span>Campus records</span>
-                    <strong>{integerFormat.format(selectedCounty.campus_record_count)}</strong>
-                    <small>mapped campus areas</small>
-                  </article>
-                  <article>
-                    <span>Observed footprint</span>
-                    <strong>{compactFormat.format(selectedCounty.observed_footprint_sqft)}</strong>
-                    <small>sq ft · single-county records</small>
-                  </article>
-                </div>
-
-                <div className="index-list">
-                  <div>
-                    <span>Point-only records</span>
-                    <strong>{integerFormat.format(selectedCounty.point_record_count)}</strong>
-                    <em>location without footprint</em>
-                  </div>
-                  <div>
-                    <span>Records with source name</span>
-                    <strong>{integerFormat.format(selectedCounty.named_record_count)}</strong>
-                    <em>source completeness</em>
-                  </div>
-                  <div>
-                    <span>Records with source operator</span>
-                    <strong>{integerFormat.format(selectedCounty.operator_named_record_count)}</strong>
-                    <em>raw source assertions</em>
-                  </div>
-                  <div>
-                    <span>Cross-county records</span>
-                    <strong>{integerFormat.format(selectedCounty.cross_county_source_record_count)}</strong>
-                    <em>footprint not allocated</em>
-                  </div>
-                  <div>
-                    <span>Campus-linked facilities</span>
-                    <strong>{integerFormat.format(selectedAdjudication?.campus_linked_facility_count ?? selectedResolution?.campus_linked_facility_count ?? 0)}</strong>
-                    <em>governed spatial decisions</em>
-                  </div>
-                  <div>
-                    <span>Normalized operator links</span>
-                    <strong>{integerFormat.format(selectedResolution?.operator_linked_record_count ?? 0)}</strong>
-                    <em>case and whitespace only</em>
-                  </div>
-                  <div>
-                    <span>Pending identity reviews</span>
-                    <strong>{integerFormat.format(selectedAdjudication?.pending_candidate_count ?? 0)}</strong>
-                    <em>{integerFormat.format(selectedAdjudication?.reviewed_candidate_count ?? 0)} candidates reviewed</em>
-                  </div>
-                  <div>
-                    <span>Merged source records</span>
-                    <strong>{integerFormat.format(selectedAdjudication?.merged_source_record_count ?? 0)}</strong>
-                    <em>redirected, never deleted</em>
-                  </div>
-                  <div>
-                    <span>Distinct sites in buildings</span>
-                    <strong>{integerFormat.format(selectedAdjudication?.distinct_contained_facility_count ?? 0)}</strong>
-                    <em>contained but not merged</em>
-                  </div>
-                  <div className="lifecycle-row lifecycle-start">
-                    <span>Real GDP · 2024</span>
-                    <strong>{compactCurrency(selectedEconomic?.real_gdp_usd)}</strong>
-                    <em>chained 2017 dollars</em>
-                  </div>
-                  <div className="lifecycle-row">
-                    <span>Personal income · 2024</span>
-                    <strong>{compactCurrency(selectedEconomic?.personal_income_nominal_usd)}</strong>
-                    <em>current dollars</em>
-                  </div>
-                  <div className="lifecycle-row">
-                    <span>Population · 2024</span>
-                    <strong>{selectedEconomic?.population == null ? "Unavailable" : integerFormat.format(selectedEconomic.population)}</strong>
-                    <em>BEA county estimate</em>
-                  </div>
-                  <div className="lifecycle-row">
-                    <span>Per-capita personal income · 2024</span>
-                    <strong>{wholeCurrency(selectedEconomic?.per_capita_personal_income_nominal_usd)}</strong>
-                    <em>current dollars per person</em>
-                  </div>
-                  <div className="lifecycle-row lifecycle-start">
-                    <span>Covered employment · 2025</span>
-                    <strong>{selectedEmploymentWages?.annual_avg_covered_employment == null ? "Unavailable" : integerFormat.format(selectedEmploymentWages.annual_avg_covered_employment)}</strong>
-                    <em>annual average of monthly levels</em>
-                  </div>
-                  <div className="lifecycle-row">
-                    <span>Covered establishments · 2025</span>
-                    <strong>{selectedEmploymentWages?.annual_avg_establishments == null ? "Unavailable" : integerFormat.format(selectedEmploymentWages.annual_avg_establishments)}</strong>
-                    <em>annual average of quarterly counts</em>
-                  </div>
-                  <div className="lifecycle-row">
-                    <span>Total wages · 2025</span>
-                    <strong>{compactCurrency(selectedEmploymentWages?.total_annual_wages_nominal_usd)}</strong>
-                    <em>current dollars</em>
-                  </div>
-                  <div className="lifecycle-row">
-                    <span>Average weekly wage · 2025</span>
-                    <strong>{wholeCurrency(selectedEmploymentWages?.annual_avg_weekly_wage_nominal_usd)}</strong>
-                    <em>current dollars per week</em>
-                  </div>
-                  <div className="lifecycle-row">
-                    <span>Private construction employment · 2025</span>
-                    <strong>{selectedEmploymentWages?.private_construction_annual_avg_employment == null ? "Suppressed or unavailable" : integerFormat.format(selectedEmploymentWages.private_construction_annual_avg_employment)}</strong>
-                    <em>annual average · NAICS 23</em>
-                  </div>
-                  <div className="lifecycle-row lifecycle-start">
-                    <span>Panel completeness · 2001–2024</span>
-                    <strong>{selectedEconomicHistory == null ? "Unavailable" : `${selectedEconomicHistory.complete_year_count}/24 years`}</strong>
-                    <em>governed descriptive history</em>
-                  </div>
-                  <div className="lifecycle-row">
-                    <span>Covered employment change · 2001–2024</span>
-                    <strong>{formatPercentChange(selectedHistoryChange.employment)}</strong>
-                    <em>descriptive change</em>
-                  </div>
-                  <div className="lifecycle-row">
-                    <span>Real GDP change · 2001–2024</span>
-                    <strong>{formatPercentChange(selectedHistoryChange.realGdp)}</strong>
-                    <em>chained 2017 dollars</em>
-                  </div>
-                  <div className="lifecycle-row">
-                    <span>Population change · 2001–2024</span>
-                    <strong>{formatPercentChange(selectedHistoryChange.population)}</strong>
-                    <em>descriptive change</em>
-                  </div>
-                  <div className="lifecycle-row">
-                    <span>Weekly wage change · 2001–2024</span>
-                    <strong>{formatPercentChange(selectedHistoryChange.weeklyWage)}</strong>
-                    <em>nominal descriptive change</em>
-                  </div>
-                  <div className="lifecycle-row lifecycle-start">
-                    <span>Canonical facilities</span>
-                    <strong>{integerFormat.format(selectedLifecycle?.active_canonical_facility_count ?? 0)}</strong>
-                    <em>deduplicated research entities</em>
-                  </div>
-                  <div className="lifecycle-row">
-                    <span>National lifecycle queue</span>
-                    <strong>{integerFormat.format(selectedLifecycle?.queued_facility_count ?? 0)}</strong>
-                    <em>remaining in the initial tranche</em>
-                  </div>
-                  <div className="lifecycle-row">
-                    <span>Verified lifecycle statuses</span>
-                    <strong>{integerFormat.format(selectedLifecycle?.verified_facility_count ?? 0)}</strong>
-                    <em>reviewed claims required</em>
-                  </div>
-                  <div className="lifecycle-row">
-                    <span>Lifecycle in research</span>
-                    <strong>{integerFormat.format(selectedLifecycle?.in_research_facility_count ?? 0)}</strong>
-                    <em>evidence does not identify the building</em>
-                  </div>
-                  <div className="lifecycle-row">
-                    <span>Lifecycle needs review</span>
-                    <strong>{integerFormat.format(selectedLifecycle?.needs_review_facility_count ?? 0)}</strong>
-                    <em>official evidence conflicts</em>
-                  </div>
-                  <div className="lifecycle-row">
-                    <span>Unknown lifecycle status</span>
-                    <strong>{integerFormat.format(selectedLifecycle?.unknown_status_facility_count ?? 0)}</strong>
-                    <em>unknown is never treated as zero</em>
-                  </div>
-                </div>
-
-                <details className="research-details">
-                  <summary>County first-entry research</summary>
-                  <p>{treatmentStatus}: {treatmentNote}</p>
-                  <p>{researchQueueStatus}: {researchQueueNote}</p>
-                  <p>This historical assessment is separate from project-level economic research.</p>
-                </details>
-                <div className="evidence-note">
-                  <span>Interpretation</span>
-                  <p>Halo color shows reviewed evidence state: blue means available evidence does not identify the building, red marks conflicting official records, and green marks a verified status. Unknown and disputed records are never treated as zero.</p>
-                </div>
+                <CountyStudyProjects study={study} fips={selectedCompletedProject.county_fips} error={studyError} completedOnly />
               </>
             )}
           </section>
@@ -621,16 +447,12 @@ export default function App({ study, studyError }: { study: StudyIndex | null; s
 
         <section className="map-section">
           <Suspense fallback={<div className="map-loading">Preparing interactive map…</div>}>
-            <MapPanel metric={mapMetric} selectedFips={selectedFips} onSelectCounty={setSelectedFips} studyProjects={mappedProjects} />
+            <MapPanel selectedFips={selectedFips} onSelectCounty={setSelectedFips} studyProjects={mappedProjects} />
           </Suspense>
           <div className="map-caption">
-            <span>IM3 v2026.02.09 · 1,472 source objects</span>
             <span>Census boundaries · Jan. 1, 2025</span>
-            <span>BEA county economy · 2024</span>
-            <span>BLS QCEW employment and wages · 2025</span>
-            <span>BEA–BLS core panel · 2001–2024</span>
-            {study && <span>Study register · {study.counts.projects} candidate projects · {study.screen_date}</span>}
-            <span>ODbL · © OpenStreetMap contributors</span>
+            {study && <span>{completedProjects.length} completed county accounts · release {study.release_id}</span>}
+            <span>Legacy inventory and county datasets retained off-map</span>
           </div>
         </section>
       </main>

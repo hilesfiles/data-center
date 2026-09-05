@@ -10,13 +10,13 @@ export function StudyNav() {
   </nav>;
 }
 
-export function CountyStudyProjects({ study, fips, error }: { study: StudyIndex | null; fips: string; error?: string | null }) {
-  const projects = study?.projects.filter(p => p.county_fips === fips);
+export function CountyStudyProjects({ study, fips, error, completedOnly = false }: { study: StudyIndex | null; fips: string; error?: string | null; completedOnly?: boolean }) {
+  const projects = study?.projects.filter(p => p.county_fips === fips && (!completedOnly || p.model_completeness.status === "full_modeled_account"));
   return <section className="county-study" aria-label="Study projects in this county">
-    <h3>Projects in the economic study</h3>
+    <h3>{completedOnly ? "Completed county account" : "Projects in the economic study"}</h3>
     {error ? <p role="alert">{error}</p> : !projects ? <p>Loading project register…</p> : projects.length === 0
-      ? <p>No project from this county is in the initial research queue. This does not establish an absence of data centers.</p>
-      : <ul>{projects.map(p => <li key={p.project_id}><a href={`#/project/${p.project_id}`}>{p.name} <span aria-hidden="true">↗</span></a><small>{p.study_group} · Research candidate</small></li>)}</ul>}
+      ? <p>{completedOnly ? "No completed county account is available." : "No project from this county is in the initial research queue. This does not establish an absence of data centers."}</p>
+      : <ul>{projects.map(p => <li key={p.project_id}><a href={`#/project/${p.project_id}`}>{p.name} <span aria-hidden="true">↗</span></a><small>{p.study_group} · {p.model_completeness.status === "full_modeled_account" ? "Full modeled county account" : "Research candidate"}</small></li>)}</ul>}
     <a className="profile-link" href="#/study">Explore all study projects →</a>
   </section>;
 }

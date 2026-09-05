@@ -6,14 +6,18 @@ for the Observatory. County boundaries and identity fields come from the authori
 of IM3 Atlas v2026.02.09 source records. It is not a complete or lifecycle-verified
 operating-facility inventory, and the application contains no impact findings.
 
-The first private-sector study release adds a searchable register of 36 provisional
-projects across 35 counties and 23 states, including five campus-linked candidates.
-The default page is the project register; `#/project/{project_id}` opens a sourced
-history and economic-evidence checklist, `#/map` retains the national map with study
-markers, and existing `#/county/{FIPS}` links remain available. First-entry decisions
-are retained as a separate research question. Study release 1.41 publishes 585 economic source
-records linked to all 36 candidates: 533 reported records and 52 projections, plus 70 separately
-labeled modeled syntheses—13 for Apple Mesa, 20 for Switch Citadel / Tahoe Reno 1, and 37 for Digital Crossroad Hammond.
+The private-sector study includes a searchable register of 36 provisional projects
+across 35 counties and 23 states, including five campus-linked candidates. The default
+page is the project register; `#/project/{project_id}` opens a sourced history and
+economic-evidence checklist, and existing `#/county/{FIPS}` links remain available.
+`#/map` presents only the three projects that pass the full modeled county-account gate:
+Apple Mesa in Maricopa County, Switch Citadel in Storey County, and Digital Crossroad
+Hammond in Lake County. The legacy national inventory, county datasets, and incomplete
+research candidates remain stored for future use but are excluded from the rendered map.
+First-entry decisions are retained as a separate research question. Study release 1.42
+publishes 585 economic source records linked to all 36 candidates: 533 reported records
+and 52 projections, plus 104 separately labeled modeled syntheses—27 for Apple Mesa,
+34 for Switch Citadel / Tahoe Reno 1, and 43 for Digital Crossroad Hammond.
 Profiles show source pages/sections, campus/company scope, tax-base history with gaps,
 construction peaks, paired tax/incentive histories with a narrowly defined documented difference,
 qualified amounts, local-contractor spending and named supplier roles, community funding, operating scale, private financing, capacity and permit context, and separate forecast and modeled-synthesis views.
@@ -268,8 +272,9 @@ validation can be added later to CI with a standards-compliant Draft 2020-12 val
 
 - JSON-only domain and analytical contracts: implemented as schema v1.0.0.
 - Configuration and taxonomy validation: implemented.
-- Static map/application build: implemented with authoritative geography and provisional
-  IM3 source-record coverage.
+- Static map/application build: implemented with authoritative geography and markers for
+  the three full modeled county accounts. The provisional IM3 map projection remains stored
+  under `site/public/data/v1/maps/` for future research but is not requested by the map UI.
 - National Census boundaries: implemented for 3,144 county and county-equivalent records
   across the 50 states and District of Columbia, January 1, 2025 vintage.
 - PNNL/IM3 facility seed: implemented from v2026.02.09 with 1,479 source rows, 1,472

@@ -693,17 +693,26 @@ try {
   check("project and register at mobile width");
 
   await page.setViewportSize({ width: 1440, height: 1000 });
+  await page.evaluate(() => performance.clearResourceTimings());
   await page.goto(`${url}#/map`);
   await page.locator("canvas").waitFor();
   await page.waitForFunction(() => !document.querySelector(".map-message") && !document.querySelector(".map-loading"), undefined, { timeout: 45000 });
-  assert.match(await page.locator(".review-key").innerText(), /study candidates \(36\)/i);
-  await page.getByLabel("Study markers").selectOption("Colocation");
-  assert.match(await page.locator(".review-key").innerText(), /study candidates \(12\)/i);
-  await page.getByLabel("Study markers").selectOption("");
+  assert.match(await page.locator(".review-key").innerText(), /full modeled accounts \(3\)/i);
+  assert.doesNotMatch(await page.locator(".legend").innerText(), /IM3|pending|merged|queued/i);
+  await page.getByLabel("Completed project markers").selectOption("Colocation");
+  assert.match(await page.locator(".review-key").innerText(), /full modeled accounts \(2\)/i);
+  await page.getByLabel("Completed project markers").selectOption("");
   await page.screenshot({ path: path.join(out, "map-desktop.png") });
+  assert.doesNotMatch(await page.locator(".sidebar").innerText(), /Source records|Building records|Campus records|Observed footprint|First-entry research/i);
+  const mapResources = await page.evaluate(() => performance.getEntriesByType("resource").map(entry => entry.name));
+  assert.equal(mapResources.some(name => name.endsWith("/data/v1/maps/facilities.geojson")), false);
+  assert.equal(mapResources.some(name => name.includes("/data/v1/counties/")), false);
+  assert.equal(mapResources.some(name => name.includes("/data/v1/panels/county-economic-history/")), false);
   const response = await page.request.get(`${url}data/v1/study/index.json`);
   const study = await response.json();
-  const target = study.projects.find(p => p.name === "Meta Los Lunas");
+  assert.equal(study.projects.length, 36);
+  assert.equal(study.projects.filter(p => p.model_completeness.status === "full_modeled_account").length, 3);
+  const target = study.projects.find(p => p.name === "Apple Mesa");
   const canvas = await page.locator("canvas").boundingBox();
   const world = 512 * 2 ** 3.25;
   const mercatorY = lat => (1 - Math.asinh(Math.tan(lat * Math.PI / 180)) / Math.PI) / 2;
@@ -711,7 +720,7 @@ try {
     canvas.y + canvas.height / 2 + (mercatorY(target.latitude) - mercatorY(38.5)) * world);
   await page.waitForURL(`**/project/${target.project_id}`);
   await page.getByRole("heading", { name: "Sources & research history" }).waitFor();
-  check("map renders, filters markers and opens a project on marker click");
+  check("map renders only three completed studies while preserving the 36-project register off-map");
 
   await page.goto(`${url}#/project/prj_study_missing`);
   await page.getByRole("heading", { name: "Project or page not found" }).waitFor();
