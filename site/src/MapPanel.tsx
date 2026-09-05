@@ -127,7 +127,12 @@ export function MapPanel({ selectedFips, onSelectCounty, studyProjects = [] }: M
           paint: { "line-color": "#f0aa58", "line-width": 3.5 },
         });
 
-        const popup = new Popup({ closeButton: false, closeOnClick: false, offset: 12 });
+        const popup = new Popup({
+          closeButton: false,
+          closeOnClick: false,
+          offset: 12,
+          className: "study-map-popup",
+        });
         map.on("mousemove", "completed-county-fill", (event: FeaturePointerEvent) => {
           const properties = event.features?.[0]?.properties;
           if (!properties) return;

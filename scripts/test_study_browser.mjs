@@ -727,8 +727,18 @@ try {
   const canvas = await page.locator("canvas").boundingBox();
   const world = 512 * 2 ** 3.25;
   const mercatorY = lat => (1 - Math.asinh(Math.tan(lat * Math.PI / 180)) / Math.PI) / 2;
-  await page.mouse.click(canvas.x + canvas.width / 2 + (target.longitude + 98.5) / 360 * world,
-    canvas.y + canvas.height / 2 + (mercatorY(target.latitude) - mercatorY(38.5)) * world);
+  const targetX = canvas.x + canvas.width / 2 + (target.longitude + 98.5) / 360 * world;
+  const targetY = canvas.y + canvas.height / 2 + (mercatorY(target.latitude) - mercatorY(38.5)) * world;
+  await page.mouse.move(targetX, targetY);
+  const mapPopup = page.locator(".study-map-popup .maplibregl-popup-content");
+  await mapPopup.waitFor();
+  assert.deepEqual(await mapPopup.evaluate(element => ({
+    background: getComputedStyle(element).backgroundColor,
+    color: getComputedStyle(element).color,
+    title: getComputedStyle(element.querySelector("strong")).color,
+  })), { background: "rgb(12, 16, 22)", color: "rgb(220, 232, 238)", title: "rgb(255, 255, 255)" });
+  await page.screenshot({ path: path.join(out, "map-popup-desktop.png") });
+  await page.mouse.click(targetX, targetY);
   await page.waitForURL(`**/project/${target.project_id}`);
   await page.getByRole("heading", { name: "Sources & research history" }).waitFor();
   check("map renders only three completed studies while preserving the 36-project register off-map");
