@@ -3,6 +3,7 @@ import type { EconomicRecord, EconomicSource, ModeledSynthesis, StudyProject } f
 
 const numbers = new Intl.NumberFormat("en-US", { maximumFractionDigits: 2 });
 const waterRates = new Intl.NumberFormat("en-US", { maximumFractionDigits: 3 });
+const modeledDollars = (value: number) => `${value < 0 ? "-" : ""}$${numbers.format(Math.abs(value))}`;
 function amount(r: EconomicRecord) {
   const prefix = { exact: "", at_least: "At least ", greater_than: "More than ", up_to: "Up to ", approximately: "About " }[r.value_qualifier || "exact"];
   if (r.unit === "USD") {
@@ -22,10 +23,10 @@ function sourceUrl(r: EconomicRecord, sources: EconomicSource[]) {
   return r.pdf_page ? `${source.url.split("#")[0]}#page=${r.pdf_page}` : source.url;
 }
 function modeledAmount(value: number, unit: ModeledSynthesis["unit"]) {
-  if (unit === "USD") return `$${numbers.format(value)}`;
-  if (unit === "USD_per_year") return `$${numbers.format(value)} / year`;
-  if (unit === "USD_per_FTE") return `$${numbers.format(value)} / FTE`;
-  if (unit === "USD_per_hour") return `$${numbers.format(value)} / hour`;
+  if (unit === "USD") return modeledDollars(value);
+  if (unit === "USD_per_year") return `${modeledDollars(value)} / year`;
+  if (unit === "USD_per_FTE") return `${modeledDollars(value)} / FTE`;
+  if (unit === "USD_per_hour") return `${modeledDollars(value)} / hour`;
   if (unit === "gallons_per_year") return `${numbers.format(value)} gallons / year`;
   if (unit === "gallons_per_day") return `${numbers.format(value)} gallons / day`;
   if (unit === "million_gallons_per_day") return `${waterRates.format(value)} million gallons / day`;
@@ -47,6 +48,106 @@ const intervalLabels: Record<ModeledSynthesis["interval"]["kind"], string> = {
   credible_interval: "Credible interval",
   reported_band: "Reported band with modeled midpoint",
 };
+
+type ImpactMetric = {
+  label: string;
+  description: string;
+  codes: string[];
+};
+
+const impactSections: Array<{ title: string; note: string; metrics: ImpactMetric[] }> = [
+  {
+    title: "Construction-period contribution",
+    note: "Capital deployed during development and the temporary employment, earnings, and local purchasing supported by that work.",
+    metrics: [
+      { label: "Annualized capital spending", description: "Capital program expressed as an annual development-period flow", codes: ["study.modeled_annualized_capital_spending"] },
+      { label: "Local construction purchasing", description: "Direct spending retained by local construction suppliers", codes: ["study.modeled_local_construction_spending", "study.modeled_construction_supplier_spending_direct"] },
+      { label: "Construction employment", description: "Direct, indirect, and induced work over the construction period", codes: ["study.modeled_construction_job_years_total"] },
+      { label: "Construction labor income", description: "Total earnings supported over the construction period", codes: ["study.modeled_construction_labor_income_total"] },
+    ],
+  },
+  {
+    title: "Annual operating contribution",
+    note: "Recurring employment and economic activity supported by facility operations in the modeled operating year.",
+    metrics: [
+      { label: "Employment supported", description: "Direct, supplier, and household-spending employment", codes: ["study.modeled_operating_fte_total"] },
+      { label: "Labor income supported", description: "Annual direct, indirect, and induced labor income", codes: ["study.modeled_operating_labor_income_total"] },
+      { label: "Supplier output", description: "Annual output supported through operating purchases", codes: ["study.modeled_operating_supplier_output", "study.modeled_operating_supplier_output_indirect"] },
+      { label: "Household-spending output", description: "Annual induced output from worker household spending", codes: ["study.modeled_induced_household_output", "study.modeled_operating_household_output_induced"] },
+    ],
+  },
+  {
+    title: "Annual fiscal and infrastructure account",
+    note: "Comparable annual public balance and operating-scale resource demand. Fiscal figures and engineering estimates are separate lines and are not summed.",
+    metrics: [
+      { label: "Net public fiscal position", description: "Modeled recurring revenues less incentives and public-service costs", codes: ["study.modeled_annual_net_fiscal_position"] },
+      { label: "Public-service cost", description: "Annual local public-service cost assigned to the facility scenario", codes: ["study.modeled_annual_public_service_cost"] },
+      { label: "Facility electricity", description: "Annual operating electricity requirement", codes: ["study.modeled_annual_electricity_use", "study.modeled_facility_electricity_consumption"] },
+      { label: "On-site water use", description: "Annual on-site water requirement under the stated cooling scenario", codes: ["study.modeled_onsite_water_use"] },
+      { label: "Location-based emissions", description: "Annual grid emissions associated with the electricity scenario", codes: ["study.modeled_location_based_gross_emissions", "study.modeled_location_based_electricity_emissions", "study.modeled_location_based_grid_emissions"] },
+    ],
+  },
+  {
+    title: "Estimated county effects",
+    note: "Modeled county-scale changes for the stated comparison or scenario. These estimates are descriptive unless the underlying record identifies a causal design.",
+    metrics: [
+      { label: "Real GDP effect", description: "Estimated difference in county real GDP", codes: ["study.modeled_county_gdp_effect"] },
+      { label: "Employment effect", description: "Estimated difference in county employment", codes: ["study.modeled_county_employment_effect"] },
+      { label: "Wage effect", description: "Estimated difference in county wages", codes: ["study.modeled_county_wage_effect"] },
+    ],
+  },
+];
+
+const observedAnchors: ImpactMetric[] = [
+  { label: "Capital documented", description: "Latest reported capital or investment observation", codes: ["study.cumulative_facility_investment", "study.audited_capital_expenditure", "study.campus_capital_expenditure", "study.actual_qualified_investment"] },
+  { label: "Direct operating employment", description: "Latest reported facility employment observation", codes: ["study.operating_employees"] },
+  { label: "Property tax paid", description: "Latest reported paid property-tax account", codes: ["study.property_taxes_paid", "study.gross_property_tax_distribution"] },
+  { label: "Facility electricity", description: "Latest reported annual electricity observation", codes: ["study.annual_electricity_use"] },
+];
+
+function periodRank(period: EconomicRecord["period"]) {
+  if ("year" in period) return period.year;
+  if ("report_date" in period) return Number(period.report_date?.slice(0, 4)) || 0;
+  return 0;
+}
+
+function findModeledMetric(project: StudyProject, metric: ImpactMetric) {
+  return metric.codes.map(code => project.modeled_syntheses.find(row => row.metric_code === code)).find((row): row is ModeledSynthesis => !!row);
+}
+
+function findObservedMetric(project: StudyProject, metric: ImpactMetric) {
+  for (const code of metric.codes) {
+    const row = project.economic_records
+      .filter(candidate => candidate.basis === "reported_actual" && candidate.metric_code === code)
+      .sort((a, b) => periodRank(b.period) - periodRank(a.period))[0];
+    if (row) return row;
+  }
+  return undefined;
+}
+
+export function ImpactAccount({ project, countyView = false }: { project: StudyProject; countyView?: boolean }) {
+  const anchors = observedAnchors.map(metric => ({ metric, row: findObservedMetric(project, metric) })).filter((entry): entry is { metric: ImpactMetric; row: EconomicRecord } => !!entry.row);
+  const sections = impactSections.map(section => ({
+    ...section,
+    rows: section.metrics.map(metric => ({ metric, row: findModeledMetric(project, metric) })).filter((entry): entry is { metric: ImpactMetric; row: ModeledSynthesis } => !!entry.row),
+  })).filter(section => section.rows.length > 0);
+  if (!anchors.length && !sections.length) return null;
+  return <div className={`impact-account ${countyView ? "county-impact-account" : ""}`}>
+    {anchors.length > 0 && <section className="impact-section observed-impact-section" aria-labelledby={`${project.project_id}-observed-title`}>
+      <div className="impact-section-heading"><div><span className="eyebrow">Directly reported anchors</span><h4 id={`${project.project_id}-observed-title`}>What public records establish</h4></div><span className="evidence-pill reported">Reported</span></div>
+      <div className="impact-table-wrap"><table className="impact-table observed-impact-table"><thead><tr><th scope="col">Measure</th><th scope="col">Reported value</th><th scope="col">Period and scope</th></tr></thead><tbody>
+        {anchors.map(({ metric, row }) => <tr key={metric.label}><th scope="row"><strong>{metric.label}</strong><span>{metric.description}</span></th><td className="impact-value" data-label="Reported value"><a href={sourceUrl(row, project.economic_sources)} target="_blank" rel="noreferrer">{amount(row)} ↗</a></td><td data-label="Period and scope"><strong>{row.period.label}</strong><span>{row.scope.label}</span></td></tr>)}
+      </tbody></table></div>
+    </section>}
+    {sections.map((section, sectionIndex) => <section className="impact-section modeled-impact-section" key={section.title} aria-labelledby={`${project.project_id}-impact-${sectionIndex}`}>
+      <div className="impact-section-heading"><div><span className="eyebrow">Modeled synthesis · not observed or audited</span><h4 id={`${project.project_id}-impact-${sectionIndex}`}>{section.title}</h4><p>{section.note}</p></div><span className="evidence-pill modeled">Modeled</span></div>
+      <div className="impact-table-wrap"><table className="impact-table"><thead><tr><th scope="col">Measure</th><th scope="col">Central estimate</th><th scope="col">Modeled interval</th><th scope="col">Period and confidence</th></tr></thead><tbody>
+        {section.rows.map(({ metric, row }) => <tr key={row.estimate_id}><th scope="row"><strong>{metric.label}</strong><span>{metric.description}</span></th><td className="impact-value" data-label="Central estimate">{modeledAmount(row.value, row.unit)}</td><td data-label="Modeled interval">{row.interval.low === row.interval.high ? intervalLabels[row.interval.kind] : <>{modeledAmount(row.interval.low, row.unit)}–{modeledAmount(row.interval.high, row.unit)}</>}</td><td data-label="Period and confidence"><strong>{row.period.label}</strong><span>{row.confidence} confidence · {intervalLabels[row.interval.kind]}</span></td></tr>)}
+      </tbody></table></div>
+    </section>)}
+    <p className="impact-account-note">Each line retains its own scope, period, and uncertainty. Construction-period totals, annual operating flows, fiscal balances, resource use, and county effects cannot be added into one benefit figure.</p>
+  </div>;
+}
 
 const fiscalMetrics = ["study.property_tax_receipts", "study.incentive_payments"];
 const billingMetrics = ["study.account_assessed_value", "study.property_taxes_billed", "study.property_taxes_paid"];
@@ -216,38 +317,46 @@ export function EconomicAccounts({ project }: { project: StudyProject }) {
   const tifRevenueRows = rows.filter(isTifRevenueRecord);
   const tifDebtRows = rows.filter(isTifDebtRecord);
   const series = [...new Set(rows.filter(r => !isAnnualFiscalRecord(r) && !isTaxBillingRecord(r) && !isTifRevenueRecord(r) && !isTifDebtRecord(r)).map(r => r.annual_series_key).filter((s): s is string => !!s))];
+  const completedAccount = project.model_completeness.status === "full_modeled_account";
   return <section className="project-section economic-accounts" aria-labelledby="accounts-title">
-    <div className="section-heading"><div><span className="eyebrow">Economic contribution over time</span><h3 id="accounts-title">Economic evidence</h3></div><span className="account-count">{project.economic_record_count} sourced records · {project.modeled_synthesis_count ? `${project.modeled_synthesis_count} modeled syntheses` : "partial coverage"}</span></div>
-    <p className="study-intro">Source records and analyst-modeled syntheses are kept in separate views. Workforce snapshots and construction peaks do not establish new jobs, annual averages or local hiring. Models expose their inputs and assumptions and do not convert missing records into facts.</p>
-    <div className="economic-tabs" role="tablist" aria-label="Economic evidence basis" onKeyDown={e => {
-      if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(e.key)) return;
-      e.preventDefault();
-      const current = tabs.indexOf(basis);
-      const next = e.key === "Home" ? tabs[0] : e.key === "End" ? tabs[tabs.length - 1] : tabs[(current + (e.key === "ArrowRight" ? 1 : -1) + tabs.length) % tabs.length];
-      setBasis(next);
-      e.currentTarget.querySelectorAll<HTMLButtonElement>("button")[tabs.indexOf(next)].focus();
-    }}>
-      <button type="button" id="actual-tab" role="tab" tabIndex={basis === "reported_actual" ? 0 : -1} aria-selected={basis === "reported_actual"} aria-controls="economic-records" onClick={() => setBasis("reported_actual")}>Reported activity <span>{project.reported_actual_count}</span></button>
-      <button type="button" id="projection-tab" role="tab" tabIndex={basis === "source_projection" ? 0 : -1} aria-selected={basis === "source_projection"} aria-controls="economic-records" onClick={() => setBasis("source_projection")}>Plans & forecasts <span>{project.projection_count}</span></button>
-      <button type="button" id="modeled-tab" role="tab" tabIndex={basis === "modeled_synthesis" ? 0 : -1} aria-selected={basis === "modeled_synthesis"} aria-controls="economic-records" onClick={() => setBasis("modeled_synthesis")}>Modeled synthesis <span>{project.modeled_synthesis_count}</span></button>
-    </div>
-    <div id="economic-records" role="tabpanel" aria-labelledby={basis === "reported_actual" ? "actual-tab" : basis === "source_projection" ? "projection-tab" : "modeled-tab"}>
-      {basis === "modeled_synthesis" ? <ModeledCards project={project} /> : <>
-      {basis === "source_projection" && <p className="projection-note">Plans retain their original announcement dates and time horizons, including unspecified completion dates. Realized spending, jobs and abatements have not been verified. Amounts with different horizons cannot be compared as a fiscal balance.</p>}
-      {!rows.length && <p className="study-muted">No {basis === "reported_actual" ? "reported activity" : "plans or forecasts"} collected for this project.</p>}
-      {fiscalScopes.map(scope => <FiscalHistory key={scope} records={fiscalRows.filter(r => JSON.stringify(r.scope) === scope)} sources={project.economic_sources} />)}
-      {billingScopes.map(scope => <TaxBillingHistory key={scope} records={billingRows.filter(r => JSON.stringify(r.scope) === scope)} sources={project.economic_sources} />)}
-      {!!tifRevenueRows.length && <TifRevenueHistory records={tifRevenueRows} sources={project.economic_sources} />}
-      {!!tifDebtRows.length && <TifDebtHistory records={tifDebtRows} sources={project.economic_sources} />}
-      {series.map(key => <AnnualHistory key={key} records={rows.filter(r => r.annual_series_key === key)} sources={project.economic_sources} />)}
-      <div className="economic-record-list">{rows.map(r => <article className="economic-record" key={r.claim_id}>
-        <div><h4>{r.label}</h4><p>{r.period.label}</p></div>
-        <strong className="record-value">{amount(r)}</strong>
-        <p className="record-scope"><span>{r.scope.level === "campus" ? "Campus scope" : r.scope.level === "supporting_infrastructure" ? "Supporting infrastructure" : r.scope.level === "county_context" ? "County industry context" : "Company / county context"}</span>{r.scope.label}</p>
-        <details><summary>Source and interpretation</summary><p>{r.notes}</p><p className="study-muted">Not allocated to the individual mapped inventory record. {r.measure_type === "peak" ? "A peak workforce count; duration and job-years cannot be inferred." : r.measure_type === "stock" ? "A stock at the reported period; do not sum across years." : r.measure_type === "rate" ? "A rate; hours and payroll cannot be inferred." : "A flow for the stated period; no total economic-benefit sum is defined."}</p><a href={sourceUrl(r, project.economic_sources)} target="_blank" rel="noreferrer">{project.economic_sources.find(s => s.source_id === r.source_id)?.title} ↗</a><small>{r.pdf_page && <>PDF page {r.pdf_page} · printed page {r.printed_page} · </>}{r.source_locator}</small></details>
-      </article>)}</div>
-      </>}
-    </div>
-    <details className="research-details"><summary>Evidence review and source limitations</summary><p>{project.economic_scope_note}</p>{project.economic_sources.map(s => <div key={s.source_id}><a href={s.url} target="_blank" rel="noreferrer">{s.title} ↗</a><p>{s.notes}</p><small>Retrieved {s.retrieved_on} · {s.review_method === "pdf_text_and_page_image" ? "PDF text and page image checked" : s.review_method === "web_page" ? "Web page text checked" : s.review_method === "structured_data" ? "Structured data and published layout checked" : "Web-extracted PDF text checked"}</small></div>)}</details>
+    <div className="section-heading"><div><span className="eyebrow">Community economic impact</span><h3 id="accounts-title">Economic evidence</h3></div><div className="account-heading-meta"><span className="account-status">{completedAccount ? "Completed modeled account" : "Partial evidence"}</span><span className="account-count">{project.economic_record_count} sourced records · {project.modeled_synthesis_count ? `${project.modeled_synthesis_count} modeled syntheses` : "partial coverage"}</span></div></div>
+    <p className="study-intro">The account below puts the economic result first. Reported observations and modeled estimates are labeled at the figure, with their period, scope, and uncertainty kept visible.</p>
+    <ImpactAccount project={project} />
+    <details className="evidence-ledger" open={completedAccount ? undefined : true}>
+      <summary><span>{completedAccount ? "Supporting records and model documentation" : "Available source records"}</span><small>{project.economic_record_count} sourced records · {project.modeled_synthesis_count} modeled syntheses</small></summary>
+      <div className="evidence-ledger-body">
+        <p className="study-intro">Use this ledger to audit individual source claims, forecasts, annual property and fiscal series, engineering inputs, and model methods. These records support the account above; they are not separate benefit totals.</p>
+        <div className="economic-tabs" role="tablist" aria-label="Economic evidence basis" onKeyDown={e => {
+          if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(e.key)) return;
+          e.preventDefault();
+          const current = tabs.indexOf(basis);
+          const next = e.key === "Home" ? tabs[0] : e.key === "End" ? tabs[tabs.length - 1] : tabs[(current + (e.key === "ArrowRight" ? 1 : -1) + tabs.length) % tabs.length];
+          setBasis(next);
+          e.currentTarget.querySelectorAll<HTMLButtonElement>("button")[tabs.indexOf(next)].focus();
+        }}>
+          <button type="button" id="actual-tab" role="tab" tabIndex={basis === "reported_actual" ? 0 : -1} aria-selected={basis === "reported_actual"} aria-controls="economic-records" onClick={() => setBasis("reported_actual")}>Reported activity <span>{project.reported_actual_count}</span></button>
+          <button type="button" id="projection-tab" role="tab" tabIndex={basis === "source_projection" ? 0 : -1} aria-selected={basis === "source_projection"} aria-controls="economic-records" onClick={() => setBasis("source_projection")}>Plans & forecasts <span>{project.projection_count}</span></button>
+          <button type="button" id="modeled-tab" role="tab" tabIndex={basis === "modeled_synthesis" ? 0 : -1} aria-selected={basis === "modeled_synthesis"} aria-controls="economic-records" onClick={() => setBasis("modeled_synthesis")}>Modeled synthesis <span>{project.modeled_synthesis_count}</span></button>
+        </div>
+        <div id="economic-records" role="tabpanel" aria-labelledby={basis === "reported_actual" ? "actual-tab" : basis === "source_projection" ? "projection-tab" : "modeled-tab"}>
+          {basis === "modeled_synthesis" ? <ModeledCards project={project} /> : <>
+          {basis === "source_projection" && <p className="projection-note">Plans retain their original announcement dates and time horizons, including unspecified completion dates. Realized spending, jobs and abatements have not been verified. Amounts with different horizons cannot be compared as a fiscal balance.</p>}
+          {!rows.length && <p className="study-muted">No {basis === "reported_actual" ? "reported activity" : "plans or forecasts"} collected for this project.</p>}
+          {fiscalScopes.map(scope => <FiscalHistory key={scope} records={fiscalRows.filter(r => JSON.stringify(r.scope) === scope)} sources={project.economic_sources} />)}
+          {billingScopes.map(scope => <TaxBillingHistory key={scope} records={billingRows.filter(r => JSON.stringify(r.scope) === scope)} sources={project.economic_sources} />)}
+          {!!tifRevenueRows.length && <TifRevenueHistory records={tifRevenueRows} sources={project.economic_sources} />}
+          {!!tifDebtRows.length && <TifDebtHistory records={tifDebtRows} sources={project.economic_sources} />}
+          {series.map(key => <AnnualHistory key={key} records={rows.filter(r => r.annual_series_key === key)} sources={project.economic_sources} />)}
+          <div className="economic-record-list">{rows.map(r => <article className="economic-record" key={r.claim_id}>
+            <div><h4>{r.label}</h4><p>{r.period.label}</p></div>
+            <strong className="record-value">{amount(r)}</strong>
+            <p className="record-scope"><span>{r.scope.level === "campus" ? "Campus scope" : r.scope.level === "supporting_infrastructure" ? "Supporting infrastructure" : r.scope.level === "county_context" ? "County industry context" : "Company / county context"}</span>{r.scope.label}</p>
+            <details><summary>Source and interpretation</summary><p>{r.notes}</p><p className="study-muted">Not allocated to the individual mapped inventory record. {r.measure_type === "peak" ? "A peak workforce count; duration and job-years cannot be inferred." : r.measure_type === "stock" ? "A stock at the reported period; do not sum across years." : r.measure_type === "rate" ? "A rate; hours and payroll cannot be inferred." : "A flow for the stated period; no total economic-benefit sum is defined."}</p><a href={sourceUrl(r, project.economic_sources)} target="_blank" rel="noreferrer">{project.economic_sources.find(s => s.source_id === r.source_id)?.title} ↗</a><small>{r.pdf_page && <>PDF page {r.pdf_page} · printed page {r.printed_page} · </>}{r.source_locator}</small></details>
+          </article>)}</div>
+          </>}
+        </div>
+        <details className="research-details"><summary>Evidence review and source limitations</summary><p>{project.economic_scope_note}</p>{project.economic_sources.map(s => <div key={s.source_id}><a href={s.url} target="_blank" rel="noreferrer">{s.title} ↗</a><p>{s.notes}</p><small>Retrieved {s.retrieved_on} · {s.review_method === "pdf_text_and_page_image" ? "PDF text and page image checked" : s.review_method === "web_page" ? "Web page text checked" : s.review_method === "structured_data" ? "Structured data and published layout checked" : "Web-extracted PDF text checked"}</small></div>)}</details>
+      </div>
+    </details>
   </section>;
 }

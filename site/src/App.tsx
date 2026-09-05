@@ -1,6 +1,7 @@
 import { lazy, Suspense, useEffect, useMemo, useState } from "react";
+import { ImpactAccount } from "./EconomicAccounts";
 import { CountyStudyProjects, StudyNav } from "./StudyNav";
-import type { StudyIndex } from "./studyTypes";
+import type { StudyIndex, StudyProject, StudyProjectSummary } from "./studyTypes";
 import type {
   CountyEntityAdjudicationCoverage,
   CountyEconomicHistory,
@@ -40,6 +41,71 @@ const percentChange = (start: number | null | undefined, end: number | null | un
 
 const formatPercentChange = (value: number | null) =>
   value == null ? "Unavailable" : `${value >= 0 ? "+" : ""}${value.toFixed(1)}%`;
+
+const studyDataBase = `${import.meta.env.BASE_URL}data/v1/study/`;
+
+function CountyStudyAccount({ summary, release, generatedAt }: { summary: StudyProjectSummary; release: string; generatedAt: string }) {
+  const [project, setProject] = useState<StudyProject | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  useEffect(() => {
+    let active = true;
+    setProject(null);
+    setError(null);
+    fetch(`${studyDataBase}${summary.detail_path}`).then(async response => {
+      if (!response.ok) throw new Error("The completed facility account could not be loaded.");
+      const result = await response.json() as StudyProject;
+      if (result.project_id !== summary.project_id || result.release_id !== release || result.generated_at !== generatedAt) throw new Error("The county and facility account releases do not match.");
+      if (active) setProject(result);
+    }).catch((reason: unknown) => {
+      if (active) setError(reason instanceof Error ? reason.message : "The completed facility account could not be loaded.");
+    });
+    return () => { active = false; };
+  }, [summary, release, generatedAt]);
+  return <section className="county-study-account" aria-labelledby="county-account-title">
+    <div className="section-heading"><div><span className="eyebrow">Completed private-sector study</span><h3 id="county-account-title">Facility contribution to {summary.county_name}</h3></div><a href={`#/project/${summary.project_id}`}>Open full project evidence →</a></div>
+    <p className="study-intro">Construction, recurring operations, public finances, infrastructure demand, and county effects are presented as separate accounts. Reported and modeled figures remain labeled at the value.</p>
+    {error ? <div className="error-panel" role="alert">{error}</div> : !project ? <p className="study-loading" role="status">Loading the completed economic account…</p> : <ImpactAccount project={project} countyView />}
+  </section>;
+}
+
+type CountyTrendKey = "real_gdp_usd" | "annual_avg_covered_employment" | "population" | "annual_avg_weekly_wage_nominal_usd";
+
+const countyTrends: Array<{ key: CountyTrendKey; label: string; note: string }> = [
+  { key: "real_gdp_usd", label: "Real GDP", note: "Chained 2017 dollars" },
+  { key: "annual_avg_covered_employment", label: "Covered employment", note: "Annual average employment" },
+  { key: "population", label: "Population", note: "Resident population" },
+  { key: "annual_avg_weekly_wage_nominal_usd", label: "Average weekly wage", note: "Nominal dollars" },
+];
+
+function countyTrendValue(key: CountyTrendKey, value: number | null) {
+  if (value == null) return "Unavailable";
+  if (key === "real_gdp_usd") return compactCurrency(value);
+  if (key === "annual_avg_weekly_wage_nominal_usd") return wholeCurrency(value);
+  return integerFormat.format(value);
+}
+
+function CountyHistory({ history }: { history: CountyEconomicHistory }) {
+  return <section className="county-history-section" aria-labelledby="county-history-title">
+    <div className="section-heading"><div><span className="eyebrow">County context · 2001–2024</span><h3 id="county-history-title">How the host economy changed</h3></div><span className="account-count">Descriptive county data</span></div>
+    <p className="study-intro">These are observed county totals. They show the economic setting before and after development, but they do not by themselves assign the change to the data center.</p>
+    <div className="county-trend-grid">{countyTrends.map(definition => {
+      const available = history.years.map((row, index) => ({ index, year: row.year, value: row[definition.key] })).filter((row): row is { index: number; year: number; value: number } => row.value != null);
+      if (!available.length) return <figure className="county-trend" key={definition.key}><figcaption><strong>{definition.label}</strong><span>{definition.note}</span></figcaption><p>Unavailable</p></figure>;
+      const values = available.map(row => row.value);
+      const min = Math.min(...values), max = Math.max(...values);
+      const span = max - min || 1;
+      const points = available.map(row => `${10 + row.index / Math.max(history.years.length - 1, 1) * 300},${82 - (row.value - min) / span * 68}`).join(" ");
+      const start = available[0], end = available[available.length - 1];
+      const change = percentChange(start.value, end.value);
+      return <figure className="county-trend" key={definition.key}>
+        <figcaption><div><strong>{definition.label}</strong><span>{definition.note}</span></div><em>{formatPercentChange(change)}</em></figcaption>
+        <svg viewBox="0 0 320 92" role="img" aria-label={`${definition.label}: ${countyTrendValue(definition.key, start.value)} in ${start.year}; ${countyTrendValue(definition.key, end.value)} in ${end.year}`} preserveAspectRatio="none"><line x1="10" y1="82" x2="310" y2="82" /><polyline points={points} /><circle cx="10" cy={82 - (start.value - min) / span * 68} r="3" /><circle cx="310" cy={82 - (end.value - min) / span * 68} r="3" /></svg>
+        <div className="county-trend-values"><span>{start.year}<strong>{countyTrendValue(definition.key, start.value)}</strong></span><span>{end.year}<strong>{countyTrendValue(definition.key, end.value)}</strong></span></div>
+      </figure>;
+    })}</div>
+    <details className="county-history-table"><summary>View all annual county observations</summary><div className="impact-table-wrap"><table><thead><tr><th scope="col">Year</th><th scope="col">Real GDP</th><th scope="col">Employment</th><th scope="col">Population</th><th scope="col">Weekly wage</th></tr></thead><tbody>{history.years.map(row => <tr key={row.year}><th scope="row">{row.year}</th><td>{countyTrendValue("real_gdp_usd", row.real_gdp_usd)}</td><td>{countyTrendValue("annual_avg_covered_employment", row.annual_avg_covered_employment)}</td><td>{countyTrendValue("population", row.population)}</td><td>{countyTrendValue("annual_avg_weekly_wage_nominal_usd", row.annual_avg_weekly_wage_nominal_usd)}</td></tr>)}</tbody></table></div></details>
+  </section>;
+}
 
 const countyFipsFromHash = () => {
   const match = window.location.hash.match(/^#\/county\/(\d{5})$/);
@@ -293,16 +359,6 @@ export default function App({ study, studyError }: { study: StudyIndex | null; s
     : (selectedLifecycle?.active_canonical_facility_count ?? 0) > 0
       ? "complete 24-year history requirement not met"
       : "no active canonical facility in current inventory";
-  const selectedHistoryChange = useMemo(() => {
-    const start = selectedEconomicHistory?.years.find((record) => record.year === 2001);
-    const end = selectedEconomicHistory?.years.find((record) => record.year === 2024);
-    return {
-      employment: percentChange(start?.annual_avg_covered_employment, end?.annual_avg_covered_employment),
-      realGdp: percentChange(start?.real_gdp_usd, end?.real_gdp_usd),
-      population: percentChange(start?.population, end?.population),
-      weeklyWage: percentChange(start?.annual_avg_weekly_wage_nominal_usd, end?.annual_avg_weekly_wage_nominal_usd),
-    };
-  }, [selectedEconomicHistory]);
   if (profileFips != null) {
     const historyLoaded = selectedCounty != null
       && economicHistoryByState[selectedCounty.state_abbr] != null;
@@ -338,17 +394,15 @@ export default function App({ study, studyError }: { study: StudyIndex | null; s
                 <div>
                   <span className="eyebrow">{selectedCounty.state_abbr} · FIPS {selectedCounty.county_fips}</span>
                   <h2>{selectedCounty.county_name}</h2>
-                  <p>Community economic history and linked data-center research.</p>
+                  <p>Host-county economy and the completed data-center contribution account.</p>
                 </div>
-                <span className="quality-badge grade-p">Provisional</span>
+                <span className="quality-badge grade-p">{selectedCompletedProject ? "Completed study" : "County context"}</span>
               </div>
               <CountyStudyProjects study={study} fips={selectedCounty.county_fips} error={studyError} />
-              <section className="profile-grid" aria-label="County profile measures">
-                <article>
-                  <span>IM3 source records</span>
-                  <strong>{integerFormat.format(selectedCounty.source_record_count)}</strong>
-                  <small>source observations, not deduplicated facilities</small>
-                </article>
+              {selectedCompletedProject && study && <CountyStudyAccount summary={selectedCompletedProject} release={study.release_id} generatedAt={study.generated_at} />}
+              <section className="county-baseline-section" aria-labelledby="county-baseline-title">
+                <div className="section-heading"><div><span className="eyebrow">Current county baseline</span><h3 id="county-baseline-title">Scale of the host economy</h3></div></div>
+                <div className="profile-grid" aria-label="County baseline measures">
                 <article>
                   <span>Real GDP · 2024</span>
                   <strong>{compactCurrency(selectedEconomic?.real_gdp_usd)}</strong>
@@ -360,33 +414,30 @@ export default function App({ study, studyError }: { study: StudyIndex | null; s
                   <small>annual average of monthly levels</small>
                 </article>
                 <article>
-                  <span>History completeness · 2001–2024</span>
-                  <strong>{!historyLoaded ? "Loading…" : selectedEconomicHistory == null ? "Unavailable" : `${selectedEconomicHistory.complete_year_count}/24`}</strong>
-                  <small>four governed measures per year</small>
+                  <span>Population · 2024</span>
+                  <strong>{selectedEconomic?.population == null ? "Unavailable" : integerFormat.format(selectedEconomic.population)}</strong>
+                  <small>resident population</small>
                 </article>
                 <article>
-                  <span>Employment change · 2001–2024</span>
-                  <strong>{!historyLoaded ? "Loading…" : formatPercentChange(selectedHistoryChange.employment)}</strong>
-                  <small>descriptive, not a causal estimate</small>
+                  <span>Personal income · 2024</span>
+                  <strong>{compactCurrency(selectedEconomic?.personal_income_nominal_usd)}</strong>
+                  <small>nominal dollars</small>
                 </article>
                 <article>
-                  <span>Real GDP change · 2001–2024</span>
-                  <strong>{!historyLoaded ? "Loading…" : formatPercentChange(selectedHistoryChange.realGdp)}</strong>
-                  <small>chained 2017 dollars</small>
+                  <span>Average weekly wage · 2025</span>
+                  <strong>{wholeCurrency(selectedEmploymentWages?.annual_avg_weekly_wage_nominal_usd)}</strong>
+                  <small>covered employment</small>
                 </article>
                 <article>
-                  <span>Population change · 2001–2024</span>
-                  <strong>{!historyLoaded ? "Loading…" : formatPercentChange(selectedHistoryChange.population)}</strong>
-                  <small>descriptive change</small>
+                  <span>Per-capita income · 2024</span>
+                  <strong>{wholeCurrency(selectedEconomic?.per_capita_personal_income_nominal_usd)}</strong>
+                  <small>nominal dollars</small>
                 </article>
-                <article>
-                  <span>Weekly wage change · 2001–2024</span>
-                  <strong>{!historyLoaded ? "Loading…" : formatPercentChange(selectedHistoryChange.weeklyWage)}</strong>
-                  <small>nominal descriptive change</small>
-                </article>
+                </div>
               </section>
+              {!historyLoaded ? <p className="study-loading" role="status">Loading county history…</p> : selectedEconomicHistory && <CountyHistory history={selectedEconomicHistory} />}
               <details className="research-details">
-                <summary>County first-entry methodology and research</summary>
+                <summary>Historical treatment and inventory notes</summary>
                 <p>First-entry treatment: {!treatmentLoaded ? "Loading…" : treatmentStatus}</p>
                 <p>{treatmentNote}</p>
                 <p>Research: {!researchQueueLoaded ? "Loading…" : researchQueueStatus}</p>

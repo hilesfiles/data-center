@@ -17,6 +17,11 @@ page.on("pageerror", error => errors.push(error.message));
 page.setDefaultTimeout(20000);
 const check = name => { checks.push(name); console.log(`PASS ${name}`); };
 const noOverflow = async () => assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), "horizontal overflow");
+const openDetails = async selector => {
+  const details = page.locator(selector).first();
+  await details.waitFor();
+  if (await details.getAttribute("open") === null) await details.locator(":scope > summary").click();
+};
 
 try {
   await page.goto(url, { waitUntil: "domcontentloaded" });
@@ -47,8 +52,9 @@ try {
   assert.equal(await page.locator(".project-card").count(), 1);
   await page.getByRole("link", { name: "Quicken Loans Technology Center, Corktown", exact: true }).click();
   await page.getByRole("heading", { name: "Sources & research history" }).waitFor();
-  assert.equal(await page.locator(".missing-badge").count(), 7);
-  assert.deepEqual(await page.locator(".readiness-list strong").allTextContents(), ["Evidence gap", "Evidence gap", "Partial source evidence", "Not model-ready"]);
+  assert.equal(await page.locator(".annual-account-coverage").count(), 0);
+  assert.equal(await page.locator(".analysis-readiness").count(), 0);
+  assert.equal(await page.getByRole("tab", { name: /Reported activity/ }).isVisible(), true);
   check("combined filters and enterprise profile preserve partial economic coverage");
 
   await page.getByRole("link", { name: "Project study", exact: true }).click();
@@ -68,7 +74,7 @@ try {
   await page.getByRole("heading", { name: "Sources & research history" }).waitFor();
   await page.getByText("Inventory identity and earlier first-entry research", { exact: true }).click();
   assert.match(await page.locator(".research-details").filter({ hasText: "Inventory identity and earlier first-entry research" }).innerText(), /cannot be the county's first entry/);
-  await page.getByRole("link", { name: /Polk County, IA · Explore community history/ }).click();
+  await page.getByRole("link", { name: /Polk County, IA · View county account/ }).click();
   await page.getByRole("heading", { name: "Polk County", exact: true }).waitFor();
   await page.getByRole("link", { name: /Meta Altoona/ }).waitFor();
   assert.equal(await page.locator(".profile-grid").getByText("County first-entry treatment").count(), 0);
@@ -104,7 +110,6 @@ try {
   assert.match(await page.locator(".economic-record-list").innerText(), /\$742,071,428/);
   assert.match(await page.locator(".economic-record-list").innerText(), /10-year estimate/);
   assert.equal(await page.locator(".history-bar-row").count(), 0);
-  assert.equal(await page.locator(".coverage-badge").getByText("Projections only", { exact: true }).count(), 2);
   await page.locator(".economic-accounts").scrollIntoViewIfNeeded();
   await page.screenshot({ path: path.join(out, "economic-forecasts-desktop.png") });
   await page.setViewportSize({ width: 390, height: 844 });
@@ -115,7 +120,9 @@ try {
 
   await page.goto(`${url}#/project/prj_study_im3_point_06685432442`);
   await page.getByRole("heading", { name: "Economic evidence", exact: true }).waitFor();
-  await page.getByText("79 sourced records · 34 modeled syntheses", { exact: true }).waitFor();
+  await page.locator(".account-count").getByText("79 sourced records · 34 modeled syntheses", { exact: true }).waitFor();
+  await openDetails(".evidence-ledger");
+  await openDetails(".project-research-ledger");
   assert.match(await page.locator(".economic-record-list").innerText(), /111 employees[\s\S]*\$50\.97 \/ hour[\s\S]*\$179,943,184/);
   const switchAudit = page.locator(".economic-record").filter({ hasText: "State-audited capital expenditure" });
   await switchAudit.locator("summary").click();
@@ -198,12 +205,15 @@ try {
   check("Forest City depth account separates fiscal arithmetic, current operator claims and original forecasts");
 
   await page.goto(`${url}#/project/prj_study_im3_building_00978934687`);
+  await page.getByRole("heading", { name: "Digital Crossroad DX-1, Hammond", exact: true }).waitFor();
+  await page.getByText("Completed modeled account", { exact: true }).waitFor();
+  await openDetails(".evidence-ledger");
+  await openDetails(".project-research-ledger");
   await page.getByRole("heading", { name: "Proposed expansion agreement expired" }).waitFor();
   const hammondExpiry = page.locator(".project-research-update").filter({ hasText: "Proposed expansion agreement expired" });
   assert.match(await hammondExpiry.innerText(), /2026-07-01/);
   assert.match(await hammondExpiry.innerText(), /does not establish closure/);
-  await page.getByText("113 sourced records · 43 modeled syntheses", { exact: true }).waitFor();
-  await page.getByRole("heading", { name: "Full modeled county account", exact: true }).waitFor();
+  await page.locator(".account-count").getByText("113 sourced records · 43 modeled syntheses", { exact: true }).waitFor();
   assert.equal(await page.locator(".economic-record").count(), 103);
   assert.equal(await page.locator(".tax-billing-history tbody tr").count(), 5);
   assert.match(await page.locator(".tax-billing-history tbody tr").nth(3).innerText(), /2024[\s\S]*\$19,987,700[\s\S]*\$641,685\.14[\s\S]*\$641,685\.14/);
@@ -271,20 +281,16 @@ try {
   await page.locator(".modeled-record-list").screenshot({ path: path.join(out, "hammond-modeled-synthesis-mobile.png") });
   await hammondConstructionModel.scrollIntoViewIfNeeded();
   await page.screenshot({ path: path.join(out, "hammond-modeled-synthesis-viewport-mobile.png") });
-  const hammondCoverage = page.locator(".annual-account-coverage");
-  assert.equal(await hammondCoverage.locator(".evidence-grid article").count(), 8);
-  assert.match(await hammondCoverage.innerText(), /Capital investment[\s\S]*11 reported[\s\S]*4 forecast[\s\S]*1 modeled/);
-  assert.match(await hammondCoverage.innerText(), /Construction jobs and payroll[\s\S]*0 reported[\s\S]*0 forecast[\s\S]*9 modeled/);
-  assert.match(await hammondCoverage.innerText(), /Local suppliers and household spending[\s\S]*1 reported[\s\S]*0 forecast[\s\S]*2 modeled/);
-  assert.match(await hammondCoverage.innerText(), /Electricity, water, and cooling[\s\S]*5 reported[\s\S]*0 forecast[\s\S]*7 modeled/);
-  const hammondReadiness = page.locator(".analysis-readiness");
-  assert.match(await hammondReadiness.innerText(), /Construction contribution[\s\S]*Modeled estimate available[\s\S]*11 reported · 4 forecast · 10 modeled/);
-  assert.match(await hammondReadiness.innerText(), /Operating employment[\s\S]*Modeled estimates available[\s\S]*28 reported · 2 forecast · 12 modeled/);
-  assert.match(await hammondReadiness.innerText(), /Local fiscal balance[\s\S]*Modeled account complete[\s\S]*59 reported · 4 forecast · 7 modeled/);
-  assert.match(await hammondReadiness.innerText(), /Attributable economic effects[\s\S]*Causal model available[\s\S]*3 causal models/);
-  await hammondCoverage.screenshot({ path: path.join(out, "hammond-annual-account-coverage-mobile.png") });
-  await hammondReadiness.screenshot({ path: path.join(out, "hammond-analysis-readiness-mobile.png") });
-  check("Hammond passes the full modeled county-account gate with sourced and synthesized records separate");
+  const hammondImpact = page.locator(".impact-account").first();
+  assert.equal(await hammondImpact.locator(".impact-section").count(), 5);
+  assert.match(await hammondImpact.innerText(), /What public records establish[\s\S]*Capital documented[\s\S]*More than \$50,000,000/);
+  assert.match(await hammondImpact.innerText(), /Construction-period contribution[\s\S]*\$100,000,000[\s\S]*874\.91 job-years[\s\S]*\$52,948,363\.64/);
+  assert.match(await hammondImpact.innerText(), /Annual operating contribution[\s\S]*202\.61 FTE[\s\S]*\$13,066,500/);
+  assert.match(await hammondImpact.innerText(), /Annual fiscal and infrastructure account[\s\S]*-\$1,976,074\.04 \/ year[\s\S]*114,993,396 kWh \/ year[\s\S]*9,113,412\.43 gallons \/ year/);
+  assert.match(await hammondImpact.innerText(), /Estimated county effects[\s\S]*11\.98%[\s\S]*3%[\s\S]*0\.83%/);
+  assert.equal(await page.locator(".annual-account-coverage, .analysis-readiness").count(), 0);
+  await hammondImpact.screenshot({ path: path.join(out, "hammond-impact-account-mobile.png") });
+  check("Hammond presents a structured economic account with sourced anchors and modeled intervals");
   await page.getByRole("tab", { name: /Reported activity/ }).click();
   await noOverflow();
   await hammondLocalSpend.screenshot({ path: path.join(out, "hammond-local-contractors-mobile.png") });
@@ -393,7 +399,7 @@ try {
   check("city rebates preserve missing receipts and separate payable-year property valuations");
   await page.goto(`${url}#/project/prj_study_im3_building_00172739953`);
   await page.getByRole("heading", { name: "Switch Las Vegas NAP7", exact: true }).waitFor();
-  await page.getByText("10 sourced records · partial coverage", { exact: true }).waitFor();
+  await page.locator(".account-count").getByText("10 sourced records · partial coverage", { exact: true }).waitFor();
   assert.equal(await page.locator(".economic-record").count(), 10);
   assert.equal(await page.locator(".economic-history").count(), 3);
   assert.equal(await page.locator(".history-bar-row").count(), 6);
@@ -411,7 +417,7 @@ try {
 
   await page.goto(`${url}#/project/prj_study_im3_building_00838817907`);
   await page.getByRole("heading", { name: "TierPoint Charlotte CL4", exact: true }).waitFor();
-  await page.getByText("42 sourced records · partial coverage", { exact: true }).waitFor();
+  await page.locator(".account-count").getByText("42 sourced records · partial coverage", { exact: true }).waitFor();
   assert.equal(await page.locator(".economic-history").count(), 0);
   assert.equal(await page.locator(".tax-billing-history tbody tr").count(), 14);
   assert.match(await page.locator(".tax-billing-history tbody tr").first().innerText(), /2013[\s\S]*\$1,735,800[\s\S]*\$22,294\.61[\s\S]*\$22,294\.61/);
@@ -425,7 +431,7 @@ try {
 
   await page.goto(`${url}#/project/prj_study_im3_building_00388148510`);
   await page.getByRole("heading", { name: "TierPoint / Windstream Little Rock", exact: true }).waitFor();
-  await page.getByText("24 sourced records · partial coverage", { exact: true }).waitFor();
+  await page.locator(".account-count").getByText("24 sourced records · partial coverage", { exact: true }).waitFor();
   assert.equal(await page.locator(".tax-billing-history tbody tr").count(), 16);
   assert.match(await page.locator(".tax-billing-history tbody tr").filter({ hasText: "2013" }).innerText(), /Not collected[\s\S]*Not collected[\s\S]*Not collected/);
   assert.match(await page.locator(".tax-billing-history tbody tr").filter({ hasText: "2016" }).innerText(), /Not collected[\s\S]*Not collected[\s\S]*Not collected/);
@@ -441,7 +447,7 @@ try {
 
   await page.goto(`${url}#/project/prj_study_im3_point_09190480200`);
   await page.getByRole("heading", { name: "Stream Houston I / The Woodlands", exact: true }).waitFor();
-  await page.getByText("46 sourced records · partial coverage", { exact: true }).waitFor();
+  await page.locator(".account-count").getByText("46 sourced records · partial coverage", { exact: true }).waitFor();
   assert.equal(await page.locator(".economic-record").count(), 46);
   assert.equal(await page.locator(".tax-billing-history").count(), 2);
   assert.equal(await page.locator(".tax-billing-history tbody tr").count(), 23);
@@ -465,7 +471,7 @@ try {
 
   await page.goto(`${url}#/project/prj_study_im3_building_00377585075`);
   await page.getByRole("heading", { name: "EdgeConneX DET01, Southfield", exact: true }).waitFor();
-  await page.getByText("48 sourced records · partial coverage", { exact: true }).waitFor();
+  await page.locator(".account-count").getByText("48 sourced records · partial coverage", { exact: true }).waitFor();
   assert.equal(await page.locator(".economic-record").count(), 44);
   assert.equal(await page.locator(".tax-billing-history").count(), 3);
   assert.equal(await page.locator(".tax-billing-history tbody tr").count(), 19);
@@ -495,8 +501,10 @@ try {
 
   await page.goto(`${url}#/project/prj_study_im3_point_06685432442`);
   await page.getByRole("heading", { name: "Switch Citadel / Tahoe Reno 1", exact: true }).waitFor();
-  await page.getByText("79 sourced records · 34 modeled syntheses", { exact: true }).waitFor();
-  await page.getByRole("heading", { name: "Full modeled county account", exact: true }).waitFor();
+  await page.locator(".account-count").getByText("79 sourced records · 34 modeled syntheses", { exact: true }).waitFor();
+  await page.getByText("Completed modeled account", { exact: true }).waitFor();
+  await openDetails(".evidence-ledger");
+  await openDetails(".project-research-ledger");
   assert.equal(await page.locator(".economic-record").count(), 72);
   const storeyTaxHistories = page.locator(".tax-billing-history");
   const storeyRealTaxHistory = storeyTaxHistories.filter({ hasText: "NV RNO 1, LLC real-property parcel 005-012-23" });
@@ -530,19 +538,15 @@ try {
   await page.locator(".modeled-record").first().locator("summary").click();
   assert.match(await page.locator(".modeled-record").first().innerText(), /Formula:[\s\S]*Named parameters[\s\S]*Complete annual Citadel capital ledger/);
   await page.locator(".modeled-record-list").screenshot({ path: path.join(out, "switch-storey-modeled-synthesis-mobile.png") });
-  const storeyCoverage = page.locator(".annual-account-coverage");
-  assert.equal(await storeyCoverage.locator(".evidence-grid article").count(), 8);
-  assert.match(await storeyCoverage.innerText(), /Capital investment[\s\S]*13 reported[\s\S]*2 forecast[\s\S]*3 modeled[\s\S]*Modeled documented cumulative capital floor/);
-  assert.match(await storeyCoverage.innerText(), /Construction jobs and payroll[\s\S]*0 reported[\s\S]*0 forecast[\s\S]*5 modeled[\s\S]*Modeled direct construction job-years/);
-  assert.match(await storeyCoverage.innerText(), /Electricity, water, and cooling[\s\S]*0 reported[\s\S]*0 forecast[\s\S]*6 modeled[\s\S]*Modeled onsite water use/);
-  assert.match(await storeyCoverage.innerText(), /Local suppliers and household spending[\s\S]*0 reported[\s\S]*0 forecast[\s\S]*2 modeled/);
-  const storeyReadiness = page.locator(".analysis-readiness");
-  assert.match(await storeyReadiness.innerText(), /Construction contribution[\s\S]*Modeled estimate available[\s\S]*13 reported · 2 forecast · 8 modeled/);
-  assert.match(await storeyReadiness.innerText(), /Operating employment[\s\S]*Modeled estimates available[\s\S]*2 reported · 2 forecast · 6 modeled/);
-  assert.match(await storeyReadiness.innerText(), /Local fiscal balance[\s\S]*Modeled account complete[\s\S]*55 reported · 3 forecast · 9 modeled/);
-  assert.match(await storeyReadiness.innerText(), /Attributable economic effects[\s\S]*Causal model available[\s\S]*3 causal models/);
-  await storeyCoverage.screenshot({ path: path.join(out, "switch-storey-annual-account-coverage-mobile.png") });
-  await storeyReadiness.screenshot({ path: path.join(out, "switch-storey-analysis-readiness-mobile.png") });
+  const storeyImpact = page.locator(".impact-account").first();
+  assert.equal(await storeyImpact.locator(".impact-section").count(), 5);
+  assert.match(await storeyImpact.innerText(), /What public records establish[\s\S]*Capital documented[\s\S]*\$179,943,184/);
+  assert.match(await storeyImpact.innerText(), /Construction-period contribution[\s\S]*\$95,737,273\.6[\s\S]*2,094\.04 job-years[\s\S]*\$126,728,299\.41/);
+  assert.match(await storeyImpact.innerText(), /Annual operating contribution[\s\S]*690\.6 FTE[\s\S]*\$44,537,165\.25/);
+  assert.match(await storeyImpact.innerText(), /Annual fiscal and infrastructure account[\s\S]*-\$3,146,671\.13 \/ year[\s\S]*594,453\.6 MWh \/ year[\s\S]*175,289,420\.58 gallons \/ year/);
+  assert.match(await storeyImpact.innerText(), /Estimated county effects[\s\S]*92\.93%[\s\S]*73\.79%[\s\S]*26\.21%/);
+  assert.equal(await page.locator(".annual-account-coverage, .analysis-readiness").count(), 0);
+  await storeyImpact.screenshot({ path: path.join(out, "switch-storey-impact-account-mobile.png") });
   await page.setViewportSize({ width: 1440, height: 1000 });
   check("Citadel passes the full modeled county-account gate with scope, provenance and causal limits visible");
   await page.goto(`${url}#/project/prj_study_im3_building_01073720208`);
@@ -576,7 +580,7 @@ try {
   await page.setViewportSize({ width: 1440, height: 1000 });
   await page.goto(`${url}#/project/prj_study_im3_building_00598261190`);
   await page.getByRole("heading", { name: "State Farm Olathe", exact: true }).waitFor();
-  await page.getByText("25 sourced records · partial coverage", { exact: true }).waitFor();
+  await page.locator(".account-count").getByText("25 sourced records · partial coverage", { exact: true }).waitFor();
   assert.equal(await page.locator(".economic-record").count(), 25);
   assert.equal(await page.locator(".tax-billing-history tbody tr").count(), 7);
   assert.equal(await page.locator(".tax-billing-history thead th").count(), 4);
@@ -592,8 +596,10 @@ try {
   await page.setViewportSize({ width: 1440, height: 1000 });
   await page.goto(`${url}#/project/prj_study_im3_building_00300974499`);
   await page.getByRole("heading", { name: "Economic evidence", exact: true }).waitFor();
-  await page.getByText("80 sourced records · 27 modeled syntheses", { exact: true }).waitFor();
-  await page.getByRole("heading", { name: "Full modeled county account", exact: true }).waitFor();
+  await page.locator(".account-count").getByText("80 sourced records · 27 modeled syntheses", { exact: true }).waitFor();
+  await page.getByText("Completed modeled account", { exact: true }).waitFor();
+  await openDetails(".evidence-ledger");
+  await openDetails(".project-research-ledger");
   assert.equal(await page.locator(".economic-record").count(), 76);
   assert.equal(await page.locator(".tax-billing-history").count(), 2);
   assert.equal(await page.locator(".tax-billing-history tbody tr").count(), 22);
@@ -635,24 +641,21 @@ try {
   await page.locator(".modeled-record").first().locator("summary").click();
   assert.match(await page.locator(".modeled-record").first().innerText(), /Method:[\s\S]*Formula:[\s\S]*Sensitivity envelope:[\s\S]*Confidence:[\s\S]*Named parameters[\s\S]*Limitations[\s\S]*Apple Environmental Progress Report 2026/);
   await page.locator(".modeled-record-list").screenshot({ path: path.join(out, "apple-mesa-modeled-synthesis-mobile.png") });
-  const appleCoverage = page.locator(".annual-account-coverage");
-  assert.equal(await appleCoverage.locator(".evidence-grid article").count(), 8);
-  assert.match(await appleCoverage.innerText(), /Permanent jobs and compensation[\s\S]*0 reported[\s\S]*1 forecast[\s\S]*7 modeled[\s\S]*Modeled Apple-only employment allocation/);
-  assert.match(await appleCoverage.innerText(), /Incentives and public costs[\s\S]*0 reported[\s\S]*1 forecast[\s\S]*6 modeled[\s\S]*Modeled FTZ property-tax reduction versus Class 1/);
-  assert.match(await appleCoverage.innerText(), /Electricity, water, and cooling[\s\S]*11 reported[\s\S]*0 forecast[\s\S]*4 modeled[\s\S]*Modeled cooling-treatment water-savings potential/);
-  const appleReadiness = page.locator(".analysis-readiness");
-  assert.match(await appleReadiness.innerText(), /Construction contribution[\s\S]*Modeled estimate available[\s\S]*9 reported · 2 forecast · 3 modeled/);
-  assert.match(await appleReadiness.innerText(), /Operating employment[\s\S]*Modeled estimates available[\s\S]*0 reported · 1 forecast · 9 modeled/);
-  assert.match(await appleReadiness.innerText(), /Local fiscal balance[\s\S]*Modeled account complete[\s\S]*56 reported · 1 forecast · 7 modeled/);
-  assert.match(await appleReadiness.innerText(), /Attributable economic effects[\s\S]*Causal model available[\s\S]*3 causal models/);
-  await appleCoverage.screenshot({ path: path.join(out, "apple-mesa-annual-account-coverage-mobile.png") });
-  await appleReadiness.screenshot({ path: path.join(out, "apple-mesa-analysis-readiness-mobile.png") });
-  check("Apple Mesa annual-account coverage and analysis readiness reflect its reported, forecast and modeled evidence");
+  const appleImpact = page.locator(".impact-account").first();
+  assert.equal(await appleImpact.locator(".impact-section").count(), 5);
+  assert.match(await appleImpact.innerText(), /What public records establish[\s\S]*Capital documented[\s\S]*About \$2,000,000,000/);
+  assert.match(await appleImpact.innerText(), /Construction-period contribution[\s\S]*\$333,333,333\.33 \/ year[\s\S]*17,498\.2 job-years[\s\S]*\$1,058,967,272\.8/);
+  assert.match(await appleImpact.innerText(), /Annual operating contribution[\s\S]*796\.32 FTE[\s\S]*\$51,355,560/);
+  assert.match(await appleImpact.innerText(), /Annual fiscal and infrastructure account[\s\S]*-\$5,403,732\.67 \/ year[\s\S]*109,322,072\.06 gallons \/ year[\s\S]*180,341\.25 metric tons CO₂e \/ year/);
+  assert.match(await appleImpact.innerText(), /Estimated county effects[\s\S]*44\.49%[\s\S]*39\.93%[\s\S]*4\.38%/);
+  assert.equal(await page.locator(".annual-account-coverage, .analysis-readiness").count(), 0);
+  await appleImpact.screenshot({ path: path.join(out, "apple-mesa-impact-account-mobile.png") });
+  check("Apple Mesa presents a structured economic account with sourced anchors and modeled intervals");
   check("Apple Mesa source records, forecasts and 27 labeled modeled syntheses remain distinct");
   await page.setViewportSize({ width: 1440, height: 1000 });
   await page.goto(`${url}#/project/prj_study_im3_building_00664938835`);
   await page.getByRole("heading", { name: "Expedient Milwaukee / Franklin", exact: true }).waitFor();
-  await page.getByText("7 sourced records · partial coverage", { exact: true }).waitFor();
+  await page.locator(".account-count").getByText("7 sourced records · partial coverage", { exact: true }).waitFor();
   assert.equal(await page.locator(".economic-record").count(), 6);
   assert.equal(await page.locator(".tax-billing-history tbody tr").count(), 3);
   assert.match(await page.locator(".tax-billing-history tbody tr").first().innerText(), /2024[\s\S]*\$3,856,900/);
@@ -668,7 +671,7 @@ try {
   await page.setViewportSize({ width: 1440, height: 1000 });
   await page.goto(`${url}#/project/prj_study_im3_building_00888253616`);
   await page.getByRole("heading", { name: "NTT Silicon Valley SV1", exact: true }).waitFor();
-  await page.getByText("4 sourced records · partial coverage", { exact: true }).waitFor();
+  await page.locator(".account-count").getByText("4 sourced records · partial coverage", { exact: true }).waitFor();
   assert.equal(await page.locator(".economic-record").count(), 2);
   assert.match(await page.locator(".economic-record-list").innerText(), /\$159,579,996[\s\S]*\$83,066,779/);
   assert.match(await page.locator(".project-research-update").innerText(), /1150 Walsh Avenue[\s\S]*1160 Walsh Avenue/);
@@ -682,7 +685,7 @@ try {
   await page.setViewportSize({ width: 1440, height: 1000 });
   await page.goto(`${url}#/project/prj_study_im3_building_00903236619`);
   await page.getByRole("heading", { name: "Quicken Loans Technology Center, Corktown", exact: true }).waitFor();
-  await page.getByText("4 sourced records · partial coverage", { exact: true }).waitFor();
+  await page.locator(".account-count").getByText("4 sourced records · partial coverage", { exact: true }).waitFor();
   assert.equal(await page.locator(".economic-record").count(), 4);
   assert.equal(await page.locator(".economic-history").count(), 2);
   assert.match(await page.locator(".economic-history").nth(0).innerText(), /CY2025[\s\S]*\$3,298,400[\s\S]*CY2026[\s\S]*\$3,643,800/);
@@ -692,6 +695,24 @@ try {
   await noOverflow();
   await page.locator(".economic-accounts").screenshot({ path: path.join(out, "quicken-corktown-evidence-mobile.png") });
   check("Quicken Corktown keeps whole-parcel values separate from partial-building tenancy and water claims");
+
+  await page.setViewportSize({ width: 1440, height: 1000 });
+  await page.goto(`${url}#/county/18089`);
+  await page.getByRole("heading", { name: "Facility contribution to Lake County", exact: true }).waitFor();
+  const countyImpact = page.locator(".county-impact-account");
+  await countyImpact.waitFor();
+  assert.equal(await countyImpact.locator(".impact-section").count(), 5);
+  assert.match(await countyImpact.innerText(), /Construction-period contribution[\s\S]*Annual operating contribution[\s\S]*Annual fiscal and infrastructure account[\s\S]*Estimated county effects/);
+  await page.getByRole("heading", { name: "How the host economy changed", exact: true }).waitFor();
+  assert.equal(await page.locator(".county-trend").count(), 4);
+  assert.equal(await page.locator(".county-history-table tbody tr").count(), 24);
+  assert.doesNotMatch(await page.locator(".county-profile-page").innerText(), /IM3 source records|Analysis readiness|Annual-account coverage/);
+  await page.locator(".county-study-account").screenshot({ path: path.join(out, "lake-county-impact-account-desktop.png") });
+  await page.setViewportSize({ width: 390, height: 844 });
+  await noOverflow();
+  await page.locator(".county-history-section").screenshot({ path: path.join(out, "lake-county-history-mobile.png") });
+  check("completed county page presents the facility account and observed 2001–2024 county trends");
+
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto(`${url}#/study`);
   await page.getByLabel("Search projects").waitFor();
