@@ -22,7 +22,7 @@ CONFIG = ROOT / "config/v1/private-sector-study-candidates.json"
 PUBLIC = ROOT / "site/public/data/v1"
 OUT = PUBLIC / "study"
 SILVER = ROOT / "data/silver/study"
-VERSION = "private-sector-study-1.35.0"
+VERSION = "private-sector-study-1.37.0"
 GAPS = [
     ("investment", "Capital investment", "Annual actual spending, local share, and phase allocation."),
     ("construction", "Construction jobs and payroll", "Workers, job-years, payroll, duration, and local participation."),

@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "evidence_version": "study-economic-evidence-1.34.0",
+  "evidence_version": "study-economic-evidence-1.36.0",
   "reviewed_on": "2026-09-05",
   "scope_note": "Reviewed evidence batches at campus or company/county scope. No record is allocated to an individual inventory building. Source checking establishes what a document reports, not an independent audit or causal attribution. Monetary figures are nominal. Peak workforce is distinct from annual employment; source-year labels do not establish fiscal-year boundaries. Original forecasts remain forecasts until realization is verified. No cross-record benefit total is defined. Cumulative project costs are not annual expenditure. Tax receipts and incentive payments remain separate, with inferred taxpayer links disclosed. Contextual research updates do not count as economic amounts. Account tax bills are distinct from cash receipts and incentive-program fees. Tax years, calendar years and fiscal years retain their source basis; separate taxpayer accounts are not consolidated. Municipal developer rebates and taxpayer valuations have distinct subjects. Estimated actual property value and tax capacity are not tax receipts; payable-year valuations retain their earlier assessment date. Taxpayer values expressed in millions retain approximate precision and account-level separation. A current-year table can use an older valuation date and is not converted into an annual series. Facility real-property and business-personal-property accounts remain separate, and address-label discrepancies are disclosed. Michigan Industrial Facilities Tax accounts remain distinct from the underlying real parcel and from post-expiration personal-property accounts; annual account totals are not recipient-level government receipts. Permit construction values are administrative project amounts, not verified expenditure, and separate permits are not combined without proof that their scopes do not overlap. Repeated maintenance-year assessments are annual parcel stocks, not new investment flows. Mixed-use parcel assessments and taxable values are retained at whole-parcel scope and are not allocated to a data-center tenant or function by floor area. Operator-reported jobs supported remain distinct from direct employees and FTEs. Approved infrastructure grants are documented public commitments rather than verified disbursements or total public costs. Cumulative community funding remains separate from tax receipts, payroll and modeled multiplier effects. Reported facility power capacity is not measured electricity consumption or peak demand. Permit-listed emergency generators are not runtime, fuel-use or actual-emissions observations. A city largest-taxpayer table's personal-property assessment remains separate from the leasehold real-property account, tax bills, receipts and capital expenditure. TIF loan principal is financing rather than a grant or general-fund receipt; project-generated tax revenue pledged to repayment is retained as a separate public-financing flow and is not added to gross parcel distributions. Water-withdrawal and consumptive permit capacities are regulatory limits rather than measured use. Development-agreement local-labor preferences are requirements rather than realized participation, and operating employee snapshots remain distinct from customers' on-site staff and jobs forecasts. Audited City bond statements distinguish issuance draws, year-end principal, annual principal retired, interest and fees, pledged TIF revenue, debt-service-fund transfers and future principal-plus-interest commitments. These measures are not summed into a benefit or subsidy total. City pledged revenue, City debt-service-fund transfers and the private fund's project TIF revenue applied to loan repayment retain their separate source definitions because only the 2022 transfer and private-fund amount agree exactly. Developer testimony in public meeting minutes is retained as a source-attributed cumulative lower bound; local-contractor spending is not converted into payroll, worker counts, household spending or multiplier effects. Economic-improvement-district cost estimates and maximum owner assessments remain source projections until bond issuance, an assessment schedule, collections and expenditures are verified. A statutory financing cap is not a tax receipt, public expenditure or subsidy. Audited private equipment-financing balances are debt stocks rather than construction spending, public support or community benefit. Reported floor area and occupied-share values describe operating scale and utilization, not employment, revenue, power use or economic output. Contractor and engineer case studies document supplier roles and completion timing but do not establish payment amounts, worker residence, payroll or multiplier effects. State incentive contract amounts, expected jobs and paid-or-certified-to-date fields remain distinct; a zero paid/certified balance at an earlier reporting cutoff does not imply no later claims. Public charging-infrastructure awards are commitments rather than verified disbursements, private project investment or operating benefits. Qualitative payment descriptions without a defensible numeric bound remain research context rather than quantitative records. Program-reported actual qualified investment, certified tax-exemption value and certified tax-credit value remain separate cumulative measures; none is converted into annual spending, a cash grant, local revenue or causal impact. County Business Patterns observations are county-industry context, not project contributions: establishment counts are employer locations rather than data-center facilities, March employment is not an annual average, annual payroll spans the full NAICS cell, and disclosure noise, classification changes and geographic assignment limit comparisons. No CBP change is attributed to a study project.",
   "metrics": [
@@ -591,6 +591,22 @@
     {
       "metric_code": "study.personal_property_tax_abatement_projection",
       "label": "Approved personal-property tax abatement",
+      "category": "public_costs",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "metric_code": "study.direct_community_contribution",
+      "label": "Direct community contribution",
+      "category": "community",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "metric_code": "study.public_safety_equipment_cost_projection",
+      "label": "Planned public-safety equipment cost",
       "category": "public_costs",
       "unit": "USD",
       "measure_type": "flow",
@@ -2677,6 +2693,64 @@
       "review_method": "pdf_text_and_page_image",
       "artifact_sha256": "5b1618bdb098301a9f051848c3a1e67d8d1d1cb918702df81f230407e74697e8",
       "notes": "The approved-abatement table identifies Switch, LTD #2 as a new Storey County data-center project approved in July 2015. The five-year audit table marks its December 31, 2020 audit compliant and reports 111 jobs, a $50.97 average hourly wage and $179,943,184 of capital expenditure. The same audit findings also appear on the Switch, LTD #3 Clark County row; an earlier 2021 report left the separate Storey and Clark audit findings blank while reporting combined Switch results elsewhere. The 2023 values are retained as the state's company-county allocation, not an independently verified Tahoe Reno 1 building total."
+    },
+    {
+      "source_id": "src_study_storey_switch_parcel_00501223_2026",
+      "title": "Storey County Property Tax Inquiry — NV RNO 1, LLC parcel 005-012-23",
+      "url": "https://storeynv.devnetwedge.com/parcel/view/00501223/2026",
+      "publisher": "Storey County, Nevada",
+      "source_type": "assessor_record",
+      "publication_date": {
+        "precision": "unknown"
+      },
+      "retrieved_on": "2026-09-05",
+      "review_method": "web_page",
+      "notes": "The official parcel is 1 Superloop Circle and describes three Switch data-center modules: MODs 2 and 3 with 354,825 square feet built in 2016 and MOD 1 with 221,160 square feet built in 2020. The owner is NV RNO 1, LLC at Switch's legal address; deed history records the August 2024 transfer through Switch BBF entities to NV RNO 1, LLC. Selected tax-year pages 2024–2026 report real-property values, bills and payment history. The parcel page separately lists numerous data-center tenant-equipment accounts and Switch commercial-personal-property account CM001611, so those accounts are not consolidated here."
+    },
+    {
+      "source_id": "src_study_storey_switch_fire_donation_2025_04",
+      "title": "Storey County Board of Commissioners minutes, April 1, 2025",
+      "url": "https://storeycounty.org/AgendaCenter/ViewFile/Minutes/_04012025-1277",
+      "publisher": "Storey County, Nevada",
+      "source_type": "local_government_record",
+      "publication_date": {
+        "precision": "day",
+        "date": "2025-04-01"
+      },
+      "retrieved_on": "2026-09-05",
+      "review_method": "pdf_text_and_page_image",
+      "artifact_sha256": "ec85ea84721c8396c54245474ff083e83a2d82ed86a1bf9d61e70415488b6326",
+      "notes": "The Fire District staff report states that Switch made a $356,000 donation. It discusses a ladder-truck purchase separately and does not identify the purpose of the $356,000 contribution, so the two items are not combined."
+    },
+    {
+      "source_id": "src_study_storey_switch_ladder_donation_2025_09",
+      "title": "Storey County Board of Commissioners minutes, September 2, 2025",
+      "url": "https://storeycounty.org/AgendaCenter/ViewFile/Minutes/_09022025-1325",
+      "publisher": "Storey County, Nevada",
+      "source_type": "local_government_record",
+      "publication_date": {
+        "precision": "day",
+        "date": "2025-09-02"
+      },
+      "retrieved_on": "2026-09-05",
+      "review_method": "pdf_text_and_page_image",
+      "artifact_sha256": "e57a002b9e72194da06c5be4ad84e60b6a5d95e1ca62116bba90c52011888db9",
+      "notes": "The Fire Chief reports that Switch gave more than $2 million for a new ladder truck for Station 75 and that the district expected to take ownership in about twelve months. The statement verifies a lower-bound contribution, not an exact purchase price or an in-service asset at the report date."
+    },
+    {
+      "source_id": "src_study_storey_fire_cip_2026",
+      "title": "2026–2031 Storey County Fire Protection District Capital Improvement Plan",
+      "url": "https://www.storeycounty.org/AgendaCenter/ViewFile/Agenda/_02032026-1372",
+      "publisher": "Storey County Fire Protection District",
+      "source_type": "local_government_record",
+      "publication_date": {
+        "precision": "day",
+        "date": "2026-02-03"
+      },
+      "retrieved_on": "2026-09-05",
+      "review_method": "pdf_text_and_page_image",
+      "artifact_sha256": "e1d63d132b2a3ba34fb8374d2a5a3e38be7633668411fd2b9efe0fcb2790acd3",
+      "notes": "The Fire District capital plan budgets $100,000 in fiscal 2026–2027 to equip new Pierce Truck 75 and notes that the truck was purchased by Switch. This is a planned public cost for equipping the donated vehicle, not a Switch payment or a realized district expense."
     }
   ],
   "records": [
@@ -16487,6 +16561,384 @@
       "pdf_page": 48,
       "printed_page": "43",
       "notes": "This is the approved estimated personal-property abatement value over the agreement term, not an audited amount of tax foregone. It should be compared with the separately collected county account bills and payments only after reconciling covered property and timing."
+    },
+    {
+      "claim_id": "clm_study_switch_citadel_real_taxable_value_2024",
+      "project_id": "prj_study_im3_point_06685432442",
+      "metric_code": "study.taxable_property_value",
+      "value": 197360800,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2024,
+        "label": "Storey County tax year 2024 real-property taxable value"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "NV RNO 1, LLC real-property parcel 005-012-23, 1 Superloop Circle Citadel data-center buildings",
+        "county_fips": "32029",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_storey_switch_parcel_00501223_2026",
+      "source_locator": "Tax Year 2024 page, Taxable Value table, Total",
+      "notes": "Parcel-level real-property stock for the land and data-center buildings. It excludes separately assessed commercial personal property and tenant equipment and is not annual capital spending or tax revenue.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-05",
+      "annual_series_key": "switch_citadel_parcel_00501223_taxable_value"
+    },
+    {
+      "claim_id": "clm_study_switch_citadel_real_assessed_value_2024",
+      "project_id": "prj_study_im3_point_06685432442",
+      "metric_code": "study.account_assessed_value",
+      "value": 69076280,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2024,
+        "label": "Storey County tax year 2024 real-property assessed value"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "NV RNO 1, LLC real-property parcel 005-012-23, 1 Superloop Circle Citadel data-center buildings",
+        "county_fips": "32029",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_storey_switch_parcel_00501223_2026",
+      "source_locator": "Tax Year 2024 page, Assessed Value table, Total",
+      "notes": "Parcel-level assessed real-property stock for the land and data-center buildings. It excludes separately assessed commercial personal property and tenant equipment and is not annual capital spending or tax revenue.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-05",
+      "annual_series_key": "switch_citadel_parcel_00501223_assessed_value"
+    },
+    {
+      "claim_id": "clm_study_switch_citadel_real_taxable_value_2025",
+      "project_id": "prj_study_im3_point_06685432442",
+      "metric_code": "study.taxable_property_value",
+      "value": 195608630,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2025,
+        "label": "Storey County tax year 2025 real-property taxable value"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "NV RNO 1, LLC real-property parcel 005-012-23, 1 Superloop Circle Citadel data-center buildings",
+        "county_fips": "32029",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_storey_switch_parcel_00501223_2026",
+      "source_locator": "Tax Year 2025 page, Taxable Value table, Total",
+      "notes": "Parcel-level real-property stock for the land and data-center buildings. It excludes separately assessed commercial personal property and tenant equipment and is not annual capital spending or tax revenue.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-05",
+      "annual_series_key": "switch_citadel_parcel_00501223_taxable_value"
+    },
+    {
+      "claim_id": "clm_study_switch_citadel_real_assessed_value_2025",
+      "project_id": "prj_study_im3_point_06685432442",
+      "metric_code": "study.account_assessed_value",
+      "value": 68463021,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2025,
+        "label": "Storey County tax year 2025 real-property assessed value"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "NV RNO 1, LLC real-property parcel 005-012-23, 1 Superloop Circle Citadel data-center buildings",
+        "county_fips": "32029",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_storey_switch_parcel_00501223_2026",
+      "source_locator": "Tax Year 2025 page, Assessed Value table, Total",
+      "notes": "Parcel-level assessed real-property stock for the land and data-center buildings. It excludes separately assessed commercial personal property and tenant equipment and is not annual capital spending or tax revenue.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-05",
+      "annual_series_key": "switch_citadel_parcel_00501223_assessed_value"
+    },
+    {
+      "claim_id": "clm_study_switch_citadel_real_taxable_value_2026",
+      "project_id": "prj_study_im3_point_06685432442",
+      "metric_code": "study.taxable_property_value",
+      "value": 196624007,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2026,
+        "label": "Storey County tax year 2026 real-property taxable value"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "NV RNO 1, LLC real-property parcel 005-012-23, 1 Superloop Circle Citadel data-center buildings",
+        "county_fips": "32029",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_storey_switch_parcel_00501223_2026",
+      "source_locator": "Tax Year 2026 page, Taxable Value table, Total",
+      "notes": "Parcel-level real-property stock for the land and data-center buildings. It excludes separately assessed commercial personal property and tenant equipment and is not annual capital spending or tax revenue.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-05",
+      "annual_series_key": "switch_citadel_parcel_00501223_taxable_value"
+    },
+    {
+      "claim_id": "clm_study_switch_citadel_real_assessed_value_2026",
+      "project_id": "prj_study_im3_point_06685432442",
+      "metric_code": "study.account_assessed_value",
+      "value": 68818403,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2026,
+        "label": "Storey County tax year 2026 real-property assessed value"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "NV RNO 1, LLC real-property parcel 005-012-23, 1 Superloop Circle Citadel data-center buildings",
+        "county_fips": "32029",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_storey_switch_parcel_00501223_2026",
+      "source_locator": "Tax Year 2026 page, Assessed Value table, Total",
+      "notes": "Parcel-level assessed real-property stock for the land and data-center buildings. It excludes separately assessed commercial personal property and tenant equipment and is not annual capital spending or tax revenue.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-05",
+      "annual_series_key": "switch_citadel_parcel_00501223_assessed_value"
+    },
+    {
+      "claim_id": "clm_study_switch_citadel_real_property_taxes_billed_2024",
+      "project_id": "prj_study_im3_point_06685432442",
+      "metric_code": "study.property_taxes_billed",
+      "value": 2239229.35,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2024,
+        "label": "Storey County fiscal year 2024–2025 parcel tax billed"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "NV RNO 1, LLC real-property parcel 005-012-23, 1 Superloop Circle Citadel data-center buildings",
+        "county_fips": "32029",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_storey_switch_parcel_00501223_2026",
+      "source_locator": "Billing Fiscal Year (2024 - 2025), Total row, Tax Billed",
+      "notes": "The secured parcel bill covers multiple county, school, fire, state and other taxing entities. It is an account charge, not recipient-level cash revenue; separately assessed personal-property bills are excluded.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-05",
+      "annual_series_key": "switch_citadel_parcel_00501223_property_taxes_billed"
+    },
+    {
+      "claim_id": "clm_study_switch_citadel_real_property_taxes_billed_2025",
+      "project_id": "prj_study_im3_point_06685432442",
+      "metric_code": "study.property_taxes_billed",
+      "value": 2369299.77,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2025,
+        "label": "Storey County fiscal year 2025–2026 parcel tax billed"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "NV RNO 1, LLC real-property parcel 005-012-23, 1 Superloop Circle Citadel data-center buildings",
+        "county_fips": "32029",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_storey_switch_parcel_00501223_2026",
+      "source_locator": "Billing Fiscal Year (2025 - 2026), Total row, Tax Billed",
+      "notes": "The secured parcel bill covers multiple county, school, fire, state and other taxing entities. It is an account charge, not recipient-level cash revenue; separately assessed personal-property bills are excluded.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-05",
+      "annual_series_key": "switch_citadel_parcel_00501223_property_taxes_billed"
+    },
+    {
+      "claim_id": "clm_study_switch_citadel_real_property_taxes_billed_2026",
+      "project_id": "prj_study_im3_point_06685432442",
+      "metric_code": "study.property_taxes_billed",
+      "value": 2381598.47,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2026,
+        "label": "Storey County fiscal year 2026–2027 parcel tax billed"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "NV RNO 1, LLC real-property parcel 005-012-23, 1 Superloop Circle Citadel data-center buildings",
+        "county_fips": "32029",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_storey_switch_parcel_00501223_2026",
+      "source_locator": "Billing Fiscal Year (2026 - 2027), Total row, Tax Billed",
+      "notes": "The secured parcel bill covers multiple county, school, fire, state and other taxing entities. It is an account charge, not recipient-level cash revenue; separately assessed personal-property bills are excluded.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-05",
+      "annual_series_key": "switch_citadel_parcel_00501223_property_taxes_billed"
+    },
+    {
+      "claim_id": "clm_study_switch_citadel_real_property_taxes_paid_2024",
+      "project_id": "prj_study_im3_point_06685432442",
+      "metric_code": "study.property_taxes_paid",
+      "value": 2239229.35,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2024,
+        "label": "Storey County fiscal year 2024–2025; parcel paid with zero unpaid balance"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "NV RNO 1, LLC real-property parcel 005-012-23, 1 Superloop Circle Citadel data-center buildings",
+        "county_fips": "32029",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_storey_switch_parcel_00501223_2026",
+      "source_locator": "Payment History, fiscal year (2024 - 2025), Total Paid and Total Unpaid",
+      "notes": "The payment history reports total paid equal to tax billed and zero unpaid. Payer rows include Switch names and related parcel entities. This verifies the secured parcel payment, not recipient-level cash timing or the fiscal effect of abatements.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-05",
+      "annual_series_key": "switch_citadel_parcel_00501223_property_taxes_paid"
+    },
+    {
+      "claim_id": "clm_study_switch_citadel_real_property_taxes_paid_2025",
+      "project_id": "prj_study_im3_point_06685432442",
+      "metric_code": "study.property_taxes_paid",
+      "value": 2369299.77,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2025,
+        "label": "Storey County fiscal year 2025–2026; parcel paid with zero unpaid balance"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "NV RNO 1, LLC real-property parcel 005-012-23, 1 Superloop Circle Citadel data-center buildings",
+        "county_fips": "32029",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_storey_switch_parcel_00501223_2026",
+      "source_locator": "Payment History, fiscal year (2025 - 2026), Total Paid and Total Unpaid",
+      "notes": "The payment history reports total paid equal to tax billed and zero unpaid. Payer rows include Switch names and related parcel entities. This verifies the secured parcel payment, not recipient-level cash timing or the fiscal effect of abatements.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-05",
+      "annual_series_key": "switch_citadel_parcel_00501223_property_taxes_paid"
+    },
+    {
+      "claim_id": "clm_study_switch_citadel_real_property_taxes_paid_partial_2027",
+      "project_id": "prj_study_im3_point_06685432442",
+      "metric_code": "study.property_taxes_paid",
+      "value": 595399.61,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "reported_snapshot",
+        "report_date": "2026-09-05",
+        "label": "Fiscal 2026–2027 partial-year payment through review date; first installment paid"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "NV RNO 1, LLC real-property parcel 005-012-23, 1 Superloop Circle Citadel data-center buildings",
+        "county_fips": "32029",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_storey_switch_parcel_00501223_2026",
+      "source_locator": "Tax Year 2026 page, Payment History, fiscal year (2026 - 2027), installment 1 Total Paid",
+      "notes": "Only the first installment was paid at review; three later installments remained unpaid. This partial-year amount is not an annual-series observation or a completed fiscal-year receipt.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-05"
+    },
+    {
+      "claim_id": "clm_study_switch_storey_direct_donation_2025",
+      "project_id": "prj_study_im3_point_06685432442",
+      "metric_code": "study.direct_community_contribution",
+      "value": 356000,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "reported_snapshot",
+        "report_date": "2025-04-01",
+        "label": "Switch donation reported by the Fire District on April 1, 2025"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Switch contribution reported by Storey County Fire Protection District; purpose unspecified",
+        "county_fips": "32029",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_storey_switch_fire_donation_2025_04",
+      "source_locator": "PDF page 3, Fire District staff report",
+      "pdf_page": 3,
+      "printed_page": "unnumbered minutes page",
+      "notes": "The minutes call this a $356,000 Switch donation but do not state its purpose. The report discusses a ladder-truck purchase separately, so this amount is not assigned to that truck or combined with the later ladder contribution.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-05"
+    },
+    {
+      "claim_id": "clm_study_switch_storey_ladder_truck_contribution_2025",
+      "project_id": "prj_study_im3_point_06685432442",
+      "metric_code": "study.direct_community_contribution",
+      "value": 2000000,
+      "value_qualifier": "greater_than",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "reported_snapshot",
+        "report_date": "2025-09-02",
+        "label": "Station 75 ladder-truck contribution reported September 2, 2025"
+      },
+      "scope": {
+        "level": "supporting_infrastructure",
+        "label": "Switch contribution for new Station 75 ladder truck, Storey County Fire Protection District",
+        "county_fips": "32029",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_storey_switch_ladder_donation_2025_09",
+      "source_locator": "PDF page 2, Fire District staff report",
+      "pdf_page": 2,
+      "printed_page": "unnumbered minutes page",
+      "notes": "The Fire Chief reports that Switch gave more than $2 million for the ladder truck. The lower bound is retained without inventing an exact amount. The district expected ownership in about twelve months, so the record is a contribution report rather than an in-service asset value.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-05"
+    },
+    {
+      "claim_id": "clm_study_switch_storey_ladder_equipment_cost_plan_2026",
+      "project_id": "prj_study_im3_point_06685432442",
+      "metric_code": "study.public_safety_equipment_cost_projection",
+      "value": 100000,
+      "value_qualifier": "exact",
+      "basis": "source_projection",
+      "period": {
+        "kind": "projection_horizon",
+        "report_date": "2026-02-03",
+        "horizon_years": 1,
+        "label": "Fire District fiscal 2026–2027 capital plan"
+      },
+      "scope": {
+        "level": "supporting_infrastructure",
+        "label": "Storey County Fire Protection District equipment for Switch-purchased Pierce Truck 75",
+        "county_fips": "32029",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_storey_fire_cip_2026",
+      "source_locator": "PDF page 154 / printed page 148, Apparatus / Heavy Equipment table, Equip new Pierce Truck 75",
+      "pdf_page": 154,
+      "printed_page": "148",
+      "notes": "The district budgets $100,000 to equip the new truck and notes that Switch purchased the truck. This is a planned public cost, not a realized expenditure and not a second Switch contribution.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-05"
     }
   ],
   "project_updates": [
@@ -16600,7 +17052,7 @@
       "source_id": "src_study_storey_switch_cm001611_2026",
       "as_of": "2026-09-03",
       "title": "County account resolves Switch personal property at the Citadel campus",
-      "notes": "Storey County identifies Switch, Ltd. account CM001611 at 1 Superloop Circle. The account supplies the asset-cost, taxable-value, assessed-value, bill and paid series. Other Switch accounts and campus real property remain outside this account, and the separate GOED audit continues to be treated as combined multi-facility context."
+      "notes": "Storey County identifies Switch, Ltd. account CM001611 at 1 Superloop Circle. The account supplies the asset-cost, taxable-value, assessed-value, bill and paid series. Parcel 005-012-23 is now collected separately for campus real property, while numerous data-center tenant-equipment accounts remain outside the Switch operator account."
     },
     {
       "project_id": "prj_study_im3_building_00172739953",
@@ -16853,6 +17305,34 @@
       "as_of": "2026-09-05",
       "title": "Five-year audit adds jobs, wages and capital expenditure for the Storey agreement",
       "notes": "Nevada GOED identifies Switch, LTD #2 as a new Storey County data-center project and marks its December 31, 2020 five-year audit compliant. The state reports 111 jobs, a $50.97 average hourly wage and $179,943,184 of capital expenditure. The Clark County #3 row repeats the same findings, so the application preserves the official Storey allocation while flagging the duplication and withholding any Tahoe Reno 1 building allocation."
+    },
+    {
+      "project_id": "prj_study_im3_point_06685432442",
+      "source_id": "src_study_storey_switch_parcel_00501223_2026",
+      "as_of": "2026-09-05",
+      "title": "Core Citadel parcel adds real-estate values and completed tax payments",
+      "notes": "Storey County parcel 005-012-23 identifies 1 Superloop Circle and three data-center modules totaling 575,985 listed square feet. The release adds separate 2024–2026 real-property value stocks, three parcel tax bills, two completed fiscal-year payments and the first paid installment of the open 2026–2027 year. Tenant-equipment accounts and CM001611 remain separate to prevent double counting."
+    },
+    {
+      "project_id": "prj_study_im3_point_06685432442",
+      "source_id": "src_study_storey_switch_fire_donation_2025_04",
+      "as_of": "2026-09-05",
+      "title": "County minutes report a separate $356,000 Switch donation",
+      "notes": "The Fire District reported a $356,000 donation from Switch in April 2025. The minutes do not identify its purpose and discuss the ladder-truck purchase separately, so the application preserves it as an unassigned company-county contribution."
+    },
+    {
+      "project_id": "prj_study_im3_point_06685432442",
+      "source_id": "src_study_storey_switch_ladder_donation_2025_09",
+      "as_of": "2026-09-05",
+      "title": "Fire Chief reports more than $2 million from Switch for Station 75 ladder truck",
+      "notes": "The September 2025 minutes report a Switch contribution greater than $2 million for the ladder truck. The amount remains a lower bound, and the expected twelve-month delivery means the record does not claim the truck was already in service."
+    },
+    {
+      "project_id": "prj_study_im3_point_06685432442",
+      "source_id": "src_study_storey_fire_cip_2026",
+      "as_of": "2026-09-05",
+      "title": "Fire capital plan exposes a public cost paired with the donated truck",
+      "notes": "The Fire District plans $100,000 in fiscal 2026–2027 to equip Pierce Truck 75 and identifies the truck as purchased by Switch. The application records the district amount as a forecast public cost, preserving both sides of the transaction without netting unlike periods."
     }
   ]
 }

@@ -71,9 +71,9 @@ class PrivateSectorStudyTest(unittest.TestCase):
         index, details, _ = self.build()
         self.assertEqual(index["counts"]["projects"], 36)
         self.assertEqual(index["counts"]["projects_with_economic_evidence"], 36)
-        self.assertEqual(index["counts"]["economic_records"], 545)
-        self.assertEqual(index["counts"]["reported_actual_records"], 498)
-        self.assertEqual(index["counts"]["projection_records"], 47)
+        self.assertEqual(index["counts"]["economic_records"], 560)
+        self.assertEqual(index["counts"]["reported_actual_records"], 512)
+        self.assertEqual(index["counts"]["projection_records"], 48)
         self.assertTrue(all(r["analysis_readiness"]["causal"] == "not_assessed" for r in details))
         washoe = next(r for r in details if r["name"] == "Apple Washoe County campus")
         coverage = {g["code"]: g["status"] for g in washoe["evidence_gaps"]}
@@ -247,18 +247,33 @@ class PrivateSectorStudyTest(unittest.TestCase):
                          "study.operating_employees", "study.existing_hourly_wage",
                          "study.audited_capital_expenditure", "study.operating_jobs_projection",
                          "study.average_hourly_wage_projection", "study.sales_tax_abatement_projection",
-                         "study.personal_property_tax_abatement_projection"]
+                         "study.personal_property_tax_abatement_projection",
+                         "study.direct_community_contribution",
+                         "study.public_safety_equipment_cost_projection"]
         }
-        self.assertEqual(project["economic_record_count"], 63)
+        self.assertEqual((project["economic_record_count"], project["reported_actual_count"],
+                          project["projection_count"]), (78, 71, 7))
         self.assertEqual([len(by_metric[c]) for c in ["study.reported_asset_cost", "study.taxable_property_value",
                                                        "study.account_assessed_value", "study.property_taxes_billed"]],
-                         [11, 11, 11, 11])
-        self.assertEqual(len(by_metric["study.property_taxes_paid"]), 10)
+                         [11, 14, 14, 14])
+        self.assertEqual(len(by_metric["study.property_taxes_paid"]), 13)
         zero_bill = next(r for r in by_metric["study.property_taxes_billed"] if r["period"]["year"] == 2019)
         self.assertEqual(zero_bill["value"], 0)
-        self.assertFalse(any(r["period"]["year"] == 2019 for r in by_metric["study.property_taxes_paid"]))
-        positive_bills = [r["value"] for r in by_metric["study.property_taxes_billed"] if r["value"] > 0]
-        self.assertEqual([r["value"] for r in by_metric["study.property_taxes_paid"]], positive_bills)
+        self.assertFalse(any(r["period"].get("year") == 2019 for r in by_metric["study.property_taxes_paid"]))
+        personal_paid = [r for r in by_metric["study.property_taxes_paid"] if "CM001611" in r["scope"]["label"]]
+        positive_personal_bills = [r["value"] for r in by_metric["study.property_taxes_billed"]
+                                   if "CM001611" in r["scope"]["label"] and r["value"] > 0]
+        self.assertEqual([r["value"] for r in personal_paid], positive_personal_bills)
+        real_taxable = [r for r in by_metric["study.taxable_property_value"] if "005-012-23" in r["scope"]["label"]]
+        real_assessed = [r for r in by_metric["study.account_assessed_value"] if "005-012-23" in r["scope"]["label"]]
+        real_billed = [r for r in by_metric["study.property_taxes_billed"] if "005-012-23" in r["scope"]["label"]]
+        real_paid = [r for r in by_metric["study.property_taxes_paid"] if "005-012-23" in r["scope"]["label"]]
+        self.assertEqual([r["value"] for r in real_taxable], [197360800, 195608630, 196624007])
+        self.assertEqual([r["value"] for r in real_assessed], [69076280, 68463021, 68818403])
+        self.assertEqual([r["value"] for r in real_billed], [2239229.35, 2369299.77, 2381598.47])
+        self.assertEqual([r["value"] for r in real_paid], [2239229.35, 2369299.77, 595399.61])
+        self.assertEqual(real_paid[-1]["period"]["kind"], "reported_snapshot")
+        self.assertNotIn("annual_series_key", real_paid[-1])
         plan = by_metric["study.campus_investment_projection"][0]
         self.assertEqual((plan["value"], plan["value_qualifier"], plan["basis"]),
                          (1000000000, "approximately", "source_projection"))
@@ -278,7 +293,14 @@ class PrivateSectorStudyTest(unittest.TestCase):
         self.assertEqual(by_metric["study.personal_property_tax_abatement_projection"][0]["value"], 32095728)
         self.assertEqual(len(by_metric["study.campus_investment_projection"]), 2)
         self.assertEqual(by_metric["study.campus_investment_projection"][1]["value"], 1386677024)
-        self.assertEqual(len(project["research_updates"]), 3)
+        donations = by_metric["study.direct_community_contribution"]
+        self.assertEqual([(r["value"], r["value_qualifier"]) for r in donations],
+                         [(356000, "exact"), (2000000, "greater_than")])
+        self.assertEqual(by_metric["study.public_safety_equipment_cost_projection"][0]["value"], 100000)
+        self.assertEqual(by_metric["study.public_safety_equipment_cost_projection"][0]["basis"], "source_projection")
+        coverage = {gap["code"]: gap["status"] for gap in project["evidence_gaps"]}
+        self.assertEqual((coverage["community"], coverage["public_costs"]), ("partial", "projections_only"))
+        self.assertEqual(len(project["research_updates"]), 7)
         self.assertFalse(any(r["source_id"] == "src_study_nevada_switch_combined_audit_2021"
                              for r in project["economic_records"]))
         self.assertTrue(all(r["source_id"] == "src_study_nevada_goed_switch_abatement_audit_2023"
