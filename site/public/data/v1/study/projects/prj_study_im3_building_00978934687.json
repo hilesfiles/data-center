@@ -19,10 +19,57 @@
   "economic_record_count": 113,
   "reported_actual_count": 103,
   "projection_count": 10,
-  "modeled_synthesis_count": 37,
+  "modeled_synthesis_count": 43,
+  "model_completeness": {
+    "status": "full_modeled_account",
+    "required_categories": [
+      "investment",
+      "construction",
+      "suppliers",
+      "operations",
+      "fiscal",
+      "public_costs",
+      "resources",
+      "community"
+    ],
+    "covered_categories": [
+      "community",
+      "construction",
+      "fiscal",
+      "investment",
+      "operations",
+      "public_costs",
+      "resources",
+      "suppliers"
+    ],
+    "modeled_categories": [
+      "community",
+      "construction",
+      "fiscal",
+      "investment",
+      "operations",
+      "public_costs",
+      "resources",
+      "suppliers"
+    ],
+    "required_county_outcomes": [
+      "study.modeled_county_employment_effect",
+      "study.modeled_county_gdp_effect",
+      "study.modeled_county_wage_effect"
+    ],
+    "covered_county_outcomes": [
+      "study.modeled_county_employment_effect",
+      "study.modeled_county_gdp_effect",
+      "study.modeled_county_wage_effect"
+    ],
+    "missing_categories": [],
+    "missing_county_outcomes": [],
+    "direct_evidence_gap_count": 8,
+    "definition": "All eight annual-account categories contain sourced or labeled modeled values, and GDP, employment, and wage county-effect models include causal-design metadata."
+  },
   "schema_version": "1.0.0",
-  "release_id": "private-sector-study-1.41.0",
-  "generated_at": "2026-09-05T19:27:12+00:00",
+  "release_id": "private-sector-study-1.42.0",
+  "generated_at": "2026-09-05T20:10:16+00:00",
   "inventory_name": "Digital Crossroad",
   "research_value": "Exact-facility operational event; construction, redevelopment, permanent jobs and tax-base research.",
   "history": {
@@ -9307,6 +9354,628 @@
       "presentation": "modeled_not_observed_or_audited",
       "notes": "A descriptive transformation only; no causal_design is attached because causal requirements are not met.",
       "reviewed_on": "2026-09-05"
+    },
+    {
+      "estimate_id": "est_study_full_dx_hammond_annual_public_service_cost",
+      "project_id": "prj_study_im3_building_00978934687",
+      "metric_code": "study.modeled_annual_public_service_cost",
+      "label": "Modeled annual attributable public-service cost",
+      "category": "public_costs",
+      "unit": "USD_per_year",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 262894.77,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2025,
+        "label": "Comparable annual fiscal-account scenario"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Digital Crossroad DX-1 Hammond and Lake County",
+        "county_fips": "18089",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": 150225.58,
+        "central": 262894.77,
+        "high": 375563.96,
+        "interpretation": "Low, central and high values are an explicit sensitivity range, not a statistical confidence interval."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "full_dx_hammond_annual_public_service_cost",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "gross_property_tax",
+          "value": 751127.92,
+          "unit": "USD",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Latest complete project-linked property-tax measure"
+          },
+          "transformation": "Multiplied by service-cost share"
+        },
+        {
+          "name": "central_service_cost_share",
+          "value": 0.35,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Explicit central allocation share"
+          },
+          "transformation": "Allocates public service cost"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The calculation is reproducible but relies on transferred public benchmarks or explicit assumptions where direct local observations are unavailable.",
+      "decision_relevance": "Fills the attributable service-cost side of the annual fiscal account.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Agency expenditures by service and recipient jurisdiction"
+      },
+      "derivation": {
+        "method": "sensitivity_analysis",
+        "model_version": "full-county-account-1.0.0",
+        "formula": "gross project-linked property tax × service-cost share",
+        "input_claim_ids": [
+          "clm_study_digital_crossroad_property_taxes_paid_2024"
+        ],
+        "input_source_ids": [
+          "src_study_lake_county_digital_crossroad_tax_2026",
+          "src_study_iedc_dx_hammond_irtc_portal_2026",
+          "src_study_iedc_dx_hammond_data_portal_2026",
+          "src_study_iedc_dx_hammond_edge_portal_2026",
+          "src_study_hammond_2024_financial_audit"
+        ],
+        "assumptions": [
+          "All transferred coefficients and allocation shares are exposed as parameters.",
+          "The estimate must not be presented as observed, audited or source-reported."
+        ]
+      },
+      "limitations": [
+        "Service-cost shares are assumed.",
+        "Does not identify infrastructure financing or marginal capacity costs."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Public-cost sensitivity used only in the net fiscal scenario.",
+      "reviewed_on": "2026-09-05"
+    },
+    {
+      "estimate_id": "est_study_full_dx_hammond_annual_net_fiscal",
+      "project_id": "prj_study_im3_building_00978934687",
+      "metric_code": "study.modeled_annual_net_fiscal_position",
+      "label": "Modeled annual net fiscal position",
+      "category": "fiscal",
+      "unit": "USD_per_year",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": -1976074.04,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2025,
+        "label": "Comparable annual fiscal-account scenario"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Digital Crossroad DX-1 Hammond and Lake County",
+        "county_fips": "18089",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": -2581604.67,
+        "central": -1976074.04,
+        "high": -1370543.42,
+        "interpretation": "Low, central and high values are an explicit sensitivity range, not a statistical confidence interval."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "full_dx_hammond_annual_net_fiscal",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "gross_property_tax",
+          "value": 751127.92,
+          "unit": "USD",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Latest complete project-linked property-tax measure"
+          },
+          "transformation": "Added as gross revenue"
+        },
+        {
+          "name": "annualized_public_support",
+          "value": 2464307.19,
+          "unit": "USD_per_year",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Annualized incentive, reduction and financing-cost scenario"
+          },
+          "transformation": "Subtracted from revenue"
+        },
+        {
+          "name": "central_public_service_cost",
+          "value": 262894.772,
+          "unit": "USD_per_year",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Central service-cost allocation"
+          },
+          "transformation": "Subtracted from revenue"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The calculation is reproducible but relies on transferred public benchmarks or explicit assumptions where direct local observations are unavailable.",
+      "decision_relevance": "Provides a complete but explicitly modeled annual fiscal balance for comparison.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Recipient-level revenues, realized incentive timing and marginal service expenditures"
+      },
+      "derivation": {
+        "method": "sensitivity_analysis",
+        "model_version": "full-county-account-1.0.0",
+        "formula": "gross project-linked property tax − annualized incentives/reductions − attributable service cost",
+        "input_claim_ids": [
+          "clm_study_digital_crossroad_property_taxes_paid_2024"
+        ],
+        "input_source_ids": [
+          "src_study_lake_county_digital_crossroad_tax_2026",
+          "src_study_iedc_dx_hammond_irtc_portal_2026",
+          "src_study_iedc_dx_hammond_data_portal_2026",
+          "src_study_iedc_dx_hammond_edge_portal_2026",
+          "src_study_hammond_2024_financial_audit"
+        ],
+        "assumptions": [
+          "All transferred coefficients and allocation shares are exposed as parameters.",
+          "The estimate must not be presented as observed, audited or source-reported."
+        ]
+      },
+      "limitations": [
+        "Negative values mean modeled public costs exceed the narrow project-linked revenue measure.",
+        "This is not an audited government-wide fiscal result."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Completed modeled fiscal account; each component remains separately visible.",
+      "reviewed_on": "2026-09-05"
+    },
+    {
+      "estimate_id": "est_study_full_dx_hammond_wastewater",
+      "project_id": "prj_study_im3_building_00978934687",
+      "metric_code": "study.modeled_annual_wastewater_discharge",
+      "label": "Modeled annual wastewater discharge",
+      "category": "resources",
+      "unit": "gallons_per_year",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 4556706.21,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2025,
+        "label": "Annual water-discharge sensitivity"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Digital Crossroad DX-1 Hammond and Lake County",
+        "county_fips": "18089",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": 1339113.66,
+        "central": 4556706.21,
+        "high": 9522586.05,
+        "interpretation": "Low, central and high values are an explicit sensitivity range, not a statistical confidence interval."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "full_dx_hammond_wastewater",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "central_onsite_water",
+          "value": 9113412.43,
+          "unit": "gallons_per_year",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Published onsite-water model central value"
+          },
+          "transformation": "Multiplied by discharge share"
+        },
+        {
+          "name": "central_discharge_share",
+          "value": 0.5,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Explicit return-flow assumption"
+          },
+          "transformation": "Allocates water to wastewater discharge"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The calculation is reproducible but relies on transferred public benchmarks or explicit assumptions where direct local observations are unavailable.",
+      "decision_relevance": "Completes the annual wastewater field alongside withdrawal and consumption.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Metered discharge, reuse and evaporation by cooling system"
+      },
+      "derivation": {
+        "method": "engineering_estimate",
+        "model_version": "full-county-account-1.0.0",
+        "formula": "modeled onsite water × discharge share",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_lbnl_dc_energy_2024"
+        ],
+        "assumptions": [
+          "All transferred coefficients and allocation shares are exposed as parameters.",
+          "The estimate must not be presented as observed, audited or source-reported."
+        ]
+      },
+      "limitations": [
+        "Discharge share is assumed.",
+        "Does not distinguish sanitary, blowdown, reuse or evaporation flows."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Engineering sensitivity, not a permit or meter value.",
+      "reviewed_on": "2026-09-05"
+    },
+    {
+      "estimate_id": "est_study_full_dx_hammond_gdp_effect",
+      "project_id": "prj_study_im3_building_00978934687",
+      "metric_code": "study.modeled_county_gdp_effect",
+      "label": "Modeled county real GDP effect",
+      "category": "county_outcome",
+      "unit": "percent",
+      "measure_type": "effect",
+      "basis": "modeled_synthesis",
+      "value": 11.98,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2024,
+        "label": "2024 host-county outcome relative to synthetic comparison after 2020 treatment"
+      },
+      "scope": {
+        "level": "county",
+        "label": "Digital Crossroad DX-1 Hammond and Lake County",
+        "county_fips": "18089",
+        "inventory_allocation": "not_applicable"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": -22.26,
+        "central": 11.98,
+        "high": 46.21,
+        "interpretation": "Low, central and high values are an explicit sensitivity range, not a statistical confidence interval."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "full_dx_hammond_gdp_effect",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "host_2024_value",
+          "value": 24764214000,
+          "unit": "thousand_chained_2017_USD",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_county_economic_core_2001_2024",
+            "detail": "Host-county 2024 real GDP from the county economic panel"
+          },
+          "transformation": "Compared with weighted donor value"
+        },
+        {
+          "name": "synthetic_2024_value",
+          "value": 22115400062.014244,
+          "unit": "thousand_chained_2017_USD",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_county_economic_core_2001_2024",
+            "detail": "Weighted 2024 donor value for real GDP"
+          },
+          "transformation": "Subtracted from host and used as denominator"
+        },
+        {
+          "name": "pre_period_rmse_percent",
+          "value": 17.118095691655757,
+          "unit": "percent",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Pre-treatment fit diagnostic"
+          },
+          "transformation": "Sets sensitivity width"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The calculation is reproducible but relies on transferred public benchmarks or explicit assumptions where direct local observations are unavailable.",
+      "decision_relevance": "Completes the modeled county-effect field while exposing identification weakness.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Additional treatment timing, donor diagnostics and robustness specifications"
+      },
+      "derivation": {
+        "method": "synthetic_control",
+        "model_version": "full-county-account-1.0.0",
+        "formula": "100 × (host 2024 outcome − weighted donor outcome) ÷ weighted donor outcome",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_county_economic_core_2001_2024"
+        ],
+        "assumptions": [
+          "All transferred coefficients and allocation shares are exposed as parameters.",
+          "The estimate must not be presented as observed, audited or source-reported."
+        ]
+      },
+      "limitations": [
+        "Treatment timing does not isolate later expansions.",
+        "Unobserved concurrent investments can bias the estimate.",
+        "The interval is a fit sensitivity, not a frequentist confidence interval."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Low-confidence statistical model; it is not a source-reported effect and should be interpreted with the diagnostics.",
+      "reviewed_on": "2026-09-05",
+      "causal_design": {
+        "treatment_timing": "Modeled operating treatment begins in 2020; later expansions are not separately isolated.",
+        "comparison_design": "Inverse-distance weighted mean of the 20 nearest non-study counties on pre-treatment log level, compound growth and growth volatility.",
+        "outcome_definition": "Percent difference in 2024 real GDP between the host county and weighted synthetic comparison.",
+        "pre_period": "2012-2019",
+        "post_period": "2020-2024",
+        "diagnostics": [
+          "Pre-period percentage RMSE: 17.12.",
+          "Twenty donors selected after excluding all counties in the study register.",
+          "The sensitivity width is twice pre-period RMSE, with a five-percentage-point minimum."
+        ],
+        "limitations": [
+          "Treatment timing does not isolate later expansions.",
+          "Unobserved concurrent investments can bias the estimate.",
+          "The interval is a fit sensitivity, not a frequentist confidence interval."
+        ]
+      }
+    },
+    {
+      "estimate_id": "est_study_full_dx_hammond_employment_effect",
+      "project_id": "prj_study_im3_building_00978934687",
+      "metric_code": "study.modeled_county_employment_effect",
+      "label": "Modeled county total employment effect",
+      "category": "county_outcome",
+      "unit": "percent",
+      "measure_type": "effect",
+      "basis": "modeled_synthesis",
+      "value": 3.0,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2024,
+        "label": "2024 host-county outcome relative to synthetic comparison after 2020 treatment"
+      },
+      "scope": {
+        "level": "county",
+        "label": "Digital Crossroad DX-1 Hammond and Lake County",
+        "county_fips": "18089",
+        "inventory_allocation": "not_applicable"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": -2.0,
+        "central": 3.0,
+        "high": 8.0,
+        "interpretation": "Low, central and high values are an explicit sensitivity range, not a statistical confidence interval."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "full_dx_hammond_employment_effect",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "host_2024_value",
+          "value": 191633,
+          "unit": "jobs",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_county_economic_core_2001_2024",
+            "detail": "Host-county 2024 total employment from the county economic panel"
+          },
+          "transformation": "Compared with weighted donor value"
+        },
+        {
+          "name": "synthetic_2024_value",
+          "value": 186052.66377184665,
+          "unit": "jobs",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_county_economic_core_2001_2024",
+            "detail": "Weighted 2024 donor value for total employment"
+          },
+          "transformation": "Subtracted from host and used as denominator"
+        },
+        {
+          "name": "pre_period_rmse_percent",
+          "value": 2.1106668556159014,
+          "unit": "percent",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Pre-treatment fit diagnostic"
+          },
+          "transformation": "Sets sensitivity width"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The calculation is reproducible but relies on transferred public benchmarks or explicit assumptions where direct local observations are unavailable.",
+      "decision_relevance": "Completes the modeled county-effect field while exposing identification weakness.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Additional treatment timing, donor diagnostics and robustness specifications"
+      },
+      "derivation": {
+        "method": "synthetic_control",
+        "model_version": "full-county-account-1.0.0",
+        "formula": "100 × (host 2024 outcome − weighted donor outcome) ÷ weighted donor outcome",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_county_economic_core_2001_2024"
+        ],
+        "assumptions": [
+          "All transferred coefficients and allocation shares are exposed as parameters.",
+          "The estimate must not be presented as observed, audited or source-reported."
+        ]
+      },
+      "limitations": [
+        "Treatment timing does not isolate later expansions.",
+        "Unobserved concurrent investments can bias the estimate.",
+        "The interval is a fit sensitivity, not a frequentist confidence interval."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Low-confidence statistical model; it is not a source-reported effect and should be interpreted with the diagnostics.",
+      "reviewed_on": "2026-09-05",
+      "causal_design": {
+        "treatment_timing": "Modeled operating treatment begins in 2020; later expansions are not separately isolated.",
+        "comparison_design": "Inverse-distance weighted mean of the 20 nearest non-study counties on pre-treatment log level, compound growth and growth volatility.",
+        "outcome_definition": "Percent difference in 2024 total employment between the host county and weighted synthetic comparison.",
+        "pre_period": "2012-2019",
+        "post_period": "2020-2024",
+        "diagnostics": [
+          "Pre-period percentage RMSE: 2.11.",
+          "Twenty donors selected after excluding all counties in the study register.",
+          "The sensitivity width is twice pre-period RMSE, with a five-percentage-point minimum."
+        ],
+        "limitations": [
+          "Treatment timing does not isolate later expansions.",
+          "Unobserved concurrent investments can bias the estimate.",
+          "The interval is a fit sensitivity, not a frequentist confidence interval."
+        ]
+      }
+    },
+    {
+      "estimate_id": "est_study_full_dx_hammond_wage_effect",
+      "project_id": "prj_study_im3_building_00978934687",
+      "metric_code": "study.modeled_county_wage_effect",
+      "label": "Modeled county average weekly wages effect",
+      "category": "county_outcome",
+      "unit": "percent",
+      "measure_type": "effect",
+      "basis": "modeled_synthesis",
+      "value": 0.83,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2024,
+        "label": "2024 host-county outcome relative to synthetic comparison after 2020 treatment"
+      },
+      "scope": {
+        "level": "county",
+        "label": "Digital Crossroad DX-1 Hammond and Lake County",
+        "county_fips": "18089",
+        "inventory_allocation": "not_applicable"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": -4.17,
+        "central": 0.83,
+        "high": 5.83,
+        "interpretation": "Low, central and high values are an explicit sensitivity range, not a statistical confidence interval."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "full_dx_hammond_wage_effect",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "host_2024_value",
+          "value": 1177,
+          "unit": "USD_per_week",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_county_economic_core_2001_2024",
+            "detail": "Host-county 2024 average weekly wages from the county economic panel"
+          },
+          "transformation": "Compared with weighted donor value"
+        },
+        {
+          "name": "synthetic_2024_value",
+          "value": 1167.2639369869803,
+          "unit": "USD_per_week",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_county_economic_core_2001_2024",
+            "detail": "Weighted 2024 donor value for average weekly wages"
+          },
+          "transformation": "Subtracted from host and used as denominator"
+        },
+        {
+          "name": "pre_period_rmse_percent",
+          "value": 1.2432226334178145,
+          "unit": "percent",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Pre-treatment fit diagnostic"
+          },
+          "transformation": "Sets sensitivity width"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The calculation is reproducible but relies on transferred public benchmarks or explicit assumptions where direct local observations are unavailable.",
+      "decision_relevance": "Completes the modeled county-effect field while exposing identification weakness.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Additional treatment timing, donor diagnostics and robustness specifications"
+      },
+      "derivation": {
+        "method": "synthetic_control",
+        "model_version": "full-county-account-1.0.0",
+        "formula": "100 × (host 2024 outcome − weighted donor outcome) ÷ weighted donor outcome",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_county_economic_core_2001_2024"
+        ],
+        "assumptions": [
+          "All transferred coefficients and allocation shares are exposed as parameters.",
+          "The estimate must not be presented as observed, audited or source-reported."
+        ]
+      },
+      "limitations": [
+        "Treatment timing does not isolate later expansions.",
+        "Unobserved concurrent investments can bias the estimate.",
+        "The interval is a fit sensitivity, not a frequentist confidence interval."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Low-confidence statistical model; it is not a source-reported effect and should be interpreted with the diagnostics.",
+      "reviewed_on": "2026-09-05",
+      "causal_design": {
+        "treatment_timing": "Modeled operating treatment begins in 2020; later expansions are not separately isolated.",
+        "comparison_design": "Inverse-distance weighted mean of the 20 nearest non-study counties on pre-treatment log level, compound growth and growth volatility.",
+        "outcome_definition": "Percent difference in 2024 average weekly wages between the host county and weighted synthetic comparison.",
+        "pre_period": "2012-2019",
+        "post_period": "2020-2024",
+        "diagnostics": [
+          "Pre-period percentage RMSE: 1.24.",
+          "Twenty donors selected after excluding all counties in the study register.",
+          "The sensitivity width is twice pre-period RMSE, with a five-percentage-point minimum."
+        ],
+        "limitations": [
+          "Treatment timing does not isolate later expansions.",
+          "Unobserved concurrent investments can bias the estimate.",
+          "The interval is a fit sensitivity, not a frequentist confidence interval."
+        ]
+      }
     }
   ],
   "modeled_sources": [
@@ -9638,16 +10307,30 @@
       "retrieved_on": "2026-09-05",
       "review_method": "pdf_text_and_page_image",
       "notes": "Reports 2023 total output CO2e rates of 916.1 lb/MWh for RFC West and 1,465.5 lb/MWh for Indiana. The Hammond model treats these as a location-based sensitivity rather than a marginal or supplier-specific factor."
+    },
+    {
+      "source_id": "src_study_county_economic_core_2001_2024",
+      "title": "County Economic Core Panel, 2001-2024",
+      "url": "https://apps.bea.gov/regional/downloadzip.htm",
+      "publisher": "U.S. Bureau of Economic Analysis and U.S. Bureau of Labor Statistics",
+      "source_type": "other",
+      "publication_date": {
+        "precision": "year",
+        "year": 2026
+      },
+      "retrieved_on": "2026-09-05",
+      "review_method": "structured_data",
+      "notes": "Repository panel compiled from official annual county real GDP, total employment and average-weekly-wage series. The completion model uses pre-treatment histories and 2024 outcomes; source revisions and concurrent treatments remain limitations."
     }
   ],
-  "modeled_scope_note": "Decision-relevant modeled syntheses for Apple Mesa, Switch Citadel / Tahoe Reno 1, and Digital Crossroad Hammond. These values are derived from cited public evidence and explicit assumptions; they are not observed, audited, source-reported, or causal unless a record explicitly says otherwise. They remain outside canonical claims and source-record counts.",
-  "synthesis_version": "study-modeled-synthesis-2.4.0",
+  "modeled_scope_note": "Full modeled county accounts for Apple Mesa / Maricopa County, Switch Citadel / Storey County, and Digital Crossroad Hammond / Lake County. Every required account category and county-effect module contains sourced evidence or a visibly labeled modeled value. Modeled values are not observed or audited, and low-confidence transferred benchmarks remain explicit.",
+  "synthesis_version": "study-modeled-synthesis-3.0.0",
   "modeling_policy_version": "study-modeling-policy-1.2.0",
   "analysis_readiness": {
-    "construction": "not_assessed",
-    "operations": "not_assessed",
-    "fiscal": "not_assessed",
-    "causal": "not_assessed"
+    "construction": "modeled_available",
+    "operations": "modeled_available",
+    "fiscal": "modeled_available",
+    "causal": "causal_model_available"
   },
   "legacy_first_entry_note": "T5's contemporaneous announcement establishes the exact mapped Digital Crossroad DX-1 facility operational on October 31, 2020, and Hammond's current record confirms the continuing data-center operation. The governed map contains no other Lake County facility, but absence from the current source inventory does not prove that no earlier enterprise, carrier, institutional, or decommissioned data center operated in the county. Research therefore continues and no county first-entry treatment date is assigned.",
   "scope_note": "Provisional private-sector research candidate. Owner/operator history, project boundaries and lifecycle require review. Membership does not verify current operation or establish economic impact."

@@ -20,9 +20,48 @@
   "reported_actual_count": 0,
   "projection_count": 1,
   "modeled_synthesis_count": 0,
+  "model_completeness": {
+    "status": "incomplete",
+    "required_categories": [
+      "investment",
+      "construction",
+      "suppliers",
+      "operations",
+      "fiscal",
+      "public_costs",
+      "resources",
+      "community"
+    ],
+    "covered_categories": [
+      "investment"
+    ],
+    "modeled_categories": [],
+    "required_county_outcomes": [
+      "study.modeled_county_employment_effect",
+      "study.modeled_county_gdp_effect",
+      "study.modeled_county_wage_effect"
+    ],
+    "covered_county_outcomes": [],
+    "missing_categories": [
+      "community",
+      "construction",
+      "fiscal",
+      "operations",
+      "public_costs",
+      "resources",
+      "suppliers"
+    ],
+    "missing_county_outcomes": [
+      "study.modeled_county_employment_effect",
+      "study.modeled_county_gdp_effect",
+      "study.modeled_county_wage_effect"
+    ],
+    "direct_evidence_gap_count": 8,
+    "definition": "All eight annual-account categories contain sourced or labeled modeled values, and GDP, employment, and wage county-effect models include causal-design metadata."
+  },
   "schema_version": "1.0.0",
-  "release_id": "private-sector-study-1.41.0",
-  "generated_at": "2026-09-05T19:27:12+00:00",
+  "release_id": "private-sector-study-1.42.0",
+  "generated_at": "2026-09-05T20:10:16+00:00",
   "inventory_name": "Google",
   "research_value": "Documented campus opening; construction and longer-term community outcomes.",
   "history": {
@@ -148,8 +187,8 @@
   "evidence_version": "study-economic-evidence-1.37.0",
   "modeled_syntheses": [],
   "modeled_sources": [],
-  "modeled_scope_note": "Decision-relevant modeled syntheses for Apple Mesa, Switch Citadel / Tahoe Reno 1, and Digital Crossroad Hammond. These values are derived from cited public evidence and explicit assumptions; they are not observed, audited, source-reported, or causal unless a record explicitly says otherwise. They remain outside canonical claims and source-record counts.",
-  "synthesis_version": "study-modeled-synthesis-2.4.0",
+  "modeled_scope_note": "Full modeled county accounts for Apple Mesa / Maricopa County, Switch Citadel / Storey County, and Digital Crossroad Hammond / Lake County. Every required account category and county-effect module contains sourced evidence or a visibly labeled modeled value. Modeled values are not observed or audited, and low-confidence transferred benchmarks remain explicit.",
+  "synthesis_version": "study-modeled-synthesis-3.0.0",
   "modeling_policy_version": "study-modeling-policy-1.2.0",
   "analysis_readiness": {
     "construction": "not_assessed",

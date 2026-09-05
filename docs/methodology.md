@@ -18,6 +18,8 @@ Each estimate declares its geographic and temporal scope, contribution channel, 
 
 Input-output and contribution models require a named source, model/version, geography, vintage, local-purchase assumption and explicit direct/indirect/induced separation. Difference-in-differences, event-study and synthetic-control records additionally require treatment timing, comparison design, outcome definition, pre/post periods, diagnostics and limitations. Contribution estimates are not causal effects. Strategic-infrastructure narratives remain outside local economic totals unless a sourced quantitative model defines a defensible local channel.
 
+Release 1.42 adds a machine-enforced completion gate for a full modeled county account. The gate requires coverage of investment, construction, suppliers, operations, fiscal revenue, public costs, resources and community effects, plus separate county GDP, employment and wage models with causal-design metadata. A field may be populated by a direct source record or an explicitly labeled synthesis. Passing the gate means the analytical account is populated; it does not mean all values were observed, audited or causally identified. Each profile therefore continues to display remaining direct-evidence gaps and model uncertainty after it passes.
+
 ## Historical reconstruction
 
 Present-day facilities are starting points, not a complete historical sample. Reverse

@@ -24,7 +24,7 @@ CONFIG = ROOT / "config/v1/private-sector-study-candidates.json"
 PUBLIC = ROOT / "site/public/data/v1"
 OUT = PUBLIC / "study"
 SILVER = ROOT / "data/silver/study"
-VERSION = "private-sector-study-1.41.0"
+VERSION = "private-sector-study-1.42.0"
 GAPS = [
     ("investment", "Capital investment", "Annual actual spending, local share, and phase allocation."),
     ("construction", "Construction jobs and payroll", "Workers, job-years, payroll, duration, and local participation."),
@@ -35,6 +35,40 @@ GAPS = [
     ("resources", "Electricity, water, and cooling", "Measured use, source, cooling design, and attributable system costs."),
     ("community", "Community institutions and direct funding", "Annual grants, recipients, program purposes, realized spending, and overlap with other transfers."),
 ]
+REQUIRED_ACCOUNT_CATEGORIES = tuple(code for code, _, _ in GAPS)
+REQUIRED_COUNTY_OUTCOMES = {
+    "study.modeled_county_gdp_effect",
+    "study.modeled_county_employment_effect",
+    "study.modeled_county_wage_effect",
+}
+CAUSAL_METHODS = {"difference_in_differences", "event_study", "synthetic_control"}
+
+
+def model_completeness(records, modeled):
+    """Compute the publication gate for a full modeled county account."""
+    covered = sorted({row["category"] for row in [*records, *modeled]} & set(REQUIRED_ACCOUNT_CATEGORIES))
+    modeled_categories = sorted({row["category"] for row in modeled} & set(REQUIRED_ACCOUNT_CATEGORIES))
+    county_outcomes = sorted({
+        row["metric_code"] for row in modeled
+        if row["metric_code"] in REQUIRED_COUNTY_OUTCOMES
+        and row["derivation"]["method"] in CAUSAL_METHODS
+        and row.get("causal_design")
+    })
+    missing_categories = sorted(set(REQUIRED_ACCOUNT_CATEGORIES) - set(covered))
+    missing_outcomes = sorted(REQUIRED_COUNTY_OUTCOMES - set(county_outcomes))
+    complete = not missing_categories and not missing_outcomes
+    return {
+        "status": "full_modeled_account" if complete else "incomplete",
+        "required_categories": list(REQUIRED_ACCOUNT_CATEGORIES),
+        "covered_categories": covered,
+        "modeled_categories": modeled_categories,
+        "required_county_outcomes": sorted(REQUIRED_COUNTY_OUTCOMES),
+        "covered_county_outcomes": county_outcomes,
+        "missing_categories": missing_categories,
+        "missing_county_outcomes": missing_outcomes,
+        "direct_evidence_gap_count": len(REQUIRED_ACCOUNT_CATEGORIES),
+        "definition": "All eight annual-account categories contain sourced or labeled modeled values, and GDP, employment, and wage county-effect models include causal-design metadata.",
+    }
 
 
 def read(path):
@@ -94,6 +128,7 @@ def build_products(config, inventory, panels, generated_at, evidence=None, synth
         group = row["proposed_study_group"]
         records = economic_by_project[row["project_id"]]
         modeled = modeled_by_project[row["project_id"]]
+        completeness = model_completeness(records, modeled)
         summary = {
             "project_id": row["project_id"], "name": row["study_label"],
             "inventory_entity_id": target["entity_id"], "inventory_entity_type": target["entity_type"],
@@ -110,6 +145,7 @@ def build_products(config, inventory, panels, generated_at, evidence=None, synth
             "reported_actual_count": sum(r["basis"] == "reported_actual" for r in records),
             "projection_count": sum(r["basis"] == "source_projection" for r in records),
             "modeled_synthesis_count": len(modeled),
+            "model_completeness": completeness,
         }
         sources = []
         for source in row["evidence_sources"]:
@@ -138,7 +174,12 @@ def build_products(config, inventory, panels, generated_at, evidence=None, synth
                                 if s["source_id"] in {source_id for estimate in modeled for source_id in estimate["derivation"]["input_source_ids"]}],
             "modeled_scope_note": synthesis["scope_note"], "synthesis_version": synthesis["synthesis_version"],
             "modeling_policy_version": modeling_policy["policy_version"],
-            "analysis_readiness": {"construction": "not_assessed", "operations": "not_assessed", "fiscal": "not_assessed", "causal": "not_assessed"},
+            "analysis_readiness": {
+                "construction": "modeled_available" if any(r["category"] in {"investment", "construction"} for r in modeled) else "not_assessed",
+                "operations": "modeled_available" if any(r["category"] in {"operations", "suppliers"} for r in modeled) else "not_assessed",
+                "fiscal": "modeled_available" if any(r["category"] in {"fiscal", "public_costs"} for r in modeled) else "not_assessed",
+                "causal": "causal_model_available" if completeness["covered_county_outcomes"] else "not_assessed",
+            },
             "legacy_first_entry_note": row.get("existing_first_entry_rationale"),
             "scope_note": "Provisional private-sector research candidate. Owner/operator history, project boundaries and lifecycle require review. Membership does not verify current operation or establish economic impact.",
         }
@@ -166,6 +207,7 @@ def build_products(config, inventory, panels, generated_at, evidence=None, synth
             "modeled_synthesis_records": sum(r["modeled_synthesis_count"] for r in summaries),
         },
         "economic_evidence_status": "partial" if evidence["records"] else "not_yet_collected",
+        "full_modeled_county_accounts": sum(r["model_completeness"]["status"] == "full_modeled_account" for r in summaries),
         "modeling_policy_version": modeling_policy["policy_version"], "projects": summaries,
     }
     return index, details, entities
@@ -202,7 +244,7 @@ def main():
         paths.append((path, 1))
     manifest = {
         "schema_version": "1.0.0", "release_id": VERSION, "generated_at": stamp,
-        "inputs": [{"path": str(p.relative_to(ROOT)).replace("\\", "/"), "sha256": digest(p)} for p in [CONFIG, EVIDENCE, SYNTHESIS, MODELING_POLICY, inventory_path, *panel_paths, Path(__file__), Path(__file__).with_name("build_hammond_modeled_synthesis.py"), Path(__file__).with_name("study_economic_evidence.py"), Path(__file__).with_name("study_modeled_synthesis.py")]],
+        "inputs": [{"path": str(p.relative_to(ROOT)).replace("\\", "/"), "sha256": digest(p)} for p in [CONFIG, EVIDENCE, SYNTHESIS, MODELING_POLICY, inventory_path, *panel_paths, Path(__file__), Path(__file__).with_name("build_hammond_modeled_synthesis.py"), Path(__file__).with_name("build_full_county_models.py"), Path(__file__).with_name("study_economic_evidence.py"), Path(__file__).with_name("study_modeled_synthesis.py")]],
         "parts": [{"path": str(p.relative_to(ROOT)).replace("\\", "/"), "record_count": count, "byte_size": p.stat().st_size, "sha256": digest(p)} for p, count in paths],
     }
     write(OUT / "manifest.json", manifest)

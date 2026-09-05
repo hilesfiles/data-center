@@ -79,7 +79,7 @@ function uniqueLabels(labels: string[]) {
 function EvidenceCoverage({ project }: { project: StudyProject }) {
   return <section className="project-section annual-account-coverage" aria-labelledby="gaps-title">
     <div className="section-heading"><h3 id="gaps-title">Annual-account coverage and remaining evidence</h3></div>
-    <p className="study-intro">Each category shows what is already published as reported activity, source forecasts, or labeled modeled synthesis. The remaining gap states what is still required for a complete annual account.</p>
+    <p className="study-intro">Each category shows what is already published as reported activity, source forecasts, or labeled modeled synthesis. The remaining direct-evidence gap identifies observations that would replace assumptions or narrow uncertainty.</p>
     <div className="evidence-grid">{project.evidence_gaps.map(g => {
       const reported = project.economic_records.filter(r => r.category === g.code && r.basis === "reported_actual");
       const forecasts = project.economic_records.filter(r => r.category === g.code && r.basis === "source_projection");
@@ -98,7 +98,7 @@ function EvidenceCoverage({ project }: { project: StudyProject }) {
         {measures.length > 0 && <p className="published-coverage"><strong>Published source measures</strong>{measures.join("; ")}</p>}
         {modelLabels.length > 0 && <p className="published-models"><strong>Published modeled syntheses</strong>{modelLabels.join("; ")}</p>}
         {!hasCoverage && <p className="published-coverage"><strong>Published coverage</strong>No reported, forecast, or modeled evidence is currently published for this category.</p>}
-        <p className="remaining-gap"><strong>Remaining evidence gap</strong>{g.needed}</p>
+        <p className="remaining-gap"><strong>Remaining direct-evidence gap</strong>{g.needed}</p>
       </article>;
     })}</div>
   </section>;
@@ -126,9 +126,9 @@ function AnalysisReadiness({ project }: { project: StudyProject }) {
       key: "fiscal",
       label: "Local fiscal balance",
       categories: ["fiscal", "public_costs"],
-      modeledStatus: "Partial modeled account",
+      modeledStatus: project.model_completeness.status === "full_modeled_account" ? "Modeled account complete" : "Partial modeled account",
       sourceStatus: "Partial source evidence",
-      note: "A net fiscal result still requires recipient-level revenues, realized incentives, and attributable public-service and infrastructure costs.",
+      note: "The modeled net fiscal balance remains distinct from recipient-level revenues, realized incentives, and audited public-service and infrastructure costs.",
     },
   ].map(row => {
     const records = project.economic_records.filter(r => row.categories.includes(r.category));
@@ -142,7 +142,7 @@ function AnalysisReadiness({ project }: { project: StudyProject }) {
   const causalModels = project.modeled_syntheses.filter(r => causalMethods.has(r.derivation.method));
   return <section className="project-section analysis-readiness" aria-labelledby="readiness-title">
     <h3 id="readiness-title">Analysis readiness</h3>
-    <p className="study-intro">Readiness is derived from the evidence published on this profile. Modeled estimates can support deliberation while the annual account or causal design remains incomplete.</p>
+    <p className="study-intro">Readiness is derived from the evidence published on this profile. A complete modeled account means every required field is populated; it does not convert synthesized values into direct observations.</p>
     <div className="readiness-list">
       {rows.map(row => <article key={row.key}>
         <div className="readiness-heading"><h4>{row.label}</h4><strong>{row.status}</strong></div>
@@ -181,6 +181,7 @@ function ProjectProfile({ summary, release, generatedAt }: { summary: StudyProje
         <ol className="project-timeline"><li><span className="timeline-dot" /><div><strong>{detail.history.description}</strong><p>{detail.history.date_note}</p>{detail.history.anchor && <small>Stored anchor precision: {detail.history.anchor.precision}</small>}</div></li><li className="timeline-pending"><span className="timeline-dot" /><div><strong>Complete the construction, operating and expansion history</strong><p>Additional phase dates, ownership history, and annual financial records need review. Unrecorded milestones are not assumed to have occurred.</p></div></li></ol>
       </section>
       {detail.research_updates.map(update => <aside className="project-research-update" key={`${update.source_id}-${update.as_of}`}><span className="eyebrow">Research update · {update.as_of}</span><h3>{update.title}</h3><p>{update.notes}</p><a href={update.source.url} target="_blank" rel="noreferrer">{update.source.title} ↗</a><small>Source checked {update.source.retrieved_on}</small></aside>)}
+      {detail.model_completeness.status === "full_modeled_account" && <aside className="model-completeness-banner" role="status"><span className="eyebrow">Machine-enforced completion gate</span><h3>Full modeled county account</h3><p>All {detail.model_completeness.required_categories.length} annual-account categories and all {detail.model_completeness.required_county_outcomes.length} county-effect outcomes are populated with sourced evidence or clearly labeled modeled synthesis. Direct observations remain preferable and the modeled intervals preserve their uncertainty.</p></aside>}
       {(detail.economic_records.length > 0 || detail.modeled_syntheses.length > 0) && <EconomicAccounts key={detail.project_id} project={detail} />}
       <EvidenceCoverage project={detail} />
       <AnalysisReadiness project={detail} />

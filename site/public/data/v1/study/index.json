@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
-  "release_id": "private-sector-study-1.41.0",
-  "generated_at": "2026-09-05T19:27:12+00:00",
+  "release_id": "private-sector-study-1.42.0",
+  "generated_at": "2026-09-05T20:10:16+00:00",
   "screen_date": "2026-09-03",
   "selection_basis": "Private commercial identity, documented development history or identifiable campus, and linked county panel. No economic outcome values used.",
   "scope": "Review of the existing dated evidence layer, verified lifecycle results, and additional named campus records. Not an exhaustive classification of every inventory entity.",
@@ -20,9 +20,10 @@
     "economic_records": 585,
     "reported_actual_records": 533,
     "projection_records": 52,
-    "modeled_synthesis_records": 70
+    "modeled_synthesis_records": 104
   },
   "economic_evidence_status": "partial",
+  "full_modeled_county_accounts": 3,
   "modeling_policy_version": "study-modeling-policy-1.2.0",
   "projects": [
     {
@@ -46,7 +47,46 @@
       "economic_record_count": 23,
       "reported_actual_count": 20,
       "projection_count": 3,
-      "modeled_synthesis_count": 0
+      "modeled_synthesis_count": 0,
+      "model_completeness": {
+        "status": "incomplete",
+        "required_categories": [
+          "investment",
+          "construction",
+          "suppliers",
+          "operations",
+          "fiscal",
+          "public_costs",
+          "resources",
+          "community"
+        ],
+        "covered_categories": [
+          "community",
+          "construction",
+          "fiscal",
+          "investment",
+          "operations",
+          "public_costs"
+        ],
+        "modeled_categories": [],
+        "required_county_outcomes": [
+          "study.modeled_county_employment_effect",
+          "study.modeled_county_gdp_effect",
+          "study.modeled_county_wage_effect"
+        ],
+        "covered_county_outcomes": [],
+        "missing_categories": [
+          "resources",
+          "suppliers"
+        ],
+        "missing_county_outcomes": [
+          "study.modeled_county_employment_effect",
+          "study.modeled_county_gdp_effect",
+          "study.modeled_county_wage_effect"
+        ],
+        "direct_evidence_gap_count": 8,
+        "definition": "All eight annual-account categories contain sourced or labeled modeled values, and GDP, employment, and wage county-effect models include causal-design metadata."
+      }
     },
     {
       "project_id": "prj_study_im3_building_00438078069",
@@ -69,7 +109,46 @@
       "economic_record_count": 1,
       "reported_actual_count": 1,
       "projection_count": 0,
-      "modeled_synthesis_count": 0
+      "modeled_synthesis_count": 0,
+      "model_completeness": {
+        "status": "incomplete",
+        "required_categories": [
+          "investment",
+          "construction",
+          "suppliers",
+          "operations",
+          "fiscal",
+          "public_costs",
+          "resources",
+          "community"
+        ],
+        "covered_categories": [
+          "construction"
+        ],
+        "modeled_categories": [],
+        "required_county_outcomes": [
+          "study.modeled_county_employment_effect",
+          "study.modeled_county_gdp_effect",
+          "study.modeled_county_wage_effect"
+        ],
+        "covered_county_outcomes": [],
+        "missing_categories": [
+          "community",
+          "fiscal",
+          "investment",
+          "operations",
+          "public_costs",
+          "resources",
+          "suppliers"
+        ],
+        "missing_county_outcomes": [
+          "study.modeled_county_employment_effect",
+          "study.modeled_county_gdp_effect",
+          "study.modeled_county_wage_effect"
+        ],
+        "direct_evidence_gap_count": 8,
+        "definition": "All eight annual-account categories contain sourced or labeled modeled values, and GDP, employment, and wage county-effect models include causal-design metadata."
+      }
     },
     {
       "project_id": "prj_study_im3_building_00500820007",
@@ -92,7 +171,46 @@
       "economic_record_count": 1,
       "reported_actual_count": 1,
       "projection_count": 0,
-      "modeled_synthesis_count": 0
+      "modeled_synthesis_count": 0,
+      "model_completeness": {
+        "status": "incomplete",
+        "required_categories": [
+          "investment",
+          "construction",
+          "suppliers",
+          "operations",
+          "fiscal",
+          "public_costs",
+          "resources",
+          "community"
+        ],
+        "covered_categories": [
+          "construction"
+        ],
+        "modeled_categories": [],
+        "required_county_outcomes": [
+          "study.modeled_county_employment_effect",
+          "study.modeled_county_gdp_effect",
+          "study.modeled_county_wage_effect"
+        ],
+        "covered_county_outcomes": [],
+        "missing_categories": [
+          "community",
+          "fiscal",
+          "investment",
+          "operations",
+          "public_costs",
+          "resources",
+          "suppliers"
+        ],
+        "missing_county_outcomes": [
+          "study.modeled_county_employment_effect",
+          "study.modeled_county_gdp_effect",
+          "study.modeled_county_wage_effect"
+        ],
+        "direct_evidence_gap_count": 8,
+        "definition": "All eight annual-account categories contain sourced or labeled modeled values, and GDP, employment, and wage county-effect models include causal-design metadata."
+      }
     },
     {
       "project_id": "prj_study_im3_building_00626785488",
@@ -115,7 +233,46 @@
       "economic_record_count": 2,
       "reported_actual_count": 2,
       "projection_count": 0,
-      "modeled_synthesis_count": 0
+      "modeled_synthesis_count": 0,
+      "model_completeness": {
+        "status": "incomplete",
+        "required_categories": [
+          "investment",
+          "construction",
+          "suppliers",
+          "operations",
+          "fiscal",
+          "public_costs",
+          "resources",
+          "community"
+        ],
+        "covered_categories": [
+          "construction",
+          "operations"
+        ],
+        "modeled_categories": [],
+        "required_county_outcomes": [
+          "study.modeled_county_employment_effect",
+          "study.modeled_county_gdp_effect",
+          "study.modeled_county_wage_effect"
+        ],
+        "covered_county_outcomes": [],
+        "missing_categories": [
+          "community",
+          "fiscal",
+          "investment",
+          "public_costs",
+          "resources",
+          "suppliers"
+        ],
+        "missing_county_outcomes": [
+          "study.modeled_county_employment_effect",
+          "study.modeled_county_gdp_effect",
+          "study.modeled_county_wage_effect"
+        ],
+        "direct_evidence_gap_count": 8,
+        "definition": "All eight annual-account categories contain sourced or labeled modeled values, and GDP, employment, and wage county-effect models include causal-design metadata."
+      }
     },
     {
       "project_id": "prj_study_im3_building_01132541700",
@@ -138,7 +295,46 @@
       "economic_record_count": 3,
       "reported_actual_count": 1,
       "projection_count": 2,
-      "modeled_synthesis_count": 0
+      "modeled_synthesis_count": 0,
+      "model_completeness": {
+        "status": "incomplete",
+        "required_categories": [
+          "investment",
+          "construction",
+          "suppliers",
+          "operations",
+          "fiscal",
+          "public_costs",
+          "resources",
+          "community"
+        ],
+        "covered_categories": [
+          "construction",
+          "investment",
+          "operations"
+        ],
+        "modeled_categories": [],
+        "required_county_outcomes": [
+          "study.modeled_county_employment_effect",
+          "study.modeled_county_gdp_effect",
+          "study.modeled_county_wage_effect"
+        ],
+        "covered_county_outcomes": [],
+        "missing_categories": [
+          "community",
+          "fiscal",
+          "public_costs",
+          "resources",
+          "suppliers"
+        ],
+        "missing_county_outcomes": [
+          "study.modeled_county_employment_effect",
+          "study.modeled_county_gdp_effect",
+          "study.modeled_county_wage_effect"
+        ],
+        "direct_evidence_gap_count": 8,
+        "definition": "All eight annual-account categories contain sourced or labeled modeled values, and GDP, employment, and wage county-effect models include causal-design metadata."
+      }
     },
     {
       "project_id": "prj_study_im3_building_01024051963",
@@ -161,7 +357,46 @@
       "economic_record_count": 3,
       "reported_actual_count": 1,
       "projection_count": 2,
-      "modeled_synthesis_count": 0
+      "modeled_synthesis_count": 0,
+      "model_completeness": {
+        "status": "incomplete",
+        "required_categories": [
+          "investment",
+          "construction",
+          "suppliers",
+          "operations",
+          "fiscal",
+          "public_costs",
+          "resources",
+          "community"
+        ],
+        "covered_categories": [
+          "construction",
+          "investment",
+          "operations"
+        ],
+        "modeled_categories": [],
+        "required_county_outcomes": [
+          "study.modeled_county_employment_effect",
+          "study.modeled_county_gdp_effect",
+          "study.modeled_county_wage_effect"
+        ],
+        "covered_county_outcomes": [],
+        "missing_categories": [
+          "community",
+          "fiscal",
+          "public_costs",
+          "resources",
+          "suppliers"
+        ],
+        "missing_county_outcomes": [
+          "study.modeled_county_employment_effect",
+          "study.modeled_county_gdp_effect",
+          "study.modeled_county_wage_effect"
+        ],
+        "direct_evidence_gap_count": 8,
+        "definition": "All eight annual-account categories contain sourced or labeled modeled values, and GDP, employment, and wage county-effect models include causal-design metadata."
+      }
     },
     {
       "project_id": "prj_study_im3_building_00397914434",
@@ -184,7 +419,46 @@
       "economic_record_count": 1,
       "reported_actual_count": 1,
       "projection_count": 0,
-      "modeled_synthesis_count": 0
+      "modeled_synthesis_count": 0,
+      "model_completeness": {
+        "status": "incomplete",
+        "required_categories": [
+          "investment",
+          "construction",
+          "suppliers",
+          "operations",
+          "fiscal",
+          "public_costs",
+          "resources",
+          "community"
+        ],
+        "covered_categories": [
+          "fiscal"
+        ],
+        "modeled_categories": [],
+        "required_county_outcomes": [
+          "study.modeled_county_employment_effect",
+          "study.modeled_county_gdp_effect",
+          "study.modeled_county_wage_effect"
+        ],
+        "covered_county_outcomes": [],
+        "missing_categories": [
+          "community",
+          "construction",
+          "investment",
+          "operations",
+          "public_costs",
+          "resources",
+          "suppliers"
+        ],
+        "missing_county_outcomes": [
+          "study.modeled_county_employment_effect",
+          "study.modeled_county_gdp_effect",
+          "study.modeled_county_wage_effect"
+        ],
+        "direct_evidence_gap_count": 8,
+        "definition": "All eight annual-account categories contain sourced or labeled modeled values, and GDP, employment, and wage county-effect models include causal-design metadata."
+      }
     },
     {
       "project_id": "prj_study_im3_building_00464097467",
@@ -207,7 +481,46 @@
       "economic_record_count": 4,
       "reported_actual_count": 2,
       "projection_count": 2,
-      "modeled_synthesis_count": 0
+      "modeled_synthesis_count": 0,
+      "model_completeness": {
+        "status": "incomplete",
+        "required_categories": [
+          "investment",
+          "construction",
+          "suppliers",
+          "operations",
+          "fiscal",
+          "public_costs",
+          "resources",
+          "community"
+        ],
+        "covered_categories": [
+          "investment",
+          "operations",
+          "public_costs"
+        ],
+        "modeled_categories": [],
+        "required_county_outcomes": [
+          "study.modeled_county_employment_effect",
+          "study.modeled_county_gdp_effect",
+          "study.modeled_county_wage_effect"
+        ],
+        "covered_county_outcomes": [],
+        "missing_categories": [
+          "community",
+          "construction",
+          "fiscal",
+          "resources",
+          "suppliers"
+        ],
+        "missing_county_outcomes": [
+          "study.modeled_county_employment_effect",
+          "study.modeled_county_gdp_effect",
+          "study.modeled_county_wage_effect"
+        ],
+        "direct_evidence_gap_count": 8,
+        "definition": "All eight annual-account categories contain sourced or labeled modeled values, and GDP, employment, and wage county-effect models include causal-design metadata."
+      }
     },
     {
       "project_id": "prj_study_im3_building_00116005354",
@@ -230,7 +543,46 @@
       "economic_record_count": 8,
       "reported_actual_count": 8,
       "projection_count": 0,
-      "modeled_synthesis_count": 0
+      "modeled_synthesis_count": 0,
+      "model_completeness": {
+        "status": "incomplete",
+        "required_categories": [
+          "investment",
+          "construction",
+          "suppliers",
+          "operations",
+          "fiscal",
+          "public_costs",
+          "resources",
+          "community"
+        ],
+        "covered_categories": [
+          "fiscal"
+        ],
+        "modeled_categories": [],
+        "required_county_outcomes": [
+          "study.modeled_county_employment_effect",
+          "study.modeled_county_gdp_effect",
+          "study.modeled_county_wage_effect"
+        ],
+        "covered_county_outcomes": [],
+        "missing_categories": [
+          "community",
+          "construction",
+          "investment",
+          "operations",
+          "public_costs",
+          "resources",
+          "suppliers"
+        ],
+        "missing_county_outcomes": [
+          "study.modeled_county_employment_effect",
+          "study.modeled_county_gdp_effect",
+          "study.modeled_county_wage_effect"
+        ],
+        "direct_evidence_gap_count": 8,
+        "definition": "All eight annual-account categories contain sourced or labeled modeled values, and GDP, employment, and wage county-effect models include causal-design metadata."
+      }
     },
     {
       "project_id": "prj_study_im3_building_00300974499",
@@ -253,7 +605,54 @@
       "economic_record_count": 80,
       "reported_actual_count": 76,
       "projection_count": 4,
-      "modeled_synthesis_count": 13
+      "modeled_synthesis_count": 27,
+      "model_completeness": {
+        "status": "full_modeled_account",
+        "required_categories": [
+          "investment",
+          "construction",
+          "suppliers",
+          "operations",
+          "fiscal",
+          "public_costs",
+          "resources",
+          "community"
+        ],
+        "covered_categories": [
+          "community",
+          "construction",
+          "fiscal",
+          "investment",
+          "operations",
+          "public_costs",
+          "resources",
+          "suppliers"
+        ],
+        "modeled_categories": [
+          "community",
+          "construction",
+          "fiscal",
+          "investment",
+          "operations",
+          "public_costs",
+          "resources",
+          "suppliers"
+        ],
+        "required_county_outcomes": [
+          "study.modeled_county_employment_effect",
+          "study.modeled_county_gdp_effect",
+          "study.modeled_county_wage_effect"
+        ],
+        "covered_county_outcomes": [
+          "study.modeled_county_employment_effect",
+          "study.modeled_county_gdp_effect",
+          "study.modeled_county_wage_effect"
+        ],
+        "missing_categories": [],
+        "missing_county_outcomes": [],
+        "direct_evidence_gap_count": 8,
+        "definition": "All eight annual-account categories contain sourced or labeled modeled values, and GDP, employment, and wage county-effect models include causal-design metadata."
+      }
     },
     {
       "project_id": "prj_study_im3_building_01073720208",
@@ -276,7 +675,46 @@
       "economic_record_count": 5,
       "reported_actual_count": 3,
       "projection_count": 2,
-      "modeled_synthesis_count": 0
+      "modeled_synthesis_count": 0,
+      "model_completeness": {
+        "status": "incomplete",
+        "required_categories": [
+          "investment",
+          "construction",
+          "suppliers",
+          "operations",
+          "fiscal",
+          "public_costs",
+          "resources",
+          "community"
+        ],
+        "covered_categories": [
+          "fiscal",
+          "investment",
+          "operations"
+        ],
+        "modeled_categories": [],
+        "required_county_outcomes": [
+          "study.modeled_county_employment_effect",
+          "study.modeled_county_gdp_effect",
+          "study.modeled_county_wage_effect"
+        ],
+        "covered_county_outcomes": [],
+        "missing_categories": [
+          "community",
+          "construction",
+          "public_costs",
+          "resources",
+          "suppliers"
+        ],
+        "missing_county_outcomes": [
+          "study.modeled_county_employment_effect",
+          "study.modeled_county_gdp_effect",
+          "study.modeled_county_wage_effect"
+        ],
+        "direct_evidence_gap_count": 8,
+        "definition": "All eight annual-account categories contain sourced or labeled modeled values, and GDP, employment, and wage county-effect models include causal-design metadata."
+      }
     },
     {
       "project_id": "prj_study_im3_building_00844371952",
@@ -299,7 +737,46 @@
       "economic_record_count": 1,
       "reported_actual_count": 0,
       "projection_count": 1,
-      "modeled_synthesis_count": 0
+      "modeled_synthesis_count": 0,
+      "model_completeness": {
+        "status": "incomplete",
+        "required_categories": [
+          "investment",
+          "construction",
+          "suppliers",
+          "operations",
+          "fiscal",
+          "public_costs",
+          "resources",
+          "community"
+        ],
+        "covered_categories": [
+          "investment"
+        ],
+        "modeled_categories": [],
+        "required_county_outcomes": [
+          "study.modeled_county_employment_effect",
+          "study.modeled_county_gdp_effect",
+          "study.modeled_county_wage_effect"
+        ],
+        "covered_county_outcomes": [],
+        "missing_categories": [
+          "community",
+          "construction",
+          "fiscal",
+          "operations",
+          "public_costs",
+          "resources",
+          "suppliers"
+        ],
+        "missing_county_outcomes": [
+          "study.modeled_county_employment_effect",
+          "study.modeled_county_gdp_effect",
+          "study.modeled_county_wage_effect"
+        ],
+        "direct_evidence_gap_count": 8,
+        "definition": "All eight annual-account categories contain sourced or labeled modeled values, and GDP, employment, and wage county-effect models include causal-design metadata."
+      }
     },
     {
       "project_id": "prj_study_im3_building_00844389014",
@@ -322,7 +799,46 @@
       "economic_record_count": 2,
       "reported_actual_count": 0,
       "projection_count": 2,
-      "modeled_synthesis_count": 0
+      "modeled_synthesis_count": 0,
+      "model_completeness": {
+        "status": "incomplete",
+        "required_categories": [
+          "investment",
+          "construction",
+          "suppliers",
+          "operations",
+          "fiscal",
+          "public_costs",
+          "resources",
+          "community"
+        ],
+        "covered_categories": [
+          "investment",
+          "operations"
+        ],
+        "modeled_categories": [],
+        "required_county_outcomes": [
+          "study.modeled_county_employment_effect",
+          "study.modeled_county_gdp_effect",
+          "study.modeled_county_wage_effect"
+        ],
+        "covered_county_outcomes": [],
+        "missing_categories": [
+          "community",
+          "construction",
+          "fiscal",
+          "public_costs",
+          "resources",
+          "suppliers"
+        ],
+        "missing_county_outcomes": [
+          "study.modeled_county_employment_effect",
+          "study.modeled_county_gdp_effect",
+          "study.modeled_county_wage_effect"
+        ],
+        "direct_evidence_gap_count": 8,
+        "definition": "All eight annual-account categories contain sourced or labeled modeled values, and GDP, employment, and wage county-effect models include causal-design metadata."
+      }
     },
     {
       "project_id": "prj_study_im3_building_00610827836",
@@ -345,7 +861,46 @@
       "economic_record_count": 1,
       "reported_actual_count": 0,
       "projection_count": 1,
-      "modeled_synthesis_count": 0
+      "modeled_synthesis_count": 0,
+      "model_completeness": {
+        "status": "incomplete",
+        "required_categories": [
+          "investment",
+          "construction",
+          "suppliers",
+          "operations",
+          "fiscal",
+          "public_costs",
+          "resources",
+          "community"
+        ],
+        "covered_categories": [
+          "investment"
+        ],
+        "modeled_categories": [],
+        "required_county_outcomes": [
+          "study.modeled_county_employment_effect",
+          "study.modeled_county_gdp_effect",
+          "study.modeled_county_wage_effect"
+        ],
+        "covered_county_outcomes": [],
+        "missing_categories": [
+          "community",
+          "construction",
+          "fiscal",
+          "operations",
+          "public_costs",
+          "resources",
+          "suppliers"
+        ],
+        "missing_county_outcomes": [
+          "study.modeled_county_employment_effect",
+          "study.modeled_county_gdp_effect",
+          "study.modeled_county_wage_effect"
+        ],
+        "direct_evidence_gap_count": 8,
+        "definition": "All eight annual-account categories contain sourced or labeled modeled values, and GDP, employment, and wage county-effect models include causal-design metadata."
+      }
     },
     {
       "project_id": "prj_study_im3_building_00499403180",
@@ -368,7 +923,46 @@
       "economic_record_count": 1,
       "reported_actual_count": 1,
       "projection_count": 0,
-      "modeled_synthesis_count": 0
+      "modeled_synthesis_count": 0,
+      "model_completeness": {
+        "status": "incomplete",
+        "required_categories": [
+          "investment",
+          "construction",
+          "suppliers",
+          "operations",
+          "fiscal",
+          "public_costs",
+          "resources",
+          "community"
+        ],
+        "covered_categories": [
+          "investment"
+        ],
+        "modeled_categories": [],
+        "required_county_outcomes": [
+          "study.modeled_county_employment_effect",
+          "study.modeled_county_gdp_effect",
+          "study.modeled_county_wage_effect"
+        ],
+        "covered_county_outcomes": [],
+        "missing_categories": [
+          "community",
+          "construction",
+          "fiscal",
+          "operations",
+          "public_costs",
+          "resources",
+          "suppliers"
+        ],
+        "missing_county_outcomes": [
+          "study.modeled_county_employment_effect",
+          "study.modeled_county_gdp_effect",
+          "study.modeled_county_wage_effect"
+        ],
+        "direct_evidence_gap_count": 8,
+        "definition": "All eight annual-account categories contain sourced or labeled modeled values, and GDP, employment, and wage county-effect models include causal-design metadata."
+      }
     },
     {
       "project_id": "prj_study_im3_building_00364289074",
@@ -391,7 +985,46 @@
       "economic_record_count": 6,
       "reported_actual_count": 1,
       "projection_count": 5,
-      "modeled_synthesis_count": 0
+      "modeled_synthesis_count": 0,
+      "model_completeness": {
+        "status": "incomplete",
+        "required_categories": [
+          "investment",
+          "construction",
+          "suppliers",
+          "operations",
+          "fiscal",
+          "public_costs",
+          "resources",
+          "community"
+        ],
+        "covered_categories": [
+          "fiscal",
+          "investment",
+          "operations",
+          "public_costs"
+        ],
+        "modeled_categories": [],
+        "required_county_outcomes": [
+          "study.modeled_county_employment_effect",
+          "study.modeled_county_gdp_effect",
+          "study.modeled_county_wage_effect"
+        ],
+        "covered_county_outcomes": [],
+        "missing_categories": [
+          "community",
+          "construction",
+          "resources",
+          "suppliers"
+        ],
+        "missing_county_outcomes": [
+          "study.modeled_county_employment_effect",
+          "study.modeled_county_gdp_effect",
+          "study.modeled_county_wage_effect"
+        ],
+        "direct_evidence_gap_count": 8,
+        "definition": "All eight annual-account categories contain sourced or labeled modeled values, and GDP, employment, and wage county-effect models include causal-design metadata."
+      }
     },
     {
       "project_id": "prj_study_im3_point_06685432442",
@@ -414,7 +1047,54 @@
       "economic_record_count": 79,
       "reported_actual_count": 72,
       "projection_count": 7,
-      "modeled_synthesis_count": 20
+      "modeled_synthesis_count": 34,
+      "model_completeness": {
+        "status": "full_modeled_account",
+        "required_categories": [
+          "investment",
+          "construction",
+          "suppliers",
+          "operations",
+          "fiscal",
+          "public_costs",
+          "resources",
+          "community"
+        ],
+        "covered_categories": [
+          "community",
+          "construction",
+          "fiscal",
+          "investment",
+          "operations",
+          "public_costs",
+          "resources",
+          "suppliers"
+        ],
+        "modeled_categories": [
+          "community",
+          "construction",
+          "fiscal",
+          "investment",
+          "operations",
+          "public_costs",
+          "resources",
+          "suppliers"
+        ],
+        "required_county_outcomes": [
+          "study.modeled_county_employment_effect",
+          "study.modeled_county_gdp_effect",
+          "study.modeled_county_wage_effect"
+        ],
+        "covered_county_outcomes": [
+          "study.modeled_county_employment_effect",
+          "study.modeled_county_gdp_effect",
+          "study.modeled_county_wage_effect"
+        ],
+        "missing_categories": [],
+        "missing_county_outcomes": [],
+        "direct_evidence_gap_count": 8,
+        "definition": "All eight annual-account categories contain sourced or labeled modeled values, and GDP, employment, and wage county-effect models include causal-design metadata."
+      }
     },
     {
       "project_id": "prj_study_im3_building_00172739953",
@@ -437,7 +1117,46 @@
       "economic_record_count": 10,
       "reported_actual_count": 10,
       "projection_count": 0,
-      "modeled_synthesis_count": 0
+      "modeled_synthesis_count": 0,
+      "model_completeness": {
+        "status": "incomplete",
+        "required_categories": [
+          "investment",
+          "construction",
+          "suppliers",
+          "operations",
+          "fiscal",
+          "public_costs",
+          "resources",
+          "community"
+        ],
+        "covered_categories": [
+          "fiscal",
+          "investment"
+        ],
+        "modeled_categories": [],
+        "required_county_outcomes": [
+          "study.modeled_county_employment_effect",
+          "study.modeled_county_gdp_effect",
+          "study.modeled_county_wage_effect"
+        ],
+        "covered_county_outcomes": [],
+        "missing_categories": [
+          "community",
+          "construction",
+          "operations",
+          "public_costs",
+          "resources",
+          "suppliers"
+        ],
+        "missing_county_outcomes": [
+          "study.modeled_county_employment_effect",
+          "study.modeled_county_gdp_effect",
+          "study.modeled_county_wage_effect"
+        ],
+        "direct_evidence_gap_count": 8,
+        "definition": "All eight annual-account categories contain sourced or labeled modeled values, and GDP, employment, and wage county-effect models include causal-design metadata."
+      }
     },
     {
       "project_id": "prj_study_im3_building_00978934687",
@@ -460,7 +1179,54 @@
       "economic_record_count": 113,
       "reported_actual_count": 103,
       "projection_count": 10,
-      "modeled_synthesis_count": 37
+      "modeled_synthesis_count": 43,
+      "model_completeness": {
+        "status": "full_modeled_account",
+        "required_categories": [
+          "investment",
+          "construction",
+          "suppliers",
+          "operations",
+          "fiscal",
+          "public_costs",
+          "resources",
+          "community"
+        ],
+        "covered_categories": [
+          "community",
+          "construction",
+          "fiscal",
+          "investment",
+          "operations",
+          "public_costs",
+          "resources",
+          "suppliers"
+        ],
+        "modeled_categories": [
+          "community",
+          "construction",
+          "fiscal",
+          "investment",
+          "operations",
+          "public_costs",
+          "resources",
+          "suppliers"
+        ],
+        "required_county_outcomes": [
+          "study.modeled_county_employment_effect",
+          "study.modeled_county_gdp_effect",
+          "study.modeled_county_wage_effect"
+        ],
+        "covered_county_outcomes": [
+          "study.modeled_county_employment_effect",
+          "study.modeled_county_gdp_effect",
+          "study.modeled_county_wage_effect"
+        ],
+        "missing_categories": [],
+        "missing_county_outcomes": [],
+        "direct_evidence_gap_count": 8,
+        "definition": "All eight annual-account categories contain sourced or labeled modeled values, and GDP, employment, and wage county-effect models include causal-design metadata."
+      }
     },
     {
       "project_id": "prj_study_im3_building_00838817907",
@@ -483,7 +1249,46 @@
       "economic_record_count": 42,
       "reported_actual_count": 42,
       "projection_count": 0,
-      "modeled_synthesis_count": 0
+      "modeled_synthesis_count": 0,
+      "model_completeness": {
+        "status": "incomplete",
+        "required_categories": [
+          "investment",
+          "construction",
+          "suppliers",
+          "operations",
+          "fiscal",
+          "public_costs",
+          "resources",
+          "community"
+        ],
+        "covered_categories": [
+          "fiscal"
+        ],
+        "modeled_categories": [],
+        "required_county_outcomes": [
+          "study.modeled_county_employment_effect",
+          "study.modeled_county_gdp_effect",
+          "study.modeled_county_wage_effect"
+        ],
+        "covered_county_outcomes": [],
+        "missing_categories": [
+          "community",
+          "construction",
+          "investment",
+          "operations",
+          "public_costs",
+          "resources",
+          "suppliers"
+        ],
+        "missing_county_outcomes": [
+          "study.modeled_county_employment_effect",
+          "study.modeled_county_gdp_effect",
+          "study.modeled_county_wage_effect"
+        ],
+        "direct_evidence_gap_count": 8,
+        "definition": "All eight annual-account categories contain sourced or labeled modeled values, and GDP, employment, and wage county-effect models include causal-design metadata."
+      }
     },
     {
       "project_id": "prj_study_im3_building_00388148510",
@@ -506,7 +1311,46 @@
       "economic_record_count": 24,
       "reported_actual_count": 24,
       "projection_count": 0,
-      "modeled_synthesis_count": 0
+      "modeled_synthesis_count": 0,
+      "model_completeness": {
+        "status": "incomplete",
+        "required_categories": [
+          "investment",
+          "construction",
+          "suppliers",
+          "operations",
+          "fiscal",
+          "public_costs",
+          "resources",
+          "community"
+        ],
+        "covered_categories": [
+          "fiscal"
+        ],
+        "modeled_categories": [],
+        "required_county_outcomes": [
+          "study.modeled_county_employment_effect",
+          "study.modeled_county_gdp_effect",
+          "study.modeled_county_wage_effect"
+        ],
+        "covered_county_outcomes": [],
+        "missing_categories": [
+          "community",
+          "construction",
+          "investment",
+          "operations",
+          "public_costs",
+          "resources",
+          "suppliers"
+        ],
+        "missing_county_outcomes": [
+          "study.modeled_county_employment_effect",
+          "study.modeled_county_gdp_effect",
+          "study.modeled_county_wage_effect"
+        ],
+        "direct_evidence_gap_count": 8,
+        "definition": "All eight annual-account categories contain sourced or labeled modeled values, and GDP, employment, and wage county-effect models include causal-design metadata."
+      }
     },
     {
       "project_id": "prj_study_im3_building_00052227492",
@@ -529,7 +1373,46 @@
       "economic_record_count": 9,
       "reported_actual_count": 9,
       "projection_count": 0,
-      "modeled_synthesis_count": 0
+      "modeled_synthesis_count": 0,
+      "model_completeness": {
+        "status": "incomplete",
+        "required_categories": [
+          "investment",
+          "construction",
+          "suppliers",
+          "operations",
+          "fiscal",
+          "public_costs",
+          "resources",
+          "community"
+        ],
+        "covered_categories": [
+          "fiscal",
+          "public_costs"
+        ],
+        "modeled_categories": [],
+        "required_county_outcomes": [
+          "study.modeled_county_employment_effect",
+          "study.modeled_county_gdp_effect",
+          "study.modeled_county_wage_effect"
+        ],
+        "covered_county_outcomes": [],
+        "missing_categories": [
+          "community",
+          "construction",
+          "investment",
+          "operations",
+          "resources",
+          "suppliers"
+        ],
+        "missing_county_outcomes": [
+          "study.modeled_county_employment_effect",
+          "study.modeled_county_gdp_effect",
+          "study.modeled_county_wage_effect"
+        ],
+        "direct_evidence_gap_count": 8,
+        "definition": "All eight annual-account categories contain sourced or labeled modeled values, and GDP, employment, and wage county-effect models include causal-design metadata."
+      }
     },
     {
       "project_id": "prj_study_im3_building_00903236619",
@@ -552,7 +1435,46 @@
       "economic_record_count": 4,
       "reported_actual_count": 4,
       "projection_count": 0,
-      "modeled_synthesis_count": 0
+      "modeled_synthesis_count": 0,
+      "model_completeness": {
+        "status": "incomplete",
+        "required_categories": [
+          "investment",
+          "construction",
+          "suppliers",
+          "operations",
+          "fiscal",
+          "public_costs",
+          "resources",
+          "community"
+        ],
+        "covered_categories": [
+          "fiscal"
+        ],
+        "modeled_categories": [],
+        "required_county_outcomes": [
+          "study.modeled_county_employment_effect",
+          "study.modeled_county_gdp_effect",
+          "study.modeled_county_wage_effect"
+        ],
+        "covered_county_outcomes": [],
+        "missing_categories": [
+          "community",
+          "construction",
+          "investment",
+          "operations",
+          "public_costs",
+          "resources",
+          "suppliers"
+        ],
+        "missing_county_outcomes": [
+          "study.modeled_county_employment_effect",
+          "study.modeled_county_gdp_effect",
+          "study.modeled_county_wage_effect"
+        ],
+        "direct_evidence_gap_count": 8,
+        "definition": "All eight annual-account categories contain sourced or labeled modeled values, and GDP, employment, and wage county-effect models include causal-design metadata."
+      }
     },
     {
       "project_id": "prj_study_im3_building_00214321737",
@@ -575,7 +1497,46 @@
       "economic_record_count": 2,
       "reported_actual_count": 0,
       "projection_count": 2,
-      "modeled_synthesis_count": 0
+      "modeled_synthesis_count": 0,
+      "model_completeness": {
+        "status": "incomplete",
+        "required_categories": [
+          "investment",
+          "construction",
+          "suppliers",
+          "operations",
+          "fiscal",
+          "public_costs",
+          "resources",
+          "community"
+        ],
+        "covered_categories": [
+          "fiscal",
+          "investment"
+        ],
+        "modeled_categories": [],
+        "required_county_outcomes": [
+          "study.modeled_county_employment_effect",
+          "study.modeled_county_gdp_effect",
+          "study.modeled_county_wage_effect"
+        ],
+        "covered_county_outcomes": [],
+        "missing_categories": [
+          "community",
+          "construction",
+          "operations",
+          "public_costs",
+          "resources",
+          "suppliers"
+        ],
+        "missing_county_outcomes": [
+          "study.modeled_county_employment_effect",
+          "study.modeled_county_gdp_effect",
+          "study.modeled_county_wage_effect"
+        ],
+        "direct_evidence_gap_count": 8,
+        "definition": "All eight annual-account categories contain sourced or labeled modeled values, and GDP, employment, and wage county-effect models include causal-design metadata."
+      }
     },
     {
       "project_id": "prj_study_im3_building_00377585075",
@@ -598,7 +1559,46 @@
       "economic_record_count": 48,
       "reported_actual_count": 44,
       "projection_count": 4,
-      "modeled_synthesis_count": 0
+      "modeled_synthesis_count": 0,
+      "model_completeness": {
+        "status": "incomplete",
+        "required_categories": [
+          "investment",
+          "construction",
+          "suppliers",
+          "operations",
+          "fiscal",
+          "public_costs",
+          "resources",
+          "community"
+        ],
+        "covered_categories": [
+          "fiscal",
+          "investment",
+          "operations"
+        ],
+        "modeled_categories": [],
+        "required_county_outcomes": [
+          "study.modeled_county_employment_effect",
+          "study.modeled_county_gdp_effect",
+          "study.modeled_county_wage_effect"
+        ],
+        "covered_county_outcomes": [],
+        "missing_categories": [
+          "community",
+          "construction",
+          "public_costs",
+          "resources",
+          "suppliers"
+        ],
+        "missing_county_outcomes": [
+          "study.modeled_county_employment_effect",
+          "study.modeled_county_gdp_effect",
+          "study.modeled_county_wage_effect"
+        ],
+        "direct_evidence_gap_count": 8,
+        "definition": "All eight annual-account categories contain sourced or labeled modeled values, and GDP, employment, and wage county-effect models include causal-design metadata."
+      }
     },
     {
       "project_id": "prj_study_im3_building_00888253616",
@@ -621,7 +1621,46 @@
       "economic_record_count": 4,
       "reported_actual_count": 2,
       "projection_count": 2,
-      "modeled_synthesis_count": 0
+      "modeled_synthesis_count": 0,
+      "model_completeness": {
+        "status": "incomplete",
+        "required_categories": [
+          "investment",
+          "construction",
+          "suppliers",
+          "operations",
+          "fiscal",
+          "public_costs",
+          "resources",
+          "community"
+        ],
+        "covered_categories": [
+          "fiscal",
+          "operations",
+          "resources"
+        ],
+        "modeled_categories": [],
+        "required_county_outcomes": [
+          "study.modeled_county_employment_effect",
+          "study.modeled_county_gdp_effect",
+          "study.modeled_county_wage_effect"
+        ],
+        "covered_county_outcomes": [],
+        "missing_categories": [
+          "community",
+          "construction",
+          "investment",
+          "public_costs",
+          "suppliers"
+        ],
+        "missing_county_outcomes": [
+          "study.modeled_county_employment_effect",
+          "study.modeled_county_gdp_effect",
+          "study.modeled_county_wage_effect"
+        ],
+        "direct_evidence_gap_count": 8,
+        "definition": "All eight annual-account categories contain sourced or labeled modeled values, and GDP, employment, and wage county-effect models include causal-design metadata."
+      }
     },
     {
       "project_id": "prj_study_im3_building_00664938835",
@@ -644,7 +1683,46 @@
       "economic_record_count": 7,
       "reported_actual_count": 6,
       "projection_count": 1,
-      "modeled_synthesis_count": 0
+      "modeled_synthesis_count": 0,
+      "model_completeness": {
+        "status": "incomplete",
+        "required_categories": [
+          "investment",
+          "construction",
+          "suppliers",
+          "operations",
+          "fiscal",
+          "public_costs",
+          "resources",
+          "community"
+        ],
+        "covered_categories": [
+          "construction",
+          "fiscal",
+          "operations"
+        ],
+        "modeled_categories": [],
+        "required_county_outcomes": [
+          "study.modeled_county_employment_effect",
+          "study.modeled_county_gdp_effect",
+          "study.modeled_county_wage_effect"
+        ],
+        "covered_county_outcomes": [],
+        "missing_categories": [
+          "community",
+          "investment",
+          "public_costs",
+          "resources",
+          "suppliers"
+        ],
+        "missing_county_outcomes": [
+          "study.modeled_county_employment_effect",
+          "study.modeled_county_gdp_effect",
+          "study.modeled_county_wage_effect"
+        ],
+        "direct_evidence_gap_count": 8,
+        "definition": "All eight annual-account categories contain sourced or labeled modeled values, and GDP, employment, and wage county-effect models include causal-design metadata."
+      }
     },
     {
       "project_id": "prj_study_im3_point_09190480200",
@@ -667,7 +1745,46 @@
       "economic_record_count": 46,
       "reported_actual_count": 46,
       "projection_count": 0,
-      "modeled_synthesis_count": 0
+      "modeled_synthesis_count": 0,
+      "model_completeness": {
+        "status": "incomplete",
+        "required_categories": [
+          "investment",
+          "construction",
+          "suppliers",
+          "operations",
+          "fiscal",
+          "public_costs",
+          "resources",
+          "community"
+        ],
+        "covered_categories": [
+          "fiscal"
+        ],
+        "modeled_categories": [],
+        "required_county_outcomes": [
+          "study.modeled_county_employment_effect",
+          "study.modeled_county_gdp_effect",
+          "study.modeled_county_wage_effect"
+        ],
+        "covered_county_outcomes": [],
+        "missing_categories": [
+          "community",
+          "construction",
+          "investment",
+          "operations",
+          "public_costs",
+          "resources",
+          "suppliers"
+        ],
+        "missing_county_outcomes": [
+          "study.modeled_county_employment_effect",
+          "study.modeled_county_gdp_effect",
+          "study.modeled_county_wage_effect"
+        ],
+        "direct_evidence_gap_count": 8,
+        "definition": "All eight annual-account categories contain sourced or labeled modeled values, and GDP, employment, and wage county-effect models include causal-design metadata."
+      }
     },
     {
       "project_id": "prj_study_im3_building_00359930465",
@@ -690,7 +1807,46 @@
       "economic_record_count": 1,
       "reported_actual_count": 0,
       "projection_count": 1,
-      "modeled_synthesis_count": 0
+      "modeled_synthesis_count": 0,
+      "model_completeness": {
+        "status": "incomplete",
+        "required_categories": [
+          "investment",
+          "construction",
+          "suppliers",
+          "operations",
+          "fiscal",
+          "public_costs",
+          "resources",
+          "community"
+        ],
+        "covered_categories": [
+          "investment"
+        ],
+        "modeled_categories": [],
+        "required_county_outcomes": [
+          "study.modeled_county_employment_effect",
+          "study.modeled_county_gdp_effect",
+          "study.modeled_county_wage_effect"
+        ],
+        "covered_county_outcomes": [],
+        "missing_categories": [
+          "community",
+          "construction",
+          "fiscal",
+          "operations",
+          "public_costs",
+          "resources",
+          "suppliers"
+        ],
+        "missing_county_outcomes": [
+          "study.modeled_county_employment_effect",
+          "study.modeled_county_gdp_effect",
+          "study.modeled_county_wage_effect"
+        ],
+        "direct_evidence_gap_count": 8,
+        "definition": "All eight annual-account categories contain sourced or labeled modeled values, and GDP, employment, and wage county-effect models include causal-design metadata."
+      }
     },
     {
       "project_id": "prj_study_im3_building_00598261190",
@@ -713,7 +1869,46 @@
       "economic_record_count": 25,
       "reported_actual_count": 25,
       "projection_count": 0,
-      "modeled_synthesis_count": 0
+      "modeled_synthesis_count": 0,
+      "model_completeness": {
+        "status": "incomplete",
+        "required_categories": [
+          "investment",
+          "construction",
+          "suppliers",
+          "operations",
+          "fiscal",
+          "public_costs",
+          "resources",
+          "community"
+        ],
+        "covered_categories": [
+          "fiscal",
+          "investment"
+        ],
+        "modeled_categories": [],
+        "required_county_outcomes": [
+          "study.modeled_county_employment_effect",
+          "study.modeled_county_gdp_effect",
+          "study.modeled_county_wage_effect"
+        ],
+        "covered_county_outcomes": [],
+        "missing_categories": [
+          "community",
+          "construction",
+          "operations",
+          "public_costs",
+          "resources",
+          "suppliers"
+        ],
+        "missing_county_outcomes": [
+          "study.modeled_county_employment_effect",
+          "study.modeled_county_gdp_effect",
+          "study.modeled_county_wage_effect"
+        ],
+        "direct_evidence_gap_count": 8,
+        "definition": "All eight annual-account categories contain sourced or labeled modeled values, and GDP, employment, and wage county-effect models include causal-design metadata."
+      }
     },
     {
       "project_id": "prj_study_im3_building_00472761713",
@@ -736,7 +1931,46 @@
       "economic_record_count": 7,
       "reported_actual_count": 7,
       "projection_count": 0,
-      "modeled_synthesis_count": 0
+      "modeled_synthesis_count": 0,
+      "model_completeness": {
+        "status": "incomplete",
+        "required_categories": [
+          "investment",
+          "construction",
+          "suppliers",
+          "operations",
+          "fiscal",
+          "public_costs",
+          "resources",
+          "community"
+        ],
+        "covered_categories": [
+          "fiscal"
+        ],
+        "modeled_categories": [],
+        "required_county_outcomes": [
+          "study.modeled_county_employment_effect",
+          "study.modeled_county_gdp_effect",
+          "study.modeled_county_wage_effect"
+        ],
+        "covered_county_outcomes": [],
+        "missing_categories": [
+          "community",
+          "construction",
+          "investment",
+          "operations",
+          "public_costs",
+          "resources",
+          "suppliers"
+        ],
+        "missing_county_outcomes": [
+          "study.modeled_county_employment_effect",
+          "study.modeled_county_gdp_effect",
+          "study.modeled_county_wage_effect"
+        ],
+        "direct_evidence_gap_count": 8,
+        "definition": "All eight annual-account categories contain sourced or labeled modeled values, and GDP, employment, and wage county-effect models include causal-design metadata."
+      }
     },
     {
       "project_id": "prj_study_im3_campus_00009474864",
@@ -759,7 +1993,46 @@
       "economic_record_count": 1,
       "reported_actual_count": 0,
       "projection_count": 1,
-      "modeled_synthesis_count": 0
+      "modeled_synthesis_count": 0,
+      "model_completeness": {
+        "status": "incomplete",
+        "required_categories": [
+          "investment",
+          "construction",
+          "suppliers",
+          "operations",
+          "fiscal",
+          "public_costs",
+          "resources",
+          "community"
+        ],
+        "covered_categories": [
+          "investment"
+        ],
+        "modeled_categories": [],
+        "required_county_outcomes": [
+          "study.modeled_county_employment_effect",
+          "study.modeled_county_gdp_effect",
+          "study.modeled_county_wage_effect"
+        ],
+        "covered_county_outcomes": [],
+        "missing_categories": [
+          "community",
+          "construction",
+          "fiscal",
+          "operations",
+          "public_costs",
+          "resources",
+          "suppliers"
+        ],
+        "missing_county_outcomes": [
+          "study.modeled_county_employment_effect",
+          "study.modeled_county_gdp_effect",
+          "study.modeled_county_wage_effect"
+        ],
+        "direct_evidence_gap_count": 8,
+        "definition": "All eight annual-account categories contain sourced or labeled modeled values, and GDP, employment, and wage county-effect models include causal-design metadata."
+      }
     },
     {
       "project_id": "prj_study_im3_campus_00019988712",
@@ -782,7 +2055,46 @@
       "economic_record_count": 2,
       "reported_actual_count": 2,
       "projection_count": 0,
-      "modeled_synthesis_count": 0
+      "modeled_synthesis_count": 0,
+      "model_completeness": {
+        "status": "incomplete",
+        "required_categories": [
+          "investment",
+          "construction",
+          "suppliers",
+          "operations",
+          "fiscal",
+          "public_costs",
+          "resources",
+          "community"
+        ],
+        "covered_categories": [
+          "construction",
+          "operations"
+        ],
+        "modeled_categories": [],
+        "required_county_outcomes": [
+          "study.modeled_county_employment_effect",
+          "study.modeled_county_gdp_effect",
+          "study.modeled_county_wage_effect"
+        ],
+        "covered_county_outcomes": [],
+        "missing_categories": [
+          "community",
+          "fiscal",
+          "investment",
+          "public_costs",
+          "resources",
+          "suppliers"
+        ],
+        "missing_county_outcomes": [
+          "study.modeled_county_employment_effect",
+          "study.modeled_county_gdp_effect",
+          "study.modeled_county_wage_effect"
+        ],
+        "direct_evidence_gap_count": 8,
+        "definition": "All eight annual-account categories contain sourced or labeled modeled values, and GDP, employment, and wage county-effect models include causal-design metadata."
+      }
     },
     {
       "project_id": "prj_study_im3_campus_00231769626",
@@ -805,7 +2117,46 @@
       "economic_record_count": 13,
       "reported_actual_count": 13,
       "projection_count": 0,
-      "modeled_synthesis_count": 0
+      "modeled_synthesis_count": 0,
+      "model_completeness": {
+        "status": "incomplete",
+        "required_categories": [
+          "investment",
+          "construction",
+          "suppliers",
+          "operations",
+          "fiscal",
+          "public_costs",
+          "resources",
+          "community"
+        ],
+        "covered_categories": [
+          "fiscal",
+          "investment"
+        ],
+        "modeled_categories": [],
+        "required_county_outcomes": [
+          "study.modeled_county_employment_effect",
+          "study.modeled_county_gdp_effect",
+          "study.modeled_county_wage_effect"
+        ],
+        "covered_county_outcomes": [],
+        "missing_categories": [
+          "community",
+          "construction",
+          "operations",
+          "public_costs",
+          "resources",
+          "suppliers"
+        ],
+        "missing_county_outcomes": [
+          "study.modeled_county_employment_effect",
+          "study.modeled_county_gdp_effect",
+          "study.modeled_county_wage_effect"
+        ],
+        "direct_evidence_gap_count": 8,
+        "definition": "All eight annual-account categories contain sourced or labeled modeled values, and GDP, employment, and wage county-effect models include causal-design metadata."
+      }
     },
     {
       "project_id": "prj_study_im3_campus_00578435601",
@@ -828,7 +2179,46 @@
       "economic_record_count": 4,
       "reported_actual_count": 4,
       "projection_count": 0,
-      "modeled_synthesis_count": 0
+      "modeled_synthesis_count": 0,
+      "model_completeness": {
+        "status": "incomplete",
+        "required_categories": [
+          "investment",
+          "construction",
+          "suppliers",
+          "operations",
+          "fiscal",
+          "public_costs",
+          "resources",
+          "community"
+        ],
+        "covered_categories": [
+          "fiscal"
+        ],
+        "modeled_categories": [],
+        "required_county_outcomes": [
+          "study.modeled_county_employment_effect",
+          "study.modeled_county_gdp_effect",
+          "study.modeled_county_wage_effect"
+        ],
+        "covered_county_outcomes": [],
+        "missing_categories": [
+          "community",
+          "construction",
+          "investment",
+          "operations",
+          "public_costs",
+          "resources",
+          "suppliers"
+        ],
+        "missing_county_outcomes": [
+          "study.modeled_county_employment_effect",
+          "study.modeled_county_gdp_effect",
+          "study.modeled_county_wage_effect"
+        ],
+        "direct_evidence_gap_count": 8,
+        "definition": "All eight annual-account categories contain sourced or labeled modeled values, and GDP, employment, and wage county-effect models include causal-design metadata."
+      }
     },
     {
       "project_id": "prj_study_im3_campus_00675108684",
@@ -851,7 +2241,46 @@
       "economic_record_count": 2,
       "reported_actual_count": 2,
       "projection_count": 0,
-      "modeled_synthesis_count": 0
+      "modeled_synthesis_count": 0,
+      "model_completeness": {
+        "status": "incomplete",
+        "required_categories": [
+          "investment",
+          "construction",
+          "suppliers",
+          "operations",
+          "fiscal",
+          "public_costs",
+          "resources",
+          "community"
+        ],
+        "covered_categories": [
+          "fiscal",
+          "public_costs"
+        ],
+        "modeled_categories": [],
+        "required_county_outcomes": [
+          "study.modeled_county_employment_effect",
+          "study.modeled_county_gdp_effect",
+          "study.modeled_county_wage_effect"
+        ],
+        "covered_county_outcomes": [],
+        "missing_categories": [
+          "community",
+          "construction",
+          "investment",
+          "operations",
+          "resources",
+          "suppliers"
+        ],
+        "missing_county_outcomes": [
+          "study.modeled_county_employment_effect",
+          "study.modeled_county_gdp_effect",
+          "study.modeled_county_wage_effect"
+        ],
+        "direct_evidence_gap_count": 8,
+        "definition": "All eight annual-account categories contain sourced or labeled modeled values, and GDP, employment, and wage county-effect models include causal-design metadata."
+      }
     }
   ]
 }

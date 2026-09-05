@@ -159,16 +159,16 @@
       ],
       "properties": {
         "construction": {
-          "const": "not_assessed"
+          "enum": ["not_assessed", "modeled_available"]
         },
         "operations": {
-          "const": "not_assessed"
+          "enum": ["not_assessed", "modeled_available"]
         },
         "fiscal": {
-          "const": "not_assessed"
+          "enum": ["not_assessed", "modeled_available"]
         },
         "causal": {
-          "const": "not_assessed"
+          "enum": ["not_assessed", "causal_model_available"]
         }
       },
       "additionalProperties": false
@@ -278,7 +278,8 @@
         "economic_record_count",
         "reported_actual_count",
         "projection_count",
-        "modeled_synthesis_count"
+        "modeled_synthesis_count",
+        "model_completeness"
       ],
       "properties": {
         "project_id": {
@@ -371,8 +372,32 @@
         "modeled_synthesis_count": {
           "type": "integer",
           "minimum": 0
+        },
+        "model_completeness": {
+          "$ref": "#/$defs/model_completeness"
         }
       }
+    },
+    "model_completeness": {
+      "type": "object",
+      "required": [
+        "status", "required_categories", "covered_categories", "modeled_categories",
+        "required_county_outcomes", "covered_county_outcomes", "missing_categories",
+        "missing_county_outcomes", "direct_evidence_gap_count", "definition"
+      ],
+      "properties": {
+        "status": { "enum": ["full_modeled_account", "incomplete"] },
+        "required_categories": { "type": "array", "minItems": 8, "maxItems": 8, "uniqueItems": true, "items": { "type": "string" } },
+        "covered_categories": { "type": "array", "uniqueItems": true, "items": { "type": "string" } },
+        "modeled_categories": { "type": "array", "uniqueItems": true, "items": { "type": "string" } },
+        "required_county_outcomes": { "type": "array", "minItems": 3, "maxItems": 3, "uniqueItems": true, "items": { "type": "string" } },
+        "covered_county_outcomes": { "type": "array", "uniqueItems": true, "items": { "type": "string" } },
+        "missing_categories": { "type": "array", "uniqueItems": true, "items": { "type": "string" } },
+        "missing_county_outcomes": { "type": "array", "uniqueItems": true, "items": { "type": "string" } },
+        "direct_evidence_gap_count": { "type": "integer", "minimum": 0, "maximum": 8 },
+        "definition": { "type": "string", "minLength": 1 }
+      },
+      "additionalProperties": false
     }
   }
 }

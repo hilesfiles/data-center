@@ -20,6 +20,20 @@ export interface StudyProjectSummary {
   reported_actual_count: number;
   projection_count: number;
   modeled_synthesis_count: number;
+  model_completeness: ModelCompleteness;
+}
+
+export interface ModelCompleteness {
+  status: "full_modeled_account" | "incomplete";
+  required_categories: string[];
+  covered_categories: string[];
+  modeled_categories: string[];
+  required_county_outcomes: string[];
+  covered_county_outcomes: string[];
+  missing_categories: string[];
+  missing_county_outcomes: string[];
+  direct_evidence_gap_count: number;
+  definition: string;
 }
 
 export interface StudyIndex {
@@ -30,6 +44,7 @@ export interface StudyIndex {
   selection_basis: string;
   scope: string;
   economic_evidence_status: "not_yet_collected" | "partial";
+  full_modeled_county_accounts: number;
   modeling_policy_version: string;
   counts: {
     projects: number; counties: number; states: number; campus_targets: number;
@@ -59,7 +74,12 @@ export interface StudyProject extends StudyProjectSummary {
   modeling_policy_version: string;
   research_updates: { project_id: string; source_id: string; as_of: string; title: string; notes: string; source: EconomicSource }[];
   evidence_version: string;
-  analysis_readiness: Record<"construction" | "operations" | "fiscal" | "causal", "not_assessed">;
+  analysis_readiness: {
+    construction: "not_assessed" | "modeled_available";
+    operations: "not_assessed" | "modeled_available";
+    fiscal: "not_assessed" | "modeled_available";
+    causal: "not_assessed" | "causal_model_available";
+  };
   legacy_first_entry_note: string | null;
   scope_note: string;
 }

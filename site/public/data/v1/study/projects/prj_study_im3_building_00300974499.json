@@ -19,10 +19,57 @@
   "economic_record_count": 80,
   "reported_actual_count": 76,
   "projection_count": 4,
-  "modeled_synthesis_count": 13,
+  "modeled_synthesis_count": 27,
+  "model_completeness": {
+    "status": "full_modeled_account",
+    "required_categories": [
+      "investment",
+      "construction",
+      "suppliers",
+      "operations",
+      "fiscal",
+      "public_costs",
+      "resources",
+      "community"
+    ],
+    "covered_categories": [
+      "community",
+      "construction",
+      "fiscal",
+      "investment",
+      "operations",
+      "public_costs",
+      "resources",
+      "suppliers"
+    ],
+    "modeled_categories": [
+      "community",
+      "construction",
+      "fiscal",
+      "investment",
+      "operations",
+      "public_costs",
+      "resources",
+      "suppliers"
+    ],
+    "required_county_outcomes": [
+      "study.modeled_county_employment_effect",
+      "study.modeled_county_gdp_effect",
+      "study.modeled_county_wage_effect"
+    ],
+    "covered_county_outcomes": [
+      "study.modeled_county_employment_effect",
+      "study.modeled_county_gdp_effect",
+      "study.modeled_county_wage_effect"
+    ],
+    "missing_categories": [],
+    "missing_county_outcomes": [],
+    "direct_evidence_gap_count": 8,
+    "definition": "All eight annual-account categories contain sourced or labeled modeled values, and GDP, employment, and wage county-effect models include causal-design metadata."
+  },
   "schema_version": "1.0.0",
-  "release_id": "private-sector-study-1.41.0",
-  "generated_at": "2026-09-05T19:27:12+00:00",
+  "release_id": "private-sector-study-1.42.0",
+  "generated_at": "2026-09-05T20:10:16+00:00",
   "inventory_name": "Apple Data Center",
   "research_value": "Conversion/reuse and subsequent operation; separate predecessor investment from Apple investment.",
   "history": {
@@ -4235,6 +4282,1386 @@
       "presentation": "modeled_not_observed_or_audited",
       "notes": "Potential-savings scenario only. It overlaps the onsite-water benchmark and cannot be subtracted from a reported meter total.",
       "reviewed_on": "2026-09-05"
+    },
+    {
+      "estimate_id": "est_study_full_apple_mesa_annualized_capital",
+      "project_id": "prj_study_im3_building_00300974499",
+      "metric_code": "study.modeled_annualized_capital_spending",
+      "label": "Modeled annualized capital spending",
+      "category": "investment",
+      "unit": "USD_per_year",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 333333333.33,
+      "period": {
+        "kind": "construction_period",
+        "start_date": "2015-01-01",
+        "end_date": "2020-12-31",
+        "label": "Documented development window used for the completed modeled account"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Apple Mesa facility and Maricopa County",
+        "county_fips": "04013",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": 250000000,
+        "central": 333333333.33,
+        "high": 500000000,
+        "interpretation": "Low, central and high values are an explicit sensitivity range, not a statistical confidence interval."
+      },
+      "contribution_channel": "direct",
+      "aggregation": {
+        "aggregation_id": "full_apple_mesa_annualized_capital",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "facility_capital",
+          "value": 2000000000,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_apple_mesa_facility_investment_2020",
+            "detail": "Public capital component retained in the source account"
+          },
+          "transformation": "Included in the summed public capital basis"
+        },
+        {
+          "name": "central_construction_years",
+          "value": 6.00000000006,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Elapsed construction years used only for annualization"
+          },
+          "transformation": "Divides cumulative capital"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The calculation is reproducible but relies on transferred public benchmarks or explicit assumptions where direct local observations are unavailable.",
+      "decision_relevance": "Supplies a comparable annual construction-spending flow.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Audited annual capital ledger and phase allocations"
+      },
+      "derivation": {
+        "method": "sensitivity_analysis",
+        "model_version": "full-county-account-1.0.0",
+        "formula": "sum of public capital components ÷ assumed active construction years",
+        "input_claim_ids": [
+          "clm_study_apple_mesa_facility_investment_2020"
+        ],
+        "input_source_ids": [
+          "src_study_mesa_economic_development_minutes_2020_12_01"
+        ],
+        "assumptions": [
+          "All transferred coefficients and allocation shares are exposed as parameters.",
+          "The estimate must not be presented as observed, audited or source-reported."
+        ]
+      },
+      "limitations": [
+        "Annualization smooths uneven construction phases.",
+        "Does not identify vendor geography or payroll."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Completed modeled field; direct annual records would replace this range.",
+      "reviewed_on": "2026-09-05"
+    },
+    {
+      "estimate_id": "est_study_full_apple_mesa_local_construction_spend",
+      "project_id": "prj_study_im3_building_00300974499",
+      "metric_code": "study.modeled_local_construction_spending",
+      "label": "Modeled local construction spending",
+      "category": "suppliers",
+      "unit": "USD",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 800000000.0,
+      "period": {
+        "kind": "construction_period",
+        "start_date": "2015-01-01",
+        "end_date": "2020-12-31",
+        "label": "Documented development window used for the completed modeled account"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Apple Mesa facility and Maricopa County",
+        "county_fips": "04013",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": 500000000.0,
+        "central": 800000000.0,
+        "high": 1100000000.0,
+        "interpretation": "Low, central and high values are an explicit sensitivity range, not a statistical confidence interval."
+      },
+      "contribution_channel": "direct",
+      "aggregation": {
+        "aggregation_id": "full_apple_mesa_local_construction_spend",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "facility_capital",
+          "value": 2000000000,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_apple_mesa_facility_investment_2020",
+            "detail": "Public capital component retained in the source account"
+          },
+          "transformation": "Included in the summed public capital basis"
+        },
+        {
+          "name": "central_local_share",
+          "value": 0.4,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Explicit local-purchase midpoint"
+          },
+          "transformation": "Allocates capital to host-region suppliers"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The calculation is reproducible but relies on transferred public benchmarks or explicit assumptions where direct local observations are unavailable.",
+      "decision_relevance": "Fills the local-construction-purchase field without treating the allocation as observed.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Audited vendor payments and vendor addresses"
+      },
+      "derivation": {
+        "method": "sensitivity_analysis",
+        "model_version": "full-county-account-1.0.0",
+        "formula": "sum of public capital components × local purchase share",
+        "input_claim_ids": [
+          "clm_study_apple_mesa_facility_investment_2020"
+        ],
+        "input_source_ids": [
+          "src_study_mesa_economic_development_minutes_2020_12_01"
+        ],
+        "assumptions": [
+          "All transferred coefficients and allocation shares are exposed as parameters.",
+          "The estimate must not be presented as observed, audited or source-reported."
+        ]
+      },
+      "limitations": [
+        "The local share is assumed.",
+        "Capital includes equipment that may be purchased outside the county."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Low-confidence local-spending sensitivity.",
+      "reviewed_on": "2026-09-05"
+    },
+    {
+      "estimate_id": "est_study_full_apple_mesa_construction_job_years_total",
+      "project_id": "prj_study_im3_building_00300974499",
+      "metric_code": "study.modeled_construction_job_years_total",
+      "label": "Modeled total construction job-years",
+      "category": "construction",
+      "unit": "job_years",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 17498.2,
+      "period": {
+        "kind": "construction_period",
+        "start_date": "2015-01-01",
+        "end_date": "2020-12-31",
+        "label": "Documented development window used for the completed modeled account"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Apple Mesa facility and Maricopa County",
+        "county_fips": "04013",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": 13123.65,
+        "central": 17498.2,
+        "high": 21872.75,
+        "interpretation": "Low, central and high values are an explicit sensitivity range, not a statistical confidence interval."
+      },
+      "contribution_channel": "total",
+      "aggregation": {
+        "aggregation_id": "full_apple_mesa_construction_job_years_total",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "facility_capital",
+          "value": 2000000000,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_apple_mesa_facility_investment_2020",
+            "detail": "Public capital component retained in the source account"
+          },
+          "transformation": "Included in the summed public capital basis"
+        },
+        {
+          "name": "total_job_years_per_million",
+          "value": 8.7491,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_pwc_data_center_market_2021",
+            "detail": "Prince William construction contribution coefficient"
+          },
+          "transformation": "Multiplies capital in millions"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The calculation is reproducible but relies on transferred public benchmarks or explicit assumptions where direct local observations are unavailable.",
+      "decision_relevance": "Completes the construction employment contribution field.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Project payroll records, worker hours and local residence"
+      },
+      "derivation": {
+        "method": "input_output_multiplier",
+        "model_version": "full-county-account-1.0.0",
+        "formula": "capital scenario × 8.7491 total job-years per $1 million",
+        "input_claim_ids": [
+          "clm_study_apple_mesa_facility_investment_2020"
+        ],
+        "input_source_ids": [
+          "src_study_pwc_data_center_market_2021",
+          "src_study_mesa_economic_development_minutes_2020_12_01"
+        ],
+        "assumptions": [
+          "All transferred coefficients and allocation shares are exposed as parameters.",
+          "The estimate must not be presented as observed, audited or source-reported."
+        ]
+      },
+      "limitations": [
+        "Transferred Virginia coefficient.",
+        "Job-years are not peak workers or permanent jobs."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Contribution estimate, not causal employment.",
+      "reviewed_on": "2026-09-05",
+      "multiplier_provenance": {
+        "source_id": "src_study_pwc_data_center_market_2021",
+        "model_name": "IMPLAN county contribution model reported by BAE",
+        "model_version": "Prince William County prototype-data-center study, 2021-dollar tables 7-8",
+        "geography": "Prince William County, Virginia benchmark transferred to the named host county",
+        "vintage": "IMPLAN model reported December 2021; underlying IMPLAN data vintage not disclosed",
+        "local_purchase_assumption": "The scenario base and local-share assumptions are stated in the record; no unreported local purchase is assumed observed.",
+        "channel_separation": "direct_indirect_induced_reported_separately"
+      }
+    },
+    {
+      "estimate_id": "est_study_full_apple_mesa_construction_labor_income_total",
+      "project_id": "prj_study_im3_building_00300974499",
+      "metric_code": "study.modeled_construction_labor_income_total",
+      "label": "Modeled total construction labor income",
+      "category": "construction",
+      "unit": "USD",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 1058967272.8,
+      "period": {
+        "kind": "construction_period",
+        "start_date": "2015-01-01",
+        "end_date": "2020-12-31",
+        "label": "Documented development window used for the completed modeled account"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Apple Mesa facility and Maricopa County",
+        "county_fips": "04013",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": 794225454.6,
+        "central": 1058967272.8,
+        "high": 1323709091.0,
+        "interpretation": "Low, central and high values are an explicit sensitivity range, not a statistical confidence interval."
+      },
+      "contribution_channel": "total",
+      "aggregation": {
+        "aggregation_id": "full_apple_mesa_construction_labor_income_total",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "facility_capital",
+          "value": 2000000000,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_apple_mesa_facility_investment_2020",
+            "detail": "Public capital component retained in the source account"
+          },
+          "transformation": "Included in the summed public capital basis"
+        },
+        {
+          "name": "total_labor_income_rate",
+          "value": 0.5294836364,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_pwc_data_center_market_2021",
+            "detail": "Prince William construction labor-income coefficient"
+          },
+          "transformation": "Multiplies capital"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The calculation is reproducible but relies on transferred public benchmarks or explicit assumptions where direct local observations are unavailable.",
+      "decision_relevance": "Completes the construction labor-income field.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Audited project payroll and worker residence"
+      },
+      "derivation": {
+        "method": "input_output_multiplier",
+        "model_version": "full-county-account-1.0.0",
+        "formula": "capital scenario × 0.5294836364 total labor-income coefficient",
+        "input_claim_ids": [
+          "clm_study_apple_mesa_facility_investment_2020"
+        ],
+        "input_source_ids": [
+          "src_study_pwc_data_center_market_2021",
+          "src_study_mesa_economic_development_minutes_2020_12_01"
+        ],
+        "assumptions": [
+          "All transferred coefficients and allocation shares are exposed as parameters.",
+          "The estimate must not be presented as observed, audited or source-reported."
+        ]
+      },
+      "limitations": [
+        "Transferred Virginia coefficient.",
+        "Labor income is not additive to output or payroll proxies."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Contribution estimate, not observed payroll.",
+      "reviewed_on": "2026-09-05",
+      "multiplier_provenance": {
+        "source_id": "src_study_pwc_data_center_market_2021",
+        "model_name": "IMPLAN county contribution model reported by BAE",
+        "model_version": "Prince William County prototype-data-center study, 2021-dollar tables 7-8",
+        "geography": "Prince William County, Virginia benchmark transferred to the named host county",
+        "vintage": "IMPLAN model reported December 2021; underlying IMPLAN data vintage not disclosed",
+        "local_purchase_assumption": "The scenario base and local-share assumptions are stated in the record; no unreported local purchase is assumed observed.",
+        "channel_separation": "direct_indirect_induced_reported_separately"
+      }
+    },
+    {
+      "estimate_id": "est_study_full_apple_mesa_operating_fte_total",
+      "project_id": "prj_study_im3_building_00300974499",
+      "metric_code": "study.modeled_operating_fte_total",
+      "label": "Modeled total annual operating FTE",
+      "category": "operations",
+      "unit": "FTE",
+      "measure_type": "stock",
+      "basis": "modeled_synthesis",
+      "value": 796.32,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2024,
+        "label": "Annual operating contribution scenario"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Apple Mesa facility and Maricopa County",
+        "county_fips": "04013",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": 640.84,
+        "central": 796.32,
+        "high": 951.74,
+        "interpretation": "Low, central and high values are an explicit sensitivity range, not a statistical confidence interval."
+      },
+      "contribution_channel": "total",
+      "aggregation": {
+        "aggregation_id": "full_apple_mesa_operating_fte_total",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "direct_fte_central",
+          "value": 121.84,
+          "unit": "FTE",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Central direct-FTE model"
+          },
+          "transformation": "Multiplied by total contribution coefficient"
+        },
+        {
+          "name": "total_fte_per_direct_fte",
+          "value": 6.5358,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_pwc_data_center_market_2021",
+            "detail": "Prince William operating contribution coefficient"
+          },
+          "transformation": "Multiplies direct FTE"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The calculation is reproducible but relies on transferred public benchmarks or explicit assumptions where direct local observations are unavailable.",
+      "decision_relevance": "Completes the annual operating-employment contribution field.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Observed contractor, supplier and induced employment"
+      },
+      "derivation": {
+        "method": "input_output_multiplier",
+        "model_version": "full-county-account-1.0.0",
+        "formula": "direct FTE × 6.5358 total-FTE coefficient",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_pwc_data_center_market_2021"
+        ],
+        "assumptions": [
+          "All transferred coefficients and allocation shares are exposed as parameters.",
+          "The estimate must not be presented as observed, audited or source-reported."
+        ]
+      },
+      "limitations": [
+        "Transferred Virginia coefficient.",
+        "Includes direct, indirect and induced channels and must not be added to them."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Annual contribution scenario.",
+      "reviewed_on": "2026-09-05",
+      "multiplier_provenance": {
+        "source_id": "src_study_pwc_data_center_market_2021",
+        "model_name": "IMPLAN county contribution model reported by BAE",
+        "model_version": "Prince William County prototype-data-center study, 2021-dollar tables 7-8",
+        "geography": "Prince William County, Virginia benchmark transferred to the named host county",
+        "vintage": "IMPLAN model reported December 2021; underlying IMPLAN data vintage not disclosed",
+        "local_purchase_assumption": "The scenario base and local-share assumptions are stated in the record; no unreported local purchase is assumed observed.",
+        "channel_separation": "direct_indirect_induced_reported_separately"
+      }
+    },
+    {
+      "estimate_id": "est_study_full_apple_mesa_operating_labor_income_total",
+      "project_id": "prj_study_im3_building_00300974499",
+      "metric_code": "study.modeled_operating_labor_income_total",
+      "label": "Modeled total annual operating labor income",
+      "category": "operations",
+      "unit": "USD_per_year",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 51355560.0,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2024,
+        "label": "Annual operating labor-income scenario"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Apple Mesa facility and Maricopa County",
+        "county_fips": "04013",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": 41328075.0,
+        "central": 51355560.0,
+        "high": 61378830.0,
+        "interpretation": "Low, central and high values are an explicit sensitivity range, not a statistical confidence interval."
+      },
+      "contribution_channel": "total",
+      "aggregation": {
+        "aggregation_id": "full_apple_mesa_operating_labor_income_total",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "direct_fte_central",
+          "value": 121.84,
+          "unit": "FTE",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Central direct-FTE model"
+          },
+          "transformation": "Multiplied by total labor-income coefficient"
+        },
+        {
+          "name": "total_labor_income_per_direct_fte",
+          "value": 421500,
+          "unit": "USD_per_FTE",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_pwc_data_center_market_2021",
+            "detail": "Prince William operating contribution coefficient"
+          },
+          "transformation": "Multiplies direct FTE"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The calculation is reproducible but relies on transferred public benchmarks or explicit assumptions where direct local observations are unavailable.",
+      "decision_relevance": "Completes the annual operating labor-income field.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Observed direct and supply-chain payroll"
+      },
+      "derivation": {
+        "method": "input_output_multiplier",
+        "model_version": "full-county-account-1.0.0",
+        "formula": "direct FTE × $421,500 total labor income per direct FTE",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_pwc_data_center_market_2021"
+        ],
+        "assumptions": [
+          "All transferred coefficients and allocation shares are exposed as parameters.",
+          "The estimate must not be presented as observed, audited or source-reported."
+        ]
+      },
+      "limitations": [
+        "Transferred Virginia coefficient.",
+        "Not additive to direct payroll or supplier output."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Annual contribution scenario.",
+      "reviewed_on": "2026-09-05",
+      "multiplier_provenance": {
+        "source_id": "src_study_pwc_data_center_market_2021",
+        "model_name": "IMPLAN county contribution model reported by BAE",
+        "model_version": "Prince William County prototype-data-center study, 2021-dollar tables 7-8",
+        "geography": "Prince William County, Virginia benchmark transferred to the named host county",
+        "vintage": "IMPLAN model reported December 2021; underlying IMPLAN data vintage not disclosed",
+        "local_purchase_assumption": "The scenario base and local-share assumptions are stated in the record; no unreported local purchase is assumed observed.",
+        "channel_separation": "direct_indirect_induced_reported_separately"
+      }
+    },
+    {
+      "estimate_id": "est_study_full_apple_mesa_operating_supplier_output",
+      "project_id": "prj_study_im3_building_00300974499",
+      "metric_code": "study.modeled_operating_supplier_output",
+      "label": "Modeled annual operating supplier output",
+      "category": "suppliers",
+      "unit": "USD_per_year",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 77955843.03,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2024,
+        "label": "Annual indirect supplier-output scenario"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Apple Mesa facility and Maricopa County",
+        "county_fips": "04013",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": 62734491.21,
+        "central": 77955843.03,
+        "high": 93170796.64,
+        "interpretation": "Low, central and high values are an explicit sensitivity range, not a statistical confidence interval."
+      },
+      "contribution_channel": "indirect",
+      "aggregation": {
+        "aggregation_id": "full_apple_mesa_operating_supplier_output",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "direct_fte_central",
+          "value": 121.84,
+          "unit": "FTE",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Central direct-FTE model"
+          },
+          "transformation": "Multiplied by indirect supplier-output coefficient"
+        },
+        {
+          "name": "supplier_output_per_direct_fte",
+          "value": 639821.43,
+          "unit": "USD_per_FTE",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_pwc_data_center_market_2021",
+            "detail": "Prince William indirect operating-output coefficient"
+          },
+          "transformation": "Multiplies direct FTE"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The calculation is reproducible but relies on transferred public benchmarks or explicit assumptions where direct local observations are unavailable.",
+      "decision_relevance": "Completes the annual supplier-output field.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Observed supplier purchases and vendor geography"
+      },
+      "derivation": {
+        "method": "input_output_multiplier",
+        "model_version": "full-county-account-1.0.0",
+        "formula": "direct FTE × $639,821.43 indirect output per direct FTE",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_pwc_data_center_market_2021"
+        ],
+        "assumptions": [
+          "All transferred coefficients and allocation shares are exposed as parameters.",
+          "The estimate must not be presented as observed, audited or source-reported."
+        ]
+      },
+      "limitations": [
+        "Transferred Virginia coefficient.",
+        "Output is not vendor payments or local-only purchasing."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Indirect supplier-output scenario.",
+      "reviewed_on": "2026-09-05",
+      "multiplier_provenance": {
+        "source_id": "src_study_pwc_data_center_market_2021",
+        "model_name": "IMPLAN county contribution model reported by BAE",
+        "model_version": "Prince William County prototype-data-center study, 2021-dollar tables 7-8",
+        "geography": "Prince William County, Virginia benchmark transferred to the named host county",
+        "vintage": "IMPLAN model reported December 2021; underlying IMPLAN data vintage not disclosed",
+        "local_purchase_assumption": "The scenario base and local-share assumptions are stated in the record; no unreported local purchase is assumed observed.",
+        "channel_separation": "direct_indirect_induced_reported_separately"
+      }
+    },
+    {
+      "estimate_id": "est_study_full_apple_mesa_household_output",
+      "project_id": "prj_study_im3_building_00300974499",
+      "metric_code": "study.modeled_induced_household_output",
+      "label": "Modeled annual induced household output",
+      "category": "community",
+      "unit": "USD_per_year",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 14368416.97,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2024,
+        "label": "Annual induced household-spending scenario"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Apple Mesa facility and Maricopa County",
+        "county_fips": "04013",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": 11562896.29,
+        "central": 14368416.97,
+        "high": 17172758.36,
+        "interpretation": "Low, central and high values are an explicit sensitivity range, not a statistical confidence interval."
+      },
+      "contribution_channel": "induced",
+      "aggregation": {
+        "aggregation_id": "full_apple_mesa_household_output",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "direct_fte_central",
+          "value": 121.84,
+          "unit": "FTE",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Central direct-FTE model"
+          },
+          "transformation": "Multiplied by induced household-output coefficient"
+        },
+        {
+          "name": "household_output_per_direct_fte",
+          "value": 117928.57,
+          "unit": "USD_per_FTE",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_pwc_data_center_market_2021",
+            "detail": "Prince William induced operating-output coefficient"
+          },
+          "transformation": "Multiplies direct FTE"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The calculation is reproducible but relies on transferred public benchmarks or explicit assumptions where direct local observations are unavailable.",
+      "decision_relevance": "Completes the household-spending contribution field.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Observed household spending and worker residence"
+      },
+      "derivation": {
+        "method": "input_output_multiplier",
+        "model_version": "full-county-account-1.0.0",
+        "formula": "direct FTE × $117,928.57 induced output per direct FTE",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_pwc_data_center_market_2021"
+        ],
+        "assumptions": [
+          "All transferred coefficients and allocation shares are exposed as parameters.",
+          "The estimate must not be presented as observed, audited or source-reported."
+        ]
+      },
+      "limitations": [
+        "Transferred Virginia coefficient.",
+        "Economic output is not a charitable contribution or tax receipt."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Induced household-output scenario.",
+      "reviewed_on": "2026-09-05",
+      "multiplier_provenance": {
+        "source_id": "src_study_pwc_data_center_market_2021",
+        "model_name": "IMPLAN county contribution model reported by BAE",
+        "model_version": "Prince William County prototype-data-center study, 2021-dollar tables 7-8",
+        "geography": "Prince William County, Virginia benchmark transferred to the named host county",
+        "vintage": "IMPLAN model reported December 2021; underlying IMPLAN data vintage not disclosed",
+        "local_purchase_assumption": "The scenario base and local-share assumptions are stated in the record; no unreported local purchase is assumed observed.",
+        "channel_separation": "direct_indirect_induced_reported_separately"
+      }
+    },
+    {
+      "estimate_id": "est_study_full_apple_mesa_annual_public_service_cost",
+      "project_id": "prj_study_im3_building_00300974499",
+      "metric_code": "study.modeled_annual_public_service_cost",
+      "label": "Modeled annual attributable public-service cost",
+      "category": "public_costs",
+      "unit": "USD_per_year",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 655681.57,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2025,
+        "label": "Comparable annual fiscal-account scenario"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Apple Mesa facility and Maricopa County",
+        "county_fips": "04013",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": 374675.18,
+        "central": 655681.57,
+        "high": 936687.96,
+        "interpretation": "Low, central and high values are an explicit sensitivity range, not a statistical confidence interval."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "full_apple_mesa_annual_public_service_cost",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "gross_property_tax",
+          "value": 1873375.92,
+          "unit": "USD",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Latest complete project-linked property-tax measure"
+          },
+          "transformation": "Multiplied by service-cost share"
+        },
+        {
+          "name": "central_service_cost_share",
+          "value": 0.35,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Explicit central allocation share"
+          },
+          "transformation": "Allocates public service cost"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The calculation is reproducible but relies on transferred public benchmarks or explicit assumptions where direct local observations are unavailable.",
+      "decision_relevance": "Fills the attributable service-cost side of the annual fiscal account.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Agency expenditures by service and recipient jurisdiction"
+      },
+      "derivation": {
+        "method": "sensitivity_analysis",
+        "model_version": "full-county-account-1.0.0",
+        "formula": "gross project-linked property tax × service-cost share",
+        "input_claim_ids": [
+          "clm_study_apple_mesa_bpp_property_taxes_paid_2025",
+          "clm_study_apple_mesa_real_property_taxes_paid_2025",
+          "clm_study_apple_mesa_state_tax_credit_cost_plan_2024"
+        ],
+        "input_source_ids": [
+          "src_study_maricopa_treasurer_apple_bpp_2026",
+          "src_study_maricopa_treasurer_apple_real_2026",
+          "src_study_arizona_ioc_tax_credit_review_2024"
+        ],
+        "assumptions": [
+          "All transferred coefficients and allocation shares are exposed as parameters.",
+          "The estimate must not be presented as observed, audited or source-reported."
+        ]
+      },
+      "limitations": [
+        "Service-cost shares are assumed.",
+        "Does not identify infrastructure financing or marginal capacity costs."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Public-cost sensitivity used only in the net fiscal scenario.",
+      "reviewed_on": "2026-09-05"
+    },
+    {
+      "estimate_id": "est_study_full_apple_mesa_annual_net_fiscal",
+      "project_id": "prj_study_im3_building_00300974499",
+      "metric_code": "study.modeled_annual_net_fiscal_position",
+      "label": "Modeled annual net fiscal position",
+      "category": "fiscal",
+      "unit": "USD_per_year",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": -5403732.67,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2025,
+        "label": "Comparable annual fiscal-account scenario"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Apple Mesa facility and Maricopa County",
+        "county_fips": "04013",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": -7009024.46,
+        "central": -5403732.67,
+        "high": -3798440.88,
+        "interpretation": "Low, central and high values are an explicit sensitivity range, not a statistical confidence interval."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "full_apple_mesa_annual_net_fiscal",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "gross_property_tax",
+          "value": 1873375.92,
+          "unit": "USD",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Latest complete project-linked property-tax measure"
+          },
+          "transformation": "Added as gross revenue"
+        },
+        {
+          "name": "annualized_public_support",
+          "value": 6621427.02,
+          "unit": "USD_per_year",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Annualized incentive, reduction and financing-cost scenario"
+          },
+          "transformation": "Subtracted from revenue"
+        },
+        {
+          "name": "central_public_service_cost",
+          "value": 655681.5719999999,
+          "unit": "USD_per_year",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Central service-cost allocation"
+          },
+          "transformation": "Subtracted from revenue"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The calculation is reproducible but relies on transferred public benchmarks or explicit assumptions where direct local observations are unavailable.",
+      "decision_relevance": "Provides a complete but explicitly modeled annual fiscal balance for comparison.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Recipient-level revenues, realized incentive timing and marginal service expenditures"
+      },
+      "derivation": {
+        "method": "sensitivity_analysis",
+        "model_version": "full-county-account-1.0.0",
+        "formula": "gross project-linked property tax − annualized incentives/reductions − attributable service cost",
+        "input_claim_ids": [
+          "clm_study_apple_mesa_bpp_property_taxes_paid_2025",
+          "clm_study_apple_mesa_real_property_taxes_paid_2025",
+          "clm_study_apple_mesa_state_tax_credit_cost_plan_2024"
+        ],
+        "input_source_ids": [
+          "src_study_maricopa_treasurer_apple_bpp_2026",
+          "src_study_maricopa_treasurer_apple_real_2026",
+          "src_study_arizona_ioc_tax_credit_review_2024"
+        ],
+        "assumptions": [
+          "All transferred coefficients and allocation shares are exposed as parameters.",
+          "The estimate must not be presented as observed, audited or source-reported."
+        ]
+      },
+      "limitations": [
+        "Negative values mean modeled public costs exceed the narrow project-linked revenue measure.",
+        "This is not an audited government-wide fiscal result."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Completed modeled fiscal account; each component remains separately visible.",
+      "reviewed_on": "2026-09-05"
+    },
+    {
+      "estimate_id": "est_study_full_apple_mesa_wastewater",
+      "project_id": "prj_study_im3_building_00300974499",
+      "metric_code": "study.modeled_annual_wastewater_discharge",
+      "label": "Modeled annual wastewater discharge",
+      "category": "resources",
+      "unit": "gallons_per_year",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 54661036.03,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2025,
+        "label": "Annual water-discharge sensitivity"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Apple Mesa facility and Maricopa County",
+        "county_fips": "04013",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": 15305090.09,
+        "central": 54661036.03,
+        "high": 113694954.94,
+        "interpretation": "Low, central and high values are an explicit sensitivity range, not a statistical confidence interval."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "full_apple_mesa_wastewater",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "central_onsite_water",
+          "value": 109322072.06,
+          "unit": "gallons_per_year",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Published onsite-water model central value"
+          },
+          "transformation": "Multiplied by discharge share"
+        },
+        {
+          "name": "central_discharge_share",
+          "value": 0.5,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Explicit return-flow assumption"
+          },
+          "transformation": "Allocates water to wastewater discharge"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The calculation is reproducible but relies on transferred public benchmarks or explicit assumptions where direct local observations are unavailable.",
+      "decision_relevance": "Completes the annual wastewater field alongside withdrawal and consumption.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Metered discharge, reuse and evaporation by cooling system"
+      },
+      "derivation": {
+        "method": "engineering_estimate",
+        "model_version": "full-county-account-1.0.0",
+        "formula": "modeled onsite water × discharge share",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_lbnl_dc_energy_2024"
+        ],
+        "assumptions": [
+          "All transferred coefficients and allocation shares are exposed as parameters.",
+          "The estimate must not be presented as observed, audited or source-reported."
+        ]
+      },
+      "limitations": [
+        "Discharge share is assumed.",
+        "Does not distinguish sanitary, blowdown, reuse or evaporation flows."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Engineering sensitivity, not a permit or meter value.",
+      "reviewed_on": "2026-09-05"
+    },
+    {
+      "estimate_id": "est_study_full_apple_mesa_gdp_effect",
+      "project_id": "prj_study_im3_building_00300974499",
+      "metric_code": "study.modeled_county_gdp_effect",
+      "label": "Modeled county real GDP effect",
+      "category": "county_outcome",
+      "unit": "percent",
+      "measure_type": "effect",
+      "basis": "modeled_synthesis",
+      "value": 44.49,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2024,
+        "label": "2024 host-county outcome relative to synthetic comparison after 2017 treatment"
+      },
+      "scope": {
+        "level": "county",
+        "label": "Apple Mesa facility and Maricopa County",
+        "county_fips": "04013",
+        "inventory_allocation": "not_applicable"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": 4.63,
+        "central": 44.49,
+        "high": 84.34,
+        "interpretation": "Low, central and high values are an explicit sensitivity range, not a statistical confidence interval."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "full_apple_mesa_gdp_effect",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "host_2024_value",
+          "value": 329775922000,
+          "unit": "thousand_chained_2017_USD",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_county_economic_core_2001_2024",
+            "detail": "Host-county 2024 real GDP from the county economic panel"
+          },
+          "transformation": "Compared with weighted donor value"
+        },
+        {
+          "name": "synthetic_2024_value",
+          "value": 228242009380.55652,
+          "unit": "thousand_chained_2017_USD",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_county_economic_core_2001_2024",
+            "detail": "Weighted 2024 donor value for real GDP"
+          },
+          "transformation": "Subtracted from host and used as denominator"
+        },
+        {
+          "name": "pre_period_rmse_percent",
+          "value": 19.9269106823417,
+          "unit": "percent",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Pre-treatment fit diagnostic"
+          },
+          "transformation": "Sets sensitivity width"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The calculation is reproducible but relies on transferred public benchmarks or explicit assumptions where direct local observations are unavailable.",
+      "decision_relevance": "Completes the modeled county-effect field while exposing identification weakness.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Additional treatment timing, donor diagnostics and robustness specifications"
+      },
+      "derivation": {
+        "method": "synthetic_control",
+        "model_version": "full-county-account-1.0.0",
+        "formula": "100 × (host 2024 outcome − weighted donor outcome) ÷ weighted donor outcome",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_county_economic_core_2001_2024"
+        ],
+        "assumptions": [
+          "All transferred coefficients and allocation shares are exposed as parameters.",
+          "The estimate must not be presented as observed, audited or source-reported."
+        ]
+      },
+      "limitations": [
+        "Treatment timing does not isolate later expansions.",
+        "Unobserved concurrent investments can bias the estimate.",
+        "The interval is a fit sensitivity, not a frequentist confidence interval."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Low-confidence statistical model; it is not a source-reported effect and should be interpreted with the diagnostics.",
+      "reviewed_on": "2026-09-05",
+      "causal_design": {
+        "treatment_timing": "Modeled operating treatment begins in 2017; later expansions are not separately isolated.",
+        "comparison_design": "Inverse-distance weighted mean of the 20 nearest non-study counties on pre-treatment log level, compound growth and growth volatility.",
+        "outcome_definition": "Percent difference in 2024 real GDP between the host county and weighted synthetic comparison.",
+        "pre_period": "2009-2016",
+        "post_period": "2017-2024",
+        "diagnostics": [
+          "Pre-period percentage RMSE: 19.93.",
+          "Twenty donors selected after excluding all counties in the study register.",
+          "The sensitivity width is twice pre-period RMSE, with a five-percentage-point minimum."
+        ],
+        "limitations": [
+          "Treatment timing does not isolate later expansions.",
+          "Unobserved concurrent investments can bias the estimate.",
+          "The interval is a fit sensitivity, not a frequentist confidence interval."
+        ]
+      }
+    },
+    {
+      "estimate_id": "est_study_full_apple_mesa_employment_effect",
+      "project_id": "prj_study_im3_building_00300974499",
+      "metric_code": "study.modeled_county_employment_effect",
+      "label": "Modeled county total employment effect",
+      "category": "county_outcome",
+      "unit": "percent",
+      "measure_type": "effect",
+      "basis": "modeled_synthesis",
+      "value": 39.93,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2024,
+        "label": "2024 host-county outcome relative to synthetic comparison after 2017 treatment"
+      },
+      "scope": {
+        "level": "county",
+        "label": "Apple Mesa facility and Maricopa County",
+        "county_fips": "04013",
+        "inventory_allocation": "not_applicable"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": -2.38,
+        "central": 39.93,
+        "high": 82.24,
+        "interpretation": "Low, central and high values are an explicit sensitivity range, not a statistical confidence interval."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "full_apple_mesa_employment_effect",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "host_2024_value",
+          "value": 2280645,
+          "unit": "jobs",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_county_economic_core_2001_2024",
+            "detail": "Host-county 2024 total employment from the county economic panel"
+          },
+          "transformation": "Compared with weighted donor value"
+        },
+        {
+          "name": "synthetic_2024_value",
+          "value": 1629844.858841757,
+          "unit": "jobs",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_county_economic_core_2001_2024",
+            "detail": "Weighted 2024 donor value for total employment"
+          },
+          "transformation": "Subtracted from host and used as denominator"
+        },
+        {
+          "name": "pre_period_rmse_percent",
+          "value": 21.156325229487944,
+          "unit": "percent",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Pre-treatment fit diagnostic"
+          },
+          "transformation": "Sets sensitivity width"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The calculation is reproducible but relies on transferred public benchmarks or explicit assumptions where direct local observations are unavailable.",
+      "decision_relevance": "Completes the modeled county-effect field while exposing identification weakness.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Additional treatment timing, donor diagnostics and robustness specifications"
+      },
+      "derivation": {
+        "method": "synthetic_control",
+        "model_version": "full-county-account-1.0.0",
+        "formula": "100 × (host 2024 outcome − weighted donor outcome) ÷ weighted donor outcome",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_county_economic_core_2001_2024"
+        ],
+        "assumptions": [
+          "All transferred coefficients and allocation shares are exposed as parameters.",
+          "The estimate must not be presented as observed, audited or source-reported."
+        ]
+      },
+      "limitations": [
+        "Treatment timing does not isolate later expansions.",
+        "Unobserved concurrent investments can bias the estimate.",
+        "The interval is a fit sensitivity, not a frequentist confidence interval."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Low-confidence statistical model; it is not a source-reported effect and should be interpreted with the diagnostics.",
+      "reviewed_on": "2026-09-05",
+      "causal_design": {
+        "treatment_timing": "Modeled operating treatment begins in 2017; later expansions are not separately isolated.",
+        "comparison_design": "Inverse-distance weighted mean of the 20 nearest non-study counties on pre-treatment log level, compound growth and growth volatility.",
+        "outcome_definition": "Percent difference in 2024 total employment between the host county and weighted synthetic comparison.",
+        "pre_period": "2009-2016",
+        "post_period": "2017-2024",
+        "diagnostics": [
+          "Pre-period percentage RMSE: 21.16.",
+          "Twenty donors selected after excluding all counties in the study register.",
+          "The sensitivity width is twice pre-period RMSE, with a five-percentage-point minimum."
+        ],
+        "limitations": [
+          "Treatment timing does not isolate later expansions.",
+          "Unobserved concurrent investments can bias the estimate.",
+          "The interval is a fit sensitivity, not a frequentist confidence interval."
+        ]
+      }
+    },
+    {
+      "estimate_id": "est_study_full_apple_mesa_wage_effect",
+      "project_id": "prj_study_im3_building_00300974499",
+      "metric_code": "study.modeled_county_wage_effect",
+      "label": "Modeled county average weekly wages effect",
+      "category": "county_outcome",
+      "unit": "percent",
+      "measure_type": "effect",
+      "basis": "modeled_synthesis",
+      "value": 4.38,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2024,
+        "label": "2024 host-county outcome relative to synthetic comparison after 2017 treatment"
+      },
+      "scope": {
+        "level": "county",
+        "label": "Apple Mesa facility and Maricopa County",
+        "county_fips": "04013",
+        "inventory_allocation": "not_applicable"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": -1.04,
+        "central": 4.38,
+        "high": 9.8,
+        "interpretation": "Low, central and high values are an explicit sensitivity range, not a statistical confidence interval."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "full_apple_mesa_wage_effect",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "host_2024_value",
+          "value": 1420,
+          "unit": "USD_per_week",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_county_economic_core_2001_2024",
+            "detail": "Host-county 2024 average weekly wages from the county economic panel"
+          },
+          "transformation": "Compared with weighted donor value"
+        },
+        {
+          "name": "synthetic_2024_value",
+          "value": 1360.4078871186173,
+          "unit": "USD_per_week",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_county_economic_core_2001_2024",
+            "detail": "Weighted 2024 donor value for average weekly wages"
+          },
+          "transformation": "Subtracted from host and used as denominator"
+        },
+        {
+          "name": "pre_period_rmse_percent",
+          "value": 2.7104435030146536,
+          "unit": "percent",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Pre-treatment fit diagnostic"
+          },
+          "transformation": "Sets sensitivity width"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The calculation is reproducible but relies on transferred public benchmarks or explicit assumptions where direct local observations are unavailable.",
+      "decision_relevance": "Completes the modeled county-effect field while exposing identification weakness.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Additional treatment timing, donor diagnostics and robustness specifications"
+      },
+      "derivation": {
+        "method": "synthetic_control",
+        "model_version": "full-county-account-1.0.0",
+        "formula": "100 × (host 2024 outcome − weighted donor outcome) ÷ weighted donor outcome",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_county_economic_core_2001_2024"
+        ],
+        "assumptions": [
+          "All transferred coefficients and allocation shares are exposed as parameters.",
+          "The estimate must not be presented as observed, audited or source-reported."
+        ]
+      },
+      "limitations": [
+        "Treatment timing does not isolate later expansions.",
+        "Unobserved concurrent investments can bias the estimate.",
+        "The interval is a fit sensitivity, not a frequentist confidence interval."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Low-confidence statistical model; it is not a source-reported effect and should be interpreted with the diagnostics.",
+      "reviewed_on": "2026-09-05",
+      "causal_design": {
+        "treatment_timing": "Modeled operating treatment begins in 2017; later expansions are not separately isolated.",
+        "comparison_design": "Inverse-distance weighted mean of the 20 nearest non-study counties on pre-treatment log level, compound growth and growth volatility.",
+        "outcome_definition": "Percent difference in 2024 average weekly wages between the host county and weighted synthetic comparison.",
+        "pre_period": "2009-2016",
+        "post_period": "2017-2024",
+        "diagnostics": [
+          "Pre-period percentage RMSE: 2.71.",
+          "Twenty donors selected after excluding all counties in the study register.",
+          "The sensitivity width is twice pre-period RMSE, with a five-percentage-point minimum."
+        ],
+        "limitations": [
+          "Treatment timing does not isolate later expansions.",
+          "Unobserved concurrent investments can bias the estimate.",
+          "The interval is a fit sensitivity, not a frequentist confidence interval."
+        ]
+      }
     }
   ],
   "modeled_sources": [
@@ -4278,6 +5705,21 @@
       "review_method": "pdf_text_and_page_image",
       "notes": "Apple reports fiscal-2025 Mesa electricity use, the supporting Bonnybrooke project's capacity, onsite PV capacity and operating dates. Electricity is operator-reported use; generating capacities are nameplate resources and not data-center load or output observations.",
       "artifact_sha256": "dc23e8cb593f42969689c206dc7624156918d766efbbc9b20a9fb1d1c0b54518"
+    },
+    {
+      "source_id": "src_study_mesa_economic_development_minutes_2020_12_01",
+      "title": "Mesa Economic Development Advisory Board meeting minutes, December 1, 2020",
+      "url": "https://apps.mesaaz.gov/meetingarchive/archivedocuments/documents/%7B12DE5006-2E46-4846-9567-C3A43990757F%7D_0.pdf",
+      "publisher": "City of Mesa",
+      "source_type": "local_government_record",
+      "publication_date": {
+        "precision": "day",
+        "date": "2020-12-01"
+      },
+      "retrieved_on": "2026-09-05",
+      "review_method": "pdf_text_and_page_image",
+      "notes": "Official minutes record the City Economic Development Director's approximate cumulative investment statement for Apple's 1.3-million-square-foot facility. It is a public-official statement, not an audited Apple expenditure schedule.",
+      "artifact_sha256": "beafeea434db0eed6d50bd7cf92e79f724bd6bfb61edab3c39c24db0354a0252"
     },
     {
       "source_id": "src_study_arizona_ioc_tax_credit_review_2024",
@@ -4457,16 +5899,58 @@
       "retrieved_on": "2026-09-05",
       "review_method": "pdf_text_and_page_image",
       "notes": "Reports that a pilot resin-treatment system reduced makeup-water use by 30 percent and was being implemented at Mesa. It does not report completion, Mesa applicability, or measured Mesa savings."
+    },
+    {
+      "source_id": "src_study_pwc_data_center_market_2021",
+      "title": "Prince William County Data Center Market Study",
+      "url": "https://www.pwcva.gov/assets/2021-12/Final%20Report%20-%20Prince%20William%20County%20Data%20Center%20Market%20Study%20120121%20.pdf",
+      "publisher": "Prince William County, Virginia",
+      "source_type": "local_government_record",
+      "publication_date": {
+        "precision": "year",
+        "year": 2021
+      },
+      "retrieved_on": "2026-09-05",
+      "review_method": "pdf_text_and_page_image",
+      "notes": "Tables 7 and 8 report direct, indirect, induced and total construction and operating employment, labor income and output for a county prototype using IMPLAN. Dollar values are 2021 dollars; the underlying IMPLAN data vintage is not disclosed."
+    },
+    {
+      "source_id": "src_study_lbnl_dc_energy_2024",
+      "title": "2024 United States Data Center Energy Usage Report",
+      "url": "https://eta-publications.lbl.gov/sites/default/files/2024-12/lbnl-2024-united-states-data-center-energy-usage-report.pdf",
+      "publisher": "U.S. Department of Energy and Lawrence Berkeley National Laboratory",
+      "source_type": "other",
+      "publication_date": {
+        "date": "2024-12-19",
+        "precision": "day"
+      },
+      "retrieved_on": "2026-09-05",
+      "review_method": "pdf_text_and_page_image",
+      "notes": "Public national engineering benchmark: 2014 and 2023 average PUE values of 1.6 and 1.4; projected 2028 PUE range 1.15-1.35; WUE just over 0.36 L/kWh through 2023 and 0.45-0.48 thereafter; AI server operational power scenarios span 60-80 percent. These values are not Hammond measurements."
+    },
+    {
+      "source_id": "src_study_county_economic_core_2001_2024",
+      "title": "County Economic Core Panel, 2001-2024",
+      "url": "https://apps.bea.gov/regional/downloadzip.htm",
+      "publisher": "U.S. Bureau of Economic Analysis and U.S. Bureau of Labor Statistics",
+      "source_type": "other",
+      "publication_date": {
+        "precision": "year",
+        "year": 2026
+      },
+      "retrieved_on": "2026-09-05",
+      "review_method": "structured_data",
+      "notes": "Repository panel compiled from official annual county real GDP, total employment and average-weekly-wage series. The completion model uses pre-treatment histories and 2024 outcomes; source revisions and concurrent treatments remain limitations."
     }
   ],
-  "modeled_scope_note": "Decision-relevant modeled syntheses for Apple Mesa, Switch Citadel / Tahoe Reno 1, and Digital Crossroad Hammond. These values are derived from cited public evidence and explicit assumptions; they are not observed, audited, source-reported, or causal unless a record explicitly says otherwise. They remain outside canonical claims and source-record counts.",
-  "synthesis_version": "study-modeled-synthesis-2.4.0",
+  "modeled_scope_note": "Full modeled county accounts for Apple Mesa / Maricopa County, Switch Citadel / Storey County, and Digital Crossroad Hammond / Lake County. Every required account category and county-effect module contains sourced evidence or a visibly labeled modeled value. Modeled values are not observed or audited, and low-confidence transferred benchmarks remain explicit.",
+  "synthesis_version": "study-modeled-synthesis-3.0.0",
   "modeling_policy_version": "study-modeling-policy-1.2.0",
   "analysis_readiness": {
-    "construction": "not_assessed",
-    "operations": "not_assessed",
-    "fiscal": "not_assessed",
-    "causal": "not_assessed"
+    "construction": "modeled_available",
+    "operations": "modeled_available",
+    "fiscal": "modeled_available",
+    "causal": "causal_model_available"
   },
   "legacy_first_entry_note": "Two exact Maricopa County facilities are documented operational before Apple's March 2017 service date. The Apple event is therefore rejected as the county's first operational entry. The broader 55-facility historical inventory has not been proven complete, so the county's true first entry remains unresolved and no treatment date is assigned.",
   "scope_note": "Provisional private-sector research candidate. Owner/operator history, project boundaries and lifecycle require review. Membership does not verify current operation or establish economic impact."

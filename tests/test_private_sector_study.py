@@ -77,8 +77,9 @@ class PrivateSectorStudyTest(unittest.TestCase):
         self.assertEqual(index["counts"]["economic_records"], 585)
         self.assertEqual(index["counts"]["reported_actual_records"], 533)
         self.assertEqual(index["counts"]["projection_records"], 52)
-        self.assertEqual(index["counts"]["modeled_synthesis_records"], 70)
-        self.assertTrue(all(r["analysis_readiness"]["causal"] == "not_assessed" for r in details))
+        self.assertEqual(index["counts"]["modeled_synthesis_records"], 104)
+        self.assertEqual(index["full_modeled_county_accounts"], 3)
+        self.assertEqual(sum(r["analysis_readiness"]["causal"] == "causal_model_available" for r in details), 3)
         washoe = next(r for r in details if r["name"] == "Apple Washoe County campus")
         coverage = {g["code"]: g["status"] for g in washoe["evidence_gaps"]}
         self.assertEqual(coverage["operations"], "partial")
@@ -93,6 +94,31 @@ class PrivateSectorStudyTest(unittest.TestCase):
         self.assertTrue(all(r["measure_type"] == "stock" and r["aggregation"] == "none" for r in rows))
         self.assertTrue(all(r["scope"]["level"] == "company_county" for r in rows))
         self.assertEqual(rows[-1]["value"], 1476648949)
+
+    def test_three_depth_counties_pass_machine_enforced_full_model_gate(self):
+        index, details, _ = self.build()
+        target_ids = {
+            "prj_study_im3_building_00300974499",  # Apple Mesa / Maricopa
+            "prj_study_im3_point_06685432442",     # Switch / Storey
+            "prj_study_im3_building_00978934687", # Digital Crossroad / Lake
+        }
+        completed = [row for row in details if row["model_completeness"]["status"] == "full_modeled_account"]
+        self.assertEqual({row["project_id"] for row in completed}, target_ids)
+        self.assertEqual(index["full_modeled_county_accounts"], 3)
+        for project in completed:
+            gate = project["model_completeness"]
+            self.assertEqual(len(gate["covered_categories"]), 8)
+            self.assertEqual(len(gate["covered_county_outcomes"]), 3)
+            self.assertEqual(gate["missing_categories"], [])
+            self.assertEqual(gate["missing_county_outcomes"], [])
+            self.assertEqual(project["analysis_readiness"], {
+                "construction": "modeled_available",
+                "operations": "modeled_available",
+                "fiscal": "modeled_available",
+                "causal": "causal_model_available",
+            })
+            self.assertTrue(all(row["presentation"] == "modeled_not_observed_or_audited"
+                                for row in project["modeled_syntheses"]))
 
     def test_chaska_preserves_municipal_payer_and_payable_year_values(self):
         _, details, _ = self.build()
@@ -257,7 +283,7 @@ class PrivateSectorStudyTest(unittest.TestCase):
         }
         self.assertEqual((project["economic_record_count"], project["reported_actual_count"],
                           project["projection_count"], project["modeled_synthesis_count"]),
-                         (79, 72, 7, 20))
+                         (79, 72, 7, 34))
         self.assertEqual([len(by_metric[c]) for c in ["study.reported_asset_cost", "study.taxable_property_value",
                                                        "study.account_assessed_value", "study.property_taxes_billed"]],
                          [11, 14, 14, 14])
@@ -327,8 +353,10 @@ class PrivateSectorStudyTest(unittest.TestCase):
         self.assertEqual(modeled["study.modeled_onsite_water_use"]["interval"]["low"], 54838676.29)
         self.assertIn("Not a causal effect.",
                       modeled["study.modeled_county_covered_employment_descriptive_change"]["limitations"])
-        self.assertFalse(any(r["contribution_channel"] in {"indirect", "induced", "total"}
-                             for r in project["modeled_syntheses"]))
+        expanded_channels = [r for r in project["modeled_syntheses"]
+                             if r["contribution_channel"] in {"indirect", "induced", "total"}]
+        self.assertTrue(expanded_channels)
+        self.assertTrue(all(r.get("multiplier_provenance") for r in expanded_channels))
 
     def test_council_bluffs_keeps_taxpayer_accounts_and_award_plans_separate(self):
         _, details, _ = self.build()
@@ -414,7 +442,7 @@ class PrivateSectorStudyTest(unittest.TestCase):
         self.assertEqual(next(r for r in actual if r["metric_code"] == "study.cumulative_facility_investment")["value_qualifier"], "approximately")
         self.assertTrue(any("separate Apple equipment" in u["title"] for u in project["research_updates"]))
         modeled = project["modeled_syntheses"]
-        self.assertEqual(project["modeled_synthesis_count"], 13)
+        self.assertEqual(project["modeled_synthesis_count"], 27)
         self.assertEqual({r["basis"] for r in modeled}, {"modeled_synthesis"})
         self.assertEqual(len(project["economic_records"]), 80)
         water = next(r for r in modeled if r["metric_code"] == "study.modeled_onsite_water_use")
@@ -641,21 +669,20 @@ class PrivateSectorStudyTest(unittest.TestCase):
         afr_gap = next(r for r in project["research_updates"] if r["source_id"] == "src_study_indiana_gateway_hammond_2025_afr_status")
         self.assertIn("blocks the debt-series extension", afr_gap["title"])
 
-    def test_digital_crossroad_modeled_synthesis_is_separate_reproducible_and_noncausal(self):
+    def test_digital_crossroad_modeled_synthesis_is_separate_and_reproducible(self):
         index, details, _ = self.build()
         project = next(r for r in details if r["project_id"] == "prj_study_im3_building_00978934687")
         modeled = project["modeled_syntheses"]
         by_id = {r["estimate_id"]: r for r in modeled}
-        self.assertEqual((project["economic_record_count"], project["modeled_synthesis_count"]), (113, 37))
+        self.assertEqual((project["economic_record_count"], project["modeled_synthesis_count"]), (113, 43))
         self.assertEqual((index["counts"]["economic_records"], index["counts"]["modeled_synthesis_records"]),
-                         (585, 70))
+                         (585, 104))
         self.assertEqual({r["basis"] for r in modeled}, {"modeled_synthesis"})
         self.assertTrue(all(r["presentation"] == "modeled_not_observed_or_audited" for r in modeled))
         self.assertTrue(all(r["derivation"]["formula"] and r["parameters"] and r["limitations"] for r in modeled))
-        self.assertFalse(any("causal_design" in r for r in modeled))
-        self.assertTrue(all(r["derivation"]["method"] not in
-                            {"difference_in_differences", "event_study", "synthetic_control"}
-                            for r in modeled))
+        causal = [r for r in modeled if r["derivation"]["method"] == "synthetic_control"]
+        self.assertEqual(len(causal), 3)
+        self.assertTrue(all("causal_design" in r for r in causal))
 
         spend = by_id["est_study_dx_hammond_construction_spend_direct"]
         self.assertEqual((spend["interval"]["low"], spend["value"], spend["interval"]["high"]),

@@ -1,9 +1,9 @@
 {
   "schema_version": "1.0.0",
-  "synthesis_version": "study-modeled-synthesis-2.4.0",
+  "synthesis_version": "study-modeled-synthesis-3.0.0",
   "modeling_policy_version": "study-modeling-policy-1.2.0",
   "reviewed_on": "2026-09-05",
-  "scope_note": "Decision-relevant modeled syntheses for Apple Mesa, Switch Citadel / Tahoe Reno 1, and Digital Crossroad Hammond. These values are derived from cited public evidence and explicit assumptions; they are not observed, audited, source-reported, or causal unless a record explicitly says otherwise. They remain outside canonical claims and source-record counts.",
+  "scope_note": "Full modeled county accounts for Apple Mesa / Maricopa County, Switch Citadel / Storey County, and Digital Crossroad Hammond / Lake County. Every required account category and county-effect module contains sourced evidence or a visibly labeled modeled value. Modeled values are not observed or audited, and low-confidence transferred benchmarks remain explicit.",
   "sources": [
     {
       "source_id": "src_study_ftz_board_annual_report_2024",
@@ -321,6 +321,20 @@
       "retrieved_on": "2026-09-05",
       "review_method": "pdf_text_and_page_image",
       "notes": "Reports 2023 total output CO2e rates of 916.1 lb/MWh for RFC West and 1,465.5 lb/MWh for Indiana. The Hammond model treats these as a location-based sensitivity rather than a marginal or supplier-specific factor."
+    },
+    {
+      "source_id": "src_study_county_economic_core_2001_2024",
+      "title": "County Economic Core Panel, 2001-2024",
+      "url": "https://apps.bea.gov/regional/downloadzip.htm",
+      "publisher": "U.S. Bureau of Economic Analysis and U.S. Bureau of Labor Statistics",
+      "source_type": "other",
+      "publication_date": {
+        "precision": "year",
+        "year": 2026
+      },
+      "retrieved_on": "2026-09-05",
+      "review_method": "structured_data",
+      "notes": "Repository panel compiled from official annual county real GDP, total employment and average-weekly-wage series. The completion model uses pre-treatment histories and 2024 outcomes; source revisions and concurrent treatments remain limitations."
     }
   ],
   "estimates": [
@@ -8251,6 +8265,3442 @@
       "presentation": "modeled_not_observed_or_audited",
       "notes": "A descriptive transformation only; no causal_design is attached because causal requirements are not met.",
       "reviewed_on": "2026-09-05"
+    },
+    {
+      "estimate_id": "est_study_full_apple_mesa_annualized_capital",
+      "project_id": "prj_study_im3_building_00300974499",
+      "metric_code": "study.modeled_annualized_capital_spending",
+      "label": "Modeled annualized capital spending",
+      "category": "investment",
+      "unit": "USD_per_year",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 333333333.33,
+      "period": {
+        "kind": "construction_period",
+        "start_date": "2015-01-01",
+        "end_date": "2020-12-31",
+        "label": "Documented development window used for the completed modeled account"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Apple Mesa facility and Maricopa County",
+        "county_fips": "04013",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": 250000000,
+        "central": 333333333.33,
+        "high": 500000000,
+        "interpretation": "Low, central and high values are an explicit sensitivity range, not a statistical confidence interval."
+      },
+      "contribution_channel": "direct",
+      "aggregation": {
+        "aggregation_id": "full_apple_mesa_annualized_capital",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "facility_capital",
+          "value": 2000000000,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_apple_mesa_facility_investment_2020",
+            "detail": "Public capital component retained in the source account"
+          },
+          "transformation": "Included in the summed public capital basis"
+        },
+        {
+          "name": "central_construction_years",
+          "value": 6.00000000006,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Elapsed construction years used only for annualization"
+          },
+          "transformation": "Divides cumulative capital"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The calculation is reproducible but relies on transferred public benchmarks or explicit assumptions where direct local observations are unavailable.",
+      "decision_relevance": "Supplies a comparable annual construction-spending flow.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Audited annual capital ledger and phase allocations"
+      },
+      "derivation": {
+        "method": "sensitivity_analysis",
+        "model_version": "full-county-account-1.0.0",
+        "formula": "sum of public capital components ÷ assumed active construction years",
+        "input_claim_ids": [
+          "clm_study_apple_mesa_facility_investment_2020"
+        ],
+        "input_source_ids": [
+          "src_study_mesa_economic_development_minutes_2020_12_01"
+        ],
+        "assumptions": [
+          "All transferred coefficients and allocation shares are exposed as parameters.",
+          "The estimate must not be presented as observed, audited or source-reported."
+        ]
+      },
+      "limitations": [
+        "Annualization smooths uneven construction phases.",
+        "Does not identify vendor geography or payroll."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Completed modeled field; direct annual records would replace this range.",
+      "reviewed_on": "2026-09-05"
+    },
+    {
+      "estimate_id": "est_study_full_apple_mesa_local_construction_spend",
+      "project_id": "prj_study_im3_building_00300974499",
+      "metric_code": "study.modeled_local_construction_spending",
+      "label": "Modeled local construction spending",
+      "category": "suppliers",
+      "unit": "USD",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 800000000.0,
+      "period": {
+        "kind": "construction_period",
+        "start_date": "2015-01-01",
+        "end_date": "2020-12-31",
+        "label": "Documented development window used for the completed modeled account"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Apple Mesa facility and Maricopa County",
+        "county_fips": "04013",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": 500000000.0,
+        "central": 800000000.0,
+        "high": 1100000000.0,
+        "interpretation": "Low, central and high values are an explicit sensitivity range, not a statistical confidence interval."
+      },
+      "contribution_channel": "direct",
+      "aggregation": {
+        "aggregation_id": "full_apple_mesa_local_construction_spend",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "facility_capital",
+          "value": 2000000000,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_apple_mesa_facility_investment_2020",
+            "detail": "Public capital component retained in the source account"
+          },
+          "transformation": "Included in the summed public capital basis"
+        },
+        {
+          "name": "central_local_share",
+          "value": 0.4,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Explicit local-purchase midpoint"
+          },
+          "transformation": "Allocates capital to host-region suppliers"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The calculation is reproducible but relies on transferred public benchmarks or explicit assumptions where direct local observations are unavailable.",
+      "decision_relevance": "Fills the local-construction-purchase field without treating the allocation as observed.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Audited vendor payments and vendor addresses"
+      },
+      "derivation": {
+        "method": "sensitivity_analysis",
+        "model_version": "full-county-account-1.0.0",
+        "formula": "sum of public capital components × local purchase share",
+        "input_claim_ids": [
+          "clm_study_apple_mesa_facility_investment_2020"
+        ],
+        "input_source_ids": [
+          "src_study_mesa_economic_development_minutes_2020_12_01"
+        ],
+        "assumptions": [
+          "All transferred coefficients and allocation shares are exposed as parameters.",
+          "The estimate must not be presented as observed, audited or source-reported."
+        ]
+      },
+      "limitations": [
+        "The local share is assumed.",
+        "Capital includes equipment that may be purchased outside the county."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Low-confidence local-spending sensitivity.",
+      "reviewed_on": "2026-09-05"
+    },
+    {
+      "estimate_id": "est_study_full_apple_mesa_construction_job_years_total",
+      "project_id": "prj_study_im3_building_00300974499",
+      "metric_code": "study.modeled_construction_job_years_total",
+      "label": "Modeled total construction job-years",
+      "category": "construction",
+      "unit": "job_years",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 17498.2,
+      "period": {
+        "kind": "construction_period",
+        "start_date": "2015-01-01",
+        "end_date": "2020-12-31",
+        "label": "Documented development window used for the completed modeled account"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Apple Mesa facility and Maricopa County",
+        "county_fips": "04013",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": 13123.65,
+        "central": 17498.2,
+        "high": 21872.75,
+        "interpretation": "Low, central and high values are an explicit sensitivity range, not a statistical confidence interval."
+      },
+      "contribution_channel": "total",
+      "aggregation": {
+        "aggregation_id": "full_apple_mesa_construction_job_years_total",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "facility_capital",
+          "value": 2000000000,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_apple_mesa_facility_investment_2020",
+            "detail": "Public capital component retained in the source account"
+          },
+          "transformation": "Included in the summed public capital basis"
+        },
+        {
+          "name": "total_job_years_per_million",
+          "value": 8.7491,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_pwc_data_center_market_2021",
+            "detail": "Prince William construction contribution coefficient"
+          },
+          "transformation": "Multiplies capital in millions"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The calculation is reproducible but relies on transferred public benchmarks or explicit assumptions where direct local observations are unavailable.",
+      "decision_relevance": "Completes the construction employment contribution field.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Project payroll records, worker hours and local residence"
+      },
+      "derivation": {
+        "method": "input_output_multiplier",
+        "model_version": "full-county-account-1.0.0",
+        "formula": "capital scenario × 8.7491 total job-years per $1 million",
+        "input_claim_ids": [
+          "clm_study_apple_mesa_facility_investment_2020"
+        ],
+        "input_source_ids": [
+          "src_study_pwc_data_center_market_2021",
+          "src_study_mesa_economic_development_minutes_2020_12_01"
+        ],
+        "assumptions": [
+          "All transferred coefficients and allocation shares are exposed as parameters.",
+          "The estimate must not be presented as observed, audited or source-reported."
+        ]
+      },
+      "limitations": [
+        "Transferred Virginia coefficient.",
+        "Job-years are not peak workers or permanent jobs."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Contribution estimate, not causal employment.",
+      "reviewed_on": "2026-09-05",
+      "multiplier_provenance": {
+        "source_id": "src_study_pwc_data_center_market_2021",
+        "model_name": "IMPLAN county contribution model reported by BAE",
+        "model_version": "Prince William County prototype-data-center study, 2021-dollar tables 7-8",
+        "geography": "Prince William County, Virginia benchmark transferred to the named host county",
+        "vintage": "IMPLAN model reported December 2021; underlying IMPLAN data vintage not disclosed",
+        "local_purchase_assumption": "The scenario base and local-share assumptions are stated in the record; no unreported local purchase is assumed observed.",
+        "channel_separation": "direct_indirect_induced_reported_separately"
+      }
+    },
+    {
+      "estimate_id": "est_study_full_apple_mesa_construction_labor_income_total",
+      "project_id": "prj_study_im3_building_00300974499",
+      "metric_code": "study.modeled_construction_labor_income_total",
+      "label": "Modeled total construction labor income",
+      "category": "construction",
+      "unit": "USD",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 1058967272.8,
+      "period": {
+        "kind": "construction_period",
+        "start_date": "2015-01-01",
+        "end_date": "2020-12-31",
+        "label": "Documented development window used for the completed modeled account"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Apple Mesa facility and Maricopa County",
+        "county_fips": "04013",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": 794225454.6,
+        "central": 1058967272.8,
+        "high": 1323709091.0,
+        "interpretation": "Low, central and high values are an explicit sensitivity range, not a statistical confidence interval."
+      },
+      "contribution_channel": "total",
+      "aggregation": {
+        "aggregation_id": "full_apple_mesa_construction_labor_income_total",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "facility_capital",
+          "value": 2000000000,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_apple_mesa_facility_investment_2020",
+            "detail": "Public capital component retained in the source account"
+          },
+          "transformation": "Included in the summed public capital basis"
+        },
+        {
+          "name": "total_labor_income_rate",
+          "value": 0.5294836364,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_pwc_data_center_market_2021",
+            "detail": "Prince William construction labor-income coefficient"
+          },
+          "transformation": "Multiplies capital"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The calculation is reproducible but relies on transferred public benchmarks or explicit assumptions where direct local observations are unavailable.",
+      "decision_relevance": "Completes the construction labor-income field.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Audited project payroll and worker residence"
+      },
+      "derivation": {
+        "method": "input_output_multiplier",
+        "model_version": "full-county-account-1.0.0",
+        "formula": "capital scenario × 0.5294836364 total labor-income coefficient",
+        "input_claim_ids": [
+          "clm_study_apple_mesa_facility_investment_2020"
+        ],
+        "input_source_ids": [
+          "src_study_pwc_data_center_market_2021",
+          "src_study_mesa_economic_development_minutes_2020_12_01"
+        ],
+        "assumptions": [
+          "All transferred coefficients and allocation shares are exposed as parameters.",
+          "The estimate must not be presented as observed, audited or source-reported."
+        ]
+      },
+      "limitations": [
+        "Transferred Virginia coefficient.",
+        "Labor income is not additive to output or payroll proxies."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Contribution estimate, not observed payroll.",
+      "reviewed_on": "2026-09-05",
+      "multiplier_provenance": {
+        "source_id": "src_study_pwc_data_center_market_2021",
+        "model_name": "IMPLAN county contribution model reported by BAE",
+        "model_version": "Prince William County prototype-data-center study, 2021-dollar tables 7-8",
+        "geography": "Prince William County, Virginia benchmark transferred to the named host county",
+        "vintage": "IMPLAN model reported December 2021; underlying IMPLAN data vintage not disclosed",
+        "local_purchase_assumption": "The scenario base and local-share assumptions are stated in the record; no unreported local purchase is assumed observed.",
+        "channel_separation": "direct_indirect_induced_reported_separately"
+      }
+    },
+    {
+      "estimate_id": "est_study_full_apple_mesa_operating_fte_total",
+      "project_id": "prj_study_im3_building_00300974499",
+      "metric_code": "study.modeled_operating_fte_total",
+      "label": "Modeled total annual operating FTE",
+      "category": "operations",
+      "unit": "FTE",
+      "measure_type": "stock",
+      "basis": "modeled_synthesis",
+      "value": 796.32,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2024,
+        "label": "Annual operating contribution scenario"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Apple Mesa facility and Maricopa County",
+        "county_fips": "04013",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": 640.84,
+        "central": 796.32,
+        "high": 951.74,
+        "interpretation": "Low, central and high values are an explicit sensitivity range, not a statistical confidence interval."
+      },
+      "contribution_channel": "total",
+      "aggregation": {
+        "aggregation_id": "full_apple_mesa_operating_fte_total",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "direct_fte_central",
+          "value": 121.84,
+          "unit": "FTE",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Central direct-FTE model"
+          },
+          "transformation": "Multiplied by total contribution coefficient"
+        },
+        {
+          "name": "total_fte_per_direct_fte",
+          "value": 6.5358,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_pwc_data_center_market_2021",
+            "detail": "Prince William operating contribution coefficient"
+          },
+          "transformation": "Multiplies direct FTE"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The calculation is reproducible but relies on transferred public benchmarks or explicit assumptions where direct local observations are unavailable.",
+      "decision_relevance": "Completes the annual operating-employment contribution field.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Observed contractor, supplier and induced employment"
+      },
+      "derivation": {
+        "method": "input_output_multiplier",
+        "model_version": "full-county-account-1.0.0",
+        "formula": "direct FTE × 6.5358 total-FTE coefficient",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_pwc_data_center_market_2021"
+        ],
+        "assumptions": [
+          "All transferred coefficients and allocation shares are exposed as parameters.",
+          "The estimate must not be presented as observed, audited or source-reported."
+        ]
+      },
+      "limitations": [
+        "Transferred Virginia coefficient.",
+        "Includes direct, indirect and induced channels and must not be added to them."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Annual contribution scenario.",
+      "reviewed_on": "2026-09-05",
+      "multiplier_provenance": {
+        "source_id": "src_study_pwc_data_center_market_2021",
+        "model_name": "IMPLAN county contribution model reported by BAE",
+        "model_version": "Prince William County prototype-data-center study, 2021-dollar tables 7-8",
+        "geography": "Prince William County, Virginia benchmark transferred to the named host county",
+        "vintage": "IMPLAN model reported December 2021; underlying IMPLAN data vintage not disclosed",
+        "local_purchase_assumption": "The scenario base and local-share assumptions are stated in the record; no unreported local purchase is assumed observed.",
+        "channel_separation": "direct_indirect_induced_reported_separately"
+      }
+    },
+    {
+      "estimate_id": "est_study_full_apple_mesa_operating_labor_income_total",
+      "project_id": "prj_study_im3_building_00300974499",
+      "metric_code": "study.modeled_operating_labor_income_total",
+      "label": "Modeled total annual operating labor income",
+      "category": "operations",
+      "unit": "USD_per_year",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 51355560.0,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2024,
+        "label": "Annual operating labor-income scenario"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Apple Mesa facility and Maricopa County",
+        "county_fips": "04013",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": 41328075.0,
+        "central": 51355560.0,
+        "high": 61378830.0,
+        "interpretation": "Low, central and high values are an explicit sensitivity range, not a statistical confidence interval."
+      },
+      "contribution_channel": "total",
+      "aggregation": {
+        "aggregation_id": "full_apple_mesa_operating_labor_income_total",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "direct_fte_central",
+          "value": 121.84,
+          "unit": "FTE",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Central direct-FTE model"
+          },
+          "transformation": "Multiplied by total labor-income coefficient"
+        },
+        {
+          "name": "total_labor_income_per_direct_fte",
+          "value": 421500,
+          "unit": "USD_per_FTE",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_pwc_data_center_market_2021",
+            "detail": "Prince William operating contribution coefficient"
+          },
+          "transformation": "Multiplies direct FTE"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The calculation is reproducible but relies on transferred public benchmarks or explicit assumptions where direct local observations are unavailable.",
+      "decision_relevance": "Completes the annual operating labor-income field.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Observed direct and supply-chain payroll"
+      },
+      "derivation": {
+        "method": "input_output_multiplier",
+        "model_version": "full-county-account-1.0.0",
+        "formula": "direct FTE × $421,500 total labor income per direct FTE",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_pwc_data_center_market_2021"
+        ],
+        "assumptions": [
+          "All transferred coefficients and allocation shares are exposed as parameters.",
+          "The estimate must not be presented as observed, audited or source-reported."
+        ]
+      },
+      "limitations": [
+        "Transferred Virginia coefficient.",
+        "Not additive to direct payroll or supplier output."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Annual contribution scenario.",
+      "reviewed_on": "2026-09-05",
+      "multiplier_provenance": {
+        "source_id": "src_study_pwc_data_center_market_2021",
+        "model_name": "IMPLAN county contribution model reported by BAE",
+        "model_version": "Prince William County prototype-data-center study, 2021-dollar tables 7-8",
+        "geography": "Prince William County, Virginia benchmark transferred to the named host county",
+        "vintage": "IMPLAN model reported December 2021; underlying IMPLAN data vintage not disclosed",
+        "local_purchase_assumption": "The scenario base and local-share assumptions are stated in the record; no unreported local purchase is assumed observed.",
+        "channel_separation": "direct_indirect_induced_reported_separately"
+      }
+    },
+    {
+      "estimate_id": "est_study_full_apple_mesa_operating_supplier_output",
+      "project_id": "prj_study_im3_building_00300974499",
+      "metric_code": "study.modeled_operating_supplier_output",
+      "label": "Modeled annual operating supplier output",
+      "category": "suppliers",
+      "unit": "USD_per_year",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 77955843.03,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2024,
+        "label": "Annual indirect supplier-output scenario"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Apple Mesa facility and Maricopa County",
+        "county_fips": "04013",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": 62734491.21,
+        "central": 77955843.03,
+        "high": 93170796.64,
+        "interpretation": "Low, central and high values are an explicit sensitivity range, not a statistical confidence interval."
+      },
+      "contribution_channel": "indirect",
+      "aggregation": {
+        "aggregation_id": "full_apple_mesa_operating_supplier_output",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "direct_fte_central",
+          "value": 121.84,
+          "unit": "FTE",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Central direct-FTE model"
+          },
+          "transformation": "Multiplied by indirect supplier-output coefficient"
+        },
+        {
+          "name": "supplier_output_per_direct_fte",
+          "value": 639821.43,
+          "unit": "USD_per_FTE",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_pwc_data_center_market_2021",
+            "detail": "Prince William indirect operating-output coefficient"
+          },
+          "transformation": "Multiplies direct FTE"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The calculation is reproducible but relies on transferred public benchmarks or explicit assumptions where direct local observations are unavailable.",
+      "decision_relevance": "Completes the annual supplier-output field.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Observed supplier purchases and vendor geography"
+      },
+      "derivation": {
+        "method": "input_output_multiplier",
+        "model_version": "full-county-account-1.0.0",
+        "formula": "direct FTE × $639,821.43 indirect output per direct FTE",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_pwc_data_center_market_2021"
+        ],
+        "assumptions": [
+          "All transferred coefficients and allocation shares are exposed as parameters.",
+          "The estimate must not be presented as observed, audited or source-reported."
+        ]
+      },
+      "limitations": [
+        "Transferred Virginia coefficient.",
+        "Output is not vendor payments or local-only purchasing."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Indirect supplier-output scenario.",
+      "reviewed_on": "2026-09-05",
+      "multiplier_provenance": {
+        "source_id": "src_study_pwc_data_center_market_2021",
+        "model_name": "IMPLAN county contribution model reported by BAE",
+        "model_version": "Prince William County prototype-data-center study, 2021-dollar tables 7-8",
+        "geography": "Prince William County, Virginia benchmark transferred to the named host county",
+        "vintage": "IMPLAN model reported December 2021; underlying IMPLAN data vintage not disclosed",
+        "local_purchase_assumption": "The scenario base and local-share assumptions are stated in the record; no unreported local purchase is assumed observed.",
+        "channel_separation": "direct_indirect_induced_reported_separately"
+      }
+    },
+    {
+      "estimate_id": "est_study_full_apple_mesa_household_output",
+      "project_id": "prj_study_im3_building_00300974499",
+      "metric_code": "study.modeled_induced_household_output",
+      "label": "Modeled annual induced household output",
+      "category": "community",
+      "unit": "USD_per_year",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 14368416.97,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2024,
+        "label": "Annual induced household-spending scenario"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Apple Mesa facility and Maricopa County",
+        "county_fips": "04013",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": 11562896.29,
+        "central": 14368416.97,
+        "high": 17172758.36,
+        "interpretation": "Low, central and high values are an explicit sensitivity range, not a statistical confidence interval."
+      },
+      "contribution_channel": "induced",
+      "aggregation": {
+        "aggregation_id": "full_apple_mesa_household_output",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "direct_fte_central",
+          "value": 121.84,
+          "unit": "FTE",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Central direct-FTE model"
+          },
+          "transformation": "Multiplied by induced household-output coefficient"
+        },
+        {
+          "name": "household_output_per_direct_fte",
+          "value": 117928.57,
+          "unit": "USD_per_FTE",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_pwc_data_center_market_2021",
+            "detail": "Prince William induced operating-output coefficient"
+          },
+          "transformation": "Multiplies direct FTE"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The calculation is reproducible but relies on transferred public benchmarks or explicit assumptions where direct local observations are unavailable.",
+      "decision_relevance": "Completes the household-spending contribution field.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Observed household spending and worker residence"
+      },
+      "derivation": {
+        "method": "input_output_multiplier",
+        "model_version": "full-county-account-1.0.0",
+        "formula": "direct FTE × $117,928.57 induced output per direct FTE",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_pwc_data_center_market_2021"
+        ],
+        "assumptions": [
+          "All transferred coefficients and allocation shares are exposed as parameters.",
+          "The estimate must not be presented as observed, audited or source-reported."
+        ]
+      },
+      "limitations": [
+        "Transferred Virginia coefficient.",
+        "Economic output is not a charitable contribution or tax receipt."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Induced household-output scenario.",
+      "reviewed_on": "2026-09-05",
+      "multiplier_provenance": {
+        "source_id": "src_study_pwc_data_center_market_2021",
+        "model_name": "IMPLAN county contribution model reported by BAE",
+        "model_version": "Prince William County prototype-data-center study, 2021-dollar tables 7-8",
+        "geography": "Prince William County, Virginia benchmark transferred to the named host county",
+        "vintage": "IMPLAN model reported December 2021; underlying IMPLAN data vintage not disclosed",
+        "local_purchase_assumption": "The scenario base and local-share assumptions are stated in the record; no unreported local purchase is assumed observed.",
+        "channel_separation": "direct_indirect_induced_reported_separately"
+      }
+    },
+    {
+      "estimate_id": "est_study_full_switch_storey_annualized_capital",
+      "project_id": "prj_study_im3_point_06685432442",
+      "metric_code": "study.modeled_annualized_capital_spending",
+      "label": "Modeled annualized capital spending",
+      "category": "investment",
+      "unit": "USD_per_year",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 36822028.31,
+      "period": {
+        "kind": "construction_period",
+        "start_date": "2015-01-01",
+        "end_date": "2021-06-30",
+        "label": "Documented development window used for the completed modeled account"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Switch Citadel / Tahoe Reno 1 and Storey County",
+        "county_fips": "32029",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": 29917898,
+        "central": 36822028.31,
+        "high": 47868636.8,
+        "interpretation": "Low, central and high values are an explicit sensitivity range, not a statistical confidence interval."
+      },
+      "contribution_channel": "direct",
+      "aggregation": {
+        "aggregation_id": "full_switch_storey_annualized_capital",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "audited_capital",
+          "value": 179943184,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_switch_storey_audit_capex_2020",
+            "detail": "Public capital component retained in the source account"
+          },
+          "transformation": "Included in the summed public capital basis"
+        },
+        {
+          "name": "post_audit_q2_capital",
+          "value": 59400000,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_switch_citadel_capex_2021_q2",
+            "detail": "Public capital component retained in the source account"
+          },
+          "transformation": "Included in the summed public capital basis"
+        },
+        {
+          "name": "central_construction_years",
+          "value": 6.499999999592634,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Elapsed construction years used only for annualization"
+          },
+          "transformation": "Divides cumulative capital"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The calculation is reproducible but relies on transferred public benchmarks or explicit assumptions where direct local observations are unavailable.",
+      "decision_relevance": "Supplies a comparable annual construction-spending flow.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Audited annual capital ledger and phase allocations"
+      },
+      "derivation": {
+        "method": "sensitivity_analysis",
+        "model_version": "full-county-account-1.0.0",
+        "formula": "sum of public capital components ÷ assumed active construction years",
+        "input_claim_ids": [
+          "clm_study_switch_storey_audit_capex_2020",
+          "clm_study_switch_citadel_capex_2021_q2"
+        ],
+        "input_source_ids": [
+          "src_study_nevada_goed_switch_abatement_audit_2023",
+          "src_study_switch_sec_q2_2021_results"
+        ],
+        "assumptions": [
+          "All transferred coefficients and allocation shares are exposed as parameters.",
+          "The estimate must not be presented as observed, audited or source-reported."
+        ]
+      },
+      "limitations": [
+        "Annualization smooths uneven construction phases.",
+        "Does not identify vendor geography or payroll."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Completed modeled field; direct annual records would replace this range.",
+      "reviewed_on": "2026-09-05"
+    },
+    {
+      "estimate_id": "est_study_full_switch_storey_local_construction_spend",
+      "project_id": "prj_study_im3_point_06685432442",
+      "metric_code": "study.modeled_local_construction_spending",
+      "label": "Modeled local construction spending",
+      "category": "suppliers",
+      "unit": "USD",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 95737273.6,
+      "period": {
+        "kind": "construction_period",
+        "start_date": "2015-01-01",
+        "end_date": "2021-06-30",
+        "label": "Documented development window used for the completed modeled account"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Switch Citadel / Tahoe Reno 1 and Storey County",
+        "county_fips": "32029",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": 59835796.0,
+        "central": 95737273.6,
+        "high": 131638751.2,
+        "interpretation": "Low, central and high values are an explicit sensitivity range, not a statistical confidence interval."
+      },
+      "contribution_channel": "direct",
+      "aggregation": {
+        "aggregation_id": "full_switch_storey_local_construction_spend",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "audited_capital",
+          "value": 179943184,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_switch_storey_audit_capex_2020",
+            "detail": "Public capital component retained in the source account"
+          },
+          "transformation": "Included in the summed public capital basis"
+        },
+        {
+          "name": "post_audit_q2_capital",
+          "value": 59400000,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_switch_citadel_capex_2021_q2",
+            "detail": "Public capital component retained in the source account"
+          },
+          "transformation": "Included in the summed public capital basis"
+        },
+        {
+          "name": "central_local_share",
+          "value": 0.4,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Explicit local-purchase midpoint"
+          },
+          "transformation": "Allocates capital to host-region suppliers"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The calculation is reproducible but relies on transferred public benchmarks or explicit assumptions where direct local observations are unavailable.",
+      "decision_relevance": "Fills the local-construction-purchase field without treating the allocation as observed.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Audited vendor payments and vendor addresses"
+      },
+      "derivation": {
+        "method": "sensitivity_analysis",
+        "model_version": "full-county-account-1.0.0",
+        "formula": "sum of public capital components × local purchase share",
+        "input_claim_ids": [
+          "clm_study_switch_storey_audit_capex_2020",
+          "clm_study_switch_citadel_capex_2021_q2"
+        ],
+        "input_source_ids": [
+          "src_study_nevada_goed_switch_abatement_audit_2023",
+          "src_study_switch_sec_q2_2021_results"
+        ],
+        "assumptions": [
+          "All transferred coefficients and allocation shares are exposed as parameters.",
+          "The estimate must not be presented as observed, audited or source-reported."
+        ]
+      },
+      "limitations": [
+        "The local share is assumed.",
+        "Capital includes equipment that may be purchased outside the county."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Low-confidence local-spending sensitivity.",
+      "reviewed_on": "2026-09-05"
+    },
+    {
+      "estimate_id": "est_study_full_switch_storey_construction_job_years_total",
+      "project_id": "prj_study_im3_point_06685432442",
+      "metric_code": "study.modeled_construction_job_years_total",
+      "label": "Modeled total construction job-years",
+      "category": "construction",
+      "unit": "job_years",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 2094.04,
+      "period": {
+        "kind": "construction_period",
+        "start_date": "2015-01-01",
+        "end_date": "2021-06-30",
+        "label": "Documented development window used for the completed modeled account"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Switch Citadel / Tahoe Reno 1 and Storey County",
+        "county_fips": "32029",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": 1570.53,
+        "central": 2094.04,
+        "high": 2617.55,
+        "interpretation": "Low, central and high values are an explicit sensitivity range, not a statistical confidence interval."
+      },
+      "contribution_channel": "total",
+      "aggregation": {
+        "aggregation_id": "full_switch_storey_construction_job_years_total",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "audited_capital",
+          "value": 179943184,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_switch_storey_audit_capex_2020",
+            "detail": "Public capital component retained in the source account"
+          },
+          "transformation": "Included in the summed public capital basis"
+        },
+        {
+          "name": "post_audit_q2_capital",
+          "value": 59400000,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_switch_citadel_capex_2021_q2",
+            "detail": "Public capital component retained in the source account"
+          },
+          "transformation": "Included in the summed public capital basis"
+        },
+        {
+          "name": "total_job_years_per_million",
+          "value": 8.7491,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_pwc_data_center_market_2021",
+            "detail": "Prince William construction contribution coefficient"
+          },
+          "transformation": "Multiplies capital in millions"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The calculation is reproducible but relies on transferred public benchmarks or explicit assumptions where direct local observations are unavailable.",
+      "decision_relevance": "Completes the construction employment contribution field.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Project payroll records, worker hours and local residence"
+      },
+      "derivation": {
+        "method": "input_output_multiplier",
+        "model_version": "full-county-account-1.0.0",
+        "formula": "capital scenario × 8.7491 total job-years per $1 million",
+        "input_claim_ids": [
+          "clm_study_switch_storey_audit_capex_2020",
+          "clm_study_switch_citadel_capex_2021_q2"
+        ],
+        "input_source_ids": [
+          "src_study_pwc_data_center_market_2021",
+          "src_study_nevada_goed_switch_abatement_audit_2023",
+          "src_study_switch_sec_q2_2021_results"
+        ],
+        "assumptions": [
+          "All transferred coefficients and allocation shares are exposed as parameters.",
+          "The estimate must not be presented as observed, audited or source-reported."
+        ]
+      },
+      "limitations": [
+        "Transferred Virginia coefficient.",
+        "Job-years are not peak workers or permanent jobs."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Contribution estimate, not causal employment.",
+      "reviewed_on": "2026-09-05",
+      "multiplier_provenance": {
+        "source_id": "src_study_pwc_data_center_market_2021",
+        "model_name": "IMPLAN county contribution model reported by BAE",
+        "model_version": "Prince William County prototype-data-center study, 2021-dollar tables 7-8",
+        "geography": "Prince William County, Virginia benchmark transferred to the named host county",
+        "vintage": "IMPLAN model reported December 2021; underlying IMPLAN data vintage not disclosed",
+        "local_purchase_assumption": "The scenario base and local-share assumptions are stated in the record; no unreported local purchase is assumed observed.",
+        "channel_separation": "direct_indirect_induced_reported_separately"
+      }
+    },
+    {
+      "estimate_id": "est_study_full_switch_storey_construction_labor_income_total",
+      "project_id": "prj_study_im3_point_06685432442",
+      "metric_code": "study.modeled_construction_labor_income_total",
+      "label": "Modeled total construction labor income",
+      "category": "construction",
+      "unit": "USD",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 126728299.41,
+      "period": {
+        "kind": "construction_period",
+        "start_date": "2015-01-01",
+        "end_date": "2021-06-30",
+        "label": "Documented development window used for the completed modeled account"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Switch Citadel / Tahoe Reno 1 and Storey County",
+        "county_fips": "32029",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": 95046224.56,
+        "central": 126728299.41,
+        "high": 158410374.26,
+        "interpretation": "Low, central and high values are an explicit sensitivity range, not a statistical confidence interval."
+      },
+      "contribution_channel": "total",
+      "aggregation": {
+        "aggregation_id": "full_switch_storey_construction_labor_income_total",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "audited_capital",
+          "value": 179943184,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_switch_storey_audit_capex_2020",
+            "detail": "Public capital component retained in the source account"
+          },
+          "transformation": "Included in the summed public capital basis"
+        },
+        {
+          "name": "post_audit_q2_capital",
+          "value": 59400000,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_switch_citadel_capex_2021_q2",
+            "detail": "Public capital component retained in the source account"
+          },
+          "transformation": "Included in the summed public capital basis"
+        },
+        {
+          "name": "total_labor_income_rate",
+          "value": 0.5294836364,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_pwc_data_center_market_2021",
+            "detail": "Prince William construction labor-income coefficient"
+          },
+          "transformation": "Multiplies capital"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The calculation is reproducible but relies on transferred public benchmarks or explicit assumptions where direct local observations are unavailable.",
+      "decision_relevance": "Completes the construction labor-income field.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Audited project payroll and worker residence"
+      },
+      "derivation": {
+        "method": "input_output_multiplier",
+        "model_version": "full-county-account-1.0.0",
+        "formula": "capital scenario × 0.5294836364 total labor-income coefficient",
+        "input_claim_ids": [
+          "clm_study_switch_storey_audit_capex_2020",
+          "clm_study_switch_citadel_capex_2021_q2"
+        ],
+        "input_source_ids": [
+          "src_study_pwc_data_center_market_2021",
+          "src_study_nevada_goed_switch_abatement_audit_2023",
+          "src_study_switch_sec_q2_2021_results"
+        ],
+        "assumptions": [
+          "All transferred coefficients and allocation shares are exposed as parameters.",
+          "The estimate must not be presented as observed, audited or source-reported."
+        ]
+      },
+      "limitations": [
+        "Transferred Virginia coefficient.",
+        "Labor income is not additive to output or payroll proxies."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Contribution estimate, not observed payroll.",
+      "reviewed_on": "2026-09-05",
+      "multiplier_provenance": {
+        "source_id": "src_study_pwc_data_center_market_2021",
+        "model_name": "IMPLAN county contribution model reported by BAE",
+        "model_version": "Prince William County prototype-data-center study, 2021-dollar tables 7-8",
+        "geography": "Prince William County, Virginia benchmark transferred to the named host county",
+        "vintage": "IMPLAN model reported December 2021; underlying IMPLAN data vintage not disclosed",
+        "local_purchase_assumption": "The scenario base and local-share assumptions are stated in the record; no unreported local purchase is assumed observed.",
+        "channel_separation": "direct_indirect_induced_reported_separately"
+      }
+    },
+    {
+      "estimate_id": "est_study_full_switch_storey_operating_fte_total",
+      "project_id": "prj_study_im3_point_06685432442",
+      "metric_code": "study.modeled_operating_fte_total",
+      "label": "Modeled total annual operating FTE",
+      "category": "operations",
+      "unit": "FTE",
+      "measure_type": "stock",
+      "basis": "modeled_synthesis",
+      "value": 690.6,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2020,
+        "label": "Annual operating contribution scenario"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Switch Citadel / Tahoe Reno 1 and Storey County",
+        "county_fips": "32029",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": 655.72,
+        "central": 690.6,
+        "high": 725.47,
+        "interpretation": "Low, central and high values are an explicit sensitivity range, not a statistical confidence interval."
+      },
+      "contribution_channel": "total",
+      "aggregation": {
+        "aggregation_id": "full_switch_storey_operating_fte_total",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "direct_fte_central",
+          "value": 105.6635,
+          "unit": "FTE",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Central direct-FTE model"
+          },
+          "transformation": "Multiplied by total contribution coefficient"
+        },
+        {
+          "name": "total_fte_per_direct_fte",
+          "value": 6.5358,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_pwc_data_center_market_2021",
+            "detail": "Prince William operating contribution coefficient"
+          },
+          "transformation": "Multiplies direct FTE"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The calculation is reproducible but relies on transferred public benchmarks or explicit assumptions where direct local observations are unavailable.",
+      "decision_relevance": "Completes the annual operating-employment contribution field.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Observed contractor, supplier and induced employment"
+      },
+      "derivation": {
+        "method": "input_output_multiplier",
+        "model_version": "full-county-account-1.0.0",
+        "formula": "direct FTE × 6.5358 total-FTE coefficient",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_pwc_data_center_market_2021"
+        ],
+        "assumptions": [
+          "All transferred coefficients and allocation shares are exposed as parameters.",
+          "The estimate must not be presented as observed, audited or source-reported."
+        ]
+      },
+      "limitations": [
+        "Transferred Virginia coefficient.",
+        "Includes direct, indirect and induced channels and must not be added to them."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Annual contribution scenario.",
+      "reviewed_on": "2026-09-05",
+      "multiplier_provenance": {
+        "source_id": "src_study_pwc_data_center_market_2021",
+        "model_name": "IMPLAN county contribution model reported by BAE",
+        "model_version": "Prince William County prototype-data-center study, 2021-dollar tables 7-8",
+        "geography": "Prince William County, Virginia benchmark transferred to the named host county",
+        "vintage": "IMPLAN model reported December 2021; underlying IMPLAN data vintage not disclosed",
+        "local_purchase_assumption": "The scenario base and local-share assumptions are stated in the record; no unreported local purchase is assumed observed.",
+        "channel_separation": "direct_indirect_induced_reported_separately"
+      }
+    },
+    {
+      "estimate_id": "est_study_full_switch_storey_operating_labor_income_total",
+      "project_id": "prj_study_im3_point_06685432442",
+      "metric_code": "study.modeled_operating_labor_income_total",
+      "label": "Modeled total annual operating labor income",
+      "category": "operations",
+      "unit": "USD_per_year",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 44537165.25,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2020,
+        "label": "Annual operating labor-income scenario"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Switch Citadel / Tahoe Reno 1 and Storey County",
+        "county_fips": "32029",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": 42287788.35,
+        "central": 44537165.25,
+        "high": 46786500,
+        "interpretation": "Low, central and high values are an explicit sensitivity range, not a statistical confidence interval."
+      },
+      "contribution_channel": "total",
+      "aggregation": {
+        "aggregation_id": "full_switch_storey_operating_labor_income_total",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "direct_fte_central",
+          "value": 105.6635,
+          "unit": "FTE",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Central direct-FTE model"
+          },
+          "transformation": "Multiplied by total labor-income coefficient"
+        },
+        {
+          "name": "total_labor_income_per_direct_fte",
+          "value": 421500,
+          "unit": "USD_per_FTE",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_pwc_data_center_market_2021",
+            "detail": "Prince William operating contribution coefficient"
+          },
+          "transformation": "Multiplies direct FTE"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The calculation is reproducible but relies on transferred public benchmarks or explicit assumptions where direct local observations are unavailable.",
+      "decision_relevance": "Completes the annual operating labor-income field.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Observed direct and supply-chain payroll"
+      },
+      "derivation": {
+        "method": "input_output_multiplier",
+        "model_version": "full-county-account-1.0.0",
+        "formula": "direct FTE × $421,500 total labor income per direct FTE",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_pwc_data_center_market_2021"
+        ],
+        "assumptions": [
+          "All transferred coefficients and allocation shares are exposed as parameters.",
+          "The estimate must not be presented as observed, audited or source-reported."
+        ]
+      },
+      "limitations": [
+        "Transferred Virginia coefficient.",
+        "Not additive to direct payroll or supplier output."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Annual contribution scenario.",
+      "reviewed_on": "2026-09-05",
+      "multiplier_provenance": {
+        "source_id": "src_study_pwc_data_center_market_2021",
+        "model_name": "IMPLAN county contribution model reported by BAE",
+        "model_version": "Prince William County prototype-data-center study, 2021-dollar tables 7-8",
+        "geography": "Prince William County, Virginia benchmark transferred to the named host county",
+        "vintage": "IMPLAN model reported December 2021; underlying IMPLAN data vintage not disclosed",
+        "local_purchase_assumption": "The scenario base and local-share assumptions are stated in the record; no unreported local purchase is assumed observed.",
+        "channel_separation": "direct_indirect_induced_reported_separately"
+      }
+    },
+    {
+      "estimate_id": "est_study_full_switch_storey_operating_supplier_output",
+      "project_id": "prj_study_im3_point_06685432442",
+      "metric_code": "study.modeled_operating_supplier_output",
+      "label": "Modeled annual operating supplier output",
+      "category": "suppliers",
+      "unit": "USD_per_year",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 67605771.67,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2020,
+        "label": "Annual indirect supplier-output scenario"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Switch Citadel / Tahoe Reno 1 and Storey County",
+        "county_fips": "32029",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": 64191300.63,
+        "central": 67605771.67,
+        "high": 71020178.73,
+        "interpretation": "Low, central and high values are an explicit sensitivity range, not a statistical confidence interval."
+      },
+      "contribution_channel": "indirect",
+      "aggregation": {
+        "aggregation_id": "full_switch_storey_operating_supplier_output",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "direct_fte_central",
+          "value": 105.6635,
+          "unit": "FTE",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Central direct-FTE model"
+          },
+          "transformation": "Multiplied by indirect supplier-output coefficient"
+        },
+        {
+          "name": "supplier_output_per_direct_fte",
+          "value": 639821.43,
+          "unit": "USD_per_FTE",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_pwc_data_center_market_2021",
+            "detail": "Prince William indirect operating-output coefficient"
+          },
+          "transformation": "Multiplies direct FTE"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The calculation is reproducible but relies on transferred public benchmarks or explicit assumptions where direct local observations are unavailable.",
+      "decision_relevance": "Completes the annual supplier-output field.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Observed supplier purchases and vendor geography"
+      },
+      "derivation": {
+        "method": "input_output_multiplier",
+        "model_version": "full-county-account-1.0.0",
+        "formula": "direct FTE × $639,821.43 indirect output per direct FTE",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_pwc_data_center_market_2021"
+        ],
+        "assumptions": [
+          "All transferred coefficients and allocation shares are exposed as parameters.",
+          "The estimate must not be presented as observed, audited or source-reported."
+        ]
+      },
+      "limitations": [
+        "Transferred Virginia coefficient.",
+        "Output is not vendor payments or local-only purchasing."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Indirect supplier-output scenario.",
+      "reviewed_on": "2026-09-05",
+      "multiplier_provenance": {
+        "source_id": "src_study_pwc_data_center_market_2021",
+        "model_name": "IMPLAN county contribution model reported by BAE",
+        "model_version": "Prince William County prototype-data-center study, 2021-dollar tables 7-8",
+        "geography": "Prince William County, Virginia benchmark transferred to the named host county",
+        "vintage": "IMPLAN model reported December 2021; underlying IMPLAN data vintage not disclosed",
+        "local_purchase_assumption": "The scenario base and local-share assumptions are stated in the record; no unreported local purchase is assumed observed.",
+        "channel_separation": "direct_indirect_induced_reported_separately"
+      }
+    },
+    {
+      "estimate_id": "est_study_full_switch_storey_household_output",
+      "project_id": "prj_study_im3_point_06685432442",
+      "metric_code": "study.modeled_induced_household_output",
+      "label": "Modeled annual induced household output",
+      "category": "community",
+      "unit": "USD_per_year",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 12460745.46,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2020,
+        "label": "Annual induced household-spending scenario"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Switch Citadel / Tahoe Reno 1 and Storey County",
+        "county_fips": "32029",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": 11831407.85,
+        "central": 12460745.46,
+        "high": 13090071.27,
+        "interpretation": "Low, central and high values are an explicit sensitivity range, not a statistical confidence interval."
+      },
+      "contribution_channel": "induced",
+      "aggregation": {
+        "aggregation_id": "full_switch_storey_household_output",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "direct_fte_central",
+          "value": 105.6635,
+          "unit": "FTE",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Central direct-FTE model"
+          },
+          "transformation": "Multiplied by induced household-output coefficient"
+        },
+        {
+          "name": "household_output_per_direct_fte",
+          "value": 117928.57,
+          "unit": "USD_per_FTE",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_pwc_data_center_market_2021",
+            "detail": "Prince William induced operating-output coefficient"
+          },
+          "transformation": "Multiplies direct FTE"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The calculation is reproducible but relies on transferred public benchmarks or explicit assumptions where direct local observations are unavailable.",
+      "decision_relevance": "Completes the household-spending contribution field.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Observed household spending and worker residence"
+      },
+      "derivation": {
+        "method": "input_output_multiplier",
+        "model_version": "full-county-account-1.0.0",
+        "formula": "direct FTE × $117,928.57 induced output per direct FTE",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_pwc_data_center_market_2021"
+        ],
+        "assumptions": [
+          "All transferred coefficients and allocation shares are exposed as parameters.",
+          "The estimate must not be presented as observed, audited or source-reported."
+        ]
+      },
+      "limitations": [
+        "Transferred Virginia coefficient.",
+        "Economic output is not a charitable contribution or tax receipt."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Induced household-output scenario.",
+      "reviewed_on": "2026-09-05",
+      "multiplier_provenance": {
+        "source_id": "src_study_pwc_data_center_market_2021",
+        "model_name": "IMPLAN county contribution model reported by BAE",
+        "model_version": "Prince William County prototype-data-center study, 2021-dollar tables 7-8",
+        "geography": "Prince William County, Virginia benchmark transferred to the named host county",
+        "vintage": "IMPLAN model reported December 2021; underlying IMPLAN data vintage not disclosed",
+        "local_purchase_assumption": "The scenario base and local-share assumptions are stated in the record; no unreported local purchase is assumed observed.",
+        "channel_separation": "direct_indirect_induced_reported_separately"
+      }
+    },
+    {
+      "estimate_id": "est_study_full_apple_mesa_annual_public_service_cost",
+      "project_id": "prj_study_im3_building_00300974499",
+      "metric_code": "study.modeled_annual_public_service_cost",
+      "label": "Modeled annual attributable public-service cost",
+      "category": "public_costs",
+      "unit": "USD_per_year",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 655681.57,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2025,
+        "label": "Comparable annual fiscal-account scenario"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Apple Mesa facility and Maricopa County",
+        "county_fips": "04013",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": 374675.18,
+        "central": 655681.57,
+        "high": 936687.96,
+        "interpretation": "Low, central and high values are an explicit sensitivity range, not a statistical confidence interval."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "full_apple_mesa_annual_public_service_cost",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "gross_property_tax",
+          "value": 1873375.92,
+          "unit": "USD",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Latest complete project-linked property-tax measure"
+          },
+          "transformation": "Multiplied by service-cost share"
+        },
+        {
+          "name": "central_service_cost_share",
+          "value": 0.35,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Explicit central allocation share"
+          },
+          "transformation": "Allocates public service cost"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The calculation is reproducible but relies on transferred public benchmarks or explicit assumptions where direct local observations are unavailable.",
+      "decision_relevance": "Fills the attributable service-cost side of the annual fiscal account.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Agency expenditures by service and recipient jurisdiction"
+      },
+      "derivation": {
+        "method": "sensitivity_analysis",
+        "model_version": "full-county-account-1.0.0",
+        "formula": "gross project-linked property tax × service-cost share",
+        "input_claim_ids": [
+          "clm_study_apple_mesa_bpp_property_taxes_paid_2025",
+          "clm_study_apple_mesa_real_property_taxes_paid_2025",
+          "clm_study_apple_mesa_state_tax_credit_cost_plan_2024"
+        ],
+        "input_source_ids": [
+          "src_study_maricopa_treasurer_apple_bpp_2026",
+          "src_study_maricopa_treasurer_apple_real_2026",
+          "src_study_arizona_ioc_tax_credit_review_2024"
+        ],
+        "assumptions": [
+          "All transferred coefficients and allocation shares are exposed as parameters.",
+          "The estimate must not be presented as observed, audited or source-reported."
+        ]
+      },
+      "limitations": [
+        "Service-cost shares are assumed.",
+        "Does not identify infrastructure financing or marginal capacity costs."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Public-cost sensitivity used only in the net fiscal scenario.",
+      "reviewed_on": "2026-09-05"
+    },
+    {
+      "estimate_id": "est_study_full_apple_mesa_annual_net_fiscal",
+      "project_id": "prj_study_im3_building_00300974499",
+      "metric_code": "study.modeled_annual_net_fiscal_position",
+      "label": "Modeled annual net fiscal position",
+      "category": "fiscal",
+      "unit": "USD_per_year",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": -5403732.67,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2025,
+        "label": "Comparable annual fiscal-account scenario"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Apple Mesa facility and Maricopa County",
+        "county_fips": "04013",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": -7009024.46,
+        "central": -5403732.67,
+        "high": -3798440.88,
+        "interpretation": "Low, central and high values are an explicit sensitivity range, not a statistical confidence interval."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "full_apple_mesa_annual_net_fiscal",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "gross_property_tax",
+          "value": 1873375.92,
+          "unit": "USD",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Latest complete project-linked property-tax measure"
+          },
+          "transformation": "Added as gross revenue"
+        },
+        {
+          "name": "annualized_public_support",
+          "value": 6621427.02,
+          "unit": "USD_per_year",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Annualized incentive, reduction and financing-cost scenario"
+          },
+          "transformation": "Subtracted from revenue"
+        },
+        {
+          "name": "central_public_service_cost",
+          "value": 655681.5719999999,
+          "unit": "USD_per_year",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Central service-cost allocation"
+          },
+          "transformation": "Subtracted from revenue"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The calculation is reproducible but relies on transferred public benchmarks or explicit assumptions where direct local observations are unavailable.",
+      "decision_relevance": "Provides a complete but explicitly modeled annual fiscal balance for comparison.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Recipient-level revenues, realized incentive timing and marginal service expenditures"
+      },
+      "derivation": {
+        "method": "sensitivity_analysis",
+        "model_version": "full-county-account-1.0.0",
+        "formula": "gross project-linked property tax − annualized incentives/reductions − attributable service cost",
+        "input_claim_ids": [
+          "clm_study_apple_mesa_bpp_property_taxes_paid_2025",
+          "clm_study_apple_mesa_real_property_taxes_paid_2025",
+          "clm_study_apple_mesa_state_tax_credit_cost_plan_2024"
+        ],
+        "input_source_ids": [
+          "src_study_maricopa_treasurer_apple_bpp_2026",
+          "src_study_maricopa_treasurer_apple_real_2026",
+          "src_study_arizona_ioc_tax_credit_review_2024"
+        ],
+        "assumptions": [
+          "All transferred coefficients and allocation shares are exposed as parameters.",
+          "The estimate must not be presented as observed, audited or source-reported."
+        ]
+      },
+      "limitations": [
+        "Negative values mean modeled public costs exceed the narrow project-linked revenue measure.",
+        "This is not an audited government-wide fiscal result."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Completed modeled fiscal account; each component remains separately visible.",
+      "reviewed_on": "2026-09-05"
+    },
+    {
+      "estimate_id": "est_study_full_apple_mesa_wastewater",
+      "project_id": "prj_study_im3_building_00300974499",
+      "metric_code": "study.modeled_annual_wastewater_discharge",
+      "label": "Modeled annual wastewater discharge",
+      "category": "resources",
+      "unit": "gallons_per_year",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 54661036.03,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2025,
+        "label": "Annual water-discharge sensitivity"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Apple Mesa facility and Maricopa County",
+        "county_fips": "04013",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": 15305090.09,
+        "central": 54661036.03,
+        "high": 113694954.94,
+        "interpretation": "Low, central and high values are an explicit sensitivity range, not a statistical confidence interval."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "full_apple_mesa_wastewater",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "central_onsite_water",
+          "value": 109322072.06,
+          "unit": "gallons_per_year",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Published onsite-water model central value"
+          },
+          "transformation": "Multiplied by discharge share"
+        },
+        {
+          "name": "central_discharge_share",
+          "value": 0.5,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Explicit return-flow assumption"
+          },
+          "transformation": "Allocates water to wastewater discharge"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The calculation is reproducible but relies on transferred public benchmarks or explicit assumptions where direct local observations are unavailable.",
+      "decision_relevance": "Completes the annual wastewater field alongside withdrawal and consumption.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Metered discharge, reuse and evaporation by cooling system"
+      },
+      "derivation": {
+        "method": "engineering_estimate",
+        "model_version": "full-county-account-1.0.0",
+        "formula": "modeled onsite water × discharge share",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_lbnl_dc_energy_2024"
+        ],
+        "assumptions": [
+          "All transferred coefficients and allocation shares are exposed as parameters.",
+          "The estimate must not be presented as observed, audited or source-reported."
+        ]
+      },
+      "limitations": [
+        "Discharge share is assumed.",
+        "Does not distinguish sanitary, blowdown, reuse or evaporation flows."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Engineering sensitivity, not a permit or meter value.",
+      "reviewed_on": "2026-09-05"
+    },
+    {
+      "estimate_id": "est_study_full_switch_storey_annual_public_service_cost",
+      "project_id": "prj_study_im3_point_06685432442",
+      "metric_code": "study.modeled_annual_public_service_cost",
+      "label": "Modeled annual attributable public-service cost",
+      "category": "public_costs",
+      "unit": "USD_per_year",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 1208370.44,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2025,
+        "label": "Comparable annual fiscal-account scenario"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Switch Citadel / Tahoe Reno 1 and Storey County",
+        "county_fips": "32029",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": 690497.39,
+        "central": 1208370.44,
+        "high": 1726243.48,
+        "interpretation": "Low, central and high values are an explicit sensitivity range, not a statistical confidence interval."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "full_switch_storey_annual_public_service_cost",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "gross_property_tax",
+          "value": 3452486.96,
+          "unit": "USD",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Latest complete project-linked property-tax measure"
+          },
+          "transformation": "Multiplied by service-cost share"
+        },
+        {
+          "name": "central_service_cost_share",
+          "value": 0.35,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Explicit central allocation share"
+          },
+          "transformation": "Allocates public service cost"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The calculation is reproducible but relies on transferred public benchmarks or explicit assumptions where direct local observations are unavailable.",
+      "decision_relevance": "Fills the attributable service-cost side of the annual fiscal account.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Agency expenditures by service and recipient jurisdiction"
+      },
+      "derivation": {
+        "method": "sensitivity_analysis",
+        "model_version": "full-county-account-1.0.0",
+        "formula": "gross project-linked property tax × service-cost share",
+        "input_claim_ids": [
+          "clm_study_switch_citadel_property_taxes_paid_2026",
+          "clm_study_switch_citadel_real_property_taxes_paid_2025",
+          "clm_study_switch_storey_sales_tax_abatement_plan_2015",
+          "clm_study_switch_storey_personal_property_abatement_plan_2015"
+        ],
+        "input_source_ids": [
+          "src_study_storey_switch_cm001611_2026",
+          "src_study_storey_switch_parcel_00501223_2026",
+          "src_study_nevada_goed_switch_abatement_audit_2023"
+        ],
+        "assumptions": [
+          "All transferred coefficients and allocation shares are exposed as parameters.",
+          "The estimate must not be presented as observed, audited or source-reported."
+        ]
+      },
+      "limitations": [
+        "Service-cost shares are assumed.",
+        "Does not identify infrastructure financing or marginal capacity costs."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Public-cost sensitivity used only in the net fiscal scenario.",
+      "reviewed_on": "2026-09-05"
+    },
+    {
+      "estimate_id": "est_study_full_switch_storey_annual_net_fiscal",
+      "project_id": "prj_study_im3_point_06685432442",
+      "metric_code": "study.modeled_annual_net_fiscal_position",
+      "label": "Modeled annual net fiscal position",
+      "category": "fiscal",
+      "unit": "USD_per_year",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": -3146671.13,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2025,
+        "label": "Comparable annual fiscal-account scenario"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Switch Citadel / Tahoe Reno 1 and Storey County",
+        "county_fips": "32029",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": -4742701.7,
+        "central": -3146671.13,
+        "high": -1550640.55,
+        "interpretation": "Low, central and high values are an explicit sensitivity range, not a statistical confidence interval."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "full_switch_storey_annual_net_fiscal",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "gross_property_tax",
+          "value": 3452486.96,
+          "unit": "USD",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Latest complete project-linked property-tax measure"
+          },
+          "transformation": "Added as gross revenue"
+        },
+        {
+          "name": "annualized_public_support",
+          "value": 5390787.65,
+          "unit": "USD_per_year",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Annualized incentive, reduction and financing-cost scenario"
+          },
+          "transformation": "Subtracted from revenue"
+        },
+        {
+          "name": "central_public_service_cost",
+          "value": 1208370.436,
+          "unit": "USD_per_year",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Central service-cost allocation"
+          },
+          "transformation": "Subtracted from revenue"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The calculation is reproducible but relies on transferred public benchmarks or explicit assumptions where direct local observations are unavailable.",
+      "decision_relevance": "Provides a complete but explicitly modeled annual fiscal balance for comparison.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Recipient-level revenues, realized incentive timing and marginal service expenditures"
+      },
+      "derivation": {
+        "method": "sensitivity_analysis",
+        "model_version": "full-county-account-1.0.0",
+        "formula": "gross project-linked property tax − annualized incentives/reductions − attributable service cost",
+        "input_claim_ids": [
+          "clm_study_switch_citadel_property_taxes_paid_2026",
+          "clm_study_switch_citadel_real_property_taxes_paid_2025",
+          "clm_study_switch_storey_sales_tax_abatement_plan_2015",
+          "clm_study_switch_storey_personal_property_abatement_plan_2015"
+        ],
+        "input_source_ids": [
+          "src_study_storey_switch_cm001611_2026",
+          "src_study_storey_switch_parcel_00501223_2026",
+          "src_study_nevada_goed_switch_abatement_audit_2023"
+        ],
+        "assumptions": [
+          "All transferred coefficients and allocation shares are exposed as parameters.",
+          "The estimate must not be presented as observed, audited or source-reported."
+        ]
+      },
+      "limitations": [
+        "Negative values mean modeled public costs exceed the narrow project-linked revenue measure.",
+        "This is not an audited government-wide fiscal result."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Completed modeled fiscal account; each component remains separately visible.",
+      "reviewed_on": "2026-09-05"
+    },
+    {
+      "estimate_id": "est_study_full_switch_storey_wastewater",
+      "project_id": "prj_study_im3_point_06685432442",
+      "metric_code": "study.modeled_annual_wastewater_discharge",
+      "label": "Modeled annual wastewater discharge",
+      "category": "resources",
+      "unit": "gallons_per_year",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 87644710.29,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2025,
+        "label": "Annual water-discharge sensitivity"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Switch Citadel / Tahoe Reno 1 and Storey County",
+        "county_fips": "32029",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": 10967735.26,
+        "central": 87644710.29,
+        "high": 236592131.9,
+        "interpretation": "Low, central and high values are an explicit sensitivity range, not a statistical confidence interval."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "full_switch_storey_wastewater",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "central_onsite_water",
+          "value": 175289420.58,
+          "unit": "gallons_per_year",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Published onsite-water model central value"
+          },
+          "transformation": "Multiplied by discharge share"
+        },
+        {
+          "name": "central_discharge_share",
+          "value": 0.5,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Explicit return-flow assumption"
+          },
+          "transformation": "Allocates water to wastewater discharge"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The calculation is reproducible but relies on transferred public benchmarks or explicit assumptions where direct local observations are unavailable.",
+      "decision_relevance": "Completes the annual wastewater field alongside withdrawal and consumption.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Metered discharge, reuse and evaporation by cooling system"
+      },
+      "derivation": {
+        "method": "engineering_estimate",
+        "model_version": "full-county-account-1.0.0",
+        "formula": "modeled onsite water × discharge share",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_lbnl_dc_energy_2024"
+        ],
+        "assumptions": [
+          "All transferred coefficients and allocation shares are exposed as parameters.",
+          "The estimate must not be presented as observed, audited or source-reported."
+        ]
+      },
+      "limitations": [
+        "Discharge share is assumed.",
+        "Does not distinguish sanitary, blowdown, reuse or evaporation flows."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Engineering sensitivity, not a permit or meter value.",
+      "reviewed_on": "2026-09-05"
+    },
+    {
+      "estimate_id": "est_study_full_dx_hammond_annual_public_service_cost",
+      "project_id": "prj_study_im3_building_00978934687",
+      "metric_code": "study.modeled_annual_public_service_cost",
+      "label": "Modeled annual attributable public-service cost",
+      "category": "public_costs",
+      "unit": "USD_per_year",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 262894.77,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2025,
+        "label": "Comparable annual fiscal-account scenario"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Digital Crossroad DX-1 Hammond and Lake County",
+        "county_fips": "18089",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": 150225.58,
+        "central": 262894.77,
+        "high": 375563.96,
+        "interpretation": "Low, central and high values are an explicit sensitivity range, not a statistical confidence interval."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "full_dx_hammond_annual_public_service_cost",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "gross_property_tax",
+          "value": 751127.92,
+          "unit": "USD",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Latest complete project-linked property-tax measure"
+          },
+          "transformation": "Multiplied by service-cost share"
+        },
+        {
+          "name": "central_service_cost_share",
+          "value": 0.35,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Explicit central allocation share"
+          },
+          "transformation": "Allocates public service cost"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The calculation is reproducible but relies on transferred public benchmarks or explicit assumptions where direct local observations are unavailable.",
+      "decision_relevance": "Fills the attributable service-cost side of the annual fiscal account.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Agency expenditures by service and recipient jurisdiction"
+      },
+      "derivation": {
+        "method": "sensitivity_analysis",
+        "model_version": "full-county-account-1.0.0",
+        "formula": "gross project-linked property tax × service-cost share",
+        "input_claim_ids": [
+          "clm_study_digital_crossroad_property_taxes_paid_2024"
+        ],
+        "input_source_ids": [
+          "src_study_lake_county_digital_crossroad_tax_2026",
+          "src_study_iedc_dx_hammond_irtc_portal_2026",
+          "src_study_iedc_dx_hammond_data_portal_2026",
+          "src_study_iedc_dx_hammond_edge_portal_2026",
+          "src_study_hammond_2024_financial_audit"
+        ],
+        "assumptions": [
+          "All transferred coefficients and allocation shares are exposed as parameters.",
+          "The estimate must not be presented as observed, audited or source-reported."
+        ]
+      },
+      "limitations": [
+        "Service-cost shares are assumed.",
+        "Does not identify infrastructure financing or marginal capacity costs."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Public-cost sensitivity used only in the net fiscal scenario.",
+      "reviewed_on": "2026-09-05"
+    },
+    {
+      "estimate_id": "est_study_full_dx_hammond_annual_net_fiscal",
+      "project_id": "prj_study_im3_building_00978934687",
+      "metric_code": "study.modeled_annual_net_fiscal_position",
+      "label": "Modeled annual net fiscal position",
+      "category": "fiscal",
+      "unit": "USD_per_year",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": -1976074.04,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2025,
+        "label": "Comparable annual fiscal-account scenario"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Digital Crossroad DX-1 Hammond and Lake County",
+        "county_fips": "18089",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": -2581604.67,
+        "central": -1976074.04,
+        "high": -1370543.42,
+        "interpretation": "Low, central and high values are an explicit sensitivity range, not a statistical confidence interval."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "full_dx_hammond_annual_net_fiscal",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "gross_property_tax",
+          "value": 751127.92,
+          "unit": "USD",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Latest complete project-linked property-tax measure"
+          },
+          "transformation": "Added as gross revenue"
+        },
+        {
+          "name": "annualized_public_support",
+          "value": 2464307.19,
+          "unit": "USD_per_year",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Annualized incentive, reduction and financing-cost scenario"
+          },
+          "transformation": "Subtracted from revenue"
+        },
+        {
+          "name": "central_public_service_cost",
+          "value": 262894.772,
+          "unit": "USD_per_year",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Central service-cost allocation"
+          },
+          "transformation": "Subtracted from revenue"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The calculation is reproducible but relies on transferred public benchmarks or explicit assumptions where direct local observations are unavailable.",
+      "decision_relevance": "Provides a complete but explicitly modeled annual fiscal balance for comparison.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Recipient-level revenues, realized incentive timing and marginal service expenditures"
+      },
+      "derivation": {
+        "method": "sensitivity_analysis",
+        "model_version": "full-county-account-1.0.0",
+        "formula": "gross project-linked property tax − annualized incentives/reductions − attributable service cost",
+        "input_claim_ids": [
+          "clm_study_digital_crossroad_property_taxes_paid_2024"
+        ],
+        "input_source_ids": [
+          "src_study_lake_county_digital_crossroad_tax_2026",
+          "src_study_iedc_dx_hammond_irtc_portal_2026",
+          "src_study_iedc_dx_hammond_data_portal_2026",
+          "src_study_iedc_dx_hammond_edge_portal_2026",
+          "src_study_hammond_2024_financial_audit"
+        ],
+        "assumptions": [
+          "All transferred coefficients and allocation shares are exposed as parameters.",
+          "The estimate must not be presented as observed, audited or source-reported."
+        ]
+      },
+      "limitations": [
+        "Negative values mean modeled public costs exceed the narrow project-linked revenue measure.",
+        "This is not an audited government-wide fiscal result."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Completed modeled fiscal account; each component remains separately visible.",
+      "reviewed_on": "2026-09-05"
+    },
+    {
+      "estimate_id": "est_study_full_dx_hammond_wastewater",
+      "project_id": "prj_study_im3_building_00978934687",
+      "metric_code": "study.modeled_annual_wastewater_discharge",
+      "label": "Modeled annual wastewater discharge",
+      "category": "resources",
+      "unit": "gallons_per_year",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 4556706.21,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2025,
+        "label": "Annual water-discharge sensitivity"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Digital Crossroad DX-1 Hammond and Lake County",
+        "county_fips": "18089",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": 1339113.66,
+        "central": 4556706.21,
+        "high": 9522586.05,
+        "interpretation": "Low, central and high values are an explicit sensitivity range, not a statistical confidence interval."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "full_dx_hammond_wastewater",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "central_onsite_water",
+          "value": 9113412.43,
+          "unit": "gallons_per_year",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Published onsite-water model central value"
+          },
+          "transformation": "Multiplied by discharge share"
+        },
+        {
+          "name": "central_discharge_share",
+          "value": 0.5,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Explicit return-flow assumption"
+          },
+          "transformation": "Allocates water to wastewater discharge"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The calculation is reproducible but relies on transferred public benchmarks or explicit assumptions where direct local observations are unavailable.",
+      "decision_relevance": "Completes the annual wastewater field alongside withdrawal and consumption.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Metered discharge, reuse and evaporation by cooling system"
+      },
+      "derivation": {
+        "method": "engineering_estimate",
+        "model_version": "full-county-account-1.0.0",
+        "formula": "modeled onsite water × discharge share",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_lbnl_dc_energy_2024"
+        ],
+        "assumptions": [
+          "All transferred coefficients and allocation shares are exposed as parameters.",
+          "The estimate must not be presented as observed, audited or source-reported."
+        ]
+      },
+      "limitations": [
+        "Discharge share is assumed.",
+        "Does not distinguish sanitary, blowdown, reuse or evaporation flows."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Engineering sensitivity, not a permit or meter value.",
+      "reviewed_on": "2026-09-05"
+    },
+    {
+      "estimate_id": "est_study_full_apple_mesa_gdp_effect",
+      "project_id": "prj_study_im3_building_00300974499",
+      "metric_code": "study.modeled_county_gdp_effect",
+      "label": "Modeled county real GDP effect",
+      "category": "county_outcome",
+      "unit": "percent",
+      "measure_type": "effect",
+      "basis": "modeled_synthesis",
+      "value": 44.49,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2024,
+        "label": "2024 host-county outcome relative to synthetic comparison after 2017 treatment"
+      },
+      "scope": {
+        "level": "county",
+        "label": "Apple Mesa facility and Maricopa County",
+        "county_fips": "04013",
+        "inventory_allocation": "not_applicable"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": 4.63,
+        "central": 44.49,
+        "high": 84.34,
+        "interpretation": "Low, central and high values are an explicit sensitivity range, not a statistical confidence interval."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "full_apple_mesa_gdp_effect",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "host_2024_value",
+          "value": 329775922000,
+          "unit": "thousand_chained_2017_USD",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_county_economic_core_2001_2024",
+            "detail": "Host-county 2024 real GDP from the county economic panel"
+          },
+          "transformation": "Compared with weighted donor value"
+        },
+        {
+          "name": "synthetic_2024_value",
+          "value": 228242009380.55652,
+          "unit": "thousand_chained_2017_USD",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_county_economic_core_2001_2024",
+            "detail": "Weighted 2024 donor value for real GDP"
+          },
+          "transformation": "Subtracted from host and used as denominator"
+        },
+        {
+          "name": "pre_period_rmse_percent",
+          "value": 19.9269106823417,
+          "unit": "percent",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Pre-treatment fit diagnostic"
+          },
+          "transformation": "Sets sensitivity width"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The calculation is reproducible but relies on transferred public benchmarks or explicit assumptions where direct local observations are unavailable.",
+      "decision_relevance": "Completes the modeled county-effect field while exposing identification weakness.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Additional treatment timing, donor diagnostics and robustness specifications"
+      },
+      "derivation": {
+        "method": "synthetic_control",
+        "model_version": "full-county-account-1.0.0",
+        "formula": "100 × (host 2024 outcome − weighted donor outcome) ÷ weighted donor outcome",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_county_economic_core_2001_2024"
+        ],
+        "assumptions": [
+          "All transferred coefficients and allocation shares are exposed as parameters.",
+          "The estimate must not be presented as observed, audited or source-reported."
+        ]
+      },
+      "limitations": [
+        "Treatment timing does not isolate later expansions.",
+        "Unobserved concurrent investments can bias the estimate.",
+        "The interval is a fit sensitivity, not a frequentist confidence interval."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Low-confidence statistical model; it is not a source-reported effect and should be interpreted with the diagnostics.",
+      "reviewed_on": "2026-09-05",
+      "causal_design": {
+        "treatment_timing": "Modeled operating treatment begins in 2017; later expansions are not separately isolated.",
+        "comparison_design": "Inverse-distance weighted mean of the 20 nearest non-study counties on pre-treatment log level, compound growth and growth volatility.",
+        "outcome_definition": "Percent difference in 2024 real GDP between the host county and weighted synthetic comparison.",
+        "pre_period": "2009-2016",
+        "post_period": "2017-2024",
+        "diagnostics": [
+          "Pre-period percentage RMSE: 19.93.",
+          "Twenty donors selected after excluding all counties in the study register.",
+          "The sensitivity width is twice pre-period RMSE, with a five-percentage-point minimum."
+        ],
+        "limitations": [
+          "Treatment timing does not isolate later expansions.",
+          "Unobserved concurrent investments can bias the estimate.",
+          "The interval is a fit sensitivity, not a frequentist confidence interval."
+        ]
+      }
+    },
+    {
+      "estimate_id": "est_study_full_apple_mesa_employment_effect",
+      "project_id": "prj_study_im3_building_00300974499",
+      "metric_code": "study.modeled_county_employment_effect",
+      "label": "Modeled county total employment effect",
+      "category": "county_outcome",
+      "unit": "percent",
+      "measure_type": "effect",
+      "basis": "modeled_synthesis",
+      "value": 39.93,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2024,
+        "label": "2024 host-county outcome relative to synthetic comparison after 2017 treatment"
+      },
+      "scope": {
+        "level": "county",
+        "label": "Apple Mesa facility and Maricopa County",
+        "county_fips": "04013",
+        "inventory_allocation": "not_applicable"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": -2.38,
+        "central": 39.93,
+        "high": 82.24,
+        "interpretation": "Low, central and high values are an explicit sensitivity range, not a statistical confidence interval."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "full_apple_mesa_employment_effect",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "host_2024_value",
+          "value": 2280645,
+          "unit": "jobs",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_county_economic_core_2001_2024",
+            "detail": "Host-county 2024 total employment from the county economic panel"
+          },
+          "transformation": "Compared with weighted donor value"
+        },
+        {
+          "name": "synthetic_2024_value",
+          "value": 1629844.858841757,
+          "unit": "jobs",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_county_economic_core_2001_2024",
+            "detail": "Weighted 2024 donor value for total employment"
+          },
+          "transformation": "Subtracted from host and used as denominator"
+        },
+        {
+          "name": "pre_period_rmse_percent",
+          "value": 21.156325229487944,
+          "unit": "percent",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Pre-treatment fit diagnostic"
+          },
+          "transformation": "Sets sensitivity width"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The calculation is reproducible but relies on transferred public benchmarks or explicit assumptions where direct local observations are unavailable.",
+      "decision_relevance": "Completes the modeled county-effect field while exposing identification weakness.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Additional treatment timing, donor diagnostics and robustness specifications"
+      },
+      "derivation": {
+        "method": "synthetic_control",
+        "model_version": "full-county-account-1.0.0",
+        "formula": "100 × (host 2024 outcome − weighted donor outcome) ÷ weighted donor outcome",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_county_economic_core_2001_2024"
+        ],
+        "assumptions": [
+          "All transferred coefficients and allocation shares are exposed as parameters.",
+          "The estimate must not be presented as observed, audited or source-reported."
+        ]
+      },
+      "limitations": [
+        "Treatment timing does not isolate later expansions.",
+        "Unobserved concurrent investments can bias the estimate.",
+        "The interval is a fit sensitivity, not a frequentist confidence interval."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Low-confidence statistical model; it is not a source-reported effect and should be interpreted with the diagnostics.",
+      "reviewed_on": "2026-09-05",
+      "causal_design": {
+        "treatment_timing": "Modeled operating treatment begins in 2017; later expansions are not separately isolated.",
+        "comparison_design": "Inverse-distance weighted mean of the 20 nearest non-study counties on pre-treatment log level, compound growth and growth volatility.",
+        "outcome_definition": "Percent difference in 2024 total employment between the host county and weighted synthetic comparison.",
+        "pre_period": "2009-2016",
+        "post_period": "2017-2024",
+        "diagnostics": [
+          "Pre-period percentage RMSE: 21.16.",
+          "Twenty donors selected after excluding all counties in the study register.",
+          "The sensitivity width is twice pre-period RMSE, with a five-percentage-point minimum."
+        ],
+        "limitations": [
+          "Treatment timing does not isolate later expansions.",
+          "Unobserved concurrent investments can bias the estimate.",
+          "The interval is a fit sensitivity, not a frequentist confidence interval."
+        ]
+      }
+    },
+    {
+      "estimate_id": "est_study_full_apple_mesa_wage_effect",
+      "project_id": "prj_study_im3_building_00300974499",
+      "metric_code": "study.modeled_county_wage_effect",
+      "label": "Modeled county average weekly wages effect",
+      "category": "county_outcome",
+      "unit": "percent",
+      "measure_type": "effect",
+      "basis": "modeled_synthesis",
+      "value": 4.38,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2024,
+        "label": "2024 host-county outcome relative to synthetic comparison after 2017 treatment"
+      },
+      "scope": {
+        "level": "county",
+        "label": "Apple Mesa facility and Maricopa County",
+        "county_fips": "04013",
+        "inventory_allocation": "not_applicable"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": -1.04,
+        "central": 4.38,
+        "high": 9.8,
+        "interpretation": "Low, central and high values are an explicit sensitivity range, not a statistical confidence interval."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "full_apple_mesa_wage_effect",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "host_2024_value",
+          "value": 1420,
+          "unit": "USD_per_week",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_county_economic_core_2001_2024",
+            "detail": "Host-county 2024 average weekly wages from the county economic panel"
+          },
+          "transformation": "Compared with weighted donor value"
+        },
+        {
+          "name": "synthetic_2024_value",
+          "value": 1360.4078871186173,
+          "unit": "USD_per_week",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_county_economic_core_2001_2024",
+            "detail": "Weighted 2024 donor value for average weekly wages"
+          },
+          "transformation": "Subtracted from host and used as denominator"
+        },
+        {
+          "name": "pre_period_rmse_percent",
+          "value": 2.7104435030146536,
+          "unit": "percent",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Pre-treatment fit diagnostic"
+          },
+          "transformation": "Sets sensitivity width"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The calculation is reproducible but relies on transferred public benchmarks or explicit assumptions where direct local observations are unavailable.",
+      "decision_relevance": "Completes the modeled county-effect field while exposing identification weakness.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Additional treatment timing, donor diagnostics and robustness specifications"
+      },
+      "derivation": {
+        "method": "synthetic_control",
+        "model_version": "full-county-account-1.0.0",
+        "formula": "100 × (host 2024 outcome − weighted donor outcome) ÷ weighted donor outcome",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_county_economic_core_2001_2024"
+        ],
+        "assumptions": [
+          "All transferred coefficients and allocation shares are exposed as parameters.",
+          "The estimate must not be presented as observed, audited or source-reported."
+        ]
+      },
+      "limitations": [
+        "Treatment timing does not isolate later expansions.",
+        "Unobserved concurrent investments can bias the estimate.",
+        "The interval is a fit sensitivity, not a frequentist confidence interval."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Low-confidence statistical model; it is not a source-reported effect and should be interpreted with the diagnostics.",
+      "reviewed_on": "2026-09-05",
+      "causal_design": {
+        "treatment_timing": "Modeled operating treatment begins in 2017; later expansions are not separately isolated.",
+        "comparison_design": "Inverse-distance weighted mean of the 20 nearest non-study counties on pre-treatment log level, compound growth and growth volatility.",
+        "outcome_definition": "Percent difference in 2024 average weekly wages between the host county and weighted synthetic comparison.",
+        "pre_period": "2009-2016",
+        "post_period": "2017-2024",
+        "diagnostics": [
+          "Pre-period percentage RMSE: 2.71.",
+          "Twenty donors selected after excluding all counties in the study register.",
+          "The sensitivity width is twice pre-period RMSE, with a five-percentage-point minimum."
+        ],
+        "limitations": [
+          "Treatment timing does not isolate later expansions.",
+          "Unobserved concurrent investments can bias the estimate.",
+          "The interval is a fit sensitivity, not a frequentist confidence interval."
+        ]
+      }
+    },
+    {
+      "estimate_id": "est_study_full_switch_storey_gdp_effect",
+      "project_id": "prj_study_im3_point_06685432442",
+      "metric_code": "study.modeled_county_gdp_effect",
+      "label": "Modeled county real GDP effect",
+      "category": "county_outcome",
+      "unit": "percent",
+      "measure_type": "effect",
+      "basis": "modeled_synthesis",
+      "value": 92.93,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2024,
+        "label": "2024 host-county outcome relative to synthetic comparison after 2017 treatment"
+      },
+      "scope": {
+        "level": "county",
+        "label": "Switch Citadel / Tahoe Reno 1 and Storey County",
+        "county_fips": "32029",
+        "inventory_allocation": "not_applicable"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": 53.54,
+        "central": 92.93,
+        "high": 132.32,
+        "interpretation": "Low, central and high values are an explicit sensitivity range, not a statistical confidence interval."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "full_switch_storey_gdp_effect",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "host_2024_value",
+          "value": 1904842000,
+          "unit": "thousand_chained_2017_USD",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_county_economic_core_2001_2024",
+            "detail": "Host-county 2024 real GDP from the county economic panel"
+          },
+          "transformation": "Compared with weighted donor value"
+        },
+        {
+          "name": "synthetic_2024_value",
+          "value": 987323120.1111368,
+          "unit": "thousand_chained_2017_USD",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_county_economic_core_2001_2024",
+            "detail": "Weighted 2024 donor value for real GDP"
+          },
+          "transformation": "Subtracted from host and used as denominator"
+        },
+        {
+          "name": "pre_period_rmse_percent",
+          "value": 19.694951567828742,
+          "unit": "percent",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Pre-treatment fit diagnostic"
+          },
+          "transformation": "Sets sensitivity width"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The calculation is reproducible but relies on transferred public benchmarks or explicit assumptions where direct local observations are unavailable.",
+      "decision_relevance": "Completes the modeled county-effect field while exposing identification weakness.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Additional treatment timing, donor diagnostics and robustness specifications"
+      },
+      "derivation": {
+        "method": "synthetic_control",
+        "model_version": "full-county-account-1.0.0",
+        "formula": "100 × (host 2024 outcome − weighted donor outcome) ÷ weighted donor outcome",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_county_economic_core_2001_2024"
+        ],
+        "assumptions": [
+          "All transferred coefficients and allocation shares are exposed as parameters.",
+          "The estimate must not be presented as observed, audited or source-reported."
+        ]
+      },
+      "limitations": [
+        "Treatment timing does not isolate later expansions.",
+        "Unobserved concurrent investments can bias the estimate.",
+        "The interval is a fit sensitivity, not a frequentist confidence interval."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Low-confidence statistical model; it is not a source-reported effect and should be interpreted with the diagnostics.",
+      "reviewed_on": "2026-09-05",
+      "causal_design": {
+        "treatment_timing": "Modeled operating treatment begins in 2017; later expansions are not separately isolated.",
+        "comparison_design": "Inverse-distance weighted mean of the 20 nearest non-study counties on pre-treatment log level, compound growth and growth volatility.",
+        "outcome_definition": "Percent difference in 2024 real GDP between the host county and weighted synthetic comparison.",
+        "pre_period": "2009-2016",
+        "post_period": "2017-2024",
+        "diagnostics": [
+          "Pre-period percentage RMSE: 19.69.",
+          "Twenty donors selected after excluding all counties in the study register.",
+          "The sensitivity width is twice pre-period RMSE, with a five-percentage-point minimum."
+        ],
+        "limitations": [
+          "Treatment timing does not isolate later expansions.",
+          "Unobserved concurrent investments can bias the estimate.",
+          "The interval is a fit sensitivity, not a frequentist confidence interval."
+        ]
+      }
+    },
+    {
+      "estimate_id": "est_study_full_switch_storey_employment_effect",
+      "project_id": "prj_study_im3_point_06685432442",
+      "metric_code": "study.modeled_county_employment_effect",
+      "label": "Modeled county total employment effect",
+      "category": "county_outcome",
+      "unit": "percent",
+      "measure_type": "effect",
+      "basis": "modeled_synthesis",
+      "value": 73.79,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2024,
+        "label": "2024 host-county outcome relative to synthetic comparison after 2017 treatment"
+      },
+      "scope": {
+        "level": "county",
+        "label": "Switch Citadel / Tahoe Reno 1 and Storey County",
+        "county_fips": "32029",
+        "inventory_allocation": "not_applicable"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": -26.3,
+        "central": 73.79,
+        "high": 173.88,
+        "interpretation": "Low, central and high values are an explicit sensitivity range, not a statistical confidence interval."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "full_switch_storey_employment_effect",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "host_2024_value",
+          "value": 19320,
+          "unit": "jobs",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_county_economic_core_2001_2024",
+            "detail": "Host-county 2024 total employment from the county economic panel"
+          },
+          "transformation": "Compared with weighted donor value"
+        },
+        {
+          "name": "synthetic_2024_value",
+          "value": 11116.924899663267,
+          "unit": "jobs",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_county_economic_core_2001_2024",
+            "detail": "Weighted 2024 donor value for total employment"
+          },
+          "transformation": "Subtracted from host and used as denominator"
+        },
+        {
+          "name": "pre_period_rmse_percent",
+          "value": 50.046315508068545,
+          "unit": "percent",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Pre-treatment fit diagnostic"
+          },
+          "transformation": "Sets sensitivity width"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The calculation is reproducible but relies on transferred public benchmarks or explicit assumptions where direct local observations are unavailable.",
+      "decision_relevance": "Completes the modeled county-effect field while exposing identification weakness.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Additional treatment timing, donor diagnostics and robustness specifications"
+      },
+      "derivation": {
+        "method": "synthetic_control",
+        "model_version": "full-county-account-1.0.0",
+        "formula": "100 × (host 2024 outcome − weighted donor outcome) ÷ weighted donor outcome",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_county_economic_core_2001_2024"
+        ],
+        "assumptions": [
+          "All transferred coefficients and allocation shares are exposed as parameters.",
+          "The estimate must not be presented as observed, audited or source-reported."
+        ]
+      },
+      "limitations": [
+        "Treatment timing does not isolate later expansions.",
+        "Unobserved concurrent investments can bias the estimate.",
+        "The interval is a fit sensitivity, not a frequentist confidence interval."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Low-confidence statistical model; it is not a source-reported effect and should be interpreted with the diagnostics.",
+      "reviewed_on": "2026-09-05",
+      "causal_design": {
+        "treatment_timing": "Modeled operating treatment begins in 2017; later expansions are not separately isolated.",
+        "comparison_design": "Inverse-distance weighted mean of the 20 nearest non-study counties on pre-treatment log level, compound growth and growth volatility.",
+        "outcome_definition": "Percent difference in 2024 total employment between the host county and weighted synthetic comparison.",
+        "pre_period": "2009-2016",
+        "post_period": "2017-2024",
+        "diagnostics": [
+          "Pre-period percentage RMSE: 50.05.",
+          "Twenty donors selected after excluding all counties in the study register.",
+          "The sensitivity width is twice pre-period RMSE, with a five-percentage-point minimum."
+        ],
+        "limitations": [
+          "Treatment timing does not isolate later expansions.",
+          "Unobserved concurrent investments can bias the estimate.",
+          "The interval is a fit sensitivity, not a frequentist confidence interval."
+        ]
+      }
+    },
+    {
+      "estimate_id": "est_study_full_switch_storey_wage_effect",
+      "project_id": "prj_study_im3_point_06685432442",
+      "metric_code": "study.modeled_county_wage_effect",
+      "label": "Modeled county average weekly wages effect",
+      "category": "county_outcome",
+      "unit": "percent",
+      "measure_type": "effect",
+      "basis": "modeled_synthesis",
+      "value": 26.21,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2024,
+        "label": "2024 host-county outcome relative to synthetic comparison after 2017 treatment"
+      },
+      "scope": {
+        "level": "county",
+        "label": "Switch Citadel / Tahoe Reno 1 and Storey County",
+        "county_fips": "32029",
+        "inventory_allocation": "not_applicable"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": 8.6,
+        "central": 26.21,
+        "high": 43.82,
+        "interpretation": "Low, central and high values are an explicit sensitivity range, not a statistical confidence interval."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "full_switch_storey_wage_effect",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "host_2024_value",
+          "value": 1608,
+          "unit": "USD_per_week",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_county_economic_core_2001_2024",
+            "detail": "Host-county 2024 average weekly wages from the county economic panel"
+          },
+          "transformation": "Compared with weighted donor value"
+        },
+        {
+          "name": "synthetic_2024_value",
+          "value": 1274.0714452063191,
+          "unit": "USD_per_week",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_county_economic_core_2001_2024",
+            "detail": "Weighted 2024 donor value for average weekly wages"
+          },
+          "transformation": "Subtracted from host and used as denominator"
+        },
+        {
+          "name": "pre_period_rmse_percent",
+          "value": 8.803889294434299,
+          "unit": "percent",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Pre-treatment fit diagnostic"
+          },
+          "transformation": "Sets sensitivity width"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The calculation is reproducible but relies on transferred public benchmarks or explicit assumptions where direct local observations are unavailable.",
+      "decision_relevance": "Completes the modeled county-effect field while exposing identification weakness.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Additional treatment timing, donor diagnostics and robustness specifications"
+      },
+      "derivation": {
+        "method": "synthetic_control",
+        "model_version": "full-county-account-1.0.0",
+        "formula": "100 × (host 2024 outcome − weighted donor outcome) ÷ weighted donor outcome",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_county_economic_core_2001_2024"
+        ],
+        "assumptions": [
+          "All transferred coefficients and allocation shares are exposed as parameters.",
+          "The estimate must not be presented as observed, audited or source-reported."
+        ]
+      },
+      "limitations": [
+        "Treatment timing does not isolate later expansions.",
+        "Unobserved concurrent investments can bias the estimate.",
+        "The interval is a fit sensitivity, not a frequentist confidence interval."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Low-confidence statistical model; it is not a source-reported effect and should be interpreted with the diagnostics.",
+      "reviewed_on": "2026-09-05",
+      "causal_design": {
+        "treatment_timing": "Modeled operating treatment begins in 2017; later expansions are not separately isolated.",
+        "comparison_design": "Inverse-distance weighted mean of the 20 nearest non-study counties on pre-treatment log level, compound growth and growth volatility.",
+        "outcome_definition": "Percent difference in 2024 average weekly wages between the host county and weighted synthetic comparison.",
+        "pre_period": "2009-2016",
+        "post_period": "2017-2024",
+        "diagnostics": [
+          "Pre-period percentage RMSE: 8.80.",
+          "Twenty donors selected after excluding all counties in the study register.",
+          "The sensitivity width is twice pre-period RMSE, with a five-percentage-point minimum."
+        ],
+        "limitations": [
+          "Treatment timing does not isolate later expansions.",
+          "Unobserved concurrent investments can bias the estimate.",
+          "The interval is a fit sensitivity, not a frequentist confidence interval."
+        ]
+      }
+    },
+    {
+      "estimate_id": "est_study_full_dx_hammond_gdp_effect",
+      "project_id": "prj_study_im3_building_00978934687",
+      "metric_code": "study.modeled_county_gdp_effect",
+      "label": "Modeled county real GDP effect",
+      "category": "county_outcome",
+      "unit": "percent",
+      "measure_type": "effect",
+      "basis": "modeled_synthesis",
+      "value": 11.98,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2024,
+        "label": "2024 host-county outcome relative to synthetic comparison after 2020 treatment"
+      },
+      "scope": {
+        "level": "county",
+        "label": "Digital Crossroad DX-1 Hammond and Lake County",
+        "county_fips": "18089",
+        "inventory_allocation": "not_applicable"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": -22.26,
+        "central": 11.98,
+        "high": 46.21,
+        "interpretation": "Low, central and high values are an explicit sensitivity range, not a statistical confidence interval."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "full_dx_hammond_gdp_effect",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "host_2024_value",
+          "value": 24764214000,
+          "unit": "thousand_chained_2017_USD",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_county_economic_core_2001_2024",
+            "detail": "Host-county 2024 real GDP from the county economic panel"
+          },
+          "transformation": "Compared with weighted donor value"
+        },
+        {
+          "name": "synthetic_2024_value",
+          "value": 22115400062.014244,
+          "unit": "thousand_chained_2017_USD",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_county_economic_core_2001_2024",
+            "detail": "Weighted 2024 donor value for real GDP"
+          },
+          "transformation": "Subtracted from host and used as denominator"
+        },
+        {
+          "name": "pre_period_rmse_percent",
+          "value": 17.118095691655757,
+          "unit": "percent",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Pre-treatment fit diagnostic"
+          },
+          "transformation": "Sets sensitivity width"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The calculation is reproducible but relies on transferred public benchmarks or explicit assumptions where direct local observations are unavailable.",
+      "decision_relevance": "Completes the modeled county-effect field while exposing identification weakness.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Additional treatment timing, donor diagnostics and robustness specifications"
+      },
+      "derivation": {
+        "method": "synthetic_control",
+        "model_version": "full-county-account-1.0.0",
+        "formula": "100 × (host 2024 outcome − weighted donor outcome) ÷ weighted donor outcome",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_county_economic_core_2001_2024"
+        ],
+        "assumptions": [
+          "All transferred coefficients and allocation shares are exposed as parameters.",
+          "The estimate must not be presented as observed, audited or source-reported."
+        ]
+      },
+      "limitations": [
+        "Treatment timing does not isolate later expansions.",
+        "Unobserved concurrent investments can bias the estimate.",
+        "The interval is a fit sensitivity, not a frequentist confidence interval."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Low-confidence statistical model; it is not a source-reported effect and should be interpreted with the diagnostics.",
+      "reviewed_on": "2026-09-05",
+      "causal_design": {
+        "treatment_timing": "Modeled operating treatment begins in 2020; later expansions are not separately isolated.",
+        "comparison_design": "Inverse-distance weighted mean of the 20 nearest non-study counties on pre-treatment log level, compound growth and growth volatility.",
+        "outcome_definition": "Percent difference in 2024 real GDP between the host county and weighted synthetic comparison.",
+        "pre_period": "2012-2019",
+        "post_period": "2020-2024",
+        "diagnostics": [
+          "Pre-period percentage RMSE: 17.12.",
+          "Twenty donors selected after excluding all counties in the study register.",
+          "The sensitivity width is twice pre-period RMSE, with a five-percentage-point minimum."
+        ],
+        "limitations": [
+          "Treatment timing does not isolate later expansions.",
+          "Unobserved concurrent investments can bias the estimate.",
+          "The interval is a fit sensitivity, not a frequentist confidence interval."
+        ]
+      }
+    },
+    {
+      "estimate_id": "est_study_full_dx_hammond_employment_effect",
+      "project_id": "prj_study_im3_building_00978934687",
+      "metric_code": "study.modeled_county_employment_effect",
+      "label": "Modeled county total employment effect",
+      "category": "county_outcome",
+      "unit": "percent",
+      "measure_type": "effect",
+      "basis": "modeled_synthesis",
+      "value": 3.0,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2024,
+        "label": "2024 host-county outcome relative to synthetic comparison after 2020 treatment"
+      },
+      "scope": {
+        "level": "county",
+        "label": "Digital Crossroad DX-1 Hammond and Lake County",
+        "county_fips": "18089",
+        "inventory_allocation": "not_applicable"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": -2.0,
+        "central": 3.0,
+        "high": 8.0,
+        "interpretation": "Low, central and high values are an explicit sensitivity range, not a statistical confidence interval."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "full_dx_hammond_employment_effect",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "host_2024_value",
+          "value": 191633,
+          "unit": "jobs",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_county_economic_core_2001_2024",
+            "detail": "Host-county 2024 total employment from the county economic panel"
+          },
+          "transformation": "Compared with weighted donor value"
+        },
+        {
+          "name": "synthetic_2024_value",
+          "value": 186052.66377184665,
+          "unit": "jobs",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_county_economic_core_2001_2024",
+            "detail": "Weighted 2024 donor value for total employment"
+          },
+          "transformation": "Subtracted from host and used as denominator"
+        },
+        {
+          "name": "pre_period_rmse_percent",
+          "value": 2.1106668556159014,
+          "unit": "percent",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Pre-treatment fit diagnostic"
+          },
+          "transformation": "Sets sensitivity width"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The calculation is reproducible but relies on transferred public benchmarks or explicit assumptions where direct local observations are unavailable.",
+      "decision_relevance": "Completes the modeled county-effect field while exposing identification weakness.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Additional treatment timing, donor diagnostics and robustness specifications"
+      },
+      "derivation": {
+        "method": "synthetic_control",
+        "model_version": "full-county-account-1.0.0",
+        "formula": "100 × (host 2024 outcome − weighted donor outcome) ÷ weighted donor outcome",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_county_economic_core_2001_2024"
+        ],
+        "assumptions": [
+          "All transferred coefficients and allocation shares are exposed as parameters.",
+          "The estimate must not be presented as observed, audited or source-reported."
+        ]
+      },
+      "limitations": [
+        "Treatment timing does not isolate later expansions.",
+        "Unobserved concurrent investments can bias the estimate.",
+        "The interval is a fit sensitivity, not a frequentist confidence interval."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Low-confidence statistical model; it is not a source-reported effect and should be interpreted with the diagnostics.",
+      "reviewed_on": "2026-09-05",
+      "causal_design": {
+        "treatment_timing": "Modeled operating treatment begins in 2020; later expansions are not separately isolated.",
+        "comparison_design": "Inverse-distance weighted mean of the 20 nearest non-study counties on pre-treatment log level, compound growth and growth volatility.",
+        "outcome_definition": "Percent difference in 2024 total employment between the host county and weighted synthetic comparison.",
+        "pre_period": "2012-2019",
+        "post_period": "2020-2024",
+        "diagnostics": [
+          "Pre-period percentage RMSE: 2.11.",
+          "Twenty donors selected after excluding all counties in the study register.",
+          "The sensitivity width is twice pre-period RMSE, with a five-percentage-point minimum."
+        ],
+        "limitations": [
+          "Treatment timing does not isolate later expansions.",
+          "Unobserved concurrent investments can bias the estimate.",
+          "The interval is a fit sensitivity, not a frequentist confidence interval."
+        ]
+      }
+    },
+    {
+      "estimate_id": "est_study_full_dx_hammond_wage_effect",
+      "project_id": "prj_study_im3_building_00978934687",
+      "metric_code": "study.modeled_county_wage_effect",
+      "label": "Modeled county average weekly wages effect",
+      "category": "county_outcome",
+      "unit": "percent",
+      "measure_type": "effect",
+      "basis": "modeled_synthesis",
+      "value": 0.83,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2024,
+        "label": "2024 host-county outcome relative to synthetic comparison after 2020 treatment"
+      },
+      "scope": {
+        "level": "county",
+        "label": "Digital Crossroad DX-1 Hammond and Lake County",
+        "county_fips": "18089",
+        "inventory_allocation": "not_applicable"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": -4.17,
+        "central": 0.83,
+        "high": 5.83,
+        "interpretation": "Low, central and high values are an explicit sensitivity range, not a statistical confidence interval."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "full_dx_hammond_wage_effect",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "host_2024_value",
+          "value": 1177,
+          "unit": "USD_per_week",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_county_economic_core_2001_2024",
+            "detail": "Host-county 2024 average weekly wages from the county economic panel"
+          },
+          "transformation": "Compared with weighted donor value"
+        },
+        {
+          "name": "synthetic_2024_value",
+          "value": 1167.2639369869803,
+          "unit": "USD_per_week",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_county_economic_core_2001_2024",
+            "detail": "Weighted 2024 donor value for average weekly wages"
+          },
+          "transformation": "Subtracted from host and used as denominator"
+        },
+        {
+          "name": "pre_period_rmse_percent",
+          "value": 1.2432226334178145,
+          "unit": "percent",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Pre-treatment fit diagnostic"
+          },
+          "transformation": "Sets sensitivity width"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The calculation is reproducible but relies on transferred public benchmarks or explicit assumptions where direct local observations are unavailable.",
+      "decision_relevance": "Completes the modeled county-effect field while exposing identification weakness.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Additional treatment timing, donor diagnostics and robustness specifications"
+      },
+      "derivation": {
+        "method": "synthetic_control",
+        "model_version": "full-county-account-1.0.0",
+        "formula": "100 × (host 2024 outcome − weighted donor outcome) ÷ weighted donor outcome",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_county_economic_core_2001_2024"
+        ],
+        "assumptions": [
+          "All transferred coefficients and allocation shares are exposed as parameters.",
+          "The estimate must not be presented as observed, audited or source-reported."
+        ]
+      },
+      "limitations": [
+        "Treatment timing does not isolate later expansions.",
+        "Unobserved concurrent investments can bias the estimate.",
+        "The interval is a fit sensitivity, not a frequentist confidence interval."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Low-confidence statistical model; it is not a source-reported effect and should be interpreted with the diagnostics.",
+      "reviewed_on": "2026-09-05",
+      "causal_design": {
+        "treatment_timing": "Modeled operating treatment begins in 2020; later expansions are not separately isolated.",
+        "comparison_design": "Inverse-distance weighted mean of the 20 nearest non-study counties on pre-treatment log level, compound growth and growth volatility.",
+        "outcome_definition": "Percent difference in 2024 average weekly wages between the host county and weighted synthetic comparison.",
+        "pre_period": "2012-2019",
+        "post_period": "2020-2024",
+        "diagnostics": [
+          "Pre-period percentage RMSE: 1.24.",
+          "Twenty donors selected after excluding all counties in the study register.",
+          "The sensitivity width is twice pre-period RMSE, with a five-percentage-point minimum."
+        ],
+        "limitations": [
+          "Treatment timing does not isolate later expansions.",
+          "Unobserved concurrent investments can bias the estimate.",
+          "The interval is a fit sensitivity, not a frequentist confidence interval."
+        ]
+      }
     }
   ]
 }
