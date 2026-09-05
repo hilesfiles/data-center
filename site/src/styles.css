@@ -1,19 +1,22 @@
-@import url("https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap");
 
 :root {
-  font-family: "Manrope", system-ui, sans-serif;
-  color: #15262e;
-  background: #f2f1ec;
+  font-family: "Inter", system-ui, sans-serif;
+  color: #edf3f6;
+  background: #080a0f;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
-  --ink: #15262e;
-  --deep: #0d1b22;
-  --teal: #17687a;
-  --aqua: #64a6a0;
-  --amber: #f4a261;
-  --paper: #f7f6f1;
-  --muted: #6a777b;
-  --line: #ced3ce;
+  --ink: #edf3f6;
+  --deep: #080a0f;
+  --surface: #0e1218;
+  --surface-raised: #131922;
+  --surface-soft: #18202a;
+  --teal: #159bd3;
+  --aqua: #5cc8f2;
+  --amber: #f0aa58;
+  --paper: #0b0e14;
+  --muted: #8996a3;
+  --line: #252c36;
 }
 
 * { box-sizing: border-box; }
@@ -24,7 +27,7 @@ body { min-height: 100vh; }
 
 button, select, input { font: inherit; }
 button, a, input, select, summary { touch-action: manipulation; }
-:focus-visible { outline: 3px solid #7145a0; outline-offset: 4px; }
+:focus-visible { outline: 3px solid var(--aqua); outline-offset: 3px; }
 
 .study-nav { display: flex; gap: 28px; padding: 0 28px; border-bottom: 1px solid var(--line); background: #fff; }
 .study-nav a { padding: 16px 0 13px; border-bottom: 3px solid transparent; color: #526266; text-decoration: none; font-size: .82rem; font-weight: 600; }
@@ -351,4 +354,300 @@ button, a, input, select, summary { touch-action: manipulation; }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; }
+}
+
+/* Dark, map-forward application theme. */
+body { background: var(--deep); color: var(--ink); }
+a { color: var(--aqua); }
+
+.app-shell,
+.study-shell { background: var(--paper); color: var(--ink); }
+
+.topbar {
+  min-height: 64px;
+  padding: 10px 22px;
+  background: #08090e;
+  border-bottom-color: #1d232c;
+}
+.brand-block { display: grid; grid-template-columns: 38px minmax(0, 1fr); grid-template-rows: auto auto; column-gap: 12px; align-items: center; }
+.brand-block::before {
+  content: "DC";
+  grid-row: 1 / 3;
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border: 1px solid #243849;
+  border-radius: 3px;
+  background: linear-gradient(145deg, #142231, #0b111a);
+  color: var(--aqua);
+  font: 500 .68rem "DM Mono", monospace;
+  letter-spacing: .06em;
+  box-shadow: inset 0 0 18px rgb(21 155 211 / 8%);
+}
+.brand-block .eyebrow { grid-column: 2; color: #71808d; font-size: .56rem; }
+.brand-block h1 { grid-column: 2; margin-top: 1px; color: #eef4f7; font-size: clamp(.95rem, 1.65vw, 1.18rem); letter-spacing: -.025em; }
+.version-block { color: #8995a1; font-size: .63rem; }
+.status-dot { width: 7px; height: 7px; background: var(--teal); box-shadow: 0 0 0 4px rgb(21 155 211 / 10%); }
+
+.study-nav {
+  min-height: 46px;
+  gap: 30px;
+  padding: 0 24px;
+  background: #0a0c12;
+  border-bottom-color: #20262f;
+}
+.study-nav a {
+  padding: 15px 0 11px;
+  color: #a7b0ba;
+  border-bottom-width: 2px;
+  font-size: .67rem;
+  font-weight: 600;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+}
+.study-nav a:hover { color: #eef4f7; }
+.study-nav a[aria-current="page"] { color: var(--aqua); border-bottom-color: var(--teal); }
+
+.fixture-banner {
+  padding: 9px 24px;
+  background: #101923;
+  border-bottom-color: #22303d;
+  color: #a9b9c5;
+  font-size: .7rem;
+}
+.fixture-banner strong { color: #d9e8ef; }
+
+.study-main { color: var(--ink); }
+.study-main a,
+.profile-link,
+.back-link { color: var(--aqua); }
+.study-main .eyebrow,
+.eyebrow { color: var(--aqua); }
+.study-hero { border-bottom-color: var(--line); }
+.study-hero h2,
+.section-heading h2,
+.project-heading h2,
+.study-methodology h2,
+.project-section h3,
+.project-card h3 a,
+.county-heading h2 { color: #f4f7f9; }
+.study-hero p,
+.study-intro,
+.study-muted,
+.methodology-lead,
+.study-methodology section p,
+.study-methodology li,
+.project-overview p,
+.project-section > p,
+.project-timeline p,
+.economic-record p,
+.fiscal-history figcaption span,
+.evidence-grid p,
+.readiness-list p,
+.research-details p,
+.county-study p { color: var(--muted); }
+
+.study-counts,
+.study-footnote,
+.project-overview aside,
+.economic-history,
+.research-details,
+.study-empty,
+.study-loading,
+.county-study {
+  background: var(--surface-raised);
+  border-color: var(--line);
+}
+.study-counts { border-radius: 8px; box-shadow: 0 18px 55px rgb(0 0 0 / 18%); }
+.study-counts span,
+.study-counts p,
+.study-footnote p,
+.project-overview aside p,
+.project-timeline small,
+.source-list small { color: var(--muted); }
+.study-counts p { border-top-color: var(--line); }
+.study-footnote { border-left-color: var(--teal); }
+
+.study-filters label,
+.results-line p { color: #8f9ba7; }
+.study-filters input,
+.study-filters select,
+.control-section select {
+  background: #0d1117;
+  border-color: #303946;
+  color: #eaf1f4;
+  border-radius: 7px;
+}
+.study-filters input::placeholder { color: #626d79; }
+.study-filters input:hover,
+.study-filters select:hover,
+.control-section select:hover { border-color: #465463; }
+.results-line button { color: var(--aqua); }
+
+.project-card,
+.economic-record,
+.fiscal-history,
+.evidence-grid article,
+.profile-grid article,
+.stat-grid article,
+.error-panel,
+.empty-panel {
+  background: var(--surface);
+  border-color: var(--line);
+  color: var(--ink);
+}
+.project-card {
+  border-top-color: var(--teal);
+  border-radius: 8px;
+  box-shadow: 0 10px 28px rgb(0 0 0 / 12%);
+  transition: border-color 150ms ease, transform 150ms ease, background 150ms ease;
+}
+.project-card:hover { transform: translateY(-2px); background: #111720; border-color: #344352; border-top-color: var(--aqua); }
+.card-type,
+.card-history,
+.card-economics,
+.card-bottom,
+.history-badge,
+.project-tags span { color: var(--muted); }
+.card-bottom { border-top-color: var(--line); }
+.card-economics.has-evidence { color: var(--aqua); }
+.history-badge { background: #15211f; color: #7bc5ac; border: 1px solid #253d37; border-radius: 4px; }
+.history-badge.pending { background: #241c13; color: #d2a56b; border-color: #46341f; }
+
+.economic-tabs { border-bottom-color: var(--line); }
+.economic-tabs button { color: #8e9ba7; }
+.economic-tabs button:hover { color: #dce7ec; }
+.economic-tabs button[aria-selected="true"] { border-color: var(--teal); color: var(--aqua); background: #101b23; }
+.projection-note { background: #211a12; color: #d6b07b; border: 1px solid #43321f; border-radius: 6px; }
+.modeled-note { background: #111a27; border: 1px solid #253b56; border-left: 4px solid #3987c6; color: #a8c5de; border-radius: 6px; }
+.modeled-record { border-color: #283b50; background: #0e1620; }
+.modeled-badge,
+.modeled-coverage-badge,
+.readiness-heading strong { background: #142438; color: #8fc5ef; border: 1px solid #294765; border-radius: 4px; }
+.scenario-range,
+.modeled-record details h5,
+.modeled-parameters dt { color: #9dc8e8 !important; }
+.modeled-record details ul,
+.modeled-parameters dd { color: var(--muted); }
+.modeled-parameters > div,
+.economic-record details,
+.fiscal-history th,
+.fiscal-history td,
+.remaining-gap,
+.readiness-list article { border-color: var(--line); }
+.record-scope span,
+.economic-record summary,
+.research-details summary { color: var(--aqua); }
+
+.economic-history { border-color: #263b3b; }
+.history-bar-track { background: #1c2930; }
+.history-bar-track > div { background: linear-gradient(90deg, #0d6c99, var(--teal)); }
+.history-bar-row.uncollected { color: #6d7883; }
+.history-bar-row.uncollected .history-bar-track { border-bottom-color: #39434d; }
+.project-research-update { background: #211a12; border-color: #44331f; border-left-color: var(--amber); }
+.project-research-update p,
+.project-research-update small { color: #b7a58e; }
+.model-completeness-banner { background: #101d19; border-color: #285544; border-left-color: #41ad7b; border-radius: 6px; }
+.model-completeness-banner p { color: #a7c9bc; }
+.coverage-badge,
+.coverage-counts span { background: #12231f; color: #76c4a9; border: 1px solid #24453b; border-radius: 4px; }
+.missing-badge { background: #241e14; color: #d3b47c; border: 1px solid #493b22; border-radius: 4px; }
+.coverage-counts span.modeled { background: #142438; color: #8fc5ef; border-color: #294765; }
+.coverage-counts span.zero { background: #171b21; color: #747f89; border-color: #292f38; }
+.published-coverage strong,
+.published-models strong,
+.remaining-gap strong { color: #c0cbd1; }
+.published-models { background: #111a27; color: #9dbad4 !important; }
+.readiness-list .readiness-counts { color: #72bddc; }
+
+.project-heading,
+.project-section,
+.study-methodology section,
+.study-footer { border-color: var(--line); }
+.project-tags span { background: var(--surface-soft); border: 1px solid #2b3540; border-radius: 4px; }
+.project-timeline li { border-left-color: #3b5965; }
+.timeline-dot { background: var(--teal); border-color: var(--paper); box-shadow: 0 0 0 3px rgb(21 155 211 / 12%); }
+.timeline-pending .timeline-dot { background: var(--amber); box-shadow: 0 0 0 3px rgb(240 170 88 / 10%); }
+.source-list li { color: #c6d0d5; }
+
+.profile-grid,
+.stat-grid { background: var(--line); border-color: var(--line); }
+.profile-grid span,
+.profile-grid small,
+.stat-grid span,
+.stat-grid small,
+.county-heading p,
+.control-section label,
+.control-note,
+.index-list em,
+.version-block { color: var(--muted); }
+.quality-badge,
+.grade-p { background: #142438; color: #8fc5ef; border: 1px solid #294765; }
+.index-list,
+.index-list > div { border-color: var(--line); }
+.index-list .lifecycle-row { background: #17140f; border-bottom-color: #3f3321; }
+.index-list .lifecycle-start { border-top-color: var(--amber); }
+.evidence-note { background: #101a20; border-left-color: var(--teal); }
+.evidence-note p { color: #98aab3; }
+.county-study { border-left-color: var(--teal); }
+.county-study li { border-top-color: #2b3440; }
+.county-study li a { color: #80c9ec; }
+.county-study small { color: var(--muted); }
+
+.study-footer { background: #090b10; color: #788590; }
+
+.workspace { height: calc(100vh - 146px); min-height: 600px; }
+.sidebar { background: #0b0e14; border-right-color: var(--line); }
+.control-section { border-bottom-color: var(--line); }
+.map-section { background: #10171b; }
+.map-message { background: rgb(11 14 20 / 95%); border-color: #303a45; color: #d9e4e9; border-radius: 6px; }
+.legend {
+  width: auto;
+  max-width: 280px;
+  padding: 11px 13px;
+  background: rgb(8 10 15 / 94%);
+  border-color: #2c3540;
+  border-radius: 7px;
+  box-shadow: 0 12px 35px rgb(0 0 0 / 35%);
+  color: #e5edf1;
+}
+.review-key { border-top-color: #29313b; color: #9aa6b1; }
+.key-study { background: var(--teal) !important; color: var(--teal); }
+.map-caption { background: #090c11; border-top-color: #202832; color: #76838e; }
+.maplibregl-popup-content { background: #0c1016; color: #e5edf1; border: 1px solid #2b3540; border-radius: 7px; font-family: "Inter", sans-serif; }
+.maplibregl-popup-tip { border-top-color: #0c1016 !important; }
+.maplibregl-ctrl-group { background: #0b0f15 !important; border: 1px solid #28313b !important; border-radius: 7px !important; }
+.maplibregl-ctrl-group button { background-color: #0b0f15 !important; border-color: #28313b !important; }
+.maplibregl-ctrl-group button:hover { background-color: #151c25 !important; }
+.maplibregl-ctrl-group .maplibregl-ctrl-icon { filter: invert(1) opacity(.72); }
+.maplibregl-ctrl-attrib { background: rgb(8 10 15 / 88%) !important; color: #8b98a3 !important; }
+.maplibregl-ctrl-attrib a { color: #9dc8df !important; }
+
+@media (max-width: 820px) {
+  .topbar { padding: 10px 16px; }
+  .brand-block { grid-template-columns: 34px minmax(0, 1fr); column-gap: 10px; }
+  .brand-block::before { width: 32px; height: 32px; }
+  .study-nav { padding-inline: 16px; gap: 19px; overflow-x: auto; }
+  .study-nav a { white-space: nowrap; }
+  .fixture-banner { padding-inline: 16px; }
+  .workspace { min-height: 520px; }
+  .sidebar { border-top-color: var(--line); }
+}
+
+@media (max-width: 650px) {
+  .study-nav {
+    display: grid;
+    grid-template-columns: .9fr 1.15fr 1.55fr;
+    gap: 0;
+    padding-inline: 8px;
+    overflow: hidden;
+  }
+  .study-nav a {
+    padding: 14px 3px 10px;
+    font-size: .54rem;
+    letter-spacing: .045em;
+    text-align: center;
+    white-space: nowrap;
+  }
 }

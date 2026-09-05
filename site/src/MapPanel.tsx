@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 import {
-  AttributionControl,
   Map,
   NavigationControl,
   Popup,
@@ -55,7 +54,7 @@ const escapeHtml = (value: unknown) =>
 const EMPTY_STYLE: StyleSpecification = {
   version: 8,
   sources: {},
-  layers: [{ id: "background", type: "background", paint: { "background-color": "#e6e9e3" } }],
+  layers: [{ id: "background", type: "background", paint: { "background-color": "#10171b" } }],
 };
 
 setWorkerUrl(maplibreWorkerUrl);
@@ -94,10 +93,6 @@ export function MapPanel({ selectedFips, onSelectCounty, studyProjects = [] }: M
     });
     mapRef.current = map;
     map.addControl(new NavigationControl({ showCompass: false }), "bottom-right");
-    map.addControl(new AttributionControl({
-      compact: true,
-      customAttribution: "County boundaries: U.S. Census Bureau, 2025 · Study locations derived from the preserved research inventory",
-    }), "bottom-right");
 
     map.on("load", async () => {
       try {
@@ -109,27 +104,27 @@ export function MapPanel({ selectedFips, onSelectCounty, studyProjects = [] }: M
           id: "county-fill",
           type: "fill",
           source: "counties",
-          paint: { "fill-color": "#dfe4dc", "fill-opacity": 0.55 },
+          paint: { "fill-color": "#172126", "fill-opacity": 0.92 },
         });
         map.addLayer({
           id: "completed-county-fill",
           type: "fill",
           source: "counties",
           filter: completedCountyFilter(projectsRef.current),
-          paint: { "fill-color": "#a98ac6", "fill-opacity": 0.55 },
+          paint: { "fill-color": "#0d78a8", "fill-opacity": 0.82 },
         });
         map.addLayer({
           id: "county-outline",
           type: "line",
           source: "counties",
-          paint: { "line-color": "#f7f6f1", "line-width": ["interpolate", ["linear"], ["zoom"], 3, 0.35, 8, 1.4] },
+          paint: { "line-color": "#314047", "line-width": ["interpolate", ["linear"], ["zoom"], 3, 0.35, 8, 1.4] },
         });
         map.addLayer({
           id: "county-selected",
           type: "line",
           source: "counties",
           filter: ["==", ["get", "county_fips"], selectedRef.current ?? ""],
-          paint: { "line-color": "#f4a261", "line-width": 3.5 },
+          paint: { "line-color": "#f0aa58", "line-width": 3.5 },
         });
 
         const popup = new Popup({ closeButton: false, closeOnClick: false, offset: 12 });
@@ -157,8 +152,8 @@ export function MapPanel({ selectedFips, onSelectCounty, studyProjects = [] }: M
           source: "study-projects",
           paint: {
             "circle-radius": ["interpolate", ["linear"], ["zoom"], 3, 7, 9, 11],
-            "circle-color": "#7145a0",
-            "circle-stroke-color": "#fff",
+            "circle-color": "#20a8e0",
+            "circle-stroke-color": "#d7f3ff",
             "circle-stroke-width": 2.5,
           },
         });

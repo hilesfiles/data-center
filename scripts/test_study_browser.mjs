@@ -22,9 +22,16 @@ try {
   await page.goto(url, { waitUntil: "domcontentloaded" });
   await page.getByRole("heading", { name: "Project register", exact: true }).waitFor();
   assert.equal(await page.locator(".project-card").count(), 36);
+  const themeColors = await page.evaluate(() => ({
+    body: getComputedStyle(document.body).backgroundColor,
+    topbar: getComputedStyle(document.querySelector(".topbar")).backgroundColor,
+    card: getComputedStyle(document.querySelector(".project-card")).backgroundColor,
+  }));
+  assert.deepEqual(themeColors, { body: "rgb(8, 10, 15)", topbar: "rgb(8, 9, 14)", card: "rgb(14, 18, 24)" });
   await noOverflow();
   await page.screenshot({ path: path.join(out, "register-desktop.png") });
   check("register shows 36 candidates without overflow");
+  check("dark map-forward theme applies to the application shell and research cards");
 
   await page.getByLabel("Economic evidence", { exact: true }).selectOption("available");
   assert.equal(await page.locator(".project-card").count(), 36);
@@ -697,6 +704,10 @@ try {
   await page.goto(`${url}#/map`);
   await page.locator("canvas").waitFor();
   await page.waitForFunction(() => !document.querySelector(".map-message") && !document.querySelector(".map-loading"), undefined, { timeout: 45000 });
+  assert.deepEqual(await page.evaluate(() => ({
+    sidebar: getComputedStyle(document.querySelector(".sidebar")).backgroundColor,
+    map: getComputedStyle(document.querySelector(".map-section")).backgroundColor,
+  })), { sidebar: "rgb(11, 14, 20)", map: "rgb(16, 23, 27)" });
   assert.match(await page.locator(".review-key").innerText(), /full modeled accounts \(3\)/i);
   assert.doesNotMatch(await page.locator(".legend").innerText(), /IM3|pending|merged|queued/i);
   await page.getByLabel("Completed project markers").selectOption("Colocation");
