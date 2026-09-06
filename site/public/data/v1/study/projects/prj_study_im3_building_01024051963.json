@@ -16,11 +16,11 @@
   "detail_path": "projects/prj_study_im3_building_01024051963.json",
   "latitude": 40.26828850505122,
   "longitude": -112.01507681579746,
-  "economic_record_count": 3,
-  "reported_actual_count": 1,
-  "projection_count": 2,
+  "economic_record_count": 12,
+  "reported_actual_count": 8,
+  "projection_count": 4,
   "modeled_synthesis_count": 0,
-  "research_completion_status": "research_pending",
+  "research_completion_status": "account_research_complete",
   "model_completeness": {
     "status": "incomplete",
     "required_categories": [
@@ -34,9 +34,12 @@
       "community"
     ],
     "covered_categories": [
+      "community",
       "construction",
+      "fiscal",
       "investment",
-      "operations"
+      "operations",
+      "resources"
     ],
     "modeled_categories": [],
     "required_county_outcomes": [
@@ -46,10 +49,7 @@
     ],
     "covered_county_outcomes": [],
     "missing_categories": [
-      "community",
-      "fiscal",
       "public_costs",
-      "resources",
       "suppliers"
     ],
     "missing_county_outcomes": [
@@ -61,8 +61,8 @@
     "definition": "All eight contribution-account categories contain sourced or labeled modeled values, and GDP, employment, and wage county-comparison modules are populated. Comparison gaps are descriptive and do not establish causal facility effects."
   },
   "schema_version": "1.0.0",
-  "release_id": "private-sector-study-1.47.0",
-  "generated_at": "2026-09-06T18:08:18+00:00",
+  "release_id": "private-sector-study-1.48.0",
+  "generated_at": "2026-09-06T18:43:04+00:00",
   "inventory_name": "Meta Eagle Mountain Data Center",
   "research_value": "Construction and early operations; three later panel years.",
   "history": {
@@ -85,12 +85,305 @@
       "url": "https://doi.org/10.57931/3017294"
     }
   ],
-  "research_updates": [],
+  "research_updates": [
+    {
+      "project_id": "prj_study_im3_building_01024051963",
+      "source_id": "src_study_meta_eagle_mountain_sec_identity_2022",
+      "as_of": "2026-09-06",
+      "title": "Identity and facility boundary audit — one IM3 footprint inside a larger Stadion campus",
+      "notes": "Sources checked: SEC Exhibits 21 for 2021-2025, Utah PSC dockets 20-035-04 and 24-035-04, Utah DEQ source N159410007, Meta's Eagle Mountain pages, IM3 building inventory, Utah County land records, and Eagle Mountain city records for 2018-2026. Queries used Meta, Facebook, Stadion LLC, Eagle Mountain Data Center, EAG1-EAG7, UCO, 1499 North Pony Express Parkway, 1275 North Community Circle, and the original parcel numbers 59:057:0003/0004. Stadion is a Meta subsidiary and the operator record resolves to the campus, but no public crosswalk maps IM3 building 01024051963 to an EAG identifier; all campus values remain unallocated. No public-record requests were made.",
+      "source": {
+        "source_id": "src_study_meta_eagle_mountain_sec_identity_2022",
+        "title": "Meta Platforms, Inc. 2021 Form 10-K Exhibit 21.1, List of Subsidiaries",
+        "url": "https://www.sec.gov/Archives/edgar/data/1326801/000132680122000018/fb-12312021x10kexhibit211.htm",
+        "publisher": "U.S. Securities and Exchange Commission",
+        "source_type": "sec_filing",
+        "publication_date": {
+          "date": "2022-02-03",
+          "precision": "day"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_page",
+        "notes": "Meta's filed subsidiary list includes Stadion LLC. The filing establishes corporate identity but contains no Eagle Mountain asset, employment, supplier, utility, tax, or project-cost breakdown."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_01024051963",
+      "source_id": "src_study_meta_eagle_mountain_psc_2024",
+      "as_of": "2026-09-06",
+      "title": "Operator and regulatory disclosures — later actual anchors replace two opening forecasts",
+      "notes": "Sources checked: Meta opening releases, current and cached factsheets, Meta annual sustainability materials, SEC 10-Ks and subsidiary exhibits, and Utah PSC Stadion testimony and exhibits from 2020-2026. Queries used Eagle Mountain investment, capex, operations jobs, employee, FTE, payroll, wage, revenue, expense, special contract, reserved capacity, demand and load. The 2024 sworn filing supports cumulative investment above $1.5 billion and more than 300 operations jobs, while the 2021 more-than-$1-billion and more-than-200-job values remain correctly labeled source forecasts. No annual capex, depreciation, campus revenue, operating expense, filled direct FTE, payroll, wage or building allocation was found.",
+      "source": {
+        "source_id": "src_study_meta_eagle_mountain_psc_2024",
+        "title": "Redacted Direct Testimony of Kyra Coyle on Behalf of Stadion LLC, Utah PSC Docket 24-035-04",
+        "url": "https://pscdocs.utah.gov/electric/24docs/2403504/336316RdctdPhsIIDirTstmnyKyraCoyleStadion10-30-2024.pdf",
+        "publisher": "Public Service Commission of Utah",
+        "source_type": "state_record",
+        "publication_date": {
+          "date": "2024-10-30",
+          "precision": "day"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "pdf_text_and_page_image",
+        "notes": "Sworn utility-rate testimony filed for Stadion, a Meta subsidiary and Rocky Mountain Power special-contract customer. Printed page 6 reports more than $1.5 billion invested in Utah and more than 300 operations jobs; the public copy redacts facility load and does not disclose payroll, annual capital spending, electricity use, or customer payments."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_01024051963",
+      "source_id": "src_study_meta_eagle_mountain_deq_2022",
+      "as_of": "2026-09-06",
+      "title": "Construction and permit audit — equipment counts retained without converting permits to spend",
+      "notes": "Sources checked: Utah DAQ permits N159410005, N159410007 and the 2026 N159410011 status entry; Eagle Mountain building and planning portals; Utah public-meeting packets; Meta construction releases; ENR coverage; and address/building-ID searches from 2018-2026. The December 2022 record lists 29 existing generators and fourteen proposed units for two buildings, preserved with separate bases. Meta's 2021 opening release reports a 1,250-worker historical peak while a later factsheet says 1,200; the baseline 1,250 observation is retained and the conflict documented rather than averaged. No permit valuation, contract total, completion invoice, worker hours, residence, payroll, or building-specific construction expenditure was found.",
+      "source": {
+        "source_id": "src_study_meta_eagle_mountain_deq_2022",
+        "title": "Intent to Approve DAQE-IN159410007-22, Stadion Eagle Mountain Data Center",
+        "url": "https://daqpermitting.utah.gov/DocViewer?IntDocID=134148&contentType=application%2Fpdf",
+        "publisher": "Utah Division of Air Quality",
+        "source_type": "state_record",
+        "publication_date": {
+          "date": "2022-12-07",
+          "precision": "day"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "pdf_text_and_page_image",
+        "notes": "The permit record identifies Stadion at 1499 North Pony Express Parkway, five existing EAG buildings, 29 existing diesel emergency generators, and a proposal for fourteen additional generators serving two UCO buildings. It is an intent-to-approve document rather than evidence that the proposed generators were finally authorized or commissioned; potential emissions and maximum testing hours are not actual use."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_01024051963",
+      "source_id": "src_study_enr_eagle_mountain_contractors_2019",
+      "as_of": "2026-09-06",
+      "title": "Supplier audit — firms are identifiable but local spending is not",
+      "notes": "Sources checked: ENR/AGC coverage, Mortenson project and safety coverage, city permit and infrastructure materials, Meta partner pages, procurement/vendor searches, and named-company searches for 2018-2026. ENR identifies Mortenson as builder and Forterra Structural Precast's Utah offices as an insulated-panel supplier; the infrastructure agreement also mentions Psomas review and inspection staffing. No source reports contract values, invoices, supplier payments, Utah County establishment addresses, worker residence, procurement totals, or a locally retained purchasing share. The supplier channel therefore remains missing rather than being inferred from firm names.",
+      "source": {
+        "source_id": "src_study_enr_eagle_mountain_contractors_2019",
+        "title": "AGC of Utah Contractors Look Forward to More Growth in 2019",
+        "url": "https://www.enr.com/articles/46306-agc-of-utah-contractors-look-forward-to-more-growth-in-2019",
+        "publisher": "Engineering News-Record",
+        "source_type": "other",
+        "publication_date": {
+          "date": "2019-02-04",
+          "precision": "day"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_page",
+        "notes": "Construction trade coverage identifies Minneapolis-based Mortenson as builder and Forterra Structural Precast's Utah offices as supplying insulated precast panels. It reports no contract values, invoice amounts, worker residence, payroll, or Utah County share and therefore cannot support a supplier-spending observation."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_01024051963",
+      "source_id": "src_study_rocky_mountain_power_meta_solar_2020",
+      "as_of": "2026-09-06",
+      "title": "Electric utility audit — supporting capacity is not facility consumption",
+      "notes": "Sources checked: Rocky Mountain Power Schedule 34 releases and Utah tariffs; PSC dockets 20-035-04, 24-035-04 and large-load line-extension materials; Meta renewable-energy reports and factsheets; EIA facility and utility datasets; and searches for Stadion meter, kWh, MWh, MW, peak demand, bill and rate from 2018-2026. The current operator factsheet describes thirteen Utah projects adding 1,719 MW, retained only as an unallocated source projection. The PSC filing confirms special-contract service but redacts facility load. No actual campus kWh, billed demand, annual electricity payment, PUE, renewable generation delivered, or selected-building meter was public.",
+      "source": {
+        "source_id": "src_study_rocky_mountain_power_meta_solar_2020",
+        "title": "Rocky Mountain Power adds three new solar facilities in Utah for Facebook",
+        "url": "https://www.rockymountainpower.net/about/newsroom/news-releases/rmp-adds-three-large-solar-facilities-in-utah-for-facebook.html",
+        "publisher": "Rocky Mountain Power",
+        "source_type": "other",
+        "publication_date": {
+          "date": "2020-08-06",
+          "precision": "day"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_page",
+        "notes": "Utility release describes three 235 MW Utah projects under Schedule 34 and 694 MW of signed in-state solar supporting Facebook's regional data centers. It does not identify Eagle Mountain meter load, annual generation delivered, project exclusivity, customer cost, or the operating status of every later Meta-supported project."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_01024051963",
+      "source_id": "src_study_eagle_mountain_water_plan_2024",
+      "as_of": "2026-09-06",
+      "title": "Water and wastewater audit — reuse benefit is measurable, campus withdrawal is not",
+      "notes": "Sources checked: Eagle Mountain's 2018 Stadion water/sewer agreement index, 2022 infrastructure agreement, 2024 reuse article and conservation plan, Meta 2023-2024 water-benefit reports, Utah Division of Water Rights listings and mail logs, and Division of Water Quality materials. Queries covered Stadion, Facebook, Meta, 1499 Pony Express, cooling water, wastewater, reuse, withdrawal, consumption, acre-feet, gallons and water rights from 2018-2026. The city reports 77,715,648 gallons of potable irrigation displacement in 2024 and Meta reports watershed-restoration benefits, but neither is facility use. Water-right records 54-459/54-1470 name Eagle Mountain Data Center Campus LLC, not Stadion/Meta, and were excluded as a separate developer. No Meta meter, annual withdrawal, consumptive use, sewer volume, rate or payment was found.",
+      "source": {
+        "source_id": "src_study_eagle_mountain_water_plan_2024",
+        "title": "Eagle Mountain City Water Conservation and Management Plan",
+        "url": "https://eaglemountain.gov/wp-content/uploads/2024/12/12.5.24-Water-Conservation-and-Management-Plan_Final.pdf",
+        "publisher": "Eagle Mountain City",
+        "source_type": "local_government_record",
+        "publication_date": {
+          "date": "2024-11-26",
+          "precision": "day"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "pdf_text_and_page_image",
+        "notes": "The adopted plan reports that the first reuse line and booster station were operating for the 2024 irrigation season and displaced 77,715,648 gallons of potable irrigation water. That avoided municipal withdrawal is not Meta facility consumption, a water right, a utility payment, or an annual project operating-cost measure."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_01024051963",
+      "source_id": "src_study_utah_county_acfr_2023",
+      "as_of": "2026-09-06",
+      "title": "Fiscal and assessor audit — taxpayer value is observed, tax cash flows are not",
+      "notes": "Sources checked: Utah County 2023 ACFR and 2025 budget statistical tables, county land-record abstracts and property-search entry points, Alpine School District budgets, original and current parcel searches, and owner-name searches for Stadion LLC and Meta from 2018-2026. Utah County reports $305.404 million of 2023 taxable assessed value for Stadion. An Alpine School District table reports $358.043091 million under its own principal-taxpayer presentation; the two bases cannot be reconciled from the public tables, so only the county-wide value is normalized. No parcel/account roll tying the full value to the campus, property-tax bill, payment, distribution, exemption amount, personal-property split, or annual series was found.",
+      "source": {
+        "source_id": "src_study_utah_county_acfr_2023",
+        "title": "Utah County Annual Comprehensive Financial Report 2023",
+        "url": "https://www.utahcounty.gov/Dept/Auditor/docs/FinancialReports/UtahCounty2023FinancialStatements.pdf",
+        "publisher": "Utah County",
+        "source_type": "local_government_record",
+        "publication_date": {
+          "precision": "unknown"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_pdf_text",
+        "notes": "The statistical section's principal-property-taxpayer table is sourced to the Utah County Treasurer and reports values in thousands. Stadion LLC is ranked fifth for 2023 at $305.404 million, or 0.35 percent of total county taxable assessed value; the table is not a tax bill, cash receipt, parcel roll, or campus-only valuation."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_01024051963",
+      "source_id": "src_study_eagle_mountain_stadion_interlocals_2021",
+      "as_of": "2026-09-06",
+      "title": "Incentive and public-cost audit — contingent terms do not establish realized subsidy",
+      "notes": "Sources checked: Sweetwater Industrial Park CRA #1 plan, budget, participation agreement, and interlocal amendments; 2018 approved minutes; city budgets for FY2019-FY2024; county and school materials; and searches for Stadion reimbursement, tax increment, PILOT, grant, incentive, disbursement and service cost through 2026. Agreements specify participation percentages, 20-year phase periods, a 40-year outside limit, and entity-specific real-property caps while personal-property reimbursement remains formula-driven. No realized annual tax increment, Stadion reimbursement ledger, service-cost series, grant disbursement, or same-scope fiscal net was found. The roughly $5 million city-built reuse project is a bounded gross project cost with unresolved funding, not the complete public cost of the campus.",
+      "source": {
+        "source_id": "src_study_eagle_mountain_stadion_interlocals_2021",
+        "title": "Eagle Mountain Redevelopment Agency interlocal-agreement meeting materials",
+        "url": "https://www.utah.gov/pmn/files/707907.pdf",
+        "publisher": "Eagle Mountain Redevelopment Agency",
+        "source_type": "local_government_record",
+        "publication_date": {
+          "precision": "year",
+          "year": 2021
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "pdf_text_and_page_image",
+        "notes": "Agreement bundle describes contingent tax-increment participation percentages, phase durations, and real-property reimbursement caps for the original Stadion project area. The terms are ceilings and formulas, not proof of annual taxes diverted, payments received by Stadion, public-service expenditures, or net fiscal benefit."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_01024051963",
+      "source_id": "src_study_eagle_mountain_infrastructure_agreement_2022",
+      "as_of": "2026-09-06",
+      "title": "Land, infrastructure, bond and court audit — obligations found, cash evidence absent",
+      "notes": "Sources checked: original county parcels 59:057:0003/0004 and subdivision abstracts, 2018 development and water/sewer agreement indexes, the 2022 Master Infrastructure Agreement and orders, Eagle Mountain budgets and capital materials, Utah Treasurer/Finance Commission bond materials, Utah court/public-index searches, SEC filings, and exact Stadion/entity/address searches for 2018-2026. The agreement allocates construction or reimbursement duties for off-site infrastructure but contains no completed payment schedule; a $1.8 million Pony Express resurfacing item is expressly associated with Google reimbursement and was excluded. No project bond, mortgage amount, litigation recovery, mechanics-lien total, deed consideration, completed public advance, or Stadion reimbursement amount was found.",
+      "source": {
+        "source_id": "src_study_eagle_mountain_infrastructure_agreement_2022",
+        "title": "Master Infrastructure Agreement between Eagle Mountain City and Stadion LLC",
+        "url": "https://d3n9y02raazwpg.cloudfront.net/emcity/fb02b969-4d7b-11ec-a798-0050569183fa-bf53e4e3-7325-4b21-9d6c-caa20b1014f7-1657831443.pdf",
+        "publisher": "Eagle Mountain City",
+        "source_type": "local_government_record",
+        "publication_date": {
+          "date": "2022-07-19",
+          "precision": "day"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "pdf_text_and_page_image",
+        "notes": "Agreement governs off-site roads, review and inspection staffing, and later infrastructure orders. It says Stadion constructs approved infrastructure or reimburses City costs, but the reviewed public agreement gives no completed Stadion payment ledger, supplier invoice, locally retained share, or complete city cost series."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_01024051963",
+      "source_id": "src_study_eagle_mountain_south_expansion_2025",
+      "as_of": "2026-09-06",
+      "title": "Expansion audit — later phases are not silently folded into the selected project",
+      "notes": "Sources checked: city and Utah public-notice records for Sweetwater CRA areas #1-#4, Stadion South Expansion, 2025 development agreements, 2026 notices, parcel-owner tables, DEQ N159410011, and contemporary operator/trade reporting. The original operating campus, later UCO buildings, the southern expansion and other Eagle Mountain data-center projects occupy distinct records and sometimes distinct parcels. New QTS, Google, Tract, Williams and Sweetwater #2/#4 values were excluded unless a source explicitly tied them to the original Meta operating campus. The project account therefore does not treat all Stadion-owned land or every later agreement as one realized facility.",
+      "source": {
+        "source_id": "src_study_eagle_mountain_south_expansion_2025",
+        "title": "Stadion South Expansion development-agreement meeting materials",
+        "url": "https://www.utah.gov/pmn/files/1331565.pdf",
+        "publisher": "Eagle Mountain City",
+        "source_type": "local_government_record",
+        "publication_date": {
+          "precision": "year",
+          "year": 2025
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_pdf_text",
+        "notes": "Later city materials identify a Stadion south expansion distinct from the original operating campus area. They are used only to enforce the scope boundary; future parcels, buildings, investment, jobs, utilities, and incentives are not rolled into the selected project's direct observations."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_01024051963",
+      "source_id": "src_study_eagle_mountain_launch_pad_2024",
+      "as_of": "2026-09-06",
+      "title": "Community audit — cumulative and named-recipient amounts are kept overlap-aware",
+      "notes": "Sources checked: Meta factsheets and opening release, Community Action Grant recipient pages for 2019-2026, Eagle Mountain city announcements, Alpine School District and Utah nonprofit pages, and searches for grant, donation, sponsorship, school, nonprofit, volunteer and recipient amounts. The current factsheet reports more than $5.2 million to Utah County schools and nonprofits and 280-plus grants/sponsorships; the city independently reports a $250,000 Launch Pad grant. Because Launch Pad is part of the cumulative program, the observations are retained but flagged against summation. No full annual ledger, in-kind valuation, recipient reconciliation, volunteer-hour value, or causal community outcome was found.",
+      "source": {
+        "source_id": "src_study_eagle_mountain_launch_pad_2024",
+        "title": "EM Chamber opens dynamic Launch Pad incubator",
+        "url": "https://eaglemountain.gov/em-chamber-opens-dynamic-launch-pad-incubator/",
+        "publisher": "Eagle Mountain City",
+        "source_type": "local_government_record",
+        "publication_date": {
+          "date": "2024-06-11",
+          "precision": "day"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_page",
+        "notes": "City announcement identifies a $250,000 Meta/Facebook grant supporting the Eagle Mountain Chamber of Commerce Launch Pad. It does not give a transfer date, audited payment record, or outcomes attributable to the grant, and the amount overlaps Meta's later cumulative community total."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_01024051963",
+      "source_id": "src_study_ksl_meta_eagle_mountain_2021",
+      "as_of": "2026-09-06",
+      "title": "Journalism and trade-press audit — corroboration retained as search evidence, not preferred measurements",
+      "notes": "Sources checked: KSL/Deseret News, FOX13, Engineering News-Record, Data Center Dynamics/indexed trade coverage, contractor pages and local reporting from announcement through September 2026. Queries combined Meta/Facebook/Stadion with Eagle Mountain, construction, opening, expansion, contractor, supplier, jobs, tax, power and water. Reporting corroborates the July 2021 opening and identifies contractors, but repeats operator estimates or conflicts on campus floor area (about 1.5 million versus Meta's nearly 2.4 million square feet). No unique, better-supported payment, employment, payroll, utility-use, tax, supplier-spend or public-cost observation survived preference for primary records.",
+      "source": {
+        "source_id": "src_study_ksl_meta_eagle_mountain_2021",
+        "title": "Facebook fires up first data center operations in Utah as massive construction project continues",
+        "url": "https://www.ksl.com/article/news/business/facebook-fires-up-first-data-center-operations-in-utah-as-massive-construction-project-continues/50204886",
+        "publisher": "KSL and Deseret News",
+        "source_type": "other",
+        "publication_date": {
+          "date": "2021-07-14",
+          "precision": "day"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_page",
+        "notes": "Contemporaneous local reporting corroborates first-phase operation and continued multi-building construction. Its 1.5-million-square-foot completion figure conflicts with Meta's contemporaneous nearly 2.4-million-square-foot campus statement, so neither secondary figure is used to allocate the selected IM3 footprint."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_01024051963",
+      "source_id": "src_study_bea_county_data_2026",
+      "as_of": "2026-09-06",
+      "title": "Government-statistics and county-outcome audit — no defensible comparison model retained",
+      "notes": "Sources checked: the governed 2001-2024 county economic panel, BEA CAEMP25N/CAINC/real-GDP regional files, BLS QCEW county employment and wage files, Census County Business Patterns, and Utah economic-development context. Utah County has rapid population growth, semiconductor and technology investment, multiple data-center projects, and no source-registered untreated comparison group or clean campus-only treatment date; the July 2021 opening also overlaps continuing construction and later phases. A before/after change or ad hoc county match would be descriptive but materially confounded, so GDP, employment and wage comparison-gap modules remain absent rather than being presented as Meta effects.",
+      "source": {
+        "source_id": "src_study_bea_county_data_2026",
+        "title": "BEA regional data downloadable files",
+        "url": "https://apps.bea.gov/regional/downloadzip.htm",
+        "publisher": "U.S. Bureau of Economic Analysis",
+        "source_type": "other",
+        "publication_date": {
+          "precision": "year",
+          "year": 2026
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "structured_data",
+        "notes": "Official source family checked for Utah County real GDP and total employment context. The repository's governed county panel ends in 2024; the source does not identify Meta-specific contribution or a defensible untreated comparison county."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_01024051963",
+      "source_id": "src_study_meta_eagle_mountain_factsheet_2026",
+      "as_of": "2026-09-06",
+      "title": "Contribution-account disposition — direct anchors improved, unsupported channels remain open",
+      "notes": "After deduplication, direct observations cover construction, investment, operations, fiscal, resources and community. Supplier spending remains unobserved; public-cost evidence is limited to a roughly $5 million city-built reuse project whose funding shares and recurring costs are undisclosed, so it does not satisfy the full public-cost category or permit net-fiscal synthesis. Facility electricity and water use, direct FTE/payroll, annual capex, tax payments, realized incentive reimbursements and all three county comparison modules remain unresolved. No construction multiplier, arbitrary local share, operating multiplier, property-tax estimate, utility-use estimate, fiscal net, or causal county effect was created.",
+      "source": {
+        "source_id": "src_study_meta_eagle_mountain_factsheet_2026",
+        "title": "Meta Eagle Mountain Data Center factsheet",
+        "url": "https://datacenters.atmeta.com/asset/eagle-mountain-data-center-sheet/",
+        "publisher": "Meta Platforms, Inc.",
+        "source_type": "operator_release",
+        "publication_date": {
+          "precision": "unknown"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "pdf_text_and_page_image",
+        "notes": "Current two-page factsheet retrieved September 6, 2026. It reports more than $5.2 million in direct Utah County funding, 280-plus grants and sponsorships, and 1,719 MW across thirteen Utah clean-energy projects. It supersedes a cached 2025 edition that reported $4.1 million and 210-plus grants, but it gives no edition date, project operating dates, recipient-level reconciliation, facility load, or water-meter quantity."
+      }
+    }
+  ],
   "evidence_gaps": [
     {
       "code": "investment",
       "label": "Capital investment",
-      "status": "projections_only",
+      "status": "partial",
       "needed": "Annual actual spending, local share, and phase allocation."
     },
     {
@@ -108,13 +401,13 @@
     {
       "code": "operations",
       "label": "Permanent jobs and compensation",
-      "status": "projections_only",
+      "status": "partial",
       "needed": "Realized direct and contractor employment, wages, and operating purchases."
     },
     {
       "code": "fiscal",
       "label": "Tax base and public revenue",
-      "status": "not_yet_collected",
+      "status": "partial",
       "needed": "Taxable values and actual receipts by year and recipient jurisdiction."
     },
     {
@@ -126,13 +419,13 @@
     {
       "code": "resources",
       "label": "Electricity, water, and cooling",
-      "status": "not_yet_collected",
+      "status": "partial",
       "needed": "Measured use, source, cooling design, and attributable system costs."
     },
     {
       "code": "community",
       "label": "Community institutions and direct funding",
-      "status": "not_yet_collected",
+      "status": "partial",
       "needed": "Annual grants, recipients, program purposes, realized spending, and overlap with other transfers."
     }
   ],
@@ -223,6 +516,281 @@
       "unit": "jobs",
       "measure_type": "stock",
       "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_meta_eagle_mountain_capex_2024",
+      "project_id": "prj_study_im3_building_01024051963",
+      "metric_code": "study.campus_capital_expenditure",
+      "value": 1500000000,
+      "value_qualifier": "greater_than",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "cumulative",
+        "report_date": "2024-10-30",
+        "label": "Cumulative Utah investment reported in Stadion's October 2024 regulatory testimony"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Meta Eagle Mountain Data Center campus; no allocation to selected IM3 building footprint",
+        "county_fips": "49049",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_meta_eagle_mountain_psc_2024",
+      "pdf_page": 8,
+      "printed_page": "6",
+      "source_locator": "Stadion Exhibit 1.0, printed page 6, lines 113-116",
+      "notes": "Sworn testimony reports investment over $1.5 billion in Utah. This supersedes the 2021 source forecast of more than $1 billion but does not provide annual spending, construction-only cost, local purchasing, depreciation, asset ownership, or a building-level allocation.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Reported campus capital expenditure",
+      "category": "investment",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_meta_eagle_mountain_operations_jobs_2024",
+      "project_id": "prj_study_im3_building_01024051963",
+      "metric_code": "study.operational_jobs_supported",
+      "value": 300,
+      "value_qualifier": "greater_than",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "reported_snapshot",
+        "report_date": "2024-10-30",
+        "label": "Operations jobs supported as reported in Stadion's October 2024 regulatory testimony"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Meta Eagle Mountain Data Center campus; direct, contractor, and induced composition not disclosed",
+        "county_fips": "49049",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_meta_eagle_mountain_psc_2024",
+      "pdf_page": 8,
+      "printed_page": "6",
+      "source_locator": "Stadion Exhibit 1.0, printed page 6, lines 113-116",
+      "notes": "The later testimony reports more than 300 operations jobs, superseding the 2021 source forecast of more than 200 jobs at full buildout. It does not define supported jobs as direct employees or FTE, disclose wages or payroll, or allocate jobs to the selected building.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Operator-reported operational jobs supported",
+      "category": "operations",
+      "unit": "jobs",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_meta_eagle_mountain_community_funding_2026",
+      "project_id": "prj_study_im3_building_01024051963",
+      "metric_code": "study.cumulative_community_funding",
+      "value": 5200000,
+      "value_qualifier": "greater_than",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "cumulative",
+        "report_date": "2026-09-06",
+        "label": "Operator-reported direct funding through the undated current factsheet retrieved September 2026"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Meta direct funding to Utah County schools and nonprofits associated with the Eagle Mountain campus",
+        "county_fips": "49049",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_meta_eagle_mountain_factsheet_2026",
+      "pdf_page": 1,
+      "printed_page": "1",
+      "source_locator": "Page 1, Direct funding to Utah County schools and nonprofits summary",
+      "notes": "Operator-reported cumulative total with no start date printed beside the dollar amount, annual series, audited recipient ledger, in-kind valuation, or outcome measure. The exact $250,000 Launch Pad grant is within this broader total and must not be added to it when aggregating community funding.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Cumulative direct community funding",
+      "category": "community",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_meta_eagle_mountain_launch_pad_grant_2024",
+      "project_id": "prj_study_im3_building_01024051963",
+      "metric_code": "study.direct_community_contribution",
+      "value": 250000,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "calendar_year",
+        "year": 2024,
+        "label": "Grant amount reported at the June 2024 Launch Pad opening"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Meta/Facebook grant to the Eagle Mountain Chamber of Commerce Launch Pad Business Resource Center",
+        "county_fips": "49049",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_eagle_mountain_launch_pad_2024",
+      "source_locator": "June 11, 2024 announcement, grant-funding paragraph",
+      "notes": "City-reported grant amount for a named local facility. It is not an audited payment date or measured program outcome and overlaps the operator's cumulative Utah County funding total, so it must not be summed with that total.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Direct community contribution",
+      "category": "community",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_meta_eagle_mountain_water_reuse_cost_2024",
+      "project_id": "prj_study_im3_building_01024051963",
+      "metric_code": "study.infrastructure_project_cost",
+      "value": 5000000,
+      "value_qualifier": "approximately",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "cumulative",
+        "report_date": "2024-06-13",
+        "label": "Water-reuse infrastructure project begun in 2020 and operating at Cory Wride Park in June 2024"
+      },
+      "scope": {
+        "level": "supporting_infrastructure",
+        "label": "City-built filtration and booster infrastructure reusing Meta cooling wastewater at Cory Wride Memorial Park",
+        "county_fips": "49049",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_eagle_mountain_water_reuse_2024",
+      "source_locator": "June 13, 2024 article, paragraphs describing City responsibility and infrastructure investments",
+      "notes": "Gross approximate project cost reported by the City. The source does not disaggregate Meta, City, utility, grant, or other funding; does not provide recurring operating cost; and does not establish the complete public cost of serving the campus or a net fiscal result.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Reported water-reuse infrastructure project cost",
+      "category": "investment",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_meta_eagle_mountain_existing_generators_2022",
+      "project_id": "prj_study_im3_building_01024051963",
+      "metric_code": "study.permitted_emergency_generator_count",
+      "value": 29,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "reported_snapshot",
+        "report_date": "2022-12-07",
+        "label": "Existing equipment listed in December 2022 air-permit modification record"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Existing Meta Eagle Mountain EAG buildings covered by DAQE-IN159410007-22",
+        "county_fips": "49049",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_meta_eagle_mountain_deq_2022",
+      "pdf_page": 7,
+      "printed_page": "6",
+      "source_locator": "Section II.A.2-II.A.4: thirteen Group 1A, fifteen Group 1B, and one Group 2 unit",
+      "notes": "Permit-listed existing diesel emergency-generator count across five EAG buildings. It is not a count for the selected IM3 footprint, actual runtime, fuel use, annual emissions, electricity consumption, or proof of continuous availability.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Permit-listed diesel emergency generators",
+      "category": "resources",
+      "unit": "generators",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_meta_eagle_mountain_proposed_generators_2022",
+      "project_id": "prj_study_im3_building_01024051963",
+      "metric_code": "study.permitted_emergency_generator_count",
+      "value": 14,
+      "value_qualifier": "exact",
+      "basis": "source_projection",
+      "period": {
+        "kind": "projection_horizon",
+        "report_date": "2022-12-07",
+        "label": "Fourteen proposed Group 1C generators for two new UCO buildings in the December 2022 intent-to-approve record"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Proposed two-building UCO expansion within the Meta Eagle Mountain air-permit source",
+        "county_fips": "49049",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_meta_eagle_mountain_deq_2022",
+      "pdf_page": 7,
+      "printed_page": "6",
+      "source_locator": "Section II.A.5, Group 1C Emergency Generator Engines (NEW)",
+      "notes": "Source-reported proposal preserved separately from existing equipment. The document was an intent to approve subject to comment and a final order; this record is not evidence that the fourteen generators were finally permitted, built, commissioned, operated, or associated with the selected IM3 footprint.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Permit-listed diesel emergency generators",
+      "category": "resources",
+      "unit": "generators",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_meta_eagle_mountain_taxable_value_2023",
+      "project_id": "prj_study_im3_building_01024051963",
+      "metric_code": "study.taxable_assessed_value",
+      "value": 305404000,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2023,
+        "label": "Utah County 2023 principal-property-taxpayer table"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Stadion LLC taxpayer account in Utah County; asset and parcel composition not disclosed",
+        "county_fips": "49049",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_utah_county_acfr_2023",
+      "pdf_page": 140,
+      "printed_page": "140",
+      "source_locator": "Principal Property Taxpayers, 2023 Stadion LLC row; amounts expressed in thousands",
+      "notes": "County table value of $305,404 thousand multiplied by 1,000. The taxpayer account is linked to Meta by the SEC filing and PSC testimony, but the table does not identify real versus personal property, campus parcels, exempt value, taxes levied or paid, tax increment diverted, or selected-building value.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Taxable assessed property value",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_meta_eagle_mountain_utah_renewables_2026",
+      "project_id": "prj_study_im3_building_01024051963",
+      "metric_code": "study.renewable_generation_capacity",
+      "value": 1719,
+      "value_qualifier": "exact",
+      "basis": "source_projection",
+      "period": {
+        "kind": "projection_horizon",
+        "report_date": "2026-09-06",
+        "label": "Thirteen Meta-supported Utah projects described as adding capacity in the current undated factsheet"
+      },
+      "scope": {
+        "level": "supporting_infrastructure",
+        "label": "Thirteen Meta-supported clean and renewable energy projects across Utah; no exclusive Eagle Mountain allocation",
+        "county_fips": "49049",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_meta_eagle_mountain_factsheet_2026",
+      "pdf_page": 1,
+      "printed_page": "1",
+      "source_locator": "Page 1, clean and renewable energy summary",
+      "notes": "Operator-reported nameplate capacity of a statewide supporting portfolio. The wording 'are adding' is retained as source projection because commissioning dates are not listed. It is not facility load, annual generation, consumption, ownership, cost, exclusive supply, or evidence that every project was operating at retrieval.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Reported renewable-generation nameplate capacity",
+      "category": "resources",
+      "unit": "MW",
+      "measure_type": "stock",
+      "aggregation": "none"
     }
   ],
   "economic_sources": [
@@ -239,13 +807,95 @@
       "retrieved_on": "2026-09-03",
       "review_method": "web_page",
       "notes": "Dated operator opening announcement. Completed construction activity and completion-dependent forecasts are separately worded. Operator self-report, not an independent employment or expenditure audit. Solar-project jobs elsewhere in the state are excluded from campus employment."
+    },
+    {
+      "source_id": "src_study_meta_eagle_mountain_psc_2024",
+      "title": "Redacted Direct Testimony of Kyra Coyle on Behalf of Stadion LLC, Utah PSC Docket 24-035-04",
+      "url": "https://pscdocs.utah.gov/electric/24docs/2403504/336316RdctdPhsIIDirTstmnyKyraCoyleStadion10-30-2024.pdf",
+      "publisher": "Public Service Commission of Utah",
+      "source_type": "state_record",
+      "publication_date": {
+        "date": "2024-10-30",
+        "precision": "day"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "pdf_text_and_page_image",
+      "notes": "Sworn utility-rate testimony filed for Stadion, a Meta subsidiary and Rocky Mountain Power special-contract customer. Printed page 6 reports more than $1.5 billion invested in Utah and more than 300 operations jobs; the public copy redacts facility load and does not disclose payroll, annual capital spending, electricity use, or customer payments."
+    },
+    {
+      "source_id": "src_study_meta_eagle_mountain_factsheet_2026",
+      "title": "Meta Eagle Mountain Data Center factsheet",
+      "url": "https://datacenters.atmeta.com/asset/eagle-mountain-data-center-sheet/",
+      "publisher": "Meta Platforms, Inc.",
+      "source_type": "operator_release",
+      "publication_date": {
+        "precision": "unknown"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "pdf_text_and_page_image",
+      "notes": "Current two-page factsheet retrieved September 6, 2026. It reports more than $5.2 million in direct Utah County funding, 280-plus grants and sponsorships, and 1,719 MW across thirteen Utah clean-energy projects. It supersedes a cached 2025 edition that reported $4.1 million and 210-plus grants, but it gives no edition date, project operating dates, recipient-level reconciliation, facility load, or water-meter quantity."
+    },
+    {
+      "source_id": "src_study_meta_eagle_mountain_deq_2022",
+      "title": "Intent to Approve DAQE-IN159410007-22, Stadion Eagle Mountain Data Center",
+      "url": "https://daqpermitting.utah.gov/DocViewer?IntDocID=134148&contentType=application%2Fpdf",
+      "publisher": "Utah Division of Air Quality",
+      "source_type": "state_record",
+      "publication_date": {
+        "date": "2022-12-07",
+        "precision": "day"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "pdf_text_and_page_image",
+      "notes": "The permit record identifies Stadion at 1499 North Pony Express Parkway, five existing EAG buildings, 29 existing diesel emergency generators, and a proposal for fourteen additional generators serving two UCO buildings. It is an intent-to-approve document rather than evidence that the proposed generators were finally authorized or commissioned; potential emissions and maximum testing hours are not actual use."
+    },
+    {
+      "source_id": "src_study_eagle_mountain_water_reuse_2024",
+      "title": "Datacenter water now re-used for Wride park grass",
+      "url": "https://eaglemountain.gov/datacenter-water-now-re-used-for-wride-park-grass/",
+      "publisher": "Eagle Mountain City",
+      "source_type": "local_government_record",
+      "publication_date": {
+        "date": "2024-06-13",
+        "precision": "day"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_page",
+      "notes": "City account of the Meta cooling-water reuse project begun in 2020. The City says it was responsible for necessary filtration and booster-station infrastructure and that the investments totaled around $5 million; the article does not separate Meta, city, utility, or other funding shares or recurring costs."
+    },
+    {
+      "source_id": "src_study_utah_county_acfr_2023",
+      "title": "Utah County Annual Comprehensive Financial Report 2023",
+      "url": "https://www.utahcounty.gov/Dept/Auditor/docs/FinancialReports/UtahCounty2023FinancialStatements.pdf",
+      "publisher": "Utah County",
+      "source_type": "local_government_record",
+      "publication_date": {
+        "precision": "unknown"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_pdf_text",
+      "notes": "The statistical section's principal-property-taxpayer table is sourced to the Utah County Treasurer and reports values in thousands. Stadion LLC is ranked fifth for 2023 at $305.404 million, or 0.35 percent of total county taxable assessed value; the table is not a tax bill, cash receipt, parcel roll, or campus-only valuation."
+    },
+    {
+      "source_id": "src_study_eagle_mountain_launch_pad_2024",
+      "title": "EM Chamber opens dynamic Launch Pad incubator",
+      "url": "https://eaglemountain.gov/em-chamber-opens-dynamic-launch-pad-incubator/",
+      "publisher": "Eagle Mountain City",
+      "source_type": "local_government_record",
+      "publication_date": {
+        "date": "2024-06-11",
+        "precision": "day"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_page",
+      "notes": "City announcement identifies a $250,000 Meta/Facebook grant supporting the Eagle Mountain Chamber of Commerce Launch Pad. It does not give a transfer date, audited payment record, or outcomes attributable to the grant, and the amount overlaps Meta's later cumulative community total."
     }
   ],
-  "economic_scope_note": "Reviewed evidence batches at campus or company/county scope. No record is allocated to an individual inventory building. Source checking establishes what a document reports, not an independent audit or causal attribution. Monetary figures are nominal. Peak workforce is distinct from annual employment; source-year labels do not establish fiscal-year boundaries. Original forecasts remain forecasts until realization is verified. No cross-record benefit total is defined. Cumulative project costs are not annual expenditure. Tax receipts and incentive payments remain separate, with inferred taxpayer links disclosed. Contextual research updates do not count as economic amounts. Account tax bills are distinct from cash receipts and incentive-program fees. Tax years, calendar years and fiscal years retain their source basis; separate taxpayer accounts are not consolidated. Municipal developer rebates and taxpayer valuations have distinct subjects. Estimated actual property value and tax capacity are not tax receipts; payable-year valuations retain their earlier assessment date. Taxpayer values expressed in millions retain approximate precision and account-level separation. A current-year table can use an older valuation date and is not converted into an annual series. Facility real-property and business-personal-property accounts remain separate, and address-label discrepancies are disclosed. Michigan Industrial Facilities Tax accounts remain distinct from the underlying real parcel and from post-expiration personal-property accounts; annual account totals are not recipient-level government receipts. Permit construction values are administrative project amounts, not verified expenditure, and separate permits are not combined without proof that their scopes do not overlap. Repeated maintenance-year assessments are annual parcel stocks, not new investment flows. Mixed-use parcel assessments and taxable values are retained at whole-parcel scope and are not allocated to a data-center tenant or function by floor area. Operator-reported jobs supported remain distinct from direct employees and FTEs. Approved infrastructure grants are documented public commitments rather than verified disbursements or total public costs. Cumulative community funding remains separate from tax receipts, payroll and modeled multiplier effects. Reported facility power capacity is not measured electricity consumption or peak demand. Permit-listed emergency generators are not runtime, fuel-use or actual-emissions observations. A city largest-taxpayer table's personal-property assessment remains separate from the leasehold real-property account, tax bills, receipts and capital expenditure. TIF loan principal is financing rather than a grant or general-fund receipt; project-generated tax revenue pledged to repayment is retained as a separate public-financing flow and is not added to gross parcel distributions. Water-withdrawal and consumptive permit capacities are regulatory limits rather than measured use. Development-agreement local-labor preferences are requirements rather than realized participation, and operating employee snapshots remain distinct from customers' on-site staff and jobs forecasts. Audited City bond statements distinguish issuance draws, year-end principal, annual principal retired, interest and fees, pledged TIF revenue, debt-service-fund transfers and future principal-plus-interest commitments. These measures are not summed into a benefit or subsidy total. City pledged revenue, City debt-service-fund transfers and the private fund's project TIF revenue applied to loan repayment retain their separate source definitions because only the 2022 transfer and private-fund amount agree exactly. Developer testimony in public meeting minutes is retained as a source-attributed cumulative lower bound; local-contractor spending is not converted into payroll, worker counts, household spending or multiplier effects. Economic-improvement-district cost estimates and maximum owner assessments remain source projections until bond issuance, an assessment schedule, collections and expenditures are verified. A statutory financing cap is not a tax receipt, public expenditure or subsidy. Audited private equipment-financing balances are debt stocks rather than construction spending, public support or community benefit. Reported floor area and occupied-share values describe operating scale and utilization, not employment, revenue, power use or economic output. Contractor and engineer case studies document supplier roles and completion timing but do not establish payment amounts, worker residence, payroll or multiplier effects. State incentive contract amounts, expected jobs and paid-or-certified-to-date fields remain distinct; a zero paid/certified balance at an earlier reporting cutoff does not imply no later claims. Public charging-infrastructure awards are commitments rather than verified disbursements, private project investment or operating benefits. Qualitative payment descriptions without a defensible numeric bound remain research context rather than quantitative records. Program-reported actual qualified investment, certified tax-exemption value and certified tax-credit value remain separate cumulative measures; none is converted into annual spending, a cash grant, local revenue or causal impact. County Business Patterns observations are county-industry context, not project contributions: establishment counts are employer locations rather than data-center facilities, March employment is not an annual average, annual payroll spans the full NAICS cell, and disclosure noise, classification changes and geographic assignment limit comparisons. No CBP change is attributed to a study project. Project fragments: prj_study_im3_building_00364289074: Corrective public-source audit for Microsoft's data-center property at 5150 Rogers Road and explicitly labeled wider Microsoft/Bexar County activity. Exact-site ordinance, permit, appraisal, and tax-account records remain separate from later campuses and regional disclosures; the three appraisal accounts and two taxable-account payments are not consolidated. Permit value is administrative, the original investment and employment figures are commitments, the 2013 employment threshold is a reported lower bound, and the water quantity is a projection rather than metered consumption. No Bexar-and-Medina total is allocated to this property. Annual construction expenditure, construction labor and residence, supplier payments, operating payroll and purchases, recipient-level tax distributions, marginal public-service cost, electricity consumption, water withdrawal or consumption, wastewater, actual emissions, and a recurring facility-level community series remain unobserved after the documented searches. prj_study_im3_building_00377585075: Corrective DET01 evidence audit. Official parcel, permit, tax, water-account, state-certificate, EPA and operator records are retained as direct observations or clearly labeled source forecasts. Conflicting floor-area figures remain separate because their reporting definitions differ. Construction cost, realized jobs, supplier payments, community funding, electricity, emissions, wastewater, actual public-service cost and causal county effects remain unbounded rather than being filled with transferred assumptions. prj_study_im3_building_00460089167: Corrective primary-source audit adds current Andale parcel assessment, contractor-reported campus floor area, and two recipient- or government-reported Meta community grants. The search trail records useful and negative results across identity, tax, construction, jobs, suppliers, utilities, water, permits, public costs, incentives, community funding, and county comparison inputs. Campus-wide facts remain unallocated to the selected inventory building, overlapping community amounts are not added together, and unavailable supplier, payroll, utility-billing, discharge, generator, and marginal-service-cost amounts remain explicit gaps. prj_study_im3_building_00464097467: Second-pass public-evidence audit for Apple's Washoe County data-center campus at 21505 Reno Technology Parkway West and its 2024 expansion application. GOED audit findings, application forecasts, county permit values, parcel assessments, a water-right allocation, operator-reported electricity use, and recipient-reported donation bands remain separate evidence states and scopes. Permit values are administrative amounts and are not summed because overlapping scopes cannot be ruled out. Assessment values are parcel stocks, not investment or tax receipts. The 125 acre-foot water right is regulatory capacity, not measured use. Food Bank gifts are company-region transfers, not campus-attributable annual spending. No campus total is allocated to the selected mapped building; the four-building campus, later buildout cases, downtown Reno warehouse, supporting renewable projects, fire-station parcel, and more-than-200-person support statement are not collapsed into one footprint. No Switch Citadel or Storey County amount enters this fragment. Vendor payments, worker residence, taxes received by jurisdiction, realized 2024 abatement, same-scope public-service cost, wastewater, and building-level electricity or water remain unobserved. prj_study_im3_building_00664938835: Second-pass public-evidence audit for Expedient's adaptive reuse of the pre-existing data-center building at 4777 W Ironwood Drive. The review searched Franklin planning, agenda, assessment, permit, water and sewer materials; Milwaukee County tax and deed-record access points; Wisconsin DOR, WEDC, DFI and PSC records; operator press, specification, career, ESG and community pages; lease, financing, carrier and vendor disclosures; and archived official pages for 2007-2026. Opening-day and current operator specifications remain separate dated snapshots because the reported area and capacity changed. The county portal now establishes a 2021-2025 parcel-tax principal series, but not Expedient's incidence under the lease. The 2022 ownership transfer, assessments, estimated permit values, tax payments and hiring plan remain non-additive. No source was found for actual construction outlays, realized site employment or payroll, local procurement, Milwaukee-area community transfers, metered resources, project-attributable public costs or a fiscal net. prj_study_im3_building_01073720208: Second-pass public-evidence audit for Google's Council Bluffs data-center activity, retaining the selected inventory building as the project key while leaving campus, taxpayer-account, company-county, and state-award facts at their reported scopes. The audit distinguishes completed IEDA contracts 08-HQJC-030 and 12-HQJP-051 from the 2022 award still in performance; permit valuations remain administrative amounts rather than expenditure; assessed and taxable values remain stocks; bills remain distinct from payments; and community grants remain recipient- and period-specific. The Pottawattamie County tax portal now supplies a paid 2018-2024 series for the principal Tetra parcel and an unpaid 2025 bill for the newer Questa parcel. No value is inferred for sales-tax exemptions, the local abatement schedule, franchise-fee adjustment, electricity, supplier retention, building-level water, marginal public-service cost, or net fiscal position. Models without defensible project allocation or transferable parameters were removed even though that leaves the eight-category account incomplete.",
+  "economic_scope_note": "Reviewed evidence batches at campus or company/county scope. No record is allocated to an individual inventory building. Source checking establishes what a document reports, not an independent audit or causal attribution. Monetary figures are nominal. Peak workforce is distinct from annual employment; source-year labels do not establish fiscal-year boundaries. Original forecasts remain forecasts until realization is verified. No cross-record benefit total is defined. Cumulative project costs are not annual expenditure. Tax receipts and incentive payments remain separate, with inferred taxpayer links disclosed. Contextual research updates do not count as economic amounts. Account tax bills are distinct from cash receipts and incentive-program fees. Tax years, calendar years and fiscal years retain their source basis; separate taxpayer accounts are not consolidated. Municipal developer rebates and taxpayer valuations have distinct subjects. Estimated actual property value and tax capacity are not tax receipts; payable-year valuations retain their earlier assessment date. Taxpayer values expressed in millions retain approximate precision and account-level separation. A current-year table can use an older valuation date and is not converted into an annual series. Facility real-property and business-personal-property accounts remain separate, and address-label discrepancies are disclosed. Michigan Industrial Facilities Tax accounts remain distinct from the underlying real parcel and from post-expiration personal-property accounts; annual account totals are not recipient-level government receipts. Permit construction values are administrative project amounts, not verified expenditure, and separate permits are not combined without proof that their scopes do not overlap. Repeated maintenance-year assessments are annual parcel stocks, not new investment flows. Mixed-use parcel assessments and taxable values are retained at whole-parcel scope and are not allocated to a data-center tenant or function by floor area. Operator-reported jobs supported remain distinct from direct employees and FTEs. Approved infrastructure grants are documented public commitments rather than verified disbursements or total public costs. Cumulative community funding remains separate from tax receipts, payroll and modeled multiplier effects. Reported facility power capacity is not measured electricity consumption or peak demand. Permit-listed emergency generators are not runtime, fuel-use or actual-emissions observations. A city largest-taxpayer table's personal-property assessment remains separate from the leasehold real-property account, tax bills, receipts and capital expenditure. TIF loan principal is financing rather than a grant or general-fund receipt; project-generated tax revenue pledged to repayment is retained as a separate public-financing flow and is not added to gross parcel distributions. Water-withdrawal and consumptive permit capacities are regulatory limits rather than measured use. Development-agreement local-labor preferences are requirements rather than realized participation, and operating employee snapshots remain distinct from customers' on-site staff and jobs forecasts. Audited City bond statements distinguish issuance draws, year-end principal, annual principal retired, interest and fees, pledged TIF revenue, debt-service-fund transfers and future principal-plus-interest commitments. These measures are not summed into a benefit or subsidy total. City pledged revenue, City debt-service-fund transfers and the private fund's project TIF revenue applied to loan repayment retain their separate source definitions because only the 2022 transfer and private-fund amount agree exactly. Developer testimony in public meeting minutes is retained as a source-attributed cumulative lower bound; local-contractor spending is not converted into payroll, worker counts, household spending or multiplier effects. Economic-improvement-district cost estimates and maximum owner assessments remain source projections until bond issuance, an assessment schedule, collections and expenditures are verified. A statutory financing cap is not a tax receipt, public expenditure or subsidy. Audited private equipment-financing balances are debt stocks rather than construction spending, public support or community benefit. Reported floor area and occupied-share values describe operating scale and utilization, not employment, revenue, power use or economic output. Contractor and engineer case studies document supplier roles and completion timing but do not establish payment amounts, worker residence, payroll or multiplier effects. State incentive contract amounts, expected jobs and paid-or-certified-to-date fields remain distinct; a zero paid/certified balance at an earlier reporting cutoff does not imply no later claims. Public charging-infrastructure awards are commitments rather than verified disbursements, private project investment or operating benefits. Qualitative payment descriptions without a defensible numeric bound remain research context rather than quantitative records. Program-reported actual qualified investment, certified tax-exemption value and certified tax-credit value remain separate cumulative measures; none is converted into annual spending, a cash grant, local revenue or causal impact. County Business Patterns observations are county-industry context, not project contributions: establishment counts are employer locations rather than data-center facilities, March employment is not an annual average, annual payroll spans the full NAICS cell, and disclosure noise, classification changes and geographic assignment limit comparisons. No CBP change is attributed to a study project. Project fragments: prj_study_im3_building_00364289074: Corrective public-source audit for Microsoft's data-center property at 5150 Rogers Road and explicitly labeled wider Microsoft/Bexar County activity. Exact-site ordinance, permit, appraisal, and tax-account records remain separate from later campuses and regional disclosures; the three appraisal accounts and two taxable-account payments are not consolidated. Permit value is administrative, the original investment and employment figures are commitments, the 2013 employment threshold is a reported lower bound, and the water quantity is a projection rather than metered consumption. No Bexar-and-Medina total is allocated to this property. Annual construction expenditure, construction labor and residence, supplier payments, operating payroll and purchases, recipient-level tax distributions, marginal public-service cost, electricity consumption, water withdrawal or consumption, wastewater, actual emissions, and a recurring facility-level community series remain unobserved after the documented searches. prj_study_im3_building_00377585075: Corrective DET01 evidence audit. Official parcel, permit, tax, water-account, state-certificate, EPA and operator records are retained as direct observations or clearly labeled source forecasts. Conflicting floor-area figures remain separate because their reporting definitions differ. Construction cost, realized jobs, supplier payments, community funding, electricity, emissions, wastewater, actual public-service cost and causal county effects remain unbounded rather than being filled with transferred assumptions. prj_study_im3_building_00460089167: Corrective primary-source audit adds current Andale parcel assessment, contractor-reported campus floor area, and two recipient- or government-reported Meta community grants. The search trail records useful and negative results across identity, tax, construction, jobs, suppliers, utilities, water, permits, public costs, incentives, community funding, and county comparison inputs. Campus-wide facts remain unallocated to the selected inventory building, overlapping community amounts are not added together, and unavailable supplier, payroll, utility-billing, discharge, generator, and marginal-service-cost amounts remain explicit gaps. prj_study_im3_building_00464097467: Second-pass public-evidence audit for Apple's Washoe County data-center campus at 21505 Reno Technology Parkway West and its 2024 expansion application. GOED audit findings, application forecasts, county permit values, parcel assessments, a water-right allocation, operator-reported electricity use, and recipient-reported donation bands remain separate evidence states and scopes. Permit values are administrative amounts and are not summed because overlapping scopes cannot be ruled out. Assessment values are parcel stocks, not investment or tax receipts. The 125 acre-foot water right is regulatory capacity, not measured use. Food Bank gifts are company-region transfers, not campus-attributable annual spending. No campus total is allocated to the selected mapped building; the four-building campus, later buildout cases, downtown Reno warehouse, supporting renewable projects, fire-station parcel, and more-than-200-person support statement are not collapsed into one footprint. No Switch Citadel or Storey County amount enters this fragment. Vendor payments, worker residence, taxes received by jurisdiction, realized 2024 abatement, same-scope public-service cost, wastewater, and building-level electricity or water remain unobserved. prj_study_im3_building_00664938835: Second-pass public-evidence audit for Expedient's adaptive reuse of the pre-existing data-center building at 4777 W Ironwood Drive. The review searched Franklin planning, agenda, assessment, permit, water and sewer materials; Milwaukee County tax and deed-record access points; Wisconsin DOR, WEDC, DFI and PSC records; operator press, specification, career, ESG and community pages; lease, financing, carrier and vendor disclosures; and archived official pages for 2007-2026. Opening-day and current operator specifications remain separate dated snapshots because the reported area and capacity changed. The county portal now establishes a 2021-2025 parcel-tax principal series, but not Expedient's incidence under the lease. The 2022 ownership transfer, assessments, estimated permit values, tax payments and hiring plan remain non-additive. No source was found for actual construction outlays, realized site employment or payroll, local procurement, Milwaukee-area community transfers, metered resources, project-attributable public costs or a fiscal net. prj_study_im3_building_00888253616: Second-pass public-evidence audit for NTT Silicon Valley SV1 at 1160 Walsh Avenue, Santa Clara. The review reconciles the planning-era 1150 Walsh address to APN 224-58-003; adds the finaled principal permit, its administrative job value, current operator specifications, emergency-generator authorization and the parcel's regular-bill payment history; and leaves supplemental bills separate to avoid double counting. Public sources still do not establish realized site employment or payroll, total project investment, supplier payments, project-specific community transfers, metered resources, or project-attributable public-service costs. prj_study_im3_building_01024051963: Corrective source audit for the Meta Eagle Mountain campus and the selected IM3 building footprint in Utah County. Campus, company-county, and supporting-infrastructure observations remain explicitly unallocated to the selected building; later expansion areas and unrelated Eagle Mountain data-center developers are excluded unless a source establishes continuity. prj_study_im3_building_01073720208: Second-pass public-evidence audit for Google's Council Bluffs data-center activity, retaining the selected inventory building as the project key while leaving campus, taxpayer-account, company-county, and state-award facts at their reported scopes. The audit distinguishes completed IEDA contracts 08-HQJC-030 and 12-HQJP-051 from the 2022 award still in performance; permit valuations remain administrative amounts rather than expenditure; assessed and taxable values remain stocks; bills remain distinct from payments; and community grants remain recipient- and period-specific. The Pottawattamie County tax portal now supplies a paid 2018-2024 series for the principal Tetra parcel and an unpaid 2025 bill for the newer Questa parcel. No value is inferred for sales-tax exemptions, the local abatement schedule, franchise-fee adjustment, electricity, supplier retention, building-level water, marginal public-service cost, or net fiscal position. Models without defensible project allocation or transferable parameters were removed even though that leaves the eight-category account incomplete. prj_study_im3_building_01132541700: Corrective primary-source audit adds two county taxable-account observations, state-verified incentive-compliance thresholds, current operator-reported jobs and community funding, one county-received grant, facility electricity use, supporting renewable capacity, and the 2018 expansion forecast. The search trail covers identity, land use, permits, assessor and fiscal records, incentives, public costs, utilities, water, suppliers, courts, bonds, community funding, and federal county outcomes. Most public evidence covers the multi-building Henrico campus or Scout Development's county account and remains unallocated to the selected inventory building; overlapping funding and investment figures are not summed, and unavailable supplier payments, utility bills, tax receipts, incentive costs, payroll, and marginal public-service costs remain explicit gaps.",
   "evidence_version": "study-economic-evidence-1.37.0",
   "modeled_syntheses": [],
   "modeled_sources": [],
-  "modeled_scope_note": "Modeled contribution accounts for Apple Mesa / Maricopa County, Switch Citadel / Storey County, and Digital Crossroad Hammond / Lake County. Every required account category and county-comparison module contains sourced evidence or a visibly labeled modeled value. Public support is not netted against unmatched local revenues, unavailable public-service cost is represented by a break-even threshold rather than an invented net margin, county comparisons are descriptive rather than causal, and low-confidence transferred benchmarks remain explicit. Project fragments: prj_study_im3_building_00364289074: Corrective residual modeled account for Microsoft San Antonio. Eight transferred construction, labor, procurement, operating, and household-output scenarios were removed because their arbitrary capital shares, forecast-realization cases, local-purchase assumptions, and Virginia coefficients were not bounded by project observations. Only three low-confidence descriptive county comparisons remain: each uses the project's documented operating-by 2013 anchor and official Bexar County outcome data, has a finite fit-sensitivity envelope, and explicitly makes no causal attribution. The account intentionally remains incomplete because no defensible direct observation or residual model closes the supplier category. prj_study_im3_building_00377585075: Corrective DET01 synthesis. Only exact same-period tax-account arithmetic, its explicitly conditional public-cost break-even identity and a unit conversion of displayed municipal meter history remain. Construction, employment, supplier, household, electricity, cooling, emissions, wastewater and county-effect models were removed because the audit did not bound the missing project inputs. This account is intentionally incomplete where direct evidence remains unbounded. prj_study_im3_building_00460089167: Corrective audit retains six bounded residual calculations only: FY2025 county tax retained after the provisionally linked incentive, the identical marginal-service-cost break-even threshold, conversion of Meta-reported 2024 water withdrawal with source rounding, and three noncausal county comparison gaps with fit sensitivity. Ten models based on arbitrary capital timing, cost shares, FTE ratios, transferred operating/construction multipliers, fleet PUE, or wastewater ratios are removed. Supplier/local-procurement evidence remains unavailable, so the project is intentionally incomplete rather than backfilled. prj_study_im3_building_00464097467: Second-pass modeled contribution account after an expanded public-evidence audit. Direct county permits now cover historical construction values, assessor rolls cover a main-campus parcel stock, a county action covers water-right capacity, Apple reports 2025 campus electricity use, and recipient reports bound two community gifts. Those observations supersede the need for a modeled community proxy but do not supply Apple contractor job-years, construction payroll, annual operating payroll, supplier payments, taxes received, or public-service cost. The construction base therefore retains only the packet's explicit $163 million construction forecast and excludes equipment and historical capital; wide 0.5-1.5 transfer sensitivities expose the mismatch in the last-resort direct construction coefficients. The unsupported local-purchase-share and Virginia induced-output models are removed. No net-fiscal value or public-service-cost break-even is published. County outcome gaps remain descriptive benchmark applications with fit-sensitivity intervals and no causal-design metadata. prj_study_im3_building_00664938835: Second-pass Expedient Milwaukee / Franklin syntheses retained only after a documented 2007-2026 public-source audit. The account keeps a clearly labeled 2022 ownership-transfer anchor, a PB25-0303-only construction allocation sensitivity, an exact tax-equal public-cost break-even threshold, a capacity-based electricity engineering sensitivity, and three descriptive county comparison gaps. It removes transferred construction job-years, assumed local-purchase shares, supplier and household output extrapolations, and a duplicate modeled tax row because public sources did not establish realized site employment, supplier geography, household capture, or a need to restate the direct tax observations. PM25-0174 remains excluded for possible overlap. No synthesis is an observed result or fiscal net. prj_study_im3_building_01073720208: Second-pass governed synthesis for Google Council Bluffs. Construction job-years use only two directly observed September 2025 city permit valuations and transfer the published Prince William County prototype coefficients as benchmark equivalents; the four channels are separated and protected by one aggregation. No Pottawattamie County supplier-retention share is imposed because the public audit found contractor names but no payment or vendor-residence ledger. The water row is the unallocated Google Council Bluffs location identity reported for 2024, not a building allocation. No local abatement, exemption realization, franchise-fee amount, electric load, public-service cost, break-even threshold, or net fiscal result is modeled. County outcome gaps remain descriptive benchmark applications with fit-sensitivity ranges and no causal attribution.",
+  "modeled_scope_note": "Modeled contribution accounts for Apple Mesa / Maricopa County, Switch Citadel / Storey County, and Digital Crossroad Hammond / Lake County. Every required account category and county-comparison module contains sourced evidence or a visibly labeled modeled value. Public support is not netted against unmatched local revenues, unavailable public-service cost is represented by a break-even threshold rather than an invented net margin, county comparisons are descriptive rather than causal, and low-confidence transferred benchmarks remain explicit. Project fragments: prj_study_im3_building_00364289074: Corrective residual modeled account for Microsoft San Antonio. Eight transferred construction, labor, procurement, operating, and household-output scenarios were removed because their arbitrary capital shares, forecast-realization cases, local-purchase assumptions, and Virginia coefficients were not bounded by project observations. Only three low-confidence descriptive county comparisons remain: each uses the project's documented operating-by 2013 anchor and official Bexar County outcome data, has a finite fit-sensitivity envelope, and explicitly makes no causal attribution. The account intentionally remains incomplete because no defensible direct observation or residual model closes the supplier category. prj_study_im3_building_00377585075: Corrective DET01 synthesis. Only exact same-period tax-account arithmetic, its explicitly conditional public-cost break-even identity and a unit conversion of displayed municipal meter history remain. Construction, employment, supplier, household, electricity, cooling, emissions, wastewater and county-effect models were removed because the audit did not bound the missing project inputs. This account is intentionally incomplete where direct evidence remains unbounded. prj_study_im3_building_00460089167: Corrective audit retains six bounded residual calculations only: FY2025 county tax retained after the provisionally linked incentive, the identical marginal-service-cost break-even threshold, conversion of Meta-reported 2024 water withdrawal with source rounding, and three noncausal county comparison gaps with fit sensitivity. Ten models based on arbitrary capital timing, cost shares, FTE ratios, transferred operating/construction multipliers, fleet PUE, or wastewater ratios are removed. Supplier/local-procurement evidence remains unavailable, so the project is intentionally incomplete rather than backfilled. prj_study_im3_building_00464097467: Second-pass modeled contribution account after an expanded public-evidence audit. Direct county permits now cover historical construction values, assessor rolls cover a main-campus parcel stock, a county action covers water-right capacity, Apple reports 2025 campus electricity use, and recipient reports bound two community gifts. Those observations supersede the need for a modeled community proxy but do not supply Apple contractor job-years, construction payroll, annual operating payroll, supplier payments, taxes received, or public-service cost. The construction base therefore retains only the packet's explicit $163 million construction forecast and excludes equipment and historical capital; wide 0.5-1.5 transfer sensitivities expose the mismatch in the last-resort direct construction coefficients. The unsupported local-purchase-share and Virginia induced-output models are removed. No net-fiscal value or public-service-cost break-even is published. County outcome gaps remain descriptive benchmark applications with fit-sensitivity intervals and no causal-design metadata. prj_study_im3_building_00664938835: Second-pass Expedient Milwaukee / Franklin syntheses retained only after a documented 2007-2026 public-source audit. The account keeps a clearly labeled 2022 ownership-transfer anchor, a PB25-0303-only construction allocation sensitivity, an exact tax-equal public-cost break-even threshold, a capacity-based electricity engineering sensitivity, and three descriptive county comparison gaps. It removes transferred construction job-years, assumed local-purchase shares, supplier and household output extrapolations, and a duplicate modeled tax row because public sources did not establish realized site employment, supplier geography, household capture, or a need to restate the direct tax observations. PM25-0174 remains excluded for possible overlap. No synthesis is an observed result or fiscal net. prj_study_im3_building_00888253616: Residual synthesis after the SV1 public-source audit. It retains one exact tax-equal public-cost break-even threshold and three reproducible but low-confidence county comparison gaps. The county gaps use 2013-2020 pre-opening histories and an inverse-distance-weighted 20-county benchmark; very wide fit envelopes are retained because Santa Clara County matches poorly. No model converts capacity to consumption, permit value to jobs, or unidentified vendor and community activity to local benefits. prj_study_im3_building_01073720208: Second-pass governed synthesis for Google Council Bluffs. Construction job-years use only two directly observed September 2025 city permit valuations and transfer the published Prince William County prototype coefficients as benchmark equivalents; the four channels are separated and protected by one aggregation. No Pottawattamie County supplier-retention share is imposed because the public audit found contractor names but no payment or vendor-residence ledger. The water row is the unallocated Google Council Bluffs location identity reported for 2024, not a building allocation. No local abatement, exemption realization, franchise-fee amount, electric load, public-service cost, break-even threshold, or net fiscal result is modeled. County outcome gaps remain descriptive benchmark applications with fit-sensitivity ranges and no causal attribution. prj_study_im3_building_01132541700: Four bounded syntheses are retained after direct-record search: one deterministic conversion of Meta's rounded 2024 Henrico water-withdrawal observation and three governed, descriptive county comparison gaps. No construction, operating, supplier, household, tax-receipt, incentive-cost, or public-service-cost model is added because the public record lacks the needed project-specific bases and arbitrary allocation shares would create false precision. Every retained estimate is visibly modeled, unallocated to the selected building, non-additive, and noncausal.",
   "synthesis_version": "study-modeled-synthesis-3.2.0",
   "modeling_policy_version": "study-modeling-policy-1.3.0",
   "analysis_readiness": {
@@ -255,5 +905,6 @@
     "causal": "not_assessed"
   },
   "legacy_first_entry_note": "Meta establishes the exact mapped Eagle Mountain campus serving traffic by July 14, 2021. Utah County's six current records do not establish complete historical coverage or exclude earlier telecom, government, university, healthcare, financial, utility, or enterprise facilities.",
-  "scope_note": "Provisional private-sector research candidate. Owner/operator history, project boundaries and lifecycle require review. Membership does not verify current operation or establish economic impact."
+  "scope_note": "Provisional private-sector research candidate. Owner/operator history, project boundaries and lifecycle require review. Membership does not verify current operation or establish economic impact.",
+  "project_description": "Meta’s Eagle Mountain Data Center is a multi-building campus at 1499 North Pony Express Parkway in Eagle Mountain, Utah County, operated through Meta subsidiary Stadion LLC. The selected inventory target is one 344,790-square-foot IM3 building footprint within that campus; public records do not map the footprint to Meta’s EAG building identifiers, so campus-wide values remain unallocated. The campus broke ground in 2018 and began serving traffic in July 2021, while later expansion areas are kept outside this project unless a source explicitly establishes continuity."
 }

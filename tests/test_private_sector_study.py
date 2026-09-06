@@ -85,10 +85,10 @@ class PrivateSectorStudyTest(unittest.TestCase):
         index, details, _ = self.build()
         self.assertEqual(index["counts"]["projects"], 36)
         self.assertEqual(index["counts"]["projects_with_economic_evidence"], 36)
-        self.assertEqual(index["counts"]["economic_records"], 660)
-        self.assertEqual(index["counts"]["reported_actual_records"], 597)
-        self.assertEqual(index["counts"]["projection_records"], 63)
-        self.assertEqual(index["counts"]["modeled_synthesis_records"], 138)
+        self.assertEqual(index["counts"]["economic_records"], 692)
+        self.assertEqual(index["counts"]["reported_actual_records"], 626)
+        self.assertEqual(index["counts"]["projection_records"], 66)
+        self.assertEqual(index["counts"]["modeled_synthesis_records"], 146)
         self.assertEqual(index["full_modeled_county_accounts"], 3)
         self.assertEqual(sum(r["analysis_readiness"]["causal"] == "causal_model_available" for r in details), 0)
         washoe = next(r for r in details if r["name"] == "Apple Washoe County campus")
@@ -725,7 +725,7 @@ class PrivateSectorStudyTest(unittest.TestCase):
         by_id = {r["estimate_id"]: r for r in modeled}
         self.assertEqual((project["economic_record_count"], project["modeled_synthesis_count"]), (113, 43))
         self.assertEqual((index["counts"]["economic_records"], index["counts"]["modeled_synthesis_records"]),
-                         (660, 138))
+                         (692, 146))
         self.assertEqual({r["basis"] for r in modeled}, {"modeled_synthesis"})
         self.assertTrue(all(r["presentation"] == "modeled_not_observed_or_audited" for r in modeled))
         self.assertTrue(all(r["derivation"]["formula"] and r["parameters"] and r["limitations"] for r in modeled))
@@ -962,12 +962,12 @@ class PrivateSectorStudyTest(unittest.TestCase):
     def test_ntt_sv1_appeal_values_and_preopening_plans_remain_distinct(self):
         _, details, _ = self.build()
         sv1 = next(p for p in details if p["project_id"] == "prj_study_im3_building_00888253616")
-        self.assertEqual((sv1["economic_record_count"], sv1["reported_actual_count"], sv1["projection_count"]), (4, 2, 2))
+        self.assertEqual((sv1["economic_record_count"], sv1["reported_actual_count"], sv1["projection_count"]), (17, 15, 2))
         actual = [r for r in sv1["economic_records"] if r["basis"] == "reported_actual"]
         plans = [r for r in sv1["economic_records"] if r["basis"] == "source_projection"]
-        self.assertEqual([r["value"] for r in actual], [159579996, 83066779])
-        self.assertTrue(all(r["metric_code"] == "study.assessor_appeal_county_value" for r in actual))
-        self.assertTrue(all(r["period"]["kind"] == "source_year" for r in actual))
+        appeals = [r for r in actual if r["metric_code"] == "study.assessor_appeal_county_value"]
+        self.assertEqual([r["value"] for r in appeals], [159579996, 83066779])
+        self.assertTrue(all(r["period"]["kind"] == "source_year" for r in appeals))
         self.assertEqual({r["metric_code"]: r["value"] for r in plans}, {
             "study.operating_jobs_projection": 40,
             "study.annual_water_use_projection": 173752,

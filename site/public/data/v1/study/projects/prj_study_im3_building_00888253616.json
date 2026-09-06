@@ -16,11 +16,11 @@
   "detail_path": "projects/prj_study_im3_building_00888253616.json",
   "latitude": 37.36905321130347,
   "longitude": -121.95533775020122,
-  "economic_record_count": 4,
-  "reported_actual_count": 2,
+  "economic_record_count": 17,
+  "reported_actual_count": 15,
   "projection_count": 2,
-  "modeled_synthesis_count": 0,
-  "research_completion_status": "research_pending",
+  "modeled_synthesis_count": 4,
+  "research_completion_status": "account_research_complete",
   "model_completeness": {
     "status": "incomplete",
     "required_categories": [
@@ -34,35 +34,37 @@
       "community"
     ],
     "covered_categories": [
+      "construction",
       "fiscal",
       "operations",
+      "public_costs",
       "resources"
     ],
-    "modeled_categories": [],
+    "modeled_categories": [
+      "public_costs"
+    ],
     "required_county_outcomes": [
       "study.modeled_county_employment_comparison_gap",
       "study.modeled_county_gdp_comparison_gap",
       "study.modeled_county_wage_comparison_gap"
     ],
-    "covered_county_outcomes": [],
-    "missing_categories": [
-      "community",
-      "construction",
-      "investment",
-      "public_costs",
-      "suppliers"
-    ],
-    "missing_county_outcomes": [
+    "covered_county_outcomes": [
       "study.modeled_county_employment_comparison_gap",
       "study.modeled_county_gdp_comparison_gap",
       "study.modeled_county_wage_comparison_gap"
     ],
+    "missing_categories": [
+      "community",
+      "investment",
+      "suppliers"
+    ],
+    "missing_county_outcomes": [],
     "direct_evidence_gap_count": 8,
     "definition": "All eight contribution-account categories contain sourced or labeled modeled values, and GDP, employment, and wage county-comparison modules are populated. Comparison gaps are descriptive and do not establish causal facility effects."
   },
   "schema_version": "1.0.0",
-  "release_id": "private-sector-study-1.47.0",
-  "generated_at": "2026-09-06T18:08:18+00:00",
+  "release_id": "private-sector-study-1.48.0",
+  "generated_at": "2026-09-06T18:43:04+00:00",
   "inventory_name": "NTT Silicon Valley SV1 Data Center",
   "research_value": "Exact opening and three later panel years; nearby developments require explicit treatment.",
   "history": {
@@ -121,6 +123,149 @@
         "review_method": "web_pdf_text",
         "notes": "The Assessor's Appeals System tables identify RagingWire Data Centers Inc. and APN 224-58-003. Appeal 22.3790 reports a $159,579,996 County Verified value against a $79,738,800 applicant opinion; appeal 23.6405 reports $83,066,779 against $41,533,390. These are county positions in an appeal docket, not final appeal determinations, tax bills, payments or recipient receipts."
       }
+    },
+    {
+      "project_id": "prj_study_im3_building_00888253616",
+      "source_id": "src_study_santa_clara_ntt_sv1_permit_2019",
+      "as_of": "2026-09-06",
+      "title": "Project boundary and construction audit",
+      "notes": "City planning, CEQA, permit and Legistar records were searched by APN 224-58-003, 1150/1160 Walsh Avenue, PLN2018-13128, CEQ2018-01049, BLD2019-53423, RagingWire and NTT for 2018-2026. The finaled principal permit supplies a $125,405,765 administrative job value and DPR contractor identity; it does not supply audited outlays, equipment split, worker hours, payroll, supplier payments or local retention. Later tenant fit-out permits are not treated as separate buildings or added to the principal value.",
+      "source": {
+        "source_id": "src_study_santa_clara_ntt_sv1_permit_2019",
+        "title": "Building permit BLD2019-53423 — 1160 Walsh Avenue",
+        "url": "https://aca-prod.accela.com/SANTACLARA/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=19HST&capID2=00000&capID3=03Q2R&agencyCode=SANTACLARA&IsToShowInspection=",
+        "publisher": "City of Santa Clara",
+        "source_type": "local_government_record",
+        "publication_date": {
+          "precision": "day",
+          "date": "2019-01-10"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_page",
+        "notes": "The official permit record is Finaled and describes a new four-story, base-isolated data center with mechanical, electrical, plumbing and site work. It reports job value of $125,405,765 and identifies DPR Construction Inc. as general contractor. Job value is an administrative permit amount, not audited expenditure, payment, local purchasing or total investment."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_00888253616",
+      "source_id": "src_study_scc_ntt_sv1_tax_history_2026",
+      "as_of": "2026-09-06",
+      "title": "Fiscal audit — regular parcel bills verified",
+      "notes": "The county tax portal was reviewed for APN 224-58-003 across fiscal years 2017-2018 through 2025-2026. Nine paid regular-bill principals are normalized; separately numbered supplemental bills are excluded to avoid overlapping assessment events. Santa Clara budget, agenda, state California Competes and financing-record searches found the developer-funded Oaks Junction agreement but no project-specific tax-credit award, bond subsidy or same-scope net fiscal result.",
+      "source": {
+        "source_id": "src_study_scc_ntt_sv1_tax_history_2026",
+        "title": "Santa Clara County property-tax details — APN 224-58-003",
+        "url": "https://santaclaracounty.telleronline.net/search/1/details?APN=224-58-003",
+        "publisher": "County of Santa Clara Department of Tax and Collections",
+        "source_type": "local_government_record",
+        "publication_date": {
+          "precision": "unknown"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_page",
+        "notes": "The official parcel page identifies 1160 Walsh Avenue, TRA 007-000, and annual regular bills for APN 224-58-003-00. The normalized series sums the two paid regular installments for each fiscal year and excludes separately numbered supplemental bills to avoid overlap. A parcel payment spans multiple taxing jurisdictions and does not establish NTT's economic incidence or a fiscal net."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_00888253616",
+      "source_id": "src_study_ntt_sv1_opening_2021",
+      "as_of": "2026-09-06",
+      "title": "Operations audit — capacity is observed, employment remains forecast-only",
+      "notes": "NTT/RagingWire releases, current specification and careers pages were searched for SV1, Santa Clara, 1150/1160 Walsh, employees, jobs, payroll, wages, occupancy and revenue from 2018-2026. The 16 MW and 64,000-square-foot data-floor specifications are retained, while the existing up-to-40-job plan remains a pre-opening forecast. No realized site FTE, payroll, wage, rack occupancy, revenue or operating expense was found.",
+      "source": {
+        "source_id": "src_study_ntt_sv1_opening_2021",
+        "title": "NTT Opens New Silicon Valley Data Center",
+        "url": "https://services.global.ntt/en-us/newsroom/ntt-opens-new-silicon-valley-data-center",
+        "publisher": "NTT Global Data Centers",
+        "source_type": "operator_release",
+        "publication_date": {
+          "precision": "day",
+          "date": "2021-04-13"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_page",
+        "notes": "The operator announced SV1's opening on April 13, 2021 and described the four-story, earthquake-base-isolated facility and its 16 MW capacity. It supplies no realized site headcount, payroll, capital outlay, supplier spend or local community transfer."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_00888253616",
+      "source_id": "src_study_ntt_sv1_specification_2026",
+      "as_of": "2026-09-06",
+      "title": "Resource audit — capacity and cooling design do not establish consumption",
+      "notes": "Operator, City water/sewer, Silicon Valley Power, CEQA and air-district sources were searched for electricity, demand, PUE, water, wastewater, emissions, generator run time and renewable energy. The operator reports critical-load capacity and closed-loop cooling, the CEQA record retains a pre-opening water projection, and the air permit supplies a generator count. No site meter, bill, observed peak, annual kWh, realized PUE, water, sewer, emissions or renewable share was found; no capacity-to-consumption model is added.",
+      "source": {
+        "source_id": "src_study_ntt_sv1_specification_2026",
+        "title": "Silicon Valley SV1 Data Center",
+        "url": "https://services.global.ntt/en-us/services-and-products/global-data-centers/global-locations/americas/silicon-valley-sv1-data-center",
+        "publisher": "NTT Global Data Centers",
+        "source_type": "operator_release",
+        "publication_date": {
+          "precision": "unknown"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_page",
+        "notes": "The current operator page identifies 1160 Walsh Avenue and reports 16 MW of critical IT load and 64,000 square feet of data floor, plus closed-loop water cooling. These are capacity and area descriptors, not utilization, annual electricity, whole-building area, metered water or audited environmental performance."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_00888253616",
+      "source_id": "src_study_ntt_sv1_first_responder_drill_2026",
+      "as_of": "2026-09-06",
+      "title": "Community audit — activity found, quantified transfer not found",
+      "notes": "NTT/RagingWire community, ESG, press and local nonprofit searches used SV1, Santa Clara, donation, grant, volunteer, school, nonprofit and first responder for 2018-2026. An SV1 fire-department training drill is documented, but no project-specific cash amount, in-kind value, volunteer hours or recipient accounting was public. No community amount is inferred.",
+      "source": {
+        "source_id": "src_study_ntt_sv1_first_responder_drill_2026",
+        "title": "Community partners: Collaborating with first responders in Silicon Valley",
+        "url": "https://services.global.ntt/en-us/insights/blog/community-partners-collaborating-with-first-responders-in-silicon-valley",
+        "publisher": "NTT Global Data Centers",
+        "source_type": "operator_release",
+        "publication_date": {
+          "precision": "unknown"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_page",
+        "notes": "The operator describes hosting a Santa Clara Fire Department confined-space rescue drill at SV1. No cash transfer, in-kind valuation, participant hours or recipient accounting is disclosed, so no community-benefit amount is normalized."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_00888253616",
+      "source_id": "src_study_santa_clara_oaks_junction_agreement_2019",
+      "as_of": "2026-09-06",
+      "title": "Investment and public-cost audit — infrastructure agreement is not a fiscal net",
+      "notes": "Land-sale, deed, financing, construction, substation and City budget records were searched by address, APN, RagingWire and NTT. Public sources disclose land purchase without a primary-record price and a $450,000 initial developer contribution toward actual Oaks Junction station costs, but not total project investment, completed contribution total, annual City operating cost or project-attributable police, fire, road, utility, administrative or financing cost. Only a tax-equal break-even threshold is modeled; no net benefit is asserted.",
+      "source": {
+        "source_id": "src_study_santa_clara_oaks_junction_agreement_2019",
+        "title": "Substation Service Agreement for the RagingWire data center",
+        "url": "https://santaclara.legistar.com/View.ashx?GUID=73D7B54F-E6AD-44D1-B7EE-F998AA660B98&ID=7959266&M=F",
+        "publisher": "City of Santa Clara",
+        "source_type": "local_government_record",
+        "publication_date": {
+          "precision": "day",
+          "date": "2019-12-17"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_pdf_text",
+        "notes": "The signed agreement links the 1150 Walsh planning address to the RagingWire project, states anticipated maximum demand of 27 MVA, makes the developer responsible for actual station development costs and calls for an initial $450,000 developer contribution. The agreement does not disclose final project cost, completed payment total or same-scope annual public-service cost; no available direct metric safely represents the contribution."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_00888253616",
+      "source_id": "src_study_bkf_ntt_sv1_project_2026",
+      "as_of": "2026-09-06",
+      "title": "Supplier audit — participants are identifiable, payments are not",
+      "notes": "Permit, project-team, operator, carrier and contractor sources were searched for DPR Construction, BKF Engineers, Linesight, procurement, vendor, supplier, contract and payment. DPR is identified on the principal permit, and public project pages identify other professional participants, but no contract value, paid amount, supplier address at payment time or Santa Clara County retained share was found. The permit job value is not allocated among suppliers and no procurement multiplier is applied.",
+      "source": {
+        "source_id": "src_study_bkf_ntt_sv1_project_2026",
+        "title": "NTT SV1 Data Center",
+        "url": "https://www.bkf.com/project/ntt-sv1-data-center/",
+        "publisher": "BKF Engineers",
+        "source_type": "other",
+        "publication_date": {
+          "precision": "unknown"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_page",
+        "notes": "The project page identifies RagingWire as client and describes civil engineering, surveying and construction-monitoring participation at SV1. It provides no contract value, payment, vendor geography at payment time or locally retained procurement amount."
+      }
     }
   ],
   "evidence_gaps": [
@@ -133,7 +278,7 @@
     {
       "code": "construction",
       "label": "Construction jobs and payroll",
-      "status": "not_yet_collected",
+      "status": "partial",
       "needed": "Workers, job-years, payroll, duration, and local participation."
     },
     {
@@ -145,7 +290,7 @@
     {
       "code": "operations",
       "label": "Permanent jobs and compensation",
-      "status": "projections_only",
+      "status": "partial",
       "needed": "Realized direct and contractor employment, wages, and operating purchases."
     },
     {
@@ -163,7 +308,7 @@
     {
       "code": "resources",
       "label": "Electricity, water, and cooling",
-      "status": "projections_only",
+      "status": "partial",
       "needed": "Measured use, source, cooling design, and attributable system costs."
     },
     {
@@ -297,6 +442,394 @@
       "unit": "gallons_per_year",
       "measure_type": "flow",
       "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_ntt_sv1_permitted_construction_value_2019",
+      "project_id": "prj_study_im3_building_00888253616",
+      "metric_code": "study.permitted_construction_value",
+      "value": 125405765,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "source_year",
+        "year": 2019,
+        "label": "Principal building permit BLD2019-53423, applied January 10, 2019 and later finaled"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Four-story SV1 data-center building at 1160 Walsh Avenue",
+        "county_fips": "06085",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_santa_clara_ntt_sv1_permit_2019",
+      "source_locator": "Record details, Additional Information: Job Value($)",
+      "notes": "Administrative permit job value. It is not verified expenditure, total investment, a contract payment, supplier spend, payroll or evidence that all value was retained locally.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Reported permit construction value",
+      "category": "construction",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_ntt_sv1_current_power_capacity_2026",
+      "project_id": "prj_study_im3_building_00888253616",
+      "metric_code": "study.operating_power_capacity",
+      "value": 16,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "reported_snapshot",
+        "report_date": "2026-09-06",
+        "label": "Current operator specification retrieved September 6, 2026"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "NTT Silicon Valley SV1 at 1160 Walsh Avenue",
+        "county_fips": "06085",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_ntt_sv1_specification_2026",
+      "source_locator": "Data center specifications, Power section",
+      "notes": "Critical IT load capacity, not observed demand, utility-service maximum, occupied load, annual electricity or generator capacity.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Reported operating data-center capacity",
+      "category": "resources",
+      "unit": "MW",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_ntt_sv1_current_data_floor_area_2026",
+      "project_id": "prj_study_im3_building_00888253616",
+      "metric_code": "study.operating_property_floor_area",
+      "value": 64000,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "reported_snapshot",
+        "report_date": "2026-09-06",
+        "label": "Current operator specification retrieved September 6, 2026"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "NTT Silicon Valley SV1 data-floor area at 1160 Walsh Avenue",
+        "county_fips": "06085",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_ntt_sv1_specification_2026",
+      "source_locator": "Data center specifications, Building section",
+      "notes": "Operator-reported data-floor area, not gross building area, parcel area, occupied area or newly constructed square footage. The narrower area definition is retained explicitly.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Reported operating property floor area",
+      "category": "operations",
+      "unit": "square_feet",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_ntt_sv1_permitted_generator_count_2020",
+      "project_id": "prj_study_im3_building_00888253616",
+      "metric_code": "study.permitted_emergency_generator_count",
+      "value": 11,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "reported_snapshot",
+        "report_date": "2020-04-02",
+        "label": "Authority to Construct issued April 2, 2020"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "RagingWire / NTT SV1 emergency-generation authorization",
+        "county_fips": "06085",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_baaqmd_ntt_sv1_generators_2020",
+      "source_locator": "Executive Officer's report, Authority to Construct entry for RagingWire SV1",
+      "pdf_page": 11,
+      "printed_page": "11",
+      "notes": "Count comprises ten 3.5-MW emergency backup generators and one 1.1-MW life-safety generator. The permit authorization is not proof of installed count, operation, fuel consumption, run hours or emissions.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Permit-listed diesel emergency generators",
+      "category": "resources",
+      "unit": "generators",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_ntt_sv1_property_taxes_paid_fy2018",
+      "project_id": "prj_study_im3_building_00888253616",
+      "metric_code": "study.property_taxes_paid",
+      "value": 7741.04,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2018,
+        "label": "Fiscal year 2017-2018 regular parcel bill paid"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "APN 224-58-003-00 regular property-tax account spanning local taxing jurisdictions",
+        "county_fips": "06085",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_scc_ntt_sv1_tax_history_2026",
+      "source_locator": "Payment history, FY2018 regular bill, two $3,870.52 installments",
+      "notes": "Paid regular-bill principal for the parcel before opening; separately numbered supplemental bills are excluded. The payment is not allocated to the operator or data-center operation.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "annual_series_key": "ntt_sv1_regular_property_tax_paid",
+      "label": "Account property taxes paid",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_ntt_sv1_property_taxes_paid_fy2019",
+      "project_id": "prj_study_im3_building_00888253616",
+      "metric_code": "study.property_taxes_paid",
+      "value": 111807.68,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2019,
+        "label": "Fiscal year 2018-2019 regular parcel bill paid"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "APN 224-58-003-00 regular property-tax account spanning local taxing jurisdictions",
+        "county_fips": "06085",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_scc_ntt_sv1_tax_history_2026",
+      "source_locator": "Payment history, FY2019 regular bill, two $55,903.84 installments",
+      "notes": "Paid regular-bill principal during development; supplemental bills are excluded. Not a public-service cost or fiscal net.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "annual_series_key": "ntt_sv1_regular_property_tax_paid",
+      "label": "Account property taxes paid",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_ntt_sv1_property_taxes_paid_fy2020",
+      "project_id": "prj_study_im3_building_00888253616",
+      "metric_code": "study.property_taxes_paid",
+      "value": 119896.12,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2020,
+        "label": "Fiscal year 2019-2020 regular parcel bill paid"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "APN 224-58-003-00 regular property-tax account spanning local taxing jurisdictions",
+        "county_fips": "06085",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_scc_ntt_sv1_tax_history_2026",
+      "source_locator": "Payment history, FY2020 regular bill, two $59,948.06 installments",
+      "notes": "Paid regular-bill principal during development; supplemental bills are excluded. Not a public-service cost or fiscal net.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "annual_series_key": "ntt_sv1_regular_property_tax_paid",
+      "label": "Account property taxes paid",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_ntt_sv1_property_taxes_paid_fy2021",
+      "project_id": "prj_study_im3_building_00888253616",
+      "metric_code": "study.property_taxes_paid",
+      "value": 122231.9,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2021,
+        "label": "Fiscal year 2020-2021 regular parcel bill paid"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "APN 224-58-003-00 regular property-tax account spanning local taxing jurisdictions",
+        "county_fips": "06085",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_scc_ntt_sv1_tax_history_2026",
+      "source_locator": "Payment history, FY2021 regular bill, two $61,115.95 installments",
+      "notes": "Paid regular-bill principal spanning the opening period; supplemental bills are excluded. Not a public-service cost or fiscal net.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "annual_series_key": "ntt_sv1_regular_property_tax_paid",
+      "label": "Account property taxes paid",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_ntt_sv1_property_taxes_paid_fy2022",
+      "project_id": "prj_study_im3_building_00888253616",
+      "metric_code": "study.property_taxes_paid",
+      "value": 572549.48,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2022,
+        "label": "Fiscal year 2021-2022 regular parcel bill paid"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "APN 224-58-003-00 regular property-tax account spanning local taxing jurisdictions",
+        "county_fips": "06085",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_scc_ntt_sv1_tax_history_2026",
+      "source_locator": "Payment history, FY2022 regular bill, two $286,274.74 installments",
+      "notes": "Paid regular-bill principal after opening; supplemental bills are excluded. Not a public-service cost or fiscal net.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "annual_series_key": "ntt_sv1_regular_property_tax_paid",
+      "label": "Account property taxes paid",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_ntt_sv1_property_taxes_paid_fy2023",
+      "project_id": "prj_study_im3_building_00888253616",
+      "metric_code": "study.property_taxes_paid",
+      "value": 959869.38,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2023,
+        "label": "Fiscal year 2022-2023 regular parcel bill paid"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "APN 224-58-003-00 regular property-tax account spanning local taxing jurisdictions",
+        "county_fips": "06085",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_scc_ntt_sv1_tax_history_2026",
+      "source_locator": "Payment history, FY2023 regular bill, two $479,934.69 installments",
+      "notes": "Paid regular-bill principal after opening; supplemental bills are excluded. Not a public-service cost or fiscal net.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "annual_series_key": "ntt_sv1_regular_property_tax_paid",
+      "label": "Account property taxes paid",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_ntt_sv1_property_taxes_paid_fy2024",
+      "project_id": "prj_study_im3_building_00888253616",
+      "metric_code": "study.property_taxes_paid",
+      "value": 976453.22,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2024,
+        "label": "Fiscal year 2023-2024 regular parcel bill paid"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "APN 224-58-003-00 regular property-tax account spanning local taxing jurisdictions",
+        "county_fips": "06085",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_scc_ntt_sv1_tax_history_2026",
+      "source_locator": "Payment history, FY2024 regular bill, two $488,226.61 installments",
+      "notes": "Paid regular-bill principal after opening; supplemental bills are excluded. Not a public-service cost or fiscal net.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "annual_series_key": "ntt_sv1_regular_property_tax_paid",
+      "label": "Account property taxes paid",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_ntt_sv1_property_taxes_paid_fy2025",
+      "project_id": "prj_study_im3_building_00888253616",
+      "metric_code": "study.property_taxes_paid",
+      "value": 986228.3,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2025,
+        "label": "Fiscal year 2024-2025 regular parcel bill paid"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "APN 224-58-003-00 regular property-tax account spanning local taxing jurisdictions",
+        "county_fips": "06085",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_scc_ntt_sv1_tax_history_2026",
+      "source_locator": "Payment history, FY2025 regular bill, two $493,114.15 installments",
+      "notes": "Paid regular-bill principal after opening; supplemental bills are excluded. Not a public-service cost or fiscal net.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "annual_series_key": "ntt_sv1_regular_property_tax_paid",
+      "label": "Account property taxes paid",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_ntt_sv1_property_taxes_paid_fy2026",
+      "project_id": "prj_study_im3_building_00888253616",
+      "metric_code": "study.property_taxes_paid",
+      "value": 1024370.76,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2026,
+        "label": "Fiscal year 2025-2026 regular parcel bill paid"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "APN 224-58-003-00 regular property-tax account spanning local taxing jurisdictions",
+        "county_fips": "06085",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_scc_ntt_sv1_tax_history_2026",
+      "source_locator": "Payment history, FY2026 regular bill, two $512,185.38 installments paid November 3, 2025",
+      "notes": "Latest complete paid regular-bill principal with zero displayed balance; supplemental bills are excluded. Not a public-service cost or fiscal net.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "annual_series_key": "ntt_sv1_regular_property_tax_paid",
+      "label": "Account property taxes paid",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
     }
   ],
   "economic_sources": [
@@ -341,21 +874,528 @@
       "retrieved_on": "2026-09-03",
       "review_method": "web_pdf_text",
       "notes": "The utility memorandum records the developer's annual water-use estimate of 173,752 gallons, approximately 0.53 acre-feet per year, and finds that the project did not trigger a formal water-supply assessment. This is a design estimate rather than metered use. The later initial study repeats the annual total but contains internally inconsistent daily wastewater arithmetic, so no daily-use value is retained."
+    },
+    {
+      "source_id": "src_study_scc_ntt_sv1_tax_history_2026",
+      "title": "Santa Clara County property-tax details — APN 224-58-003",
+      "url": "https://santaclaracounty.telleronline.net/search/1/details?APN=224-58-003",
+      "publisher": "County of Santa Clara Department of Tax and Collections",
+      "source_type": "local_government_record",
+      "publication_date": {
+        "precision": "unknown"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_page",
+      "notes": "The official parcel page identifies 1160 Walsh Avenue, TRA 007-000, and annual regular bills for APN 224-58-003-00. The normalized series sums the two paid regular installments for each fiscal year and excludes separately numbered supplemental bills to avoid overlap. A parcel payment spans multiple taxing jurisdictions and does not establish NTT's economic incidence or a fiscal net."
+    },
+    {
+      "source_id": "src_study_santa_clara_ntt_sv1_permit_2019",
+      "title": "Building permit BLD2019-53423 — 1160 Walsh Avenue",
+      "url": "https://aca-prod.accela.com/SANTACLARA/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=19HST&capID2=00000&capID3=03Q2R&agencyCode=SANTACLARA&IsToShowInspection=",
+      "publisher": "City of Santa Clara",
+      "source_type": "local_government_record",
+      "publication_date": {
+        "precision": "day",
+        "date": "2019-01-10"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_page",
+      "notes": "The official permit record is Finaled and describes a new four-story, base-isolated data center with mechanical, electrical, plumbing and site work. It reports job value of $125,405,765 and identifies DPR Construction Inc. as general contractor. Job value is an administrative permit amount, not audited expenditure, payment, local purchasing or total investment."
+    },
+    {
+      "source_id": "src_study_ntt_sv1_specification_2026",
+      "title": "Silicon Valley SV1 Data Center",
+      "url": "https://services.global.ntt/en-us/services-and-products/global-data-centers/global-locations/americas/silicon-valley-sv1-data-center",
+      "publisher": "NTT Global Data Centers",
+      "source_type": "operator_release",
+      "publication_date": {
+        "precision": "unknown"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_page",
+      "notes": "The current operator page identifies 1160 Walsh Avenue and reports 16 MW of critical IT load and 64,000 square feet of data floor, plus closed-loop water cooling. These are capacity and area descriptors, not utilization, annual electricity, whole-building area, metered water or audited environmental performance."
+    },
+    {
+      "source_id": "src_study_baaqmd_ntt_sv1_generators_2020",
+      "title": "Board of Directors meeting agenda — Executive Officer's report",
+      "url": "https://www.baaqmd.gov/~/media/files/board-of-directors/2020/bod_agenda_091620-pdf.pdf",
+      "publisher": "Bay Area Air Quality Management District",
+      "source_type": "local_government_record",
+      "publication_date": {
+        "precision": "day",
+        "date": "2020-09-16"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_pdf_text",
+      "notes": "The report states that an Authority to Construct issued April 2, 2020 for RagingWire SV1, a 27-MW Santa Clara data center, covering ten 3.5-MW emergency backup generators and one 1.1-MW life-safety generator. Authorization does not prove installation, operation, fuel use, run hours or emissions."
     }
   ],
-  "economic_scope_note": "Reviewed evidence batches at campus or company/county scope. No record is allocated to an individual inventory building. Source checking establishes what a document reports, not an independent audit or causal attribution. Monetary figures are nominal. Peak workforce is distinct from annual employment; source-year labels do not establish fiscal-year boundaries. Original forecasts remain forecasts until realization is verified. No cross-record benefit total is defined. Cumulative project costs are not annual expenditure. Tax receipts and incentive payments remain separate, with inferred taxpayer links disclosed. Contextual research updates do not count as economic amounts. Account tax bills are distinct from cash receipts and incentive-program fees. Tax years, calendar years and fiscal years retain their source basis; separate taxpayer accounts are not consolidated. Municipal developer rebates and taxpayer valuations have distinct subjects. Estimated actual property value and tax capacity are not tax receipts; payable-year valuations retain their earlier assessment date. Taxpayer values expressed in millions retain approximate precision and account-level separation. A current-year table can use an older valuation date and is not converted into an annual series. Facility real-property and business-personal-property accounts remain separate, and address-label discrepancies are disclosed. Michigan Industrial Facilities Tax accounts remain distinct from the underlying real parcel and from post-expiration personal-property accounts; annual account totals are not recipient-level government receipts. Permit construction values are administrative project amounts, not verified expenditure, and separate permits are not combined without proof that their scopes do not overlap. Repeated maintenance-year assessments are annual parcel stocks, not new investment flows. Mixed-use parcel assessments and taxable values are retained at whole-parcel scope and are not allocated to a data-center tenant or function by floor area. Operator-reported jobs supported remain distinct from direct employees and FTEs. Approved infrastructure grants are documented public commitments rather than verified disbursements or total public costs. Cumulative community funding remains separate from tax receipts, payroll and modeled multiplier effects. Reported facility power capacity is not measured electricity consumption or peak demand. Permit-listed emergency generators are not runtime, fuel-use or actual-emissions observations. A city largest-taxpayer table's personal-property assessment remains separate from the leasehold real-property account, tax bills, receipts and capital expenditure. TIF loan principal is financing rather than a grant or general-fund receipt; project-generated tax revenue pledged to repayment is retained as a separate public-financing flow and is not added to gross parcel distributions. Water-withdrawal and consumptive permit capacities are regulatory limits rather than measured use. Development-agreement local-labor preferences are requirements rather than realized participation, and operating employee snapshots remain distinct from customers' on-site staff and jobs forecasts. Audited City bond statements distinguish issuance draws, year-end principal, annual principal retired, interest and fees, pledged TIF revenue, debt-service-fund transfers and future principal-plus-interest commitments. These measures are not summed into a benefit or subsidy total. City pledged revenue, City debt-service-fund transfers and the private fund's project TIF revenue applied to loan repayment retain their separate source definitions because only the 2022 transfer and private-fund amount agree exactly. Developer testimony in public meeting minutes is retained as a source-attributed cumulative lower bound; local-contractor spending is not converted into payroll, worker counts, household spending or multiplier effects. Economic-improvement-district cost estimates and maximum owner assessments remain source projections until bond issuance, an assessment schedule, collections and expenditures are verified. A statutory financing cap is not a tax receipt, public expenditure or subsidy. Audited private equipment-financing balances are debt stocks rather than construction spending, public support or community benefit. Reported floor area and occupied-share values describe operating scale and utilization, not employment, revenue, power use or economic output. Contractor and engineer case studies document supplier roles and completion timing but do not establish payment amounts, worker residence, payroll or multiplier effects. State incentive contract amounts, expected jobs and paid-or-certified-to-date fields remain distinct; a zero paid/certified balance at an earlier reporting cutoff does not imply no later claims. Public charging-infrastructure awards are commitments rather than verified disbursements, private project investment or operating benefits. Qualitative payment descriptions without a defensible numeric bound remain research context rather than quantitative records. Program-reported actual qualified investment, certified tax-exemption value and certified tax-credit value remain separate cumulative measures; none is converted into annual spending, a cash grant, local revenue or causal impact. County Business Patterns observations are county-industry context, not project contributions: establishment counts are employer locations rather than data-center facilities, March employment is not an annual average, annual payroll spans the full NAICS cell, and disclosure noise, classification changes and geographic assignment limit comparisons. No CBP change is attributed to a study project. Project fragments: prj_study_im3_building_00364289074: Corrective public-source audit for Microsoft's data-center property at 5150 Rogers Road and explicitly labeled wider Microsoft/Bexar County activity. Exact-site ordinance, permit, appraisal, and tax-account records remain separate from later campuses and regional disclosures; the three appraisal accounts and two taxable-account payments are not consolidated. Permit value is administrative, the original investment and employment figures are commitments, the 2013 employment threshold is a reported lower bound, and the water quantity is a projection rather than metered consumption. No Bexar-and-Medina total is allocated to this property. Annual construction expenditure, construction labor and residence, supplier payments, operating payroll and purchases, recipient-level tax distributions, marginal public-service cost, electricity consumption, water withdrawal or consumption, wastewater, actual emissions, and a recurring facility-level community series remain unobserved after the documented searches. prj_study_im3_building_00377585075: Corrective DET01 evidence audit. Official parcel, permit, tax, water-account, state-certificate, EPA and operator records are retained as direct observations or clearly labeled source forecasts. Conflicting floor-area figures remain separate because their reporting definitions differ. Construction cost, realized jobs, supplier payments, community funding, electricity, emissions, wastewater, actual public-service cost and causal county effects remain unbounded rather than being filled with transferred assumptions. prj_study_im3_building_00460089167: Corrective primary-source audit adds current Andale parcel assessment, contractor-reported campus floor area, and two recipient- or government-reported Meta community grants. The search trail records useful and negative results across identity, tax, construction, jobs, suppliers, utilities, water, permits, public costs, incentives, community funding, and county comparison inputs. Campus-wide facts remain unallocated to the selected inventory building, overlapping community amounts are not added together, and unavailable supplier, payroll, utility-billing, discharge, generator, and marginal-service-cost amounts remain explicit gaps. prj_study_im3_building_00464097467: Second-pass public-evidence audit for Apple's Washoe County data-center campus at 21505 Reno Technology Parkway West and its 2024 expansion application. GOED audit findings, application forecasts, county permit values, parcel assessments, a water-right allocation, operator-reported electricity use, and recipient-reported donation bands remain separate evidence states and scopes. Permit values are administrative amounts and are not summed because overlapping scopes cannot be ruled out. Assessment values are parcel stocks, not investment or tax receipts. The 125 acre-foot water right is regulatory capacity, not measured use. Food Bank gifts are company-region transfers, not campus-attributable annual spending. No campus total is allocated to the selected mapped building; the four-building campus, later buildout cases, downtown Reno warehouse, supporting renewable projects, fire-station parcel, and more-than-200-person support statement are not collapsed into one footprint. No Switch Citadel or Storey County amount enters this fragment. Vendor payments, worker residence, taxes received by jurisdiction, realized 2024 abatement, same-scope public-service cost, wastewater, and building-level electricity or water remain unobserved. prj_study_im3_building_00664938835: Second-pass public-evidence audit for Expedient's adaptive reuse of the pre-existing data-center building at 4777 W Ironwood Drive. The review searched Franklin planning, agenda, assessment, permit, water and sewer materials; Milwaukee County tax and deed-record access points; Wisconsin DOR, WEDC, DFI and PSC records; operator press, specification, career, ESG and community pages; lease, financing, carrier and vendor disclosures; and archived official pages for 2007-2026. Opening-day and current operator specifications remain separate dated snapshots because the reported area and capacity changed. The county portal now establishes a 2021-2025 parcel-tax principal series, but not Expedient's incidence under the lease. The 2022 ownership transfer, assessments, estimated permit values, tax payments and hiring plan remain non-additive. No source was found for actual construction outlays, realized site employment or payroll, local procurement, Milwaukee-area community transfers, metered resources, project-attributable public costs or a fiscal net. prj_study_im3_building_01073720208: Second-pass public-evidence audit for Google's Council Bluffs data-center activity, retaining the selected inventory building as the project key while leaving campus, taxpayer-account, company-county, and state-award facts at their reported scopes. The audit distinguishes completed IEDA contracts 08-HQJC-030 and 12-HQJP-051 from the 2022 award still in performance; permit valuations remain administrative amounts rather than expenditure; assessed and taxable values remain stocks; bills remain distinct from payments; and community grants remain recipient- and period-specific. The Pottawattamie County tax portal now supplies a paid 2018-2024 series for the principal Tetra parcel and an unpaid 2025 bill for the newer Questa parcel. No value is inferred for sales-tax exemptions, the local abatement schedule, franchise-fee adjustment, electricity, supplier retention, building-level water, marginal public-service cost, or net fiscal position. Models without defensible project allocation or transferable parameters were removed even though that leaves the eight-category account incomplete.",
+  "economic_scope_note": "Reviewed evidence batches at campus or company/county scope. No record is allocated to an individual inventory building. Source checking establishes what a document reports, not an independent audit or causal attribution. Monetary figures are nominal. Peak workforce is distinct from annual employment; source-year labels do not establish fiscal-year boundaries. Original forecasts remain forecasts until realization is verified. No cross-record benefit total is defined. Cumulative project costs are not annual expenditure. Tax receipts and incentive payments remain separate, with inferred taxpayer links disclosed. Contextual research updates do not count as economic amounts. Account tax bills are distinct from cash receipts and incentive-program fees. Tax years, calendar years and fiscal years retain their source basis; separate taxpayer accounts are not consolidated. Municipal developer rebates and taxpayer valuations have distinct subjects. Estimated actual property value and tax capacity are not tax receipts; payable-year valuations retain their earlier assessment date. Taxpayer values expressed in millions retain approximate precision and account-level separation. A current-year table can use an older valuation date and is not converted into an annual series. Facility real-property and business-personal-property accounts remain separate, and address-label discrepancies are disclosed. Michigan Industrial Facilities Tax accounts remain distinct from the underlying real parcel and from post-expiration personal-property accounts; annual account totals are not recipient-level government receipts. Permit construction values are administrative project amounts, not verified expenditure, and separate permits are not combined without proof that their scopes do not overlap. Repeated maintenance-year assessments are annual parcel stocks, not new investment flows. Mixed-use parcel assessments and taxable values are retained at whole-parcel scope and are not allocated to a data-center tenant or function by floor area. Operator-reported jobs supported remain distinct from direct employees and FTEs. Approved infrastructure grants are documented public commitments rather than verified disbursements or total public costs. Cumulative community funding remains separate from tax receipts, payroll and modeled multiplier effects. Reported facility power capacity is not measured electricity consumption or peak demand. Permit-listed emergency generators are not runtime, fuel-use or actual-emissions observations. A city largest-taxpayer table's personal-property assessment remains separate from the leasehold real-property account, tax bills, receipts and capital expenditure. TIF loan principal is financing rather than a grant or general-fund receipt; project-generated tax revenue pledged to repayment is retained as a separate public-financing flow and is not added to gross parcel distributions. Water-withdrawal and consumptive permit capacities are regulatory limits rather than measured use. Development-agreement local-labor preferences are requirements rather than realized participation, and operating employee snapshots remain distinct from customers' on-site staff and jobs forecasts. Audited City bond statements distinguish issuance draws, year-end principal, annual principal retired, interest and fees, pledged TIF revenue, debt-service-fund transfers and future principal-plus-interest commitments. These measures are not summed into a benefit or subsidy total. City pledged revenue, City debt-service-fund transfers and the private fund's project TIF revenue applied to loan repayment retain their separate source definitions because only the 2022 transfer and private-fund amount agree exactly. Developer testimony in public meeting minutes is retained as a source-attributed cumulative lower bound; local-contractor spending is not converted into payroll, worker counts, household spending or multiplier effects. Economic-improvement-district cost estimates and maximum owner assessments remain source projections until bond issuance, an assessment schedule, collections and expenditures are verified. A statutory financing cap is not a tax receipt, public expenditure or subsidy. Audited private equipment-financing balances are debt stocks rather than construction spending, public support or community benefit. Reported floor area and occupied-share values describe operating scale and utilization, not employment, revenue, power use or economic output. Contractor and engineer case studies document supplier roles and completion timing but do not establish payment amounts, worker residence, payroll or multiplier effects. State incentive contract amounts, expected jobs and paid-or-certified-to-date fields remain distinct; a zero paid/certified balance at an earlier reporting cutoff does not imply no later claims. Public charging-infrastructure awards are commitments rather than verified disbursements, private project investment or operating benefits. Qualitative payment descriptions without a defensible numeric bound remain research context rather than quantitative records. Program-reported actual qualified investment, certified tax-exemption value and certified tax-credit value remain separate cumulative measures; none is converted into annual spending, a cash grant, local revenue or causal impact. County Business Patterns observations are county-industry context, not project contributions: establishment counts are employer locations rather than data-center facilities, March employment is not an annual average, annual payroll spans the full NAICS cell, and disclosure noise, classification changes and geographic assignment limit comparisons. No CBP change is attributed to a study project. Project fragments: prj_study_im3_building_00364289074: Corrective public-source audit for Microsoft's data-center property at 5150 Rogers Road and explicitly labeled wider Microsoft/Bexar County activity. Exact-site ordinance, permit, appraisal, and tax-account records remain separate from later campuses and regional disclosures; the three appraisal accounts and two taxable-account payments are not consolidated. Permit value is administrative, the original investment and employment figures are commitments, the 2013 employment threshold is a reported lower bound, and the water quantity is a projection rather than metered consumption. No Bexar-and-Medina total is allocated to this property. Annual construction expenditure, construction labor and residence, supplier payments, operating payroll and purchases, recipient-level tax distributions, marginal public-service cost, electricity consumption, water withdrawal or consumption, wastewater, actual emissions, and a recurring facility-level community series remain unobserved after the documented searches. prj_study_im3_building_00377585075: Corrective DET01 evidence audit. Official parcel, permit, tax, water-account, state-certificate, EPA and operator records are retained as direct observations or clearly labeled source forecasts. Conflicting floor-area figures remain separate because their reporting definitions differ. Construction cost, realized jobs, supplier payments, community funding, electricity, emissions, wastewater, actual public-service cost and causal county effects remain unbounded rather than being filled with transferred assumptions. prj_study_im3_building_00460089167: Corrective primary-source audit adds current Andale parcel assessment, contractor-reported campus floor area, and two recipient- or government-reported Meta community grants. The search trail records useful and negative results across identity, tax, construction, jobs, suppliers, utilities, water, permits, public costs, incentives, community funding, and county comparison inputs. Campus-wide facts remain unallocated to the selected inventory building, overlapping community amounts are not added together, and unavailable supplier, payroll, utility-billing, discharge, generator, and marginal-service-cost amounts remain explicit gaps. prj_study_im3_building_00464097467: Second-pass public-evidence audit for Apple's Washoe County data-center campus at 21505 Reno Technology Parkway West and its 2024 expansion application. GOED audit findings, application forecasts, county permit values, parcel assessments, a water-right allocation, operator-reported electricity use, and recipient-reported donation bands remain separate evidence states and scopes. Permit values are administrative amounts and are not summed because overlapping scopes cannot be ruled out. Assessment values are parcel stocks, not investment or tax receipts. The 125 acre-foot water right is regulatory capacity, not measured use. Food Bank gifts are company-region transfers, not campus-attributable annual spending. No campus total is allocated to the selected mapped building; the four-building campus, later buildout cases, downtown Reno warehouse, supporting renewable projects, fire-station parcel, and more-than-200-person support statement are not collapsed into one footprint. No Switch Citadel or Storey County amount enters this fragment. Vendor payments, worker residence, taxes received by jurisdiction, realized 2024 abatement, same-scope public-service cost, wastewater, and building-level electricity or water remain unobserved. prj_study_im3_building_00664938835: Second-pass public-evidence audit for Expedient's adaptive reuse of the pre-existing data-center building at 4777 W Ironwood Drive. The review searched Franklin planning, agenda, assessment, permit, water and sewer materials; Milwaukee County tax and deed-record access points; Wisconsin DOR, WEDC, DFI and PSC records; operator press, specification, career, ESG and community pages; lease, financing, carrier and vendor disclosures; and archived official pages for 2007-2026. Opening-day and current operator specifications remain separate dated snapshots because the reported area and capacity changed. The county portal now establishes a 2021-2025 parcel-tax principal series, but not Expedient's incidence under the lease. The 2022 ownership transfer, assessments, estimated permit values, tax payments and hiring plan remain non-additive. No source was found for actual construction outlays, realized site employment or payroll, local procurement, Milwaukee-area community transfers, metered resources, project-attributable public costs or a fiscal net. prj_study_im3_building_00888253616: Second-pass public-evidence audit for NTT Silicon Valley SV1 at 1160 Walsh Avenue, Santa Clara. The review reconciles the planning-era 1150 Walsh address to APN 224-58-003; adds the finaled principal permit, its administrative job value, current operator specifications, emergency-generator authorization and the parcel's regular-bill payment history; and leaves supplemental bills separate to avoid double counting. Public sources still do not establish realized site employment or payroll, total project investment, supplier payments, project-specific community transfers, metered resources, or project-attributable public-service costs. prj_study_im3_building_01024051963: Corrective source audit for the Meta Eagle Mountain campus and the selected IM3 building footprint in Utah County. Campus, company-county, and supporting-infrastructure observations remain explicitly unallocated to the selected building; later expansion areas and unrelated Eagle Mountain data-center developers are excluded unless a source establishes continuity. prj_study_im3_building_01073720208: Second-pass public-evidence audit for Google's Council Bluffs data-center activity, retaining the selected inventory building as the project key while leaving campus, taxpayer-account, company-county, and state-award facts at their reported scopes. The audit distinguishes completed IEDA contracts 08-HQJC-030 and 12-HQJP-051 from the 2022 award still in performance; permit valuations remain administrative amounts rather than expenditure; assessed and taxable values remain stocks; bills remain distinct from payments; and community grants remain recipient- and period-specific. The Pottawattamie County tax portal now supplies a paid 2018-2024 series for the principal Tetra parcel and an unpaid 2025 bill for the newer Questa parcel. No value is inferred for sales-tax exemptions, the local abatement schedule, franchise-fee adjustment, electricity, supplier retention, building-level water, marginal public-service cost, or net fiscal position. Models without defensible project allocation or transferable parameters were removed even though that leaves the eight-category account incomplete. prj_study_im3_building_01132541700: Corrective primary-source audit adds two county taxable-account observations, state-verified incentive-compliance thresholds, current operator-reported jobs and community funding, one county-received grant, facility electricity use, supporting renewable capacity, and the 2018 expansion forecast. The search trail covers identity, land use, permits, assessor and fiscal records, incentives, public costs, utilities, water, suppliers, courts, bonds, community funding, and federal county outcomes. Most public evidence covers the multi-building Henrico campus or Scout Development's county account and remains unallocated to the selected inventory building; overlapping funding and investment figures are not summed, and unavailable supplier payments, utility bills, tax receipts, incentive costs, payroll, and marginal public-service costs remain explicit gaps.",
   "evidence_version": "study-economic-evidence-1.37.0",
-  "modeled_syntheses": [],
-  "modeled_sources": [],
-  "modeled_scope_note": "Modeled contribution accounts for Apple Mesa / Maricopa County, Switch Citadel / Storey County, and Digital Crossroad Hammond / Lake County. Every required account category and county-comparison module contains sourced evidence or a visibly labeled modeled value. Public support is not netted against unmatched local revenues, unavailable public-service cost is represented by a break-even threshold rather than an invented net margin, county comparisons are descriptive rather than causal, and low-confidence transferred benchmarks remain explicit. Project fragments: prj_study_im3_building_00364289074: Corrective residual modeled account for Microsoft San Antonio. Eight transferred construction, labor, procurement, operating, and household-output scenarios were removed because their arbitrary capital shares, forecast-realization cases, local-purchase assumptions, and Virginia coefficients were not bounded by project observations. Only three low-confidence descriptive county comparisons remain: each uses the project's documented operating-by 2013 anchor and official Bexar County outcome data, has a finite fit-sensitivity envelope, and explicitly makes no causal attribution. The account intentionally remains incomplete because no defensible direct observation or residual model closes the supplier category. prj_study_im3_building_00377585075: Corrective DET01 synthesis. Only exact same-period tax-account arithmetic, its explicitly conditional public-cost break-even identity and a unit conversion of displayed municipal meter history remain. Construction, employment, supplier, household, electricity, cooling, emissions, wastewater and county-effect models were removed because the audit did not bound the missing project inputs. This account is intentionally incomplete where direct evidence remains unbounded. prj_study_im3_building_00460089167: Corrective audit retains six bounded residual calculations only: FY2025 county tax retained after the provisionally linked incentive, the identical marginal-service-cost break-even threshold, conversion of Meta-reported 2024 water withdrawal with source rounding, and three noncausal county comparison gaps with fit sensitivity. Ten models based on arbitrary capital timing, cost shares, FTE ratios, transferred operating/construction multipliers, fleet PUE, or wastewater ratios are removed. Supplier/local-procurement evidence remains unavailable, so the project is intentionally incomplete rather than backfilled. prj_study_im3_building_00464097467: Second-pass modeled contribution account after an expanded public-evidence audit. Direct county permits now cover historical construction values, assessor rolls cover a main-campus parcel stock, a county action covers water-right capacity, Apple reports 2025 campus electricity use, and recipient reports bound two community gifts. Those observations supersede the need for a modeled community proxy but do not supply Apple contractor job-years, construction payroll, annual operating payroll, supplier payments, taxes received, or public-service cost. The construction base therefore retains only the packet's explicit $163 million construction forecast and excludes equipment and historical capital; wide 0.5-1.5 transfer sensitivities expose the mismatch in the last-resort direct construction coefficients. The unsupported local-purchase-share and Virginia induced-output models are removed. No net-fiscal value or public-service-cost break-even is published. County outcome gaps remain descriptive benchmark applications with fit-sensitivity intervals and no causal-design metadata. prj_study_im3_building_00664938835: Second-pass Expedient Milwaukee / Franklin syntheses retained only after a documented 2007-2026 public-source audit. The account keeps a clearly labeled 2022 ownership-transfer anchor, a PB25-0303-only construction allocation sensitivity, an exact tax-equal public-cost break-even threshold, a capacity-based electricity engineering sensitivity, and three descriptive county comparison gaps. It removes transferred construction job-years, assumed local-purchase shares, supplier and household output extrapolations, and a duplicate modeled tax row because public sources did not establish realized site employment, supplier geography, household capture, or a need to restate the direct tax observations. PM25-0174 remains excluded for possible overlap. No synthesis is an observed result or fiscal net. prj_study_im3_building_01073720208: Second-pass governed synthesis for Google Council Bluffs. Construction job-years use only two directly observed September 2025 city permit valuations and transfer the published Prince William County prototype coefficients as benchmark equivalents; the four channels are separated and protected by one aggregation. No Pottawattamie County supplier-retention share is imposed because the public audit found contractor names but no payment or vendor-residence ledger. The water row is the unallocated Google Council Bluffs location identity reported for 2024, not a building allocation. No local abatement, exemption realization, franchise-fee amount, electric load, public-service cost, break-even threshold, or net fiscal result is modeled. County outcome gaps remain descriptive benchmark applications with fit-sensitivity ranges and no causal attribution.",
+  "modeled_syntheses": [
+    {
+      "estimate_id": "est_study_ntt_sv1_annual_local_service_cost_break_even",
+      "project_id": "prj_study_im3_building_00888253616",
+      "metric_code": "study.modeled_annual_local_service_cost_break_even",
+      "label": "Annual local public-service-cost break-even threshold",
+      "category": "public_costs",
+      "unit": "USD_per_year",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 1024370.76,
+      "period": {
+        "kind": "tax_year",
+        "year": 2026,
+        "label": "Fiscal year 2025-2026 same-scope break-even threshold"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "APN 224-58-003-00 regular property-tax account spanning the same local taxing jurisdictions",
+        "county_fips": "06085",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "point_estimate",
+        "low": 1024370.76,
+        "central": 1024370.76,
+        "high": 1024370.76,
+        "interpretation": "The threshold equals the verified recurring regular-bill parcel-tax contribution by definition; it is not an estimate of actual public-service cost."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "ntt_sv1_service_cost_break_even_fy2026",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "same_scope_regular_property_tax_contribution",
+          "value": 1024370.76,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_ntt_sv1_property_taxes_paid_fy2026",
+            "detail": "Verified FY2025-2026 regular parcel bill paid"
+          },
+          "transformation": "Defines the equal-cost break-even threshold"
+        }
+      ],
+      "confidence": "medium",
+      "confidence_rationale": "The threshold identity is exact for the verified regular-bill principal, while actual same-scope marginal public cost is unavailable.",
+      "decision_relevance": "States the public-cost level that would offset the latest verified recurring tax contribution without manufacturing a cost or net position.",
+      "evidence_search": {
+        "direct_observation_status": "not_found",
+        "source_projection_status": "not_found",
+        "remaining_evidence_gap": "Project-attributable fire, police, road, utility, administrative, infrastructure and financing costs for the same recipients and fiscal year"
+      },
+      "derivation": {
+        "method": "allocation",
+        "model_version": "ntt-sv1-account-1.0.0",
+        "formula": "annual marginal local public-service cost at break-even = verified regular parcel property-tax contribution",
+        "input_claim_ids": [
+          "clm_study_ntt_sv1_property_taxes_paid_fy2026"
+        ],
+        "input_source_ids": [
+          "src_study_scc_ntt_sv1_tax_history_2026",
+          "src_study_santa_clara_oaks_junction_agreement_2019"
+        ],
+        "assumptions": [
+          "The threshold is an identity, not an observed cost.",
+          "No supplemental bill, developer contribution, incentive, fee or indirect tax effect is added or netted.",
+          "No positive or negative fiscal margin is asserted."
+        ]
+      },
+      "limitations": [
+        "Actual public-service cost is unobserved.",
+        "The regular parcel bill spans several recipients whose marginal costs may differ.",
+        "Supplemental bills and the developer-funded substation are outside this recurring threshold."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "No net fiscal result and no actual public-service-cost estimate; this is only a same-scope break-even threshold.",
+      "reviewed_on": "2026-09-06"
+    },
+    {
+      "estimate_id": "est_study_ntt_sv1_gdp_comparison_gap",
+      "project_id": "prj_study_im3_building_00888253616",
+      "metric_code": "study.modeled_county_gdp_comparison_gap",
+      "label": "Modeled county real GDP comparison gap",
+      "category": "county_outcome",
+      "unit": "percent",
+      "measure_type": "change",
+      "basis": "modeled_synthesis",
+      "value": 76.12,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2024,
+        "label": "2024 Santa Clara County outcome relative to a mechanically matched benchmark; SV1 opening year 2021"
+      },
+      "scope": {
+        "level": "county",
+        "label": "NTT SV1 and Santa Clara County",
+        "county_fips": "06085",
+        "inventory_allocation": "not_applicable"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": -34.3,
+        "central": 76.12,
+        "high": 186.54,
+        "interpretation": "The envelope is plus or minus twice the 2013-2020 pre-period RMSE. It is fit sensitivity, not statistical confidence."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "ntt_sv1_gdp_comparison_gap",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "host_2024_value",
+          "value": 399159581000,
+          "unit": "chained_2017_USD",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_county_economic_core_2001_2024",
+            "detail": "Santa Clara County 2024 real GDP"
+          },
+          "transformation": "Compared with weighted benchmark"
+        },
+        {
+          "name": "comparison_2024_value",
+          "value": 226644822402.73782,
+          "unit": "chained_2017_USD",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_county_economic_core_2001_2024",
+            "detail": "Inverse-distance-weighted 2024 value from 20 comparison counties"
+          },
+          "transformation": "Subtracted from host and used as denominator"
+        },
+        {
+          "name": "pre_period_rmse_percent",
+          "value": 55.2098460635604,
+          "unit": "percent",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Fit diagnostic over 2013-2020"
+          },
+          "transformation": "Sets fit-sensitivity width"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The reproducible benchmark fits Santa Clara County poorly and cannot isolate SV1 from the county's technology economy, prior data centers or concurrent investments.",
+      "decision_relevance": "Shows 2024 GDP divergence from a transparent comparison benchmark without assigning it to SV1.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "not_applicable",
+        "remaining_evidence_gap": "A credible causal design with treatment isolation, adequate pre-fit, placebos, spillover rules and robustness checks"
+      },
+      "derivation": {
+        "method": "benchmark_application",
+        "model_version": "ntt-sv1-account-1.0.0",
+        "formula": "100 × (host 2024 outcome − inverse-distance-weighted 20-county benchmark) ÷ benchmark",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_county_economic_core_2001_2024"
+        ],
+        "assumptions": [
+          "Matching uses 2013-2020 log level, average log growth and growth volatility.",
+          "Study counties are excluded from the donor pool.",
+          "The 2021 opening is not assumed to be first county exposure or an isolated treatment date."
+        ]
+      },
+      "limitations": [
+        "Descriptive, not a data-center effect.",
+        "Pre-period fit is poor and the envelope is extremely wide.",
+        "Santa Clara County contains prior data centers and concurrent technology investments.",
+        "Fit sensitivity is not statistical confidence."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Descriptive benchmark gap only; no causal attribution.",
+      "reviewed_on": "2026-09-06"
+    },
+    {
+      "estimate_id": "est_study_ntt_sv1_employment_comparison_gap",
+      "project_id": "prj_study_im3_building_00888253616",
+      "metric_code": "study.modeled_county_employment_comparison_gap",
+      "label": "Modeled county total employment comparison gap",
+      "category": "county_outcome",
+      "unit": "percent",
+      "measure_type": "change",
+      "basis": "modeled_synthesis",
+      "value": 14.34,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2024,
+        "label": "2024 Santa Clara County outcome relative to a mechanically matched benchmark; SV1 opening year 2021"
+      },
+      "scope": {
+        "level": "county",
+        "label": "NTT SV1 and Santa Clara County",
+        "county_fips": "06085",
+        "inventory_allocation": "not_applicable"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": -25.22,
+        "central": 14.34,
+        "high": 53.9,
+        "interpretation": "The envelope is plus or minus twice the 2013-2020 pre-period RMSE. It is fit sensitivity, not statistical confidence."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "ntt_sv1_employment_comparison_gap",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "host_2024_value",
+          "value": 1116581,
+          "unit": "jobs",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_county_economic_core_2001_2024",
+            "detail": "Santa Clara County 2024 total employment"
+          },
+          "transformation": "Compared with weighted benchmark"
+        },
+        {
+          "name": "comparison_2024_value",
+          "value": 976541.4219481917,
+          "unit": "jobs",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_county_economic_core_2001_2024",
+            "detail": "Inverse-distance-weighted 2024 value from 20 comparison counties"
+          },
+          "transformation": "Subtracted from host and used as denominator"
+        },
+        {
+          "name": "pre_period_rmse_percent",
+          "value": 19.779245075751962,
+          "unit": "percent",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Fit diagnostic over 2013-2020"
+          },
+          "transformation": "Sets fit-sensitivity width"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The reproducible benchmark fits poorly and county employment cannot isolate SV1 or realize the separate up-to-40-job forecast.",
+      "decision_relevance": "Shows 2024 employment divergence without treating the facility job plan as realized or causal.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Realized site FTE plus a causal design with adequate pre-fit and complete county exposure history"
+      },
+      "derivation": {
+        "method": "benchmark_application",
+        "model_version": "ntt-sv1-account-1.0.0",
+        "formula": "100 × (host 2024 outcome − inverse-distance-weighted 20-county benchmark) ÷ benchmark",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_county_economic_core_2001_2024"
+        ],
+        "assumptions": [
+          "Matching uses 2013-2020 log level, average log growth and growth volatility.",
+          "Study counties are excluded from the donor pool.",
+          "County employment is not SV1 facility employment."
+        ]
+      },
+      "limitations": [
+        "Descriptive, not a data-center effect.",
+        "Pre-period fit is weak.",
+        "The 2021 opening does not isolate other county shocks.",
+        "Fit sensitivity is not statistical confidence."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Descriptive benchmark gap only; no causal attribution.",
+      "reviewed_on": "2026-09-06"
+    },
+    {
+      "estimate_id": "est_study_ntt_sv1_wage_comparison_gap",
+      "project_id": "prj_study_im3_building_00888253616",
+      "metric_code": "study.modeled_county_wage_comparison_gap",
+      "label": "Modeled county average weekly wages comparison gap",
+      "category": "county_outcome",
+      "unit": "percent",
+      "measure_type": "change",
+      "basis": "modeled_synthesis",
+      "value": 81.22,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2024,
+        "label": "2024 Santa Clara County outcome relative to a mechanically matched benchmark; SV1 opening year 2021"
+      },
+      "scope": {
+        "level": "county",
+        "label": "NTT SV1 and Santa Clara County",
+        "county_fips": "06085",
+        "inventory_allocation": "not_applicable"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": -51.5,
+        "central": 81.22,
+        "high": 213.94,
+        "interpretation": "The envelope is plus or minus twice the 2013-2020 pre-period RMSE. It is fit sensitivity, not statistical confidence."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "ntt_sv1_wage_comparison_gap",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "host_2024_value",
+          "value": 3789,
+          "unit": "USD_per_week",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_county_economic_core_2001_2024",
+            "detail": "Santa Clara County 2024 nominal average weekly wage"
+          },
+          "transformation": "Compared with weighted benchmark"
+        },
+        {
+          "name": "comparison_2024_value",
+          "value": 2090.8275729902907,
+          "unit": "USD_per_week",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_county_economic_core_2001_2024",
+            "detail": "Inverse-distance-weighted 2024 value from 20 comparison counties"
+          },
+          "transformation": "Subtracted from host and used as denominator"
+        },
+        {
+          "name": "pre_period_rmse_percent",
+          "value": 66.35944555712669,
+          "unit": "percent",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Fit diagnostic over 2013-2020"
+          },
+          "transformation": "Sets fit-sensitivity width"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The reproducible benchmark fits Santa Clara County wages very poorly and cannot isolate SV1 from the county's industry mix or price changes.",
+      "decision_relevance": "Shows 2024 nominal-wage divergence while making the failed-fit risk explicit.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "not_applicable",
+        "remaining_evidence_gap": "A causal design with adequate pre-fit, inflation treatment, treatment isolation, placebos and robustness checks"
+      },
+      "derivation": {
+        "method": "benchmark_application",
+        "model_version": "ntt-sv1-account-1.0.0",
+        "formula": "100 × (host 2024 outcome − inverse-distance-weighted 20-county benchmark) ÷ benchmark",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_county_economic_core_2001_2024"
+        ],
+        "assumptions": [
+          "Matching uses 2013-2020 log level, average log growth and growth volatility.",
+          "Study counties are excluded from the donor pool.",
+          "Nominal county wages are not SV1 facility payroll or compensation."
+        ]
+      },
+      "limitations": [
+        "Descriptive, not a data-center effect.",
+        "Pre-period fit is very poor and the envelope is extremely wide.",
+        "Nominal wages are not inflation-adjusted.",
+        "Fit sensitivity is not statistical confidence."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Descriptive nominal-wage benchmark gap only; no causal attribution.",
+      "reviewed_on": "2026-09-06"
+    }
+  ],
+  "modeled_sources": [
+    {
+      "source_id": "src_study_county_economic_core_2001_2024",
+      "title": "County Economic Core Panel, 2001-2024",
+      "url": "https://apps.bea.gov/regional/downloadzip.htm",
+      "publisher": "U.S. Bureau of Economic Analysis and U.S. Bureau of Labor Statistics",
+      "source_type": "other",
+      "publication_date": {
+        "precision": "year",
+        "year": 2026
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "structured_data",
+      "notes": "Repository panel compiled from official annual county real GDP, total employment, and average-weekly-wage series. These are county observations, not project contributions; the retained comparison modules use them descriptively with explicit noncausal limitations."
+    },
+    {
+      "source_id": "src_study_scc_ntt_sv1_tax_history_2026",
+      "title": "Santa Clara County property-tax details — APN 224-58-003",
+      "url": "https://santaclaracounty.telleronline.net/search/1/details?APN=224-58-003",
+      "publisher": "County of Santa Clara Department of Tax and Collections",
+      "source_type": "local_government_record",
+      "publication_date": {
+        "precision": "unknown"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_page",
+      "notes": "The official parcel page identifies 1160 Walsh Avenue, TRA 007-000, and annual regular bills for APN 224-58-003-00. The normalized series sums the two paid regular installments for each fiscal year and excludes separately numbered supplemental bills to avoid overlap. A parcel payment spans multiple taxing jurisdictions and does not establish NTT's economic incidence or a fiscal net."
+    },
+    {
+      "source_id": "src_study_santa_clara_oaks_junction_agreement_2019",
+      "title": "Substation Service Agreement for the RagingWire data center",
+      "url": "https://santaclara.legistar.com/View.ashx?GUID=73D7B54F-E6AD-44D1-B7EE-F998AA660B98&ID=7959266&M=F",
+      "publisher": "City of Santa Clara",
+      "source_type": "local_government_record",
+      "publication_date": {
+        "precision": "day",
+        "date": "2019-12-17"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_pdf_text",
+      "notes": "The signed agreement links the 1150 Walsh planning address to the RagingWire project, states anticipated maximum demand of 27 MVA, makes the developer responsible for actual station development costs and calls for an initial $450,000 developer contribution. The agreement does not disclose final project cost, completed payment total or same-scope annual public-service cost; no available direct metric safely represents the contribution."
+    },
+    {
+      "source_id": "src_study_county_economic_core_2001_2024",
+      "title": "County Economic Core Panel, 2001-2024",
+      "url": "https://apps.bea.gov/regional/downloadzip.htm",
+      "publisher": "U.S. Bureau of Economic Analysis and U.S. Bureau of Labor Statistics",
+      "source_type": "other",
+      "publication_date": {
+        "precision": "year",
+        "year": 2026
+      },
+      "retrieved_on": "2026-09-05",
+      "review_method": "structured_data",
+      "notes": "Repository panel compiled from official annual county real GDP, total employment and average-weekly-wage series. The completion model uses pre-treatment histories and 2024 outcomes; source revisions and concurrent treatments remain limitations."
+    },
+    {
+      "source_id": "src_study_county_economic_core_2001_2024",
+      "title": "County Economic Core Panel, 2001-2024",
+      "url": "https://apps.bea.gov/regional/downloadzip.htm",
+      "publisher": "U.S. Bureau of Economic Analysis and U.S. Bureau of Labor Statistics",
+      "source_type": "other",
+      "publication_date": {
+        "precision": "year",
+        "year": 2026
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "structured_data",
+      "notes": "Repository panel compiled from official annual county real GDP, total employment and average-weekly-wage series. The comparison uses 2013-2020 pre-opening histories and 2024 outcomes; revisions, poor pre-period fit and concurrent county treatments remain limitations."
+    }
+  ],
+  "modeled_scope_note": "Modeled contribution accounts for Apple Mesa / Maricopa County, Switch Citadel / Storey County, and Digital Crossroad Hammond / Lake County. Every required account category and county-comparison module contains sourced evidence or a visibly labeled modeled value. Public support is not netted against unmatched local revenues, unavailable public-service cost is represented by a break-even threshold rather than an invented net margin, county comparisons are descriptive rather than causal, and low-confidence transferred benchmarks remain explicit. Project fragments: prj_study_im3_building_00364289074: Corrective residual modeled account for Microsoft San Antonio. Eight transferred construction, labor, procurement, operating, and household-output scenarios were removed because their arbitrary capital shares, forecast-realization cases, local-purchase assumptions, and Virginia coefficients were not bounded by project observations. Only three low-confidence descriptive county comparisons remain: each uses the project's documented operating-by 2013 anchor and official Bexar County outcome data, has a finite fit-sensitivity envelope, and explicitly makes no causal attribution. The account intentionally remains incomplete because no defensible direct observation or residual model closes the supplier category. prj_study_im3_building_00377585075: Corrective DET01 synthesis. Only exact same-period tax-account arithmetic, its explicitly conditional public-cost break-even identity and a unit conversion of displayed municipal meter history remain. Construction, employment, supplier, household, electricity, cooling, emissions, wastewater and county-effect models were removed because the audit did not bound the missing project inputs. This account is intentionally incomplete where direct evidence remains unbounded. prj_study_im3_building_00460089167: Corrective audit retains six bounded residual calculations only: FY2025 county tax retained after the provisionally linked incentive, the identical marginal-service-cost break-even threshold, conversion of Meta-reported 2024 water withdrawal with source rounding, and three noncausal county comparison gaps with fit sensitivity. Ten models based on arbitrary capital timing, cost shares, FTE ratios, transferred operating/construction multipliers, fleet PUE, or wastewater ratios are removed. Supplier/local-procurement evidence remains unavailable, so the project is intentionally incomplete rather than backfilled. prj_study_im3_building_00464097467: Second-pass modeled contribution account after an expanded public-evidence audit. Direct county permits now cover historical construction values, assessor rolls cover a main-campus parcel stock, a county action covers water-right capacity, Apple reports 2025 campus electricity use, and recipient reports bound two community gifts. Those observations supersede the need for a modeled community proxy but do not supply Apple contractor job-years, construction payroll, annual operating payroll, supplier payments, taxes received, or public-service cost. The construction base therefore retains only the packet's explicit $163 million construction forecast and excludes equipment and historical capital; wide 0.5-1.5 transfer sensitivities expose the mismatch in the last-resort direct construction coefficients. The unsupported local-purchase-share and Virginia induced-output models are removed. No net-fiscal value or public-service-cost break-even is published. County outcome gaps remain descriptive benchmark applications with fit-sensitivity intervals and no causal-design metadata. prj_study_im3_building_00664938835: Second-pass Expedient Milwaukee / Franklin syntheses retained only after a documented 2007-2026 public-source audit. The account keeps a clearly labeled 2022 ownership-transfer anchor, a PB25-0303-only construction allocation sensitivity, an exact tax-equal public-cost break-even threshold, a capacity-based electricity engineering sensitivity, and three descriptive county comparison gaps. It removes transferred construction job-years, assumed local-purchase shares, supplier and household output extrapolations, and a duplicate modeled tax row because public sources did not establish realized site employment, supplier geography, household capture, or a need to restate the direct tax observations. PM25-0174 remains excluded for possible overlap. No synthesis is an observed result or fiscal net. prj_study_im3_building_00888253616: Residual synthesis after the SV1 public-source audit. It retains one exact tax-equal public-cost break-even threshold and three reproducible but low-confidence county comparison gaps. The county gaps use 2013-2020 pre-opening histories and an inverse-distance-weighted 20-county benchmark; very wide fit envelopes are retained because Santa Clara County matches poorly. No model converts capacity to consumption, permit value to jobs, or unidentified vendor and community activity to local benefits. prj_study_im3_building_01073720208: Second-pass governed synthesis for Google Council Bluffs. Construction job-years use only two directly observed September 2025 city permit valuations and transfer the published Prince William County prototype coefficients as benchmark equivalents; the four channels are separated and protected by one aggregation. No Pottawattamie County supplier-retention share is imposed because the public audit found contractor names but no payment or vendor-residence ledger. The water row is the unallocated Google Council Bluffs location identity reported for 2024, not a building allocation. No local abatement, exemption realization, franchise-fee amount, electric load, public-service cost, break-even threshold, or net fiscal result is modeled. County outcome gaps remain descriptive benchmark applications with fit-sensitivity ranges and no causal attribution. prj_study_im3_building_01132541700: Four bounded syntheses are retained after direct-record search: one deterministic conversion of Meta's rounded 2024 Henrico water-withdrawal observation and three governed, descriptive county comparison gaps. No construction, operating, supplier, household, tax-receipt, incentive-cost, or public-service-cost model is added because the public record lacks the needed project-specific bases and arbitrary allocation shares would create false precision. Every retained estimate is visibly modeled, unallocated to the selected building, non-additive, and noncausal.",
   "synthesis_version": "study-modeled-synthesis-3.2.0",
   "modeling_policy_version": "study-modeling-policy-1.3.0",
   "analysis_readiness": {
     "construction": "not_assessed",
     "operations": "not_assessed",
-    "fiscal": "not_assessed",
+    "fiscal": "modeled_available",
     "causal": "not_assessed"
   },
   "legacy_first_entry_note": "Equinix SV1 was operational in Santa Clara County more than twenty-one years before NTT SV1 opened. The NTT event is therefore rejected as the county's first operational entry. The broader 74-facility historical inventory has not been proven complete, so the county's true first entry remains unresolved and no treatment date is assigned.",
-  "scope_note": "Provisional private-sector research candidate. Owner/operator history, project boundaries and lifecycle require review. Membership does not verify current operation or establish economic impact."
+  "scope_note": "Provisional private-sector research candidate. Owner/operator history, project boundaries and lifecycle require review. Membership does not verify current operation or establish economic impact.",
+  "project_description": "NTT Silicon Valley SV1 is a single four-story colocation data center operated by NTT Global Data Centers at 1160 Walsh Avenue in Santa Clara, California, on APN 224-58-003, which planning records also identify as 1150 Walsh Avenue. RagingWire began the project in 2018, the City later finaled the principal base-isolated-building permit, and NTT announced the 16 MW facility's opening on April 13, 2021. This account covers that building and parcel, not later tenant fit-outs or NTT's wider Silicon Valley portfolio."
 }

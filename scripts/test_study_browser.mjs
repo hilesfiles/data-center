@@ -166,14 +166,16 @@ try {
   await openDetails(".evidence-ledger");
   await page.getByRole("heading", { name: "Economic evidence", exact: true }).waitFor();
   await page.locator(".economic-record").first().waitFor();
-  assert.equal(await page.locator(".economic-record").count(), 1);
-  assert.match(await page.locator(".record-value").innerText(), /More than 1,500 workers/);
-  assert.match(await page.locator(".economic-record").innerText(), /Historical construction peak reported 2020-08-05/);
-  await page.locator(".economic-record summary").click();
-  assert.doesNotMatch(await page.locator(".economic-record details").innerText(), /PDF page|undefined/);
-  assert.equal(await page.locator(".economic-record details a").getAttribute("href"), "https://datacenters.atmeta.com/2020/08/henrico-county-we-are-online/");
+  assert.equal(await page.locator(".economic-record").count(), 10);
+  assert.match(await page.locator(".economic-record-list").innerText(), /More than 1,500 workers/);
+  assert.match(await page.locator(".economic-record-list").innerText(), /Historical construction peak reported 2020-08-05/);
+  assert.match(await page.locator(".economic-record-list").innerText(), /\$4,200,000/);
+  assert.match(await page.locator(".economic-record-list").innerText(), /948,859,000 kWh/);
+  await page.locator(".economic-record summary").first().click();
+  assert.doesNotMatch(await page.locator(".economic-record details").first().innerText(), /PDF page|undefined/);
+  assert.equal(await page.locator(".economic-record details a").first().getAttribute("href"), "https://datacenters.atmeta.com/2020/08/henrico-county-we-are-online/");
   await page.getByRole("tab", { name: /Plans & forecasts/ }).click();
-  assert.equal(await page.locator(".economic-record").count(), 2);
+  assert.equal(await page.locator(".economic-record").count(), 3);
   assert.match(await page.locator(".economic-record-list").innerText(), /More than \$1,000,000,000/);
   assert.match(await page.locator(".economic-record-list").innerText(), /completion date unspecified/);
   await page.setViewportSize({ width: 390, height: 844 });
@@ -753,13 +755,17 @@ try {
   await page.goto(`${url}#/project/prj_study_im3_building_00888253616`);
   await openDetails(".evidence-ledger");
   await page.getByRole("heading", { name: "NTT Silicon Valley SV1", exact: true }).waitFor();
-  await page.locator(".account-count").getByText("4 sourced records · partial coverage", { exact: true }).waitFor();
-  assert.equal(await page.locator(".economic-record").count(), 2);
+  await page.locator(".account-count").getByText("17 sourced records · 4 modeled syntheses", { exact: true }).waitFor();
+  assert.equal(await page.locator(".economic-record").count(), 15);
   assert.match(await page.locator(".economic-record-list").innerText(), /\$159,579,996[\s\S]*\$83,066,779/);
-  assert.match(await page.locator(".project-research-update").innerText(), /1150 Walsh Avenue[\s\S]*1160 Walsh Avenue/);
+  assert.match(await page.locator(".economic-record-list").innerText(), /\$125,405,765/);
+  assert.match(await page.locator(".economic-record-list").innerText(), /\$1,024,370\.76/);
+  assert.match((await page.locator(".project-research-update").allInnerTexts()).join("\n"), /1150 Walsh Avenue[\s\S]*1160 Walsh Avenue/);
   await page.getByRole("tab", { name: /Plans & forecasts/ }).click();
   assert.equal(await page.locator(".economic-record").count(), 2);
   assert.match(await page.locator(".economic-record-list").innerText(), /Up to 40 jobs[\s\S]*173,752 gallons \/ year/);
+  await page.getByRole("tab", { name: /Modeled synthesis/ }).click();
+  assert.equal(await page.locator(".modeled-record").count(), 4);
   await page.setViewportSize({ width: 390, height: 844 });
   await noOverflow();
   await page.locator(".economic-accounts").screenshot({ path: path.join(out, "ntt-sv1-evidence-mobile.png") });
@@ -812,10 +818,10 @@ try {
     sidebar: getComputedStyle(document.querySelector(".sidebar")).backgroundColor,
     map: getComputedStyle(document.querySelector(".map-section")).backgroundColor,
   })), { sidebar: "rgb(11, 14, 20)", map: "rgb(16, 23, 27)" });
-  assert.match(await page.locator(".review-key").innerText(), /completed project audits \(9\)/i);
+  assert.match(await page.locator(".review-key").innerText(), /completed project audits \(12\)/i);
   assert.doesNotMatch(await page.locator(".legend").innerText(), /IM3|pending|merged|queued/i);
   await page.getByLabel("Research-complete project markers").selectOption("Colocation");
-  assert.match(await page.locator(".review-key").innerText(), /completed project audits \(4\)/i);
+  assert.match(await page.locator(".review-key").innerText(), /completed project audits \(5\)/i);
   await page.getByLabel("Research-complete project markers").selectOption("");
   await page.screenshot({ path: path.join(out, "map-desktop.png") });
   assert.doesNotMatch(await page.locator(".sidebar").innerText(), /Source records|Building records|Campus records|Observed footprint|First-entry research/i);
@@ -826,8 +832,22 @@ try {
   const response = await page.request.get(`${url}data/v1/study/index.json`);
   const study = await response.json();
   assert.equal(study.projects.length, 36);
-  assert.equal(study.projects.filter(p => p.research_completion_status === "account_research_complete").length, 9);
+  assert.equal(study.projects.filter(p => p.research_completion_status === "account_research_complete").length, 12);
   assert.equal(study.projects.filter(p => p.model_completeness.status === "full_modeled_account").length, 3);
+  const descriptionPage = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
+  for (const completed of study.projects.filter(project => project.research_completion_status === "account_research_complete")) {
+    await descriptionPage.goto(`${url}#/project/${completed.project_id}`);
+    await descriptionPage.getByRole("heading", { name: completed.name, exact: true }).waitFor();
+    await descriptionPage.locator(".project-description").waitFor();
+    assert.equal(await descriptionPage.locator(".project-description").count(), 1, `${completed.name} must render one project description`);
+    await descriptionPage.getByRole("heading", { name: "About this project", exact: true }).waitFor();
+    await descriptionPage.getByRole("heading", { name: "Why this project is in the study", exact: true }).waitFor();
+    assert(await descriptionPage.locator(".project-description").evaluate(element =>
+      Boolean(element.compareDocumentPosition(document.querySelector(".project-overview")) & Node.DOCUMENT_POSITION_FOLLOWING)
+    ), `${completed.name} must render the project description before the study rationale`);
+  }
+  await descriptionPage.close();
+  check("all twelve completed project pages render one description above the study rationale");
   const target = study.projects.find(p => p.name === "Apple Mesa");
   const canvas = await page.locator("canvas").boundingBox();
   const world = 512 * 2 ** 3.25;
@@ -851,7 +871,7 @@ try {
   await page.mouse.click(targetX, targetY);
   await page.waitForURL(`**/project/${target.project_id}`);
   await page.getByRole("heading", { name: "Sources & research history" }).waitFor();
-  check("map preserves all nine completed project audits while keeping analytical completeness separate");
+  check("map preserves all twelve completed project audits while keeping analytical completeness separate");
 
   const legacyPage = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
   await legacyPage.route("**/data/v1/study/index.json?*", async route => {
@@ -860,10 +880,10 @@ try {
     await route.fulfill({ json: legacyStudy });
   });
   await legacyPage.goto(`${url}#/map`, { waitUntil: "domcontentloaded" });
-  await legacyPage.getByText("9 completed project research accounts are mapped.", { exact: false }).waitFor();
-  assert.match(await legacyPage.locator(".review-key").innerText(), /completed project audits \(9\)/i);
+  await legacyPage.getByText("11 completed project research accounts are mapped.", { exact: false }).waitFor();
+  assert.match(await legacyPage.locator(".review-key").innerText(), /completed project audits \(11\)/i);
   await legacyPage.close();
-  check("map remains populated when a browser holds the previous study-index shape");
+  check("map remains populated when a browser holds an index without the research-completion field");
 
   for (const candidate of study.projects.filter(project => project.model_completeness.status === "incomplete")) {
     await page.goto(`${url}#/project/${candidate.project_id}`);

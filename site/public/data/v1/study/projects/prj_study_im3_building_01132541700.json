@@ -16,11 +16,11 @@
   "detail_path": "projects/prj_study_im3_building_01132541700.json",
   "latitude": 37.47784537590615,
   "longitude": -77.22645499748526,
-  "economic_record_count": 3,
-  "reported_actual_count": 1,
-  "projection_count": 2,
-  "modeled_synthesis_count": 0,
-  "research_completion_status": "research_pending",
+  "economic_record_count": 13,
+  "reported_actual_count": 10,
+  "projection_count": 3,
+  "modeled_synthesis_count": 4,
+  "research_completion_status": "account_research_complete",
   "model_completeness": {
     "status": "incomplete",
     "required_categories": [
@@ -34,35 +34,37 @@
       "community"
     ],
     "covered_categories": [
+      "community",
       "construction",
+      "fiscal",
       "investment",
-      "operations"
+      "operations",
+      "resources"
     ],
-    "modeled_categories": [],
+    "modeled_categories": [
+      "resources"
+    ],
     "required_county_outcomes": [
       "study.modeled_county_employment_comparison_gap",
       "study.modeled_county_gdp_comparison_gap",
       "study.modeled_county_wage_comparison_gap"
     ],
-    "covered_county_outcomes": [],
-    "missing_categories": [
-      "community",
-      "fiscal",
-      "public_costs",
-      "resources",
-      "suppliers"
-    ],
-    "missing_county_outcomes": [
+    "covered_county_outcomes": [
       "study.modeled_county_employment_comparison_gap",
       "study.modeled_county_gdp_comparison_gap",
       "study.modeled_county_wage_comparison_gap"
     ],
+    "missing_categories": [
+      "public_costs",
+      "suppliers"
+    ],
+    "missing_county_outcomes": [],
     "direct_evidence_gap_count": 8,
     "definition": "All eight contribution-account categories contain sourced or labeled modeled values, and GDP, employment, and wage county-comparison modules are populated. Comparison gaps are descriptive and do not establish causal facility effects."
   },
   "schema_version": "1.0.0",
-  "release_id": "private-sector-study-1.47.0",
-  "generated_at": "2026-09-06T18:08:18+00:00",
+  "release_id": "private-sector-study-1.48.0",
+  "generated_at": "2026-09-06T18:43:04+00:00",
   "inventory_name": "Meta Henrico Data Center",
   "research_value": "Documented transition to operation and four later panel years.",
   "history": {
@@ -85,12 +87,445 @@
       "url": "https://doi.org/10.57931/3017294"
     }
   ],
-  "research_updates": [],
+  "research_updates": [
+    {
+      "project_id": "prj_study_im3_building_01132541700",
+      "source_id": "src_study_meta_henrico_opening",
+      "as_of": "2020-08-05",
+      "title": "Identity, opening, and evidence-scope search completed",
+      "notes": "Search family: operator facility identity and opening chronology. Query/identifier: Meta/Facebook Henrico Data Center, White Oak, August 5 2020; date range 2017-2026. Documents inspected: Meta opening page, current factsheet, county announcements, and planning records. Result: useful - confirms the campus was serving traffic by August 5, 2020, but public evidence generally covers the multi-building campus rather than the selected inventory footprint.",
+      "source": {
+        "source_id": "src_study_meta_henrico_opening",
+        "title": "Henrico County, We Are Online!",
+        "url": "https://datacenters.atmeta.com/2020/08/henrico-county-we-are-online/",
+        "publisher": "Meta",
+        "source_type": "operator_release",
+        "publication_date": {
+          "precision": "day",
+          "date": "2020-08-05"
+        },
+        "retrieved_on": "2026-09-03",
+        "review_method": "web_page",
+        "notes": "Dated operator opening announcement. Completed construction activity and completion-dependent forecasts are separately worded. Operator self-report, not an independent employment or expenditure audit. Solar-project jobs elsewhere in the state are excluded from campus employment."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_01132541700",
+      "source_id": "src_study_henrico_pod2017_00431_20170914",
+      "as_of": "2017-09-14",
+      "title": "Land-use and phased site-plan search completed",
+      "notes": "Search family: zoning, plan of development, and land use. Query/identifier: POD2017-00431 Project Echo, parcel 849-704-6939, Technology Boulevard/Portugee Road; date range 2017. Documents inspected: September 14, 2017 Planning Commission agenda and archived minutes. Result: useful - approved a roughly 328-acre, five-building phased program on county water/sewer; no phase-to-inventory-building crosswalk or cost schedule was published.",
+      "source": {
+        "source_id": "src_study_henrico_pod2017_00431_20170914",
+        "title": "Henrico Planning Commission agenda - POD2017-00431 Project Echo",
+        "url": "https://henrico.gov/pdfs/planning/2017/sep17.pdf",
+        "publisher": "Henrico County Planning Commission",
+        "source_type": "local_government_record",
+        "publication_date": {
+          "precision": "day",
+          "date": "2017-09-14"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_pdf_text",
+        "notes": "The approved plan of development identifies Project Echo on part of parcel 849-704-6939 at Technology Boulevard and Portugee Road. Phase I comprised two connected one-story buildings with mechanical penthouses totaling approximately 1 million square feet; three future buildings totaled 1.5 million square feet on a roughly 328-acre M-2 site served by county water and sewer."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_01132541700",
+      "source_id": "src_study_henrico_facebook_announcement_20171005",
+      "as_of": "2017-10-05",
+      "title": "Original announcement and public-infrastructure context searched",
+      "notes": "Search family: local economic-development announcement and public infrastructure. Query/identifier: Facebook Henrico 970,000 square feet $750 million $40 million White Oak; date range 2017. Result: useful for initial forecast and site history, but the more-than-$40-million county figure covered park-wide infrastructure accumulated before the project and cannot be assigned as Meta public cost.",
+      "source": {
+        "source_id": "src_study_henrico_facebook_announcement_20171005",
+        "title": "Henrico officials join governor to announce plans for Facebook facility",
+        "url": "https://henrico.gov/news/2017/10/henrico-va-governor-announce-facebook-facility/",
+        "publisher": "Henrico County, Virginia",
+        "source_type": "local_government_record",
+        "publication_date": {
+          "precision": "day",
+          "date": "2017-10-05"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_page",
+        "notes": "The contemporaneous announcement describes a planned $750 million, 970,000-square-foot Facebook data center on approximately 300 acres at White Oak, more than 100 planned full-time jobs, a separate $250 million statewide solar commitment, and more than $40 million of preexisting county investment in park-wide infrastructure. The infrastructure amount is not project-allocable and is not encoded as a public cost."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_01132541700",
+      "source_id": "src_study_henrico_facebook_expansion_20180926",
+      "as_of": "2018-09-26",
+      "title": "Expansion forecast chronology searched",
+      "notes": "Search family: project expansion, capital, construction, and operating forecasts. Query/identifier: Facebook Henrico expansion three 500,000-square-foot buildings $750 million; date range 2018-2020. Result: useful - preserves the $750 million incremental source projection and the planned five-building scale; forecast construction and operating jobs are not reclassified as actuals.",
+      "source": {
+        "source_id": "src_study_henrico_facebook_expansion_20180926",
+        "title": "Henrico officials, governor announce major expansion of Facebook data center",
+        "url": "https://henrico.gov/news/2018/09/henrico-officials-governor-announce-major-expansion-of-facebook-data-center/",
+        "publisher": "Henrico County, Virginia",
+        "source_type": "local_government_record",
+        "publication_date": {
+          "precision": "day",
+          "date": "2018-09-26"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_page",
+        "notes": "The county announced a planned additional $750 million and three 500,000-square-foot buildings, bringing the program to five buildings and more than 2.4 million square feet. It projected approximately 1,500 construction jobs and more than 200 full-time operating jobs after completion; those forecasts are retained separately from later reported actuals."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_01132541700",
+      "source_id": "src_study_henrico_eda_facebook_opening_20200805",
+      "as_of": "2020-08-05",
+      "title": "Opening, local-partner, and pandemic-support search completed",
+      "notes": "Search family: local opening record, contractors/suppliers, and community support. Query/identifier: Facebook Henrico officially online suppliers $830,000; date range 2020. Result: mixed - confirms online status and named support components, but 'numerous local partners and suppliers' has no payment, vendor geography, contract value, or employment amount. Community components overlap the later cumulative total and are not added.",
+      "source": {
+        "source_id": "src_study_henrico_eda_facebook_opening_20200805",
+        "title": "Facebook's Henrico Data Center is officially online",
+        "url": "https://henrico.com/press-release/facebooks-henrico-data-center-is-officially-online/",
+        "publisher": "Henrico Economic Development Authority",
+        "source_type": "local_government_record",
+        "publication_date": {
+          "precision": "day",
+          "date": "2020-08-05"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_page",
+        "notes": "The EDA reports the data center officially online, more than $1 billion invested, 1,500 construction jobs supported, and numerous local partners and suppliers. It also reports nearly $830,000 of pandemic-era support, including $475,000 for small businesses and nonprofits and $280,000 for public-school hotspots and food; the components are not added to the later cumulative operator total."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_01132541700",
+      "source_id": "src_study_henrico_real_estate_portal_2026",
+      "as_of": "2026-09-06",
+      "title": "Assessor portal and exact parcel/address searches completed",
+      "notes": "Search family: assessor and parcel records. Query/identifier: GPIN 849-701-2260; 6200 Technology Boulevard; 7301 Technology Boulevard; Scout Development LLC; date range current snapshot. Documents inspected: Henrico real-property search interface and county board parcel records. Result: partial - identifiers were corroborated, but no stable text-rendered parcel valuation or personal-property account was captured, so audited principal-taxpayer values are used instead.",
+      "source": {
+        "source_id": "src_study_henrico_real_estate_portal_2026",
+        "title": "Henrico County real property search",
+        "url": "https://realestate.henrico.gov/ords/cam/f?p=510101:1",
+        "publisher": "Henrico County, Virginia",
+        "source_type": "assessor_record",
+        "publication_date": {
+          "precision": "unknown"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_page",
+        "notes": "The live search interface supports GPIN/PID and street-address queries. Exact identifiers 849-701-2260, 6200 Technology Boulevard, and 7301 Technology Boulevard were cross-checked against county board records, but no stable text-rendered current parcel detail or personal-property account was captured; fiscal values therefore rely on the audited principal-taxpayer table."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_01132541700",
+      "source_id": "src_study_henrico_board_minutes_20250211_scout",
+      "as_of": "2025-02-11",
+      "title": "Land, deed, easement, and address continuity searched",
+      "notes": "Search family: land and county-board property records. Query/identifier: Scout Development 6200 Technology Boulevard GPIN 849-701-2260 quitclaim easement; date range 2021-2025. Result: useful for ownership/address continuity only; no deed consideration, assessment, project investment, public expenditure, or selected-building allocation was reported.",
+      "source": {
+        "source_id": "src_study_henrico_board_minutes_20250211_scout",
+        "title": "Henrico County Board of Supervisors regular meeting minutes, February 11, 2025",
+        "url": "https://henrico.gov/pdfs/manager/meetings2025/021125regmins.PDF",
+        "publisher": "Henrico County, Virginia",
+        "source_type": "local_government_record",
+        "publication_date": {
+          "precision": "day",
+          "date": "2025-02-11"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_pdf_text",
+        "notes": "A quitclaim and easement item states that Scout Development, LLC owns 6200 Technology Boulevard, GPIN 849-701-2260. The record confirms a current project-linked address and parcel identifier but reports no transfer price, assessment, construction cost, or inventory-building allocation."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_01132541700",
+      "source_id": "src_study_henrico_fy25_acfr",
+      "as_of": "2025-06-30",
+      "title": "Audited fiscal, taxpayer, incentive-agreement, and bond search completed",
+      "notes": "Search family: ACFR, principal taxpayers, incentive agreements, debt, and bonds. Query/identifier: Scout Development LLC, Facebook, 6200/7301 Technology Boulevard; fiscal years 2017-2025. Result: useful - two combined real/personal assessed-value stocks were found. The report discloses agreement mechanics but says grant amounts are confidential, and no project-specific bond proceeds, debt service, taxes paid, or marginal service costs were located.",
+      "source": {
+        "source_id": "src_study_henrico_fy25_acfr",
+        "title": "Henrico County Annual Comprehensive Financial Report for the Fiscal Year Ended June 30, 2025",
+        "url": "https://henrico.gov/assets/Henrico-County-VA-FY25-ACFR.pdf",
+        "publisher": "Henrico County, Virginia",
+        "source_type": "local_government_record",
+        "publication_date": {
+          "precision": "year",
+          "year": 2025
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_pdf_text",
+        "notes": "The principal-taxpayer table identifies Scout Development LLC as the company that bought and developed the site containing the Facebook data center and reports combined real- and personal-property assessed values of $2,045,241,378 for calendar 2024 and $2,364,906,425 for calendar 2025. The notes also describe 2017 and 2022 performance agreements covering facilities at 6200 and 7301 Technology Boulevard and state that grant amounts are confidential under Virginia law."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_01132541700",
+      "source_id": "src_study_vedp_dcrsut_boardbook_20230309",
+      "as_of": "2023-03-09",
+      "title": "State incentive award and compliance search completed",
+      "notes": "Search family: state economic-development awards and performance compliance. Query/identifier: Scout Development LLC, Henrico, MOU 9/26/2017, performance date 6/1/2021, DCRSUT; date range 2017-2023. Result: useful - state table verifies the project achieved at least 50 jobs and $150 million capital investment. Actual exemption benefits and amounts above the thresholds were not disclosed.",
+      "source": {
+        "source_id": "src_study_vedp_dcrsut_boardbook_20230309",
+        "title": "VEDP Board of Directors public meeting book - Data Center Retail Sales and Use Tax Exemption performance",
+        "url": "https://www.vedp.org/sites/default/files/vedp-media/About%20VEDP/PUBLIC%20Meeting%20Book%20-%20VEDP%20Board%20of%20Directors%20Meeting%20-%20March%209%2C%202023%5B11%5D.pdf",
+        "publisher": "Virginia Economic Development Partnership",
+        "source_type": "state_record",
+        "publication_date": {
+          "precision": "day",
+          "date": "2023-03-09"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_pdf_text",
+        "notes": "The DCRSUT project table lists Scout Development LLC in Henrico as a single-user project with a September 26, 2017 MOU and June 1, 2021 performance date. The project is marked post-performance and as having achieved the statutory minimums of 50 new jobs and $150 million of capital investment; the table does not disclose actual tax benefits or amounts above those thresholds."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_01132541700",
+      "source_id": "src_study_henrico_fy24_approved_budget",
+      "as_of": "2023-06-30",
+      "title": "Budget, capital-plan, public-cost, and revenue search completed",
+      "notes": "Search family: county budgets, capital plans, infrastructure, and service cost. Query/identifier: Facebook revenue, White Oak, Portugee Road pumping station, schools technology; fiscal years 2022-2024. Result: negative for a bounded account - a $2 million Facebook-labelled revenue allocation and system capital projects appear, but payer, tax type, facility scope, causation, and Meta-attributable cost shares are absent.",
+      "source": {
+        "source_id": "src_study_henrico_fy24_approved_budget",
+        "title": "Henrico County Fiscal Year 2023-2024 Approved Budget",
+        "url": "https://henrico.gov/pdfs/finance/ApprovedBudgetFY24/FY24%20Approved%20Budget%20-%20Full%20book.pdf",
+        "publisher": "Henrico County, Virginia",
+        "source_type": "local_government_record",
+        "publication_date": {
+          "precision": "year",
+          "year": 2023
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_pdf_text",
+        "notes": "The budget reports a $2 million General Fund Revenue (Facebook) allocation to school technology and lists White Oak-area utility capital projects, including the Portugee Road Water Pumping Station. It does not identify the revenue type, payer account, facility allocation, or any project-attributable share of system capital or annual public-service costs, so no fiscal or public-cost record is created."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_01132541700",
+      "source_id": "src_study_meta_henrico_factsheet_2026",
+      "as_of": "2026-09-06",
+      "title": "Current operating-employment and community-funding search completed",
+      "notes": "Search families: operator operating headcount, community funding, recipients, and service-cost statements. Query/identifier: Meta Henrico operational jobs supported, schools, nonprofits, grants, sponsorships, and full utility costs; current through September 6, 2026. Result: useful - more than 200 supported jobs and more than $4.2 million cumulative local funding, but no dated employee census, wage or residence data, complete audited award ledger, or utility bill. Recipient grants are overlapping components.",
+      "source": {
+        "source_id": "src_study_meta_henrico_factsheet_2026",
+        "title": "Meta Henrico Data Center information sheet",
+        "url": "https://datacenters.atmeta.com/asset/henrico-data-center-info-sheet/",
+        "publisher": "Meta",
+        "source_type": "operator_release",
+        "publication_date": {
+          "precision": "unknown"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_pdf_text",
+        "notes": "The current two-page operator factsheet reports more than $1 billion invested, 1,500 peak skilled-trade workers, more than 200 operational jobs supported, more than 200 grants and sponsorships since 2019, more than $4.2 million of direct local funding, and eight Virginia clean-energy projects adding 700 MW. It says Meta pays the full costs of energy and county water and wastewater service but publishes no bills, rates, or project-specific public-cost amounts."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_01132541700",
+      "source_id": "src_study_henrico_budget_amendment_fy2023_meta",
+      "as_of": "2023-06-30",
+      "title": "Recipient-reported county grant search completed",
+      "notes": "Search family: county appropriations and recipient grant records. Query/identifier: Meta Data Center Action Grants $35,000 library computer work-and-play stations; fiscal year 2023. Result: useful - exact county-received amount and purpose, retained only as a component of the broader cumulative total.",
+      "source": {
+        "source_id": "src_study_henrico_budget_amendment_fy2023_meta",
+        "title": "Henrico County June 2023 budget amendments",
+        "url": "https://henrico.gov/pdfs/finance/pdfs/June%2023%20amendments%20-%20Standard.pdf",
+        "publisher": "Henrico County, Virginia",
+        "source_type": "local_government_record",
+        "publication_date": {
+          "precision": "year",
+          "year": 2023
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_pdf_text",
+        "notes": "The county amendment appropriates $35,000 received through Meta Data Center Action Grants for public-library computer work-and-play stations. This recipient-reported amount is a component of broader Meta community funding and is not additive to the operator's cumulative total."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_01132541700",
+      "source_id": "src_study_meta_environmental_data_index_2025",
+      "as_of": "2024-12-31",
+      "title": "Facility electricity, water, and emissions search completed",
+      "notes": "Search family: operator environmental data. Query/identifier: Henrico (VA) facility rows, calendar 2020-2024. Result: useful - 2024 electricity 948,859 MWh and water withdrawal 92 megaliters, plus emissions context. Electricity is a direct record; water is retained only as a transparent unit-conversion synthesis because no compatible canonical direct metric exists.",
+      "source": {
+        "source_id": "src_study_meta_environmental_data_index_2025",
+        "title": "Meta 2025 Environmental Data Index",
+        "url": "https://sustainability.atmeta.com/wp-content/uploads/2025/10/Meta_2025-Environmental-Data-Index.pdf",
+        "publisher": "Meta Platforms, Inc.",
+        "source_type": "operator_release",
+        "publication_date": {
+          "precision": "year",
+          "year": 2025
+        },
+        "retrieved_on": "2026-09-05",
+        "review_method": "web_pdf_text",
+        "notes": "Facility tables report Forest City electricity consumption of 535,555 MWh, water withdrawal of 16 megaliters, zero market-based Scope 2 emissions and 144,104 metric tons CO2e of location-based Scope 2 emissions for 2024. Values are rounded to whole displayed units and the methodology permits utility, meter, design-estimate or proxy inputs where applicable. Only electricity is normalized as a canonical source record because the shared evidence metric registry lacks compatible annual water-withdrawal and facility-emissions definitions."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_01132541700",
+      "source_id": "src_study_vadeq_data_center_air_permits_2026",
+      "as_of": "2019-06-27",
+      "title": "Air-permit inventory and exact permit-ID search completed",
+      "notes": "Search family: environmental permits and backup generation. Query/identifier: Scout Development LLC, registration/application 52629-4, Henrico; date range 2019-2026. Result: partial - issued permit and date confirmed, but indexed primary records yielded no generator count, capacity, runtime, fuel consumption, emissions, or operating-cost observation.",
+      "source": {
+        "source_id": "src_study_vadeq_data_center_air_permits_2026",
+        "title": "Issued air permits for data centers",
+        "url": "https://www.deq.virginia.gov/news-info/shortcuts/permits/air/issued-air-permits-for-data-centers",
+        "publisher": "Virginia Department of Environmental Quality",
+        "source_type": "state_record",
+        "publication_date": {
+          "precision": "unknown"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_page",
+        "notes": "The issued-permit inventory lists Scout Development LLC, registration/application 52629-4, Henrico County, Piedmont region, Article 6 minor new-source review, issued June 27, 2019. The indexed record does not expose generator count, nameplate capacity, runtime, fuel use, emissions, or cost."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_01132541700",
+      "source_id": "src_study_scc_annual_report_2019_scout",
+      "as_of": "2019-12-31",
+      "title": "Utility tariff, regulator, and rate-impact search completed",
+      "notes": "Search family: utility commission, special contract, tariff, and load. Query/identifier: Scout Development LLC/Facebook, Dominion Schedule RF, >=30 million kWh incremental load; date range 2017-2026. Result: partial - regulator confirms the arrangement and threshold but publishes no Henrico-specific usage, demand, bill, interconnection cost, payment, or customer-rate impact.",
+      "source": {
+        "source_id": "src_study_scc_annual_report_2019_scout",
+        "title": "Virginia State Corporation Commission 2019 Annual Report",
+        "url": "https://www.scc.virginia.gov/media/sccvirginiagov-home/about-the-scc/annual-reports/older-reports/2019ar.pdf",
+        "publisher": "Virginia State Corporation Commission",
+        "source_type": "state_record",
+        "publication_date": {
+          "precision": "year",
+          "year": 2019
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_pdf_text",
+        "notes": "The report says approved Dominion Schedule RF arrangements support Scout Development LLC/Facebook and apply to customers with at least 30 million kWh of incremental annual load. It describes renewable-energy-certificate purchases but discloses no Henrico-specific usage, demand, bill, rate impact, interconnection cost, or customer payment."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_01132541700",
+      "source_id": "src_study_henrico_water_sewer_rates_2026",
+      "as_of": "2026-09-06",
+      "title": "Municipal water, wastewater, billing, and capacity search completed",
+      "notes": "Search family: water utility, rates, customer billing, capacity, and discharge. Query/identifier: Scout/Facebook/Meta, 6200 and 7301 Technology Boulevard; date range 2017-2026. Result: negative for monetary and meter details - general schedules exist, while customer bills, metered volumes, capacity reservations, connection charges, marginal cost, and discharge remain unpublished.",
+      "source": {
+        "source_id": "src_study_henrico_water_sewer_rates_2026",
+        "title": "Henrico County water and sewer rates",
+        "url": "https://henrico.gov/utility/water-sewer-rates/",
+        "publisher": "Henrico County Department of Public Utilities",
+        "source_type": "local_government_record",
+        "publication_date": {
+          "precision": "unknown"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_page",
+        "notes": "The current rate page and linked utility materials were searched for Scout, Facebook, Meta, 6200 Technology Boulevard, and 7301 Technology Boulevard. They publish general schedules but no customer-level meter volumes, bills, capacity reservations, connection charges, marginal service cost, or discharge amount."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_01132541700",
+      "source_id": "src_study_dpr_meta_henrico_2026",
+      "as_of": "2026-09-06",
+      "title": "Contractor, construction-value, supplier, and workforce-residence search completed",
+      "notes": "Search family: contractor and supplier contribution. Query/identifier: DPR Meta Henrico five buildings, local vendors, subcontractors, payroll, workforce residence; date range 2017-2026. Result: identity and scale only. No contract value, project spending, vendor payments, supplier location, payroll, worker-hours, or residence share supports a supplier or household model.",
+      "source": {
+        "source_id": "src_study_dpr_meta_henrico_2026",
+        "title": "Meta Henrico Data Center",
+        "url": "https://www.dpr.com/projects/meta-henrico-data-center",
+        "publisher": "DPR Construction",
+        "source_type": "other",
+        "publication_date": {
+          "precision": "unknown"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_page",
+        "notes": "The contractor profile identifies DPR's role and describes the Henrico program as a five-building, roughly 2.4-to-2.5-million-square-foot campus begun in October 2017. It publishes no contract value, annual spend, vendor payments, payroll, worker residence, supplier geography, or inventory-building allocation."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_01132541700",
+      "source_id": "src_study_virginia_circuit_case_portal_2026",
+      "as_of": "2026-09-06",
+      "title": "Court, judgment, and lien search completed",
+      "notes": "Search family: Virginia court records. Query/identifier: Scout Development LLC, Facebook, Meta, Henrico, 6200/7301 Technology Boulevard; date range 2017-2026. Result: no authoritative project-specific judgment, damages award, lien amount, or enforceable public cost was located; absence from indexed results is not proof of no litigation.",
+      "source": {
+        "source_id": "src_study_virginia_circuit_case_portal_2026",
+        "title": "Virginia Circuit Court case information",
+        "url": "https://eapps.courts.state.va.us/CJISWeb/circuit.jsp",
+        "publisher": "Supreme Court of Virginia",
+        "source_type": "state_record",
+        "publication_date": {
+          "precision": "unknown"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_page",
+        "notes": "Party-name searches for Scout Development LLC, Facebook, and Meta combined with Henrico and the 6200/7301 Technology Boulevard identifiers did not produce an authoritative project-specific judgment, damages award, lien amount, or enforceable cost suitable for the account. The negative result does not prove that no litigation exists."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_01132541700",
+      "source_id": "src_study_bea_county_api_2026",
+      "as_of": "2026-09-06",
+      "title": "County GDP source and comparison-input search completed",
+      "notes": "Search family: federal county GDP. Query/identifier: BEA real GDP, Henrico County FIPS 51087, years 2012-2024. Result: useful only as governed county-panel input; the aggregate cannot identify Meta or support causal attribution.",
+      "source": {
+        "source_id": "src_study_bea_county_api_2026",
+        "title": "BEA API for Data Retrieval User Guide",
+        "url": "https://apps.bea.gov/api/_pdf/bea_web_service_api_user_guide.pdf",
+        "publisher": "U.S. Bureau of Economic Analysis",
+        "source_type": "other",
+        "publication_date": {
+          "precision": "unknown"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_pdf_text",
+        "notes": "The guide documents county GDP and income tables used by the governed 2001-2024 county panel. County aggregates do not identify Meta, isolate the campus, or establish a causal project effect."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_01132541700",
+      "source_id": "src_study_bls_qcew_portal_2026",
+      "as_of": "2026-09-06",
+      "title": "County employment and wage comparison-input search completed",
+      "notes": "Search family: federal QCEW employment and wages. Query/identifier: Henrico County FIPS 51087, years 2012-2024. Result: useful only as governed county-panel input; suppression and aggregation prevent a Meta establishment payroll or headcount and do not identify causal project effects.",
+      "source": {
+        "source_id": "src_study_bls_qcew_portal_2026",
+        "title": "QCEW Searchable Databases",
+        "url": "https://www.bls.gov/cew/data.htm",
+        "publisher": "U.S. Bureau of Labor Statistics",
+        "source_type": "other",
+        "publication_date": {
+          "precision": "unknown"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_page",
+        "notes": "The portal provides county employment and wage histories used by the governed comparison panel. Published county-industry aggregates do not disclose a Meta establishment payroll or support causal attribution to the Forest City campus."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_01132541700",
+      "source_id": "src_study_census_cbp_portal_2026",
+      "as_of": "2026-09-06",
+      "title": "County establishments, payroll, and supplier-proxy search completed",
+      "notes": "Search family: federal County Business Patterns. Query/identifier: Henrico County FIPS 51087, data-processing and construction industries, 2017-2024. Result: negative for project-specific contribution - confidentiality and county aggregation prevent Meta payroll, supplier payments, vendor geography, or household spending observations.",
+      "source": {
+        "source_id": "src_study_census_cbp_portal_2026",
+        "title": "County Business Patterns Data",
+        "url": "https://www.census.gov/programs-surveys/cbp/data.html",
+        "publisher": "U.S. Census Bureau",
+        "source_type": "other",
+        "publication_date": {
+          "precision": "unknown"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_page",
+        "notes": "County Business Patterns provides county-industry establishments, employment and payroll. Employer confidentiality and county aggregation prevent a project-specific Meta payroll, supplier-spend, or operating-headcount observation."
+      }
+    }
+  ],
   "evidence_gaps": [
     {
       "code": "investment",
       "label": "Capital investment",
-      "status": "projections_only",
+      "status": "partial",
       "needed": "Annual actual spending, local share, and phase allocation."
     },
     {
@@ -108,13 +543,13 @@
     {
       "code": "operations",
       "label": "Permanent jobs and compensation",
-      "status": "projections_only",
+      "status": "partial",
       "needed": "Realized direct and contractor employment, wages, and operating purchases."
     },
     {
       "code": "fiscal",
       "label": "Tax base and public revenue",
-      "status": "not_yet_collected",
+      "status": "partial",
       "needed": "Taxable values and actual receipts by year and recipient jurisdiction."
     },
     {
@@ -126,13 +561,13 @@
     {
       "code": "resources",
       "label": "Electricity, water, and cooling",
-      "status": "not_yet_collected",
+      "status": "partial",
       "needed": "Measured use, source, cooling design, and attributable system costs."
     },
     {
       "code": "community",
       "label": "Community institutions and direct funding",
-      "status": "not_yet_collected",
+      "status": "partial",
       "needed": "Annual grants, recipients, program purposes, realized spending, and overlap with other transfers."
     }
   ],
@@ -223,6 +658,313 @@
       "unit": "jobs",
       "measure_type": "stock",
       "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_meta_henrico_expansion_investment_plan_2018",
+      "project_id": "prj_study_im3_building_01132541700",
+      "metric_code": "study.campus_investment_projection",
+      "value": 750000000,
+      "value_qualifier": "exact",
+      "basis": "source_projection",
+      "period": {
+        "kind": "projection_horizon",
+        "report_date": "2018-09-26",
+        "label": "Expansion announced September 26, 2018; completion date unspecified"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Three-building Henrico campus expansion announced in 2018",
+        "county_fips": "51087",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_henrico_facebook_expansion_20180926",
+      "source_locator": "Expansion investment and building program",
+      "notes": "Planned incremental expansion investment, not observed spending, assessed value, local purchases, or economic output. This phase-specific forecast is not added to the later more-than-$1-billion full-buildout forecast because scope and timing overlap.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Planned campus investment",
+      "category": "investment",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_meta_henrico_scout_assessed_value_2024",
+      "project_id": "prj_study_im3_building_01132541700",
+      "metric_code": "study.account_assessed_value",
+      "value": 2045241378,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "calendar_year",
+        "year": 2024,
+        "label": "Calendar year 2024 principal-taxpayer assessed valuation"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Scout Development LLC combined real- and personal-property account in Henrico County",
+        "county_fips": "51087",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_henrico_fy25_acfr",
+      "pdf_page": 217,
+      "printed_page": "194",
+      "source_locator": "Statistical section, principal taxpayers table, Scout Development LLC row, calendar 2024",
+      "notes": "Audited county-table taxable valuation combining real and personal property for the project-linked taxpayer. It is not taxes billed or paid, market value, investment, annual revenue, or the selected inventory building's assessment and is not summed with the 2025 stock.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Account assessed property value",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_meta_henrico_scout_assessed_value_2025",
+      "project_id": "prj_study_im3_building_01132541700",
+      "metric_code": "study.account_assessed_value",
+      "value": 2364906425,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "calendar_year",
+        "year": 2025,
+        "label": "Calendar year 2025 principal-taxpayer assessed valuation"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Scout Development LLC combined real- and personal-property account in Henrico County",
+        "county_fips": "51087",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_henrico_fy25_acfr",
+      "pdf_page": 217,
+      "printed_page": "194",
+      "source_locator": "Statistical section, principal taxpayers table, Scout Development LLC row, calendar 2025",
+      "notes": "Audited county-table taxable valuation combining real and personal property for the project-linked taxpayer. Real and data-center personal property face different rates, and the performance agreement can generate confidential grants, so this stock cannot be converted into project taxes paid from published data.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Account assessed property value",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_meta_henrico_dcrsut_investment_threshold_2023",
+      "project_id": "prj_study_im3_building_01132541700",
+      "metric_code": "study.actual_qualified_investment",
+      "value": 150000000,
+      "value_qualifier": "at_least",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "cumulative",
+        "report_date": "2023-03-09",
+        "label": "Post-performance DCRSUT investment-threshold compliance reported March 9, 2023"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Scout Development LLC Henrico single-user DCRSUT project",
+        "county_fips": "51087",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_vedp_dcrsut_boardbook_20230309",
+      "pdf_page": 106,
+      "printed_page": "DCRSUT project-performance appendix",
+      "source_locator": "DCRSUT project-performance table, Scout Development LLC, Henrico County row",
+      "notes": "VEDP marks the project as having achieved the statutory capital-investment requirement. This is a verified lower bound, not the actual qualified amount, campus total, cash-flow series, local supplier spending, assessed value, or selected-building allocation.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "State-reported actual qualified investment",
+      "category": "investment",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_meta_henrico_dcrsut_jobs_threshold_2023",
+      "project_id": "prj_study_im3_building_01132541700",
+      "metric_code": "study.operating_employees",
+      "value": 50,
+      "value_qualifier": "at_least",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "reported_snapshot",
+        "report_date": "2023-03-09",
+        "label": "Post-performance DCRSUT job-threshold compliance reported March 9, 2023"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Scout Development LLC Henrico single-user DCRSUT project",
+        "county_fips": "51087",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_vedp_dcrsut_boardbook_20230309",
+      "pdf_page": 106,
+      "printed_page": "DCRSUT project-performance appendix",
+      "source_locator": "DCRSUT project-performance table, Scout Development LLC, Henrico County row",
+      "notes": "VEDP marks the project as having achieved the statutory new-job requirement. This is a verified lower bound rather than a dated payroll census; FTE definition, direct-versus-contractor mix, residence, wages, and amount above the threshold are not disclosed.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Reported operating employee count",
+      "category": "operations",
+      "unit": "employees",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_meta_henrico_operational_jobs_supported_2026",
+      "project_id": "prj_study_im3_building_01132541700",
+      "metric_code": "study.operational_jobs_supported",
+      "value": 200,
+      "value_qualifier": "greater_than",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "source_year",
+        "year": 2026,
+        "label": "Undated current operator factsheet reviewed in 2026"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Meta Henrico Data Center campus",
+        "county_fips": "51087",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_meta_henrico_factsheet_2026",
+      "pdf_page": 1,
+      "printed_page": "1",
+      "source_locator": "Page 1, Operational jobs supported summary",
+      "notes": "The operator reports jobs supported, not a payroll census or count of newly created jobs. It does not define direct employees, contractors, FTE status, work location, residence, wages, or measurement date; the metric remains separate from the state-verified 50-job minimum.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Operator-reported operational jobs supported",
+      "category": "operations",
+      "unit": "jobs",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_meta_henrico_community_funding_2026",
+      "project_id": "prj_study_im3_building_01132541700",
+      "metric_code": "study.cumulative_community_funding",
+      "value": 4200000,
+      "value_qualifier": "greater_than",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "cumulative",
+        "label": "Operator-reported direct funding since 2019 through the undated current factsheet reviewed in 2026"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Meta direct funding to Henrico County-area schools and nonprofits",
+        "county_fips": "51087",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_meta_henrico_factsheet_2026",
+      "pdf_page": 1,
+      "printed_page": "1",
+      "source_locator": "Page 1, Direct funding to Henrico County-area schools and nonprofits summary",
+      "notes": "Operator-reported cumulative direct funding since 2019. The factsheet does not provide an audited annual ledger or enough recipient detail to test all overlap; the $35,000 county grant and 2020 support components are included conceptually and must not be added to this total.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Cumulative direct community funding",
+      "category": "community",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_meta_henrico_library_grant_fy2023",
+      "project_id": "prj_study_im3_building_01132541700",
+      "metric_code": "study.direct_community_contribution",
+      "value": 35000,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "fiscal_year",
+        "year": 2023,
+        "label": "Henrico County fiscal year 2023 budget amendment"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Meta Data Center Action Grant received by Henrico County Public Library",
+        "county_fips": "51087",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_henrico_budget_amendment_fy2023_meta",
+      "pdf_page": 3,
+      "printed_page": "3",
+      "source_locator": "June 2023 standard budget amendments, Public Library grant appropriation",
+      "notes": "County-received grant for computer work-and-play stations. This recipient-level component is included within broader operator-reported community funding and must not be summed with the cumulative $4.2 million figure.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Direct community contribution",
+      "category": "community",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_meta_henrico_electricity_2024",
+      "project_id": "prj_study_im3_building_01132541700",
+      "metric_code": "study.annual_electricity_use",
+      "value": 948859000,
+      "value_qualifier": "approximately",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "calendar_year",
+        "year": 2024,
+        "label": "Calendar year 2024"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Meta Henrico Data Center campus",
+        "county_fips": "51087",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_meta_environmental_data_index_2025",
+      "pdf_page": 6,
+      "printed_page": "F",
+      "source_locator": "Section 2.1, Electricity Consumption by Facility, Henrico (VA) row, 2024 column",
+      "notes": "Meta reports 948,859 MWh for Henrico; this record converts the displayed value to 948,859,000 kWh. The source rounds to whole MWh and permits internal meters, design estimates, utility bills, or proxies where applicable. It is not an independently audited customer bill, demand measure, IT load, cost, or selected-building allocation.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Reported annual electricity use",
+      "category": "resources",
+      "unit": "kWh_per_year",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_meta_henrico_supporting_clean_energy_capacity_2026",
+      "project_id": "prj_study_im3_building_01132541700",
+      "metric_code": "study.renewable_generation_capacity",
+      "value": 700,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "source_year",
+        "year": 2026,
+        "label": "Undated current operator factsheet reviewed in 2026"
+      },
+      "scope": {
+        "level": "supporting_infrastructure",
+        "label": "Eight Virginia clean-energy projects described as supporting Meta's Henrico energy strategy",
+        "county_fips": "51087",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_meta_henrico_factsheet_2026",
+      "pdf_page": 1,
+      "printed_page": "1",
+      "source_locator": "Page 1, Clean and renewable energy section",
+      "notes": "Reported aggregate nameplate capacity of eight offsite Virginia projects. It is not onsite capacity, annual generation, hourly matching, facility demand, utility cost, Meta capital spending, or an allocation to the selected inventory building.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Reported renewable-generation nameplate capacity",
+      "category": "resources",
+      "unit": "MW",
+      "measure_type": "stock",
+      "aggregation": "none"
     }
   ],
   "economic_sources": [
@@ -239,13 +981,555 @@
       "retrieved_on": "2026-09-03",
       "review_method": "web_page",
       "notes": "Dated operator opening announcement. Completed construction activity and completion-dependent forecasts are separately worded. Operator self-report, not an independent employment or expenditure audit. Solar-project jobs elsewhere in the state are excluded from campus employment."
+    },
+    {
+      "source_id": "src_study_meta_environmental_data_index_2025",
+      "title": "Meta 2025 Environmental Data Index",
+      "url": "https://sustainability.atmeta.com/wp-content/uploads/2025/10/Meta_2025-Environmental-Data-Index.pdf",
+      "publisher": "Meta Platforms, Inc.",
+      "source_type": "operator_release",
+      "publication_date": {
+        "precision": "year",
+        "year": 2025
+      },
+      "retrieved_on": "2026-09-05",
+      "review_method": "web_pdf_text",
+      "notes": "Facility tables report Forest City electricity consumption of 535,555 MWh, water withdrawal of 16 megaliters, zero market-based Scope 2 emissions and 144,104 metric tons CO2e of location-based Scope 2 emissions for 2024. Values are rounded to whole displayed units and the methodology permits utility, meter, design-estimate or proxy inputs where applicable. Only electricity is normalized as a canonical source record because the shared evidence metric registry lacks compatible annual water-withdrawal and facility-emissions definitions."
+    },
+    {
+      "source_id": "src_study_henrico_facebook_expansion_20180926",
+      "title": "Henrico officials, governor announce major expansion of Facebook data center",
+      "url": "https://henrico.gov/news/2018/09/henrico-officials-governor-announce-major-expansion-of-facebook-data-center/",
+      "publisher": "Henrico County, Virginia",
+      "source_type": "local_government_record",
+      "publication_date": {
+        "precision": "day",
+        "date": "2018-09-26"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_page",
+      "notes": "The county announced a planned additional $750 million and three 500,000-square-foot buildings, bringing the program to five buildings and more than 2.4 million square feet. It projected approximately 1,500 construction jobs and more than 200 full-time operating jobs after completion; those forecasts are retained separately from later reported actuals."
+    },
+    {
+      "source_id": "src_study_henrico_fy25_acfr",
+      "title": "Henrico County Annual Comprehensive Financial Report for the Fiscal Year Ended June 30, 2025",
+      "url": "https://henrico.gov/assets/Henrico-County-VA-FY25-ACFR.pdf",
+      "publisher": "Henrico County, Virginia",
+      "source_type": "local_government_record",
+      "publication_date": {
+        "precision": "year",
+        "year": 2025
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_pdf_text",
+      "notes": "The principal-taxpayer table identifies Scout Development LLC as the company that bought and developed the site containing the Facebook data center and reports combined real- and personal-property assessed values of $2,045,241,378 for calendar 2024 and $2,364,906,425 for calendar 2025. The notes also describe 2017 and 2022 performance agreements covering facilities at 6200 and 7301 Technology Boulevard and state that grant amounts are confidential under Virginia law."
+    },
+    {
+      "source_id": "src_study_vedp_dcrsut_boardbook_20230309",
+      "title": "VEDP Board of Directors public meeting book - Data Center Retail Sales and Use Tax Exemption performance",
+      "url": "https://www.vedp.org/sites/default/files/vedp-media/About%20VEDP/PUBLIC%20Meeting%20Book%20-%20VEDP%20Board%20of%20Directors%20Meeting%20-%20March%209%2C%202023%5B11%5D.pdf",
+      "publisher": "Virginia Economic Development Partnership",
+      "source_type": "state_record",
+      "publication_date": {
+        "precision": "day",
+        "date": "2023-03-09"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_pdf_text",
+      "notes": "The DCRSUT project table lists Scout Development LLC in Henrico as a single-user project with a September 26, 2017 MOU and June 1, 2021 performance date. The project is marked post-performance and as having achieved the statutory minimums of 50 new jobs and $150 million of capital investment; the table does not disclose actual tax benefits or amounts above those thresholds."
+    },
+    {
+      "source_id": "src_study_meta_henrico_factsheet_2026",
+      "title": "Meta Henrico Data Center information sheet",
+      "url": "https://datacenters.atmeta.com/asset/henrico-data-center-info-sheet/",
+      "publisher": "Meta",
+      "source_type": "operator_release",
+      "publication_date": {
+        "precision": "unknown"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_pdf_text",
+      "notes": "The current two-page operator factsheet reports more than $1 billion invested, 1,500 peak skilled-trade workers, more than 200 operational jobs supported, more than 200 grants and sponsorships since 2019, more than $4.2 million of direct local funding, and eight Virginia clean-energy projects adding 700 MW. It says Meta pays the full costs of energy and county water and wastewater service but publishes no bills, rates, or project-specific public-cost amounts."
+    },
+    {
+      "source_id": "src_study_henrico_budget_amendment_fy2023_meta",
+      "title": "Henrico County June 2023 budget amendments",
+      "url": "https://henrico.gov/pdfs/finance/pdfs/June%2023%20amendments%20-%20Standard.pdf",
+      "publisher": "Henrico County, Virginia",
+      "source_type": "local_government_record",
+      "publication_date": {
+        "precision": "year",
+        "year": 2023
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_pdf_text",
+      "notes": "The county amendment appropriates $35,000 received through Meta Data Center Action Grants for public-library computer work-and-play stations. This recipient-reported amount is a component of broader Meta community funding and is not additive to the operator's cumulative total."
     }
   ],
-  "economic_scope_note": "Reviewed evidence batches at campus or company/county scope. No record is allocated to an individual inventory building. Source checking establishes what a document reports, not an independent audit or causal attribution. Monetary figures are nominal. Peak workforce is distinct from annual employment; source-year labels do not establish fiscal-year boundaries. Original forecasts remain forecasts until realization is verified. No cross-record benefit total is defined. Cumulative project costs are not annual expenditure. Tax receipts and incentive payments remain separate, with inferred taxpayer links disclosed. Contextual research updates do not count as economic amounts. Account tax bills are distinct from cash receipts and incentive-program fees. Tax years, calendar years and fiscal years retain their source basis; separate taxpayer accounts are not consolidated. Municipal developer rebates and taxpayer valuations have distinct subjects. Estimated actual property value and tax capacity are not tax receipts; payable-year valuations retain their earlier assessment date. Taxpayer values expressed in millions retain approximate precision and account-level separation. A current-year table can use an older valuation date and is not converted into an annual series. Facility real-property and business-personal-property accounts remain separate, and address-label discrepancies are disclosed. Michigan Industrial Facilities Tax accounts remain distinct from the underlying real parcel and from post-expiration personal-property accounts; annual account totals are not recipient-level government receipts. Permit construction values are administrative project amounts, not verified expenditure, and separate permits are not combined without proof that their scopes do not overlap. Repeated maintenance-year assessments are annual parcel stocks, not new investment flows. Mixed-use parcel assessments and taxable values are retained at whole-parcel scope and are not allocated to a data-center tenant or function by floor area. Operator-reported jobs supported remain distinct from direct employees and FTEs. Approved infrastructure grants are documented public commitments rather than verified disbursements or total public costs. Cumulative community funding remains separate from tax receipts, payroll and modeled multiplier effects. Reported facility power capacity is not measured electricity consumption or peak demand. Permit-listed emergency generators are not runtime, fuel-use or actual-emissions observations. A city largest-taxpayer table's personal-property assessment remains separate from the leasehold real-property account, tax bills, receipts and capital expenditure. TIF loan principal is financing rather than a grant or general-fund receipt; project-generated tax revenue pledged to repayment is retained as a separate public-financing flow and is not added to gross parcel distributions. Water-withdrawal and consumptive permit capacities are regulatory limits rather than measured use. Development-agreement local-labor preferences are requirements rather than realized participation, and operating employee snapshots remain distinct from customers' on-site staff and jobs forecasts. Audited City bond statements distinguish issuance draws, year-end principal, annual principal retired, interest and fees, pledged TIF revenue, debt-service-fund transfers and future principal-plus-interest commitments. These measures are not summed into a benefit or subsidy total. City pledged revenue, City debt-service-fund transfers and the private fund's project TIF revenue applied to loan repayment retain their separate source definitions because only the 2022 transfer and private-fund amount agree exactly. Developer testimony in public meeting minutes is retained as a source-attributed cumulative lower bound; local-contractor spending is not converted into payroll, worker counts, household spending or multiplier effects. Economic-improvement-district cost estimates and maximum owner assessments remain source projections until bond issuance, an assessment schedule, collections and expenditures are verified. A statutory financing cap is not a tax receipt, public expenditure or subsidy. Audited private equipment-financing balances are debt stocks rather than construction spending, public support or community benefit. Reported floor area and occupied-share values describe operating scale and utilization, not employment, revenue, power use or economic output. Contractor and engineer case studies document supplier roles and completion timing but do not establish payment amounts, worker residence, payroll or multiplier effects. State incentive contract amounts, expected jobs and paid-or-certified-to-date fields remain distinct; a zero paid/certified balance at an earlier reporting cutoff does not imply no later claims. Public charging-infrastructure awards are commitments rather than verified disbursements, private project investment or operating benefits. Qualitative payment descriptions without a defensible numeric bound remain research context rather than quantitative records. Program-reported actual qualified investment, certified tax-exemption value and certified tax-credit value remain separate cumulative measures; none is converted into annual spending, a cash grant, local revenue or causal impact. County Business Patterns observations are county-industry context, not project contributions: establishment counts are employer locations rather than data-center facilities, March employment is not an annual average, annual payroll spans the full NAICS cell, and disclosure noise, classification changes and geographic assignment limit comparisons. No CBP change is attributed to a study project. Project fragments: prj_study_im3_building_00364289074: Corrective public-source audit for Microsoft's data-center property at 5150 Rogers Road and explicitly labeled wider Microsoft/Bexar County activity. Exact-site ordinance, permit, appraisal, and tax-account records remain separate from later campuses and regional disclosures; the three appraisal accounts and two taxable-account payments are not consolidated. Permit value is administrative, the original investment and employment figures are commitments, the 2013 employment threshold is a reported lower bound, and the water quantity is a projection rather than metered consumption. No Bexar-and-Medina total is allocated to this property. Annual construction expenditure, construction labor and residence, supplier payments, operating payroll and purchases, recipient-level tax distributions, marginal public-service cost, electricity consumption, water withdrawal or consumption, wastewater, actual emissions, and a recurring facility-level community series remain unobserved after the documented searches. prj_study_im3_building_00377585075: Corrective DET01 evidence audit. Official parcel, permit, tax, water-account, state-certificate, EPA and operator records are retained as direct observations or clearly labeled source forecasts. Conflicting floor-area figures remain separate because their reporting definitions differ. Construction cost, realized jobs, supplier payments, community funding, electricity, emissions, wastewater, actual public-service cost and causal county effects remain unbounded rather than being filled with transferred assumptions. prj_study_im3_building_00460089167: Corrective primary-source audit adds current Andale parcel assessment, contractor-reported campus floor area, and two recipient- or government-reported Meta community grants. The search trail records useful and negative results across identity, tax, construction, jobs, suppliers, utilities, water, permits, public costs, incentives, community funding, and county comparison inputs. Campus-wide facts remain unallocated to the selected inventory building, overlapping community amounts are not added together, and unavailable supplier, payroll, utility-billing, discharge, generator, and marginal-service-cost amounts remain explicit gaps. prj_study_im3_building_00464097467: Second-pass public-evidence audit for Apple's Washoe County data-center campus at 21505 Reno Technology Parkway West and its 2024 expansion application. GOED audit findings, application forecasts, county permit values, parcel assessments, a water-right allocation, operator-reported electricity use, and recipient-reported donation bands remain separate evidence states and scopes. Permit values are administrative amounts and are not summed because overlapping scopes cannot be ruled out. Assessment values are parcel stocks, not investment or tax receipts. The 125 acre-foot water right is regulatory capacity, not measured use. Food Bank gifts are company-region transfers, not campus-attributable annual spending. No campus total is allocated to the selected mapped building; the four-building campus, later buildout cases, downtown Reno warehouse, supporting renewable projects, fire-station parcel, and more-than-200-person support statement are not collapsed into one footprint. No Switch Citadel or Storey County amount enters this fragment. Vendor payments, worker residence, taxes received by jurisdiction, realized 2024 abatement, same-scope public-service cost, wastewater, and building-level electricity or water remain unobserved. prj_study_im3_building_00664938835: Second-pass public-evidence audit for Expedient's adaptive reuse of the pre-existing data-center building at 4777 W Ironwood Drive. The review searched Franklin planning, agenda, assessment, permit, water and sewer materials; Milwaukee County tax and deed-record access points; Wisconsin DOR, WEDC, DFI and PSC records; operator press, specification, career, ESG and community pages; lease, financing, carrier and vendor disclosures; and archived official pages for 2007-2026. Opening-day and current operator specifications remain separate dated snapshots because the reported area and capacity changed. The county portal now establishes a 2021-2025 parcel-tax principal series, but not Expedient's incidence under the lease. The 2022 ownership transfer, assessments, estimated permit values, tax payments and hiring plan remain non-additive. No source was found for actual construction outlays, realized site employment or payroll, local procurement, Milwaukee-area community transfers, metered resources, project-attributable public costs or a fiscal net. prj_study_im3_building_01073720208: Second-pass public-evidence audit for Google's Council Bluffs data-center activity, retaining the selected inventory building as the project key while leaving campus, taxpayer-account, company-county, and state-award facts at their reported scopes. The audit distinguishes completed IEDA contracts 08-HQJC-030 and 12-HQJP-051 from the 2022 award still in performance; permit valuations remain administrative amounts rather than expenditure; assessed and taxable values remain stocks; bills remain distinct from payments; and community grants remain recipient- and period-specific. The Pottawattamie County tax portal now supplies a paid 2018-2024 series for the principal Tetra parcel and an unpaid 2025 bill for the newer Questa parcel. No value is inferred for sales-tax exemptions, the local abatement schedule, franchise-fee adjustment, electricity, supplier retention, building-level water, marginal public-service cost, or net fiscal position. Models without defensible project allocation or transferable parameters were removed even though that leaves the eight-category account incomplete.",
+  "economic_scope_note": "Reviewed evidence batches at campus or company/county scope. No record is allocated to an individual inventory building. Source checking establishes what a document reports, not an independent audit or causal attribution. Monetary figures are nominal. Peak workforce is distinct from annual employment; source-year labels do not establish fiscal-year boundaries. Original forecasts remain forecasts until realization is verified. No cross-record benefit total is defined. Cumulative project costs are not annual expenditure. Tax receipts and incentive payments remain separate, with inferred taxpayer links disclosed. Contextual research updates do not count as economic amounts. Account tax bills are distinct from cash receipts and incentive-program fees. Tax years, calendar years and fiscal years retain their source basis; separate taxpayer accounts are not consolidated. Municipal developer rebates and taxpayer valuations have distinct subjects. Estimated actual property value and tax capacity are not tax receipts; payable-year valuations retain their earlier assessment date. Taxpayer values expressed in millions retain approximate precision and account-level separation. A current-year table can use an older valuation date and is not converted into an annual series. Facility real-property and business-personal-property accounts remain separate, and address-label discrepancies are disclosed. Michigan Industrial Facilities Tax accounts remain distinct from the underlying real parcel and from post-expiration personal-property accounts; annual account totals are not recipient-level government receipts. Permit construction values are administrative project amounts, not verified expenditure, and separate permits are not combined without proof that their scopes do not overlap. Repeated maintenance-year assessments are annual parcel stocks, not new investment flows. Mixed-use parcel assessments and taxable values are retained at whole-parcel scope and are not allocated to a data-center tenant or function by floor area. Operator-reported jobs supported remain distinct from direct employees and FTEs. Approved infrastructure grants are documented public commitments rather than verified disbursements or total public costs. Cumulative community funding remains separate from tax receipts, payroll and modeled multiplier effects. Reported facility power capacity is not measured electricity consumption or peak demand. Permit-listed emergency generators are not runtime, fuel-use or actual-emissions observations. A city largest-taxpayer table's personal-property assessment remains separate from the leasehold real-property account, tax bills, receipts and capital expenditure. TIF loan principal is financing rather than a grant or general-fund receipt; project-generated tax revenue pledged to repayment is retained as a separate public-financing flow and is not added to gross parcel distributions. Water-withdrawal and consumptive permit capacities are regulatory limits rather than measured use. Development-agreement local-labor preferences are requirements rather than realized participation, and operating employee snapshots remain distinct from customers' on-site staff and jobs forecasts. Audited City bond statements distinguish issuance draws, year-end principal, annual principal retired, interest and fees, pledged TIF revenue, debt-service-fund transfers and future principal-plus-interest commitments. These measures are not summed into a benefit or subsidy total. City pledged revenue, City debt-service-fund transfers and the private fund's project TIF revenue applied to loan repayment retain their separate source definitions because only the 2022 transfer and private-fund amount agree exactly. Developer testimony in public meeting minutes is retained as a source-attributed cumulative lower bound; local-contractor spending is not converted into payroll, worker counts, household spending or multiplier effects. Economic-improvement-district cost estimates and maximum owner assessments remain source projections until bond issuance, an assessment schedule, collections and expenditures are verified. A statutory financing cap is not a tax receipt, public expenditure or subsidy. Audited private equipment-financing balances are debt stocks rather than construction spending, public support or community benefit. Reported floor area and occupied-share values describe operating scale and utilization, not employment, revenue, power use or economic output. Contractor and engineer case studies document supplier roles and completion timing but do not establish payment amounts, worker residence, payroll or multiplier effects. State incentive contract amounts, expected jobs and paid-or-certified-to-date fields remain distinct; a zero paid/certified balance at an earlier reporting cutoff does not imply no later claims. Public charging-infrastructure awards are commitments rather than verified disbursements, private project investment or operating benefits. Qualitative payment descriptions without a defensible numeric bound remain research context rather than quantitative records. Program-reported actual qualified investment, certified tax-exemption value and certified tax-credit value remain separate cumulative measures; none is converted into annual spending, a cash grant, local revenue or causal impact. County Business Patterns observations are county-industry context, not project contributions: establishment counts are employer locations rather than data-center facilities, March employment is not an annual average, annual payroll spans the full NAICS cell, and disclosure noise, classification changes and geographic assignment limit comparisons. No CBP change is attributed to a study project. Project fragments: prj_study_im3_building_00364289074: Corrective public-source audit for Microsoft's data-center property at 5150 Rogers Road and explicitly labeled wider Microsoft/Bexar County activity. Exact-site ordinance, permit, appraisal, and tax-account records remain separate from later campuses and regional disclosures; the three appraisal accounts and two taxable-account payments are not consolidated. Permit value is administrative, the original investment and employment figures are commitments, the 2013 employment threshold is a reported lower bound, and the water quantity is a projection rather than metered consumption. No Bexar-and-Medina total is allocated to this property. Annual construction expenditure, construction labor and residence, supplier payments, operating payroll and purchases, recipient-level tax distributions, marginal public-service cost, electricity consumption, water withdrawal or consumption, wastewater, actual emissions, and a recurring facility-level community series remain unobserved after the documented searches. prj_study_im3_building_00377585075: Corrective DET01 evidence audit. Official parcel, permit, tax, water-account, state-certificate, EPA and operator records are retained as direct observations or clearly labeled source forecasts. Conflicting floor-area figures remain separate because their reporting definitions differ. Construction cost, realized jobs, supplier payments, community funding, electricity, emissions, wastewater, actual public-service cost and causal county effects remain unbounded rather than being filled with transferred assumptions. prj_study_im3_building_00460089167: Corrective primary-source audit adds current Andale parcel assessment, contractor-reported campus floor area, and two recipient- or government-reported Meta community grants. The search trail records useful and negative results across identity, tax, construction, jobs, suppliers, utilities, water, permits, public costs, incentives, community funding, and county comparison inputs. Campus-wide facts remain unallocated to the selected inventory building, overlapping community amounts are not added together, and unavailable supplier, payroll, utility-billing, discharge, generator, and marginal-service-cost amounts remain explicit gaps. prj_study_im3_building_00464097467: Second-pass public-evidence audit for Apple's Washoe County data-center campus at 21505 Reno Technology Parkway West and its 2024 expansion application. GOED audit findings, application forecasts, county permit values, parcel assessments, a water-right allocation, operator-reported electricity use, and recipient-reported donation bands remain separate evidence states and scopes. Permit values are administrative amounts and are not summed because overlapping scopes cannot be ruled out. Assessment values are parcel stocks, not investment or tax receipts. The 125 acre-foot water right is regulatory capacity, not measured use. Food Bank gifts are company-region transfers, not campus-attributable annual spending. No campus total is allocated to the selected mapped building; the four-building campus, later buildout cases, downtown Reno warehouse, supporting renewable projects, fire-station parcel, and more-than-200-person support statement are not collapsed into one footprint. No Switch Citadel or Storey County amount enters this fragment. Vendor payments, worker residence, taxes received by jurisdiction, realized 2024 abatement, same-scope public-service cost, wastewater, and building-level electricity or water remain unobserved. prj_study_im3_building_00664938835: Second-pass public-evidence audit for Expedient's adaptive reuse of the pre-existing data-center building at 4777 W Ironwood Drive. The review searched Franklin planning, agenda, assessment, permit, water and sewer materials; Milwaukee County tax and deed-record access points; Wisconsin DOR, WEDC, DFI and PSC records; operator press, specification, career, ESG and community pages; lease, financing, carrier and vendor disclosures; and archived official pages for 2007-2026. Opening-day and current operator specifications remain separate dated snapshots because the reported area and capacity changed. The county portal now establishes a 2021-2025 parcel-tax principal series, but not Expedient's incidence under the lease. The 2022 ownership transfer, assessments, estimated permit values, tax payments and hiring plan remain non-additive. No source was found for actual construction outlays, realized site employment or payroll, local procurement, Milwaukee-area community transfers, metered resources, project-attributable public costs or a fiscal net. prj_study_im3_building_00888253616: Second-pass public-evidence audit for NTT Silicon Valley SV1 at 1160 Walsh Avenue, Santa Clara. The review reconciles the planning-era 1150 Walsh address to APN 224-58-003; adds the finaled principal permit, its administrative job value, current operator specifications, emergency-generator authorization and the parcel's regular-bill payment history; and leaves supplemental bills separate to avoid double counting. Public sources still do not establish realized site employment or payroll, total project investment, supplier payments, project-specific community transfers, metered resources, or project-attributable public-service costs. prj_study_im3_building_01024051963: Corrective source audit for the Meta Eagle Mountain campus and the selected IM3 building footprint in Utah County. Campus, company-county, and supporting-infrastructure observations remain explicitly unallocated to the selected building; later expansion areas and unrelated Eagle Mountain data-center developers are excluded unless a source establishes continuity. prj_study_im3_building_01073720208: Second-pass public-evidence audit for Google's Council Bluffs data-center activity, retaining the selected inventory building as the project key while leaving campus, taxpayer-account, company-county, and state-award facts at their reported scopes. The audit distinguishes completed IEDA contracts 08-HQJC-030 and 12-HQJP-051 from the 2022 award still in performance; permit valuations remain administrative amounts rather than expenditure; assessed and taxable values remain stocks; bills remain distinct from payments; and community grants remain recipient- and period-specific. The Pottawattamie County tax portal now supplies a paid 2018-2024 series for the principal Tetra parcel and an unpaid 2025 bill for the newer Questa parcel. No value is inferred for sales-tax exemptions, the local abatement schedule, franchise-fee adjustment, electricity, supplier retention, building-level water, marginal public-service cost, or net fiscal position. Models without defensible project allocation or transferable parameters were removed even though that leaves the eight-category account incomplete. prj_study_im3_building_01132541700: Corrective primary-source audit adds two county taxable-account observations, state-verified incentive-compliance thresholds, current operator-reported jobs and community funding, one county-received grant, facility electricity use, supporting renewable capacity, and the 2018 expansion forecast. The search trail covers identity, land use, permits, assessor and fiscal records, incentives, public costs, utilities, water, suppliers, courts, bonds, community funding, and federal county outcomes. Most public evidence covers the multi-building Henrico campus or Scout Development's county account and remains unallocated to the selected inventory building; overlapping funding and investment figures are not summed, and unavailable supplier payments, utility bills, tax receipts, incentive costs, payroll, and marginal public-service costs remain explicit gaps.",
   "evidence_version": "study-economic-evidence-1.37.0",
-  "modeled_syntheses": [],
-  "modeled_sources": [],
-  "modeled_scope_note": "Modeled contribution accounts for Apple Mesa / Maricopa County, Switch Citadel / Storey County, and Digital Crossroad Hammond / Lake County. Every required account category and county-comparison module contains sourced evidence or a visibly labeled modeled value. Public support is not netted against unmatched local revenues, unavailable public-service cost is represented by a break-even threshold rather than an invented net margin, county comparisons are descriptive rather than causal, and low-confidence transferred benchmarks remain explicit. Project fragments: prj_study_im3_building_00364289074: Corrective residual modeled account for Microsoft San Antonio. Eight transferred construction, labor, procurement, operating, and household-output scenarios were removed because their arbitrary capital shares, forecast-realization cases, local-purchase assumptions, and Virginia coefficients were not bounded by project observations. Only three low-confidence descriptive county comparisons remain: each uses the project's documented operating-by 2013 anchor and official Bexar County outcome data, has a finite fit-sensitivity envelope, and explicitly makes no causal attribution. The account intentionally remains incomplete because no defensible direct observation or residual model closes the supplier category. prj_study_im3_building_00377585075: Corrective DET01 synthesis. Only exact same-period tax-account arithmetic, its explicitly conditional public-cost break-even identity and a unit conversion of displayed municipal meter history remain. Construction, employment, supplier, household, electricity, cooling, emissions, wastewater and county-effect models were removed because the audit did not bound the missing project inputs. This account is intentionally incomplete where direct evidence remains unbounded. prj_study_im3_building_00460089167: Corrective audit retains six bounded residual calculations only: FY2025 county tax retained after the provisionally linked incentive, the identical marginal-service-cost break-even threshold, conversion of Meta-reported 2024 water withdrawal with source rounding, and three noncausal county comparison gaps with fit sensitivity. Ten models based on arbitrary capital timing, cost shares, FTE ratios, transferred operating/construction multipliers, fleet PUE, or wastewater ratios are removed. Supplier/local-procurement evidence remains unavailable, so the project is intentionally incomplete rather than backfilled. prj_study_im3_building_00464097467: Second-pass modeled contribution account after an expanded public-evidence audit. Direct county permits now cover historical construction values, assessor rolls cover a main-campus parcel stock, a county action covers water-right capacity, Apple reports 2025 campus electricity use, and recipient reports bound two community gifts. Those observations supersede the need for a modeled community proxy but do not supply Apple contractor job-years, construction payroll, annual operating payroll, supplier payments, taxes received, or public-service cost. The construction base therefore retains only the packet's explicit $163 million construction forecast and excludes equipment and historical capital; wide 0.5-1.5 transfer sensitivities expose the mismatch in the last-resort direct construction coefficients. The unsupported local-purchase-share and Virginia induced-output models are removed. No net-fiscal value or public-service-cost break-even is published. County outcome gaps remain descriptive benchmark applications with fit-sensitivity intervals and no causal-design metadata. prj_study_im3_building_00664938835: Second-pass Expedient Milwaukee / Franklin syntheses retained only after a documented 2007-2026 public-source audit. The account keeps a clearly labeled 2022 ownership-transfer anchor, a PB25-0303-only construction allocation sensitivity, an exact tax-equal public-cost break-even threshold, a capacity-based electricity engineering sensitivity, and three descriptive county comparison gaps. It removes transferred construction job-years, assumed local-purchase shares, supplier and household output extrapolations, and a duplicate modeled tax row because public sources did not establish realized site employment, supplier geography, household capture, or a need to restate the direct tax observations. PM25-0174 remains excluded for possible overlap. No synthesis is an observed result or fiscal net. prj_study_im3_building_01073720208: Second-pass governed synthesis for Google Council Bluffs. Construction job-years use only two directly observed September 2025 city permit valuations and transfer the published Prince William County prototype coefficients as benchmark equivalents; the four channels are separated and protected by one aggregation. No Pottawattamie County supplier-retention share is imposed because the public audit found contractor names but no payment or vendor-residence ledger. The water row is the unallocated Google Council Bluffs location identity reported for 2024, not a building allocation. No local abatement, exemption realization, franchise-fee amount, electric load, public-service cost, break-even threshold, or net fiscal result is modeled. County outcome gaps remain descriptive benchmark applications with fit-sensitivity ranges and no causal attribution.",
+  "modeled_syntheses": [
+    {
+      "estimate_id": "est_study_meta_henrico_water_withdrawal_2024",
+      "project_id": "prj_study_im3_building_01132541700",
+      "metric_code": "study.modeled_annual_water_withdrawal",
+      "label": "Unit-converted annual water withdrawal",
+      "category": "resources",
+      "unit": "gallons_per_year",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 24303828.78,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2024,
+        "label": "Calendar year 2024"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Meta Henrico Data Center campus",
+        "county_fips": "51087",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "reported_band",
+        "low": 24171742.76,
+        "central": 24303828.78,
+        "high": 24435914.81,
+        "interpretation": "The band reflects rounding of the source's displayed 92 megaliters to the nearest whole megaliter before conversion; it is not a confidence interval."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "meta_henrico_water_withdrawal_2024",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "reported_water_withdrawal",
+          "value": 92,
+          "unit": "megaliters",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_meta_environmental_data_index_2025",
+            "detail": "Henrico 2024 water-withdrawal row"
+          },
+          "transformation": "Converted to U.S. gallons"
+        },
+        {
+          "name": "gallons_per_megaliter",
+          "value": 264172.052,
+          "unit": "gallons_per_megaliter",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Exact unit-conversion factor used for presentation"
+          },
+          "transformation": "Multiplies reported megaliters"
+        }
+      ],
+      "confidence": "medium",
+      "confidence_rationale": "The facility row and conversion are reproducible, but the published amount is rounded and its site-level measurement basis is not specified.",
+      "decision_relevance": "Preserves the public facility-level water observation in a compatible presentation unit while the shared canonical direct-evidence metric is absent.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "not_applicable",
+        "remaining_evidence_gap": "Canonical annual water-withdrawal metric, unrounded meter data, withdrawal source allocation, consumption, reuse, discharge, and billing by facility"
+      },
+      "derivation": {
+        "method": "allocation",
+        "model_version": "meta-henrico-account-1.0.0",
+        "formula": "reported Henrico water withdrawal in megaliters × 264,172.052 gallons per megaliter",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_meta_environmental_data_index_2025"
+        ],
+        "assumptions": [
+          "The displayed source value is rounded to the nearest whole megaliter.",
+          "The estimate must not be presented as observed, audited, source-reported, or causal."
+        ]
+      },
+      "limitations": [
+        "The source rounds to whole megaliters and permits meter, utility, design-estimate, or proxy inputs where applicable.",
+        "Withdrawal is not consumption; no site-specific consumption or discharge value is reported.",
+        "The value is not an audited municipal billing record and is not allocated to the selected building."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Source-reported facility value carried as a visibly modeled unit conversion because no compatible canonical direct-evidence metric exists.",
+      "reviewed_on": "2026-09-06"
+    },
+    {
+      "estimate_id": "est_study_meta_henrico_gdp_comparison_gap",
+      "project_id": "prj_study_im3_building_01132541700",
+      "metric_code": "study.modeled_county_gdp_comparison_gap",
+      "label": "Modeled county real GDP comparison gap",
+      "category": "county_outcome",
+      "unit": "percent",
+      "measure_type": "change",
+      "basis": "modeled_synthesis",
+      "value": -15.08,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2024,
+        "label": "2024 host-county outcome relative to a mechanically matched benchmark; campus opening year 2020"
+      },
+      "scope": {
+        "level": "county",
+        "label": "Meta Henrico campus and Henrico County",
+        "county_fips": "51087",
+        "inventory_allocation": "not_applicable"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": -20.08,
+        "central": -15.08,
+        "high": -10.08,
+        "interpretation": "The envelope is the larger of plus or minus 5 percentage points or twice the 2012-2019 pre-period RMSE. It is a fit sensitivity, not a statistical confidence interval."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "meta_henrico_gdp_comparison_gap",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "host_2024_value",
+          "value": 29755353000,
+          "unit": "chained_2017_USD",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_county_economic_core_2001_2024",
+            "detail": "Henrico County 2024 real GDP"
+          },
+          "transformation": "Compared with weighted benchmark"
+        },
+        {
+          "name": "comparison_2024_value",
+          "value": 35037606418.62732,
+          "unit": "chained_2017_USD",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_county_economic_core_2001_2024",
+            "detail": "Inverse-distance weighted 2024 value from 20 comparison counties"
+          },
+          "transformation": "Subtracted from host and used as denominator"
+        },
+        {
+          "name": "pre_period_rmse_percent",
+          "value": 0.6665799683278992,
+          "unit": "percent",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Fit diagnostic over 2012-2019"
+          },
+          "transformation": "Sets fit-sensitivity width subject to 5-point floor"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The calculation is reproducible, but concurrent county activity and treatment timing prevent attribution.",
+      "decision_relevance": "Shows Henrico County's 2024 divergence from a reproducible comparison benchmark without assigning the divergence to Meta.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "not_applicable",
+        "remaining_evidence_gap": "A causal design with complete county exposure history, treatment isolation, pre-trend diagnostics, placebos, spillover rules, and robustness checks"
+      },
+      "derivation": {
+        "method": "benchmark_application",
+        "model_version": "meta-henrico-account-1.0.0",
+        "formula": "100 × (host 2024 outcome − inverse-distance-weighted 20-county benchmark) ÷ benchmark",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_county_economic_core_2001_2024"
+        ],
+        "assumptions": [
+          "Matching uses 2012-2019 log level, average log growth, and growth volatility.",
+          "All selected-study counties are excluded from the donor pool.",
+          "The 2020 campus opening is not assumed to be first county exposure or an isolated treatment date."
+        ]
+      },
+      "limitations": [
+        "This comparison is descriptive and must not be interpreted as a data-center effect.",
+        "Opening timing does not isolate construction, later expansions, or concurrent investments.",
+        "The donor screen cannot exclude every unobserved treatment.",
+        "The interval is fit sensitivity, not statistical confidence."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Descriptive benchmark gap only; no causal_design metadata is attached.",
+      "reviewed_on": "2026-09-06"
+    },
+    {
+      "estimate_id": "est_study_meta_henrico_employment_comparison_gap",
+      "project_id": "prj_study_im3_building_01132541700",
+      "metric_code": "study.modeled_county_employment_comparison_gap",
+      "label": "Modeled county total employment comparison gap",
+      "category": "county_outcome",
+      "unit": "percent",
+      "measure_type": "change",
+      "basis": "modeled_synthesis",
+      "value": -5.16,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2024,
+        "label": "2024 host-county outcome relative to a mechanically matched benchmark; campus opening year 2020"
+      },
+      "scope": {
+        "level": "county",
+        "label": "Meta Henrico campus and Henrico County",
+        "county_fips": "51087",
+        "inventory_allocation": "not_applicable"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": -10.16,
+        "central": -5.16,
+        "high": -0.16,
+        "interpretation": "The envelope is the larger of plus or minus 5 percentage points or twice the 2012-2019 pre-period RMSE. It is a fit sensitivity, not a statistical confidence interval."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "meta_henrico_employment_comparison_gap",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "host_2024_value",
+          "value": 187647,
+          "unit": "jobs",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_county_economic_core_2001_2024",
+            "detail": "Henrico County 2024 total employment"
+          },
+          "transformation": "Compared with weighted benchmark"
+        },
+        {
+          "name": "comparison_2024_value",
+          "value": 197848.46997649886,
+          "unit": "jobs",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_county_economic_core_2001_2024",
+            "detail": "Inverse-distance weighted 2024 value from 20 comparison counties"
+          },
+          "transformation": "Subtracted from host and used as denominator"
+        },
+        {
+          "name": "pre_period_rmse_percent",
+          "value": 1.9103577010330688,
+          "unit": "percent",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Fit diagnostic over 2012-2019"
+          },
+          "transformation": "Sets fit-sensitivity width subject to 5-point floor"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The calculation is reproducible, but concurrent county activity and treatment timing prevent attribution.",
+      "decision_relevance": "Shows Henrico County's 2024 divergence from a reproducible comparison benchmark without assigning the divergence to Meta.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "not_applicable",
+        "remaining_evidence_gap": "A causal design with complete county exposure history, treatment isolation, pre-trend diagnostics, placebos, spillover rules, and robustness checks"
+      },
+      "derivation": {
+        "method": "benchmark_application",
+        "model_version": "meta-henrico-account-1.0.0",
+        "formula": "100 × (host 2024 outcome − inverse-distance-weighted 20-county benchmark) ÷ benchmark",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_county_economic_core_2001_2024"
+        ],
+        "assumptions": [
+          "Matching uses 2012-2019 log level, average log growth, and growth volatility.",
+          "All selected-study counties are excluded from the donor pool.",
+          "The 2020 campus opening is not assumed to be first county exposure or an isolated treatment date."
+        ]
+      },
+      "limitations": [
+        "This comparison is descriptive and must not be interpreted as a data-center effect.",
+        "Opening timing does not isolate construction, later expansions, or concurrent investments.",
+        "The donor screen cannot exclude every unobserved treatment.",
+        "The interval is fit sensitivity, not statistical confidence."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Descriptive benchmark gap only; no causal_design metadata is attached.",
+      "reviewed_on": "2026-09-06"
+    },
+    {
+      "estimate_id": "est_study_meta_henrico_wage_comparison_gap",
+      "project_id": "prj_study_im3_building_01132541700",
+      "metric_code": "study.modeled_county_wage_comparison_gap",
+      "label": "Modeled county average weekly wages comparison gap",
+      "category": "county_outcome",
+      "unit": "percent",
+      "measure_type": "change",
+      "basis": "modeled_synthesis",
+      "value": 1.86,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2024,
+        "label": "2024 host-county outcome relative to a mechanically matched benchmark; campus opening year 2020"
+      },
+      "scope": {
+        "level": "county",
+        "label": "Meta Henrico campus and Henrico County",
+        "county_fips": "51087",
+        "inventory_allocation": "not_applicable"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": -3.14,
+        "central": 1.86,
+        "high": 6.86,
+        "interpretation": "The envelope is the larger of plus or minus 5 percentage points or twice the 2012-2019 pre-period RMSE. It is a fit sensitivity, not a statistical confidence interval."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "meta_henrico_wage_comparison_gap",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "host_2024_value",
+          "value": 1357,
+          "unit": "USD_per_week",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_county_economic_core_2001_2024",
+            "detail": "Henrico County 2024 average weekly wages"
+          },
+          "transformation": "Compared with weighted benchmark"
+        },
+        {
+          "name": "comparison_2024_value",
+          "value": 1332.2313472962317,
+          "unit": "USD_per_week",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_county_economic_core_2001_2024",
+            "detail": "Inverse-distance weighted 2024 value from 20 comparison counties"
+          },
+          "transformation": "Subtracted from host and used as denominator"
+        },
+        {
+          "name": "pre_period_rmse_percent",
+          "value": 0.9694846105647276,
+          "unit": "percent",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Fit diagnostic over 2012-2019"
+          },
+          "transformation": "Sets fit-sensitivity width subject to 5-point floor"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The calculation is reproducible, but concurrent county activity and treatment timing prevent attribution.",
+      "decision_relevance": "Shows Henrico County's 2024 divergence from a reproducible comparison benchmark without assigning the divergence to Meta.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "not_applicable",
+        "remaining_evidence_gap": "A causal design with complete county exposure history, treatment isolation, pre-trend diagnostics, placebos, spillover rules, and robustness checks"
+      },
+      "derivation": {
+        "method": "benchmark_application",
+        "model_version": "meta-henrico-account-1.0.0",
+        "formula": "100 × (host 2024 outcome − inverse-distance-weighted 20-county benchmark) ÷ benchmark",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_county_economic_core_2001_2024"
+        ],
+        "assumptions": [
+          "Matching uses 2012-2019 log level, average log growth, and growth volatility.",
+          "All selected-study counties are excluded from the donor pool.",
+          "The 2020 campus opening is not assumed to be first county exposure or an isolated treatment date."
+        ]
+      },
+      "limitations": [
+        "This comparison is descriptive and must not be interpreted as a data-center effect.",
+        "Opening timing does not isolate construction, later expansions, or concurrent investments.",
+        "The donor screen cannot exclude every unobserved treatment.",
+        "The interval is fit sensitivity, not statistical confidence."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Descriptive benchmark gap only; no causal_design metadata is attached.",
+      "reviewed_on": "2026-09-06"
+    }
+  ],
+  "modeled_sources": [
+    {
+      "source_id": "src_study_county_economic_core_2001_2024",
+      "title": "County Economic Core Panel, 2001-2024",
+      "url": "https://apps.bea.gov/regional/downloadzip.htm",
+      "publisher": "U.S. Bureau of Economic Analysis and U.S. Bureau of Labor Statistics",
+      "source_type": "other",
+      "publication_date": {
+        "precision": "year",
+        "year": 2026
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "structured_data",
+      "notes": "Repository panel compiled from official annual county real GDP, total employment, and average-weekly-wage series. These are county observations, not project contributions; the retained comparison modules use them descriptively with explicit noncausal limitations."
+    },
+    {
+      "source_id": "src_study_meta_environmental_data_index_2025",
+      "title": "Meta 2025 Environmental Data Index",
+      "url": "https://sustainability.atmeta.com/wp-content/uploads/2025/10/Meta_2025-Environmental-Data-Index.pdf",
+      "publisher": "Meta Platforms, Inc.",
+      "source_type": "operator_release",
+      "publication_date": {
+        "precision": "year",
+        "year": 2025
+      },
+      "retrieved_on": "2026-09-05",
+      "review_method": "web_pdf_text",
+      "notes": "Facility tables report Forest City electricity consumption of 535,555 MWh, water withdrawal of 16 megaliters, zero market-based Scope 2 emissions and 144,104 metric tons CO2e of location-based Scope 2 emissions for 2024. Values are rounded to whole displayed units and the methodology permits utility, meter, design-estimate or proxy inputs where applicable. Only electricity is normalized as a canonical source record because the shared evidence metric registry lacks compatible annual water-withdrawal and facility-emissions definitions."
+    },
+    {
+      "source_id": "src_study_county_economic_core_2001_2024",
+      "title": "County Economic Core Panel, 2001-2024",
+      "url": "https://apps.bea.gov/regional/downloadzip.htm",
+      "publisher": "U.S. Bureau of Economic Analysis and U.S. Bureau of Labor Statistics",
+      "source_type": "other",
+      "publication_date": {
+        "precision": "year",
+        "year": 2026
+      },
+      "retrieved_on": "2026-09-05",
+      "review_method": "structured_data",
+      "notes": "Repository panel compiled from official annual county real GDP, total employment and average-weekly-wage series. The completion model uses pre-treatment histories and 2024 outcomes; source revisions and concurrent treatments remain limitations."
+    },
+    {
+      "source_id": "src_study_meta_environmental_data_index_2025",
+      "title": "Meta 2025 Environmental Data Index",
+      "url": "https://sustainability.atmeta.com/wp-content/uploads/2025/10/Meta_2025-Environmental-Data-Index.pdf",
+      "publisher": "Meta Platforms, Inc.",
+      "source_type": "operator_release",
+      "publication_date": {
+        "precision": "year",
+        "year": 2025
+      },
+      "retrieved_on": "2026-09-05",
+      "review_method": "web_pdf_text",
+      "notes": "Facility tables report Forest City 2024 water withdrawal as 16 whole megaliters. The retained resource model performs only unit conversion with a rounding interval; no fleet PUE, cooling allocation or wastewater ratio is transferred."
+    },
+    {
+      "source_id": "src_study_county_economic_core_2001_2024",
+      "title": "County Economic Core Panel, 2001-2024",
+      "url": "https://apps.bea.gov/regional/downloadzip.htm",
+      "publisher": "U.S. Bureau of Economic Analysis and U.S. Bureau of Labor Statistics",
+      "source_type": "other",
+      "publication_date": {
+        "precision": "year",
+        "year": 2026
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "structured_data",
+      "notes": "Repository panel compiled from official annual county real GDP, total employment and average-weekly-wage series. The comparison uses 2013-2020 pre-opening histories and 2024 outcomes; revisions, poor pre-period fit and concurrent county treatments remain limitations."
+    }
+  ],
+  "modeled_scope_note": "Modeled contribution accounts for Apple Mesa / Maricopa County, Switch Citadel / Storey County, and Digital Crossroad Hammond / Lake County. Every required account category and county-comparison module contains sourced evidence or a visibly labeled modeled value. Public support is not netted against unmatched local revenues, unavailable public-service cost is represented by a break-even threshold rather than an invented net margin, county comparisons are descriptive rather than causal, and low-confidence transferred benchmarks remain explicit. Project fragments: prj_study_im3_building_00364289074: Corrective residual modeled account for Microsoft San Antonio. Eight transferred construction, labor, procurement, operating, and household-output scenarios were removed because their arbitrary capital shares, forecast-realization cases, local-purchase assumptions, and Virginia coefficients were not bounded by project observations. Only three low-confidence descriptive county comparisons remain: each uses the project's documented operating-by 2013 anchor and official Bexar County outcome data, has a finite fit-sensitivity envelope, and explicitly makes no causal attribution. The account intentionally remains incomplete because no defensible direct observation or residual model closes the supplier category. prj_study_im3_building_00377585075: Corrective DET01 synthesis. Only exact same-period tax-account arithmetic, its explicitly conditional public-cost break-even identity and a unit conversion of displayed municipal meter history remain. Construction, employment, supplier, household, electricity, cooling, emissions, wastewater and county-effect models were removed because the audit did not bound the missing project inputs. This account is intentionally incomplete where direct evidence remains unbounded. prj_study_im3_building_00460089167: Corrective audit retains six bounded residual calculations only: FY2025 county tax retained after the provisionally linked incentive, the identical marginal-service-cost break-even threshold, conversion of Meta-reported 2024 water withdrawal with source rounding, and three noncausal county comparison gaps with fit sensitivity. Ten models based on arbitrary capital timing, cost shares, FTE ratios, transferred operating/construction multipliers, fleet PUE, or wastewater ratios are removed. Supplier/local-procurement evidence remains unavailable, so the project is intentionally incomplete rather than backfilled. prj_study_im3_building_00464097467: Second-pass modeled contribution account after an expanded public-evidence audit. Direct county permits now cover historical construction values, assessor rolls cover a main-campus parcel stock, a county action covers water-right capacity, Apple reports 2025 campus electricity use, and recipient reports bound two community gifts. Those observations supersede the need for a modeled community proxy but do not supply Apple contractor job-years, construction payroll, annual operating payroll, supplier payments, taxes received, or public-service cost. The construction base therefore retains only the packet's explicit $163 million construction forecast and excludes equipment and historical capital; wide 0.5-1.5 transfer sensitivities expose the mismatch in the last-resort direct construction coefficients. The unsupported local-purchase-share and Virginia induced-output models are removed. No net-fiscal value or public-service-cost break-even is published. County outcome gaps remain descriptive benchmark applications with fit-sensitivity intervals and no causal-design metadata. prj_study_im3_building_00664938835: Second-pass Expedient Milwaukee / Franklin syntheses retained only after a documented 2007-2026 public-source audit. The account keeps a clearly labeled 2022 ownership-transfer anchor, a PB25-0303-only construction allocation sensitivity, an exact tax-equal public-cost break-even threshold, a capacity-based electricity engineering sensitivity, and three descriptive county comparison gaps. It removes transferred construction job-years, assumed local-purchase shares, supplier and household output extrapolations, and a duplicate modeled tax row because public sources did not establish realized site employment, supplier geography, household capture, or a need to restate the direct tax observations. PM25-0174 remains excluded for possible overlap. No synthesis is an observed result or fiscal net. prj_study_im3_building_00888253616: Residual synthesis after the SV1 public-source audit. It retains one exact tax-equal public-cost break-even threshold and three reproducible but low-confidence county comparison gaps. The county gaps use 2013-2020 pre-opening histories and an inverse-distance-weighted 20-county benchmark; very wide fit envelopes are retained because Santa Clara County matches poorly. No model converts capacity to consumption, permit value to jobs, or unidentified vendor and community activity to local benefits. prj_study_im3_building_01073720208: Second-pass governed synthesis for Google Council Bluffs. Construction job-years use only two directly observed September 2025 city permit valuations and transfer the published Prince William County prototype coefficients as benchmark equivalents; the four channels are separated and protected by one aggregation. No Pottawattamie County supplier-retention share is imposed because the public audit found contractor names but no payment or vendor-residence ledger. The water row is the unallocated Google Council Bluffs location identity reported for 2024, not a building allocation. No local abatement, exemption realization, franchise-fee amount, electric load, public-service cost, break-even threshold, or net fiscal result is modeled. County outcome gaps remain descriptive benchmark applications with fit-sensitivity ranges and no causal attribution. prj_study_im3_building_01132541700: Four bounded syntheses are retained after direct-record search: one deterministic conversion of Meta's rounded 2024 Henrico water-withdrawal observation and three governed, descriptive county comparison gaps. No construction, operating, supplier, household, tax-receipt, incentive-cost, or public-service-cost model is added because the public record lacks the needed project-specific bases and arbitrary allocation shares would create false precision. Every retained estimate is visibly modeled, unallocated to the selected building, non-additive, and noncausal.",
   "synthesis_version": "study-modeled-synthesis-3.2.0",
   "modeling_policy_version": "study-modeling-policy-1.3.0",
   "analysis_readiness": {
@@ -255,5 +1539,6 @@
     "causal": "not_assessed"
   },
   "legacy_first_entry_note": "Meta establishes that its mapped Henrico Data Center began serving traffic on August 5, 2020. Henrico County's seven current source records do not establish a complete history or exclude earlier carrier, state-government, banking, utility, university, or enterprise data centers in greater Richmond.",
-  "scope_note": "Provisional private-sector research candidate. Owner/operator history, project boundaries and lifecycle require review. Membership does not verify current operation or establish economic impact."
+  "scope_note": "Provisional private-sector research candidate. Owner/operator history, project boundaries and lifecycle require review. Membership does not verify current operation or establish economic impact.",
+  "project_description": "Meta's Henrico Data Center is a hyperscale campus operated by Meta in White Oak Technology Park, Henrico County, Virginia; the inventory project represents one mapped building footprint, while public project evidence generally covers the campus. Henrico approved Project Echo in September 2017 as a phased 328-acre development with two connected Phase I buildings of about 1 million square feet and three future buildings totaling 1.5 million square feet, and construction began in October 2017. Meta reported the campus serving traffic on August 5, 2020; later county records distinguish 6200 Technology Boulevard from facilities at 7301 Technology Boulevard, so campus and later-building facts are not allocated to the selected footprint."
 }
