@@ -1,0 +1,395 @@
+{
+  "schema_version": "1.0.0",
+  "project_id": "prj_study_im3_campus_00675108684",
+  "reviewed_on": "2026-09-06",
+  "scope_note": "Dedicated last-resort Boydton model-eligibility pass under study-modeling-policy-1.3.0. Retained syntheses are limited to exact arithmetic over cited compatible observations: a five-fiscal-year average of the operator-reported portfolio property-tax total, its explicitly conditional same-scope public-cost break-even identity, and annual sums of identified LVL/Herbert Fund 301 components. All remain unallocated, modeled rather than observed, and non-additive to their source totals. COF phase investment, operating headcount, construction, resources, suppliers, induced effects, causal comparisons and net fiscal impact were rejected because overlap, timing, scope or required project inputs remain unresolved.",
+  "sources": [],
+  "estimates": [
+    {
+      "estimate_id": "est_study_msft_boydton_average_annual_property_tax_fy2019_2023",
+      "project_id": "prj_study_im3_campus_00675108684",
+      "metric_code": "study.modeled_average_annual_property_tax_contribution",
+      "label": "Average annual reported property-tax contribution, FY2019-FY2023",
+      "category": "fiscal",
+      "unit": "USD_per_year",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 19800000,
+      "period": {
+        "kind": "cumulative",
+        "report_date": "2023-06-30",
+        "label": "Average over the five fiscal years FY2019 through FY2023"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Microsoft Mecklenburg / Southern Virginia multi-campus datacenter portfolio; selected-campus allocation unavailable",
+        "county_fips": "51117",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "point_estimate",
+        "low": 19800000,
+        "central": 19800000,
+        "high": 19800000,
+        "interpretation": "Exact division of the rounded reported cumulative amount by five named fiscal years; not a statistical estimate or audited annual receipt."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "msft_boydton_average_annual_property_tax_fy2019_2023",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "reported_cumulative_property_tax",
+          "value": 99000000,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_msft_mecklenburg_property_tax_fy2019_2023",
+            "detail": "Operator-reported cumulative property taxes since FY2019 through FY2023"
+          },
+          "transformation": "Divided by five fiscal years"
+        },
+        {
+          "name": "fiscal_year_count",
+          "value": 5,
+          "unit": "years",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Inclusive count of FY2019, FY2020, FY2021, FY2022 and FY2023"
+          },
+          "transformation": "Used as the annualization denominator"
+        }
+      ],
+      "confidence": "medium",
+      "confidence_rationale": "The period count and arithmetic are exact, while the $99 million input is a rounded operator-reported multi-campus aggregate that is not reconciled to county receipts.",
+      "decision_relevance": "Provides a transparent recurring portfolio-scale tax reference for fiscal screening without assigning the result to the selected Boydton/LVL campus.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "not_applicable",
+        "remaining_evidence_gap": "Fiscal-year tax receipts, recipient allocation, selected-campus tax accounts, EIG payments and reconciliation of the nested 2023 observation"
+      },
+      "derivation": {
+        "method": "allocation",
+        "model_version": "microsoft-boydton-last-resort-account-1.0.0",
+        "formula": "$99,000,000 cumulative property taxes / 5 fiscal years = $19,800,000 per fiscal year",
+        "input_claim_ids": [
+          "clm_study_msft_mecklenburg_property_tax_fy2019_2023"
+        ],
+        "input_source_ids": [
+          "src_study_msft_sova_impact_fy2019_2023"
+        ],
+        "assumptions": [
+          "The phrase FY2019 through FY2023 covers five fiscal years inclusively.",
+          "The rounded reported cumulative amount is divided without inventing a within-period distribution.",
+          "The separate $23 million 2023 observation is nested in the cumulative amount and is not added or used to reconcile fiscal-year values."
+        ]
+      },
+      "limitations": [
+        "This is an arithmetic average, not an observed annual series or current-year value.",
+        "The source is operator reported and rounded.",
+        "The result is multi-campus and cannot be allocated to the selected Boydton/LVL campus.",
+        "No recipient incidence, incentive offset or net fiscal result is implied."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Standalone normalization only; do not add it to the $99 million cumulative source total or the nested $23 million 2023 observation.",
+      "reviewed_on": "2026-09-06"
+    },
+    {
+      "estimate_id": "est_study_msft_boydton_annual_service_cost_break_even_fy2019_2023",
+      "project_id": "prj_study_im3_campus_00675108684",
+      "metric_code": "study.modeled_annual_local_service_cost_break_even",
+      "label": "Average annual same-scope public-service-cost break-even threshold",
+      "category": "public_costs",
+      "unit": "USD_per_year",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 19800000,
+      "period": {
+        "kind": "cumulative",
+        "report_date": "2023-06-30",
+        "label": "Break-even against the average annual reported portfolio tax contribution over FY2019-FY2023"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Microsoft Mecklenburg / Southern Virginia multi-campus datacenter portfolio; selected-campus and recipient allocation unavailable",
+        "county_fips": "51117",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "point_estimate",
+        "low": 19800000,
+        "central": 19800000,
+        "high": 19800000,
+        "interpretation": "The threshold equals the five-year average reported tax contribution by definition; it is not an estimate of actual public cost."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "msft_boydton_service_cost_break_even_fy2019_2023",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "reported_cumulative_property_tax",
+          "value": 99000000,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_msft_mecklenburg_property_tax_fy2019_2023",
+            "detail": "Operator-reported cumulative property taxes since FY2019 through FY2023"
+          },
+          "transformation": "Divided by five to define the average annual equal-cost threshold"
+        },
+        {
+          "name": "fiscal_year_count",
+          "value": 5,
+          "unit": "years",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Inclusive count of FY2019 through FY2023"
+          },
+          "transformation": "Used as the annualization denominator"
+        }
+      ],
+      "confidence": "medium",
+      "confidence_rationale": "The break-even identity is exact for the normalized reported amount, while the source is rounded and actual same-scope marginal public cost is unobserved.",
+      "decision_relevance": "States the average annual public-cost threshold that would offset the reported portfolio tax contribution without fabricating a cost or claiming a positive or negative fiscal margin.",
+      "evidence_search": {
+        "direct_observation_status": "not_found",
+        "source_projection_status": "not_applicable",
+        "remaining_evidence_gap": "Annual marginal fire, police, road, utility, administrative, infrastructure and financing costs allocated to the same campuses, recipients and FY2019-FY2023 period"
+      },
+      "derivation": {
+        "method": "allocation",
+        "model_version": "microsoft-boydton-last-resort-account-1.0.0",
+        "formula": "average annual same-scope public-service cost at break-even = $99,000,000 / 5 = $19,800,000 per fiscal year",
+        "input_claim_ids": [
+          "clm_study_msft_mecklenburg_property_tax_fy2019_2023"
+        ],
+        "input_source_ids": [
+          "src_study_msft_sova_impact_fy2019_2023"
+        ],
+        "assumptions": [
+          "The threshold is an identity, not an observed or estimated public cost.",
+          "The reported tax and hypothetical cost threshold use the same unallocated multi-campus portfolio scope.",
+          "Fund 301 components, grants, company payments and incentives are not subtracted because their periods, incidence and accounting scopes do not align."
+        ]
+      },
+      "limitations": [
+        "Actual marginal public-service cost is unobserved.",
+        "The tax input is rounded and not reconciled to government receipts.",
+        "The result cannot be assigned to the selected campus or individual tax recipients.",
+        "No positive or negative net fiscal result is asserted."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Conditional threshold only; equality marks break-even, costs below it would imply a positive margin, and costs above it a negative margin, but actual costs are unknown.",
+      "reviewed_on": "2026-09-06"
+    },
+    {
+      "estimate_id": "est_study_msft_boydton_identified_lvl_fund301_expenditure_fy2024",
+      "project_id": "prj_study_im3_campus_00675108684",
+      "metric_code": "study.modeled_identified_lvl_infrastructure_fund_expenditure",
+      "label": "Identified LVL/Herbert Fund 301 expenditure components, FY2024",
+      "category": "strategic_infrastructure",
+      "unit": "USD",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 1652847,
+      "period": {
+        "kind": "fiscal_year",
+        "year": 2024,
+        "label": "Mecklenburg County FY2024 actual identified LVL/Herbert components"
+      },
+      "scope": {
+        "level": "supporting_infrastructure",
+        "label": "Identified Microsoft Offsite Infrastructure Fund LVL/Herbert road, waterline, tank-farm and wastewater components",
+        "county_fips": "51117",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "point_estimate",
+        "low": 1652847,
+        "central": 1652847,
+        "high": 1652847,
+        "interpretation": "Exact sum of five cited same-fiscal-year line items; it is a partial identified-component total, not a bound on total infrastructure cost."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "msft_boydton_identified_lvl_fund301_expenditure_fy2024",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "lvl_tank_waterline",
+          "value": 19585,
+          "unit": "USD",
+          "provenance": {"kind": "claim", "reference_id": "clm_study_msft_lvl_tank_waterline_fy2024", "detail": "FY2024 LVL tank farm and waterline line item"},
+          "transformation": "Included once in the same-year identified-component sum"
+        },
+        {
+          "name": "lvl_wwtp_engineering",
+          "value": 83256,
+          "unit": "USD",
+          "provenance": {"kind": "claim", "reference_id": "clm_study_msft_lvl_wwtp_engineering_fy2024", "detail": "FY2024 LVL-to-Boydton WWTP engineering line item"},
+          "transformation": "Included once in the same-year identified-component sum"
+        },
+        {
+          "name": "lvl_wwtp_construction",
+          "value": 1499983,
+          "unit": "USD",
+          "provenance": {"kind": "claim", "reference_id": "clm_study_msft_lvl_wwtp_construction_fy2024", "detail": "FY2024 LVL-to-Boydton WWTP construction line item"},
+          "transformation": "Included once in the same-year identified-component sum"
+        },
+        {
+          "name": "route58_lvl_waterline",
+          "value": 33130,
+          "unit": "USD",
+          "provenance": {"kind": "claim", "reference_id": "clm_study_msft_lvl_route58_waterline_fy2024", "detail": "FY2024 Route 58-to-LVL campus waterline line item"},
+          "transformation": "Included once in the same-year identified-component sum"
+        },
+        {
+          "name": "highway58_herbert_drive",
+          "value": 16893,
+          "unit": "USD",
+          "provenance": {"kind": "claim", "reference_id": "clm_study_msft_herbert_drive_fy2024", "detail": "FY2024 Highway 58 and Herbert Drive line item"},
+          "transformation": "Included once in the same-year identified-component sum"
+        }
+      ],
+      "confidence": "medium",
+      "confidence_rationale": "The county's final-actual line items and arithmetic are exact, but the selected name filter does not establish completeness or campus allocation.",
+      "decision_relevance": "Summarizes the auditable scale of identified FY2024 LVL/Herbert supporting-infrastructure activity without treating the components as total project cost or public subsidy.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "not_applicable",
+        "remaining_evidence_gap": "Complete project ledger, invoices, funding incidence, campus allocation, accumulated prior-year cost and reconciliation to county financial statements"
+      },
+      "derivation": {
+        "method": "allocation",
+        "model_version": "microsoft-boydton-last-resort-account-1.0.0",
+        "formula": "$19,585 + $83,256 + $1,499,983 + $33,130 + $16,893 = $1,652,847",
+        "input_claim_ids": [
+          "clm_study_msft_lvl_tank_waterline_fy2024",
+          "clm_study_msft_lvl_wwtp_engineering_fy2024",
+          "clm_study_msft_lvl_wwtp_construction_fy2024",
+          "clm_study_msft_lvl_route58_waterline_fy2024",
+          "clm_study_msft_herbert_drive_fy2024"
+        ],
+        "input_source_ids": [
+          "src_study_econ_mecklenburg_2026"
+        ],
+        "assumptions": [
+          "The five named budget object lines are distinct FY2024 expenditure components and are each included once.",
+          "The result is explicitly partial and does not claim that every Fund 301 project serving LVL or Herbert Drive is named.",
+          "The components remain nested in the countywide Fund 301 total and are not added to it."
+        ]
+      },
+      "limitations": [
+        "The result is not a complete campus or infrastructure-project cost.",
+        "Supporting infrastructure may serve users beyond the selected campus.",
+        "Funding source and economic incidence are not established by expenditure classification.",
+        "No public subsidy, Microsoft operating expense or net fiscal result is implied."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Exact same-year component arithmetic only; never add to the already reported countywide Fund 301 expenditure total.",
+      "annual_series_key": "microsoft_boydton_identified_lvl_fund301_expenditure",
+      "reviewed_on": "2026-09-06"
+    },
+    {
+      "estimate_id": "est_study_msft_boydton_identified_lvl_fund301_expenditure_fy2025",
+      "project_id": "prj_study_im3_campus_00675108684",
+      "metric_code": "study.modeled_identified_lvl_infrastructure_fund_expenditure",
+      "label": "Identified LVL Fund 301 expenditure components, FY2025",
+      "category": "strategic_infrastructure",
+      "unit": "USD",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 619877,
+      "period": {
+        "kind": "fiscal_year",
+        "year": 2025,
+        "label": "Mecklenburg County FY2025 actual identified LVL components"
+      },
+      "scope": {
+        "level": "supporting_infrastructure",
+        "label": "Identified Microsoft Offsite Infrastructure Fund LVL waterline and wastewater components",
+        "county_fips": "51117",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "point_estimate",
+        "low": 619877,
+        "central": 619877,
+        "high": 619877,
+        "interpretation": "Exact sum of three cited same-fiscal-year line items; it is a partial identified-component total, not a bound on total infrastructure cost."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "msft_boydton_identified_lvl_fund301_expenditure_fy2025",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "lvl_wwtp_engineering",
+          "value": 66106,
+          "unit": "USD",
+          "provenance": {"kind": "claim", "reference_id": "clm_study_msft_lvl_wwtp_engineering_fy2025", "detail": "FY2025 LVL-to-Boydton WWTP engineering line item"},
+          "transformation": "Included once in the same-year identified-component sum"
+        },
+        {
+          "name": "lvl_wwtp_construction",
+          "value": 553371,
+          "unit": "USD",
+          "provenance": {"kind": "claim", "reference_id": "clm_study_msft_lvl_wwtp_construction_fy2025", "detail": "FY2025 LVL-to-Boydton WWTP construction line item"},
+          "transformation": "Included once in the same-year identified-component sum"
+        },
+        {
+          "name": "route58_lvl_waterline",
+          "value": 400,
+          "unit": "USD",
+          "provenance": {"kind": "claim", "reference_id": "clm_study_msft_lvl_route58_waterline_fy2025", "detail": "FY2025 Route 58-to-LVL campus waterline line item"},
+          "transformation": "Included once in the same-year identified-component sum"
+        }
+      ],
+      "confidence": "medium",
+      "confidence_rationale": "The county's final-actual line items and arithmetic are exact, but the selected name filter does not establish completeness or campus allocation.",
+      "decision_relevance": "Summarizes the auditable scale of identified FY2025 LVL supporting-infrastructure activity without treating the components as total project cost or public subsidy.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "not_applicable",
+        "remaining_evidence_gap": "Complete project ledger, invoices, funding incidence, campus allocation, accumulated prior-year cost and reconciliation to county financial statements"
+      },
+      "derivation": {
+        "method": "allocation",
+        "model_version": "microsoft-boydton-last-resort-account-1.0.0",
+        "formula": "$66,106 + $553,371 + $400 = $619,877",
+        "input_claim_ids": [
+          "clm_study_msft_lvl_wwtp_engineering_fy2025",
+          "clm_study_msft_lvl_wwtp_construction_fy2025",
+          "clm_study_msft_lvl_route58_waterline_fy2025"
+        ],
+        "input_source_ids": [
+          "src_study_mecklenburg_budget_fy2027"
+        ],
+        "assumptions": [
+          "The three named budget object lines are distinct FY2025 expenditure components and are each included once.",
+          "The result is explicitly partial and does not claim that every Fund 301 project serving LVL is named.",
+          "The components remain nested in the countywide Fund 301 total and are not added to it."
+        ]
+      },
+      "limitations": [
+        "The result is not a complete campus or infrastructure-project cost.",
+        "Supporting infrastructure may serve users beyond the selected campus.",
+        "Funding source and economic incidence are not established by expenditure classification.",
+        "No public subsidy, Microsoft operating expense or net fiscal result is implied."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Exact same-year component arithmetic only; never add to the already reported countywide Fund 301 expenditure total.",
+      "annual_series_key": "microsoft_boydton_identified_lvl_fund301_expenditure",
+      "reviewed_on": "2026-09-06"
+    }
+  ]
+}
