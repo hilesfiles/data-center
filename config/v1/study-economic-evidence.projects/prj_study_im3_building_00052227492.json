@@ -1,0 +1,366 @@
+{
+  "schema_version": "1.0.0",
+  "project_id": "prj_study_im3_building_00052227492",
+  "reviewed_on": "2026-09-06",
+  "scope_note": "Second-pass public-evidence audit for Flexential's Minneapolis-Chaska data center on parcel 30.0590020 at 3500 Lyman Boulevard. The review covered Carver County parcel, tax, hazard-planning and property-record access points; City of Chaska permit, agenda, archive, budget, utility and financial-report sources; Minnesota DEED, Revenue, statutory, environmental and utility-regulatory sources; current and archived operator, predecessor, career and ESG materials; contractor and supplier references; and recipient-reported community sources for 2013-2026. Seven quantitative observations are added: a source-projected original investment lower bound, one later permit value, current floor area and critical-load UPS capacity, and three annual parcel-tax payments. Stream's facilities at 1706 and 1708 West Creek Lane, the IP Stream Minneapolis LLC development agreement and its municipal rebates are outside the selected 3500 Lyman Boulevard project boundary and are not duplicated in this fragment; the base evidence rows require orchestrator reconciliation because project fragments are append-only. The parcel-tax series includes all taxing jurisdictions and special assessments, not City-only receipts or net benefit. No synthesis fragment is added because direct observations and even a usable project projection were not found for construction labor, realized operating employment or payroll, supplier payments, metered energy or water, emissions, facility-specific incentive value, public-service costs, community transfers, or a causal county effect.",
+  "sources": [
+    {
+      "source_id": "src_study_flexential_chaska_current_2026",
+      "title": "Minneapolis - Chaska Data Center & Colocation",
+      "url": "https://www.flexential.com/data-centers/mn/minneapolis/chaska-data-center",
+      "publisher": "Flexential",
+      "source_type": "operator_release",
+      "publication_date": {"precision": "unknown"},
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_page",
+      "notes": "Current operator facility page reports 9 MW of critical-load UPS capacity, a 1.4 PUE rating, 1,500 watts per square foot, N+1 cooling and 24/7 support. It does not publish annual metered electricity, peak demand, water, wastewater, emissions, occupancy, headcount, payroll, revenue or operating cost. Capacity is transcribed as an operating-scale stock, not usage or economic output."
+    },
+    {
+      "source_id": "src_study_flexential_data_center_directory_2026",
+      "title": "Flexential colocation data centers and data center map",
+      "url": "https://www.flexential.com/data-centers",
+      "publisher": "Flexential",
+      "source_type": "operator_release",
+      "publication_date": {"precision": "unknown"},
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_page",
+      "notes": "Current operator directory card for Minneapolis-Chaska reports 160,838 square feet and 9 MW. Floor area is used as a current operating footprint, not original conversion area, raised floor, occupied customer space or taxable area."
+    },
+    {
+      "source_id": "src_study_chaska_viawest_city_bulletin_2013",
+      "title": "Chaska City Hall Bulletin: ViaWest conversion of former Entegris headquarters",
+      "url": "https://www.chaskamn.gov/Archive/ViewFile/Item/74",
+      "publisher": "City of Chaska, Minnesota",
+      "source_type": "local_government_record",
+      "publication_date": {"precision": "year", "year": 2013},
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_pdf_text",
+      "notes": "City bulletin says ViaWest purchased the former Entegris headquarters at the northwest corner of Lyman Boulevard and Highway 41 and began converting the 120,000-square-foot building. The same bulletin separately describes Stream's planned data center, supporting a boundary distinction rather than an ownership link. The bulletin does not report realized investment, jobs, payroll, utility use or incentives."
+    },
+    {
+      "source_id": "src_study_viawest_chaska_opening_2014",
+      "title": "ViaWest Announces Opening of Minneapolis Data Center",
+      "url": "https://newswire.telecomramblings.com/2014/04/viawest-announces-opening-minneapolis-data-center/",
+      "publisher": "ViaWest, Inc. (reproduced by Telecom Ramblings)",
+      "source_type": "operator_release",
+      "publication_date": {"precision": "day", "date": "2014-04-09"},
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_page",
+      "notes": "Reproduced ViaWest opening release reports more than 70,000 square feet of raised floor, 9 MW, and an April 2014 opening. A Minnesota DEED commissioner is quoted saying the facility 'will mean' more than $60 million in new private investment; that future-tense statement is retained only as a source projection and not treated as realized cost. The release does not provide invoices, a completion-cost ledger, realized jobs, payroll, tax receipts or utility consumption."
+    },
+    {
+      "source_id": "src_study_stream_minneapolis_site_history_2026",
+      "title": "Stream Data Centers Minneapolis market development history",
+      "url": "https://www.streamdatacenters.com/locations/minneapolis/",
+      "publisher": "Stream Data Centers",
+      "source_type": "operator_release",
+      "publication_date": {"precision": "unknown"},
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_page",
+      "notes": "Current operator history places Minneapolis I at 1708 West Creek Lane and Minneapolis II at 1706 West Creek Lane. It reports Minneapolis I completed in June 2014 and sold in January 2024. These addresses are distinct from Flexential's 3500 Lyman Boulevard parcel, so Stream capital, capacity, developer rebates and later ownership are not assigned to this project."
+    },
+    {
+      "source_id": "src_study_flexential_rebrand_2018",
+      "title": "Peak 10 + ViaWest Rebrands as Flexential",
+      "url": "https://www.flexential.com/resources/press-release/peak-10-viawest-rebrands-flexential-bolster-leading-hybrid-it-market",
+      "publisher": "Flexential",
+      "source_type": "operator_release",
+      "publication_date": {"precision": "day", "date": "2018-01-18"},
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_page",
+      "notes": "Official release says Peak 10 and ViaWest completed their combination in August 2017 and adopted the Flexential name in January 2018. It supports operator-name continuity only and provides no Chaska-specific investment, employment, revenue, operating cost or community amount."
+    },
+    {
+      "source_id": "src_study_carver_flexential_parcel_tax_2026",
+      "title": "Carver County Property Information, parcel 30.0590020",
+      "url": "https://publicaccess.carvercountymn.gov/search/commonsearch.aspx?mode=combined",
+      "publisher": "Carver County, Minnesota",
+      "source_type": "assessor_record",
+      "publication_date": {"precision": "unknown"},
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_page",
+      "notes": "Interactive parcel query for 300590020 identifies FLEXENTIAL LLC, 3500 Lyman Boulevard, 33.03 deeded acres, industrial class 234, active non-homestead status and no TIF project. Payment detail shows two $267,190 payments in 2023, two $275,727 payments in 2024 and two $291,203 payments in 2025. The 2026 account shows a $632,906 bill and only the first $316,453 installment paid by the review date, so no full-year 2026 payment is recorded. Annual totals include special assessments and span county, city, state, school and special-district components; they are not City-only receipts, taxpayer-incidence findings or net community benefit."
+    },
+    {
+      "source_id": "src_study_chaska_flexential_phase5_permit_2025",
+      "title": "City of Chaska permit B24-1109, Flexential Phase 5 Refresh",
+      "url": "https://ci-chaska-mn.smartgovcommunity.com/PermittingPublic/PermitLandingPagePublic/Index/e5da3e8d-27e5-49c5-8ee5-b21800f32ce5",
+      "publisher": "City of Chaska, Minnesota",
+      "source_type": "local_government_record",
+      "publication_date": {"precision": "day", "date": "2025-01-23"},
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_page",
+      "notes": "Official SmartGov record identifies a commercial alteration at 3500 Lyman Boulevard described as 'Phase 5 Refresh - Alteration to Existing Building.' It reports estimated value including labor of $5,861,872, issued status on January 23, 2025, an unclosed permit with January 31, 2027 expiration, and PCL Construction Services Inc. as primary contractor. The amount is an administrative permit estimate, not audited spending, payroll, local purchasing, payment to PCL or proof of completion. Public portal history begins in 2022; older permits require a City data request."
+    },
+    {
+      "source_id": "src_study_pcl_flexential_chaska_expansion_2021",
+      "title": "Flexential Data Center Expansion",
+      "url": "https://www.pcl.com/us/en/our-work/flexential-data-center-expansion",
+      "publisher": "PCL Construction",
+      "source_type": "other",
+      "publication_date": {"precision": "unknown"},
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_page",
+      "notes": "Contractor case study says PCL completed a tenant-driven expansion at the existing Chaska data center on June 30, 2021, involving an exterior mechanical yard, dry coolers, CRACs, generators, switchgear, raised floor, ceiling plenum and tenant office. It provides no contract value, paid amount, workforce, payroll, worker residence, local supplier share, power increment or water increment, so it supports chronology and supplier identity only."
+    },
+    {
+      "source_id": "src_study_minnesota_deed_data_center_list_2026",
+      "title": "Data Center Sales Tax Refund Projects",
+      "url": "https://mn.gov/deed/assets/data-center-project-list_tcm1045-531119.pdf",
+      "publisher": "Minnesota Department of Employment and Economic Development",
+      "source_type": "state_record",
+      "publication_date": {"precision": "day", "date": "2026-07-15"},
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_pdf_text",
+      "notes": "Current state list separately identifies certified ViaWest Data Center - Chaska, Stream / IP Stream Minneapolis LLC and Stream II / IP Stream Minneapolis II LLC projects. Certification establishes program status but not refund value, qualifying-purchase amount, benefit recipient, claim date, clawback, compliance result or public expenditure. No facility-specific claim amount is published in the list."
+    },
+    {
+      "source_id": "src_study_chaska_utility_budget_2014_viawest",
+      "title": "City of Chaska 2014 Annual Budget Message",
+      "url": "https://www.chaskamn.gov/DocumentCenter/View/102/Annual-Budget-Message?bidId=",
+      "publisher": "City of Chaska, Minnesota",
+      "source_type": "local_government_record",
+      "publication_date": {"precision": "year", "year": 2014},
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_pdf_text",
+      "notes": "The municipal electric budget anticipated commercial and industrial sales growth from multiple new large users, naming ViaWest, Stream, a medical-center addition, Beckman Coulter and residential growth together. City-wide Electric Fund revenue and sales cannot be allocated to ViaWest or converted into facility load, annual consumption, utility margin, infrastructure cost or local fiscal benefit."
+    },
+    {
+      "source_id": "src_study_flexential_careers_chaska_search_2026",
+      "title": "Flexential careers and current openings",
+      "url": "https://www.flexential.com/careers",
+      "publisher": "Flexential",
+      "source_type": "operator_release",
+      "publication_date": {"precision": "unknown"},
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_page",
+      "notes": "Current careers and linked Workday openings were searched for Chaska and Minnesota. A Chaska data-center technician vacancy describes a role but does not measure filled facility headcount, FTEs, wages, payroll, employee residence, annual hiring or customer employment; no workforce claim is created."
+    },
+    {
+      "source_id": "src_study_flexential_esg_2025_fleet_search_2026",
+      "title": "Flexential's 2025 ESG Report Details Progress in Sustainable Data Center Operations",
+      "url": "https://www.flexential.com/resources/press-release/flexentials-2025-esg-report-details-progress-sustainable-data-center",
+      "publisher": "Flexential",
+      "source_type": "operator_release",
+      "publication_date": {"precision": "day", "date": "2026-07-08"},
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_page",
+      "notes": "Company ESG release reports fleet-wide renewable-energy and closed-loop cooling measures. It does not disclose a Chaska-specific renewable share, electricity or water volume, wastewater, emissions, avoided cost, community contribution or monetized environmental effect, so fleet totals are not allocated to this facility."
+    },
+    {
+      "source_id": "src_study_carver_hazard_plan_viawest_2019",
+      "title": "Carver County Multi-Hazard Mitigation Plan",
+      "url": "https://www.carvercountymn.gov/home/showpublisheddocument/24132/638058521202570000",
+      "publisher": "Carver County, Minnesota",
+      "source_type": "local_government_record",
+      "publication_date": {"precision": "year", "year": 2019},
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_pdf_text",
+      "notes": "County plan lists ViaWest, Inc. at 3500 Lyman Boulevard in its chemical and hazardous-materials inventory. It supplies address and environmental-review context but no chemical quantity, release, emissions, generator runtime, public-response cost or monetized externality."
+    }
+  ],
+  "records": [
+    {
+      "claim_id": "clm_study_flexential_chaska_investment_projection_2014",
+      "project_id": "prj_study_im3_building_00052227492",
+      "metric_code": "study.campus_investment_projection",
+      "value": 60000000,
+      "value_qualifier": "greater_than",
+      "basis": "source_projection",
+      "period": {"kind": "projection_horizon", "report_date": "2014-04-09", "label": "Opening-day statement about expected private investment; realization horizon unspecified"},
+      "scope": {
+        "level": "campus",
+        "label": "ViaWest adaptive-reuse data center at 3500 Lyman Boulevard, now Flexential Minneapolis-Chaska",
+        "county_fips": "27019",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_viawest_chaska_opening_2014",
+      "source_locator": "Opening announcement, Minnesota DEED commissioner quotation",
+      "notes": "The state commissioner quoted in ViaWest's release said the facility would mean more than $60 million in new private investment. Future-tense wording makes this a source projection and lower bound, not a reported actual, audited completion cost, annual spending flow, tax base, supplier payment or causal benefit. No realization record was found.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06"
+    },
+    {
+      "claim_id": "clm_study_flexential_chaska_permit_b24_1109",
+      "project_id": "prj_study_im3_building_00052227492",
+      "metric_code": "study.permitted_construction_value",
+      "value": 5861872,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {"kind": "calendar_year", "year": 2025, "label": "Permit B24-1109 issued January 23, 2025"},
+      "scope": {
+        "level": "campus",
+        "label": "Flexential Phase 5 Refresh alteration at parcel 30.0590020, 3500 Lyman Boulevard",
+        "county_fips": "27019",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_chaska_flexential_phase5_permit_2025",
+      "source_locator": "Permit details, estimated value including labor, work description, status and contractors",
+      "notes": "The exact portal amount is an administrative estimated value including labor for a later Phase 5 alteration. It is not original 2013-2014 conversion cost, audited expenditure, local supplier spending, payroll, paid contract value or proof of completion; the permit was not closed at review.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06"
+    },
+    {
+      "claim_id": "clm_study_flexential_chaska_floor_area_2026",
+      "project_id": "prj_study_im3_building_00052227492",
+      "metric_code": "study.operating_property_floor_area",
+      "value": 160838,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {"kind": "reported_snapshot", "report_date": "2026-09-06", "label": "Current operator facility-directory snapshot reviewed September 6, 2026"},
+      "scope": {
+        "level": "campus",
+        "label": "Flexential Minneapolis-Chaska data-center footprint at 3500 Lyman Boulevard",
+        "county_fips": "27019",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_flexential_data_center_directory_2026",
+      "source_locator": "Minneapolis-Chaska facility card, square-foot field",
+      "notes": "The current 160,838-square-foot footprint is an operating-scale stock after expansions, not the original conversion area, raised-floor area, occupied customer space, taxable area, construction spending or economic output.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06"
+    },
+    {
+      "claim_id": "clm_study_flexential_chaska_power_capacity_2026",
+      "project_id": "prj_study_im3_building_00052227492",
+      "metric_code": "study.operating_power_capacity",
+      "value": 9,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {"kind": "reported_snapshot", "report_date": "2026-09-06", "label": "Current operator facility-page snapshot reviewed September 6, 2026"},
+      "scope": {
+        "level": "campus",
+        "label": "Flexential Minneapolis-Chaska critical-load UPS capacity at 3500 Lyman Boulevard",
+        "county_fips": "27019",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_flexential_chaska_current_2026",
+      "source_locator": "Power section, critical load UPS capacity",
+      "notes": "The 9 MW figure is critical-load UPS capacity, not measured demand, utility-service capacity, generator capacity, annual electricity consumption, occupied capacity, output, emissions or a monetary contribution.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06"
+    },
+    {
+      "claim_id": "clm_study_flexential_chaska_property_taxes_paid_2023",
+      "project_id": "prj_study_im3_building_00052227492",
+      "metric_code": "study.property_taxes_paid",
+      "value": 534380,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {"kind": "tax_year", "year": 2023, "label": "Carver County payable year 2023, two installments paid"},
+      "scope": {
+        "level": "campus",
+        "label": "Flexential LLC real-property parcel 30.0590020 at 3500 Lyman Boulevard, all taxing jurisdictions and special assessments",
+        "county_fips": "27019",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_carver_flexential_parcel_tax_2026",
+      "source_locator": "Payment History and Payment Details, payable year 2023",
+      "notes": "The total is the sum of two exact $267,190 parcel-account payments. It includes special assessments and overlapping county, city, state, school and special-district components; it is not City-only revenue, a tax-incidence result, incentive value or net fiscal benefit.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "annual_series_key": "flexential_chaska_parcel_property_taxes_paid"
+    },
+    {
+      "claim_id": "clm_study_flexential_chaska_property_taxes_paid_2024",
+      "project_id": "prj_study_im3_building_00052227492",
+      "metric_code": "study.property_taxes_paid",
+      "value": 551454,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {"kind": "tax_year", "year": 2024, "label": "Carver County payable year 2024, two installments paid"},
+      "scope": {
+        "level": "campus",
+        "label": "Flexential LLC real-property parcel 30.0590020 at 3500 Lyman Boulevard, all taxing jurisdictions and special assessments",
+        "county_fips": "27019",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_carver_flexential_parcel_tax_2026",
+      "source_locator": "Payment History and Payment Details, payable year 2024",
+      "notes": "The total is the sum of two exact $275,727 parcel-account payments. It includes special assessments and overlapping county, city, state, school and special-district components; it is not City-only revenue, a tax-incidence result, incentive value or net fiscal benefit.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "annual_series_key": "flexential_chaska_parcel_property_taxes_paid"
+    },
+    {
+      "claim_id": "clm_study_flexential_chaska_property_taxes_paid_2025",
+      "project_id": "prj_study_im3_building_00052227492",
+      "metric_code": "study.property_taxes_paid",
+      "value": 582406,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {"kind": "tax_year", "year": 2025, "label": "Carver County payable year 2025, two installments paid"},
+      "scope": {
+        "level": "campus",
+        "label": "Flexential LLC real-property parcel 30.0590020 at 3500 Lyman Boulevard, all taxing jurisdictions and special assessments",
+        "county_fips": "27019",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_carver_flexential_parcel_tax_2026",
+      "source_locator": "Payment History and Payment Details, payable year 2025",
+      "notes": "The total is the sum of two exact $291,203 parcel-account payments. It includes special assessments and overlapping county, city, state, school and special-district components; it is not City-only revenue, a tax-incidence result, incentive value or net fiscal benefit. The separate first 2026 installment is not promoted to a full-year amount.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "annual_series_key": "flexential_chaska_parcel_property_taxes_paid"
+    }
+  ],
+  "project_updates": [
+    {
+      "project_id": "prj_study_im3_building_00052227492",
+      "source_id": "src_study_chaska_viawest_city_bulletin_2013",
+      "as_of": "2026-09-06",
+      "title": "Investment audit and project boundary correction",
+      "notes": "Source families checked: City development bulletins, agendas and archives; ViaWest and Flexential releases; Stream site history; contemporary trade and local-business coverage; assessor ownership; and current operator materials for 2013-2026. Queries used ViaWest, Flexential, Stream, 3500 Lyman, 1706 and 1708 West Creek, Entegris, and parcel 30.0590020. City evidence places ViaWest's adaptive reuse at the former Entegris headquarters, 3500 Lyman Boulevard, while Stream identifies separate facilities at 1706 and 1708 West Creek Lane. The opening release supports only a greater-than-$60 million source projection, not realized investment. No acquisition price, final conversion cost, audited capital ledger or annual facility capital series was located in the reviewed public sources; this establishes an evidence gap, not that no additional investment occurred. Append-only fragments cannot delete the six existing base IP Stream rebate claims, so their removal or reassignment remains an explicit orchestrator reconciliation item.",
+      "project_description": "Flexential's Minneapolis-Chaska facility is a single adaptive-reuse colocation data center operated by Flexential on parcel 30.0590020 at 3500 Lyman Boulevard in Chaska, Carver County, Minnesota. ViaWest acquired the former Entegris headquarters in 2013, renovated it, and opened more than 70,000 square feet of raised floor in April 2014; Peak 10 combined with ViaWest in 2017 and the business adopted the Flexential name in 2018. The current operator reports a 160,838-square-foot footprint and 9 MW of critical-load UPS capacity; later tenant-driven expansion and Phase 5 work at this parcel are separate from the original conversion, and Stream's 1708 West Creek Lane facility is outside this project boundary."
+    },
+    {
+      "project_id": "prj_study_im3_building_00052227492",
+      "source_id": "src_study_chaska_flexential_phase5_permit_2025",
+      "as_of": "2026-09-06",
+      "title": "Construction audit finds one later permit value",
+      "notes": "Source families checked: City SmartGov parcel and application records, permit and inspection access points, City archives and agendas, contractor case studies, operator expansion materials and contemporary construction coverage. Queries used 3500 Lyman, ViaWest, Flexential, B24-1109, Phase 5, expansion, and PCL. B24-1109 directly supports a $5,861,872 estimated value including labor for the later Phase 5 Refresh and names PCL; PCL separately dates a tenant-driven expansion to June 30, 2021 without a value. The permit remained unclosed at review and is not treated as paid cost, construction payroll, worker count, job-years, completion or original facility investment. SmartGov exposes 2022-present history; original conversion permits require a City data request and were not publicly retrievable. That access limit establishes only that older public-portal evidence was unavailable, not that permits, workers or spending did not exist."
+    },
+    {
+      "project_id": "prj_study_im3_building_00052227492",
+      "source_id": "src_study_pcl_flexential_chaska_expansion_2021",
+      "as_of": "2026-09-06",
+      "title": "Supplier audit preserves payment and locality gaps",
+      "notes": "Source families checked: PCL project records, permit contractor rosters, operator vendor references, trade coverage, City procurement and agenda searches, and exact-address web and archive searches. Queries used 3500 Lyman, Flexential Chaska, ViaWest Chaska, PCL, contractor, supplier, vendor, subcontractor, procurement and payment. PCL is directly identified for the 2021 expansion and as primary contractor on B24-1109, but no contract payment, subcontractor ledger, procurement total, vendor location, local-retention share, certified payroll or worker-residence record was located. This negative result establishes a public supplier-payment gap, not that no subcontracting, procurement or local spending occurred. Equipment lists and contractor identity are not converted into supplier spending, indirect jobs, payroll or multiplier effects."
+    },
+    {
+      "project_id": "prj_study_im3_building_00052227492",
+      "source_id": "src_study_flexential_chaska_current_2026",
+      "as_of": "2026-09-06",
+      "title": "Operations audit adds scale but not employment",
+      "notes": "Source families checked: current and archived Flexential and ViaWest facility pages, opening and rebrand releases, careers and Workday postings, corporate reports, City employer tables and local-business coverage. Queries used Flexential Chaska, ViaWest Chaska, 3500 Lyman, Data Center Technician, employees, jobs, headcount, wages, payroll, careers, revenue and occupancy. Current operator materials support 160,838 square feet and 9 MW of critical-load UPS capacity, while predecessor and rebrand records support operating continuity. A Chaska vacancy and generic 24/7 staffing language do not disclose filled site FTE, headcount, wages, payroll, residence, customers, occupancy, revenue or operating expenditure. No operating labor or output projection suitable for preservation was located; this is a public-evidence gap, not proof that the facility has no workers, customers or revenue."
+    },
+    {
+      "project_id": "prj_study_im3_building_00052227492",
+      "source_id": "src_study_carver_flexential_parcel_tax_2026",
+      "as_of": "2026-09-06",
+      "title": "Fiscal audit verifies parcel payments and current owner",
+      "notes": "Source families checked: Carver County parcel, assessment, tax-statement and payment portals; City annual financial reports and budgets; taxpayer tables; and exact owner, parcel and address searches. Queries used 300590020, 30.0590020, FLEXENTIAL LLC, Via West Inc and 3500 Lyman Boulevard. Parcel 30.0590020 directly links Flexential LLC to the address and supports exact paid totals of $534,380 in 2023, $551,454 in 2024 and $582,406 in 2025. The 2026 portal showed only one $316,453 installment paid against a $632,906 bill, so no annual 2026 payment is entered. Payments include all taxing jurisdictions and special assessments; no recipient-level distribution, marginal service cost, tax incidence, increment attributable to the project or net fiscal result was located. Those unresolved items are evidence gaps, not proof that no jurisdiction received revenue or incurred cost."
+    },
+    {
+      "project_id": "prj_study_im3_building_00052227492",
+      "source_id": "src_study_minnesota_deed_data_center_list_2026",
+      "as_of": "2026-09-06",
+      "title": "Public-cost audit separates ViaWest certification from Stream rebates",
+      "notes": "Source families checked: Minnesota DEED certification lists and program summaries, Department of Revenue refund guidance, governing statute, City tax-abatement notes, parcel TIF status, development-agreement archives and state/local financial reports. Queries used ViaWest Data Center - Chaska, Flexential, IP Stream Minneapolis, qualified data center, sales tax refund, tax abatement, TIF, 3500 Lyman and parcel 30.0590020. DEED separately lists certified ViaWest, Stream and Stream II projects, and the Flexential parcel reports no TIF project. Certification does not disclose the ViaWest/Flexential refund or exemption value, claim date, qualifying purchases, recipient allocation, compliance, clawback or disbursement. The City reports IP Stream rebates for a different West Creek project; no Flexential-specific local payment, infrastructure subsidy, public-service cost or net public cost was located. This proves only that reviewed public disclosures did not quantify those items, not that no exemption, service cost or public support existed."
+    },
+    {
+      "project_id": "prj_study_im3_building_00052227492",
+      "source_id": "src_study_chaska_utility_budget_2014_viawest",
+      "as_of": "2026-09-06",
+      "title": "Resource audit finds capacity but no meter-level use",
+      "notes": "Source families checked: Chaska electric, water, sewer, budget, rate and utility-billing sources; Minnesota PUC, MPCA and statutory sources; Carver hazard planning; operator facility and ESG materials; and exact-address environmental searches. Queries used ViaWest, Flexential, 3500 Lyman, parcel 30.0590020, electricity, demand, meter, water, sewer, wastewater, generator, air permit, emissions, PUE and WUE. Operator pages report 9 MW critical-load UPS capacity and a 1.4 PUE rating, while the 2014 City budget aggregates ViaWest with several new large users. No facility meter, annual kWh, peak demand, bill, PUE measurement series, water withdrawal or consumption, reuse, wastewater, generator runtime, fuel, actual emissions, utility-infrastructure cost or monetized environmental effect was located. The negative search establishes non-disclosure in the reviewed sources, not absence of resource use or environmental effects. Fleet-wide renewable and closed-loop cooling figures are not allocated to Chaska."
+    },
+    {
+      "project_id": "prj_study_im3_building_00052227492",
+      "source_id": "src_study_flexential_esg_2025_fleet_search_2026",
+      "as_of": "2026-09-06",
+      "title": "Community audit finds no quantified site transfer",
+      "notes": "Source families checked: Flexential and ViaWest ESG, news and community materials; City and Carver County agendas and archives; local nonprofit, education and workforce references; recipient-site searches; and exact-address searches. Queries used Flexential Chaska, ViaWest Chaska, 3500 Lyman, grant, donation, gift, sponsorship, nonprofit, school, workforce and community benefit. No recipient-reported cash or in-kind transfer, community-benefit agreement, workforce-program payment, annual contribution, local procurement pledge or facility-attributable community value was located. This establishes a public documentation gap, not that no community activity occurred. Fleet-wide ESG initiatives and qualitative local engagement are not assigned to this parcel or monetized."
+    }
+  ]
+}
