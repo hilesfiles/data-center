@@ -70,6 +70,20 @@ def model_completeness(records, modeled):
     }
 
 
+def project_description(evidence, project_id, complete):
+    """Return the single source-backed public description for a project."""
+    descriptions = {
+        update["project_description"].strip()
+        for update in evidence.get("project_updates", [])
+        if update["project_id"] == project_id and update.get("project_description", "").strip()
+    }
+    if len(descriptions) > 1:
+        raise ValueError(f"Conflicting project descriptions for {project_id}")
+    if complete and not descriptions:
+        raise ValueError(f"Full modeled account requires a project description: {project_id}")
+    return next(iter(descriptions), None)
+
+
 def read(path):
     return json.loads(path.read_text(encoding="utf-8"))
 
@@ -137,6 +151,9 @@ def build_products(config, inventory, panels, generated_at, evidence=None, synth
         records = economic_by_project[row["project_id"]]
         modeled = modeled_by_project[row["project_id"]]
         completeness = model_completeness(records, modeled)
+        description = project_description(
+            evidence, row["project_id"], completeness["status"] == "full_modeled_account"
+        )
         summary = {
             "project_id": row["project_id"], "name": row["study_label"],
             "inventory_entity_id": target["entity_id"], "inventory_entity_type": target["entity_type"],
@@ -171,7 +188,9 @@ def build_products(config, inventory, panels, generated_at, evidence=None, synth
                 "date_note": "This is a stored historical observation. Completion, grand opening, lease and operating-by dates are not automatically commissioning dates. Campus timing does not date every building.",
             },
             "sources": sources,
-            "research_updates": [{**u, "source": next(s for s in evidence["sources"] if s["source_id"] == u["source_id"])}
+            "research_updates": [{
+                                 **{key: value for key, value in u.items() if key != "project_description"},
+                                 "source": next(s for s in evidence["sources"] if s["source_id"] == u["source_id"])}
                                  for u in evidence.get("project_updates", []) if u["project_id"] == row["project_id"]],
             "evidence_gaps": [{"code": code, "label": label, "status": category_coverage(records, code), "needed": needed} for code, label, needed in GAPS],
             "economic_records": records,
@@ -191,6 +210,8 @@ def build_products(config, inventory, panels, generated_at, evidence=None, synth
             "legacy_first_entry_note": row.get("existing_first_entry_rationale"),
             "scope_note": "Provisional private-sector research candidate. Owner/operator history, project boundaries and lifecycle require review. Membership does not verify current operation or establish economic impact.",
         }
+        if description:
+            detail["project_description"] = description
         entities.append({
             "schema_version": "1.0.0", "project_id": row["project_id"], "canonical_name": row["study_label"],
             "project_type": "unknown", "current_status": "unknown",

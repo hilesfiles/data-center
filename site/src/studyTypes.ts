@@ -61,6 +61,7 @@ export interface StudyProject extends StudyProjectSummary {
   generated_at: string;
   inventory_name: string;
   research_value: string;
+  project_description?: string;
   history: { description: string; anchor: { date?: string; year?: number; precision: string } | null; date_note: string };
   sources: { source_id: string; title: string; url: string }[];
   evidence_gaps: { code: string; label: string; status: "not_yet_collected" | "partial" | "projections_only"; needed: string }[];
