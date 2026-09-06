@@ -4,6 +4,19 @@
   "generated_at": "2026-09-06T22:31:00+00:00",
   "queue_status": "batch_6_in_progress",
   "ranking_method": "Descending covered contribution-account category count, then descending sourced economic-record count, then ascending project_id.",
+  "worker_research_contract": {
+    "version": "2.0.0",
+    "path": "docs/project-worker-research-contract.md",
+    "effective_batch": 6,
+    "required_phases": [
+      "direct_evidence_discovery",
+      "gap_closure",
+      "handoff_ready",
+      "independent_orchestrator_acceptance"
+    ],
+    "modeling_gate": "metric_specific_search_exhaustion_required",
+    "completion_rule": "A worker commit is a handoff candidate; only an independently audited handoff may be reconciled or published."
+  },
   "baseline": {
     "projects": 36,
     "counties": 35,

@@ -10,8 +10,14 @@ The release builder merges fragments in project-ID order and validates the combi
 payload with the existing economic-evidence contract. Workers must not edit the base
 file or generated aggregate outputs.
 
+Every worker must follow the mandatory two-pass discovery, gap-closure, evidence-matrix,
+and independent-acceptance process in
+[`docs/project-worker-research-contract.md`](../../../docs/project-worker-research-contract.md).
+Schema or test success does not establish research completeness, and a worker commit is
+only a handoff candidate until the orchestrator audits and accepts it.
+
 Before residual-gap modeling, a worker must use `project_updates` to leave an
-auditable direct-evidence search trail. The updates should identify the official
+auditable direct-evidence search trail. The updates must identify the official
 source families and portals searched, useful record or query identifiers, the review
 date or date range, the categories addressed, and material negative findings. Search
 the relevant local tax/assessor, permit/planning, incentive/compliance, utility and
