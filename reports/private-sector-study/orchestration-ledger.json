@@ -17,6 +17,28 @@
     "modeling_gate": "metric_specific_search_exhaustion_required",
     "completion_rule": "A worker commit is a handoff candidate; only an independently audited handoff may be reconciled or published."
   },
+  "corrective_model_eligibility_queue": {
+    "status": "required_after_batch_6_before_batch_7",
+    "reason": "These published projects are marked account_research_complete but analytically incomplete and have zero modeled syntheses. Each requires a dedicated last-resort, candidate-by-candidate modeling audit under worker-research-contract 2.0.0; a model may be retained only when defensible, and every rejection must be documented rather than asserted as a blanket conclusion.",
+    "batches": [
+      {
+        "batch": "corrective_model_a",
+        "project_ids": [
+          "prj_study_im3_building_01024051963",
+          "prj_study_im3_building_00598261190",
+          "prj_study_im3_building_00172739953"
+        ]
+      },
+      {
+        "batch": "corrective_model_b",
+        "project_ids": [
+          "prj_study_im3_building_00052227492",
+          "prj_study_im3_building_00214321737",
+          "prj_study_im3_building_00626785488"
+        ]
+      }
+    ]
+  },
   "baseline": {
     "projects": 36,
     "counties": 35,
