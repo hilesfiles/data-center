@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "project_id": "prj_study_im3_building_00464097467",
   "reviewed_on": "2026-09-06",
-  "scope_note": "Modeled contribution account for the Apple Washoe County campus and its 2024 expansion. The construction base uses only the packet's explicit $163 million construction-cost schedule and excludes the separate $742,071,428 equipment forecast and the broad historical audit capital total. Campus observations and forecasts remain unallocated to the selected building. Same-region construction coefficients transfer only the direct channel from a public Washoe/Storey IMPLAN analysis; no Switch Citadel observation or model input is included. Fiscal evidence remains a source forecast because no same-period recipient-level receipts or marginal public-service costs were verified, so this fragment publishes no net-fiscal value or public-service-cost break-even. County GDP, employment, and wage gaps are descriptive benchmark applications with fit-sensitivity intervals and no causal-design metadata.",
+  "scope_note": "Second-pass modeled contribution account after an expanded public-evidence audit. Direct county permits now cover historical construction values, assessor rolls cover a main-campus parcel stock, a county action covers water-right capacity, Apple reports 2025 campus electricity use, and recipient reports bound two community gifts. Those observations supersede the need for a modeled community proxy but do not supply Apple contractor job-years, construction payroll, annual operating payroll, supplier payments, taxes received, or public-service cost. The construction base therefore retains only the packet's explicit $163 million construction forecast and excludes equipment and historical capital; wide 0.5-1.5 transfer sensitivities expose the mismatch in the last-resort direct construction coefficients. The unsupported local-purchase-share and Virginia induced-output models are removed. No net-fiscal value or public-service-cost break-even is published. County outcome gaps remain descriptive benchmark applications with fit-sensitivity intervals and no causal-design metadata.",
   "sources": [],
   "estimates": [
     {
@@ -90,9 +90,9 @@
       "confidence_rationale": "The source schedule explicitly labels construction cost, but it is an application forecast with unanchored application years and no audited expenditure.",
       "decision_relevance": "Defines the expansion construction base without applying construction coefficients to IT equipment or broad historical capital.",
       "evidence_search": {
-        "direct_observation_status": "not_found",
+        "direct_observation_status": "partial",
         "source_projection_status": "available_separately",
-        "remaining_evidence_gap": "Actual annual construction expenditures, soft costs, phase dates, change orders, and allocation among the four campus buildings"
+        "remaining_evidence_gap": "Historical permit values are available, but actual 2024-expansion expenditures, soft costs, phase dates, change orders, and allocation among the four campus buildings remain unavailable"
       },
       "derivation": {
         "method": "benchmark_application",
@@ -121,117 +121,6 @@
       "reviewed_on": "2026-09-06"
     },
     {
-      "estimate_id": "est_study_apple_washoe_local_construction_spending",
-      "project_id": "prj_study_im3_building_00464097467",
-      "metric_code": "study.modeled_local_construction_spending",
-      "label": "Modeled locally retained construction spending",
-      "category": "suppliers",
-      "unit": "USD",
-      "measure_type": "flow",
-      "basis": "modeled_synthesis",
-      "value": 65200000,
-      "period": {
-        "kind": "projection_horizon",
-        "report_date": "2024-07-25",
-        "horizon_years": 3,
-        "label": "Application Years 1-3; calendar phase dates are not disclosed"
-      },
-      "scope": {
-        "level": "company_county",
-        "label": "Washoe County supplier-retention sensitivity for Apple expansion construction",
-        "county_fips": "32031",
-        "inventory_allocation": "unallocated"
-      },
-      "interval": {
-        "kind": "sensitivity_envelope",
-        "low": 40750000,
-        "central": 65200000,
-        "high": 89650000,
-        "interpretation": "The source-forecast $163 million construction base is multiplied by 25%, 40%, and 55% Washoe County purchase-retention shares. This is an assumption range, not a statistical confidence interval."
-      },
-      "contribution_channel": "direct",
-      "aggregation": {
-        "aggregation_id": "apple_washoe_local_construction_spending",
-        "role": "standalone",
-        "overlap_policy": "do_not_sum_outside_declared_total"
-      },
-      "parameters": [
-        {
-          "name": "construction_eligible_spending",
-          "value": 163000000,
-          "unit": "USD",
-          "provenance": {
-            "kind": "claim",
-            "reference_id": "clm_study_apple_washoe_construction_cost_projection_2024",
-            "detail": "Explicit three-year construction-cost forecast, excluding equipment"
-          },
-          "transformation": "Multiplied by each local-purchase share"
-        },
-        {
-          "name": "low_local_purchase_share",
-          "value": 0.25,
-          "unit": "ratio",
-          "provenance": {
-            "kind": "assumption",
-            "detail": "Low Washoe County supplier-retention scenario"
-          },
-          "transformation": "Allocates the construction base to Washoe County purchases"
-        },
-        {
-          "name": "central_local_purchase_share",
-          "value": 0.4,
-          "unit": "ratio",
-          "provenance": {
-            "kind": "assumption",
-            "detail": "Central Washoe County supplier-retention scenario"
-          },
-          "transformation": "Allocates the construction base to Washoe County purchases"
-        },
-        {
-          "name": "high_local_purchase_share",
-          "value": 0.55,
-          "unit": "ratio",
-          "provenance": {
-            "kind": "assumption",
-            "detail": "High Washoe County supplier-retention scenario"
-          },
-          "transformation": "Allocates the construction base to Washoe County purchases"
-        }
-      ],
-      "confidence": "low",
-      "confidence_rationale": "No public contractor-payment or vendor-address ledger supports the assumed county-retention shares.",
-      "decision_relevance": "Bounds a local supplier channel while keeping equipment and nonlocal purchases out of construction spending.",
-      "evidence_search": {
-        "direct_observation_status": "not_found",
-        "source_projection_status": "not_found",
-        "remaining_evidence_gap": "Paid contractor and subcontractor amounts, vendor locations, procurement categories, and Washoe County retention by phase"
-      },
-      "derivation": {
-        "method": "sensitivity_analysis",
-        "model_version": "apple-washoe-account-1.0.0",
-        "formula": "$163,000,000 construction-only forecast x local-purchase share",
-        "input_claim_ids": [
-          "clm_study_apple_washoe_construction_cost_projection_2024"
-        ],
-        "input_source_ids": [
-          "src_study_econ_nv_apple_2024"
-        ],
-        "assumptions": [
-          "Washoe County retains 25%, 40%, or 55% of forecast construction purchases.",
-          "The local shares are scenarios rather than observations or compliance findings.",
-          "No equipment purchases or Storey County activity enter the calculation."
-        ]
-      },
-      "limitations": [
-        "Local-purchase shares are unsupported by project vendor records.",
-        "The construction base is a forecast.",
-        "Direct purchases are not payroll, indirect output, induced spending, or a building allocation."
-      ],
-      "presentation": "modeled_not_observed_or_audited",
-      "notes": "Low-confidence direct supplier-purchase sensitivity; do not add it to the full construction-spending base as a separate total.",
-      "reviewed_on": "2026-09-06"
-    },
-    {
       "estimate_id": "est_study_apple_washoe_construction_job_years_direct",
       "project_id": "prj_study_im3_building_00464097467",
       "metric_code": "study.modeled_construction_job_years_direct",
@@ -255,10 +144,10 @@
       },
       "interval": {
         "kind": "sensitivity_envelope",
-        "low": 755.91,
+        "low": 472.45,
         "central": 944.89,
-        "high": 1133.87,
-        "interpretation": "The direct 5.796875 job-years-per-$1 million coefficient is multiplied by the $163 million construction-only forecast and 0.8, 1.0, and 1.2 transfer factors. This is a benchmark-transfer sensitivity, not a confidence interval."
+        "high": 1417.34,
+        "interpretation": "The direct 5.796875 job-years-per-$1 million coefficient is multiplied by the $163 million construction-only forecast and 0.5, 1.0, and 1.5 transfer factors. The deliberately wide range reflects cross-project and two-county transfer uncertainty; it is not a confidence interval."
       },
       "contribution_channel": "direct",
       "aggregation": {
@@ -291,11 +180,11 @@
         },
         {
           "name": "low_transfer_factor",
-          "value": 0.8,
+          "value": 0.5,
           "unit": "ratio",
           "provenance": {
             "kind": "assumption",
-            "detail": "Low sensitivity to different asset, contractor, and timing mix"
+            "detail": "Wide low sensitivity for different asset, contractor, geography, and timing mix"
           },
           "transformation": "Scales the same-region direct benchmark"
         },
@@ -311,11 +200,11 @@
         },
         {
           "name": "high_transfer_factor",
-          "value": 1.2,
+          "value": 1.5,
           "unit": "ratio",
           "provenance": {
             "kind": "assumption",
-            "detail": "High sensitivity to different asset, contractor, and timing mix"
+            "detail": "Wide high sensitivity for different asset, contractor, geography, and timing mix"
           },
           "transformation": "Scales the same-region direct benchmark"
         }
@@ -324,7 +213,7 @@
       "confidence_rationale": "The source is a public same-region IMPLAN analysis, but it models a different industrial project, combines Washoe and Storey Counties, and does not publish underlying IMPLAN version or data vintage.",
       "decision_relevance": "Provides a direct construction job-year range without treating peak workers, permanent jobs, equipment capital, or another data-center project as Apple employment.",
       "evidence_search": {
-        "direct_observation_status": "not_found",
+        "direct_observation_status": "partial",
         "source_projection_status": "available_separately",
         "remaining_evidence_gap": "Apple contractor worker-hours, job-years, payroll, trades, phase dates, and worker residence"
       },
@@ -341,7 +230,8 @@
         ],
         "assumptions": [
           "The construction-only forecast is the eligible spending base; the equipment forecast is excluded.",
-          "The direct same-region coefficient transfers with 0.8, 1.0, and 1.2 sensitivity factors.",
+          "The direct same-region coefficient transfers with deliberately wide 0.5, 1.0, and 1.5 sensitivity factors after exact-address permit searches found no worker-hour or job-year observations.",
+          "Historical Apple permit values are retained as direct evidence and a plausibility check but are not summed or used as the 2024 expansion base because phase overlap and comparability are unresolved.",
           "Indirect and induced channels are omitted because the public source combines them.",
           "No Switch Citadel value, Storey County data-center spending, or GOED expansion impact total is added."
         ]
@@ -389,10 +279,10 @@
       },
       "interval": {
         "kind": "sensitivity_envelope",
-        "low": 75307874.5,
+        "low": 47067421.57,
         "central": 94134843.13,
-        "high": 112961811.75,
-        "interpretation": "The direct 0.577514375 labor-income-per-construction-dollar coefficient is multiplied by the $163 million construction-only forecast and 0.8, 1.0, and 1.2 transfer factors. This is a benchmark-transfer sensitivity, not a confidence interval."
+        "high": 141202264.7,
+        "interpretation": "The direct 0.577514375 labor-income-per-construction-dollar coefficient is multiplied by the $163 million construction-only forecast and 0.5, 1.0, and 1.5 transfer factors. The deliberately wide range reflects cross-project, wage-mix, and two-county transfer uncertainty; it is not a confidence interval."
       },
       "contribution_channel": "direct",
       "aggregation": {
@@ -425,11 +315,11 @@
         },
         {
           "name": "low_transfer_factor",
-          "value": 0.8,
+          "value": 0.5,
           "unit": "ratio",
           "provenance": {
             "kind": "assumption",
-            "detail": "Low sensitivity to different wage, occupation, and contractor mix"
+            "detail": "Wide low sensitivity for different wage, occupation, contractor, geography, and timing mix"
           },
           "transformation": "Scales the same-region direct benchmark"
         },
@@ -445,11 +335,11 @@
         },
         {
           "name": "high_transfer_factor",
-          "value": 1.2,
+          "value": 1.5,
           "unit": "ratio",
           "provenance": {
             "kind": "assumption",
-            "detail": "High sensitivity to different wage, occupation, and contractor mix"
+            "detail": "Wide high sensitivity for different wage, occupation, contractor, geography, and timing mix"
           },
           "transformation": "Scales the same-region direct benchmark"
         }
@@ -458,7 +348,7 @@
       "confidence_rationale": "The public coefficient is geographically relevant but comes from a different project and does not disclose the underlying IMPLAN version or data vintage.",
       "decision_relevance": "Provides a direct construction labor-income range while keeping labor income separate from spending, output, and permanent payroll.",
       "evidence_search": {
-        "direct_observation_status": "not_found",
+        "direct_observation_status": "partial",
         "source_projection_status": "available_separately",
         "remaining_evidence_gap": "Apple construction payroll, benefits, proprietor income, worker residence, occupations, and annual phase allocation"
       },
@@ -475,7 +365,8 @@
         ],
         "assumptions": [
           "The construction-only forecast is the eligible spending base; the equipment forecast is excluded.",
-          "The direct same-region coefficient transfers with 0.8, 1.0, and 1.2 sensitivity factors.",
+          "The direct same-region coefficient transfers with deliberately wide 0.5, 1.0, and 1.5 sensitivity factors after permit and vendor searches found no payroll or worker-hour observation.",
+          "Historical Apple permit values are retained as direct evidence and a plausibility check but are not summed or used as the 2024 expansion base because phase overlap and comparability are unresolved.",
           "Indirect and induced channels are omitted because the public source combines them.",
           "No Switch Citadel value, Storey County data-center spending, or packet economic-impact total is added."
         ]
@@ -619,138 +510,6 @@
       ],
       "presentation": "modeled_not_observed_or_audited",
       "notes": "Direct annualized payroll proxy only; do not add it to labor-income or economic-output estimates.",
-      "reviewed_on": "2026-09-06"
-    },
-    {
-      "estimate_id": "est_study_apple_washoe_induced_household_output_2024",
-      "project_id": "prj_study_im3_building_00464097467",
-      "metric_code": "study.modeled_induced_household_output",
-      "label": "Modeled annual induced household output",
-      "category": "community",
-      "unit": "USD_per_year",
-      "measure_type": "flow",
-      "basis": "modeled_synthesis",
-      "value": 9434285.6,
-      "period": {
-        "kind": "calendar_year",
-        "year": 2024,
-        "label": "Annual contribution sensitivity anchored to the June 13, 2024 reported FTE snapshot"
-      },
-      "scope": {
-        "level": "company_county",
-        "label": "Washoe County induced household-output sensitivity associated with Apple operating FTE",
-        "county_fips": "32031",
-        "inventory_allocation": "unallocated"
-      },
-      "interval": {
-        "kind": "sensitivity_envelope",
-        "low": 4717142.8,
-        "central": 9434285.6,
-        "high": 14151428.4,
-        "interpretation": "Eighty reported FTE are multiplied by a transferred $117,928.57 induced-output-per-direct-FTE benchmark and 0.5, 1.0, and 1.5 transfer factors. This is a transfer sensitivity, not a confidence interval."
-      },
-      "contribution_channel": "induced",
-      "aggregation": {
-        "aggregation_id": "apple_washoe_induced_household_output_2024",
-        "role": "standalone",
-        "overlap_policy": "do_not_sum_outside_declared_total"
-      },
-      "parameters": [
-        {
-          "name": "reported_existing_fte",
-          "value": 80,
-          "unit": "FTE",
-          "provenance": {
-            "kind": "claim",
-            "reference_id": "clm_study_apple_washoe_fte_2024",
-            "detail": "Existing FTE reported in the 2024 expansion application"
-          },
-          "transformation": "Multiplied by the induced-output benchmark and transfer factor"
-        },
-        {
-          "name": "induced_output_per_direct_fte",
-          "value": 117928.57,
-          "unit": "USD_per_FTE",
-          "provenance": {
-            "kind": "source",
-            "reference_id": "src_study_pwc_data_center_market_2021",
-            "detail": "Prince William County prototype induced annual output per 28 direct operating FTE"
-          },
-          "transformation": "Transferred as an induced household-output benchmark"
-        },
-        {
-          "name": "low_transfer_factor",
-          "value": 0.5,
-          "unit": "ratio",
-          "provenance": {
-            "kind": "assumption",
-            "detail": "Low sensitivity for commuting and local household-spending capture"
-          },
-          "transformation": "Scales the transferred induced-output benchmark"
-        },
-        {
-          "name": "central_transfer_factor",
-          "value": 1,
-          "unit": "ratio",
-          "provenance": {
-            "kind": "assumption",
-            "detail": "Central transfer of the public induced-output benchmark"
-          },
-          "transformation": "Scales the transferred induced-output benchmark"
-        },
-        {
-          "name": "high_transfer_factor",
-          "value": 1.5,
-          "unit": "ratio",
-          "provenance": {
-            "kind": "assumption",
-            "detail": "High sensitivity for commuting and local household-spending capture"
-          },
-          "transformation": "Scales the transferred induced-output benchmark"
-        }
-      ],
-      "confidence": "low",
-      "confidence_rationale": "The Virginia prototype coefficient is transferred to Washoe County without project worker-residence or household-expenditure observations.",
-      "decision_relevance": "Represents the household-spending contribution channel separately from payroll, suppliers, taxes, and direct charitable support.",
-      "evidence_search": {
-        "direct_observation_status": "not_found",
-        "source_projection_status": "not_found",
-        "remaining_evidence_gap": "Employee and contractor residence, household expenditure capture, and quantified Apple community grants attributable to the campus"
-      },
-      "derivation": {
-        "method": "input_output_multiplier",
-        "model_version": "apple-washoe-account-1.0.0",
-        "formula": "80 reported direct FTE x $117,928.57 induced output per direct FTE x transfer factor",
-        "input_claim_ids": [
-          "clm_study_apple_washoe_fte_2024"
-        ],
-        "input_source_ids": [
-          "src_study_econ_nv_apple_2024",
-          "src_study_pwc_data_center_market_2021"
-        ],
-        "assumptions": [
-          "The Prince William County induced-output-per-FTE relationship transfers with 0.5, 1.0, and 1.5 sensitivity factors.",
-          "The model does not assert that workers live or spend entirely in Washoe County.",
-          "Induced output is not a charitable contribution, household income, supplier payment, or tax receipt."
-        ]
-      },
-      "multiplier_provenance": {
-        "source_id": "src_study_pwc_data_center_market_2021",
-        "model_name": "IMPLAN county contribution model reported by BAE",
-        "model_version": "Prince William County prototype-data-center study, 2021-dollar tables 7-8",
-        "geography": "Prince William County, Virginia benchmark transferred to Washoe County, Nevada",
-        "vintage": "IMPLAN model reported December 2021; underlying IMPLAN data vintage not disclosed",
-        "local_purchase_assumption": "No Apple local-purchase share is asserted; 0.5, 1.0, and 1.5 transfer factors expose uncertainty in commuting and household-spending capture.",
-        "channel_separation": "direct_indirect_induced_reported_separately"
-      },
-      "limitations": [
-        "Transferred Virginia benchmark rather than a Washoe County input-output model.",
-        "No worker residence or household-spending data are public.",
-        "Economic output is not household income or direct philanthropy.",
-        "The induced channel must not be added to a total that already includes induced effects."
-      ],
-      "presentation": "modeled_not_observed_or_audited",
-      "notes": "Induced household-output sensitivity only; named community organizations in the source remain qualitative because no attributable payment amount was verified.",
       "reviewed_on": "2026-09-06"
     },
     {

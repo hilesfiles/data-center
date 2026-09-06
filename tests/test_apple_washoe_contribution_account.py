@@ -53,12 +53,12 @@ class AppleWashoeContributionAccountTest(unittest.TestCase):
     def test_gate_counts_and_evidence_state_separation(self):
         project = self.project
         self.assertEqual(project["county_fips"], "32031")
-        self.assertEqual(project["economic_record_count"], 12)
-        self.assertEqual(project["reported_actual_count"], 6)
+        self.assertEqual(project["economic_record_count"], 21)
+        self.assertEqual(project["reported_actual_count"], 15)
         self.assertEqual(project["projection_count"], 6)
-        self.assertEqual(project["modeled_synthesis_count"], 9)
-        self.assertEqual(project["model_completeness"]["status"], "full_modeled_account")
-        self.assertEqual(project["model_completeness"]["missing_categories"], [])
+        self.assertEqual(project["modeled_synthesis_count"], 7)
+        self.assertEqual(project["model_completeness"]["status"], "incomplete")
+        self.assertEqual(project["model_completeness"]["missing_categories"], ["suppliers"])
         self.assertEqual(project["model_completeness"]["missing_county_outcomes"], [])
         self.assertEqual(
             {row["basis"] for row in project["economic_records"]},
@@ -69,19 +69,21 @@ class AppleWashoeContributionAccountTest(unittest.TestCase):
     def test_all_account_categories_and_model_presentation(self):
         project = self.project
         rows = [*project["economic_records"], *project["modeled_syntheses"]]
-        self.assertTrue(
+        categories = {row["category"] for row in rows}
+        self.assertEqual(
+            categories,
             {
                 "investment",
                 "construction",
-                "suppliers",
                 "operations",
                 "fiscal",
                 "public_costs",
                 "resources",
                 "community",
-            }
-            <= {row["category"] for row in rows}
+                "county_outcome",
+            },
         )
+        self.assertNotIn("suppliers", categories)
         models = project["modeled_syntheses"]
         self.assertTrue(
             all(row["presentation"] == "modeled_not_observed_or_audited" for row in models)
@@ -122,6 +124,11 @@ class AppleWashoeContributionAccountTest(unittest.TestCase):
                 "clm_study_apple_washoe_capex_plan", row["derivation"]["input_claim_ids"]
             )
             self.assertEqual(row["contribution_channel"], "direct")
+            self.assertEqual(row["evidence_search"]["direct_observation_status"], "partial")
+            self.assertEqual(
+                {p["value"] for p in row["parameters"] if p["name"].endswith("transfer_factor")},
+                {0.5, 1, 1.5},
+            )
 
     def test_multiplier_provenance_and_nonoverlap_are_explicit(self):
         multipliers = [
@@ -129,7 +136,7 @@ class AppleWashoeContributionAccountTest(unittest.TestCase):
             for row in self.project["modeled_syntheses"]
             if row["derivation"]["method"] in {"input_output_multiplier", "contribution_analysis"}
         ]
-        self.assertEqual(len(multipliers), 3)
+        self.assertEqual(len(multipliers), 2)
         required = {
             "source_id",
             "model_name",
@@ -158,9 +165,17 @@ class AppleWashoeContributionAccountTest(unittest.TestCase):
     def test_fiscal_safeguards_omit_net_and_break_even_values(self):
         project = self.project
         fiscal_records = [row for row in project["economic_records"] if row["category"] == "fiscal"]
-        self.assertEqual(len(fiscal_records), 1)
-        self.assertEqual(fiscal_records[0]["basis"], "source_projection")
-        self.assertEqual(fiscal_records[0]["value"], 200_909_110)
+        self.assertEqual(len(fiscal_records), 3)
+        forecast = next(row for row in fiscal_records if row["basis"] == "source_projection")
+        self.assertEqual(forecast["value"], 200_909_110)
+        assessed = [row for row in fiscal_records if row["metric_code"] == "study.account_assessed_value"]
+        self.assertEqual([row["value"] for row in assessed], [109_529_832, 147_033_277])
+        self.assertFalse(
+            any(
+                row["metric_code"] in {"study.property_taxes_billed", "study.property_taxes_paid"}
+                for row in fiscal_records
+            )
+        )
         forbidden = {
             "study.modeled_annual_local_service_cost_break_even",
             "study.modeled_latest_project_linked_local_tax_contribution",
@@ -196,6 +211,62 @@ class AppleWashoeContributionAccountTest(unittest.TestCase):
         self.assertEqual(renewable["value"], 250)
         self.assertEqual(renewable["scope"]["level"], "supporting_infrastructure")
         self.assertEqual(renewable["scope"]["inventory_allocation"], "unallocated")
+
+    def test_second_pass_direct_records_keep_units_scopes_and_nonadditivity(self):
+        records = {row["claim_id"]: row for row in self.project["economic_records"]}
+        permits = [
+            records["clm_study_apple_washoe_permit_huckleberry_phase1_2017"],
+            records["clm_study_apple_washoe_permit_huckleberry_phase2_2017"],
+            records["clm_study_apple_washoe_permit_isabel_2018"],
+        ]
+        self.assertEqual(
+            [row["value"] for row in permits],
+            [37_913_134.77, 9_140_880, 50_720_905.86],
+        )
+        self.assertTrue(all(row["metric_code"] == "study.permitted_construction_value" for row in permits))
+        self.assertTrue(
+            all(
+                "not" in row["notes"].lower()
+                and any(word in row["notes"].lower() for word in {"sum", "add"})
+                for row in permits
+            )
+        )
+
+        water = records["clm_study_apple_washoe_water_right_capacity_2015"]
+        self.assertAlmostEqual(water["value"], 0.111592808)
+        self.assertEqual(water["unit"], "million_gallons_per_day")
+        self.assertIn("not measured", water["notes"].lower())
+
+        electricity = records["clm_study_apple_washoe_electricity_use_2025"]
+        self.assertEqual(electricity["value"], 422_000_000)
+        self.assertEqual(electricity["scope"]["level"], "campus")
+        self.assertEqual(electricity["annual_series_key"], "apple_washoe_electricity_use")
+
+        gifts = [
+            records["clm_study_apple_fbnn_contribution_floor_2022"],
+            records["clm_study_apple_fbnn_contribution_floor_2023"],
+        ]
+        self.assertTrue(all(row["value"] == 10_000 for row in gifts))
+        self.assertTrue(all(row["value_qualifier"] == "at_least" for row in gifts))
+        self.assertTrue(all(row["scope"]["level"] == "company_county" for row in gifts))
+
+    def test_search_audit_is_explicit_and_unsupported_models_are_pruned(self):
+        notes = "\n".join(row["notes"] for row in self.project["research_updates"])
+        for marker in [
+            "15-3589",
+            "084-110-29",
+            "17-11002",
+            "Reno Technology Park",
+            "200653833-6172",
+            "Food Bank of Northern Nevada",
+            "tax-expenditure reports",
+        ]:
+            self.assertIn(marker, notes)
+
+        estimate_ids = {row["estimate_id"] for row in self.project["modeled_syntheses"]}
+        self.assertNotIn("est_study_apple_washoe_local_construction_spending", estimate_ids)
+        self.assertNotIn("est_study_apple_washoe_induced_household_output_2024", estimate_ids)
+        self.assertEqual(self.project["model_completeness"]["missing_categories"], ["suppliers"])
 
 
 if __name__ == "__main__":
