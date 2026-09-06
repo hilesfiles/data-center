@@ -25,7 +25,7 @@ class MicrosoftSanAntonioAccountTest(unittest.TestCase):
         validate_evidence(self.evidence, self.config["candidates"])
         rows = [r for r in self.evidence["records"] if r["project_id"] == PROJECT_ID]
         self.assertEqual((len(rows), sum(r["basis"] == "reported_actual" for r in rows),
-                          sum(r["basis"] == "source_projection" for r in rows)), (13, 4, 9))
+                          sum(r["basis"] == "source_projection" for r in rows)), (19, 10, 9))
         self.assertEqual(
             next(r for r in rows if r["claim_id"].endswith("operating_employee_floor_2013"))["value_qualifier"],
             "greater_than",
@@ -38,45 +38,77 @@ class MicrosoftSanAntonioAccountTest(unittest.TestCase):
             next(r for r in rows if r["claim_id"].endswith("recycled_water_plan_2008"))["basis"],
             "source_projection",
         )
+        self.assertEqual(
+            next(r for r in rows if r["claim_id"].endswith("floor_area_2026"))["value"],
+            463_350,
+        )
+        self.assertEqual(
+            sorted(r["value"] for r in rows if r["metric_code"] == "study.appraised_property_value"),
+            [86_400, 91_391_490, 112_000_000],
+        )
+        self.assertEqual(
+            sorted(r["value"] for r in rows if r["metric_code"] == "study.property_taxes_paid"),
+            [2_093_024.14, 2_564_994.88],
+        )
         self.assertFalse(any(r["source_id"] == "src_study_microsoft_san_antonio_impact_2026" for r in rows))
 
-    def test_modeled_rows_are_reproducible_and_noncausal(self):
+    def test_search_audit_is_explicit_and_description_is_unique(self):
+        updates = [u for u in self.evidence["project_updates"] if u["project_id"] == PROJECT_ID]
+        audits = [u for u in updates if u["title"].startswith("Search audit —")]
+        self.assertEqual(len(audits), 8)
+        for update in audits:
+            for field in ("Portal/source family:", "Query/identifier:", "Date range:",
+                          "Documents inspected:", "Result:"):
+                self.assertIn(field, update["notes"])
+        descriptions = [u["project_description"] for u in updates if u.get("project_description")]
+        self.assertEqual(len(descriptions), 1)
+        self.assertGreaterEqual(len(descriptions[0]), 80)
+        self.assertLessEqual(len(descriptions[0]), 1000)
+        self.assertIn("5150 Rogers Road", descriptions[0])
+        self.assertIn("463,350 square feet", descriptions[0])
+
+    def test_only_bounded_noncausal_county_models_remain(self):
         grouped, _ = modeled_products(self.synthesis, self.config["candidates"], self.evidence)
         rows = grouped[PROJECT_ID]
-        by_id = {r["estimate_id"]: r for r in rows}
-        self.assertEqual(len(rows), 11)
+        self.assertEqual(len(rows), 3)
         self.assertTrue(all(r["presentation"] == "modeled_not_observed_or_audited" for r in rows))
-        self.assertEqual(
-            tuple(by_id["est_study_microsoft_san_antonio_construction_job_years_total"]["interval"][k]
-                  for k in ("low", "central", "high")),
-            (1837.31, 3674.62, 5511.93),
-        )
-        local = by_id["est_study_microsoft_san_antonio_local_construction_spending"]
-        self.assertEqual((local["interval"]["low"], local["value"], local["interval"]["high"]),
-                         (52_500_000, 168_000_000, 346_500_000))
-        operating = by_id["est_study_microsoft_san_antonio_operating_fte_total"]
-        self.assertEqual((operating["interval"]["low"], operating["value"], operating["interval"]["high"]),
-                         (490.19, 555.54, 620.9))
-        comparisons = [r for r in rows if r["category"] == "county_outcome"]
-        self.assertEqual(len(comparisons), 3)
-        self.assertTrue(all(r["derivation"]["method"] == "benchmark_application" for r in comparisons))
-        self.assertTrue(all("causal_design" not in r for r in comparisons))
+        self.assertTrue(all(r["category"] == "county_outcome" for r in rows))
+        self.assertTrue(all(r["derivation"]["method"] == "benchmark_application" for r in rows))
+        self.assertTrue(all("causal_design" not in r for r in rows))
+        self.assertTrue(all(r["interval"]["low"] <= r["value"] <= r["interval"]["high"] for r in rows))
+        self.assertTrue(all(
+            any(p["name"] == "operating_by_year_anchor"
+                and p["provenance"]["reference_id"].endswith("operating_employee_floor_2013")
+                for p in r["parameters"])
+            for r in rows
+        ))
         self.assertTrue(all(any("must not be interpreted as a data-center effect" in limit
-                                for limit in r["limitations"]) for r in comparisons))
+                                for limit in r["limitations"]) for r in rows))
+        removed = {
+            "est_study_microsoft_san_antonio_construction_eligible_spending",
+            "est_study_microsoft_san_antonio_local_construction_spending",
+            "est_study_microsoft_san_antonio_construction_job_years_total",
+            "est_study_microsoft_san_antonio_construction_labor_income_total",
+            "est_study_microsoft_san_antonio_operating_fte_total",
+            "est_study_microsoft_san_antonio_operating_labor_income_total",
+            "est_study_microsoft_san_antonio_operating_supplier_output",
+            "est_study_microsoft_san_antonio_induced_household_output",
+        }
+        self.assertTrue(removed.isdisjoint({r["estimate_id"] for r in rows}))
 
-    def test_generated_account_passes_completion_gate(self):
+    def test_generated_account_preserves_bounded_incompleteness(self):
         index, details, _ = build_products(
-            self.config, self.inventory, self.panels, "2026-09-05T00:00:00+00:00",
+            self.config, self.inventory, self.panels, "2026-09-06T00:00:00+00:00",
             self.evidence, self.synthesis,
         )
         project = next(r for r in details if r["project_id"] == PROJECT_ID)
-        self.assertEqual(project["model_completeness"]["status"], "full_modeled_account")
-        self.assertEqual(project["economic_record_count"], 13)
-        self.assertEqual(project["modeled_synthesis_count"], 11)
-        self.assertEqual(project["model_completeness"]["missing_categories"], [])
+        self.assertEqual(project["model_completeness"]["status"], "incomplete")
+        self.assertEqual(project["economic_record_count"], 19)
+        self.assertEqual(project["modeled_synthesis_count"], 3)
+        self.assertEqual(project["model_completeness"]["missing_categories"], ["suppliers"])
         self.assertEqual(project["model_completeness"]["missing_county_outcomes"], [])
         self.assertEqual(next(r for r in index["projects"] if r["project_id"] == PROJECT_ID)
-                         ["model_completeness"]["status"], "full_modeled_account")
+                         ["model_completeness"]["status"], "incomplete")
 
 
 if __name__ == "__main__":

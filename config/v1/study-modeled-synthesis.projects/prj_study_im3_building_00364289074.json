@@ -1,610 +1,10 @@
 {
   "schema_version": "1.0.0",
   "project_id": "prj_study_im3_building_00364289074",
-  "reviewed_on": "2026-09-05",
-  "scope_note": "Low-confidence completion account for Microsoft San Antonio. Construction scenarios apply explicit 25%-75% construction-eligible shares to the reported greater-than-$840 million real-and-personal-property floor before using the Prince William County benchmark, so IT equipment is not silently treated as building construction. Operating scenarios combine the reported greater-than-75 employee floor with zero, half, or all of the separate 20-job expansion forecast; they are sensitivities, not fulfillment findings. County GDP, employment, and wage gaps are descriptive 2024 benchmark comparisons and are not facility effects. Existing source projections cover fiscal revenue, public support, and facility water demand. No annual net-fiscal estimate is made because verified same-scope recurring receipts and marginal public-service costs are unavailable.",
+  "reviewed_on": "2026-09-06",
+  "scope_note": "Corrective residual modeled account for Microsoft San Antonio. Eight transferred construction, labor, procurement, operating, and household-output scenarios were removed because their arbitrary capital shares, forecast-realization cases, local-purchase assumptions, and Virginia coefficients were not bounded by project observations. Only three low-confidence descriptive county comparisons remain: each uses the project's documented operating-by 2013 anchor and official Bexar County outcome data, has a finite fit-sensitivity envelope, and explicitly makes no causal attribution. The account intentionally remains incomplete because no defensible direct observation or residual model closes the supplier category.",
   "sources": [],
   "estimates": [
-    {
-      "estimate_id": "est_study_microsoft_san_antonio_construction_eligible_spending",
-      "project_id": "prj_study_im3_building_00364289074",
-      "metric_code": "study.modeled_construction_eligible_spending",
-      "label": "Modeled construction-eligible share of reported cumulative property investment",
-      "category": "investment",
-      "unit": "USD",
-      "measure_type": "flow",
-      "basis": "modeled_synthesis",
-      "value": 420000000,
-      "period": {
-        "kind": "construction_period",
-        "start_date": "2007-01-18",
-        "end_date": "2013-11-21",
-        "label": "Original-project approval through the 2013 cumulative investment report"
-      },
-      "scope": {
-        "level": "campus",
-        "label": "Microsoft San Antonio campus represented by the cumulative 2013 property-investment floor",
-        "county_fips": "48029",
-        "inventory_allocation": "unallocated"
-      },
-      "interval": {
-        "kind": "sensitivity_envelope",
-        "low": 210000000,
-        "central": 420000000,
-        "high": 630000000,
-        "interpretation": "The greater-than-$840 million reported property-investment floor is multiplied by 25%, 50%, and 75% construction-cost shares. The range is a sensitivity over a capital floor, not a statistical interval or a bound on true construction spending."
-      },
-      "contribution_channel": "direct",
-      "aggregation": {
-        "aggregation_id": "microsoft_san_antonio_construction_eligible_spending",
-        "role": "standalone",
-        "overlap_policy": "do_not_sum_outside_declared_total"
-      },
-      "parameters": [
-        {
-          "name": "reported_property_investment_floor",
-          "value": 840000000,
-          "unit": "USD",
-          "provenance": {
-            "kind": "claim",
-            "reference_id": "clm_study_microsoft_san_antonio_investment_2013",
-            "detail": "City-reported greater-than cumulative real and personal property investment"
-          },
-          "transformation": "Multiplied by each construction-cost share"
-        },
-        {
-          "name": "low_construction_cost_share",
-          "value": 0.25,
-          "unit": "ratio",
-          "provenance": {
-            "kind": "assumption",
-            "detail": "Lower share of broad property investment treated as construction eligible"
-          },
-          "transformation": "Excludes equipment before any construction benchmark is applied"
-        },
-        {
-          "name": "central_construction_cost_share",
-          "value": 0.5,
-          "unit": "ratio",
-          "provenance": {
-            "kind": "assumption",
-            "detail": "Central share of broad property investment treated as construction eligible"
-          },
-          "transformation": "Excludes equipment before any construction benchmark is applied"
-        },
-        {
-          "name": "high_construction_cost_share",
-          "value": 0.75,
-          "unit": "ratio",
-          "provenance": {
-            "kind": "assumption",
-            "detail": "Upper share of broad property investment treated as construction eligible"
-          },
-          "transformation": "Excludes equipment before any construction benchmark is applied"
-        }
-      ],
-      "confidence": "low",
-      "confidence_rationale": "The public investment figure is a lower bound combining real and personal property, and no audited construction-versus-equipment allocation is public.",
-      "decision_relevance": "Defines the construction-only base before any construction multiplier is used.",
-      "evidence_search": {
-        "direct_observation_status": "partial",
-        "source_projection_status": "available_separately",
-        "remaining_evidence_gap": "Audited annual building construction, equipment, land, soft-cost, and refresh spending by phase"
-      },
-      "derivation": {
-        "method": "sensitivity_analysis",
-        "model_version": "microsoft-san-antonio-account-1.0.0",
-        "formula": "reported cumulative real-and-personal-property investment floor × construction-cost share",
-        "input_claim_ids": [
-          "clm_study_microsoft_san_antonio_investment_2013"
-        ],
-        "input_source_ids": [
-          "src_study_san_antonio_microsoft_2013"
-        ],
-        "assumptions": [
-          "Construction-eligible cost is 25%, 50%, or 75% of the broad property-investment floor.",
-          "The source's greater-than qualifier means the scenarios are calculated on a floor and do not upper-bound actual spending.",
-          "The estimate must not be presented as observed, audited, or source reported."
-        ]
-      },
-      "limitations": [
-        "Construction shares are assumptions.",
-        "The source combines real and personal property and does not isolate IT equipment.",
-        "The cumulative source is not an annual spending series or a single-building allocation."
-      ],
-      "presentation": "modeled_not_observed_or_audited",
-      "notes": "This scenario is the construction-eligible base used by the construction benchmark rows; it must not be added to the original investment claim as a separate benefit.",
-      "reviewed_on": "2026-09-05"
-    },
-    {
-      "estimate_id": "est_study_microsoft_san_antonio_local_construction_spending",
-      "project_id": "prj_study_im3_building_00364289074",
-      "metric_code": "study.modeled_local_construction_spending",
-      "label": "Modeled locally retained construction-eligible spending",
-      "category": "suppliers",
-      "unit": "USD",
-      "measure_type": "flow",
-      "basis": "modeled_synthesis",
-      "value": 168000000,
-      "period": {
-        "kind": "construction_period",
-        "start_date": "2007-01-18",
-        "end_date": "2013-11-21",
-        "label": "Original-project approval through the 2013 cumulative investment report"
-      },
-      "scope": {
-        "level": "company_county",
-        "label": "Modeled Bexar County construction purchasing associated with the Microsoft San Antonio property-investment floor",
-        "county_fips": "48029",
-        "inventory_allocation": "unallocated"
-      },
-      "interval": {
-        "kind": "sensitivity_envelope",
-        "low": 52500000,
-        "central": 168000000,
-        "high": 346500000,
-        "interpretation": "Low, central, and high combine 25%/50%/75% construction-cost shares with 25%/40%/55% local-purchase shares. This is an assumption envelope over a capital floor, not a confidence interval."
-      },
-      "contribution_channel": "direct",
-      "aggregation": {
-        "aggregation_id": "microsoft_san_antonio_local_construction_spending",
-        "role": "standalone",
-        "overlap_policy": "do_not_sum_outside_declared_total"
-      },
-      "parameters": [
-        {
-          "name": "reported_property_investment_floor",
-          "value": 840000000,
-          "unit": "USD",
-          "provenance": {
-            "kind": "claim",
-            "reference_id": "clm_study_microsoft_san_antonio_investment_2013",
-            "detail": "City-reported cumulative real and personal property investment floor"
-          },
-          "transformation": "Multiplied by paired construction and local-purchase shares"
-        },
-        {
-          "name": "low_construction_cost_share",
-          "value": 0.25,
-          "unit": "ratio",
-          "provenance": { "kind": "assumption", "detail": "Low construction-eligible share" },
-          "transformation": "Paired with the low local-purchase share"
-        },
-        {
-          "name": "central_construction_cost_share",
-          "value": 0.5,
-          "unit": "ratio",
-          "provenance": { "kind": "assumption", "detail": "Central construction-eligible share" },
-          "transformation": "Paired with the central local-purchase share"
-        },
-        {
-          "name": "high_construction_cost_share",
-          "value": 0.75,
-          "unit": "ratio",
-          "provenance": { "kind": "assumption", "detail": "High construction-eligible share" },
-          "transformation": "Paired with the high local-purchase share"
-        },
-        {
-          "name": "low_local_purchase_share",
-          "value": 0.25,
-          "unit": "ratio",
-          "provenance": { "kind": "assumption", "detail": "Low Bexar County supplier-retention share" },
-          "transformation": "Allocates low construction-eligible spending to local suppliers"
-        },
-        {
-          "name": "central_local_purchase_share",
-          "value": 0.4,
-          "unit": "ratio",
-          "provenance": { "kind": "assumption", "detail": "Central Bexar County supplier-retention share" },
-          "transformation": "Allocates central construction-eligible spending to local suppliers"
-        },
-        {
-          "name": "high_local_purchase_share",
-          "value": 0.55,
-          "unit": "ratio",
-          "provenance": { "kind": "assumption", "detail": "High Bexar County supplier-retention share" },
-          "transformation": "Allocates high construction-eligible spending to local suppliers"
-        }
-      ],
-      "confidence": "low",
-      "confidence_rationale": "The permit identifies one Texas contractor but discloses no payments or vendor geography, so both the construction and local-retention shares remain assumptions.",
-      "decision_relevance": "Bounds the local-supplier channel without treating all equipment or total capital as local construction purchasing.",
-      "evidence_search": {
-        "direct_observation_status": "partial",
-        "source_projection_status": "not_found",
-        "remaining_evidence_gap": "Audited contractor payments, vendor addresses, subcontractor tiers, and Bexar County retention by phase"
-      },
-      "derivation": {
-        "method": "sensitivity_analysis",
-        "model_version": "microsoft-san-antonio-account-1.0.0",
-        "formula": "reported property-investment floor × construction-cost share × Bexar County local-purchase share",
-        "input_claim_ids": [
-          "clm_study_microsoft_san_antonio_investment_2013",
-          "clm_study_microsoft_san_antonio_permitted_renovation_value_2018"
-        ],
-        "input_source_ids": [
-          "src_study_san_antonio_microsoft_2013",
-          "src_study_microsoft_san_antonio_permits_2018_05_12"
-        ],
-        "assumptions": [
-          "Construction-eligible shares are 25%, 50%, and 75%.",
-          "Local-purchase shares are 25%, 40%, and 55%.",
-          "The named 2018 contractor establishes a supplier role but not the modeled payment or retention shares.",
-          "The estimate must not be presented as observed, audited, or source reported."
-        ]
-      },
-      "limitations": [
-        "No vendor payment or residence data support the local shares.",
-        "The broad capital source includes equipment and is only a lower bound.",
-        "This direct purchasing scenario is not payroll, labor income, indirect output, or induced household activity."
-      ],
-      "presentation": "modeled_not_observed_or_audited",
-      "notes": "Low-confidence local-purchase sensitivity; the reported $2.771 million permit value is retained separately and is not added to this cumulative scenario.",
-      "reviewed_on": "2026-09-05"
-    },
-    {
-      "estimate_id": "est_study_microsoft_san_antonio_construction_job_years_total",
-      "project_id": "prj_study_im3_building_00364289074",
-      "metric_code": "study.modeled_construction_job_years_total",
-      "label": "Modeled Prince William benchmark-equivalent construction job-years",
-      "category": "construction",
-      "unit": "job_years",
-      "measure_type": "flow",
-      "basis": "modeled_synthesis",
-      "value": 3674.62,
-      "period": {
-        "kind": "construction_period",
-        "start_date": "2007-01-18",
-        "end_date": "2013-11-21",
-        "label": "Original-project approval through the 2013 cumulative investment report"
-      },
-      "scope": {
-        "level": "company_county",
-        "label": "Microsoft San Antonio construction contribution benchmark in Bexar County",
-        "county_fips": "48029",
-        "inventory_allocation": "unallocated"
-      },
-      "interval": {
-        "kind": "sensitivity_envelope",
-        "low": 1837.31,
-        "central": 3674.62,
-        "high": 5511.93,
-        "interpretation": "The capital floor is multiplied by 25%, 50%, and 75% construction-cost shares and 8.7491 total job-years per $1 million. It is a transferred-benchmark sensitivity, not a confidence interval."
-      },
-      "contribution_channel": "total",
-      "aggregation": {
-        "aggregation_id": "microsoft_san_antonio_construction_job_years_total",
-        "role": "standalone",
-        "overlap_policy": "do_not_sum_outside_declared_total"
-      },
-      "parameters": [
-        {
-          "name": "reported_property_investment_floor",
-          "value": 840000000,
-          "unit": "USD",
-          "provenance": { "kind": "claim", "reference_id": "clm_study_microsoft_san_antonio_investment_2013", "detail": "Broad property-investment floor" },
-          "transformation": "Multiplied by the construction-cost share before the benchmark coefficient"
-        },
-        {
-          "name": "low_construction_cost_share",
-          "value": 0.25,
-          "unit": "ratio",
-          "provenance": { "kind": "assumption", "detail": "Low construction-eligible share" },
-          "transformation": "Excludes equipment from low scenario"
-        },
-        {
-          "name": "central_construction_cost_share",
-          "value": 0.5,
-          "unit": "ratio",
-          "provenance": { "kind": "assumption", "detail": "Central construction-eligible share" },
-          "transformation": "Excludes equipment from central scenario"
-        },
-        {
-          "name": "high_construction_cost_share",
-          "value": 0.75,
-          "unit": "ratio",
-          "provenance": { "kind": "assumption", "detail": "High construction-eligible share" },
-          "transformation": "Excludes equipment from high scenario"
-        },
-        {
-          "name": "total_job_years_per_million",
-          "value": 8.7491,
-          "unit": "job_years_per_million_USD",
-          "provenance": { "kind": "source", "reference_id": "src_study_pwc_data_center_market_2021", "detail": "Prince William construction contribution coefficient excluding IT equipment" },
-          "transformation": "Multiplies construction-eligible capital in millions"
-        }
-      ],
-      "confidence": "low",
-      "confidence_rationale": "The calculation transfers a Virginia IMPLAN coefficient and relies on an assumed construction share of a broad investment floor.",
-      "decision_relevance": "Supplies a construction job-year range while keeping job-years distinct from peak workers and permanent jobs.",
-      "evidence_search": {
-        "direct_observation_status": "not_found",
-        "source_projection_status": "not_found",
-        "remaining_evidence_gap": "Annual worker hours, job-years, peak headcount, payroll, occupation, and worker residence"
-      },
-      "derivation": {
-        "method": "input_output_multiplier",
-        "model_version": "microsoft-san-antonio-account-1.0.0",
-        "formula": "reported property-investment floor × construction-cost share × 8.7491 total job-years per $1 million",
-        "input_claim_ids": [ "clm_study_microsoft_san_antonio_investment_2013" ],
-        "input_source_ids": [ "src_study_san_antonio_microsoft_2013", "src_study_pwc_data_center_market_2021" ],
-        "assumptions": [
-          "Construction-eligible shares are 25%, 50%, and 75%.",
-          "The Prince William coefficient transfers to Bexar County as a benchmark equivalent.",
-          "The source capital floor is not an observed construction-only total."
-        ]
-      },
-      "multiplier_provenance": {
-        "source_id": "src_study_pwc_data_center_market_2021",
-        "model_name": "IMPLAN county contribution model reported by BAE",
-        "model_version": "Prince William County prototype-data-center study, 2021-dollar tables 7-8",
-        "geography": "Prince William County, Virginia benchmark transferred to Bexar County, Texas",
-        "vintage": "IMPLAN model reported December 2021; underlying IMPLAN data vintage not disclosed",
-        "local_purchase_assumption": "The coefficient is applied only after an explicit construction-eligible share; it does not establish observed local purchasing in Bexar County.",
-        "channel_separation": "direct_indirect_induced_reported_separately"
-      },
-      "limitations": [
-        "Transferred Virginia benchmark, not a Bexar County input-output model.",
-        "Construction shares are assumed and the source capital is a lower bound.",
-        "Job-years are not peak workers, annual average employment, or permanent jobs."
-      ],
-      "presentation": "modeled_not_observed_or_audited",
-      "notes": "Total direct, indirect, and induced benchmark equivalent; no component rows are published, so this row must not be combined with other construction employment estimates.",
-      "reviewed_on": "2026-09-05"
-    },
-    {
-      "estimate_id": "est_study_microsoft_san_antonio_construction_labor_income_total",
-      "project_id": "prj_study_im3_building_00364289074",
-      "metric_code": "study.modeled_construction_labor_income_total",
-      "label": "Modeled Prince William benchmark-equivalent construction labor income",
-      "category": "construction",
-      "unit": "USD",
-      "measure_type": "flow",
-      "basis": "modeled_synthesis",
-      "value": 222383127.29,
-      "period": {
-        "kind": "construction_period",
-        "start_date": "2007-01-18",
-        "end_date": "2013-11-21",
-        "label": "Original-project approval through the 2013 cumulative investment report"
-      },
-      "scope": {
-        "level": "company_county",
-        "label": "Microsoft San Antonio construction contribution benchmark in Bexar County",
-        "county_fips": "48029",
-        "inventory_allocation": "unallocated"
-      },
-      "interval": {
-        "kind": "sensitivity_envelope",
-        "low": 111191563.64,
-        "central": 222383127.29,
-        "high": 333574690.93,
-        "interpretation": "The capital floor is multiplied by 25%, 50%, and 75% construction-cost shares and the 0.5294836364 total labor-income coefficient. This is a transferred-benchmark sensitivity, not a confidence interval."
-      },
-      "contribution_channel": "total",
-      "aggregation": {
-        "aggregation_id": "microsoft_san_antonio_construction_labor_income_total",
-        "role": "standalone",
-        "overlap_policy": "do_not_sum_outside_declared_total"
-      },
-      "parameters": [
-        {
-          "name": "reported_property_investment_floor",
-          "value": 840000000,
-          "unit": "USD",
-          "provenance": { "kind": "claim", "reference_id": "clm_study_microsoft_san_antonio_investment_2013", "detail": "Broad property-investment floor" },
-          "transformation": "Multiplied by the construction-cost share before the benchmark coefficient"
-        },
-        {
-          "name": "low_construction_cost_share",
-          "value": 0.25,
-          "unit": "ratio",
-          "provenance": { "kind": "assumption", "detail": "Low construction-eligible share" },
-          "transformation": "Excludes equipment from low scenario"
-        },
-        {
-          "name": "central_construction_cost_share",
-          "value": 0.5,
-          "unit": "ratio",
-          "provenance": { "kind": "assumption", "detail": "Central construction-eligible share" },
-          "transformation": "Excludes equipment from central scenario"
-        },
-        {
-          "name": "high_construction_cost_share",
-          "value": 0.75,
-          "unit": "ratio",
-          "provenance": { "kind": "assumption", "detail": "High construction-eligible share" },
-          "transformation": "Excludes equipment from high scenario"
-        },
-        {
-          "name": "total_labor_income_rate",
-          "value": 0.5294836364,
-          "unit": "ratio",
-          "provenance": { "kind": "source", "reference_id": "src_study_pwc_data_center_market_2021", "detail": "Prince William construction labor-income coefficient for construction cost excluding IT equipment" },
-          "transformation": "Multiplies construction-eligible dollars"
-        }
-      ],
-      "confidence": "low",
-      "confidence_rationale": "The calculation transfers a Virginia IMPLAN coefficient and relies on an assumed construction share of a broad investment floor.",
-      "decision_relevance": "Supplies a construction labor-income range while keeping labor income separate from spending and output.",
-      "evidence_search": {
-        "direct_observation_status": "not_found",
-        "source_projection_status": "not_found",
-        "remaining_evidence_gap": "Audited project payroll, benefits, worker residence, and annual labor income"
-      },
-      "derivation": {
-        "method": "input_output_multiplier",
-        "model_version": "microsoft-san-antonio-account-1.0.0",
-        "formula": "reported property-investment floor × construction-cost share × 0.5294836364 total labor-income coefficient",
-        "input_claim_ids": [ "clm_study_microsoft_san_antonio_investment_2013" ],
-        "input_source_ids": [ "src_study_san_antonio_microsoft_2013", "src_study_pwc_data_center_market_2021" ],
-        "assumptions": [
-          "Construction-eligible shares are 25%, 50%, and 75%.",
-          "The Prince William coefficient transfers to Bexar County as a benchmark equivalent.",
-          "Labor income is not added to spending, output, or payroll proxies."
-        ]
-      },
-      "multiplier_provenance": {
-        "source_id": "src_study_pwc_data_center_market_2021",
-        "model_name": "IMPLAN county contribution model reported by BAE",
-        "model_version": "Prince William County prototype-data-center study, 2021-dollar tables 7-8",
-        "geography": "Prince William County, Virginia benchmark transferred to Bexar County, Texas",
-        "vintage": "IMPLAN model reported December 2021; underlying IMPLAN data vintage not disclosed",
-        "local_purchase_assumption": "The coefficient is applied only after an explicit construction-eligible share; it does not establish observed local purchasing in Bexar County.",
-        "channel_separation": "direct_indirect_induced_reported_separately"
-      },
-      "limitations": [
-        "Transferred Virginia benchmark, not a Bexar County input-output model.",
-        "Construction shares are assumed and the source capital is a lower bound.",
-        "Labor income is not an observed payroll total and is not additive to output."
-      ],
-      "presentation": "modeled_not_observed_or_audited",
-      "notes": "Total direct, indirect, and induced benchmark equivalent, not observed project payroll.",
-      "reviewed_on": "2026-09-05"
-    },
-    {
-      "estimate_id": "est_study_microsoft_san_antonio_operating_fte_total",
-      "project_id": "prj_study_im3_building_00364289074",
-      "metric_code": "study.modeled_operating_fte_total",
-      "label": "Modeled total annual operating FTE benchmark",
-      "category": "operations",
-      "unit": "FTE",
-      "measure_type": "stock",
-      "basis": "modeled_synthesis",
-      "value": 555.54,
-      "period": { "kind": "calendar_year", "year": 2024, "label": "Annual operating contribution sensitivity using the latest county-panel year" },
-      "scope": { "level": "company_county", "label": "Microsoft San Antonio operating contribution benchmark in Bexar County", "county_fips": "48029", "inventory_allocation": "unallocated" },
-      "interval": { "kind": "sensitivity_envelope", "low": 490.19, "central": 555.54, "high": 620.9, "interpretation": "Direct-FTE scenarios of 75, 85, and 95 are multiplied by 6.5358 total FTE per direct FTE. The cases combine a reported employment floor with zero, half, or all of a separate forecast and are not a statistical interval." },
-      "contribution_channel": "total",
-      "aggregation": { "aggregation_id": "microsoft_san_antonio_operating_fte_total", "role": "standalone", "overlap_policy": "do_not_sum_outside_declared_total" },
-      "parameters": [
-        { "name": "low_direct_fte", "value": 75, "unit": "FTE", "provenance": { "kind": "claim", "reference_id": "clm_study_microsoft_san_antonio_operating_employee_floor_2013", "detail": "Conservative floor based on the surpassed 75-job requirement" }, "transformation": "Multiplied by the total-FTE coefficient" },
-        { "name": "central_direct_fte", "value": 85, "unit": "FTE", "provenance": { "kind": "assumption", "detail": "Employment floor plus half of the separate 20-job expansion forecast" }, "transformation": "Multiplied by the total-FTE coefficient" },
-        { "name": "high_direct_fte", "value": 95, "unit": "FTE", "provenance": { "kind": "assumption", "detail": "Employment floor plus all of the separate 20-job expansion forecast" }, "transformation": "Multiplied by the total-FTE coefficient" },
-        { "name": "expansion_job_forecast", "value": 20, "unit": "jobs", "provenance": { "kind": "claim", "reference_id": "clm_study_microsoft_san_antonio_expansion_jobs", "detail": "Separate 2013 source projection, not verified fulfillment" }, "transformation": "Applied at zero, 50%, and 100% only to define sensitivity cases" },
-        { "name": "total_fte_per_direct_fte", "value": 6.5358, "unit": "ratio", "provenance": { "kind": "source", "reference_id": "src_study_pwc_data_center_market_2021", "detail": "Prince William operating contribution coefficient" }, "transformation": "Multiplies each direct-FTE scenario" }
-      ],
-      "confidence": "low",
-      "confidence_rationale": "The direct employment input is a 2013 lower bound plus a sensitivity over an unverified forecast, and the contribution coefficient transfers from Virginia.",
-      "decision_relevance": "Bounds total direct, indirect, and induced operating employment while preserving the reported and forecast evidence states.",
-      "evidence_search": { "direct_observation_status": "partial", "source_projection_status": "available_separately", "remaining_evidence_gap": "Current direct and contractor FTE by employer, work location, year, compensation, and residence" },
-      "derivation": {
-        "method": "input_output_multiplier",
-        "model_version": "microsoft-san-antonio-account-1.0.0",
-        "formula": "direct-FTE scenario × 6.5358 total FTE per direct FTE",
-        "input_claim_ids": [ "clm_study_microsoft_san_antonio_operating_employee_floor_2013", "clm_study_microsoft_san_antonio_expansion_jobs" ],
-        "input_source_ids": [ "src_study_san_antonio_microsoft_2013", "src_study_pwc_data_center_market_2021" ],
-        "assumptions": [
-          "Low applies no realization of the 20-job expansion forecast; central applies half; high applies all.",
-          "The 2013 reported lower bound is held constant as a scenario base and is not represented as a 2024 observation.",
-          "The Prince William coefficient transfers to Bexar County as a benchmark equivalent."
-        ]
-      },
-      "multiplier_provenance": { "source_id": "src_study_pwc_data_center_market_2021", "model_name": "IMPLAN county contribution model reported by BAE", "model_version": "Prince William County prototype-data-center study, 2021-dollar tables 7-8", "geography": "Prince William County, Virginia benchmark transferred to Bexar County, Texas", "vintage": "IMPLAN model reported December 2021; underlying IMPLAN data vintage not disclosed", "local_purchase_assumption": "No current Bexar purchasing is treated as observed; the source coefficient is transferred as a benchmark only.", "channel_separation": "direct_indirect_induced_reported_separately" },
-      "limitations": [ "Transferred Virginia coefficient.", "The base employee evidence is from 2013 and is only a lower bound.", "The separate 20-job expansion forecast is not verified as realized.", "The total cannot be added to direct employment or other contribution totals." ],
-      "presentation": "modeled_not_observed_or_audited",
-      "notes": "Annual contribution sensitivity, not current headcount or a causal employment effect.",
-      "reviewed_on": "2026-09-05"
-    },
-    {
-      "estimate_id": "est_study_microsoft_san_antonio_operating_labor_income_total",
-      "project_id": "prj_study_im3_building_00364289074",
-      "metric_code": "study.modeled_operating_labor_income_total",
-      "label": "Modeled total annual operating labor income",
-      "category": "operations",
-      "unit": "USD_per_year",
-      "measure_type": "flow",
-      "basis": "modeled_synthesis",
-      "value": 35827500,
-      "period": { "kind": "calendar_year", "year": 2024, "label": "Annual operating contribution sensitivity using the latest county-panel year" },
-      "scope": { "level": "company_county", "label": "Microsoft San Antonio operating contribution benchmark in Bexar County", "county_fips": "48029", "inventory_allocation": "unallocated" },
-      "interval": { "kind": "sensitivity_envelope", "low": 31612500, "central": 35827500, "high": 40042500, "interpretation": "Direct-FTE scenarios of 75, 85, and 95 are multiplied by $421,500 total labor income per direct FTE. This is a transferred-benchmark sensitivity, not a confidence interval." },
-      "contribution_channel": "total",
-      "aggregation": { "aggregation_id": "microsoft_san_antonio_operating_labor_income_total", "role": "standalone", "overlap_policy": "do_not_sum_outside_declared_total" },
-      "parameters": [
-        { "name": "low_direct_fte", "value": 75, "unit": "FTE", "provenance": { "kind": "claim", "reference_id": "clm_study_microsoft_san_antonio_operating_employee_floor_2013", "detail": "Conservative floor based on the surpassed 75-job requirement" }, "transformation": "Multiplied by the labor-income coefficient" },
-        { "name": "central_direct_fte", "value": 85, "unit": "FTE", "provenance": { "kind": "assumption", "detail": "Employment floor plus half of the separate 20-job expansion forecast" }, "transformation": "Multiplied by the labor-income coefficient" },
-        { "name": "high_direct_fte", "value": 95, "unit": "FTE", "provenance": { "kind": "assumption", "detail": "Employment floor plus all of the separate 20-job expansion forecast" }, "transformation": "Multiplied by the labor-income coefficient" },
-        { "name": "expansion_job_forecast", "value": 20, "unit": "jobs", "provenance": { "kind": "claim", "reference_id": "clm_study_microsoft_san_antonio_expansion_jobs", "detail": "Separate 2013 source projection, not verified fulfillment" }, "transformation": "Applied at zero, 50%, and 100% only to define sensitivity cases" },
-        { "name": "total_labor_income_per_direct_fte", "value": 421500, "unit": "USD_per_FTE", "provenance": { "kind": "source", "reference_id": "src_study_pwc_data_center_market_2021", "detail": "Prince William operating contribution coefficient" }, "transformation": "Multiplies each direct-FTE scenario" }
-      ],
-      "confidence": "low",
-      "confidence_rationale": "The employment cases are not current observations and the compensation coefficient transfers from Virginia.",
-      "decision_relevance": "Bounds operating labor income without relabeling source job commitments as payroll.",
-      "evidence_search": { "direct_observation_status": "not_found", "source_projection_status": "available_separately", "remaining_evidence_gap": "Annual direct payroll, contractor compensation, benefits, occupations, and residence" },
-      "derivation": { "method": "input_output_multiplier", "model_version": "microsoft-san-antonio-account-1.0.0", "formula": "direct-FTE scenario × $421,500 total labor income per direct FTE", "input_claim_ids": [ "clm_study_microsoft_san_antonio_operating_employee_floor_2013", "clm_study_microsoft_san_antonio_expansion_jobs" ], "input_source_ids": [ "src_study_san_antonio_microsoft_2013", "src_study_pwc_data_center_market_2021" ], "assumptions": [ "Low, central, and high use zero, half, and all of the 20-job forecast above the 75-job floor.", "The Prince William coefficient transfers to Bexar County as a benchmark equivalent.", "Labor income is not added to output or payroll proxies." ] },
-      "multiplier_provenance": { "source_id": "src_study_pwc_data_center_market_2021", "model_name": "IMPLAN county contribution model reported by BAE", "model_version": "Prince William County prototype-data-center study, 2021-dollar tables 7-8", "geography": "Prince William County, Virginia benchmark transferred to Bexar County, Texas", "vintage": "IMPLAN model reported December 2021; underlying IMPLAN data vintage not disclosed", "local_purchase_assumption": "No current Bexar purchasing is treated as observed; the source coefficient is transferred as a benchmark only.", "channel_separation": "direct_indirect_induced_reported_separately" },
-      "limitations": [ "Transferred Virginia coefficient.", "Employee evidence is a 2013 lower bound and the expansion forecast is unverified.", "Labor income is not observed Microsoft payroll and is not additive to supplier or household output." ],
-      "presentation": "modeled_not_observed_or_audited",
-      "notes": "Annual contribution sensitivity, not observed payroll.",
-      "reviewed_on": "2026-09-05"
-    },
-    {
-      "estimate_id": "est_study_microsoft_san_antonio_operating_supplier_output",
-      "project_id": "prj_study_im3_building_00364289074",
-      "metric_code": "study.modeled_operating_supplier_output",
-      "label": "Modeled annual operating supplier output",
-      "category": "suppliers",
-      "unit": "USD_per_year",
-      "measure_type": "flow",
-      "basis": "modeled_synthesis",
-      "value": 54384821.55,
-      "period": { "kind": "calendar_year", "year": 2024, "label": "Annual indirect supplier-output sensitivity using the latest county-panel year" },
-      "scope": { "level": "company_county", "label": "Microsoft San Antonio supplier contribution benchmark in Bexar County", "county_fips": "48029", "inventory_allocation": "unallocated" },
-      "interval": { "kind": "sensitivity_envelope", "low": 47986607.25, "central": 54384821.55, "high": 60783035.85, "interpretation": "Direct-FTE scenarios of 75, 85, and 95 are multiplied by $639,821.43 indirect output per direct FTE. This is a transferred-benchmark sensitivity, not a confidence interval." },
-      "contribution_channel": "indirect",
-      "aggregation": { "aggregation_id": "microsoft_san_antonio_operating_supplier_output", "role": "standalone", "overlap_policy": "do_not_sum_outside_declared_total" },
-      "parameters": [
-        { "name": "low_direct_fte", "value": 75, "unit": "FTE", "provenance": { "kind": "claim", "reference_id": "clm_study_microsoft_san_antonio_operating_employee_floor_2013", "detail": "Conservative floor based on the surpassed 75-job requirement" }, "transformation": "Multiplied by the supplier-output coefficient" },
-        { "name": "central_direct_fte", "value": 85, "unit": "FTE", "provenance": { "kind": "assumption", "detail": "Employment floor plus half of the separate 20-job expansion forecast" }, "transformation": "Multiplied by the supplier-output coefficient" },
-        { "name": "high_direct_fte", "value": 95, "unit": "FTE", "provenance": { "kind": "assumption", "detail": "Employment floor plus all of the separate 20-job expansion forecast" }, "transformation": "Multiplied by the supplier-output coefficient" },
-        { "name": "expansion_job_forecast", "value": 20, "unit": "jobs", "provenance": { "kind": "claim", "reference_id": "clm_study_microsoft_san_antonio_expansion_jobs", "detail": "Separate 2013 source projection, not verified fulfillment" }, "transformation": "Applied at zero, 50%, and 100% only to define sensitivity cases" },
-        { "name": "supplier_output_per_direct_fte", "value": 639821.43, "unit": "USD_per_FTE", "provenance": { "kind": "source", "reference_id": "src_study_pwc_data_center_market_2021", "detail": "Prince William indirect operating-output coefficient" }, "transformation": "Multiplies each direct-FTE scenario" }
-      ],
-      "confidence": "low",
-      "confidence_rationale": "No observed supplier purchases or vendor geography are public, and the coefficient transfers from Virginia.",
-      "decision_relevance": "Completes the operating supplier channel while keeping economic output distinct from vendor payments.",
-      "evidence_search": { "direct_observation_status": "not_found", "source_projection_status": "not_found", "remaining_evidence_gap": "Annual supplier purchases, vendor geography, industries, contract labor, and local retention" },
-      "derivation": { "method": "input_output_multiplier", "model_version": "microsoft-san-antonio-account-1.0.0", "formula": "direct-FTE scenario × $639,821.43 indirect supplier output per direct FTE", "input_claim_ids": [ "clm_study_microsoft_san_antonio_operating_employee_floor_2013", "clm_study_microsoft_san_antonio_expansion_jobs" ], "input_source_ids": [ "src_study_san_antonio_microsoft_2013", "src_study_pwc_data_center_market_2021" ], "assumptions": [ "Low, central, and high use zero, half, and all of the 20-job forecast above the 75-job floor.", "The Prince William coefficient transfers to Bexar County as a benchmark equivalent.", "Output is not treated as observed payments or as local-only purchasing." ] },
-      "multiplier_provenance": { "source_id": "src_study_pwc_data_center_market_2021", "model_name": "IMPLAN county contribution model reported by BAE", "model_version": "Prince William County prototype-data-center study, 2021-dollar tables 7-8", "geography": "Prince William County, Virginia benchmark transferred to Bexar County, Texas", "vintage": "IMPLAN model reported December 2021; underlying IMPLAN data vintage not disclosed", "local_purchase_assumption": "No current Bexar purchasing is treated as observed; the source coefficient is transferred as a benchmark only.", "channel_separation": "direct_indirect_induced_reported_separately" },
-      "limitations": [ "Transferred Virginia coefficient.", "Employee evidence is a 2013 lower bound and the expansion forecast is unverified.", "Output is not vendor payments, local-only purchasing, payroll, or tax revenue." ],
-      "presentation": "modeled_not_observed_or_audited",
-      "notes": "Indirect output scenario; do not add it to direct purchasing or total operating contribution rows.",
-      "reviewed_on": "2026-09-05"
-    },
-    {
-      "estimate_id": "est_study_microsoft_san_antonio_induced_household_output",
-      "project_id": "prj_study_im3_building_00364289074",
-      "metric_code": "study.modeled_induced_household_output",
-      "label": "Modeled annual induced household output",
-      "category": "community",
-      "unit": "USD_per_year",
-      "measure_type": "flow",
-      "basis": "modeled_synthesis",
-      "value": 10023928.45,
-      "period": { "kind": "calendar_year", "year": 2024, "label": "Annual induced household-output sensitivity using the latest county-panel year" },
-      "scope": { "level": "company_county", "label": "Microsoft San Antonio household contribution benchmark in Bexar County", "county_fips": "48029", "inventory_allocation": "unallocated" },
-      "interval": { "kind": "sensitivity_envelope", "low": 8844642.75, "central": 10023928.45, "high": 11203214.15, "interpretation": "Direct-FTE scenarios of 75, 85, and 95 are multiplied by $117,928.57 induced output per direct FTE. This is a transferred-benchmark sensitivity, not a confidence interval." },
-      "contribution_channel": "induced",
-      "aggregation": { "aggregation_id": "microsoft_san_antonio_induced_household_output", "role": "standalone", "overlap_policy": "do_not_sum_outside_declared_total" },
-      "parameters": [
-        { "name": "low_direct_fte", "value": 75, "unit": "FTE", "provenance": { "kind": "claim", "reference_id": "clm_study_microsoft_san_antonio_operating_employee_floor_2013", "detail": "Conservative floor based on the surpassed 75-job requirement" }, "transformation": "Multiplied by the household-output coefficient" },
-        { "name": "central_direct_fte", "value": 85, "unit": "FTE", "provenance": { "kind": "assumption", "detail": "Employment floor plus half of the separate 20-job expansion forecast" }, "transformation": "Multiplied by the household-output coefficient" },
-        { "name": "high_direct_fte", "value": 95, "unit": "FTE", "provenance": { "kind": "assumption", "detail": "Employment floor plus all of the separate 20-job expansion forecast" }, "transformation": "Multiplied by the household-output coefficient" },
-        { "name": "expansion_job_forecast", "value": 20, "unit": "jobs", "provenance": { "kind": "claim", "reference_id": "clm_study_microsoft_san_antonio_expansion_jobs", "detail": "Separate 2013 source projection, not verified fulfillment" }, "transformation": "Applied at zero, 50%, and 100% only to define sensitivity cases" },
-        { "name": "household_output_per_direct_fte", "value": 117928.57, "unit": "USD_per_FTE", "provenance": { "kind": "source", "reference_id": "src_study_pwc_data_center_market_2021", "detail": "Prince William induced operating-output coefficient" }, "transformation": "Multiplies each direct-FTE scenario" }
-      ],
-      "confidence": "low",
-      "confidence_rationale": "No observed household spending or worker residence is public, and the coefficient transfers from Virginia.",
-      "decision_relevance": "Completes the household-spending contribution channel separately from direct community transfers.",
-      "evidence_search": { "direct_observation_status": "not_found", "source_projection_status": "not_found", "remaining_evidence_gap": "Employee and contractor residence, take-home compensation, and observed household spending" },
-      "derivation": { "method": "input_output_multiplier", "model_version": "microsoft-san-antonio-account-1.0.0", "formula": "direct-FTE scenario × $117,928.57 induced household output per direct FTE", "input_claim_ids": [ "clm_study_microsoft_san_antonio_operating_employee_floor_2013", "clm_study_microsoft_san_antonio_expansion_jobs" ], "input_source_ids": [ "src_study_san_antonio_microsoft_2013", "src_study_pwc_data_center_market_2021" ], "assumptions": [ "Low, central, and high use zero, half, and all of the 20-job forecast above the 75-job floor.", "The Prince William coefficient transfers to Bexar County as a benchmark equivalent.", "Induced output is not treated as a charitable contribution, household income, or retail receipts." ] },
-      "multiplier_provenance": { "source_id": "src_study_pwc_data_center_market_2021", "model_name": "IMPLAN county contribution model reported by BAE", "model_version": "Prince William County prototype-data-center study, 2021-dollar tables 7-8", "geography": "Prince William County, Virginia benchmark transferred to Bexar County, Texas", "vintage": "IMPLAN model reported December 2021; underlying IMPLAN data vintage not disclosed", "local_purchase_assumption": "No current Bexar purchasing is treated as observed; the source coefficient is transferred as a benchmark only.", "channel_separation": "direct_indirect_induced_reported_separately" },
-      "limitations": [ "Transferred Virginia coefficient.", "Employee evidence is a 2013 lower bound and the expansion forecast is unverified.", "Economic output is not direct community funding, household income, or tax revenue." ],
-      "presentation": "modeled_not_observed_or_audited",
-      "notes": "Induced household-output scenario, kept separate from the reported Northwest Vista College donation.",
-      "reviewed_on": "2026-09-05"
-    },
     {
       "estimate_id": "est_study_microsoft_san_antonio_gdp_comparison_gap",
       "project_id": "prj_study_im3_building_00364289074",
@@ -621,6 +21,7 @@
       "contribution_channel": "not_applicable",
       "aggregation": { "aggregation_id": "microsoft_san_antonio_gdp_comparison_gap", "role": "standalone", "overlap_policy": "do_not_sum_outside_declared_total" },
       "parameters": [
+        { "name": "operating_by_year_anchor", "value": 2013, "unit": "year", "provenance": { "kind": "claim", "reference_id": "clm_study_microsoft_san_antonio_operating_employee_floor_2013", "detail": "City evidence shows the original-project job requirement had been surpassed in 2013" }, "transformation": "Defines 2005-2012 as the pre-anchor fit period; it is not assumed to be first county exposure" },
         { "name": "host_2024_value", "value": 127563908000, "unit": "chained_2017_USD", "provenance": { "kind": "source", "reference_id": "src_study_county_economic_core_2001_2024", "detail": "Bexar County 2024 real GDP from the county economic panel" }, "transformation": "Compared with weighted benchmark value" },
         { "name": "comparison_2024_value", "value": 105842367761.70717, "unit": "chained_2017_USD", "provenance": { "kind": "source", "reference_id": "src_study_county_economic_core_2001_2024", "detail": "Inverse-distance weighted 2024 value from 20 comparison counties" }, "transformation": "Subtracted from host and used as denominator" },
         { "name": "pre_period_rmse_percent", "value": 2.17903003393929, "unit": "percent", "provenance": { "kind": "assumption", "detail": "Fit diagnostic over 2005-2012" }, "transformation": "Sets sensitivity width subject to a five-point floor" }
@@ -629,11 +30,11 @@
       "confidence_rationale": "The benchmark is mechanical and the comparison pool is not a validated unexposed causal control group.",
       "decision_relevance": "Shows Bexar County's 2024 GDP divergence from a reproducible benchmark without attributing the gap to Microsoft.",
       "evidence_search": { "direct_observation_status": "partial", "source_projection_status": "not_applicable", "remaining_evidence_gap": "A defensible causal design with treatment isolation, uncontaminated controls, placebo tests, spillover analysis, and robustness diagnostics" },
-      "derivation": { "method": "benchmark_application", "model_version": "microsoft-san-antonio-account-1.0.0", "formula": "100 × (host 2024 outcome − inverse-distance-weighted 20-county benchmark) ÷ benchmark", "input_claim_ids": [], "input_source_ids": [ "src_study_county_economic_core_2001_2024" ], "assumptions": [ "Matching uses 2005-2012 log level, average log growth, and growth volatility.", "Study counties are excluded from the donor pool.", "The operating-by year is not assumed to be first county exposure or an isolated treatment date." ] },
+      "derivation": { "method": "benchmark_application", "model_version": "microsoft-san-antonio-account-1.1.0", "formula": "100 × (host 2024 outcome − inverse-distance-weighted 20-county benchmark) ÷ benchmark", "input_claim_ids": [ "clm_study_microsoft_san_antonio_operating_employee_floor_2013" ], "input_source_ids": [ "src_study_san_antonio_microsoft_2013", "src_study_county_economic_core_2001_2024" ], "assumptions": [ "Matching uses 2005-2012 log level, average log growth, and growth volatility.", "Study counties are excluded from the donor pool.", "The 2013 operating-by anchor is not assumed to be first county exposure or an isolated treatment date." ] },
       "limitations": [ "This comparison is descriptive and must not be interpreted as a data-center effect.", "The donor screen excludes study counties but cannot exclude every unobserved data-center or concurrent economic treatment.", "Bexar County contains multiple data centers and major overlapping investments.", "The interval is a fit sensitivity, not a statistical confidence interval." ],
       "presentation": "modeled_not_observed_or_audited",
-      "notes": "Low-confidence descriptive county comparison; no causal attribution is made.",
-      "reviewed_on": "2026-09-05"
+      "notes": "Low-confidence descriptive county comparison retained as a bounded residual module; no causal attribution is made.",
+      "reviewed_on": "2026-09-06"
     },
     {
       "estimate_id": "est_study_microsoft_san_antonio_employment_comparison_gap",
@@ -651,6 +52,7 @@
       "contribution_channel": "not_applicable",
       "aggregation": { "aggregation_id": "microsoft_san_antonio_employment_comparison_gap", "role": "standalone", "overlap_policy": "do_not_sum_outside_declared_total" },
       "parameters": [
+        { "name": "operating_by_year_anchor", "value": 2013, "unit": "year", "provenance": { "kind": "claim", "reference_id": "clm_study_microsoft_san_antonio_operating_employee_floor_2013", "detail": "City evidence shows the original-project job requirement had been surpassed in 2013" }, "transformation": "Defines 2005-2012 as the pre-anchor fit period; it is not assumed to be first county exposure" },
         { "name": "host_2024_value", "value": 932387, "unit": "jobs", "provenance": { "kind": "source", "reference_id": "src_study_county_economic_core_2001_2024", "detail": "Bexar County 2024 total covered employment from the county economic panel" }, "transformation": "Compared with weighted benchmark value" },
         { "name": "comparison_2024_value", "value": 757323.3978876766, "unit": "jobs", "provenance": { "kind": "source", "reference_id": "src_study_county_economic_core_2001_2024", "detail": "Inverse-distance weighted 2024 value from 20 comparison counties" }, "transformation": "Subtracted from host and used as denominator" },
         { "name": "pre_period_rmse_percent", "value": 19.674707601786356, "unit": "percent", "provenance": { "kind": "assumption", "detail": "Fit diagnostic over 2005-2012" }, "transformation": "Sets sensitivity width" }
@@ -659,11 +61,11 @@
       "confidence_rationale": "The benchmark is mechanical and the comparison pool is not a validated unexposed causal control group.",
       "decision_relevance": "Shows Bexar County's 2024 employment divergence from a reproducible benchmark without attributing the gap to Microsoft.",
       "evidence_search": { "direct_observation_status": "partial", "source_projection_status": "not_applicable", "remaining_evidence_gap": "A defensible causal design with treatment isolation, uncontaminated controls, placebo tests, spillover analysis, and robustness diagnostics" },
-      "derivation": { "method": "benchmark_application", "model_version": "microsoft-san-antonio-account-1.0.0", "formula": "100 × (host 2024 outcome − inverse-distance-weighted 20-county benchmark) ÷ benchmark", "input_claim_ids": [], "input_source_ids": [ "src_study_county_economic_core_2001_2024" ], "assumptions": [ "Matching uses 2005-2012 log level, average log growth, and growth volatility.", "Study counties are excluded from the donor pool.", "The operating-by year is not assumed to be first county exposure or an isolated treatment date." ] },
+      "derivation": { "method": "benchmark_application", "model_version": "microsoft-san-antonio-account-1.1.0", "formula": "100 × (host 2024 outcome − inverse-distance-weighted 20-county benchmark) ÷ benchmark", "input_claim_ids": [ "clm_study_microsoft_san_antonio_operating_employee_floor_2013" ], "input_source_ids": [ "src_study_san_antonio_microsoft_2013", "src_study_county_economic_core_2001_2024" ], "assumptions": [ "Matching uses 2005-2012 log level, average log growth, and growth volatility.", "Study counties are excluded from the donor pool.", "The 2013 operating-by anchor is not assumed to be first county exposure or an isolated treatment date." ] },
       "limitations": [ "This comparison is descriptive and must not be interpreted as a data-center effect.", "The donor screen excludes study counties but cannot exclude every unobserved data-center or concurrent economic treatment.", "Bexar County contains multiple data centers and major overlapping investments.", "The interval is a fit sensitivity, not a statistical confidence interval." ],
       "presentation": "modeled_not_observed_or_audited",
-      "notes": "Low-confidence descriptive county comparison; no causal attribution is made.",
-      "reviewed_on": "2026-09-05"
+      "notes": "Low-confidence descriptive county comparison retained as a bounded residual module; no causal attribution is made.",
+      "reviewed_on": "2026-09-06"
     },
     {
       "estimate_id": "est_study_microsoft_san_antonio_wage_comparison_gap",
@@ -681,6 +83,7 @@
       "contribution_channel": "not_applicable",
       "aggregation": { "aggregation_id": "microsoft_san_antonio_wage_comparison_gap", "role": "standalone", "overlap_policy": "do_not_sum_outside_declared_total" },
       "parameters": [
+        { "name": "operating_by_year_anchor", "value": 2013, "unit": "year", "provenance": { "kind": "claim", "reference_id": "clm_study_microsoft_san_antonio_operating_employee_floor_2013", "detail": "City evidence shows the original-project job requirement had been surpassed in 2013" }, "transformation": "Defines 2005-2012 as the pre-anchor fit period; it is not assumed to be first county exposure" },
         { "name": "host_2024_value", "value": 1267, "unit": "USD_per_week", "provenance": { "kind": "source", "reference_id": "src_study_county_economic_core_2001_2024", "detail": "Bexar County 2024 nominal average weekly wage from the county economic panel" }, "transformation": "Compared with weighted benchmark value" },
         { "name": "comparison_2024_value", "value": 1260.912181924279, "unit": "USD_per_week", "provenance": { "kind": "source", "reference_id": "src_study_county_economic_core_2001_2024", "detail": "Inverse-distance weighted 2024 value from 20 comparison counties" }, "transformation": "Subtracted from host and used as denominator" },
         { "name": "pre_period_rmse_percent", "value": 0.90624028803601, "unit": "percent", "provenance": { "kind": "assumption", "detail": "Fit diagnostic over 2005-2012" }, "transformation": "Sets sensitivity width subject to a five-point floor" }
@@ -689,11 +92,11 @@
       "confidence_rationale": "The benchmark is mechanical and the comparison pool is not a validated unexposed causal control group.",
       "decision_relevance": "Shows Bexar County's 2024 wage divergence from a reproducible benchmark without attributing the gap to Microsoft.",
       "evidence_search": { "direct_observation_status": "partial", "source_projection_status": "not_applicable", "remaining_evidence_gap": "A defensible causal design with treatment isolation, uncontaminated controls, placebo tests, spillover analysis, and robustness diagnostics" },
-      "derivation": { "method": "benchmark_application", "model_version": "microsoft-san-antonio-account-1.0.0", "formula": "100 × (host 2024 outcome − inverse-distance-weighted 20-county benchmark) ÷ benchmark", "input_claim_ids": [], "input_source_ids": [ "src_study_county_economic_core_2001_2024" ], "assumptions": [ "Matching uses 2005-2012 log level, average log growth, and growth volatility.", "Study counties are excluded from the donor pool.", "The operating-by year is not assumed to be first county exposure or an isolated treatment date." ] },
+      "derivation": { "method": "benchmark_application", "model_version": "microsoft-san-antonio-account-1.1.0", "formula": "100 × (host 2024 outcome − inverse-distance-weighted 20-county benchmark) ÷ benchmark", "input_claim_ids": [ "clm_study_microsoft_san_antonio_operating_employee_floor_2013" ], "input_source_ids": [ "src_study_san_antonio_microsoft_2013", "src_study_county_economic_core_2001_2024" ], "assumptions": [ "Matching uses 2005-2012 log level, average log growth, and growth volatility.", "Study counties are excluded from the donor pool.", "The 2013 operating-by anchor is not assumed to be first county exposure or an isolated treatment date." ] },
       "limitations": [ "This comparison is descriptive and must not be interpreted as a data-center effect.", "The donor screen excludes study counties but cannot exclude every unobserved data-center or concurrent economic treatment.", "Bexar County contains multiple data centers and major overlapping investments.", "The interval is a fit sensitivity, not a statistical confidence interval." ],
       "presentation": "modeled_not_observed_or_audited",
-      "notes": "Low-confidence descriptive county comparison; no causal attribution is made.",
-      "reviewed_on": "2026-09-05"
+      "notes": "Low-confidence descriptive county comparison retained as a bounded residual module; no causal attribution is made.",
+      "reviewed_on": "2026-09-06"
     }
   ]
 }

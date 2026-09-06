@@ -1,8 +1,8 @@
 {
   "schema_version": "1.0.0",
   "project_id": "prj_study_im3_building_00364289074",
-  "reviewed_on": "2026-09-05",
-  "scope_note": "Public-source review for the Microsoft facility at 5150 Rogers Road and explicitly labeled wider Microsoft/Bexar County activity. The exact-site ordinance and permit records are retained separately from later company/county and Greater San Antonio disclosures. Permit value is an administrative construction amount, the original investment and employment figures are commitments, the 2013 employment threshold is a reported lower bound, and water use is a source projection rather than metered consumption. No Bexar-and-Medina total is allocated to this building. Actual annual construction spending, worker residence, payroll, vendor payments, operating purchases, recipient-level tax receipts, same-scope public-service cost, electricity use, wastewater, emissions, and annual community transfers remain unobserved.",
+  "reviewed_on": "2026-09-06",
+  "scope_note": "Corrective public-source audit for Microsoft's data-center property at 5150 Rogers Road and explicitly labeled wider Microsoft/Bexar County activity. Exact-site ordinance, permit, appraisal, and tax-account records remain separate from later campuses and regional disclosures; the three appraisal accounts and two taxable-account payments are not consolidated. Permit value is administrative, the original investment and employment figures are commitments, the 2013 employment threshold is a reported lower bound, and the water quantity is a projection rather than metered consumption. No Bexar-and-Medina total is allocated to this property. Annual construction expenditure, construction labor and residence, supplier payments, operating payroll and purchases, recipient-level tax distributions, marginal public-service cost, electricity consumption, water withdrawal or consumption, wastewater, actual emissions, and a recurring facility-level community series remain unobserved after the documented searches.",
   "sources": [
     {
       "source_id": "src_study_microsoft_san_antonio_ordinance_2007",
@@ -87,6 +87,132 @@
       "retrieved_on": "2026-09-05",
       "review_method": "web_page",
       "notes": "Microsoft reports that 79% of water used at its San Antonio location is recycled, reused, or non-potable. The percentage is location-wide and does not disclose a volume, year-specific facility denominator, withdrawal, consumption, or 5150 Rogers Road allocation."
+    },
+    {
+      "source_id": "src_study_bexar_cad_microsoft_5150_2026",
+      "title": "Bexar Appraisal District property search — 5150 Rogers Road Microsoft accounts",
+      "url": "https://bexar.trueautomation.com/clientdb/propertysearch.aspx?cid=110",
+      "publisher": "Bexar Appraisal District",
+      "source_type": "assessor_record",
+      "publication_date": {
+        "precision": "day",
+        "date": "2026-09-04"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "structured_data",
+      "notes": "Exact-address search returned Microsoft real-property account 1094298, equipment/personal-property account 1107340, and solar/wind-equipment account 1172617. The 2025 roll histories report $112,000,000, $91,391,490, and $86,400 of appraised value respectively. Real-property detail reports 36.235 acres and 463,350 square feet of commercial living area; accounts remain separate and assessments are stocks, not investment or receipts."
+    },
+    {
+      "source_id": "src_study_bexar_tax_microsoft_5150_2026",
+      "title": "Bexar County Tax Assessor-Collector account and payment histories — 5150 Rogers Road",
+      "url": "https://bexar.acttax.com/act_webdev/bexar/index.jsp",
+      "publisher": "Bexar County Tax Assessor-Collector",
+      "source_type": "local_government_record",
+      "publication_date": {
+        "precision": "day",
+        "date": "2026-06-16"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "structured_data",
+      "notes": "CAD-ID searches for 1094298 and 1107340 resolve to tax accounts 176420480010 and 000001107340 at 5150 Rogers Road. Each 2025 levy was paid in two equal installments dated November 17, 2025 and June 16, 2026, totaling $2,564,994.88 and $2,093,024.14. Payments are account transactions across listed jurisdictions, not recipient-level receipts or a net fiscal result."
+    },
+    {
+      "source_id": "src_study_san_antonio_active_incentives_2022",
+      "title": "City of San Antonio active economic incentive agreements",
+      "url": "https://www.sanantonio.gov/OpenDataReport/Report_files/sheet001.htm",
+      "publisher": "City of San Antonio",
+      "source_type": "local_government_record",
+      "publication_date": {
+        "precision": "year",
+        "year": 2022
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "structured_data",
+      "notes": "The self-reported monitoring table lists the exact 5150 Rogers agreement, $16,169,082.93 in total city taxes abated, investment compliance, and no published actual-job count. It separately lists the SN4 agreement and $3,108,452.67 disbursed. Abated taxes are not normalized as cash payments, and SN4 is not allocated to the selected property."
+    },
+    {
+      "source_id": "src_study_tceq_microsoft_sn_campus_2026",
+      "title": "Statement of Basis for Microsoft SN Campus federal operating permit O4780",
+      "url": "https://www.tceq.texas.gov/assets/public/permitting/air/publicnotice/38509sob.pdf",
+      "publisher": "Texas Commission on Environmental Quality",
+      "source_type": "state_record",
+      "publication_date": {
+        "precision": "day",
+        "date": "2026-02-17"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "pdf_text_and_page_image",
+      "notes": "The permit basis identifies Microsoft SN Campus SN1, SN2, SN4, and SN7 at 5150 Rogers Road and groups diesel emergency engines by rating class. It does not disclose actual generator runtime, fuel use, annual emissions, metered electricity, facility load, or a selected-building allocation."
+    },
+    {
+      "source_id": "src_study_texas_qualified_data_centers_2026",
+      "title": "Texas Comptroller certified data-center list",
+      "url": "https://comptroller.texas.gov/taxes/data-centers/data-center-lists.php",
+      "publisher": "Texas Comptroller of Public Accounts",
+      "source_type": "state_record",
+      "publication_date": {
+        "precision": "year",
+        "year": 2026
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "structured_data",
+      "notes": "The statewide list includes a Microsoft Corporation data center certified December 1, 2013 under registrations DC993797-OW1, DC993797-OC1, and DC993797-OP1. The list gives no street address, exempt-purchase value, tax savings, or building allocation, so it is retained only as state-program context."
+    },
+    {
+      "source_id": "src_study_saws_recycled_water_program_2026",
+      "title": "San Antonio Water System recycled-water program",
+      "url": "https://www.saws.org/your-water/management-sources/recycled-water-program/",
+      "publisher": "San Antonio Water System",
+      "source_type": "local_government_record",
+      "publication_date": {
+        "precision": "year",
+        "year": 2026
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_page",
+      "notes": "SAWS reports systemwide recycled-water deliveries and program capacity but does not identify Microsoft or 5150 Rogers Road in its customer totals. The page supplies system context only, not a facility meter, bill, withdrawal, consumption, or wastewater record."
+    },
+    {
+      "source_id": "src_study_microsoft_sec_10k_2026",
+      "title": "Microsoft Corporation Form 10-K for fiscal year ended June 30, 2026",
+      "url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526323660/msft-20260630.htm",
+      "publisher": "U.S. Securities and Exchange Commission",
+      "source_type": "sec_filing",
+      "publication_date": {
+        "precision": "day",
+        "date": "2026-06-30"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_page",
+      "notes": "The filing discusses datacenter capital, supply constraints, vendor management, and global operations but does not report San Antonio- or 5150 Rogers-level construction spend, payroll, employees, supplier purchases, electricity, water, emissions, tax, or community transfers."
+    },
+    {
+      "source_id": "src_study_microsoft_san_antonio_community_2024",
+      "title": "San Antonio community investments",
+      "url": "https://local.microsoft.com/blog/san-antonio-community-investments/",
+      "publisher": "Microsoft",
+      "source_type": "operator_release",
+      "publication_date": {
+        "precision": "year",
+        "year": 2024
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_page",
+      "notes": "The operator names San Antonio partner programs and scholarship activity but describes a sample rather than a complete ledger and supplies no program amounts or 5150 Rogers allocation. Recipient-reported Northwest Vista College funding remains the only normalized direct community amount in this account."
+    },
+    {
+      "source_id": "src_study_county_economic_core_2001_2024",
+      "title": "County Economic Core Panel, 2001-2024",
+      "url": "https://apps.bea.gov/regional/downloadzip.htm",
+      "publisher": "U.S. Bureau of Economic Analysis and U.S. Bureau of Labor Statistics",
+      "source_type": "other",
+      "publication_date": {
+        "precision": "year",
+        "year": 2026
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "structured_data",
+      "notes": "Repository panel compiled from official annual county real GDP, total employment, and average-weekly-wage series. These are county observations, not project contributions; the retained comparison modules use them descriptively with explicit noncausal limitations."
     }
   ],
   "records": [
@@ -265,6 +391,155 @@
       "notes": "College-reported direct gift for the Emerging Technologies Project. It is a Bexar County community transfer, not facility investment, payroll, tax revenue, induced household spending, or proof of annual recurring funding; the source does not allocate the gift to one Microsoft data-center building.",
       "review_status": "source_checked",
       "reviewed_on": "2026-09-05"
+    },
+    {
+      "claim_id": "clm_study_microsoft_san_antonio_floor_area_2026",
+      "project_id": "prj_study_im3_building_00364289074",
+      "metric_code": "study.operating_property_floor_area",
+      "value": 463350,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "reported_snapshot",
+        "report_date": "2026-09-04",
+        "label": "Bexar Appraisal District account detail current September 4, 2026"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Microsoft real-property account 1094298 at 5150 Rogers Road",
+        "county_fips": "48029",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_bexar_cad_microsoft_5150_2026",
+      "source_locator": "Property ID 1094298, Improvement / Building, Improvement #1",
+      "notes": "Assessor-reported commercial living area across listed data-center, warehouse, and office components. It is a physical stock for the whole account, not rentable white space, raised floor, IT capacity, utilization, or an individual-building allocation.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06"
+    },
+    {
+      "claim_id": "clm_study_microsoft_san_antonio_real_appraised_value_2025",
+      "project_id": "prj_study_im3_building_00364289074",
+      "metric_code": "study.appraised_property_value",
+      "value": 112000000,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2025,
+        "label": "Bexar Appraisal District 2025 roll value"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Microsoft real-property account 1094298 at 5150 Rogers Road",
+        "county_fips": "48029",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_bexar_cad_microsoft_5150_2026",
+      "source_locator": "Property ID 1094298, Roll Value History, 2025 row",
+      "notes": "Annual appraisal stock for land and improvements on the real-property account. It is not capital expenditure, taxable value for every jurisdiction, a tax payment, or the separate personal-property accounts.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "annual_series_key": "microsoft_san_antonio_real_appraised_value"
+    },
+    {
+      "claim_id": "clm_study_microsoft_san_antonio_equipment_appraised_value_2025",
+      "project_id": "prj_study_im3_building_00364289074",
+      "metric_code": "study.appraised_property_value",
+      "value": 91391490,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2025,
+        "label": "Bexar Appraisal District 2025 roll value"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Microsoft personal-property account 1107340 at 5150 Rogers Road",
+        "county_fips": "48029",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_bexar_cad_microsoft_5150_2026",
+      "source_locator": "Property ID 1107340, Roll Value History, 2025 row",
+      "notes": "Annual appraisal stock for the separately listed equipment/personal-property account. It is not investment, purchasing, taxable value for every jurisdiction, a tax payment, or the real-property account.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "annual_series_key": "microsoft_san_antonio_equipment_appraised_value"
+    },
+    {
+      "claim_id": "clm_study_microsoft_san_antonio_solar_appraised_value_2025",
+      "project_id": "prj_study_im3_building_00364289074",
+      "metric_code": "study.appraised_property_value",
+      "value": 86400,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2025,
+        "label": "Bexar Appraisal District 2025 roll value"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Microsoft solar/wind-equipment personal-property account 1172617 at 5150 Rogers Road",
+        "county_fips": "48029",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_bexar_cad_microsoft_5150_2026",
+      "source_locator": "Property ID 1172617, Roll Value History, 2025 row",
+      "notes": "Annual appraisal stock for a separate solar/wind-equipment account. The current assessor page displays exemptions and zero estimated tax, but this value is not converted into tax savings, generation capacity, output, investment, or a cash subsidy.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "annual_series_key": "microsoft_san_antonio_solar_appraised_value"
+    },
+    {
+      "claim_id": "clm_study_microsoft_san_antonio_real_property_taxes_paid_2025",
+      "project_id": "prj_study_im3_building_00364289074",
+      "metric_code": "study.property_taxes_paid",
+      "value": 2564994.88,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2025,
+        "label": "Bexar County 2025 roll-year payments"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Bexar tax account 176420480010 for Microsoft real property at 5150 Rogers Road",
+        "county_fips": "48029",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_bexar_tax_microsoft_5150_2026",
+      "source_locator": "Account 176420480010, Payment History, 2025 roll-year rows",
+      "notes": "Sum of two exact $1,282,497.44 payments dated November 17, 2025 and June 16, 2026; the account shows no amount due. This is a multi-jurisdiction account transaction, not recipient-level cash receipts, net municipal revenue, or the personal-property account.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "annual_series_key": "microsoft_san_antonio_real_property_taxes_paid"
+    },
+    {
+      "claim_id": "clm_study_microsoft_san_antonio_equipment_property_taxes_paid_2025",
+      "project_id": "prj_study_im3_building_00364289074",
+      "metric_code": "study.property_taxes_paid",
+      "value": 2093024.14,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2025,
+        "label": "Bexar County 2025 roll-year payments"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Bexar tax account 000001107340 for Microsoft personal property at 5150 Rogers Road",
+        "county_fips": "48029",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_bexar_tax_microsoft_5150_2026",
+      "source_locator": "Account 000001107340, Payment History, 2025 roll-year rows",
+      "notes": "Sum of two exact $1,046,512.07 payments dated November 17, 2025 and June 16, 2026; the account shows no amount due. This is a multi-jurisdiction account transaction, not recipient-level cash receipts, net municipal revenue, or the real-property account.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "annual_series_key": "microsoft_san_antonio_equipment_property_taxes_paid"
     }
   ],
   "project_updates": [
@@ -274,7 +549,7 @@
       "as_of": "2026-06-01",
       "title": "Regional impact totals cannot be allocated to 5150 Rogers Road",
       "notes": "Microsoft's 2026 fact sheet aggregates Bexar and Medina County datacenter construction, operations, taxes, and community programs and says it includes estimated information and projections. The account does not insert those regional totals as project observations or inputs because the publication supplies no building, campus, county, phase, or evidence-state allocation.",
-      "project_description": "Microsoft San Antonio is a hyperscale data-center facility at 5150 Rogers Road in Bexar County, Texas, documented as operating by November 4, 2013. This account treats the facility as a distinct project boundary and does not allocate Microsoft's broader Bexar-and-Medina regional totals to it when the source does not identify a building, campus, county, or phase."
+      "project_description": "Microsoft San Antonio is Microsoft's data-center property at 5150 Rogers Road in Bexar County, Texas, developed under the 2007 Westover Hills agreement and documented as operating by November 4, 2013. The exact-site boundary includes a 36.235-acre appraisal parcel with 463,350 square feet of commercial improvements plus separately assessed Microsoft personal property. This account does not allocate broader Bexar-and-Medina activity, later San Antonio campuses, or unlocated company totals to the site."
     },
     {
       "project_id": "prj_study_im3_building_00364289074",
@@ -282,6 +557,62 @@
       "as_of": "2026-06-24",
       "title": "San Antonio alternative-water share lacks a facility denominator",
       "notes": "Microsoft reports that 79% of water used at its San Antonio location is recycled, reused, or non-potable. The statement is useful source and cooling context but is not converted into a 5150 Rogers Road quantity because no facility denominator, measurement year, withdrawal/consumption split, or multi-campus allocation is disclosed."
+    },
+    {
+      "project_id": "prj_study_im3_building_00364289074",
+      "source_id": "src_study_bexar_cad_microsoft_5150_2026",
+      "as_of": "2026-09-04",
+      "title": "Search audit — identity, land, physical scale, and appraisal",
+      "notes": "Portal/source family: Bexar Appraisal District property and deed records. Query/identifier: exact address '5150 Rogers' for tax years 2022-2026; inspected property IDs 1094298, 1107340, and 1172617 and deed 20070085721. Date range: 2007 deed and 2022-2026 roll histories. Documents inspected: result table, account detail, improvements, land, roll value, and deed panels. Result: useful — exact Microsoft ownership/address, 36.235 acres, 463,350 square feet, and three account-separated 2025 appraisals; negative for purchase price, investment flow, equipment detail, or building allocation."
+    },
+    {
+      "project_id": "prj_study_im3_building_00364289074",
+      "source_id": "src_study_microsoft_san_antonio_permits_2018_05_12",
+      "as_of": "2026-09-06",
+      "title": "Search audit — construction, contractors, and local suppliers",
+      "notes": "Portal/source family: City Development Services granted-permit archive and City procurement search. Query/identifier: exact address '5150 ROGERS RD', Microsoft, permit A2359822, and weekly PDFs for 2008-2026; inspected 2010-12-18, 2011-12-24, 2012-10-06, 2018-05-05, 2018-05-12, 2018-09-08, and 2018-09-15 reports. Date range: 2008-2026. Documents inspected: granted-permit tables and City procurement search results. Result: useful — $2,771,000 renovation permit and named contractors Rogers & O'Brien, Brandt, McKinstry, and Simplex Grinnell; negative for invoices, verified spend, payroll, worker count/residence, contract value, local-retained purchasing, or non-overlap among permits."
+    },
+    {
+      "project_id": "prj_study_im3_building_00364289074",
+      "source_id": "src_study_san_antonio_active_incentives_2022",
+      "as_of": "2026-09-06",
+      "title": "Search audit — jobs, compliance, incentives, and public cost",
+      "notes": "Portal/source family: City Council ordinances/agreements, Legistar, and active-incentive monitoring. Query/identifier: Microsoft, 5150 Rogers, ordinances 2007-01-18-0073/0074 and 2013-11-21-0817. Date range: 2007-2024 monitoring period. Documents inspected: 2007 ordinance/agreement, 2013 agenda record, and active-agreement row. Result: useful — commitments, reported >$840 million cumulative investment, >75-job floor, investment compliance, and $16,169,082.93 cumulative city taxes abated; negative for actual job count, payroll, annual abatement schedule, CPS CIED disbursement, marginal services, or same-scope net fiscal result. SN4 figures remain separate."
+    },
+    {
+      "project_id": "prj_study_im3_building_00364289074",
+      "source_id": "src_study_bexar_tax_microsoft_5150_2026",
+      "as_of": "2026-06-16",
+      "title": "Search audit — property tax bills, payments, and recipients",
+      "notes": "Portal/source family: Bexar County Tax Assessor-Collector account and payment histories. Query/identifier: CAD property IDs 1094298, 1107340, and 1172617; resolved tax accounts 176420480010 and 000001107340. Date range: payment histories from roll year 2008 through 2025, with 2025 selected for normalization. Documents inspected: account balance, levy, jurisdiction, and payment-history panels. Result: useful — both 2025 taxable-account levies were paid in two installments; negative for a payment on the exempt solar/wind account, recipient-level distributions, public-service costs, or a net fiscal total. Refund and transfer rows in earlier years were not netted without a reconciliation."
+    },
+    {
+      "project_id": "prj_study_im3_building_00364289074",
+      "source_id": "src_study_tceq_microsoft_sn_campus_2026",
+      "as_of": "2026-02-17",
+      "title": "Search audit — electricity, backup generation, and emissions",
+      "notes": "Portal/source family: TCEQ air records, CPS Energy publications, and ERCOT public search. Query/identifier: Microsoft, 5150 Rogers, RN105295687, registration 82486, permit O4780, and campus SN1/SN2/SN4/SN7. Date range: 2008-2026. Documents inspected: TCEQ application/registration, statement of basis, CPS site and financial-document results, and ERCOT search results. Result: useful — operator/site identity and permitted diesel-engine rating groups; negative for generator count by selected building, actual runtime/fuel/emissions, metered electricity, peak load, interconnection capacity, utility bills/rates, or grid-upgrade cost."
+    },
+    {
+      "project_id": "prj_study_im3_building_00364289074",
+      "source_id": "src_study_saws_recycled_water_program_2026",
+      "as_of": "2026-09-06",
+      "title": "Search audit — water, cooling, and wastewater",
+      "notes": "Portal/source family: SAWS recycled-water, rate, budget, and water-quality pages plus Microsoft sustainability releases. Query/identifier: Microsoft, 5150 Rogers, San Antonio data center, recycled water, wastewater, meter, and 130 million gallons. Date range: 2008-2026. Documents inspected: SAWS program/rate/system pages, the 2008 facility report, and Microsoft's 2026 alternative-water-share release. Result: useful — >130 million gallons/year remains a source projection and 79% is location-wide context; negative for exact-site meter/bill, withdrawal, consumption, discharge, peak-day use, cooling design, facility denominator, annual series, or attributable infrastructure cost."
+    },
+    {
+      "project_id": "prj_study_im3_building_00364289074",
+      "source_id": "src_study_microsoft_sec_10k_2026",
+      "as_of": "2026-06-30",
+      "title": "Search audit — operator filings, procurement, and state incentives",
+      "notes": "Portal/source family: Microsoft SEC filings, operator local publications, and Texas Comptroller qualified-data-center registry. Query/identifier: CIK 0000789019, 'San Antonio', '5150 Rogers', Microsoft Corporation, and registrations DC993797-OW1/OC1/OP1. Date range: 2007-2026, emphasizing FY2024-FY2026 filings. Documents inspected: 2026 Form 10-K, operator regional impact sheet, Texas community page, and Comptroller certification list. Result: useful — company/global context and an unlocated 2013 state certification; negative for facility capital expenditure, payroll, supplier payments, exempt-purchase value, sales-tax savings, power/water use, or a reliable address/building allocation."
+    },
+    {
+      "project_id": "prj_study_im3_building_00364289074",
+      "source_id": "src_study_microsoft_san_antonio_community_2024",
+      "as_of": "2026-09-06",
+      "title": "Search audit — community recipients, courts, bonds, and county outcomes",
+      "notes": "Portal/source family: Microsoft Local, Alamo Colleges recipient pages, Bexar/Texas court search, MSRB/City bond search, and BEA/BLS county data. Query/identifier: Microsoft datacenter San Antonio, 5150 Rogers, Northwest Vista College, Datacenter Academy, exact-address court/bond queries, and Bexar County FIPS 48029. Date range: 2001-2026. Documents inspected: operator partner list, recipient announcement, court/bond search results, and 2001-2024 county panel. Result: useful — one $250,000 recipient-confirmed gift and descriptive county outcome series; negative for a complete facility grant ledger, recurring amount, litigation or bond obligation tied to the address, and any causal project effect."
     }
   ]
 }
