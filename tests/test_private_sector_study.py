@@ -5,7 +5,7 @@ import unittest
 
 from scripts.build_private_sector_study import CONFIG, PUBLIC, ROOT, build_products, digest, manifest_size, read
 from scripts.validate_data_contract import ContractValidator
-from scripts.study_economic_evidence import EVIDENCE, economic_products, validate_evidence
+from scripts.study_economic_evidence import EVIDENCE, economic_products, load_evidence, validate_evidence
 from scripts.study_modeled_synthesis import MODELING_POLICY, SYNTHESIS, modeled_products
 
 GENERAL_SYNTHESIS_FIXTURE = ROOT / "tests/fixtures/study-modeled-synthesis-general-cases.json"
@@ -120,6 +120,7 @@ class PrivateSectorStudyTest(unittest.TestCase):
         self.assertEqual({row["project_id"] for row in completed}, target_ids)
         self.assertEqual(index["full_modeled_county_accounts"], 6)
         for project in completed:
+            self.assertGreaterEqual(len(project["project_description"]), 80)
             gate = project["model_completeness"]
             self.assertEqual(len(gate["covered_categories"]), 8)
             self.assertEqual(len(gate["covered_county_outcomes"]), 3)
@@ -149,6 +150,17 @@ class PrivateSectorStudyTest(unittest.TestCase):
                 "study.modeled_annual_local_fiscal_margin_before_incentives",
                 "study.modeled_annual_public_service_cost",
             } for row in project["modeled_syntheses"]))
+
+    def test_full_account_cannot_publish_without_a_project_description(self):
+        evidence = load_evidence()
+        for update in evidence["project_updates"]:
+            if update["project_id"] == "prj_study_im3_building_00300974499":
+                update.pop("project_description", None)
+        with self.assertRaisesRegex(ValueError, "requires a project description"):
+            build_products(
+                self.config, self.inventory, self.panels,
+                "2026-09-03T00:00:00+00:00", evidence=evidence,
+            )
 
     def test_chaska_preserves_municipal_payer_and_payable_year_values(self):
         _, details, _ = self.build()

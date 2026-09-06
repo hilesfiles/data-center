@@ -641,6 +641,12 @@ try {
   check("State Farm parcel values, bills, paid account totals and estimated cumulative capex stay distinct");
   await page.setViewportSize({ width: 1440, height: 1000 });
   await page.goto(`${url}#/project/prj_study_im3_building_00300974499`);
+  await page.getByRole("heading", { name: "About this project", exact: true }).waitFor();
+  assert.match(await page.locator(".project-description").innerText(), /converted and expanded data-center facility[\s\S]*began serving customers in March 2017/i);
+  assert(await page.locator(".project-description").evaluate(element =>
+    Boolean(element.compareDocumentPosition(document.querySelector(".project-overview")) & Node.DOCUMENT_POSITION_FOLLOWING)
+  ), "project description must appear before the study-rationale card");
+  await page.locator(".project-description").screenshot({ path: path.join(out, "apple-mesa-project-description-desktop.png") });
   await openDetails(".evidence-ledger");
   await page.getByRole("heading", { name: "Economic evidence", exact: true }).waitFor();
   await page.locator(".account-count").getByText("80 sourced records · 27 modeled syntheses", { exact: true }).waitFor();
