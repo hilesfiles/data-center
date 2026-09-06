@@ -1,0 +1,153 @@
+{
+  "schema_version": "1.0.0",
+  "project_id": "prj_study_im3_building_01132541700",
+  "reviewed_on": "2026-09-06",
+  "scope_note": "Four bounded syntheses are retained after direct-record search: one deterministic conversion of Meta's rounded 2024 Henrico water-withdrawal observation and three governed, descriptive county comparison gaps. No construction, operating, supplier, household, tax-receipt, incentive-cost, or public-service-cost model is added because the public record lacks the needed project-specific bases and arbitrary allocation shares would create false precision. Every retained estimate is visibly modeled, unallocated to the selected building, non-additive, and noncausal.",
+  "sources": [],
+  "estimates": [
+    {
+      "estimate_id": "est_study_meta_henrico_water_withdrawal_2024",
+      "project_id": "prj_study_im3_building_01132541700",
+      "metric_code": "study.modeled_annual_water_withdrawal",
+      "label": "Unit-converted annual water withdrawal",
+      "category": "resources",
+      "unit": "gallons_per_year",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 24303828.78,
+      "period": {"kind": "calendar_year", "year": 2024, "label": "Calendar year 2024"},
+      "scope": {"level": "campus", "label": "Meta Henrico Data Center campus", "county_fips": "51087", "inventory_allocation": "unallocated"},
+      "interval": {
+        "kind": "reported_band",
+        "low": 24171742.76,
+        "central": 24303828.78,
+        "high": 24435914.81,
+        "interpretation": "The band reflects rounding of the source's displayed 92 megaliters to the nearest whole megaliter before conversion; it is not a confidence interval."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {"aggregation_id": "meta_henrico_water_withdrawal_2024", "role": "standalone", "overlap_policy": "do_not_sum_outside_declared_total"},
+      "parameters": [
+        {
+          "name": "reported_water_withdrawal",
+          "value": 92,
+          "unit": "megaliters",
+          "provenance": {"kind": "source", "reference_id": "src_study_meta_environmental_data_index_2025", "detail": "Henrico 2024 water-withdrawal row"},
+          "transformation": "Converted to U.S. gallons"
+        },
+        {
+          "name": "gallons_per_megaliter",
+          "value": 264172.052,
+          "unit": "gallons_per_megaliter",
+          "provenance": {"kind": "assumption", "detail": "Exact unit-conversion factor used for presentation"},
+          "transformation": "Multiplies reported megaliters"
+        }
+      ],
+      "confidence": "medium",
+      "confidence_rationale": "The facility row and conversion are reproducible, but the published amount is rounded and its site-level measurement basis is not specified.",
+      "decision_relevance": "Preserves the public facility-level water observation in a compatible presentation unit while the shared canonical direct-evidence metric is absent.",
+      "evidence_search": {"direct_observation_status": "partial", "source_projection_status": "not_applicable", "remaining_evidence_gap": "Canonical annual water-withdrawal metric, unrounded meter data, withdrawal source allocation, consumption, reuse, discharge, and billing by facility"},
+      "derivation": {
+        "method": "allocation",
+        "model_version": "meta-henrico-account-1.0.0",
+        "formula": "reported Henrico water withdrawal in megaliters × 264,172.052 gallons per megaliter",
+        "input_claim_ids": [],
+        "input_source_ids": ["src_study_meta_environmental_data_index_2025"],
+        "assumptions": ["The displayed source value is rounded to the nearest whole megaliter.", "The estimate must not be presented as observed, audited, source-reported, or causal."]
+      },
+      "limitations": ["The source rounds to whole megaliters and permits meter, utility, design-estimate, or proxy inputs where applicable.", "Withdrawal is not consumption; no site-specific consumption or discharge value is reported.", "The value is not an audited municipal billing record and is not allocated to the selected building."],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Source-reported facility value carried as a visibly modeled unit conversion because no compatible canonical direct-evidence metric exists.",
+      "reviewed_on": "2026-09-06"
+    },
+    {
+      "estimate_id": "est_study_meta_henrico_gdp_comparison_gap",
+      "project_id": "prj_study_im3_building_01132541700",
+      "metric_code": "study.modeled_county_gdp_comparison_gap",
+      "label": "Modeled county real GDP comparison gap",
+      "category": "county_outcome",
+      "unit": "percent",
+      "measure_type": "change",
+      "basis": "modeled_synthesis",
+      "value": -15.08,
+      "period": {"kind": "calendar_year", "year": 2024, "label": "2024 host-county outcome relative to a mechanically matched benchmark; campus opening year 2020"},
+      "scope": {"level": "county", "label": "Meta Henrico campus and Henrico County", "county_fips": "51087", "inventory_allocation": "not_applicable"},
+      "interval": {"kind": "sensitivity_envelope", "low": -20.08, "central": -15.08, "high": -10.08, "interpretation": "The envelope is the larger of plus or minus 5 percentage points or twice the 2012-2019 pre-period RMSE. It is a fit sensitivity, not a statistical confidence interval."},
+      "contribution_channel": "not_applicable",
+      "aggregation": {"aggregation_id": "meta_henrico_gdp_comparison_gap", "role": "standalone", "overlap_policy": "do_not_sum_outside_declared_total"},
+      "parameters": [
+        {"name": "host_2024_value", "value": 29755353000, "unit": "chained_2017_USD", "provenance": {"kind": "source", "reference_id": "src_study_county_economic_core_2001_2024", "detail": "Henrico County 2024 real GDP"}, "transformation": "Compared with weighted benchmark"},
+        {"name": "comparison_2024_value", "value": 35037606418.62732, "unit": "chained_2017_USD", "provenance": {"kind": "source", "reference_id": "src_study_county_economic_core_2001_2024", "detail": "Inverse-distance weighted 2024 value from 20 comparison counties"}, "transformation": "Subtracted from host and used as denominator"},
+        {"name": "pre_period_rmse_percent", "value": 0.6665799683278992, "unit": "percent", "provenance": {"kind": "assumption", "detail": "Fit diagnostic over 2012-2019"}, "transformation": "Sets fit-sensitivity width subject to 5-point floor"}
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The calculation is reproducible, but concurrent county activity and treatment timing prevent attribution.",
+      "decision_relevance": "Shows Henrico County's 2024 divergence from a reproducible comparison benchmark without assigning the divergence to Meta.",
+      "evidence_search": {"direct_observation_status": "partial", "source_projection_status": "not_applicable", "remaining_evidence_gap": "A causal design with complete county exposure history, treatment isolation, pre-trend diagnostics, placebos, spillover rules, and robustness checks"},
+      "derivation": {"method": "benchmark_application", "model_version": "meta-henrico-account-1.0.0", "formula": "100 × (host 2024 outcome − inverse-distance-weighted 20-county benchmark) ÷ benchmark", "input_claim_ids": [], "input_source_ids": ["src_study_county_economic_core_2001_2024"], "assumptions": ["Matching uses 2012-2019 log level, average log growth, and growth volatility.", "All selected-study counties are excluded from the donor pool.", "The 2020 campus opening is not assumed to be first county exposure or an isolated treatment date."]},
+      "limitations": ["This comparison is descriptive and must not be interpreted as a data-center effect.", "Opening timing does not isolate construction, later expansions, or concurrent investments.", "The donor screen cannot exclude every unobserved treatment.", "The interval is fit sensitivity, not statistical confidence."],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Descriptive benchmark gap only; no causal_design metadata is attached.",
+      "reviewed_on": "2026-09-06"
+    },
+    {
+      "estimate_id": "est_study_meta_henrico_employment_comparison_gap",
+      "project_id": "prj_study_im3_building_01132541700",
+      "metric_code": "study.modeled_county_employment_comparison_gap",
+      "label": "Modeled county total employment comparison gap",
+      "category": "county_outcome",
+      "unit": "percent",
+      "measure_type": "change",
+      "basis": "modeled_synthesis",
+      "value": -5.16,
+      "period": {"kind": "calendar_year", "year": 2024, "label": "2024 host-county outcome relative to a mechanically matched benchmark; campus opening year 2020"},
+      "scope": {"level": "county", "label": "Meta Henrico campus and Henrico County", "county_fips": "51087", "inventory_allocation": "not_applicable"},
+      "interval": {"kind": "sensitivity_envelope", "low": -10.16, "central": -5.16, "high": -0.16, "interpretation": "The envelope is the larger of plus or minus 5 percentage points or twice the 2012-2019 pre-period RMSE. It is a fit sensitivity, not a statistical confidence interval."},
+      "contribution_channel": "not_applicable",
+      "aggregation": {"aggregation_id": "meta_henrico_employment_comparison_gap", "role": "standalone", "overlap_policy": "do_not_sum_outside_declared_total"},
+      "parameters": [
+        {"name": "host_2024_value", "value": 187647, "unit": "jobs", "provenance": {"kind": "source", "reference_id": "src_study_county_economic_core_2001_2024", "detail": "Henrico County 2024 total employment"}, "transformation": "Compared with weighted benchmark"},
+        {"name": "comparison_2024_value", "value": 197848.46997649886, "unit": "jobs", "provenance": {"kind": "source", "reference_id": "src_study_county_economic_core_2001_2024", "detail": "Inverse-distance weighted 2024 value from 20 comparison counties"}, "transformation": "Subtracted from host and used as denominator"},
+        {"name": "pre_period_rmse_percent", "value": 1.9103577010330688, "unit": "percent", "provenance": {"kind": "assumption", "detail": "Fit diagnostic over 2012-2019"}, "transformation": "Sets fit-sensitivity width subject to 5-point floor"}
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The calculation is reproducible, but concurrent county activity and treatment timing prevent attribution.",
+      "decision_relevance": "Shows Henrico County's 2024 divergence from a reproducible comparison benchmark without assigning the divergence to Meta.",
+      "evidence_search": {"direct_observation_status": "partial", "source_projection_status": "not_applicable", "remaining_evidence_gap": "A causal design with complete county exposure history, treatment isolation, pre-trend diagnostics, placebos, spillover rules, and robustness checks"},
+      "derivation": {"method": "benchmark_application", "model_version": "meta-henrico-account-1.0.0", "formula": "100 × (host 2024 outcome − inverse-distance-weighted 20-county benchmark) ÷ benchmark", "input_claim_ids": [], "input_source_ids": ["src_study_county_economic_core_2001_2024"], "assumptions": ["Matching uses 2012-2019 log level, average log growth, and growth volatility.", "All selected-study counties are excluded from the donor pool.", "The 2020 campus opening is not assumed to be first county exposure or an isolated treatment date."]},
+      "limitations": ["This comparison is descriptive and must not be interpreted as a data-center effect.", "Opening timing does not isolate construction, later expansions, or concurrent investments.", "The donor screen cannot exclude every unobserved treatment.", "The interval is fit sensitivity, not statistical confidence."],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Descriptive benchmark gap only; no causal_design metadata is attached.",
+      "reviewed_on": "2026-09-06"
+    },
+    {
+      "estimate_id": "est_study_meta_henrico_wage_comparison_gap",
+      "project_id": "prj_study_im3_building_01132541700",
+      "metric_code": "study.modeled_county_wage_comparison_gap",
+      "label": "Modeled county average weekly wages comparison gap",
+      "category": "county_outcome",
+      "unit": "percent",
+      "measure_type": "change",
+      "basis": "modeled_synthesis",
+      "value": 1.86,
+      "period": {"kind": "calendar_year", "year": 2024, "label": "2024 host-county outcome relative to a mechanically matched benchmark; campus opening year 2020"},
+      "scope": {"level": "county", "label": "Meta Henrico campus and Henrico County", "county_fips": "51087", "inventory_allocation": "not_applicable"},
+      "interval": {"kind": "sensitivity_envelope", "low": -3.14, "central": 1.86, "high": 6.86, "interpretation": "The envelope is the larger of plus or minus 5 percentage points or twice the 2012-2019 pre-period RMSE. It is a fit sensitivity, not a statistical confidence interval."},
+      "contribution_channel": "not_applicable",
+      "aggregation": {"aggregation_id": "meta_henrico_wage_comparison_gap", "role": "standalone", "overlap_policy": "do_not_sum_outside_declared_total"},
+      "parameters": [
+        {"name": "host_2024_value", "value": 1357, "unit": "USD_per_week", "provenance": {"kind": "source", "reference_id": "src_study_county_economic_core_2001_2024", "detail": "Henrico County 2024 average weekly wages"}, "transformation": "Compared with weighted benchmark"},
+        {"name": "comparison_2024_value", "value": 1332.2313472962317, "unit": "USD_per_week", "provenance": {"kind": "source", "reference_id": "src_study_county_economic_core_2001_2024", "detail": "Inverse-distance weighted 2024 value from 20 comparison counties"}, "transformation": "Subtracted from host and used as denominator"},
+        {"name": "pre_period_rmse_percent", "value": 0.9694846105647276, "unit": "percent", "provenance": {"kind": "assumption", "detail": "Fit diagnostic over 2012-2019"}, "transformation": "Sets fit-sensitivity width subject to 5-point floor"}
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The calculation is reproducible, but concurrent county activity and treatment timing prevent attribution.",
+      "decision_relevance": "Shows Henrico County's 2024 divergence from a reproducible comparison benchmark without assigning the divergence to Meta.",
+      "evidence_search": {"direct_observation_status": "partial", "source_projection_status": "not_applicable", "remaining_evidence_gap": "A causal design with complete county exposure history, treatment isolation, pre-trend diagnostics, placebos, spillover rules, and robustness checks"},
+      "derivation": {"method": "benchmark_application", "model_version": "meta-henrico-account-1.0.0", "formula": "100 × (host 2024 outcome − inverse-distance-weighted 20-county benchmark) ÷ benchmark", "input_claim_ids": [], "input_source_ids": ["src_study_county_economic_core_2001_2024"], "assumptions": ["Matching uses 2012-2019 log level, average log growth, and growth volatility.", "All selected-study counties are excluded from the donor pool.", "The 2020 campus opening is not assumed to be first county exposure or an isolated treatment date."]},
+      "limitations": ["This comparison is descriptive and must not be interpreted as a data-center effect.", "Opening timing does not isolate construction, later expansions, or concurrent investments.", "The donor screen cannot exclude every unobserved treatment.", "The interval is fit sensitivity, not statistical confidence."],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Descriptive benchmark gap only; no causal_design metadata is attached.",
+      "reviewed_on": "2026-09-06"
+    }
+  ]
+}
