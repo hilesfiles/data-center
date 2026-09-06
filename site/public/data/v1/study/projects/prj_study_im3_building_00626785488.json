@@ -16,11 +16,11 @@
   "detail_path": "projects/prj_study_im3_building_00626785488.json",
   "latitude": 34.830246608460115,
   "longitude": -106.78382909936067,
-  "economic_record_count": 2,
-  "reported_actual_count": 2,
+  "economic_record_count": 17,
+  "reported_actual_count": 17,
   "projection_count": 0,
   "modeled_synthesis_count": 0,
-  "research_completion_status": "research_pending",
+  "research_completion_status": "account_research_complete",
   "model_completeness": {
     "status": "incomplete",
     "required_categories": [
@@ -34,8 +34,12 @@
       "community"
     ],
     "covered_categories": [
+      "community",
       "construction",
-      "operations"
+      "fiscal",
+      "operations",
+      "public_costs",
+      "resources"
     ],
     "modeled_categories": [],
     "required_county_outcomes": [
@@ -45,11 +49,7 @@
     ],
     "covered_county_outcomes": [],
     "missing_categories": [
-      "community",
-      "fiscal",
       "investment",
-      "public_costs",
-      "resources",
       "suppliers"
     ],
     "missing_county_outcomes": [
@@ -61,8 +61,8 @@
     "definition": "All eight contribution-account categories contain sourced or labeled modeled values, and GDP, employment, and wage county-comparison modules are populated. Comparison gaps are descriptive and do not establish causal facility effects."
   },
   "schema_version": "1.0.0",
-  "release_id": "private-sector-study-1.49.0",
-  "generated_at": "2026-09-06T19:36:00+00:00",
+  "release_id": "private-sector-study-1.50.0",
+  "generated_at": "2026-09-06T21:57:31+00:00",
   "inventory_name": "Meta",
   "research_value": "Development, recurring employment, and local fiscal receipts; ceremony date needs commissioning alignment.",
   "history": {
@@ -85,7 +85,258 @@
       "url": "https://doi.org/10.57931/3017294"
     }
   ],
-  "research_updates": [],
+  "research_updates": [
+    {
+      "project_id": "prj_study_im3_building_00626785488",
+      "source_id": "src_study_im3_meta_los_lunas_boundary_2026",
+      "as_of": "2026-09-06",
+      "title": "Boundary and operating chronology verified",
+      "notes": "IM3 record 00626785488 is one 654,433-square-foot mapped footprint within a multi-building Los Lunas campus and supplies no building name or public-record crosswalk. State and Village records date the first campus groundbreaking to October 2016, the first online building to 2017, a campus grand opening to February 7, 2019, and six online buildings to 2022. They do not identify which chronology belongs to the selected footprint. The later 2021 two-building expansion, the three-building expansion load described in 2023, the 2025 AI expansion, tenant equipment, off-site renewable projects and other Meta facilities remain outside the selected-building boundary.",
+      "source": {
+        "source_id": "src_study_im3_meta_los_lunas_boundary_2026",
+        "title": "IM3 Open Source Data Center Atlas, release 2026.02.09",
+        "url": "https://doi.org/10.57931/3017294",
+        "publisher": "Pacific Northwest National Laboratory",
+        "source_type": "other",
+        "publication_date": {
+          "precision": "day",
+          "date": "2026-02-09"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "structured_data",
+        "notes": "The selected inventory object is IM3 building record 00626785488, a 654,433-square-foot mapped footprint at 34.830246608460115, -106.78382909936067. IM3 separately maps four other buildings and a campus polygon at the Los Lunas site; the record does not provide a building name, construction cost, opening date, parcel, permit or utility-account crosswalk."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_00626785488",
+      "source_id": "src_study_loslunas_meta_irb_2016",
+      "as_of": "2026-09-06",
+      "title": "Original incentive authorization is not realized value",
+      "notes": "The June 23, 2016 bond package and Ordinance 407 were reviewed for original-project terms. Authorization for as many as six $5 billion industrial-revenue-bond series is a financing ceiling, not issued principal, capital expenditure, tax abatement, cash grant, property-tax saving or public cost. Later 2021 and 2025 bond packages concern expansions and are excluded. No selected-building bond draw, lease payment or realized incentive value was located.",
+      "source": {
+        "source_id": "src_study_loslunas_meta_irb_2016",
+        "title": "Village Council agenda package, June 23, 2016, Ordinance 407",
+        "url": "https://www.loslunasnm.gov/AgendaCenter/ViewFile/Agenda/06232016-759",
+        "publisher": "Village of Los Lunas",
+        "source_type": "local_government_record",
+        "publication_date": {
+          "precision": "day",
+          "date": "2016-06-23"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_pdf_text",
+        "notes": "The original Greater Kudu industrial-revenue-bond package authorizes up to six series of as much as $5 billion each for construction and equipping of the data-center campus. Those maximum principal amounts are legal authorization ceilings, not issued debt, expenditure, capital investment, subsidy or realized tax benefit."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_00626785488",
+      "source_id": "src_study_valencia_gis_meta_parcel_2023",
+      "as_of": "2026-09-06",
+      "title": "Campus parcel is fully exempt in the 2023 assessor revision",
+      "notes": "The exact address resolves to Village-owned UPC 1006040261023 / account R302913, a 738.15-acre campus parcel with business name FACEBOOK. The 2023 County fields report $19,930,050 actual value, $6,643,350 total assessed value, an equal other exemption and zero net assessed value. Those stocks are retained at unallocated campus scope; they are not a cash estimate of tax savings. Village FY2017-FY2023 GASB 77 schedules separately mark the Greater Kudu agreement under construction and PILOT receipts N/A for the school district, State and County. The report's unrelated $450,000 Village-wide PILOT total is excluded, and no selected-building or personal-property account, bill, payment, taxing-jurisdiction receipt, lease revenue, service cost or net fiscal result was found.",
+      "source": {
+        "source_id": "src_study_valencia_gis_meta_parcel_2023",
+        "title": "Valencia County parcel record for 4250 Messenger Loop NW",
+        "url": "https://arcgisce2.co.valencia.nm.us/arcgis/rest/services/OnlineMap/MapServer/0/query?where=UPC%3D%271006040261023%27&outFields=*&returnGeometry=false&f=html",
+        "publisher": "Valencia County Assessor",
+        "source_type": "assessor_record",
+        "publication_date": {
+          "precision": "year",
+          "year": 2023
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "structured_data",
+        "notes": "The County's live ArcGIS parcel service resolves the exact campus address to UPC 1006040261023 and account R302913, a 738.15-acre parcel owned by the Village of Los Lunas with business name FACEBOOK. Revision-year 2023 fields report $19,930,050 actual value, $6,643,350 total assessed value, an equal $6,643,350 other exemption, and zero net assessed value. The parcel contains the full campus and does not crosswalk the selected IM3 footprint or identify a personal-property account, tax bill, payment, taxing-jurisdiction distribution or cash value of taxes foregone. A separate owner-name result for Greater Kudu is a 2022-recorded 474.35-acre tract and is outside the original selected-building boundary."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_00626785488",
+      "source_id": "src_study_loslunas_meta_leda_fy2022",
+      "as_of": "2026-09-06",
+      "title": "Public-cost search supports fund flows with scope limits",
+      "notes": "Village budgets from FY2017 through FY2025, Resolution 16-26, the 2021 PPA amendment and dedicated infrastructure accounts were searched for State LEDA, Local LEDA GRT, Facebook, Greater Kudu and Meta flows. The original formula dedicated 75% of specified Village gross-receipts-tax distributions attributable to construction. Actual State LEDA receipts total $10 million across FY2017-FY2018; FY2021 actual outlays are $2,043,636 in the State project fund and $1,130,805 in the local fund. The FY2024 NM 6 traffic account separately reports $529,277 of revenue and $23,200 of capital purchases, and Village records identify Meta as payer for the completed off-site system. Receipts and expenditures are separate flows and are not summed or netted. The 2021 amendment says Greater Kudu declined some reimbursements and the Village would contract directly for revised infrastructure, but gives no dollar reconciliation. None of these funds is an IM3-building allocation or a complete marginal public-cost account.",
+      "source": {
+        "source_id": "src_study_loslunas_meta_leda_fy2022",
+        "title": "Village of Los Lunas FY2022 Final Budget",
+        "url": "https://www.loslunasnm.gov/ArchiveCenter/ViewFile/Item/1514",
+        "publisher": "Village of Los Lunas",
+        "source_type": "local_government_record",
+        "publication_date": {
+          "precision": "day",
+          "date": "2021-07-22"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "pdf_text_and_page_image",
+        "notes": "The budget reports FY2021 actual expenditures for both the State LEDA Facebook Project Fund and the Local LEDA GRT Fund. The local fund receives transfers tied to project-attributable gross-receipts-tax distributions but finances water-system and rail-park projects with wider service areas."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_00626785488",
+      "source_id": "src_study_nm_cid_meta_search_2026",
+      "as_of": "2026-09-06",
+      "title": "Permit, planning, construction and fire searches lack an IM3 crosswalk",
+      "notes": "The Village planning and zoning agenda archive, development-plan and permit page, fire-prevention and public-works access points, and state Construction Industries Division portal were searched for 2016-2026. The exact campus address returned 20 state records: 11 electrical, five mechanical, three general-construction and one modular record, with 13 closed and seven issued statuses. Their 2021-2026 labels use VCN, VLL6, later halls, administrative or temporary work; one detail page records a passed 2024 security final inspection, but no record supplies an IM3 crosswalk, permit fee or certificate of occupancy. No selected-building permit valuation, fee, inspection, construction start or contractor-payment value can be established, and post-2020 work is not used as original-building evidence. Complete applications, approved plans, fee receipts, inspection histories and certificates remain records-request targets for CID and the Village.",
+      "source": {
+        "source_id": "src_study_nm_cid_meta_search_2026",
+        "title": "New Mexico public permit search",
+        "url": "https://nmrld.my.site.com/MHD/s/public-permit-search",
+        "publisher": "New Mexico Regulation and Licensing Department, Construction Industries Division",
+        "source_type": "state_record",
+        "publication_date": {
+          "precision": "unknown"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_page",
+        "notes": "An exact-address query returned 20 records dated 2021-2026: 11 electrical, five mechanical, three general-construction and one modular record. Project labels include VCN 1A-1B, VCN 1C-1D, VCN 2, VCN ADMIN, VLL6, later data halls, a prefabrication tent, an art project and a power box; statuses comprise 13 closed and seven issued records. Detail pages expose application-entered scope, contractor and selected inspection fields, but an IM3 project-name query returned no records and no building crosswalk, permit fee, certificate of occupancy or selected-footprint valuation was found."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_00626785488",
+      "source_id": "src_study_loslunas_meta_water_2025",
+      "as_of": "2026-09-06",
+      "title": "Water agreement supplies capacity, not use",
+      "notes": "The original and restated agreement recitals, the August 2021 water-connection agreement, Village project-status and budget records, state water-right access and public water-planning materials were reviewed. The original 303-acre property received up to 500 acre-feet per year of consumptive water rights, converted to 0.446371233 million gallons per day for the direct record. A later Tank 7 connection was budgeted at $995,000 and Greater Kudu agreed to pay all design, construction and observation costs, but neither item is a realized payment and both remain unallocated campus infrastructure. The agreement's 4.5-million-gallon worst-case delivery guarantee and 1.5-million-gallon wastewater ceiling are capacities, not use; the reported 153,000-gallon 2020 campus average could not be tied to a public meter record. Village meter histories, bills, reimbursement ledgers, connection invoices and OSE diversion records remain request targets.",
+      "source": {
+        "source_id": "src_study_loslunas_meta_water_2025",
+        "title": "Village Council agenda package, February 13, 2025, amended and restated Greater Kudu water and wastewater agreement",
+        "url": "https://loslunasnm.gov/AgendaCenter/ViewFile/Agenda/_02132025-1226",
+        "publisher": "Village of Los Lunas",
+        "source_type": "local_government_record",
+        "publication_date": {
+          "precision": "day",
+          "date": "2025-02-13"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_pdf_text",
+        "notes": "The restated agreement recites the October 4, 2016 original agreement for the 303-acre original property and its allocation of up to 500 acre-feet per year of consumptive water rights. It also states contractual peak service and wastewater limits, which are capacities rather than metered use. The added 2019 property and 2025 AI expansion are excluded."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_00626785488",
+      "source_id": "src_study_pnm_meta_regulatory_search_2026",
+      "as_of": "2026-09-06",
+      "title": "Electric utility and regulatory searches isolate no building account",
+      "notes": "PNM and NMPRC materials for the original special-service contract and cases 16-00191-UT, 18-00269-UT, 21-00031-UT, 23-00251-UT and 25-00048-UT were reviewed. The 2018 notice confirms Greater Kudu's contribution-to-production mechanism, Meta's payment guaranty and customer recovery of specified renewable PPA costs, but supplies no realized dollar amount. Public versions do not disclose an IM3-building utility identity, meter, demand, consumption, bill, payment, customer contribution in aid of construction or original-campus interconnection outlay. PNM meter histories, billing determinants, invoices, receipts and interconnection work orders remain request targets; off-site or expansion-linked renewable-project spending, landowner payments and jobs are excluded.",
+      "source": {
+        "source_id": "src_study_pnm_meta_regulatory_search_2026",
+        "title": "PNM regulatory filings for Greater Kudu special-service contracts",
+        "url": "https://www.pnm.com/nl/regulatory",
+        "publisher": "Public Service Company of New Mexico",
+        "source_type": "state_record",
+        "publication_date": {
+          "precision": "unknown"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_page",
+        "notes": "Public filings for NMPRC Cases 16-00191-UT, 18-00269-UT, 21-00031-UT, 23-00251-UT and 25-00048-UT were searched. They document special-service and renewable-energy arrangements, later expansion loads and customer-paid renewable resources, but no public selected-building meter, demand, consumption, bill, rate payment or original-campus utility-infrastructure outlay."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_00626785488",
+      "source_id": "src_study_nmed_meta_air_7026m6_2024",
+      "as_of": "2026-09-06",
+      "title": "Environmental permit is site-wide and non-operational",
+      "notes": "New Mexico Environment Department air applications, permit notices, facility and emissions registries, compliance histories and feasibility materials were searched for Greater Kudu, Meta, 4250 Messenger Loop, agency interest 37303 and permit 7026 from 2016-2026. The 2024 application carries forward 118 permitted stationary generators plus two temporary units for the full source and distinguishes VLL from later VCN groups, but the public copy omits the referenced plot-plan appendix and supplies no IM3 crosswalk. Compliance tables list NOx, CO and opacity test dates from 2019-2023 without results; the state EPA-reporting layer returns no exact-name or exact-address record. The permitted count is retained as a site-wide stock, while potential emissions, ratings and tests do not prove runtime, diesel use, actual emissions, electric load, water use or environmental damages. NMED inspection reports, test results, annual emissions, excess-emission reports, tank and stormwater files remain request targets.",
+      "source": {
+        "source_id": "src_study_nmed_meta_air_7026m6_2024",
+        "title": "Greater Kudu LLC Air Quality Permit 7026-M6 original application",
+        "url": "https://www.env.nm.gov/public-notices/wp-content/uploads/sites/32/2024/04/Original-Application-7026M6.pdf",
+        "publisher": "New Mexico Environment Department",
+        "source_type": "state_record",
+        "publication_date": {
+          "precision": "day",
+          "date": "2024-03-11"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "pdf_text_and_page_image",
+        "notes": "The operating-facility application covers the full 4250 Messenger Loop source and carries forward 118 stationary emergency generators while replacing two units, plus two temporary portable units. Its unit schedule distinguishes original VLL1-VLL6 groups from later VCN groups and reports construction or installation years, but the plot-plan appendix is not included in the public copy and no group is crosswalked to IM3 record 00626785488. Compliance-history tables list required NOx, CO and opacity test dates from 2019-2023 but no test results or actual annual emissions. Potential emissions and permit limits are not runtime, fuel use, actual emissions or utility consumption."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_00626785488",
+      "source_id": "src_study_meta_10k_2025",
+      "as_of": "2026-09-06",
+      "title": "Operator, SEC and workforce sources retain payroll gaps",
+      "notes": "Meta's 2019 opening release, current Los Lunas materials, 2021 expansion release, 2025 Form 10-K, New Mexico economic-development and Workforce Solutions reports, BLS OEWS access and current job postings were searched for headcount, occupation, wage, payroll, residence and hiring evidence. The opening release supports more than 150 campus jobs, while a 2018 state review repeats forecasts of 800-1,000 daily construction workers through 2023 and about 300 permanent jobs at full six-building operation; forecasts are not actuals. No source identifies filled selected-building headcount, direct versus contractor status, FTEs, wages, benefits, worker residence, occupations or hiring dates. Current 400-plus job and $2.5-billion campus figures include or anticipate later expansion and are excluded; statewide or Albuquerque-area occupation wages are not substituted for Meta payroll.",
+      "source": {
+        "source_id": "src_study_meta_10k_2025",
+        "title": "Meta Platforms, Inc. 2025 Form 10-K",
+        "url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm",
+        "publisher": "U.S. Securities and Exchange Commission",
+        "source_type": "sec_filing",
+        "publication_date": {
+          "precision": "day",
+          "date": "2026-01-29"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_page",
+        "notes": "The filing reports company-wide capital expenditure, headcount and global data-center properties. It does not disclose Los Lunas building-level expenditure, depreciation, operating expense, payroll, employment, suppliers, property tax, utilities or grants."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_00626785488",
+      "source_id": "src_study_nmedd_meta_los_lunas_fy2018",
+      "as_of": "2026-09-06",
+      "title": "Supplier and procurement searches produce identities, not payments",
+      "notes": "State economic-development reports, Village budgets, operator releases, CID permits and searches for Fortis, APIC Solutions, Southland Industries, Cache Valley Electric, B&D Industries and other named contractors were reviewed. The records identify contractors, equipment providers and construction activity but disclose no contract value, invoice, payment date, local purchasing share, supplier payroll or selected-building allocation. The separate $37 million PNM solar contract and renewable-project construction statistics concern off-site generation, not Los Lunas data-center supplier spending, and are excluded.",
+      "source": {
+        "source_id": "src_study_nmedd_meta_los_lunas_fy2018",
+        "title": "New Mexico Economic Development Department FY2018 Annual Report",
+        "url": "https://edd.newmexico.gov/wp-content/uploads/2021/06/FY18_Annual_Report.pdf",
+        "publisher": "New Mexico Economic Development Department",
+        "source_type": "state_record",
+        "publication_date": {
+          "precision": "year",
+          "year": 2018
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_pdf_text",
+        "notes": "The state chronology reports the first Los Lunas data-center groundbreaking in October 2016, a doubling to two buildings in July 2017, and a six-building, 330-acre campus announcement in September 2017. It does not map those buildings to IM3 record 00626785488."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_00626785488",
+      "source_id": "src_study_loslunas_meta_grants_2023",
+      "as_of": "2026-09-06",
+      "title": "Community and recipient records support non-additive grants",
+      "notes": "Village newsletters and agendas, Meta grant materials, the 2023 PNM filing appendix and recipient reports from Explora and named schools and nonprofits were reviewed for 2017-2026. Direct observations retain Meta's greater-than-$3.1-million cumulative Valencia County funding through June 2023, the $225,000 Wi-Fi grant and the $212,000 arithmetic sum of 17 May 2023 awards. These company-county figures overlap and must not be summed or assigned to the selected building. Meta's November 2025 program update reports more than 210 Los Lunas-area grants and sponsorships since 2019 but no local dollar total; a May 2026 Village quorum notice confirms another ceremony without amounts. Recipient sources generally confirmed relationships but did not disclose additional exact amounts, payment dates, restricted balances or building attribution.",
+      "source": {
+        "source_id": "src_study_loslunas_meta_grants_2023",
+        "title": "Village News, May 2023",
+        "url": "https://loslunasnm.gov/Archive/ViewFile/Item/1732",
+        "publisher": "Village of Los Lunas",
+        "source_type": "local_government_record",
+        "publication_date": {
+          "precision": "year",
+          "year": 2023
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "pdf_text_and_page_image",
+        "notes": "The Village lists 17 Meta Community Action Grant recipients and an amount for each. The arithmetic sum is $212,000; it overlaps Meta's cumulative direct-funding disclosures and is not a selected-building amount."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_00626785488",
+      "source_id": "src_study_loslunas_meta_budget_fy2023",
+      "as_of": "2026-09-06",
+      "title": "County outcomes and residual modeling remain unsupported",
+      "notes": "The direct-evidence audit ends with no residual model because no public record identifies when IM3 footprint 00626785488 opened or separates its construction and operations from the five other original campus buildings. The first building was online in 2017, the campus opened publicly in 2019, and six buildings were online by 2022, creating staggered treatment alongside other Valencia County developments and later Meta expansion. BLS QCEW county and industry files, BEA county accounts and Census workforce access were checked as potential comparison series, but they cannot identify the selected building, direct versus contractor employment, worker residence or a defensible treatment date; simultaneous county development and disclosure suppression add further limits. Without building-level capital, employment, payroll, supplier, utility and fiscal anchors, a county difference, multiplier, avoided-cost or residual estimate would manufacture precision. No synthesis fragment is created.",
+      "source": {
+        "source_id": "src_study_loslunas_meta_budget_fy2023",
+        "title": "Village of Los Lunas FY2023 Final Budget",
+        "url": "https://www.loslunasnm.gov/ArchiveCenter/ViewFile/Item/1515",
+        "publisher": "Village of Los Lunas",
+        "source_type": "local_government_record",
+        "publication_date": {
+          "precision": "day",
+          "date": "2022-07-28"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_pdf_text",
+        "notes": "The Village reports that Meta's first building went online in 2017 and six buildings were online by 2022, with two more planned. The later two-building expansion and its stated area and investment are outside the selected-building boundary."
+      }
+    }
+  ],
   "evidence_gaps": [
     {
       "code": "investment",
@@ -114,25 +365,25 @@
     {
       "code": "fiscal",
       "label": "Tax base and public revenue",
-      "status": "not_yet_collected",
+      "status": "partial",
       "needed": "Taxable values and actual receipts by year and recipient jurisdiction."
     },
     {
       "code": "public_costs",
       "label": "Incentives and public costs",
-      "status": "not_yet_collected",
+      "status": "partial",
       "needed": "Agreements, abatements, infrastructure, financing, and service costs."
     },
     {
       "code": "resources",
       "label": "Electricity, water, and cooling",
-      "status": "not_yet_collected",
+      "status": "partial",
       "needed": "Measured use, source, cooling design, and attributable system costs."
     },
     {
       "code": "community",
       "label": "Community institutions and direct funding",
-      "status": "not_yet_collected",
+      "status": "partial",
       "needed": "Annual grants, recipients, program purposes, realized spending, and overlap with other transfers."
     }
   ],
@@ -196,6 +447,460 @@
       "unit": "workers",
       "measure_type": "stock",
       "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_meta_los_lunas_jobs_supported_opening_2019",
+      "project_id": "prj_study_im3_building_00626785488",
+      "metric_code": "study.operational_jobs_supported",
+      "value": 150,
+      "value_qualifier": "greater_than",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "reported_snapshot",
+        "report_date": "2019-02-07",
+        "label": "Campus grand opening on February 7, 2019"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Meta Los Lunas location at the 2019 campus grand opening",
+        "county_fips": "35061",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_meta_los_lunas_opening_2019",
+      "source_locator": "Los Lunas is here, opening-day campus description",
+      "notes": "The operator says the location supported more than 150 jobs on opening day. It does not define employee versus contractor status, FTE basis, payroll, worker residence, newly created jobs or allocation among the buildings then operating or under construction.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Operator-reported operational jobs supported",
+      "category": "operations",
+      "unit": "jobs",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_meta_los_lunas_construction_peak_2021",
+      "project_id": "prj_study_im3_building_00626785488",
+      "metric_code": "study.construction_peak_workers",
+      "value": 1100,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "historical_peak",
+        "label": "Peak reported over the five years following the 2016 campus groundbreaking"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Meta Los Lunas campus construction since 2016",
+        "county_fips": "35061",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_loslunas_meta_news_2021",
+      "pdf_page": 1,
+      "printed_page": "2",
+      "source_locator": "LL Facebook expanding, restoring water, construction accomplishments",
+      "notes": "The Village reports 1,100 workers on site at peak during the five years after groundbreaking. It is not an average, duration, job-year, payroll or resident-worker count and cannot be allocated to the selected footprint. Because the article also announces a two-building expansion, it does not prove that the peak excludes all expansion work.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Peak construction workforce",
+      "category": "construction",
+      "unit": "workers",
+      "measure_type": "peak",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_meta_los_lunas_state_leda_receipts_fy2017_2018",
+      "project_id": "prj_study_im3_building_00626785488",
+      "metric_code": "study.public_infrastructure_grant",
+      "value": 10000000,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "cumulative",
+        "label": "Actual State LEDA Facebook Project Fund receipts in FY2017 and FY2018"
+      },
+      "scope": {
+        "level": "supporting_infrastructure",
+        "label": "State LEDA water, sewer and water-right support for the original Los Lunas data-center project",
+        "county_fips": "35061",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_loslunas_meta_leda_fy2019",
+      "pdf_page": 80,
+      "printed_page": "64",
+      "source_locator": "Table 20, account 303-4000, actual FY2017 and FY2018 revenues",
+      "notes": "Arithmetic sum of $3,333,333 and $6,666,667 actual receipts. This is public grant revenue held by the Village as fiscal agent for project-supporting infrastructure, not proof that $10 million was expended, a selected-building allocation, foregone tax or a net public cost.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Public infrastructure grant",
+      "category": "public_costs",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_meta_los_lunas_state_leda_expenditure_fy2021",
+      "project_id": "prj_study_im3_building_00626785488",
+      "metric_code": "study.infrastructure_fund_expenditure",
+      "value": 2043636,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "fiscal_year",
+        "year": 2021,
+        "label": "Village fiscal year ended June 30, 2021"
+      },
+      "scope": {
+        "level": "supporting_infrastructure",
+        "label": "State LEDA Facebook Project Fund water and sewer infrastructure",
+        "county_fips": "35061",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_loslunas_meta_leda_fy2022",
+      "pdf_page": 221,
+      "printed_page": "215",
+      "source_locator": "State LEDA Facebook Project Fund, FY2021 actual expenditure total",
+      "notes": "The actual total comprises $3,787 professional services, $1,770,330 for Well 7 and $269,519 for the Huning Loop East sewer project. It is a project-fund expenditure, not selected-building spending, proof of marginal public cost, or an amount to add to the $10 million grant receipts.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Infrastructure fund expenditure",
+      "category": "public_costs",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_meta_los_lunas_local_leda_expenditure_fy2021",
+      "project_id": "prj_study_im3_building_00626785488",
+      "metric_code": "study.infrastructure_fund_expenditure",
+      "value": 1130805,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "fiscal_year",
+        "year": 2021,
+        "label": "Village fiscal year ended June 30, 2021"
+      },
+      "scope": {
+        "level": "supporting_infrastructure",
+        "label": "Local LEDA GRT Fund capital projects supported by project-attributable transfers",
+        "county_fips": "35061",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_loslunas_meta_leda_fy2022",
+      "pdf_page": 185,
+      "printed_page": "179",
+      "source_locator": "Local LEDA GRT Fund, FY2021 actual expenditure total",
+      "notes": "The actual total comprises $788,391 for Tank 3, $14,736 for the NM 6 Rail Park waterline, $9,838 for Tank 8 and $317,840 for Los Morros capacity. These projects have wider service areas and the fund uses Village transfers derived from project-attributable gross-receipts-tax distributions; the total is not selected-building spending or a marginal taxpayer burden.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Infrastructure fund expenditure",
+      "category": "public_costs",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_meta_los_lunas_traffic_payment_fy2024",
+      "project_id": "prj_study_im3_building_00626785488",
+      "metric_code": "study.infrastructure_company_payments",
+      "value": 529277,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "fiscal_year",
+        "year": 2024,
+        "label": "Village fiscal year ended June 30, 2024"
+      },
+      "scope": {
+        "level": "supporting_infrastructure",
+        "label": "Village NM 6 Traffic Mitigation special-revenue account",
+        "county_fips": "35061",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_econ_los_lunas_2025",
+      "pdf_page": 186,
+      "printed_page": "181",
+      "source_locator": "NM 6 Traffic Mitigation Fund, account 25-323-4007 miscellaneous revenue, FY2024 actual",
+      "notes": "The Village budget reports $529,277 of actual FY2024 revenue in the dedicated NM 6 traffic-mitigation account. The Village separately identifies Meta as the payer for the completed off-site signal project. This is a supporting-infrastructure receipt, not a selected-building payment, announced $675,000 total, tax receipt, subsidy offset or net fiscal result, and it must not be netted against the same-year capital outlay without a complete account reconciliation.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Company payments into infrastructure fund",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_meta_los_lunas_traffic_expenditure_fy2024",
+      "project_id": "prj_study_im3_building_00626785488",
+      "metric_code": "study.infrastructure_fund_expenditure",
+      "value": 23200,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "fiscal_year",
+        "year": 2024,
+        "label": "Village fiscal year ended June 30, 2024"
+      },
+      "scope": {
+        "level": "supporting_infrastructure",
+        "label": "Village NM 6 Traffic Mitigation special-revenue account",
+        "county_fips": "35061",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_econ_los_lunas_2025",
+      "pdf_page": 187,
+      "printed_page": "182",
+      "source_locator": "NM 6 Traffic Mitigation Fund, account 25-406-5657 capital purchases, FY2024 actual",
+      "notes": "The Village budget reports $23,200 of actual FY2024 capital purchases in the NM 6 traffic-mitigation account. The completed signal system serves a three-mile public corridor and is unallocated to the campus buildings. This is neither the project's cumulative cost nor proof that the unspent difference from Meta receipts was retained, refunded or available for another purpose.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Infrastructure fund expenditure",
+      "category": "public_costs",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_meta_los_lunas_parcel_appraised_value_2023",
+      "project_id": "prj_study_im3_building_00626785488",
+      "metric_code": "study.appraised_property_value",
+      "value": 19930050,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2023,
+        "label": "Valencia County parcel-service revision year 2023"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Village-owned 738.15-acre Facebook campus parcel UPC 1006040261023 / account R302913",
+        "county_fips": "35061",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_valencia_gis_meta_parcel_2023",
+      "source_locator": "Exact UPC query; ActualValu field",
+      "notes": "The County service's ActualValu field is an appraised-value stock, not capital expenditure, market price, tax base, bill, payment or tax saving. The parcel contains the full campus and cannot be allocated to the selected building; the service separately reports zero land and improvement actual-value components, so no component allocation is inferred.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "County appraised property value",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_meta_los_lunas_parcel_assessed_value_2023",
+      "project_id": "prj_study_im3_building_00626785488",
+      "metric_code": "study.account_assessed_value",
+      "value": 6643350,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2023,
+        "label": "Valencia County parcel-service revision year 2023"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Village-owned 738.15-acre Facebook campus parcel UPC 1006040261023 / account R302913",
+        "county_fips": "35061",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_valencia_gis_meta_parcel_2023",
+      "source_locator": "Exact UPC query; TOTASD field",
+      "notes": "The County service reports this total assessed-value stock and an equal other-exemption field. It is neither taxable value after exemption nor a bill or payment, and it cannot be allocated among campus buildings, land, equipment or the selected IM3 footprint.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Account assessed property value",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_meta_los_lunas_parcel_taxable_assessed_value_2023",
+      "project_id": "prj_study_im3_building_00626785488",
+      "metric_code": "study.taxable_assessed_value",
+      "value": 0,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2023,
+        "label": "Valencia County parcel-service revision year 2023"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Village-owned 738.15-acre Facebook campus parcel UPC 1006040261023 / account R302913",
+        "county_fips": "35061",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_valencia_gis_meta_parcel_2023",
+      "source_locator": "Exact UPC query; OTHEREXMT, TOTEXMT and NETASD fields",
+      "notes": "The County service reports $6,643,350 in the other-exemption and total-exemption fields and zero net assessed value. The zero is a parcel tax-base observation, not proof of a zero tax bill for every real- or personal-property account, a cash tax payment, or the dollar value of foregone revenue; no selected-building allocation is available.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Taxable assessed property value",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_meta_los_lunas_original_water_right_capacity_2016",
+      "project_id": "prj_study_im3_building_00626785488",
+      "metric_code": "study.permitted_water_withdrawal_capacity",
+      "value": 0.446371233,
+      "value_qualifier": "up_to",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "reported_snapshot",
+        "report_date": "2016-10-04",
+        "label": "Original water and wastewater agreement for the 303-acre property"
+      },
+      "scope": {
+        "level": "supporting_infrastructure",
+        "label": "Consumptive water-right allocation to the original 303-acre Meta Los Lunas property",
+        "county_fips": "35061",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_loslunas_meta_water_2025",
+      "pdf_page": 134,
+      "printed_page": "Agreement page 1 (unnumbered)",
+      "source_locator": "Recitals and original-agreement water-right allocation",
+      "notes": "Converted from the contractual allocation of up to 500 acre-feet per year using 325,851 gallons per acre-foot and 365 days: 500 x 325,851 / 365 / 1,000,000 = 0.446371233 million gallons per day. This is an original-property annual consumptive-right ceiling expressed as a daily rate, not metered withdrawal, peak delivery, discharge, selected-building capacity or the later AI-expansion property.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Permitted water-withdrawal capacity",
+      "category": "resources",
+      "unit": "million_gallons_per_day",
+      "measure_type": "rate",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_meta_los_lunas_permitted_generators_2024",
+      "project_id": "prj_study_im3_building_00626785488",
+      "metric_code": "study.permitted_emergency_generator_count",
+      "value": 118,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "reported_snapshot",
+        "report_date": "2024-03-11",
+        "label": "Existing stationary-generator inventory carried forward in the 7026-M6 application"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Greater Kudu 4250 Messenger Loop air-permit source",
+        "county_fips": "35061",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_nmed_meta_air_7026m6_2024",
+      "pdf_page": 11,
+      "printed_page": "Application summary page 4 of 12",
+      "source_locator": "Table 1, generator groups 1-6; two removals and two replacements preserve the stationary total",
+      "notes": "The application carries forward 118 permitted stationary emergency generators across original VLL and later VCN groups; two additional temporary portable generators are excluded from this count. This permit inventory is site-wide and includes later development. It is not an installed count for the selected IM3 footprint, continuous generation capacity, operating hours, fuel use, actual emissions, power demand or electricity consumption.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Permit-listed diesel emergency generators",
+      "category": "resources",
+      "unit": "generators",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_meta_los_lunas_community_funding_2023",
+      "project_id": "prj_study_im3_building_00626785488",
+      "metric_code": "study.cumulative_community_funding",
+      "value": 3100000,
+      "value_qualifier": "greater_than",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "cumulative",
+        "label": "Meta direct funding since 2019 through its June 6, 2023 regulatory letter"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Meta direct funding to Valencia County-area schools and nonprofits",
+        "county_fips": "35061",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_pnm_meta_case_23_00251",
+      "pdf_page": 42,
+      "printed_page": "PNM Exhibit SC-2 page 2 of 5",
+      "source_locator": "Meta's Progress to Date in New Mexico, item 4",
+      "notes": "Meta reports more than $3.1 million in direct grant funding to 80 Valencia County-area schools and nonprofits since 2019. This cumulative company-county total is not selected-building funding and overlaps the separately reported Wi-Fi grant and May 2023 award list, so those observations must not be added to it.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Cumulative direct community funding",
+      "category": "community",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_meta_los_lunas_wifi_grant_2021",
+      "project_id": "prj_study_im3_building_00626785488",
+      "metric_code": "study.direct_community_contribution",
+      "value": 225000,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "source_year",
+        "year": 2021,
+        "label": "Grant reported in the November 2021 Village newsletter"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Meta and Lokket Wi-Fi deployment for up to 900 Valencia County homes",
+        "county_fips": "35061",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_loslunas_meta_news_2021",
+      "pdf_page": 1,
+      "printed_page": "2",
+      "source_locator": "LL Facebook expanding, restoring water, Wi-Fi paragraph",
+      "notes": "The Village states that a $225,000 grant will deploy home hardware and place distribution points on fire stations, schools and other buildings. The source does not provide a selected-building allocation, cash-payment date, completed-home count or recipient expenditure; the grant overlaps cumulative community-funding totals and is non-additive.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Direct community contribution",
+      "category": "community",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_meta_los_lunas_action_grants_2023",
+      "project_id": "prj_study_im3_building_00626785488",
+      "metric_code": "study.direct_community_contribution",
+      "value": 212000,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "source_year",
+        "year": 2023,
+        "label": "Community Action Grant recipients published in May 2023"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Meta Community Action Grants to 17 Valencia County-area recipients",
+        "county_fips": "35061",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_loslunas_meta_grants_2023",
+      "pdf_page": 2,
+      "printed_page": "3",
+      "source_locator": "Community Action Grant recipient list and award amounts",
+      "notes": "Arithmetic sum of the 17 published awards: $5,000, $4,000, $9,000, $3,400, $15,000, $5,600, $5,000, $40,000, $5,500, $20,000, $12,000, $20,000, $10,000, $20,000, $20,000, $15,500 and $2,000. The annual award list is company-county and unallocated, not a selected-building contribution, and overlaps the cumulative $3.1 million disclosure.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Direct community contribution",
+      "category": "community",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
     }
   ],
   "economic_sources": [
@@ -213,9 +918,135 @@
       "review_method": "pdf_text_and_page_image",
       "notes": "Employment appears in descriptive context published with the budget; it is not an audited annual payroll series.",
       "artifact_sha256": "44f366860ca4942dc0e60b0a0af1ffff54a66ca2b6d8de24397055e61c9159e9"
+    },
+    {
+      "source_id": "src_study_meta_los_lunas_opening_2019",
+      "title": "Hello, New Mexico! Los Lunas Data Center is open for business",
+      "url": "https://engineering.fb.com/2019/02/07/data-center-engineering/los-lunas-data-center/",
+      "publisher": "Meta Engineering",
+      "source_type": "operator_release",
+      "publication_date": {
+        "precision": "day",
+        "date": "2019-02-07"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_page",
+      "notes": "The operator dates the campus grand opening to February 7, 2019, describes a planned six-building campus, and says the Los Lunas location then supported more than 150 jobs. The statement does not identify the selected IM3 building or define direct employees, contractors, FTE status or worker residence."
+    },
+    {
+      "source_id": "src_study_loslunas_meta_leda_fy2019",
+      "title": "Village of Los Lunas FY2019 Final Budget",
+      "url": "https://www.loslunasnm.gov/ArchiveCenter/ViewFile/Item/1511",
+      "publisher": "Village of Los Lunas",
+      "source_type": "local_government_record",
+      "publication_date": {
+        "precision": "day",
+        "date": "2018-10-04"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "pdf_text_and_page_image",
+      "notes": "Table 20 reports actual State LEDA Facebook Project Fund receipts of $3,333,333 in FY2017 and $6,666,667 in FY2018. The fund supports water and sewer infrastructure and water-right acquisition for the Los Lunas data-center project; receipts are not proof of selected-building expenditure."
+    },
+    {
+      "source_id": "src_study_loslunas_meta_leda_fy2022",
+      "title": "Village of Los Lunas FY2022 Final Budget",
+      "url": "https://www.loslunasnm.gov/ArchiveCenter/ViewFile/Item/1514",
+      "publisher": "Village of Los Lunas",
+      "source_type": "local_government_record",
+      "publication_date": {
+        "precision": "day",
+        "date": "2021-07-22"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "pdf_text_and_page_image",
+      "notes": "The budget reports FY2021 actual expenditures for both the State LEDA Facebook Project Fund and the Local LEDA GRT Fund. The local fund receives transfers tied to project-attributable gross-receipts-tax distributions but finances water-system and rail-park projects with wider service areas."
+    },
+    {
+      "source_id": "src_study_loslunas_meta_water_2025",
+      "title": "Village Council agenda package, February 13, 2025, amended and restated Greater Kudu water and wastewater agreement",
+      "url": "https://loslunasnm.gov/AgendaCenter/ViewFile/Agenda/_02132025-1226",
+      "publisher": "Village of Los Lunas",
+      "source_type": "local_government_record",
+      "publication_date": {
+        "precision": "day",
+        "date": "2025-02-13"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_pdf_text",
+      "notes": "The restated agreement recites the October 4, 2016 original agreement for the 303-acre original property and its allocation of up to 500 acre-feet per year of consumptive water rights. It also states contractual peak service and wastewater limits, which are capacities rather than metered use. The added 2019 property and 2025 AI expansion are excluded."
+    },
+    {
+      "source_id": "src_study_loslunas_meta_news_2021",
+      "title": "Village News, November 2021",
+      "url": "https://loslunasnm.gov/Archive/ViewFile/Item/1711",
+      "publisher": "Village of Los Lunas",
+      "source_type": "local_government_record",
+      "publication_date": {
+        "precision": "year",
+        "year": 2021
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "pdf_text_and_page_image",
+      "notes": "The Village reports a 1,100-worker construction peak over the five years since the 2016 groundbreaking, more than $2.3 million in grants and donations since 2017, and a $225,000 Valencia County Wi-Fi grant. The same article announces a later two-building expansion, so all campus facts remain unallocated."
+    },
+    {
+      "source_id": "src_study_pnm_meta_case_23_00251",
+      "title": "PNM application and testimony, NMPRC Case 23-00251-UT",
+      "url": "https://www.pnm.com/documents/28767612/40780649/Case-No-23-00251-UT.pdf/871bc00d-2805-2796-91e3-06376b6c0326?t=1691612696972",
+      "publisher": "Public Service Company of New Mexico",
+      "source_type": "state_record",
+      "publication_date": {
+        "precision": "day",
+        "date": "2023-07-24"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_pdf_text",
+      "notes": "Meta's June 6, 2023 letter filed as PNM Exhibit SC-2 states that six data-center buildings were fully operational, three more were under construction, and direct Valencia County school and nonprofit funding since 2019 exceeded $3.1 million. The filing concerns later expansion energy resources; load, renewable-project spending and multiplier claims are not assigned to the selected building."
+    },
+    {
+      "source_id": "src_study_loslunas_meta_grants_2023",
+      "title": "Village News, May 2023",
+      "url": "https://loslunasnm.gov/Archive/ViewFile/Item/1732",
+      "publisher": "Village of Los Lunas",
+      "source_type": "local_government_record",
+      "publication_date": {
+        "precision": "year",
+        "year": 2023
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "pdf_text_and_page_image",
+      "notes": "The Village lists 17 Meta Community Action Grant recipients and an amount for each. The arithmetic sum is $212,000; it overlaps Meta's cumulative direct-funding disclosures and is not a selected-building amount."
+    },
+    {
+      "source_id": "src_study_valencia_gis_meta_parcel_2023",
+      "title": "Valencia County parcel record for 4250 Messenger Loop NW",
+      "url": "https://arcgisce2.co.valencia.nm.us/arcgis/rest/services/OnlineMap/MapServer/0/query?where=UPC%3D%271006040261023%27&outFields=*&returnGeometry=false&f=html",
+      "publisher": "Valencia County Assessor",
+      "source_type": "assessor_record",
+      "publication_date": {
+        "precision": "year",
+        "year": 2023
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "structured_data",
+      "notes": "The County's live ArcGIS parcel service resolves the exact campus address to UPC 1006040261023 and account R302913, a 738.15-acre parcel owned by the Village of Los Lunas with business name FACEBOOK. Revision-year 2023 fields report $19,930,050 actual value, $6,643,350 total assessed value, an equal $6,643,350 other exemption, and zero net assessed value. The parcel contains the full campus and does not crosswalk the selected IM3 footprint or identify a personal-property account, tax bill, payment, taxing-jurisdiction distribution or cash value of taxes foregone. A separate owner-name result for Greater Kudu is a 2022-recorded 474.35-acre tract and is outside the original selected-building boundary."
+    },
+    {
+      "source_id": "src_study_nmed_meta_air_7026m6_2024",
+      "title": "Greater Kudu LLC Air Quality Permit 7026-M6 original application",
+      "url": "https://www.env.nm.gov/public-notices/wp-content/uploads/sites/32/2024/04/Original-Application-7026M6.pdf",
+      "publisher": "New Mexico Environment Department",
+      "source_type": "state_record",
+      "publication_date": {
+        "precision": "day",
+        "date": "2024-03-11"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "pdf_text_and_page_image",
+      "notes": "The operating-facility application covers the full 4250 Messenger Loop source and carries forward 118 stationary emergency generators while replacing two units, plus two temporary portable units. Its unit schedule distinguishes original VLL1-VLL6 groups from later VCN groups and reports construction or installation years, but the plot-plan appendix is not included in the public copy and no group is crosswalked to IM3 record 00626785488. Compliance-history tables list required NOx, CO and opacity test dates from 2019-2023 but no test results or actual annual emissions. Potential emissions and permit limits are not runtime, fuel use, actual emissions or utility consumption."
     }
   ],
-  "economic_scope_note": "Reviewed evidence batches at campus or company/county scope. No record is allocated to an individual inventory building. Source checking establishes what a document reports, not an independent audit or causal attribution. Monetary figures are nominal. Peak workforce is distinct from annual employment; source-year labels do not establish fiscal-year boundaries. Original forecasts remain forecasts until realization is verified. No cross-record benefit total is defined. Cumulative project costs are not annual expenditure. Tax receipts and incentive payments remain separate, with inferred taxpayer links disclosed. Contextual research updates do not count as economic amounts. Account tax bills are distinct from cash receipts and incentive-program fees. Tax years, calendar years and fiscal years retain their source basis; separate taxpayer accounts are not consolidated. Municipal developer rebates and taxpayer valuations have distinct subjects. Estimated actual property value and tax capacity are not tax receipts; payable-year valuations retain their earlier assessment date. Taxpayer values expressed in millions retain approximate precision and account-level separation. A current-year table can use an older valuation date and is not converted into an annual series. Facility real-property and business-personal-property accounts remain separate, and address-label discrepancies are disclosed. Michigan Industrial Facilities Tax accounts remain distinct from the underlying real parcel and from post-expiration personal-property accounts; annual account totals are not recipient-level government receipts. Permit construction values are administrative project amounts, not verified expenditure, and separate permits are not combined without proof that their scopes do not overlap. Repeated maintenance-year assessments are annual parcel stocks, not new investment flows. Mixed-use parcel assessments and taxable values are retained at whole-parcel scope and are not allocated to a data-center tenant or function by floor area. Operator-reported jobs supported remain distinct from direct employees and FTEs. Approved infrastructure grants are documented public commitments rather than verified disbursements or total public costs. Cumulative community funding remains separate from tax receipts, payroll and modeled multiplier effects. Reported facility power capacity is not measured electricity consumption or peak demand. Permit-listed emergency generators are not runtime, fuel-use or actual-emissions observations. A city largest-taxpayer table's personal-property assessment remains separate from the leasehold real-property account, tax bills, receipts and capital expenditure. TIF loan principal is financing rather than a grant or general-fund receipt; project-generated tax revenue pledged to repayment is retained as a separate public-financing flow and is not added to gross parcel distributions. Water-withdrawal and consumptive permit capacities are regulatory limits rather than measured use. Development-agreement local-labor preferences are requirements rather than realized participation, and operating employee snapshots remain distinct from customers' on-site staff and jobs forecasts. Audited City bond statements distinguish issuance draws, year-end principal, annual principal retired, interest and fees, pledged TIF revenue, debt-service-fund transfers and future principal-plus-interest commitments. These measures are not summed into a benefit or subsidy total. City pledged revenue, City debt-service-fund transfers and the private fund's project TIF revenue applied to loan repayment retain their separate source definitions because only the 2022 transfer and private-fund amount agree exactly. Developer testimony in public meeting minutes is retained as a source-attributed cumulative lower bound; local-contractor spending is not converted into payroll, worker counts, household spending or multiplier effects. Economic-improvement-district cost estimates and maximum owner assessments remain source projections until bond issuance, an assessment schedule, collections and expenditures are verified. A statutory financing cap is not a tax receipt, public expenditure or subsidy. Audited private equipment-financing balances are debt stocks rather than construction spending, public support or community benefit. Reported floor area and occupied-share values describe operating scale and utilization, not employment, revenue, power use or economic output. Contractor and engineer case studies document supplier roles and completion timing but do not establish payment amounts, worker residence, payroll or multiplier effects. State incentive contract amounts, expected jobs and paid-or-certified-to-date fields remain distinct; a zero paid/certified balance at an earlier reporting cutoff does not imply no later claims. Public charging-infrastructure awards are commitments rather than verified disbursements, private project investment or operating benefits. Qualitative payment descriptions without a defensible numeric bound remain research context rather than quantitative records. Program-reported actual qualified investment, certified tax-exemption value and certified tax-credit value remain separate cumulative measures; none is converted into annual spending, a cash grant, local revenue or causal impact. County Business Patterns observations are county-industry context, not project contributions: establishment counts are employer locations rather than data-center facilities, March employment is not an annual average, annual payroll spans the full NAICS cell, and disclosure noise, classification changes and geographic assignment limit comparisons. No CBP change is attributed to a study project. Project fragments: prj_study_im3_building_00172739953: Second-pass public-evidence audit for Switch Las Vegas NAP7, the individual real-property parcel and original SUPERNAP building at 7135 South Decatur Boulevard. The review covered Clark County assessor, Treasurer, Accela permit, planning, air-quality, budget and financial-report access points; Nevada GOED, Department of Taxation and utility-regulatory sources; Switch operator, SEC, career and ESG materials; supplier and contractor references; and recipient-reported community records for 2005-2026. Six direct observations are added without allocating wider Core Campus capital expenditure, combined incentive audits, later facilities or expansions, personal property, tenant equipment, vendor equipment, or company-wide employment to NAP7. The Treasurer record corrects the earlier research note that payment records were uncollected, but the current payment is only a partial fiscal-year amount. No synthesis fragment is added: NAP4 was already operating while NAP7 was under construction in 2008, and the available county panel cannot isolate a NAP7 treatment from earlier facilities, later Core Campus growth, or major non-data-center shocks. NAP7 employment, payroll, local supplier payments, metered electricity and water, personal-property tax, realized abatement, jurisdictional tax receipts, project-attributable public costs, and a net fiscal result remain unobserved. prj_study_im3_building_00364289074: Corrective public-source audit for Microsoft's data-center property at 5150 Rogers Road and explicitly labeled wider Microsoft/Bexar County activity. Exact-site ordinance, permit, appraisal, and tax-account records remain separate from later campuses and regional disclosures; the three appraisal accounts and two taxable-account payments are not consolidated. Permit value is administrative, the original investment and employment figures are commitments, the 2013 employment threshold is a reported lower bound, and the water quantity is a projection rather than metered consumption. No Bexar-and-Medina total is allocated to this property. Annual construction expenditure, construction labor and residence, supplier payments, operating payroll and purchases, recipient-level tax distributions, marginal public-service cost, electricity consumption, water withdrawal or consumption, wastewater, actual emissions, and a recurring facility-level community series remain unobserved after the documented searches. prj_study_im3_building_00377585075: Corrective DET01 evidence audit. Official parcel, permit, tax, water-account, state-certificate, EPA and operator records are retained as direct observations or clearly labeled source forecasts. Conflicting floor-area figures remain separate because their reporting definitions differ. Construction cost, realized jobs, supplier payments, community funding, electricity, emissions, wastewater, actual public-service cost and causal county effects remain unbounded rather than being filled with transferred assumptions. prj_study_im3_building_00460089167: Corrective primary-source audit adds current Andale parcel assessment, contractor-reported campus floor area, and two recipient- or government-reported Meta community grants. The search trail records useful and negative results across identity, tax, construction, jobs, suppliers, utilities, water, permits, public costs, incentives, community funding, and county comparison inputs. Campus-wide facts remain unallocated to the selected inventory building, overlapping community amounts are not added together, and unavailable supplier, payroll, utility-billing, discharge, generator, and marginal-service-cost amounts remain explicit gaps. prj_study_im3_building_00464097467: Second-pass public-evidence audit for Apple's Washoe County data-center campus at 21505 Reno Technology Parkway West and its 2024 expansion application. GOED audit findings, application forecasts, county permit values, parcel assessments, a water-right allocation, operator-reported electricity use, and recipient-reported donation bands remain separate evidence states and scopes. Permit values are administrative amounts and are not summed because overlapping scopes cannot be ruled out. Assessment values are parcel stocks, not investment or tax receipts. The 125 acre-foot water right is regulatory capacity, not measured use. Food Bank gifts are company-region transfers, not campus-attributable annual spending. No campus total is allocated to the selected mapped building; the four-building campus, later buildout cases, downtown Reno warehouse, supporting renewable projects, fire-station parcel, and more-than-200-person support statement are not collapsed into one footprint. No Switch Citadel or Storey County amount enters this fragment. Vendor payments, worker residence, taxes received by jurisdiction, realized 2024 abatement, same-scope public-service cost, wastewater, and building-level electricity or water remain unobserved. prj_study_im3_building_00598261190: Second-pass public-evidence audit for the State Farm data center at 24400 West Valley Parkway in Olathe, Kansas. The account adds two official City permit values and SEC-reported property area, occupancy and critical-IT-load snapshots while keeping permit values, estimated cumulative capital spending, parcel assessments, tax bills and tax payments as distinct measures. The search trail covers parcel and fiscal records, construction and suppliers, operations and workforce, incentives, utility and environmental regulation, community activity, planning, public costs and county outcomes. No site-level employment, payroll, supplier payment, community transfer, metered electricity or water, incentive amount, marginal public-service cost, net fiscal position or attributable county effect is inferred from public material. prj_study_im3_building_00664938835: Second-pass public-evidence audit for Expedient's adaptive reuse of the pre-existing data-center building at 4777 W Ironwood Drive. The review searched Franklin planning, agenda, assessment, permit, water and sewer materials; Milwaukee County tax and deed-record access points; Wisconsin DOR, WEDC, DFI and PSC records; operator press, specification, career, ESG and community pages; lease, financing, carrier and vendor disclosures; and archived official pages for 2007-2026. Opening-day and current operator specifications remain separate dated snapshots because the reported area and capacity changed. The county portal now establishes a 2021-2025 parcel-tax principal series, but not Expedient's incidence under the lease. The 2022 ownership transfer, assessments, estimated permit values, tax payments and hiring plan remain non-additive. No source was found for actual construction outlays, realized site employment or payroll, local procurement, Milwaukee-area community transfers, metered resources, project-attributable public costs or a fiscal net. prj_study_im3_building_00888253616: Second-pass public-evidence audit for NTT Silicon Valley SV1 at 1160 Walsh Avenue, Santa Clara. The review reconciles the planning-era 1150 Walsh address to APN 224-58-003; adds the finaled principal permit, its administrative job value, current operator specifications, emergency-generator authorization and the parcel's regular-bill payment history; and leaves supplemental bills separate to avoid double counting. Public sources still do not establish realized site employment or payroll, total project investment, supplier payments, project-specific community transfers, metered resources, or project-attributable public-service costs. prj_study_im3_building_01024051963: Corrective source audit for the Meta Eagle Mountain campus and the selected IM3 building footprint in Utah County. Campus, company-county, and supporting-infrastructure observations remain explicitly unallocated to the selected building; later expansion areas and unrelated Eagle Mountain data-center developers are excluded unless a source establishes continuity. prj_study_im3_building_01073720208: Second-pass public-evidence audit for Google's Council Bluffs data-center activity, retaining the selected inventory building as the project key while leaving campus, taxpayer-account, company-county, and state-award facts at their reported scopes. The audit distinguishes completed IEDA contracts 08-HQJC-030 and 12-HQJP-051 from the 2022 award still in performance; permit valuations remain administrative amounts rather than expenditure; assessed and taxable values remain stocks; bills remain distinct from payments; and community grants remain recipient- and period-specific. The Pottawattamie County tax portal now supplies a paid 2018-2024 series for the principal Tetra parcel and an unpaid 2025 bill for the newer Questa parcel. No value is inferred for sales-tax exemptions, the local abatement schedule, franchise-fee adjustment, electricity, supplier retention, building-level water, marginal public-service cost, or net fiscal position. Models without defensible project allocation or transferable parameters were removed even though that leaves the eight-category account incomplete. prj_study_im3_building_01132541700: Corrective primary-source audit adds two county taxable-account observations, state-verified incentive-compliance thresholds, current operator-reported jobs and community funding, one county-received grant, facility electricity use, supporting renewable capacity, and the 2018 expansion forecast. The search trail covers identity, land use, permits, assessor and fiscal records, incentives, public costs, utilities, water, suppliers, courts, bonds, community funding, and federal county outcomes. Most public evidence covers the multi-building Henrico campus or Scout Development's county account and remains unallocated to the selected inventory building; overlapping funding and investment figures are not summed, and unavailable supplier payments, utility bills, tax receipts, incentive costs, payroll, and marginal public-service costs remain explicit gaps. prj_study_im3_campus_00231769626: Second-pass public-evidence audit for Google's The Dalles campus in Wasco County. The fragment preserves the baseline 2023-2025 Google LLC and Design LLC tax-bill and assessed-value series and the documented $28.5 million water-infrastructure project, and adds only incremental evidence. Business Oregon supplies a dated three-facility operating snapshot and separately bounded Project 1 and Project 2 SIP forecasts; City of The Dalles planning files and contractor/permit records document later River Road construction without treating permit valuations as spending. A recipient record verifies one local grant. Searches of assessor and treasurer records, budgets and agreements, planning and permit systems, utility and environmental records, operator ESG/careers materials, contractors, suppliers, workforce sources, nonprofit recipients, archives and structured portals found no audited construction outlay, local supplier spend, facility payroll, employee residence, project-attributable utility cost or load, realized abatement ledger, same-scope public service cost, or fiscal net. Statewide Google totals and system-wide utility loads are excluded from campus claims.",
+  "economic_scope_note": "Reviewed evidence batches at campus or company/county scope. No record is allocated to an individual inventory building. Source checking establishes what a document reports, not an independent audit or causal attribution. Monetary figures are nominal. Peak workforce is distinct from annual employment; source-year labels do not establish fiscal-year boundaries. Original forecasts remain forecasts until realization is verified. No cross-record benefit total is defined. Cumulative project costs are not annual expenditure. Tax receipts and incentive payments remain separate, with inferred taxpayer links disclosed. Contextual research updates do not count as economic amounts. Account tax bills are distinct from cash receipts and incentive-program fees. Tax years, calendar years and fiscal years retain their source basis; separate taxpayer accounts are not consolidated. Municipal developer rebates and taxpayer valuations have distinct subjects. Estimated actual property value and tax capacity are not tax receipts; payable-year valuations retain their earlier assessment date. Taxpayer values expressed in millions retain approximate precision and account-level separation. A current-year table can use an older valuation date and is not converted into an annual series. Facility real-property and business-personal-property accounts remain separate, and address-label discrepancies are disclosed. Michigan Industrial Facilities Tax accounts remain distinct from the underlying real parcel and from post-expiration personal-property accounts; annual account totals are not recipient-level government receipts. Permit construction values are administrative project amounts, not verified expenditure, and separate permits are not combined without proof that their scopes do not overlap. Repeated maintenance-year assessments are annual parcel stocks, not new investment flows. Mixed-use parcel assessments and taxable values are retained at whole-parcel scope and are not allocated to a data-center tenant or function by floor area. Operator-reported jobs supported remain distinct from direct employees and FTEs. Approved infrastructure grants are documented public commitments rather than verified disbursements or total public costs. Cumulative community funding remains separate from tax receipts, payroll and modeled multiplier effects. Reported facility power capacity is not measured electricity consumption or peak demand. Permit-listed emergency generators are not runtime, fuel-use or actual-emissions observations. A city largest-taxpayer table's personal-property assessment remains separate from the leasehold real-property account, tax bills, receipts and capital expenditure. TIF loan principal is financing rather than a grant or general-fund receipt; project-generated tax revenue pledged to repayment is retained as a separate public-financing flow and is not added to gross parcel distributions. Water-withdrawal and consumptive permit capacities are regulatory limits rather than measured use. Development-agreement local-labor preferences are requirements rather than realized participation, and operating employee snapshots remain distinct from customers' on-site staff and jobs forecasts. Audited City bond statements distinguish issuance draws, year-end principal, annual principal retired, interest and fees, pledged TIF revenue, debt-service-fund transfers and future principal-plus-interest commitments. These measures are not summed into a benefit or subsidy total. City pledged revenue, City debt-service-fund transfers and the private fund's project TIF revenue applied to loan repayment retain their separate source definitions because only the 2022 transfer and private-fund amount agree exactly. Developer testimony in public meeting minutes is retained as a source-attributed cumulative lower bound; local-contractor spending is not converted into payroll, worker counts, household spending or multiplier effects. Economic-improvement-district cost estimates and maximum owner assessments remain source projections until bond issuance, an assessment schedule, collections and expenditures are verified. A statutory financing cap is not a tax receipt, public expenditure or subsidy. Audited private equipment-financing balances are debt stocks rather than construction spending, public support or community benefit. Reported floor area and occupied-share values describe operating scale and utilization, not employment, revenue, power use or economic output. Contractor and engineer case studies document supplier roles and completion timing but do not establish payment amounts, worker residence, payroll or multiplier effects. State incentive contract amounts, expected jobs and paid-or-certified-to-date fields remain distinct; a zero paid/certified balance at an earlier reporting cutoff does not imply no later claims. Public charging-infrastructure awards are commitments rather than verified disbursements, private project investment or operating benefits. Qualitative payment descriptions without a defensible numeric bound remain research context rather than quantitative records. Program-reported actual qualified investment, certified tax-exemption value and certified tax-credit value remain separate cumulative measures; none is converted into annual spending, a cash grant, local revenue or causal impact. County Business Patterns observations are county-industry context, not project contributions: establishment counts are employer locations rather than data-center facilities, March employment is not an annual average, annual payroll spans the full NAICS cell, and disclosure noise, classification changes and geographic assignment limit comparisons. No CBP change is attributed to a study project. Project fragments: prj_study_im3_building_00052227492: Deep public-evidence audit for Flexential's Minneapolis-Chaska data center on parcel 30.0590020 at 3500 Lyman Boulevard. The review covered Carver County parcel, tax and property-record access points; City of Chaska permit, inspection, agenda, archive, budget, utility and annual-financial-report sources; Minnesota DEED, Revenue, statutory, environmental and utility-regulatory sources; federal workplace-safety search access; current and archived operator, predecessor, career and ESG materials; contractor and supplier references; and education, workforce and recipient-reported community sources for 2013-2026. Eighteen quantitative observations are preserved: a source-projected original investment lower bound; three later non-cumulative permit values; current floor area and critical-load UPS capacity; three annual parcel-tax payments; one current parcel-tax bill; and eight historical Via West Inc. estimated-actual-value observations. Stream's facilities at 1706 and 1708 West Creek Lane, the IP Stream Minneapolis LLC development agreement and its municipal rebates are outside the selected 3500 Lyman Boulevard project boundary and are not duplicated in this fragment; the six base Stream rebate rows require reassignment or removal from this target by the orchestrator because project fragments are append-only. Permit values are administrative estimates and are not summed because scopes may overlap. The current parcel-tax series includes all taxing jurisdictions and special assessments, not City-only receipts or net benefit, and the older citywide taxpayer series is not stitched to current parcel or Flexential values without a direct crosswalk. No synthesis fragment is added because direct observations and even a usable project projection were not found for construction labor, realized operating employment or payroll, supplier payments, metered energy or water, emissions, facility-specific incentive value, public-service costs, community transfers, or a causal county effect. prj_study_im3_building_00172739953: Second-pass public-evidence audit for Switch Las Vegas NAP7, the individual real-property parcel and original SUPERNAP building at 7135 South Decatur Boulevard. The review covered Clark County assessor, Treasurer, Accela permit, planning, air-quality, budget and financial-report access points; Nevada GOED, Department of Taxation and utility-regulatory sources; Switch operator, SEC, career and ESG materials; supplier and contractor references; and recipient-reported community records for 2005-2026. Six direct observations are added without allocating wider Core Campus capital expenditure, combined incentive audits, later facilities or expansions, personal property, tenant equipment, vendor equipment, or company-wide employment to NAP7. The Treasurer record corrects the earlier research note that payment records were uncollected, but the current payment is only a partial fiscal-year amount. No synthesis fragment is added: NAP4 was already operating while NAP7 was under construction in 2008, and the available county panel cannot isolate a NAP7 treatment from earlier facilities, later Core Campus growth, or major non-data-center shocks. NAP7 employment, payroll, local supplier payments, metered electricity and water, personal-property tax, realized abatement, jurisdictional tax receipts, project-attributable public costs, and a net fiscal result remain unobserved. prj_study_im3_building_00214321737: Second-pass public-evidence audit for Markley Group's Lowell data center at 2 Prince Avenue/1 Markley Way in Lowell, Middlesex County. The selected IM3 footprint is one building inside a three-building assessor parcel, so every added value remains at campus or company/county scope and is unallocated to the selected building. State and City records add Phase I forecasts, cumulative investment, operating-headcount, TIF-savings and incentive evidence; the assessor and tax portal add annual real-property stocks and one complete billed-tax year; permit reports add discrete administrative construction values and contractor names; MassDEP adds a permit-listed generator count; and a recipient page verifies one community contribution. Forecasts, cumulative values, parcel stocks, billed taxes, permit values, permit-authorized equipment, white-space area and recipient funding remain distinct and non-additive. Searches of planning and permit files, incentive and compliance reports, assessor and fiscal records, utility and environmental materials, operator disclosures, contractor and supplier pages, workforce and procurement records, community recipients, archives and repository county panels found no audited annual construction outlay, construction workforce or payroll, vendor payments or local-purchase share, facility payroll, metered annual electricity, project-attributable utility upgrade cost, annual water series matching the evidence vocabulary, wastewater, actual emissions, cash tax receipts, marginal public-service cost, fiscal net or causal county outcome. No model is added because the missing allocation and expenditure anchors cannot be bounded defensibly and Markley is not a clean first data-center entry in Middlesex County. prj_study_im3_building_00364289074: Corrective public-source audit for Microsoft's data-center property at 5150 Rogers Road and explicitly labeled wider Microsoft/Bexar County activity. Exact-site ordinance, permit, appraisal, and tax-account records remain separate from later campuses and regional disclosures; the three appraisal accounts and two taxable-account payments are not consolidated. Permit value is administrative, the original investment and employment figures are commitments, the 2013 employment threshold is a reported lower bound, and the water quantity is a projection rather than metered consumption. No Bexar-and-Medina total is allocated to this property. Annual construction expenditure, construction labor and residence, supplier payments, operating payroll and purchases, recipient-level tax distributions, marginal public-service cost, electricity consumption, water withdrawal or consumption, wastewater, actual emissions, and a recurring facility-level community series remain unobserved after the documented searches. prj_study_im3_building_00377585075: Corrective DET01 evidence audit. Official parcel, permit, tax, water-account, state-certificate, EPA and operator records are retained as direct observations or clearly labeled source forecasts. Conflicting floor-area figures remain separate because their reporting definitions differ. Construction cost, realized jobs, supplier payments, community funding, electricity, emissions, wastewater, actual public-service cost and causal county effects remain unbounded rather than being filled with transferred assumptions. prj_study_im3_building_00460089167: Corrective primary-source audit adds current Andale parcel assessment, contractor-reported campus floor area, and two recipient- or government-reported Meta community grants. The search trail records useful and negative results across identity, tax, construction, jobs, suppliers, utilities, water, permits, public costs, incentives, community funding, and county comparison inputs. Campus-wide facts remain unallocated to the selected inventory building, overlapping community amounts are not added together, and unavailable supplier, payroll, utility-billing, discharge, generator, and marginal-service-cost amounts remain explicit gaps. prj_study_im3_building_00464097467: Second-pass public-evidence audit for Apple's Washoe County data-center campus at 21505 Reno Technology Parkway West and its 2024 expansion application. GOED audit findings, application forecasts, county permit values, parcel assessments, a water-right allocation, operator-reported electricity use, and recipient-reported donation bands remain separate evidence states and scopes. Permit values are administrative amounts and are not summed because overlapping scopes cannot be ruled out. Assessment values are parcel stocks, not investment or tax receipts. The 125 acre-foot water right is regulatory capacity, not measured use. Food Bank gifts are company-region transfers, not campus-attributable annual spending. No campus total is allocated to the selected mapped building; the four-building campus, later buildout cases, downtown Reno warehouse, supporting renewable projects, fire-station parcel, and more-than-200-person support statement are not collapsed into one footprint. No Switch Citadel or Storey County amount enters this fragment. Vendor payments, worker residence, taxes received by jurisdiction, realized 2024 abatement, same-scope public-service cost, wastewater, and building-level electricity or water remain unobserved. prj_study_im3_building_00598261190: Second-pass public-evidence audit for the State Farm data center at 24400 West Valley Parkway in Olathe, Kansas. The account adds two official City permit values and SEC-reported property area, occupancy and critical-IT-load snapshots while keeping permit values, estimated cumulative capital spending, parcel assessments, tax bills and tax payments as distinct measures. The search trail covers parcel and fiscal records, construction and suppliers, operations and workforce, incentives, utility and environmental regulation, community activity, planning, public costs and county outcomes. No site-level employment, payroll, supplier payment, community transfer, metered electricity or water, incentive amount, marginal public-service cost, net fiscal position or attributable county effect is inferred from public material. prj_study_im3_building_00626785488: Second-pass public-evidence audit for the individual 654,433-square-foot IM3-mapped building footprint within Meta's Los Lunas data-center campus at 4250 Messenger Loop NW. The review covered the original campus chronology and 2016 industrial-revenue-bond package; Village budgets, audits, LEDA and dedicated infrastructure funds, planning, building, traffic, fire and water records; Valencia County assessor and clerk access; New Mexico economic-development, workforce, Construction Industries Division, Public Regulation Commission and Environment Department materials; PNM regulatory filings; Meta operator, SEC, contractor, career and grant materials; recipient-reported community records; and federal environmental and county-outcome access through September 6, 2026. Fifteen new direct observations are added alongside the two retained baseline observations, all at unallocated campus, company-county or supporting-infrastructure scope because no public source crosswalks the selected IM3 footprint to a separately named building, permit, parcel, workforce, utility meter or fiscal account. The later 2021 two-building expansion, 2023 three-building expansion load, 2025 AI expansion, off-site renewable projects, tenant equipment and other Meta facilities are excluded. No synthesis fragment is added because the selected building's operating date is not identified and the original six-building construction and operating sequence cannot support an isolated county treatment. Building-level capital expenditure, permits and fees, payroll, resident employment, supplier payments, metered electricity and water, utility bills, tax or PILOT payments, cash value of realized abatements, public-service costs and net fiscal results remain unobserved. prj_study_im3_building_00664938835: Second-pass public-evidence audit for Expedient's adaptive reuse of the pre-existing data-center building at 4777 W Ironwood Drive. The review searched Franklin planning, agenda, assessment, permit, water and sewer materials; Milwaukee County tax and deed-record access points; Wisconsin DOR, WEDC, DFI and PSC records; operator press, specification, career, ESG and community pages; lease, financing, carrier and vendor disclosures; and archived official pages for 2007-2026. Opening-day and current operator specifications remain separate dated snapshots because the reported area and capacity changed. The county portal now establishes a 2021-2025 parcel-tax principal series, but not Expedient's incidence under the lease. The 2022 ownership transfer, assessments, estimated permit values, tax payments and hiring plan remain non-additive. No source was found for actual construction outlays, realized site employment or payroll, local procurement, Milwaukee-area community transfers, metered resources, project-attributable public costs or a fiscal net. prj_study_im3_building_00888253616: Second-pass public-evidence audit for NTT Silicon Valley SV1 at 1160 Walsh Avenue, Santa Clara. The review reconciles the planning-era 1150 Walsh address to APN 224-58-003; adds the finaled principal permit, its administrative job value, current operator specifications, emergency-generator authorization and the parcel's regular-bill payment history; and leaves supplemental bills separate to avoid double counting. Public sources still do not establish realized site employment or payroll, total project investment, supplier payments, project-specific community transfers, metered resources, or project-attributable public-service costs. prj_study_im3_building_01024051963: Corrective source audit for the Meta Eagle Mountain campus and the selected IM3 building footprint in Utah County. Campus, company-county, and supporting-infrastructure observations remain explicitly unallocated to the selected building; later expansion areas and unrelated Eagle Mountain data-center developers are excluded unless a source establishes continuity. prj_study_im3_building_01073720208: Second-pass public-evidence audit for Google's Council Bluffs data-center activity, retaining the selected inventory building as the project key while leaving campus, taxpayer-account, company-county, and state-award facts at their reported scopes. The audit distinguishes completed IEDA contracts 08-HQJC-030 and 12-HQJP-051 from the 2022 award still in performance; permit valuations remain administrative amounts rather than expenditure; assessed and taxable values remain stocks; bills remain distinct from payments; and community grants remain recipient- and period-specific. The Pottawattamie County tax portal now supplies a paid 2018-2024 series for the principal Tetra parcel and an unpaid 2025 bill for the newer Questa parcel. No value is inferred for sales-tax exemptions, the local abatement schedule, franchise-fee adjustment, electricity, supplier retention, building-level water, marginal public-service cost, or net fiscal position. Models without defensible project allocation or transferable parameters were removed even though that leaves the eight-category account incomplete. prj_study_im3_building_01132541700: Corrective primary-source audit adds two county taxable-account observations, state-verified incentive-compliance thresholds, current operator-reported jobs and community funding, one county-received grant, facility electricity use, supporting renewable capacity, and the 2018 expansion forecast. The search trail covers identity, land use, permits, assessor and fiscal records, incentives, public costs, utilities, water, suppliers, courts, bonds, community funding, and federal county outcomes. Most public evidence covers the multi-building Henrico campus or Scout Development's county account and remains unallocated to the selected inventory building; overlapping funding and investment figures are not summed, and unavailable supplier payments, utility bills, tax receipts, incentive costs, payroll, and marginal public-service costs remain explicit gaps. prj_study_im3_campus_00231769626: Second-pass public-evidence audit for Google's The Dalles campus in Wasco County. The fragment preserves the baseline 2023-2025 Google LLC and Design LLC tax-bill and assessed-value series and the documented $28.5 million water-infrastructure project, and adds only incremental evidence. Business Oregon supplies a dated three-facility operating snapshot and separately bounded Project 1 and Project 2 SIP forecasts; City of The Dalles planning files and contractor/permit records document later River Road construction without treating permit valuations as spending. A recipient record verifies one local grant. Searches of assessor and treasurer records, budgets and agreements, planning and permit systems, utility and environmental records, operator ESG/careers materials, contractors, suppliers, workforce sources, nonprofit recipients, archives and structured portals found no audited construction outlay, local supplier spend, facility payroll, employee residence, project-attributable utility cost or load, realized abatement ledger, same-scope public service cost, or fiscal net. Statewide Google totals and system-wide utility loads are excluded from campus claims.",
   "evidence_version": "study-economic-evidence-1.37.0",
   "modeled_syntheses": [],
   "modeled_sources": [],
@@ -229,5 +1060,6 @@
     "causal": "not_assessed"
   },
   "legacy_first_entry_note": "Meta establishes the mapped Los Lunas campus's grand opening on February 7, 2019. Valencia County's six current source records do not establish a complete history or exclude earlier state, university, telecom, utility, laboratory-support, or enterprise data centers.",
-  "scope_note": "Provisional private-sector research candidate. Owner/operator history, project boundaries and lifecycle require review. Membership does not verify current operation or establish economic impact."
+  "scope_note": "Provisional private-sector research candidate. Owner/operator history, project boundaries and lifecycle require review. Membership does not verify current operation or establish economic impact.",
+  "project_description": "Meta Los Lunas is a Meta-operated data-center campus at 4250 Messenger Loop NW in the Village of Los Lunas, Valencia County, New Mexico; the selected project is the individual IM3-mapped 654,433-square-foot building footprint, not the full campus. State and Village records show the campus broke ground in October 2016, its first building was online in 2017, and Meta held a campus grand opening on February 7, 2019 while an original six-building program was still being built. The boundary excludes the separately announced 2021 two-building expansion, the 2025 AI expansion, off-site renewable projects, tenant equipment, and other Meta facilities."
 }

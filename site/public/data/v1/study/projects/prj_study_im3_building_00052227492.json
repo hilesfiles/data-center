@@ -1,26 +1,26 @@
 {
   "project_id": "prj_study_im3_building_00052227492",
-  "name": "Flexential / Stream Chaska",
+  "name": "Flexential Minneapolis-Chaska (ViaWest)",
   "inventory_entity_id": "fac_im3_building_00052227492",
   "inventory_entity_type": "facility",
   "county_fips": "27019",
   "county_name": "Carver County",
   "state_abbr": "MN",
-  "operator_label": "Flexential / Stream",
+  "operator_label": "Flexential",
   "study_group": "Colocation",
   "membership_status": "research_candidate",
   "sector_status": "provisional_private_sector",
   "history_status": "evidence_available",
-  "documented_timing": "2014-06 completion",
+  "documented_timing": "2014-04 opening",
   "panel_years": 24,
   "detail_path": "projects/prj_study_im3_building_00052227492.json",
   "latitude": 44.851592871190945,
   "longitude": -93.59883127427163,
-  "economic_record_count": 9,
-  "reported_actual_count": 9,
-  "projection_count": 0,
+  "economic_record_count": 21,
+  "reported_actual_count": 20,
+  "projection_count": 1,
   "modeled_synthesis_count": 0,
-  "research_completion_status": "research_pending",
+  "research_completion_status": "account_research_complete",
   "model_completeness": {
     "status": "incomplete",
     "required_categories": [
@@ -34,8 +34,11 @@
       "community"
     ],
     "covered_categories": [
+      "construction",
       "fiscal",
-      "public_costs"
+      "investment",
+      "operations",
+      "resources"
     ],
     "modeled_categories": [],
     "required_county_outcomes": [
@@ -46,10 +49,7 @@
     "covered_county_outcomes": [],
     "missing_categories": [
       "community",
-      "construction",
-      "investment",
-      "operations",
-      "resources",
+      "public_costs",
       "suppliers"
     ],
     "missing_county_outcomes": [
@@ -61,23 +61,23 @@
     "definition": "All eight contribution-account categories contain sourced or labeled modeled values, and GDP, employment, and wage county-comparison modules are populated. Comparison gaps are descriptive and do not establish causal facility effects."
   },
   "schema_version": "1.0.0",
-  "release_id": "private-sector-study-1.49.0",
-  "generated_at": "2026-09-06T19:36:00+00:00",
+  "release_id": "private-sector-study-1.50.0",
+  "generated_at": "2026-09-06T21:57:31+00:00",
   "inventory_name": "Flexential Minneapolis - Chaska",
-  "research_value": "Construction completion provides a development anchor; confirm operating ramp and local contracts.",
+  "research_value": "ViaWest's April 2014 adaptive-reuse opening provides a development anchor; later Flexential expansions remain separately scoped.",
   "history": {
-    "description": "2014-06 completion",
+    "description": "2014-04 opening",
     "anchor": {
-      "date": "2014-06-01",
+      "date": "2014-04-01",
       "precision": "month"
     },
     "date_note": "This is a stored historical observation. Completion, grand opening, lease and operating-by dates are not automatically commissioning dates. Campus timing does not date every building."
   },
   "sources": [
     {
-      "source_id": "src_stream_chaska_history_current_2026",
-      "title": "Minneapolis market development history",
-      "url": "https://www.streamdatacenters.com/locations/minneapolis/"
+      "source_id": "src_study_viawest_chaska_opening_2014",
+      "title": "ViaWest Announces Opening of Minneapolis Data Center",
+      "url": "https://newswire.telecomramblings.com/2014/04/viawest-announces-opening-minneapolis-data-center/"
     },
     {
       "source_id": "src_flexential_chaska_current_2026",
@@ -93,24 +93,167 @@
   "research_updates": [
     {
       "project_id": "prj_study_im3_building_00052227492",
-      "source_id": "src_study_chaska_acfr_2025",
-      "as_of": "2026-09-03",
-      "title": "City rebates and taxpayer valuations have different scopes",
-      "notes": "The city reports payments to developer IP Stream Minneapolis LLC and valuations under Flexential LLC. Both inform this candidate, but the parcel and ownership crosswalk remains provisional. Rebates are city payments; valuations are property stocks for the stated payable year, not tax receipts. Earlier Via West taxpayer rows and cumulative rebate totals await reconciliation.",
+      "source_id": "src_study_chaska_viawest_city_bulletin_2013",
+      "as_of": "2026-09-06",
+      "title": "Investment audit and project boundary correction",
+      "notes": "Source families checked: City development bulletins, Agenda Center and Archive Center; ViaWest, Flexential and Stream history; county ownership; Minnesota eCRV; contemporary coverage; and current operator materials for 2013-2026. Queries used ViaWest, Flexential, Stream, 3500 Lyman, 1706 and 1708 West Creek, Entegris and parcel 30.0590020. City evidence places ViaWest's adaptive reuse at the former Entegris headquarters, 3500 Lyman Boulevard, while Stream identifies separate facilities at 1706 and 1708 West Creek Lane. The exact parcel eCRV search returned no record, but public coverage begins after the reported 2013 acquisition; agenda/archive searches are metadata-bounded. The opening release supports only a greater-than-$60 million source projection, not realized investment. No acquisition price, final conversion cost, audited capital ledger or annual facility capital series was located. Append-only fragments cannot correct the base aggregate: reassign clm_study_chaska_stream_rebate_2020, clm_study_chaska_stream_rebate_2021, clm_study_chaska_stream_rebate_2022, clm_study_chaska_stream_rebate_2023, clm_study_chaska_stream_rebate_2024 and clm_study_chaska_stream_rebate_2025 to the separate Stream Minneapolis I / West Creek project, or remove them from this target before the next aggregate release. The target label should be normalized to 'Flexential Minneapolis-Chaska (ViaWest)' and opening timing to April 2014; candidate metadata is outside fragment scope.",
       "source": {
-        "source_id": "src_study_chaska_acfr_2025",
-        "title": "City of Chaska 2025 Annual Comprehensive Financial Report",
-        "url": "https://www.chaskamn.gov/DocumentCenter/View/7954",
+        "source_id": "src_study_chaska_viawest_city_bulletin_2013",
+        "title": "Chaska City Hall Bulletin: ViaWest conversion of former Entegris headquarters",
+        "url": "https://www.chaskamn.gov/Archive/ViewFile/Item/74",
+        "publisher": "City of Chaska, Minnesota",
+        "source_type": "local_government_record",
+        "publication_date": {
+          "precision": "year",
+          "year": 2013
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_pdf_text",
+        "notes": "City bulletin says ViaWest purchased the former Entegris headquarters at the northwest corner of Lyman Boulevard and Highway 41 and began converting the 120,000-square-foot building. The same bulletin separately describes Stream's planned data center, supporting a boundary distinction rather than an ownership link. The bulletin does not report realized investment, jobs, payroll, utility use or incentives."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_00052227492",
+      "source_id": "src_study_chaska_flexential_phase5_permit_2025",
+      "as_of": "2026-09-06",
+      "title": "Construction audit adds three bounded permit estimates",
+      "notes": "Source families checked: City SmartGov parcel, permit and inspection records; City archives and agendas; contractor cases; operator expansion materials; and contemporary construction coverage. Exact-address and parcel searches found B24-1109 ($5,861,872, PCL, issued January 23, 2025, unclosed), M24-0677 ($1,272,191, Metropolitan Mechanical/API HVAC, issued the same day, expired unclosed) and M26-0403 ($293,000, Climate Makers/EVER, issued August 10, 2026, open with final partially approved). These are administrative estimated values including labor, not paid costs, payroll, worker counts, completion or original conversion investment. Possible overlap between B24-1109 and M24-0677 is unresolved, so no portfolio sum is created. Related P26-0523 ($3,000) is excluded as overlapping M26-0403; BP26-0072 has no value; cancelled/expired B24-0504 ($150,000) is excluded. SmartGov's displayed history begins in 2022, so original conversion records require a City request.",
+      "source": {
+        "source_id": "src_study_chaska_flexential_phase5_permit_2025",
+        "title": "City of Chaska permit B24-1109, Flexential Phase 5 Refresh",
+        "url": "https://ci-chaska-mn.smartgovcommunity.com/PermittingPublic/PermitLandingPagePublic/Index/e5da3e8d-27e5-49c5-8ee5-b21800f32ce5",
         "publisher": "City of Chaska, Minnesota",
         "source_type": "local_government_record",
         "publication_date": {
           "precision": "day",
-          "date": "2026-06-30"
+          "date": "2025-01-23"
         },
-        "retrieved_on": "2026-09-03",
-        "review_method": "pdf_text_and_page_image",
-        "artifact_sha256": "c50d5ba2e32fcdd85e8cf48ec36dfb0f0359b1a5f44e9778c01e3664bbf54825",
-        "notes": "Tax-abatement note identifies IP Stream Minneapolis LLC and reports annual developer rebates. Principal-taxpayer Table 9, where used, is an unaudited statistical table sourced to the Carver County Auditor; its estimated actual value is distinct from estimated net tax capacity. Publication date uses the transmittal letter where readable; the 2023 letter date remains unverified. Parcel-level linkage between the developer, operator and mapped building remains provisional."
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_page",
+        "notes": "Official SmartGov record identifies a commercial alteration at 3500 Lyman Boulevard described as 'Phase 5 Refresh - Alteration to Existing Building.' It reports estimated value including labor of $5,861,872, issued status on January 23, 2025, an unclosed permit with January 31, 2027 expiration, and PCL Construction Services Inc. as primary contractor. Portal inspections show approved hydrostatic testing on October 1, 2025 and approved footings on June 5, 2025, with a foundation-reinforcement item pending, a slab item cancelled and multiple finals blank. The amount is an administrative permit estimate, not audited spending, payroll, local purchasing, payment to PCL or proof of completion."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_00052227492",
+      "source_id": "src_study_pcl_flexential_chaska_expansion_2021",
+      "as_of": "2026-09-06",
+      "title": "Supplier audit preserves payment and locality gaps",
+      "notes": "Source families checked: PCL project records, SmartGov contractor rosters, operator vendor references, trade coverage, City procurement and agenda searches, and exact-address web/archive searches. Queries used 3500 Lyman, Flexential Chaska, ViaWest Chaska, PCL, contractor, supplier, vendor, subcontractor, procurement and payment. PCL is identified for the 2021 expansion and B24-1109; Metropolitan Mechanical/API HVAC for M24-0677 and value-less BP26-0072; Climate Makers/EVER for M26-0403 and overlapping P26-0523; and VINCO only on excluded cancelled permit B24-0504. No contract payment, subcontractor ledger, procurement total, vendor location, local-retention share, certified payroll or worker-residence record was located. This is a public supplier-payment gap, not evidence that no subcontracting, procurement or local spending occurred; contractor identity is not converted into supplier spending, indirect jobs, payroll or multiplier effects.",
+      "source": {
+        "source_id": "src_study_pcl_flexential_chaska_expansion_2021",
+        "title": "Flexential Data Center Expansion",
+        "url": "https://www.pcl.com/us/en/our-work/flexential-data-center-expansion",
+        "publisher": "PCL Construction",
+        "source_type": "other",
+        "publication_date": {
+          "precision": "unknown"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_page",
+        "notes": "Contractor case study says PCL completed a tenant-driven expansion at the existing Chaska data center on June 30, 2021, involving an exterior mechanical yard, dry coolers, CRACs, generators, switchgear, raised floor, ceiling plenum and tenant office. It provides no contract value, paid amount, workforce, payroll, worker residence, local supplier share, power increment or water increment, so it supports chronology and supplier identity only."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_00052227492",
+      "source_id": "src_study_flexential_chaska_current_2026",
+      "as_of": "2026-09-06",
+      "title": "Operations audit adds scale but not employment",
+      "notes": "Source families checked: current and archived Flexential and ViaWest facility pages, opening and rebrand releases, careers and Workday postings, corporate reports, City employer tables, Minnesota DEED workforce/business-subsidy access points, OSHA establishment search and local-business coverage. Queries used Flexential Chaska, ViaWest Chaska, 3500 Lyman, Data Center Technician, employees, jobs, headcount, wages, payroll, residence, union, apprenticeship, careers, revenue and occupancy. Current operator materials support 160,838 square feet and 9 MW of critical-load UPS capacity. A Chaska vacancy and generic 24/7 staffing language do not disclose filled site FTE, wages, payroll, residence, occupancy, revenue or operating expenditure. OSHA's exact establishment query timed out, and indexed address searches produced only pre-project Entegris material; that unsuccessful bounded search cannot establish absence of inspections or injuries. No operating labor or output projection suitable for preservation was located.",
+      "source": {
+        "source_id": "src_study_flexential_chaska_current_2026",
+        "title": "Minneapolis - Chaska Data Center & Colocation",
+        "url": "https://www.flexential.com/data-centers/mn/minneapolis/chaska-data-center",
+        "publisher": "Flexential",
+        "source_type": "operator_release",
+        "publication_date": {
+          "precision": "unknown"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_page",
+        "notes": "Current operator facility page reports 9 MW of critical-load UPS capacity, a 1.4 PUE rating, 1,500 watts per square foot, N+1 cooling and 24/7 support. It does not publish annual metered electricity, peak demand, water, wastewater, emissions, occupancy, headcount, payroll, revenue or operating cost. Capacity is transcribed as an operating-scale stock, not usage or economic output."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_00052227492",
+      "source_id": "src_study_carver_flexential_parcel_tax_2026",
+      "as_of": "2026-09-06",
+      "title": "Fiscal audit verifies parcel payments and current owner",
+      "notes": "Source families checked: Carver County parcel, assessment, tax-statement and payment portals; City annual financial reports and budgets; taxpayer tables; and exact owner, parcel and address searches. Parcel 30.0590020 links FLEXENTIAL LLC to 3500 Lyman, 33.03 acres, industrial class 234, no listed TIF project and exact paid totals of $534,380 in 2023, $551,454 in 2024 and $582,406 in 2025. The 2026 $632,906 bill is entered separately; only one $316,453 installment was paid at review, so no full-year 2026 paid record is created. City Table 9 supports a separate Via West Inc. estimated-actual-value series for payable 2015-2022 ($11.6063 million to $13.894 million, peaking at $14.2431 million in 2021). Those unaudited company-city rows are not explicit parcel records and are not stitched to current Flexential values without a direct crosswalk. No recipient distribution, marginal service cost, incidence, causal increment or net fiscal result was located.",
+      "source": {
+        "source_id": "src_study_carver_flexential_parcel_tax_2026",
+        "title": "Carver County Property Information, parcel 30.0590020",
+        "url": "https://publicaccess.carvercountymn.gov/search/commonsearch.aspx?mode=combined",
+        "publisher": "Carver County, Minnesota",
+        "source_type": "assessor_record",
+        "publication_date": {
+          "precision": "unknown"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_page",
+        "notes": "Interactive parcel query for 300590020 identifies FLEXENTIAL LLC, 3500 Lyman Boulevard, 33.03 deeded acres, industrial class 234, active non-homestead status, a blank TIF-project field and contribution to fiscal authority. Payment detail shows two $267,190 payments in 2023, two $275,727 payments in 2024 and two $291,203 payments in 2025. The 2026 account shows a $632,906 bill, including a $210 industrial solid-waste special assessment, and only the first $316,453 installment paid by the review date. The bill is preserved separately from paid totals. Annual totals span county, city, state, school and special-district components; they are not City-only receipts, taxpayer-incidence findings or net community benefit."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_00052227492",
+      "source_id": "src_study_minnesota_deed_data_center_list_2026",
+      "as_of": "2026-09-06",
+      "title": "Public-cost audit separates ViaWest certification from Stream rebates",
+      "notes": "Source families checked: Minnesota DEED certification lists and program summaries, Department of Revenue guidance, governing statute, the 2025 state tax-incentive evaluation, City tax-abatement notes, parcel TIF status, development-agreement archives and state/local financial reports. DEED separately lists certified ViaWest, Stream and Stream II projects; the Flexential parcel has no listed TIF project. Revenue guidance says the electricity exemption ended July 1, 2025. The state evaluation reports more than $90 million in statewide reduced revenue for 2015-2022 and modeled statewide employment/return findings, but no project allocation is defensible. Certification does not disclose ViaWest/Flexential refund or exemption value, qualifying purchases, compliance, clawback or disbursement. IP Stream rebates belong to the separate West Creek project. No Flexential-specific local payment, infrastructure subsidy, public-service cost or net public cost was located; that is non-quantification, not proof no benefit or cost existed.",
+      "source": {
+        "source_id": "src_study_minnesota_deed_data_center_list_2026",
+        "title": "Data Center Sales Tax Refund Projects",
+        "url": "https://mn.gov/deed/assets/data-center-project-list_tcm1045-531119.pdf",
+        "publisher": "Minnesota Department of Employment and Economic Development",
+        "source_type": "state_record",
+        "publication_date": {
+          "precision": "day",
+          "date": "2026-07-15"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_pdf_text",
+        "notes": "Current state list separately identifies certified ViaWest Data Center - Chaska, Stream / IP Stream Minneapolis LLC and Stream II / IP Stream Minneapolis II LLC projects. Certification establishes program status but not refund value, qualifying-purchase amount, benefit recipient, claim date, clawback, compliance result or public expenditure. No facility-specific claim amount is published in the list."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_00052227492",
+      "source_id": "src_study_chaska_utility_budget_2014_viawest",
+      "as_of": "2026-09-06",
+      "title": "Resource audit finds capacity but no meter-level use",
+      "notes": "Source families checked: Chaska electric, water, sewer, budget, rate and billing sources; Minnesota PUC, MPCA What's in My Neighborhood and DNR indexes; Carver hazard planning; operator facility/ESG materials; and exact-address environmental searches. Operator pages report 9 MW critical-load UPS capacity and a 1.4 PUE rating, while the 2014 City budget aggregates ViaWest with several large users. MPCA site 145467 identifies active underground-tank activity TS0126051, 2015/2024 inspections, and a citation warning discovered September 5, 2024 and closed November 7, 2024 with no net penalty; zero documents or quantities are exposed. Exact PUC and DNR searches found no target-specific docket/permit, but these indexed non-results do not prove none exists. No facility meter, annual kWh, peak demand, bill, water, wastewater, generator runtime, fuel, actual emissions, utility-infrastructure cost or monetized effect was located. Fleet-wide figures are not allocated to Chaska.",
+      "source": {
+        "source_id": "src_study_chaska_utility_budget_2014_viawest",
+        "title": "City of Chaska 2014 Annual Budget Message",
+        "url": "https://www.chaskamn.gov/DocumentCenter/View/102/Annual-Budget-Message?bidId=",
+        "publisher": "City of Chaska, Minnesota",
+        "source_type": "local_government_record",
+        "publication_date": {
+          "precision": "year",
+          "year": 2014
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_pdf_text",
+        "notes": "The municipal electric budget anticipated commercial and industrial sales growth from multiple new large users, naming ViaWest, Stream, a medical-center addition, Beckman Coulter and residential growth together. City-wide Electric Fund revenue and sales cannot be allocated to ViaWest or converted into facility load, annual consumption, utility margin, infrastructure cost or local fiscal benefit."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_00052227492",
+      "source_id": "src_study_flexential_esg_2025_fleet_search_2026",
+      "as_of": "2026-09-06",
+      "title": "Community audit finds no quantified site transfer",
+      "notes": "Source families checked: Flexential/ViaWest ESG, news and community materials; City and county agendas/archives; Eastern Carver County Schools and Southwest Metro Intermediate District references; CareerForce and Minnesota DEED workforce sources; local nonprofit and recipient sites; and exact-address searches. Queries used Flexential Chaska, ViaWest Chaska, 3500 Lyman, grant, donation, sponsorship, nonprofit, school, training, workforce, apprenticeship, union and community benefit. No Chaska-specific recipient-reported cash or in-kind transfer, community-benefit agreement, workforce-program payment, school partnership, annual contribution, local-procurement pledge or facility-attributable value was located. The 2025 ESG material names nationwide organizations but does not locate spending at Chaska. This establishes a documentation gap, not that no community activity occurred; fleet-wide initiatives and qualitative engagement are not assigned to this parcel or monetized.",
+      "source": {
+        "source_id": "src_study_flexential_esg_2025_fleet_search_2026",
+        "title": "Flexential's 2025 ESG Report Details Progress in Sustainable Data Center Operations",
+        "url": "https://www.flexential.com/resources/press-release/flexentials-2025-esg-report-details-progress-sustainable-data-center",
+        "publisher": "Flexential",
+        "source_type": "operator_release",
+        "publication_date": {
+          "precision": "day",
+          "date": "2026-07-08"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_page",
+        "notes": "Company ESG release reports fleet-wide renewable-energy and closed-loop cooling measures. It does not disclose a Chaska-specific renewable share, electricity or water volume, wastewater, emissions, avoided cost, community contribution or monetized environmental effect, so fleet totals are not allocated to this facility."
       }
     }
   ],
@@ -118,13 +261,13 @@
     {
       "code": "investment",
       "label": "Capital investment",
-      "status": "not_yet_collected",
+      "status": "projections_only",
       "needed": "Annual actual spending, local share, and phase allocation."
     },
     {
       "code": "construction",
       "label": "Construction jobs and payroll",
-      "status": "not_yet_collected",
+      "status": "partial",
       "needed": "Workers, job-years, payroll, duration, and local participation."
     },
     {
@@ -136,7 +279,7 @@
     {
       "code": "operations",
       "label": "Permanent jobs and compensation",
-      "status": "not_yet_collected",
+      "status": "partial",
       "needed": "Realized direct and contractor employment, wages, and operating purchases."
     },
     {
@@ -148,13 +291,13 @@
     {
       "code": "public_costs",
       "label": "Incentives and public costs",
-      "status": "partial",
+      "status": "not_yet_collected",
       "needed": "Agreements, abatements, infrastructure, financing, and service costs."
     },
     {
       "code": "resources",
       "label": "Electricity, water, and cooling",
-      "status": "not_yet_collected",
+      "status": "partial",
       "needed": "Measured use, source, cooling design, and attributable system costs."
     },
     {
@@ -165,198 +308,6 @@
     }
   ],
   "economic_records": [
-    {
-      "claim_id": "clm_study_chaska_stream_rebate_2020",
-      "project_id": "prj_study_im3_building_00052227492",
-      "metric_code": "study.incentive_payments",
-      "value": 20589,
-      "value_qualifier": "exact",
-      "basis": "reported_actual",
-      "period": {
-        "kind": "fiscal_year",
-        "year": 2020,
-        "label": "FY2020 ended December 31, 2020"
-      },
-      "scope": {
-        "level": "company_county",
-        "label": "City of Chaska payments to IP Stream Minneapolis LLC (data-center development agreement)",
-        "county_fips": "27019",
-        "inventory_allocation": "unallocated"
-      },
-      "source_id": "src_study_chaska_acfr_2020",
-      "source_locator": "Notes to the financial statements, Tax Abatements, IP Stream Minneapolis LLC paragraph",
-      "notes": "Annual rebate paid by the City of Chaska under its data-center development agreement. This is a public incentive payment, not tax revenue, construction expenditure or the agreement ceiling. Cumulative totals and the $1,228,500 maximum are not entered as additional annual payments. The developer agreement and Flexential taxpayer rows remain separate scopes pending parcel and ownership reconciliation. The 2016 report dates the agreement to 2014; later reports say 2013, so no agreement date is adjudicated here.",
-      "review_status": "source_checked",
-      "reviewed_on": "2026-09-03",
-      "pdf_page": 76,
-      "printed_page": "68",
-      "annual_series_key": "chaska_ip_stream_annual_rebates",
-      "label": "Local government economic-development incentive payments",
-      "category": "public_costs",
-      "unit": "USD",
-      "measure_type": "flow",
-      "aggregation": "none"
-    },
-    {
-      "claim_id": "clm_study_chaska_stream_rebate_2021",
-      "project_id": "prj_study_im3_building_00052227492",
-      "metric_code": "study.incentive_payments",
-      "value": 23943,
-      "value_qualifier": "exact",
-      "basis": "reported_actual",
-      "period": {
-        "kind": "fiscal_year",
-        "year": 2021,
-        "label": "FY2021 ended December 31, 2021"
-      },
-      "scope": {
-        "level": "company_county",
-        "label": "City of Chaska payments to IP Stream Minneapolis LLC (data-center development agreement)",
-        "county_fips": "27019",
-        "inventory_allocation": "unallocated"
-      },
-      "source_id": "src_study_chaska_acfr_2021",
-      "source_locator": "Notes to the financial statements, Tax Abatements, IP Stream Minneapolis LLC paragraph",
-      "notes": "Annual rebate paid by the City of Chaska under its data-center development agreement. This is a public incentive payment, not tax revenue, construction expenditure or the agreement ceiling. Cumulative totals and the $1,228,500 maximum are not entered as additional annual payments. The developer agreement and Flexential taxpayer rows remain separate scopes pending parcel and ownership reconciliation. The 2016 report dates the agreement to 2014; later reports say 2013, so no agreement date is adjudicated here.",
-      "review_status": "source_checked",
-      "reviewed_on": "2026-09-03",
-      "pdf_page": 77,
-      "printed_page": "69",
-      "annual_series_key": "chaska_ip_stream_annual_rebates",
-      "label": "Local government economic-development incentive payments",
-      "category": "public_costs",
-      "unit": "USD",
-      "measure_type": "flow",
-      "aggregation": "none"
-    },
-    {
-      "claim_id": "clm_study_chaska_stream_rebate_2022",
-      "project_id": "prj_study_im3_building_00052227492",
-      "metric_code": "study.incentive_payments",
-      "value": 26248,
-      "value_qualifier": "exact",
-      "basis": "reported_actual",
-      "period": {
-        "kind": "fiscal_year",
-        "year": 2022,
-        "label": "FY2022 ended December 31, 2022"
-      },
-      "scope": {
-        "level": "company_county",
-        "label": "City of Chaska payments to IP Stream Minneapolis LLC (data-center development agreement)",
-        "county_fips": "27019",
-        "inventory_allocation": "unallocated"
-      },
-      "source_id": "src_study_chaska_acfr_2022",
-      "source_locator": "Notes to the financial statements, Tax Abatements, IP Stream Minneapolis LLC paragraph",
-      "notes": "Annual rebate paid by the City of Chaska under its data-center development agreement. This is a public incentive payment, not tax revenue, construction expenditure or the agreement ceiling. Cumulative totals and the $1,228,500 maximum are not entered as additional annual payments. The developer agreement and Flexential taxpayer rows remain separate scopes pending parcel and ownership reconciliation. The 2016 report dates the agreement to 2014; later reports say 2013, so no agreement date is adjudicated here.",
-      "review_status": "source_checked",
-      "reviewed_on": "2026-09-03",
-      "pdf_page": 84,
-      "printed_page": "76",
-      "annual_series_key": "chaska_ip_stream_annual_rebates",
-      "label": "Local government economic-development incentive payments",
-      "category": "public_costs",
-      "unit": "USD",
-      "measure_type": "flow",
-      "aggregation": "none"
-    },
-    {
-      "claim_id": "clm_study_chaska_stream_rebate_2023",
-      "project_id": "prj_study_im3_building_00052227492",
-      "metric_code": "study.incentive_payments",
-      "value": 35132,
-      "value_qualifier": "exact",
-      "basis": "reported_actual",
-      "period": {
-        "kind": "fiscal_year",
-        "year": 2023,
-        "label": "FY2023 ended December 31, 2023"
-      },
-      "scope": {
-        "level": "company_county",
-        "label": "City of Chaska payments to IP Stream Minneapolis LLC (data-center development agreement)",
-        "county_fips": "27019",
-        "inventory_allocation": "unallocated"
-      },
-      "source_id": "src_study_chaska_acfr_2023",
-      "source_locator": "Notes to the financial statements, Tax Abatements, IP Stream Minneapolis LLC paragraph",
-      "notes": "Annual rebate paid by the City of Chaska under its data-center development agreement. This is a public incentive payment, not tax revenue, construction expenditure or the agreement ceiling. Cumulative totals and the $1,228,500 maximum are not entered as additional annual payments. The developer agreement and Flexential taxpayer rows remain separate scopes pending parcel and ownership reconciliation. The 2016 report dates the agreement to 2014; later reports say 2013, so no agreement date is adjudicated here.",
-      "review_status": "source_checked",
-      "reviewed_on": "2026-09-03",
-      "pdf_page": 88,
-      "printed_page": "80",
-      "annual_series_key": "chaska_ip_stream_annual_rebates",
-      "label": "Local government economic-development incentive payments",
-      "category": "public_costs",
-      "unit": "USD",
-      "measure_type": "flow",
-      "aggregation": "none"
-    },
-    {
-      "claim_id": "clm_study_chaska_stream_rebate_2024",
-      "project_id": "prj_study_im3_building_00052227492",
-      "metric_code": "study.incentive_payments",
-      "value": 39257,
-      "value_qualifier": "exact",
-      "basis": "reported_actual",
-      "period": {
-        "kind": "fiscal_year",
-        "year": 2024,
-        "label": "FY2024 ended December 31, 2024"
-      },
-      "scope": {
-        "level": "company_county",
-        "label": "City of Chaska payments to IP Stream Minneapolis LLC (data-center development agreement)",
-        "county_fips": "27019",
-        "inventory_allocation": "unallocated"
-      },
-      "source_id": "src_study_chaska_acfr_2024",
-      "source_locator": "Notes to the financial statements, Tax Abatements, IP Stream Minneapolis LLC paragraph (begins on preceding page)",
-      "notes": "Annual rebate paid by the City of Chaska under its data-center development agreement. This is a public incentive payment, not tax revenue, construction expenditure or the agreement ceiling. Cumulative totals and the $1,228,500 maximum are not entered as additional annual payments. The developer agreement and Flexential taxpayer rows remain separate scopes pending parcel and ownership reconciliation. The 2016 report dates the agreement to 2014; later reports say 2013, so no agreement date is adjudicated here.",
-      "review_status": "source_checked",
-      "reviewed_on": "2026-09-03",
-      "pdf_page": 80,
-      "printed_page": "72",
-      "annual_series_key": "chaska_ip_stream_annual_rebates",
-      "label": "Local government economic-development incentive payments",
-      "category": "public_costs",
-      "unit": "USD",
-      "measure_type": "flow",
-      "aggregation": "none"
-    },
-    {
-      "claim_id": "clm_study_chaska_stream_rebate_2025",
-      "project_id": "prj_study_im3_building_00052227492",
-      "metric_code": "study.incentive_payments",
-      "value": 49305,
-      "value_qualifier": "exact",
-      "basis": "reported_actual",
-      "period": {
-        "kind": "fiscal_year",
-        "year": 2025,
-        "label": "FY2025 ended December 31, 2025"
-      },
-      "scope": {
-        "level": "company_county",
-        "label": "City of Chaska payments to IP Stream Minneapolis LLC (data-center development agreement)",
-        "county_fips": "27019",
-        "inventory_allocation": "unallocated"
-      },
-      "source_id": "src_study_chaska_acfr_2025",
-      "source_locator": "Notes to the financial statements, Tax Abatements, IP Stream Minneapolis LLC paragraph (begins on preceding page)",
-      "notes": "Annual rebate paid by the City of Chaska under its data-center development agreement. This is a public incentive payment, not tax revenue, construction expenditure or the agreement ceiling. Cumulative totals and the $1,228,500 maximum are not entered as additional annual payments. The developer agreement and Flexential taxpayer rows remain separate scopes pending parcel and ownership reconciliation. The 2016 report dates the agreement to 2014; later reports say 2013, so no agreement date is adjudicated here.",
-      "review_status": "source_checked",
-      "reviewed_on": "2026-09-03",
-      "pdf_page": 81,
-      "printed_page": "73",
-      "annual_series_key": "chaska_ip_stream_annual_rebates",
-      "label": "Local government economic-development incentive payments",
-      "category": "public_costs",
-      "unit": "USD",
-      "measure_type": "flow",
-      "aggregation": "none"
-    },
     {
       "claim_id": "clm_study_chaska_flexential_value_2023",
       "project_id": "prj_study_im3_building_00052227492",
@@ -452,54 +403,559 @@
       "unit": "USD",
       "measure_type": "stock",
       "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_flexential_chaska_investment_projection_2014",
+      "project_id": "prj_study_im3_building_00052227492",
+      "metric_code": "study.campus_investment_projection",
+      "value": 60000000,
+      "value_qualifier": "greater_than",
+      "basis": "source_projection",
+      "period": {
+        "kind": "projection_horizon",
+        "report_date": "2014-04-09",
+        "label": "Opening-day statement about expected private investment; realization horizon unspecified"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "ViaWest adaptive-reuse data center at 3500 Lyman Boulevard, now Flexential Minneapolis-Chaska",
+        "county_fips": "27019",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_viawest_chaska_opening_2014",
+      "source_locator": "Opening announcement, Minnesota DEED commissioner quotation",
+      "notes": "The state commissioner quoted in ViaWest's release said the facility would mean more than $60 million in new private investment. Future-tense wording makes this a source projection and lower bound, not a reported actual, audited completion cost, annual spending flow, tax base, supplier payment or causal benefit. No realization record was found.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Planned campus investment",
+      "category": "investment",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_flexential_chaska_permit_b24_1109",
+      "project_id": "prj_study_im3_building_00052227492",
+      "metric_code": "study.permitted_construction_value",
+      "value": 5861872,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "calendar_year",
+        "year": 2025,
+        "label": "Permit B24-1109 issued January 23, 2025"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Flexential Phase 5 Refresh alteration at parcel 30.0590020, 3500 Lyman Boulevard",
+        "county_fips": "27019",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_chaska_flexential_phase5_permit_2025",
+      "source_locator": "Permit details, estimated value including labor, work description, status and contractors",
+      "notes": "The exact portal amount is an administrative estimated value including labor for a later Phase 5 alteration. It is not original 2013-2014 conversion cost, audited expenditure, local supplier spending, payroll, paid contract value or proof of completion; the permit was not closed at review.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Reported permit construction value",
+      "category": "construction",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_flexential_chaska_floor_area_2026",
+      "project_id": "prj_study_im3_building_00052227492",
+      "metric_code": "study.operating_property_floor_area",
+      "value": 160838,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "reported_snapshot",
+        "report_date": "2026-09-06",
+        "label": "Current operator facility-directory snapshot reviewed September 6, 2026"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Flexential Minneapolis-Chaska data-center footprint at 3500 Lyman Boulevard",
+        "county_fips": "27019",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_flexential_data_center_directory_2026",
+      "source_locator": "Minneapolis-Chaska facility card, square-foot field",
+      "notes": "The current 160,838-square-foot footprint is an operating-scale stock after expansions, not the original conversion area, raised-floor area, occupied customer space, taxable area, construction spending or economic output.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Reported operating property floor area",
+      "category": "operations",
+      "unit": "square_feet",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_flexential_chaska_power_capacity_2026",
+      "project_id": "prj_study_im3_building_00052227492",
+      "metric_code": "study.operating_power_capacity",
+      "value": 9,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "reported_snapshot",
+        "report_date": "2026-09-06",
+        "label": "Current operator facility-page snapshot reviewed September 6, 2026"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Flexential Minneapolis-Chaska critical-load UPS capacity at 3500 Lyman Boulevard",
+        "county_fips": "27019",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_flexential_chaska_current_2026",
+      "source_locator": "Power section, critical load UPS capacity",
+      "notes": "The 9 MW figure is critical-load UPS capacity, not measured demand, utility-service capacity, generator capacity, annual electricity consumption, occupied capacity, output, emissions or a monetary contribution.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Reported operating data-center capacity",
+      "category": "resources",
+      "unit": "MW",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_flexential_chaska_property_taxes_paid_2023",
+      "project_id": "prj_study_im3_building_00052227492",
+      "metric_code": "study.property_taxes_paid",
+      "value": 534380,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2023,
+        "label": "Carver County payable year 2023, two installments paid"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Flexential LLC real-property parcel 30.0590020 at 3500 Lyman Boulevard, all taxing jurisdictions and special assessments",
+        "county_fips": "27019",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_carver_flexential_parcel_tax_2026",
+      "source_locator": "Payment History and Payment Details, payable year 2023",
+      "notes": "The total is the sum of two exact $267,190 parcel-account payments. It includes special assessments and overlapping county, city, state, school and special-district components; it is not City-only revenue, a tax-incidence result, incentive value or net fiscal benefit.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "annual_series_key": "flexential_chaska_parcel_property_taxes_paid",
+      "label": "Account property taxes paid",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_flexential_chaska_property_taxes_paid_2024",
+      "project_id": "prj_study_im3_building_00052227492",
+      "metric_code": "study.property_taxes_paid",
+      "value": 551454,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2024,
+        "label": "Carver County payable year 2024, two installments paid"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Flexential LLC real-property parcel 30.0590020 at 3500 Lyman Boulevard, all taxing jurisdictions and special assessments",
+        "county_fips": "27019",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_carver_flexential_parcel_tax_2026",
+      "source_locator": "Payment History and Payment Details, payable year 2024",
+      "notes": "The total is the sum of two exact $275,727 parcel-account payments. It includes special assessments and overlapping county, city, state, school and special-district components; it is not City-only revenue, a tax-incidence result, incentive value or net fiscal benefit.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "annual_series_key": "flexential_chaska_parcel_property_taxes_paid",
+      "label": "Account property taxes paid",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_flexential_chaska_property_taxes_paid_2025",
+      "project_id": "prj_study_im3_building_00052227492",
+      "metric_code": "study.property_taxes_paid",
+      "value": 582406,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2025,
+        "label": "Carver County payable year 2025, two installments paid"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Flexential LLC real-property parcel 30.0590020 at 3500 Lyman Boulevard, all taxing jurisdictions and special assessments",
+        "county_fips": "27019",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_carver_flexential_parcel_tax_2026",
+      "source_locator": "Payment History and Payment Details, payable year 2025",
+      "notes": "The total is the sum of two exact $291,203 parcel-account payments. It includes special assessments and overlapping county, city, state, school and special-district components; it is not City-only revenue, a tax-incidence result, incentive value or net fiscal benefit. The separate first 2026 installment is not promoted to a full-year amount.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "annual_series_key": "flexential_chaska_parcel_property_taxes_paid",
+      "label": "Account property taxes paid",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_flexential_chaska_permit_m24_0677",
+      "project_id": "prj_study_im3_building_00052227492",
+      "metric_code": "study.permitted_construction_value",
+      "value": 1272191,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "calendar_year",
+        "year": 2025,
+        "label": "Mechanical permit M24-0677 issued January 23, 2025"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Flexential supply and return ductwork at parcel 30.0590020, 3500 Lyman Boulevard",
+        "county_fips": "27019",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_chaska_flexential_m24_0677",
+      "source_locator": "Permit details, estimated value including labor, work description, status, contractor and inspections",
+      "notes": "The portal amount is an administrative estimate including labor for later mechanical work. It is not audited spending, payroll, local purchasing, payment to Metropolitan Mechanical/API HVAC or proof of completion; the permit was unclosed and expired at review. Potential scope overlap with B24-1109 is unresolved, so the two values must not be summed as a project investment total.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Reported permit construction value",
+      "category": "construction",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_flexential_chaska_permit_m26_0403",
+      "project_id": "prj_study_im3_building_00052227492",
+      "metric_code": "study.permitted_construction_value",
+      "value": 293000,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "calendar_year",
+        "year": 2026,
+        "label": "Mechanical permit M26-0403 issued August 10, 2026"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Flexential condenser-mister work at parcel 30.0590020, 3500 Lyman Boulevard",
+        "county_fips": "27019",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_chaska_flexential_m26_0403",
+      "source_locator": "Permit details, estimated value including labor, work description, status, contractor and inspections",
+      "notes": "The portal amount is an administrative estimate including labor for later mechanical work. It is not audited spending, payroll, local purchasing, payment to Climate Makers/EVER or proof of completion; final inspection was only partially approved. Related $3,000 plumbing permit P26-0523 is excluded to avoid overlapping the same condenser-mister scope.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Reported permit construction value",
+      "category": "construction",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_flexential_chaska_property_taxes_billed_2026",
+      "project_id": "prj_study_im3_building_00052227492",
+      "metric_code": "study.property_taxes_billed",
+      "value": 632906,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2026,
+        "label": "Carver County payable year 2026 bill"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Flexential LLC real-property parcel 30.0590020 at 3500 Lyman Boulevard, all taxing jurisdictions and special assessments",
+        "county_fips": "27019",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_carver_flexential_parcel_tax_2026",
+      "source_locator": "Tax History and Tax Distribution, payable year 2026",
+      "notes": "The exact bill is $632,696 tax before special assessments plus a $210 industrial solid-waste special assessment. Only the first $316,453 installment was shown paid at review, so billed and paid concepts are kept separate and no 2026 annual paid amount is created. The bill spans multiple taxing jurisdictions and is not City-only revenue, tax incidence, incentive value or net fiscal benefit.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "annual_series_key": "flexential_chaska_parcel_property_taxes_billed",
+      "label": "Account property taxes billed",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_chaska_viawest_value_2015",
+      "project_id": "prj_study_im3_building_00052227492",
+      "metric_code": "study.estimated_actual_property_value",
+      "value": 11606300,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2015,
+        "label": "Payable 2015; assessed 2014"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Via West Inc. principal taxpayer in the City of Chaska, Carver County",
+        "county_fips": "27019",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_chaska_viawest_acfr_2015",
+      "source_locator": "Table 9, Principal Property Taxpayers, Via West Inc. row, current payable-year Estimated Actual Value column",
+      "notes": "Exact transcription from an unaudited citywide principal-taxpayer table, not sale price, tax paid or incremental value caused by this project. The company-city row is not an explicit parcel crosswalk. The series is kept separate from current Flexential and parcel records pending a direct taxpayer/parcel crosswalk.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "pdf_page": 159,
+      "printed_page": "151",
+      "annual_series_key": "chaska_viawest_estimated_actual_value",
+      "label": "Estimated actual property value",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_chaska_viawest_value_2016",
+      "project_id": "prj_study_im3_building_00052227492",
+      "metric_code": "study.estimated_actual_property_value",
+      "value": 12021700,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2016,
+        "label": "Payable 2016; assessed 2015"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Via West Inc. principal taxpayer in the City of Chaska, Carver County",
+        "county_fips": "27019",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_chaska_viawest_acfr_2016",
+      "source_locator": "Table 9, Principal Property Taxpayers, Via West Inc. row, current payable-year Estimated Actual Value column",
+      "notes": "Exact transcription from an unaudited citywide principal-taxpayer table, not sale price, tax paid or incremental value caused by this project. The company-city row is not an explicit parcel crosswalk. The series is kept separate from current Flexential and parcel records pending a direct taxpayer/parcel crosswalk.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "pdf_page": 161,
+      "printed_page": "153",
+      "annual_series_key": "chaska_viawest_estimated_actual_value",
+      "label": "Estimated actual property value",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_chaska_viawest_value_2017",
+      "project_id": "prj_study_im3_building_00052227492",
+      "metric_code": "study.estimated_actual_property_value",
+      "value": 12021700,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2017,
+        "label": "Payable 2017; assessed 2016"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Via West Inc. principal taxpayer in the City of Chaska, Carver County",
+        "county_fips": "27019",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_chaska_viawest_acfr_2017",
+      "source_locator": "Table 9, Principal Property Taxpayers, Via West Inc. row, current payable-year Estimated Actual Value column",
+      "notes": "Exact transcription from an unaudited citywide principal-taxpayer table, not sale price, tax paid or incremental value caused by this project. The company-city row is not an explicit parcel crosswalk. The series is kept separate from current Flexential and parcel records pending a direct taxpayer/parcel crosswalk.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "pdf_page": 161,
+      "printed_page": "153",
+      "annual_series_key": "chaska_viawest_estimated_actual_value",
+      "label": "Estimated actual property value",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_chaska_viawest_value_2018",
+      "project_id": "prj_study_im3_building_00052227492",
+      "metric_code": "study.estimated_actual_property_value",
+      "value": 12164500,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2018,
+        "label": "Payable 2018; assessed 2017"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Via West Inc. principal taxpayer in the City of Chaska, Carver County",
+        "county_fips": "27019",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_chaska_viawest_acfr_2018",
+      "source_locator": "Table 9, Principal Property Taxpayers, Via West Inc. row, current payable-year Estimated Actual Value column",
+      "notes": "Exact transcription from an unaudited citywide principal-taxpayer table, not sale price, tax paid or incremental value caused by this project. The company-city row is not an explicit parcel crosswalk. The series is kept separate from current Flexential and parcel records pending a direct taxpayer/parcel crosswalk.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "pdf_page": 161,
+      "printed_page": "153",
+      "annual_series_key": "chaska_viawest_estimated_actual_value",
+      "label": "Estimated actual property value",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_chaska_viawest_value_2019",
+      "project_id": "prj_study_im3_building_00052227492",
+      "metric_code": "study.estimated_actual_property_value",
+      "value": 12164500,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2019,
+        "label": "Payable 2019; assessed 2018"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Via West Inc. principal taxpayer in the City of Chaska, Carver County",
+        "county_fips": "27019",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_chaska_viawest_acfr_2019",
+      "source_locator": "Table 9, Principal Property Taxpayers, Via West Inc. row, current payable-year Estimated Actual Value column",
+      "notes": "Exact transcription from an unaudited citywide principal-taxpayer table, not sale price, tax paid or incremental value caused by this project. The company-city row is not an explicit parcel crosswalk. The series is kept separate from current Flexential and parcel records pending a direct taxpayer/parcel crosswalk.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "pdf_page": 157,
+      "printed_page": "149",
+      "annual_series_key": "chaska_viawest_estimated_actual_value",
+      "label": "Estimated actual property value",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_chaska_viawest_value_2020",
+      "project_id": "prj_study_im3_building_00052227492",
+      "metric_code": "study.estimated_actual_property_value",
+      "value": 13137400,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2020,
+        "label": "Payable 2020; assessed 2019"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Via West Inc. principal taxpayer in the City of Chaska, Carver County",
+        "county_fips": "27019",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_chaska_viawest_acfr_2020",
+      "source_locator": "Table 9, Principal Property Taxpayers, Via West Inc. row, current payable-year Estimated Actual Value column",
+      "notes": "Exact transcription from an unaudited citywide principal-taxpayer table, not sale price, tax paid or incremental value caused by this project. The company-city row is not an explicit parcel crosswalk. The series is kept separate from current Flexential and parcel records pending a direct taxpayer/parcel crosswalk.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "pdf_page": 159,
+      "printed_page": "151",
+      "annual_series_key": "chaska_viawest_estimated_actual_value",
+      "label": "Estimated actual property value",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_chaska_viawest_value_2021",
+      "project_id": "prj_study_im3_building_00052227492",
+      "metric_code": "study.estimated_actual_property_value",
+      "value": 14243100,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2021,
+        "label": "Payable 2021; assessed 2020"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Via West Inc. principal taxpayer in the City of Chaska, Carver County",
+        "county_fips": "27019",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_chaska_viawest_acfr_2021",
+      "source_locator": "Table 9, Principal Property Taxpayers, Via West Inc. row, current payable-year Estimated Actual Value column",
+      "notes": "Exact transcription from an unaudited citywide principal-taxpayer table, not sale price, tax paid or incremental value caused by this project. The company-city row is not an explicit parcel crosswalk. The series is kept separate from current Flexential and parcel records pending a direct taxpayer/parcel crosswalk.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "pdf_page": 161,
+      "printed_page": "153",
+      "annual_series_key": "chaska_viawest_estimated_actual_value",
+      "label": "Estimated actual property value",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_chaska_viawest_value_2022",
+      "project_id": "prj_study_im3_building_00052227492",
+      "metric_code": "study.estimated_actual_property_value",
+      "value": 13894000,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2022,
+        "label": "Payable 2022; assessed 2021"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Via West Inc. principal taxpayer in the City of Chaska, Carver County",
+        "county_fips": "27019",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_chaska_viawest_acfr_2022",
+      "source_locator": "Table 9, Principal Property Taxpayers, Via West Inc. row, current payable-year Estimated Actual Value column",
+      "notes": "Exact transcription from an unaudited citywide principal-taxpayer table, not sale price, tax paid or incremental value caused by this project. The company-city row is not an explicit parcel crosswalk. The series is kept separate from current Flexential and parcel records pending a direct taxpayer/parcel crosswalk.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "pdf_page": 167,
+      "printed_page": "159",
+      "annual_series_key": "chaska_viawest_estimated_actual_value",
+      "label": "Estimated actual property value",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "stock",
+      "aggregation": "none"
     }
   ],
   "economic_sources": [
-    {
-      "source_id": "src_study_chaska_acfr_2020",
-      "title": "City of Chaska 2020 Annual Comprehensive Financial Report",
-      "url": "https://www.chaskamn.gov/DocumentCenter/View/4314",
-      "publisher": "City of Chaska, Minnesota",
-      "source_type": "local_government_record",
-      "publication_date": {
-        "precision": "day",
-        "date": "2021-06-14"
-      },
-      "retrieved_on": "2026-09-03",
-      "review_method": "pdf_text_and_page_image",
-      "artifact_sha256": "c92f40b207683bef425df22db146206f61433f79f335d396325ed33bf571ee73",
-      "notes": "Tax-abatement note identifies IP Stream Minneapolis LLC and reports annual developer rebates. Principal-taxpayer Table 9, where used, is an unaudited statistical table sourced to the Carver County Auditor; its estimated actual value is distinct from estimated net tax capacity. Publication date uses the transmittal letter where readable; the 2023 letter date remains unverified. Parcel-level linkage between the developer, operator and mapped building remains provisional."
-    },
-    {
-      "source_id": "src_study_chaska_acfr_2021",
-      "title": "City of Chaska 2021 Annual Comprehensive Financial Report",
-      "url": "https://www.chaskamn.gov/DocumentCenter/View/5231",
-      "publisher": "City of Chaska, Minnesota",
-      "source_type": "local_government_record",
-      "publication_date": {
-        "precision": "day",
-        "date": "2022-06-23"
-      },
-      "retrieved_on": "2026-09-03",
-      "review_method": "pdf_text_and_page_image",
-      "artifact_sha256": "b167df80ef0940a37e0be5a5ade7167830c18bc1d2be2fbfa2771fe139802fd9",
-      "notes": "Tax-abatement note identifies IP Stream Minneapolis LLC and reports annual developer rebates. Principal-taxpayer Table 9, where used, is an unaudited statistical table sourced to the Carver County Auditor; its estimated actual value is distinct from estimated net tax capacity. Publication date uses the transmittal letter where readable; the 2023 letter date remains unverified. Parcel-level linkage between the developer, operator and mapped building remains provisional."
-    },
-    {
-      "source_id": "src_study_chaska_acfr_2022",
-      "title": "City of Chaska 2022 Annual Comprehensive Financial Report",
-      "url": "https://www.chaskamn.gov/DocumentCenter/View/5853",
-      "publisher": "City of Chaska, Minnesota",
-      "source_type": "local_government_record",
-      "publication_date": {
-        "precision": "day",
-        "date": "2023-06-22"
-      },
-      "retrieved_on": "2026-09-03",
-      "review_method": "pdf_text_and_page_image",
-      "artifact_sha256": "4ff9e766e5cf9aa2a5d6a3c8ee09469335c632347b061a6304ff9ee25075d044",
-      "notes": "Tax-abatement note identifies IP Stream Minneapolis LLC and reports annual developer rebates. Principal-taxpayer Table 9, where used, is an unaudited statistical table sourced to the Carver County Auditor; its estimated actual value is distinct from estimated net tax capacity. Publication date uses the transmittal letter where readable; the 2023 letter date remains unverified. Parcel-level linkage between the developer, operator and mapped building remains provisional."
-    },
     {
       "source_id": "src_study_chaska_acfr_2023",
       "title": "City of Chaska 2023 Annual Comprehensive Financial Report",
@@ -543,9 +999,216 @@
       "review_method": "pdf_text_and_page_image",
       "artifact_sha256": "c50d5ba2e32fcdd85e8cf48ec36dfb0f0359b1a5f44e9778c01e3664bbf54825",
       "notes": "Tax-abatement note identifies IP Stream Minneapolis LLC and reports annual developer rebates. Principal-taxpayer Table 9, where used, is an unaudited statistical table sourced to the Carver County Auditor; its estimated actual value is distinct from estimated net tax capacity. Publication date uses the transmittal letter where readable; the 2023 letter date remains unverified. Parcel-level linkage between the developer, operator and mapped building remains provisional."
+    },
+    {
+      "source_id": "src_study_flexential_chaska_current_2026",
+      "title": "Minneapolis - Chaska Data Center & Colocation",
+      "url": "https://www.flexential.com/data-centers/mn/minneapolis/chaska-data-center",
+      "publisher": "Flexential",
+      "source_type": "operator_release",
+      "publication_date": {
+        "precision": "unknown"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_page",
+      "notes": "Current operator facility page reports 9 MW of critical-load UPS capacity, a 1.4 PUE rating, 1,500 watts per square foot, N+1 cooling and 24/7 support. It does not publish annual metered electricity, peak demand, water, wastewater, emissions, occupancy, headcount, payroll, revenue or operating cost. Capacity is transcribed as an operating-scale stock, not usage or economic output."
+    },
+    {
+      "source_id": "src_study_flexential_data_center_directory_2026",
+      "title": "Flexential colocation data centers and data center map",
+      "url": "https://www.flexential.com/data-centers",
+      "publisher": "Flexential",
+      "source_type": "operator_release",
+      "publication_date": {
+        "precision": "unknown"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_page",
+      "notes": "Current operator directory card for Minneapolis-Chaska reports 160,838 square feet and 9 MW. Floor area is used as a current operating footprint, not original conversion area, raised floor, occupied customer space or taxable area."
+    },
+    {
+      "source_id": "src_study_viawest_chaska_opening_2014",
+      "title": "ViaWest Announces Opening of Minneapolis Data Center",
+      "url": "https://newswire.telecomramblings.com/2014/04/viawest-announces-opening-minneapolis-data-center/",
+      "publisher": "ViaWest, Inc. (reproduced by Telecom Ramblings)",
+      "source_type": "operator_release",
+      "publication_date": {
+        "precision": "day",
+        "date": "2014-04-09"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_page",
+      "notes": "Reproduced ViaWest opening release reports more than 70,000 square feet of raised floor, 9 MW, and an April 2014 opening. A Minnesota DEED commissioner is quoted saying the facility 'will mean' more than $60 million in new private investment; that future-tense statement is retained only as a source projection and not treated as realized cost. The release does not provide invoices, a completion-cost ledger, realized jobs, payroll, tax receipts or utility consumption."
+    },
+    {
+      "source_id": "src_study_carver_flexential_parcel_tax_2026",
+      "title": "Carver County Property Information, parcel 30.0590020",
+      "url": "https://publicaccess.carvercountymn.gov/search/commonsearch.aspx?mode=combined",
+      "publisher": "Carver County, Minnesota",
+      "source_type": "assessor_record",
+      "publication_date": {
+        "precision": "unknown"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_page",
+      "notes": "Interactive parcel query for 300590020 identifies FLEXENTIAL LLC, 3500 Lyman Boulevard, 33.03 deeded acres, industrial class 234, active non-homestead status, a blank TIF-project field and contribution to fiscal authority. Payment detail shows two $267,190 payments in 2023, two $275,727 payments in 2024 and two $291,203 payments in 2025. The 2026 account shows a $632,906 bill, including a $210 industrial solid-waste special assessment, and only the first $316,453 installment paid by the review date. The bill is preserved separately from paid totals. Annual totals span county, city, state, school and special-district components; they are not City-only receipts, taxpayer-incidence findings or net community benefit."
+    },
+    {
+      "source_id": "src_study_chaska_flexential_phase5_permit_2025",
+      "title": "City of Chaska permit B24-1109, Flexential Phase 5 Refresh",
+      "url": "https://ci-chaska-mn.smartgovcommunity.com/PermittingPublic/PermitLandingPagePublic/Index/e5da3e8d-27e5-49c5-8ee5-b21800f32ce5",
+      "publisher": "City of Chaska, Minnesota",
+      "source_type": "local_government_record",
+      "publication_date": {
+        "precision": "day",
+        "date": "2025-01-23"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_page",
+      "notes": "Official SmartGov record identifies a commercial alteration at 3500 Lyman Boulevard described as 'Phase 5 Refresh - Alteration to Existing Building.' It reports estimated value including labor of $5,861,872, issued status on January 23, 2025, an unclosed permit with January 31, 2027 expiration, and PCL Construction Services Inc. as primary contractor. Portal inspections show approved hydrostatic testing on October 1, 2025 and approved footings on June 5, 2025, with a foundation-reinforcement item pending, a slab item cancelled and multiple finals blank. The amount is an administrative permit estimate, not audited spending, payroll, local purchasing, payment to PCL or proof of completion."
+    },
+    {
+      "source_id": "src_study_chaska_viawest_acfr_2015",
+      "title": "City of Chaska 2015 Annual Comprehensive Financial Report",
+      "url": "https://www.chaskamn.gov/DocumentCenter/View/1192/2015-Annual-Comprehensive-Financial-Report-PDF",
+      "publisher": "City of Chaska, Minnesota",
+      "source_type": "local_government_record",
+      "publication_date": {
+        "precision": "year",
+        "year": 2015
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "pdf_text_and_page_image",
+      "notes": "Unaudited Table 9, sourced to the Carver County Auditor, lists Via West Inc. at $11,606,300 estimated actual value and $231,376 estimated net tax capacity, rank 6 and 0.88% of city total for payable 2015 / assessed 2014. Company-city scope is not an explicit parcel crosswalk."
+    },
+    {
+      "source_id": "src_study_chaska_viawest_acfr_2016",
+      "title": "City of Chaska 2016 Annual Comprehensive Financial Report",
+      "url": "https://www.chaskamn.gov/DocumentCenter/View/1967/2016-Annual-Comprehensive-Financial-Report-PDF?bidId=",
+      "publisher": "City of Chaska, Minnesota",
+      "source_type": "local_government_record",
+      "publication_date": {
+        "precision": "year",
+        "year": 2016
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "pdf_text_and_page_image",
+      "notes": "Unaudited Table 9, sourced to the Carver County Auditor, lists Via West Inc. at $12,021,700 estimated actual value and $239,684 estimated net tax capacity, rank 6 and 0.84% of city total for payable 2016 / assessed 2015. Company-city scope is not an explicit parcel crosswalk."
+    },
+    {
+      "source_id": "src_study_chaska_viawest_acfr_2017",
+      "title": "City of Chaska 2017 Annual Comprehensive Financial Report",
+      "url": "https://www.chaskamn.gov/DocumentCenter/View/2368/2017-Annual-Comprehensive-Financial-Report-PDF",
+      "publisher": "City of Chaska, Minnesota",
+      "source_type": "local_government_record",
+      "publication_date": {
+        "precision": "year",
+        "year": 2017
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "pdf_text_and_page_image",
+      "notes": "Unaudited Table 9, sourced to the Carver County Auditor, lists Via West Inc. at $12,021,700 estimated actual value and $239,684 estimated net tax capacity, rank 6 and 0.82% of city total for payable 2017 / assessed 2016. Company-city scope is not an explicit parcel crosswalk."
+    },
+    {
+      "source_id": "src_study_chaska_viawest_acfr_2018",
+      "title": "City of Chaska 2018 Annual Comprehensive Financial Report",
+      "url": "https://www.chaskamn.gov/DocumentCenter/View/3008/2018-Annual-Comprehensive-Financial-Report-PDF",
+      "publisher": "City of Chaska, Minnesota",
+      "source_type": "local_government_record",
+      "publication_date": {
+        "precision": "year",
+        "year": 2018
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "pdf_text_and_page_image",
+      "notes": "Unaudited Table 9, sourced to the Carver County Auditor, lists Via West Inc. at $12,164,500 estimated actual value and $242,540 estimated net tax capacity, rank 8 and 0.77% of city total for payable 2018 / assessed 2017. Company-city scope is not an explicit parcel crosswalk."
+    },
+    {
+      "source_id": "src_study_chaska_viawest_acfr_2019",
+      "title": "City of Chaska 2019 Annual Comprehensive Financial Report",
+      "url": "https://www.chaskamn.gov/DocumentCenter/View/3333/2019-Annual-Comprehensive-Financial-Report-PDF",
+      "publisher": "City of Chaska, Minnesota",
+      "source_type": "local_government_record",
+      "publication_date": {
+        "precision": "year",
+        "year": 2019
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "pdf_text_and_page_image",
+      "notes": "Unaudited Table 9, sourced to the Carver County Auditor, lists Via West Inc. at $12,164,500 estimated actual value and $242,540 estimated net tax capacity, rank 9 and 0.72% of city total for payable 2019 / assessed 2018. Company-city scope is not an explicit parcel crosswalk."
+    },
+    {
+      "source_id": "src_study_chaska_viawest_acfr_2020",
+      "title": "City of Chaska 2020 Annual Comprehensive Financial Report",
+      "url": "https://www.chaskamn.gov/DocumentCenter/View/4314/2020-Annual-Comprehensive-Financial-Report-PDF",
+      "publisher": "City of Chaska, Minnesota",
+      "source_type": "local_government_record",
+      "publication_date": {
+        "precision": "year",
+        "year": 2020
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "pdf_text_and_page_image",
+      "notes": "Unaudited Table 9, sourced to the Carver County Auditor, lists Via West Inc. at $13,137,400 estimated actual value and $261,998 estimated net tax capacity, rank 7 and 0.72% of city total for payable 2020 / assessed 2019. Company-city scope is not an explicit parcel crosswalk."
+    },
+    {
+      "source_id": "src_study_chaska_viawest_acfr_2021",
+      "title": "City of Chaska 2021 Annual Comprehensive Financial Report",
+      "url": "https://www.chaskamn.gov/DocumentCenter/View/5231/2021-Annual-Comprehensive-Financial-Report-PDF",
+      "publisher": "City of Chaska, Minnesota",
+      "source_type": "local_government_record",
+      "publication_date": {
+        "precision": "year",
+        "year": 2021
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "pdf_text_and_page_image",
+      "notes": "Unaudited Table 9, sourced to the Carver County Auditor, lists Via West Inc. at $14,243,100 estimated actual value and $284,112 estimated net tax capacity, rank 5 and 0.75% of city total for payable 2021 / assessed 2020. Company-city scope is not an explicit parcel crosswalk."
+    },
+    {
+      "source_id": "src_study_chaska_viawest_acfr_2022",
+      "title": "City of Chaska 2022 Annual Comprehensive Financial Report",
+      "url": "https://www.chaskamn.gov/DocumentCenter/View/5853/2022-Annual-Comprehensive-Financial-Report-PDF",
+      "publisher": "City of Chaska, Minnesota",
+      "source_type": "local_government_record",
+      "publication_date": {
+        "precision": "year",
+        "year": 2022
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "pdf_text_and_page_image",
+      "notes": "Unaudited Table 9, sourced to the Carver County Auditor, lists Via West Inc. at $13,894,000 estimated actual value and $277,130 estimated net tax capacity, rank 6 and 0.70% of city total for payable 2022 / assessed 2021. Company-city scope is not an explicit parcel crosswalk."
+    },
+    {
+      "source_id": "src_study_chaska_flexential_m24_0677",
+      "title": "City of Chaska mechanical permit M24-0677, Flexential",
+      "url": "https://ci-chaska-mn.smartgovcommunity.com/PermittingPublic/PermitLandingPagePublic/Index/984a68d3-21da-4e07-9fb6-b2480140a593",
+      "publisher": "City of Chaska, Minnesota",
+      "source_type": "local_government_record",
+      "publication_date": {
+        "precision": "day",
+        "date": "2025-01-23"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_page",
+      "notes": "Mechanical permit for insulated supply and return ductwork at 3500 Lyman Boulevard reports $1,272,191 estimated value including labor, API HVAC / Metropolitan Mechanical as contractor, issue date January 23, 2025, no close, and expiration July 31, 2026. Hydrostatic inspection was approved and insulation inspection partially approved. Potential scope overlap with Phase 5 permit B24-1109 is unresolved."
+    },
+    {
+      "source_id": "src_study_chaska_flexential_m26_0403",
+      "title": "City of Chaska mechanical permit M26-0403, Flexential condenser misters",
+      "url": "https://ci-chaska-mn.smartgovcommunity.com/PermittingPublic/PermitLandingPagePublic/Index/34b475ca-cdb1-4011-8daa-b4a200d3c9cd",
+      "publisher": "City of Chaska, Minnesota",
+      "source_type": "local_government_record",
+      "publication_date": {
+        "precision": "day",
+        "date": "2026-08-10"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_page",
+      "notes": "Mechanical permit for condenser misters at 3500 Lyman Boulevard reports $293,000 estimated value including labor, EVER LLC dba Climate Makers as contractor, issue date August 10, 2026, open/issued status and February 20, 2027 expiration. Rough-in was approved and final was partially approved August 24, 2026. Related plumbing permit P26-0523 reports $3,000 and is excluded as an overlapping trade permit."
     }
   ],
-  "economic_scope_note": "Reviewed evidence batches at campus or company/county scope. No record is allocated to an individual inventory building. Source checking establishes what a document reports, not an independent audit or causal attribution. Monetary figures are nominal. Peak workforce is distinct from annual employment; source-year labels do not establish fiscal-year boundaries. Original forecasts remain forecasts until realization is verified. No cross-record benefit total is defined. Cumulative project costs are not annual expenditure. Tax receipts and incentive payments remain separate, with inferred taxpayer links disclosed. Contextual research updates do not count as economic amounts. Account tax bills are distinct from cash receipts and incentive-program fees. Tax years, calendar years and fiscal years retain their source basis; separate taxpayer accounts are not consolidated. Municipal developer rebates and taxpayer valuations have distinct subjects. Estimated actual property value and tax capacity are not tax receipts; payable-year valuations retain their earlier assessment date. Taxpayer values expressed in millions retain approximate precision and account-level separation. A current-year table can use an older valuation date and is not converted into an annual series. Facility real-property and business-personal-property accounts remain separate, and address-label discrepancies are disclosed. Michigan Industrial Facilities Tax accounts remain distinct from the underlying real parcel and from post-expiration personal-property accounts; annual account totals are not recipient-level government receipts. Permit construction values are administrative project amounts, not verified expenditure, and separate permits are not combined without proof that their scopes do not overlap. Repeated maintenance-year assessments are annual parcel stocks, not new investment flows. Mixed-use parcel assessments and taxable values are retained at whole-parcel scope and are not allocated to a data-center tenant or function by floor area. Operator-reported jobs supported remain distinct from direct employees and FTEs. Approved infrastructure grants are documented public commitments rather than verified disbursements or total public costs. Cumulative community funding remains separate from tax receipts, payroll and modeled multiplier effects. Reported facility power capacity is not measured electricity consumption or peak demand. Permit-listed emergency generators are not runtime, fuel-use or actual-emissions observations. A city largest-taxpayer table's personal-property assessment remains separate from the leasehold real-property account, tax bills, receipts and capital expenditure. TIF loan principal is financing rather than a grant or general-fund receipt; project-generated tax revenue pledged to repayment is retained as a separate public-financing flow and is not added to gross parcel distributions. Water-withdrawal and consumptive permit capacities are regulatory limits rather than measured use. Development-agreement local-labor preferences are requirements rather than realized participation, and operating employee snapshots remain distinct from customers' on-site staff and jobs forecasts. Audited City bond statements distinguish issuance draws, year-end principal, annual principal retired, interest and fees, pledged TIF revenue, debt-service-fund transfers and future principal-plus-interest commitments. These measures are not summed into a benefit or subsidy total. City pledged revenue, City debt-service-fund transfers and the private fund's project TIF revenue applied to loan repayment retain their separate source definitions because only the 2022 transfer and private-fund amount agree exactly. Developer testimony in public meeting minutes is retained as a source-attributed cumulative lower bound; local-contractor spending is not converted into payroll, worker counts, household spending or multiplier effects. Economic-improvement-district cost estimates and maximum owner assessments remain source projections until bond issuance, an assessment schedule, collections and expenditures are verified. A statutory financing cap is not a tax receipt, public expenditure or subsidy. Audited private equipment-financing balances are debt stocks rather than construction spending, public support or community benefit. Reported floor area and occupied-share values describe operating scale and utilization, not employment, revenue, power use or economic output. Contractor and engineer case studies document supplier roles and completion timing but do not establish payment amounts, worker residence, payroll or multiplier effects. State incentive contract amounts, expected jobs and paid-or-certified-to-date fields remain distinct; a zero paid/certified balance at an earlier reporting cutoff does not imply no later claims. Public charging-infrastructure awards are commitments rather than verified disbursements, private project investment or operating benefits. Qualitative payment descriptions without a defensible numeric bound remain research context rather than quantitative records. Program-reported actual qualified investment, certified tax-exemption value and certified tax-credit value remain separate cumulative measures; none is converted into annual spending, a cash grant, local revenue or causal impact. County Business Patterns observations are county-industry context, not project contributions: establishment counts are employer locations rather than data-center facilities, March employment is not an annual average, annual payroll spans the full NAICS cell, and disclosure noise, classification changes and geographic assignment limit comparisons. No CBP change is attributed to a study project. Project fragments: prj_study_im3_building_00172739953: Second-pass public-evidence audit for Switch Las Vegas NAP7, the individual real-property parcel and original SUPERNAP building at 7135 South Decatur Boulevard. The review covered Clark County assessor, Treasurer, Accela permit, planning, air-quality, budget and financial-report access points; Nevada GOED, Department of Taxation and utility-regulatory sources; Switch operator, SEC, career and ESG materials; supplier and contractor references; and recipient-reported community records for 2005-2026. Six direct observations are added without allocating wider Core Campus capital expenditure, combined incentive audits, later facilities or expansions, personal property, tenant equipment, vendor equipment, or company-wide employment to NAP7. The Treasurer record corrects the earlier research note that payment records were uncollected, but the current payment is only a partial fiscal-year amount. No synthesis fragment is added: NAP4 was already operating while NAP7 was under construction in 2008, and the available county panel cannot isolate a NAP7 treatment from earlier facilities, later Core Campus growth, or major non-data-center shocks. NAP7 employment, payroll, local supplier payments, metered electricity and water, personal-property tax, realized abatement, jurisdictional tax receipts, project-attributable public costs, and a net fiscal result remain unobserved. prj_study_im3_building_00364289074: Corrective public-source audit for Microsoft's data-center property at 5150 Rogers Road and explicitly labeled wider Microsoft/Bexar County activity. Exact-site ordinance, permit, appraisal, and tax-account records remain separate from later campuses and regional disclosures; the three appraisal accounts and two taxable-account payments are not consolidated. Permit value is administrative, the original investment and employment figures are commitments, the 2013 employment threshold is a reported lower bound, and the water quantity is a projection rather than metered consumption. No Bexar-and-Medina total is allocated to this property. Annual construction expenditure, construction labor and residence, supplier payments, operating payroll and purchases, recipient-level tax distributions, marginal public-service cost, electricity consumption, water withdrawal or consumption, wastewater, actual emissions, and a recurring facility-level community series remain unobserved after the documented searches. prj_study_im3_building_00377585075: Corrective DET01 evidence audit. Official parcel, permit, tax, water-account, state-certificate, EPA and operator records are retained as direct observations or clearly labeled source forecasts. Conflicting floor-area figures remain separate because their reporting definitions differ. Construction cost, realized jobs, supplier payments, community funding, electricity, emissions, wastewater, actual public-service cost and causal county effects remain unbounded rather than being filled with transferred assumptions. prj_study_im3_building_00460089167: Corrective primary-source audit adds current Andale parcel assessment, contractor-reported campus floor area, and two recipient- or government-reported Meta community grants. The search trail records useful and negative results across identity, tax, construction, jobs, suppliers, utilities, water, permits, public costs, incentives, community funding, and county comparison inputs. Campus-wide facts remain unallocated to the selected inventory building, overlapping community amounts are not added together, and unavailable supplier, payroll, utility-billing, discharge, generator, and marginal-service-cost amounts remain explicit gaps. prj_study_im3_building_00464097467: Second-pass public-evidence audit for Apple's Washoe County data-center campus at 21505 Reno Technology Parkway West and its 2024 expansion application. GOED audit findings, application forecasts, county permit values, parcel assessments, a water-right allocation, operator-reported electricity use, and recipient-reported donation bands remain separate evidence states and scopes. Permit values are administrative amounts and are not summed because overlapping scopes cannot be ruled out. Assessment values are parcel stocks, not investment or tax receipts. The 125 acre-foot water right is regulatory capacity, not measured use. Food Bank gifts are company-region transfers, not campus-attributable annual spending. No campus total is allocated to the selected mapped building; the four-building campus, later buildout cases, downtown Reno warehouse, supporting renewable projects, fire-station parcel, and more-than-200-person support statement are not collapsed into one footprint. No Switch Citadel or Storey County amount enters this fragment. Vendor payments, worker residence, taxes received by jurisdiction, realized 2024 abatement, same-scope public-service cost, wastewater, and building-level electricity or water remain unobserved. prj_study_im3_building_00598261190: Second-pass public-evidence audit for the State Farm data center at 24400 West Valley Parkway in Olathe, Kansas. The account adds two official City permit values and SEC-reported property area, occupancy and critical-IT-load snapshots while keeping permit values, estimated cumulative capital spending, parcel assessments, tax bills and tax payments as distinct measures. The search trail covers parcel and fiscal records, construction and suppliers, operations and workforce, incentives, utility and environmental regulation, community activity, planning, public costs and county outcomes. No site-level employment, payroll, supplier payment, community transfer, metered electricity or water, incentive amount, marginal public-service cost, net fiscal position or attributable county effect is inferred from public material. prj_study_im3_building_00664938835: Second-pass public-evidence audit for Expedient's adaptive reuse of the pre-existing data-center building at 4777 W Ironwood Drive. The review searched Franklin planning, agenda, assessment, permit, water and sewer materials; Milwaukee County tax and deed-record access points; Wisconsin DOR, WEDC, DFI and PSC records; operator press, specification, career, ESG and community pages; lease, financing, carrier and vendor disclosures; and archived official pages for 2007-2026. Opening-day and current operator specifications remain separate dated snapshots because the reported area and capacity changed. The county portal now establishes a 2021-2025 parcel-tax principal series, but not Expedient's incidence under the lease. The 2022 ownership transfer, assessments, estimated permit values, tax payments and hiring plan remain non-additive. No source was found for actual construction outlays, realized site employment or payroll, local procurement, Milwaukee-area community transfers, metered resources, project-attributable public costs or a fiscal net. prj_study_im3_building_00888253616: Second-pass public-evidence audit for NTT Silicon Valley SV1 at 1160 Walsh Avenue, Santa Clara. The review reconciles the planning-era 1150 Walsh address to APN 224-58-003; adds the finaled principal permit, its administrative job value, current operator specifications, emergency-generator authorization and the parcel's regular-bill payment history; and leaves supplemental bills separate to avoid double counting. Public sources still do not establish realized site employment or payroll, total project investment, supplier payments, project-specific community transfers, metered resources, or project-attributable public-service costs. prj_study_im3_building_01024051963: Corrective source audit for the Meta Eagle Mountain campus and the selected IM3 building footprint in Utah County. Campus, company-county, and supporting-infrastructure observations remain explicitly unallocated to the selected building; later expansion areas and unrelated Eagle Mountain data-center developers are excluded unless a source establishes continuity. prj_study_im3_building_01073720208: Second-pass public-evidence audit for Google's Council Bluffs data-center activity, retaining the selected inventory building as the project key while leaving campus, taxpayer-account, company-county, and state-award facts at their reported scopes. The audit distinguishes completed IEDA contracts 08-HQJC-030 and 12-HQJP-051 from the 2022 award still in performance; permit valuations remain administrative amounts rather than expenditure; assessed and taxable values remain stocks; bills remain distinct from payments; and community grants remain recipient- and period-specific. The Pottawattamie County tax portal now supplies a paid 2018-2024 series for the principal Tetra parcel and an unpaid 2025 bill for the newer Questa parcel. No value is inferred for sales-tax exemptions, the local abatement schedule, franchise-fee adjustment, electricity, supplier retention, building-level water, marginal public-service cost, or net fiscal position. Models without defensible project allocation or transferable parameters were removed even though that leaves the eight-category account incomplete. prj_study_im3_building_01132541700: Corrective primary-source audit adds two county taxable-account observations, state-verified incentive-compliance thresholds, current operator-reported jobs and community funding, one county-received grant, facility electricity use, supporting renewable capacity, and the 2018 expansion forecast. The search trail covers identity, land use, permits, assessor and fiscal records, incentives, public costs, utilities, water, suppliers, courts, bonds, community funding, and federal county outcomes. Most public evidence covers the multi-building Henrico campus or Scout Development's county account and remains unallocated to the selected inventory building; overlapping funding and investment figures are not summed, and unavailable supplier payments, utility bills, tax receipts, incentive costs, payroll, and marginal public-service costs remain explicit gaps. prj_study_im3_campus_00231769626: Second-pass public-evidence audit for Google's The Dalles campus in Wasco County. The fragment preserves the baseline 2023-2025 Google LLC and Design LLC tax-bill and assessed-value series and the documented $28.5 million water-infrastructure project, and adds only incremental evidence. Business Oregon supplies a dated three-facility operating snapshot and separately bounded Project 1 and Project 2 SIP forecasts; City of The Dalles planning files and contractor/permit records document later River Road construction without treating permit valuations as spending. A recipient record verifies one local grant. Searches of assessor and treasurer records, budgets and agreements, planning and permit systems, utility and environmental records, operator ESG/careers materials, contractors, suppliers, workforce sources, nonprofit recipients, archives and structured portals found no audited construction outlay, local supplier spend, facility payroll, employee residence, project-attributable utility cost or load, realized abatement ledger, same-scope public service cost, or fiscal net. Statewide Google totals and system-wide utility loads are excluded from campus claims.",
+  "economic_scope_note": "Reviewed evidence batches at campus or company/county scope. No record is allocated to an individual inventory building. Source checking establishes what a document reports, not an independent audit or causal attribution. Monetary figures are nominal. Peak workforce is distinct from annual employment; source-year labels do not establish fiscal-year boundaries. Original forecasts remain forecasts until realization is verified. No cross-record benefit total is defined. Cumulative project costs are not annual expenditure. Tax receipts and incentive payments remain separate, with inferred taxpayer links disclosed. Contextual research updates do not count as economic amounts. Account tax bills are distinct from cash receipts and incentive-program fees. Tax years, calendar years and fiscal years retain their source basis; separate taxpayer accounts are not consolidated. Municipal developer rebates and taxpayer valuations have distinct subjects. Estimated actual property value and tax capacity are not tax receipts; payable-year valuations retain their earlier assessment date. Taxpayer values expressed in millions retain approximate precision and account-level separation. A current-year table can use an older valuation date and is not converted into an annual series. Facility real-property and business-personal-property accounts remain separate, and address-label discrepancies are disclosed. Michigan Industrial Facilities Tax accounts remain distinct from the underlying real parcel and from post-expiration personal-property accounts; annual account totals are not recipient-level government receipts. Permit construction values are administrative project amounts, not verified expenditure, and separate permits are not combined without proof that their scopes do not overlap. Repeated maintenance-year assessments are annual parcel stocks, not new investment flows. Mixed-use parcel assessments and taxable values are retained at whole-parcel scope and are not allocated to a data-center tenant or function by floor area. Operator-reported jobs supported remain distinct from direct employees and FTEs. Approved infrastructure grants are documented public commitments rather than verified disbursements or total public costs. Cumulative community funding remains separate from tax receipts, payroll and modeled multiplier effects. Reported facility power capacity is not measured electricity consumption or peak demand. Permit-listed emergency generators are not runtime, fuel-use or actual-emissions observations. A city largest-taxpayer table's personal-property assessment remains separate from the leasehold real-property account, tax bills, receipts and capital expenditure. TIF loan principal is financing rather than a grant or general-fund receipt; project-generated tax revenue pledged to repayment is retained as a separate public-financing flow and is not added to gross parcel distributions. Water-withdrawal and consumptive permit capacities are regulatory limits rather than measured use. Development-agreement local-labor preferences are requirements rather than realized participation, and operating employee snapshots remain distinct from customers' on-site staff and jobs forecasts. Audited City bond statements distinguish issuance draws, year-end principal, annual principal retired, interest and fees, pledged TIF revenue, debt-service-fund transfers and future principal-plus-interest commitments. These measures are not summed into a benefit or subsidy total. City pledged revenue, City debt-service-fund transfers and the private fund's project TIF revenue applied to loan repayment retain their separate source definitions because only the 2022 transfer and private-fund amount agree exactly. Developer testimony in public meeting minutes is retained as a source-attributed cumulative lower bound; local-contractor spending is not converted into payroll, worker counts, household spending or multiplier effects. Economic-improvement-district cost estimates and maximum owner assessments remain source projections until bond issuance, an assessment schedule, collections and expenditures are verified. A statutory financing cap is not a tax receipt, public expenditure or subsidy. Audited private equipment-financing balances are debt stocks rather than construction spending, public support or community benefit. Reported floor area and occupied-share values describe operating scale and utilization, not employment, revenue, power use or economic output. Contractor and engineer case studies document supplier roles and completion timing but do not establish payment amounts, worker residence, payroll or multiplier effects. State incentive contract amounts, expected jobs and paid-or-certified-to-date fields remain distinct; a zero paid/certified balance at an earlier reporting cutoff does not imply no later claims. Public charging-infrastructure awards are commitments rather than verified disbursements, private project investment or operating benefits. Qualitative payment descriptions without a defensible numeric bound remain research context rather than quantitative records. Program-reported actual qualified investment, certified tax-exemption value and certified tax-credit value remain separate cumulative measures; none is converted into annual spending, a cash grant, local revenue or causal impact. County Business Patterns observations are county-industry context, not project contributions: establishment counts are employer locations rather than data-center facilities, March employment is not an annual average, annual payroll spans the full NAICS cell, and disclosure noise, classification changes and geographic assignment limit comparisons. No CBP change is attributed to a study project. Project fragments: prj_study_im3_building_00052227492: Deep public-evidence audit for Flexential's Minneapolis-Chaska data center on parcel 30.0590020 at 3500 Lyman Boulevard. The review covered Carver County parcel, tax and property-record access points; City of Chaska permit, inspection, agenda, archive, budget, utility and annual-financial-report sources; Minnesota DEED, Revenue, statutory, environmental and utility-regulatory sources; federal workplace-safety search access; current and archived operator, predecessor, career and ESG materials; contractor and supplier references; and education, workforce and recipient-reported community sources for 2013-2026. Eighteen quantitative observations are preserved: a source-projected original investment lower bound; three later non-cumulative permit values; current floor area and critical-load UPS capacity; three annual parcel-tax payments; one current parcel-tax bill; and eight historical Via West Inc. estimated-actual-value observations. Stream's facilities at 1706 and 1708 West Creek Lane, the IP Stream Minneapolis LLC development agreement and its municipal rebates are outside the selected 3500 Lyman Boulevard project boundary and are not duplicated in this fragment; the six base Stream rebate rows require reassignment or removal from this target by the orchestrator because project fragments are append-only. Permit values are administrative estimates and are not summed because scopes may overlap. The current parcel-tax series includes all taxing jurisdictions and special assessments, not City-only receipts or net benefit, and the older citywide taxpayer series is not stitched to current parcel or Flexential values without a direct crosswalk. No synthesis fragment is added because direct observations and even a usable project projection were not found for construction labor, realized operating employment or payroll, supplier payments, metered energy or water, emissions, facility-specific incentive value, public-service costs, community transfers, or a causal county effect. prj_study_im3_building_00172739953: Second-pass public-evidence audit for Switch Las Vegas NAP7, the individual real-property parcel and original SUPERNAP building at 7135 South Decatur Boulevard. The review covered Clark County assessor, Treasurer, Accela permit, planning, air-quality, budget and financial-report access points; Nevada GOED, Department of Taxation and utility-regulatory sources; Switch operator, SEC, career and ESG materials; supplier and contractor references; and recipient-reported community records for 2005-2026. Six direct observations are added without allocating wider Core Campus capital expenditure, combined incentive audits, later facilities or expansions, personal property, tenant equipment, vendor equipment, or company-wide employment to NAP7. The Treasurer record corrects the earlier research note that payment records were uncollected, but the current payment is only a partial fiscal-year amount. No synthesis fragment is added: NAP4 was already operating while NAP7 was under construction in 2008, and the available county panel cannot isolate a NAP7 treatment from earlier facilities, later Core Campus growth, or major non-data-center shocks. NAP7 employment, payroll, local supplier payments, metered electricity and water, personal-property tax, realized abatement, jurisdictional tax receipts, project-attributable public costs, and a net fiscal result remain unobserved. prj_study_im3_building_00214321737: Second-pass public-evidence audit for Markley Group's Lowell data center at 2 Prince Avenue/1 Markley Way in Lowell, Middlesex County. The selected IM3 footprint is one building inside a three-building assessor parcel, so every added value remains at campus or company/county scope and is unallocated to the selected building. State and City records add Phase I forecasts, cumulative investment, operating-headcount, TIF-savings and incentive evidence; the assessor and tax portal add annual real-property stocks and one complete billed-tax year; permit reports add discrete administrative construction values and contractor names; MassDEP adds a permit-listed generator count; and a recipient page verifies one community contribution. Forecasts, cumulative values, parcel stocks, billed taxes, permit values, permit-authorized equipment, white-space area and recipient funding remain distinct and non-additive. Searches of planning and permit files, incentive and compliance reports, assessor and fiscal records, utility and environmental materials, operator disclosures, contractor and supplier pages, workforce and procurement records, community recipients, archives and repository county panels found no audited annual construction outlay, construction workforce or payroll, vendor payments or local-purchase share, facility payroll, metered annual electricity, project-attributable utility upgrade cost, annual water series matching the evidence vocabulary, wastewater, actual emissions, cash tax receipts, marginal public-service cost, fiscal net or causal county outcome. No model is added because the missing allocation and expenditure anchors cannot be bounded defensibly and Markley is not a clean first data-center entry in Middlesex County. prj_study_im3_building_00364289074: Corrective public-source audit for Microsoft's data-center property at 5150 Rogers Road and explicitly labeled wider Microsoft/Bexar County activity. Exact-site ordinance, permit, appraisal, and tax-account records remain separate from later campuses and regional disclosures; the three appraisal accounts and two taxable-account payments are not consolidated. Permit value is administrative, the original investment and employment figures are commitments, the 2013 employment threshold is a reported lower bound, and the water quantity is a projection rather than metered consumption. No Bexar-and-Medina total is allocated to this property. Annual construction expenditure, construction labor and residence, supplier payments, operating payroll and purchases, recipient-level tax distributions, marginal public-service cost, electricity consumption, water withdrawal or consumption, wastewater, actual emissions, and a recurring facility-level community series remain unobserved after the documented searches. prj_study_im3_building_00377585075: Corrective DET01 evidence audit. Official parcel, permit, tax, water-account, state-certificate, EPA and operator records are retained as direct observations or clearly labeled source forecasts. Conflicting floor-area figures remain separate because their reporting definitions differ. Construction cost, realized jobs, supplier payments, community funding, electricity, emissions, wastewater, actual public-service cost and causal county effects remain unbounded rather than being filled with transferred assumptions. prj_study_im3_building_00460089167: Corrective primary-source audit adds current Andale parcel assessment, contractor-reported campus floor area, and two recipient- or government-reported Meta community grants. The search trail records useful and negative results across identity, tax, construction, jobs, suppliers, utilities, water, permits, public costs, incentives, community funding, and county comparison inputs. Campus-wide facts remain unallocated to the selected inventory building, overlapping community amounts are not added together, and unavailable supplier, payroll, utility-billing, discharge, generator, and marginal-service-cost amounts remain explicit gaps. prj_study_im3_building_00464097467: Second-pass public-evidence audit for Apple's Washoe County data-center campus at 21505 Reno Technology Parkway West and its 2024 expansion application. GOED audit findings, application forecasts, county permit values, parcel assessments, a water-right allocation, operator-reported electricity use, and recipient-reported donation bands remain separate evidence states and scopes. Permit values are administrative amounts and are not summed because overlapping scopes cannot be ruled out. Assessment values are parcel stocks, not investment or tax receipts. The 125 acre-foot water right is regulatory capacity, not measured use. Food Bank gifts are company-region transfers, not campus-attributable annual spending. No campus total is allocated to the selected mapped building; the four-building campus, later buildout cases, downtown Reno warehouse, supporting renewable projects, fire-station parcel, and more-than-200-person support statement are not collapsed into one footprint. No Switch Citadel or Storey County amount enters this fragment. Vendor payments, worker residence, taxes received by jurisdiction, realized 2024 abatement, same-scope public-service cost, wastewater, and building-level electricity or water remain unobserved. prj_study_im3_building_00598261190: Second-pass public-evidence audit for the State Farm data center at 24400 West Valley Parkway in Olathe, Kansas. The account adds two official City permit values and SEC-reported property area, occupancy and critical-IT-load snapshots while keeping permit values, estimated cumulative capital spending, parcel assessments, tax bills and tax payments as distinct measures. The search trail covers parcel and fiscal records, construction and suppliers, operations and workforce, incentives, utility and environmental regulation, community activity, planning, public costs and county outcomes. No site-level employment, payroll, supplier payment, community transfer, metered electricity or water, incentive amount, marginal public-service cost, net fiscal position or attributable county effect is inferred from public material. prj_study_im3_building_00626785488: Second-pass public-evidence audit for the individual 654,433-square-foot IM3-mapped building footprint within Meta's Los Lunas data-center campus at 4250 Messenger Loop NW. The review covered the original campus chronology and 2016 industrial-revenue-bond package; Village budgets, audits, LEDA and dedicated infrastructure funds, planning, building, traffic, fire and water records; Valencia County assessor and clerk access; New Mexico economic-development, workforce, Construction Industries Division, Public Regulation Commission and Environment Department materials; PNM regulatory filings; Meta operator, SEC, contractor, career and grant materials; recipient-reported community records; and federal environmental and county-outcome access through September 6, 2026. Fifteen new direct observations are added alongside the two retained baseline observations, all at unallocated campus, company-county or supporting-infrastructure scope because no public source crosswalks the selected IM3 footprint to a separately named building, permit, parcel, workforce, utility meter or fiscal account. The later 2021 two-building expansion, 2023 three-building expansion load, 2025 AI expansion, off-site renewable projects, tenant equipment and other Meta facilities are excluded. No synthesis fragment is added because the selected building's operating date is not identified and the original six-building construction and operating sequence cannot support an isolated county treatment. Building-level capital expenditure, permits and fees, payroll, resident employment, supplier payments, metered electricity and water, utility bills, tax or PILOT payments, cash value of realized abatements, public-service costs and net fiscal results remain unobserved. prj_study_im3_building_00664938835: Second-pass public-evidence audit for Expedient's adaptive reuse of the pre-existing data-center building at 4777 W Ironwood Drive. The review searched Franklin planning, agenda, assessment, permit, water and sewer materials; Milwaukee County tax and deed-record access points; Wisconsin DOR, WEDC, DFI and PSC records; operator press, specification, career, ESG and community pages; lease, financing, carrier and vendor disclosures; and archived official pages for 2007-2026. Opening-day and current operator specifications remain separate dated snapshots because the reported area and capacity changed. The county portal now establishes a 2021-2025 parcel-tax principal series, but not Expedient's incidence under the lease. The 2022 ownership transfer, assessments, estimated permit values, tax payments and hiring plan remain non-additive. No source was found for actual construction outlays, realized site employment or payroll, local procurement, Milwaukee-area community transfers, metered resources, project-attributable public costs or a fiscal net. prj_study_im3_building_00888253616: Second-pass public-evidence audit for NTT Silicon Valley SV1 at 1160 Walsh Avenue, Santa Clara. The review reconciles the planning-era 1150 Walsh address to APN 224-58-003; adds the finaled principal permit, its administrative job value, current operator specifications, emergency-generator authorization and the parcel's regular-bill payment history; and leaves supplemental bills separate to avoid double counting. Public sources still do not establish realized site employment or payroll, total project investment, supplier payments, project-specific community transfers, metered resources, or project-attributable public-service costs. prj_study_im3_building_01024051963: Corrective source audit for the Meta Eagle Mountain campus and the selected IM3 building footprint in Utah County. Campus, company-county, and supporting-infrastructure observations remain explicitly unallocated to the selected building; later expansion areas and unrelated Eagle Mountain data-center developers are excluded unless a source establishes continuity. prj_study_im3_building_01073720208: Second-pass public-evidence audit for Google's Council Bluffs data-center activity, retaining the selected inventory building as the project key while leaving campus, taxpayer-account, company-county, and state-award facts at their reported scopes. The audit distinguishes completed IEDA contracts 08-HQJC-030 and 12-HQJP-051 from the 2022 award still in performance; permit valuations remain administrative amounts rather than expenditure; assessed and taxable values remain stocks; bills remain distinct from payments; and community grants remain recipient- and period-specific. The Pottawattamie County tax portal now supplies a paid 2018-2024 series for the principal Tetra parcel and an unpaid 2025 bill for the newer Questa parcel. No value is inferred for sales-tax exemptions, the local abatement schedule, franchise-fee adjustment, electricity, supplier retention, building-level water, marginal public-service cost, or net fiscal position. Models without defensible project allocation or transferable parameters were removed even though that leaves the eight-category account incomplete. prj_study_im3_building_01132541700: Corrective primary-source audit adds two county taxable-account observations, state-verified incentive-compliance thresholds, current operator-reported jobs and community funding, one county-received grant, facility electricity use, supporting renewable capacity, and the 2018 expansion forecast. The search trail covers identity, land use, permits, assessor and fiscal records, incentives, public costs, utilities, water, suppliers, courts, bonds, community funding, and federal county outcomes. Most public evidence covers the multi-building Henrico campus or Scout Development's county account and remains unallocated to the selected inventory building; overlapping funding and investment figures are not summed, and unavailable supplier payments, utility bills, tax receipts, incentive costs, payroll, and marginal public-service costs remain explicit gaps. prj_study_im3_campus_00231769626: Second-pass public-evidence audit for Google's The Dalles campus in Wasco County. The fragment preserves the baseline 2023-2025 Google LLC and Design LLC tax-bill and assessed-value series and the documented $28.5 million water-infrastructure project, and adds only incremental evidence. Business Oregon supplies a dated three-facility operating snapshot and separately bounded Project 1 and Project 2 SIP forecasts; City of The Dalles planning files and contractor/permit records document later River Road construction without treating permit valuations as spending. A recipient record verifies one local grant. Searches of assessor and treasurer records, budgets and agreements, planning and permit systems, utility and environmental records, operator ESG/careers materials, contractors, suppliers, workforce sources, nonprofit recipients, archives and structured portals found no audited construction outlay, local supplier spend, facility payroll, employee residence, project-attributable utility cost or load, realized abatement ledger, same-scope public service cost, or fiscal net. Statewide Google totals and system-wide utility loads are excluded from campus claims.",
   "evidence_version": "study-economic-evidence-1.37.0",
   "modeled_syntheses": [],
   "modeled_sources": [],
@@ -558,6 +1221,7 @@
     "fiscal": "not_assessed",
     "causal": "not_assessed"
   },
-  "legacy_first_entry_note": "The mapped Stream predecessor was completed in June 2014, but Chaska's official financial report documents UnitedHealth Group's separate city data center operating by 2012. The 2014 event is rejected as Carver County's first entry. The complete historical inventory remains unresolved.",
-  "scope_note": "Provisional private-sector research candidate. Owner/operator history, project boundaries and lifecycle require review. Membership does not verify current operation or establish economic impact."
+  "legacy_first_entry_note": "ViaWest opened the mapped 3500 Lyman Boulevard facility in April 2014, but Chaska's official financial report documents UnitedHealth Group's separate city data center operating by 2012. The 2014 event is rejected as Carver County's first entry; Stream/IP Stream facilities at 1706 and 1708 West Creek Lane are outside this project boundary.",
+  "scope_note": "Provisional private-sector research candidate. Owner/operator history, project boundaries and lifecycle require review. Membership does not verify current operation or establish economic impact.",
+  "project_description": "Flexential's Minneapolis-Chaska facility is a single adaptive-reuse colocation data center operated by Flexential on parcel 30.0590020 at 3500 Lyman Boulevard in Chaska, Carver County, Minnesota. ViaWest acquired the former Entegris headquarters in 2013, renovated it, and opened more than 70,000 square feet of raised floor in April 2014; Peak 10 combined with ViaWest in 2017 and the business adopted the Flexential name in 2018. The current operator reports a 160,838-square-foot footprint and 9 MW of critical-load UPS capacity; later tenant-driven expansion and Phase 5 work at this parcel are separate from the original conversion, and Stream's 1708 West Creek Lane facility is outside this project boundary."
 }

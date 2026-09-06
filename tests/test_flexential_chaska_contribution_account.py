@@ -94,10 +94,11 @@ class FlexentialChaskaContributionAccountTest(unittest.TestCase):
         self.assertEqual(len([part for part in descriptions[0].split(". ") if part]), 3)
         self.assertIn("3500 Lyman Boulevard", descriptions[0])
         self.assertIn("outside this project boundary", descriptions[0])
-        self.assertEqual(self.project["economic_record_count"], 27)
-        self.assertEqual((self.project["reported_actual_count"], self.project["projection_count"]), (26, 1))
+        self.assertEqual(self.project["economic_record_count"], 21)
+        self.assertEqual((self.project["reported_actual_count"], self.project["projection_count"]), (20, 1))
+        self.assertFalse(any("IP Stream" in json.dumps(row) or "West Creek" in json.dumps(row) for row in self.project["economic_records"]))
         self.assertEqual(self.project["model_completeness"]["status"], "incomplete")
-        self.assertEqual(self.project["model_completeness"]["missing_categories"], ["community", "suppliers"])
+        self.assertEqual(self.project["model_completeness"]["missing_categories"], ["community", "public_costs", "suppliers"])
         self.assertEqual(self.project["modeled_synthesis_count"], 0)
 
     def test_all_eight_categories_have_auditable_search_updates(self):

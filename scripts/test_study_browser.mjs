@@ -427,23 +427,26 @@ try {
   check("water contributions and original operating-job commitments remain forecasts");
   await page.goto(`${url}#/project/prj_study_im3_building_00052227492`);
   await openDetails(".evidence-ledger");
+  await page.getByRole("heading", { name: "Flexential Minneapolis-Chaska (ViaWest)", exact: true }).waitFor();
   await page.getByRole("heading", { name: "Economic evidence", exact: true }).waitFor();
-  assert.equal(await page.locator(".economic-record").count(), 9);
-  assert.match(await page.locator(".economic-record h4").first().innerText(), /Local government/);
-  assert.equal(await page.locator(".fiscal-history tbody tr").count(), 6);
-  assert.equal(await page.locator(".fiscal-history tbody").getByText("Not collected", { exact: true }).count(), 6);
-  assert.match(await page.locator(".fiscal-history").innerText(), /City of Chaska payments/);
-  assert.doesNotMatch(await page.locator(".fiscal-history").innerText(), /County taxes|same county account/);
-  assert.match(await page.locator(".fiscal-history tbody tr").last().innerText(), /FY2025[\s\S]*\$49,305/);
-  assert.match(await page.locator(".economic-history").innerText(), /payable years/);
-  assert.equal(await page.locator(".history-bar-row").count(), 3);
-  assert.match(await page.locator(".history-bar-row").last().innerText(), /TY2025[\s\S]*\$19,775,100/);
+  assert.equal(await page.locator(".economic-record").count(), 20);
+  assert.doesNotMatch(await page.locator(".economic-record-list").innerText(), /IP Stream|West Creek/);
+  assert.match(await page.locator(".economic-record-list").innerText(), /\$534,380[\s\S]*\$551,454[\s\S]*\$582,406[\s\S]*\$632,906/);
+  const chaskaValues = await page.locator(".economic-history").allInnerTexts().then(rows => rows.join(" "));
+  assert.match(chaskaValues, /payable years/);
+  assert.equal(await page.locator(".history-bar-row").count(), 11);
+  assert.match(chaskaValues, /TY2015[\s\S]*\$11,606,300/);
+  assert.match(chaskaValues, /TY2025[\s\S]*\$19,775,100/);
+  await page.getByRole("tab", { name: /Plans & forecasts/ }).click();
+  assert.equal(await page.locator(".economic-record").count(), 1);
+  assert.match(await page.locator(".economic-record-list").innerText(), /More than \$60,000,000/);
+  await page.getByRole("tab", { name: /Reported activity/ }).click();
   await noOverflow();
-  await page.locator(".fiscal-history").screenshot({ path: path.join(out, "chaska-fiscal-mobile.png") });
+  await page.locator(".economic-accounts").screenshot({ path: path.join(out, "chaska-fiscal-mobile.png") });
   await page.setViewportSize({ width: 1440, height: 1000 });
   await noOverflow();
   await page.locator(".economic-accounts").screenshot({ path: path.join(out, "chaska-evidence-desktop.png") });
-  check("city rebates preserve missing receipts and separate payable-year property valuations");
+  check("Flexential Chaska excludes Stream facilities and preserves parcel taxes, permits, capacity, and payable-year values");
   await page.goto(`${url}#/project/prj_study_im3_building_00172739953`);
   await openDetails(".evidence-ledger");
   await page.getByRole("heading", { name: "Switch Las Vegas NAP7", exact: true }).waitFor();
@@ -822,10 +825,10 @@ try {
     sidebar: getComputedStyle(document.querySelector(".sidebar")).backgroundColor,
     map: getComputedStyle(document.querySelector(".map-section")).backgroundColor,
   })), { sidebar: "rgb(11, 14, 20)", map: "rgb(16, 23, 27)" });
-  assert.match(await page.locator(".review-key").innerText(), /completed project audits \(15\)/i);
+  assert.match(await page.locator(".review-key").innerText(), /completed project audits \(18\)/i);
   assert.doesNotMatch(await page.locator(".legend").innerText(), /IM3|pending|merged|queued/i);
   await page.getByLabel("Research-complete project markers").selectOption("Colocation");
-  assert.match(await page.locator(".review-key").innerText(), /completed project audits \(6\)/i);
+  assert.match(await page.locator(".review-key").innerText(), /completed project audits \(8\)/i);
   await page.getByLabel("Research-complete project markers").selectOption("");
   await page.screenshot({ path: path.join(out, "map-desktop.png") });
   assert.doesNotMatch(await page.locator(".sidebar").innerText(), /Source records|Building records|Campus records|Observed footprint|First-entry research/i);
@@ -836,7 +839,7 @@ try {
   const response = await page.request.get(`${url}data/v1/study/index.json`);
   const study = await response.json();
   assert.equal(study.projects.length, 36);
-  assert.equal(study.projects.filter(p => p.research_completion_status === "account_research_complete").length, 15);
+  assert.equal(study.projects.filter(p => p.research_completion_status === "account_research_complete").length, 18);
   assert.equal(study.projects.filter(p => p.model_completeness.status === "full_modeled_account").length, 3);
   const descriptionPage = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
   for (const completed of study.projects.filter(project => project.research_completion_status === "account_research_complete")) {
@@ -851,7 +854,7 @@ try {
     ), `${completed.name} must render the project description before the study rationale`);
   }
   await descriptionPage.close();
-  check("all fifteen completed project pages render one description above the study rationale");
+  check("all eighteen completed project pages render one description above the study rationale");
   const target = study.projects.find(p => p.name === "Apple Mesa");
   const canvas = await page.locator("canvas").boundingBox();
   const world = 512 * 2 ** 3.25;
@@ -875,7 +878,7 @@ try {
   await page.mouse.click(targetX, targetY);
   await page.waitForURL(`**/project/${target.project_id}`);
   await page.getByRole("heading", { name: "Sources & research history" }).waitFor();
-  check("map preserves all fifteen completed project audits while keeping analytical completeness separate");
+  check("map preserves all eighteen completed project audits while keeping analytical completeness separate");
 
   const legacyPage = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
   await legacyPage.route("**/data/v1/study/index.json?*", async route => {

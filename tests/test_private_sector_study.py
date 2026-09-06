@@ -1,4 +1,5 @@
 import copy
+import json
 from pathlib import Path
 import tempfile
 import unittest
@@ -85,9 +86,9 @@ class PrivateSectorStudyTest(unittest.TestCase):
         index, details, _ = self.build()
         self.assertEqual(index["counts"]["projects"], 36)
         self.assertEqual(index["counts"]["projects_with_economic_evidence"], 36)
-        self.assertEqual(index["counts"]["economic_records"], 718)
-        self.assertEqual(index["counts"]["reported_actual_records"], 648)
-        self.assertEqual(index["counts"]["projection_records"], 70)
+        self.assertEqual(index["counts"]["economic_records"], 769)
+        self.assertEqual(index["counts"]["reported_actual_records"], 693)
+        self.assertEqual(index["counts"]["projection_records"], 76)
         self.assertEqual(index["counts"]["modeled_synthesis_records"], 149)
         self.assertEqual(index["full_modeled_county_accounts"], 3)
         self.assertEqual(sum(r["analysis_readiness"]["causal"] == "causal_model_available" for r in details), 0)
@@ -163,17 +164,17 @@ class PrivateSectorStudyTest(unittest.TestCase):
                 "2026-09-03T00:00:00+00:00", evidence=evidence,
             )
 
-    def test_chaska_preserves_municipal_payer_and_payable_year_values(self):
+    def test_chaska_excludes_stream_facilities_and_preserves_flexential_values(self):
         _, details, _ = self.build()
         project = next(r for r in details if r["project_id"] == "prj_study_im3_building_00052227492")
         rebates = [r for r in project["economic_records"] if r["metric_code"] == "study.incentive_payments"]
         values = [r for r in project["economic_records"] if r["metric_code"] == "study.estimated_actual_property_value"]
-        self.assertEqual([r["value"] for r in rebates], [20589, 23943, 26248, 35132, 39257, 49305])
-        self.assertTrue(all(r["period"]["kind"] == "fiscal_year" and "City of Chaska payments" in r["scope"]["label"] for r in rebates))
-        self.assertEqual([r["value"] for r in values], [17978400, 18976500, 19775100])
+        self.assertEqual(rebates, [])
+        self.assertEqual([r["value"] for r in values], [17978400, 18976500, 19775100, 11606300, 12021700, 12021700, 12164500, 12164500, 13137400, 14243100, 13894000])
         self.assertTrue(all(r["period"]["kind"] == "tax_year" and r["measure_type"] == "stock" for r in values))
-        self.assertNotEqual(rebates[0]["scope"], values[0]["scope"])
         self.assertFalse(any(r["metric_code"] == "study.property_tax_receipts" for r in project["economic_records"]))
+        self.assertFalse(any("IP Stream" in json.dumps(r) or "West Creek" in json.dumps(r) for r in project["economic_records"]))
+        self.assertEqual((project["economic_record_count"], project["reported_actual_count"], project["projection_count"]), (21, 20, 1))
 
     def test_expedient_adaptive_reuse_keeps_assessments_permits_and_job_plan_separate(self):
         _, details, _ = self.build()
@@ -725,7 +726,7 @@ class PrivateSectorStudyTest(unittest.TestCase):
         by_id = {r["estimate_id"]: r for r in modeled}
         self.assertEqual((project["economic_record_count"], project["modeled_synthesis_count"]), (113, 43))
         self.assertEqual((index["counts"]["economic_records"], index["counts"]["modeled_synthesis_records"]),
-                         (718, 149))
+                         (769, 149))
         self.assertEqual({r["basis"] for r in modeled}, {"modeled_synthesis"})
         self.assertTrue(all(r["presentation"] == "modeled_not_observed_or_audited" for r in modeled))
         self.assertTrue(all(r["derivation"]["formula"] and r["parameters"] and r["limitations"] for r in modeled))

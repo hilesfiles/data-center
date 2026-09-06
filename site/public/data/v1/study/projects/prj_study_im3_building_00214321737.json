@@ -16,11 +16,11 @@
   "detail_path": "projects/prj_study_im3_building_00214321737.json",
   "latitude": 42.6302619946922,
   "longitude": -71.30442370850213,
-  "economic_record_count": 2,
-  "reported_actual_count": 0,
-  "projection_count": 2,
+  "economic_record_count": 26,
+  "reported_actual_count": 19,
+  "projection_count": 7,
   "modeled_synthesis_count": 0,
-  "research_completion_status": "research_pending",
+  "research_completion_status": "account_research_complete",
   "model_completeness": {
     "status": "incomplete",
     "required_categories": [
@@ -34,8 +34,13 @@
       "community"
     ],
     "covered_categories": [
+      "community",
+      "construction",
       "fiscal",
-      "investment"
+      "investment",
+      "operations",
+      "public_costs",
+      "resources"
     ],
     "modeled_categories": [],
     "required_county_outcomes": [
@@ -45,11 +50,6 @@
     ],
     "covered_county_outcomes": [],
     "missing_categories": [
-      "community",
-      "construction",
-      "operations",
-      "public_costs",
-      "resources",
       "suppliers"
     ],
     "missing_county_outcomes": [
@@ -61,8 +61,8 @@
     "definition": "All eight contribution-account categories contain sourced or labeled modeled values, and GDP, employment, and wage county-comparison modules are populated. Comparison gaps are descriptive and do not establish causal facility effects."
   },
   "schema_version": "1.0.0",
-  "release_id": "private-sector-study-1.49.0",
-  "generated_at": "2026-09-06T19:36:00+00:00",
+  "release_id": "private-sector-study-1.50.0",
+  "generated_at": "2026-09-06T21:57:31+00:00",
   "inventory_name": "Markley Data Center",
   "research_value": "Phase opening and customer occupancy support investment and staged growth research.",
   "history": {
@@ -105,18 +105,186 @@
       "url": "https://s3.amazonaws.com/somervillema-live/s3fs-public/70%20Inner%20Belt%20Rd%20Staff%20Report.pdf"
     }
   ],
-  "research_updates": [],
+  "research_updates": [
+    {
+      "project_id": "prj_study_im3_building_00214321737",
+      "source_id": "src_study_markley_lowell_open_2015",
+      "as_of": "2026-09-06",
+      "title": "Boundary and chronology audit — selected building kept separate from the campus",
+      "notes": "Source families checked: IM3 inventory geometry and provenance; Markley current and archived operator pages; Lowell assessor parcel P90290/MBLU 184/4765/2; 2015, 2018, 2020, 2023 and 2024 City planning and bond records; deed/sale fields; and web archives. Exact identifiers included 2 Prince Avenue, 1 Markley Way, parcel 184/4765/2, assessor pid 47203 and IM3 source record 00214321737. The evidence supports a June 2015 purchase, Phase One open with customer occupancy by November 23, 2015, a three-building 14.4-acre assessor parcel, a later 65,000-square-foot expansion approval and continuing equipment changes. It does not map the selected 123,665-square-foot inventory footprint to an assessor building number or allocate campus investment, jobs, capacity, incentives or current white space to that polygon.",
+      "source": {
+        "source_id": "src_study_markley_lowell_open_2015",
+        "title": "Thanksgiving Reflection: Top 3 Things Markley Group is Thankful for in 2015",
+        "url": "https://www.markleygroup.com/blog/1/thanksgiving-reflection-top-3-things-markley-group-thankful-2015",
+        "publisher": "Markley Group",
+        "source_type": "operator_release",
+        "publication_date": {
+          "precision": "day",
+          "date": "2015-11-23"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_page",
+        "notes": "The operator reported that Phase One of its 350,000-square-foot Lowell facility had opened and that customers had begun occupying space by November 23, 2015. This is an operating-no-later-than anchor for Phase One, not a commissioning date for every building or later expansion."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_00214321737",
+      "source_id": "src_study_lowell_markley_tax_portal_2026",
+      "as_of": "2026-09-06",
+      "title": "Investment, incentive and fiscal audit — forecasts separated from cumulative observations",
+      "notes": "Source families checked: the 2015 EACC approval release; City TIF summaries and FY2020-FY2026 budgets; the 2023 preliminary official statement; EDIP awardee, annual-report, compliance and decertification pages; City Council packets; assessor history; and the Treasurer/Collector billing portal. FY2020 records the agreement as executed in May 2015, and the 2017 City summary describes a clawback provision and Middlesex 3 membership requirement; the signed agreement itself was not located. The fragment retains the $72.8 million Phase I plan, $104,121,860 cumulative-investment observation, $77,182,505 combined local incentive forecast, $187,500 approved state credit, $1,624,655.79 cumulative real-estate TIF savings and a separate $534,231.97 FY2026 real-property bill. Exact searches of adopted-budget documents 20496 (FY2023), 23767 (FY2024), 26555 (FY2025) and 30950 (FY2026 proposed) found no Markley row, and no 2021-2024 annual certified-employment table surfaced. The four FY2026 InvoiceCloud quarters are complete and show zero balances, but billed tax is not cash received and the portal does not identify adjustment versus payment. Partial FY2025/FY2027 displays are excluded; personal-property search returned no open Markley invoice and does not establish historical exemption value. The sources do not reconcile proposal vintages, prove credit use, publish annual realized abatements, allocate tax among jurisdictions, quantify public-service cost or support a net fiscal result.",
+      "source": {
+        "source_id": "src_study_lowell_markley_tax_portal_2026",
+        "title": "City of Lowell InvoiceCloud real-estate tax lookup — parcel P90290",
+        "url": "https://www.invoicecloud.com/portal/2/Site.aspx?G=055baa3f-ac74-481f-a9c5-db32d3f1d5ae",
+        "publisher": "City of Lowell Treasurer/Collector",
+        "source_type": "local_government_record",
+        "publication_date": {
+          "precision": "unknown"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_page",
+        "notes": "Interactive real-estate search by parcel ID P90290 returned all four FY2026 quarterly invoices: 2026reQ100014595 ($58,150.30), 2026reQ200014595 ($58,150.29), 2026reQ300014595 ($208,965.69) and 2026reQ400014595 ($208,965.69), each with zero balance. The same current-results page displayed only partial FY2025 and FY2027 sets, which are excluded. Bill total is not cash received, and zero balance does not distinguish payment from adjustment or abatement. A personal-property search for owner MARKLEY returned no open invoices; that result cannot establish historical liability or exemption value."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_00214321737",
+      "source_id": "src_study_lowell_markley_assessor_2026",
+      "as_of": "2026-09-06",
+      "title": "Assessor and parcel audit — four annual real-property stocks added",
+      "notes": "The official Vision Government Solutions Lowell portal was searched by Markley, Prince Avenue, Markley Way, parcel ID P90290, MBLU 184/4765/2 and property-record pid 47203. The card identifies Markley Group LLC, three buildings, 14.4 acres, a $3.85 million June 15, 2015 sale, and 2023-2026 total parcel values. The four total values are retained as one whole-parcel annual series. The sale price is not forced into an investment metric, individual building replacement-cost fields are not summed as economic activity, the 2026 value jump is not labeled new investment, and no selected-building, personal-property, payment or jurisdictional-distribution series was available from the card. The separate Treasurer/Collector portal supplies one complete real-property billing year and is not treated as an assessor value or cash receipt.",
+      "source": {
+        "source_id": "src_study_lowell_markley_assessor_2026",
+        "title": "Lowell property record card — parcel 184/4765/2, 2 Prince Avenue",
+        "url": "https://gis.vgsi.com/lowellma/Parcel.aspx?pid=47203",
+        "publisher": "City of Lowell Assessor",
+        "source_type": "assessor_record",
+        "publication_date": {
+          "precision": "unknown"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_page",
+        "notes": "The official property card identifies owner Markley Group LLC, parcel ID P90290/MBLU 184/4765/2, 14.4 acres, three buildings and a June 15, 2015 sale for $3.85 million. Its valuation history reports total real-property values of $9,766,900 for 2023, $10,050,800 for 2024, $10,144,300 for 2025 and $24,239,200 for 2026. Building living areas sum to 307,030 square feet, which is not reconciled to the operator's differently defined 352,000 square feet of secured white space or to the selected IM3 footprint."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_00214321737",
+      "source_id": "src_study_lowell_markley_permits_2025_08",
+      "as_of": "2026-09-06",
+      "title": "Construction, suppliers and procurement audit — five issued permit values added without aggregation",
+      "notes": "Source families checked: Lowell Planning Board applications, memoranda, plans and minutes; the public monthly issued-permit indexes for 2024, 2025 and January-June 2026; City online-permitting guidance; contractor and engineer portfolios; COMMBUYS and Massachusetts statewide IT contract records; tenant procurement disclosures; and archived trade coverage for 2015-2026. The City reports BLD202400574 at $3,350,000, ELC202406426 at $4,000,000, BLD202413857 at $15,538,186, ELC202507553 at $12,717,600 and BLD202603584 at $1,708,090. Each is retained once at its issue year even when later monthly reports repeat it as year-to-date or completion activity; related building, foundation and trade permits are not summed because scope overlap is unresolved. Exact searches of the relevant official reports did not locate third-party-cited ELC202409585, so its $19,076,500 figure is excluded. Named roles include Willard L. Cleveland, New England Electric Group and Markley Group Boston; the older contractor case study separately identifies Coordinated Systems Consulting and Saiful Bouquet. The CSS portal requires a registered login and the City page reports online permitting unavailable. No final contract amount, invoice, audited annual outlay, equipment-versus-building split, construction headcount, worker hours, payroll, residence, vendor payment or local-purchase share was found. Permit values are administrative estimates, not cash spending.",
+      "source": {
+        "source_id": "src_study_lowell_markley_permits_2025_08",
+        "title": "City of Lowell permits issued analysis — August 2025",
+        "url": "https://www.lowellma.gov/DocumentCenter/View/32217/August-2025-permits-issued",
+        "publisher": "City of Lowell Inspectional Services",
+        "source_type": "local_government_record",
+        "publication_date": {
+          "precision": "day",
+          "date": "2025-09-04"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_pdf_text",
+        "notes": "Page 1675 identifies ELC202507553, issued June 17, 2025, with estimated cost $12,717,600 for four switchgear rooms, four generators, eight PDU units, four chiller units, eight load centers and miscellaneous electrical work; New England Electric Group is the electrical contractor. The same report lists other Markley building, foundation, plumbing and electrical permits, but potentially overlapping trade scopes are not summed."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_00214321737",
+      "source_id": "src_study_lowell_markley_jobs_2025",
+      "as_of": "2026-09-06",
+      "title": "Operations and workforce audit — dated headcounts and local-resident subset added",
+      "notes": "Source families checked: Lowell TIF tables and annual certified-project reports; Massachusetts EDIP annual-report, compliance and decertification material; Markley careers, staff and facility pages; job boards; customer and tenant records; workforce-development, apprenticeship, local-hiring and wage-enforcement searches; and state procurement records for 2015-2026. Exact City/EDIP searches found dated Markley rows for 2019, December 2020 and December 31, 2025 but no public 2021-2024 annual certified-employment table. The account retains 26 employees in 2019, 31 in December 2020 and 101 full-time permanent employees at the Lowell location on December 31, 2025, including a non-additive subset of 30 Lowell residents. The 2025 report also lists 29 hires during that year, but the available metric is a stock and the hire flow stays in source metadata. The State ITS86 listing makes Markley Boston LLC contract-eligible and states a supplier-diversity commitment, but it does not disclose a Lowell-facility procurement payment and contributes no amount. No annual-average FTE, occupation table, wage, payroll, hours, apprenticeship outcome, contractor/customer headcount, turnover, county-resident total, procurement payment or selected-building employment was found.",
+      "source": {
+        "source_id": "src_study_lowell_markley_jobs_2025",
+        "title": "Lowell City Council March 10, 2026 packet — 2025 certified-project employment report",
+        "url": "https://www.lowellma.gov/AgendaCenter/ViewFile/Agenda/_03102026-3835?packet=true",
+        "publisher": "City of Lowell, Massachusetts",
+        "source_type": "local_government_record",
+        "publication_date": {
+          "precision": "day",
+          "date": "2026-03-10"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_pdf_text",
+        "notes": "The certified-project table, sourced to the Massachusetts Office of Business Development/EDIP annual report dated December 31, 2025, reports 101 full-time permanent employees at Markley's Lowell location, 29 hires during 2025, and 30 employees living in Lowell. The total and resident subset are retained as separate stocks; the 29 hires are not forced into the stock metric."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_00214321737",
+      "source_id": "src_study_massdep_markley_lowell_rfd_2025",
+      "as_of": "2026-09-06",
+      "title": "Resource, utility and environmental audit — permit equipment added; consumption remains unallocated",
+      "notes": "Source families checked: MassDEP air-plan applications, notices and OADR decisions under 24-AQ02F-0001-APP/NE-25-002, including the March 27, 2026 final decision and July 2026 reconsideration docket; Lowell Planning Board, Sustainability Council, water, sewer and data-center materials; fuel-storage licensing; National Grid and Massachusetts DPU dockets and tariffs; ISO New England queue and reliability material; EPA facility searches; Markley facility, PPA and sustainability pages; and 2025-2026 reporting based on water bills or operator statements. The permit-listed facility total of 27 emergency generators is retained, distinct from installation and operation. The City authorized four 6,000-gallon diesel tanks in July 2025; a later fuel-license amendment application filed September 8 was withdrawn October 13, so no additional capacity is inferred. Licensed tank capacity is not fuel inventory or use and the vocabulary has no matching storage-capacity metric. AP reports an operator-stated summer peak of about 118,000 gallons per day, but no meter ledger or annual total was published and the vocabulary has no direct actual peak-water metric. A Markley solar PPA covers a broader company purchase in Eversource territory and is not allocated to the National Grid-served Lowell site. No facility annual electricity, demand, tariff payment, grid-upgrade cost, verified annual water/wastewater, generator runtime, fuel use, actual emissions or selected-building resource series was found.",
+      "source": {
+        "source_id": "src_study_massdep_markley_lowell_rfd_2025",
+        "title": "In the Matter of Markley Group, LLC — Recommended Final Decision, OADR 2025-022",
+        "url": "https://www.mass.gov/doc/markley-group-llc-recommended-final-decision-2025-022/download",
+        "publisher": "Massachusetts Department of Environmental Protection",
+        "source_type": "state_record",
+        "publication_date": {
+          "precision": "day",
+          "date": "2025-12-23"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_pdf_text",
+        "notes": "Page 2 says Air Quality Plan Approval NE-25-002 authorized eight additional diesel emergency generators, bringing the permit-listed facility total to 27, for an expansion intended to serve increased AI use. The MassDEP Commissioner adopted the recommended decision on March 27, 2026. Authorization is not proof that every generator was installed or operated and does not establish runtime, generation, fuel use, emissions or public cost."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_00214321737",
+      "source_id": "src_study_umass_lowell_markley_sponsor_2026",
+      "as_of": "2026-09-06",
+      "title": "Community-recipient audit — one recipient-verified Lowell contribution added",
+      "notes": "Source families checked: University of Massachusetts Lowell, Middlesex Community College, Greater Lowell Community Foundation, Lowell Public Schools, youth sports, libraries, housing and food-assistance recipients; City packets; Markley press and social pages; and local news archives for grants, sponsorships, donations, STEM, education and volunteer support from 2015-2026. UMass Lowell lists Markley Group in the $25,000 Signature Sponsor tier for the Meehan Student Center dedication held May 1-2, 2026, providing a dated recipient-side amount. The University says the weekend raised more than $300,000 in total, but that event total is not attributed to Markley. Operator-side references to other local sponsorships and aggregate giving lacked matching recipient ledgers or defensible facility allocation and are not combined. No complete annual Middlesex County grant register, in-kind valuation, volunteer-hour series or campus-attributable community total was found.",
+      "source": {
+        "source_id": "src_study_umass_lowell_markley_sponsor_2026",
+        "title": "Meehan Student Center dedication — Thank You to Our Sponsors",
+        "url": "https://www.uml.edu/meehanstudentcenter/meehan-dedication/sponsors.aspx",
+        "publisher": "University of Massachusetts Lowell",
+        "source_type": "other",
+        "publication_date": {
+          "precision": "year",
+          "year": 2026
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_page",
+        "notes": "The recipient page lists Markley Group in the Signature Sponsor tier of $25,000 for the Meehan Student Center dedication. The contribution is a company/county community transfer, not a recurring annual amount, campus operating expense, tax payment or proof of a complete local-giving ledger."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_00214321737",
+      "source_id": "src_study_lowell_markley_statement_2023",
+      "as_of": "2026-09-06",
+      "title": "Structured-data and modeling audit — no defensible residual or county-effect model",
+      "notes": "Repository county economic panels for 2001-2024, study-county exclusions, inventory history and the direct evidence documented above were reviewed. The November 2015 operating anchor leaves a pre-period, but Markley is not Middlesex County's first known data-center operation: the repository's governed first-entry research documents earlier colocation activity in Somerville, and Markley itself had later 2018-2026 expansions that prevent a single stable treatment boundary. Newly retained permit estimates do not supply audited spending, labor coefficients or local-purchase shares, and the FY2026 billed-tax record has no same-scope marginal public-service cost. No project-specific construction payroll, supplier spending, operating payroll, annual resource quantity compatible with the evidence metrics or causal county outcome anchors were found. No construction, supplier, household, resource, fiscal-net, input-output, difference-in-differences, event-study, synthetic-control or descriptive county-comparison model is added; arbitrary transferred assumptions would create false precision rather than a bounded estimate. No records requests were made.",
+      "source": {
+        "source_id": "src_study_lowell_markley_statement_2023",
+        "title": "City of Lowell Preliminary Official Statement and Notice of Sale, August 30, 2023",
+        "url": "https://www.lowellma.gov/DocumentCenter/View/24001/20230901---FINAL-OFFICIAL-STATEMENT---Fall-2023-Bond-Sale",
+        "publisher": "City of Lowell, Massachusetts",
+        "source_type": "local_government_record",
+        "publication_date": {
+          "precision": "day",
+          "date": "2023-08-30"
+        },
+        "retrieved_on": "2026-09-03",
+        "review_method": "pdf_text_and_page_image",
+        "notes": "Cover identifies this as a preliminary statement dated August 30, 2023, despite the URL filename suggesting final/September 1. Page 35 recounts the 2015 Markley proposal and says Phase I is completed. It does not verify the entire proposal’s investment or hires. The 20-year tax projection is the project agreement horizon, not a new 20-year period beginning in 2023.",
+        "artifact_sha256": "b5415739728861ac38f096f803c68042ac965cccc44b9c1f1cfc02062a626ac7"
+      }
+    }
+  ],
   "evidence_gaps": [
     {
       "code": "investment",
       "label": "Capital investment",
-      "status": "projections_only",
+      "status": "partial",
       "needed": "Annual actual spending, local share, and phase allocation."
     },
     {
       "code": "construction",
       "label": "Construction jobs and payroll",
-      "status": "not_yet_collected",
+      "status": "partial",
       "needed": "Workers, job-years, payroll, duration, and local participation."
     },
     {
@@ -128,31 +296,31 @@
     {
       "code": "operations",
       "label": "Permanent jobs and compensation",
-      "status": "not_yet_collected",
+      "status": "partial",
       "needed": "Realized direct and contractor employment, wages, and operating purchases."
     },
     {
       "code": "fiscal",
       "label": "Tax base and public revenue",
-      "status": "projections_only",
+      "status": "partial",
       "needed": "Taxable values and actual receipts by year and recipient jurisdiction."
     },
     {
       "code": "public_costs",
       "label": "Incentives and public costs",
-      "status": "not_yet_collected",
+      "status": "partial",
       "needed": "Agreements, abatements, infrastructure, financing, and service costs."
     },
     {
       "code": "resources",
       "label": "Electricity, water, and cooling",
-      "status": "not_yet_collected",
+      "status": "partial",
       "needed": "Measured use, source, cooling design, and attributable system costs."
     },
     {
       "code": "community",
       "label": "Community institutions and direct funding",
-      "status": "not_yet_collected",
+      "status": "partial",
       "needed": "Annual grants, recipients, program purposes, realized spending, and overlap with other transfers."
     }
   ],
@@ -219,6 +387,739 @@
       "unit": "USD",
       "measure_type": "flow",
       "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_markley_lowell_phase1_investment_plan_2015",
+      "project_id": "prj_study_im3_building_00214321737",
+      "metric_code": "study.campus_investment_projection",
+      "value": 72800000,
+      "value_qualifier": "exact",
+      "basis": "source_projection",
+      "period": {
+        "kind": "projection_horizon",
+        "report_date": "2015-06-23",
+        "label": "Phase I renovation, fit-out and equipment plan; completion horizon unspecified"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Markley Lowell Phase I",
+        "county_fips": "25017",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_markley_lowell_eacc_2015",
+      "pdf_page": 2,
+      "printed_page": "2",
+      "source_locator": "Markley Boston LLC and Markley Management, Inc. (Lowell), Phase I investment paragraph",
+      "notes": "Approval-stage Phase I plan combining renovation, fit-out and equipment. It is a subset or earlier phase of later broader project projections and must not be added to the approximately $200 million campus plan or treated as realized spending.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Planned campus investment",
+      "category": "investment",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_markley_lowell_jobs_plan_2015",
+      "project_id": "prj_study_im3_building_00214321737",
+      "metric_code": "study.operating_jobs_projection",
+      "value": 25,
+      "value_qualifier": "exact",
+      "basis": "source_projection",
+      "period": {
+        "kind": "projection_horizon",
+        "report_date": "2015-06-23",
+        "label": "Phase I expansion-project job commitment; realization horizon unspecified"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Markley Lowell expansion project",
+        "county_fips": "25017",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_markley_lowell_eacc_2015",
+      "pdf_page": 2,
+      "printed_page": "2",
+      "source_locator": "Markley Lowell expansion-project job commitment",
+      "notes": "Prospective net-new full-time jobs in the Commonwealth associated with the Lowell expansion. This is not realized Lowell headcount, a construction workforce, payroll or a local-resident count.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Planned operating jobs at completion",
+      "category": "operations",
+      "unit": "jobs",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_markley_lowell_local_incentive_plan_2015",
+      "project_id": "prj_study_im3_building_00214321737",
+      "metric_code": "study.incentive_value_projection",
+      "value": 77182505,
+      "value_qualifier": "exact",
+      "basis": "source_projection",
+      "period": {
+        "kind": "projection_horizon",
+        "report_date": "2015-06-23",
+        "horizon_years": 20,
+        "label": "Combined Lowell TIF and personal-property-tax-exemption approved value"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Markley Lowell municipal TIF and personal-property-tax exemption",
+        "county_fips": "25017",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_markley_lowell_eacc_2015",
+      "pdf_page": 2,
+      "printed_page": "2",
+      "source_locator": "Markley Lowell municipal support sentence",
+      "notes": "Combined approval-stage value for two local tax mechanisms. It is not a payment, audited realized savings, annual value, tax receipt or net public cost and must not be added to later cumulative real-estate-only TIF savings without reconciliation.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Estimated municipal incentive value",
+      "category": "public_costs",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_markley_lowell_state_tax_credit_2015",
+      "project_id": "prj_study_im3_building_00214321737",
+      "metric_code": "study.state_tax_credit_contract_amount",
+      "value": 187500,
+      "value_qualifier": "exact",
+      "basis": "source_projection",
+      "period": {
+        "kind": "projection_horizon",
+        "report_date": "2015-06-23",
+        "label": "EACC-approved EDIP investment tax-credit amount; claim period unspecified"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Markley Lowell EDIP certified project",
+        "county_fips": "25017",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_markley_lowell_eacc_2015",
+      "pdf_page": 2,
+      "printed_page": "2",
+      "source_locator": "Markley Lowell EACC tax-credit approval sentence",
+      "notes": "Approved state credit amount, retained separately from the local TIF/exemption value. Approval does not prove certification, use, payment or fiscal incidence in any year.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "State tax-credit contract amount",
+      "category": "public_costs",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_markley_lowell_capacity_plan_2015",
+      "project_id": "prj_study_im3_building_00214321737",
+      "metric_code": "study.operating_power_capacity",
+      "value": 50,
+      "value_qualifier": "exact",
+      "basis": "source_projection",
+      "period": {
+        "kind": "projection_horizon",
+        "report_date": "2015-06-23",
+        "label": "Planned mission-critical data-center capacity"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Markley Lowell planned facility",
+        "county_fips": "25017",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_markley_lowell_eacc_2015",
+      "pdf_page": 2,
+      "printed_page": "2",
+      "source_locator": "Markley Lowell proposed 50 MW conversion description",
+      "notes": "Planned facility capacity, not measured load, annual electricity consumption, utility-reservation status, commissioned capacity or selected-building allocation.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Reported operating data-center capacity",
+      "category": "resources",
+      "unit": "MW",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_markley_lowell_operating_employees_2019",
+      "project_id": "prj_study_im3_building_00214321737",
+      "metric_code": "study.operating_employees",
+      "value": 26,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "calendar_year",
+        "year": 2019,
+        "label": "City TIF table's 2019 employee count"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Markley Group at 2 Prince Avenue",
+        "county_fips": "25017",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_lowell_fy2021_markley_tif",
+      "pdf_page": 178,
+      "printed_page": "178",
+      "source_locator": "TIF continued table, Markley Group row, Total # Jobs (2019)",
+      "notes": "Dated employee stock reported from EDIP annual reports and a City DPD survey. It is not annual-average employment, payroll, contractor employment, new hires or employee residence.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Reported operating employee count",
+      "category": "operations",
+      "unit": "employees",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_markley_lowell_cumulative_investment_fy2020",
+      "project_id": "prj_study_im3_building_00214321737",
+      "metric_code": "study.cumulative_property_investment",
+      "value": 104121860,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "cumulative",
+        "label": "Private investment to date under the FY2020 column in the FY2022 budget"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Markley Group certified project at 2 Prince Avenue",
+        "county_fips": "25017",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_lowell_fy2022_markley_tif",
+      "pdf_page": 153,
+      "printed_page": "153",
+      "source_locator": "TIF continued table, Markley Group row, Total Private Investment To Date (FY 2020)",
+      "notes": "City-reported cumulative private investment under the certified project, not annual expenditure, assessed value, local purchasing or an allocation to one building. The source's earlier $150 million proposal and the separate approximately $200 million overall proposal have different vintages and are not used as realization denominators.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Reported cumulative real and personal property investment",
+      "category": "investment",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_markley_lowell_operating_employees_2020",
+      "project_id": "prj_study_im3_building_00214321737",
+      "metric_code": "study.operating_employees",
+      "value": 31,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "reported_snapshot",
+        "report_date": "2020-12-31",
+        "label": "City TIF table's December 2020 employee count"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Markley Group at 2 Prince Avenue",
+        "county_fips": "25017",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_lowell_fy2022_markley_tif",
+      "pdf_page": 153,
+      "printed_page": "153",
+      "source_locator": "TIF continued table, Markley Group row, Total Jobs (Dec. 2020)",
+      "notes": "Dated operating-employee stock. It is not annual-average employment, payroll, contractor employment, hires during the year or a local-resident count.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Reported operating employee count",
+      "category": "operations",
+      "unit": "employees",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_markley_lowell_tif_savings_to_fy2022_report",
+      "project_id": "prj_study_im3_building_00214321737",
+      "metric_code": "study.local_property_tax_credits",
+      "value": 1624655.79,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "cumulative",
+        "label": "Real-estate-tax savings to date reported in the FY2022 budget"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Markley Group/City of Lowell real-estate TIF",
+        "county_fips": "25017",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_lowell_fy2022_markley_tif",
+      "pdf_page": 153,
+      "printed_page": "153",
+      "source_locator": "TIF continued table, Markley Group row, Total Savings in Real Estate Taxes for the Project to Date",
+      "notes": "Cumulative real-estate-tax savings under the local TIF, not the personal-property exemption, an annual credit, cash payment or complete public-cost total. It overlaps the earlier approval-stage combined incentive value and must not be added to it.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Local property-tax credits",
+      "category": "public_costs",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_markley_lowell_operating_employees_2025",
+      "project_id": "prj_study_im3_building_00214321737",
+      "metric_code": "study.operating_employees",
+      "value": 101,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "reported_snapshot",
+        "report_date": "2025-12-31",
+        "label": "Full-time permanent employees at the Lowell location"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Markley Group Lowell location",
+        "county_fips": "25017",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_lowell_markley_jobs_2025",
+      "pdf_page": 33,
+      "printed_page": "unnumbered Table 1 page",
+      "source_locator": "Certified Project Name Markley Group, total full-time permanent employees as of 12/31/2025",
+      "notes": "EDIP annual-report snapshot for the Lowell location. It is not annual-average employment, a building allocation, contractor/customer employment, payroll or proof that every earlier job commitment is incremental.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Reported operating employee count",
+      "category": "operations",
+      "unit": "employees",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_markley_lowell_resident_employees_2025",
+      "project_id": "prj_study_im3_building_00214321737",
+      "metric_code": "study.operating_employees",
+      "value": 30,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "reported_snapshot",
+        "report_date": "2025-12-31",
+        "label": "Subset of full-time permanent employees who live in Lowell"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Lowell-resident subset of Markley Group Lowell employees",
+        "county_fips": "25017",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_lowell_markley_jobs_2025",
+      "pdf_page": 33,
+      "printed_page": "unnumbered Table 1 page",
+      "source_locator": "Certified Project Name Markley Group, employees living in Lowell",
+      "notes": "Residence subset of the 101 total employees, not an additional employee count and not to be summed with the total. Lowell residence is narrower than Middlesex County residence and does not establish payroll or household spending.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Reported operating employee count",
+      "category": "operations",
+      "unit": "employees",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_markley_lowell_parcel_value_2023",
+      "project_id": "prj_study_im3_building_00214321737",
+      "metric_code": "study.account_assessed_value",
+      "value": 9766900,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2023,
+        "label": "2023 total real-property value"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Parcel 184/4765/2, 2 Prince Avenue",
+        "county_fips": "25017",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_lowell_markley_assessor_2026",
+      "source_locator": "Assessment history, 2023 total value",
+      "notes": "Whole-parcel real-property stock across three assessor buildings. It excludes separately treated personal property, is not a tax bill or payment, and is not allocated to the selected inventory footprint.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "annual_series_key": "markley_lowell_parcel_184_4765_2_assessed_value",
+      "label": "Account assessed property value",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_markley_lowell_parcel_value_2024",
+      "project_id": "prj_study_im3_building_00214321737",
+      "metric_code": "study.account_assessed_value",
+      "value": 10050800,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2024,
+        "label": "2024 total real-property value"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Parcel 184/4765/2, 2 Prince Avenue",
+        "county_fips": "25017",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_lowell_markley_assessor_2026",
+      "source_locator": "Assessment history, 2024 total value",
+      "notes": "Whole-parcel real-property stock across three assessor buildings. It excludes separately treated personal property, is not a tax bill or payment, and is not allocated to the selected inventory footprint.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "annual_series_key": "markley_lowell_parcel_184_4765_2_assessed_value",
+      "label": "Account assessed property value",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_markley_lowell_parcel_value_2025",
+      "project_id": "prj_study_im3_building_00214321737",
+      "metric_code": "study.account_assessed_value",
+      "value": 10144300,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2025,
+        "label": "2025 total real-property value"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Parcel 184/4765/2, 2 Prince Avenue",
+        "county_fips": "25017",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_lowell_markley_assessor_2026",
+      "source_locator": "Assessment history, 2025 total value",
+      "notes": "Whole-parcel real-property stock across three assessor buildings. It excludes separately treated personal property, is not a tax bill or payment, and is not allocated to the selected inventory footprint.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "annual_series_key": "markley_lowell_parcel_184_4765_2_assessed_value",
+      "label": "Account assessed property value",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_markley_lowell_parcel_value_2026",
+      "project_id": "prj_study_im3_building_00214321737",
+      "metric_code": "study.account_assessed_value",
+      "value": 24239200,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2026,
+        "label": "2026 total real-property value"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Parcel 184/4765/2, 2 Prince Avenue",
+        "county_fips": "25017",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_lowell_markley_assessor_2026",
+      "source_locator": "Current parcel value and assessment history, 2026 total",
+      "notes": "Whole-parcel real-property stock comprising $21,447,900 of improvements and $2,791,300 of land across three assessor buildings. It excludes separately treated personal property, is not a tax bill or payment, and is not allocated to the selected inventory footprint.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "annual_series_key": "markley_lowell_parcel_184_4765_2_assessed_value",
+      "label": "Account assessed property value",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_markley_lowell_floor_area_current_2026",
+      "project_id": "prj_study_im3_building_00214321737",
+      "metric_code": "study.operating_property_floor_area",
+      "value": 352000,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "reported_snapshot",
+        "report_date": "2026-09-06",
+        "label": "Current operator-described secured white space"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Markley Lowell facility",
+        "county_fips": "25017",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_markley_lowell_current_2026",
+      "source_locator": "Key Features | Lowell",
+      "notes": "Operator-described highly secured white space, not assessor living area, parcel footprint, gross building area, occupied share, commissioned capacity or an allocation to the selected IM3 building.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Reported operating property floor area",
+      "category": "operations",
+      "unit": "square_feet",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_markley_lowell_permitted_generators_2025",
+      "project_id": "prj_study_im3_building_00214321737",
+      "metric_code": "study.permitted_emergency_generator_count",
+      "value": 27,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "reported_snapshot",
+        "report_date": "2025-07-03",
+        "label": "Facility total under Air Quality Plan Approval NE-25-002"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Markley Lowell facility air-permit equipment",
+        "county_fips": "25017",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_massdep_markley_lowell_rfd_2025",
+      "pdf_page": 2,
+      "printed_page": "Page 2 of 37",
+      "source_locator": "Background, total emergency-generator count after eight-generator authorization",
+      "notes": "Permit-listed facility total following authorization of eight additional units. It is not an installed or operating count, runtime, generation, fuel-use, emissions or selected-building measure; four of the eight later became subject to a court stay, which does not alter the permit-listed total.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Permit-listed diesel emergency generators",
+      "category": "resources",
+      "unit": "generators",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_markley_umass_lowell_sponsorship_2026",
+      "project_id": "prj_study_im3_building_00214321737",
+      "metric_code": "study.direct_community_contribution",
+      "value": 25000,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "source_year",
+        "year": 2026,
+        "label": "Meehan Student Center dedication Signature Sponsor tier"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Markley Group contribution to University of Massachusetts Lowell",
+        "county_fips": "25017",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_umass_lowell_markley_sponsor_2026",
+      "source_locator": "Signature Sponsor ($25,000), Markley Group",
+      "notes": "Recipient-listed local sponsorship. It is not recurring, campus-attributable operating expenditure, a tax payment, a public incentive offset or a complete measure of Markley's Middlesex County community funding.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Direct community contribution",
+      "category": "community",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_markley_lowell_property_taxes_billed_fy2026",
+      "project_id": "prj_study_im3_building_00214321737",
+      "metric_code": "study.property_taxes_billed",
+      "value": 534231.97,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2026,
+        "label": "City of Lowell fiscal 2026 real-estate tax bills, four quarterly invoices"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Real-property account P90290, 1 Markley Way/2 Prince Avenue",
+        "county_fips": "25017",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_lowell_markley_tax_portal_2026",
+      "source_locator": "Real Estate Taxes, parcel P90290: 2026reQ100014595, Q200014595, Q300014595 and Q400014595",
+      "notes": "Sum of four portal bill totals: $58,150.30, $58,150.29, $208,965.69 and $208,965.69. This is a complete displayed fiscal-year billed amount for the real-property account, not cash receipts or a personal-property bill. Each invoice showed zero balance, but the portal does not distinguish payment from adjustment or abatement. It spans the whole three-building parcel and is not allocated to the selected IM3 footprint.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Account property taxes billed",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_markley_lowell_permit_bld202400574",
+      "project_id": "prj_study_im3_building_00214321737",
+      "metric_code": "study.permitted_construction_value",
+      "value": 3350000,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "source_year",
+        "year": 2024,
+        "label": "Permit BLD202400574 issued January 19, 2024"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "1 Markley Way equipment-yard walls, hardscape and loading-dock/canopy work",
+        "county_fips": "25017",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_lowell_markley_permits_2024_05",
+      "pdf_page": 876,
+      "printed_page": "876",
+      "source_locator": "Parcel P90290, BLD202400574, estimated cost and work description",
+      "notes": "Administrative permit estimate with status ISSUED in the reviewed report. It is not verified cash expenditure, audited contract value, payroll, vendor payment, completion evidence or local-retention share and is not summed with other permits whose scopes may overlap.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Reported permit construction value",
+      "category": "construction",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_markley_lowell_permit_elc202406426",
+      "project_id": "prj_study_im3_building_00214321737",
+      "metric_code": "study.permitted_construction_value",
+      "value": 4000000,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "source_year",
+        "year": 2024,
+        "label": "Permit ELC202406426 issued June 13, 2024"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "1 Markley Way modular-office circuits, outlets and electrical panels",
+        "county_fips": "25017",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_lowell_markley_permits_2024_06",
+      "pdf_page": 1435,
+      "printed_page": "1435",
+      "source_locator": "Parcel P90290, ELC202406426, estimated cost and work description",
+      "notes": "Administrative permit estimate with status ISSUED in the reviewed report; New England Electric Group is the named electrical contractor. The amount is not verified expenditure, contractor revenue, payroll or local purchasing and is not summed with potentially overlapping permits.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Reported permit construction value",
+      "category": "construction",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_markley_lowell_permit_bld202413857",
+      "project_id": "prj_study_im3_building_00214321737",
+      "metric_code": "study.permitted_construction_value",
+      "value": 15538186,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "source_year",
+        "year": 2024,
+        "label": "Permit BLD202413857 issued December 18, 2024"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "1 Markley Way tenant fit-up including generators, chillers, raised floors and power rooms",
+        "county_fips": "25017",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_lowell_markley_permits_2024_12",
+      "pdf_page": 200,
+      "printed_page": "200",
+      "source_locator": "Parcel P90290, BLD202413857, estimated cost and work description",
+      "notes": "Administrative permit estimate with status ISSUED; Willard L. Cleveland is the named general contractor. The report describes postponed additional work, so this value is not added to earlier project projections or other permits and does not establish completion, spending, payroll or local retention.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Reported permit construction value",
+      "category": "construction",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_markley_lowell_permit_elc202507553",
+      "project_id": "prj_study_im3_building_00214321737",
+      "metric_code": "study.permitted_construction_value",
+      "value": 12717600,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "source_year",
+        "year": 2025,
+        "label": "Permit ELC202507553 issued June 17, 2025"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "1 Markley Way switchgear rooms, generators, PDUs, chillers and load centers",
+        "county_fips": "25017",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_lowell_markley_permits_2025_08",
+      "pdf_page": 1675,
+      "printed_page": "1675",
+      "source_locator": "Parcel P90290, ELC202507553, estimated cost and work description",
+      "notes": "Administrative permit estimate with status ISSUED; New England Electric Group is the named electrical contractor. It is not a verified purchase of four generators or chillers, equipment installation, expenditure, vendor payment or local-retention measure and is not summed with related building and trade permits.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Reported permit construction value",
+      "category": "construction",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_markley_lowell_permit_bld202603584",
+      "project_id": "prj_study_im3_building_00214321737",
+      "metric_code": "study.permitted_construction_value",
+      "value": 1708090,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "source_year",
+        "year": 2026,
+        "label": "Permit BLD202603584 issued May 7, 2026"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "1 Markley Way elevator modernization and opening enlargement",
+        "county_fips": "25017",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_lowell_markley_permits_2026_06",
+      "pdf_page": 871,
+      "printed_page": "871",
+      "source_locator": "Parcel P90290, BLD202603584, estimated cost and work description",
+      "notes": "Administrative permit estimate with status ISSUED; Markley Group Boston is the named general contractor. The June report carries it as year-to-date activity even though it was issued in May. It is not completion evidence, audited expenditure, contractor payment, payroll or local purchasing.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Reported permit construction value",
+      "category": "construction",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
     }
   ],
   "economic_sources": [
@@ -236,9 +1137,202 @@
       "review_method": "pdf_text_and_page_image",
       "notes": "Cover identifies this as a preliminary statement dated August 30, 2023, despite the URL filename suggesting final/September 1. Page 35 recounts the 2015 Markley proposal and says Phase I is completed. It does not verify the entire proposal’s investment or hires. The 20-year tax projection is the project agreement horizon, not a new 20-year period beginning in 2023.",
       "artifact_sha256": "b5415739728861ac38f096f803c68042ac965cccc44b9c1f1cfc02062a626ac7"
+    },
+    {
+      "source_id": "src_study_markley_lowell_eacc_2015",
+      "title": "Baker-Polito Administration Approves Economic Development Projects Creating and Retaining 1,485 Jobs",
+      "url": "https://archives.lib.state.ma.us/bitstreams/db719d88-ae23-4ae0-8072-1fc7ed59695a/download",
+      "publisher": "Massachusetts Executive Office of Housing and Economic Development",
+      "source_type": "state_record",
+      "publication_date": {
+        "precision": "day",
+        "date": "2015-06-23"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_pdf_text",
+      "notes": "The archived EACC release describes the prospective Lowell Phase I: conversion of a vacant 350,000-square-foot building to a 50 MW data center, $72.8 million of renovation, fit-out and equipment investment, 25 net-new full-time jobs, a combined 20-year Lowell TIF and personal-property-tax exemption valued at $77,182,505, and $187,500 of approved EDIP investment tax credits. These are approval-stage forecasts or authorized benefits, not proof of realized spending, hires, tax savings, credit use, electricity demand or building allocation."
+    },
+    {
+      "source_id": "src_study_lowell_fy2021_markley_tif",
+      "title": "City of Lowell FY2021 Adopted Budget",
+      "url": "https://www.lowellma.gov/DocumentCenter/View/15549/City-of-Lowell-FY2021-Adopted-Budget",
+      "publisher": "City of Lowell, Massachusetts",
+      "source_type": "local_government_record",
+      "publication_date": {
+        "precision": "year",
+        "year": 2020
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_pdf_text",
+      "notes": "Page 178 identifies Markley Group at 2 Prince Avenue under a 2015-2035 TIF and reports 26 jobs in 2019, $53,399,008 of investment to date, $1,237,985 of real-estate-tax savings to date and $320,581.96 of new City real-estate-tax revenue above baseline. The table cites Massachusetts EDIP annual reports and a City DPD survey. The older cumulative monetary observations remain audit context because the publication does not provide precise cutoff dates and the FY2022 budget supersedes them with later totals."
+    },
+    {
+      "source_id": "src_study_lowell_fy2022_markley_tif",
+      "title": "City of Lowell FY2022 Adopted Budget",
+      "url": "https://www.lowellma.gov/DocumentCenter/View/17473/City-of-Lowell-FY2022-Adopted-Budget",
+      "publisher": "City of Lowell, Massachusetts",
+      "source_type": "local_government_record",
+      "publication_date": {
+        "precision": "year",
+        "year": 2021
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_pdf_text",
+      "notes": "Page 153 reports Markley Group's 2015-2035 TIF, $104,121,860 of private investment to date through the table's FY2020 label, 31 jobs in December 2020, $1,624,655.79 of cumulative real-estate-tax savings, and $406,163.75 of cumulative new City taxes above baseline. Investment and savings are retained; the new-tax figure remains in source metadata because the available generic property-tax-receipt metric is county-specific and would misstate the City recipient."
+    },
+    {
+      "source_id": "src_study_lowell_markley_jobs_2025",
+      "title": "Lowell City Council March 10, 2026 packet — 2025 certified-project employment report",
+      "url": "https://www.lowellma.gov/AgendaCenter/ViewFile/Agenda/_03102026-3835?packet=true",
+      "publisher": "City of Lowell, Massachusetts",
+      "source_type": "local_government_record",
+      "publication_date": {
+        "precision": "day",
+        "date": "2026-03-10"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_pdf_text",
+      "notes": "The certified-project table, sourced to the Massachusetts Office of Business Development/EDIP annual report dated December 31, 2025, reports 101 full-time permanent employees at Markley's Lowell location, 29 hires during 2025, and 30 employees living in Lowell. The total and resident subset are retained as separate stocks; the 29 hires are not forced into the stock metric."
+    },
+    {
+      "source_id": "src_study_lowell_markley_assessor_2026",
+      "title": "Lowell property record card — parcel 184/4765/2, 2 Prince Avenue",
+      "url": "https://gis.vgsi.com/lowellma/Parcel.aspx?pid=47203",
+      "publisher": "City of Lowell Assessor",
+      "source_type": "assessor_record",
+      "publication_date": {
+        "precision": "unknown"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_page",
+      "notes": "The official property card identifies owner Markley Group LLC, parcel ID P90290/MBLU 184/4765/2, 14.4 acres, three buildings and a June 15, 2015 sale for $3.85 million. Its valuation history reports total real-property values of $9,766,900 for 2023, $10,050,800 for 2024, $10,144,300 for 2025 and $24,239,200 for 2026. Building living areas sum to 307,030 square feet, which is not reconciled to the operator's differently defined 352,000 square feet of secured white space or to the selected IM3 footprint."
+    },
+    {
+      "source_id": "src_study_markley_lowell_current_2026",
+      "title": "Data Center — Key Features: Lowell",
+      "url": "https://www.markleygroup.com/data-center",
+      "publisher": "Markley Group",
+      "source_type": "operator_release",
+      "publication_date": {
+        "precision": "unknown"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_page",
+      "notes": "The current operator page describes the Lowell facility as 352,000 square feet of highly secured white space with 24/7 onsite staff, three dark-fiber routes to Boston, multiple power entrances from two utility substations and a personal-property-tax exemption. Area is retained at facility/campus scope; the qualitative infrastructure features do not establish consumption, utility cost, headcount or tax benefit."
+    },
+    {
+      "source_id": "src_study_massdep_markley_lowell_rfd_2025",
+      "title": "In the Matter of Markley Group, LLC — Recommended Final Decision, OADR 2025-022",
+      "url": "https://www.mass.gov/doc/markley-group-llc-recommended-final-decision-2025-022/download",
+      "publisher": "Massachusetts Department of Environmental Protection",
+      "source_type": "state_record",
+      "publication_date": {
+        "precision": "day",
+        "date": "2025-12-23"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_pdf_text",
+      "notes": "Page 2 says Air Quality Plan Approval NE-25-002 authorized eight additional diesel emergency generators, bringing the permit-listed facility total to 27, for an expansion intended to serve increased AI use. The MassDEP Commissioner adopted the recommended decision on March 27, 2026. Authorization is not proof that every generator was installed or operated and does not establish runtime, generation, fuel use, emissions or public cost."
+    },
+    {
+      "source_id": "src_study_umass_lowell_markley_sponsor_2026",
+      "title": "Meehan Student Center dedication — Thank You to Our Sponsors",
+      "url": "https://www.uml.edu/meehanstudentcenter/meehan-dedication/sponsors.aspx",
+      "publisher": "University of Massachusetts Lowell",
+      "source_type": "other",
+      "publication_date": {
+        "precision": "year",
+        "year": 2026
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_page",
+      "notes": "The recipient page lists Markley Group in the Signature Sponsor tier of $25,000 for the Meehan Student Center dedication. The contribution is a company/county community transfer, not a recurring annual amount, campus operating expense, tax payment or proof of a complete local-giving ledger."
+    },
+    {
+      "source_id": "src_study_lowell_markley_tax_portal_2026",
+      "title": "City of Lowell InvoiceCloud real-estate tax lookup — parcel P90290",
+      "url": "https://www.invoicecloud.com/portal/2/Site.aspx?G=055baa3f-ac74-481f-a9c5-db32d3f1d5ae",
+      "publisher": "City of Lowell Treasurer/Collector",
+      "source_type": "local_government_record",
+      "publication_date": {
+        "precision": "unknown"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_page",
+      "notes": "Interactive real-estate search by parcel ID P90290 returned all four FY2026 quarterly invoices: 2026reQ100014595 ($58,150.30), 2026reQ200014595 ($58,150.29), 2026reQ300014595 ($208,965.69) and 2026reQ400014595 ($208,965.69), each with zero balance. The same current-results page displayed only partial FY2025 and FY2027 sets, which are excluded. Bill total is not cash received, and zero balance does not distinguish payment from adjustment or abatement. A personal-property search for owner MARKLEY returned no open invoices; that result cannot establish historical liability or exemption value."
+    },
+    {
+      "source_id": "src_study_lowell_markley_permits_2024_05",
+      "title": "City of Lowell permits issued analysis — May 2024",
+      "url": "https://www.lowellma.gov/DocumentCenter/View/26482/May-permits-issued-report-",
+      "publisher": "City of Lowell Inspectional Services",
+      "source_type": "local_government_record",
+      "publication_date": {
+        "precision": "day",
+        "date": "2024-06-04"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_pdf_text",
+      "notes": "Monthly issued-permit report for parcel P90290/1 Markley Way. BLD202400574 is an issued $3,350,000 permit for equipment-yard walls, exterior hardscape and a loading dock/canopy, with Willard L. Cleveland as general contractor. The amount is an administrative estimate, not verified expenditure or local supplier retention."
+    },
+    {
+      "source_id": "src_study_lowell_markley_permits_2024_06",
+      "title": "City of Lowell permits issued analysis — June 2024",
+      "url": "https://www.lowellma.gov/DocumentCenter/View/27529/June-permits-issued-report",
+      "publisher": "City of Lowell Inspectional Services",
+      "source_type": "local_government_record",
+      "publication_date": {
+        "precision": "day",
+        "date": "2024-07-09"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_pdf_text",
+      "notes": "Monthly issued-permit report for parcel P90290/1 Markley Way. ELC202406426 is an issued $4,000,000 commercial electrical permit for modular-office circuits, 1,320 60-amp outlets, 102 400-amp panels and 22 200-amp panels; New England Electric Group is the electrical contractor."
+    },
+    {
+      "source_id": "src_study_lowell_markley_permits_2024_12",
+      "title": "City of Lowell permits issued analysis — December 2024",
+      "url": "https://www.lowellma.gov/DocumentCenter/View/29729/December-permits-issued-report-2024-",
+      "publisher": "City of Lowell Inspectional Services",
+      "source_type": "local_government_record",
+      "publication_date": {
+        "precision": "day",
+        "date": "2025-01-27"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_pdf_text",
+      "notes": "Page 200 of the generated report identifies BLD202413857, issued December 18, 2024, with estimated cost $15,538,186 for tenant fit-up including generators, chillers, raised floors and power rooms; Willard L. Cleveland is the general contractor. Later reports may repeat it as year-to-date activity."
+    },
+    {
+      "source_id": "src_study_lowell_markley_permits_2025_08",
+      "title": "City of Lowell permits issued analysis — August 2025",
+      "url": "https://www.lowellma.gov/DocumentCenter/View/32217/August-2025-permits-issued",
+      "publisher": "City of Lowell Inspectional Services",
+      "source_type": "local_government_record",
+      "publication_date": {
+        "precision": "day",
+        "date": "2025-09-04"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_pdf_text",
+      "notes": "Page 1675 identifies ELC202507553, issued June 17, 2025, with estimated cost $12,717,600 for four switchgear rooms, four generators, eight PDU units, four chiller units, eight load centers and miscellaneous electrical work; New England Electric Group is the electrical contractor. The same report lists other Markley building, foundation, plumbing and electrical permits, but potentially overlapping trade scopes are not summed."
+    },
+    {
+      "source_id": "src_study_lowell_markley_permits_2026_06",
+      "title": "City of Lowell permits issued analysis — June 2026",
+      "url": "https://www.lowellma.gov/DocumentCenter/View/35869/June-Permits-Issued",
+      "publisher": "City of Lowell Inspectional Services",
+      "source_type": "local_government_record",
+      "publication_date": {
+        "precision": "day",
+        "date": "2026-07-06"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_pdf_text",
+      "notes": "Page 871 identifies BLD202603584, issued May 7, 2026, with estimated cost $1,708,090 for elevator modernization including enlargement of the elevator opening; Markley Group Boston is listed as general contractor. The report also repeats earlier Markley permits as year-to-date or completion entries; those repetitions are not new construction values."
     }
   ],
-  "economic_scope_note": "Reviewed evidence batches at campus or company/county scope. No record is allocated to an individual inventory building. Source checking establishes what a document reports, not an independent audit or causal attribution. Monetary figures are nominal. Peak workforce is distinct from annual employment; source-year labels do not establish fiscal-year boundaries. Original forecasts remain forecasts until realization is verified. No cross-record benefit total is defined. Cumulative project costs are not annual expenditure. Tax receipts and incentive payments remain separate, with inferred taxpayer links disclosed. Contextual research updates do not count as economic amounts. Account tax bills are distinct from cash receipts and incentive-program fees. Tax years, calendar years and fiscal years retain their source basis; separate taxpayer accounts are not consolidated. Municipal developer rebates and taxpayer valuations have distinct subjects. Estimated actual property value and tax capacity are not tax receipts; payable-year valuations retain their earlier assessment date. Taxpayer values expressed in millions retain approximate precision and account-level separation. A current-year table can use an older valuation date and is not converted into an annual series. Facility real-property and business-personal-property accounts remain separate, and address-label discrepancies are disclosed. Michigan Industrial Facilities Tax accounts remain distinct from the underlying real parcel and from post-expiration personal-property accounts; annual account totals are not recipient-level government receipts. Permit construction values are administrative project amounts, not verified expenditure, and separate permits are not combined without proof that their scopes do not overlap. Repeated maintenance-year assessments are annual parcel stocks, not new investment flows. Mixed-use parcel assessments and taxable values are retained at whole-parcel scope and are not allocated to a data-center tenant or function by floor area. Operator-reported jobs supported remain distinct from direct employees and FTEs. Approved infrastructure grants are documented public commitments rather than verified disbursements or total public costs. Cumulative community funding remains separate from tax receipts, payroll and modeled multiplier effects. Reported facility power capacity is not measured electricity consumption or peak demand. Permit-listed emergency generators are not runtime, fuel-use or actual-emissions observations. A city largest-taxpayer table's personal-property assessment remains separate from the leasehold real-property account, tax bills, receipts and capital expenditure. TIF loan principal is financing rather than a grant or general-fund receipt; project-generated tax revenue pledged to repayment is retained as a separate public-financing flow and is not added to gross parcel distributions. Water-withdrawal and consumptive permit capacities are regulatory limits rather than measured use. Development-agreement local-labor preferences are requirements rather than realized participation, and operating employee snapshots remain distinct from customers' on-site staff and jobs forecasts. Audited City bond statements distinguish issuance draws, year-end principal, annual principal retired, interest and fees, pledged TIF revenue, debt-service-fund transfers and future principal-plus-interest commitments. These measures are not summed into a benefit or subsidy total. City pledged revenue, City debt-service-fund transfers and the private fund's project TIF revenue applied to loan repayment retain their separate source definitions because only the 2022 transfer and private-fund amount agree exactly. Developer testimony in public meeting minutes is retained as a source-attributed cumulative lower bound; local-contractor spending is not converted into payroll, worker counts, household spending or multiplier effects. Economic-improvement-district cost estimates and maximum owner assessments remain source projections until bond issuance, an assessment schedule, collections and expenditures are verified. A statutory financing cap is not a tax receipt, public expenditure or subsidy. Audited private equipment-financing balances are debt stocks rather than construction spending, public support or community benefit. Reported floor area and occupied-share values describe operating scale and utilization, not employment, revenue, power use or economic output. Contractor and engineer case studies document supplier roles and completion timing but do not establish payment amounts, worker residence, payroll or multiplier effects. State incentive contract amounts, expected jobs and paid-or-certified-to-date fields remain distinct; a zero paid/certified balance at an earlier reporting cutoff does not imply no later claims. Public charging-infrastructure awards are commitments rather than verified disbursements, private project investment or operating benefits. Qualitative payment descriptions without a defensible numeric bound remain research context rather than quantitative records. Program-reported actual qualified investment, certified tax-exemption value and certified tax-credit value remain separate cumulative measures; none is converted into annual spending, a cash grant, local revenue or causal impact. County Business Patterns observations are county-industry context, not project contributions: establishment counts are employer locations rather than data-center facilities, March employment is not an annual average, annual payroll spans the full NAICS cell, and disclosure noise, classification changes and geographic assignment limit comparisons. No CBP change is attributed to a study project. Project fragments: prj_study_im3_building_00172739953: Second-pass public-evidence audit for Switch Las Vegas NAP7, the individual real-property parcel and original SUPERNAP building at 7135 South Decatur Boulevard. The review covered Clark County assessor, Treasurer, Accela permit, planning, air-quality, budget and financial-report access points; Nevada GOED, Department of Taxation and utility-regulatory sources; Switch operator, SEC, career and ESG materials; supplier and contractor references; and recipient-reported community records for 2005-2026. Six direct observations are added without allocating wider Core Campus capital expenditure, combined incentive audits, later facilities or expansions, personal property, tenant equipment, vendor equipment, or company-wide employment to NAP7. The Treasurer record corrects the earlier research note that payment records were uncollected, but the current payment is only a partial fiscal-year amount. No synthesis fragment is added: NAP4 was already operating while NAP7 was under construction in 2008, and the available county panel cannot isolate a NAP7 treatment from earlier facilities, later Core Campus growth, or major non-data-center shocks. NAP7 employment, payroll, local supplier payments, metered electricity and water, personal-property tax, realized abatement, jurisdictional tax receipts, project-attributable public costs, and a net fiscal result remain unobserved. prj_study_im3_building_00364289074: Corrective public-source audit for Microsoft's data-center property at 5150 Rogers Road and explicitly labeled wider Microsoft/Bexar County activity. Exact-site ordinance, permit, appraisal, and tax-account records remain separate from later campuses and regional disclosures; the three appraisal accounts and two taxable-account payments are not consolidated. Permit value is administrative, the original investment and employment figures are commitments, the 2013 employment threshold is a reported lower bound, and the water quantity is a projection rather than metered consumption. No Bexar-and-Medina total is allocated to this property. Annual construction expenditure, construction labor and residence, supplier payments, operating payroll and purchases, recipient-level tax distributions, marginal public-service cost, electricity consumption, water withdrawal or consumption, wastewater, actual emissions, and a recurring facility-level community series remain unobserved after the documented searches. prj_study_im3_building_00377585075: Corrective DET01 evidence audit. Official parcel, permit, tax, water-account, state-certificate, EPA and operator records are retained as direct observations or clearly labeled source forecasts. Conflicting floor-area figures remain separate because their reporting definitions differ. Construction cost, realized jobs, supplier payments, community funding, electricity, emissions, wastewater, actual public-service cost and causal county effects remain unbounded rather than being filled with transferred assumptions. prj_study_im3_building_00460089167: Corrective primary-source audit adds current Andale parcel assessment, contractor-reported campus floor area, and two recipient- or government-reported Meta community grants. The search trail records useful and negative results across identity, tax, construction, jobs, suppliers, utilities, water, permits, public costs, incentives, community funding, and county comparison inputs. Campus-wide facts remain unallocated to the selected inventory building, overlapping community amounts are not added together, and unavailable supplier, payroll, utility-billing, discharge, generator, and marginal-service-cost amounts remain explicit gaps. prj_study_im3_building_00464097467: Second-pass public-evidence audit for Apple's Washoe County data-center campus at 21505 Reno Technology Parkway West and its 2024 expansion application. GOED audit findings, application forecasts, county permit values, parcel assessments, a water-right allocation, operator-reported electricity use, and recipient-reported donation bands remain separate evidence states and scopes. Permit values are administrative amounts and are not summed because overlapping scopes cannot be ruled out. Assessment values are parcel stocks, not investment or tax receipts. The 125 acre-foot water right is regulatory capacity, not measured use. Food Bank gifts are company-region transfers, not campus-attributable annual spending. No campus total is allocated to the selected mapped building; the four-building campus, later buildout cases, downtown Reno warehouse, supporting renewable projects, fire-station parcel, and more-than-200-person support statement are not collapsed into one footprint. No Switch Citadel or Storey County amount enters this fragment. Vendor payments, worker residence, taxes received by jurisdiction, realized 2024 abatement, same-scope public-service cost, wastewater, and building-level electricity or water remain unobserved. prj_study_im3_building_00598261190: Second-pass public-evidence audit for the State Farm data center at 24400 West Valley Parkway in Olathe, Kansas. The account adds two official City permit values and SEC-reported property area, occupancy and critical-IT-load snapshots while keeping permit values, estimated cumulative capital spending, parcel assessments, tax bills and tax payments as distinct measures. The search trail covers parcel and fiscal records, construction and suppliers, operations and workforce, incentives, utility and environmental regulation, community activity, planning, public costs and county outcomes. No site-level employment, payroll, supplier payment, community transfer, metered electricity or water, incentive amount, marginal public-service cost, net fiscal position or attributable county effect is inferred from public material. prj_study_im3_building_00664938835: Second-pass public-evidence audit for Expedient's adaptive reuse of the pre-existing data-center building at 4777 W Ironwood Drive. The review searched Franklin planning, agenda, assessment, permit, water and sewer materials; Milwaukee County tax and deed-record access points; Wisconsin DOR, WEDC, DFI and PSC records; operator press, specification, career, ESG and community pages; lease, financing, carrier and vendor disclosures; and archived official pages for 2007-2026. Opening-day and current operator specifications remain separate dated snapshots because the reported area and capacity changed. The county portal now establishes a 2021-2025 parcel-tax principal series, but not Expedient's incidence under the lease. The 2022 ownership transfer, assessments, estimated permit values, tax payments and hiring plan remain non-additive. No source was found for actual construction outlays, realized site employment or payroll, local procurement, Milwaukee-area community transfers, metered resources, project-attributable public costs or a fiscal net. prj_study_im3_building_00888253616: Second-pass public-evidence audit for NTT Silicon Valley SV1 at 1160 Walsh Avenue, Santa Clara. The review reconciles the planning-era 1150 Walsh address to APN 224-58-003; adds the finaled principal permit, its administrative job value, current operator specifications, emergency-generator authorization and the parcel's regular-bill payment history; and leaves supplemental bills separate to avoid double counting. Public sources still do not establish realized site employment or payroll, total project investment, supplier payments, project-specific community transfers, metered resources, or project-attributable public-service costs. prj_study_im3_building_01024051963: Corrective source audit for the Meta Eagle Mountain campus and the selected IM3 building footprint in Utah County. Campus, company-county, and supporting-infrastructure observations remain explicitly unallocated to the selected building; later expansion areas and unrelated Eagle Mountain data-center developers are excluded unless a source establishes continuity. prj_study_im3_building_01073720208: Second-pass public-evidence audit for Google's Council Bluffs data-center activity, retaining the selected inventory building as the project key while leaving campus, taxpayer-account, company-county, and state-award facts at their reported scopes. The audit distinguishes completed IEDA contracts 08-HQJC-030 and 12-HQJP-051 from the 2022 award still in performance; permit valuations remain administrative amounts rather than expenditure; assessed and taxable values remain stocks; bills remain distinct from payments; and community grants remain recipient- and period-specific. The Pottawattamie County tax portal now supplies a paid 2018-2024 series for the principal Tetra parcel and an unpaid 2025 bill for the newer Questa parcel. No value is inferred for sales-tax exemptions, the local abatement schedule, franchise-fee adjustment, electricity, supplier retention, building-level water, marginal public-service cost, or net fiscal position. Models without defensible project allocation or transferable parameters were removed even though that leaves the eight-category account incomplete. prj_study_im3_building_01132541700: Corrective primary-source audit adds two county taxable-account observations, state-verified incentive-compliance thresholds, current operator-reported jobs and community funding, one county-received grant, facility electricity use, supporting renewable capacity, and the 2018 expansion forecast. The search trail covers identity, land use, permits, assessor and fiscal records, incentives, public costs, utilities, water, suppliers, courts, bonds, community funding, and federal county outcomes. Most public evidence covers the multi-building Henrico campus or Scout Development's county account and remains unallocated to the selected inventory building; overlapping funding and investment figures are not summed, and unavailable supplier payments, utility bills, tax receipts, incentive costs, payroll, and marginal public-service costs remain explicit gaps. prj_study_im3_campus_00231769626: Second-pass public-evidence audit for Google's The Dalles campus in Wasco County. The fragment preserves the baseline 2023-2025 Google LLC and Design LLC tax-bill and assessed-value series and the documented $28.5 million water-infrastructure project, and adds only incremental evidence. Business Oregon supplies a dated three-facility operating snapshot and separately bounded Project 1 and Project 2 SIP forecasts; City of The Dalles planning files and contractor/permit records document later River Road construction without treating permit valuations as spending. A recipient record verifies one local grant. Searches of assessor and treasurer records, budgets and agreements, planning and permit systems, utility and environmental records, operator ESG/careers materials, contractors, suppliers, workforce sources, nonprofit recipients, archives and structured portals found no audited construction outlay, local supplier spend, facility payroll, employee residence, project-attributable utility cost or load, realized abatement ledger, same-scope public service cost, or fiscal net. Statewide Google totals and system-wide utility loads are excluded from campus claims.",
+  "economic_scope_note": "Reviewed evidence batches at campus or company/county scope. No record is allocated to an individual inventory building. Source checking establishes what a document reports, not an independent audit or causal attribution. Monetary figures are nominal. Peak workforce is distinct from annual employment; source-year labels do not establish fiscal-year boundaries. Original forecasts remain forecasts until realization is verified. No cross-record benefit total is defined. Cumulative project costs are not annual expenditure. Tax receipts and incentive payments remain separate, with inferred taxpayer links disclosed. Contextual research updates do not count as economic amounts. Account tax bills are distinct from cash receipts and incentive-program fees. Tax years, calendar years and fiscal years retain their source basis; separate taxpayer accounts are not consolidated. Municipal developer rebates and taxpayer valuations have distinct subjects. Estimated actual property value and tax capacity are not tax receipts; payable-year valuations retain their earlier assessment date. Taxpayer values expressed in millions retain approximate precision and account-level separation. A current-year table can use an older valuation date and is not converted into an annual series. Facility real-property and business-personal-property accounts remain separate, and address-label discrepancies are disclosed. Michigan Industrial Facilities Tax accounts remain distinct from the underlying real parcel and from post-expiration personal-property accounts; annual account totals are not recipient-level government receipts. Permit construction values are administrative project amounts, not verified expenditure, and separate permits are not combined without proof that their scopes do not overlap. Repeated maintenance-year assessments are annual parcel stocks, not new investment flows. Mixed-use parcel assessments and taxable values are retained at whole-parcel scope and are not allocated to a data-center tenant or function by floor area. Operator-reported jobs supported remain distinct from direct employees and FTEs. Approved infrastructure grants are documented public commitments rather than verified disbursements or total public costs. Cumulative community funding remains separate from tax receipts, payroll and modeled multiplier effects. Reported facility power capacity is not measured electricity consumption or peak demand. Permit-listed emergency generators are not runtime, fuel-use or actual-emissions observations. A city largest-taxpayer table's personal-property assessment remains separate from the leasehold real-property account, tax bills, receipts and capital expenditure. TIF loan principal is financing rather than a grant or general-fund receipt; project-generated tax revenue pledged to repayment is retained as a separate public-financing flow and is not added to gross parcel distributions. Water-withdrawal and consumptive permit capacities are regulatory limits rather than measured use. Development-agreement local-labor preferences are requirements rather than realized participation, and operating employee snapshots remain distinct from customers' on-site staff and jobs forecasts. Audited City bond statements distinguish issuance draws, year-end principal, annual principal retired, interest and fees, pledged TIF revenue, debt-service-fund transfers and future principal-plus-interest commitments. These measures are not summed into a benefit or subsidy total. City pledged revenue, City debt-service-fund transfers and the private fund's project TIF revenue applied to loan repayment retain their separate source definitions because only the 2022 transfer and private-fund amount agree exactly. Developer testimony in public meeting minutes is retained as a source-attributed cumulative lower bound; local-contractor spending is not converted into payroll, worker counts, household spending or multiplier effects. Economic-improvement-district cost estimates and maximum owner assessments remain source projections until bond issuance, an assessment schedule, collections and expenditures are verified. A statutory financing cap is not a tax receipt, public expenditure or subsidy. Audited private equipment-financing balances are debt stocks rather than construction spending, public support or community benefit. Reported floor area and occupied-share values describe operating scale and utilization, not employment, revenue, power use or economic output. Contractor and engineer case studies document supplier roles and completion timing but do not establish payment amounts, worker residence, payroll or multiplier effects. State incentive contract amounts, expected jobs and paid-or-certified-to-date fields remain distinct; a zero paid/certified balance at an earlier reporting cutoff does not imply no later claims. Public charging-infrastructure awards are commitments rather than verified disbursements, private project investment or operating benefits. Qualitative payment descriptions without a defensible numeric bound remain research context rather than quantitative records. Program-reported actual qualified investment, certified tax-exemption value and certified tax-credit value remain separate cumulative measures; none is converted into annual spending, a cash grant, local revenue or causal impact. County Business Patterns observations are county-industry context, not project contributions: establishment counts are employer locations rather than data-center facilities, March employment is not an annual average, annual payroll spans the full NAICS cell, and disclosure noise, classification changes and geographic assignment limit comparisons. No CBP change is attributed to a study project. Project fragments: prj_study_im3_building_00052227492: Deep public-evidence audit for Flexential's Minneapolis-Chaska data center on parcel 30.0590020 at 3500 Lyman Boulevard. The review covered Carver County parcel, tax and property-record access points; City of Chaska permit, inspection, agenda, archive, budget, utility and annual-financial-report sources; Minnesota DEED, Revenue, statutory, environmental and utility-regulatory sources; federal workplace-safety search access; current and archived operator, predecessor, career and ESG materials; contractor and supplier references; and education, workforce and recipient-reported community sources for 2013-2026. Eighteen quantitative observations are preserved: a source-projected original investment lower bound; three later non-cumulative permit values; current floor area and critical-load UPS capacity; three annual parcel-tax payments; one current parcel-tax bill; and eight historical Via West Inc. estimated-actual-value observations. Stream's facilities at 1706 and 1708 West Creek Lane, the IP Stream Minneapolis LLC development agreement and its municipal rebates are outside the selected 3500 Lyman Boulevard project boundary and are not duplicated in this fragment; the six base Stream rebate rows require reassignment or removal from this target by the orchestrator because project fragments are append-only. Permit values are administrative estimates and are not summed because scopes may overlap. The current parcel-tax series includes all taxing jurisdictions and special assessments, not City-only receipts or net benefit, and the older citywide taxpayer series is not stitched to current parcel or Flexential values without a direct crosswalk. No synthesis fragment is added because direct observations and even a usable project projection were not found for construction labor, realized operating employment or payroll, supplier payments, metered energy or water, emissions, facility-specific incentive value, public-service costs, community transfers, or a causal county effect. prj_study_im3_building_00172739953: Second-pass public-evidence audit for Switch Las Vegas NAP7, the individual real-property parcel and original SUPERNAP building at 7135 South Decatur Boulevard. The review covered Clark County assessor, Treasurer, Accela permit, planning, air-quality, budget and financial-report access points; Nevada GOED, Department of Taxation and utility-regulatory sources; Switch operator, SEC, career and ESG materials; supplier and contractor references; and recipient-reported community records for 2005-2026. Six direct observations are added without allocating wider Core Campus capital expenditure, combined incentive audits, later facilities or expansions, personal property, tenant equipment, vendor equipment, or company-wide employment to NAP7. The Treasurer record corrects the earlier research note that payment records were uncollected, but the current payment is only a partial fiscal-year amount. No synthesis fragment is added: NAP4 was already operating while NAP7 was under construction in 2008, and the available county panel cannot isolate a NAP7 treatment from earlier facilities, later Core Campus growth, or major non-data-center shocks. NAP7 employment, payroll, local supplier payments, metered electricity and water, personal-property tax, realized abatement, jurisdictional tax receipts, project-attributable public costs, and a net fiscal result remain unobserved. prj_study_im3_building_00214321737: Second-pass public-evidence audit for Markley Group's Lowell data center at 2 Prince Avenue/1 Markley Way in Lowell, Middlesex County. The selected IM3 footprint is one building inside a three-building assessor parcel, so every added value remains at campus or company/county scope and is unallocated to the selected building. State and City records add Phase I forecasts, cumulative investment, operating-headcount, TIF-savings and incentive evidence; the assessor and tax portal add annual real-property stocks and one complete billed-tax year; permit reports add discrete administrative construction values and contractor names; MassDEP adds a permit-listed generator count; and a recipient page verifies one community contribution. Forecasts, cumulative values, parcel stocks, billed taxes, permit values, permit-authorized equipment, white-space area and recipient funding remain distinct and non-additive. Searches of planning and permit files, incentive and compliance reports, assessor and fiscal records, utility and environmental materials, operator disclosures, contractor and supplier pages, workforce and procurement records, community recipients, archives and repository county panels found no audited annual construction outlay, construction workforce or payroll, vendor payments or local-purchase share, facility payroll, metered annual electricity, project-attributable utility upgrade cost, annual water series matching the evidence vocabulary, wastewater, actual emissions, cash tax receipts, marginal public-service cost, fiscal net or causal county outcome. No model is added because the missing allocation and expenditure anchors cannot be bounded defensibly and Markley is not a clean first data-center entry in Middlesex County. prj_study_im3_building_00364289074: Corrective public-source audit for Microsoft's data-center property at 5150 Rogers Road and explicitly labeled wider Microsoft/Bexar County activity. Exact-site ordinance, permit, appraisal, and tax-account records remain separate from later campuses and regional disclosures; the three appraisal accounts and two taxable-account payments are not consolidated. Permit value is administrative, the original investment and employment figures are commitments, the 2013 employment threshold is a reported lower bound, and the water quantity is a projection rather than metered consumption. No Bexar-and-Medina total is allocated to this property. Annual construction expenditure, construction labor and residence, supplier payments, operating payroll and purchases, recipient-level tax distributions, marginal public-service cost, electricity consumption, water withdrawal or consumption, wastewater, actual emissions, and a recurring facility-level community series remain unobserved after the documented searches. prj_study_im3_building_00377585075: Corrective DET01 evidence audit. Official parcel, permit, tax, water-account, state-certificate, EPA and operator records are retained as direct observations or clearly labeled source forecasts. Conflicting floor-area figures remain separate because their reporting definitions differ. Construction cost, realized jobs, supplier payments, community funding, electricity, emissions, wastewater, actual public-service cost and causal county effects remain unbounded rather than being filled with transferred assumptions. prj_study_im3_building_00460089167: Corrective primary-source audit adds current Andale parcel assessment, contractor-reported campus floor area, and two recipient- or government-reported Meta community grants. The search trail records useful and negative results across identity, tax, construction, jobs, suppliers, utilities, water, permits, public costs, incentives, community funding, and county comparison inputs. Campus-wide facts remain unallocated to the selected inventory building, overlapping community amounts are not added together, and unavailable supplier, payroll, utility-billing, discharge, generator, and marginal-service-cost amounts remain explicit gaps. prj_study_im3_building_00464097467: Second-pass public-evidence audit for Apple's Washoe County data-center campus at 21505 Reno Technology Parkway West and its 2024 expansion application. GOED audit findings, application forecasts, county permit values, parcel assessments, a water-right allocation, operator-reported electricity use, and recipient-reported donation bands remain separate evidence states and scopes. Permit values are administrative amounts and are not summed because overlapping scopes cannot be ruled out. Assessment values are parcel stocks, not investment or tax receipts. The 125 acre-foot water right is regulatory capacity, not measured use. Food Bank gifts are company-region transfers, not campus-attributable annual spending. No campus total is allocated to the selected mapped building; the four-building campus, later buildout cases, downtown Reno warehouse, supporting renewable projects, fire-station parcel, and more-than-200-person support statement are not collapsed into one footprint. No Switch Citadel or Storey County amount enters this fragment. Vendor payments, worker residence, taxes received by jurisdiction, realized 2024 abatement, same-scope public-service cost, wastewater, and building-level electricity or water remain unobserved. prj_study_im3_building_00598261190: Second-pass public-evidence audit for the State Farm data center at 24400 West Valley Parkway in Olathe, Kansas. The account adds two official City permit values and SEC-reported property area, occupancy and critical-IT-load snapshots while keeping permit values, estimated cumulative capital spending, parcel assessments, tax bills and tax payments as distinct measures. The search trail covers parcel and fiscal records, construction and suppliers, operations and workforce, incentives, utility and environmental regulation, community activity, planning, public costs and county outcomes. No site-level employment, payroll, supplier payment, community transfer, metered electricity or water, incentive amount, marginal public-service cost, net fiscal position or attributable county effect is inferred from public material. prj_study_im3_building_00626785488: Second-pass public-evidence audit for the individual 654,433-square-foot IM3-mapped building footprint within Meta's Los Lunas data-center campus at 4250 Messenger Loop NW. The review covered the original campus chronology and 2016 industrial-revenue-bond package; Village budgets, audits, LEDA and dedicated infrastructure funds, planning, building, traffic, fire and water records; Valencia County assessor and clerk access; New Mexico economic-development, workforce, Construction Industries Division, Public Regulation Commission and Environment Department materials; PNM regulatory filings; Meta operator, SEC, contractor, career and grant materials; recipient-reported community records; and federal environmental and county-outcome access through September 6, 2026. Fifteen new direct observations are added alongside the two retained baseline observations, all at unallocated campus, company-county or supporting-infrastructure scope because no public source crosswalks the selected IM3 footprint to a separately named building, permit, parcel, workforce, utility meter or fiscal account. The later 2021 two-building expansion, 2023 three-building expansion load, 2025 AI expansion, off-site renewable projects, tenant equipment and other Meta facilities are excluded. No synthesis fragment is added because the selected building's operating date is not identified and the original six-building construction and operating sequence cannot support an isolated county treatment. Building-level capital expenditure, permits and fees, payroll, resident employment, supplier payments, metered electricity and water, utility bills, tax or PILOT payments, cash value of realized abatements, public-service costs and net fiscal results remain unobserved. prj_study_im3_building_00664938835: Second-pass public-evidence audit for Expedient's adaptive reuse of the pre-existing data-center building at 4777 W Ironwood Drive. The review searched Franklin planning, agenda, assessment, permit, water and sewer materials; Milwaukee County tax and deed-record access points; Wisconsin DOR, WEDC, DFI and PSC records; operator press, specification, career, ESG and community pages; lease, financing, carrier and vendor disclosures; and archived official pages for 2007-2026. Opening-day and current operator specifications remain separate dated snapshots because the reported area and capacity changed. The county portal now establishes a 2021-2025 parcel-tax principal series, but not Expedient's incidence under the lease. The 2022 ownership transfer, assessments, estimated permit values, tax payments and hiring plan remain non-additive. No source was found for actual construction outlays, realized site employment or payroll, local procurement, Milwaukee-area community transfers, metered resources, project-attributable public costs or a fiscal net. prj_study_im3_building_00888253616: Second-pass public-evidence audit for NTT Silicon Valley SV1 at 1160 Walsh Avenue, Santa Clara. The review reconciles the planning-era 1150 Walsh address to APN 224-58-003; adds the finaled principal permit, its administrative job value, current operator specifications, emergency-generator authorization and the parcel's regular-bill payment history; and leaves supplemental bills separate to avoid double counting. Public sources still do not establish realized site employment or payroll, total project investment, supplier payments, project-specific community transfers, metered resources, or project-attributable public-service costs. prj_study_im3_building_01024051963: Corrective source audit for the Meta Eagle Mountain campus and the selected IM3 building footprint in Utah County. Campus, company-county, and supporting-infrastructure observations remain explicitly unallocated to the selected building; later expansion areas and unrelated Eagle Mountain data-center developers are excluded unless a source establishes continuity. prj_study_im3_building_01073720208: Second-pass public-evidence audit for Google's Council Bluffs data-center activity, retaining the selected inventory building as the project key while leaving campus, taxpayer-account, company-county, and state-award facts at their reported scopes. The audit distinguishes completed IEDA contracts 08-HQJC-030 and 12-HQJP-051 from the 2022 award still in performance; permit valuations remain administrative amounts rather than expenditure; assessed and taxable values remain stocks; bills remain distinct from payments; and community grants remain recipient- and period-specific. The Pottawattamie County tax portal now supplies a paid 2018-2024 series for the principal Tetra parcel and an unpaid 2025 bill for the newer Questa parcel. No value is inferred for sales-tax exemptions, the local abatement schedule, franchise-fee adjustment, electricity, supplier retention, building-level water, marginal public-service cost, or net fiscal position. Models without defensible project allocation or transferable parameters were removed even though that leaves the eight-category account incomplete. prj_study_im3_building_01132541700: Corrective primary-source audit adds two county taxable-account observations, state-verified incentive-compliance thresholds, current operator-reported jobs and community funding, one county-received grant, facility electricity use, supporting renewable capacity, and the 2018 expansion forecast. The search trail covers identity, land use, permits, assessor and fiscal records, incentives, public costs, utilities, water, suppliers, courts, bonds, community funding, and federal county outcomes. Most public evidence covers the multi-building Henrico campus or Scout Development's county account and remains unallocated to the selected inventory building; overlapping funding and investment figures are not summed, and unavailable supplier payments, utility bills, tax receipts, incentive costs, payroll, and marginal public-service costs remain explicit gaps. prj_study_im3_campus_00231769626: Second-pass public-evidence audit for Google's The Dalles campus in Wasco County. The fragment preserves the baseline 2023-2025 Google LLC and Design LLC tax-bill and assessed-value series and the documented $28.5 million water-infrastructure project, and adds only incremental evidence. Business Oregon supplies a dated three-facility operating snapshot and separately bounded Project 1 and Project 2 SIP forecasts; City of The Dalles planning files and contractor/permit records document later River Road construction without treating permit valuations as spending. A recipient record verifies one local grant. Searches of assessor and treasurer records, budgets and agreements, planning and permit systems, utility and environmental records, operator ESG/careers materials, contractors, suppliers, workforce sources, nonprofit recipients, archives and structured portals found no audited construction outlay, local supplier spend, facility payroll, employee residence, project-attributable utility cost or load, realized abatement ledger, same-scope public service cost, or fiscal net. Statewide Google totals and system-wide utility loads are excluded from campus claims.",
   "evidence_version": "study-economic-evidence-1.37.0",
   "modeled_syntheses": [],
   "modeled_sources": [],
@@ -252,5 +1346,6 @@
     "causal": "not_assessed"
   },
   "legacy_first_entry_note": "Markley's November 23, 2015 operator post supplies an operational-no-later-than anchor for the Lowell facility and states that Phase One had opened with customers already occupying space; Markley's current facility and contact pages establish continuity to the exact mapped building at One Markley Way. The Lowell candidate cannot be Middlesex County's first entry because CoreSite's SEC prospectus identifies 70 Innerbelt in Somerville as operating data-center space when it was acquired on April 11, 2007, and Somerville's permit history independently describes an existing colocation data center at that address later in 2007. CoreSite's current page maps BO1 to 70 Inner Belt Road. The current two-record canonical inventory and the records reviewed do not establish a complete historical county inventory or the original opening date of the Somerville facility, so the true first entry remains unresolved and no treatment date is assigned.",
-  "scope_note": "Provisional private-sector research candidate. Owner/operator history, project boundaries and lifecycle require review. Membership does not verify current operation or establish economic impact."
+  "scope_note": "Provisional private-sector research candidate. Owner/operator history, project boundaries and lifecycle require review. Membership does not verify current operation or establish economic impact.",
+  "project_description": "Markley Group's Lowell data center operates at 2 Prince Avenue/1 Markley Way in Lowell, Middlesex County, Massachusetts, on the former Prince Pasta factory site. The selected IM3 footprint represents one building within a three-building assessor parcel, so campus-wide investment, employment, value, capacity, and incentive facts remain unallocated to that building. Markley reported Phase One open with customers occupying space by November 23, 2015 and now describes the Lowell facility as 352,000 square feet of secured white space. City planning records separately document a 2018 approval for a 65,000-square-foot expansion and later cooling, water-tank, generator, and utility modifications."
 }
