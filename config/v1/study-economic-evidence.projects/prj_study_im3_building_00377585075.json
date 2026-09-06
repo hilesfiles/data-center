@@ -1,0 +1,105 @@
+{
+  "schema_version": "1.0.0",
+  "project_id": "prj_study_im3_building_00377585075",
+  "reviewed_on": "2026-09-05",
+  "scope_note": "DET01-specific direct-evidence follow-up. The operator data sheet supplies current facility-area and rated-power observations at 21005 Lahser Road. The 2014 operator release bounds the initial launch chronology but supplies no quantitative construction, supplier, payroll, community-funding, resource-use or public-cost observation. The values below are source-reported specifications, not audited utilization, expenditure or impact measures.",
+  "sources": [
+    {
+      "source_id": "src_study_edgeconnex_det01_datasheet_2024",
+      "title": "Detroit DET01 data sheet",
+      "url": "https://www.edgeconnex.com/wp-content/uploads/2024/09/Detroit-Data-Sheet.pdf",
+      "publisher": "EdgeConneX",
+      "source_type": "operator_release",
+      "publication_date": {
+        "precision": "unknown"
+      },
+      "retrieved_on": "2026-09-05",
+      "review_method": "web_pdf_text",
+      "notes": "The current operator sheet identifies DET01 at 21005 Lahser Road, Building 4, reports a 39,900-square-foot facility and 3 MW of N+1 power, and separately describes a potential second 7 MW building. Only the existing DET01 specifications are transcribed; the potential second building is not treated as operating capacity. The sheet describes N+1 CRAC cooling but provides no metered electricity, PUE, WUE, water, wastewater, generator runtime or emissions value."
+    },
+    {
+      "source_id": "src_study_edgeconnex_telnet_launch_2014",
+      "title": "EdgeConneX and TelNet Worldwide Partner to Launch Michigan's Newest State-of-the-Art Data Center",
+      "url": "https://www.edgeconnex.com/news/press-releases/edgeconnex-and-telnet-worldwide-partner-to-launch-michigans-newest-state-of-the-art-data-center/",
+      "publisher": "EdgeConneX",
+      "source_type": "operator_release",
+      "publication_date": {
+        "precision": "day",
+        "date": "2014-07-28"
+      },
+      "retrieved_on": "2026-09-05",
+      "review_method": "web_page",
+      "notes": "The release identifies the Southfield Tier III project and says it was poised for a November 2014 launch. This is a forward-looking launch statement rather than a commissioning certificate, construction start, worker count, supplier-spending amount or realized employment observation."
+    }
+  ],
+  "records": [
+    {
+      "claim_id": "clm_study_edgeconnex_det01_operating_floor_area_2026",
+      "project_id": "prj_study_im3_building_00377585075",
+      "metric_code": "study.operating_property_floor_area",
+      "value": 39900,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "reported_snapshot",
+        "report_date": "2026-09-05",
+        "label": "Current operator data sheet retrieved 2026-09-05; publication date not stated"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "EdgeConneX DET01 existing facility at 21005 Lahser Road, Building 4",
+        "county_fips": "26125",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_edgeconnex_det01_datasheet_2024",
+      "pdf_page": 1,
+      "printed_page": "1",
+      "source_locator": "Page 1, Technical Specifications & Configuration, Space",
+      "notes": "Operator-reported whole-facility area. It is not raised-floor area, occupied area, construction spending, employment, or an individual-building allocation beyond DET01's existing Building 4 address.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-05"
+    },
+    {
+      "claim_id": "clm_study_edgeconnex_det01_operating_power_capacity_2026",
+      "project_id": "prj_study_im3_building_00377585075",
+      "metric_code": "study.operating_power_capacity",
+      "value": 3,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "reported_snapshot",
+        "report_date": "2026-09-05",
+        "label": "Current operator data sheet retrieved 2026-09-05; publication date not stated"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "EdgeConneX DET01 existing facility at 21005 Lahser Road, Building 4",
+        "county_fips": "26125",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_edgeconnex_det01_datasheet_2024",
+      "pdf_page": 1,
+      "printed_page": "1",
+      "source_locator": "Page 1, Technical Specifications & Configuration, Power",
+      "notes": "Operator-reported 3 MW N+1 capacity. The sheet does not define this as metered load, coincident peak, annual consumption or occupied IT capacity. The separately described potential 7 MW second building is excluded.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-05"
+    }
+  ],
+  "project_updates": [
+    {
+      "project_id": "prj_study_im3_building_00377585075",
+      "source_id": "src_study_edgeconnex_det01_datasheet_2024",
+      "as_of": "2026-09-05",
+      "title": "DET01 operator specifications add facility-scale and rated-power anchors",
+      "notes": "The operator reports 39,900 square feet and 3 MW N+1 for the existing DET01 facility. A potential 7 MW second building remains a separate forward-looking descriptor. No facility-level meter, PUE, WUE, water, wastewater, generator-runtime, emissions, payroll, supplier-payment or community-funding series was found."
+    },
+    {
+      "project_id": "prj_study_im3_building_00377585075",
+      "source_id": "src_study_edgeconnex_telnet_launch_2014",
+      "as_of": "2026-09-05",
+      "title": "Initial launch chronology remains bounded rather than treated as an exact commissioning date",
+      "notes": "The July 2014 operator release projected a November 2014 launch; the pre-existing evidence establishes operation no later than March 11, 2015. Neither source establishes the exact construction start, commissioning day, construction workforce, supplier payments or realized permanent employment."
+    }
+  ]
+}
