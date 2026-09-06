@@ -1,0 +1,80 @@
+{
+  "schema_version": "1.0.0",
+  "project_id": "prj_study_im3_building_00460089167",
+  "reviewed_on": "2026-09-05",
+  "scope_note": "Public-source follow-up adds one facility-level 2024 electricity observation from Meta's environmental data index. The same source's rounded Forest City water-withdrawal and Scope 2 emissions values remain contextual until compatible canonical metric definitions exist. A North Carolina supplier announcement is retained only as context because its U.S.-wide contract value and Hickory manufacturing expansion cannot be allocated to Forest City or Rutherford County.",
+  "sources": [
+    {
+      "source_id": "src_study_meta_environmental_data_index_2025",
+      "title": "Meta 2025 Environmental Data Index",
+      "url": "https://sustainability.atmeta.com/wp-content/uploads/2025/10/Meta_2025-Environmental-Data-Index.pdf",
+      "publisher": "Meta Platforms, Inc.",
+      "source_type": "operator_release",
+      "publication_date": {
+        "precision": "year",
+        "year": 2025
+      },
+      "retrieved_on": "2026-09-05",
+      "review_method": "web_pdf_text",
+      "notes": "Facility tables report Forest City electricity consumption of 535,555 MWh, water withdrawal of 16 megaliters, zero market-based Scope 2 emissions and 144,104 metric tons CO2e of location-based Scope 2 emissions for 2024. Values are rounded to whole displayed units and the methodology permits utility, meter, design-estimate or proxy inputs where applicable. Only electricity is normalized as a canonical source record because the shared evidence metric registry lacks compatible annual water-withdrawal and facility-emissions definitions."
+    },
+    {
+      "source_id": "src_study_meta_corning_north_carolina_20260414",
+      "title": "Investing in American manufacturing to build the infrastructure for AI",
+      "url": "https://datacenters.atmeta.com/2026/04/investing-in-american-manufacturing-to-build-the-infrastructure-for-ai/",
+      "publisher": "Meta",
+      "source_type": "operator_release",
+      "publication_date": {
+        "precision": "day",
+        "date": "2026-04-14"
+      },
+      "retrieved_on": "2026-09-05",
+      "review_method": "web_page",
+      "notes": "Meta describes a multiyear agreement with Corning worth up to $6 billion for U.S. data-center optical infrastructure and a Corning expansion in Hickory, North Carolina. The source does not allocate contract value, purchases, employment, or production to the Forest City campus or Rutherford County, so no quantitative project supplier record is created."
+    }
+  ],
+  "records": [
+    {
+      "claim_id": "clm_study_meta_forest_city_electricity_2024",
+      "project_id": "prj_study_im3_building_00460089167",
+      "metric_code": "study.annual_electricity_use",
+      "value": 535555000,
+      "value_qualifier": "approximately",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "calendar_year",
+        "year": 2024,
+        "label": "Calendar year 2024"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Meta Forest City Data Center campus, Rutherford County, NC",
+        "county_fips": "37161",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_meta_environmental_data_index_2025",
+      "pdf_page": 5,
+      "printed_page": "F",
+      "source_locator": "Section 2.1, Electricity Consumption by Facility, Forest City (NC) row, 2024 column",
+      "notes": "Meta reports 535,555 MWh for Forest City; this record converts the displayed value to 535,555,000 kWh. The source rounds line items to whole displayed units and says inputs may include internal meters, design estimates and utility bills where applicable. This is operator-reported facility electricity consumption, not an independently audited utility bill, peak demand, IT load, cost, or proof of zero-carbon hourly supply.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-05"
+    }
+  ],
+  "project_updates": [
+    {
+      "project_id": "prj_study_im3_building_00460089167",
+      "source_id": "src_study_meta_environmental_data_index_2025",
+      "as_of": "2024-12-31",
+      "title": "Facility-level 2024 electricity, water and Scope 2 rows located",
+      "notes": "Meta's 2025 Environmental Data Index reports Forest City at 535,555 MWh of electricity consumption, 16 megaliters of water withdrawal, zero market-based Scope 2 emissions and 144,104 metric tons CO2e of location-based Scope 2 emissions for 2024. Electricity is normalized in the evidence record. The rounded water and emissions figures remain explicit context because the shared canonical evidence registry has no compatible annual water-withdrawal or facility-emissions metric; they are not treated as audited utility or emissions records."
+    },
+    {
+      "project_id": "prj_study_im3_building_00460089167",
+      "source_id": "src_study_meta_corning_north_carolina_20260414",
+      "as_of": "2026-04-14",
+      "title": "North Carolina optical-supply agreement is not allocable to Forest City",
+      "notes": "Meta reports a multiyear U.S. agreement with Corning worth up to $6 billion and a manufacturing expansion in Hickory, North Carolina. No public amount is assigned to Forest City, Rutherford County, local vendor payments, or local employment, so the supplier evidence gap remains and no project amount is inferred."
+    }
+  ]
+}

@@ -1,0 +1,1847 @@
+{
+  "schema_version": "1.0.0",
+  "project_id": "prj_study_im3_building_00460089167",
+  "reviewed_on": "2026-09-05",
+  "scope_note": "Completed contribution-account syntheses for Meta Forest City / Rutherford County. Broad cumulative capital receives an explicit 25-75% construction-eligible allocation before transferred construction benchmarks; operating scenarios translate the 2015 reported-position snapshot with a visible FTE sensitivity; the same-county, same-fiscal-year tax and incentive claims are reconciled before the public-cost break-even threshold; facility water and electricity resource models retain source rounding and scope; supplier and household channels remain separate; and county comparisons are descriptive benchmark gaps rather than causal effects. No net fiscal, audited, or causal result is asserted.",
+  "sources": [
+    {
+      "source_id": "src_study_meta_environmental_data_index_2025",
+      "title": "Meta 2025 Environmental Data Index",
+      "url": "https://sustainability.atmeta.com/wp-content/uploads/2025/10/Meta_2025-Environmental-Data-Index.pdf",
+      "publisher": "Meta Platforms, Inc.",
+      "source_type": "operator_release",
+      "publication_date": {
+        "precision": "year",
+        "year": 2025
+      },
+      "retrieved_on": "2026-09-05",
+      "review_method": "web_pdf_text",
+      "notes": "Facility tables report Forest City 2024 electricity consumption, water withdrawal, and market- and location-based Scope 2 emissions. The completion account uses the water row for a unit conversion and wastewater sensitivity and the fleet PUE only for a visibly transferred overhead-electricity sensitivity."
+    }
+  ],
+  "estimates": [
+    {
+      "estimate_id": "est_study_meta_forest_city_annualized_capital",
+      "project_id": "prj_study_im3_building_00460089167",
+      "metric_code": "study.modeled_annualized_capital_spending",
+      "label": "Modeled annualized capital spending",
+      "category": "investment",
+      "unit": "USD_per_year",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 50000000,
+      "period": {
+        "kind": "construction_period",
+        "start_date": "2010-11-11",
+        "end_date": "2026-04-14",
+        "label": "From the original campus announcement through the dated 2026 confirmation of the current cumulative investment floor; annualization uses a 10-20 active-year sensitivity"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Meta Forest City Data Center campus, Rutherford County, NC",
+        "county_fips": "37161",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": 37500000,
+        "central": 50000000,
+        "high": 75000000,
+        "interpretation": "Low, central and high values are an explicit sensitivity range, not a statistical confidence interval."
+      },
+      "contribution_channel": "direct",
+      "aggregation": {
+        "aggregation_id": "meta_forest_city_annualized_capital",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "reported_cumulative_investment_floor",
+          "value": 750000000,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_meta_forest_city_cumulative_investment_2026",
+            "detail": "Operator-reported cumulative North Carolina data-center investment floor"
+          },
+          "transformation": "Serves as the broad capital basis before construction-equipment allocation"
+        },
+        {
+          "name": "low_annualization_years",
+          "value": 20,
+          "unit": "years",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Long active-construction window used for the low annual flow"
+          },
+          "transformation": "Divides cumulative capital"
+        },
+        {
+          "name": "central_annualization_years",
+          "value": 15,
+          "unit": "years",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Central active-construction window"
+          },
+          "transformation": "Divides cumulative capital"
+        },
+        {
+          "name": "high_annualization_years",
+          "value": 10,
+          "unit": "years",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Short active-construction window used for the high annual flow"
+          },
+          "transformation": "Divides cumulative capital"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The calculation is reproducible but relies on transferred public benchmarks or explicit assumptions where direct local observations are unavailable.",
+      "decision_relevance": "Supplies a comparable annual construction-capital flow without relabeling the cumulative operator total as one-year spending.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Audited annual capital ledger, phase allocations, equipment shares, and replacement-versus-expansion detail"
+      },
+      "derivation": {
+        "method": "sensitivity_analysis",
+        "model_version": "meta-forest-city-account-1.0.0",
+        "formula": "reported cumulative investment floor ÷ assumed active construction years",
+        "input_claim_ids": [
+          "clm_study_meta_forest_city_cumulative_investment_2026"
+        ],
+        "input_source_ids": [
+          "src_study_meta_forest_city_factsheet_2026"
+        ],
+        "assumptions": [
+          "All transferred coefficients, conversion factors, and allocation shares are exposed as named parameters.",
+          "The estimate must not be presented as observed, audited, source-reported, or causal."
+        ]
+      },
+      "limitations": [
+        "Annualization smooths uneven construction and equipment-refresh phases.",
+        "The cumulative floor is not an audited expenditure ledger and is not allocated to individual buildings."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Low-confidence annualization of a cumulative operator-reported investment floor.",
+      "reviewed_on": "2026-09-05"
+    },
+    {
+      "estimate_id": "est_study_meta_forest_city_local_construction_spend",
+      "project_id": "prj_study_im3_building_00460089167",
+      "metric_code": "study.modeled_local_construction_spending",
+      "label": "Modeled construction-eligible spending retained locally",
+      "category": "suppliers",
+      "unit": "USD",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 150000000,
+      "period": {
+        "kind": "construction_period",
+        "start_date": "2010-11-11",
+        "end_date": "2026-04-14",
+        "label": "From the original campus announcement through the dated 2026 confirmation of the current cumulative investment floor; annualization uses a 10-20 active-year sensitivity"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Meta Forest City Data Center campus, Rutherford County, NC",
+        "county_fips": "37161",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": 46875000,
+        "central": 150000000,
+        "high": 309375000,
+        "interpretation": "Low, central and high values are an explicit sensitivity range, not a statistical confidence interval."
+      },
+      "contribution_channel": "direct",
+      "aggregation": {
+        "aggregation_id": "meta_forest_city_local_construction_spend",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "reported_cumulative_investment_floor",
+          "value": 750000000,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_meta_forest_city_cumulative_investment_2026",
+            "detail": "Operator-reported cumulative North Carolina data-center investment floor"
+          },
+          "transformation": "Serves as the broad capital basis before construction-equipment allocation"
+        },
+        {
+          "name": "low_construction_cost_share",
+          "value": 0.25,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Lower share of broad capital treated as construction eligible"
+          },
+          "transformation": "Excludes IT equipment before applying construction benchmarks"
+        },
+        {
+          "name": "central_construction_cost_share",
+          "value": 0.5,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Central share of broad capital treated as construction eligible"
+          },
+          "transformation": "Excludes IT equipment before applying construction benchmarks"
+        },
+        {
+          "name": "high_construction_cost_share",
+          "value": 0.75,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Upper share of broad capital treated as construction eligible"
+          },
+          "transformation": "Excludes IT equipment before applying construction benchmarks"
+        },
+        {
+          "name": "low_local_purchase_share",
+          "value": 0.25,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Lower host-region purchase share"
+          },
+          "transformation": "Allocates construction-eligible spending to host-region suppliers"
+        },
+        {
+          "name": "central_local_purchase_share",
+          "value": 0.4,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Central host-region purchase share"
+          },
+          "transformation": "Allocates construction-eligible spending to host-region suppliers"
+        },
+        {
+          "name": "high_local_purchase_share",
+          "value": 0.55,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Upper host-region purchase share"
+          },
+          "transformation": "Allocates construction-eligible spending to host-region suppliers"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The calculation is reproducible but relies on transferred public benchmarks or explicit assumptions where direct local observations are unavailable.",
+      "decision_relevance": "Populates the supplier channel without treating broad equipment capital or the U.S.-wide Corning agreement as local Forest City purchases.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Audited construction-only vendor payments, vendor addresses, and Rutherford County retention"
+      },
+      "derivation": {
+        "method": "sensitivity_analysis",
+        "model_version": "meta-forest-city-account-1.0.0",
+        "formula": "reported cumulative investment floor × construction-cost share × local-purchase share",
+        "input_claim_ids": [
+          "clm_study_meta_forest_city_cumulative_investment_2026"
+        ],
+        "input_source_ids": [
+          "src_study_meta_forest_city_factsheet_2026"
+        ],
+        "assumptions": [
+          "All transferred coefficients, conversion factors, and allocation shares are exposed as named parameters.",
+          "The estimate must not be presented as observed, audited, source-reported, or causal."
+        ]
+      },
+      "limitations": [
+        "Construction-cost and local-purchase shares are assumptions.",
+        "The broad capital source does not isolate building construction from IT equipment or identify vendor geography."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Local construction-purchasing sensitivity; not observed supplier revenue.",
+      "reviewed_on": "2026-09-05"
+    },
+    {
+      "estimate_id": "est_study_meta_forest_city_construction_job_years_total",
+      "project_id": "prj_study_im3_building_00460089167",
+      "metric_code": "study.modeled_construction_job_years_total",
+      "label": "Modeled Prince William benchmark-equivalent construction job-years",
+      "category": "construction",
+      "unit": "job_years",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 3280.91,
+      "period": {
+        "kind": "construction_period",
+        "start_date": "2010-11-11",
+        "end_date": "2026-04-14",
+        "label": "From the original campus announcement through the dated 2026 confirmation of the current cumulative investment floor; annualization uses a 10-20 active-year sensitivity"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Meta Forest City Data Center campus, Rutherford County, NC",
+        "county_fips": "37161",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": 1640.46,
+        "central": 3280.91,
+        "high": 4921.37,
+        "interpretation": "Low, central and high values are an explicit sensitivity range, not a statistical confidence interval."
+      },
+      "contribution_channel": "total",
+      "aggregation": {
+        "aggregation_id": "meta_forest_city_construction_job_years_total",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "reported_cumulative_investment_floor",
+          "value": 750000000,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_meta_forest_city_cumulative_investment_2026",
+            "detail": "Operator-reported cumulative North Carolina data-center investment floor"
+          },
+          "transformation": "Serves as the broad capital basis before construction-equipment allocation"
+        },
+        {
+          "name": "low_construction_cost_share",
+          "value": 0.25,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Lower share of broad capital treated as construction eligible"
+          },
+          "transformation": "Excludes IT equipment before applying construction benchmarks"
+        },
+        {
+          "name": "central_construction_cost_share",
+          "value": 0.5,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Central share of broad capital treated as construction eligible"
+          },
+          "transformation": "Excludes IT equipment before applying construction benchmarks"
+        },
+        {
+          "name": "high_construction_cost_share",
+          "value": 0.75,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Upper share of broad capital treated as construction eligible"
+          },
+          "transformation": "Excludes IT equipment before applying construction benchmarks"
+        },
+        {
+          "name": "total_job_years_per_million",
+          "value": 8.7491,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_pwc_data_center_market_2021",
+            "detail": "Prince William construction contribution coefficient for construction cost excluding IT equipment"
+          },
+          "transformation": "Multiplies construction-eligible capital in millions"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The calculation is reproducible but relies on transferred public benchmarks or explicit assumptions where direct local observations are unavailable.",
+      "decision_relevance": "Provides a benchmark-equivalent construction-employment range while excluding a visible share for IT equipment.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Observed construction-only spending, worker hours, payroll, residence, and annual job-years"
+      },
+      "derivation": {
+        "method": "input_output_multiplier",
+        "model_version": "meta-forest-city-account-1.0.0",
+        "formula": "reported cumulative investment floor × construction-cost share × 8.7491 total job-years per $1 million",
+        "input_claim_ids": [
+          "clm_study_meta_forest_city_cumulative_investment_2026"
+        ],
+        "input_source_ids": [
+          "src_study_pwc_data_center_market_2021",
+          "src_study_meta_forest_city_factsheet_2026"
+        ],
+        "assumptions": [
+          "All transferred coefficients, conversion factors, and allocation shares are exposed as named parameters.",
+          "The estimate must not be presented as observed, audited, source-reported, or causal."
+        ]
+      },
+      "limitations": [
+        "Transferred Prince William County coefficient, not a Rutherford County input-output model.",
+        "Job-years are not peak workers, unique workers, or permanent jobs.",
+        "The construction-eligible share of the broad capital floor is assumed."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Benchmark equivalent only; it does not convert the 2010 worker forecast into realized employment.",
+      "reviewed_on": "2026-09-05",
+      "multiplier_provenance": {
+        "source_id": "src_study_pwc_data_center_market_2021",
+        "model_name": "IMPLAN county contribution model reported by BAE",
+        "model_version": "Prince William County prototype-data-center study, 2021-dollar tables 7-8",
+        "geography": "Prince William County, Virginia benchmark transferred to Rutherford County, North Carolina",
+        "vintage": "IMPLAN model reported December 2021; underlying IMPLAN data vintage not disclosed",
+        "local_purchase_assumption": "Construction and operating scenarios expose their local-purchase or direct-FTE bases; no unreported local purchase is treated as observed.",
+        "channel_separation": "direct_indirect_induced_reported_separately"
+      }
+    },
+    {
+      "estimate_id": "est_study_meta_forest_city_construction_labor_income_total",
+      "project_id": "prj_study_im3_building_00460089167",
+      "metric_code": "study.modeled_construction_labor_income_total",
+      "label": "Modeled Prince William benchmark-equivalent construction labor income",
+      "category": "construction",
+      "unit": "USD",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 198556363.65,
+      "period": {
+        "kind": "construction_period",
+        "start_date": "2010-11-11",
+        "end_date": "2026-04-14",
+        "label": "From the original campus announcement through the dated 2026 confirmation of the current cumulative investment floor; annualization uses a 10-20 active-year sensitivity"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Meta Forest City Data Center campus, Rutherford County, NC",
+        "county_fips": "37161",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": 99278181.83,
+        "central": 198556363.65,
+        "high": 297834545.48,
+        "interpretation": "Low, central and high values are an explicit sensitivity range, not a statistical confidence interval."
+      },
+      "contribution_channel": "total",
+      "aggregation": {
+        "aggregation_id": "meta_forest_city_construction_labor_income_total",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "reported_cumulative_investment_floor",
+          "value": 750000000,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_meta_forest_city_cumulative_investment_2026",
+            "detail": "Operator-reported cumulative North Carolina data-center investment floor"
+          },
+          "transformation": "Serves as the broad capital basis before construction-equipment allocation"
+        },
+        {
+          "name": "low_construction_cost_share",
+          "value": 0.25,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Lower share of broad capital treated as construction eligible"
+          },
+          "transformation": "Excludes IT equipment before applying construction benchmarks"
+        },
+        {
+          "name": "central_construction_cost_share",
+          "value": 0.5,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Central share of broad capital treated as construction eligible"
+          },
+          "transformation": "Excludes IT equipment before applying construction benchmarks"
+        },
+        {
+          "name": "high_construction_cost_share",
+          "value": 0.75,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Upper share of broad capital treated as construction eligible"
+          },
+          "transformation": "Excludes IT equipment before applying construction benchmarks"
+        },
+        {
+          "name": "total_labor_income_rate",
+          "value": 0.5294836364,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_pwc_data_center_market_2021",
+            "detail": "Prince William construction labor-income coefficient for construction cost excluding IT equipment"
+          },
+          "transformation": "Multiplies construction-eligible capital"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The calculation is reproducible but relies on transferred public benchmarks or explicit assumptions where direct local observations are unavailable.",
+      "decision_relevance": "Provides a construction labor-income benchmark without applying the coefficient to the assumed equipment share.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Audited project payroll, construction-only spending, worker hours, and worker residence"
+      },
+      "derivation": {
+        "method": "input_output_multiplier",
+        "model_version": "meta-forest-city-account-1.0.0",
+        "formula": "reported cumulative investment floor × construction-cost share × 0.5294836364 total labor-income coefficient",
+        "input_claim_ids": [
+          "clm_study_meta_forest_city_cumulative_investment_2026"
+        ],
+        "input_source_ids": [
+          "src_study_pwc_data_center_market_2021",
+          "src_study_meta_forest_city_factsheet_2026"
+        ],
+        "assumptions": [
+          "All transferred coefficients, conversion factors, and allocation shares are exposed as named parameters.",
+          "The estimate must not be presented as observed, audited, source-reported, or causal."
+        ]
+      },
+      "limitations": [
+        "Transferred Prince William County coefficient, not a Rutherford County input-output model.",
+        "Labor income is not additive to output or supplier spending.",
+        "The construction-eligible share is assumed."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Benchmark-equivalent labor income, not observed payroll.",
+      "reviewed_on": "2026-09-05",
+      "multiplier_provenance": {
+        "source_id": "src_study_pwc_data_center_market_2021",
+        "model_name": "IMPLAN county contribution model reported by BAE",
+        "model_version": "Prince William County prototype-data-center study, 2021-dollar tables 7-8",
+        "geography": "Prince William County, Virginia benchmark transferred to Rutherford County, North Carolina",
+        "vintage": "IMPLAN model reported December 2021; underlying IMPLAN data vintage not disclosed",
+        "local_purchase_assumption": "Construction and operating scenarios expose their local-purchase or direct-FTE bases; no unreported local purchase is treated as observed.",
+        "channel_separation": "direct_indirect_induced_reported_separately"
+      }
+    },
+    {
+      "estimate_id": "est_study_meta_forest_city_operating_fte_total",
+      "project_id": "prj_study_im3_building_00460089167",
+      "metric_code": "study.modeled_operating_fte_total",
+      "label": "Modeled total annual operating FTE",
+      "category": "operations",
+      "unit": "FTE",
+      "measure_type": "stock",
+      "basis": "modeled_synthesis",
+      "value": 653.58,
+      "period": {
+        "kind": "source_year",
+        "year": 2015,
+        "label": "Annual operating contribution scenario anchored to the October 22, 2015 snapshot of 100 existing positions"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Meta Forest City Data Center campus, Rutherford County, NC",
+        "county_fips": "37161",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": 490.18,
+        "central": 653.58,
+        "high": 816.98,
+        "interpretation": "Low, central and high values are an explicit sensitivity range, not a statistical confidence interval."
+      },
+      "contribution_channel": "total",
+      "aggregation": {
+        "aggregation_id": "meta_forest_city_operating_fte_total",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "reported_existing_positions",
+          "value": 100,
+          "unit": "employees",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_meta_forest_city_existing_positions_2015",
+            "detail": "Existing positions reported in the 2015 state infrastructure-grant announcement"
+          },
+          "transformation": "Serves as the central operating-position anchor"
+        },
+        {
+          "name": "low_direct_fte_ratio",
+          "value": 0.75,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Lower FTE-equivalent ratio applied to reported positions"
+          },
+          "transformation": "Reflects unknown employee, contractor, part-time, and vacancy composition"
+        },
+        {
+          "name": "central_direct_fte_ratio",
+          "value": 1,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Central FTE-equivalent ratio applied to reported positions"
+          },
+          "transformation": "Treats each reported position as one scenario FTE"
+        },
+        {
+          "name": "high_direct_fte_ratio",
+          "value": 1.25,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Upper FTE-equivalent ratio applied to reported positions"
+          },
+          "transformation": "Sensitivity for omitted ongoing staffing"
+        },
+        {
+          "name": "total_fte_per_direct_fte",
+          "value": 6.5358,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_pwc_data_center_market_2021",
+            "detail": "Prince William operating contribution coefficient"
+          },
+          "transformation": "Multiplies scenario direct FTE"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The calculation is reproducible but relies on transferred public benchmarks or explicit assumptions where direct local observations are unavailable.",
+      "decision_relevance": "Completes a dated annual operating-employment contribution scenario while preserving uncertainty in the position-to-FTE translation.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Observed direct FTE, contractors, supply-chain employment, worker residence, and an annual payroll census"
+      },
+      "derivation": {
+        "method": "input_output_multiplier",
+        "model_version": "meta-forest-city-account-1.0.0",
+        "formula": "reported existing positions × direct-FTE ratio × 6.5358 total-FTE coefficient",
+        "input_claim_ids": [
+          "clm_study_meta_forest_city_existing_positions_2015"
+        ],
+        "input_source_ids": [
+          "src_study_pwc_data_center_market_2021",
+          "src_study_nc_ria_forest_city_water_20151022"
+        ],
+        "assumptions": [
+          "All transferred coefficients, conversion factors, and allocation shares are exposed as named parameters.",
+          "The estimate must not be presented as observed, audited, source-reported, or causal."
+        ]
+      },
+      "limitations": [
+        "The 2015 source does not define employee versus contractor or FTE status.",
+        "The Virginia coefficient is transferred to Rutherford County.",
+        "The total includes direct, indirect, and induced channels and must not be added to them."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Annual contribution scenario, not a current headcount or causal employment effect.",
+      "reviewed_on": "2026-09-05",
+      "multiplier_provenance": {
+        "source_id": "src_study_pwc_data_center_market_2021",
+        "model_name": "IMPLAN county contribution model reported by BAE",
+        "model_version": "Prince William County prototype-data-center study, 2021-dollar tables 7-8",
+        "geography": "Prince William County, Virginia benchmark transferred to Rutherford County, North Carolina",
+        "vintage": "IMPLAN model reported December 2021; underlying IMPLAN data vintage not disclosed",
+        "local_purchase_assumption": "Construction and operating scenarios expose their local-purchase or direct-FTE bases; no unreported local purchase is treated as observed.",
+        "channel_separation": "direct_indirect_induced_reported_separately"
+      }
+    },
+    {
+      "estimate_id": "est_study_meta_forest_city_operating_labor_income_total",
+      "project_id": "prj_study_im3_building_00460089167",
+      "metric_code": "study.modeled_operating_labor_income_total",
+      "label": "Modeled total annual operating labor income",
+      "category": "operations",
+      "unit": "USD_per_year",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 42150000,
+      "period": {
+        "kind": "source_year",
+        "year": 2015,
+        "label": "Annual operating contribution scenario anchored to the October 22, 2015 snapshot of 100 existing positions"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Meta Forest City Data Center campus, Rutherford County, NC",
+        "county_fips": "37161",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": 31612500,
+        "central": 42150000,
+        "high": 52687500,
+        "interpretation": "Low, central and high values are an explicit sensitivity range, not a statistical confidence interval."
+      },
+      "contribution_channel": "total",
+      "aggregation": {
+        "aggregation_id": "meta_forest_city_operating_labor_income_total",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "reported_existing_positions",
+          "value": 100,
+          "unit": "employees",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_meta_forest_city_existing_positions_2015",
+            "detail": "Existing positions reported in the 2015 state infrastructure-grant announcement"
+          },
+          "transformation": "Serves as the central operating-position anchor"
+        },
+        {
+          "name": "low_direct_fte_ratio",
+          "value": 0.75,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Lower FTE-equivalent ratio applied to reported positions"
+          },
+          "transformation": "Reflects unknown employee, contractor, part-time, and vacancy composition"
+        },
+        {
+          "name": "central_direct_fte_ratio",
+          "value": 1,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Central FTE-equivalent ratio applied to reported positions"
+          },
+          "transformation": "Treats each reported position as one scenario FTE"
+        },
+        {
+          "name": "high_direct_fte_ratio",
+          "value": 1.25,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Upper FTE-equivalent ratio applied to reported positions"
+          },
+          "transformation": "Sensitivity for omitted ongoing staffing"
+        },
+        {
+          "name": "total_labor_income_per_direct_fte",
+          "value": 421500,
+          "unit": "USD_per_FTE",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_pwc_data_center_market_2021",
+            "detail": "Prince William operating contribution coefficient"
+          },
+          "transformation": "Multiplies scenario direct FTE"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The calculation is reproducible but relies on transferred public benchmarks or explicit assumptions where direct local observations are unavailable.",
+      "decision_relevance": "Populates annual operating compensation with a visibly transferred benchmark.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Observed direct wages, benefits, contractor compensation, and supply-chain payroll"
+      },
+      "derivation": {
+        "method": "input_output_multiplier",
+        "model_version": "meta-forest-city-account-1.0.0",
+        "formula": "reported existing positions × direct-FTE ratio × $421,500 total labor income per direct FTE",
+        "input_claim_ids": [
+          "clm_study_meta_forest_city_existing_positions_2015"
+        ],
+        "input_source_ids": [
+          "src_study_pwc_data_center_market_2021",
+          "src_study_nc_ria_forest_city_water_20151022"
+        ],
+        "assumptions": [
+          "All transferred coefficients, conversion factors, and allocation shares are exposed as named parameters.",
+          "The estimate must not be presented as observed, audited, source-reported, or causal."
+        ]
+      },
+      "limitations": [
+        "The source-reported positions are not a payroll census or verified FTE count.",
+        "The Virginia coefficient is transferred to Rutherford County.",
+        "This total is not additive to supplier output or household output."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Annual contribution scenario, not observed payroll.",
+      "reviewed_on": "2026-09-05",
+      "multiplier_provenance": {
+        "source_id": "src_study_pwc_data_center_market_2021",
+        "model_name": "IMPLAN county contribution model reported by BAE",
+        "model_version": "Prince William County prototype-data-center study, 2021-dollar tables 7-8",
+        "geography": "Prince William County, Virginia benchmark transferred to Rutherford County, North Carolina",
+        "vintage": "IMPLAN model reported December 2021; underlying IMPLAN data vintage not disclosed",
+        "local_purchase_assumption": "Construction and operating scenarios expose their local-purchase or direct-FTE bases; no unreported local purchase is treated as observed.",
+        "channel_separation": "direct_indirect_induced_reported_separately"
+      }
+    },
+    {
+      "estimate_id": "est_study_meta_forest_city_operating_supplier_output",
+      "project_id": "prj_study_im3_building_00460089167",
+      "metric_code": "study.modeled_operating_supplier_output",
+      "label": "Modeled annual operating supplier output",
+      "category": "suppliers",
+      "unit": "USD_per_year",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 63982143,
+      "period": {
+        "kind": "source_year",
+        "year": 2015,
+        "label": "Annual operating contribution scenario anchored to the October 22, 2015 snapshot of 100 existing positions"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Meta Forest City Data Center campus, Rutherford County, NC",
+        "county_fips": "37161",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": 47986607.25,
+        "central": 63982143,
+        "high": 79977678.75,
+        "interpretation": "Low, central and high values are an explicit sensitivity range, not a statistical confidence interval."
+      },
+      "contribution_channel": "indirect",
+      "aggregation": {
+        "aggregation_id": "meta_forest_city_operating_supplier_output",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "reported_existing_positions",
+          "value": 100,
+          "unit": "employees",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_meta_forest_city_existing_positions_2015",
+            "detail": "Existing positions reported in the 2015 state infrastructure-grant announcement"
+          },
+          "transformation": "Serves as the central operating-position anchor"
+        },
+        {
+          "name": "low_direct_fte_ratio",
+          "value": 0.75,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Lower FTE-equivalent ratio applied to reported positions"
+          },
+          "transformation": "Reflects unknown employee, contractor, part-time, and vacancy composition"
+        },
+        {
+          "name": "central_direct_fte_ratio",
+          "value": 1,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Central FTE-equivalent ratio applied to reported positions"
+          },
+          "transformation": "Treats each reported position as one scenario FTE"
+        },
+        {
+          "name": "high_direct_fte_ratio",
+          "value": 1.25,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Upper FTE-equivalent ratio applied to reported positions"
+          },
+          "transformation": "Sensitivity for omitted ongoing staffing"
+        },
+        {
+          "name": "supplier_output_per_direct_fte",
+          "value": 639821.43,
+          "unit": "USD_per_FTE",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_pwc_data_center_market_2021",
+            "detail": "Prince William indirect operating-output coefficient"
+          },
+          "transformation": "Multiplies scenario direct FTE"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The calculation is reproducible but relies on transferred public benchmarks or explicit assumptions where direct local observations are unavailable.",
+      "decision_relevance": "Completes the annual supplier-output field without allocating the unrelated U.S.-wide Corning agreement to Forest City.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Observed operating purchases, supplier identities, payments, and vendor geography"
+      },
+      "derivation": {
+        "method": "input_output_multiplier",
+        "model_version": "meta-forest-city-account-1.0.0",
+        "formula": "reported existing positions × direct-FTE ratio × $639,821.43 indirect output per direct FTE",
+        "input_claim_ids": [
+          "clm_study_meta_forest_city_existing_positions_2015"
+        ],
+        "input_source_ids": [
+          "src_study_pwc_data_center_market_2021",
+          "src_study_nc_ria_forest_city_water_20151022"
+        ],
+        "assumptions": [
+          "All transferred coefficients, conversion factors, and allocation shares are exposed as named parameters.",
+          "The estimate must not be presented as observed, audited, source-reported, or causal."
+        ]
+      },
+      "limitations": [
+        "The Virginia coefficient is transferred to Rutherford County.",
+        "Output is not vendor payments or Rutherford County-only purchasing.",
+        "The 2015 position count has undefined employee and contractor composition."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Indirect supplier-output scenario, not documented local procurement.",
+      "reviewed_on": "2026-09-05",
+      "multiplier_provenance": {
+        "source_id": "src_study_pwc_data_center_market_2021",
+        "model_name": "IMPLAN county contribution model reported by BAE",
+        "model_version": "Prince William County prototype-data-center study, 2021-dollar tables 7-8",
+        "geography": "Prince William County, Virginia benchmark transferred to Rutherford County, North Carolina",
+        "vintage": "IMPLAN model reported December 2021; underlying IMPLAN data vintage not disclosed",
+        "local_purchase_assumption": "Construction and operating scenarios expose their local-purchase or direct-FTE bases; no unreported local purchase is treated as observed.",
+        "channel_separation": "direct_indirect_induced_reported_separately"
+      }
+    },
+    {
+      "estimate_id": "est_study_meta_forest_city_household_output",
+      "project_id": "prj_study_im3_building_00460089167",
+      "metric_code": "study.modeled_induced_household_output",
+      "label": "Modeled annual induced household output",
+      "category": "community",
+      "unit": "USD_per_year",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 11792857,
+      "period": {
+        "kind": "source_year",
+        "year": 2015,
+        "label": "Annual operating contribution scenario anchored to the October 22, 2015 snapshot of 100 existing positions"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Meta Forest City Data Center campus, Rutherford County, NC",
+        "county_fips": "37161",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": 8844642.75,
+        "central": 11792857,
+        "high": 14741071.25,
+        "interpretation": "Low, central and high values are an explicit sensitivity range, not a statistical confidence interval."
+      },
+      "contribution_channel": "induced",
+      "aggregation": {
+        "aggregation_id": "meta_forest_city_household_output",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "reported_existing_positions",
+          "value": 100,
+          "unit": "employees",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_meta_forest_city_existing_positions_2015",
+            "detail": "Existing positions reported in the 2015 state infrastructure-grant announcement"
+          },
+          "transformation": "Serves as the central operating-position anchor"
+        },
+        {
+          "name": "low_direct_fte_ratio",
+          "value": 0.75,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Lower FTE-equivalent ratio applied to reported positions"
+          },
+          "transformation": "Reflects unknown employee, contractor, part-time, and vacancy composition"
+        },
+        {
+          "name": "central_direct_fte_ratio",
+          "value": 1,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Central FTE-equivalent ratio applied to reported positions"
+          },
+          "transformation": "Treats each reported position as one scenario FTE"
+        },
+        {
+          "name": "high_direct_fte_ratio",
+          "value": 1.25,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Upper FTE-equivalent ratio applied to reported positions"
+          },
+          "transformation": "Sensitivity for omitted ongoing staffing"
+        },
+        {
+          "name": "household_output_per_direct_fte",
+          "value": 117928.57,
+          "unit": "USD_per_FTE",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_pwc_data_center_market_2021",
+            "detail": "Prince William induced operating-output coefficient"
+          },
+          "transformation": "Multiplies scenario direct FTE"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The calculation is reproducible but relies on transferred public benchmarks or explicit assumptions where direct local observations are unavailable.",
+      "decision_relevance": "Completes the household-spending contribution channel separately from direct grants and payroll.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Observed household spending, worker residence, and marginal household-consumption response"
+      },
+      "derivation": {
+        "method": "input_output_multiplier",
+        "model_version": "meta-forest-city-account-1.0.0",
+        "formula": "reported existing positions × direct-FTE ratio × $117,928.57 induced output per direct FTE",
+        "input_claim_ids": [
+          "clm_study_meta_forest_city_existing_positions_2015"
+        ],
+        "input_source_ids": [
+          "src_study_pwc_data_center_market_2021",
+          "src_study_nc_ria_forest_city_water_20151022"
+        ],
+        "assumptions": [
+          "All transferred coefficients, conversion factors, and allocation shares are exposed as named parameters.",
+          "The estimate must not be presented as observed, audited, source-reported, or causal."
+        ]
+      },
+      "limitations": [
+        "The Virginia coefficient is transferred to Rutherford County.",
+        "Economic output is not household income, a charitable grant, or a tax receipt.",
+        "This induced channel must not be added to overlapping total contribution rows."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Induced household-output scenario.",
+      "reviewed_on": "2026-09-05",
+      "multiplier_provenance": {
+        "source_id": "src_study_pwc_data_center_market_2021",
+        "model_name": "IMPLAN county contribution model reported by BAE",
+        "model_version": "Prince William County prototype-data-center study, 2021-dollar tables 7-8",
+        "geography": "Prince William County, Virginia benchmark transferred to Rutherford County, North Carolina",
+        "vintage": "IMPLAN model reported December 2021; underlying IMPLAN data vintage not disclosed",
+        "local_purchase_assumption": "Construction and operating scenarios expose their local-purchase or direct-FTE bases; no unreported local purchase is treated as observed.",
+        "channel_separation": "direct_indirect_induced_reported_separately"
+      }
+    },
+    {
+      "estimate_id": "est_study_meta_forest_city_latest_local_tax_contribution",
+      "project_id": "prj_study_im3_building_00460089167",
+      "metric_code": "study.modeled_latest_project_linked_local_tax_contribution",
+      "label": "Retained project-linked county property-tax contribution after same-period incentive payment",
+      "category": "fiscal",
+      "unit": "USD_per_year",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 319124,
+      "period": {
+        "kind": "fiscal_year",
+        "year": 2025,
+        "label": "FY2025 ended June 30, 2025; county taxes collected less same-period county incentive payment"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Rutherford County FY2025 provisionally linked Andale / Facebook taxpayer account",
+        "county_fips": "37161",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "point_estimate",
+        "low": 319124,
+        "central": 319124,
+        "high": 319124,
+        "interpretation": "The point is exact arithmetic on two accepted same-county, same-fiscal-year source claims; it is not a statistical estimate or government-wide net result."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "meta_forest_city_latest_local_tax_contribution",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "gross_county_property_taxes_collected",
+          "value": 3901427,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_andale_property_tax_receipts_2025",
+            "detail": "County taxes collected for the provisionally linked taxpayer in FY2025"
+          },
+          "transformation": "Positive component of retained county contribution"
+        },
+        {
+          "name": "county_incentive_payment",
+          "value": 3582303,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_andale_incentive_payments_2025",
+            "detail": "Same county, same fiscal year incentive payment for the provisionally linked taxpayer"
+          },
+          "transformation": "Subtracted once from gross taxes collected"
+        }
+      ],
+      "confidence": "medium",
+      "confidence_rationale": "The subtraction is exact for the cited same-period county claims, but the taxpayer link and completeness are not independently audited.",
+      "decision_relevance": "Presents the latest retained county property-tax contribution only after matching government, recipient account, fiscal year, and accounting basis.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "not_applicable",
+        "remaining_evidence_gap": "Named-taxpayer confirmation, recipient-level distribution, omitted project-linked accounts, and same-scope marginal public-service cost"
+      },
+      "derivation": {
+        "method": "allocation",
+        "model_version": "meta-forest-city-account-1.0.0",
+        "formula": "FY2025 county property taxes collected − FY2025 county incentive payment",
+        "input_claim_ids": [
+          "clm_study_andale_property_tax_receipts_2025",
+          "clm_study_andale_incentive_payments_2025"
+        ],
+        "input_source_ids": [
+          "src_study_rutherford_acfr_2025"
+        ],
+        "assumptions": [
+          "All transferred coefficients, conversion factors, and allocation shares are exposed as named parameters.",
+          "The estimate must not be presented as observed, audited, source-reported, or causal."
+        ]
+      },
+      "limitations": [
+        "The ACFR note does not name the taxpayer; the Andale / Facebook link is inferred from cross-references.",
+        "This is not a government-wide net fiscal benefit and excludes other jurisdictions and taxes.",
+        "The report's tax-year share wording does not fully reconcile to its fiscal-year table."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Same-scope fiscal reconciliation only; no positive or negative net fiscal result is asserted.",
+      "reviewed_on": "2026-09-05"
+    },
+    {
+      "estimate_id": "est_study_meta_forest_city_annual_local_service_cost_break_even",
+      "project_id": "prj_study_im3_building_00460089167",
+      "metric_code": "study.modeled_annual_local_service_cost_break_even",
+      "label": "Annual county service-cost break-even threshold",
+      "category": "public_costs",
+      "unit": "USD_per_year",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 319124,
+      "period": {
+        "kind": "fiscal_year",
+        "year": 2025,
+        "label": "FY2025 ended June 30, 2025; county taxes collected less same-period county incentive payment"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Rutherford County FY2025 provisionally linked Andale / Facebook taxpayer account",
+        "county_fips": "37161",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "point_estimate",
+        "low": 319124,
+        "central": 319124,
+        "high": 319124,
+        "interpretation": "The break-even threshold equals the retained same-period county property-tax contribution by definition; it is not an estimate of actual cost."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "meta_forest_city_annual_local_service_cost_break_even",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "gross_county_property_taxes_collected",
+          "value": 3901427,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_andale_property_tax_receipts_2025",
+            "detail": "County taxes collected for the provisionally linked taxpayer in FY2025"
+          },
+          "transformation": "Positive component of retained county contribution"
+        },
+        {
+          "name": "county_incentive_payment",
+          "value": 3582303,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_andale_incentive_payments_2025",
+            "detail": "Same county, same fiscal year incentive payment for the provisionally linked taxpayer"
+          },
+          "transformation": "Subtracted once from gross taxes collected"
+        }
+      ],
+      "confidence": "medium",
+      "confidence_rationale": "The threshold identity is exact for the reconciled county claims; actual same-scope public cost remains unobserved.",
+      "decision_relevance": "Shows the same-scope annual public-cost threshold that would fully offset the retained county property-tax contribution.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "not_applicable",
+        "remaining_evidence_gap": "Observed marginal county service and infrastructure expenditures attributable to the project for FY2025"
+      },
+      "derivation": {
+        "method": "allocation",
+        "model_version": "meta-forest-city-account-1.0.0",
+        "formula": "annual marginal county public-service cost at break-even = FY2025 taxes collected − FY2025 incentive payment",
+        "input_claim_ids": [
+          "clm_study_andale_property_tax_receipts_2025",
+          "clm_study_andale_incentive_payments_2025"
+        ],
+        "input_source_ids": [
+          "src_study_rutherford_acfr_2025"
+        ],
+        "assumptions": [
+          "All transferred coefficients, conversion factors, and allocation shares are exposed as named parameters.",
+          "The estimate must not be presented as observed, audited, source-reported, or causal."
+        ]
+      },
+      "limitations": [
+        "This is a break-even threshold, not an estimate of actual public cost.",
+        "A positive margin exists only if same-scope annual marginal costs are below this threshold; a negative margin exists only if they are above it.",
+        "The separate 2015 state water grant is not netted because it differs in payer and period."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "No net fiscal result is asserted without same-scope cost evidence.",
+      "reviewed_on": "2026-09-05"
+    },
+    {
+      "estimate_id": "est_study_meta_forest_city_water_withdrawal_2024",
+      "project_id": "prj_study_im3_building_00460089167",
+      "metric_code": "study.modeled_annual_water_withdrawal",
+      "label": "Unit-converted annual water withdrawal",
+      "category": "resources",
+      "unit": "gallons_per_year",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 4226752.83,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2024,
+        "label": "Calendar year 2024"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Meta Forest City Data Center campus, Rutherford County, NC",
+        "county_fips": "37161",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "reported_band",
+        "low": 4094666.81,
+        "central": 4226752.83,
+        "high": 4358838.86,
+        "interpretation": "The band reflects rounding of the source's displayed 16 megaliters to the nearest whole megaliter before conversion; it is not a confidence interval."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "meta_forest_city_water_withdrawal_2024",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "reported_water_withdrawal",
+          "value": 16,
+          "unit": "megaliters",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_meta_environmental_data_index_2025",
+            "detail": "Forest City 2024 water-withdrawal row"
+          },
+          "transformation": "Converted to U.S. gallons"
+        },
+        {
+          "name": "gallons_per_megaliter",
+          "value": 264172.052,
+          "unit": "gallons_per_megaliter",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Exact unit-conversion factor used for presentation"
+          },
+          "transformation": "Multiplies reported megaliters"
+        }
+      ],
+      "confidence": "medium",
+      "confidence_rationale": "The facility row and conversion are reproducible, but the published amount is rounded and its site-level measurement basis is not specified.",
+      "decision_relevance": "Preserves the public facility-level water observation in a compatible presentation unit while the shared canonical evidence metric is absent.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "not_applicable",
+        "remaining_evidence_gap": "Canonical annual water-withdrawal metric, unrounded meter data, withdrawal source allocation, consumption, reuse, and discharge by facility"
+      },
+      "derivation": {
+        "method": "allocation",
+        "model_version": "meta-forest-city-account-1.0.0",
+        "formula": "reported Forest City water withdrawal in megaliters × 264,172.052 gallons per megaliter",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_meta_environmental_data_index_2025"
+        ],
+        "assumptions": [
+          "All transferred coefficients, conversion factors, and allocation shares are exposed as named parameters.",
+          "The estimate must not be presented as observed, audited, source-reported, or causal."
+        ]
+      },
+      "limitations": [
+        "The source rounds to whole megaliters and allows meter, utility, design-estimate, or proxy inputs where applicable.",
+        "Withdrawal is not consumption; no site-specific consumption or discharge value is reported.",
+        "The value is not an audited municipal billing record."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Source-reported facility value carried as a visibly modeled unit conversion because no compatible canonical source metric exists.",
+      "reviewed_on": "2026-09-05"
+    },
+    {
+      "estimate_id": "est_study_meta_forest_city_cooling_overhead_electricity_2024",
+      "project_id": "prj_study_im3_building_00460089167",
+      "metric_code": "study.modeled_cooling_and_facility_overhead_electricity",
+      "label": "Modeled cooling and facility-overhead electricity",
+      "category": "resources",
+      "unit": "kWh_per_year",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 39670740.74,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2024,
+        "label": "Calendar year 2024"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Meta Forest City Data Center campus, Rutherford County, NC",
+        "county_fips": "37161",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": 30314433.96,
+        "central": 39670740.74,
+        "high": 48686818.18,
+        "interpretation": "The envelope applies PUE values of 1.06, 1.08, and 1.10 to the reported facility electricity total; it is not a statistical interval."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "meta_forest_city_cooling_overhead_electricity_2024",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "reported_facility_electricity",
+          "value": 535555000,
+          "unit": "kWh_per_year",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_meta_forest_city_electricity_2024",
+            "detail": "Normalized 2024 Forest City electricity consumption"
+          },
+          "transformation": "Serves as total facility electricity"
+        },
+        {
+          "name": "low_pue",
+          "value": 1.06,
+          "unit": "PUE_ratio",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Low site PUE sensitivity"
+          },
+          "transformation": "Separates overhead from IT electricity"
+        },
+        {
+          "name": "central_pue",
+          "value": 1.08,
+          "unit": "PUE_ratio",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_meta_environmental_data_index_2025",
+            "detail": "Meta fleet-wide 2024 PUE; not Forest City-specific"
+          },
+          "transformation": "Separates overhead from IT electricity"
+        },
+        {
+          "name": "high_pue",
+          "value": 1.1,
+          "unit": "PUE_ratio",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "High site PUE sensitivity"
+          },
+          "transformation": "Separates overhead from IT electricity"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The calculation is reproducible but relies on transferred public benchmarks or explicit assumptions where direct local observations are unavailable.",
+      "decision_relevance": "Separates an explicit cooling-and-facility overhead scenario from total facility electricity.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "not_applicable",
+        "remaining_evidence_gap": "Forest City-specific PUE, cooling-system electricity, fan and pump loads, and interval-meter data"
+      },
+      "derivation": {
+        "method": "engineering_estimate",
+        "model_version": "meta-forest-city-account-1.0.0",
+        "formula": "reported facility electricity × (PUE − 1) ÷ PUE",
+        "input_claim_ids": [
+          "clm_study_meta_forest_city_electricity_2024"
+        ],
+        "input_source_ids": [
+          "src_study_meta_environmental_data_index_2025"
+        ],
+        "assumptions": [
+          "All transferred coefficients, conversion factors, and allocation shares are exposed as named parameters.",
+          "The estimate must not be presented as observed, audited, source-reported, or causal."
+        ]
+      },
+      "limitations": [
+        "The central PUE is Meta's fleet value, not a Forest City observation.",
+        "Facility overhead includes more than cooling and cannot be interpreted as cooling energy alone.",
+        "The source electricity total is rounded to whole MWh."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Engineering sensitivity only; total electricity remains the direct reported resource observation.",
+      "reviewed_on": "2026-09-05"
+    },
+    {
+      "estimate_id": "est_study_meta_forest_city_wastewater_2024",
+      "project_id": "prj_study_im3_building_00460089167",
+      "metric_code": "study.modeled_annual_wastewater_discharge",
+      "label": "Modeled annual wastewater discharge",
+      "category": "resources",
+      "unit": "gallons_per_year",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 2113376.42,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2024,
+        "label": "Annual discharge sensitivity based on 2024 facility water withdrawal"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Meta Forest City Data Center campus, Rutherford County, NC",
+        "county_fips": "37161",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": 845350.57,
+        "central": 2113376.42,
+        "high": 3381402.27,
+        "interpretation": "Low, central and high values are an explicit sensitivity range, not a statistical confidence interval."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "meta_forest_city_wastewater_2024",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "reported_water_withdrawal",
+          "value": 16,
+          "unit": "megaliters",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_meta_environmental_data_index_2025",
+            "detail": "Forest City 2024 water-withdrawal row"
+          },
+          "transformation": "Converted and multiplied by discharge share"
+        },
+        {
+          "name": "gallons_per_megaliter",
+          "value": 264172.052,
+          "unit": "gallons_per_megaliter",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Unit-conversion factor"
+          },
+          "transformation": "Converts megaliters to gallons"
+        },
+        {
+          "name": "low_discharge_share",
+          "value": 0.2,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Low return-flow assumption"
+          },
+          "transformation": "Allocates withdrawal to wastewater discharge"
+        },
+        {
+          "name": "central_discharge_share",
+          "value": 0.5,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Central return-flow assumption"
+          },
+          "transformation": "Allocates withdrawal to wastewater discharge"
+        },
+        {
+          "name": "high_discharge_share",
+          "value": 0.8,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "High return-flow assumption"
+          },
+          "transformation": "Allocates withdrawal to wastewater discharge"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The calculation is reproducible but relies on transferred public benchmarks or explicit assumptions where direct local observations are unavailable.",
+      "decision_relevance": "Completes the wastewater channel without treating withdrawal as consumption or discharge.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "not_applicable",
+        "remaining_evidence_gap": "Metered Forest City discharge, consumption, evaporation, sanitary flow, blowdown, and reuse"
+      },
+      "derivation": {
+        "method": "engineering_estimate",
+        "model_version": "meta-forest-city-account-1.0.0",
+        "formula": "reported water withdrawal × gallons-per-megaliter conversion × discharge share",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_meta_environmental_data_index_2025"
+        ],
+        "assumptions": [
+          "All transferred coefficients, conversion factors, and allocation shares are exposed as named parameters.",
+          "The estimate must not be presented as observed, audited, source-reported, or causal."
+        ]
+      },
+      "limitations": [
+        "Discharge shares are assumptions.",
+        "Withdrawal is not consumption or wastewater discharge.",
+        "The source says the site reuses water but does not quantify facility discharge."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Engineering sensitivity, not a permit, meter, or utility billing value.",
+      "reviewed_on": "2026-09-05"
+    },
+    {
+      "estimate_id": "est_study_meta_forest_city_gdp_comparison_gap",
+      "project_id": "prj_study_im3_building_00460089167",
+      "metric_code": "study.modeled_county_gdp_comparison_gap",
+      "label": "Modeled county real GDP comparison gap",
+      "category": "county_outcome",
+      "unit": "percent",
+      "measure_type": "change",
+      "basis": "modeled_synthesis",
+      "value": -0.39,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2024,
+        "label": "2024 host-county outcome relative to a mechanically matched benchmark; opening year 2012"
+      },
+      "scope": {
+        "level": "county",
+        "label": "Meta Forest City campus and Rutherford County",
+        "county_fips": "37161",
+        "inventory_allocation": "not_applicable"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": -6.4,
+        "central": -0.39,
+        "high": 5.62,
+        "interpretation": "Low, central and high values are an explicit sensitivity range, not a statistical confidence interval."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "meta_forest_city_gdp_comparison_gap",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "host_2024_value",
+          "value": 1921245000,
+          "unit": "chained_2017_USD",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_county_economic_core_2001_2024",
+            "detail": "Rutherford County 2024 real GDP from the county economic panel"
+          },
+          "transformation": "Compared with weighted benchmark value"
+        },
+        {
+          "name": "comparison_2024_value",
+          "value": 1928748332.3138123,
+          "unit": "chained_2017_USD",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_county_economic_core_2001_2024",
+            "detail": "Inverse-distance weighted 2024 value from 20 comparison counties"
+          },
+          "transformation": "Subtracted from host and used as denominator"
+        },
+        {
+          "name": "pre_period_rmse_percent",
+          "value": 3.003833521300298,
+          "unit": "percent",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Fit diagnostic over 2005-2011"
+          },
+          "transformation": "Sets sensitivity width"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The calculation is reproducible but relies on transferred public benchmarks or explicit assumptions where direct local observations are unavailable.",
+      "decision_relevance": "Shows Rutherford County's 2024 divergence from a reproducible comparison benchmark without assigning the divergence to the data center.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "not_applicable",
+        "remaining_evidence_gap": "A defensible causal design with treatment isolation, uncontaminated controls, placebo tests, spillover rules, and robustness diagnostics"
+      },
+      "derivation": {
+        "method": "benchmark_application",
+        "model_version": "meta-forest-city-account-1.0.0",
+        "formula": "100 × (host 2024 outcome − weighted comparison outcome) ÷ weighted comparison outcome",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_county_economic_core_2001_2024"
+        ],
+        "assumptions": [
+          "All transferred coefficients, conversion factors, and allocation shares are exposed as named parameters.",
+          "The estimate must not be presented as observed, audited, source-reported, or causal."
+        ]
+      },
+      "limitations": [
+        "This comparison is descriptive and must not be interpreted as a data-center effect.",
+        "Opening timing does not isolate later expansions or concurrent investments.",
+        "The donor screen excludes study counties but cannot exclude every unobserved data-center or economic treatment.",
+        "The interval is a fit sensitivity, not a statistical confidence interval."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Low-confidence county comparison gap; no causal attribution is made.",
+      "reviewed_on": "2026-09-05"
+    },
+    {
+      "estimate_id": "est_study_meta_forest_city_employment_comparison_gap",
+      "project_id": "prj_study_im3_building_00460089167",
+      "metric_code": "study.modeled_county_employment_comparison_gap",
+      "label": "Modeled county total employment comparison gap",
+      "category": "county_outcome",
+      "unit": "percent",
+      "measure_type": "change",
+      "basis": "modeled_synthesis",
+      "value": 2.93,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2024,
+        "label": "2024 host-county outcome relative to a mechanically matched benchmark; opening year 2012"
+      },
+      "scope": {
+        "level": "county",
+        "label": "Meta Forest City campus and Rutherford County",
+        "county_fips": "37161",
+        "inventory_allocation": "not_applicable"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": -43.9,
+        "central": 2.93,
+        "high": 49.76,
+        "interpretation": "Low, central and high values are an explicit sensitivity range, not a statistical confidence interval."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "meta_forest_city_employment_comparison_gap",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "host_2024_value",
+          "value": 17994,
+          "unit": "jobs",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_county_economic_core_2001_2024",
+            "detail": "Rutherford County 2024 total employment from the county economic panel"
+          },
+          "transformation": "Compared with weighted benchmark value"
+        },
+        {
+          "name": "comparison_2024_value",
+          "value": 17482.05627026345,
+          "unit": "jobs",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_county_economic_core_2001_2024",
+            "detail": "Inverse-distance weighted 2024 value from 20 comparison counties"
+          },
+          "transformation": "Subtracted from host and used as denominator"
+        },
+        {
+          "name": "pre_period_rmse_percent",
+          "value": 23.414646951275337,
+          "unit": "percent",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Fit diagnostic over 2005-2011"
+          },
+          "transformation": "Sets sensitivity width"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The calculation is reproducible but relies on transferred public benchmarks or explicit assumptions where direct local observations are unavailable.",
+      "decision_relevance": "Shows Rutherford County's 2024 divergence from a reproducible comparison benchmark without assigning the divergence to the data center.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "not_applicable",
+        "remaining_evidence_gap": "A defensible causal design with treatment isolation, uncontaminated controls, placebo tests, spillover rules, and robustness diagnostics"
+      },
+      "derivation": {
+        "method": "benchmark_application",
+        "model_version": "meta-forest-city-account-1.0.0",
+        "formula": "100 × (host 2024 outcome − weighted comparison outcome) ÷ weighted comparison outcome",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_county_economic_core_2001_2024"
+        ],
+        "assumptions": [
+          "All transferred coefficients, conversion factors, and allocation shares are exposed as named parameters.",
+          "The estimate must not be presented as observed, audited, source-reported, or causal."
+        ]
+      },
+      "limitations": [
+        "This comparison is descriptive and must not be interpreted as a data-center effect.",
+        "Opening timing does not isolate later expansions or concurrent investments.",
+        "The donor screen excludes study counties but cannot exclude every unobserved data-center or economic treatment.",
+        "The interval is a fit sensitivity, not a statistical confidence interval."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Low-confidence county comparison gap; no causal attribution is made.",
+      "reviewed_on": "2026-09-05"
+    },
+    {
+      "estimate_id": "est_study_meta_forest_city_wage_comparison_gap",
+      "project_id": "prj_study_im3_building_00460089167",
+      "metric_code": "study.modeled_county_wage_comparison_gap",
+      "label": "Modeled county average weekly wages comparison gap",
+      "category": "county_outcome",
+      "unit": "percent",
+      "measure_type": "change",
+      "basis": "modeled_synthesis",
+      "value": 0.99,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2024,
+        "label": "2024 host-county outcome relative to a mechanically matched benchmark; opening year 2012"
+      },
+      "scope": {
+        "level": "county",
+        "label": "Meta Forest City campus and Rutherford County",
+        "county_fips": "37161",
+        "inventory_allocation": "not_applicable"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": -4.01,
+        "central": 0.99,
+        "high": 5.99,
+        "interpretation": "Low, central and high values are an explicit sensitivity range, not a statistical confidence interval."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "meta_forest_city_wage_comparison_gap",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "host_2024_value",
+          "value": 925,
+          "unit": "USD_per_week",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_county_economic_core_2001_2024",
+            "detail": "Rutherford County 2024 average weekly wages from the county economic panel"
+          },
+          "transformation": "Compared with weighted benchmark value"
+        },
+        {
+          "name": "comparison_2024_value",
+          "value": 915.9190362905418,
+          "unit": "USD_per_week",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_county_economic_core_2001_2024",
+            "detail": "Inverse-distance weighted 2024 value from 20 comparison counties"
+          },
+          "transformation": "Subtracted from host and used as denominator"
+        },
+        {
+          "name": "pre_period_rmse_percent",
+          "value": 1.5701815606350618,
+          "unit": "percent",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Fit diagnostic over 2005-2011"
+          },
+          "transformation": "Sets sensitivity width"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The calculation is reproducible but relies on transferred public benchmarks or explicit assumptions where direct local observations are unavailable.",
+      "decision_relevance": "Shows Rutherford County's 2024 divergence from a reproducible comparison benchmark without assigning the divergence to the data center.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "not_applicable",
+        "remaining_evidence_gap": "A defensible causal design with treatment isolation, uncontaminated controls, placebo tests, spillover rules, and robustness diagnostics"
+      },
+      "derivation": {
+        "method": "benchmark_application",
+        "model_version": "meta-forest-city-account-1.0.0",
+        "formula": "100 × (host 2024 outcome − weighted comparison outcome) ÷ weighted comparison outcome",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_county_economic_core_2001_2024"
+        ],
+        "assumptions": [
+          "All transferred coefficients, conversion factors, and allocation shares are exposed as named parameters.",
+          "The estimate must not be presented as observed, audited, source-reported, or causal."
+        ]
+      },
+      "limitations": [
+        "This comparison is descriptive and must not be interpreted as a data-center effect.",
+        "Opening timing does not isolate later expansions or concurrent investments.",
+        "The donor screen excludes study counties but cannot exclude every unobserved data-center or economic treatment.",
+        "The interval is a fit sensitivity, not a statistical confidence interval."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Low-confidence county comparison gap; no causal attribution is made.",
+      "reviewed_on": "2026-09-05"
+    }
+  ]
+}
