@@ -859,15 +859,28 @@ try {
   const canvas = await page.locator("canvas").boundingBox();
   const world = 512 * 2 ** 3.25;
   const mercatorY = lat => (1 - Math.asinh(Math.tan(lat * Math.PI / 180)) / Math.PI) / 2;
-  const targetX = canvas.x + canvas.width / 2 + (target.longitude + 98.5) / 360 * world;
-  const targetY = canvas.y + canvas.height / 2 + (mercatorY(target.latitude) - mercatorY(38.5)) * world;
-  await page.mouse.move(targetX - 11, targetY);
+  const screenPoint = project => ({
+    x: canvas.x + canvas.width / 2 + (project.longitude + 98.5) / 360 * world,
+    y: canvas.y + canvas.height / 2 + (mercatorY(project.latitude) - mercatorY(38.5)) * world,
+  });
+  const { x: targetX, y: targetY } = screenPoint(target);
+  const mapPopup = page.locator(".study-map-popup .maplibregl-popup-content");
+  const washApple = screenPoint(study.projects.find(p => p.name === "Apple Washoe County campus"));
+  const storeySwitch = screenPoint(study.projects.find(p => p.name === "Switch Citadel / Tahoe Reno 1"));
+  await page.mouse.move(washApple.x - 12, washApple.y);
+  await mapPopup.waitFor();
+  assert.match(await mapPopup.innerText(), /Apple Washoe County campus/);
+  await page.mouse.move(storeySwitch.x + 12, storeySwitch.y);
+  await mapPopup.waitFor();
+  assert.match(await mapPopup.innerText(), /Switch Citadel \/ Tahoe Reno 1/);
+  check("nearby Washoe and Storey projects render as two separately reachable markers");
+  await page.mouse.move(targetX - 40, targetY);
+  await page.mouse.move(targetX - 20, targetY);
   const countyPopupLink = page.locator(".study-map-popup a");
   await countyPopupLink.waitFor();
   assert.equal(await countyPopupLink.getAttribute("href"), `#/county/${target.county_fips}`);
   check("completed county popup restores a direct link to the county detail page");
   await page.mouse.move(targetX, targetY);
-  const mapPopup = page.locator(".study-map-popup .maplibregl-popup-content");
   await mapPopup.waitFor();
   assert.deepEqual(await mapPopup.evaluate(element => ({
     background: getComputedStyle(element).backgroundColor,
