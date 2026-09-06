@@ -86,10 +86,10 @@ class PrivateSectorStudyTest(unittest.TestCase):
         index, details, _ = self.build()
         self.assertEqual(index["counts"]["projects"], 36)
         self.assertEqual(index["counts"]["projects_with_economic_evidence"], 36)
-        self.assertEqual(index["counts"]["economic_records"], 769)
-        self.assertEqual(index["counts"]["reported_actual_records"], 693)
-        self.assertEqual(index["counts"]["projection_records"], 76)
-        self.assertEqual(index["counts"]["modeled_synthesis_records"], 149)
+        self.assertEqual(index["counts"]["economic_records"], 931)
+        self.assertEqual(index["counts"]["reported_actual_records"], 826)
+        self.assertEqual(index["counts"]["projection_records"], 105)
+        self.assertEqual(index["counts"]["modeled_synthesis_records"], 155)
         self.assertEqual(index["full_modeled_county_accounts"], 3)
         self.assertEqual(sum(r["analysis_readiness"]["causal"] == "causal_model_available" for r in details), 0)
         washoe = next(r for r in details if r["name"] == "Apple Washoe County campus")
@@ -726,7 +726,7 @@ class PrivateSectorStudyTest(unittest.TestCase):
         by_id = {r["estimate_id"]: r for r in modeled}
         self.assertEqual((project["economic_record_count"], project["modeled_synthesis_count"]), (113, 43))
         self.assertEqual((index["counts"]["economic_records"], index["counts"]["modeled_synthesis_records"]),
-                         (769, 149))
+                         (931, 155))
         self.assertEqual({r["basis"] for r in modeled}, {"modeled_synthesis"})
         self.assertTrue(all(r["presentation"] == "modeled_not_observed_or_audited" for r in modeled))
         self.assertTrue(all(r["derivation"]["formula"] and r["parameters"] and r["limitations"] for r in modeled))

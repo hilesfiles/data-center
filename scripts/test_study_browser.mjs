@@ -412,7 +412,6 @@ try {
 
   for (const [id, text, count] of [
     ["campus_00009474864", /\$6,800,000/, 1],
-    ["building_00844389014", /70 jobs/, 2],
   ]) {
     await page.goto(`${url}#/project/prj_study_im3_${id}`);
   await openDetails(".evidence-ledger");
@@ -424,6 +423,13 @@ try {
     assert.equal(await page.locator(".economic-record").count(), 0);
     await noOverflow();
   }
+  await page.goto(`${url}#/project/prj_study_im3_building_00844389014`);
+  await openDetails(".evidence-ledger");
+  await page.getByRole("heading", { name: "Economic evidence", exact: true }).waitFor();
+  assert.equal(await page.locator(".economic-record").count(), 57);
+  await page.getByRole("tab", { name: /Plans & forecasts/ }).click();
+  assert.equal(await page.locator(".economic-record").count(), 3);
+  assert.match(await page.locator(".economic-record-list").innerText(), /70 jobs/);
   check("water contributions and original operating-job commitments remain forecasts");
   await page.goto(`${url}#/project/prj_study_im3_building_00052227492`);
   await openDetails(".evidence-ledger");
@@ -825,7 +831,7 @@ try {
     sidebar: getComputedStyle(document.querySelector(".sidebar")).backgroundColor,
     map: getComputedStyle(document.querySelector(".map-section")).backgroundColor,
   })), { sidebar: "rgb(11, 14, 20)", map: "rgb(16, 23, 27)" });
-  assert.match(await page.locator(".review-key").innerText(), /completed project audits \(18\)/i);
+  assert.match(await page.locator(".review-key").innerText(), /completed project audits \(21\)/i);
   assert.doesNotMatch(await page.locator(".legend").innerText(), /IM3|pending|merged|queued/i);
   await page.getByLabel("Research-complete project markers").selectOption("Colocation");
   assert.match(await page.locator(".review-key").innerText(), /completed project audits \(8\)/i);
@@ -839,7 +845,7 @@ try {
   const response = await page.request.get(`${url}data/v1/study/index.json`);
   const study = await response.json();
   assert.equal(study.projects.length, 36);
-  assert.equal(study.projects.filter(p => p.research_completion_status === "account_research_complete").length, 18);
+  assert.equal(study.projects.filter(p => p.research_completion_status === "account_research_complete").length, 21);
   assert.equal(study.projects.filter(p => p.model_completeness.status === "full_modeled_account").length, 3);
   const descriptionPage = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
   for (const completed of study.projects.filter(project => project.research_completion_status === "account_research_complete")) {
@@ -854,7 +860,7 @@ try {
     ), `${completed.name} must render the project description before the study rationale`);
   }
   await descriptionPage.close();
-  check("all eighteen completed project pages render one description above the study rationale");
+  check("all twenty-one completed project pages render one description above the study rationale");
   const target = study.projects.find(p => p.name === "Apple Mesa");
   const canvas = await page.locator("canvas").boundingBox();
   const world = 512 * 2 ** 3.25;
@@ -891,7 +897,7 @@ try {
   await page.mouse.click(targetX, targetY);
   await page.waitForURL(`**/project/${target.project_id}`);
   await page.getByRole("heading", { name: "Sources & research history" }).waitFor();
-  check("map preserves all eighteen completed project audits while keeping analytical completeness separate");
+  check("map preserves all twenty-one completed project audits while keeping analytical completeness separate");
 
   const legacyPage = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
   await legacyPage.route("**/data/v1/study/index.json?*", async route => {
@@ -900,8 +906,8 @@ try {
     await route.fulfill({ json: legacyStudy });
   });
   await legacyPage.goto(`${url}#/map`, { waitUntil: "domcontentloaded" });
-  await legacyPage.getByText("12 completed project research accounts are mapped.", { exact: false }).waitFor();
-  assert.match(await legacyPage.locator(".review-key").innerText(), /completed project audits \(12\)/i);
+  await legacyPage.getByText("15 completed project research accounts are mapped.", { exact: false }).waitFor();
+  assert.match(await legacyPage.locator(".review-key").innerText(), /completed project audits \(15\)/i);
   await legacyPage.close();
   check("map remains populated when a browser holds an index without the research-completion field");
 

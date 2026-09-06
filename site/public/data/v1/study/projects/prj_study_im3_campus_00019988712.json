@@ -16,11 +16,11 @@
   "detail_path": "projects/prj_study_im3_campus_00019988712.json",
   "latitude": 44.29844323079028,
   "longitude": -120.88638228128598,
-  "economic_record_count": 2,
-  "reported_actual_count": 2,
-  "projection_count": 0,
-  "modeled_synthesis_count": 0,
-  "research_completion_status": "research_pending",
+  "economic_record_count": 58,
+  "reported_actual_count": 45,
+  "projection_count": 13,
+  "modeled_synthesis_count": 1,
+  "research_completion_status": "account_research_complete",
   "model_completeness": {
     "status": "incomplete",
     "required_categories": [
@@ -34,10 +34,17 @@
       "community"
     ],
     "covered_categories": [
+      "community",
       "construction",
-      "operations"
+      "fiscal",
+      "investment",
+      "operations",
+      "public_costs",
+      "resources"
     ],
-    "modeled_categories": [],
+    "modeled_categories": [
+      "resources"
+    ],
     "required_county_outcomes": [
       "study.modeled_county_employment_comparison_gap",
       "study.modeled_county_gdp_comparison_gap",
@@ -45,11 +52,6 @@
     ],
     "covered_county_outcomes": [],
     "missing_categories": [
-      "community",
-      "fiscal",
-      "investment",
-      "public_costs",
-      "resources",
       "suppliers"
     ],
     "missing_county_outcomes": [
@@ -61,8 +63,8 @@
     "definition": "All eight contribution-account categories contain sourced or labeled modeled values, and GDP, employment, and wage county-comparison modules are populated. Comparison gaps are descriptive and do not establish causal facility effects."
   },
   "schema_version": "1.0.0",
-  "release_id": "private-sector-study-1.50.0",
-  "generated_at": "2026-09-06T21:57:31+00:00",
+  "release_id": "private-sector-study-1.51.0",
+  "generated_at": "2026-09-06T23:45:52+00:00",
   "inventory_name": "Meta Prineville Datacenter",
   "research_value": "Already represented as a campus in the inventory. Review at project/campus level; do not require an individually mapped building to start historical research.",
   "history": {
@@ -77,12 +79,180 @@
       "url": "https://www.prnewswire.com/news-releases/facebook-launches-open-compute-project-to-share-custom-engineered-highly-efficient-server-and-data-center-technology-with-the-world-119415214.html"
     }
   ],
-  "research_updates": [],
+  "research_updates": [
+    {
+      "project_id": "prj_study_im3_campus_00019988712",
+      "source_id": "src_study_prineville_facebook_zone_change_2011",
+      "as_of": "2026-09-06",
+      "title": "Boundary audit — original 119.5 acres separated from 25 current Vitesse accounts",
+      "notes": "City Ordinance 1182 identifies original map-tax-lot 1515000000311, 119.5 acres, and a three-parcel partition. On 2026-09-06 the public Assessor portal https://pso.crookcountyor.gov/pso was queried by Name=VITESSE across result pages 1-3; it returned 25 current accounts, four personal and 21 real, under VITESSE LLC or META PLATFORMS INC DBA VITESSE LLC, spanning nine displayed map-tax-lot strings. Exact-address account 19380 resolves 735 SW Connect Way to 151501-00-01102 and legal description PP 2010-04 PARCEL 2; related accounts 19271 and 19923 share that tax lot at 511 SW Connect Way. The broader owner result also includes 500 Connect Way, Social Loop, Connect Loop, Houston Lake Road and undetermined/remote holdings, so it is not treated as a campus parcel set. The official deed index at https://clerk.crookcountyor.gov/DigitalResearchRoomPublic/Disclaimer was accessed; County instructions permit only party-name search, not address/map/account/legal-description search, and bot verification blocked an anonymous Vitesse query, while document images are paid. No deed image or current legal-description crosswalk was inferred.",
+      "source": {
+        "source_id": "src_study_prineville_facebook_zone_change_2011",
+        "title": "Planning Commission Decision for Facebook property zone change, 735 Connect Way",
+        "url": "https://www.cityofprineville.com/sites/default/files/fileattachments/ordinance/3373/ordinance_no._1182_-_zone_change_facebook_property.pdf",
+        "publisher": "City of Prineville",
+        "source_type": "local_government_record",
+        "publication_date": {
+          "precision": "day",
+          "date": "2011-06-21"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_pdf_text",
+        "notes": "The decision identifies 735 Connect Way, map and tax lot 1515000000311, the 119.5-acre pre-partition site annexed in 2009, and the parcel between Tom McCall Road and SE Connect Way as the data-center location. It is used to bound the original development, not as proof that the later campus remains a single parcel."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_campus_00019988712",
+      "source_id": "src_study_prineville_city_facebook_letter_2012",
+      "as_of": "2026-09-06",
+      "title": "Investment audit — three LRZ facility proposals added without relabeling as spend",
+      "notes": "Business Oregon resource re77-krua was queried directly at https://data.oregon.gov/resource/re77-krua.json for certified_business_firm='Vitesse LLC (Facebook)' and DC No. 1, 2 and 3. Proposed investment is $188,168,000, $201,000,000 and $260,175,000, with required minima of $10,450,000, $200,000,000 and $200,000,000; those proposals are retained separately from the approximate $210.4 million through-2011 reported capital cost, the 2018 $750 million expansion forecast and the 2021 greater-than-$2 billion campus-at-completion forecast. Planning, assessor, permit, contractor and operator searches using Facebook, Meta, Vitesse, PRN1-6, capital cost, investment, equipment and assessed/exempt value did not produce an audited annual expenditure ledger, equipment/construction split, current realized cumulative capital or a nonoverlapping phase reconciliation.",
+      "source": {
+        "source_id": "src_study_prineville_city_facebook_letter_2012",
+        "title": "City of Prineville letter on Facebook Prineville Data Center Project",
+        "url": "https://olis.oregonlegislature.gov/liz/2012R1/Downloads/CommitteeMeetingDocument/41383",
+        "publisher": "City of Prineville",
+        "source_type": "local_government_record",
+        "publication_date": {
+          "precision": "year",
+          "year": 2012
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_pdf_text",
+        "notes": "Mayor-authored legislative record summarizing an ECONorthwest analysis for January 2010 through December 2011. It reports approximately $210.4 million in project capital costs to date and 55 Facebook and contract employees. The same letter reports nearly $3.3 million in payroll and estimates geographic spending and wider economic effects, but those figures lack compatible direct metrics or are source-modeled effects and are not added as canonical records."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_campus_00019988712",
+      "source_id": "src_study_dpr_meta_prineville_project",
+      "as_of": "2026-09-06",
+      "title": "Construction and procurement audit — exact ePermitting record added; ledger remains unreconciled",
+      "notes": "Crook County directs permit-history users to Oregon ePermitting at https://aca-oregon.accela.com/oregon/Cap/CapHome.aspx?module=Building&TabName=Building. Anonymous Building search used 01/01/2009-09/06/2026, street 735, fragment Con and city Prineville and returned 100+ records. Exact record 217-26-000826-STR is Permit Issued for Meta Prineville Fiber Huts / Vitesse, 138 / Fiber hut 07, owned by Vitesse, with Fortis Construction Inc. as applicant/licensed professional and a $140,029.33 job value; it is retained as one permit valuation. Exact-address results also showed electrical, mechanical, fire-revision and void records, demonstrating overlap. Searches of City packets, DPR, Fortis, Rosendin, Mortenson, OSHA and supplier pages using Facebook, Meta, Vitesse, PRN1-6, permit, generator, contractor, subcontractor, supplier, payroll and local spend found identities and scopes but no downloadable all-record ledger, reconciled nonoverlapping construction value, worker hours, job-years, invoices, supplier geography or local-spend share.",
+      "source": {
+        "source_id": "src_study_dpr_meta_prineville_project",
+        "title": "Meta Prineville Data Center project profile",
+        "url": "https://www.dpr.com/projects/facebook-prineville-data-center",
+        "publisher": "DPR Construction",
+        "source_type": "other",
+        "publication_date": {
+          "precision": "unknown"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_page",
+        "notes": "General-contractor project profile identifies DPR as contractor for the original campus build and describes the initial scope as two 300,000-square-foot data halls plus a 70,000-square-foot administrative building. It documents contractor identity and physical scope but no contract value, vendor payment, worker residence, payroll or job-years."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_campus_00019988712",
+      "source_id": "src_study_meta_prineville_expansion_2018",
+      "as_of": "2026-09-06",
+      "title": "Workforce audit — facility-specific LRZ requirements added; realized payroll still absent",
+      "notes": "Business Oregon resource re77-krua reports required and expected new hires of 35, 10 and 10 for DC No. 1, 2 and 3, with existing job bases of 0, 57 and 99; these are agreement/forecast figures, not realized additions. They remain distinct from 55 Facebook-and-contract employees through 2011, 350 regionally supported jobs reported in 2018, the county's 2023 principal-employer count and the 100-job expansion forecast. Oregon Employment Department/QualityInfo, WorkSource, BOLI apprenticeship and OATS public pages, Meta careers, City/County reports, and contractor pages were searched using Facebook, Meta Platforms, Vitesse, Prineville, employee, contractor, FTE, payroll, salary, occupation, apprenticeship, training agent and local hire for 2010-2026. Public BOLI search did not expose a project/site field or Meta/Vitesse campus result. No current direct-versus-contractor reconciliation, annual payroll, occupation/hours table, employee residence, local-hire realization or project apprenticeship count was found.",
+      "source": {
+        "source_id": "src_study_meta_prineville_expansion_2018",
+        "title": "Investing in Small Business Success in Central Oregon",
+        "url": "https://about.fb.com/news/2018/10/communityboost-redmond/",
+        "publisher": "Facebook",
+        "source_type": "operator_release",
+        "publication_date": {
+          "precision": "day",
+          "date": "2018-10-23"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_page",
+        "notes": "Operator release states that the first custom-built Prineville data center opened in 2011, two additional buildings had been announced to bring total campus footprint above 3.2 million square feet, the additional investment was $750 million, 100 new jobs were expected, and operations already supported 350 jobs in the region. Future investment and jobs remain projections."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_campus_00019988712",
+      "source_id": "src_study_business_oregon_property_tax_impact_2022",
+      "as_of": "2026-09-06",
+      "title": "Fiscal and incentive audit — annual abatements, facility values, bills and fee schedules separated",
+      "notes": "Business Oregon resource re77-krua and its 2016-2025 attached composite reports now support ten published Crook County Facebook/Meta potential-additional-tax observations and three facility-level 2024 exempt assessed values: $927,721,260, $571,612,240 and $4,526,256,370. Crook County top-taxpayer PDFs report Vitesse taxable assessed value/tax amount of $10,478,100/$165,478.53 for 2024-25 and $10,314,110/$182,293.11 for 2025-26; these are bills, not payment proof. Assessor account 19380 contributes a separate 2016-2025 exempt-account value history. City Resolutions 1117, 1271 and 1329 establish the three approvals; Resolution 1393 Exhibit A schedules annual project fees of $110,000, $190,000 and amended $750,000 for PRN1-3, PRN4 and PRN5-6. City/County allocation tables mix Facebook, Apple and future estimates, so they are not receipts. The City budget/ACFR, County budget, treasurer payment portal, DOR tax-expenditure/corporate-statistics pages, OIA program page and 2024 DOR central assessment roll were searched using Vitesse/Facebook/Meta, LRZ, PILOT, project fee, payment, distribution and 735 SW Connect Way; the DOR address hit was Zayo centrally assessed telecom property and was excluded. Project-specific SDC and franchise records remain, but no Meta-only cash-payment dates, recipient distributions, account-to-facility crosswalk, compliance certificates, OIA benefit or same-scope public-service cost was published.",
+      "source": {
+        "source_id": "src_study_business_oregon_property_tax_impact_2022",
+        "title": "Property Tax Incentives Impact Study",
+        "url": "https://www.oregon.gov/biz/Publications/Property_Tax_Incentivies_Impact_Study.pdf",
+        "publisher": "Business Oregon",
+        "source_type": "state_record",
+        "publication_date": {
+          "precision": "month",
+          "date": "2022-02-01"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_pdf_text",
+        "notes": "Page 30 reports that Facebook paid $2.5 million in system development charges to the City of Prineville plus $500,000 in permitting and planning fees to the City and Crook County, and projects that a 5.5% utility franchise fee will equal $1 million annually at full buildout. The report does not date the payments, disaggregate the $500,000 by jurisdiction, or provide a same-scope public-cost ledger."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_campus_00019988712",
+      "source_id": "src_study_meta_environmental_data_index_2025",
+      "as_of": "2026-09-06",
+      "title": "Utility, water and environmental audit — exact dockets and portals documented; water conversion retained",
+      "notes": "OPUC UM 1989 Order 19-238 records Vitesse's 2018 application to exceed Pacific Power's large-load direct-access cap and its 2019 withdrawal; UE 374 Order 21-090 records Vitesse participation concerning Schedule 272. Neither discloses campus kWh, demand, bill or substation cost. OWRD WRIS at https://apps.wrd.state.or.us/apps/wr/wrinfo/ and the 2019 Prineville ASR application/2020 attachment were searched for Vitesse, Facebook, Meta, 735 Connect Way, CROO 53878, G-17089 and G-17236; City rights and ASR permitting appear, but no Vitesse-specific right or annual meter/bill allocation. DEQ's current Your DEQ Online route and pre-November-2024 archive were searched for Vitesse, Facebook, Meta, Prineville and 735 Connect Way; no exact facility air permit or generator inventory surfaced, and the Tier 4 permit is a generic template. EPA facility searches likewise produced no exact campus generator/emissions record. Eight electricity observations remain direct; Meta's rounded 328-megaliter 2024 withdrawal remains only as the single disclosed unit conversion. No tariff assignment, peak demand, IT load, water bill, consumption/discharge, current right allocation, project-funded utility cost, generator count or facility emissions value was found.",
+      "source": {
+        "source_id": "src_study_meta_environmental_data_index_2025",
+        "title": "Meta 2025 Environmental Data Index",
+        "url": "https://sustainability.atmeta.com/wp-content/uploads/2025/10/Meta_2025-Environmental-Data-Index.pdf",
+        "publisher": "Meta Platforms, Inc.",
+        "source_type": "operator_release",
+        "publication_date": {
+          "precision": "year",
+          "year": 2025
+        },
+        "retrieved_on": "2026-09-05",
+        "review_method": "web_pdf_text",
+        "notes": "Facility tables report Forest City electricity consumption of 535,555 MWh, water withdrawal of 16 megaliters, zero market-based Scope 2 emissions and 144,104 metric tons CO2e of location-based Scope 2 emissions for 2024. Values are rounded to whole displayed units and the methodology permits utility, meter, design-estimate or proxy inputs where applicable. Only electricity is normalized as a canonical source record because the shared evidence metric registry lacks compatible annual water-withdrawal and facility-emissions definitions."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_campus_00019988712",
+      "source_id": "src_study_meta_prineville_expansion_2021",
+      "as_of": "2026-09-06",
+      "title": "Community audit — recipient confirmations expanded, exact nonoverlapping ledger still absent",
+      "notes": "Meta Community Action Grant pages, Crook County School District board/site search, ORTOP, OSU-Cascades, NeighborImpact, Crook County Kids, Bowman Museum, CASA, libraries and named recipients were searched for 2011-2026 using Facebook, Meta, Prineville, grant, gift, robotics, STEM, nonprofit, school and volunteer. The $60,000 2021 robotics grant, overlapping $150,000 cumulative program support and recipient-verified $10,000 OSU Blue Fund gift remain. NeighborImpact's 2023 Annual Report independently lists Facebook Donations in its $10,000-$24,999 band, but the range and lack of a campus/disbursement date prevent a numeric record. School-district searches confirmed program context but no amount table. Current Meta recipient lists generally state purposes without awards. No complete annual campus grant ledger, payment date, in-kind valuation, volunteer-hour value or Crook-only allocation for regional programs was found.",
+      "source": {
+        "source_id": "src_study_meta_prineville_expansion_2021",
+        "title": "Our Prineville Data Center is growing again!",
+        "url": "https://datacenters.atmeta.com/2021/03/facebooks-prineville-data-center-is-growing-again/",
+        "publisher": "Facebook",
+        "source_type": "operator_release",
+        "publication_date": {
+          "precision": "day",
+          "date": "2021-03-18"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_page",
+        "notes": "Operator announcement describes a planned 900,000-square-foot, two-building expansion that would produce an 11-building, nearly 4.6-million-square-foot campus and more than $2 billion of investment at completion. It also announces a $60,000 Crook County School District robotics grant and says total Facebook support for the program had reached $150,000. The future-completion values are projections; the two community figures overlap."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_campus_00019988712",
+      "source_id": "src_study_county_economic_core_2001_2024",
+      "as_of": "2026-09-06",
+      "title": "Structured-data and modeling audit — county comparison gaps removed; one conversion retained",
+      "notes": "All four prior syntheses were reassessed against the expanded direct register. The three inverse-distance-weighted county GDP, employment and wage gaps were removed: each is noncausal, the 2011 anchor is followed by multiple Meta phases and Apple's separate campus, and the results add no defensible decision value beyond observed county series; the employment fit was especially poor. The only retained synthesis converts Meta's rounded 328-megaliter 2024 Prineville facility withdrawal to gallons with an explicit rounding band because the direct register lacks a compatible annual-water-withdrawal metric. No supplier, construction-employment, payroll, induced-spending, net-fiscal or public-service-cost model is eligible without local-purchase shares, project payroll, recipient alignment and same-scope cost inputs. The newly direct annual LRZ tax-savings series is not modeled. No records requests were made.",
+      "source": {
+        "source_id": "src_study_county_economic_core_2001_2024",
+        "title": "County Economic Core Panel, 2001-2024",
+        "url": "https://apps.bea.gov/regional/downloadzip.htm",
+        "publisher": "U.S. Bureau of Economic Analysis and U.S. Bureau of Labor Statistics",
+        "source_type": "other",
+        "publication_date": {
+          "precision": "year",
+          "year": 2026
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "structured_data",
+        "notes": "Repository panel compiled from official annual county real GDP, total employment, and average-weekly-wage series. These are county observations, not project contributions; the retained comparison modules use them descriptively with explicit noncausal limitations."
+      }
+    }
+  ],
   "evidence_gaps": [
     {
       "code": "investment",
       "label": "Capital investment",
-      "status": "not_yet_collected",
+      "status": "partial",
       "needed": "Annual actual spending, local share, and phase allocation."
     },
     {
@@ -106,25 +276,25 @@
     {
       "code": "fiscal",
       "label": "Tax base and public revenue",
-      "status": "not_yet_collected",
+      "status": "partial",
       "needed": "Taxable values and actual receipts by year and recipient jurisdiction."
     },
     {
       "code": "public_costs",
       "label": "Incentives and public costs",
-      "status": "not_yet_collected",
+      "status": "partial",
       "needed": "Agreements, abatements, infrastructure, financing, and service costs."
     },
     {
       "code": "resources",
       "label": "Electricity, water, and cooling",
-      "status": "not_yet_collected",
+      "status": "partial",
       "needed": "Measured use, source, cooling design, and attributable system costs."
     },
     {
       "code": "community",
       "label": "Community institutions and direct funding",
-      "status": "not_yet_collected",
+      "status": "partial",
       "needed": "Annual grants, recipients, program purposes, realized spending, and overlap with other transfers."
     }
   ],
@@ -189,6 +359,1697 @@
       "unit": "workers",
       "measure_type": "peak",
       "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_meta_prineville_capital_cost_2011",
+      "project_id": "prj_study_im3_campus_00019988712",
+      "metric_code": "study.campus_capital_expenditure",
+      "value": 210400000,
+      "value_qualifier": "approximately",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "cumulative",
+        "label": "Capital costs reported to date for January 2010 through December 2011"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Facebook Prineville Data Center Project through December 2011",
+        "county_fips": "41013",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_prineville_city_facebook_letter_2012",
+      "source_locator": "Mayor's letter, paragraph beginning 'We were fortunate to have Facebook'",
+      "pdf_page": 1,
+      "printed_page": "1",
+      "notes": "City-reported approximate total project capital cost to date, citing ECONorthwest. It is a cumulative early-campus amount, not a current investment total, annual expenditure, construction-only cost, local purchase amount or audited ledger.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Reported campus capital expenditure",
+      "category": "investment",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_meta_prineville_employees_2011",
+      "project_id": "prj_study_im3_campus_00019988712",
+      "metric_code": "study.operating_employees",
+      "value": 55,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "reported_snapshot",
+        "report_date": "2011-12-31",
+        "label": "Operations snapshot reported for January 2010 through December 2011"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Facebook and contract employees at the Prineville Data Center",
+        "county_fips": "41013",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_prineville_city_facebook_letter_2012",
+      "source_locator": "Mayor's letter, final data-center operations paragraph",
+      "pdf_page": 1,
+      "printed_page": "1",
+      "notes": "The source combines Facebook and contract employees and does not define FTE status, residence or measurement day. It is not new-job creation, annual average employment or directly comparable to the later county principal-employer table.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Reported operating employee count",
+      "category": "operations",
+      "unit": "employees",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_meta_prineville_expansion_investment_2018",
+      "project_id": "prj_study_im3_campus_00019988712",
+      "metric_code": "study.campus_investment_projection",
+      "value": 750000000,
+      "value_qualifier": "exact",
+      "basis": "source_projection",
+      "period": {
+        "kind": "projection_horizon",
+        "report_date": "2018-10-23",
+        "label": "Additional investment announced with two-building expansion; completion date unspecified"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Two-building Facebook Prineville campus expansion announced in 2018",
+        "county_fips": "41013",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_meta_prineville_expansion_2018",
+      "source_locator": "Paragraph beginning 'Oregon has been a great partner'",
+      "notes": "Operator-announced additional investment. It is not verified spending, not allocated by building or year and may overlap the later more-than-$2-billion campus-at-completion forecast.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Planned campus investment",
+      "category": "investment",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_meta_prineville_new_jobs_projection_2018",
+      "project_id": "prj_study_im3_campus_00019988712",
+      "metric_code": "study.operating_jobs_projection",
+      "value": 100,
+      "value_qualifier": "exact",
+      "basis": "source_projection",
+      "period": {
+        "kind": "projection_horizon",
+        "report_date": "2018-10-23",
+        "label": "New jobs expected with two-building expansion; completion date unspecified"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Two-building Facebook Prineville campus expansion announced in 2018",
+        "county_fips": "41013",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_meta_prineville_expansion_2018",
+      "source_locator": "Paragraph beginning 'Oregon has been a great partner'",
+      "notes": "Operator projection, not a realized hiring observation. Job type, direct/contractor mix, FTE status and worker residence are not defined.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Planned operating jobs at completion",
+      "category": "operations",
+      "unit": "jobs",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_meta_prineville_jobs_supported_2018",
+      "project_id": "prj_study_im3_campus_00019988712",
+      "metric_code": "study.operational_jobs_supported",
+      "value": 350,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "reported_snapshot",
+        "report_date": "2018-10-23",
+        "label": "Jobs already supported by Facebook operations in the region"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Facebook Prineville operations and regional jobs supported",
+        "county_fips": "41013",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_meta_prineville_expansion_2018",
+      "source_locator": "Paragraph beginning 'Oregon has been a great partner'",
+      "notes": "Operator-reported jobs-supported stock. It is not necessarily direct employment, FTEs, Crook County resident workers or an annual average, and it is not added to the later county employer-table employee count.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Operator-reported operational jobs supported",
+      "category": "operations",
+      "unit": "jobs",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_meta_prineville_investment_projection_2021",
+      "project_id": "prj_study_im3_campus_00019988712",
+      "metric_code": "study.campus_investment_projection",
+      "value": 2000000000,
+      "value_qualifier": "greater_than",
+      "basis": "source_projection",
+      "period": {
+        "kind": "projection_horizon",
+        "report_date": "2021-03-18",
+        "label": "11-building campus investment at completion; completion date unspecified"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Facebook Prineville 11-building campus at completion",
+        "county_fips": "41013",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_meta_prineville_expansion_2021",
+      "source_locator": "Paragraph 2, sentence beginning 'Once completed'",
+      "notes": "Future-completion campus forecast. It is not a reported realized cumulative investment, annual spend or building allocation and can overlap the 2018 additional-investment projection.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Planned campus investment",
+      "category": "investment",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_meta_prineville_robotics_grant_2021",
+      "project_id": "prj_study_im3_campus_00019988712",
+      "metric_code": "study.direct_community_contribution",
+      "value": 60000,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "reported_snapshot",
+        "report_date": "2021-03-18",
+        "label": "New Crook County School District K-12 robotics grant announced"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Facebook Prineville grant to Crook County School District",
+        "county_fips": "41013",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_meta_prineville_expansion_2021",
+      "source_locator": "Paragraph 4, sentence beginning 'Today, we are also announcing'",
+      "notes": "Operator-announced direct grant. The $60,000 is included in the separately reported $150,000 cumulative program support and the two records must not be summed. Public announcement does not independently verify disbursement timing.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Direct community contribution",
+      "category": "community",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_meta_prineville_robotics_support_cumulative_2021",
+      "project_id": "prj_study_im3_campus_00019988712",
+      "metric_code": "study.cumulative_community_funding",
+      "value": 150000,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "cumulative",
+        "report_date": "2021-03-18",
+        "label": "Facebook total support for Oregon Robotics Tournament and Outreach Program through announcement date"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Facebook Prineville support for Crook County School District robotics program",
+        "county_fips": "41013",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_meta_prineville_expansion_2021",
+      "source_locator": "Paragraph 4, sentence ending 'now at $150,000 in total support'",
+      "notes": "Cumulative operator-reported program support includes the contemporaneous $60,000 grant and must not be summed with it. It is not an annual community-giving series or a complete campus grant ledger.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Cumulative direct community funding",
+      "category": "community",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_meta_prineville_osu_blue_fund_gift_2021",
+      "project_id": "prj_study_im3_campus_00019988712",
+      "metric_code": "study.direct_community_contribution",
+      "value": 10000,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "reported_snapshot",
+        "report_date": "2021-01-19",
+        "label": "Recipient-reported gift supporting the 2021 Blue Fund program"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Facebook Prineville Data Center gift for a regional program serving Crook, Deschutes and Jefferson counties",
+        "county_fips": "41013",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_osu_cascades_blue_fund_2021",
+      "source_locator": "Paragraph 3, sentence beginning 'The Blue Fund program is made possible'",
+      "notes": "Recipient-verified gift. Beneficiaries span three counties, so this is not represented as Crook County-only funding and is not combined with operator cumulative grant totals.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Direct community contribution",
+      "category": "community",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_meta_prineville_system_development_charges_2022",
+      "project_id": "prj_study_im3_campus_00019988712",
+      "metric_code": "study.infrastructure_company_payments",
+      "value": 2500000,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "cumulative",
+        "label": "Facebook system development charges reported paid by the February 2022 study; payment dates unspecified"
+      },
+      "scope": {
+        "level": "supporting_infrastructure",
+        "label": "Facebook payments to the City of Prineville for system development charges",
+        "county_fips": "41013",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_business_oregon_property_tax_impact_2022",
+      "pdf_page": 30,
+      "printed_page": "20",
+      "source_locator": "Section 4.2, Examples of Project Specific Revenues, Facebook bullet",
+      "notes": "State-study-reported cumulative company payment, not a property tax, annual receipt, grant or net fiscal benefit. The source does not provide payment years, infrastructure-project allocation or audited recipient accounting.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Company payments into infrastructure fund",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_meta_prineville_franchise_fee_projection_2022",
+      "project_id": "prj_study_im3_campus_00019988712",
+      "metric_code": "study.municipal_revenue_projection",
+      "value": 1000000,
+      "value_qualifier": "exact",
+      "basis": "source_projection",
+      "period": {
+        "kind": "projection_horizon",
+        "report_date": "2022-02-01",
+        "label": "Projected annual City utility franchise fee at full campus buildout; completion date unspecified"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Facebook 5.5% utility franchise fee payable to the City of Prineville at full buildout",
+        "county_fips": "41013",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_business_oregon_property_tax_impact_2022",
+      "pdf_page": 30,
+      "printed_page": "20",
+      "source_locator": "Section 4.2, Examples of Project Specific Revenues, Facebook bullet",
+      "notes": "Source projection, not a realized annual receipt. The underlying utility bill base, full-buildout date, actual annual collections and public-service costs are not disclosed.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Estimated municipal revenue from expansion",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_meta_prineville_electricity_2017",
+      "project_id": "prj_study_im3_campus_00019988712",
+      "metric_code": "study.annual_electricity_use",
+      "value": 426000000,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "calendar_year",
+        "year": 2017,
+        "label": "2017 Prineville facility electricity consumption; 426,000 MWh converted to kWh"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Meta Prineville facility reporting row",
+        "county_fips": "41013",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_meta_sustainability_report_2023",
+      "pdf_page": 51,
+      "printed_page": "51",
+      "source_locator": "Section 2.1 Electricity, facility table, Prineville OR row",
+      "notes": "Operator-reported campus electricity consumption, converted from MWh to kWh by multiplying by 1,000. It is not utility billing, peak demand, IT load or evidence of the source-specific renewable-energy mix.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "annual_series_key": "meta_prineville_electricity_use",
+      "label": "Reported annual electricity use",
+      "category": "resources",
+      "unit": "kWh_per_year",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_meta_prineville_electricity_2018",
+      "project_id": "prj_study_im3_campus_00019988712",
+      "metric_code": "study.annual_electricity_use",
+      "value": 488000000,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "calendar_year",
+        "year": 2018,
+        "label": "2018 Prineville facility electricity consumption; 488,000 MWh converted to kWh"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Meta Prineville facility reporting row",
+        "county_fips": "41013",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_meta_sustainability_report_2023",
+      "pdf_page": 51,
+      "printed_page": "51",
+      "source_locator": "Section 2.1 Electricity, facility table, Prineville OR row",
+      "notes": "Operator-reported campus electricity consumption, converted from MWh to kWh by multiplying by 1,000. It is not utility billing, peak demand, IT load or evidence of the source-specific renewable-energy mix.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "annual_series_key": "meta_prineville_electricity_use",
+      "label": "Reported annual electricity use",
+      "category": "resources",
+      "unit": "kWh_per_year",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_meta_prineville_electricity_2019",
+      "project_id": "prj_study_im3_campus_00019988712",
+      "metric_code": "study.annual_electricity_use",
+      "value": 573000000,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "calendar_year",
+        "year": 2019,
+        "label": "2019 Prineville facility electricity consumption; 573,000 MWh converted to kWh"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Meta Prineville facility reporting row",
+        "county_fips": "41013",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_meta_sustainability_report_2023",
+      "pdf_page": 51,
+      "printed_page": "51",
+      "source_locator": "Section 2.1 Electricity, facility table, Prineville OR row",
+      "notes": "Operator-reported campus electricity consumption, converted from MWh to kWh by multiplying by 1,000. It is not utility billing, peak demand, IT load or evidence of the source-specific renewable-energy mix.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "annual_series_key": "meta_prineville_electricity_use",
+      "label": "Reported annual electricity use",
+      "category": "resources",
+      "unit": "kWh_per_year",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_meta_prineville_electricity_2020",
+      "project_id": "prj_study_im3_campus_00019988712",
+      "metric_code": "study.annual_electricity_use",
+      "value": 686000000,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "calendar_year",
+        "year": 2020,
+        "label": "2020 Prineville facility electricity consumption; 686,000 MWh converted to kWh"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Meta Prineville facility reporting row",
+        "county_fips": "41013",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_meta_environmental_data_index_2025",
+      "pdf_page": 6,
+      "printed_page": "F",
+      "source_locator": "Section 2.1 Electricity, Electricity Consumption by Facility, Prineville (OR) row",
+      "notes": "Operator-reported campus electricity consumption, converted from MWh to kWh by multiplying by 1,000. It is not utility billing, peak demand or IT load.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "annual_series_key": "meta_prineville_electricity_use",
+      "label": "Reported annual electricity use",
+      "category": "resources",
+      "unit": "kWh_per_year",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_meta_prineville_electricity_2021",
+      "project_id": "prj_study_im3_campus_00019988712",
+      "metric_code": "study.annual_electricity_use",
+      "value": 898409000,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "calendar_year",
+        "year": 2021,
+        "label": "2021 Prineville facility electricity consumption; 898,409 MWh converted to kWh"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Meta Prineville facility reporting row",
+        "county_fips": "41013",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_meta_environmental_data_index_2025",
+      "pdf_page": 6,
+      "printed_page": "F",
+      "source_locator": "Section 2.1 Electricity, Electricity Consumption by Facility, Prineville (OR) row",
+      "notes": "Operator-reported campus electricity consumption, converted from MWh to kWh by multiplying by 1,000. It is not utility billing, peak demand or IT load.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "annual_series_key": "meta_prineville_electricity_use",
+      "label": "Reported annual electricity use",
+      "category": "resources",
+      "unit": "kWh_per_year",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_meta_prineville_electricity_2022",
+      "project_id": "prj_study_im3_campus_00019988712",
+      "metric_code": "study.annual_electricity_use",
+      "value": 982177000,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "calendar_year",
+        "year": 2022,
+        "label": "2022 Prineville facility electricity consumption; 982,177 MWh converted to kWh"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Meta Prineville facility reporting row",
+        "county_fips": "41013",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_meta_environmental_data_index_2025",
+      "pdf_page": 6,
+      "printed_page": "F",
+      "source_locator": "Section 2.1 Electricity, Electricity Consumption by Facility, Prineville (OR) row",
+      "notes": "Operator-reported campus electricity consumption, converted from MWh to kWh by multiplying by 1,000. It is not utility billing, peak demand or IT load.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "annual_series_key": "meta_prineville_electricity_use",
+      "label": "Reported annual electricity use",
+      "category": "resources",
+      "unit": "kWh_per_year",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_meta_prineville_electricity_2023",
+      "project_id": "prj_study_im3_campus_00019988712",
+      "metric_code": "study.annual_electricity_use",
+      "value": 1375321000,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "calendar_year",
+        "year": 2023,
+        "label": "2023 Prineville facility electricity consumption; 1,375,321 MWh converted to kWh"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Meta Prineville facility reporting row",
+        "county_fips": "41013",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_meta_environmental_data_index_2025",
+      "pdf_page": 6,
+      "printed_page": "F",
+      "source_locator": "Section 2.1 Electricity, Electricity Consumption by Facility, Prineville (OR) row",
+      "notes": "Operator-reported campus electricity consumption, converted from MWh to kWh by multiplying by 1,000. It is not utility billing, peak demand or IT load.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "annual_series_key": "meta_prineville_electricity_use",
+      "label": "Reported annual electricity use",
+      "category": "resources",
+      "unit": "kWh_per_year",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_meta_prineville_electricity_2024",
+      "project_id": "prj_study_im3_campus_00019988712",
+      "metric_code": "study.annual_electricity_use",
+      "value": 1728291000,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "calendar_year",
+        "year": 2024,
+        "label": "2024 Prineville facility electricity consumption; 1,728,291 MWh converted to kWh"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Meta Prineville facility reporting row",
+        "county_fips": "41013",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_meta_environmental_data_index_2025",
+      "pdf_page": 6,
+      "printed_page": "F",
+      "source_locator": "Section 2.1 Electricity, Electricity Consumption by Facility, Prineville (OR) row",
+      "notes": "Operator-reported campus electricity consumption, converted from MWh to kWh by multiplying by 1,000. It is not utility billing, peak demand or IT load.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "annual_series_key": "meta_prineville_electricity_use",
+      "label": "Reported annual electricity use",
+      "category": "resources",
+      "unit": "kWh_per_year",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_meta_prineville_lrz_tax_savings_2015",
+      "project_id": "prj_study_im3_campus_00019988712",
+      "metric_code": "study.local_property_tax_credits",
+      "value": 11867780.46,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2015,
+        "label": "2015-16 potential additional tax if not exempt"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Meta/Facebook long-term-rural-zone property in Crook County",
+        "county_fips": "41013",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_business_oregon_lrz_facilities_2025",
+      "source_locator": "2016 attached composite report, Crook County Assessor email, PDF page 1",
+      "notes": "County-reported potential additional tax for Facebook property exempt under the LTREZ. It is avoided tax liability, not a cash grant, expenditure or realized PILOT receipt, and is not facility-disaggregated.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "annual_series_key": "meta_prineville_lrz_potential_additional_tax",
+      "label": "Local property-tax credits",
+      "category": "public_costs",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_meta_prineville_lrz_tax_savings_2016",
+      "project_id": "prj_study_im3_campus_00019988712",
+      "metric_code": "study.local_property_tax_credits",
+      "value": 12452156.69,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2016,
+        "label": "2016-17 potential additional tax if not exempt"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Meta/Facebook long-term-rural-zone property in Crook County",
+        "county_fips": "41013",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_business_oregon_lrz_facilities_2025",
+      "source_locator": "2017 attached composite report, Crook County Assessor email, PDF page 1",
+      "notes": "County-reported potential additional tax for Facebook property exempt under the LTREZ; not a cash grant, expenditure or realized PILOT receipt.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "annual_series_key": "meta_prineville_lrz_potential_additional_tax",
+      "label": "Local property-tax credits",
+      "category": "public_costs",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_meta_prineville_lrz_tax_savings_2017",
+      "project_id": "prj_study_im3_campus_00019988712",
+      "metric_code": "study.local_property_tax_credits",
+      "value": 17287557.42,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2017,
+        "label": "2017-18 potential additional tax if not exempt"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Meta/Facebook long-term-rural-zone property in Crook County",
+        "county_fips": "41013",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_business_oregon_lrz_facilities_2025",
+      "source_locator": "2018 attached composite report, Crook County Assessor email, PDF page 1",
+      "notes": "County-reported potential additional tax for Facebook property exempt under the LTREZ; not a cash grant, expenditure or realized PILOT receipt.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "annual_series_key": "meta_prineville_lrz_potential_additional_tax",
+      "label": "Local property-tax credits",
+      "category": "public_costs",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_meta_prineville_lrz_tax_savings_2018",
+      "project_id": "prj_study_im3_campus_00019988712",
+      "metric_code": "study.local_property_tax_credits",
+      "value": 27780604.72,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2018,
+        "label": "2018-19 potential additional tax if not exempt"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Meta/Facebook long-term-rural-zone property in Crook County",
+        "county_fips": "41013",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_business_oregon_lrz_facilities_2025",
+      "source_locator": "2019 attached composite report, Crook County Assessor letter, PDF page 1",
+      "notes": "County-reported potential additional tax for Facebook property exempt under the LTREZ; not a cash grant, expenditure or realized PILOT receipt.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "annual_series_key": "meta_prineville_lrz_potential_additional_tax",
+      "label": "Local property-tax credits",
+      "category": "public_costs",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_meta_prineville_lrz_tax_savings_2019",
+      "project_id": "prj_study_im3_campus_00019988712",
+      "metric_code": "study.local_property_tax_credits",
+      "value": 34640239.66,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2019,
+        "label": "2019-20 potential additional tax if not exempt"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Meta/Facebook long-term-rural-zone property in Crook County",
+        "county_fips": "41013",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_business_oregon_lrz_facilities_2025",
+      "source_locator": "2020 attached composite report, Crook County Assessor letter, PDF page 1",
+      "notes": "County-reported potential additional tax for Facebook property exempt under the LTREZ; the scanned source page was visually verified. It is not a cash grant, expenditure or realized PILOT receipt.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "annual_series_key": "meta_prineville_lrz_potential_additional_tax",
+      "label": "Local property-tax credits",
+      "category": "public_costs",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_meta_prineville_lrz_tax_savings_2020",
+      "project_id": "prj_study_im3_campus_00019988712",
+      "metric_code": "study.local_property_tax_credits",
+      "value": 28191528.39,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2020,
+        "label": "2019-20 amount reported in the 2021 composite"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Meta/Facebook long-term-rural-zone property in Crook County",
+        "county_fips": "41013",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_business_oregon_lrz_facilities_2025",
+      "source_locator": "2021 attached composite report, Crook County Assessor letter dated December 7, 2020, PDF page 1",
+      "notes": "The attached report labels this as Crook County 2019-20 even though it follows the separately published 2019-20 report; the source-year ambiguity is preserved, the value is not interpolated and the record is excluded from the normalized annual-series key. It is potential additional tax, not a receipt.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Local property-tax credits",
+      "category": "public_costs",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_meta_prineville_lrz_tax_savings_2021",
+      "project_id": "prj_study_im3_campus_00019988712",
+      "metric_code": "study.local_property_tax_credits",
+      "value": 51586914.24,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2020,
+        "label": "2020-21 potential additional tax if not exempt"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Meta/Facebook long-term-rural-zone property in Crook County",
+        "county_fips": "41013",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_business_oregon_lrz_facilities_2025",
+      "source_locator": "2022 attached composite report, Crook County report, PDF page 3",
+      "notes": "County-reported potential additional tax for Facebook property exempt under the LTREZ; not a cash grant, expenditure or realized PILOT receipt.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "annual_series_key": "meta_prineville_lrz_potential_additional_tax",
+      "label": "Local property-tax credits",
+      "category": "public_costs",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_meta_prineville_lrz_tax_savings_2022",
+      "project_id": "prj_study_im3_campus_00019988712",
+      "metric_code": "study.local_property_tax_credits",
+      "value": 54334000.2,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2022,
+        "label": "Crook County amount in the 2023 composite report"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Meta/Facebook long-term-rural-zone property in Crook County",
+        "county_fips": "41013",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_business_oregon_lrz_facilities_2025",
+      "source_locator": "2023 attached composite report, Crook County report, PDF page 2",
+      "notes": "County-reported potential additional tax for Facebook property exempt under the LTREZ. The page does not print an explicit tax-year label; the report year is retained.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "annual_series_key": "meta_prineville_lrz_potential_additional_tax",
+      "label": "Local property-tax credits",
+      "category": "public_costs",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_meta_prineville_lrz_tax_savings_2023",
+      "project_id": "prj_study_im3_campus_00019988712",
+      "metric_code": "study.local_property_tax_credits",
+      "value": 74231457.23,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2023,
+        "label": "2023 values for 2024 reporting"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Meta/Facebook long-term-rural-zone property in Crook County",
+        "county_fips": "41013",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_business_oregon_lrz_facilities_2025",
+      "source_locator": "2024 attached composite report, Crook County report, PDF page 2",
+      "notes": "County-reported potential additional tax based on 2023 values; not a cash grant, expenditure or realized PILOT receipt.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "annual_series_key": "meta_prineville_lrz_potential_additional_tax",
+      "label": "Local property-tax credits",
+      "category": "public_costs",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_meta_prineville_lrz_tax_savings_2024",
+      "project_id": "prj_study_im3_campus_00019988712",
+      "metric_code": "study.local_property_tax_credits",
+      "value": 93332771.74,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2024,
+        "label": "2024 values for 2025 reporting"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Meta/Facebook long-term-rural-zone property in Crook County",
+        "county_fips": "41013",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_business_oregon_lrz_facilities_2025",
+      "source_locator": "2025 attached composite report, Crook County report, PDF page 2",
+      "notes": "County-reported potential additional tax based on 2024 values. It equals the sum of the three facility-level 2024-25 tax-savings fields in resource re77-krua; do not add the summary and detail values.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "annual_series_key": "meta_prineville_lrz_potential_additional_tax",
+      "label": "Local property-tax credits",
+      "category": "public_costs",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_meta_prineville_account_19380_assessed_2016",
+      "project_id": "prj_study_im3_campus_00019988712",
+      "metric_code": "study.account_assessed_value",
+      "value": 196566800,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2016,
+        "label": "2016 assessment year"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Vitesse account 19380, 735 SW Connect Way, map-tax-lot 151501-00-01102",
+        "county_fips": "41013",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_crook_property_search_2026",
+      "source_locator": "Real Account 19380, Value History, 2016 row",
+      "notes": "Account-level assessed value for enterprise-zone-class property. It is not taxable value, a tax bill, cash receipt, capital expenditure or a complete campus value.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "annual_series_key": "meta_prineville_vitesse_account_19380_assessed_value",
+      "label": "Account assessed property value",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_meta_prineville_account_19380_assessed_2017",
+      "project_id": "prj_study_im3_campus_00019988712",
+      "metric_code": "study.account_assessed_value",
+      "value": 188612390,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2017,
+        "label": "2017 assessment year"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Vitesse account 19380, 735 SW Connect Way, map-tax-lot 151501-00-01102",
+        "county_fips": "41013",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_crook_property_search_2026",
+      "source_locator": "Real Account 19380, Value History, 2017 row",
+      "notes": "Account-level assessed value for enterprise-zone-class property; not a complete campus value or taxable receipt base.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "annual_series_key": "meta_prineville_vitesse_account_19380_assessed_value",
+      "label": "Account assessed property value",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_meta_prineville_account_19380_assessed_2018",
+      "project_id": "prj_study_im3_campus_00019988712",
+      "metric_code": "study.account_assessed_value",
+      "value": 185199270,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2018,
+        "label": "2018 assessment year"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Vitesse account 19380, 735 SW Connect Way, map-tax-lot 151501-00-01102",
+        "county_fips": "41013",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_crook_property_search_2026",
+      "source_locator": "Real Account 19380, Value History, 2018 row",
+      "notes": "Account-level assessed value for enterprise-zone-class property; not a complete campus value or taxable receipt base.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "annual_series_key": "meta_prineville_vitesse_account_19380_assessed_value",
+      "label": "Account assessed property value",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_meta_prineville_account_19380_assessed_2019",
+      "project_id": "prj_study_im3_campus_00019988712",
+      "metric_code": "study.account_assessed_value",
+      "value": 193076400,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2019,
+        "label": "2019 assessment year"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Vitesse account 19380, 735 SW Connect Way, map-tax-lot 151501-00-01102",
+        "county_fips": "41013",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_crook_property_search_2026",
+      "source_locator": "Real Account 19380, Value History, 2019 row",
+      "notes": "Account-level assessed value for enterprise-zone-class property; not a complete campus value or taxable receipt base.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "annual_series_key": "meta_prineville_vitesse_account_19380_assessed_value",
+      "label": "Account assessed property value",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_meta_prineville_account_19380_assessed_2020",
+      "project_id": "prj_study_im3_campus_00019988712",
+      "metric_code": "study.account_assessed_value",
+      "value": 188556650,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2020,
+        "label": "2020 assessment year"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Vitesse account 19380, 735 SW Connect Way, map-tax-lot 151501-00-01102",
+        "county_fips": "41013",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_crook_property_search_2026",
+      "source_locator": "Real Account 19380, Value History, 2020 row",
+      "notes": "Account-level assessed value for enterprise-zone-class property; not a complete campus value or taxable receipt base.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "annual_series_key": "meta_prineville_vitesse_account_19380_assessed_value",
+      "label": "Account assessed property value",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_meta_prineville_account_19380_assessed_2021",
+      "project_id": "prj_study_im3_campus_00019988712",
+      "metric_code": "study.account_assessed_value",
+      "value": 180612070,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2021,
+        "label": "2021 assessment year"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Vitesse account 19380, 735 SW Connect Way, map-tax-lot 151501-00-01102",
+        "county_fips": "41013",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_crook_property_search_2026",
+      "source_locator": "Real Account 19380, Value History, 2021 row",
+      "notes": "Account-level assessed value for enterprise-zone-class property; not a complete campus value or taxable receipt base.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "annual_series_key": "meta_prineville_vitesse_account_19380_assessed_value",
+      "label": "Account assessed property value",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_meta_prineville_account_19380_assessed_2022",
+      "project_id": "prj_study_im3_campus_00019988712",
+      "metric_code": "study.account_assessed_value",
+      "value": 208404660,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2022,
+        "label": "2022 assessment year"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Vitesse account 19380, 735 SW Connect Way, map-tax-lot 151501-00-01102",
+        "county_fips": "41013",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_crook_property_search_2026",
+      "source_locator": "Real Account 19380, Value History, 2022 row",
+      "notes": "Account-level assessed value for enterprise-zone-class property; not a complete campus value or taxable receipt base.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "annual_series_key": "meta_prineville_vitesse_account_19380_assessed_value",
+      "label": "Account assessed property value",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_meta_prineville_account_19380_assessed_2023",
+      "project_id": "prj_study_im3_campus_00019988712",
+      "metric_code": "study.account_assessed_value",
+      "value": 301363680,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2023,
+        "label": "2023 assessment year"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Vitesse account 19380, 735 SW Connect Way, map-tax-lot 151501-00-01102",
+        "county_fips": "41013",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_crook_property_search_2026",
+      "source_locator": "Real Account 19380, Value History, 2023 row",
+      "notes": "Account-level assessed value for enterprise-zone-class property; not a complete campus value or taxable receipt base.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "annual_series_key": "meta_prineville_vitesse_account_19380_assessed_value",
+      "label": "Account assessed property value",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_meta_prineville_account_19380_assessed_2024",
+      "project_id": "prj_study_im3_campus_00019988712",
+      "metric_code": "study.account_assessed_value",
+      "value": 340171160,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2024,
+        "label": "2024 assessment year"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Vitesse account 19380, 735 SW Connect Way, map-tax-lot 151501-00-01102",
+        "county_fips": "41013",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_crook_property_search_2026",
+      "source_locator": "Real Account 19380, Value History, 2024 row",
+      "notes": "Account-level assessed value for enterprise-zone-class property. It is included within broader facility/company exemption reporting and must not be added to it.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "annual_series_key": "meta_prineville_vitesse_account_19380_assessed_value",
+      "label": "Account assessed property value",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_meta_prineville_account_19380_assessed_2025",
+      "project_id": "prj_study_im3_campus_00019988712",
+      "metric_code": "study.account_assessed_value",
+      "value": 393924700,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2025,
+        "label": "2025 assessment year"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Vitesse account 19380, 735 SW Connect Way, map-tax-lot 151501-00-01102",
+        "county_fips": "41013",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_crook_property_search_2026",
+      "source_locator": "Real Account 19380, Account and Value History, 2025 row",
+      "notes": "Account-level assessed value for active property class 998 ENTERPRISE ZONE, legal description PP 2010-04 PARCEL 2. The portal shows $0 amount due, which is not proof of a tax payment or a complete campus account roll.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "annual_series_key": "meta_prineville_vitesse_account_19380_assessed_value",
+      "label": "Account assessed property value",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_meta_prineville_lrz_dc1_investment_projection",
+      "project_id": "prj_study_im3_campus_00019988712",
+      "metric_code": "study.campus_investment_projection",
+      "value": 188168000,
+      "value_qualifier": "exact",
+      "basis": "source_projection",
+      "period": {
+        "kind": "projection_horizon",
+        "report_date": "2010-07-05",
+        "label": "DC No. 1 proposed investment at local certification; first exemption year 2012-13"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Vitesse/Facebook LRZ facility DC No. 1",
+        "county_fips": "41013",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_business_oregon_lrz_facilities_2025",
+      "source_locator": "resource re77-krua; Vitesse LLC (Facebook); DC No. 1; estimated_investment_proposed",
+      "notes": "Facility-specific proposed investment, not verified expenditure or current value. It may overlap later campus expansion forecasts and is not summed with them.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Planned campus investment",
+      "category": "investment",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_meta_prineville_lrz_dc1_jobs_projection",
+      "project_id": "prj_study_im3_campus_00019988712",
+      "metric_code": "study.operating_jobs_projection",
+      "value": 35,
+      "value_qualifier": "exact",
+      "basis": "source_projection",
+      "period": {
+        "kind": "projection_horizon",
+        "report_date": "2010-07-05",
+        "label": "Required and expected new hires for DC No. 1"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Vitesse/Facebook LRZ facility DC No. 1",
+        "county_fips": "41013",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_business_oregon_lrz_facilities_2025",
+      "source_locator": "resource re77-krua; Vitesse LLC (Facebook); DC No. 1; required_fte and expected_new_hires",
+      "notes": "Agreement qualification and expected-hire count, not a realized employment observation. The dataset lists an existing job base of zero.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Planned operating jobs at completion",
+      "category": "operations",
+      "unit": "jobs",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_meta_prineville_lrz_dc2_investment_projection",
+      "project_id": "prj_study_im3_campus_00019988712",
+      "metric_code": "study.campus_investment_projection",
+      "value": 201000000,
+      "value_qualifier": "exact",
+      "basis": "source_projection",
+      "period": {
+        "kind": "projection_horizon",
+        "report_date": "2015-08-31",
+        "label": "DC No. 2 proposed investment at local certification; first exemption year 2018-19"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Vitesse/Facebook LRZ facility DC No. 2",
+        "county_fips": "41013",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_business_oregon_lrz_facilities_2025",
+      "source_locator": "resource re77-krua; Vitesse LLC (Facebook); DC No. 2; estimated_investment_proposed",
+      "notes": "Facility-specific proposed investment, not verified expenditure or current value; required minimum was $200 million.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Planned campus investment",
+      "category": "investment",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_meta_prineville_lrz_dc2_jobs_projection",
+      "project_id": "prj_study_im3_campus_00019988712",
+      "metric_code": "study.operating_jobs_projection",
+      "value": 10,
+      "value_qualifier": "exact",
+      "basis": "source_projection",
+      "period": {
+        "kind": "projection_horizon",
+        "report_date": "2015-08-31",
+        "label": "Required and expected new hires for DC No. 2"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Vitesse/Facebook LRZ facility DC No. 2",
+        "county_fips": "41013",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_business_oregon_lrz_facilities_2025",
+      "source_locator": "resource re77-krua; Vitesse LLC (Facebook); DC No. 2; required_fte and expected_new_hires",
+      "notes": "Agreement qualification and expected-hire count, not realized employment. The dataset lists an existing job base of 57.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Planned operating jobs at completion",
+      "category": "operations",
+      "unit": "jobs",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_meta_prineville_lrz_dc3_investment_projection",
+      "project_id": "prj_study_im3_campus_00019988712",
+      "metric_code": "study.campus_investment_projection",
+      "value": 260175000,
+      "value_qualifier": "exact",
+      "basis": "source_projection",
+      "period": {
+        "kind": "projection_horizon",
+        "report_date": "2017-12-31",
+        "label": "DC No. 3 proposed investment at local certification; first exemption year 2019-20"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Vitesse/Facebook LRZ facility DC No. 3",
+        "county_fips": "41013",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_business_oregon_lrz_facilities_2025",
+      "source_locator": "resource re77-krua; Vitesse LLC (Facebook); DC No. 3; estimated_investment_proposed",
+      "notes": "Facility-specific proposed investment, not verified expenditure or current value; required minimum was $200 million.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Planned campus investment",
+      "category": "investment",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_meta_prineville_lrz_dc3_jobs_projection",
+      "project_id": "prj_study_im3_campus_00019988712",
+      "metric_code": "study.operating_jobs_projection",
+      "value": 10,
+      "value_qualifier": "exact",
+      "basis": "source_projection",
+      "period": {
+        "kind": "projection_horizon",
+        "report_date": "2017-12-31",
+        "label": "Required and expected new hires for DC No. 3"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Vitesse/Facebook LRZ facility DC No. 3",
+        "county_fips": "41013",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_business_oregon_lrz_facilities_2025",
+      "source_locator": "resource re77-krua; Vitesse LLC (Facebook); DC No. 3; required_fte and expected_new_hires",
+      "notes": "Agreement qualification and expected-hire count, not realized employment. The dataset lists an existing job base of 99.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Planned operating jobs at completion",
+      "category": "operations",
+      "unit": "jobs",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_meta_prineville_lrz_dc1_exempt_assessed_2024",
+      "project_id": "prj_study_im3_campus_00019988712",
+      "metric_code": "study.account_assessed_value",
+      "value": 927721260,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2024,
+        "label": "2024 exempt assessed value underlying 2024-25 tax savings"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Vitesse/Facebook LRZ facility DC No. 1",
+        "county_fips": "41013",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_business_oregon_lrz_facilities_2025",
+      "source_locator": "resource re77-krua; Vitesse LLC (Facebook); DC No. 1; exempt_assessed_value_for_2024",
+      "notes": "Facility-level exempt assessed value, not taxable assessed value, investment or a specific assessor account. Reported 2024-25 tax savings are $14,369,846.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Account assessed property value",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_meta_prineville_lrz_dc2_exempt_assessed_2024",
+      "project_id": "prj_study_im3_campus_00019988712",
+      "metric_code": "study.account_assessed_value",
+      "value": 571612240,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2024,
+        "label": "2024 exempt assessed value underlying 2024-25 tax savings"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Vitesse/Facebook LRZ facility DC No. 2",
+        "county_fips": "41013",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_business_oregon_lrz_facilities_2025",
+      "source_locator": "resource re77-krua; Vitesse LLC (Facebook); DC No. 2; exempt_assessed_value_for_2024",
+      "notes": "Facility-level exempt assessed value, not taxable assessed value, investment or a specific assessor account. Reported 2024-25 tax savings are $8,853,931.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Account assessed property value",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_meta_prineville_lrz_dc3_exempt_assessed_2024",
+      "project_id": "prj_study_im3_campus_00019988712",
+      "metric_code": "study.account_assessed_value",
+      "value": 4526256370,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2024,
+        "label": "2024 exempt assessed value underlying 2024-25 tax savings"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Vitesse/Facebook LRZ facility DC No. 3",
+        "county_fips": "41013",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_business_oregon_lrz_facilities_2025",
+      "source_locator": "resource re77-krua; Vitesse LLC (Facebook); DC No. 3; exempt_assessed_value_for_2024",
+      "notes": "Facility-level exempt assessed value, not taxable assessed value, investment or a specific assessor account. Reported 2024-25 tax savings are $70,108,995.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Account assessed property value",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_meta_prineville_taxable_assessed_2024",
+      "project_id": "prj_study_im3_campus_00019988712",
+      "metric_code": "study.taxable_assessed_value",
+      "value": 10478100,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2024,
+        "label": "2024-25 Vitesse LLC taxable assessed value"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Vitesse LLC taxable property in Crook County",
+        "county_fips": "41013",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_crook_top_taxpayers_2024",
+      "pdf_page": 1,
+      "printed_page": "1",
+      "source_locator": "2024-25 Top Ten Crook County Taxpayers, Vitesse LLC row",
+      "notes": "Owner-level taxable assessed value. It is separate from exempt LRZ value and does not identify the contributing accounts.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "annual_series_key": "meta_prineville_vitesse_taxable_assessed_value",
+      "label": "Taxable assessed property value",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_meta_prineville_property_tax_billed_2024",
+      "project_id": "prj_study_im3_campus_00019988712",
+      "metric_code": "study.property_taxes_billed",
+      "value": 165478.53,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2024,
+        "label": "2024-25 Vitesse LLC tax amount"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Vitesse LLC taxable property in Crook County",
+        "county_fips": "41013",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_crook_top_taxpayers_2024",
+      "pdf_page": 1,
+      "printed_page": "1",
+      "source_locator": "2024-25 Top Ten Crook County Taxpayers, Vitesse LLC row",
+      "notes": "County-reported tax amount, treated as billed tax rather than cash paid. The schedule does not provide payment date or recipient distribution.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "annual_series_key": "meta_prineville_vitesse_property_tax_billed",
+      "label": "Account property taxes billed",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_meta_prineville_taxable_assessed_2025",
+      "project_id": "prj_study_im3_campus_00019988712",
+      "metric_code": "study.taxable_assessed_value",
+      "value": 10314110,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2025,
+        "label": "2025-26 Vitesse LLC taxable assessed value"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Vitesse LLC taxable property in Crook County",
+        "county_fips": "41013",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_crook_top_taxpayers_2025",
+      "pdf_page": 1,
+      "printed_page": "1",
+      "source_locator": "2025-26 Top Ten Crook County Taxpayers, Vitesse LLC row",
+      "notes": "Owner-level taxable assessed value. It is separate from exempt LRZ value and does not identify the contributing accounts.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "annual_series_key": "meta_prineville_vitesse_taxable_assessed_value",
+      "label": "Taxable assessed property value",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_meta_prineville_property_tax_billed_2025",
+      "project_id": "prj_study_im3_campus_00019988712",
+      "metric_code": "study.property_taxes_billed",
+      "value": 182293.11,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2025,
+        "label": "2025-26 Vitesse LLC tax amount"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Vitesse LLC taxable property in Crook County",
+        "county_fips": "41013",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_crook_top_taxpayers_2025",
+      "pdf_page": 1,
+      "printed_page": "1",
+      "source_locator": "2025-26 Top Ten Crook County Taxpayers, Vitesse LLC row",
+      "notes": "County-reported tax amount, treated as billed tax rather than cash paid. The schedule does not provide payment date or recipient distribution.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "annual_series_key": "meta_prineville_vitesse_property_tax_billed",
+      "label": "Account property taxes billed",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_meta_prineville_fiber_hut_07_permit_2026",
+      "project_id": "prj_study_im3_campus_00019988712",
+      "metric_code": "study.permitted_construction_value",
+      "value": 140029.33,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "source_year",
+        "year": 2026,
+        "label": "Permit 217-26-000826-STR opened May 22, 2026; status Permit Issued"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Meta Prineville Fiber Huts, Fiber hut 07 at 735 SW Connect Way",
+        "county_fips": "41013",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_oregon_epermitting_735_connect_2026",
+      "source_locator": "Permit 217-26-000826-STR, Record Details and Additional Information",
+      "notes": "Administrative job value for one Fortis structural permit and one building. It is not audited expenditure, a payment, local procurement or a campus total, and must not be summed with related electrical or revision permits without reconciliation.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Reported permit construction value",
+      "category": "construction",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_meta_prineville_project_fee_prn1_3_projection",
+      "project_id": "prj_study_im3_campus_00019988712",
+      "metric_code": "study.municipal_revenue_projection",
+      "value": 110000,
+      "value_qualifier": "exact",
+      "basis": "source_projection",
+      "period": {
+        "kind": "projection_horizon",
+        "report_date": "2019-01-01",
+        "label": "Annual project-fee schedule for Facebook Agreement No. 1, PRN1-3"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Facebook Agreement No. 1, PRN1-3",
+        "county_fips": "41013",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_prineville_resolution_1393_project_fees_2019",
+      "pdf_page": 5,
+      "printed_page": "Exhibit A",
+      "source_locator": "Amendment No. 1 Exhibit A, Facebook Agreement #1 PRN1, 2, 3 column",
+      "notes": "Contractual schedule shown in the amended IGA, not proof that a particular annual payment was received or distributed. The agreement total is $1.65 million.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Estimated municipal revenue from expansion",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_meta_prineville_project_fee_prn4_projection",
+      "project_id": "prj_study_im3_campus_00019988712",
+      "metric_code": "study.municipal_revenue_projection",
+      "value": 190000,
+      "value_qualifier": "exact",
+      "basis": "source_projection",
+      "period": {
+        "kind": "projection_horizon",
+        "report_date": "2019-01-01",
+        "label": "Annual project-fee schedule for Facebook Agreement No. 2, PRN4"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Facebook Agreement No. 2, PRN4",
+        "county_fips": "41013",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_prineville_resolution_1393_project_fees_2019",
+      "pdf_page": 5,
+      "printed_page": "Exhibit A",
+      "source_locator": "Amendment No. 1 Exhibit A, Facebook Agreement #2 PRN4 column",
+      "notes": "Contractual schedule shown in the amended IGA, not proof that a particular annual payment was received or distributed. The agreement total is $2.85 million.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Estimated municipal revenue from expansion",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_meta_prineville_project_fee_prn5_6_projection",
+      "project_id": "prj_study_im3_campus_00019988712",
+      "metric_code": "study.municipal_revenue_projection",
+      "value": 750000,
+      "value_qualifier": "exact",
+      "basis": "source_projection",
+      "period": {
+        "kind": "projection_horizon",
+        "report_date": "2019-01-01",
+        "label": "Annual amended project-fee schedule for Facebook Agreement No. 3, PRN5-6"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Facebook Agreement No. 3, PRN5-6",
+        "county_fips": "41013",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_prineville_resolution_1393_project_fees_2019",
+      "pdf_page": 5,
+      "printed_page": "Exhibit A",
+      "source_locator": "Amendment No. 1 Exhibit A, Facebook Agreement #3 PRN5, 6 column",
+      "notes": "Exhibit A's amended annual schedule supersedes the $250,000 figure described in the 2017 agreement recital. It is not proof of annual receipt or distribution; the schedule total is $11.25 million.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Estimated municipal revenue from expansion",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
     }
   ],
   "economic_sources": [
@@ -219,13 +2080,310 @@
       "review_method": "pdf_text_and_page_image",
       "notes": "Undated operator fact sheet. Peak construction year and phase are unspecified. PDF creation metadata, where available, is not treated as a measurement date. Operational-job figures are withheld because the fleet page qualifies them as supported once completed; employment realization needs reconciliation. Investment totals and community giving are not included here. Downloaded PDF text and page 1 image checked.",
       "artifact_sha256": "89043380d04a72837f41b3d9ed53c593d2e38285fc3d25e81831782a20c83ab5"
+    },
+    {
+      "source_id": "src_study_meta_environmental_data_index_2025",
+      "title": "Meta 2025 Environmental Data Index",
+      "url": "https://sustainability.atmeta.com/wp-content/uploads/2025/10/Meta_2025-Environmental-Data-Index.pdf",
+      "publisher": "Meta Platforms, Inc.",
+      "source_type": "operator_release",
+      "publication_date": {
+        "precision": "year",
+        "year": 2025
+      },
+      "retrieved_on": "2026-09-05",
+      "review_method": "web_pdf_text",
+      "notes": "Facility tables report Forest City electricity consumption of 535,555 MWh, water withdrawal of 16 megaliters, zero market-based Scope 2 emissions and 144,104 metric tons CO2e of location-based Scope 2 emissions for 2024. Values are rounded to whole displayed units and the methodology permits utility, meter, design-estimate or proxy inputs where applicable. Only electricity is normalized as a canonical source record because the shared evidence metric registry lacks compatible annual water-withdrawal and facility-emissions definitions."
+    },
+    {
+      "source_id": "src_study_prineville_city_facebook_letter_2012",
+      "title": "City of Prineville letter on Facebook Prineville Data Center Project",
+      "url": "https://olis.oregonlegislature.gov/liz/2012R1/Downloads/CommitteeMeetingDocument/41383",
+      "publisher": "City of Prineville",
+      "source_type": "local_government_record",
+      "publication_date": {
+        "precision": "year",
+        "year": 2012
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_pdf_text",
+      "notes": "Mayor-authored legislative record summarizing an ECONorthwest analysis for January 2010 through December 2011. It reports approximately $210.4 million in project capital costs to date and 55 Facebook and contract employees. The same letter reports nearly $3.3 million in payroll and estimates geographic spending and wider economic effects, but those figures lack compatible direct metrics or are source-modeled effects and are not added as canonical records."
+    },
+    {
+      "source_id": "src_study_meta_prineville_expansion_2018",
+      "title": "Investing in Small Business Success in Central Oregon",
+      "url": "https://about.fb.com/news/2018/10/communityboost-redmond/",
+      "publisher": "Facebook",
+      "source_type": "operator_release",
+      "publication_date": {
+        "precision": "day",
+        "date": "2018-10-23"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_page",
+      "notes": "Operator release states that the first custom-built Prineville data center opened in 2011, two additional buildings had been announced to bring total campus footprint above 3.2 million square feet, the additional investment was $750 million, 100 new jobs were expected, and operations already supported 350 jobs in the region. Future investment and jobs remain projections."
+    },
+    {
+      "source_id": "src_study_meta_prineville_expansion_2021",
+      "title": "Our Prineville Data Center is growing again!",
+      "url": "https://datacenters.atmeta.com/2021/03/facebooks-prineville-data-center-is-growing-again/",
+      "publisher": "Facebook",
+      "source_type": "operator_release",
+      "publication_date": {
+        "precision": "day",
+        "date": "2021-03-18"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_page",
+      "notes": "Operator announcement describes a planned 900,000-square-foot, two-building expansion that would produce an 11-building, nearly 4.6-million-square-foot campus and more than $2 billion of investment at completion. It also announces a $60,000 Crook County School District robotics grant and says total Facebook support for the program had reached $150,000. The future-completion values are projections; the two community figures overlap."
+    },
+    {
+      "source_id": "src_study_business_oregon_property_tax_impact_2022",
+      "title": "Property Tax Incentives Impact Study",
+      "url": "https://www.oregon.gov/biz/Publications/Property_Tax_Incentivies_Impact_Study.pdf",
+      "publisher": "Business Oregon",
+      "source_type": "state_record",
+      "publication_date": {
+        "precision": "month",
+        "date": "2022-02-01"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_pdf_text",
+      "notes": "Page 30 reports that Facebook paid $2.5 million in system development charges to the City of Prineville plus $500,000 in permitting and planning fees to the City and Crook County, and projects that a 5.5% utility franchise fee will equal $1 million annually at full buildout. The report does not date the payments, disaggregate the $500,000 by jurisdiction, or provide a same-scope public-cost ledger."
+    },
+    {
+      "source_id": "src_study_meta_sustainability_report_2023",
+      "title": "Meta 2023 Sustainability Report",
+      "url": "https://sustainability.atmeta.com/wp-content/uploads/2023/07/Meta-2023-Sustainability-Report-1.pdf",
+      "publisher": "Meta",
+      "source_type": "operator_release",
+      "publication_date": {
+        "precision": "year",
+        "year": 2023
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_pdf_text",
+      "notes": "PDF page 51 reports Prineville facility electricity consumption for 2017-2022. The 2017-2019 values extend the direct series; 2020-2022 values are superseded for this fragment by the later 2025 index and are not duplicated."
+    },
+    {
+      "source_id": "src_study_osu_cascades_blue_fund_2021",
+      "title": "OSU-Cascades Innovation Co-Lab will support minority entrepreneurs with new Blue Fund program",
+      "url": "https://osucascades.edu/news/osu-cascades-innovation-co-lab-will-support-minority-entrepreneurs-new-blue-fund-program",
+      "publisher": "Oregon State University-Cascades",
+      "source_type": "other",
+      "publication_date": {
+        "precision": "day",
+        "date": "2021-01-19"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_page",
+      "notes": "Recipient-authored page verifies a $10,000 gift from the Facebook Prineville Data Center for the Blue Fund program serving underserved entrepreneurs in Crook, Deschutes and Jefferson counties. The regional beneficiary scope is preserved and not represented as Crook County-only funding."
+    },
+    {
+      "source_id": "src_study_business_oregon_lrz_facilities_2025",
+      "title": "Current and Proposed Long-term Rural Enterprise Zone Facilities",
+      "url": "https://data.oregon.gov/Revenue-Expense/Current-and-Proposed-Long-term-Rural-Enterprise-Z/re77-krua",
+      "publisher": "Business Oregon",
+      "source_type": "state_record",
+      "publication_date": {
+        "precision": "year",
+        "year": 2025
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "structured_data",
+      "notes": "Official Socrata resource re77-krua was queried through https://data.oregon.gov/resource/re77-krua.json and its attached 2016-2025 composite reports were reviewed. The three Vitesse LLC (Facebook) rows disclose certification dates, 15-year terms, proposed investment, required new hires, first exemption years, 2024 exempt assessed values and 2024-25 tax savings. The attached Crook County reports give company-level potential-additional-tax amounts for tax years 2015-16 through 2024-25. Summary and facility-detail records overlap in 2024-25 and must not be summed."
+    },
+    {
+      "source_id": "src_study_crook_property_search_2026",
+      "title": "Crook County Property Search Online — Vitesse account and value-history results",
+      "url": "https://pso.crookcountyor.gov/pso/search?searchOption=Name&searchValue=VITESSE&pageNumber=1",
+      "publisher": "Crook County Assessor",
+      "source_type": "assessor_record",
+      "publication_date": {
+        "precision": "unknown"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_page",
+      "notes": "The public portal was queried by owner name VITESSE across all three result pages. It returned 25 current accounts under VITESSE LLC or META PLATFORMS INC DBA VITESSE LLC: personal-property accounts 66159, 66207, 66418 and 65751, plus real-property accounts 14597, 19269, 19380, 19271, 19923, 20377, 21401, 1138, 1140, 1142, 19980, 19924, 20048, 20049, 19926, 19268, 1145, 20378, 19379, 19922 and 21615. Nine displayed map-tax-lot strings are 15150000 00318, 15150100 01100, 15150100 01102, 15150000 00301, 14153500 03201, 15150100 00400, 15150100 00800, 15150100 00900 and 15150100 01200. The result spans campus and noncampus Vitesse holdings, so only exact-address account 19380 is normalized."
+    },
+    {
+      "source_id": "src_study_crook_top_taxpayers_2024",
+      "title": "2024-25 Top Ten Crook County Taxpayers",
+      "url": "https://crookcountyor.gov/DocumentCenter/View/649/2024-25-Top-Ten-Crook-County-Taxpayers",
+      "publisher": "Crook County Assessor",
+      "source_type": "assessor_record",
+      "publication_date": {
+        "precision": "day",
+        "date": "2024-10-03"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_pdf_text",
+      "notes": "County schedule reports Vitesse LLC at $20,780,270 real market value, $10,478,100 taxable assessed value and $165,478.53 tax amount for 2024-25. It is an owner-level county total, not a parcel roll, exemption value, proof of payment or recipient distribution."
+    },
+    {
+      "source_id": "src_study_crook_top_taxpayers_2025",
+      "title": "2025-26 Top Ten Crook County Taxpayers",
+      "url": "https://crookcountyor.gov/DocumentCenter/View/648/2025-26-Top-Ten-Crook-County-Taxpayers",
+      "publisher": "Crook County Assessor",
+      "source_type": "assessor_record",
+      "publication_date": {
+        "precision": "day",
+        "date": "2025-10-07"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_pdf_text",
+      "notes": "County schedule reports Vitesse LLC at $28,238,360 real market value, $10,314,110 taxable assessed value and $182,293.11 tax amount for 2025-26. It is an owner-level county total, not a parcel roll, exemption value, proof of payment or recipient distribution."
+    },
+    {
+      "source_id": "src_study_oregon_epermitting_735_connect_2026",
+      "title": "Oregon ePermitting — 735 SW Connect Way building-permit search",
+      "url": "https://aca-oregon.accela.com/oregon/Cap/CapHome.aspx?module=Building&TabName=Building",
+      "publisher": "Oregon Building Codes Division and Crook County",
+      "source_type": "state_record",
+      "publication_date": {
+        "precision": "unknown"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_page",
+      "notes": "Anonymous Building-module search used start date 01/01/2009, end date 09/06/2026, street number 735, street fragment Con and city Prineville. The portal returned more than 100 records. Permit 217-26-000826-STR was opened May 22, 2026, status Permit Issued, for Meta Prineville Fiber Huts / Vitesse, 138 / Fiber hut 07; Fortis Construction Inc. is applicant and licensed professional, Vitesse LLC is owner, and Additional Information reports one building with $140,029.33 job value. The result set is not a reconciled project ledger and individual permits may overlap."
+    },
+    {
+      "source_id": "src_study_prineville_resolution_1393_project_fees_2019",
+      "title": "Resolution No. 1393 — amended Vitesse project-fee allocation agreement",
+      "url": "https://cityofprineville.com/sites/default/files/fileattachments/ordinance/14011/resolution_no_1393_-_amending_iga_with_cc_-_vitesse_project_fees.pdf",
+      "publisher": "City of Prineville",
+      "source_type": "local_government_record",
+      "publication_date": {
+        "precision": "year",
+        "year": 2019
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_pdf_text",
+      "notes": "Resolution, Amendment No. 1 and Exhibit A identify the 2009, 2015 and 2017 Facebook agreements and schedule annual project fees of $110,000 for PRN1-3, $190,000 for PRN4 and $750,000 for PRN5-6. The recitals say the 2017 agreement originally used $250,000; Exhibit A reflects the later amended schedule. Allocation tables combine Facebook and Apple and include future estimated facilities, so only the named Facebook agreement schedules are retained as projections, not receipts. The official resolution detail page still listed this attachment when reviewed, but live attachment navigation on 2026-09-06 returned the City's item-no-longer-available page; the indexed official PDF content is retained with this access limitation."
     }
   ],
-  "economic_scope_note": "Reviewed evidence batches at campus or company/county scope. No record is allocated to an individual inventory building. Source checking establishes what a document reports, not an independent audit or causal attribution. Monetary figures are nominal. Peak workforce is distinct from annual employment; source-year labels do not establish fiscal-year boundaries. Original forecasts remain forecasts until realization is verified. No cross-record benefit total is defined. Cumulative project costs are not annual expenditure. Tax receipts and incentive payments remain separate, with inferred taxpayer links disclosed. Contextual research updates do not count as economic amounts. Account tax bills are distinct from cash receipts and incentive-program fees. Tax years, calendar years and fiscal years retain their source basis; separate taxpayer accounts are not consolidated. Municipal developer rebates and taxpayer valuations have distinct subjects. Estimated actual property value and tax capacity are not tax receipts; payable-year valuations retain their earlier assessment date. Taxpayer values expressed in millions retain approximate precision and account-level separation. A current-year table can use an older valuation date and is not converted into an annual series. Facility real-property and business-personal-property accounts remain separate, and address-label discrepancies are disclosed. Michigan Industrial Facilities Tax accounts remain distinct from the underlying real parcel and from post-expiration personal-property accounts; annual account totals are not recipient-level government receipts. Permit construction values are administrative project amounts, not verified expenditure, and separate permits are not combined without proof that their scopes do not overlap. Repeated maintenance-year assessments are annual parcel stocks, not new investment flows. Mixed-use parcel assessments and taxable values are retained at whole-parcel scope and are not allocated to a data-center tenant or function by floor area. Operator-reported jobs supported remain distinct from direct employees and FTEs. Approved infrastructure grants are documented public commitments rather than verified disbursements or total public costs. Cumulative community funding remains separate from tax receipts, payroll and modeled multiplier effects. Reported facility power capacity is not measured electricity consumption or peak demand. Permit-listed emergency generators are not runtime, fuel-use or actual-emissions observations. A city largest-taxpayer table's personal-property assessment remains separate from the leasehold real-property account, tax bills, receipts and capital expenditure. TIF loan principal is financing rather than a grant or general-fund receipt; project-generated tax revenue pledged to repayment is retained as a separate public-financing flow and is not added to gross parcel distributions. Water-withdrawal and consumptive permit capacities are regulatory limits rather than measured use. Development-agreement local-labor preferences are requirements rather than realized participation, and operating employee snapshots remain distinct from customers' on-site staff and jobs forecasts. Audited City bond statements distinguish issuance draws, year-end principal, annual principal retired, interest and fees, pledged TIF revenue, debt-service-fund transfers and future principal-plus-interest commitments. These measures are not summed into a benefit or subsidy total. City pledged revenue, City debt-service-fund transfers and the private fund's project TIF revenue applied to loan repayment retain their separate source definitions because only the 2022 transfer and private-fund amount agree exactly. Developer testimony in public meeting minutes is retained as a source-attributed cumulative lower bound; local-contractor spending is not converted into payroll, worker counts, household spending or multiplier effects. Economic-improvement-district cost estimates and maximum owner assessments remain source projections until bond issuance, an assessment schedule, collections and expenditures are verified. A statutory financing cap is not a tax receipt, public expenditure or subsidy. Audited private equipment-financing balances are debt stocks rather than construction spending, public support or community benefit. Reported floor area and occupied-share values describe operating scale and utilization, not employment, revenue, power use or economic output. Contractor and engineer case studies document supplier roles and completion timing but do not establish payment amounts, worker residence, payroll or multiplier effects. State incentive contract amounts, expected jobs and paid-or-certified-to-date fields remain distinct; a zero paid/certified balance at an earlier reporting cutoff does not imply no later claims. Public charging-infrastructure awards are commitments rather than verified disbursements, private project investment or operating benefits. Qualitative payment descriptions without a defensible numeric bound remain research context rather than quantitative records. Program-reported actual qualified investment, certified tax-exemption value and certified tax-credit value remain separate cumulative measures; none is converted into annual spending, a cash grant, local revenue or causal impact. County Business Patterns observations are county-industry context, not project contributions: establishment counts are employer locations rather than data-center facilities, March employment is not an annual average, annual payroll spans the full NAICS cell, and disclosure noise, classification changes and geographic assignment limit comparisons. No CBP change is attributed to a study project. Project fragments: prj_study_im3_building_00052227492: Deep public-evidence audit for Flexential's Minneapolis-Chaska data center on parcel 30.0590020 at 3500 Lyman Boulevard. The review covered Carver County parcel, tax and property-record access points; City of Chaska permit, inspection, agenda, archive, budget, utility and annual-financial-report sources; Minnesota DEED, Revenue, statutory, environmental and utility-regulatory sources; federal workplace-safety search access; current and archived operator, predecessor, career and ESG materials; contractor and supplier references; and education, workforce and recipient-reported community sources for 2013-2026. Eighteen quantitative observations are preserved: a source-projected original investment lower bound; three later non-cumulative permit values; current floor area and critical-load UPS capacity; three annual parcel-tax payments; one current parcel-tax bill; and eight historical Via West Inc. estimated-actual-value observations. Stream's facilities at 1706 and 1708 West Creek Lane, the IP Stream Minneapolis LLC development agreement and its municipal rebates are outside the selected 3500 Lyman Boulevard project boundary and are not duplicated in this fragment; the six base Stream rebate rows require reassignment or removal from this target by the orchestrator because project fragments are append-only. Permit values are administrative estimates and are not summed because scopes may overlap. The current parcel-tax series includes all taxing jurisdictions and special assessments, not City-only receipts or net benefit, and the older citywide taxpayer series is not stitched to current parcel or Flexential values without a direct crosswalk. No synthesis fragment is added because direct observations and even a usable project projection were not found for construction labor, realized operating employment or payroll, supplier payments, metered energy or water, emissions, facility-specific incentive value, public-service costs, community transfers, or a causal county effect. prj_study_im3_building_00172739953: Second-pass public-evidence audit for Switch Las Vegas NAP7, the individual real-property parcel and original SUPERNAP building at 7135 South Decatur Boulevard. The review covered Clark County assessor, Treasurer, Accela permit, planning, air-quality, budget and financial-report access points; Nevada GOED, Department of Taxation and utility-regulatory sources; Switch operator, SEC, career and ESG materials; supplier and contractor references; and recipient-reported community records for 2005-2026. Six direct observations are added without allocating wider Core Campus capital expenditure, combined incentive audits, later facilities or expansions, personal property, tenant equipment, vendor equipment, or company-wide employment to NAP7. The Treasurer record corrects the earlier research note that payment records were uncollected, but the current payment is only a partial fiscal-year amount. No synthesis fragment is added: NAP4 was already operating while NAP7 was under construction in 2008, and the available county panel cannot isolate a NAP7 treatment from earlier facilities, later Core Campus growth, or major non-data-center shocks. NAP7 employment, payroll, local supplier payments, metered electricity and water, personal-property tax, realized abatement, jurisdictional tax receipts, project-attributable public costs, and a net fiscal result remain unobserved. prj_study_im3_building_00214321737: Second-pass public-evidence audit for Markley Group's Lowell data center at 2 Prince Avenue/1 Markley Way in Lowell, Middlesex County. The selected IM3 footprint is one building inside a three-building assessor parcel, so every added value remains at campus or company/county scope and is unallocated to the selected building. State and City records add Phase I forecasts, cumulative investment, operating-headcount, TIF-savings and incentive evidence; the assessor and tax portal add annual real-property stocks and one complete billed-tax year; permit reports add discrete administrative construction values and contractor names; MassDEP adds a permit-listed generator count; and a recipient page verifies one community contribution. Forecasts, cumulative values, parcel stocks, billed taxes, permit values, permit-authorized equipment, white-space area and recipient funding remain distinct and non-additive. Searches of planning and permit files, incentive and compliance reports, assessor and fiscal records, utility and environmental materials, operator disclosures, contractor and supplier pages, workforce and procurement records, community recipients, archives and repository county panels found no audited annual construction outlay, construction workforce or payroll, vendor payments or local-purchase share, facility payroll, metered annual electricity, project-attributable utility upgrade cost, annual water series matching the evidence vocabulary, wastewater, actual emissions, cash tax receipts, marginal public-service cost, fiscal net or causal county outcome. No model is added because the missing allocation and expenditure anchors cannot be bounded defensibly and Markley is not a clean first data-center entry in Middlesex County. prj_study_im3_building_00364289074: Corrective public-source audit for Microsoft's data-center property at 5150 Rogers Road and explicitly labeled wider Microsoft/Bexar County activity. Exact-site ordinance, permit, appraisal, and tax-account records remain separate from later campuses and regional disclosures; the three appraisal accounts and two taxable-account payments are not consolidated. Permit value is administrative, the original investment and employment figures are commitments, the 2013 employment threshold is a reported lower bound, and the water quantity is a projection rather than metered consumption. No Bexar-and-Medina total is allocated to this property. Annual construction expenditure, construction labor and residence, supplier payments, operating payroll and purchases, recipient-level tax distributions, marginal public-service cost, electricity consumption, water withdrawal or consumption, wastewater, actual emissions, and a recurring facility-level community series remain unobserved after the documented searches. prj_study_im3_building_00377585075: Corrective DET01 evidence audit. Official parcel, permit, tax, water-account, state-certificate, EPA and operator records are retained as direct observations or clearly labeled source forecasts. Conflicting floor-area figures remain separate because their reporting definitions differ. Construction cost, realized jobs, supplier payments, community funding, electricity, emissions, wastewater, actual public-service cost and causal county effects remain unbounded rather than being filled with transferred assumptions. prj_study_im3_building_00460089167: Corrective primary-source audit adds current Andale parcel assessment, contractor-reported campus floor area, and two recipient- or government-reported Meta community grants. The search trail records useful and negative results across identity, tax, construction, jobs, suppliers, utilities, water, permits, public costs, incentives, community funding, and county comparison inputs. Campus-wide facts remain unallocated to the selected inventory building, overlapping community amounts are not added together, and unavailable supplier, payroll, utility-billing, discharge, generator, and marginal-service-cost amounts remain explicit gaps. prj_study_im3_building_00464097467: Second-pass public-evidence audit for Apple's Washoe County data-center campus at 21505 Reno Technology Parkway West and its 2024 expansion application. GOED audit findings, application forecasts, county permit values, parcel assessments, a water-right allocation, operator-reported electricity use, and recipient-reported donation bands remain separate evidence states and scopes. Permit values are administrative amounts and are not summed because overlapping scopes cannot be ruled out. Assessment values are parcel stocks, not investment or tax receipts. The 125 acre-foot water right is regulatory capacity, not measured use. Food Bank gifts are company-region transfers, not campus-attributable annual spending. No campus total is allocated to the selected mapped building; the four-building campus, later buildout cases, downtown Reno warehouse, supporting renewable projects, fire-station parcel, and more-than-200-person support statement are not collapsed into one footprint. No Switch Citadel or Storey County amount enters this fragment. Vendor payments, worker residence, taxes received by jurisdiction, realized 2024 abatement, same-scope public-service cost, wastewater, and building-level electricity or water remain unobserved. prj_study_im3_building_00598261190: Second-pass public-evidence audit for the State Farm data center at 24400 West Valley Parkway in Olathe, Kansas. The account adds two official City permit values and SEC-reported property area, occupancy and critical-IT-load snapshots while keeping permit values, estimated cumulative capital spending, parcel assessments, tax bills and tax payments as distinct measures. The search trail covers parcel and fiscal records, construction and suppliers, operations and workforce, incentives, utility and environmental regulation, community activity, planning, public costs and county outcomes. No site-level employment, payroll, supplier payment, community transfer, metered electricity or water, incentive amount, marginal public-service cost, net fiscal position or attributable county effect is inferred from public material. prj_study_im3_building_00626785488: Second-pass public-evidence audit for the individual 654,433-square-foot IM3-mapped building footprint within Meta's Los Lunas data-center campus at 4250 Messenger Loop NW. The review covered the original campus chronology and 2016 industrial-revenue-bond package; Village budgets, audits, LEDA and dedicated infrastructure funds, planning, building, traffic, fire and water records; Valencia County assessor and clerk access; New Mexico economic-development, workforce, Construction Industries Division, Public Regulation Commission and Environment Department materials; PNM regulatory filings; Meta operator, SEC, contractor, career and grant materials; recipient-reported community records; and federal environmental and county-outcome access through September 6, 2026. Fifteen new direct observations are added alongside the two retained baseline observations, all at unallocated campus, company-county or supporting-infrastructure scope because no public source crosswalks the selected IM3 footprint to a separately named building, permit, parcel, workforce, utility meter or fiscal account. The later 2021 two-building expansion, 2023 three-building expansion load, 2025 AI expansion, off-site renewable projects, tenant equipment and other Meta facilities are excluded. No synthesis fragment is added because the selected building's operating date is not identified and the original six-building construction and operating sequence cannot support an isolated county treatment. Building-level capital expenditure, permits and fees, payroll, resident employment, supplier payments, metered electricity and water, utility bills, tax or PILOT payments, cash value of realized abatements, public-service costs and net fiscal results remain unobserved. prj_study_im3_building_00664938835: Second-pass public-evidence audit for Expedient's adaptive reuse of the pre-existing data-center building at 4777 W Ironwood Drive. The review searched Franklin planning, agenda, assessment, permit, water and sewer materials; Milwaukee County tax and deed-record access points; Wisconsin DOR, WEDC, DFI and PSC records; operator press, specification, career, ESG and community pages; lease, financing, carrier and vendor disclosures; and archived official pages for 2007-2026. Opening-day and current operator specifications remain separate dated snapshots because the reported area and capacity changed. The county portal now establishes a 2021-2025 parcel-tax principal series, but not Expedient's incidence under the lease. The 2022 ownership transfer, assessments, estimated permit values, tax payments and hiring plan remain non-additive. No source was found for actual construction outlays, realized site employment or payroll, local procurement, Milwaukee-area community transfers, metered resources, project-attributable public costs or a fiscal net. prj_study_im3_building_00888253616: Second-pass public-evidence audit for NTT Silicon Valley SV1 at 1160 Walsh Avenue, Santa Clara. The review reconciles the planning-era 1150 Walsh address to APN 224-58-003; adds the finaled principal permit, its administrative job value, current operator specifications, emergency-generator authorization and the parcel's regular-bill payment history; and leaves supplemental bills separate to avoid double counting. Public sources still do not establish realized site employment or payroll, total project investment, supplier payments, project-specific community transfers, metered resources, or project-attributable public-service costs. prj_study_im3_building_01024051963: Corrective source audit for the Meta Eagle Mountain campus and the selected IM3 building footprint in Utah County. Campus, company-county, and supporting-infrastructure observations remain explicitly unallocated to the selected building; later expansion areas and unrelated Eagle Mountain data-center developers are excluded unless a source establishes continuity. prj_study_im3_building_01073720208: Second-pass public-evidence audit for Google's Council Bluffs data-center activity, retaining the selected inventory building as the project key while leaving campus, taxpayer-account, company-county, and state-award facts at their reported scopes. The audit distinguishes completed IEDA contracts 08-HQJC-030 and 12-HQJP-051 from the 2022 award still in performance; permit valuations remain administrative amounts rather than expenditure; assessed and taxable values remain stocks; bills remain distinct from payments; and community grants remain recipient- and period-specific. The Pottawattamie County tax portal now supplies a paid 2018-2024 series for the principal Tetra parcel and an unpaid 2025 bill for the newer Questa parcel. No value is inferred for sales-tax exemptions, the local abatement schedule, franchise-fee adjustment, electricity, supplier retention, building-level water, marginal public-service cost, or net fiscal position. Models without defensible project allocation or transferable parameters were removed even though that leaves the eight-category account incomplete. prj_study_im3_building_01132541700: Corrective primary-source audit adds two county taxable-account observations, state-verified incentive-compliance thresholds, current operator-reported jobs and community funding, one county-received grant, facility electricity use, supporting renewable capacity, and the 2018 expansion forecast. The search trail covers identity, land use, permits, assessor and fiscal records, incentives, public costs, utilities, water, suppliers, courts, bonds, community funding, and federal county outcomes. Most public evidence covers the multi-building Henrico campus or Scout Development's county account and remains unallocated to the selected inventory building; overlapping funding and investment figures are not summed, and unavailable supplier payments, utility bills, tax receipts, incentive costs, payroll, and marginal public-service costs remain explicit gaps. prj_study_im3_campus_00231769626: Second-pass public-evidence audit for Google's The Dalles campus in Wasco County. The fragment preserves the baseline 2023-2025 Google LLC and Design LLC tax-bill and assessed-value series and the documented $28.5 million water-infrastructure project, and adds only incremental evidence. Business Oregon supplies a dated three-facility operating snapshot and separately bounded Project 1 and Project 2 SIP forecasts; City of The Dalles planning files and contractor/permit records document later River Road construction without treating permit valuations as spending. A recipient record verifies one local grant. Searches of assessor and treasurer records, budgets and agreements, planning and permit systems, utility and environmental records, operator ESG/careers materials, contractors, suppliers, workforce sources, nonprofit recipients, archives and structured portals found no audited construction outlay, local supplier spend, facility payroll, employee residence, project-attributable utility cost or load, realized abatement ledger, same-scope public service cost, or fiscal net. Statewide Google totals and system-wide utility loads are excluded from campus claims.",
+  "economic_scope_note": "Reviewed evidence batches at campus or company/county scope. No record is allocated to an individual inventory building. Source checking establishes what a document reports, not an independent audit or causal attribution. Monetary figures are nominal. Peak workforce is distinct from annual employment; source-year labels do not establish fiscal-year boundaries. Original forecasts remain forecasts until realization is verified. No cross-record benefit total is defined. Cumulative project costs are not annual expenditure. Tax receipts and incentive payments remain separate, with inferred taxpayer links disclosed. Contextual research updates do not count as economic amounts. Account tax bills are distinct from cash receipts and incentive-program fees. Tax years, calendar years and fiscal years retain their source basis; separate taxpayer accounts are not consolidated. Municipal developer rebates and taxpayer valuations have distinct subjects. Estimated actual property value and tax capacity are not tax receipts; payable-year valuations retain their earlier assessment date. Taxpayer values expressed in millions retain approximate precision and account-level separation. A current-year table can use an older valuation date and is not converted into an annual series. Facility real-property and business-personal-property accounts remain separate, and address-label discrepancies are disclosed. Michigan Industrial Facilities Tax accounts remain distinct from the underlying real parcel and from post-expiration personal-property accounts; annual account totals are not recipient-level government receipts. Permit construction values are administrative project amounts, not verified expenditure, and separate permits are not combined without proof that their scopes do not overlap. Repeated maintenance-year assessments are annual parcel stocks, not new investment flows. Mixed-use parcel assessments and taxable values are retained at whole-parcel scope and are not allocated to a data-center tenant or function by floor area. Operator-reported jobs supported remain distinct from direct employees and FTEs. Approved infrastructure grants are documented public commitments rather than verified disbursements or total public costs. Cumulative community funding remains separate from tax receipts, payroll and modeled multiplier effects. Reported facility power capacity is not measured electricity consumption or peak demand. Permit-listed emergency generators are not runtime, fuel-use or actual-emissions observations. A city largest-taxpayer table's personal-property assessment remains separate from the leasehold real-property account, tax bills, receipts and capital expenditure. TIF loan principal is financing rather than a grant or general-fund receipt; project-generated tax revenue pledged to repayment is retained as a separate public-financing flow and is not added to gross parcel distributions. Water-withdrawal and consumptive permit capacities are regulatory limits rather than measured use. Development-agreement local-labor preferences are requirements rather than realized participation, and operating employee snapshots remain distinct from customers' on-site staff and jobs forecasts. Audited City bond statements distinguish issuance draws, year-end principal, annual principal retired, interest and fees, pledged TIF revenue, debt-service-fund transfers and future principal-plus-interest commitments. These measures are not summed into a benefit or subsidy total. City pledged revenue, City debt-service-fund transfers and the private fund's project TIF revenue applied to loan repayment retain their separate source definitions because only the 2022 transfer and private-fund amount agree exactly. Developer testimony in public meeting minutes is retained as a source-attributed cumulative lower bound; local-contractor spending is not converted into payroll, worker counts, household spending or multiplier effects. Economic-improvement-district cost estimates and maximum owner assessments remain source projections until bond issuance, an assessment schedule, collections and expenditures are verified. A statutory financing cap is not a tax receipt, public expenditure or subsidy. Audited private equipment-financing balances are debt stocks rather than construction spending, public support or community benefit. Reported floor area and occupied-share values describe operating scale and utilization, not employment, revenue, power use or economic output. Contractor and engineer case studies document supplier roles and completion timing but do not establish payment amounts, worker residence, payroll or multiplier effects. State incentive contract amounts, expected jobs and paid-or-certified-to-date fields remain distinct; a zero paid/certified balance at an earlier reporting cutoff does not imply no later claims. Public charging-infrastructure awards are commitments rather than verified disbursements, private project investment or operating benefits. Qualitative payment descriptions without a defensible numeric bound remain research context rather than quantitative records. Program-reported actual qualified investment, certified tax-exemption value and certified tax-credit value remain separate cumulative measures; none is converted into annual spending, a cash grant, local revenue or causal impact. County Business Patterns observations are county-industry context, not project contributions: establishment counts are employer locations rather than data-center facilities, March employment is not an annual average, annual payroll spans the full NAICS cell, and disclosure noise, classification changes and geographic assignment limit comparisons. No CBP change is attributed to a study project. Project fragments: prj_study_im3_building_00052227492: Deep public-evidence audit for Flexential's Minneapolis-Chaska data center on parcel 30.0590020 at 3500 Lyman Boulevard. The review covered Carver County parcel, tax and property-record access points; City of Chaska permit, inspection, agenda, archive, budget, utility and annual-financial-report sources; Minnesota DEED, Revenue, statutory, environmental and utility-regulatory sources; federal workplace-safety search access; current and archived operator, predecessor, career and ESG materials; contractor and supplier references; and education, workforce and recipient-reported community sources for 2013-2026. Eighteen quantitative observations are preserved: a source-projected original investment lower bound; three later non-cumulative permit values; current floor area and critical-load UPS capacity; three annual parcel-tax payments; one current parcel-tax bill; and eight historical Via West Inc. estimated-actual-value observations. Stream's facilities at 1706 and 1708 West Creek Lane, the IP Stream Minneapolis LLC development agreement and its municipal rebates are outside the selected 3500 Lyman Boulevard project boundary and are not duplicated in this fragment; the six base Stream rebate rows require reassignment or removal from this target by the orchestrator because project fragments are append-only. Permit values are administrative estimates and are not summed because scopes may overlap. The current parcel-tax series includes all taxing jurisdictions and special assessments, not City-only receipts or net benefit, and the older citywide taxpayer series is not stitched to current parcel or Flexential values without a direct crosswalk. No synthesis fragment is added because direct observations and even a usable project projection were not found for construction labor, realized operating employment or payroll, supplier payments, metered energy or water, emissions, facility-specific incentive value, public-service costs, community transfers, or a causal county effect. prj_study_im3_building_00172739953: Second-pass public-evidence audit for Switch Las Vegas NAP7, the individual real-property parcel and original SUPERNAP building at 7135 South Decatur Boulevard. The review covered Clark County assessor, Treasurer, Accela permit, planning, air-quality, budget and financial-report access points; Nevada GOED, Department of Taxation and utility-regulatory sources; Switch operator, SEC, career and ESG materials; supplier and contractor references; and recipient-reported community records for 2005-2026. Six direct observations are added without allocating wider Core Campus capital expenditure, combined incentive audits, later facilities or expansions, personal property, tenant equipment, vendor equipment, or company-wide employment to NAP7. The Treasurer record corrects the earlier research note that payment records were uncollected, but the current payment is only a partial fiscal-year amount. No synthesis fragment is added: NAP4 was already operating while NAP7 was under construction in 2008, and the available county panel cannot isolate a NAP7 treatment from earlier facilities, later Core Campus growth, or major non-data-center shocks. NAP7 employment, payroll, local supplier payments, metered electricity and water, personal-property tax, realized abatement, jurisdictional tax receipts, project-attributable public costs, and a net fiscal result remain unobserved. prj_study_im3_building_00214321737: Second-pass public-evidence audit for Markley Group's Lowell data center at 2 Prince Avenue/1 Markley Way in Lowell, Middlesex County. The selected IM3 footprint is one building inside a three-building assessor parcel, so every added value remains at campus or company/county scope and is unallocated to the selected building. State and City records add Phase I forecasts, cumulative investment, operating-headcount, TIF-savings and incentive evidence; the assessor and tax portal add annual real-property stocks and one complete billed-tax year; permit reports add discrete administrative construction values and contractor names; MassDEP adds a permit-listed generator count; and a recipient page verifies one community contribution. Forecasts, cumulative values, parcel stocks, billed taxes, permit values, permit-authorized equipment, white-space area and recipient funding remain distinct and non-additive. Searches of planning and permit files, incentive and compliance reports, assessor and fiscal records, utility and environmental materials, operator disclosures, contractor and supplier pages, workforce and procurement records, community recipients, archives and repository county panels found no audited annual construction outlay, construction workforce or payroll, vendor payments or local-purchase share, facility payroll, metered annual electricity, project-attributable utility upgrade cost, annual water series matching the evidence vocabulary, wastewater, actual emissions, cash tax receipts, marginal public-service cost, fiscal net or causal county outcome. No model is added because the missing allocation and expenditure anchors cannot be bounded defensibly and Markley is not a clean first data-center entry in Middlesex County. prj_study_im3_building_00364289074: Corrective public-source audit for Microsoft's data-center property at 5150 Rogers Road and explicitly labeled wider Microsoft/Bexar County activity. Exact-site ordinance, permit, appraisal, and tax-account records remain separate from later campuses and regional disclosures; the three appraisal accounts and two taxable-account payments are not consolidated. Permit value is administrative, the original investment and employment figures are commitments, the 2013 employment threshold is a reported lower bound, and the water quantity is a projection rather than metered consumption. No Bexar-and-Medina total is allocated to this property. Annual construction expenditure, construction labor and residence, supplier payments, operating payroll and purchases, recipient-level tax distributions, marginal public-service cost, electricity consumption, water withdrawal or consumption, wastewater, actual emissions, and a recurring facility-level community series remain unobserved after the documented searches. prj_study_im3_building_00377585075: Corrective DET01 evidence audit. Official parcel, permit, tax, water-account, state-certificate, EPA and operator records are retained as direct observations or clearly labeled source forecasts. Conflicting floor-area figures remain separate because their reporting definitions differ. Construction cost, realized jobs, supplier payments, community funding, electricity, emissions, wastewater, actual public-service cost and causal county effects remain unbounded rather than being filled with transferred assumptions. prj_study_im3_building_00460089167: Corrective primary-source audit adds current Andale parcel assessment, contractor-reported campus floor area, and two recipient- or government-reported Meta community grants. The search trail records useful and negative results across identity, tax, construction, jobs, suppliers, utilities, water, permits, public costs, incentives, community funding, and county comparison inputs. Campus-wide facts remain unallocated to the selected inventory building, overlapping community amounts are not added together, and unavailable supplier, payroll, utility-billing, discharge, generator, and marginal-service-cost amounts remain explicit gaps. prj_study_im3_building_00464097467: Second-pass public-evidence audit for Apple's Washoe County data-center campus at 21505 Reno Technology Parkway West and its 2024 expansion application. GOED audit findings, application forecasts, county permit values, parcel assessments, a water-right allocation, operator-reported electricity use, and recipient-reported donation bands remain separate evidence states and scopes. Permit values are administrative amounts and are not summed because overlapping scopes cannot be ruled out. Assessment values are parcel stocks, not investment or tax receipts. The 125 acre-foot water right is regulatory capacity, not measured use. Food Bank gifts are company-region transfers, not campus-attributable annual spending. No campus total is allocated to the selected mapped building; the four-building campus, later buildout cases, downtown Reno warehouse, supporting renewable projects, fire-station parcel, and more-than-200-person support statement are not collapsed into one footprint. No Switch Citadel or Storey County amount enters this fragment. Vendor payments, worker residence, taxes received by jurisdiction, realized 2024 abatement, same-scope public-service cost, wastewater, and building-level electricity or water remain unobserved. prj_study_im3_building_00598261190: Second-pass public-evidence audit for the State Farm data center at 24400 West Valley Parkway in Olathe, Kansas. The account adds two official City permit values and SEC-reported property area, occupancy and critical-IT-load snapshots while keeping permit values, estimated cumulative capital spending, parcel assessments, tax bills and tax payments as distinct measures. The search trail covers parcel and fiscal records, construction and suppliers, operations and workforce, incentives, utility and environmental regulation, community activity, planning, public costs and county outcomes. No site-level employment, payroll, supplier payment, community transfer, metered electricity or water, incentive amount, marginal public-service cost, net fiscal position or attributable county effect is inferred from public material. prj_study_im3_building_00626785488: Second-pass public-evidence audit for the individual 654,433-square-foot IM3-mapped building footprint within Meta's Los Lunas data-center campus at 4250 Messenger Loop NW. The review covered the original campus chronology and 2016 industrial-revenue-bond package; Village budgets, audits, LEDA and dedicated infrastructure funds, planning, building, traffic, fire and water records; Valencia County assessor and clerk access; New Mexico economic-development, workforce, Construction Industries Division, Public Regulation Commission and Environment Department materials; PNM regulatory filings; Meta operator, SEC, contractor, career and grant materials; recipient-reported community records; and federal environmental and county-outcome access through September 6, 2026. Fifteen new direct observations are added alongside the two retained baseline observations, all at unallocated campus, company-county or supporting-infrastructure scope because no public source crosswalks the selected IM3 footprint to a separately named building, permit, parcel, workforce, utility meter or fiscal account. The later 2021 two-building expansion, 2023 three-building expansion load, 2025 AI expansion, off-site renewable projects, tenant equipment and other Meta facilities are excluded. No synthesis fragment is added because the selected building's operating date is not identified and the original six-building construction and operating sequence cannot support an isolated county treatment. Building-level capital expenditure, permits and fees, payroll, resident employment, supplier payments, metered electricity and water, utility bills, tax or PILOT payments, cash value of realized abatements, public-service costs and net fiscal results remain unobserved. prj_study_im3_building_00664938835: Second-pass public-evidence audit for Expedient's adaptive reuse of the pre-existing data-center building at 4777 W Ironwood Drive. The review searched Franklin planning, agenda, assessment, permit, water and sewer materials; Milwaukee County tax and deed-record access points; Wisconsin DOR, WEDC, DFI and PSC records; operator press, specification, career, ESG and community pages; lease, financing, carrier and vendor disclosures; and archived official pages for 2007-2026. Opening-day and current operator specifications remain separate dated snapshots because the reported area and capacity changed. The county portal now establishes a 2021-2025 parcel-tax principal series, but not Expedient's incidence under the lease. The 2022 ownership transfer, assessments, estimated permit values, tax payments and hiring plan remain non-additive. No source was found for actual construction outlays, realized site employment or payroll, local procurement, Milwaukee-area community transfers, metered resources, project-attributable public costs or a fiscal net. prj_study_im3_building_00844389014: Second-pass direct-evidence audit for Google Clarksville in Montgomery County, Tennessee. The review covered Tennessee Comptroller industrial-development-board PILOT filings for 2019-2025; the Montgomery County assessor GIS parcel service and Trustee tax-bill portal; parcel-linked stormwater files; Clarksville-Montgomery County Regional Planning Commission materials; IDB, county-commission and city agenda archives; state and federal environmental portals; operator location, environmental, economic-impact and watershed materials; utility annual reports; and public workforce, contractor, procurement and recipient sources. Fifty-eight incremental quantitative observations are preserved: thirteen annual Foxman LLC estimated-actual-property-value stocks, eighteen account-level appraised-value stocks, eighteen account-level zero tax levies, a realized opening-period employee snapshot, a construction-workforce projection, and seven recipient-specific community contributions. The direct Trustee records resolve the ordinary tax bills as 0%-taxable, zero-assessed-taxable-value, zero-levy bills; they do not resolve the separate contractual PILOT payments left blank in state filings, and the portal's generic paid/zero-balance label is not treated as a cash receipt. The selected inventory key is one building, while parcel, account and environmental evidence is campus or company/county scoped and remains unallocated. Statewide investment and modeled impact totals, shared Alabama-Tennessee renewable capacity, regional watershed contributions, vendor presence without paid-contract evidence, and proposals for later Building 13 work are excluded from canonical project records. A single optional synthesis reproduces the operator's 2024 Montgomery County water-consumption identity at unallocated location scope; no multiplier, supplier-retention, fiscal-net, public-cost, energy, payroll or causal county model is created. prj_study_im3_building_00888253616: Second-pass public-evidence audit for NTT Silicon Valley SV1 at 1160 Walsh Avenue, Santa Clara. The review reconciles the planning-era 1150 Walsh address to APN 224-58-003; adds the finaled principal permit, its administrative job value, current operator specifications, emergency-generator authorization and the parcel's regular-bill payment history; and leaves supplemental bills separate to avoid double counting. Public sources still do not establish realized site employment or payroll, total project investment, supplier payments, project-specific community transfers, metered resources, or project-attributable public-service costs. prj_study_im3_building_01024051963: Corrective source audit for the Meta Eagle Mountain campus and the selected IM3 building footprint in Utah County. Campus, company-county, and supporting-infrastructure observations remain explicitly unallocated to the selected building; later expansion areas and unrelated Eagle Mountain data-center developers are excluded unless a source establishes continuity. prj_study_im3_building_01073720208: Second-pass public-evidence audit for Google's Council Bluffs data-center activity, retaining the selected inventory building as the project key while leaving campus, taxpayer-account, company-county, and state-award facts at their reported scopes. The audit distinguishes completed IEDA contracts 08-HQJC-030 and 12-HQJP-051 from the 2022 award still in performance; permit valuations remain administrative amounts rather than expenditure; assessed and taxable values remain stocks; bills remain distinct from payments; and community grants remain recipient- and period-specific. The Pottawattamie County tax portal now supplies a paid 2018-2024 series for the principal Tetra parcel and an unpaid 2025 bill for the newer Questa parcel. No value is inferred for sales-tax exemptions, the local abatement schedule, franchise-fee adjustment, electricity, supplier retention, building-level water, marginal public-service cost, or net fiscal position. Models without defensible project allocation or transferable parameters were removed even though that leaves the eight-category account incomplete. prj_study_im3_building_01132541700: Corrective primary-source audit adds two county taxable-account observations, state-verified incentive-compliance thresholds, current operator-reported jobs and community funding, one county-received grant, facility electricity use, supporting renewable capacity, and the 2018 expansion forecast. The search trail covers identity, land use, permits, assessor and fiscal records, incentives, public costs, utilities, water, suppliers, courts, bonds, community funding, and federal county outcomes. Most public evidence covers the multi-building Henrico campus or Scout Development's county account and remains unallocated to the selected inventory building; overlapping funding and investment figures are not summed, and unavailable supplier payments, utility bills, tax receipts, incentive costs, payroll, and marginal public-service costs remain explicit gaps. prj_study_im3_campus_00019988712: Second-pass direct-evidence audit for Meta's Prineville data-center campus at 735 SW Connect Way in Prineville, Crook County. The selected IM3 entity is the campus, not one PRN building, every Vitesse-owned county parcel, Apple's separate campus, or Meta's statewide and global portfolios. The fragment now separates annual company-level potential additional tax from facility-level 2024-25 exemption values, taxable Vitesse totals from exempt account values, billed tax from payment status, agreement schedules from realized distributions, and one exact permit valuation from construction expenditure. Business Oregon identifies all three long-term-rural-zone facilities; Crook County's public assessor portal resolves 25 current Vitesse/Meta accounts across nine map-tax-lot strings and provides an annual history for exact-address account 19380; and Oregon ePermitting supplies an exact permit, contractor, project description and job value. Projections remain projections, overlapping summary/detail tax records are not summed, and multi-company budgets are not allocated. Realized Meta-only PILOT distributions, a reconciled all-account exemption roll, construction payroll/job-years, supplier payments/local-spend share, same-scope public-service costs, campus water bills, and causal county effects remain unavailable. prj_study_im3_campus_00231769626: Second-pass public-evidence audit for Google's The Dalles campus in Wasco County. The fragment preserves the baseline 2023-2025 Google LLC and Design LLC tax-bill and assessed-value series and the documented $28.5 million water-infrastructure project, and adds only incremental evidence. Business Oregon supplies a dated three-facility operating snapshot and separately bounded Project 1 and Project 2 SIP forecasts; City of The Dalles planning files and contractor/permit records document later River Road construction without treating permit valuations as spending. A recipient record verifies one local grant. Searches of assessor and treasurer records, budgets and agreements, planning and permit systems, utility and environmental records, operator ESG/careers materials, contractors, suppliers, workforce sources, nonprofit recipients, archives and structured portals found no audited construction outlay, local supplier spend, facility payroll, employee residence, project-attributable utility cost or load, realized abatement ledger, same-scope public service cost, or fiscal net. Statewide Google totals and system-wide utility loads are excluded from campus claims. prj_study_im3_campus_00675108684: Project-scoped audit of Microsoft’s bounded Boydton/East Coast/LVL campus in Mecklenburg County adds direct parcel, permit, expansion, performance, portfolio, infrastructure, construction and community evidence. Reported actuals remain distinct from announcement projections, and countywide portfolio figures remain unallocated. A dedicated last-resort eligibility pass adds only deterministic normalization and same-period arithmetic: the five-year average of reported portfolio property taxes, its explicitly conditional public-cost break-even identity, and annual sums of identified FY2024 and FY2025 LVL/Herbert Fund 301 components; achieved phase investment and jobs plus resource/construction measures remain unsummed because their overlap, timing, or required inputs are unresolved.",
   "evidence_version": "study-economic-evidence-1.37.0",
-  "modeled_syntheses": [],
-  "modeled_sources": [],
-  "modeled_scope_note": "Modeled contribution accounts for Apple Mesa / Maricopa County, Switch Citadel / Storey County, and Digital Crossroad Hammond / Lake County. Every required account category and county-comparison module contains sourced evidence or a visibly labeled modeled value. Public support is not netted against unmatched local revenues, unavailable public-service cost is represented by a break-even threshold rather than an invented net margin, county comparisons are descriptive rather than causal, and low-confidence transferred benchmarks remain explicit. Project fragments: prj_study_im3_building_00364289074: Corrective residual modeled account for Microsoft San Antonio. Eight transferred construction, labor, procurement, operating, and household-output scenarios were removed because their arbitrary capital shares, forecast-realization cases, local-purchase assumptions, and Virginia coefficients were not bounded by project observations. Only three low-confidence descriptive county comparisons remain: each uses the project's documented operating-by 2013 anchor and official Bexar County outcome data, has a finite fit-sensitivity envelope, and explicitly makes no causal attribution. The account intentionally remains incomplete because no defensible direct observation or residual model closes the supplier category. prj_study_im3_building_00377585075: Corrective DET01 synthesis. Only exact same-period tax-account arithmetic, its explicitly conditional public-cost break-even identity and a unit conversion of displayed municipal meter history remain. Construction, employment, supplier, household, electricity, cooling, emissions, wastewater and county-effect models were removed because the audit did not bound the missing project inputs. This account is intentionally incomplete where direct evidence remains unbounded. prj_study_im3_building_00460089167: Corrective audit retains six bounded residual calculations only: FY2025 county tax retained after the provisionally linked incentive, the identical marginal-service-cost break-even threshold, conversion of Meta-reported 2024 water withdrawal with source rounding, and three noncausal county comparison gaps with fit sensitivity. Ten models based on arbitrary capital timing, cost shares, FTE ratios, transferred operating/construction multipliers, fleet PUE, or wastewater ratios are removed. Supplier/local-procurement evidence remains unavailable, so the project is intentionally incomplete rather than backfilled. prj_study_im3_building_00464097467: Second-pass modeled contribution account after an expanded public-evidence audit. Direct county permits now cover historical construction values, assessor rolls cover a main-campus parcel stock, a county action covers water-right capacity, Apple reports 2025 campus electricity use, and recipient reports bound two community gifts. Those observations supersede the need for a modeled community proxy but do not supply Apple contractor job-years, construction payroll, annual operating payroll, supplier payments, taxes received, or public-service cost. The construction base therefore retains only the packet's explicit $163 million construction forecast and excludes equipment and historical capital; wide 0.5-1.5 transfer sensitivities expose the mismatch in the last-resort direct construction coefficients. The unsupported local-purchase-share and Virginia induced-output models are removed. No net-fiscal value or public-service-cost break-even is published. County outcome gaps remain descriptive benchmark applications with fit-sensitivity intervals and no causal-design metadata. prj_study_im3_building_00664938835: Second-pass Expedient Milwaukee / Franklin syntheses retained only after a documented 2007-2026 public-source audit. The account keeps a clearly labeled 2022 ownership-transfer anchor, a PB25-0303-only construction allocation sensitivity, an exact tax-equal public-cost break-even threshold, a capacity-based electricity engineering sensitivity, and three descriptive county comparison gaps. It removes transferred construction job-years, assumed local-purchase shares, supplier and household output extrapolations, and a duplicate modeled tax row because public sources did not establish realized site employment, supplier geography, household capture, or a need to restate the direct tax observations. PM25-0174 remains excluded for possible overlap. No synthesis is an observed result or fiscal net. prj_study_im3_building_00888253616: Residual synthesis after the SV1 public-source audit. It retains one exact tax-equal public-cost break-even threshold and three reproducible but low-confidence county comparison gaps. The county gaps use 2013-2020 pre-opening histories and an inverse-distance-weighted 20-county benchmark; very wide fit envelopes are retained because Santa Clara County matches poorly. No model converts capacity to consumption, permit value to jobs, or unidentified vendor and community activity to local benefits. prj_study_im3_building_01073720208: Second-pass governed synthesis for Google Council Bluffs. Construction job-years use only two directly observed September 2025 city permit valuations and transfer the published Prince William County prototype coefficients as benchmark equivalents; the four channels are separated and protected by one aggregation. No Pottawattamie County supplier-retention share is imposed because the public audit found contractor names but no payment or vendor-residence ledger. The water row is the unallocated Google Council Bluffs location identity reported for 2024, not a building allocation. No local abatement, exemption realization, franchise-fee amount, electric load, public-service cost, break-even threshold, or net fiscal result is modeled. County outcome gaps remain descriptive benchmark applications with fit-sensitivity ranges and no causal attribution. prj_study_im3_building_01132541700: Four bounded syntheses are retained after direct-record search: one deterministic conversion of Meta's rounded 2024 Henrico water-withdrawal observation and three governed, descriptive county comparison gaps. No construction, operating, supplier, household, tax-receipt, incentive-cost, or public-service-cost model is added because the public record lacks the needed project-specific bases and arbitrary allocation shares would create false precision. Every retained estimate is visibly modeled, unallocated to the selected building, non-additive, and noncausal. prj_study_im3_campus_00231769626: Residual synthesis after the Google The Dalles public-source audit. Only three low-confidence descriptive county comparison gaps are retained because the direct record does not identify causal county outcomes. Each benchmark uses the available 2001-2005 pre-opening history, excludes all study counties from a 20-county inverse-distance-weighted donor pool, and carries a fit-sensitivity envelope. No model converts broad investment or permit values to jobs, onsite contractor counts to supplier output, utility-system loads to campus consumption, tax bills to payments, or unmatched incentive formulas and public costs to a fiscal net.",
+  "modeled_syntheses": [
+    {
+      "estimate_id": "est_study_meta_prineville_water_withdrawal_2024",
+      "project_id": "prj_study_im3_campus_00019988712",
+      "metric_code": "study.modeled_annual_water_withdrawal",
+      "label": "Unit-converted annual water withdrawal",
+      "category": "resources",
+      "unit": "gallons_per_year",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 86648433.06,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2024,
+        "label": "Calendar year 2024"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Meta Prineville Data Center campus",
+        "county_fips": "41013",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "reported_band",
+        "low": 86516347.03,
+        "central": 86648433.06,
+        "high": 86780519.08,
+        "interpretation": "The band reflects rounding of the source's displayed 328 megaliters to the nearest whole megaliter before conversion; it is not a confidence interval."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "meta_prineville_water_withdrawal_2024",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "reported_water_withdrawal",
+          "value": 328,
+          "unit": "megaliters",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_meta_environmental_data_index_2025",
+            "detail": "Prineville 2024 water-withdrawal row on document page I"
+          },
+          "transformation": "Converted to U.S. gallons"
+        },
+        {
+          "name": "gallons_per_megaliter",
+          "value": 264172.052,
+          "unit": "gallons_per_megaliter",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Exact unit-conversion factor used for presentation"
+          },
+          "transformation": "Multiplies reported megaliters"
+        }
+      ],
+      "confidence": "medium",
+      "confidence_rationale": "The facility row and conversion are reproducible, but the published amount is rounded and its site-level measurement basis is not specified.",
+      "decision_relevance": "Preserves the public facility-level water observation in a compatible presentation unit while the shared canonical direct-evidence metric is absent.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "not_applicable",
+        "remaining_evidence_gap": "Canonical annual water-withdrawal metric, unrounded meter data, withdrawal source allocation, consumption, reuse, discharge and billing by facility"
+      },
+      "derivation": {
+        "method": "allocation",
+        "model_version": "meta-prineville-account-1.0.0",
+        "formula": "reported Prineville water withdrawal in megaliters × 264,172.052 gallons per megaliter",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_meta_environmental_data_index_2025"
+        ],
+        "assumptions": [
+          "The displayed source value is rounded to the nearest whole megaliter.",
+          "The estimate must not be presented as observed, audited, source-reported or causal."
+        ]
+      },
+      "limitations": [
+        "The source rounds to whole megaliters and permits meter, utility, design-estimate or proxy inputs where applicable.",
+        "Withdrawal is not consumption; no site-specific consumption or discharge value is reported.",
+        "The value is not an audited groundwater-meter or billing record and is not allocated to an individual campus building."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Source-reported facility value carried as a visibly modeled unit conversion because no compatible canonical direct-evidence metric exists.",
+      "reviewed_on": "2026-09-06"
+    }
+  ],
+  "modeled_sources": [
+    {
+      "source_id": "src_study_meta_environmental_data_index_2025",
+      "title": "Meta 2025 Environmental Data Index",
+      "url": "https://sustainability.atmeta.com/wp-content/uploads/2025/10/Meta_2025-Environmental-Data-Index.pdf",
+      "publisher": "Meta Platforms, Inc.",
+      "source_type": "operator_release",
+      "publication_date": {
+        "precision": "year",
+        "year": 2025
+      },
+      "retrieved_on": "2026-09-05",
+      "review_method": "web_pdf_text",
+      "notes": "Facility tables report Forest City electricity consumption of 535,555 MWh, water withdrawal of 16 megaliters, zero market-based Scope 2 emissions and 144,104 metric tons CO2e of location-based Scope 2 emissions for 2024. Values are rounded to whole displayed units and the methodology permits utility, meter, design-estimate or proxy inputs where applicable. Only electricity is normalized as a canonical source record because the shared evidence metric registry lacks compatible annual water-withdrawal and facility-emissions definitions."
+    },
+    {
+      "source_id": "src_study_meta_environmental_data_index_2025",
+      "title": "Meta 2025 Environmental Data Index",
+      "url": "https://sustainability.atmeta.com/wp-content/uploads/2025/10/Meta_2025-Environmental-Data-Index.pdf",
+      "publisher": "Meta Platforms, Inc.",
+      "source_type": "operator_release",
+      "publication_date": {
+        "precision": "year",
+        "year": 2025
+      },
+      "retrieved_on": "2026-09-05",
+      "review_method": "web_pdf_text",
+      "notes": "Facility tables report Forest City 2024 water withdrawal as 16 whole megaliters. The retained resource model performs only unit conversion with a rounding interval; no fleet PUE, cooling allocation or wastewater ratio is transferred."
+    }
+  ],
+  "modeled_scope_note": "Modeled contribution accounts for Apple Mesa / Maricopa County, Switch Citadel / Storey County, and Digital Crossroad Hammond / Lake County. Every required account category and county-comparison module contains sourced evidence or a visibly labeled modeled value. Public support is not netted against unmatched local revenues, unavailable public-service cost is represented by a break-even threshold rather than an invented net margin, county comparisons are descriptive rather than causal, and low-confidence transferred benchmarks remain explicit. Project fragments: prj_study_im3_building_00364289074: Corrective residual modeled account for Microsoft San Antonio. Eight transferred construction, labor, procurement, operating, and household-output scenarios were removed because their arbitrary capital shares, forecast-realization cases, local-purchase assumptions, and Virginia coefficients were not bounded by project observations. Only three low-confidence descriptive county comparisons remain: each uses the project's documented operating-by 2013 anchor and official Bexar County outcome data, has a finite fit-sensitivity envelope, and explicitly makes no causal attribution. The account intentionally remains incomplete because no defensible direct observation or residual model closes the supplier category. prj_study_im3_building_00377585075: Corrective DET01 synthesis. Only exact same-period tax-account arithmetic, its explicitly conditional public-cost break-even identity and a unit conversion of displayed municipal meter history remain. Construction, employment, supplier, household, electricity, cooling, emissions, wastewater and county-effect models were removed because the audit did not bound the missing project inputs. This account is intentionally incomplete where direct evidence remains unbounded. prj_study_im3_building_00460089167: Corrective audit retains six bounded residual calculations only: FY2025 county tax retained after the provisionally linked incentive, the identical marginal-service-cost break-even threshold, conversion of Meta-reported 2024 water withdrawal with source rounding, and three noncausal county comparison gaps with fit sensitivity. Ten models based on arbitrary capital timing, cost shares, FTE ratios, transferred operating/construction multipliers, fleet PUE, or wastewater ratios are removed. Supplier/local-procurement evidence remains unavailable, so the project is intentionally incomplete rather than backfilled. prj_study_im3_building_00464097467: Second-pass modeled contribution account after an expanded public-evidence audit. Direct county permits now cover historical construction values, assessor rolls cover a main-campus parcel stock, a county action covers water-right capacity, Apple reports 2025 campus electricity use, and recipient reports bound two community gifts. Those observations supersede the need for a modeled community proxy but do not supply Apple contractor job-years, construction payroll, annual operating payroll, supplier payments, taxes received, or public-service cost. The construction base therefore retains only the packet's explicit $163 million construction forecast and excludes equipment and historical capital; wide 0.5-1.5 transfer sensitivities expose the mismatch in the last-resort direct construction coefficients. The unsupported local-purchase-share and Virginia induced-output models are removed. No net-fiscal value or public-service-cost break-even is published. County outcome gaps remain descriptive benchmark applications with fit-sensitivity intervals and no causal-design metadata. prj_study_im3_building_00664938835: Second-pass Expedient Milwaukee / Franklin syntheses retained only after a documented 2007-2026 public-source audit. The account keeps a clearly labeled 2022 ownership-transfer anchor, a PB25-0303-only construction allocation sensitivity, an exact tax-equal public-cost break-even threshold, a capacity-based electricity engineering sensitivity, and three descriptive county comparison gaps. It removes transferred construction job-years, assumed local-purchase shares, supplier and household output extrapolations, and a duplicate modeled tax row because public sources did not establish realized site employment, supplier geography, household capture, or a need to restate the direct tax observations. PM25-0174 remains excluded for possible overlap. No synthesis is an observed result or fiscal net. prj_study_im3_building_00844389014: Second-pass model review retains one bounded resource identity only. It reproduces Google-reported 2024 Montgomery County water consumption as withdrawal minus discharge after converting displayed million-gallon values to gallons, with a rounding envelope. Direct searches of Clarksville utility/public-works pages, county stormwater records, TDEC/EPA portals and CDE/TVA materials did not surface a building meter, utility bill or a compatible canonical observed-water metric. The amount remains unallocated across the location and inventory buildings; discharge may be engineering-estimated. No transferred multiplier, supplier-retention assumption, energy proxy, fiscal result, public-cost threshold, payroll estimate or causal county outcome is modeled. prj_study_im3_building_00888253616: Residual synthesis after the SV1 public-source audit. It retains one exact tax-equal public-cost break-even threshold and three reproducible but low-confidence county comparison gaps. The county gaps use 2013-2020 pre-opening histories and an inverse-distance-weighted 20-county benchmark; very wide fit envelopes are retained because Santa Clara County matches poorly. No model converts capacity to consumption, permit value to jobs, or unidentified vendor and community activity to local benefits. prj_study_im3_building_01073720208: Second-pass governed synthesis for Google Council Bluffs. Construction job-years use only two directly observed September 2025 city permit valuations and transfer the published Prince William County prototype coefficients as benchmark equivalents; the four channels are separated and protected by one aggregation. No Pottawattamie County supplier-retention share is imposed because the public audit found contractor names but no payment or vendor-residence ledger. The water row is the unallocated Google Council Bluffs location identity reported for 2024, not a building allocation. No local abatement, exemption realization, franchise-fee amount, electric load, public-service cost, break-even threshold, or net fiscal result is modeled. County outcome gaps remain descriptive benchmark applications with fit-sensitivity ranges and no causal attribution. prj_study_im3_building_01132541700: Four bounded syntheses are retained after direct-record search: one deterministic conversion of Meta's rounded 2024 Henrico water-withdrawal observation and three governed, descriptive county comparison gaps. No construction, operating, supplier, household, tax-receipt, incentive-cost, or public-service-cost model is added because the public record lacks the needed project-specific bases and arbitrary allocation shares would create false precision. Every retained estimate is visibly modeled, unallocated to the selected building, non-additive, and noncausal. prj_study_im3_campus_00019988712: Residual synthesis after the Meta Prineville direct-evidence audit. One medium-confidence unit conversion carries Meta's rounded 2024 facility-level water-withdrawal observation from megaliters to gallons because the shared direct register has no compatible annual-withdrawal metric. The three low-confidence county benchmark comparisons were removed: even with fit-sensitivity envelopes and explicit non-causal labels, they do not materially improve decisions about this campus and remain vulnerable to concurrent Meta expansions, Apple's separate campus and unrelated county changes. No supplier, construction, payroll, household-spending, tax-abatement, public-service-cost or fiscal-net model is retained because local inputs and same-scope evidence are insufficient. prj_study_im3_campus_00231769626: Residual synthesis after the Google The Dalles public-source audit. Only three low-confidence descriptive county comparison gaps are retained because the direct record does not identify causal county outcomes. Each benchmark uses the available 2001-2005 pre-opening history, excludes all study counties from a 20-county inverse-distance-weighted donor pool, and carries a fit-sensitivity envelope. No model converts broad investment or permit values to jobs, onsite contractor counts to supplier output, utility-system loads to campus consumption, tax bills to payments, or unmatched incentive formulas and public costs to a fiscal net. prj_study_im3_campus_00675108684: Dedicated last-resort Boydton model-eligibility pass under study-modeling-policy-1.3.0. Retained syntheses are limited to exact arithmetic over cited compatible observations: a five-fiscal-year average of the operator-reported portfolio property-tax total, its explicitly conditional same-scope public-cost break-even identity, and annual sums of identified LVL/Herbert Fund 301 components. All remain unallocated, modeled rather than observed, and non-additive to their source totals. COF phase investment, operating headcount, construction, resources, suppliers, induced effects, causal comparisons and net fiscal impact were rejected because overlap, timing, scope or required project inputs remain unresolved.",
   "synthesis_version": "study-modeled-synthesis-3.2.0",
   "modeling_policy_version": "study-modeling-policy-1.3.0",
   "analysis_readiness": {
@@ -235,5 +2393,6 @@
     "causal": "not_assessed"
   },
   "legacy_first_entry_note": null,
-  "scope_note": "Provisional private-sector research candidate. Owner/operator history, project boundaries and lifecycle require review. Membership does not verify current operation or establish economic impact."
+  "scope_note": "Provisional private-sector research candidate. Owner/operator history, project boundaries and lifecycle require review. Membership does not verify current operation or establish economic impact.",
+  "project_description": "Meta's Prineville Data Center is a Meta-operated campus at 735 Connect Way in Prineville, Crook County, Oregon, not a single building or statewide portfolio. Facebook broke ground in 2010 and launched the first dedicated facility in 2011; City records identify the original 119.5-acre parcel, while contractor records describe two early 300,000-square-foot data halls and a 70,000-square-foot administration building. A March 2021 operator announcement described two planned additions that would bring the campus to 11 buildings and nearly 4.6 million square feet, so those expansion dimensions and the associated investment forecast are kept separate from the original facility."
 }

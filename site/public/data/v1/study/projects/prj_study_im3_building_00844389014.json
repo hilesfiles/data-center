@@ -16,11 +16,11 @@
   "detail_path": "projects/prj_study_im3_building_00844389014.json",
   "latitude": 36.62458167653138,
   "longitude": -87.26129639057423,
-  "economic_record_count": 2,
-  "reported_actual_count": 0,
-  "projection_count": 2,
-  "modeled_synthesis_count": 0,
-  "research_completion_status": "research_pending",
+  "economic_record_count": 60,
+  "reported_actual_count": 57,
+  "projection_count": 3,
+  "modeled_synthesis_count": 1,
+  "research_completion_status": "account_research_complete",
   "model_completeness": {
     "status": "incomplete",
     "required_categories": [
@@ -34,10 +34,16 @@
       "community"
     ],
     "covered_categories": [
+      "community",
+      "construction",
+      "fiscal",
       "investment",
-      "operations"
+      "operations",
+      "resources"
     ],
-    "modeled_categories": [],
+    "modeled_categories": [
+      "resources"
+    ],
     "required_county_outcomes": [
       "study.modeled_county_employment_comparison_gap",
       "study.modeled_county_gdp_comparison_gap",
@@ -45,11 +51,7 @@
     ],
     "covered_county_outcomes": [],
     "missing_categories": [
-      "community",
-      "construction",
-      "fiscal",
       "public_costs",
-      "resources",
       "suppliers"
     ],
     "missing_county_outcomes": [
@@ -61,8 +63,8 @@
     "definition": "All eight contribution-account categories contain sourced or labeled modeled values, and GDP, employment, and wage county-comparison modules are populated. Comparison gaps are descriptive and do not establish causal facility effects."
   },
   "schema_version": "1.0.0",
-  "release_id": "private-sector-study-1.50.0",
-  "generated_at": "2026-09-06T21:57:31+00:00",
+  "release_id": "private-sector-study-1.51.0",
+  "generated_at": "2026-09-06T23:45:52+00:00",
   "inventory_name": "Google",
   "research_value": "Operating employment evidence; reconstruct construction and commissioning before assigning an event date.",
   "history": {
@@ -85,7 +87,356 @@
       "url": "https://doi.org/10.57931/3017294"
     }
   ],
-  "research_updates": [],
+  "research_updates": [
+    {
+      "project_id": "prj_study_im3_building_00844389014",
+      "source_id": "src_study_montgomery_stormwater_foxman_historical",
+      "as_of": "2026-09-06",
+      "title": "Project identity, boundary and operating chronology audit",
+      "notes": "Google's 2015 ownership statement; Montgomery County stormwater permits 13099, 13652, 14780 and 17507; the current operator milestone page; assessor account 6490; and 2026 county/RPC Foxman records were cross-checked. They link Google/Foxman to map 009 parcel 014.01, document phased site work in 2017-2019 and official opening in 2019, and distinguish later Building 13 proposals from the selected inventory building.",
+      "source": {
+        "source_id": "src_study_montgomery_stormwater_foxman_historical",
+        "title": "Montgomery County Stormwater Current Projects: Foxman SPC 1A-1C and Google Substation",
+        "url": "https://d6.mcgtn.org/sites/default/files/building-codes/Stormwater/Projects/project_information.pdf",
+        "publisher": "Montgomery County, Tennessee",
+        "source_type": "local_government_record",
+        "publication_date": {
+          "precision": "unknown"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "pdf_text_and_page_image",
+        "notes": "Parcel-linked project list identifies Foxman SPC 1A, 1B and 1C at 1000 Solar Way on map 009 parcel 014.01, with grading approvals from October 2017 through October 2018, and a Google Substation approved August 28, 2019. It reports no permit valuation, completion cost, construction payroll, supplier payment, operating headcount or utility use."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_00844389014",
+      "source_id": "src_study_tn_pilot_foxman_2025",
+      "as_of": "2026-09-06",
+      "title": "PILOT and property-value record audit, 2019-2025",
+      "notes": "Tennessee Comptroller annual IDB filings were searched by Foxman LLC, parcel 009 01401 000 and personal-property variants for 2019-2025. Thirteen estimated-actual-value stocks are retained; the 2022 report contains only the real-property row. The county Trustee lookup was then run for map 9/parcel 14.01 and each 2020-2025 tax year. It resolves ordinary real and personal-property bills at 0% taxable and $0 levy, but not the contract payment columns left blank in the state PILOT filings; therefore no PILOT paid, PILOT receipt, abatement realization or fiscal-net claim is created.",
+      "source": {
+        "source_id": "src_study_tn_pilot_foxman_2025",
+        "title": "2025 Industrial Development Board Annual Reporting",
+        "url": "https://www.comptroller.tn.gov/content/dam/cot/sboe/documents/tax-incentive-programs/2025PILOTReporting.xlsx",
+        "publisher": "Tennessee Comptroller of the Treasury",
+        "source_type": "state_record",
+        "publication_date": {
+          "precision": "day",
+          "date": "2025-08-20"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "structured_data",
+        "notes": "Workbook rows 642-643 list Foxman LLC personal and real property estimated actual values for map 009 parcel 014.01. The filing confirms a lease term through December 31, 2038 but reports no numeric city, county or lienholder PILOT payment."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_00844389014",
+      "source_id": "src_study_cmcrpc_foxman_building13_2026",
+      "as_of": "2026-09-06",
+      "title": "Permit, planning and expansion audit",
+      "notes": "County stormwater current-project files and RPC agenda SR-14-2026 were searched using Foxman, Google, 1000 Solar Way, 1000 Boolean Drive and parcel 009-014.01. These sources establish project phases and a later 15,200-square-foot Building 13 proposal but publish no permit valuation, completed construction cost, procurement ledger, employment realization or operating utility increment.",
+      "source": {
+        "source_id": "src_study_cmcrpc_foxman_building13_2026",
+        "title": "Clarksville-Montgomery County Regional Planning Commission Agenda, February 24, 2026",
+        "url": "https://www.cmcrpc.com/wp2025/wp-content/uploads/2026/04/Agenda-02-24-2026.pdf",
+        "publisher": "Clarksville-Montgomery County Regional Planning Commission",
+        "source_type": "local_government_record",
+        "publication_date": {
+          "precision": "day",
+          "date": "2026-02-24"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "pdf_text_and_page_image",
+        "notes": "Item SR-14-2026 describes proposed Foxman LLC Building 13 at 1000 Boolean Drive on part of map 009 parcel 014.01, approximately 15 acres and 15,200 square feet. The site-review proposal is excluded from completed operating scale and from the selected-building boundary."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_00844389014",
+      "source_id": "src_study_google_tennessee_location_current_2026",
+      "as_of": "2026-09-06",
+      "title": "Investment and operator-impact audit",
+      "notes": "Google's current Tennessee page and Deloitte-prepared 2024 impact report were checked for Clarksville-specific realized capital, operations and fiscal amounts. More than $6 billion is explicitly statewide, while the report's more-than-$2.1-billion infrastructure input and $263-million GDP, 2,235-job and $169-million labor-income results are Tennessee-level contribution estimates; none is transcribed or re-modeled as a project or county observation.",
+      "source": {
+        "source_id": "src_study_google_tennessee_location_current_2026",
+        "title": "Google Data Center in Montgomery County, Tennessee",
+        "url": "https://www.datacenters.google/locations/tennessee/",
+        "publisher": "Google LLC",
+        "source_type": "operator_release",
+        "publication_date": {
+          "precision": "unknown"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_page",
+        "notes": "Current location page places the data center in Montgomery County and gives 2015 announcement, 2018 construction and 2019 official-opening milestones. Its more-than-$6-billion investment statement and $20-million philanthropy figure are Tennessee-wide, and its 2025 digital-activity amount is a statewide modeled business benefit; none is assigned to this project."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_00844389014",
+      "source_id": "src_study_mtida_google_clarksville_opening_2020",
+      "as_of": "2026-09-06",
+      "title": "Operating workforce and payroll audit",
+      "notes": "Operator milestone/location pages, the January 2020 MTIDA newsletter, Google careers results and local employer coverage were searched for Google/Foxman Clarksville establishment headcount, FTEs, occupations, wages, payroll, residence and contractor inclusion. Only the January 2020 approximate 70-employee operating snapshot is retained. A later report gives a 30% veteran-workforce share but no compatible count or denominator detail; no annual headcount series, payroll, wage, local-resident share or current establishment census was found.",
+      "source": {
+        "source_id": "src_study_mtida_google_clarksville_opening_2020",
+        "title": "MTIDA Newsletter, January 2020",
+        "url": "https://www.mtida.org/images/uploads/content_files/MTIDA_Newsletter_January_2020_FINAL.pdf",
+        "publisher": "Middle Tennessee Industrial Development Association",
+        "source_type": "other",
+        "publication_date": {
+          "precision": "month",
+          "date": "2020-01-01"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_pdf_text",
+        "notes": "Regional economic-development newsletter describes the Google facility as fully operational and reports about 70 employees. It does not define FTE status, contractor inclusion, occupations, wages, residence or payroll."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_00844389014",
+      "source_id": "src_study_eeoc_whiting_turner_clarksville_2021",
+      "as_of": "2026-09-06",
+      "title": "Construction labor and supplier/procurement audit",
+      "notes": "Groundbreaking coverage and federal EEOC records identify a projection of at least 1,000 construction workers and Whiting-Turner's general-contractor role from at least May 2018 through fall 2019. The 2025 Trustee parcel search also lists address-level personal-property accounts for 1 Design, Faith Technologies, First Fleet, Guckenheimer, Henkels & McCoy, Midwest Steel and Schenker. Those listings show account presence, not project invoices, paid contract values, job-years, payroll, worker residence, subcontractor payments, vendor locality or local-purchase share, so no supplier or multiplier record is added.",
+      "source": {
+        "source_id": "src_study_eeoc_whiting_turner_clarksville_2021",
+        "title": "EEOC Sues Whiting-Turner Contracting for Racial Harassment and Retaliation",
+        "url": "https://www.eeoc.gov/newsroom/eeoc-sues-whiting-turner-contracting-racial-harassment-and-retaliation",
+        "publisher": "U.S. Equal Employment Opportunity Commission",
+        "source_type": "other",
+        "publication_date": {
+          "precision": "day",
+          "date": "2021-10-01"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_page",
+        "notes": "Federal release identifies Whiting-Turner as general contractor at the Google Clarksville construction site from at least May 2018 through fall 2019. It supports contractor identity and chronology but provides no contract value, worker count, payroll, residence, vendor payments or local-retention share."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_00844389014",
+      "source_id": "src_study_google_environmental_report_2025_clarksville",
+      "as_of": "2026-09-06",
+      "title": "Water, wastewater and environmental audit",
+      "notes": "Google's 2025 Environmental Report location schedule and methodology were checked against Clarksville Gas & Water/public-works pages, county stormwater records, Tennessee environmental portals and EPA ECHO using Google, Foxman, 1000 Boolean, 1000 Solar, Montgomery and FRS 110071078889. The operator gives 2024 Montgomery County withdrawal, discharge and consumption, but no selected-building split; discharge may be engineering-estimated. No municipal bill, meter, wastewater fee, reclaimed-water quantity, peak-day use, permit discharge series or attributed infrastructure cost was found. The optional synthesis retains only the published identity and rounding at unallocated company/county scope.",
+      "source": {
+        "source_id": "src_study_google_environmental_report_2025_clarksville",
+        "title": "Google 2025 Environmental Report",
+        "url": "https://www.gstatic.com/gumdrop/sustainability/google-2025-environmental-report.pdf",
+        "publisher": "Google LLC",
+        "source_type": "operator_release",
+        "publication_date": {
+          "precision": "year",
+          "year": 2025
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "pdf_text_and_page_image",
+        "notes": "Page 110 reports Montgomery County 2024 water withdrawal of 387.9 million gallons, discharge of 66.1 million gallons and consumption of 321.8 million gallons. Methodology says discharge may be engineering-estimated and consumption equals withdrawal minus discharge; figures are rounded to 0.1 million gallons and subject to limited assurance. No building allocation is published."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_00844389014",
+      "source_id": "src_study_cde_lightband_annual_report_2020",
+      "as_of": "2026-09-06",
+      "title": "Electricity, renewable-energy and capacity audit",
+      "notes": "CDE Lightband FY2018-2019 through FY2020-2021 annual-report PDFs were searched for Google, Foxman, Solar, Boolean, substation, kWh and MW; operator location/impact material and TVA results were searched for Clarksville allocation, rates, demand charges and generators. CDE publishes system or unrelated-substation quantities but no project load, bill, rate class or infrastructure attribution. The only operator renewable figure found was 308 MW shared across Alabama and Tennessee, with no Clarksville allocation; no project energy observation or model is created.",
+      "source": {
+        "source_id": "src_study_cde_lightband_annual_report_2020",
+        "title": "CDE Lightband Annual Report, June 30, 2020 and 2019",
+        "url": "https://cdelightband.com/wp-content/uploads/2021/05/Annual-Report-2020-FINAL-reduced.pdf",
+        "publisher": "CDE Lightband",
+        "source_type": "local_government_record",
+        "publication_date": {
+          "precision": "year",
+          "year": 2020
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_pdf_text",
+        "notes": "The utility report says Google LLC donated a $25,000 grant through its Tides Foundation donor-advised fund for local COVID-19 utility-bill relief. CDE annual reports for FY2018-19 through FY2020-21 were also searched for Google, Foxman, Solar, Boolean, substation, kWh, MW, rate and demand; they provide system or unrelated-substation totals but no Clarksville data-center load, bill, rate class, demand charge or attributable infrastructure cost."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_00844389014",
+      "source_id": "src_study_clarksvillenow_google_veterans_2025",
+      "as_of": "2026-09-06",
+      "title": "Community and recipient-record audit",
+      "notes": "Google/Deloitte, Austin Peay, Montgomery County, CDE Lightband, Clarksville EDC-sponsored coverage and watershed sources were reconciled by recipient and period. Seven bounded recipient amounts are retained, including separate $25,000 utility-relief and $12,500 veterans-coalition contributions. They may be components of broader operator totals and are not summed to them. The $943,000 surrounding-community total, more-than-$1.5-million watershed total, statewide philanthropy and multi-county program grants remain excluded because geography or overlap cannot be reconciled.",
+      "source": {
+        "source_id": "src_study_clarksvillenow_google_veterans_2025",
+        "title": "Google collaborates with Clarksville to transform veteran employment",
+        "url": "https://clarksvillenow.com/local/google-collaborates-with-clarksville-to-transform-veteran-employment/",
+        "publisher": "Clarksville Now and Clarksville-Montgomery County Economic Development Council",
+        "source_type": "other",
+        "publication_date": {
+          "precision": "day",
+          "date": "2025-08-13"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_page",
+        "notes": "EDC-sponsored local report attributes an exact $12,500 Google contribution to the Montgomery County Veterans Coalition for a Clarksville veteran-employment program. The amount is retained as direct community funding, not payroll, hiring, job creation or downstream economic impact."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_00844389014",
+      "source_id": "src_study_montgomery_trustee_google_tax_bills_2020_2025",
+      "as_of": "2026-09-06",
+      "title": "Fiscal receipts, incentives and public-cost audit",
+      "notes": "The Trustee lookup was executed for map 9/parcel 14.01 in every tax year 2020-2025 and bill details were opened for IDB real account 3422, Foxman/IDB personal account 110059 and Google personal account 110128. Eighteen appraised-value stocks and eighteen exact zero ordinary-tax levies are retained account by account. They establish exempt ordinary billing, not the separate PILOT formula or payment, a cash receipt, payment allocation, avoided-tax counterfactual, infrastructure expenditure, marginal service cost or net benefit.",
+      "source": {
+        "source_id": "src_study_montgomery_trustee_google_tax_bills_2020_2025",
+        "title": "Montgomery County Trustee Public Property Tax Lookup",
+        "url": "https://montgomery-tn.mygovonline.com/mod.php?mod=propertytax&mode=public_lookup",
+        "publisher": "Montgomery County Trustee",
+        "source_type": "local_government_record",
+        "publication_date": {
+          "precision": "unknown"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "structured_data",
+        "notes": "Exact public lookup repeated for tax years 2020-2025 with selectMenu=parcelinfo, control_map=9, parcel_number=14.01 and blank group, identifier and special_interest. Bill-detail IDs were 1481271/1570238/1661764/1756525/1853302/1952950 for IDB real account 3422; 1469970/1558524/1649678/1744313/1840935/1940379 for Foxman LLC/IDB personal account 110059; and 1472790/1561456/1652710/1747358/1843952/1943470 for Google LLC personal account 110128. Each detail reports 0% taxable, assessed taxable value $0 and tax levy $0. The site's generic paid/zero-balance presentation is not evidence of a positive payment or of the separate PILOT contract payment. Search results also list project-address vendor accounts, but presence is not treated as paid procurement or local retention."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_00844389014",
+      "source_id": "src_study_tn_google_clarksville_operator_announcement_2015",
+      "as_of": "2026-09-06",
+      "title": "County-outcome and causal-evidence audit",
+      "notes": "Federal BEA, BLS and Census county/industry series and the Deloitte statewide impact study were considered only after the direct project searches. Public county series do not isolate Google from Fort Campbell, population growth, other investment, the 2020 shock or later campus phases, and no documented comparison group or defensible treatment timing was found. No descriptive comparison gap, multiplier transfer or claimed county effect is added.",
+      "source": {
+        "source_id": "src_study_tn_google_clarksville_operator_announcement_2015",
+        "title": "Welcoming Internet engine no. 15",
+        "url": "https://blog.google/company-news/outreach-and-initiatives/sustainability/welcoming-internet-engine-no-15/",
+        "publisher": "Google LLC",
+        "source_type": "operator_release",
+        "publication_date": {
+          "precision": "day",
+          "date": "2015-12-22"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_page",
+        "notes": "Google states that it became owner of the former Hemlock Semiconductor site in Montgomery County and planned to reuse existing infrastructure. The page provides no realized project expenditure, operating headcount, payroll, supplier payment, tax receipt or utility consumption."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_00844389014",
+      "source_id": "src_study_montgomery_assessor_parcel_api_2026",
+      "as_of": "2026-09-06",
+      "title": "Assessor parcel and ownership query trail",
+      "notes": "The county ArcGIS parcel layer was queried exactly for PropertyAddress LIKE '%BOOLEAN%' OR PropertyAddress LIKE '%SOLAR%' with parcel, owner, acreage and value fields and no geometry. Main result account 6490 is parcel 009 01401 000, IDB-owned, 1000 Boolean Drive, 1,331.21 deed acres and exempt. Owner1 LIKE '%FOXMAN%' returned no features because current assessor ownership is under the IDB. The layer's RecordYear 2027 amounts are forward of this 2026 review and are excluded; nearby 998 Boolean Drive parcel 009 01406 00002009 is not merged without boundary evidence.",
+      "source": {
+        "source_id": "src_study_montgomery_assessor_parcel_api_2026",
+        "title": "Montgomery County GIS Parcels Map Service, parcel layer 0",
+        "url": "https://gis.mcgtn.org/arcgis/rest/services/Parcels/MapServer/0",
+        "publisher": "Montgomery County, Tennessee",
+        "source_type": "local_government_record",
+        "publication_date": {
+          "precision": "unknown"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "structured_data",
+        "notes": "Exact query: PropertyAddress LIKE '%BOOLEAN%' OR PropertyAddress LIKE '%SOLAR%', returning AccountNumber, GISLINK, GISLINK2, ParcelNo, Owner1, Owner2, PropertyAddress, CALC_ACRE, DeedAcreage, MktLandValue, BuildingValue, MiscImprovementValue, MktAppraisedValue, AssessedValue, RecordYear, TaxingDistrict, LandUseDesc, PropertyTypeDesc and WebUrl, with geometry disabled. It returned main account 6490, parcel 009 01401 000, 1000 BOOLEAN DR, IDB ownership, 1,331.21 deed acres and exempt classification. Its RecordYear 2027 values are forward of the review date and are not transcribed as 2026 actuals. A separate Owner1 LIKE '%FOXMAN%' query returned no features, consistent with current assessor ownership under the IDB rather than disproving the Foxman leasehold."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_00844389014",
+      "source_id": "src_study_clarksville_partnership_idb_archive_2026",
+      "as_of": "2026-09-06",
+      "title": "IDB agreement, compliance and distribution audit",
+      "notes": "The public IDB meetings/agendas pages and indexed clientuploads were searched for Google, Foxman, PILOT and parcel 009-014.01. The visible archive begins in 2022; the May 11, 2022 IDB agenda concerns unrelated projects. No 2015-2021 Google/Foxman lease, payment formula, annual compliance report, distribution schedule, minutes or clawback term was surfaced. These remain public-records-request gaps.",
+      "source": {
+        "source_id": "src_study_clarksville_partnership_idb_archive_2026",
+        "title": "Clarksville-Montgomery County Economic Development Council Meetings and Agendas Archive",
+        "url": "https://clarksvillepartnership.com/meetings/",
+        "publisher": "Clarksville-Montgomery County Economic Development Council",
+        "source_type": "other",
+        "publication_date": {
+          "precision": "unknown"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_page",
+        "notes": "The public meetings and agendas pages and indexed clientuploads were searched for Google, Foxman, PILOT and parcel 009-014.01. The visible archive begins in 2022; the May 11, 2022 IDB agenda concerns other projects, and no 2015-2021 Google/Foxman lease, payment formula, compliance report, distribution schedule, minutes or clawback provision was surfaced. A public-records request remains necessary."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_00844389014",
+      "source_id": "src_study_montgomery_commission_archives_2026",
+      "as_of": "2026-09-06",
+      "title": "County legislative-record audit",
+      "notes": "Montgomery County commission agenda/resolution and clerk minutes archives were searched across 2015-2026 for Google, Foxman, PILOT, 1000 Solar, 1000 Boolean and parcel 009-014.01. No project-specific agreement, county receipt allocation, payment schedule, infrastructure appropriation, compliance action or clawback was surfaced. This negative search is not evidence that no responsive record exists.",
+      "source": {
+        "source_id": "src_study_montgomery_commission_archives_2026",
+        "title": "Montgomery County Commission Agendas and Minutes",
+        "url": "https://montgomerytn.gov/commission/agenda",
+        "publisher": "Montgomery County, Tennessee",
+        "source_type": "local_government_record",
+        "publication_date": {
+          "precision": "unknown"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_page",
+        "notes": "County commission agenda/resolution and clerk minute archives were searched across 2015-2026 for Google, Foxman, PILOT, 1000 Solar, 1000 Boolean and parcel 009-014.01. No project-specific executed agreement, contractual payment, receipt allocation, compliance finding, clawback, public-infrastructure cost or marginal-service cost was surfaced."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_00844389014",
+      "source_id": "src_study_clarksville_agenda_center_2026",
+      "as_of": "2026-09-06",
+      "title": "City legislative-record audit",
+      "notes": "The City of Clarksville Agenda Center and linked prior-year document archive were searched across 2015-2026 using Google, Foxman, PILOT, 1000 Solar, 1000 Boolean and parcel 009-014.01. No project-specific agreement, city receipt allocation, payment schedule, infrastructure appropriation, compliance action or clawback was surfaced. The search result is logged as a gap, not as proof that no responsive record exists.",
+      "source": {
+        "source_id": "src_study_clarksville_agenda_center_2026",
+        "title": "City of Clarksville Agenda Center",
+        "url": "https://www.clarksvilletn.gov/AgendaCenter",
+        "publisher": "City of Clarksville, Tennessee",
+        "source_type": "local_government_record",
+        "publication_date": {
+          "precision": "unknown"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_page",
+        "notes": "The Agenda Center and linked prior-year document archive were searched across 2015-2026 for Google, Foxman, PILOT, 1000 Solar, 1000 Boolean and parcel 009-014.01. No project-specific agreement, city receipt allocation, payment schedule, infrastructure appropriation, compliance action or clawback was surfaced; this negative search is not evidence that no responsive record exists."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_00844389014",
+      "source_id": "src_study_tdec_data_center_permit_guidance_2026",
+      "as_of": "2026-09-06",
+      "title": "State air-permit portal audit",
+      "notes": "TDEC's data-center guidance, Air Pollution Control permit pages and data-viewer entry points were searched for Google, Foxman, 1000 Boolean, 1000 Solar and Montgomery. The searches surfaced no project-specific numeric air permit, emissions inventory, generator capacity, fee, compliance penalty or attributable public cost. TDEC's general description of data-center permit review is not converted into a project permit or an absence-of-regulation conclusion.",
+      "source": {
+        "source_id": "src_study_tdec_data_center_permit_guidance_2026",
+        "title": "Tennessee Department of Environment and Conservation Data Centers",
+        "url": "https://www.tn.gov/environment/policy/data-centers.html",
+        "publisher": "Tennessee Department of Environment and Conservation",
+        "source_type": "state_record",
+        "publication_date": {
+          "precision": "unknown"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_page",
+        "notes": "TDEC data-center guidance and linked air-permit/data-viewer routes were searched for Google, Foxman, 1000 Boolean, 1000 Solar and Montgomery County. The guidance explains that Air Pollution Control evaluates data-center equipment and insignificant-activity determinations but does not identify a Clarksville permit, emissions quantity, generator capacity, fee or compliance event. No absence-of-regulation inference is made."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_00844389014",
+      "source_id": "src_study_epa_echo_foxman_clarksville_2026",
+      "as_of": "2026-09-06",
+      "title": "Federal environmental-registry audit",
+      "notes": "EPA ECHO was queried directly with FRS 110071078889. The report identifies Foxman LLC doing business as Foxman Clarksville Data Center at 1000 Boolean Drive under NAICS 518210, but no project-specific quantitative air permit, emissions inventory, generator capacity, fee, penalty, water withdrawal or selected-building allocation suitable for a canonical economic record was found.",
+      "source": {
+        "source_id": "src_study_epa_echo_foxman_clarksville_2026",
+        "title": "EPA ECHO Detailed Facility Report: Foxman Clarksville Data Center",
+        "url": "https://echo.epa.gov/detailed-facility-report?fid=110071078889",
+        "publisher": "U.S. Environmental Protection Agency",
+        "source_type": "other",
+        "publication_date": {
+          "precision": "unknown"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_page",
+        "notes": "Facility-ID query FRS 110071078889 identifies Foxman LLC doing business as Foxman Clarksville Data Center at 1000 Boolean Drive with NAICS 518210. The reviewed report did not provide a project-specific quantitative air permit, emissions inventory, generator capacity, fee, penalty, water withdrawal or selected-building allocation suitable for a canonical record."
+      }
+    }
+  ],
   "evidence_gaps": [
     {
       "code": "investment",
@@ -96,7 +447,7 @@
     {
       "code": "construction",
       "label": "Construction jobs and payroll",
-      "status": "not_yet_collected",
+      "status": "projections_only",
       "needed": "Workers, job-years, payroll, duration, and local participation."
     },
     {
@@ -108,13 +459,13 @@
     {
       "code": "operations",
       "label": "Permanent jobs and compensation",
-      "status": "projections_only",
+      "status": "partial",
       "needed": "Realized direct and contractor employment, wages, and operating purchases."
     },
     {
       "code": "fiscal",
       "label": "Tax base and public revenue",
-      "status": "not_yet_collected",
+      "status": "partial",
       "needed": "Taxable values and actual receipts by year and recipient jurisdiction."
     },
     {
@@ -132,7 +483,7 @@
     {
       "code": "community",
       "label": "Community institutions and direct funding",
-      "status": "not_yet_collected",
+      "status": "partial",
       "needed": "Annual grants, recipients, program purposes, realized spending, and overlap with other transfers."
     }
   ],
@@ -194,6 +545,1746 @@
       "unit": "jobs",
       "measure_type": "stock",
       "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_google_clarksville_foxman_personal_value_2019",
+      "project_id": "prj_study_im3_building_00844389014",
+      "metric_code": "study.estimated_actual_property_value",
+      "value": 1133173,
+      "basis": "reported_actual",
+      "period": {
+        "kind": "reported_snapshot",
+        "report_date": "2019-09-30",
+        "label": "2019 IDB filing snapshot"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Foxman LLC personal-property leasehold, map 009 parcel 014.01",
+        "county_fips": "47125",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_tn_pilot_foxman_2019",
+      "pdf_page": 5,
+      "printed_page": "5",
+      "source_locator": "Clarksville-Montgomery County IDB Foxman LLC row, identifier NOF P000",
+      "notes": "Estimated actual personal-property value; not assessed or taxable value, tax billed, PILOT paid, or selected-building capital expenditure.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "value_qualifier": "exact",
+      "label": "Estimated actual property value",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_google_clarksville_foxman_real_value_2019",
+      "project_id": "prj_study_im3_building_00844389014",
+      "metric_code": "study.estimated_actual_property_value",
+      "value": 22759800,
+      "basis": "reported_actual",
+      "period": {
+        "kind": "reported_snapshot",
+        "report_date": "2019-09-30",
+        "label": "2019 IDB filing snapshot"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Foxman LLC real-property leasehold, map 009 parcel 014.01",
+        "county_fips": "47125",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_tn_pilot_foxman_2019",
+      "pdf_page": 5,
+      "printed_page": "5",
+      "source_locator": "Clarksville-Montgomery County IDB Foxman LLC row, parcel 009 01401 000",
+      "notes": "Estimated actual real-property value for the campus leasehold; not a tax receipt or building allocation.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "value_qualifier": "exact",
+      "label": "Estimated actual property value",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_google_clarksville_foxman_personal_value_2020",
+      "project_id": "prj_study_im3_building_00844389014",
+      "metric_code": "study.estimated_actual_property_value",
+      "value": 192067821,
+      "basis": "reported_actual",
+      "period": {
+        "kind": "reported_snapshot",
+        "report_date": "2020-10-01",
+        "label": "2020 IDB filing snapshot"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Foxman LLC personal-property leasehold, map 009 parcel 014.01",
+        "county_fips": "47125",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_tn_pilot_foxman_2020",
+      "pdf_page": 5,
+      "printed_page": "5",
+      "source_locator": "Foxman LLC personal-property row, identifier NOF P00",
+      "notes": "Separate personal-property stock; blank PILOT-payment fields are not interpreted as zero.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "value_qualifier": "exact",
+      "label": "Estimated actual property value",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_google_clarksville_foxman_real_value_2020",
+      "project_id": "prj_study_im3_building_00844389014",
+      "metric_code": "study.estimated_actual_property_value",
+      "value": 48152048,
+      "basis": "reported_actual",
+      "period": {
+        "kind": "reported_snapshot",
+        "report_date": "2020-10-01",
+        "label": "2020 IDB filing snapshot"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Foxman LLC real-property leasehold, map 009 parcel 014.01",
+        "county_fips": "47125",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_tn_pilot_foxman_2020",
+      "pdf_page": 5,
+      "printed_page": "5",
+      "source_locator": "Foxman LLC real-property row, parcel 009 01401 000",
+      "notes": "Campus real-property stock, not an annual investment flow or payment.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "value_qualifier": "exact",
+      "label": "Estimated actual property value",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_google_clarksville_foxman_personal_value_2021",
+      "project_id": "prj_study_im3_building_00844389014",
+      "metric_code": "study.estimated_actual_property_value",
+      "value": 494200149,
+      "basis": "reported_actual",
+      "period": {
+        "kind": "reported_snapshot",
+        "report_date": "2021-09-30",
+        "label": "2021 IDB filing snapshot"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Foxman LLC personal-property leasehold, map 009 parcel 014.01",
+        "county_fips": "47125",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_tn_pilot_foxman_2021",
+      "pdf_page": 4,
+      "printed_page": "4",
+      "source_locator": "Foxman LLC personal-property row, identifier 009 01401 P 000",
+      "notes": "Separate personal-property stock; no selected-building allocation.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "value_qualifier": "exact",
+      "label": "Estimated actual property value",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_google_clarksville_foxman_real_value_2021",
+      "project_id": "prj_study_im3_building_00844389014",
+      "metric_code": "study.estimated_actual_property_value",
+      "value": 316736200,
+      "basis": "reported_actual",
+      "period": {
+        "kind": "reported_snapshot",
+        "report_date": "2021-09-30",
+        "label": "2021 IDB filing snapshot"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Foxman LLC real-property leasehold, map 009 parcel 014.01",
+        "county_fips": "47125",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_tn_pilot_foxman_2021",
+      "pdf_page": 4,
+      "printed_page": "4",
+      "source_locator": "Foxman LLC real-property row, parcel 009 01401 000",
+      "notes": "Separate real-property stock; no inference of tax or PILOT payment.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "value_qualifier": "exact",
+      "label": "Estimated actual property value",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_google_clarksville_foxman_real_value_2022",
+      "project_id": "prj_study_im3_building_00844389014",
+      "metric_code": "study.estimated_actual_property_value",
+      "value": 316736200,
+      "basis": "reported_actual",
+      "period": {
+        "kind": "reported_snapshot",
+        "report_date": "2022-09-28",
+        "label": "2022 IDB filing snapshot"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Foxman LLC real-property leasehold, map 009 parcel 014.01",
+        "county_fips": "47125",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_tn_pilot_foxman_2022",
+      "pdf_page": 5,
+      "printed_page": "5",
+      "source_locator": "Foxman LLC row, parcel 009 01401 000",
+      "notes": "The official 2022 report contains this real-property row but no Foxman personal-property row; no missing value is imputed.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "value_qualifier": "exact",
+      "label": "Estimated actual property value",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_google_clarksville_foxman_personal_value_2023",
+      "project_id": "prj_study_im3_building_00844389014",
+      "metric_code": "study.estimated_actual_property_value",
+      "value": 1021353736,
+      "basis": "reported_actual",
+      "period": {
+        "kind": "reported_snapshot",
+        "report_date": "2023-09-01",
+        "label": "2023 IDB filing snapshot"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Foxman LLC personal-property leasehold, map 009 parcel 014.01",
+        "county_fips": "47125",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_tn_pilot_foxman_2023",
+      "source_locator": "Workbook row 550, identifier 009 01401 P 000",
+      "notes": "Separate personal-property estimated actual value; not investment during 2023.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "value_qualifier": "exact",
+      "label": "Estimated actual property value",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_google_clarksville_foxman_real_value_2023",
+      "project_id": "prj_study_im3_building_00844389014",
+      "metric_code": "study.estimated_actual_property_value",
+      "value": 317517200,
+      "basis": "reported_actual",
+      "period": {
+        "kind": "reported_snapshot",
+        "report_date": "2023-09-01",
+        "label": "2023 IDB filing snapshot"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Foxman LLC real-property leasehold, map 009 parcel 014.01",
+        "county_fips": "47125",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_tn_pilot_foxman_2023",
+      "source_locator": "Workbook row 551, parcel 009 01401 000",
+      "notes": "Separate real-property estimated actual value; the filing's rent field is not substituted for value.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "value_qualifier": "exact",
+      "label": "Estimated actual property value",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_google_clarksville_foxman_personal_value_2024",
+      "project_id": "prj_study_im3_building_00844389014",
+      "metric_code": "study.estimated_actual_property_value",
+      "value": 819947925,
+      "basis": "reported_actual",
+      "period": {
+        "kind": "reported_snapshot",
+        "report_date": "2024-09-05",
+        "label": "2024 IDB filing snapshot"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Foxman LLC personal-property leasehold, map 009 parcel 014.01",
+        "county_fips": "47125",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_tn_pilot_foxman_2024",
+      "source_locator": "Workbook row 580, identifier 009 01401 P 000",
+      "notes": "Separate personal-property stock; not a cash investment or equipment purchase total.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "value_qualifier": "exact",
+      "label": "Estimated actual property value",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_google_clarksville_foxman_real_value_2024",
+      "project_id": "prj_study_im3_building_00844389014",
+      "metric_code": "study.estimated_actual_property_value",
+      "value": 360220600,
+      "basis": "reported_actual",
+      "period": {
+        "kind": "reported_snapshot",
+        "report_date": "2024-09-05",
+        "label": "2024 IDB filing snapshot"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Foxman LLC real-property leasehold, map 009 parcel 014.01",
+        "county_fips": "47125",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_tn_pilot_foxman_2024",
+      "source_locator": "Workbook row 581, parcel 009 01401 000",
+      "notes": "Separate real-property stock; not assessed/taxable value or taxes paid.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "value_qualifier": "exact",
+      "label": "Estimated actual property value",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_google_clarksville_foxman_personal_value_2025",
+      "project_id": "prj_study_im3_building_00844389014",
+      "metric_code": "study.estimated_actual_property_value",
+      "value": 969290780,
+      "basis": "reported_actual",
+      "period": {
+        "kind": "reported_snapshot",
+        "report_date": "2025-08-20",
+        "label": "2025 IDB filing snapshot"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Foxman LLC personal-property leasehold, map 009 parcel 014.01",
+        "county_fips": "47125",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_tn_pilot_foxman_2025",
+      "source_locator": "Workbook row 642, identifier 009 01401 P 000",
+      "notes": "Separate personal-property stock; blank payment columns do not establish a zero PILOT payment.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "value_qualifier": "exact",
+      "label": "Estimated actual property value",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_google_clarksville_foxman_real_value_2025",
+      "project_id": "prj_study_im3_building_00844389014",
+      "metric_code": "study.estimated_actual_property_value",
+      "value": 401759800,
+      "basis": "reported_actual",
+      "period": {
+        "kind": "reported_snapshot",
+        "report_date": "2025-08-20",
+        "label": "2025 IDB filing snapshot"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Foxman LLC real-property leasehold, map 009 parcel 014.01",
+        "county_fips": "47125",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_tn_pilot_foxman_2025",
+      "source_locator": "Workbook row 643, parcel 009 01401 000",
+      "notes": "Separate real-property stock; not a tax receipt, PILOT payment or selected-building value.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "value_qualifier": "exact",
+      "label": "Estimated actual property value",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_google_clarksville_operating_employees_2020",
+      "project_id": "prj_study_im3_building_00844389014",
+      "metric_code": "study.operating_employees",
+      "value": 70,
+      "basis": "reported_actual",
+      "period": {
+        "kind": "source_year",
+        "year": 2020,
+        "label": "January 2020 fully-operational facility snapshot"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Google Clarksville data-center campus",
+        "county_fips": "47125",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_mtida_google_clarksville_opening_2020",
+      "pdf_page": 5,
+      "printed_page": "5",
+      "source_locator": "Newsletter passage describing the facility as fully operational with about 70 employees",
+      "notes": "Approximate opening-period employee count; FTE status, contractors, payroll, occupations and residence are not reported.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "value_qualifier": "approximately",
+      "label": "Reported operating employee count",
+      "category": "operations",
+      "unit": "employees",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_google_clarksville_construction_workers_projection_2018",
+      "project_id": "prj_study_im3_building_00844389014",
+      "metric_code": "study.construction_workers_projection",
+      "value": 1000,
+      "basis": "source_projection",
+      "period": {
+        "kind": "projection_horizon",
+        "report_date": "2018-02-16",
+        "label": "Groundbreaking-era construction workforce plan"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Google Clarksville data-center campus construction",
+        "county_fips": "47125",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_clarksvillenow_google_groundbreaking_2018",
+      "source_locator": "Groundbreaking article statement that construction would involve at least 1,000 workers",
+      "notes": "Forward-looking worker count, not a realized peak, FTE count, job-years, payroll or local-resident workforce.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "value_qualifier": "at_least",
+      "label": "Planned construction and trade jobs",
+      "category": "construction",
+      "unit": "jobs",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_google_clarksville_apsu_cumulative_community_2023",
+      "project_id": "prj_study_im3_building_00844389014",
+      "metric_code": "study.cumulative_community_funding",
+      "value": 650000,
+      "basis": "reported_actual",
+      "period": {
+        "kind": "cumulative",
+        "report_date": "2023-12-31",
+        "label": "Google support to Austin Peay State University since 2019 through the report's 2023 coverage"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Google contributions to Austin Peay State University in Montgomery County",
+        "county_fips": "47125",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_google_tennessee_impact_2024",
+      "pdf_page": 5,
+      "printed_page": "5",
+      "source_locator": "Community engagement section, Austin Peay State University recipient disclosure",
+      "notes": "Recipient-specific cumulative lower bound; purpose mix is not decomposed and later 2024-2025 awards are recorded separately.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "value_qualifier": "greater_than",
+      "label": "Cumulative direct community funding",
+      "category": "community",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_google_clarksville_osdt_cumulative_community_2023",
+      "project_id": "prj_study_im3_building_00844389014",
+      "metric_code": "study.cumulative_community_funding",
+      "value": 32000,
+      "basis": "reported_actual",
+      "period": {
+        "kind": "cumulative",
+        "report_date": "2023-12-31",
+        "label": "Google support to Operation Stand Down Tennessee during 2021-2023"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Google support associated with Operation Stand Down Tennessee's Clarksville-area work",
+        "county_fips": "47125",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_google_tennessee_impact_2024",
+      "pdf_page": 5,
+      "printed_page": "5",
+      "source_locator": "Community engagement section, Operation Stand Down Tennessee recipient disclosure",
+      "notes": "Recipient-specific cumulative lower bound. The source associates the organization with local community work but does not fully allocate its regional service footprint.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "value_qualifier": "greater_than",
+      "label": "Cumulative direct community funding",
+      "category": "community",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_google_clarksville_apsu_creative_arts_grant_2024",
+      "project_id": "prj_study_im3_building_00844389014",
+      "metric_code": "study.direct_community_contribution",
+      "value": 15000,
+      "basis": "reported_actual",
+      "period": {
+        "kind": "reported_snapshot",
+        "report_date": "2024-01-31",
+        "label": "January 2024 Google Data Center Grant award"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Google grant to Austin Peay State University Community School of the Arts",
+        "county_fips": "47125",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_apsu_google_creative_arts_grant_2024",
+      "source_locator": "Recipient announcement describing the January 2024 $15,000 award",
+      "notes": "Direct grant amount, not a measured downstream economic or educational return.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "value_qualifier": "exact",
+      "label": "Direct community contribution",
+      "category": "community",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_google_clarksville_apsu_grasslands_contribution_2025",
+      "project_id": "prj_study_im3_building_00844389014",
+      "metric_code": "study.direct_community_contribution",
+      "value": 100000,
+      "basis": "reported_actual",
+      "period": {
+        "kind": "reported_snapshot",
+        "report_date": "2025-09-15",
+        "label": "September 2025 contribution announcement"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Google contribution to Austin Peay State University Southeastern Grasslands Institute",
+        "county_fips": "47125",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_apsu_google_grasslands_contribution_2025",
+      "source_locator": "Recipient announcement of $100,000 contribution",
+      "notes": "Direct contribution supporting restoration at the Clarksville property; no ecosystem-service value or multiplier is inferred.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "value_qualifier": "exact",
+      "label": "Direct community contribution",
+      "category": "community",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_google_clarksville_imagination_library_contribution_2025",
+      "project_id": "prj_study_im3_building_00844389014",
+      "metric_code": "study.direct_community_contribution",
+      "value": 25000,
+      "basis": "reported_actual",
+      "period": {
+        "kind": "reported_snapshot",
+        "report_date": "2025-08-12",
+        "label": "August 2025 Imagination Library fundraiser contribution"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Google contribution to the Imagination Library of Montgomery County",
+        "county_fips": "47125",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_montgomery_google_imagination_library_2025",
+      "source_locator": "County report separating Google's additional $25,000 contribution from event proceeds",
+      "notes": "Direct contribution only; the fundraiser total and other sponsors are excluded.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "value_qualifier": "exact",
+      "label": "Direct community contribution",
+      "category": "community",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_google_clarksville_idb_real_appraised_2020",
+      "project_id": "prj_study_im3_building_00844389014",
+      "metric_code": "study.appraised_property_value",
+      "value": 285404200,
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2020,
+        "label": "2020 tax bill; appraisal year 2019"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "IDB real-property account 3422, parcel 009 01401 000 at 1000 Boolean Drive",
+        "county_fips": "47125",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_montgomery_trustee_google_tax_bills_2020_2025",
+      "source_locator": "Tax year 2020 bill-detail id 1481271, account 3422, General Information",
+      "notes": "Account-level appraised-value stock; not selected-building capital expenditure, taxable value, PILOT payment or receipt.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "value_qualifier": "exact",
+      "annual_series_key": "google_clarksville_idb_real_appraised_value",
+      "label": "County appraised property value",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_google_clarksville_idb_real_appraised_2021",
+      "project_id": "prj_study_im3_building_00844389014",
+      "metric_code": "study.appraised_property_value",
+      "value": 316736200,
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2021,
+        "label": "2021 tax bill; appraisal year 2019"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "IDB real-property account 3422, parcel 009 01401 000 at 1000 Boolean Drive",
+        "county_fips": "47125",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_montgomery_trustee_google_tax_bills_2020_2025",
+      "source_locator": "Tax year 2021 bill-detail id 1570238, account 3422, General Information",
+      "notes": "Account-level appraised-value stock; not selected-building capital expenditure, taxable value, PILOT payment or receipt.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "value_qualifier": "exact",
+      "annual_series_key": "google_clarksville_idb_real_appraised_value",
+      "label": "County appraised property value",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_google_clarksville_idb_real_appraised_2022",
+      "project_id": "prj_study_im3_building_00844389014",
+      "metric_code": "study.appraised_property_value",
+      "value": 316736200,
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2022,
+        "label": "2022 tax bill; appraisal year 2019"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "IDB real-property account 3422, parcel 009 01401 000 at 1000 Boolean Drive",
+        "county_fips": "47125",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_montgomery_trustee_google_tax_bills_2020_2025",
+      "source_locator": "Tax year 2022 bill-detail id 1661764, account 3422, General Information",
+      "notes": "Account-level appraised-value stock; not selected-building capital expenditure, taxable value, PILOT payment or receipt.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "value_qualifier": "exact",
+      "annual_series_key": "google_clarksville_idb_real_appraised_value",
+      "label": "County appraised property value",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_google_clarksville_idb_real_appraised_2023",
+      "project_id": "prj_study_im3_building_00844389014",
+      "metric_code": "study.appraised_property_value",
+      "value": 317517200,
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2023,
+        "label": "2023 tax bill; appraisal year 2019"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "IDB real-property account 3422, parcel 009 01401 000 at 1000 Boolean Drive",
+        "county_fips": "47125",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_montgomery_trustee_google_tax_bills_2020_2025",
+      "source_locator": "Tax year 2023 bill-detail id 1756525, account 3422, General Information",
+      "notes": "Account-level appraised-value stock; not selected-building capital expenditure, taxable value, PILOT payment or receipt.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "value_qualifier": "exact",
+      "annual_series_key": "google_clarksville_idb_real_appraised_value",
+      "label": "County appraised property value",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_google_clarksville_idb_real_appraised_2024",
+      "project_id": "prj_study_im3_building_00844389014",
+      "metric_code": "study.appraised_property_value",
+      "value": 360220600,
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2024,
+        "label": "2024 tax bill; appraisal year 2024"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "IDB real-property account 3422, parcel 009 01401 000 at 1000 Boolean Drive",
+        "county_fips": "47125",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_montgomery_trustee_google_tax_bills_2020_2025",
+      "source_locator": "Tax year 2024 bill-detail id 1853302, account 3422, General Information",
+      "notes": "Account-level appraised-value stock; not selected-building capital expenditure, taxable value, PILOT payment or receipt.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "value_qualifier": "exact",
+      "annual_series_key": "google_clarksville_idb_real_appraised_value",
+      "label": "County appraised property value",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_google_clarksville_idb_real_appraised_2025",
+      "project_id": "prj_study_im3_building_00844389014",
+      "metric_code": "study.appraised_property_value",
+      "value": 401759800,
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2025,
+        "label": "2025 tax bill; appraisal year 2024"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "IDB real-property account 3422, parcel 009 01401 000 at 1000 Boolean Drive",
+        "county_fips": "47125",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_montgomery_trustee_google_tax_bills_2020_2025",
+      "source_locator": "Tax year 2025 bill-detail id 1952950, bill 42854, account 3422, General Information",
+      "notes": "Account-level appraised-value stock; not selected-building capital expenditure, taxable value, PILOT payment or receipt.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "value_qualifier": "exact",
+      "annual_series_key": "google_clarksville_idb_real_appraised_value",
+      "label": "County appraised property value",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_google_clarksville_foxman_personal_appraised_2020",
+      "project_id": "prj_study_im3_building_00844389014",
+      "metric_code": "study.appraised_property_value",
+      "value": 48562497,
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2020,
+        "label": "2020 tax bill; appraisal year 2020"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Foxman LLC/IDB personal-property account 110059 at 1000 Solar Way",
+        "county_fips": "47125",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_montgomery_trustee_google_tax_bills_2020_2025",
+      "source_locator": "Tax year 2020 bill-detail id 1469970, account 110059, General Information",
+      "notes": "Account-level appraised-value stock; not investment, assessed taxable value, PILOT payment or receipt.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "value_qualifier": "exact",
+      "annual_series_key": "google_clarksville_foxman_personal_appraised_value",
+      "label": "County appraised property value",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_google_clarksville_foxman_personal_appraised_2021",
+      "project_id": "prj_study_im3_building_00844389014",
+      "metric_code": "study.appraised_property_value",
+      "value": 179188120,
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2021,
+        "label": "2021 tax bill; appraisal year 2021"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Foxman LLC/IDB personal-property account 110059 at 1000 Solar Way",
+        "county_fips": "47125",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_montgomery_trustee_google_tax_bills_2020_2025",
+      "source_locator": "Tax year 2021 bill-detail id 1558524, account 110059, General Information",
+      "notes": "Account-level appraised-value stock; not investment, assessed taxable value, PILOT payment or receipt.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "value_qualifier": "exact",
+      "annual_series_key": "google_clarksville_foxman_personal_appraised_value",
+      "label": "County appraised property value",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_google_clarksville_foxman_personal_appraised_2022",
+      "project_id": "prj_study_im3_building_00844389014",
+      "metric_code": "study.appraised_property_value",
+      "value": 224926429,
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2022,
+        "label": "2022 tax bill; appraisal year 2022"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Foxman LLC/IDB personal-property account 110059 at 1000 Solar Way",
+        "county_fips": "47125",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_montgomery_trustee_google_tax_bills_2020_2025",
+      "source_locator": "Tax year 2022 bill-detail id 1649678, account 110059, General Information",
+      "notes": "Account-level appraised-value stock; not investment, assessed taxable value, PILOT payment or receipt.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "value_qualifier": "exact",
+      "annual_series_key": "google_clarksville_foxman_personal_appraised_value",
+      "label": "County appraised property value",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_google_clarksville_foxman_personal_appraised_2023",
+      "project_id": "prj_study_im3_building_00844389014",
+      "metric_code": "study.appraised_property_value",
+      "value": 201386606,
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2023,
+        "label": "2023 tax bill; appraisal year 2023"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Foxman LLC/IDB personal-property account 110059 at 1000 Solar Way",
+        "county_fips": "47125",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_montgomery_trustee_google_tax_bills_2020_2025",
+      "source_locator": "Tax year 2023 bill-detail id 1744313, account 110059, General Information",
+      "notes": "Account-level appraised-value stock; not investment, assessed taxable value, PILOT payment or receipt.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "value_qualifier": "exact",
+      "annual_series_key": "google_clarksville_foxman_personal_appraised_value",
+      "label": "County appraised property value",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_google_clarksville_foxman_personal_appraised_2024",
+      "project_id": "prj_study_im3_building_00844389014",
+      "metric_code": "study.appraised_property_value",
+      "value": 164301411,
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2024,
+        "label": "2024 tax bill; appraisal year 2024"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Foxman LLC/IDB personal-property account 110059 at 1000 Solar Way",
+        "county_fips": "47125",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_montgomery_trustee_google_tax_bills_2020_2025",
+      "source_locator": "Tax year 2024 bill-detail id 1840935, account 110059, General Information",
+      "notes": "Account-level appraised-value stock; not investment, assessed taxable value, PILOT payment or receipt.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "value_qualifier": "exact",
+      "annual_series_key": "google_clarksville_foxman_personal_appraised_value",
+      "label": "County appraised property value",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_google_clarksville_foxman_personal_appraised_2025",
+      "project_id": "prj_study_im3_building_00844389014",
+      "metric_code": "study.appraised_property_value",
+      "value": 162140121,
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2025,
+        "label": "2025 tax bill; appraisal year 2025"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Foxman LLC/IDB personal-property account 110059 at 1000 Solar Way",
+        "county_fips": "47125",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_montgomery_trustee_google_tax_bills_2020_2025",
+      "source_locator": "Tax year 2025 bill-detail id 1940379, bill 30282, account 110059, General Information",
+      "notes": "Account-level appraised-value stock; not investment, assessed taxable value, PILOT payment or receipt.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "value_qualifier": "exact",
+      "annual_series_key": "google_clarksville_foxman_personal_appraised_value",
+      "label": "County appraised property value",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_google_clarksville_google_personal_appraised_2020",
+      "project_id": "prj_study_im3_building_00844389014",
+      "metric_code": "study.appraised_property_value",
+      "value": 773873,
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2020,
+        "label": "2020 tax bill; appraisal year 2020"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Google LLC personal-property account 110128 at 1000 Solar Way",
+        "county_fips": "47125",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_montgomery_trustee_google_tax_bills_2020_2025",
+      "source_locator": "Tax year 2020 bill-detail id 1472790, account 110128, General Information",
+      "notes": "Separate account-level personal-property appraisal; not investment, assessed taxable value, PILOT payment or receipt.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "value_qualifier": "exact",
+      "annual_series_key": "google_clarksville_google_personal_appraised_value",
+      "label": "County appraised property value",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_google_clarksville_google_personal_appraised_2021",
+      "project_id": "prj_study_im3_building_00844389014",
+      "metric_code": "study.appraised_property_value",
+      "value": 1189050,
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2021,
+        "label": "2021 tax bill; appraisal year 2021"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Google LLC personal-property account 110128 at 1000 Solar Way",
+        "county_fips": "47125",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_montgomery_trustee_google_tax_bills_2020_2025",
+      "source_locator": "Tax year 2021 bill-detail id 1561456, account 110128, General Information",
+      "notes": "Separate account-level personal-property appraisal; not investment, assessed taxable value, PILOT payment or receipt.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "value_qualifier": "exact",
+      "annual_series_key": "google_clarksville_google_personal_appraised_value",
+      "label": "County appraised property value",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_google_clarksville_google_personal_appraised_2022",
+      "project_id": "prj_study_im3_building_00844389014",
+      "metric_code": "study.appraised_property_value",
+      "value": 1265876,
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2022,
+        "label": "2022 tax bill; appraisal year 2022"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Google LLC personal-property account 110128 at 1000 Solar Way",
+        "county_fips": "47125",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_montgomery_trustee_google_tax_bills_2020_2025",
+      "source_locator": "Tax year 2022 bill-detail id 1652710, account 110128, General Information",
+      "notes": "Separate account-level personal-property appraisal; not investment, assessed taxable value, PILOT payment or receipt.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "value_qualifier": "exact",
+      "annual_series_key": "google_clarksville_google_personal_appraised_value",
+      "label": "County appraised property value",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_google_clarksville_google_personal_appraised_2023",
+      "project_id": "prj_study_im3_building_00844389014",
+      "metric_code": "study.appraised_property_value",
+      "value": 14797766,
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2023,
+        "label": "2023 tax bill; appraisal year 2023"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Google LLC personal-property account 110128 at 1000 Solar Way",
+        "county_fips": "47125",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_montgomery_trustee_google_tax_bills_2020_2025",
+      "source_locator": "Tax year 2023 bill-detail id 1747358, account 110128, General Information",
+      "notes": "Separate account-level personal-property appraisal; not investment, assessed taxable value, PILOT payment or receipt.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "value_qualifier": "exact",
+      "annual_series_key": "google_clarksville_google_personal_appraised_value",
+      "label": "County appraised property value",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_google_clarksville_google_personal_appraised_2024",
+      "project_id": "prj_study_im3_building_00844389014",
+      "metric_code": "study.appraised_property_value",
+      "value": 13658283,
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2024,
+        "label": "2024 tax bill; appraisal year 2024"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Google LLC personal-property account 110128 at 1000 Solar Way",
+        "county_fips": "47125",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_montgomery_trustee_google_tax_bills_2020_2025",
+      "source_locator": "Tax year 2024 bill-detail id 1843952, account 110128, General Information",
+      "notes": "Separate account-level personal-property appraisal; not investment, assessed taxable value, PILOT payment or receipt.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "value_qualifier": "exact",
+      "annual_series_key": "google_clarksville_google_personal_appraised_value",
+      "label": "County appraised property value",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_google_clarksville_google_personal_appraised_2025",
+      "project_id": "prj_study_im3_building_00844389014",
+      "metric_code": "study.appraised_property_value",
+      "value": 15695684,
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2025,
+        "label": "2025 tax bill; appraisal year 2025"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Google LLC personal-property account 110128 at 1000 Solar Way",
+        "county_fips": "47125",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_montgomery_trustee_google_tax_bills_2020_2025",
+      "source_locator": "Tax year 2025 bill-detail id 1943470, bill 33373, account 110128, General Information",
+      "notes": "Separate account-level personal-property appraisal; not investment, assessed taxable value, PILOT payment or receipt.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "value_qualifier": "exact",
+      "annual_series_key": "google_clarksville_google_personal_appraised_value",
+      "label": "County appraised property value",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_google_clarksville_idb_real_tax_levy_2020",
+      "project_id": "prj_study_im3_building_00844389014",
+      "metric_code": "study.property_taxes_billed",
+      "value": 0,
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2020,
+        "label": "2020 ordinary county property-tax bill"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "IDB real-property account 3422, parcel 009 01401 000 at 1000 Boolean Drive",
+        "county_fips": "47125",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_montgomery_trustee_google_tax_bills_2020_2025",
+      "source_locator": "Tax year 2020 bill-detail id 1481271: 0% taxable, assessed taxable $0, tax levy $0",
+      "notes": "Exact ordinary-bill levy. This zero does not establish a zero contractual PILOT payment, positive payment, receipt allocation or fiscal net.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "value_qualifier": "exact",
+      "annual_series_key": "google_clarksville_idb_real_property_tax_levy",
+      "label": "Account property taxes billed",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_google_clarksville_idb_real_tax_levy_2021",
+      "project_id": "prj_study_im3_building_00844389014",
+      "metric_code": "study.property_taxes_billed",
+      "value": 0,
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2021,
+        "label": "2021 ordinary county property-tax bill"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "IDB real-property account 3422, parcel 009 01401 000 at 1000 Boolean Drive",
+        "county_fips": "47125",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_montgomery_trustee_google_tax_bills_2020_2025",
+      "source_locator": "Tax year 2021 bill-detail id 1570238: 0% taxable, assessed taxable $0, tax levy $0",
+      "notes": "Exact ordinary-bill levy. This zero does not establish a zero contractual PILOT payment, positive payment, receipt allocation or fiscal net.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "value_qualifier": "exact",
+      "annual_series_key": "google_clarksville_idb_real_property_tax_levy",
+      "label": "Account property taxes billed",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_google_clarksville_idb_real_tax_levy_2022",
+      "project_id": "prj_study_im3_building_00844389014",
+      "metric_code": "study.property_taxes_billed",
+      "value": 0,
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2022,
+        "label": "2022 ordinary county property-tax bill"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "IDB real-property account 3422, parcel 009 01401 000 at 1000 Boolean Drive",
+        "county_fips": "47125",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_montgomery_trustee_google_tax_bills_2020_2025",
+      "source_locator": "Tax year 2022 bill-detail id 1661764: 0% taxable, assessed taxable $0, tax levy $0",
+      "notes": "Exact ordinary-bill levy. This zero does not establish a zero contractual PILOT payment, positive payment, receipt allocation or fiscal net.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "value_qualifier": "exact",
+      "annual_series_key": "google_clarksville_idb_real_property_tax_levy",
+      "label": "Account property taxes billed",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_google_clarksville_idb_real_tax_levy_2023",
+      "project_id": "prj_study_im3_building_00844389014",
+      "metric_code": "study.property_taxes_billed",
+      "value": 0,
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2023,
+        "label": "2023 ordinary county property-tax bill"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "IDB real-property account 3422, parcel 009 01401 000 at 1000 Boolean Drive",
+        "county_fips": "47125",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_montgomery_trustee_google_tax_bills_2020_2025",
+      "source_locator": "Tax year 2023 bill-detail id 1756525: 0% taxable, assessed taxable $0, tax levy $0",
+      "notes": "Exact ordinary-bill levy. This zero does not establish a zero contractual PILOT payment, positive payment, receipt allocation or fiscal net.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "value_qualifier": "exact",
+      "annual_series_key": "google_clarksville_idb_real_property_tax_levy",
+      "label": "Account property taxes billed",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_google_clarksville_idb_real_tax_levy_2024",
+      "project_id": "prj_study_im3_building_00844389014",
+      "metric_code": "study.property_taxes_billed",
+      "value": 0,
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2024,
+        "label": "2024 ordinary county property-tax bill"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "IDB real-property account 3422, parcel 009 01401 000 at 1000 Boolean Drive",
+        "county_fips": "47125",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_montgomery_trustee_google_tax_bills_2020_2025",
+      "source_locator": "Tax year 2024 bill-detail id 1853302: 0% taxable, assessed taxable $0, tax levy $0",
+      "notes": "Exact ordinary-bill levy. This zero does not establish a zero contractual PILOT payment, positive payment, receipt allocation or fiscal net.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "value_qualifier": "exact",
+      "annual_series_key": "google_clarksville_idb_real_property_tax_levy",
+      "label": "Account property taxes billed",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_google_clarksville_idb_real_tax_levy_2025",
+      "project_id": "prj_study_im3_building_00844389014",
+      "metric_code": "study.property_taxes_billed",
+      "value": 0,
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2025,
+        "label": "2025 ordinary county property-tax bill"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "IDB real-property account 3422, parcel 009 01401 000 at 1000 Boolean Drive",
+        "county_fips": "47125",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_montgomery_trustee_google_tax_bills_2020_2025",
+      "source_locator": "Tax year 2025 bill-detail id 1952950, bill 42854: 0% taxable, assessed taxable $0, tax levy $0",
+      "notes": "Exact ordinary-bill levy. This zero does not establish a zero contractual PILOT payment, positive payment, receipt allocation or fiscal net.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "value_qualifier": "exact",
+      "annual_series_key": "google_clarksville_idb_real_property_tax_levy",
+      "label": "Account property taxes billed",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_google_clarksville_foxman_personal_tax_levy_2020",
+      "project_id": "prj_study_im3_building_00844389014",
+      "metric_code": "study.property_taxes_billed",
+      "value": 0,
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2020,
+        "label": "2020 ordinary county personal-property tax bill"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Foxman LLC/IDB personal-property account 110059 at 1000 Solar Way",
+        "county_fips": "47125",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_montgomery_trustee_google_tax_bills_2020_2025",
+      "source_locator": "Tax year 2020 bill-detail id 1469970: 0% taxable, assessed taxable $0, tax levy $0",
+      "notes": "Exact ordinary-bill levy. The generic paid/zero-balance UI is not a PILOT receipt or evidence of a cash payment.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "value_qualifier": "exact",
+      "annual_series_key": "google_clarksville_foxman_personal_property_tax_levy",
+      "label": "Account property taxes billed",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_google_clarksville_foxman_personal_tax_levy_2021",
+      "project_id": "prj_study_im3_building_00844389014",
+      "metric_code": "study.property_taxes_billed",
+      "value": 0,
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2021,
+        "label": "2021 ordinary county personal-property tax bill"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Foxman LLC/IDB personal-property account 110059 at 1000 Solar Way",
+        "county_fips": "47125",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_montgomery_trustee_google_tax_bills_2020_2025",
+      "source_locator": "Tax year 2021 bill-detail id 1558524: 0% taxable, assessed taxable $0, tax levy $0",
+      "notes": "Exact ordinary-bill levy. The generic paid/zero-balance UI is not a PILOT receipt or evidence of a cash payment.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "value_qualifier": "exact",
+      "annual_series_key": "google_clarksville_foxman_personal_property_tax_levy",
+      "label": "Account property taxes billed",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_google_clarksville_foxman_personal_tax_levy_2022",
+      "project_id": "prj_study_im3_building_00844389014",
+      "metric_code": "study.property_taxes_billed",
+      "value": 0,
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2022,
+        "label": "2022 ordinary county personal-property tax bill"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Foxman LLC/IDB personal-property account 110059 at 1000 Solar Way",
+        "county_fips": "47125",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_montgomery_trustee_google_tax_bills_2020_2025",
+      "source_locator": "Tax year 2022 bill-detail id 1649678: 0% taxable, assessed taxable $0, tax levy $0",
+      "notes": "Exact ordinary-bill levy. The generic paid/zero-balance UI is not a PILOT receipt or evidence of a cash payment.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "value_qualifier": "exact",
+      "annual_series_key": "google_clarksville_foxman_personal_property_tax_levy",
+      "label": "Account property taxes billed",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_google_clarksville_foxman_personal_tax_levy_2023",
+      "project_id": "prj_study_im3_building_00844389014",
+      "metric_code": "study.property_taxes_billed",
+      "value": 0,
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2023,
+        "label": "2023 ordinary county personal-property tax bill"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Foxman LLC/IDB personal-property account 110059 at 1000 Solar Way",
+        "county_fips": "47125",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_montgomery_trustee_google_tax_bills_2020_2025",
+      "source_locator": "Tax year 2023 bill-detail id 1744313: 0% taxable, assessed taxable $0, tax levy $0",
+      "notes": "Exact ordinary-bill levy. The generic paid/zero-balance UI is not a PILOT receipt or evidence of a cash payment.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "value_qualifier": "exact",
+      "annual_series_key": "google_clarksville_foxman_personal_property_tax_levy",
+      "label": "Account property taxes billed",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_google_clarksville_foxman_personal_tax_levy_2024",
+      "project_id": "prj_study_im3_building_00844389014",
+      "metric_code": "study.property_taxes_billed",
+      "value": 0,
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2024,
+        "label": "2024 ordinary county personal-property tax bill"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Foxman LLC/IDB personal-property account 110059 at 1000 Solar Way",
+        "county_fips": "47125",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_montgomery_trustee_google_tax_bills_2020_2025",
+      "source_locator": "Tax year 2024 bill-detail id 1840935: 0% taxable, assessed taxable $0, tax levy $0",
+      "notes": "Exact ordinary-bill levy. The generic paid/zero-balance UI is not a PILOT receipt or evidence of a cash payment.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "value_qualifier": "exact",
+      "annual_series_key": "google_clarksville_foxman_personal_property_tax_levy",
+      "label": "Account property taxes billed",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_google_clarksville_foxman_personal_tax_levy_2025",
+      "project_id": "prj_study_im3_building_00844389014",
+      "metric_code": "study.property_taxes_billed",
+      "value": 0,
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2025,
+        "label": "2025 ordinary county personal-property tax bill"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Foxman LLC/IDB personal-property account 110059 at 1000 Solar Way",
+        "county_fips": "47125",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_montgomery_trustee_google_tax_bills_2020_2025",
+      "source_locator": "Tax year 2025 bill-detail id 1940379, bill 30282: 0% taxable, assessed taxable $0, tax levy $0",
+      "notes": "Exact ordinary-bill levy. The generic paid/zero-balance UI is not a PILOT receipt or evidence of a cash payment.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "value_qualifier": "exact",
+      "annual_series_key": "google_clarksville_foxman_personal_property_tax_levy",
+      "label": "Account property taxes billed",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_google_clarksville_google_personal_tax_levy_2020",
+      "project_id": "prj_study_im3_building_00844389014",
+      "metric_code": "study.property_taxes_billed",
+      "value": 0,
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2020,
+        "label": "2020 ordinary county personal-property tax bill"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Google LLC personal-property account 110128 at 1000 Solar Way",
+        "county_fips": "47125",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_montgomery_trustee_google_tax_bills_2020_2025",
+      "source_locator": "Tax year 2020 bill-detail id 1472790: 0% taxable, assessed taxable $0, tax levy $0",
+      "notes": "Exact ordinary-bill levy for the separate Google account; not a contractual PILOT amount, payment receipt or fiscal net.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "value_qualifier": "exact",
+      "annual_series_key": "google_clarksville_google_personal_property_tax_levy",
+      "label": "Account property taxes billed",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_google_clarksville_google_personal_tax_levy_2021",
+      "project_id": "prj_study_im3_building_00844389014",
+      "metric_code": "study.property_taxes_billed",
+      "value": 0,
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2021,
+        "label": "2021 ordinary county personal-property tax bill"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Google LLC personal-property account 110128 at 1000 Solar Way",
+        "county_fips": "47125",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_montgomery_trustee_google_tax_bills_2020_2025",
+      "source_locator": "Tax year 2021 bill-detail id 1561456: 0% taxable, assessed taxable $0, tax levy $0",
+      "notes": "Exact ordinary-bill levy for the separate Google account; not a contractual PILOT amount, payment receipt or fiscal net.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "value_qualifier": "exact",
+      "annual_series_key": "google_clarksville_google_personal_property_tax_levy",
+      "label": "Account property taxes billed",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_google_clarksville_google_personal_tax_levy_2022",
+      "project_id": "prj_study_im3_building_00844389014",
+      "metric_code": "study.property_taxes_billed",
+      "value": 0,
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2022,
+        "label": "2022 ordinary county personal-property tax bill"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Google LLC personal-property account 110128 at 1000 Solar Way",
+        "county_fips": "47125",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_montgomery_trustee_google_tax_bills_2020_2025",
+      "source_locator": "Tax year 2022 bill-detail id 1652710: 0% taxable, assessed taxable $0, tax levy $0",
+      "notes": "Exact ordinary-bill levy for the separate Google account; not a contractual PILOT amount, payment receipt or fiscal net.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "value_qualifier": "exact",
+      "annual_series_key": "google_clarksville_google_personal_property_tax_levy",
+      "label": "Account property taxes billed",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_google_clarksville_google_personal_tax_levy_2023",
+      "project_id": "prj_study_im3_building_00844389014",
+      "metric_code": "study.property_taxes_billed",
+      "value": 0,
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2023,
+        "label": "2023 ordinary county personal-property tax bill"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Google LLC personal-property account 110128 at 1000 Solar Way",
+        "county_fips": "47125",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_montgomery_trustee_google_tax_bills_2020_2025",
+      "source_locator": "Tax year 2023 bill-detail id 1747358: 0% taxable, assessed taxable $0, tax levy $0",
+      "notes": "Exact ordinary-bill levy for the separate Google account; not a contractual PILOT amount, payment receipt or fiscal net.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "value_qualifier": "exact",
+      "annual_series_key": "google_clarksville_google_personal_property_tax_levy",
+      "label": "Account property taxes billed",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_google_clarksville_google_personal_tax_levy_2024",
+      "project_id": "prj_study_im3_building_00844389014",
+      "metric_code": "study.property_taxes_billed",
+      "value": 0,
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2024,
+        "label": "2024 ordinary county personal-property tax bill"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Google LLC personal-property account 110128 at 1000 Solar Way",
+        "county_fips": "47125",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_montgomery_trustee_google_tax_bills_2020_2025",
+      "source_locator": "Tax year 2024 bill-detail id 1843952: 0% taxable, assessed taxable $0, tax levy $0",
+      "notes": "Exact ordinary-bill levy for the separate Google account; not a contractual PILOT amount, payment receipt or fiscal net.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "value_qualifier": "exact",
+      "annual_series_key": "google_clarksville_google_personal_property_tax_levy",
+      "label": "Account property taxes billed",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_google_clarksville_google_personal_tax_levy_2025",
+      "project_id": "prj_study_im3_building_00844389014",
+      "metric_code": "study.property_taxes_billed",
+      "value": 0,
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2025,
+        "label": "2025 ordinary county personal-property tax bill"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Google LLC personal-property account 110128 at 1000 Solar Way",
+        "county_fips": "47125",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_montgomery_trustee_google_tax_bills_2020_2025",
+      "source_locator": "Tax year 2025 bill-detail id 1943470, bill 33373: 0% taxable, assessed taxable $0, tax levy $0",
+      "notes": "Exact ordinary-bill levy for the separate Google account; not a contractual PILOT amount, payment receipt or fiscal net.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "value_qualifier": "exact",
+      "annual_series_key": "google_clarksville_google_personal_property_tax_levy",
+      "label": "Account property taxes billed",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_google_clarksville_covid_utility_relief_grant_2020",
+      "project_id": "prj_study_im3_building_00844389014",
+      "metric_code": "study.direct_community_contribution",
+      "value": 25000,
+      "basis": "reported_actual",
+      "period": {
+        "kind": "source_year",
+        "year": 2020,
+        "label": "FY2019-2020 CDE Lightband report grant disclosure"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Google grant through Tides Foundation for Greater Clarksville utility-bill relief",
+        "county_fips": "47125",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_cde_lightband_annual_report_2020",
+      "pdf_page": 15,
+      "printed_page": "unnumbered",
+      "source_locator": "PDF page 15, Giving Back section: Google LLC $25,000 grant through Tides Foundation donor-advised fund",
+      "notes": "Direct grant amount. TVA matching funds, CDE employee and community contributions, the $54,948 campaign total and downstream impacts are excluded.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "value_qualifier": "exact",
+      "label": "Direct community contribution",
+      "category": "community",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_google_clarksville_veterans_coalition_contribution_2025",
+      "project_id": "prj_study_im3_building_00844389014",
+      "metric_code": "study.direct_community_contribution",
+      "value": 12500,
+      "basis": "reported_actual",
+      "period": {
+        "kind": "reported_snapshot",
+        "report_date": "2025-08-13",
+        "label": "August 2025 veteran-employment program announcement"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Google contribution to Montgomery County Veterans Coalition",
+        "county_fips": "47125",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_clarksvillenow_google_veterans_2025",
+      "source_locator": "Opening disclosure of Google's $12,500 contribution for the Clarksville program",
+      "notes": "Direct contribution only; no employee hiring, wage, payroll, participant outcome or economic multiplier is inferred.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "value_qualifier": "exact",
+      "label": "Direct community contribution",
+      "category": "community",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
     }
   ],
   "economic_sources": [
@@ -210,13 +2301,356 @@
       "retrieved_on": "2026-09-03",
       "review_method": "web_page",
       "notes": "Original project announcement after acquisition of the former Hemlock Semiconductor site. The $600 million investment and 70 new jobs are plans, not verified disbursements or filled positions. Later facility opening alone would not establish realized expenditure or staffing. Existing infrastructure reuse is described; acquisition and construction cost allocation is unspecified."
+    },
+    {
+      "source_id": "src_study_tn_pilot_foxman_2019",
+      "title": "2019 Industrial Development Board Annual Reporting",
+      "url": "https://comptroller.tn.gov/content/dam/cot/sboe/documents/tax-incentive-programs/PILOT2019Report.pdf",
+      "publisher": "Tennessee Comptroller of the Treasury",
+      "source_type": "state_record",
+      "publication_date": {
+        "precision": "day",
+        "date": "2019-09-30"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_pdf_text",
+      "notes": "The Clarksville-Montgomery County IDB filing lists two Foxman LLC leaseholds on map 009 parcel 014.01: personal-property identifier NOF P000 and the real-property parcel. Estimated actual value is retained as a stock; it is not assessed value, taxable value, tax billed, payment received or project capital expenditure."
+    },
+    {
+      "source_id": "src_study_tn_pilot_foxman_2020",
+      "title": "2020 Industrial Development Board Annual Reporting",
+      "url": "https://comptroller.tn.gov/content/dam/cot/sboe/documents/tax-incentive-programs/2020PILOTReport.pdf",
+      "publisher": "Tennessee Comptroller of the Treasury",
+      "source_type": "state_record",
+      "publication_date": {
+        "precision": "day",
+        "date": "2020-10-01"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_pdf_text",
+      "notes": "Official annual filing lists Foxman LLC personal and real property for map 009 parcel 014.01. City, county and lienholder PILOT-payment fields are blank; blanks are not converted to zero."
+    },
+    {
+      "source_id": "src_study_tn_pilot_foxman_2021",
+      "title": "2021 Industrial Development Board Annual Reporting",
+      "url": "https://comptroller.tn.gov/content/dam/cot/sboe/documents/tax-incentive-programs/2021PILOTReport.pdf",
+      "publisher": "Tennessee Comptroller of the Treasury",
+      "source_type": "state_record",
+      "publication_date": {
+        "precision": "day",
+        "date": "2021-09-30"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_pdf_text",
+      "notes": "Official annual filing lists separate Foxman LLC personal and real property estimated actual values on map 009 parcel 014.01. The two property classes remain separate annual stocks."
+    },
+    {
+      "source_id": "src_study_tn_pilot_foxman_2022",
+      "title": "2022 Industrial Development Board Annual Reporting",
+      "url": "https://comptroller.tn.gov/content/dam/cot/sboe/documents/tax-incentive-programs/2022PILOTReport.pdf",
+      "publisher": "Tennessee Comptroller of the Treasury",
+      "source_type": "state_record",
+      "publication_date": {
+        "precision": "day",
+        "date": "2022-09-28"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_pdf_text",
+      "notes": "The Foxman LLC search returns a real-property row for map 009 parcel 014.01 but no matching Foxman personal-property row. Only the reported real-property stock is retained; no personal-property value is imputed."
+    },
+    {
+      "source_id": "src_study_tn_pilot_foxman_2023",
+      "title": "2023 Industrial Development Board Annual Reporting",
+      "url": "https://www.comptroller.tn.gov/content/dam/cot/sboe/documents/tax-incentive-programs/PILOT2023Report.xlsx",
+      "publisher": "Tennessee Comptroller of the Treasury",
+      "source_type": "state_record",
+      "publication_date": {
+        "precision": "day",
+        "date": "2023-09-01"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "structured_data",
+      "notes": "Workbook rows 550-551 list separate Foxman LLC personal and real property on map 009 parcel 014.01. Estimated actual values are retained independently; PILOT-payment fields are blank."
+    },
+    {
+      "source_id": "src_study_tn_pilot_foxman_2024",
+      "title": "2024 Industrial Development Board Annual Reporting",
+      "url": "https://www.comptroller.tn.gov/content/dam/cot/sboe/documents/tax-incentive-programs/2024IDBReporting.xlsx",
+      "publisher": "Tennessee Comptroller of the Treasury",
+      "source_type": "state_record",
+      "publication_date": {
+        "precision": "day",
+        "date": "2024-09-05"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "structured_data",
+      "notes": "Workbook rows 580-581 list Foxman LLC personal and real property estimated actual values on map 009 parcel 014.01. The values are campus leasehold stocks, not selected-building amounts."
+    },
+    {
+      "source_id": "src_study_tn_pilot_foxman_2025",
+      "title": "2025 Industrial Development Board Annual Reporting",
+      "url": "https://www.comptroller.tn.gov/content/dam/cot/sboe/documents/tax-incentive-programs/2025PILOTReporting.xlsx",
+      "publisher": "Tennessee Comptroller of the Treasury",
+      "source_type": "state_record",
+      "publication_date": {
+        "precision": "day",
+        "date": "2025-08-20"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "structured_data",
+      "notes": "Workbook rows 642-643 list Foxman LLC personal and real property estimated actual values for map 009 parcel 014.01. The filing confirms a lease term through December 31, 2038 but reports no numeric city, county or lienholder PILOT payment."
+    },
+    {
+      "source_id": "src_study_google_tennessee_impact_2024",
+      "title": "Google Data Centers: 2024 Economic Impact Study, Tennessee",
+      "url": "https://www.gstatic.com/marketing-cms/15/1d/e91c94d64c99beda981e36c5e7e7/2024-impact-study-tennessee.pdf",
+      "publisher": "Google LLC and Deloitte",
+      "source_type": "operator_release",
+      "publication_date": {
+        "precision": "year",
+        "year": 2024
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "pdf_text_and_page_image",
+      "notes": "Report prepared in fall 2024 gives statewide infrastructure investment and Deloitte IMPLAN contribution results, which are excluded from canonical project records and not re-modeled. Recipient disclosures support bounded community records: more than $650,000 to Austin Peay State University since 2019 and more than $32,000 to Operation Stand Down Tennessee during 2021-2023."
+    },
+    {
+      "source_id": "src_study_clarksvillenow_google_groundbreaking_2018",
+      "title": "Google breaks ground on new data center in Clarksville-Montgomery County",
+      "url": "https://clarksvillenow.com/local/google-breaks-ground-on-new-data-center-in-clarksville-montgomery-county/",
+      "publisher": "Clarksville Now",
+      "source_type": "other",
+      "publication_date": {
+        "precision": "day",
+        "date": "2018-02-16"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_page",
+      "notes": "Groundbreaking coverage reports that construction would involve at least 1,000 workers and repeats the planned 70 permanent jobs. Only the construction-workforce statement is added because the base evidence already preserves the 70-job plan."
+    },
+    {
+      "source_id": "src_study_mtida_google_clarksville_opening_2020",
+      "title": "MTIDA Newsletter, January 2020",
+      "url": "https://www.mtida.org/images/uploads/content_files/MTIDA_Newsletter_January_2020_FINAL.pdf",
+      "publisher": "Middle Tennessee Industrial Development Association",
+      "source_type": "other",
+      "publication_date": {
+        "precision": "month",
+        "date": "2020-01-01"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_pdf_text",
+      "notes": "Regional economic-development newsletter describes the Google facility as fully operational and reports about 70 employees. It does not define FTE status, contractor inclusion, occupations, wages, residence or payroll."
+    },
+    {
+      "source_id": "src_study_apsu_google_creative_arts_grant_2024",
+      "title": "Google grant supports Austin Peay's first Govs Creative Arts Festival",
+      "url": "https://www.apsu.edu/news/august-2024-govs-creative-arts-festival-0805.php",
+      "publisher": "Austin Peay State University",
+      "source_type": "other",
+      "publication_date": {
+        "precision": "day",
+        "date": "2024-08-05"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_page",
+      "notes": "Recipient reports a $15,000 Google Data Center Grant awarded in January 2024 to the Community School of the Arts for a Clarksville festival. This post-2023 award is separate from the impact study's earlier cumulative APSU amount."
+    },
+    {
+      "source_id": "src_study_apsu_google_grasslands_contribution_2025",
+      "title": "Google awards $100K to Southeastern Grasslands Institute for ecological restoration",
+      "url": "https://www.apsu.edu/news/google-awards-100k-southeastern-grasslands-institute.php",
+      "publisher": "Austin Peay State University",
+      "source_type": "other",
+      "publication_date": {
+        "precision": "day",
+        "date": "2025-09-15"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_page",
+      "notes": "Recipient reports a $100,000 Google contribution to Austin Peay State University's Southeastern Grasslands Institute for restoration work at Google's Clarksville property. No multiplier or ecosystem-service value is inferred."
+    },
+    {
+      "source_id": "src_study_montgomery_google_imagination_library_2025",
+      "title": "ILMC Fundraiser Raises Record $67K+ for Early Childhood Literacy",
+      "url": "https://montgomerytn.gov/article/id/407",
+      "publisher": "Montgomery County, Tennessee",
+      "source_type": "local_government_record",
+      "publication_date": {
+        "precision": "day",
+        "date": "2025-10-06"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_page",
+      "notes": "County report says the August 12, 2025 fundraiser total included an additional $25,000 contribution from Google to the Imagination Library of Montgomery County. Only Google's contribution is retained, not the event total or other sponsors' amounts."
+    },
+    {
+      "source_id": "src_study_montgomery_trustee_google_tax_bills_2020_2025",
+      "title": "Montgomery County Trustee Public Property Tax Lookup",
+      "url": "https://montgomery-tn.mygovonline.com/mod.php?mod=propertytax&mode=public_lookup",
+      "publisher": "Montgomery County Trustee",
+      "source_type": "local_government_record",
+      "publication_date": {
+        "precision": "unknown"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "structured_data",
+      "notes": "Exact public lookup repeated for tax years 2020-2025 with selectMenu=parcelinfo, control_map=9, parcel_number=14.01 and blank group, identifier and special_interest. Bill-detail IDs were 1481271/1570238/1661764/1756525/1853302/1952950 for IDB real account 3422; 1469970/1558524/1649678/1744313/1840935/1940379 for Foxman LLC/IDB personal account 110059; and 1472790/1561456/1652710/1747358/1843952/1943470 for Google LLC personal account 110128. Each detail reports 0% taxable, assessed taxable value $0 and tax levy $0. The site's generic paid/zero-balance presentation is not evidence of a positive payment or of the separate PILOT contract payment. Search results also list project-address vendor accounts, but presence is not treated as paid procurement or local retention."
+    },
+    {
+      "source_id": "src_study_cde_lightband_annual_report_2020",
+      "title": "CDE Lightband Annual Report, June 30, 2020 and 2019",
+      "url": "https://cdelightband.com/wp-content/uploads/2021/05/Annual-Report-2020-FINAL-reduced.pdf",
+      "publisher": "CDE Lightband",
+      "source_type": "local_government_record",
+      "publication_date": {
+        "precision": "year",
+        "year": 2020
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_pdf_text",
+      "notes": "The utility report says Google LLC donated a $25,000 grant through its Tides Foundation donor-advised fund for local COVID-19 utility-bill relief. CDE annual reports for FY2018-19 through FY2020-21 were also searched for Google, Foxman, Solar, Boolean, substation, kWh, MW, rate and demand; they provide system or unrelated-substation totals but no Clarksville data-center load, bill, rate class, demand charge or attributable infrastructure cost."
+    },
+    {
+      "source_id": "src_study_clarksvillenow_google_veterans_2025",
+      "title": "Google collaborates with Clarksville to transform veteran employment",
+      "url": "https://clarksvillenow.com/local/google-collaborates-with-clarksville-to-transform-veteran-employment/",
+      "publisher": "Clarksville Now and Clarksville-Montgomery County Economic Development Council",
+      "source_type": "other",
+      "publication_date": {
+        "precision": "day",
+        "date": "2025-08-13"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_page",
+      "notes": "EDC-sponsored local report attributes an exact $12,500 Google contribution to the Montgomery County Veterans Coalition for a Clarksville veteran-employment program. The amount is retained as direct community funding, not payroll, hiring, job creation or downstream economic impact."
     }
   ],
-  "economic_scope_note": "Reviewed evidence batches at campus or company/county scope. No record is allocated to an individual inventory building. Source checking establishes what a document reports, not an independent audit or causal attribution. Monetary figures are nominal. Peak workforce is distinct from annual employment; source-year labels do not establish fiscal-year boundaries. Original forecasts remain forecasts until realization is verified. No cross-record benefit total is defined. Cumulative project costs are not annual expenditure. Tax receipts and incentive payments remain separate, with inferred taxpayer links disclosed. Contextual research updates do not count as economic amounts. Account tax bills are distinct from cash receipts and incentive-program fees. Tax years, calendar years and fiscal years retain their source basis; separate taxpayer accounts are not consolidated. Municipal developer rebates and taxpayer valuations have distinct subjects. Estimated actual property value and tax capacity are not tax receipts; payable-year valuations retain their earlier assessment date. Taxpayer values expressed in millions retain approximate precision and account-level separation. A current-year table can use an older valuation date and is not converted into an annual series. Facility real-property and business-personal-property accounts remain separate, and address-label discrepancies are disclosed. Michigan Industrial Facilities Tax accounts remain distinct from the underlying real parcel and from post-expiration personal-property accounts; annual account totals are not recipient-level government receipts. Permit construction values are administrative project amounts, not verified expenditure, and separate permits are not combined without proof that their scopes do not overlap. Repeated maintenance-year assessments are annual parcel stocks, not new investment flows. Mixed-use parcel assessments and taxable values are retained at whole-parcel scope and are not allocated to a data-center tenant or function by floor area. Operator-reported jobs supported remain distinct from direct employees and FTEs. Approved infrastructure grants are documented public commitments rather than verified disbursements or total public costs. Cumulative community funding remains separate from tax receipts, payroll and modeled multiplier effects. Reported facility power capacity is not measured electricity consumption or peak demand. Permit-listed emergency generators are not runtime, fuel-use or actual-emissions observations. A city largest-taxpayer table's personal-property assessment remains separate from the leasehold real-property account, tax bills, receipts and capital expenditure. TIF loan principal is financing rather than a grant or general-fund receipt; project-generated tax revenue pledged to repayment is retained as a separate public-financing flow and is not added to gross parcel distributions. Water-withdrawal and consumptive permit capacities are regulatory limits rather than measured use. Development-agreement local-labor preferences are requirements rather than realized participation, and operating employee snapshots remain distinct from customers' on-site staff and jobs forecasts. Audited City bond statements distinguish issuance draws, year-end principal, annual principal retired, interest and fees, pledged TIF revenue, debt-service-fund transfers and future principal-plus-interest commitments. These measures are not summed into a benefit or subsidy total. City pledged revenue, City debt-service-fund transfers and the private fund's project TIF revenue applied to loan repayment retain their separate source definitions because only the 2022 transfer and private-fund amount agree exactly. Developer testimony in public meeting minutes is retained as a source-attributed cumulative lower bound; local-contractor spending is not converted into payroll, worker counts, household spending or multiplier effects. Economic-improvement-district cost estimates and maximum owner assessments remain source projections until bond issuance, an assessment schedule, collections and expenditures are verified. A statutory financing cap is not a tax receipt, public expenditure or subsidy. Audited private equipment-financing balances are debt stocks rather than construction spending, public support or community benefit. Reported floor area and occupied-share values describe operating scale and utilization, not employment, revenue, power use or economic output. Contractor and engineer case studies document supplier roles and completion timing but do not establish payment amounts, worker residence, payroll or multiplier effects. State incentive contract amounts, expected jobs and paid-or-certified-to-date fields remain distinct; a zero paid/certified balance at an earlier reporting cutoff does not imply no later claims. Public charging-infrastructure awards are commitments rather than verified disbursements, private project investment or operating benefits. Qualitative payment descriptions without a defensible numeric bound remain research context rather than quantitative records. Program-reported actual qualified investment, certified tax-exemption value and certified tax-credit value remain separate cumulative measures; none is converted into annual spending, a cash grant, local revenue or causal impact. County Business Patterns observations are county-industry context, not project contributions: establishment counts are employer locations rather than data-center facilities, March employment is not an annual average, annual payroll spans the full NAICS cell, and disclosure noise, classification changes and geographic assignment limit comparisons. No CBP change is attributed to a study project. Project fragments: prj_study_im3_building_00052227492: Deep public-evidence audit for Flexential's Minneapolis-Chaska data center on parcel 30.0590020 at 3500 Lyman Boulevard. The review covered Carver County parcel, tax and property-record access points; City of Chaska permit, inspection, agenda, archive, budget, utility and annual-financial-report sources; Minnesota DEED, Revenue, statutory, environmental and utility-regulatory sources; federal workplace-safety search access; current and archived operator, predecessor, career and ESG materials; contractor and supplier references; and education, workforce and recipient-reported community sources for 2013-2026. Eighteen quantitative observations are preserved: a source-projected original investment lower bound; three later non-cumulative permit values; current floor area and critical-load UPS capacity; three annual parcel-tax payments; one current parcel-tax bill; and eight historical Via West Inc. estimated-actual-value observations. Stream's facilities at 1706 and 1708 West Creek Lane, the IP Stream Minneapolis LLC development agreement and its municipal rebates are outside the selected 3500 Lyman Boulevard project boundary and are not duplicated in this fragment; the six base Stream rebate rows require reassignment or removal from this target by the orchestrator because project fragments are append-only. Permit values are administrative estimates and are not summed because scopes may overlap. The current parcel-tax series includes all taxing jurisdictions and special assessments, not City-only receipts or net benefit, and the older citywide taxpayer series is not stitched to current parcel or Flexential values without a direct crosswalk. No synthesis fragment is added because direct observations and even a usable project projection were not found for construction labor, realized operating employment or payroll, supplier payments, metered energy or water, emissions, facility-specific incentive value, public-service costs, community transfers, or a causal county effect. prj_study_im3_building_00172739953: Second-pass public-evidence audit for Switch Las Vegas NAP7, the individual real-property parcel and original SUPERNAP building at 7135 South Decatur Boulevard. The review covered Clark County assessor, Treasurer, Accela permit, planning, air-quality, budget and financial-report access points; Nevada GOED, Department of Taxation and utility-regulatory sources; Switch operator, SEC, career and ESG materials; supplier and contractor references; and recipient-reported community records for 2005-2026. Six direct observations are added without allocating wider Core Campus capital expenditure, combined incentive audits, later facilities or expansions, personal property, tenant equipment, vendor equipment, or company-wide employment to NAP7. The Treasurer record corrects the earlier research note that payment records were uncollected, but the current payment is only a partial fiscal-year amount. No synthesis fragment is added: NAP4 was already operating while NAP7 was under construction in 2008, and the available county panel cannot isolate a NAP7 treatment from earlier facilities, later Core Campus growth, or major non-data-center shocks. NAP7 employment, payroll, local supplier payments, metered electricity and water, personal-property tax, realized abatement, jurisdictional tax receipts, project-attributable public costs, and a net fiscal result remain unobserved. prj_study_im3_building_00214321737: Second-pass public-evidence audit for Markley Group's Lowell data center at 2 Prince Avenue/1 Markley Way in Lowell, Middlesex County. The selected IM3 footprint is one building inside a three-building assessor parcel, so every added value remains at campus or company/county scope and is unallocated to the selected building. State and City records add Phase I forecasts, cumulative investment, operating-headcount, TIF-savings and incentive evidence; the assessor and tax portal add annual real-property stocks and one complete billed-tax year; permit reports add discrete administrative construction values and contractor names; MassDEP adds a permit-listed generator count; and a recipient page verifies one community contribution. Forecasts, cumulative values, parcel stocks, billed taxes, permit values, permit-authorized equipment, white-space area and recipient funding remain distinct and non-additive. Searches of planning and permit files, incentive and compliance reports, assessor and fiscal records, utility and environmental materials, operator disclosures, contractor and supplier pages, workforce and procurement records, community recipients, archives and repository county panels found no audited annual construction outlay, construction workforce or payroll, vendor payments or local-purchase share, facility payroll, metered annual electricity, project-attributable utility upgrade cost, annual water series matching the evidence vocabulary, wastewater, actual emissions, cash tax receipts, marginal public-service cost, fiscal net or causal county outcome. No model is added because the missing allocation and expenditure anchors cannot be bounded defensibly and Markley is not a clean first data-center entry in Middlesex County. prj_study_im3_building_00364289074: Corrective public-source audit for Microsoft's data-center property at 5150 Rogers Road and explicitly labeled wider Microsoft/Bexar County activity. Exact-site ordinance, permit, appraisal, and tax-account records remain separate from later campuses and regional disclosures; the three appraisal accounts and two taxable-account payments are not consolidated. Permit value is administrative, the original investment and employment figures are commitments, the 2013 employment threshold is a reported lower bound, and the water quantity is a projection rather than metered consumption. No Bexar-and-Medina total is allocated to this property. Annual construction expenditure, construction labor and residence, supplier payments, operating payroll and purchases, recipient-level tax distributions, marginal public-service cost, electricity consumption, water withdrawal or consumption, wastewater, actual emissions, and a recurring facility-level community series remain unobserved after the documented searches. prj_study_im3_building_00377585075: Corrective DET01 evidence audit. Official parcel, permit, tax, water-account, state-certificate, EPA and operator records are retained as direct observations or clearly labeled source forecasts. Conflicting floor-area figures remain separate because their reporting definitions differ. Construction cost, realized jobs, supplier payments, community funding, electricity, emissions, wastewater, actual public-service cost and causal county effects remain unbounded rather than being filled with transferred assumptions. prj_study_im3_building_00460089167: Corrective primary-source audit adds current Andale parcel assessment, contractor-reported campus floor area, and two recipient- or government-reported Meta community grants. The search trail records useful and negative results across identity, tax, construction, jobs, suppliers, utilities, water, permits, public costs, incentives, community funding, and county comparison inputs. Campus-wide facts remain unallocated to the selected inventory building, overlapping community amounts are not added together, and unavailable supplier, payroll, utility-billing, discharge, generator, and marginal-service-cost amounts remain explicit gaps. prj_study_im3_building_00464097467: Second-pass public-evidence audit for Apple's Washoe County data-center campus at 21505 Reno Technology Parkway West and its 2024 expansion application. GOED audit findings, application forecasts, county permit values, parcel assessments, a water-right allocation, operator-reported electricity use, and recipient-reported donation bands remain separate evidence states and scopes. Permit values are administrative amounts and are not summed because overlapping scopes cannot be ruled out. Assessment values are parcel stocks, not investment or tax receipts. The 125 acre-foot water right is regulatory capacity, not measured use. Food Bank gifts are company-region transfers, not campus-attributable annual spending. No campus total is allocated to the selected mapped building; the four-building campus, later buildout cases, downtown Reno warehouse, supporting renewable projects, fire-station parcel, and more-than-200-person support statement are not collapsed into one footprint. No Switch Citadel or Storey County amount enters this fragment. Vendor payments, worker residence, taxes received by jurisdiction, realized 2024 abatement, same-scope public-service cost, wastewater, and building-level electricity or water remain unobserved. prj_study_im3_building_00598261190: Second-pass public-evidence audit for the State Farm data center at 24400 West Valley Parkway in Olathe, Kansas. The account adds two official City permit values and SEC-reported property area, occupancy and critical-IT-load snapshots while keeping permit values, estimated cumulative capital spending, parcel assessments, tax bills and tax payments as distinct measures. The search trail covers parcel and fiscal records, construction and suppliers, operations and workforce, incentives, utility and environmental regulation, community activity, planning, public costs and county outcomes. No site-level employment, payroll, supplier payment, community transfer, metered electricity or water, incentive amount, marginal public-service cost, net fiscal position or attributable county effect is inferred from public material. prj_study_im3_building_00626785488: Second-pass public-evidence audit for the individual 654,433-square-foot IM3-mapped building footprint within Meta's Los Lunas data-center campus at 4250 Messenger Loop NW. The review covered the original campus chronology and 2016 industrial-revenue-bond package; Village budgets, audits, LEDA and dedicated infrastructure funds, planning, building, traffic, fire and water records; Valencia County assessor and clerk access; New Mexico economic-development, workforce, Construction Industries Division, Public Regulation Commission and Environment Department materials; PNM regulatory filings; Meta operator, SEC, contractor, career and grant materials; recipient-reported community records; and federal environmental and county-outcome access through September 6, 2026. Fifteen new direct observations are added alongside the two retained baseline observations, all at unallocated campus, company-county or supporting-infrastructure scope because no public source crosswalks the selected IM3 footprint to a separately named building, permit, parcel, workforce, utility meter or fiscal account. The later 2021 two-building expansion, 2023 three-building expansion load, 2025 AI expansion, off-site renewable projects, tenant equipment and other Meta facilities are excluded. No synthesis fragment is added because the selected building's operating date is not identified and the original six-building construction and operating sequence cannot support an isolated county treatment. Building-level capital expenditure, permits and fees, payroll, resident employment, supplier payments, metered electricity and water, utility bills, tax or PILOT payments, cash value of realized abatements, public-service costs and net fiscal results remain unobserved. prj_study_im3_building_00664938835: Second-pass public-evidence audit for Expedient's adaptive reuse of the pre-existing data-center building at 4777 W Ironwood Drive. The review searched Franklin planning, agenda, assessment, permit, water and sewer materials; Milwaukee County tax and deed-record access points; Wisconsin DOR, WEDC, DFI and PSC records; operator press, specification, career, ESG and community pages; lease, financing, carrier and vendor disclosures; and archived official pages for 2007-2026. Opening-day and current operator specifications remain separate dated snapshots because the reported area and capacity changed. The county portal now establishes a 2021-2025 parcel-tax principal series, but not Expedient's incidence under the lease. The 2022 ownership transfer, assessments, estimated permit values, tax payments and hiring plan remain non-additive. No source was found for actual construction outlays, realized site employment or payroll, local procurement, Milwaukee-area community transfers, metered resources, project-attributable public costs or a fiscal net. prj_study_im3_building_00888253616: Second-pass public-evidence audit for NTT Silicon Valley SV1 at 1160 Walsh Avenue, Santa Clara. The review reconciles the planning-era 1150 Walsh address to APN 224-58-003; adds the finaled principal permit, its administrative job value, current operator specifications, emergency-generator authorization and the parcel's regular-bill payment history; and leaves supplemental bills separate to avoid double counting. Public sources still do not establish realized site employment or payroll, total project investment, supplier payments, project-specific community transfers, metered resources, or project-attributable public-service costs. prj_study_im3_building_01024051963: Corrective source audit for the Meta Eagle Mountain campus and the selected IM3 building footprint in Utah County. Campus, company-county, and supporting-infrastructure observations remain explicitly unallocated to the selected building; later expansion areas and unrelated Eagle Mountain data-center developers are excluded unless a source establishes continuity. prj_study_im3_building_01073720208: Second-pass public-evidence audit for Google's Council Bluffs data-center activity, retaining the selected inventory building as the project key while leaving campus, taxpayer-account, company-county, and state-award facts at their reported scopes. The audit distinguishes completed IEDA contracts 08-HQJC-030 and 12-HQJP-051 from the 2022 award still in performance; permit valuations remain administrative amounts rather than expenditure; assessed and taxable values remain stocks; bills remain distinct from payments; and community grants remain recipient- and period-specific. The Pottawattamie County tax portal now supplies a paid 2018-2024 series for the principal Tetra parcel and an unpaid 2025 bill for the newer Questa parcel. No value is inferred for sales-tax exemptions, the local abatement schedule, franchise-fee adjustment, electricity, supplier retention, building-level water, marginal public-service cost, or net fiscal position. Models without defensible project allocation or transferable parameters were removed even though that leaves the eight-category account incomplete. prj_study_im3_building_01132541700: Corrective primary-source audit adds two county taxable-account observations, state-verified incentive-compliance thresholds, current operator-reported jobs and community funding, one county-received grant, facility electricity use, supporting renewable capacity, and the 2018 expansion forecast. The search trail covers identity, land use, permits, assessor and fiscal records, incentives, public costs, utilities, water, suppliers, courts, bonds, community funding, and federal county outcomes. Most public evidence covers the multi-building Henrico campus or Scout Development's county account and remains unallocated to the selected inventory building; overlapping funding and investment figures are not summed, and unavailable supplier payments, utility bills, tax receipts, incentive costs, payroll, and marginal public-service costs remain explicit gaps. prj_study_im3_campus_00231769626: Second-pass public-evidence audit for Google's The Dalles campus in Wasco County. The fragment preserves the baseline 2023-2025 Google LLC and Design LLC tax-bill and assessed-value series and the documented $28.5 million water-infrastructure project, and adds only incremental evidence. Business Oregon supplies a dated three-facility operating snapshot and separately bounded Project 1 and Project 2 SIP forecasts; City of The Dalles planning files and contractor/permit records document later River Road construction without treating permit valuations as spending. A recipient record verifies one local grant. Searches of assessor and treasurer records, budgets and agreements, planning and permit systems, utility and environmental records, operator ESG/careers materials, contractors, suppliers, workforce sources, nonprofit recipients, archives and structured portals found no audited construction outlay, local supplier spend, facility payroll, employee residence, project-attributable utility cost or load, realized abatement ledger, same-scope public service cost, or fiscal net. Statewide Google totals and system-wide utility loads are excluded from campus claims.",
+  "economic_scope_note": "Reviewed evidence batches at campus or company/county scope. No record is allocated to an individual inventory building. Source checking establishes what a document reports, not an independent audit or causal attribution. Monetary figures are nominal. Peak workforce is distinct from annual employment; source-year labels do not establish fiscal-year boundaries. Original forecasts remain forecasts until realization is verified. No cross-record benefit total is defined. Cumulative project costs are not annual expenditure. Tax receipts and incentive payments remain separate, with inferred taxpayer links disclosed. Contextual research updates do not count as economic amounts. Account tax bills are distinct from cash receipts and incentive-program fees. Tax years, calendar years and fiscal years retain their source basis; separate taxpayer accounts are not consolidated. Municipal developer rebates and taxpayer valuations have distinct subjects. Estimated actual property value and tax capacity are not tax receipts; payable-year valuations retain their earlier assessment date. Taxpayer values expressed in millions retain approximate precision and account-level separation. A current-year table can use an older valuation date and is not converted into an annual series. Facility real-property and business-personal-property accounts remain separate, and address-label discrepancies are disclosed. Michigan Industrial Facilities Tax accounts remain distinct from the underlying real parcel and from post-expiration personal-property accounts; annual account totals are not recipient-level government receipts. Permit construction values are administrative project amounts, not verified expenditure, and separate permits are not combined without proof that their scopes do not overlap. Repeated maintenance-year assessments are annual parcel stocks, not new investment flows. Mixed-use parcel assessments and taxable values are retained at whole-parcel scope and are not allocated to a data-center tenant or function by floor area. Operator-reported jobs supported remain distinct from direct employees and FTEs. Approved infrastructure grants are documented public commitments rather than verified disbursements or total public costs. Cumulative community funding remains separate from tax receipts, payroll and modeled multiplier effects. Reported facility power capacity is not measured electricity consumption or peak demand. Permit-listed emergency generators are not runtime, fuel-use or actual-emissions observations. A city largest-taxpayer table's personal-property assessment remains separate from the leasehold real-property account, tax bills, receipts and capital expenditure. TIF loan principal is financing rather than a grant or general-fund receipt; project-generated tax revenue pledged to repayment is retained as a separate public-financing flow and is not added to gross parcel distributions. Water-withdrawal and consumptive permit capacities are regulatory limits rather than measured use. Development-agreement local-labor preferences are requirements rather than realized participation, and operating employee snapshots remain distinct from customers' on-site staff and jobs forecasts. Audited City bond statements distinguish issuance draws, year-end principal, annual principal retired, interest and fees, pledged TIF revenue, debt-service-fund transfers and future principal-plus-interest commitments. These measures are not summed into a benefit or subsidy total. City pledged revenue, City debt-service-fund transfers and the private fund's project TIF revenue applied to loan repayment retain their separate source definitions because only the 2022 transfer and private-fund amount agree exactly. Developer testimony in public meeting minutes is retained as a source-attributed cumulative lower bound; local-contractor spending is not converted into payroll, worker counts, household spending or multiplier effects. Economic-improvement-district cost estimates and maximum owner assessments remain source projections until bond issuance, an assessment schedule, collections and expenditures are verified. A statutory financing cap is not a tax receipt, public expenditure or subsidy. Audited private equipment-financing balances are debt stocks rather than construction spending, public support or community benefit. Reported floor area and occupied-share values describe operating scale and utilization, not employment, revenue, power use or economic output. Contractor and engineer case studies document supplier roles and completion timing but do not establish payment amounts, worker residence, payroll or multiplier effects. State incentive contract amounts, expected jobs and paid-or-certified-to-date fields remain distinct; a zero paid/certified balance at an earlier reporting cutoff does not imply no later claims. Public charging-infrastructure awards are commitments rather than verified disbursements, private project investment or operating benefits. Qualitative payment descriptions without a defensible numeric bound remain research context rather than quantitative records. Program-reported actual qualified investment, certified tax-exemption value and certified tax-credit value remain separate cumulative measures; none is converted into annual spending, a cash grant, local revenue or causal impact. County Business Patterns observations are county-industry context, not project contributions: establishment counts are employer locations rather than data-center facilities, March employment is not an annual average, annual payroll spans the full NAICS cell, and disclosure noise, classification changes and geographic assignment limit comparisons. No CBP change is attributed to a study project. Project fragments: prj_study_im3_building_00052227492: Deep public-evidence audit for Flexential's Minneapolis-Chaska data center on parcel 30.0590020 at 3500 Lyman Boulevard. The review covered Carver County parcel, tax and property-record access points; City of Chaska permit, inspection, agenda, archive, budget, utility and annual-financial-report sources; Minnesota DEED, Revenue, statutory, environmental and utility-regulatory sources; federal workplace-safety search access; current and archived operator, predecessor, career and ESG materials; contractor and supplier references; and education, workforce and recipient-reported community sources for 2013-2026. Eighteen quantitative observations are preserved: a source-projected original investment lower bound; three later non-cumulative permit values; current floor area and critical-load UPS capacity; three annual parcel-tax payments; one current parcel-tax bill; and eight historical Via West Inc. estimated-actual-value observations. Stream's facilities at 1706 and 1708 West Creek Lane, the IP Stream Minneapolis LLC development agreement and its municipal rebates are outside the selected 3500 Lyman Boulevard project boundary and are not duplicated in this fragment; the six base Stream rebate rows require reassignment or removal from this target by the orchestrator because project fragments are append-only. Permit values are administrative estimates and are not summed because scopes may overlap. The current parcel-tax series includes all taxing jurisdictions and special assessments, not City-only receipts or net benefit, and the older citywide taxpayer series is not stitched to current parcel or Flexential values without a direct crosswalk. No synthesis fragment is added because direct observations and even a usable project projection were not found for construction labor, realized operating employment or payroll, supplier payments, metered energy or water, emissions, facility-specific incentive value, public-service costs, community transfers, or a causal county effect. prj_study_im3_building_00172739953: Second-pass public-evidence audit for Switch Las Vegas NAP7, the individual real-property parcel and original SUPERNAP building at 7135 South Decatur Boulevard. The review covered Clark County assessor, Treasurer, Accela permit, planning, air-quality, budget and financial-report access points; Nevada GOED, Department of Taxation and utility-regulatory sources; Switch operator, SEC, career and ESG materials; supplier and contractor references; and recipient-reported community records for 2005-2026. Six direct observations are added without allocating wider Core Campus capital expenditure, combined incentive audits, later facilities or expansions, personal property, tenant equipment, vendor equipment, or company-wide employment to NAP7. The Treasurer record corrects the earlier research note that payment records were uncollected, but the current payment is only a partial fiscal-year amount. No synthesis fragment is added: NAP4 was already operating while NAP7 was under construction in 2008, and the available county panel cannot isolate a NAP7 treatment from earlier facilities, later Core Campus growth, or major non-data-center shocks. NAP7 employment, payroll, local supplier payments, metered electricity and water, personal-property tax, realized abatement, jurisdictional tax receipts, project-attributable public costs, and a net fiscal result remain unobserved. prj_study_im3_building_00214321737: Second-pass public-evidence audit for Markley Group's Lowell data center at 2 Prince Avenue/1 Markley Way in Lowell, Middlesex County. The selected IM3 footprint is one building inside a three-building assessor parcel, so every added value remains at campus or company/county scope and is unallocated to the selected building. State and City records add Phase I forecasts, cumulative investment, operating-headcount, TIF-savings and incentive evidence; the assessor and tax portal add annual real-property stocks and one complete billed-tax year; permit reports add discrete administrative construction values and contractor names; MassDEP adds a permit-listed generator count; and a recipient page verifies one community contribution. Forecasts, cumulative values, parcel stocks, billed taxes, permit values, permit-authorized equipment, white-space area and recipient funding remain distinct and non-additive. Searches of planning and permit files, incentive and compliance reports, assessor and fiscal records, utility and environmental materials, operator disclosures, contractor and supplier pages, workforce and procurement records, community recipients, archives and repository county panels found no audited annual construction outlay, construction workforce or payroll, vendor payments or local-purchase share, facility payroll, metered annual electricity, project-attributable utility upgrade cost, annual water series matching the evidence vocabulary, wastewater, actual emissions, cash tax receipts, marginal public-service cost, fiscal net or causal county outcome. No model is added because the missing allocation and expenditure anchors cannot be bounded defensibly and Markley is not a clean first data-center entry in Middlesex County. prj_study_im3_building_00364289074: Corrective public-source audit for Microsoft's data-center property at 5150 Rogers Road and explicitly labeled wider Microsoft/Bexar County activity. Exact-site ordinance, permit, appraisal, and tax-account records remain separate from later campuses and regional disclosures; the three appraisal accounts and two taxable-account payments are not consolidated. Permit value is administrative, the original investment and employment figures are commitments, the 2013 employment threshold is a reported lower bound, and the water quantity is a projection rather than metered consumption. No Bexar-and-Medina total is allocated to this property. Annual construction expenditure, construction labor and residence, supplier payments, operating payroll and purchases, recipient-level tax distributions, marginal public-service cost, electricity consumption, water withdrawal or consumption, wastewater, actual emissions, and a recurring facility-level community series remain unobserved after the documented searches. prj_study_im3_building_00377585075: Corrective DET01 evidence audit. Official parcel, permit, tax, water-account, state-certificate, EPA and operator records are retained as direct observations or clearly labeled source forecasts. Conflicting floor-area figures remain separate because their reporting definitions differ. Construction cost, realized jobs, supplier payments, community funding, electricity, emissions, wastewater, actual public-service cost and causal county effects remain unbounded rather than being filled with transferred assumptions. prj_study_im3_building_00460089167: Corrective primary-source audit adds current Andale parcel assessment, contractor-reported campus floor area, and two recipient- or government-reported Meta community grants. The search trail records useful and negative results across identity, tax, construction, jobs, suppliers, utilities, water, permits, public costs, incentives, community funding, and county comparison inputs. Campus-wide facts remain unallocated to the selected inventory building, overlapping community amounts are not added together, and unavailable supplier, payroll, utility-billing, discharge, generator, and marginal-service-cost amounts remain explicit gaps. prj_study_im3_building_00464097467: Second-pass public-evidence audit for Apple's Washoe County data-center campus at 21505 Reno Technology Parkway West and its 2024 expansion application. GOED audit findings, application forecasts, county permit values, parcel assessments, a water-right allocation, operator-reported electricity use, and recipient-reported donation bands remain separate evidence states and scopes. Permit values are administrative amounts and are not summed because overlapping scopes cannot be ruled out. Assessment values are parcel stocks, not investment or tax receipts. The 125 acre-foot water right is regulatory capacity, not measured use. Food Bank gifts are company-region transfers, not campus-attributable annual spending. No campus total is allocated to the selected mapped building; the four-building campus, later buildout cases, downtown Reno warehouse, supporting renewable projects, fire-station parcel, and more-than-200-person support statement are not collapsed into one footprint. No Switch Citadel or Storey County amount enters this fragment. Vendor payments, worker residence, taxes received by jurisdiction, realized 2024 abatement, same-scope public-service cost, wastewater, and building-level electricity or water remain unobserved. prj_study_im3_building_00598261190: Second-pass public-evidence audit for the State Farm data center at 24400 West Valley Parkway in Olathe, Kansas. The account adds two official City permit values and SEC-reported property area, occupancy and critical-IT-load snapshots while keeping permit values, estimated cumulative capital spending, parcel assessments, tax bills and tax payments as distinct measures. The search trail covers parcel and fiscal records, construction and suppliers, operations and workforce, incentives, utility and environmental regulation, community activity, planning, public costs and county outcomes. No site-level employment, payroll, supplier payment, community transfer, metered electricity or water, incentive amount, marginal public-service cost, net fiscal position or attributable county effect is inferred from public material. prj_study_im3_building_00626785488: Second-pass public-evidence audit for the individual 654,433-square-foot IM3-mapped building footprint within Meta's Los Lunas data-center campus at 4250 Messenger Loop NW. The review covered the original campus chronology and 2016 industrial-revenue-bond package; Village budgets, audits, LEDA and dedicated infrastructure funds, planning, building, traffic, fire and water records; Valencia County assessor and clerk access; New Mexico economic-development, workforce, Construction Industries Division, Public Regulation Commission and Environment Department materials; PNM regulatory filings; Meta operator, SEC, contractor, career and grant materials; recipient-reported community records; and federal environmental and county-outcome access through September 6, 2026. Fifteen new direct observations are added alongside the two retained baseline observations, all at unallocated campus, company-county or supporting-infrastructure scope because no public source crosswalks the selected IM3 footprint to a separately named building, permit, parcel, workforce, utility meter or fiscal account. The later 2021 two-building expansion, 2023 three-building expansion load, 2025 AI expansion, off-site renewable projects, tenant equipment and other Meta facilities are excluded. No synthesis fragment is added because the selected building's operating date is not identified and the original six-building construction and operating sequence cannot support an isolated county treatment. Building-level capital expenditure, permits and fees, payroll, resident employment, supplier payments, metered electricity and water, utility bills, tax or PILOT payments, cash value of realized abatements, public-service costs and net fiscal results remain unobserved. prj_study_im3_building_00664938835: Second-pass public-evidence audit for Expedient's adaptive reuse of the pre-existing data-center building at 4777 W Ironwood Drive. The review searched Franklin planning, agenda, assessment, permit, water and sewer materials; Milwaukee County tax and deed-record access points; Wisconsin DOR, WEDC, DFI and PSC records; operator press, specification, career, ESG and community pages; lease, financing, carrier and vendor disclosures; and archived official pages for 2007-2026. Opening-day and current operator specifications remain separate dated snapshots because the reported area and capacity changed. The county portal now establishes a 2021-2025 parcel-tax principal series, but not Expedient's incidence under the lease. The 2022 ownership transfer, assessments, estimated permit values, tax payments and hiring plan remain non-additive. No source was found for actual construction outlays, realized site employment or payroll, local procurement, Milwaukee-area community transfers, metered resources, project-attributable public costs or a fiscal net. prj_study_im3_building_00844389014: Second-pass direct-evidence audit for Google Clarksville in Montgomery County, Tennessee. The review covered Tennessee Comptroller industrial-development-board PILOT filings for 2019-2025; the Montgomery County assessor GIS parcel service and Trustee tax-bill portal; parcel-linked stormwater files; Clarksville-Montgomery County Regional Planning Commission materials; IDB, county-commission and city agenda archives; state and federal environmental portals; operator location, environmental, economic-impact and watershed materials; utility annual reports; and public workforce, contractor, procurement and recipient sources. Fifty-eight incremental quantitative observations are preserved: thirteen annual Foxman LLC estimated-actual-property-value stocks, eighteen account-level appraised-value stocks, eighteen account-level zero tax levies, a realized opening-period employee snapshot, a construction-workforce projection, and seven recipient-specific community contributions. The direct Trustee records resolve the ordinary tax bills as 0%-taxable, zero-assessed-taxable-value, zero-levy bills; they do not resolve the separate contractual PILOT payments left blank in state filings, and the portal's generic paid/zero-balance label is not treated as a cash receipt. The selected inventory key is one building, while parcel, account and environmental evidence is campus or company/county scoped and remains unallocated. Statewide investment and modeled impact totals, shared Alabama-Tennessee renewable capacity, regional watershed contributions, vendor presence without paid-contract evidence, and proposals for later Building 13 work are excluded from canonical project records. A single optional synthesis reproduces the operator's 2024 Montgomery County water-consumption identity at unallocated location scope; no multiplier, supplier-retention, fiscal-net, public-cost, energy, payroll or causal county model is created. prj_study_im3_building_00888253616: Second-pass public-evidence audit for NTT Silicon Valley SV1 at 1160 Walsh Avenue, Santa Clara. The review reconciles the planning-era 1150 Walsh address to APN 224-58-003; adds the finaled principal permit, its administrative job value, current operator specifications, emergency-generator authorization and the parcel's regular-bill payment history; and leaves supplemental bills separate to avoid double counting. Public sources still do not establish realized site employment or payroll, total project investment, supplier payments, project-specific community transfers, metered resources, or project-attributable public-service costs. prj_study_im3_building_01024051963: Corrective source audit for the Meta Eagle Mountain campus and the selected IM3 building footprint in Utah County. Campus, company-county, and supporting-infrastructure observations remain explicitly unallocated to the selected building; later expansion areas and unrelated Eagle Mountain data-center developers are excluded unless a source establishes continuity. prj_study_im3_building_01073720208: Second-pass public-evidence audit for Google's Council Bluffs data-center activity, retaining the selected inventory building as the project key while leaving campus, taxpayer-account, company-county, and state-award facts at their reported scopes. The audit distinguishes completed IEDA contracts 08-HQJC-030 and 12-HQJP-051 from the 2022 award still in performance; permit valuations remain administrative amounts rather than expenditure; assessed and taxable values remain stocks; bills remain distinct from payments; and community grants remain recipient- and period-specific. The Pottawattamie County tax portal now supplies a paid 2018-2024 series for the principal Tetra parcel and an unpaid 2025 bill for the newer Questa parcel. No value is inferred for sales-tax exemptions, the local abatement schedule, franchise-fee adjustment, electricity, supplier retention, building-level water, marginal public-service cost, or net fiscal position. Models without defensible project allocation or transferable parameters were removed even though that leaves the eight-category account incomplete. prj_study_im3_building_01132541700: Corrective primary-source audit adds two county taxable-account observations, state-verified incentive-compliance thresholds, current operator-reported jobs and community funding, one county-received grant, facility electricity use, supporting renewable capacity, and the 2018 expansion forecast. The search trail covers identity, land use, permits, assessor and fiscal records, incentives, public costs, utilities, water, suppliers, courts, bonds, community funding, and federal county outcomes. Most public evidence covers the multi-building Henrico campus or Scout Development's county account and remains unallocated to the selected inventory building; overlapping funding and investment figures are not summed, and unavailable supplier payments, utility bills, tax receipts, incentive costs, payroll, and marginal public-service costs remain explicit gaps. prj_study_im3_campus_00019988712: Second-pass direct-evidence audit for Meta's Prineville data-center campus at 735 SW Connect Way in Prineville, Crook County. The selected IM3 entity is the campus, not one PRN building, every Vitesse-owned county parcel, Apple's separate campus, or Meta's statewide and global portfolios. The fragment now separates annual company-level potential additional tax from facility-level 2024-25 exemption values, taxable Vitesse totals from exempt account values, billed tax from payment status, agreement schedules from realized distributions, and one exact permit valuation from construction expenditure. Business Oregon identifies all three long-term-rural-zone facilities; Crook County's public assessor portal resolves 25 current Vitesse/Meta accounts across nine map-tax-lot strings and provides an annual history for exact-address account 19380; and Oregon ePermitting supplies an exact permit, contractor, project description and job value. Projections remain projections, overlapping summary/detail tax records are not summed, and multi-company budgets are not allocated. Realized Meta-only PILOT distributions, a reconciled all-account exemption roll, construction payroll/job-years, supplier payments/local-spend share, same-scope public-service costs, campus water bills, and causal county effects remain unavailable. prj_study_im3_campus_00231769626: Second-pass public-evidence audit for Google's The Dalles campus in Wasco County. The fragment preserves the baseline 2023-2025 Google LLC and Design LLC tax-bill and assessed-value series and the documented $28.5 million water-infrastructure project, and adds only incremental evidence. Business Oregon supplies a dated three-facility operating snapshot and separately bounded Project 1 and Project 2 SIP forecasts; City of The Dalles planning files and contractor/permit records document later River Road construction without treating permit valuations as spending. A recipient record verifies one local grant. Searches of assessor and treasurer records, budgets and agreements, planning and permit systems, utility and environmental records, operator ESG/careers materials, contractors, suppliers, workforce sources, nonprofit recipients, archives and structured portals found no audited construction outlay, local supplier spend, facility payroll, employee residence, project-attributable utility cost or load, realized abatement ledger, same-scope public service cost, or fiscal net. Statewide Google totals and system-wide utility loads are excluded from campus claims. prj_study_im3_campus_00675108684: Project-scoped audit of Microsoft’s bounded Boydton/East Coast/LVL campus in Mecklenburg County adds direct parcel, permit, expansion, performance, portfolio, infrastructure, construction and community evidence. Reported actuals remain distinct from announcement projections, and countywide portfolio figures remain unallocated. A dedicated last-resort eligibility pass adds only deterministic normalization and same-period arithmetic: the five-year average of reported portfolio property taxes, its explicitly conditional public-cost break-even identity, and annual sums of identified FY2024 and FY2025 LVL/Herbert Fund 301 components; achieved phase investment and jobs plus resource/construction measures remain unsummed because their overlap, timing, or required inputs are unresolved.",
   "evidence_version": "study-economic-evidence-1.37.0",
-  "modeled_syntheses": [],
-  "modeled_sources": [],
-  "modeled_scope_note": "Modeled contribution accounts for Apple Mesa / Maricopa County, Switch Citadel / Storey County, and Digital Crossroad Hammond / Lake County. Every required account category and county-comparison module contains sourced evidence or a visibly labeled modeled value. Public support is not netted against unmatched local revenues, unavailable public-service cost is represented by a break-even threshold rather than an invented net margin, county comparisons are descriptive rather than causal, and low-confidence transferred benchmarks remain explicit. Project fragments: prj_study_im3_building_00364289074: Corrective residual modeled account for Microsoft San Antonio. Eight transferred construction, labor, procurement, operating, and household-output scenarios were removed because their arbitrary capital shares, forecast-realization cases, local-purchase assumptions, and Virginia coefficients were not bounded by project observations. Only three low-confidence descriptive county comparisons remain: each uses the project's documented operating-by 2013 anchor and official Bexar County outcome data, has a finite fit-sensitivity envelope, and explicitly makes no causal attribution. The account intentionally remains incomplete because no defensible direct observation or residual model closes the supplier category. prj_study_im3_building_00377585075: Corrective DET01 synthesis. Only exact same-period tax-account arithmetic, its explicitly conditional public-cost break-even identity and a unit conversion of displayed municipal meter history remain. Construction, employment, supplier, household, electricity, cooling, emissions, wastewater and county-effect models were removed because the audit did not bound the missing project inputs. This account is intentionally incomplete where direct evidence remains unbounded. prj_study_im3_building_00460089167: Corrective audit retains six bounded residual calculations only: FY2025 county tax retained after the provisionally linked incentive, the identical marginal-service-cost break-even threshold, conversion of Meta-reported 2024 water withdrawal with source rounding, and three noncausal county comparison gaps with fit sensitivity. Ten models based on arbitrary capital timing, cost shares, FTE ratios, transferred operating/construction multipliers, fleet PUE, or wastewater ratios are removed. Supplier/local-procurement evidence remains unavailable, so the project is intentionally incomplete rather than backfilled. prj_study_im3_building_00464097467: Second-pass modeled contribution account after an expanded public-evidence audit. Direct county permits now cover historical construction values, assessor rolls cover a main-campus parcel stock, a county action covers water-right capacity, Apple reports 2025 campus electricity use, and recipient reports bound two community gifts. Those observations supersede the need for a modeled community proxy but do not supply Apple contractor job-years, construction payroll, annual operating payroll, supplier payments, taxes received, or public-service cost. The construction base therefore retains only the packet's explicit $163 million construction forecast and excludes equipment and historical capital; wide 0.5-1.5 transfer sensitivities expose the mismatch in the last-resort direct construction coefficients. The unsupported local-purchase-share and Virginia induced-output models are removed. No net-fiscal value or public-service-cost break-even is published. County outcome gaps remain descriptive benchmark applications with fit-sensitivity intervals and no causal-design metadata. prj_study_im3_building_00664938835: Second-pass Expedient Milwaukee / Franklin syntheses retained only after a documented 2007-2026 public-source audit. The account keeps a clearly labeled 2022 ownership-transfer anchor, a PB25-0303-only construction allocation sensitivity, an exact tax-equal public-cost break-even threshold, a capacity-based electricity engineering sensitivity, and three descriptive county comparison gaps. It removes transferred construction job-years, assumed local-purchase shares, supplier and household output extrapolations, and a duplicate modeled tax row because public sources did not establish realized site employment, supplier geography, household capture, or a need to restate the direct tax observations. PM25-0174 remains excluded for possible overlap. No synthesis is an observed result or fiscal net. prj_study_im3_building_00888253616: Residual synthesis after the SV1 public-source audit. It retains one exact tax-equal public-cost break-even threshold and three reproducible but low-confidence county comparison gaps. The county gaps use 2013-2020 pre-opening histories and an inverse-distance-weighted 20-county benchmark; very wide fit envelopes are retained because Santa Clara County matches poorly. No model converts capacity to consumption, permit value to jobs, or unidentified vendor and community activity to local benefits. prj_study_im3_building_01073720208: Second-pass governed synthesis for Google Council Bluffs. Construction job-years use only two directly observed September 2025 city permit valuations and transfer the published Prince William County prototype coefficients as benchmark equivalents; the four channels are separated and protected by one aggregation. No Pottawattamie County supplier-retention share is imposed because the public audit found contractor names but no payment or vendor-residence ledger. The water row is the unallocated Google Council Bluffs location identity reported for 2024, not a building allocation. No local abatement, exemption realization, franchise-fee amount, electric load, public-service cost, break-even threshold, or net fiscal result is modeled. County outcome gaps remain descriptive benchmark applications with fit-sensitivity ranges and no causal attribution. prj_study_im3_building_01132541700: Four bounded syntheses are retained after direct-record search: one deterministic conversion of Meta's rounded 2024 Henrico water-withdrawal observation and three governed, descriptive county comparison gaps. No construction, operating, supplier, household, tax-receipt, incentive-cost, or public-service-cost model is added because the public record lacks the needed project-specific bases and arbitrary allocation shares would create false precision. Every retained estimate is visibly modeled, unallocated to the selected building, non-additive, and noncausal. prj_study_im3_campus_00231769626: Residual synthesis after the Google The Dalles public-source audit. Only three low-confidence descriptive county comparison gaps are retained because the direct record does not identify causal county outcomes. Each benchmark uses the available 2001-2005 pre-opening history, excludes all study counties from a 20-county inverse-distance-weighted donor pool, and carries a fit-sensitivity envelope. No model converts broad investment or permit values to jobs, onsite contractor counts to supplier output, utility-system loads to campus consumption, tax bills to payments, or unmatched incentive formulas and public costs to a fiscal net.",
+  "modeled_syntheses": [
+    {
+      "estimate_id": "est_study_google_clarksville_water_consumption_2024",
+      "project_id": "prj_study_im3_building_00844389014",
+      "metric_code": "study.modeled_annual_water_consumption",
+      "label": "Unallocated Montgomery County location water-consumption identity",
+      "category": "resources",
+      "unit": "gallons_per_year",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 321800000,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2024,
+        "label": "Calendar-year 2024 Google Montgomery County location"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Google Montgomery County location total; no campus or building allocation",
+        "county_fips": "47125",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "reported_band",
+        "low": 321700000,
+        "central": 321800000,
+        "high": 321900000,
+        "interpretation": "Conservative deterministic envelope from independently rounding both displayed inputs to the nearest 0.1 million gallons; it is not a confidence interval."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "google_clarksville_location_water_2024",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "location_water_withdrawal",
+          "value": 387900000,
+          "unit": "gallons_per_year",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_google_environmental_report_2025_clarksville",
+            "detail": "2024 Montgomery County withdrawal converted from 387.9 million gallons"
+          },
+          "transformation": "Subtract discharge"
+        },
+        {
+          "name": "location_water_discharge",
+          "value": 66100000,
+          "unit": "gallons_per_year",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_google_environmental_report_2025_clarksville",
+            "detail": "2024 Montgomery County discharge converted from 66.1 million gallons"
+          },
+          "transformation": "Subtract from withdrawal"
+        }
+      ],
+      "confidence": "medium",
+      "confidence_rationale": "Both location-level inputs are published by the operator and subject to limited assurance, but discharge may be engineering-estimated, values are rounded, and no building allocation is available.",
+      "decision_relevance": "Preserves the only direct public location-level operating-resource magnitude in a compatible unit without allocating it to the selected building.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "not_found",
+        "remaining_evidence_gap": "Clarksville Gas & Water or campus meter records, potable/reclaimed split, utility bills, peak-day use, discharge measurement method, cooling-process allocation, and a canonical observed-water metric compatible with the published location total"
+      },
+      "derivation": {
+        "method": "engineering_estimate",
+        "model_version": "google-clarksville-account-1.0.0",
+        "formula": "387,900,000 gallons withdrawal - 66,100,000 gallons discharge",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_google_environmental_report_2025_clarksville"
+        ],
+        "assumptions": [
+          "The operator's Montgomery County location label and reported units are accurate.",
+          "The result remains unallocated across campuses and buildings.",
+          "Each displayed input is rounded to the nearest 0.1 million gallons."
+        ]
+      },
+      "limitations": [
+        "The source says discharge may be estimated using engineering principles.",
+        "No campus or selected-building allocation is defensible.",
+        "The record does not distinguish potable, reclaimed or process water.",
+        "The interval is a rounding envelope, not statistical uncertainty."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Retained after second-pass direct-evidence review because the operator publishes the location inputs and identity but the evidence schema has no compatible canonical direct-water metric. Do not present it as selected-building consumption or as utility-billed volume.",
+      "reviewed_on": "2026-09-06"
+    }
+  ],
+  "modeled_sources": [
+    {
+      "source_id": "src_study_google_environmental_report_2025_clarksville",
+      "title": "Google 2025 Environmental Report",
+      "url": "https://www.gstatic.com/gumdrop/sustainability/google-2025-environmental-report.pdf",
+      "publisher": "Google LLC",
+      "source_type": "operator_release",
+      "publication_date": {
+        "precision": "year",
+        "year": 2025
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "pdf_text_and_page_image",
+      "notes": "Page 110 reports Montgomery County 2024 water withdrawal of 387.9 million gallons, discharge of 66.1 million gallons and consumption of 321.8 million gallons. Methodology says discharge may be engineering-estimated and consumption equals withdrawal minus discharge; figures are rounded to 0.1 million gallons and subject to limited assurance. No building allocation is published."
+    },
+    {
+      "source_id": "src_study_google_environmental_report_2025_clarksville",
+      "title": "Google 2025 Environmental Report",
+      "url": "https://www.gstatic.com/gumdrop/sustainability/google-2025-environmental-report.pdf",
+      "publisher": "Google LLC",
+      "source_type": "operator_release",
+      "publication_date": {
+        "precision": "year",
+        "year": 2025
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "pdf_text_and_page_image",
+      "notes": "Page 110 reports Montgomery County 2024 withdrawal of 387.9 million gallons, discharge of 66.1 million gallons and consumption of 321.8 million gallons. Page 114 explains that consumption equals withdrawal minus discharge, discharge may be engineering-estimated, and displayed values are rounded to 0.1 million gallons."
+    }
+  ],
+  "modeled_scope_note": "Modeled contribution accounts for Apple Mesa / Maricopa County, Switch Citadel / Storey County, and Digital Crossroad Hammond / Lake County. Every required account category and county-comparison module contains sourced evidence or a visibly labeled modeled value. Public support is not netted against unmatched local revenues, unavailable public-service cost is represented by a break-even threshold rather than an invented net margin, county comparisons are descriptive rather than causal, and low-confidence transferred benchmarks remain explicit. Project fragments: prj_study_im3_building_00364289074: Corrective residual modeled account for Microsoft San Antonio. Eight transferred construction, labor, procurement, operating, and household-output scenarios were removed because their arbitrary capital shares, forecast-realization cases, local-purchase assumptions, and Virginia coefficients were not bounded by project observations. Only three low-confidence descriptive county comparisons remain: each uses the project's documented operating-by 2013 anchor and official Bexar County outcome data, has a finite fit-sensitivity envelope, and explicitly makes no causal attribution. The account intentionally remains incomplete because no defensible direct observation or residual model closes the supplier category. prj_study_im3_building_00377585075: Corrective DET01 synthesis. Only exact same-period tax-account arithmetic, its explicitly conditional public-cost break-even identity and a unit conversion of displayed municipal meter history remain. Construction, employment, supplier, household, electricity, cooling, emissions, wastewater and county-effect models were removed because the audit did not bound the missing project inputs. This account is intentionally incomplete where direct evidence remains unbounded. prj_study_im3_building_00460089167: Corrective audit retains six bounded residual calculations only: FY2025 county tax retained after the provisionally linked incentive, the identical marginal-service-cost break-even threshold, conversion of Meta-reported 2024 water withdrawal with source rounding, and three noncausal county comparison gaps with fit sensitivity. Ten models based on arbitrary capital timing, cost shares, FTE ratios, transferred operating/construction multipliers, fleet PUE, or wastewater ratios are removed. Supplier/local-procurement evidence remains unavailable, so the project is intentionally incomplete rather than backfilled. prj_study_im3_building_00464097467: Second-pass modeled contribution account after an expanded public-evidence audit. Direct county permits now cover historical construction values, assessor rolls cover a main-campus parcel stock, a county action covers water-right capacity, Apple reports 2025 campus electricity use, and recipient reports bound two community gifts. Those observations supersede the need for a modeled community proxy but do not supply Apple contractor job-years, construction payroll, annual operating payroll, supplier payments, taxes received, or public-service cost. The construction base therefore retains only the packet's explicit $163 million construction forecast and excludes equipment and historical capital; wide 0.5-1.5 transfer sensitivities expose the mismatch in the last-resort direct construction coefficients. The unsupported local-purchase-share and Virginia induced-output models are removed. No net-fiscal value or public-service-cost break-even is published. County outcome gaps remain descriptive benchmark applications with fit-sensitivity intervals and no causal-design metadata. prj_study_im3_building_00664938835: Second-pass Expedient Milwaukee / Franklin syntheses retained only after a documented 2007-2026 public-source audit. The account keeps a clearly labeled 2022 ownership-transfer anchor, a PB25-0303-only construction allocation sensitivity, an exact tax-equal public-cost break-even threshold, a capacity-based electricity engineering sensitivity, and three descriptive county comparison gaps. It removes transferred construction job-years, assumed local-purchase shares, supplier and household output extrapolations, and a duplicate modeled tax row because public sources did not establish realized site employment, supplier geography, household capture, or a need to restate the direct tax observations. PM25-0174 remains excluded for possible overlap. No synthesis is an observed result or fiscal net. prj_study_im3_building_00844389014: Second-pass model review retains one bounded resource identity only. It reproduces Google-reported 2024 Montgomery County water consumption as withdrawal minus discharge after converting displayed million-gallon values to gallons, with a rounding envelope. Direct searches of Clarksville utility/public-works pages, county stormwater records, TDEC/EPA portals and CDE/TVA materials did not surface a building meter, utility bill or a compatible canonical observed-water metric. The amount remains unallocated across the location and inventory buildings; discharge may be engineering-estimated. No transferred multiplier, supplier-retention assumption, energy proxy, fiscal result, public-cost threshold, payroll estimate or causal county outcome is modeled. prj_study_im3_building_00888253616: Residual synthesis after the SV1 public-source audit. It retains one exact tax-equal public-cost break-even threshold and three reproducible but low-confidence county comparison gaps. The county gaps use 2013-2020 pre-opening histories and an inverse-distance-weighted 20-county benchmark; very wide fit envelopes are retained because Santa Clara County matches poorly. No model converts capacity to consumption, permit value to jobs, or unidentified vendor and community activity to local benefits. prj_study_im3_building_01073720208: Second-pass governed synthesis for Google Council Bluffs. Construction job-years use only two directly observed September 2025 city permit valuations and transfer the published Prince William County prototype coefficients as benchmark equivalents; the four channels are separated and protected by one aggregation. No Pottawattamie County supplier-retention share is imposed because the public audit found contractor names but no payment or vendor-residence ledger. The water row is the unallocated Google Council Bluffs location identity reported for 2024, not a building allocation. No local abatement, exemption realization, franchise-fee amount, electric load, public-service cost, break-even threshold, or net fiscal result is modeled. County outcome gaps remain descriptive benchmark applications with fit-sensitivity ranges and no causal attribution. prj_study_im3_building_01132541700: Four bounded syntheses are retained after direct-record search: one deterministic conversion of Meta's rounded 2024 Henrico water-withdrawal observation and three governed, descriptive county comparison gaps. No construction, operating, supplier, household, tax-receipt, incentive-cost, or public-service-cost model is added because the public record lacks the needed project-specific bases and arbitrary allocation shares would create false precision. Every retained estimate is visibly modeled, unallocated to the selected building, non-additive, and noncausal. prj_study_im3_campus_00019988712: Residual synthesis after the Meta Prineville direct-evidence audit. One medium-confidence unit conversion carries Meta's rounded 2024 facility-level water-withdrawal observation from megaliters to gallons because the shared direct register has no compatible annual-withdrawal metric. The three low-confidence county benchmark comparisons were removed: even with fit-sensitivity envelopes and explicit non-causal labels, they do not materially improve decisions about this campus and remain vulnerable to concurrent Meta expansions, Apple's separate campus and unrelated county changes. No supplier, construction, payroll, household-spending, tax-abatement, public-service-cost or fiscal-net model is retained because local inputs and same-scope evidence are insufficient. prj_study_im3_campus_00231769626: Residual synthesis after the Google The Dalles public-source audit. Only three low-confidence descriptive county comparison gaps are retained because the direct record does not identify causal county outcomes. Each benchmark uses the available 2001-2005 pre-opening history, excludes all study counties from a 20-county inverse-distance-weighted donor pool, and carries a fit-sensitivity envelope. No model converts broad investment or permit values to jobs, onsite contractor counts to supplier output, utility-system loads to campus consumption, tax bills to payments, or unmatched incentive formulas and public costs to a fiscal net. prj_study_im3_campus_00675108684: Dedicated last-resort Boydton model-eligibility pass under study-modeling-policy-1.3.0. Retained syntheses are limited to exact arithmetic over cited compatible observations: a five-fiscal-year average of the operator-reported portfolio property-tax total, its explicitly conditional same-scope public-cost break-even identity, and annual sums of identified LVL/Herbert Fund 301 components. All remain unallocated, modeled rather than observed, and non-additive to their source totals. COF phase investment, operating headcount, construction, resources, suppliers, induced effects, causal comparisons and net fiscal impact were rejected because overlap, timing, scope or required project inputs remain unresolved.",
   "synthesis_version": "study-modeled-synthesis-3.2.0",
   "modeling_policy_version": "study-modeling-policy-1.3.0",
   "analysis_readiness": {
@@ -226,5 +2660,6 @@
     "causal": "not_assessed"
   },
   "legacy_first_entry_note": "Google establishes employment at its mapped Clarksville data center by April 10, 2019. Montgomery County's five current source records do not establish a complete history or exclude earlier military, university, carrier, government, healthcare, or enterprise data centers.",
-  "scope_note": "Provisional private-sector research candidate. Owner/operator history, project boundaries and lifecycle require review. Membership does not verify current operation or establish economic impact."
+  "scope_note": "Provisional private-sector research candidate. Owner/operator history, project boundaries and lifecycle require review. Membership does not verify current operation or establish economic impact.",
+  "project_description": "Google Clarksville is Google LLC's operating data-center campus at 1000 Boolean Drive (formerly 1000 Solar Way) in Clarksville, Montgomery County, Tennessee, on the former Hemlock Semiconductor site. Google announced its acquisition of the roughly 1,300-acre site in December 2015; county stormwater records show Foxman LLC phases SPC 1A-1C receiving grading approvals in 2017-2018, and Google reports that the data center officially opened in 2019. Current county assessor data identify IDB-owned account 6490, parcel 009 01401 000, at 1000 Boolean Drive with 1,331.21 deed acres. The project key maps one inventory building, while tax, PILOT and permit records describe the broader campus, including a separate 2026 Building 13 site review, so campus and account values are not allocated to the selected building."
 }
