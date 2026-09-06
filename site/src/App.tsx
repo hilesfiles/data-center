@@ -131,7 +131,12 @@ export default function App({ study, studyError }: { study: StudyIndex | null; s
   const [lifecycle, setLifecycle] = useState<CountyLifecycleVerificationCoverage[]>([]);
   const [studyGroup, setStudyGroup] = useState("");
   const completedProjects = useMemo(
-    () => study?.projects.filter(project => project.research_completion_status === "account_research_complete") ?? [],
+    () => study?.projects.filter(project =>
+      project.research_completion_status === "account_research_complete" ||
+      (project.research_completion_status == null && (
+        project.model_completeness.status === "full_modeled_account" || project.modeled_synthesis_count > 0
+      )),
+    ) ?? [],
     [study],
   );
   const mappedProjects = useMemo(

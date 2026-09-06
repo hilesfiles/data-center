@@ -853,6 +853,18 @@ try {
   await page.getByRole("heading", { name: "Sources & research history" }).waitFor();
   check("map preserves all nine completed project audits while keeping analytical completeness separate");
 
+  const legacyPage = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
+  await legacyPage.route("**/data/v1/study/index.json?*", async route => {
+    const legacyStudy = structuredClone(study);
+    for (const project of legacyStudy.projects) delete project.research_completion_status;
+    await route.fulfill({ json: legacyStudy });
+  });
+  await legacyPage.goto(`${url}#/map`, { waitUntil: "domcontentloaded" });
+  await legacyPage.getByText("9 completed project research accounts are mapped.", { exact: false }).waitFor();
+  assert.match(await legacyPage.locator(".review-key").innerText(), /completed project audits \(9\)/i);
+  await legacyPage.close();
+  check("map remains populated when a browser holds the previous study-index shape");
+
   for (const candidate of study.projects.filter(project => project.model_completeness.status === "incomplete")) {
     await page.goto(`${url}#/project/${candidate.project_id}`);
     await page.getByRole("heading", { name: candidate.name, exact: true }).waitFor();

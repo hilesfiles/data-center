@@ -6,4 +6,6 @@ The map now distinguishes completed project research from analytical completenes
 
 Each published project summary carries `research_completion_status`. The map, filters, county selection panel, county-to-project links, legend, and caption use `account_research_complete`; project pages continue to use `model_completeness` for “Completed contribution account” versus “Partial evidence.” Future reconciled project fragments become map-eligible without manufacturing models for completeness.
 
+The application fetches the study index with an explicit cache-busting URL and `no-store` request policy. A backward-compatible map predicate also recognizes the prior release shape, preventing a newly deployed JavaScript bundle from rendering an empty map when a browser or intermediary still holds pre-contract JSON.
+
 The release preserves 660 sourced records—597 observations and 63 forecasts—138 separately governed modeled syntheses, three full modeled accounts, all project descriptions, and the direct county-detail link from the map popup.

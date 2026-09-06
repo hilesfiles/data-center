@@ -126,7 +126,7 @@ export default function StudyApp() {
   }, []);
   useEffect(() => {
     let active = true;
-    fetch(`${base}index.json`).then(async response => {
+    fetch(`${base}index.json?cache_bust=${Date.now()}`, { cache: "no-store" }).then(async response => {
       if (!response.ok) throw new Error("The study register could not be loaded. Reload to try again; the community map remains available.");
       const result = await response.json() as StudyIndex;
       if (active) setStudy(result);
