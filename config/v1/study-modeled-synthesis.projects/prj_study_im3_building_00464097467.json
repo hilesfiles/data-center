@@ -1,0 +1,1060 @@
+{
+  "schema_version": "1.0.0",
+  "project_id": "prj_study_im3_building_00464097467",
+  "reviewed_on": "2026-09-06",
+  "scope_note": "Modeled contribution account for the Apple Washoe County campus and its 2024 expansion. The construction base uses only the packet's explicit $163 million construction-cost schedule and excludes the separate $742,071,428 equipment forecast and the broad historical audit capital total. Campus observations and forecasts remain unallocated to the selected building. Same-region construction coefficients transfer only the direct channel from a public Washoe/Storey IMPLAN analysis; no Switch Citadel observation or model input is included. Fiscal evidence remains a source forecast because no same-period recipient-level receipts or marginal public-service costs were verified, so this fragment publishes no net-fiscal value or public-service-cost break-even. County GDP, employment, and wage gaps are descriptive benchmark applications with fit-sensitivity intervals and no causal-design metadata.",
+  "sources": [],
+  "estimates": [
+    {
+      "estimate_id": "est_study_apple_washoe_construction_eligible_spending",
+      "project_id": "prj_study_im3_building_00464097467",
+      "metric_code": "study.modeled_construction_eligible_spending",
+      "label": "Modeled construction-eligible expansion spending",
+      "category": "investment",
+      "unit": "USD",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 163000000,
+      "period": {
+        "kind": "projection_horizon",
+        "report_date": "2024-07-25",
+        "horizon_years": 3,
+        "label": "Application Years 1-3; calendar phase dates are not disclosed"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Apple Washoe County expansion construction schedule",
+        "county_fips": "32031",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "point_estimate",
+        "low": 163000000,
+        "central": 163000000,
+        "high": 163000000,
+        "interpretation": "Exact arithmetic on the three source-forecast construction-cost rows; it is not observed expenditure or a statistical interval."
+      },
+      "contribution_channel": "direct",
+      "aggregation": {
+        "aggregation_id": "apple_washoe_construction_eligible_spending",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "construction_year_1",
+          "value": 75000000,
+          "unit": "USD",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_econ_nv_apple_2024",
+            "detail": "Form 6(A) forecast construction cost for application Year 1"
+          },
+          "transformation": "Included in the construction-only sum"
+        },
+        {
+          "name": "construction_year_2",
+          "value": 44000000,
+          "unit": "USD",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_econ_nv_apple_2024",
+            "detail": "Form 6(A) forecast construction cost for application Year 2"
+          },
+          "transformation": "Included in the construction-only sum"
+        },
+        {
+          "name": "construction_year_3",
+          "value": 44000000,
+          "unit": "USD",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_econ_nv_apple_2024",
+            "detail": "Form 6(A) forecast construction cost for application Year 3"
+          },
+          "transformation": "Included in the construction-only sum"
+        },
+        {
+          "name": "excluded_equipment_projection",
+          "value": 742071428,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_apple_washoe_capex_plan",
+            "detail": "Separate first-five-year equipment capital forecast"
+          },
+          "transformation": "Excluded before construction coefficients are applied"
+        }
+      ],
+      "confidence": "medium",
+      "confidence_rationale": "The source schedule explicitly labels construction cost, but it is an application forecast with unanchored application years and no audited expenditure.",
+      "decision_relevance": "Defines the expansion construction base without applying construction coefficients to IT equipment or broad historical capital.",
+      "evidence_search": {
+        "direct_observation_status": "not_found",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Actual annual construction expenditures, soft costs, phase dates, change orders, and allocation among the four campus buildings"
+      },
+      "derivation": {
+        "method": "benchmark_application",
+        "model_version": "apple-washoe-account-1.0.0",
+        "formula": "$75,000,000 Year 1 construction + $44,000,000 Year 2 construction + $44,000,000 Year 3 construction; exclude equipment capital",
+        "input_claim_ids": [
+          "clm_study_apple_washoe_construction_cost_projection_2024",
+          "clm_study_apple_washoe_capex_plan"
+        ],
+        "input_source_ids": [
+          "src_study_econ_nv_apple_2024"
+        ],
+        "assumptions": [
+          "The Form 6(A) construction-cost column is construction eligible; the separately reported equipment forecast is not.",
+          "Application Years 1-3 are retained without inventing calendar-year phase boundaries.",
+          "The result is campus-level and is not allocated to the selected mapped building."
+        ]
+      },
+      "limitations": [
+        "Forecast rather than realized spending.",
+        "No calendar start and end dates for each application year are public.",
+        "No building, contractor, labor, or vendor allocation is disclosed."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Construction-only arithmetic anchor. Do not add this modeled row to the identically scoped source forecast as a separate benefit.",
+      "reviewed_on": "2026-09-06"
+    },
+    {
+      "estimate_id": "est_study_apple_washoe_local_construction_spending",
+      "project_id": "prj_study_im3_building_00464097467",
+      "metric_code": "study.modeled_local_construction_spending",
+      "label": "Modeled locally retained construction spending",
+      "category": "suppliers",
+      "unit": "USD",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 65200000,
+      "period": {
+        "kind": "projection_horizon",
+        "report_date": "2024-07-25",
+        "horizon_years": 3,
+        "label": "Application Years 1-3; calendar phase dates are not disclosed"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Washoe County supplier-retention sensitivity for Apple expansion construction",
+        "county_fips": "32031",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": 40750000,
+        "central": 65200000,
+        "high": 89650000,
+        "interpretation": "The source-forecast $163 million construction base is multiplied by 25%, 40%, and 55% Washoe County purchase-retention shares. This is an assumption range, not a statistical confidence interval."
+      },
+      "contribution_channel": "direct",
+      "aggregation": {
+        "aggregation_id": "apple_washoe_local_construction_spending",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "construction_eligible_spending",
+          "value": 163000000,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_apple_washoe_construction_cost_projection_2024",
+            "detail": "Explicit three-year construction-cost forecast, excluding equipment"
+          },
+          "transformation": "Multiplied by each local-purchase share"
+        },
+        {
+          "name": "low_local_purchase_share",
+          "value": 0.25,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Low Washoe County supplier-retention scenario"
+          },
+          "transformation": "Allocates the construction base to Washoe County purchases"
+        },
+        {
+          "name": "central_local_purchase_share",
+          "value": 0.4,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Central Washoe County supplier-retention scenario"
+          },
+          "transformation": "Allocates the construction base to Washoe County purchases"
+        },
+        {
+          "name": "high_local_purchase_share",
+          "value": 0.55,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "High Washoe County supplier-retention scenario"
+          },
+          "transformation": "Allocates the construction base to Washoe County purchases"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "No public contractor-payment or vendor-address ledger supports the assumed county-retention shares.",
+      "decision_relevance": "Bounds a local supplier channel while keeping equipment and nonlocal purchases out of construction spending.",
+      "evidence_search": {
+        "direct_observation_status": "not_found",
+        "source_projection_status": "not_found",
+        "remaining_evidence_gap": "Paid contractor and subcontractor amounts, vendor locations, procurement categories, and Washoe County retention by phase"
+      },
+      "derivation": {
+        "method": "sensitivity_analysis",
+        "model_version": "apple-washoe-account-1.0.0",
+        "formula": "$163,000,000 construction-only forecast x local-purchase share",
+        "input_claim_ids": [
+          "clm_study_apple_washoe_construction_cost_projection_2024"
+        ],
+        "input_source_ids": [
+          "src_study_econ_nv_apple_2024"
+        ],
+        "assumptions": [
+          "Washoe County retains 25%, 40%, or 55% of forecast construction purchases.",
+          "The local shares are scenarios rather than observations or compliance findings.",
+          "No equipment purchases or Storey County activity enter the calculation."
+        ]
+      },
+      "limitations": [
+        "Local-purchase shares are unsupported by project vendor records.",
+        "The construction base is a forecast.",
+        "Direct purchases are not payroll, indirect output, induced spending, or a building allocation."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Low-confidence direct supplier-purchase sensitivity; do not add it to the full construction-spending base as a separate total.",
+      "reviewed_on": "2026-09-06"
+    },
+    {
+      "estimate_id": "est_study_apple_washoe_construction_job_years_direct",
+      "project_id": "prj_study_im3_building_00464097467",
+      "metric_code": "study.modeled_construction_job_years_direct",
+      "label": "Modeled direct construction job-years",
+      "category": "construction",
+      "unit": "job_years",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 944.89,
+      "period": {
+        "kind": "projection_horizon",
+        "report_date": "2024-07-25",
+        "horizon_years": 3,
+        "label": "Application Years 1-3; calendar phase dates are not disclosed"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Apple Washoe County expansion direct construction benchmark",
+        "county_fips": "32031",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": 755.91,
+        "central": 944.89,
+        "high": 1133.87,
+        "interpretation": "The direct 5.796875 job-years-per-$1 million coefficient is multiplied by the $163 million construction-only forecast and 0.8, 1.0, and 1.2 transfer factors. This is a benchmark-transfer sensitivity, not a confidence interval."
+      },
+      "contribution_channel": "direct",
+      "aggregation": {
+        "aggregation_id": "apple_washoe_construction_job_years_direct",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "construction_eligible_spending",
+          "value": 163000000,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_apple_washoe_construction_cost_projection_2024",
+            "detail": "Explicit three-year construction-cost forecast, excluding equipment"
+          },
+          "transformation": "Converted to millions before multiplying by the direct job-year rate"
+        },
+        {
+          "name": "direct_job_years_per_million",
+          "value": 5.796875,
+          "unit": "job_years_per_million_USD",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_goed_tesla_storey_impact_2023",
+            "detail": "9,275 direct person-year jobs divided by $1.6 billion direct industrial-construction spending"
+          },
+          "transformation": "Transferred to the Apple construction-only forecast"
+        },
+        {
+          "name": "low_transfer_factor",
+          "value": 0.8,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Low sensitivity to different asset, contractor, and timing mix"
+          },
+          "transformation": "Scales the same-region direct benchmark"
+        },
+        {
+          "name": "central_transfer_factor",
+          "value": 1,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Central transfer of the public direct benchmark"
+          },
+          "transformation": "Scales the same-region direct benchmark"
+        },
+        {
+          "name": "high_transfer_factor",
+          "value": 1.2,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "High sensitivity to different asset, contractor, and timing mix"
+          },
+          "transformation": "Scales the same-region direct benchmark"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The source is a public same-region IMPLAN analysis, but it models a different industrial project, combines Washoe and Storey Counties, and does not publish underlying IMPLAN version or data vintage.",
+      "decision_relevance": "Provides a direct construction job-year range without treating peak workers, permanent jobs, equipment capital, or another data-center project as Apple employment.",
+      "evidence_search": {
+        "direct_observation_status": "not_found",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Apple contractor worker-hours, job-years, payroll, trades, phase dates, and worker residence"
+      },
+      "derivation": {
+        "method": "input_output_multiplier",
+        "model_version": "apple-washoe-account-1.0.0",
+        "formula": "($163,000,000 / $1,000,000) x (9,275 direct job-years / $1,600 million) x transfer factor",
+        "input_claim_ids": [
+          "clm_study_apple_washoe_construction_cost_projection_2024"
+        ],
+        "input_source_ids": [
+          "src_study_econ_nv_apple_2024",
+          "src_study_goed_tesla_storey_impact_2023"
+        ],
+        "assumptions": [
+          "The construction-only forecast is the eligible spending base; the equipment forecast is excluded.",
+          "The direct same-region coefficient transfers with 0.8, 1.0, and 1.2 sensitivity factors.",
+          "Indirect and induced channels are omitted because the public source combines them.",
+          "No Switch Citadel value, Storey County data-center spending, or GOED expansion impact total is added."
+        ]
+      },
+      "multiplier_provenance": {
+        "source_id": "src_study_goed_tesla_storey_impact_2023",
+        "model_name": "IMPLAN contribution analysis reported by Applied Economics",
+        "model_version": "Tesla Expansion Economic Impact Analysis, 2023-2027 construction tables",
+        "geography": "Washoe and Storey Counties benchmark transferred to the Apple Washoe County expansion",
+        "vintage": "Analysis published in 2023; underlying IMPLAN model version and dataset vintage not disclosed",
+        "local_purchase_assumption": "The source direct channel reflects its modeled two-county geography; transfer to Apple occurs only after isolating Apple's construction forecast and does not assert observed Apple local purchasing.",
+        "channel_separation": "direct_indirect_induced_reported_separately"
+      },
+      "limitations": [
+        "Transferred from a different industrial project and asset mix.",
+        "The benchmark combines Washoe and Storey Counties, while the Apple scope is Washoe County.",
+        "Job-years are not peak workers, annual-average headcount, local-resident jobs, or permanent jobs.",
+        "Only the direct channel is transferred."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Direct benchmark-equivalent job-years only. Do not add the packet's 1,257 modeled construction jobs or any Switch/Storey account value.",
+      "reviewed_on": "2026-09-06"
+    },
+    {
+      "estimate_id": "est_study_apple_washoe_construction_labor_income_direct",
+      "project_id": "prj_study_im3_building_00464097467",
+      "metric_code": "study.modeled_construction_labor_income_direct",
+      "label": "Modeled direct construction labor income",
+      "category": "construction",
+      "unit": "USD",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 94134843.13,
+      "period": {
+        "kind": "projection_horizon",
+        "report_date": "2024-07-25",
+        "horizon_years": 3,
+        "label": "Application Years 1-3; calendar phase dates are not disclosed"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Apple Washoe County expansion direct construction labor-income benchmark",
+        "county_fips": "32031",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": 75307874.5,
+        "central": 94134843.13,
+        "high": 112961811.75,
+        "interpretation": "The direct 0.577514375 labor-income-per-construction-dollar coefficient is multiplied by the $163 million construction-only forecast and 0.8, 1.0, and 1.2 transfer factors. This is a benchmark-transfer sensitivity, not a confidence interval."
+      },
+      "contribution_channel": "direct",
+      "aggregation": {
+        "aggregation_id": "apple_washoe_construction_labor_income_direct",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "construction_eligible_spending",
+          "value": 163000000,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_apple_washoe_construction_cost_projection_2024",
+            "detail": "Explicit three-year construction-cost forecast, excluding equipment"
+          },
+          "transformation": "Multiplied by the direct labor-income rate"
+        },
+        {
+          "name": "direct_labor_income_rate",
+          "value": 0.577514375,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_goed_tesla_storey_impact_2023",
+            "detail": "$924.023 million direct labor income divided by $1.6 billion direct industrial-construction spending"
+          },
+          "transformation": "Transferred to the Apple construction-only forecast"
+        },
+        {
+          "name": "low_transfer_factor",
+          "value": 0.8,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Low sensitivity to different wage, occupation, and contractor mix"
+          },
+          "transformation": "Scales the same-region direct benchmark"
+        },
+        {
+          "name": "central_transfer_factor",
+          "value": 1,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Central transfer of the public direct benchmark"
+          },
+          "transformation": "Scales the same-region direct benchmark"
+        },
+        {
+          "name": "high_transfer_factor",
+          "value": 1.2,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "High sensitivity to different wage, occupation, and contractor mix"
+          },
+          "transformation": "Scales the same-region direct benchmark"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The public coefficient is geographically relevant but comes from a different project and does not disclose the underlying IMPLAN version or data vintage.",
+      "decision_relevance": "Provides a direct construction labor-income range while keeping labor income separate from spending, output, and permanent payroll.",
+      "evidence_search": {
+        "direct_observation_status": "not_found",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Apple construction payroll, benefits, proprietor income, worker residence, occupations, and annual phase allocation"
+      },
+      "derivation": {
+        "method": "input_output_multiplier",
+        "model_version": "apple-washoe-account-1.0.0",
+        "formula": "$163,000,000 x ($924,023,000 direct labor income / $1,600,000,000 direct construction spending) x transfer factor",
+        "input_claim_ids": [
+          "clm_study_apple_washoe_construction_cost_projection_2024"
+        ],
+        "input_source_ids": [
+          "src_study_econ_nv_apple_2024",
+          "src_study_goed_tesla_storey_impact_2023"
+        ],
+        "assumptions": [
+          "The construction-only forecast is the eligible spending base; the equipment forecast is excluded.",
+          "The direct same-region coefficient transfers with 0.8, 1.0, and 1.2 sensitivity factors.",
+          "Indirect and induced channels are omitted because the public source combines them.",
+          "No Switch Citadel value, Storey County data-center spending, or packet economic-impact total is added."
+        ]
+      },
+      "multiplier_provenance": {
+        "source_id": "src_study_goed_tesla_storey_impact_2023",
+        "model_name": "IMPLAN contribution analysis reported by Applied Economics",
+        "model_version": "Tesla Expansion Economic Impact Analysis, 2023-2027 construction tables",
+        "geography": "Washoe and Storey Counties benchmark transferred to the Apple Washoe County expansion",
+        "vintage": "Analysis published in 2023; underlying IMPLAN model version and dataset vintage not disclosed",
+        "local_purchase_assumption": "The source direct channel reflects its modeled two-county geography; transfer to Apple occurs only after isolating Apple's construction forecast and does not assert observed Apple local purchasing.",
+        "channel_separation": "direct_indirect_induced_reported_separately"
+      },
+      "limitations": [
+        "Transferred from a different industrial project and asset mix.",
+        "The benchmark combines Washoe and Storey Counties, while the Apple scope is Washoe County.",
+        "Labor income is not observed payroll and is not additive to construction spending or output.",
+        "Only the direct channel is transferred."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Direct benchmark-equivalent labor income only; it must not be summed with construction spending or the packet's modeled payroll impact.",
+      "reviewed_on": "2026-09-06"
+    },
+    {
+      "estimate_id": "est_study_apple_washoe_operating_payroll_2024",
+      "project_id": "prj_study_im3_building_00464097467",
+      "metric_code": "study.modeled_operating_payroll",
+      "label": "Modeled annualized direct operating payroll",
+      "category": "operations",
+      "unit": "USD_per_year",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 7057232,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2024,
+        "label": "Annualized from the June 13, 2024 applicant-reported workforce snapshot"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Apple Washoe County data-center expansion applicant existing workforce",
+        "county_fips": "32031",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": 6049056,
+        "central": 7057232,
+        "high": 8065408,
+        "interpretation": "Eighty reported FTE at $48.47 per hour are annualized at 1,560, 1,820, and 2,080 paid hours. This is an hours sensitivity, not observed payroll or a confidence interval."
+      },
+      "contribution_channel": "direct",
+      "aggregation": {
+        "aggregation_id": "apple_washoe_operating_payroll_2024",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "reported_existing_fte",
+          "value": 80,
+          "unit": "FTE",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_apple_washoe_fte_2024",
+            "detail": "Existing FTE reported in the 2024 expansion application"
+          },
+          "transformation": "Multiplied by hourly wage and annual paid-hour scenario"
+        },
+        {
+          "name": "reported_average_hourly_wage",
+          "value": 48.47,
+          "unit": "USD_per_hour",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_apple_washoe_wage_2024",
+            "detail": "Average hourly wage of existing employees reported by the applicant"
+          },
+          "transformation": "Multiplied by FTE and annual paid-hour scenario"
+        },
+        {
+          "name": "low_annual_paid_hours",
+          "value": 1560,
+          "unit": "hours_per_FTE_year",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Thirty hours per week, matching the form's minimum FTE definition"
+          },
+          "transformation": "Low payroll annualization"
+        },
+        {
+          "name": "central_annual_paid_hours",
+          "value": 1820,
+          "unit": "hours_per_FTE_year",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Thirty-five hours per week central sensitivity"
+          },
+          "transformation": "Central payroll annualization"
+        },
+        {
+          "name": "high_annual_paid_hours",
+          "value": 2080,
+          "unit": "hours_per_FTE_year",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Forty hours per week conventional full-time schedule"
+          },
+          "transformation": "High payroll annualization"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "FTE and average wage are reported, but paid hours, bonuses, overtime, benefits, payroll period, and contractor compensation are not public.",
+      "decision_relevance": "Creates a transparent direct-payroll proxy without treating the more-than-200-person multi-site support statement as campus FTE.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Audited annual payroll, paid hours, bonuses, benefits, contractors, worker residence, and building allocation"
+      },
+      "derivation": {
+        "method": "sensitivity_analysis",
+        "model_version": "apple-washoe-account-1.0.0",
+        "formula": "80 existing FTE x $48.47 average hourly wage x annual paid-hour scenario",
+        "input_claim_ids": [
+          "clm_study_apple_washoe_fte_2024",
+          "clm_study_apple_washoe_wage_2024"
+        ],
+        "input_source_ids": [
+          "src_study_econ_nv_apple_2024"
+        ],
+        "assumptions": [
+          "Annual paid hours are 1,560, 1,820, or 2,080 per FTE.",
+          "The applicant's average hourly wage applies to the reported 80 existing FTE.",
+          "The estimate excludes contractors, benefits, bonuses, overtime, proposed hires, and the downtown warehouse unless already included in the applicant's FTE scope."
+        ]
+      },
+      "limitations": [
+        "Annual hours and payroll components are assumed.",
+        "The source is an applicant snapshot rather than payroll records.",
+        "Campus and warehouse allocation is unresolved."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Direct annualized payroll proxy only; do not add it to labor-income or economic-output estimates.",
+      "reviewed_on": "2026-09-06"
+    },
+    {
+      "estimate_id": "est_study_apple_washoe_induced_household_output_2024",
+      "project_id": "prj_study_im3_building_00464097467",
+      "metric_code": "study.modeled_induced_household_output",
+      "label": "Modeled annual induced household output",
+      "category": "community",
+      "unit": "USD_per_year",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 9434285.6,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2024,
+        "label": "Annual contribution sensitivity anchored to the June 13, 2024 reported FTE snapshot"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Washoe County induced household-output sensitivity associated with Apple operating FTE",
+        "county_fips": "32031",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": 4717142.8,
+        "central": 9434285.6,
+        "high": 14151428.4,
+        "interpretation": "Eighty reported FTE are multiplied by a transferred $117,928.57 induced-output-per-direct-FTE benchmark and 0.5, 1.0, and 1.5 transfer factors. This is a transfer sensitivity, not a confidence interval."
+      },
+      "contribution_channel": "induced",
+      "aggregation": {
+        "aggregation_id": "apple_washoe_induced_household_output_2024",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "reported_existing_fte",
+          "value": 80,
+          "unit": "FTE",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_apple_washoe_fte_2024",
+            "detail": "Existing FTE reported in the 2024 expansion application"
+          },
+          "transformation": "Multiplied by the induced-output benchmark and transfer factor"
+        },
+        {
+          "name": "induced_output_per_direct_fte",
+          "value": 117928.57,
+          "unit": "USD_per_FTE",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_pwc_data_center_market_2021",
+            "detail": "Prince William County prototype induced annual output per 28 direct operating FTE"
+          },
+          "transformation": "Transferred as an induced household-output benchmark"
+        },
+        {
+          "name": "low_transfer_factor",
+          "value": 0.5,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Low sensitivity for commuting and local household-spending capture"
+          },
+          "transformation": "Scales the transferred induced-output benchmark"
+        },
+        {
+          "name": "central_transfer_factor",
+          "value": 1,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Central transfer of the public induced-output benchmark"
+          },
+          "transformation": "Scales the transferred induced-output benchmark"
+        },
+        {
+          "name": "high_transfer_factor",
+          "value": 1.5,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "High sensitivity for commuting and local household-spending capture"
+          },
+          "transformation": "Scales the transferred induced-output benchmark"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The Virginia prototype coefficient is transferred to Washoe County without project worker-residence or household-expenditure observations.",
+      "decision_relevance": "Represents the household-spending contribution channel separately from payroll, suppliers, taxes, and direct charitable support.",
+      "evidence_search": {
+        "direct_observation_status": "not_found",
+        "source_projection_status": "not_found",
+        "remaining_evidence_gap": "Employee and contractor residence, household expenditure capture, and quantified Apple community grants attributable to the campus"
+      },
+      "derivation": {
+        "method": "input_output_multiplier",
+        "model_version": "apple-washoe-account-1.0.0",
+        "formula": "80 reported direct FTE x $117,928.57 induced output per direct FTE x transfer factor",
+        "input_claim_ids": [
+          "clm_study_apple_washoe_fte_2024"
+        ],
+        "input_source_ids": [
+          "src_study_econ_nv_apple_2024",
+          "src_study_pwc_data_center_market_2021"
+        ],
+        "assumptions": [
+          "The Prince William County induced-output-per-FTE relationship transfers with 0.5, 1.0, and 1.5 sensitivity factors.",
+          "The model does not assert that workers live or spend entirely in Washoe County.",
+          "Induced output is not a charitable contribution, household income, supplier payment, or tax receipt."
+        ]
+      },
+      "multiplier_provenance": {
+        "source_id": "src_study_pwc_data_center_market_2021",
+        "model_name": "IMPLAN county contribution model reported by BAE",
+        "model_version": "Prince William County prototype-data-center study, 2021-dollar tables 7-8",
+        "geography": "Prince William County, Virginia benchmark transferred to Washoe County, Nevada",
+        "vintage": "IMPLAN model reported December 2021; underlying IMPLAN data vintage not disclosed",
+        "local_purchase_assumption": "No Apple local-purchase share is asserted; 0.5, 1.0, and 1.5 transfer factors expose uncertainty in commuting and household-spending capture.",
+        "channel_separation": "direct_indirect_induced_reported_separately"
+      },
+      "limitations": [
+        "Transferred Virginia benchmark rather than a Washoe County input-output model.",
+        "No worker residence or household-spending data are public.",
+        "Economic output is not household income or direct philanthropy.",
+        "The induced channel must not be added to a total that already includes induced effects."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Induced household-output sensitivity only; named community organizations in the source remain qualitative because no attributable payment amount was verified.",
+      "reviewed_on": "2026-09-06"
+    },
+    {
+      "estimate_id": "est_study_apple_washoe_gdp_comparison_gap",
+      "project_id": "prj_study_im3_building_00464097467",
+      "metric_code": "study.modeled_county_gdp_comparison_gap",
+      "label": "Modeled county real GDP comparison gap",
+      "category": "county_outcome",
+      "unit": "percent",
+      "measure_type": "change",
+      "basis": "modeled_synthesis",
+      "value": 10.49,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2024,
+        "label": "2024 Washoe County outcome relative to a mechanically matched benchmark; campus opening year 2012"
+      },
+      "scope": {
+        "level": "county",
+        "label": "Washoe County descriptive comparison for the Apple campus",
+        "county_fips": "32031",
+        "inventory_allocation": "not_applicable"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": 5.17,
+        "central": 10.49,
+        "high": 15.8,
+        "interpretation": "Central is the 2024 percentage gap; width is twice the 2005-2011 pre-period RMSE. It is a fit sensitivity, not a statistical confidence interval."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "apple_washoe_gdp_comparison_gap",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "host_2024_value",
+          "value": 33777549000,
+          "unit": "chained_2017_USD",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_county_economic_core_2001_2024",
+            "detail": "Washoe County 2024 real GDP from the county economic panel"
+          },
+          "transformation": "Compared with weighted benchmark value"
+        },
+        {
+          "name": "comparison_2024_value",
+          "value": 30572029112.20896,
+          "unit": "chained_2017_USD",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_county_economic_core_2001_2024",
+            "detail": "Inverse-distance weighted 2024 value from 20 comparison counties"
+          },
+          "transformation": "Subtracted from host and used as denominator"
+        },
+        {
+          "name": "pre_period_rmse_percent",
+          "value": 2.6562618275980174,
+          "unit": "percent",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Fit diagnostic over 2005-2011"
+          },
+          "transformation": "Sets fit-sensitivity width"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The benchmark is mechanical and the donor pool is not a validated unexposed causal comparison group.",
+      "decision_relevance": "Shows Washoe County's 2024 GDP divergence from a reproducible benchmark without attributing the gap to Apple.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "not_applicable",
+        "remaining_evidence_gap": "A defensible causal design with treatment isolation, complete exposure screening, placebo tests, spillover analysis, and robustness diagnostics"
+      },
+      "derivation": {
+        "method": "benchmark_application",
+        "model_version": "apple-washoe-account-1.0.0",
+        "formula": "100 x (host 2024 outcome - inverse-distance-weighted 20-county benchmark) / benchmark",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_county_economic_core_2001_2024"
+        ],
+        "assumptions": [
+          "Matching uses 2005-2011 log level, average log growth, and growth volatility.",
+          "Study counties are excluded from the donor pool.",
+          "The December 2012 campus opening is not assumed to date every building or isolate later expansions.",
+          "Apple, Tesla, Switch, other data centers, and broader Reno-Tahoe growth can affect the county trajectory."
+        ]
+      },
+      "limitations": [
+        "This comparison is descriptive and must not be interpreted as a data-center effect.",
+        "The donor screen cannot exclude every unobserved data center or concurrent investment.",
+        "Washoe County outcomes are not independent of adjacent Storey County development and regional spillovers.",
+        "The interval is fit sensitivity, not statistical confidence."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Low-confidence descriptive county comparison; no causal attribution is made and no causal_design metadata is attached.",
+      "reviewed_on": "2026-09-06"
+    },
+    {
+      "estimate_id": "est_study_apple_washoe_employment_comparison_gap",
+      "project_id": "prj_study_im3_building_00464097467",
+      "metric_code": "study.modeled_county_employment_comparison_gap",
+      "label": "Modeled county total employment comparison gap",
+      "category": "county_outcome",
+      "unit": "percent",
+      "measure_type": "change",
+      "basis": "modeled_synthesis",
+      "value": 13.44,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2024,
+        "label": "2024 Washoe County outcome relative to a mechanically matched benchmark; campus opening year 2012"
+      },
+      "scope": {
+        "level": "county",
+        "label": "Washoe County descriptive comparison for the Apple campus",
+        "county_fips": "32031",
+        "inventory_allocation": "not_applicable"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": -9.79,
+        "central": 13.44,
+        "high": 36.67,
+        "interpretation": "Central is the 2024 percentage gap; width is twice the 2005-2011 pre-period RMSE. It is a fit sensitivity, not a statistical confidence interval."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "apple_washoe_employment_comparison_gap",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "host_2024_value",
+          "value": 240544,
+          "unit": "jobs",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_county_economic_core_2001_2024",
+            "detail": "Washoe County 2024 total covered employment from the county economic panel"
+          },
+          "transformation": "Compared with weighted benchmark value"
+        },
+        {
+          "name": "comparison_2024_value",
+          "value": 212044.56892811938,
+          "unit": "jobs",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_county_economic_core_2001_2024",
+            "detail": "Inverse-distance weighted 2024 value from 20 comparison counties"
+          },
+          "transformation": "Subtracted from host and used as denominator"
+        },
+        {
+          "name": "pre_period_rmse_percent",
+          "value": 11.61506671107322,
+          "unit": "percent",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Fit diagnostic over 2005-2011"
+          },
+          "transformation": "Sets fit-sensitivity width"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The benchmark is mechanical and the donor pool is not a validated unexposed causal comparison group.",
+      "decision_relevance": "Shows Washoe County's 2024 employment divergence from a reproducible benchmark without attributing the gap to Apple.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "not_applicable",
+        "remaining_evidence_gap": "A defensible causal design with treatment isolation, complete exposure screening, placebo tests, spillover analysis, and robustness diagnostics"
+      },
+      "derivation": {
+        "method": "benchmark_application",
+        "model_version": "apple-washoe-account-1.0.0",
+        "formula": "100 x (host 2024 outcome - inverse-distance-weighted 20-county benchmark) / benchmark",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_county_economic_core_2001_2024"
+        ],
+        "assumptions": [
+          "Matching uses 2005-2011 log level, average log growth, and growth volatility.",
+          "Study counties are excluded from the donor pool.",
+          "The December 2012 campus opening is not assumed to date every building or isolate later expansions.",
+          "Apple, Tesla, Switch, other data centers, and broader Reno-Tahoe growth can affect the county trajectory."
+        ]
+      },
+      "limitations": [
+        "This comparison is descriptive and must not be interpreted as a data-center effect.",
+        "The donor screen cannot exclude every unobserved data center or concurrent investment.",
+        "Washoe County outcomes are not independent of adjacent Storey County development and regional spillovers.",
+        "The interval is fit sensitivity, not statistical confidence."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Low-confidence descriptive county comparison; no causal attribution is made and no causal_design metadata is attached.",
+      "reviewed_on": "2026-09-06"
+    },
+    {
+      "estimate_id": "est_study_apple_washoe_wage_comparison_gap",
+      "project_id": "prj_study_im3_building_00464097467",
+      "metric_code": "study.modeled_county_wage_comparison_gap",
+      "label": "Modeled county average weekly wage comparison gap",
+      "category": "county_outcome",
+      "unit": "percent",
+      "measure_type": "change",
+      "basis": "modeled_synthesis",
+      "value": 9.86,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2024,
+        "label": "2024 Washoe County outcome relative to a mechanically matched benchmark; campus opening year 2012"
+      },
+      "scope": {
+        "level": "county",
+        "label": "Washoe County descriptive comparison for the Apple campus",
+        "county_fips": "32031",
+        "inventory_allocation": "not_applicable"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": 0.01,
+        "central": 9.86,
+        "high": 19.72,
+        "interpretation": "Central is the 2024 percentage gap; width is twice the 2005-2011 pre-period RMSE. It is a fit sensitivity, not a statistical confidence interval."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "apple_washoe_wage_comparison_gap",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "host_2024_value",
+          "value": 1336,
+          "unit": "USD_per_week",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_county_economic_core_2001_2024",
+            "detail": "Washoe County 2024 nominal average weekly wage from the county economic panel"
+          },
+          "transformation": "Compared with weighted benchmark value"
+        },
+        {
+          "name": "comparison_2024_value",
+          "value": 1216.0583795777827,
+          "unit": "USD_per_week",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_county_economic_core_2001_2024",
+            "detail": "Inverse-distance weighted 2024 value from 20 comparison counties"
+          },
+          "transformation": "Subtracted from host and used as denominator"
+        },
+        {
+          "name": "pre_period_rmse_percent",
+          "value": 4.927080322307121,
+          "unit": "percent",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Fit diagnostic over 2005-2011"
+          },
+          "transformation": "Sets fit-sensitivity width"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The benchmark is mechanical and the donor pool is not a validated unexposed causal comparison group.",
+      "decision_relevance": "Shows Washoe County's 2024 wage divergence from a reproducible benchmark without attributing the gap to Apple.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "not_applicable",
+        "remaining_evidence_gap": "A defensible causal design with treatment isolation, complete exposure screening, placebo tests, spillover analysis, and robustness diagnostics"
+      },
+      "derivation": {
+        "method": "benchmark_application",
+        "model_version": "apple-washoe-account-1.0.0",
+        "formula": "100 x (host 2024 outcome - inverse-distance-weighted 20-county benchmark) / benchmark",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_county_economic_core_2001_2024"
+        ],
+        "assumptions": [
+          "Matching uses 2005-2011 log level, average log growth, and growth volatility.",
+          "Study counties are excluded from the donor pool.",
+          "The December 2012 campus opening is not assumed to date every building or isolate later expansions.",
+          "Apple, Tesla, Switch, other data centers, and broader Reno-Tahoe growth can affect the county trajectory."
+        ]
+      },
+      "limitations": [
+        "This comparison is descriptive and must not be interpreted as a data-center effect.",
+        "The donor screen cannot exclude every unobserved data center or concurrent investment.",
+        "Washoe County outcomes are not independent of adjacent Storey County development and regional spillovers.",
+        "The interval is fit sensitivity, not statistical confidence."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Low-confidence descriptive county comparison; no causal attribution is made and no causal_design metadata is attached.",
+      "reviewed_on": "2026-09-06"
+    }
+  ]
+}
