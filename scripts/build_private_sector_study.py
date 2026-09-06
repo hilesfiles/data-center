@@ -13,11 +13,13 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 if __package__:
-    from .study_economic_evidence import EVIDENCE, category_coverage, economic_products
-    from .study_modeled_synthesis import MODELING_POLICY, SYNTHESIS, modeled_products
+    from .study_economic_evidence import EVIDENCE, category_coverage, economic_products, load_evidence
+    from .study_modeled_synthesis import MODELING_POLICY, SYNTHESIS, load_synthesis, modeled_products
+    from .study_project_fragments import fragment_input_paths
 else:
-    from study_economic_evidence import EVIDENCE, category_coverage, economic_products
-    from study_modeled_synthesis import MODELING_POLICY, SYNTHESIS, modeled_products
+    from study_economic_evidence import EVIDENCE, category_coverage, economic_products, load_evidence
+    from study_modeled_synthesis import MODELING_POLICY, SYNTHESIS, load_synthesis, modeled_products
+    from study_project_fragments import fragment_input_paths
 
 ROOT = Path(__file__).resolve().parents[1]
 CONFIG = ROOT / "config/v1/private-sector-study-candidates.json"
@@ -114,8 +116,8 @@ def import_screen():
 
 def build_products(config, inventory, panels, generated_at, evidence=None, synthesis=None, modeling_policy=None):
     candidates = config["candidates"]
-    evidence = read(EVIDENCE) if evidence is None else evidence
-    synthesis = read(SYNTHESIS) if synthesis is None else synthesis
+    evidence = load_evidence() if evidence is None else evidence
+    synthesis = load_synthesis() if synthesis is None else synthesis
     modeling_policy = read(MODELING_POLICY) if modeling_policy is None else modeling_policy
     if modeling_policy["effective_release"] != VERSION:
         raise ValueError("Modeling policy release mismatch")
@@ -226,8 +228,8 @@ def main():
     if args.import_screen:
         import_screen()
     config = read(CONFIG)
-    evidence = read(EVIDENCE)
-    synthesis = read(SYNTHESIS)
+    evidence = load_evidence()
+    synthesis = load_synthesis()
     modeling_policy = read(MODELING_POLICY)
     inventory_path = PUBLIC / "facilities/index.json"
     inventory = {r["entity_id"]: r for r in read(inventory_path)}
@@ -250,7 +252,7 @@ def main():
         paths.append((path, 1))
     manifest = {
         "schema_version": "1.0.0", "release_id": VERSION, "generated_at": stamp,
-        "inputs": [{"path": str(p.relative_to(ROOT)).replace("\\", "/"), "sha256": digest(p)} for p in [CONFIG, EVIDENCE, SYNTHESIS, MODELING_POLICY, inventory_path, *panel_paths, Path(__file__), Path(__file__).with_name("build_hammond_modeled_synthesis.py"), Path(__file__).with_name("build_full_county_models.py"), Path(__file__).with_name("study_economic_evidence.py"), Path(__file__).with_name("study_modeled_synthesis.py")]],
+        "inputs": [{"path": str(p.relative_to(ROOT)).replace("\\", "/"), "sha256": digest(p)} for p in [CONFIG, EVIDENCE, SYNTHESIS, MODELING_POLICY, inventory_path, *panel_paths, *fragment_input_paths(), Path(__file__), Path(__file__).with_name("build_hammond_modeled_synthesis.py"), Path(__file__).with_name("build_full_county_models.py"), Path(__file__).with_name("study_economic_evidence.py"), Path(__file__).with_name("study_modeled_synthesis.py"), Path(__file__).with_name("study_project_fragments.py")]],
         "parts": [{"path": str(p.relative_to(ROOT)).replace("\\", "/"), "record_count": count, "byte_size": manifest_size(p), "sha256": digest(p)} for p, count in paths],
     }
     write(OUT / "manifest.json", manifest)

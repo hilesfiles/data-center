@@ -14,6 +14,14 @@ CAUSAL_METHODS = {"difference_in_differences", "event_study", "synthetic_control
 MULTIPLIER_METHODS = {"input_output_multiplier", "contribution_analysis"}
 
 
+def load_synthesis():
+    if __package__:
+        from .study_project_fragments import load_synthesis as load
+    else:
+        from study_project_fragments import load_synthesis as load
+    return load()
+
+
 def _read(path):
     return json.loads(path.read_text(encoding="utf-8"))
 

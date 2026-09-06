@@ -15,6 +15,14 @@ EVIDENCE = ROOT / "config/v1/study-economic-evidence.json"
 ANNUAL_PERIODS = ("fiscal_year", "calendar_year", "tax_year", "source_year")
 
 
+def load_evidence():
+    if __package__:
+        from .study_project_fragments import load_evidence as load
+    else:
+        from study_project_fragments import load_evidence as load
+    return load()
+
+
 def validate_evidence(evidence, candidates):
     if __package__:
         from .validate_data_contract import ContractValidator

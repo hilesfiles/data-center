@@ -3,12 +3,14 @@ from pathlib import Path
 
 if __package__:
     from .build_private_sector_study import CONFIG, OUT, PUBLIC, ROOT, SILVER, build_products, digest, manifest_size, read
-    from .study_economic_evidence import EVIDENCE, economic_products
-    from .study_modeled_synthesis import MODELING_POLICY, SYNTHESIS, modeled_products
+    from .study_economic_evidence import EVIDENCE, economic_products, load_evidence
+    from .study_modeled_synthesis import MODELING_POLICY, SYNTHESIS, load_synthesis, modeled_products
+    from .study_project_fragments import fragment_input_paths
 else:
     from build_private_sector_study import CONFIG, OUT, PUBLIC, ROOT, SILVER, build_products, digest, manifest_size, read
-    from study_economic_evidence import EVIDENCE, economic_products
-    from study_modeled_synthesis import MODELING_POLICY, SYNTHESIS, modeled_products
+    from study_economic_evidence import EVIDENCE, economic_products, load_evidence
+    from study_modeled_synthesis import MODELING_POLICY, SYNTHESIS, load_synthesis, modeled_products
+    from study_project_fragments import fragment_input_paths
 
 
 def validate_study(validator):
@@ -16,8 +18,8 @@ def validate_study(validator):
     try:
         index = read(OUT / "index.json")
         config = read(CONFIG)
-        evidence = read(EVIDENCE)
-        synthesis = read(SYNTHESIS)
+        evidence = load_evidence()
+        synthesis = load_synthesis()
         modeling_policy = read(MODELING_POLICY)
         inventory = {r["entity_id"]: r for r in read(PUBLIC / "facilities/index.json")}
         panels = {r["county_fips"]: r for p in (PUBLIC / "panels/county-economic-history/by-state").glob("*.json") for r in read(p)}
@@ -56,7 +58,7 @@ def validate_study(validator):
             errors.append("Study manifest does not cover the publication")
         if manifest["release_id"] != index["release_id"] or manifest["generated_at"] != index["generated_at"]:
             errors.append("Mixed study release vintages")
-        required_inputs = {"config/v1/study-economic-evidence.json", "scripts/study_economic_evidence.py", "config/v1/study-modeled-synthesis.json", "config/v1/study-modeling-policy.json", "scripts/study_modeled_synthesis.py", "config/v1/private-sector-study-candidates.json", "scripts/build_private_sector_study.py"}
+        required_inputs = {"config/v1/study-economic-evidence.json", "scripts/study_economic_evidence.py", "config/v1/study-modeled-synthesis.json", "config/v1/study-modeling-policy.json", "scripts/study_modeled_synthesis.py", "scripts/study_project_fragments.py", "config/v1/private-sector-study-candidates.json", "scripts/build_private_sector_study.py", *[str(path.relative_to(ROOT)).replace("\\", "/") for path in fragment_input_paths()]}
         if not required_inputs.issubset({p["path"] for p in manifest["inputs"]}):
             errors.append("Study manifest omits economic evidence inputs")
         for part in manifest["inputs"] + manifest["parts"]:
