@@ -85,17 +85,17 @@ class PrivateSectorStudyTest(unittest.TestCase):
         index, details, _ = self.build()
         self.assertEqual(index["counts"]["projects"], 36)
         self.assertEqual(index["counts"]["projects_with_economic_evidence"], 36)
-        self.assertEqual(index["counts"]["economic_records"], 595)
-        self.assertEqual(index["counts"]["reported_actual_records"], 539)
-        self.assertEqual(index["counts"]["projection_records"], 56)
-        self.assertEqual(index["counts"]["modeled_synthesis_records"], 154)
+        self.assertEqual(index["counts"]["economic_records"], 647)
+        self.assertEqual(index["counts"]["reported_actual_records"], 585)
+        self.assertEqual(index["counts"]["projection_records"], 62)
+        self.assertEqual(index["counts"]["modeled_synthesis_records"], 176)
         self.assertEqual(index["full_modeled_county_accounts"], 6)
         self.assertEqual(sum(r["analysis_readiness"]["causal"] == "causal_model_available" for r in details), 0)
         washoe = next(r for r in details if r["name"] == "Apple Washoe County campus")
         coverage = {g["code"]: g["status"] for g in washoe["evidence_gaps"]}
-        self.assertEqual(coverage["operations"], "partial")
-        self.assertEqual(coverage["investment"], "projections_only")
-        self.assertEqual(coverage["resources"], "not_yet_collected")
+        self.assertEqual(coverage["operations"], "observed")
+        self.assertEqual(coverage["investment"], "observed")
+        self.assertEqual(coverage["resources"], "observed")
 
     def test_source_years_do_not_fill_gaps_or_become_cash_receipts(self):
         _, details, _ = self.build()
@@ -706,7 +706,7 @@ class PrivateSectorStudyTest(unittest.TestCase):
         by_id = {r["estimate_id"]: r for r in modeled}
         self.assertEqual((project["economic_record_count"], project["modeled_synthesis_count"]), (113, 43))
         self.assertEqual((index["counts"]["economic_records"], index["counts"]["modeled_synthesis_records"]),
-                         (595, 154))
+                         (647, 176))
         self.assertEqual({r["basis"] for r in modeled}, {"modeled_synthesis"})
         self.assertTrue(all(r["presentation"] == "modeled_not_observed_or_audited" for r in modeled))
         self.assertTrue(all(r["derivation"]["formula"] and r["parameters"] and r["limitations"] for r in modeled))

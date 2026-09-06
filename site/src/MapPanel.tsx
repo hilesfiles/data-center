@@ -136,9 +136,12 @@ export function MapPanel({ selectedFips, onSelectCounty, studyProjects = [] }: M
         map.on("mousemove", "completed-county-fill", (event: FeaturePointerEvent) => {
           const properties = event.features?.[0]?.properties;
           if (!properties) return;
+          const fips = typeof properties.county_fips === "string" && /^\d{5}$/.test(properties.county_fips)
+            ? properties.county_fips
+            : null;
           map.getCanvas().style.cursor = "pointer";
           popup.setLngLat(event.lngLat).setHTML(
-            `<strong>${escapeHtml(properties.county_name)}, ${escapeHtml(properties.state_abbr)}</strong><br/>Full modeled county account`,
+            `<strong>${escapeHtml(properties.county_name)}, ${escapeHtml(properties.state_abbr)}</strong><br/>Full modeled county account${fips ? `<br/><a href="#/county/${fips}">Open county detail →</a>` : ""}`,
           ).addTo(map);
         });
         map.on("mouseleave", "completed-county-fill", () => {
@@ -147,7 +150,10 @@ export function MapPanel({ selectedFips, onSelectCounty, studyProjects = [] }: M
         });
         map.on("click", "completed-county-fill", (event: FeaturePointerEvent) => {
           const fips = event.features?.[0]?.properties?.county_fips;
-          if (typeof fips === "string") selectRef.current(fips);
+          if (typeof fips === "string" && /^\d{5}$/.test(fips)) {
+            selectRef.current(fips);
+            window.location.hash = `/county/${fips}`;
+          }
         });
 
         map.addSource("study-projects", { type: "geojson", data: studyFeatures(projectsRef.current) });

@@ -1,0 +1,11 @@
+# Application release 1.48 — contribution-account batch 2
+
+Application release 1.48 advances the generated study data to `private-sector-study-1.45.0` and completes the second frozen orchestration batch: Expedient Milwaukee / Franklin, Google Council Bluffs / Pottawattamie County, and Apple Washoe County campus.
+
+The study now publishes 647 sourced economic records—585 reported observations and 62 forecasts—and 176 separately governed modeled syntheses. Six of 36 projects pass the machine-enforced completed-contribution-account gate; 30 remain incomplete. Batch 2 adds 46 reported records, six forecasts, and 22 retained models after a mandatory second-pass public-source audit. Modeled values remain excluded from canonical claims, sourced-record counts, and realized-benefit totals.
+
+Expedient Franklin now includes a five-year paid parcel-tax series and retains only seven bounded residual models; community and supplier gaps remain open. Google Council Bluffs adds operating-site parcel and paid-tax history, $101.5 million of observed 2025 permit valuations, a separate completed 2007 state award, and eight residual models; supplier retention remains unbounded. Apple Washoe adds completed/occupancy permits, parcel assessments, a water-right allocation, operator-reported campus electricity use, and recipient-reported donation floors; seven models remain and supplier spending stays unresolved.
+
+Each account exposes transferred coefficient provenance, keeps contribution channels non-additive outside declared aggregations, and labels sensitivity envelopes as non-statistical. County GDP, employment, and wage comparisons use `benchmark_application`, carry no causal-design metadata, and are descriptive rather than data-center effects. Missing building allocations, recipient-level receipts, marginal public costs, vendor geography, worker residence, and metered utility use remain documented gaps where public evidence was unavailable.
+
+Validation covers the full data contract, repository tests, TypeScript compilation, the production build, browser checks, release-count assertions, and whitespace integrity. The orchestration ledger records worker provenance, additions, validation, integration, and remaining analytical limits for each account.
