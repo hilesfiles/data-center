@@ -1,0 +1,191 @@
+{
+  "schema_version": "1.0.0",
+  "project_id": "prj_study_im3_building_00664938835",
+  "reviewed_on": "2026-09-06",
+  "scope_note": "Public-source follow-up for Expedient's adaptive reuse of the pre-existing data-center building at 4777 W Ironwood Drive. Opening-day and current operator specifications are retained as separate dated snapshots because the reported floor-area and critical-load figures changed. Milwaukee County's public tax portal establishes the parcel's tax-year 2025 net property tax and matching paid amount, but not the allocation of those receipts to Expedient rather than the parcel owner. The 2022 real-estate sale, parcel assessments, permit values, property-tax payment, and hiring plan remain distinct measures: none is summed with or relabeled as Expedient construction spending, realized employment, local purchasing, or community benefit.",
+  "sources": [
+    {
+      "source_id": "src_study_expedient_milwaukee_specification_2026",
+      "title": "Milwaukee Franklin Data Center specification sheet",
+      "url": "https://www.expedient.com/uploads/exp__sell_sheet-dc_mke-1.pdf",
+      "publisher": "Expedient",
+      "source_type": "operator_release",
+      "publication_date": {
+        "precision": "unknown"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_pdf_text",
+      "notes": "The current operator sheet identifies 4777 W Ironwood Drive and reports 27,000 square feet of data-center space, 10,000 square feet of raised floor, 1.6 MW of critical IT load, 3.0 MW of total generator capacity, two auto-cutover diesel generators, and multiple cooling systems. Only the whole-building area and critical-load specifications are normalized here. They are capacity descriptors, not utilization, annual electricity, construction spending, investment, employment, or audited environmental performance."
+    },
+    {
+      "source_id": "src_study_milwaukee_county_expedient_tax_2025",
+      "title": "Milwaukee County Public Portal — parcel 9301001000 tax-year 2025",
+      "url": "https://pp-milwaukee-co-wi-fb.app.landnav.com/Search/RealEstate/Taxes?propertyId=5309008",
+      "publisher": "Milwaukee County Treasurer",
+      "source_type": "local_government_record",
+      "publication_date": {
+        "precision": "unknown"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_page",
+      "notes": "The public parcel-tax page identifies parcel 9301001000, bill 380021, RDC-4777 Ironwood Drive LLC, and 4777 W Ironwood Drive. It reports $66,640.33 gross tax, $6,230.91 school credit, $62.25 first-dollar credit, $60,347.17 net tax, $60,347.17 paid, and zero balance. The payment is a parcel-owner obligation spanning multiple taxing jurisdictions; it is not allocated to Expedient, does not establish an operator reimbursement under the triple-net lease, and supplies no same-scope marginal public-service cost."
+    },
+    {
+      "source_id": "src_study_expedient_franklin_sale_2022",
+      "title": "Connecticut firm buys Franklin data center for $9.5M formerly owned by Harley-Davidson",
+      "url": "https://www.bizjournals.com/milwaukee/news/2022/08/12/franklin-data-center-sells-stratcap-expedient.html",
+      "publisher": "Milwaukee Business Journal",
+      "source_type": "other",
+      "publication_date": {
+        "precision": "day",
+        "date": "2022-08-12"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_page",
+      "notes": "The article reports that the Franklin data center sold for $9.46 million and attributes the amount to a Wisconsin state record. This is a real-estate ownership transfer after Expedient opened the reused facility, not construction spending, IT-equipment investment, assessed value, tax paid, or an Expedient operating expenditure."
+    }
+  ],
+  "records": [
+    {
+      "claim_id": "clm_study_expedient_franklin_opening_floor_area_2021",
+      "project_id": "prj_study_im3_building_00664938835",
+      "metric_code": "study.operating_property_floor_area",
+      "value": 28500,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "reported_snapshot",
+        "report_date": "2021-10-20",
+        "label": "Operator-reported facility area at the October 20, 2021 opening"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Expedient Milwaukee / Franklin at 4777 W Ironwood Drive",
+        "county_fips": "55079",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_expedient_milwaukee_opening_2021",
+      "source_locator": "Opening release, first paragraph",
+      "notes": "Operator-reported whole-facility area at opening. The source does not identify occupied raised-floor area or attribute the pre-existing building's area to new construction. The later operator sheet reports 27,000 square feet; both dated specifications remain visible rather than being silently reconciled.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06"
+    },
+    {
+      "claim_id": "clm_study_expedient_franklin_opening_power_capacity_2021",
+      "project_id": "prj_study_im3_building_00664938835",
+      "metric_code": "study.operating_power_capacity",
+      "value": 1.2,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "reported_snapshot",
+        "report_date": "2021-10-20",
+        "label": "Operator-reported critical-power capacity at the October 20, 2021 opening"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Expedient Milwaukee / Franklin at 4777 W Ironwood Drive",
+        "county_fips": "55079",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_expedient_milwaukee_opening_2021",
+      "source_locator": "Opening release, first paragraph",
+      "notes": "Operator-reported critical-power capacity, not metered load, coincident peak, annual electricity, occupied IT capacity, or generator capacity. The later operator sheet reports 1.6 MW; both dated specifications remain separate.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06"
+    },
+    {
+      "claim_id": "clm_study_expedient_franklin_current_floor_area_2026",
+      "project_id": "prj_study_im3_building_00664938835",
+      "metric_code": "study.operating_property_floor_area",
+      "value": 27000,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "reported_snapshot",
+        "report_date": "2026-09-06",
+        "label": "Current operator specification retrieved September 6, 2026; publication date unstated"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Expedient Milwaukee / Franklin at 4777 W Ironwood Drive",
+        "county_fips": "55079",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_expedient_milwaukee_specification_2026",
+      "pdf_page": 1,
+      "printed_page": "1",
+      "source_locator": "Page 1, Specifications, Data Center",
+      "notes": "Current whole-data-center area reported by the operator. It differs from the 28,500-square-foot opening descriptor and from the assessor's 26,428-square-foot building record; definition or revision differences are unresolved. It is not construction spending, investment, or occupied raised-floor area.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06"
+    },
+    {
+      "claim_id": "clm_study_expedient_franklin_current_power_capacity_2026",
+      "project_id": "prj_study_im3_building_00664938835",
+      "metric_code": "study.operating_power_capacity",
+      "value": 1.6,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "reported_snapshot",
+        "report_date": "2026-09-06",
+        "label": "Current operator specification retrieved September 6, 2026; publication date unstated"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Expedient Milwaukee / Franklin at 4777 W Ironwood Drive",
+        "county_fips": "55079",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_expedient_milwaukee_specification_2026",
+      "pdf_page": 1,
+      "printed_page": "1",
+      "source_locator": "Page 1, Specifications, Critical IT Load",
+      "notes": "Current critical-IT-load capacity reported by the operator. It is a capacity stock and not a meter reading, utilization rate, annual electricity use, utility-service obligation, or the separate 3.0 MW total generator-capacity descriptor.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06"
+    },
+    {
+      "claim_id": "clm_study_expedient_franklin_property_taxes_paid_2025",
+      "project_id": "prj_study_im3_building_00664938835",
+      "metric_code": "study.property_taxes_paid",
+      "value": 60347.17,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2025,
+        "label": "Tax year 2025 parcel net property tax paid in three installments by May 15, 2026"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Parcel 9301001000 at 4777 W Ironwood Drive; multi-jurisdiction property-tax account",
+        "county_fips": "55079",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_milwaukee_county_expedient_tax_2025",
+      "source_locator": "Taxes tab, net tax and paid columns; payments dated February 6, March 31, and May 15, 2026",
+      "notes": "The public portal reports net tax and paid amount of $60,347.17 with zero balance. This is a parcel-level payment by the property owner across Milwaukee County, City of Franklin, Oak Creek-Franklin School District, MMSD, and MATC. It is not an Expedient-only payment, assessed value, public-service cost, incentive, or net fiscal result.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "annual_series_key": "expedient_franklin_real_property_tax_paid"
+    }
+  ],
+  "project_updates": [
+    {
+      "project_id": "prj_study_im3_building_00664938835",
+      "source_id": "src_study_expedient_franklin_sale_2022",
+      "as_of": "2022-08-12",
+      "title": "Post-opening property sale remains an ownership transfer, not project construction spending",
+      "notes": "The reported $9.46 million 2022 sale is retained as an investment-context input only. It is not added to the parcel's assessed value, the 2022 or 2025 permit amounts, property taxes, or Expedient's hiring forecast, and it does not establish local supplier retention or new capital formation."
+    },
+    {
+      "project_id": "prj_study_im3_building_00664938835",
+      "source_id": "src_study_milwaukee_county_expedient_tax_2025",
+      "as_of": "2026-09-06",
+      "title": "Parcel tax paid supports a contribution and break-even threshold, not a net fiscal result",
+      "notes": "The 2025 parcel tax is fully paid, but the public portal does not disclose project-attributable service costs or establish whether Expedient reimbursed the property owner. The account may present the paid parcel tax and an equal same-scope cost break-even threshold, while actual public-service cost and net fiscal position remain unobserved."
+    }
+  ]
+}
