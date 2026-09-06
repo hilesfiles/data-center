@@ -16,12 +16,12 @@
   "detail_path": "projects/prj_study_im3_building_00364289074.json",
   "latitude": 29.479925996060736,
   "longitude": -98.69260809155041,
-  "economic_record_count": 13,
-  "reported_actual_count": 4,
+  "economic_record_count": 19,
+  "reported_actual_count": 10,
   "projection_count": 9,
-  "modeled_synthesis_count": 11,
+  "modeled_synthesis_count": 3,
   "model_completeness": {
-    "status": "full_modeled_account",
+    "status": "incomplete",
     "required_categories": [
       "investment",
       "construction",
@@ -39,16 +39,9 @@
       "investment",
       "operations",
       "public_costs",
-      "resources",
-      "suppliers"
+      "resources"
     ],
-    "modeled_categories": [
-      "community",
-      "construction",
-      "investment",
-      "operations",
-      "suppliers"
-    ],
+    "modeled_categories": [],
     "required_county_outcomes": [
       "study.modeled_county_employment_comparison_gap",
       "study.modeled_county_gdp_comparison_gap",
@@ -59,14 +52,16 @@
       "study.modeled_county_gdp_comparison_gap",
       "study.modeled_county_wage_comparison_gap"
     ],
-    "missing_categories": [],
+    "missing_categories": [
+      "suppliers"
+    ],
     "missing_county_outcomes": [],
     "direct_evidence_gap_count": 8,
     "definition": "All eight contribution-account categories contain sourced or labeled modeled values, and GDP, employment, and wage county-comparison modules are populated. Comparison gaps are descriptive and do not establish causal facility effects."
   },
   "schema_version": "1.0.0",
-  "release_id": "private-sector-study-1.45.0",
-  "generated_at": "2026-09-06T16:15:28+00:00",
+  "release_id": "private-sector-study-1.46.0",
+  "generated_at": "2026-09-06T17:46:13+00:00",
   "inventory_name": "Microsoft San Antonio",
   "research_value": "Regional investment and expansion research; establish exact building and phase chronology.",
   "history": {
@@ -131,6 +126,174 @@
         "review_method": "web_page",
         "notes": "Microsoft reports that 79% of water used at its San Antonio location is recycled, reused, or non-potable. The percentage is location-wide and does not disclose a volume, year-specific facility denominator, withdrawal, consumption, or 5150 Rogers Road allocation."
       }
+    },
+    {
+      "project_id": "prj_study_im3_building_00364289074",
+      "source_id": "src_study_bexar_cad_microsoft_5150_2026",
+      "as_of": "2026-09-04",
+      "title": "Search audit — identity, land, physical scale, and appraisal",
+      "notes": "Portal/source family: Bexar Appraisal District property and deed records. Query/identifier: exact address '5150 Rogers' for tax years 2022-2026; inspected property IDs 1094298, 1107340, and 1172617 and deed 20070085721. Date range: 2007 deed and 2022-2026 roll histories. Documents inspected: result table, account detail, improvements, land, roll value, and deed panels. Result: useful — exact Microsoft ownership/address, 36.235 acres, 463,350 square feet, and three account-separated 2025 appraisals; negative for purchase price, investment flow, equipment detail, or building allocation.",
+      "source": {
+        "source_id": "src_study_bexar_cad_microsoft_5150_2026",
+        "title": "Bexar Appraisal District property search — 5150 Rogers Road Microsoft accounts",
+        "url": "https://bexar.trueautomation.com/clientdb/propertysearch.aspx?cid=110",
+        "publisher": "Bexar Appraisal District",
+        "source_type": "assessor_record",
+        "publication_date": {
+          "precision": "day",
+          "date": "2026-09-04"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "structured_data",
+        "notes": "Exact-address search returned Microsoft real-property account 1094298, equipment/personal-property account 1107340, and solar/wind-equipment account 1172617. The 2025 roll histories report $112,000,000, $91,391,490, and $86,400 of appraised value respectively. Real-property detail reports 36.235 acres and 463,350 square feet of commercial living area; accounts remain separate and assessments are stocks, not investment or receipts."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_00364289074",
+      "source_id": "src_study_microsoft_san_antonio_permits_2018_05_12",
+      "as_of": "2026-09-06",
+      "title": "Search audit — construction, contractors, and local suppliers",
+      "notes": "Portal/source family: City Development Services granted-permit archive and City procurement search. Query/identifier: exact address '5150 ROGERS RD', Microsoft, permit A2359822, and weekly PDFs for 2008-2026; inspected 2010-12-18, 2011-12-24, 2012-10-06, 2018-05-05, 2018-05-12, 2018-09-08, and 2018-09-15 reports. Date range: 2008-2026. Documents inspected: granted-permit tables and City procurement search results. Result: useful — $2,771,000 renovation permit and named contractors Rogers & O'Brien, Brandt, McKinstry, and Simplex Grinnell; negative for invoices, verified spend, payroll, worker count/residence, contract value, local-retained purchasing, or non-overlap among permits.",
+      "source": {
+        "source_id": "src_study_microsoft_san_antonio_permits_2018_05_12",
+        "title": "City of San Antonio weekly granted commercial permits, May 12, 2018",
+        "url": "https://www.sanantonio.gov/portals/0/files/dsd/pastgranted/2018/2018-05-12.pdf",
+        "publisher": "City of San Antonio Development Services Department",
+        "source_type": "local_government_record",
+        "publication_date": {
+          "precision": "day",
+          "date": "2018-05-12"
+        },
+        "retrieved_on": "2026-09-05",
+        "review_method": "pdf_text_and_page_image",
+        "notes": "The granted-permit report lists application A2359822 at 5150 Rogers Road for renovations to an existing data center, names Rogers & O'Brien Construction, and reports a $2,771,000 project value. The administrative amount is not verified expenditure, payroll, or local purchasing."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_00364289074",
+      "source_id": "src_study_san_antonio_active_incentives_2022",
+      "as_of": "2026-09-06",
+      "title": "Search audit — jobs, compliance, incentives, and public cost",
+      "notes": "Portal/source family: City Council ordinances/agreements, Legistar, and active-incentive monitoring. Query/identifier: Microsoft, 5150 Rogers, ordinances 2007-01-18-0073/0074 and 2013-11-21-0817. Date range: 2007-2024 monitoring period. Documents inspected: 2007 ordinance/agreement, 2013 agenda record, and active-agreement row. Result: useful — commitments, reported >$840 million cumulative investment, >75-job floor, investment compliance, and $16,169,082.93 cumulative city taxes abated; negative for actual job count, payroll, annual abatement schedule, CPS CIED disbursement, marginal services, or same-scope net fiscal result. SN4 figures remain separate.",
+      "source": {
+        "source_id": "src_study_san_antonio_active_incentives_2022",
+        "title": "City of San Antonio active economic incentive agreements",
+        "url": "https://www.sanantonio.gov/OpenDataReport/Report_files/sheet001.htm",
+        "publisher": "City of San Antonio",
+        "source_type": "local_government_record",
+        "publication_date": {
+          "precision": "year",
+          "year": 2022
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "structured_data",
+        "notes": "The self-reported monitoring table lists the exact 5150 Rogers agreement, $16,169,082.93 in total city taxes abated, investment compliance, and no published actual-job count. It separately lists the SN4 agreement and $3,108,452.67 disbursed. Abated taxes are not normalized as cash payments, and SN4 is not allocated to the selected property."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_00364289074",
+      "source_id": "src_study_bexar_tax_microsoft_5150_2026",
+      "as_of": "2026-06-16",
+      "title": "Search audit — property tax bills, payments, and recipients",
+      "notes": "Portal/source family: Bexar County Tax Assessor-Collector account and payment histories. Query/identifier: CAD property IDs 1094298, 1107340, and 1172617; resolved tax accounts 176420480010 and 000001107340. Date range: payment histories from roll year 2008 through 2025, with 2025 selected for normalization. Documents inspected: account balance, levy, jurisdiction, and payment-history panels. Result: useful — both 2025 taxable-account levies were paid in two installments; negative for a payment on the exempt solar/wind account, recipient-level distributions, public-service costs, or a net fiscal total. Refund and transfer rows in earlier years were not netted without a reconciliation.",
+      "source": {
+        "source_id": "src_study_bexar_tax_microsoft_5150_2026",
+        "title": "Bexar County Tax Assessor-Collector account and payment histories — 5150 Rogers Road",
+        "url": "https://bexar.acttax.com/act_webdev/bexar/index.jsp",
+        "publisher": "Bexar County Tax Assessor-Collector",
+        "source_type": "local_government_record",
+        "publication_date": {
+          "precision": "day",
+          "date": "2026-06-16"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "structured_data",
+        "notes": "CAD-ID searches for 1094298 and 1107340 resolve to tax accounts 176420480010 and 000001107340 at 5150 Rogers Road. Each 2025 levy was paid in two equal installments dated November 17, 2025 and June 16, 2026, totaling $2,564,994.88 and $2,093,024.14. Payments are account transactions across listed jurisdictions, not recipient-level receipts or a net fiscal result."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_00364289074",
+      "source_id": "src_study_tceq_microsoft_sn_campus_2026",
+      "as_of": "2026-02-17",
+      "title": "Search audit — electricity, backup generation, and emissions",
+      "notes": "Portal/source family: TCEQ air records, CPS Energy publications, and ERCOT public search. Query/identifier: Microsoft, 5150 Rogers, RN105295687, registration 82486, permit O4780, and campus SN1/SN2/SN4/SN7. Date range: 2008-2026. Documents inspected: TCEQ application/registration, statement of basis, CPS site and financial-document results, and ERCOT search results. Result: useful — operator/site identity and permitted diesel-engine rating groups; negative for generator count by selected building, actual runtime/fuel/emissions, metered electricity, peak load, interconnection capacity, utility bills/rates, or grid-upgrade cost.",
+      "source": {
+        "source_id": "src_study_tceq_microsoft_sn_campus_2026",
+        "title": "Statement of Basis for Microsoft SN Campus federal operating permit O4780",
+        "url": "https://www.tceq.texas.gov/assets/public/permitting/air/publicnotice/38509sob.pdf",
+        "publisher": "Texas Commission on Environmental Quality",
+        "source_type": "state_record",
+        "publication_date": {
+          "precision": "day",
+          "date": "2026-02-17"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "pdf_text_and_page_image",
+        "notes": "The permit basis identifies Microsoft SN Campus SN1, SN2, SN4, and SN7 at 5150 Rogers Road and groups diesel emergency engines by rating class. It does not disclose actual generator runtime, fuel use, annual emissions, metered electricity, facility load, or a selected-building allocation."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_00364289074",
+      "source_id": "src_study_saws_recycled_water_program_2026",
+      "as_of": "2026-09-06",
+      "title": "Search audit — water, cooling, and wastewater",
+      "notes": "Portal/source family: SAWS recycled-water, rate, budget, and water-quality pages plus Microsoft sustainability releases. Query/identifier: Microsoft, 5150 Rogers, San Antonio data center, recycled water, wastewater, meter, and 130 million gallons. Date range: 2008-2026. Documents inspected: SAWS program/rate/system pages, the 2008 facility report, and Microsoft's 2026 alternative-water-share release. Result: useful — >130 million gallons/year remains a source projection and 79% is location-wide context; negative for exact-site meter/bill, withdrawal, consumption, discharge, peak-day use, cooling design, facility denominator, annual series, or attributable infrastructure cost.",
+      "source": {
+        "source_id": "src_study_saws_recycled_water_program_2026",
+        "title": "San Antonio Water System recycled-water program",
+        "url": "https://www.saws.org/your-water/management-sources/recycled-water-program/",
+        "publisher": "San Antonio Water System",
+        "source_type": "local_government_record",
+        "publication_date": {
+          "precision": "year",
+          "year": 2026
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_page",
+        "notes": "SAWS reports systemwide recycled-water deliveries and program capacity but does not identify Microsoft or 5150 Rogers Road in its customer totals. The page supplies system context only, not a facility meter, bill, withdrawal, consumption, or wastewater record."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_00364289074",
+      "source_id": "src_study_microsoft_sec_10k_2026",
+      "as_of": "2026-06-30",
+      "title": "Search audit — operator filings, procurement, and state incentives",
+      "notes": "Portal/source family: Microsoft SEC filings, operator local publications, and Texas Comptroller qualified-data-center registry. Query/identifier: CIK 0000789019, 'San Antonio', '5150 Rogers', Microsoft Corporation, and registrations DC993797-OW1/OC1/OP1. Date range: 2007-2026, emphasizing FY2024-FY2026 filings. Documents inspected: 2026 Form 10-K, operator regional impact sheet, Texas community page, and Comptroller certification list. Result: useful — company/global context and an unlocated 2013 state certification; negative for facility capital expenditure, payroll, supplier payments, exempt-purchase value, sales-tax savings, power/water use, or a reliable address/building allocation.",
+      "source": {
+        "source_id": "src_study_microsoft_sec_10k_2026",
+        "title": "Microsoft Corporation Form 10-K for fiscal year ended June 30, 2026",
+        "url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526323660/msft-20260630.htm",
+        "publisher": "U.S. Securities and Exchange Commission",
+        "source_type": "sec_filing",
+        "publication_date": {
+          "precision": "day",
+          "date": "2026-06-30"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_page",
+        "notes": "The filing discusses datacenter capital, supply constraints, vendor management, and global operations but does not report San Antonio- or 5150 Rogers-level construction spend, payroll, employees, supplier purchases, electricity, water, emissions, tax, or community transfers."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_00364289074",
+      "source_id": "src_study_microsoft_san_antonio_community_2024",
+      "as_of": "2026-09-06",
+      "title": "Search audit — community recipients, courts, bonds, and county outcomes",
+      "notes": "Portal/source family: Microsoft Local, Alamo Colleges recipient pages, Bexar/Texas court search, MSRB/City bond search, and BEA/BLS county data. Query/identifier: Microsoft datacenter San Antonio, 5150 Rogers, Northwest Vista College, Datacenter Academy, exact-address court/bond queries, and Bexar County FIPS 48029. Date range: 2001-2026. Documents inspected: operator partner list, recipient announcement, court/bond search results, and 2001-2024 county panel. Result: useful — one $250,000 recipient-confirmed gift and descriptive county outcome series; negative for a complete facility grant ledger, recurring amount, litigation or bond obligation tied to the address, and any causal project effect.",
+      "source": {
+        "source_id": "src_study_microsoft_san_antonio_community_2024",
+        "title": "San Antonio community investments",
+        "url": "https://local.microsoft.com/blog/san-antonio-community-investments/",
+        "publisher": "Microsoft",
+        "source_type": "operator_release",
+        "publication_date": {
+          "precision": "year",
+          "year": 2024
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_page",
+        "notes": "The operator names San Antonio partner programs and scholarship activity but describes a sample rather than a complete ledger and supplies no program amounts or 5150 Rogers allocation. Recipient-reported Northwest Vista College funding remains the only normalized direct community amount in this account."
+      }
     }
   ],
   "evidence_gaps": [
@@ -161,7 +324,7 @@
     {
       "code": "fiscal",
       "label": "Tax base and public revenue",
-      "status": "projections_only",
+      "status": "partial",
       "needed": "Taxable values and actual receipts by year and recipient jurisdiction."
     },
     {
@@ -572,6 +735,185 @@
       "unit": "USD",
       "measure_type": "flow",
       "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_microsoft_san_antonio_floor_area_2026",
+      "project_id": "prj_study_im3_building_00364289074",
+      "metric_code": "study.operating_property_floor_area",
+      "value": 463350,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "reported_snapshot",
+        "report_date": "2026-09-04",
+        "label": "Bexar Appraisal District account detail current September 4, 2026"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Microsoft real-property account 1094298 at 5150 Rogers Road",
+        "county_fips": "48029",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_bexar_cad_microsoft_5150_2026",
+      "source_locator": "Property ID 1094298, Improvement / Building, Improvement #1",
+      "notes": "Assessor-reported commercial living area across listed data-center, warehouse, and office components. It is a physical stock for the whole account, not rentable white space, raised floor, IT capacity, utilization, or an individual-building allocation.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Reported operating property floor area",
+      "category": "operations",
+      "unit": "square_feet",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_microsoft_san_antonio_real_appraised_value_2025",
+      "project_id": "prj_study_im3_building_00364289074",
+      "metric_code": "study.appraised_property_value",
+      "value": 112000000,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2025,
+        "label": "Bexar Appraisal District 2025 roll value"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Microsoft real-property account 1094298 at 5150 Rogers Road",
+        "county_fips": "48029",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_bexar_cad_microsoft_5150_2026",
+      "source_locator": "Property ID 1094298, Roll Value History, 2025 row",
+      "notes": "Annual appraisal stock for land and improvements on the real-property account. It is not capital expenditure, taxable value for every jurisdiction, a tax payment, or the separate personal-property accounts.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "annual_series_key": "microsoft_san_antonio_real_appraised_value",
+      "label": "County appraised property value",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_microsoft_san_antonio_equipment_appraised_value_2025",
+      "project_id": "prj_study_im3_building_00364289074",
+      "metric_code": "study.appraised_property_value",
+      "value": 91391490,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2025,
+        "label": "Bexar Appraisal District 2025 roll value"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Microsoft personal-property account 1107340 at 5150 Rogers Road",
+        "county_fips": "48029",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_bexar_cad_microsoft_5150_2026",
+      "source_locator": "Property ID 1107340, Roll Value History, 2025 row",
+      "notes": "Annual appraisal stock for the separately listed equipment/personal-property account. It is not investment, purchasing, taxable value for every jurisdiction, a tax payment, or the real-property account.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "annual_series_key": "microsoft_san_antonio_equipment_appraised_value",
+      "label": "County appraised property value",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_microsoft_san_antonio_solar_appraised_value_2025",
+      "project_id": "prj_study_im3_building_00364289074",
+      "metric_code": "study.appraised_property_value",
+      "value": 86400,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2025,
+        "label": "Bexar Appraisal District 2025 roll value"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Microsoft solar/wind-equipment personal-property account 1172617 at 5150 Rogers Road",
+        "county_fips": "48029",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_bexar_cad_microsoft_5150_2026",
+      "source_locator": "Property ID 1172617, Roll Value History, 2025 row",
+      "notes": "Annual appraisal stock for a separate solar/wind-equipment account. The current assessor page displays exemptions and zero estimated tax, but this value is not converted into tax savings, generation capacity, output, investment, or a cash subsidy.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "annual_series_key": "microsoft_san_antonio_solar_appraised_value",
+      "label": "County appraised property value",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_microsoft_san_antonio_real_property_taxes_paid_2025",
+      "project_id": "prj_study_im3_building_00364289074",
+      "metric_code": "study.property_taxes_paid",
+      "value": 2564994.88,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2025,
+        "label": "Bexar County 2025 roll-year payments"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Bexar tax account 176420480010 for Microsoft real property at 5150 Rogers Road",
+        "county_fips": "48029",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_bexar_tax_microsoft_5150_2026",
+      "source_locator": "Account 176420480010, Payment History, 2025 roll-year rows",
+      "notes": "Sum of two exact $1,282,497.44 payments dated November 17, 2025 and June 16, 2026; the account shows no amount due. This is a multi-jurisdiction account transaction, not recipient-level cash receipts, net municipal revenue, or the personal-property account.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "annual_series_key": "microsoft_san_antonio_real_property_taxes_paid",
+      "label": "Account property taxes paid",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_microsoft_san_antonio_equipment_property_taxes_paid_2025",
+      "project_id": "prj_study_im3_building_00364289074",
+      "metric_code": "study.property_taxes_paid",
+      "value": 2093024.14,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2025,
+        "label": "Bexar County 2025 roll-year payments"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Bexar tax account 000001107340 for Microsoft personal property at 5150 Rogers Road",
+        "county_fips": "48029",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_bexar_tax_microsoft_5150_2026",
+      "source_locator": "Account 000001107340, Payment History, 2025 roll-year rows",
+      "notes": "Sum of two exact $1,046,512.07 payments dated November 17, 2025 and June 16, 2026; the account shows no amount due. This is a multi-jurisdiction account transaction, not recipient-level cash receipts, net municipal revenue, or the real-property account.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "annual_series_key": "microsoft_san_antonio_equipment_property_taxes_paid",
+      "label": "Account property taxes paid",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
     }
   ],
   "economic_sources": [
@@ -644,1063 +986,39 @@
       "retrieved_on": "2026-09-05",
       "review_method": "web_page",
       "notes": "The public college reports securing a $250,000 Microsoft donation for its Emerging Technologies Project, including computing-lab upgrades, certification vouchers, and student labor stipends. The gift is Bexar County community evidence linked to Microsoft's Datacenter Community Affairs program but is not allocated to one Microsoft building."
+    },
+    {
+      "source_id": "src_study_bexar_cad_microsoft_5150_2026",
+      "title": "Bexar Appraisal District property search — 5150 Rogers Road Microsoft accounts",
+      "url": "https://bexar.trueautomation.com/clientdb/propertysearch.aspx?cid=110",
+      "publisher": "Bexar Appraisal District",
+      "source_type": "assessor_record",
+      "publication_date": {
+        "precision": "day",
+        "date": "2026-09-04"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "structured_data",
+      "notes": "Exact-address search returned Microsoft real-property account 1094298, equipment/personal-property account 1107340, and solar/wind-equipment account 1172617. The 2025 roll histories report $112,000,000, $91,391,490, and $86,400 of appraised value respectively. Real-property detail reports 36.235 acres and 463,350 square feet of commercial living area; accounts remain separate and assessments are stocks, not investment or receipts."
+    },
+    {
+      "source_id": "src_study_bexar_tax_microsoft_5150_2026",
+      "title": "Bexar County Tax Assessor-Collector account and payment histories — 5150 Rogers Road",
+      "url": "https://bexar.acttax.com/act_webdev/bexar/index.jsp",
+      "publisher": "Bexar County Tax Assessor-Collector",
+      "source_type": "local_government_record",
+      "publication_date": {
+        "precision": "day",
+        "date": "2026-06-16"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "structured_data",
+      "notes": "CAD-ID searches for 1094298 and 1107340 resolve to tax accounts 176420480010 and 000001107340 at 5150 Rogers Road. Each 2025 levy was paid in two equal installments dated November 17, 2025 and June 16, 2026, totaling $2,564,994.88 and $2,093,024.14. Payments are account transactions across listed jurisdictions, not recipient-level receipts or a net fiscal result."
     }
   ],
-  "economic_scope_note": "Reviewed evidence batches at campus or company/county scope. No record is allocated to an individual inventory building. Source checking establishes what a document reports, not an independent audit or causal attribution. Monetary figures are nominal. Peak workforce is distinct from annual employment; source-year labels do not establish fiscal-year boundaries. Original forecasts remain forecasts until realization is verified. No cross-record benefit total is defined. Cumulative project costs are not annual expenditure. Tax receipts and incentive payments remain separate, with inferred taxpayer links disclosed. Contextual research updates do not count as economic amounts. Account tax bills are distinct from cash receipts and incentive-program fees. Tax years, calendar years and fiscal years retain their source basis; separate taxpayer accounts are not consolidated. Municipal developer rebates and taxpayer valuations have distinct subjects. Estimated actual property value and tax capacity are not tax receipts; payable-year valuations retain their earlier assessment date. Taxpayer values expressed in millions retain approximate precision and account-level separation. A current-year table can use an older valuation date and is not converted into an annual series. Facility real-property and business-personal-property accounts remain separate, and address-label discrepancies are disclosed. Michigan Industrial Facilities Tax accounts remain distinct from the underlying real parcel and from post-expiration personal-property accounts; annual account totals are not recipient-level government receipts. Permit construction values are administrative project amounts, not verified expenditure, and separate permits are not combined without proof that their scopes do not overlap. Repeated maintenance-year assessments are annual parcel stocks, not new investment flows. Mixed-use parcel assessments and taxable values are retained at whole-parcel scope and are not allocated to a data-center tenant or function by floor area. Operator-reported jobs supported remain distinct from direct employees and FTEs. Approved infrastructure grants are documented public commitments rather than verified disbursements or total public costs. Cumulative community funding remains separate from tax receipts, payroll and modeled multiplier effects. Reported facility power capacity is not measured electricity consumption or peak demand. Permit-listed emergency generators are not runtime, fuel-use or actual-emissions observations. A city largest-taxpayer table's personal-property assessment remains separate from the leasehold real-property account, tax bills, receipts and capital expenditure. TIF loan principal is financing rather than a grant or general-fund receipt; project-generated tax revenue pledged to repayment is retained as a separate public-financing flow and is not added to gross parcel distributions. Water-withdrawal and consumptive permit capacities are regulatory limits rather than measured use. Development-agreement local-labor preferences are requirements rather than realized participation, and operating employee snapshots remain distinct from customers' on-site staff and jobs forecasts. Audited City bond statements distinguish issuance draws, year-end principal, annual principal retired, interest and fees, pledged TIF revenue, debt-service-fund transfers and future principal-plus-interest commitments. These measures are not summed into a benefit or subsidy total. City pledged revenue, City debt-service-fund transfers and the private fund's project TIF revenue applied to loan repayment retain their separate source definitions because only the 2022 transfer and private-fund amount agree exactly. Developer testimony in public meeting minutes is retained as a source-attributed cumulative lower bound; local-contractor spending is not converted into payroll, worker counts, household spending or multiplier effects. Economic-improvement-district cost estimates and maximum owner assessments remain source projections until bond issuance, an assessment schedule, collections and expenditures are verified. A statutory financing cap is not a tax receipt, public expenditure or subsidy. Audited private equipment-financing balances are debt stocks rather than construction spending, public support or community benefit. Reported floor area and occupied-share values describe operating scale and utilization, not employment, revenue, power use or economic output. Contractor and engineer case studies document supplier roles and completion timing but do not establish payment amounts, worker residence, payroll or multiplier effects. State incentive contract amounts, expected jobs and paid-or-certified-to-date fields remain distinct; a zero paid/certified balance at an earlier reporting cutoff does not imply no later claims. Public charging-infrastructure awards are commitments rather than verified disbursements, private project investment or operating benefits. Qualitative payment descriptions without a defensible numeric bound remain research context rather than quantitative records. Program-reported actual qualified investment, certified tax-exemption value and certified tax-credit value remain separate cumulative measures; none is converted into annual spending, a cash grant, local revenue or causal impact. County Business Patterns observations are county-industry context, not project contributions: establishment counts are employer locations rather than data-center facilities, March employment is not an annual average, annual payroll spans the full NAICS cell, and disclosure noise, classification changes and geographic assignment limit comparisons. No CBP change is attributed to a study project. Project fragments: prj_study_im3_building_00364289074: Public-source review for the Microsoft facility at 5150 Rogers Road and explicitly labeled wider Microsoft/Bexar County activity. The exact-site ordinance and permit records are retained separately from later company/county and Greater San Antonio disclosures. Permit value is an administrative construction amount, the original investment and employment figures are commitments, the 2013 employment threshold is a reported lower bound, and water use is a source projection rather than metered consumption. No Bexar-and-Medina total is allocated to this building. Actual annual construction spending, worker residence, payroll, vendor payments, operating purchases, recipient-level tax receipts, same-scope public-service cost, electricity use, wastewater, emissions, and annual community transfers remain unobserved. prj_study_im3_building_00377585075: DET01-specific direct-evidence follow-up. The operator data sheet supplies current facility-area and rated-power observations at 21005 Lahser Road. The 2014 operator release bounds the initial launch chronology but supplies no quantitative construction, supplier, payroll, community-funding, resource-use or public-cost observation. The values below are source-reported specifications, not audited utilization, expenditure or impact measures. prj_study_im3_building_00460089167: Public-source follow-up adds one facility-level 2024 electricity observation from Meta's environmental data index. The same source's rounded Forest City water-withdrawal and Scope 2 emissions values remain contextual until compatible canonical metric definitions exist. A North Carolina supplier announcement is retained only as context because its U.S.-wide contract value and Hickory manufacturing expansion cannot be allocated to Forest City or Rutherford County. prj_study_im3_building_00464097467: Second-pass public-evidence audit for Apple's Washoe County data-center campus at 21505 Reno Technology Parkway West and its 2024 expansion application. GOED audit findings, application forecasts, county permit values, parcel assessments, a water-right allocation, operator-reported electricity use, and recipient-reported donation bands remain separate evidence states and scopes. Permit values are administrative amounts and are not summed because overlapping scopes cannot be ruled out. Assessment values are parcel stocks, not investment or tax receipts. The 125 acre-foot water right is regulatory capacity, not measured use. Food Bank gifts are company-region transfers, not campus-attributable annual spending. No campus total is allocated to the selected mapped building; the four-building campus, later buildout cases, downtown Reno warehouse, supporting renewable projects, fire-station parcel, and more-than-200-person support statement are not collapsed into one footprint. No Switch Citadel or Storey County amount enters this fragment. Vendor payments, worker residence, taxes received by jurisdiction, realized 2024 abatement, same-scope public-service cost, wastewater, and building-level electricity or water remain unobserved. prj_study_im3_building_00664938835: Second-pass public-evidence audit for Expedient's adaptive reuse of the pre-existing data-center building at 4777 W Ironwood Drive. The review searched Franklin planning, agenda, assessment, permit, water and sewer materials; Milwaukee County tax and deed-record access points; Wisconsin DOR, WEDC, DFI and PSC records; operator press, specification, career, ESG and community pages; lease, financing, carrier and vendor disclosures; and archived official pages for 2007-2026. Opening-day and current operator specifications remain separate dated snapshots because the reported area and capacity changed. The county portal now establishes a 2021-2025 parcel-tax principal series, but not Expedient's incidence under the lease. The 2022 ownership transfer, assessments, estimated permit values, tax payments and hiring plan remain non-additive. No source was found for actual construction outlays, realized site employment or payroll, local procurement, Milwaukee-area community transfers, metered resources, project-attributable public costs or a fiscal net. prj_study_im3_building_01073720208: Second-pass public-evidence audit for Google's Council Bluffs data-center activity, retaining the selected inventory building as the project key while leaving campus, taxpayer-account, company-county, and state-award facts at their reported scopes. The audit distinguishes completed IEDA contracts 08-HQJC-030 and 12-HQJP-051 from the 2022 award still in performance; permit valuations remain administrative amounts rather than expenditure; assessed and taxable values remain stocks; bills remain distinct from payments; and community grants remain recipient- and period-specific. The Pottawattamie County tax portal now supplies a paid 2018-2024 series for the principal Tetra parcel and an unpaid 2025 bill for the newer Questa parcel. No value is inferred for sales-tax exemptions, the local abatement schedule, franchise-fee adjustment, electricity, supplier retention, building-level water, marginal public-service cost, or net fiscal position. Models without defensible project allocation or transferable parameters were removed even though that leaves the eight-category account incomplete.",
+  "economic_scope_note": "Reviewed evidence batches at campus or company/county scope. No record is allocated to an individual inventory building. Source checking establishes what a document reports, not an independent audit or causal attribution. Monetary figures are nominal. Peak workforce is distinct from annual employment; source-year labels do not establish fiscal-year boundaries. Original forecasts remain forecasts until realization is verified. No cross-record benefit total is defined. Cumulative project costs are not annual expenditure. Tax receipts and incentive payments remain separate, with inferred taxpayer links disclosed. Contextual research updates do not count as economic amounts. Account tax bills are distinct from cash receipts and incentive-program fees. Tax years, calendar years and fiscal years retain their source basis; separate taxpayer accounts are not consolidated. Municipal developer rebates and taxpayer valuations have distinct subjects. Estimated actual property value and tax capacity are not tax receipts; payable-year valuations retain their earlier assessment date. Taxpayer values expressed in millions retain approximate precision and account-level separation. A current-year table can use an older valuation date and is not converted into an annual series. Facility real-property and business-personal-property accounts remain separate, and address-label discrepancies are disclosed. Michigan Industrial Facilities Tax accounts remain distinct from the underlying real parcel and from post-expiration personal-property accounts; annual account totals are not recipient-level government receipts. Permit construction values are administrative project amounts, not verified expenditure, and separate permits are not combined without proof that their scopes do not overlap. Repeated maintenance-year assessments are annual parcel stocks, not new investment flows. Mixed-use parcel assessments and taxable values are retained at whole-parcel scope and are not allocated to a data-center tenant or function by floor area. Operator-reported jobs supported remain distinct from direct employees and FTEs. Approved infrastructure grants are documented public commitments rather than verified disbursements or total public costs. Cumulative community funding remains separate from tax receipts, payroll and modeled multiplier effects. Reported facility power capacity is not measured electricity consumption or peak demand. Permit-listed emergency generators are not runtime, fuel-use or actual-emissions observations. A city largest-taxpayer table's personal-property assessment remains separate from the leasehold real-property account, tax bills, receipts and capital expenditure. TIF loan principal is financing rather than a grant or general-fund receipt; project-generated tax revenue pledged to repayment is retained as a separate public-financing flow and is not added to gross parcel distributions. Water-withdrawal and consumptive permit capacities are regulatory limits rather than measured use. Development-agreement local-labor preferences are requirements rather than realized participation, and operating employee snapshots remain distinct from customers' on-site staff and jobs forecasts. Audited City bond statements distinguish issuance draws, year-end principal, annual principal retired, interest and fees, pledged TIF revenue, debt-service-fund transfers and future principal-plus-interest commitments. These measures are not summed into a benefit or subsidy total. City pledged revenue, City debt-service-fund transfers and the private fund's project TIF revenue applied to loan repayment retain their separate source definitions because only the 2022 transfer and private-fund amount agree exactly. Developer testimony in public meeting minutes is retained as a source-attributed cumulative lower bound; local-contractor spending is not converted into payroll, worker counts, household spending or multiplier effects. Economic-improvement-district cost estimates and maximum owner assessments remain source projections until bond issuance, an assessment schedule, collections and expenditures are verified. A statutory financing cap is not a tax receipt, public expenditure or subsidy. Audited private equipment-financing balances are debt stocks rather than construction spending, public support or community benefit. Reported floor area and occupied-share values describe operating scale and utilization, not employment, revenue, power use or economic output. Contractor and engineer case studies document supplier roles and completion timing but do not establish payment amounts, worker residence, payroll or multiplier effects. State incentive contract amounts, expected jobs and paid-or-certified-to-date fields remain distinct; a zero paid/certified balance at an earlier reporting cutoff does not imply no later claims. Public charging-infrastructure awards are commitments rather than verified disbursements, private project investment or operating benefits. Qualitative payment descriptions without a defensible numeric bound remain research context rather than quantitative records. Program-reported actual qualified investment, certified tax-exemption value and certified tax-credit value remain separate cumulative measures; none is converted into annual spending, a cash grant, local revenue or causal impact. County Business Patterns observations are county-industry context, not project contributions: establishment counts are employer locations rather than data-center facilities, March employment is not an annual average, annual payroll spans the full NAICS cell, and disclosure noise, classification changes and geographic assignment limit comparisons. No CBP change is attributed to a study project. Project fragments: prj_study_im3_building_00364289074: Corrective public-source audit for Microsoft's data-center property at 5150 Rogers Road and explicitly labeled wider Microsoft/Bexar County activity. Exact-site ordinance, permit, appraisal, and tax-account records remain separate from later campuses and regional disclosures; the three appraisal accounts and two taxable-account payments are not consolidated. Permit value is administrative, the original investment and employment figures are commitments, the 2013 employment threshold is a reported lower bound, and the water quantity is a projection rather than metered consumption. No Bexar-and-Medina total is allocated to this property. Annual construction expenditure, construction labor and residence, supplier payments, operating payroll and purchases, recipient-level tax distributions, marginal public-service cost, electricity consumption, water withdrawal or consumption, wastewater, actual emissions, and a recurring facility-level community series remain unobserved after the documented searches. prj_study_im3_building_00377585075: Corrective DET01 evidence audit. Official parcel, permit, tax, water-account, state-certificate, EPA and operator records are retained as direct observations or clearly labeled source forecasts. Conflicting floor-area figures remain separate because their reporting definitions differ. Construction cost, realized jobs, supplier payments, community funding, electricity, emissions, wastewater, actual public-service cost and causal county effects remain unbounded rather than being filled with transferred assumptions. prj_study_im3_building_00460089167: Corrective primary-source audit adds current Andale parcel assessment, contractor-reported campus floor area, and two recipient- or government-reported Meta community grants. The search trail records useful and negative results across identity, tax, construction, jobs, suppliers, utilities, water, permits, public costs, incentives, community funding, and county comparison inputs. Campus-wide facts remain unallocated to the selected inventory building, overlapping community amounts are not added together, and unavailable supplier, payroll, utility-billing, discharge, generator, and marginal-service-cost amounts remain explicit gaps. prj_study_im3_building_00464097467: Second-pass public-evidence audit for Apple's Washoe County data-center campus at 21505 Reno Technology Parkway West and its 2024 expansion application. GOED audit findings, application forecasts, county permit values, parcel assessments, a water-right allocation, operator-reported electricity use, and recipient-reported donation bands remain separate evidence states and scopes. Permit values are administrative amounts and are not summed because overlapping scopes cannot be ruled out. Assessment values are parcel stocks, not investment or tax receipts. The 125 acre-foot water right is regulatory capacity, not measured use. Food Bank gifts are company-region transfers, not campus-attributable annual spending. No campus total is allocated to the selected mapped building; the four-building campus, later buildout cases, downtown Reno warehouse, supporting renewable projects, fire-station parcel, and more-than-200-person support statement are not collapsed into one footprint. No Switch Citadel or Storey County amount enters this fragment. Vendor payments, worker residence, taxes received by jurisdiction, realized 2024 abatement, same-scope public-service cost, wastewater, and building-level electricity or water remain unobserved. prj_study_im3_building_00664938835: Second-pass public-evidence audit for Expedient's adaptive reuse of the pre-existing data-center building at 4777 W Ironwood Drive. The review searched Franklin planning, agenda, assessment, permit, water and sewer materials; Milwaukee County tax and deed-record access points; Wisconsin DOR, WEDC, DFI and PSC records; operator press, specification, career, ESG and community pages; lease, financing, carrier and vendor disclosures; and archived official pages for 2007-2026. Opening-day and current operator specifications remain separate dated snapshots because the reported area and capacity changed. The county portal now establishes a 2021-2025 parcel-tax principal series, but not Expedient's incidence under the lease. The 2022 ownership transfer, assessments, estimated permit values, tax payments and hiring plan remain non-additive. No source was found for actual construction outlays, realized site employment or payroll, local procurement, Milwaukee-area community transfers, metered resources, project-attributable public costs or a fiscal net. prj_study_im3_building_01073720208: Second-pass public-evidence audit for Google's Council Bluffs data-center activity, retaining the selected inventory building as the project key while leaving campus, taxpayer-account, company-county, and state-award facts at their reported scopes. The audit distinguishes completed IEDA contracts 08-HQJC-030 and 12-HQJP-051 from the 2022 award still in performance; permit valuations remain administrative amounts rather than expenditure; assessed and taxable values remain stocks; bills remain distinct from payments; and community grants remain recipient- and period-specific. The Pottawattamie County tax portal now supplies a paid 2018-2024 series for the principal Tetra parcel and an unpaid 2025 bill for the newer Questa parcel. No value is inferred for sales-tax exemptions, the local abatement schedule, franchise-fee adjustment, electricity, supplier retention, building-level water, marginal public-service cost, or net fiscal position. Models without defensible project allocation or transferable parameters were removed even though that leaves the eight-category account incomplete.",
   "evidence_version": "study-economic-evidence-1.37.0",
   "modeled_syntheses": [
-    {
-      "estimate_id": "est_study_microsoft_san_antonio_construction_eligible_spending",
-      "project_id": "prj_study_im3_building_00364289074",
-      "metric_code": "study.modeled_construction_eligible_spending",
-      "label": "Modeled construction-eligible share of reported cumulative property investment",
-      "category": "investment",
-      "unit": "USD",
-      "measure_type": "flow",
-      "basis": "modeled_synthesis",
-      "value": 420000000,
-      "period": {
-        "kind": "construction_period",
-        "start_date": "2007-01-18",
-        "end_date": "2013-11-21",
-        "label": "Original-project approval through the 2013 cumulative investment report"
-      },
-      "scope": {
-        "level": "campus",
-        "label": "Microsoft San Antonio campus represented by the cumulative 2013 property-investment floor",
-        "county_fips": "48029",
-        "inventory_allocation": "unallocated"
-      },
-      "interval": {
-        "kind": "sensitivity_envelope",
-        "low": 210000000,
-        "central": 420000000,
-        "high": 630000000,
-        "interpretation": "The greater-than-$840 million reported property-investment floor is multiplied by 25%, 50%, and 75% construction-cost shares. The range is a sensitivity over a capital floor, not a statistical interval or a bound on true construction spending."
-      },
-      "contribution_channel": "direct",
-      "aggregation": {
-        "aggregation_id": "microsoft_san_antonio_construction_eligible_spending",
-        "role": "standalone",
-        "overlap_policy": "do_not_sum_outside_declared_total"
-      },
-      "parameters": [
-        {
-          "name": "reported_property_investment_floor",
-          "value": 840000000,
-          "unit": "USD",
-          "provenance": {
-            "kind": "claim",
-            "reference_id": "clm_study_microsoft_san_antonio_investment_2013",
-            "detail": "City-reported greater-than cumulative real and personal property investment"
-          },
-          "transformation": "Multiplied by each construction-cost share"
-        },
-        {
-          "name": "low_construction_cost_share",
-          "value": 0.25,
-          "unit": "ratio",
-          "provenance": {
-            "kind": "assumption",
-            "detail": "Lower share of broad property investment treated as construction eligible"
-          },
-          "transformation": "Excludes equipment before any construction benchmark is applied"
-        },
-        {
-          "name": "central_construction_cost_share",
-          "value": 0.5,
-          "unit": "ratio",
-          "provenance": {
-            "kind": "assumption",
-            "detail": "Central share of broad property investment treated as construction eligible"
-          },
-          "transformation": "Excludes equipment before any construction benchmark is applied"
-        },
-        {
-          "name": "high_construction_cost_share",
-          "value": 0.75,
-          "unit": "ratio",
-          "provenance": {
-            "kind": "assumption",
-            "detail": "Upper share of broad property investment treated as construction eligible"
-          },
-          "transformation": "Excludes equipment before any construction benchmark is applied"
-        }
-      ],
-      "confidence": "low",
-      "confidence_rationale": "The public investment figure is a lower bound combining real and personal property, and no audited construction-versus-equipment allocation is public.",
-      "decision_relevance": "Defines the construction-only base before any construction multiplier is used.",
-      "evidence_search": {
-        "direct_observation_status": "partial",
-        "source_projection_status": "available_separately",
-        "remaining_evidence_gap": "Audited annual building construction, equipment, land, soft-cost, and refresh spending by phase"
-      },
-      "derivation": {
-        "method": "sensitivity_analysis",
-        "model_version": "microsoft-san-antonio-account-1.0.0",
-        "formula": "reported cumulative real-and-personal-property investment floor × construction-cost share",
-        "input_claim_ids": [
-          "clm_study_microsoft_san_antonio_investment_2013"
-        ],
-        "input_source_ids": [
-          "src_study_san_antonio_microsoft_2013"
-        ],
-        "assumptions": [
-          "Construction-eligible cost is 25%, 50%, or 75% of the broad property-investment floor.",
-          "The source's greater-than qualifier means the scenarios are calculated on a floor and do not upper-bound actual spending.",
-          "The estimate must not be presented as observed, audited, or source reported."
-        ]
-      },
-      "limitations": [
-        "Construction shares are assumptions.",
-        "The source combines real and personal property and does not isolate IT equipment.",
-        "The cumulative source is not an annual spending series or a single-building allocation."
-      ],
-      "presentation": "modeled_not_observed_or_audited",
-      "notes": "This scenario is the construction-eligible base used by the construction benchmark rows; it must not be added to the original investment claim as a separate benefit.",
-      "reviewed_on": "2026-09-05"
-    },
-    {
-      "estimate_id": "est_study_microsoft_san_antonio_local_construction_spending",
-      "project_id": "prj_study_im3_building_00364289074",
-      "metric_code": "study.modeled_local_construction_spending",
-      "label": "Modeled locally retained construction-eligible spending",
-      "category": "suppliers",
-      "unit": "USD",
-      "measure_type": "flow",
-      "basis": "modeled_synthesis",
-      "value": 168000000,
-      "period": {
-        "kind": "construction_period",
-        "start_date": "2007-01-18",
-        "end_date": "2013-11-21",
-        "label": "Original-project approval through the 2013 cumulative investment report"
-      },
-      "scope": {
-        "level": "company_county",
-        "label": "Modeled Bexar County construction purchasing associated with the Microsoft San Antonio property-investment floor",
-        "county_fips": "48029",
-        "inventory_allocation": "unallocated"
-      },
-      "interval": {
-        "kind": "sensitivity_envelope",
-        "low": 52500000,
-        "central": 168000000,
-        "high": 346500000,
-        "interpretation": "Low, central, and high combine 25%/50%/75% construction-cost shares with 25%/40%/55% local-purchase shares. This is an assumption envelope over a capital floor, not a confidence interval."
-      },
-      "contribution_channel": "direct",
-      "aggregation": {
-        "aggregation_id": "microsoft_san_antonio_local_construction_spending",
-        "role": "standalone",
-        "overlap_policy": "do_not_sum_outside_declared_total"
-      },
-      "parameters": [
-        {
-          "name": "reported_property_investment_floor",
-          "value": 840000000,
-          "unit": "USD",
-          "provenance": {
-            "kind": "claim",
-            "reference_id": "clm_study_microsoft_san_antonio_investment_2013",
-            "detail": "City-reported cumulative real and personal property investment floor"
-          },
-          "transformation": "Multiplied by paired construction and local-purchase shares"
-        },
-        {
-          "name": "low_construction_cost_share",
-          "value": 0.25,
-          "unit": "ratio",
-          "provenance": {
-            "kind": "assumption",
-            "detail": "Low construction-eligible share"
-          },
-          "transformation": "Paired with the low local-purchase share"
-        },
-        {
-          "name": "central_construction_cost_share",
-          "value": 0.5,
-          "unit": "ratio",
-          "provenance": {
-            "kind": "assumption",
-            "detail": "Central construction-eligible share"
-          },
-          "transformation": "Paired with the central local-purchase share"
-        },
-        {
-          "name": "high_construction_cost_share",
-          "value": 0.75,
-          "unit": "ratio",
-          "provenance": {
-            "kind": "assumption",
-            "detail": "High construction-eligible share"
-          },
-          "transformation": "Paired with the high local-purchase share"
-        },
-        {
-          "name": "low_local_purchase_share",
-          "value": 0.25,
-          "unit": "ratio",
-          "provenance": {
-            "kind": "assumption",
-            "detail": "Low Bexar County supplier-retention share"
-          },
-          "transformation": "Allocates low construction-eligible spending to local suppliers"
-        },
-        {
-          "name": "central_local_purchase_share",
-          "value": 0.4,
-          "unit": "ratio",
-          "provenance": {
-            "kind": "assumption",
-            "detail": "Central Bexar County supplier-retention share"
-          },
-          "transformation": "Allocates central construction-eligible spending to local suppliers"
-        },
-        {
-          "name": "high_local_purchase_share",
-          "value": 0.55,
-          "unit": "ratio",
-          "provenance": {
-            "kind": "assumption",
-            "detail": "High Bexar County supplier-retention share"
-          },
-          "transformation": "Allocates high construction-eligible spending to local suppliers"
-        }
-      ],
-      "confidence": "low",
-      "confidence_rationale": "The permit identifies one Texas contractor but discloses no payments or vendor geography, so both the construction and local-retention shares remain assumptions.",
-      "decision_relevance": "Bounds the local-supplier channel without treating all equipment or total capital as local construction purchasing.",
-      "evidence_search": {
-        "direct_observation_status": "partial",
-        "source_projection_status": "not_found",
-        "remaining_evidence_gap": "Audited contractor payments, vendor addresses, subcontractor tiers, and Bexar County retention by phase"
-      },
-      "derivation": {
-        "method": "sensitivity_analysis",
-        "model_version": "microsoft-san-antonio-account-1.0.0",
-        "formula": "reported property-investment floor × construction-cost share × Bexar County local-purchase share",
-        "input_claim_ids": [
-          "clm_study_microsoft_san_antonio_investment_2013",
-          "clm_study_microsoft_san_antonio_permitted_renovation_value_2018"
-        ],
-        "input_source_ids": [
-          "src_study_san_antonio_microsoft_2013",
-          "src_study_microsoft_san_antonio_permits_2018_05_12"
-        ],
-        "assumptions": [
-          "Construction-eligible shares are 25%, 50%, and 75%.",
-          "Local-purchase shares are 25%, 40%, and 55%.",
-          "The named 2018 contractor establishes a supplier role but not the modeled payment or retention shares.",
-          "The estimate must not be presented as observed, audited, or source reported."
-        ]
-      },
-      "limitations": [
-        "No vendor payment or residence data support the local shares.",
-        "The broad capital source includes equipment and is only a lower bound.",
-        "This direct purchasing scenario is not payroll, labor income, indirect output, or induced household activity."
-      ],
-      "presentation": "modeled_not_observed_or_audited",
-      "notes": "Low-confidence local-purchase sensitivity; the reported $2.771 million permit value is retained separately and is not added to this cumulative scenario.",
-      "reviewed_on": "2026-09-05"
-    },
-    {
-      "estimate_id": "est_study_microsoft_san_antonio_construction_job_years_total",
-      "project_id": "prj_study_im3_building_00364289074",
-      "metric_code": "study.modeled_construction_job_years_total",
-      "label": "Modeled Prince William benchmark-equivalent construction job-years",
-      "category": "construction",
-      "unit": "job_years",
-      "measure_type": "flow",
-      "basis": "modeled_synthesis",
-      "value": 3674.62,
-      "period": {
-        "kind": "construction_period",
-        "start_date": "2007-01-18",
-        "end_date": "2013-11-21",
-        "label": "Original-project approval through the 2013 cumulative investment report"
-      },
-      "scope": {
-        "level": "company_county",
-        "label": "Microsoft San Antonio construction contribution benchmark in Bexar County",
-        "county_fips": "48029",
-        "inventory_allocation": "unallocated"
-      },
-      "interval": {
-        "kind": "sensitivity_envelope",
-        "low": 1837.31,
-        "central": 3674.62,
-        "high": 5511.93,
-        "interpretation": "The capital floor is multiplied by 25%, 50%, and 75% construction-cost shares and 8.7491 total job-years per $1 million. It is a transferred-benchmark sensitivity, not a confidence interval."
-      },
-      "contribution_channel": "total",
-      "aggregation": {
-        "aggregation_id": "microsoft_san_antonio_construction_job_years_total",
-        "role": "standalone",
-        "overlap_policy": "do_not_sum_outside_declared_total"
-      },
-      "parameters": [
-        {
-          "name": "reported_property_investment_floor",
-          "value": 840000000,
-          "unit": "USD",
-          "provenance": {
-            "kind": "claim",
-            "reference_id": "clm_study_microsoft_san_antonio_investment_2013",
-            "detail": "Broad property-investment floor"
-          },
-          "transformation": "Multiplied by the construction-cost share before the benchmark coefficient"
-        },
-        {
-          "name": "low_construction_cost_share",
-          "value": 0.25,
-          "unit": "ratio",
-          "provenance": {
-            "kind": "assumption",
-            "detail": "Low construction-eligible share"
-          },
-          "transformation": "Excludes equipment from low scenario"
-        },
-        {
-          "name": "central_construction_cost_share",
-          "value": 0.5,
-          "unit": "ratio",
-          "provenance": {
-            "kind": "assumption",
-            "detail": "Central construction-eligible share"
-          },
-          "transformation": "Excludes equipment from central scenario"
-        },
-        {
-          "name": "high_construction_cost_share",
-          "value": 0.75,
-          "unit": "ratio",
-          "provenance": {
-            "kind": "assumption",
-            "detail": "High construction-eligible share"
-          },
-          "transformation": "Excludes equipment from high scenario"
-        },
-        {
-          "name": "total_job_years_per_million",
-          "value": 8.7491,
-          "unit": "job_years_per_million_USD",
-          "provenance": {
-            "kind": "source",
-            "reference_id": "src_study_pwc_data_center_market_2021",
-            "detail": "Prince William construction contribution coefficient excluding IT equipment"
-          },
-          "transformation": "Multiplies construction-eligible capital in millions"
-        }
-      ],
-      "confidence": "low",
-      "confidence_rationale": "The calculation transfers a Virginia IMPLAN coefficient and relies on an assumed construction share of a broad investment floor.",
-      "decision_relevance": "Supplies a construction job-year range while keeping job-years distinct from peak workers and permanent jobs.",
-      "evidence_search": {
-        "direct_observation_status": "not_found",
-        "source_projection_status": "not_found",
-        "remaining_evidence_gap": "Annual worker hours, job-years, peak headcount, payroll, occupation, and worker residence"
-      },
-      "derivation": {
-        "method": "input_output_multiplier",
-        "model_version": "microsoft-san-antonio-account-1.0.0",
-        "formula": "reported property-investment floor × construction-cost share × 8.7491 total job-years per $1 million",
-        "input_claim_ids": [
-          "clm_study_microsoft_san_antonio_investment_2013"
-        ],
-        "input_source_ids": [
-          "src_study_san_antonio_microsoft_2013",
-          "src_study_pwc_data_center_market_2021"
-        ],
-        "assumptions": [
-          "Construction-eligible shares are 25%, 50%, and 75%.",
-          "The Prince William coefficient transfers to Bexar County as a benchmark equivalent.",
-          "The source capital floor is not an observed construction-only total."
-        ]
-      },
-      "multiplier_provenance": {
-        "source_id": "src_study_pwc_data_center_market_2021",
-        "model_name": "IMPLAN county contribution model reported by BAE",
-        "model_version": "Prince William County prototype-data-center study, 2021-dollar tables 7-8",
-        "geography": "Prince William County, Virginia benchmark transferred to Bexar County, Texas",
-        "vintage": "IMPLAN model reported December 2021; underlying IMPLAN data vintage not disclosed",
-        "local_purchase_assumption": "The coefficient is applied only after an explicit construction-eligible share; it does not establish observed local purchasing in Bexar County.",
-        "channel_separation": "direct_indirect_induced_reported_separately"
-      },
-      "limitations": [
-        "Transferred Virginia benchmark, not a Bexar County input-output model.",
-        "Construction shares are assumed and the source capital is a lower bound.",
-        "Job-years are not peak workers, annual average employment, or permanent jobs."
-      ],
-      "presentation": "modeled_not_observed_or_audited",
-      "notes": "Total direct, indirect, and induced benchmark equivalent; no component rows are published, so this row must not be combined with other construction employment estimates.",
-      "reviewed_on": "2026-09-05"
-    },
-    {
-      "estimate_id": "est_study_microsoft_san_antonio_construction_labor_income_total",
-      "project_id": "prj_study_im3_building_00364289074",
-      "metric_code": "study.modeled_construction_labor_income_total",
-      "label": "Modeled Prince William benchmark-equivalent construction labor income",
-      "category": "construction",
-      "unit": "USD",
-      "measure_type": "flow",
-      "basis": "modeled_synthesis",
-      "value": 222383127.29,
-      "period": {
-        "kind": "construction_period",
-        "start_date": "2007-01-18",
-        "end_date": "2013-11-21",
-        "label": "Original-project approval through the 2013 cumulative investment report"
-      },
-      "scope": {
-        "level": "company_county",
-        "label": "Microsoft San Antonio construction contribution benchmark in Bexar County",
-        "county_fips": "48029",
-        "inventory_allocation": "unallocated"
-      },
-      "interval": {
-        "kind": "sensitivity_envelope",
-        "low": 111191563.64,
-        "central": 222383127.29,
-        "high": 333574690.93,
-        "interpretation": "The capital floor is multiplied by 25%, 50%, and 75% construction-cost shares and the 0.5294836364 total labor-income coefficient. This is a transferred-benchmark sensitivity, not a confidence interval."
-      },
-      "contribution_channel": "total",
-      "aggregation": {
-        "aggregation_id": "microsoft_san_antonio_construction_labor_income_total",
-        "role": "standalone",
-        "overlap_policy": "do_not_sum_outside_declared_total"
-      },
-      "parameters": [
-        {
-          "name": "reported_property_investment_floor",
-          "value": 840000000,
-          "unit": "USD",
-          "provenance": {
-            "kind": "claim",
-            "reference_id": "clm_study_microsoft_san_antonio_investment_2013",
-            "detail": "Broad property-investment floor"
-          },
-          "transformation": "Multiplied by the construction-cost share before the benchmark coefficient"
-        },
-        {
-          "name": "low_construction_cost_share",
-          "value": 0.25,
-          "unit": "ratio",
-          "provenance": {
-            "kind": "assumption",
-            "detail": "Low construction-eligible share"
-          },
-          "transformation": "Excludes equipment from low scenario"
-        },
-        {
-          "name": "central_construction_cost_share",
-          "value": 0.5,
-          "unit": "ratio",
-          "provenance": {
-            "kind": "assumption",
-            "detail": "Central construction-eligible share"
-          },
-          "transformation": "Excludes equipment from central scenario"
-        },
-        {
-          "name": "high_construction_cost_share",
-          "value": 0.75,
-          "unit": "ratio",
-          "provenance": {
-            "kind": "assumption",
-            "detail": "High construction-eligible share"
-          },
-          "transformation": "Excludes equipment from high scenario"
-        },
-        {
-          "name": "total_labor_income_rate",
-          "value": 0.5294836364,
-          "unit": "ratio",
-          "provenance": {
-            "kind": "source",
-            "reference_id": "src_study_pwc_data_center_market_2021",
-            "detail": "Prince William construction labor-income coefficient for construction cost excluding IT equipment"
-          },
-          "transformation": "Multiplies construction-eligible dollars"
-        }
-      ],
-      "confidence": "low",
-      "confidence_rationale": "The calculation transfers a Virginia IMPLAN coefficient and relies on an assumed construction share of a broad investment floor.",
-      "decision_relevance": "Supplies a construction labor-income range while keeping labor income separate from spending and output.",
-      "evidence_search": {
-        "direct_observation_status": "not_found",
-        "source_projection_status": "not_found",
-        "remaining_evidence_gap": "Audited project payroll, benefits, worker residence, and annual labor income"
-      },
-      "derivation": {
-        "method": "input_output_multiplier",
-        "model_version": "microsoft-san-antonio-account-1.0.0",
-        "formula": "reported property-investment floor × construction-cost share × 0.5294836364 total labor-income coefficient",
-        "input_claim_ids": [
-          "clm_study_microsoft_san_antonio_investment_2013"
-        ],
-        "input_source_ids": [
-          "src_study_san_antonio_microsoft_2013",
-          "src_study_pwc_data_center_market_2021"
-        ],
-        "assumptions": [
-          "Construction-eligible shares are 25%, 50%, and 75%.",
-          "The Prince William coefficient transfers to Bexar County as a benchmark equivalent.",
-          "Labor income is not added to spending, output, or payroll proxies."
-        ]
-      },
-      "multiplier_provenance": {
-        "source_id": "src_study_pwc_data_center_market_2021",
-        "model_name": "IMPLAN county contribution model reported by BAE",
-        "model_version": "Prince William County prototype-data-center study, 2021-dollar tables 7-8",
-        "geography": "Prince William County, Virginia benchmark transferred to Bexar County, Texas",
-        "vintage": "IMPLAN model reported December 2021; underlying IMPLAN data vintage not disclosed",
-        "local_purchase_assumption": "The coefficient is applied only after an explicit construction-eligible share; it does not establish observed local purchasing in Bexar County.",
-        "channel_separation": "direct_indirect_induced_reported_separately"
-      },
-      "limitations": [
-        "Transferred Virginia benchmark, not a Bexar County input-output model.",
-        "Construction shares are assumed and the source capital is a lower bound.",
-        "Labor income is not an observed payroll total and is not additive to output."
-      ],
-      "presentation": "modeled_not_observed_or_audited",
-      "notes": "Total direct, indirect, and induced benchmark equivalent, not observed project payroll.",
-      "reviewed_on": "2026-09-05"
-    },
-    {
-      "estimate_id": "est_study_microsoft_san_antonio_operating_fte_total",
-      "project_id": "prj_study_im3_building_00364289074",
-      "metric_code": "study.modeled_operating_fte_total",
-      "label": "Modeled total annual operating FTE benchmark",
-      "category": "operations",
-      "unit": "FTE",
-      "measure_type": "stock",
-      "basis": "modeled_synthesis",
-      "value": 555.54,
-      "period": {
-        "kind": "calendar_year",
-        "year": 2024,
-        "label": "Annual operating contribution sensitivity using the latest county-panel year"
-      },
-      "scope": {
-        "level": "company_county",
-        "label": "Microsoft San Antonio operating contribution benchmark in Bexar County",
-        "county_fips": "48029",
-        "inventory_allocation": "unallocated"
-      },
-      "interval": {
-        "kind": "sensitivity_envelope",
-        "low": 490.19,
-        "central": 555.54,
-        "high": 620.9,
-        "interpretation": "Direct-FTE scenarios of 75, 85, and 95 are multiplied by 6.5358 total FTE per direct FTE. The cases combine a reported employment floor with zero, half, or all of a separate forecast and are not a statistical interval."
-      },
-      "contribution_channel": "total",
-      "aggregation": {
-        "aggregation_id": "microsoft_san_antonio_operating_fte_total",
-        "role": "standalone",
-        "overlap_policy": "do_not_sum_outside_declared_total"
-      },
-      "parameters": [
-        {
-          "name": "low_direct_fte",
-          "value": 75,
-          "unit": "FTE",
-          "provenance": {
-            "kind": "claim",
-            "reference_id": "clm_study_microsoft_san_antonio_operating_employee_floor_2013",
-            "detail": "Conservative floor based on the surpassed 75-job requirement"
-          },
-          "transformation": "Multiplied by the total-FTE coefficient"
-        },
-        {
-          "name": "central_direct_fte",
-          "value": 85,
-          "unit": "FTE",
-          "provenance": {
-            "kind": "assumption",
-            "detail": "Employment floor plus half of the separate 20-job expansion forecast"
-          },
-          "transformation": "Multiplied by the total-FTE coefficient"
-        },
-        {
-          "name": "high_direct_fte",
-          "value": 95,
-          "unit": "FTE",
-          "provenance": {
-            "kind": "assumption",
-            "detail": "Employment floor plus all of the separate 20-job expansion forecast"
-          },
-          "transformation": "Multiplied by the total-FTE coefficient"
-        },
-        {
-          "name": "expansion_job_forecast",
-          "value": 20,
-          "unit": "jobs",
-          "provenance": {
-            "kind": "claim",
-            "reference_id": "clm_study_microsoft_san_antonio_expansion_jobs",
-            "detail": "Separate 2013 source projection, not verified fulfillment"
-          },
-          "transformation": "Applied at zero, 50%, and 100% only to define sensitivity cases"
-        },
-        {
-          "name": "total_fte_per_direct_fte",
-          "value": 6.5358,
-          "unit": "ratio",
-          "provenance": {
-            "kind": "source",
-            "reference_id": "src_study_pwc_data_center_market_2021",
-            "detail": "Prince William operating contribution coefficient"
-          },
-          "transformation": "Multiplies each direct-FTE scenario"
-        }
-      ],
-      "confidence": "low",
-      "confidence_rationale": "The direct employment input is a 2013 lower bound plus a sensitivity over an unverified forecast, and the contribution coefficient transfers from Virginia.",
-      "decision_relevance": "Bounds total direct, indirect, and induced operating employment while preserving the reported and forecast evidence states.",
-      "evidence_search": {
-        "direct_observation_status": "partial",
-        "source_projection_status": "available_separately",
-        "remaining_evidence_gap": "Current direct and contractor FTE by employer, work location, year, compensation, and residence"
-      },
-      "derivation": {
-        "method": "input_output_multiplier",
-        "model_version": "microsoft-san-antonio-account-1.0.0",
-        "formula": "direct-FTE scenario × 6.5358 total FTE per direct FTE",
-        "input_claim_ids": [
-          "clm_study_microsoft_san_antonio_operating_employee_floor_2013",
-          "clm_study_microsoft_san_antonio_expansion_jobs"
-        ],
-        "input_source_ids": [
-          "src_study_san_antonio_microsoft_2013",
-          "src_study_pwc_data_center_market_2021"
-        ],
-        "assumptions": [
-          "Low applies no realization of the 20-job expansion forecast; central applies half; high applies all.",
-          "The 2013 reported lower bound is held constant as a scenario base and is not represented as a 2024 observation.",
-          "The Prince William coefficient transfers to Bexar County as a benchmark equivalent."
-        ]
-      },
-      "multiplier_provenance": {
-        "source_id": "src_study_pwc_data_center_market_2021",
-        "model_name": "IMPLAN county contribution model reported by BAE",
-        "model_version": "Prince William County prototype-data-center study, 2021-dollar tables 7-8",
-        "geography": "Prince William County, Virginia benchmark transferred to Bexar County, Texas",
-        "vintage": "IMPLAN model reported December 2021; underlying IMPLAN data vintage not disclosed",
-        "local_purchase_assumption": "No current Bexar purchasing is treated as observed; the source coefficient is transferred as a benchmark only.",
-        "channel_separation": "direct_indirect_induced_reported_separately"
-      },
-      "limitations": [
-        "Transferred Virginia coefficient.",
-        "The base employee evidence is from 2013 and is only a lower bound.",
-        "The separate 20-job expansion forecast is not verified as realized.",
-        "The total cannot be added to direct employment or other contribution totals."
-      ],
-      "presentation": "modeled_not_observed_or_audited",
-      "notes": "Annual contribution sensitivity, not current headcount or a causal employment effect.",
-      "reviewed_on": "2026-09-05"
-    },
-    {
-      "estimate_id": "est_study_microsoft_san_antonio_operating_labor_income_total",
-      "project_id": "prj_study_im3_building_00364289074",
-      "metric_code": "study.modeled_operating_labor_income_total",
-      "label": "Modeled total annual operating labor income",
-      "category": "operations",
-      "unit": "USD_per_year",
-      "measure_type": "flow",
-      "basis": "modeled_synthesis",
-      "value": 35827500,
-      "period": {
-        "kind": "calendar_year",
-        "year": 2024,
-        "label": "Annual operating contribution sensitivity using the latest county-panel year"
-      },
-      "scope": {
-        "level": "company_county",
-        "label": "Microsoft San Antonio operating contribution benchmark in Bexar County",
-        "county_fips": "48029",
-        "inventory_allocation": "unallocated"
-      },
-      "interval": {
-        "kind": "sensitivity_envelope",
-        "low": 31612500,
-        "central": 35827500,
-        "high": 40042500,
-        "interpretation": "Direct-FTE scenarios of 75, 85, and 95 are multiplied by $421,500 total labor income per direct FTE. This is a transferred-benchmark sensitivity, not a confidence interval."
-      },
-      "contribution_channel": "total",
-      "aggregation": {
-        "aggregation_id": "microsoft_san_antonio_operating_labor_income_total",
-        "role": "standalone",
-        "overlap_policy": "do_not_sum_outside_declared_total"
-      },
-      "parameters": [
-        {
-          "name": "low_direct_fte",
-          "value": 75,
-          "unit": "FTE",
-          "provenance": {
-            "kind": "claim",
-            "reference_id": "clm_study_microsoft_san_antonio_operating_employee_floor_2013",
-            "detail": "Conservative floor based on the surpassed 75-job requirement"
-          },
-          "transformation": "Multiplied by the labor-income coefficient"
-        },
-        {
-          "name": "central_direct_fte",
-          "value": 85,
-          "unit": "FTE",
-          "provenance": {
-            "kind": "assumption",
-            "detail": "Employment floor plus half of the separate 20-job expansion forecast"
-          },
-          "transformation": "Multiplied by the labor-income coefficient"
-        },
-        {
-          "name": "high_direct_fte",
-          "value": 95,
-          "unit": "FTE",
-          "provenance": {
-            "kind": "assumption",
-            "detail": "Employment floor plus all of the separate 20-job expansion forecast"
-          },
-          "transformation": "Multiplied by the labor-income coefficient"
-        },
-        {
-          "name": "expansion_job_forecast",
-          "value": 20,
-          "unit": "jobs",
-          "provenance": {
-            "kind": "claim",
-            "reference_id": "clm_study_microsoft_san_antonio_expansion_jobs",
-            "detail": "Separate 2013 source projection, not verified fulfillment"
-          },
-          "transformation": "Applied at zero, 50%, and 100% only to define sensitivity cases"
-        },
-        {
-          "name": "total_labor_income_per_direct_fte",
-          "value": 421500,
-          "unit": "USD_per_FTE",
-          "provenance": {
-            "kind": "source",
-            "reference_id": "src_study_pwc_data_center_market_2021",
-            "detail": "Prince William operating contribution coefficient"
-          },
-          "transformation": "Multiplies each direct-FTE scenario"
-        }
-      ],
-      "confidence": "low",
-      "confidence_rationale": "The employment cases are not current observations and the compensation coefficient transfers from Virginia.",
-      "decision_relevance": "Bounds operating labor income without relabeling source job commitments as payroll.",
-      "evidence_search": {
-        "direct_observation_status": "not_found",
-        "source_projection_status": "available_separately",
-        "remaining_evidence_gap": "Annual direct payroll, contractor compensation, benefits, occupations, and residence"
-      },
-      "derivation": {
-        "method": "input_output_multiplier",
-        "model_version": "microsoft-san-antonio-account-1.0.0",
-        "formula": "direct-FTE scenario × $421,500 total labor income per direct FTE",
-        "input_claim_ids": [
-          "clm_study_microsoft_san_antonio_operating_employee_floor_2013",
-          "clm_study_microsoft_san_antonio_expansion_jobs"
-        ],
-        "input_source_ids": [
-          "src_study_san_antonio_microsoft_2013",
-          "src_study_pwc_data_center_market_2021"
-        ],
-        "assumptions": [
-          "Low, central, and high use zero, half, and all of the 20-job forecast above the 75-job floor.",
-          "The Prince William coefficient transfers to Bexar County as a benchmark equivalent.",
-          "Labor income is not added to output or payroll proxies."
-        ]
-      },
-      "multiplier_provenance": {
-        "source_id": "src_study_pwc_data_center_market_2021",
-        "model_name": "IMPLAN county contribution model reported by BAE",
-        "model_version": "Prince William County prototype-data-center study, 2021-dollar tables 7-8",
-        "geography": "Prince William County, Virginia benchmark transferred to Bexar County, Texas",
-        "vintage": "IMPLAN model reported December 2021; underlying IMPLAN data vintage not disclosed",
-        "local_purchase_assumption": "No current Bexar purchasing is treated as observed; the source coefficient is transferred as a benchmark only.",
-        "channel_separation": "direct_indirect_induced_reported_separately"
-      },
-      "limitations": [
-        "Transferred Virginia coefficient.",
-        "Employee evidence is a 2013 lower bound and the expansion forecast is unverified.",
-        "Labor income is not observed Microsoft payroll and is not additive to supplier or household output."
-      ],
-      "presentation": "modeled_not_observed_or_audited",
-      "notes": "Annual contribution sensitivity, not observed payroll.",
-      "reviewed_on": "2026-09-05"
-    },
-    {
-      "estimate_id": "est_study_microsoft_san_antonio_operating_supplier_output",
-      "project_id": "prj_study_im3_building_00364289074",
-      "metric_code": "study.modeled_operating_supplier_output",
-      "label": "Modeled annual operating supplier output",
-      "category": "suppliers",
-      "unit": "USD_per_year",
-      "measure_type": "flow",
-      "basis": "modeled_synthesis",
-      "value": 54384821.55,
-      "period": {
-        "kind": "calendar_year",
-        "year": 2024,
-        "label": "Annual indirect supplier-output sensitivity using the latest county-panel year"
-      },
-      "scope": {
-        "level": "company_county",
-        "label": "Microsoft San Antonio supplier contribution benchmark in Bexar County",
-        "county_fips": "48029",
-        "inventory_allocation": "unallocated"
-      },
-      "interval": {
-        "kind": "sensitivity_envelope",
-        "low": 47986607.25,
-        "central": 54384821.55,
-        "high": 60783035.85,
-        "interpretation": "Direct-FTE scenarios of 75, 85, and 95 are multiplied by $639,821.43 indirect output per direct FTE. This is a transferred-benchmark sensitivity, not a confidence interval."
-      },
-      "contribution_channel": "indirect",
-      "aggregation": {
-        "aggregation_id": "microsoft_san_antonio_operating_supplier_output",
-        "role": "standalone",
-        "overlap_policy": "do_not_sum_outside_declared_total"
-      },
-      "parameters": [
-        {
-          "name": "low_direct_fte",
-          "value": 75,
-          "unit": "FTE",
-          "provenance": {
-            "kind": "claim",
-            "reference_id": "clm_study_microsoft_san_antonio_operating_employee_floor_2013",
-            "detail": "Conservative floor based on the surpassed 75-job requirement"
-          },
-          "transformation": "Multiplied by the supplier-output coefficient"
-        },
-        {
-          "name": "central_direct_fte",
-          "value": 85,
-          "unit": "FTE",
-          "provenance": {
-            "kind": "assumption",
-            "detail": "Employment floor plus half of the separate 20-job expansion forecast"
-          },
-          "transformation": "Multiplied by the supplier-output coefficient"
-        },
-        {
-          "name": "high_direct_fte",
-          "value": 95,
-          "unit": "FTE",
-          "provenance": {
-            "kind": "assumption",
-            "detail": "Employment floor plus all of the separate 20-job expansion forecast"
-          },
-          "transformation": "Multiplied by the supplier-output coefficient"
-        },
-        {
-          "name": "expansion_job_forecast",
-          "value": 20,
-          "unit": "jobs",
-          "provenance": {
-            "kind": "claim",
-            "reference_id": "clm_study_microsoft_san_antonio_expansion_jobs",
-            "detail": "Separate 2013 source projection, not verified fulfillment"
-          },
-          "transformation": "Applied at zero, 50%, and 100% only to define sensitivity cases"
-        },
-        {
-          "name": "supplier_output_per_direct_fte",
-          "value": 639821.43,
-          "unit": "USD_per_FTE",
-          "provenance": {
-            "kind": "source",
-            "reference_id": "src_study_pwc_data_center_market_2021",
-            "detail": "Prince William indirect operating-output coefficient"
-          },
-          "transformation": "Multiplies each direct-FTE scenario"
-        }
-      ],
-      "confidence": "low",
-      "confidence_rationale": "No observed supplier purchases or vendor geography are public, and the coefficient transfers from Virginia.",
-      "decision_relevance": "Completes the operating supplier channel while keeping economic output distinct from vendor payments.",
-      "evidence_search": {
-        "direct_observation_status": "not_found",
-        "source_projection_status": "not_found",
-        "remaining_evidence_gap": "Annual supplier purchases, vendor geography, industries, contract labor, and local retention"
-      },
-      "derivation": {
-        "method": "input_output_multiplier",
-        "model_version": "microsoft-san-antonio-account-1.0.0",
-        "formula": "direct-FTE scenario × $639,821.43 indirect supplier output per direct FTE",
-        "input_claim_ids": [
-          "clm_study_microsoft_san_antonio_operating_employee_floor_2013",
-          "clm_study_microsoft_san_antonio_expansion_jobs"
-        ],
-        "input_source_ids": [
-          "src_study_san_antonio_microsoft_2013",
-          "src_study_pwc_data_center_market_2021"
-        ],
-        "assumptions": [
-          "Low, central, and high use zero, half, and all of the 20-job forecast above the 75-job floor.",
-          "The Prince William coefficient transfers to Bexar County as a benchmark equivalent.",
-          "Output is not treated as observed payments or as local-only purchasing."
-        ]
-      },
-      "multiplier_provenance": {
-        "source_id": "src_study_pwc_data_center_market_2021",
-        "model_name": "IMPLAN county contribution model reported by BAE",
-        "model_version": "Prince William County prototype-data-center study, 2021-dollar tables 7-8",
-        "geography": "Prince William County, Virginia benchmark transferred to Bexar County, Texas",
-        "vintage": "IMPLAN model reported December 2021; underlying IMPLAN data vintage not disclosed",
-        "local_purchase_assumption": "No current Bexar purchasing is treated as observed; the source coefficient is transferred as a benchmark only.",
-        "channel_separation": "direct_indirect_induced_reported_separately"
-      },
-      "limitations": [
-        "Transferred Virginia coefficient.",
-        "Employee evidence is a 2013 lower bound and the expansion forecast is unverified.",
-        "Output is not vendor payments, local-only purchasing, payroll, or tax revenue."
-      ],
-      "presentation": "modeled_not_observed_or_audited",
-      "notes": "Indirect output scenario; do not add it to direct purchasing or total operating contribution rows.",
-      "reviewed_on": "2026-09-05"
-    },
-    {
-      "estimate_id": "est_study_microsoft_san_antonio_induced_household_output",
-      "project_id": "prj_study_im3_building_00364289074",
-      "metric_code": "study.modeled_induced_household_output",
-      "label": "Modeled annual induced household output",
-      "category": "community",
-      "unit": "USD_per_year",
-      "measure_type": "flow",
-      "basis": "modeled_synthesis",
-      "value": 10023928.45,
-      "period": {
-        "kind": "calendar_year",
-        "year": 2024,
-        "label": "Annual induced household-output sensitivity using the latest county-panel year"
-      },
-      "scope": {
-        "level": "company_county",
-        "label": "Microsoft San Antonio household contribution benchmark in Bexar County",
-        "county_fips": "48029",
-        "inventory_allocation": "unallocated"
-      },
-      "interval": {
-        "kind": "sensitivity_envelope",
-        "low": 8844642.75,
-        "central": 10023928.45,
-        "high": 11203214.15,
-        "interpretation": "Direct-FTE scenarios of 75, 85, and 95 are multiplied by $117,928.57 induced output per direct FTE. This is a transferred-benchmark sensitivity, not a confidence interval."
-      },
-      "contribution_channel": "induced",
-      "aggregation": {
-        "aggregation_id": "microsoft_san_antonio_induced_household_output",
-        "role": "standalone",
-        "overlap_policy": "do_not_sum_outside_declared_total"
-      },
-      "parameters": [
-        {
-          "name": "low_direct_fte",
-          "value": 75,
-          "unit": "FTE",
-          "provenance": {
-            "kind": "claim",
-            "reference_id": "clm_study_microsoft_san_antonio_operating_employee_floor_2013",
-            "detail": "Conservative floor based on the surpassed 75-job requirement"
-          },
-          "transformation": "Multiplied by the household-output coefficient"
-        },
-        {
-          "name": "central_direct_fte",
-          "value": 85,
-          "unit": "FTE",
-          "provenance": {
-            "kind": "assumption",
-            "detail": "Employment floor plus half of the separate 20-job expansion forecast"
-          },
-          "transformation": "Multiplied by the household-output coefficient"
-        },
-        {
-          "name": "high_direct_fte",
-          "value": 95,
-          "unit": "FTE",
-          "provenance": {
-            "kind": "assumption",
-            "detail": "Employment floor plus all of the separate 20-job expansion forecast"
-          },
-          "transformation": "Multiplied by the household-output coefficient"
-        },
-        {
-          "name": "expansion_job_forecast",
-          "value": 20,
-          "unit": "jobs",
-          "provenance": {
-            "kind": "claim",
-            "reference_id": "clm_study_microsoft_san_antonio_expansion_jobs",
-            "detail": "Separate 2013 source projection, not verified fulfillment"
-          },
-          "transformation": "Applied at zero, 50%, and 100% only to define sensitivity cases"
-        },
-        {
-          "name": "household_output_per_direct_fte",
-          "value": 117928.57,
-          "unit": "USD_per_FTE",
-          "provenance": {
-            "kind": "source",
-            "reference_id": "src_study_pwc_data_center_market_2021",
-            "detail": "Prince William induced operating-output coefficient"
-          },
-          "transformation": "Multiplies each direct-FTE scenario"
-        }
-      ],
-      "confidence": "low",
-      "confidence_rationale": "No observed household spending or worker residence is public, and the coefficient transfers from Virginia.",
-      "decision_relevance": "Completes the household-spending contribution channel separately from direct community transfers.",
-      "evidence_search": {
-        "direct_observation_status": "not_found",
-        "source_projection_status": "not_found",
-        "remaining_evidence_gap": "Employee and contractor residence, take-home compensation, and observed household spending"
-      },
-      "derivation": {
-        "method": "input_output_multiplier",
-        "model_version": "microsoft-san-antonio-account-1.0.0",
-        "formula": "direct-FTE scenario × $117,928.57 induced household output per direct FTE",
-        "input_claim_ids": [
-          "clm_study_microsoft_san_antonio_operating_employee_floor_2013",
-          "clm_study_microsoft_san_antonio_expansion_jobs"
-        ],
-        "input_source_ids": [
-          "src_study_san_antonio_microsoft_2013",
-          "src_study_pwc_data_center_market_2021"
-        ],
-        "assumptions": [
-          "Low, central, and high use zero, half, and all of the 20-job forecast above the 75-job floor.",
-          "The Prince William coefficient transfers to Bexar County as a benchmark equivalent.",
-          "Induced output is not treated as a charitable contribution, household income, or retail receipts."
-        ]
-      },
-      "multiplier_provenance": {
-        "source_id": "src_study_pwc_data_center_market_2021",
-        "model_name": "IMPLAN county contribution model reported by BAE",
-        "model_version": "Prince William County prototype-data-center study, 2021-dollar tables 7-8",
-        "geography": "Prince William County, Virginia benchmark transferred to Bexar County, Texas",
-        "vintage": "IMPLAN model reported December 2021; underlying IMPLAN data vintage not disclosed",
-        "local_purchase_assumption": "No current Bexar purchasing is treated as observed; the source coefficient is transferred as a benchmark only.",
-        "channel_separation": "direct_indirect_induced_reported_separately"
-      },
-      "limitations": [
-        "Transferred Virginia coefficient.",
-        "Employee evidence is a 2013 lower bound and the expansion forecast is unverified.",
-        "Economic output is not direct community funding, household income, or tax revenue."
-      ],
-      "presentation": "modeled_not_observed_or_audited",
-      "notes": "Induced household-output scenario, kept separate from the reported Northwest Vista College donation.",
-      "reviewed_on": "2026-09-05"
-    },
     {
       "estimate_id": "est_study_microsoft_san_antonio_gdp_comparison_gap",
       "project_id": "prj_study_im3_building_00364289074",
@@ -1736,6 +1054,17 @@
         "overlap_policy": "do_not_sum_outside_declared_total"
       },
       "parameters": [
+        {
+          "name": "operating_by_year_anchor",
+          "value": 2013,
+          "unit": "year",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_microsoft_san_antonio_operating_employee_floor_2013",
+            "detail": "City evidence shows the original-project job requirement had been surpassed in 2013"
+          },
+          "transformation": "Defines 2005-2012 as the pre-anchor fit period; it is not assumed to be first county exposure"
+        },
         {
           "name": "host_2024_value",
           "value": 127563908000,
@@ -1779,16 +1108,19 @@
       },
       "derivation": {
         "method": "benchmark_application",
-        "model_version": "microsoft-san-antonio-account-1.0.0",
+        "model_version": "microsoft-san-antonio-account-1.1.0",
         "formula": "100 × (host 2024 outcome − inverse-distance-weighted 20-county benchmark) ÷ benchmark",
-        "input_claim_ids": [],
+        "input_claim_ids": [
+          "clm_study_microsoft_san_antonio_operating_employee_floor_2013"
+        ],
         "input_source_ids": [
+          "src_study_san_antonio_microsoft_2013",
           "src_study_county_economic_core_2001_2024"
         ],
         "assumptions": [
           "Matching uses 2005-2012 log level, average log growth, and growth volatility.",
           "Study counties are excluded from the donor pool.",
-          "The operating-by year is not assumed to be first county exposure or an isolated treatment date."
+          "The 2013 operating-by anchor is not assumed to be first county exposure or an isolated treatment date."
         ]
       },
       "limitations": [
@@ -1798,8 +1130,8 @@
         "The interval is a fit sensitivity, not a statistical confidence interval."
       ],
       "presentation": "modeled_not_observed_or_audited",
-      "notes": "Low-confidence descriptive county comparison; no causal attribution is made.",
-      "reviewed_on": "2026-09-05"
+      "notes": "Low-confidence descriptive county comparison retained as a bounded residual module; no causal attribution is made.",
+      "reviewed_on": "2026-09-06"
     },
     {
       "estimate_id": "est_study_microsoft_san_antonio_employment_comparison_gap",
@@ -1836,6 +1168,17 @@
         "overlap_policy": "do_not_sum_outside_declared_total"
       },
       "parameters": [
+        {
+          "name": "operating_by_year_anchor",
+          "value": 2013,
+          "unit": "year",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_microsoft_san_antonio_operating_employee_floor_2013",
+            "detail": "City evidence shows the original-project job requirement had been surpassed in 2013"
+          },
+          "transformation": "Defines 2005-2012 as the pre-anchor fit period; it is not assumed to be first county exposure"
+        },
         {
           "name": "host_2024_value",
           "value": 932387,
@@ -1879,16 +1222,19 @@
       },
       "derivation": {
         "method": "benchmark_application",
-        "model_version": "microsoft-san-antonio-account-1.0.0",
+        "model_version": "microsoft-san-antonio-account-1.1.0",
         "formula": "100 × (host 2024 outcome − inverse-distance-weighted 20-county benchmark) ÷ benchmark",
-        "input_claim_ids": [],
+        "input_claim_ids": [
+          "clm_study_microsoft_san_antonio_operating_employee_floor_2013"
+        ],
         "input_source_ids": [
+          "src_study_san_antonio_microsoft_2013",
           "src_study_county_economic_core_2001_2024"
         ],
         "assumptions": [
           "Matching uses 2005-2012 log level, average log growth, and growth volatility.",
           "Study counties are excluded from the donor pool.",
-          "The operating-by year is not assumed to be first county exposure or an isolated treatment date."
+          "The 2013 operating-by anchor is not assumed to be first county exposure or an isolated treatment date."
         ]
       },
       "limitations": [
@@ -1898,8 +1244,8 @@
         "The interval is a fit sensitivity, not a statistical confidence interval."
       ],
       "presentation": "modeled_not_observed_or_audited",
-      "notes": "Low-confidence descriptive county comparison; no causal attribution is made.",
-      "reviewed_on": "2026-09-05"
+      "notes": "Low-confidence descriptive county comparison retained as a bounded residual module; no causal attribution is made.",
+      "reviewed_on": "2026-09-06"
     },
     {
       "estimate_id": "est_study_microsoft_san_antonio_wage_comparison_gap",
@@ -1936,6 +1282,17 @@
         "overlap_policy": "do_not_sum_outside_declared_total"
       },
       "parameters": [
+        {
+          "name": "operating_by_year_anchor",
+          "value": 2013,
+          "unit": "year",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_microsoft_san_antonio_operating_employee_floor_2013",
+            "detail": "City evidence shows the original-project job requirement had been surpassed in 2013"
+          },
+          "transformation": "Defines 2005-2012 as the pre-anchor fit period; it is not assumed to be first county exposure"
+        },
         {
           "name": "host_2024_value",
           "value": 1267,
@@ -1979,16 +1336,19 @@
       },
       "derivation": {
         "method": "benchmark_application",
-        "model_version": "microsoft-san-antonio-account-1.0.0",
+        "model_version": "microsoft-san-antonio-account-1.1.0",
         "formula": "100 × (host 2024 outcome − inverse-distance-weighted 20-county benchmark) ÷ benchmark",
-        "input_claim_ids": [],
+        "input_claim_ids": [
+          "clm_study_microsoft_san_antonio_operating_employee_floor_2013"
+        ],
         "input_source_ids": [
+          "src_study_san_antonio_microsoft_2013",
           "src_study_county_economic_core_2001_2024"
         ],
         "assumptions": [
           "Matching uses 2005-2012 log level, average log growth, and growth volatility.",
           "Study counties are excluded from the donor pool.",
-          "The operating-by year is not assumed to be first county exposure or an isolated treatment date."
+          "The 2013 operating-by anchor is not assumed to be first county exposure or an isolated treatment date."
         ]
       },
       "limitations": [
@@ -1998,8 +1358,8 @@
         "The interval is a fit sensitivity, not a statistical confidence interval."
       ],
       "presentation": "modeled_not_observed_or_audited",
-      "notes": "Low-confidence descriptive county comparison; no causal attribution is made.",
-      "reviewed_on": "2026-09-05"
+      "notes": "Low-confidence descriptive county comparison retained as a bounded residual module; no causal attribution is made.",
+      "reviewed_on": "2026-09-06"
     }
   ],
   "modeled_sources": [
@@ -2018,32 +1378,18 @@
       "notes": "Agenda and staff memo dated November 21, 2013. Existing investment, proposed expansion and staff fiscal forecasts are separately described. The 15-year model uses the 40% reimbursement case; the memo also describes a potential increase to approximately 63% after a revenue milestone. This review does not establish realized spending, hiring or fiscal outcomes for the expansion. The original 2007 project received tax abatement and an electrical-infrastructure grant; complete realized incentive costs remain uncollected."
     },
     {
-      "source_id": "src_study_microsoft_san_antonio_permits_2018_05_12",
-      "title": "City of San Antonio weekly granted commercial permits, May 12, 2018",
-      "url": "https://www.sanantonio.gov/portals/0/files/dsd/pastgranted/2018/2018-05-12.pdf",
-      "publisher": "City of San Antonio Development Services Department",
-      "source_type": "local_government_record",
-      "publication_date": {
-        "precision": "day",
-        "date": "2018-05-12"
-      },
-      "retrieved_on": "2026-09-05",
-      "review_method": "pdf_text_and_page_image",
-      "notes": "The granted-permit report lists application A2359822 at 5150 Rogers Road for renovations to an existing data center, names Rogers & O'Brien Construction, and reports a $2,771,000 project value. The administrative amount is not verified expenditure, payroll, or local purchasing."
-    },
-    {
-      "source_id": "src_study_pwc_data_center_market_2021",
-      "title": "Prince William County Data Center Market Study",
-      "url": "https://www.pwcva.gov/assets/2021-12/Final%20Report%20-%20Prince%20William%20County%20Data%20Center%20Market%20Study%20120121%20.pdf",
-      "publisher": "Prince William County, Virginia",
-      "source_type": "local_government_record",
+      "source_id": "src_study_county_economic_core_2001_2024",
+      "title": "County Economic Core Panel, 2001-2024",
+      "url": "https://apps.bea.gov/regional/downloadzip.htm",
+      "publisher": "U.S. Bureau of Economic Analysis and U.S. Bureau of Labor Statistics",
+      "source_type": "other",
       "publication_date": {
         "precision": "year",
-        "year": 2021
+        "year": 2026
       },
-      "retrieved_on": "2026-09-05",
-      "review_method": "pdf_text_and_page_image",
-      "notes": "Tables 7 and 8 report direct, indirect, induced and total construction and operating employment, labor income and output for a county prototype using IMPLAN. Dollar values are 2021 dollars; the underlying IMPLAN data vintage is not disclosed."
+      "retrieved_on": "2026-09-06",
+      "review_method": "structured_data",
+      "notes": "Repository panel compiled from official annual county real GDP, total employment, and average-weekly-wage series. These are county observations, not project contributions; the retained comparison modules use them descriptively with explicit noncausal limitations."
     },
     {
       "source_id": "src_study_county_economic_core_2001_2024",
@@ -2060,16 +1406,16 @@
       "notes": "Repository panel compiled from official annual county real GDP, total employment and average-weekly-wage series. The completion model uses pre-treatment histories and 2024 outcomes; source revisions and concurrent treatments remain limitations."
     }
   ],
-  "modeled_scope_note": "Modeled contribution accounts for Apple Mesa / Maricopa County, Switch Citadel / Storey County, and Digital Crossroad Hammond / Lake County. Every required account category and county-comparison module contains sourced evidence or a visibly labeled modeled value. Public support is not netted against unmatched local revenues, unavailable public-service cost is represented by a break-even threshold rather than an invented net margin, county comparisons are descriptive rather than causal, and low-confidence transferred benchmarks remain explicit. Project fragments: prj_study_im3_building_00364289074: Low-confidence completion account for Microsoft San Antonio. Construction scenarios apply explicit 25%-75% construction-eligible shares to the reported greater-than-$840 million real-and-personal-property floor before using the Prince William County benchmark, so IT equipment is not silently treated as building construction. Operating scenarios combine the reported greater-than-75 employee floor with zero, half, or all of the separate 20-job expansion forecast; they are sensitivities, not fulfillment findings. County GDP, employment, and wage gaps are descriptive 2024 benchmark comparisons and are not facility effects. Existing source projections cover fiscal revenue, public support, and facility water demand. No annual net-fiscal estimate is made because verified same-scope recurring receipts and marginal public-service costs are unavailable. prj_study_im3_building_00377585075: DET01 completed contribution account. Source forecasts remain forecasts; modeled construction, supplier, household, resource and comparison values are visibly labeled sensitivity or benchmark scenarios. Personal-property equipment is excluded before construction multipliers. The 2025 tax-account aggregation is paired with an equal same-scope public-cost break-even threshold, not a net-fiscal result. County comparisons are descriptive and noncausal. Direct community funding, measured resource use, realized jobs, supplier payments and actual public costs remain gaps. prj_study_im3_building_00460089167: Completed contribution-account syntheses for Meta Forest City / Rutherford County. Broad cumulative capital receives an explicit 25-75% construction-eligible allocation before transferred construction benchmarks; operating scenarios translate the 2015 reported-position snapshot with a visible FTE sensitivity; the same-county, same-fiscal-year tax and incentive claims are reconciled before the public-cost break-even threshold; facility water and electricity resource models retain source rounding and scope; supplier and household channels remain separate; and county comparisons are descriptive benchmark gaps rather than causal effects. No net fiscal, audited, or causal result is asserted. prj_study_im3_building_00464097467: Second-pass modeled contribution account after an expanded public-evidence audit. Direct county permits now cover historical construction values, assessor rolls cover a main-campus parcel stock, a county action covers water-right capacity, Apple reports 2025 campus electricity use, and recipient reports bound two community gifts. Those observations supersede the need for a modeled community proxy but do not supply Apple contractor job-years, construction payroll, annual operating payroll, supplier payments, taxes received, or public-service cost. The construction base therefore retains only the packet's explicit $163 million construction forecast and excludes equipment and historical capital; wide 0.5-1.5 transfer sensitivities expose the mismatch in the last-resort direct construction coefficients. The unsupported local-purchase-share and Virginia induced-output models are removed. No net-fiscal value or public-service-cost break-even is published. County outcome gaps remain descriptive benchmark applications with fit-sensitivity intervals and no causal-design metadata. prj_study_im3_building_00664938835: Second-pass Expedient Milwaukee / Franklin syntheses retained only after a documented 2007-2026 public-source audit. The account keeps a clearly labeled 2022 ownership-transfer anchor, a PB25-0303-only construction allocation sensitivity, an exact tax-equal public-cost break-even threshold, a capacity-based electricity engineering sensitivity, and three descriptive county comparison gaps. It removes transferred construction job-years, assumed local-purchase shares, supplier and household output extrapolations, and a duplicate modeled tax row because public sources did not establish realized site employment, supplier geography, household capture, or a need to restate the direct tax observations. PM25-0174 remains excluded for possible overlap. No synthesis is an observed result or fiscal net. prj_study_im3_building_01073720208: Second-pass governed synthesis for Google Council Bluffs. Construction job-years use only two directly observed September 2025 city permit valuations and transfer the published Prince William County prototype coefficients as benchmark equivalents; the four channels are separated and protected by one aggregation. No Pottawattamie County supplier-retention share is imposed because the public audit found contractor names but no payment or vendor-residence ledger. The water row is the unallocated Google Council Bluffs location identity reported for 2024, not a building allocation. No local abatement, exemption realization, franchise-fee amount, electric load, public-service cost, break-even threshold, or net fiscal result is modeled. County outcome gaps remain descriptive benchmark applications with fit-sensitivity ranges and no causal attribution.",
+  "modeled_scope_note": "Modeled contribution accounts for Apple Mesa / Maricopa County, Switch Citadel / Storey County, and Digital Crossroad Hammond / Lake County. Every required account category and county-comparison module contains sourced evidence or a visibly labeled modeled value. Public support is not netted against unmatched local revenues, unavailable public-service cost is represented by a break-even threshold rather than an invented net margin, county comparisons are descriptive rather than causal, and low-confidence transferred benchmarks remain explicit. Project fragments: prj_study_im3_building_00364289074: Corrective residual modeled account for Microsoft San Antonio. Eight transferred construction, labor, procurement, operating, and household-output scenarios were removed because their arbitrary capital shares, forecast-realization cases, local-purchase assumptions, and Virginia coefficients were not bounded by project observations. Only three low-confidence descriptive county comparisons remain: each uses the project's documented operating-by 2013 anchor and official Bexar County outcome data, has a finite fit-sensitivity envelope, and explicitly makes no causal attribution. The account intentionally remains incomplete because no defensible direct observation or residual model closes the supplier category. prj_study_im3_building_00377585075: Corrective DET01 synthesis. Only exact same-period tax-account arithmetic, its explicitly conditional public-cost break-even identity and a unit conversion of displayed municipal meter history remain. Construction, employment, supplier, household, electricity, cooling, emissions, wastewater and county-effect models were removed because the audit did not bound the missing project inputs. This account is intentionally incomplete where direct evidence remains unbounded. prj_study_im3_building_00460089167: Corrective audit retains six bounded residual calculations only: FY2025 county tax retained after the provisionally linked incentive, the identical marginal-service-cost break-even threshold, conversion of Meta-reported 2024 water withdrawal with source rounding, and three noncausal county comparison gaps with fit sensitivity. Ten models based on arbitrary capital timing, cost shares, FTE ratios, transferred operating/construction multipliers, fleet PUE, or wastewater ratios are removed. Supplier/local-procurement evidence remains unavailable, so the project is intentionally incomplete rather than backfilled. prj_study_im3_building_00464097467: Second-pass modeled contribution account after an expanded public-evidence audit. Direct county permits now cover historical construction values, assessor rolls cover a main-campus parcel stock, a county action covers water-right capacity, Apple reports 2025 campus electricity use, and recipient reports bound two community gifts. Those observations supersede the need for a modeled community proxy but do not supply Apple contractor job-years, construction payroll, annual operating payroll, supplier payments, taxes received, or public-service cost. The construction base therefore retains only the packet's explicit $163 million construction forecast and excludes equipment and historical capital; wide 0.5-1.5 transfer sensitivities expose the mismatch in the last-resort direct construction coefficients. The unsupported local-purchase-share and Virginia induced-output models are removed. No net-fiscal value or public-service-cost break-even is published. County outcome gaps remain descriptive benchmark applications with fit-sensitivity intervals and no causal-design metadata. prj_study_im3_building_00664938835: Second-pass Expedient Milwaukee / Franklin syntheses retained only after a documented 2007-2026 public-source audit. The account keeps a clearly labeled 2022 ownership-transfer anchor, a PB25-0303-only construction allocation sensitivity, an exact tax-equal public-cost break-even threshold, a capacity-based electricity engineering sensitivity, and three descriptive county comparison gaps. It removes transferred construction job-years, assumed local-purchase shares, supplier and household output extrapolations, and a duplicate modeled tax row because public sources did not establish realized site employment, supplier geography, household capture, or a need to restate the direct tax observations. PM25-0174 remains excluded for possible overlap. No synthesis is an observed result or fiscal net. prj_study_im3_building_01073720208: Second-pass governed synthesis for Google Council Bluffs. Construction job-years use only two directly observed September 2025 city permit valuations and transfer the published Prince William County prototype coefficients as benchmark equivalents; the four channels are separated and protected by one aggregation. No Pottawattamie County supplier-retention share is imposed because the public audit found contractor names but no payment or vendor-residence ledger. The water row is the unallocated Google Council Bluffs location identity reported for 2024, not a building allocation. No local abatement, exemption realization, franchise-fee amount, electric load, public-service cost, break-even threshold, or net fiscal result is modeled. County outcome gaps remain descriptive benchmark applications with fit-sensitivity ranges and no causal attribution.",
   "synthesis_version": "study-modeled-synthesis-3.2.0",
   "modeling_policy_version": "study-modeling-policy-1.3.0",
   "analysis_readiness": {
-    "construction": "modeled_available",
-    "operations": "modeled_available",
+    "construction": "not_assessed",
+    "operations": "not_assessed",
     "fiscal": "not_assessed",
     "causal": "not_assessed"
   },
   "legacy_first_entry_note": "Microsoft establishes operation of its mapped San Antonio data center by November 4, 2013. Bexar County's 31 current canonical facilities and 33 source records do not form a complete historical inventory, and earlier enterprise, government, military, institutional, or telecom facilities have not been conclusively excluded.",
   "scope_note": "Provisional private-sector research candidate. Owner/operator history, project boundaries and lifecycle require review. Membership does not verify current operation or establish economic impact.",
-  "project_description": "Microsoft San Antonio is a hyperscale data-center facility at 5150 Rogers Road in Bexar County, Texas, documented as operating by November 4, 2013. This account treats the facility as a distinct project boundary and does not allocate Microsoft's broader Bexar-and-Medina regional totals to it when the source does not identify a building, campus, county, or phase."
+  "project_description": "Microsoft San Antonio is Microsoft's data-center property at 5150 Rogers Road in Bexar County, Texas, developed under the 2007 Westover Hills agreement and documented as operating by November 4, 2013. The exact-site boundary includes a 36.235-acre appraisal parcel with 463,350 square feet of commercial improvements plus separately assessed Microsoft personal property. This account does not allocate broader Bexar-and-Medina activity, later San Antonio campuses, or unlocated company totals to the site."
 }

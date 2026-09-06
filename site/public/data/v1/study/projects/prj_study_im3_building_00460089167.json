@@ -16,12 +16,12 @@
   "detail_path": "projects/prj_study_im3_building_00460089167.json",
   "latitude": 35.314231256978196,
   "longitude": -81.82213877550394,
-  "economic_record_count": 24,
-  "reported_actual_count": 21,
+  "economic_record_count": 28,
+  "reported_actual_count": 25,
   "projection_count": 3,
-  "modeled_synthesis_count": 16,
+  "modeled_synthesis_count": 6,
   "model_completeness": {
-    "status": "full_modeled_account",
+    "status": "incomplete",
     "required_categories": [
       "investment",
       "construction",
@@ -39,18 +39,12 @@
       "investment",
       "operations",
       "public_costs",
-      "resources",
-      "suppliers"
+      "resources"
     ],
     "modeled_categories": [
-      "community",
-      "construction",
       "fiscal",
-      "investment",
-      "operations",
       "public_costs",
-      "resources",
-      "suppliers"
+      "resources"
     ],
     "required_county_outcomes": [
       "study.modeled_county_employment_comparison_gap",
@@ -62,14 +56,16 @@
       "study.modeled_county_gdp_comparison_gap",
       "study.modeled_county_wage_comparison_gap"
     ],
-    "missing_categories": [],
+    "missing_categories": [
+      "suppliers"
+    ],
     "missing_county_outcomes": [],
     "direct_evidence_gap_count": 8,
     "definition": "All eight contribution-account categories contain sourced or labeled modeled values, and GDP, employment, and wage county-comparison modules are populated. Comparison gaps are descriptive and do not establish causal facility effects."
   },
   "schema_version": "1.0.0",
-  "release_id": "private-sector-study-1.45.0",
-  "generated_at": "2026-09-06T16:15:28+00:00",
+  "release_id": "private-sector-study-1.46.0",
+  "generated_at": "2026-09-06T17:46:13+00:00",
   "inventory_name": "Meta Forest City datacenter",
   "research_value": "Construction-to-operation history; later expansion and recurring local revenue.",
   "history": {
@@ -176,10 +172,216 @@
     },
     {
       "project_id": "prj_study_im3_building_00460089167",
+      "source_id": "src_study_meta_forest_city_opening_20120419",
+      "as_of": "2012-04-19",
+      "title": "Identity and opening chronology search completed",
+      "notes": "Search family: operator facility and chronology. Query/identifier: Meta Forest City opening, Building 1, Building 2; date range 2010-2012. Documents inspected: Meta opening page and current Forest City factsheet. Result: useful - confirms operator, multi-building campus, November 2010 groundbreaking, April 19, 2012 Building 1 opening and planned 2012 Building 2; no building-to-inventory allocation was published.",
+      "source": {
+        "source_id": "src_study_meta_forest_city_opening_20120419",
+        "title": "Our Data Center Opens in Forest City, N.C.",
+        "url": "https://datacenters.atmeta.com/2012/04/facebook-data-center-opens-in-forest-city-n-c/",
+        "publisher": "Meta",
+        "source_type": "operator_release",
+        "publication_date": {
+          "precision": "day",
+          "date": "2012-04-19"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_page",
+        "notes": "Meta reports that Building 1 broke ground in November 2010 and opened on April 19, 2012, while Building 2 was expected later in 2012. The page identifies a multi-building campus but does not allocate facts to the inventory building footprint."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_00460089167",
+      "source_id": "src_study_ncdeq_andale_brownfields_annual_2012",
+      "as_of": "2026-09-06",
+      "title": "Brownfield land and boundary search completed",
+      "notes": "Search family: state brownfields and land records. Query/identifier: Andale, project 14036-10-081, 1181/1185/1271/1291 Old Caroleen Road; date range 2010-2024. Documents inspected: 2012 Brownfields Annual Report, NCDEQ success story, finalized inventory and land-use-restriction update. Result: useful - former industrial use, contamination, agreement date and approximately 153-acre redevelopment boundary; no allocation to the selected building.",
+      "source": {
+        "source_id": "src_study_ncdeq_andale_brownfields_annual_2012",
+        "title": "North Carolina Brownfields Program 2012 Annual Report - Andale",
+        "url": "https://www.deq.nc.gov/waste-management/dwm/bf/website/pdfs/bf-2012-annual-report-final/download",
+        "publisher": "North Carolina Department of Environment and Natural Resources",
+        "source_type": "state_record",
+        "publication_date": {
+          "precision": "year",
+          "year": 2012
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_pdf_text",
+        "notes": "The Andale row identifies four Old Caroleen Road addresses, approximately 153 acres, former Burlington Industries use, VOC contamination, and planned data-center redevelopment under a February 3, 2012 brownfields agreement."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_00460089167",
+      "source_id": "src_study_rutherford_energov_andale_20260906",
+      "as_of": "2026-09-06",
+      "title": "Assessor parcel and ownership search completed",
+      "notes": "Search family: county assessor/GIS. Query/identifier: UPPER(Property_Owner) LIKE '%ANDALE%' on EnerGov Parcel layer 3, with ParcelID, address, acreage, land, building and total-value fields. Date range: current snapshot queried September 6, 2026. Documents inspected: four returned parcel rows 54822, 54821, 54708 and 62150. Result: useful - 153.11 acres and $273,242,300 real-property value; negative for a dated assessment cycle, personal property, or a single-building allocation.",
+      "source": {
+        "source_id": "src_study_rutherford_energov_andale_20260906",
+        "title": "Rutherford County EnerGov parcel layer - ANDALE LLC query",
+        "url": "https://gis.rutherfordcountync.gov/server/rest/services/EnerGov/EnerGov/MapServer/3",
+        "publisher": "Rutherford County, North Carolina",
+        "source_type": "assessor_record",
+        "publication_date": {
+          "precision": "unknown"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "structured_data",
+        "notes": "The exact owner query returned parcels 54822, 54821, 54708 and 62150 at 284 Social Circle, 0 Old Caroleen Road, 0 Social Circle and 408 Social Circle. Their displayed acreages sum to 153.11 and their land-plus-building Total_Property_Value fields sum to $273,242,300; the layer does not date the assessment cycle or expose personal-property values."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_00460089167",
+      "source_id": "src_study_rutherford_acfr_2025",
+      "as_of": "2026-09-06",
+      "title": "County tax and incentive series rechecked",
+      "notes": "Search family: county tax, assessor and audited finance. Query/identifier: Andale Inc. FKA and Note 13 Concentration of Tax Base. Date range: FY2021-FY2025. Documents inspected: Rutherford County ACFRs for fiscal years 2021 through 2025 and their taxpayer tables/notes. Result: useful - five-year assessed-value, tax-collected and incentive-payment series; negative for named Note 13 taxpayer confirmation, municipal amounts, other project accounts, and same-scope service costs.",
+      "source": {
+        "source_id": "src_study_rutherford_acfr_2025",
+        "title": "Rutherford County, NC Annual Comprehensive Financial Report FY2025",
+        "url": "https://www.rutherfordcountync.gov/document_center/Finance/Rutherford%20County%20FY25%20ACFR%20-%20ISSUED.pdf",
+        "publisher": "Rutherford County, North Carolina",
+        "source_type": "local_government_record",
+        "publication_date": {
+          "precision": "day",
+          "date": "2026-02-27"
+        },
+        "retrieved_on": "2026-09-03",
+        "review_method": "pdf_text_and_page_image",
+        "notes": "Note 13 is part of the financial-statement notes. Table 7 is a statistical table sourced to the county Revenue Department; it is not independently audited by this review. Note 13 does not name its taxpayer. The project link is inferred from the Andale (Facebook) identification on PDF page 10, tax-concentration tables and the recurring 85% real/95% personal-property incentive description through 2040. Tax-year share wording does not consistently match the same report’s fiscal-year table; this remains unresolved. Amounts retain their explicit fiscal-year labels. Download, relevant text, table headings and page images checked.",
+        "artifact_sha256": "e95820ccfa01e7e6525713cee951a1fd4001e40b9e3b0ed03d29befd2b196c03"
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_00460089167",
+      "source_id": "src_study_fortis_meta_forest_city_2026",
+      "as_of": "2026-09-06",
+      "title": "Contractor campus-scale search completed",
+      "notes": "Search family: primary contractor project records. Query/identifier: Meta Forest City campus square feet, client Meta, Forest City; date range 2010-2026. Documents inspected: Fortis Forest City campus project profile. Result: useful - 789,000-square-foot project scope and construction/design parties; negative for cost, phase dates, occupied area, payroll, supplier spend and inventory-building share.",
+      "source": {
+        "source_id": "src_study_fortis_meta_forest_city_2026",
+        "title": "Meta, Forest City Campus",
+        "url": "https://fortisconstruction.com/project/meta-forest-city-campus/",
+        "publisher": "Fortis Construction",
+        "source_type": "other",
+        "publication_date": {
+          "precision": "unknown"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_page",
+        "notes": "The project profile identifies Meta as client, Forest City as location, and 789,000 square feet as project scope. It does not define occupied area, data-hall area, current utilization, construction cost, payroll, or the selected inventory building's share."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_00460089167",
+      "source_id": "src_study_dpr_facebook_forest_city_2026",
+      "as_of": "2026-09-06",
+      "title": "Construction workforce search completed",
+      "notes": "Search family: construction contractors and workforce. Query/identifier: Facebook Forest City Data Center, local workforce, two buildings; date range 2010-2026. Documents inspected: DPR project profile and Forest City contractor story. Result: useful - two 370,000-square-foot buildings and reported 90% local manpower; negative for headcount, duration, job-years, payroll, contract values and local vendor purchases, so no construction multiplier model is retained.",
+      "source": {
+        "source_id": "src_study_dpr_facebook_forest_city_2026",
+        "title": "Facebook Forest City Data Center",
+        "url": "https://www.dpr.com/projects/forest-city-data-center",
+        "publisher": "DPR Construction",
+        "source_type": "other",
+        "publication_date": {
+          "precision": "unknown"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_page",
+        "notes": "DPR describes two 370,000-square-foot buildings, four data suites per building, and 90% local-workforce participation for both buildings. It provides no worker count, work duration, payroll, supplier spend, contract value, or current-campus completeness statement."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_00460089167",
+      "source_id": "src_study_forest_city_building_permit_portal_2026",
+      "as_of": "2026-09-06",
+      "title": "Building permit and planning search completed",
+      "notes": "Search family: municipal permits, planning and issued-permit records. Exact queries/identifiers: Andale, Meta, Facebook, 284 Social Circle, 408 Social Circle and Old Caroleen Road; date range 2010-2026. Documents inspected: Town public-access permit page, linked monthly-issued-permit folder, comprehensive land-use plan and current UDO. Result: useful only for permitted data-center land use and portal routing; negative for a reliably matched permit valuation, generator schedule, phase completion or selected-building record.",
+      "source": {
+        "source_id": "src_study_forest_city_building_permit_portal_2026",
+        "title": "Public Access to Building Permits",
+        "url": "https://www.townofforestcity.com/planning-code-enforcement/building/public-access-building-permits",
+        "publisher": "Town of Forest City, North Carolina",
+        "source_type": "local_government_record",
+        "publication_date": {
+          "precision": "unknown"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_page",
+        "notes": "The town page links a public monthly-issued-permit folder and provides a records contact. Searches of the indexed portal and linked public folder did not yield a reliably project-matched permit value, generator schedule, or completion record for Andale, Meta, Facebook, 284 Social Circle or 408 Social Circle."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_00460089167",
+      "source_id": "src_study_nc_ria_forest_city_water_20151022",
+      "as_of": "2026-09-06",
+      "title": "Public infrastructure grant search completed",
+      "notes": "Search family: state/local public infrastructure. Query/identifier: Town of Forest City Facebook water-line extension, Industrial Development Fund-Utility Account, October 22, 2015; date range 2015-2026. Documents inspected: NC Rural Infrastructure Authority approval and later town water pages/budgets. Result: useful - $148,900 approved grant, approximately 1,000 feet, 100 existing positions and 10 planned jobs; negative for disbursement, final cost, annual maintenance, realized hiring and complete taxpayer cost.",
+      "source": {
+        "source_id": "src_study_nc_ria_forest_city_water_20151022",
+        "title": "North Carolina Rural Infrastructure Authority Approves Nearly $3.83 Million in Funding Requests",
+        "url": "https://www.commerce.nc.gov/news/press-releases/north-carolina-rural-infrastructure-authority-approves-nearly-383-million",
+        "publisher": "North Carolina Department of Commerce",
+        "source_type": "state_record",
+        "publication_date": {
+          "precision": "day",
+          "date": "2015-10-22"
+        },
+        "retrieved_on": "2026-09-04",
+        "review_method": "web_page",
+        "notes": "The Rural Infrastructure Authority approval identifies a $148,900 Industrial Development Fund-Utility Account grant to the Town of Forest City for an approximately 1,000-foot publicly owned water-line extension serving a new Facebook campus building. It reports 100 existing positions and a plan for ten additional jobs over two years. The approval does not prove disbursement, final construction cost, realized hiring, worker residence or a complete public-cost account."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_00460089167",
+      "source_id": "src_study_meta_forest_city_factsheet_2026",
+      "as_of": "2026-09-06",
+      "title": "Operations jobs and payroll search completed",
+      "notes": "Search family: operator jobs, workforce and payroll. Query/identifier: Forest City operational jobs, employees, contractors, payroll and wages; date range 2010-2026. Documents inspected: Meta current factsheet, 2015 NC grant record, Town economic-development page and Census CBP portal. Result: useful - 275+ jobs supported and the separate 2015 snapshot of 100 positions; negative for direct employee/contractor split, FTE basis, payroll, worker residence and dated census, so operating multiplier models are removed.",
+      "source": {
+        "source_id": "src_study_meta_forest_city_factsheet_2026",
+        "title": "Meta Forest City Data Center information sheet",
+        "url": "https://datacenters.atmeta.com/asset/forest-city-data-center-info-sheet/",
+        "publisher": "Meta",
+        "source_type": "operator_release",
+        "publication_date": {
+          "precision": "unknown"
+        },
+        "retrieved_on": "2026-09-04",
+        "review_method": "web_pdf_text",
+        "notes": "Undated current operator factsheet reviewed in 2026. It reports more than $750 million of North Carolina data-center investment, more than 275 operational jobs supported and more than $6.4 million of direct funding to Rutherford County-area schools and nonprofits. It also says Meta pays the full cost of campus energy and town water/wastewater service and describes water-efficiency design. These are operator claims, not audited employment, expenditure, rate-impact or metered-resource records."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_00460089167",
+      "source_id": "src_study_meta_corning_north_carolina_20260414",
+      "as_of": "2026-09-06",
+      "title": "Supplier and local procurement search completed",
+      "notes": "Search family: operator, contractor and supplier releases. Query/identifier: Meta Forest City supplier, vendor, procurement, Corning, DPR subcontractors and Rutherford County purchases. Date range: 2010-2026. Documents inspected: Meta-Corning announcement, DPR/Fortis profiles and operator factsheet. Result: negative for Forest City- or Rutherford-allocable supplier payments, contract values, vendor employment or production; the $6 billion U.S. Corning agreement and Hickory expansion are not allocated to this project.",
+      "source": {
+        "source_id": "src_study_meta_corning_north_carolina_20260414",
+        "title": "Investing in American manufacturing to build the infrastructure for AI",
+        "url": "https://datacenters.atmeta.com/2026/04/investing-in-american-manufacturing-to-build-the-infrastructure-for-ai/",
+        "publisher": "Meta",
+        "source_type": "operator_release",
+        "publication_date": {
+          "precision": "day",
+          "date": "2026-04-14"
+        },
+        "retrieved_on": "2026-09-05",
+        "review_method": "web_page",
+        "notes": "Meta describes a multiyear agreement with Corning worth up to $6 billion for U.S. data-center optical infrastructure and a Corning expansion in Hickory, North Carolina. The source does not allocate contract value, purchases, employment, or production to the Forest City campus or Rutherford County, so no quantitative project supplier record is created."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_00460089167",
       "source_id": "src_study_meta_environmental_data_index_2025",
-      "as_of": "2024-12-31",
-      "title": "Facility-level 2024 electricity, water and Scope 2 rows located",
-      "notes": "Meta's 2025 Environmental Data Index reports Forest City at 535,555 MWh of electricity consumption, 16 megaliters of water withdrawal, zero market-based Scope 2 emissions and 144,104 metric tons CO2e of location-based Scope 2 emissions for 2024. Electricity is normalized in the evidence record. The rounded water and emissions figures remain explicit context because the shared canonical evidence registry has no compatible annual water-withdrawal or facility-emissions metric; they are not treated as audited utility or emissions records.",
+      "as_of": "2026-09-06",
+      "title": "Facility resource reporting search completed",
+      "notes": "Search family: operator environmental data. Query/identifier: Forest City (NC) facility rows. Date range: calendar year 2024. Documents inspected: Meta 2025 Environmental Data Index electricity, water and Scope 2 tables/methodology. Result: useful - 535,555 MWh electricity, 16 ML water withdrawal and Scope 2 rows; negative for unrounded bills/meters, peak demand, IT load, consumption, reuse, discharge, cost and facility-specific PUE.",
       "source": {
         "source_id": "src_study_meta_environmental_data_index_2025",
         "title": "Meta 2025 Environmental Data Index",
@@ -197,23 +399,228 @@
     },
     {
       "project_id": "prj_study_im3_building_00460089167",
-      "source_id": "src_study_meta_corning_north_carolina_20260414",
-      "as_of": "2026-04-14",
-      "title": "North Carolina optical-supply agreement is not allocable to Forest City",
-      "notes": "Meta reports a multiyear U.S. agreement with Corning worth up to $6 billion and a manufacturing expansion in Hickory, North Carolina. No public amount is assigned to Forest City, Rutherford County, local vendor payments, or local employment, so the supplier evidence gap remains and no project amount is inferred.",
+      "source_id": "src_study_ncuc_duke_orders_2012",
+      "as_of": "2026-09-06",
+      "title": "Utility and regulator search completed",
+      "notes": "Search family: NCUC dockets/orders and Duke utility records. Exact queries/identifiers: Andale, Facebook Forest City, Forest City data center, OPT-H and interconnection; date range 2010-2026. Documents inspected: NCUC 2012 orders index/rate order, docket search portal and Duke site records. Result: useful only for a shared OPT-H tariff reference; negative for Forest City-specific load, demand, bill, rider, interconnection cost, rate impact or utility-verified annual use.",
       "source": {
-        "source_id": "src_study_meta_corning_north_carolina_20260414",
-        "title": "Investing in American manufacturing to build the infrastructure for AI",
-        "url": "https://datacenters.atmeta.com/2026/04/investing-in-american-manufacturing-to-build-the-infrastructure-for-ai/",
-        "publisher": "Meta",
-        "source_type": "operator_release",
+        "source_id": "src_study_ncuc_duke_orders_2012",
+        "title": "North Carolina Utilities Commission Orders and Decisions Issued in 2012",
+        "url": "https://www.ncuc.gov/documents/orders2012.pdf",
+        "publisher": "North Carolina Utilities Commission",
+        "source_type": "state_record",
+        "publication_date": {
+          "precision": "year",
+          "year": 2012
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_pdf_text",
+        "notes": "A Duke rate-case order lists Facebook Forest City among North Carolina data centers billed on tariff OPT-H and gives a combined-customer off-peak share. It provides no Forest City-specific load, demand, bill, tariff rider, interconnection cost, rate impact, or customer-level usage amount."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_00460089167",
+      "source_id": "src_study_forest_city_water_treatment_2026",
+      "as_of": "2026-09-06",
+      "title": "Water utility search completed",
+      "notes": "Search family: municipal water utility and budgets. Query/identifier: Facebook/Meta/Andale water, withdrawal, capacity, bill and rate impact. Date range: 2010-2026. Documents inspected: Forest City water-treatment page, water/sewer overview, FY2023-FY2025 budgets/audit and 2025 system materials. Result: useful for system source and 8 MGD capacity; negative for customer-specific withdrawal, consumption, bill, reservation, marginal cost or rate impact.",
+      "source": {
+        "source_id": "src_study_forest_city_water_treatment_2026",
+        "title": "Water Treatment",
+        "url": "https://www.townofforestcity.com/water-treatment",
+        "publisher": "Town of Forest City, North Carolina",
+        "source_type": "local_government_record",
+        "publication_date": {
+          "precision": "unknown"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_page",
+        "notes": "The town reports an 8 MGD treatment capability, Second Broad River source and 2.7 million gallons of elevated storage. The page contains no Meta/Andale customer withdrawal, consumption, billing, capacity reservation, incremental cost, or rate-impact amount."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_00460089167",
+      "source_id": "src_study_forest_city_wastewater_treatment_2026",
+      "as_of": "2026-09-06",
+      "title": "Wastewater utility search completed",
+      "notes": "Search family: municipal wastewater utility. Query/identifier: Facebook/Meta/Andale wastewater, discharge, sewer and pretreatment. Date range: 2010-2026. Documents inspected: Forest City wastewater-treatment page, water/sewer overview and FY2025 audit. Result: useful for 4.95 MGD system design capacity and 1.25 MGD current flow; negative for project discharge, bill, service cost or allocation, so the prior 20%-80% wastewater model is removed.",
+      "source": {
+        "source_id": "src_study_forest_city_wastewater_treatment_2026",
+        "title": "Wastewater Treatment",
+        "url": "https://www.townofforestcity.com/wastewater-treatment",
+        "publisher": "Town of Forest City, North Carolina",
+        "source_type": "local_government_record",
+        "publication_date": {
+          "precision": "unknown"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_page",
+        "notes": "The town reports 4.95 MGD design capacity and 1.25 MGD current system flow. It does not publish a Meta/Andale discharge volume, customer bill, pretreatment load, service cost, or capacity allocation."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_00460089167",
+      "source_id": "src_study_ncdaq_andale_permit_inventory_20211105",
+      "as_of": "2026-09-06",
+      "title": "Air permit and backup generation search completed",
+      "notes": "Search family: NCDAQ permits/compliance. Exact identifiers: facility 8100221, permit 10165R03/10165R04, Andale, 284 Social Circle, generators; date range 2010-2026. Documents inspected: statewide permitted-facility inventory, compliance monitoring plan and indexed NCDEQ records. Result: useful - facility identity and Synthetic Minor permit; negative for permit detail, generator count/capacity/runtime, fuel, emissions and operating cost.",
+      "source": {
+        "source_id": "src_study_ncdaq_andale_permit_inventory_20211105",
+        "title": "North Carolina Division of Air Quality Permitted Facilities",
+        "url": "https://files.nc.gov/ncdeq/Air%20Quality/permits/aapa_reports/all_permitted.pdf",
+        "publisher": "North Carolina Division of Air Quality",
+        "source_type": "state_record",
         "publication_date": {
           "precision": "day",
-          "date": "2026-04-14"
+          "date": "2021-11-05"
         },
-        "retrieved_on": "2026-09-05",
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_pdf_text",
+        "notes": "The inventory identifies Andale, Inc., facility 8100221, 284 Social Circle, permit 10165R03, issued April 15, 2019, and Synthetic Minor classification. The inventory does not report generator count, nameplate capacity, runtime, fuel use, emissions, or operating cost."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_00460089167",
+      "source_id": "src_study_ncdor_datacenter_exemption_notice_20260723",
+      "as_of": "2026-09-06",
+      "title": "State tax-exemption compliance search completed",
+      "notes": "Search family: NCDOR statutes, exemption notices and rulings. Query/identifier: eligible internet datacenter, qualifying datacenter, electricity exemption, Facebook/Andale/Forest City. Date range: 2009-2026. Documents inspected: 2015 continuation notice, 2018 law changes, 2020 private-letter ruling, current statutes and July 23, 2026 repeal notice. Result: useful for program rules and repeal timing; negative for project identity, exempt purchase amount, forgone revenue, refund or compliance filing.",
+      "source": {
+        "source_id": "src_study_ncdor_datacenter_exemption_notice_20260723",
+        "title": "Important Notice: Repeal of Exemptions for Electricity Used at Datacenters",
+        "url": "https://www.ncdor.gov/taxes-forms/sales-and-use-tax/other-sales-and-use-tax-resources/important-notices-issued-sales-and-use-tax-division/important-notice-repeal-exemptions-electricity-used-datacenters",
+        "publisher": "North Carolina Department of Revenue",
+        "source_type": "state_record",
+        "publication_date": {
+          "precision": "day",
+          "date": "2026-07-23"
+        },
+        "retrieved_on": "2026-09-06",
         "review_method": "web_page",
-        "notes": "Meta describes a multiyear agreement with Corning worth up to $6 billion for U.S. data-center optical infrastructure and a Corning expansion in Hickory, North Carolina. The source does not allocate contract value, purchases, employment, or production to the Forest City campus or Rutherford County, so no quantitative project supplier record is created."
+        "notes": "The notice describes qualifying and eligible internet datacenter exemptions and the 2026 repeal of the electricity exemption. It does not identify Forest City or disclose taxpayer-level exempt purchases, forgone revenue, compliance filings, or refund amounts."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_00460089167",
+      "source_id": "src_study_rutherford_budget_fy2026",
+      "as_of": "2026-09-06",
+      "title": "Marginal public-service cost search completed",
+      "notes": "Search family: county budgets, ACFRs and service departments. Query/identifier: Andale/Meta/Facebook plus fire, EMS, sheriff, infrastructure, tax administration and service cost. Date range: FY2021-FY2026. Documents inspected: Rutherford County ACFR series and FY2025-2026 budget message. Result: negative for a same-period, same-scope marginal annual county cost attributable to the project; the retained $319,124 model is therefore only a break-even threshold, not net fiscal benefit.",
+      "source": {
+        "source_id": "src_study_rutherford_budget_fy2026",
+        "title": "Rutherford County FY2025-2026 Budget Message",
+        "url": "https://rutherfordcountync.gov/document_center/Finance/Budget%20Message%20FY2025-2026%20FINAL%20SIGNED.pdf",
+        "publisher": "Rutherford County, North Carolina",
+        "source_type": "local_government_record",
+        "publication_date": {
+          "precision": "year",
+          "year": 2025
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_pdf_text",
+        "notes": "The adopted-budget materials were reviewed for project-attributable public safety, infrastructure, tax-administration, water, or other service costs. No same-scope marginal annual cost for Meta/Andale was located."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_00460089167",
+      "source_id": "src_study_isothermal_meta_xrail_2024",
+      "as_of": "2026-09-06",
+      "title": "Community recipient search completed",
+      "notes": "Search family: local schools, college and nonprofit recipients. Query/identifier: Meta/Facebook Forest City grant, XRAIL and Isothermal Community College. Date range: 2011-2026. Documents inspected: Isothermal's August 2024 XRAIL announcement and indexed Rutherford school/college pages. Result: useful - recipient-reported Meta grant above $250,000; negative for payment date, audited receipt and reconciliation to Meta's $6.4 million cumulative total.",
+      "source": {
+        "source_id": "src_study_isothermal_meta_xrail_2024",
+        "title": "Isothermal Community College partners with Meta to create high-tech lab",
+        "url": "https://www.isothermal.edu/newscenter/2024/08/isothermal-community-college-partners-with-meta-to-create-high-tech-lab-to-foster-innovation-and-tech-entrepreneurship.html",
+        "publisher": "Isothermal Community College",
+        "source_type": "other",
+        "publication_date": {
+          "precision": "year",
+          "year": 2024
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_page",
+        "notes": "The grant recipient reports a Meta grant of more than $250,000 for an Extended Reality and Artificial Intelligence Lab serving Polk and Rutherford counties and explicitly connects the partnership to Meta's Forest City Data Center community activity."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_00460089167",
+      "source_id": "src_study_forest_city_audit_2025",
+      "as_of": "2026-09-06",
+      "title": "Municipal audit and community grant search completed",
+      "notes": "Search family: municipal audited finance and community capital projects. Query/identifier: Meta Grant (BARN) and economic development incentive. Date range: FY2023-FY2025. Documents inspected: Town of Forest City FY2025 annual financial report and FY2023-FY2025 budgets. Result: useful - $300,000 Meta grant received in prior years and $5,070,136 total FY2025 incentive expense; negative for exact grant receipt year and named incentive recipient, so the latter is not assigned to Meta.",
+      "source": {
+        "source_id": "src_study_forest_city_audit_2025",
+        "title": "Town of Forest City Annual Financial Report for the Year Ended June 30, 2025",
+        "url": "https://www.townofforestcity.com/sites/default/files/uploads/government/transparency/town-of-forest-city-2025-audit.pdf",
+        "publisher": "Town of Forest City, North Carolina",
+        "source_type": "local_government_record",
+        "publication_date": {
+          "precision": "day",
+          "date": "2025-11-30"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_pdf_text",
+        "notes": "The audited supplementary schedule reports a $300,000 Meta Grant (BARN), all received in prior years, for the Park Square Depot capital project. The report also shows a $5,070,136 FY2025 economic-development incentive expenditure but does not name its recipient, so that line is not encoded as a Meta record."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_00460089167",
+      "source_id": "src_study_bea_county_api_2026",
+      "as_of": "2026-09-06",
+      "title": "County GDP comparison inputs rechecked",
+      "notes": "Search family: federal county economic data. Exact identifiers: BEA county real GDP series used in county-economic-core 2001-2024, Rutherford County FIPS 37161; date range 2001-2024. Documents inspected: BEA API guide and governed panel source rows/manifests. Result: useful for reproducible county aggregates and donor matching; negative for project-level output or causal attribution, so the retained comparison remains descriptive with fit sensitivity only.",
+      "source": {
+        "source_id": "src_study_bea_county_api_2026",
+        "title": "BEA API for Data Retrieval User Guide",
+        "url": "https://apps.bea.gov/api/_pdf/bea_web_service_api_user_guide.pdf",
+        "publisher": "U.S. Bureau of Economic Analysis",
+        "source_type": "other",
+        "publication_date": {
+          "precision": "unknown"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_pdf_text",
+        "notes": "The guide documents county GDP and income tables used by the governed 2001-2024 county panel. County aggregates do not identify Meta, isolate the campus, or establish a causal project effect."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_00460089167",
+      "source_id": "src_study_bls_qcew_portal_2026",
+      "as_of": "2026-09-06",
+      "title": "County employment and wage inputs rechecked",
+      "notes": "Search family: BLS QCEW county data. Exact identifiers: Rutherford County FIPS 37161, annual average employment and wage series in county-economic-core 2001-2024; date range 2001-2024. Documents inspected: QCEW searchable database/download guidance and governed panel source rows/manifests. Result: useful for county employment/wage comparisons; negative for named-establishment payroll or causal effect, so both retained gaps are labeled descriptive.",
+      "source": {
+        "source_id": "src_study_bls_qcew_portal_2026",
+        "title": "QCEW Searchable Databases",
+        "url": "https://www.bls.gov/cew/data.htm",
+        "publisher": "U.S. Bureau of Labor Statistics",
+        "source_type": "other",
+        "publication_date": {
+          "precision": "unknown"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_page",
+        "notes": "The portal provides county employment and wage histories used by the governed comparison panel. Published county-industry aggregates do not disclose a Meta establishment payroll or support causal attribution to the Forest City campus."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_00460089167",
+      "source_id": "src_study_census_cbp_portal_2026",
+      "as_of": "2026-09-06",
+      "title": "County industry and payroll alternative checked",
+      "notes": "Search family: Census County Business Patterns. Exact query: Rutherford County NC FIPS 37161, data processing/hosting industries, establishments, employment and payroll; date range 2010-2023. Documents inspected: CBP data and API portals. Result: negative for a disclosable Meta establishment payroll, project headcount, supplier purchases or worker residence because the statistics are county-industry aggregates and may be suppressed.",
+      "source": {
+        "source_id": "src_study_census_cbp_portal_2026",
+        "title": "County Business Patterns Data",
+        "url": "https://www.census.gov/programs-surveys/cbp/data.html",
+        "publisher": "U.S. Census Bureau",
+        "source_type": "other",
+        "publication_date": {
+          "precision": "unknown"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_page",
+        "notes": "County Business Patterns provides county-industry establishments, employment and payroll. Employer confidentiality and county aggregation prevent a project-specific Meta payroll, supplier-spend, or operating-headcount observation."
       }
     }
   ],
@@ -1015,6 +1422,124 @@
       "unit": "kWh_per_year",
       "measure_type": "flow",
       "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_meta_forest_city_andale_real_property_2026",
+      "project_id": "prj_study_im3_building_00460089167",
+      "metric_code": "study.account_assessed_value",
+      "value": 273242300,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "reported_snapshot",
+        "report_date": "2026-09-06",
+        "label": "Live Rutherford County parcel-layer snapshot queried September 6, 2026"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Four ANDALE LLC real-property parcels at Social Circle and Old Caroleen Road",
+        "county_fips": "37161",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_rutherford_energov_andale_20260906",
+      "source_locator": "ArcGIS REST owner query UPPER(Property_Owner) LIKE '%ANDALE%'; ParcelID 54822, 54821, 54708 and 62150; Total_Property_Value",
+      "notes": "Sum of the live layer's displayed land-plus-building values: $94,467,100, $496,100, $26,800 and $178,252,300. This is an undated current real-property snapshot, excludes personal property, and is not added to the broader ACFR Andale taxable-account series, which has a different scope and fiscal-year basis.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Account assessed property value",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_meta_forest_city_floor_area_2026",
+      "project_id": "prj_study_im3_building_00460089167",
+      "metric_code": "study.operating_property_floor_area",
+      "value": 789000,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "source_year",
+        "year": 2026,
+        "label": "Undated current contractor project profile reviewed in 2026"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Meta Forest City campus project scope reported by Fortis Construction",
+        "county_fips": "37161",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_fortis_meta_forest_city_2026",
+      "source_locator": "Project profile fields: Client, location and Square Feet",
+      "notes": "Contractor-reported project area, not occupied floor area, data-hall area, utilization or the selected inventory building's area. DPR separately describes two 370,000-square-foot buildings; the different scopes are retained in notes and are not added together.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Reported operating property floor area",
+      "category": "operations",
+      "unit": "square_feet",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_meta_forest_city_xrail_grant_2024",
+      "project_id": "prj_study_im3_building_00460089167",
+      "metric_code": "study.direct_community_contribution",
+      "value": 250000,
+      "value_qualifier": "greater_than",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "calendar_year",
+        "year": 2024,
+        "label": "Meta grant reported by Isothermal Community College in August 2024"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Meta grant for Isothermal Community College XRAIL serving Polk and Rutherford counties",
+        "county_fips": "37161",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_isothermal_meta_xrail_2024",
+      "source_locator": "Opening paragraph and Forest City Data Center partnership context",
+      "notes": "Recipient-reported grant threshold. It is not an annual campus operating expense and may be included in Meta's separate $6.4 million cumulative Rutherford-area funding claim, so the amounts must not be added without recipient-level reconciliation.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Direct community contribution",
+      "category": "community",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_meta_forest_city_barn_grant_2025",
+      "project_id": "prj_study_im3_building_00460089167",
+      "metric_code": "study.direct_community_contribution",
+      "value": 300000,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "cumulative",
+        "report_date": "2025-06-30",
+        "label": "Meta Grant (BARN) received in prior years through June 30, 2025"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Meta grant for the Forest City Park Square Depot / Rutherford BARN project",
+        "county_fips": "37161",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_forest_city_audit_2025",
+      "pdf_page": 71,
+      "printed_page": "63",
+      "source_locator": "General Capital Project Fund schedule, Meta Grant (BARN) row",
+      "notes": "Audited supplementary schedule amount received in prior years; the exact receipt year is not stated. It may overlap Meta's separate cumulative Rutherford-area funding claim and is not added to that operator total.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Direct community contribution",
+      "category": "community",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
     }
   ],
   "economic_sources": [
@@ -1147,1041 +1672,65 @@
       "retrieved_on": "2026-09-05",
       "review_method": "web_pdf_text",
       "notes": "Facility tables report Forest City electricity consumption of 535,555 MWh, water withdrawal of 16 megaliters, zero market-based Scope 2 emissions and 144,104 metric tons CO2e of location-based Scope 2 emissions for 2024. Values are rounded to whole displayed units and the methodology permits utility, meter, design-estimate or proxy inputs where applicable. Only electricity is normalized as a canonical source record because the shared evidence metric registry lacks compatible annual water-withdrawal and facility-emissions definitions."
+    },
+    {
+      "source_id": "src_study_rutherford_energov_andale_20260906",
+      "title": "Rutherford County EnerGov parcel layer - ANDALE LLC query",
+      "url": "https://gis.rutherfordcountync.gov/server/rest/services/EnerGov/EnerGov/MapServer/3",
+      "publisher": "Rutherford County, North Carolina",
+      "source_type": "assessor_record",
+      "publication_date": {
+        "precision": "unknown"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "structured_data",
+      "notes": "The exact owner query returned parcels 54822, 54821, 54708 and 62150 at 284 Social Circle, 0 Old Caroleen Road, 0 Social Circle and 408 Social Circle. Their displayed acreages sum to 153.11 and their land-plus-building Total_Property_Value fields sum to $273,242,300; the layer does not date the assessment cycle or expose personal-property values."
+    },
+    {
+      "source_id": "src_study_fortis_meta_forest_city_2026",
+      "title": "Meta, Forest City Campus",
+      "url": "https://fortisconstruction.com/project/meta-forest-city-campus/",
+      "publisher": "Fortis Construction",
+      "source_type": "other",
+      "publication_date": {
+        "precision": "unknown"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_page",
+      "notes": "The project profile identifies Meta as client, Forest City as location, and 789,000 square feet as project scope. It does not define occupied area, data-hall area, current utilization, construction cost, payroll, or the selected inventory building's share."
+    },
+    {
+      "source_id": "src_study_isothermal_meta_xrail_2024",
+      "title": "Isothermal Community College partners with Meta to create high-tech lab",
+      "url": "https://www.isothermal.edu/newscenter/2024/08/isothermal-community-college-partners-with-meta-to-create-high-tech-lab-to-foster-innovation-and-tech-entrepreneurship.html",
+      "publisher": "Isothermal Community College",
+      "source_type": "other",
+      "publication_date": {
+        "precision": "year",
+        "year": 2024
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_page",
+      "notes": "The grant recipient reports a Meta grant of more than $250,000 for an Extended Reality and Artificial Intelligence Lab serving Polk and Rutherford counties and explicitly connects the partnership to Meta's Forest City Data Center community activity."
+    },
+    {
+      "source_id": "src_study_forest_city_audit_2025",
+      "title": "Town of Forest City Annual Financial Report for the Year Ended June 30, 2025",
+      "url": "https://www.townofforestcity.com/sites/default/files/uploads/government/transparency/town-of-forest-city-2025-audit.pdf",
+      "publisher": "Town of Forest City, North Carolina",
+      "source_type": "local_government_record",
+      "publication_date": {
+        "precision": "day",
+        "date": "2025-11-30"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_pdf_text",
+      "notes": "The audited supplementary schedule reports a $300,000 Meta Grant (BARN), all received in prior years, for the Park Square Depot capital project. The report also shows a $5,070,136 FY2025 economic-development incentive expenditure but does not name its recipient, so that line is not encoded as a Meta record."
     }
   ],
-  "economic_scope_note": "Reviewed evidence batches at campus or company/county scope. No record is allocated to an individual inventory building. Source checking establishes what a document reports, not an independent audit or causal attribution. Monetary figures are nominal. Peak workforce is distinct from annual employment; source-year labels do not establish fiscal-year boundaries. Original forecasts remain forecasts until realization is verified. No cross-record benefit total is defined. Cumulative project costs are not annual expenditure. Tax receipts and incentive payments remain separate, with inferred taxpayer links disclosed. Contextual research updates do not count as economic amounts. Account tax bills are distinct from cash receipts and incentive-program fees. Tax years, calendar years and fiscal years retain their source basis; separate taxpayer accounts are not consolidated. Municipal developer rebates and taxpayer valuations have distinct subjects. Estimated actual property value and tax capacity are not tax receipts; payable-year valuations retain their earlier assessment date. Taxpayer values expressed in millions retain approximate precision and account-level separation. A current-year table can use an older valuation date and is not converted into an annual series. Facility real-property and business-personal-property accounts remain separate, and address-label discrepancies are disclosed. Michigan Industrial Facilities Tax accounts remain distinct from the underlying real parcel and from post-expiration personal-property accounts; annual account totals are not recipient-level government receipts. Permit construction values are administrative project amounts, not verified expenditure, and separate permits are not combined without proof that their scopes do not overlap. Repeated maintenance-year assessments are annual parcel stocks, not new investment flows. Mixed-use parcel assessments and taxable values are retained at whole-parcel scope and are not allocated to a data-center tenant or function by floor area. Operator-reported jobs supported remain distinct from direct employees and FTEs. Approved infrastructure grants are documented public commitments rather than verified disbursements or total public costs. Cumulative community funding remains separate from tax receipts, payroll and modeled multiplier effects. Reported facility power capacity is not measured electricity consumption or peak demand. Permit-listed emergency generators are not runtime, fuel-use or actual-emissions observations. A city largest-taxpayer table's personal-property assessment remains separate from the leasehold real-property account, tax bills, receipts and capital expenditure. TIF loan principal is financing rather than a grant or general-fund receipt; project-generated tax revenue pledged to repayment is retained as a separate public-financing flow and is not added to gross parcel distributions. Water-withdrawal and consumptive permit capacities are regulatory limits rather than measured use. Development-agreement local-labor preferences are requirements rather than realized participation, and operating employee snapshots remain distinct from customers' on-site staff and jobs forecasts. Audited City bond statements distinguish issuance draws, year-end principal, annual principal retired, interest and fees, pledged TIF revenue, debt-service-fund transfers and future principal-plus-interest commitments. These measures are not summed into a benefit or subsidy total. City pledged revenue, City debt-service-fund transfers and the private fund's project TIF revenue applied to loan repayment retain their separate source definitions because only the 2022 transfer and private-fund amount agree exactly. Developer testimony in public meeting minutes is retained as a source-attributed cumulative lower bound; local-contractor spending is not converted into payroll, worker counts, household spending or multiplier effects. Economic-improvement-district cost estimates and maximum owner assessments remain source projections until bond issuance, an assessment schedule, collections and expenditures are verified. A statutory financing cap is not a tax receipt, public expenditure or subsidy. Audited private equipment-financing balances are debt stocks rather than construction spending, public support or community benefit. Reported floor area and occupied-share values describe operating scale and utilization, not employment, revenue, power use or economic output. Contractor and engineer case studies document supplier roles and completion timing but do not establish payment amounts, worker residence, payroll or multiplier effects. State incentive contract amounts, expected jobs and paid-or-certified-to-date fields remain distinct; a zero paid/certified balance at an earlier reporting cutoff does not imply no later claims. Public charging-infrastructure awards are commitments rather than verified disbursements, private project investment or operating benefits. Qualitative payment descriptions without a defensible numeric bound remain research context rather than quantitative records. Program-reported actual qualified investment, certified tax-exemption value and certified tax-credit value remain separate cumulative measures; none is converted into annual spending, a cash grant, local revenue or causal impact. County Business Patterns observations are county-industry context, not project contributions: establishment counts are employer locations rather than data-center facilities, March employment is not an annual average, annual payroll spans the full NAICS cell, and disclosure noise, classification changes and geographic assignment limit comparisons. No CBP change is attributed to a study project. Project fragments: prj_study_im3_building_00364289074: Public-source review for the Microsoft facility at 5150 Rogers Road and explicitly labeled wider Microsoft/Bexar County activity. The exact-site ordinance and permit records are retained separately from later company/county and Greater San Antonio disclosures. Permit value is an administrative construction amount, the original investment and employment figures are commitments, the 2013 employment threshold is a reported lower bound, and water use is a source projection rather than metered consumption. No Bexar-and-Medina total is allocated to this building. Actual annual construction spending, worker residence, payroll, vendor payments, operating purchases, recipient-level tax receipts, same-scope public-service cost, electricity use, wastewater, emissions, and annual community transfers remain unobserved. prj_study_im3_building_00377585075: DET01-specific direct-evidence follow-up. The operator data sheet supplies current facility-area and rated-power observations at 21005 Lahser Road. The 2014 operator release bounds the initial launch chronology but supplies no quantitative construction, supplier, payroll, community-funding, resource-use or public-cost observation. The values below are source-reported specifications, not audited utilization, expenditure or impact measures. prj_study_im3_building_00460089167: Public-source follow-up adds one facility-level 2024 electricity observation from Meta's environmental data index. The same source's rounded Forest City water-withdrawal and Scope 2 emissions values remain contextual until compatible canonical metric definitions exist. A North Carolina supplier announcement is retained only as context because its U.S.-wide contract value and Hickory manufacturing expansion cannot be allocated to Forest City or Rutherford County. prj_study_im3_building_00464097467: Second-pass public-evidence audit for Apple's Washoe County data-center campus at 21505 Reno Technology Parkway West and its 2024 expansion application. GOED audit findings, application forecasts, county permit values, parcel assessments, a water-right allocation, operator-reported electricity use, and recipient-reported donation bands remain separate evidence states and scopes. Permit values are administrative amounts and are not summed because overlapping scopes cannot be ruled out. Assessment values are parcel stocks, not investment or tax receipts. The 125 acre-foot water right is regulatory capacity, not measured use. Food Bank gifts are company-region transfers, not campus-attributable annual spending. No campus total is allocated to the selected mapped building; the four-building campus, later buildout cases, downtown Reno warehouse, supporting renewable projects, fire-station parcel, and more-than-200-person support statement are not collapsed into one footprint. No Switch Citadel or Storey County amount enters this fragment. Vendor payments, worker residence, taxes received by jurisdiction, realized 2024 abatement, same-scope public-service cost, wastewater, and building-level electricity or water remain unobserved. prj_study_im3_building_00664938835: Second-pass public-evidence audit for Expedient's adaptive reuse of the pre-existing data-center building at 4777 W Ironwood Drive. The review searched Franklin planning, agenda, assessment, permit, water and sewer materials; Milwaukee County tax and deed-record access points; Wisconsin DOR, WEDC, DFI and PSC records; operator press, specification, career, ESG and community pages; lease, financing, carrier and vendor disclosures; and archived official pages for 2007-2026. Opening-day and current operator specifications remain separate dated snapshots because the reported area and capacity changed. The county portal now establishes a 2021-2025 parcel-tax principal series, but not Expedient's incidence under the lease. The 2022 ownership transfer, assessments, estimated permit values, tax payments and hiring plan remain non-additive. No source was found for actual construction outlays, realized site employment or payroll, local procurement, Milwaukee-area community transfers, metered resources, project-attributable public costs or a fiscal net. prj_study_im3_building_01073720208: Second-pass public-evidence audit for Google's Council Bluffs data-center activity, retaining the selected inventory building as the project key while leaving campus, taxpayer-account, company-county, and state-award facts at their reported scopes. The audit distinguishes completed IEDA contracts 08-HQJC-030 and 12-HQJP-051 from the 2022 award still in performance; permit valuations remain administrative amounts rather than expenditure; assessed and taxable values remain stocks; bills remain distinct from payments; and community grants remain recipient- and period-specific. The Pottawattamie County tax portal now supplies a paid 2018-2024 series for the principal Tetra parcel and an unpaid 2025 bill for the newer Questa parcel. No value is inferred for sales-tax exemptions, the local abatement schedule, franchise-fee adjustment, electricity, supplier retention, building-level water, marginal public-service cost, or net fiscal position. Models without defensible project allocation or transferable parameters were removed even though that leaves the eight-category account incomplete.",
+  "economic_scope_note": "Reviewed evidence batches at campus or company/county scope. No record is allocated to an individual inventory building. Source checking establishes what a document reports, not an independent audit or causal attribution. Monetary figures are nominal. Peak workforce is distinct from annual employment; source-year labels do not establish fiscal-year boundaries. Original forecasts remain forecasts until realization is verified. No cross-record benefit total is defined. Cumulative project costs are not annual expenditure. Tax receipts and incentive payments remain separate, with inferred taxpayer links disclosed. Contextual research updates do not count as economic amounts. Account tax bills are distinct from cash receipts and incentive-program fees. Tax years, calendar years and fiscal years retain their source basis; separate taxpayer accounts are not consolidated. Municipal developer rebates and taxpayer valuations have distinct subjects. Estimated actual property value and tax capacity are not tax receipts; payable-year valuations retain their earlier assessment date. Taxpayer values expressed in millions retain approximate precision and account-level separation. A current-year table can use an older valuation date and is not converted into an annual series. Facility real-property and business-personal-property accounts remain separate, and address-label discrepancies are disclosed. Michigan Industrial Facilities Tax accounts remain distinct from the underlying real parcel and from post-expiration personal-property accounts; annual account totals are not recipient-level government receipts. Permit construction values are administrative project amounts, not verified expenditure, and separate permits are not combined without proof that their scopes do not overlap. Repeated maintenance-year assessments are annual parcel stocks, not new investment flows. Mixed-use parcel assessments and taxable values are retained at whole-parcel scope and are not allocated to a data-center tenant or function by floor area. Operator-reported jobs supported remain distinct from direct employees and FTEs. Approved infrastructure grants are documented public commitments rather than verified disbursements or total public costs. Cumulative community funding remains separate from tax receipts, payroll and modeled multiplier effects. Reported facility power capacity is not measured electricity consumption or peak demand. Permit-listed emergency generators are not runtime, fuel-use or actual-emissions observations. A city largest-taxpayer table's personal-property assessment remains separate from the leasehold real-property account, tax bills, receipts and capital expenditure. TIF loan principal is financing rather than a grant or general-fund receipt; project-generated tax revenue pledged to repayment is retained as a separate public-financing flow and is not added to gross parcel distributions. Water-withdrawal and consumptive permit capacities are regulatory limits rather than measured use. Development-agreement local-labor preferences are requirements rather than realized participation, and operating employee snapshots remain distinct from customers' on-site staff and jobs forecasts. Audited City bond statements distinguish issuance draws, year-end principal, annual principal retired, interest and fees, pledged TIF revenue, debt-service-fund transfers and future principal-plus-interest commitments. These measures are not summed into a benefit or subsidy total. City pledged revenue, City debt-service-fund transfers and the private fund's project TIF revenue applied to loan repayment retain their separate source definitions because only the 2022 transfer and private-fund amount agree exactly. Developer testimony in public meeting minutes is retained as a source-attributed cumulative lower bound; local-contractor spending is not converted into payroll, worker counts, household spending or multiplier effects. Economic-improvement-district cost estimates and maximum owner assessments remain source projections until bond issuance, an assessment schedule, collections and expenditures are verified. A statutory financing cap is not a tax receipt, public expenditure or subsidy. Audited private equipment-financing balances are debt stocks rather than construction spending, public support or community benefit. Reported floor area and occupied-share values describe operating scale and utilization, not employment, revenue, power use or economic output. Contractor and engineer case studies document supplier roles and completion timing but do not establish payment amounts, worker residence, payroll or multiplier effects. State incentive contract amounts, expected jobs and paid-or-certified-to-date fields remain distinct; a zero paid/certified balance at an earlier reporting cutoff does not imply no later claims. Public charging-infrastructure awards are commitments rather than verified disbursements, private project investment or operating benefits. Qualitative payment descriptions without a defensible numeric bound remain research context rather than quantitative records. Program-reported actual qualified investment, certified tax-exemption value and certified tax-credit value remain separate cumulative measures; none is converted into annual spending, a cash grant, local revenue or causal impact. County Business Patterns observations are county-industry context, not project contributions: establishment counts are employer locations rather than data-center facilities, March employment is not an annual average, annual payroll spans the full NAICS cell, and disclosure noise, classification changes and geographic assignment limit comparisons. No CBP change is attributed to a study project. Project fragments: prj_study_im3_building_00364289074: Corrective public-source audit for Microsoft's data-center property at 5150 Rogers Road and explicitly labeled wider Microsoft/Bexar County activity. Exact-site ordinance, permit, appraisal, and tax-account records remain separate from later campuses and regional disclosures; the three appraisal accounts and two taxable-account payments are not consolidated. Permit value is administrative, the original investment and employment figures are commitments, the 2013 employment threshold is a reported lower bound, and the water quantity is a projection rather than metered consumption. No Bexar-and-Medina total is allocated to this property. Annual construction expenditure, construction labor and residence, supplier payments, operating payroll and purchases, recipient-level tax distributions, marginal public-service cost, electricity consumption, water withdrawal or consumption, wastewater, actual emissions, and a recurring facility-level community series remain unobserved after the documented searches. prj_study_im3_building_00377585075: Corrective DET01 evidence audit. Official parcel, permit, tax, water-account, state-certificate, EPA and operator records are retained as direct observations or clearly labeled source forecasts. Conflicting floor-area figures remain separate because their reporting definitions differ. Construction cost, realized jobs, supplier payments, community funding, electricity, emissions, wastewater, actual public-service cost and causal county effects remain unbounded rather than being filled with transferred assumptions. prj_study_im3_building_00460089167: Corrective primary-source audit adds current Andale parcel assessment, contractor-reported campus floor area, and two recipient- or government-reported Meta community grants. The search trail records useful and negative results across identity, tax, construction, jobs, suppliers, utilities, water, permits, public costs, incentives, community funding, and county comparison inputs. Campus-wide facts remain unallocated to the selected inventory building, overlapping community amounts are not added together, and unavailable supplier, payroll, utility-billing, discharge, generator, and marginal-service-cost amounts remain explicit gaps. prj_study_im3_building_00464097467: Second-pass public-evidence audit for Apple's Washoe County data-center campus at 21505 Reno Technology Parkway West and its 2024 expansion application. GOED audit findings, application forecasts, county permit values, parcel assessments, a water-right allocation, operator-reported electricity use, and recipient-reported donation bands remain separate evidence states and scopes. Permit values are administrative amounts and are not summed because overlapping scopes cannot be ruled out. Assessment values are parcel stocks, not investment or tax receipts. The 125 acre-foot water right is regulatory capacity, not measured use. Food Bank gifts are company-region transfers, not campus-attributable annual spending. No campus total is allocated to the selected mapped building; the four-building campus, later buildout cases, downtown Reno warehouse, supporting renewable projects, fire-station parcel, and more-than-200-person support statement are not collapsed into one footprint. No Switch Citadel or Storey County amount enters this fragment. Vendor payments, worker residence, taxes received by jurisdiction, realized 2024 abatement, same-scope public-service cost, wastewater, and building-level electricity or water remain unobserved. prj_study_im3_building_00664938835: Second-pass public-evidence audit for Expedient's adaptive reuse of the pre-existing data-center building at 4777 W Ironwood Drive. The review searched Franklin planning, agenda, assessment, permit, water and sewer materials; Milwaukee County tax and deed-record access points; Wisconsin DOR, WEDC, DFI and PSC records; operator press, specification, career, ESG and community pages; lease, financing, carrier and vendor disclosures; and archived official pages for 2007-2026. Opening-day and current operator specifications remain separate dated snapshots because the reported area and capacity changed. The county portal now establishes a 2021-2025 parcel-tax principal series, but not Expedient's incidence under the lease. The 2022 ownership transfer, assessments, estimated permit values, tax payments and hiring plan remain non-additive. No source was found for actual construction outlays, realized site employment or payroll, local procurement, Milwaukee-area community transfers, metered resources, project-attributable public costs or a fiscal net. prj_study_im3_building_01073720208: Second-pass public-evidence audit for Google's Council Bluffs data-center activity, retaining the selected inventory building as the project key while leaving campus, taxpayer-account, company-county, and state-award facts at their reported scopes. The audit distinguishes completed IEDA contracts 08-HQJC-030 and 12-HQJP-051 from the 2022 award still in performance; permit valuations remain administrative amounts rather than expenditure; assessed and taxable values remain stocks; bills remain distinct from payments; and community grants remain recipient- and period-specific. The Pottawattamie County tax portal now supplies a paid 2018-2024 series for the principal Tetra parcel and an unpaid 2025 bill for the newer Questa parcel. No value is inferred for sales-tax exemptions, the local abatement schedule, franchise-fee adjustment, electricity, supplier retention, building-level water, marginal public-service cost, or net fiscal position. Models without defensible project allocation or transferable parameters were removed even though that leaves the eight-category account incomplete.",
   "evidence_version": "study-economic-evidence-1.37.0",
   "modeled_syntheses": [
-    {
-      "estimate_id": "est_study_meta_forest_city_annualized_capital",
-      "project_id": "prj_study_im3_building_00460089167",
-      "metric_code": "study.modeled_annualized_capital_spending",
-      "label": "Modeled annualized capital spending",
-      "category": "investment",
-      "unit": "USD_per_year",
-      "measure_type": "flow",
-      "basis": "modeled_synthesis",
-      "value": 50000000,
-      "period": {
-        "kind": "construction_period",
-        "start_date": "2010-11-11",
-        "end_date": "2026-04-14",
-        "label": "From the original campus announcement through the dated 2026 confirmation of the current cumulative investment floor; annualization uses a 10-20 active-year sensitivity"
-      },
-      "scope": {
-        "level": "campus",
-        "label": "Meta Forest City Data Center campus, Rutherford County, NC",
-        "county_fips": "37161",
-        "inventory_allocation": "unallocated"
-      },
-      "interval": {
-        "kind": "sensitivity_envelope",
-        "low": 37500000,
-        "central": 50000000,
-        "high": 75000000,
-        "interpretation": "Low, central and high values are an explicit sensitivity range, not a statistical confidence interval."
-      },
-      "contribution_channel": "direct",
-      "aggregation": {
-        "aggregation_id": "meta_forest_city_annualized_capital",
-        "role": "standalone",
-        "overlap_policy": "do_not_sum_outside_declared_total"
-      },
-      "parameters": [
-        {
-          "name": "reported_cumulative_investment_floor",
-          "value": 750000000,
-          "unit": "USD",
-          "provenance": {
-            "kind": "claim",
-            "reference_id": "clm_study_meta_forest_city_cumulative_investment_2026",
-            "detail": "Operator-reported cumulative North Carolina data-center investment floor"
-          },
-          "transformation": "Serves as the broad capital basis before construction-equipment allocation"
-        },
-        {
-          "name": "low_annualization_years",
-          "value": 20,
-          "unit": "years",
-          "provenance": {
-            "kind": "assumption",
-            "detail": "Long active-construction window used for the low annual flow"
-          },
-          "transformation": "Divides cumulative capital"
-        },
-        {
-          "name": "central_annualization_years",
-          "value": 15,
-          "unit": "years",
-          "provenance": {
-            "kind": "assumption",
-            "detail": "Central active-construction window"
-          },
-          "transformation": "Divides cumulative capital"
-        },
-        {
-          "name": "high_annualization_years",
-          "value": 10,
-          "unit": "years",
-          "provenance": {
-            "kind": "assumption",
-            "detail": "Short active-construction window used for the high annual flow"
-          },
-          "transformation": "Divides cumulative capital"
-        }
-      ],
-      "confidence": "low",
-      "confidence_rationale": "The calculation is reproducible but relies on transferred public benchmarks or explicit assumptions where direct local observations are unavailable.",
-      "decision_relevance": "Supplies a comparable annual construction-capital flow without relabeling the cumulative operator total as one-year spending.",
-      "evidence_search": {
-        "direct_observation_status": "partial",
-        "source_projection_status": "available_separately",
-        "remaining_evidence_gap": "Audited annual capital ledger, phase allocations, equipment shares, and replacement-versus-expansion detail"
-      },
-      "derivation": {
-        "method": "sensitivity_analysis",
-        "model_version": "meta-forest-city-account-1.0.0",
-        "formula": "reported cumulative investment floor ÷ assumed active construction years",
-        "input_claim_ids": [
-          "clm_study_meta_forest_city_cumulative_investment_2026"
-        ],
-        "input_source_ids": [
-          "src_study_meta_forest_city_factsheet_2026"
-        ],
-        "assumptions": [
-          "All transferred coefficients, conversion factors, and allocation shares are exposed as named parameters.",
-          "The estimate must not be presented as observed, audited, source-reported, or causal."
-        ]
-      },
-      "limitations": [
-        "Annualization smooths uneven construction and equipment-refresh phases.",
-        "The cumulative floor is not an audited expenditure ledger and is not allocated to individual buildings."
-      ],
-      "presentation": "modeled_not_observed_or_audited",
-      "notes": "Low-confidence annualization of a cumulative operator-reported investment floor.",
-      "reviewed_on": "2026-09-05"
-    },
-    {
-      "estimate_id": "est_study_meta_forest_city_local_construction_spend",
-      "project_id": "prj_study_im3_building_00460089167",
-      "metric_code": "study.modeled_local_construction_spending",
-      "label": "Modeled construction-eligible spending retained locally",
-      "category": "suppliers",
-      "unit": "USD",
-      "measure_type": "flow",
-      "basis": "modeled_synthesis",
-      "value": 150000000,
-      "period": {
-        "kind": "construction_period",
-        "start_date": "2010-11-11",
-        "end_date": "2026-04-14",
-        "label": "From the original campus announcement through the dated 2026 confirmation of the current cumulative investment floor; annualization uses a 10-20 active-year sensitivity"
-      },
-      "scope": {
-        "level": "campus",
-        "label": "Meta Forest City Data Center campus, Rutherford County, NC",
-        "county_fips": "37161",
-        "inventory_allocation": "unallocated"
-      },
-      "interval": {
-        "kind": "sensitivity_envelope",
-        "low": 46875000,
-        "central": 150000000,
-        "high": 309375000,
-        "interpretation": "Low, central and high values are an explicit sensitivity range, not a statistical confidence interval."
-      },
-      "contribution_channel": "direct",
-      "aggregation": {
-        "aggregation_id": "meta_forest_city_local_construction_spend",
-        "role": "standalone",
-        "overlap_policy": "do_not_sum_outside_declared_total"
-      },
-      "parameters": [
-        {
-          "name": "reported_cumulative_investment_floor",
-          "value": 750000000,
-          "unit": "USD",
-          "provenance": {
-            "kind": "claim",
-            "reference_id": "clm_study_meta_forest_city_cumulative_investment_2026",
-            "detail": "Operator-reported cumulative North Carolina data-center investment floor"
-          },
-          "transformation": "Serves as the broad capital basis before construction-equipment allocation"
-        },
-        {
-          "name": "low_construction_cost_share",
-          "value": 0.25,
-          "unit": "ratio",
-          "provenance": {
-            "kind": "assumption",
-            "detail": "Lower share of broad capital treated as construction eligible"
-          },
-          "transformation": "Excludes IT equipment before applying construction benchmarks"
-        },
-        {
-          "name": "central_construction_cost_share",
-          "value": 0.5,
-          "unit": "ratio",
-          "provenance": {
-            "kind": "assumption",
-            "detail": "Central share of broad capital treated as construction eligible"
-          },
-          "transformation": "Excludes IT equipment before applying construction benchmarks"
-        },
-        {
-          "name": "high_construction_cost_share",
-          "value": 0.75,
-          "unit": "ratio",
-          "provenance": {
-            "kind": "assumption",
-            "detail": "Upper share of broad capital treated as construction eligible"
-          },
-          "transformation": "Excludes IT equipment before applying construction benchmarks"
-        },
-        {
-          "name": "low_local_purchase_share",
-          "value": 0.25,
-          "unit": "ratio",
-          "provenance": {
-            "kind": "assumption",
-            "detail": "Lower host-region purchase share"
-          },
-          "transformation": "Allocates construction-eligible spending to host-region suppliers"
-        },
-        {
-          "name": "central_local_purchase_share",
-          "value": 0.4,
-          "unit": "ratio",
-          "provenance": {
-            "kind": "assumption",
-            "detail": "Central host-region purchase share"
-          },
-          "transformation": "Allocates construction-eligible spending to host-region suppliers"
-        },
-        {
-          "name": "high_local_purchase_share",
-          "value": 0.55,
-          "unit": "ratio",
-          "provenance": {
-            "kind": "assumption",
-            "detail": "Upper host-region purchase share"
-          },
-          "transformation": "Allocates construction-eligible spending to host-region suppliers"
-        }
-      ],
-      "confidence": "low",
-      "confidence_rationale": "The calculation is reproducible but relies on transferred public benchmarks or explicit assumptions where direct local observations are unavailable.",
-      "decision_relevance": "Populates the supplier channel without treating broad equipment capital or the U.S.-wide Corning agreement as local Forest City purchases.",
-      "evidence_search": {
-        "direct_observation_status": "partial",
-        "source_projection_status": "available_separately",
-        "remaining_evidence_gap": "Audited construction-only vendor payments, vendor addresses, and Rutherford County retention"
-      },
-      "derivation": {
-        "method": "sensitivity_analysis",
-        "model_version": "meta-forest-city-account-1.0.0",
-        "formula": "reported cumulative investment floor × construction-cost share × local-purchase share",
-        "input_claim_ids": [
-          "clm_study_meta_forest_city_cumulative_investment_2026"
-        ],
-        "input_source_ids": [
-          "src_study_meta_forest_city_factsheet_2026"
-        ],
-        "assumptions": [
-          "All transferred coefficients, conversion factors, and allocation shares are exposed as named parameters.",
-          "The estimate must not be presented as observed, audited, source-reported, or causal."
-        ]
-      },
-      "limitations": [
-        "Construction-cost and local-purchase shares are assumptions.",
-        "The broad capital source does not isolate building construction from IT equipment or identify vendor geography."
-      ],
-      "presentation": "modeled_not_observed_or_audited",
-      "notes": "Local construction-purchasing sensitivity; not observed supplier revenue.",
-      "reviewed_on": "2026-09-05"
-    },
-    {
-      "estimate_id": "est_study_meta_forest_city_construction_job_years_total",
-      "project_id": "prj_study_im3_building_00460089167",
-      "metric_code": "study.modeled_construction_job_years_total",
-      "label": "Modeled Prince William benchmark-equivalent construction job-years",
-      "category": "construction",
-      "unit": "job_years",
-      "measure_type": "flow",
-      "basis": "modeled_synthesis",
-      "value": 3280.91,
-      "period": {
-        "kind": "construction_period",
-        "start_date": "2010-11-11",
-        "end_date": "2026-04-14",
-        "label": "From the original campus announcement through the dated 2026 confirmation of the current cumulative investment floor; annualization uses a 10-20 active-year sensitivity"
-      },
-      "scope": {
-        "level": "campus",
-        "label": "Meta Forest City Data Center campus, Rutherford County, NC",
-        "county_fips": "37161",
-        "inventory_allocation": "unallocated"
-      },
-      "interval": {
-        "kind": "sensitivity_envelope",
-        "low": 1640.46,
-        "central": 3280.91,
-        "high": 4921.37,
-        "interpretation": "Low, central and high values are an explicit sensitivity range, not a statistical confidence interval."
-      },
-      "contribution_channel": "total",
-      "aggregation": {
-        "aggregation_id": "meta_forest_city_construction_job_years_total",
-        "role": "standalone",
-        "overlap_policy": "do_not_sum_outside_declared_total"
-      },
-      "parameters": [
-        {
-          "name": "reported_cumulative_investment_floor",
-          "value": 750000000,
-          "unit": "USD",
-          "provenance": {
-            "kind": "claim",
-            "reference_id": "clm_study_meta_forest_city_cumulative_investment_2026",
-            "detail": "Operator-reported cumulative North Carolina data-center investment floor"
-          },
-          "transformation": "Serves as the broad capital basis before construction-equipment allocation"
-        },
-        {
-          "name": "low_construction_cost_share",
-          "value": 0.25,
-          "unit": "ratio",
-          "provenance": {
-            "kind": "assumption",
-            "detail": "Lower share of broad capital treated as construction eligible"
-          },
-          "transformation": "Excludes IT equipment before applying construction benchmarks"
-        },
-        {
-          "name": "central_construction_cost_share",
-          "value": 0.5,
-          "unit": "ratio",
-          "provenance": {
-            "kind": "assumption",
-            "detail": "Central share of broad capital treated as construction eligible"
-          },
-          "transformation": "Excludes IT equipment before applying construction benchmarks"
-        },
-        {
-          "name": "high_construction_cost_share",
-          "value": 0.75,
-          "unit": "ratio",
-          "provenance": {
-            "kind": "assumption",
-            "detail": "Upper share of broad capital treated as construction eligible"
-          },
-          "transformation": "Excludes IT equipment before applying construction benchmarks"
-        },
-        {
-          "name": "total_job_years_per_million",
-          "value": 8.7491,
-          "unit": "ratio",
-          "provenance": {
-            "kind": "source",
-            "reference_id": "src_study_pwc_data_center_market_2021",
-            "detail": "Prince William construction contribution coefficient for construction cost excluding IT equipment"
-          },
-          "transformation": "Multiplies construction-eligible capital in millions"
-        }
-      ],
-      "confidence": "low",
-      "confidence_rationale": "The calculation is reproducible but relies on transferred public benchmarks or explicit assumptions where direct local observations are unavailable.",
-      "decision_relevance": "Provides a benchmark-equivalent construction-employment range while excluding a visible share for IT equipment.",
-      "evidence_search": {
-        "direct_observation_status": "partial",
-        "source_projection_status": "available_separately",
-        "remaining_evidence_gap": "Observed construction-only spending, worker hours, payroll, residence, and annual job-years"
-      },
-      "derivation": {
-        "method": "input_output_multiplier",
-        "model_version": "meta-forest-city-account-1.0.0",
-        "formula": "reported cumulative investment floor × construction-cost share × 8.7491 total job-years per $1 million",
-        "input_claim_ids": [
-          "clm_study_meta_forest_city_cumulative_investment_2026"
-        ],
-        "input_source_ids": [
-          "src_study_pwc_data_center_market_2021",
-          "src_study_meta_forest_city_factsheet_2026"
-        ],
-        "assumptions": [
-          "All transferred coefficients, conversion factors, and allocation shares are exposed as named parameters.",
-          "The estimate must not be presented as observed, audited, source-reported, or causal."
-        ]
-      },
-      "limitations": [
-        "Transferred Prince William County coefficient, not a Rutherford County input-output model.",
-        "Job-years are not peak workers, unique workers, or permanent jobs.",
-        "The construction-eligible share of the broad capital floor is assumed."
-      ],
-      "presentation": "modeled_not_observed_or_audited",
-      "notes": "Benchmark equivalent only; it does not convert the 2010 worker forecast into realized employment.",
-      "reviewed_on": "2026-09-05",
-      "multiplier_provenance": {
-        "source_id": "src_study_pwc_data_center_market_2021",
-        "model_name": "IMPLAN county contribution model reported by BAE",
-        "model_version": "Prince William County prototype-data-center study, 2021-dollar tables 7-8",
-        "geography": "Prince William County, Virginia benchmark transferred to Rutherford County, North Carolina",
-        "vintage": "IMPLAN model reported December 2021; underlying IMPLAN data vintage not disclosed",
-        "local_purchase_assumption": "Construction and operating scenarios expose their local-purchase or direct-FTE bases; no unreported local purchase is treated as observed.",
-        "channel_separation": "direct_indirect_induced_reported_separately"
-      }
-    },
-    {
-      "estimate_id": "est_study_meta_forest_city_construction_labor_income_total",
-      "project_id": "prj_study_im3_building_00460089167",
-      "metric_code": "study.modeled_construction_labor_income_total",
-      "label": "Modeled Prince William benchmark-equivalent construction labor income",
-      "category": "construction",
-      "unit": "USD",
-      "measure_type": "flow",
-      "basis": "modeled_synthesis",
-      "value": 198556363.65,
-      "period": {
-        "kind": "construction_period",
-        "start_date": "2010-11-11",
-        "end_date": "2026-04-14",
-        "label": "From the original campus announcement through the dated 2026 confirmation of the current cumulative investment floor; annualization uses a 10-20 active-year sensitivity"
-      },
-      "scope": {
-        "level": "campus",
-        "label": "Meta Forest City Data Center campus, Rutherford County, NC",
-        "county_fips": "37161",
-        "inventory_allocation": "unallocated"
-      },
-      "interval": {
-        "kind": "sensitivity_envelope",
-        "low": 99278181.83,
-        "central": 198556363.65,
-        "high": 297834545.48,
-        "interpretation": "Low, central and high values are an explicit sensitivity range, not a statistical confidence interval."
-      },
-      "contribution_channel": "total",
-      "aggregation": {
-        "aggregation_id": "meta_forest_city_construction_labor_income_total",
-        "role": "standalone",
-        "overlap_policy": "do_not_sum_outside_declared_total"
-      },
-      "parameters": [
-        {
-          "name": "reported_cumulative_investment_floor",
-          "value": 750000000,
-          "unit": "USD",
-          "provenance": {
-            "kind": "claim",
-            "reference_id": "clm_study_meta_forest_city_cumulative_investment_2026",
-            "detail": "Operator-reported cumulative North Carolina data-center investment floor"
-          },
-          "transformation": "Serves as the broad capital basis before construction-equipment allocation"
-        },
-        {
-          "name": "low_construction_cost_share",
-          "value": 0.25,
-          "unit": "ratio",
-          "provenance": {
-            "kind": "assumption",
-            "detail": "Lower share of broad capital treated as construction eligible"
-          },
-          "transformation": "Excludes IT equipment before applying construction benchmarks"
-        },
-        {
-          "name": "central_construction_cost_share",
-          "value": 0.5,
-          "unit": "ratio",
-          "provenance": {
-            "kind": "assumption",
-            "detail": "Central share of broad capital treated as construction eligible"
-          },
-          "transformation": "Excludes IT equipment before applying construction benchmarks"
-        },
-        {
-          "name": "high_construction_cost_share",
-          "value": 0.75,
-          "unit": "ratio",
-          "provenance": {
-            "kind": "assumption",
-            "detail": "Upper share of broad capital treated as construction eligible"
-          },
-          "transformation": "Excludes IT equipment before applying construction benchmarks"
-        },
-        {
-          "name": "total_labor_income_rate",
-          "value": 0.5294836364,
-          "unit": "ratio",
-          "provenance": {
-            "kind": "source",
-            "reference_id": "src_study_pwc_data_center_market_2021",
-            "detail": "Prince William construction labor-income coefficient for construction cost excluding IT equipment"
-          },
-          "transformation": "Multiplies construction-eligible capital"
-        }
-      ],
-      "confidence": "low",
-      "confidence_rationale": "The calculation is reproducible but relies on transferred public benchmarks or explicit assumptions where direct local observations are unavailable.",
-      "decision_relevance": "Provides a construction labor-income benchmark without applying the coefficient to the assumed equipment share.",
-      "evidence_search": {
-        "direct_observation_status": "partial",
-        "source_projection_status": "available_separately",
-        "remaining_evidence_gap": "Audited project payroll, construction-only spending, worker hours, and worker residence"
-      },
-      "derivation": {
-        "method": "input_output_multiplier",
-        "model_version": "meta-forest-city-account-1.0.0",
-        "formula": "reported cumulative investment floor × construction-cost share × 0.5294836364 total labor-income coefficient",
-        "input_claim_ids": [
-          "clm_study_meta_forest_city_cumulative_investment_2026"
-        ],
-        "input_source_ids": [
-          "src_study_pwc_data_center_market_2021",
-          "src_study_meta_forest_city_factsheet_2026"
-        ],
-        "assumptions": [
-          "All transferred coefficients, conversion factors, and allocation shares are exposed as named parameters.",
-          "The estimate must not be presented as observed, audited, source-reported, or causal."
-        ]
-      },
-      "limitations": [
-        "Transferred Prince William County coefficient, not a Rutherford County input-output model.",
-        "Labor income is not additive to output or supplier spending.",
-        "The construction-eligible share is assumed."
-      ],
-      "presentation": "modeled_not_observed_or_audited",
-      "notes": "Benchmark-equivalent labor income, not observed payroll.",
-      "reviewed_on": "2026-09-05",
-      "multiplier_provenance": {
-        "source_id": "src_study_pwc_data_center_market_2021",
-        "model_name": "IMPLAN county contribution model reported by BAE",
-        "model_version": "Prince William County prototype-data-center study, 2021-dollar tables 7-8",
-        "geography": "Prince William County, Virginia benchmark transferred to Rutherford County, North Carolina",
-        "vintage": "IMPLAN model reported December 2021; underlying IMPLAN data vintage not disclosed",
-        "local_purchase_assumption": "Construction and operating scenarios expose their local-purchase or direct-FTE bases; no unreported local purchase is treated as observed.",
-        "channel_separation": "direct_indirect_induced_reported_separately"
-      }
-    },
-    {
-      "estimate_id": "est_study_meta_forest_city_operating_fte_total",
-      "project_id": "prj_study_im3_building_00460089167",
-      "metric_code": "study.modeled_operating_fte_total",
-      "label": "Modeled total annual operating FTE",
-      "category": "operations",
-      "unit": "FTE",
-      "measure_type": "stock",
-      "basis": "modeled_synthesis",
-      "value": 653.58,
-      "period": {
-        "kind": "source_year",
-        "year": 2015,
-        "label": "Annual operating contribution scenario anchored to the October 22, 2015 snapshot of 100 existing positions"
-      },
-      "scope": {
-        "level": "campus",
-        "label": "Meta Forest City Data Center campus, Rutherford County, NC",
-        "county_fips": "37161",
-        "inventory_allocation": "unallocated"
-      },
-      "interval": {
-        "kind": "sensitivity_envelope",
-        "low": 490.18,
-        "central": 653.58,
-        "high": 816.98,
-        "interpretation": "Low, central and high values are an explicit sensitivity range, not a statistical confidence interval."
-      },
-      "contribution_channel": "total",
-      "aggregation": {
-        "aggregation_id": "meta_forest_city_operating_fte_total",
-        "role": "standalone",
-        "overlap_policy": "do_not_sum_outside_declared_total"
-      },
-      "parameters": [
-        {
-          "name": "reported_existing_positions",
-          "value": 100,
-          "unit": "employees",
-          "provenance": {
-            "kind": "claim",
-            "reference_id": "clm_study_meta_forest_city_existing_positions_2015",
-            "detail": "Existing positions reported in the 2015 state infrastructure-grant announcement"
-          },
-          "transformation": "Serves as the central operating-position anchor"
-        },
-        {
-          "name": "low_direct_fte_ratio",
-          "value": 0.75,
-          "unit": "ratio",
-          "provenance": {
-            "kind": "assumption",
-            "detail": "Lower FTE-equivalent ratio applied to reported positions"
-          },
-          "transformation": "Reflects unknown employee, contractor, part-time, and vacancy composition"
-        },
-        {
-          "name": "central_direct_fte_ratio",
-          "value": 1,
-          "unit": "ratio",
-          "provenance": {
-            "kind": "assumption",
-            "detail": "Central FTE-equivalent ratio applied to reported positions"
-          },
-          "transformation": "Treats each reported position as one scenario FTE"
-        },
-        {
-          "name": "high_direct_fte_ratio",
-          "value": 1.25,
-          "unit": "ratio",
-          "provenance": {
-            "kind": "assumption",
-            "detail": "Upper FTE-equivalent ratio applied to reported positions"
-          },
-          "transformation": "Sensitivity for omitted ongoing staffing"
-        },
-        {
-          "name": "total_fte_per_direct_fte",
-          "value": 6.5358,
-          "unit": "ratio",
-          "provenance": {
-            "kind": "source",
-            "reference_id": "src_study_pwc_data_center_market_2021",
-            "detail": "Prince William operating contribution coefficient"
-          },
-          "transformation": "Multiplies scenario direct FTE"
-        }
-      ],
-      "confidence": "low",
-      "confidence_rationale": "The calculation is reproducible but relies on transferred public benchmarks or explicit assumptions where direct local observations are unavailable.",
-      "decision_relevance": "Completes a dated annual operating-employment contribution scenario while preserving uncertainty in the position-to-FTE translation.",
-      "evidence_search": {
-        "direct_observation_status": "partial",
-        "source_projection_status": "available_separately",
-        "remaining_evidence_gap": "Observed direct FTE, contractors, supply-chain employment, worker residence, and an annual payroll census"
-      },
-      "derivation": {
-        "method": "input_output_multiplier",
-        "model_version": "meta-forest-city-account-1.0.0",
-        "formula": "reported existing positions × direct-FTE ratio × 6.5358 total-FTE coefficient",
-        "input_claim_ids": [
-          "clm_study_meta_forest_city_existing_positions_2015"
-        ],
-        "input_source_ids": [
-          "src_study_pwc_data_center_market_2021",
-          "src_study_nc_ria_forest_city_water_20151022"
-        ],
-        "assumptions": [
-          "All transferred coefficients, conversion factors, and allocation shares are exposed as named parameters.",
-          "The estimate must not be presented as observed, audited, source-reported, or causal."
-        ]
-      },
-      "limitations": [
-        "The 2015 source does not define employee versus contractor or FTE status.",
-        "The Virginia coefficient is transferred to Rutherford County.",
-        "The total includes direct, indirect, and induced channels and must not be added to them."
-      ],
-      "presentation": "modeled_not_observed_or_audited",
-      "notes": "Annual contribution scenario, not a current headcount or causal employment effect.",
-      "reviewed_on": "2026-09-05",
-      "multiplier_provenance": {
-        "source_id": "src_study_pwc_data_center_market_2021",
-        "model_name": "IMPLAN county contribution model reported by BAE",
-        "model_version": "Prince William County prototype-data-center study, 2021-dollar tables 7-8",
-        "geography": "Prince William County, Virginia benchmark transferred to Rutherford County, North Carolina",
-        "vintage": "IMPLAN model reported December 2021; underlying IMPLAN data vintage not disclosed",
-        "local_purchase_assumption": "Construction and operating scenarios expose their local-purchase or direct-FTE bases; no unreported local purchase is treated as observed.",
-        "channel_separation": "direct_indirect_induced_reported_separately"
-      }
-    },
-    {
-      "estimate_id": "est_study_meta_forest_city_operating_labor_income_total",
-      "project_id": "prj_study_im3_building_00460089167",
-      "metric_code": "study.modeled_operating_labor_income_total",
-      "label": "Modeled total annual operating labor income",
-      "category": "operations",
-      "unit": "USD_per_year",
-      "measure_type": "flow",
-      "basis": "modeled_synthesis",
-      "value": 42150000,
-      "period": {
-        "kind": "source_year",
-        "year": 2015,
-        "label": "Annual operating contribution scenario anchored to the October 22, 2015 snapshot of 100 existing positions"
-      },
-      "scope": {
-        "level": "campus",
-        "label": "Meta Forest City Data Center campus, Rutherford County, NC",
-        "county_fips": "37161",
-        "inventory_allocation": "unallocated"
-      },
-      "interval": {
-        "kind": "sensitivity_envelope",
-        "low": 31612500,
-        "central": 42150000,
-        "high": 52687500,
-        "interpretation": "Low, central and high values are an explicit sensitivity range, not a statistical confidence interval."
-      },
-      "contribution_channel": "total",
-      "aggregation": {
-        "aggregation_id": "meta_forest_city_operating_labor_income_total",
-        "role": "standalone",
-        "overlap_policy": "do_not_sum_outside_declared_total"
-      },
-      "parameters": [
-        {
-          "name": "reported_existing_positions",
-          "value": 100,
-          "unit": "employees",
-          "provenance": {
-            "kind": "claim",
-            "reference_id": "clm_study_meta_forest_city_existing_positions_2015",
-            "detail": "Existing positions reported in the 2015 state infrastructure-grant announcement"
-          },
-          "transformation": "Serves as the central operating-position anchor"
-        },
-        {
-          "name": "low_direct_fte_ratio",
-          "value": 0.75,
-          "unit": "ratio",
-          "provenance": {
-            "kind": "assumption",
-            "detail": "Lower FTE-equivalent ratio applied to reported positions"
-          },
-          "transformation": "Reflects unknown employee, contractor, part-time, and vacancy composition"
-        },
-        {
-          "name": "central_direct_fte_ratio",
-          "value": 1,
-          "unit": "ratio",
-          "provenance": {
-            "kind": "assumption",
-            "detail": "Central FTE-equivalent ratio applied to reported positions"
-          },
-          "transformation": "Treats each reported position as one scenario FTE"
-        },
-        {
-          "name": "high_direct_fte_ratio",
-          "value": 1.25,
-          "unit": "ratio",
-          "provenance": {
-            "kind": "assumption",
-            "detail": "Upper FTE-equivalent ratio applied to reported positions"
-          },
-          "transformation": "Sensitivity for omitted ongoing staffing"
-        },
-        {
-          "name": "total_labor_income_per_direct_fte",
-          "value": 421500,
-          "unit": "USD_per_FTE",
-          "provenance": {
-            "kind": "source",
-            "reference_id": "src_study_pwc_data_center_market_2021",
-            "detail": "Prince William operating contribution coefficient"
-          },
-          "transformation": "Multiplies scenario direct FTE"
-        }
-      ],
-      "confidence": "low",
-      "confidence_rationale": "The calculation is reproducible but relies on transferred public benchmarks or explicit assumptions where direct local observations are unavailable.",
-      "decision_relevance": "Populates annual operating compensation with a visibly transferred benchmark.",
-      "evidence_search": {
-        "direct_observation_status": "partial",
-        "source_projection_status": "available_separately",
-        "remaining_evidence_gap": "Observed direct wages, benefits, contractor compensation, and supply-chain payroll"
-      },
-      "derivation": {
-        "method": "input_output_multiplier",
-        "model_version": "meta-forest-city-account-1.0.0",
-        "formula": "reported existing positions × direct-FTE ratio × $421,500 total labor income per direct FTE",
-        "input_claim_ids": [
-          "clm_study_meta_forest_city_existing_positions_2015"
-        ],
-        "input_source_ids": [
-          "src_study_pwc_data_center_market_2021",
-          "src_study_nc_ria_forest_city_water_20151022"
-        ],
-        "assumptions": [
-          "All transferred coefficients, conversion factors, and allocation shares are exposed as named parameters.",
-          "The estimate must not be presented as observed, audited, source-reported, or causal."
-        ]
-      },
-      "limitations": [
-        "The source-reported positions are not a payroll census or verified FTE count.",
-        "The Virginia coefficient is transferred to Rutherford County.",
-        "This total is not additive to supplier output or household output."
-      ],
-      "presentation": "modeled_not_observed_or_audited",
-      "notes": "Annual contribution scenario, not observed payroll.",
-      "reviewed_on": "2026-09-05",
-      "multiplier_provenance": {
-        "source_id": "src_study_pwc_data_center_market_2021",
-        "model_name": "IMPLAN county contribution model reported by BAE",
-        "model_version": "Prince William County prototype-data-center study, 2021-dollar tables 7-8",
-        "geography": "Prince William County, Virginia benchmark transferred to Rutherford County, North Carolina",
-        "vintage": "IMPLAN model reported December 2021; underlying IMPLAN data vintage not disclosed",
-        "local_purchase_assumption": "Construction and operating scenarios expose their local-purchase or direct-FTE bases; no unreported local purchase is treated as observed.",
-        "channel_separation": "direct_indirect_induced_reported_separately"
-      }
-    },
-    {
-      "estimate_id": "est_study_meta_forest_city_operating_supplier_output",
-      "project_id": "prj_study_im3_building_00460089167",
-      "metric_code": "study.modeled_operating_supplier_output",
-      "label": "Modeled annual operating supplier output",
-      "category": "suppliers",
-      "unit": "USD_per_year",
-      "measure_type": "flow",
-      "basis": "modeled_synthesis",
-      "value": 63982143,
-      "period": {
-        "kind": "source_year",
-        "year": 2015,
-        "label": "Annual operating contribution scenario anchored to the October 22, 2015 snapshot of 100 existing positions"
-      },
-      "scope": {
-        "level": "campus",
-        "label": "Meta Forest City Data Center campus, Rutherford County, NC",
-        "county_fips": "37161",
-        "inventory_allocation": "unallocated"
-      },
-      "interval": {
-        "kind": "sensitivity_envelope",
-        "low": 47986607.25,
-        "central": 63982143,
-        "high": 79977678.75,
-        "interpretation": "Low, central and high values are an explicit sensitivity range, not a statistical confidence interval."
-      },
-      "contribution_channel": "indirect",
-      "aggregation": {
-        "aggregation_id": "meta_forest_city_operating_supplier_output",
-        "role": "standalone",
-        "overlap_policy": "do_not_sum_outside_declared_total"
-      },
-      "parameters": [
-        {
-          "name": "reported_existing_positions",
-          "value": 100,
-          "unit": "employees",
-          "provenance": {
-            "kind": "claim",
-            "reference_id": "clm_study_meta_forest_city_existing_positions_2015",
-            "detail": "Existing positions reported in the 2015 state infrastructure-grant announcement"
-          },
-          "transformation": "Serves as the central operating-position anchor"
-        },
-        {
-          "name": "low_direct_fte_ratio",
-          "value": 0.75,
-          "unit": "ratio",
-          "provenance": {
-            "kind": "assumption",
-            "detail": "Lower FTE-equivalent ratio applied to reported positions"
-          },
-          "transformation": "Reflects unknown employee, contractor, part-time, and vacancy composition"
-        },
-        {
-          "name": "central_direct_fte_ratio",
-          "value": 1,
-          "unit": "ratio",
-          "provenance": {
-            "kind": "assumption",
-            "detail": "Central FTE-equivalent ratio applied to reported positions"
-          },
-          "transformation": "Treats each reported position as one scenario FTE"
-        },
-        {
-          "name": "high_direct_fte_ratio",
-          "value": 1.25,
-          "unit": "ratio",
-          "provenance": {
-            "kind": "assumption",
-            "detail": "Upper FTE-equivalent ratio applied to reported positions"
-          },
-          "transformation": "Sensitivity for omitted ongoing staffing"
-        },
-        {
-          "name": "supplier_output_per_direct_fte",
-          "value": 639821.43,
-          "unit": "USD_per_FTE",
-          "provenance": {
-            "kind": "source",
-            "reference_id": "src_study_pwc_data_center_market_2021",
-            "detail": "Prince William indirect operating-output coefficient"
-          },
-          "transformation": "Multiplies scenario direct FTE"
-        }
-      ],
-      "confidence": "low",
-      "confidence_rationale": "The calculation is reproducible but relies on transferred public benchmarks or explicit assumptions where direct local observations are unavailable.",
-      "decision_relevance": "Completes the annual supplier-output field without allocating the unrelated U.S.-wide Corning agreement to Forest City.",
-      "evidence_search": {
-        "direct_observation_status": "partial",
-        "source_projection_status": "available_separately",
-        "remaining_evidence_gap": "Observed operating purchases, supplier identities, payments, and vendor geography"
-      },
-      "derivation": {
-        "method": "input_output_multiplier",
-        "model_version": "meta-forest-city-account-1.0.0",
-        "formula": "reported existing positions × direct-FTE ratio × $639,821.43 indirect output per direct FTE",
-        "input_claim_ids": [
-          "clm_study_meta_forest_city_existing_positions_2015"
-        ],
-        "input_source_ids": [
-          "src_study_pwc_data_center_market_2021",
-          "src_study_nc_ria_forest_city_water_20151022"
-        ],
-        "assumptions": [
-          "All transferred coefficients, conversion factors, and allocation shares are exposed as named parameters.",
-          "The estimate must not be presented as observed, audited, source-reported, or causal."
-        ]
-      },
-      "limitations": [
-        "The Virginia coefficient is transferred to Rutherford County.",
-        "Output is not vendor payments or Rutherford County-only purchasing.",
-        "The 2015 position count has undefined employee and contractor composition."
-      ],
-      "presentation": "modeled_not_observed_or_audited",
-      "notes": "Indirect supplier-output scenario, not documented local procurement.",
-      "reviewed_on": "2026-09-05",
-      "multiplier_provenance": {
-        "source_id": "src_study_pwc_data_center_market_2021",
-        "model_name": "IMPLAN county contribution model reported by BAE",
-        "model_version": "Prince William County prototype-data-center study, 2021-dollar tables 7-8",
-        "geography": "Prince William County, Virginia benchmark transferred to Rutherford County, North Carolina",
-        "vintage": "IMPLAN model reported December 2021; underlying IMPLAN data vintage not disclosed",
-        "local_purchase_assumption": "Construction and operating scenarios expose their local-purchase or direct-FTE bases; no unreported local purchase is treated as observed.",
-        "channel_separation": "direct_indirect_induced_reported_separately"
-      }
-    },
-    {
-      "estimate_id": "est_study_meta_forest_city_household_output",
-      "project_id": "prj_study_im3_building_00460089167",
-      "metric_code": "study.modeled_induced_household_output",
-      "label": "Modeled annual induced household output",
-      "category": "community",
-      "unit": "USD_per_year",
-      "measure_type": "flow",
-      "basis": "modeled_synthesis",
-      "value": 11792857,
-      "period": {
-        "kind": "source_year",
-        "year": 2015,
-        "label": "Annual operating contribution scenario anchored to the October 22, 2015 snapshot of 100 existing positions"
-      },
-      "scope": {
-        "level": "campus",
-        "label": "Meta Forest City Data Center campus, Rutherford County, NC",
-        "county_fips": "37161",
-        "inventory_allocation": "unallocated"
-      },
-      "interval": {
-        "kind": "sensitivity_envelope",
-        "low": 8844642.75,
-        "central": 11792857,
-        "high": 14741071.25,
-        "interpretation": "Low, central and high values are an explicit sensitivity range, not a statistical confidence interval."
-      },
-      "contribution_channel": "induced",
-      "aggregation": {
-        "aggregation_id": "meta_forest_city_household_output",
-        "role": "standalone",
-        "overlap_policy": "do_not_sum_outside_declared_total"
-      },
-      "parameters": [
-        {
-          "name": "reported_existing_positions",
-          "value": 100,
-          "unit": "employees",
-          "provenance": {
-            "kind": "claim",
-            "reference_id": "clm_study_meta_forest_city_existing_positions_2015",
-            "detail": "Existing positions reported in the 2015 state infrastructure-grant announcement"
-          },
-          "transformation": "Serves as the central operating-position anchor"
-        },
-        {
-          "name": "low_direct_fte_ratio",
-          "value": 0.75,
-          "unit": "ratio",
-          "provenance": {
-            "kind": "assumption",
-            "detail": "Lower FTE-equivalent ratio applied to reported positions"
-          },
-          "transformation": "Reflects unknown employee, contractor, part-time, and vacancy composition"
-        },
-        {
-          "name": "central_direct_fte_ratio",
-          "value": 1,
-          "unit": "ratio",
-          "provenance": {
-            "kind": "assumption",
-            "detail": "Central FTE-equivalent ratio applied to reported positions"
-          },
-          "transformation": "Treats each reported position as one scenario FTE"
-        },
-        {
-          "name": "high_direct_fte_ratio",
-          "value": 1.25,
-          "unit": "ratio",
-          "provenance": {
-            "kind": "assumption",
-            "detail": "Upper FTE-equivalent ratio applied to reported positions"
-          },
-          "transformation": "Sensitivity for omitted ongoing staffing"
-        },
-        {
-          "name": "household_output_per_direct_fte",
-          "value": 117928.57,
-          "unit": "USD_per_FTE",
-          "provenance": {
-            "kind": "source",
-            "reference_id": "src_study_pwc_data_center_market_2021",
-            "detail": "Prince William induced operating-output coefficient"
-          },
-          "transformation": "Multiplies scenario direct FTE"
-        }
-      ],
-      "confidence": "low",
-      "confidence_rationale": "The calculation is reproducible but relies on transferred public benchmarks or explicit assumptions where direct local observations are unavailable.",
-      "decision_relevance": "Completes the household-spending contribution channel separately from direct grants and payroll.",
-      "evidence_search": {
-        "direct_observation_status": "partial",
-        "source_projection_status": "available_separately",
-        "remaining_evidence_gap": "Observed household spending, worker residence, and marginal household-consumption response"
-      },
-      "derivation": {
-        "method": "input_output_multiplier",
-        "model_version": "meta-forest-city-account-1.0.0",
-        "formula": "reported existing positions × direct-FTE ratio × $117,928.57 induced output per direct FTE",
-        "input_claim_ids": [
-          "clm_study_meta_forest_city_existing_positions_2015"
-        ],
-        "input_source_ids": [
-          "src_study_pwc_data_center_market_2021",
-          "src_study_nc_ria_forest_city_water_20151022"
-        ],
-        "assumptions": [
-          "All transferred coefficients, conversion factors, and allocation shares are exposed as named parameters.",
-          "The estimate must not be presented as observed, audited, source-reported, or causal."
-        ]
-      },
-      "limitations": [
-        "The Virginia coefficient is transferred to Rutherford County.",
-        "Economic output is not household income, a charitable grant, or a tax receipt.",
-        "This induced channel must not be added to overlapping total contribution rows."
-      ],
-      "presentation": "modeled_not_observed_or_audited",
-      "notes": "Induced household-output scenario.",
-      "reviewed_on": "2026-09-05",
-      "multiplier_provenance": {
-        "source_id": "src_study_pwc_data_center_market_2021",
-        "model_name": "IMPLAN county contribution model reported by BAE",
-        "model_version": "Prince William County prototype-data-center study, 2021-dollar tables 7-8",
-        "geography": "Prince William County, Virginia benchmark transferred to Rutherford County, North Carolina",
-        "vintage": "IMPLAN model reported December 2021; underlying IMPLAN data vintage not disclosed",
-        "local_purchase_assumption": "Construction and operating scenarios expose their local-purchase or direct-FTE bases; no unreported local purchase is treated as observed.",
-        "channel_separation": "direct_indirect_induced_reported_separately"
-      }
-    },
     {
       "estimate_id": "est_study_meta_forest_city_latest_local_tax_contribution",
       "project_id": "prj_study_im3_building_00460089167",
@@ -2250,7 +1799,7 @@
       },
       "derivation": {
         "method": "allocation",
-        "model_version": "meta-forest-city-account-1.0.0",
+        "model_version": "meta-forest-city-account-1.1.0",
         "formula": "FY2025 county property taxes collected − FY2025 county incentive payment",
         "input_claim_ids": [
           "clm_study_andale_property_tax_receipts_2025",
@@ -2271,7 +1820,7 @@
       ],
       "presentation": "modeled_not_observed_or_audited",
       "notes": "Same-scope fiscal reconciliation only; no positive or negative net fiscal result is asserted.",
-      "reviewed_on": "2026-09-05"
+      "reviewed_on": "2026-09-06"
     },
     {
       "estimate_id": "est_study_meta_forest_city_annual_local_service_cost_break_even",
@@ -2341,7 +1890,7 @@
       },
       "derivation": {
         "method": "allocation",
-        "model_version": "meta-forest-city-account-1.0.0",
+        "model_version": "meta-forest-city-account-1.1.0",
         "formula": "annual marginal county public-service cost at break-even = FY2025 taxes collected − FY2025 incentive payment",
         "input_claim_ids": [
           "clm_study_andale_property_tax_receipts_2025",
@@ -2362,7 +1911,7 @@
       ],
       "presentation": "modeled_not_observed_or_audited",
       "notes": "No net fiscal result is asserted without same-scope cost evidence.",
-      "reviewed_on": "2026-09-05"
+      "reviewed_on": "2026-09-06"
     },
     {
       "estimate_id": "est_study_meta_forest_city_water_withdrawal_2024",
@@ -2431,7 +1980,7 @@
       },
       "derivation": {
         "method": "allocation",
-        "model_version": "meta-forest-city-account-1.0.0",
+        "model_version": "meta-forest-city-account-1.1.0",
         "formula": "reported Forest City water withdrawal in megaliters × 264,172.052 gallons per megaliter",
         "input_claim_ids": [],
         "input_source_ids": [
@@ -2449,234 +1998,7 @@
       ],
       "presentation": "modeled_not_observed_or_audited",
       "notes": "Source-reported facility value carried as a visibly modeled unit conversion because no compatible canonical source metric exists.",
-      "reviewed_on": "2026-09-05"
-    },
-    {
-      "estimate_id": "est_study_meta_forest_city_cooling_overhead_electricity_2024",
-      "project_id": "prj_study_im3_building_00460089167",
-      "metric_code": "study.modeled_cooling_and_facility_overhead_electricity",
-      "label": "Modeled cooling and facility-overhead electricity",
-      "category": "resources",
-      "unit": "kWh_per_year",
-      "measure_type": "flow",
-      "basis": "modeled_synthesis",
-      "value": 39670740.74,
-      "period": {
-        "kind": "calendar_year",
-        "year": 2024,
-        "label": "Calendar year 2024"
-      },
-      "scope": {
-        "level": "campus",
-        "label": "Meta Forest City Data Center campus, Rutherford County, NC",
-        "county_fips": "37161",
-        "inventory_allocation": "unallocated"
-      },
-      "interval": {
-        "kind": "sensitivity_envelope",
-        "low": 30314433.96,
-        "central": 39670740.74,
-        "high": 48686818.18,
-        "interpretation": "The envelope applies PUE values of 1.06, 1.08, and 1.10 to the reported facility electricity total; it is not a statistical interval."
-      },
-      "contribution_channel": "not_applicable",
-      "aggregation": {
-        "aggregation_id": "meta_forest_city_cooling_overhead_electricity_2024",
-        "role": "standalone",
-        "overlap_policy": "do_not_sum_outside_declared_total"
-      },
-      "parameters": [
-        {
-          "name": "reported_facility_electricity",
-          "value": 535555000,
-          "unit": "kWh_per_year",
-          "provenance": {
-            "kind": "claim",
-            "reference_id": "clm_study_meta_forest_city_electricity_2024",
-            "detail": "Normalized 2024 Forest City electricity consumption"
-          },
-          "transformation": "Serves as total facility electricity"
-        },
-        {
-          "name": "low_pue",
-          "value": 1.06,
-          "unit": "PUE_ratio",
-          "provenance": {
-            "kind": "assumption",
-            "detail": "Low site PUE sensitivity"
-          },
-          "transformation": "Separates overhead from IT electricity"
-        },
-        {
-          "name": "central_pue",
-          "value": 1.08,
-          "unit": "PUE_ratio",
-          "provenance": {
-            "kind": "source",
-            "reference_id": "src_study_meta_environmental_data_index_2025",
-            "detail": "Meta fleet-wide 2024 PUE; not Forest City-specific"
-          },
-          "transformation": "Separates overhead from IT electricity"
-        },
-        {
-          "name": "high_pue",
-          "value": 1.1,
-          "unit": "PUE_ratio",
-          "provenance": {
-            "kind": "assumption",
-            "detail": "High site PUE sensitivity"
-          },
-          "transformation": "Separates overhead from IT electricity"
-        }
-      ],
-      "confidence": "low",
-      "confidence_rationale": "The calculation is reproducible but relies on transferred public benchmarks or explicit assumptions where direct local observations are unavailable.",
-      "decision_relevance": "Separates an explicit cooling-and-facility overhead scenario from total facility electricity.",
-      "evidence_search": {
-        "direct_observation_status": "partial",
-        "source_projection_status": "not_applicable",
-        "remaining_evidence_gap": "Forest City-specific PUE, cooling-system electricity, fan and pump loads, and interval-meter data"
-      },
-      "derivation": {
-        "method": "engineering_estimate",
-        "model_version": "meta-forest-city-account-1.0.0",
-        "formula": "reported facility electricity × (PUE − 1) ÷ PUE",
-        "input_claim_ids": [
-          "clm_study_meta_forest_city_electricity_2024"
-        ],
-        "input_source_ids": [
-          "src_study_meta_environmental_data_index_2025"
-        ],
-        "assumptions": [
-          "All transferred coefficients, conversion factors, and allocation shares are exposed as named parameters.",
-          "The estimate must not be presented as observed, audited, source-reported, or causal."
-        ]
-      },
-      "limitations": [
-        "The central PUE is Meta's fleet value, not a Forest City observation.",
-        "Facility overhead includes more than cooling and cannot be interpreted as cooling energy alone.",
-        "The source electricity total is rounded to whole MWh."
-      ],
-      "presentation": "modeled_not_observed_or_audited",
-      "notes": "Engineering sensitivity only; total electricity remains the direct reported resource observation.",
-      "reviewed_on": "2026-09-05"
-    },
-    {
-      "estimate_id": "est_study_meta_forest_city_wastewater_2024",
-      "project_id": "prj_study_im3_building_00460089167",
-      "metric_code": "study.modeled_annual_wastewater_discharge",
-      "label": "Modeled annual wastewater discharge",
-      "category": "resources",
-      "unit": "gallons_per_year",
-      "measure_type": "flow",
-      "basis": "modeled_synthesis",
-      "value": 2113376.42,
-      "period": {
-        "kind": "calendar_year",
-        "year": 2024,
-        "label": "Annual discharge sensitivity based on 2024 facility water withdrawal"
-      },
-      "scope": {
-        "level": "campus",
-        "label": "Meta Forest City Data Center campus, Rutherford County, NC",
-        "county_fips": "37161",
-        "inventory_allocation": "unallocated"
-      },
-      "interval": {
-        "kind": "sensitivity_envelope",
-        "low": 845350.57,
-        "central": 2113376.42,
-        "high": 3381402.27,
-        "interpretation": "Low, central and high values are an explicit sensitivity range, not a statistical confidence interval."
-      },
-      "contribution_channel": "not_applicable",
-      "aggregation": {
-        "aggregation_id": "meta_forest_city_wastewater_2024",
-        "role": "standalone",
-        "overlap_policy": "do_not_sum_outside_declared_total"
-      },
-      "parameters": [
-        {
-          "name": "reported_water_withdrawal",
-          "value": 16,
-          "unit": "megaliters",
-          "provenance": {
-            "kind": "source",
-            "reference_id": "src_study_meta_environmental_data_index_2025",
-            "detail": "Forest City 2024 water-withdrawal row"
-          },
-          "transformation": "Converted and multiplied by discharge share"
-        },
-        {
-          "name": "gallons_per_megaliter",
-          "value": 264172.052,
-          "unit": "gallons_per_megaliter",
-          "provenance": {
-            "kind": "assumption",
-            "detail": "Unit-conversion factor"
-          },
-          "transformation": "Converts megaliters to gallons"
-        },
-        {
-          "name": "low_discharge_share",
-          "value": 0.2,
-          "unit": "ratio",
-          "provenance": {
-            "kind": "assumption",
-            "detail": "Low return-flow assumption"
-          },
-          "transformation": "Allocates withdrawal to wastewater discharge"
-        },
-        {
-          "name": "central_discharge_share",
-          "value": 0.5,
-          "unit": "ratio",
-          "provenance": {
-            "kind": "assumption",
-            "detail": "Central return-flow assumption"
-          },
-          "transformation": "Allocates withdrawal to wastewater discharge"
-        },
-        {
-          "name": "high_discharge_share",
-          "value": 0.8,
-          "unit": "ratio",
-          "provenance": {
-            "kind": "assumption",
-            "detail": "High return-flow assumption"
-          },
-          "transformation": "Allocates withdrawal to wastewater discharge"
-        }
-      ],
-      "confidence": "low",
-      "confidence_rationale": "The calculation is reproducible but relies on transferred public benchmarks or explicit assumptions where direct local observations are unavailable.",
-      "decision_relevance": "Completes the wastewater channel without treating withdrawal as consumption or discharge.",
-      "evidence_search": {
-        "direct_observation_status": "partial",
-        "source_projection_status": "not_applicable",
-        "remaining_evidence_gap": "Metered Forest City discharge, consumption, evaporation, sanitary flow, blowdown, and reuse"
-      },
-      "derivation": {
-        "method": "engineering_estimate",
-        "model_version": "meta-forest-city-account-1.0.0",
-        "formula": "reported water withdrawal × gallons-per-megaliter conversion × discharge share",
-        "input_claim_ids": [],
-        "input_source_ids": [
-          "src_study_meta_environmental_data_index_2025"
-        ],
-        "assumptions": [
-          "All transferred coefficients, conversion factors, and allocation shares are exposed as named parameters.",
-          "The estimate must not be presented as observed, audited, source-reported, or causal."
-        ]
-      },
-      "limitations": [
-        "Discharge shares are assumptions.",
-        "Withdrawal is not consumption or wastewater discharge.",
-        "The source says the site reuses water but does not quantify facility discharge."
-      ],
-      "presentation": "modeled_not_observed_or_audited",
-      "notes": "Engineering sensitivity, not a permit, meter, or utility billing value.",
-      "reviewed_on": "2026-09-05"
+      "reviewed_on": "2026-09-06"
     },
     {
       "estimate_id": "est_study_meta_forest_city_gdp_comparison_gap",
@@ -2756,7 +2078,7 @@
       },
       "derivation": {
         "method": "benchmark_application",
-        "model_version": "meta-forest-city-account-1.0.0",
+        "model_version": "meta-forest-city-account-1.1.0",
         "formula": "100 × (host 2024 outcome − weighted comparison outcome) ÷ weighted comparison outcome",
         "input_claim_ids": [],
         "input_source_ids": [
@@ -2775,7 +2097,7 @@
       ],
       "presentation": "modeled_not_observed_or_audited",
       "notes": "Low-confidence county comparison gap; no causal attribution is made.",
-      "reviewed_on": "2026-09-05"
+      "reviewed_on": "2026-09-06"
     },
     {
       "estimate_id": "est_study_meta_forest_city_employment_comparison_gap",
@@ -2855,7 +2177,7 @@
       },
       "derivation": {
         "method": "benchmark_application",
-        "model_version": "meta-forest-city-account-1.0.0",
+        "model_version": "meta-forest-city-account-1.1.0",
         "formula": "100 × (host 2024 outcome − weighted comparison outcome) ÷ weighted comparison outcome",
         "input_claim_ids": [],
         "input_source_ids": [
@@ -2874,7 +2196,7 @@
       ],
       "presentation": "modeled_not_observed_or_audited",
       "notes": "Low-confidence county comparison gap; no causal attribution is made.",
-      "reviewed_on": "2026-09-05"
+      "reviewed_on": "2026-09-06"
     },
     {
       "estimate_id": "est_study_meta_forest_city_wage_comparison_gap",
@@ -2954,7 +2276,7 @@
       },
       "derivation": {
         "method": "benchmark_application",
-        "model_version": "meta-forest-city-account-1.0.0",
+        "model_version": "meta-forest-city-account-1.1.0",
         "formula": "100 × (host 2024 outcome − weighted comparison outcome) ÷ weighted comparison outcome",
         "input_claim_ids": [],
         "input_source_ids": [
@@ -2973,7 +2295,7 @@
       ],
       "presentation": "modeled_not_observed_or_audited",
       "notes": "Low-confidence county comparison gap; no causal attribution is made.",
-      "reviewed_on": "2026-09-05"
+      "reviewed_on": "2026-09-06"
     }
   ],
   "modeled_sources": [
@@ -2993,31 +2315,18 @@
       "artifact_sha256": "e95820ccfa01e7e6525713cee951a1fd4001e40b9e3b0ed03d29befd2b196c03"
     },
     {
-      "source_id": "src_study_meta_forest_city_factsheet_2026",
-      "title": "Meta Forest City Data Center information sheet",
-      "url": "https://datacenters.atmeta.com/asset/forest-city-data-center-info-sheet/",
-      "publisher": "Meta",
-      "source_type": "operator_release",
+      "source_id": "src_study_county_economic_core_2001_2024",
+      "title": "County Economic Core Panel, 2001-2024",
+      "url": "https://apps.bea.gov/regional/downloadzip.htm",
+      "publisher": "U.S. Bureau of Economic Analysis and U.S. Bureau of Labor Statistics",
+      "source_type": "other",
       "publication_date": {
-        "precision": "unknown"
+        "precision": "year",
+        "year": 2026
       },
-      "retrieved_on": "2026-09-04",
-      "review_method": "web_pdf_text",
-      "notes": "Undated current operator factsheet reviewed in 2026. It reports more than $750 million of North Carolina data-center investment, more than 275 operational jobs supported and more than $6.4 million of direct funding to Rutherford County-area schools and nonprofits. It also says Meta pays the full cost of campus energy and town water/wastewater service and describes water-efficiency design. These are operator claims, not audited employment, expenditure, rate-impact or metered-resource records."
-    },
-    {
-      "source_id": "src_study_nc_ria_forest_city_water_20151022",
-      "title": "North Carolina Rural Infrastructure Authority Approves Nearly $3.83 Million in Funding Requests",
-      "url": "https://www.commerce.nc.gov/news/press-releases/north-carolina-rural-infrastructure-authority-approves-nearly-383-million",
-      "publisher": "North Carolina Department of Commerce",
-      "source_type": "state_record",
-      "publication_date": {
-        "precision": "day",
-        "date": "2015-10-22"
-      },
-      "retrieved_on": "2026-09-04",
-      "review_method": "web_page",
-      "notes": "The Rural Infrastructure Authority approval identifies a $148,900 Industrial Development Fund-Utility Account grant to the Town of Forest City for an approximately 1,000-foot publicly owned water-line extension serving a new Facebook campus building. It reports 100 existing positions and a plan for ten additional jobs over two years. The approval does not prove disbursement, final construction cost, realized hiring, worker residence or a complete public-cost account."
+      "retrieved_on": "2026-09-06",
+      "review_method": "structured_data",
+      "notes": "Repository panel compiled from official annual county real GDP, total employment, and average-weekly-wage series. These are county observations, not project contributions; the retained comparison modules use them descriptively with explicit noncausal limitations."
     },
     {
       "source_id": "src_study_meta_environmental_data_index_2025",
@@ -3032,20 +2341,6 @@
       "retrieved_on": "2026-09-05",
       "review_method": "web_pdf_text",
       "notes": "Facility tables report Forest City electricity consumption of 535,555 MWh, water withdrawal of 16 megaliters, zero market-based Scope 2 emissions and 144,104 metric tons CO2e of location-based Scope 2 emissions for 2024. Values are rounded to whole displayed units and the methodology permits utility, meter, design-estimate or proxy inputs where applicable. Only electricity is normalized as a canonical source record because the shared evidence metric registry lacks compatible annual water-withdrawal and facility-emissions definitions."
-    },
-    {
-      "source_id": "src_study_pwc_data_center_market_2021",
-      "title": "Prince William County Data Center Market Study",
-      "url": "https://www.pwcva.gov/assets/2021-12/Final%20Report%20-%20Prince%20William%20County%20Data%20Center%20Market%20Study%20120121%20.pdf",
-      "publisher": "Prince William County, Virginia",
-      "source_type": "local_government_record",
-      "publication_date": {
-        "precision": "year",
-        "year": 2021
-      },
-      "retrieved_on": "2026-09-05",
-      "review_method": "pdf_text_and_page_image",
-      "notes": "Tables 7 and 8 report direct, indirect, induced and total construction and operating employment, labor income and output for a county prototype using IMPLAN. Dollar values are 2021 dollars; the underlying IMPLAN data vintage is not disclosed."
     },
     {
       "source_id": "src_study_county_economic_core_2001_2024",
@@ -3073,19 +2368,19 @@
       },
       "retrieved_on": "2026-09-05",
       "review_method": "web_pdf_text",
-      "notes": "Facility tables report Forest City 2024 electricity consumption, water withdrawal, and market- and location-based Scope 2 emissions. The completion account uses the water row for a unit conversion and wastewater sensitivity and the fleet PUE only for a visibly transferred overhead-electricity sensitivity."
+      "notes": "Facility tables report Forest City 2024 water withdrawal as 16 whole megaliters. The retained resource model performs only unit conversion with a rounding interval; no fleet PUE, cooling allocation or wastewater ratio is transferred."
     }
   ],
-  "modeled_scope_note": "Modeled contribution accounts for Apple Mesa / Maricopa County, Switch Citadel / Storey County, and Digital Crossroad Hammond / Lake County. Every required account category and county-comparison module contains sourced evidence or a visibly labeled modeled value. Public support is not netted against unmatched local revenues, unavailable public-service cost is represented by a break-even threshold rather than an invented net margin, county comparisons are descriptive rather than causal, and low-confidence transferred benchmarks remain explicit. Project fragments: prj_study_im3_building_00364289074: Low-confidence completion account for Microsoft San Antonio. Construction scenarios apply explicit 25%-75% construction-eligible shares to the reported greater-than-$840 million real-and-personal-property floor before using the Prince William County benchmark, so IT equipment is not silently treated as building construction. Operating scenarios combine the reported greater-than-75 employee floor with zero, half, or all of the separate 20-job expansion forecast; they are sensitivities, not fulfillment findings. County GDP, employment, and wage gaps are descriptive 2024 benchmark comparisons and are not facility effects. Existing source projections cover fiscal revenue, public support, and facility water demand. No annual net-fiscal estimate is made because verified same-scope recurring receipts and marginal public-service costs are unavailable. prj_study_im3_building_00377585075: DET01 completed contribution account. Source forecasts remain forecasts; modeled construction, supplier, household, resource and comparison values are visibly labeled sensitivity or benchmark scenarios. Personal-property equipment is excluded before construction multipliers. The 2025 tax-account aggregation is paired with an equal same-scope public-cost break-even threshold, not a net-fiscal result. County comparisons are descriptive and noncausal. Direct community funding, measured resource use, realized jobs, supplier payments and actual public costs remain gaps. prj_study_im3_building_00460089167: Completed contribution-account syntheses for Meta Forest City / Rutherford County. Broad cumulative capital receives an explicit 25-75% construction-eligible allocation before transferred construction benchmarks; operating scenarios translate the 2015 reported-position snapshot with a visible FTE sensitivity; the same-county, same-fiscal-year tax and incentive claims are reconciled before the public-cost break-even threshold; facility water and electricity resource models retain source rounding and scope; supplier and household channels remain separate; and county comparisons are descriptive benchmark gaps rather than causal effects. No net fiscal, audited, or causal result is asserted. prj_study_im3_building_00464097467: Second-pass modeled contribution account after an expanded public-evidence audit. Direct county permits now cover historical construction values, assessor rolls cover a main-campus parcel stock, a county action covers water-right capacity, Apple reports 2025 campus electricity use, and recipient reports bound two community gifts. Those observations supersede the need for a modeled community proxy but do not supply Apple contractor job-years, construction payroll, annual operating payroll, supplier payments, taxes received, or public-service cost. The construction base therefore retains only the packet's explicit $163 million construction forecast and excludes equipment and historical capital; wide 0.5-1.5 transfer sensitivities expose the mismatch in the last-resort direct construction coefficients. The unsupported local-purchase-share and Virginia induced-output models are removed. No net-fiscal value or public-service-cost break-even is published. County outcome gaps remain descriptive benchmark applications with fit-sensitivity intervals and no causal-design metadata. prj_study_im3_building_00664938835: Second-pass Expedient Milwaukee / Franklin syntheses retained only after a documented 2007-2026 public-source audit. The account keeps a clearly labeled 2022 ownership-transfer anchor, a PB25-0303-only construction allocation sensitivity, an exact tax-equal public-cost break-even threshold, a capacity-based electricity engineering sensitivity, and three descriptive county comparison gaps. It removes transferred construction job-years, assumed local-purchase shares, supplier and household output extrapolations, and a duplicate modeled tax row because public sources did not establish realized site employment, supplier geography, household capture, or a need to restate the direct tax observations. PM25-0174 remains excluded for possible overlap. No synthesis is an observed result or fiscal net. prj_study_im3_building_01073720208: Second-pass governed synthesis for Google Council Bluffs. Construction job-years use only two directly observed September 2025 city permit valuations and transfer the published Prince William County prototype coefficients as benchmark equivalents; the four channels are separated and protected by one aggregation. No Pottawattamie County supplier-retention share is imposed because the public audit found contractor names but no payment or vendor-residence ledger. The water row is the unallocated Google Council Bluffs location identity reported for 2024, not a building allocation. No local abatement, exemption realization, franchise-fee amount, electric load, public-service cost, break-even threshold, or net fiscal result is modeled. County outcome gaps remain descriptive benchmark applications with fit-sensitivity ranges and no causal attribution.",
+  "modeled_scope_note": "Modeled contribution accounts for Apple Mesa / Maricopa County, Switch Citadel / Storey County, and Digital Crossroad Hammond / Lake County. Every required account category and county-comparison module contains sourced evidence or a visibly labeled modeled value. Public support is not netted against unmatched local revenues, unavailable public-service cost is represented by a break-even threshold rather than an invented net margin, county comparisons are descriptive rather than causal, and low-confidence transferred benchmarks remain explicit. Project fragments: prj_study_im3_building_00364289074: Corrective residual modeled account for Microsoft San Antonio. Eight transferred construction, labor, procurement, operating, and household-output scenarios were removed because their arbitrary capital shares, forecast-realization cases, local-purchase assumptions, and Virginia coefficients were not bounded by project observations. Only three low-confidence descriptive county comparisons remain: each uses the project's documented operating-by 2013 anchor and official Bexar County outcome data, has a finite fit-sensitivity envelope, and explicitly makes no causal attribution. The account intentionally remains incomplete because no defensible direct observation or residual model closes the supplier category. prj_study_im3_building_00377585075: Corrective DET01 synthesis. Only exact same-period tax-account arithmetic, its explicitly conditional public-cost break-even identity and a unit conversion of displayed municipal meter history remain. Construction, employment, supplier, household, electricity, cooling, emissions, wastewater and county-effect models were removed because the audit did not bound the missing project inputs. This account is intentionally incomplete where direct evidence remains unbounded. prj_study_im3_building_00460089167: Corrective audit retains six bounded residual calculations only: FY2025 county tax retained after the provisionally linked incentive, the identical marginal-service-cost break-even threshold, conversion of Meta-reported 2024 water withdrawal with source rounding, and three noncausal county comparison gaps with fit sensitivity. Ten models based on arbitrary capital timing, cost shares, FTE ratios, transferred operating/construction multipliers, fleet PUE, or wastewater ratios are removed. Supplier/local-procurement evidence remains unavailable, so the project is intentionally incomplete rather than backfilled. prj_study_im3_building_00464097467: Second-pass modeled contribution account after an expanded public-evidence audit. Direct county permits now cover historical construction values, assessor rolls cover a main-campus parcel stock, a county action covers water-right capacity, Apple reports 2025 campus electricity use, and recipient reports bound two community gifts. Those observations supersede the need for a modeled community proxy but do not supply Apple contractor job-years, construction payroll, annual operating payroll, supplier payments, taxes received, or public-service cost. The construction base therefore retains only the packet's explicit $163 million construction forecast and excludes equipment and historical capital; wide 0.5-1.5 transfer sensitivities expose the mismatch in the last-resort direct construction coefficients. The unsupported local-purchase-share and Virginia induced-output models are removed. No net-fiscal value or public-service-cost break-even is published. County outcome gaps remain descriptive benchmark applications with fit-sensitivity intervals and no causal-design metadata. prj_study_im3_building_00664938835: Second-pass Expedient Milwaukee / Franklin syntheses retained only after a documented 2007-2026 public-source audit. The account keeps a clearly labeled 2022 ownership-transfer anchor, a PB25-0303-only construction allocation sensitivity, an exact tax-equal public-cost break-even threshold, a capacity-based electricity engineering sensitivity, and three descriptive county comparison gaps. It removes transferred construction job-years, assumed local-purchase shares, supplier and household output extrapolations, and a duplicate modeled tax row because public sources did not establish realized site employment, supplier geography, household capture, or a need to restate the direct tax observations. PM25-0174 remains excluded for possible overlap. No synthesis is an observed result or fiscal net. prj_study_im3_building_01073720208: Second-pass governed synthesis for Google Council Bluffs. Construction job-years use only two directly observed September 2025 city permit valuations and transfer the published Prince William County prototype coefficients as benchmark equivalents; the four channels are separated and protected by one aggregation. No Pottawattamie County supplier-retention share is imposed because the public audit found contractor names but no payment or vendor-residence ledger. The water row is the unallocated Google Council Bluffs location identity reported for 2024, not a building allocation. No local abatement, exemption realization, franchise-fee amount, electric load, public-service cost, break-even threshold, or net fiscal result is modeled. County outcome gaps remain descriptive benchmark applications with fit-sensitivity ranges and no causal attribution.",
   "synthesis_version": "study-modeled-synthesis-3.2.0",
   "modeling_policy_version": "study-modeling-policy-1.3.0",
   "analysis_readiness": {
-    "construction": "modeled_available",
-    "operations": "modeled_available",
+    "construction": "not_assessed",
+    "operations": "not_assessed",
     "fiscal": "modeled_available",
     "causal": "not_assessed"
   },
   "legacy_first_entry_note": "Meta establishes operation of the mapped Forest City facility on April 19, 2012. The four source records and three current canonical facilities do not establish a complete county history or conclusively exclude earlier enterprise, government, institutional, or telecom operations.",
   "scope_note": "Provisional private-sector research candidate. Owner/operator history, project boundaries and lifecycle require review. Membership does not verify current operation or establish economic impact.",
-  "project_description": "Meta Forest City is a hyperscale data-center campus in Rutherford County, North Carolina, that opened on April 19, 2012 after redevelopment of a former industrial site. The project account follows the campus from construction and brownfield reuse through operations, later building work, local water infrastructure, community funding, and facility-level resource reporting."
+  "project_description": "Meta's Forest City Data Center is a multi-building hyperscale campus operated by Meta in Rutherford County, North Carolina; the inventory project is one mapped building within that campus, while most public evidence is campus-wide and unallocated. Meta broke ground in November 2010, opened Building 1 on April 19, 2012, and expected Building 2 later in 2012 on the redeveloped Andale brownfield property. Contractor profiles describe two 370,000-square-foot buildings and a 789,000-square-foot campus program, and public records document later building work, four Andale-owned parcels, town water infrastructure, community grants, and facility-level resource reporting."
 }

@@ -204,12 +204,14 @@ try {
   await page.goto(`${url}#/project/prj_study_im3_building_00460089167`);
   await openDetails(".evidence-ledger");
   await page.getByRole("heading", { name: "Sources & research history" }).waitFor();
+  await page.locator(".account-status").getByText("Partial evidence", { exact: true }).waitFor();
+  await page.locator(".account-count").getByText("28 sourced records · 6 modeled syntheses", { exact: true }).waitFor();
   await openDetails(".evidence-ledger");
   await openDetails(".project-research-ledger");
   await page.locator(".fiscal-history").waitFor();
   assert.equal(await page.locator(".fiscal-history tbody tr").count(), 5);
   assert.equal(await page.locator(".history-bar-row").count(), 5);
-  assert.equal(await page.locator(".economic-record").count(), 21);
+  assert.equal(await page.locator(".economic-record").count(), 25);
   assert.equal(await page.locator(".fiscal-history thead th").count(), 4);
   assert.match(await page.locator(".fiscal-history").innerText(), /\$6,573,472/);
   assert.match(await page.locator(".fiscal-history").innerText(), /\$6,082,555/);
@@ -346,11 +348,13 @@ try {
   await page.goto(`${url}#/project/prj_study_im3_building_00364289074`);
   await openDetails(".evidence-ledger");
   await page.getByRole("heading", { name: "Microsoft San Antonio", exact: true }).waitFor();
+  await page.locator(".account-status").getByText("Partial evidence", { exact: true }).waitFor();
+  await page.locator(".account-count").getByText("19 sourced records · 3 modeled syntheses", { exact: true }).waitFor();
   await openDetails(".evidence-ledger");
   await page.locator(".economic-record").first().waitFor();
-  assert.equal(await page.locator(".economic-record").count(), 4);
+  assert.equal(await page.locator(".economic-record").count(), 10);
   assert.match(await page.locator(".economic-record-list").innerText(), /Cumulative[\s\S]*More than \$840,000,000/);
-  assert.equal(await page.locator(".history-bar-row").count(), 0);
+  assert.equal(await page.locator(".history-bar-row").count(), 3);
   await page.getByRole("tab", { name: /Plans & forecasts/ }).click();
   assert.equal(await page.locator(".economic-record").count(), 9);
   assert.match(await page.locator(".economic-record-list").innerText(), /Source-estimated net municipal fiscal impact[\s\S]*\$56,319,724/);
@@ -513,10 +517,11 @@ try {
   await page.goto(`${url}#/project/prj_study_im3_building_00377585075`);
   await openDetails(".evidence-ledger");
   await page.getByRole("heading", { name: "EdgeConneX DET01, Southfield", exact: true }).waitFor();
-  await page.locator(".account-count").getByText("50 sourced records · 23 modeled syntheses", { exact: true }).waitFor();
+  await page.locator(".account-status").getByText("Partial evidence", { exact: true }).waitFor();
+  await page.locator(".account-count").getByText("53 sourced records · 3 modeled syntheses", { exact: true }).waitFor();
   await openDetails(".evidence-ledger");
   await openDetails(".project-research-ledger");
-  assert.equal(await page.locator(".economic-record").count(), 46);
+  assert.equal(await page.locator(".economic-record").count(), 48);
   assert.equal(await page.locator(".tax-billing-history").count(), 3);
   assert.equal(await page.locator(".tax-billing-history tbody tr").count(), 19);
   assert.equal(await page.locator(".economic-history").count(), 2);
@@ -532,7 +537,7 @@ try {
   assert.match(edgeValues, /TY2023[\s\S]*\$2,107,780[\s\S]*TY2025[\s\S]*\$1,856,400/);
   assert.match(await page.locator(".project-research-update").allInnerTexts().then(rows => rows.join(" ")), /former-IFT personal account begins showing nonzero tax in 2020/);
   await page.getByRole("tab", { name: /Plans & forecasts/ }).click();
-  assert.equal(await page.locator(".economic-record").count(), 4);
+  assert.equal(await page.locator(".economic-record").count(), 5);
   assert.match(await page.locator(".economic-record-list").innerText(), /\$16,251,600[\s\S]*\$18,935,500[\s\S]*27 jobs[\s\S]*\$67,000/);
   assert.match(await page.locator(".projection-note").innerText(), /Realized spending, jobs and abatements have not been verified/);
   await page.setViewportSize({ width: 390, height: 844 });
@@ -807,10 +812,10 @@ try {
     sidebar: getComputedStyle(document.querySelector(".sidebar")).backgroundColor,
     map: getComputedStyle(document.querySelector(".map-section")).backgroundColor,
   })), { sidebar: "rgb(11, 14, 20)", map: "rgb(16, 23, 27)" });
-  assert.match(await page.locator(".review-key").innerText(), /completed contribution accounts \(6\)/i);
+  assert.match(await page.locator(".review-key").innerText(), /completed contribution accounts \(3\)/i);
   assert.doesNotMatch(await page.locator(".legend").innerText(), /IM3|pending|merged|queued/i);
   await page.getByLabel("Completed project markers").selectOption("Colocation");
-  assert.match(await page.locator(".review-key").innerText(), /completed contribution accounts \(3\)/i);
+  assert.match(await page.locator(".review-key").innerText(), /completed contribution accounts \(2\)/i);
   await page.getByLabel("Completed project markers").selectOption("");
   await page.screenshot({ path: path.join(out, "map-desktop.png") });
   assert.doesNotMatch(await page.locator(".sidebar").innerText(), /Source records|Building records|Campus records|Observed footprint|First-entry research/i);
@@ -821,7 +826,7 @@ try {
   const response = await page.request.get(`${url}data/v1/study/index.json`);
   const study = await response.json();
   assert.equal(study.projects.length, 36);
-  assert.equal(study.projects.filter(p => p.model_completeness.status === "full_modeled_account").length, 6);
+  assert.equal(study.projects.filter(p => p.model_completeness.status === "full_modeled_account").length, 3);
   const target = study.projects.find(p => p.name === "Apple Mesa");
   const canvas = await page.locator("canvas").boundingBox();
   const world = 512 * 2 ** 3.25;
@@ -845,7 +850,7 @@ try {
   await page.mouse.click(targetX, targetY);
   await page.waitForURL(`**/project/${target.project_id}`);
   await page.getByRole("heading", { name: "Sources & research history" }).waitFor();
-  check("map renders only six completed studies while preserving the 36-project register off-map");
+  check("map renders only three completed studies while preserving the 36-project register off-map");
 
   for (const candidate of study.projects.filter(project => project.model_completeness.status === "incomplete")) {
     await page.goto(`${url}#/project/${candidate.project_id}`);

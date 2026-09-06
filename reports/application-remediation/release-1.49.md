@@ -1,0 +1,13 @@
+# Application release 1.49 — corrective contribution-account batch 1 audit
+
+Application release 1.49 advances the generated study data to `private-sector-study-1.46.0` and completes the evidence-first corrective audit of Meta Forest City, Microsoft San Antonio, and EdgeConneX DET01.
+
+The study now publishes 660 sourced economic records—597 reported observations and 63 forecasts—and 138 separately governed modeled syntheses. Three of 36 projects pass the machine-enforced completed-contribution-account gate; 33 remain incomplete. The corrective audit added twelve reported observations and one source forecast while removing 38 models that were weak, duplicative, insufficiently project-anchored, or unnecessary after direct evidence was found.
+
+Meta Forest City adds current parcel value and floor-area observations plus recipient-documented community grants, and retains six bounded fiscal, water, and descriptive county-comparison syntheses. Microsoft San Antonio adds operating-employment evidence, permit value, assessor real/equipment values, exact tax-account payments, recycled-water planning, floor area, and a college-reported community gift; only three descriptive county comparisons remain modeled. EdgeConneX DET01 adds operator, assessor, and federal facility-area observations, operating power capacity, and a customer-employment forecast; three bounded fiscal and water syntheses remain.
+
+All three projects are intentionally classified incomplete. Public searches did not establish auditable construction outlays and local supplier capture, complete operating payroll and residence, same-scope marginal public-service costs, complete recipient-level fiscal incidence, or fully metered resource series at the required project boundary. Their category-by-category search notes identify the portals, records, date ranges, useful findings, and reproducible negative results reviewed before residual modeling.
+
+Every audited fragment contains exactly one factual `project_description`. The generated project pages render “About this project” above “Why this project is in the study,” while the community-map popup and county polygon preserve direct county-detail navigation.
+
+Validation covers the full data contract, repository tests, TypeScript compilation, the production build, browser checks, completed-project desktop and mobile inspection, project-description presence and placement, release-count assertions, queue integrity, and preview-process cleanup. The orchestration ledger records both the initial and corrective worker provenance without changing the frozen queue order.
