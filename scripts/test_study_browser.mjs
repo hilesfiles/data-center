@@ -7,7 +7,7 @@ import path from "node:path";
 const require = createRequire(import.meta.url);
 const { chromium } = require(process.env.PLAYWRIGHT_MODULE || "playwright");
 const url = process.env.STUDY_PREVIEW_URL || "http://127.0.0.1:5173/";
-const out = path.resolve("reports/application-remediation");
+const out = path.resolve(process.env.STUDY_BROWSER_REPORT_DIR || "reports/application-remediation");
 await mkdir(out, { recursive: true });
 const browser = await chromium.launch({ headless: true, args: ["--enable-unsafe-swiftshader"] });
 const page = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
@@ -52,8 +52,17 @@ try {
   assert.equal(await page.locator(".project-card").count(), 1);
   await page.getByRole("link", { name: "Quicken Loans Technology Center, Corktown", exact: true }).click();
   await page.getByRole("heading", { name: "Sources & research history" }).waitFor();
+  assert.equal(await page.locator(".facility-evidence-summary").isVisible(), true);
+  assert.match(await page.locator(".facility-evidence-summary").innerText(), /Tax base and revenue[\s\S]*\$3,643,800[\s\S]*\$2,813,298/i);
+  assert.equal(await page.locator(".evidence-ledger").getAttribute("open"), null);
+  await page.locator(".facility-evidence-summary").screenshot({ path: path.join(out, "facility-evidence-summary-desktop.png") });
+  await page.setViewportSize({ width: 390, height: 844 });
+  await noOverflow();
+  await page.locator(".facility-evidence-summary").screenshot({ path: path.join(out, "facility-evidence-summary-mobile.png") });
+  await page.setViewportSize({ width: 1440, height: 1000 });
   assert.equal(await page.locator(".annual-account-coverage").count(), 0);
   assert.equal(await page.locator(".analysis-readiness").count(), 0);
+  await openDetails(".evidence-ledger");
   assert.equal(await page.getByRole("tab", { name: /Reported activity/ }).isVisible(), true);
   check("combined filters and enterprise profile preserve partial economic coverage");
 
@@ -71,16 +80,21 @@ try {
   check("empty state, reset and undated campus profile");
 
   await page.goto(`${url}#/project/prj_study_im3_building_00438078069`);
+  await openDetails(".evidence-ledger");
   await page.getByRole("heading", { name: "Sources & research history" }).waitFor();
+  assert.match(await page.locator(".facility-evidence-summary").innerText(), /Construction[\s\S]*Peak construction workforce[\s\S]*1,300 workers/i);
+  assert.equal(await page.locator(".facility-evidence-table tbody tr").count(), 1);
   await page.getByText("Inventory identity and earlier first-entry research", { exact: true }).click();
   assert.match(await page.locator(".research-details").filter({ hasText: "Inventory identity and earlier first-entry research" }).innerText(), /cannot be the county's first entry/);
   await page.getByRole("link", { name: /Polk County, IA · View county account/ }).click();
   await page.getByRole("heading", { name: "Polk County", exact: true }).waitFor();
   await page.getByRole("link", { name: /Meta Altoona/ }).waitFor();
   assert.equal(await page.locator(".profile-grid").getByText("County first-entry treatment").count(), 0);
+  check("incomplete facility pages put structured source evidence ahead of the collapsed audit ledger");
   check("rejected first-entry candidate remains accessible through existing county route");
 
   await page.goto(`${url}#/project/prj_study_im3_building_00116005354`);
+  await openDetails(".evidence-ledger");
   await page.getByRole("heading", { name: "Economic evidence", exact: true }).waitFor();
   assert.equal(await page.locator(".history-bar-row").count(), 13);
   assert.equal(await page.locator(".history-bar-row.uncollected").count(), 5);
@@ -99,6 +113,7 @@ try {
 
   await page.setViewportSize({ width: 1440, height: 1000 });
   await page.goto(`${url}#/project/prj_study_im3_building_00464097467`);
+  await openDetails(".evidence-ledger");
   await page.getByRole("tab", { name: /Reported activity/ }).waitFor();
   await page.locator(".economic-record-list").getByText("80 FTE", { exact: true }).waitFor();
   assert.equal(await page.locator(".economic-record").count(), 2);
@@ -119,9 +134,9 @@ try {
   check("actual workforce and forecasts stay separate with distinct horizons and keyboard navigation");
 
   await page.goto(`${url}#/project/prj_study_im3_point_06685432442`);
+  await openDetails(".evidence-ledger");
   await page.getByRole("heading", { name: "Economic evidence", exact: true }).waitFor();
   await page.locator(".account-count").getByText("79 sourced records · 34 modeled syntheses", { exact: true }).waitFor();
-  await openDetails(".evidence-ledger");
   await openDetails(".project-research-ledger");
   assert.match(await page.locator(".economic-record-list").innerText(), /111 employees[\s\S]*\$50\.97 \/ hour[\s\S]*\$179,943,184/);
   const switchAudit = page.locator(".economic-record").filter({ hasText: "State-audited capital expenditure" });
@@ -143,6 +158,7 @@ try {
   check("Switch Storey audit outcomes remain separate from agreement forecasts and building allocation");
 
   await page.goto(`${url}#/project/prj_study_im3_building_01132541700`);
+  await openDetails(".evidence-ledger");
   await page.getByRole("heading", { name: "Economic evidence", exact: true }).waitFor();
   await page.locator(".economic-record").first().waitFor();
   assert.equal(await page.locator(".economic-record").count(), 1);
@@ -161,6 +177,7 @@ try {
   check("qualified peaks and completion-dependent plans preserve wording and HTML source links");
 
   await page.goto(`${url}#/project/prj_study_im3_building_00397914434`);
+  await openDetails(".evidence-ledger");
   await page.getByRole("heading", { name: "Economic evidence", exact: true }).waitFor();
   assert.match(await page.locator(".economic-record-list").innerText(), /2023 source table/);
   assert.match(await page.locator(".record-value").innerText(), /\$10,375,490/);
@@ -170,6 +187,7 @@ try {
   check("county source-year value remains distinct from a fiscal-year series");
 
   await page.goto(`${url}#/project/prj_study_im3_building_00610827836`);
+  await openDetails(".evidence-ledger");
   await page.getByRole("heading", { name: "Economic evidence", exact: true }).waitFor();
   assert.equal(await page.getByRole("tab", { name: /Plans & forecasts/ }).getAttribute("aria-selected"), "true");
   assert.match(await page.locator(".economic-record-list").innerText(), /\$1,300,000,000/);
@@ -179,6 +197,7 @@ try {
   check("a forecast-only project never displays its plan as reported activity");
 
   await page.goto(`${url}#/project/prj_study_im3_building_00460089167`);
+  await openDetails(".evidence-ledger");
   await page.getByRole("heading", { name: "Sources & research history" }).waitFor();
   await openDetails(".evidence-ledger");
   await openDetails(".project-research-ledger");
@@ -207,9 +226,9 @@ try {
   check("Forest City depth account separates fiscal arithmetic, current operator claims and original forecasts");
 
   await page.goto(`${url}#/project/prj_study_im3_building_00978934687`);
+  await openDetails(".evidence-ledger");
   await page.getByRole("heading", { name: "Digital Crossroad DX-1, Hammond", exact: true }).waitFor();
   await page.locator(".account-status").getByText("Completed contribution account", { exact: true }).waitFor();
-  await openDetails(".evidence-ledger");
   await openDetails(".project-research-ledger");
   await page.getByRole("heading", { name: "Proposed expansion agreement expired" }).waitFor();
   const hammondExpiry = page.locator(".project-research-update").filter({ hasText: "Proposed expansion agreement expired" });
@@ -320,6 +339,7 @@ try {
   check("Hammond preserves missing local-labor submissions as a public-evidence gap without solicitation");
 
   await page.goto(`${url}#/project/prj_study_im3_building_00364289074`);
+  await openDetails(".evidence-ledger");
   await page.getByRole("heading", { name: "Microsoft San Antonio", exact: true }).waitFor();
   await openDetails(".evidence-ledger");
   await page.locator(".economic-record").first().waitFor();
@@ -334,6 +354,7 @@ try {
   check("cumulative investment and the city's modeled net fiscal forecast retain distinct timing and basis");
 
   await page.goto(`${url}#/project/prj_study_im3_building_00499403180`);
+  await openDetails(".evidence-ledger");
   await page.getByRole("heading", { name: "Economic evidence", exact: true }).waitFor();
   assert.match(await page.locator(".record-scope").innerText(), /Supporting infrastructure/);
   await page.locator(".economic-record summary").click();
@@ -343,6 +364,7 @@ try {
   check("water-reuse infrastructure cost preserves payer, system scope and non-annual timing");
 
   await page.goto(`${url}#/project/prj_study_im3_campus_00231769626`);
+  await openDetails(".evidence-ledger");
   await page.getByRole("heading", { name: "Economic evidence", exact: true }).waitFor();
   assert.equal(await page.locator(".tax-billing-history").count(), 2);
   assert.equal(await page.locator(".tax-billing-history tbody tr").count(), 6);
@@ -360,6 +382,7 @@ try {
   check("tax bills retain two taxpayer accounts, source tax years and the distinction from cash receipts");
 
   await page.goto(`${url}#/project/prj_study_im3_campus_00578435601`);
+  await openDetails(".evidence-ledger");
   await page.getByRole("heading", { name: "Economic evidence", exact: true }).waitFor();
   await page.locator(".economic-history").getByText("$53,736,860 ↗", { exact: true }).waitFor();
   assert.equal(await page.locator(".history-bar-row").count(), 4);
@@ -377,6 +400,7 @@ try {
     ["building_00844389014", /70 jobs/, 2],
   ]) {
     await page.goto(`${url}#/project/prj_study_im3_${id}`);
+  await openDetails(".evidence-ledger");
     await page.getByRole("heading", { name: "Economic evidence", exact: true }).waitFor();
     assert.equal(await page.getByRole("tab", { name: /Plans & forecasts/ }).getAttribute("aria-selected"), "true");
     assert.equal(await page.locator(".economic-record").count(), count);
@@ -387,6 +411,7 @@ try {
   }
   check("water contributions and original operating-job commitments remain forecasts");
   await page.goto(`${url}#/project/prj_study_im3_building_00052227492`);
+  await openDetails(".evidence-ledger");
   await page.getByRole("heading", { name: "Economic evidence", exact: true }).waitFor();
   assert.equal(await page.locator(".economic-record").count(), 9);
   assert.match(await page.locator(".economic-record h4").first().innerText(), /Local government/);
@@ -405,6 +430,7 @@ try {
   await page.locator(".economic-accounts").screenshot({ path: path.join(out, "chaska-evidence-desktop.png") });
   check("city rebates preserve missing receipts and separate payable-year property valuations");
   await page.goto(`${url}#/project/prj_study_im3_building_00172739953`);
+  await openDetails(".evidence-ledger");
   await page.getByRole("heading", { name: "Switch Las Vegas NAP7", exact: true }).waitFor();
   await page.locator(".account-count").getByText("10 sourced records · partial coverage", { exact: true }).waitFor();
   assert.equal(await page.locator(".economic-record").count(), 10);
@@ -423,6 +449,7 @@ try {
   check("NAP7 parcel values and Core Campus capital expenditures retain separate scopes while the combined audit stays contextual");
 
   await page.goto(`${url}#/project/prj_study_im3_building_00838817907`);
+  await openDetails(".evidence-ledger");
   await page.getByRole("heading", { name: "TierPoint Charlotte CL4", exact: true }).waitFor();
   await page.locator(".account-count").getByText("42 sourced records · partial coverage", { exact: true }).waitFor();
   assert.equal(await page.locator(".economic-history").count(), 0);
@@ -437,6 +464,7 @@ try {
   check("TierPoint CL4 preserves the building owner's parcel assessments, bills and verified payments");
 
   await page.goto(`${url}#/project/prj_study_im3_building_00388148510`);
+  await openDetails(".evidence-ledger");
   await page.getByRole("heading", { name: "TierPoint / Windstream Little Rock", exact: true }).waitFor();
   await page.locator(".account-count").getByText("24 sourced records · partial coverage", { exact: true }).waitFor();
   assert.equal(await page.locator(".tax-billing-history tbody tr").count(), 16);
@@ -453,6 +481,7 @@ try {
   check("TierPoint Little Rock preserves assessment gaps and the unpaid 2025 parcel charge");
 
   await page.goto(`${url}#/project/prj_study_im3_point_09190480200`);
+  await openDetails(".evidence-ledger");
   await page.getByRole("heading", { name: "Stream Houston I / The Woodlands", exact: true }).waitFor();
   await page.locator(".account-count").getByText("46 sourced records · partial coverage", { exact: true }).waitFor();
   assert.equal(await page.locator(".economic-record").count(), 46);
@@ -477,6 +506,7 @@ try {
   check("Stream Houston preserves separate real-property and equipment values and paid-account histories");
 
   await page.goto(`${url}#/project/prj_study_im3_building_00377585075`);
+  await openDetails(".evidence-ledger");
   await page.getByRole("heading", { name: "EdgeConneX DET01, Southfield", exact: true }).waitFor();
   await page.locator(".account-count").getByText("50 sourced records · 23 modeled syntheses", { exact: true }).waitFor();
   await openDetails(".evidence-ledger");
@@ -509,10 +539,10 @@ try {
   check("EdgeConneX DET01 keeps real, IFT and former-IFT accounts separate from investment, job and wage forecasts");
 
   await page.goto(`${url}#/project/prj_study_im3_point_06685432442`);
+  await openDetails(".evidence-ledger");
   await page.getByRole("heading", { name: "Switch Citadel / Tahoe Reno 1", exact: true }).waitFor();
   await page.locator(".account-count").getByText("79 sourced records · 34 modeled syntheses", { exact: true }).waitFor();
   await page.locator(".account-status").getByText("Completed contribution account", { exact: true }).waitFor();
-  await openDetails(".evidence-ledger");
   await openDetails(".project-research-ledger");
   assert.equal(await page.locator(".economic-record").count(), 72);
   const storeyTaxHistories = page.locator(".tax-billing-history");
@@ -563,6 +593,7 @@ try {
   await page.setViewportSize({ width: 1440, height: 1000 });
   check("Citadel contribution account keeps fiscal scopes separate and labels county comparisons as noncausal");
   await page.goto(`${url}#/project/prj_study_im3_building_01073720208`);
+  await openDetails(".evidence-ledger");
   await page.getByRole("heading", { name: "Google Council Bluffs", exact: true }).waitFor();
   await page.locator(".economic-record").first().waitFor();
   assert.equal(await page.locator(".economic-record").count(), 3);
@@ -578,6 +609,7 @@ try {
   await page.locator(".economic-accounts").screenshot({ path: path.join(out, "council-bluffs-evidence-mobile.png") });
   check("Council Bluffs taxpayer stocks stay separate from state award commitments");
   await page.goto(`${url}#/project/prj_study_im3_building_00472761713`);
+  await openDetails(".evidence-ledger");
   await page.getByRole("heading", { name: "Economic evidence", exact: true }).waitFor();
   assert.equal(await page.locator(".economic-record").count(), 7);
   assert.equal(await page.locator(".tax-billing-history tbody tr").count(), 4);
@@ -592,6 +624,7 @@ try {
   check("NYSE parcel assessments and prior-year tax charges remain distinct with 2025 tax uncollected");
   await page.setViewportSize({ width: 1440, height: 1000 });
   await page.goto(`${url}#/project/prj_study_im3_building_00598261190`);
+  await openDetails(".evidence-ledger");
   await page.getByRole("heading", { name: "State Farm Olathe", exact: true }).waitFor();
   await page.locator(".account-count").getByText("25 sourced records · partial coverage", { exact: true }).waitFor();
   assert.equal(await page.locator(".economic-record").count(), 25);
@@ -608,10 +641,10 @@ try {
   check("State Farm parcel values, bills, paid account totals and estimated cumulative capex stay distinct");
   await page.setViewportSize({ width: 1440, height: 1000 });
   await page.goto(`${url}#/project/prj_study_im3_building_00300974499`);
+  await openDetails(".evidence-ledger");
   await page.getByRole("heading", { name: "Economic evidence", exact: true }).waitFor();
   await page.locator(".account-count").getByText("80 sourced records · 27 modeled syntheses", { exact: true }).waitFor();
   await page.locator(".account-status").getByText("Completed contribution account", { exact: true }).waitFor();
-  await openDetails(".evidence-ledger");
   await openDetails(".project-research-ledger");
   assert.equal(await page.locator(".economic-record").count(), 76);
   assert.equal(await page.locator(".tax-billing-history").count(), 2);
@@ -671,6 +704,7 @@ try {
   check("Apple Mesa source records, forecasts and 27 labeled modeled syntheses remain distinct");
   await page.setViewportSize({ width: 1440, height: 1000 });
   await page.goto(`${url}#/project/prj_study_im3_building_00664938835`);
+  await openDetails(".evidence-ledger");
   await page.getByRole("heading", { name: "Expedient Milwaukee / Franklin", exact: true }).waitFor();
   await page.locator(".account-count").getByText("7 sourced records · partial coverage", { exact: true }).waitFor();
   assert.equal(await page.locator(".economic-record").count(), 6);
@@ -687,6 +721,7 @@ try {
   check("Expedient adaptive reuse keeps parcel stocks, permit values and the hiring plan separate");
   await page.setViewportSize({ width: 1440, height: 1000 });
   await page.goto(`${url}#/project/prj_study_im3_building_00888253616`);
+  await openDetails(".evidence-ledger");
   await page.getByRole("heading", { name: "NTT Silicon Valley SV1", exact: true }).waitFor();
   await page.locator(".account-count").getByText("4 sourced records · partial coverage", { exact: true }).waitFor();
   assert.equal(await page.locator(".economic-record").count(), 2);
@@ -701,6 +736,7 @@ try {
   check("NTT SV1 keeps assessment-appeal positions, job plans and water design estimates distinct");
   await page.setViewportSize({ width: 1440, height: 1000 });
   await page.goto(`${url}#/project/prj_study_im3_building_00903236619`);
+  await openDetails(".evidence-ledger");
   await page.getByRole("heading", { name: "Quicken Loans Technology Center, Corktown", exact: true }).waitFor();
   await page.locator(".account-count").getByText("4 sourced records · partial coverage", { exact: true }).waitFor();
   assert.equal(await page.locator(".economic-record").count(), 4);
@@ -780,6 +816,17 @@ try {
   await page.waitForURL(`**/project/${target.project_id}`);
   await page.getByRole("heading", { name: "Sources & research history" }).waitFor();
   check("map renders only six completed studies while preserving the 36-project register off-map");
+
+  for (const candidate of study.projects.filter(project => project.model_completeness.status === "incomplete")) {
+    await page.goto(`${url}#/project/${candidate.project_id}`);
+    await page.getByRole("heading", { name: candidate.name, exact: true }).waitFor();
+    const summary = page.locator(".facility-evidence-summary");
+    await summary.waitFor();
+    assert((await summary.locator(".facility-evidence-table tbody tr").count()) > 0, `${candidate.name} has no visible evidence rows`);
+    assert.equal(await page.locator(".error-panel").count(), 0, `${candidate.name} rendered an error`);
+    assert.equal(await page.locator(".evidence-ledger").getAttribute("open"), null, `${candidate.name} audit ledger should be collapsed`);
+  }
+  check("all incomplete facility routes render visible evidence summaries with collapsed audit ledgers");
 
   await page.goto(`${url}#/project/prj_study_missing`);
   await page.getByRole("heading", { name: "Project or page not found" }).waitFor();
