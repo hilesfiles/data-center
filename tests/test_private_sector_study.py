@@ -90,7 +90,7 @@ class PrivateSectorStudyTest(unittest.TestCase):
         self.assertEqual(index["counts"]["projection_records"], 52)
         self.assertEqual(index["counts"]["modeled_synthesis_records"], 104)
         self.assertEqual(index["full_modeled_county_accounts"], 3)
-        self.assertEqual(sum(r["analysis_readiness"]["causal"] == "causal_model_available" for r in details), 3)
+        self.assertEqual(sum(r["analysis_readiness"]["causal"] == "causal_model_available" for r in details), 0)
         washoe = next(r for r in details if r["name"] == "Apple Washoe County campus")
         coverage = {g["code"]: g["status"] for g in washoe["evidence_gaps"]}
         self.assertEqual(coverage["operations"], "partial")
@@ -126,10 +126,23 @@ class PrivateSectorStudyTest(unittest.TestCase):
                 "construction": "modeled_available",
                 "operations": "modeled_available",
                 "fiscal": "modeled_available",
-                "causal": "causal_model_available",
+                "causal": "not_assessed",
             })
             self.assertTrue(all(row["presentation"] == "modeled_not_observed_or_audited"
                                 for row in project["modeled_syntheses"]))
+            tax = next(row for row in project["modeled_syntheses"]
+                       if row["metric_code"] == "study.modeled_latest_project_linked_local_tax_contribution")
+            break_even = next(row for row in project["modeled_syntheses"]
+                              if row["metric_code"] == "study.modeled_annual_local_service_cost_break_even")
+            self.assertEqual(tax["value"], break_even["value"])
+            self.assertEqual((tax["interval"]["kind"], break_even["interval"]["kind"]),
+                             ("point_estimate", "point_estimate"))
+            self.assertIn("not an estimate of actual public cost", break_even["limitations"][0])
+            self.assertFalse(any(row["metric_code"] in {
+                "study.modeled_annual_net_fiscal_position",
+                "study.modeled_annual_local_fiscal_margin_before_incentives",
+                "study.modeled_annual_public_service_cost",
+            } for row in project["modeled_syntheses"]))
 
     def test_chaska_preserves_municipal_payer_and_payable_year_values(self):
         _, details, _ = self.build()
@@ -691,9 +704,12 @@ class PrivateSectorStudyTest(unittest.TestCase):
         self.assertEqual({r["basis"] for r in modeled}, {"modeled_synthesis"})
         self.assertTrue(all(r["presentation"] == "modeled_not_observed_or_audited" for r in modeled))
         self.assertTrue(all(r["derivation"]["formula"] and r["parameters"] and r["limitations"] for r in modeled))
-        causal = [r for r in modeled if r["derivation"]["method"] == "synthetic_control"]
-        self.assertEqual(len(causal), 3)
-        self.assertTrue(all("causal_design" in r for r in causal))
+        comparisons = [r for r in modeled if r["metric_code"].endswith("_comparison_gap")]
+        self.assertEqual(len(comparisons), 3)
+        self.assertTrue(all(r["derivation"]["method"] == "benchmark_application" for r in comparisons))
+        self.assertTrue(all("causal_design" not in r for r in comparisons))
+        self.assertTrue(all(any("must not be interpreted as a data-center effect" in limit for limit in r["limitations"])
+                            for r in comparisons))
 
         spend = by_id["est_study_dx_hammond_construction_spend_direct"]
         self.assertEqual((spend["interval"]["low"], spend["value"], spend["interval"]["high"]),
@@ -715,6 +731,11 @@ class PrivateSectorStudyTest(unittest.TestCase):
         self.assertEqual(by_id["est_study_dx_hammond_property_tax_reductions_2025"]["value"], 110260.44)
         self.assertEqual(by_id["est_study_dx_hammond_tif_debt_service_2024"]["value"], 482700)
         self.assertEqual(by_id["est_study_dx_hammond_state_incentives_certified_2026"]["value"], 37426935.09)
+        tax = by_id["est_study_full_dx_hammond_latest_local_tax_contribution"]
+        break_even = by_id["est_study_full_dx_hammond_annual_local_service_cost_break_even"]
+        self.assertEqual((tax["value"], break_even["value"]), (641685.14, 641685.14))
+        self.assertIn("No net fiscal result is asserted", break_even["notes"])
+        self.assertFalse(any(r["metric_code"] == "study.modeled_annual_net_fiscal_position" for r in modeled))
         electricity = by_id["est_study_dx_hammond_facility_electricity_2025"]
         self.assertEqual((electricity["interval"]["low"], electricity["value"], electricity["interval"]["high"]),
                          (80964738, 114993396, 150195456))

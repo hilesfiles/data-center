@@ -206,7 +206,7 @@ try {
 
   await page.goto(`${url}#/project/prj_study_im3_building_00978934687`);
   await page.getByRole("heading", { name: "Digital Crossroad DX-1, Hammond", exact: true }).waitFor();
-  await page.getByText("Completed modeled account", { exact: true }).waitFor();
+  await page.locator(".account-status").getByText("Completed contribution account", { exact: true }).waitFor();
   await openDetails(".evidence-ledger");
   await openDetails(".project-research-ledger");
   await page.getByRole("heading", { name: "Proposed expansion agreement expired" }).waitFor();
@@ -282,12 +282,16 @@ try {
   await hammondConstructionModel.scrollIntoViewIfNeeded();
   await page.screenshot({ path: path.join(out, "hammond-modeled-synthesis-viewport-mobile.png") });
   const hammondImpact = page.locator(".impact-account").first();
-  assert.equal(await hammondImpact.locator(".impact-section").count(), 5);
+  assert.equal(await hammondImpact.locator(".impact-section").count(), 7);
   assert.match(await hammondImpact.innerText(), /What public records establish[\s\S]*Capital documented[\s\S]*More than \$50,000,000/);
   assert.match(await hammondImpact.innerText(), /Construction-period contribution[\s\S]*\$100,000,000[\s\S]*874\.91 job-years[\s\S]*\$52,948,363\.64/);
   assert.match(await hammondImpact.innerText(), /Annual operating contribution[\s\S]*202\.61 FTE[\s\S]*\$13,066,500/);
-  assert.match(await hammondImpact.innerText(), /Annual fiscal and infrastructure account[\s\S]*-\$1,976,074\.04 \/ year[\s\S]*114,993,396 kWh \/ year[\s\S]*9,113,412\.43 gallons \/ year/);
-  assert.match(await hammondImpact.innerText(), /Estimated county effects[\s\S]*11\.98%[\s\S]*3%[\s\S]*0\.83%/);
+  assert.match(await hammondImpact.innerText(), /Recurring local tax contribution and break-even[\s\S]*\$641,685\.14 \/ year[\s\S]*Annual public-cost break-even[\s\S]*\$641,685\.14 \/ year/);
+  assert.match(await hammondImpact.innerText(), /Public support and tax treatment[\s\S]*\$37,426,935\.09[\s\S]*\$110,260\.44[\s\S]*\$482,700/);
+  assert.match(await hammondImpact.innerText(), /Annual infrastructure and environmental demand[\s\S]*114,993,396 kWh \/ year[\s\S]*9,113,412\.43 gallons \/ year/);
+  assert.match(await hammondImpact.innerText(), /County outcome comparison[\s\S]*11\.98%[\s\S]*3%[\s\S]*0\.83%/);
+  assert.match(await hammondImpact.innerText(), /do not estimate what the data center caused/i);
+  assert.doesNotMatch(await hammondImpact.innerText(), /Net public fiscal position|Local fiscal margin|Local service-cost allocation|Estimated county effects/i);
   assert.equal(await page.locator(".annual-account-coverage, .analysis-readiness").count(), 0);
   await hammondImpact.screenshot({ path: path.join(out, "hammond-impact-account-mobile.png") });
   check("Hammond presents a structured economic account with sourced anchors and modeled intervals");
@@ -502,7 +506,7 @@ try {
   await page.goto(`${url}#/project/prj_study_im3_point_06685432442`);
   await page.getByRole("heading", { name: "Switch Citadel / Tahoe Reno 1", exact: true }).waitFor();
   await page.locator(".account-count").getByText("79 sourced records · 34 modeled syntheses", { exact: true }).waitFor();
-  await page.getByText("Completed modeled account", { exact: true }).waitFor();
+  await page.locator(".account-status").getByText("Completed contribution account", { exact: true }).waitFor();
   await openDetails(".evidence-ledger");
   await openDetails(".project-research-ledger");
   assert.equal(await page.locator(".economic-record").count(), 72);
@@ -539,16 +543,20 @@ try {
   assert.match(await page.locator(".modeled-record").first().innerText(), /Formula:[\s\S]*Named parameters[\s\S]*Complete annual Citadel capital ledger/);
   await page.locator(".modeled-record-list").screenshot({ path: path.join(out, "switch-storey-modeled-synthesis-mobile.png") });
   const storeyImpact = page.locator(".impact-account").first();
-  assert.equal(await storeyImpact.locator(".impact-section").count(), 5);
+  assert.equal(await storeyImpact.locator(".impact-section").count(), 7);
   assert.match(await storeyImpact.innerText(), /What public records establish[\s\S]*Capital documented[\s\S]*\$179,943,184/);
-  assert.match(await storeyImpact.innerText(), /Construction-period contribution[\s\S]*\$95,737,273\.6[\s\S]*2,094\.04 job-years[\s\S]*\$126,728,299\.41/);
+  assert.match(await storeyImpact.innerText(), /Construction-period contribution[\s\S]*\$47,868,636\.8[\s\S]*1,047\.02 job-years[\s\S]*\$63,364,149\.71/);
   assert.match(await storeyImpact.innerText(), /Annual operating contribution[\s\S]*690\.6 FTE[\s\S]*\$44,537,165\.25/);
-  assert.match(await storeyImpact.innerText(), /Annual fiscal and infrastructure account[\s\S]*-\$3,146,671\.13 \/ year[\s\S]*594,453\.6 MWh \/ year[\s\S]*175,289,420\.58 gallons \/ year/);
-  assert.match(await storeyImpact.innerText(), /Estimated county effects[\s\S]*92\.93%[\s\S]*73\.79%[\s\S]*26\.21%/);
+  assert.match(await storeyImpact.innerText(), /Recurring local tax contribution and break-even[\s\S]*\$3,452,486\.96 \/ year[\s\S]*Annual public-cost break-even[\s\S]*\$3,452,486\.96 \/ year/);
+  assert.match(await storeyImpact.innerText(), /Public support and tax treatment[\s\S]*\$5,390,787\.65 \/ year/);
+  assert.match(await storeyImpact.innerText(), /Annual infrastructure and environmental demand[\s\S]*594,453\.6 MWh \/ year[\s\S]*175,289,420\.58 gallons \/ year/);
+  assert.match(await storeyImpact.innerText(), /County outcome comparison[\s\S]*92\.93%[\s\S]*73\.79%[\s\S]*26\.21%/);
+  assert.match(await storeyImpact.innerText(), /do not estimate what the data center caused/i);
+  assert.doesNotMatch(await storeyImpact.innerText(), /Net public fiscal position|Local fiscal margin|Local service-cost allocation|Estimated county effects/i);
   assert.equal(await page.locator(".annual-account-coverage, .analysis-readiness").count(), 0);
   await storeyImpact.screenshot({ path: path.join(out, "switch-storey-impact-account-mobile.png") });
   await page.setViewportSize({ width: 1440, height: 1000 });
-  check("Citadel passes the full modeled county-account gate with scope, provenance and causal limits visible");
+  check("Citadel contribution account keeps fiscal scopes separate and labels county comparisons as noncausal");
   await page.goto(`${url}#/project/prj_study_im3_building_01073720208`);
   await page.getByRole("heading", { name: "Google Council Bluffs", exact: true }).waitFor();
   await page.locator(".economic-record").first().waitFor();
@@ -597,7 +605,7 @@ try {
   await page.goto(`${url}#/project/prj_study_im3_building_00300974499`);
   await page.getByRole("heading", { name: "Economic evidence", exact: true }).waitFor();
   await page.locator(".account-count").getByText("80 sourced records · 27 modeled syntheses", { exact: true }).waitFor();
-  await page.getByText("Completed modeled account", { exact: true }).waitFor();
+  await page.locator(".account-status").getByText("Completed contribution account", { exact: true }).waitFor();
   await openDetails(".evidence-ledger");
   await openDetails(".project-research-ledger");
   assert.equal(await page.locator(".economic-record").count(), 76);
@@ -642,12 +650,16 @@ try {
   assert.match(await page.locator(".modeled-record").first().innerText(), /Method:[\s\S]*Formula:[\s\S]*Sensitivity envelope:[\s\S]*Confidence:[\s\S]*Named parameters[\s\S]*Limitations[\s\S]*Apple Environmental Progress Report 2026/);
   await page.locator(".modeled-record-list").screenshot({ path: path.join(out, "apple-mesa-modeled-synthesis-mobile.png") });
   const appleImpact = page.locator(".impact-account").first();
-  assert.equal(await appleImpact.locator(".impact-section").count(), 5);
+  assert.equal(await appleImpact.locator(".impact-section").count(), 7);
   assert.match(await appleImpact.innerText(), /What public records establish[\s\S]*Capital documented[\s\S]*About \$2,000,000,000/);
-  assert.match(await appleImpact.innerText(), /Construction-period contribution[\s\S]*\$333,333,333\.33 \/ year[\s\S]*17,498\.2 job-years[\s\S]*\$1,058,967,272\.8/);
+  assert.match(await appleImpact.innerText(), /Construction-period contribution[\s\S]*\$333,333,333\.33 \/ year[\s\S]*8,749\.1 job-years[\s\S]*\$529,483,636\.4/);
   assert.match(await appleImpact.innerText(), /Annual operating contribution[\s\S]*796\.32 FTE[\s\S]*\$51,355,560/);
-  assert.match(await appleImpact.innerText(), /Annual fiscal and infrastructure account[\s\S]*-\$5,403,732\.67 \/ year[\s\S]*109,322,072\.06 gallons \/ year[\s\S]*180,341\.25 metric tons CO₂e \/ year/);
-  assert.match(await appleImpact.innerText(), /Estimated county effects[\s\S]*44\.49%[\s\S]*39\.93%[\s\S]*4\.38%/);
+  assert.match(await appleImpact.innerText(), /Recurring local tax contribution and break-even[\s\S]*\$1,873,375\.92 \/ year[\s\S]*Annual public-cost break-even[\s\S]*\$1,873,375\.92 \/ year/);
+  assert.match(await appleImpact.innerText(), /Public support and tax treatment[\s\S]*\$4,121,427\.02[\s\S]*\$12,500,000/);
+  assert.match(await appleImpact.innerText(), /Annual infrastructure and environmental demand[\s\S]*109,322,072\.06 gallons \/ year[\s\S]*180,341\.25 metric tons CO₂e \/ year/);
+  assert.match(await appleImpact.innerText(), /County outcome comparison[\s\S]*44\.49%[\s\S]*39\.93%[\s\S]*4\.38%/);
+  assert.match(await appleImpact.innerText(), /do not estimate what the data center caused/i);
+  assert.doesNotMatch(await appleImpact.innerText(), /Net public fiscal position|Local fiscal margin|Local service-cost allocation|Estimated county effects/i);
   assert.equal(await page.locator(".annual-account-coverage, .analysis-readiness").count(), 0);
   await appleImpact.screenshot({ path: path.join(out, "apple-mesa-impact-account-mobile.png") });
   check("Apple Mesa presents a structured economic account with sourced anchors and modeled intervals");
@@ -701,8 +713,8 @@ try {
   await page.getByRole("heading", { name: "Facility contribution to Lake County", exact: true }).waitFor();
   const countyImpact = page.locator(".county-impact-account");
   await countyImpact.waitFor();
-  assert.equal(await countyImpact.locator(".impact-section").count(), 5);
-  assert.match(await countyImpact.innerText(), /Construction-period contribution[\s\S]*Annual operating contribution[\s\S]*Annual fiscal and infrastructure account[\s\S]*Estimated county effects/);
+  assert.equal(await countyImpact.locator(".impact-section").count(), 7);
+  assert.match(await countyImpact.innerText(), /Construction-period contribution[\s\S]*Annual operating contribution[\s\S]*Recurring local tax contribution and break-even[\s\S]*Public support and tax treatment[\s\S]*Annual infrastructure and environmental demand[\s\S]*County outcome comparison/);
   await page.getByRole("heading", { name: "How the host economy changed", exact: true }).waitFor();
   assert.equal(await page.locator(".county-trend").count(), 4);
   assert.equal(await page.locator(".county-history-table tbody tr").count(), 24);
@@ -729,10 +741,10 @@ try {
     sidebar: getComputedStyle(document.querySelector(".sidebar")).backgroundColor,
     map: getComputedStyle(document.querySelector(".map-section")).backgroundColor,
   })), { sidebar: "rgb(11, 14, 20)", map: "rgb(16, 23, 27)" });
-  assert.match(await page.locator(".review-key").innerText(), /full modeled accounts \(3\)/i);
+  assert.match(await page.locator(".review-key").innerText(), /completed contribution accounts \(3\)/i);
   assert.doesNotMatch(await page.locator(".legend").innerText(), /IM3|pending|merged|queued/i);
   await page.getByLabel("Completed project markers").selectOption("Colocation");
-  assert.match(await page.locator(".review-key").innerText(), /full modeled accounts \(2\)/i);
+  assert.match(await page.locator(".review-key").innerText(), /completed contribution accounts \(2\)/i);
   await page.getByLabel("Completed project markers").selectOption("");
   await page.screenshot({ path: path.join(out, "map-desktop.png") });
   assert.doesNotMatch(await page.locator(".sidebar").innerText(), /Source records|Building records|Campus records|Observed footprint|First-entry research/i);

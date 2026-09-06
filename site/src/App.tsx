@@ -63,7 +63,7 @@ function CountyStudyAccount({ summary, release, generatedAt }: { summary: StudyP
   }, [summary, release, generatedAt]);
   return <section className="county-study-account" aria-labelledby="county-account-title">
     <div className="section-heading"><div><span className="eyebrow">Completed private-sector study</span><h3 id="county-account-title">Facility contribution to {summary.county_name}</h3></div><a href={`#/project/${summary.project_id}`}>Open full project evidence →</a></div>
-    <p className="study-intro">Construction, recurring operations, public finances, infrastructure demand, and county effects are presented as separate accounts. Reported and modeled figures remain labeled at the value.</p>
+    <p className="study-intro">Construction, recurring operations, local public finances, public support, infrastructure demand, and county comparisons are presented separately. Reported and modeled figures remain labeled at the value.</p>
     {error ? <div className="error-panel" role="alert">{error}</div> : !project ? <p className="study-loading" role="status">Loading the completed economic account…</p> : <ImpactAccount project={project} countyView />}
   </section>;
 }
@@ -474,7 +474,7 @@ export default function App({ study, studyError }: { study: StudyIndex | null; s
           <section className="control-section">
             <label className="study-map-filter" htmlFor="study-map-type">Completed project markers</label>
             <select id="study-map-type" value={studyGroup} onChange={e => setStudyGroup(e.target.value)}><option value="">All completed projects</option>{completedGroups.map(group => <option key={group}>{group}</option>)}</select>
-            <p className="control-note">Only projects that pass the full modeled county-account gate appear here. Legacy inventory records and incomplete research candidates remain stored but are excluded from this map.</p>
+            <p className="control-note">Only projects that pass the full contribution-account gate appear here. Legacy inventory records and incomplete research candidates remain stored but are excluded from this map.</p>
           </section>
 
           <section className="county-section" aria-live="polite">
@@ -502,7 +502,7 @@ export default function App({ study, studyError }: { study: StudyIndex | null; s
           </Suspense>
           <div className="map-caption">
             <span>Census boundaries · Jan. 1, 2025</span>
-            {study && <span>{completedProjects.length} completed county accounts · release {study.release_id}</span>}
+            {study && <span>{completedProjects.length} completed contribution accounts · release {study.release_id}</span>}
             <span>Legacy inventory and county datasets retained off-map</span>
           </div>
         </section>

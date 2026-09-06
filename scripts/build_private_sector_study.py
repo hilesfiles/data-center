@@ -24,7 +24,7 @@ CONFIG = ROOT / "config/v1/private-sector-study-candidates.json"
 PUBLIC = ROOT / "site/public/data/v1"
 OUT = PUBLIC / "study"
 SILVER = ROOT / "data/silver/study"
-VERSION = "private-sector-study-1.42.0"
+VERSION = "private-sector-study-1.43.0"
 GAPS = [
     ("investment", "Capital investment", "Annual actual spending, local share, and phase allocation."),
     ("construction", "Construction jobs and payroll", "Workers, job-years, payroll, duration, and local participation."),
@@ -37,11 +37,10 @@ GAPS = [
 ]
 REQUIRED_ACCOUNT_CATEGORIES = tuple(code for code, _, _ in GAPS)
 REQUIRED_COUNTY_OUTCOMES = {
-    "study.modeled_county_gdp_effect",
-    "study.modeled_county_employment_effect",
-    "study.modeled_county_wage_effect",
+    "study.modeled_county_gdp_comparison_gap",
+    "study.modeled_county_employment_comparison_gap",
+    "study.modeled_county_wage_comparison_gap",
 }
-CAUSAL_METHODS = {"difference_in_differences", "event_study", "synthetic_control"}
 
 
 def model_completeness(records, modeled):
@@ -51,8 +50,6 @@ def model_completeness(records, modeled):
     county_outcomes = sorted({
         row["metric_code"] for row in modeled
         if row["metric_code"] in REQUIRED_COUNTY_OUTCOMES
-        and row["derivation"]["method"] in CAUSAL_METHODS
-        and row.get("causal_design")
     })
     missing_categories = sorted(set(REQUIRED_ACCOUNT_CATEGORIES) - set(covered))
     missing_outcomes = sorted(REQUIRED_COUNTY_OUTCOMES - set(county_outcomes))
@@ -67,7 +64,7 @@ def model_completeness(records, modeled):
         "missing_categories": missing_categories,
         "missing_county_outcomes": missing_outcomes,
         "direct_evidence_gap_count": len(REQUIRED_ACCOUNT_CATEGORIES),
-        "definition": "All eight annual-account categories contain sourced or labeled modeled values, and GDP, employment, and wage county-effect models include causal-design metadata.",
+        "definition": "All eight contribution-account categories contain sourced or labeled modeled values, and GDP, employment, and wage county-comparison modules are populated. Comparison gaps are descriptive and do not establish causal facility effects.",
     }
 
 
@@ -187,7 +184,7 @@ def build_products(config, inventory, panels, generated_at, evidence=None, synth
                 "construction": "modeled_available" if any(r["category"] in {"investment", "construction"} for r in modeled) else "not_assessed",
                 "operations": "modeled_available" if any(r["category"] in {"operations", "suppliers"} for r in modeled) else "not_assessed",
                 "fiscal": "modeled_available" if any(r["category"] in {"fiscal", "public_costs"} for r in modeled) else "not_assessed",
-                "causal": "causal_model_available" if completeness["covered_county_outcomes"] else "not_assessed",
+                "causal": "causal_model_available" if any(r["derivation"]["method"] in {"difference_in_differences", "event_study", "synthetic_control"} and r.get("causal_design") for r in modeled) else "not_assessed",
             },
             "legacy_first_entry_note": row.get("existing_first_entry_rationale"),
             "scope_note": "Provisional private-sector research candidate. Owner/operator history, project boundaries and lifecycle require review. Membership does not verify current operation or establish economic impact.",

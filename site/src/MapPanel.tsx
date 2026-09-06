@@ -207,7 +207,7 @@ export function MapPanel({ selectedFips, onSelectCounty, studyProjects = [] }: M
     <div className="legend" aria-label="Map legend">
       <span className="legend-title">Completed private-sector county studies</span>
       <div className="review-key">
-        <span><i className="key-dot key-study" />full modeled accounts ({studyProjects.length})</span>
+        <span><i className="key-dot key-study" />completed contribution accounts ({studyProjects.length})</span>
       </div>
     </div>
   </div>;

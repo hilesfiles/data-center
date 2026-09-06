@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
-  "policy_version": "study-modeling-policy-1.2.0",
-  "effective_release": "private-sector-study-1.42.0",
+  "policy_version": "study-modeling-policy-1.3.0",
+  "effective_release": "private-sector-study-1.43.0",
   "principles": [
     { "code": "observations_first", "rule": "Search already-public sources for direct observations before constructing a modeled synthesis." },
     { "code": "preserve_projections", "rule": "Preserve source projections separately and never relabel them as modeled or realized values." },
@@ -12,6 +12,10 @@
     { "code": "publication_separation", "rule": "Exclude modeled outputs from sourced-record counts, canonical claims, and realized-benefit totals." },
     { "code": "symmetric_evidence", "rule": "Apply identical evidence and uncertainty rules to benefits and costs." },
     { "code": "contribution_not_causation", "rule": "Keep contribution estimates distinct from causal effects." },
+    { "code": "fiscal_scope_alignment", "rule": "Do not calculate a net fiscal position from revenues, incentives, or costs that differ in government level, recipient scope, accounting basis, or time horizon." },
+    { "code": "fiscal_cost_evidence", "rule": "Do not infer public-service cost as an arbitrary share of project revenue. When same-scope marginal cost is unavailable, publish the recurring tax contribution and its cost break-even threshold without asserting a net fiscal result." },
+    { "code": "construction_basis_alignment", "rule": "Apply construction multipliers only to construction-eligible spending; broad capital totals require an explicit equipment-exclusion sensitivity." },
+    { "code": "comparison_not_effect", "rule": "Do not label a descriptive or mechanically matched county comparison as a facility effect or causal estimate." },
     { "code": "multiplier_provenance", "rule": "Multiplier models require a named source, model and version, geography, vintage, local-purchase assumption, and separated direct, indirect, and induced channels." },
     { "code": "no_double_counting", "rule": "Do not sum overlapping modeled outputs, source observations, projections, contribution channels, or nested totals." },
     { "code": "strategic_scope", "rule": "Keep national-security narratives outside local economic totals unless a sourced quantitative model defines the local channel and scope." }

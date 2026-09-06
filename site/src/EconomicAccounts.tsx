@@ -58,42 +58,60 @@ type ImpactMetric = {
 const impactSections: Array<{ title: string; note: string; metrics: ImpactMetric[] }> = [
   {
     title: "Construction-period contribution",
-    note: "Capital deployed during development and the temporary employment, earnings, and local purchasing supported by that work.",
+    note: "Broad reported investment is kept separate from construction-eligible spending. Employment and income are benchmark equivalents, not observed local outcomes.",
     metrics: [
-      { label: "Annualized capital spending", description: "Capital program expressed as an annual development-period flow", codes: ["study.modeled_annualized_capital_spending"] },
-      { label: "Local construction purchasing", description: "Direct spending retained by local construction suppliers", codes: ["study.modeled_local_construction_spending", "study.modeled_construction_supplier_spending_direct"] },
-      { label: "Construction employment", description: "Direct, indirect, and induced work over the construction period", codes: ["study.modeled_construction_job_years_total"] },
-      { label: "Construction labor income", description: "Total earnings supported over the construction period", codes: ["study.modeled_construction_labor_income_total"] },
+      { label: "Annualized reported investment", description: "Broad capital total expressed as an annual development-period flow", codes: ["study.modeled_annualized_capital_spending"] },
+      { label: "Local construction purchasing", description: "Construction-eligible spending retained by local suppliers under stated share assumptions", codes: ["study.modeled_local_construction_spending", "study.modeled_construction_supplier_spending_direct"] },
+      { label: "Construction employment benchmark", description: "Prince William benchmark-equivalent direct, indirect, and induced job-years", codes: ["study.modeled_construction_job_years_total"] },
+      { label: "Construction income benchmark", description: "Prince William benchmark-equivalent labor income over the construction period", codes: ["study.modeled_construction_labor_income_total"] },
     ],
   },
   {
     title: "Annual operating contribution",
-    note: "Recurring employment and economic activity supported by facility operations in the modeled operating year.",
+    note: "Recurring activity under a transferred Prince William County input-output benchmark. These are contribution scenarios, not host-county observations.",
     metrics: [
-      { label: "Employment supported", description: "Direct, supplier, and household-spending employment", codes: ["study.modeled_operating_fte_total"] },
-      { label: "Labor income supported", description: "Annual direct, indirect, and induced labor income", codes: ["study.modeled_operating_labor_income_total"] },
-      { label: "Supplier output", description: "Annual output supported through operating purchases", codes: ["study.modeled_operating_supplier_output", "study.modeled_operating_supplier_output_indirect"] },
-      { label: "Household-spending output", description: "Annual induced output from worker household spending", codes: ["study.modeled_induced_household_output", "study.modeled_operating_household_output_induced"] },
+      { label: "Employment benchmark", description: "Direct, supplier, and household-spending FTE under the transferred benchmark", codes: ["study.modeled_operating_fte_total"] },
+      { label: "Labor-income benchmark", description: "Annual direct, indirect, and induced labor income under the transferred benchmark", codes: ["study.modeled_operating_labor_income_total"] },
+      { label: "Supplier-output benchmark", description: "Annual indirect output associated with operating purchases", codes: ["study.modeled_operating_supplier_output", "study.modeled_operating_supplier_output_indirect"] },
+      { label: "Household-output benchmark", description: "Annual induced output associated with worker household spending", codes: ["study.modeled_induced_household_output", "study.modeled_operating_household_output_induced"] },
     ],
   },
   {
-    title: "Annual fiscal and infrastructure account",
-    note: "Comparable annual public balance and operating-scale resource demand. Fiscal figures and engineering estimates are separate lines and are not summed.",
+    title: "Recurring local tax contribution and break-even",
+    note: "The tax contribution is an arithmetic sum of cited local property-tax claims. Actual same-scope public-service cost is unavailable, so the account reports the cost threshold that would erase the recurring tax contribution and does not claim a net fiscal result.",
     metrics: [
-      { label: "Net public fiscal position", description: "Modeled recurring revenues less incentives and public-service costs", codes: ["study.modeled_annual_net_fiscal_position"] },
-      { label: "Public-service cost", description: "Annual local public-service cost assigned to the facility scenario", codes: ["study.modeled_annual_public_service_cost"] },
+      { label: "Project-linked local property taxes", description: "Same-period aggregation of the cited local tax claims", codes: ["study.modeled_latest_project_linked_local_tax_contribution"] },
+      { label: "Annual public-cost break-even", description: "Annual same-scope local cost that would fully offset those taxes", codes: ["study.modeled_annual_local_service_cost_break_even"] },
+    ],
+  },
+  {
+    title: "Public support and tax treatment",
+    note: "These values retain their own government level, timing, and legal meaning. They are disclosed separately and are not subtracted from the recurring local account.",
+    metrics: [
+      { label: "Property-tax classification counterfactual", description: "Estimated tax difference versus the stated alternative classification", codes: ["study.modeled_ftz_property_tax_reduction"] },
+      { label: "State tax-credit realization", description: "Modeled state income-tax credit realization across the stated horizon", codes: ["study.modeled_state_tax_credit_realization"] },
+      { label: "Approved abatement annual equivalent", description: "Straight-line equivalent of an approved multi-year abatement forecast", codes: ["study.modeled_planned_tax_abatement_annual_equivalent"] },
+      { label: "Certified state incentive total", description: "Cumulative certified value across separately governed state agreements", codes: ["study.modeled_state_incentives_certified_total"] },
+      { label: "Property-tax credits and cap savings", description: "Current tax-year reductions reported for the project parcel", codes: ["study.modeled_property_tax_reductions_total"] },
+      { label: "TIF debt service", description: "Restricted project-financing principal, interest, and fees for the stated year", codes: ["study.modeled_tif_debt_service"] },
+    ],
+  },
+  {
+    title: "Annual infrastructure and environmental demand",
+    note: "Operating-scale engineering estimates. These physical measures are costs or constraints to evaluate alongside the economic contribution, not dollar values to add to it.",
+    metrics: [
       { label: "Facility electricity", description: "Annual operating electricity requirement", codes: ["study.modeled_annual_electricity_use", "study.modeled_facility_electricity_consumption"] },
       { label: "On-site water use", description: "Annual on-site water requirement under the stated cooling scenario", codes: ["study.modeled_onsite_water_use"] },
       { label: "Location-based emissions", description: "Annual grid emissions associated with the electricity scenario", codes: ["study.modeled_location_based_gross_emissions", "study.modeled_location_based_electricity_emissions", "study.modeled_location_based_grid_emissions"] },
     ],
   },
   {
-    title: "Estimated county effects",
-    note: "Modeled county-scale changes for the stated comparison or scenario. These estimates are descriptive unless the underlying record identifies a causal design.",
+    title: "County outcome comparison",
+    note: "The host county's 2024 result versus a mechanically matched benchmark. These gaps describe divergence and do not estimate what the data center caused.",
     metrics: [
-      { label: "Real GDP effect", description: "Estimated difference in county real GDP", codes: ["study.modeled_county_gdp_effect"] },
-      { label: "Employment effect", description: "Estimated difference in county employment", codes: ["study.modeled_county_employment_effect"] },
-      { label: "Wage effect", description: "Estimated difference in county wages", codes: ["study.modeled_county_wage_effect"] },
+      { label: "Real GDP comparison gap", description: "Difference between host-county real GDP and the comparison benchmark", codes: ["study.modeled_county_gdp_comparison_gap"] },
+      { label: "Employment comparison gap", description: "Difference between host-county employment and the comparison benchmark", codes: ["study.modeled_county_employment_comparison_gap"] },
+      { label: "Wage comparison gap", description: "Difference between host-county wages and the comparison benchmark", codes: ["study.modeled_county_wage_comparison_gap"] },
     ],
   },
 ];
@@ -105,14 +123,21 @@ const observedAnchors: ImpactMetric[] = [
   { label: "Facility electricity", description: "Latest reported annual electricity observation", codes: ["study.annual_electricity_use"] },
 ];
 
-function periodRank(period: EconomicRecord["period"]) {
+function periodRank(period: EconomicRecord["period"] | ModeledSynthesis["period"]) {
   if ("year" in period) return period.year;
   if ("report_date" in period) return Number(period.report_date?.slice(0, 4)) || 0;
+  if ("end_date" in period) return Number(period.end_date?.slice(0, 4)) || 0;
   return 0;
 }
 
 function findModeledMetric(project: StudyProject, metric: ImpactMetric) {
-  return metric.codes.map(code => project.modeled_syntheses.find(row => row.metric_code === code)).find((row): row is ModeledSynthesis => !!row);
+  for (const code of metric.codes) {
+    const row = project.modeled_syntheses
+      .filter(candidate => candidate.metric_code === code)
+      .sort((a, b) => periodRank(b.period) - periodRank(a.period))[0];
+    if (row) return row;
+  }
+  return undefined;
 }
 
 function findObservedMetric(project: StudyProject, metric: ImpactMetric) {
@@ -145,7 +170,7 @@ export function ImpactAccount({ project, countyView = false }: { project: StudyP
         {section.rows.map(({ metric, row }) => <tr key={row.estimate_id}><th scope="row"><strong>{metric.label}</strong><span>{metric.description}</span></th><td className="impact-value" data-label="Central estimate">{modeledAmount(row.value, row.unit)}</td><td data-label="Modeled interval">{row.interval.low === row.interval.high ? intervalLabels[row.interval.kind] : <>{modeledAmount(row.interval.low, row.unit)}–{modeledAmount(row.interval.high, row.unit)}</>}</td><td data-label="Period and confidence"><strong>{row.period.label}</strong><span>{row.confidence} confidence · {intervalLabels[row.interval.kind]}</span></td></tr>)}
       </tbody></table></div>
     </section>)}
-    <p className="impact-account-note">Each line retains its own scope, period, and uncertainty. Construction-period totals, annual operating flows, fiscal balances, resource use, and county effects cannot be added into one benefit figure.</p>
+    <p className="impact-account-note">Each line retains its own scope, period, and uncertainty. Construction benchmarks, annual operating scenarios, local tax contributions, public support, physical resource demand, and county comparisons cannot be added into one benefit figure. No net fiscal result is asserted without same-scope public-cost evidence.</p>
   </div>;
 }
 
@@ -319,7 +344,7 @@ export function EconomicAccounts({ project }: { project: StudyProject }) {
   const series = [...new Set(rows.filter(r => !isAnnualFiscalRecord(r) && !isTaxBillingRecord(r) && !isTifRevenueRecord(r) && !isTifDebtRecord(r)).map(r => r.annual_series_key).filter((s): s is string => !!s))];
   const completedAccount = project.model_completeness.status === "full_modeled_account";
   return <section className="project-section economic-accounts" aria-labelledby="accounts-title">
-    <div className="section-heading"><div><span className="eyebrow">Community economic impact</span><h3 id="accounts-title">Economic evidence</h3></div><div className="account-heading-meta"><span className="account-status">{completedAccount ? "Completed modeled account" : "Partial evidence"}</span><span className="account-count">{project.economic_record_count} sourced records · {project.modeled_synthesis_count ? `${project.modeled_synthesis_count} modeled syntheses` : "partial coverage"}</span></div></div>
+    <div className="section-heading"><div><span className="eyebrow">Community economic contribution</span><h3 id="accounts-title">Economic evidence</h3></div><div className="account-heading-meta"><span className="account-status">{completedAccount ? "Completed contribution account" : "Partial evidence"}</span><span className="account-count">{project.economic_record_count} sourced records · {project.modeled_synthesis_count ? `${project.modeled_synthesis_count} modeled syntheses` : "partial coverage"}</span></div></div>
     <p className="study-intro">The account below puts the economic result first. Reported observations and modeled estimates are labeled at the figure, with their period, scope, and uncertainty kept visible.</p>
     <ImpactAccount project={project} />
     <details className="evidence-ledger" open={completedAccount ? undefined : true}>
