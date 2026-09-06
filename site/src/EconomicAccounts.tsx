@@ -150,6 +150,72 @@ function findObservedMetric(project: StudyProject, metric: ImpactMetric) {
   return undefined;
 }
 
+const evidenceCategoryOrder = ["investment", "construction", "operations", "fiscal", "suppliers", "community", "public_costs", "resources"];
+const evidenceCategoryLabels: Record<string, string> = {
+  investment: "Investment",
+  construction: "Construction",
+  operations: "Operations",
+  fiscal: "Tax base and revenue",
+  suppliers: "Local suppliers",
+  community: "Community funding",
+  public_costs: "Public support and costs",
+  resources: "Electricity, water and cooling",
+};
+
+function latestEconomicRows(records: EconomicRecord[]) {
+  const latest = new Map<string, EconomicRecord>();
+  records.forEach(row => {
+    const current = latest.get(row.metric_code);
+    if (!current || periodRank(row.period) >= periodRank(current.period)) latest.set(row.metric_code, row);
+  });
+  return [...latest.values()].sort((a, b) => {
+    const aOrder = evidenceCategoryOrder.indexOf(a.category);
+    const bOrder = evidenceCategoryOrder.indexOf(b.category);
+    const categoryOrder = (aOrder === -1 ? evidenceCategoryOrder.length : aOrder) - (bOrder === -1 ? evidenceCategoryOrder.length : bOrder);
+    return categoryOrder || a.label.localeCompare(b.label);
+  });
+}
+
+function latestModeledRows(records: ModeledSynthesis[]) {
+  const latest = new Map<string, ModeledSynthesis>();
+  records.forEach(row => {
+    const current = latest.get(row.metric_code);
+    if (!current || periodRank(row.period) >= periodRank(current.period)) latest.set(row.metric_code, row);
+  });
+  return [...latest.values()].sort((a, b) => {
+    const aOrder = evidenceCategoryOrder.indexOf(a.category);
+    const bOrder = evidenceCategoryOrder.indexOf(b.category);
+    const categoryOrder = (aOrder === -1 ? evidenceCategoryOrder.length : aOrder) - (bOrder === -1 ? evidenceCategoryOrder.length : bOrder);
+    return categoryOrder || a.label.localeCompare(b.label);
+  });
+}
+
+function FacilityEvidenceSummary({ project }: { project: StudyProject }) {
+  const reported = latestEconomicRows(project.economic_records.filter(row => row.basis === "reported_actual"));
+  const projected = latestEconomicRows(project.economic_records.filter(row => row.basis === "source_projection"));
+  const modeled = latestModeledRows(project.modeled_syntheses);
+  const pending = project.evidence_gaps.filter(gap => gap.status !== "partial").map(gap => gap.label);
+
+  const reportedTable = (rows: EconomicRecord[], basis: "reported" | "projected") => <section className={`impact-section facility-evidence-section ${basis === "reported" ? "observed-impact-section" : "projected-impact-section"}`}>
+    <div className="impact-section-heading"><div><span className="eyebrow">{basis === "reported" ? "Source-reported activity" : "Source plans and forecasts"}</span><h4>{basis === "reported" ? "What the collected evidence currently establishes" : "What sources say was planned"}</h4><p>One latest observation is shown for each collected measure. Every value keeps the source period and geographic scope used in the underlying record.</p></div><span className={`evidence-pill ${basis}`}>{basis === "reported" ? "Reported" : "Forecast"}</span></div>
+    <div className="impact-table-wrap"><table className="impact-table facility-evidence-table"><thead><tr><th scope="col">Account</th><th scope="col">Measure</th><th scope="col">Value</th><th scope="col">Period and scope</th></tr></thead><tbody>
+      {rows.map(row => <tr key={row.claim_id}><td data-label="Account"><strong>{evidenceCategoryLabels[row.category] || row.category.replaceAll("_", " ")}</strong></td><th scope="row"><strong>{row.label}</strong><span>{row.measure_type === "stock" ? "Period-end stock" : row.measure_type === "peak" ? "Peak count" : row.measure_type === "rate" ? "Reported rate" : "Period flow"}</span></th><td className="impact-value" data-label="Value"><a href={sourceUrl(row, project.economic_sources)} target="_blank" rel="noreferrer">{amount(row)} ↗</a></td><td data-label="Period and scope"><strong>{row.period.label}</strong><span>{row.scope.label}{row.scope.inventory_allocation === "unallocated" ? " · not allocated to this mapped project record" : ""}</span></td></tr>)}
+    </tbody></table></div>
+  </section>;
+
+  return <div className="impact-account facility-evidence-summary">
+    {reported.length > 0 && reportedTable(reported, "reported")}
+    {projected.length > 0 && reportedTable(projected, "projected")}
+    {modeled.length > 0 && <section className="impact-section modeled-impact-section facility-evidence-section">
+      <div className="impact-section-heading"><div><span className="eyebrow">Modeled synthesis · not observed or audited</span><h4>What the current model estimates</h4><p>One latest estimate is shown for each modeled measure. Intervals are calculation ranges or statistical intervals only when the model explicitly identifies them as such.</p></div><span className="evidence-pill modeled">Modeled</span></div>
+      <div className="impact-table-wrap"><table className="impact-table facility-evidence-table"><thead><tr><th scope="col">Account</th><th scope="col">Measure</th><th scope="col">Central estimate</th><th scope="col">Interval, period and scope</th></tr></thead><tbody>
+        {modeled.map(row => <tr key={row.estimate_id}><td data-label="Account"><strong>{evidenceCategoryLabels[row.category] || row.category.replaceAll("_", " ")}</strong></td><th scope="row"><strong>{row.label}</strong><span>{row.contribution_channel.replace("not_applicable", "non-contribution")} channel</span></th><td className="impact-value" data-label="Central estimate">{modeledAmount(row.value, row.unit)}</td><td data-label="Interval, period and scope"><strong>{row.interval.low === row.interval.high ? intervalLabels[row.interval.kind] : `${modeledAmount(row.interval.low, row.unit)}–${modeledAmount(row.interval.high, row.unit)}`}</strong><span>{row.period.label} · {row.scope.label} · {row.confidence} confidence</span></td></tr>)}
+      </tbody></table></div>
+    </section>}
+    <p className="facility-evidence-status"><strong>{project.economic_record_count} source records are preserved in the audit ledger.</strong> This project account is still being completed.{pending.length > 0 ? ` Additional coverage is pending for: ${pending.join("; ").toLocaleLowerCase()}.` : ""}</p>
+  </div>;
+}
+
 export function ImpactAccount({ project, countyView = false }: { project: StudyProject; countyView?: boolean }) {
   const anchors = observedAnchors.map(metric => ({ metric, row: findObservedMetric(project, metric) })).filter((entry): entry is { metric: ImpactMetric; row: EconomicRecord } => !!entry.row);
   const sections = impactSections.map(section => ({
@@ -346,8 +412,8 @@ export function EconomicAccounts({ project }: { project: StudyProject }) {
   return <section className="project-section economic-accounts" aria-labelledby="accounts-title">
     <div className="section-heading"><div><span className="eyebrow">Community economic contribution</span><h3 id="accounts-title">Economic evidence</h3></div><div className="account-heading-meta"><span className="account-status">{completedAccount ? "Completed contribution account" : "Partial evidence"}</span><span className="account-count">{project.economic_record_count} sourced records · {project.modeled_synthesis_count ? `${project.modeled_synthesis_count} modeled syntheses` : "partial coverage"}</span></div></div>
     <p className="study-intro">The account below puts the economic result first. Reported observations and modeled estimates are labeled at the figure, with their period, scope, and uncertainty kept visible.</p>
-    <ImpactAccount project={project} />
-    <details className="evidence-ledger" open={completedAccount ? undefined : true}>
+    {completedAccount ? <ImpactAccount project={project} /> : <FacilityEvidenceSummary project={project} />}
+    <details className="evidence-ledger">
       <summary><span>{completedAccount ? "Supporting records and model documentation" : "Available source records"}</span><small>{project.economic_record_count} sourced records · {project.modeled_synthesis_count} modeled syntheses</small></summary>
       <div className="evidence-ledger-body">
         <p className="study-intro">Use this ledger to audit individual source claims, forecasts, annual property and fiscal series, engineering inputs, and model methods. These records support the account above; they are not separate benefit totals.</p>
