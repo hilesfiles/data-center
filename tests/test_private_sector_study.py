@@ -85,11 +85,11 @@ class PrivateSectorStudyTest(unittest.TestCase):
         index, details, _ = self.build()
         self.assertEqual(index["counts"]["projects"], 36)
         self.assertEqual(index["counts"]["projects_with_economic_evidence"], 36)
-        self.assertEqual(index["counts"]["economic_records"], 647)
-        self.assertEqual(index["counts"]["reported_actual_records"], 585)
+        self.assertEqual(index["counts"]["economic_records"], 651)
+        self.assertEqual(index["counts"]["reported_actual_records"], 589)
         self.assertEqual(index["counts"]["projection_records"], 62)
-        self.assertEqual(index["counts"]["modeled_synthesis_records"], 176)
-        self.assertEqual(index["full_modeled_county_accounts"], 6)
+        self.assertEqual(index["counts"]["modeled_synthesis_records"], 166)
+        self.assertEqual(index["full_modeled_county_accounts"], 5)
         self.assertEqual(sum(r["analysis_readiness"]["causal"] == "causal_model_available" for r in details), 0)
         washoe = next(r for r in details if r["name"] == "Apple Washoe County campus")
         coverage = {g["code"]: g["status"] for g in washoe["evidence_gaps"]}
@@ -106,19 +106,18 @@ class PrivateSectorStudyTest(unittest.TestCase):
         self.assertTrue(all(r["scope"]["level"] == "company_county" for r in rows))
         self.assertEqual(rows[-1]["value"], 1476648949)
 
-    def test_six_depth_counties_pass_machine_enforced_full_model_gate(self):
+    def test_five_depth_counties_pass_machine_enforced_full_model_gate(self):
         index, details, _ = self.build()
         target_ids = {
             "prj_study_im3_building_00300974499",  # Apple Mesa / Maricopa
             "prj_study_im3_point_06685432442",     # Switch / Storey
             "prj_study_im3_building_00978934687", # Digital Crossroad / Lake
-            "prj_study_im3_building_00460089167", # Meta Forest City / Rutherford
             "prj_study_im3_building_00364289074", # Microsoft San Antonio / Bexar
             "prj_study_im3_building_00377585075", # EdgeConneX DET01 / Oakland
         }
         completed = [row for row in details if row["model_completeness"]["status"] == "full_modeled_account"]
         self.assertEqual({row["project_id"] for row in completed}, target_ids)
-        self.assertEqual(index["full_modeled_county_accounts"], 6)
+        self.assertEqual(index["full_modeled_county_accounts"], 5)
         for project in completed:
             self.assertGreaterEqual(len(project["project_description"]), 80)
             gate = project["model_completeness"]
@@ -150,6 +149,10 @@ class PrivateSectorStudyTest(unittest.TestCase):
                 "study.modeled_annual_local_fiscal_margin_before_incentives",
                 "study.modeled_annual_public_service_cost",
             } for row in project["modeled_syntheses"]))
+
+        forest = next(row for row in details if row["project_id"] == "prj_study_im3_building_00460089167")
+        self.assertEqual(forest["model_completeness"]["status"], "incomplete")
+        self.assertEqual(forest["model_completeness"]["missing_categories"], ["suppliers"])
 
     def test_full_account_cannot_publish_without_a_project_description(self):
         evidence = load_evidence()
@@ -723,7 +726,7 @@ class PrivateSectorStudyTest(unittest.TestCase):
         by_id = {r["estimate_id"]: r for r in modeled}
         self.assertEqual((project["economic_record_count"], project["modeled_synthesis_count"]), (113, 43))
         self.assertEqual((index["counts"]["economic_records"], index["counts"]["modeled_synthesis_records"]),
-                         (647, 176))
+                         (651, 166))
         self.assertEqual({r["basis"] for r in modeled}, {"modeled_synthesis"})
         self.assertTrue(all(r["presentation"] == "modeled_not_observed_or_audited" for r in modeled))
         self.assertTrue(all(r["derivation"]["formula"] and r["parameters"] and r["limitations"] for r in modeled))
@@ -871,7 +874,7 @@ class PrivateSectorStudyTest(unittest.TestCase):
         forest = next(r for r in details if r["name"] == "Meta Forest City")
         actual = [r for r in forest["economic_records"] if r["basis"] == "reported_actual"]
         plans = [r for r in forest["economic_records"] if r["basis"] == "source_projection"]
-        self.assertEqual((forest["economic_record_count"], len(actual), len(plans)), (24, 21, 3))
+        self.assertEqual((forest["economic_record_count"], len(actual), len(plans)), (28, 25, 3))
         self.assertEqual(next(r for r in actual if r["metric_code"] == "study.cumulative_property_investment")["value"], 750000000)
         self.assertEqual(next(r for r in actual if r["metric_code"] == "study.operational_jobs_supported")["value"], 275)
         self.assertEqual(next(r for r in actual if r["metric_code"] == "study.cumulative_community_funding")["value"], 6400000)
@@ -883,7 +886,7 @@ class PrivateSectorStudyTest(unittest.TestCase):
         })
         coverage = {g["code"]: g["status"] for g in forest["evidence_gaps"]}
         self.assertEqual(coverage["community"], "partial")
-        self.assertEqual(len(forest["research_updates"]), 5)
+        self.assertEqual(len(forest["research_updates"]), 25)
 
     def test_cumulative_spending_and_modeled_net_do_not_become_annual_actuals(self):
         evidence = read(EVIDENCE)

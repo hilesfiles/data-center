@@ -1,8 +1,8 @@
 {
   "schema_version": "1.0.0",
   "project_id": "prj_study_im3_building_00460089167",
-  "reviewed_on": "2026-09-05",
-  "scope_note": "Public-source follow-up adds one facility-level 2024 electricity observation from Meta's environmental data index. The same source's rounded Forest City water-withdrawal and Scope 2 emissions values remain contextual until compatible canonical metric definitions exist. A North Carolina supplier announcement is retained only as context because its U.S.-wide contract value and Hickory manufacturing expansion cannot be allocated to Forest City or Rutherford County.",
+  "reviewed_on": "2026-09-06",
+  "scope_note": "Corrective primary-source audit adds current Andale parcel assessment, contractor-reported campus floor area, and two recipient- or government-reported Meta community grants. The search trail records useful and negative results across identity, tax, construction, jobs, suppliers, utilities, water, permits, public costs, incentives, community funding, and county comparison inputs. Campus-wide facts remain unallocated to the selected inventory building, overlapping community amounts are not added together, and unavailable supplier, payroll, utility-billing, discharge, generator, and marginal-service-cost amounts remain explicit gaps.",
   "sources": [
     {
       "source_id": "src_study_meta_environmental_data_index_2025",
@@ -31,6 +31,235 @@
       "retrieved_on": "2026-09-05",
       "review_method": "web_page",
       "notes": "Meta describes a multiyear agreement with Corning worth up to $6 billion for U.S. data-center optical infrastructure and a Corning expansion in Hickory, North Carolina. The source does not allocate contract value, purchases, employment, or production to the Forest City campus or Rutherford County, so no quantitative project supplier record is created."
+    },
+    {
+      "source_id": "src_study_meta_forest_city_opening_20120419",
+      "title": "Our Data Center Opens in Forest City, N.C.",
+      "url": "https://datacenters.atmeta.com/2012/04/facebook-data-center-opens-in-forest-city-n-c/",
+      "publisher": "Meta",
+      "source_type": "operator_release",
+      "publication_date": {
+        "precision": "day",
+        "date": "2012-04-19"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_page",
+      "notes": "Meta reports that Building 1 broke ground in November 2010 and opened on April 19, 2012, while Building 2 was expected later in 2012. The page identifies a multi-building campus but does not allocate facts to the inventory building footprint."
+    },
+    {
+      "source_id": "src_study_ncdeq_andale_brownfields_annual_2012",
+      "title": "North Carolina Brownfields Program 2012 Annual Report - Andale",
+      "url": "https://www.deq.nc.gov/waste-management/dwm/bf/website/pdfs/bf-2012-annual-report-final/download",
+      "publisher": "North Carolina Department of Environment and Natural Resources",
+      "source_type": "state_record",
+      "publication_date": {
+        "precision": "year",
+        "year": 2012
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_pdf_text",
+      "notes": "The Andale row identifies four Old Caroleen Road addresses, approximately 153 acres, former Burlington Industries use, VOC contamination, and planned data-center redevelopment under a February 3, 2012 brownfields agreement."
+    },
+    {
+      "source_id": "src_study_rutherford_energov_andale_20260906",
+      "title": "Rutherford County EnerGov parcel layer - ANDALE LLC query",
+      "url": "https://gis.rutherfordcountync.gov/server/rest/services/EnerGov/EnerGov/MapServer/3",
+      "publisher": "Rutherford County, North Carolina",
+      "source_type": "assessor_record",
+      "publication_date": {
+        "precision": "unknown"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "structured_data",
+      "notes": "The exact owner query returned parcels 54822, 54821, 54708 and 62150 at 284 Social Circle, 0 Old Caroleen Road, 0 Social Circle and 408 Social Circle. Their displayed acreages sum to 153.11 and their land-plus-building Total_Property_Value fields sum to $273,242,300; the layer does not date the assessment cycle or expose personal-property values."
+    },
+    {
+      "source_id": "src_study_fortis_meta_forest_city_2026",
+      "title": "Meta, Forest City Campus",
+      "url": "https://fortisconstruction.com/project/meta-forest-city-campus/",
+      "publisher": "Fortis Construction",
+      "source_type": "other",
+      "publication_date": {
+        "precision": "unknown"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_page",
+      "notes": "The project profile identifies Meta as client, Forest City as location, and 789,000 square feet as project scope. It does not define occupied area, data-hall area, current utilization, construction cost, payroll, or the selected inventory building's share."
+    },
+    {
+      "source_id": "src_study_dpr_facebook_forest_city_2026",
+      "title": "Facebook Forest City Data Center",
+      "url": "https://www.dpr.com/projects/forest-city-data-center",
+      "publisher": "DPR Construction",
+      "source_type": "other",
+      "publication_date": {
+        "precision": "unknown"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_page",
+      "notes": "DPR describes two 370,000-square-foot buildings, four data suites per building, and 90% local-workforce participation for both buildings. It provides no worker count, work duration, payroll, supplier spend, contract value, or current-campus completeness statement."
+    },
+    {
+      "source_id": "src_study_forest_city_building_permit_portal_2026",
+      "title": "Public Access to Building Permits",
+      "url": "https://www.townofforestcity.com/planning-code-enforcement/building/public-access-building-permits",
+      "publisher": "Town of Forest City, North Carolina",
+      "source_type": "local_government_record",
+      "publication_date": {
+        "precision": "unknown"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_page",
+      "notes": "The town page links a public monthly-issued-permit folder and provides a records contact. Searches of the indexed portal and linked public folder did not yield a reliably project-matched permit value, generator schedule, or completion record for Andale, Meta, Facebook, 284 Social Circle or 408 Social Circle."
+    },
+    {
+      "source_id": "src_study_ncdaq_andale_permit_inventory_20211105",
+      "title": "North Carolina Division of Air Quality Permitted Facilities",
+      "url": "https://files.nc.gov/ncdeq/Air%20Quality/permits/aapa_reports/all_permitted.pdf",
+      "publisher": "North Carolina Division of Air Quality",
+      "source_type": "state_record",
+      "publication_date": {
+        "precision": "day",
+        "date": "2021-11-05"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_pdf_text",
+      "notes": "The inventory identifies Andale, Inc., facility 8100221, 284 Social Circle, permit 10165R03, issued April 15, 2019, and Synthetic Minor classification. The inventory does not report generator count, nameplate capacity, runtime, fuel use, emissions, or operating cost."
+    },
+    {
+      "source_id": "src_study_ncuc_duke_orders_2012",
+      "title": "North Carolina Utilities Commission Orders and Decisions Issued in 2012",
+      "url": "https://www.ncuc.gov/documents/orders2012.pdf",
+      "publisher": "North Carolina Utilities Commission",
+      "source_type": "state_record",
+      "publication_date": {
+        "precision": "year",
+        "year": 2012
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_pdf_text",
+      "notes": "A Duke rate-case order lists Facebook Forest City among North Carolina data centers billed on tariff OPT-H and gives a combined-customer off-peak share. It provides no Forest City-specific load, demand, bill, tariff rider, interconnection cost, rate impact, or customer-level usage amount."
+    },
+    {
+      "source_id": "src_study_forest_city_water_treatment_2026",
+      "title": "Water Treatment",
+      "url": "https://www.townofforestcity.com/water-treatment",
+      "publisher": "Town of Forest City, North Carolina",
+      "source_type": "local_government_record",
+      "publication_date": {
+        "precision": "unknown"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_page",
+      "notes": "The town reports an 8 MGD treatment capability, Second Broad River source and 2.7 million gallons of elevated storage. The page contains no Meta/Andale customer withdrawal, consumption, billing, capacity reservation, incremental cost, or rate-impact amount."
+    },
+    {
+      "source_id": "src_study_forest_city_wastewater_treatment_2026",
+      "title": "Wastewater Treatment",
+      "url": "https://www.townofforestcity.com/wastewater-treatment",
+      "publisher": "Town of Forest City, North Carolina",
+      "source_type": "local_government_record",
+      "publication_date": {
+        "precision": "unknown"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_page",
+      "notes": "The town reports 4.95 MGD design capacity and 1.25 MGD current system flow. It does not publish a Meta/Andale discharge volume, customer bill, pretreatment load, service cost, or capacity allocation."
+    },
+    {
+      "source_id": "src_study_ncdor_datacenter_exemption_notice_20260723",
+      "title": "Important Notice: Repeal of Exemptions for Electricity Used at Datacenters",
+      "url": "https://www.ncdor.gov/taxes-forms/sales-and-use-tax/other-sales-and-use-tax-resources/important-notices-issued-sales-and-use-tax-division/important-notice-repeal-exemptions-electricity-used-datacenters",
+      "publisher": "North Carolina Department of Revenue",
+      "source_type": "state_record",
+      "publication_date": {
+        "precision": "day",
+        "date": "2026-07-23"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_page",
+      "notes": "The notice describes qualifying and eligible internet datacenter exemptions and the 2026 repeal of the electricity exemption. It does not identify Forest City or disclose taxpayer-level exempt purchases, forgone revenue, compliance filings, or refund amounts."
+    },
+    {
+      "source_id": "src_study_rutherford_budget_fy2026",
+      "title": "Rutherford County FY2025-2026 Budget Message",
+      "url": "https://rutherfordcountync.gov/document_center/Finance/Budget%20Message%20FY2025-2026%20FINAL%20SIGNED.pdf",
+      "publisher": "Rutherford County, North Carolina",
+      "source_type": "local_government_record",
+      "publication_date": {
+        "precision": "year",
+        "year": 2025
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_pdf_text",
+      "notes": "The adopted-budget materials were reviewed for project-attributable public safety, infrastructure, tax-administration, water, or other service costs. No same-scope marginal annual cost for Meta/Andale was located."
+    },
+    {
+      "source_id": "src_study_isothermal_meta_xrail_2024",
+      "title": "Isothermal Community College partners with Meta to create high-tech lab",
+      "url": "https://www.isothermal.edu/newscenter/2024/08/isothermal-community-college-partners-with-meta-to-create-high-tech-lab-to-foster-innovation-and-tech-entrepreneurship.html",
+      "publisher": "Isothermal Community College",
+      "source_type": "other",
+      "publication_date": {
+        "precision": "year",
+        "year": 2024
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_page",
+      "notes": "The grant recipient reports a Meta grant of more than $250,000 for an Extended Reality and Artificial Intelligence Lab serving Polk and Rutherford counties and explicitly connects the partnership to Meta's Forest City Data Center community activity."
+    },
+    {
+      "source_id": "src_study_forest_city_audit_2025",
+      "title": "Town of Forest City Annual Financial Report for the Year Ended June 30, 2025",
+      "url": "https://www.townofforestcity.com/sites/default/files/uploads/government/transparency/town-of-forest-city-2025-audit.pdf",
+      "publisher": "Town of Forest City, North Carolina",
+      "source_type": "local_government_record",
+      "publication_date": {
+        "precision": "day",
+        "date": "2025-11-30"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_pdf_text",
+      "notes": "The audited supplementary schedule reports a $300,000 Meta Grant (BARN), all received in prior years, for the Park Square Depot capital project. The report also shows a $5,070,136 FY2025 economic-development incentive expenditure but does not name its recipient, so that line is not encoded as a Meta record."
+    },
+    {
+      "source_id": "src_study_bea_county_api_2026",
+      "title": "BEA API for Data Retrieval User Guide",
+      "url": "https://apps.bea.gov/api/_pdf/bea_web_service_api_user_guide.pdf",
+      "publisher": "U.S. Bureau of Economic Analysis",
+      "source_type": "other",
+      "publication_date": {
+        "precision": "unknown"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_pdf_text",
+      "notes": "The guide documents county GDP and income tables used by the governed 2001-2024 county panel. County aggregates do not identify Meta, isolate the campus, or establish a causal project effect."
+    },
+    {
+      "source_id": "src_study_bls_qcew_portal_2026",
+      "title": "QCEW Searchable Databases",
+      "url": "https://www.bls.gov/cew/data.htm",
+      "publisher": "U.S. Bureau of Labor Statistics",
+      "source_type": "other",
+      "publication_date": {
+        "precision": "unknown"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_page",
+      "notes": "The portal provides county employment and wage histories used by the governed comparison panel. Published county-industry aggregates do not disclose a Meta establishment payroll or support causal attribution to the Forest City campus."
+    },
+    {
+      "source_id": "src_study_census_cbp_portal_2026",
+      "title": "County Business Patterns Data",
+      "url": "https://www.census.gov/programs-surveys/cbp/data.html",
+      "publisher": "U.S. Census Bureau",
+      "source_type": "other",
+      "publication_date": {
+        "precision": "unknown"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_page",
+      "notes": "County Business Patterns provides county-industry establishments, employment and payroll. Employer confidentiality and county aggregation prevent a project-specific Meta payroll, supplier-spend, or operating-headcount observation."
     }
   ],
   "records": [
@@ -59,23 +288,261 @@
       "notes": "Meta reports 535,555 MWh for Forest City; this record converts the displayed value to 535,555,000 kWh. The source rounds line items to whole displayed units and says inputs may include internal meters, design estimates and utility bills where applicable. This is operator-reported facility electricity consumption, not an independently audited utility bill, peak demand, IT load, cost, or proof of zero-carbon hourly supply.",
       "review_status": "source_checked",
       "reviewed_on": "2026-09-05"
+    },
+    {
+      "claim_id": "clm_study_meta_forest_city_andale_real_property_2026",
+      "project_id": "prj_study_im3_building_00460089167",
+      "metric_code": "study.account_assessed_value",
+      "value": 273242300,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "reported_snapshot",
+        "report_date": "2026-09-06",
+        "label": "Live Rutherford County parcel-layer snapshot queried September 6, 2026"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Four ANDALE LLC real-property parcels at Social Circle and Old Caroleen Road",
+        "county_fips": "37161",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_rutherford_energov_andale_20260906",
+      "source_locator": "ArcGIS REST owner query UPPER(Property_Owner) LIKE '%ANDALE%'; ParcelID 54822, 54821, 54708 and 62150; Total_Property_Value",
+      "notes": "Sum of the live layer's displayed land-plus-building values: $94,467,100, $496,100, $26,800 and $178,252,300. This is an undated current real-property snapshot, excludes personal property, and is not added to the broader ACFR Andale taxable-account series, which has a different scope and fiscal-year basis.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06"
+    },
+    {
+      "claim_id": "clm_study_meta_forest_city_floor_area_2026",
+      "project_id": "prj_study_im3_building_00460089167",
+      "metric_code": "study.operating_property_floor_area",
+      "value": 789000,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "source_year",
+        "year": 2026,
+        "label": "Undated current contractor project profile reviewed in 2026"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Meta Forest City campus project scope reported by Fortis Construction",
+        "county_fips": "37161",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_fortis_meta_forest_city_2026",
+      "source_locator": "Project profile fields: Client, location and Square Feet",
+      "notes": "Contractor-reported project area, not occupied floor area, data-hall area, utilization or the selected inventory building's area. DPR separately describes two 370,000-square-foot buildings; the different scopes are retained in notes and are not added together.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06"
+    },
+    {
+      "claim_id": "clm_study_meta_forest_city_xrail_grant_2024",
+      "project_id": "prj_study_im3_building_00460089167",
+      "metric_code": "study.direct_community_contribution",
+      "value": 250000,
+      "value_qualifier": "greater_than",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "calendar_year",
+        "year": 2024,
+        "label": "Meta grant reported by Isothermal Community College in August 2024"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Meta grant for Isothermal Community College XRAIL serving Polk and Rutherford counties",
+        "county_fips": "37161",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_isothermal_meta_xrail_2024",
+      "source_locator": "Opening paragraph and Forest City Data Center partnership context",
+      "notes": "Recipient-reported grant threshold. It is not an annual campus operating expense and may be included in Meta's separate $6.4 million cumulative Rutherford-area funding claim, so the amounts must not be added without recipient-level reconciliation.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06"
+    },
+    {
+      "claim_id": "clm_study_meta_forest_city_barn_grant_2025",
+      "project_id": "prj_study_im3_building_00460089167",
+      "metric_code": "study.direct_community_contribution",
+      "value": 300000,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "cumulative",
+        "report_date": "2025-06-30",
+        "label": "Meta Grant (BARN) received in prior years through June 30, 2025"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Meta grant for the Forest City Park Square Depot / Rutherford BARN project",
+        "county_fips": "37161",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_forest_city_audit_2025",
+      "pdf_page": 71,
+      "printed_page": "63",
+      "source_locator": "General Capital Project Fund schedule, Meta Grant (BARN) row",
+      "notes": "Audited supplementary schedule amount received in prior years; the exact receipt year is not stated. It may overlap Meta's separate cumulative Rutherford-area funding claim and is not added to that operator total.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06"
     }
   ],
   "project_updates": [
     {
       "project_id": "prj_study_im3_building_00460089167",
-      "source_id": "src_study_meta_environmental_data_index_2025",
-      "as_of": "2024-12-31",
-      "title": "Facility-level 2024 electricity, water and Scope 2 rows located",
-      "notes": "Meta's 2025 Environmental Data Index reports Forest City at 535,555 MWh of electricity consumption, 16 megaliters of water withdrawal, zero market-based Scope 2 emissions and 144,104 metric tons CO2e of location-based Scope 2 emissions for 2024. Electricity is normalized in the evidence record. The rounded water and emissions figures remain explicit context because the shared canonical evidence registry has no compatible annual water-withdrawal or facility-emissions metric; they are not treated as audited utility or emissions records.",
-      "project_description": "Meta Forest City is a hyperscale data-center campus in Rutherford County, North Carolina, that opened on April 19, 2012 after redevelopment of a former industrial site. The project account follows the campus from construction and brownfield reuse through operations, later building work, local water infrastructure, community funding, and facility-level resource reporting."
+      "source_id": "src_study_meta_forest_city_opening_20120419",
+      "as_of": "2012-04-19",
+      "title": "Identity and opening chronology search completed",
+      "notes": "Search family: operator facility and chronology. Query/identifier: Meta Forest City opening, Building 1, Building 2; date range 2010-2012. Documents inspected: Meta opening page and current Forest City factsheet. Result: useful - confirms operator, multi-building campus, November 2010 groundbreaking, April 19, 2012 Building 1 opening and planned 2012 Building 2; no building-to-inventory allocation was published.",
+      "project_description": "Meta's Forest City Data Center is a multi-building hyperscale campus operated by Meta in Rutherford County, North Carolina; the inventory project is one mapped building within that campus, while most public evidence is campus-wide and unallocated. Meta broke ground in November 2010, opened Building 1 on April 19, 2012, and expected Building 2 later in 2012 on the redeveloped Andale brownfield property. Contractor profiles describe two 370,000-square-foot buildings and a 789,000-square-foot campus program, and public records document later building work, four Andale-owned parcels, town water infrastructure, community grants, and facility-level resource reporting."
+    },
+    {
+      "project_id": "prj_study_im3_building_00460089167",
+      "source_id": "src_study_ncdeq_andale_brownfields_annual_2012",
+      "as_of": "2026-09-06",
+      "title": "Brownfield land and boundary search completed",
+      "notes": "Search family: state brownfields and land records. Query/identifier: Andale, project 14036-10-081, 1181/1185/1271/1291 Old Caroleen Road; date range 2010-2024. Documents inspected: 2012 Brownfields Annual Report, NCDEQ success story, finalized inventory and land-use-restriction update. Result: useful - former industrial use, contamination, agreement date and approximately 153-acre redevelopment boundary; no allocation to the selected building."
+    },
+    {
+      "project_id": "prj_study_im3_building_00460089167",
+      "source_id": "src_study_rutherford_energov_andale_20260906",
+      "as_of": "2026-09-06",
+      "title": "Assessor parcel and ownership search completed",
+      "notes": "Search family: county assessor/GIS. Query/identifier: UPPER(Property_Owner) LIKE '%ANDALE%' on EnerGov Parcel layer 3, with ParcelID, address, acreage, land, building and total-value fields. Date range: current snapshot queried September 6, 2026. Documents inspected: four returned parcel rows 54822, 54821, 54708 and 62150. Result: useful - 153.11 acres and $273,242,300 real-property value; negative for a dated assessment cycle, personal property, or a single-building allocation."
+    },
+    {
+      "project_id": "prj_study_im3_building_00460089167",
+      "source_id": "src_study_rutherford_acfr_2025",
+      "as_of": "2026-09-06",
+      "title": "County tax and incentive series rechecked",
+      "notes": "Search family: county tax, assessor and audited finance. Query/identifier: Andale Inc. FKA and Note 13 Concentration of Tax Base. Date range: FY2021-FY2025. Documents inspected: Rutherford County ACFRs for fiscal years 2021 through 2025 and their taxpayer tables/notes. Result: useful - five-year assessed-value, tax-collected and incentive-payment series; negative for named Note 13 taxpayer confirmation, municipal amounts, other project accounts, and same-scope service costs."
+    },
+    {
+      "project_id": "prj_study_im3_building_00460089167",
+      "source_id": "src_study_fortis_meta_forest_city_2026",
+      "as_of": "2026-09-06",
+      "title": "Contractor campus-scale search completed",
+      "notes": "Search family: primary contractor project records. Query/identifier: Meta Forest City campus square feet, client Meta, Forest City; date range 2010-2026. Documents inspected: Fortis Forest City campus project profile. Result: useful - 789,000-square-foot project scope and construction/design parties; negative for cost, phase dates, occupied area, payroll, supplier spend and inventory-building share."
+    },
+    {
+      "project_id": "prj_study_im3_building_00460089167",
+      "source_id": "src_study_dpr_facebook_forest_city_2026",
+      "as_of": "2026-09-06",
+      "title": "Construction workforce search completed",
+      "notes": "Search family: construction contractors and workforce. Query/identifier: Facebook Forest City Data Center, local workforce, two buildings; date range 2010-2026. Documents inspected: DPR project profile and Forest City contractor story. Result: useful - two 370,000-square-foot buildings and reported 90% local manpower; negative for headcount, duration, job-years, payroll, contract values and local vendor purchases, so no construction multiplier model is retained."
+    },
+    {
+      "project_id": "prj_study_im3_building_00460089167",
+      "source_id": "src_study_forest_city_building_permit_portal_2026",
+      "as_of": "2026-09-06",
+      "title": "Building permit and planning search completed",
+      "notes": "Search family: municipal permits, planning and issued-permit records. Exact queries/identifiers: Andale, Meta, Facebook, 284 Social Circle, 408 Social Circle and Old Caroleen Road; date range 2010-2026. Documents inspected: Town public-access permit page, linked monthly-issued-permit folder, comprehensive land-use plan and current UDO. Result: useful only for permitted data-center land use and portal routing; negative for a reliably matched permit valuation, generator schedule, phase completion or selected-building record."
+    },
+    {
+      "project_id": "prj_study_im3_building_00460089167",
+      "source_id": "src_study_nc_ria_forest_city_water_20151022",
+      "as_of": "2026-09-06",
+      "title": "Public infrastructure grant search completed",
+      "notes": "Search family: state/local public infrastructure. Query/identifier: Town of Forest City Facebook water-line extension, Industrial Development Fund-Utility Account, October 22, 2015; date range 2015-2026. Documents inspected: NC Rural Infrastructure Authority approval and later town water pages/budgets. Result: useful - $148,900 approved grant, approximately 1,000 feet, 100 existing positions and 10 planned jobs; negative for disbursement, final cost, annual maintenance, realized hiring and complete taxpayer cost."
+    },
+    {
+      "project_id": "prj_study_im3_building_00460089167",
+      "source_id": "src_study_meta_forest_city_factsheet_2026",
+      "as_of": "2026-09-06",
+      "title": "Operations jobs and payroll search completed",
+      "notes": "Search family: operator jobs, workforce and payroll. Query/identifier: Forest City operational jobs, employees, contractors, payroll and wages; date range 2010-2026. Documents inspected: Meta current factsheet, 2015 NC grant record, Town economic-development page and Census CBP portal. Result: useful - 275+ jobs supported and the separate 2015 snapshot of 100 positions; negative for direct employee/contractor split, FTE basis, payroll, worker residence and dated census, so operating multiplier models are removed."
     },
     {
       "project_id": "prj_study_im3_building_00460089167",
       "source_id": "src_study_meta_corning_north_carolina_20260414",
-      "as_of": "2026-04-14",
-      "title": "North Carolina optical-supply agreement is not allocable to Forest City",
-      "notes": "Meta reports a multiyear U.S. agreement with Corning worth up to $6 billion and a manufacturing expansion in Hickory, North Carolina. No public amount is assigned to Forest City, Rutherford County, local vendor payments, or local employment, so the supplier evidence gap remains and no project amount is inferred."
+      "as_of": "2026-09-06",
+      "title": "Supplier and local procurement search completed",
+      "notes": "Search family: operator, contractor and supplier releases. Query/identifier: Meta Forest City supplier, vendor, procurement, Corning, DPR subcontractors and Rutherford County purchases. Date range: 2010-2026. Documents inspected: Meta-Corning announcement, DPR/Fortis profiles and operator factsheet. Result: negative for Forest City- or Rutherford-allocable supplier payments, contract values, vendor employment or production; the $6 billion U.S. Corning agreement and Hickory expansion are not allocated to this project."
+    },
+    {
+      "project_id": "prj_study_im3_building_00460089167",
+      "source_id": "src_study_meta_environmental_data_index_2025",
+      "as_of": "2026-09-06",
+      "title": "Facility resource reporting search completed",
+      "notes": "Search family: operator environmental data. Query/identifier: Forest City (NC) facility rows. Date range: calendar year 2024. Documents inspected: Meta 2025 Environmental Data Index electricity, water and Scope 2 tables/methodology. Result: useful - 535,555 MWh electricity, 16 ML water withdrawal and Scope 2 rows; negative for unrounded bills/meters, peak demand, IT load, consumption, reuse, discharge, cost and facility-specific PUE."
+    },
+    {
+      "project_id": "prj_study_im3_building_00460089167",
+      "source_id": "src_study_ncuc_duke_orders_2012",
+      "as_of": "2026-09-06",
+      "title": "Utility and regulator search completed",
+      "notes": "Search family: NCUC dockets/orders and Duke utility records. Exact queries/identifiers: Andale, Facebook Forest City, Forest City data center, OPT-H and interconnection; date range 2010-2026. Documents inspected: NCUC 2012 orders index/rate order, docket search portal and Duke site records. Result: useful only for a shared OPT-H tariff reference; negative for Forest City-specific load, demand, bill, rider, interconnection cost, rate impact or utility-verified annual use."
+    },
+    {
+      "project_id": "prj_study_im3_building_00460089167",
+      "source_id": "src_study_forest_city_water_treatment_2026",
+      "as_of": "2026-09-06",
+      "title": "Water utility search completed",
+      "notes": "Search family: municipal water utility and budgets. Query/identifier: Facebook/Meta/Andale water, withdrawal, capacity, bill and rate impact. Date range: 2010-2026. Documents inspected: Forest City water-treatment page, water/sewer overview, FY2023-FY2025 budgets/audit and 2025 system materials. Result: useful for system source and 8 MGD capacity; negative for customer-specific withdrawal, consumption, bill, reservation, marginal cost or rate impact."
+    },
+    {
+      "project_id": "prj_study_im3_building_00460089167",
+      "source_id": "src_study_forest_city_wastewater_treatment_2026",
+      "as_of": "2026-09-06",
+      "title": "Wastewater utility search completed",
+      "notes": "Search family: municipal wastewater utility. Query/identifier: Facebook/Meta/Andale wastewater, discharge, sewer and pretreatment. Date range: 2010-2026. Documents inspected: Forest City wastewater-treatment page, water/sewer overview and FY2025 audit. Result: useful for 4.95 MGD system design capacity and 1.25 MGD current flow; negative for project discharge, bill, service cost or allocation, so the prior 20%-80% wastewater model is removed."
+    },
+    {
+      "project_id": "prj_study_im3_building_00460089167",
+      "source_id": "src_study_ncdaq_andale_permit_inventory_20211105",
+      "as_of": "2026-09-06",
+      "title": "Air permit and backup generation search completed",
+      "notes": "Search family: NCDAQ permits/compliance. Exact identifiers: facility 8100221, permit 10165R03/10165R04, Andale, 284 Social Circle, generators; date range 2010-2026. Documents inspected: statewide permitted-facility inventory, compliance monitoring plan and indexed NCDEQ records. Result: useful - facility identity and Synthetic Minor permit; negative for permit detail, generator count/capacity/runtime, fuel, emissions and operating cost."
+    },
+    {
+      "project_id": "prj_study_im3_building_00460089167",
+      "source_id": "src_study_ncdor_datacenter_exemption_notice_20260723",
+      "as_of": "2026-09-06",
+      "title": "State tax-exemption compliance search completed",
+      "notes": "Search family: NCDOR statutes, exemption notices and rulings. Query/identifier: eligible internet datacenter, qualifying datacenter, electricity exemption, Facebook/Andale/Forest City. Date range: 2009-2026. Documents inspected: 2015 continuation notice, 2018 law changes, 2020 private-letter ruling, current statutes and July 23, 2026 repeal notice. Result: useful for program rules and repeal timing; negative for project identity, exempt purchase amount, forgone revenue, refund or compliance filing."
+    },
+    {
+      "project_id": "prj_study_im3_building_00460089167",
+      "source_id": "src_study_rutherford_budget_fy2026",
+      "as_of": "2026-09-06",
+      "title": "Marginal public-service cost search completed",
+      "notes": "Search family: county budgets, ACFRs and service departments. Query/identifier: Andale/Meta/Facebook plus fire, EMS, sheriff, infrastructure, tax administration and service cost. Date range: FY2021-FY2026. Documents inspected: Rutherford County ACFR series and FY2025-2026 budget message. Result: negative for a same-period, same-scope marginal annual county cost attributable to the project; the retained $319,124 model is therefore only a break-even threshold, not net fiscal benefit."
+    },
+    {
+      "project_id": "prj_study_im3_building_00460089167",
+      "source_id": "src_study_isothermal_meta_xrail_2024",
+      "as_of": "2026-09-06",
+      "title": "Community recipient search completed",
+      "notes": "Search family: local schools, college and nonprofit recipients. Query/identifier: Meta/Facebook Forest City grant, XRAIL and Isothermal Community College. Date range: 2011-2026. Documents inspected: Isothermal's August 2024 XRAIL announcement and indexed Rutherford school/college pages. Result: useful - recipient-reported Meta grant above $250,000; negative for payment date, audited receipt and reconciliation to Meta's $6.4 million cumulative total."
+    },
+    {
+      "project_id": "prj_study_im3_building_00460089167",
+      "source_id": "src_study_forest_city_audit_2025",
+      "as_of": "2026-09-06",
+      "title": "Municipal audit and community grant search completed",
+      "notes": "Search family: municipal audited finance and community capital projects. Query/identifier: Meta Grant (BARN) and economic development incentive. Date range: FY2023-FY2025. Documents inspected: Town of Forest City FY2025 annual financial report and FY2023-FY2025 budgets. Result: useful - $300,000 Meta grant received in prior years and $5,070,136 total FY2025 incentive expense; negative for exact grant receipt year and named incentive recipient, so the latter is not assigned to Meta."
+    },
+    {
+      "project_id": "prj_study_im3_building_00460089167",
+      "source_id": "src_study_bea_county_api_2026",
+      "as_of": "2026-09-06",
+      "title": "County GDP comparison inputs rechecked",
+      "notes": "Search family: federal county economic data. Exact identifiers: BEA county real GDP series used in county-economic-core 2001-2024, Rutherford County FIPS 37161; date range 2001-2024. Documents inspected: BEA API guide and governed panel source rows/manifests. Result: useful for reproducible county aggregates and donor matching; negative for project-level output or causal attribution, so the retained comparison remains descriptive with fit sensitivity only."
+    },
+    {
+      "project_id": "prj_study_im3_building_00460089167",
+      "source_id": "src_study_bls_qcew_portal_2026",
+      "as_of": "2026-09-06",
+      "title": "County employment and wage inputs rechecked",
+      "notes": "Search family: BLS QCEW county data. Exact identifiers: Rutherford County FIPS 37161, annual average employment and wage series in county-economic-core 2001-2024; date range 2001-2024. Documents inspected: QCEW searchable database/download guidance and governed panel source rows/manifests. Result: useful for county employment/wage comparisons; negative for named-establishment payroll or causal effect, so both retained gaps are labeled descriptive."
+    },
+    {
+      "project_id": "prj_study_im3_building_00460089167",
+      "source_id": "src_study_census_cbp_portal_2026",
+      "as_of": "2026-09-06",
+      "title": "County industry and payroll alternative checked",
+      "notes": "Search family: Census County Business Patterns. Exact query: Rutherford County NC FIPS 37161, data processing/hosting industries, establishments, employment and payroll; date range 2010-2023. Documents inspected: CBP data and API portals. Result: negative for a disclosable Meta establishment payroll, project headcount, supplier purchases or worker residence because the statistics are county-industry aggregates and may be suppressed."
     }
   ]
 }

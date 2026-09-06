@@ -27,7 +27,7 @@ class MetaForestCityContributionAccountTest(unittest.TestCase):
             config,
             inventory,
             panels,
-            "2026-09-05T00:00:00+00:00",
+            "2026-09-06T00:00:00+00:00",
             load_evidence(),
             load_synthesis(),
             policy,
@@ -37,17 +37,18 @@ class MetaForestCityContributionAccountTest(unittest.TestCase):
 
     def test_gate_and_evidence_states(self):
         project = self.project
-        self.assertEqual(project["model_completeness"]["status"], "full_modeled_account")
-        self.assertEqual(project["model_completeness"]["missing_categories"], [])
+        self.assertEqual(project["model_completeness"]["status"], "incomplete")
+        self.assertEqual(project["model_completeness"]["missing_categories"], ["suppliers"])
         self.assertEqual(project["model_completeness"]["missing_county_outcomes"], [])
-        self.assertEqual((project["economic_record_count"], project["reported_actual_count"], project["projection_count"]), (24, 21, 3))
-        self.assertEqual(project["modeled_synthesis_count"], 16)
-        self.assertEqual(self.index["full_modeled_county_accounts"], 6)
+        self.assertEqual((project["economic_record_count"], project["reported_actual_count"], project["projection_count"]), (28, 25, 3))
+        self.assertEqual(project["modeled_synthesis_count"], 6)
+        self.assertEqual(self.index["full_modeled_county_accounts"], 5)
 
-    def test_all_required_channels_and_comparisons_are_present(self):
+    def test_only_unsupported_supplier_channel_is_left_open(self):
         project = self.project
         categories = {row["category"] for row in [*project["economic_records"], *project["modeled_syntheses"]]}
-        self.assertTrue({"investment", "construction", "suppliers", "operations", "fiscal", "public_costs", "resources", "community"} <= categories)
+        self.assertTrue({"investment", "construction", "operations", "fiscal", "public_costs", "resources", "community"} <= categories)
+        self.assertNotIn("suppliers", categories)
         metrics = {row["metric_code"] for row in project["modeled_syntheses"]}
         self.assertTrue({
             "study.modeled_county_gdp_comparison_gap",
@@ -65,6 +66,20 @@ class MetaForestCityContributionAccountTest(unittest.TestCase):
         self.assertEqual(threshold["value"], tax["value"])
         self.assertIn("No net fiscal result", threshold["notes"])
 
+        removed = {
+            "est_study_meta_forest_city_annualized_capital",
+            "est_study_meta_forest_city_local_construction_spend",
+            "est_study_meta_forest_city_construction_job_years_total",
+            "est_study_meta_forest_city_construction_labor_income_total",
+            "est_study_meta_forest_city_operating_fte_total",
+            "est_study_meta_forest_city_operating_labor_income_total",
+            "est_study_meta_forest_city_operating_supplier_output",
+            "est_study_meta_forest_city_household_output",
+            "est_study_meta_forest_city_cooling_overhead_electricity_2024",
+            "est_study_meta_forest_city_wastewater_2024",
+        }
+        self.assertTrue(removed.isdisjoint({row["estimate_id"] for row in models}))
+
     def test_direct_resource_observation_is_preserved(self):
         electricity = next(
             row for row in self.project["economic_records"]
@@ -73,6 +88,28 @@ class MetaForestCityContributionAccountTest(unittest.TestCase):
         self.assertEqual(electricity["basis"], "reported_actual")
         self.assertEqual(electricity["value"], 535_555_000)
         self.assertEqual(electricity["unit"], "kWh_per_year")
+
+    def test_corrective_audit_adds_direct_anchors_and_one_description(self):
+        records = {row["claim_id"]: row for row in self.project["economic_records"]}
+        self.assertEqual(records["clm_study_meta_forest_city_andale_real_property_2026"]["value"], 273_242_300)
+        self.assertEqual(records["clm_study_meta_forest_city_floor_area_2026"]["value"], 789_000)
+        self.assertEqual(records["clm_study_meta_forest_city_xrail_grant_2024"]["value"], 250_000)
+        self.assertEqual(records["clm_study_meta_forest_city_barn_grant_2025"]["value"], 300_000)
+
+        updates = [
+            update for update in load_evidence()["project_updates"]
+            if update["project_id"] == PROJECT_ID
+        ]
+        descriptions = [
+            update["project_description"]
+            for update in updates
+            if "project_description" in update
+        ]
+        self.assertEqual(len(descriptions), 1)
+        self.assertEqual(self.project["project_description"], descriptions[0])
+        self.assertLessEqual(len(descriptions[0]), 1000)
+        self.assertGreaterEqual(len(descriptions[0]), 80)
+        self.assertGreaterEqual(len(updates), 20)
 
 
 if __name__ == "__main__":
