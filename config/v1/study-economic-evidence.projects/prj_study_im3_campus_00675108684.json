@@ -1,0 +1,1690 @@
+{
+  "schema_version": "1.0.0",
+  "project_id": "prj_study_im3_campus_00675108684",
+  "reviewed_on": "2026-09-06",
+  "scope_note": "Project-scoped audit of Microsoft’s bounded Boydton/East Coast/LVL campus in Mecklenburg County adds direct parcel, permit, expansion, performance, portfolio, infrastructure, construction and community evidence. Reported actuals remain distinct from announcement projections; countywide portfolio figures are unallocated; overlapping phase, cumulative and component amounts are not summed. No modeled synthesis is added because project-specific expenditure, payroll, consumption, supplier and public-cost anchors remain insufficient.",
+  "sources": [
+    {
+      "source_id": "src_study_msft_boydton_10_years_2020",
+      "title": "Celebrating 10 years in Boydton",
+      "url": "https://local.microsoft.com/blog/celebrating-10-years-in-boydton/",
+      "publisher": "Microsoft",
+      "source_type": "operator_release",
+      "publication_date": {
+        "precision": "year",
+        "year": 2020
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_page",
+      "notes": "Operator history says August 27, 2020 marked ten years of operation at the Boydton datacenter and describes local partnerships. It does not publish campus investment, payroll, taxes, utility consumption, or a facility-by-facility asset inventory."
+    },
+    {
+      "source_id": "src_study_mecklenburg_cama_prn38595_2026",
+      "title": "Mecklenburg County property record — PRN 38595",
+      "url": "https://mecklenburg.cama.concisesystems.com/PropertyPage.aspx?direct=1&id=38595",
+      "publisher": "Mecklenburg County, Virginia",
+      "source_type": "assessor_record",
+      "publication_date": {
+        "precision": "unknown"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_page",
+      "notes": "County CAMA record for Microsoft Corporation, 960 Herbert Drive, map 110000-02--A, legal description PT LVL 1-7 CAMPUS, reports 206.57 acres and the 2027-2028 landbook values. The structure schedule identifies computer-center improvements with 2021-2024 effective or built years; it contains placeholder entries and is not used to derive floor area."
+    },
+    {
+      "source_id": "src_study_vadeq_microsoft_east_coast_title_v_2024",
+      "title": "Microsoft Corporation — East Coast Data Center Title V operating permit",
+      "url": "https://www.deq.virginia.gov/home/showpublisheddocument/23469/638499721368730000",
+      "publisher": "Virginia Department of Environmental Quality",
+      "source_type": "state_record",
+      "publication_date": {
+        "precision": "day",
+        "date": "2024-04-24"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_pdf_text",
+      "notes": "Permit PRO-21527 identifies 101 Herbert Drive, Boydton and lists 165 emergency engine-generator sets housed in 15 buildings. Direct PDF retrieval returned access-control errors during review; the count and building list were checked in the official indexed text and against a second-reviewed permit extraction, so no runtime, generation, fuel, load, emissions, or economic value is inferred."
+    },
+    {
+      "source_id": "src_study_vedp_microsoft_boydton_2010",
+      "title": "Microsoft to locate major data center in Mecklenburg County",
+      "url": "https://www.vedp.org/press-release/2010-08/mecklenburg-county-microsoft-locate-major-data-center",
+      "publisher": "Virginia Economic Development Partnership",
+      "source_type": "state_record",
+      "publication_date": {
+        "precision": "year",
+        "year": 2010
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_page",
+      "notes": "Contemporaneous state announcement for the original Gen4 data center near Boydton: up to $499 million planned investment, 50 planned jobs, a $2.1 million Governor's Opportunity Fund grant, and $4.8 million approved by the Tobacco Commission. Planned investment and jobs are retained; grant awards are not treated as paid costs."
+    },
+    {
+      "source_id": "src_study_vedp_microsoft_boydton_2011",
+      "title": "Microsoft to expand in Mecklenburg County",
+      "url": "https://www.vedp.org/press-release/2011-09/mecklenburg-county-microsoft-expansion",
+      "publisher": "Virginia Economic Development Partnership",
+      "source_type": "state_record",
+      "publication_date": {
+        "precision": "year",
+        "year": 2011
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_page",
+      "notes": "State announcement for an additional Boydton facility with $150 million planned investment, 10 planned jobs, and 21 MW of additional electric power capacity. These are announcement-stage commitments, not observed outcomes or consumption."
+    },
+    {
+      "source_id": "src_study_vedp_microsoft_boydton_2013",
+      "title": "Microsoft announces second expansion in Mecklenburg County",
+      "url": "https://www.vedp.org/press-release/2013-01/mecklenburg-county-microsoft-expansion",
+      "publisher": "Virginia Economic Development Partnership",
+      "source_type": "state_record",
+      "publication_date": {
+        "precision": "year",
+        "year": 2013
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_page",
+      "notes": "State announcement for two additional facilities at the Boydton campus with $348 million planned investment and 30 planned jobs. It also reports approved grant amounts, which are not encoded as payments."
+    },
+    {
+      "source_id": "src_study_vedp_microsoft_boydton_2014",
+      "title": "Governor announces third Microsoft expansion in Mecklenburg County",
+      "url": "https://www.vedp.org/press-release/2014-06/mecklenburg-county-third-microsoft-announcement",
+      "publisher": "Virginia Economic Development Partnership",
+      "source_type": "state_record",
+      "publication_date": {
+        "precision": "year",
+        "year": 2014
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_page",
+      "notes": "State announcement for a third Boydton expansion with $346.7 million planned investment and 90 planned jobs. Approved Governor's Opportunity Fund and Tobacco Commission amounts are not treated as realized expenditures."
+    },
+    {
+      "source_id": "src_study_vedp_microsoft_boydton_2015",
+      "title": "Microsoft announces fourth expansion in Mecklenburg County",
+      "url": "https://www.vedp.org/press-release/2015-11/mecklenburg-microsoft-expansion",
+      "publisher": "Virginia Economic Development Partnership",
+      "source_type": "state_record",
+      "publication_date": {
+        "precision": "year",
+        "year": 2015
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_page",
+      "notes": "State announcement for a fourth Boydton expansion with $402.4 million planned investment and 42 planned jobs; it says announced campus investment would exceed $1.74 billion. Phase forecasts are retained separately to avoid mixing announcements with later performance-certified actuals."
+    },
+    {
+      "source_id": "src_study_vedp_microsoft_boydton_2016",
+      "title": "Microsoft to create 44 jobs and invest $251 million in Mecklenburg County",
+      "url": "https://www.vedp.org/press-release/2016-11/mecklenburg-county-44-new-jobs-251-million-investment",
+      "publisher": "Virginia Economic Development Partnership",
+      "source_type": "state_record",
+      "publication_date": {
+        "precision": "year",
+        "year": 2016
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_page",
+      "notes": "State announcement for a fifth Boydton expansion with $251.6 million planned investment and 44 planned jobs; it describes nearly $2 billion invested and more than 250 jobs since 2010. The cumulative rhetoric is not encoded because its basis and phase overlap are not reconciled."
+    },
+    {
+      "source_id": "src_study_vedp_microsoft_boydton_2019",
+      "title": "Microsoft to expand in Mecklenburg County",
+      "url": "https://www.vedp.org/press-release/2019-01/microsoft-corporation",
+      "publisher": "Virginia Economic Development Partnership",
+      "source_type": "state_record",
+      "publication_date": {
+        "precision": "year",
+        "year": 2019
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_page",
+      "notes": "State announcement calls this the sixth Boydton expansion, projects more than 100 new jobs, and reports approximately 300 employees at Microsoft's Mecklenburg locations at the time. Capital investment is described only as significant, so no numeric investment record is created."
+    },
+    {
+      "source_id": "src_study_vedp_cof_postperformance_2022_microsoft",
+      "title": "Commonwealth's Opportunity Fund post-performance report as of December 31, 2022",
+      "url": "https://www.vedp.org/sites/default/files/vedp-media/incentives/COF%20Post%20Performance%20Report%2012-31-2022%20for%20Website.pdf",
+      "publisher": "Virginia Economic Development Partnership",
+      "source_type": "state_record",
+      "publication_date": {
+        "precision": "year",
+        "year": 2022
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_pdf_text",
+      "notes": "State performance table reports actual jobs and capital investment for Microsoft BN7 and BN8 performance projects tied by contemporaneous announcements to successive Boydton campus expansions. Values are phase-specific compliance actuals with different performance dates; they must not be summed without agreement-level overlap reconciliation or treated as current campus headcount."
+    },
+    {
+      "source_id": "src_study_jlarc_rd550_microsoft_bn7_2019",
+      "title": "Effectiveness of Economic Development Incentive Grant Programs Administered by the Virginia Economic Development Partnership",
+      "url": "https://rga.lis.virginia.gov/Published/2019/RD550/PDF",
+      "publisher": "Virginia Joint Legislative Audit and Review Commission",
+      "source_type": "state_record",
+      "publication_date": {
+        "precision": "day",
+        "date": "2019-11-15"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_pdf_text",
+      "notes": "Program appendix identifies Microsoft Mecklenburg's 2015 project with $700,000 awarded, $700,000 received, and no repayment. This supports a paid state-incentive observation for the BN7-era performance project, not total local or state support for the campus."
+    },
+    {
+      "source_id": "src_study_msft_sova_impact_fy2019_2023",
+      "title": "Microsoft datacenters in Southern Virginia — economic and community impact",
+      "url": "https://local.microsoft.com/wp-content/uploads/2024/11/SoVA-Infographic-Final.pdf",
+      "publisher": "Microsoft",
+      "source_type": "operator_release",
+      "publication_date": {
+        "precision": "year",
+        "year": 2024
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_pdf_text",
+      "notes": "Operator infographic reports Mecklenburg/region-wide 2023 jobs and property taxes and FY2019-FY2023 cumulative property taxes and community funding. It covers Microsoft's Southern Virginia or county portfolio rather than only the selected Boydton parcel; modeled jobs supported are separated from reported employees and all portfolio figures remain unallocated."
+    },
+    {
+      "source_id": "src_study_mecklenburg_microsoft_agreement_minutes_20240513",
+      "title": "Mecklenburg County Board of Supervisors archived minutes — Microsoft agreement termination",
+      "url": "https://mecklenburgva.com/AgendaCenter/ViewFile/ArchivedMinutes/_05132024-106",
+      "publisher": "Mecklenburg County, Virginia",
+      "source_type": "local_government_record",
+      "publication_date": {
+        "precision": "day",
+        "date": "2024-05-13"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_pdf_text",
+      "notes": "Minutes summarize the 2010 performance agreement and nine addenda, explain that Microsoft paid personal-property tax and the county appropriated 82.5 percent to the IDA for an economic-incentive grant, and approve termination before the new data-center-equipment classification took effect. They also state Microsoft reports personal property separately by data-center site; no site ledger or reconciled net incentive amount is published."
+    },
+    {
+      "source_id": "src_study_mecklenburg_budget_fy2027",
+      "title": "Mecklenburg County FY 2026-2027 adopted budget",
+      "url": "https://mecklenburgva.com/ArchiveCenter/ViewFile/Item/74",
+      "publisher": "Mecklenburg County, Virginia",
+      "source_type": "local_government_record",
+      "publication_date": {
+        "precision": "year",
+        "year": 2026
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_pdf_text",
+      "notes": "Microsoft Offsite Infrastructure Fund schedule reports final FY2025 expenditures for LVL-to-Boydton wastewater engineering, construction, and the Route 58-to-campus waterline. These line items are components of the Microsoft fund and supporting infrastructure, not campus operating expense or additive to overlapping countywide totals."
+    },
+    {
+      "source_id": "src_study_lithko_microsoft_bn6",
+      "title": "Microsoft BN6 Data Center",
+      "url": "https://lithko.com/project/microsoft-bn6-data-center/",
+      "publisher": "Lithko Contracting",
+      "source_type": "other",
+      "publication_date": {
+        "precision": "unknown"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_page",
+      "notes": "Concrete contractor profile identifies Microsoft BN6 in Boydton, a 350,000-square-foot project spanning nine buildings, and more than 500 workers on site. It does not provide dated worker residence, hours, payroll, contract value, vendor payments, or local-retention share."
+    },
+    {
+      "source_id": "src_study_triplepoint_microsoft_boydton",
+      "title": "Microsoft Data Center — Boydton, Virginia",
+      "url": "https://triplepointmep.com/case_studies/microsoft-data-center/",
+      "publisher": "TriplePoint MEP",
+      "source_type": "other",
+      "publication_date": {
+        "precision": "unknown"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_page",
+      "notes": "Engineering contractor profile describes a 515,000-square-foot, multi-phase Microsoft data center in Boydton completed in 2014 and lists mechanical systems. It provides no contract amount, realized spend, supplier geography, payroll, or ongoing operating cost."
+    },
+    {
+      "source_id": "src_study_msft_boydton_wifi_2018",
+      "title": "Increasing Wi-Fi access in rural Virginia communities",
+      "url": "https://local.microsoft.com/blog/increasing-wi-fi-access-in-rural-virginia-communities/",
+      "publisher": "Microsoft",
+      "source_type": "operator_release",
+      "publication_date": {
+        "precision": "year",
+        "year": 2018
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_page",
+      "notes": "Operator report states Microsoft contributed $75,000 in 2018 to build high-speed community Wi-Fi in Boydton with Lake Country Satellite. It is a direct local contribution, not a recurring payment or complete community ledger."
+    },
+    {
+      "source_id": "src_study_svhec_annual_report_2020_microsoft",
+      "title": "Southern Virginia Higher Education Center 2020 Annual Report",
+      "url": "https://www.svhec.org/wp-content/uploads/2021/02/SVHEC-Annual-Report-2020_online.pdf",
+      "publisher": "Southern Virginia Higher Education Center",
+      "source_type": "other",
+      "publication_date": {
+        "precision": "year",
+        "year": 2021
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_pdf_text",
+      "notes": "Recipient annual report identifies a $45,000 Microsoft Datacenter Academy Scholars Program donation in 2019 and a $200,000 donation in 2020 to expand the IT Academy. These recipient-verified gifts may overlap broader operator aggregates and are not summed with them."
+    },
+    {
+      "source_id": "src_study_svhec_microsoft_equipment_2021",
+      "title": "Microsoft donates supplies and equipment to SVHEC",
+      "url": "https://www.svhec.org/news/microsoft-donates-supplies-and-equipment/",
+      "publisher": "Southern Virginia Higher Education Center",
+      "source_type": "other",
+      "publication_date": {
+        "precision": "day",
+        "date": "2021-03-08"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_page",
+      "notes": "Recipient report ties donations to Boydton datacenter management and identifies a $24,500 network tester received in July 2020. It does not establish the value of all donated equipment or whether this item is outside the separately reported 2020 IT Academy gift."
+    },
+    {
+      "source_id": "src_study_eda_virginia_2015_mecklenburg_sewer",
+      "title": "EDA FY2015 annual report — Virginia projects",
+      "url": "https://www.eda.gov/impact/annual-reports/fy2015/states/va",
+      "publisher": "U.S. Economic Development Administration",
+      "source_type": "other",
+      "publication_date": {
+        "precision": "year",
+        "year": 2015
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_page",
+      "notes": "Federal record reports a $1,939,257 Public Works grant for a new sewer line and related upgrades serving Microsoft's expansion and future redevelopment of the former prison site. The infrastructure serves multiple development purposes and is not wholly allocated to Microsoft."
+    },
+    {
+      "source_id": "src_study_eda_boydton_wastewater_20211209",
+      "title": "U.S. Department of Commerce invests $1.6 million in Boydton wastewater treatment",
+      "url": "https://www.eda.gov/news/press-release/2021/12/09/us-department-commerce-invests-16-million-wastewater-treatment",
+      "publisher": "U.S. Economic Development Administration",
+      "source_type": "other",
+      "publication_date": {
+        "precision": "day",
+        "date": "2021-12-09"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_page",
+      "notes": "Federal award notice reports a $1.6 million grant, matched by $1.6 million in local funds, to upgrade Boydton's wastewater treatment plant serving the expanding Microsoft campus and other businesses. Forecast jobs and private investment are not attributed to the selected campus."
+    },
+    {
+      "source_id": "src_study_tobacco_commission_ridge_road_packet_2015",
+      "title": "Virginia Tobacco Commission Southside Economic Development Committee recommendations — Microsoft Ridge Road Upgrade Project",
+      "url": "https://revitalizeva.org/wp-content/uploads/2019/10/Jan-2015-TRRC-Packet..pdf",
+      "publisher": "Virginia Tobacco Region Revitalization Commission",
+      "source_type": "state_record",
+      "publication_date": {
+        "precision": "year",
+        "year": 2015
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_pdf_text",
+      "notes": "Committee packet identifies the Microsoft Ridge Road Upgrade supporting Building 6 and recommends an award of $1,152,704, matched by $2.6 million through the VDOT Revenue Sharing program. Only the recommended public-grant amount is retained; it is not treated as paid or as the full road-project cost."
+    },
+    {
+      "source_id": "src_study_vadeq_brownfields_mecklenburg_microsoft_2018",
+      "title": "Virginia Brownfields Assistance Fund economic-impact analysis",
+      "url": "https://www.deq.virginia.gov/home/showpublisheddocument/28842/638817763241470000",
+      "publisher": "Virginia Department of Environmental Quality",
+      "source_type": "state_record",
+      "publication_date": {
+        "precision": "year",
+        "year": 2018
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_pdf_text",
+      "notes": "State analysis identifies 960 Herbert Drive, a $50,000 FY2018 Virginia Brownfields Assistance Fund grant, reuse of the former correctional-center property, and a planned five-building campus with two substations. Its employment and output figures are modeled forecasts without sufficient project-specific method detail for this account."
+    },
+    {
+      "source_id": "src_study_usace_microsoft_timber_2021",
+      "title": "NAO-2021-01135 / VMRC 21-V0533 — Microsoft multi-phased data center campus",
+      "url": "https://www.nao.usace.army.mil/Media/Public-Notices/Article/2598190/nao-2021-01135-vmrc-21-v0533/",
+      "publisher": "U.S. Army Corps of Engineers, Norfolk District",
+      "source_type": "other",
+      "publication_date": {
+        "precision": "year",
+        "year": 2021
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_page",
+      "notes": "Public notice identifies a separate 335.38-acre Microsoft campus at the terminus of Ridge Road, centered near 36.68964, -78.36004. The separate geography supports excluding Timber/Ridge Road acreage from the selected LVL/Boydton inventory polygon."
+    },
+    {
+      "source_id": "src_study_mecklenburg_planning_minutes_20240725",
+      "title": "Mecklenburg County Planning Commission minutes — July 25, 2024",
+      "url": "https://www.mecklenburgva.com/AgendaCenter/ViewFile/Minutes/_07252024-156",
+      "publisher": "Mecklenburg County Planning Commission",
+      "source_type": "local_government_record",
+      "publication_date": {
+        "precision": "day",
+        "date": "2024-07-25"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_pdf_text",
+      "notes": "Minutes discuss data-center expansion on a Wright Forestry parcel south of Herbert Drive and describe it as adjoining Microsoft's existing project. The distinct parcel is treated as later expansion outside the selected LVL 1-7 polygon absent an authoritative parcel crosswalk."
+    },
+    {
+      "source_id": "src_study_mecklenburg_tax_rates_2026",
+      "title": "Mecklenburg County tax rates",
+      "url": "https://mecklenburgva.com/166/Tax-Rates",
+      "publisher": "Mecklenburg County, Virginia",
+      "source_type": "local_government_record",
+      "publication_date": {
+        "precision": "year",
+        "year": 2026
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_page",
+      "notes": "County page lists the data-center computer and peripheral equipment rate of $0.66 per $100 for 2026-2027 and the real-property rate. Rates alone cannot establish assessed personal property, bills, payments, abatements, refunds, or net fiscal impact for the selected campus."
+    },
+    {
+      "source_id": "src_study_jlarc_data_center_exemption_2020",
+      "title": "Review of Virginia's data center sales and use tax exemption",
+      "url": "https://rga.lis.virginia.gov/Published/2020/RD148/PDF",
+      "publisher": "Virginia Joint Legislative Audit and Review Commission",
+      "source_type": "state_record",
+      "publication_date": {
+        "precision": "year",
+        "year": 2020
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_pdf_text",
+      "notes": "State audit evaluates the data-center sales-and-use-tax exemption at statewide and regional levels. It does not publish a Microsoft Boydton tax-expenditure amount, qualifying-purchase ledger, or facility allocation."
+    },
+    {
+      "source_id": "src_study_tobacco_commission_rd41_2015",
+      "title": "Tobacco Region Revitalization Commission annual report 2015",
+      "url": "https://rga.lis.virginia.gov/Published/2015/RD41",
+      "publisher": "Virginia Tobacco Region Revitalization Commission",
+      "source_type": "state_record",
+      "publication_date": {
+        "precision": "year",
+        "year": 2015
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_page",
+      "notes": "Report says three TROF grants since 2010 totaled $8.4 million for Microsoft and separately discusses nearly $4 million for industrial-park and broadband work. Award groups overlap phase announcements and do not establish paid, recovered, or campus-allocated public cost."
+    },
+    {
+      "source_id": "src_study_vedp_cof_postperformance_2019_microsoft",
+      "title": "Commonwealth's Development Opportunity Fund post-performance report as of December 31, 2019",
+      "url": "https://www.vedp.org/sites/default/files/2020-03/COF%20Post%20Performance%20Report%2012-31-19%20for%20Website.pdf",
+      "publisher": "Virginia Economic Development Partnership",
+      "source_type": "state_record",
+      "publication_date": {"precision": "year", "year": 2020},
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_pdf_text",
+      "notes": "Page 4 reports performance-date actual jobs and capital investment for Microsoft project 2012-60188 and project 2013-84486, as well as BN7 and BN8. The table labels all four Metrics Achieved; records remain phase-specific and are not summed or treated as current campus stocks."
+    },
+    {
+      "source_id": "src_study_vedp_cof_interim_20240630_bn9_13",
+      "title": "VEDP Finance and Audit Committee meeting book — COF interim report as of June 30, 2024",
+      "url": "https://www.vedp.org/sites/default/files/board_meetings/Finance%20%26%20Audit%20Committee%20Meeting%20-%209.18.24.pdf",
+      "publisher": "Virginia Economic Development Partnership",
+      "source_type": "state_record",
+      "publication_date": {"precision": "day", "date": "2024-09-18"},
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_pdf_text",
+      "notes": "PDF page 141 reports Microsoft BN 9-13, project 2018-140262, before its September 1, 2024 performance date: 387 company-reported jobs and $1,817,305,847 company-reported capital investment as of the June 30, 2024 progress report. These interim actuals are not performance certification and are not added to earlier phases."
+    },
+    {
+      "source_id": "src_study_mecklenburg_treasurer_portal_2026",
+      "title": "Mecklenburg County E-Treasurer tax payment portal",
+      "url": "https://meckweb.mecklenburgva.com/applications/cpage/Default.aspx?ctid=1",
+      "publisher": "Mecklenburg County Treasurer",
+      "source_type": "local_government_record",
+      "publication_date": {"precision": "unknown"},
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_page",
+      "notes": "Portal landing page supports real-estate and business-personal-property payment by account number but exposes no indexed owner/address/PRN search or downloadable bill and payment history. Microsoft Corporation, 101 Herbert Drive, 960 Herbert Drive, PRN 38595 and map 110000-02--A searches therefore produced no bill, receipt, delinquency, account number, or payment-status observation."
+    },
+    {
+      "source_id": "src_study_mecklenburg_agenda_center_2026",
+      "title": "Mecklenburg County Agenda Center",
+      "url": "https://www.mecklenburgva.com/AgendaCenter",
+      "publisher": "Mecklenburg County, Virginia",
+      "source_type": "local_government_record",
+      "publication_date": {"precision": "unknown"},
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_page",
+      "notes": "Official searchable collection covers Board of Supervisors, Planning Commission and Board of Zoning Appeals materials. Microsoft, Boydton, Herbert, LVL, BN6-BN13, East Coast Data Center and PRN 38595 searches across 2010-2026 surfaced the May 13, 2024 termination agreement and July 25, 2024 Wright Forestry minutes, but no check register, EIG payment ledger, campus tax reconciliation, selected-campus site-plan ledger, or permit valuations."
+    },
+    {
+      "source_id": "src_study_mecklenburg_building_inspection_2026",
+      "title": "Mecklenburg County Building Inspection",
+      "url": "https://www.mecklenburgva.com/160/Building-Inspection",
+      "publisher": "Mecklenburg County, Virginia",
+      "source_type": "local_government_record",
+      "publication_date": {"precision": "unknown"},
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_page",
+      "notes": "County page publishes commercial permit forms and contact information but no public case-level permit search, issued-permit ledger, valuations, contractors, inspection status or certificates of occupancy. Searches on Microsoft Corporation, 101/960 Herbert Drive, LVL 1-7, PRN 38595 and BN1-BN15 did not produce project permits; no records request was made."
+    },
+    {
+      "source_id": "src_study_epa_frs_microsoft_east_coast_2026",
+      "title": "EPA Facility Registry Service — Microsoft Corporation East Coast Data Center",
+      "url": "https://frs-public.epa.gov/ords/frs_public2/gis_viewer.map_page?p_registry_id=110042150524",
+      "publisher": "U.S. Environmental Protection Agency",
+      "source_type": "other",
+      "publication_date": {"precision": "unknown"},
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_page",
+      "notes": "FRS registry 110042150524 identifies Microsoft Corporation East Coast Data Center at 101 Herbert Drive and cross-references EIS 17626111, ICIS-Air VA0000005111700071 and construction-stormwater permit VAR10P374. The registry supplies identity and program links, not actual emissions, discharge, water use, fuel, generator runtime, compliance cost or economic impact."
+    },
+    {
+      "source_id": "src_study_dominion_clover_chase_city_application_2022",
+      "title": "Clover-Chase City SCC application, Volume 1",
+      "url": "https://www.dominionenergy.com/-/media/content/about/power-line-projects/clover-chase-city/pdfs/clover-chase-city-application-vol-1-of-2-part-1-of-1.pdf",
+      "publisher": "Dominion Energy Virginia",
+      "source_type": "other",
+      "publication_date": {"precision": "year", "year": 2022},
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_pdf_text",
+      "notes": "Application appendix reproduces supplemental load request DOM-2021-0009 for Mecklenburg Electric Cooperative's Cloud Sub-Coleman Creek delivery point near Boydton, describing a data-center campus above 100 MW and projected 2026 summer load of 156 MW. The filing does not name Microsoft or map the load to PRN 38595, and Cloud/Ridge/Timber infrastructure lies outside or beyond the selected LVL parcel, so no capacity or consumption record is allocated."
+    },
+    {
+      "source_id": "src_study_msft_svhec_hiring_pathway_2020",
+      "title": "Growing IT Academy reach in Southern Virginia by upgrading and expanding facilities",
+      "url": "https://local.microsoft.com/blog/growing-it-academy-reach-by-upgrading-and-expanding-facilities/",
+      "publisher": "Microsoft",
+      "source_type": "operator_release",
+      "publication_date": {"precision": "year", "year": 2020},
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_page",
+      "notes": "Operator page reports that 11 IT Academy participants had been hired into the Boydton datacenter and describes curriculum, donated equipment and employee engagement. It does not publish a cohort date, denominator, wages, hours, residence, retention, payroll, apprenticeship status or total campus headcount, so the pathway count is not relabeled as operating employment."
+    },
+    {
+      "source_id": "src_study_mecklenburg_bid_postings_2026",
+      "title": "Mecklenburg County bids and requests for proposals",
+      "url": "https://www.mecklenburgva.com/Bids.aspx",
+      "publisher": "Mecklenburg County, Virginia",
+      "source_type": "local_government_record",
+      "publication_date": {"precision": "unknown"},
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_page",
+      "notes": "Official bid collection was searched for Microsoft, LVL, Herbert Drive, Boydton WWTP, tank farm, waterline and data center for available 2010-2026 materials. It exposes solicitations such as county-managed road and utility work but no complete award/payment register, selected-campus vendor ledger, subcontractor roster, invoice amount, worker hours, payroll, supplier geography or local-retention share."
+    },
+    {
+      "source_id": "src_study_msft_10k_2026",
+      "title": "Microsoft Corporation Form 10-K for fiscal year ended June 30, 2026",
+      "url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526323660/msft-20260630.htm",
+      "publisher": "U.S. Securities and Exchange Commission",
+      "source_type": "sec_filing",
+      "publication_date": {
+        "precision": "day",
+        "date": "2026-07-29"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_page",
+      "notes": "Company filing reports global datacenter commitments, capital expenditures, operations, and risk factors but provides no Boydton- or Mecklenburg-specific capex, revenue, operating cost, asset value, power, water, payroll, employment, tax, debt, or supplier allocation."
+    }
+  ],
+  "records": [
+    {
+      "claim_id": "clm_study_msft_boydton_prn38595_appraised_2027",
+      "project_id": "prj_study_im3_campus_00675108684",
+      "metric_code": "study.appraised_property_value",
+      "value": 1332939400,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2027,
+        "label": "2027-2028 Mecklenburg County landbook"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "PRN 38595, 960 Herbert Drive, LVL 1-7 campus parcel",
+        "county_fips": "51117",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_mecklenburg_cama_prn38595_2026",
+      "source_locator": "2027-2028 landbook: land, main structures, total",
+      "notes": "County appraised stock: $2,375,600 land plus $1,330,563,800 main structures. It excludes separately assessed personal property and is not tax paid, investment, market value, or an annual flow.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06"
+    },
+    {
+      "claim_id": "clm_study_msft_boydton_generators_permitted_2024",
+      "project_id": "prj_study_im3_campus_00675108684",
+      "metric_code": "study.permitted_emergency_generator_count",
+      "value": 165,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "reported_snapshot",
+        "report_date": "2024-04-24",
+        "label": "Title V permit issue date"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Microsoft East Coast Data Center, 101 Herbert Drive, 15 permit-listed buildings",
+        "county_fips": "51117",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_vadeq_microsoft_east_coast_title_v_2024",
+      "pdf_page": 2,
+      "printed_page": "2",
+      "source_locator": "Page 2, Facility Description",
+      "notes": "Permit-listed engine-generator stock, not evidence that every unit operated, generated electricity, consumed fuel, or emitted during the period.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06"
+    },
+    {
+      "claim_id": "clm_study_msft_boydton_2010_investment_plan",
+      "project_id": "prj_study_im3_campus_00675108684",
+      "metric_code": "study.campus_investment_projection",
+      "value": 499000000,
+      "value_qualifier": "up_to",
+      "basis": "source_projection",
+      "period": {
+        "kind": "projection_horizon",
+        "report_date": "2010-08-27",
+        "label": "Original Boydton project announcement; completion horizon unspecified"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Original Gen4 data center near Boydton",
+        "county_fips": "51117",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_vedp_microsoft_boydton_2010",
+      "source_locator": "Project announcement, investment paragraph",
+      "notes": "Announcement-stage maximum, not observed capital expenditure, assessed value, local purchase, or output.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06"
+    },
+    {
+      "claim_id": "clm_study_msft_boydton_2010_jobs_plan",
+      "project_id": "prj_study_im3_campus_00675108684",
+      "metric_code": "study.operating_jobs_projection",
+      "value": 50,
+      "value_qualifier": "exact",
+      "basis": "source_projection",
+      "period": {
+        "kind": "projection_horizon",
+        "report_date": "2010-08-27",
+        "label": "Original Boydton project announcement; completion horizon unspecified"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Original Gen4 data center near Boydton",
+        "county_fips": "51117",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_vedp_microsoft_boydton_2010",
+      "source_locator": "Project announcement, jobs paragraph",
+      "notes": "Planned operating jobs at announcement; not later realized or current employment.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06"
+    },
+    {
+      "claim_id": "clm_study_msft_boydton_2011_investment_plan",
+      "project_id": "prj_study_im3_campus_00675108684",
+      "metric_code": "study.campus_investment_projection",
+      "value": 150000000,
+      "value_qualifier": "exact",
+      "basis": "source_projection",
+      "period": {
+        "kind": "projection_horizon",
+        "report_date": "2011-09-09",
+        "label": "First Boydton expansion announcement; completion horizon unspecified"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Additional Boydton campus facility announced in 2011",
+        "county_fips": "51117",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_vedp_microsoft_boydton_2011",
+      "source_locator": "Expansion investment paragraph",
+      "notes": "Phase-specific announcement forecast; do not sum with performance actuals without reconciliation.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06"
+    },
+    {
+      "claim_id": "clm_study_msft_boydton_2011_jobs_plan",
+      "project_id": "prj_study_im3_campus_00675108684",
+      "metric_code": "study.operating_jobs_projection",
+      "value": 10,
+      "value_qualifier": "exact",
+      "basis": "source_projection",
+      "period": {
+        "kind": "projection_horizon",
+        "report_date": "2011-09-09",
+        "label": "First Boydton expansion announcement; completion horizon unspecified"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Additional Boydton campus facility announced in 2011",
+        "county_fips": "51117",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_vedp_microsoft_boydton_2011",
+      "source_locator": "Expansion jobs paragraph",
+      "notes": "Planned incremental jobs, not realized headcount.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06"
+    },
+    {
+      "claim_id": "clm_study_msft_boydton_2011_power_capacity_plan",
+      "project_id": "prj_study_im3_campus_00675108684",
+      "metric_code": "study.operating_power_capacity",
+      "value": 21,
+      "value_qualifier": "exact",
+      "basis": "source_projection",
+      "period": {
+        "kind": "projection_horizon",
+        "report_date": "2011-09-09",
+        "label": "Additional capacity announced for first expansion"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Additional Boydton campus facility announced in 2011",
+        "county_fips": "51117",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_vedp_microsoft_boydton_2011",
+      "source_locator": "Expansion description, additional electric power capacity",
+      "notes": "Announced additional capacity, not measured demand, energy consumption, utility sales, or current campus capacity.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06"
+    },
+    {
+      "claim_id": "clm_study_msft_boydton_2013_investment_plan",
+      "project_id": "prj_study_im3_campus_00675108684",
+      "metric_code": "study.campus_investment_projection",
+      "value": 348000000,
+      "value_qualifier": "exact",
+      "basis": "source_projection",
+      "period": {
+        "kind": "projection_horizon",
+        "report_date": "2013-01-31",
+        "label": "Second Boydton expansion announcement; completion horizon unspecified"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Two additional Boydton campus facilities announced in 2013",
+        "county_fips": "51117",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_vedp_microsoft_boydton_2013",
+      "source_locator": "Expansion investment paragraph",
+      "notes": "Phase forecast; not audited spend or local purchasing.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06"
+    },
+    {
+      "claim_id": "clm_study_msft_boydton_2013_jobs_plan",
+      "project_id": "prj_study_im3_campus_00675108684",
+      "metric_code": "study.operating_jobs_projection",
+      "value": 30,
+      "value_qualifier": "exact",
+      "basis": "source_projection",
+      "period": {
+        "kind": "projection_horizon",
+        "report_date": "2013-01-31",
+        "label": "Second Boydton expansion announcement; completion horizon unspecified"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Two additional Boydton campus facilities announced in 2013",
+        "county_fips": "51117",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_vedp_microsoft_boydton_2013",
+      "source_locator": "Expansion jobs paragraph",
+      "notes": "Planned incremental jobs, not current employment.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06"
+    },
+    {
+      "claim_id": "clm_study_msft_boydton_2014_investment_plan",
+      "project_id": "prj_study_im3_campus_00675108684",
+      "metric_code": "study.campus_investment_projection",
+      "value": 346700000,
+      "value_qualifier": "exact",
+      "basis": "source_projection",
+      "period": {
+        "kind": "projection_horizon",
+        "report_date": "2014-06-18",
+        "label": "Third Boydton expansion announcement; completion horizon unspecified"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Third Boydton campus expansion announced in 2014",
+        "county_fips": "51117",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_vedp_microsoft_boydton_2014",
+      "source_locator": "Expansion investment paragraph",
+      "notes": "Phase forecast; not audited spend.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06"
+    },
+    {
+      "claim_id": "clm_study_msft_boydton_2014_jobs_plan",
+      "project_id": "prj_study_im3_campus_00675108684",
+      "metric_code": "study.operating_jobs_projection",
+      "value": 90,
+      "value_qualifier": "exact",
+      "basis": "source_projection",
+      "period": {
+        "kind": "projection_horizon",
+        "report_date": "2014-06-18",
+        "label": "Third Boydton expansion announcement; completion horizon unspecified"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Third Boydton campus expansion announced in 2014",
+        "county_fips": "51117",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_vedp_microsoft_boydton_2014",
+      "source_locator": "Expansion jobs paragraph",
+      "notes": "Planned incremental jobs, not current employment.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06"
+    },
+    {
+      "claim_id": "clm_study_msft_boydton_2015_investment_plan",
+      "project_id": "prj_study_im3_campus_00675108684",
+      "metric_code": "study.campus_investment_projection",
+      "value": 402400000,
+      "value_qualifier": "exact",
+      "basis": "source_projection",
+      "period": {
+        "kind": "projection_horizon",
+        "report_date": "2015-11-12",
+        "label": "Fourth Boydton expansion announcement; completion horizon unspecified"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Fourth Boydton campus expansion announced in 2015",
+        "county_fips": "51117",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_vedp_microsoft_boydton_2015",
+      "source_locator": "Expansion investment paragraph",
+      "notes": "Phase forecast; later state performance data are retained separately.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06"
+    },
+    {
+      "claim_id": "clm_study_msft_boydton_2015_jobs_plan",
+      "project_id": "prj_study_im3_campus_00675108684",
+      "metric_code": "study.operating_jobs_projection",
+      "value": 42,
+      "value_qualifier": "exact",
+      "basis": "source_projection",
+      "period": {
+        "kind": "projection_horizon",
+        "report_date": "2015-11-12",
+        "label": "Fourth Boydton expansion announcement; completion horizon unspecified"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Fourth Boydton campus expansion announced in 2015",
+        "county_fips": "51117",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_vedp_microsoft_boydton_2015",
+      "source_locator": "Expansion jobs paragraph",
+      "notes": "Planned incremental jobs, not current employment.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06"
+    },
+    {
+      "claim_id": "clm_study_msft_boydton_2016_investment_plan",
+      "project_id": "prj_study_im3_campus_00675108684",
+      "metric_code": "study.campus_investment_projection",
+      "value": 251600000,
+      "value_qualifier": "exact",
+      "basis": "source_projection",
+      "period": {
+        "kind": "projection_horizon",
+        "report_date": "2016-11-17",
+        "label": "Fifth Boydton expansion announcement; completion horizon unspecified"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Fifth Boydton campus expansion announced in 2016",
+        "county_fips": "51117",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_vedp_microsoft_boydton_2016",
+      "source_locator": "Expansion investment paragraph",
+      "notes": "Phase forecast; not audited spend.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06"
+    },
+    {
+      "claim_id": "clm_study_msft_boydton_2016_jobs_plan",
+      "project_id": "prj_study_im3_campus_00675108684",
+      "metric_code": "study.operating_jobs_projection",
+      "value": 44,
+      "value_qualifier": "exact",
+      "basis": "source_projection",
+      "period": {
+        "kind": "projection_horizon",
+        "report_date": "2016-11-17",
+        "label": "Fifth Boydton expansion announcement; completion horizon unspecified"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Fifth Boydton campus expansion announced in 2016",
+        "county_fips": "51117",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_vedp_microsoft_boydton_2016",
+      "source_locator": "Expansion jobs paragraph",
+      "notes": "Planned incremental jobs, not current employment.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06"
+    },
+    {
+      "claim_id": "clm_study_msft_boydton_2019_jobs_plan",
+      "project_id": "prj_study_im3_campus_00675108684",
+      "metric_code": "study.operating_jobs_projection",
+      "value": 100,
+      "value_qualifier": "greater_than",
+      "basis": "source_projection",
+      "period": {
+        "kind": "projection_horizon",
+        "report_date": "2019-01-03",
+        "label": "Sixth Boydton expansion announcement; completion horizon unspecified"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Sixth Boydton campus expansion announced in 2019",
+        "county_fips": "51117",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_vedp_microsoft_boydton_2019",
+      "source_locator": "Expansion jobs paragraph",
+      "notes": "Lower-bound planned incremental jobs. The same release's roughly 300 existing employees cover multiple Microsoft Mecklenburg locations and are not allocated to this campus.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06"
+    },
+    {
+      "claim_id": "clm_study_msft_boydton_perf_2012_60188_capex",
+      "project_id": "prj_study_im3_campus_00675108684",
+      "metric_code": "study.cumulative_facility_investment",
+      "value": 676212147,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {"kind": "reported_snapshot", "report_date": "2015-12-31", "label": "COF project 2012-60188 performance date"},
+      "scope": {"level": "campus", "label": "Microsoft performance project 2012-60188, Boydton expansion phase", "county_fips": "51117", "inventory_allocation": "unallocated"},
+      "source_id": "src_study_vedp_cof_postperformance_2019_microsoft",
+      "pdf_page": 4,
+      "printed_page": "4",
+      "source_locator": "Project 2012-60188 row, Actual Capital Investment",
+      "notes": "State performance-date project actual marked Metrics Achieved. Phase scope may overlap later assets; do not sum without agreement-level reconciliation or treat as assessed value or local purchasing.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06"
+    },
+    {
+      "claim_id": "clm_study_msft_boydton_perf_2012_60188_jobs",
+      "project_id": "prj_study_im3_campus_00675108684",
+      "metric_code": "study.operating_employees",
+      "value": 30,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {"kind": "reported_snapshot", "report_date": "2015-12-31", "label": "COF project 2012-60188 performance date"},
+      "scope": {"level": "campus", "label": "Microsoft performance project 2012-60188, Boydton expansion phase", "county_fips": "51117", "inventory_allocation": "unallocated"},
+      "source_id": "src_study_vedp_cof_postperformance_2019_microsoft",
+      "pdf_page": 4,
+      "printed_page": "4",
+      "source_locator": "Project 2012-60188 row, Actual Jobs",
+      "notes": "State performance-date project jobs marked Metrics Achieved, not current whole-campus headcount and not necessarily additive to other phases.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06"
+    },
+    {
+      "claim_id": "clm_study_msft_boydton_perf_2013_84486_capex",
+      "project_id": "prj_study_im3_campus_00675108684",
+      "metric_code": "study.cumulative_facility_investment",
+      "value": 610370818,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {"kind": "reported_snapshot", "report_date": "2017-12-31", "label": "COF project 2013-84486 performance date"},
+      "scope": {"level": "campus", "label": "Microsoft performance project 2013-84486, Boydton expansion phase", "county_fips": "51117", "inventory_allocation": "unallocated"},
+      "source_id": "src_study_vedp_cof_postperformance_2019_microsoft",
+      "pdf_page": 4,
+      "printed_page": "4",
+      "source_locator": "Project 2013-84486 row, Actual Capital Investment",
+      "notes": "State performance-date project actual marked Metrics Achieved. It remains phase-specific and is not summed across expansions.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06"
+    },
+    {
+      "claim_id": "clm_study_msft_boydton_perf_2013_84486_jobs",
+      "project_id": "prj_study_im3_campus_00675108684",
+      "metric_code": "study.operating_employees",
+      "value": 105,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {"kind": "reported_snapshot", "report_date": "2017-12-31", "label": "COF project 2013-84486 performance date"},
+      "scope": {"level": "campus", "label": "Microsoft performance project 2013-84486, Boydton expansion phase", "county_fips": "51117", "inventory_allocation": "unallocated"},
+      "source_id": "src_study_vedp_cof_postperformance_2019_microsoft",
+      "pdf_page": 4,
+      "printed_page": "4",
+      "source_locator": "Project 2013-84486 row, Actual Jobs",
+      "notes": "State performance-date project jobs marked Metrics Achieved, not current whole-campus headcount.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06"
+    },
+    {
+      "claim_id": "clm_study_msft_boydton_perf_2015_123227_capex",
+      "project_id": "prj_study_im3_campus_00675108684",
+      "metric_code": "study.cumulative_facility_investment",
+      "value": 824504900,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "reported_snapshot",
+        "report_date": "2019-01-31",
+        "label": "COF project 2015-123227 performance date"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Microsoft BN7 performance project 2015-123227",
+        "county_fips": "51117",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_vedp_cof_postperformance_2022_microsoft",
+      "pdf_page": 1,
+      "printed_page": "1",
+      "source_locator": "Project 2015-123227 row, Actual Capital Investment",
+      "notes": "State-certified BN7 project actual; not assessed value or local purchasing.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06"
+    },
+    {
+      "claim_id": "clm_study_msft_boydton_perf_2015_123227_jobs",
+      "project_id": "prj_study_im3_campus_00675108684",
+      "metric_code": "study.operating_employees",
+      "value": 50,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "reported_snapshot",
+        "report_date": "2019-01-31",
+        "label": "COF project 2015-123227 performance date"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Microsoft BN7 performance project 2015-123227",
+        "county_fips": "51117",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_vedp_cof_postperformance_2022_microsoft",
+      "pdf_page": 1,
+      "printed_page": "1",
+      "source_locator": "Project 2015-123227 row, Actual Jobs",
+      "notes": "Performance-date project jobs, not current whole-campus headcount.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06"
+    },
+    {
+      "claim_id": "clm_study_msft_boydton_perf_2015_126848_capex",
+      "project_id": "prj_study_im3_campus_00675108684",
+      "metric_code": "study.cumulative_facility_investment",
+      "value": 688425394,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "reported_snapshot",
+        "report_date": "2019-07-01",
+        "label": "COF project 2015-126848 performance date"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Microsoft BN8 performance project 2015-126848",
+        "county_fips": "51117",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_vedp_cof_postperformance_2022_microsoft",
+      "pdf_page": 1,
+      "printed_page": "1",
+      "source_locator": "Project 2015-126848 row, Actual Capital Investment",
+      "notes": "State-certified BN8 project actual; do not combine with other phases without overlap reconciliation.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06"
+    },
+    {
+      "claim_id": "clm_study_msft_boydton_perf_2015_126848_jobs",
+      "project_id": "prj_study_im3_campus_00675108684",
+      "metric_code": "study.operating_employees",
+      "value": 54,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "reported_snapshot",
+        "report_date": "2019-07-01",
+        "label": "COF project 2015-126848 performance date"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Microsoft BN8 performance project 2015-126848",
+        "county_fips": "51117",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_vedp_cof_postperformance_2022_microsoft",
+      "pdf_page": 1,
+      "printed_page": "1",
+      "source_locator": "Project 2015-126848 row, Actual Jobs",
+      "notes": "Performance-date project jobs, not current whole-campus headcount.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06"
+    },
+    {
+      "claim_id": "clm_study_msft_boydton_bn9_13_interim_capex_2024",
+      "project_id": "prj_study_im3_campus_00675108684",
+      "metric_code": "study.cumulative_facility_investment",
+      "value": 1817305847,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {"kind": "reported_snapshot", "report_date": "2024-06-30", "label": "COF project 2018-140262 most recent progress report"},
+      "scope": {"level": "campus", "label": "Microsoft BN9-BN13 performance project 2018-140262", "county_fips": "51117", "inventory_allocation": "unallocated"},
+      "source_id": "src_study_vedp_cof_interim_20240630_bn9_13",
+      "pdf_page": 141,
+      "printed_page": "209",
+      "source_locator": "Interim COF table, project 2018-140262, Actual capital investment as of most recent progress report",
+      "notes": "Company-reported interim project actual before the September 1, 2024 performance date; not yet performance-certified, not assessed value, and not additive to earlier phases without agreement reconciliation.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06"
+    },
+    {
+      "claim_id": "clm_study_msft_boydton_bn9_13_interim_jobs_2024",
+      "project_id": "prj_study_im3_campus_00675108684",
+      "metric_code": "study.operating_employees",
+      "value": 387,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {"kind": "reported_snapshot", "report_date": "2024-06-30", "label": "COF project 2018-140262 most recent progress report"},
+      "scope": {"level": "campus", "label": "Microsoft BN9-BN13 performance project 2018-140262", "county_fips": "51117", "inventory_allocation": "unallocated"},
+      "source_id": "src_study_vedp_cof_interim_20240630_bn9_13",
+      "pdf_page": 141,
+      "printed_page": "209",
+      "source_locator": "Interim COF table, project 2018-140262, Actual jobs as of most recent progress report",
+      "notes": "Company-reported interim jobs before the performance date, not independent certification or current selected-campus headcount and not additive to other project-phase counts.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06"
+    },
+    {
+      "claim_id": "clm_study_msft_boydton_bn7_state_incentive_paid_2019",
+      "project_id": "prj_study_im3_campus_00675108684",
+      "metric_code": "study.state_incentive_paid_certified_to_date",
+      "value": 700000,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "reported_snapshot",
+        "report_date": "2019-11-15",
+        "label": "JLARC report date"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Microsoft Mecklenburg 2015 / BN7 performance project",
+        "county_fips": "51117",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_jlarc_rd550_microsoft_bn7_2019",
+      "pdf_page": 58,
+      "printed_page": "58",
+      "source_locator": "VEDP-administered grant table, Microsoft Mecklenburg row",
+      "notes": "Certified state incentive received for one phase; excludes local EIGs, Tobacco Commission grants, tax exemptions, and infrastructure awards.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06"
+    },
+    {
+      "claim_id": "clm_study_msft_mecklenburg_employees_2023",
+      "project_id": "prj_study_im3_campus_00675108684",
+      "metric_code": "study.operating_employees",
+      "value": 499,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "calendar_year",
+        "year": 2023,
+        "label": "Operator-reported 2023 employment"
+      },
+      "scope": {
+        "level": "multi_campus_county",
+        "label": "Microsoft datacenter employees in Southern Virginia / Mecklenburg portfolio",
+        "county_fips": "51117",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_msft_sova_impact_fy2019_2023",
+      "pdf_page": 1,
+      "printed_page": "1",
+      "source_locator": "Page 1, 499 Microsoft jobs in 2023",
+      "notes": "Portfolio employment stock, not selected-campus headcount; contractor and supported jobs are excluded.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06"
+    },
+    {
+      "claim_id": "clm_study_msft_mecklenburg_supported_jobs_2023",
+      "project_id": "prj_study_im3_campus_00675108684",
+      "metric_code": "study.operational_jobs_supported",
+      "value": 966,
+      "value_qualifier": "exact",
+      "basis": "source_projection",
+      "period": {
+        "kind": "projection_horizon",
+        "report_date": "2023-06-30",
+        "label": "Operator economic-contribution estimate for FY2023"
+      },
+      "scope": {
+        "level": "multi_campus_county",
+        "label": "Additional jobs supported in other industries by Microsoft's Southern Virginia operations",
+        "county_fips": "51117",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_msft_sova_impact_fy2019_2023",
+      "pdf_page": 1,
+      "printed_page": "1",
+      "source_locator": "Page 1, additional jobs supported",
+      "notes": "Operator impact-model estimate, not direct employment, payroll, unique workers, or selected-campus jobs; model inputs and multipliers are not published.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06"
+    },
+    {
+      "claim_id": "clm_study_msft_mecklenburg_property_tax_2023",
+      "project_id": "prj_study_im3_campus_00675108684",
+      "metric_code": "study.property_taxes_paid",
+      "value": 23000000,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "calendar_year",
+        "year": 2023,
+        "label": "Operator-reported 2023 property taxes"
+      },
+      "scope": {
+        "level": "multi_campus_county",
+        "label": "Microsoft Mecklenburg / Southern Virginia datacenter portfolio",
+        "county_fips": "51117",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_msft_sova_impact_fy2019_2023",
+      "pdf_page": 1,
+      "printed_page": "1",
+      "source_locator": "Page 1, property taxes in 2023",
+      "notes": "Operator-reported portfolio payment, not reconciled to county receipts or allocated to the selected campus. It is nested in the cumulative FY2019-FY2023 figure and must not be added to it.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06"
+    },
+    {
+      "claim_id": "clm_study_msft_mecklenburg_property_tax_fy2019_2023",
+      "project_id": "prj_study_im3_campus_00675108684",
+      "metric_code": "study.property_taxes_paid",
+      "value": 99000000,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "cumulative",
+        "report_date": "2023-06-30",
+        "label": "Cumulative property taxes since FY2019 through FY2023"
+      },
+      "scope": {
+        "level": "multi_campus_county",
+        "label": "Microsoft Mecklenburg / Southern Virginia datacenter portfolio",
+        "county_fips": "51117",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_msft_sova_impact_fy2019_2023",
+      "pdf_page": 2,
+      "printed_page": "2",
+      "source_locator": "Page 2, property taxes since 2019",
+      "notes": "Cumulative operator-reported portfolio taxes; not selected-campus taxes and not additive to the nested 2023 observation.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06"
+    },
+    {
+      "claim_id": "clm_study_msft_mecklenburg_community_fy2019_2023",
+      "project_id": "prj_study_im3_campus_00675108684",
+      "metric_code": "study.cumulative_community_funding",
+      "value": 2700000,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "cumulative",
+        "report_date": "2023-06-30",
+        "label": "Total community investment FY2019-FY2023"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Microsoft community investment in Southern Virginia",
+        "county_fips": "51117",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_msft_sova_impact_fy2019_2023",
+      "pdf_page": 1,
+      "printed_page": "1",
+      "source_locator": "Page 1, total community investment FY19-23",
+      "notes": "Portfolio/community-region aggregate. Recipient-verified components may overlap and are not summed with this total.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06"
+    },
+    {
+      "claim_id": "clm_study_msft_lvl_tank_waterline_fy2024",
+      "project_id": "prj_study_im3_campus_00675108684",
+      "metric_code": "study.infrastructure_fund_expenditure",
+      "value": 19585,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "fiscal_year",
+        "year": 2024,
+        "label": "Mecklenburg County FY2024 actual"
+      },
+      "scope": {
+        "level": "supporting_infrastructure",
+        "label": "Microsoft Offsite Infrastructure Fund — LVL tank farm and waterline",
+        "county_fips": "51117",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_econ_mecklenburg_2026",
+      "pdf_page": 77,
+      "printed_page": "74",
+      "source_locator": "Microsoft Offsite Infrastructure Fund schedule, object 094000-9202",
+      "notes": "Exact county fund line item and component of the countywide fund total already in the base evidence; not additive to that total or proof of public subsidy.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06"
+    },
+    {
+      "claim_id": "clm_study_msft_lvl_wwtp_engineering_fy2024",
+      "project_id": "prj_study_im3_campus_00675108684",
+      "metric_code": "study.infrastructure_fund_expenditure",
+      "value": 83256,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "fiscal_year",
+        "year": 2024,
+        "label": "Mecklenburg County FY2024 actual"
+      },
+      "scope": {
+        "level": "supporting_infrastructure",
+        "label": "Microsoft Offsite Infrastructure Fund — LVL to Boydton WWTP engineering",
+        "county_fips": "51117",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_econ_mecklenburg_2026",
+      "pdf_page": 77,
+      "printed_page": "74",
+      "source_locator": "Microsoft Offsite Infrastructure Fund schedule, object 094000-9205",
+      "notes": "Exact supporting-infrastructure line item; nested in the countywide fund total and not a campus operating expense.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06"
+    },
+    {
+      "claim_id": "clm_study_msft_lvl_wwtp_construction_fy2024",
+      "project_id": "prj_study_im3_campus_00675108684",
+      "metric_code": "study.infrastructure_fund_expenditure",
+      "value": 1499983,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "fiscal_year",
+        "year": 2024,
+        "label": "Mecklenburg County FY2024 actual"
+      },
+      "scope": {
+        "level": "supporting_infrastructure",
+        "label": "Microsoft Offsite Infrastructure Fund — LVL to Boydton WWTP construction",
+        "county_fips": "51117",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_econ_mecklenburg_2026",
+      "pdf_page": 77,
+      "printed_page": "74",
+      "source_locator": "Microsoft Offsite Infrastructure Fund schedule, object 094000-9206",
+      "notes": "Exact supporting-infrastructure line item; nested in the countywide fund total.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06"
+    },
+    {
+      "claim_id": "clm_study_msft_lvl_route58_waterline_fy2024",
+      "project_id": "prj_study_im3_campus_00675108684",
+      "metric_code": "study.infrastructure_fund_expenditure",
+      "value": 33130,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "fiscal_year",
+        "year": 2024,
+        "label": "Mecklenburg County FY2024 actual"
+      },
+      "scope": {
+        "level": "supporting_infrastructure",
+        "label": "Microsoft Offsite Infrastructure Fund — Route 58 to LVL campus waterline",
+        "county_fips": "51117",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_econ_mecklenburg_2026",
+      "pdf_page": 77,
+      "printed_page": "74",
+      "source_locator": "Microsoft Offsite Infrastructure Fund schedule, object 094000-9207",
+      "notes": "Exact supporting-infrastructure line item; nested in the countywide fund total.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06"
+    },
+    {
+      "claim_id": "clm_study_msft_herbert_drive_fy2024",
+      "project_id": "prj_study_im3_campus_00675108684",
+      "metric_code": "study.infrastructure_fund_expenditure",
+      "value": 16893,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "fiscal_year",
+        "year": 2024,
+        "label": "Mecklenburg County FY2024 actual"
+      },
+      "scope": {
+        "level": "supporting_infrastructure",
+        "label": "Microsoft Offsite Infrastructure Fund — Highway 58 and Herbert Drive",
+        "county_fips": "51117",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_econ_mecklenburg_2026",
+      "pdf_page": 77,
+      "printed_page": "74",
+      "source_locator": "Microsoft Offsite Infrastructure Fund schedule, object 094000-9216",
+      "notes": "Exact road-related line item associated with Herbert Drive; nested in the countywide fund total and not allocated to one building.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06"
+    },
+    {
+      "claim_id": "clm_study_msft_lvl_wwtp_engineering_fy2025",
+      "project_id": "prj_study_im3_campus_00675108684",
+      "metric_code": "study.infrastructure_fund_expenditure",
+      "value": 66106,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "fiscal_year",
+        "year": 2025,
+        "label": "Mecklenburg County FY2025 actual"
+      },
+      "scope": {
+        "level": "supporting_infrastructure",
+        "label": "Microsoft Offsite Infrastructure Fund — LVL to Boydton WWTP engineering",
+        "county_fips": "51117",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_mecklenburg_budget_fy2027",
+      "pdf_page": 91,
+      "printed_page": "Microsoft Offsite Infrastructure Fund (#301) schedule",
+      "source_locator": "Microsoft Offsite Infrastructure Fund schedule, object 094000-9205, FY2025 actual",
+      "notes": "Exact fund component; do not add to countywide or cumulative infrastructure totals.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06"
+    },
+    {
+      "claim_id": "clm_study_msft_lvl_wwtp_construction_fy2025",
+      "project_id": "prj_study_im3_campus_00675108684",
+      "metric_code": "study.infrastructure_fund_expenditure",
+      "value": 553371,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "fiscal_year",
+        "year": 2025,
+        "label": "Mecklenburg County FY2025 actual"
+      },
+      "scope": {
+        "level": "supporting_infrastructure",
+        "label": "Microsoft Offsite Infrastructure Fund — LVL to Boydton WWTP construction",
+        "county_fips": "51117",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_mecklenburg_budget_fy2027",
+      "pdf_page": 91,
+      "printed_page": "Microsoft Offsite Infrastructure Fund (#301) schedule",
+      "source_locator": "Microsoft Offsite Infrastructure Fund schedule, object 094000-9206, FY2025 actual",
+      "notes": "Exact fund component; not evidence of final project cost or public subsidy.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06"
+    },
+    {
+      "claim_id": "clm_study_msft_lvl_route58_waterline_fy2025",
+      "project_id": "prj_study_im3_campus_00675108684",
+      "metric_code": "study.infrastructure_fund_expenditure",
+      "value": 400,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "fiscal_year",
+        "year": 2025,
+        "label": "Mecklenburg County FY2025 actual"
+      },
+      "scope": {
+        "level": "supporting_infrastructure",
+        "label": "Microsoft Offsite Infrastructure Fund — Route 58 to LVL campus waterline",
+        "county_fips": "51117",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_mecklenburg_budget_fy2027",
+      "pdf_page": 91,
+      "printed_page": "Microsoft Offsite Infrastructure Fund (#301) schedule",
+      "source_locator": "Microsoft Offsite Infrastructure Fund schedule, object 094000-9207, FY2025 actual",
+      "notes": "Exact fund component; not operating water use or a utility bill.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06"
+    },
+    {
+      "claim_id": "clm_study_msft_bn6_construction_workers",
+      "project_id": "prj_study_im3_campus_00675108684",
+      "metric_code": "study.construction_workers",
+      "value": 500,
+      "value_qualifier": "greater_than",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "reported_snapshot",
+        "report_date": "2026-09-06",
+        "label": "Undated historical BN6 contractor account available on review date"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Microsoft BN6 construction project in Boydton",
+        "county_fips": "51117",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_lithko_microsoft_bn6",
+      "source_locator": "Project profile, overview",
+      "notes": "More than 500 workers on site, with no disclosed observation date, duration, residence, occupation, hours, payroll, or proof that this was the project peak.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06"
+    },
+    {
+      "claim_id": "clm_study_msft_boydton_wifi_2018",
+      "project_id": "prj_study_im3_campus_00675108684",
+      "metric_code": "study.direct_community_contribution",
+      "value": 75000,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "calendar_year",
+        "year": 2018,
+        "label": "2018 Boydton community Wi-Fi contribution"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Boydton community Wi-Fi project",
+        "county_fips": "51117",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_msft_boydton_wifi_2018",
+      "source_locator": "Community Wi-Fi project description",
+      "notes": "Direct local contribution; it may overlap later cumulative company community totals and is not recurring.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06"
+    },
+    {
+      "claim_id": "clm_study_msft_svhec_scholarship_2019",
+      "project_id": "prj_study_im3_campus_00675108684",
+      "metric_code": "study.direct_community_contribution",
+      "value": 45000,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "calendar_year",
+        "year": 2019,
+        "label": "2019 Datacenter Academy Scholars Program donation"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Southern Virginia Higher Education Center scholarship program",
+        "county_fips": "51117",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_svhec_annual_report_2020_microsoft",
+      "pdf_page": 27,
+      "printed_page": "27",
+      "source_locator": "Annual report, Microsoft Datacenter Academy Scholars Program",
+      "notes": "Recipient-verified donation; potential overlap with operator cumulative totals is preserved.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06"
+    },
+    {
+      "claim_id": "clm_study_msft_svhec_it_academy_2020",
+      "project_id": "prj_study_im3_campus_00675108684",
+      "metric_code": "study.direct_community_contribution",
+      "value": 200000,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "calendar_year",
+        "year": 2020,
+        "label": "2020 IT Academy expansion donation"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Southern Virginia Higher Education Center IT Academy",
+        "county_fips": "51117",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_svhec_annual_report_2020_microsoft",
+      "pdf_page": 27,
+      "printed_page": "27",
+      "source_locator": "Annual report, Microsoft IT Academy expansion",
+      "notes": "Recipient-verified donation; not added to broader overlapping aggregates.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06"
+    },
+    {
+      "claim_id": "clm_study_msft_svhec_network_tester_2020",
+      "project_id": "prj_study_im3_campus_00675108684",
+      "metric_code": "study.direct_community_contribution",
+      "value": 24500,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "calendar_year",
+        "year": 2020,
+        "label": "Network tester received in July 2020"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Boydton datacenter-organized equipment donation to SVHEC",
+        "county_fips": "51117",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_svhec_microsoft_equipment_2021",
+      "source_locator": "Donation article, July network tester",
+      "notes": "Recipient-reported equipment value. It may be part of the 2020 IT Academy donation and is not summed.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06"
+    },
+    {
+      "claim_id": "clm_study_msft_mecklenburg_eda_sewer_grant_2015",
+      "project_id": "prj_study_im3_campus_00675108684",
+      "metric_code": "study.public_infrastructure_grant",
+      "value": 1939257,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "fiscal_year",
+        "year": 2015,
+        "label": "EDA FY2015 Public Works award"
+      },
+      "scope": {
+        "level": "supporting_infrastructure",
+        "label": "Sewer line and upgrades serving Microsoft expansion and former-prison redevelopment",
+        "county_fips": "51117",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_eda_virginia_2015_mecklenburg_sewer",
+      "source_locator": "Virginia project table and Mecklenburg narrative",
+      "notes": "Federal grant award for shared infrastructure, not wholly attributable to Microsoft and not proof of disbursement timing or final cost.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06"
+    },
+    {
+      "claim_id": "clm_study_msft_boydton_eda_wwtp_grant_2021",
+      "project_id": "prj_study_im3_campus_00675108684",
+      "metric_code": "study.public_infrastructure_grant",
+      "value": 1600000,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "reported_snapshot",
+        "report_date": "2021-12-09",
+        "label": "EDA award announcement date"
+      },
+      "scope": {
+        "level": "supporting_infrastructure",
+        "label": "Boydton wastewater treatment plant upgrade serving Microsoft and other businesses",
+        "county_fips": "51117",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_eda_boydton_wastewater_20211209",
+      "source_locator": "Award notice, grant amount",
+      "notes": "Federal grant award, matched locally; not fully allocable to Microsoft and not project operating expense.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06"
+    },
+    {
+      "claim_id": "clm_study_msft_herbert_brownfields_grant_2018",
+      "project_id": "prj_study_im3_campus_00675108684",
+      "metric_code": "study.public_infrastructure_grant",
+      "value": 50000,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "fiscal_year",
+        "year": 2018,
+        "label": "Virginia Brownfields Assistance Fund FY2018 award"
+      },
+      "scope": {
+        "level": "supporting_infrastructure",
+        "label": "960 Herbert Drive former correctional-center redevelopment",
+        "county_fips": "51117",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_vadeq_brownfields_mecklenburg_microsoft_2018",
+      "pdf_page": 5,
+      "printed_page": "B-5",
+      "source_locator": "Mecklenburg County Microsoft Corporation project row",
+      "notes": "State brownfields grant for site redevelopment; not a complete public-cost ledger.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06"
+    }
+  ],
+  "project_updates": [
+    {
+      "project_id": "prj_study_im3_campus_00675108684",
+      "source_id": "src_study_msft_boydton_10_years_2020",
+      "as_of": "2026-09-06",
+      "title": "Full direct-evidence audit — Boydton/LVL campus bounded; realized and portfolio evidence separated",
+      "notes": "COMPLETENESS MATRIX (reviewed 2026-09-06; no records request was made). Boundary/entity/address crosswalk: Microsoft Corporation is the permittee, assessor owner and agreement party. Exact searches used Microsoft, Microsoft Corporation, East Coast Data Center, Boydton, 101 Herbert Drive, 960 Herbert Drive, LVL 1-7, map 110000-02--A, PRN 38595, BN1-BN15, BN49, BN80 and phase IDs 2012-60188, 2013-84486, 2015-123227, 2015-126848 and 2018-140262. CAMA PRN 38595 and DEQ PRO-21527 support the selected contiguous Herbert Drive/LVL campus; USACE NAO-2021-01135 and Timber permit 52903-4 place Timber at Ridge Road, while the 2024 Planning Commission record places Wright Forestry parcel 132000-A-004 / PRN 3269 south of Herbert Drive. Timber, Hillcrest, Lakeside, Bishop, South Hill and other county sites therefore remain outside the selected boundary absent an authoritative parcel crosswalk.\n\nTAX / ASSESSOR / TREASURER: Mecklenburg CAMA and Southside GIS/land-book access were searched by Microsoft Corporation, 960 Herbert Drive, PRN 38595 and map 110000-02--A; the opened PRN 38595 page supplies the 2027-2028 real-property appraisal and structure schedule. The Commissioner of Revenue pages and 2026 reassessment materials explain real- and business-personal-property administration but expose no Microsoft personal-property asset schedule. The E-Treasurer portal landing page was opened and searches used Microsoft Corporation, 101/960 Herbert Drive, PRN 38595 and the map number; the public interface requires an account number and exposes no owner/address index or downloadable bill/payment ledger. The tax-rate page supplies the $0.66-per-$100 data-center-equipment rate, but without account values, bills and receipts it cannot support selected-campus tax paid, abatement, delinquency or net revenue.\n\nCOUNTY ACCOUNTING / BOARD RECORDS: County Budget and Archive Center documents opened include FY2024-2025, FY2025-2026 and FY2026-2027 Microsoft Offsite Infrastructure Fund schedules; the May 13, 2024 Board minutes and termination agreement; the August 8, 2022 RRSA capacity agreement; and July 25, 2024 Planning Commission minutes. Agenda Center searches covered Board of Supervisors, Planning Commission and BZA materials for 2010-2026 with Microsoft, Boydton, Herbert, LVL, BN6-BN13, EIG, IDA, Fund 301 and object codes 9202/9205/9206/9207/9216. The schedules support eight LVL/Herbert expenditure components plus the two pre-existing countywide Fund 301 totals, but no public check register, ACFR schedule, invoice ledger, EIG payment history, recipient distribution, marginal service cost or campus-level reconciliation was returned. Components, receipts and expenditures are not netted or summed because scope and nesting differ.\n\nDEVELOPMENT / INCENTIVE / COMPLIANCE: VEDP releases for the original 2010 project and six expansions through 2019 were opened, preserving announcement projections separately. Official COF tables as of December 31, 2019, December 31, 2022 and June 30, 2024 were searched by the five project IDs: the first supports four performance-date investment/job pairs marked Metrics Achieved; the 2022 table reconfirms BN7/BN8; the 2024 interim table reports BN9-BN13 company-reported progress before performance certification. JLARC RD550 page 58 supports $700,000 received for the 2015 Microsoft Mecklenburg project; RD148 evaluates the sales/use-tax exemption but withholds company-site amounts. Tobacco Commission RD41 and the FY2015 Ridge Road packet were opened; their $8.4 million aggregate, $1,152,704 recommendation and other announced grants overlap phases or lack verified payment/selected-campus allocation, so they remain source-trail facts rather than realized-cost records. County IDA/EDC and agreement searches found the EIG formula (100% tax paid, 82.5% appropriated back through the IDA until termination) but no underlying payment ledger, preventing realized local-incentive or net-fiscal claims.\n\nPLANNING / BUILDING / LAND DISTURBANCE: The county Agenda Center, Document Center, Zoning page and Building Inspection page were searched for Microsoft Corporation, both Herbert Drive addresses, LVL 1-7, PRN 38595, BN1-BN15, East Coast Data Center, site plan, land disturbance, commercial building, certificate of occupancy and permit valuation across 2010-2026. The official sites expose forms and meeting packets but no case-level issued-permit/inspection database; searches returned the separate Wright Forestry rezoning but no selected-campus building-permit ledger, valuation, contractor list, inspection status or certificate dates. Assessor structure dates and contractor square footage are not substituted for permit valuations.\n\nAIR / STORMWATER / EPA: Virginia DEQ's issued-air-permit indexes were searched by Microsoft, East Coast Data Center, registration 21527 and Mecklenburg and returned 21527-7 (Title V, 2024-04-24) and 21527-15 (minor NSR, 2023-09-19). The official PRO-21527 indexed text supports 165 generators in 15 buildings; direct PDF retrieval returned 403 during review, so page 2 was cross-checked in the agency index and a second extraction. EPA FRS 110042150524 was opened and cross-references EIS 17626111, ICIS-Air VA0000005111700071 and construction-stormwater VAR10P374. None publishes actual generation, runtime, fuel, emissions, discharge, violation cost, water use or economic damage; permit limits are not operating outcomes.\n\nELECTRICITY / TRANSMISSION: Virginia SCC transmission-project and docket searches and Dominion project materials used Microsoft, Boydton, Herbert Road Substation, Cloud Substation, Coleman Creek, Mecklenburg Electric Cooperative, DOM-2021-0009, load, tariff and interconnection for 2010-2026. The Clover-Chase City application describes an unnamed Boydton data-center-campus request above 100 MW at Cloud Sub-Coleman Creek with 156 MW projected summer load in 2026; the filing does not name Microsoft or map the load to PRN 38595 and appears tied to Cloud/Ridge-area infrastructure beyond the selected parcel. The original 2011 release's 21-MW increment is retained only as a projection. No selected-campus meter, tariff, bill, kWh, peak demand, substation cost allocation, reimbursement or current contracted capacity was found.\n\nWATER / WASTEWATER: Searches covered RRSA, Town of Boydton, county budgets and Board attachments using Microsoft, 101/960 Herbert, LVL, tank farm, Route 58 waterline, Boydton WWTP, water user agreement, gallons, rate and bill. Recital R-7 of the 2024 termination agreement confirms private Microsoft-RRSA Water Users Agreements and payments for service, but the agreements, rates, meter volumes and bills are not attached. The August 8, 2022 county-RRSA agreement reserves 400,000 gpd for county-directed use and Fund 301 contains shared/offsite projects, neither of which allocates consumption or public cost to this campus.\n\nWORKFORCE / PAYROLL / TRAINING: VEDP performance tables, operator impact materials, Microsoft careers/workforce pages, SVHEC annual reports and recipient stories were searched for employee, contractor, wage, payroll, Datacenter Academy, IT Academy, apprentice, internship and local hire across 2010-2026. Phase-specific VEDP job actuals and the unallocated 499-job 2023 portfolio stock are retained; the BN9-BN13 progress count is labeled interim. Microsoft's IT Academy page says 11 participants had been hired into Boydton, but gives no cohort date/denominator and is not relabeled as total employment. Live vacancies, biographies and training outcomes do not establish filled jobs, annual payroll, hours, benefits, occupation mix, residence, retention or selected-campus headcount. BLS/QCEW, Census/CBP and repository county panels are geography/industry aggregates and cannot identify Microsoft.\n\nCONTRACTORS / SUPPLIERS / PROCUREMENT: Contractor and project searches used Microsoft Boydton, East Coast, BN6-BN13, Structure Tone, Hourigan, Lithko, TriplePoint, MEP, concrete, electrical, HVAC, vendor, subcontractor, procurement, invoice and local spend. Lithko identifies Structure Tone as customer, 350,000 square feet, nine BN6 buildings and more than 500 onsite workers; TriplePoint identifies a 515,000-square-foot multi-phase 2014 mechanical project. Mecklenburg Bids/RFPs, SAM.gov/USAspending-style federal award searches and county Fund 301 solicitations were checked using LVL, Herbert Drive, Boydton WWTP, tank farm and waterline. They do not provide a complete award/payment register, Microsoft private contract value, supplier roster, worker hours/payroll, vendor location, local purchase share or auditable construction outlay; the workforce lower bound is retained without converting it to job-years.\n\nCOMMUNITY / RECIPIENT CONFIRMATION: Microsoft Local, SVHEC 2019-2023 reports/news, SVCC/Datacenter Academy materials, county/school/library searches and named recipient searches used Boydton, Mecklenburg, grant, gift, donation, Wi-Fi, scholarship, IT Academy, Better Block, school, library and nonprofit. Direct records are limited to the $75,000 Boydton Wi-Fi contribution and recipient-side SVHEC confirmations of $45,000, $200,000 and a $24,500 network tester. The Better Block and later training-lab accounts lack recipient-side amounts; in-kind equipment and volunteer hours lack valuation. These components may overlap Microsoft's $2.7 million FY2019-FY2023 regional aggregate and are not summed.\n\nCORPORATE / FINANCE / LEGAL: Microsoft's FY2026 SEC 10-K, SEC company filings, Virginia SCC entity/docket results, county deed/UCC/lien references, EMMA/MSRB-style municipal disclosure searches, federal court/public web indexes and county bond/TIF/IRB materials were queried for Microsoft Corporation, Boydton, Mecklenburg, East Coast Data Center, 101/960 Herbert, Industrial Development Authority, bond, revenue bond, TIF, lease, debt, lien and litigation for 2010-2026. The 10-K is global; no Boydton capex, revenue, expense, asset, debt or supplier allocation was found. No project-specific bond/TIF/IRB issuance, debt service, lien, judgment, settlement recovery or litigation-cost record surfaced; generic county performance-bond forms are not project financing.\n\nRECORD / MODEL DECISION: The fragment contains 48 additions: 33 reported actuals and 15 source projections. Countywide taxes, jobs, community totals and Fund 301 totals stay unallocated; performance phases, interim progress, nested aggregates, grant awards and budget components are not summed. No modeled-synthesis fragment is eligible. Project-specific spend by category, annual payroll, resource consumption, supplier geography, tax account history and same-scope public-service costs are absent, so input-output, resource, induced, causal county-comparison and net-fiscal models would be transferred or mechanically generated rather than decision-grade; gaps are preserved.",
+      "project_description": "Microsoft Boydton is Microsoft Corporation’s East Coast Data Center campus at 101 and 960 Herbert Drive near Boydton in Mecklenburg County, Virginia; this account covers the contiguous Boydton/East Coast/LVL campus and excludes Microsoft’s Timber, Hillcrest, Lakeside, Bishop, and other county sites. Microsoft marked ten years of operation on August 27, 2020, while state releases document the original 2010 project and successive Boydton expansions through 2019. Virginia DEQ’s 2024 operating permit describes 165 backup engine-generator sets in 15 buildings, and county parcel PRN 38595 identifies 206.57 acres with computer-center structures built or effective from 2021 through 2024."
+    }
+  ]
+}
