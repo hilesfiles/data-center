@@ -385,11 +385,15 @@ try {
   assert.match(await designBill.innerText(), /\$2,300,544,270[\s\S]*\$3,009,750\.4/);
   assert.match(await designBill.innerText(), /not verified cash collected/);
   assert.doesNotMatch(await page.locator(".tax-billing-history").allTextContents().then(t => t.join(" ")), /FY202|Taxes collected/);
-  assert.equal(await page.locator(".economic-record").count(), 13);
+  assert.equal(await page.locator(".economic-record").count(), 23);
   await noOverflow();
   await designBill.screenshot({ path: path.join(out, "tax-billing-mobile.png") });
   await page.setViewportSize({ width: 1440, height: 1000 });
   await designBill.screenshot({ path: path.join(out, "tax-billing-desktop.png") });
+  await page.getByRole("tab", { name: /Plans & forecasts/ }).click();
+  assert.equal(await page.locator(".economic-record").count(), 4);
+  await page.getByRole("tab", { name: /Modeled synthesis/ }).click();
+  assert.equal(await page.locator(".modeled-record").count(), 3);
   check("tax bills retain two taxpayer accounts, source tax years and the distinction from cash receipts");
 
   await page.goto(`${url}#/project/prj_study_im3_campus_00578435601`);
@@ -443,15 +447,15 @@ try {
   await page.goto(`${url}#/project/prj_study_im3_building_00172739953`);
   await openDetails(".evidence-ledger");
   await page.getByRole("heading", { name: "Switch Las Vegas NAP7", exact: true }).waitFor();
-  await page.locator(".account-count").getByText("10 sourced records · partial coverage", { exact: true }).waitFor();
-  assert.equal(await page.locator(".economic-record").count(), 10);
+  await page.locator(".account-count").getByText("16 sourced records · partial coverage", { exact: true }).waitFor();
+  assert.equal(await page.locator(".economic-record").count(), 16);
   assert.equal(await page.locator(".economic-history").count(), 3);
   assert.equal(await page.locator(".history-bar-row").count(), 6);
   assert.match(await page.locator(".economic-history").allInnerTexts().then(rows => rows.join(" ")), /FY2026[\s\S]*\$87,755,603[\s\S]*FY2027[\s\S]*\$88,942,140/);
   assert.match(await page.locator(".economic-history").allInnerTexts().then(rows => rows.join(" ")), /CY2017[\s\S]*\$200,500,000[\s\S]*CY2018[\s\S]*\$134,200,000/);
   assert.match(await page.locator(".economic-record-list").innerText(), /Quarter ended 2021-03-31[\s\S]*\$23,400,000/);
   assert.match(await page.locator(".economic-record-list").innerText(), /Quarter ended 2021-12-31[\s\S]*\$49,500,000/);
-  assert.equal(await page.locator(".project-research-update").count(), 2);
+  assert.equal(await page.locator(".project-research-update").count(), 12);
   assert.match(await page.locator(".project-research-update").allInnerTexts().then(rows => rows.join(" ")), /cannot be assigned to this location[\s\S]*resolves the mapped NAP7 building/);
   await page.setViewportSize({ width: 390, height: 844 });
   await noOverflow();
@@ -643,15 +647,15 @@ try {
   await page.goto(`${url}#/project/prj_study_im3_building_00598261190`);
   await openDetails(".evidence-ledger");
   await page.getByRole("heading", { name: "State Farm Olathe", exact: true }).waitFor();
-  await page.locator(".account-count").getByText("25 sourced records · partial coverage", { exact: true }).waitFor();
-  assert.equal(await page.locator(".economic-record").count(), 25);
+  await page.locator(".account-count").getByText("31 sourced records · partial coverage", { exact: true }).waitFor();
+  assert.equal(await page.locator(".economic-record").count(), 31);
   assert.equal(await page.locator(".tax-billing-history tbody tr").count(), 7);
   assert.equal(await page.locator(".tax-billing-history thead th").count(), 4);
   assert.match(await page.locator(".tax-billing-history tbody tr").last().innerText(), /2025[\s\S]*\$19,994,965[\s\S]*\$2,298,781\.14[\s\S]*\$2,298,781\.14/);
   assert.equal(await page.locator(".economic-history .history-bar-row").count(), 5);
   assert.match(await page.locator(".economic-history").innerText(), /TY2024[\s\S]*\$91,415,000/);
   assert.match(await page.locator(".economic-record-list").innerText(), /Estimated cumulative capital expenditure[\s\S]*About \$169,778,850/);
-  assert.match(await page.locator(".project-research-update").innerText(), /County parcel links HMC ownership and the State Farm data center/);
+  assert.match((await page.locator(".project-research-update").allInnerTexts()).join("\n"), /County parcel links HMC ownership and the State Farm data center/);
   await page.setViewportSize({ width: 390, height: 844 });
   await noOverflow();
   await page.locator(".tax-billing-history").screenshot({ path: path.join(out, "state-farm-olathe-tax-history-mobile.png") });
@@ -818,10 +822,10 @@ try {
     sidebar: getComputedStyle(document.querySelector(".sidebar")).backgroundColor,
     map: getComputedStyle(document.querySelector(".map-section")).backgroundColor,
   })), { sidebar: "rgb(11, 14, 20)", map: "rgb(16, 23, 27)" });
-  assert.match(await page.locator(".review-key").innerText(), /completed project audits \(12\)/i);
+  assert.match(await page.locator(".review-key").innerText(), /completed project audits \(15\)/i);
   assert.doesNotMatch(await page.locator(".legend").innerText(), /IM3|pending|merged|queued/i);
   await page.getByLabel("Research-complete project markers").selectOption("Colocation");
-  assert.match(await page.locator(".review-key").innerText(), /completed project audits \(5\)/i);
+  assert.match(await page.locator(".review-key").innerText(), /completed project audits \(6\)/i);
   await page.getByLabel("Research-complete project markers").selectOption("");
   await page.screenshot({ path: path.join(out, "map-desktop.png") });
   assert.doesNotMatch(await page.locator(".sidebar").innerText(), /Source records|Building records|Campus records|Observed footprint|First-entry research/i);
@@ -832,7 +836,7 @@ try {
   const response = await page.request.get(`${url}data/v1/study/index.json`);
   const study = await response.json();
   assert.equal(study.projects.length, 36);
-  assert.equal(study.projects.filter(p => p.research_completion_status === "account_research_complete").length, 12);
+  assert.equal(study.projects.filter(p => p.research_completion_status === "account_research_complete").length, 15);
   assert.equal(study.projects.filter(p => p.model_completeness.status === "full_modeled_account").length, 3);
   const descriptionPage = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
   for (const completed of study.projects.filter(project => project.research_completion_status === "account_research_complete")) {
@@ -847,7 +851,7 @@ try {
     ), `${completed.name} must render the project description before the study rationale`);
   }
   await descriptionPage.close();
-  check("all twelve completed project pages render one description above the study rationale");
+  check("all fifteen completed project pages render one description above the study rationale");
   const target = study.projects.find(p => p.name === "Apple Mesa");
   const canvas = await page.locator("canvas").boundingBox();
   const world = 512 * 2 ** 3.25;
@@ -871,7 +875,7 @@ try {
   await page.mouse.click(targetX, targetY);
   await page.waitForURL(`**/project/${target.project_id}`);
   await page.getByRole("heading", { name: "Sources & research history" }).waitFor();
-  check("map preserves all twelve completed project audits while keeping analytical completeness separate");
+  check("map preserves all fifteen completed project audits while keeping analytical completeness separate");
 
   const legacyPage = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
   await legacyPage.route("**/data/v1/study/index.json?*", async route => {
@@ -880,8 +884,8 @@ try {
     await route.fulfill({ json: legacyStudy });
   });
   await legacyPage.goto(`${url}#/map`, { waitUntil: "domcontentloaded" });
-  await legacyPage.getByText("11 completed project research accounts are mapped.", { exact: false }).waitFor();
-  assert.match(await legacyPage.locator(".review-key").innerText(), /completed project audits \(11\)/i);
+  await legacyPage.getByText("12 completed project research accounts are mapped.", { exact: false }).waitFor();
+  assert.match(await legacyPage.locator(".review-key").innerText(), /completed project audits \(12\)/i);
   await legacyPage.close();
   check("map remains populated when a browser holds an index without the research-completion field");
 

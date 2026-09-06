@@ -85,10 +85,10 @@ class PrivateSectorStudyTest(unittest.TestCase):
         index, details, _ = self.build()
         self.assertEqual(index["counts"]["projects"], 36)
         self.assertEqual(index["counts"]["projects_with_economic_evidence"], 36)
-        self.assertEqual(index["counts"]["economic_records"], 692)
-        self.assertEqual(index["counts"]["reported_actual_records"], 626)
-        self.assertEqual(index["counts"]["projection_records"], 66)
-        self.assertEqual(index["counts"]["modeled_synthesis_records"], 146)
+        self.assertEqual(index["counts"]["economic_records"], 718)
+        self.assertEqual(index["counts"]["reported_actual_records"], 648)
+        self.assertEqual(index["counts"]["projection_records"], 70)
+        self.assertEqual(index["counts"]["modeled_synthesis_records"], 149)
         self.assertEqual(index["full_modeled_county_accounts"], 3)
         self.assertEqual(sum(r["analysis_readiness"]["causal"] == "causal_model_available" for r in details), 0)
         washoe = next(r for r in details if r["name"] == "Apple Washoe County campus")
@@ -214,7 +214,7 @@ class PrivateSectorStudyTest(unittest.TestCase):
         taxable = [r for r in project["economic_records"] if r["metric_code"] == "study.taxable_property_value"]
         assessed = [r for r in project["economic_records"] if r["metric_code"] == "study.account_assessed_value"]
         capex = [r for r in project["economic_records"] if r["metric_code"] == "study.campus_capital_expenditure"]
-        self.assertEqual(project["economic_record_count"], 10)
+        self.assertEqual(project["economic_record_count"], 16)
         self.assertEqual([r["value"] for r in taxable], [87755603, 88942140])
         self.assertEqual([r["value"] for r in assessed], [30714461, 31129749])
         self.assertTrue(all(r["period"]["kind"] == "fiscal_year" for r in taxable + assessed))
@@ -225,7 +225,7 @@ class PrivateSectorStudyTest(unittest.TestCase):
         self.assertTrue(all("no allocation to NAP7" in r["scope"]["label"] for r in capex))
         self.assertFalse(any(r["source_id"] == "src_study_nevada_switch_combined_audit_2021"
                              for r in project["economic_records"]))
-        self.assertEqual(len(project["research_updates"]), 2)
+        self.assertEqual(len(project["research_updates"]), 12)
         self.assertIn("combine multiple Switch", project["research_updates"][0]["title"])
         self.assertIn("resolves the mapped NAP7", project["research_updates"][1]["title"])
 
@@ -450,7 +450,7 @@ class PrivateSectorStudyTest(unittest.TestCase):
         self.assertEqual([r["value"] for r in paid], [r["value"] for r in billed])
         self.assertTrue(all("zero balance" in r["notes"] for r in paid))
         self.assertEqual((capex["value"], capex["value_qualifier"], capex["period"]["kind"]), (169778850, "approximately", "cumulative"))
-        self.assertEqual(project["economic_record_count"], 25)
+        self.assertEqual(project["economic_record_count"], 31)
         self.assertIn("HMC ownership", project["research_updates"][0]["title"])
 
     def test_apple_mesa_keeps_real_and_personal_property_accounts_separate(self):
@@ -725,7 +725,7 @@ class PrivateSectorStudyTest(unittest.TestCase):
         by_id = {r["estimate_id"]: r for r in modeled}
         self.assertEqual((project["economic_record_count"], project["modeled_synthesis_count"]), (113, 43))
         self.assertEqual((index["counts"]["economic_records"], index["counts"]["modeled_synthesis_records"]),
-                         (692, 146))
+                         (718, 149))
         self.assertEqual({r["basis"] for r in modeled}, {"modeled_synthesis"})
         self.assertTrue(all(r["presentation"] == "modeled_not_observed_or_audited" for r in modeled))
         self.assertTrue(all(r["derivation"]["formula"] and r["parameters"] and r["limitations"] for r in modeled))
@@ -934,8 +934,8 @@ class PrivateSectorStudyTest(unittest.TestCase):
         self.assertEqual([r["value"] for r in bills if "130136" in r["scope"]["label"]], [1729539.14, 1716154.44, 3009750.40])
         self.assertTrue(all(r["period"]["kind"] == "tax_year" and r["aggregation"] == "none" for r in bills))
         self.assertFalse(any(r["metric_code"] == "study.property_tax_receipts" for r in dalles["economic_records"]))
-        self.assertEqual(dalles["economic_record_count"], 13)
-        self.assertEqual(len(dalles["research_updates"]), 1)
+        self.assertEqual(dalles["economic_record_count"], 27)
+        self.assertEqual(len(dalles["research_updates"]), 9)
 
     def test_calendar_year_decline_retained_and_year_bases_cannot_mix(self):
         evidence = read(EVIDENCE)

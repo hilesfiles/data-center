@@ -16,11 +16,11 @@
   "detail_path": "projects/prj_study_im3_building_00172739953.json",
   "latitude": 36.0599251525617,
   "longitude": -115.2102454849461,
-  "economic_record_count": 10,
-  "reported_actual_count": 10,
+  "economic_record_count": 16,
+  "reported_actual_count": 16,
   "projection_count": 0,
   "modeled_synthesis_count": 0,
-  "research_completion_status": "research_pending",
+  "research_completion_status": "account_research_complete",
   "model_completeness": {
     "status": "incomplete",
     "required_categories": [
@@ -34,8 +34,12 @@
       "community"
     ],
     "covered_categories": [
+      "community",
+      "construction",
       "fiscal",
-      "investment"
+      "investment",
+      "operations",
+      "resources"
     ],
     "modeled_categories": [],
     "required_county_outcomes": [
@@ -45,11 +49,7 @@
     ],
     "covered_county_outcomes": [],
     "missing_categories": [
-      "community",
-      "construction",
-      "operations",
       "public_costs",
-      "resources",
       "suppliers"
     ],
     "missing_county_outcomes": [
@@ -61,8 +61,8 @@
     "definition": "All eight contribution-account categories contain sourced or labeled modeled values, and GDP, employment, and wage county-comparison modules are populated. Comparison gaps are descriptive and do not establish causal facility effects."
   },
   "schema_version": "1.0.0",
-  "release_id": "private-sector-study-1.48.0",
-  "generated_at": "2026-09-06T18:43:04+00:00",
+  "release_id": "private-sector-study-1.49.0",
+  "generated_at": "2026-09-06T19:36:00+00:00",
   "inventory_name": "Switch Las Vegas 7",
   "research_value": "Stored county filing and operator history support distinct construction and operating phases.",
   "history": {
@@ -137,6 +137,212 @@
         "review_method": "web_page",
         "notes": "The official record identifies NV LAS NAP 7 LLC at 7135 Decatur Boulevard, parcel 176-01-810-001, and classifies the 2008 structure as a Computer Center. It reports taxable and assessed real-property values for fiscal years 2025-26 and 2026-27. The assessor warns that values are subject to change before finalization. Personal property is zero on this real-property account; separate business-personal-property accounts remain uncollected."
       }
+    },
+    {
+      "project_id": "prj_study_im3_building_00172739953",
+      "source_id": "src_study_clark_switch_rights_of_way_2008",
+      "as_of": "2026-09-06",
+      "title": "Chronology and building boundary verified",
+      "notes": "Clark County's September 3, 2008 rights-of-way filing identifies NAP4 as existing and NAP7 at 7135 South Decatur as under construction. The assessor's 2008 construction year and Switch's 2009 debut statement corroborate the chronology without creating a first-county-entry treatment date. The individual NAP7 building and real-property parcel remain separate from NAP8-NAP19, the Core Campus, tenant equipment, and later company-county expansion accounts. Because other Switch operations predate NAP7 and later growth overlaps the county outcome panel, no facility treatment or causal county model is added.",
+      "source": {
+        "source_id": "src_study_clark_switch_rights_of_way_2008",
+        "title": "Switch Business Solutions LLC application for rights-of-way use",
+        "url": "https://www.clarkcountynv.gov/adobe/assets/urn%3Aaaid%3Aaem%3A7cbfeaf9-a667-4554-8d94-2dc55d17113c/original/as/switch-business-solutions-llc-20050912.pdf",
+        "publisher": "Clark County",
+        "source_type": "local_government_record",
+        "publication_date": {
+          "precision": "day",
+          "date": "2008-09-03"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "pdf_text_and_page_image",
+        "notes": "The county filing says Switch was constructing NAP7 at 7135 South Decatur Boulevard in September 2008 and separately identifies NAP4 as an existing facility. It establishes chronology and rules out treating NAP7 as Switch's first Clark County entry."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_00172739953",
+      "source_id": "src_study_clark_treasurer_nap7_fy2027",
+      "as_of": "2026-09-06",
+      "title": "Treasurer bill and partial payment correct the earlier gap",
+      "notes": "Parcel 176-01-810-001 was queried in the Clark County Treasurer portal for tax year 2027. The portal directly supports the $912,973.28 real-property bill and $228,624.01 fiscal-year payment through review, correcting the September 3 note that Treasurer payment records remained uncollected. The partial payment is not promoted to a full-year amount; calendar-year rollups, future installments, jurisdictional distributions, personal-property accounts and tax receipts remain outside these claims.",
+      "source": {
+        "source_id": "src_study_clark_treasurer_nap7_fy2027",
+        "title": "Clark County Treasurer Property Account Inquiry, parcel 176-01-810-001",
+        "url": "https://trweb.co.clark.nv.us/WEP_summary.asp?Parcel=176-01-810-001",
+        "publisher": "Clark County Treasurer",
+        "source_type": "local_government_record",
+        "publication_date": {
+          "precision": "unknown"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_page",
+        "notes": "Interactive parcel inquiry for tax year 2027, district 635. The account displays $912,973.28 taxes as assessed, no cap reduction, a $228,624.01 last payment dated August 14, 2026, fiscal-tax-year payments of the same amount, and an unpaid remaining balance. Calendar-year payment rollups are not normalized because they cross tax years."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_00172739953",
+      "source_id": "src_study_clark_accela_nap7_bd20_28271",
+      "as_of": "2026-09-06",
+      "title": "Permit and contractor search found one usable remodel value",
+      "notes": "Clark Accela searches for exact NAP7 and 7135 South Decatur covered records from 2008 through 2026. The NAP7 query returned five labeled records; BD20-28271 is closed-approved and provides the distinct $200,000 interior-remodel job value. BD20-27431 was void, BD13-12024-EL3 and BD13-12024-LVSC are smaller electrical trade records with ambiguous overlap, and BD25-56296 was not complete. The 84 exact-address results include later LAS facilities, substations and unrelated campus work, so they are not attributed to NAP7. The named contractor, Switch RIG LLC, supplies identity context but no independent-vendor payment or local-retention amount.",
+      "source": {
+        "source_id": "src_study_clark_accela_nap7_bd20_28271",
+        "title": "Clark County Building record BD20-28271, Switch NAP7 interior remodel",
+        "url": "https://aca-prod.accela.com/CLARKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC20&capID2=00000&capID3=01DYG&agencyCode=CLARKCO",
+        "publisher": "Clark County Department of Building and Fire Prevention",
+        "source_type": "local_government_record",
+        "publication_date": {
+          "precision": "day",
+          "date": "2020-07-09"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_page",
+        "notes": "The official Accela record identifies Switch NAP7 at 7135 South Decatur Boulevard, describes an interior remodel to relocate an existing air handler, reports a $200,000 job value, names Switch RIG LLC as contractor, and shows closed-approved status. The job value is an administrative permit amount, not audited expenditure or local supplier payment."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_00172739953",
+      "source_id": "src_study_clark_switch_part70_tsd_2022_nap7",
+      "as_of": "2026-09-06",
+      "title": "Air permit isolates NAP7 equipment but not resource use",
+      "notes": "Clark County air-quality materials for Source 16304 were searched from the 2014 authority-to-construct history through the 2025 Part 70 revision. The 2022 support document's facility table directly supports 31 permitted NAP7 emergency generators and separately lists 21 cooling towers. Permit limits, equipment ratings and potential emissions cannot establish actual runtime, diesel use, emissions, electricity load, water withdrawals, wastewater, utility bills or environmental damages; those quantities remain gaps.",
+      "source": {
+        "source_id": "src_study_clark_switch_part70_tsd_2022_nap7",
+        "title": "Switch, Ltd. Part 70 Operating Permit Technical Support Document, Source 16304",
+        "url": "https://www.clarkcountynv.gov/assets/documents/government/departments/environment_and_sustainability/division_of_air_quality/permitting/16304-20220912-tsd.pdf",
+        "publisher": "Clark County Department of Environment and Sustainability, Division of Air Quality",
+        "source_type": "local_government_record",
+        "publication_date": {
+          "precision": "day",
+          "date": "2022-09-12"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_pdf_text",
+        "notes": "The technical support document treats NAP7 through NAP12 as six separate adjacent facilities and reports equipment by named NAP. Table III-C-2 lists 31 NAP7 emergency generators and 21 cooling towers. These are permitted units and potential-emissions inputs, not proof of runtime, fuel use, electricity use, water consumption, or actual emissions."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_00172739953",
+      "source_id": "src_study_goed_data_center_abatements_2025_switch_clark",
+      "as_of": "2026-09-06",
+      "title": "Incentive projections and audits remain wider than NAP7",
+      "notes": "Nevada GOED biennial reports for fiscal years 2016-2024 and state data-center abatement program pages were searched. GOED's Switch LTD #3 figures are source projections for a later Clark County expansion, not a NAP7 forecast; the audit rows combine multiple facilities and accounts. Contract labels do not establish physical NAP identity, so projected capital investment, jobs, wages and abatements and combined audit findings remain excluded from the NAP7 record set.",
+      "source": {
+        "source_id": "src_study_goed_data_center_abatements_2025_switch_clark",
+        "title": "Approved NRS 360.754 Data Center Tax Abatements, Fiscal Years 2016 through 2024",
+        "url": "https://goed.nv.gov/wp-content/uploads/2025/01/NRS-231.0685-GOED-Biennial-Report-2023-24.pdf",
+        "publisher": "Nevada Governor's Office of Economic Development",
+        "source_type": "state_record",
+        "publication_date": {
+          "precision": "day",
+          "date": "2025-01-15"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "pdf_text_and_page_image",
+        "notes": "The current report repeats the Switch LTD #3 Clark County expansion projections and company-level audit rows. The contract label is not a physical NAP identifier; the projection is a later company-county expansion scope and the audit findings combine multiple Switch contracts and facilities. Neither is attributed to NAP7."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_00172739953",
+      "source_id": "src_study_nevada_tax_expenditure_data_centers_2018",
+      "as_of": "2026-09-06",
+      "title": "Tax-expenditure and public-cost reports do not resolve NAP7",
+      "notes": "The Nevada Department of Taxation's 2017-18 through current tax-expenditure materials, Clark County and school-district financial reports, and state abatement disclosures were searched. State and local totals aggregate beneficiaries and do not identify NAP7, parcel 176-01-810-001 or a realized facility benefit. No facility-specific sales-tax or personal-property abatement, marginal public-service cost, infrastructure subsidy, jurisdictional receipt, or net fiscal result was found, so no public-cost or fiscal-net claim is created.",
+      "source": {
+        "source_id": "src_study_nevada_tax_expenditure_data_centers_2018",
+        "title": "Nevada Tax Expenditure Report 2017-18",
+        "url": "https://tax.nv.gov/wp-content/uploads/2024/03/FY-17-18-Tax-Expenditure-Report.pdf",
+        "publisher": "Nevada Department of Taxation",
+        "source_type": "state_record",
+        "publication_date": {
+          "precision": "year",
+          "year": 2018
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "pdf_text_and_page_image",
+        "notes": "The report describes the statutory data-center personal-property abatement and publishes statewide or multi-beneficiary totals. It does not name NAP7, parcel 176-01-810-001, or a facility-specific realized benefit."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_00172739953",
+      "source_id": "src_study_nevada_utility_portal_search_nap7_2026",
+      "as_of": "2026-09-06",
+      "title": "Utility and water searches produced no meter-level observation",
+      "notes": "PUCN dockets and filings, NV Energy tariffs and regulatory pages, Las Vegas Valley Water District board materials, Southern Nevada Water Authority plans, and Clark County water-related searches were reviewed for Switch, NAP7, parcel 176-01-810-001 and 7135 South Decatur over 2008-2026. Public results did not disclose a NAP7 meter, peak demand, electricity consumption, bill, interconnection cost, water allocation, withdrawal, consumption, discharge or wastewater charge. Company-wide renewable-energy statements and generic data-center water testimony were not assigned to this building.",
+      "source": {
+        "source_id": "src_study_nevada_utility_portal_search_nap7_2026",
+        "title": "Nevada utility and water public-record search access points",
+        "url": "https://puc.nv.gov/Dockets/Dockets/",
+        "publisher": "Public Utilities Commission of Nevada",
+        "source_type": "state_record",
+        "publication_date": {
+          "precision": "unknown"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_page",
+        "notes": "Search access point used with PUCN dockets, NV Energy rate and regulatory pages, Las Vegas Valley Water District board materials, and Southern Nevada Water Authority publications. Exact NAP7, parcel and 7135 South Decatur searches did not produce public meter, load, demand, consumption, discharge, bill or project-funded utility-infrastructure values."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_00172739953",
+      "source_id": "src_study_switch_las_vegas_careers_search_2026",
+      "as_of": "2026-09-06",
+      "title": "Workforce, procurement and operator searches preserve facility gaps",
+      "notes": "Switch SEC filings from 2017-2022, current and archived Las Vegas facility pages, career postings, ESG reports, press releases, and contractor or equipment-provider references were searched. SEC capital expenditure remains Core Campus-wide and later-period construction largely names LAS14-LAS16 rather than NAP7. Career pages list functions and openings but not filled NAP7 jobs, resident employment, wages or payroll. APC, Cox and fiber-provider references describe equipment or connectivity roles without contract values, payment dates, local purchasing shares or a defensible NAP7 supplier-spend total; Martin-Harris references concern NAP8 and are excluded.",
+      "source": {
+        "source_id": "src_study_switch_las_vegas_careers_search_2026",
+        "title": "Switch careers and Las Vegas openings",
+        "url": "https://www.switch.com/careers/",
+        "publisher": "Switch, Inc.",
+        "source_type": "operator_release",
+        "publication_date": {
+          "precision": "unknown"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_page",
+        "notes": "Current and archived operator career materials were reviewed for Las Vegas operating roles. They describe job functions and openings but do not report filled NAP7 headcount, resident employment, payroll, wages, or worker geography."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_00172739953",
+      "source_id": "src_study_unlv_switch_dark_fiber_gift_2016",
+      "as_of": "2026-09-06",
+      "title": "Recipient record supports one unallocated in-kind contribution",
+      "notes": "UNLV news, foundation and supercomputing materials from 2014-2018 and Switch community and ESG materials through 2026 were searched. UNLV directly values the three-pair dark-fiber gift at $3 million, but describes connectivity to the Switch SUPERNAP colocation environment without naming NAP7, so the claim remains company-county and unallocated. Other reviewed education, museum, FIRST, sports and workforce-development references lacked amounts, dates or facility attribution; a tower donation described only as benefiting local Nevada colleges was not assigned to Clark County or NAP7.",
+      "source": {
+        "source_id": "src_study_unlv_switch_dark_fiber_gift_2016",
+        "title": "Powering Progress",
+        "url": "https://www.unlv.edu/news/article/powering-progress",
+        "publisher": "University of Nevada, Las Vegas",
+        "source_type": "other",
+        "publication_date": {
+          "precision": "day",
+          "date": "2016-03-15"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_page",
+        "notes": "The recipient reports that Switch provided a $3 million gift comprising three pairs of dark fiber to connect UNLV supercomputing resources with resources at the Switch SUPERNAP colocation data center. The recipient does not identify NAP7, a cash transfer date, an annual schedule, or a facility allocation."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_00172739953",
+      "source_id": "src_study_clark_financial_reports_search_nap7_2026",
+      "as_of": "2026-09-06",
+      "title": "County planning and financial searches leave public-service effects unobserved",
+      "notes": "Clark County commission and Enterprise Town Advisory Board agendas, planning applications, public-works pages, annual budgets, annual comprehensive financial reports and capital plans were searched for NAP7, the parcel and exact address across 2005-2026. Results primarily concern later NAP facilities or corridor-wide works and do not quantify an NAP7-specific county expenditure, developer-funded infrastructure amount, fire or police service demand, school effect, tax distribution or service-cost offset. Later NAP17-NAP18 planning cases and broader Decatur corridor projects remain outside the selected building boundary.",
+      "source": {
+        "source_id": "src_study_clark_financial_reports_search_nap7_2026",
+        "title": "Clark County annual comprehensive financial reports",
+        "url": "https://www.clarkcountynv.gov/government/departments/finance/comptroller/comprehensive_annual_financial_report.php",
+        "publisher": "Clark County Department of Finance",
+        "source_type": "local_government_record",
+        "publication_date": {
+          "precision": "unknown"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_page",
+        "notes": "County budget, annual financial report, capital-improvement and public-works access points were searched for NAP7, Switch, parcel 176-01-810-001 and 7135 South Decatur. No project-attributable operating cost, infrastructure contribution, tax distribution, service demand or net fiscal result was located."
+      }
     }
   ],
   "evidence_gaps": [
@@ -149,7 +355,7 @@
     {
       "code": "construction",
       "label": "Construction jobs and payroll",
-      "status": "not_yet_collected",
+      "status": "partial",
       "needed": "Workers, job-years, payroll, duration, and local participation."
     },
     {
@@ -161,7 +367,7 @@
     {
       "code": "operations",
       "label": "Permanent jobs and compensation",
-      "status": "not_yet_collected",
+      "status": "partial",
       "needed": "Realized direct and contractor employment, wages, and operating purchases."
     },
     {
@@ -179,13 +385,13 @@
     {
       "code": "resources",
       "label": "Electricity, water, and cooling",
-      "status": "not_yet_collected",
+      "status": "partial",
       "needed": "Measured use, source, cooling design, and attributable system costs."
     },
     {
       "code": "community",
       "label": "Community institutions and direct funding",
-      "status": "not_yet_collected",
+      "status": "partial",
       "needed": "Annual grants, recipients, program purposes, realized spending, and overlap with other transfers."
     }
   ],
@@ -485,6 +691,183 @@
       "unit": "USD",
       "measure_type": "flow",
       "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_switch_nap7_floor_area_2014",
+      "project_id": "prj_study_im3_building_00172739953",
+      "metric_code": "study.operating_property_floor_area",
+      "value": 400000,
+      "value_qualifier": "at_least",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "source_year",
+        "year": 2014,
+        "label": "Facility description published February 11, 2014"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Original SUPERNAP, identified by Switch as SUPERNAP 7, 7135 South Decatur Boulevard",
+        "county_fips": "32003",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_switch_nap7_operator_history_2014",
+      "source_locator": "Opening description and First Tier IV Colocation Facility section",
+      "notes": "Switch reports the original SUPERNAP at more than 400,000 square feet and distinguishes it from the adjacent 300,000-square-foot SUPERNAP 8. The lower-bound building area is an operating-scale stock, not occupied customer space, construction spending, power capacity, or a campus total.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Reported operating property floor area",
+      "category": "operations",
+      "unit": "square_feet",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_switch_nap7_permitted_generators_2022",
+      "project_id": "prj_study_im3_building_00172739953",
+      "metric_code": "study.permitted_emergency_generator_count",
+      "value": 31,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "reported_snapshot",
+        "report_date": "2022-09-12",
+        "label": "Equipment listed in September 12, 2022 permit support document"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Switch NAP7 facility, 7135 South Decatur Boulevard",
+        "county_fips": "32003",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_clark_switch_part70_tsd_2022_nap7",
+      "pdf_page": 8,
+      "printed_page": "8",
+      "source_locator": "Table III-C-2, Source PTE Summary, NAP 7",
+      "notes": "The air-permit support document lists 31 NAP7 emergency generators rated at 3,353 horsepower each. This is a permitted equipment count; it is not runtime, fuel consumption, electricity demand, actual emissions, construction spending, or tenant equipment value.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Permit-listed diesel emergency generators",
+      "category": "resources",
+      "unit": "generators",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_switch_nap7_permit_bd20_28271",
+      "project_id": "prj_study_im3_building_00172739953",
+      "metric_code": "study.permitted_construction_value",
+      "value": 200000,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "calendar_year",
+        "year": 2020,
+        "label": "Permit BD20-28271 dated July 9, 2020"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Switch NAP7 interior air-handler relocation, 7135 South Decatur Boulevard",
+        "county_fips": "32003",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_clark_accela_nap7_bd20_28271",
+      "source_locator": "Record Info, Work Location, Description, Contract Valuation and Status",
+      "notes": "The portal's $200,000 job value is an administrative amount for an interior remodel, not audited outlay, original facility construction, local procurement, payroll, or a value to add to wider Core Campus capital expenditure. Smaller trade subpermits and a void air-handler record are not summed with it.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Reported permit construction value",
+      "category": "construction",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_switch_nap7_property_taxes_billed_2027",
+      "project_id": "prj_study_im3_building_00172739953",
+      "metric_code": "study.property_taxes_billed",
+      "value": 912973.28,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2027,
+        "label": "Clark County tax year 2027 / fiscal year 2026-27"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "NV LAS NAP 7 LLC real-property parcel 176-01-810-001, 7135 South Decatur Boulevard",
+        "county_fips": "32003",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_clark_treasurer_nap7_fy2027",
+      "source_locator": "Property Account Inquiry, TAXES AS ASSESSED and NET TAXES",
+      "notes": "The Treasurer reports taxes as assessed and net taxes of $912,973.28 with no cap reduction for this real-property account. This is a bill, not full-year payment, taxing-jurisdiction receipts, personal-property tax, incentive savings, or net community benefit.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "annual_series_key": "switch_nap7_real_property_taxes_billed",
+      "label": "Account property taxes billed",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_switch_nap7_property_taxes_paid_partial_2027",
+      "project_id": "prj_study_im3_building_00172739953",
+      "metric_code": "study.property_taxes_paid",
+      "value": 228624.01,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2027,
+        "label": "Clark County tax year 2027 payments through September 6, 2026"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "NV LAS NAP 7 LLC real-property parcel 176-01-810-001, 7135 South Decatur Boulevard",
+        "county_fips": "32003",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_clark_treasurer_nap7_fy2027",
+      "source_locator": "Property Account Inquiry, LAST PAYMENT and FISCAL TAX YEAR PAYMENTS",
+      "notes": "The inquiry reports a $228,624.01 payment dated August 14, 2026 and the same fiscal-tax-year payments total as of review. It is a partial-year payment, not a final annual total or proof of distribution to individual jurisdictions; the remaining installments must not be inferred as paid.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Account property taxes paid",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_switch_unlv_dark_fiber_gift_2016",
+      "project_id": "prj_study_im3_building_00172739953",
+      "metric_code": "study.direct_community_contribution",
+      "value": 3000000,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "reported_snapshot",
+        "report_date": "2016-03-15",
+        "label": "Gift reported by UNLV on March 15, 2016"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Switch in-kind dark-fiber contribution reported by the University of Nevada, Las Vegas",
+        "county_fips": "32003",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_unlv_switch_dark_fiber_gift_2016",
+      "source_locator": "Fostering Economic Diversification Efforts",
+      "notes": "UNLV values three pairs of dark fiber provided by Switch at $3 million. This recipient-reported in-kind contribution is not cash, an annual recurring amount, a campus operating budget, or attributable to NAP7 rather than the wider SUPERNAP colocation environment.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Direct community contribution",
+      "category": "community",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
     }
   ],
   "economic_sources": [
@@ -584,13 +967,82 @@
       "retrieved_on": "2026-09-03",
       "review_method": "web_page",
       "notes": "SEC-filed exhibit, Capital Expenditures and Development. The reported Core Campus amount concerns LAS VEGAS 15 construction and LAS VEGAS 14 and 16 site preparation, not NAP7-specific spending."
+    },
+    {
+      "source_id": "src_study_switch_nap7_operator_history_2014",
+      "title": "Inside SUPERNAP 8: Switch's Tier IV Data Fortress",
+      "url": "https://www.switch.com/inside-supernap-8-switchs-tier-iv-data-fortress/",
+      "publisher": "Switch, Inc.",
+      "source_type": "operator_release",
+      "publication_date": {
+        "precision": "day",
+        "date": "2014-02-11"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_page",
+      "notes": "Operator-hosted copy of a Data Center Knowledge feature. It distinguishes the original SUPERNAP, now SUPERNAP 7, from the adjacent SUPERNAP 8; dates the original facility's debut to 2009; and reports it at more than 400,000 square feet. Campus employment, construction-worker and customer counts on the same page are not facility-specific and are not normalized."
+    },
+    {
+      "source_id": "src_study_clark_switch_part70_tsd_2022_nap7",
+      "title": "Switch, Ltd. Part 70 Operating Permit Technical Support Document, Source 16304",
+      "url": "https://www.clarkcountynv.gov/assets/documents/government/departments/environment_and_sustainability/division_of_air_quality/permitting/16304-20220912-tsd.pdf",
+      "publisher": "Clark County Department of Environment and Sustainability, Division of Air Quality",
+      "source_type": "local_government_record",
+      "publication_date": {
+        "precision": "day",
+        "date": "2022-09-12"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_pdf_text",
+      "notes": "The technical support document treats NAP7 through NAP12 as six separate adjacent facilities and reports equipment by named NAP. Table III-C-2 lists 31 NAP7 emergency generators and 21 cooling towers. These are permitted units and potential-emissions inputs, not proof of runtime, fuel use, electricity use, water consumption, or actual emissions."
+    },
+    {
+      "source_id": "src_study_clark_accela_nap7_bd20_28271",
+      "title": "Clark County Building record BD20-28271, Switch NAP7 interior remodel",
+      "url": "https://aca-prod.accela.com/CLARKCO/Cap/CapDetail.aspx?Module=Building&TabName=Building&capID1=REC20&capID2=00000&capID3=01DYG&agencyCode=CLARKCO",
+      "publisher": "Clark County Department of Building and Fire Prevention",
+      "source_type": "local_government_record",
+      "publication_date": {
+        "precision": "day",
+        "date": "2020-07-09"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_page",
+      "notes": "The official Accela record identifies Switch NAP7 at 7135 South Decatur Boulevard, describes an interior remodel to relocate an existing air handler, reports a $200,000 job value, names Switch RIG LLC as contractor, and shows closed-approved status. The job value is an administrative permit amount, not audited expenditure or local supplier payment."
+    },
+    {
+      "source_id": "src_study_clark_treasurer_nap7_fy2027",
+      "title": "Clark County Treasurer Property Account Inquiry, parcel 176-01-810-001",
+      "url": "https://trweb.co.clark.nv.us/WEP_summary.asp?Parcel=176-01-810-001",
+      "publisher": "Clark County Treasurer",
+      "source_type": "local_government_record",
+      "publication_date": {
+        "precision": "unknown"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_page",
+      "notes": "Interactive parcel inquiry for tax year 2027, district 635. The account displays $912,973.28 taxes as assessed, no cap reduction, a $228,624.01 last payment dated August 14, 2026, fiscal-tax-year payments of the same amount, and an unpaid remaining balance. Calendar-year payment rollups are not normalized because they cross tax years."
+    },
+    {
+      "source_id": "src_study_unlv_switch_dark_fiber_gift_2016",
+      "title": "Powering Progress",
+      "url": "https://www.unlv.edu/news/article/powering-progress",
+      "publisher": "University of Nevada, Las Vegas",
+      "source_type": "other",
+      "publication_date": {
+        "precision": "day",
+        "date": "2016-03-15"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_page",
+      "notes": "The recipient reports that Switch provided a $3 million gift comprising three pairs of dark fiber to connect UNLV supercomputing resources with resources at the Switch SUPERNAP colocation data center. The recipient does not identify NAP7, a cash transfer date, an annual schedule, or a facility allocation."
     }
   ],
-  "economic_scope_note": "Reviewed evidence batches at campus or company/county scope. No record is allocated to an individual inventory building. Source checking establishes what a document reports, not an independent audit or causal attribution. Monetary figures are nominal. Peak workforce is distinct from annual employment; source-year labels do not establish fiscal-year boundaries. Original forecasts remain forecasts until realization is verified. No cross-record benefit total is defined. Cumulative project costs are not annual expenditure. Tax receipts and incentive payments remain separate, with inferred taxpayer links disclosed. Contextual research updates do not count as economic amounts. Account tax bills are distinct from cash receipts and incentive-program fees. Tax years, calendar years and fiscal years retain their source basis; separate taxpayer accounts are not consolidated. Municipal developer rebates and taxpayer valuations have distinct subjects. Estimated actual property value and tax capacity are not tax receipts; payable-year valuations retain their earlier assessment date. Taxpayer values expressed in millions retain approximate precision and account-level separation. A current-year table can use an older valuation date and is not converted into an annual series. Facility real-property and business-personal-property accounts remain separate, and address-label discrepancies are disclosed. Michigan Industrial Facilities Tax accounts remain distinct from the underlying real parcel and from post-expiration personal-property accounts; annual account totals are not recipient-level government receipts. Permit construction values are administrative project amounts, not verified expenditure, and separate permits are not combined without proof that their scopes do not overlap. Repeated maintenance-year assessments are annual parcel stocks, not new investment flows. Mixed-use parcel assessments and taxable values are retained at whole-parcel scope and are not allocated to a data-center tenant or function by floor area. Operator-reported jobs supported remain distinct from direct employees and FTEs. Approved infrastructure grants are documented public commitments rather than verified disbursements or total public costs. Cumulative community funding remains separate from tax receipts, payroll and modeled multiplier effects. Reported facility power capacity is not measured electricity consumption or peak demand. Permit-listed emergency generators are not runtime, fuel-use or actual-emissions observations. A city largest-taxpayer table's personal-property assessment remains separate from the leasehold real-property account, tax bills, receipts and capital expenditure. TIF loan principal is financing rather than a grant or general-fund receipt; project-generated tax revenue pledged to repayment is retained as a separate public-financing flow and is not added to gross parcel distributions. Water-withdrawal and consumptive permit capacities are regulatory limits rather than measured use. Development-agreement local-labor preferences are requirements rather than realized participation, and operating employee snapshots remain distinct from customers' on-site staff and jobs forecasts. Audited City bond statements distinguish issuance draws, year-end principal, annual principal retired, interest and fees, pledged TIF revenue, debt-service-fund transfers and future principal-plus-interest commitments. These measures are not summed into a benefit or subsidy total. City pledged revenue, City debt-service-fund transfers and the private fund's project TIF revenue applied to loan repayment retain their separate source definitions because only the 2022 transfer and private-fund amount agree exactly. Developer testimony in public meeting minutes is retained as a source-attributed cumulative lower bound; local-contractor spending is not converted into payroll, worker counts, household spending or multiplier effects. Economic-improvement-district cost estimates and maximum owner assessments remain source projections until bond issuance, an assessment schedule, collections and expenditures are verified. A statutory financing cap is not a tax receipt, public expenditure or subsidy. Audited private equipment-financing balances are debt stocks rather than construction spending, public support or community benefit. Reported floor area and occupied-share values describe operating scale and utilization, not employment, revenue, power use or economic output. Contractor and engineer case studies document supplier roles and completion timing but do not establish payment amounts, worker residence, payroll or multiplier effects. State incentive contract amounts, expected jobs and paid-or-certified-to-date fields remain distinct; a zero paid/certified balance at an earlier reporting cutoff does not imply no later claims. Public charging-infrastructure awards are commitments rather than verified disbursements, private project investment or operating benefits. Qualitative payment descriptions without a defensible numeric bound remain research context rather than quantitative records. Program-reported actual qualified investment, certified tax-exemption value and certified tax-credit value remain separate cumulative measures; none is converted into annual spending, a cash grant, local revenue or causal impact. County Business Patterns observations are county-industry context, not project contributions: establishment counts are employer locations rather than data-center facilities, March employment is not an annual average, annual payroll spans the full NAICS cell, and disclosure noise, classification changes and geographic assignment limit comparisons. No CBP change is attributed to a study project. Project fragments: prj_study_im3_building_00364289074: Corrective public-source audit for Microsoft's data-center property at 5150 Rogers Road and explicitly labeled wider Microsoft/Bexar County activity. Exact-site ordinance, permit, appraisal, and tax-account records remain separate from later campuses and regional disclosures; the three appraisal accounts and two taxable-account payments are not consolidated. Permit value is administrative, the original investment and employment figures are commitments, the 2013 employment threshold is a reported lower bound, and the water quantity is a projection rather than metered consumption. No Bexar-and-Medina total is allocated to this property. Annual construction expenditure, construction labor and residence, supplier payments, operating payroll and purchases, recipient-level tax distributions, marginal public-service cost, electricity consumption, water withdrawal or consumption, wastewater, actual emissions, and a recurring facility-level community series remain unobserved after the documented searches. prj_study_im3_building_00377585075: Corrective DET01 evidence audit. Official parcel, permit, tax, water-account, state-certificate, EPA and operator records are retained as direct observations or clearly labeled source forecasts. Conflicting floor-area figures remain separate because their reporting definitions differ. Construction cost, realized jobs, supplier payments, community funding, electricity, emissions, wastewater, actual public-service cost and causal county effects remain unbounded rather than being filled with transferred assumptions. prj_study_im3_building_00460089167: Corrective primary-source audit adds current Andale parcel assessment, contractor-reported campus floor area, and two recipient- or government-reported Meta community grants. The search trail records useful and negative results across identity, tax, construction, jobs, suppliers, utilities, water, permits, public costs, incentives, community funding, and county comparison inputs. Campus-wide facts remain unallocated to the selected inventory building, overlapping community amounts are not added together, and unavailable supplier, payroll, utility-billing, discharge, generator, and marginal-service-cost amounts remain explicit gaps. prj_study_im3_building_00464097467: Second-pass public-evidence audit for Apple's Washoe County data-center campus at 21505 Reno Technology Parkway West and its 2024 expansion application. GOED audit findings, application forecasts, county permit values, parcel assessments, a water-right allocation, operator-reported electricity use, and recipient-reported donation bands remain separate evidence states and scopes. Permit values are administrative amounts and are not summed because overlapping scopes cannot be ruled out. Assessment values are parcel stocks, not investment or tax receipts. The 125 acre-foot water right is regulatory capacity, not measured use. Food Bank gifts are company-region transfers, not campus-attributable annual spending. No campus total is allocated to the selected mapped building; the four-building campus, later buildout cases, downtown Reno warehouse, supporting renewable projects, fire-station parcel, and more-than-200-person support statement are not collapsed into one footprint. No Switch Citadel or Storey County amount enters this fragment. Vendor payments, worker residence, taxes received by jurisdiction, realized 2024 abatement, same-scope public-service cost, wastewater, and building-level electricity or water remain unobserved. prj_study_im3_building_00664938835: Second-pass public-evidence audit for Expedient's adaptive reuse of the pre-existing data-center building at 4777 W Ironwood Drive. The review searched Franklin planning, agenda, assessment, permit, water and sewer materials; Milwaukee County tax and deed-record access points; Wisconsin DOR, WEDC, DFI and PSC records; operator press, specification, career, ESG and community pages; lease, financing, carrier and vendor disclosures; and archived official pages for 2007-2026. Opening-day and current operator specifications remain separate dated snapshots because the reported area and capacity changed. The county portal now establishes a 2021-2025 parcel-tax principal series, but not Expedient's incidence under the lease. The 2022 ownership transfer, assessments, estimated permit values, tax payments and hiring plan remain non-additive. No source was found for actual construction outlays, realized site employment or payroll, local procurement, Milwaukee-area community transfers, metered resources, project-attributable public costs or a fiscal net. prj_study_im3_building_00888253616: Second-pass public-evidence audit for NTT Silicon Valley SV1 at 1160 Walsh Avenue, Santa Clara. The review reconciles the planning-era 1150 Walsh address to APN 224-58-003; adds the finaled principal permit, its administrative job value, current operator specifications, emergency-generator authorization and the parcel's regular-bill payment history; and leaves supplemental bills separate to avoid double counting. Public sources still do not establish realized site employment or payroll, total project investment, supplier payments, project-specific community transfers, metered resources, or project-attributable public-service costs. prj_study_im3_building_01024051963: Corrective source audit for the Meta Eagle Mountain campus and the selected IM3 building footprint in Utah County. Campus, company-county, and supporting-infrastructure observations remain explicitly unallocated to the selected building; later expansion areas and unrelated Eagle Mountain data-center developers are excluded unless a source establishes continuity. prj_study_im3_building_01073720208: Second-pass public-evidence audit for Google's Council Bluffs data-center activity, retaining the selected inventory building as the project key while leaving campus, taxpayer-account, company-county, and state-award facts at their reported scopes. The audit distinguishes completed IEDA contracts 08-HQJC-030 and 12-HQJP-051 from the 2022 award still in performance; permit valuations remain administrative amounts rather than expenditure; assessed and taxable values remain stocks; bills remain distinct from payments; and community grants remain recipient- and period-specific. The Pottawattamie County tax portal now supplies a paid 2018-2024 series for the principal Tetra parcel and an unpaid 2025 bill for the newer Questa parcel. No value is inferred for sales-tax exemptions, the local abatement schedule, franchise-fee adjustment, electricity, supplier retention, building-level water, marginal public-service cost, or net fiscal position. Models without defensible project allocation or transferable parameters were removed even though that leaves the eight-category account incomplete. prj_study_im3_building_01132541700: Corrective primary-source audit adds two county taxable-account observations, state-verified incentive-compliance thresholds, current operator-reported jobs and community funding, one county-received grant, facility electricity use, supporting renewable capacity, and the 2018 expansion forecast. The search trail covers identity, land use, permits, assessor and fiscal records, incentives, public costs, utilities, water, suppliers, courts, bonds, community funding, and federal county outcomes. Most public evidence covers the multi-building Henrico campus or Scout Development's county account and remains unallocated to the selected inventory building; overlapping funding and investment figures are not summed, and unavailable supplier payments, utility bills, tax receipts, incentive costs, payroll, and marginal public-service costs remain explicit gaps.",
+  "economic_scope_note": "Reviewed evidence batches at campus or company/county scope. No record is allocated to an individual inventory building. Source checking establishes what a document reports, not an independent audit or causal attribution. Monetary figures are nominal. Peak workforce is distinct from annual employment; source-year labels do not establish fiscal-year boundaries. Original forecasts remain forecasts until realization is verified. No cross-record benefit total is defined. Cumulative project costs are not annual expenditure. Tax receipts and incentive payments remain separate, with inferred taxpayer links disclosed. Contextual research updates do not count as economic amounts. Account tax bills are distinct from cash receipts and incentive-program fees. Tax years, calendar years and fiscal years retain their source basis; separate taxpayer accounts are not consolidated. Municipal developer rebates and taxpayer valuations have distinct subjects. Estimated actual property value and tax capacity are not tax receipts; payable-year valuations retain their earlier assessment date. Taxpayer values expressed in millions retain approximate precision and account-level separation. A current-year table can use an older valuation date and is not converted into an annual series. Facility real-property and business-personal-property accounts remain separate, and address-label discrepancies are disclosed. Michigan Industrial Facilities Tax accounts remain distinct from the underlying real parcel and from post-expiration personal-property accounts; annual account totals are not recipient-level government receipts. Permit construction values are administrative project amounts, not verified expenditure, and separate permits are not combined without proof that their scopes do not overlap. Repeated maintenance-year assessments are annual parcel stocks, not new investment flows. Mixed-use parcel assessments and taxable values are retained at whole-parcel scope and are not allocated to a data-center tenant or function by floor area. Operator-reported jobs supported remain distinct from direct employees and FTEs. Approved infrastructure grants are documented public commitments rather than verified disbursements or total public costs. Cumulative community funding remains separate from tax receipts, payroll and modeled multiplier effects. Reported facility power capacity is not measured electricity consumption or peak demand. Permit-listed emergency generators are not runtime, fuel-use or actual-emissions observations. A city largest-taxpayer table's personal-property assessment remains separate from the leasehold real-property account, tax bills, receipts and capital expenditure. TIF loan principal is financing rather than a grant or general-fund receipt; project-generated tax revenue pledged to repayment is retained as a separate public-financing flow and is not added to gross parcel distributions. Water-withdrawal and consumptive permit capacities are regulatory limits rather than measured use. Development-agreement local-labor preferences are requirements rather than realized participation, and operating employee snapshots remain distinct from customers' on-site staff and jobs forecasts. Audited City bond statements distinguish issuance draws, year-end principal, annual principal retired, interest and fees, pledged TIF revenue, debt-service-fund transfers and future principal-plus-interest commitments. These measures are not summed into a benefit or subsidy total. City pledged revenue, City debt-service-fund transfers and the private fund's project TIF revenue applied to loan repayment retain their separate source definitions because only the 2022 transfer and private-fund amount agree exactly. Developer testimony in public meeting minutes is retained as a source-attributed cumulative lower bound; local-contractor spending is not converted into payroll, worker counts, household spending or multiplier effects. Economic-improvement-district cost estimates and maximum owner assessments remain source projections until bond issuance, an assessment schedule, collections and expenditures are verified. A statutory financing cap is not a tax receipt, public expenditure or subsidy. Audited private equipment-financing balances are debt stocks rather than construction spending, public support or community benefit. Reported floor area and occupied-share values describe operating scale and utilization, not employment, revenue, power use or economic output. Contractor and engineer case studies document supplier roles and completion timing but do not establish payment amounts, worker residence, payroll or multiplier effects. State incentive contract amounts, expected jobs and paid-or-certified-to-date fields remain distinct; a zero paid/certified balance at an earlier reporting cutoff does not imply no later claims. Public charging-infrastructure awards are commitments rather than verified disbursements, private project investment or operating benefits. Qualitative payment descriptions without a defensible numeric bound remain research context rather than quantitative records. Program-reported actual qualified investment, certified tax-exemption value and certified tax-credit value remain separate cumulative measures; none is converted into annual spending, a cash grant, local revenue or causal impact. County Business Patterns observations are county-industry context, not project contributions: establishment counts are employer locations rather than data-center facilities, March employment is not an annual average, annual payroll spans the full NAICS cell, and disclosure noise, classification changes and geographic assignment limit comparisons. No CBP change is attributed to a study project. Project fragments: prj_study_im3_building_00172739953: Second-pass public-evidence audit for Switch Las Vegas NAP7, the individual real-property parcel and original SUPERNAP building at 7135 South Decatur Boulevard. The review covered Clark County assessor, Treasurer, Accela permit, planning, air-quality, budget and financial-report access points; Nevada GOED, Department of Taxation and utility-regulatory sources; Switch operator, SEC, career and ESG materials; supplier and contractor references; and recipient-reported community records for 2005-2026. Six direct observations are added without allocating wider Core Campus capital expenditure, combined incentive audits, later facilities or expansions, personal property, tenant equipment, vendor equipment, or company-wide employment to NAP7. The Treasurer record corrects the earlier research note that payment records were uncollected, but the current payment is only a partial fiscal-year amount. No synthesis fragment is added: NAP4 was already operating while NAP7 was under construction in 2008, and the available county panel cannot isolate a NAP7 treatment from earlier facilities, later Core Campus growth, or major non-data-center shocks. NAP7 employment, payroll, local supplier payments, metered electricity and water, personal-property tax, realized abatement, jurisdictional tax receipts, project-attributable public costs, and a net fiscal result remain unobserved. prj_study_im3_building_00364289074: Corrective public-source audit for Microsoft's data-center property at 5150 Rogers Road and explicitly labeled wider Microsoft/Bexar County activity. Exact-site ordinance, permit, appraisal, and tax-account records remain separate from later campuses and regional disclosures; the three appraisal accounts and two taxable-account payments are not consolidated. Permit value is administrative, the original investment and employment figures are commitments, the 2013 employment threshold is a reported lower bound, and the water quantity is a projection rather than metered consumption. No Bexar-and-Medina total is allocated to this property. Annual construction expenditure, construction labor and residence, supplier payments, operating payroll and purchases, recipient-level tax distributions, marginal public-service cost, electricity consumption, water withdrawal or consumption, wastewater, actual emissions, and a recurring facility-level community series remain unobserved after the documented searches. prj_study_im3_building_00377585075: Corrective DET01 evidence audit. Official parcel, permit, tax, water-account, state-certificate, EPA and operator records are retained as direct observations or clearly labeled source forecasts. Conflicting floor-area figures remain separate because their reporting definitions differ. Construction cost, realized jobs, supplier payments, community funding, electricity, emissions, wastewater, actual public-service cost and causal county effects remain unbounded rather than being filled with transferred assumptions. prj_study_im3_building_00460089167: Corrective primary-source audit adds current Andale parcel assessment, contractor-reported campus floor area, and two recipient- or government-reported Meta community grants. The search trail records useful and negative results across identity, tax, construction, jobs, suppliers, utilities, water, permits, public costs, incentives, community funding, and county comparison inputs. Campus-wide facts remain unallocated to the selected inventory building, overlapping community amounts are not added together, and unavailable supplier, payroll, utility-billing, discharge, generator, and marginal-service-cost amounts remain explicit gaps. prj_study_im3_building_00464097467: Second-pass public-evidence audit for Apple's Washoe County data-center campus at 21505 Reno Technology Parkway West and its 2024 expansion application. GOED audit findings, application forecasts, county permit values, parcel assessments, a water-right allocation, operator-reported electricity use, and recipient-reported donation bands remain separate evidence states and scopes. Permit values are administrative amounts and are not summed because overlapping scopes cannot be ruled out. Assessment values are parcel stocks, not investment or tax receipts. The 125 acre-foot water right is regulatory capacity, not measured use. Food Bank gifts are company-region transfers, not campus-attributable annual spending. No campus total is allocated to the selected mapped building; the four-building campus, later buildout cases, downtown Reno warehouse, supporting renewable projects, fire-station parcel, and more-than-200-person support statement are not collapsed into one footprint. No Switch Citadel or Storey County amount enters this fragment. Vendor payments, worker residence, taxes received by jurisdiction, realized 2024 abatement, same-scope public-service cost, wastewater, and building-level electricity or water remain unobserved. prj_study_im3_building_00598261190: Second-pass public-evidence audit for the State Farm data center at 24400 West Valley Parkway in Olathe, Kansas. The account adds two official City permit values and SEC-reported property area, occupancy and critical-IT-load snapshots while keeping permit values, estimated cumulative capital spending, parcel assessments, tax bills and tax payments as distinct measures. The search trail covers parcel and fiscal records, construction and suppliers, operations and workforce, incentives, utility and environmental regulation, community activity, planning, public costs and county outcomes. No site-level employment, payroll, supplier payment, community transfer, metered electricity or water, incentive amount, marginal public-service cost, net fiscal position or attributable county effect is inferred from public material. prj_study_im3_building_00664938835: Second-pass public-evidence audit for Expedient's adaptive reuse of the pre-existing data-center building at 4777 W Ironwood Drive. The review searched Franklin planning, agenda, assessment, permit, water and sewer materials; Milwaukee County tax and deed-record access points; Wisconsin DOR, WEDC, DFI and PSC records; operator press, specification, career, ESG and community pages; lease, financing, carrier and vendor disclosures; and archived official pages for 2007-2026. Opening-day and current operator specifications remain separate dated snapshots because the reported area and capacity changed. The county portal now establishes a 2021-2025 parcel-tax principal series, but not Expedient's incidence under the lease. The 2022 ownership transfer, assessments, estimated permit values, tax payments and hiring plan remain non-additive. No source was found for actual construction outlays, realized site employment or payroll, local procurement, Milwaukee-area community transfers, metered resources, project-attributable public costs or a fiscal net. prj_study_im3_building_00888253616: Second-pass public-evidence audit for NTT Silicon Valley SV1 at 1160 Walsh Avenue, Santa Clara. The review reconciles the planning-era 1150 Walsh address to APN 224-58-003; adds the finaled principal permit, its administrative job value, current operator specifications, emergency-generator authorization and the parcel's regular-bill payment history; and leaves supplemental bills separate to avoid double counting. Public sources still do not establish realized site employment or payroll, total project investment, supplier payments, project-specific community transfers, metered resources, or project-attributable public-service costs. prj_study_im3_building_01024051963: Corrective source audit for the Meta Eagle Mountain campus and the selected IM3 building footprint in Utah County. Campus, company-county, and supporting-infrastructure observations remain explicitly unallocated to the selected building; later expansion areas and unrelated Eagle Mountain data-center developers are excluded unless a source establishes continuity. prj_study_im3_building_01073720208: Second-pass public-evidence audit for Google's Council Bluffs data-center activity, retaining the selected inventory building as the project key while leaving campus, taxpayer-account, company-county, and state-award facts at their reported scopes. The audit distinguishes completed IEDA contracts 08-HQJC-030 and 12-HQJP-051 from the 2022 award still in performance; permit valuations remain administrative amounts rather than expenditure; assessed and taxable values remain stocks; bills remain distinct from payments; and community grants remain recipient- and period-specific. The Pottawattamie County tax portal now supplies a paid 2018-2024 series for the principal Tetra parcel and an unpaid 2025 bill for the newer Questa parcel. No value is inferred for sales-tax exemptions, the local abatement schedule, franchise-fee adjustment, electricity, supplier retention, building-level water, marginal public-service cost, or net fiscal position. Models without defensible project allocation or transferable parameters were removed even though that leaves the eight-category account incomplete. prj_study_im3_building_01132541700: Corrective primary-source audit adds two county taxable-account observations, state-verified incentive-compliance thresholds, current operator-reported jobs and community funding, one county-received grant, facility electricity use, supporting renewable capacity, and the 2018 expansion forecast. The search trail covers identity, land use, permits, assessor and fiscal records, incentives, public costs, utilities, water, suppliers, courts, bonds, community funding, and federal county outcomes. Most public evidence covers the multi-building Henrico campus or Scout Development's county account and remains unallocated to the selected inventory building; overlapping funding and investment figures are not summed, and unavailable supplier payments, utility bills, tax receipts, incentive costs, payroll, and marginal public-service costs remain explicit gaps. prj_study_im3_campus_00231769626: Second-pass public-evidence audit for Google's The Dalles campus in Wasco County. The fragment preserves the baseline 2023-2025 Google LLC and Design LLC tax-bill and assessed-value series and the documented $28.5 million water-infrastructure project, and adds only incremental evidence. Business Oregon supplies a dated three-facility operating snapshot and separately bounded Project 1 and Project 2 SIP forecasts; City of The Dalles planning files and contractor/permit records document later River Road construction without treating permit valuations as spending. A recipient record verifies one local grant. Searches of assessor and treasurer records, budgets and agreements, planning and permit systems, utility and environmental records, operator ESG/careers materials, contractors, suppliers, workforce sources, nonprofit recipients, archives and structured portals found no audited construction outlay, local supplier spend, facility payroll, employee residence, project-attributable utility cost or load, realized abatement ledger, same-scope public service cost, or fiscal net. Statewide Google totals and system-wide utility loads are excluded from campus claims.",
   "evidence_version": "study-economic-evidence-1.37.0",
   "modeled_syntheses": [],
   "modeled_sources": [],
-  "modeled_scope_note": "Modeled contribution accounts for Apple Mesa / Maricopa County, Switch Citadel / Storey County, and Digital Crossroad Hammond / Lake County. Every required account category and county-comparison module contains sourced evidence or a visibly labeled modeled value. Public support is not netted against unmatched local revenues, unavailable public-service cost is represented by a break-even threshold rather than an invented net margin, county comparisons are descriptive rather than causal, and low-confidence transferred benchmarks remain explicit. Project fragments: prj_study_im3_building_00364289074: Corrective residual modeled account for Microsoft San Antonio. Eight transferred construction, labor, procurement, operating, and household-output scenarios were removed because their arbitrary capital shares, forecast-realization cases, local-purchase assumptions, and Virginia coefficients were not bounded by project observations. Only three low-confidence descriptive county comparisons remain: each uses the project's documented operating-by 2013 anchor and official Bexar County outcome data, has a finite fit-sensitivity envelope, and explicitly makes no causal attribution. The account intentionally remains incomplete because no defensible direct observation or residual model closes the supplier category. prj_study_im3_building_00377585075: Corrective DET01 synthesis. Only exact same-period tax-account arithmetic, its explicitly conditional public-cost break-even identity and a unit conversion of displayed municipal meter history remain. Construction, employment, supplier, household, electricity, cooling, emissions, wastewater and county-effect models were removed because the audit did not bound the missing project inputs. This account is intentionally incomplete where direct evidence remains unbounded. prj_study_im3_building_00460089167: Corrective audit retains six bounded residual calculations only: FY2025 county tax retained after the provisionally linked incentive, the identical marginal-service-cost break-even threshold, conversion of Meta-reported 2024 water withdrawal with source rounding, and three noncausal county comparison gaps with fit sensitivity. Ten models based on arbitrary capital timing, cost shares, FTE ratios, transferred operating/construction multipliers, fleet PUE, or wastewater ratios are removed. Supplier/local-procurement evidence remains unavailable, so the project is intentionally incomplete rather than backfilled. prj_study_im3_building_00464097467: Second-pass modeled contribution account after an expanded public-evidence audit. Direct county permits now cover historical construction values, assessor rolls cover a main-campus parcel stock, a county action covers water-right capacity, Apple reports 2025 campus electricity use, and recipient reports bound two community gifts. Those observations supersede the need for a modeled community proxy but do not supply Apple contractor job-years, construction payroll, annual operating payroll, supplier payments, taxes received, or public-service cost. The construction base therefore retains only the packet's explicit $163 million construction forecast and excludes equipment and historical capital; wide 0.5-1.5 transfer sensitivities expose the mismatch in the last-resort direct construction coefficients. The unsupported local-purchase-share and Virginia induced-output models are removed. No net-fiscal value or public-service-cost break-even is published. County outcome gaps remain descriptive benchmark applications with fit-sensitivity intervals and no causal-design metadata. prj_study_im3_building_00664938835: Second-pass Expedient Milwaukee / Franklin syntheses retained only after a documented 2007-2026 public-source audit. The account keeps a clearly labeled 2022 ownership-transfer anchor, a PB25-0303-only construction allocation sensitivity, an exact tax-equal public-cost break-even threshold, a capacity-based electricity engineering sensitivity, and three descriptive county comparison gaps. It removes transferred construction job-years, assumed local-purchase shares, supplier and household output extrapolations, and a duplicate modeled tax row because public sources did not establish realized site employment, supplier geography, household capture, or a need to restate the direct tax observations. PM25-0174 remains excluded for possible overlap. No synthesis is an observed result or fiscal net. prj_study_im3_building_00888253616: Residual synthesis after the SV1 public-source audit. It retains one exact tax-equal public-cost break-even threshold and three reproducible but low-confidence county comparison gaps. The county gaps use 2013-2020 pre-opening histories and an inverse-distance-weighted 20-county benchmark; very wide fit envelopes are retained because Santa Clara County matches poorly. No model converts capacity to consumption, permit value to jobs, or unidentified vendor and community activity to local benefits. prj_study_im3_building_01073720208: Second-pass governed synthesis for Google Council Bluffs. Construction job-years use only two directly observed September 2025 city permit valuations and transfer the published Prince William County prototype coefficients as benchmark equivalents; the four channels are separated and protected by one aggregation. No Pottawattamie County supplier-retention share is imposed because the public audit found contractor names but no payment or vendor-residence ledger. The water row is the unallocated Google Council Bluffs location identity reported for 2024, not a building allocation. No local abatement, exemption realization, franchise-fee amount, electric load, public-service cost, break-even threshold, or net fiscal result is modeled. County outcome gaps remain descriptive benchmark applications with fit-sensitivity ranges and no causal attribution. prj_study_im3_building_01132541700: Four bounded syntheses are retained after direct-record search: one deterministic conversion of Meta's rounded 2024 Henrico water-withdrawal observation and three governed, descriptive county comparison gaps. No construction, operating, supplier, household, tax-receipt, incentive-cost, or public-service-cost model is added because the public record lacks the needed project-specific bases and arbitrary allocation shares would create false precision. Every retained estimate is visibly modeled, unallocated to the selected building, non-additive, and noncausal.",
+  "modeled_scope_note": "Modeled contribution accounts for Apple Mesa / Maricopa County, Switch Citadel / Storey County, and Digital Crossroad Hammond / Lake County. Every required account category and county-comparison module contains sourced evidence or a visibly labeled modeled value. Public support is not netted against unmatched local revenues, unavailable public-service cost is represented by a break-even threshold rather than an invented net margin, county comparisons are descriptive rather than causal, and low-confidence transferred benchmarks remain explicit. Project fragments: prj_study_im3_building_00364289074: Corrective residual modeled account for Microsoft San Antonio. Eight transferred construction, labor, procurement, operating, and household-output scenarios were removed because their arbitrary capital shares, forecast-realization cases, local-purchase assumptions, and Virginia coefficients were not bounded by project observations. Only three low-confidence descriptive county comparisons remain: each uses the project's documented operating-by 2013 anchor and official Bexar County outcome data, has a finite fit-sensitivity envelope, and explicitly makes no causal attribution. The account intentionally remains incomplete because no defensible direct observation or residual model closes the supplier category. prj_study_im3_building_00377585075: Corrective DET01 synthesis. Only exact same-period tax-account arithmetic, its explicitly conditional public-cost break-even identity and a unit conversion of displayed municipal meter history remain. Construction, employment, supplier, household, electricity, cooling, emissions, wastewater and county-effect models were removed because the audit did not bound the missing project inputs. This account is intentionally incomplete where direct evidence remains unbounded. prj_study_im3_building_00460089167: Corrective audit retains six bounded residual calculations only: FY2025 county tax retained after the provisionally linked incentive, the identical marginal-service-cost break-even threshold, conversion of Meta-reported 2024 water withdrawal with source rounding, and three noncausal county comparison gaps with fit sensitivity. Ten models based on arbitrary capital timing, cost shares, FTE ratios, transferred operating/construction multipliers, fleet PUE, or wastewater ratios are removed. Supplier/local-procurement evidence remains unavailable, so the project is intentionally incomplete rather than backfilled. prj_study_im3_building_00464097467: Second-pass modeled contribution account after an expanded public-evidence audit. Direct county permits now cover historical construction values, assessor rolls cover a main-campus parcel stock, a county action covers water-right capacity, Apple reports 2025 campus electricity use, and recipient reports bound two community gifts. Those observations supersede the need for a modeled community proxy but do not supply Apple contractor job-years, construction payroll, annual operating payroll, supplier payments, taxes received, or public-service cost. The construction base therefore retains only the packet's explicit $163 million construction forecast and excludes equipment and historical capital; wide 0.5-1.5 transfer sensitivities expose the mismatch in the last-resort direct construction coefficients. The unsupported local-purchase-share and Virginia induced-output models are removed. No net-fiscal value or public-service-cost break-even is published. County outcome gaps remain descriptive benchmark applications with fit-sensitivity intervals and no causal-design metadata. prj_study_im3_building_00664938835: Second-pass Expedient Milwaukee / Franklin syntheses retained only after a documented 2007-2026 public-source audit. The account keeps a clearly labeled 2022 ownership-transfer anchor, a PB25-0303-only construction allocation sensitivity, an exact tax-equal public-cost break-even threshold, a capacity-based electricity engineering sensitivity, and three descriptive county comparison gaps. It removes transferred construction job-years, assumed local-purchase shares, supplier and household output extrapolations, and a duplicate modeled tax row because public sources did not establish realized site employment, supplier geography, household capture, or a need to restate the direct tax observations. PM25-0174 remains excluded for possible overlap. No synthesis is an observed result or fiscal net. prj_study_im3_building_00888253616: Residual synthesis after the SV1 public-source audit. It retains one exact tax-equal public-cost break-even threshold and three reproducible but low-confidence county comparison gaps. The county gaps use 2013-2020 pre-opening histories and an inverse-distance-weighted 20-county benchmark; very wide fit envelopes are retained because Santa Clara County matches poorly. No model converts capacity to consumption, permit value to jobs, or unidentified vendor and community activity to local benefits. prj_study_im3_building_01073720208: Second-pass governed synthesis for Google Council Bluffs. Construction job-years use only two directly observed September 2025 city permit valuations and transfer the published Prince William County prototype coefficients as benchmark equivalents; the four channels are separated and protected by one aggregation. No Pottawattamie County supplier-retention share is imposed because the public audit found contractor names but no payment or vendor-residence ledger. The water row is the unallocated Google Council Bluffs location identity reported for 2024, not a building allocation. No local abatement, exemption realization, franchise-fee amount, electric load, public-service cost, break-even threshold, or net fiscal result is modeled. County outcome gaps remain descriptive benchmark applications with fit-sensitivity ranges and no causal attribution. prj_study_im3_building_01132541700: Four bounded syntheses are retained after direct-record search: one deterministic conversion of Meta's rounded 2024 Henrico water-withdrawal observation and three governed, descriptive county comparison gaps. No construction, operating, supplier, household, tax-receipt, incentive-cost, or public-service-cost model is added because the public record lacks the needed project-specific bases and arbitrary allocation shares would create false precision. Every retained estimate is visibly modeled, unallocated to the selected building, non-additive, and noncausal. prj_study_im3_campus_00231769626: Residual synthesis after the Google The Dalles public-source audit. Only three low-confidence descriptive county comparison gaps are retained because the direct record does not identify causal county outcomes. Each benchmark uses the available 2001-2005 pre-opening history, excludes all study counties from a 20-county inverse-distance-weighted donor pool, and carries a fit-sensitivity envelope. No model converts broad investment or permit values to jobs, onsite contractor counts to supplier output, utility-system loads to campus consumption, tax bills to payments, or unmatched incentive formulas and public costs to a fiscal net.",
   "synthesis_version": "study-modeled-synthesis-3.2.0",
   "modeling_policy_version": "study-modeling-policy-1.3.0",
   "analysis_readiness": {
@@ -600,5 +1052,6 @@
     "causal": "not_assessed"
   },
   "legacy_first_entry_note": "NAP7 cannot be Clark County's first operational data-center entry. Clark County's September 3, 2008 filing identifies NAP4 at 4495 East Sahara Avenue as an existing Switch data center and NAP7 at 7135 South Decatur Boulevard as a new facility still under construction; Switch places the SUPERNAP/NAP7 debut in 2009. The broader 20-facility current inventory and historical predecessor inventory have not been proven complete, so the county's true first entry remains unresolved and no treatment date is assigned.",
-  "scope_note": "Provisional private-sector research candidate. Owner/operator history, project boundaries and lifecycle require review. Membership does not verify current operation or establish economic impact."
+  "scope_note": "Provisional private-sector research candidate. Owner/operator history, project boundaries and lifecycle require review. Membership does not verify current operation or establish economic impact.",
+  "project_description": "Switch Las Vegas NAP7 is the original SUPERNAP colocation facility operated by Switch at 7135 South Decatur Boulevard in unincorporated Clark County, Nevada. Clark County records show NAP7 under construction in September 2008, the assessor dates the structure to 2008, and Switch reports that it debuted in 2009 with more than 400,000 square feet. This account follows the individual NAP7 building and real-property parcel while keeping adjacent Core Campus facilities, later expansions, company-county incentive accounts, tenant equipment, and other property accounts separate."
 }
