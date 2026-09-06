@@ -27,16 +27,46 @@ reconstruction identifies prior announcements, permits, construction, operations
 expansions, and operator changes. Forward discovery preserves rejected, withdrawn,
 cancelled, closed, and never-built projects to reduce survivorship bias.
 
-## lnalytical design
+## Analytical design
 
 The canonical analytical grain is county-year, with county-quarter used only when source
 frequency and treatment timing support it. Construction, operation, and expansion are
-separate treatments. iescriptive results are published independently from matched or
+separate treatments. Descriptive results are published independently from matched or
 staggered-treatment estimates.
 
 No county receives a headline causal score without adequate treatment-date evidence,
 pre-treatment history, comparison units, diagnostics, uncertainty, and component
 coverage. Missing evidence is displayed as insufficient evidence rather than zero.
+
+## Pooled multi-site county model target state
+
+The pooled target connects three governed levels: facility-year evidence, county-year
+exposure, and cross-community statistical inference. The current selected register contains
+36 projects in 35 counties and 23 states. Projects and phases sharing a county-year are
+aggregated before county outcomes are analyzed; they are not treated as independent county
+replications. Utility, water-system, and watershed outcomes retain their appropriate
+geographies rather than being forced into county allocations.
+
+All 36 selected projects remain represented even when an outcome field is missing or a
+project is ineligible for a model. Observed values, source projections, and modeled
+syntheses remain distinct. Modeled inputs enter pooled estimation through repeated draws
+or a registered equivalent sensitivity method so their uncertainty is not discarded.
+Comparison counties come from the national panel and require an explicit exposure screen;
+absence from the selected register is not evidence of no data-center exposure.
+
+The registered model ladder advances from descriptive trajectories to pooled associations,
+adjusted longitudinal models, eligible event or matched designs, and hierarchical partial
+pooling. County is the minimum clustering unit for county outcomes. A causal label requires
+treatment timing, comparison validity, pre-trend, placebo, spillover, contamination,
+influence, and robustness gates appropriate to the outcome. Failure of a gate leaves the
+result descriptive or associative.
+
+The target machine-readable products are `county-year-exposures.json`,
+`pooled-model-definition.json`, `pooled-model-run.json`,
+`pooled-model-diagnostics.json`, and `pooled-model-estimates.json`. They require schemas,
+input hashes, deterministic builders, referential-integrity validation, and public types
+before application use. The complete design and acceptance criteria are defined in
+[Pooled county-impact model target state](pooled-county-impact-model.md).
 
 ## Current implementation status
 

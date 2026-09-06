@@ -1,6 +1,6 @@
 # Revised private-sector data-center economic study plan
 
-5 September 2026. Revised research and implementation sequence. Release `private-sector-study-1.41.0` combines 585 economic source records across all 36 candidates—533 reported observations and 52 projections—with 70 separately governed syntheses: 13 Apple Mesa, 20 Switch Citadel / Tahoe Reno 1 and 37 Digital Crossroad Hammond. The Lake County pass adds bounded construction and operating contribution channels, fiscal reconciliations, resource engineering and deliberately noncausal county outcome summaries. The versioned modeling policy requires direct-evidence search first, separate forecasts, reproducible parameters, explicit interval kinds, defensible scope, contribution-channel separation, anti-overlap aggregation and method-specific causal or multiplier metadata. Unsupported causal and net-benefit values remain documented gaps.
+5 September 2026. Revised research and implementation sequence. Release `private-sector-study-1.43.0` combines 585 economic source records across all 36 candidates—533 reported observations and 52 projections—with 104 separately governed syntheses: 27 Apple Mesa, 34 Switch Citadel / Tahoe Reno 1 and 43 Digital Crossroad Hammond. The selected register spans 35 counties and 23 states. Three projects currently pass the completed-contribution-account gate; 33 remain incomplete. The versioned modeling policy requires direct-evidence search first, separate forecasts, reproducible parameters, explicit interval kinds, defensible scope, contribution-channel separation, anti-overlap aggregation and method-specific causal or multiplier metadata. The current release publishes no pooled or causal estimate and makes no net-fiscal claim without same-scope public-cost evidence.
 
 ## Purpose and central revision
 
@@ -92,7 +92,21 @@ Version explicit private-project opening and expansion treatment definitions, re
 
 **Deliverable:** Clearly separated documented contributions, observed community changes, and estimated attributable effects, with uncertainty and limitations appropriate to each result. Some projects will support only the first two products.
 
-## 7. Publish the economic study and expand it
+## 7. Build the pooled multi-site county model
+
+The target analytical product is a longitudinal system connecting facility-year evidence to county-year exposure and community outcomes. The 36 selected projects are not 36 independent county observations: they occupy 35 counties, and projects or phases sharing a county must be combined before a county outcome is analyzed. Construction, operation, expansion, and closure remain separate exposure channels.
+
+Build a versioned county-year exposure panel from each completed project account. Preserve observed inputs, source projections, and modeled syntheses as distinct evidence states. Modeled inputs enter pooled analysis through repeated draws or an equivalent uncertainty-propagation method rather than as error-free observed values. Exposure measures should include construction-eligible investment, local purchasing, construction job-years and payroll, operating capacity, direct employment and compensation, project-linked taxes, public support, and physical resource demand where their scope and period permit aggregation.
+
+Use the full national county panel to construct a screened comparison pool. Known prior and concurrent data-center exposure, incomplete facility histories, major overlapping investments, regional industry structure, power and fiber access, and spillovers must be addressed explicitly. A county is not classified as unexposed merely because the selected 36-project register contains no project there.
+
+Estimate results through a registered model ladder: descriptive pooled associations first; county and year fixed-effects models second; event-study or matched designs where treatment timing supports them; and hierarchical partial pooling to estimate variation across project types, development scale, community size, water stress, and grid conditions. Each outcome has its own eligibility decision. Statistical significance, model fit, or a favorable coefficient cannot substitute for source coverage, pre-trend diagnostics, comparison validity, or a defensible exposure definition.
+
+The machine-readable target consists of `county-year-exposures.json`, `pooled-model-definition.json`, `pooled-model-run.json`, `pooled-model-diagnostics.json`, and `pooled-model-estimates.json`. These artifacts are future governed products, not placeholders in the current release. The detailed contract is specified in [Pooled county-impact model target state](pooled-county-impact-model.md).
+
+**Deliverable:** A reproducible multi-site analytical layer that reports correlations as associations, promotes results to attributable effects only when registered causal gates pass, and links every pooled estimate back to county-year exposures and underlying project evidence.
+
+## 8. Publish the economic study and expand it
 
 Build the presentation around project and community profiles: development timeline, annual investment, construction and operating jobs, supplier activity, tax-base and revenue changes, public costs, relevant resource use, and comparison results when supported. Use the existing map to navigate and contextualize these findings.
 
@@ -102,12 +116,13 @@ Defer composite benefit/cost scores, opposition indices, and a benefit–sentime
 
 **Deliverable:** Evidence-backed local case profiles and cross-project findings, followed by broader coverage using the same documented rules.
 
-## Immediate work package
+## Next implementation package
 
-1. Establish versioned study-register and public-profile contracts, reusing the current project/phase/event model; record the application migration baseline.
-2. Turn the 36-project screen into the research register and dossier template; resolve campus/building identities and ownership classifications, and expose those records through the remediated application.
-3. Audit each candidate's development chronology and the availability of investment, jobs, tax, incentive, and public-cost records. Continue screening other inventory entries alongside this research.
-4. Assemble the first annual benefit and fiscal accounts wherever the evidence supports them; keep all candidates visible with explicit gaps and readiness status.
-5. Specify and implement the new project-event eligibility rules, then select eligible comparisons and estimate effects. Release profiles with documented contributions before causal estimates where appropriate.
+1. Complete the common contribution-account and facility-year evidence contract for the remaining 33 selected projects, preserving explicit missingness and modeled uncertainty.
+2. Add schemas and deterministic builders for facility-year and county-year exposure, including phase separation, evidence-state shares, and overlap controls.
+3. Research and version the national comparison-pool exposure screen using the preserved facility inventory and project histories; do not treat unknown exposure as absence.
+4. Register outcome-specific descriptive and pooled-association definitions, then run statistical power, functional-form, and influential-county simulations before publication.
+5. Publish county-year exposure coverage and Level 0 descriptive trajectories before fitting Level 1 pooled associations.
+6. Advance eligible outcomes to event, matched, or hierarchical designs only after the registered diagnostics and publication gates pass.
 
-The 36-project register is accessible through the application, and all candidates now have at least one quantitative source record. The economic-evidence register contains 585 source-checked records: 533 reported records and 52 forecasts. Seventy modeled syntheses are counted separately—13 Apple Mesa, 20 Switch Citadel and 37 Digital Crossroad Hammond. The Meta Forest City depth case combines five years of assessed values and paired county receipts/incentives with separately scoped investment, employment, community-funding and infrastructure evidence. Digital Crossroad Hammond combines sourced property, investment, fiscal, financing, employment, supplier-role, capacity and resource evidence with bounded contribution and engineering models; no causal effect or complete net fiscal balance is claimed. Switch Citadel preserves separate real- and personal-property accounts, direct Fire District contributions, public-equipment costs, agreement projections and audit findings, with modeled capital, direct labor, fiscal and resource ranges. Campus/company scope, accounting stocks, snapshots, construction peaks, cumulative costs, paired taxes/incentives, separate taxpayer bills, distinct pledged-revenue and transfer measures, fiscal/calendar/tax-year assessed values, permit capacities, source projections and modeled syntheses remain separate. Continue with annual actual investment, audited local-purchase detail, recipient-level receipts, attributable public costs and measured resources, then assess readiness separately for each economic analysis.
+The 36-project register is accessible through the application, and all candidates have at least one quantitative source record. The economic-evidence register contains 585 source-checked records: 533 reported records and 52 forecasts. The 104 modeled syntheses are counted separately—27 Apple Mesa, 34 Switch Citadel and 43 Digital Crossroad Hammond. Those three projects have completed contribution accounts; the other 33 require the same facility-year evidence and synthesis work before entering the county-year exposure panel. The completed accounts separate reported anchors, construction and operating contribution scenarios, recurring local tax contributions and public-cost break-even thresholds, public support, physical resource demand, and descriptive county comparisons. No current row is a pooled estimate or causal effect. Continue with the remaining project accounts, then build the pooled artifacts and run the registered model ladder without collapsing evidence states or treating multiple projects in one county as independent outcomes.
