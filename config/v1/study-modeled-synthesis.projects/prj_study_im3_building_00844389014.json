@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.0.0",
+  "project_id": "prj_study_im3_building_00844389014",
+  "reviewed_on": "2026-09-06",
+  "scope_note": "Last-resort governed synthesis for Google Clarksville retains one bounded resource identity only. It reproduces Google-reported 2024 Montgomery County water consumption as withdrawal minus discharge after converting displayed million-gallon values to gallons, with a rounding envelope. The amount remains unallocated across the location and inventory buildings; discharge may be engineering-estimated. No transferred multiplier, supplier-retention assumption, energy proxy, fiscal result, public-cost threshold, payroll estimate or causal county outcome is modeled.",
+  "sources": [
+    {
+      "source_id": "src_study_google_environmental_report_2025_clarksville",
+      "title": "Google 2025 Environmental Report",
+      "url": "https://www.gstatic.com/gumdrop/sustainability/google-2025-environmental-report.pdf",
+      "publisher": "Google LLC",
+      "source_type": "operator_release",
+      "publication_date": {"precision": "year", "year": 2025},
+      "retrieved_on": "2026-09-06",
+      "review_method": "pdf_text_and_page_image",
+      "notes": "Page 110 reports Montgomery County 2024 withdrawal of 387.9 million gallons, discharge of 66.1 million gallons and consumption of 321.8 million gallons. Page 114 explains that consumption equals withdrawal minus discharge, discharge may be engineering-estimated, and displayed values are rounded to 0.1 million gallons."
+    }
+  ],
+  "estimates": [
+    {
+      "estimate_id": "est_study_google_clarksville_water_consumption_2024",
+      "project_id": "prj_study_im3_building_00844389014",
+      "metric_code": "study.modeled_annual_water_consumption",
+      "label": "Unallocated Montgomery County location water-consumption identity",
+      "category": "resources",
+      "unit": "gallons_per_year",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 321800000,
+      "period": {"kind": "calendar_year", "year": 2024, "label": "Calendar-year 2024 Google Montgomery County location"},
+      "scope": {"level": "company_county", "label": "Google Montgomery County location total; no campus or building allocation", "county_fips": "47125", "inventory_allocation": "unallocated"},
+      "interval": {"kind": "reported_band", "low": 321700000, "central": 321800000, "high": 321900000, "interpretation": "Conservative deterministic envelope from independently rounding both displayed inputs to the nearest 0.1 million gallons; it is not a confidence interval."},
+      "contribution_channel": "not_applicable",
+      "aggregation": {"aggregation_id": "google_clarksville_location_water_2024", "role": "standalone", "overlap_policy": "do_not_sum_outside_declared_total"},
+      "parameters": [
+        {"name": "location_water_withdrawal", "value": 387900000, "unit": "gallons_per_year", "provenance": {"kind": "source", "reference_id": "src_study_google_environmental_report_2025_clarksville", "detail": "2024 Montgomery County withdrawal converted from 387.9 million gallons"}, "transformation": "Subtract discharge"},
+        {"name": "location_water_discharge", "value": 66100000, "unit": "gallons_per_year", "provenance": {"kind": "source", "reference_id": "src_study_google_environmental_report_2025_clarksville", "detail": "2024 Montgomery County discharge converted from 66.1 million gallons"}, "transformation": "Subtract from withdrawal"}
+      ],
+      "confidence": "medium",
+      "confidence_rationale": "Both location-level inputs are published by the operator and subject to limited assurance, but discharge may be engineering-estimated, values are rounded, and no building allocation is available.",
+      "decision_relevance": "Preserves the only direct public location-level operating-resource magnitude in a compatible unit without allocating it to the selected building.",
+      "evidence_search": {"direct_observation_status": "partial", "source_projection_status": "not_found", "remaining_evidence_gap": "Building- or campus-level meter records, potable/reclaimed split, utility bills, peak-day use, discharge measurement method, and cooling-process allocation"},
+      "derivation": {"method": "engineering_estimate", "model_version": "google-clarksville-account-1.0.0", "formula": "387,900,000 gallons withdrawal - 66,100,000 gallons discharge", "input_claim_ids": [], "input_source_ids": ["src_study_google_environmental_report_2025_clarksville"], "assumptions": ["The operator's Montgomery County location label and reported units are accurate.", "The result remains unallocated across campuses and buildings.", "Each displayed input is rounded to the nearest 0.1 million gallons."]},
+      "limitations": ["The source says discharge may be estimated using engineering principles.", "No campus or selected-building allocation is defensible.", "The record does not distinguish potable, reclaimed or process water.", "The interval is a rounding envelope, not statistical uncertainty."],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Reproduces the source's water-consumption identity at company/county location scope; do not present as selected-building consumption.",
+      "reviewed_on": "2026-09-06"
+    }
+  ]
+}
