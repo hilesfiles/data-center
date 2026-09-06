@@ -115,7 +115,7 @@ try {
   await page.goto(`${url}#/project/prj_study_im3_building_00464097467`);
   await openDetails(".evidence-ledger");
   await page.getByRole("tab", { name: /Reported activity/ }).waitFor();
-  await page.locator(".account-count").getByText("21 sourced records · partial coverage", { exact: true }).waitFor();
+  await page.locator(".account-count").getByText("21 sourced records · 7 modeled syntheses", { exact: true }).waitFor();
   await page.locator(".economic-record-list").getByText("80 FTE", { exact: true }).waitFor();
   assert.equal(await page.locator(".economic-record").count(), 15);
   assert.match(await page.locator(".economic-record-list").innerText(), /80 FTE[\s\S]*83 employees[\s\S]*250 MW[\s\S]*422,000,000 kWh \/ year/);
@@ -601,10 +601,11 @@ try {
   await openDetails(".evidence-ledger");
   await page.getByRole("heading", { name: "Google Council Bluffs", exact: true }).waitFor();
   await page.locator(".economic-record").first().waitFor();
-  await page.locator(".account-count").getByText("31 sourced records · partial coverage", { exact: true }).waitFor();
+  await page.locator(".account-count").getByText("31 sourced records · 8 modeled syntheses", { exact: true }).waitFor();
   assert.equal(await page.locator(".economic-record").count(), 27);
-  assert.equal(await page.locator(".economic-history").count(), 0);
-  assert.match(await page.locator(".economic-record-list").innerText(), /About \$96,600,000[\s\S]*\$1,700,000,000[\s\S]*70 employees[\s\S]*\$285,000[\s\S]*\$101,522,611/);
+  assert.equal(await page.locator(".economic-history").count(), 1);
+  assert.equal(await page.locator(".economic-history .history-bar-row").count(), 2);
+  assert.match(await page.locator(".economic-record-list").innerText(), /About \$96,600,000[\s\S]*\$1,700,000,000[\s\S]*70 employees[\s\S]*\$285,000[\s\S]*\$92,462,323[\s\S]*\$9,060,288/);
   assert.match(await page.locator(".economic-record-list").innerText(), /Gable Corp[\s\S]*Questa LLC[\s\S]*Tetra LLC/);
   await page.getByRole("tab", { name: /Plans & forecasts/ }).click();
   assert.equal(await page.locator(".economic-record").count(), 4);
@@ -656,6 +657,10 @@ try {
     Boolean(element.compareDocumentPosition(document.querySelector(".project-overview")) & Node.DOCUMENT_POSITION_FOLLOWING)
   ), "project description must appear before the study-rationale card");
   await page.locator(".project-description").screenshot({ path: path.join(out, "apple-mesa-project-description-desktop.png") });
+  await page.setViewportSize({ width: 390, height: 844 });
+  await noOverflow();
+  await page.locator(".project-description").screenshot({ path: path.join(out, "apple-mesa-project-description-mobile.png") });
+  await page.setViewportSize({ width: 1440, height: 1000 });
   await openDetails(".evidence-ledger");
   await page.getByRole("heading", { name: "Economic evidence", exact: true }).waitFor();
   await page.locator(".account-count").getByText("80 sourced records · 27 modeled syntheses", { exact: true }).waitFor();
@@ -721,9 +726,9 @@ try {
   await page.goto(`${url}#/project/prj_study_im3_building_00664938835`);
   await openDetails(".evidence-ledger");
   await page.getByRole("heading", { name: "Expedient Milwaukee / Franklin", exact: true }).waitFor();
-  await page.locator(".account-count").getByText("16 sourced records · partial coverage", { exact: true }).waitFor();
+  await page.locator(".account-count").getByText("16 sourced records · 7 modeled syntheses", { exact: true }).waitFor();
   assert.equal(await page.locator(".economic-record").count(), 15);
-  assert.equal(await page.locator(".tax-billing-history tbody tr").count(), 3);
+  assert.equal(await page.locator(".tax-billing-history tbody tr").count(), 8);
   assert.match(await page.locator(".tax-billing-history tbody tr").first().innerText(), /2024[\s\S]*\$3,856,900/);
   assert.match(await page.locator(".economic-record-list").innerText(), /\$3,856,900[\s\S]*\$580,190[\s\S]*\$250,132[\s\S]*\$60,347\.17/);
   await page.setViewportSize({ width: 390, height: 844 });

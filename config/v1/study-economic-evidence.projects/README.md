@@ -19,3 +19,15 @@ regulatory, operator, workforce/procurement, and community-recipient records; re
 why a source could not support a quantitative claim. A completed-account label is not
 a quota: unsupported categories remain gaps, and a model must not be created or kept
 only to satisfy the completeness gate.
+
+Every project worker must also add `project_description` to exactly one
+`project_updates` entry. It must be a factual two-to-four-sentence description between
+80 and 1,000 characters that identifies the project, operator, host location,
+facility/campus boundary, documented opening or operating chronology, and material
+source-supported development characteristics. Distinguish the selected building from
+a campus, regional portfolio, later expansion, tenant equipment, or other boundary
+where applicable. Do not repeat the study-selection rationale or include advocacy,
+economic conclusions, model results, unsupported claims, placeholders, research
+instructions, or generic data-center language. A full modeled account cannot publish
+without this description; the project page renders it as “About this project” above
+“Why this project is in the study.”

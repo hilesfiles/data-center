@@ -16,10 +16,10 @@
   "detail_path": "projects/prj_study_im3_building_00464097467.json",
   "latitude": 39.56710538351869,
   "longitude": -119.54857352752407,
-  "economic_record_count": 4,
-  "reported_actual_count": 2,
-  "projection_count": 2,
-  "modeled_synthesis_count": 0,
+  "economic_record_count": 21,
+  "reported_actual_count": 15,
+  "projection_count": 6,
+  "modeled_synthesis_count": 7,
   "model_completeness": {
     "status": "incomplete",
     "required_categories": [
@@ -33,35 +33,39 @@
       "community"
     ],
     "covered_categories": [
+      "community",
+      "construction",
+      "fiscal",
       "investment",
       "operations",
-      "public_costs"
+      "public_costs",
+      "resources"
     ],
-    "modeled_categories": [],
+    "modeled_categories": [
+      "construction",
+      "investment",
+      "operations"
+    ],
     "required_county_outcomes": [
       "study.modeled_county_employment_comparison_gap",
       "study.modeled_county_gdp_comparison_gap",
       "study.modeled_county_wage_comparison_gap"
     ],
-    "covered_county_outcomes": [],
-    "missing_categories": [
-      "community",
-      "construction",
-      "fiscal",
-      "resources",
-      "suppliers"
-    ],
-    "missing_county_outcomes": [
+    "covered_county_outcomes": [
       "study.modeled_county_employment_comparison_gap",
       "study.modeled_county_gdp_comparison_gap",
       "study.modeled_county_wage_comparison_gap"
     ],
+    "missing_categories": [
+      "suppliers"
+    ],
+    "missing_county_outcomes": [],
     "direct_evidence_gap_count": 8,
     "definition": "All eight contribution-account categories contain sourced or labeled modeled values, and GDP, employment, and wage county-comparison modules are populated. Comparison gaps are descriptive and do not establish causal facility effects."
   },
   "schema_version": "1.0.0",
-  "release_id": "private-sector-study-1.44.0",
-  "generated_at": "2026-09-06T14:41:19+00:00",
+  "release_id": "private-sector-study-1.45.0",
+  "generated_at": "2026-09-06T16:15:28+00:00",
   "inventory_name": "Unnamed IM3 building 00464097467",
   "research_value": "State economic-development board packet is a fiscal/incentive research lead; map first-building timing separately.",
   "history": {
@@ -84,18 +88,292 @@
       "url": "https://doi.org/10.57931/3017294"
     }
   ],
-  "research_updates": [],
+  "research_updates": [
+    {
+      "project_id": "prj_study_im3_building_00464097467",
+      "source_id": "src_study_goed_biennial_abatements_2023_apple",
+      "as_of": "2017-06-30",
+      "title": "Original incentive audit findings remain campus-level",
+      "notes": "GOED's fiscal-year 2012 audit table reports 83 jobs, a $38.42 average wage, and $689,829,656 of capital expenditure for Apple after compliant two- and five-year audits. The table does not allocate the findings among buildings, separate construction from equipment, or report realized tax receipts or public-service costs.",
+      "source": {
+        "source_id": "src_study_goed_biennial_abatements_2023_apple",
+        "title": "Approved Tax Abatement Biennial Report, Fiscal Years 2010 through 2022",
+        "url": "https://goed.nv.gov/wp-content/uploads/2024/02/NRS-231.0685-GOED-Biennial-Report-1.pdf",
+        "publisher": "Nevada Governor's Office of Economic Development",
+        "source_type": "state_record",
+        "publication_date": {
+          "precision": "day",
+          "date": "2023-01-17"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "pdf_text_and_page_image",
+        "notes": "The fiscal-year 2012 two-year and five-year audit table places Apple's June 30, 2012 effective contract in Washoe County. It reports original projections of 35 jobs, a $25.00 average wage, and $400 million capital expenditure, then reports audit findings of 83 jobs, a $38.42 average wage, and $689,829,656 capital expenditure. The table marks both the June 30, 2014 two-year audit and June 30, 2017 five-year audit compliant. The reported capital total is broad and is not treated as construction-only spending, a tax receipt, or an amount attributable to one campus building."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_00464097467",
+      "source_id": "src_study_econ_nv_apple_2024",
+      "as_of": "2024-07-25",
+      "title": "Expansion packet preserves forecasts rather than realized effects",
+      "notes": "GOED packet query Apple Inc./21505 Reno Technology Parkway W reviewed all 16 pages. It separately schedules $163 million of construction, $742,071,428 of first-five-year equipment, ten additional FTE at $32.51, $200,909,110 of projected local taxes, and $62,153,275 of estimated abatement. No board-order, tax-return, invoice, payroll, or later audit in the packet converts those forecasts into actuals.",
+      "source": {
+        "source_id": "src_study_econ_nv_apple_2024",
+        "title": "Apple expansion application — Nevada GOED board packet, July 25, 2024",
+        "url": "https://goed.nv.gov/wp-content/uploads/2024/07/7-B.-Apple-Inc.-Board-Packet.pdf",
+        "publisher": "Nevada Governor’s Office of Economic Development",
+        "source_type": "state_record",
+        "publication_date": {
+          "precision": "day",
+          "date": "2024-07-25"
+        },
+        "retrieved_on": "2026-09-03",
+        "review_method": "pdf_text_and_page_image",
+        "notes": "Existing workforce is company-reported in the application signed June 13, 2024. Detailed schedules are redacted in the public packet.",
+        "artifact_sha256": "01dfca3b70a1510570cd150bb410e7074b8d7cdc328bafa9f986512e757946ac"
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_00464097467",
+      "source_id": "src_study_washoe_permit_activity_2017_h2_apple",
+      "as_of": "2018-08-30",
+      "title": "Exact-address permit search adds direct construction observations without summing scopes",
+      "notes": "Searched Washoe County permit-report family for 2012-2026 using 21505 RENO TECHNOLOGY PKWY W, APPLE INC, PROJECT HUCKLEBERRY and PROJECT ISABEL. Main records located: 15-3589 ($37,913,134.77), 16-2026 ($9,140,880), and WBLD17-100303 ($50,720,905.86). Also located 15-3956, 16-1555, WBLD17-100612, WBLD17-102177 and WBLD17-103570 through -103582; those subordinate or zero-value permits are not added to the main permits because overlap cannot be excluded.",
+      "source": {
+        "source_id": "src_study_washoe_permit_activity_2017_h2_apple",
+        "title": "Washoe County Permit Activity Report, permits issued July 1 through December 31, 2017",
+        "url": "https://www.washoecounty.gov/building/Files/July%20-%20Dec%202017.pdf",
+        "publisher": "Washoe County",
+        "source_type": "local_government_record",
+        "publication_date": {
+          "precision": "day",
+          "date": "2018-06-01"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_pdf_text",
+        "notes": "Exact-address search located Huckleberry Phase 2 permit 16-2026, Isabel permit WBLD17-100303, a $400,000 septic-system permit, a $1,261,320 fire-sprinkler permit, and named contractors. Only distinct main construction permits are normalized; subpermits are not added to them."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_00464097467",
+      "source_id": "src_study_washoe_assessment_roll_2024_2025_apple",
+      "as_of": "2024-07-01",
+      "title": "Assessor, treasurer and recorder review yields parcel stocks but no receipt series",
+      "notes": "Searched Washoe Assessor secured rolls for Apple and APNs 084-110-20, 084-110-29, 084-110-30, 084-110-36, 084-110-37, 084-191-05 through -08 for tax years 2021/22 and 2024/25; normalized only main-campus APN 084-110-29. Queried the Treasurer parcel/owner portal and Recorder APN guidance. Public indexed results did not verify taxes paid, recipient-level receipts, delinquency/payment dates, or a complete deed consideration series; assessed values are therefore not converted to fiscal revenue.",
+      "source": {
+        "source_id": "src_study_washoe_assessment_roll_2024_2025_apple",
+        "title": "Washoe County 2024/2025 Secured Assessment Roll",
+        "url": "https://gis.washoecounty.us/webservices/gisdataservice/DocumentFiles/AssessorOnlineReports/A7BE5E322AA4WC531ADMINCF8BC6597CX2B4/?fileId=2024-2025AssessmentRoll.pdf",
+        "publisher": "Washoe County Assessor",
+        "source_type": "assessor_record",
+        "publication_date": {
+          "precision": "day",
+          "date": "2023-12-29"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "pdf_text_and_page_image",
+        "notes": "The later owner-indexed roll supplies a comparable APN 084-110-29 assessed land and building stock. The roll expressly says the Assessor values property but does not set rates or collect taxes."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_00464097467",
+      "source_id": "src_study_washoe_parcel_map_apple_fire_station_2025",
+      "as_of": "2025-02-13",
+      "title": "Planning cases separate campus buildout, substations and fire-station parcel",
+      "notes": "Reviewed Washoe planning families SW11-001/SW11-003, WSUP17-0008, WSUP18-0010, WAC23-0012, WSUP23-0031 and WTPM24-0007. Records map APNs and describe substation/building phases and a parcel for a fire station, but do not report realized Apple construction spend, facility load, fire-service operating cost, tax receipts, or building allocation. The fire-station parcel is not treated as a data-center building or quantified public cost.",
+      "source": {
+        "source_id": "src_study_washoe_parcel_map_apple_fire_station_2025",
+        "title": "Tentative Parcel Map WTPM24-0007 staff report, Parcel Map for Apple Incorporated",
+        "url": "https://www.washoecounty.gov/csd/planning_and_development/board_commission/parcel_map_review_committee/2025/Files/WTPM24-0007_TMFPD_StaffReport.pdf",
+        "publisher": "Washoe County",
+        "source_type": "local_government_record",
+        "publication_date": {
+          "precision": "day",
+          "date": "2025-02-13"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_pdf_text",
+        "notes": "The application identifies Apple as owner of APN 084-191-08, 180.92 acres at the campus address, and proposes a separate parcel for a fire station. It is retained to prevent the fire-station parcel from being collapsed into the data-center building account."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_00464097467",
+      "source_id": "src_study_goed_biennial_abatements_2025_apple",
+      "as_of": "2025-01-15",
+      "title": "GOED amendment, compliance and audit follow-up finds no realized 2024 expansion amount",
+      "notes": "Searched GOED board packets, notices/minutes and NRS 231.0685 biennial reports through FY2024 for Apple, Washoe, data center, amendment, audit and compliance. The 2025 biennial report repeats the June 2012 account's 2017 audit findings. It does not show a completed audit, realized abatement, realized tax payment, or amended audited employment/capital result for the July 2024 expansion application.",
+      "source": {
+        "source_id": "src_study_goed_biennial_abatements_2025_apple",
+        "title": "GOED Biennial Report to Legislature of Abatements from Taxation, fiscal years 2010 through 2024",
+        "url": "https://goed.nv.gov/wp-content/uploads/2025/01/NRS-231.0685-GOED-Biennial-Report-2023-24.pdf",
+        "publisher": "Nevada Governor's Office of Economic Development",
+        "source_type": "state_record",
+        "publication_date": {
+          "precision": "day",
+          "date": "2025-01-15"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_pdf_text",
+        "notes": "The newer report repeats the original Apple FY2012 audit result and separately lists FY2024 program material. It does not add a completed audit or realized company-specific tax amount for Apple's July 2024 expansion packet."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_00464097467",
+      "source_id": "src_study_nevada_tax_expenditure_reports_apple_search",
+      "as_of": "2026-09-06",
+      "title": "Nevada Tax Commission and Department of Taxation searches remain aggregate",
+      "notes": "Searched 2015-2026 Nevada Department of Taxation tax-expenditure reports, ad-valorem projections, Commission meeting archive and State Board of Equalization material for Apple, 084-110-29, Washoe, data center and abatement. Results were program- or jurisdiction-level; no Apple-specific realized sales/use abatement, property-tax payment, local receipt, appeal outcome, or 2024 expansion audit was verified.",
+      "source": {
+        "source_id": "src_study_nevada_tax_expenditure_reports_apple_search",
+        "title": "Nevada Department of Taxation tax-expenditure reports and public meeting archive",
+        "url": "https://tax.nv.gov/news-publications/tax-expenditure-reports/",
+        "publisher": "Nevada Department of Taxation",
+        "source_type": "state_record",
+        "publication_date": {
+          "precision": "unknown"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_page",
+        "notes": "Entity-name, APN, county, data-center and abatement searches across published 2015-2026 report and meeting families produced aggregate tax-expenditure and jurisdiction projections but no Apple-specific realized receipt, payment, or 2024 expansion audit."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_00464097467",
+      "source_id": "src_study_pucn_nvenergy_rps_2022_apple",
+      "as_of": "2023-04-01",
+      "title": "PUCN and NV Energy dockets triangulate renewable assets but not campus bills",
+      "notes": "Searched PUCN electric/renewable docket families and rate pages for Apple and dockets 12-11023, 13-07005, 15-11025, 17-02008 and 17-11002. Official filings confirm GreenEnergy Rider agreements, capacities, commissioning and 2022 project generation/REC transfers. They do not disclose Apple's campus kWh, demand, bill, tariff charge, avoided cost, or hourly resource matching; the independent campus-use observation comes from Apple instead.",
+      "source": {
+        "source_id": "src_study_pucn_nvenergy_rps_2022_apple",
+        "title": "NV Energy Portfolio Standard Annual Report, Compliance Year 2022",
+        "url": "https://pucweb1.state.nv.us/PDF/AxImages/DOCKETS_2020_THRU_PRESENT/2023-4/25590.pdf",
+        "publisher": "NV Energy filing with the Public Utilities Commission of Nevada",
+        "source_type": "state_record",
+        "publication_date": {
+          "precision": "year",
+          "year": 2023
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_pdf_text",
+        "notes": "The filing reports 560,408 MWh from 200 MW Techren Solar 2 and 112,268 MWh from 50 MW Turquoise Nevada Solar in 2022, with equal renewable-energy credits transferred to Apple. Those project outputs are not relabeled as facility consumption."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_00464097467",
+      "source_id": "src_study_tmwa_private_water_systems_2016_apple",
+      "as_of": "2016-05-26",
+      "title": "Water and sewer review finds a private system and capacity, not measured use",
+      "notes": "Searched TMWA board reports/current data-center guidance, Washoe water-right agenda items, Northern Nevada Public Health public-water-system references, and planning/permit text for Reno Technology Park, Apple, water, sewer, septic and wastewater from 2012-2026. County material identifies 125 acre-feet/year allocated to the data center; TMWA calls the system private. No meter, actual withdrawal/consumption, peak-day value, wastewater discharge, utility bill, or current same-scope sewer-cost series was found.",
+      "source": {
+        "source_id": "src_study_tmwa_private_water_systems_2016_apple",
+        "title": "TMWA staff report on private, cooperative and general-improvement-district water systems",
+        "url": "https://tmwa.com/docs/meetingcenter/BOD/2016/__2016.0615-BOD-10-TMWA-Private-Water-Systems.Report.pdf",
+        "publisher": "Truckee Meadows Water Authority",
+        "source_type": "local_government_record",
+        "publication_date": {
+          "precision": "day",
+          "date": "2016-05-26"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_pdf_text",
+        "notes": "TMWA identifies the Reno Technology Park (Apple Data Center) water system as a private system outside TMWA's retail system. The report supplies no Apple meter, withdrawal, consumption, discharge, or bill."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_00464097467",
+      "source_id": "src_study_apple_environment_2026",
+      "as_of": "2025-12-31",
+      "title": "Apple facilities archive supplies a 2025 campus electricity observation",
+      "notes": "Reviewed Apple Facilities Report 2013, Environmental Progress Reports 2023-2026, environment report archive, job-creation and newsroom pages for Reno/Nevada/data center. The 2026 report gives 422 million kWh in 2025 and cooling/renewable context. No Reno water volume, wastewater, power cost, building split, construction invoice, supplier payment, or public-service cost appears in the reviewed operator family.",
+      "source": {
+        "source_id": "src_study_apple_environment_2026",
+        "title": "Apple Environmental Progress Report 2026",
+        "url": "https://www.apple.com/environment/pdf/Apple_Environmental_Progress_Report_2026.pdf",
+        "publisher": "Apple Inc.",
+        "source_type": "operator_release",
+        "publication_date": {
+          "precision": "year",
+          "year": 2026
+        },
+        "retrieved_on": "2026-09-05",
+        "review_method": "pdf_text_and_page_image",
+        "notes": "Apple reports fiscal-2025 Mesa electricity use, the supporting Bonnybrooke project's capacity, onsite PV capacity and operating dates. Electricity is operator-reported use; generating capacities are nameplate resources and not data-center load or output observations.",
+        "artifact_sha256": "dc23e8cb593f42969689c206dc7624156918d766efbbc9b20a9fb1d1c0b54518"
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_00464097467",
+      "source_id": "src_study_apple_jobs_sparks_2026_search",
+      "as_of": "2026-09-06",
+      "title": "Workforce and job-posting search identifies occupations but not realized headcount",
+      "notes": "Queried Apple Careers for Sparks/Reno/Nevada/data center and reviewed role IDs 200653833-6172, 200653810-6172, 200653832-6172, 200673896-6172 and 200674135-6172 plus data-center operations role 200665517-6172. These current postings document recruiting and occupation mix, but not filled positions, vacancies net of churn, worker residence, annual-average FTE, wages paid, benefits, payroll, or contractor headcount.",
+      "source": {
+        "source_id": "src_study_apple_jobs_sparks_2026_search",
+        "title": "Apple Careers search results for Sparks, Nevada",
+        "url": "https://jobs.apple.com/en-us/search?location=sparks-B1014",
+        "publisher": "Apple Inc.",
+        "source_type": "operator_release",
+        "publication_date": {
+          "precision": "unknown"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_page",
+        "notes": "The current search showed data-center construction project manager, mechanical project manager, controls engineer, and data-center operations roles in Sparks. Posting counts and roles are recruiting signals, not filled jobs, annual-average FTE, residence, payroll, or wage observations."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_00464097467",
+      "source_id": "src_study_washoe_permit_activity_2018_may_aug_apple",
+      "as_of": "2018-10-31",
+      "title": "Procurement and vendor search verifies roles but no payment amounts",
+      "notes": "Permit records name FCI Group, Simplex Grinnell, Desert Fire Protection, Stantec and project applicants on Apple-address work; Apple newsroom material separately describes K&N filter prototyping and a Nevada sheet-metal fabricator. Searches for Apple Reno vendor, contractor, procurement, purchase order and supplier payment found no contract value attributable to a named vendor, local-retained share, vendor payroll, or worker residence. Permit value remains construction evidence rather than supplier revenue.",
+      "source": {
+        "source_id": "src_study_washoe_permit_activity_2018_may_aug_apple",
+        "title": "Washoe County Permit Activity Report, permits issued May 1 through August 31, 2018",
+        "url": "https://www.washoecounty.gov/building/Files/Files/2018%20May%20-%20Aug.pdf",
+        "publisher": "Washoe County",
+        "source_type": "local_government_record",
+        "publication_date": {
+          "precision": "day",
+          "date": "2018-10-31"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_pdf_text",
+        "notes": "The later report verifies final status for WBLD17-100303 and lists multiple $140,000 cluster fire-alarm permits. The alarm permits are not summed with the main permit because they may be embedded in the broader shell/buildout scope."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_00464097467",
+      "source_id": "src_study_fbnn_annual_report_2022_2023_apple",
+      "as_of": "2023-06-30",
+      "title": "Named-recipient review verifies bounded gifts but not campus attribution",
+      "notes": "Searched official Envirolution, Children's Cabinet and Food Bank of Northern Nevada reports for Apple, grant, donation and Reno across 2020-2026. Food Bank recipient reports place Apple in the $10,000-$24,999 band in both 2021-2022 and 2022-2023; $10,000 lower bounds are recorded separately. Envirolution reports program activity near an Apple data center but not a clearly Apple-funded amount. No exact campus-designated annual community total was found.",
+      "source": {
+        "source_id": "src_study_fbnn_annual_report_2022_2023_apple",
+        "title": "Food Bank of Northern Nevada 2022-2023 Annual Report",
+        "url": "https://www.fbnn.org/wp-content/uploads/2024/03/2022-23-Annual-Report-Final.pdf",
+        "publisher": "Food Bank of Northern Nevada",
+        "source_type": "other",
+        "publication_date": {
+          "precision": "year",
+          "year": 2024
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_pdf_text",
+        "notes": "Recipient report again places Apple Inc. in the $10,000-$24,999 donor band. The lower bound is normalized without treating it as recurring campus spending."
+      }
+    }
+  ],
   "evidence_gaps": [
     {
       "code": "investment",
       "label": "Capital investment",
-      "status": "projections_only",
+      "status": "partial",
       "needed": "Annual actual spending, local share, and phase allocation."
     },
     {
       "code": "construction",
       "label": "Construction jobs and payroll",
-      "status": "not_yet_collected",
+      "status": "partial",
       "needed": "Workers, job-years, payroll, duration, and local participation."
     },
     {
@@ -113,7 +391,7 @@
     {
       "code": "fiscal",
       "label": "Tax base and public revenue",
-      "status": "not_yet_collected",
+      "status": "partial",
       "needed": "Taxable values and actual receipts by year and recipient jurisdiction."
     },
     {
@@ -125,13 +403,13 @@
     {
       "code": "resources",
       "label": "Electricity, water, and cooling",
-      "status": "not_yet_collected",
+      "status": "partial",
       "needed": "Measured use, source, cooling design, and attributable system costs."
     },
     {
       "code": "community",
       "label": "Community institutions and direct funding",
-      "status": "not_yet_collected",
+      "status": "partial",
       "needed": "Annual grants, recipients, program purposes, realized spending, and overlap with other transfers."
     }
   ],
@@ -257,6 +535,540 @@
       "unit": "USD",
       "measure_type": "flow",
       "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_apple_washoe_audited_capex_2017",
+      "project_id": "prj_study_im3_building_00464097467",
+      "metric_code": "study.audited_capital_expenditure",
+      "value": 689829656,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "reported_snapshot",
+        "report_date": "2017-06-30",
+        "label": "GOED audit finding in the fiscal-year 2012 table with a June 30, 2017 five-year audit date"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Apple Washoe County project covered by the June 30, 2012 Nevada incentive contract",
+        "county_fips": "32031",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_goed_biennial_abatements_2023_apple",
+      "pdf_page": 56,
+      "printed_page": "51",
+      "source_locator": "Approved Tax Abatements - Fiscal Year 2012, 2-Year and 5-Year Audit Results, Apple row, Audit Findings CapEx",
+      "notes": "State-reported audit finding for the original Apple incentive account. The broad capital value does not isolate land, building construction, IT equipment, other personal property, annual timing, vendor geography, or the selected mapped building, so it is not used as the base for the 2024 construction model.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "State-audited capital expenditure",
+      "category": "investment",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_apple_washoe_audited_jobs_2017",
+      "project_id": "prj_study_im3_building_00464097467",
+      "metric_code": "study.operating_employees",
+      "value": 83,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "reported_snapshot",
+        "report_date": "2017-06-30",
+        "label": "GOED audit finding in the fiscal-year 2012 table with a June 30, 2017 five-year audit date"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Apple Washoe County project covered by the June 30, 2012 Nevada incentive contract",
+        "county_fips": "32031",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_goed_biennial_abatements_2023_apple",
+      "pdf_page": 56,
+      "printed_page": "51",
+      "source_locator": "Approved Tax Abatements - Fiscal Year 2012, 2-Year and 5-Year Audit Results, Apple row, Audit Findings Jobs",
+      "notes": "State-reported audit finding for the incentive account. The table does not identify annual-average FTE, contractors, worker residence, occupation, payroll, the downtown warehouse share, or allocation among campus buildings.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Reported operating employee count",
+      "category": "operations",
+      "unit": "employees",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_apple_washoe_audited_wage_2017",
+      "project_id": "prj_study_im3_building_00464097467",
+      "metric_code": "study.existing_hourly_wage",
+      "value": 38.42,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "reported_snapshot",
+        "report_date": "2017-06-30",
+        "label": "GOED audit finding in the fiscal-year 2012 table with a June 30, 2017 five-year audit date"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Apple Washoe County project covered by the June 30, 2012 Nevada incentive contract",
+        "county_fips": "32031",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_goed_biennial_abatements_2023_apple",
+      "pdf_page": 56,
+      "printed_page": "51",
+      "source_locator": "Approved Tax Abatements - Fiscal Year 2012, 2-Year and 5-Year Audit Results, Apple row, Audit Findings Avg Wage",
+      "notes": "Nominal average wage reported in the state audit table. Hours, annual payroll, benefits, wage distribution, contractor wages, and building allocation are unavailable.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Average hourly wage of existing employees",
+      "category": "operations",
+      "unit": "USD_per_hour",
+      "measure_type": "rate",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_apple_washoe_expansion_jobs_projection_2024",
+      "project_id": "prj_study_im3_building_00464097467",
+      "metric_code": "study.operating_jobs_projection",
+      "value": 10,
+      "value_qualifier": "at_least",
+      "basis": "source_projection",
+      "period": {
+        "kind": "projection_horizon",
+        "report_date": "2024-07-25",
+        "horizon_years": 5,
+        "label": "At least ten additional full-time employees planned within five years of the 2024 expansion"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Apple Washoe County data-center expansion at 21505 Reno Technology Parkway West",
+        "county_fips": "32031",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_econ_nv_apple_2024",
+      "pdf_page": 3,
+      "printed_page": "2",
+      "source_locator": "Apple July 11, 2024 support letter and application Section 7 employment schedule",
+      "notes": "Expansion commitment, not realized hiring. The source does not allocate the positions among four campus buildings or establish annual-average FTE, contractor coverage, residence, or occupation.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Planned operating jobs at completion",
+      "category": "operations",
+      "unit": "jobs",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_apple_washoe_expansion_wage_projection_2024",
+      "project_id": "prj_study_im3_building_00464097467",
+      "metric_code": "study.average_hourly_wage_projection",
+      "value": 32.51,
+      "value_qualifier": "exact",
+      "basis": "source_projection",
+      "period": {
+        "kind": "projection_horizon",
+        "report_date": "2024-07-25",
+        "horizon_years": 5,
+        "label": "Average hourly wage planned for ten additional FTE within five years of the 2024 expansion"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Apple Washoe County data-center expansion at 21505 Reno Technology Parkway West",
+        "county_fips": "32031",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_econ_nv_apple_2024",
+      "pdf_page": 7,
+      "printed_page": "6",
+      "source_locator": "Section 7, Expansions, average hourly wage of proposed new employees",
+      "notes": "Nominal wage forecast for proposed hires, not a realized wage, annual payroll, or building-level amount. The packet separately reports $48.47 for the existing workforce.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Planned average hourly wage",
+      "category": "operations",
+      "unit": "USD_per_hour",
+      "measure_type": "rate",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_apple_washoe_construction_cost_projection_2024",
+      "project_id": "prj_study_im3_building_00464097467",
+      "metric_code": "study.campus_investment_projection",
+      "value": 163000000,
+      "value_qualifier": "exact",
+      "basis": "source_projection",
+      "period": {
+        "kind": "projection_horizon",
+        "report_date": "2024-07-25",
+        "horizon_years": 3,
+        "label": "Application Years 1-3 construction-cost schedule: $75 million, $44 million, and $44 million"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Apple Washoe County expansion construction at 21505 Reno Technology Parkway West",
+        "county_fips": "32031",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_econ_nv_apple_2024",
+      "pdf_page": 9,
+      "printed_page": "8",
+      "source_locator": "Form 6(A), Real Estate & Construction Projections, Construction Cost column, Years 1-3",
+      "notes": "Sum of the source's explicit construction-cost schedule. It is a forecast rather than expenditure, excludes the separately forecast equipment purchases, and is not allocated among the four campus buildings or to the mapped footprint. The application says the company is not required to reach the estimated real-estate-cost levels.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Planned campus investment",
+      "category": "investment",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_apple_washoe_local_tax_projection_2024",
+      "project_id": "prj_study_im3_building_00464097467",
+      "metric_code": "study.incremental_tax_revenue_projection",
+      "value": 200909110,
+      "value_qualifier": "exact",
+      "basis": "source_projection",
+      "period": {
+        "kind": "projection_horizon",
+        "report_date": "2024-07-25",
+        "horizon_years": 10,
+        "label": "Ten-year projected local property, sales, and lodging taxes after the proposed abatement"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Projected local-government tax revenue associated with the Apple Washoe County expansion",
+        "county_fips": "32031",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_econ_nv_apple_2024",
+      "pdf_page": 1,
+      "printed_page": "cover",
+      "source_locator": "Net New Tax Revenues, Local Taxes, Taxes after Abatements: property, sales, and lodging",
+      "notes": "Arithmetic sum of $21,306,181 projected property tax, $179,585,771 projected sales tax, and $17,158 projected lodging tax. This is a GOED forecast, not a receipt, audit finding, annual flow, building allocation, or same-scope fiscal benefit. It is not netted against the $62,153,275 estimated abatement or any unobserved public-service cost.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Estimated new taxes above baseline",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_apple_washoe_renewable_capacity_2020",
+      "project_id": "prj_study_im3_building_00464097467",
+      "metric_code": "study.renewable_generation_capacity",
+      "value": 250,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "source_year",
+        "year": 2020,
+        "label": "Techren II online in 2019 and Turquoise online in 2020"
+      },
+      "scope": {
+        "level": "supporting_infrastructure",
+        "label": "Two Nevada GreenEnergy Rider solar projects Apple says support its Reno data center and regional load",
+        "county_fips": "32031",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_pucn_nvenergy_rps_2022_apple",
+      "pdf_page": 1,
+      "printed_page": "26",
+      "source_locator": "Apple NV GreenEnergy Rider project discussion, Techren Solar 2 and Turquoise Nevada Solar paragraphs",
+      "notes": "Combined nameplate capacity of the 200 MW Techren Solar 2 and 50 MW Turquoise Nevada Solar projects, triangulating the GOED packet. The PUCN filing separately reports 2022 generation and renewable-energy-credit transfers to Apple. Nameplate capacity and project generation are not campus demand, facility load, electricity consumption, hourly matching, ownership, or an allocation to one building.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Reported renewable-generation nameplate capacity",
+      "category": "resources",
+      "unit": "MW",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_apple_washoe_permit_huckleberry_phase1_2017",
+      "project_id": "prj_study_im3_building_00464097467",
+      "metric_code": "study.permitted_construction_value",
+      "value": 37913134.77,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "reported_snapshot",
+        "report_date": "2017-05-31",
+        "label": "Permit 15-3589 certificate-of-occupancy/final date; issued April 11, 2016"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Project Huckleberry first-phase data-center construction on APN 084-110-29",
+        "county_fips": "32031",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_washoe_permit_activity_2016_h1_apple",
+      "pdf_page": 52,
+      "printed_page": "52",
+      "source_locator": "Permit 15-3589, Project Huckleberry new commercial data center",
+      "notes": "County-listed permit value for full buildout of clusters G, H, J and K, shell-only work on C and E, and support building A/B. It is an administrative amount, not verified expenditure, local-retained purchasing, payroll, or a selected-building allocation. It is not summed with other permits because phase and subpermit overlap is unresolved.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Reported permit construction value",
+      "category": "construction",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_apple_washoe_permit_huckleberry_phase2_2017",
+      "project_id": "prj_study_im3_building_00464097467",
+      "metric_code": "study.permitted_construction_value",
+      "value": 9140880,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "reported_snapshot",
+        "report_date": "2017-08-30",
+        "label": "Permit 16-2026 final date; issued July 28, 2017"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Project Huckleberry Phase 2 data-center construction on APN 084-110-29",
+        "county_fips": "32031",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_washoe_permit_activity_2017_h2_apple",
+      "pdf_page": 5,
+      "printed_page": "5",
+      "source_locator": "Permit 16-2026, Huckleberry Phase 2",
+      "notes": "County-listed permit value for clusters and shell/buildout work. It is an administrative amount, not verified expenditure, local-retained purchasing, payroll, or a selected-building allocation. It is not summed with the first phase or later permits because boundary overlap is unresolved.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Reported permit construction value",
+      "category": "construction",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_apple_washoe_permit_isabel_2018",
+      "project_id": "prj_study_im3_building_00464097467",
+      "metric_code": "study.permitted_construction_value",
+      "value": 50720905.86,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "reported_snapshot",
+        "report_date": "2018-08-30",
+        "label": "Permit WBLD17-100303 final date; issued November 28, 2017"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Project Isabel 372,893-square-foot data-center and support-building permit on APN 084-110-29",
+        "county_fips": "32031",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_washoe_permit_activity_2018_may_aug_apple",
+      "pdf_page": 26,
+      "printed_page": "26",
+      "source_locator": "Permit WBLD17-100303, finaled commercial addition",
+      "notes": "County-listed permit value for eight clusters, administration building, garage and generator yard, with FCI Group named as contractor. It is an administrative amount, not verified expenditure, local-retained purchasing, payroll, or a selected-building allocation. Related septic, sprinkler and alarm permits are not added because overlap is unresolved.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Reported permit construction value",
+      "category": "construction",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_apple_washoe_apn08411029_assessed_value_2021",
+      "project_id": "prj_study_im3_building_00464097467",
+      "metric_code": "study.account_assessed_value",
+      "value": 109529832,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2021,
+        "label": "Washoe County 2021/2022 secured assessment roll"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Apple Inc. APN 084-110-29 assessed land and building value",
+        "county_fips": "32031",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_washoe_assessment_roll_2021_2022_apple",
+      "pdf_page": 28,
+      "printed_page": "24",
+      "source_locator": "Owner index, Apple Inc., APN 084-110-29, Land 8,287,230 and Bldg 101,242,602",
+      "notes": "Arithmetic sum of the roll's assessed land and building columns for the main campus parcel. This is a parcel stock, not appraised market value, capital expenditure, a tax bill, taxes paid, or a building allocation. Changes can reflect construction, depreciation, valuation, exemptions, or account changes; no cause is assigned.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "annual_series_key": "apple_washoe_apn08411029_assessed_value",
+      "label": "Account assessed property value",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_apple_washoe_apn08411029_assessed_value_2024",
+      "project_id": "prj_study_im3_building_00464097467",
+      "metric_code": "study.account_assessed_value",
+      "value": 147033277,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2024,
+        "label": "Washoe County 2024/2025 secured assessment roll"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Apple Inc. APN 084-110-29 assessed land and building value",
+        "county_fips": "32031",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_washoe_assessment_roll_2024_2025_apple",
+      "pdf_page": 32,
+      "printed_page": "28",
+      "source_locator": "Owner index, Apple Inc., APN 084-110-29, Land 8,287,230 and Bldg 138,746,047",
+      "notes": "Arithmetic sum of the roll's assessed land and building columns for the main campus parcel. This is a parcel stock, not appraised market value, capital expenditure, a tax bill, taxes paid, or a building allocation. The increase from 2021 is descriptive only and is not attributed to the expansion.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "annual_series_key": "apple_washoe_apn08411029_assessed_value",
+      "label": "Account assessed property value",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_apple_washoe_water_right_capacity_2015",
+      "project_id": "prj_study_im3_building_00464097467",
+      "metric_code": "study.permitted_water_withdrawal_capacity",
+      "value": 0.111592808,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "reported_snapshot",
+        "report_date": "2015-07-14",
+        "label": "County action on the 125 acre-foot annual water-right allocation"
+      },
+      "scope": {
+        "level": "supporting_infrastructure",
+        "label": "Water rights allocated to the Apple data center and pledged to Reno Technology Park Water Company",
+        "county_fips": "32031",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_washoe_water_rights_2015_apple",
+      "pdf_page": 2,
+      "printed_page": "2",
+      "source_locator": "Background and recommendation, 125.00 acre-feet allocated to the Apple data center",
+      "notes": "Converted from 125 acre-feet per year using 325,851 gallons per acre-foot and 365 days. This is regulatory/service capacity, not measured withdrawal, consumption, peak-day demand, discharge, current entitlement status, or a selected-building allocation. TMWA separately identifies the system as private rather than part of its retail system.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Permitted water-withdrawal capacity",
+      "category": "resources",
+      "unit": "million_gallons_per_day",
+      "measure_type": "rate",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_apple_washoe_electricity_use_2025",
+      "project_id": "prj_study_im3_building_00464097467",
+      "metric_code": "study.annual_electricity_use",
+      "value": 422000000,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "source_year",
+        "year": 2025,
+        "label": "Apple-reported Reno data-center electricity use in 2025"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Apple Reno data center, campus-level operator report",
+        "county_fips": "32031",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_apple_environment_2026",
+      "pdf_page": 97,
+      "printed_page": "97",
+      "source_locator": "Reno, Nevada data-center panel, Electricity use in 2025",
+      "notes": "Apple reports 422 million kWh and a 100% allocation from its solar projects through the NV GreenEnergy Rider. This is an operator-reported campus total, not an independent utility bill, peak demand, electricity cost, hourly matching result, or allocation to one building. Renewable project generation is not added to electricity use.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "annual_series_key": "apple_washoe_electricity_use",
+      "label": "Reported annual electricity use",
+      "category": "resources",
+      "unit": "kWh_per_year",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_apple_fbnn_contribution_floor_2022",
+      "project_id": "prj_study_im3_building_00464097467",
+      "metric_code": "study.direct_community_contribution",
+      "value": 10000,
+      "value_qualifier": "at_least",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "source_year",
+        "year": 2022,
+        "label": "Food Bank of Northern Nevada 2021-2022 annual-report period"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Apple Inc. gift to Food Bank of Northern Nevada, a regional recipient serving Washoe County and other areas",
+        "county_fips": "32031",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_fbnn_annual_report_2021_2022_apple",
+      "pdf_page": 12,
+      "printed_page": "12",
+      "source_locator": "Donors, Foundations, Organizations & Companies, Gifts totaling $10,000-$24,999",
+      "notes": "Recipient-reported lower bound. The report does not identify an exact amount, grant purpose, payment date, campus budget, county allocation, or whether the gift was tied to Apple employees, corporate funds, or the Reno campus. It is not extrapolated or summed into annual campus impact.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Direct community contribution",
+      "category": "community",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_apple_fbnn_contribution_floor_2023",
+      "project_id": "prj_study_im3_building_00464097467",
+      "metric_code": "study.direct_community_contribution",
+      "value": 10000,
+      "value_qualifier": "at_least",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "source_year",
+        "year": 2023,
+        "label": "Food Bank of Northern Nevada 2022-2023 annual-report period"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Apple Inc. gift to Food Bank of Northern Nevada, a regional recipient serving Washoe County and other areas",
+        "county_fips": "32031",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_fbnn_annual_report_2022_2023_apple",
+      "pdf_page": 12,
+      "printed_page": "12",
+      "source_locator": "Donors, Foundations, Organizations & Companies, Gifts totaling $10,000-$24,999",
+      "notes": "Recipient-reported lower bound for a second report period. It is not proof of a recurring exact amount or a campus-designated payment, and the source does not allocate benefits among counties in the Food Bank's service territory.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Direct community contribution",
+      "category": "community",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
     }
   ],
   "economic_sources": [
@@ -274,21 +1086,1032 @@
       "review_method": "pdf_text_and_page_image",
       "notes": "Existing workforce is company-reported in the application signed June 13, 2024. Detailed schedules are redacted in the public packet.",
       "artifact_sha256": "01dfca3b70a1510570cd150bb410e7074b8d7cdc328bafa9f986512e757946ac"
+    },
+    {
+      "source_id": "src_study_apple_environment_2026",
+      "title": "Apple Environmental Progress Report 2026",
+      "url": "https://www.apple.com/environment/pdf/Apple_Environmental_Progress_Report_2026.pdf",
+      "publisher": "Apple Inc.",
+      "source_type": "operator_release",
+      "publication_date": {
+        "precision": "year",
+        "year": 2026
+      },
+      "retrieved_on": "2026-09-05",
+      "review_method": "pdf_text_and_page_image",
+      "notes": "Apple reports fiscal-2025 Mesa electricity use, the supporting Bonnybrooke project's capacity, onsite PV capacity and operating dates. Electricity is operator-reported use; generating capacities are nameplate resources and not data-center load or output observations.",
+      "artifact_sha256": "dc23e8cb593f42969689c206dc7624156918d766efbbc9b20a9fb1d1c0b54518"
+    },
+    {
+      "source_id": "src_study_goed_biennial_abatements_2023_apple",
+      "title": "Approved Tax Abatement Biennial Report, Fiscal Years 2010 through 2022",
+      "url": "https://goed.nv.gov/wp-content/uploads/2024/02/NRS-231.0685-GOED-Biennial-Report-1.pdf",
+      "publisher": "Nevada Governor's Office of Economic Development",
+      "source_type": "state_record",
+      "publication_date": {
+        "precision": "day",
+        "date": "2023-01-17"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "pdf_text_and_page_image",
+      "notes": "The fiscal-year 2012 two-year and five-year audit table places Apple's June 30, 2012 effective contract in Washoe County. It reports original projections of 35 jobs, a $25.00 average wage, and $400 million capital expenditure, then reports audit findings of 83 jobs, a $38.42 average wage, and $689,829,656 capital expenditure. The table marks both the June 30, 2014 two-year audit and June 30, 2017 five-year audit compliant. The reported capital total is broad and is not treated as construction-only spending, a tax receipt, or an amount attributable to one campus building."
+    },
+    {
+      "source_id": "src_study_washoe_permit_activity_2016_h1_apple",
+      "title": "Washoe County Permit Activity Report, permits issued January 1 through June 30, 2016",
+      "url": "https://www.washoecounty.gov/building/Files/Files/Jan%20-%20Jun%202016.pdf",
+      "publisher": "Washoe County",
+      "source_type": "local_government_record",
+      "publication_date": {
+        "precision": "day",
+        "date": "2018-07-03"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_pdf_text",
+      "notes": "Exact-address permit search located Project Huckleberry permit 15-3589 and emergency-responder permit 15-3956. The main permit is retained as an administrative construction value; the smaller system permit is kept as supplier/permit context because it may overlap the main project scope."
+    },
+    {
+      "source_id": "src_study_washoe_permit_activity_2017_h2_apple",
+      "title": "Washoe County Permit Activity Report, permits issued July 1 through December 31, 2017",
+      "url": "https://www.washoecounty.gov/building/Files/July%20-%20Dec%202017.pdf",
+      "publisher": "Washoe County",
+      "source_type": "local_government_record",
+      "publication_date": {
+        "precision": "day",
+        "date": "2018-06-01"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_pdf_text",
+      "notes": "Exact-address search located Huckleberry Phase 2 permit 16-2026, Isabel permit WBLD17-100303, a $400,000 septic-system permit, a $1,261,320 fire-sprinkler permit, and named contractors. Only distinct main construction permits are normalized; subpermits are not added to them."
+    },
+    {
+      "source_id": "src_study_washoe_permit_activity_2018_may_aug_apple",
+      "title": "Washoe County Permit Activity Report, permits issued May 1 through August 31, 2018",
+      "url": "https://www.washoecounty.gov/building/Files/Files/2018%20May%20-%20Aug.pdf",
+      "publisher": "Washoe County",
+      "source_type": "local_government_record",
+      "publication_date": {
+        "precision": "day",
+        "date": "2018-10-31"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_pdf_text",
+      "notes": "The later report verifies final status for WBLD17-100303 and lists multiple $140,000 cluster fire-alarm permits. The alarm permits are not summed with the main permit because they may be embedded in the broader shell/buildout scope."
+    },
+    {
+      "source_id": "src_study_washoe_assessment_roll_2021_2022_apple",
+      "title": "Washoe County 2021/2022 Secured Assessment Roll",
+      "url": "https://gis.washoecounty.us/webservices/gisdataservice/DocumentFiles/AssessorOnlineReports/A7BE5E322AA4WC531ADMINCF8BC6597CX2B4/?fileId=2021-2022AssessmentRoll.pdf",
+      "publisher": "Washoe County Assessor",
+      "source_type": "assessor_record",
+      "publication_date": {
+        "precision": "day",
+        "date": "2020-12-02"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "pdf_text_and_page_image",
+      "notes": "The owner-indexed roll reports separate assessed land and building values for Apple parcels. Only APN 084-110-29, the main campus parcel tied to the permits and planning cases, is normalized."
+    },
+    {
+      "source_id": "src_study_washoe_assessment_roll_2024_2025_apple",
+      "title": "Washoe County 2024/2025 Secured Assessment Roll",
+      "url": "https://gis.washoecounty.us/webservices/gisdataservice/DocumentFiles/AssessorOnlineReports/A7BE5E322AA4WC531ADMINCF8BC6597CX2B4/?fileId=2024-2025AssessmentRoll.pdf",
+      "publisher": "Washoe County Assessor",
+      "source_type": "assessor_record",
+      "publication_date": {
+        "precision": "day",
+        "date": "2023-12-29"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "pdf_text_and_page_image",
+      "notes": "The later owner-indexed roll supplies a comparable APN 084-110-29 assessed land and building stock. The roll expressly says the Assessor values property but does not set rates or collect taxes."
+    },
+    {
+      "source_id": "src_study_washoe_water_rights_2015_apple",
+      "title": "Washoe County Commission July 14, 2015 agenda item 5F4, Reno Technology Park water-right deeds",
+      "url": "https://www.washoecounty.gov/bcc/board_committees/2015/files/agendas/2015-07-14/5F4.pdf",
+      "publisher": "Washoe County",
+      "source_type": "local_government_record",
+      "publication_date": {
+        "precision": "day",
+        "date": "2015-07-14"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_pdf_text",
+      "notes": "The staff report says 125 acre-feet of water rights were allocated to the Apple data center and pledged to the Reno Technology Park Water Company for service. It reports no fiscal impact for the conveyance."
+    },
+    {
+      "source_id": "src_study_pucn_nvenergy_rps_2022_apple",
+      "title": "NV Energy Portfolio Standard Annual Report, Compliance Year 2022",
+      "url": "https://pucweb1.state.nv.us/PDF/AxImages/DOCKETS_2020_THRU_PRESENT/2023-4/25590.pdf",
+      "publisher": "NV Energy filing with the Public Utilities Commission of Nevada",
+      "source_type": "state_record",
+      "publication_date": {
+        "precision": "year",
+        "year": 2023
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_pdf_text",
+      "notes": "The filing reports 560,408 MWh from 200 MW Techren Solar 2 and 112,268 MWh from 50 MW Turquoise Nevada Solar in 2022, with equal renewable-energy credits transferred to Apple. Those project outputs are not relabeled as facility consumption."
+    },
+    {
+      "source_id": "src_study_fbnn_annual_report_2021_2022_apple",
+      "title": "Food Bank of Northern Nevada 2021-2022 Annual Report",
+      "url": "https://fbnn.org/wp-content/uploads/2023/05/2021-22-Annual-Report-Final.pdf",
+      "publisher": "Food Bank of Northern Nevada",
+      "source_type": "other",
+      "publication_date": {
+        "precision": "year",
+        "year": 2023
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_pdf_text",
+      "notes": "Recipient report places Apple Inc. in the $10,000-$24,999 donor band. The report covers the regional organization, not a campus-designated grant."
+    },
+    {
+      "source_id": "src_study_fbnn_annual_report_2022_2023_apple",
+      "title": "Food Bank of Northern Nevada 2022-2023 Annual Report",
+      "url": "https://www.fbnn.org/wp-content/uploads/2024/03/2022-23-Annual-Report-Final.pdf",
+      "publisher": "Food Bank of Northern Nevada",
+      "source_type": "other",
+      "publication_date": {
+        "precision": "year",
+        "year": 2024
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_pdf_text",
+      "notes": "Recipient report again places Apple Inc. in the $10,000-$24,999 donor band. The lower bound is normalized without treating it as recurring campus spending."
     }
   ],
-  "economic_scope_note": "Reviewed evidence batches at campus or company/county scope. No record is allocated to an individual inventory building. Source checking establishes what a document reports, not an independent audit or causal attribution. Monetary figures are nominal. Peak workforce is distinct from annual employment; source-year labels do not establish fiscal-year boundaries. Original forecasts remain forecasts until realization is verified. No cross-record benefit total is defined. Cumulative project costs are not annual expenditure. Tax receipts and incentive payments remain separate, with inferred taxpayer links disclosed. Contextual research updates do not count as economic amounts. Account tax bills are distinct from cash receipts and incentive-program fees. Tax years, calendar years and fiscal years retain their source basis; separate taxpayer accounts are not consolidated. Municipal developer rebates and taxpayer valuations have distinct subjects. Estimated actual property value and tax capacity are not tax receipts; payable-year valuations retain their earlier assessment date. Taxpayer values expressed in millions retain approximate precision and account-level separation. A current-year table can use an older valuation date and is not converted into an annual series. Facility real-property and business-personal-property accounts remain separate, and address-label discrepancies are disclosed. Michigan Industrial Facilities Tax accounts remain distinct from the underlying real parcel and from post-expiration personal-property accounts; annual account totals are not recipient-level government receipts. Permit construction values are administrative project amounts, not verified expenditure, and separate permits are not combined without proof that their scopes do not overlap. Repeated maintenance-year assessments are annual parcel stocks, not new investment flows. Mixed-use parcel assessments and taxable values are retained at whole-parcel scope and are not allocated to a data-center tenant or function by floor area. Operator-reported jobs supported remain distinct from direct employees and FTEs. Approved infrastructure grants are documented public commitments rather than verified disbursements or total public costs. Cumulative community funding remains separate from tax receipts, payroll and modeled multiplier effects. Reported facility power capacity is not measured electricity consumption or peak demand. Permit-listed emergency generators are not runtime, fuel-use or actual-emissions observations. A city largest-taxpayer table's personal-property assessment remains separate from the leasehold real-property account, tax bills, receipts and capital expenditure. TIF loan principal is financing rather than a grant or general-fund receipt; project-generated tax revenue pledged to repayment is retained as a separate public-financing flow and is not added to gross parcel distributions. Water-withdrawal and consumptive permit capacities are regulatory limits rather than measured use. Development-agreement local-labor preferences are requirements rather than realized participation, and operating employee snapshots remain distinct from customers' on-site staff and jobs forecasts. Audited City bond statements distinguish issuance draws, year-end principal, annual principal retired, interest and fees, pledged TIF revenue, debt-service-fund transfers and future principal-plus-interest commitments. These measures are not summed into a benefit or subsidy total. City pledged revenue, City debt-service-fund transfers and the private fund's project TIF revenue applied to loan repayment retain their separate source definitions because only the 2022 transfer and private-fund amount agree exactly. Developer testimony in public meeting minutes is retained as a source-attributed cumulative lower bound; local-contractor spending is not converted into payroll, worker counts, household spending or multiplier effects. Economic-improvement-district cost estimates and maximum owner assessments remain source projections until bond issuance, an assessment schedule, collections and expenditures are verified. A statutory financing cap is not a tax receipt, public expenditure or subsidy. Audited private equipment-financing balances are debt stocks rather than construction spending, public support or community benefit. Reported floor area and occupied-share values describe operating scale and utilization, not employment, revenue, power use or economic output. Contractor and engineer case studies document supplier roles and completion timing but do not establish payment amounts, worker residence, payroll or multiplier effects. State incentive contract amounts, expected jobs and paid-or-certified-to-date fields remain distinct; a zero paid/certified balance at an earlier reporting cutoff does not imply no later claims. Public charging-infrastructure awards are commitments rather than verified disbursements, private project investment or operating benefits. Qualitative payment descriptions without a defensible numeric bound remain research context rather than quantitative records. Program-reported actual qualified investment, certified tax-exemption value and certified tax-credit value remain separate cumulative measures; none is converted into annual spending, a cash grant, local revenue or causal impact. County Business Patterns observations are county-industry context, not project contributions: establishment counts are employer locations rather than data-center facilities, March employment is not an annual average, annual payroll spans the full NAICS cell, and disclosure noise, classification changes and geographic assignment limit comparisons. No CBP change is attributed to a study project. Project fragments: prj_study_im3_building_00364289074: Public-source review for the Microsoft facility at 5150 Rogers Road and explicitly labeled wider Microsoft/Bexar County activity. The exact-site ordinance and permit records are retained separately from later company/county and Greater San Antonio disclosures. Permit value is an administrative construction amount, the original investment and employment figures are commitments, the 2013 employment threshold is a reported lower bound, and water use is a source projection rather than metered consumption. No Bexar-and-Medina total is allocated to this building. Actual annual construction spending, worker residence, payroll, vendor payments, operating purchases, recipient-level tax receipts, same-scope public-service cost, electricity use, wastewater, emissions, and annual community transfers remain unobserved. prj_study_im3_building_00377585075: DET01-specific direct-evidence follow-up. The operator data sheet supplies current facility-area and rated-power observations at 21005 Lahser Road. The 2014 operator release bounds the initial launch chronology but supplies no quantitative construction, supplier, payroll, community-funding, resource-use or public-cost observation. The values below are source-reported specifications, not audited utilization, expenditure or impact measures. prj_study_im3_building_00460089167: Public-source follow-up adds one facility-level 2024 electricity observation from Meta's environmental data index. The same source's rounded Forest City water-withdrawal and Scope 2 emissions values remain contextual until compatible canonical metric definitions exist. A North Carolina supplier announcement is retained only as context because its U.S.-wide contract value and Hickory manufacturing expansion cannot be allocated to Forest City or Rutherford County.",
+  "economic_scope_note": "Reviewed evidence batches at campus or company/county scope. No record is allocated to an individual inventory building. Source checking establishes what a document reports, not an independent audit or causal attribution. Monetary figures are nominal. Peak workforce is distinct from annual employment; source-year labels do not establish fiscal-year boundaries. Original forecasts remain forecasts until realization is verified. No cross-record benefit total is defined. Cumulative project costs are not annual expenditure. Tax receipts and incentive payments remain separate, with inferred taxpayer links disclosed. Contextual research updates do not count as economic amounts. Account tax bills are distinct from cash receipts and incentive-program fees. Tax years, calendar years and fiscal years retain their source basis; separate taxpayer accounts are not consolidated. Municipal developer rebates and taxpayer valuations have distinct subjects. Estimated actual property value and tax capacity are not tax receipts; payable-year valuations retain their earlier assessment date. Taxpayer values expressed in millions retain approximate precision and account-level separation. A current-year table can use an older valuation date and is not converted into an annual series. Facility real-property and business-personal-property accounts remain separate, and address-label discrepancies are disclosed. Michigan Industrial Facilities Tax accounts remain distinct from the underlying real parcel and from post-expiration personal-property accounts; annual account totals are not recipient-level government receipts. Permit construction values are administrative project amounts, not verified expenditure, and separate permits are not combined without proof that their scopes do not overlap. Repeated maintenance-year assessments are annual parcel stocks, not new investment flows. Mixed-use parcel assessments and taxable values are retained at whole-parcel scope and are not allocated to a data-center tenant or function by floor area. Operator-reported jobs supported remain distinct from direct employees and FTEs. Approved infrastructure grants are documented public commitments rather than verified disbursements or total public costs. Cumulative community funding remains separate from tax receipts, payroll and modeled multiplier effects. Reported facility power capacity is not measured electricity consumption or peak demand. Permit-listed emergency generators are not runtime, fuel-use or actual-emissions observations. A city largest-taxpayer table's personal-property assessment remains separate from the leasehold real-property account, tax bills, receipts and capital expenditure. TIF loan principal is financing rather than a grant or general-fund receipt; project-generated tax revenue pledged to repayment is retained as a separate public-financing flow and is not added to gross parcel distributions. Water-withdrawal and consumptive permit capacities are regulatory limits rather than measured use. Development-agreement local-labor preferences are requirements rather than realized participation, and operating employee snapshots remain distinct from customers' on-site staff and jobs forecasts. Audited City bond statements distinguish issuance draws, year-end principal, annual principal retired, interest and fees, pledged TIF revenue, debt-service-fund transfers and future principal-plus-interest commitments. These measures are not summed into a benefit or subsidy total. City pledged revenue, City debt-service-fund transfers and the private fund's project TIF revenue applied to loan repayment retain their separate source definitions because only the 2022 transfer and private-fund amount agree exactly. Developer testimony in public meeting minutes is retained as a source-attributed cumulative lower bound; local-contractor spending is not converted into payroll, worker counts, household spending or multiplier effects. Economic-improvement-district cost estimates and maximum owner assessments remain source projections until bond issuance, an assessment schedule, collections and expenditures are verified. A statutory financing cap is not a tax receipt, public expenditure or subsidy. Audited private equipment-financing balances are debt stocks rather than construction spending, public support or community benefit. Reported floor area and occupied-share values describe operating scale and utilization, not employment, revenue, power use or economic output. Contractor and engineer case studies document supplier roles and completion timing but do not establish payment amounts, worker residence, payroll or multiplier effects. State incentive contract amounts, expected jobs and paid-or-certified-to-date fields remain distinct; a zero paid/certified balance at an earlier reporting cutoff does not imply no later claims. Public charging-infrastructure awards are commitments rather than verified disbursements, private project investment or operating benefits. Qualitative payment descriptions without a defensible numeric bound remain research context rather than quantitative records. Program-reported actual qualified investment, certified tax-exemption value and certified tax-credit value remain separate cumulative measures; none is converted into annual spending, a cash grant, local revenue or causal impact. County Business Patterns observations are county-industry context, not project contributions: establishment counts are employer locations rather than data-center facilities, March employment is not an annual average, annual payroll spans the full NAICS cell, and disclosure noise, classification changes and geographic assignment limit comparisons. No CBP change is attributed to a study project. Project fragments: prj_study_im3_building_00364289074: Public-source review for the Microsoft facility at 5150 Rogers Road and explicitly labeled wider Microsoft/Bexar County activity. The exact-site ordinance and permit records are retained separately from later company/county and Greater San Antonio disclosures. Permit value is an administrative construction amount, the original investment and employment figures are commitments, the 2013 employment threshold is a reported lower bound, and water use is a source projection rather than metered consumption. No Bexar-and-Medina total is allocated to this building. Actual annual construction spending, worker residence, payroll, vendor payments, operating purchases, recipient-level tax receipts, same-scope public-service cost, electricity use, wastewater, emissions, and annual community transfers remain unobserved. prj_study_im3_building_00377585075: DET01-specific direct-evidence follow-up. The operator data sheet supplies current facility-area and rated-power observations at 21005 Lahser Road. The 2014 operator release bounds the initial launch chronology but supplies no quantitative construction, supplier, payroll, community-funding, resource-use or public-cost observation. The values below are source-reported specifications, not audited utilization, expenditure or impact measures. prj_study_im3_building_00460089167: Public-source follow-up adds one facility-level 2024 electricity observation from Meta's environmental data index. The same source's rounded Forest City water-withdrawal and Scope 2 emissions values remain contextual until compatible canonical metric definitions exist. A North Carolina supplier announcement is retained only as context because its U.S.-wide contract value and Hickory manufacturing expansion cannot be allocated to Forest City or Rutherford County. prj_study_im3_building_00464097467: Second-pass public-evidence audit for Apple's Washoe County data-center campus at 21505 Reno Technology Parkway West and its 2024 expansion application. GOED audit findings, application forecasts, county permit values, parcel assessments, a water-right allocation, operator-reported electricity use, and recipient-reported donation bands remain separate evidence states and scopes. Permit values are administrative amounts and are not summed because overlapping scopes cannot be ruled out. Assessment values are parcel stocks, not investment or tax receipts. The 125 acre-foot water right is regulatory capacity, not measured use. Food Bank gifts are company-region transfers, not campus-attributable annual spending. No campus total is allocated to the selected mapped building; the four-building campus, later buildout cases, downtown Reno warehouse, supporting renewable projects, fire-station parcel, and more-than-200-person support statement are not collapsed into one footprint. No Switch Citadel or Storey County amount enters this fragment. Vendor payments, worker residence, taxes received by jurisdiction, realized 2024 abatement, same-scope public-service cost, wastewater, and building-level electricity or water remain unobserved. prj_study_im3_building_00664938835: Second-pass public-evidence audit for Expedient's adaptive reuse of the pre-existing data-center building at 4777 W Ironwood Drive. The review searched Franklin planning, agenda, assessment, permit, water and sewer materials; Milwaukee County tax and deed-record access points; Wisconsin DOR, WEDC, DFI and PSC records; operator press, specification, career, ESG and community pages; lease, financing, carrier and vendor disclosures; and archived official pages for 2007-2026. Opening-day and current operator specifications remain separate dated snapshots because the reported area and capacity changed. The county portal now establishes a 2021-2025 parcel-tax principal series, but not Expedient's incidence under the lease. The 2022 ownership transfer, assessments, estimated permit values, tax payments and hiring plan remain non-additive. No source was found for actual construction outlays, realized site employment or payroll, local procurement, Milwaukee-area community transfers, metered resources, project-attributable public costs or a fiscal net. prj_study_im3_building_01073720208: Second-pass public-evidence audit for Google's Council Bluffs data-center activity, retaining the selected inventory building as the project key while leaving campus, taxpayer-account, company-county, and state-award facts at their reported scopes. The audit distinguishes completed IEDA contracts 08-HQJC-030 and 12-HQJP-051 from the 2022 award still in performance; permit valuations remain administrative amounts rather than expenditure; assessed and taxable values remain stocks; bills remain distinct from payments; and community grants remain recipient- and period-specific. The Pottawattamie County tax portal now supplies a paid 2018-2024 series for the principal Tetra parcel and an unpaid 2025 bill for the newer Questa parcel. No value is inferred for sales-tax exemptions, the local abatement schedule, franchise-fee adjustment, electricity, supplier retention, building-level water, marginal public-service cost, or net fiscal position. Models without defensible project allocation or transferable parameters were removed even though that leaves the eight-category account incomplete.",
   "evidence_version": "study-economic-evidence-1.37.0",
-  "modeled_syntheses": [],
-  "modeled_sources": [],
-  "modeled_scope_note": "Modeled contribution accounts for Apple Mesa / Maricopa County, Switch Citadel / Storey County, and Digital Crossroad Hammond / Lake County. Every required account category and county-comparison module contains sourced evidence or a visibly labeled modeled value. Public support is not netted against unmatched local revenues, unavailable public-service cost is represented by a break-even threshold rather than an invented net margin, county comparisons are descriptive rather than causal, and low-confidence transferred benchmarks remain explicit. Project fragments: prj_study_im3_building_00364289074: Low-confidence completion account for Microsoft San Antonio. Construction scenarios apply explicit 25%-75% construction-eligible shares to the reported greater-than-$840 million real-and-personal-property floor before using the Prince William County benchmark, so IT equipment is not silently treated as building construction. Operating scenarios combine the reported greater-than-75 employee floor with zero, half, or all of the separate 20-job expansion forecast; they are sensitivities, not fulfillment findings. County GDP, employment, and wage gaps are descriptive 2024 benchmark comparisons and are not facility effects. Existing source projections cover fiscal revenue, public support, and facility water demand. No annual net-fiscal estimate is made because verified same-scope recurring receipts and marginal public-service costs are unavailable. prj_study_im3_building_00377585075: DET01 completed contribution account. Source forecasts remain forecasts; modeled construction, supplier, household, resource and comparison values are visibly labeled sensitivity or benchmark scenarios. Personal-property equipment is excluded before construction multipliers. The 2025 tax-account aggregation is paired with an equal same-scope public-cost break-even threshold, not a net-fiscal result. County comparisons are descriptive and noncausal. Direct community funding, measured resource use, realized jobs, supplier payments and actual public costs remain gaps. prj_study_im3_building_00460089167: Completed contribution-account syntheses for Meta Forest City / Rutherford County. Broad cumulative capital receives an explicit 25-75% construction-eligible allocation before transferred construction benchmarks; operating scenarios translate the 2015 reported-position snapshot with a visible FTE sensitivity; the same-county, same-fiscal-year tax and incentive claims are reconciled before the public-cost break-even threshold; facility water and electricity resource models retain source rounding and scope; supplier and household channels remain separate; and county comparisons are descriptive benchmark gaps rather than causal effects. No net fiscal, audited, or causal result is asserted.",
+  "modeled_syntheses": [
+    {
+      "estimate_id": "est_study_apple_washoe_construction_eligible_spending",
+      "project_id": "prj_study_im3_building_00464097467",
+      "metric_code": "study.modeled_construction_eligible_spending",
+      "label": "Modeled construction-eligible expansion spending",
+      "category": "investment",
+      "unit": "USD",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 163000000,
+      "period": {
+        "kind": "projection_horizon",
+        "report_date": "2024-07-25",
+        "horizon_years": 3,
+        "label": "Application Years 1-3; calendar phase dates are not disclosed"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Apple Washoe County expansion construction schedule",
+        "county_fips": "32031",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "point_estimate",
+        "low": 163000000,
+        "central": 163000000,
+        "high": 163000000,
+        "interpretation": "Exact arithmetic on the three source-forecast construction-cost rows; it is not observed expenditure or a statistical interval."
+      },
+      "contribution_channel": "direct",
+      "aggregation": {
+        "aggregation_id": "apple_washoe_construction_eligible_spending",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "construction_year_1",
+          "value": 75000000,
+          "unit": "USD",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_econ_nv_apple_2024",
+            "detail": "Form 6(A) forecast construction cost for application Year 1"
+          },
+          "transformation": "Included in the construction-only sum"
+        },
+        {
+          "name": "construction_year_2",
+          "value": 44000000,
+          "unit": "USD",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_econ_nv_apple_2024",
+            "detail": "Form 6(A) forecast construction cost for application Year 2"
+          },
+          "transformation": "Included in the construction-only sum"
+        },
+        {
+          "name": "construction_year_3",
+          "value": 44000000,
+          "unit": "USD",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_econ_nv_apple_2024",
+            "detail": "Form 6(A) forecast construction cost for application Year 3"
+          },
+          "transformation": "Included in the construction-only sum"
+        },
+        {
+          "name": "excluded_equipment_projection",
+          "value": 742071428,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_apple_washoe_capex_plan",
+            "detail": "Separate first-five-year equipment capital forecast"
+          },
+          "transformation": "Excluded before construction coefficients are applied"
+        }
+      ],
+      "confidence": "medium",
+      "confidence_rationale": "The source schedule explicitly labels construction cost, but it is an application forecast with unanchored application years and no audited expenditure.",
+      "decision_relevance": "Defines the expansion construction base without applying construction coefficients to IT equipment or broad historical capital.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Historical permit values are available, but actual 2024-expansion expenditures, soft costs, phase dates, change orders, and allocation among the four campus buildings remain unavailable"
+      },
+      "derivation": {
+        "method": "benchmark_application",
+        "model_version": "apple-washoe-account-1.0.0",
+        "formula": "$75,000,000 Year 1 construction + $44,000,000 Year 2 construction + $44,000,000 Year 3 construction; exclude equipment capital",
+        "input_claim_ids": [
+          "clm_study_apple_washoe_construction_cost_projection_2024",
+          "clm_study_apple_washoe_capex_plan"
+        ],
+        "input_source_ids": [
+          "src_study_econ_nv_apple_2024"
+        ],
+        "assumptions": [
+          "The Form 6(A) construction-cost column is construction eligible; the separately reported equipment forecast is not.",
+          "Application Years 1-3 are retained without inventing calendar-year phase boundaries.",
+          "The result is campus-level and is not allocated to the selected mapped building."
+        ]
+      },
+      "limitations": [
+        "Forecast rather than realized spending.",
+        "No calendar start and end dates for each application year are public.",
+        "No building, contractor, labor, or vendor allocation is disclosed."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Construction-only arithmetic anchor. Do not add this modeled row to the identically scoped source forecast as a separate benefit.",
+      "reviewed_on": "2026-09-06"
+    },
+    {
+      "estimate_id": "est_study_apple_washoe_construction_job_years_direct",
+      "project_id": "prj_study_im3_building_00464097467",
+      "metric_code": "study.modeled_construction_job_years_direct",
+      "label": "Modeled direct construction job-years",
+      "category": "construction",
+      "unit": "job_years",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 944.89,
+      "period": {
+        "kind": "projection_horizon",
+        "report_date": "2024-07-25",
+        "horizon_years": 3,
+        "label": "Application Years 1-3; calendar phase dates are not disclosed"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Apple Washoe County expansion direct construction benchmark",
+        "county_fips": "32031",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": 472.45,
+        "central": 944.89,
+        "high": 1417.34,
+        "interpretation": "The direct 5.796875 job-years-per-$1 million coefficient is multiplied by the $163 million construction-only forecast and 0.5, 1.0, and 1.5 transfer factors. The deliberately wide range reflects cross-project and two-county transfer uncertainty; it is not a confidence interval."
+      },
+      "contribution_channel": "direct",
+      "aggregation": {
+        "aggregation_id": "apple_washoe_construction_job_years_direct",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "construction_eligible_spending",
+          "value": 163000000,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_apple_washoe_construction_cost_projection_2024",
+            "detail": "Explicit three-year construction-cost forecast, excluding equipment"
+          },
+          "transformation": "Converted to millions before multiplying by the direct job-year rate"
+        },
+        {
+          "name": "direct_job_years_per_million",
+          "value": 5.796875,
+          "unit": "job_years_per_million_USD",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_goed_tesla_storey_impact_2023",
+            "detail": "9,275 direct person-year jobs divided by $1.6 billion direct industrial-construction spending"
+          },
+          "transformation": "Transferred to the Apple construction-only forecast"
+        },
+        {
+          "name": "low_transfer_factor",
+          "value": 0.5,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Wide low sensitivity for different asset, contractor, geography, and timing mix"
+          },
+          "transformation": "Scales the same-region direct benchmark"
+        },
+        {
+          "name": "central_transfer_factor",
+          "value": 1,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Central transfer of the public direct benchmark"
+          },
+          "transformation": "Scales the same-region direct benchmark"
+        },
+        {
+          "name": "high_transfer_factor",
+          "value": 1.5,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Wide high sensitivity for different asset, contractor, geography, and timing mix"
+          },
+          "transformation": "Scales the same-region direct benchmark"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The source is a public same-region IMPLAN analysis, but it models a different industrial project, combines Washoe and Storey Counties, and does not publish underlying IMPLAN version or data vintage.",
+      "decision_relevance": "Provides a direct construction job-year range without treating peak workers, permanent jobs, equipment capital, or another data-center project as Apple employment.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Apple contractor worker-hours, job-years, payroll, trades, phase dates, and worker residence"
+      },
+      "derivation": {
+        "method": "input_output_multiplier",
+        "model_version": "apple-washoe-account-1.0.0",
+        "formula": "($163,000,000 / $1,000,000) x (9,275 direct job-years / $1,600 million) x transfer factor",
+        "input_claim_ids": [
+          "clm_study_apple_washoe_construction_cost_projection_2024"
+        ],
+        "input_source_ids": [
+          "src_study_econ_nv_apple_2024",
+          "src_study_goed_tesla_storey_impact_2023"
+        ],
+        "assumptions": [
+          "The construction-only forecast is the eligible spending base; the equipment forecast is excluded.",
+          "The direct same-region coefficient transfers with deliberately wide 0.5, 1.0, and 1.5 sensitivity factors after exact-address permit searches found no worker-hour or job-year observations.",
+          "Historical Apple permit values are retained as direct evidence and a plausibility check but are not summed or used as the 2024 expansion base because phase overlap and comparability are unresolved.",
+          "Indirect and induced channels are omitted because the public source combines them.",
+          "No Switch Citadel value, Storey County data-center spending, or GOED expansion impact total is added."
+        ]
+      },
+      "multiplier_provenance": {
+        "source_id": "src_study_goed_tesla_storey_impact_2023",
+        "model_name": "IMPLAN contribution analysis reported by Applied Economics",
+        "model_version": "Tesla Expansion Economic Impact Analysis, 2023-2027 construction tables",
+        "geography": "Washoe and Storey Counties benchmark transferred to the Apple Washoe County expansion",
+        "vintage": "Analysis published in 2023; underlying IMPLAN model version and dataset vintage not disclosed",
+        "local_purchase_assumption": "The source direct channel reflects its modeled two-county geography; transfer to Apple occurs only after isolating Apple's construction forecast and does not assert observed Apple local purchasing.",
+        "channel_separation": "direct_indirect_induced_reported_separately"
+      },
+      "limitations": [
+        "Transferred from a different industrial project and asset mix.",
+        "The benchmark combines Washoe and Storey Counties, while the Apple scope is Washoe County.",
+        "Job-years are not peak workers, annual-average headcount, local-resident jobs, or permanent jobs.",
+        "Only the direct channel is transferred."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Direct benchmark-equivalent job-years only. Do not add the packet's 1,257 modeled construction jobs or any Switch/Storey account value.",
+      "reviewed_on": "2026-09-06"
+    },
+    {
+      "estimate_id": "est_study_apple_washoe_construction_labor_income_direct",
+      "project_id": "prj_study_im3_building_00464097467",
+      "metric_code": "study.modeled_construction_labor_income_direct",
+      "label": "Modeled direct construction labor income",
+      "category": "construction",
+      "unit": "USD",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 94134843.13,
+      "period": {
+        "kind": "projection_horizon",
+        "report_date": "2024-07-25",
+        "horizon_years": 3,
+        "label": "Application Years 1-3; calendar phase dates are not disclosed"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Apple Washoe County expansion direct construction labor-income benchmark",
+        "county_fips": "32031",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": 47067421.57,
+        "central": 94134843.13,
+        "high": 141202264.7,
+        "interpretation": "The direct 0.577514375 labor-income-per-construction-dollar coefficient is multiplied by the $163 million construction-only forecast and 0.5, 1.0, and 1.5 transfer factors. The deliberately wide range reflects cross-project, wage-mix, and two-county transfer uncertainty; it is not a confidence interval."
+      },
+      "contribution_channel": "direct",
+      "aggregation": {
+        "aggregation_id": "apple_washoe_construction_labor_income_direct",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "construction_eligible_spending",
+          "value": 163000000,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_apple_washoe_construction_cost_projection_2024",
+            "detail": "Explicit three-year construction-cost forecast, excluding equipment"
+          },
+          "transformation": "Multiplied by the direct labor-income rate"
+        },
+        {
+          "name": "direct_labor_income_rate",
+          "value": 0.577514375,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_goed_tesla_storey_impact_2023",
+            "detail": "$924.023 million direct labor income divided by $1.6 billion direct industrial-construction spending"
+          },
+          "transformation": "Transferred to the Apple construction-only forecast"
+        },
+        {
+          "name": "low_transfer_factor",
+          "value": 0.5,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Wide low sensitivity for different wage, occupation, contractor, geography, and timing mix"
+          },
+          "transformation": "Scales the same-region direct benchmark"
+        },
+        {
+          "name": "central_transfer_factor",
+          "value": 1,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Central transfer of the public direct benchmark"
+          },
+          "transformation": "Scales the same-region direct benchmark"
+        },
+        {
+          "name": "high_transfer_factor",
+          "value": 1.5,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Wide high sensitivity for different wage, occupation, contractor, geography, and timing mix"
+          },
+          "transformation": "Scales the same-region direct benchmark"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The public coefficient is geographically relevant but comes from a different project and does not disclose the underlying IMPLAN version or data vintage.",
+      "decision_relevance": "Provides a direct construction labor-income range while keeping labor income separate from spending, output, and permanent payroll.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Apple construction payroll, benefits, proprietor income, worker residence, occupations, and annual phase allocation"
+      },
+      "derivation": {
+        "method": "input_output_multiplier",
+        "model_version": "apple-washoe-account-1.0.0",
+        "formula": "$163,000,000 x ($924,023,000 direct labor income / $1,600,000,000 direct construction spending) x transfer factor",
+        "input_claim_ids": [
+          "clm_study_apple_washoe_construction_cost_projection_2024"
+        ],
+        "input_source_ids": [
+          "src_study_econ_nv_apple_2024",
+          "src_study_goed_tesla_storey_impact_2023"
+        ],
+        "assumptions": [
+          "The construction-only forecast is the eligible spending base; the equipment forecast is excluded.",
+          "The direct same-region coefficient transfers with deliberately wide 0.5, 1.0, and 1.5 sensitivity factors after permit and vendor searches found no payroll or worker-hour observation.",
+          "Historical Apple permit values are retained as direct evidence and a plausibility check but are not summed or used as the 2024 expansion base because phase overlap and comparability are unresolved.",
+          "Indirect and induced channels are omitted because the public source combines them.",
+          "No Switch Citadel value, Storey County data-center spending, or packet economic-impact total is added."
+        ]
+      },
+      "multiplier_provenance": {
+        "source_id": "src_study_goed_tesla_storey_impact_2023",
+        "model_name": "IMPLAN contribution analysis reported by Applied Economics",
+        "model_version": "Tesla Expansion Economic Impact Analysis, 2023-2027 construction tables",
+        "geography": "Washoe and Storey Counties benchmark transferred to the Apple Washoe County expansion",
+        "vintage": "Analysis published in 2023; underlying IMPLAN model version and dataset vintage not disclosed",
+        "local_purchase_assumption": "The source direct channel reflects its modeled two-county geography; transfer to Apple occurs only after isolating Apple's construction forecast and does not assert observed Apple local purchasing.",
+        "channel_separation": "direct_indirect_induced_reported_separately"
+      },
+      "limitations": [
+        "Transferred from a different industrial project and asset mix.",
+        "The benchmark combines Washoe and Storey Counties, while the Apple scope is Washoe County.",
+        "Labor income is not observed payroll and is not additive to construction spending or output.",
+        "Only the direct channel is transferred."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Direct benchmark-equivalent labor income only; it must not be summed with construction spending or the packet's modeled payroll impact.",
+      "reviewed_on": "2026-09-06"
+    },
+    {
+      "estimate_id": "est_study_apple_washoe_operating_payroll_2024",
+      "project_id": "prj_study_im3_building_00464097467",
+      "metric_code": "study.modeled_operating_payroll",
+      "label": "Modeled annualized direct operating payroll",
+      "category": "operations",
+      "unit": "USD_per_year",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 7057232,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2024,
+        "label": "Annualized from the June 13, 2024 applicant-reported workforce snapshot"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Apple Washoe County data-center expansion applicant existing workforce",
+        "county_fips": "32031",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": 6049056,
+        "central": 7057232,
+        "high": 8065408,
+        "interpretation": "Eighty reported FTE at $48.47 per hour are annualized at 1,560, 1,820, and 2,080 paid hours. This is an hours sensitivity, not observed payroll or a confidence interval."
+      },
+      "contribution_channel": "direct",
+      "aggregation": {
+        "aggregation_id": "apple_washoe_operating_payroll_2024",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "reported_existing_fte",
+          "value": 80,
+          "unit": "FTE",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_apple_washoe_fte_2024",
+            "detail": "Existing FTE reported in the 2024 expansion application"
+          },
+          "transformation": "Multiplied by hourly wage and annual paid-hour scenario"
+        },
+        {
+          "name": "reported_average_hourly_wage",
+          "value": 48.47,
+          "unit": "USD_per_hour",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_apple_washoe_wage_2024",
+            "detail": "Average hourly wage of existing employees reported by the applicant"
+          },
+          "transformation": "Multiplied by FTE and annual paid-hour scenario"
+        },
+        {
+          "name": "low_annual_paid_hours",
+          "value": 1560,
+          "unit": "hours_per_FTE_year",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Thirty hours per week, matching the form's minimum FTE definition"
+          },
+          "transformation": "Low payroll annualization"
+        },
+        {
+          "name": "central_annual_paid_hours",
+          "value": 1820,
+          "unit": "hours_per_FTE_year",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Thirty-five hours per week central sensitivity"
+          },
+          "transformation": "Central payroll annualization"
+        },
+        {
+          "name": "high_annual_paid_hours",
+          "value": 2080,
+          "unit": "hours_per_FTE_year",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Forty hours per week conventional full-time schedule"
+          },
+          "transformation": "High payroll annualization"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "FTE and average wage are reported, but paid hours, bonuses, overtime, benefits, payroll period, and contractor compensation are not public.",
+      "decision_relevance": "Creates a transparent direct-payroll proxy without treating the more-than-200-person multi-site support statement as campus FTE.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Audited annual payroll, paid hours, bonuses, benefits, contractors, worker residence, and building allocation"
+      },
+      "derivation": {
+        "method": "sensitivity_analysis",
+        "model_version": "apple-washoe-account-1.0.0",
+        "formula": "80 existing FTE x $48.47 average hourly wage x annual paid-hour scenario",
+        "input_claim_ids": [
+          "clm_study_apple_washoe_fte_2024",
+          "clm_study_apple_washoe_wage_2024"
+        ],
+        "input_source_ids": [
+          "src_study_econ_nv_apple_2024"
+        ],
+        "assumptions": [
+          "Annual paid hours are 1,560, 1,820, or 2,080 per FTE.",
+          "The applicant's average hourly wage applies to the reported 80 existing FTE.",
+          "The estimate excludes contractors, benefits, bonuses, overtime, proposed hires, and the downtown warehouse unless already included in the applicant's FTE scope."
+        ]
+      },
+      "limitations": [
+        "Annual hours and payroll components are assumed.",
+        "The source is an applicant snapshot rather than payroll records.",
+        "Campus and warehouse allocation is unresolved."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Direct annualized payroll proxy only; do not add it to labor-income or economic-output estimates.",
+      "reviewed_on": "2026-09-06"
+    },
+    {
+      "estimate_id": "est_study_apple_washoe_gdp_comparison_gap",
+      "project_id": "prj_study_im3_building_00464097467",
+      "metric_code": "study.modeled_county_gdp_comparison_gap",
+      "label": "Modeled county real GDP comparison gap",
+      "category": "county_outcome",
+      "unit": "percent",
+      "measure_type": "change",
+      "basis": "modeled_synthesis",
+      "value": 10.49,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2024,
+        "label": "2024 Washoe County outcome relative to a mechanically matched benchmark; campus opening year 2012"
+      },
+      "scope": {
+        "level": "county",
+        "label": "Washoe County descriptive comparison for the Apple campus",
+        "county_fips": "32031",
+        "inventory_allocation": "not_applicable"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": 5.17,
+        "central": 10.49,
+        "high": 15.8,
+        "interpretation": "Central is the 2024 percentage gap; width is twice the 2005-2011 pre-period RMSE. It is a fit sensitivity, not a statistical confidence interval."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "apple_washoe_gdp_comparison_gap",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "host_2024_value",
+          "value": 33777549000,
+          "unit": "chained_2017_USD",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_county_economic_core_2001_2024",
+            "detail": "Washoe County 2024 real GDP from the county economic panel"
+          },
+          "transformation": "Compared with weighted benchmark value"
+        },
+        {
+          "name": "comparison_2024_value",
+          "value": 30572029112.20896,
+          "unit": "chained_2017_USD",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_county_economic_core_2001_2024",
+            "detail": "Inverse-distance weighted 2024 value from 20 comparison counties"
+          },
+          "transformation": "Subtracted from host and used as denominator"
+        },
+        {
+          "name": "pre_period_rmse_percent",
+          "value": 2.6562618275980174,
+          "unit": "percent",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Fit diagnostic over 2005-2011"
+          },
+          "transformation": "Sets fit-sensitivity width"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The benchmark is mechanical and the donor pool is not a validated unexposed causal comparison group.",
+      "decision_relevance": "Shows Washoe County's 2024 GDP divergence from a reproducible benchmark without attributing the gap to Apple.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "not_applicable",
+        "remaining_evidence_gap": "A defensible causal design with treatment isolation, complete exposure screening, placebo tests, spillover analysis, and robustness diagnostics"
+      },
+      "derivation": {
+        "method": "benchmark_application",
+        "model_version": "apple-washoe-account-1.0.0",
+        "formula": "100 x (host 2024 outcome - inverse-distance-weighted 20-county benchmark) / benchmark",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_county_economic_core_2001_2024"
+        ],
+        "assumptions": [
+          "Matching uses 2005-2011 log level, average log growth, and growth volatility.",
+          "Study counties are excluded from the donor pool.",
+          "The December 2012 campus opening is not assumed to date every building or isolate later expansions.",
+          "Apple, Tesla, Switch, other data centers, and broader Reno-Tahoe growth can affect the county trajectory."
+        ]
+      },
+      "limitations": [
+        "This comparison is descriptive and must not be interpreted as a data-center effect.",
+        "The donor screen cannot exclude every unobserved data center or concurrent investment.",
+        "Washoe County outcomes are not independent of adjacent Storey County development and regional spillovers.",
+        "The interval is fit sensitivity, not statistical confidence."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Low-confidence descriptive county comparison; no causal attribution is made and no causal_design metadata is attached.",
+      "reviewed_on": "2026-09-06"
+    },
+    {
+      "estimate_id": "est_study_apple_washoe_employment_comparison_gap",
+      "project_id": "prj_study_im3_building_00464097467",
+      "metric_code": "study.modeled_county_employment_comparison_gap",
+      "label": "Modeled county total employment comparison gap",
+      "category": "county_outcome",
+      "unit": "percent",
+      "measure_type": "change",
+      "basis": "modeled_synthesis",
+      "value": 13.44,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2024,
+        "label": "2024 Washoe County outcome relative to a mechanically matched benchmark; campus opening year 2012"
+      },
+      "scope": {
+        "level": "county",
+        "label": "Washoe County descriptive comparison for the Apple campus",
+        "county_fips": "32031",
+        "inventory_allocation": "not_applicable"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": -9.79,
+        "central": 13.44,
+        "high": 36.67,
+        "interpretation": "Central is the 2024 percentage gap; width is twice the 2005-2011 pre-period RMSE. It is a fit sensitivity, not a statistical confidence interval."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "apple_washoe_employment_comparison_gap",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "host_2024_value",
+          "value": 240544,
+          "unit": "jobs",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_county_economic_core_2001_2024",
+            "detail": "Washoe County 2024 total covered employment from the county economic panel"
+          },
+          "transformation": "Compared with weighted benchmark value"
+        },
+        {
+          "name": "comparison_2024_value",
+          "value": 212044.56892811938,
+          "unit": "jobs",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_county_economic_core_2001_2024",
+            "detail": "Inverse-distance weighted 2024 value from 20 comparison counties"
+          },
+          "transformation": "Subtracted from host and used as denominator"
+        },
+        {
+          "name": "pre_period_rmse_percent",
+          "value": 11.61506671107322,
+          "unit": "percent",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Fit diagnostic over 2005-2011"
+          },
+          "transformation": "Sets fit-sensitivity width"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The benchmark is mechanical and the donor pool is not a validated unexposed causal comparison group.",
+      "decision_relevance": "Shows Washoe County's 2024 employment divergence from a reproducible benchmark without attributing the gap to Apple.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "not_applicable",
+        "remaining_evidence_gap": "A defensible causal design with treatment isolation, complete exposure screening, placebo tests, spillover analysis, and robustness diagnostics"
+      },
+      "derivation": {
+        "method": "benchmark_application",
+        "model_version": "apple-washoe-account-1.0.0",
+        "formula": "100 x (host 2024 outcome - inverse-distance-weighted 20-county benchmark) / benchmark",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_county_economic_core_2001_2024"
+        ],
+        "assumptions": [
+          "Matching uses 2005-2011 log level, average log growth, and growth volatility.",
+          "Study counties are excluded from the donor pool.",
+          "The December 2012 campus opening is not assumed to date every building or isolate later expansions.",
+          "Apple, Tesla, Switch, other data centers, and broader Reno-Tahoe growth can affect the county trajectory."
+        ]
+      },
+      "limitations": [
+        "This comparison is descriptive and must not be interpreted as a data-center effect.",
+        "The donor screen cannot exclude every unobserved data center or concurrent investment.",
+        "Washoe County outcomes are not independent of adjacent Storey County development and regional spillovers.",
+        "The interval is fit sensitivity, not statistical confidence."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Low-confidence descriptive county comparison; no causal attribution is made and no causal_design metadata is attached.",
+      "reviewed_on": "2026-09-06"
+    },
+    {
+      "estimate_id": "est_study_apple_washoe_wage_comparison_gap",
+      "project_id": "prj_study_im3_building_00464097467",
+      "metric_code": "study.modeled_county_wage_comparison_gap",
+      "label": "Modeled county average weekly wage comparison gap",
+      "category": "county_outcome",
+      "unit": "percent",
+      "measure_type": "change",
+      "basis": "modeled_synthesis",
+      "value": 9.86,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2024,
+        "label": "2024 Washoe County outcome relative to a mechanically matched benchmark; campus opening year 2012"
+      },
+      "scope": {
+        "level": "county",
+        "label": "Washoe County descriptive comparison for the Apple campus",
+        "county_fips": "32031",
+        "inventory_allocation": "not_applicable"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": 0.01,
+        "central": 9.86,
+        "high": 19.72,
+        "interpretation": "Central is the 2024 percentage gap; width is twice the 2005-2011 pre-period RMSE. It is a fit sensitivity, not a statistical confidence interval."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "apple_washoe_wage_comparison_gap",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "host_2024_value",
+          "value": 1336,
+          "unit": "USD_per_week",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_county_economic_core_2001_2024",
+            "detail": "Washoe County 2024 nominal average weekly wage from the county economic panel"
+          },
+          "transformation": "Compared with weighted benchmark value"
+        },
+        {
+          "name": "comparison_2024_value",
+          "value": 1216.0583795777827,
+          "unit": "USD_per_week",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_county_economic_core_2001_2024",
+            "detail": "Inverse-distance weighted 2024 value from 20 comparison counties"
+          },
+          "transformation": "Subtracted from host and used as denominator"
+        },
+        {
+          "name": "pre_period_rmse_percent",
+          "value": 4.927080322307121,
+          "unit": "percent",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Fit diagnostic over 2005-2011"
+          },
+          "transformation": "Sets fit-sensitivity width"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The benchmark is mechanical and the donor pool is not a validated unexposed causal comparison group.",
+      "decision_relevance": "Shows Washoe County's 2024 wage divergence from a reproducible benchmark without attributing the gap to Apple.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "not_applicable",
+        "remaining_evidence_gap": "A defensible causal design with treatment isolation, complete exposure screening, placebo tests, spillover analysis, and robustness diagnostics"
+      },
+      "derivation": {
+        "method": "benchmark_application",
+        "model_version": "apple-washoe-account-1.0.0",
+        "formula": "100 x (host 2024 outcome - inverse-distance-weighted 20-county benchmark) / benchmark",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_county_economic_core_2001_2024"
+        ],
+        "assumptions": [
+          "Matching uses 2005-2011 log level, average log growth, and growth volatility.",
+          "Study counties are excluded from the donor pool.",
+          "The December 2012 campus opening is not assumed to date every building or isolate later expansions.",
+          "Apple, Tesla, Switch, other data centers, and broader Reno-Tahoe growth can affect the county trajectory."
+        ]
+      },
+      "limitations": [
+        "This comparison is descriptive and must not be interpreted as a data-center effect.",
+        "The donor screen cannot exclude every unobserved data center or concurrent investment.",
+        "Washoe County outcomes are not independent of adjacent Storey County development and regional spillovers.",
+        "The interval is fit sensitivity, not statistical confidence."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Low-confidence descriptive county comparison; no causal attribution is made and no causal_design metadata is attached.",
+      "reviewed_on": "2026-09-06"
+    }
+  ],
+  "modeled_sources": [
+    {
+      "source_id": "src_study_econ_nv_apple_2024",
+      "title": "Apple expansion application — Nevada GOED board packet, July 25, 2024",
+      "url": "https://goed.nv.gov/wp-content/uploads/2024/07/7-B.-Apple-Inc.-Board-Packet.pdf",
+      "publisher": "Nevada Governor’s Office of Economic Development",
+      "source_type": "state_record",
+      "publication_date": {
+        "precision": "day",
+        "date": "2024-07-25"
+      },
+      "retrieved_on": "2026-09-03",
+      "review_method": "pdf_text_and_page_image",
+      "notes": "Existing workforce is company-reported in the application signed June 13, 2024. Detailed schedules are redacted in the public packet.",
+      "artifact_sha256": "01dfca3b70a1510570cd150bb410e7074b8d7cdc328bafa9f986512e757946ac"
+    },
+    {
+      "source_id": "src_study_goed_tesla_storey_impact_2023",
+      "title": "Tesla Expansion Economic Impact Analysis",
+      "url": "https://goed.nv.gov/wp-content/uploads/2024/01/3-A.-Tesla-Inc.-Board-Packet-PG-38-56.pdf",
+      "publisher": "Nevada Governor's Office of Economic Development",
+      "source_type": "state_record",
+      "publication_date": {
+        "precision": "year",
+        "year": 2023
+      },
+      "retrieved_on": "2026-09-05",
+      "review_method": "pdf_text_and_page_image",
+      "notes": "Public same-region IMPLAN analysis reports $1.6 billion of direct industrial-construction spending, 9,275 direct person-year jobs, and $924.023 million of direct labor income for 2023-2027 in Washoe and Storey Counties. Its asset mix, scale, timing and contractor mix differ from Citadel; the transfer is therefore sensitivity-tested and used only for direct construction channels. The report combines indirect and induced channels, so those channels are not transferred."
+    },
+    {
+      "source_id": "src_study_county_economic_core_2001_2024",
+      "title": "County Economic Core Panel, 2001-2024",
+      "url": "https://apps.bea.gov/regional/downloadzip.htm",
+      "publisher": "U.S. Bureau of Economic Analysis and U.S. Bureau of Labor Statistics",
+      "source_type": "other",
+      "publication_date": {
+        "precision": "year",
+        "year": 2026
+      },
+      "retrieved_on": "2026-09-05",
+      "review_method": "structured_data",
+      "notes": "Repository panel compiled from official annual county real GDP, total employment and average-weekly-wage series. The completion model uses pre-treatment histories and 2024 outcomes; source revisions and concurrent treatments remain limitations."
+    }
+  ],
+  "modeled_scope_note": "Modeled contribution accounts for Apple Mesa / Maricopa County, Switch Citadel / Storey County, and Digital Crossroad Hammond / Lake County. Every required account category and county-comparison module contains sourced evidence or a visibly labeled modeled value. Public support is not netted against unmatched local revenues, unavailable public-service cost is represented by a break-even threshold rather than an invented net margin, county comparisons are descriptive rather than causal, and low-confidence transferred benchmarks remain explicit. Project fragments: prj_study_im3_building_00364289074: Low-confidence completion account for Microsoft San Antonio. Construction scenarios apply explicit 25%-75% construction-eligible shares to the reported greater-than-$840 million real-and-personal-property floor before using the Prince William County benchmark, so IT equipment is not silently treated as building construction. Operating scenarios combine the reported greater-than-75 employee floor with zero, half, or all of the separate 20-job expansion forecast; they are sensitivities, not fulfillment findings. County GDP, employment, and wage gaps are descriptive 2024 benchmark comparisons and are not facility effects. Existing source projections cover fiscal revenue, public support, and facility water demand. No annual net-fiscal estimate is made because verified same-scope recurring receipts and marginal public-service costs are unavailable. prj_study_im3_building_00377585075: DET01 completed contribution account. Source forecasts remain forecasts; modeled construction, supplier, household, resource and comparison values are visibly labeled sensitivity or benchmark scenarios. Personal-property equipment is excluded before construction multipliers. The 2025 tax-account aggregation is paired with an equal same-scope public-cost break-even threshold, not a net-fiscal result. County comparisons are descriptive and noncausal. Direct community funding, measured resource use, realized jobs, supplier payments and actual public costs remain gaps. prj_study_im3_building_00460089167: Completed contribution-account syntheses for Meta Forest City / Rutherford County. Broad cumulative capital receives an explicit 25-75% construction-eligible allocation before transferred construction benchmarks; operating scenarios translate the 2015 reported-position snapshot with a visible FTE sensitivity; the same-county, same-fiscal-year tax and incentive claims are reconciled before the public-cost break-even threshold; facility water and electricity resource models retain source rounding and scope; supplier and household channels remain separate; and county comparisons are descriptive benchmark gaps rather than causal effects. No net fiscal, audited, or causal result is asserted. prj_study_im3_building_00464097467: Second-pass modeled contribution account after an expanded public-evidence audit. Direct county permits now cover historical construction values, assessor rolls cover a main-campus parcel stock, a county action covers water-right capacity, Apple reports 2025 campus electricity use, and recipient reports bound two community gifts. Those observations supersede the need for a modeled community proxy but do not supply Apple contractor job-years, construction payroll, annual operating payroll, supplier payments, taxes received, or public-service cost. The construction base therefore retains only the packet's explicit $163 million construction forecast and excludes equipment and historical capital; wide 0.5-1.5 transfer sensitivities expose the mismatch in the last-resort direct construction coefficients. The unsupported local-purchase-share and Virginia induced-output models are removed. No net-fiscal value or public-service-cost break-even is published. County outcome gaps remain descriptive benchmark applications with fit-sensitivity intervals and no causal-design metadata. prj_study_im3_building_00664938835: Second-pass Expedient Milwaukee / Franklin syntheses retained only after a documented 2007-2026 public-source audit. The account keeps a clearly labeled 2022 ownership-transfer anchor, a PB25-0303-only construction allocation sensitivity, an exact tax-equal public-cost break-even threshold, a capacity-based electricity engineering sensitivity, and three descriptive county comparison gaps. It removes transferred construction job-years, assumed local-purchase shares, supplier and household output extrapolations, and a duplicate modeled tax row because public sources did not establish realized site employment, supplier geography, household capture, or a need to restate the direct tax observations. PM25-0174 remains excluded for possible overlap. No synthesis is an observed result or fiscal net. prj_study_im3_building_01073720208: Second-pass governed synthesis for Google Council Bluffs. Construction job-years use only two directly observed September 2025 city permit valuations and transfer the published Prince William County prototype coefficients as benchmark equivalents; the four channels are separated and protected by one aggregation. No Pottawattamie County supplier-retention share is imposed because the public audit found contractor names but no payment or vendor-residence ledger. The water row is the unallocated Google Council Bluffs location identity reported for 2024, not a building allocation. No local abatement, exemption realization, franchise-fee amount, electric load, public-service cost, break-even threshold, or net fiscal result is modeled. County outcome gaps remain descriptive benchmark applications with fit-sensitivity ranges and no causal attribution.",
   "synthesis_version": "study-modeled-synthesis-3.2.0",
   "modeling_policy_version": "study-modeling-policy-1.3.0",
   "analysis_readiness": {
-    "construction": "not_assessed",
-    "operations": "not_assessed",
+    "construction": "modeled_available",
+    "operations": "modeled_available",
     "fiscal": "not_assessed",
     "causal": "not_assessed"
   },
   "legacy_first_entry_note": "Nevada GOED identifies Apple's Washoe County campus and documents its December 2012 opening; the mapped footprint lies within that data-center complex. The evidence does not establish which of the campus buildings entered service first, a complete county inventory, or the absence of earlier government, university, telecom, utility, financial, healthcare, casino, or enterprise operations.",
-  "scope_note": "Provisional private-sector research candidate. Owner/operator history, project boundaries and lifecycle require review. Membership does not verify current operation or establish economic impact."
+  "scope_note": "Provisional private-sector research candidate. Owner/operator history, project boundaries and lifecycle require review. Membership does not verify current operation or establish economic impact.",
+  "project_description": "Apple's Washoe County data-center campus is located at 21505 Reno Technology Parkway West near Reno, Nevada, and is operated by Apple. The project key represents one mapped building, while source records describe a four-building campus that began operating in 2012, later buildout permits, supporting renewable projects, and a distinct 2024 expansion application; those boundaries are kept separate from tenant equipment and other Apple properties. County and operator records document completed construction activity, parcel development, water-right capacity, and campus-level electricity use."
 }

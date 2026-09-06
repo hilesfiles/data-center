@@ -16,10 +16,10 @@
   "detail_path": "projects/prj_study_im3_building_01073720208.json",
   "latitude": 41.17734372844027,
   "longitude": -95.80485695055478,
-  "economic_record_count": 5,
-  "reported_actual_count": 3,
-  "projection_count": 2,
-  "modeled_synthesis_count": 0,
+  "economic_record_count": 31,
+  "reported_actual_count": 27,
+  "projection_count": 4,
+  "modeled_synthesis_count": 8,
   "model_completeness": {
     "status": "incomplete",
     "required_categories": [
@@ -33,35 +33,38 @@
       "community"
     ],
     "covered_categories": [
+      "community",
+      "construction",
       "fiscal",
       "investment",
-      "operations"
+      "operations",
+      "public_costs",
+      "resources"
     ],
-    "modeled_categories": [],
+    "modeled_categories": [
+      "construction",
+      "resources"
+    ],
     "required_county_outcomes": [
       "study.modeled_county_employment_comparison_gap",
       "study.modeled_county_gdp_comparison_gap",
       "study.modeled_county_wage_comparison_gap"
     ],
-    "covered_county_outcomes": [],
-    "missing_categories": [
-      "community",
-      "construction",
-      "public_costs",
-      "resources",
-      "suppliers"
-    ],
-    "missing_county_outcomes": [
+    "covered_county_outcomes": [
       "study.modeled_county_employment_comparison_gap",
       "study.modeled_county_gdp_comparison_gap",
       "study.modeled_county_wage_comparison_gap"
     ],
+    "missing_categories": [
+      "suppliers"
+    ],
+    "missing_county_outcomes": [],
     "direct_evidence_gap_count": 8,
     "definition": "All eight contribution-account categories contain sourced or labeled modeled values, and GDP, employment, and wage county-comparison modules are populated. Comparison gaps are descriptive and do not establish causal facility effects."
   },
   "schema_version": "1.0.0",
-  "release_id": "private-sector-study-1.44.0",
-  "generated_at": "2026-09-06T14:41:19+00:00",
+  "release_id": "private-sector-study-1.45.0",
+  "generated_at": "2026-09-06T16:15:28+00:00",
   "inventory_name": "Google",
   "research_value": "Long operating history and multiple mapped buildings; validate campus/phase opening chronology.",
   "history": {
@@ -106,19 +109,292 @@
         "artifact_sha256": "90a9a3483508a842bb38b326cad366102a82a0e9bf26cce77b02228c6e9d9f56",
         "notes": "Principal Area Taxpayers table is in the unaudited statistical section. It labels Gable Corp., Questa LLC and Tetra LLC as Google, reports values in millions, and dates the taxable values January 1, 2022 despite the 2024 table heading. The table cites the Series 2024AB Official Statement dated April 22, 2024. Page text and image were checked."
       }
+    },
+    {
+      "project_id": "prj_study_im3_building_01073720208",
+      "source_id": "src_study_iowa_ieda_2025_annual_report_google_council_bluffs",
+      "as_of": "2025-06-30",
+      "title": "The 2022 Council Bluffs award remains in performance",
+      "notes": "IEDA continues to list contract 23-HQJPTC-005 as an under-contract performance-period project, with $600 million capital investment and 31 jobs contracted for completion by October 31, 2029. These remain commitments. The table's zero maximum state tax benefit does not establish a zero local property-tax exemption, and no realized investment, filled-job count, abatement value, payment, receipt, or taxpayer-account allocation is inferred.",
+      "source": {
+        "source_id": "src_study_iowa_ieda_2025_annual_report_google_council_bluffs",
+        "title": "IEDA 2025 Annual Report",
+        "url": "https://www.legis.iowa.gov/docs/publications/DF/1600580.pdf",
+        "publisher": "Iowa Economic Development Authority",
+        "source_type": "state_record",
+        "publication_date": {
+          "precision": "day",
+          "date": "2026-01-31"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_pdf_text",
+        "notes": "The projects-under-contract table retains Google LLC contract 23-HQJPTC-005 in Council Bluffs with $600 million of total project cost and capital investment, 31 contracted created jobs, a $28.73 qualifying wage, an October 31, 2029 completion date, and an October 31, 2031 maintenance date. The table reports zero direct funding and zero maximum state tax benefit while the project award is a local property-tax exemption; it does not quantify the exemption or establish realized investment, jobs, or local tax receipts. The report is dated January 31, 2026 and reports contract status as of June 30, 2025."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_01073720208",
+      "source_id": "src_study_google_iowa_impact_2024",
+      "as_of": "2024-12-31",
+      "title": "Wider Iowa impact-model outputs remain contextual",
+      "notes": "The Deloitte study reports statewide direct, indirect, induced, and total GDP, jobs, and labor-income estimates for 2021-2023 using IMPLAN and Google-provided inputs. Those outputs are not inserted as observed Council Bluffs records or re-modeled here because they combine channels, years, and Iowa data-center activity without a selected-building allocation.",
+      "source": {
+        "source_id": "src_study_google_iowa_impact_2024",
+        "title": "Google's Data Center Impact in Iowa — 2024 Impact Study",
+        "url": "https://www.gstatic.com/marketing-cms/3b/64/f40b9fe249dcb82912724229c834/2024-impact-study-iowa.pdf",
+        "publisher": "Google LLC and Deloitte Consulting LLP",
+        "source_type": "operator_release",
+        "publication_date": {
+          "precision": "year",
+          "year": 2024
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_pdf_text",
+        "notes": "Deloitte prepared the study for Google using Google-provided, public, and third-party information without independent verification. The report identifies $285,000 invested during 2019-2023 in the Council Bluffs Community School District STEM and Computer Science Diploma Pathways program. Wider Iowa economic-impact outputs are IMPLAN-modeled and are not entered as observed project records."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_01073720208",
+      "source_id": "src_study_pottawattamie_gis_google_parcels_2026",
+      "as_of": "2026-09-06",
+      "title": "Assessor and treasurer audit resolved two principal operating parcels",
+      "notes": "Source families checked: Pottawattamie County GIS parcel layer, County Treasurer parcel search, linked assessor cards, and tax histories. Queries: owner SQL OWNER LIKE '%QUESTA%' OR OWNER LIKE '%TETRA%' OR OWNER LIKE '%GOOGLE%', then parcel IDs 744333101001 and 744411476005. Date range reviewed: tax years 2018-2025 plus current parcel/deed fields. Positive results are recorded separately as parcel stocks, bills, and payments. Negative result: the current GIS query did not return a corporate Gable owner row; eight additional Tetra/Questa land parcels had no address or material building value, and no company-wide rollup, personal-property account, jurisdiction distribution, or paid 2025 ordinary-tax evidence was found.",
+      "source": {
+        "source_id": "src_study_pottawattamie_gis_google_parcels_2026",
+        "title": "Pottawattamie County GIS public parcel layer",
+        "url": "https://gis.pottcounty-ia.gov/arcgis/rest/services/PublicDataEnterprise/PublicData_Parcels/FeatureServer/0",
+        "publisher": "Pottawattamie County GIS",
+        "source_type": "assessor_record",
+        "publication_date": {
+          "precision": "day",
+          "date": "2026-09-06"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "structured_data",
+        "notes": "Owner query OWNER LIKE '%QUESTA%' OR OWNER LIKE '%TETRA%' OR OWNER LIKE '%GOOGLE%' returned ten records. It resolved the two addressed parcels used in the tax audit—Questa 744333101001 at 10410 Bunge Avenue and Tetra 744411476005 at 1430 Veterans Memorial Highway—plus eight mostly unaddressed land parcels. Values from the live tax-detail pages, which carry tax years, are used instead of undated GIS totals."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_01073720208",
+      "source_id": "src_study_council_bluffs_permits_2025_09",
+      "as_of": "2025-09-30",
+      "title": "Planning, permit, and contractor-record audit found valued work packages but no supplier payments",
+      "notes": "Source families checked: Council Bluffs Archive Center, City Council and Planning Commission packets, Building Division monthly permit reports, and the public permit map service. Queries included Google, Gable, Questa, Tetra, 10410 Bunge, 1430 Veterans Memorial, SLN 4A/5A/6A, and data center across 2007-2025. Positive quantitative results are the two 2025 permit valuations. Other reports identify contractors including JE Dunn, Whiting-Turner, Michels Power, DNB Electric, Miller Electric, Mainelli Mechanical, and MMC, but no invoices, payments, vendor residence, payroll, local-purchase share, completion cost, or procurement award was found. Therefore supplier retention remains unmodeled.",
+      "source": {
+        "source_id": "src_study_council_bluffs_permits_2025_09",
+        "title": "Council Bluffs building permits detail, September 2025",
+        "url": "https://www.councilbluffs-ia.gov/DocumentCenter/View/9885",
+        "publisher": "City of Council Bluffs Building Division",
+        "source_type": "local_government_record",
+        "publication_date": {
+          "precision": "day",
+          "date": "2025-10-01"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_pdf_text",
+        "notes": "The monthly report lists permit 25-0065-ELN for SLN 6A data-center electrical new work at 10410 Bunge Avenue, 288,530 square feet, with $92,462,323 valuation; it also lists permit 2500539-676608 at 1430 Veterans Memorial Highway for cooling-tower demolition and replacement with $9,060,288 valuation. Permit valuation is an administrative amount, not verified spending."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_01073720208",
+      "source_id": "src_study_council_bluffs_google_sewer_2013",
+      "as_of": "2013-09-26",
+      "title": "Development agreement required developer-funded sewer improvements without a disclosed value",
+      "notes": "Source families checked: 2009 development-agreement references, 2012 annexation planning minutes, 2013 sewer-dedication packet, and later agreement amendments. Record identifiers: January 16, 2009 development agreement and the 975-acre tract sewer-line, pump-station, and appurtenance dedication. The packet establishes developer responsibility, completion, City acceptance, and a two-year maintenance letter of credit, but no construction cost, donated fair value, municipal maintenance cost, wastewater volume, or selected-building allocation. No public-cost amount is inferred.",
+      "source": {
+        "source_id": "src_study_council_bluffs_google_sewer_2013",
+        "title": "Council Bluffs City Council study-session packet — dedication of Google sewer improvements",
+        "url": "https://www.councilbluffs-ia.gov/ArchiveCenter/ViewFile/Item/224",
+        "publisher": "City of Council Bluffs",
+        "source_type": "local_government_record",
+        "publication_date": {
+          "precision": "day",
+          "date": "2013-09-26"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_pdf_text",
+        "notes": "Google's letter states that the 2009 development agreement required Gable and Questa, at developer cost, to design and install an offsite sanitary sewer line, pump station, and appurtenances serving the 975-acre tract, and that the completed improvements were being dedicated to the City. No cost or fair value is stated."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_01073720208",
+      "source_id": "src_study_council_bluffs_google_amendment_2021",
+      "as_of": "2021-12-13",
+      "title": "Local incentive audit found an unquantified franchise-fee and abatement reconciliation",
+      "notes": "Source families checked: City Council resolutions, development-agreement packets, official statements, principal-taxpayer tables, and agreement amendments for 2009-2021. Resolution 21-364 confirms that a 2011 franchise-fee cap modification was implemented late and that the second amendment adjusted the abatement schedule to resolve the inequity. The public resolution supplies no cap, repayment, credit, abatement percentage, foregone-revenue amount, cash transfer, or same-period service cost; it cannot support net fiscal or break-even calculations.",
+      "source": {
+        "source_id": "src_study_council_bluffs_google_amendment_2021",
+        "title": "Council Bluffs Resolution 21-364",
+        "url": "https://councilbluffs.novusagenda.com/agendapublic/AttachmentViewer.ashx?AttachmentID=10112&ItemID=4898",
+        "publisher": "City of Council Bluffs",
+        "source_type": "local_government_record",
+        "publication_date": {
+          "precision": "day",
+          "date": "2021-12-13"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_pdf_text",
+        "notes": "The resolution authorizes a second amendment to the 2009 Gable/Questa development agreement. It says the 2011 amendment changed a franchise-fee cap, the change was not implemented until the current fiscal year, and the second amendment would adjust the abatement schedule to address the inequity. It provides no dollar amount."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_01073720208",
+      "source_id": "src_study_iowa_ieda_google_prior_awards_2024_03",
+      "as_of": "2024-03-22",
+      "title": "IEDA contract, amendment, compliance, and certification audit preserved identifier discrepancies",
+      "notes": "Source families checked: IEDA annual reports by status and county, Board packets, prior-award tables, and exact web queries for 08-HQJC-030, 12-HQJP-051, 23-HQJPTC-005, 23-HQJP-004, and 12-HQJP-071 covering 2007-2026. Completed-award quantities and the performing award are recorded. The March 2024 packet's two variant contract numbers are preserved as a source discrepancy rather than new awards. No public amendment text for the IEDA contracts, tax-credit certificate, claim/use schedule, recapture, repayment, or certified final benefit was found.",
+      "source": {
+        "source_id": "src_study_iowa_ieda_google_prior_awards_2024_03",
+        "title": "IEDA March 2024 board packet — Google prior awards",
+        "url": "https://www.iowaeda.com/UserDocs/events/2024marboardpacket.pdf",
+        "publisher": "Iowa Economic Development Authority",
+        "source_type": "state_record",
+        "publication_date": {
+          "precision": "day",
+          "date": "2024-03-22"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_pdf_text",
+        "notes": "The Cedar Rapids project review lists two Council Bluffs prior awards with the same dates, values, jobs, wages, and statuses used elsewhere, but renders their contract numbers as 23-HQJP-004 and 12-HQJP-071. The annual reports render them as 23-HQJPTC-005 and 12-HQJP-051; the identifier discrepancy is preserved and not treated as a new award."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_01073720208",
+      "source_id": "src_study_iowa_dor_data_center_incentives_2025",
+      "as_of": "2026-09-06",
+      "title": "Iowa revenue audit found program rules but no project-specific exemption amount",
+      "notes": "Source families checked: Iowa Department of Revenue data-center guidance, Iowa Code 423.3(95) references, registration form 78-013, annual-report form 78-014, and state tax-expenditure/incentive searches covering 2007-2026. The Department states that individual annual reports are confidential. No Google-specific exempt purchase base, sales/use-tax exemption, refund, electricity exemption, backup-fuel amount, certification, or local distribution was public, so no realized state or local fiscal cost is recorded.",
+      "source": {
+        "source_id": "src_study_iowa_dor_data_center_incentives_2025",
+        "title": "Data Center Sales and Use Tax Incentives",
+        "url": "https://revenue.iowa.gov/taxes/tax-guidance/sales-use-excise-tax/data-centers",
+        "publisher": "Iowa Department of Revenue",
+        "source_type": "state_record",
+        "publication_date": {
+          "precision": "day",
+          "date": "2025-11-03"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_page",
+        "notes": "The guidance identifies Iowa Code 423.3(95), qualifying data-center purchases, registration form 78-013, and annual-report form 78-014. It states that individual annual reports are confidential; it does not disclose Google purchases, exemptions, refunds, electricity, fuel, or tax value."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_01073720208",
+      "source_id": "src_study_google_environmental_report_2025",
+      "as_of": "2024-12-31",
+      "title": "Water and sewer audit found a location total but no defensible building allocation",
+      "notes": "Source families checked: Council Bluffs Water Works annual reports for 2006-2024 and board-report archive, City wastewater and planning pages, Iowa DNR Facility Explorer record 311068556, and Google environmental reports. CBWW ranks Google first and Tetra sixth among 2022 customers without customer quantities; DNR lists only general stormwater coverage. Google reports 2024 Council Bluffs location withdrawal, discharge, and consumption, but not campus, meter, building, potable/reclaimed, peak, cooling-cycle, rate, bill, or wastewater-load detail. The prior 25%/50%/75% selected-building allocation was removed; only an unallocated location identity remains modeled.",
+      "source": {
+        "source_id": "src_study_google_environmental_report_2025",
+        "title": "Google 2025 Environmental Report",
+        "url": "https://www.gstatic.com/gumdrop/sustainability/google-2025-environmental-report.pdf",
+        "publisher": "Google LLC",
+        "source_type": "operator_release",
+        "publication_date": {
+          "precision": "year",
+          "year": 2025
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_pdf_text",
+        "notes": "The location schedule reports 2024 Council Bluffs withdrawal of 1,410.3 million gallons, discharge of 400.1 million gallons, and consumption of 1,010.2 million gallons. The report does not allocate either Council Bluffs campus or a selected building, and discharge may be engineering-estimated where actual data is unavailable."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_01073720208",
+      "source_id": "src_study_iub_spu_2021_0003_faq",
+      "as_of": "2022-05-19",
+      "title": "Electric-utility audit confirmed MidAmerican service context but no facility load",
+      "notes": "Source families checked: Iowa Utilities Board/Iowa Utilities Commission docket materials, MidAmerican resource-plan and tariff searches, Google energy disclosures, and legislative filings from 2012-2026. Record IDs included SPU-2021-0003 and Google's 2014 MidAmerican Wind VIII energy/REC arrangement. No Council Bluffs meter, annual kWh, peak MW, rate schedule, bill, interconnection capacity, upgrade cost, renewable-energy volume, or cost allocation was public. No electricity quantity is modeled.",
+      "source": {
+        "source_id": "src_study_iub_spu_2021_0003_faq",
+        "title": "Iowa Utilities Board FAQ — MidAmerican docket SPU-2021-0003",
+        "url": "https://iub.iowa.gov/sites/default/files/documents/2022/05/spu-2021-0003_faqs_rev_5.19.2022.pdf",
+        "publisher": "Iowa Utilities Board",
+        "source_type": "state_record",
+        "publication_date": {
+          "precision": "day",
+          "date": "2022-05-19"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_pdf_text",
+        "notes": "The resource-planning docket identifies Google LLC among the participating technology companies and documents disputes over confidential MidAmerican filings. The public FAQ does not identify Council Bluffs load, usage, rate, interconnection capacity, infrastructure cost, or cost allocation."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_01073720208",
+      "source_id": "src_study_google_careers_council_bluffs_2026",
+      "as_of": "2026-09-06",
+      "title": "Workforce audit confirmed active recruiting but not establishment headcount",
+      "notes": "Source families checked: Google Careers Council Bluffs location results, city principal-employer tables, IEDA job-compliance tables, and Google/Deloitte workforce disclosures. Current searches returned site lead, facilities technician, engineering, logistics, networking, operations, and program roles. The live posting confirms one opening and a national role pay band, not jobs filled or Council Bluffs payroll. No current establishment headcount, contractor count, annual-average FTE, resident-worker share, occupation distribution, or local payroll was public; the 60- and 70-job completed-award observations and the separate 31-job performing commitment remain the quantitative anchors.",
+      "source": {
+        "source_id": "src_study_google_careers_council_bluffs_2026",
+        "title": "Site Lead, Data Center Operations, Facilities Management — Council Bluffs",
+        "url": "https://www.google.com/about/careers/applications/jobs/results/102490476073886406-site-lead-data-center-operations-facilities-management",
+        "publisher": "Google LLC",
+        "source_type": "operator_release",
+        "publication_date": {
+          "precision": "day",
+          "date": "2026-09-06"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_page",
+        "notes": "The live Council Bluffs posting confirms ongoing facilities-management recruitment and lists a national pay range for one role. A careers search also returned Council Bluffs technician, engineering, logistics, networking, operations, and program roles, but neither the posting nor search results report site headcount, filled vacancies, local payroll, worker residence, or contractor employment."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_01073720208",
+      "source_id": "src_study_iowa_western_google_grant_2012",
+      "as_of": "2012-12-31",
+      "title": "Recipient audit added a nonoverlapping $100,000 education grant",
+      "notes": "Source families checked: Council Bluffs Community School District pages, Iowa Western publications, United Way of the Midlands disclosures, and Google community-impact materials for 2009-2024. Iowa Western directly reports its 2011 $100,000 grant, and Google's impact study separately reports approximately $285,000 to the school district during 2019-2023. A 2019 regional flood-relief disclosure combines Google.org, employee, and Council Bluffs data-center support across Iowa and Nebraska, so its $125,000 is not allocated here. No complete annual grant ledger or overlap reconciliation was public.",
+      "source": {
+        "source_id": "src_study_iowa_western_google_grant_2012",
+        "title": "Iowa Western Alumni Magazine, Spring 2012",
+        "url": "https://www.iwcc.edu/wp-content/uploads/2020/07/AlumniMagazineSP12.pdf",
+        "publisher": "Iowa Western Community College",
+        "source_type": "other",
+        "publication_date": {
+          "precision": "year",
+          "year": 2012
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_pdf_text",
+        "notes": "The recipient reports that its Council Bluffs Enterprise Computing Center opened in 2011 and was developed with a $100,000 Google Tides Foundation grant."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_01073720208",
+      "source_id": "src_study_google_iowa_investment_2025",
+      "as_of": "2025-05-30",
+      "title": "Later operator investment announcements remain outside the project ledger when geography is mixed",
+      "notes": "Source families checked: Google Iowa location pages, operator announcements, Google/Deloitte impact studies, IEDA award tables, and city permit/assessment records spanning 2007-2026. Google's $7 billion two-year announcement combines Council Bluffs expansion, Cedar Rapids development, and statewide workforce support; the current Iowa page's cumulative total also spans multiple sites and vintages. Neither is entered as a Council Bluffs or selected-building forecast. Completed IEDA award costs remain separate and are not summed without overlap reconciliation.",
+      "source": {
+        "source_id": "src_study_google_iowa_investment_2025",
+        "title": "How Google is driving a new era of American innovation in Iowa",
+        "url": "https://blog.google/feed/new-7-billion-investment-iowa/",
+        "publisher": "Google LLC",
+        "source_type": "operator_release",
+        "publication_date": {
+          "precision": "day",
+          "date": "2025-05-30"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_page",
+        "notes": "Google announced $7 billion of Iowa investment over two years spanning both Council Bluffs expansion and a new Cedar Rapids campus, plus a statewide electrical-workforce initiative. No Council Bluffs or building allocation is disclosed, so the amount is not entered as a project forecast."
+      }
     }
   ],
   "evidence_gaps": [
     {
       "code": "investment",
       "label": "Capital investment",
-      "status": "projections_only",
+      "status": "partial",
       "needed": "Annual actual spending, local share, and phase allocation."
     },
     {
       "code": "construction",
       "label": "Construction jobs and payroll",
-      "status": "not_yet_collected",
+      "status": "partial",
       "needed": "Workers, job-years, payroll, duration, and local participation."
     },
     {
@@ -130,7 +406,7 @@
     {
       "code": "operations",
       "label": "Permanent jobs and compensation",
-      "status": "projections_only",
+      "status": "partial",
       "needed": "Realized direct and contractor employment, wages, and operating purchases."
     },
     {
@@ -142,7 +418,7 @@
     {
       "code": "public_costs",
       "label": "Incentives and public costs",
-      "status": "not_yet_collected",
+      "status": "projections_only",
       "needed": "Agreements, abatements, infrastructure, financing, and service costs."
     },
     {
@@ -154,7 +430,7 @@
     {
       "code": "community",
       "label": "Community institutions and direct funding",
-      "status": "not_yet_collected",
+      "status": "partial",
       "needed": "Annual grants, recipients, program purposes, realized spending, and overlap with other transfers."
     }
   ],
@@ -313,6 +589,795 @@
       "unit": "jobs",
       "measure_type": "stock",
       "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_google_council_bluffs_actual_qualified_investment_2019",
+      "project_id": "prj_study_im3_building_01073720208",
+      "metric_code": "study.actual_qualified_investment",
+      "value": 1700000000,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "cumulative",
+        "report_date": "2024-01-31",
+        "label": "State-reported project cost and capital investment at April 30, 2019 completion of contract 12-HQJP-051"
+      },
+      "scope": {
+        "level": "multi_campus_county",
+        "label": "Google LLC Council Bluffs award project 12-HQJP-051; no allocation to a taxpayer account, campus, building, construction, land, or equipment component",
+        "county_fips": "19155",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_iowa_ieda_2023_annual_report_google_council_bluffs",
+      "source_locator": "Pottawattamie County, Closed Projects — Successful, Google LLC 12-HQJP-051 row",
+      "pdf_page": 101,
+      "printed_page": "101",
+      "notes": "State-reported completed project cost and capital investment. The table does not split construction, IT equipment, land, soft costs, refresh spending, annual expenditures, local purchasing, or either Council Bluffs campus. It is not added to later operator cumulative-investment statements.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "State-reported actual qualified investment",
+      "category": "investment",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_google_council_bluffs_final_jobs_2019",
+      "project_id": "prj_study_im3_building_01073720208",
+      "metric_code": "study.operating_employees",
+      "value": 70,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "reported_snapshot",
+        "report_date": "2024-01-31",
+        "label": "State-reported final created jobs for successfully completed contract 12-HQJP-051"
+      },
+      "scope": {
+        "level": "multi_campus_county",
+        "label": "Google LLC Council Bluffs award project 12-HQJP-051; no allocation to one campus, building, employer payroll, contractor workforce, or worker residence",
+        "county_fips": "19155",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_iowa_ieda_2023_annual_report_google_council_bluffs",
+      "source_locator": "Pottawattamie County, Closed Projects — Successful, Google LLC 12-HQJP-051 final-jobs columns",
+      "pdf_page": 101,
+      "printed_page": "101",
+      "notes": "Final created-job count in the state award table. It is not a current annual-average headcount, contractor count, jobs-supported estimate, county-resident count, payroll measure, or evidence that the separate 2022 award's 31-job commitment has been realized.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Reported operating employee count",
+      "category": "operations",
+      "unit": "employees",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_google_council_bluffs_state_tax_credit_contract_2012",
+      "project_id": "prj_study_im3_building_01073720208",
+      "metric_code": "study.state_tax_credit_contract_amount",
+      "value": 36600000,
+      "value_qualifier": "exact",
+      "basis": "source_projection",
+      "period": {
+        "kind": "projection_horizon",
+        "report_date": "2012-04-20",
+        "horizon_years": 9,
+        "label": "Maximum state tax benefit approved under contract 12-HQJP-051 through its 2021 maintenance date"
+      },
+      "scope": {
+        "level": "multi_campus_county",
+        "label": "Google LLC Council Bluffs state award contract 12-HQJP-051; separate from local property taxes, later awards, and taxpayer-account values",
+        "county_fips": "19155",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_iowa_ieda_2023_annual_report_google_council_bluffs",
+      "source_locator": "Pottawattamie County, Closed Projects — Successful, Google LLC 12-HQJP-051 maximum-tax-benefit column",
+      "pdf_page": 101,
+      "printed_page": "101",
+      "notes": "Contract ceiling preserved as a source projection even though the project is listed as successfully closed. The report does not state the amount paid, certified, claimed, used, repaid, recaptured, or ultimately borne by any government, so this value is not a realized expenditure and is not netted against property values or receipts.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "State tax-credit contract amount",
+      "category": "public_costs",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_google_council_bluffs_stem_contribution_2019_2023",
+      "project_id": "prj_study_im3_building_01073720208",
+      "metric_code": "study.direct_community_contribution",
+      "value": 285000,
+      "value_qualifier": "approximately",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "cumulative",
+        "report_date": "2023-12-31",
+        "label": "Cumulative Google investment in the Council Bluffs school-district STEM program during 2019-2023"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Google support for the Council Bluffs Community School District STEM and Computer Science Diploma Pathways program",
+        "county_fips": "19155",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_google_iowa_impact_2024",
+      "source_locator": "Social Impact: 2022 & 2023, STEM Programming",
+      "pdf_page": 5,
+      "printed_page": "5",
+      "notes": "Company-commissioned, approximately reported direct program investment over five years. It is not annual recurring funding, induced household activity, operating payroll, tax revenue, or a building allocation. The study's separate directional social-return estimate is not recorded as an observed outcome.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Direct community contribution",
+      "category": "community",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_google_council_bluffs_actual_qualified_investment_2012",
+      "project_id": "prj_study_im3_building_01073720208",
+      "metric_code": "study.actual_qualified_investment",
+      "value": 300000000,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "cumulative",
+        "report_date": "2016-01-01",
+        "label": "State-reported final project cost at November 30, 2012 completion of contract 08-HQJC-030"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Google Council Bluffs award project 08-HQJC-030; separate from later awards and unallocated to land, construction, equipment, campus, or building",
+        "county_fips": "19155",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_iowa_ieda_2016_google_council_bluffs",
+      "source_locator": "Closed Projects — Successful, Google Inc. 08-HQJC-030 row",
+      "pdf_page": 34,
+      "printed_page": "30",
+      "notes": "Completed-award project cost. It is not added to the separate $1.7 billion award or later operator cumulative statements because the sources do not reconcile overlap across investment vintages.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "State-reported actual qualified investment",
+      "category": "investment",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_google_council_bluffs_final_jobs_2012",
+      "project_id": "prj_study_im3_building_01073720208",
+      "metric_code": "study.operating_employees",
+      "value": 60,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "reported_snapshot",
+        "report_date": "2016-01-01",
+        "label": "State-reported final created jobs for contract 08-HQJC-030 completed November 30, 2012"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Google Council Bluffs award project 08-HQJC-030; no allocation to campus, building, occupation, payroll, worker residence, or current headcount",
+        "county_fips": "19155",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_iowa_ieda_2016_google_council_bluffs",
+      "source_locator": "Closed Projects — Successful, Google Inc. 08-HQJC-030 final-jobs columns",
+      "pdf_page": 34,
+      "printed_page": "30",
+      "notes": "Final created-job count for the earlier completed award. It is not added to the later award's 70 final jobs because the tables do not establish whether job commitments or positions overlap, and it is not a current payroll or contractor count.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Reported operating employee count",
+      "category": "operations",
+      "unit": "employees",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_google_council_bluffs_state_tax_credit_contract_2007",
+      "project_id": "prj_study_im3_building_01073720208",
+      "metric_code": "study.state_tax_credit_contract_amount",
+      "value": 1406250,
+      "value_qualifier": "exact",
+      "basis": "source_projection",
+      "period": {
+        "kind": "projection_horizon",
+        "report_date": "2007-11-15",
+        "horizon_years": 7,
+        "label": "Maximum state tax benefit approved under contract 08-HQJC-030 through its 2014 maintenance date"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Google Council Bluffs state award contract 08-HQJC-030; separate from the 2012 award, local property taxes, and sales-tax exemptions",
+        "county_fips": "19155",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_iowa_ieda_2016_google_council_bluffs",
+      "source_locator": "Closed Projects — Successful, Google Inc. 08-HQJC-030 maximum-tax-benefit column",
+      "pdf_page": 34,
+      "printed_page": "30",
+      "notes": "Contract ceiling preserved as a forecast despite successful closure. The table does not report certification, use, payment, recapture, or final government cost, so it is not treated as realized.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "State tax-credit contract amount",
+      "category": "public_costs",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_google_cb_bunge_electrical_permit_value_2025",
+      "project_id": "prj_study_im3_building_01073720208",
+      "metric_code": "study.permitted_construction_value",
+      "value": 92462323,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "source_year",
+        "year": 2025,
+        "label": "City permit 25-0065-ELN issued September 16, 2025"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "SLN 6A data-center electrical new work, 10410 Bunge Avenue, 288,530 square feet",
+        "county_fips": "19155",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_council_bluffs_permits_2025_09",
+      "source_locator": "Commercial Electrical New Work, permit 25-0065-ELN",
+      "pdf_page": 1,
+      "printed_page": "1",
+      "notes": "Permit-listed valuation and floor area. This is an administrative construction value, not verified expenditure, payment, completion, local purchasing, payroll, or a building allocation to the selected inventory footprint.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Reported permit construction value",
+      "category": "construction",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_google_council_bluffs_tetra_cooling_permit_value_2025",
+      "project_id": "prj_study_im3_building_01073720208",
+      "metric_code": "study.permitted_construction_value",
+      "value": 9060288,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "source_year",
+        "year": 2025,
+        "label": "City permit 2500539-676608 issued September 9, 2025"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Cooling-tower demolition and replacement at 1430 Veterans Memorial Highway",
+        "county_fips": "19155",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_council_bluffs_permits_2025_09",
+      "source_locator": "Commercial Mechanical Alteration, permit 2500539-676608",
+      "pdf_page": 3,
+      "printed_page": "3",
+      "notes": "Permit-listed valuation for an operating-site cooling project. It is not verified expenditure, payment, completed work, water savings, local supplier spending, or a selected-building allocation.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Reported permit construction value",
+      "category": "construction",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_google_tetra_assessed_value_2024",
+      "project_id": "prj_study_im3_building_01073720208",
+      "metric_code": "study.account_assessed_value",
+      "value": 60934800,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2024,
+        "label": "Pottawattamie County parcel 744411476005 2024 assessed value"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Tetra LLC industrial parcel 744411476005, 1430 Veterans Memorial Highway",
+        "county_fips": "19155",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_pottawattamie_tax_tetra_744411476005",
+      "source_locator": "Valuation and tax information, 2024 Assessed, Net Value",
+      "notes": "Parcel-account stock. It is not a receipt, payment, investment flow, market value, company total, or selected-building allocation.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "annual_series_key": "google_tetra_744411476005_assessed_value",
+      "label": "Account assessed property value",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_google_tetra_assessed_value_2025",
+      "project_id": "prj_study_im3_building_01073720208",
+      "metric_code": "study.account_assessed_value",
+      "value": 58639800,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2025,
+        "label": "Pottawattamie County parcel 744411476005 2025 assessed value"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Tetra LLC industrial parcel 744411476005, 1430 Veterans Memorial Highway",
+        "county_fips": "19155",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_pottawattamie_tax_tetra_744411476005",
+      "source_locator": "Valuation and tax information, 2025 Assessed, Net Value",
+      "notes": "Parcel-account stock. It is not a receipt, payment, investment flow, market value, company total, or selected-building allocation.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "annual_series_key": "google_tetra_744411476005_assessed_value",
+      "label": "Account assessed property value",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_google_tetra_taxable_value_2024",
+      "project_id": "prj_study_im3_building_01073720208",
+      "metric_code": "study.taxable_property_value",
+      "value": 54777467,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2024,
+        "label": "Pottawattamie County parcel 744411476005 2024 taxable value"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Tetra LLC industrial parcel 744411476005, 1430 Veterans Memorial Highway",
+        "county_fips": "19155",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_pottawattamie_tax_tetra_744411476005",
+      "source_locator": "Valuation and tax information, 2024 Taxable, Net Value",
+      "notes": "Taxable parcel stock after applicable assessment treatment. It is not the amount of an exemption or a tax receipt.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "annual_series_key": "google_tetra_744411476005_taxable_value",
+      "label": "Taxable property value",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_google_tetra_taxable_value_2025",
+      "project_id": "prj_study_im3_building_01073720208",
+      "metric_code": "study.taxable_property_value",
+      "value": 52707621,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2025,
+        "label": "Pottawattamie County parcel 744411476005 2025 taxable value"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Tetra LLC industrial parcel 744411476005, 1430 Veterans Memorial Highway",
+        "county_fips": "19155",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_pottawattamie_tax_tetra_744411476005",
+      "source_locator": "Valuation and tax information, 2025 Taxable, Net Value",
+      "notes": "Taxable parcel stock after applicable assessment treatment. It is not the amount of an exemption or a tax receipt.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "annual_series_key": "google_tetra_744411476005_taxable_value",
+      "label": "Taxable property value",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_google_tetra_property_taxes_billed_2024",
+      "project_id": "prj_study_im3_building_01073720208",
+      "metric_code": "study.property_taxes_billed",
+      "value": 2063852,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2024,
+        "label": "Pottawattamie County parcel 744411476005 2024 net annual ordinary-tax bill"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Tetra LLC industrial parcel 744411476005, 1430 Veterans Memorial Highway",
+        "county_fips": "19155",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_pottawattamie_tax_tetra_744411476005",
+      "source_locator": "Valuation and tax information, 2024 Net Annual Taxes; tax-history bill 3037121",
+      "notes": "Annual parcel bill before separating taxing-jurisdiction distributions. The identical paid record is separate and supported by zero balances and installment payment dates.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "annual_series_key": "google_tetra_744411476005_property_taxes_billed",
+      "label": "Account property taxes billed",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_google_tetra_property_taxes_billed_2025",
+      "project_id": "prj_study_im3_building_01073720208",
+      "metric_code": "study.property_taxes_billed",
+      "value": 1965466,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2025,
+        "label": "Pottawattamie County parcel 744411476005 2025 net annual ordinary-tax bill"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Tetra LLC industrial parcel 744411476005, 1430 Veterans Memorial Highway",
+        "county_fips": "19155",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_pottawattamie_tax_tetra_744411476005",
+      "source_locator": "Valuation and tax information, 2025 Net Annual Taxes; tax-history bill 2530431",
+      "notes": "Billed amount, not paid. Both $982,733 installments remain due and no last-paid date is shown as retrieved September 6, 2026.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "annual_series_key": "google_tetra_744411476005_property_taxes_billed",
+      "label": "Account property taxes billed",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_google_questa_assessed_value_2025",
+      "project_id": "prj_study_im3_building_01073720208",
+      "metric_code": "study.account_assessed_value",
+      "value": 438398000,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2025,
+        "label": "Pottawattamie County parcel 744333101001 2025 assessed value"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Questa LLC industrial parcel 744333101001, 10410 Bunge Avenue",
+        "county_fips": "19155",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_pottawattamie_tax_questa_744333101001",
+      "source_locator": "Valuation and tax information, 2025 Assessed, Net Value",
+      "notes": "Parcel-account stock after a 2024 deed event. It is not a tax receipt, investment flow, market value, whole-company total, or selected-building allocation.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Account assessed property value",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_google_questa_taxable_value_2025",
+      "project_id": "prj_study_im3_building_01073720208",
+      "metric_code": "study.taxable_property_value",
+      "value": 394490002,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2025,
+        "label": "Pottawattamie County parcel 744333101001 2025 taxable value"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Questa LLC industrial parcel 744333101001, 10410 Bunge Avenue",
+        "county_fips": "19155",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_pottawattamie_tax_questa_744333101001",
+      "source_locator": "Valuation and tax information, 2025 Taxable, Net Value",
+      "notes": "Taxable parcel stock. It is not the amount of a local property-tax exemption or a receipt.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Taxable property value",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_google_questa_property_taxes_billed_2025",
+      "project_id": "prj_study_im3_building_01073720208",
+      "metric_code": "study.property_taxes_billed",
+      "value": 14710524,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2025,
+        "label": "Pottawattamie County parcel 744333101001 2025 net annual ordinary-tax bill"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Questa LLC industrial parcel 744333101001, 10410 Bunge Avenue",
+        "county_fips": "19155",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_pottawattamie_tax_questa_744333101001",
+      "source_locator": "Valuation and tax information, 2025 Net Annual Taxes; tax-history bill 2554724",
+      "notes": "Billed amount, not paid. Both $7,355,262 installments remain due and no last-paid date is shown as retrieved September 6, 2026; no receipt or net fiscal result is inferred.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Account property taxes billed",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_google_tetra_property_taxes_paid_2018",
+      "project_id": "prj_study_im3_building_01073720208",
+      "metric_code": "study.property_taxes_paid",
+      "value": 881640,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2018,
+        "label": "Tax year 2018 ordinary-tax installments; zero due and last paid February 24, 2020"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Tetra LLC industrial parcel 744411476005, 1430 Veterans Memorial Highway",
+        "county_fips": "19155",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_pottawattamie_tax_tetra_744411476005",
+      "source_locator": "Tax history, 2018 Tax, bill 857184, installment amounts, zero due, last-paid dates",
+      "notes": "Sum of two $440,820 ordinary-tax installments shown fully paid. Drainage assessments are excluded. Recipient-jurisdiction distributions and receipt dates are not reported.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "annual_series_key": "google_tetra_744411476005_property_taxes_paid",
+      "label": "Account property taxes paid",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_google_tetra_property_taxes_paid_2019",
+      "project_id": "prj_study_im3_building_01073720208",
+      "metric_code": "study.property_taxes_paid",
+      "value": 876638,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2019,
+        "label": "Tax year 2019 ordinary-tax installments; zero due and last paid March 16, 2021"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Tetra LLC industrial parcel 744411476005, 1430 Veterans Memorial Highway",
+        "county_fips": "19155",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_pottawattamie_tax_tetra_744411476005",
+      "source_locator": "Tax history, 2019 Tax, bill 956814, installment amounts, zero due, last-paid dates",
+      "notes": "Sum of two $438,319 ordinary-tax installments shown fully paid. Drainage assessments are excluded. Recipient-jurisdiction distributions and receipt dates are not reported.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "annual_series_key": "google_tetra_744411476005_property_taxes_paid",
+      "label": "Account property taxes paid",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_google_tetra_property_taxes_paid_2020",
+      "project_id": "prj_study_im3_building_01073720208",
+      "metric_code": "study.property_taxes_paid",
+      "value": 903970,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2020,
+        "label": "Tax year 2020 ordinary-tax installments; zero due and last paid March 22, 2022"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Tetra LLC industrial parcel 744411476005, 1430 Veterans Memorial Highway",
+        "county_fips": "19155",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_pottawattamie_tax_tetra_744411476005",
+      "source_locator": "Tax history, 2020 Tax, bill 036470, installment amounts, zero due, last-paid dates",
+      "notes": "Sum of two $451,985 ordinary-tax installments shown fully paid. Drainage assessments are excluded. Recipient-jurisdiction distributions and receipt dates are not reported.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "annual_series_key": "google_tetra_744411476005_property_taxes_paid",
+      "label": "Account property taxes paid",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_google_tetra_property_taxes_paid_2021",
+      "project_id": "prj_study_im3_building_01073720208",
+      "metric_code": "study.property_taxes_paid",
+      "value": 895088,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2021,
+        "label": "Tax year 2021 ordinary-tax installments; zero due and last paid February 16, 2023"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Tetra LLC industrial parcel 744411476005, 1430 Veterans Memorial Highway",
+        "county_fips": "19155",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_pottawattamie_tax_tetra_744411476005",
+      "source_locator": "Tax history, 2021 Tax, bill 035991, installment amounts, zero due, last-paid dates",
+      "notes": "Sum of two $447,544 ordinary-tax installments shown fully paid. Drainage assessments are excluded. Recipient-jurisdiction distributions and receipt dates are not reported.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "annual_series_key": "google_tetra_744411476005_property_taxes_paid",
+      "label": "Account property taxes paid",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_google_tetra_property_taxes_paid_2022",
+      "project_id": "prj_study_im3_building_01073720208",
+      "metric_code": "study.property_taxes_paid",
+      "value": 907082,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2022,
+        "label": "Tax year 2022 ordinary-tax installments; zero due and last paid December 13, 2023"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Tetra LLC industrial parcel 744411476005, 1430 Veterans Memorial Highway",
+        "county_fips": "19155",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_pottawattamie_tax_tetra_744411476005",
+      "source_locator": "Tax history, 2022 Tax, bill 1035204, installment amounts, zero due, last-paid dates",
+      "notes": "Sum of two $453,541 ordinary-tax installments shown fully paid. Drainage assessments are excluded. Recipient-jurisdiction distributions and receipt dates are not reported.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "annual_series_key": "google_tetra_744411476005_property_taxes_paid",
+      "label": "Account property taxes paid",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_google_tetra_property_taxes_paid_2023",
+      "project_id": "prj_study_im3_building_01073720208",
+      "metric_code": "study.property_taxes_paid",
+      "value": 1365420,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2023,
+        "label": "Tax year 2023 ordinary-tax installments; zero due and last paid January 29, 2025"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Tetra LLC industrial parcel 744411476005, 1430 Veterans Memorial Highway",
+        "county_fips": "19155",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_pottawattamie_tax_tetra_744411476005",
+      "source_locator": "Tax history, 2023 Tax, bill 2027530, installment amounts, zero due, last-paid dates",
+      "notes": "Sum of two $682,710 ordinary-tax installments shown fully paid. Drainage assessments are excluded. Recipient-jurisdiction distributions and receipt dates are not reported.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "annual_series_key": "google_tetra_744411476005_property_taxes_paid",
+      "label": "Account property taxes paid",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_google_tetra_property_taxes_paid_2024",
+      "project_id": "prj_study_im3_building_01073720208",
+      "metric_code": "study.property_taxes_paid",
+      "value": 2063852,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2024,
+        "label": "Tax year 2024 ordinary-tax installments; zero due and last paid February 2, 2026"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Tetra LLC industrial parcel 744411476005, 1430 Veterans Memorial Highway",
+        "county_fips": "19155",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_pottawattamie_tax_tetra_744411476005",
+      "source_locator": "Tax history, 2024 Tax, bill 3037121, installment amounts, zero due, last-paid dates",
+      "notes": "Sum of two $1,031,926 ordinary-tax installments shown fully paid. Drainage assessments are excluded. Recipient-jurisdiction distributions and receipt dates are not reported.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "annual_series_key": "google_tetra_744411476005_property_taxes_paid",
+      "label": "Account property taxes paid",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_google_iowa_western_computing_center_grant_2011",
+      "project_id": "prj_study_im3_building_01073720208",
+      "metric_code": "study.direct_community_contribution",
+      "value": 100000,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "source_year",
+        "year": 2011,
+        "label": "Recipient-reported grant supporting the Enterprise Computing Center opened in 2011"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Google Tides Foundation grant to Iowa Western Community College for its Council Bluffs Enterprise Computing Center",
+        "county_fips": "19155",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_iowa_western_google_grant_2012",
+      "source_locator": "Enterprise Computing Center feature",
+      "pdf_page": 9,
+      "printed_page": "9",
+      "notes": "Recipient-disclosed direct grant, separate in time and recipient from the 2019-2023 school-district STEM contribution. It is not recurring funding, payroll, procurement, tax revenue, or a building allocation.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Direct community contribution",
+      "category": "community",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
     }
   ],
   "economic_sources": [
@@ -344,21 +1409,1031 @@
       "retrieved_on": "2026-09-03",
       "review_method": "web_pdf_text",
       "notes": "The award summary identifies Google, LLC, Council Bluffs, product/service data center; $600 million capital investment; 31 created/incented jobs; $28.73 qualifying wage; and a High Quality Jobs local property tax exemption. Search-extracted PDF text was reviewed. The old IEDA URL returned a current 404 on full-file retrieval, so no artifact hash or page image is claimed. Award figures are commitments, not realization."
+    },
+    {
+      "source_id": "src_study_iowa_ieda_2023_annual_report_google_council_bluffs",
+      "title": "IEDA 2023 Annual Report by County",
+      "url": "https://www.iowaeda.com/UserDocs/2023annualrpt_county.pdf",
+      "publisher": "Iowa Economic Development Authority",
+      "source_type": "state_record",
+      "publication_date": {
+        "precision": "day",
+        "date": "2024-01-31"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_pdf_text",
+      "notes": "The Pottawattamie County closed-projects table identifies Google LLC contract 12-HQJP-051 as successfully completed. It reports $1.7 billion of total project cost and capital investment at completion, a $36.6 million maximum tax benefit, 70 final created jobs, an April 30, 2019 completion date, and an April 30, 2021 maintenance date. The contract ceiling is not evidence of tax credits paid, certified, used, or retained after reconciliation."
+    },
+    {
+      "source_id": "src_study_google_iowa_impact_2024",
+      "title": "Google's Data Center Impact in Iowa — 2024 Impact Study",
+      "url": "https://www.gstatic.com/marketing-cms/3b/64/f40b9fe249dcb82912724229c834/2024-impact-study-iowa.pdf",
+      "publisher": "Google LLC and Deloitte Consulting LLP",
+      "source_type": "operator_release",
+      "publication_date": {
+        "precision": "year",
+        "year": 2024
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_pdf_text",
+      "notes": "Deloitte prepared the study for Google using Google-provided, public, and third-party information without independent verification. The report identifies $285,000 invested during 2019-2023 in the Council Bluffs Community School District STEM and Computer Science Diploma Pathways program. Wider Iowa economic-impact outputs are IMPLAN-modeled and are not entered as observed project records."
+    },
+    {
+      "source_id": "src_study_iowa_ieda_2016_google_council_bluffs",
+      "title": "IEDA 2016 Annual Report",
+      "url": "https://www.legis.iowa.gov/docs/publications/DF/767287.pdf",
+      "publisher": "Iowa Economic Development Authority",
+      "source_type": "state_record",
+      "publication_date": {
+        "precision": "day",
+        "date": "2016-01-01"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_pdf_text",
+      "notes": "The successful-closed-project table reports Google contract 08-HQJC-030 separately from the later 2012 award: $300 million award and final project cost, a $1,406,250 maximum tax benefit, 60 final created jobs, November 30, 2012 completion, and November 30, 2014 maintenance."
+    },
+    {
+      "source_id": "src_study_pottawattamie_tax_tetra_744411476005",
+      "title": "Pottawattamie County parcel and tax detail — Tetra LLC 744411476005",
+      "url": "https://pottawattamiecoia.municipalonlinepayments.com/pottawattamiecoia/tax/search/detail?id=744411476005",
+      "publisher": "Pottawattamie County Treasurer",
+      "source_type": "assessor_record",
+      "publication_date": {
+        "precision": "day",
+        "date": "2026-09-06"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_page",
+      "notes": "Official parcel detail for Tetra LLC at 1430 Veterans Memorial Highway. The live record identifies 2024 and 2025 assessed/taxable values, annual bills, installment amounts, balances, and last-paid dates; the 2018-2024 ordinary-tax rows show zero due and payment dates, while the 2025 ordinary-tax installments remain due."
+    },
+    {
+      "source_id": "src_study_pottawattamie_tax_questa_744333101001",
+      "title": "Pottawattamie County parcel and tax detail — Questa LLC 744333101001",
+      "url": "https://pottawattamiecoia.municipalonlinepayments.com/pottawattamiecoia/tax/search/detail?id=744333101001",
+      "publisher": "Pottawattamie County Treasurer",
+      "source_type": "assessor_record",
+      "publication_date": {
+        "precision": "day",
+        "date": "2026-09-06"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_page",
+      "notes": "Official parcel detail for Questa LLC at 10410 Bunge Avenue. The live record identifies 2025 assessed and taxable values and a $14,710,524 net annual ordinary-tax bill, with both installments still due and no last-paid date. The parcel shows a 2024 deed date and zero 2024 values, so no prior-parcel history is inferred."
+    },
+    {
+      "source_id": "src_study_council_bluffs_permits_2025_09",
+      "title": "Council Bluffs building permits detail, September 2025",
+      "url": "https://www.councilbluffs-ia.gov/DocumentCenter/View/9885",
+      "publisher": "City of Council Bluffs Building Division",
+      "source_type": "local_government_record",
+      "publication_date": {
+        "precision": "day",
+        "date": "2025-10-01"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_pdf_text",
+      "notes": "The monthly report lists permit 25-0065-ELN for SLN 6A data-center electrical new work at 10410 Bunge Avenue, 288,530 square feet, with $92,462,323 valuation; it also lists permit 2500539-676608 at 1430 Veterans Memorial Highway for cooling-tower demolition and replacement with $9,060,288 valuation. Permit valuation is an administrative amount, not verified spending."
+    },
+    {
+      "source_id": "src_study_iowa_western_google_grant_2012",
+      "title": "Iowa Western Alumni Magazine, Spring 2012",
+      "url": "https://www.iwcc.edu/wp-content/uploads/2020/07/AlumniMagazineSP12.pdf",
+      "publisher": "Iowa Western Community College",
+      "source_type": "other",
+      "publication_date": {
+        "precision": "year",
+        "year": 2012
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_pdf_text",
+      "notes": "The recipient reports that its Council Bluffs Enterprise Computing Center opened in 2011 and was developed with a $100,000 Google Tides Foundation grant."
     }
   ],
-  "economic_scope_note": "Reviewed evidence batches at campus or company/county scope. No record is allocated to an individual inventory building. Source checking establishes what a document reports, not an independent audit or causal attribution. Monetary figures are nominal. Peak workforce is distinct from annual employment; source-year labels do not establish fiscal-year boundaries. Original forecasts remain forecasts until realization is verified. No cross-record benefit total is defined. Cumulative project costs are not annual expenditure. Tax receipts and incentive payments remain separate, with inferred taxpayer links disclosed. Contextual research updates do not count as economic amounts. Account tax bills are distinct from cash receipts and incentive-program fees. Tax years, calendar years and fiscal years retain their source basis; separate taxpayer accounts are not consolidated. Municipal developer rebates and taxpayer valuations have distinct subjects. Estimated actual property value and tax capacity are not tax receipts; payable-year valuations retain their earlier assessment date. Taxpayer values expressed in millions retain approximate precision and account-level separation. A current-year table can use an older valuation date and is not converted into an annual series. Facility real-property and business-personal-property accounts remain separate, and address-label discrepancies are disclosed. Michigan Industrial Facilities Tax accounts remain distinct from the underlying real parcel and from post-expiration personal-property accounts; annual account totals are not recipient-level government receipts. Permit construction values are administrative project amounts, not verified expenditure, and separate permits are not combined without proof that their scopes do not overlap. Repeated maintenance-year assessments are annual parcel stocks, not new investment flows. Mixed-use parcel assessments and taxable values are retained at whole-parcel scope and are not allocated to a data-center tenant or function by floor area. Operator-reported jobs supported remain distinct from direct employees and FTEs. Approved infrastructure grants are documented public commitments rather than verified disbursements or total public costs. Cumulative community funding remains separate from tax receipts, payroll and modeled multiplier effects. Reported facility power capacity is not measured electricity consumption or peak demand. Permit-listed emergency generators are not runtime, fuel-use or actual-emissions observations. A city largest-taxpayer table's personal-property assessment remains separate from the leasehold real-property account, tax bills, receipts and capital expenditure. TIF loan principal is financing rather than a grant or general-fund receipt; project-generated tax revenue pledged to repayment is retained as a separate public-financing flow and is not added to gross parcel distributions. Water-withdrawal and consumptive permit capacities are regulatory limits rather than measured use. Development-agreement local-labor preferences are requirements rather than realized participation, and operating employee snapshots remain distinct from customers' on-site staff and jobs forecasts. Audited City bond statements distinguish issuance draws, year-end principal, annual principal retired, interest and fees, pledged TIF revenue, debt-service-fund transfers and future principal-plus-interest commitments. These measures are not summed into a benefit or subsidy total. City pledged revenue, City debt-service-fund transfers and the private fund's project TIF revenue applied to loan repayment retain their separate source definitions because only the 2022 transfer and private-fund amount agree exactly. Developer testimony in public meeting minutes is retained as a source-attributed cumulative lower bound; local-contractor spending is not converted into payroll, worker counts, household spending or multiplier effects. Economic-improvement-district cost estimates and maximum owner assessments remain source projections until bond issuance, an assessment schedule, collections and expenditures are verified. A statutory financing cap is not a tax receipt, public expenditure or subsidy. Audited private equipment-financing balances are debt stocks rather than construction spending, public support or community benefit. Reported floor area and occupied-share values describe operating scale and utilization, not employment, revenue, power use or economic output. Contractor and engineer case studies document supplier roles and completion timing but do not establish payment amounts, worker residence, payroll or multiplier effects. State incentive contract amounts, expected jobs and paid-or-certified-to-date fields remain distinct; a zero paid/certified balance at an earlier reporting cutoff does not imply no later claims. Public charging-infrastructure awards are commitments rather than verified disbursements, private project investment or operating benefits. Qualitative payment descriptions without a defensible numeric bound remain research context rather than quantitative records. Program-reported actual qualified investment, certified tax-exemption value and certified tax-credit value remain separate cumulative measures; none is converted into annual spending, a cash grant, local revenue or causal impact. County Business Patterns observations are county-industry context, not project contributions: establishment counts are employer locations rather than data-center facilities, March employment is not an annual average, annual payroll spans the full NAICS cell, and disclosure noise, classification changes and geographic assignment limit comparisons. No CBP change is attributed to a study project. Project fragments: prj_study_im3_building_00364289074: Public-source review for the Microsoft facility at 5150 Rogers Road and explicitly labeled wider Microsoft/Bexar County activity. The exact-site ordinance and permit records are retained separately from later company/county and Greater San Antonio disclosures. Permit value is an administrative construction amount, the original investment and employment figures are commitments, the 2013 employment threshold is a reported lower bound, and water use is a source projection rather than metered consumption. No Bexar-and-Medina total is allocated to this building. Actual annual construction spending, worker residence, payroll, vendor payments, operating purchases, recipient-level tax receipts, same-scope public-service cost, electricity use, wastewater, emissions, and annual community transfers remain unobserved. prj_study_im3_building_00377585075: DET01-specific direct-evidence follow-up. The operator data sheet supplies current facility-area and rated-power observations at 21005 Lahser Road. The 2014 operator release bounds the initial launch chronology but supplies no quantitative construction, supplier, payroll, community-funding, resource-use or public-cost observation. The values below are source-reported specifications, not audited utilization, expenditure or impact measures. prj_study_im3_building_00460089167: Public-source follow-up adds one facility-level 2024 electricity observation from Meta's environmental data index. The same source's rounded Forest City water-withdrawal and Scope 2 emissions values remain contextual until compatible canonical metric definitions exist. A North Carolina supplier announcement is retained only as context because its U.S.-wide contract value and Hickory manufacturing expansion cannot be allocated to Forest City or Rutherford County.",
+  "economic_scope_note": "Reviewed evidence batches at campus or company/county scope. No record is allocated to an individual inventory building. Source checking establishes what a document reports, not an independent audit or causal attribution. Monetary figures are nominal. Peak workforce is distinct from annual employment; source-year labels do not establish fiscal-year boundaries. Original forecasts remain forecasts until realization is verified. No cross-record benefit total is defined. Cumulative project costs are not annual expenditure. Tax receipts and incentive payments remain separate, with inferred taxpayer links disclosed. Contextual research updates do not count as economic amounts. Account tax bills are distinct from cash receipts and incentive-program fees. Tax years, calendar years and fiscal years retain their source basis; separate taxpayer accounts are not consolidated. Municipal developer rebates and taxpayer valuations have distinct subjects. Estimated actual property value and tax capacity are not tax receipts; payable-year valuations retain their earlier assessment date. Taxpayer values expressed in millions retain approximate precision and account-level separation. A current-year table can use an older valuation date and is not converted into an annual series. Facility real-property and business-personal-property accounts remain separate, and address-label discrepancies are disclosed. Michigan Industrial Facilities Tax accounts remain distinct from the underlying real parcel and from post-expiration personal-property accounts; annual account totals are not recipient-level government receipts. Permit construction values are administrative project amounts, not verified expenditure, and separate permits are not combined without proof that their scopes do not overlap. Repeated maintenance-year assessments are annual parcel stocks, not new investment flows. Mixed-use parcel assessments and taxable values are retained at whole-parcel scope and are not allocated to a data-center tenant or function by floor area. Operator-reported jobs supported remain distinct from direct employees and FTEs. Approved infrastructure grants are documented public commitments rather than verified disbursements or total public costs. Cumulative community funding remains separate from tax receipts, payroll and modeled multiplier effects. Reported facility power capacity is not measured electricity consumption or peak demand. Permit-listed emergency generators are not runtime, fuel-use or actual-emissions observations. A city largest-taxpayer table's personal-property assessment remains separate from the leasehold real-property account, tax bills, receipts and capital expenditure. TIF loan principal is financing rather than a grant or general-fund receipt; project-generated tax revenue pledged to repayment is retained as a separate public-financing flow and is not added to gross parcel distributions. Water-withdrawal and consumptive permit capacities are regulatory limits rather than measured use. Development-agreement local-labor preferences are requirements rather than realized participation, and operating employee snapshots remain distinct from customers' on-site staff and jobs forecasts. Audited City bond statements distinguish issuance draws, year-end principal, annual principal retired, interest and fees, pledged TIF revenue, debt-service-fund transfers and future principal-plus-interest commitments. These measures are not summed into a benefit or subsidy total. City pledged revenue, City debt-service-fund transfers and the private fund's project TIF revenue applied to loan repayment retain their separate source definitions because only the 2022 transfer and private-fund amount agree exactly. Developer testimony in public meeting minutes is retained as a source-attributed cumulative lower bound; local-contractor spending is not converted into payroll, worker counts, household spending or multiplier effects. Economic-improvement-district cost estimates and maximum owner assessments remain source projections until bond issuance, an assessment schedule, collections and expenditures are verified. A statutory financing cap is not a tax receipt, public expenditure or subsidy. Audited private equipment-financing balances are debt stocks rather than construction spending, public support or community benefit. Reported floor area and occupied-share values describe operating scale and utilization, not employment, revenue, power use or economic output. Contractor and engineer case studies document supplier roles and completion timing but do not establish payment amounts, worker residence, payroll or multiplier effects. State incentive contract amounts, expected jobs and paid-or-certified-to-date fields remain distinct; a zero paid/certified balance at an earlier reporting cutoff does not imply no later claims. Public charging-infrastructure awards are commitments rather than verified disbursements, private project investment or operating benefits. Qualitative payment descriptions without a defensible numeric bound remain research context rather than quantitative records. Program-reported actual qualified investment, certified tax-exemption value and certified tax-credit value remain separate cumulative measures; none is converted into annual spending, a cash grant, local revenue or causal impact. County Business Patterns observations are county-industry context, not project contributions: establishment counts are employer locations rather than data-center facilities, March employment is not an annual average, annual payroll spans the full NAICS cell, and disclosure noise, classification changes and geographic assignment limit comparisons. No CBP change is attributed to a study project. Project fragments: prj_study_im3_building_00364289074: Public-source review for the Microsoft facility at 5150 Rogers Road and explicitly labeled wider Microsoft/Bexar County activity. The exact-site ordinance and permit records are retained separately from later company/county and Greater San Antonio disclosures. Permit value is an administrative construction amount, the original investment and employment figures are commitments, the 2013 employment threshold is a reported lower bound, and water use is a source projection rather than metered consumption. No Bexar-and-Medina total is allocated to this building. Actual annual construction spending, worker residence, payroll, vendor payments, operating purchases, recipient-level tax receipts, same-scope public-service cost, electricity use, wastewater, emissions, and annual community transfers remain unobserved. prj_study_im3_building_00377585075: DET01-specific direct-evidence follow-up. The operator data sheet supplies current facility-area and rated-power observations at 21005 Lahser Road. The 2014 operator release bounds the initial launch chronology but supplies no quantitative construction, supplier, payroll, community-funding, resource-use or public-cost observation. The values below are source-reported specifications, not audited utilization, expenditure or impact measures. prj_study_im3_building_00460089167: Public-source follow-up adds one facility-level 2024 electricity observation from Meta's environmental data index. The same source's rounded Forest City water-withdrawal and Scope 2 emissions values remain contextual until compatible canonical metric definitions exist. A North Carolina supplier announcement is retained only as context because its U.S.-wide contract value and Hickory manufacturing expansion cannot be allocated to Forest City or Rutherford County. prj_study_im3_building_00464097467: Second-pass public-evidence audit for Apple's Washoe County data-center campus at 21505 Reno Technology Parkway West and its 2024 expansion application. GOED audit findings, application forecasts, county permit values, parcel assessments, a water-right allocation, operator-reported electricity use, and recipient-reported donation bands remain separate evidence states and scopes. Permit values are administrative amounts and are not summed because overlapping scopes cannot be ruled out. Assessment values are parcel stocks, not investment or tax receipts. The 125 acre-foot water right is regulatory capacity, not measured use. Food Bank gifts are company-region transfers, not campus-attributable annual spending. No campus total is allocated to the selected mapped building; the four-building campus, later buildout cases, downtown Reno warehouse, supporting renewable projects, fire-station parcel, and more-than-200-person support statement are not collapsed into one footprint. No Switch Citadel or Storey County amount enters this fragment. Vendor payments, worker residence, taxes received by jurisdiction, realized 2024 abatement, same-scope public-service cost, wastewater, and building-level electricity or water remain unobserved. prj_study_im3_building_00664938835: Second-pass public-evidence audit for Expedient's adaptive reuse of the pre-existing data-center building at 4777 W Ironwood Drive. The review searched Franklin planning, agenda, assessment, permit, water and sewer materials; Milwaukee County tax and deed-record access points; Wisconsin DOR, WEDC, DFI and PSC records; operator press, specification, career, ESG and community pages; lease, financing, carrier and vendor disclosures; and archived official pages for 2007-2026. Opening-day and current operator specifications remain separate dated snapshots because the reported area and capacity changed. The county portal now establishes a 2021-2025 parcel-tax principal series, but not Expedient's incidence under the lease. The 2022 ownership transfer, assessments, estimated permit values, tax payments and hiring plan remain non-additive. No source was found for actual construction outlays, realized site employment or payroll, local procurement, Milwaukee-area community transfers, metered resources, project-attributable public costs or a fiscal net. prj_study_im3_building_01073720208: Second-pass public-evidence audit for Google's Council Bluffs data-center activity, retaining the selected inventory building as the project key while leaving campus, taxpayer-account, company-county, and state-award facts at their reported scopes. The audit distinguishes completed IEDA contracts 08-HQJC-030 and 12-HQJP-051 from the 2022 award still in performance; permit valuations remain administrative amounts rather than expenditure; assessed and taxable values remain stocks; bills remain distinct from payments; and community grants remain recipient- and period-specific. The Pottawattamie County tax portal now supplies a paid 2018-2024 series for the principal Tetra parcel and an unpaid 2025 bill for the newer Questa parcel. No value is inferred for sales-tax exemptions, the local abatement schedule, franchise-fee adjustment, electricity, supplier retention, building-level water, marginal public-service cost, or net fiscal position. Models without defensible project allocation or transferable parameters were removed even though that leaves the eight-category account incomplete.",
   "evidence_version": "study-economic-evidence-1.37.0",
-  "modeled_syntheses": [],
-  "modeled_sources": [],
-  "modeled_scope_note": "Modeled contribution accounts for Apple Mesa / Maricopa County, Switch Citadel / Storey County, and Digital Crossroad Hammond / Lake County. Every required account category and county-comparison module contains sourced evidence or a visibly labeled modeled value. Public support is not netted against unmatched local revenues, unavailable public-service cost is represented by a break-even threshold rather than an invented net margin, county comparisons are descriptive rather than causal, and low-confidence transferred benchmarks remain explicit. Project fragments: prj_study_im3_building_00364289074: Low-confidence completion account for Microsoft San Antonio. Construction scenarios apply explicit 25%-75% construction-eligible shares to the reported greater-than-$840 million real-and-personal-property floor before using the Prince William County benchmark, so IT equipment is not silently treated as building construction. Operating scenarios combine the reported greater-than-75 employee floor with zero, half, or all of the separate 20-job expansion forecast; they are sensitivities, not fulfillment findings. County GDP, employment, and wage gaps are descriptive 2024 benchmark comparisons and are not facility effects. Existing source projections cover fiscal revenue, public support, and facility water demand. No annual net-fiscal estimate is made because verified same-scope recurring receipts and marginal public-service costs are unavailable. prj_study_im3_building_00377585075: DET01 completed contribution account. Source forecasts remain forecasts; modeled construction, supplier, household, resource and comparison values are visibly labeled sensitivity or benchmark scenarios. Personal-property equipment is excluded before construction multipliers. The 2025 tax-account aggregation is paired with an equal same-scope public-cost break-even threshold, not a net-fiscal result. County comparisons are descriptive and noncausal. Direct community funding, measured resource use, realized jobs, supplier payments and actual public costs remain gaps. prj_study_im3_building_00460089167: Completed contribution-account syntheses for Meta Forest City / Rutherford County. Broad cumulative capital receives an explicit 25-75% construction-eligible allocation before transferred construction benchmarks; operating scenarios translate the 2015 reported-position snapshot with a visible FTE sensitivity; the same-county, same-fiscal-year tax and incentive claims are reconciled before the public-cost break-even threshold; facility water and electricity resource models retain source rounding and scope; supplier and household channels remain separate; and county comparisons are descriptive benchmark gaps rather than causal effects. No net fiscal, audited, or causal result is asserted.",
+  "modeled_syntheses": [
+    {
+      "estimate_id": "est_study_google_council_bluffs_construction_job_years_direct",
+      "project_id": "prj_study_im3_building_01073720208",
+      "metric_code": "study.modeled_construction_job_years_direct",
+      "label": "Permit-anchored direct construction job-year benchmark equivalent",
+      "category": "construction",
+      "unit": "job_years",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 626.49,
+      "period": {
+        "kind": "construction_period",
+        "start_date": "2025-09-09",
+        "end_date": "2025-09-16",
+        "label": "Issue dates of the two September 2025 Council Bluffs permits used as the spending proxy"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Two Google-related Council Bluffs permits in Pottawattamie County",
+        "county_fips": "19155",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "point_estimate",
+        "low": 626.49,
+        "central": 626.49,
+        "high": 626.49,
+        "interpretation": "Deterministic arithmetic transfer; no statistical interval is available, and uncertainty is disclosed qualitatively."
+      },
+      "contribution_channel": "direct",
+      "aggregation": {
+        "aggregation_id": "google_council_bluffs_permit_construction_job_years",
+        "role": "component",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "bunge_electrical_permit_value",
+          "value": 92462323,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_google_cb_bunge_electrical_permit_value_2025",
+            "detail": "City permit valuation"
+          },
+          "transformation": "Added to the Tetra cooling permit valuation"
+        },
+        {
+          "name": "tetra_cooling_permit_value",
+          "value": 9060288,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_google_council_bluffs_tetra_cooling_permit_value_2025",
+            "detail": "City permit valuation"
+          },
+          "transformation": "Added to the Bunge electrical permit valuation"
+        },
+        {
+          "name": "direct_benchmark_job_years",
+          "value": 1697,
+          "unit": "job_years",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_pwc_data_center_market_2021",
+            "detail": "Prince William prototype direct construction contribution"
+          },
+          "transformation": "Divided by the $275 million benchmark construction cost"
+        },
+        {
+          "name": "benchmark_construction_cost",
+          "value": 275000000,
+          "unit": "USD",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_pwc_data_center_market_2021",
+            "detail": "Prototype construction cost excluding IT equipment"
+          },
+          "transformation": "Denominator of the transferred coefficient"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "Permit valuations are administrative proxies rather than audited spending, and a Virginia IMPLAN coefficient is transferred to Iowa.",
+      "decision_relevance": "Provides a bounded construction labor-channel benchmark tied to observed project records.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "not_found",
+        "remaining_evidence_gap": "Actual expenditure, worker hours, payroll, occupations, employer, residence, and construction phase"
+      },
+      "derivation": {
+        "method": "input_output_multiplier",
+        "model_version": "google-council-bluffs-account-2.0.0",
+        "formula": "($92,462,323 + $9,060,288) × 1,697 job-years ÷ $275,000,000",
+        "input_claim_ids": [
+          "clm_study_google_cb_bunge_electrical_permit_value_2025",
+          "clm_study_google_council_bluffs_tetra_cooling_permit_value_2025"
+        ],
+        "input_source_ids": [
+          "src_study_pwc_data_center_market_2021"
+        ],
+        "assumptions": [
+          "Permit valuation is used as a construction-spending proxy.",
+          "The Prince William coefficient transfers only as a benchmark equivalent."
+        ]
+      },
+      "multiplier_provenance": {
+        "source_id": "src_study_pwc_data_center_market_2021",
+        "model_name": "IMPLAN county contribution model reported by BAE",
+        "model_version": "Prince William County prototype-data-center study, 2021-dollar tables 7-8",
+        "geography": "Prince William County, Virginia benchmark transferred to Pottawattamie County, Iowa",
+        "vintage": "IMPLAN model reported December 2021; underlying data vintage not disclosed",
+        "local_purchase_assumption": "No Pottawattamie County supplier share is imposed; the source model's embedded purchasing structure is not disclosed.",
+        "channel_separation": "direct_indirect_induced_reported_separately"
+      },
+      "limitations": [
+        "Permit valuation may differ from actual expenditure.",
+        "Transferred Virginia coefficient, not an Iowa input-output model.",
+        "Job-years are not peak workers or permanent jobs."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Direct component of one protected aggregation; do not add it to the total row.",
+      "reviewed_on": "2026-09-06"
+    },
+    {
+      "estimate_id": "est_study_google_council_bluffs_construction_job_years_indirect",
+      "project_id": "prj_study_im3_building_01073720208",
+      "metric_code": "study.modeled_construction_job_years_indirect",
+      "label": "Permit-anchored indirect construction job-year benchmark equivalent",
+      "category": "construction",
+      "unit": "job_years",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 150.25,
+      "period": {
+        "kind": "construction_period",
+        "start_date": "2025-09-09",
+        "end_date": "2025-09-16",
+        "label": "Issue dates of the two September 2025 Council Bluffs permits used as the spending proxy"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Two Google-related Council Bluffs permits in Pottawattamie County",
+        "county_fips": "19155",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "point_estimate",
+        "low": 150.25,
+        "central": 150.25,
+        "high": 150.25,
+        "interpretation": "Deterministic arithmetic transfer; no statistical interval is available, and uncertainty is disclosed qualitatively."
+      },
+      "contribution_channel": "indirect",
+      "aggregation": {
+        "aggregation_id": "google_council_bluffs_permit_construction_job_years",
+        "role": "component",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "bunge_electrical_permit_value",
+          "value": 92462323,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_google_cb_bunge_electrical_permit_value_2025",
+            "detail": "City permit valuation"
+          },
+          "transformation": "Added to the Tetra cooling permit valuation"
+        },
+        {
+          "name": "tetra_cooling_permit_value",
+          "value": 9060288,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_google_council_bluffs_tetra_cooling_permit_value_2025",
+            "detail": "City permit valuation"
+          },
+          "transformation": "Added to the Bunge electrical permit valuation"
+        },
+        {
+          "name": "indirect_benchmark_job_years",
+          "value": 407,
+          "unit": "job_years",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_pwc_data_center_market_2021",
+            "detail": "Prince William prototype indirect construction contribution"
+          },
+          "transformation": "Divided by benchmark construction cost"
+        },
+        {
+          "name": "benchmark_construction_cost",
+          "value": 275000000,
+          "unit": "USD",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_pwc_data_center_market_2021",
+            "detail": "Prototype construction cost excluding IT equipment"
+          },
+          "transformation": "Denominator"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "Permit valuations are administrative proxies and the supplier-chain coefficient is transferred from Virginia without a disclosed Iowa local-purchase structure.",
+      "decision_relevance": "Separates the supplier-chain channel while avoiding an invented local supplier payment share.",
+      "evidence_search": {
+        "direct_observation_status": "not_found",
+        "source_projection_status": "not_found",
+        "remaining_evidence_gap": "Vendor payments, addresses, industries, employment, payroll, and local retention attributable to the permits"
+      },
+      "derivation": {
+        "method": "input_output_multiplier",
+        "model_version": "google-council-bluffs-account-2.0.0",
+        "formula": "$101,522,611 permit value × 407 job-years ÷ $275,000,000",
+        "input_claim_ids": [
+          "clm_study_google_cb_bunge_electrical_permit_value_2025",
+          "clm_study_google_council_bluffs_tetra_cooling_permit_value_2025"
+        ],
+        "input_source_ids": [
+          "src_study_pwc_data_center_market_2021"
+        ],
+        "assumptions": [
+          "Permit valuation proxies construction spending.",
+          "The source indirect coefficient transfers only as a benchmark equivalent; it is not evidence of local supplier payments."
+        ]
+      },
+      "multiplier_provenance": {
+        "source_id": "src_study_pwc_data_center_market_2021",
+        "model_name": "IMPLAN county contribution model reported by BAE",
+        "model_version": "Prince William County prototype-data-center study, 2021-dollar tables 7-8",
+        "geography": "Prince William County, Virginia benchmark transferred to Pottawattamie County, Iowa",
+        "vintage": "IMPLAN model reported December 2021; underlying data vintage not disclosed",
+        "local_purchase_assumption": "No Pottawattamie County supplier share is imposed; the source model's embedded purchasing structure is not disclosed.",
+        "channel_separation": "direct_indirect_induced_reported_separately"
+      },
+      "limitations": [
+        "Not an observed supplier payment or job count.",
+        "Permit valuation may differ from expenditure.",
+        "Transferred Virginia coefficient."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Indirect component of one protected aggregation.",
+      "reviewed_on": "2026-09-06"
+    },
+    {
+      "estimate_id": "est_study_google_council_bluffs_construction_job_years_induced",
+      "project_id": "prj_study_im3_building_01073720208",
+      "metric_code": "study.modeled_construction_job_years_induced",
+      "label": "Permit-anchored induced construction job-year benchmark equivalent",
+      "category": "construction",
+      "unit": "job_years",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 111.12,
+      "period": {
+        "kind": "construction_period",
+        "start_date": "2025-09-09",
+        "end_date": "2025-09-16",
+        "label": "Issue dates of the two September 2025 Council Bluffs permits used as the spending proxy"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Two Google-related Council Bluffs permits in Pottawattamie County",
+        "county_fips": "19155",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "point_estimate",
+        "low": 111.12,
+        "central": 111.12,
+        "high": 111.12,
+        "interpretation": "Deterministic arithmetic transfer; no statistical interval is available, and uncertainty is disclosed qualitatively."
+      },
+      "contribution_channel": "induced",
+      "aggregation": {
+        "aggregation_id": "google_council_bluffs_permit_construction_job_years",
+        "role": "component",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "bunge_electrical_permit_value",
+          "value": 92462323,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_google_cb_bunge_electrical_permit_value_2025",
+            "detail": "City permit valuation"
+          },
+          "transformation": "Added to the Tetra cooling permit valuation"
+        },
+        {
+          "name": "tetra_cooling_permit_value",
+          "value": 9060288,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_google_council_bluffs_tetra_cooling_permit_value_2025",
+            "detail": "City permit valuation"
+          },
+          "transformation": "Added to the Bunge electrical permit valuation"
+        },
+        {
+          "name": "induced_benchmark_job_years",
+          "value": 301,
+          "unit": "job_years",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_pwc_data_center_market_2021",
+            "detail": "Prince William prototype induced construction contribution"
+          },
+          "transformation": "Divided by benchmark construction cost"
+        },
+        {
+          "name": "benchmark_construction_cost",
+          "value": 275000000,
+          "unit": "USD",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_pwc_data_center_market_2021",
+            "detail": "Prototype construction cost excluding IT equipment"
+          },
+          "transformation": "Denominator"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "Permit valuations are administrative proxies and the household-spending coefficient is transferred from Virginia.",
+      "decision_relevance": "Separates the induced channel from direct and indirect job-year equivalents.",
+      "evidence_search": {
+        "direct_observation_status": "not_found",
+        "source_projection_status": "not_found",
+        "remaining_evidence_gap": "Worker and supplier-household spending, residence, and supported employment"
+      },
+      "derivation": {
+        "method": "input_output_multiplier",
+        "model_version": "google-council-bluffs-account-2.0.0",
+        "formula": "$101,522,611 permit value × 301 job-years ÷ $275,000,000",
+        "input_claim_ids": [
+          "clm_study_google_cb_bunge_electrical_permit_value_2025",
+          "clm_study_google_council_bluffs_tetra_cooling_permit_value_2025"
+        ],
+        "input_source_ids": [
+          "src_study_pwc_data_center_market_2021"
+        ],
+        "assumptions": [
+          "Permit valuation proxies construction spending.",
+          "The source induced coefficient transfers only as a benchmark equivalent."
+        ]
+      },
+      "multiplier_provenance": {
+        "source_id": "src_study_pwc_data_center_market_2021",
+        "model_name": "IMPLAN county contribution model reported by BAE",
+        "model_version": "Prince William County prototype-data-center study, 2021-dollar tables 7-8",
+        "geography": "Prince William County, Virginia benchmark transferred to Pottawattamie County, Iowa",
+        "vintage": "IMPLAN model reported December 2021; underlying data vintage not disclosed",
+        "local_purchase_assumption": "No Pottawattamie County supplier share is imposed; the source model's embedded purchasing structure is not disclosed.",
+        "channel_separation": "direct_indirect_induced_reported_separately"
+      },
+      "limitations": [
+        "Not observed household spending or jobs.",
+        "Permit valuation may differ from expenditure.",
+        "Transferred Virginia coefficient."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Induced component of one protected aggregation.",
+      "reviewed_on": "2026-09-06"
+    },
+    {
+      "estimate_id": "est_study_google_council_bluffs_construction_job_years_total",
+      "project_id": "prj_study_im3_building_01073720208",
+      "metric_code": "study.modeled_construction_job_years_total",
+      "label": "Permit-anchored total construction job-year benchmark equivalent",
+      "category": "construction",
+      "unit": "job_years",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 888.23,
+      "period": {
+        "kind": "construction_period",
+        "start_date": "2025-09-09",
+        "end_date": "2025-09-16",
+        "label": "Issue dates of the two September 2025 Council Bluffs permits used as the spending proxy"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Two Google-related Council Bluffs permits in Pottawattamie County",
+        "county_fips": "19155",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "point_estimate",
+        "low": 888.23,
+        "central": 888.23,
+        "high": 888.23,
+        "interpretation": "Deterministic arithmetic transfer; no statistical interval is available, and uncertainty is disclosed qualitatively."
+      },
+      "contribution_channel": "total",
+      "aggregation": {
+        "aggregation_id": "google_council_bluffs_permit_construction_job_years",
+        "role": "total",
+        "component_estimate_ids": [
+          "est_study_google_council_bluffs_construction_job_years_direct",
+          "est_study_google_council_bluffs_construction_job_years_indirect",
+          "est_study_google_council_bluffs_construction_job_years_induced"
+        ],
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "bunge_electrical_permit_value",
+          "value": 92462323,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_google_cb_bunge_electrical_permit_value_2025",
+            "detail": "City permit valuation"
+          },
+          "transformation": "Added to the Tetra cooling permit valuation"
+        },
+        {
+          "name": "tetra_cooling_permit_value",
+          "value": 9060288,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_google_council_bluffs_tetra_cooling_permit_value_2025",
+            "detail": "City permit valuation"
+          },
+          "transformation": "Added to the Bunge electrical permit valuation"
+        },
+        {
+          "name": "total_benchmark_job_years",
+          "value": 2406,
+          "unit": "job_years",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_pwc_data_center_market_2021",
+            "detail": "Prince William prototype total construction contribution"
+          },
+          "transformation": "Divided by benchmark construction cost"
+        },
+        {
+          "name": "benchmark_construction_cost",
+          "value": 275000000,
+          "unit": "USD",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_pwc_data_center_market_2021",
+            "detail": "Prototype construction cost excluding IT equipment"
+          },
+          "transformation": "Denominator"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "Permit valuations are administrative proxies and the total coefficient is transferred from Virginia.",
+      "decision_relevance": "Provides the protected total across the three separately published construction channels.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "not_found",
+        "remaining_evidence_gap": "Actual spending, worker and supplier records, household channel, residence, and phase"
+      },
+      "derivation": {
+        "method": "input_output_multiplier",
+        "model_version": "google-council-bluffs-account-2.0.0",
+        "formula": "$101,522,611 permit value × 2,406 job-years ÷ $275,000,000",
+        "input_claim_ids": [
+          "clm_study_google_cb_bunge_electrical_permit_value_2025",
+          "clm_study_google_council_bluffs_tetra_cooling_permit_value_2025"
+        ],
+        "input_source_ids": [
+          "src_study_pwc_data_center_market_2021"
+        ],
+        "assumptions": [
+          "Permit valuation proxies construction spending.",
+          "The source total coefficient transfers only as a benchmark equivalent.",
+          "The source total remains authoritative despite a one-job rounding difference from its displayed components."
+        ]
+      },
+      "multiplier_provenance": {
+        "source_id": "src_study_pwc_data_center_market_2021",
+        "model_name": "IMPLAN county contribution model reported by BAE",
+        "model_version": "Prince William County prototype-data-center study, 2021-dollar tables 7-8",
+        "geography": "Prince William County, Virginia benchmark transferred to Pottawattamie County, Iowa",
+        "vintage": "IMPLAN model reported December 2021; underlying data vintage not disclosed",
+        "local_purchase_assumption": "No Pottawattamie County supplier share is imposed; the source model's embedded purchasing structure is not disclosed.",
+        "channel_separation": "direct_indirect_induced_reported_separately"
+      },
+      "limitations": [
+        "Do not add this total to its components.",
+        "Permit valuation may differ from expenditure.",
+        "Transferred Virginia coefficient."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Protected total; source component rounding explains the small difference from summed displayed components.",
+      "reviewed_on": "2026-09-06"
+    },
+    {
+      "estimate_id": "est_study_google_cb_water_consumption_2024",
+      "project_id": "prj_study_im3_building_01073720208",
+      "metric_code": "study.modeled_annual_water_consumption",
+      "label": "Unallocated Council Bluffs location water-consumption identity",
+      "category": "resources",
+      "unit": "gallons_per_year",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 1010200000,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2024,
+        "label": "Calendar-year 2024 Google Council Bluffs location"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Google Council Bluffs location total; no campus or building allocation",
+        "county_fips": "19155",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "point_estimate",
+        "low": 1010200000,
+        "central": 1010200000,
+        "high": 1010200000,
+        "interpretation": "Arithmetic identity from the source-reported location values; no statistical interval or building allocation is asserted."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "google_council_bluffs_location_water_2024",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "location_water_withdrawal",
+          "value": 1410300000,
+          "unit": "gallons_per_year",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_google_environmental_report_2025",
+            "detail": "2024 Council Bluffs withdrawal converted from 1,410.3 million gallons"
+          },
+          "transformation": "Subtract discharge"
+        },
+        {
+          "name": "location_water_discharge",
+          "value": 400100000,
+          "unit": "gallons_per_year",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_google_environmental_report_2025",
+            "detail": "2024 Council Bluffs discharge converted from 400.1 million gallons"
+          },
+          "transformation": "Subtract from withdrawal"
+        }
+      ],
+      "confidence": "medium",
+      "confidence_rationale": "Both location-level inputs are published by the operator, but the source may estimate discharge and supplies no building allocation.",
+      "decision_relevance": "States the available resource-use magnitude at its defensible company-location scope.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "not_found",
+        "remaining_evidence_gap": "Building-level withdrawal, discharge, consumption, potable/reclaimed split, meter coverage, cooling process, and peak use"
+      },
+      "derivation": {
+        "method": "engineering_estimate",
+        "model_version": "google-council-bluffs-account-2.0.0",
+        "formula": "1,410,300,000 gallons withdrawal − 400,100,000 gallons discharge",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_google_environmental_report_2025"
+        ],
+        "assumptions": [
+          "The source's location labels and unit conversions are accurate.",
+          "The result remains unallocated across campuses and buildings."
+        ]
+      },
+      "limitations": [
+        "The source may estimate discharge using engineering principles.",
+        "No campus or building allocation is defensible.",
+        "The record does not distinguish potable, reclaimed, or process water."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "This reproduces the source's consumption identity and must not be presented as selected-building consumption.",
+      "reviewed_on": "2026-09-06"
+    },
+    {
+      "estimate_id": "est_study_google_council_bluffs_gdp_comparison_gap",
+      "project_id": "prj_study_im3_building_01073720208",
+      "metric_code": "study.modeled_county_gdp_comparison_gap",
+      "label": "Modeled county real GDP comparison gap",
+      "category": "county_outcome",
+      "unit": "percent",
+      "measure_type": "change",
+      "basis": "modeled_synthesis",
+      "value": -20.55,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2024,
+        "label": "2024 host-county outcome relative to a mechanically matched benchmark; operating anchor year 2009"
+      },
+      "scope": {
+        "level": "county",
+        "label": "Google Council Bluffs and Pottawattamie County",
+        "county_fips": "19155",
+        "inventory_allocation": "not_applicable"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": -25.55,
+        "central": -20.55,
+        "high": -15.55,
+        "interpretation": "Five-percentage-point fit sensitivity around the descriptive gap; not statistical confidence."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "google_council_bluffs_gdp_comparison_gap",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "host_2024_value",
+          "value": 4836746000,
+          "unit": "chained_2017_USD",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_county_economic_core_2001_2024",
+            "detail": "Pottawattamie County 2024 real GDP"
+          },
+          "transformation": "Compared with weighted benchmark"
+        },
+        {
+          "name": "comparison_2024_value",
+          "value": 6087626080.21661,
+          "unit": "chained_2017_USD",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_county_economic_core_2001_2024",
+            "detail": "Inverse-distance weighted comparison"
+          },
+          "transformation": "Subtracted from host and used as denominator"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "Four pre-anchor years cannot isolate prior exposure, concurrent investments, spillovers, or later expansions.",
+      "decision_relevance": "Describes the county's 2024 GDP divergence without assigning it to Google.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "not_applicable",
+        "remaining_evidence_gap": "A defensible causal design with treatment isolation, placebo tests, spillover rules, and robustness diagnostics"
+      },
+      "derivation": {
+        "method": "benchmark_application",
+        "model_version": "google-council-bluffs-account-2.0.0",
+        "formula": "100 × (host − weighted benchmark) ÷ weighted benchmark",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_county_economic_core_2001_2024"
+        ],
+        "assumptions": [
+          "Matching uses 2005-2008 level, growth, and volatility.",
+          "Study counties are excluded from donors.",
+          "The 2009 anchor is not assumed to isolate treatment."
+        ]
+      },
+      "limitations": [
+        "Descriptive, not a data-center effect.",
+        "Short pre-period and later expansions limit interpretation.",
+        "Fit sensitivity is not statistical confidence."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Descriptive gap only; no causal attribution.",
+      "reviewed_on": "2026-09-06"
+    },
+    {
+      "estimate_id": "est_study_google_council_bluffs_employment_comparison_gap",
+      "project_id": "prj_study_im3_building_01073720208",
+      "metric_code": "study.modeled_county_employment_comparison_gap",
+      "label": "Modeled county total employment comparison gap",
+      "category": "county_outcome",
+      "unit": "percent",
+      "measure_type": "change",
+      "basis": "modeled_synthesis",
+      "value": -1.04,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2024,
+        "label": "2024 host-county outcome relative to a mechanically matched benchmark; operating anchor year 2009"
+      },
+      "scope": {
+        "level": "county",
+        "label": "Google Council Bluffs and Pottawattamie County",
+        "county_fips": "19155",
+        "inventory_allocation": "not_applicable"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": -14.28,
+        "central": -1.04,
+        "high": 12.21,
+        "interpretation": "Descriptive gap plus or minus twice pre-period RMSE; fit sensitivity, not statistical confidence."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "google_council_bluffs_employment_comparison_gap",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "host_2024_value",
+          "value": 41403,
+          "unit": "jobs",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_county_economic_core_2001_2024",
+            "detail": "Pottawattamie County 2024 total employment"
+          },
+          "transformation": "Compared with weighted benchmark"
+        },
+        {
+          "name": "comparison_2024_value",
+          "value": 41836.1882808719,
+          "unit": "jobs",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_county_economic_core_2001_2024",
+            "detail": "Inverse-distance weighted comparison"
+          },
+          "transformation": "Subtracted from host and used as denominator"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "Four pre-anchor years cannot isolate prior exposure, concurrent investments, spillovers, or later expansions.",
+      "decision_relevance": "Describes the county's 2024 employment divergence without assigning it to Google.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "not_applicable",
+        "remaining_evidence_gap": "A defensible causal design with treatment isolation, placebo tests, spillover rules, and robustness diagnostics"
+      },
+      "derivation": {
+        "method": "benchmark_application",
+        "model_version": "google-council-bluffs-account-2.0.0",
+        "formula": "100 × (host − weighted benchmark) ÷ weighted benchmark",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_county_economic_core_2001_2024"
+        ],
+        "assumptions": [
+          "Matching uses 2005-2008 level, growth, and volatility.",
+          "Study counties are excluded from donors.",
+          "The 2009 anchor is not assumed to isolate treatment."
+        ]
+      },
+      "limitations": [
+        "Descriptive, not a data-center effect.",
+        "Short pre-period and later expansions limit interpretation.",
+        "Fit sensitivity is not statistical confidence."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Descriptive gap only; no causal attribution.",
+      "reviewed_on": "2026-09-06"
+    },
+    {
+      "estimate_id": "est_study_google_council_bluffs_wage_comparison_gap",
+      "project_id": "prj_study_im3_building_01073720208",
+      "metric_code": "study.modeled_county_wage_comparison_gap",
+      "label": "Modeled county average weekly wages comparison gap",
+      "category": "county_outcome",
+      "unit": "percent",
+      "measure_type": "change",
+      "basis": "modeled_synthesis",
+      "value": 3.8,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2024,
+        "label": "2024 host-county outcome relative to a mechanically matched benchmark; operating anchor year 2009"
+      },
+      "scope": {
+        "level": "county",
+        "label": "Google Council Bluffs and Pottawattamie County",
+        "county_fips": "19155",
+        "inventory_allocation": "not_applicable"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": -6.24,
+        "central": 3.8,
+        "high": 13.83,
+        "interpretation": "Descriptive gap plus or minus twice pre-period RMSE; fit sensitivity, not statistical confidence."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "google_council_bluffs_wage_comparison_gap",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "host_2024_value",
+          "value": 1085,
+          "unit": "USD_per_week",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_county_economic_core_2001_2024",
+            "detail": "Pottawattamie County 2024 nominal average weekly wage"
+          },
+          "transformation": "Compared with weighted benchmark"
+        },
+        {
+          "name": "comparison_2024_value",
+          "value": 1045.3204969218557,
+          "unit": "USD_per_week",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_county_economic_core_2001_2024",
+            "detail": "Inverse-distance weighted comparison"
+          },
+          "transformation": "Subtracted from host and used as denominator"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "Four pre-anchor years cannot isolate prior exposure, concurrent investments, spillovers, later expansions, or price changes.",
+      "decision_relevance": "Describes the county's 2024 nominal-wage divergence without assigning it to Google.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "not_applicable",
+        "remaining_evidence_gap": "A defensible causal design with treatment isolation, placebo tests, deflation, spillover rules, and robustness diagnostics"
+      },
+      "derivation": {
+        "method": "benchmark_application",
+        "model_version": "google-council-bluffs-account-2.0.0",
+        "formula": "100 × (host − weighted benchmark) ÷ weighted benchmark",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_county_economic_core_2001_2024"
+        ],
+        "assumptions": [
+          "Matching uses 2005-2008 level, growth, and volatility.",
+          "Study counties are excluded from donors.",
+          "The 2009 anchor is not assumed to isolate treatment."
+        ]
+      },
+      "limitations": [
+        "Descriptive, not a data-center effect.",
+        "Nominal wages are not inflation-adjusted.",
+        "Fit sensitivity is not statistical confidence."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Descriptive nominal-wage gap only; no causal attribution.",
+      "reviewed_on": "2026-09-06"
+    }
+  ],
+  "modeled_sources": [
+    {
+      "source_id": "src_study_google_environmental_report_2025",
+      "title": "Google 2025 Environmental Report",
+      "url": "https://www.gstatic.com/gumdrop/sustainability/google-2025-environmental-report.pdf",
+      "publisher": "Google LLC",
+      "source_type": "operator_release",
+      "publication_date": {
+        "precision": "year",
+        "year": 2025
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_pdf_text",
+      "notes": "The location schedule reports 2024 Council Bluffs withdrawal of 1,410.3 million gallons, discharge of 400.1 million gallons, and consumption of 1,010.2 million gallons. The report does not allocate either Council Bluffs campus or a selected building, and discharge may be engineering-estimated where actual data is unavailable."
+    },
+    {
+      "source_id": "src_study_pwc_data_center_market_2021",
+      "title": "Prince William County Data Center Market Study",
+      "url": "https://www.pwcva.gov/assets/2021-12/Final%20Report%20-%20Prince%20William%20County%20Data%20Center%20Market%20Study%20120121%20.pdf",
+      "publisher": "Prince William County, Virginia",
+      "source_type": "local_government_record",
+      "publication_date": {
+        "precision": "year",
+        "year": 2021
+      },
+      "retrieved_on": "2026-09-05",
+      "review_method": "pdf_text_and_page_image",
+      "notes": "Tables 7 and 8 report direct, indirect, induced and total construction and operating employment, labor income and output for a county prototype using IMPLAN. Dollar values are 2021 dollars; the underlying IMPLAN data vintage is not disclosed."
+    },
+    {
+      "source_id": "src_study_county_economic_core_2001_2024",
+      "title": "County Economic Core Panel, 2001-2024",
+      "url": "https://apps.bea.gov/regional/downloadzip.htm",
+      "publisher": "U.S. Bureau of Economic Analysis and U.S. Bureau of Labor Statistics",
+      "source_type": "other",
+      "publication_date": {
+        "precision": "year",
+        "year": 2026
+      },
+      "retrieved_on": "2026-09-05",
+      "review_method": "structured_data",
+      "notes": "Repository panel compiled from official annual county real GDP, total employment and average-weekly-wage series. The completion model uses pre-treatment histories and 2024 outcomes; source revisions and concurrent treatments remain limitations."
+    },
+    {
+      "source_id": "src_study_google_environmental_report_2025",
+      "title": "Google 2025 Environmental Report",
+      "url": "https://www.gstatic.com/gumdrop/sustainability/google-2025-environmental-report.pdf",
+      "publisher": "Google LLC",
+      "source_type": "operator_release",
+      "publication_date": {
+        "precision": "year",
+        "year": 2025
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_pdf_text",
+      "notes": "The location schedule reports 2024 Council Bluffs water withdrawal of 1,410.3 million gallons, discharge of 400.1 million gallons, and consumption of 1,010.2 million gallons. Consumption is withdrawal minus discharge; discharge may be engineering-estimated. The row does not allocate a campus or building."
+    }
+  ],
+  "modeled_scope_note": "Modeled contribution accounts for Apple Mesa / Maricopa County, Switch Citadel / Storey County, and Digital Crossroad Hammond / Lake County. Every required account category and county-comparison module contains sourced evidence or a visibly labeled modeled value. Public support is not netted against unmatched local revenues, unavailable public-service cost is represented by a break-even threshold rather than an invented net margin, county comparisons are descriptive rather than causal, and low-confidence transferred benchmarks remain explicit. Project fragments: prj_study_im3_building_00364289074: Low-confidence completion account for Microsoft San Antonio. Construction scenarios apply explicit 25%-75% construction-eligible shares to the reported greater-than-$840 million real-and-personal-property floor before using the Prince William County benchmark, so IT equipment is not silently treated as building construction. Operating scenarios combine the reported greater-than-75 employee floor with zero, half, or all of the separate 20-job expansion forecast; they are sensitivities, not fulfillment findings. County GDP, employment, and wage gaps are descriptive 2024 benchmark comparisons and are not facility effects. Existing source projections cover fiscal revenue, public support, and facility water demand. No annual net-fiscal estimate is made because verified same-scope recurring receipts and marginal public-service costs are unavailable. prj_study_im3_building_00377585075: DET01 completed contribution account. Source forecasts remain forecasts; modeled construction, supplier, household, resource and comparison values are visibly labeled sensitivity or benchmark scenarios. Personal-property equipment is excluded before construction multipliers. The 2025 tax-account aggregation is paired with an equal same-scope public-cost break-even threshold, not a net-fiscal result. County comparisons are descriptive and noncausal. Direct community funding, measured resource use, realized jobs, supplier payments and actual public costs remain gaps. prj_study_im3_building_00460089167: Completed contribution-account syntheses for Meta Forest City / Rutherford County. Broad cumulative capital receives an explicit 25-75% construction-eligible allocation before transferred construction benchmarks; operating scenarios translate the 2015 reported-position snapshot with a visible FTE sensitivity; the same-county, same-fiscal-year tax and incentive claims are reconciled before the public-cost break-even threshold; facility water and electricity resource models retain source rounding and scope; supplier and household channels remain separate; and county comparisons are descriptive benchmark gaps rather than causal effects. No net fiscal, audited, or causal result is asserted. prj_study_im3_building_00464097467: Second-pass modeled contribution account after an expanded public-evidence audit. Direct county permits now cover historical construction values, assessor rolls cover a main-campus parcel stock, a county action covers water-right capacity, Apple reports 2025 campus electricity use, and recipient reports bound two community gifts. Those observations supersede the need for a modeled community proxy but do not supply Apple contractor job-years, construction payroll, annual operating payroll, supplier payments, taxes received, or public-service cost. The construction base therefore retains only the packet's explicit $163 million construction forecast and excludes equipment and historical capital; wide 0.5-1.5 transfer sensitivities expose the mismatch in the last-resort direct construction coefficients. The unsupported local-purchase-share and Virginia induced-output models are removed. No net-fiscal value or public-service-cost break-even is published. County outcome gaps remain descriptive benchmark applications with fit-sensitivity intervals and no causal-design metadata. prj_study_im3_building_00664938835: Second-pass Expedient Milwaukee / Franklin syntheses retained only after a documented 2007-2026 public-source audit. The account keeps a clearly labeled 2022 ownership-transfer anchor, a PB25-0303-only construction allocation sensitivity, an exact tax-equal public-cost break-even threshold, a capacity-based electricity engineering sensitivity, and three descriptive county comparison gaps. It removes transferred construction job-years, assumed local-purchase shares, supplier and household output extrapolations, and a duplicate modeled tax row because public sources did not establish realized site employment, supplier geography, household capture, or a need to restate the direct tax observations. PM25-0174 remains excluded for possible overlap. No synthesis is an observed result or fiscal net. prj_study_im3_building_01073720208: Second-pass governed synthesis for Google Council Bluffs. Construction job-years use only two directly observed September 2025 city permit valuations and transfer the published Prince William County prototype coefficients as benchmark equivalents; the four channels are separated and protected by one aggregation. No Pottawattamie County supplier-retention share is imposed because the public audit found contractor names but no payment or vendor-residence ledger. The water row is the unallocated Google Council Bluffs location identity reported for 2024, not a building allocation. No local abatement, exemption realization, franchise-fee amount, electric load, public-service cost, break-even threshold, or net fiscal result is modeled. County outcome gaps remain descriptive benchmark applications with fit-sensitivity ranges and no causal attribution.",
   "synthesis_version": "study-modeled-synthesis-3.2.0",
   "modeling_policy_version": "study-modeling-policy-1.3.0",
   "analysis_readiness": {
-    "construction": "not_assessed",
+    "construction": "modeled_available",
     "operations": "not_assessed",
     "fiscal": "not_assessed",
     "causal": "not_assessed"
   },
   "legacy_first_entry_note": "Google identifies 2009 as the year Iowa became home to its data center, and the mapped Council Bluffs campus contains multiple Google data-center footprints. The evidence does not establish which footprint entered service first or exclude earlier government, telecom, utility, financial, healthcare, or enterprise computing operations in Pottawattamie County.",
-  "scope_note": "Provisional private-sector research candidate. Owner/operator history, project boundaries and lifecycle require review. Membership does not verify current operation or establish economic impact."
+  "scope_note": "Provisional private-sector research candidate. Owner/operator history, project boundaries and lifecycle require review. Membership does not verify current operation or establish economic impact.",
+  "project_description": "Google Council Bluffs is a multi-building hyperscale data-center operation in Council Bluffs, Pottawattamie County, Iowa. The project key is one mapped inventory building, while the public record spans the broader Council Bluffs campuses, multiple operating parcels, completed 2007 and 2012 state-award projects, and a separate 2022 expansion still in performance; those scopes are not collapsed to the selected building. Documented development includes later electrical and cooling work, location-level water reporting, parcel-tax histories, and education grants."
 }

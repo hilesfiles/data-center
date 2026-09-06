@@ -16,10 +16,10 @@
   "detail_path": "projects/prj_study_im3_building_00664938835.json",
   "latitude": 42.86317702172799,
   "longitude": -87.97785780206577,
-  "economic_record_count": 7,
-  "reported_actual_count": 6,
+  "economic_record_count": 16,
+  "reported_actual_count": 15,
   "projection_count": 1,
-  "modeled_synthesis_count": 0,
+  "modeled_synthesis_count": 7,
   "model_completeness": {
     "status": "incomplete",
     "required_categories": [
@@ -35,33 +35,38 @@
     "covered_categories": [
       "construction",
       "fiscal",
-      "operations"
+      "investment",
+      "operations",
+      "public_costs",
+      "resources"
     ],
-    "modeled_categories": [],
+    "modeled_categories": [
+      "construction",
+      "investment",
+      "public_costs",
+      "resources"
+    ],
     "required_county_outcomes": [
       "study.modeled_county_employment_comparison_gap",
       "study.modeled_county_gdp_comparison_gap",
       "study.modeled_county_wage_comparison_gap"
     ],
-    "covered_county_outcomes": [],
-    "missing_categories": [
-      "community",
-      "investment",
-      "public_costs",
-      "resources",
-      "suppliers"
-    ],
-    "missing_county_outcomes": [
+    "covered_county_outcomes": [
       "study.modeled_county_employment_comparison_gap",
       "study.modeled_county_gdp_comparison_gap",
       "study.modeled_county_wage_comparison_gap"
     ],
+    "missing_categories": [
+      "community",
+      "suppliers"
+    ],
+    "missing_county_outcomes": [],
     "direct_evidence_gap_count": 8,
     "definition": "All eight contribution-account categories contain sourced or labeled modeled values, and GDP, employment, and wage county-comparison modules are populated. Comparison gaps are descriptive and do not establish causal facility effects."
   },
   "schema_version": "1.0.0",
-  "release_id": "private-sector-study-1.44.0",
-  "generated_at": "2026-09-06T14:41:19+00:00",
+  "release_id": "private-sector-study-1.45.0",
+  "generated_at": "2026-09-06T16:15:28+00:00",
   "inventory_name": "Expedient Milwaukee",
   "research_value": "Clear opening and three later panel years; reconstruct prior building use and construction.",
   "history": {
@@ -84,7 +89,172 @@
       "url": "https://doi.org/10.57931/3017294"
     }
   ],
-  "research_updates": [],
+  "research_updates": [
+    {
+      "project_id": "prj_study_im3_building_00664938835",
+      "source_id": "src_study_franklin_expedient_property_2026",
+      "as_of": "2026-09-06",
+      "title": "Construction audit — permits remain estimated administrative values",
+      "notes": "Source families checked: Franklin assessor/property record, Inspection Services forms, Plan Commission and Common Council agendas/minutes, and archived city PDFs. Queries covered Expedient, MKE1, RagingWire, NTT, H-D Franklin, RDC-4777 Ironwood Drive LLC, 4777 W Ironwood, parcel 930-1001-000, PB22-0043, PB25-0303 and PM25-0174 for 2007-2026. The public record supports estimated permit values of $27,000, $580,190 and $250,132, but no invoice, contract, completion expenditure, equipment split, contractor payment, worker hour or payroll. PM25-0174 may overlap PB25-0303. A bounded PB25-0303-only construction-eligible allocation remains as a last-resort scope sensitivity; transferred job-year and local-purchase syntheses were removed rather than presented as Franklin activity.",
+      "source": {
+        "source_id": "src_study_franklin_expedient_property_2026",
+        "title": "City of Franklin linked property record - 4777 W Ironwood Drive",
+        "url": "https://assessordata.org/Assessment?id=9343321482003&p=1",
+        "publisher": "City of Franklin / Real Property Data",
+        "source_type": "assessor_record",
+        "publication_date": {
+          "precision": "unknown"
+        },
+        "retrieved_on": "2026-09-03",
+        "review_method": "pdf_text_and_page_image",
+        "notes": "Franklin's Assessor page links to this public property system. The current record labels the 26,428-square-foot, 2007 building as Expedient and identifies tax key 930-1001-000. The generated five-page report gives the 2026 land, improvement and total assessment, classifies the occupancy as a computer center, and lists dated building permits and reported amounts. The 2022 and 2025 alterations are post-opening permit records; amounts are not verified expenditures and are not summed here.",
+        "artifact_sha256": "34cb20566b1ff73e8453927f12153c1dc9f2e4ff663e5558433cbcce322722ee"
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_00664938835",
+      "source_id": "src_study_expedient_careers_milwaukee_2026",
+      "as_of": "2026-09-06",
+      "title": "Operations audit — capacity is observed, realized Franklin employment is not",
+      "notes": "Source families checked: Expedient's October 20, 2021 opening release, current MKE1/IRN specification and knowledge-base pages, 2021-2026 press archives, ESG pages and current careers index. Queries used Expedient, MKE1, IRN, Milwaukee, Franklin, 4777 Ironwood, jobs, payroll and employees. Dated facility area and critical-load specifications are retained. The 2021 plan to hire twelve remains a forecast. The current careers page showed one Milwaukee-market Regional Account Executive vacancy, not a filled MKE1 operations job. No site FTE, payroll, wage, occupied rack, revenue or operating-expense observation was found.",
+      "source": {
+        "source_id": "src_study_expedient_careers_milwaukee_2026",
+        "title": "Expedient job listings — Milwaukee market",
+        "url": "https://careers.expedient.com/apply/jobs",
+        "publisher": "Expedient",
+        "source_type": "operator_release",
+        "publication_date": {
+          "precision": "unknown"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_page",
+        "notes": "The current careers index returned one Milwaukee-market opening, Regional Account Executive. A vacancy is neither a filled position nor necessarily based at MKE1; the listing supplies no Franklin-site headcount, payroll, hours, residence or realization of the 2021 twelve-hire plan."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_00664938835",
+      "source_id": "src_study_wisconsin_dor_qualified_data_centers_2026",
+      "as_of": "2026-09-06",
+      "title": "Fiscal audit — five parcel-tax principals verified; no listed state data-center exemption",
+      "notes": "Source families checked: Milwaukee County Treasurer parcel account 9301001000, bills 289047, 314923, 353779, 366879 and 380021 for tax years 2021-2025; Franklin assessment rolls; Wisconsin DOR qualified-data-center guidance and certified-center list; WEDC program and transparency pages; and DFI entity search for the parcel owner. The five principal amounts are normalized separately from interest and penalties. DOR's list current through October 31, 2025 contains four certified projects and no Expedient, MKE1, Franklin site or RDC-4777 entity. No personal-property tax, sales-tax benefit, state award, operator reimbursement or same-scope net fiscal result was found.",
+      "source": {
+        "source_id": "src_study_wisconsin_dor_qualified_data_centers_2026",
+        "title": "Wisconsin DOR Qualified Data Center Exemption — certified centers",
+        "url": "https://www.revenue.wi.gov/Pages/FAQS/ExemptionforQualifiedDataCenter.aspx",
+        "publisher": "Wisconsin Department of Revenue",
+        "source_type": "state_record",
+        "publication_date": {
+          "precision": "day",
+          "date": "2026-06-25"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_page",
+        "notes": "The official list, current through October 31, 2025, names Microsoft, Epic Hosting, Degas and Oracle/Green Chile only. Expedient, MKE1, RDC-4777 Ironwood Drive LLC, Franklin and parcel 9301001000 do not appear; no qualified-data-center exemption is recorded for this property in the list."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_00664938835",
+      "source_id": "src_study_expedient_community_commitment_2020",
+      "as_of": "2026-09-06",
+      "title": "Community audit — no Milwaukee or Franklin transfer was disclosed",
+      "notes": "Source families checked: Expedient press archives, current ESG/community pages, MKE Tech Hub references and searches for Milwaukee/Franklin donation, grant, volunteer, school, nonprofit and recipient disclosures from 2020-2026. A $100,000 national Feeding America donation predates the MKE1 opening and its named recipient list excludes Milwaukee and Franklin; it is not allocated here. Current pages describe volunteering and school partnerships only in general terms. No MKE1 recipient, cash amount, in-kind value or volunteer-hour quantity was found, so the prior induced-household-output synthesis was removed and no community benefit is inferred.",
+      "source": {
+        "source_id": "src_study_expedient_community_commitment_2020",
+        "title": "Expedient Announces Commitment to Communities during COVID-19",
+        "url": "https://expedient.com/about/media/press/expedient-announces-commitment-to-communities-during-covid-19/",
+        "publisher": "Expedient",
+        "source_type": "operator_release",
+        "publication_date": {
+          "precision": "day",
+          "date": "2020-04-14"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_page",
+        "notes": "The release reports a $100,000 national Feeding America donation before the Milwaukee site opened and lists recipient food banks in then-current data-center communities; no Milwaukee or Franklin recipient is listed. The amount is not allocated to this project."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_00664938835",
+      "source_id": "src_study_stratcap_milwaukee_acquisition_2022",
+      "as_of": "2026-09-06",
+      "title": "Investment audit — property transfer and lease terms remain distinct from new capital formation",
+      "notes": "Source families checked: archived Franklin Resolution 2012-6791 and CSM 8452 parcel history; Milwaukee County assessment, tax and Register of Deeds access pages; Wisconsin DFI; StratCap's August 10, 2022 buyer release; SEC searches; and contemporaneous local reporting. Queries used 4777 W Ironwood, tax key 930-1001-000, RDC-4777 Ironwood Drive LLC, Expedient, RagingWire, NTT and H-D Franklin for 2007-2026. The buyer release confirms a fully leased triple-net property with about fifteen years remaining, 2.5% escalators and renewal options, while only the secondary report supplies the $9.46 million price. No deed instrument, mortgage amount, rent, Expedient tenant-improvement cost, IT-equipment investment or locally retained capital was public.",
+      "source": {
+        "source_id": "src_study_stratcap_milwaukee_acquisition_2022",
+        "title": "StratCap Acquires Milwaukee Data Center",
+        "url": "https://irei.com/real-assets-adviser/press-release/stratcap-acquires-milwaukee-data-center/",
+        "publisher": "StratCap via Institutional Real Estate, Inc.",
+        "source_type": "operator_release",
+        "publication_date": {
+          "precision": "day",
+          "date": "2022-08-10"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_page",
+        "notes": "The buyer's release identifies a 28,500-square-foot, 2.64-acre Franklin data center fully leased to Expedient on a triple-net basis, with about 15 years remaining, 2.5% annual escalators and three three-year renewal options. It does not disclose purchase price, rent, financing, tenant-improvement spending or local procurement."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_00664938835",
+      "source_id": "src_study_wisconsin_psc_data_center_scope_2026",
+      "as_of": "2026-09-06",
+      "title": "Public-cost audit — zero parcel special assessment is not zero service cost",
+      "notes": "Source families checked: the 2025 county tax account's special-assessment and special-charge rows; Franklin Common Council/Plan Commission archives and water/sewer permit materials; Milwaukee County budgets and deed access; and PSC utility-construction and water-regulation guidance for 2021-2026. Searches used the address, parcel, operator and owner names. The 2025 parcel page reports $0 special assessments and $0 special charges, but that does not measure police, fire, road, administrative, utility or financing cost. No project-attributable public expenditure was found. Only the exact tax-equal cost threshold is retained; no actual cost or fiscal net is asserted.",
+      "source": {
+        "source_id": "src_study_wisconsin_psc_data_center_scope_2026",
+        "title": "The Public Service Commission and Data Centers",
+        "url": "https://psc.wi.gov/Pages/AboutPSC/The-Public-Service-Commission-and-Data-Centers-.aspx",
+        "publisher": "Public Service Commission of Wisconsin",
+        "source_type": "state_record",
+        "publication_date": {
+          "precision": "unknown"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_page",
+        "notes": "PSC states that it does not permit or directly regulate data-center construction or operations and does not track individual business water consumption. PSC and utility searches for Expedient, MKE1, 4777 Ironwood and parcel 9301001000 found no site-specific utility docket, meter, bill, tariff allocation or water record for 2021-2026."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_00664938835",
+      "source_id": "src_study_expedient_sustainability_2026",
+      "as_of": "2026-09-06",
+      "title": "Resource audit — company goals do not supply MKE1 meter data",
+      "notes": "Source families checked: Expedient's 2022 GRESB release, 2025 ESG/sustainability and objective pages, current MKE1 specification, PSC docket and guidance pages, We Energies data-center and tariff pages, and Franklin water/sewer materials. Queries covered Expedient, MKE1, 4777 Ironwood, electricity, PUE, water, wastewater, emissions, renewable energy and meter for 2021-2026. The operator reports a 1.6 MW critical-load capacity and company-wide monitoring and renewable goals, but no MKE1 utilization, PUE, kWh, peak demand, water, sewer, emissions or renewable share. PSC states it does not track individual-business water use. The capacity-based utilization/PUE range is retained only as a last-resort engineering sensitivity and not as observed consumption.",
+      "source": {
+        "source_id": "src_study_expedient_sustainability_2026",
+        "title": "Environmental, Social, and Governance Practices",
+        "url": "https://expedient.com/about/sustainability-statement/",
+        "publisher": "Expedient",
+        "source_type": "operator_release",
+        "publication_date": {
+          "precision": "unknown"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_page",
+        "notes": "The operator describes company-wide energy monitoring, cooling optimization, renewable-energy goals, volunteer opportunities and school partnerships. It supplies no MKE1-specific electricity, PUE, water, wastewater, emissions, renewable share, volunteer hours, recipient or transfer amount."
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_00664938835",
+      "source_id": "src_study_cogent_expedient_mke1_2026",
+      "as_of": "2026-09-06",
+      "title": "Supplier audit — one carrier relationship is identifiable, procurement value is not",
+      "notes": "Source families checked: Franklin permit/property records for contractor fields; Expedient MKE1 specifications and technology-partner pages; carrier-location directories; acquisition materials; and searches for procurement, vendor, supplier, contract and payment disclosures from 2021-2026. The current operator page reports four on-net carriers and Cogent independently lists MKE1 at 4777 Ironwood, but public sources disclose no price, payment, contractor identity for the cited permits, supplier geography or Milwaukee County retained share. The local-construction-spend and operating-supplier-output syntheses were removed.",
+      "source": {
+        "source_id": "src_study_cogent_expedient_mke1_2026",
+        "title": "Cogent service locations — Milwaukee metro",
+        "url": "https://www.cogentco.com/en/network/service-locations?action=search&continent=&country=&metro=Milwaukee&site_type=&state=",
+        "publisher": "Cogent Communications",
+        "source_type": "operator_release",
+        "publication_date": {
+          "precision": "unknown"
+        },
+        "retrieved_on": "2026-09-06",
+        "review_method": "web_page",
+        "notes": "Cogent identifies Expedient MKE1 at 4777 Ironwood Drive as a carrier-neutral data-center service location. This confirms one provider relationship but discloses no contract, payment, local supplier address, procurement amount or retained share."
+      }
+    }
+  ],
   "evidence_gaps": [
     {
       "code": "investment",
@@ -107,7 +277,7 @@
     {
       "code": "operations",
       "label": "Permanent jobs and compensation",
-      "status": "projections_only",
+      "status": "partial",
       "needed": "Realized direct and contractor employment, wages, and operating purchases."
     },
     {
@@ -125,7 +295,7 @@
     {
       "code": "resources",
       "label": "Electricity, water, and cooling",
-      "status": "not_yet_collected",
+      "status": "partial",
       "needed": "Measured use, source, cooling design, and attributable system costs."
     },
     {
@@ -353,6 +523,276 @@
       "unit": "jobs",
       "measure_type": "stock",
       "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_expedient_franklin_opening_floor_area_2021",
+      "project_id": "prj_study_im3_building_00664938835",
+      "metric_code": "study.operating_property_floor_area",
+      "value": 28500,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "reported_snapshot",
+        "report_date": "2021-10-20",
+        "label": "Operator-reported facility area at the October 20, 2021 opening"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Expedient Milwaukee / Franklin at 4777 W Ironwood Drive",
+        "county_fips": "55079",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_expedient_milwaukee_opening_2021",
+      "source_locator": "Opening release, first paragraph",
+      "notes": "Operator-reported whole-facility area at opening. The source does not identify occupied raised-floor area or attribute the pre-existing building's area to new construction. The later operator sheet reports 27,000 square feet; both dated specifications remain visible rather than being silently reconciled.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Reported operating property floor area",
+      "category": "operations",
+      "unit": "square_feet",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_expedient_franklin_opening_power_capacity_2021",
+      "project_id": "prj_study_im3_building_00664938835",
+      "metric_code": "study.operating_power_capacity",
+      "value": 1.2,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "reported_snapshot",
+        "report_date": "2021-10-20",
+        "label": "Operator-reported critical-power capacity at the October 20, 2021 opening"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Expedient Milwaukee / Franklin at 4777 W Ironwood Drive",
+        "county_fips": "55079",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_expedient_milwaukee_opening_2021",
+      "source_locator": "Opening release, first paragraph",
+      "notes": "Operator-reported critical-power capacity, not metered load, coincident peak, annual electricity, occupied IT capacity, or generator capacity. The later operator sheet reports 1.6 MW; both dated specifications remain separate.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Reported operating data-center capacity",
+      "category": "resources",
+      "unit": "MW",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_expedient_franklin_current_floor_area_2026",
+      "project_id": "prj_study_im3_building_00664938835",
+      "metric_code": "study.operating_property_floor_area",
+      "value": 27000,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "reported_snapshot",
+        "report_date": "2026-09-06",
+        "label": "Current operator specification retrieved September 6, 2026; publication date unstated"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Expedient Milwaukee / Franklin at 4777 W Ironwood Drive",
+        "county_fips": "55079",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_expedient_milwaukee_specification_2026",
+      "pdf_page": 1,
+      "printed_page": "1",
+      "source_locator": "Page 1, Specifications, Data Center",
+      "notes": "Current whole-data-center area reported by the operator. It differs from the 28,500-square-foot opening descriptor and from the assessor's 26,428-square-foot building record; definition or revision differences are unresolved. It is not construction spending, investment, or occupied raised-floor area.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Reported operating property floor area",
+      "category": "operations",
+      "unit": "square_feet",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_expedient_franklin_current_power_capacity_2026",
+      "project_id": "prj_study_im3_building_00664938835",
+      "metric_code": "study.operating_power_capacity",
+      "value": 1.6,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "reported_snapshot",
+        "report_date": "2026-09-06",
+        "label": "Current operator specification retrieved September 6, 2026; publication date unstated"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Expedient Milwaukee / Franklin at 4777 W Ironwood Drive",
+        "county_fips": "55079",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_expedient_milwaukee_specification_2026",
+      "pdf_page": 1,
+      "printed_page": "1",
+      "source_locator": "Page 1, Specifications, Critical IT Load",
+      "notes": "Current critical-IT-load capacity reported by the operator. It is a capacity stock and not a meter reading, utilization rate, annual electricity use, utility-service obligation, or the separate 3.0 MW total generator-capacity descriptor.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "label": "Reported operating data-center capacity",
+      "category": "resources",
+      "unit": "MW",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_expedient_franklin_property_taxes_paid_2021",
+      "project_id": "prj_study_im3_building_00664938835",
+      "metric_code": "study.property_taxes_paid",
+      "value": 62597.21,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2021,
+        "label": "Tax year 2021 parcel property-tax principal paid January 24, 2022"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Parcel 9301001000 at 4777 W Ironwood Drive; multi-jurisdiction property-tax account",
+        "county_fips": "55079",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_milwaukee_county_expedient_tax_2021",
+      "source_locator": "Taxes tab, bill 289047, property-tax principal paid row and January 24, 2022 payment",
+      "notes": "The portal names RagingWire Data Centers Inc. as the tax-year owner and reports $62,597.21 of property-tax principal paid. Expedient opened at the reused building on October 20, 2021; this parcel obligation is not attributed to Expedient and is not a public-service cost or fiscal net.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "annual_series_key": "expedient_franklin_real_property_tax_paid",
+      "label": "Account property taxes paid",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_expedient_franklin_property_taxes_paid_2022",
+      "project_id": "prj_study_im3_building_00664938835",
+      "metric_code": "study.property_taxes_paid",
+      "value": 62898.28,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2022,
+        "label": "Tax year 2022 parcel property-tax principal paid February 16, 2023"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Parcel 9301001000 at 4777 W Ironwood Drive; multi-jurisdiction property-tax account",
+        "county_fips": "55079",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_milwaukee_county_expedient_tax_2022",
+      "source_locator": "Taxes tab, bill 314923, property-tax principal paid row and February 16, 2023 payment",
+      "notes": "The portal reports $62,898.28 of property-tax principal paid. The displayed $63,841.75 total payment includes $628.98 interest and $314.49 penalty, which are excluded here. The parcel obligation is not allocated to Expedient under the triple-net lease.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "annual_series_key": "expedient_franklin_real_property_tax_paid",
+      "label": "Account property taxes paid",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_expedient_franklin_property_taxes_paid_2023",
+      "project_id": "prj_study_im3_building_00664938835",
+      "metric_code": "study.property_taxes_paid",
+      "value": 58761.16,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2023,
+        "label": "Tax year 2023 parcel property-tax principal paid January 22, 2024"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Parcel 9301001000 at 4777 W Ironwood Drive; multi-jurisdiction property-tax account",
+        "county_fips": "55079",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_milwaukee_county_expedient_tax_2023",
+      "source_locator": "Taxes tab, bill 353779, property-tax principal paid row and January 22, 2024 payment",
+      "notes": "The portal reports $58,761.16 of net property tax and matching principal paid with no interest or penalty. The account spans several taxing jurisdictions and does not establish which party bore the cost under the lease.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "annual_series_key": "expedient_franklin_real_property_tax_paid",
+      "label": "Account property taxes paid",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_expedient_franklin_property_taxes_paid_2024",
+      "project_id": "prj_study_im3_building_00664938835",
+      "metric_code": "study.property_taxes_paid",
+      "value": 56371.29,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2024,
+        "label": "Tax year 2024 parcel property-tax principal paid March 27, 2025"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Parcel 9301001000 at 4777 W Ironwood Drive; multi-jurisdiction property-tax account",
+        "county_fips": "55079",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_milwaukee_county_expedient_tax_2024",
+      "source_locator": "Taxes tab, bill 366879, property-tax principal paid row and March 27, 2025 payment",
+      "notes": "The portal reports $56,371.29 of property-tax principal paid. The displayed $58,062.43 total payment includes $1,127.43 interest and $563.71 penalty, which are excluded here. The parcel obligation is not allocated to Expedient under the lease.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "annual_series_key": "expedient_franklin_real_property_tax_paid",
+      "label": "Account property taxes paid",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "claim_id": "clm_study_expedient_franklin_property_taxes_paid_2025",
+      "project_id": "prj_study_im3_building_00664938835",
+      "metric_code": "study.property_taxes_paid",
+      "value": 60347.17,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2025,
+        "label": "Tax year 2025 parcel net property tax paid in three installments by May 15, 2026"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Parcel 9301001000 at 4777 W Ironwood Drive; multi-jurisdiction property-tax account",
+        "county_fips": "55079",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_milwaukee_county_expedient_tax_2025",
+      "source_locator": "Taxes tab, net tax and paid columns; payments dated February 6, March 31, and May 15, 2026",
+      "notes": "The public portal reports net tax and paid amount of $60,347.17 with zero balance. This is a parcel-level payment by the property owner across Milwaukee County, City of Franklin, Oak Creek-Franklin School District, MMSD, and MATC. It is not an Expedient-only payment, assessed value, public-service cost, incentive, or net fiscal result.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06",
+      "annual_series_key": "expedient_franklin_real_property_tax_paid",
+      "label": "Account property taxes paid",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
     }
   ],
   "economic_sources": [
@@ -411,21 +851,967 @@
       "retrieved_on": "2026-09-03",
       "review_method": "web_page",
       "notes": "The opening release describes the Franklin data center and states that Expedient planned to hire a dozen employees in the coming months. The statement is retained as a forecast because no source reviewed in this batch reports realized site headcount, payroll, worker residence or retention."
+    },
+    {
+      "source_id": "src_study_expedient_milwaukee_specification_2026",
+      "title": "Milwaukee Franklin Data Center specification sheet",
+      "url": "https://www.expedient.com/uploads/exp__sell_sheet-dc_mke-1.pdf",
+      "publisher": "Expedient",
+      "source_type": "operator_release",
+      "publication_date": {
+        "precision": "unknown"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_pdf_text",
+      "notes": "The current operator sheet identifies 4777 W Ironwood Drive and reports 27,000 square feet of data-center space, 10,000 square feet of raised floor, 1.6 MW of critical IT load, 3.0 MW of total generator capacity, two auto-cutover diesel generators, and multiple cooling systems. Only the whole-building area and critical-load specifications are normalized here. They are capacity descriptors, not utilization, annual electricity, construction spending, investment, employment, or audited environmental performance."
+    },
+    {
+      "source_id": "src_study_milwaukee_county_expedient_tax_2025",
+      "title": "Milwaukee County Public Portal — parcel 9301001000 tax-year 2025",
+      "url": "https://pp-milwaukee-co-wi-fb.app.landnav.com/Search/RealEstate/Taxes?propertyId=5309008",
+      "publisher": "Milwaukee County Treasurer",
+      "source_type": "local_government_record",
+      "publication_date": {
+        "precision": "unknown"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_page",
+      "notes": "The public parcel-tax page identifies parcel 9301001000, bill 380021, RDC-4777 Ironwood Drive LLC, and 4777 W Ironwood Drive. It reports $66,640.33 gross tax, $6,230.91 school credit, $62.25 first-dollar credit, $60,347.17 net tax, $60,347.17 paid, and zero balance. The payment is a parcel-owner obligation spanning multiple taxing jurisdictions; it is not allocated to Expedient, does not establish an operator reimbursement under the triple-net lease, and supplies no same-scope marginal public-service cost."
+    },
+    {
+      "source_id": "src_study_milwaukee_county_expedient_tax_2024",
+      "title": "Milwaukee County Public Portal — parcel 9301001000 tax-year 2024",
+      "url": "https://pp-milwaukee-co-wi-fb.app.landnav.com/Search/RealEstate/Taxes?propertyId=5088198",
+      "publisher": "Milwaukee County Treasurer",
+      "source_type": "local_government_record",
+      "publication_date": {
+        "precision": "unknown"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_page",
+      "notes": "Parcel 9301001000, bill 366879. The portal reports $56,371.29 net property tax and the same principal amount paid. The $58,062.43 payment on March 27, 2025 also included $1,127.43 interest and $563.71 penalty; those charges are excluded from the property-tax principal record."
+    },
+    {
+      "source_id": "src_study_milwaukee_county_expedient_tax_2023",
+      "title": "Milwaukee County Public Portal — parcel 9301001000 tax-year 2023",
+      "url": "https://pp-milwaukee-co-wi-fb.app.landnav.com/Search/RealEstate/Taxes?propertyId=5054027",
+      "publisher": "Milwaukee County Treasurer",
+      "source_type": "local_government_record",
+      "publication_date": {
+        "precision": "unknown"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_page",
+      "notes": "Parcel 9301001000, bill 353779. The portal reports $58,761.16 net property tax and matching principal paid on January 22, 2024, with no interest or penalty."
+    },
+    {
+      "source_id": "src_study_milwaukee_county_expedient_tax_2022",
+      "title": "Milwaukee County Public Portal — parcel 9301001000 tax-year 2022",
+      "url": "https://pp-milwaukee-co-wi-fb.app.landnav.com/Search/RealEstate/Taxes?propertyId=4858690",
+      "publisher": "Milwaukee County Treasurer",
+      "source_type": "local_government_record",
+      "publication_date": {
+        "precision": "unknown"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_page",
+      "notes": "Parcel 9301001000, bill 314923. The portal reports $62,898.28 net property tax and matching principal paid. The $63,841.75 payment on February 16, 2023 also included $628.98 interest and $314.49 penalty; those charges are excluded from the property-tax principal record."
+    },
+    {
+      "source_id": "src_study_milwaukee_county_expedient_tax_2021",
+      "title": "Milwaukee County Public Portal — parcel 9301001000 tax-year 2021",
+      "url": "https://pp-milwaukee-co-wi-fb.app.landnav.com/Search/RealEstate/Taxes?propertyId=4577125",
+      "publisher": "Milwaukee County Treasurer",
+      "source_type": "local_government_record",
+      "publication_date": {
+        "precision": "unknown"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_page",
+      "notes": "Parcel 9301001000, bill 289047. The portal names RagingWire Data Centers Inc. as owner for this tax year and reports $62,597.21 net property tax and matching principal paid on January 24, 2022. Expedient opened at the reused property late in this tax year, so this parcel payment is not attributed to Expedient."
     }
   ],
-  "economic_scope_note": "Reviewed evidence batches at campus or company/county scope. No record is allocated to an individual inventory building. Source checking establishes what a document reports, not an independent audit or causal attribution. Monetary figures are nominal. Peak workforce is distinct from annual employment; source-year labels do not establish fiscal-year boundaries. Original forecasts remain forecasts until realization is verified. No cross-record benefit total is defined. Cumulative project costs are not annual expenditure. Tax receipts and incentive payments remain separate, with inferred taxpayer links disclosed. Contextual research updates do not count as economic amounts. Account tax bills are distinct from cash receipts and incentive-program fees. Tax years, calendar years and fiscal years retain their source basis; separate taxpayer accounts are not consolidated. Municipal developer rebates and taxpayer valuations have distinct subjects. Estimated actual property value and tax capacity are not tax receipts; payable-year valuations retain their earlier assessment date. Taxpayer values expressed in millions retain approximate precision and account-level separation. A current-year table can use an older valuation date and is not converted into an annual series. Facility real-property and business-personal-property accounts remain separate, and address-label discrepancies are disclosed. Michigan Industrial Facilities Tax accounts remain distinct from the underlying real parcel and from post-expiration personal-property accounts; annual account totals are not recipient-level government receipts. Permit construction values are administrative project amounts, not verified expenditure, and separate permits are not combined without proof that their scopes do not overlap. Repeated maintenance-year assessments are annual parcel stocks, not new investment flows. Mixed-use parcel assessments and taxable values are retained at whole-parcel scope and are not allocated to a data-center tenant or function by floor area. Operator-reported jobs supported remain distinct from direct employees and FTEs. Approved infrastructure grants are documented public commitments rather than verified disbursements or total public costs. Cumulative community funding remains separate from tax receipts, payroll and modeled multiplier effects. Reported facility power capacity is not measured electricity consumption or peak demand. Permit-listed emergency generators are not runtime, fuel-use or actual-emissions observations. A city largest-taxpayer table's personal-property assessment remains separate from the leasehold real-property account, tax bills, receipts and capital expenditure. TIF loan principal is financing rather than a grant or general-fund receipt; project-generated tax revenue pledged to repayment is retained as a separate public-financing flow and is not added to gross parcel distributions. Water-withdrawal and consumptive permit capacities are regulatory limits rather than measured use. Development-agreement local-labor preferences are requirements rather than realized participation, and operating employee snapshots remain distinct from customers' on-site staff and jobs forecasts. Audited City bond statements distinguish issuance draws, year-end principal, annual principal retired, interest and fees, pledged TIF revenue, debt-service-fund transfers and future principal-plus-interest commitments. These measures are not summed into a benefit or subsidy total. City pledged revenue, City debt-service-fund transfers and the private fund's project TIF revenue applied to loan repayment retain their separate source definitions because only the 2022 transfer and private-fund amount agree exactly. Developer testimony in public meeting minutes is retained as a source-attributed cumulative lower bound; local-contractor spending is not converted into payroll, worker counts, household spending or multiplier effects. Economic-improvement-district cost estimates and maximum owner assessments remain source projections until bond issuance, an assessment schedule, collections and expenditures are verified. A statutory financing cap is not a tax receipt, public expenditure or subsidy. Audited private equipment-financing balances are debt stocks rather than construction spending, public support or community benefit. Reported floor area and occupied-share values describe operating scale and utilization, not employment, revenue, power use or economic output. Contractor and engineer case studies document supplier roles and completion timing but do not establish payment amounts, worker residence, payroll or multiplier effects. State incentive contract amounts, expected jobs and paid-or-certified-to-date fields remain distinct; a zero paid/certified balance at an earlier reporting cutoff does not imply no later claims. Public charging-infrastructure awards are commitments rather than verified disbursements, private project investment or operating benefits. Qualitative payment descriptions without a defensible numeric bound remain research context rather than quantitative records. Program-reported actual qualified investment, certified tax-exemption value and certified tax-credit value remain separate cumulative measures; none is converted into annual spending, a cash grant, local revenue or causal impact. County Business Patterns observations are county-industry context, not project contributions: establishment counts are employer locations rather than data-center facilities, March employment is not an annual average, annual payroll spans the full NAICS cell, and disclosure noise, classification changes and geographic assignment limit comparisons. No CBP change is attributed to a study project. Project fragments: prj_study_im3_building_00364289074: Public-source review for the Microsoft facility at 5150 Rogers Road and explicitly labeled wider Microsoft/Bexar County activity. The exact-site ordinance and permit records are retained separately from later company/county and Greater San Antonio disclosures. Permit value is an administrative construction amount, the original investment and employment figures are commitments, the 2013 employment threshold is a reported lower bound, and water use is a source projection rather than metered consumption. No Bexar-and-Medina total is allocated to this building. Actual annual construction spending, worker residence, payroll, vendor payments, operating purchases, recipient-level tax receipts, same-scope public-service cost, electricity use, wastewater, emissions, and annual community transfers remain unobserved. prj_study_im3_building_00377585075: DET01-specific direct-evidence follow-up. The operator data sheet supplies current facility-area and rated-power observations at 21005 Lahser Road. The 2014 operator release bounds the initial launch chronology but supplies no quantitative construction, supplier, payroll, community-funding, resource-use or public-cost observation. The values below are source-reported specifications, not audited utilization, expenditure or impact measures. prj_study_im3_building_00460089167: Public-source follow-up adds one facility-level 2024 electricity observation from Meta's environmental data index. The same source's rounded Forest City water-withdrawal and Scope 2 emissions values remain contextual until compatible canonical metric definitions exist. A North Carolina supplier announcement is retained only as context because its U.S.-wide contract value and Hickory manufacturing expansion cannot be allocated to Forest City or Rutherford County.",
+  "economic_scope_note": "Reviewed evidence batches at campus or company/county scope. No record is allocated to an individual inventory building. Source checking establishes what a document reports, not an independent audit or causal attribution. Monetary figures are nominal. Peak workforce is distinct from annual employment; source-year labels do not establish fiscal-year boundaries. Original forecasts remain forecasts until realization is verified. No cross-record benefit total is defined. Cumulative project costs are not annual expenditure. Tax receipts and incentive payments remain separate, with inferred taxpayer links disclosed. Contextual research updates do not count as economic amounts. Account tax bills are distinct from cash receipts and incentive-program fees. Tax years, calendar years and fiscal years retain their source basis; separate taxpayer accounts are not consolidated. Municipal developer rebates and taxpayer valuations have distinct subjects. Estimated actual property value and tax capacity are not tax receipts; payable-year valuations retain their earlier assessment date. Taxpayer values expressed in millions retain approximate precision and account-level separation. A current-year table can use an older valuation date and is not converted into an annual series. Facility real-property and business-personal-property accounts remain separate, and address-label discrepancies are disclosed. Michigan Industrial Facilities Tax accounts remain distinct from the underlying real parcel and from post-expiration personal-property accounts; annual account totals are not recipient-level government receipts. Permit construction values are administrative project amounts, not verified expenditure, and separate permits are not combined without proof that their scopes do not overlap. Repeated maintenance-year assessments are annual parcel stocks, not new investment flows. Mixed-use parcel assessments and taxable values are retained at whole-parcel scope and are not allocated to a data-center tenant or function by floor area. Operator-reported jobs supported remain distinct from direct employees and FTEs. Approved infrastructure grants are documented public commitments rather than verified disbursements or total public costs. Cumulative community funding remains separate from tax receipts, payroll and modeled multiplier effects. Reported facility power capacity is not measured electricity consumption or peak demand. Permit-listed emergency generators are not runtime, fuel-use or actual-emissions observations. A city largest-taxpayer table's personal-property assessment remains separate from the leasehold real-property account, tax bills, receipts and capital expenditure. TIF loan principal is financing rather than a grant or general-fund receipt; project-generated tax revenue pledged to repayment is retained as a separate public-financing flow and is not added to gross parcel distributions. Water-withdrawal and consumptive permit capacities are regulatory limits rather than measured use. Development-agreement local-labor preferences are requirements rather than realized participation, and operating employee snapshots remain distinct from customers' on-site staff and jobs forecasts. Audited City bond statements distinguish issuance draws, year-end principal, annual principal retired, interest and fees, pledged TIF revenue, debt-service-fund transfers and future principal-plus-interest commitments. These measures are not summed into a benefit or subsidy total. City pledged revenue, City debt-service-fund transfers and the private fund's project TIF revenue applied to loan repayment retain their separate source definitions because only the 2022 transfer and private-fund amount agree exactly. Developer testimony in public meeting minutes is retained as a source-attributed cumulative lower bound; local-contractor spending is not converted into payroll, worker counts, household spending or multiplier effects. Economic-improvement-district cost estimates and maximum owner assessments remain source projections until bond issuance, an assessment schedule, collections and expenditures are verified. A statutory financing cap is not a tax receipt, public expenditure or subsidy. Audited private equipment-financing balances are debt stocks rather than construction spending, public support or community benefit. Reported floor area and occupied-share values describe operating scale and utilization, not employment, revenue, power use or economic output. Contractor and engineer case studies document supplier roles and completion timing but do not establish payment amounts, worker residence, payroll or multiplier effects. State incentive contract amounts, expected jobs and paid-or-certified-to-date fields remain distinct; a zero paid/certified balance at an earlier reporting cutoff does not imply no later claims. Public charging-infrastructure awards are commitments rather than verified disbursements, private project investment or operating benefits. Qualitative payment descriptions without a defensible numeric bound remain research context rather than quantitative records. Program-reported actual qualified investment, certified tax-exemption value and certified tax-credit value remain separate cumulative measures; none is converted into annual spending, a cash grant, local revenue or causal impact. County Business Patterns observations are county-industry context, not project contributions: establishment counts are employer locations rather than data-center facilities, March employment is not an annual average, annual payroll spans the full NAICS cell, and disclosure noise, classification changes and geographic assignment limit comparisons. No CBP change is attributed to a study project. Project fragments: prj_study_im3_building_00364289074: Public-source review for the Microsoft facility at 5150 Rogers Road and explicitly labeled wider Microsoft/Bexar County activity. The exact-site ordinance and permit records are retained separately from later company/county and Greater San Antonio disclosures. Permit value is an administrative construction amount, the original investment and employment figures are commitments, the 2013 employment threshold is a reported lower bound, and water use is a source projection rather than metered consumption. No Bexar-and-Medina total is allocated to this building. Actual annual construction spending, worker residence, payroll, vendor payments, operating purchases, recipient-level tax receipts, same-scope public-service cost, electricity use, wastewater, emissions, and annual community transfers remain unobserved. prj_study_im3_building_00377585075: DET01-specific direct-evidence follow-up. The operator data sheet supplies current facility-area and rated-power observations at 21005 Lahser Road. The 2014 operator release bounds the initial launch chronology but supplies no quantitative construction, supplier, payroll, community-funding, resource-use or public-cost observation. The values below are source-reported specifications, not audited utilization, expenditure or impact measures. prj_study_im3_building_00460089167: Public-source follow-up adds one facility-level 2024 electricity observation from Meta's environmental data index. The same source's rounded Forest City water-withdrawal and Scope 2 emissions values remain contextual until compatible canonical metric definitions exist. A North Carolina supplier announcement is retained only as context because its U.S.-wide contract value and Hickory manufacturing expansion cannot be allocated to Forest City or Rutherford County. prj_study_im3_building_00464097467: Second-pass public-evidence audit for Apple's Washoe County data-center campus at 21505 Reno Technology Parkway West and its 2024 expansion application. GOED audit findings, application forecasts, county permit values, parcel assessments, a water-right allocation, operator-reported electricity use, and recipient-reported donation bands remain separate evidence states and scopes. Permit values are administrative amounts and are not summed because overlapping scopes cannot be ruled out. Assessment values are parcel stocks, not investment or tax receipts. The 125 acre-foot water right is regulatory capacity, not measured use. Food Bank gifts are company-region transfers, not campus-attributable annual spending. No campus total is allocated to the selected mapped building; the four-building campus, later buildout cases, downtown Reno warehouse, supporting renewable projects, fire-station parcel, and more-than-200-person support statement are not collapsed into one footprint. No Switch Citadel or Storey County amount enters this fragment. Vendor payments, worker residence, taxes received by jurisdiction, realized 2024 abatement, same-scope public-service cost, wastewater, and building-level electricity or water remain unobserved. prj_study_im3_building_00664938835: Second-pass public-evidence audit for Expedient's adaptive reuse of the pre-existing data-center building at 4777 W Ironwood Drive. The review searched Franklin planning, agenda, assessment, permit, water and sewer materials; Milwaukee County tax and deed-record access points; Wisconsin DOR, WEDC, DFI and PSC records; operator press, specification, career, ESG and community pages; lease, financing, carrier and vendor disclosures; and archived official pages for 2007-2026. Opening-day and current operator specifications remain separate dated snapshots because the reported area and capacity changed. The county portal now establishes a 2021-2025 parcel-tax principal series, but not Expedient's incidence under the lease. The 2022 ownership transfer, assessments, estimated permit values, tax payments and hiring plan remain non-additive. No source was found for actual construction outlays, realized site employment or payroll, local procurement, Milwaukee-area community transfers, metered resources, project-attributable public costs or a fiscal net. prj_study_im3_building_01073720208: Second-pass public-evidence audit for Google's Council Bluffs data-center activity, retaining the selected inventory building as the project key while leaving campus, taxpayer-account, company-county, and state-award facts at their reported scopes. The audit distinguishes completed IEDA contracts 08-HQJC-030 and 12-HQJP-051 from the 2022 award still in performance; permit valuations remain administrative amounts rather than expenditure; assessed and taxable values remain stocks; bills remain distinct from payments; and community grants remain recipient- and period-specific. The Pottawattamie County tax portal now supplies a paid 2018-2024 series for the principal Tetra parcel and an unpaid 2025 bill for the newer Questa parcel. No value is inferred for sales-tax exemptions, the local abatement schedule, franchise-fee adjustment, electricity, supplier retention, building-level water, marginal public-service cost, or net fiscal position. Models without defensible project allocation or transferable parameters were removed even though that leaves the eight-category account incomplete.",
   "evidence_version": "study-economic-evidence-1.37.0",
-  "modeled_syntheses": [],
-  "modeled_sources": [],
-  "modeled_scope_note": "Modeled contribution accounts for Apple Mesa / Maricopa County, Switch Citadel / Storey County, and Digital Crossroad Hammond / Lake County. Every required account category and county-comparison module contains sourced evidence or a visibly labeled modeled value. Public support is not netted against unmatched local revenues, unavailable public-service cost is represented by a break-even threshold rather than an invented net margin, county comparisons are descriptive rather than causal, and low-confidence transferred benchmarks remain explicit. Project fragments: prj_study_im3_building_00364289074: Low-confidence completion account for Microsoft San Antonio. Construction scenarios apply explicit 25%-75% construction-eligible shares to the reported greater-than-$840 million real-and-personal-property floor before using the Prince William County benchmark, so IT equipment is not silently treated as building construction. Operating scenarios combine the reported greater-than-75 employee floor with zero, half, or all of the separate 20-job expansion forecast; they are sensitivities, not fulfillment findings. County GDP, employment, and wage gaps are descriptive 2024 benchmark comparisons and are not facility effects. Existing source projections cover fiscal revenue, public support, and facility water demand. No annual net-fiscal estimate is made because verified same-scope recurring receipts and marginal public-service costs are unavailable. prj_study_im3_building_00377585075: DET01 completed contribution account. Source forecasts remain forecasts; modeled construction, supplier, household, resource and comparison values are visibly labeled sensitivity or benchmark scenarios. Personal-property equipment is excluded before construction multipliers. The 2025 tax-account aggregation is paired with an equal same-scope public-cost break-even threshold, not a net-fiscal result. County comparisons are descriptive and noncausal. Direct community funding, measured resource use, realized jobs, supplier payments and actual public costs remain gaps. prj_study_im3_building_00460089167: Completed contribution-account syntheses for Meta Forest City / Rutherford County. Broad cumulative capital receives an explicit 25-75% construction-eligible allocation before transferred construction benchmarks; operating scenarios translate the 2015 reported-position snapshot with a visible FTE sensitivity; the same-county, same-fiscal-year tax and incentive claims are reconciled before the public-cost break-even threshold; facility water and electricity resource models retain source rounding and scope; supplier and household channels remain separate; and county comparisons are descriptive benchmark gaps rather than causal effects. No net fiscal, audited, or causal result is asserted.",
+  "modeled_syntheses": [
+    {
+      "estimate_id": "est_study_expedient_franklin_property_transaction_anchor_2022",
+      "project_id": "prj_study_im3_building_00664938835",
+      "metric_code": "study.modeled_real_property_transaction_value",
+      "label": "Reported 2022 real-property transaction anchor",
+      "category": "investment",
+      "unit": "USD",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 9460000,
+      "period": {
+        "kind": "source_year",
+        "year": 2022,
+        "label": "Reported 2022 sale of the reused data-center property"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Real property at 4777 W Ironwood Drive, Franklin, Wisconsin",
+        "county_fips": "55079",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "point_estimate",
+        "low": 9460000,
+        "central": 9460000,
+        "high": 9460000,
+        "interpretation": "The point carries the reported transaction price into the modeled account without adding other project measures; it is not a statistical estimate."
+      },
+      "contribution_channel": "direct",
+      "aggregation": {
+        "aggregation_id": "expedient_franklin_property_transaction_2022",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "reported_transaction_price",
+          "value": 9460000,
+          "unit": "USD",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_expedient_franklin_sale_2022",
+            "detail": "Sale price attributed by the article to a Wisconsin state record"
+          },
+          "transformation": "Retained without adding assessments, permits, taxes, or hiring plans"
+        }
+      ],
+      "confidence": "medium",
+      "confidence_rationale": "The published price is property specific and the buyer release independently matches the asset and lease, but the underlying state transfer record was not reproduced.",
+      "decision_relevance": "Preserves the only public transaction-value anchor while preventing an adaptive-reuse ownership transfer from being mislabeled as new construction or operator capital expenditure.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "not_applicable",
+        "remaining_evidence_gap": "Recorded deed instrument, Expedient tenant-improvement spending, IT-equipment investment, annual capital expenditure, financing, rent, and locally retained investment"
+      },
+      "derivation": {
+        "method": "benchmark_application",
+        "model_version": "expedient-franklin-account-1.1.0",
+        "formula": "reported 2022 real-property transaction price × 1",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_expedient_franklin_sale_2022",
+          "src_study_stratcap_milwaukee_acquisition_2022"
+        ],
+        "assumptions": [
+          "The published price and buyer release refer to the same 4777 W Ironwood property.",
+          "An asset ownership transfer is not treated as construction spending, assessed value, local output, or Expedient capital expenditure."
+        ]
+      },
+      "limitations": [
+        "The price is from secondary reporting that cites a state record.",
+        "The buyer release confirms the asset and lease but does not disclose price.",
+        "The transaction may include lease and financing attributes not separately valued.",
+        "It does not measure new local economic activity."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Standalone investment-context anchor only; never add it to assessments, permits, property tax, construction spending, or operating contribution.",
+      "reviewed_on": "2026-09-06"
+    },
+    {
+      "estimate_id": "est_study_expedient_franklin_construction_eligible_spending_2025",
+      "project_id": "prj_study_im3_building_00664938835",
+      "metric_code": "study.modeled_construction_eligible_spending",
+      "label": "Modeled construction-eligible share of the 2025 building permit",
+      "category": "construction",
+      "unit": "USD",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 464152,
+      "period": {
+        "kind": "construction_period",
+        "start_date": "2025-01-01",
+        "end_date": "2025-12-31",
+        "label": "Permit PB25-0303 issued during 2025; completion and expenditure timing unverified"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Interior alteration and exterior mechanical-yard work at 4777 W Ironwood Drive",
+        "county_fips": "55079",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": 348114,
+        "central": 464152,
+        "high": 580190,
+        "interpretation": "The PB25-0303 administrative permit value is multiplied by 60%, 80%, and 100% construction-eligible shares. This is a last-resort scope sensitivity, not observed spending, a true-value bound, or a confidence interval."
+      },
+      "contribution_channel": "direct",
+      "aggregation": {
+        "aggregation_id": "expedient_franklin_construction_eligible_2025",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "building_permit_value",
+          "value": 580190,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_expedient_franklin_permit_pb25_0303",
+            "detail": "PB25-0303 administrative permit value"
+          },
+          "transformation": "Multiplied by construction-eligible shares"
+        },
+        {
+          "name": "low_construction_eligible_share",
+          "value": 0.6,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Lower building-work share after excluding possible IT equipment and other nonconstruction capital"
+          },
+          "transformation": "Produces low endpoint"
+        },
+        {
+          "name": "central_construction_eligible_share",
+          "value": 0.8,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Central building-work share after excluding possible IT equipment and other nonconstruction capital"
+          },
+          "transformation": "Produces central endpoint"
+        },
+        {
+          "name": "high_construction_eligible_share",
+          "value": 1,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Upper scenario treating the full permit amount as construction eligible"
+          },
+          "transformation": "Produces high endpoint"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The project-specific permit and scope are direct local records, but the city form identifies project cost as estimated and no equipment split, invoice, completion or payment was public.",
+      "decision_relevance": "Provides the narrowest reproducible construction scope for decision testing without applying employment or local-purchase multipliers that the Franklin audit could not defend.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "not_found",
+        "remaining_evidence_gap": "Invoices, actual construction outlays, IT-equipment costs, completion timing, contractor identity, payment records, worker hours and payroll"
+      },
+      "derivation": {
+        "method": "sensitivity_analysis",
+        "model_version": "expedient-franklin-account-1.1.0",
+        "formula": "PB25-0303 permit value × construction-eligible share",
+        "input_claim_ids": [
+          "clm_study_expedient_franklin_permit_pb25_0303"
+        ],
+        "input_source_ids": [
+          "src_study_franklin_expedient_property_2026",
+          "src_study_franklin_building_permit_application_2026"
+        ],
+        "assumptions": [
+          "Construction-eligible shares are 60%, 80%, and 100% solely for scope sensitivity.",
+          "PM25-0174 is not added because its mechanical scope may overlap PB25-0303.",
+          "Permit value is an administrative estimated-cost basis and is not relabeled as realized spending."
+        ]
+      },
+      "limitations": [
+        "Permit value may differ from contracted or paid cost and is not a bound on actual spending.",
+        "Equipment content is parameterized rather than observed.",
+        "The 2022 and 2025 permits are not summed across unrelated periods.",
+        "No construction jobs, local purchasing or multiplier effects are inferred."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Scope-control sensitivity only; excludes the real-estate sale, assessments, tax payments, hiring forecast, PB22-0043, and potentially overlapping PM25-0174.",
+      "reviewed_on": "2026-09-06"
+    },
+    {
+      "estimate_id": "est_study_expedient_franklin_annual_local_service_cost_break_even",
+      "project_id": "prj_study_im3_building_00664938835",
+      "metric_code": "study.modeled_annual_local_service_cost_break_even",
+      "label": "Annual local public-service-cost break-even threshold",
+      "category": "public_costs",
+      "unit": "USD_per_year",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 60347.17,
+      "period": {
+        "kind": "tax_year",
+        "year": 2025,
+        "label": "Tax year 2025 same-scope break-even threshold"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Parcel 9301001000 property-tax account spanning the same local taxing jurisdictions",
+        "county_fips": "55079",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "point_estimate",
+        "low": 60347.17,
+        "central": 60347.17,
+        "high": 60347.17,
+        "interpretation": "The threshold equals the verified recurring parcel-tax contribution by definition; it is not an estimate of actual public-service cost."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "expedient_franklin_service_cost_break_even_2025",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "same_scope_parcel_tax_contribution",
+          "value": 60347.17,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_expedient_franklin_property_taxes_paid_2025",
+            "detail": "Verified tax-year 2025 parcel payment"
+          },
+          "transformation": "Defines the equal-cost break-even threshold"
+        }
+      ],
+      "confidence": "medium",
+      "confidence_rationale": "The threshold identity is exact for the verified tax principal, while actual same-scope marginal public cost is unavailable.",
+      "decision_relevance": "States the public-cost level that would offset the verified recurring tax contribution without manufacturing a cost or net position.",
+      "evidence_search": {
+        "direct_observation_status": "not_found",
+        "source_projection_status": "not_found",
+        "remaining_evidence_gap": "Project-attributable fire, police, road, utility, administrative, infrastructure and financing costs for the same recipients and period"
+      },
+      "derivation": {
+        "method": "allocation",
+        "model_version": "expedient-franklin-account-1.1.0",
+        "formula": "annual marginal local public-service cost at break-even = verified parcel property-tax contribution",
+        "input_claim_ids": [
+          "clm_study_expedient_franklin_property_taxes_paid_2025"
+        ],
+        "input_source_ids": [
+          "src_study_milwaukee_county_expedient_tax_2025",
+          "src_study_wisconsin_psc_data_center_scope_2026"
+        ],
+        "assumptions": [
+          "The threshold is an identity, not an observed cost.",
+          "The 2025 zero special-assessment row does not imply zero public cost.",
+          "No state incentive, permit, assessment, ownership-transfer amount, interest or penalty is netted into the annual local account."
+        ]
+      },
+      "limitations": [
+        "Actual public-service cost is unobserved.",
+        "No positive or negative fiscal margin is asserted.",
+        "The parcel payment spans several recipients whose marginal costs may differ."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "No net fiscal result and no actual public-service-cost estimate; this is only a same-scope break-even threshold.",
+      "reviewed_on": "2026-09-06"
+    },
+    {
+      "estimate_id": "est_study_expedient_franklin_facility_electricity_2026",
+      "project_id": "prj_study_im3_building_00664938835",
+      "metric_code": "study.modeled_facility_electricity_consumption",
+      "label": "Modeled annual facility electricity",
+      "category": "resources",
+      "unit": "kWh_per_year",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 9811200,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2026,
+        "label": "Annualized engineering sensitivity using the current 1.6 MW critical-load capacity"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Expedient Milwaukee / Franklin at 4777 W Ironwood Drive",
+        "county_fips": "55079",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": 4204800,
+        "central": 9811200,
+        "high": 16819200,
+        "interpretation": "Low, central, and high pair 25%, 50%, and 75% critical-load utilization with PUE 1.2, 1.4, and 1.6. This is a last-resort engineering sensitivity, not a meter reading, true-value bound or confidence interval."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "expedient_franklin_facility_electricity_2026",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "critical_it_capacity",
+          "value": 1.6,
+          "unit": "MW",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_expedient_franklin_current_power_capacity_2026",
+            "detail": "Current operator-reported critical IT load capacity"
+          },
+          "transformation": "Converted to kW and multiplied by hours, utilization, and PUE"
+        },
+        {
+          "name": "annual_hours",
+          "value": 8760,
+          "unit": "hours_per_year",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Non-leap-year annualization"
+          },
+          "transformation": "Annualizes power"
+        },
+        {
+          "name": "low_it_utilization",
+          "value": 0.25,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Low occupied-load sensitivity"
+          },
+          "transformation": "Low endpoint"
+        },
+        {
+          "name": "central_it_utilization",
+          "value": 0.5,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Central occupied-load sensitivity"
+          },
+          "transformation": "Central endpoint"
+        },
+        {
+          "name": "high_it_utilization",
+          "value": 0.75,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "High occupied-load sensitivity"
+          },
+          "transformation": "High endpoint"
+        },
+        {
+          "name": "low_pue",
+          "value": 1.2,
+          "unit": "PUE_ratio",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Low PUE sensitivity informed by national engineering ranges"
+          },
+          "transformation": "Low endpoint"
+        },
+        {
+          "name": "central_pue",
+          "value": 1.4,
+          "unit": "PUE_ratio",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_lbnl_dc_energy_2024",
+            "detail": "LBNL 2023 average PUE benchmark"
+          },
+          "transformation": "Central endpoint"
+        },
+        {
+          "name": "high_pue",
+          "value": 1.6,
+          "unit": "PUE_ratio",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_lbnl_dc_energy_2024",
+            "detail": "LBNL 2014 average PUE benchmark used as high sensitivity"
+          },
+          "transformation": "High endpoint"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "Capacity is project specific, while exhaustive operator, PSC, utility and municipal searches found no MKE1 utilization, meter or site PUE; those parameters dominate the range.",
+      "decision_relevance": "Converts the capacity stock into a reproducible annual electricity sensitivity after direct meter evidence was exhausted, without treating capacity as consumption.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "not_found",
+        "remaining_evidence_gap": "Interval-metered electricity, utility bills, peak load, occupied IT load, site PUE, renewable procurement, rate impacts, water, wastewater and emissions"
+      },
+      "derivation": {
+        "method": "engineering_estimate",
+        "model_version": "expedient-franklin-account-1.1.0",
+        "formula": "critical IT capacity × 1,000 kW/MW × 8,760 hours × utilization × PUE",
+        "input_claim_ids": [
+          "clm_study_expedient_franklin_current_power_capacity_2026"
+        ],
+        "input_source_ids": [
+          "src_study_expedient_milwaukee_specification_2026",
+          "src_study_lbnl_dc_energy_2024",
+          "src_study_expedient_sustainability_2026",
+          "src_study_wisconsin_psc_data_center_scope_2026"
+        ],
+        "assumptions": [
+          "Endpoint utilization rates are 25%, 50%, and 75%.",
+          "Endpoint PUE values are 1.2, 1.4, and 1.6.",
+          "Reported critical IT load is nameplate capacity, not observed demand."
+        ]
+      },
+      "limitations": [
+        "No site meter or bill.",
+        "PUE and utilization are assumptions or transferred benchmarks.",
+        "The interval is not a bound on actual use.",
+        "No facility water, wastewater, emissions, renewable share or utility-system cost is inferred."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Engineering sensitivity only; the 1.6 MW capacity remains the direct observation and the model is not added to any fiscal or output measure.",
+      "reviewed_on": "2026-09-06"
+    },
+    {
+      "estimate_id": "est_study_expedient_franklin_gdp_comparison_gap",
+      "project_id": "prj_study_im3_building_00664938835",
+      "metric_code": "study.modeled_county_gdp_comparison_gap",
+      "label": "Modeled county real GDP comparison gap",
+      "category": "county_outcome",
+      "unit": "percent",
+      "measure_type": "change",
+      "basis": "modeled_synthesis",
+      "value": 11.63,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2024,
+        "label": "2024 Milwaukee County outcome relative to a mechanically matched benchmark; Expedient opening year 2021"
+      },
+      "scope": {
+        "level": "county",
+        "label": "Expedient Franklin facility and Milwaukee County",
+        "county_fips": "55079",
+        "inventory_allocation": "not_applicable"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": -17.28,
+        "central": 11.63,
+        "high": 40.55,
+        "interpretation": "The envelope is plus or minus twice the 2013-2020 pre-period RMSE. It is a fit sensitivity, not a statistical confidence interval."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "expedient_franklin_gdp_comparison_gap",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "host_2024_value",
+          "value": 62656414000,
+          "unit": "chained_2017_USD",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_county_economic_core_2001_2024",
+            "detail": "Milwaukee County 2024 real GDP"
+          },
+          "transformation": "Compared with weighted benchmark"
+        },
+        {
+          "name": "comparison_2024_value",
+          "value": 56127392724.64227,
+          "unit": "chained_2017_USD",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_county_economic_core_2001_2024",
+            "detail": "Inverse-distance weighted 2024 value from 20 comparison counties"
+          },
+          "transformation": "Subtracted from host and used as denominator"
+        },
+        {
+          "name": "pre_period_rmse_percent",
+          "value": 14.457070457148996,
+          "unit": "percent",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Fit diagnostic over 2013-2020"
+          },
+          "transformation": "Sets fit-sensitivity width"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The benchmark is reproducible but the short post-opening window and concurrent county treatments prevent attribution.",
+      "decision_relevance": "Shows the county's 2024 divergence from a transparent comparison benchmark without assigning the difference to Expedient.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "not_applicable",
+        "remaining_evidence_gap": "A causal design with complete county exposure history, treatment isolation, pre-trends, placebos, spillover rules and robustness checks"
+      },
+      "derivation": {
+        "method": "benchmark_application",
+        "model_version": "expedient-franklin-account-1.1.0",
+        "formula": "100 × (host 2024 outcome − inverse-distance-weighted 20-county benchmark) ÷ benchmark",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_county_economic_core_2001_2024"
+        ],
+        "assumptions": [
+          "Matching uses 2013-2020 log level, average log growth, and growth volatility.",
+          "Study counties are excluded from the donor pool.",
+          "The 2021 opening is not assumed to be first county exposure or an isolated treatment date."
+        ]
+      },
+      "limitations": [
+        "This comparison is descriptive and must not be interpreted as a data-center effect.",
+        "Milwaukee County contains other data centers and concurrent investments.",
+        "The donor screen cannot exclude every unobserved treatment.",
+        "The interval is fit sensitivity, not statistical confidence."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Descriptive benchmark gap only; no causal_design metadata is attached.",
+      "reviewed_on": "2026-09-06"
+    },
+    {
+      "estimate_id": "est_study_expedient_franklin_employment_comparison_gap",
+      "project_id": "prj_study_im3_building_00664938835",
+      "metric_code": "study.modeled_county_employment_comparison_gap",
+      "label": "Modeled county total employment comparison gap",
+      "category": "county_outcome",
+      "unit": "percent",
+      "measure_type": "change",
+      "basis": "modeled_synthesis",
+      "value": -7.03,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2024,
+        "label": "2024 Milwaukee County outcome relative to a mechanically matched benchmark; Expedient opening year 2021"
+      },
+      "scope": {
+        "level": "county",
+        "label": "Expedient Franklin facility and Milwaukee County",
+        "county_fips": "55079",
+        "inventory_allocation": "not_applicable"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": -13.03,
+        "central": -7.03,
+        "high": -1.03,
+        "interpretation": "The envelope is plus or minus twice the 2013-2020 pre-period RMSE. It is a fit sensitivity, not a statistical confidence interval."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "expedient_franklin_employment_comparison_gap",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "host_2024_value",
+          "value": 469055,
+          "unit": "jobs",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_county_economic_core_2001_2024",
+            "detail": "Milwaukee County 2024 covered employment"
+          },
+          "transformation": "Compared with weighted benchmark"
+        },
+        {
+          "name": "comparison_2024_value",
+          "value": 504501.2672002197,
+          "unit": "jobs",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_county_economic_core_2001_2024",
+            "detail": "Inverse-distance weighted 2024 value from 20 comparison counties"
+          },
+          "transformation": "Subtracted from host and used as denominator"
+        },
+        {
+          "name": "pre_period_rmse_percent",
+          "value": 3.0000989831507634,
+          "unit": "percent",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Fit diagnostic over 2013-2020"
+          },
+          "transformation": "Sets fit-sensitivity width"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The benchmark is reproducible but the short post-opening window and concurrent county treatments prevent attribution.",
+      "decision_relevance": "Shows the county's 2024 employment divergence without treating the twelve-job plan as realized or causal.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "A causal design plus realized facility FTE and complete county exposure history"
+      },
+      "derivation": {
+        "method": "benchmark_application",
+        "model_version": "expedient-franklin-account-1.1.0",
+        "formula": "100 × (host 2024 outcome − inverse-distance-weighted 20-county benchmark) ÷ benchmark",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_county_economic_core_2001_2024"
+        ],
+        "assumptions": [
+          "Matching uses 2013-2020 log level, average log growth, and growth volatility.",
+          "Study counties are excluded from the donor pool.",
+          "County employment is not an Expedient facility-employment measure."
+        ]
+      },
+      "limitations": [
+        "This comparison is descriptive and must not be interpreted as a data-center effect.",
+        "The 2021 opening does not isolate other county shocks.",
+        "The donor screen cannot exclude every unobserved treatment.",
+        "The interval is fit sensitivity, not statistical confidence."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Descriptive benchmark gap only; no causal_design metadata is attached.",
+      "reviewed_on": "2026-09-06"
+    },
+    {
+      "estimate_id": "est_study_expedient_franklin_wage_comparison_gap",
+      "project_id": "prj_study_im3_building_00664938835",
+      "metric_code": "study.modeled_county_wage_comparison_gap",
+      "label": "Modeled county average weekly wage comparison gap",
+      "category": "county_outcome",
+      "unit": "percent",
+      "measure_type": "change",
+      "basis": "modeled_synthesis",
+      "value": 0.3,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2024,
+        "label": "2024 Milwaukee County outcome relative to a mechanically matched benchmark; Expedient opening year 2021"
+      },
+      "scope": {
+        "level": "county",
+        "label": "Expedient Franklin facility and Milwaukee County",
+        "county_fips": "55079",
+        "inventory_allocation": "not_applicable"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": -4.7,
+        "central": 0.3,
+        "high": 5.3,
+        "interpretation": "The minimum five-percentage-point width exceeds twice the pre-period RMSE. It is a fit sensitivity, not a statistical confidence interval."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "expedient_franklin_wage_comparison_gap",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "host_2024_value",
+          "value": 1330,
+          "unit": "USD_per_week",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_county_economic_core_2001_2024",
+            "detail": "Milwaukee County 2024 nominal average weekly wage"
+          },
+          "transformation": "Compared with weighted benchmark"
+        },
+        {
+          "name": "comparison_2024_value",
+          "value": 1326.0700194558665,
+          "unit": "USD_per_week",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_county_economic_core_2001_2024",
+            "detail": "Inverse-distance weighted 2024 value from 20 comparison counties"
+          },
+          "transformation": "Subtracted from host and used as denominator"
+        },
+        {
+          "name": "pre_period_rmse_percent",
+          "value": 0.9813419277826413,
+          "unit": "percent",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Fit diagnostic over 2013-2020"
+          },
+          "transformation": "Minimum five-point width sets fit sensitivity"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The benchmark is reproducible but county wages are nominal and cannot be attributed to one adaptive-reuse facility.",
+      "decision_relevance": "Shows the county wage divergence without asserting a facility wage effect.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "not_found",
+        "remaining_evidence_gap": "Facility wages, occupation mix, realized headcount, inflation-adjusted county wages, and a defensible causal design"
+      },
+      "derivation": {
+        "method": "benchmark_application",
+        "model_version": "expedient-franklin-account-1.1.0",
+        "formula": "100 × (host 2024 outcome − inverse-distance-weighted 20-county benchmark) ÷ benchmark",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_county_economic_core_2001_2024"
+        ],
+        "assumptions": [
+          "Matching uses 2013-2020 log level, average log growth, and growth volatility.",
+          "Study counties are excluded from the donor pool.",
+          "Nominal county wage is descriptive context only."
+        ]
+      },
+      "limitations": [
+        "This comparison is descriptive and must not be interpreted as a data-center effect.",
+        "County wage composition can change for unrelated reasons.",
+        "The donor screen cannot exclude every unobserved treatment.",
+        "The interval is fit sensitivity, not statistical confidence."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Descriptive benchmark gap only; no causal_design metadata is attached.",
+      "reviewed_on": "2026-09-06"
+    }
+  ],
+  "modeled_sources": [
+    {
+      "source_id": "src_study_franklin_expedient_property_2026",
+      "title": "City of Franklin linked property record - 4777 W Ironwood Drive",
+      "url": "https://assessordata.org/Assessment?id=9343321482003&p=1",
+      "publisher": "City of Franklin / Real Property Data",
+      "source_type": "assessor_record",
+      "publication_date": {
+        "precision": "unknown"
+      },
+      "retrieved_on": "2026-09-03",
+      "review_method": "pdf_text_and_page_image",
+      "notes": "Franklin's Assessor page links to this public property system. The current record labels the 26,428-square-foot, 2007 building as Expedient and identifies tax key 930-1001-000. The generated five-page report gives the 2026 land, improvement and total assessment, classifies the occupancy as a computer center, and lists dated building permits and reported amounts. The 2022 and 2025 alterations are post-opening permit records; amounts are not verified expenditures and are not summed here.",
+      "artifact_sha256": "34cb20566b1ff73e8453927f12153c1dc9f2e4ff663e5558433cbcce322722ee"
+    },
+    {
+      "source_id": "src_study_expedient_milwaukee_specification_2026",
+      "title": "Milwaukee Franklin Data Center specification sheet",
+      "url": "https://www.expedient.com/uploads/exp__sell_sheet-dc_mke-1.pdf",
+      "publisher": "Expedient",
+      "source_type": "operator_release",
+      "publication_date": {
+        "precision": "unknown"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_pdf_text",
+      "notes": "The current operator sheet identifies 4777 W Ironwood Drive and reports 27,000 square feet of data-center space, 10,000 square feet of raised floor, 1.6 MW of critical IT load, 3.0 MW of total generator capacity, two auto-cutover diesel generators, and multiple cooling systems. Only the whole-building area and critical-load specifications are normalized here. They are capacity descriptors, not utilization, annual electricity, construction spending, investment, employment, or audited environmental performance."
+    },
+    {
+      "source_id": "src_study_milwaukee_county_expedient_tax_2025",
+      "title": "Milwaukee County Public Portal — parcel 9301001000 tax-year 2025",
+      "url": "https://pp-milwaukee-co-wi-fb.app.landnav.com/Search/RealEstate/Taxes?propertyId=5309008",
+      "publisher": "Milwaukee County Treasurer",
+      "source_type": "local_government_record",
+      "publication_date": {
+        "precision": "unknown"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_page",
+      "notes": "The public parcel-tax page identifies parcel 9301001000, bill 380021, RDC-4777 Ironwood Drive LLC, and 4777 W Ironwood Drive. It reports $66,640.33 gross tax, $6,230.91 school credit, $62.25 first-dollar credit, $60,347.17 net tax, $60,347.17 paid, and zero balance. The payment is a parcel-owner obligation spanning multiple taxing jurisdictions; it is not allocated to Expedient, does not establish an operator reimbursement under the triple-net lease, and supplies no same-scope marginal public-service cost."
+    },
+    {
+      "source_id": "src_study_expedient_franklin_sale_2022",
+      "title": "Connecticut firm buys Franklin data center for $9.5M formerly owned by Harley-Davidson",
+      "url": "https://www.bizjournals.com/milwaukee/news/2022/08/12/franklin-data-center-sells-stratcap-expedient.html",
+      "publisher": "Milwaukee Business Journal",
+      "source_type": "other",
+      "publication_date": {
+        "precision": "day",
+        "date": "2022-08-12"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_page",
+      "notes": "The article reports that the Franklin data center sold for $9.46 million and attributes the amount to a Wisconsin state record. This is a real-estate ownership transfer after Expedient opened the reused facility, not construction spending, IT-equipment investment, assessed value, tax paid, or an Expedient operating expenditure."
+    },
+    {
+      "source_id": "src_study_stratcap_milwaukee_acquisition_2022",
+      "title": "StratCap Acquires Milwaukee Data Center",
+      "url": "https://irei.com/real-assets-adviser/press-release/stratcap-acquires-milwaukee-data-center/",
+      "publisher": "StratCap via Institutional Real Estate, Inc.",
+      "source_type": "operator_release",
+      "publication_date": {
+        "precision": "day",
+        "date": "2022-08-10"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_page",
+      "notes": "The buyer's release identifies a 28,500-square-foot, 2.64-acre Franklin data center fully leased to Expedient on a triple-net basis, with about 15 years remaining, 2.5% annual escalators and three three-year renewal options. It does not disclose purchase price, rent, financing, tenant-improvement spending or local procurement."
+    },
+    {
+      "source_id": "src_study_wisconsin_psc_data_center_scope_2026",
+      "title": "The Public Service Commission and Data Centers",
+      "url": "https://psc.wi.gov/Pages/AboutPSC/The-Public-Service-Commission-and-Data-Centers-.aspx",
+      "publisher": "Public Service Commission of Wisconsin",
+      "source_type": "state_record",
+      "publication_date": {
+        "precision": "unknown"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_page",
+      "notes": "PSC states that it does not permit or directly regulate data-center construction or operations and does not track individual business water consumption. PSC and utility searches for Expedient, MKE1, 4777 Ironwood and parcel 9301001000 found no site-specific utility docket, meter, bill, tariff allocation or water record for 2021-2026."
+    },
+    {
+      "source_id": "src_study_expedient_sustainability_2026",
+      "title": "Environmental, Social, and Governance Practices",
+      "url": "https://expedient.com/about/sustainability-statement/",
+      "publisher": "Expedient",
+      "source_type": "operator_release",
+      "publication_date": {
+        "precision": "unknown"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_page",
+      "notes": "The operator describes company-wide energy monitoring, cooling optimization, renewable-energy goals, volunteer opportunities and school partnerships. It supplies no MKE1-specific electricity, PUE, water, wastewater, emissions, renewable share, volunteer hours, recipient or transfer amount."
+    },
+    {
+      "source_id": "src_study_franklin_building_permit_application_2026",
+      "title": "City of Franklin building permit application",
+      "url": "https://www.franklinwi.gov/Files/Inspection/Building-Permit-Application-Updated-2-2026.pdf",
+      "publisher": "City of Franklin",
+      "source_type": "local_government_record",
+      "publication_date": {
+        "precision": "month",
+        "date": "2026-02-01"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_pdf_text",
+      "notes": "The official form labels project-cost fields as estimated net and total project cost. It supports treating PB22-0043, PB25-0303 and PM25-0174 as administrative permit estimates rather than invoices, audited expenditure or local purchasing."
+    },
+    {
+      "source_id": "src_study_lbnl_dc_energy_2024",
+      "title": "2024 United States Data Center Energy Usage Report",
+      "url": "https://eta-publications.lbl.gov/sites/default/files/2024-12/lbnl-2024-united-states-data-center-energy-usage-report.pdf",
+      "publisher": "U.S. Department of Energy and Lawrence Berkeley National Laboratory",
+      "source_type": "other",
+      "publication_date": {
+        "date": "2024-12-19",
+        "precision": "day"
+      },
+      "retrieved_on": "2026-09-05",
+      "review_method": "pdf_text_and_page_image",
+      "notes": "Public national engineering benchmark: 2014 and 2023 average PUE values of 1.6 and 1.4; projected 2028 PUE range 1.15-1.35; WUE just over 0.36 L/kWh through 2023 and 0.45-0.48 thereafter; AI server operational power scenarios span 60-80 percent. These values are not Hammond measurements."
+    },
+    {
+      "source_id": "src_study_county_economic_core_2001_2024",
+      "title": "County Economic Core Panel, 2001-2024",
+      "url": "https://apps.bea.gov/regional/downloadzip.htm",
+      "publisher": "U.S. Bureau of Economic Analysis and U.S. Bureau of Labor Statistics",
+      "source_type": "other",
+      "publication_date": {
+        "precision": "year",
+        "year": 2026
+      },
+      "retrieved_on": "2026-09-05",
+      "review_method": "structured_data",
+      "notes": "Repository panel compiled from official annual county real GDP, total employment and average-weekly-wage series. The completion model uses pre-treatment histories and 2024 outcomes; source revisions and concurrent treatments remain limitations."
+    }
+  ],
+  "modeled_scope_note": "Modeled contribution accounts for Apple Mesa / Maricopa County, Switch Citadel / Storey County, and Digital Crossroad Hammond / Lake County. Every required account category and county-comparison module contains sourced evidence or a visibly labeled modeled value. Public support is not netted against unmatched local revenues, unavailable public-service cost is represented by a break-even threshold rather than an invented net margin, county comparisons are descriptive rather than causal, and low-confidence transferred benchmarks remain explicit. Project fragments: prj_study_im3_building_00364289074: Low-confidence completion account for Microsoft San Antonio. Construction scenarios apply explicit 25%-75% construction-eligible shares to the reported greater-than-$840 million real-and-personal-property floor before using the Prince William County benchmark, so IT equipment is not silently treated as building construction. Operating scenarios combine the reported greater-than-75 employee floor with zero, half, or all of the separate 20-job expansion forecast; they are sensitivities, not fulfillment findings. County GDP, employment, and wage gaps are descriptive 2024 benchmark comparisons and are not facility effects. Existing source projections cover fiscal revenue, public support, and facility water demand. No annual net-fiscal estimate is made because verified same-scope recurring receipts and marginal public-service costs are unavailable. prj_study_im3_building_00377585075: DET01 completed contribution account. Source forecasts remain forecasts; modeled construction, supplier, household, resource and comparison values are visibly labeled sensitivity or benchmark scenarios. Personal-property equipment is excluded before construction multipliers. The 2025 tax-account aggregation is paired with an equal same-scope public-cost break-even threshold, not a net-fiscal result. County comparisons are descriptive and noncausal. Direct community funding, measured resource use, realized jobs, supplier payments and actual public costs remain gaps. prj_study_im3_building_00460089167: Completed contribution-account syntheses for Meta Forest City / Rutherford County. Broad cumulative capital receives an explicit 25-75% construction-eligible allocation before transferred construction benchmarks; operating scenarios translate the 2015 reported-position snapshot with a visible FTE sensitivity; the same-county, same-fiscal-year tax and incentive claims are reconciled before the public-cost break-even threshold; facility water and electricity resource models retain source rounding and scope; supplier and household channels remain separate; and county comparisons are descriptive benchmark gaps rather than causal effects. No net fiscal, audited, or causal result is asserted. prj_study_im3_building_00464097467: Second-pass modeled contribution account after an expanded public-evidence audit. Direct county permits now cover historical construction values, assessor rolls cover a main-campus parcel stock, a county action covers water-right capacity, Apple reports 2025 campus electricity use, and recipient reports bound two community gifts. Those observations supersede the need for a modeled community proxy but do not supply Apple contractor job-years, construction payroll, annual operating payroll, supplier payments, taxes received, or public-service cost. The construction base therefore retains only the packet's explicit $163 million construction forecast and excludes equipment and historical capital; wide 0.5-1.5 transfer sensitivities expose the mismatch in the last-resort direct construction coefficients. The unsupported local-purchase-share and Virginia induced-output models are removed. No net-fiscal value or public-service-cost break-even is published. County outcome gaps remain descriptive benchmark applications with fit-sensitivity intervals and no causal-design metadata. prj_study_im3_building_00664938835: Second-pass Expedient Milwaukee / Franklin syntheses retained only after a documented 2007-2026 public-source audit. The account keeps a clearly labeled 2022 ownership-transfer anchor, a PB25-0303-only construction allocation sensitivity, an exact tax-equal public-cost break-even threshold, a capacity-based electricity engineering sensitivity, and three descriptive county comparison gaps. It removes transferred construction job-years, assumed local-purchase shares, supplier and household output extrapolations, and a duplicate modeled tax row because public sources did not establish realized site employment, supplier geography, household capture, or a need to restate the direct tax observations. PM25-0174 remains excluded for possible overlap. No synthesis is an observed result or fiscal net. prj_study_im3_building_01073720208: Second-pass governed synthesis for Google Council Bluffs. Construction job-years use only two directly observed September 2025 city permit valuations and transfer the published Prince William County prototype coefficients as benchmark equivalents; the four channels are separated and protected by one aggregation. No Pottawattamie County supplier-retention share is imposed because the public audit found contractor names but no payment or vendor-residence ledger. The water row is the unallocated Google Council Bluffs location identity reported for 2024, not a building allocation. No local abatement, exemption realization, franchise-fee amount, electric load, public-service cost, break-even threshold, or net fiscal result is modeled. County outcome gaps remain descriptive benchmark applications with fit-sensitivity ranges and no causal attribution.",
   "synthesis_version": "study-modeled-synthesis-3.2.0",
   "modeling_policy_version": "study-modeling-policy-1.3.0",
   "analysis_readiness": {
-    "construction": "not_assessed",
+    "construction": "modeled_available",
     "operations": "not_assessed",
-    "fiscal": "not_assessed",
+    "fiscal": "modeled_available",
     "causal": "not_assessed"
   },
   "legacy_first_entry_note": "Expedient establishes opening of the mapped Franklin facility on October 20, 2021. Milwaukee County's three-record current inventory does not establish a complete history and does not exclude earlier carrier, institutional, government, manufacturing, financial-services, or enterprise data centers.",
-  "scope_note": "Provisional private-sector research candidate. Owner/operator history, project boundaries and lifecycle require review. Membership does not verify current operation or establish economic impact."
+  "scope_note": "Provisional private-sector research candidate. Owner/operator history, project boundaries and lifecycle require review. Membership does not verify current operation or establish economic impact.",
+  "project_description": "Expedient MKE1 is a colocation data center operated by Expedient at 4777 W Ironwood Drive in Franklin, Milwaukee County, Wisconsin. This project account covers the single adaptive-reuse facility and its parcel, not Expedient's wider regional portfolio, and keeps the October 2021 opening snapshot separate from later current specifications. Public records trace the pre-existing building, leased operation, 2022 ownership transfer, and subsequent facility permits."
 }

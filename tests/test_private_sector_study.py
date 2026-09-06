@@ -93,9 +93,9 @@ class PrivateSectorStudyTest(unittest.TestCase):
         self.assertEqual(sum(r["analysis_readiness"]["causal"] == "causal_model_available" for r in details), 0)
         washoe = next(r for r in details if r["name"] == "Apple Washoe County campus")
         coverage = {g["code"]: g["status"] for g in washoe["evidence_gaps"]}
-        self.assertEqual(coverage["operations"], "observed")
-        self.assertEqual(coverage["investment"], "observed")
-        self.assertEqual(coverage["resources"], "observed")
+        self.assertEqual(coverage["operations"], "partial")
+        self.assertEqual(coverage["investment"], "partial")
+        self.assertEqual(coverage["resources"], "partial")
 
     def test_source_years_do_not_fill_gaps_or_become_cash_receipts(self):
         _, details, _ = self.build()
@@ -180,14 +180,18 @@ class PrivateSectorStudyTest(unittest.TestCase):
         assessed = [r for r in project["economic_records"] if r["metric_code"] == "study.account_assessed_value"]
         permits = [r for r in project["economic_records"] if r["metric_code"] == "study.permitted_construction_value"]
         jobs = [r for r in project["economic_records"] if r["metric_code"] == "study.operating_jobs_projection"]
-        self.assertEqual(project["economic_record_count"], 7)
+        self.assertEqual(project["economic_record_count"], 16)
         self.assertEqual([r["period"]["year"] for r in assessed], [2024, 2025, 2026])
         self.assertEqual([r["value"] for r in assessed], [3856900, 3856900, 3856900])
         self.assertTrue(all(r["measure_type"] == "stock" and r["annual_series_key"] == "expedient_franklin_real_assessed_value" for r in assessed))
         self.assertEqual([r["value"] for r in permits], [27000, 580190, 250132])
         self.assertTrue(all(r["basis"] == "reported_actual" and r["measure_type"] == "flow" for r in permits))
         self.assertEqual([(r["value"], r["basis"]) for r in jobs], [(12, "source_projection")])
-        self.assertFalse(any(r["metric_code"] in {"study.property_taxes_billed", "study.property_taxes_paid", "study.property_tax_receipts"} for r in project["economic_records"]))
+        paid = [r for r in project["economic_records"] if r["metric_code"] == "study.property_taxes_paid"]
+        self.assertEqual([r["value"] for r in paid], [62597.21, 62898.28, 58761.16, 56371.29, 60347.17])
+        self.assertEqual([r["period"]["year"] for r in paid], [2021, 2022, 2023, 2024, 2025])
+        self.assertTrue(all(r["annual_series_key"] == "expedient_franklin_real_property_tax_paid" for r in paid))
+        self.assertFalse(any(r["metric_code"] in {"study.property_taxes_billed", "study.property_tax_receipts"} for r in project["economic_records"]))
 
     def test_quicken_keeps_whole_parcel_values_unallocated(self):
         _, details, _ = self.build()
@@ -404,11 +408,12 @@ class PrivateSectorStudyTest(unittest.TestCase):
         _, details, _ = self.build()
         project = next(r for r in details if r["project_id"] == "prj_study_im3_building_01073720208")
         actual = [r for r in project["economic_records"] if r["basis"] == "reported_actual"]
-        plans = [r for r in project["economic_records"] if r["basis"] == "source_projection"]
-        self.assertEqual([r["value"] for r in actual], [96600000, 61300000, 23900000])
-        self.assertTrue(all(r["period"]["kind"] == "reported_snapshot" and r["value_qualifier"] == "approximately" for r in actual))
-        self.assertEqual(len({r["scope"]["label"] for r in actual}), 3)
-        self.assertFalse(any("annual_series_key" in r for r in actual))
+        acfr_stocks = [r for r in actual if r["source_id"] == "src_study_council_bluffs_acfr_2024"]
+        plans = [r for r in project["economic_records"] if r["source_id"] == "src_study_iowa_ieda_google_award_2022"]
+        self.assertEqual([r["value"] for r in acfr_stocks], [96600000, 61300000, 23900000])
+        self.assertTrue(all(r["period"]["kind"] == "reported_snapshot" and r["value_qualifier"] == "approximately" for r in acfr_stocks))
+        self.assertEqual(len({r["scope"]["label"] for r in acfr_stocks}), 3)
+        self.assertFalse(any("annual_series_key" in r for r in acfr_stocks))
         self.assertEqual({(r["metric_code"], r["value"]) for r in plans}, {
             ("study.campus_investment_projection", 600000000),
             ("study.operating_jobs_projection", 31),
