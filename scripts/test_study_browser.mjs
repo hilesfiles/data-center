@@ -812,11 +812,11 @@ try {
     sidebar: getComputedStyle(document.querySelector(".sidebar")).backgroundColor,
     map: getComputedStyle(document.querySelector(".map-section")).backgroundColor,
   })), { sidebar: "rgb(11, 14, 20)", map: "rgb(16, 23, 27)" });
-  assert.match(await page.locator(".review-key").innerText(), /completed contribution accounts \(3\)/i);
+  assert.match(await page.locator(".review-key").innerText(), /completed project audits \(9\)/i);
   assert.doesNotMatch(await page.locator(".legend").innerText(), /IM3|pending|merged|queued/i);
-  await page.getByLabel("Completed project markers").selectOption("Colocation");
-  assert.match(await page.locator(".review-key").innerText(), /completed contribution accounts \(2\)/i);
-  await page.getByLabel("Completed project markers").selectOption("");
+  await page.getByLabel("Research-complete project markers").selectOption("Colocation");
+  assert.match(await page.locator(".review-key").innerText(), /completed project audits \(4\)/i);
+  await page.getByLabel("Research-complete project markers").selectOption("");
   await page.screenshot({ path: path.join(out, "map-desktop.png") });
   assert.doesNotMatch(await page.locator(".sidebar").innerText(), /Source records|Building records|Campus records|Observed footprint|First-entry research/i);
   const mapResources = await page.evaluate(() => performance.getEntriesByType("resource").map(entry => entry.name));
@@ -826,6 +826,7 @@ try {
   const response = await page.request.get(`${url}data/v1/study/index.json`);
   const study = await response.json();
   assert.equal(study.projects.length, 36);
+  assert.equal(study.projects.filter(p => p.research_completion_status === "account_research_complete").length, 9);
   assert.equal(study.projects.filter(p => p.model_completeness.status === "full_modeled_account").length, 3);
   const target = study.projects.find(p => p.name === "Apple Mesa");
   const canvas = await page.locator("canvas").boundingBox();
@@ -850,7 +851,7 @@ try {
   await page.mouse.click(targetX, targetY);
   await page.waitForURL(`**/project/${target.project_id}`);
   await page.getByRole("heading", { name: "Sources & research history" }).waitFor();
-  check("map renders only three completed studies while preserving the 36-project register off-map");
+  check("map preserves all nine completed project audits while keeping analytical completeness separate");
 
   for (const candidate of study.projects.filter(project => project.model_completeness.status === "incomplete")) {
     await page.goto(`${url}#/project/${candidate.project_id}`);

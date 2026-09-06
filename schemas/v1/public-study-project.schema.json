@@ -284,6 +284,7 @@
         "reported_actual_count",
         "projection_count",
         "modeled_synthesis_count",
+        "research_completion_status",
         "model_completeness"
       ],
       "properties": {
@@ -377,6 +378,12 @@
         "modeled_synthesis_count": {
           "type": "integer",
           "minimum": 0
+        },
+        "research_completion_status": {
+          "enum": [
+            "account_research_complete",
+            "research_pending"
+          ]
         },
         "model_completeness": {
           "$ref": "#/$defs/model_completeness"

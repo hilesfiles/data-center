@@ -20,6 +20,7 @@ export interface StudyProjectSummary {
   reported_actual_count: number;
   projection_count: number;
   modeled_synthesis_count: number;
+  research_completion_status: "account_research_complete" | "research_pending";
   model_completeness: ModelCompleteness;
 }
 

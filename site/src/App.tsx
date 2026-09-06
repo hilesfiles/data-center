@@ -131,7 +131,7 @@ export default function App({ study, studyError }: { study: StudyIndex | null; s
   const [lifecycle, setLifecycle] = useState<CountyLifecycleVerificationCoverage[]>([]);
   const [studyGroup, setStudyGroup] = useState("");
   const completedProjects = useMemo(
-    () => study?.projects.filter(project => project.model_completeness.status === "full_modeled_account") ?? [],
+    () => study?.projects.filter(project => project.research_completion_status === "account_research_complete") ?? [],
     [study],
   );
   const mappedProjects = useMemo(
@@ -466,15 +466,15 @@ export default function App({ study, studyError }: { study: StudyIndex | null; s
 
       <StudyNav />
       <div className="fixture-banner" role="status">
-        {study ? <><strong>{completedProjects.length} completed private-sector county accounts are mapped.</strong> The broader {study.counts.projects}-project research register and legacy national inventory remain preserved off-map for future study.</> : studyError ?? "Loading the private-sector project register…"}
+        {study ? <><strong>{completedProjects.length} completed project research accounts are mapped.</strong> Analytical completeness remains separately identified on each project page. The broader {study.counts.projects}-project research register and legacy national inventory remain preserved off-map for future study.</> : studyError ?? "Loading the private-sector project register…"}
       </div>
 
       <main className="workspace">
         <aside className="sidebar">
           <section className="control-section">
-            <label className="study-map-filter" htmlFor="study-map-type">Completed project markers</label>
-            <select id="study-map-type" value={studyGroup} onChange={e => setStudyGroup(e.target.value)}><option value="">All completed projects</option>{completedGroups.map(group => <option key={group}>{group}</option>)}</select>
-            <p className="control-note">Only projects that pass the full contribution-account gate appear here. Legacy inventory records and incomplete research candidates remain stored but are excluded from this map.</p>
+            <label className="study-map-filter" htmlFor="study-map-type">Research-complete project markers</label>
+            <select id="study-map-type" value={studyGroup} onChange={e => setStudyGroup(e.target.value)}><option value="">All completed research</option>{completedGroups.map(group => <option key={group}>{group}</option>)}</select>
+            <p className="control-note">Projects appear after their scoped evidence audit is reconciled, whether or not they pass the separate full modeled-account gate. Unresearched candidates and the legacy inventory remain stored off-map.</p>
           </section>
 
           <section className="county-section" aria-live="polite">
@@ -484,11 +484,11 @@ export default function App({ study, studyError }: { study: StudyIndex | null; s
               <>
                 <div className="county-heading">
                   <div>
-                    <span className="eyebrow">Completed private-sector study</span>
+                    <span className="eyebrow">Completed project research</span>
                     <h2>{selectedCompletedProject.county_name}</h2>
                     <p>{selectedCompletedProject.state_abbr} · FIPS {selectedCompletedProject.county_fips}</p>
                   </div>
-                  <span className="quality-badge grade-p">Full account</span>
+                  <span className="quality-badge grade-p">Research complete</span>
                 </div>
                 <CountyStudyProjects study={study} fips={selectedCompletedProject.county_fips} error={studyError} completedOnly />
               </>
@@ -502,7 +502,7 @@ export default function App({ study, studyError }: { study: StudyIndex | null; s
           </Suspense>
           <div className="map-caption">
             <span>Census boundaries · Jan. 1, 2025</span>
-            {study && <span>{completedProjects.length} completed contribution accounts · release {study.release_id}</span>}
+            {study && <span>{completedProjects.length} completed project audits · release {study.release_id}</span>}
             <span>Legacy inventory and county datasets retained off-map</span>
           </div>
         </section>

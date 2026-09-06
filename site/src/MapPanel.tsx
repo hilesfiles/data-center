@@ -208,12 +208,12 @@ export function MapPanel({ selectedFips, onSelectCounty, studyProjects = [] }: M
   }, [selectedFips]);
 
   return <div className="map-frame">
-    <div ref={containerRef} className="map" aria-label="Completed private-sector county study map" />
+    <div ref={containerRef} className="map" aria-label="Completed private-sector project research map" />
     {message && <div className="map-message">{message}</div>}
     <div className="legend" aria-label="Map legend">
-      <span className="legend-title">Completed private-sector county studies</span>
+      <span className="legend-title">Completed private-sector project research</span>
       <div className="review-key">
-        <span><i className="key-dot key-study" />completed contribution accounts ({studyProjects.length})</span>
+        <span><i className="key-dot key-study" />completed project audits ({studyProjects.length})</span>
       </div>
     </div>
   </div>;

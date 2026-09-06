@@ -26,7 +26,7 @@ CONFIG = ROOT / "config/v1/private-sector-study-candidates.json"
 PUBLIC = ROOT / "site/public/data/v1"
 OUT = PUBLIC / "study"
 SILVER = ROOT / "data/silver/study"
-VERSION = "private-sector-study-1.46.0"
+VERSION = "private-sector-study-1.47.0"
 GAPS = [
     ("investment", "Capital investment", "Annual actual spending, local share, and phase allocation."),
     ("construction", "Construction jobs and payroll", "Workers, job-years, payroll, duration, and local participation."),
@@ -137,6 +137,10 @@ def build_products(config, inventory, panels, generated_at, evidence=None, synth
         raise ValueError("Modeling policy release mismatch")
     economic_by_project, _, _ = economic_products(evidence, candidates, generated_at)
     modeled_by_project, modeled_sources = modeled_products(synthesis, candidates, evidence, modeling_policy)
+    project_fragment_ids = {
+        path.stem for path in fragment_input_paths()
+        if path.parent.name == "study-economic-evidence.projects"
+    }
     ids = [r["project_id"] for r in candidates]
     targets = [r["inventory_entity_id"] for r in candidates]
     if len(set(ids)) != len(ids) or len(set(targets)) != len(targets):
@@ -170,6 +174,11 @@ def build_products(config, inventory, panels, generated_at, evidence=None, synth
             "reported_actual_count": sum(r["basis"] == "reported_actual" for r in records),
             "projection_count": sum(r["basis"] == "source_projection" for r in records),
             "modeled_synthesis_count": len(modeled),
+            "research_completion_status": (
+                "account_research_complete"
+                if row["project_id"] in project_fragment_ids or completeness["status"] == "full_modeled_account"
+                else "research_pending"
+            ),
             "model_completeness": completeness,
         }
         sources = []
