@@ -1,0 +1,173 @@
+{
+  "schema_version": "1.0.0",
+  "project_id": "prj_study_im3_building_01073720208",
+  "reviewed_on": "2026-09-06",
+  "scope_note": "Public-source review for Google's Council Bluffs data-center activity, retaining the selected inventory building as the project key while leaving campus-wide, company-county, taxpayer-account, and state-award facts unallocated. The Iowa Economic Development Authority's completed 2012 award supplies a state-reported $1.7 billion project cost/capital-investment value and 70 final jobs; its $36.6 million maximum tax benefit remains a contract ceiling rather than a payment. Google's commissioned 2024 impact study separately reports a cumulative Council Bluffs school-program contribution. The three existing city taxpayer values remain separate property stocks, not tax receipts, and the newer 2022 award remains a commitment under performance. No record here establishes annual construction spending, local supplier payments, local tax receipts, realized local property-tax abatement, same-scope public-service cost, metered electricity, building-level water, or a net fiscal result.",
+  "sources": [
+    {
+      "source_id": "src_study_iowa_ieda_2023_annual_report_google_council_bluffs",
+      "title": "IEDA 2023 Annual Report by County",
+      "url": "https://www.iowaeda.com/UserDocs/2023annualrpt_county.pdf",
+      "publisher": "Iowa Economic Development Authority",
+      "source_type": "state_record",
+      "publication_date": {
+        "precision": "day",
+        "date": "2024-01-31"
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_pdf_text",
+      "notes": "The Pottawattamie County closed-projects table identifies Google LLC contract 12-HQJP-051 as successfully completed. It reports $1.7 billion of total project cost and capital investment at completion, a $36.6 million maximum tax benefit, 70 final created jobs, an April 30, 2019 completion date, and an April 30, 2021 maintenance date. The contract ceiling is not evidence of tax credits paid, certified, used, or retained after reconciliation."
+    },
+    {
+      "source_id": "src_study_google_iowa_impact_2024",
+      "title": "Google's Data Center Impact in Iowa — 2024 Impact Study",
+      "url": "https://www.gstatic.com/marketing-cms/3b/64/f40b9fe249dcb82912724229c834/2024-impact-study-iowa.pdf",
+      "publisher": "Google LLC and Deloitte Consulting LLP",
+      "source_type": "operator_release",
+      "publication_date": {
+        "precision": "year",
+        "year": 2024
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_pdf_text",
+      "notes": "Deloitte prepared the study for Google using Google-provided, public, and third-party information without independent verification. The report identifies $285,000 invested during 2019-2023 in the Council Bluffs Community School District STEM and Computer Science Diploma Pathways program. Wider Iowa economic-impact outputs are IMPLAN-modeled and are not entered as observed project records."
+    },
+    {
+      "source_id": "src_study_iowa_ieda_2025_annual_report_google_council_bluffs",
+      "title": "IEDA 2025 Annual Report",
+      "url": "https://www.legis.iowa.gov/docs/publications/DF/1600580.pdf",
+      "publisher": "Iowa Economic Development Authority",
+      "source_type": "state_record",
+      "publication_date": {
+        "precision": "year",
+        "year": 2025
+      },
+      "retrieved_on": "2026-09-06",
+      "review_method": "web_pdf_text",
+      "notes": "The projects-under-contract table retains Google LLC contract 23-HQJPTC-005 in Council Bluffs with $600 million of total project cost and capital investment, 31 contracted created jobs, a $28.73 qualifying wage, an October 31, 2029 completion date, and an October 31, 2031 maintenance date. The table reports zero direct funding and zero maximum state tax benefit while the project award is a local property-tax exemption; it does not quantify the exemption or establish realized investment, jobs, or local tax receipts."
+    }
+  ],
+  "records": [
+    {
+      "claim_id": "clm_study_google_council_bluffs_actual_qualified_investment_2019",
+      "project_id": "prj_study_im3_building_01073720208",
+      "metric_code": "study.actual_qualified_investment",
+      "value": 1700000000,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "cumulative",
+        "report_date": "2024-01-31",
+        "label": "State-reported project cost and capital investment at April 30, 2019 completion of contract 12-HQJP-051"
+      },
+      "scope": {
+        "level": "multi_campus_county",
+        "label": "Google LLC Council Bluffs award project 12-HQJP-051; no allocation to a taxpayer account, campus, building, construction, land, or equipment component",
+        "county_fips": "19155",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_iowa_ieda_2023_annual_report_google_council_bluffs",
+      "source_locator": "Pottawattamie County, Closed Projects — Successful, Google LLC 12-HQJP-051 row",
+      "pdf_page": 101,
+      "printed_page": "101",
+      "notes": "State-reported completed project cost and capital investment. The table does not split construction, IT equipment, land, soft costs, refresh spending, annual expenditures, local purchasing, or either Council Bluffs campus. It is not added to later operator cumulative-investment statements.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06"
+    },
+    {
+      "claim_id": "clm_study_google_council_bluffs_final_jobs_2019",
+      "project_id": "prj_study_im3_building_01073720208",
+      "metric_code": "study.operating_employees",
+      "value": 70,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "reported_snapshot",
+        "report_date": "2024-01-31",
+        "label": "State-reported final created jobs for successfully completed contract 12-HQJP-051"
+      },
+      "scope": {
+        "level": "multi_campus_county",
+        "label": "Google LLC Council Bluffs award project 12-HQJP-051; no allocation to one campus, building, employer payroll, contractor workforce, or worker residence",
+        "county_fips": "19155",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_iowa_ieda_2023_annual_report_google_council_bluffs",
+      "source_locator": "Pottawattamie County, Closed Projects — Successful, Google LLC 12-HQJP-051 final-jobs columns",
+      "pdf_page": 101,
+      "printed_page": "101",
+      "notes": "Final created-job count in the state award table. It is not a current annual-average headcount, contractor count, jobs-supported estimate, county-resident count, payroll measure, or evidence that the separate 2022 award's 31-job commitment has been realized.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06"
+    },
+    {
+      "claim_id": "clm_study_google_council_bluffs_state_tax_credit_contract_2012",
+      "project_id": "prj_study_im3_building_01073720208",
+      "metric_code": "study.state_tax_credit_contract_amount",
+      "value": 36600000,
+      "value_qualifier": "exact",
+      "basis": "source_projection",
+      "period": {
+        "kind": "projection_horizon",
+        "report_date": "2012-04-20",
+        "horizon_years": 9,
+        "label": "Maximum state tax benefit approved under contract 12-HQJP-051 through its 2021 maintenance date"
+      },
+      "scope": {
+        "level": "multi_campus_county",
+        "label": "Google LLC Council Bluffs state award contract 12-HQJP-051; separate from local property taxes, later awards, and taxpayer-account values",
+        "county_fips": "19155",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_iowa_ieda_2023_annual_report_google_council_bluffs",
+      "source_locator": "Pottawattamie County, Closed Projects — Successful, Google LLC 12-HQJP-051 maximum-tax-benefit column",
+      "pdf_page": 101,
+      "printed_page": "101",
+      "notes": "Contract ceiling preserved as a source projection even though the project is listed as successfully closed. The report does not state the amount paid, certified, claimed, used, repaid, recaptured, or ultimately borne by any government, so this value is not a realized expenditure and is not netted against property values or receipts.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06"
+    },
+    {
+      "claim_id": "clm_study_google_council_bluffs_stem_contribution_2019_2023",
+      "project_id": "prj_study_im3_building_01073720208",
+      "metric_code": "study.direct_community_contribution",
+      "value": 285000,
+      "value_qualifier": "approximately",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "cumulative",
+        "report_date": "2023-12-31",
+        "label": "Cumulative Google investment in the Council Bluffs school-district STEM program during 2019-2023"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Google support for the Council Bluffs Community School District STEM and Computer Science Diploma Pathways program",
+        "county_fips": "19155",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_google_iowa_impact_2024",
+      "source_locator": "Social Impact: 2022 & 2023, STEM Programming",
+      "pdf_page": 5,
+      "printed_page": "5",
+      "notes": "Company-commissioned, approximately reported direct program investment over five years. It is not annual recurring funding, induced household activity, operating payroll, tax revenue, or a building allocation. The study's separate directional social-return estimate is not recorded as an observed outcome.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-06"
+    }
+  ],
+  "project_updates": [
+    {
+      "project_id": "prj_study_im3_building_01073720208",
+      "source_id": "src_study_iowa_ieda_2025_annual_report_google_council_bluffs",
+      "as_of": "2025-06-30",
+      "title": "The 2022 Council Bluffs award remains in performance",
+      "notes": "IEDA continues to list contract 23-HQJPTC-005 as an under-contract performance-period project, with $600 million capital investment and 31 jobs contracted for completion by October 31, 2029. These remain commitments. The table's zero maximum state tax benefit does not establish a zero local property-tax exemption, and no realized investment, filled-job count, abatement value, payment, receipt, or taxpayer-account allocation is inferred."
+    },
+    {
+      "project_id": "prj_study_im3_building_01073720208",
+      "source_id": "src_study_google_iowa_impact_2024",
+      "as_of": "2024-12-31",
+      "title": "Wider Iowa impact-model outputs remain contextual",
+      "notes": "The Deloitte study reports statewide direct, indirect, induced, and total GDP, jobs, and labor-income estimates for 2021-2023 using IMPLAN and Google-provided inputs. Those outputs are not inserted as observed Council Bluffs records or re-modeled here because they combine channels, years, and Iowa data-center activity without a selected-building allocation."
+    }
+  ]
+}
