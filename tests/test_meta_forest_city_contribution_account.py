@@ -42,7 +42,7 @@ class MetaForestCityContributionAccountTest(unittest.TestCase):
         self.assertEqual(project["model_completeness"]["missing_county_outcomes"], [])
         self.assertEqual((project["economic_record_count"], project["reported_actual_count"], project["projection_count"]), (24, 21, 3))
         self.assertEqual(project["modeled_synthesis_count"], 16)
-        self.assertEqual(self.index["full_modeled_county_accounts"], 4)
+        self.assertEqual(self.index["full_modeled_county_accounts"], 6)
 
     def test_all_required_channels_and_comparisons_are_present(self):
         project = self.project

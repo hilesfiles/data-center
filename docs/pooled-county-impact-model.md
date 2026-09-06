@@ -4,7 +4,7 @@
 
 ## Current state and target boundary
 
-Study release `private-sector-study-1.43.0` contains 36 selected projects across 35 counties and 23 states. Apple Mesa / Maricopa County, Switch Citadel / Storey County, and Digital Crossroad Hammond / Lake County currently pass the completed-contribution-account gate. The other 33 projects remain incomplete. The current release contains 585 source records and 104 separately governed modeled syntheses, but no pooled estimate and no causal estimate.
+Study release `private-sector-study-1.44.0` contains 36 selected projects across 35 counties and 23 states. Six projects currently pass the completed-contribution-account gate: Apple Mesa / Maricopa County, Switch Citadel / Storey County, Digital Crossroad Hammond / Lake County, Meta Forest City / Rutherford County, Microsoft San Antonio / Bexar County, and EdgeConneX DET01 / Oakland County. The other 30 projects remain incomplete. The current release contains 595 source records and 154 separately governed modeled syntheses, but no pooled estimate and no causal estimate.
 
 The pooled model will not replace the project and county accounts. Those accounts establish the exposure inputs, evidence state, scope, timing, uncertainty, and unresolved gaps. The pooled layer will evaluate whether consistent relationships appear across communities after projects and phases are aligned at a common county-year grain.
 

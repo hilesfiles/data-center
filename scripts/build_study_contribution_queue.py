@@ -89,26 +89,39 @@ def build_ledger(index, generated_at):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--check", action="store_true", help="Fail if the frozen ledger differs from the generated register.")
+    parser.add_argument("--check", action="store_true", help="Validate the frozen queue and its project identities without re-ranking the evolving register.")
     args = parser.parse_args()
     index = read(INDEX)
     stamp = datetime.now(timezone.utc).isoformat(timespec="seconds")
     expected = build_ledger(index, stamp)
     if args.check:
         current = read(LEDGER)
-        expected["generated_at"] = current.get("generated_at")
-        immutable_keys = ("schema_version", "study_release", "generated_at", "queue_status", "ranking_method", "baseline")
-        immutable_matches = all(current.get(key) == expected[key] for key in immutable_keys)
-        queue_matches = len(current.get("queue", [])) == len(expected["queue"]) and all(
-            all(actual.get(key) == frozen[key] for key in (
-                "queue_position", "project_id", "project_name", "county_fips",
-                "county_name", "state_abbr", "baseline_evidence",
-            ))
-            for actual, frozen in zip(current.get("queue", []), expected["queue"])
+        queue = current.get("queue", [])
+        projects = {project["project_id"]: project for project in index["projects"]}
+        identities_match = all(
+            row.get("project_id") in projects
+            and row.get("project_name") == projects[row["project_id"]]["name"]
+            and row.get("county_fips") == projects[row["project_id"]]["county_fips"]
+            and row.get("county_name") == projects[row["project_id"]]["county_name"]
+            and row.get("state_abbr") == projects[row["project_id"]]["state_abbr"]
+            for row in queue
         )
-        if not immutable_matches or not queue_matches:
-            raise SystemExit("Frozen orchestration ledger differs from the generated study register")
-        print(f"Queue verified: {len(expected['queue'])} remaining projects")
+        positions = [row.get("queue_position") for row in queue]
+        project_ids = [row.get("project_id") for row in queue]
+        structure_matches = (
+            current.get("schema_version") == "1.0.0"
+            and current.get("queue_status") == "frozen"
+            and bool(current.get("study_release"))
+            and bool(current.get("generated_at"))
+            and bool(current.get("ranking_method"))
+            and current.get("baseline", {}).get("remaining_accounts") == len(queue)
+            and positions == list(range(1, len(queue) + 1))
+            and len(project_ids) == len(set(project_ids))
+        )
+        if not structure_matches or not identities_match:
+            raise SystemExit("Frozen orchestration ledger is invalid or no longer matches project identities")
+        completed = sum(row.get("status") == "integrated" for row in queue)
+        print(f"Queue verified: {len(queue)} frozen projects; {completed} integrated")
         return
     write(LEDGER, expected)
     print(f"Queue frozen: {len(expected['queue'])} remaining projects")

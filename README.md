@@ -10,15 +10,15 @@ The private-sector study includes a searchable register of 36 provisional projec
 across 35 counties and 23 states, including five campus-linked candidates. The default
 page is the project register; `#/project/{project_id}` opens a sourced history and
 economic-evidence checklist, and existing `#/county/{FIPS}` links remain available.
-`#/map` presents only the three projects that pass the full modeled county-account gate:
-Apple Mesa in Maricopa County, Switch Citadel in Storey County, and Digital Crossroad
-Hammond in Lake County. The legacy national inventory, county datasets, and incomplete
+`#/map` presents only the six projects that pass the full modeled county-account gate:
+Apple Mesa, Switch Citadel, Digital Crossroad Hammond, Meta Forest City, Microsoft San
+Antonio, and EdgeConneX DET01. The legacy national inventory, county datasets, and incomplete
 research candidates remain stored for future use but are excluded from the rendered map.
-First-entry decisions are retained as a separate research question. Study release 1.43
-publishes 585 economic source records linked to all 36 candidates: 533 reported records
-and 52 projections, plus 104 separately labeled modeled syntheses—27 for Apple Mesa,
-34 for Switch Citadel / Tahoe Reno 1, and 43 for Digital Crossroad Hammond.
-The three completed contribution accounts separate directly reported anchors, transferred
+First-entry decisions are retained as a separate research question. Study release 1.44
+publishes 595 economic source records linked to all 36 candidates: 539 reported records
+and 56 projections, plus 154 separately labeled modeled syntheses across six completed
+contribution accounts.
+The six completed contribution accounts separate directly reported anchors, transferred
 construction and operating benchmarks, recurring project-linked local property taxes,
 the public-cost break-even threshold, public support and tax treatment, infrastructure
 and environmental demand, and descriptive county comparisons. They do not assert a net
@@ -277,7 +277,7 @@ validation can be added later to CI with a standards-compliant Draft 2020-12 val
 - JSON-only domain and analytical contracts: implemented as schema v1.0.0.
 - Configuration and taxonomy validation: implemented.
 - Static map/application build: implemented with authoritative geography and markers for
-  the three full modeled county accounts. The provisional IM3 map projection remains stored
+  the six full modeled county accounts. The provisional IM3 map projection remains stored
   under `site/public/data/v1/maps/` for future research but is not requested by the map UI.
 - National Census boundaries: implemented for 3,144 county and county-equivalent records
   across the 50 states and District of Columbia, January 1, 2025 vintage.
@@ -325,11 +325,13 @@ validation can be added later to CI with a standards-compliant Draft 2020-12 val
   and Lake IN remain unresolved. Forty-nine successor candidates currently pass both quantitative
   gates, but none is a verified county first entry. Queue membership is not evidence of treatment eligibility.
 - Completed contribution accounts: implemented for Apple Mesa / Maricopa County, Switch
-  Citadel / Storey County, and Digital Crossroad Hammond / Lake County. Fiscal presentation
+  Citadel / Storey County, Digital Crossroad Hammond / Lake County, Meta Forest City /
+  Rutherford County, Microsoft San Antonio / Bexar County, and EdgeConneX DET01 / Oakland
+  County. Fiscal presentation
   reports project-linked local property taxes and a same-scope public-cost break-even
   threshold; it does not infer service cost as a share of revenue or claim a net fiscal result.
 - Utility and environmental models: labeled electricity, water, wastewater, and emissions
-  engineering scenarios are published for the three completed accounts; direct metered
+  engineering scenarios are published for the six completed accounts; direct metered
   observations and attributable system costs remain gaps where the public evidence lacks them.
 - Causal estimates and public indices: none published. County GDP, employment, and wage
   comparison gaps are descriptive benchmark comparisons and must not be interpreted as
@@ -337,7 +339,7 @@ validation can be added later to CI with a standards-compliant Draft 2020-12 val
 
 ## Next priority
 
-Improve the three completed accounts by replacing transferred contribution coefficients
+Improve the six completed accounts by replacing transferred contribution coefficients
 with host-region input-output estimates when reproducible public inputs are available, and
 by adding same-scope marginal public-service and infrastructure costs where published.
 Until those inputs exist, retain the fiscal break-even presentation and the explicit
