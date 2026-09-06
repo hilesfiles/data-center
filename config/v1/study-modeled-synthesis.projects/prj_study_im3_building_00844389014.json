@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "project_id": "prj_study_im3_building_00844389014",
   "reviewed_on": "2026-09-06",
-  "scope_note": "Last-resort governed synthesis for Google Clarksville retains one bounded resource identity only. It reproduces Google-reported 2024 Montgomery County water consumption as withdrawal minus discharge after converting displayed million-gallon values to gallons, with a rounding envelope. The amount remains unallocated across the location and inventory buildings; discharge may be engineering-estimated. No transferred multiplier, supplier-retention assumption, energy proxy, fiscal result, public-cost threshold, payroll estimate or causal county outcome is modeled.",
+  "scope_note": "Second-pass model review retains one bounded resource identity only. It reproduces Google-reported 2024 Montgomery County water consumption as withdrawal minus discharge after converting displayed million-gallon values to gallons, with a rounding envelope. Direct searches of Clarksville utility/public-works pages, county stormwater records, TDEC/EPA portals and CDE/TVA materials did not surface a building meter, utility bill or a compatible canonical observed-water metric. The amount remains unallocated across the location and inventory buildings; discharge may be engineering-estimated. No transferred multiplier, supplier-retention assumption, energy proxy, fiscal result, public-cost threshold, payroll estimate or causal county outcome is modeled.",
   "sources": [
     {
       "source_id": "src_study_google_environmental_report_2025_clarksville",
@@ -39,11 +39,11 @@
       "confidence": "medium",
       "confidence_rationale": "Both location-level inputs are published by the operator and subject to limited assurance, but discharge may be engineering-estimated, values are rounded, and no building allocation is available.",
       "decision_relevance": "Preserves the only direct public location-level operating-resource magnitude in a compatible unit without allocating it to the selected building.",
-      "evidence_search": {"direct_observation_status": "partial", "source_projection_status": "not_found", "remaining_evidence_gap": "Building- or campus-level meter records, potable/reclaimed split, utility bills, peak-day use, discharge measurement method, and cooling-process allocation"},
+      "evidence_search": {"direct_observation_status": "partial", "source_projection_status": "not_found", "remaining_evidence_gap": "Clarksville Gas & Water or campus meter records, potable/reclaimed split, utility bills, peak-day use, discharge measurement method, cooling-process allocation, and a canonical observed-water metric compatible with the published location total"},
       "derivation": {"method": "engineering_estimate", "model_version": "google-clarksville-account-1.0.0", "formula": "387,900,000 gallons withdrawal - 66,100,000 gallons discharge", "input_claim_ids": [], "input_source_ids": ["src_study_google_environmental_report_2025_clarksville"], "assumptions": ["The operator's Montgomery County location label and reported units are accurate.", "The result remains unallocated across campuses and buildings.", "Each displayed input is rounded to the nearest 0.1 million gallons."]},
       "limitations": ["The source says discharge may be estimated using engineering principles.", "No campus or selected-building allocation is defensible.", "The record does not distinguish potable, reclaimed or process water.", "The interval is a rounding envelope, not statistical uncertainty."],
       "presentation": "modeled_not_observed_or_audited",
-      "notes": "Reproduces the source's water-consumption identity at company/county location scope; do not present as selected-building consumption.",
+      "notes": "Retained after second-pass direct-evidence review because the operator publishes the location inputs and identity but the evidence schema has no compatible canonical direct-water metric. Do not present it as selected-building consumption or as utility-billed volume.",
       "reviewed_on": "2026-09-06"
     }
   ]
