@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
-  "release_id": "private-sector-study-1.51.0",
-  "generated_at": "2026-09-06T23:45:52+00:00",
+  "release_id": "private-sector-study-1.52.0",
+  "generated_at": "2026-09-07T00:29:21+00:00",
   "screen_date": "2026-09-03",
   "selection_basis": "Private commercial identity, documented development history or identifiable campus, and linked county panel. No economic outcome values used.",
   "scope": "Review of the existing dated evidence layer, verified lifecycle results, and additional named campus records. Not an exhaustive classification of every inventory entity.",
@@ -17,10 +17,10 @@
       "Private enterprise": 3
     },
     "projects_with_economic_evidence": 36,
-    "economic_records": 931,
-    "reported_actual_records": 826,
+    "economic_records": 938,
+    "reported_actual_records": 833,
     "projection_records": 105,
-    "modeled_synthesis_records": 155
+    "modeled_synthesis_records": 160
   },
   "economic_evidence_status": "partial",
   "full_modeled_county_accounts": 3,
@@ -365,8 +365,8 @@
       "detail_path": "projects/prj_study_im3_building_01024051963.json",
       "latitude": 40.26828850505122,
       "longitude": -112.01507681579746,
-      "economic_record_count": 12,
-      "reported_actual_count": 8,
+      "economic_record_count": 18,
+      "reported_actual_count": 14,
       "projection_count": 4,
       "modeled_synthesis_count": 0,
       "research_completion_status": "account_research_complete",
@@ -1149,7 +1149,7 @@
       "economic_record_count": 16,
       "reported_actual_count": 16,
       "projection_count": 0,
-      "modeled_synthesis_count": 0,
+      "modeled_synthesis_count": 1,
       "research_completion_status": "account_research_complete",
       "model_completeness": {
         "status": "incomplete",
@@ -1169,9 +1169,12 @@
           "fiscal",
           "investment",
           "operations",
+          "public_costs",
           "resources"
         ],
-        "modeled_categories": [],
+        "modeled_categories": [
+          "public_costs"
+        ],
         "required_county_outcomes": [
           "study.modeled_county_employment_comparison_gap",
           "study.modeled_county_gdp_comparison_gap",
@@ -1179,7 +1182,6 @@
         ],
         "covered_county_outcomes": [],
         "missing_categories": [
-          "public_costs",
           "suppliers"
         ],
         "missing_county_outcomes": [
@@ -1921,10 +1923,10 @@
       "detail_path": "projects/prj_study_im3_building_00598261190.json",
       "latitude": 38.94011284438559,
       "longitude": -94.86768784080611,
-      "economic_record_count": 31,
-      "reported_actual_count": 31,
+      "economic_record_count": 32,
+      "reported_actual_count": 32,
       "projection_count": 0,
-      "modeled_synthesis_count": 0,
+      "modeled_synthesis_count": 4,
       "research_completion_status": "account_research_complete",
       "model_completeness": {
         "status": "incomplete",
@@ -1943,25 +1945,27 @@
           "fiscal",
           "investment",
           "operations",
+          "public_costs",
           "resources"
         ],
-        "modeled_categories": [],
+        "modeled_categories": [
+          "public_costs"
+        ],
         "required_county_outcomes": [
           "study.modeled_county_employment_comparison_gap",
           "study.modeled_county_gdp_comparison_gap",
           "study.modeled_county_wage_comparison_gap"
         ],
-        "covered_county_outcomes": [],
-        "missing_categories": [
-          "community",
-          "public_costs",
-          "suppliers"
-        ],
-        "missing_county_outcomes": [
+        "covered_county_outcomes": [
           "study.modeled_county_employment_comparison_gap",
           "study.modeled_county_gdp_comparison_gap",
           "study.modeled_county_wage_comparison_gap"
         ],
+        "missing_categories": [
+          "community",
+          "suppliers"
+        ],
+        "missing_county_outcomes": [],
         "direct_evidence_gap_count": 8,
         "definition": "All eight contribution-account categories contain sourced or labeled modeled values, and GDP, employment, and wage county-comparison modules are populated. Comparison gaps are descriptive and do not establish causal facility effects."
       }

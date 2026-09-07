@@ -1,8 +1,8 @@
 {
   "schema_version": "1.0.0",
-  "study_release": "private-sector-study-1.51.0",
-  "generated_at": "2026-09-07T00:01:00+00:00",
-  "queue_status": "corrective_model_a_worktree_setup_pending",
+  "study_release": "private-sector-study-1.52.0",
+  "generated_at": "2026-09-07T00:28:42Z",
+  "queue_status": "corrective_model_a_integrated_corrective_model_b_next",
   "ranking_method": "Descending covered contribution-account category count, then descending sourced economic-record count, then ascending project_id.",
   "worker_research_contract": {
     "version": "2.0.0",
@@ -18,12 +18,12 @@
     "completion_rule": "A worker commit is a handoff candidate; only an independently audited handoff may be reconciled or published."
   },
   "corrective_model_eligibility_queue": {
-    "status": "corrective_model_a_worktree_setup_pending",
+    "status": "corrective_model_a_integrated_corrective_model_b_next",
     "reason": "These published projects are marked account_research_complete but analytically incomplete and have zero modeled syntheses. Each requires a dedicated last-resort, candidate-by-candidate modeling audit under worker-research-contract 2.0.0; a model may be retained only when defensible, and every rejection must be documented rather than asserted as a blanket conclusion.",
     "batches": [
       {
         "batch": "corrective_model_a",
-        "setup_state": "pending",
+        "setup_state": "integrated",
         "project_ids": [
           "prj_study_im3_building_01024051963",
           "prj_study_im3_building_00598261190",
@@ -33,10 +33,30 @@
           "client-new-thread:2bb47ec7-7447-4089-91a3-b76c925b6e3e",
           "client-new-thread:c39c0e66-b097-49b4-b92b-5db658b70ebf",
           "client-new-thread:db2ec465-427b-4676-864b-56df22e90f67"
-        ]
+        ],
+        "worker_task_ids": [
+          "01a0792a-5e91-7cf0-9c51-e8aae5599211",
+          "01a0792a-7035-7383-a96b-d58568498e9b",
+          "01a0792a-81bf-7451-bf51-92a6c345d9e5"
+        ],
+        "worker_commit_shas": [
+          "86906e40242680a2b465102e2ee64125d370fb98",
+          "3e81b08466f97b1d5b976050c1ace314dcc31262",
+          "981f8072212c82769997915cda2cefc6a08b9a90"
+        ],
+        "integration_commits": [
+          "3a2d656",
+          "fa63ab3",
+          "c199845"
+        ],
+        "source_record_additions": 7,
+        "forecast_additions": 0,
+        "modeled_record_additions": 5,
+        "result": "Accepted after independent project-scope, description, source, record, and candidate-by-candidate model review. Eagle Mountain added six reported observations and no models; Olathe added one reported observation and four bounded models; NAP7 added one bounded assessed-liability public-service-cost break-even model."
       },
       {
         "batch": "corrective_model_b",
+        "setup_state": "next",
         "project_ids": [
           "prj_study_im3_building_00052227492",
           "prj_study_im3_building_00214321737",
@@ -437,6 +457,12 @@
       "modeled_record_additions": 0,
       "validation_result": "Accepted as a deeply researched but incomplete account after county, city, state, operator, tax, incentive, utility, workforce, community, procurement, and public-cost searches. No modeled synthesis was added; public costs, supplier spending, and county-comparison outcomes remain open.",
       "integration_commit": "c1f8be6",
+      "corrective_model_a_worker_task_id": "01a0792a-5e91-7cf0-9c51-e8aae5599211",
+      "corrective_model_a_worker_commit_sha": "86906e40242680a2b465102e2ee64125d370fb98",
+      "corrective_model_a_integration_commit": "3a2d656",
+      "corrective_model_a_source_record_additions": 6,
+      "corrective_model_a_modeled_record_additions": 0,
+      "corrective_model_a_result": "Added four annual employee observations, one assessed-value observation, and one recipient-documented grant after renewed direct-source discovery. Explicitly rejected each investment, construction, supplier, operations, fiscal, public-cost, resource, community, GDP, employment, and wage model candidate for insufficient scope, non-overlap, attribution, or eligible inputs.",
       "remaining_unresolved_analytical_limits": [
         "No defensible project-specific supplier-payment, local-retention, or marginal public-service-cost series was found.",
         "Investment and employment records retain their reported timing and scope; projections are not treated as realized outcomes.",
@@ -529,6 +555,12 @@
       "modeled_record_additions": 0,
       "validation_result": "Accepted as a deeply researched but incomplete account after parcel, permit, planning, operator, utility, workforce, supplier, community, incentive, public-cost, and county-outcome searches. Six reported records were added and no models were manufactured.",
       "integration_commit": "6268909",
+      "corrective_model_a_worker_task_id": "01a0792a-7035-7383-a96b-d58568498e9b",
+      "corrective_model_a_worker_commit_sha": "3e81b08466f97b1d5b976050c1ace314dcc31262",
+      "corrective_model_a_integration_commit": "fa63ab3",
+      "corrective_model_a_source_record_additions": 1,
+      "corrective_model_a_modeled_record_additions": 4,
+      "corrective_model_a_result": "Added an exact-address $282.1 million state investment observation as a non-additive cross-check. Retained a 2025 parcel-payment public-service-cost break-even and three explicitly descriptive, noncausal Johnson County GDP, employment, and wage comparison gaps after candidate-specific review.",
       "remaining_unresolved_analytical_limits": [
         "No project-specific community-transfer series, supplier payments, local-retention measure, or same-scope marginal public-service costs were found.",
         "Permit values, building area, occupancy, and power capacity remain separately scoped and do not establish audited spending, employment, payroll, or measured resource use.",
@@ -621,6 +653,12 @@
       "modeled_record_additions": 0,
       "validation_result": "Accepted as a deeply researched but incomplete building account after parcel, permit, tax, utility, regulator, workforce, supplier, community, incentive, public-cost, and county-outcome searches. Six reported records were added and no models were manufactured.",
       "integration_commit": "64f00f3",
+      "corrective_model_a_worker_task_id": "01a0792a-81bf-7451-bf51-92a6c345d9e5",
+      "corrective_model_a_worker_commit_sha": "981f8072212c82769997915cda2cefc6a08b9a90",
+      "corrective_model_a_integration_commit": "c199845",
+      "corrective_model_a_source_record_additions": 0,
+      "corrective_model_a_modeled_record_additions": 1,
+      "corrective_model_a_result": "Added three source-trail updates but no direct records. Retained one FY2027 assessed-liability public-service-cost break-even; explicitly rejected building-level investment, construction, supplier, operations, fiscal, resource, community, GDP, employment, and wage models whose inputs or scope were not defensible.",
       "remaining_unresolved_analytical_limits": [
         "No project-specific supplier-payment, local-retention, or marginal public-service-cost series was found for the individual NAP7 building.",
         "Combined Core Campus expenditure and company-county community records remain unallocated to NAP7 and are not treated as building-level spending.",

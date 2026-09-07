@@ -61,7 +61,7 @@ function ProjectCard({ project: p }: { project: StudyProjectSummary }) {
     <h3><a href={`#/project/${p.project_id}`}>{p.name}</a></h3>
     <a className="card-county" href={`#/county/${p.county_fips}`}>{p.county_name}, {p.state_abbr} ↗</a>
     <p className="card-history">{p.documented_timing}</p>
-    <p className={`card-economics ${p.economic_record_count ? "has-evidence" : ""}`}>{p.economic_record_count ? `${p.economic_record_count} source records${p.modeled_synthesis_count ? ` · ${p.modeled_synthesis_count} modeled syntheses` : " · partial coverage"}` : "Economic evidence not yet collected"}</p>
+    <p className={`card-economics ${p.economic_record_count ? "has-evidence" : ""}`}>{p.economic_record_count ? `${p.economic_record_count} source records${p.modeled_synthesis_count ? ` · ${p.modeled_synthesis_count} modeled ${p.modeled_synthesis_count === 1 ? "synthesis" : "syntheses"}` : " · partial coverage"}` : "Economic evidence not yet collected"}</p>
     <div className="card-bottom"><span className={`history-badge ${p.history_status === "needs_research" ? "pending" : ""}`}>{p.history_status === "needs_research" ? "Chronology needs research" : "Historical evidence available"}</span><a href={`#/project/${p.project_id}`} aria-label={`View ${p.name}`}>View →</a></div>
   </article>;
 }

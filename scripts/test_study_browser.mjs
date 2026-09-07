@@ -456,7 +456,7 @@ try {
   await page.goto(`${url}#/project/prj_study_im3_building_00172739953`);
   await openDetails(".evidence-ledger");
   await page.getByRole("heading", { name: "Switch Las Vegas NAP7", exact: true }).waitFor();
-  await page.locator(".account-count").getByText("16 sourced records · partial coverage", { exact: true }).waitFor();
+  await page.locator(".account-count").getByText("16 sourced records · 1 modeled synthesis", { exact: true }).waitFor();
   assert.equal(await page.locator(".economic-record").count(), 16);
   assert.equal(await page.locator(".economic-history").count(), 3);
   assert.equal(await page.locator(".history-bar-row").count(), 6);
@@ -464,7 +464,7 @@ try {
   assert.match(await page.locator(".economic-history").allInnerTexts().then(rows => rows.join(" ")), /CY2017[\s\S]*\$200,500,000[\s\S]*CY2018[\s\S]*\$134,200,000/);
   assert.match(await page.locator(".economic-record-list").innerText(), /Quarter ended 2021-03-31[\s\S]*\$23,400,000/);
   assert.match(await page.locator(".economic-record-list").innerText(), /Quarter ended 2021-12-31[\s\S]*\$49,500,000/);
-  assert.equal(await page.locator(".project-research-update").count(), 12);
+  assert.equal(await page.locator(".project-research-update").count(), 15);
   assert.match(await page.locator(".project-research-update").allInnerTexts().then(rows => rows.join(" ")), /cannot be assigned to this location[\s\S]*resolves the mapped NAP7 building/);
   await page.setViewportSize({ width: 390, height: 844 });
   await noOverflow();
@@ -656,8 +656,8 @@ try {
   await page.goto(`${url}#/project/prj_study_im3_building_00598261190`);
   await openDetails(".evidence-ledger");
   await page.getByRole("heading", { name: "State Farm Olathe", exact: true }).waitFor();
-  await page.locator(".account-count").getByText("31 sourced records · partial coverage", { exact: true }).waitFor();
-  assert.equal(await page.locator(".economic-record").count(), 31);
+  await page.locator(".account-count").getByText("32 sourced records · 4 modeled syntheses", { exact: true }).waitFor();
+  assert.equal(await page.locator(".economic-record").count(), 32);
   assert.equal(await page.locator(".tax-billing-history tbody tr").count(), 7);
   assert.equal(await page.locator(".tax-billing-history thead th").count(), 4);
   assert.match(await page.locator(".tax-billing-history tbody tr").last().innerText(), /2025[\s\S]*\$19,994,965[\s\S]*\$2,298,781\.14[\s\S]*\$2,298,781\.14/);
@@ -906,8 +906,8 @@ try {
     await route.fulfill({ json: legacyStudy });
   });
   await legacyPage.goto(`${url}#/map`, { waitUntil: "domcontentloaded" });
-  await legacyPage.getByText("15 completed project research accounts are mapped.", { exact: false }).waitFor();
-  assert.match(await legacyPage.locator(".review-key").innerText(), /completed project audits \(15\)/i);
+  await legacyPage.getByText("17 completed project research accounts are mapped.", { exact: false }).waitFor();
+  assert.match(await legacyPage.locator(".review-key").innerText(), /completed project audits \(17\)/i);
   await legacyPage.close();
   check("map remains populated when a browser holds an index without the research-completion field");
 
