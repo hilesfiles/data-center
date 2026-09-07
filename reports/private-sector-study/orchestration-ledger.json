@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "study_release": "private-sector-study-1.57.0",
-  "generated_at": "2026-09-07T21:17:38Z",
+  "generated_at": "2026-09-07T21:47:13Z",
   "queue_status": "batch_10_active",
   "ranking_method": "Descending covered contribution-account category count, then descending sourced economic-record count, then ascending project_id.",
   "worker_research_contract": {
@@ -1577,14 +1577,22 @@
       "client_task_id": "client-new-thread:f809f218-e72f-474f-a196-6b2fad202fd3",
       "worker_task_id": "01a07d93-9b69-70a1-b8b7-a8fa8baf1eb7",
       "worker_branch": "detached-worktree-efe0",
-      "worker_commit_sha": "686a057c5a68107f03d504b4bd9e8c6055cee95e",
-      "status": "candidate_pending_adversarial_review",
-      "source_record_additions": 27,
+      "candidate_commit_sha": "686a057c5a68107f03d504b4bd9e8c6055cee95e",
+      "corrective_commit_sha": "ae30d3c5222c1582e325b697860b0a93b2c4e633",
+      "independent_acceptance_audit": "The initial handoff was rejected. The orchestrator independently inspected the eight new primary sources, reproduced the three City Oxford Fund 450 outlay records, verified the 2022-2025 real-plus-personal tax arithmetic and input statement identifiers, checked every retained model's scope/non-additivity/limitations, confirmed exactly one project description, and reran all six scoped tests at the corrective commit.",
+      "worker_commit_sha": "ae30d3c5222c1582e325b697860b0a93b2c4e633",
+      "status": "independent_orchestrator_acceptance",
+      "source_record_additions": 30,
       "forecast_additions": 1,
-      "modeled_record_additions": 0,
-      "validation_result": "First handoff 686a057c5a68107f03d504b4bd9e8c6055cee95e was independently inspected and formally rejected as an acceptance candidate. It contains 13 sources and 28 records (27 reported actuals and 1 source projection), but the zero-model disposition and remaining fiscal, utility, workforce, supplier, public-cost, and county-outcome gaps require the mandatory same-worker adversarial continuation. A metric-specific corrective directive was sent on 2026-09-07; a separate corrective commit and independent acceptance audit remain required before reconciliation.",
+      "modeled_record_additions": 5,
+      "validation_result": "Accepted for later batch reconciliation only after mandatory adversarial continuation. The corrective account contains 21 sources, 31 fragment records (30 reported actuals and 1 source projection), five narrowly governed fiscal syntheses, 23 audit updates, and exactly one compliant description. Six scoped tests pass, both merged schemas report zero issues, and broad-suite drift is limited to the expected unreconciled global record/model counts.",
       "integration_commit": null,
-      "remaining_unresolved_analytical_limits": []
+      "remaining_unresolved_analytical_limits": [
+        "The selected 143,439-square-foot footprint still cannot be crosswalked to an MWH building code or exact treatment date; every campus observation remains unallocated.",
+        "Private construction cost and workforce/payroll, campus operating employment/payroll, supplier payments and geography, customer utility use/payments, recipient-complete community transfers, and same-scope marginal public-service costs remain unavailable.",
+        "City Oxford Fund 450 outlays may overlap the broader $31 million reuse-system total and do not establish Microsoft cash payments, subsidy incidence, or net fiscal benefit.",
+        "No project-specific causal county employment, wage, or GDP effect is claimed; Grant County first-entry and counterfactual requirements remain unsatisfied."
+      ]
     },
     {
       "queue_position": 30,
