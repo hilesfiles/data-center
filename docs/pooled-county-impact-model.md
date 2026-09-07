@@ -4,7 +4,7 @@
 
 ## Current state and target boundary
 
-Study release `private-sector-study-1.54.0` contains 36 selected projects across 35 counties and 23 states. Twenty-one projects have completed scoped research audits and remain visible on the community map. No project currently passes the separate completed-contribution-account analytical gate; unbounded supplier, community, construction, operating, resource, public-cost, or county-outcome gaps are not filled merely to pass it. The current release contains 995 source records and 66 separately governed modeled syntheses, but no pooled estimate and no causal estimate.
+Study release `private-sector-study-1.55.0` contains 36 selected projects across 35 counties and 23 states. Twenty-four projects have completed scoped research audits and remain visible on the community map. No project currently passes the separate completed-contribution-account analytical gate; unbounded supplier, community, construction, operating, resource, public-cost, or county-outcome gaps are not filled merely to pass it. The current release contains 1,046 source records and 116 separately governed modeled syntheses, but no pooled estimate and no causal estimate.
 
 The pooled model will not replace the project and county accounts. Those accounts establish the exposure inputs, evidence state, scope, timing, uncertainty, and unresolved gaps. The pooled layer will evaluate whether consistent relationships appear across communities after projects and phases are aligned at a common county-year grain.
 
