@@ -34,25 +34,28 @@ class MetaAltoonaContributionAccountTest(unittest.TestCase):
         )
         cls.project = next(row for row in details if row["project_id"] == PROJECT_ID)
         cls.fragment = read_json(EVIDENCE_FRAGMENT)
+        cls.model_fragment = read_json(MODEL_FRAGMENT)
 
     def test_direct_account_counts_and_bounded_gaps(self):
         project = self.project
         self.assertEqual(
             (project["economic_record_count"], project["reported_actual_count"], project["projection_count"]),
-            (99, 92, 7),
+            (101, 92, 9),
         )
-        self.assertEqual(project["modeled_synthesis_count"], 0)
-        self.assertFalse(MODEL_FRAGMENT.exists())
+        self.assertEqual(project["modeled_synthesis_count"], 17)
+        self.assertTrue(MODEL_FRAGMENT.exists())
+        self.assertTrue(
+            all(
+                row["aggregation"]["role"] == "standalone"
+                and row["aggregation"]["overlap_policy"] == "do_not_sum_outside_declared_total"
+                and row["presentation"] == "modeled_not_observed_or_audited"
+                and row["scope"]["inventory_allocation"] in {"unallocated", "not_applicable"}
+                for row in self.model_fragment["estimates"]
+            )
+        )
         self.assertEqual(project["model_completeness"]["status"], "incomplete")
         self.assertEqual(project["model_completeness"]["missing_categories"], ["suppliers"])
-        self.assertEqual(
-            project["model_completeness"]["missing_county_outcomes"],
-            [
-                "study.modeled_county_employment_comparison_gap",
-                "study.modeled_county_gdp_comparison_gap",
-                "study.modeled_county_wage_comparison_gap",
-            ],
-        )
+        self.assertEqual(project["model_completeness"]["missing_county_outcomes"], [])
 
     def test_direct_records_preserve_award_phase_and_resource_boundaries(self):
         records = {row["claim_id"]: row for row in self.project["economic_records"]}
@@ -61,6 +64,17 @@ class MetaAltoonaContributionAccountTest(unittest.TestCase):
         self.assertEqual(records["clm_study_meta_altoona_temporary_building_pilot_projection_2024"]["basis"], "source_projection")
         self.assertEqual(records["clm_study_meta_altoona_electricity_2024"]["value"], 1_585_392_000)
         self.assertEqual(records["clm_study_meta_altoona_permitted_generators_2024"]["value"], 112)
+        self.assertEqual(records["clm_study_meta_altoona_ieda_qualifying_wage_13"]["value"], 23.12)
+        self.assertEqual(records["clm_study_meta_altoona_ieda_qualifying_wage_19"]["value"], 53.87)
+        self.assertTrue(
+            all(
+                records[claim_id]["basis"] == "source_projection"
+                for claim_id in (
+                    "clm_study_meta_altoona_ieda_qualifying_wage_13",
+                    "clm_study_meta_altoona_ieda_qualifying_wage_19",
+                )
+            )
+        )
         self.assertEqual(records["clm_study_meta_altoona_assessor_atn1_floor_area_2026"]["value"], 312_131)
         self.assertIn("candidate crosswalk", records["clm_study_meta_altoona_assessor_atn1_floor_area_2026"]["notes"])
         self.assertTrue(all(row["scope"]["inventory_allocation"] == "unallocated" for row in self.fragment["records"]))
@@ -88,6 +102,137 @@ class MetaAltoonaContributionAccountTest(unittest.TestCase):
         self.assertEqual({row["period"]["year"] for row in payments}, set(range(2020, 2025)))
         self.assertFalse(any(row["metric_code"] == "study.property_tax_billed" for row in added))
 
+    def test_tax_aggregations_and_break_even_use_each_active_pin_once(self):
+        estimates = self.model_fragment["estimates"]
+        tax_rows = [row for row in estimates if row["metric_code"] == "study.modeled_combined_property_tax_paid"]
+        expected = {
+            2020: 1_321_478,
+            2021: 1_834_994,
+            2022: 1_846_260,
+            2023: 2_219_356,
+            2024: 2_249_854,
+        }
+        self.assertEqual({row["period"]["year"]: row["value"] for row in tax_rows}, expected)
+        retired_pins = {
+            "792303400001", "792303400003", "792310100001", "792310100003",
+            "792310200001", "792310200002", "792310300001", "792310401002",
+            "792310401003", "792310401004", "292310300006", "792303400002",
+        }
+        for row in tax_rows:
+            year = row["period"]["year"]
+            claim_ids = row["derivation"]["input_claim_ids"]
+            self.assertEqual(len(claim_ids), 10)
+            self.assertEqual(len(set(claim_ids)), 10)
+            self.assertEqual(sum(parameter["value"] for parameter in row["parameters"]), expected[year])
+            self.assertTrue(all(str(year) in claim_id for claim_id in claim_ids))
+            self.assertFalse(any(pin in claim_id for pin in retired_pins for claim_id in claim_ids))
+            self.assertIn("Do not add", row["limitations"][0])
+
+        row_2024 = next(row for row in tax_rows if row["period"]["year"] == 2024)
+        threshold = next(
+            row for row in estimates
+            if row["metric_code"] == "study.modeled_annual_local_service_cost_break_even"
+        )
+        self.assertEqual(threshold["value"], row_2024["value"])
+        self.assertEqual(
+            set(threshold["derivation"]["input_claim_ids"]),
+            set(row_2024["derivation"]["input_claim_ids"]),
+        )
+        self.assertIn("not observed or estimated public cost", threshold["interval"]["interpretation"])
+        self.assertIn("Do not sum", threshold["notes"])
+        self.assertNotEqual(threshold["aggregation"]["aggregation_id"], row_2024["aggregation"]["aggregation_id"])
+
+    def test_load_and_labor_models_reproduce_formulas_without_relabeling(self):
+        estimates = self.model_fragment["estimates"]
+        loads = [row for row in estimates if row["metric_code"] == "study.modeled_average_electric_load"]
+        self.assertEqual(len(loads), 5)
+        for row in loads:
+            parameters = {parameter["name"]: parameter["value"] for parameter in row["parameters"]}
+            expected = parameters["annual_electricity_use"] / parameters["calendar_hours"] / 1_000
+            self.assertAlmostEqual(row["value"], expected, places=12)
+            self.assertIn("not peak", row["limitations"][0].lower())
+        load_2024 = next(row for row in loads if row["period"]["year"] == 2024)
+        self.assertEqual(
+            {parameter["name"]: parameter["value"] for parameter in load_2024["parameters"]}["calendar_hours"],
+            8_784,
+        )
+
+        job_years = next(
+            row for row in estimates
+            if row["metric_code"] == "study.modeled_construction_job_years_direct"
+        )
+        self.assertAlmostEqual(job_years["value"], 8_700_000 / 2_080, places=12)
+        self.assertIn("not unique workers", job_years["limitations"][0].lower())
+
+        construction_payroll = next(
+            row for row in estimates if row["metric_code"] == "study.modeled_construction_payroll"
+        )
+        self.assertEqual(
+            (construction_payroll["interval"]["low"], construction_payroll["value"], construction_payroll["interval"]["high"]),
+            (201_144_000, 334_906_500, 468_669_000),
+        )
+        self.assertEqual(
+            set(construction_payroll["derivation"]["input_claim_ids"]),
+            {
+                "clm_study_meta_altoona_ieda_qualifying_wage_13",
+                "clm_study_meta_altoona_ieda_qualifying_wage_19",
+            },
+        )
+        self.assertIn("not observed", construction_payroll["limitations"][0].lower())
+
+        operating_payroll = next(
+            row for row in estimates
+            if row["metric_code"] == "study.modeled_operating_payroll_sensitivity"
+        )
+        self.assertEqual(
+            (operating_payroll["interval"]["low"], operating_payroll["value"], operating_payroll["interval"]["high"]),
+            (19_235_840, 32_027_840, 44_819_840),
+        )
+        self.assertIn("clm_study_meta_altoona_operating_workers_2021", operating_payroll["derivation"]["input_claim_ids"])
+        self.assertIn("employees and contractors", operating_payroll["scope"]["label"])
+
+    def test_county_gaps_keep_both_treatments_and_noncausal_limits(self):
+        rows = [row for row in self.model_fragment["estimates"] if "comparison_gap" in row["metric_code"]]
+        self.assertEqual(len(rows), 3)
+        expected = {
+            "study.modeled_county_employment_comparison_gap": (2.8236400231913095, 1.9799545193307067, 4.260418471616201),
+            "study.modeled_county_wage_comparison_gap": (-0.39497957882470014, -0.833173880311433, 0.1112883499460704),
+            "study.modeled_county_gdp_comparison_gap": (8.81020817695295, 4.8605943661724105, 13.547587076477496),
+        }
+        for row in rows:
+            central, low, high = expected[row["metric_code"]]
+            self.assertEqual((row["value"], row["interval"]["low"], row["interval"]["high"]), (central, low, high))
+            parameters = {parameter["name"] for parameter in row["parameters"]}
+            self.assertIn("construction_start_treatment_gap", parameters)
+            self.assertIn("first_operation_treatment_gap", parameters)
+            self.assertIn("preperiod_log_index_rmse", parameters)
+            self.assertEqual(row["confidence"], "low")
+            self.assertNotIn("causal_design", row)
+            self.assertIn("Must not be interpreted", row["limitations"][0])
+
+    def test_water_catalog_handoff_is_exact_and_machine_readable(self):
+        update = next(
+            row for row in self.fragment["project_updates"]
+            if row["title"] == "Policy-authorized synthesis and water-catalog reconciliation payload"
+        )
+        notes = update["notes"]
+        metric_text = notes.split("WATER_METRIC_PROPOSAL_JSON=", 1)[1].split("; WATER_RECORDS_PROPOSAL_JSON=", 1)[0]
+        records_and_expectation = notes.split("; WATER_RECORDS_PROPOSAL_JSON=", 1)[1]
+        records_text, expectation_tail = records_and_expectation.split("; WATER_REGRESSION_EXPECTATION_JSON=", 1)
+        expectation_text = expectation_tail.split(". Until that catalog change", 1)[0]
+        metric = json.loads(metric_text)
+        records = json.loads(records_text)
+        expectation = json.loads(expectation_text)["after_catalog_addition"]
+        self.assertEqual(metric["metric_code"], "study.annual_water_withdrawal")
+        self.assertEqual(metric["unit"], "megaliters_per_year")
+        self.assertEqual([row["period"]["year"] for row in records], list(range(2020, 2025)))
+        self.assertEqual([row["value"] for row in records], [151, 140, 199, 173, 242])
+        self.assertTrue(all(row["annual_series_key"] == "meta_altoona_water_withdrawal" for row in records))
+        self.assertEqual(
+            (expectation["fragment_record_count"], expectation["merged_economic_record_count"], expectation["modeled_synthesis_count"]),
+            (105, 106, 17),
+        )
+
     def test_description_search_matrix_and_candidate_status_are_explicit(self):
         updates = self.fragment["project_updates"]
         descriptions = [row["project_description"] for row in updates if "project_description" in row]
@@ -109,9 +254,9 @@ class MetaAltoonaContributionAccountTest(unittest.TestCase):
         ):
             self.assertIn(family, search_log)
         self.assertIn("all 34 results", search_log)
-        self.assertIn("do not cover any realized public-cost", updates[-1]["notes"].lower())
-        self.assertIn("candidate_corrected_pending_adversarial_review", updates[-1]["notes"])
-        self.assertIn("zero modeled records", search_log)
+        self.assertIn("observed public costs", updates[-1]["notes"].lower())
+        self.assertIn("candidate_corrected_round2_pending_adversarial_review", updates[-1]["notes"])
+        self.assertIn("17 estimates", updates[-1]["notes"])
 
 
 if __name__ == "__main__":

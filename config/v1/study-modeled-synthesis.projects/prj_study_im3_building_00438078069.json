@@ -1,0 +1,2222 @@
+{
+  "schema_version": "1.0.0",
+  "project_id": "prj_study_im3_building_00438078069",
+  "reviewed_on": "2026-09-07",
+  "scope_note": "Second corrective modeled-synthesis pass for Meta Altoona. Exact annual active-account property-tax aggregations and the 2024 equal-cost public-service threshold implement study-modeling-policy 1.3.0; deterministic average-load conversions, labor-hour equivalence, explicitly stylized payroll sensitivities, and noncausal county comparison gaps retain every input and overlap limitation. All results remain unallocated to the selected 315,400-square-foot IM3 building.",
+  "sources": [],
+  "estimates": [
+    {
+      "estimate_id": "est_study_meta_altoona_combined_active_real_property_tax_paid_2020",
+      "project_id": "prj_study_im3_building_00438078069",
+      "metric_code": "study.modeled_combined_property_tax_paid",
+      "label": "Modeled combined active-account real-property tax paid in 2020",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 1321478,
+      "period": {
+        "kind": "tax_year",
+        "year": 2020,
+        "label": "Tax year 2020 aggregate across ten active Siculus real-estate PINs"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Ten active Siculus real-estate PINs in Polk County; retired accounts, personal property, PILOT and temporary-building accounts excluded",
+        "county_fips": "19153",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "point_estimate",
+        "low": 1321478,
+        "central": 1321478,
+        "high": 1321478,
+        "interpretation": "Exact arithmetic sum of ten separately verified active-PIN payment claims; not an additional receipt observation."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "meta_altoona_active_real_property_tax_paid_2020",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "pin_792303400004_paid",
+          "value": 3720,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_meta_altoona_792303400004_property_taxes_paid_2020",
+            "detail": "PIN 792303400004 tax-year 2020 aggregate paid principal"
+          },
+          "transformation": "Added once to the ten-active-PIN total"
+        },
+        {
+          "name": "pin_792310100002_paid",
+          "value": 5388,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_meta_altoona_792310100002_property_taxes_paid_2020",
+            "detail": "PIN 792310100002 tax-year 2020 aggregate paid principal"
+          },
+          "transformation": "Added once to the ten-active-PIN total"
+        },
+        {
+          "name": "pin_792310200008_paid",
+          "value": 28520,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_meta_altoona_792310200008_property_taxes_paid_2020",
+            "detail": "PIN 792310200008 tax-year 2020 aggregate paid principal"
+          },
+          "transformation": "Added once to the ten-active-PIN total"
+        },
+        {
+          "name": "pin_792310300006_paid",
+          "value": 1852,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_meta_altoona_792310300006_property_taxes_paid_2020",
+            "detail": "PIN 792310300006 tax-year 2020 aggregate paid principal"
+          },
+          "transformation": "Added once to the ten-active-PIN total"
+        },
+        {
+          "name": "pin_792310377001_paid",
+          "value": 18230,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_meta_altoona_792310377001_property_taxes_paid_2020",
+            "detail": "PIN 792310377001 tax-year 2020 aggregate paid principal"
+          },
+          "transformation": "Added once to the ten-active-PIN total"
+        },
+        {
+          "name": "pin_792303400006_paid",
+          "value": 7262,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_meta_altoona_792303400006_property_taxes_paid_2020",
+            "detail": "PIN 792303400006 tax-year 2020 aggregate paid principal"
+          },
+          "transformation": "Added once to the ten-active-PIN total"
+        },
+        {
+          "name": "pin_792310100004_paid",
+          "value": 520750,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_meta_altoona_792310100004_property_taxes_paid_2020",
+            "detail": "PIN 792310100004 tax-year 2020 aggregate paid principal"
+          },
+          "transformation": "Added once to the ten-active-PIN total"
+        },
+        {
+          "name": "pin_792310200006_paid",
+          "value": 820,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_meta_altoona_792310200006_property_taxes_paid_2020",
+            "detail": "PIN 792310200006 tax-year 2020 aggregate paid principal"
+          },
+          "transformation": "Added once to the ten-active-PIN total"
+        },
+        {
+          "name": "pin_792310200007_paid",
+          "value": 122360,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_meta_altoona_792310200007_property_taxes_paid_2020",
+            "detail": "PIN 792310200007 tax-year 2020 aggregate paid principal"
+          },
+          "transformation": "Added once to the ten-active-PIN total"
+        },
+        {
+          "name": "pin_792310401005_paid",
+          "value": 612576,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_meta_altoona_792310401005_property_taxes_paid_2020",
+            "detail": "PIN 792310401005 tax-year 2020 aggregate paid principal"
+          },
+          "transformation": "Added once to the ten-active-PIN total"
+        }
+      ],
+      "confidence": "high",
+      "confidence_rationale": "Every component is an exact portal payment-history claim for the same tax year, and the active/retired account reconciliation prevents duplicate terminal-account inclusion.",
+      "decision_relevance": "States the verified recurring real-property-tax scale across the reconciled active Siculus accounts without allocating the result to the selected building.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "not_applicable",
+        "remaining_evidence_gap": "Personal-property accounts, temporary-building/PILOT accounts, recipient distributions, selected-building allocation, and confirmation that no separate active Siculus account is omitted"
+      },
+      "derivation": {
+        "method": "benchmark_application",
+        "model_version": "meta-altoona-corrective-account-3.0.0",
+        "formula": "pin_792303400004_paid + pin_792310100002_paid + pin_792310200008_paid + pin_792310300006_paid + pin_792310377001_paid + pin_792303400006_paid + pin_792310100004_paid + pin_792310200006_paid + pin_792310200007_paid + pin_792310401005_paid",
+        "input_claim_ids": [
+          "clm_study_meta_altoona_792303400004_property_taxes_paid_2020",
+          "clm_study_meta_altoona_792310100002_property_taxes_paid_2020",
+          "clm_study_meta_altoona_792310200008_property_taxes_paid_2020",
+          "clm_study_meta_altoona_792310300006_property_taxes_paid_2020",
+          "clm_study_meta_altoona_792310377001_property_taxes_paid_2020",
+          "clm_study_meta_altoona_792303400006_property_taxes_paid_2020",
+          "clm_study_meta_altoona_792310100004_property_taxes_paid_2020",
+          "clm_study_meta_altoona_792310200006_property_taxes_paid_2020",
+          "clm_study_meta_altoona_792310200007_property_taxes_paid_2020",
+          "clm_study_meta_altoona_792310401005_property_taxes_paid_2020"
+        ],
+        "input_source_ids": [
+          "src_study_polk_county_tax_search_2026"
+        ],
+        "assumptions": [
+          "Each of the ten active PIN payment claims is included exactly once.",
+          "All twelve retired PINs and their duplicated search rows or terminal bills are excluded.",
+          "No personal-property, PILOT, franchise-fee, special-assessment, penalty, interest, billed-but-unpaid, or temporary-building amount is added.",
+          "The company-county total remains unallocated to the selected IM3 building and to recipient jurisdictions."
+        ]
+      },
+      "limitations": [
+        "Do not add this modeled total to any of its ten component claims.",
+        "The active real-estate account set is not proof of a complete company fiscal ledger.",
+        "Payments are not disaggregated among recipient jurisdictions.",
+        "No tax-abatement counterfactual or net fiscal result is asserted."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Exact aggregation of component payment claims only; prevent addition to the underlying PIN records and do not present as selected-building tax.",
+      "annual_series_key": "meta_altoona_combined_active_real_property_tax_paid",
+      "reviewed_on": "2026-09-07"
+    },
+    {
+      "estimate_id": "est_study_meta_altoona_combined_active_real_property_tax_paid_2021",
+      "project_id": "prj_study_im3_building_00438078069",
+      "metric_code": "study.modeled_combined_property_tax_paid",
+      "label": "Modeled combined active-account real-property tax paid in 2021",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 1834994,
+      "period": {
+        "kind": "tax_year",
+        "year": 2021,
+        "label": "Tax year 2021 aggregate across ten active Siculus real-estate PINs"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Ten active Siculus real-estate PINs in Polk County; retired accounts, personal property, PILOT and temporary-building accounts excluded",
+        "county_fips": "19153",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "point_estimate",
+        "low": 1834994,
+        "central": 1834994,
+        "high": 1834994,
+        "interpretation": "Exact arithmetic sum of ten separately verified active-PIN payment claims; not an additional receipt observation."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "meta_altoona_active_real_property_tax_paid_2021",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "pin_792303400004_paid",
+          "value": 2460,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_meta_altoona_792303400004_property_taxes_paid_2021",
+            "detail": "PIN 792303400004 tax-year 2021 aggregate paid principal"
+          },
+          "transformation": "Added once to the ten-active-PIN total"
+        },
+        {
+          "name": "pin_792310100002_paid",
+          "value": 4680,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_meta_altoona_792310100002_property_taxes_paid_2021",
+            "detail": "PIN 792310100002 tax-year 2021 aggregate paid principal"
+          },
+          "transformation": "Added once to the ten-active-PIN total"
+        },
+        {
+          "name": "pin_792310200008_paid",
+          "value": 49882,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_meta_altoona_792310200008_property_taxes_paid_2021",
+            "detail": "PIN 792310200008 tax-year 2021 aggregate paid principal"
+          },
+          "transformation": "Added once to the ten-active-PIN total"
+        },
+        {
+          "name": "pin_792310300006_paid",
+          "value": 1928,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_meta_altoona_792310300006_property_taxes_paid_2021",
+            "detail": "PIN 792310300006 tax-year 2021 aggregate paid principal"
+          },
+          "transformation": "Added once to the ten-active-PIN total"
+        },
+        {
+          "name": "pin_792310377001_paid",
+          "value": 19086,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_meta_altoona_792310377001_property_taxes_paid_2021",
+            "detail": "PIN 792310377001 tax-year 2021 aggregate paid principal"
+          },
+          "transformation": "Added once to the ten-active-PIN total"
+        },
+        {
+          "name": "pin_792303400006_paid",
+          "value": 431110,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_meta_altoona_792303400006_property_taxes_paid_2021",
+            "detail": "PIN 792303400006 tax-year 2021 aggregate paid principal"
+          },
+          "transformation": "Added once to the ten-active-PIN total"
+        },
+        {
+          "name": "pin_792310100004_paid",
+          "value": 545044,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_meta_altoona_792310100004_property_taxes_paid_2021",
+            "detail": "PIN 792310100004 tax-year 2021 aggregate paid principal"
+          },
+          "transformation": "Added once to the ten-active-PIN total"
+        },
+        {
+          "name": "pin_792310200006_paid",
+          "value": 858,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_meta_altoona_792310200006_property_taxes_paid_2021",
+            "detail": "PIN 792310200006 tax-year 2021 aggregate paid principal"
+          },
+          "transformation": "Added once to the ten-active-PIN total"
+        },
+        {
+          "name": "pin_792310200007_paid",
+          "value": 136724,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_meta_altoona_792310200007_property_taxes_paid_2021",
+            "detail": "PIN 792310200007 tax-year 2021 aggregate paid principal"
+          },
+          "transformation": "Added once to the ten-active-PIN total"
+        },
+        {
+          "name": "pin_792310401005_paid",
+          "value": 643222,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_meta_altoona_792310401005_property_taxes_paid_2021",
+            "detail": "PIN 792310401005 tax-year 2021 aggregate paid principal"
+          },
+          "transformation": "Added once to the ten-active-PIN total"
+        }
+      ],
+      "confidence": "high",
+      "confidence_rationale": "Every component is an exact portal payment-history claim for the same tax year, and the active/retired account reconciliation prevents duplicate terminal-account inclusion.",
+      "decision_relevance": "States the verified recurring real-property-tax scale across the reconciled active Siculus accounts without allocating the result to the selected building.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "not_applicable",
+        "remaining_evidence_gap": "Personal-property accounts, temporary-building/PILOT accounts, recipient distributions, selected-building allocation, and confirmation that no separate active Siculus account is omitted"
+      },
+      "derivation": {
+        "method": "benchmark_application",
+        "model_version": "meta-altoona-corrective-account-3.0.0",
+        "formula": "pin_792303400004_paid + pin_792310100002_paid + pin_792310200008_paid + pin_792310300006_paid + pin_792310377001_paid + pin_792303400006_paid + pin_792310100004_paid + pin_792310200006_paid + pin_792310200007_paid + pin_792310401005_paid",
+        "input_claim_ids": [
+          "clm_study_meta_altoona_792303400004_property_taxes_paid_2021",
+          "clm_study_meta_altoona_792310100002_property_taxes_paid_2021",
+          "clm_study_meta_altoona_792310200008_property_taxes_paid_2021",
+          "clm_study_meta_altoona_792310300006_property_taxes_paid_2021",
+          "clm_study_meta_altoona_792310377001_property_taxes_paid_2021",
+          "clm_study_meta_altoona_792303400006_property_taxes_paid_2021",
+          "clm_study_meta_altoona_792310100004_property_taxes_paid_2021",
+          "clm_study_meta_altoona_792310200006_property_taxes_paid_2021",
+          "clm_study_meta_altoona_792310200007_property_taxes_paid_2021",
+          "clm_study_meta_altoona_792310401005_property_taxes_paid_2021"
+        ],
+        "input_source_ids": [
+          "src_study_polk_county_tax_search_2026"
+        ],
+        "assumptions": [
+          "Each of the ten active PIN payment claims is included exactly once.",
+          "All twelve retired PINs and their duplicated search rows or terminal bills are excluded.",
+          "No personal-property, PILOT, franchise-fee, special-assessment, penalty, interest, billed-but-unpaid, or temporary-building amount is added.",
+          "The company-county total remains unallocated to the selected IM3 building and to recipient jurisdictions."
+        ]
+      },
+      "limitations": [
+        "Do not add this modeled total to any of its ten component claims.",
+        "The active real-estate account set is not proof of a complete company fiscal ledger.",
+        "Payments are not disaggregated among recipient jurisdictions.",
+        "No tax-abatement counterfactual or net fiscal result is asserted."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Exact aggregation of component payment claims only; prevent addition to the underlying PIN records and do not present as selected-building tax.",
+      "annual_series_key": "meta_altoona_combined_active_real_property_tax_paid",
+      "reviewed_on": "2026-09-07"
+    },
+    {
+      "estimate_id": "est_study_meta_altoona_combined_active_real_property_tax_paid_2022",
+      "project_id": "prj_study_im3_building_00438078069",
+      "metric_code": "study.modeled_combined_property_tax_paid",
+      "label": "Modeled combined active-account real-property tax paid in 2022",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 1846260,
+      "period": {
+        "kind": "tax_year",
+        "year": 2022,
+        "label": "Tax year 2022 aggregate across ten active Siculus real-estate PINs"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Ten active Siculus real-estate PINs in Polk County; retired accounts, personal property, PILOT and temporary-building accounts excluded",
+        "county_fips": "19153",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "point_estimate",
+        "low": 1846260,
+        "central": 1846260,
+        "high": 1846260,
+        "interpretation": "Exact arithmetic sum of ten separately verified active-PIN payment claims; not an additional receipt observation."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "meta_altoona_active_real_property_tax_paid_2022",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "pin_792303400004_paid",
+          "value": 2438,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_meta_altoona_792303400004_property_taxes_paid_2022",
+            "detail": "PIN 792303400004 tax-year 2022 aggregate paid principal"
+          },
+          "transformation": "Added once to the ten-active-PIN total"
+        },
+        {
+          "name": "pin_792310100002_paid",
+          "value": 4874,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_meta_altoona_792310100002_property_taxes_paid_2022",
+            "detail": "PIN 792310100002 tax-year 2022 aggregate paid principal"
+          },
+          "transformation": "Added once to the ten-active-PIN total"
+        },
+        {
+          "name": "pin_792310200008_paid",
+          "value": 49572,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_meta_altoona_792310200008_property_taxes_paid_2022",
+            "detail": "PIN 792310200008 tax-year 2022 aggregate paid principal"
+          },
+          "transformation": "Added once to the ten-active-PIN total"
+        },
+        {
+          "name": "pin_792310300006_paid",
+          "value": 2008,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_meta_altoona_792310300006_property_taxes_paid_2022",
+            "detail": "PIN 792310300006 tax-year 2022 aggregate paid principal"
+          },
+          "transformation": "Added once to the ten-active-PIN total"
+        },
+        {
+          "name": "pin_792310377001_paid",
+          "value": 18982,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_meta_altoona_792310377001_property_taxes_paid_2022",
+            "detail": "PIN 792310377001 tax-year 2022 aggregate paid principal"
+          },
+          "transformation": "Added once to the ten-active-PIN total"
+        },
+        {
+          "name": "pin_792303400006_paid",
+          "value": 427328,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_meta_altoona_792303400006_property_taxes_paid_2022",
+            "detail": "PIN 792303400006 tax-year 2022 aggregate paid principal"
+          },
+          "transformation": "Added once to the ten-active-PIN total"
+        },
+        {
+          "name": "pin_792310100004_paid",
+          "value": 565892,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_meta_altoona_792310100004_property_taxes_paid_2022",
+            "detail": "PIN 792310100004 tax-year 2022 aggregate paid principal"
+          },
+          "transformation": "Added once to the ten-active-PIN total"
+        },
+        {
+          "name": "pin_792310200006_paid",
+          "value": 854,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_meta_altoona_792310200006_property_taxes_paid_2022",
+            "detail": "PIN 792310200006 tax-year 2022 aggregate paid principal"
+          },
+          "transformation": "Added once to the ten-active-PIN total"
+        },
+        {
+          "name": "pin_792310200007_paid",
+          "value": 135908,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_meta_altoona_792310200007_property_taxes_paid_2022",
+            "detail": "PIN 792310200007 tax-year 2022 aggregate paid principal"
+          },
+          "transformation": "Added once to the ten-active-PIN total"
+        },
+        {
+          "name": "pin_792310401005_paid",
+          "value": 638404,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_meta_altoona_792310401005_property_taxes_paid_2022",
+            "detail": "PIN 792310401005 tax-year 2022 aggregate paid principal"
+          },
+          "transformation": "Added once to the ten-active-PIN total"
+        }
+      ],
+      "confidence": "high",
+      "confidence_rationale": "Every component is an exact portal payment-history claim for the same tax year, and the active/retired account reconciliation prevents duplicate terminal-account inclusion.",
+      "decision_relevance": "States the verified recurring real-property-tax scale across the reconciled active Siculus accounts without allocating the result to the selected building.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "not_applicable",
+        "remaining_evidence_gap": "Personal-property accounts, temporary-building/PILOT accounts, recipient distributions, selected-building allocation, and confirmation that no separate active Siculus account is omitted"
+      },
+      "derivation": {
+        "method": "benchmark_application",
+        "model_version": "meta-altoona-corrective-account-3.0.0",
+        "formula": "pin_792303400004_paid + pin_792310100002_paid + pin_792310200008_paid + pin_792310300006_paid + pin_792310377001_paid + pin_792303400006_paid + pin_792310100004_paid + pin_792310200006_paid + pin_792310200007_paid + pin_792310401005_paid",
+        "input_claim_ids": [
+          "clm_study_meta_altoona_792303400004_property_taxes_paid_2022",
+          "clm_study_meta_altoona_792310100002_property_taxes_paid_2022",
+          "clm_study_meta_altoona_792310200008_property_taxes_paid_2022",
+          "clm_study_meta_altoona_792310300006_property_taxes_paid_2022",
+          "clm_study_meta_altoona_792310377001_property_taxes_paid_2022",
+          "clm_study_meta_altoona_792303400006_property_taxes_paid_2022",
+          "clm_study_meta_altoona_792310100004_property_taxes_paid_2022",
+          "clm_study_meta_altoona_792310200006_property_taxes_paid_2022",
+          "clm_study_meta_altoona_792310200007_property_taxes_paid_2022",
+          "clm_study_meta_altoona_792310401005_property_taxes_paid_2022"
+        ],
+        "input_source_ids": [
+          "src_study_polk_county_tax_search_2026"
+        ],
+        "assumptions": [
+          "Each of the ten active PIN payment claims is included exactly once.",
+          "All twelve retired PINs and their duplicated search rows or terminal bills are excluded.",
+          "No personal-property, PILOT, franchise-fee, special-assessment, penalty, interest, billed-but-unpaid, or temporary-building amount is added.",
+          "The company-county total remains unallocated to the selected IM3 building and to recipient jurisdictions."
+        ]
+      },
+      "limitations": [
+        "Do not add this modeled total to any of its ten component claims.",
+        "The active real-estate account set is not proof of a complete company fiscal ledger.",
+        "Payments are not disaggregated among recipient jurisdictions.",
+        "No tax-abatement counterfactual or net fiscal result is asserted."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Exact aggregation of component payment claims only; prevent addition to the underlying PIN records and do not present as selected-building tax.",
+      "annual_series_key": "meta_altoona_combined_active_real_property_tax_paid",
+      "reviewed_on": "2026-09-07"
+    },
+    {
+      "estimate_id": "est_study_meta_altoona_combined_active_real_property_tax_paid_2023",
+      "project_id": "prj_study_im3_building_00438078069",
+      "metric_code": "study.modeled_combined_property_tax_paid",
+      "label": "Modeled combined active-account real-property tax paid in 2023",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 2219356,
+      "period": {
+        "kind": "tax_year",
+        "year": 2023,
+        "label": "Tax year 2023 aggregate across ten active Siculus real-estate PINs"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Ten active Siculus real-estate PINs in Polk County; retired accounts, personal property, PILOT and temporary-building accounts excluded",
+        "county_fips": "19153",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "point_estimate",
+        "low": 2219356,
+        "central": 2219356,
+        "high": 2219356,
+        "interpretation": "Exact arithmetic sum of ten separately verified active-PIN payment claims; not an additional receipt observation."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "meta_altoona_active_real_property_tax_paid_2023",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "pin_792303400004_paid",
+          "value": 1570,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_meta_altoona_792303400004_property_taxes_paid_2023",
+            "detail": "PIN 792303400004 tax-year 2023 aggregate paid principal"
+          },
+          "transformation": "Added once to the ten-active-PIN total"
+        },
+        {
+          "name": "pin_792310100002_paid",
+          "value": 3492,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_meta_altoona_792310100002_property_taxes_paid_2023",
+            "detail": "PIN 792310100002 tax-year 2023 aggregate paid principal"
+          },
+          "transformation": "Added once to the ten-active-PIN total"
+        },
+        {
+          "name": "pin_792310200008_paid",
+          "value": 61604,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_meta_altoona_792310200008_property_taxes_paid_2023",
+            "detail": "PIN 792310200008 tax-year 2023 aggregate paid principal"
+          },
+          "transformation": "Added once to the ten-active-PIN total"
+        },
+        {
+          "name": "pin_792310300006_paid",
+          "value": 1230,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_meta_altoona_792310300006_property_taxes_paid_2023",
+            "detail": "PIN 792310300006 tax-year 2023 aggregate paid principal"
+          },
+          "transformation": "Added once to the ten-active-PIN total"
+        },
+        {
+          "name": "pin_792310377001_paid",
+          "value": 20084,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_meta_altoona_792310377001_property_taxes_paid_2023",
+            "detail": "PIN 792310377001 tax-year 2023 aggregate paid principal"
+          },
+          "transformation": "Added once to the ten-active-PIN total"
+        },
+        {
+          "name": "pin_792303400006_paid",
+          "value": 531272,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_meta_altoona_792303400006_property_taxes_paid_2023",
+            "detail": "PIN 792303400006 tax-year 2023 aggregate paid principal"
+          },
+          "transformation": "Added once to the ten-active-PIN total"
+        },
+        {
+          "name": "pin_792310100004_paid",
+          "value": 673040,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_meta_altoona_792310100004_property_taxes_paid_2023",
+            "detail": "PIN 792310100004 tax-year 2023 aggregate paid principal"
+          },
+          "transformation": "Added once to the ten-active-PIN total"
+        },
+        {
+          "name": "pin_792310200006_paid",
+          "value": 524,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_meta_altoona_792310200006_property_taxes_paid_2023",
+            "detail": "PIN 792310200006 tax-year 2023 aggregate paid principal"
+          },
+          "transformation": "Added once to the ten-active-PIN total"
+        },
+        {
+          "name": "pin_792310200007_paid",
+          "value": 167984,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_meta_altoona_792310200007_property_taxes_paid_2023",
+            "detail": "PIN 792310200007 tax-year 2023 aggregate paid principal"
+          },
+          "transformation": "Added once to the ten-active-PIN total"
+        },
+        {
+          "name": "pin_792310401005_paid",
+          "value": 758556,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_meta_altoona_792310401005_property_taxes_paid_2023",
+            "detail": "PIN 792310401005 tax-year 2023 aggregate paid principal"
+          },
+          "transformation": "Added once to the ten-active-PIN total"
+        }
+      ],
+      "confidence": "high",
+      "confidence_rationale": "Every component is an exact portal payment-history claim for the same tax year, and the active/retired account reconciliation prevents duplicate terminal-account inclusion.",
+      "decision_relevance": "States the verified recurring real-property-tax scale across the reconciled active Siculus accounts without allocating the result to the selected building.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "not_applicable",
+        "remaining_evidence_gap": "Personal-property accounts, temporary-building/PILOT accounts, recipient distributions, selected-building allocation, and confirmation that no separate active Siculus account is omitted"
+      },
+      "derivation": {
+        "method": "benchmark_application",
+        "model_version": "meta-altoona-corrective-account-3.0.0",
+        "formula": "pin_792303400004_paid + pin_792310100002_paid + pin_792310200008_paid + pin_792310300006_paid + pin_792310377001_paid + pin_792303400006_paid + pin_792310100004_paid + pin_792310200006_paid + pin_792310200007_paid + pin_792310401005_paid",
+        "input_claim_ids": [
+          "clm_study_meta_altoona_792303400004_property_taxes_paid_2023",
+          "clm_study_meta_altoona_792310100002_property_taxes_paid_2023",
+          "clm_study_meta_altoona_792310200008_property_taxes_paid_2023",
+          "clm_study_meta_altoona_792310300006_property_taxes_paid_2023",
+          "clm_study_meta_altoona_792310377001_property_taxes_paid_2023",
+          "clm_study_meta_altoona_792303400006_property_taxes_paid_2023",
+          "clm_study_meta_altoona_792310100004_property_taxes_paid_2023",
+          "clm_study_meta_altoona_792310200006_property_taxes_paid_2023",
+          "clm_study_meta_altoona_792310200007_property_taxes_paid_2023",
+          "clm_study_meta_altoona_792310401005_property_taxes_paid_2023"
+        ],
+        "input_source_ids": [
+          "src_study_polk_county_tax_search_2026"
+        ],
+        "assumptions": [
+          "Each of the ten active PIN payment claims is included exactly once.",
+          "All twelve retired PINs and their duplicated search rows or terminal bills are excluded.",
+          "No personal-property, PILOT, franchise-fee, special-assessment, penalty, interest, billed-but-unpaid, or temporary-building amount is added.",
+          "The company-county total remains unallocated to the selected IM3 building and to recipient jurisdictions."
+        ]
+      },
+      "limitations": [
+        "Do not add this modeled total to any of its ten component claims.",
+        "The active real-estate account set is not proof of a complete company fiscal ledger.",
+        "Payments are not disaggregated among recipient jurisdictions.",
+        "No tax-abatement counterfactual or net fiscal result is asserted."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Exact aggregation of component payment claims only; prevent addition to the underlying PIN records and do not present as selected-building tax.",
+      "annual_series_key": "meta_altoona_combined_active_real_property_tax_paid",
+      "reviewed_on": "2026-09-07"
+    },
+    {
+      "estimate_id": "est_study_meta_altoona_combined_active_real_property_tax_paid_2024",
+      "project_id": "prj_study_im3_building_00438078069",
+      "metric_code": "study.modeled_combined_property_tax_paid",
+      "label": "Modeled combined active-account real-property tax paid in 2024",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 2249854,
+      "period": {
+        "kind": "tax_year",
+        "year": 2024,
+        "label": "Tax year 2024 aggregate across ten active Siculus real-estate PINs"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Ten active Siculus real-estate PINs in Polk County; retired accounts, personal property, PILOT and temporary-building accounts excluded",
+        "county_fips": "19153",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "point_estimate",
+        "low": 2249854,
+        "central": 2249854,
+        "high": 2249854,
+        "interpretation": "Exact arithmetic sum of ten separately verified active-PIN payment claims; not an additional receipt observation."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "meta_altoona_active_real_property_tax_paid_2024",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "pin_792303400004_paid",
+          "value": 1606,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_meta_altoona_792303400004_property_taxes_paid_2024",
+            "detail": "PIN 792303400004 tax-year 2024 aggregate paid principal"
+          },
+          "transformation": "Added once to the ten-active-PIN total"
+        },
+        {
+          "name": "pin_792310100002_paid",
+          "value": 3710,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_meta_altoona_792310100002_property_taxes_paid_2024",
+            "detail": "PIN 792310100002 tax-year 2024 aggregate paid principal"
+          },
+          "transformation": "Added once to the ten-active-PIN total"
+        },
+        {
+          "name": "pin_792310200008_paid",
+          "value": 61600,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_meta_altoona_792310200008_property_taxes_paid_2024",
+            "detail": "PIN 792310200008 tax-year 2024 aggregate paid principal"
+          },
+          "transformation": "Added once to the ten-active-PIN total"
+        },
+        {
+          "name": "pin_792310300006_paid",
+          "value": 1316,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_meta_altoona_792310300006_property_taxes_paid_2024",
+            "detail": "PIN 792310300006 tax-year 2024 aggregate paid principal"
+          },
+          "transformation": "Added once to the ten-active-PIN total"
+        },
+        {
+          "name": "pin_792310377001_paid",
+          "value": 20142,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_meta_altoona_792310377001_property_taxes_paid_2024",
+            "detail": "PIN 792310377001 tax-year 2024 aggregate paid principal"
+          },
+          "transformation": "Added once to the ten-active-PIN total"
+        },
+        {
+          "name": "pin_792303400006_paid",
+          "value": 531170,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_meta_altoona_792303400006_property_taxes_paid_2024",
+            "detail": "PIN 792303400006 tax-year 2024 aggregate paid principal"
+          },
+          "transformation": "Added once to the ten-active-PIN total"
+        },
+        {
+          "name": "pin_792310100004_paid",
+          "value": 703438,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_meta_altoona_792310100004_property_taxes_paid_2024",
+            "detail": "PIN 792310100004 tax-year 2024 aggregate paid principal"
+          },
+          "transformation": "Added once to the ten-active-PIN total"
+        },
+        {
+          "name": "pin_792310200006_paid",
+          "value": 536,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_meta_altoona_792310200006_property_taxes_paid_2024",
+            "detail": "PIN 792310200006 tax-year 2024 aggregate paid principal"
+          },
+          "transformation": "Added once to the ten-active-PIN total"
+        },
+        {
+          "name": "pin_792310200007_paid",
+          "value": 167976,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_meta_altoona_792310200007_property_taxes_paid_2024",
+            "detail": "PIN 792310200007 tax-year 2024 aggregate paid principal"
+          },
+          "transformation": "Added once to the ten-active-PIN total"
+        },
+        {
+          "name": "pin_792310401005_paid",
+          "value": 758360,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_meta_altoona_792310401005_property_taxes_paid_2024",
+            "detail": "PIN 792310401005 tax-year 2024 aggregate paid principal"
+          },
+          "transformation": "Added once to the ten-active-PIN total"
+        }
+      ],
+      "confidence": "high",
+      "confidence_rationale": "Every component is an exact portal payment-history claim for the same tax year, and the active/retired account reconciliation prevents duplicate terminal-account inclusion.",
+      "decision_relevance": "States the verified recurring real-property-tax scale across the reconciled active Siculus accounts without allocating the result to the selected building.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "not_applicable",
+        "remaining_evidence_gap": "Personal-property accounts, temporary-building/PILOT accounts, recipient distributions, selected-building allocation, and confirmation that no separate active Siculus account is omitted"
+      },
+      "derivation": {
+        "method": "benchmark_application",
+        "model_version": "meta-altoona-corrective-account-3.0.0",
+        "formula": "pin_792303400004_paid + pin_792310100002_paid + pin_792310200008_paid + pin_792310300006_paid + pin_792310377001_paid + pin_792303400006_paid + pin_792310100004_paid + pin_792310200006_paid + pin_792310200007_paid + pin_792310401005_paid",
+        "input_claim_ids": [
+          "clm_study_meta_altoona_792303400004_property_taxes_paid_2024",
+          "clm_study_meta_altoona_792310100002_property_taxes_paid_2024",
+          "clm_study_meta_altoona_792310200008_property_taxes_paid_2024",
+          "clm_study_meta_altoona_792310300006_property_taxes_paid_2024",
+          "clm_study_meta_altoona_792310377001_property_taxes_paid_2024",
+          "clm_study_meta_altoona_792303400006_property_taxes_paid_2024",
+          "clm_study_meta_altoona_792310100004_property_taxes_paid_2024",
+          "clm_study_meta_altoona_792310200006_property_taxes_paid_2024",
+          "clm_study_meta_altoona_792310200007_property_taxes_paid_2024",
+          "clm_study_meta_altoona_792310401005_property_taxes_paid_2024"
+        ],
+        "input_source_ids": [
+          "src_study_polk_county_tax_search_2026"
+        ],
+        "assumptions": [
+          "Each of the ten active PIN payment claims is included exactly once.",
+          "All twelve retired PINs and their duplicated search rows or terminal bills are excluded.",
+          "No personal-property, PILOT, franchise-fee, special-assessment, penalty, interest, billed-but-unpaid, or temporary-building amount is added.",
+          "The company-county total remains unallocated to the selected IM3 building and to recipient jurisdictions."
+        ]
+      },
+      "limitations": [
+        "Do not add this modeled total to any of its ten component claims.",
+        "The active real-estate account set is not proof of a complete company fiscal ledger.",
+        "Payments are not disaggregated among recipient jurisdictions.",
+        "No tax-abatement counterfactual or net fiscal result is asserted."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Exact aggregation of component payment claims only; prevent addition to the underlying PIN records and do not present as selected-building tax.",
+      "annual_series_key": "meta_altoona_combined_active_real_property_tax_paid",
+      "reviewed_on": "2026-09-07"
+    },
+    {
+      "estimate_id": "est_study_meta_altoona_annual_local_service_cost_break_even_2024",
+      "project_id": "prj_study_im3_building_00438078069",
+      "metric_code": "study.modeled_annual_local_service_cost_break_even",
+      "label": "2024 ten-account annual local service-cost break-even threshold",
+      "category": "public_costs",
+      "unit": "USD_per_year",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 2249854,
+      "period": {
+        "kind": "tax_year",
+        "year": 2024,
+        "label": "Tax year 2024 equal-cost threshold for the ten active Siculus real-estate accounts"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Ten active Siculus real-estate PINs across their Polk County taxing jurisdictions; selected building unallocated",
+        "county_fips": "19153",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "point_estimate",
+        "low": 2249854,
+        "central": 2249854,
+        "high": 2249854,
+        "interpretation": "The threshold equals the exact 2024 ten-account paid-tax aggregation by definition; it is not observed or estimated public cost."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "meta_altoona_service_cost_break_even_2024",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "same_scope_recurring_real_property_tax_paid",
+          "value": 2249854,
+          "unit": "USD",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Exact arithmetic identity from the ten 2024 payment claims used by the companion combined-tax estimate"
+          },
+          "transformation": "Used unchanged as the equal-cost threshold"
+        }
+      ],
+      "confidence": "medium",
+      "confidence_rationale": "The tax aggregation and threshold identity are exact, while actual same-scope marginal costs, PILOT/franchise receipts, incentive realization and recipient distributions remain unknown.",
+      "decision_relevance": "States the annual public-cost level that would exactly offset the verified 2024 recurring real-property-tax base without fabricating a cost or fiscal surplus.",
+      "evidence_search": {
+        "direct_observation_status": "not_found",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Annual marginal fire, police, road, water, wastewater, administrative, infrastructure and financing costs aligned to the ten accounts, recipient jurisdictions and tax year"
+      },
+      "derivation": {
+        "method": "allocation",
+        "model_version": "meta-altoona-corrective-account-3.0.0",
+        "formula": "same-scope annual marginal public-service cost at break-even = sum of ten active-PIN 2024 property-tax payments = $2,249,854",
+        "input_claim_ids": [
+          "clm_study_meta_altoona_792303400004_property_taxes_paid_2024",
+          "clm_study_meta_altoona_792310100002_property_taxes_paid_2024",
+          "clm_study_meta_altoona_792310200008_property_taxes_paid_2024",
+          "clm_study_meta_altoona_792310300006_property_taxes_paid_2024",
+          "clm_study_meta_altoona_792310377001_property_taxes_paid_2024",
+          "clm_study_meta_altoona_792303400006_property_taxes_paid_2024",
+          "clm_study_meta_altoona_792310100004_property_taxes_paid_2024",
+          "clm_study_meta_altoona_792310200006_property_taxes_paid_2024",
+          "clm_study_meta_altoona_792310200007_property_taxes_paid_2024",
+          "clm_study_meta_altoona_792310401005_property_taxes_paid_2024"
+        ],
+        "input_source_ids": [
+          "src_study_polk_county_tax_search_2026"
+        ],
+        "assumptions": [
+          "The threshold is an identity, not an observed or estimated public cost.",
+          "The hypothetical cost threshold uses the same ten-account and tax-year scope as the companion paid-tax aggregation.",
+          "Missing PILOT, franchise-fee, realized incentive and public-cost series motivate the threshold and are not reasons to omit it.",
+          "No projected PILOT, franchise estimate, maximum tax benefit, pump-station commitment, terminal bill, or current unpaid bill is added or netted.",
+          "No positive or negative fiscal margin is asserted without observed same-scope costs."
+        ]
+      },
+      "limitations": [
+        "This is not an estimate of actual public-service cost.",
+        "The input is an account-level payment aggregation, not an audited recipient revenue ledger.",
+        "The ten-account scope is unallocated to the selected building and may omit personal property or temporary-building accounts.",
+        "A fiscal margin is positive only if actual same-scope marginal costs are below this threshold and negative only if above it; neither condition is established."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Equal-cost identity only. Do not sum with the companion 2024 combined-tax estimate or present as public cost, avoided cost, fiscal benefit or net impact.",
+      "reviewed_on": "2026-09-07"
+    },
+    {
+      "estimate_id": "est_study_meta_altoona_average_electric_load_2020",
+      "project_id": "prj_study_im3_building_00438078069",
+      "metric_code": "study.modeled_average_electric_load",
+      "label": "2020 campus annual-average electric load conversion",
+      "category": "resources",
+      "unit": "MW",
+      "measure_type": "rate",
+      "basis": "modeled_synthesis",
+      "value": 111.87214611872146,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2020,
+        "label": "Calendar year 2020 annual energy converted to average load"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Meta Altoona reported campus electricity consumption; no meter or selected-building allocation",
+        "county_fips": "19153",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "point_estimate",
+        "low": 111.87214611872146,
+        "central": 111.87214611872146,
+        "high": 111.87214611872146,
+        "interpretation": "Deterministic conversion of reported annual kWh over 8,760 calendar hours; not peak demand or capacity."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "meta_altoona_average_electric_load_2020",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "annual_electricity_use",
+          "value": 980000000,
+          "unit": "kWh_per_year",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_meta_altoona_electricity_2020",
+            "detail": "Meta-reported Altoona electricity use for 2020"
+          },
+          "transformation": "Divided by 8760 hours and 1,000 kW/MW"
+        },
+        {
+          "name": "calendar_hours",
+          "value": 8760,
+          "unit": "hours_per_year",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Non-leap calendar contains 365 days"
+          },
+          "transformation": "Converts annual energy to annual-average power"
+        }
+      ],
+      "confidence": "medium",
+      "confidence_rationale": "The arithmetic is deterministic from directly reported campus energy, while annual totals do not reveal interval load, peak demand, meters or building allocation.",
+      "decision_relevance": "Expresses campus energy scale in average megawatts without using average load to reconstruct a tariff bill or franchise fee.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "not_applicable",
+        "remaining_evidence_gap": "Interval-metered load, monthly billed demand, service tariff or contract, voltage, meter count, power factor, riders, peak/contracted capacity and selected-building allocation"
+      },
+      "derivation": {
+        "method": "engineering_estimate",
+        "model_version": "meta-altoona-corrective-account-3.0.0",
+        "formula": "980,000,000 kWh / 8,760 hours / 1,000 kW per MW",
+        "input_claim_ids": [
+          "clm_study_meta_altoona_electricity_2020"
+        ],
+        "input_source_ids": [
+          "src_study_meta_altoona_environmental_data_index_2025"
+        ],
+        "assumptions": [
+          "2020 uses 8,760 calendar hours.",
+          "The reported campus energy total is used as published and is not allocated among meters, buildings, IT load, cooling or other uses.",
+          "No tariff, demand charge, franchise fee or cost is inferred from average load."
+        ]
+      },
+      "limitations": [
+        "Annual-average load is not peak, billing, contracted, nameplate or incremental grid capacity.",
+        "The result is campus-wide and unallocated to the selected building.",
+        "This is a deterministic unit/time conversion, not an independent resource contribution."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Conversion only; do not add to the kWh observation or use as a tariff billing determinant.",
+      "annual_series_key": "meta_altoona_average_electric_load",
+      "reviewed_on": "2026-09-07"
+    },
+    {
+      "estimate_id": "est_study_meta_altoona_average_electric_load_2021",
+      "project_id": "prj_study_im3_building_00438078069",
+      "metric_code": "study.modeled_average_electric_load",
+      "label": "2021 campus annual-average electric load conversion",
+      "category": "resources",
+      "unit": "MW",
+      "measure_type": "rate",
+      "basis": "modeled_synthesis",
+      "value": 108.52796803652969,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2021,
+        "label": "Calendar year 2021 annual energy converted to average load"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Meta Altoona reported campus electricity consumption; no meter or selected-building allocation",
+        "county_fips": "19153",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "point_estimate",
+        "low": 108.52796803652969,
+        "central": 108.52796803652969,
+        "high": 108.52796803652969,
+        "interpretation": "Deterministic conversion of reported annual kWh over 8,760 calendar hours; not peak demand or capacity."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "meta_altoona_average_electric_load_2021",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "annual_electricity_use",
+          "value": 950705000,
+          "unit": "kWh_per_year",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_meta_altoona_electricity_2021",
+            "detail": "Meta-reported Altoona electricity use for 2021"
+          },
+          "transformation": "Divided by 8760 hours and 1,000 kW/MW"
+        },
+        {
+          "name": "calendar_hours",
+          "value": 8760,
+          "unit": "hours_per_year",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Non-leap calendar contains 365 days"
+          },
+          "transformation": "Converts annual energy to annual-average power"
+        }
+      ],
+      "confidence": "medium",
+      "confidence_rationale": "The arithmetic is deterministic from directly reported campus energy, while annual totals do not reveal interval load, peak demand, meters or building allocation.",
+      "decision_relevance": "Expresses campus energy scale in average megawatts without using average load to reconstruct a tariff bill or franchise fee.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "not_applicable",
+        "remaining_evidence_gap": "Interval-metered load, monthly billed demand, service tariff or contract, voltage, meter count, power factor, riders, peak/contracted capacity and selected-building allocation"
+      },
+      "derivation": {
+        "method": "engineering_estimate",
+        "model_version": "meta-altoona-corrective-account-3.0.0",
+        "formula": "950,705,000 kWh / 8,760 hours / 1,000 kW per MW",
+        "input_claim_ids": [
+          "clm_study_meta_altoona_electricity_2021"
+        ],
+        "input_source_ids": [
+          "src_study_meta_altoona_environmental_data_index_2025"
+        ],
+        "assumptions": [
+          "2021 uses 8,760 calendar hours.",
+          "The reported campus energy total is used as published and is not allocated among meters, buildings, IT load, cooling or other uses.",
+          "No tariff, demand charge, franchise fee or cost is inferred from average load."
+        ]
+      },
+      "limitations": [
+        "Annual-average load is not peak, billing, contracted, nameplate or incremental grid capacity.",
+        "The result is campus-wide and unallocated to the selected building.",
+        "This is a deterministic unit/time conversion, not an independent resource contribution."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Conversion only; do not add to the kWh observation or use as a tariff billing determinant.",
+      "annual_series_key": "meta_altoona_average_electric_load",
+      "reviewed_on": "2026-09-07"
+    },
+    {
+      "estimate_id": "est_study_meta_altoona_average_electric_load_2022",
+      "project_id": "prj_study_im3_building_00438078069",
+      "metric_code": "study.modeled_average_electric_load",
+      "label": "2022 campus annual-average electric load conversion",
+      "category": "resources",
+      "unit": "MW",
+      "measure_type": "rate",
+      "basis": "modeled_synthesis",
+      "value": 119.13310502283105,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2022,
+        "label": "Calendar year 2022 annual energy converted to average load"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Meta Altoona reported campus electricity consumption; no meter or selected-building allocation",
+        "county_fips": "19153",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "point_estimate",
+        "low": 119.13310502283105,
+        "central": 119.13310502283105,
+        "high": 119.13310502283105,
+        "interpretation": "Deterministic conversion of reported annual kWh over 8,760 calendar hours; not peak demand or capacity."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "meta_altoona_average_electric_load_2022",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "annual_electricity_use",
+          "value": 1043606000,
+          "unit": "kWh_per_year",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_meta_altoona_electricity_2022",
+            "detail": "Meta-reported Altoona electricity use for 2022"
+          },
+          "transformation": "Divided by 8760 hours and 1,000 kW/MW"
+        },
+        {
+          "name": "calendar_hours",
+          "value": 8760,
+          "unit": "hours_per_year",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Non-leap calendar contains 365 days"
+          },
+          "transformation": "Converts annual energy to annual-average power"
+        }
+      ],
+      "confidence": "medium",
+      "confidence_rationale": "The arithmetic is deterministic from directly reported campus energy, while annual totals do not reveal interval load, peak demand, meters or building allocation.",
+      "decision_relevance": "Expresses campus energy scale in average megawatts without using average load to reconstruct a tariff bill or franchise fee.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "not_applicable",
+        "remaining_evidence_gap": "Interval-metered load, monthly billed demand, service tariff or contract, voltage, meter count, power factor, riders, peak/contracted capacity and selected-building allocation"
+      },
+      "derivation": {
+        "method": "engineering_estimate",
+        "model_version": "meta-altoona-corrective-account-3.0.0",
+        "formula": "1,043,606,000 kWh / 8,760 hours / 1,000 kW per MW",
+        "input_claim_ids": [
+          "clm_study_meta_altoona_electricity_2022"
+        ],
+        "input_source_ids": [
+          "src_study_meta_altoona_environmental_data_index_2025"
+        ],
+        "assumptions": [
+          "2022 uses 8,760 calendar hours.",
+          "The reported campus energy total is used as published and is not allocated among meters, buildings, IT load, cooling or other uses.",
+          "No tariff, demand charge, franchise fee or cost is inferred from average load."
+        ]
+      },
+      "limitations": [
+        "Annual-average load is not peak, billing, contracted, nameplate or incremental grid capacity.",
+        "The result is campus-wide and unallocated to the selected building.",
+        "This is a deterministic unit/time conversion, not an independent resource contribution."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Conversion only; do not add to the kWh observation or use as a tariff billing determinant.",
+      "annual_series_key": "meta_altoona_average_electric_load",
+      "reviewed_on": "2026-09-07"
+    },
+    {
+      "estimate_id": "est_study_meta_altoona_average_electric_load_2023",
+      "project_id": "prj_study_im3_building_00438078069",
+      "metric_code": "study.modeled_average_electric_load",
+      "label": "2023 campus annual-average electric load conversion",
+      "category": "resources",
+      "unit": "MW",
+      "measure_type": "rate",
+      "basis": "modeled_synthesis",
+      "value": 141.92990867579908,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2023,
+        "label": "Calendar year 2023 annual energy converted to average load"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Meta Altoona reported campus electricity consumption; no meter or selected-building allocation",
+        "county_fips": "19153",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "point_estimate",
+        "low": 141.92990867579908,
+        "central": 141.92990867579908,
+        "high": 141.92990867579908,
+        "interpretation": "Deterministic conversion of reported annual kWh over 8,760 calendar hours; not peak demand or capacity."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "meta_altoona_average_electric_load_2023",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "annual_electricity_use",
+          "value": 1243306000,
+          "unit": "kWh_per_year",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_meta_altoona_electricity_2023",
+            "detail": "Meta-reported Altoona electricity use for 2023"
+          },
+          "transformation": "Divided by 8760 hours and 1,000 kW/MW"
+        },
+        {
+          "name": "calendar_hours",
+          "value": 8760,
+          "unit": "hours_per_year",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Non-leap calendar contains 365 days"
+          },
+          "transformation": "Converts annual energy to annual-average power"
+        }
+      ],
+      "confidence": "medium",
+      "confidence_rationale": "The arithmetic is deterministic from directly reported campus energy, while annual totals do not reveal interval load, peak demand, meters or building allocation.",
+      "decision_relevance": "Expresses campus energy scale in average megawatts without using average load to reconstruct a tariff bill or franchise fee.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "not_applicable",
+        "remaining_evidence_gap": "Interval-metered load, monthly billed demand, service tariff or contract, voltage, meter count, power factor, riders, peak/contracted capacity and selected-building allocation"
+      },
+      "derivation": {
+        "method": "engineering_estimate",
+        "model_version": "meta-altoona-corrective-account-3.0.0",
+        "formula": "1,243,306,000 kWh / 8,760 hours / 1,000 kW per MW",
+        "input_claim_ids": [
+          "clm_study_meta_altoona_electricity_2023"
+        ],
+        "input_source_ids": [
+          "src_study_meta_altoona_environmental_data_index_2025"
+        ],
+        "assumptions": [
+          "2023 uses 8,760 calendar hours.",
+          "The reported campus energy total is used as published and is not allocated among meters, buildings, IT load, cooling or other uses.",
+          "No tariff, demand charge, franchise fee or cost is inferred from average load."
+        ]
+      },
+      "limitations": [
+        "Annual-average load is not peak, billing, contracted, nameplate or incremental grid capacity.",
+        "The result is campus-wide and unallocated to the selected building.",
+        "This is a deterministic unit/time conversion, not an independent resource contribution."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Conversion only; do not add to the kWh observation or use as a tariff billing determinant.",
+      "annual_series_key": "meta_altoona_average_electric_load",
+      "reviewed_on": "2026-09-07"
+    },
+    {
+      "estimate_id": "est_study_meta_altoona_average_electric_load_2024",
+      "project_id": "prj_study_im3_building_00438078069",
+      "metric_code": "study.modeled_average_electric_load",
+      "label": "2024 campus annual-average electric load conversion",
+      "category": "resources",
+      "unit": "MW",
+      "measure_type": "rate",
+      "basis": "modeled_synthesis",
+      "value": 180.4863387978142,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2024,
+        "label": "Calendar year 2024 annual energy converted to average load"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Meta Altoona reported campus electricity consumption; no meter or selected-building allocation",
+        "county_fips": "19153",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "point_estimate",
+        "low": 180.4863387978142,
+        "central": 180.4863387978142,
+        "high": 180.4863387978142,
+        "interpretation": "Deterministic conversion of reported annual kWh over 8,784 calendar hours; not peak demand or capacity."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "meta_altoona_average_electric_load_2024",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "annual_electricity_use",
+          "value": 1585392000,
+          "unit": "kWh_per_year",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_meta_altoona_electricity_2024",
+            "detail": "Meta-reported Altoona electricity use for 2024"
+          },
+          "transformation": "Divided by 8784 hours and 1,000 kW/MW"
+        },
+        {
+          "name": "calendar_hours",
+          "value": 8784,
+          "unit": "hours_per_year",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Leap-year calendar contains 366 days"
+          },
+          "transformation": "Converts annual energy to annual-average power"
+        }
+      ],
+      "confidence": "medium",
+      "confidence_rationale": "The arithmetic is deterministic from directly reported campus energy, while annual totals do not reveal interval load, peak demand, meters or building allocation.",
+      "decision_relevance": "Expresses campus energy scale in average megawatts without using average load to reconstruct a tariff bill or franchise fee.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "not_applicable",
+        "remaining_evidence_gap": "Interval-metered load, monthly billed demand, service tariff or contract, voltage, meter count, power factor, riders, peak/contracted capacity and selected-building allocation"
+      },
+      "derivation": {
+        "method": "engineering_estimate",
+        "model_version": "meta-altoona-corrective-account-3.0.0",
+        "formula": "1,585,392,000 kWh / 8,784 hours / 1,000 kW per MW",
+        "input_claim_ids": [
+          "clm_study_meta_altoona_electricity_2024"
+        ],
+        "input_source_ids": [
+          "src_study_meta_altoona_environmental_data_index_2025"
+        ],
+        "assumptions": [
+          "2024 uses 8,784 calendar hours.",
+          "The reported campus energy total is used as published and is not allocated among meters, buildings, IT load, cooling or other uses.",
+          "No tariff, demand charge, franchise fee or cost is inferred from average load."
+        ]
+      },
+      "limitations": [
+        "Annual-average load is not peak, billing, contracted, nameplate or incremental grid capacity.",
+        "The result is campus-wide and unallocated to the selected building.",
+        "This is a deterministic unit/time conversion, not an independent resource contribution."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Conversion only; do not add to the kWh observation or use as a tariff billing determinant.",
+      "annual_series_key": "meta_altoona_average_electric_load",
+      "reviewed_on": "2026-09-07"
+    },
+    {
+      "estimate_id": "est_study_meta_altoona_construction_job_year_equivalent_2021",
+      "project_id": "prj_study_im3_building_00438078069",
+      "metric_code": "study.modeled_construction_job_years_direct",
+      "label": "Reported construction-hours FTE-year equivalence",
+      "category": "construction",
+      "unit": "job_years",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 4182.692307692308,
+      "period": {
+        "kind": "cumulative",
+        "report_date": "2021-12-14",
+        "label": "Cumulative 8.7 million construction work hours reported since 2013 through the release date"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Meta Altoona multi-building campus construction program through December 14, 2021",
+        "county_fips": "19153",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "point_estimate",
+        "low": 4182.692307692308,
+        "central": 4182.692307692308,
+        "high": 4182.692307692308,
+        "interpretation": "Deterministic equivalence using 2,080 hours per FTE-year; not observed FTE, unique workers, resident employment or simultaneous headcount."
+      },
+      "contribution_channel": "direct",
+      "aggregation": {
+        "aggregation_id": "meta_altoona_construction_job_year_equivalent_2021",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "reported_construction_work_hours",
+          "value": 8700000,
+          "unit": "hours",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_meta_altoona_expansion_20211214",
+            "detail": "Meta reports 8.7 million construction work hours since 2013"
+          },
+          "transformation": "Divided by the FTE-year hours convention"
+        },
+        {
+          "name": "hours_per_fte_year",
+          "value": 2080,
+          "unit": "hours_per_FTE_year",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Forty hours per week for 52 weeks; denominator convention only"
+          },
+          "transformation": "Converts cumulative work hours to standardized FTE-year equivalents"
+        }
+      ],
+      "confidence": "medium",
+      "confidence_rationale": "The reported cumulative hours anchor is project-specific and the conversion is deterministic, but the source figure may be rounded and does not identify people, phase timing, residence, employers or selected-building allocation.",
+      "decision_relevance": "Makes the construction labor-time scale comparable across projects without relabeling it as unique jobs or local employment.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Unrounded hours, phase/building allocation, worker identities, employers, residence, trade mix, payroll, benefits and annual timing"
+      },
+      "derivation": {
+        "method": "engineering_estimate",
+        "model_version": "meta-altoona-corrective-account-3.0.0",
+        "formula": "8,700,000 reported construction work hours / 2,080 hours per FTE-year = 4,182.692307692308 FTE-year equivalents",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_meta_altoona_expansion_20211214"
+        ],
+        "assumptions": [
+          "The published 8.7 million hours are used as reported through December 14, 2021.",
+          "A 2,080-hour denominator is a standardization convention, not an observed schedule.",
+          "The result is cumulative across campus construction since 2013 and cannot be added to the separate projected average or peak worker counts."
+        ]
+      },
+      "limitations": [
+        "Not unique workers, observed FTE, Iowa-resident job-years, simultaneous jobs or permanent employment.",
+        "No building or annual allocation is available.",
+        "The published 8.7 million-hour figure may be rounded."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Labor-hour equivalence only; do not add to the 1,000-worker projection or 1,300-worker historical peak.",
+      "reviewed_on": "2026-09-07"
+    },
+    {
+      "estimate_id": "est_study_meta_altoona_construction_payroll_wage_sensitivity_2021",
+      "project_id": "prj_study_im3_building_00438078069",
+      "metric_code": "study.modeled_construction_payroll",
+      "label": "Construction-hours wage-benchmark sensitivity",
+      "category": "construction",
+      "unit": "USD",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 334906500,
+      "period": {
+        "kind": "cumulative",
+        "report_date": "2021-12-14",
+        "label": "Cumulative construction-hours anchor through December 14, 2021 with two IEDA qualifying-job wage scenarios"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Meta Altoona multi-building construction hours valued with Siculus operating-award wage benchmarks",
+        "county_fips": "19153",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": 201144000,
+        "central": 334906500,
+        "high": 468669000,
+        "interpretation": "The same 8.7 million hours are valued at $23.12, the midpoint $38.495, and $53.87 per hour. These are benchmark scenarios, not observed payroll, statistical bounds or applicable construction wage rates."
+      },
+      "contribution_channel": "direct",
+      "aggregation": {
+        "aggregation_id": "meta_altoona_construction_payroll_wage_sensitivity_2021",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "reported_construction_work_hours",
+          "value": 8700000,
+          "unit": "hours",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_meta_altoona_expansion_20211214",
+            "detail": "Meta reports 8.7 million construction work hours since 2013"
+          },
+          "transformation": "Multiplied by each wage benchmark"
+        },
+        {
+          "name": "low_ieda_qualifying_wage",
+          "value": 23.12,
+          "unit": "USD_per_hour",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_meta_altoona_ieda_qualifying_wage_13",
+            "detail": "Contract 13 qualifying-job wage commitment"
+          },
+          "transformation": "Produces the low wage-benchmark scenario"
+        },
+        {
+          "name": "central_midpoint_wage",
+          "value": 38.495,
+          "unit": "USD_per_hour",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Arithmetic midpoint of the two Siculus qualifying-wage commitments"
+          },
+          "transformation": "Produces the central wage-benchmark scenario"
+        },
+        {
+          "name": "high_ieda_qualifying_wage",
+          "value": 53.87,
+          "unit": "USD_per_hour",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_meta_altoona_ieda_qualifying_wage_19",
+            "detail": "Contract 19 qualifying-job wage commitment"
+          },
+          "transformation": "Produces the high wage-benchmark scenario"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "Hours are project-specific, but the two IEDA qualifying wages govern different operating-award job populations and do not measure construction trades, overtime, benefits or contractor compensation.",
+      "decision_relevance": "Provides a transparent compensation-scale sensitivity while showing why the endpoints are scenarios rather than a claimed payroll range.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Certified construction payroll, trade-hour distribution, overtime, benefits, contractor/subcontractor compensation, residence, annual timing and selected-building allocation"
+      },
+      "derivation": {
+        "method": "sensitivity_analysis",
+        "model_version": "meta-altoona-corrective-account-3.0.0",
+        "formula": "8,700,000 hours x $23.12 / $38.495 / $53.87 wage scenario",
+        "input_claim_ids": [
+          "clm_study_meta_altoona_ieda_qualifying_wage_13",
+          "clm_study_meta_altoona_ieda_qualifying_wage_19"
+        ],
+        "input_source_ids": [
+          "src_study_meta_altoona_expansion_20211214",
+          "src_study_ieda_annual_report_2025"
+        ],
+        "assumptions": [
+          "The 8.7 million-hour total is held constant across scenarios.",
+          "The two IEDA qualifying-job wages and their midpoint are deliberately stylized compensation benchmarks, not construction wage observations.",
+          "No benefits, payroll taxes, overtime premium, per diem, contractor margin, indirect/induced effect or residence share is added.",
+          "No portion is assigned to the selected building."
+        ]
+      },
+      "limitations": [
+        "Not observed, audited, bounded, annual or local-resident payroll.",
+        "IEDA qualifying wages concern different award job populations and may be inapplicable to construction trades.",
+        "Hours may be rounded and span multiple buildings and years."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Benchmark sensitivity only; do not present the $201.144-$468.669 million envelope as a statistical or true-value bound.",
+      "reviewed_on": "2026-09-07"
+    },
+    {
+      "estimate_id": "est_study_meta_altoona_operating_payroll_sensitivity_2021",
+      "project_id": "prj_study_im3_building_00438078069",
+      "metric_code": "study.modeled_operating_payroll_sensitivity",
+      "label": "Daily on-site operations workforce payroll sensitivity",
+      "category": "operations",
+      "unit": "USD_per_year",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 32027840,
+      "period": {
+        "kind": "source_year",
+        "year": 2021,
+        "label": "December 2021 greater-than-400 daily on-site operations workforce with IEDA wage scenarios"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Meta Altoona daily on-site operations workforce; employees and contractors unresolved",
+        "county_fips": "19153",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": 19235840,
+        "central": 32027840,
+        "high": 44819840,
+        "interpretation": "A 400-person scenario uses 2,080 hours and $23.12, midpoint $38.495, or $53.87 per hour. This is not observed payroll, a true-value bound, or a claim that the greater-than-400 daily people are annual FTE employees."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "meta_altoona_operating_payroll_sensitivity_2021",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "workforce_scenario",
+          "value": 400,
+          "unit": "workers",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_meta_altoona_operating_workers_2021",
+            "detail": "Operator reports more than 400 people working in operations on site each day"
+          },
+          "transformation": "Uses 400 as a transparent scenario anchor, not an exact headcount or FTE count"
+        },
+        {
+          "name": "annual_hours_scenario",
+          "value": 2080,
+          "unit": "hours_per_FTE_year",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Forty hours per week for 52 weeks"
+          },
+          "transformation": "Annualizes the worker scenario"
+        },
+        {
+          "name": "low_ieda_qualifying_wage",
+          "value": 23.12,
+          "unit": "USD_per_hour",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_meta_altoona_ieda_qualifying_wage_13",
+            "detail": "Contract 13 qualifying-job wage commitment"
+          },
+          "transformation": "Produces the low wage scenario"
+        },
+        {
+          "name": "central_midpoint_wage",
+          "value": 38.495,
+          "unit": "USD_per_hour",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Arithmetic midpoint of the two Siculus qualifying-wage commitments"
+          },
+          "transformation": "Produces the central wage scenario"
+        },
+        {
+          "name": "high_ieda_qualifying_wage",
+          "value": 53.87,
+          "unit": "USD_per_hour",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_meta_altoona_ieda_qualifying_wage_19",
+            "detail": "Contract 19 qualifying-job wage commitment"
+          },
+          "transformation": "Produces the high wage scenario"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The operator headcount and award wage commitments are public, but headcount/FTE status, employees versus contractors, annual hours, occupation mix, compensation, benefits and residence are unresolved.",
+      "decision_relevance": "Shows a transparent annual compensation scale for scenario testing without calling it Meta payroll or local labor income.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Dated annual-average employee and contractor FTE, payroll, hours, occupation mix, benefits, bonuses, stock compensation, residence and selected-building allocation"
+      },
+      "derivation": {
+        "method": "sensitivity_analysis",
+        "model_version": "meta-altoona-corrective-account-3.0.0",
+        "formula": "400-worker scenario x 2,080 annual hours x $23.12 / $38.495 / $53.87 wage scenario",
+        "input_claim_ids": [
+          "clm_study_meta_altoona_operating_workers_2021",
+          "clm_study_meta_altoona_ieda_qualifying_wage_13",
+          "clm_study_meta_altoona_ieda_qualifying_wage_19"
+        ],
+        "input_source_ids": [
+          "src_study_meta_altoona_expansion_20211214",
+          "src_study_ieda_annual_report_2025"
+        ],
+        "assumptions": [
+          "The greater-than-400 daily on-site figure is represented as exactly 400 solely for a transparent scenario anchor.",
+          "Each scenario uses 2,080 annual hours even though the source does not identify FTE status, schedules or tenure.",
+          "The two IEDA qualifying wages and midpoint are alternative benchmarks, not observed wages for the 400-person population.",
+          "No benefits, bonuses, payroll taxes, overtime, stock compensation, contractor margin or residence share is added.",
+          "The 31- and 41-job award figures are not added to the 400-person operator figure."
+        ]
+      },
+      "limitations": [
+        "Not observed Meta or contractor payroll, employee compensation, local-resident income or a statistical bound.",
+        "The source may combine employees and contractors and describes daily presence rather than annual-average FTE.",
+        "IEDA wage commitments apply to qualifying award jobs, not necessarily the full on-site population.",
+        "No selected-building allocation is available."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Scenario only; do not add the 31- or 41-job award counts, infer headcount beyond the 400 anchor, or present as observed payroll.",
+      "reviewed_on": "2026-09-07"
+    },
+    {
+      "estimate_id": "est_study_meta_altoona_county_employment_comparison_gap",
+      "project_id": "prj_study_im3_building_00438078069",
+      "metric_code": "study.modeled_county_employment_comparison_gap",
+      "label": "Polk County covered-employment descriptive comparison gap",
+      "category": "county_outcome",
+      "unit": "percent",
+      "measure_type": "change",
+      "basis": "modeled_synthesis",
+      "value": 2.8236400231913095,
+      "period": {
+        "kind": "construction_period",
+        "start_date": "2013-01-01",
+        "end_date": "2019-12-31",
+        "label": "Mean post-versus-2001-2012 preperiod gap; 2013 construction and 2014 operation treatments both tested"
+      },
+      "scope": {
+        "level": "county",
+        "label": "Polk County annual average covered employment relative to a seven-county Iowa donor-pool average",
+        "county_fips": "19153",
+        "inventory_allocation": "not_applicable"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": 1.9799545193307067,
+        "central": 2.8236400231913095,
+        "high": 4.260418471616201,
+        "interpretation": "Central is the midpoint of the 2013- and 2014-treatment full-pool estimates; endpoints are the leave-one-donor-out extrema across both timing specifications. This is design sensitivity, not a statistical confidence interval."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "meta_altoona_county_employment_comparison_gap",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "construction_start_treatment_gap",
+          "value": 2.5476383779569067,
+          "unit": "percent",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_county_economic_core_2001_2024",
+            "detail": "2001-2012 preperiod versus 2013-2019 annual average covered employment log-gap calculation using the seven-county pool"
+          },
+          "transformation": "First treatment-date sensitivity"
+        },
+        {
+          "name": "first_operation_treatment_gap",
+          "value": 3.099641668425712,
+          "unit": "percent",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_county_economic_core_2001_2024",
+            "detail": "2001-2012 preperiod versus 2014-2019 annual average covered employment log-gap calculation using the seven-county pool"
+          },
+          "transformation": "Second treatment-date sensitivity"
+        },
+        {
+          "name": "preperiod_log_index_rmse",
+          "value": 0.01815118545151943,
+          "unit": "log_points",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_county_economic_core_2001_2024",
+            "detail": "2001-2012 normalized-log-index RMSE for annual average covered employment"
+          },
+          "transformation": "Prefit diagnostic only"
+        },
+        {
+          "name": "preperiod_growth_correlation",
+          "value": 0.8903418627135402,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_county_economic_core_2001_2024",
+            "detail": "2001-2012 annual log-growth correlation for annual average covered employment"
+          },
+          "transformation": "Prefit diagnostic only"
+        },
+        {
+          "name": "preperiod_gap_slope",
+          "value": -0.3200561368705995,
+          "unit": "percent_per_year",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_county_economic_core_2001_2024",
+            "detail": "2001-2012 host-minus-pool log-gap slope for annual average covered employment"
+          },
+          "transformation": "Pretrend diagnostic only"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The calculation and sensitivity are reproducible, but the donor pool is not pre-registered, Polk had Microsoft exposure by 2012, Meta construction/operations/expansions overlap, and county outcomes reflect concurrent metro changes.",
+      "decision_relevance": "Shows the scale and timing sensitivity of Polk County annual average covered employment divergence without assigning it to Meta or the selected building.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "not_applicable",
+        "remaining_evidence_gap": "A validated causal design with complete county exposure history, treatment isolation, donor screening, sector controls, placebos, spillover rules and selected-building exposure"
+      },
+      "derivation": {
+        "method": "benchmark_application",
+        "model_version": "meta-altoona-corrective-account-3.0.0",
+        "formula": "For each year, compute log(Polk outcome / unweighted mean donor outcome); subtract the 2001-2012 mean gap from the 2013-2019 or 2014-2019 mean gap; express exp(difference)-1 as percent; central is the two-treatment midpoint and envelope is the leave-one-donor-out extrema",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_county_economic_core_2001_2024"
+        ],
+        "assumptions": [
+          "Donor pool: Linn, Johnson, Scott, Black Hawk, Woodbury, Dubuque and Story counties.",
+          "Dallas and Pottawattamie are excluded for known hyperscale data-center exposure.",
+          "The donor average is unweighted.",
+          "Construction-start treatment is 2013 and first-operation treatment is 2014; both are shown because campus development continued through later phases.",
+          "The benchmark is descriptive and no causal-design metadata is attached."
+        ]
+      },
+      "limitations": [
+        "Must not be interpreted as a Meta or data-center effect.",
+        "Polk County had prior Microsoft data-center exposure and substantial concurrent population, industry and metro development.",
+        "The donor screen cannot exclude every unobserved treatment or spillover.",
+        "The postperiod combines construction, operation and later expansions.",
+        "The sensitivity envelope is not a confidence interval."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Low-confidence descriptive comparison gap only; not a project contribution, causal estimate or selected-building outcome.",
+      "reviewed_on": "2026-09-07"
+    },
+    {
+      "estimate_id": "est_study_meta_altoona_county_wage_comparison_gap",
+      "project_id": "prj_study_im3_building_00438078069",
+      "metric_code": "study.modeled_county_wage_comparison_gap",
+      "label": "Polk County nominal weekly-wage descriptive comparison gap",
+      "category": "county_outcome",
+      "unit": "percent",
+      "measure_type": "change",
+      "basis": "modeled_synthesis",
+      "value": -0.39497957882470014,
+      "period": {
+        "kind": "construction_period",
+        "start_date": "2013-01-01",
+        "end_date": "2019-12-31",
+        "label": "Mean post-versus-2001-2012 preperiod gap; 2013 construction and 2014 operation treatments both tested"
+      },
+      "scope": {
+        "level": "county",
+        "label": "Polk County annual average nominal weekly wage relative to a seven-county Iowa donor-pool average",
+        "county_fips": "19153",
+        "inventory_allocation": "not_applicable"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": -0.833173880311433,
+        "central": -0.39497957882470014,
+        "high": 0.1112883499460704,
+        "interpretation": "Central is the midpoint of the 2013- and 2014-treatment full-pool estimates; endpoints are the leave-one-donor-out extrema across both timing specifications. This is design sensitivity, not a statistical confidence interval."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "meta_altoona_county_wage_comparison_gap",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "construction_start_treatment_gap",
+          "value": -0.3874949609446454,
+          "unit": "percent",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_county_economic_core_2001_2024",
+            "detail": "2001-2012 preperiod versus 2013-2019 annual average nominal weekly wage log-gap calculation using the seven-county pool"
+          },
+          "transformation": "First treatment-date sensitivity"
+        },
+        {
+          "name": "first_operation_treatment_gap",
+          "value": -0.40246419670475486,
+          "unit": "percent",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_county_economic_core_2001_2024",
+            "detail": "2001-2012 preperiod versus 2014-2019 annual average nominal weekly wage log-gap calculation using the seven-county pool"
+          },
+          "transformation": "Second treatment-date sensitivity"
+        },
+        {
+          "name": "preperiod_log_index_rmse",
+          "value": 0.02447095521429814,
+          "unit": "log_points",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_county_economic_core_2001_2024",
+            "detail": "2001-2012 normalized-log-index RMSE for annual average nominal weekly wage"
+          },
+          "transformation": "Prefit diagnostic only"
+        },
+        {
+          "name": "preperiod_growth_correlation",
+          "value": 0.6484197808850821,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_county_economic_core_2001_2024",
+            "detail": "2001-2012 annual log-growth correlation for annual average nominal weekly wage"
+          },
+          "transformation": "Prefit diagnostic only"
+        },
+        {
+          "name": "preperiod_gap_slope",
+          "value": 0.007739248399589693,
+          "unit": "percent_per_year",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_county_economic_core_2001_2024",
+            "detail": "2001-2012 host-minus-pool log-gap slope for annual average nominal weekly wage"
+          },
+          "transformation": "Pretrend diagnostic only"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The calculation and sensitivity are reproducible, but the donor pool is not pre-registered, Polk had Microsoft exposure by 2012, Meta construction/operations/expansions overlap, and county outcomes reflect concurrent metro changes.",
+      "decision_relevance": "Shows the scale and timing sensitivity of Polk County annual average nominal weekly wage divergence without assigning it to Meta or the selected building.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "not_applicable",
+        "remaining_evidence_gap": "A validated causal design with complete county exposure history, treatment isolation, donor screening, sector controls, placebos, spillover rules and selected-building exposure"
+      },
+      "derivation": {
+        "method": "benchmark_application",
+        "model_version": "meta-altoona-corrective-account-3.0.0",
+        "formula": "For each year, compute log(Polk outcome / unweighted mean donor outcome); subtract the 2001-2012 mean gap from the 2013-2019 or 2014-2019 mean gap; express exp(difference)-1 as percent; central is the two-treatment midpoint and envelope is the leave-one-donor-out extrema",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_county_economic_core_2001_2024"
+        ],
+        "assumptions": [
+          "Donor pool: Linn, Johnson, Scott, Black Hawk, Woodbury, Dubuque and Story counties.",
+          "Dallas and Pottawattamie are excluded for known hyperscale data-center exposure.",
+          "The donor average is unweighted.",
+          "Construction-start treatment is 2013 and first-operation treatment is 2014; both are shown because campus development continued through later phases.",
+          "The benchmark is descriptive and no causal-design metadata is attached."
+        ]
+      },
+      "limitations": [
+        "Must not be interpreted as a Meta or data-center effect.",
+        "Polk County had prior Microsoft data-center exposure and substantial concurrent population, industry and metro development.",
+        "The donor screen cannot exclude every unobserved treatment or spillover.",
+        "The postperiod combines construction, operation and later expansions.",
+        "The sensitivity envelope is not a confidence interval."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Low-confidence descriptive comparison gap only; not a project contribution, causal estimate or selected-building outcome.",
+      "reviewed_on": "2026-09-07"
+    },
+    {
+      "estimate_id": "est_study_meta_altoona_county_gdp_comparison_gap",
+      "project_id": "prj_study_im3_building_00438078069",
+      "metric_code": "study.modeled_county_gdp_comparison_gap",
+      "label": "Polk County real-GDP descriptive comparison gap",
+      "category": "county_outcome",
+      "unit": "percent",
+      "measure_type": "change",
+      "basis": "modeled_synthesis",
+      "value": 8.81020817695295,
+      "period": {
+        "kind": "construction_period",
+        "start_date": "2013-01-01",
+        "end_date": "2019-12-31",
+        "label": "Mean post-versus-2001-2012 preperiod gap; 2013 construction and 2014 operation treatments both tested"
+      },
+      "scope": {
+        "level": "county",
+        "label": "Polk County real GDP relative to a seven-county Iowa donor-pool average",
+        "county_fips": "19153",
+        "inventory_allocation": "not_applicable"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": 4.8605943661724105,
+        "central": 8.81020817695295,
+        "high": 13.547587076477496,
+        "interpretation": "Central is the midpoint of the 2013- and 2014-treatment full-pool estimates; endpoints are the leave-one-donor-out extrema across both timing specifications. This is design sensitivity, not a statistical confidence interval."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "meta_altoona_county_gdp_comparison_gap",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "construction_start_treatment_gap",
+          "value": 7.450688217280965,
+          "unit": "percent",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_county_economic_core_2001_2024",
+            "detail": "2001-2012 preperiod versus 2013-2019 real GDP log-gap calculation using the seven-county pool"
+          },
+          "transformation": "First treatment-date sensitivity"
+        },
+        {
+          "name": "first_operation_treatment_gap",
+          "value": 10.169728136624933,
+          "unit": "percent",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_county_economic_core_2001_2024",
+            "detail": "2001-2012 preperiod versus 2014-2019 real GDP log-gap calculation using the seven-county pool"
+          },
+          "transformation": "Second treatment-date sensitivity"
+        },
+        {
+          "name": "preperiod_log_index_rmse",
+          "value": 0.05191875166183329,
+          "unit": "log_points",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_county_economic_core_2001_2024",
+            "detail": "2001-2012 normalized-log-index RMSE for real GDP"
+          },
+          "transformation": "Prefit diagnostic only"
+        },
+        {
+          "name": "preperiod_growth_correlation",
+          "value": 0.7050425850867745,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_county_economic_core_2001_2024",
+            "detail": "2001-2012 annual log-growth correlation for real GDP"
+          },
+          "transformation": "Prefit diagnostic only"
+        },
+        {
+          "name": "preperiod_gap_slope",
+          "value": -0.8591105694554056,
+          "unit": "percent_per_year",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_county_economic_core_2001_2024",
+            "detail": "2001-2012 host-minus-pool log-gap slope for real GDP"
+          },
+          "transformation": "Pretrend diagnostic only"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The calculation and sensitivity are reproducible, but the donor pool is not pre-registered, Polk had Microsoft exposure by 2012, Meta construction/operations/expansions overlap, and county outcomes reflect concurrent metro changes.",
+      "decision_relevance": "Shows the scale and timing sensitivity of Polk County real GDP divergence without assigning it to Meta or the selected building.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "not_applicable",
+        "remaining_evidence_gap": "A validated causal design with complete county exposure history, treatment isolation, donor screening, sector controls, placebos, spillover rules and selected-building exposure"
+      },
+      "derivation": {
+        "method": "benchmark_application",
+        "model_version": "meta-altoona-corrective-account-3.0.0",
+        "formula": "For each year, compute log(Polk outcome / unweighted mean donor outcome); subtract the 2001-2012 mean gap from the 2013-2019 or 2014-2019 mean gap; express exp(difference)-1 as percent; central is the two-treatment midpoint and envelope is the leave-one-donor-out extrema",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_county_economic_core_2001_2024"
+        ],
+        "assumptions": [
+          "Donor pool: Linn, Johnson, Scott, Black Hawk, Woodbury, Dubuque and Story counties.",
+          "Dallas and Pottawattamie are excluded for known hyperscale data-center exposure.",
+          "The donor average is unweighted.",
+          "Construction-start treatment is 2013 and first-operation treatment is 2014; both are shown because campus development continued through later phases.",
+          "The benchmark is descriptive and no causal-design metadata is attached."
+        ]
+      },
+      "limitations": [
+        "Must not be interpreted as a Meta or data-center effect.",
+        "Polk County had prior Microsoft data-center exposure and substantial concurrent population, industry and metro development.",
+        "The donor screen cannot exclude every unobserved treatment or spillover.",
+        "The postperiod combines construction, operation and later expansions.",
+        "The sensitivity envelope is not a confidence interval."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Low-confidence descriptive comparison gap only; not a project contribution, causal estimate or selected-building outcome.",
+      "reviewed_on": "2026-09-07"
+    }
+  ]
+}
