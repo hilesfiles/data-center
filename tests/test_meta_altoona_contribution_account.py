@@ -210,7 +210,7 @@ class MetaAltoonaContributionAccountTest(unittest.TestCase):
             self.assertNotIn("causal_design", row)
             self.assertIn("Must not be interpreted", row["limitations"][0])
 
-    def test_water_catalog_handoff_is_exact_and_machine_readable(self):
+    def test_water_catalog_handoff_is_approximate_and_machine_readable(self):
         update = next(
             row for row in self.fragment["project_updates"]
             if row["title"] == "Policy-authorized synthesis and water-catalog reconciliation payload"
@@ -237,12 +237,19 @@ class MetaAltoonaContributionAccountTest(unittest.TestCase):
         ]
         conversion_factor = 264172.0523581484
         self.assertEqual([row["value"] for row in records], series_values_gallons)
+        self.assertTrue(all(row["value_qualifier"] == "approximately" for row in records))
         self.assertTrue(all(row["annual_series_key"] == "meta_altoona_water_withdrawal" for row in records))
         for source_value, record in zip(source_values_megaliters, records, strict=True):
+            self.assertIn("Section 3.1, Water Withdrawal by Facility table", record["source_locator"])
+            self.assertIn("PDF page 8 (printed page I)", record["source_locator"])
             self.assertIn(f"reported {source_value} ML", record["source_locator"])
+            self.assertIn("rounded to the nearest whole digit", record["source_locator"])
             self.assertIn("1,000,000 L / 3.785411784 L per US gallon", record["source_locator"])
-            self.assertIn(f"Source reports {source_value} megaliters", record["notes"])
+            self.assertIn(f"Source reports approximately {source_value} megaliters", record["notes"])
+            self.assertIn("PDF page 8 (printed page I)", record["notes"])
+            self.assertIn("rounded to the nearest whole digit", record["notes"])
             self.assertIn("264,172.0523581484 US gallons per ML", record["notes"])
+            self.assertIn("inherits the source whole-ML rounding", record["notes"])
             self.assertLess(abs(record["value"] - source_value * conversion_factor), 0.000001)
         self.assertEqual(expectation["unit"], "gallons_per_year")
         self.assertEqual(expectation["aggregation"], "none")
