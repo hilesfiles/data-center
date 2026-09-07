@@ -1,0 +1,92 @@
+{
+  "schema_version": "1.0.0",
+  "project_id": "prj_study_im3_building_00214321737",
+  "reviewed_on": "2026-09-06",
+  "scope_note": "Last-resort Markley Lowell model-eligibility pass under study-modeling-policy-1.3.0. The only retained synthesis is an exact same-account FY2026 assessed-liability public-service-cost break-even identity. It uses the directly observed four-quarter real-property bill without estimating actual public cost, cash collections, recipient distributions or net fiscal impact. Investment, construction, supplier, operations, fiscal-net, resource, community and each GDP, employment and wage candidate are rejected separately in the evidence fragment because compatible inputs, scope alignment, non-overlap proof or credible identification are unavailable.",
+  "sources": [],
+  "estimates": [
+    {
+      "estimate_id": "est_study_markley_lowell_annual_service_cost_break_even_fy2026",
+      "project_id": "prj_study_im3_building_00214321737",
+      "metric_code": "study.modeled_annual_local_service_cost_break_even",
+      "label": "FY2026 same-account assessed-liability public-service-cost break-even threshold",
+      "category": "public_costs",
+      "unit": "USD_per_year",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 534231.97,
+      "period": {
+        "kind": "tax_year",
+        "year": 2026,
+        "label": "City of Lowell fiscal 2026 real-property assessed-liability threshold"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Real-property account P90290 for the three-building 1 Markley Way/2 Prince Avenue parcel across the same local taxing recipients",
+        "county_fips": "25017",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "point_estimate",
+        "low": 534231.97,
+        "central": 534231.97,
+        "high": 534231.97,
+        "interpretation": "The threshold equals the directly observed four-quarter FY2026 real-property bill by definition; it is not an estimate of actual public cost, cash collected or recipient revenue."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "markley_lowell_service_cost_break_even_fy2026",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "same_account_property_tax_bill",
+          "value": 534231.97,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_markley_lowell_property_taxes_billed_fy2026",
+            "detail": "Sum of the four City of Lowell FY2026 real-property invoices displayed for parcel account P90290"
+          },
+          "transformation": "Used unchanged as the equal-cost threshold for the same account and fiscal year"
+        }
+      ],
+      "confidence": "medium",
+      "confidence_rationale": "The threshold identity and complete displayed bill amount are exact, while payment-versus-adjustment status, recipient distribution and actual same-scope marginal public cost remain unknown.",
+      "decision_relevance": "States the FY2026 public-cost level that would equal the parcel's assessed real-property liability without fabricating service costs or claiming a positive or negative fiscal margin.",
+      "evidence_search": {
+        "direct_observation_status": "not_found",
+        "source_projection_status": "not_found",
+        "remaining_evidence_gap": "Annual marginal fire, police, road, water, wastewater, administrative, infrastructure and financing costs assigned to the same parcel account, recipient jurisdictions and fiscal year; cash collections and recipient distributions; personal-property liability and realized exemption"
+      },
+      "derivation": {
+        "method": "allocation",
+        "model_version": "markley-lowell-corrective-account-1.0.0",
+        "formula": "same-account assessed-liability public-service cost at break-even = FY2026 real-property bill = $534,231.97",
+        "input_claim_ids": [
+          "clm_study_markley_lowell_property_taxes_billed_fy2026"
+        ],
+        "input_source_ids": [
+          "src_study_lowell_markley_tax_portal_2026"
+        ],
+        "assumptions": [
+          "The threshold is an identity, not an observed or estimated public cost.",
+          "The hypothetical cost threshold uses the same real-property account and fiscal-year scope as the assessed liability.",
+          "Zero invoice balances are not treated as proof of payment because the portal does not distinguish payment from adjustment or abatement.",
+          "Personal-property tax, TIF savings, state credits, permit values, community gifts, utility work and indirect tax effects are not added or netted because their scope, incidence or period does not align."
+        ]
+      },
+      "limitations": [
+        "This is not an estimate of actual public-service cost.",
+        "The input is a billed real-property liability, not proof of cash receipt or distribution to individual jurisdictions.",
+        "The account spans a three-building parcel and is not allocated to the selected IM3 building.",
+        "No personal-property account, annual realized abatement, marginal service demand or infrastructure cost is included.",
+        "No positive or negative net fiscal result is asserted."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Conditional assessed-liability threshold only. Equality marks break-even against the FY2026 bill; actual costs and collections are unknown, so the estimate must not be summed with the underlying tax claim or presented as a fiscal surplus.",
+      "reviewed_on": "2026-09-06"
+    }
+  ]
+}
