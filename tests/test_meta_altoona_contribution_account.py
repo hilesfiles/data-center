@@ -224,10 +224,31 @@ class MetaAltoonaContributionAccountTest(unittest.TestCase):
         records = json.loads(records_text)
         expectation = json.loads(expectation_text)["after_catalog_addition"]
         self.assertEqual(metric["metric_code"], "study.annual_water_withdrawal")
-        self.assertEqual(metric["unit"], "megaliters_per_year")
+        self.assertEqual(metric["unit"], "gallons_per_year")
+        self.assertEqual(metric["aggregation"], "none")
         self.assertEqual([row["period"]["year"] for row in records], list(range(2020, 2025)))
-        self.assertEqual([row["value"] for row in records], [151, 140, 199, 173, 242])
+        source_values_megaliters = [151, 140, 199, 173, 242]
+        series_values_gallons = [
+            39889979.906080,
+            36984087.330141,
+            52570238.419272,
+            45701765.057960,
+            63929636.670672,
+        ]
+        conversion_factor = 264172.0523581484
+        self.assertEqual([row["value"] for row in records], series_values_gallons)
         self.assertTrue(all(row["annual_series_key"] == "meta_altoona_water_withdrawal" for row in records))
+        for source_value, record in zip(source_values_megaliters, records, strict=True):
+            self.assertIn(f"reported {source_value} ML", record["source_locator"])
+            self.assertIn("1,000,000 L / 3.785411784 L per US gallon", record["source_locator"])
+            self.assertIn(f"Source reports {source_value} megaliters", record["notes"])
+            self.assertIn("264,172.0523581484 US gallons per ML", record["notes"])
+            self.assertLess(abs(record["value"] - source_value * conversion_factor), 0.000001)
+        self.assertEqual(expectation["unit"], "gallons_per_year")
+        self.assertEqual(expectation["aggregation"], "none")
+        self.assertEqual(expectation["conversion_factor_gallons_per_megaliter"], conversion_factor)
+        self.assertEqual(expectation["source_values_megaliters"], source_values_megaliters)
+        self.assertEqual(expectation["series_values_gallons"], series_values_gallons)
         self.assertEqual(
             (expectation["fragment_record_count"], expectation["merged_economic_record_count"], expectation["modeled_synthesis_count"]),
             (105, 106, 17),
