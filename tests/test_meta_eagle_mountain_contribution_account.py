@@ -39,7 +39,7 @@ class MetaEagleMountainContributionAccountTest(unittest.TestCase):
         project = self.project
         self.assertEqual(
             (project["economic_record_count"], project["reported_actual_count"], project["projection_count"]),
-            (12, 8, 4),
+            (18, 14, 4),
         )
         self.assertEqual(project["modeled_synthesis_count"], 0)
         self.assertEqual(project["model_completeness"]["status"], "incomplete")
@@ -57,8 +57,14 @@ class MetaEagleMountainContributionAccountTest(unittest.TestCase):
         records = {row["claim_id"]: row for row in self.project["economic_records"]}
         self.assertEqual(records["clm_study_meta_eagle_mountain_capex_2024"]["value"], 1_500_000_000)
         self.assertEqual(records["clm_study_meta_eagle_mountain_operations_jobs_2024"]["value"], 300)
+        self.assertEqual(
+            [records[f"clm_study_meta_eagle_mountain_operating_employees_{year}"]["value"] for year in range(2021, 2025)],
+            [66, 66, 96, 96],
+        )
+        self.assertEqual(records["clm_study_meta_eagle_mountain_taxable_value_2022"]["value"], 242_682_000)
         self.assertEqual(records["clm_study_meta_eagle_mountain_taxable_value_2023"]["value"], 305_404_000)
         self.assertEqual(records["clm_study_meta_eagle_mountain_community_funding_2026"]["value"], 5_200_000)
+        self.assertEqual(records["clm_study_meta_eagle_mountain_observatory_grant_2022"]["value"], 121_000)
         self.assertEqual(records["clm_study_meta_eagle_mountain_existing_generators_2022"]["basis"], "reported_actual")
         self.assertEqual(records["clm_study_meta_eagle_mountain_proposed_generators_2022"]["basis"], "source_projection")
         self.assertTrue(all(row["scope"]["inventory_allocation"] == "unallocated" for row in records.values()))
@@ -70,7 +76,7 @@ class MetaEagleMountainContributionAccountTest(unittest.TestCase):
         descriptions = [update["project_description"] for update in updates if "project_description" in update]
         self.assertEqual(len(descriptions), 1)
         self.assertEqual(self.project["project_description"], descriptions[0])
-        self.assertGreaterEqual(len(updates), 14)
+        self.assertGreaterEqual(len(updates), 16)
 
 
 if __name__ == "__main__":
