@@ -52,8 +52,8 @@ class FlexentialChaskaContributionAccountTest(unittest.TestCase):
     def test_direct_records_and_projection_are_kept_separate(self):
         validate_evidence(self.evidence, self.config["candidates"])
         added = {row["claim_id"]: row for row in self.fragment["records"]}
-        self.assertEqual(len(added), 18)
-        self.assertEqual(sum(row["basis"] == "reported_actual" for row in added.values()), 17)
+        self.assertEqual(len(added), 23)
+        self.assertEqual(sum(row["basis"] == "reported_actual" for row in added.values()), 22)
         self.assertEqual(sum(row["basis"] == "source_projection" for row in added.values()), 1)
         self.assertEqual(
             sorted((row["period"]["year"], row["value"]) for row in added.values() if row["metric_code"] == "study.property_taxes_paid"),
@@ -85,6 +85,20 @@ class FlexentialChaskaContributionAccountTest(unittest.TestCase):
             ],
         )
         self.assertTrue(all("crosswalk" in row["notes"] for row in historical))
+        self.assertEqual(
+            sorted(
+                (row["period"]["year"], row["value"])
+                for row in added.values()
+                if row.get("annual_series_key") == "flexential_chaska_taxable_market_value"
+            ),
+            [
+                (2023, 17_978_400),
+                (2024, 18_976_500),
+                (2025, 19_775_100),
+                (2026, 20_637_500),
+                (2027, 23_544_000),
+            ],
+        )
 
     def test_description_and_account_coverage(self):
         descriptions = [row["project_description"] for row in self.fragment["project_updates"] if "project_description" in row]
@@ -94,8 +108,8 @@ class FlexentialChaskaContributionAccountTest(unittest.TestCase):
         self.assertEqual(len([part for part in descriptions[0].split(". ") if part]), 3)
         self.assertIn("3500 Lyman Boulevard", descriptions[0])
         self.assertIn("outside this project boundary", descriptions[0])
-        self.assertEqual(self.project["economic_record_count"], 21)
-        self.assertEqual((self.project["reported_actual_count"], self.project["projection_count"]), (20, 1))
+        self.assertEqual(self.project["economic_record_count"], 26)
+        self.assertEqual((self.project["reported_actual_count"], self.project["projection_count"]), (25, 1))
         self.assertFalse(any("IP Stream" in json.dumps(row) or "West Creek" in json.dumps(row) for row in self.project["economic_records"]))
         self.assertEqual(self.project["model_completeness"]["status"], "incomplete")
         self.assertEqual(self.project["model_completeness"]["missing_categories"], ["community", "public_costs", "suppliers"])
@@ -103,13 +117,29 @@ class FlexentialChaskaContributionAccountTest(unittest.TestCase):
 
     def test_all_eight_categories_have_auditable_search_updates(self):
         updates = self.fragment["project_updates"]
-        self.assertEqual(len(updates), 8)
+        self.assertEqual(len(updates), 12)
         self.assertEqual(
-            {row["title"].split(" audit", 1)[0] for row in updates},
+            {row["title"].split(" audit", 1)[0] for row in updates[:8]},
             {"Investment", "Construction", "Supplier", "Operations", "Fiscal", "Public-cost", "Resource", "Community"},
         )
         self.assertTrue(all(row["as_of"] == "2026-09-06" for row in updates))
-        self.assertTrue(all("Source families checked:" in row["notes"] for row in updates))
+        self.assertTrue(all("Source families checked:" in row["notes"] for row in updates[:8]))
+        self.assertEqual(
+            {row["title"] for row in updates[8:]},
+            {
+                "Corrective parcel, transaction and incentive gap closure",
+                "Corrective permit, utility, infrastructure and environmental gap closure",
+                "Corrective workforce, supplier, community and contract gap closure",
+                "Independent candidate-by-candidate modeling and county-outcome decision",
+            },
+        )
+        model_notes = updates[-1]["notes"]
+        for candidate in (
+            "Investment", "Construction", "Suppliers", "Operations", "Fiscal",
+            "Public costs", "Resources", "Community", "County employment and wages", "County GDP",
+        ):
+            self.assertIn(f"{candidate}: rejected", model_notes)
+        self.assertIn("Modeled additions: zero", model_notes)
 
     def test_deep_audit_exclusions_and_source_trail_are_explicit(self):
         source_ids = {row["source_id"] for row in self.fragment["sources"]}
@@ -122,6 +152,18 @@ class FlexentialChaskaContributionAccountTest(unittest.TestCase):
                 "src_study_mpca_flexential_wimn_2026",
                 "src_study_minnesota_data_center_tax_evaluation_2025",
                 "src_study_osha_establishment_search_flexential_2026",
+                "src_study_carver_flexential_tax_statement_2024",
+                "src_study_carver_flexential_tax_statement_2025",
+                "src_study_carver_flexential_tax_statement_2026",
+                "src_study_carver_flexential_valuation_notice_2027",
+                "src_study_mncar_3500_lyman_sale_2013",
+                "src_study_viawest_chaska_tax_qualification_2015",
+                "src_study_epa_echo_3500_lyman_2026",
+                "src_study_flexential_chaska_workday_2026",
+                "src_study_aspirations_viawest_sponsor_2014",
+                "src_study_mulhern_flexential_chaska_design_2026",
+                "src_study_deed_carver_profile_2025",
+                "src_study_bea_carver_regional_2026",
             }.issubset(source_ids)
         )
         records_text = json.dumps(self.fragment["records"])
