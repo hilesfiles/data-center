@@ -1,0 +1,91 @@
+{
+  "schema_version": "1.0.0",
+  "project_id": "prj_study_im3_building_00172739953",
+  "reviewed_on": "2026-09-06",
+  "scope_note": "Last-resort NAP7 modeling pass under study-modeling-policy-1.3.0. The only retained synthesis is an exact, same-property-account fiscal-year 2027 assessed-liability public-service-cost break-even identity. It uses the directly observed property-tax bill without estimating actual public cost, cash collections, recipient distributions or net fiscal impact. Investment, construction, supplier, operations, resource, community and county outcome candidates were rejected because compatible NAP7 inputs or credible identification are unavailable.",
+  "sources": [],
+  "estimates": [
+    {
+      "estimate_id": "est_study_switch_nap7_annual_service_cost_break_even_fy2027",
+      "project_id": "prj_study_im3_building_00172739953",
+      "metric_code": "study.modeled_annual_local_service_cost_break_even",
+      "label": "FY2027 same-account assessed-liability public-service-cost break-even threshold",
+      "category": "public_costs",
+      "unit": "USD_per_year",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 912973.28,
+      "period": {
+        "kind": "tax_year",
+        "year": 2027,
+        "label": "Clark County tax year 2027 / fiscal year 2026-27 assessed-liability threshold"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "NV LAS NAP 7 LLC real-property account for parcel 176-01-810-001 across the same local taxing jurisdictions",
+        "county_fips": "32003",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "point_estimate",
+        "low": 912973.28,
+        "central": 912973.28,
+        "high": 912973.28,
+        "interpretation": "The threshold equals the directly observed same-account fiscal-year property-tax bill by definition; it is not an estimate of actual public cost, cash collected or recipient revenue."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "switch_nap7_service_cost_break_even_fy2027",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "same_account_property_tax_bill",
+          "value": 912973.28,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_switch_nap7_property_taxes_billed_2027",
+            "detail": "Clark County Treasurer taxes-as-assessed and net-tax amount for parcel 176-01-810-001"
+          },
+          "transformation": "Used unchanged as the equal-cost threshold for the same account and fiscal year"
+        }
+      ],
+      "confidence": "medium",
+      "confidence_rationale": "The identity and cited bill amount are exact, while full-year payment, allocation among taxing jurisdictions and actual marginal public-service cost remain unknown.",
+      "decision_relevance": "States the fiscal-year public-cost level that would equal the assessed real-property liability without fabricating a service cost or claiming a positive or negative fiscal margin.",
+      "evidence_search": {
+        "direct_observation_status": "not_found",
+        "source_projection_status": "not_applicable",
+        "remaining_evidence_gap": "Annual marginal fire, police, road, utility, administrative, infrastructure and financing costs assigned to the same property account, recipients and fiscal year; final cash collections and jurisdictional distributions"
+      },
+      "derivation": {
+        "method": "allocation",
+        "model_version": "switch-nap7-corrective-account-1.0.0",
+        "formula": "same-account assessed-liability public-service cost at break-even = FY2027 property-tax bill = $912,973.28",
+        "input_claim_ids": [
+          "clm_study_switch_nap7_property_taxes_billed_2027"
+        ],
+        "input_source_ids": [
+          "src_study_clark_treasurer_nap7_fy2027"
+        ],
+        "assumptions": [
+          "The threshold is an identity, not an observed or estimated public cost.",
+          "The hypothetical cost threshold uses the same property account and fiscal-year scope as the assessed liability.",
+          "The partial payment is not annualized, and unobserved future installments are not treated as paid.",
+          "Personal-property tax, abatements, right-of-way fees, permit values, community gifts and wider campus amounts are not netted because their scope, incidence or period does not align."
+        ]
+      },
+      "limitations": [
+        "This is not an estimate of actual public cost.",
+        "The input is an assessed property-tax bill, not proof of full-year payment, cash receipt or distribution to individual jurisdictions.",
+        "No personal-property account, incentive incidence, marginal service demand or infrastructure cost is included.",
+        "No positive or negative net fiscal result is asserted."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Conditional assessed-liability threshold only. Equality marks break-even against the bill; actual costs and final collections are unknown, so the estimate must not be summed with the underlying tax claim or presented as a fiscal surplus.",
+      "reviewed_on": "2026-09-06"
+    }
+  ]
+}

@@ -17,6 +17,7 @@ class SwitchNap7ContributionAccountTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.fragment = json.loads(EVIDENCE_FRAGMENT.read_text(encoding="utf-8"))
+        cls.synthesis_fragment = json.loads(SYNTHESIS_FRAGMENT.read_text(encoding="utf-8"))
         cls.candidates = read(CONFIG)
         cls.evidence = load_evidence()
         cls.synthesis = load_synthesis()
@@ -44,14 +45,17 @@ class SwitchNap7ContributionAccountTest(unittest.TestCase):
         self.assertTrue(
             all(row["project_id"] == PROJECT for row in self.fragment["project_updates"])
         )
-        self.assertFalse(SYNTHESIS_FRAGMENT.exists())
+        self.assertEqual(self.synthesis_fragment["project_id"], PROJECT)
+        self.assertTrue(
+            all(row["project_id"] == PROJECT for row in self.synthesis_fragment["estimates"])
+        )
 
     def test_direct_additions_preserve_evidence_states_and_boundaries(self):
         records = {row["claim_id"]: row for row in self.project["economic_records"]}
         self.assertEqual(self.project["economic_record_count"], 16)
         self.assertEqual(self.project["reported_actual_count"], 16)
         self.assertEqual(self.project["projection_count"], 0)
-        self.assertEqual(self.project["modeled_synthesis_count"], 0)
+        self.assertEqual(self.project["modeled_synthesis_count"], 1)
         self.assertEqual(records["clm_study_switch_nap7_floor_area_2014"]["value"], 400_000)
         self.assertEqual(
             records["clm_study_switch_nap7_floor_area_2014"]["value_qualifier"],
@@ -72,6 +76,25 @@ class SwitchNap7ContributionAccountTest(unittest.TestCase):
         self.assertEqual(gift["value"], 3_000_000)
         self.assertEqual(gift["scope"]["level"], "company_county")
         self.assertEqual(gift["scope"]["inventory_allocation"], "unallocated")
+
+    def test_only_retained_model_is_assessed_liability_break_even(self):
+        estimates = self.synthesis_fragment["estimates"]
+        self.assertEqual(len(estimates), 1)
+        estimate = estimates[0]
+        self.assertEqual(estimate["category"], "public_costs")
+        self.assertEqual(
+            estimate["metric_code"],
+            "study.modeled_annual_local_service_cost_break_even",
+        )
+        self.assertEqual(estimate["value"], 912_973.28)
+        self.assertEqual(estimate["scope"]["level"], "campus")
+        self.assertEqual(estimate["interval"]["low"], estimate["interval"]["high"])
+        self.assertIn("not an estimate of actual public cost", estimate["limitations"][0])
+        self.assertIn("No positive or negative net fiscal result", estimate["limitations"][-1])
+        self.assertEqual(
+            estimate["derivation"]["input_claim_ids"],
+            ["clm_study_switch_nap7_property_taxes_billed_2027"],
+        )
 
     def test_baseline_records_and_nonallocation_are_preserved(self):
         records = {row["claim_id"]: row for row in self.project["economic_records"]}
@@ -117,11 +140,14 @@ class SwitchNap7ContributionAccountTest(unittest.TestCase):
             "PUCN",
             "Martin-Harris",
             "dark-fiber",
+            "2000067-413-103",
+            "Great Recession",
+            "reCAPTCHA",
         ]:
             self.assertIn(marker, notes)
         self.assertEqual(
             self.project["model_completeness"]["missing_categories"],
-            ["public_costs", "suppliers"],
+            ["suppliers"],
         )
         self.assertEqual(len(self.project["model_completeness"]["missing_county_outcomes"]), 3)
 
