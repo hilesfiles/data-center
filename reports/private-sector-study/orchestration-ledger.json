@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "study_release": "private-sector-study-1.51.0",
   "generated_at": "2026-09-07T00:01:00+00:00",
-  "queue_status": "corrective_model_a_in_progress",
+  "queue_status": "corrective_model_a_worktree_setup_pending",
   "ranking_method": "Descending covered contribution-account category count, then descending sourced economic-record count, then ascending project_id.",
   "worker_research_contract": {
     "version": "2.0.0",
@@ -18,11 +18,12 @@
     "completion_rule": "A worker commit is a handoff candidate; only an independently audited handoff may be reconciled or published."
   },
   "corrective_model_eligibility_queue": {
-    "status": "corrective_model_a_in_progress",
+    "status": "corrective_model_a_worktree_setup_pending",
     "reason": "These published projects are marked account_research_complete but analytically incomplete and have zero modeled syntheses. Each requires a dedicated last-resort, candidate-by-candidate modeling audit under worker-research-contract 2.0.0; a model may be retained only when defensible, and every rejection must be documented rather than asserted as a blanket conclusion.",
     "batches": [
       {
         "batch": "corrective_model_a",
+        "setup_state": "pending",
         "project_ids": [
           "prj_study_im3_building_01024051963",
           "prj_study_im3_building_00598261190",
