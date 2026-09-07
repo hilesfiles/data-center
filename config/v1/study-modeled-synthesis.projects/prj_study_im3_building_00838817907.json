@@ -1,0 +1,445 @@
+{
+  "schema_version": "1.0.0",
+  "project_id": "prj_study_im3_building_00838817907",
+  "reviewed_on": "2026-09-07",
+  "scope_note": "Corrective metric-specific synthesis for TierPoint Charlotte Center Park (CL4). Two independent staffing-equivalent sensitivities translate facility-specific continuous NOC and security coverage statements into the FTE capacity needed to cover one simultaneous post; neither is an observed employee count, the functions are not summed, and employer, overlap, shift, absence, residence and payroll remain unknown. A separate opening-configuration electricity sensitivity annualizes the directly reported 1.215 MW usable UPS capacity across utilization and PUE scenarios while checking the source-reported 3,000 kVA service capacity under power-factor assumptions. It is a theoretical nameplate envelope, not metered use, a true-value bound or an economic contribution. No model is created from 530 tons of cooling because electrical demand would require unobserved COP, part-load, redundancy and operating-hour inputs, and no model is created from generator counts, unit ratings, runtime or fuel storage because emergency standby nameplates do not measure annual operation.",
+  "sources": [],
+  "estimates": [
+    {
+      "estimate_id": "est_study_tierpoint_cl4_minimum_noc_coverage_fte_2014",
+      "project_id": "prj_study_im3_building_00838817907",
+      "metric_code": "study.modeled_minimum_continuous_coverage_fte",
+      "label": "Minimum staffing-equivalent capacity for one continuously covered NOC post",
+      "category": "operations",
+      "unit": "FTE",
+      "measure_type": "stock",
+      "basis": "modeled_synthesis",
+      "value": 4.8432692308,
+      "period": {
+        "kind": "source_year",
+        "year": 2014,
+        "label": "Annualized staffing-equivalent sensitivity anchored to the March 2014 opening statement"
+      },
+      "scope": {
+        "level": "facility",
+        "label": "One simultaneous onsite NOC coverage post at Windstream Charlotte Four / TierPoint CL4",
+        "county_fips": "37119",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": 4.2115384615,
+        "central": 4.8432692308,
+        "high": 5.475,
+        "interpretation": "Low, central and high apply 0%, 15% and 30% relief factors to the theoretical 8,760 annual coverage hours divided by 2,080 paid hours per FTE. This is the staffing capacity for one simultaneous post, not an observed employee-count interval."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "tierpoint_cl4_noc_continuous_coverage_2014",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "continuous_coverage_hours",
+          "value": 8760,
+          "unit": "hours_per_year",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_windstream_charlotte_four_opening_2014",
+            "detail": "The opening release says the onsite NOC was fully staffed 24 x 7 x 365"
+          },
+          "transformation": "Annual hours requiring coverage by at least one assumed simultaneous post"
+        },
+        {
+          "name": "paid_hours_per_fte",
+          "value": 2080,
+          "unit": "hours_per_FTE_year",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Forty paid hours per week for 52 weeks before relief coverage"
+          },
+          "transformation": "Divides annual coverage hours into theoretical FTE capacity"
+        },
+        {
+          "name": "low_relief_factor",
+          "value": 1,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "No vacation, holiday, illness, training, turnover or schedule-overlap allowance"
+          },
+          "transformation": "Low endpoint and strict mathematical floor"
+        },
+        {
+          "name": "central_relief_factor",
+          "value": 1.15,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Fifteen percent allowance for leave, absence, training and shift overlap"
+          },
+          "transformation": "Central endpoint"
+        },
+        {
+          "name": "high_relief_factor",
+          "value": 1.3,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Thirty percent allowance for leave, absence, training, turnover and shift overlap"
+          },
+          "transformation": "High sensitivity endpoint"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "Continuous facility-specific NOC coverage is directly stated, but one simultaneous post, paid hours and all relief factors are assumptions; actual staffing could be materially higher and could include remote or contracted support.",
+      "decision_relevance": "Provides a reproducible minimum staffing-capacity scale for a continuously occupied operating function without inventing actual CL4 headcount or payroll.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "not_found",
+        "remaining_evidence_gap": "Simultaneous NOC posts by shift, filled employee and contractor headcount, employer, paid hours, leave and absence coverage, annual-average FTE, occupations, wages, payroll and residence"
+      },
+      "derivation": {
+        "method": "engineering_estimate",
+        "model_version": "tierpoint-cl4-account-1.1.0",
+        "formula": "8,760 continuous coverage hours ÷ 2,080 paid hours per FTE × relief factor",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_windstream_charlotte_four_opening_2014"
+        ],
+        "assumptions": [
+          "The phrase fully staffed 24 x 7 x 365 implies at least one simultaneous onsite NOC coverage post.",
+          "One FTE supplies 2,080 paid hours before relief coverage.",
+          "Relief factors of 1.00, 1.15 and 1.30 bracket scheduling, leave and absence sensitivity."
+        ]
+      },
+      "limitations": [
+        "The source does not report an employee count or number of simultaneous NOC posts.",
+        "The model is a staffing-equivalent requirement, not proof that the positions were filled by distinct employees or Mecklenburg residents.",
+        "No wage or payroll is inferred.",
+        "The separate current security sensitivity is not added because staffing overlap and contracting are unresolved."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Minimum one-post coverage sensitivity only; not a reported job, FTE, payroll or causal contribution.",
+      "reviewed_on": "2026-09-07"
+    },
+    {
+      "estimate_id": "est_study_tierpoint_cl4_minimum_security_coverage_fte_2026",
+      "project_id": "prj_study_im3_building_00838817907",
+      "metric_code": "study.modeled_minimum_continuous_coverage_fte",
+      "label": "Minimum staffing-equivalent capacity for one continuously covered onsite security post",
+      "category": "operations",
+      "unit": "FTE",
+      "measure_type": "stock",
+      "basis": "modeled_synthesis",
+      "value": 4.8432692308,
+      "period": {
+        "kind": "source_year",
+        "year": 2026,
+        "label": "Annualized staffing-equivalent sensitivity from the current facility-specific 24x7 onsite-security statement"
+      },
+      "scope": {
+        "level": "facility",
+        "label": "One simultaneous onsite security coverage post at TierPoint CL4",
+        "county_fips": "37119",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": 4.2115384615,
+        "central": 4.8432692308,
+        "high": 5.475,
+        "interpretation": "Low, central and high apply 0%, 15% and 30% relief factors to the theoretical 8,760 annual coverage hours divided by 2,080 paid hours per FTE. This is the staffing capacity for one simultaneous security post, not an observed employee-count interval."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "tierpoint_cl4_security_continuous_coverage_2026",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "continuous_coverage_hours",
+          "value": 8760,
+          "unit": "hours_per_year",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_tierpoint_cl4_current_2026",
+            "detail": "The CL4 facility page states 24x7 onsite security personnel"
+          },
+          "transformation": "Annual hours requiring coverage by at least one assumed simultaneous post"
+        },
+        {
+          "name": "paid_hours_per_fte",
+          "value": 2080,
+          "unit": "hours_per_FTE_year",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Forty paid hours per week for 52 weeks before relief coverage"
+          },
+          "transformation": "Divides annual coverage hours into theoretical FTE capacity"
+        },
+        {
+          "name": "low_relief_factor",
+          "value": 1,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "No vacation, holiday, illness, training, turnover or schedule-overlap allowance"
+          },
+          "transformation": "Low endpoint and strict mathematical floor"
+        },
+        {
+          "name": "central_relief_factor",
+          "value": 1.15,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Fifteen percent allowance for leave, absence, training and shift overlap"
+          },
+          "transformation": "Central endpoint"
+        },
+        {
+          "name": "high_relief_factor",
+          "value": 1.3,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Thirty percent allowance for leave, absence, training, turnover and shift overlap"
+          },
+          "transformation": "High sensitivity endpoint"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The facility-specific page directly states 24x7 onsite security personnel, but one simultaneous post, employment arrangement, paid hours and relief factors are assumptions.",
+      "decision_relevance": "Makes the minimum labor capacity implied by continuous onsite security explicit while keeping security separate from NOC staffing and from observed TierPoint employment.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "not_found",
+        "remaining_evidence_gap": "Simultaneous security posts, guard contractor or employer, filled headcount, paid hours, relief coverage, annual-average FTE, wages, payroll, residence and possible overlap with other onsite roles"
+      },
+      "derivation": {
+        "method": "engineering_estimate",
+        "model_version": "tierpoint-cl4-account-1.1.0",
+        "formula": "8,760 continuous coverage hours ÷ 2,080 paid hours per FTE × relief factor",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_tierpoint_cl4_current_2026"
+        ],
+        "assumptions": [
+          "The facility-specific phrase 24x7 onsite security personnel implies at least one simultaneous onsite security coverage post.",
+          "One FTE supplies 2,080 paid hours before relief coverage.",
+          "Relief factors of 1.00, 1.15 and 1.30 bracket scheduling, leave and absence sensitivity."
+        ]
+      },
+      "limitations": [
+        "The source does not report the number of simultaneous guards, employer or filled employees.",
+        "The model is a staffing-equivalent requirement, not a TierPoint employee count, local-resident job count or payroll measure.",
+        "No wage or payroll is inferred.",
+        "It is not added to the NOC sensitivity because role overlap and contracting are unresolved."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Separate one-post security coverage sensitivity only; not summed with NOC staffing and not reported as observed employment.",
+      "reviewed_on": "2026-09-07"
+    },
+    {
+      "estimate_id": "est_study_tierpoint_cl4_opening_electricity_sensitivity_2014",
+      "project_id": "prj_study_im3_building_00838817907",
+      "metric_code": "study.modeled_facility_electricity_consumption",
+      "label": "Opening-configuration theoretical annual electricity sensitivity",
+      "category": "resources",
+      "unit": "kWh_per_year",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 7450380,
+      "period": {
+        "kind": "source_year",
+        "year": 2014,
+        "label": "Full-year theoretical sensitivity using the March 2014 opening configuration; not calendar-2014 use"
+      },
+      "scope": {
+        "level": "facility",
+        "label": "Windstream Charlotte Four / TierPoint CL4 opening-day 1.215 MW usable UPS configuration",
+        "county_fips": "37119",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": 3193020,
+        "central": 7450380,
+        "high": 12772080,
+        "interpretation": "Low, central and high pair 25%, 50% and 75% IT-load utilization with PUE 1.2, 1.4 and 1.6. Each endpoint is checked against the 3,000 kVA service capacity at assumed power factors of 0.8, 0.9 and 1.0; the service ceiling does not bind. This is not actual use or a true-value bound."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "tierpoint_cl4_opening_electricity_sensitivity_2014",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "usable_ups_capacity",
+          "value": 1.215,
+          "unit": "MW",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_tierpoint_cl4_opening_usable_ups_2014",
+            "detail": "Opening-day usable UPS capacity"
+          },
+          "transformation": "Converted to kW and multiplied by hours, utilization and PUE"
+        },
+        {
+          "name": "utility_service_capacity",
+          "value": 3000,
+          "unit": "kVA",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_windstream_charlotte_four_opening_2014",
+            "detail": "Opening release's first-day utility capacity"
+          },
+          "transformation": "Converted to an assumed real-power ceiling using each power-factor scenario"
+        },
+        {
+          "name": "annual_hours",
+          "value": 8760,
+          "unit": "hours_per_year",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Non-leap full-year theoretical annualization"
+          },
+          "transformation": "Annualizes modeled facility power"
+        },
+        {
+          "name": "low_it_utilization",
+          "value": 0.25,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Low occupied IT-load scenario"
+          },
+          "transformation": "Low endpoint"
+        },
+        {
+          "name": "central_it_utilization",
+          "value": 0.5,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Central occupied IT-load scenario"
+          },
+          "transformation": "Central endpoint"
+        },
+        {
+          "name": "high_it_utilization",
+          "value": 0.75,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "High occupied IT-load scenario"
+          },
+          "transformation": "High endpoint"
+        },
+        {
+          "name": "low_pue",
+          "value": 1.2,
+          "unit": "PUE_ratio",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Low facility-overhead sensitivity"
+          },
+          "transformation": "Low endpoint"
+        },
+        {
+          "name": "central_pue",
+          "value": 1.4,
+          "unit": "PUE_ratio",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_lbnl_dc_energy_2024",
+            "detail": "LBNL 2023 average PUE benchmark"
+          },
+          "transformation": "Central endpoint"
+        },
+        {
+          "name": "high_pue",
+          "value": 1.6,
+          "unit": "PUE_ratio",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_lbnl_dc_energy_2024",
+            "detail": "LBNL 2014 average PUE benchmark used as high sensitivity"
+          },
+          "transformation": "High endpoint"
+        },
+        {
+          "name": "low_power_factor",
+          "value": 0.8,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Low real-power conversion sensitivity for the 3,000 kVA service rating"
+          },
+          "transformation": "Low service-capacity ceiling check"
+        },
+        {
+          "name": "central_power_factor",
+          "value": 0.9,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Central real-power conversion sensitivity for the 3,000 kVA service rating"
+          },
+          "transformation": "Central service-capacity ceiling check"
+        },
+        {
+          "name": "high_power_factor",
+          "value": 1,
+          "unit": "ratio",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Unity power-factor ceiling for the 3,000 kVA service rating"
+          },
+          "transformation": "High service-capacity ceiling check"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "UPS and utility-service nameplates are facility-specific, but utilization, PUE, power factor, redundancy, occupancy and operating hours are not observed and dominate the sensitivity.",
+      "decision_relevance": "Provides a reproducible scale envelope for the opening electrical configuration after direct meter and bill searches were exhausted, while preventing nameplate capacity from being presented as observed consumption.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Interval-metered electricity, utility bills, coincident peak, occupied IT load, facility PUE, power factor, transformer/feed redundancy, renewable procurement, rate impacts and calendar-2014 operating duration"
+      },
+      "derivation": {
+        "method": "engineering_estimate",
+        "model_version": "tierpoint-cl4-account-1.1.0",
+        "formula": "min(1.215 MW usable UPS × IT utilization × PUE, 3,000 kVA utility service × power factor ÷ 1,000) × 1,000 kW/MW × 8,760 hours",
+        "input_claim_ids": [
+          "clm_study_tierpoint_cl4_opening_usable_ups_2014"
+        ],
+        "input_source_ids": [
+          "src_study_windstream_charlotte_four_opening_2014",
+          "src_study_lbnl_dc_energy_2024"
+        ],
+        "assumptions": [
+          "IT utilization scenarios are 25%, 50% and 75% of usable UPS capacity.",
+          "PUE scenarios are 1.2, 1.4 and 1.6.",
+          "Power-factor scenarios are 0.8, 0.9 and 1.0 for the 3,000 kVA service-capacity check.",
+          "The model annualizes 8,760 hours and is not a claim about partial calendar-year 2014 operation."
+        ]
+      },
+      "limitations": [
+        "No meter, bill, utilization, site PUE or power factor is public.",
+        "The interval is a scenario envelope, not a true lower or upper bound on use.",
+        "The March opening means this is not calendar-2014 consumption.",
+        "The 3,000 kVA service rating is nonbinding in all displayed scenarios and its feed/redundancy definition is not reported.",
+        "The 530-ton cooling nameplate is not converted to electricity because COP, part-load, redundancy and operating hours are unobserved.",
+        "No electricity cost, emissions, water use or economic output is inferred."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Opening-configuration engineering sensitivity only; not actual annual consumption, utility demand or a contribution-account total.",
+      "reviewed_on": "2026-09-07"
+    }
+  ]
+}

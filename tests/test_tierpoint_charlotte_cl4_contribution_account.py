@@ -17,6 +17,7 @@ class TierPointCharlotteCl4ContributionAccountTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.fragment = json.loads(FRAGMENT.read_text(encoding="utf-8"))
+        cls.synthesis_fragment = json.loads(SYNTHESIS_FRAGMENT.read_text(encoding="utf-8"))
         cls.config = read(CONFIG)
         cls.evidence = load_evidence()
         cls.synthesis = load_synthesis()
@@ -42,18 +43,37 @@ class TierPointCharlotteCl4ContributionAccountTest(unittest.TestCase):
         self.assertTrue(all(row["project_id"] == PROJECT_ID for row in self.fragment["records"]))
         self.assertTrue(all(row["project_id"] == PROJECT_ID for row in self.fragment["project_updates"]))
         validate_evidence(self.evidence, self.config["candidates"])
-        self.assertEqual(len(self.fragment["records"]), 40)
+        self.assertEqual(len(self.fragment["records"]), 45)
         self.assertTrue(all(row["basis"] == "reported_actual" for row in self.fragment["records"]))
-        self.assertFalse(SYNTHESIS_FRAGMENT.exists())
-        self.assertEqual(self.project["economic_record_count"], 82)
-        self.assertEqual((self.project["reported_actual_count"], self.project["projection_count"]), (82, 0))
-        self.assertEqual(self.project["modeled_synthesis_count"], 0)
+        self.assertEqual(self.synthesis_fragment["project_id"], PROJECT_ID)
+        self.assertEqual(len(self.synthesis_fragment["estimates"]), 3)
+        self.assertTrue(all(row["project_id"] == PROJECT_ID for row in self.synthesis_fragment["estimates"]))
+        self.assertEqual(self.project["economic_record_count"], 87)
+        self.assertEqual((self.project["reported_actual_count"], self.project["projection_count"]), (87, 0))
+        self.assertEqual(self.project["modeled_synthesis_count"], 3)
 
     def test_building_records_preserve_timing_and_measure_boundaries(self):
         records = {row["claim_id"]: row for row in self.fragment["records"]}
         self.assertEqual(records["clm_study_tierpoint_cl4_opening_floor_area_2014"]["value"], 39_300)
+        self.assertEqual(records["clm_study_tierpoint_cl4_opening_raised_floor_area_2014"]["value"], 10_380)
         self.assertEqual(records["clm_study_tierpoint_cl4_opening_usable_ups_2014"]["value"], 1.215)
         self.assertEqual(records["clm_study_tierpoint_cl4_landlord_floor_area_2020"]["value"], 60_850)
+        self.assertEqual(
+            (
+                records["clm_study_tierpoint_cl4_current_total_floor_area_2026"]["value"],
+                records["clm_study_tierpoint_cl4_current_total_floor_area_2026"]["value_qualifier"],
+            ),
+            (60_000, "at_least"),
+        )
+        self.assertEqual(
+            (
+                records["clm_study_tierpoint_cl4_current_raised_floor_area_2026"]["value"],
+                records["clm_study_tierpoint_cl4_current_raised_floor_area_2026"]["value_qualifier"],
+            ),
+            (20_000, "at_least"),
+        )
+        self.assertEqual(records["clm_study_tierpoint_cl4_spec_total_floor_area_2024"]["value"], 60_000)
+        self.assertEqual(records["clm_study_tierpoint_cl4_spec_production_floor_area_2024"]["value_qualifier"], "at_least")
         permit = records["clm_study_tierpoint_cl4_permitted_construction_value_2021"]
         self.assertEqual(permit["value"], 2_580_200)
         self.assertIn("administrative", permit["notes"])
@@ -87,6 +107,9 @@ class TierPointCharlotteCl4ContributionAccountTest(unittest.TestCase):
         self.assertEqual((employment[2012], employment[2023]), (1_744, 3_505))
         self.assertEqual((payroll[2012], payroll[2023]), (132_728_000, 313_468_000))
         self.assertTrue(all("not CL4" in row["notes"] or "not a project contribution" in row["notes"] for row in county))
+        operations_gap = next(row for row in self.project["evidence_gaps"] if row["code"] == "operations")
+        self.assertEqual(operations_gap["status"], "partial")
+        self.assertIn("cannot establish CL4 employment", self.fragment["scope_note"])
 
     def test_description_and_all_evidence_families_are_auditable(self):
         descriptions = [row["project_description"] for row in self.fragment["project_updates"] if "project_description" in row]
@@ -114,6 +137,8 @@ class TierPointCharlotteCl4ContributionAccountTest(unittest.TestCase):
         self.assertTrue(all(row["as_of"] == "2026-09-07" for row in updates))
         self.assertTrue(all("Source families checked:" in row["notes"] for row in updates[:8]))
         source_ids = {row["source_id"] for row in self.fragment["sources"]}
+        self.assertEqual(len(source_ids), 36)
+        self.assertEqual(len([source_id for source_id in source_ids if not source_id.startswith("src_study_census_cbp_")]), 24)
         self.assertTrue(
             {
                 "src_study_windstream_charlotte_four_opening_2014",
@@ -129,7 +154,7 @@ class TierPointCharlotteCl4ContributionAccountTest(unittest.TestCase):
             }.issubset(source_ids)
         )
 
-    def test_exclusions_and_model_rejections_are_explicit(self):
+    def test_exclusions_models_and_remaining_rejections_are_explicit(self):
         notes = " ".join(row["notes"] for row in self.fragment["project_updates"])
         for excluded in (
             "$14.399 million",
@@ -138,7 +163,7 @@ class TierPointCharlotteCl4ContributionAccountTest(unittest.TestCase):
             "$297,000",
             "$575 million",
             "wrong jurisdiction",
-            "two versus four generators",
+            "four-versus-two",
         ):
             self.assertIn(excluded, notes)
         model_notes = self.fragment["project_updates"][-1]["notes"]
@@ -146,16 +171,41 @@ class TierPointCharlotteCl4ContributionAccountTest(unittest.TestCase):
             "Investment",
             "Construction",
             "Suppliers",
-            "Operations",
             "Fiscal",
             "Public costs",
-            "Resources",
             "Community",
             "County employment and wages",
             "County GDP",
         ):
             self.assertIn(f"{candidate}: rejected", model_notes)
-        self.assertIn("Modeled additions: zero", model_notes)
+        self.assertIn("Modeled additions: three", model_notes)
+        estimates = {row["estimate_id"]: row for row in self.synthesis_fragment["estimates"]}
+        self.assertEqual(
+            estimates["est_study_tierpoint_cl4_minimum_noc_coverage_fte_2014"]["interval"],
+            {
+                "kind": "sensitivity_envelope",
+                "low": 4.2115384615,
+                "central": 4.8432692308,
+                "high": 5.475,
+                "interpretation": "Low, central and high apply 0%, 15% and 30% relief factors to the theoretical 8,760 annual coverage hours divided by 2,080 paid hours per FTE. This is the staffing capacity for one simultaneous post, not an observed employee-count interval.",
+            },
+        )
+        self.assertIn(
+            "not added",
+            " ".join(estimates["est_study_tierpoint_cl4_minimum_security_coverage_fte_2026"]["limitations"]),
+        )
+        energy = estimates["est_study_tierpoint_cl4_opening_electricity_sensitivity_2014"]
+        self.assertEqual((energy["interval"]["low"], energy["value"], energy["interval"]["high"]), (3_193_020, 7_450_380, 12_772_080))
+        self.assertIn("not actual annual consumption", energy["notes"])
+        resource_notes = next(row["notes"] for row in self.fragment["project_updates"] if row["title"] == "Resource audit")
+        self.assertIn("530 refrigeration tons x 12,000 Btu/hour", resource_notes)
+        for proposed in (
+            "study.operating_utility_service_capacity_kva",
+            "study.operating_cooling_capacity_tons",
+            "study.installed_emergency_generator_count",
+            "study.emergency_fuel_storage_capacity_gallons",
+        ):
+            self.assertIn(proposed, self.fragment["scope_note"])
         self.assertEqual(
             self.project["model_completeness"]["missing_categories"],
             ["community", "investment", "public_costs", "suppliers"],

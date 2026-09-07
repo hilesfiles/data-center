@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "project_id": "prj_study_im3_building_00838817907",
   "reviewed_on": "2026-09-07",
-  "scope_note": "Two-pass contribution-account audit for TierPoint Charlotte Center Park (CL4), the tenant-operated data-center building at 1805 Center Park Drive on Mecklenburg County parcel 14106108. Direct additions comprise four building-level observations\u2014opening floor area and usable UPS capacity, a 2020 landlord floor-area snapshot, and a finaled 2021 permit value\u2014plus 36 county-context observations from annual County Business Patterns files for NAICS 518210 in 2012-2023. Existing base evidence supplies the exact-parcel assessed-value and tax-bill/payment series for 2013-2026; those rows are not duplicated in this append-only fragment. Plans, appraisals, property and portfolio transactions, expired/withdrawn/in-progress permits, generic tax exemptions, nameplate resource specifications, county industry and macroeconomic changes, and unmatched or wrong-jurisdiction results are not recast as project contributions. No synthesis fragment is added because metric-specific review found no defensible model for original investment, construction labor, suppliers, CL4 employment/payroll/revenue, personal-property or tenant tax incidence, incentives/public costs, metered resources/emissions, community transfers or causal county outcomes.",
+  "scope_note": "Two-pass contribution-account audit for TierPoint Charlotte Center Park (CL4), the tenant-operated data-center building at 1805 Center Park Drive on Mecklenburg County parcel 14106108. This fragment retains nine building-level observations: opening total and raised-floor area, opening usable UPS capacity, 2020 landlord NLA, 2021 finaled permit value, and current/2024 operator whole-building and raised-floor/production-space measures. It also retains 36 county-context observations from twelve annual County Business Patterns files for NAICS 518210 in 2012-2023; those rows are explicitly county-industry context and cannot establish CL4 employment, payroll or project-level operations completeness. The 36-source total comprises 24 non-CBP substantive sources and twelve annual CBP files. Existing base evidence supplies 42 exact-parcel assessment and tax-bill/payment records for 2013-2026 and is not duplicated in this append-only fragment. Direct nameplates lacking governed evidence metrics remain structured in source notes: 3,000 kVA opening utility capacity, 530 tons opening cooling, current four-generator/48-hour statements, and the 2024 two-generator, 2.25 MW-per-unit, 8,000-gallon and two-transformer statements. Narrow proposed metrics are study.operating_utility_service_capacity_kva, study.operating_cooling_capacity_tons, study.installed_emergency_generator_count, study.emergency_generator_unit_capacity, study.emergency_fuel_storage_capacity_gallons and study.minimum_emergency_runtime_hours; global metric definitions are outside this project worker's scope. Plans, appraisals, transactions, expired/withdrawn/in-progress permits, generic exemptions and unmatched records are not recast as contributions. A separate synthesis fragment retains only minimum one-post continuous-coverage and theoretical opening-electricity sensitivities; original investment, construction labor, suppliers, observed CL4 employment/payroll, personal-property/tenant tax incidence, public costs, metered resources/emissions, community transfers and causal county outcomes remain unresolved.",
   "sources": [
     {
       "source_id": "src_study_tierpoint_cl4_current_2026",
@@ -15,7 +15,7 @@
       },
       "retrieved_on": "2026-09-07",
       "review_method": "web_page",
-      "notes": "Current operator page identifies CL4 at 1805 Center Park Drive and reports more than 60,000 total square feet and more than 20,000 square feet of raised floor. It separately lists Charlotte-North Myers and Raleigh facilities, which are outside this building boundary. The page reports four 2.25 MW redundant generators, while TierPoint's 2024 CL4 sheet reports two; the unresolved count is not encoded."
+      "notes": "Current operator page identifies CL4 at 1805 Center Park Drive and reports more than 60,000 total square feet, more than 20,000 square feet of raised floor, four 2.25 MW redundant generators, minimum 48-hour runtime and 24x7 onsite security personnel. It separately lists Charlotte-North Myers and Raleigh facilities, which are outside this building boundary. The floor areas are encoded with their qualified scopes. Generator count, per-unit capacity and runtime lack non-permit governed evidence metrics and remain direct source facts rather than being forced into the permit-generator or facility-IT-capacity metrics; the four-unit count also conflicts with TierPoint's 2024 CL4 sheet reporting two."
     },
     {
       "source_id": "src_study_tierpoint_cl4_spec_2024",
@@ -29,7 +29,7 @@
       },
       "retrieved_on": "2026-09-07",
       "review_method": "web_pdf_text",
-      "notes": "Official specification identifies CL4 and the exact address, reports 60,000 total square feet and more than 20,000 square feet of gross production space, and describes two redundant 2,250 kW generators, two 3,000 kVA pad transformers and an 8,000-gallon fuel tank. These are nameplate or footprint specifications, not metered use, runtime, investment, cost or emissions; the generator count conflicts with the current web page."
+      "notes": "Official specification identifies CL4 and the exact address, reports 60,000 total square feet, more than 20,000 square feet of gross production space, two redundant 2,250 kW generators, an 8,000-gallon fuel tank, two 3,000 kVA pad transformers and 24x7 onsite support. The floor areas are encoded separately. Generator count/unit capacity, fuel storage and transformer capacity lack matching governed direct-evidence metrics and remain structured source facts, not metered use, runtime, investment, cost or emissions; the two-unit count conflicts with the current web page's four."
     },
     {
       "source_id": "src_study_windstream_charlotte_four_opening_2014",
@@ -43,7 +43,7 @@
       },
       "retrieved_on": "2026-09-07",
       "review_method": "web_pdf_text",
-      "notes": "Contemporaneous opening release reports 39,300 total square feet, 10,380 square feet of raised floor, 3,000 kVA first-day utility capacity, 1,215 kW of usable first-day UPS capacity and a fully staffed 24/7 network operations center. It describes 60,800 total square feet, more than 20,500 square feet of raised floor and larger utility, UPS and cooling figures only as phased expansion capability, not completed opening-day facts. It provides no investment, employee count, payroll, residence or resource-use total."
+      "notes": "Contemporaneous opening release reports 39,300 total square feet, 10,380 square feet of raised floor, 3,000 kVA first-day utility capacity, 1,215 kW of usable first-day UPS capacity, 530 tons of first-day cooling and an onsite network operations center fully staffed 24 x 7 x 365. Whole-building, raised-floor and UPS observations are encoded separately. Utility kVA and cooling tons lack matching governed direct-evidence metrics and remain structured source facts; the NOC statement anchors a minimum one-post staffing-equivalent sensitivity, not an observed employee count. The release's 60,800 total square feet, more than 20,500 square feet of raised floor, more than 12 MVA utility, more than 3,600 kW UPS and 1,350 tons cooling are phased expansion capabilities, not opening-day facts. It provides no investment, headcount, payroll, residence or measured resource-use total."
     },
     {
       "source_id": "src_study_sfr_cl4_groundbreaking_2013",
@@ -548,6 +548,132 @@
       "reviewed_on": "2026-09-07",
       "pdf_page": 2,
       "printed_page": "2"
+    },
+    {
+      "claim_id": "clm_study_tierpoint_cl4_opening_raised_floor_area_2014",
+      "project_id": "prj_study_im3_building_00838817907",
+      "metric_code": "study.operating_property_floor_area",
+      "value": 10380,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "reported_snapshot",
+        "report_date": "2014-03-03",
+        "label": "Opening-day raised-floor area"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Raised-floor subarea of Windstream Charlotte Four / TierPoint CL4 at opening",
+        "county_fips": "37119",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_windstream_charlotte_four_opening_2014",
+      "source_locator": "PDF page 2, opening configuration paragraph, raised-floor space",
+      "notes": "Opening-day raised-floor subarea, not whole-building area, later production-space area, occupied space or construction spending. It must not be added to the 39,300-square-foot whole-facility observation because it is contained within it.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07",
+      "pdf_page": 2,
+      "printed_page": "2"
+    },
+    {
+      "claim_id": "clm_study_tierpoint_cl4_current_total_floor_area_2026",
+      "project_id": "prj_study_im3_building_00838817907",
+      "metric_code": "study.operating_property_floor_area",
+      "value": 60000,
+      "value_qualifier": "at_least",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "reported_snapshot",
+        "report_date": "2026-09-07",
+        "label": "Current operator page retrieved September 7, 2026"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Total facility area of TierPoint CL4 at 1805 Center Park Drive",
+        "county_fips": "37119",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_tierpoint_cl4_current_2026",
+      "source_locator": "Facility overview, Space: 60,000+ total square feet",
+      "notes": "Operator-reported current lower bound for whole-facility area. It is distinct from the page's raised-floor subarea and from landlord/assessor area definitions; the qualified lower bound is not silently converted to 60,000 exact.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07"
+    },
+    {
+      "claim_id": "clm_study_tierpoint_cl4_current_raised_floor_area_2026",
+      "project_id": "prj_study_im3_building_00838817907",
+      "metric_code": "study.operating_property_floor_area",
+      "value": 20000,
+      "value_qualifier": "at_least",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "reported_snapshot",
+        "report_date": "2026-09-07",
+        "label": "Current operator page retrieved September 7, 2026"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Raised-floor subarea of TierPoint CL4 at 1805 Center Park Drive",
+        "county_fips": "37119",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_tierpoint_cl4_current_2026",
+      "source_locator": "Facility overview, Space: 20,000+ raised floor square feet",
+      "notes": "Operator-reported current lower bound for raised-floor space. It is a subarea contained within total facility area and must not be added to the 60,000+ whole-facility observation or treated as occupied space.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07"
+    },
+    {
+      "claim_id": "clm_study_tierpoint_cl4_spec_total_floor_area_2024",
+      "project_id": "prj_study_im3_building_00838817907",
+      "metric_code": "study.operating_property_floor_area",
+      "value": 60000,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "source_year",
+        "year": 2024,
+        "label": "2024 operator specification sheet"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Total facility area of TierPoint CL4 in the 2024 specification",
+        "county_fips": "37119",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_tierpoint_cl4_spec_2024",
+      "source_locator": "PDF page 1, Facility Specifications, Space",
+      "notes": "Operator specification's whole-facility area. It remains separate from the same sheet's gross production-space subarea, the current web page's qualified 60,000+ figure, the 60,850-square-foot landlord NLA and the 60,246-square-foot assessor finished area.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07",
+      "pdf_page": 1,
+      "printed_page": "1"
+    },
+    {
+      "claim_id": "clm_study_tierpoint_cl4_spec_production_floor_area_2024",
+      "project_id": "prj_study_im3_building_00838817907",
+      "metric_code": "study.operating_property_floor_area",
+      "value": 20000,
+      "value_qualifier": "at_least",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "source_year",
+        "year": 2024,
+        "label": "2024 operator specification sheet"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Gross production-space subarea of TierPoint CL4 in the 2024 specification",
+        "county_fips": "37119",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_tierpoint_cl4_spec_2024",
+      "source_locator": "PDF page 1, Facility Specifications, Space",
+      "notes": "Operator-reported lower bound for gross production space. The specification does not establish that production space is definitionally identical to the current page's raised-floor area; both remain separate subarea observations and neither is added to whole-building area.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07",
+      "pdf_page": 1,
+      "printed_page": "1"
     },
     {
       "claim_id": "clm_study_tierpoint_cl4_landlord_floor_area_2020",
@@ -1528,7 +1654,7 @@
       "source_id": "src_study_tierpoint_careers_2026",
       "as_of": "2026-09-07",
       "title": "Operations audit",
-      "notes": "Source families checked: current/predecessor operator pages, opening materials, careers, workforce, occupation, residence, training, apprenticeship, County Business Patterns and federal/state filings; exact queries TierPoint CL4/Charlotte Center Park, Windstream Charlotte Four, 1805 Center Park, NOC, employee, jobs, payroll, technician and Charlotte over 2012-2026. The opening release says the NOC was fully staffed 24/7 but gives no count; current careers pages describe role types only. No realized CL4 headcount, annual-average FTE, wage, payroll, occupation mix, employee residence, training or apprenticeship amount was found. County NAICS 518210 establishments, March employment and payroll are retained solely as noisy county context and are not allocated to CL4."
+      "notes": "Source families checked: current/predecessor operator pages, opening materials, careers, workforce, occupation, residence, training, apprenticeship, County Business Patterns and federal/state filings; exact queries TierPoint CL4/Charlotte Center Park, Windstream Charlotte Four, 1805 Center Park, NOC, security, employee, jobs, payroll, technician and Charlotte over 2012-2026. The opening release says the onsite NOC was fully staffed 24 x 7 x 365, and the current CL4 page separately states 24x7 onsite security personnel; neither gives simultaneous posts, filled headcount, employer or payroll. Corrective synthesis evaluates each function independently as one-post staffing capacity: 8,760 hours / 2,080 paid hours per FTE x relief factor 1.00/1.15/1.30 = 4.21/4.84/5.48 FTE. The two sensitivities are not summed because role overlap and security contracting are unresolved, and neither is reported as observed employment. County NAICS 518210 establishments, March employment and payroll are 36 county-context rows from twelve CBP files, not CL4 inputs. Builder operations coverage therefore remains only 'partial' from physical/county context and must not be read as a complete project employment or payroll account."
     },
     {
       "project_id": "prj_study_im3_building_00838817907",
@@ -1549,7 +1675,7 @@
       "source_id": "src_study_ncuc_cl4_docket_search_2026",
       "as_of": "2026-09-07",
       "title": "Resource audit",
-      "notes": "Source families checked: Duke electric-service references in permits; NCUC electric/gas tariff, docket, interconnection, transmission and substation records; Charlotte Water, wastewater, reclaimed-water and public-infrastructure sources; operator specifications. Exact searches TierPoint, Windstream Hosted Solutions, CL4, 1805 Center Park, parcel 14106108 and 2012-2026. Useful result: opening-day 1.215 MW usable UPS capacity and 3,000 kVA utility capacity; later permits name Duke Energy. No metered electricity, peak demand, bill, gas, water, wastewater, discharge, PUE/WUE, CIAC, substation/transmission cost or infrastructure allocation was found. Current TierPoint sources conflict on two versus four generators, and nameplate specifications are not consumption; no annual resource or emissions model is created."
+      "notes": "Source families checked: Duke electric-service references in permits; NCUC electric/gas tariff, docket, interconnection, transmission and substation records; Charlotte Water, wastewater, reclaimed-water and public-infrastructure sources; operator specifications. Exact searches TierPoint, Windstream Hosted Solutions, CL4, 1805 Center Park, parcel 14106108 and 2012-2026. Direct opening facts are 1.215 MW usable UPS, 3,000 kVA utility service and 530 tons cooling; current/specification facts include conflicting four-versus-two 2.25 MW generators, minimum 48-hour runtime, 8,000 gallons fuel and two 3,000 kVA transformers. Corrective electricity synthesis uses min(1.215 MW x utilization x PUE, 3,000 kVA x power factor / 1,000) x 1,000 x 8,760 with utilization 25/50/75%, PUE 1.2/1.4/1.6 and power factor 0.8/0.9/1.0, producing 3.193/7.450/12.772 million kWh theoretical annual scenarios; the utility ceiling does not bind. It is not actual use or a true bound. Cooling candidate equation 530 refrigeration tons x 12,000 Btu/hour = 6.36 million Btu/hour thermal was rejected as an electricity model because COP, part-load, redundancy and hours are absent. Generator nameplates were rejected as annual-energy inputs because emergency runtime/load are absent. No meter, bill, gas, water, wastewater, discharge, PUE/WUE, CIAC or infrastructure allocation was found."
     },
     {
       "project_id": "prj_study_im3_building_00838817907",
@@ -1570,21 +1696,21 @@
       "source_id": "src_study_mecklenburg_air_permit_database_2026",
       "as_of": "2026-09-07",
       "title": "Corrective permit, environmental, utility and infrastructure gap closure",
-      "notes": "Second pass used both legacy and current permit systems, exact record IDs, contractor/entity variations, Mecklenburg Air Quality's live PLC database, NC DEQ's state tracker, NCUC dockets and Charlotte Water/public-infrastructure access points. Local-air queries '1805 Center Park Drive', 'TierPoint', 'Windstream' and 'Gannett' returned zero PLC records; NC DEQ explicitly excludes Mecklenburg local-air permits and may remove closed applications. No initial conversion permit, air authorization, generator-emissions record, stormwater/NPDES record, meter, utility agreement, tariff rider or funded public infrastructure was found. These database limitations prevent absence claims and make resource-use and environmental models ineligible."
+      "notes": "Second pass used both legacy and current permit systems, exact record IDs, contractor/entity variations, Mecklenburg Air Quality's live PLC database, NC DEQ's state tracker, NCUC dockets and Charlotte Water/public-infrastructure access points. Local-air queries '1805 Center Park Drive', 'TierPoint', 'Windstream' and 'Gannett' returned zero PLC records; NC DEQ explicitly excludes Mecklenburg local-air permits and may remove closed applications. No initial conversion permit, air authorization, generator-emissions record, stormwater/NPDES record, meter, utility agreement, tariff rider or funded public infrastructure was found. These limits prevent absence claims. A low-confidence UPS/service engineering sensitivity is retained only because it is decision-relevant scale context and explicitly labeled theoretical; cooling, generator operation, water, emissions and utility-cost synthesis remain ineligible."
     },
     {
       "project_id": "prj_study_im3_building_00838817907",
       "source_id": "src_study_census_cbp_mecklenburg_518210_2023",
       "as_of": "2026-09-07",
       "title": "Corrective workforce, supplier, community and structured-data gap closure",
-      "notes": "Second pass searched operator careers and community pages, permit contractor fields, developer/contractor cases, procurement/vendor sources, recipient-side references, SEC filings and official 2012-2023 Census County Business Patterns bulk files. The Census API required a key, so each annual county ZIP row for state 37, county 119, NAICS 518210 was inspected; noise flags and NAICS-version breaks are retained. The sources still provide no CL4 employee/payroll/residence record, construction workforce, contractor/subcontractor payment, local spend, recipient-confirmed community transfer or operating revenue/cost. County industry context cannot close project-level gaps."
+      "notes": "Second pass searched operator careers and community pages, permit contractor fields, developer/contractor cases, procurement/vendor sources, recipient-side references, SEC filings and official 2012-2023 Census County Business Patterns bulk files. The Census API required a key, so each annual county ZIP row for state 37, county 119, NAICS 518210 was inspected; noise flags and NAICS-version breaks are retained. Source count is 36 total: 24 non-CBP substantive sources plus twelve annual CBP files. The 36 CBP records are assigned to the project only as a consistent host-county industry-context panel and cannot satisfy CL4 headcount, payroll, resident-employment or causal-outcome gaps. The sources still provide no observed CL4 employee/payroll/residence record, construction workforce, contractor/subcontractor payment, local spend, recipient-confirmed community transfer or operating revenue/cost."
     },
     {
       "project_id": "prj_study_im3_building_00838817907",
       "source_id": "src_study_county_economic_core_2001_2024",
       "as_of": "2026-09-07",
       "title": "Independent candidate-by-candidate modeling and county-outcome decision",
-      "notes": "Model eligibility review after gap closure \u2014 Investment: rejected because sales, appraisals and portfolio prices are not productive project cost. Construction: rejected because one 2021 permit value cannot produce labor, timing or opening-phase spend. Suppliers: rejected for missing paid/local shares. Operations: rejected for missing CL4 headcount, payroll, revenue and occupancy. Fiscal: rejected beyond direct parcel bills/payments because tenant incidence and personal property are unresolved. Public costs: rejected for no award, expenditure or marginal service input. Resources: rejected for no meter/utilization/PUE/water input and conflicting generator counts. Community: rejected for no recipient-confirmed amount. County employment and wages: rejected despite mechanical post-2014 gaps of 9.54% and 8.23% because multiple local facilities, a 2013 building conversion, later expansions, donor contamination and no CL4 workforce bridge defeat attribution. County GDP: rejected; the mechanical 53.11% gap had 55.55% pre-period RMSE and an interval spanning -57.98% to 164.20%. Descriptively, 2013-2024 Mecklenburg GDP, employment and nominal weekly wage rose 49.44%, 34.45% and 50.98%, respectively, without attribution. Modeled additions: zero; no synthesis fragment is created."
+      "notes": "Model eligibility review after gap closure \u2014 Investment: rejected because sales, appraisals and portfolio prices are not productive project cost. Construction: rejected because one 2021 permit value cannot produce labor, timing or opening-phase spend. Suppliers: rejected for missing paid/local shares. Operations observed headcount/payroll: unresolved, but two low-confidence one-post coverage sensitivities are retained separately because facility-specific 24x7 NOC and onsite-security statements make the scheduling calculation decision-relevant; neither is observed employment and they are not summed. Fiscal: rejected beyond direct parcel bills/payments because tenant incidence and personal property are unresolved. Public costs: rejected for no award, expenditure or marginal service input. Resources actual use: unresolved, but one low-confidence UPS/service annual-energy sensitivity is retained as theoretical scale context; cooling, generators, water, emissions and cost models are rejected for missing operating inputs. Community: rejected for no recipient-confirmed amount. County employment and wages: rejected despite mechanical post-2014 gaps of 9.54% and 8.23% because multiple local facilities, a 2013 building conversion, later expansions, donor contamination and no CL4 workforce bridge defeat attribution. County GDP: rejected; the mechanical 53.11% gap had 55.55% pre-period RMSE and an interval spanning -57.98% to 164.20%. Descriptively, 2013-2024 Mecklenburg GDP, employment and nominal weekly wage rose 49.44%, 34.45% and 50.98%, respectively, without attribution. Modeled additions: three; all remain standalone, low-confidence, modeled-not-observed syntheses."
     }
   ]
 }
