@@ -1,8 +1,8 @@
 {
   "schema_version": "1.0.0",
-  "study_release": "private-sector-study-1.55.0",
-  "generated_at": "2026-09-07T15:24:00Z",
-  "queue_status": "batch_8_active",
+  "study_release": "private-sector-study-1.56.0",
+  "generated_at": "2026-09-07T16:40:32Z",
+  "queue_status": "batch_8_reconciled_validation",
   "ranking_method": "Descending covered contribution-account category count, then descending sourced economic-record count, then ascending project_id.",
   "worker_research_contract": {
     "version": "2.0.0",
@@ -1241,14 +1241,18 @@
       "client_task_id": "client-new-thread:1488b3d9-2420-4cdc-8c11-76f97b248301",
       "worker_task_id": "01a07c66-150d-7880-98c3-772bace6765b",
       "worker_branch": "detached-worktree-814c",
-      "worker_commit_sha": null,
-      "status": "active",
-      "source_record_additions": 0,
-      "forecast_additions": 0,
+      "worker_commit_sha": "c876a38",
+      "status": "accepted_reconciled_validation",
+      "source_record_additions": 30,
+      "forecast_additions": 4,
       "modeled_record_additions": 0,
-      "validation_result": null,
+      "validation_result": "Accepted after independent audit of the 30-source scoped fragment, exact building/campus boundary, candidate-by-candidate model rejections, one compliant description, and 10 passing scoped tests. The worker corrected a three-versus-four projection count discrepancy in c876a38 before acceptance.",
       "integration_commit": null,
-      "remaining_unresolved_analytical_limits": []
+      "remaining_unresolved_analytical_limits": [
+        "Campuswide investment, employment, electricity, taxes, incentives and permits cannot be allocated to the selected IM3 building without an unsupported share.",
+        "Supplier spending, community transfers, payroll and worker residence, parcel tax payments, Town incentive payments, utility bills, water volumes, and complete financing/construction ledgers remain unavailable.",
+        "All residual model candidates were rejected rather than filled with arbitrary building shares, transferred coefficients, or unsupported causal effects."
+      ]
     },
     {
       "queue_position": 23,
@@ -1284,14 +1288,18 @@
       "client_task_id": "client-new-thread:ee44c4fe-44e8-427d-8d27-2ec34cf0dba5",
       "worker_task_id": "01a07c66-2b41-7b90-8682-d32fdf61b2a1",
       "worker_branch": "detached-worktree-433e",
-      "worker_commit_sha": null,
-      "status": "active",
-      "source_record_additions": 0,
+      "worker_commit_sha": "7ef53ec6ed68b97ae4046b8e90b1b336289a7199",
+      "status": "accepted_reconciled_validation",
+      "source_record_additions": 11,
       "forecast_additions": 0,
-      "modeled_record_additions": 0,
-      "validation_result": null,
+      "modeled_record_additions": 7,
+      "validation_result": "Accepted only after rejecting the 19-source zero-model first pass and completing directed third-pass remediation. Independent audit verified 23 retained sources, 18 combined direct records, seven bounded models, one compliant description, clean building/customer/later-expansion boundaries, exact parcel-tax and resource arithmetic, seven scoped tests, and all 98 contribution-account tests.",
       "integration_commit": null,
-      "remaining_unresolved_analytical_limits": []
+      "remaining_unresolved_analytical_limits": [
+        "Parcel tax and water accounts remain unallocated between the original building, shared infrastructure, and later development; payer incidence and recipient cash timing are unresolved.",
+        "The 28 MW electricity, rolling water, and 24x7 coverage values are explicitly modeled sensitivities or conversions, not observed building use or onsite employment.",
+        "Selected-building investment, construction payroll, supplier payments, community transfers, actual public costs, and causal county outcomes remain unavailable."
+      ]
     },
     {
       "queue_position": 24,
@@ -1327,14 +1335,18 @@
       "client_task_id": "client-new-thread:a385b0cf-b96e-4f07-93cd-d5c39bc21302",
       "worker_task_id": "01a07c66-3e55-74b1-beb7-7ef972ff24d5",
       "worker_branch": "detached-worktree-59ec",
-      "worker_commit_sha": null,
-      "status": "active",
-      "source_record_additions": 0,
-      "forecast_additions": 0,
-      "modeled_record_additions": 0,
-      "validation_result": null,
+      "worker_commit_sha": "99aab13",
+      "status": "accepted_reconciled_validation",
+      "source_record_additions": 4,
+      "forecast_additions": 1,
+      "modeled_record_additions": 2,
+      "validation_result": "Accepted only after rejecting the 11-source zero-model first pass and completing directed third-pass remediation. Independent audit verified the parcel and personal-property separation, four-predecessor lineage, full 2018 subsidy-report review, resolution of the ambiguous contractor-page value, two low-confidence bounded models, one compliant description, six scoped tests, and all 51 private-sector study tests.",
       "integration_commit": null,
-      "remaining_unresolved_analytical_limits": []
+      "remaining_unresolved_analytical_limits": [
+        "The mixed-use property and separate personal-property accounts cannot be allocated to Quicken/Rocket's partial tenancy or data-center function, and bills, payments, exemptions, and same-scope fiscal costs remain unavailable.",
+        "The electricity and electrician-payroll values are low-confidence sensitivities, not metered consumption or certified payroll, and they exclude tenant allocation, other trades, benefits, overtime, and worker residence.",
+        "Investment, supplier payments, community transfers, operating staffing, water, emissions, and causal county outcomes remain unresolved."
+      ]
     },
     {
       "queue_position": 25,

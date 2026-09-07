@@ -112,10 +112,10 @@ try {
   await page.goto(`${url}#/project/prj_study_im3_building_00116005354`);
   await openDetails(".evidence-ledger");
   await page.getByRole("heading", { name: "Economic evidence", exact: true }).waitFor();
-  assert.equal(await page.locator(".history-bar-row").count(), 13);
+  assert.equal(await page.locator(".history-bar-row").count(), 23);
   assert.equal(await page.locator(".history-bar-row.uncollected").count(), 5);
-  assert.equal(await page.locator(".economic-record").count(), 8);
-  assert.match(await page.locator(".economic-history").innerText(), /\$1,476,648,949/);
+  assert.equal(await page.locator(".economic-record").count(), 34);
+  assert.match(await page.locator(".economic-history").first().innerText(), /\$1,476,648,949/);
   await page.locator(".economic-record summary").first().click();
   assert.match(await page.locator(".economic-record").first().innerText(), /tax-base stock, not tax receipts/);
   assert.match(await page.locator(".economic-record details a").first().getAttribute("href"), /#page=242$/);
@@ -124,7 +124,7 @@ try {
   await page.screenshot({ path: path.join(out, "economic-history-desktop.png") });
   await page.setViewportSize({ width: 390, height: 844 });
   await noOverflow();
-  await page.locator(".economic-history").screenshot({ path: path.join(out, "economic-history-mobile.png") });
+  await page.locator(".economic-history").first().screenshot({ path: path.join(out, "economic-history-mobile.png") });
   check("tax-base history shows missing years, county scope and page-level sources on desktop/mobile");
 
   await page.setViewportSize({ width: 1440, height: 1000 });
@@ -669,17 +669,17 @@ try {
   await page.goto(`${url}#/project/prj_study_im3_building_00472761713`);
   await openDetails(".evidence-ledger");
   await page.getByRole("heading", { name: "Economic evidence", exact: true }).waitFor();
-  assert.equal(await page.locator(".economic-record").count(), 7);
-  assert.equal(await page.locator(".tax-billing-history tbody tr").count(), 4);
-  assert.match(await page.locator(".tax-billing-history tbody tr").first().innerText(), /2022[\s\S]*\$102,000,000[\s\S]*\$2,011,440/);
-  assert.match(await page.locator(".tax-billing-history tbody tr").last().innerText(), /2025[\s\S]*\$102,000,000[\s\S]*Not collected/);
+  assert.equal(await page.locator(".economic-record").count(), 18);
+  assert.equal(await page.locator(".tax-billing-history tbody tr").count(), 15);
+  assert.match(await page.locator(".tax-billing-history tbody tr").first().innerText(), /2011[\s\S]*\$100,000,000[\s\S]*Not collected/);
+  assert.match(await page.locator(".tax-billing-history tbody tr").last().innerText(), /2025[\s\S]*\$102,000,000[\s\S]*\$2,169,540[\s\S]*\$2,169,540/);
   await page.locator(".economic-accounts .research-details summary").click();
   assert.match(await page.locator(".economic-accounts .research-details").innerText(), /Structured data and published layout checked/);
   assert.match(await page.locator(".project-research-update").allInnerTexts().then(rows => rows.join(" ")), /Township record links NYSE to the assessed parcel/);
   await page.setViewportSize({ width: 390, height: 844 });
   await noOverflow();
   await page.locator(".tax-billing-history").screenshot({ path: path.join(out, "nyse-mahwah-tax-history-mobile.png") });
-  check("NYSE parcel assessments and prior-year tax charges remain distinct with 2025 tax uncollected");
+  check("NYSE parcel assessments, billed charges and verified 2024-2025 payments remain distinct");
   await page.setViewportSize({ width: 1440, height: 1000 });
   await page.goto(`${url}#/project/prj_study_im3_building_00598261190`);
   await openDetails(".evidence-ledger");
@@ -801,12 +801,19 @@ try {
   await page.goto(`${url}#/project/prj_study_im3_building_00903236619`);
   await openDetails(".evidence-ledger");
   await page.getByRole("heading", { name: "Quicken Loans Technology Center, Corktown", exact: true }).waitFor();
-  await page.locator(".account-count").getByText("4 sourced records · partial coverage", { exact: true }).waitFor();
-  assert.equal(await page.locator(".economic-record").count(), 4);
+  await page.locator(".account-count").getByText("8 sourced records · 2 modeled syntheses", { exact: true }).waitFor();
+  assert.equal(await page.locator(".economic-record").count(), 7);
   assert.equal(await page.locator(".economic-history").count(), 2);
   assert.match(await page.locator(".economic-history").nth(0).innerText(), /CY2025[\s\S]*\$3,298,400[\s\S]*CY2026[\s\S]*\$3,643,800/);
   assert.match(await page.locator(".economic-history").nth(1).innerText(), /CY2025[\s\S]*\$2,679,332[\s\S]*CY2026[\s\S]*\$2,813,298/);
   assert.match((await page.locator(".project-research-update").allInnerTexts()).join("\n"), /whole-parcel stocks[\s\S]*partial-building tenancy[\s\S]*zero-water cooling claim remains unmetered/i);
+  await page.getByRole("tab", { name: /Plans & forecasts/ }).click();
+  assert.equal(await page.locator(".economic-record").count(), 1);
+  assert.match(await page.locator(".economic-record-list").innerText(), /\$24,044\.58/);
+  await page.getByRole("tab", { name: /Modeled synthesis/ }).click();
+  assert.equal(await page.locator(".modeled-record").count(), 2);
+  assert.match(await page.locator(".modeled-record-list").innerText(), /Whole-facility annual electricity-throughput sensitivity[\s\S]*Electrician-only construction wage-payroll sensitivity/);
+  await page.getByRole("tab", { name: /Reported activity/ }).click();
   await page.setViewportSize({ width: 390, height: 844 });
   await noOverflow();
   await page.locator(".economic-accounts").screenshot({ path: path.join(out, "quicken-corktown-evidence-mobile.png") });
@@ -846,7 +853,7 @@ try {
     sidebar: getComputedStyle(document.querySelector(".sidebar")).backgroundColor,
     map: getComputedStyle(document.querySelector(".map-section")).backgroundColor,
   })), { sidebar: "rgb(11, 14, 20)", map: "rgb(16, 23, 27)" });
-  assert.match(await page.locator(".review-key").innerText(), /completed project audits \(24\)/i);
+  assert.match(await page.locator(".review-key").innerText(), /completed project audits \(27\)/i);
   assert.doesNotMatch(await page.locator(".legend").innerText(), /IM3|pending|merged|queued/i);
   await page.getByLabel("Research-complete project markers").selectOption("Colocation");
   assert.match(await page.locator(".review-key").innerText(), /completed project audits \(11\)/i);
@@ -860,7 +867,7 @@ try {
   const response = await page.request.get(`${url}data/v1/study/index.json`);
   const study = await response.json();
   assert.equal(study.projects.length, 36);
-  assert.equal(study.projects.filter(p => p.research_completion_status === "account_research_complete").length, 24);
+  assert.equal(study.projects.filter(p => p.research_completion_status === "account_research_complete").length, 27);
   assert.equal(study.projects.filter(p => p.model_completeness.status === "full_modeled_account").length, 0);
   const descriptionPage = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
   for (const completed of study.projects.filter(project => project.research_completion_status === "account_research_complete")) {
@@ -875,7 +882,7 @@ try {
     ), `${completed.name} must render the project description before the study rationale`);
   }
   await descriptionPage.close();
-  check("all twenty-four completed project pages render one description above the study rationale");
+  check("all twenty-seven completed project pages render one description above the study rationale");
   const target = study.projects.find(p => p.name === "Apple Mesa");
   const canvas = await page.locator("canvas").boundingBox();
   const world = 512 * 2 ** 3.25;
@@ -912,7 +919,7 @@ try {
   await page.mouse.click(targetX, targetY);
   await page.waitForURL(`**/project/${target.project_id}`);
   await page.getByRole("heading", { name: "Sources & research history" }).waitFor();
-  check("map preserves all twenty-four completed project audits while keeping analytical completeness separate");
+  check("map preserves all twenty-seven completed project audits while keeping analytical completeness separate");
 
   const legacyPage = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
   await legacyPage.route("**/data/v1/study/index.json?*", async route => {
@@ -921,8 +928,8 @@ try {
     await route.fulfill({ json: legacyStudy });
   });
   await legacyPage.goto(`${url}#/map`, { waitUntil: "domcontentloaded" });
-  await legacyPage.getByText("20 completed project research accounts are mapped.", { exact: false }).waitFor();
-  assert.match(await legacyPage.locator(".review-key").innerText(), /completed project audits \(20\)/i);
+  await legacyPage.getByText("22 completed project research accounts are mapped.", { exact: false }).waitFor();
+  assert.match(await legacyPage.locator(".review-key").innerText(), /completed project audits \(22\)/i);
   await legacyPage.close();
   check("map remains populated when a browser holds an index without the research-completion field");
 

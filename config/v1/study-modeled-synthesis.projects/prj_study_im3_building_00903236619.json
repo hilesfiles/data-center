@@ -1,0 +1,87 @@
+{
+  "schema_version": "1.0.0",
+  "project_id": "prj_study_im3_building_00903236619",
+  "reviewed_on": "2026-09-07",
+  "scope_note": "Third-pass modeled contribution review retains two low-confidence, last-resort sensitivities after direct-source exhaustion. The first converts the contractor-reported 1.4 MW whole-facility redundant available-power nameplate into annual electricity throughput at 25%, 50% and 100% utilization, with the high endpoint explicitly treated as a mathematical ceiling. It does not apply PUE because the source does not distinguish utility-input, critical IT or redundant-path capacity. The second combines the trade-reported approximately 70 electricians, the 234-day groundbreaking-to-report interval and BLS's near-period Detroit-area mean electrician wage into a 25%, 50% and 100% worker-duration wage-payroll sensitivity. It is limited to the reported electrician subset and excludes benefits, overtime, other trades and residence effects. No operating staffing, investment, supplier, community, fiscal/public-cost, emissions, water or county-effect model passes: no source requires continuous on-site coverage; the MCE $4.8 million field is undefined and postdates a site redesign; separate real and personal accounts lack bills and payments; the recovered City subsidy report omits this project; and no site-linked operating, recipient or counterfactual inputs exist.",
+  "sources": [
+    {
+      "source_id": "src_study_bls_detroit_electrician_wages_2016",
+      "title": "Detroit-Warren-Dearborn, MI — May 2016 OES Metropolitan and Nonmetropolitan Area Occupational Employment and Wage Estimates",
+      "url": "https://www.bls.gov/oes/2016/may/oes_19820.htm",
+      "publisher": "U.S. Bureau of Labor Statistics",
+      "source_type": "other",
+      "publication_date": {"precision": "year", "year": 2016},
+      "retrieved_on": "2026-09-07",
+      "review_method": "web_page",
+      "notes": "The official area table reports 10,210 electricians (SOC 47-2111), a $32.05 median hourly wage, a $29.16 mean hourly wage and a $60,650 annual mean wage for May 2016. The model uses the mean hourly wage as a near-period area benchmark, not as a project wage, union scale, prevailing wage or certified-payroll observation."
+    }
+  ],
+  "estimates": [
+    {
+      "estimate_id": "est_study_quicken_corktown_facility_electricity_sensitivity_2015",
+      "project_id": "prj_study_im3_building_00903236619",
+      "metric_code": "study.modeled_facility_electricity_consumption",
+      "label": "Whole-facility annual electricity-throughput sensitivity",
+      "category": "resources",
+      "unit": "kWh_per_year",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 6132000,
+      "period": {"kind": "source_year", "year": 2015, "label": "Annualized engineering sensitivity from the completed-facility 1.4 MW available-power nameplate"},
+      "scope": {"level": "campus", "label": "Whole Quicken Loans Technology Center at 1401 Rosa Parks Boulevard; no tenant or server-room allocation", "county_fips": "26163", "inventory_allocation": "unallocated"},
+      "interval": {"kind": "sensitivity_envelope", "low": 3066000, "central": 6132000, "high": 12264000, "interpretation": "The reported 1.4 MW available-power nameplate is annualized at 25%, 50% and 100% utilization. The high endpoint is the mathematical continuous-load ceiling for that nameplate, not a forecast, true-value bound or confidence interval."},
+      "contribution_channel": "not_applicable",
+      "aggregation": {"aggregation_id": "quicken_corktown_facility_electricity_sensitivity_2015", "role": "standalone", "overlap_policy": "do_not_sum_outside_declared_total"},
+      "parameters": [
+        {"name": "reported_available_power", "value": 1.4, "unit": "MW", "provenance": {"kind": "claim", "reference_id": "clm_study_quicken_technology_center_power_capacity_2015", "detail": "Electrical-contractor description of completed-facility redundant available power"}, "transformation": "Converted to kW and multiplied by annual hours and utilization"},
+        {"name": "annual_hours", "value": 8760, "unit": "hours_per_year", "provenance": {"kind": "assumption", "detail": "Non-leap-year annualization"}, "transformation": "Annualizes the power nameplate"},
+        {"name": "low_nameplate_utilization", "value": 0.25, "unit": "ratio", "provenance": {"kind": "assumption", "detail": "Low order-of-magnitude throughput scenario"}, "transformation": "Produces the low endpoint"},
+        {"name": "central_nameplate_utilization", "value": 0.5, "unit": "ratio", "provenance": {"kind": "assumption", "detail": "Central order-of-magnitude throughput scenario"}, "transformation": "Produces the central estimate"},
+        {"name": "ceiling_nameplate_utilization", "value": 1, "unit": "ratio", "provenance": {"kind": "assumption", "detail": "Continuous full-nameplate mathematical ceiling"}, "transformation": "Produces the high endpoint"}
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The 1.4 MW figure is project specific, but the source does not define its meter boundary, distinguish utility-input from IT load, or report utilization. Metered electricity, occupancy, peak demand and site PUE remain unavailable.",
+      "decision_relevance": "Provides an explicit order-of-magnitude annual throughput range and theoretical ceiling without relabeling capacity as measured consumption or extending it to cost or emissions.",
+      "evidence_search": {"direct_observation_status": "partial", "source_projection_status": "not_found", "remaining_evidence_gap": "Utility meter data, bills, peak demand, capacity boundary, occupied IT load, site PUE, tenant allocation, electricity price, renewable share and emissions"},
+      "derivation": {"method": "engineering_estimate", "model_version": "quicken-corktown-account-1.1.0", "formula": "1.4 MW × 1,000 kW/MW × 8,760 hours × nameplate-utilization scenario", "input_claim_ids": ["clm_study_quicken_technology_center_power_capacity_2015"], "input_source_ids": ["src_study_motor_city_electric_quicken_data_centers_2026"], "assumptions": ["The reported 1.4 MW is used once; redundant paths or generators are not added.", "Utilization scenarios are 25%, 50% and 100% solely for sensitivity.", "No PUE multiplier is applied because the capacity boundary is undefined.", "The result remains whole-facility and is not allocated by lease share, floor area or server-room count."]},
+      "limitations": ["No meter reading, utility bill or observed load factor.", "The source's available-power terminology may not equal utility-input or critical IT capacity.", "The interval is a scenario range, not a statistical or physical bound below the stated ceiling.", "No electricity cost, emissions, output or fiscal effect is inferred."],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Resource-use sensitivity only. The direct 1.4 MW capacity claim remains the authoritative observation; this model is not an economic contribution and must not be added to monetary records.",
+      "reviewed_on": "2026-09-07"
+    },
+    {
+      "estimate_id": "est_study_quicken_corktown_electrician_payroll_2015",
+      "project_id": "prj_study_im3_building_00903236619",
+      "metric_code": "study.modeled_construction_labor_income_direct",
+      "label": "Electrician-only construction wage-payroll sensitivity",
+      "category": "construction",
+      "unit": "USD",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 1364688,
+      "period": {"kind": "construction_period", "start_date": "2014-05-20", "end_date": "2015-01-09", "label": "Documented groundbreaking-to-trade-report interval; individual worker duration is parameterized"},
+      "scope": {"level": "campus", "label": "Approximately 70 IBEW Local 58 electricians reported on the Quicken Loans Technology Center project", "county_fips": "26163", "inventory_allocation": "unallocated"},
+      "interval": {"kind": "sensitivity_envelope", "low": 682344, "central": 1364688, "high": 2729376, "interpretation": "Seventy electricians are valued at the BLS $29.16 Detroit-area mean hourly wage, 40 hours per week and 25%, 50% or 100% of the 234-day elapsed construction interval. This is a worker-duration sensitivity, not observed payroll, a true-value bound or a confidence interval."},
+      "contribution_channel": "direct",
+      "aggregation": {"aggregation_id": "quicken_corktown_electrician_wage_payroll_sensitivity_2014_2015", "role": "standalone", "overlap_policy": "do_not_sum_outside_declared_total"},
+      "parameters": [
+        {"name": "reported_electricians", "value": 70, "unit": "workers", "provenance": {"kind": "claim", "reference_id": "clm_study_quicken_technology_center_electricians_2015", "detail": "Approximately 70 electricians reported employed on the project since groundbreaking"}, "transformation": "Multiplied by weekly hours, elapsed weeks, area mean wage and duration share"},
+        {"name": "elapsed_construction_interval", "value": 33.4285714286, "unit": "weeks", "provenance": {"kind": "source", "reference_id": "src_study_quicken_technology_center_construction_2014", "detail": "234 calendar days from May 20, 2014 groundbreaking through January 9, 2015 trade report"}, "transformation": "Sets the maximum modeled elapsed duration"},
+        {"name": "area_mean_electrician_wage", "value": 29.16, "unit": "USD_per_hour", "provenance": {"kind": "source", "reference_id": "src_study_bls_detroit_electrician_wages_2016", "detail": "May 2016 Detroit-Warren-Dearborn mean hourly wage for SOC 47-2111 electricians"}, "transformation": "Applied as a near-period wage benchmark"},
+        {"name": "weekly_paid_hours", "value": 40, "unit": "hours_per_worker_week", "provenance": {"kind": "assumption", "detail": "Straight-time full-week benchmark; overtime is excluded"}, "transformation": "Converts worker-weeks to wage payroll"},
+        {"name": "low_worker_duration_share", "value": 0.25, "unit": "ratio", "provenance": {"kind": "assumption", "detail": "Each reported electrician averages one quarter of the elapsed interval"}, "transformation": "Produces the low endpoint"},
+        {"name": "central_worker_duration_share", "value": 0.5, "unit": "ratio", "provenance": {"kind": "assumption", "detail": "Each reported electrician averages one half of the elapsed interval"}, "transformation": "Produces the central estimate"},
+        {"name": "high_worker_duration_share", "value": 1, "unit": "ratio", "provenance": {"kind": "assumption", "detail": "All reported electricians work the full elapsed interval"}, "transformation": "Produces the high scenario"}
+      ],
+      "confidence": "low",
+      "confidence_rationale": "Worker count and project dates are source anchored, but the count is approximate, actual worker start/stop dates and hours are absent, and the BLS area mean is from May 2016 rather than project payroll.",
+      "decision_relevance": "Bounds the only construction trade with a project-specific worker count while keeping wage payroll separate from total labor income, total construction employment, supplier spend and household effects.",
+      "evidence_search": {"direct_observation_status": "partial", "source_projection_status": "not_found", "remaining_evidence_gap": "Certified payroll, individual hours and duration, 2014-2015 union wage classifications, overtime, benefits, other trades, worker residence and total construction labor"},
+      "derivation": {"method": "sensitivity_analysis", "model_version": "quicken-corktown-account-1.1.0", "formula": "70 electricians × 40 hours/week × (234 days ÷ 7) × $29.16/hour × worker-duration share", "input_claim_ids": ["clm_study_quicken_technology_center_electricians_2015"], "input_source_ids": ["src_study_michigan_building_trades_quicken_2015", "src_study_quicken_technology_center_construction_2014", "src_study_bls_detroit_electrician_wages_2016"], "assumptions": ["The approximate 70-person count is used without scaling to other trades.", "Each worker averages 25%, 50% or 100% of the 234-day elapsed interval.", "A 40-hour straight-time week is used; overtime is excluded.", "The May 2016 BLS area mean is a near-period wage benchmark, not a claimed Local 58 or project wage."]},
+      "limitations": ["Not observed or certified payroll.", "BLS wage timing and occupation mix may differ from project classifications.", "No benefits, overtime, payroll taxes, proprietor income or other trades are included.", "No worker-residence or local-household capture is inferred.", "The high endpoint assumes full-interval duration for every reported electrician and is not an empirical upper bound."],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Electrician wage-payroll sensitivity only. Do not present as total construction labor income, total payroll, job-years, local payroll or an additive component of the undefined $4.8 million contractor-page value.",
+      "reviewed_on": "2026-09-07"
+    }
+  ]
+}

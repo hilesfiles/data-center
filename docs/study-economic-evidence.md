@@ -1,6 +1,6 @@
 # Economic evidence acquisition and review
 
-Reviewed 7 September 2026. Application study release `private-sector-study-1.55.0` publishes 1,046 source records (940 reported and 106 source projections) and separately publishes 116 modeled syntheses. Twenty-four projects have completed scoped research audits and are map-eligible. No account passes the separate full contribution-account gate under `study-modeling-policy-1.3.0`; audited accounts remain intentionally incomplete where persistent public-source review cannot defensibly bound material gaps.
+Reviewed 7 September 2026. Application study release `private-sector-study-1.56.0` publishes 1,091 source records (980 reported and 111 source projections) and separately publishes 125 modeled syntheses. Twenty-seven projects have completed scoped research audits and are map-eligible. No account passes the separate full contribution-account gate under `study-modeling-policy-1.3.0`; audited accounts remain intentionally incomplete where persistent public-source review cannot defensibly bound material gaps.
 
 ## Modeled synthesis boundary
 
