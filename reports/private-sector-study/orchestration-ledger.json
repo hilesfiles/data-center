@@ -1,8 +1,8 @@
 {
   "schema_version": "1.0.0",
   "study_release": "private-sector-study-1.55.0",
-  "generated_at": "2026-09-07T14:56:32Z",
-  "queue_status": "batch_7_reconciled_pending_publication",
+  "generated_at": "2026-09-07T15:01:00Z",
+  "queue_status": "batch_7_published_batch_8_ready",
   "ranking_method": "Descending covered contribution-account category count, then descending sourced economic-record count, then ascending project_id.",
   "worker_research_contract": {
     "version": "2.0.0",
@@ -16,6 +16,25 @@
     ],
     "modeling_gate": "metric_specific_search_exhaustion_required",
     "completion_rule": "A worker commit is a handoff candidate; only an independently audited handoff may be reconciled or published."
+  },
+  "latest_publication": {
+    "batch": 7,
+    "release_id": "private-sector-study-1.55.0",
+    "commit": "cc4ef25ead516bcd18a39aff35c7af44373a76d2",
+    "remote_branch": "origin/main",
+    "reconciled_counts": {
+      "economic_records": 1046,
+      "reported_actual_records": 940,
+      "source_forecast_records": 106,
+      "modeled_synthesis_records": 116,
+      "full_modeled_county_accounts": 0,
+      "research_complete_projects": 24
+    },
+    "validation_result": "Passed 151 repository tests, the complete 65-schema data-contract validation, TypeScript compilation, the production build, the complete browser suite, desktop and mobile completed-project inspection, all 24 completed-project description/order checks, map population, direct project and county navigation, legacy-index fallback, and preview-process shutdown.",
+    "validate_and_build_run": "https://github.com/hilesfiles/data-center/actions/runs/34135912535",
+    "pages_deploy_run": "https://github.com/hilesfiles/data-center/actions/runs/34135912527",
+    "live_manifest": "https://hilesfiles.github.io/data-center/data/v1/study/manifest.json",
+    "verified_at": "2026-09-07T15:01:00Z"
   },
   "corrective_model_eligibility_queue": {
     "status": "foundational_full_account_reaudit_published",
