@@ -160,7 +160,7 @@ class ApplePrinevilleContributionAccountTest(unittest.TestCase):
         self.assertEqual(len(self.model_fragment["estimates"]), 5)
         rows = {row["estimate_id"]: row for row in self.model_fragment["estimates"]}
 
-        threshold = rows["est_study_apple_prineville_account_19494_service_cost_break_even_2025"]
+        threshold = rows["est_study_apple_prineville_acct19494_service_break_even_2025"]
         self.assertEqual(threshold["value"], 31_334.07)
         self.assertIn("not an estimate of actual public-service cost", threshold["interval"]["interpretation"])
 
@@ -184,7 +184,7 @@ class ApplePrinevilleContributionAccountTest(unittest.TestCase):
         self.assertAlmostEqual(average_load["value"], 267_000_000 / 8_760 / 1_000)
         self.assertIn("not peak demand", average_load["interval"]["interpretation"])
 
-        emissions = rows["est_study_apple_prineville_location_based_electricity_emissions_fy2025"]
+        emissions = rows["est_study_apple_prineville_location_electric_emissions_fy2025"]
         self.assertAlmostEqual(emissions["interval"]["low"], 267_000 * 365 / 2_204.62262185)
         self.assertAlmostEqual(emissions["value"], 267_000 * 635.267 / 2_204.62262185)
         self.assertIn("100 percent renewable", json.dumps(emissions))
