@@ -203,8 +203,8 @@ try {
   await openDetails(".evidence-ledger");
   await page.getByRole("heading", { name: "Economic evidence", exact: true }).waitFor();
   assert.match(await page.locator(".economic-record-list").innerText(), /2023 source table/);
-  assert.match(await page.locator(".record-value").innerText(), /\$10,375,490/);
-  assert.equal(await page.locator(".history-bar-row").count(), 0);
+  assert.match(await page.locator(".record-value").first().innerText(), /\$10,375,490/);
+  assert.equal(await page.locator(".history-bar-row").count(), 24);
   await noOverflow();
   await page.setViewportSize({ width: 1440, height: 1000 });
   check("county source-year value remains distinct from a fiscal-year series");
@@ -411,15 +411,16 @@ try {
   await page.goto(`${url}#/project/prj_study_im3_campus_00578435601`);
   await openDetails(".evidence-ledger");
   await page.getByRole("heading", { name: "Economic evidence", exact: true }).waitFor();
-  await page.locator(".economic-history").getByText("$53,736,860 ↗", { exact: true }).waitFor();
-  assert.equal(await page.locator(".history-bar-row").count(), 4);
-  assert.match(await page.locator(".economic-history").innerText(), /Calendar years/);
-  assert.match(await page.locator(".history-bar-row").nth(2).innerText(), /CY2024[\s\S]*\$53,736,860/);
-  const widths = await page.locator(".history-bar-track > div").evaluateAll(nodes => nodes.map(n => parseFloat(n.style.width)));
-  assert(widths[2] < widths[1] && widths[3] > widths[2]);
+  const googleTaxBase = page.locator(".economic-history").filter({ hasText: "$53,736,860" }).first();
+  await googleTaxBase.getByText("$53,736,860 ↗", { exact: true }).waitFor();
+  assert.equal(await googleTaxBase.locator(".history-bar-row").count(), 7);
+  assert.match(await googleTaxBase.innerText(), /Calendar years/);
+  assert.match(await googleTaxBase.locator(".history-bar-row").nth(5).innerText(), /CY2024[\s\S]*\$53,736,860/);
+  const widths = await googleTaxBase.locator(".history-bar-track > div").evaluateAll(nodes => nodes.map(n => parseFloat(n.style.width)));
+  assert(widths[5] < widths[4] && widths[6] > widths[5]);
   await page.setViewportSize({ width: 390, height: 844 });
   await noOverflow();
-  await page.locator(".economic-history").screenshot({ path: path.join(out, "calendar-tax-base-mobile.png") });
+  await googleTaxBase.screenshot({ path: path.join(out, "calendar-tax-base-mobile.png") });
   check("calendar-year assessed values preserve the reported decline and later increase");
 
   for (const [id, text, count] of [
@@ -853,10 +854,10 @@ try {
     sidebar: getComputedStyle(document.querySelector(".sidebar")).backgroundColor,
     map: getComputedStyle(document.querySelector(".map-section")).backgroundColor,
   })), { sidebar: "rgb(11, 14, 20)", map: "rgb(16, 23, 27)" });
-  assert.match(await page.locator(".review-key").innerText(), /completed project audits \(27\)/i);
+  assert.match(await page.locator(".review-key").innerText(), /completed project audits \(30\)/i);
   assert.doesNotMatch(await page.locator(".legend").innerText(), /IM3|pending|merged|queued/i);
   await page.getByLabel("Research-complete project markers").selectOption("Colocation");
-  assert.match(await page.locator(".review-key").innerText(), /completed project audits \(11\)/i);
+  assert.match(await page.locator(".review-key").innerText(), /completed project audits \(12\)/i);
   await page.getByLabel("Research-complete project markers").selectOption("");
   await page.screenshot({ path: path.join(out, "map-desktop.png") });
   assert.doesNotMatch(await page.locator(".sidebar").innerText(), /Source records|Building records|Campus records|Observed footprint|First-entry research/i);
@@ -867,7 +868,7 @@ try {
   const response = await page.request.get(`${url}data/v1/study/index.json`);
   const study = await response.json();
   assert.equal(study.projects.length, 36);
-  assert.equal(study.projects.filter(p => p.research_completion_status === "account_research_complete").length, 27);
+  assert.equal(study.projects.filter(p => p.research_completion_status === "account_research_complete").length, 30);
   assert.equal(study.projects.filter(p => p.model_completeness.status === "full_modeled_account").length, 0);
   const descriptionPage = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
   for (const completed of study.projects.filter(project => project.research_completion_status === "account_research_complete")) {
@@ -882,7 +883,7 @@ try {
     ), `${completed.name} must render the project description before the study rationale`);
   }
   await descriptionPage.close();
-  check("all twenty-seven completed project pages render one description above the study rationale");
+  check("all thirty completed project pages render one description above the study rationale");
   const target = study.projects.find(p => p.name === "Apple Mesa");
   const canvas = await page.locator("canvas").boundingBox();
   const world = 512 * 2 ** 3.25;
@@ -919,7 +920,7 @@ try {
   await page.mouse.click(targetX, targetY);
   await page.waitForURL(`**/project/${target.project_id}`);
   await page.getByRole("heading", { name: "Sources & research history" }).waitFor();
-  check("map preserves all twenty-seven completed project audits while keeping analytical completeness separate");
+  check("map preserves all thirty completed project audits while keeping analytical completeness separate");
 
   const legacyPage = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
   await legacyPage.route("**/data/v1/study/index.json?*", async route => {
@@ -928,8 +929,8 @@ try {
     await route.fulfill({ json: legacyStudy });
   });
   await legacyPage.goto(`${url}#/map`, { waitUntil: "domcontentloaded" });
-  await legacyPage.getByText("22 completed project research accounts are mapped.", { exact: false }).waitFor();
-  assert.match(await legacyPage.locator(".review-key").innerText(), /completed project audits \(22\)/i);
+  await legacyPage.getByText("25 completed project research accounts are mapped.", { exact: false }).waitFor();
+  assert.match(await legacyPage.locator(".review-key").innerText(), /completed project audits \(25\)/i);
   await legacyPage.close();
   check("map remains populated when a browser holds an index without the research-completion field");
 

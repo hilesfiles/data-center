@@ -37,13 +37,15 @@ class OrchestrationAcceptanceContractTests(unittest.TestCase):
                 self.assertTrue(row.get("independent_acceptance_audit"))
                 self.assertTrue(row.get("validation_result"))
 
-    def test_current_batch_is_not_prematurely_accepted(self):
+    def test_current_batch_acceptance_records_correction_and_independent_audit(self):
         rows = {row["queue_position"]: row for row in self.ledger["queue"]}
         for position in (25, 26, 27):
             with self.subTest(queue_position=position):
-                self.assertNotIn("accepted", rows[position]["status"])
-                self.assertNotIn("integrated", rows[position]["status"])
-                self.assertIsNone(rows[position]["worker_commit_sha"])
+                self.assertEqual(rows[position]["status"], "accepted_reconciled_validation")
+                self.assertTrue(rows[position]["candidate_commit_sha"])
+                self.assertTrue(rows[position]["corrective_commit_sha"])
+                self.assertTrue(rows[position]["worker_commit_sha"])
+                self.assertTrue(rows[position]["independent_acceptance_audit"])
 
     def test_public_utility_payments_have_a_distinct_direct_metric(self):
         evidence = json.loads(EVIDENCE.read_text(encoding="utf-8"))

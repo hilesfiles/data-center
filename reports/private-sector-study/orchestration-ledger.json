@@ -1,8 +1,8 @@
 {
   "schema_version": "1.0.0",
-  "study_release": "private-sector-study-1.56.0",
-  "generated_at": "2026-09-07T18:10:00Z",
-  "queue_status": "batch_9_mandatory_adversarial_remediation_active",
+  "study_release": "private-sector-study-1.57.0",
+  "generated_at": "2026-09-07T19:58:48Z",
+  "queue_status": "batch_9_reconciled_validation",
   "ranking_method": "Descending covered contribution-account category count, then descending sourced economic-record count, then ascending project_id.",
   "worker_research_contract": {
     "version": "3.0.0",
@@ -1385,16 +1385,20 @@
       "worker_task_id": "01a07cdb-764f-7053-9727-86979bb63533",
       "worker_branch": "detached-worktree-0a0b",
       "candidate_commit_sha": "717b791b11dea22731e27d4c43fb292ecbec7d1d",
-      "corrective_commit_sha": null,
-      "independent_acceptance_audit": null,
-      "worker_commit_sha": null,
-      "status": "gap_closure_in_progress",
-      "source_record_additions": 0,
-      "forecast_additions": 0,
-      "modeled_record_additions": 0,
-      "validation_result": "Initial handoff rejected. Structural checks and scoped tests passed, but the substantive audit found unresolved fiscal/incentive, utility, construction/supplier, workforce, and model-eligibility work requiring mandatory adversarial continuation.",
+      "corrective_commit_sha": "90260a1187a1f1c5c90764b66a8b83f6b98edeb9",
+      "independent_acceptance_audit": "Initial and first corrective handoffs were rejected. The orchestrator independently reopened the official Tax Commissioner portal, resolved bills 1075743 and 1077031, captured the complete 2015-2025 account-year bill, payment-date, payment-total, and exempt-account fair-market-value series, and reran all 13 Google project/shared tests before reconciliation.",
+      "worker_commit_sha": "90260a1187a1f1c5c90764b66a8b83f6b98edeb9",
+      "status": "accepted_reconciled_validation",
+      "source_record_additions": 72,
+      "forecast_additions": 2,
+      "modeled_record_additions": 8,
+      "validation_result": "Accepted only after mandatory adversarial continuation and independent portal recovery. The final account contains 35 sources, 74 scoped records, eight last-resort models, 12 audit updates, exactly one compliant description, and an explicit non-additivity rule for matching tax bills and payments.",
       "integration_commit": null,
-      "remaining_unresolved_analytical_limits": []
+      "remaining_unresolved_analytical_limits": [
+        "Executed incentive schedules, PILOT or lease-payment history, and recipient-level tax distributions remain unavailable.",
+        "Current complete utility bills, campus meters, supplier-payment geography, observed payroll and worker residence, and same-scope public-service costs remain unresolved.",
+        "No project-specific causal county outcome is claimed; the retained models are bounded conversions, sensitivities, or counterfactuals rather than observations."
+      ]
     },
     {
       "queue_position": 26,
@@ -1431,16 +1435,20 @@
       "worker_task_id": "01a07cdb-8605-7251-96f4-946062080a50",
       "worker_branch": "detached-worktree-c793",
       "candidate_commit_sha": "81c5288bf9e979630081286232c99ff3e33f2dbc",
-      "corrective_commit_sha": null,
-      "independent_acceptance_audit": null,
-      "worker_commit_sha": null,
-      "status": "gap_closure_in_progress",
-      "source_record_additions": 0,
-      "forecast_additions": 0,
-      "modeled_record_additions": 0,
-      "validation_result": "Initial handoff rejected. Structural checks and scoped tests passed, but the substantive audit found unresolved investment, payroll, supplier, personal-property tax, utility, community, and model-eligibility work requiring mandatory adversarial continuation.",
+      "corrective_commit_sha": "245ee665367bcaec6f35d86cb1085570f4f3919c",
+      "independent_acceptance_audit": "Initial handoff rejected; three corrective passes followed. The orchestrator independently verified the official AGC/DJC award record, BLS wage input, SEC commitment and funded amounts, model scope and non-additivity, the corrected electricity benchmark, and all four scoped tests at the final worker commit.",
+      "worker_commit_sha": "245ee665367bcaec6f35d86cb1085570f4f3919c",
+      "status": "accepted_reconciled_validation",
+      "source_record_additions": 20,
+      "forecast_additions": 1,
+      "modeled_record_additions": 8,
+      "validation_result": "Accepted after mandatory adversarial continuation and independent metric-by-metric audit. The final account contains 27 sources, 21 scoped records, eight bounded models, 12 audit updates, and exactly one compliant 619-character project description.",
       "integration_commit": null,
-      "remaining_unresolved_analytical_limits": []
+      "remaining_unresolved_analytical_limits": [
+        "Building-specific supplier payments, permanent staffing and payroll, community transfers, and complete utility bills remain unavailable.",
+        "Personal-property taxes and recipient distributions cannot be cleanly allocated to SE3 from campus or company records.",
+        "Energy, security staffing, construction labor, service-cost, award-category, and emissions results remain explicitly modeled sensitivities or conversions, not observed SE3 outcomes."
+      ]
     },
     {
       "queue_position": 27,
@@ -1476,17 +1484,21 @@
       "client_task_id": "client-new-thread:56c32854-1400-4809-8195-d8b63cd8145f",
       "worker_task_id": "01a07cdb-97dd-7123-baab-d800b05e1a63",
       "worker_branch": "detached-worktree-415a",
-      "candidate_commit_sha": null,
-      "corrective_commit_sha": null,
-      "independent_acceptance_audit": null,
-      "worker_commit_sha": null,
-      "status": "mandatory_adversarial_continuation_in_progress",
-      "source_record_additions": 0,
-      "forecast_additions": 0,
-      "modeled_record_additions": 0,
-      "validation_result": null,
+      "candidate_commit_sha": "1b869d4",
+      "corrective_commit_sha": "4da330eecbf2e853beac63a12a934fc47ff34bd0",
+      "independent_acceptance_audit": "Initial handoff was not accepted; three corrective passes followed. The orchestrator independently checked the model identifiers and BLS wage anchors, confirmed the selected-building versus campus and later-phase boundaries, verified all five models as bounded last-resort calculations, and ran all eight scoped tests at the final worker commit.",
+      "worker_commit_sha": "4da330eecbf2e853beac63a12a934fc47ff34bd0",
+      "status": "accepted_reconciled_validation",
+      "source_record_additions": 40,
+      "forecast_additions": 4,
+      "modeled_record_additions": 5,
+      "validation_result": "Accepted after mandatory adversarial continuation and independent metric-by-metric audit. The final account contains 28 sources, 44 scoped records, five bounded models, 12 audit updates, and exactly one compliant 603-character project description.",
       "integration_commit": null,
-      "remaining_unresolved_analytical_limits": []
+      "remaining_unresolved_analytical_limits": [
+        "Selected-building investment, payroll, worker residence, supplier payments, and full tax-recipient distributions remain unavailable or cannot be separated from the campus and later phases.",
+        "Public-service costs and causal county outcomes remain unsupported by same-scope evidence and a defensible counterfactual.",
+        "Payroll, electricity price, average load, emissions, and fiscal break-even results remain explicitly modeled sensitivities rather than observed Apple outcomes."
+      ]
     },
     {
       "queue_position": 28,
