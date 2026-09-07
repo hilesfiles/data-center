@@ -35,7 +35,7 @@
       "publication_date": {"date": "2021-12-14", "precision": "day"},
       "retrieved_on": "2026-09-07",
       "review_method": "web_page",
-      "notes": "Seventh-expansion announcement reports more than $2.5 billion of campus investment, more than 400 people working in operations each day, more than $2.6 million in community grants and sponsorships, and a planned greater-than-five-million-square-foot campus at completion. It projects an average 1,000 construction workers over a twelve-year 2013-2025 build period, names Turner Construction as general contractor, and describes seven graduates of an eight-week training class, but gives no worker residence, wages, placements, supplier payments, or selected-building allocation."
+      "notes": "Seventh-expansion announcement reports more than $2.5 billion of campus investment, more than 400 people working in operations each day, more than $2.6 million in community grants and sponsorships, and a planned greater-than-five-million-square-foot campus at completion. It also reports 8.7 million construction work hours since 2013, projects an average 1,000 construction workers over a twelve-year 2013-2025 build period, names Turner Construction as general contractor, and describes seven graduates of an eight-week training class. The governed dictionary has no construction-hours or job-years metric, and the source gives no worker residence, wages, placements, supplier payments, or selected-building allocation."
     },
     {
       "source_id": "src_study_meta_altoona_environmental_data_index_2025",
@@ -200,7 +200,84 @@
       "publication_date": {"precision": "unknown"},
       "retrieved_on": "2026-09-07",
       "review_method": "web_page",
-      "notes": "Interactive company-name search for Siculus returned 34 rows spanning duplicate and inactive records and numerous parcels, including 792303400002, 792303400006, 792310100001, 792310200006, 792310401002, and related accounts. Searches for 100 Share Way returned no row; sampled parcels 292310300006 and 792310200002 were inactive and had no bill. Without a selected-building parcel crosswalk and active-account reconciliation, no assessed value, bill, payment, abatement, PILOT receipt, or tax distribution is recorded."
+      "notes": "The Siculus company-name search returned 34 displayed rows. Exact PIN reconciliation found 22 unique real-estate parcels and 12 duplicate result rows: 792303400001 x2, 792303400003 x2, 792303400004 x1, 792310100001 x2, 792310100002 x1, 792310100003 x2, 792310200001 x2, 792310200002 x2, 792310200008 x1, 792310300001 x2, 792310300006 x1, 792310377001 x1, 792310401002 x2, 792310401003 x2, 792310401004 x2, 292310300006 x2, 792303400002 x2, 792303400006 x1, 792310100004 x1, 792310200006 x1, 792310200007 x1, and 792310401005 x1. Ten are active and twelve retired. Active account payment histories, taxable values, and assessor full values are normalized below; current bills are cataloged in the audit because the governed metric dictionary has no billed-property-tax metric. Retired terminal bills remain cataloged but are not mixed with successor accounts. The public portal exposes no personal-property search and its Tax Distribution navigation is only for special assessments, so ordinary recipient distributions remain unavailable."
+    },
+    {
+      "source_id": "src_study_polk_county_assessor_siculus_2026",
+      "title": "Polk County Assessor property-record cards for Siculus parcels",
+      "url": "https://web.assess.co.polk.ia.us/cgi-bin/web/tt/infoqry.cgi?tt=card/card&gp=792310401005",
+      "publisher": "Polk County Assessor",
+      "source_type": "assessor_record",
+      "publication_date": {"precision": "unknown"},
+      "retrieved_on": "2026-09-07",
+      "review_method": "web_page",
+      "notes": "Assessor cards crosswalk all 22 unique Treasurer PINs to alternative parcel numbers, active/retired status, legal and mailing records, land/building values, adjustments, use, gross area, occupants, TIF labels, and permit indexes. Parcel 792310401005 is a 190.559-acre active industrial campus parcel with ATN1, ATN2, ATN3, ATN4, an ATN-4B expansion, and security building on one account; its ATN1 section is 312,131 square feet, close to but not an exact public crosswalk for the selected 315,400-square-foot IM3 footprint. No parcel value or tax is allocated to the selected building."
+    },
+    {
+      "source_id": "src_study_iowa_tif_expenditures_2026",
+      "title": "Local Government TIF Expenditures by Project and Debt",
+      "url": "https://data.iowa.gov/catalog/dataset/1002",
+      "publisher": "State of Iowa",
+      "source_type": "state_record",
+      "publication_date": {"precision": "unknown"},
+      "retrieved_on": "2026-09-07",
+      "review_method": "structured_data",
+      "notes": "The official dataset contains 332 Altoona rows for fiscal years 2013-2025. Exact searches across project, debt, and rebate fields returned no Siculus, Facebook, or Meta named expenditure. That negative result does not rule out unnamed, non-TIF, pooled, or agreement-level public costs."
+    },
+    {
+      "source_id": "src_study_iowa_urban_renewal_projects_2026",
+      "title": "Urban Renewal Projects",
+      "url": "https://data.iowa.gov/catalog/dataset/780",
+      "publisher": "State of Iowa",
+      "source_type": "state_record",
+      "publication_date": {"precision": "unknown"},
+      "retrieved_on": "2026-09-07",
+      "review_method": "structured_data",
+      "notes": "The official dataset contains 475 Altoona rows for fiscal years 2012-2025. Exact searches returned no Siculus, Facebook, or Meta named project. This is a bounded negative result for the named state TIF-report fields, not evidence of zero public cost or zero benefit."
+    },
+    {
+      "source_id": "src_study_midamerican_iowa_electric_tariff_2026",
+      "title": "MidAmerican Energy Company Iowa electric tariffs",
+      "url": "https://www.midamericanenergy.com/media/pdf/iowa-electric-tariffs.pdf",
+      "publisher": "MidAmerican Energy Company",
+      "source_type": "other",
+      "publication_date": {"precision": "unknown"},
+      "retrieved_on": "2026-09-07",
+      "review_method": "web_pdf_text",
+      "notes": "Current filed tariff schedules include Large General Service demand-assessed primary/secondary service, Substation Service, Individual Customer Rates, riders, demand ratchets, voltage provisions, and 2025 transmission-cost-adjustment factors. Public evidence does not identify the Siculus service class, special contract, monthly billed demand, voltage, meters, power factor, riders, curtailment terms, or bill totals, so annual kWh alone cannot bound electricity expense."
+    },
+    {
+      "source_id": "src_study_altoona_electric_franchise_code_2026",
+      "title": "Altoona Code of Ordinances, Chapter 111, Electric Franchise Fee",
+      "url": "https://codelibrary.amlegal.com/codes/altoonaia/latest/altoona_ia/0-0-0-4057",
+      "publisher": "City of Altoona",
+      "source_type": "local_government_record",
+      "publication_date": {"precision": "unknown"},
+      "retrieved_on": "2026-09-07",
+      "review_method": "web_page",
+      "notes": "The code establishes collection and quarterly remittance of Altoona's electric franchise fee. The public code does not identify Siculus bill inclusion, an exemption or negotiated credit, remittances by customer, or an allocable selected-building amount."
+    },
+    {
+      "source_id": "src_study_business_record_altoona_agreement_2019",
+      "title": "In Facebook agreement, data leveled negotiating table",
+      "url": "https://www.businessrecord.com/in-facebook-agreement-data-leveled-negotiating-table/",
+      "publisher": "Business Record",
+      "source_type": "other",
+      "publication_date": {"precision": "year", "year": 2019},
+      "retrieved_on": "2026-09-07",
+      "review_method": "web_page",
+      "notes": "Contemporaneous reporting describes a $3-per-square-foot PILOT for new construction, a 20-year property-tax abatement, and an estimated roughly $1.5 million annual electric-franchise-fee amount, while emphasizing negotiated agreement terms. These are reported terms and estimates, not city receipts, tax-account distributions, realized exemptions, or selected-building amounts. The underlying May 2019 agreement was not recovered from the public City archive."
+    },
+    {
+      "source_id": "src_study_osha_allied_altoona_2013",
+      "title": "OSHA inspection detail for Allied Construction Services at Facebook Data Center",
+      "url": "https://www.osha.gov/ords/imis/establishment.inspection_detail?id=317687036",
+      "publisher": "Occupational Safety and Health Administration",
+      "source_type": "other",
+      "publication_date": {"precision": "year", "year": 2013},
+      "retrieved_on": "2026-09-07",
+      "review_method": "web_page",
+      "notes": "Federal inspection detail identifies Allied Construction Services at the Facebook Data Center, 100 Share Way. It corroborates another on-site contractor identity but gives no contract amount, invoice, worker residence, local-spend share, payroll, or selected-building allocation."
     },
     {
       "source_id": "src_study_ap_altoona_agreement_2019",
@@ -664,6 +741,1770 @@
       "notes": "Program-year direct grant total. It is nested within the later greater-than-$2.6-million operator cumulative amount and must not be summed with it or converted into an outcome multiplier.",
       "review_status": "source_checked",
       "reviewed_on": "2026-09-07"
+    },
+    {
+      "claim_id": "clm_study_meta_altoona_792303400004_property_taxes_paid_2020",
+      "project_id": "prj_study_im3_building_00438078069",
+      "metric_code": "study.property_taxes_paid",
+      "value": 3720,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2020,
+        "label": "Tax year 2020 aggregate real-property principal paid"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Polk County real-estate PIN 792303400004; 5362 NE 62nd Avenue, vacant commercial land",
+        "county_fips": "19153",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_polk_county_tax_search_2026",
+      "source_locator": "PIN 792303400004, All Real Estate Payments, 2020 tax-year aggregate",
+      "notes": "Portal payment history total across all displayed bills and installments for this active real-estate account. It is not allocated to the selected building and is not a PILOT, recipient distribution, public-service cost, or net fiscal result.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "meta_altoona_792303400004_real_property_taxes_paid"
+    },
+    {
+      "claim_id": "clm_study_meta_altoona_792303400004_property_taxes_paid_2021",
+      "project_id": "prj_study_im3_building_00438078069",
+      "metric_code": "study.property_taxes_paid",
+      "value": 2460,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2021,
+        "label": "Tax year 2021 aggregate real-property principal paid"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Polk County real-estate PIN 792303400004; 5362 NE 62nd Avenue, vacant commercial land",
+        "county_fips": "19153",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_polk_county_tax_search_2026",
+      "source_locator": "PIN 792303400004, All Real Estate Payments, 2021 tax-year aggregate",
+      "notes": "Portal payment history total across all displayed bills and installments for this active real-estate account. It is not allocated to the selected building and is not a PILOT, recipient distribution, public-service cost, or net fiscal result.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "meta_altoona_792303400004_real_property_taxes_paid"
+    },
+    {
+      "claim_id": "clm_study_meta_altoona_792303400004_property_taxes_paid_2022",
+      "project_id": "prj_study_im3_building_00438078069",
+      "metric_code": "study.property_taxes_paid",
+      "value": 2438,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2022,
+        "label": "Tax year 2022 aggregate real-property principal paid"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Polk County real-estate PIN 792303400004; 5362 NE 62nd Avenue, vacant commercial land",
+        "county_fips": "19153",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_polk_county_tax_search_2026",
+      "source_locator": "PIN 792303400004, All Real Estate Payments, 2022 tax-year aggregate",
+      "notes": "Portal payment history total across all displayed bills and installments for this active real-estate account. It is not allocated to the selected building and is not a PILOT, recipient distribution, public-service cost, or net fiscal result.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "meta_altoona_792303400004_real_property_taxes_paid"
+    },
+    {
+      "claim_id": "clm_study_meta_altoona_792303400004_property_taxes_paid_2023",
+      "project_id": "prj_study_im3_building_00438078069",
+      "metric_code": "study.property_taxes_paid",
+      "value": 1570,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2023,
+        "label": "Tax year 2023 aggregate real-property principal paid"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Polk County real-estate PIN 792303400004; 5362 NE 62nd Avenue, vacant commercial land",
+        "county_fips": "19153",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_polk_county_tax_search_2026",
+      "source_locator": "PIN 792303400004, All Real Estate Payments, 2023 tax-year aggregate",
+      "notes": "Portal payment history total across all displayed bills and installments for this active real-estate account. It is not allocated to the selected building and is not a PILOT, recipient distribution, public-service cost, or net fiscal result.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "meta_altoona_792303400004_real_property_taxes_paid"
+    },
+    {
+      "claim_id": "clm_study_meta_altoona_792303400004_property_taxes_paid_2024",
+      "project_id": "prj_study_im3_building_00438078069",
+      "metric_code": "study.property_taxes_paid",
+      "value": 1606,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2024,
+        "label": "Tax year 2024 aggregate real-property principal paid"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Polk County real-estate PIN 792303400004; 5362 NE 62nd Avenue, vacant commercial land",
+        "county_fips": "19153",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_polk_county_tax_search_2026",
+      "source_locator": "PIN 792303400004, All Real Estate Payments, 2024 tax-year aggregate",
+      "notes": "Portal payment history total across all displayed bills and installments for this active real-estate account. It is not allocated to the selected building and is not a PILOT, recipient distribution, public-service cost, or net fiscal result.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "meta_altoona_792303400004_real_property_taxes_paid"
+    },
+    {
+      "claim_id": "clm_study_meta_altoona_792303400004_appraised_value_2026",
+      "project_id": "prj_study_im3_building_00438078069",
+      "metric_code": "study.appraised_property_value",
+      "value": 109000,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "reported_snapshot",
+        "report_date": "2026-09-07",
+        "label": "2026 Polk County Assessor full value"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Polk County real-estate PIN 792303400004; 5362 NE 62nd Avenue, vacant commercial land",
+        "county_fips": "19153",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_polk_county_assessor_siculus_2026",
+      "source_locator": "Property record card gp=792303400004, 2026 full-value row",
+      "notes": "Account-level assessor full value before the separate adjusted and taxable treatments. It is not selected-building investment, taxable value, tax avoided, a payment, or a public cost.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07"
+    },
+    {
+      "claim_id": "clm_study_meta_altoona_792303400004_taxable_assessed_value_2025",
+      "project_id": "prj_study_im3_building_00438078069",
+      "metric_code": "study.taxable_assessed_value",
+      "value": 48542,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2025,
+        "label": "Assessment year 2025 taxable value; bill payable 2026-2027"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Polk County real-estate PIN 792303400004; 5362 NE 62nd Avenue, vacant commercial land",
+        "county_fips": "19153",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_polk_county_tax_search_2026",
+      "source_locator": "PIN 792303400004, 2025 tax-year district-calculation page, taxable value",
+      "notes": "Current account-level taxable value after applicable classification, rollback, adjustment, and exemption treatment. It is not the assessor full value, selected-building value, tax avoided, or a payment.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "meta_altoona_792303400004_taxable_assessed_value"
+    },
+    {
+      "claim_id": "clm_study_meta_altoona_792310100002_property_taxes_paid_2020",
+      "project_id": "prj_study_im3_building_00438078069",
+      "metric_code": "study.property_taxes_paid",
+      "value": 5388,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2020,
+        "label": "Tax year 2020 aggregate real-property principal paid"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Polk County real-estate PIN 792310100002; 5943 NE 46th Street, vacant commercial land",
+        "county_fips": "19153",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_polk_county_tax_search_2026",
+      "source_locator": "PIN 792310100002, All Real Estate Payments, 2020 tax-year aggregate",
+      "notes": "Portal payment history total across all displayed bills and installments for this active real-estate account. It is not allocated to the selected building and is not a PILOT, recipient distribution, public-service cost, or net fiscal result.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "meta_altoona_792310100002_real_property_taxes_paid"
+    },
+    {
+      "claim_id": "clm_study_meta_altoona_792310100002_property_taxes_paid_2021",
+      "project_id": "prj_study_im3_building_00438078069",
+      "metric_code": "study.property_taxes_paid",
+      "value": 4680,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2021,
+        "label": "Tax year 2021 aggregate real-property principal paid"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Polk County real-estate PIN 792310100002; 5943 NE 46th Street, vacant commercial land",
+        "county_fips": "19153",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_polk_county_tax_search_2026",
+      "source_locator": "PIN 792310100002, All Real Estate Payments, 2021 tax-year aggregate",
+      "notes": "Portal payment history total across all displayed bills and installments for this active real-estate account. It is not allocated to the selected building and is not a PILOT, recipient distribution, public-service cost, or net fiscal result.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "meta_altoona_792310100002_real_property_taxes_paid"
+    },
+    {
+      "claim_id": "clm_study_meta_altoona_792310100002_property_taxes_paid_2022",
+      "project_id": "prj_study_im3_building_00438078069",
+      "metric_code": "study.property_taxes_paid",
+      "value": 4874,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2022,
+        "label": "Tax year 2022 aggregate real-property principal paid"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Polk County real-estate PIN 792310100002; 5943 NE 46th Street, vacant commercial land",
+        "county_fips": "19153",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_polk_county_tax_search_2026",
+      "source_locator": "PIN 792310100002, All Real Estate Payments, 2022 tax-year aggregate",
+      "notes": "Portal payment history total across all displayed bills and installments for this active real-estate account. It is not allocated to the selected building and is not a PILOT, recipient distribution, public-service cost, or net fiscal result.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "meta_altoona_792310100002_real_property_taxes_paid"
+    },
+    {
+      "claim_id": "clm_study_meta_altoona_792310100002_property_taxes_paid_2023",
+      "project_id": "prj_study_im3_building_00438078069",
+      "metric_code": "study.property_taxes_paid",
+      "value": 3492,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2023,
+        "label": "Tax year 2023 aggregate real-property principal paid"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Polk County real-estate PIN 792310100002; 5943 NE 46th Street, vacant commercial land",
+        "county_fips": "19153",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_polk_county_tax_search_2026",
+      "source_locator": "PIN 792310100002, All Real Estate Payments, 2023 tax-year aggregate",
+      "notes": "Portal payment history total across all displayed bills and installments for this active real-estate account. It is not allocated to the selected building and is not a PILOT, recipient distribution, public-service cost, or net fiscal result.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "meta_altoona_792310100002_real_property_taxes_paid"
+    },
+    {
+      "claim_id": "clm_study_meta_altoona_792310100002_property_taxes_paid_2024",
+      "project_id": "prj_study_im3_building_00438078069",
+      "metric_code": "study.property_taxes_paid",
+      "value": 3710,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2024,
+        "label": "Tax year 2024 aggregate real-property principal paid"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Polk County real-estate PIN 792310100002; 5943 NE 46th Street, vacant commercial land",
+        "county_fips": "19153",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_polk_county_tax_search_2026",
+      "source_locator": "PIN 792310100002, All Real Estate Payments, 2024 tax-year aggregate",
+      "notes": "Portal payment history total across all displayed bills and installments for this active real-estate account. It is not allocated to the selected building and is not a PILOT, recipient distribution, public-service cost, or net fiscal result.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "meta_altoona_792310100002_real_property_taxes_paid"
+    },
+    {
+      "claim_id": "clm_study_meta_altoona_792310100002_appraised_value_2026",
+      "project_id": "prj_study_im3_building_00438078069",
+      "metric_code": "study.appraised_property_value",
+      "value": 208000,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "reported_snapshot",
+        "report_date": "2026-09-07",
+        "label": "2026 Polk County Assessor full value"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Polk County real-estate PIN 792310100002; 5943 NE 46th Street, vacant commercial land",
+        "county_fips": "19153",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_polk_county_assessor_siculus_2026",
+      "source_locator": "Property record card gp=792310100002, 2026 full-value row",
+      "notes": "Account-level assessor full value before the separate adjusted and taxable treatments. It is not selected-building investment, taxable value, tax avoided, a payment, or a public cost.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07"
+    },
+    {
+      "claim_id": "clm_study_meta_altoona_792310100002_taxable_assessed_value_2025",
+      "project_id": "prj_study_im3_building_00438078069",
+      "metric_code": "study.taxable_assessed_value",
+      "value": 119001,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2025,
+        "label": "Assessment year 2025 taxable value; bill payable 2026-2027"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Polk County real-estate PIN 792310100002; 5943 NE 46th Street, vacant commercial land",
+        "county_fips": "19153",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_polk_county_tax_search_2026",
+      "source_locator": "PIN 792310100002, 2025 tax-year district-calculation page, taxable value",
+      "notes": "Current account-level taxable value after applicable classification, rollback, adjustment, and exemption treatment. It is not the assessor full value, selected-building value, tax avoided, or a payment.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "meta_altoona_792310100002_taxable_assessed_value"
+    },
+    {
+      "claim_id": "clm_study_meta_altoona_792310200008_property_taxes_paid_2020",
+      "project_id": "prj_study_im3_building_00438078069",
+      "metric_code": "study.property_taxes_paid",
+      "value": 28520,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2020,
+        "label": "Tax year 2020 aggregate real-property principal paid"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Polk County real-estate PIN 792310200008; active partial-commercial improvement account",
+        "county_fips": "19153",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_polk_county_tax_search_2026",
+      "source_locator": "PIN 792310200008, All Real Estate Payments, 2020 tax-year aggregate",
+      "notes": "Portal payment history total across all displayed bills and installments for this active real-estate account. It is not allocated to the selected building and is not a PILOT, recipient distribution, public-service cost, or net fiscal result.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "meta_altoona_792310200008_real_property_taxes_paid"
+    },
+    {
+      "claim_id": "clm_study_meta_altoona_792310200008_property_taxes_paid_2021",
+      "project_id": "prj_study_im3_building_00438078069",
+      "metric_code": "study.property_taxes_paid",
+      "value": 49882,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2021,
+        "label": "Tax year 2021 aggregate real-property principal paid"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Polk County real-estate PIN 792310200008; active partial-commercial improvement account",
+        "county_fips": "19153",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_polk_county_tax_search_2026",
+      "source_locator": "PIN 792310200008, All Real Estate Payments, 2021 tax-year aggregate",
+      "notes": "Portal payment history total across all displayed bills and installments for this active real-estate account. It is not allocated to the selected building and is not a PILOT, recipient distribution, public-service cost, or net fiscal result.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "meta_altoona_792310200008_real_property_taxes_paid"
+    },
+    {
+      "claim_id": "clm_study_meta_altoona_792310200008_property_taxes_paid_2022",
+      "project_id": "prj_study_im3_building_00438078069",
+      "metric_code": "study.property_taxes_paid",
+      "value": 49572,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2022,
+        "label": "Tax year 2022 aggregate real-property principal paid"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Polk County real-estate PIN 792310200008; active partial-commercial improvement account",
+        "county_fips": "19153",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_polk_county_tax_search_2026",
+      "source_locator": "PIN 792310200008, All Real Estate Payments, 2022 tax-year aggregate",
+      "notes": "Portal payment history total across all displayed bills and installments for this active real-estate account. It is not allocated to the selected building and is not a PILOT, recipient distribution, public-service cost, or net fiscal result.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "meta_altoona_792310200008_real_property_taxes_paid"
+    },
+    {
+      "claim_id": "clm_study_meta_altoona_792310200008_property_taxes_paid_2023",
+      "project_id": "prj_study_im3_building_00438078069",
+      "metric_code": "study.property_taxes_paid",
+      "value": 61604,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2023,
+        "label": "Tax year 2023 aggregate real-property principal paid"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Polk County real-estate PIN 792310200008; active partial-commercial improvement account",
+        "county_fips": "19153",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_polk_county_tax_search_2026",
+      "source_locator": "PIN 792310200008, All Real Estate Payments, 2023 tax-year aggregate",
+      "notes": "Portal payment history total across all displayed bills and installments for this active real-estate account. It is not allocated to the selected building and is not a PILOT, recipient distribution, public-service cost, or net fiscal result.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "meta_altoona_792310200008_real_property_taxes_paid"
+    },
+    {
+      "claim_id": "clm_study_meta_altoona_792310200008_property_taxes_paid_2024",
+      "project_id": "prj_study_im3_building_00438078069",
+      "metric_code": "study.property_taxes_paid",
+      "value": 61600,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2024,
+        "label": "Tax year 2024 aggregate real-property principal paid"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Polk County real-estate PIN 792310200008; active partial-commercial improvement account",
+        "county_fips": "19153",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_polk_county_tax_search_2026",
+      "source_locator": "PIN 792310200008, All Real Estate Payments, 2024 tax-year aggregate",
+      "notes": "Portal payment history total across all displayed bills and installments for this active real-estate account. It is not allocated to the selected building and is not a PILOT, recipient distribution, public-service cost, or net fiscal result.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "meta_altoona_792310200008_real_property_taxes_paid"
+    },
+    {
+      "claim_id": "clm_study_meta_altoona_792310200008_appraised_value_2026",
+      "project_id": "prj_study_im3_building_00438078069",
+      "metric_code": "study.appraised_property_value",
+      "value": 12420000,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "reported_snapshot",
+        "report_date": "2026-09-07",
+        "label": "2026 Polk County Assessor full value"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Polk County real-estate PIN 792310200008; active partial-commercial improvement account",
+        "county_fips": "19153",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_polk_county_assessor_siculus_2026",
+      "source_locator": "Property record card gp=792310200008, 2026 full-value row",
+      "notes": "Account-level assessor full value before the separate adjusted and taxable treatments. It is not selected-building investment, taxable value, tax avoided, a payment, or a public cost.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07"
+    },
+    {
+      "claim_id": "clm_study_meta_altoona_792310200008_taxable_assessed_value_2025",
+      "project_id": "prj_study_im3_building_00438078069",
+      "metric_code": "study.taxable_assessed_value",
+      "value": 2069096,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2025,
+        "label": "Assessment year 2025 taxable value; bill payable 2026-2027"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Polk County real-estate PIN 792310200008; active partial-commercial improvement account",
+        "county_fips": "19153",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_polk_county_tax_search_2026",
+      "source_locator": "PIN 792310200008, 2025 tax-year district-calculation page, taxable value",
+      "notes": "Current account-level taxable value after applicable classification, rollback, adjustment, and exemption treatment. It is not the assessor full value, selected-building value, tax avoided, or a payment.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "meta_altoona_792310200008_taxable_assessed_value"
+    },
+    {
+      "claim_id": "clm_study_meta_altoona_792310300006_property_taxes_paid_2020",
+      "project_id": "prj_study_im3_building_00438078069",
+      "metric_code": "study.property_taxes_paid",
+      "value": 1852,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2020,
+        "label": "Tax year 2020 aggregate real-property principal paid"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Polk County real-estate PIN 792310300006; active vacant commercial land account",
+        "county_fips": "19153",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_polk_county_tax_search_2026",
+      "source_locator": "PIN 792310300006, All Real Estate Payments, 2020 tax-year aggregate",
+      "notes": "Portal payment history total across all displayed bills and installments for this active real-estate account. It is not allocated to the selected building and is not a PILOT, recipient distribution, public-service cost, or net fiscal result.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "meta_altoona_792310300006_real_property_taxes_paid"
+    },
+    {
+      "claim_id": "clm_study_meta_altoona_792310300006_property_taxes_paid_2021",
+      "project_id": "prj_study_im3_building_00438078069",
+      "metric_code": "study.property_taxes_paid",
+      "value": 1928,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2021,
+        "label": "Tax year 2021 aggregate real-property principal paid"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Polk County real-estate PIN 792310300006; active vacant commercial land account",
+        "county_fips": "19153",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_polk_county_tax_search_2026",
+      "source_locator": "PIN 792310300006, All Real Estate Payments, 2021 tax-year aggregate",
+      "notes": "Portal payment history total across all displayed bills and installments for this active real-estate account. It is not allocated to the selected building and is not a PILOT, recipient distribution, public-service cost, or net fiscal result.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "meta_altoona_792310300006_real_property_taxes_paid"
+    },
+    {
+      "claim_id": "clm_study_meta_altoona_792310300006_property_taxes_paid_2022",
+      "project_id": "prj_study_im3_building_00438078069",
+      "metric_code": "study.property_taxes_paid",
+      "value": 2008,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2022,
+        "label": "Tax year 2022 aggregate real-property principal paid"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Polk County real-estate PIN 792310300006; active vacant commercial land account",
+        "county_fips": "19153",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_polk_county_tax_search_2026",
+      "source_locator": "PIN 792310300006, All Real Estate Payments, 2022 tax-year aggregate",
+      "notes": "Portal payment history total across all displayed bills and installments for this active real-estate account. It is not allocated to the selected building and is not a PILOT, recipient distribution, public-service cost, or net fiscal result.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "meta_altoona_792310300006_real_property_taxes_paid"
+    },
+    {
+      "claim_id": "clm_study_meta_altoona_792310300006_property_taxes_paid_2023",
+      "project_id": "prj_study_im3_building_00438078069",
+      "metric_code": "study.property_taxes_paid",
+      "value": 1230,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2023,
+        "label": "Tax year 2023 aggregate real-property principal paid"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Polk County real-estate PIN 792310300006; active vacant commercial land account",
+        "county_fips": "19153",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_polk_county_tax_search_2026",
+      "source_locator": "PIN 792310300006, All Real Estate Payments, 2023 tax-year aggregate",
+      "notes": "Portal payment history total across all displayed bills and installments for this active real-estate account. It is not allocated to the selected building and is not a PILOT, recipient distribution, public-service cost, or net fiscal result.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "meta_altoona_792310300006_real_property_taxes_paid"
+    },
+    {
+      "claim_id": "clm_study_meta_altoona_792310300006_property_taxes_paid_2024",
+      "project_id": "prj_study_im3_building_00438078069",
+      "metric_code": "study.property_taxes_paid",
+      "value": 1316,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2024,
+        "label": "Tax year 2024 aggregate real-property principal paid"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Polk County real-estate PIN 792310300006; active vacant commercial land account",
+        "county_fips": "19153",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_polk_county_tax_search_2026",
+      "source_locator": "PIN 792310300006, All Real Estate Payments, 2024 tax-year aggregate",
+      "notes": "Portal payment history total across all displayed bills and installments for this active real-estate account. It is not allocated to the selected building and is not a PILOT, recipient distribution, public-service cost, or net fiscal result.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "meta_altoona_792310300006_real_property_taxes_paid"
+    },
+    {
+      "claim_id": "clm_study_meta_altoona_792310300006_appraised_value_2026",
+      "project_id": "prj_study_im3_building_00438078069",
+      "metric_code": "study.appraised_property_value",
+      "value": 85300,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "reported_snapshot",
+        "report_date": "2026-09-07",
+        "label": "2026 Polk County Assessor full value"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Polk County real-estate PIN 792310300006; active vacant commercial land account",
+        "county_fips": "19153",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_polk_county_assessor_siculus_2026",
+      "source_locator": "Property record card gp=792310300006, 2026 full-value row",
+      "notes": "Account-level assessor full value before the separate adjusted and taxable treatments. It is not selected-building investment, taxable value, tax avoided, a payment, or a public cost.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07"
+    },
+    {
+      "claim_id": "clm_study_meta_altoona_792310300006_taxable_assessed_value_2025",
+      "project_id": "prj_study_im3_building_00438078069",
+      "metric_code": "study.taxable_assessed_value",
+      "value": 37988,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2025,
+        "label": "Assessment year 2025 taxable value; bill payable 2026-2027"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Polk County real-estate PIN 792310300006; active vacant commercial land account",
+        "county_fips": "19153",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_polk_county_tax_search_2026",
+      "source_locator": "PIN 792310300006, 2025 tax-year district-calculation page, taxable value",
+      "notes": "Current account-level taxable value after applicable classification, rollback, adjustment, and exemption treatment. It is not the assessor full value, selected-building value, tax avoided, or a payment.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "meta_altoona_792310300006_taxable_assessed_value"
+    },
+    {
+      "claim_id": "clm_study_meta_altoona_792310377001_property_taxes_paid_2020",
+      "project_id": "prj_study_im3_building_00438078069",
+      "metric_code": "study.property_taxes_paid",
+      "value": 18230,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2020,
+        "label": "Tax year 2020 aggregate real-property principal paid"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Polk County real-estate PIN 792310377001; active 5.67-acre vacant commercial land account",
+        "county_fips": "19153",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_polk_county_tax_search_2026",
+      "source_locator": "PIN 792310377001, All Real Estate Payments, 2020 tax-year aggregate",
+      "notes": "Portal payment history total across all displayed bills and installments for this active real-estate account. It is not allocated to the selected building and is not a PILOT, recipient distribution, public-service cost, or net fiscal result.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "meta_altoona_792310377001_real_property_taxes_paid"
+    },
+    {
+      "claim_id": "clm_study_meta_altoona_792310377001_property_taxes_paid_2021",
+      "project_id": "prj_study_im3_building_00438078069",
+      "metric_code": "study.property_taxes_paid",
+      "value": 19086,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2021,
+        "label": "Tax year 2021 aggregate real-property principal paid"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Polk County real-estate PIN 792310377001; active 5.67-acre vacant commercial land account",
+        "county_fips": "19153",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_polk_county_tax_search_2026",
+      "source_locator": "PIN 792310377001, All Real Estate Payments, 2021 tax-year aggregate",
+      "notes": "Portal payment history total across all displayed bills and installments for this active real-estate account. It is not allocated to the selected building and is not a PILOT, recipient distribution, public-service cost, or net fiscal result.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "meta_altoona_792310377001_real_property_taxes_paid"
+    },
+    {
+      "claim_id": "clm_study_meta_altoona_792310377001_property_taxes_paid_2022",
+      "project_id": "prj_study_im3_building_00438078069",
+      "metric_code": "study.property_taxes_paid",
+      "value": 18982,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2022,
+        "label": "Tax year 2022 aggregate real-property principal paid"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Polk County real-estate PIN 792310377001; active 5.67-acre vacant commercial land account",
+        "county_fips": "19153",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_polk_county_tax_search_2026",
+      "source_locator": "PIN 792310377001, All Real Estate Payments, 2022 tax-year aggregate",
+      "notes": "Portal payment history total across all displayed bills and installments for this active real-estate account. It is not allocated to the selected building and is not a PILOT, recipient distribution, public-service cost, or net fiscal result.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "meta_altoona_792310377001_real_property_taxes_paid"
+    },
+    {
+      "claim_id": "clm_study_meta_altoona_792310377001_property_taxes_paid_2023",
+      "project_id": "prj_study_im3_building_00438078069",
+      "metric_code": "study.property_taxes_paid",
+      "value": 20084,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2023,
+        "label": "Tax year 2023 aggregate real-property principal paid"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Polk County real-estate PIN 792310377001; active 5.67-acre vacant commercial land account",
+        "county_fips": "19153",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_polk_county_tax_search_2026",
+      "source_locator": "PIN 792310377001, All Real Estate Payments, 2023 tax-year aggregate",
+      "notes": "Portal payment history total across all displayed bills and installments for this active real-estate account. It is not allocated to the selected building and is not a PILOT, recipient distribution, public-service cost, or net fiscal result.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "meta_altoona_792310377001_real_property_taxes_paid"
+    },
+    {
+      "claim_id": "clm_study_meta_altoona_792310377001_property_taxes_paid_2024",
+      "project_id": "prj_study_im3_building_00438078069",
+      "metric_code": "study.property_taxes_paid",
+      "value": 20142,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2024,
+        "label": "Tax year 2024 aggregate real-property principal paid"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Polk County real-estate PIN 792310377001; active 5.67-acre vacant commercial land account",
+        "county_fips": "19153",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_polk_county_tax_search_2026",
+      "source_locator": "PIN 792310377001, All Real Estate Payments, 2024 tax-year aggregate",
+      "notes": "Portal payment history total across all displayed bills and installments for this active real-estate account. It is not allocated to the selected building and is not a PILOT, recipient distribution, public-service cost, or net fiscal result.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "meta_altoona_792310377001_real_property_taxes_paid"
+    },
+    {
+      "claim_id": "clm_study_meta_altoona_792310377001_appraised_value_2026",
+      "project_id": "prj_study_im3_building_00438078069",
+      "metric_code": "study.appraised_property_value",
+      "value": 740000,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "reported_snapshot",
+        "report_date": "2026-09-07",
+        "label": "2026 Polk County Assessor full value"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Polk County real-estate PIN 792310377001; active 5.67-acre vacant commercial land account",
+        "county_fips": "19153",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_polk_county_assessor_siculus_2026",
+      "source_locator": "Property record card gp=792310377001, 2026 full-value row",
+      "notes": "Account-level assessor full value before the separate adjusted and taxable treatments. It is not selected-building investment, taxable value, tax avoided, a payment, or a public cost.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07"
+    },
+    {
+      "claim_id": "clm_study_meta_altoona_792310377001_taxable_assessed_value_2025",
+      "project_id": "prj_study_im3_building_00438078069",
+      "metric_code": "study.taxable_assessed_value",
+      "value": 597802,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2025,
+        "label": "Assessment year 2025 taxable value; bill payable 2026-2027"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Polk County real-estate PIN 792310377001; active 5.67-acre vacant commercial land account",
+        "county_fips": "19153",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_polk_county_tax_search_2026",
+      "source_locator": "PIN 792310377001, 2025 tax-year district-calculation page, taxable value",
+      "notes": "Current account-level taxable value after applicable classification, rollback, adjustment, and exemption treatment. It is not the assessor full value, selected-building value, tax avoided, or a payment.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "meta_altoona_792310377001_taxable_assessed_value"
+    },
+    {
+      "claim_id": "clm_study_meta_altoona_792303400006_property_taxes_paid_2020",
+      "project_id": "prj_study_im3_building_00438078069",
+      "metric_code": "study.property_taxes_paid",
+      "value": 7262,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2020,
+        "label": "Tax year 2020 aggregate real-property principal paid"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Polk County real-estate PIN 792303400006; 5200 NE 62nd Avenue, industrial PCI 3-6 and security improvements",
+        "county_fips": "19153",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_polk_county_tax_search_2026",
+      "source_locator": "PIN 792303400006, All Real Estate Payments, 2020 tax-year aggregate",
+      "notes": "Portal payment history total across all displayed bills and installments for this active real-estate account. It is not allocated to the selected building and is not a PILOT, recipient distribution, public-service cost, or net fiscal result.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "meta_altoona_792303400006_real_property_taxes_paid"
+    },
+    {
+      "claim_id": "clm_study_meta_altoona_792303400006_property_taxes_paid_2021",
+      "project_id": "prj_study_im3_building_00438078069",
+      "metric_code": "study.property_taxes_paid",
+      "value": 431110,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2021,
+        "label": "Tax year 2021 aggregate real-property principal paid"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Polk County real-estate PIN 792303400006; 5200 NE 62nd Avenue, industrial PCI 3-6 and security improvements",
+        "county_fips": "19153",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_polk_county_tax_search_2026",
+      "source_locator": "PIN 792303400006, All Real Estate Payments, 2021 tax-year aggregate",
+      "notes": "Portal payment history total across all displayed bills and installments for this active real-estate account. It is not allocated to the selected building and is not a PILOT, recipient distribution, public-service cost, or net fiscal result.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "meta_altoona_792303400006_real_property_taxes_paid"
+    },
+    {
+      "claim_id": "clm_study_meta_altoona_792303400006_property_taxes_paid_2022",
+      "project_id": "prj_study_im3_building_00438078069",
+      "metric_code": "study.property_taxes_paid",
+      "value": 427328,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2022,
+        "label": "Tax year 2022 aggregate real-property principal paid"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Polk County real-estate PIN 792303400006; 5200 NE 62nd Avenue, industrial PCI 3-6 and security improvements",
+        "county_fips": "19153",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_polk_county_tax_search_2026",
+      "source_locator": "PIN 792303400006, All Real Estate Payments, 2022 tax-year aggregate",
+      "notes": "Portal payment history total across all displayed bills and installments for this active real-estate account. It is not allocated to the selected building and is not a PILOT, recipient distribution, public-service cost, or net fiscal result.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "meta_altoona_792303400006_real_property_taxes_paid"
+    },
+    {
+      "claim_id": "clm_study_meta_altoona_792303400006_property_taxes_paid_2023",
+      "project_id": "prj_study_im3_building_00438078069",
+      "metric_code": "study.property_taxes_paid",
+      "value": 531272,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2023,
+        "label": "Tax year 2023 aggregate real-property principal paid"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Polk County real-estate PIN 792303400006; 5200 NE 62nd Avenue, industrial PCI 3-6 and security improvements",
+        "county_fips": "19153",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_polk_county_tax_search_2026",
+      "source_locator": "PIN 792303400006, All Real Estate Payments, 2023 tax-year aggregate",
+      "notes": "Portal payment history total across all displayed bills and installments for this active real-estate account. It is not allocated to the selected building and is not a PILOT, recipient distribution, public-service cost, or net fiscal result.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "meta_altoona_792303400006_real_property_taxes_paid"
+    },
+    {
+      "claim_id": "clm_study_meta_altoona_792303400006_property_taxes_paid_2024",
+      "project_id": "prj_study_im3_building_00438078069",
+      "metric_code": "study.property_taxes_paid",
+      "value": 531170,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2024,
+        "label": "Tax year 2024 aggregate real-property principal paid"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Polk County real-estate PIN 792303400006; 5200 NE 62nd Avenue, industrial PCI 3-6 and security improvements",
+        "county_fips": "19153",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_polk_county_tax_search_2026",
+      "source_locator": "PIN 792303400006, All Real Estate Payments, 2024 tax-year aggregate",
+      "notes": "Portal payment history total across all displayed bills and installments for this active real-estate account. It is not allocated to the selected building and is not a PILOT, recipient distribution, public-service cost, or net fiscal result.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "meta_altoona_792303400006_real_property_taxes_paid"
+    },
+    {
+      "claim_id": "clm_study_meta_altoona_792303400006_appraised_value_2026",
+      "project_id": "prj_study_im3_building_00438078069",
+      "metric_code": "study.appraised_property_value",
+      "value": 439800000,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "reported_snapshot",
+        "report_date": "2026-09-07",
+        "label": "2026 Polk County Assessor full value"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Polk County real-estate PIN 792303400006; 5200 NE 62nd Avenue, industrial PCI 3-6 and security improvements",
+        "county_fips": "19153",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_polk_county_assessor_siculus_2026",
+      "source_locator": "Property record card gp=792303400006, 2026 full-value row",
+      "notes": "Account-level assessor full value before the separate adjusted and taxable treatments. It is not selected-building investment, taxable value, tax avoided, a payment, or a public cost.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07"
+    },
+    {
+      "claim_id": "clm_study_meta_altoona_792303400006_taxable_assessed_value_2025",
+      "project_id": "prj_study_im3_building_00438078069",
+      "metric_code": "study.taxable_assessed_value",
+      "value": 17031801,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2025,
+        "label": "Assessment year 2025 taxable value; bill payable 2026-2027"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Polk County real-estate PIN 792303400006; 5200 NE 62nd Avenue, industrial PCI 3-6 and security improvements",
+        "county_fips": "19153",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_polk_county_tax_search_2026",
+      "source_locator": "PIN 792303400006, 2025 tax-year district-calculation page, taxable value",
+      "notes": "Current account-level taxable value after applicable classification, rollback, adjustment, and exemption treatment. It is not the assessor full value, selected-building value, tax avoided, or a payment.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "meta_altoona_792303400006_taxable_assessed_value"
+    },
+    {
+      "claim_id": "clm_study_meta_altoona_792310100004_property_taxes_paid_2020",
+      "project_id": "prj_study_im3_building_00438078069",
+      "metric_code": "study.property_taxes_paid",
+      "value": 520750,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2020,
+        "label": "Tax year 2020 aggregate real-property principal paid"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Polk County real-estate PIN 792310100004; 6007 NE 46th Street, industrial ATN 5-6, PCI 1-2 and security improvements",
+        "county_fips": "19153",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_polk_county_tax_search_2026",
+      "source_locator": "PIN 792310100004, All Real Estate Payments, 2020 tax-year aggregate",
+      "notes": "Portal payment history total across all displayed bills and installments for this active real-estate account. It is not allocated to the selected building and is not a PILOT, recipient distribution, public-service cost, or net fiscal result.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "meta_altoona_792310100004_real_property_taxes_paid"
+    },
+    {
+      "claim_id": "clm_study_meta_altoona_792310100004_property_taxes_paid_2021",
+      "project_id": "prj_study_im3_building_00438078069",
+      "metric_code": "study.property_taxes_paid",
+      "value": 545044,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2021,
+        "label": "Tax year 2021 aggregate real-property principal paid"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Polk County real-estate PIN 792310100004; 6007 NE 46th Street, industrial ATN 5-6, PCI 1-2 and security improvements",
+        "county_fips": "19153",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_polk_county_tax_search_2026",
+      "source_locator": "PIN 792310100004, All Real Estate Payments, 2021 tax-year aggregate",
+      "notes": "Portal payment history total across all displayed bills and installments for this active real-estate account. It is not allocated to the selected building and is not a PILOT, recipient distribution, public-service cost, or net fiscal result.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "meta_altoona_792310100004_real_property_taxes_paid"
+    },
+    {
+      "claim_id": "clm_study_meta_altoona_792310100004_property_taxes_paid_2022",
+      "project_id": "prj_study_im3_building_00438078069",
+      "metric_code": "study.property_taxes_paid",
+      "value": 565892,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2022,
+        "label": "Tax year 2022 aggregate real-property principal paid"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Polk County real-estate PIN 792310100004; 6007 NE 46th Street, industrial ATN 5-6, PCI 1-2 and security improvements",
+        "county_fips": "19153",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_polk_county_tax_search_2026",
+      "source_locator": "PIN 792310100004, All Real Estate Payments, 2022 tax-year aggregate",
+      "notes": "Portal payment history total across all displayed bills and installments for this active real-estate account. It is not allocated to the selected building and is not a PILOT, recipient distribution, public-service cost, or net fiscal result.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "meta_altoona_792310100004_real_property_taxes_paid"
+    },
+    {
+      "claim_id": "clm_study_meta_altoona_792310100004_property_taxes_paid_2023",
+      "project_id": "prj_study_im3_building_00438078069",
+      "metric_code": "study.property_taxes_paid",
+      "value": 673040,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2023,
+        "label": "Tax year 2023 aggregate real-property principal paid"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Polk County real-estate PIN 792310100004; 6007 NE 46th Street, industrial ATN 5-6, PCI 1-2 and security improvements",
+        "county_fips": "19153",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_polk_county_tax_search_2026",
+      "source_locator": "PIN 792310100004, All Real Estate Payments, 2023 tax-year aggregate",
+      "notes": "Portal payment history total across all displayed bills and installments for this active real-estate account. It is not allocated to the selected building and is not a PILOT, recipient distribution, public-service cost, or net fiscal result.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "meta_altoona_792310100004_real_property_taxes_paid"
+    },
+    {
+      "claim_id": "clm_study_meta_altoona_792310100004_property_taxes_paid_2024",
+      "project_id": "prj_study_im3_building_00438078069",
+      "metric_code": "study.property_taxes_paid",
+      "value": 703438,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2024,
+        "label": "Tax year 2024 aggregate real-property principal paid"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Polk County real-estate PIN 792310100004; 6007 NE 46th Street, industrial ATN 5-6, PCI 1-2 and security improvements",
+        "county_fips": "19153",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_polk_county_tax_search_2026",
+      "source_locator": "PIN 792310100004, All Real Estate Payments, 2024 tax-year aggregate",
+      "notes": "Portal payment history total across all displayed bills and installments for this active real-estate account. It is not allocated to the selected building and is not a PILOT, recipient distribution, public-service cost, or net fiscal result.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "meta_altoona_792310100004_real_property_taxes_paid"
+    },
+    {
+      "claim_id": "clm_study_meta_altoona_792310100004_appraised_value_2026",
+      "project_id": "prj_study_im3_building_00438078069",
+      "metric_code": "study.appraised_property_value",
+      "value": 467400000,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "reported_snapshot",
+        "report_date": "2026-09-07",
+        "label": "2026 Polk County Assessor full value"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Polk County real-estate PIN 792310100004; 6007 NE 46th Street, industrial ATN 5-6, PCI 1-2 and security improvements",
+        "county_fips": "19153",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_polk_county_assessor_siculus_2026",
+      "source_locator": "Property record card gp=792310100004, 2026 full-value row",
+      "notes": "Account-level assessor full value before the separate adjusted and taxable treatments. It is not selected-building investment, taxable value, tax avoided, a payment, or a public cost.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07"
+    },
+    {
+      "claim_id": "clm_study_meta_altoona_792310100004_taxable_assessed_value_2025",
+      "project_id": "prj_study_im3_building_00438078069",
+      "metric_code": "study.taxable_assessed_value",
+      "value": 21566528,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2025,
+        "label": "Assessment year 2025 taxable value; bill payable 2026-2027"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Polk County real-estate PIN 792310100004; 6007 NE 46th Street, industrial ATN 5-6, PCI 1-2 and security improvements",
+        "county_fips": "19153",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_polk_county_tax_search_2026",
+      "source_locator": "PIN 792310100004, 2025 tax-year district-calculation page, taxable value",
+      "notes": "Current account-level taxable value after applicable classification, rollback, adjustment, and exemption treatment. It is not the assessor full value, selected-building value, tax avoided, or a payment.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "meta_altoona_792310100004_taxable_assessed_value"
+    },
+    {
+      "claim_id": "clm_study_meta_altoona_792310200006_property_taxes_paid_2020",
+      "project_id": "prj_study_im3_building_00438078069",
+      "metric_code": "study.property_taxes_paid",
+      "value": 820,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2020,
+        "label": "Tax year 2020 aggregate real-property principal paid"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Polk County real-estate PIN 792310200006; active vacant commercial land account",
+        "county_fips": "19153",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_polk_county_tax_search_2026",
+      "source_locator": "PIN 792310200006, All Real Estate Payments, 2020 tax-year aggregate",
+      "notes": "Portal payment history total across all displayed bills and installments for this active real-estate account. It is not allocated to the selected building and is not a PILOT, recipient distribution, public-service cost, or net fiscal result.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "meta_altoona_792310200006_real_property_taxes_paid"
+    },
+    {
+      "claim_id": "clm_study_meta_altoona_792310200006_property_taxes_paid_2021",
+      "project_id": "prj_study_im3_building_00438078069",
+      "metric_code": "study.property_taxes_paid",
+      "value": 858,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2021,
+        "label": "Tax year 2021 aggregate real-property principal paid"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Polk County real-estate PIN 792310200006; active vacant commercial land account",
+        "county_fips": "19153",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_polk_county_tax_search_2026",
+      "source_locator": "PIN 792310200006, All Real Estate Payments, 2021 tax-year aggregate",
+      "notes": "Portal payment history total across all displayed bills and installments for this active real-estate account. It is not allocated to the selected building and is not a PILOT, recipient distribution, public-service cost, or net fiscal result.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "meta_altoona_792310200006_real_property_taxes_paid"
+    },
+    {
+      "claim_id": "clm_study_meta_altoona_792310200006_property_taxes_paid_2022",
+      "project_id": "prj_study_im3_building_00438078069",
+      "metric_code": "study.property_taxes_paid",
+      "value": 854,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2022,
+        "label": "Tax year 2022 aggregate real-property principal paid"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Polk County real-estate PIN 792310200006; active vacant commercial land account",
+        "county_fips": "19153",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_polk_county_tax_search_2026",
+      "source_locator": "PIN 792310200006, All Real Estate Payments, 2022 tax-year aggregate",
+      "notes": "Portal payment history total across all displayed bills and installments for this active real-estate account. It is not allocated to the selected building and is not a PILOT, recipient distribution, public-service cost, or net fiscal result.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "meta_altoona_792310200006_real_property_taxes_paid"
+    },
+    {
+      "claim_id": "clm_study_meta_altoona_792310200006_property_taxes_paid_2023",
+      "project_id": "prj_study_im3_building_00438078069",
+      "metric_code": "study.property_taxes_paid",
+      "value": 524,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2023,
+        "label": "Tax year 2023 aggregate real-property principal paid"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Polk County real-estate PIN 792310200006; active vacant commercial land account",
+        "county_fips": "19153",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_polk_county_tax_search_2026",
+      "source_locator": "PIN 792310200006, All Real Estate Payments, 2023 tax-year aggregate",
+      "notes": "Portal payment history total across all displayed bills and installments for this active real-estate account. It is not allocated to the selected building and is not a PILOT, recipient distribution, public-service cost, or net fiscal result.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "meta_altoona_792310200006_real_property_taxes_paid"
+    },
+    {
+      "claim_id": "clm_study_meta_altoona_792310200006_property_taxes_paid_2024",
+      "project_id": "prj_study_im3_building_00438078069",
+      "metric_code": "study.property_taxes_paid",
+      "value": 536,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2024,
+        "label": "Tax year 2024 aggregate real-property principal paid"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Polk County real-estate PIN 792310200006; active vacant commercial land account",
+        "county_fips": "19153",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_polk_county_tax_search_2026",
+      "source_locator": "PIN 792310200006, All Real Estate Payments, 2024 tax-year aggregate",
+      "notes": "Portal payment history total across all displayed bills and installments for this active real-estate account. It is not allocated to the selected building and is not a PILOT, recipient distribution, public-service cost, or net fiscal result.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "meta_altoona_792310200006_real_property_taxes_paid"
+    },
+    {
+      "claim_id": "clm_study_meta_altoona_792310200006_appraised_value_2026",
+      "project_id": "prj_study_im3_building_00438078069",
+      "metric_code": "study.appraised_property_value",
+      "value": 33200,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "reported_snapshot",
+        "report_date": "2026-09-07",
+        "label": "2026 Polk County Assessor full value"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Polk County real-estate PIN 792310200006; active vacant commercial land account",
+        "county_fips": "19153",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_polk_county_assessor_siculus_2026",
+      "source_locator": "Property record card gp=792310200006, 2026 full-value row",
+      "notes": "Account-level assessor full value before the separate adjusted and taxable treatments. It is not selected-building investment, taxable value, tax avoided, a payment, or a public cost.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07"
+    },
+    {
+      "claim_id": "clm_study_meta_altoona_792310200006_taxable_assessed_value_2025",
+      "project_id": "prj_study_im3_building_00438078069",
+      "metric_code": "study.taxable_assessed_value",
+      "value": 14785,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2025,
+        "label": "Assessment year 2025 taxable value; bill payable 2026-2027"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Polk County real-estate PIN 792310200006; active vacant commercial land account",
+        "county_fips": "19153",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_polk_county_tax_search_2026",
+      "source_locator": "PIN 792310200006, 2025 tax-year district-calculation page, taxable value",
+      "notes": "Current account-level taxable value after applicable classification, rollback, adjustment, and exemption treatment. It is not the assessor full value, selected-building value, tax avoided, or a payment.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "meta_altoona_792310200006_taxable_assessed_value"
+    },
+    {
+      "claim_id": "clm_study_meta_altoona_792310200007_property_taxes_paid_2020",
+      "project_id": "prj_study_im3_building_00438078069",
+      "metric_code": "study.property_taxes_paid",
+      "value": 122360,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2020,
+        "label": "Tax year 2020 aggregate real-property principal paid"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Polk County real-estate PIN 792310200007; active 40,000-square-foot warehouse account",
+        "county_fips": "19153",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_polk_county_tax_search_2026",
+      "source_locator": "PIN 792310200007, All Real Estate Payments, 2020 tax-year aggregate",
+      "notes": "Portal payment history total across all displayed bills and installments for this active real-estate account. It is not allocated to the selected building and is not a PILOT, recipient distribution, public-service cost, or net fiscal result.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "meta_altoona_792310200007_real_property_taxes_paid"
+    },
+    {
+      "claim_id": "clm_study_meta_altoona_792310200007_property_taxes_paid_2021",
+      "project_id": "prj_study_im3_building_00438078069",
+      "metric_code": "study.property_taxes_paid",
+      "value": 136724,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2021,
+        "label": "Tax year 2021 aggregate real-property principal paid"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Polk County real-estate PIN 792310200007; active 40,000-square-foot warehouse account",
+        "county_fips": "19153",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_polk_county_tax_search_2026",
+      "source_locator": "PIN 792310200007, All Real Estate Payments, 2021 tax-year aggregate",
+      "notes": "Portal payment history total across all displayed bills and installments for this active real-estate account. It is not allocated to the selected building and is not a PILOT, recipient distribution, public-service cost, or net fiscal result.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "meta_altoona_792310200007_real_property_taxes_paid"
+    },
+    {
+      "claim_id": "clm_study_meta_altoona_792310200007_property_taxes_paid_2022",
+      "project_id": "prj_study_im3_building_00438078069",
+      "metric_code": "study.property_taxes_paid",
+      "value": 135908,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2022,
+        "label": "Tax year 2022 aggregate real-property principal paid"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Polk County real-estate PIN 792310200007; active 40,000-square-foot warehouse account",
+        "county_fips": "19153",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_polk_county_tax_search_2026",
+      "source_locator": "PIN 792310200007, All Real Estate Payments, 2022 tax-year aggregate",
+      "notes": "Portal payment history total across all displayed bills and installments for this active real-estate account. It is not allocated to the selected building and is not a PILOT, recipient distribution, public-service cost, or net fiscal result.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "meta_altoona_792310200007_real_property_taxes_paid"
+    },
+    {
+      "claim_id": "clm_study_meta_altoona_792310200007_property_taxes_paid_2023",
+      "project_id": "prj_study_im3_building_00438078069",
+      "metric_code": "study.property_taxes_paid",
+      "value": 167984,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2023,
+        "label": "Tax year 2023 aggregate real-property principal paid"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Polk County real-estate PIN 792310200007; active 40,000-square-foot warehouse account",
+        "county_fips": "19153",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_polk_county_tax_search_2026",
+      "source_locator": "PIN 792310200007, All Real Estate Payments, 2023 tax-year aggregate",
+      "notes": "Portal payment history total across all displayed bills and installments for this active real-estate account. It is not allocated to the selected building and is not a PILOT, recipient distribution, public-service cost, or net fiscal result.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "meta_altoona_792310200007_real_property_taxes_paid"
+    },
+    {
+      "claim_id": "clm_study_meta_altoona_792310200007_property_taxes_paid_2024",
+      "project_id": "prj_study_im3_building_00438078069",
+      "metric_code": "study.property_taxes_paid",
+      "value": 167976,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2024,
+        "label": "Tax year 2024 aggregate real-property principal paid"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Polk County real-estate PIN 792310200007; active 40,000-square-foot warehouse account",
+        "county_fips": "19153",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_polk_county_tax_search_2026",
+      "source_locator": "PIN 792310200007, All Real Estate Payments, 2024 tax-year aggregate",
+      "notes": "Portal payment history total across all displayed bills and installments for this active real-estate account. It is not allocated to the selected building and is not a PILOT, recipient distribution, public-service cost, or net fiscal result.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "meta_altoona_792310200007_real_property_taxes_paid"
+    },
+    {
+      "claim_id": "clm_study_meta_altoona_792310200007_appraised_value_2026",
+      "project_id": "prj_study_im3_building_00438078069",
+      "metric_code": "study.appraised_property_value",
+      "value": 11600000,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "reported_snapshot",
+        "report_date": "2026-09-07",
+        "label": "2026 Polk County Assessor full value"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Polk County real-estate PIN 792310200007; active 40,000-square-foot warehouse account",
+        "county_fips": "19153",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_polk_county_assessor_siculus_2026",
+      "source_locator": "Property record card gp=792310200007, 2026 full-value row",
+      "notes": "Account-level assessor full value before the separate adjusted and taxable treatments. It is not selected-building investment, taxable value, tax avoided, a payment, or a public cost.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07"
+    },
+    {
+      "claim_id": "clm_study_meta_altoona_792310200007_taxable_assessed_value_2025",
+      "project_id": "prj_study_im3_building_00438078069",
+      "metric_code": "study.taxable_assessed_value",
+      "value": 5395705,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2025,
+        "label": "Assessment year 2025 taxable value; bill payable 2026-2027"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Polk County real-estate PIN 792310200007; active 40,000-square-foot warehouse account",
+        "county_fips": "19153",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_polk_county_tax_search_2026",
+      "source_locator": "PIN 792310200007, 2025 tax-year district-calculation page, taxable value",
+      "notes": "Current account-level taxable value after applicable classification, rollback, adjustment, and exemption treatment. It is not the assessor full value, selected-building value, tax avoided, or a payment.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "meta_altoona_792310200007_taxable_assessed_value"
+    },
+    {
+      "claim_id": "clm_study_meta_altoona_792310401005_property_taxes_paid_2020",
+      "project_id": "prj_study_im3_building_00438078069",
+      "metric_code": "study.property_taxes_paid",
+      "value": 612576,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2020,
+        "label": "Tax year 2020 aggregate real-property principal paid"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Polk County real-estate PIN 792310401005; 1700 34th Avenue, 190.559-acre ATN 1-4 campus parcel",
+        "county_fips": "19153",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_polk_county_tax_search_2026",
+      "source_locator": "PIN 792310401005, All Real Estate Payments, 2020 tax-year aggregate",
+      "notes": "Portal payment history total across all displayed bills and installments for this active real-estate account. It is not allocated to the selected building and is not a PILOT, recipient distribution, public-service cost, or net fiscal result.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "meta_altoona_792310401005_real_property_taxes_paid"
+    },
+    {
+      "claim_id": "clm_study_meta_altoona_792310401005_property_taxes_paid_2021",
+      "project_id": "prj_study_im3_building_00438078069",
+      "metric_code": "study.property_taxes_paid",
+      "value": 643222,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2021,
+        "label": "Tax year 2021 aggregate real-property principal paid"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Polk County real-estate PIN 792310401005; 1700 34th Avenue, 190.559-acre ATN 1-4 campus parcel",
+        "county_fips": "19153",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_polk_county_tax_search_2026",
+      "source_locator": "PIN 792310401005, All Real Estate Payments, 2021 tax-year aggregate",
+      "notes": "Portal payment history total across all displayed bills and installments for this active real-estate account. It is not allocated to the selected building and is not a PILOT, recipient distribution, public-service cost, or net fiscal result.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "meta_altoona_792310401005_real_property_taxes_paid"
+    },
+    {
+      "claim_id": "clm_study_meta_altoona_792310401005_property_taxes_paid_2022",
+      "project_id": "prj_study_im3_building_00438078069",
+      "metric_code": "study.property_taxes_paid",
+      "value": 638404,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2022,
+        "label": "Tax year 2022 aggregate real-property principal paid"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Polk County real-estate PIN 792310401005; 1700 34th Avenue, 190.559-acre ATN 1-4 campus parcel",
+        "county_fips": "19153",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_polk_county_tax_search_2026",
+      "source_locator": "PIN 792310401005, All Real Estate Payments, 2022 tax-year aggregate",
+      "notes": "Portal payment history total across all displayed bills and installments for this active real-estate account. It is not allocated to the selected building and is not a PILOT, recipient distribution, public-service cost, or net fiscal result.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "meta_altoona_792310401005_real_property_taxes_paid"
+    },
+    {
+      "claim_id": "clm_study_meta_altoona_792310401005_property_taxes_paid_2023",
+      "project_id": "prj_study_im3_building_00438078069",
+      "metric_code": "study.property_taxes_paid",
+      "value": 758556,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2023,
+        "label": "Tax year 2023 aggregate real-property principal paid"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Polk County real-estate PIN 792310401005; 1700 34th Avenue, 190.559-acre ATN 1-4 campus parcel",
+        "county_fips": "19153",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_polk_county_tax_search_2026",
+      "source_locator": "PIN 792310401005, All Real Estate Payments, 2023 tax-year aggregate",
+      "notes": "Portal payment history total across all displayed bills and installments for this active real-estate account. It is not allocated to the selected building and is not a PILOT, recipient distribution, public-service cost, or net fiscal result.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "meta_altoona_792310401005_real_property_taxes_paid"
+    },
+    {
+      "claim_id": "clm_study_meta_altoona_792310401005_property_taxes_paid_2024",
+      "project_id": "prj_study_im3_building_00438078069",
+      "metric_code": "study.property_taxes_paid",
+      "value": 758360,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2024,
+        "label": "Tax year 2024 aggregate real-property principal paid"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Polk County real-estate PIN 792310401005; 1700 34th Avenue, 190.559-acre ATN 1-4 campus parcel",
+        "county_fips": "19153",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_polk_county_tax_search_2026",
+      "source_locator": "PIN 792310401005, All Real Estate Payments, 2024 tax-year aggregate",
+      "notes": "Portal payment history total across all displayed bills and installments for this active real-estate account. It is not allocated to the selected building and is not a PILOT, recipient distribution, public-service cost, or net fiscal result.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "meta_altoona_792310401005_real_property_taxes_paid"
+    },
+    {
+      "claim_id": "clm_study_meta_altoona_792310401005_appraised_value_2026",
+      "project_id": "prj_study_im3_building_00438078069",
+      "metric_code": "study.appraised_property_value",
+      "value": 365600000,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "reported_snapshot",
+        "report_date": "2026-09-07",
+        "label": "2026 Polk County Assessor full value"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Polk County real-estate PIN 792310401005; 1700 34th Avenue, 190.559-acre ATN 1-4 campus parcel",
+        "county_fips": "19153",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_polk_county_assessor_siculus_2026",
+      "source_locator": "Property record card gp=792310401005, 2026 full-value row",
+      "notes": "Account-level assessor full value before the separate adjusted and taxable treatments. It is not selected-building investment, taxable value, tax avoided, a payment, or a public cost.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07"
+    },
+    {
+      "claim_id": "clm_study_meta_altoona_792310401005_taxable_assessed_value_2025",
+      "project_id": "prj_study_im3_building_00438078069",
+      "metric_code": "study.taxable_assessed_value",
+      "value": 22375273,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "tax_year",
+        "year": 2025,
+        "label": "Assessment year 2025 taxable value; bill payable 2026-2027"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Polk County real-estate PIN 792310401005; 1700 34th Avenue, 190.559-acre ATN 1-4 campus parcel",
+        "county_fips": "19153",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_polk_county_tax_search_2026",
+      "source_locator": "PIN 792310401005, 2025 tax-year district-calculation page, taxable value",
+      "notes": "Current account-level taxable value after applicable classification, rollback, adjustment, and exemption treatment. It is not the assessor full value, selected-building value, tax avoided, or a payment.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "meta_altoona_792310401005_taxable_assessed_value"
+    },
+    {
+      "claim_id": "clm_study_meta_altoona_assessor_atn1_floor_area_2026",
+      "project_id": "prj_study_im3_building_00438078069",
+      "metric_code": "study.operating_property_floor_area",
+      "value": 312131,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "reported_snapshot",
+        "report_date": "2026-09-07",
+        "label": "Assessor building-section record for ATN1"
+      },
+      "scope": {
+      "level": "campus",
+        "label": "Assessor ATN1 building section on campus PIN 792310401005",
+        "county_fips": "19153",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_polk_county_assessor_siculus_2026",
+      "source_locator": "PIN 792310401005, Commercial Buildings section, ATN1, gross area",
+      "notes": "Assessor-recorded ATN1 gross area. Its 312,131 square feet is close to but does not equal the selected 315,400-square-foot IM3 footprint, so ATN1 is only a candidate crosswalk and no ATN1 value, tax, payment, or operation is allocated to the selected building.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07"
     }
   ],
   "project_updates": [
@@ -672,7 +2513,7 @@
       "source_id": "src_study_meta_altoona_online_20141114",
       "as_of": "2026-09-07",
       "title": "Boundary and chronology audit — selected building remains distinct from campus",
-      "notes": "The inventory target is one 315,400-square-foot building footprint named Facebook Altoona Data Center 1, while operator, IEDA, city, tax and DNR sources overwhelmingly describe the multi-building Siculus/Meta Altoona campus. Facebook announced the project April 23, 2013 and reported the Altoona data center online November 14, 2014. No public IM3-to-ATN building-number, street-address, parcel, incentive-award or equipment crosswalk was found, so every campus and company-county observation remains unallocated. Siculus is a Facebook subsidiary and Facebook's corporate rename to Meta is operator continuity, not a predecessor transfer.",
+      "notes": "The inventory target is one 315,400-square-foot building footprint named Facebook Altoona Data Center 1, while operator, IEDA, city, tax and DNR sources overwhelmingly describe the multi-building Siculus/Meta Altoona campus. Facebook announced the project April 23, 2013 and reported the Altoona data center online November 14, 2014. Assessor PIN 792310401005 contains ATN1, ATN2, ATN3, ATN4, ATN-4B and security sections; ATN1 is 312,131 square feet, close to but not equal to the IM3 footprint. It is retained only as a candidate crosswalk, so every campus, parcel and company-county amount remains unallocated. Siculus is a Facebook subsidiary and Facebook's corporate rename to Meta is operator continuity, not a predecessor transfer.",
       "project_description": "Meta's Altoona project is an operating multi-building data-center campus in Altoona, Polk County, Iowa, held in public records through its Siculus subsidiary. Facebook announced the project in April 2013 and reported the data center online on November 14, 2014; subsequent expansions extended construction into the 2020s. This account follows the selected 315,400-square-foot IM3 building footprint while keeping campus-wide investment, employment, utility, permit, incentive, and community figures unallocated from that building."
     },
     {
@@ -686,8 +2527,8 @@
       "project_id": "prj_study_im3_building_00438078069",
       "source_id": "src_study_polk_county_tax_search_2026",
       "as_of": "2026-09-07",
-      "title": "Assessor and tax audit — multi-parcel search did not yield a selected-building tax account",
-      "notes": "Sources checked: Polk County Treasurer and assessor-linked interactive property-tax search by Siculus company name, 100 Share Way address and sample parcel details. The company query returned 34 rows including duplicates/inactive accounts and parcels such as 292310300006, 792303400002, 792303400006, 792310100001, 792310200001/006/007/008, 792310300001/006 and 792310401002-005; the DNR address query returned no exact row. Sampled accounts 292310300006 and 792310200002 were inactive and had no bill. Because the active parcel set, real/personal property accounts, abatements, PILOT accounts and selected building are not reconciled, no assessed value, tax bill, payment, tax distribution or tax-derived fiscal model is retained; missing evidence is not recorded as zero."
+      "title": "Assessor and tax audit — all 34 search rows reconciled to 22 real-estate PINs",
+      "notes": "The 34 displayed rows resolve as follows. ACTIVE, one row each: 792303400004, 792310100002, 792310200008, 792310300006, 792310377001, 792303400006, 792310100004, 792310200006, 792310200007 and 792310401005; their 2020-2024 payments, 2025 taxable values and 2026 assessor full values are retained as separate unallocated account observations. Their current net bills, cataloged but not normalized because the dictionary lacks a billed-tax metric, are respectively $1,794, $4,404, $73,210, $1,404, $23,080, $630,092, $797,854, $570, $199,614 and $863,856. RETIRED, two duplicate rows each: 792303400001 (terminal 2019 bill $7,418), 792303400003 (no Treasurer bill), 792310100001 (no bill), 792310100003 (terminal 2018 bill $506,380), 792310200001 (terminal 2019 bill $1,442), 792310200002 (terminal 2019 bill $576), 792310300001 (no bill), 792310401002 (terminal 2012 bill $5,294; district-calculation discrepancy retained), 792310401003 (no bill), 792310401004 (terminal 2016 bill approximately $303,416), 292310300006 (terminal 2015 bill $1,402), and 792303400002 (terminal 2019 bill approximately $3,522). Thus 10 active rows plus 24 retired duplicate rows equal all 34 results. Assessor alternative parcel numbers, legal/title history, land/building use, occupants, TIF labels and addresses were crosswalked. PIN 792310401005 contains ATN1-4 on one campus account; later ATN5-6/PCI improvements occupy other accounts. No account is identified for temporary buildings or the PILOT. Retired terminal bills are not treated as current or paid and are not combined with successors. The public portal is real-estate-only, exposes no personal-property search, and links Tax Distribution only for special assessments; ordinary recipient distributions remain unavailable."
     },
     {
       "project_id": "prj_study_im3_building_00438078069",
@@ -700,8 +2541,8 @@
       "project_id": "prj_study_im3_building_00438078069",
       "source_id": "src_study_altoona_council_minutes_20210315",
       "as_of": "2026-09-07",
-      "title": "Utility and infrastructure audit — agreements and a commitment found, bills absent",
-      "notes": "Sources checked: Altoona council minutes, water and sewer code/rate materials, infrastructure and will-serve agreement indexes, City development-agreement reporting, MidAmerican/grid reporting, and queries for Siculus/Meta meter, demand, electricity, water, sewer, franchise fee, pump station and reimbursement. City minutes confirm infrastructure and will-serve amendments but disclose no flows, rates, invoices or payments. Reporting identifies a $500,000 company pump-station commitment, retained only as a source projection. Meta's facility table supplies electricity consumption directly. No utility bill, electricity demand, rate, payment, wastewater flow, water-meter series, completed infrastructure contribution, municipal service cost, or selected-building share was found."
+      "title": "Utility and infrastructure audit — tariff and franchise models tested, bills absent",
+      "notes": "Sources checked: Altoona council minutes and code, infrastructure and will-serve amendments, water/sewer materials, MidAmerican's filed Iowa tariffs, and Siculus/Meta meter, demand, electricity, franchise-fee, pump-station and reimbursement paths. Meta's actual 2020-2024 kWh imply only annual average demand: 111.872, 108.528, 119.133, 141.930 and 180.487 MW (2024 uses 8,784 hours). MidAmerican offers materially different Large General Service, Substation Service and Individual Customer Rate structures, with demand, voltage, ratchet, rider, curtailment and possible special-contract terms. Average demand is a lower bound on peak billing demand but supplies no finite upper bound; therefore neither total electricity expense nor the associated franchise-fee base is bounded by annual kWh. Indispensable missing inputs are the service tariff/class or contract, monthly interval/billed kW, voltage and meter count, power factor, riders, bill totals, and customer-specific franchise inclusion, exemption/credit and remittance records. The $500,000 pump-station commitment remains prospective because no completion, invoice or payment record was found."
     },
     {
       "project_id": "prj_study_im3_building_00438078069",
@@ -714,8 +2555,8 @@
       "project_id": "prj_study_im3_building_00438078069",
       "source_id": "src_study_iowa_warn_ies_2025",
       "as_of": "2026-09-07",
-      "title": "Workforce, procurement and supplier audit — identities found, spending absent",
-      "notes": "Sources checked: Meta expansion releases, Turner Construction/project references, Hardhat in Hand and DMACC training references, Iowa Workforce Development WARN notices, contractor/trade coverage, and queries combining Siculus/Meta/Altoona with contractor, subcontractor, vendor, supplier, procurement, payroll, wage, apprentice, local hire and resident. Meta names Turner as general contractor and reports a seven-person training cohort; the 2025 WARN table identifies an IES Communications layoff at 500 Share Way. These establish supplier/workforce activity but no invoices, contract values, annual supplier spend, establishment geography, locally retained share, payroll, benefits, job placements, worker residence, occupation mix, or selected-building allocation. Supplier contribution therefore remains an explicit gap and no multiplier is applied."
+      "title": "Workforce, procurement and supplier audit — hours and contractor identities found, spend absent",
+      "notes": "The reopened workforce and supplier trail covered Turner, IES Communications, Allied Construction Services, City permit reports, bid and procurement indexes, claims/check-register and lien queries, Hardhat in Hand/DMACC training, and recipient records. Meta names Turner, reports seven training graduates, and reports 8.7 million construction work hours since 2013; Iowa WARN identifies an IES event at 500 Share Way, and OSHA identifies Allied at 100 Share Way. Dividing 8.7 million hours by a stated 2,080-hour convention would yield about 4,183 standardized FTE-years, not unique jobs, Iowa-resident job-years, payroll, or a selected-building result; the dictionary also lacks a construction-hours/job-years metric. Applying IEDA's $23.12 and $53.87 qualifying-job wage figures would produce $201.144 million and $468.669 million, but these are not defensible payroll bounds because those award wages do not describe construction trades, overtime or benefits. A 400-person operating headcount times 2,080 hours and the same wages would produce $19.236 million to $44.820 million, also invalid because 400 daily on-site people are not annual FTEs and the award wages apply only to qualifying jobs. Indispensable inputs are certified payroll or trade-hour/wage distributions for construction, annual average FTE and payroll by employer/contractor for operations, and worker residence; invoices, contract values, supplier establishments, local-purchase shares and selected-building allocation are also missing. No supplier or payroll model is retained."
     },
     {
       "project_id": "prj_study_im3_building_00438078069",
@@ -735,36 +2576,36 @@
       "project_id": "prj_study_im3_building_00438078069",
       "source_id": "src_study_altoona_council_minutes_20241118",
       "as_of": "2026-09-07",
-      "title": "Fiscal and public-cost audit — projections found, realized ledger absent",
-      "notes": "Sources checked: 2019 and 2024 development-agreement reporting, council minutes, IEDA benefit tables, Polk tax accounts, City budgets/minutes and searches for PILOT, franchise fee, property tax, abatement, refund, incentive, tax credit, public service, fire, police, road, water, sewer and infrastructure cost. The 2024 minutes support an approximately $810,000 annual PILOT projection for temporary buildings, and IEDA reports a $26 million maximum benefit for contract 13. Neither is a realized payment. No same-scope series for PILOT receipts, property taxes paid, credits claimed/certified, abatements in dollars, franchise-fee retention, recurring service costs, public infrastructure funding or net municipal/county fiscal result was found."
+      "title": "Fiscal and public-cost audit — real-property payments found; net account still unbounded",
+      "notes": "The correction establishes separate actual 2020-2024 real-property payment series for all 10 active Siculus PINs plus current taxable values and bills. These are campus/parcel observations, not selected-building receipts or recipient distributions. The 2024 amendment supports only an approximately $810,000 annual temporary-building PILOT projection at $6 per square foot; no PILOT receipt was found. The reported $500,000 pump-station commitment has no completion/payment record. IEDA's $26 million contract-13 maximum benefit is a ceiling with no project claims/certification ledger located. Contemporaneous reporting describes a 2019 $3-per-square-foot PILOT, 20-year abatement and roughly $1.5 million annual franchise-fee estimate, but the underlying agreement and realized city ledger were not recovered. Exact Siculus/Facebook/Meta searches found no named row among 332 Altoona FY2013-2025 TIF expenditure rows or 475 Altoona FY2012-2025 urban-renewal-project rows; this does not prove zero unnamed or non-TIF cost. A break-even identity using property tax plus PILOT plus franchise receipts minus service and infrastructure costs was tested, but coverage changes by parcel/year and every non-property-tax stream or public-cost term lacks a same-scope actual series. No realized public-service, road, fire, police, utility-infrastructure or other public-cost dollar record was found, so direct observations do not cover public costs and no fiscal net or break-even estimate is retained."
     },
     {
       "project_id": "prj_study_im3_building_00438078069",
       "source_id": "src_study_bea_regional_data_2026",
       "as_of": "2026-09-07",
-      "title": "County-statistics audit — governed Polk County panel reviewed as context",
-      "notes": "Sources checked: governed Polk County FIPS 19153 panel for 2001-2024, BEA regional GDP/personal-income tables, BLS QCEW county employment and wage files, industry classifications, nearby Iowa counties, and the candidate chronology. Polk County already hosted Microsoft's first West Des Moines data center by 2012, Meta construction began in 2013, the first Meta center was online in 2014, and multi-building construction continued through later expansions. County outcomes are descriptive context only because there is no single campus treatment date, selected-building exposure measure, source-registered comparison group, or isolation from concurrent hyperscale, population, and metro development."
+      "title": "County-statistics audit — two treatment dates and a screened Iowa donor pool tested",
+      "notes": "The governed 2001-2024 BLS QCEW employment/wage and BEA GDP panel was tested with construction-start treatment in 2013 and first-operation treatment in 2014. The candidate untreated pool is Linn, Johnson, Scott, Black Hawk, Woodbury, Dubuque and Story counties; Dallas and Pottawattamie were excluded for known hyperscale data-center exposure. The pool is explicit but not pre-registered, and Polk had Microsoft exposure by 2012 while Meta construction and later phases overlap. Results are retained only as design diagnostics, not contribution estimates."
     },
     {
       "project_id": "prj_study_im3_building_00438078069",
       "source_id": "src_study_meta_altoona_bls_qcew_data_2026",
       "as_of": "2026-09-07",
-      "title": "County outcome model decisions — employment, wages and GDP rejected separately",
-      "notes": "Employment candidates: simple Polk County before/after change — REJECTED because total employment combines all industries and overlapping 2013 construction, 2014 operation and later phases; matched-county or synthetic comparison — REJECTED because no pre-registered untreated donor pool with comparable metro growth, industry mix and pre-trends was found; multiplier scaling from 31, 41, 400 or 1,300 workers — REJECTED because definitions overlap and payroll, residence, local purchases and applicable coefficients are absent. Wage candidates: QCEW before/after or matched-county gap — REJECTED because county average wages are composition-sensitive and treatment/donor validity fails; imputed project payroll — REJECTED because headcounts are not FTE and occupation, wage, benefit and residence inputs are missing. GDP candidates: before/after or matched comparison — REJECTED for the same timing, donor and concurrent-investment failures; input-output scaling — REJECTED because cumulative campus investment and permit values are not dated local final demand and local-purchase shares/coefficients are absent. All three governed county comparison metrics remain missing individually."
+      "title": "County outcome model decisions — pretrend, donor and treatment sensitivity tested separately",
+      "notes": "Using the seven-county unweighted pool and 2001-2012 preperiod, normalized-log-index RMSE / annual-growth correlation / pre-gap slope were: employment 0.0182 / 0.890 / -0.320% per year; nominal weekly wage 0.0245 / 0.648 / +0.008% per year; real GDP 0.0519 / 0.705 / -0.859% per year. Mean 2013-2019 post-versus-pre gaps were employment +2.55%, wage -0.39%, GDP +7.45%; switching treatment to 2014 produced +3.10%, -0.40% and +10.17%. Leave-one-donor-out ranges across both treatment specifications were employment +1.98% to +4.26%, wage -0.83% to +0.11%, and GDP +4.86% to +13.55%. Employment has good raw prefit but a nonflat pre-gap and overlapping 2013 construction/2014 operations/later expansions; GDP has weaker prefit, a material pretrend and treatment sensitivity; wage has a nearly flat pre-gap and a robust near-zero descriptive result, but county average composition, concurrent metro treatments and absent selected-building exposure prevent project attribution. Each design was therefore tested on its own evidence and rejected as a contribution record rather than blanket-rejected."
     },
     {
       "project_id": "prj_study_im3_building_00438078069",
       "source_id": "src_study_meta_altoona_environmental_data_index_2025",
       "as_of": "2026-09-07",
-      "title": "Last-resort contribution-model gate — zero eligible estimates",
-      "notes": "Candidate-by-candidate result after direct-source gap closure: selected-building investment, construction, jobs, electricity or water by floor-area allocation — REJECTED because no IM3-to-ATN crosswalk exists, infrastructure/equipment intensity is nonuniform, and the greater-than-five-million-square-foot denominator is a future campus projection; construction job-years/payroll from 1,300 peak or 1,000 average workers — REJECTED because neither supplies hours, duration by phase, wages, benefits or residence; indirect/induced effects from state costs, cumulative investment or permits — REJECTED because bases overlap, permit value is not expenditure, annual timing and local purchase shares are absent, and no applicable source-registered multipliers were found; operations payroll/multipliers — REJECTED because 31/41 program jobs and 400-plus daily on-site people have different unknown definitions and no payroll; property tax/PILOT/net fiscal estimates — REJECTED because parcel, rate, abatement, bill, receipt, benefit realization and service-cost inputs do not reconcile; utility payments or capacity-factor estimates — REJECTED because rates, demand, meters and bills are absent and wind nameplate MW is not facility load; annual water in gallons — REJECTED as unnecessary unit conversion without a governed actual-water metric, while facility withdrawal is fully documented in source units; community annualization/multipliers — REJECTED because cumulative and 2015 amounts overlap and outcomes are not monetized. Zero modeled records are justified."
+      "title": "Last-resort contribution-model gate — tested candidates still yield zero eligible estimates",
+      "notes": "Candidate-by-candidate result after primary-record correction: selected-building allocation from assessor ATN1 area — REJECTED because 312,131 square feet does not equal IM3's 315,400 and PIN 792310401005 combines ATN1-4; construction job-years/payroll — TESTED using 8.7 million reported hours and a transparent 2,080-hour convention, but about 4,183 FTE-years is not unique/local employment and the $201.144-$468.669 million wage-threshold calculation is not a bound without certified trade payroll; operating payroll — TESTED at 400 times 2,080 hours and IEDA wages, but $19.236-$44.820 million is not a bound because headcount/FTE populations and wage definitions differ; electricity/franchise expense — TESTED from actual kWh and filed tariffs, but average demand has no finite billed-demand upper bound and service class/contract, monthly demand and franchise treatment are missing; property-tax/PILOT/net fiscal break-even — TESTED after preserving parcel payments, but PILOT, franchise, incentive realization and public-cost terms lack same-scope actuals; supplier multipliers — REJECTED because verified contractor identities have no payments or local-purchase shares; county employment, wage and GDP comparisons — TESTED with two treatments, seven donors, prefit and leave-one-out diagnostics, then rejected individually as documented; water normalization — NOT MODELED because the dictionary lacks an actual-water metric and the five source values are already cataloged. Zero modeled records are justified."
     },
     {
       "project_id": "prj_study_im3_building_00438078069",
       "source_id": "src_study_meta_altoona_announcement_2013",
       "as_of": "2026-09-07",
-      "title": "Contribution-account disposition — candidate pending adversarial review",
-      "notes": "Direct observations now cover investment, construction, operations, fiscal, public costs, resources and community; suppliers remain unsupported. The project fragment adds 27 records: 20 reported actuals and seven source projections. Together with the one existing baseline construction-peak record, the project has 28 direct records, 21 reported actuals, seven projections and zero modeled estimates. Material gaps remain for selected-building allocation, supplier/local spending, construction and operating payroll, realized incentives, actual tax/PILOT receipts, public-service costs, utility payments, annual water normalization under the current metric dictionary, and all three causal county outcomes. This initial provisional handoff is candidate_pending_adversarial_review and is not accepted evidence."
+      "title": "Contribution-account disposition — corrected candidate pending adversarial review",
+      "notes": "The corrected fragment adds 98 direct records: 91 reported actuals and seven source projections. Together with the one existing baseline construction-peak record, the merged project has 99 direct records, 92 reported actuals, seven projections and zero modeled estimates. New normalized evidence covers 50 parcel-year real-property payments, 10 taxable values, 10 assessor full values and one ATN1 floor-area observation, all unallocated; 10 current bills are cataloged rather than coerced into a nonexistent governed metric. Direct observations cover fiscal receipts only at parcel scope; they do not cover any realized public-cost amount. Material gaps remain for selected-building allocation, personal-property accounts, ordinary tax distributions, PILOT and franchise receipts, realized incentives, construction/operating payroll, supplier/local spending, public-service and infrastructure costs, utility payments/contract terms, an actual-water metric, and causal county outcomes. This corrective handoff supersedes the first-pass tax/public-cost statements, is candidate_corrected_pending_adversarial_review, and is not accepted evidence."
     }
   ]
 }
