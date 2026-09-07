@@ -1,8 +1,8 @@
 {
   "schema_version": "1.0.0",
   "study_release": "private-sector-study-1.54.0",
-  "generated_at": "2026-09-07T02:54:48Z",
-  "queue_status": "foundational_full_account_reaudit_integrated_validated_pending_publish",
+  "generated_at": "2026-09-07T12:47:00Z",
+  "queue_status": "batch_7_ready_to_launch",
   "ranking_method": "Descending covered contribution-account category count, then descending sourced economic-record count, then ascending project_id.",
   "worker_research_contract": {
     "version": "2.0.0",
@@ -18,7 +18,7 @@
     "completion_rule": "A worker commit is a handoff candidate; only an independently audited handoff may be reconciled or published."
   },
   "corrective_model_eligibility_queue": {
-    "status": "foundational_full_account_reaudit_integrated_validated_pending_publish",
+    "status": "foundational_full_account_reaudit_published",
     "reason": "Previously completed projects must be re-audited when their public-source search trail or model eligibility record does not satisfy worker-research-contract 2.0.0. This includes analytically incomplete projects with zero modeled syntheses and the three foundational full-modeled accounts created before the strengthened contract. A model may be retained only when defensible, and every rejection or retention must be documented candidate by candidate rather than asserted as a blanket conclusion.",
     "batches": [
       {
@@ -90,7 +90,7 @@
       },
       {
         "batch": "foundational_full_account_reaudit",
-        "setup_state": "integrated_validated_pending_publish",
+        "setup_state": "integrated_validated_published",
         "reason": "Apple Mesa, Switch Citadel, and Digital Crossroad Hammond pass the mechanical full-modeled-account coverage gate but predate contract 2.0.0. Their published project trails contain no explicit candidate-by-candidate search-exhaustion decisions, and 74 of their combined 104 models are low-confidence; each account therefore requires renewed direct-evidence discovery and independent retention/removal review before ordinary project batching resumes.",
         "project_ids": [
           "prj_study_im3_building_00300974499",
@@ -159,6 +159,14 @@
           "research_complete_projects": 21
         },
         "validation_result": "Passed 133 repository tests, the complete 65-schema data-contract validation, the TypeScript production build, the complete browser suite, desktop and mobile completed-project inspection, all 21 completed-project description/order checks, map population, project/county navigation, and preview-process shutdown.",
+        "publication": {
+          "commit": "cbedaf29d35752649c6461fbc192363a0d33f979",
+          "remote_branch": "origin/main",
+          "validate_and_build_run": "https://github.com/hilesfiles/data-center/actions/runs/34123577789",
+          "pages_deploy_run": "https://github.com/hilesfiles/data-center/actions/runs/34123577821",
+          "live_manifest": "https://hilesfiles.github.io/data-center/data/v1/study/manifest.json",
+          "verified_at": "2026-09-07T12:47:00Z"
+        },
         "result": "All three handoffs independently accepted and reconciled without cross-project overwrites. The re-audit added 48 net source records, removed 95 net modeled records, replaced superseded Switch and Hammond observations, retained only narrowly supported last-resort estimates, and restored every foundational account to incomplete until its remaining direct-evidence gaps are closed."
       }
     ]
