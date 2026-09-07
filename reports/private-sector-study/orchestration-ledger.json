@@ -1540,17 +1540,17 @@
       "candidate_commit_sha": "ee0d5dab98634c92ad1321cab87bb735b5e60f77",
       "prior_corrective_commit_sha": "a5d1dc32417b3bc1abd93f1d3a98af6dd67b09b7",
       "rejected_policy_corrective_commit_sha": "060fce5d3196646f168ac1f17719c67b7a55cfbe",
-      "corrective_commit_sha": null,
-      "independent_acceptance_audit": "The 060fce5 policy corrective remains rejected under worker-research-contract 3.1.0. Independent review reproduced the five annual active-PIN tax totals, 2024 equal-cost threshold, five average-load conversions, 8.7-million-hour job-year equivalent, construction and operating payroll endpoints, and all three noncausal county-gap values; the focused eight tests pass. Acceptance is withheld because the proposed actual-water metric uses schema-incompatible unit megaliters_per_year and aggregation sum despite the explicit requirement to use a valid catalog unit and definition.",
-      "worker_commit_sha": "060fce5d3196646f168ac1f17719c67b7a55cfbe",
-      "status": "gap_closure_in_progress",
+      "corrective_commit_sha": "d6a369d06109991ab190128afa8b2248b3e8429a",
+      "independent_acceptance_audit": "Accepted for batch reconciliation after worker-research-contract 3.1.0 audit. The orchestrator inspected the 28-source family matrix, 100 fragment records, 14 metric-disposition updates, one compliant project description and all 17 syntheses; independently reproduced the five active-PIN tax totals, 2024 equal-cost threshold, five average-load conversions, 8.7-million-hour job-year equivalent, construction and operating payroll endpoints, three noncausal county gaps, and all five ML-to-US-gallon conversions; and reran the focused eight-test suite plus diff validation. The final d6a369d correction supplies a schema-compatible annual-water-withdrawal metric and five exact claim payloads for orchestrator-owned catalog reconciliation without editing shared files.",
+      "worker_commit_sha": "d6a369d06109991ab190128afa8b2248b3e8429a",
+      "status": "accepted_pending_batch_reconciliation",
       "source_record_additions": 91,
       "forecast_additions": 9,
       "modeled_record_additions": 17,
-      "validation_result": "The 060fce5 commit has correct three-file scope, a clean worktree and eight passing focused tests. Its 17 syntheses repair the prior zero-model failure and the five direct water observations now have proposed claim payloads, but the proposed catalog definition is invalid. The same worker must convert the source ML series to gallons_per_year with a disclosed conversion and use aggregation none before another acceptance audit.",
+      "validation_result": "The final d6a369d handoff has authorized project-scoped file history, a clean worktree, eight passing focused tests and a clean diff. It retains 91 fragment reported actuals, nine source projections and 17 modeled syntheses; the five proposed water observations will raise the fragment to 96 reported actuals only after the orchestrator adds study.annual_water_withdrawal with gallons_per_year and aggregation none during reconciliation.",
       "integration_commit": null,
       "remaining_unresolved_analytical_limits": [
-        "The five actual 2020-2024 water-withdrawal observations await a schema-compatible orchestrator-owned metric addition and record reconciliation.",
+        "The five actual 2020-2024 water-withdrawal observations have accepted schema-compatible payloads but await orchestrator-owned catalog addition and record reconciliation.",
         "Selected-building allocation, personal property, ordinary tax distributions, PILOT/franchise receipts, realized incentives, audited payroll, supplier/local spending, observed public costs, tariff bills and causal county outcomes remain unavailable or unsupported."
       ]
     },
