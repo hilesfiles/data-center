@@ -435,14 +435,16 @@ try {
   await openDetails(".evidence-ledger");
   await page.getByRole("heading", { name: "Flexential Minneapolis-Chaska (ViaWest)", exact: true }).waitFor();
   await page.getByRole("heading", { name: "Economic evidence", exact: true }).waitFor();
-  assert.equal(await page.locator(".economic-record").count(), 20);
+  await page.locator(".account-count").getByText("26 sourced records · partial coverage", { exact: true }).waitFor();
+  assert.equal(await page.locator(".economic-record").count(), 25);
   assert.doesNotMatch(await page.locator(".economic-record-list").innerText(), /IP Stream|West Creek/);
   assert.match(await page.locator(".economic-record-list").innerText(), /\$534,380[\s\S]*\$551,454[\s\S]*\$582,406[\s\S]*\$632,906/);
   const chaskaValues = await page.locator(".economic-history").allInnerTexts().then(rows => rows.join(" "));
   assert.match(chaskaValues, /payable years/);
-  assert.equal(await page.locator(".history-bar-row").count(), 11);
+  assert.equal(await page.locator(".history-bar-row").count(), 16);
   assert.match(chaskaValues, /TY2015[\s\S]*\$11,606,300/);
   assert.match(chaskaValues, /TY2025[\s\S]*\$19,775,100/);
+  assert.match(chaskaValues, /TY2027[\s\S]*\$23,544,000/);
   await page.getByRole("tab", { name: /Plans & forecasts/ }).click();
   assert.equal(await page.locator(".economic-record").count(), 1);
   assert.match(await page.locator(".economic-record-list").innerText(), /More than \$60,000,000/);
@@ -453,6 +455,28 @@ try {
   await noOverflow();
   await page.locator(".economic-accounts").screenshot({ path: path.join(out, "chaska-evidence-desktop.png") });
   check("Flexential Chaska excludes Stream facilities and preserves parcel taxes, permits, capacity, and payable-year values");
+
+  await page.goto(`${url}#/project/prj_study_im3_building_00214321737`);
+  await openDetails(".evidence-ledger");
+  await page.getByRole("heading", { name: "Markley Lowell", exact: true }).waitFor();
+  await page.locator(".account-count").getByText("27 sourced records · 1 modeled synthesis", { exact: true }).waitFor();
+  assert.equal(await page.locator(".economic-record").count(), 20);
+  assert.equal(await page.locator(".project-research-update").count(), 14);
+  assert.match(await page.locator(".economic-record-list").innerText(), /\$25,000[\s\S]*Merrimack Valley Food Bank/);
+  await page.getByRole("tab", { name: /Modeled synthesis/ }).click();
+  assert.equal(await page.locator(".modeled-record").count(), 1);
+  assert.match(await page.locator(".modeled-record-list").innerText(), /break-even[\s\S]*\$534,231\.97/i);
+  check("Markley Lowell keeps the recipient contribution and same-account public-cost break-even separate");
+
+  await page.goto(`${url}#/project/prj_study_im3_building_00626785488`);
+  await openDetails(".evidence-ledger");
+  await page.getByRole("heading", { name: "Meta Los Lunas", exact: true }).waitFor();
+  await page.locator(".account-count").getByText("20 sourced records · partial coverage", { exact: true }).waitFor();
+  assert.equal(await page.locator(".economic-record").count(), 20);
+  assert.equal(await page.locator(".project-research-update").count(), 24);
+  assert.match(await page.locator(".economic-record-list").innerText(), /More than 400 jobs[\s\S]*More than \$6,200,000[\s\S]*At least \$5,000/);
+  check("Meta Los Lunas preserves campus-level operations and community evidence without inventing a building allocation");
+
   await page.goto(`${url}#/project/prj_study_im3_building_00172739953`);
   await openDetails(".evidence-ledger");
   await page.getByRole("heading", { name: "Switch Las Vegas NAP7", exact: true }).waitFor();
@@ -906,8 +930,8 @@ try {
     await route.fulfill({ json: legacyStudy });
   });
   await legacyPage.goto(`${url}#/map`, { waitUntil: "domcontentloaded" });
-  await legacyPage.getByText("17 completed project research accounts are mapped.", { exact: false }).waitFor();
-  assert.match(await legacyPage.locator(".review-key").innerText(), /completed project audits \(17\)/i);
+  await legacyPage.getByText("18 completed project research accounts are mapped.", { exact: false }).waitFor();
+  assert.match(await legacyPage.locator(".review-key").innerText(), /completed project audits \(18\)/i);
   await legacyPage.close();
   check("map remains populated when a browser holds an index without the research-completion field");
 

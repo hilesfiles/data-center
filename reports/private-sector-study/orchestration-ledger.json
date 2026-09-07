@@ -1,8 +1,8 @@
 {
   "schema_version": "1.0.0",
-  "study_release": "private-sector-study-1.52.0",
-  "generated_at": "2026-09-07T01:11:02Z",
-  "queue_status": "corrective_model_b_in_progress",
+  "study_release": "private-sector-study-1.53.0",
+  "generated_at": "2026-09-07T01:15:19Z",
+  "queue_status": "corrective_model_b_integrated_foundational_full_account_reaudit_next",
   "ranking_method": "Descending covered contribution-account category count, then descending sourced economic-record count, then ascending project_id.",
   "worker_research_contract": {
     "version": "2.0.0",
@@ -18,7 +18,7 @@
     "completion_rule": "A worker commit is a handoff candidate; only an independently audited handoff may be reconciled or published."
   },
   "corrective_model_eligibility_queue": {
-    "status": "corrective_model_b_in_progress",
+    "status": "corrective_model_b_integrated_foundational_full_account_reaudit_next",
     "reason": "Previously completed projects must be re-audited when their public-source search trail or model eligibility record does not satisfy worker-research-contract 2.0.0. This includes analytically incomplete projects with zero modeled syntheses and the three foundational full-modeled accounts created before the strengthened contract. A model may be retained only when defensible, and every rejection or retention must be documented candidate by candidate rather than asserted as a blanket conclusion.",
     "batches": [
       {
@@ -56,7 +56,7 @@
       },
       {
         "batch": "corrective_model_b",
-        "setup_state": "in_progress",
+        "setup_state": "integrated",
         "project_ids": [
           "prj_study_im3_building_00052227492",
           "prj_study_im3_building_00214321737",
@@ -72,11 +72,25 @@
           "01a07955-9b17-7780-b8db-3bbb71aeb268",
           "01a07955-a715-74f0-baa2-e06482bcb5de"
         ],
-        "launch_commit": "00bfcbce18054f8301c7c53fed5a075c357f5c58"
+        "launch_commit": "00bfcbce18054f8301c7c53fed5a075c357f5c58",
+        "worker_commit_shas": [
+          "ce975d14f24e99961ae6a5338ff928a9c280195e",
+          "6d54b961734378946a191b9828de7b4b38d3a2c2",
+          "112d1d522da79a7f492b282049db5287e3d1537d"
+        ],
+        "integration_commits": [
+          "b84c6bc",
+          "fabf111",
+          "21cc026"
+        ],
+        "source_record_additions": 9,
+        "forecast_additions": 0,
+        "modeled_record_additions": 1,
+        "result": "Accepted after independent project-scope, description, source, record, and candidate-by-candidate model review. Chaska added five exact parcel-value observations and no models; Lowell added one recipient-verified contribution and one same-account public-cost break-even; Los Lunas added three campus-level operations and community observations and no models."
       },
       {
         "batch": "foundational_full_account_reaudit",
-        "setup_state": "queued_after_corrective_model_b_before_batch_7",
+        "setup_state": "next_after_release_validation",
         "reason": "Apple Mesa, Switch Citadel, and Digital Crossroad Hammond pass the mechanical full-modeled-account coverage gate but predate contract 2.0.0. Their published project trails contain no explicit candidate-by-candidate search-exhaustion decisions, and 74 of their combined 104 models are low-confidence; each account therefore requires renewed direct-evidence discovery and independent retention/removal review before ordinary project batching resumes.",
         "project_ids": [
           "prj_study_im3_building_00300974499",
