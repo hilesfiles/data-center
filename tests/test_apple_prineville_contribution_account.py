@@ -51,11 +51,11 @@ class ApplePrinevilleContributionAccountTest(unittest.TestCase):
 
     def test_direct_records_validate_and_extend_the_baseline(self):
         validate_evidence(self.evidence, self.config["candidates"])
-        self.assertEqual(len(self.fragment["sources"]), 27)
-        self.assertEqual(len(self.fragment["records"]), 34)
-        self.assertEqual(Counter(row["basis"] for row in self.fragment["records"]), {"reported_actual": 30, "source_projection": 4})
-        self.assertEqual(self.project["economic_record_count"], 35)
-        self.assertEqual((self.project["reported_actual_count"], self.project["projection_count"]), (31, 4))
+        self.assertEqual(len(self.fragment["sources"]), 28)
+        self.assertEqual(len(self.fragment["records"]), 44)
+        self.assertEqual(Counter(row["basis"] for row in self.fragment["records"]), {"reported_actual": 40, "source_projection": 4})
+        self.assertEqual(self.project["economic_record_count"], 45)
+        self.assertEqual((self.project["reported_actual_count"], self.project["projection_count"]), (41, 4))
         self.assertEqual(self.project["modeled_synthesis_count"], 0)
         self.assertEqual(self.project["model_completeness"]["missing_categories"], ["community", "construction", "suppliers"])
 
@@ -97,6 +97,19 @@ class ApplePrinevilleContributionAccountTest(unittest.TestCase):
         self.assertEqual(added["clm_study_apple_prineville_jobs_2018"]["value"], 100)
         self.assertIn("direct versus contractor", added["clm_study_apple_prineville_jobs_2018"]["notes"])
 
+        paid = sorted(
+            (row for row in self.fragment["records"] if row.get("annual_series_key") == "apple_prineville_account_19494_property_tax_payments"),
+            key=lambda row: row["period"]["year"],
+        )
+        self.assertEqual([row["period"]["year"] for row in paid], list(range(2016, 2026)))
+        self.assertEqual(
+            [row["value"] for row in paid],
+            [23_669.77, 25_290.68, 26_020.69, 26_714.99, 27_660.23,
+             29_465.89, 28_623.03, 29_531.74, 30_550.99, 31_334.07],
+        )
+        self.assertTrue(all("account 19494" in row["scope"]["label"] for row in paid))
+        self.assertTrue(all("not the selected building" in row["notes"] for row in paid))
+
     def test_pdf_sources_have_auditable_page_locators(self):
         sources = {row["source_id"]: row for row in self.fragment["sources"]}
         for record in self.fragment["records"]:
@@ -112,7 +125,7 @@ class ApplePrinevilleContributionAccountTest(unittest.TestCase):
             self.assertIn(marker, descriptions[0])
 
         updates = self.fragment["project_updates"]
-        self.assertEqual(len(updates), 11)
+        self.assertEqual(len(updates), 12)
         self.assertEqual(
             {row["title"].split(" audit", 1)[0] for row in updates[:8]},
             {"Investment", "Construction", "Supplier", "Operations", "Fiscal", "Public-cost", "Resource", "Community"},
@@ -125,6 +138,7 @@ class ApplePrinevilleContributionAccountTest(unittest.TestCase):
         self.assertTrue(
             {
                 "src_study_crook_apple_assessor_19371_2026",
+                "src_study_crook_apple_assessor_19494_2026",
                 "src_study_business_oregon_lrz_apple_2025",
                 "src_study_oregon_epermitting_apple_2026",
                 "src_study_oregon_energy_apple_direct_access_2018",
@@ -136,8 +150,8 @@ class ApplePrinevilleContributionAccountTest(unittest.TestCase):
         )
         trail = json.dumps(self.fragment["sources"] + self.fragment["project_updates"])
         for identifier in (
-            "44.2894155", "151500-00-00312", "19371", "217-26-000747-STR", "CCB 69988",
-            "AL-26", "re77-krua", "ordinances 1195/1219", "Resolutions 1571/1573",
+            "44.2894155", "151500-00-00312", "19371", "19494/R", "receipts 238920 through 444833", "217-26-000747-STR", "CCB 69988",
+            "AL-26", "re77-krua", "Ordinances 1195/1219", "Resolutions 1571/1573",
         ):
             self.assertIn(identifier, trail)
 
