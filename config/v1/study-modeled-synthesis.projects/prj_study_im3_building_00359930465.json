@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.0.0",
+  "project_id": "prj_study_im3_building_00359930465",
+  "reviewed_on": "2026-09-07",
+  "scope_note": "Post-audit last-resort modeling gate for Equinix Seattle SE3 retains two bounded syntheses. A low-confidence engineering sensitivity annualizes the 2011 lease's up-to-9-MW tenant allocation at 25%, 50% and 100% utilization, with 100% explicitly a mathematical nameplate ceiling rather than observed or forecast consumption. A medium-confidence identity sets the 2026 same-account assessed-liability public-service-cost break-even threshold equal to the exact landlord-parcel bill; it does not estimate actual public cost, cash receipt, recipient distribution or net fiscal impact. All investment, construction-labor, supplier, operating, community and causal county-effect candidates fail because compatible project-specific inputs or identification are unavailable.",
+  "sources": [],
+  "estimates": [
+    {
+      "estimate_id": "est_study_equinix_se3_electricity_sensitivity_2011",
+      "project_id": "prj_study_im3_building_00359930465",
+      "metric_code": "study.modeled_facility_electricity_consumption",
+      "label": "SE3 lease-capacity annual electricity-throughput sensitivity",
+      "category": "resources",
+      "unit": "kWh_per_year",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 39420000,
+      "period": {"kind": "source_year", "year": 2011, "label": "Annualized engineering sensitivity from the executed lease's prospective 9 MW allocation"},
+      "scope": {"level": "facility", "label": "Equinix SE3 leased premises at 2020 Fifth Avenue; no customer, cabinet or meter allocation", "county_fips": "53033", "inventory_allocation": "unallocated"},
+      "interval": {"kind": "sensitivity_envelope", "low": 19710000, "central": 39420000, "high": 78840000, "interpretation": "The lease's up-to-9-MW allocation is annualized at 25%, 50% and 100% utilization. The high endpoint is the mathematical continuous-load ceiling for that contractual allocation, not a forecast, true-value bound or confidence interval."},
+      "contribution_channel": "not_applicable",
+      "aggregation": {"aggregation_id": "equinix_se3_electricity_sensitivity_2011", "role": "standalone", "overlap_policy": "do_not_sum_outside_declared_total"},
+      "parameters": [
+        {"name": "lease_power_allocation", "value": 9, "unit": "MW", "provenance": {"kind": "claim", "reference_id": "clm_study_equinix_se3_power_allocation_2011", "detail": "Executed lease allocation from two Seattle City Light vaults, limited to 4.5 MW actual draw from either vault"}, "transformation": "Converted to kW and multiplied by annual hours and utilization"},
+        {"name": "annual_hours", "value": 8760, "unit": "hours_per_year", "provenance": {"kind": "assumption", "detail": "Non-leap-year annualization"}, "transformation": "Annualizes the contractual power allocation"},
+        {"name": "low_allocation_utilization", "value": 0.25, "unit": "ratio", "provenance": {"kind": "assumption", "detail": "Low order-of-magnitude throughput scenario"}, "transformation": "Produces the low endpoint"},
+        {"name": "central_allocation_utilization", "value": 0.5, "unit": "ratio", "provenance": {"kind": "assumption", "detail": "Central order-of-magnitude throughput scenario"}, "transformation": "Produces the central estimate"},
+        {"name": "ceiling_allocation_utilization", "value": 1, "unit": "ratio", "provenance": {"kind": "assumption", "detail": "Continuous full-allocation mathematical ceiling"}, "transformation": "Produces the high endpoint"}
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The lease allocation is project specific, but it was prospective, and no public record verifies commissioning, current availability, meter boundary or utilization. The 9 MW may describe utility allocation rather than IT load.",
+      "decision_relevance": "Provides an explicit order-of-magnitude throughput sensitivity and contractual ceiling without relabeling allocated capacity as consumption or extending it to expense, emissions or economic output.",
+      "evidence_search": {"direct_observation_status": "not_found", "source_projection_status": "available_separately", "remaining_evidence_gap": "Commissioning record, current utility entitlement, interval meter data, bills, peak demand, occupied IT load, site PUE, customer allocation, electricity price, renewable share and emissions"},
+      "derivation": {"method": "engineering_estimate", "model_version": "equinix-se3-account-1.0.0", "formula": "9 MW × 1,000 kW/MW × 8,760 hours × allocation-utilization scenario", "input_claim_ids": ["clm_study_equinix_se3_power_allocation_2011"], "input_source_ids": ["src_study_equinix_se3_lease_2011"], "assumptions": ["The up-to-9-MW lease allocation is used once; the two 4.5 MW vault limits are not added again.", "Utilization scenarios are 25%, 50% and 100% solely for sensitivity.", "No PUE multiplier is applied because the lease describes tenant electrical allocation and publishes no IT/facility boundary.", "The result remains at the SE3 leasehold level and is not allocated by colocation square footage, cabinet count, customer occupancy or assessor area."]},
+      "limitations": ["No meter reading, utility bill, observed load factor or commissioning record.", "The 2011 prospective allocation may not equal current available, critical IT or occupied load.", "The interval is a scenario range, not a statistical or empirical physical bound below the stated ceiling.", "No electricity cost, emissions, revenue, output or fiscal effect is inferred."],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Resource sensitivity only. The direct up-to-9-MW source projection remains authoritative; this model is neither observed consumption nor an economic contribution and must not be added to monetary records.",
+      "reviewed_on": "2026-09-07"
+    },
+    {
+      "estimate_id": "est_study_equinix_se3_service_cost_break_even_2026",
+      "project_id": "prj_study_im3_building_00359930465",
+      "metric_code": "study.modeled_annual_local_service_cost_break_even",
+      "label": "2026 same-account assessed-liability public-service-cost break-even threshold",
+      "category": "public_costs",
+      "unit": "USD_per_year",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 391063.45,
+      "period": {"kind": "tax_year", "year": 2026, "label": "King County tax year 2026 assessed-liability threshold"},
+      "scope": {"level": "campus", "label": "2020 Fifth Holdings LLC real-property account 065900090500 across the same local taxing jurisdictions; wider than the Equinix leasehold", "county_fips": "53033", "inventory_allocation": "unallocated"},
+      "interval": {"kind": "point_estimate", "low": 391063.45, "central": 391063.45, "high": 391063.45, "interpretation": "The threshold equals the directly observed same-account 2026 real-property bill by definition; it is not an estimate of actual public cost, cash collected or recipient revenue."},
+      "contribution_channel": "not_applicable",
+      "aggregation": {"aggregation_id": "equinix_se3_service_cost_break_even_2026", "role": "standalone", "overlap_policy": "do_not_sum_outside_declared_total"},
+      "parameters": [
+        {"name": "same_account_property_tax_bill", "value": 391063.45, "unit": "USD", "provenance": {"kind": "claim", "reference_id": "clm_study_equinix_se3_property_taxes_billed_2026", "detail": "Sum of all four 2026 billed components for King County real-property account 065900090500"}, "transformation": "Used unchanged as the equal-cost threshold for the same account and tax year"}
+      ],
+      "confidence": "medium",
+      "confidence_rationale": "The threshold identity and billed amount are exact, while only partial payments are observed and allocation among taxing jurisdictions and actual marginal public-service cost remain unknown.",
+      "decision_relevance": "States the annual public-cost level that would equal the assessed landlord-parcel liability without fabricating a service cost or claiming a positive or negative fiscal margin.",
+      "evidence_search": {"direct_observation_status": "not_found", "source_projection_status": "not_applicable", "remaining_evidence_gap": "Marginal fire, police, road, utility, administrative, infrastructure and financing costs assigned to the same property account, recipients and tax year; final cash collections and jurisdictional distributions"},
+      "derivation": {"method": "allocation", "model_version": "equinix-se3-account-1.0.0", "formula": "same-account assessed-liability public-service cost at break-even = 2026 real-property bill = $391,063.45", "input_claim_ids": ["clm_study_equinix_se3_property_taxes_billed_2026"], "input_source_ids": ["src_study_king_tax_receivables_0659000905_2026"], "assumptions": ["The threshold is an identity, not an observed or estimated public cost.", "The hypothetical cost threshold uses the same landlord property account and tax-year scope as the assessed liability.", "The partial payment is not annualized, and unobserved future installments are not treated as paid.", "Tenant personal-property tax, incentives, LID incidence, permit values, community gifts and wider portfolio amounts are not netted because their scope, incidence or period does not align."]},
+      "limitations": ["This is not an estimate of actual public cost.", "The input is the landlord's assessed real-property bill, not an Equinix-only liability or proof of full-year payment.", "The account spans several recipients whose marginal costs and cash timing may differ.", "No personal-property account, incentive incidence, marginal service demand or infrastructure cost is included.", "No positive or negative net fiscal result is asserted."],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Conditional assessed-liability threshold only. Equality marks break-even against the bill; actual costs, lease pass-through and final collections are unknown, so the estimate must not be summed with the tax claim or presented as a fiscal surplus.",
+      "reviewed_on": "2026-09-07"
+    }
+  ]
+}
