@@ -1,8 +1,8 @@
 {
   "schema_version": "1.0.0",
   "study_release": "private-sector-study-1.53.0",
-  "generated_at": "2026-09-07T01:15:19Z",
-  "queue_status": "corrective_model_b_integrated_foundational_full_account_reaudit_next",
+  "generated_at": "2026-09-07T01:37:08Z",
+  "queue_status": "foundational_full_account_reaudit_in_progress",
   "ranking_method": "Descending covered contribution-account category count, then descending sourced economic-record count, then ascending project_id.",
   "worker_research_contract": {
     "version": "2.0.0",
@@ -18,7 +18,7 @@
     "completion_rule": "A worker commit is a handoff candidate; only an independently audited handoff may be reconciled or published."
   },
   "corrective_model_eligibility_queue": {
-    "status": "corrective_model_b_integrated_foundational_full_account_reaudit_next",
+    "status": "foundational_full_account_reaudit_in_progress",
     "reason": "Previously completed projects must be re-audited when their public-source search trail or model eligibility record does not satisfy worker-research-contract 2.0.0. This includes analytically incomplete projects with zero modeled syntheses and the three foundational full-modeled accounts created before the strengthened contract. A model may be retained only when defensible, and every rejection or retention must be documented candidate by candidate rather than asserted as a blanket conclusion.",
     "batches": [
       {
@@ -90,13 +90,29 @@
       },
       {
         "batch": "foundational_full_account_reaudit",
-        "setup_state": "next_after_release_validation",
+        "setup_state": "in_progress",
         "reason": "Apple Mesa, Switch Citadel, and Digital Crossroad Hammond pass the mechanical full-modeled-account coverage gate but predate contract 2.0.0. Their published project trails contain no explicit candidate-by-candidate search-exhaustion decisions, and 74 of their combined 104 models are low-confidence; each account therefore requires renewed direct-evidence discovery and independent retention/removal review before ordinary project batching resumes.",
         "project_ids": [
           "prj_study_im3_building_00300974499",
           "prj_study_im3_point_06685432442",
           "prj_study_im3_building_00978934687"
         ],
+        "worker_tasks": [
+          {
+            "project_name": "Apple Mesa",
+            "worker_task_id": "01a07982-1419-7222-8dab-be2b07141a87"
+          },
+          {
+            "project_name": "Switch Citadel / Tahoe Reno 1",
+            "worker_task_id": "01a07982-2446-7b63-abca-50659004771b"
+          },
+          {
+            "project_name": "Digital Crossroad DX-1, Hammond",
+            "worker_task_id": "01a07982-3033-7f52-866c-b987bfbfc651"
+          }
+        ],
+        "launch_release": "private-sector-study-1.53.0",
+        "launch_commit": "94e064ebcb85cbbdfe80677a1b6549fe463db3c0",
         "published_baseline": [
           {
             "project_name": "Apple Mesa",
