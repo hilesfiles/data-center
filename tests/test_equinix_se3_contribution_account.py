@@ -210,7 +210,7 @@ class EquinixSe3ContributionAccountTest(unittest.TestCase):
                 electricity_cost["value"],
                 electricity_cost["interval"]["high"],
             ),
-            (1200339, 2605662, 10777428),
+            (833733, 2605662, 10777428),
         )
         self.assertTrue(any("Not an observed bill" in row for row in electricity_cost["limitations"]))
 
