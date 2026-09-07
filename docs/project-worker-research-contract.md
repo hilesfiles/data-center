@@ -4,7 +4,7 @@ This contract is mandatory for every project-scoped contribution-account worker.
 worker's commit is a handoff candidate, not evidence that the project is complete and
 not authorization to publish it.
 
-## Required two-pass workflow
+## Required four-stage workflow
 
 1. **Direct-evidence discovery.** Establish the project boundary and chronology, then
    search every applicable source family using the operator, historical operators,
@@ -14,6 +14,17 @@ not authorization to publish it.
    to every missing, ambiguous, blocked, or weakly sourced family through alternate
    indexes, archives, entities, document collections, and date ranges. Modeling must
    not begin until this pass is complete for the metric being modeled.
+3. **Mandatory adversarial continuation.** The worker's first handoff is always a
+   provisional candidate. The orchestrator must return the candidate to the same
+   worker with a metric-by-metric challenge based on every disclosed gap, thin
+   category, blocked route, and rejected model. The worker must perform a new directed
+   pass and supply a separate corrective commit. A first handoff cannot be accepted,
+   regardless of its source count, test results, narrative quality, or apparent depth.
+4. **Independent acceptance audit.** The orchestrator must inspect the underlying
+   fragments rather than rely on the worker summary, replay alternate routes for the
+   remaining material gaps, verify every model and rejection candidate, and record the
+   acceptance evidence. Structural validation and clean scope are necessary but never
+   establish substantive completeness.
 
 The worker must not describe either pass as exhaustive merely because a portal was
 blocked, a useful source was found, a source count appears substantial, the fragment
@@ -48,6 +59,25 @@ No fixed source quota substitutes for this matrix. Sources are retained when the
 support a claim, establish a boundary, resolve overlap, or substantiate a material
 negative finding. Missing evidence remains an explicit gap rather than zero.
 
+## Mandatory metric-disposition ledger
+
+The project updates must collectively disposition every applicable metric in
+investment, construction, operations, suppliers, fiscal contributions, incentives and
+public costs, electricity, water and environmental resources, community transfers,
+and county employment, wage/payroll, and GDP outcomes. Each disposition must name:
+
+- the direct observation or projection retained, if any;
+- the exact metric-specific repositories, identifiers, years, and alternate access
+  routes searched;
+- the bounded last-resort model retained after direct-source exhaustion, if any; or
+- the exact indispensable quantitative inputs that remain unavailable and make even a
+  bounded model structurally indefensible.
+
+A category-level statement that all models were rejected is not sufficient. Each
+candidate metric must be decided separately. A blocked portal is not structural
+impossibility until alternate views, APIs, exports, archives, meeting packets, and
+linked government records have been attempted and recorded.
+
 ## Modeling gate
 
 Each proposed estimate must identify the exact direct metric sought and the matrix
@@ -67,10 +97,25 @@ and applicable validation are complete. The handoff must report source and recor
 counts, actual/projection/model splits, exact searches and material negative findings,
 boundary decisions, unresolved gaps, and every changed file.
 
-The orchestrator independently inspects the fragment and source-family matrix before
-reconciliation. Thin coverage, generic search assertions, uninspected underlying
-documents, untested alternative searches, weak boundaries, or ineligible models return
-the same worker and worktree to `gap_closure_in_progress`. Only an independently
-accepted handoff may enter a batch release. The next batch cannot launch until all
-three accepted handoffs are reconciled, rebuilt, fully validated, visually inspected,
-committed, pushed, and verified live.
+The first handoff is recorded as `candidate_pending_adversarial_review`, never
+`accepted`. The orchestrator then issues the mandatory adversarial continuation and
+records the corrective commit separately. Thin coverage, generic search assertions,
+uninspected underlying documents, untested alternative searches, weak boundaries,
+blanket model rejections, or ineligible models keep the same worker and worktree in
+`gap_closure_in_progress`.
+
+Acceptance requires all of the following evidence in the orchestration ledger:
+
+- the first candidate commit and the separate corrective commit;
+- the orchestrator's metric-by-metric direct-evidence and model audit;
+- independent test results and exact changed-file scope;
+- one compliant `project_description` and verified project boundary; and
+- a list of any irreducible gaps, each tied to the missing quantitative inputs and the
+  independently checked alternate routes that failed to produce them.
+
+The orchestrator may not infer substantive completeness from passing schemas, tests,
+generated builds, source totals, record totals, a clean diff, or the worker's final
+summary. Only a corrective handoff that passes this independent audit may enter a
+batch release. The next batch cannot launch until all three accepted handoffs are
+reconciled, rebuilt, fully validated, visually inspected, committed, pushed, and
+verified live.
