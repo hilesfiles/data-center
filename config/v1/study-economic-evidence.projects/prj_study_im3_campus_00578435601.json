@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "project_id": "prj_study_im3_campus_00578435601",
   "reviewed_on": "2026-09-07",
-  "scope_note": "Two-pass project-scoped evidence audit of Google's Douglas County data-center campus at 300 Riverside Parkway SW. The selected IM3 object is a campus, and the public record resolves a Development Authority real-property parcel, two Google-linked personal-property accounts, two assessor-classified data-center buildings, a utility building, later permit work, and off-site supporting solar infrastructure; no record is allocated below its published scope. Twenty-two observations are added: twenty reported actuals and two source projections. County taxpayer totals and account-level assessed values overlap and must not be summed; exempt assessed value is not taxable value, permit value is not spending, contracted solar capacity is not facility load, and community amounts have distinct recipients and periods. Direct tax payments, utility bills, establishment payroll, worker residence, local supplier payments, realized incentive value, same-scope public-service costs, and causal county outcomes remain unresolved rather than zero.",
+  "scope_note": "Directed fourth-pass project-scoped evidence audit of Google's Douglas County data-center campus at 300 Riverside Parkway SW. The selected IM3 object is a campus, and the public record resolves a Development Authority real-property parcel, two Google-linked personal-property accounts, two assessor-classified data-center buildings, a utility building, later permit work, utility-customer history, a permitted discharge facility, and off-site supporting solar infrastructure; no record is allocated below its published scope. Twenty-six observations are added: twenty-four reported actuals and two source projections. County taxpayer totals and account-level assessed values overlap and must not be summed; exempt assessed value is not taxable value or tax avoided, appraised real-property value is not investment, permit value is not spending, contracted solar capacity is not facility load, and community amounts have distinct recipients and periods. Direct tax payments, executed incentive schedules, utility bills, observed establishment payroll, worker residence, local supplier payments, same-scope public-service costs, and causal county outcomes remain unresolved rather than zero.",
   "sources": [
     {
       "source_id": "src_study_im3_google_douglas_boundary_2026",
@@ -35,7 +35,7 @@
       "publication_date": {"precision": "unknown"},
       "retrieved_on": "2026-09-07",
       "review_method": "structured_data",
-      "notes": "Address search for 300 Riverside Parkway returned parcel 08741820001, 87.63 acres, class E1 Tax Abatement Parcel, owner Development Authority of Douglas County, and Google headquarters as mailing address. Improvements list 482,220- and 224,078-square-foot Computer Data Centers with actual years 2006 and 2016, plus an 11,700-square-foot utility building. The live portal reported last data upload September 7, 2026."
+      "notes": "Address search for 300 Riverside Parkway returned parcel 08741820001, 87.63 acres, class E1 Tax Abatement Parcel, owner Development Authority of Douglas County, and Google headquarters as mailing address. Improvements list 482,220- and 224,078-square-foot Computer Data Centers with actual years 2006 and 2016, plus an 11,700-square-foot utility building. The 2026 summary reports $217,144,200 total appraised value and zero total taxable value. The live portal reported last data upload September 7, 2026."
     },
     {
       "source_id": "src_study_douglas_qpublic_pp_p88150_2026",
@@ -46,7 +46,7 @@
       "publication_date": {"precision": "unknown"},
       "retrieved_on": "2026-09-07",
       "review_method": "structured_data",
-      "notes": "The account search identifies Google Inc. at 300 Riverside Parkway and links the account to real parcel 08741820001. Historical tables report nonzero assessed values for 2023-2025. Account values are narrower than the county-wide Google taxpayer totals and no complete reconciliation is published."
+      "notes": "The account search identifies Google Inc. at 300 Riverside Parkway and links the account to real parcel 08741820001. Historical tables report nonzero assessed values for 2023-2025 and the 2026 summary reports $61,488,403 assessed value. Account values are narrower than the county-wide Google taxpayer totals and no complete reconciliation is published."
     },
     {
       "source_id": "src_study_douglas_qpublic_pp_p79020_2026",
@@ -57,7 +57,7 @@
       "publication_date": {"precision": "unknown"},
       "retrieved_on": "2026-09-07",
       "review_method": "structured_data",
-      "notes": "The account search identifies the Development Authority of Douglas County, with Google Inc. Tax Department mailing information, at 300 Riverside Parkway and links the account to real parcel 08741820001. Historical tables show the account fully exempt and report exempt assessed values for 2023-2025; these are not taxable assessed values or tax payments."
+      "notes": "The account search identifies the Development Authority of Douglas County, with Google Inc. Tax Department mailing information, at 300 Riverside Parkway and links the account to real parcel 08741820001. Historical tables show the account fully exempt and report exempt assessed values for 2023-2025; the 2026 summary reports $287,225,512 assessed value and $287,225,512 exempt assessed value. These are not taxable assessed values, tax avoided, or tax payments."
     },
     {
       "source_id": "src_study_douglas_acfr_2019",
@@ -266,7 +266,7 @@
       "publication_date": {"precision": "unknown"},
       "retrieved_on": "2026-09-07",
       "review_method": "web_page",
-      "notes": "The official payment-search route was reached after assessor-account resolution, but an interactive CAPTCHA blocked account lookup. No bill, paid amount, payment date, distribution, delinquency, or zero balance is claimed from the blocked interface."
+      "notes": "The official landing page exposes a GET search route to select_bill.html, tax years 2017-2026, and search modes for map/parcel/property ID, bill number, property address, and owner name. The public workflow is protected by Cloudflare Turnstile; exact web and indexed searches for P79020, P88150, 08741820001, Google, and 300 Riverside Parkway returned no bill detail. The CAPTCHA was not solved or bypassed. No bill, paid amount, payment date, distribution, delinquency, or zero balance is claimed."
     },
     {
       "source_id": "src_study_google_douglas_careers_2026",
@@ -289,6 +289,105 @@
       "retrieved_on": "2026-09-07",
       "review_method": "structured_data",
       "notes": "Douglas County total and industry employment, wages, establishments, GDP, earnings, and population series were checked through the latest complete annual vintages. These are county aggregates, not Google jobs, payroll, supplier activity, worker residence, public costs, or causal project outcomes."
+    },
+    {
+      "source_id": "src_study_douglas_boa_p79020_amended_2025",
+      "title": "Douglas County Board of Tax Assessors March 5, 2025 agenda",
+      "url": "https://www.douglascountyga.gov/DocumentCenter/View/11793/February-20th-2025-Agenda",
+      "publisher": "Douglas County Board of Tax Assessors",
+      "source_type": "assessor_record",
+      "publication_date": {"precision": "day", "date": "2025-03-05"},
+      "retrieved_on": "2026-09-07",
+      "review_method": "web_pdf_text",
+      "notes": "The administrative agenda lists personal-property account P79020, owner Development Authority of Douglas County, tax year 2024, reason 'Adj fixed assets,' note 'AMENDED RETURN,' previous value $319,598,509 and current value $754,502,045. The live assessor history continues to show $319,598,509 net appraised value for 2024, so the agenda amount is treated as an interim or superseded administrative figure and no quantitative record is created."
+    },
+    {
+      "source_id": "src_study_douglas_acfr_2024_rates",
+      "title": "Douglas County, Georgia 2024 Annual Comprehensive Financial Report",
+      "url": "https://www.douglascountyga.gov/ArchiveCenter/ViewFile/Item/184",
+      "publisher": "Douglas County, Georgia",
+      "source_type": "local_government_record",
+      "publication_date": {"precision": "year", "year": 2025},
+      "retrieved_on": "2026-09-07",
+      "review_method": "web_pdf_text",
+      "notes": "Exhibit XIII reports Douglas County direct maintenance-and-operations millage of 12.313 mills for 2023 and 12.063 mills for 2024. The exhibit separately reports school rates; the county-rate evidence is used only for a county M&O gross-levy counterfactual, not as a bill, payment, abatement value, or all-jurisdiction rate."
+    },
+    {
+      "source_id": "src_study_ddcwsa_acfr_2014",
+      "title": "Douglasville-Douglas County Water and Sewer Authority 2014 Comprehensive Annual Financial Report",
+      "url": "https://ddcwsa.com/wp-content/uploads/2023/03/2014CAFR-1.pdf",
+      "publisher": "Douglasville-Douglas County Water and Sewer Authority",
+      "source_type": "local_government_record",
+      "publication_date": {"precision": "year", "year": 2015},
+      "retrieved_on": "2026-09-07",
+      "review_method": "web_pdf_text",
+      "notes": "Table 15 names Google Inc. as a fiscal-year 2014 customer and reports $432,873 water revenue, $318,018 sewer revenue, and $19,508 stormwater revenue. These are authority service revenues, not infrastructure-fund payments, physical use, tariff determinants, or proof of payer identity; the evidence registry has no compatible direct service-payment metric, so no quantitative record is created."
+    },
+    {
+      "source_id": "src_study_ddcwsa_acfr_2016",
+      "title": "Douglasville-Douglas County Water and Sewer Authority 2016 Comprehensive Annual Financial Report",
+      "url": "https://www.ddcwsa.com/wp-content/uploads/2023/03/DDCWSA-CAFR-2016-1.pdf",
+      "publisher": "Douglasville-Douglas County Water and Sewer Authority",
+      "source_type": "local_government_record",
+      "publication_date": {"precision": "year", "year": 2017},
+      "retrieved_on": "2026-09-07",
+      "review_method": "web_pdf_text",
+      "notes": "Table 15 reports Google customer revenues of $207,277 water and $168,332 sewer in fiscal 2007 and $349,787 sewer and $20,327 stormwater in fiscal 2016; absence from the 2016 water top-ten is not zero. Table 11 names Google as Douglas County's seventh-ranked principal employer in 2016 with 300 employees and a 0.5% share. The customer revenues remain source context because no compatible direct service-payment metric exists."
+    },
+    {
+      "source_id": "src_study_ddcwsa_data_center_demands_2023",
+      "title": "Douglasville-Douglas County Water and Sewer Authority December 11, 2023 work-session agenda",
+      "url": "https://ddcwsa.com/wp-content/uploads/2023/12/Work-Session-Agenda-12.11.2023.pdf",
+      "publisher": "Douglasville-Douglas County Water and Sewer Authority",
+      "source_type": "local_government_record",
+      "publication_date": {"precision": "day", "date": "2023-12-11"},
+      "retrieved_on": "2026-09-07",
+      "review_method": "web_pdf_text",
+      "notes": "The agenda includes an item titled 'Data Center Water Demands' but publishes no attached demand table, customer identity, Google-specific requirement, capital allocation, service agreement, rate, or payment."
+    },
+    {
+      "source_id": "src_study_ddcwsa_rates_2025",
+      "title": "Douglasville-Douglas County Water and Sewer Authority August 25, 2025 work session",
+      "url": "https://ddcwsa.com/wp-content/uploads/2025/09/Work-Session-8-25-2025.pdf",
+      "publisher": "Douglasville-Douglas County Water and Sewer Authority",
+      "source_type": "local_government_record",
+      "publication_date": {"precision": "day", "date": "2025-08-25"},
+      "retrieved_on": "2026-09-07",
+      "review_method": "web_pdf_text",
+      "notes": "The packet states that customers receive no free service and reproduces general rates effective December 1, 2024, including tiered water, sewer, base, and stormwater charges. Google meter size, billing tier, sewer basis, ERUs, contract terms, credits, and bill quantities remain unknown, so generic rates are not applied to campus water volumes."
+    },
+    {
+      "source_id": "src_study_epa_echo_ga0038920_2026",
+      "title": "EPA ECHO DMR pollutant-loading report for permit GA0038920",
+      "url": "https://echo.epa.gov/trends/loading-tool/reports/dmr-pollutant-loading?permit_id=GA0038920",
+      "publisher": "U.S. Environmental Protection Agency",
+      "source_type": "other",
+      "publication_date": {"precision": "year", "year": 2026},
+      "retrieved_on": "2026-09-07",
+      "review_method": "web_page",
+      "notes": "The live facility report identifies Google LLC in Lithia Springs, NPDES permit GA0038920, FRS 110061650100, 0.72 MGD design flow, 0.6 MGD application average flow, and a displayed 2026 DMR average facility flow of 0.18 MGD. The DMR average is annualized only in modeled synthesis; it is not water consumption, permit capacity, a complete audited 2026 annual total, or utility-billed volume."
+    },
+    {
+      "source_id": "src_study_gpsc_docket_55378_google_pue_2025",
+      "title": "Georgia Public Service Commission staff testimony, Docket 55378",
+      "url": "https://services.psc.ga.gov/api/v1/External/Public/Get/Document/DownloadFile/222553/103715",
+      "publisher": "Georgia Public Service Commission",
+      "source_type": "state_record",
+      "publication_date": {"precision": "year", "year": 2025},
+      "retrieved_on": "2026-09-07",
+      "review_method": "web_pdf_text",
+      "notes": "Staff testimony cites Google's reported Douglas County PUE range of 1.07 in winter to 1.13 in summer. The docket materials reviewed do not disclose campus kWh, peak MW, Georgia Power bill, interconnection cost, special-contract price, or a Douglas-specific large-load tariff determinant; PUE and the separate 78.8 MW solar contract are not load proxies."
+    },
+    {
+      "source_id": "src_study_dcef_nonprofit_filings_2026",
+      "title": "Douglas County Education Foundation nonprofit filing search",
+      "url": "https://projects.propublica.org/nonprofits/",
+      "publisher": "ProPublica Nonprofit Explorer",
+      "source_type": "other",
+      "publication_date": {"precision": "unknown"},
+      "retrieved_on": "2026-09-07",
+      "review_method": "web_page",
+      "notes": "Recipient filing access was searched for Google-specific grants and transfers. Public Form 990 summaries report aggregate contributions and grants but did not expose a donor-level Google schedule or a new amount attributable to the campus; no amount is inferred beyond recipient and operator confirmations already recorded."
     }
   ],
   "records": [
@@ -646,6 +745,71 @@
       "notes": "Cumulative operator-study threshold for one county school system. It is not an annual series, campus payroll, procurement, tax revenue, or a selected-building allocation. The separate 2018 foundation grant precedes this period and is not summed here.",
       "review_status": "source_checked",
       "reviewed_on": "2026-09-07"
+    },
+    {
+      "claim_id": "clm_study_google_douglas_p88150_assessed_2026",
+      "project_id": "prj_study_im3_campus_00578435601",
+      "metric_code": "study.account_assessed_value",
+      "value": 61488403,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {"kind": "tax_year", "year": 2026, "label": "Tax year 2026 current assessed value"},
+      "scope": {"level": "campus", "label": "Google Inc. personal-property account P88150 at 300 Riverside Parkway", "county_fips": "13097", "inventory_allocation": "unallocated"},
+      "source_id": "src_study_douglas_qpublic_pp_p88150_2026",
+      "source_locator": "2026 account summary, assessed value",
+      "notes": "Current account-level assessed value linked to parcel 08741820001. It may overlap with company-county taxpayer totals and must not be summed with them. It is not a tax bill, payment, payroll, or investment amount.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "google_douglas_p88150_assessed"
+    },
+    {
+      "claim_id": "clm_study_google_douglas_p79020_exempt_assessed_2026",
+      "project_id": "prj_study_im3_campus_00578435601",
+      "metric_code": "study.account_assessed_value",
+      "value": 287225512,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {"kind": "tax_year", "year": 2026, "label": "Tax year 2026 current exempt assessed value"},
+      "scope": {"level": "campus", "label": "Development Authority / Google personal-property account P79020 at 300 Riverside Parkway", "county_fips": "13097", "inventory_allocation": "unallocated"},
+      "source_id": "src_study_douglas_qpublic_pp_p79020_2026",
+      "source_locator": "2026 account summary, assessed value and exempt assessed value",
+      "notes": "The assessor reports both assessed and exempt assessed value as $287,225,512 and taxable assessed value as zero. This stock is not taxable value, a tax bill, tax avoided, realized incentive value, payment, or investment; it must not be summed with taxable accounts.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "google_douglas_p79020_exempt_assessed"
+    },
+    {
+      "claim_id": "clm_study_google_douglas_real_appraised_2026",
+      "project_id": "prj_study_im3_campus_00578435601",
+      "metric_code": "study.appraised_property_value",
+      "value": 217144200,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {"kind": "tax_year", "year": 2026, "label": "Tax year 2026 current real-property appraisal"},
+      "scope": {"level": "campus", "label": "Development Authority real parcel 08741820001 at 300 Riverside Parkway", "county_fips": "13097", "inventory_allocation": "unallocated"},
+      "source_id": "src_study_douglas_qpublic_real_08741820001_2026",
+      "source_locator": "2026 value summary, total appraised value",
+      "notes": "Current appraisal stock for the authority-owned real parcel. The assessor classifies it as a tax-abatement parcel and reports zero total taxable value. Appraised value is not assessed value, taxable value, capital investment, tax avoided, a bill, or a payment.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "google_douglas_real_appraised"
+    },
+    {
+      "claim_id": "clm_study_google_douglas_operating_employees_2016_ddcwsa",
+      "project_id": "prj_study_im3_campus_00578435601",
+      "metric_code": "study.operating_employees",
+      "value": 300,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {"kind": "reported_snapshot", "report_date": "2016-12-31", "label": "Google principal-employer count reported for 2016"},
+      "scope": {"level": "company_county", "label": "Google in Douglas County principal-employer table", "county_fips": "13097", "inventory_allocation": "unallocated"},
+      "source_id": "src_study_ddcwsa_acfr_2016",
+      "source_locator": "Table 11, Principal Employers, 2016 Google row",
+      "pdf_page": 76,
+      "printed_page": "72",
+      "notes": "Local-government principal-employer snapshot sourced to development and school-system contacts. It differs from the operator's more-than-350 facility employees reported in June 2015, so definitions and timing are not assumed comparable. It is not annual-average FTE, payroll employment, current employment, worker residence, or a selected-building count.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07"
     }
   ],
   "project_updates": [
@@ -662,35 +826,35 @@
       "source_id": "src_study_douglas_qpublic_pp_p79020_2026",
       "as_of": "2026-09-07",
       "title": "Assessor and taxpayer-account audit separates taxable and exempt stocks",
-      "notes": "Source families checked: Douglas County real- and personal-property search, linked-account tables, 2019-2025 ACFR principal-taxpayer exhibits, Georgia DOR property-record routing, and exact searches for Google, Development Authority of Douglas County, 300 Riverside Parkway, parcel 08741820001, P88150, P79020, and all nine linked personal-property accounts. Positive results are recorded separately. P88150 is the directly named Google account; P79020 is authority-owned with Google tax-department linkage and fully exempt assessed value. P97430 is at 2201 Thornton Road and excluded from campus totals; contractor, food-service, Waymo, logistics, and empty linked accounts are not Google campus property without stronger ownership evidence. County totals and account components overlap and are not summed."
+      "notes": "Repositories and routes checked: Douglas qPublic real- and personal-property searches, linked-account tables, Board of Tax Assessors agendas, 2019-2024 County ACFR principal-taxpayer and millage exhibits, Georgia DOR property-record and millage files, and exact Google/DADC/address/parcel/account queries. P88150 is the directly named Google account; P79020 is authority-owned with Google tax-department linkage and fully exempt assessed value. The 2026 account and parcel stocks are recorded separately. The March 5, 2025 BTA agenda's P79020 amended-return figures conflict with the retained live historical 2024 figure and are documented as interim or superseded, not recorded. P97430 at 2201 Thornton Road and contractor, food-service, Waymo, logistics, or empty linked accounts are excluded. County totals, real parcel value, and account components overlap and are not summed."
     },
     {
       "project_id": "prj_study_im3_campus_00578435601",
       "source_id": "src_study_douglas_tax_payment_portal_2026",
       "as_of": "2026-09-07",
       "title": "Tax-bill and payment search remains blocked after account resolution",
-      "notes": "Source families checked: Douglas County Tax Commissioner pages, Georgia DOR payment routing, GovernmentWindow tax search, assessor tax-value history, and County ACFR revenue/statistical tables. Exact account and parcel identifiers were available, but the official bill-and-payment interface required an interactive CAPTCHA. Assessed value, exempt assessed value, or a displayed zero taxable value is not converted into tax avoided, billed, paid, collected, delinquent, or distributed. No property-tax payment record or fiscal break-even model is created."
+      "notes": "Repositories and routes checked: Tax Commissioner pages and reports, Georgia DOR payment routing and 2023-2025 millage files, GovernmentWindow tax.html and its select_bill.html GET workflow, qPublic histories, County ACFR tax collections/millage exhibits, document-center search, and indexed exact queries for P79020, P88150, 08741820001, Google, DADC, and 300 Riverside Parkway. The portal exposes tax years 2017-2026 and map/parcel/property-ID, bill-number, address, and owner modes, but Cloudflare Turnstile guards the search; the CAPTCHA was not solved or bypassed, and alternate indexed queries yielded no bill. Assessed or exempt value is not called tax avoided, billed, paid, collected, delinquent, or distributed. Two county-M&O gross-levy counterfactuals are modeled from published inputs, explicitly not payment or realized abatement."
     },
     {
       "project_id": "prj_study_im3_campus_00578435601",
       "source_id": "src_study_douglas_permits_2025_11",
       "as_of": "2025-12-31",
       "title": "Permit and contractor search finds one valued remodel but no supplier payments",
-      "notes": "Source families checked: Douglas County Community Development monthly reports, assessor permit history, county document-center search, and exact address searches for 300 Riverside Parkway from 2000-2026. Permit 2502392-DC supplies one $249,864.77 administrative valuation and names H. J. Russell & Company; permit 2502513-DC displays zero value and is treated as missing, not zero cost. Older assessor permit rows identify activity years but no permit number, purpose, value, contractor, status, or completion cost. No invoice, procurement award, vendor payment, local supplier residence, worker count, wage, payroll, or local-purchase share was public."
+      "notes": "Repositories and routes checked: Douglas Community Development monthly reports and document-center indices, qPublic permit history, historic/current exact address and Google queries for the 2006, 2011, 2015/2016, and 2025 work, contractor-license terms, and vendor/payment searches. Permit 2502392-DC supplies a $249,864.77 administrative valuation, 16,535 square feet, and H. J. Russell & Company; electrical permit 2502513-DC names Allison-Smith Company but displays zero value, treated as missing rather than zero cost. Older assessor rows identify activity years but no accessible attachment, permit number, purpose, value, contractor, or completion cost. No invoice, payment, worker count, wage, geography, or contract amount was found. A national 2022 construction-sector payroll/receipts ratio is applied only as a deliberately wide remodel payroll sensitivity; it does not establish supplier retention or observed payroll."
     },
     {
       "project_id": "prj_study_im3_campus_00578435601",
       "source_id": "src_study_dadc_agendas_2023_google",
       "as_of": "2023-10-17",
       "title": "Authority, lease, bond, and incentive search confirms structure but not value",
-      "notes": "Source families checked: Development Authority of Douglas County agendas and archives, Georgia DCA debt-issuance reports, Douglas County ACFR debt and taxpayer tables, authority website searches, and exact queries for Google, lease, bond, industrial revenue bond, abatement, PILOT, fee, amendment, and 300 Riverside Parkway. The 2023 agenda confirms a Google lease amendment and the assessor identifies a tax-abatement parcel. The 2008 DCA report lists $65 million and $185 million authority bond issues but no obligor or project, so neither is attributed. No executed lease, abatement schedule, payment-in-lieu amount, bond validation, fee payment, clawback, recipient distribution, or realized incentive value was published."
+      "notes": "Repositories and alternate routes checked: DADC agendas/archives and site search, Douglas Clerk/deed and court-index search results, Georgia DCA debt reports, County ACFR debt/tax notes, Board of Assessors agendas, SEC filing search, official document-center results, and exact Google/DADC/address queries for lease, amendment, bond validation, industrial revenue bond, deed, PILOT, abatement, fee, distribution, clawback, and compliance. The October 17, 2023 agenda confirms approval of a Google lease amendment and qPublic identifies a tax-abatement parcel. The 2008 DCA report's $65 million and $185 million issues lack obligor/project identity and are not attributed; later DCA entries and surfaced court/SEC records were unrelated. No executed lease or amendment, validation order, Google-specific bond amount, abatement schedule, PILOT, fee payment, distribution, clawback, compliance certificate, or realized incentive value was published."
     },
     {
       "project_id": "prj_study_im3_campus_00578435601",
       "source_id": "src_study_google_environmental_report_2025_douglas",
       "as_of": "2024-12-31",
       "title": "Water, sewer, electricity, and environmental search resolves location water only",
-      "notes": "Source families checked: Google 2023-2025 environmental disclosures, the Georgia impact study, Douglasville-Douglas County Water and Sewer Authority pages, Georgia EPD NPDES notices and complaint records, EPA ECHO/DMR access, Georgia Power renewable-program materials, and Google energy disclosures. Google publishes Douglas County water consumption for 2022-2024 and a potable/reclaimed split for 2023-2024; only presentation-preserving unit conversions are modeled because the direct-evidence registry lacks a compatible water metric. NPDES permit GA0038920 reports discharge capacity, not actual consumption. No meter, bill, tariff determinants, peak-day use, sewer charge, annual campus kWh, peak MW load, interconnection cost, renewable delivery, or selected-building allocation was found."
+      "notes": "Repositories and routes checked: Google 2023-2025 environmental/impact disclosures; DDCWSA 2014, 2016, and 2025 financial reports, work-session agendas, rates, and capital/bond materials; Georgia EPD NPDES notices, air records, orders, complaints, and DMR routing; EPA ECHO facility report for GA0038920/FRS 110061650100; Georgia Power/PSC tariffs and Docket 55378; and operator energy disclosures. WSA tables report Google customer revenue in 2007, 2014, and 2016, but these service revenues do not fit the infrastructure-payment metric and do not reveal meters, volumes, or payer identity. ECHO displays 0.18 MGD average facility flow in 2026, annualized with a rounding band in modeled synthesis. Google water consumption, off-site 78.8 MW contracted solar, PUE, DMR flow, generic rates, bills, and public infrastructure are kept distinct. No meter, Google bill, tier/ERU inputs, peak-day demand, campus kWh/load, interconnection cost, selected-building allocation, or Google-specific capital obligation was found."
     },
     {
       "project_id": "prj_study_im3_campus_00578435601",
@@ -704,14 +868,14 @@
       "source_id": "src_study_google_douglas_careers_2026",
       "as_of": "2026-09-07",
       "title": "Workforce, payroll, training, and procurement audit preserves only reported headcount",
-      "notes": "Source families checked: the 2015 operator expansion announcement, current Google Careers results, Georgia and Douglas workforce-development pages, recipient education sources, permit contractor fields, and exact searches for employees, contractors, operations, facilities technician, apprenticeship, training, payroll, wages, residence, procurement, supplier, and local spend. The 2015 more-than-350 employee snapshot and 25-job expansion commitment are retained with distinct bases. Current postings do not establish filled jobs, annual-average FTE, payroll, wage distribution, employee residence, contractor headcount, apprenticeship completions, or local hiring. The permit names one contractor but no payment or supplier-retention amount, so no payroll or supplier model is eligible."
+      "notes": "Repositories and routes checked: the 2015 expansion announcement; 2016 DDCWSA principal-employer table; current and archived Google Careers queries; Georgia/Douglas workforce-development, grant, training, and development-agreement pages; recipient sources and Form 990 search; permit contractors; BLS QCEW 2015 annual file; and exact employee/payroll/wage/residence/apprenticeship/transfer/procurement terms. The operator's more-than-350 June 2015 campus snapshot, local table's 300 in 2016, and 25-job projection are retained with different dates and definitions; the discrepancy prevents interpolation. A 350-employee threshold wage-bill sensitivity uses Douglas County's $684 all-industry 2015 annual-average weekly wage, explicitly not observed Google payroll. No annual-average FTE, Google wage distribution, benefits, contractor headcount, worker residence, training completions, transfer ledger, or local hiring outcome was found."
     },
     {
       "project_id": "prj_study_im3_campus_00578435601",
       "source_id": "src_study_mercer_google_douglas_grant_2022",
       "as_of": "2023-12-31",
       "title": "Recipient and operator community search adds nonzero contributions without double counting",
-      "notes": "Source families checked: Mercer University, Douglas County School System and Education Foundation, Elevate Douglas, Google community-grant pages, and the Google/Deloitte Georgia impact study for 2010-2024. Recipient-confirmed $95,135 and $42,000 grants and the study-reported $40,000 Elevate Douglas contribution are distinct. The more-than-$330,000 school-system total covers funding since 2019 and is not added to individual awards without overlap reconciliation. The study's nearly $2.9 million across Georgia communities in 2022-2023 and current statewide philanthropy totals have broader geography and are not assigned to this campus."
+      "notes": "Repositories and routes checked: Mercer University, Douglas County School System and Education Foundation, Elevate Douglas, Google community-grant pages and impact briefings, and recipient Form 990 access for 2010-2026. Recipient-confirmed $95,135 and $42,000 grants and the study-reported $40,000 Elevate Douglas contribution are distinct. The more-than-$330,000 school-system total since 2019 is not added to individual awards without overlap reconciliation. Public nonprofit summaries report aggregate contributions but no donor-level Google schedule or new campus amount. Statewide philanthropy totals and the nearly $2.9 million across Georgia communities in 2022-2023 remain broader than this campus."
     },
     {
       "project_id": "prj_study_im3_campus_00578435601",
@@ -724,8 +888,15 @@
       "project_id": "prj_study_im3_campus_00578435601",
       "source_id": "src_study_google_georgia_impact_2024",
       "as_of": "2026-09-07",
-      "title": "Model candidate audit retains three unit conversions and rejects unsupported chains",
-      "notes": "Candidate-by-candidate disposition after direct-source exhaustion: retain three unallocated 2022-2024 water-consumption unit conversions with source-rounding bands. Reject construction job-year and payroll models because the only direct permit value is a small remodel and no local multiplier or wage basis is published; reject supplier models for lack of project spending and local-purchase anchors; reject continuous-staffing and payroll models because a historical threshold headcount lacks schedules, occupation mix, wages, and worker residence; reject fiscal and public-cost models because payments, abatement value, recipient distributions, and same-scope service costs are absent; reject energy use and cost models because 78.8 MW contracted solar is not campus load; reject county contribution models for missing causal design and overlapping development. Oxford Economics and Deloitte wider-impact outputs remain source context, not observations or newly re-labeled project effects."
+      "title": "Fourth-pass model audit retains bounded anchor-based estimates and rejects unsupported chains",
+      "notes": "Candidate-by-candidate disposition after directed exhaustion: retain three unallocated 2022-2024 water-consumption conversions; annualize the displayed 2026 ECHO DMR average flow with a rounding band; calculate two county-M&O-only gross-levy counterfactuals from exempt P79020 assessed value and published millage; apply Douglas County's 2015 all-industry QCEW wage to the operator's 350-employee threshold with a 75%-125% wage sensitivity; and apply a national 2022 construction payroll/receipts ratio to the sole valued 2025 remodel with 0.5-1.5 transfer sensitivity. Reject supplier/local-purchase models for missing payments and geography; energy use/cost because solar and PUE are not load; actual abatement, net fiscal benefit, and public cost because bills, executed schedules, distributions, and same-scope costs are absent; and county outcomes for missing causal design. Wider Oxford/Deloitte effects remain context, not re-labeled observations."
+    },
+    {
+      "project_id": "prj_study_im3_campus_00578435601",
+      "source_id": "src_study_douglas_boa_p79020_amended_2025",
+      "as_of": "2026-09-07",
+      "title": "Directed fourth-pass source matrix records exact identifiers and unresolved gaps",
+      "notes": "Exact official identifiers and years checked across the matrix: parcel 08741820001 and accounts P88150/P79020 (2023-2026); BTA P79020 amended return (March 5, 2025); County M&O rates (2023-2024); GovernmentWindow tax years 2017-2026; DADC Google lease amendment (October 17, 2023) and DCA 2008 debt entries; WSA Google customer tables (2007, 2014, 2016), Data Center Water Demands agenda item (December 11, 2023), and rates effective December 1, 2024; NPDES GA0038920/FRS 110061650100 and ECHO 2026 DMR; EPD application 27010, order EPD-AQ-6038, complaint 75360; PSC Docket 55378; permits 2502392-DC/2502513-DC; 2015 operator and 2016 principal-employer counts; recipient confirmations and nonprofit filings. Remaining gaps are bills/payments, executed fiscal instruments, utility agreements/meters, historic permit attachments, invoices/vendor geography, observed Google payroll/residence/training transfers, and same-scope public costs—not zeros."
     }
   ]
 }
