@@ -53,7 +53,7 @@ class StateFarmOlatheContributionAccountTest(unittest.TestCase):
 
     def test_fragment_and_merged_evidence_pass_contract_validation(self):
         self.assertEqual(self.fragment["project_id"], PROJECT_ID)
-        self.assertEqual(len(self.fragment["records"]), 6)
+        self.assertEqual(len(self.fragment["records"]), 7)
         self.assertTrue(
             all(row["project_id"] == PROJECT_ID for row in self.fragment["records"])
         )
@@ -63,7 +63,7 @@ class StateFarmOlatheContributionAccountTest(unittest.TestCase):
         )
         self.assertEqual(issues, [])
 
-    def test_audit_adds_actual_anchors_without_manufacturing_completion(self):
+    def test_audit_adds_actual_anchors_and_bounded_models_without_manufacturing_completion(self):
         project = self.project
         self.assertEqual(
             (
@@ -72,22 +72,18 @@ class StateFarmOlatheContributionAccountTest(unittest.TestCase):
                 project["projection_count"],
                 project["modeled_synthesis_count"],
             ),
-            (31, 31, 0, 0),
+            (32, 32, 0, 4),
         )
         self.assertEqual(project["model_completeness"]["status"], "incomplete")
         self.assertEqual(
             project["model_completeness"]["missing_categories"],
-            ["community", "public_costs", "suppliers"],
+            ["community", "suppliers"],
         )
         self.assertEqual(
             project["model_completeness"]["missing_county_outcomes"],
-            [
-                "study.modeled_county_employment_comparison_gap",
-                "study.modeled_county_gdp_comparison_gap",
-                "study.modeled_county_wage_comparison_gap",
-            ],
+            [],
         )
-        self.assertFalse(MODEL_FRAGMENT.exists())
+        self.assertTrue(MODEL_FRAGMENT.exists())
 
     def test_permit_operations_and_resource_facts_preserve_scope(self):
         rows = {row["claim_id"]: row for row in self.project["economic_records"]}
@@ -126,6 +122,42 @@ class StateFarmOlatheContributionAccountTest(unittest.TestCase):
         self.assertIn("not summed", permit_notes)
         self.assertIn("not audited expenditure", permit_notes)
 
+        hpip = rows["clm_study_state_farm_olathe_hpip_capital_investment_2020"]
+        self.assertEqual(hpip["value"], 282_100_000)
+        self.assertEqual(hpip["source_id"], "src_study_kansas_commerce_hpip_state_farm_2026")
+        self.assertIn("not summed", hpip["notes"])
+
+    def test_last_resort_models_are_bounded_and_noncausal(self):
+        modeled = {row["metric_code"]: row for row in self.project["modeled_syntheses"]}
+        self.assertEqual(
+            set(modeled),
+            {
+                "study.modeled_annual_local_service_cost_break_even",
+                "study.modeled_county_employment_comparison_gap",
+                "study.modeled_county_gdp_comparison_gap",
+                "study.modeled_county_wage_comparison_gap",
+            },
+        )
+        threshold = modeled["study.modeled_annual_local_service_cost_break_even"]
+        self.assertEqual(threshold["value"], 2_298_781.14)
+        self.assertEqual(threshold["interval"]["kind"], "point_estimate")
+        self.assertIn("not an estimate of actual public-service cost", threshold["interval"]["interpretation"])
+
+        comparisons = [row for metric, row in modeled.items() if "comparison_gap" in metric]
+        self.assertEqual(
+            {row["metric_code"]: row["value"] for row in comparisons},
+            {
+                "study.modeled_county_gdp_comparison_gap": 5.6,
+                "study.modeled_county_employment_comparison_gap": 0.72,
+                "study.modeled_county_wage_comparison_gap": 2.23,
+            },
+        )
+        self.assertTrue(all(row["confidence"] == "low" for row in comparisons))
+        self.assertTrue(all(row["derivation"]["method"] == "benchmark_application" for row in comparisons))
+        self.assertTrue(all(row["interval"]["kind"] == "sensitivity_envelope" for row in comparisons))
+        self.assertTrue(all("causal_design" not in row for row in comparisons))
+        self.assertTrue(all(row["aggregation"]["role"] == "standalone" for row in modeled.values()))
+
     def test_description_and_persistent_search_ledger_are_published(self):
         updates = [
             update
@@ -162,10 +194,13 @@ class StateFarmOlatheContributionAccountTest(unittest.TestCase):
             "county outcomes",
         ):
             self.assertIn(term, ledger)
-        self.assertIn("no project-specific", ledger)
+        self.assertIn("no executed agreement", ledger)
         self.assertIn("no realized", ledger)
-        self.assertIn("no utility identity", ledger)
-        self.assertIn("no multiplier", ledger)
+        self.assertIn("no primary site record identifies the serving utility", ledger)
+        self.assertIn("model-candidate decision table", ledger)
+        self.assertIn("input-output model is rejected", ledger)
+        self.assertIn("supplier and community gaps remain open", ledger)
+        self.assertIn("no causal attribution", ledger)
         self.assertIn("no cash grant", ledger)
 
 
