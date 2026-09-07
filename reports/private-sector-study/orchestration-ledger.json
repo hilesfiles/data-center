@@ -1,8 +1,8 @@
 {
   "schema_version": "1.0.0",
-  "study_release": "private-sector-study-1.53.0",
-  "generated_at": "2026-09-07T01:37:08Z",
-  "queue_status": "foundational_full_account_reaudit_in_progress",
+  "study_release": "private-sector-study-1.54.0",
+  "generated_at": "2026-09-07T02:54:48Z",
+  "queue_status": "foundational_full_account_reaudit_integrated_validated_pending_publish",
   "ranking_method": "Descending covered contribution-account category count, then descending sourced economic-record count, then ascending project_id.",
   "worker_research_contract": {
     "version": "2.0.0",
@@ -18,7 +18,7 @@
     "completion_rule": "A worker commit is a handoff candidate; only an independently audited handoff may be reconciled or published."
   },
   "corrective_model_eligibility_queue": {
-    "status": "foundational_full_account_reaudit_in_progress",
+    "status": "foundational_full_account_reaudit_integrated_validated_pending_publish",
     "reason": "Previously completed projects must be re-audited when their public-source search trail or model eligibility record does not satisfy worker-research-contract 2.0.0. This includes analytically incomplete projects with zero modeled syntheses and the three foundational full-modeled accounts created before the strengthened contract. A model may be retained only when defensible, and every rejection or retention must be documented candidate by candidate rather than asserted as a blanket conclusion.",
     "batches": [
       {
@@ -90,7 +90,7 @@
       },
       {
         "batch": "foundational_full_account_reaudit",
-        "setup_state": "in_progress",
+        "setup_state": "integrated_validated_pending_publish",
         "reason": "Apple Mesa, Switch Citadel, and Digital Crossroad Hammond pass the mechanical full-modeled-account coverage gate but predate contract 2.0.0. Their published project trails contain no explicit candidate-by-candidate search-exhaustion decisions, and 74 of their combined 104 models are low-confidence; each account therefore requires renewed direct-evidence discovery and independent retention/removal review before ordinary project batching resumes.",
         "project_ids": [
           "prj_study_im3_building_00300974499",
@@ -135,7 +135,31 @@
             "modeled_synthesis_count": 43,
             "low_confidence_model_count": 34
           }
-        ]
+        ],
+        "worker_commit_shas": [
+          "0b5b071b32d6a24d5d53dcf5920676a91635d938",
+          "16b05f8dbb9b593abb172b03f56ae1372da6b555",
+          "771192d20f1932f84217e12544bcb8d30414b80c"
+        ],
+        "integration_commits": [
+          "b4e39d1",
+          "9b714bf",
+          "6414ddc"
+        ],
+        "source_record_additions": 48,
+        "reported_observation_additions": 47,
+        "forecast_additions": 1,
+        "modeled_record_additions": -95,
+        "reconciled_counts": {
+          "economic_records": 995,
+          "reported_actual_records": 889,
+          "source_forecast_records": 106,
+          "modeled_synthesis_records": 66,
+          "full_modeled_county_accounts": 0,
+          "research_complete_projects": 21
+        },
+        "validation_result": "Passed 133 repository tests, the complete 65-schema data-contract validation, the TypeScript production build, the complete browser suite, desktop and mobile completed-project inspection, all 21 completed-project description/order checks, map population, project/county navigation, and preview-process shutdown.",
+        "result": "All three handoffs independently accepted and reconciled without cross-project overwrites. The re-audit added 48 net source records, removed 95 net modeled records, replaced superseded Switch and Hammond observations, retained only narrowly supported last-resort estimates, and restored every foundational account to incomplete until its remaining direct-evidence gaps are closed."
       }
     ]
   },

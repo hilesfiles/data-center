@@ -86,11 +86,11 @@ class PrivateSectorStudyTest(unittest.TestCase):
         index, details, _ = self.build()
         self.assertEqual(index["counts"]["projects"], 36)
         self.assertEqual(index["counts"]["projects_with_economic_evidence"], 36)
-        self.assertEqual(index["counts"]["economic_records"], 947)
-        self.assertEqual(index["counts"]["reported_actual_records"], 842)
-        self.assertEqual(index["counts"]["projection_records"], 105)
-        self.assertEqual(index["counts"]["modeled_synthesis_records"], 161)
-        self.assertEqual(index["full_modeled_county_accounts"], 3)
+        self.assertEqual(index["counts"]["economic_records"], 995)
+        self.assertEqual(index["counts"]["reported_actual_records"], 889)
+        self.assertEqual(index["counts"]["projection_records"], 106)
+        self.assertEqual(index["counts"]["modeled_synthesis_records"], 66)
+        self.assertEqual(index["full_modeled_county_accounts"], 0)
         self.assertEqual(sum(r["analysis_readiness"]["causal"] == "causal_model_available" for r in details), 0)
         washoe = next(r for r in details if r["name"] == "Apple Washoe County campus")
         coverage = {g["code"]: g["status"] for g in washoe["evidence_gaps"]}
@@ -107,42 +107,24 @@ class PrivateSectorStudyTest(unittest.TestCase):
         self.assertTrue(all(r["scope"]["level"] == "company_county" for r in rows))
         self.assertEqual(rows[-1]["value"], 1476648949)
 
-    def test_three_depth_counties_pass_machine_enforced_full_model_gate(self):
+    def test_foundational_reaudit_removes_premature_full_model_classifications(self):
         index, details, _ = self.build()
         target_ids = {
             "prj_study_im3_building_00300974499",  # Apple Mesa / Maricopa
             "prj_study_im3_point_06685432442",     # Switch / Storey
             "prj_study_im3_building_00978934687", # Digital Crossroad / Lake
         }
-        completed = [row for row in details if row["model_completeness"]["status"] == "full_modeled_account"]
-        self.assertEqual({row["project_id"] for row in completed}, target_ids)
-        self.assertEqual(index["full_modeled_county_accounts"], 3)
-        for project in completed:
+        reviewed = [row for row in details if row["project_id"] in target_ids]
+        self.assertEqual({row["project_id"] for row in reviewed}, target_ids)
+        self.assertEqual(index["full_modeled_county_accounts"], 0)
+        for project in reviewed:
             self.assertGreaterEqual(len(project["project_description"]), 80)
             gate = project["model_completeness"]
-            self.assertEqual(len(gate["covered_categories"]), 8)
-            self.assertEqual(len(gate["covered_county_outcomes"]), 3)
-            self.assertEqual(gate["missing_categories"], [])
-            self.assertEqual(gate["missing_county_outcomes"], [])
-            self.assertEqual(project["analysis_readiness"]["construction"], "modeled_available")
-            self.assertEqual(project["analysis_readiness"]["operations"], "modeled_available")
+            self.assertEqual(gate["status"], "incomplete")
+            self.assertTrue(gate["missing_categories"] or gate["missing_county_outcomes"])
             self.assertEqual(project["analysis_readiness"]["causal"], "not_assessed")
-            self.assertIn(project["analysis_readiness"]["fiscal"], {"modeled_available", "not_assessed"})
             self.assertTrue(all(row["presentation"] == "modeled_not_observed_or_audited"
                                 for row in project["modeled_syntheses"]))
-            taxes = [row for row in project["modeled_syntheses"]
-                     if row["metric_code"] == "study.modeled_latest_project_linked_local_tax_contribution"]
-            break_evens = [row for row in project["modeled_syntheses"]
-                           if row["metric_code"] == "study.modeled_annual_local_service_cost_break_even"]
-            self.assertEqual(bool(taxes), bool(break_evens))
-            if taxes:
-                self.assertEqual(taxes[0]["value"], break_evens[0]["value"])
-                self.assertEqual((taxes[0]["interval"]["kind"], break_evens[0]["interval"]["kind"]),
-                                 ("point_estimate", "point_estimate"))
-                self.assertIn("not an estimate of actual public cost", break_evens[0]["limitations"][0].lower())
-            else:
-                self.assertEqual(project["name"], "Microsoft San Antonio")
-                self.assertEqual(project["analysis_readiness"]["fiscal"], "not_assessed")
             self.assertFalse(any(row["metric_code"] in {
                 "study.modeled_annual_net_fiscal_position",
                 "study.modeled_annual_local_fiscal_margin_before_incentives",
@@ -153,16 +135,18 @@ class PrivateSectorStudyTest(unittest.TestCase):
         self.assertEqual(forest["model_completeness"]["status"], "incomplete")
         self.assertEqual(forest["model_completeness"]["missing_categories"], ["suppliers"])
 
-    def test_full_account_cannot_publish_without_a_project_description(self):
-        evidence = load_evidence()
-        for update in evidence["project_updates"]:
-            if update["project_id"] == "prj_study_im3_building_00300974499":
-                update.pop("project_description", None)
-        with self.assertRaisesRegex(ValueError, "requires a project description"):
-            build_products(
-                self.config, self.inventory, self.panels,
-                "2026-09-03T00:00:00+00:00", evidence=evidence,
-            )
+    def test_researched_foundational_accounts_keep_project_descriptions(self):
+        _, details, _ = self.build()
+        target_ids = {
+            "prj_study_im3_building_00300974499",
+            "prj_study_im3_point_06685432442",
+            "prj_study_im3_building_00978934687",
+        }
+        reviewed = [row for row in details if row["project_id"] in target_ids]
+        self.assertEqual({row["project_id"] for row in reviewed}, target_ids)
+        for project in reviewed:
+            self.assertGreaterEqual(len(project["project_description"]), 80)
+            self.assertLessEqual(len(project["project_description"]), 1000)
 
     def test_chaska_excludes_stream_facilities_and_preserves_flexential_values(self):
         _, details, _ = self.build()
@@ -332,10 +316,10 @@ class PrivateSectorStudyTest(unittest.TestCase):
         }
         self.assertEqual((project["economic_record_count"], project["reported_actual_count"],
                           project["projection_count"], project["modeled_synthesis_count"]),
-                         (79, 72, 7, 34))
+                         (86, 78, 8, 4))
         self.assertEqual([len(by_metric[c]) for c in ["study.reported_asset_cost", "study.taxable_property_value",
                                                        "study.account_assessed_value", "study.property_taxes_billed"]],
-                         [11, 14, 14, 14])
+                         [12, 15, 15, 14])
         self.assertEqual(len(by_metric["study.property_taxes_paid"]), 13)
         zero_bill = next(r for r in by_metric["study.property_taxes_billed"] if r["period"]["year"] == 2019)
         self.assertEqual(zero_bill["value"], 0)
@@ -363,7 +347,7 @@ class PrivateSectorStudyTest(unittest.TestCase):
             "capex": by_metric["study.audited_capital_expenditure"][0],
         }
         self.assertEqual([audit[k]["value"] for k in ["jobs", "wage", "capex"]],
-                         [111, 50.97, 179943184])
+                         [324, 50.97, 452372959])
         self.assertTrue(all(r["basis"] == "reported_actual" for r in audit.values()))
         self.assertTrue(all(r["scope"]["level"] == "company_county" for r in audit.values()))
         self.assertTrue(all(r["scope"]["inventory_allocation"] == "unallocated" for r in audit.values()))
@@ -375,16 +359,19 @@ class PrivateSectorStudyTest(unittest.TestCase):
         self.assertEqual(by_metric["study.campus_investment_projection"][1]["value"], 1386677024)
         donations = by_metric["study.direct_community_contribution"]
         self.assertEqual([(r["value"], r["value_qualifier"]) for r in donations],
-                         [(356000, "exact"), (2000000, "greater_than")])
+                         [(356000, "exact"), (2000000, "greater_than"),
+                          (3400000, "greater_than")])
         self.assertEqual(by_metric["study.public_safety_equipment_cost_projection"][0]["value"], 100000)
         self.assertEqual(by_metric["study.public_safety_equipment_cost_projection"][0]["basis"], "source_projection")
         coverage = {gap["code"]: gap["status"] for gap in project["evidence_gaps"]}
         self.assertEqual((coverage["community"], coverage["public_costs"]), ("partial", "projections_only"))
-        self.assertEqual(len(project["research_updates"]), 8)
+        self.assertEqual(len(project["research_updates"]), 22)
         self.assertFalse(any(r["source_id"] == "src_study_nevada_switch_combined_audit_2021"
                              for r in project["economic_records"]))
-        self.assertTrue(all(r["source_id"] == "src_study_nevada_goed_switch_abatement_audit_2023"
-                            for r in list(audit.values()) + [by_metric["study.operating_jobs_projection"][0]]))
+        self.assertTrue(all(r["source_id"] == "src_study_nevada_goed_switch_abatement_audit_2025"
+                            for r in audit.values()))
+        self.assertEqual(by_metric["study.operating_jobs_projection"][0]["source_id"],
+                         "src_study_nevada_goed_switch_abatement_audit_2023")
 
         q2_capex = next(r for r in project["economic_records"]
                         if r["claim_id"] == "clm_study_switch_citadel_capex_2021_q2")
@@ -392,20 +379,15 @@ class PrivateSectorStudyTest(unittest.TestCase):
                           q2_capex["period"]["report_date"]),
                          (59400000, "campus", "2021-06-30"))
         modeled = {r["metric_code"]: r for r in project["modeled_syntheses"]}
-        self.assertEqual(modeled["study.modeled_documented_capital_floor"]["value"], 239343184)
-        self.assertEqual(modeled["study.modeled_operating_payroll"]["interval"]["low"], 10636419.60)
-        self.assertEqual(modeled["study.modeled_operating_payroll"]["interval"]["high"], 11767953.60)
+        self.assertEqual(set(modeled), {
+            "study.modeled_combined_property_tax_paid",
+            "study.modeled_cumulative_verified_property_tax_paid",
+            "study.modeled_annual_local_service_cost_break_even",
+        })
         self.assertEqual(modeled["study.modeled_cumulative_verified_property_tax_paid"]["value"], 11324644.79)
-        self.assertEqual(modeled["study.modeled_planned_tax_abatement_total"]["value"], 107815753)
-        self.assertEqual(modeled["study.modeled_occupied_power_capacity_proxy"]["value"], 75.4)
-        self.assertEqual(modeled["study.modeled_annual_electricity_use"]["interval"]["high"], 660504)
-        self.assertEqual(modeled["study.modeled_onsite_water_use"]["interval"]["low"], 54838676.29)
-        self.assertIn("Not a causal effect.",
-                      modeled["study.modeled_county_covered_employment_descriptive_change"]["limitations"])
-        expanded_channels = [r for r in project["modeled_syntheses"]
-                             if r["contribution_channel"] in {"indirect", "induced", "total"}]
-        self.assertTrue(expanded_channels)
-        self.assertTrue(all(r.get("multiplier_provenance") for r in expanded_channels))
+        self.assertEqual(modeled["study.modeled_annual_local_service_cost_break_even"]["value"], 3452486.96)
+        self.assertFalse(any(r["contribution_channel"] in {"indirect", "induced", "total"}
+                             for r in project["modeled_syntheses"]))
 
     def test_council_bluffs_keeps_taxpayer_accounts_and_award_plans_separate(self):
         _, details, _ = self.build()
@@ -466,7 +448,7 @@ class PrivateSectorStudyTest(unittest.TestCase):
         electricity = [r for r in actual if r["metric_code"] == "study.annual_electricity_use"]
         permits = [r for r in actual if r["metric_code"] == "study.permitted_construction_value"]
         solar = [r for r in actual if r["metric_code"] == "study.renewable_generation_capacity"]
-        self.assertEqual((project["economic_record_count"], len(actual), len(plans)), (80, 76, 4))
+        self.assertEqual((project["economic_record_count"], len(actual), len(plans)), (105, 101, 4))
         self.assertEqual(len({r["scope"]["label"] for r in fcv}), 2)
         self.assertEqual([r["value"] for r in fcv if "business personal" in r["scope"]["label"]],
                          [287444961, 235963681, 165788022, 300733702])
@@ -480,8 +462,9 @@ class PrivateSectorStudyTest(unittest.TestCase):
                          [45000000, 104000000, 163000000, 227000000, 332000000,
                           379000000, 488000000, 530000000, 563000000])
         self.assertTrue(all(r["unit"] == "kWh_per_year" and r["period"]["kind"] == "fiscal_year" for r in electricity))
-        self.assertEqual([r["value"] for r in permits],
-                         [22000000, 32991875.28, 28000000, 1000000, 2000000, 3000000, 2000000, 4918751.6])
+        self.assertEqual(len(permits), 32)
+        self.assertTrue({22000000, 32991875.28, 28000000, 1000000, 2000000,
+                         3000000, 4918751.6} <= {r["value"] for r in permits})
         self.assertEqual([r["value"] for r in solar], [50, 4.67])
         self.assertEqual({(r["metric_code"], r["value"], r["value_qualifier"]) for r in plans}, {
             ("study.campus_investment_projection", 2000000000, "exact"),
@@ -492,33 +475,13 @@ class PrivateSectorStudyTest(unittest.TestCase):
         self.assertEqual(next(r for r in actual if r["metric_code"] == "study.cumulative_facility_investment")["value_qualifier"], "approximately")
         self.assertTrue(any("separate Apple equipment" in u["title"] for u in project["research_updates"]))
         modeled = project["modeled_syntheses"]
-        self.assertEqual(project["modeled_synthesis_count"], 27)
+        self.assertEqual(project["modeled_synthesis_count"], 3)
         self.assertEqual({r["basis"] for r in modeled}, {"modeled_synthesis"})
-        self.assertEqual(len(project["economic_records"]), 80)
-        water = next(r for r in modeled if r["metric_code"] == "study.modeled_onsite_water_use")
-        self.assertEqual(water["interval"], {
-            "kind": "sensitivity_envelope", "low": 69915278.64, "central": 109322072.06, "high": 148728865.48,
-            "interpretation": "Low applies state-of-the-art WUE/PUE; high applies a 2.0 L/kWh WUE and 2.0 PUE reference; central is the endpoint midpoint.",
-        })
-        payroll = next(r for r in modeled if r["metric_code"] == "study.modeled_ftz_area_payroll")
-        self.assertEqual((payroll["interval"]["low"], payroll["value"], payroll["interval"]["high"]),
-                         (9579040.27, 11902668.85, 14226297.43))
+        self.assertEqual(len(project["economic_records"]), 105)
+        self.assertEqual({r["metric_code"] for r in modeled},
+                         {"study.modeled_ftz_property_tax_reduction"})
         property_rows = [r for r in modeled if r["metric_code"] == "study.modeled_ftz_property_tax_reduction"]
-        self.assertEqual([r["value"] for r in property_rows], [5358646.75, 4429801.10, 4121427.02])
-        apple_employment = next(r for r in modeled if r["metric_code"] == "study.modeled_apple_allocated_employment")
-        self.assertEqual((apple_employment["interval"]["low"], apple_employment["value"], apple_employment["interval"]["high"]),
-                         (98.05, 121.84, 145.62))
-        apple_payroll = next(r for r in modeled if r["metric_code"] == "study.modeled_apple_allocated_payroll")
-        self.assertEqual((apple_payroll["interval"]["low"], apple_payroll["value"], apple_payroll["interval"]["high"]),
-                         (9299507.17, 11555328.21, 13811149.26))
-        electricity_cost = next(r for r in modeled if r["metric_code"] == "study.modeled_electricity_cost")
-        self.assertEqual((electricity_cost["interval"]["low"], electricity_cost["value"], electricity_cost["interval"]["high"]),
-                         (44477000, 56665950, 68854900))
-        emissions = next(r for r in modeled if r["metric_code"] == "study.modeled_location_based_gross_emissions")
-        self.assertEqual((emissions["interval"]["kind"], emissions["value"]), ("point_estimate", 180341.25))
-        cooling = next(r for r in modeled if r["metric_code"] == "study.modeled_cooling_water_savings_potential")
-        self.assertEqual((cooling["interval"]["low"], cooling["value"], cooling["interval"]["high"]),
-                         (0, 16398310.81, 32796621.62))
+        self.assertEqual([r["value"] for r in property_rows], [3250864.51, 2421356.69, 2127179.6])
         self.assertTrue(all(r["derivation"]["formula"] and r["derivation"]["assumptions"] for r in modeled))
 
     def test_modeled_synthesis_rejects_invalid_ranges_and_unknown_inputs(self):
@@ -623,16 +586,18 @@ class PrivateSectorStudyTest(unittest.TestCase):
         paid = [r for r in actual if r["metric_code"] == "study.property_taxes_paid"]
         distributions = [r for r in actual if r["metric_code"] == "study.gross_property_tax_distribution"]
         leasehold_assessed = [r for r in assessed if "leasehold parcel" in r["scope"]["label"]]
-        personal_assessed = [r for r in assessed if "personal property" in r["scope"]["label"]]
+        personal_assessed = [r for r in assessed if "personal" in r["scope"]["label"]]
         self.assertEqual([r["value"] for r in leasehold_assessed], [13043900, 14478500, 15658100, 19987700, 20014600])
-        self.assertEqual([r["value"] for r in personal_assessed], [30328680])
-        self.assertEqual([r["value"] for r in billed], [641685.14, 640867.48])
-        self.assertEqual([r["value"] for r in paid], [641685.14])
-        self.assertEqual(len(distributions), 6)
-        self.assertAlmostEqual(sum(r["value"] for r in distributions), 751127.92, places=2)
+        self.assertEqual([r["value"] for r in personal_assessed], [30328680, 31801980, 29673490])
+        self.assertEqual([r["value"] for r in billed], [641685.14, 640867.48, 1020970.76, 950145.14])
+        self.assertEqual([r["value"] for r in paid], [641685.14, 1020970.76, 475072.57, 320433.74])
+        self.assertEqual(len(distributions), 12)
+        self.assertAlmostEqual(sum(r["value"] for r in distributions), 1864744.32, places=2)
         self.assertEqual({(r["metric_code"], r["value"]) for r in actual if "credits" in r["metric_code"] or "cap_savings" in r["metric_code"]}, {
             ("study.local_property_tax_credits", 95115.62),
+            ("study.local_property_tax_credits", 141017.68),
             ("study.property_tax_cap_savings", 15144.82),
+            ("study.property_tax_cap_savings", 22453.58),
         })
         self.assertEqual([r["value"] for r in plans if r["metric_code"] == "study.campus_investment_projection"],
                          [40000000, 200000000, 88656629])
@@ -701,7 +666,7 @@ class PrivateSectorStudyTest(unittest.TestCase):
         self.assertEqual(next(r for r in actual if r["metric_code"] == "study.tif_development_loan_principal")["value"], 8040000)
         self.assertEqual([r["value"] for r in actual if r["metric_code"] == "study.tif_revenue_loan_repayment"],
                          [160800, 225800, 258200, 264100])
-        self.assertEqual(next(r for r in actual if r["metric_code"] == "study.permitted_water_withdrawal_capacity")["value"], 910.85)
+        self.assertEqual(next(r for r in actual if r["metric_code"] == "study.permitted_water_withdrawal_capacity")["value"], 910.08)
         self.assertEqual(next(r for r in actual if r["metric_code"] == "study.permitted_water_consumptive_capacity")["value"], 18.202)
         self.assertEqual([r["value"] for r in actual if r["metric_code"] == "study.tif_bond_proceeds_drawn"], [5000000, 3040000])
         self.assertEqual([r["value"] for r in actual if r["metric_code"] == "study.tif_bond_outstanding_principal"], [8040000, 7975000, 7810000])
@@ -711,8 +676,8 @@ class PrivateSectorStudyTest(unittest.TestCase):
         self.assertEqual([r["value"] for r in actual if r["metric_code"] == "study.tif_debt_service_fund_transfer_in"], [160800, 349574, 320987])
         self.assertEqual([r["value"] for r in actual if r["metric_code"] == "study.tif_bond_remaining_principal_interest"], [12074400, 11687800, 11205100])
         self.assertEqual({g["code"]: g["status"] for g in project["evidence_gaps"]}["resources"], "partial")
-        self.assertEqual((project["economic_record_count"], len(actual), len(plans)), (113, 103, 10))
-        self.assertEqual(len(project["research_updates"]), 30)
+        self.assertEqual((project["economic_record_count"], len(actual), len(plans)), (129, 119, 10))
+        self.assertEqual(len(project["research_updates"]), 47)
         self.assertTrue(any("construction-supply-chain" in r["title"] for r in project["research_updates"]))
         debt_screen = next(r for r in project["research_updates"] if r["source_id"] == "src_study_indiana_gateway_hammond_outstanding_debt_2026")
         self.assertIn("no separate EID debt", debt_screen["title"])
@@ -724,53 +689,25 @@ class PrivateSectorStudyTest(unittest.TestCase):
         project = next(r for r in details if r["project_id"] == "prj_study_im3_building_00978934687")
         modeled = project["modeled_syntheses"]
         by_id = {r["estimate_id"]: r for r in modeled}
-        self.assertEqual((project["economic_record_count"], project["modeled_synthesis_count"]), (113, 43))
+        self.assertEqual((project["economic_record_count"], project["modeled_synthesis_count"]), (129, 2))
         self.assertEqual((index["counts"]["economic_records"], index["counts"]["modeled_synthesis_records"]),
-                         (947, 161))
+                         (995, 66))
         self.assertEqual({r["basis"] for r in modeled}, {"modeled_synthesis"})
         self.assertTrue(all(r["presentation"] == "modeled_not_observed_or_audited" for r in modeled))
         self.assertTrue(all(r["derivation"]["formula"] and r["parameters"] and r["limitations"] for r in modeled))
-        comparisons = [r for r in modeled if r["metric_code"].endswith("_comparison_gap")]
-        self.assertEqual(len(comparisons), 3)
-        self.assertTrue(all(r["derivation"]["method"] == "benchmark_application" for r in comparisons))
-        self.assertTrue(all("causal_design" not in r for r in comparisons))
-        self.assertTrue(all(any("must not be interpreted as a data-center effect" in limit for limit in r["limitations"])
-                            for r in comparisons))
-
-        spend = by_id["est_study_dx_hammond_construction_spend_direct"]
-        self.assertEqual((spend["interval"]["low"], spend["value"], spend["interval"]["high"]),
-                         (80000000, 100000000, 120000000))
-        self.assertEqual(spend["derivation"]["input_claim_ids"],
-                         ["clm_study_digital_crossroad_local_contractor_spend_2025"])
-        jobs = by_id["est_study_dx_hammond_construction_job_years_total"]
-        self.assertEqual((jobs["interval"]["low"], jobs["value"], jobs["interval"]["high"]),
-                         (699.93, 874.91, 1049.89))
-        self.assertEqual(jobs["aggregation"]["component_estimate_ids"], [
-            "est_study_dx_hammond_construction_job_years_direct",
-            "est_study_dx_hammond_construction_job_years_indirect",
-            "est_study_dx_hammond_construction_job_years_induced",
-        ])
-        operating = by_id["est_study_dx_hammond_operating_fte_total"]
-        self.assertEqual((operating["interval"]["low"], operating["value"], operating["interval"]["high"]),
-                         (111.11, 202.61, 294.11))
-        self.assertEqual(by_id["est_study_dx_hammond_gross_tax_distribution_2025"]["value"], 751127.92)
-        self.assertEqual(by_id["est_study_dx_hammond_property_tax_reductions_2025"]["value"], 110260.44)
-        self.assertEqual(by_id["est_study_dx_hammond_tif_debt_service_2024"]["value"], 482700)
-        self.assertEqual(by_id["est_study_dx_hammond_state_incentives_certified_2026"]["value"], 37426935.09)
-        tax = by_id["est_study_full_dx_hammond_latest_local_tax_contribution"]
-        break_even = by_id["est_study_full_dx_hammond_annual_local_service_cost_break_even"]
-        self.assertEqual((tax["value"], break_even["value"]), (641685.14, 641685.14))
-        self.assertIn("No net fiscal result is asserted", break_even["notes"])
+        self.assertEqual(set(by_id), {
+            "est_study_dx_hammond_latest_local_tax_contribution_reaudit_2026",
+            "est_study_dx_hammond_service_cost_break_even_reaudit_2026",
+        })
+        tax = by_id["est_study_dx_hammond_latest_local_tax_contribution_reaudit_2026"]
+        break_even = by_id["est_study_dx_hammond_service_cost_break_even_reaudit_2026"]
+        self.assertEqual((tax["value"], break_even["value"]), (1662655.90, 1662655.90))
+        self.assertTrue(any("not an estimate of actual public-service cost" in limit
+                            for limit in break_even["limitations"]))
         self.assertFalse(any(r["metric_code"] == "study.modeled_annual_net_fiscal_position" for r in modeled))
-        electricity = by_id["est_study_dx_hammond_facility_electricity_2025"]
-        self.assertEqual((electricity["interval"]["low"], electricity["value"], electricity["interval"]["high"]),
-                         (80964738, 114993396, 150195456))
-        water = by_id["est_study_dx_hammond_onsite_water_2025"]
-        self.assertEqual((water["interval"]["low"], water["value"], water["interval"]["high"]),
-                         (6695568.31, 9113412.43, 11903232.56))
-        self.assertEqual(by_id["est_study_dx_hammond_cbp_employment_pre_post"]["value"], -30.93)
-        self.assertIn("descriptive transformation only",
-                      by_id["est_study_dx_hammond_cbp_employment_pre_post"]["notes"].lower())
+        self.assertFalse(any(r["metric_code"].endswith("_comparison_gap") for r in modeled))
+        self.assertFalse(any(r["category"] in {"construction", "operations", "resources", "suppliers"}
+                             for r in modeled))
         self.assertTrue(any("public-evidence gap" in r["title"] for r in project["research_updates"]))
         self.assertFalse(any("request should" in r["notes"].lower() for r in project["research_updates"]))
 
@@ -904,8 +841,8 @@ class PrivateSectorStudyTest(unittest.TestCase):
     def test_hammond_expiry_update_does_not_change_lifecycle(self):
         _, details, entities = self.build()
         hammond = next(r for r in details if r["project_id"] == "prj_study_im3_building_00978934687")
-        self.assertEqual(hammond["economic_record_count"], 113)
-        self.assertEqual(len(hammond["research_updates"]), 30)
+        self.assertEqual(hammond["economic_record_count"], 129)
+        self.assertEqual(len(hammond["research_updates"]), 47)
         expiry = next(r for r in hammond["research_updates"] if r["source_id"] == "src_study_hammond_agreement_expiry_2026")
         self.assertEqual(expiry["as_of"], "2026-07-01")
         self.assertIn("does not establish closure", expiry["notes"])

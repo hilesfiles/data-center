@@ -409,8 +409,14 @@ export function EconomicAccounts({ project }: { project: StudyProject }) {
   const tifDebtRows = rows.filter(isTifDebtRecord);
   const series = [...new Set(rows.filter(r => !isAnnualFiscalRecord(r) && !isTaxBillingRecord(r) && !isTifRevenueRecord(r) && !isTifDebtRecord(r)).map(r => r.annual_series_key).filter((s): s is string => !!s))];
   const completedAccount = project.model_completeness.status === "full_modeled_account";
+  const researchComplete = project.research_completion_status === "account_research_complete";
+  const accountStatus = completedAccount
+    ? "Completed contribution account"
+    : researchComplete
+      ? "Research complete · analytical gaps remain"
+      : "Partial evidence";
   return <section className="project-section economic-accounts" aria-labelledby="accounts-title">
-    <div className="section-heading"><div><span className="eyebrow">Community economic contribution</span><h3 id="accounts-title">Economic evidence</h3></div><div className="account-heading-meta"><span className="account-status">{completedAccount ? "Completed contribution account" : "Partial evidence"}</span><span className="account-count">{project.economic_record_count} sourced records · {project.modeled_synthesis_count ? `${project.modeled_synthesis_count} modeled ${project.modeled_synthesis_count === 1 ? "synthesis" : "syntheses"}` : "partial coverage"}</span></div></div>
+    <div className="section-heading"><div><span className="eyebrow">Community economic contribution</span><h3 id="accounts-title">Economic evidence</h3></div><div className="account-heading-meta"><span className="account-status">{accountStatus}</span><span className="account-count">{project.economic_record_count} sourced records · {project.modeled_synthesis_count ? `${project.modeled_synthesis_count} modeled ${project.modeled_synthesis_count === 1 ? "synthesis" : "syntheses"}` : "partial coverage"}</span></div></div>
     <p className="study-intro">The account below puts the economic result first. Reported observations and modeled estimates are labeled at the figure, with their period, scope, and uncertainty kept visible.</p>
     {completedAccount ? <ImpactAccount project={project} /> : <FacilityEvidenceSummary project={project} />}
     <details className="evidence-ledger">

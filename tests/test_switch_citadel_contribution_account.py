@@ -61,7 +61,7 @@ class SwitchCitadelContributionAccountTest(unittest.TestCase):
                 self.project["reported_actual_count"],
                 self.project["projection_count"],
             ),
-            (89, 81, 8),
+            (86, 78, 8),
         )
 
     def test_current_goed_tax_and_sec_records_are_bounded(self):
@@ -99,22 +99,26 @@ class SwitchCitadelContributionAccountTest(unittest.TestCase):
             self.assertIn(claim_id, update["notes"])
 
     def test_all_34_legacy_models_have_one_explicit_disposition(self):
-        legacy_ids = {
+        current_ids = {
             row["estimate_id"]
             for row in self.synthesis["estimates"]
             if row["project_id"] == PROJECT
         }
-        self.assertEqual(len(legacy_ids), 34)
+        self.assertEqual(len(current_ids), 4)
         update = next(
             row for row in self.fragment["project_updates"]
             if row["title"].startswith("Legacy synthesis disposition")
         )
         decisions = re.findall(r"(?:^|\s)\d{2} (est_study_[a-z0-9_]+) — (RETAIN|REVISE|REMOVE)", update["notes"])
         self.assertEqual(len(decisions), 34)
-        self.assertEqual({estimate_id for estimate_id, _ in decisions}, legacy_ids)
+        self.assertEqual(len({estimate_id for estimate_id, _ in decisions}), 34)
+        self.assertEqual(
+            {estimate_id for estimate_id, decision in decisions if decision == "RETAIN"},
+            current_ids,
+        )
         self.assertEqual(
             {decision: sum(value == decision for _, value in decisions) for decision in ("RETAIN", "REVISE", "REMOVE")},
-            {"RETAIN": 4, "REVISE": 1, "REMOVE": 29},
+            {"RETAIN": 4, "REVISE": 0, "REMOVE": 30},
         )
         self.assertFalse(SYNTHESIS_FRAGMENT.exists())
         self.assertIn("append-only", update["notes"])

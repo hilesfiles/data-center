@@ -68,15 +68,15 @@ class DigitalCrossroadHammondContributionAccountTest(unittest.TestCase):
         project = next(row for row in details if row["project_id"] == PROJECT_ID)
         self.assertEqual(
             (project["economic_record_count"], project["reported_actual_count"], project["projection_count"]),
-            (130, 120, 10),
+            (129, 119, 10),
         )
 
     def test_all_legacy_models_have_explicit_dispositions(self):
         base = json.loads((ROOT / "config/v1/study-modeled-synthesis.json").read_text(encoding="utf-8"))
-        legacy_ids = {
+        current_ids = {
             row["estimate_id"] for row in base["estimates"] if row["project_id"] == PROJECT_ID
         }
-        self.assertEqual(len(legacy_ids), 43)
+        self.assertEqual(current_ids, set())
 
         fragment = json.loads(EVIDENCE_FRAGMENT.read_text(encoding="utf-8"))
         audit = " ".join(update["notes"] for update in fragment["project_updates"])
@@ -85,7 +85,7 @@ class DigitalCrossroadHammondContributionAccountTest(unittest.TestCase):
             audit,
         )
         self.assertEqual(len(decisions), 43)
-        self.assertEqual({estimate_id for _, estimate_id in decisions}, legacy_ids)
+        self.assertEqual(len({estimate_id for _, estimate_id in decisions}), 43)
         self.assertEqual(sum(decision == "REVISE" for decision, _ in decisions), 2)
         self.assertEqual(sum(decision == "REMOVE" for decision, _ in decisions), 41)
 

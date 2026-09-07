@@ -102,7 +102,7 @@ button, a, input, select, summary { touch-action: manipulation; }
 .fiscal-history tbody th { font-weight: 500; }
 .project-research-update { padding: 24px; margin: 24px 0; border: 1px solid var(--line); border-left: 4px solid #ad742e; background: #faf0df; }
 .project-research-update h3 { margin: 12px 0; }
-.project-research-update p { font-size: .9rem; line-height: 1.8; }
+.project-research-update p { min-width: 0; overflow-wrap: anywhere; font-size: .9rem; line-height: 1.8; }
 .project-research-update a { font-size: .8rem; }
 .project-research-update small { display: block; margin-top: 10px; color: #586e6d; }
 .model-completeness-banner { padding: 24px; margin: 24px 0; border: 1px solid #6fa184; border-left: 4px solid #24724b; background: #edf7f0; }
@@ -762,15 +762,7 @@ a { color: var(--aqua); }
   .impact-table-wrap { overflow: visible; }
   .impact-table { display: block; table-layout: auto; }
   .impact-table thead {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border: 0;
+    display: none;
   }
   .impact-table tbody,
   .impact-table tr { display: block; width: 100%; }
