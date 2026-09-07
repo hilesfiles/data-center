@@ -45,17 +45,17 @@ class GoogleDouglasContributionAccountTest(unittest.TestCase):
 
     def test_fragment_counts_and_project_identity(self):
         self.assertEqual(len(self.fragment["sources"]), 35)
-        self.assertEqual(len(self.fragment["records"]), 30)
+        self.assertEqual(len(self.fragment["records"]), 74)
         self.assertEqual(len(self.fragment["project_updates"]), 12)
         self.assertEqual(
-            sum(row["basis"] == "reported_actual" for row in self.fragment["records"]), 28
+            sum(row["basis"] == "reported_actual" for row in self.fragment["records"]), 72
         )
         self.assertEqual(
             sum(row["basis"] == "source_projection" for row in self.fragment["records"]), 2
         )
         self.assertEqual(self.detail["county_fips"], "13097")
-        self.assertEqual(self.detail["economic_record_count"], 34)
-        self.assertEqual(self.detail["reported_actual_count"], 32)
+        self.assertEqual(self.detail["economic_record_count"], 78)
+        self.assertEqual(self.detail["reported_actual_count"], 76)
         self.assertEqual(self.detail["projection_count"], 2)
         self.assertEqual(self.detail["modeled_synthesis_count"], 8)
 
@@ -140,6 +140,7 @@ class GoogleDouglasContributionAccountTest(unittest.TestCase):
         self.assertTrue(all("complete utility total" in row["notes"] for row in utility.values()))
 
     def test_audit_log_covers_required_families_and_negative_results(self):
+        records = {row["claim_id"]: row for row in self.detail["economic_records"]}
         text = " ".join(
             row["title"] + " " + row["notes"] for row in self.fragment["project_updates"]
         ).lower()
@@ -158,17 +159,17 @@ class GoogleDouglasContributionAccountTest(unittest.TestCase):
             "community",
             "public-cost",
             "county outcome",
-            "captcha",
             "no invoice",
             "no meter",
             "no same-scope marginal service cost",
-            "select_bill.html",
+            "1077031",
+            "1075743",
             "ga0038920",
             "docket 55378",
             "form 990",
             "superseded",
             "utility-service-payment metric",
-            "user to complete the captcha",
+            "cloudflare verification cleared automatically",
         ]:
             self.assertIn(phrase, text)
 
@@ -197,12 +198,60 @@ class GoogleDouglasContributionAccountTest(unittest.TestCase):
         )
 
         metrics = {row["metric_code"] for row in self.detail["economic_records"]}
-        self.assertNotIn("study.property_taxes_paid", metrics)
-        self.assertNotIn("study.property_taxes_billed", metrics)
+        self.assertIn("study.property_taxes_paid", metrics)
+        self.assertIn("study.property_taxes_billed", metrics)
         self.assertNotIn("study.incentive_payments", metrics)
         self.assertIn("study.utility_service_payments", metrics)
         self.assertNotEqual(
             "study.utility_service_payments", "study.infrastructure_company_payments"
+        )
+
+        appraised = [
+            row
+            for row in records.values()
+            if row.get("annual_series_key") == "google_douglas_p79020_statement_fmv"
+        ]
+        exempt_bills = [
+            row
+            for row in records.values()
+            if row.get("annual_series_key")
+            == "google_douglas_p79020_ordinary_property_taxes_billed"
+        ]
+        taxable_bills = [
+            row
+            for row in records.values()
+            if row.get("annual_series_key") == "google_douglas_p88150_property_taxes_billed"
+        ]
+        taxable_payments = [
+            row
+            for row in records.values()
+            if row.get("annual_series_key") == "google_douglas_p88150_property_taxes_paid"
+        ]
+        self.assertEqual(len(appraised), 11)
+        self.assertEqual(len(exempt_bills), 11)
+        self.assertEqual(len(taxable_bills), 11)
+        self.assertEqual(len(taxable_payments), 11)
+        self.assertEqual({row["period"]["year"] for row in appraised}, set(range(2015, 2026)))
+        self.assertEqual({row["value"] for row in exempt_bills}, {0})
+        self.assertEqual(
+            {row["period"]["year"]: row["value"] for row in taxable_payments},
+            {
+                2015: 3_651_408.70,
+                2016: 281_302.68,
+                2017: 148_166.19,
+                2018: 649_260.11,
+                2019: 655_399.64,
+                2020: 608_306.72,
+                2021: 307_215.64,
+                2022: 399_581.94,
+                2023: 365_273.45,
+                2024: 346_072.42,
+                2025: 488_797.40,
+            },
+        )
+        self.assertEqual(
+            [row["value"] for row in sorted(taxable_bills, key=lambda row: row["period"]["year"])],
+            [row["value"] for row in sorted(taxable_payments, key=lambda row: row["period"]["year"])],
         )
 
     def test_bounded_unallocated_models_keep_observations_and_scenarios_separate(self):
