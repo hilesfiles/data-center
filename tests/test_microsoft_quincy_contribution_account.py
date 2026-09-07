@@ -17,6 +17,7 @@ class MicrosoftQuincyContributionAccountTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.fragment = json.loads(FRAGMENT.read_text(encoding="utf-8"))
+        cls.synthesis_fragment = json.loads(SYNTHESIS_FRAGMENT.read_text(encoding="utf-8"))
         cls.config = read(CONFIG)
         cls.evidence = load_evidence()
         cls.synthesis = load_synthesis()
@@ -39,7 +40,7 @@ class MicrosoftQuincyContributionAccountTest(unittest.TestCase):
 
     def test_fragment_is_valid_scoped_and_provisional(self):
         self.assertEqual(self.fragment["project_id"], PROJECT_ID)
-        self.assertEqual((len(self.fragment["sources"]), len(self.fragment["records"]), len(self.fragment["project_updates"])), (13, 28, 14))
+        self.assertEqual((len(self.fragment["sources"]), len(self.fragment["records"]), len(self.fragment["project_updates"])), (21, 31, 23))
         self.assertTrue(all(row["project_id"] == PROJECT_ID for row in self.fragment["records"]))
         self.assertTrue(all(row["project_id"] == PROJECT_ID for row in self.fragment["project_updates"]))
         self.assertEqual(
@@ -47,10 +48,10 @@ class MicrosoftQuincyContributionAccountTest(unittest.TestCase):
                 sum(row["basis"] == "reported_actual" for row in self.fragment["records"]),
                 sum(row["basis"] == "source_projection" for row in self.fragment["records"]),
             ),
-            (27, 1),
+            (30, 1),
         )
         validate_evidence(self.evidence, self.config["candidates"])
-        self.assertFalse(SYNTHESIS_FRAGMENT.exists())
+        self.assertEqual(len(self.synthesis_fragment["estimates"]), 5)
         self.assertEqual(
             (
                 self.project["economic_record_count"],
@@ -58,10 +59,10 @@ class MicrosoftQuincyContributionAccountTest(unittest.TestCase):
                 self.project["projection_count"],
                 self.project["modeled_synthesis_count"],
             ),
-            (29, 28, 1, 0),
+            (32, 31, 1, 5),
         )
         self.assertIn("candidate_pending_adversarial_review", self.fragment["project_updates"][-1]["notes"])
-        self.assertIn("provisional and never accepted", self.fragment["project_updates"][-1]["notes"])
+        self.assertIn("neither commit is an accepted project", self.fragment["project_updates"][-1]["notes"])
 
     def test_boundary_correction_is_explicit_and_description_is_singular(self):
         descriptions = [row["project_description"] for row in self.fragment["project_updates"] if row.get("project_description")]
@@ -93,6 +94,27 @@ class MicrosoftQuincyContributionAccountTest(unittest.TestCase):
         self.assertEqual(by_series["msft_mwh_real_property_tax_paid"][2026], 7_493_919.07)
         self.assertEqual(by_series["msft_mwh_personal_property_tax_paid"][2025], 9_106_834.90)
         self.assertNotIn(2026, by_series["msft_mwh_personal_property_tax_paid"])
+        locators = " ".join(row["source_locator"] for row in taxes)
+        for statement_id in ("727932021", "727932022", "57704", "57524", "57298", "841392021", "841392022", "61710", "61472"):
+            self.assertIn(statement_id, locators)
+        personal_2025 = next(row for row in taxes if row["period"]["year"] == 2025 and "personal" in row["scope"]["label"])
+        self.assertIn("$2,631,463.16 was paid and $2,631,463.07 remained due", personal_2025["notes"])
+
+    def test_combined_tax_models_are_exact_complete_year_aggregations(self):
+        estimates = self.synthesis_fragment["estimates"]
+        combined = [row for row in estimates if row["metric_code"] == "study.modeled_combined_property_tax_paid"]
+        self.assertEqual(
+            {row["period"]["year"]: row["value"] for row in combined},
+            {2022: 13_779_602.28, 2023: 14_896_170.10, 2024: 14_797_546.41, 2025: 13_834_882.15},
+        )
+        self.assertTrue(all(row["scope"]["level"] == "campus" and row["scope"]["inventory_allocation"] == "unallocated" for row in estimates))
+        self.assertFalse(any(row["period"].get("year") == 2026 for row in combined))
+        for row in combined:
+            self.assertAlmostEqual(row["value"], sum(parameter["value"] for parameter in row["parameters"]), places=2)
+            self.assertTrue(any("not an audited government-wide receipt or net benefit" in text.lower() for text in row["limitations"]))
+        threshold = next(row for row in estimates if row["metric_code"] == "study.modeled_annual_local_service_cost_break_even")
+        self.assertEqual((threshold["period"]["year"], threshold["value"]), (2025, 13_834_882.15))
+        self.assertTrue(any("not an estimate of actual public-service cost" in text.lower() for text in threshold["limitations"]))
 
     def test_nonfiscal_records_preserve_measure_and_scope_boundaries(self):
         records = {row["claim_id"]: row for row in self.fragment["records"]}
@@ -113,6 +135,10 @@ class MicrosoftQuincyContributionAccountTest(unittest.TestCase):
             if row["claim_id"] == "clm_study_quincy_water_reuse_cost"
         )
         self.assertEqual((baseline["value"], baseline["metric_code"]), (31_000_000, "study.infrastructure_project_cost"))
+        outlays = [row for row in self.fragment["records"] if row["metric_code"] == "study.infrastructure_fund_expenditure"]
+        self.assertEqual([row["value"] for row in outlays], [15_583_730, 237_368.53, 816_693])
+        self.assertEqual([row["period"]["kind"] for row in outlays], ["calendar_year", "calendar_year", "reported_snapshot"])
+        self.assertTrue(all("overlap" in row["notes"] or "nested" in row["notes"] for row in outlays))
 
     def test_search_audit_and_metric_model_dispositions_are_complete(self):
         updates = self.fragment["project_updates"]
@@ -120,6 +146,8 @@ class MicrosoftQuincyContributionAccountTest(unittest.TestCase):
         self.assertEqual(sum(title.startswith("Direct discovery") for title in titles), 8)
         self.assertEqual(sum(title.startswith("Gap closure") for title in titles), 5)
         self.assertEqual(sum(title.startswith("Adversarial continuation") for title in titles), 1)
+        self.assertEqual(sum(title.startswith("Corrective audit") for title in titles), 8)
+        self.assertEqual(sum(title.startswith("Corrective adversarial continuation") for title in titles), 1)
         audit = " ".join(row["notes"] for row in updates)
         for token in (
             "Source families checked:",
@@ -129,6 +157,9 @@ class MicrosoftQuincyContributionAccountTest(unittest.TestCase):
             "22AQ-E035",
             "201805050",
             "140-10532",
+            "WAR313961",
+            "A0250310",
+            "202403581",
             "QB 206(D)",
             "No records requests were made",
         ):
@@ -140,28 +171,27 @@ class MicrosoftQuincyContributionAccountTest(unittest.TestCase):
             "Operations",
             "Suppliers",
             "Fiscal",
-            "Public costs",
             "Community",
-            "Resources",
+            "Electric/water/wastewater/reuse",
+            "Generators/emissions",
             "County employment",
-            "County wages",
-            "County GDP",
+            "wages and GDP",
         ):
             self.assertIn(metric_family, decisions)
         for rejected_model in (
-            "assessor-value-to-investment conversion",
-            "tax-share allocation by floor area",
-            "tax-equal public-cost break-even",
-            "utility capacity/annual-use conversion",
-            "construction job-years/payroll",
-            "supplier multiplier",
+            "assessor-to-investment",
+            "footprint tax allocation",
+            "generator energy/emissions",
+            "construction job-year/payroll",
+            "supplier/local-spend",
             "county comparison gaps",
         ):
             self.assertIn(rejected_model, decisions)
-        self.assertIn("modeled additions: zero", decisions)
+        self.assertIn("four annual study.modeled_combined_property_tax_paid", decisions)
+        self.assertIn("one study.modeled_annual_local_service_cost_break_even", decisions)
         self.assertEqual(
             self.project["model_completeness"]["missing_categories"],
-            ["construction", "operations", "public_costs", "suppliers"],
+            ["construction", "operations", "suppliers"],
         )
 
 
