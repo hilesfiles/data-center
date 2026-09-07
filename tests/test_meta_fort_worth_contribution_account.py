@@ -55,7 +55,7 @@ class MetaFortWorthContributionAccountTest(unittest.TestCase):
         cls.study_counties = {row["county_fips"] for row in config["candidates"]}
 
     def test_fragment_and_merged_evidence_pass_contract_validation(self):
-        self.assertEqual(len(self.fragment["sources"]), 37)
+        self.assertEqual(len(self.fragment["sources"]), 38)
         self.assertEqual(len(self.fragment["records"]), 101)
         issues = ContractValidator(ROOT / "schemas/v1").validate_record(
             self.evidence,
@@ -78,19 +78,15 @@ class MetaFortWorthContributionAccountTest(unittest.TestCase):
             ),
             (102, 97, 5),
         )
-        self.assertEqual(project["modeled_synthesis_count"], 15)
+        self.assertEqual(project["modeled_synthesis_count"], 17)
         self.assertEqual(project["model_completeness"]["status"], "incomplete")
         self.assertEqual(project["model_completeness"]["missing_categories"], [])
         self.assertEqual(
             project["model_completeness"]["missing_county_outcomes"],
-            [
-                "study.modeled_county_employment_comparison_gap",
-                "study.modeled_county_gdp_comparison_gap",
-                "study.modeled_county_wage_comparison_gap",
-            ],
+            ["study.modeled_county_gdp_comparison_gap"],
         )
         self.assertTrue(MODEL_FRAGMENT.exists())
-        self.assertEqual(len(self.synthesis["estimates"]), 15)
+        self.assertEqual(len(self.synthesis["estimates"]), 17)
 
     def test_retained_estimates_have_governed_inputs_formulas_and_separation(self):
         direct_claims = {row["claim_id"] for row in self.fragment["records"]}
@@ -218,8 +214,13 @@ class MetaFortWorthContributionAccountTest(unittest.TestCase):
         cost = by_metric["study.modeled_annual_electricity_cost_sensitivity"]
         self.assertEqual(
             (cost["interval"]["low"], cost["value"], cost["interval"]["high"]),
-            (67_871_044.80, 73_194_264, 94_819_842),
+            (67_871_044.80, 67_871_044.80, 94_819_842),
         )
+        cost_params = {row["name"]: row["value"] for row in cost["parameters"]}
+        self.assertEqual(cost_params["central_texas_2024_industrial_price"], 0.0612)
+        self.assertEqual(cost_params["class_sensitivity_texas_2024_commercial_price"], 0.0855)
+        self.assertFalse(any("2023" in name for name in cost_params))
+        self.assertIn("same-year", cost["notes"].lower())
         self.assertIn("not meta's electricity bill", " ".join(cost["limitations"]).lower())
         self.assertIn("Retail provider", cost["evidence_search"]["remaining_evidence_gap"])
 
@@ -235,11 +236,15 @@ class MetaFortWorthContributionAccountTest(unittest.TestCase):
         )
         self.assertAlmostEqual(
             emissions["interval"]["high"],
-            1_109_004 * 771.2 / 2_204.62262185,
+            emissions["value"],
             places=9,
         )
+        self.assertEqual(emissions["interval"]["kind"], "point_estimate")
+        emission_params = {row["name"] for row in emissions["parameters"]}
+        self.assertIn("erct_consumption_region_output_co2e_rate", emission_params)
+        self.assertFalse(any("texas" in name for name in emission_params))
         text = json.dumps(emissions).lower()
-        for term in ("location-based", "market-based", "grid-loss", "renewable"):
+        for term in ("location-based", "market-based", "grid-loss", "renewable", "production-geography"):
             self.assertIn(term, text)
 
     def test_corrective_account_inventory_values_exemptions_and_tax_payments(self):
@@ -330,7 +335,74 @@ class MetaFortWorthContributionAccountTest(unittest.TestCase):
         self.assertIn("CSC 46728", updates)
         self.assertIn("Akamai Access Denied", updates)
 
-    def _matched_gap(self, event, metric, k=5):
+    def test_actual_water_series_has_exact_catalog_and_claim_proposal(self):
+        update = next(
+            row for row in self.fragment["project_updates"]
+            if row["title"] == "Proposed actual-water catalog and claim payloads"
+        )
+        self.assertEqual(update["source_id"], "src_study_nist_us_gallon_conversion_2009")
+        proposal = json.loads(update["notes"])
+        self.assertEqual(proposal["proposal_status"], "pending_orchestrator_catalog_adoption")
+        self.assertEqual(
+            proposal["catalog_payload"],
+            {
+                "metric_code": "study.annual_water_withdrawal",
+                "label": "Actual annual water withdrawal",
+                "category": "resources",
+                "unit": "gallons_per_year",
+                "measure_type": "flow",
+                "aggregation": "none",
+            },
+        )
+        conversion = proposal["conversion"]
+        self.assertEqual(conversion["source_unit"], "megaliters_per_year")
+        self.assertEqual(conversion["target_unit"], "gallons_per_year")
+        self.assertEqual(conversion["liters_per_megaliter"], 1_000_000)
+        self.assertEqual(Decimal(str(conversion["liters_per_us_gallon"])), Decimal("3.785411784"))
+        self.assertEqual(conversion["conversion_source_id"], "src_study_nist_us_gallon_conversion_2009")
+        self.assertIn("rounded to the nearest whole digit", conversion["source_precision"])
+        self.assertIn("1,000,000", conversion["formula"])
+
+        expected_ml = {2020: 300, 2021: 254, 2022: 346, 2023: 404, 2024: 311}
+        claims = {row["period"]["year"]: row for row in proposal["claim_payloads"]}
+        self.assertEqual(set(claims), set(expected_ml))
+        expected_scope = {
+            "level": "campus",
+            "label": "Meta Fort Worth facility reporting boundary; no selected-building allocation",
+            "county_fips": "48439",
+            "inventory_allocation": "unallocated",
+        }
+        for year, source_ml in expected_ml.items():
+            claim = claims[year]
+            expected_gallons = Decimal(source_ml) * Decimal(1_000_000) / Decimal("3.785411784")
+            self.assertAlmostEqual(Decimal(str(claim["value"])), expected_gallons, places=7)
+            self.assertEqual(claim["metric_code"], "study.annual_water_withdrawal")
+            self.assertEqual(claim["basis"], "reported_actual")
+            self.assertEqual(claim["value_qualifier"], "approximately")
+            self.assertEqual(
+                claim["period"],
+                {"kind": "calendar_year", "year": year, "label": f"Calendar year {year}"},
+            )
+            self.assertEqual(claim["scope"], expected_scope)
+            self.assertEqual((claim["pdf_page"], claim["printed_page"]), (8, "I"))
+            self.assertEqual(claim["source_id"], "src_study_meta_environmental_index_2025")
+            self.assertIn("Section 3.1", claim["source_locator"])
+            self.assertIn(f"{source_ml} ML", claim["source_locator"])
+            self.assertEqual(claim["annual_series_key"], "meta_fort_worth_annual_water_withdrawal")
+
+        self.assertFalse(
+            any(row["metric_code"] == "study.annual_water_withdrawal" for row in self.fragment["records"])
+        )
+        proposed_evidence = json.loads(json.dumps(self.evidence))
+        proposed_evidence["metrics"].append(proposal["catalog_payload"])
+        proposed_evidence["records"].extend(proposal["claim_payloads"])
+        issues = ContractValidator(ROOT / "schemas/v1").validate_record(
+            proposed_evidence,
+            ROOT / "schemas/v1/study-economic-evidence.schema.json",
+        )
+        self.assertEqual(issues, [])
+
+    def _matched_diagnostics(self, event, metric, k=5):
         treated = self.panels["48439"]
         treated_years = {row["year"]: row for row in treated["years"]}
         pre = list(range(event - 8, event))
@@ -349,9 +421,10 @@ class MetaFortWorthContributionAccountTest(unittest.TestCase):
             donor_path = [math.log(years[year][metric] / years[pre[0]][metric]) for year in pre]
             rmse = math.sqrt(statistics.mean((left - right) ** 2 for left, right in zip(treated_path, donor_path)))
             candidates.append((rmse, county))
-        selected = [county for _, county in sorted(candidates, key=lambda item: item[0])[:k]]
+        candidates.sort(key=lambda item: (item[0], item[1]["county_fips"]))
+        selected = [county for _, county in candidates[:k]]
 
-        def average_gap(years):
+        def average_gap(years, donors=selected):
             gaps = []
             for year in years:
                 treated_change = math.log(treated_years[year][metric] / treated_years[base][metric])
@@ -360,27 +433,136 @@ class MetaFortWorthContributionAccountTest(unittest.TestCase):
                         {row["year"]: row for row in county["years"]}[year][metric]
                         / {row["year"]: row for row in county["years"]}[base][metric]
                     )
-                    for county in selected
+                    for county in donors
                 )
                 gaps.append(math.exp(treated_change - donor_change) - 1)
             return 100 * statistics.mean(gaps)
 
-        return [county["county_fips"] for county in selected], average_gap(range(event, 2020)), average_gap([2022, 2023, 2024])
+        group_pre_gaps = []
+        for year in pre:
+            treated_path = math.log(treated_years[year][metric] / treated_years[pre[0]][metric])
+            donor_path = statistics.mean(
+                math.log(
+                    {row["year"]: row for row in county["years"]}[year][metric]
+                    / {row["year"]: row for row in county["years"]}[pre[0]][metric]
+                )
+                for county in selected
+            )
+            group_pre_gaps.append(100 * (treated_path - donor_path))
 
-    def test_county_model_candidates_were_actually_diagnosed_and_rejected(self):
-        donors, pre_pandemic, recovery = self._matched_gap(2015, "annual_avg_covered_employment")
-        self.assertEqual(donors, ["36081", "40109", "37183", "25025", "25009"])
-        self.assertAlmostEqual(pre_pandemic, -2.16, places=2)
-        self.assertAlmostEqual(recovery, 2.94, places=2)
-        donors, pre_pandemic, recovery = self._matched_gap(2015, "real_gdp_usd")
-        self.assertEqual(donors, ["15003", "36119", "25027", "48201", "39049"])
-        self.assertAlmostEqual(pre_pandemic, 1.98, places=2)
-        self.assertAlmostEqual(recovery, 10.44, places=2)
+        leave_one_out = []
+        for omitted in selected:
+            donors = [row for row in selected if row["county_fips"] != omitted["county_fips"]]
+            leave_one_out.append(average_gap([2024], donors))
+
+        texas = [county for _, county in candidates if county["county_fips"].startswith("48")][:5]
+        return {
+            "donors": [county["county_fips"] for county in selected],
+            "mean_donor_rmse": 100 * statistics.mean(rmse for rmse, _ in candidates[:k]),
+            "group_rmse": math.sqrt(statistics.mean(value**2 for value in group_pre_gaps)),
+            "gap_2024": average_gap([2024]),
+            "leave_one_out": leave_one_out,
+            "k3": average_gap([2024], [county for _, county in candidates[:3]]),
+            "k10": average_gap([2024], [county for _, county in candidates[:10]]),
+            "texas_k5": average_gap([2024], texas),
+        }
+
+    def test_county_descriptive_comparisons_reproduce_fit_donors_and_leave_one_out(self):
+        cases = {
+            "annual_avg_covered_employment": {
+                "metric_code": "study.modeled_county_employment_comparison_gap",
+                "donors": ["41051", "12086", "48215", "13135", "48113"],
+                "central": 6.440928275448132,
+                "mean_rmse": 0.8988836516683298,
+                "group_rmse": 0.7277056717944406,
+                "loo": (4.0812973779939865, 7.856615787444632),
+                "interval": (2.6982391742127465, 9.348902460006103),
+            },
+            "annual_avg_weekly_wage_nominal_usd": {
+                "metric_code": "study.modeled_county_wage_comparison_gap",
+                "donors": ["13135", "25021", "06059", "25009", "36029"],
+                "central": 2.3061402103365714,
+                "mean_rmse": 0.7988687587007943,
+                "group_rmse": 0.6287561586407877,
+                "loo": (1.1732483512965075, 3.5605999892676543),
+                "interval": (1.14988712418147, 3.780752150162292),
+            },
+        }
+        models = {row["metric_code"]: row for row in self.synthesis["estimates"]}
+        for panel_metric, expected in cases.items():
+            diagnostics = self._matched_diagnostics(2017, panel_metric)
+            self.assertEqual(diagnostics["donors"], expected["donors"])
+            self.assertAlmostEqual(diagnostics["gap_2024"], expected["central"], places=12)
+            self.assertAlmostEqual(diagnostics["mean_donor_rmse"], expected["mean_rmse"], places=12)
+            self.assertAlmostEqual(diagnostics["group_rmse"], expected["group_rmse"], places=12)
+            self.assertAlmostEqual(min(diagnostics["leave_one_out"]), expected["loo"][0], places=12)
+            self.assertAlmostEqual(max(diagnostics["leave_one_out"]), expected["loo"][1], places=12)
+
+            model = models[expected["metric_code"]]
+            params = {row["name"]: row["value"] for row in model["parameters"]}
+            self.assertAlmostEqual(model["value"], diagnostics["gap_2024"], places=12)
+            self.assertAlmostEqual(
+                params["selected_donor_mean_pretrend_rmse_percent"],
+                diagnostics["mean_donor_rmse"],
+                places=12,
+            )
+            self.assertAlmostEqual(
+                params["equal_weight_group_pretrend_rmse_percent"],
+                diagnostics["group_rmse"],
+                places=12,
+            )
+            self.assertAlmostEqual(
+                params["leave_one_out_low_gap_percent"],
+                min(diagnostics["leave_one_out"]),
+                places=12,
+            )
+            self.assertAlmostEqual(
+                params["leave_one_out_high_gap_percent"],
+                max(diagnostics["leave_one_out"]),
+                places=12,
+            )
+            sensitivity_values = [
+                diagnostics["k3"],
+                diagnostics["k10"],
+                diagnostics["texas_k5"],
+                *diagnostics["leave_one_out"],
+            ]
+            self.assertAlmostEqual(model["interval"]["low"], min(sensitivity_values), places=12)
+            self.assertAlmostEqual(model["interval"]["high"], max(sensitivity_values), places=12)
+            self.assertAlmostEqual(model["interval"]["low"], expected["interval"][0], places=12)
+            self.assertAlmostEqual(model["interval"]["high"], expected["interval"][1], places=12)
+            text = json.dumps(model).lower()
+            for term in ("2017 operating date", "2009-2016", "leave-one-out", "descriptive", "not a", "effect"):
+                self.assertIn(term, text)
+            for donor in expected["donors"]:
+                self.assertIn(donor, text)
+
+        gdp = self._matched_diagnostics(2017, "real_gdp_usd")
+        self.assertEqual(gdp["donors"], ["17043", "06059", "36081", "06073", "42003"])
+        self.assertAlmostEqual(gdp["mean_donor_rmse"], 1.1308723904291662, places=12)
+        self.assertAlmostEqual(gdp["group_rmse"], 0.7778716944829718, places=12)
+        self.assertAlmostEqual(gdp["gap_2024"], 11.08096888099739, places=12)
+        self.assertAlmostEqual(min(gdp["leave_one_out"]), 10.254563059481491, places=12)
+        self.assertAlmostEqual(max(gdp["leave_one_out"]), 12.538423531694566, places=12)
+        self.assertAlmostEqual(gdp["texas_k5"], -3.263943059395613, places=12)
+        self.assertGreater(gdp["gap_2024"], 0)
+        self.assertLess(gdp["texas_k5"], 0)
+        self.assertNotIn("study.modeled_county_gdp_comparison_gap", models)
+
         disposition = next(
             row["notes"] for row in self.fragment["project_updates"]
             if row["title"] == "County GDP, employment and wage model dispositions"
         )
-        for term in ("2015 groundbreaking", "2017 operation", "Pandemic 2020-2021", "K=3/5/10", "remain missing"):
+        for term in (
+            "Contract 3.1.0",
+            "2017 operating date",
+            "leave-one-out",
+            "+11.080969%",
+            "-3.263943%",
+            "+14.344912-point",
+            "remains an explicit gap",
+            "not Meta effects",
+        ):
             self.assertIn(term, disposition)
 
     def test_direct_records_preserve_boundary_time_and_nonadditivity(self):
@@ -435,13 +617,14 @@ class MetaFortWorthContributionAccountTest(unittest.TestCase):
         self.assertEqual(self.project["project_description"], descriptions[0])
         self.assertIn("634,395-square-foot", descriptions[0])
         self.assertIn("14100 Park Vista", descriptions[0])
-        self.assertEqual(len(updates), 30)
+        self.assertEqual(len(updates), 31)
         self.assertIn("candidate_pending_adversarial_review", updates[-1]["notes"])
+        final_status = updates[-1]["notes"].lower()
         for gap in (
             "atomic coding",
             "CSC 46728",
             "state sales-tax exemption",
-            "actual-water metric-catalog support",
+            "actual-water metric-and-claim proposal",
             "selected-building crosswalk",
             "supplier payments",
             "actual payroll",
@@ -449,7 +632,7 @@ class MetaFortWorthContributionAccountTest(unittest.TestCase):
             "market-based emissions",
             "marginal public-service costs",
         ):
-            self.assertIn(gap, updates[-1]["notes"])
+            self.assertIn(gap.lower(), final_status)
         search_log = " ".join(row["notes"].lower() for row in updates)
         for term in (
             "assessor",
