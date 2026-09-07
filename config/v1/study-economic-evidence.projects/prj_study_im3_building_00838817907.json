@@ -1,0 +1,1590 @@
+{
+  "schema_version": "1.0.0",
+  "project_id": "prj_study_im3_building_00838817907",
+  "reviewed_on": "2026-09-07",
+  "scope_note": "Two-pass contribution-account audit for TierPoint Charlotte Center Park (CL4), the tenant-operated data-center building at 1805 Center Park Drive on Mecklenburg County parcel 14106108. Direct additions comprise four building-level observations\u2014opening floor area and usable UPS capacity, a 2020 landlord floor-area snapshot, and a finaled 2021 permit value\u2014plus 36 county-context observations from annual County Business Patterns files for NAICS 518210 in 2012-2023. Existing base evidence supplies the exact-parcel assessed-value and tax-bill/payment series for 2013-2026; those rows are not duplicated in this append-only fragment. Plans, appraisals, property and portfolio transactions, expired/withdrawn/in-progress permits, generic tax exemptions, nameplate resource specifications, county industry and macroeconomic changes, and unmatched or wrong-jurisdiction results are not recast as project contributions. No synthesis fragment is added because metric-specific review found no defensible model for original investment, construction labor, suppliers, CL4 employment/payroll/revenue, personal-property or tenant tax incidence, incentives/public costs, metered resources/emissions, community transfers or causal county outcomes.",
+  "sources": [
+    {
+      "source_id": "src_study_tierpoint_cl4_current_2026",
+      "title": "Charlotte - Center Park Data Center and Colocation",
+      "url": "https://www.tierpoint.com/data-centers/north-carolina/charlotte-center-park/",
+      "publisher": "TierPoint",
+      "source_type": "operator_release",
+      "publication_date": {
+        "precision": "unknown"
+      },
+      "retrieved_on": "2026-09-07",
+      "review_method": "web_page",
+      "notes": "Current operator page identifies CL4 at 1805 Center Park Drive and reports more than 60,000 total square feet and more than 20,000 square feet of raised floor. It separately lists Charlotte-North Myers and Raleigh facilities, which are outside this building boundary. The page reports four 2.25 MW redundant generators, while TierPoint's 2024 CL4 sheet reports two; the unresolved count is not encoded."
+    },
+    {
+      "source_id": "src_study_tierpoint_cl4_spec_2024",
+      "title": "Charlotte - Center Park, NC data center specification sheet",
+      "url": "https://web.tierpoint.com/hubfs/data-center/nc-charlotte-center-park-data-center-spec-sheet.pdf",
+      "publisher": "TierPoint",
+      "source_type": "operator_release",
+      "publication_date": {
+        "precision": "year",
+        "year": 2024
+      },
+      "retrieved_on": "2026-09-07",
+      "review_method": "web_pdf_text",
+      "notes": "Official specification identifies CL4 and the exact address, reports 60,000 total square feet and more than 20,000 square feet of gross production space, and describes two redundant 2,250 kW generators, two 3,000 kVA pad transformers and an 8,000-gallon fuel tank. These are nameplate or footprint specifications, not metered use, runtime, investment, cost or emissions; the generator count conflicts with the current web page."
+    },
+    {
+      "source_id": "src_study_windstream_charlotte_four_opening_2014",
+      "title": "Windstream opens fourth-generation data center in Charlotte, N.C.",
+      "url": "https://s22.q4cdn.com/358319107/files/doc_news/archive/95439466-c142-4a23-a36a-cb3db67a58d0.pdf",
+      "publisher": "Windstream Hosted Solutions",
+      "source_type": "operator_release",
+      "publication_date": {
+        "precision": "day",
+        "date": "2014-03-03"
+      },
+      "retrieved_on": "2026-09-07",
+      "review_method": "web_pdf_text",
+      "notes": "Contemporaneous opening release reports 39,300 total square feet, 10,380 square feet of raised floor, 3,000 kVA first-day utility capacity, 1,215 kW of usable first-day UPS capacity and a fully staffed 24/7 network operations center. It describes 60,800 total square feet, more than 20,500 square feet of raised floor and larger utility, UPS and cooling figures only as phased expansion capability, not completed opening-day facts. It provides no investment, employee count, payroll, residence or resource-use total."
+    },
+    {
+      "source_id": "src_study_sfr_cl4_groundbreaking_2013",
+      "title": "Server Farm Realty breaks ground on new enterprise-class data center for Windstream Hosted Solutions in Charlotte",
+      "url": "https://www.globenewswire.com/fr/news-release/2013/06/26/1201946/0/en/server-farm-realty-breaks-ground-on-new-enterprise-class-data-center-for-windstream-hosted-solutions-in-charlotte.html",
+      "publisher": "Server Farm Realty",
+      "source_type": "operator_release",
+      "publication_date": {
+        "precision": "day",
+        "date": "2013-06-26"
+      },
+      "retrieved_on": "2026-09-07",
+      "review_method": "web_page",
+      "notes": "Developer release identifies Server Farm Realty and DSA Encore, a build-to-suit lease to Windstream, and a planned rack-ready 60,850-square-foot, 10 MW facility scheduled for late 2013. The dimensions and timing are plans, not completion facts, and the release does not publish project cost, construction labor, payroll, subcontractor payments or local purchasing."
+    },
+    {
+      "source_id": "src_study_mapletree_cl4_valuation_2020",
+      "title": "Independent valuation certificate for 1805 Center Park Drive",
+      "url": "https://www.mapletreeindustrialtrust.com/~/media/MIT/Newsroom/Announcements/2020/Aug/Circular_Aug_2020.pdf",
+      "publisher": "Mapletree Industrial Trust",
+      "source_type": "other",
+      "publication_date": {
+        "precision": "day",
+        "date": "2020-05-31"
+      },
+      "retrieved_on": "2026-09-07",
+      "review_method": "web_pdf_text",
+      "notes": "Valuation appendix identifies APN 141-061-08, a 6.8-acre BD-CD-zoned parcel, a single-story 60,850-square-foot building constructed in 1999, 10,000 square feet of raised floor, 1.21 MW critical IT load and 66.7% lease occupancy by TierPoint through December 2028, with the balance held as shell expansion space. The $29.5 million appraisal conclusion is a real-estate value, not CL4 productive investment or operator spending, and is excluded."
+    },
+    {
+      "source_id": "src_study_mapletree_cl4_property_2026",
+      "title": "1805 Center Park Drive, Charlotte",
+      "url": "https://www.mapletreeindustrialtrust.com/property/1805-center-park-drive-charlotte/",
+      "publisher": "Mapletree Industrial Trust",
+      "source_type": "other",
+      "publication_date": {
+        "precision": "unknown"
+      },
+      "retrieved_on": "2026-09-07",
+      "review_method": "web_page",
+      "notes": "Current landlord page identifies a single-storey data center with 60,850 square feet of net lettable area. It supports the property boundary only and gives no project expenditure, facility employment, tenant load or public payment."
+    },
+    {
+      "source_id": "src_study_mapletree_cl4_acquisition_slides_2020",
+      "title": "Proposed acquisition of the remaining 60.0% interest in 14 data centres located in the United States",
+      "url": "https://www.mapletreeindustrialtrust.com/~/media/MIT/Newsroom/Announcements/2020/Jun/20200623_Slides_Proposed%20acquisition%20of%20the%20remaining%2060%20per%20cent%20interest%20in%2014%20data%20centres%20located%20in%20USA.pdf",
+      "publisher": "Mapletree Industrial Trust",
+      "source_type": "other",
+      "publication_date": {
+        "precision": "day",
+        "date": "2020-06-23"
+      },
+      "retrieved_on": "2026-09-07",
+      "review_method": "web_pdf_text",
+      "notes": "Official acquisition presentation identifies 1805 Center Park Drive with 60,850 square feet of net lettable area, 66.7% occupancy, TierPoint as tenant and a March 31, 2020 observation date. Its separate $27.2 million agreed property value is an acquisition measure, not CL4 productive investment or operator spending, and is excluded."
+    },
+    {
+      "source_id": "src_study_sec_cl4_lease_schedule_2017",
+      "title": "Purchase and Sale Agreement schedule for 1805 Center Park Drive",
+      "url": "https://www.sec.gov/Archives/edgar/data/1482974/000148297417000047/a20178-kehhibit102reiti102.htm",
+      "publisher": "U.S. Securities and Exchange Commission",
+      "source_type": "sec_filing",
+      "publication_date": {
+        "precision": "year",
+        "year": 2017
+      },
+      "retrieved_on": "2026-09-07",
+      "review_method": "web_page",
+      "notes": "SEC exhibit identifies the exact Charlotte property and an unrecorded June 7, 2013 lease from SFR NC1 LLC to Windstream Hosted Solutions, memorialized at Mecklenburg County Registry Book 28412, Page 204. The exhibit's portfolio purchase amount cannot be allocated to CL4 and is excluded from investment."
+    },
+    {
+      "source_id": "src_study_windstream_tierpoint_sale_2018",
+      "title": "Windstream Holdings 2018 Form 10-K",
+      "url": "https://www.sec.gov/Archives/edgar/data/1282266/000128226619000019/a201810k.htm",
+      "publisher": "U.S. Securities and Exchange Commission",
+      "source_type": "sec_filing",
+      "publication_date": {
+        "precision": "day",
+        "date": "2019-03-15"
+      },
+      "retrieved_on": "2026-09-07",
+      "review_method": "web_page",
+      "notes": "Filing states that TierPoint acquired 14 of Windstream's 27 data centers on December 18, 2015 for $575 million. It supports operator succession but does not allocate the portfolio price, assets or liabilities to CL4; no acquisition amount is encoded for this project."
+    },
+    {
+      "source_id": "src_study_mecklenburg_permit_search_2026",
+      "title": "Search Projects and Permits",
+      "url": "https://www.charlottenc.gov/Growth-and-Development/Getting-Started-on-Your-Project/Search-Projects-and-Permits",
+      "publisher": "City of Charlotte and Mecklenburg County",
+      "source_type": "local_government_record",
+      "publication_date": {
+        "precision": "unknown"
+      },
+      "retrieved_on": "2026-09-07",
+      "review_method": "web_page",
+      "notes": "Official landing page routes current records to Accela and legacy records to WebPermit. Both systems were searched by exact address, parcel, TierPoint, Windstream, Server Farm Realty and Gannett for 2012-2026; the systems do not expose an exact 2013 conversion permit in the returned address/name results."
+    },
+    {
+      "source_id": "src_study_mecklenburg_accela_cl4_2026",
+      "title": "Mecklenburg County Accela building-permit feature service",
+      "url": "https://meckgis.mecklenburgcountync.gov/server/rest/services/BuildingPermits_Accela/FeatureServer/0",
+      "publisher": "Mecklenburg County, North Carolina",
+      "source_type": "local_government_record",
+      "publication_date": {
+        "precision": "unknown"
+      },
+      "retrieved_on": "2026-09-07",
+      "review_method": "structured_data",
+      "notes": "Exact address query returned COM-ALT-25-000615, TierPoint CL4: PMC Expansion, issued July 29, 2026 with $14.399 million customer cost and related mechanical, plumbing and electrical records; it remained in inspection. COM-ALT-26-000979 Phase 2 was withdrawn and COM-CHG-26-001928 was a mini-split replacement. These later incomplete, withdrawn or maintenance records are excluded from the opening contribution account."
+    },
+    {
+      "source_id": "src_study_mecklenburg_webpermit_cl4_address_2026",
+      "title": "WebPermit address record for 1805 Center Park Drive",
+      "url": "https://webpermit.mecklenburgcountync.gov/Default.aspx?PossePresentation=Address&PosseObjectId=368923",
+      "publisher": "Mecklenburg County, North Carolina",
+      "source_type": "local_government_record",
+      "publication_date": {
+        "precision": "unknown"
+      },
+      "retrieved_on": "2026-09-07",
+      "review_method": "web_page",
+      "notes": "Legacy address record links parcel 14106108 and seven projects, including 419519, 435613, 438007, 469431 and two nonresidential plan-review records. Project 435613's $297,000 electrical permit expired; project 438007's $370,600 upfit expired; project 469431's $425,000 generator/D-bus expansion was issued in 2025 but not finaled. They are excluded rather than treated as realized construction."
+    },
+    {
+      "source_id": "src_study_mecklenburg_cl4_permit_b3960984_2021",
+      "title": "Building permit B3960984, TierPoint CL4 Renovations",
+      "url": "https://webpermit.mecklenburgcountync.gov/Default.aspx?PossePresentation=BuildingPermit&PosseObjectId=391567553",
+      "publisher": "Mecklenburg County, North Carolina",
+      "source_type": "local_government_record",
+      "publication_date": {
+        "precision": "day",
+        "date": "2021-04-23"
+      },
+      "retrieved_on": "2026-09-07",
+      "review_method": "web_page",
+      "notes": "Official permit for project 419519 identifies a 15,008-square-foot upfit/interior renovation at the exact address, owner/tenant Gannett, contractor Duffey Southeast, and $2,580,200 total contract cost across the master and linked subpermits. All four linked permits were finaled. The value is an administrative permit amount, not audited spending, payroll, local procurement or an opening-phase cost; displayed permit fees were not verified as paid and are excluded."
+    },
+    {
+      "source_id": "src_study_duffey_cl4_renovation_2021",
+      "title": "TierPoint Charlotte data-technology portfolio",
+      "url": "https://www.duffeyse.com/data-technology-portfolio/tierpoint-charlotte",
+      "publisher": "Duffey Southeast",
+      "source_type": "other",
+      "publication_date": {
+        "precision": "year",
+        "year": 2021
+      },
+      "retrieved_on": "2026-09-07",
+      "review_method": "web_page",
+      "notes": "Contractor case study corroborates work involving chillers, switchgear, a generator, partitions and 6,336 square feet of raised flooring. It publishes no contract payment, worker count, payroll, employee residence, subcontractor amount or local-supplier share."
+    },
+    {
+      "source_id": "src_study_mecklenburg_air_permit_database_2026",
+      "title": "Mecklenburg County Air Quality public records database",
+      "url": "https://mcaq-public.govonlinesaas.com/pub/pub-rcd/home",
+      "publisher": "Mecklenburg County Air Quality",
+      "source_type": "local_government_record",
+      "publication_date": {
+        "precision": "unknown"
+      },
+      "retrieved_on": "2026-09-07",
+      "review_method": "web_page",
+      "notes": "Public PLC-record searches for exact phrases '1805 Center Park Drive', 'TierPoint', 'Windstream' and 'Gannett' each returned zero records on September 7, 2026. The database directs users to Air Quality staff or public-record requests when records are missing, so the result does not establish that no historical permit, applicability determination or emissions source exists."
+    },
+    {
+      "source_id": "src_study_ncdeq_environmental_tracker_2026",
+      "title": "DEQ Environmental Application Tracker",
+      "url": "https://www.deq.nc.gov/accessdeq/environmental-application-tracker",
+      "publisher": "North Carolina Department of Environmental Quality",
+      "source_type": "state_record",
+      "publication_date": {
+        "precision": "unknown"
+      },
+      "retrieved_on": "2026-09-07",
+      "review_method": "web_page",
+      "notes": "State tracker explains that Mecklenburg County local air permits are excluded and that closed applications may be removed after 30 days. Exact address and entity searches found no usable stormwater, NPDES or state air record; this negative result cannot prove absence or support a zero-emissions, zero-discharge or zero-permit claim."
+    },
+    {
+      "source_id": "src_study_ncdor_data_center_exemption_repeal_2026",
+      "title": "Important notice: repeal of exemptions for electricity used at datacenters",
+      "url": "https://www.ncdor.gov/taxes-forms/sales-and-use-tax/other-sales-and-use-tax-resources/important-notices-issued-sales-and-use-tax-division/important-notice-repeal-exemptions-electricity-used-datacenters",
+      "publisher": "North Carolina Department of Revenue",
+      "source_type": "state_record",
+      "publication_date": {
+        "precision": "year",
+        "year": 2026
+      },
+      "retrieved_on": "2026-09-07",
+      "review_method": "web_page",
+      "notes": "Notice documents the statewide certified-data-center sales-tax framework and repeal timing for the electricity exemption. Searches of NCDOR and Commerce materials for TierPoint, Windstream, SFR NC1, CL4 and the address found no project-specific certificate, qualifying investment, claim, refund, exemption value, audit or compliance result, so no public-cost amount is assigned."
+    },
+    {
+      "source_id": "src_study_nc_data_center_sales_tax_statute_2026",
+      "title": "North Carolina General Statutes section 105-164.13",
+      "url": "https://www3.ncleg.gov/EnactedLegislation/Statutes/HTML/BySection/Chapter_105/GS_105-164.13.html",
+      "publisher": "North Carolina General Assembly",
+      "source_type": "state_record",
+      "publication_date": {
+        "precision": "unknown"
+      },
+      "retrieved_on": "2026-09-07",
+      "review_method": "web_page",
+      "notes": "Statute describes categorical sales-and-use-tax exemptions for qualifying data centers. Program eligibility rules are not evidence that CL4 was certified, purchased qualifying property or realized a tax expenditure; no amount is modeled from statutory rates."
+    },
+    {
+      "source_id": "src_study_charlotte_agenda_archive_2026",
+      "title": "Charlotte City Council agendas, past and present",
+      "url": "https://www.charlottenc.gov/City-Government/Council-Meetings/Agendas-Past-Present",
+      "publisher": "City of Charlotte, North Carolina",
+      "source_type": "local_government_record",
+      "publication_date": {
+        "precision": "unknown"
+      },
+      "retrieved_on": "2026-09-07",
+      "review_method": "web_page",
+      "notes": "Council agenda and historical document collections were searched for 2012-2026 using TierPoint, Windstream Hosted Solutions, Server Farm Realty, SFR NC1, 1805 Center Park Drive, parcel 14106108 and project identifiers. No facility-specific development agreement, abatement, PILOT, TIF, IRB, bond, grant, infrastructure appropriation, compliance report or payment attachment was found; an index negative is not proof that none exists."
+    },
+    {
+      "source_id": "src_study_mecklenburg_bocc_archive_2026",
+      "title": "Mecklenburg Board of County Commissioners clerk and meeting records",
+      "url": "https://bocc.mecknc.gov/Clerk",
+      "publisher": "Mecklenburg County, North Carolina",
+      "source_type": "local_government_record",
+      "publication_date": {
+        "precision": "unknown"
+      },
+      "retrieved_on": "2026-09-07",
+      "review_method": "web_page",
+      "notes": "Board agenda, minutes and attachment access points were searched for the exact address, parcel and operator/predecessor/legal-entity names over 2012-2026. No CL4-specific incentive, public-works agreement, grant, bond, PILOT, compliance report or appropriation was located; the negative search does not establish zero assistance."
+    },
+    {
+      "source_id": "src_study_mecklenburg_finance_procurement_2026",
+      "title": "Mecklenburg County Finance and Procurement",
+      "url": "https://fin.mecknc.gov/procurement",
+      "publisher": "Mecklenburg County, North Carolina",
+      "source_type": "local_government_record",
+      "publication_date": {
+        "precision": "unknown"
+      },
+      "retrieved_on": "2026-09-07",
+      "review_method": "web_page",
+      "notes": "County budget, ACFR, procurement and vendor-payment access points were searched using project names, entities, address and parcel for 2012-2026. No project-specific check-register payment, contract, public-service cost, infrastructure reimbursement or net fiscal analysis was found. A similarly named ArcGIS open-checkbook result was verified as Baltimore, not Charlotte, and rejected as wrong-jurisdiction evidence."
+    },
+    {
+      "source_id": "src_study_ncuc_cl4_docket_search_2026",
+      "title": "North Carolina Utilities Commission docket search",
+      "url": "https://www.ncuc.gov/search/searchdocket.html",
+      "publisher": "North Carolina Utilities Commission",
+      "source_type": "state_record",
+      "publication_date": {
+        "precision": "unknown"
+      },
+      "retrieved_on": "2026-09-07",
+      "review_method": "web_page",
+      "notes": "Docket searches covering 2012-2026 used TierPoint, Windstream Hosted Solutions, 1805 Center Park, CL4 and parcel 14106108. No facility-specific electric, gas, tariff, interconnection, contribution-in-aid-of-construction, transmission, substation, bill or load record was found. Generic Duke Energy tariffs cannot be converted into CL4 consumption or public impact."
+    },
+    {
+      "source_id": "src_study_tierpoint_careers_2026",
+      "title": "TierPoint careers",
+      "url": "https://www.tierpoint.com/about-us/careers/",
+      "publisher": "TierPoint",
+      "source_type": "operator_release",
+      "publication_date": {
+        "precision": "unknown"
+      },
+      "retrieved_on": "2026-09-07",
+      "review_method": "web_page",
+      "notes": "Careers materials describe data-center operations roles and company-wide VolunTiers/Gives Back activity. They do not disclose CL4 filled headcount, annual-average FTE, occupation mix, pay, payroll, employee residence, training or apprenticeship totals, nor a Charlotte recipient and transfer amount."
+    },
+    {
+      "source_id": "src_study_tierpoint_green_finance_2024",
+      "title": "TierPoint Green Finance Framework",
+      "url": "https://web.tierpoint.com/hubfs/TierPoint%20Green%20Finance%20Framework.pdf",
+      "publisher": "TierPoint",
+      "source_type": "operator_release",
+      "publication_date": {
+        "precision": "year",
+        "year": 2024
+      },
+      "retrieved_on": "2026-09-07",
+      "review_method": "web_pdf_text",
+      "notes": "Framework reports $360,000 donated since the company-wide TierPoint Gives Back program began in 2017 and describes quarterly application-based giving. It does not identify a Charlotte or CL4 recipient, amount, date, purpose or allocation, so the fleet-wide total is not assigned to this project."
+    },
+    {
+      "source_id": "src_study_census_cbp_mecklenburg_518210_2012",
+      "title": "2012 County Business Patterns county file",
+      "url": "https://www2.census.gov/programs-surveys/cbp/datasets/2012/cbp12co.zip",
+      "publisher": "U.S. Census Bureau",
+      "source_type": "other",
+      "publication_date": {
+        "precision": "year",
+        "year": 2012
+      },
+      "retrieved_on": "2026-09-07",
+      "review_method": "structured_data",
+      "notes": "Official annual ZIP row for state 37, county 119 and NAICS 518210 reports establishments, March employment and annual payroll. Employment noise flag is G; payroll noise flag is G. Census API access required a key, so the published bulk ZIP was used and the exact row was inspected. The series describes the entire county industry, not CL4, and crosses 2012, 2017 and 2022 NAICS classification vintages."
+    },
+    {
+      "source_id": "src_study_census_cbp_mecklenburg_518210_2013",
+      "title": "2013 County Business Patterns county file",
+      "url": "https://www2.census.gov/programs-surveys/cbp/datasets/2013/cbp13co.zip",
+      "publisher": "U.S. Census Bureau",
+      "source_type": "other",
+      "publication_date": {
+        "precision": "year",
+        "year": 2013
+      },
+      "retrieved_on": "2026-09-07",
+      "review_method": "structured_data",
+      "notes": "Official annual ZIP row for state 37, county 119 and NAICS 518210 reports establishments, March employment and annual payroll. Employment noise flag is G; payroll noise flag is H. Census API access required a key, so the published bulk ZIP was used and the exact row was inspected. The series describes the entire county industry, not CL4, and crosses 2012, 2017 and 2022 NAICS classification vintages."
+    },
+    {
+      "source_id": "src_study_census_cbp_mecklenburg_518210_2014",
+      "title": "2014 County Business Patterns county file",
+      "url": "https://www2.census.gov/programs-surveys/cbp/datasets/2014/cbp14co.zip",
+      "publisher": "U.S. Census Bureau",
+      "source_type": "other",
+      "publication_date": {
+        "precision": "year",
+        "year": 2014
+      },
+      "retrieved_on": "2026-09-07",
+      "review_method": "structured_data",
+      "notes": "Official annual ZIP row for state 37, county 119 and NAICS 518210 reports establishments, March employment and annual payroll. Employment noise flag is G; payroll noise flag is H. Census API access required a key, so the published bulk ZIP was used and the exact row was inspected. The series describes the entire county industry, not CL4, and crosses 2012, 2017 and 2022 NAICS classification vintages."
+    },
+    {
+      "source_id": "src_study_census_cbp_mecklenburg_518210_2015",
+      "title": "2015 County Business Patterns county file",
+      "url": "https://www2.census.gov/programs-surveys/cbp/datasets/2015/cbp15co.zip",
+      "publisher": "U.S. Census Bureau",
+      "source_type": "other",
+      "publication_date": {
+        "precision": "year",
+        "year": 2015
+      },
+      "retrieved_on": "2026-09-07",
+      "review_method": "structured_data",
+      "notes": "Official annual ZIP row for state 37, county 119 and NAICS 518210 reports establishments, March employment and annual payroll. Employment noise flag is G; payroll noise flag is G. Census API access required a key, so the published bulk ZIP was used and the exact row was inspected. The series describes the entire county industry, not CL4, and crosses 2012, 2017 and 2022 NAICS classification vintages."
+    },
+    {
+      "source_id": "src_study_census_cbp_mecklenburg_518210_2016",
+      "title": "2016 County Business Patterns county file",
+      "url": "https://www2.census.gov/programs-surveys/cbp/datasets/2016/cbp16co.zip",
+      "publisher": "U.S. Census Bureau",
+      "source_type": "other",
+      "publication_date": {
+        "precision": "year",
+        "year": 2016
+      },
+      "retrieved_on": "2026-09-07",
+      "review_method": "structured_data",
+      "notes": "Official annual ZIP row for state 37, county 119 and NAICS 518210 reports establishments, March employment and annual payroll. Employment noise flag is G; payroll noise flag is G. Census API access required a key, so the published bulk ZIP was used and the exact row was inspected. The series describes the entire county industry, not CL4, and crosses 2012, 2017 and 2022 NAICS classification vintages."
+    },
+    {
+      "source_id": "src_study_census_cbp_mecklenburg_518210_2017",
+      "title": "2017 County Business Patterns county file",
+      "url": "https://www2.census.gov/programs-surveys/cbp/datasets/2017/cbp17co.zip",
+      "publisher": "U.S. Census Bureau",
+      "source_type": "other",
+      "publication_date": {
+        "precision": "year",
+        "year": 2017
+      },
+      "retrieved_on": "2026-09-07",
+      "review_method": "structured_data",
+      "notes": "Official annual ZIP row for state 37, county 119 and NAICS 518210 reports establishments, March employment and annual payroll. Employment noise flag is H; payroll noise flag is H. Census API access required a key, so the published bulk ZIP was used and the exact row was inspected. The series describes the entire county industry, not CL4, and crosses 2012, 2017 and 2022 NAICS classification vintages."
+    },
+    {
+      "source_id": "src_study_census_cbp_mecklenburg_518210_2018",
+      "title": "2018 County Business Patterns county file",
+      "url": "https://www2.census.gov/programs-surveys/cbp/datasets/2018/cbp18co.zip",
+      "publisher": "U.S. Census Bureau",
+      "source_type": "other",
+      "publication_date": {
+        "precision": "year",
+        "year": 2018
+      },
+      "retrieved_on": "2026-09-07",
+      "review_method": "structured_data",
+      "notes": "Official annual ZIP row for state 37, county 119 and NAICS 518210 reports establishments, March employment and annual payroll. Employment noise flag is H; payroll noise flag is G. Census API access required a key, so the published bulk ZIP was used and the exact row was inspected. The series describes the entire county industry, not CL4, and crosses 2012, 2017 and 2022 NAICS classification vintages."
+    },
+    {
+      "source_id": "src_study_census_cbp_mecklenburg_518210_2019",
+      "title": "2019 County Business Patterns county file",
+      "url": "https://www2.census.gov/programs-surveys/cbp/datasets/2019/cbp19co.zip",
+      "publisher": "U.S. Census Bureau",
+      "source_type": "other",
+      "publication_date": {
+        "precision": "year",
+        "year": 2019
+      },
+      "retrieved_on": "2026-09-07",
+      "review_method": "structured_data",
+      "notes": "Official annual ZIP row for state 37, county 119 and NAICS 518210 reports establishments, March employment and annual payroll. Employment noise flag is G; payroll noise flag is G. Census API access required a key, so the published bulk ZIP was used and the exact row was inspected. The series describes the entire county industry, not CL4, and crosses 2012, 2017 and 2022 NAICS classification vintages."
+    },
+    {
+      "source_id": "src_study_census_cbp_mecklenburg_518210_2020",
+      "title": "2020 County Business Patterns county file",
+      "url": "https://www2.census.gov/programs-surveys/cbp/datasets/2020/cbp20co.zip",
+      "publisher": "U.S. Census Bureau",
+      "source_type": "other",
+      "publication_date": {
+        "precision": "year",
+        "year": 2020
+      },
+      "retrieved_on": "2026-09-07",
+      "review_method": "structured_data",
+      "notes": "Official annual ZIP row for state 37, county 119 and NAICS 518210 reports establishments, March employment and annual payroll. Employment noise flag is G; payroll noise flag is G. Census API access required a key, so the published bulk ZIP was used and the exact row was inspected. The series describes the entire county industry, not CL4, and crosses 2012, 2017 and 2022 NAICS classification vintages."
+    },
+    {
+      "source_id": "src_study_census_cbp_mecklenburg_518210_2021",
+      "title": "2021 County Business Patterns county file",
+      "url": "https://www2.census.gov/programs-surveys/cbp/datasets/2021/cbp21co.zip",
+      "publisher": "U.S. Census Bureau",
+      "source_type": "other",
+      "publication_date": {
+        "precision": "year",
+        "year": 2021
+      },
+      "retrieved_on": "2026-09-07",
+      "review_method": "structured_data",
+      "notes": "Official annual ZIP row for state 37, county 119 and NAICS 518210 reports establishments, March employment and annual payroll. Employment noise flag is G; payroll noise flag is G. Census API access required a key, so the published bulk ZIP was used and the exact row was inspected. The series describes the entire county industry, not CL4, and crosses 2012, 2017 and 2022 NAICS classification vintages."
+    },
+    {
+      "source_id": "src_study_census_cbp_mecklenburg_518210_2022",
+      "title": "2022 County Business Patterns county file",
+      "url": "https://www2.census.gov/programs-surveys/cbp/datasets/2022/cbp22co.zip",
+      "publisher": "U.S. Census Bureau",
+      "source_type": "other",
+      "publication_date": {
+        "precision": "year",
+        "year": 2022
+      },
+      "retrieved_on": "2026-09-07",
+      "review_method": "structured_data",
+      "notes": "Official annual ZIP row for state 37, county 119 and NAICS 518210 reports establishments, March employment and annual payroll. Employment noise flag is G; payroll noise flag is G. Census API access required a key, so the published bulk ZIP was used and the exact row was inspected. The series describes the entire county industry, not CL4, and crosses 2012, 2017 and 2022 NAICS classification vintages."
+    },
+    {
+      "source_id": "src_study_census_cbp_mecklenburg_518210_2023",
+      "title": "2023 County Business Patterns county file",
+      "url": "https://www2.census.gov/programs-surveys/cbp/datasets/2023/cbp23co.zip",
+      "publisher": "U.S. Census Bureau",
+      "source_type": "other",
+      "publication_date": {
+        "precision": "year",
+        "year": 2023
+      },
+      "retrieved_on": "2026-09-07",
+      "review_method": "structured_data",
+      "notes": "Official annual ZIP row for state 37, county 119 and NAICS 518210 reports establishments, March employment and annual payroll. Employment noise flag is G; payroll noise flag is G. Census API access required a key, so the published bulk ZIP was used and the exact row was inspected. The series describes the entire county industry, not CL4, and crosses 2012, 2017 and 2022 NAICS classification vintages."
+    }
+  ],
+  "records": [
+    {
+      "claim_id": "clm_study_tierpoint_cl4_opening_floor_area_2014",
+      "project_id": "prj_study_im3_building_00838817907",
+      "metric_code": "study.operating_property_floor_area",
+      "value": 39300,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "reported_snapshot",
+        "report_date": "2014-03-03",
+        "label": "Facility dimensions reported at official opening"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Windstream Charlotte Four / TierPoint CL4 building at 1805 Center Park Drive",
+        "county_fips": "37119",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_windstream_charlotte_four_opening_2014",
+      "source_locator": "PDF page 2, opening configuration paragraph",
+      "notes": "Opening-day total facility area, not raised-floor area, later landlord net lettable area, assessor finished area, occupied area or construction spending. The release's 60,800-square-foot phased figure is excluded as a plan.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07",
+      "pdf_page": 2,
+      "printed_page": "2"
+    },
+    {
+      "claim_id": "clm_study_tierpoint_cl4_opening_usable_ups_2014",
+      "project_id": "prj_study_im3_building_00838817907",
+      "metric_code": "study.operating_power_capacity",
+      "value": 1.215,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "reported_snapshot",
+        "report_date": "2014-03-03",
+        "label": "Opening-day usable UPS capacity"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Windstream Charlotte Four / TierPoint CL4 building at 1805 Center Park Drive",
+        "county_fips": "37119",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_windstream_charlotte_four_opening_2014",
+      "source_locator": "PDF page 2, opening configuration paragraph",
+      "notes": "1,215 kW first-day usable UPS capacity converted arithmetically to 1.215 MW. It is capacity, not utility-service capacity, measured demand, annual electricity, occupied load, generator rating or project investment; the release's expansion capability is excluded.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07",
+      "pdf_page": 2,
+      "printed_page": "2"
+    },
+    {
+      "claim_id": "clm_study_tierpoint_cl4_landlord_floor_area_2020",
+      "project_id": "prj_study_im3_building_00838817907",
+      "metric_code": "study.operating_property_floor_area",
+      "value": 60850,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "reported_snapshot",
+        "report_date": "2020-03-31",
+        "label": "Landlord acquisition-presentation snapshot"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "APN 141-061-08 data-center property at 1805 Center Park Drive",
+        "county_fips": "37119",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_mapletree_cl4_acquisition_slides_2020",
+      "source_locator": "Details of the MRDCT Portfolio (3), 1805 Center Park Drive column, NLA row",
+      "notes": "Landlord-reported building area for the whole single-story property. It is kept separate from the 39,300-square-foot opening footprint and 60,246-square-foot assessor finished area because definitions differ; 66.7% was leased to TierPoint and the rest was shell expansion space.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07",
+      "pdf_page": 29,
+      "printed_page": "29"
+    },
+    {
+      "claim_id": "clm_study_tierpoint_cl4_permitted_construction_value_2021",
+      "project_id": "prj_study_im3_building_00838817907",
+      "metric_code": "study.permitted_construction_value",
+      "value": 2580200,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "calendar_year",
+        "year": 2021,
+        "label": "Permit B3960984 and linked finaled subpermits issued in 2021"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "TierPoint CL4 Renovations project 419519 at 1805 Center Park Drive",
+        "county_fips": "37119",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_mecklenburg_cl4_permit_b3960984_2021",
+      "source_locator": "Project Details, Permit Details and subpermit cost roll-up",
+      "notes": "Official administrative contract-cost total for a completed 15,008-square-foot renovation. It is post-opening and not audited cash spending, original investment, contractor payroll, local purchasing or additive with expired and later expansion permits.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07"
+    },
+    {
+      "claim_id": "clm_study_mecklenburg_518210_establishments_2012",
+      "project_id": "prj_study_im3_building_00838817907",
+      "metric_code": "study.county_industry_establishments",
+      "value": 80,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "calendar_year",
+        "year": 2012,
+        "label": "2012 County Business Patterns"
+      },
+      "scope": {
+        "level": "county_context",
+        "label": "Mecklenburg County NAICS 518210 employers",
+        "county_fips": "37119",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_census_cbp_mecklenburg_518210_2012",
+      "source_locator": "Exact row state=37, county=119, NAICS=518210; ESTAB field",
+      "notes": "County-wide establishment count. It includes all covered employers classified in data processing, hosting and related services, not only data centers or CL4; it is context and not a project contribution.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "mecklenburg_county_naics_518210_establishments"
+    },
+    {
+      "claim_id": "clm_study_mecklenburg_518210_employment_2012",
+      "project_id": "prj_study_im3_building_00838817907",
+      "metric_code": "study.county_industry_employment",
+      "value": 1744,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "calendar_year",
+        "year": 2012,
+        "label": "2012 County Business Patterns"
+      },
+      "scope": {
+        "level": "county_context",
+        "label": "Mecklenburg County NAICS 518210 employers",
+        "county_fips": "37119",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_census_cbp_mecklenburg_518210_2012",
+      "source_locator": "Exact row state=37, county=119, NAICS=518210; EMP field",
+      "notes": "County-wide mid-March employment with Census noise flag G; G indicates less than 2% noise and H indicates 2% to less than 5%. It is not CL4 headcount, annual-average employment, resident employment or a causal effect, and the series crosses NAICS revisions.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "mecklenburg_county_naics_518210_employment"
+    },
+    {
+      "claim_id": "clm_study_mecklenburg_518210_payroll_2012",
+      "project_id": "prj_study_im3_building_00838817907",
+      "metric_code": "study.county_industry_annual_payroll",
+      "value": 132728000,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "calendar_year",
+        "year": 2012,
+        "label": "2012 County Business Patterns"
+      },
+      "scope": {
+        "level": "county_context",
+        "label": "Mecklenburg County NAICS 518210 employers",
+        "county_fips": "37119",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_census_cbp_mecklenburg_518210_2012",
+      "source_locator": "Exact row state=37, county=119, NAICS=518210; AP/PAYANN field in thousands of dollars multiplied by 1,000",
+      "notes": "County-wide nominal annual payroll with Census noise flag G; G indicates less than 2% noise and H indicates 2% to less than 5%. It is not CL4 payroll, employee earnings by residence, supplier spending or a causal effect, and the series crosses NAICS revisions.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "mecklenburg_county_naics_518210_annual_payroll"
+    },
+    {
+      "claim_id": "clm_study_mecklenburg_518210_establishments_2013",
+      "project_id": "prj_study_im3_building_00838817907",
+      "metric_code": "study.county_industry_establishments",
+      "value": 99,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "calendar_year",
+        "year": 2013,
+        "label": "2013 County Business Patterns"
+      },
+      "scope": {
+        "level": "county_context",
+        "label": "Mecklenburg County NAICS 518210 employers",
+        "county_fips": "37119",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_census_cbp_mecklenburg_518210_2013",
+      "source_locator": "Exact row state=37, county=119, NAICS=518210; ESTAB field",
+      "notes": "County-wide establishment count. It includes all covered employers classified in data processing, hosting and related services, not only data centers or CL4; it is context and not a project contribution.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "mecklenburg_county_naics_518210_establishments"
+    },
+    {
+      "claim_id": "clm_study_mecklenburg_518210_employment_2013",
+      "project_id": "prj_study_im3_building_00838817907",
+      "metric_code": "study.county_industry_employment",
+      "value": 1966,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "calendar_year",
+        "year": 2013,
+        "label": "2013 County Business Patterns"
+      },
+      "scope": {
+        "level": "county_context",
+        "label": "Mecklenburg County NAICS 518210 employers",
+        "county_fips": "37119",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_census_cbp_mecklenburg_518210_2013",
+      "source_locator": "Exact row state=37, county=119, NAICS=518210; EMP field",
+      "notes": "County-wide mid-March employment with Census noise flag G; G indicates less than 2% noise and H indicates 2% to less than 5%. It is not CL4 headcount, annual-average employment, resident employment or a causal effect, and the series crosses NAICS revisions.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "mecklenburg_county_naics_518210_employment"
+    },
+    {
+      "claim_id": "clm_study_mecklenburg_518210_payroll_2013",
+      "project_id": "prj_study_im3_building_00838817907",
+      "metric_code": "study.county_industry_annual_payroll",
+      "value": 157670000,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "calendar_year",
+        "year": 2013,
+        "label": "2013 County Business Patterns"
+      },
+      "scope": {
+        "level": "county_context",
+        "label": "Mecklenburg County NAICS 518210 employers",
+        "county_fips": "37119",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_census_cbp_mecklenburg_518210_2013",
+      "source_locator": "Exact row state=37, county=119, NAICS=518210; AP/PAYANN field in thousands of dollars multiplied by 1,000",
+      "notes": "County-wide nominal annual payroll with Census noise flag H; G indicates less than 2% noise and H indicates 2% to less than 5%. It is not CL4 payroll, employee earnings by residence, supplier spending or a causal effect, and the series crosses NAICS revisions.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "mecklenburg_county_naics_518210_annual_payroll"
+    },
+    {
+      "claim_id": "clm_study_mecklenburg_518210_establishments_2014",
+      "project_id": "prj_study_im3_building_00838817907",
+      "metric_code": "study.county_industry_establishments",
+      "value": 99,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "calendar_year",
+        "year": 2014,
+        "label": "2014 County Business Patterns"
+      },
+      "scope": {
+        "level": "county_context",
+        "label": "Mecklenburg County NAICS 518210 employers",
+        "county_fips": "37119",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_census_cbp_mecklenburg_518210_2014",
+      "source_locator": "Exact row state=37, county=119, NAICS=518210; ESTAB field",
+      "notes": "County-wide establishment count. It includes all covered employers classified in data processing, hosting and related services, not only data centers or CL4; it is context and not a project contribution.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "mecklenburg_county_naics_518210_establishments"
+    },
+    {
+      "claim_id": "clm_study_mecklenburg_518210_employment_2014",
+      "project_id": "prj_study_im3_building_00838817907",
+      "metric_code": "study.county_industry_employment",
+      "value": 2261,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "calendar_year",
+        "year": 2014,
+        "label": "2014 County Business Patterns"
+      },
+      "scope": {
+        "level": "county_context",
+        "label": "Mecklenburg County NAICS 518210 employers",
+        "county_fips": "37119",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_census_cbp_mecklenburg_518210_2014",
+      "source_locator": "Exact row state=37, county=119, NAICS=518210; EMP field",
+      "notes": "County-wide mid-March employment with Census noise flag G; G indicates less than 2% noise and H indicates 2% to less than 5%. It is not CL4 headcount, annual-average employment, resident employment or a causal effect, and the series crosses NAICS revisions.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "mecklenburg_county_naics_518210_employment"
+    },
+    {
+      "claim_id": "clm_study_mecklenburg_518210_payroll_2014",
+      "project_id": "prj_study_im3_building_00838817907",
+      "metric_code": "study.county_industry_annual_payroll",
+      "value": 185798000,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "calendar_year",
+        "year": 2014,
+        "label": "2014 County Business Patterns"
+      },
+      "scope": {
+        "level": "county_context",
+        "label": "Mecklenburg County NAICS 518210 employers",
+        "county_fips": "37119",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_census_cbp_mecklenburg_518210_2014",
+      "source_locator": "Exact row state=37, county=119, NAICS=518210; AP/PAYANN field in thousands of dollars multiplied by 1,000",
+      "notes": "County-wide nominal annual payroll with Census noise flag H; G indicates less than 2% noise and H indicates 2% to less than 5%. It is not CL4 payroll, employee earnings by residence, supplier spending or a causal effect, and the series crosses NAICS revisions.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "mecklenburg_county_naics_518210_annual_payroll"
+    },
+    {
+      "claim_id": "clm_study_mecklenburg_518210_establishments_2015",
+      "project_id": "prj_study_im3_building_00838817907",
+      "metric_code": "study.county_industry_establishments",
+      "value": 90,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "calendar_year",
+        "year": 2015,
+        "label": "2015 County Business Patterns"
+      },
+      "scope": {
+        "level": "county_context",
+        "label": "Mecklenburg County NAICS 518210 employers",
+        "county_fips": "37119",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_census_cbp_mecklenburg_518210_2015",
+      "source_locator": "Exact row state=37, county=119, NAICS=518210; ESTAB field",
+      "notes": "County-wide establishment count. It includes all covered employers classified in data processing, hosting and related services, not only data centers or CL4; it is context and not a project contribution.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "mecklenburg_county_naics_518210_establishments"
+    },
+    {
+      "claim_id": "clm_study_mecklenburg_518210_employment_2015",
+      "project_id": "prj_study_im3_building_00838817907",
+      "metric_code": "study.county_industry_employment",
+      "value": 2114,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "calendar_year",
+        "year": 2015,
+        "label": "2015 County Business Patterns"
+      },
+      "scope": {
+        "level": "county_context",
+        "label": "Mecklenburg County NAICS 518210 employers",
+        "county_fips": "37119",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_census_cbp_mecklenburg_518210_2015",
+      "source_locator": "Exact row state=37, county=119, NAICS=518210; EMP field",
+      "notes": "County-wide mid-March employment with Census noise flag G; G indicates less than 2% noise and H indicates 2% to less than 5%. It is not CL4 headcount, annual-average employment, resident employment or a causal effect, and the series crosses NAICS revisions.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "mecklenburg_county_naics_518210_employment"
+    },
+    {
+      "claim_id": "clm_study_mecklenburg_518210_payroll_2015",
+      "project_id": "prj_study_im3_building_00838817907",
+      "metric_code": "study.county_industry_annual_payroll",
+      "value": 164304000,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "calendar_year",
+        "year": 2015,
+        "label": "2015 County Business Patterns"
+      },
+      "scope": {
+        "level": "county_context",
+        "label": "Mecklenburg County NAICS 518210 employers",
+        "county_fips": "37119",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_census_cbp_mecklenburg_518210_2015",
+      "source_locator": "Exact row state=37, county=119, NAICS=518210; AP/PAYANN field in thousands of dollars multiplied by 1,000",
+      "notes": "County-wide nominal annual payroll with Census noise flag G; G indicates less than 2% noise and H indicates 2% to less than 5%. It is not CL4 payroll, employee earnings by residence, supplier spending or a causal effect, and the series crosses NAICS revisions.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "mecklenburg_county_naics_518210_annual_payroll"
+    },
+    {
+      "claim_id": "clm_study_mecklenburg_518210_establishments_2016",
+      "project_id": "prj_study_im3_building_00838817907",
+      "metric_code": "study.county_industry_establishments",
+      "value": 90,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "calendar_year",
+        "year": 2016,
+        "label": "2016 County Business Patterns"
+      },
+      "scope": {
+        "level": "county_context",
+        "label": "Mecklenburg County NAICS 518210 employers",
+        "county_fips": "37119",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_census_cbp_mecklenburg_518210_2016",
+      "source_locator": "Exact row state=37, county=119, NAICS=518210; ESTAB field",
+      "notes": "County-wide establishment count. It includes all covered employers classified in data processing, hosting and related services, not only data centers or CL4; it is context and not a project contribution.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "mecklenburg_county_naics_518210_establishments"
+    },
+    {
+      "claim_id": "clm_study_mecklenburg_518210_employment_2016",
+      "project_id": "prj_study_im3_building_00838817907",
+      "metric_code": "study.county_industry_employment",
+      "value": 2068,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "calendar_year",
+        "year": 2016,
+        "label": "2016 County Business Patterns"
+      },
+      "scope": {
+        "level": "county_context",
+        "label": "Mecklenburg County NAICS 518210 employers",
+        "county_fips": "37119",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_census_cbp_mecklenburg_518210_2016",
+      "source_locator": "Exact row state=37, county=119, NAICS=518210; EMP field",
+      "notes": "County-wide mid-March employment with Census noise flag G; G indicates less than 2% noise and H indicates 2% to less than 5%. It is not CL4 headcount, annual-average employment, resident employment or a causal effect, and the series crosses NAICS revisions.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "mecklenburg_county_naics_518210_employment"
+    },
+    {
+      "claim_id": "clm_study_mecklenburg_518210_payroll_2016",
+      "project_id": "prj_study_im3_building_00838817907",
+      "metric_code": "study.county_industry_annual_payroll",
+      "value": 159752000,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "calendar_year",
+        "year": 2016,
+        "label": "2016 County Business Patterns"
+      },
+      "scope": {
+        "level": "county_context",
+        "label": "Mecklenburg County NAICS 518210 employers",
+        "county_fips": "37119",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_census_cbp_mecklenburg_518210_2016",
+      "source_locator": "Exact row state=37, county=119, NAICS=518210; AP/PAYANN field in thousands of dollars multiplied by 1,000",
+      "notes": "County-wide nominal annual payroll with Census noise flag G; G indicates less than 2% noise and H indicates 2% to less than 5%. It is not CL4 payroll, employee earnings by residence, supplier spending or a causal effect, and the series crosses NAICS revisions.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "mecklenburg_county_naics_518210_annual_payroll"
+    },
+    {
+      "claim_id": "clm_study_mecklenburg_518210_establishments_2017",
+      "project_id": "prj_study_im3_building_00838817907",
+      "metric_code": "study.county_industry_establishments",
+      "value": 114,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "calendar_year",
+        "year": 2017,
+        "label": "2017 County Business Patterns"
+      },
+      "scope": {
+        "level": "county_context",
+        "label": "Mecklenburg County NAICS 518210 employers",
+        "county_fips": "37119",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_census_cbp_mecklenburg_518210_2017",
+      "source_locator": "Exact row state=37, county=119, NAICS=518210; ESTAB field",
+      "notes": "County-wide establishment count. It includes all covered employers classified in data processing, hosting and related services, not only data centers or CL4; it is context and not a project contribution.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "mecklenburg_county_naics_518210_establishments"
+    },
+    {
+      "claim_id": "clm_study_mecklenburg_518210_employment_2017",
+      "project_id": "prj_study_im3_building_00838817907",
+      "metric_code": "study.county_industry_employment",
+      "value": 5022,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "calendar_year",
+        "year": 2017,
+        "label": "2017 County Business Patterns"
+      },
+      "scope": {
+        "level": "county_context",
+        "label": "Mecklenburg County NAICS 518210 employers",
+        "county_fips": "37119",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_census_cbp_mecklenburg_518210_2017",
+      "source_locator": "Exact row state=37, county=119, NAICS=518210; EMP field",
+      "notes": "County-wide mid-March employment with Census noise flag H; G indicates less than 2% noise and H indicates 2% to less than 5%. It is not CL4 headcount, annual-average employment, resident employment or a causal effect, and the series crosses NAICS revisions.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "mecklenburg_county_naics_518210_employment"
+    },
+    {
+      "claim_id": "clm_study_mecklenburg_518210_payroll_2017",
+      "project_id": "prj_study_im3_building_00838817907",
+      "metric_code": "study.county_industry_annual_payroll",
+      "value": 498433000,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "calendar_year",
+        "year": 2017,
+        "label": "2017 County Business Patterns"
+      },
+      "scope": {
+        "level": "county_context",
+        "label": "Mecklenburg County NAICS 518210 employers",
+        "county_fips": "37119",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_census_cbp_mecklenburg_518210_2017",
+      "source_locator": "Exact row state=37, county=119, NAICS=518210; AP/PAYANN field in thousands of dollars multiplied by 1,000",
+      "notes": "County-wide nominal annual payroll with Census noise flag H; G indicates less than 2% noise and H indicates 2% to less than 5%. It is not CL4 payroll, employee earnings by residence, supplier spending or a causal effect, and the series crosses NAICS revisions.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "mecklenburg_county_naics_518210_annual_payroll"
+    },
+    {
+      "claim_id": "clm_study_mecklenburg_518210_establishments_2018",
+      "project_id": "prj_study_im3_building_00838817907",
+      "metric_code": "study.county_industry_establishments",
+      "value": 100,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "calendar_year",
+        "year": 2018,
+        "label": "2018 County Business Patterns"
+      },
+      "scope": {
+        "level": "county_context",
+        "label": "Mecklenburg County NAICS 518210 employers",
+        "county_fips": "37119",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_census_cbp_mecklenburg_518210_2018",
+      "source_locator": "Exact row state=37, county=119, NAICS=518210; ESTAB field",
+      "notes": "County-wide establishment count. It includes all covered employers classified in data processing, hosting and related services, not only data centers or CL4; it is context and not a project contribution.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "mecklenburg_county_naics_518210_establishments"
+    },
+    {
+      "claim_id": "clm_study_mecklenburg_518210_employment_2018",
+      "project_id": "prj_study_im3_building_00838817907",
+      "metric_code": "study.county_industry_employment",
+      "value": 5194,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "calendar_year",
+        "year": 2018,
+        "label": "2018 County Business Patterns"
+      },
+      "scope": {
+        "level": "county_context",
+        "label": "Mecklenburg County NAICS 518210 employers",
+        "county_fips": "37119",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_census_cbp_mecklenburg_518210_2018",
+      "source_locator": "Exact row state=37, county=119, NAICS=518210; EMP field",
+      "notes": "County-wide mid-March employment with Census noise flag H; G indicates less than 2% noise and H indicates 2% to less than 5%. It is not CL4 headcount, annual-average employment, resident employment or a causal effect, and the series crosses NAICS revisions.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "mecklenburg_county_naics_518210_employment"
+    },
+    {
+      "claim_id": "clm_study_mecklenburg_518210_payroll_2018",
+      "project_id": "prj_study_im3_building_00838817907",
+      "metric_code": "study.county_industry_annual_payroll",
+      "value": 539141000,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "calendar_year",
+        "year": 2018,
+        "label": "2018 County Business Patterns"
+      },
+      "scope": {
+        "level": "county_context",
+        "label": "Mecklenburg County NAICS 518210 employers",
+        "county_fips": "37119",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_census_cbp_mecklenburg_518210_2018",
+      "source_locator": "Exact row state=37, county=119, NAICS=518210; AP/PAYANN field in thousands of dollars multiplied by 1,000",
+      "notes": "County-wide nominal annual payroll with Census noise flag G; G indicates less than 2% noise and H indicates 2% to less than 5%. It is not CL4 payroll, employee earnings by residence, supplier spending or a causal effect, and the series crosses NAICS revisions.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "mecklenburg_county_naics_518210_annual_payroll"
+    },
+    {
+      "claim_id": "clm_study_mecklenburg_518210_establishments_2019",
+      "project_id": "prj_study_im3_building_00838817907",
+      "metric_code": "study.county_industry_establishments",
+      "value": 99,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "calendar_year",
+        "year": 2019,
+        "label": "2019 County Business Patterns"
+      },
+      "scope": {
+        "level": "county_context",
+        "label": "Mecklenburg County NAICS 518210 employers",
+        "county_fips": "37119",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_census_cbp_mecklenburg_518210_2019",
+      "source_locator": "Exact row state=37, county=119, NAICS=518210; ESTAB field",
+      "notes": "County-wide establishment count. It includes all covered employers classified in data processing, hosting and related services, not only data centers or CL4; it is context and not a project contribution.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "mecklenburg_county_naics_518210_establishments"
+    },
+    {
+      "claim_id": "clm_study_mecklenburg_518210_employment_2019",
+      "project_id": "prj_study_im3_building_00838817907",
+      "metric_code": "study.county_industry_employment",
+      "value": 5117,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "calendar_year",
+        "year": 2019,
+        "label": "2019 County Business Patterns"
+      },
+      "scope": {
+        "level": "county_context",
+        "label": "Mecklenburg County NAICS 518210 employers",
+        "county_fips": "37119",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_census_cbp_mecklenburg_518210_2019",
+      "source_locator": "Exact row state=37, county=119, NAICS=518210; EMP field",
+      "notes": "County-wide mid-March employment with Census noise flag G; G indicates less than 2% noise and H indicates 2% to less than 5%. It is not CL4 headcount, annual-average employment, resident employment or a causal effect, and the series crosses NAICS revisions.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "mecklenburg_county_naics_518210_employment"
+    },
+    {
+      "claim_id": "clm_study_mecklenburg_518210_payroll_2019",
+      "project_id": "prj_study_im3_building_00838817907",
+      "metric_code": "study.county_industry_annual_payroll",
+      "value": 514718000,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "calendar_year",
+        "year": 2019,
+        "label": "2019 County Business Patterns"
+      },
+      "scope": {
+        "level": "county_context",
+        "label": "Mecklenburg County NAICS 518210 employers",
+        "county_fips": "37119",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_census_cbp_mecklenburg_518210_2019",
+      "source_locator": "Exact row state=37, county=119, NAICS=518210; AP/PAYANN field in thousands of dollars multiplied by 1,000",
+      "notes": "County-wide nominal annual payroll with Census noise flag G; G indicates less than 2% noise and H indicates 2% to less than 5%. It is not CL4 payroll, employee earnings by residence, supplier spending or a causal effect, and the series crosses NAICS revisions.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "mecklenburg_county_naics_518210_annual_payroll"
+    },
+    {
+      "claim_id": "clm_study_mecklenburg_518210_establishments_2020",
+      "project_id": "prj_study_im3_building_00838817907",
+      "metric_code": "study.county_industry_establishments",
+      "value": 94,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "calendar_year",
+        "year": 2020,
+        "label": "2020 County Business Patterns"
+      },
+      "scope": {
+        "level": "county_context",
+        "label": "Mecklenburg County NAICS 518210 employers",
+        "county_fips": "37119",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_census_cbp_mecklenburg_518210_2020",
+      "source_locator": "Exact row state=37, county=119, NAICS=518210; ESTAB field",
+      "notes": "County-wide establishment count. It includes all covered employers classified in data processing, hosting and related services, not only data centers or CL4; it is context and not a project contribution.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "mecklenburg_county_naics_518210_establishments"
+    },
+    {
+      "claim_id": "clm_study_mecklenburg_518210_employment_2020",
+      "project_id": "prj_study_im3_building_00838817907",
+      "metric_code": "study.county_industry_employment",
+      "value": 4954,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "calendar_year",
+        "year": 2020,
+        "label": "2020 County Business Patterns"
+      },
+      "scope": {
+        "level": "county_context",
+        "label": "Mecklenburg County NAICS 518210 employers",
+        "county_fips": "37119",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_census_cbp_mecklenburg_518210_2020",
+      "source_locator": "Exact row state=37, county=119, NAICS=518210; EMP field",
+      "notes": "County-wide mid-March employment with Census noise flag G; G indicates less than 2% noise and H indicates 2% to less than 5%. It is not CL4 headcount, annual-average employment, resident employment or a causal effect, and the series crosses NAICS revisions.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "mecklenburg_county_naics_518210_employment"
+    },
+    {
+      "claim_id": "clm_study_mecklenburg_518210_payroll_2020",
+      "project_id": "prj_study_im3_building_00838817907",
+      "metric_code": "study.county_industry_annual_payroll",
+      "value": 496310000,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "calendar_year",
+        "year": 2020,
+        "label": "2020 County Business Patterns"
+      },
+      "scope": {
+        "level": "county_context",
+        "label": "Mecklenburg County NAICS 518210 employers",
+        "county_fips": "37119",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_census_cbp_mecklenburg_518210_2020",
+      "source_locator": "Exact row state=37, county=119, NAICS=518210; AP/PAYANN field in thousands of dollars multiplied by 1,000",
+      "notes": "County-wide nominal annual payroll with Census noise flag G; G indicates less than 2% noise and H indicates 2% to less than 5%. It is not CL4 payroll, employee earnings by residence, supplier spending or a causal effect, and the series crosses NAICS revisions.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "mecklenburg_county_naics_518210_annual_payroll"
+    },
+    {
+      "claim_id": "clm_study_mecklenburg_518210_establishments_2021",
+      "project_id": "prj_study_im3_building_00838817907",
+      "metric_code": "study.county_industry_establishments",
+      "value": 92,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "calendar_year",
+        "year": 2021,
+        "label": "2021 County Business Patterns"
+      },
+      "scope": {
+        "level": "county_context",
+        "label": "Mecklenburg County NAICS 518210 employers",
+        "county_fips": "37119",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_census_cbp_mecklenburg_518210_2021",
+      "source_locator": "Exact row state=37, county=119, NAICS=518210; ESTAB field",
+      "notes": "County-wide establishment count. It includes all covered employers classified in data processing, hosting and related services, not only data centers or CL4; it is context and not a project contribution.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "mecklenburg_county_naics_518210_establishments"
+    },
+    {
+      "claim_id": "clm_study_mecklenburg_518210_employment_2021",
+      "project_id": "prj_study_im3_building_00838817907",
+      "metric_code": "study.county_industry_employment",
+      "value": 3160,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "calendar_year",
+        "year": 2021,
+        "label": "2021 County Business Patterns"
+      },
+      "scope": {
+        "level": "county_context",
+        "label": "Mecklenburg County NAICS 518210 employers",
+        "county_fips": "37119",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_census_cbp_mecklenburg_518210_2021",
+      "source_locator": "Exact row state=37, county=119, NAICS=518210; EMP field",
+      "notes": "County-wide mid-March employment with Census noise flag G; G indicates less than 2% noise and H indicates 2% to less than 5%. It is not CL4 headcount, annual-average employment, resident employment or a causal effect, and the series crosses NAICS revisions.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "mecklenburg_county_naics_518210_employment"
+    },
+    {
+      "claim_id": "clm_study_mecklenburg_518210_payroll_2021",
+      "project_id": "prj_study_im3_building_00838817907",
+      "metric_code": "study.county_industry_annual_payroll",
+      "value": 323237000,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "calendar_year",
+        "year": 2021,
+        "label": "2021 County Business Patterns"
+      },
+      "scope": {
+        "level": "county_context",
+        "label": "Mecklenburg County NAICS 518210 employers",
+        "county_fips": "37119",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_census_cbp_mecklenburg_518210_2021",
+      "source_locator": "Exact row state=37, county=119, NAICS=518210; AP/PAYANN field in thousands of dollars multiplied by 1,000",
+      "notes": "County-wide nominal annual payroll with Census noise flag G; G indicates less than 2% noise and H indicates 2% to less than 5%. It is not CL4 payroll, employee earnings by residence, supplier spending or a causal effect, and the series crosses NAICS revisions.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "mecklenburg_county_naics_518210_annual_payroll"
+    },
+    {
+      "claim_id": "clm_study_mecklenburg_518210_establishments_2022",
+      "project_id": "prj_study_im3_building_00838817907",
+      "metric_code": "study.county_industry_establishments",
+      "value": 88,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "calendar_year",
+        "year": 2022,
+        "label": "2022 County Business Patterns"
+      },
+      "scope": {
+        "level": "county_context",
+        "label": "Mecklenburg County NAICS 518210 employers",
+        "county_fips": "37119",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_census_cbp_mecklenburg_518210_2022",
+      "source_locator": "Exact row state=37, county=119, NAICS=518210; ESTAB field",
+      "notes": "County-wide establishment count. It includes all covered employers classified in data processing, hosting and related services, not only data centers or CL4; it is context and not a project contribution.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "mecklenburg_county_naics_518210_establishments"
+    },
+    {
+      "claim_id": "clm_study_mecklenburg_518210_employment_2022",
+      "project_id": "prj_study_im3_building_00838817907",
+      "metric_code": "study.county_industry_employment",
+      "value": 3511,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "calendar_year",
+        "year": 2022,
+        "label": "2022 County Business Patterns"
+      },
+      "scope": {
+        "level": "county_context",
+        "label": "Mecklenburg County NAICS 518210 employers",
+        "county_fips": "37119",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_census_cbp_mecklenburg_518210_2022",
+      "source_locator": "Exact row state=37, county=119, NAICS=518210; EMP field",
+      "notes": "County-wide mid-March employment with Census noise flag G; G indicates less than 2% noise and H indicates 2% to less than 5%. It is not CL4 headcount, annual-average employment, resident employment or a causal effect, and the series crosses NAICS revisions.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "mecklenburg_county_naics_518210_employment"
+    },
+    {
+      "claim_id": "clm_study_mecklenburg_518210_payroll_2022",
+      "project_id": "prj_study_im3_building_00838817907",
+      "metric_code": "study.county_industry_annual_payroll",
+      "value": 378719000,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "calendar_year",
+        "year": 2022,
+        "label": "2022 County Business Patterns"
+      },
+      "scope": {
+        "level": "county_context",
+        "label": "Mecklenburg County NAICS 518210 employers",
+        "county_fips": "37119",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_census_cbp_mecklenburg_518210_2022",
+      "source_locator": "Exact row state=37, county=119, NAICS=518210; AP/PAYANN field in thousands of dollars multiplied by 1,000",
+      "notes": "County-wide nominal annual payroll with Census noise flag G; G indicates less than 2% noise and H indicates 2% to less than 5%. It is not CL4 payroll, employee earnings by residence, supplier spending or a causal effect, and the series crosses NAICS revisions.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "mecklenburg_county_naics_518210_annual_payroll"
+    },
+    {
+      "claim_id": "clm_study_mecklenburg_518210_establishments_2023",
+      "project_id": "prj_study_im3_building_00838817907",
+      "metric_code": "study.county_industry_establishments",
+      "value": 91,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "calendar_year",
+        "year": 2023,
+        "label": "2023 County Business Patterns"
+      },
+      "scope": {
+        "level": "county_context",
+        "label": "Mecklenburg County NAICS 518210 employers",
+        "county_fips": "37119",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_census_cbp_mecklenburg_518210_2023",
+      "source_locator": "Exact row state=37, county=119, NAICS=518210; ESTAB field",
+      "notes": "County-wide establishment count. It includes all covered employers classified in data processing, hosting and related services, not only data centers or CL4; it is context and not a project contribution.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "mecklenburg_county_naics_518210_establishments"
+    },
+    {
+      "claim_id": "clm_study_mecklenburg_518210_employment_2023",
+      "project_id": "prj_study_im3_building_00838817907",
+      "metric_code": "study.county_industry_employment",
+      "value": 3505,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "calendar_year",
+        "year": 2023,
+        "label": "2023 County Business Patterns"
+      },
+      "scope": {
+        "level": "county_context",
+        "label": "Mecklenburg County NAICS 518210 employers",
+        "county_fips": "37119",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_census_cbp_mecklenburg_518210_2023",
+      "source_locator": "Exact row state=37, county=119, NAICS=518210; EMP field",
+      "notes": "County-wide mid-March employment with Census noise flag G; G indicates less than 2% noise and H indicates 2% to less than 5%. It is not CL4 headcount, annual-average employment, resident employment or a causal effect, and the series crosses NAICS revisions.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "mecklenburg_county_naics_518210_employment"
+    },
+    {
+      "claim_id": "clm_study_mecklenburg_518210_payroll_2023",
+      "project_id": "prj_study_im3_building_00838817907",
+      "metric_code": "study.county_industry_annual_payroll",
+      "value": 313468000,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "calendar_year",
+        "year": 2023,
+        "label": "2023 County Business Patterns"
+      },
+      "scope": {
+        "level": "county_context",
+        "label": "Mecklenburg County NAICS 518210 employers",
+        "county_fips": "37119",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_census_cbp_mecklenburg_518210_2023",
+      "source_locator": "Exact row state=37, county=119, NAICS=518210; AP/PAYANN field in thousands of dollars multiplied by 1,000",
+      "notes": "County-wide nominal annual payroll with Census noise flag G; G indicates less than 2% noise and H indicates 2% to less than 5%. It is not CL4 payroll, employee earnings by residence, supplier spending or a causal effect, and the series crosses NAICS revisions.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "mecklenburg_county_naics_518210_annual_payroll"
+    }
+  ],
+  "project_updates": [
+    {
+      "project_id": "prj_study_im3_building_00838817907",
+      "source_id": "src_study_windstream_charlotte_four_opening_2014",
+      "as_of": "2026-09-07",
+      "title": "Investment audit and project boundary",
+      "notes": "Source families checked: operator and predecessor releases; developer records; landlord valuation/property materials; SEC filings; assessor and transaction references; local reporting and archives. Exact queries/entities/identifiers: TierPoint CL4, Charlotte Four, Windstream Hosted Solutions, Server Farm Realty, SFR NC1 LLC, DSA Encore, 1805 Center Park Drive, parcel/APN 14106108/141-061-08 and Mecklenburg Registry Book 28412 Page 204, covering 2012-2026. Material records opened: June 26, 2013 groundbreaking release, March 3, 2014 opening release, Mapletree valuation, SEC lease schedule and Windstream 10-K. Useful result: exact boundary, opening facts and operator succession. The planned 60,850 square feet/10 MW, a secondary $15 million 'expansion' assertion, real-estate appraisals/sales and the $575 million portfolio acquisition cannot establish CL4 productive investment; investment remains a gap rather than a proxy.",
+      "project_description": "TierPoint Charlotte Center Park (CL4) is the TierPoint-operated colocation building at 1805 Center Park Drive in Charlotte, Mecklenburg County, North Carolina; it is distinct from TierPoint's Charlotte-North Myers facility and the wider Carolinas portfolio. Server Farm Realty and DSA Encore announced the build-to-suit project in June 2013, and Windstream Hosted Solutions officially opened it on March 3, 2014 with 39,300 square feet and 1.215 MW of usable UPS capacity, while describing larger figures only as phased expansion plans. TierPoint succeeded Windstream as operator after a 2015 portfolio acquisition, and 2020 landlord records describe the parcel as a 60,850-square-foot single-story property that was 66.7% leased to TierPoint. County permit records separately identify completed 2021 renovations and later expired, withdrawn or in-progress work, which this account does not treat as part of the opening phase."
+    },
+    {
+      "project_id": "prj_study_im3_building_00838817907",
+      "source_id": "src_study_mecklenburg_cl4_permit_b3960984_2021",
+      "as_of": "2026-09-07",
+      "title": "Construction audit",
+      "notes": "Source families checked: Charlotte/Mecklenburg planning, zoning, building, mechanical, plumbing, electrical, generator, grading, land-disturbance and stormwater records in Accela and legacy WebPermit. Exact searches: address 1805 CENTER PARK, parcel 14106108, TierPoint, Windstream, Server Farm, SFR NC, Gannett, project names CL4/PMC Expansion and 2012-2026. Material records opened: address object 368923; projects 419519, 435613, 438007 and 469431; B3960984 and linked subpermits; Accela COM-ALT-25-000615 and COM-ALT-26-000979. Useful result: finaled 2021 renovation with $2,580,200 administrative contract cost. No exact 2013 conversion permit returned; $297,000 and $370,600 expired records, the $425,000 non-finaled 2025 project, $14.399 million in-progress 2026 PMC expansion and withdrawn Phase 2 are excluded. Negative portal results cannot prove no historic permit."
+    },
+    {
+      "project_id": "prj_study_im3_building_00838817907",
+      "source_id": "src_study_duffey_cl4_renovation_2021",
+      "as_of": "2026-09-07",
+      "title": "Supplier audit",
+      "notes": "Source families checked: developer/contractor materials, permit contractor fields, county procurement/vendor access points, subcontractor/supplier references and local reporting; exact queries TierPoint Charlotte, CL4, Windstream Charlotte Four, SFR NC1, DSA Encore, Duffey Southeast, 1805 Center Park and permit/project identifiers for 2012-2026. Material records identify Server Farm Realty and DSA Encore for the planned build-to-suit and Duffey Southeast for the 2021 renovation. No paid contract, subcontractor list, supplier invoice, procurement award, local-business classification, local-spend amount or contractor payroll was published. Named firms establish participation only; no supplier contribution amount is created."
+    },
+    {
+      "project_id": "prj_study_im3_building_00838817907",
+      "source_id": "src_study_tierpoint_careers_2026",
+      "as_of": "2026-09-07",
+      "title": "Operations audit",
+      "notes": "Source families checked: current/predecessor operator pages, opening materials, careers, workforce, occupation, residence, training, apprenticeship, County Business Patterns and federal/state filings; exact queries TierPoint CL4/Charlotte Center Park, Windstream Charlotte Four, 1805 Center Park, NOC, employee, jobs, payroll, technician and Charlotte over 2012-2026. The opening release says the NOC was fully staffed 24/7 but gives no count; current careers pages describe role types only. No realized CL4 headcount, annual-average FTE, wage, payroll, occupation mix, employee residence, training or apprenticeship amount was found. County NAICS 518210 establishments, March employment and payroll are retained solely as noisy county context and are not allocated to CL4."
+    },
+    {
+      "project_id": "prj_study_im3_building_00838817907",
+      "source_id": "src_study_mecklenburg_webpermit_cl4_address_2026",
+      "as_of": "2026-09-07",
+      "title": "Fiscal audit",
+      "notes": "Source families checked: Mecklenburg assessor/property, annual tax bills and payments, personal-property, exemption and treasurer records; exact identifiers 1805 Center Park Drive, parcel 14106108/141-061-08, Gannett DC Assets LP, SFR NC1 LLC, Windstream and TierPoint, tax years 2013-2026. Material records: county property profile and each annual bill/payment already present in the base evidence, plus permit property links. Useful result: an exact real-property series through 2026. The parcel owner/taxpayer is Gannett DC Assets LP and TierPoint is the tenant; no crosswalked TierPoint/Gannett personal-property account, exemption schedule or tenant tax reimbursement was found. Real-property bills cover multiple taxing jurisdictions and are gross payments, not Charlotte-only revenue, taxpayer incidence or net fiscal benefit."
+    },
+    {
+      "project_id": "prj_study_im3_building_00838817907",
+      "source_id": "src_study_mecklenburg_finance_procurement_2026",
+      "as_of": "2026-09-07",
+      "title": "Public-cost audit",
+      "notes": "Source families checked: Charlotte and Mecklenburg development/incentive records, abatement, PILOT, bond, TIF, IRB, grant, compliance, audit, budget, ACFR, agendas, minutes, attachments, procurement and check-register sources, plus NCDOR/Commerce and NC statutory materials. Exact entity/address/parcel/project queries covered 2012-2026. No CL4-specific award, certified-data-center record, tax-expenditure amount, grant, financing, public infrastructure payment, compliance report, check, marginal police/fire/road/utility cost or net-benefit analysis was located. A Baltimore vendor dataset mentioning TierPoint Maryland was verified as the wrong jurisdiction and rejected. General North Carolina data-center tax law is eligibility context, not proof of CL4 receipt; public costs remain unknown, not zero."
+    },
+    {
+      "project_id": "prj_study_im3_building_00838817907",
+      "source_id": "src_study_ncuc_cl4_docket_search_2026",
+      "as_of": "2026-09-07",
+      "title": "Resource audit",
+      "notes": "Source families checked: Duke electric-service references in permits; NCUC electric/gas tariff, docket, interconnection, transmission and substation records; Charlotte Water, wastewater, reclaimed-water and public-infrastructure sources; operator specifications. Exact searches TierPoint, Windstream Hosted Solutions, CL4, 1805 Center Park, parcel 14106108 and 2012-2026. Useful result: opening-day 1.215 MW usable UPS capacity and 3,000 kVA utility capacity; later permits name Duke Energy. No metered electricity, peak demand, bill, gas, water, wastewater, discharge, PUE/WUE, CIAC, substation/transmission cost or infrastructure allocation was found. Current TierPoint sources conflict on two versus four generators, and nameplate specifications are not consumption; no annual resource or emissions model is created."
+    },
+    {
+      "project_id": "prj_study_im3_building_00838817907",
+      "source_id": "src_study_tierpoint_green_finance_2024",
+      "as_of": "2026-09-07",
+      "title": "Community audit",
+      "notes": "Source families checked: TierPoint Gives Back/VolunTiers materials, operator news, Foundation For The Carolinas and Charlotte-area recipient-side grant and sponsorship references, using TierPoint, Windstream, CL4, Center Park and the exact address for 2012-2026. Company materials establish only a company-wide volunteering/giving program. No Charlotte or CL4 recipient confirmation, grant list entry, cash amount, in-kind valuation, date, restricted purpose or recurring commitment was found. Absence from searchable public pages cannot establish zero giving; community contribution remains an explicit gap."
+    },
+    {
+      "project_id": "prj_study_im3_building_00838817907",
+      "source_id": "src_study_ncdor_data_center_exemption_repeal_2026",
+      "as_of": "2026-09-07",
+      "title": "Corrective parcel, incentive, archive and transaction gap closure",
+      "notes": "Second pass reopened the assessor/tax trail, SEC lease and acquisition filings, Mapletree valuation/property materials, NCDOR and Commerce program pages, NC General Statutes, Charlotte and BOCC agenda/minute archives, finance/procurement access points and exact-phrase web archives. Queries repeated historical/current legal entities, address, parcel, registry book/page and project identifiers across 2012-2026. Results resolved landlord/operator and portfolio-versus-building boundaries but produced no personal-property account, realized incentive amount, development agreement, IRB/TIF/PILOT, project financing, completion-cost ledger or auditable original investment. Secondary reports of a $15 million expansion and $26.4 million property acquisition conflict in timing or measure and were excluded rather than upgraded through repetition."
+    },
+    {
+      "project_id": "prj_study_im3_building_00838817907",
+      "source_id": "src_study_mecklenburg_air_permit_database_2026",
+      "as_of": "2026-09-07",
+      "title": "Corrective permit, environmental, utility and infrastructure gap closure",
+      "notes": "Second pass used both legacy and current permit systems, exact record IDs, contractor/entity variations, Mecklenburg Air Quality's live PLC database, NC DEQ's state tracker, NCUC dockets and Charlotte Water/public-infrastructure access points. Local-air queries '1805 Center Park Drive', 'TierPoint', 'Windstream' and 'Gannett' returned zero PLC records; NC DEQ explicitly excludes Mecklenburg local-air permits and may remove closed applications. No initial conversion permit, air authorization, generator-emissions record, stormwater/NPDES record, meter, utility agreement, tariff rider or funded public infrastructure was found. These database limitations prevent absence claims and make resource-use and environmental models ineligible."
+    },
+    {
+      "project_id": "prj_study_im3_building_00838817907",
+      "source_id": "src_study_census_cbp_mecklenburg_518210_2023",
+      "as_of": "2026-09-07",
+      "title": "Corrective workforce, supplier, community and structured-data gap closure",
+      "notes": "Second pass searched operator careers and community pages, permit contractor fields, developer/contractor cases, procurement/vendor sources, recipient-side references, SEC filings and official 2012-2023 Census County Business Patterns bulk files. The Census API required a key, so each annual county ZIP row for state 37, county 119, NAICS 518210 was inspected; noise flags and NAICS-version breaks are retained. The sources still provide no CL4 employee/payroll/residence record, construction workforce, contractor/subcontractor payment, local spend, recipient-confirmed community transfer or operating revenue/cost. County industry context cannot close project-level gaps."
+    },
+    {
+      "project_id": "prj_study_im3_building_00838817907",
+      "source_id": "src_study_county_economic_core_2001_2024",
+      "as_of": "2026-09-07",
+      "title": "Independent candidate-by-candidate modeling and county-outcome decision",
+      "notes": "Model eligibility review after gap closure \u2014 Investment: rejected because sales, appraisals and portfolio prices are not productive project cost. Construction: rejected because one 2021 permit value cannot produce labor, timing or opening-phase spend. Suppliers: rejected for missing paid/local shares. Operations: rejected for missing CL4 headcount, payroll, revenue and occupancy. Fiscal: rejected beyond direct parcel bills/payments because tenant incidence and personal property are unresolved. Public costs: rejected for no award, expenditure or marginal service input. Resources: rejected for no meter/utilization/PUE/water input and conflicting generator counts. Community: rejected for no recipient-confirmed amount. County employment and wages: rejected despite mechanical post-2014 gaps of 9.54% and 8.23% because multiple local facilities, a 2013 building conversion, later expansions, donor contamination and no CL4 workforce bridge defeat attribution. County GDP: rejected; the mechanical 53.11% gap had 55.55% pre-period RMSE and an interval spanning -57.98% to 164.20%. Descriptively, 2013-2024 Mecklenburg GDP, employment and nominal weekly wage rose 49.44%, 34.45% and 50.98%, respectively, without attribution. Modeled additions: zero; no synthesis fragment is created."
+    }
+  ]
+}
