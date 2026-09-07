@@ -48,16 +48,20 @@ class TierPointLittleRockContributionAccountTest(unittest.TestCase):
 
     def test_direct_records_preserve_source_definitions(self):
         records = {row["claim_id"]: row for row in self.project["economic_records"]}
-        self.assertEqual(self.project["economic_record_count"], 26)
-        self.assertEqual(self.project["reported_actual_count"], 26)
+        self.assertEqual(self.project["economic_record_count"], 27)
+        self.assertEqual(self.project["reported_actual_count"], 27)
         self.assertEqual(self.project["projection_count"], 0)
         self.assertEqual(self.project["modeled_synthesis_count"], 0)
         operator = records["clm_study_tierpoint_little_rock_operator_floor_area_2026"]
+        raised = records["clm_study_tierpoint_little_rock_raised_floor_area_2024"]
         assessor = records["clm_study_tierpoint_little_rock_assessor_floor_area_2026"]
         self.assertEqual(operator["value"], 30_000)
         self.assertEqual(operator["value_qualifier"], "greater_than")
         self.assertEqual(assessor["value"], 30_970)
         self.assertEqual(assessor["value_qualifier"], "exact")
+        self.assertEqual(raised["value"], 9_000)
+        self.assertEqual(raised["value_qualifier"], "greater_than")
+        self.assertIn("nested", raised["notes"])
         self.assertNotEqual(operator["source_id"], assessor["source_id"])
 
     def test_description_search_matrix_and_model_decisions_are_explicit(self):
@@ -87,6 +91,9 @@ class TierPointLittleRockContributionAccountTest(unittest.TestCase):
             "2001-2024",
             "difference-in-differences",
             "No synthesis fragment is added",
+            "8,760 coverage hours",
+            "$89,797.97",
+            "June 2011 payment remains ambiguous",
         ]:
             self.assertIn(marker, notes)
 

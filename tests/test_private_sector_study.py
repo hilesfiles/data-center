@@ -86,8 +86,8 @@ class PrivateSectorStudyTest(unittest.TestCase):
         index, details, _ = self.build()
         self.assertEqual(index["counts"]["projects"], 36)
         self.assertEqual(index["counts"]["projects_with_economic_evidence"], 36)
-        self.assertEqual(index["counts"]["economic_records"], 1045)
-        self.assertEqual(index["counts"]["reported_actual_records"], 939)
+        self.assertEqual(index["counts"]["economic_records"], 1046)
+        self.assertEqual(index["counts"]["reported_actual_records"], 940)
         self.assertEqual(index["counts"]["projection_records"], 106)
         self.assertEqual(index["counts"]["modeled_synthesis_records"], 69)
         self.assertEqual(index["full_modeled_county_accounts"], 0)
@@ -240,7 +240,7 @@ class PrivateSectorStudyTest(unittest.TestCase):
         appraised = [r for r in project["economic_records"] if r["metric_code"] == "study.appraised_property_value"]
         billed = [r for r in project["economic_records"] if r["metric_code"] == "study.property_taxes_billed"]
         paid = [r for r in project["economic_records"] if r["metric_code"] == "study.property_taxes_paid"]
-        self.assertEqual(project["economic_record_count"], 26)
+        self.assertEqual(project["economic_record_count"], 27)
         self.assertEqual([len(assessed), len(taxable), len(appraised), len(billed), len(paid)], [11, 11, 1, 1, 0])
         self.assertEqual([r["period"]["year"] for r in assessed],
                          [2011, 2012, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2026])
@@ -691,7 +691,7 @@ class PrivateSectorStudyTest(unittest.TestCase):
         by_id = {r["estimate_id"]: r for r in modeled}
         self.assertEqual((project["economic_record_count"], project["modeled_synthesis_count"]), (129, 2))
         self.assertEqual((index["counts"]["economic_records"], index["counts"]["modeled_synthesis_records"]),
-                         (1045, 69))
+                         (1046, 69))
         self.assertEqual({r["basis"] for r in modeled}, {"modeled_synthesis"})
         self.assertTrue(all(r["presentation"] == "modeled_not_observed_or_audited" for r in modeled))
         self.assertTrue(all(r["derivation"]["formula"] and r["parameters"] and r["limitations"] for r in modeled))

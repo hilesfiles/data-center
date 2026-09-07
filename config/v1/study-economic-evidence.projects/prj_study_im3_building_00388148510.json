@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "project_id": "prj_study_im3_building_00388148510",
   "reviewed_on": "2026-09-07",
-  "scope_note": "Corrective public-evidence and model-eligibility audit for TierPoint's Little Rock data center at 15707 Chenal Parkway in Pulaski County, Arkansas. Current operator and assessor records support two separately defined operating-floor-area observations; existing canonical assessor and Treasurer records retain parcel values and one unpaid tax-account amount. The selected building is kept separate from Windstream's 4001 Rodney Parham headquarters, its nationwide data-center portfolio, a nearby former trampoline/car-wash building that historically reused 15707 Chenal Parkway, and unrelated Acxiom facilities. Parcel sale prices, portfolio transaction values, headquarters incentives, a void right-of-way permit, equipment ratings, storage-tank registrations and a current vacancy are not relabeled as project investment, construction spending, resource use, employment or public contribution. Gap closure found no site-attributable capital outlay, construction workforce or payroll, supplier payment or local-purchase share, operating headcount or payroll, cash tax receipt or recipient distribution, realized incentive, marginal public-service cost, metered annual electricity, water or wastewater, emissions, or recipient-verified community contribution. No modeled synthesis is retained because none of the candidate estimates has complete, same-scope inputs or a defensible treatment design.",
+  "scope_note": "Corrective public-evidence and model-eligibility audit for TierPoint's Little Rock data center at 15707 Chenal Parkway in Pulaski County, Arkansas. Current operator and assessor records support three separately defined operating-floor-area observations, including a nested raised-floor subset; existing canonical assessor and Treasurer records retain parcel values and one unpaid tax-account amount. The selected building is kept separate from Windstream's 4001 Rodney Parham headquarters, its nationwide data-center portfolio, a nearby former trampoline/car-wash building that historically reused 15707 Chenal Parkway, and unrelated Acxiom facilities. Parcel sale prices, portfolio transaction values, headquarters incentives, a void right-of-way permit, equipment ratings, storage-tank registrations and a current vacancy are not relabeled as project investment, construction spending, resource use, employment or public contribution. Gap closure found no site-attributable capital outlay, construction workforce or payroll, supplier payment or local-purchase share, operating headcount or payroll, cash tax receipt or recipient distribution, realized incentive, marginal public-service cost, metered annual electricity, water or wastewater, emissions, or recipient-verified community contribution. No modeled synthesis is retained because the staffing, property-tax, energy and county-outcome candidates fail documented input, calibration, attribution or decision-relevance gates.",
   "sources": [
     {
       "source_id": "src_study_tierpoint_little_rock_current_2026",
@@ -13,7 +13,29 @@
       "publication_date": {"precision": "unknown"},
       "retrieved_on": "2026-09-07",
       "review_method": "web_page",
-      "notes": "The current operator page identifies Little Rock (LIT) at 15707 Chenal Parkway and reports 30,000+ total square feet, 9,000+ square feet of raised floor, two redundant 2.25 MW generators with at least 48 hours of runtime, 24x7x365 onsite security personnel and 24x7 remote-hands support. Only whole-facility floor area is transcribed as a direct economic-evidence record. Generator nameplate capacity, minimum backup duration and round-the-clock service do not disclose operating load, annual electricity, fuel use, emissions, headcount, payroll or occupancy. The page's company-wide statement that PUE improved 15 percent since 2020 is not allocated to Little Rock."
+      "notes": "The current operator page identifies Little Rock (LIT) at 15707 Chenal Parkway and reports 30,000+ total square feet, 9,000+ square feet of raised floor, two redundant 2.25 MW generators with at least 48 hours of runtime, 24x7x365 onsite security personnel and 24x7 remote-hands support. Whole-facility and raised-floor areas are transcribed as separately scoped, non-additive direct records. Generator nameplate capacity, minimum backup duration and round-the-clock service do not disclose operating load, annual electricity, fuel use, emissions, headcount, payroll or occupancy. The page's company-wide statement that PUE improved 15 percent since 2020 is not allocated to Little Rock."
+    },
+    {
+      "source_id": "src_study_tierpoint_little_rock_fact_sheet_2024",
+      "title": "Little Rock Data Center Specifications",
+      "url": "https://web.tierpoint.com/hubfs/data-center/ar-little-rock-data-center-spec-sheet.pdf",
+      "publisher": "TierPoint, LLC",
+      "source_type": "operator_release",
+      "publication_date": {"precision": "year", "year": 2024},
+      "retrieved_on": "2026-09-07",
+      "review_method": "web_pdf_text",
+      "notes": "PDF page 2, printed page 2, identifies LIT at 15707 Chenal Parkway and reports 30,000+ square feet of facility space, 9,000+ square feet of data-center/raised-floor space, dual 3,000 kVA utility transformers, true 2N UPS, two redundant 2,250 kW Kohler generators with 4,000 gallons of fuel storage each, 24x7x365 onsite support and security, and up to 85 kW per cabinet under optimal high-density/liquid-cooling configurations. The 9,000+ figure is retained as a nested floor-area observation. Transformer and generator ratings, storage capacity, support availability and a per-cabinet maximum are service/nameplate specifications, not campus IT load, annual energy, fuel inventory/use, employment or payroll."
+    },
+    {
+      "source_id": "src_study_tierpoint_little_rock_fact_sheet_2020",
+      "title": "Little Rock Data Center Spec Sheet",
+      "url": "https://web.tierpoint.com/hubfs/FactSheets/data-center/ar-little-rock-data-center-spec-sheet-tierpoint.pdf",
+      "publisher": "TierPoint, LLC",
+      "source_type": "operator_release",
+      "publication_date": {"precision": "year", "year": 2020},
+      "retrieved_on": "2026-09-07",
+      "review_method": "web_pdf_text",
+      "notes": "PDF page 2, printed page 2, independently preserves the 30,000+ facility and 9,000+ gross-raised-floor specifications and reports 2N A/B distribution, true 2N UPS, dual pad-mounted 3,000 kVA transformers, two redundant 2,250 kW Kohler generators with 4,000 gallons of fuel storage each, N+3 CRAH/chilled-water-pump redundancy and 24x7x365 onsite support. It supplies no critical-IT capacity, transformer loading, power factor, PUE, utilization, annual kWh, generator runtime, fuel deliveries/use or staffing count."
     },
     {
       "source_id": "src_study_windstream_little_rock_open_2012",
@@ -36,6 +58,28 @@
       "retrieved_on": "2026-09-07",
       "review_method": "web_page",
       "notes": "The release establishes the December 18, 2015 operator transition and a $575 million all-cash sale of Windstream's data-center business, plus transfer of former Hosted Solutions employees and customers. The transaction covers a nationwide business and publishes no Little Rock purchase-price, asset, employee or customer allocation. It is therefore chronology evidence only and is not treated as selected-project investment, payroll or local contribution."
+    },
+    {
+      "source_id": "src_study_pulaski_tierpoint_sales_history_2026",
+      "title": "Pulaski County parcel 44L0750200100 sales history",
+      "url": "https://www.arcountydata.com/parcel.asp?County=Pulaski&ParcelID=44L0750200100",
+      "publisher": "Pulaski County Assessor",
+      "source_type": "local_government_record",
+      "publication_date": {"precision": "unknown"},
+      "retrieved_on": "2026-09-07",
+      "review_method": "web_page",
+      "notes": "The exact parcel's official sales table was opened by County=Pulaski and ParcelID=44L0750200100. It reports: deed 2011-012158, warranty deed, sold 2011-02-25, filed 2011-02-28, $2,697,000, Chenal Parkway Development LLC to Windstream Hosted Solutions; deed 2014-040310, special warranty deed, sold 2014-07-11, filed 2014-07-14, $8,600,000, Windstream Hosted Solutions LLC to 15707 Chenal Parkway LLC; deed 2015-078938, special warranty deed, sold 2015-12-08, filed 2015-12-18, $8,130,000, 15707 Chenal Parkway LLC to Windstream Hosted Solutions LLC; deed 2016-069278, source-of-title transfer, sold 2015-12-18, filed 2016-11-01, $0, Windstream Hosted Solutions LLC to TierPoint Hosted Solutions LLC; and deed 2023-035123, special warranty deed, sold 2023-06-27, filed 2023-07-07, $100, TierPoint Hosted Solutions LLC to TierPoint Properties LLC. These are land/building title transfers, including sale-leaseback and internal/operator-successor transfers, not construction spending, original project investment, operating expense or recurring public contribution; no compatible canonical transaction metric is used."
+    },
+    {
+      "source_id": "src_study_windstream_sale_leaseback_appraisal_2017",
+      "title": "Real Estate Appraisal — Windstream Building comparable",
+      "url": "https://assets.bwwsplatform.com/amcbid/assets/content/auctions/908/appraisal_072017.pdf",
+      "publisher": "Evans & Associates Appraisal Services, Inc.",
+      "source_type": "other",
+      "publication_date": {"precision": "year", "year": 2017},
+      "retrieved_on": "2026-09-07",
+      "review_method": "web_pdf_text",
+      "notes": "A third-party appraisal for another property uses the exact 15707 Chenal Parkway parcel as a sale comparable and reports a 2014 $8.6 million sale, leasehold property rights, tenant Windstream Corporation, a 2014-08-01 through 2034-07-30 lease, and $523,260 annual face/effective NNN rent. It is secondary corroboration of the assessor's primary 2014 deed/sale-leaseback history, not a public payment record; the appraisal does not reproduce a lease instrument, prove later occupancy, or disclose project capital outlay, and no rent record is normalized into canonical evidence."
     },
     {
       "source_id": "src_study_little_rock_windstream_cafr_2011",
@@ -79,7 +123,7 @@
       "publication_date": {"precision": "unknown"},
       "retrieved_on": "2026-09-07",
       "review_method": "web_page",
-      "notes": "The state facility page identifies TierPoint at 15707 Chenal Parkway, facility/permit 60002155, AFIN 60-04506, entry date 2012-01-19 and current certification issued 2023-09-20. It lists two in-use aboveground 4,000-gallon diesel tanks installed 2012-01-13 atop generators, annual RST invoices/payments from 2012 through 2023, and no underground tanks or storage-tank leaks. The state Environment FeatureServer facility and permit-site layers were also queried by exact address, AFIN, TierPoint, TierPoint LLC, Windstream and Windstream Hosted Solutions; only this RST site matched. Tank capacity is not fuel inventory or consumption, annual fees have no compatible canonical metric, and no air, water, hazardous-waste, generator-runtime or emissions quantity was located; the negative alias searches do not establish absence from every DEQ program."
+      "notes": "The state facility page identifies TierPoint at 15707 Chenal Parkway, facility/permit 60002155, AFIN 60-04506, entry date 2012-01-19 and current certification issued 2023-09-20. It lists two in-use aboveground 4,000-gallon diesel tanks installed 2012-01-13 atop generators and no underground tanks or storage-tank leaks. The official fee ledger was opened for owner 012322 and shows paid annual facility fees: two $150 invoices in 2012, $150 in each of 2013-2015, $150 to Windstream plus $160 and $150 to TierPoint in 2016, $150 in each of 2017-2022, and a 2023 $150 bill plus $10 late fee with $160 total paid. The state Environment FeatureServer facility and permit-site layers were also queried by exact address, AFIN, TierPoint, TierPoint LLC, Windstream and Windstream Hosted Solutions; only this RST site matched. Tank capacity is not fuel inventory or consumption; the governed catalog has no regulatory-fee or storage-capacity metric and project-scoped ownership forbids a global catalog extension, so the ledger remains a documented non-canonical public payment rather than being discarded or mislabeled."
     },
     {
       "source_id": "src_study_arkansas_qacf_windstream_2011",
@@ -90,7 +134,7 @@
       "publication_date": {"precision": "year", "year": 2011},
       "retrieved_on": "2026-09-07",
       "review_method": "web_pdf_text",
-      "notes": "Printed page 1 lists two $1 million Windstream payments in Little Rock, dated July 19, 2010 and June 16, 2011, for building renovations and equipment. The 2010 City budget and contemporaneous headquarters announcement identify the associated retention/expansion at 4001 Rodney Parham Road, not the selected 15707 Chenal Parkway property; the first payment also predates Windstream's February 2011 purchase of the selected parcel. AEDC/QACF annual reports, Act 1282 materials, DFA business-incentive cost reports, Arkansas Transparency expenditures/contracts, City endorsement resolutions and secondary subsidy indexes were searched for 2010-2026 using Windstream, Windstream Hosted Solutions, TierPoint, TierPoint Hosted Solutions, 15707 Chenal and parcel 44L0750200100. Company-level tax-credit entries without address, agreement, period or facility allocation were not assigned, and no selected-project award, disbursement, clawback, exemption, PILOT, TIF, IRB or compliance record was located."
+      "notes": "Printed page 1 lists two $1 million Windstream payments in Little Rock, dated July 19, 2010 and June 16, 2011, for building renovations and equipment. The 2010 payment predates Windstream's 2011-02-25 acquisition of parcel 44L0750200100 and aligns with the separately documented headquarters retention/expansion at 4001 Rodney Parham Road. AEDC's companion annual activity report lists Windstream's Little Rock project as Corporate Headquarters and names QACF, but neither report supplies payment-level project IDs or addresses; because the June 2011 payment postdates the parcel acquisition, it remains ambiguous and is not asserted to be headquarters support or selected-data-center support. AEDC/QACF annual reports, Act 1282 materials, DFA business-incentive cost reports, Arkansas Transparency expenditures/contracts, City endorsement resolutions and secondary subsidy indexes were searched for 2010-2026 using Windstream, Windstream Hosted Solutions, TierPoint, TierPoint Hosted Solutions, 15707 Chenal and parcel 44L0750200100. Company-level tax-credit entries without address, agreement, period or facility allocation were not assigned, and no selected-project award, disbursement, clawback, exemption, PILOT, TIF, IRB or compliance record was located."
     },
     {
       "source_id": "src_study_little_rock_finance_search_2026",
@@ -104,6 +148,39 @@
       "notes": "The City's 2010-2026 budget/ACFR indexes, monthly reports, Board agenda/minute/attachment archive, Little Rock City Wallet references, purchasing/vendor material and municipal-debt/official-statement search results were reviewed using TierPoint, Windstream Hosted Solutions, 15707 Chenal, 44L0750200100, One Source Addition, QACF, Tax Back, abatement, PILOT, TIF, industrial revenue bond and check register. The FY2011 ACFR's qualitative project mention and the 2020 zoning file were the only address-linked material records found. No project-specific City payment, refund, exemption, bond, infrastructure outlay, service cost, vendor disbursement, receipt or fiscal net was located. The public index is not a complete recipient-level tax ledger, so the absence cannot be reported as zero support or cost."
     },
     {
+      "source_id": "src_study_pulaski_tierpoint_millage_2011_2025",
+      "title": "Pulaski County Assessor millage-rate tables, 2011 payable 2012 through 2025 payable 2026",
+      "url": "https://pulaskicountyassessor.net/links-documents/millage-rates/",
+      "publisher": "Pulaski County Assessor / Pulaski County Clerk",
+      "source_type": "local_government_record",
+      "publication_date": {"precision": "unknown"},
+      "retrieved_on": "2026-09-07",
+      "review_method": "web_pdf_text",
+      "notes": "The Assessor's current and prior-year index and each one-page signed table were opened for 2011-2025; the exact applicable column is code 03/33, living in LR and attending PCSSD. Applicable school/city/county/overall components are: 40.7/15.6/8.5/64.8 mills in 2011; 40.7/15.2/8.5/64.4 in 2012; 40.7/15.1/8.5/64.3 in 2017-2020; 40.7/15.6/8.5/64.8 in 2021; and 40.7/15.1/8.5/64.3 in 2022-2025. The parcel page independently labels school code 003 LR PCSSD and calculates 1,396,547 taxable value x 0.0643 = $89,797.97 estimated tax for 2026. The tables establish rates and recipient shares, not cash payment or receipt."
+    },
+    {
+      "source_id": "src_study_arkansas_millage_reports_2023_2025",
+      "title": "Arkansas statewide millage reports, 2023-2025 assessment years",
+      "url": "https://www.dfa.arkansas.gov/wp-content/uploads/2025-millage-2026-collections.pdf",
+      "publisher": "Arkansas Department of Finance and Administration, Assessment Coordination Division",
+      "source_type": "state_record",
+      "publication_date": {"precision": "year", "year": 2025},
+      "retrieved_on": "2026-09-07",
+      "review_method": "web_pdf_text",
+      "notes": "The 2023/2024-collections, 2024/2025-collections and 2025/2026-collections reports were opened and Pulaski County's Pulaski County Special School District / Little Rock row inspected. Each shows 40.7 school, 15.1 city, 8.5 county and 64.3 overall mills; the latest school breakdown is 25 M&O, 0.9 other M&O and 14.8 bond, with city and county components separately itemized. These state reports corroborate the Assessor/Clerk tables but state that their compiled data are unaudited/general information, so the signed county tables remain primary where available."
+    },
+    {
+      "source_id": "src_study_pulaski_tierpoint_treasurer_endpoints_2026",
+      "title": "Pulaski County Treasurer mobile property-tax inquiry",
+      "url": "https://public.pulaskicountytreasurer.net/mobile/pulaski/",
+      "publisher": "Pulaski County Treasurer",
+      "source_type": "local_government_record",
+      "publication_date": {"precision": "unknown"},
+      "retrieved_on": "2026-09-07",
+      "review_method": "web_page",
+      "notes": "The mobile inquiry and its /cgi-bin/webshell.asp request workflow were inspected using parcel 44L0750200100, formatted parcel 44L-075.02-001.00, 15707 Chenal Parkway, TierPoint Properties, TierPoint Hosted Solutions and Windstream Hosted Solutions. The parcel query returns the 2025 $82,440.85 Amount Due already retained canonically and checkout actions, but the exposed form/scripts provide no prior-year bill, payment-history, receipt-number, payment-date or recipient-distribution endpoint. Owner/name variants did not reveal a separate personal-property account. Because differently indexed accounts and nonpublic payment records may exist, these outcomes do not prove zero personal property or zero payments."
+    },
+    {
       "source_id": "src_study_arkansas_utility_regulatory_search_2026",
       "title": "Arkansas Public Service Commission online services",
       "url": "https://apsc.arkansas.gov/online-services/",
@@ -112,7 +189,40 @@
       "publication_date": {"precision": "unknown"},
       "retrieved_on": "2026-09-07",
       "review_method": "web_page",
-      "notes": "APSC docket, company, action-summary and tariff indexes; Entergy Arkansas materials; Central Arkansas Water; Little Rock Water Reclamation Authority financial/vendor and industrial-pretreatment pages; City infrastructure records; and public web archives were searched for 2010-2026 using TierPoint, Windstream Hosted Solutions, 15707 Chenal Parkway, AFIN 60-04506, permit 60002155 and parcel 44L0750200100. Windstream telecommunications dockets at 4001 Rodney Parham and general utility tariffs were not selected-facility service records. No site-specific electric tariff, service agreement, bill, demand, substation/transmission upgrade, customer contribution, gas account, water meter, wastewater/discharge account, reclaimed-water record or infrastructure cost was located. Utility-customer confidentiality and non-indexed account data mean the negative result cannot support a zero-use or zero-cost claim."
+      "notes": "APSC docket, company, action-summary and tariff indexes were queried for 2010-2026 using TierPoint, TierPoint Hosted Solutions, Windstream Hosted Solutions, 15707 Chenal Parkway, AFIN 60-04506 and parcel 44L0750200100. Material results opened were Windstream telecommunications dockets tied to 4001 Rodney Parham and general regulated-utility tariff indexes; neither is a selected-facility electric/gas service record. No address-linked docket, special contract, tariff rider, utility contribution or infrastructure order was located. Docket indexing and utility-customer confidentiality mean the negative result cannot support zero use or cost."
+    },
+    {
+      "source_id": "src_study_entergy_arkansas_tierpoint_search_2026",
+      "title": "Entergy Arkansas business tariffs and public records",
+      "url": "https://www.entergy-arkansas.com/your_business/tariffs/",
+      "publisher": "Entergy Arkansas, LLC",
+      "source_type": "other",
+      "publication_date": {"precision": "unknown"},
+      "retrieved_on": "2026-09-07",
+      "review_method": "web_page",
+      "notes": "Business tariff/rider indexes and public site searches were run for 2010-2026 with TierPoint, Windstream Hosted Solutions, 15707 Chenal Parkway and parcel 44L0750200100. General service schedules were opened, but no customer-specific tariff, bill, meter, coincident demand, annual kWh, interconnection, substation/transmission work, customer contribution or account identifier was public. A generic tariff cannot be applied without rate class, demand, energy, riders and billing determinants."
+    },
+    {
+      "source_id": "src_study_central_arkansas_water_tierpoint_search_2026",
+      "title": "Central Arkansas Water public records and service materials",
+      "url": "https://carkw.com/",
+      "publisher": "Central Arkansas Water",
+      "source_type": "other",
+      "publication_date": {"precision": "unknown"},
+      "retrieved_on": "2026-09-07",
+      "review_method": "web_page",
+      "notes": "Rates, board/public-record, procurement and project materials were searched for 2010-2026 with TierPoint, Windstream Hosted Solutions, 15707 Chenal and parcel 44L0750200100. General rate/service material was opened; no address-linked meter, account, bill, annual consumption, extension agreement, capital contribution or reclaimed-water service was located. Customer-account confidentiality and non-indexed records prevent treating the result as zero water use or infrastructure cost."
+    },
+    {
+      "source_id": "src_study_lrwra_tierpoint_search_2026",
+      "title": "Little Rock Water Reclamation Authority industrial and public records",
+      "url": "https://www.lrwra.com/",
+      "publisher": "Little Rock Water Reclamation Authority",
+      "source_type": "other",
+      "publication_date": {"precision": "unknown"},
+      "retrieved_on": "2026-09-07",
+      "review_method": "web_page",
+      "notes": "Industrial pretreatment, permits, rates, financial reports, board/procurement and public site results were searched for 2010-2026 using TierPoint, Windstream Hosted Solutions, 15707 Chenal, AFIN 60-04506 and parcel 44L0750200100. General industrial-program and rate material was opened, but no facility discharge permit, meter/account, volume, bill, surcharge, main extension or public capital contribution was found. Absence from public indexes does not show zero wastewater flow or cost."
     },
     {
       "source_id": "src_study_tierpoint_little_rock_workforce_search_2026",
@@ -138,14 +248,36 @@
     },
     {
       "source_id": "src_study_tierpoint_little_rock_federal_search_2026",
-      "title": "Federal environmental, workplace, award and filing portal search for TierPoint Little Rock",
+      "title": "EPA ECHO/FRS facility search for TierPoint Little Rock",
       "url": "https://echo.epa.gov/facilities/facility-search",
-      "publisher": "U.S. Environmental Protection Agency / U.S. Department of Labor / U.S. General Services Administration / U.S. Securities and Exchange Commission",
+      "publisher": "U.S. Environmental Protection Agency",
       "source_type": "other",
       "publication_date": {"precision": "unknown"},
       "retrieved_on": "2026-09-07",
       "review_method": "web_page",
-      "notes": "EPA ECHO/FRS, OSHA establishment inspection and injury indexes, SAM.gov/USAspending award results, FCC results and SEC EDGAR were searched for 2010-2026 by TierPoint, TierPoint Hosted Solutions, Windstream Hosted Solutions, 15707 Chenal, parcel 44L0750200100 and AFIN 60-04506. EDGAR confirms company and portfolio context, including the 2015 nationwide divestiture, but provides no selected-facility capital, employment, contract or operating series. No address-matched federal environmental quantity, OSHA establishment observation or federal award was located. Search coverage and disclosure thresholds prevent interpreting those negative results as zero violations, zero awards, zero employment or zero emissions."
+      "notes": "EPA ECHO/FRS facility search was queried for 2010-2026 by TierPoint, TierPoint Hosted Solutions, Windstream Hosted Solutions, 15707 Chenal Parkway, parcel 44L0750200100 and AFIN 60-04506. Facility-result and map views produced no address-matched federal permit, inspection, enforcement or release quantity; the state RST facility was the only exact environmental crosswalk found elsewhere. Name/address matching, reporting thresholds and program coverage prevent interpreting the negative result as zero emissions or violations."
+    },
+    {
+      "source_id": "src_study_osha_tierpoint_little_rock_search_2026",
+      "title": "OSHA establishment inspection search for TierPoint Little Rock",
+      "url": "https://www.osha.gov/ords/imis/establishment.html",
+      "publisher": "U.S. Department of Labor, Occupational Safety and Health Administration",
+      "source_type": "other",
+      "publication_date": {"precision": "unknown"},
+      "retrieved_on": "2026-09-07",
+      "review_method": "web_page",
+      "notes": "The establishment search was run across 2010-2026 with TierPoint, TierPoint Hosted Solutions, Windstream Hosted Solutions and the Little Rock/15707 Chenal location. No exact establishment inspection or injury observation was located. OSHA inspection coverage is event-based and employer names can differ, so the negative result cannot support zero employment, injuries or violations."
+    },
+    {
+      "source_id": "src_study_usaspending_tierpoint_little_rock_search_2026",
+      "title": "USAspending recipient and award search for TierPoint Little Rock",
+      "url": "https://www.usaspending.gov/search",
+      "publisher": "U.S. Department of the Treasury",
+      "source_type": "other",
+      "publication_date": {"precision": "unknown"},
+      "retrieved_on": "2026-09-07",
+      "review_method": "web_page",
+      "notes": "Recipient/keyword searches covering FY2010-FY2026 used TierPoint, TierPoint Hosted Solutions, Windstream Hosted Solutions, 15707 Chenal Parkway and Little Rock data center. No exact-address federal award or assistance record was located; company-name results without a facility identifier were not allocated. Award indexing and recipient-name variation mean this does not establish zero federal business or support."
     },
     {
       "source_id": "src_study_windstream_2011_10k",
@@ -202,7 +334,33 @@
       },
       "source_id": "src_study_tierpoint_little_rock_current_2026",
       "source_locator": "Facility Specifications, Space, and Little Rock (LIT) address sections",
-      "notes": "Operator-reported total facility area. The separate 9,000+ square feet of raised floor is nested within this total and is not added; neither figure measures occupancy, construction spending, employment or resource use.",
+      "notes": "Operator-reported total facility area. The separately recorded 9,000+ square feet of raised floor is nested within this total and must not be added; neither figure measures occupancy, construction spending, employment or resource use.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07"
+    },
+    {
+      "claim_id": "clm_study_tierpoint_little_rock_raised_floor_area_2024",
+      "project_id": "prj_study_im3_building_00388148510",
+      "metric_code": "study.operating_property_floor_area",
+      "value": 9000,
+      "value_qualifier": "greater_than",
+      "basis": "reported_actual",
+      "period": {
+        "kind": "source_year",
+        "year": 2024,
+        "label": "TierPoint 2024 Little Rock data-center specification; month/day not stated"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Gross raised-floor/data-center-space subset within TierPoint Little Rock (LIT) at 15707 Chenal Parkway",
+        "county_fips": "05119",
+        "inventory_allocation": "unallocated"
+      },
+      "source_id": "src_study_tierpoint_little_rock_fact_sheet_2024",
+      "source_locator": "PDF page 2, printed page 2, Data Center Specifications — Space",
+      "pdf_page": 2,
+      "printed_page": "2",
+      "notes": "Operator-reported raised-floor/data-center-space subset. It is nested within, and therefore non-additive with, the 30,000+ total facility area and the assessor's differently defined 30,970-square-foot building area; it does not measure occupied cabinet space, construction, investment, staffing or resource use.",
       "review_status": "source_checked",
       "reviewed_on": "2026-09-07"
     },
@@ -237,22 +395,22 @@
       "source_id": "src_study_windstream_little_rock_open_2012",
       "as_of": "2026-09-07",
       "title": "Boundary and chronology audit — address reuse and portfolio values kept separate",
-      "notes": "Direct pass and gap closure used the Windstream opening release, current TierPoint page/specification, TierPoint/SEC sale filings, IM3 coordinates, Pulaski assessor parcel 44L0750200100, deed numbers 2011-012158, 2014-040310, 2015-078938, 2016-069278 and 2023-035123, City zoning Z-4933-J, current adjacent-business address 15701, web archives and local reporting for 2003-2026. The evidence supports a February 2011 Windstream parcel purchase, an April 12, 2012 announced opening, December 2015 portfolio transfer to TierPoint and current operation. The 1993 building predates the data-center announcement; the $575 million portfolio transaction has no Little Rock allocation; assessor deed prices are property transfers, not cumulative project investment; and the former trampoline/car-wash building's historical reuse of 15707 is excluded without parcel/footprint crosswalk.",
-      "project_description": "TierPoint's Little Rock data center operates at 15707 Chenal Parkway in Little Rock, Pulaski County, Arkansas, in a 1993 building the assessor classifies as a 30,970-square-foot computer center. Windstream Hosted Solutions bought the parcel in February 2011 and announced the 30,000-square-foot center open on April 12, 2012; TierPoint took over the data-center business in December 2015 and the current parcel owner is TierPoint Properties LLC. Current operator specifications report 30,000+ total square feet, 9,000+ raised-floor space, and two 2.25 MW redundant generators, while state records separately register two 4,000-gallon diesel tanks at the site. Historic planning and business listings reused 15707 for an adjacent trampoline/car-wash property now numbered 15701, so address-only records are not assigned to this project without a parcel or facility crosswalk."
+      "notes": "Direct pass and gap closure used the Windstream opening release, current and archived TierPoint specifications, TierPoint/SEC sale filings, IM3 coordinates, Pulaski assessor parcel 44L0750200100, deed numbers 2011-012158, 2014-040310, 2015-078938, 2016-069278 and 2023-035123, a secondary appraisal, City zoning Z-4933-J, current adjacent-business address 15701, web archives and local reporting for 2003-2026. The primary assessor sales table preserves type, sold/filed dates, consideration and parties for all five transactions: $2.697 million Windstream acquisition in 2011; $8.6 million 2014 sale to 15707 Chenal Parkway LLC; $8.13 million 2015 reacquisition; $0 2015/2016 operator-successor transfer; and $100 2023 transfer to TierPoint Properties. The secondary appraisal corroborates the 2014 sale-leaseback and reports a lease, but no deed price or rent is treated as facility capital investment or public contribution. The 1993 building predates the 2012 data-center announcement; the $575 million portfolio transaction has no Little Rock allocation; and the former trampoline/car-wash building's historical reuse of 15707 is excluded without parcel/footprint crosswalk.",
+      "project_description": "TierPoint's Little Rock data center operates at 15707 Chenal Parkway in Little Rock, Pulaski County, Arkansas, in a 1993 building the assessor classifies as a 30,970-square-foot computer center. Windstream Hosted Solutions bought the parcel in February 2011 and announced the 30,000-square-foot center open on April 12, 2012; TierPoint took over the data-center business in December 2015 and the current parcel owner is TierPoint Properties LLC. Current and archived operator specifications report 30,000+ total square feet, a nested 9,000+ raised-floor/data-center-space subset, true 2N UPS, dual 3,000 kVA utility transformers, and two redundant 2.25 MW generators with 4,000 gallons of fuel storage each, while state records independently register the two tanks. Historic planning and business listings reused 15707 for an adjacent trampoline/car-wash property now numbered 15701, so address-only records are not assigned to this project without a parcel or facility crosswalk."
     },
     {
       "project_id": "prj_study_im3_building_00388148510",
       "source_id": "src_study_pulaski_tierpoint_parcel_2026",
       "as_of": "2026-09-07",
       "title": "Assessor, deed, tax and personal-property audit — existing stocks preserved; receipts remain missing",
-      "notes": "Pulaski County Assessor parcel detail, legal/land-use, property-record-card, sales and valuation-history views and the Treasurer mobile inquiry were searched by 44L0750200100, 44L-075.02-001.00, 15707 Chenal, TierPoint Properties, TierPoint Hosted Solutions, Windstream Hosted Solutions and One Source Addition for displayed 2004-2026 history. Existing canonical records retain 2011, 2012, 2017-2024 and 2026 assessed/taxable values, 2026 appraised value and the 2025 $82,440.85 Amount Due. Duplicate 2013 and 2025 valuation revisions remain unresolved; 2013-2016 annual gaps are not interpolated. The Treasurer's public mobile workflow and scripts expose current search/amount-due and checkout functions but no payment history or recipient distribution. No separate personal-property account, exemption, cash receipt or payment transaction was found; the unpaid amount due is not relabeled taxes paid or a recurring contribution, and a negative name search is not proof that no differently indexed account exists."
+      "notes": "Pulaski County Assessor parcel detail, legal/land-use, property-record-card, sales and valuation-history views were queried by 44L0750200100, 44L-075.02-001.00, 15707 Chenal, TierPoint Properties, TierPoint Hosted Solutions, Windstream Hosted Solutions and One Source Addition for displayed 2004-2026 history. Existing canonical records retain 2011, 2012, 2017-2024 and 2026 assessed/taxable values, 2026 appraised value and the Treasurer's 2025 $82,440.85 Amount Due. Duplicate 2013 and 2025 valuation revisions remain unresolved; 2013-2016 annual gaps are not interpolated. The parcel identifies taxing code 03/33 — Little Rock city / Pulaski County Special School District — and its current estimator applies 64.3 mills to 1,396,547 taxable value for $89,797.97. The Treasurer mobile portal and /cgi-bin/webshell.asp workflow were separately reinspected by parcel, address and all owners; they expose current search/amount-due and checkout functions but no payment history or recipient-ledger endpoint. No separate personal-property account, exemption, cash receipt or payment transaction was found; the unpaid amount due is not relabeled taxes paid or a recurring contribution, and a negative name search is not proof that no differently indexed account exists."
     },
     {
       "project_id": "prj_study_im3_building_00388148510",
       "source_id": "src_study_arkansas_qacf_windstream_2011",
       "as_of": "2026-09-07",
       "title": "Incentive, audit, budget, agenda and public-finance audit — headquarters support excluded",
-      "notes": "Sources and searches covered AEDC QACF/Act 1282 annual reports and transparency pages, DFA business-incentive cost reports, Arkansas Transparency FY2013-2026 expenditures/contracts, Arkansas Legislative Audit results, Little Rock FY2010-FY2026 budgets/ACFRs/monthly reports, Board agendas/minutes/attachments, City Wallet/check-register references, Tax Back endorsements, EMMA/official statements and bond/PILOT/TIF/IRB terms. Queries included all TierPoint/Windstream legal aliases, both Little Rock addresses, parcel 44L0750200100, QACF, Tax Back, Advantage Arkansas, Create Rebate, InvestArk, abatement, exemption, clawback and compliance. The material official QACF report records two $1 million Windstream payments for the separate 4001 Rodney Parham headquarters project. Third-party indexes show company-level Hosted Solutions/TierPoint tax-credit entries without site, period or agreement; underlying public reports did not provide a selected-facility allocation. No selected-project award, realized tax credit/refund, abatement, PILOT, bond, infrastructure payment, grant compliance result, clawback or public-cost allocation was located; those gaps are not zeros."
+      "notes": "Sources and searches covered AEDC QACF/Act 1282 annual reports and transparency pages, DFA business-incentive cost reports, Arkansas Transparency FY2013-2026 expenditures/contracts, Arkansas Legislative Audit results, Little Rock FY2010-FY2026 budgets/ACFRs/monthly reports, Board agendas/minutes/attachments, City Wallet/check-register references, Tax Back endorsements, EMMA/official statements and bond/PILOT/TIF/IRB terms. Queries included all TierPoint/Windstream legal aliases, 4001 Rodney Parham, 15707 Chenal, parcel 44L0750200100, QACF, Tax Back, Advantage Arkansas, Create Rebate, InvestArk, abatement, exemption, clawback and compliance. The material QACF report records $1 million Windstream payments on 2010-07-19 and 2011-06-16 for Little Rock building renovations/equipment; only the first safely excludes this parcel by predating its 2011-02-25 acquisition. A companion AEDC activity report crosswalks a Windstream Corporate Headquarters project to QACF but supplies no payment identifiers or address, so the post-acquisition June 2011 payment remains ambiguous and neither payment is assigned to this project. Third-party indexes show company-level Hosted Solutions/TierPoint tax-credit entries without site, period or agreement; underlying public reports did not provide a selected-facility allocation. No selected-project award, realized tax credit/refund, abatement, PILOT, bond, infrastructure payment, grant compliance result, clawback or public-cost allocation was located; those gaps are not zeros."
     },
     {
       "project_id": "prj_study_im3_building_00388148510",
@@ -266,7 +424,7 @@
       "source_id": "src_study_arkansas_deq_tierpoint_rst_2026",
       "as_of": "2026-09-07",
       "title": "Environmental, utility and infrastructure audit — registered backup equipment is not resource use",
-      "notes": "Arkansas DEQ Permit Data System, RST billing/facility pages and Environment FeatureServer layers were searched by AFIN 60-04506/6004506, permit 60002155, facility name WINDSTREAM, owner TIERPOINT LLC, exact address and operator aliases; EPA ECHO/FRS, APSC indexes/tariffs, Entergy Arkansas, Central Arkansas Water, Little Rock Water Reclamation Authority, City infrastructure files and archives were then checked for 2010-2026. The exact DEQ match lists two 4,000-gallon diesel ASTs mounted above generators and paid annual RST fees, but no USTs or tank leaks. TierPoint reports two 2.25 MW generators, while the assessor's appraisal inventory describes two 2,500 kW units; the definitional/date conflict is preserved. No annual electricity, coincident demand, fuel delivery/use, runtime, emissions, water withdrawal, wastewater discharge, tariff bill, grid/water upgrade or public contribution was located. Tank capacity, generator rating, minimum runtime and permit registration cannot be converted into annual resource use or cost."
+      "notes": "Arkansas DEQ Permit Data System, RST billing/facility pages and Environment FeatureServer layers were searched by AFIN 60-04506/6004506, permit 60002155, facility name WINDSTREAM, owner TIERPOINT LLC, exact address and operator aliases; EPA ECHO/FRS, APSC, Entergy Arkansas, Central Arkansas Water and Little Rock Water Reclamation Authority portals were separately queried for 2010-2026 with outcomes recorded in their own sources. The exact DEQ match lists two 4,000-gallon diesel ASTs mounted above generators, no USTs or tank leaks, and paid facility fees from 2012-2023; the catalog has no regulatory-fee metric, so the exact ledger is retained as non-canonical. TierPoint reports two 2.25 MW generators, dual 3,000 kVA utility transformers and true 2N UPS, while the assessor inventory describes two 2,500 kW generators; the definitions/date conflict is preserved. A capacity-bound candidate would be usable real power = one 3,000 kVA redundancy side x power factor, IT load = real power / PUE, and annual energy = real power x 8,760 x utilization; an aggregate two-transformer version would instead start at 6,000 kVA. It is rejected because the 2N topology does not disclose whether sides are additive, and power factor, PUE, load factor/utilization, critical-load share, transformer loading, cabinet count/occupancy and non-IT overhead are all missing. The 85 kW per-cabinet maximum cannot be aggregated without cabinet/configuration counts. Generator ratings and tank volume remain emergency nameplate/storage capacity, not annual electricity, fuel use or emissions."
     },
     {
       "project_id": "prj_study_im3_building_00388148510",
@@ -287,14 +445,14 @@
       "source_id": "src_study_little_rock_windstream_cafr_2011",
       "as_of": "2026-09-07",
       "title": "Investment, construction, supplier and operating-model decisions — every candidate rejected",
-      "notes": "Investment candidate: converting 'multimillion-dollar,' the 2011 $2.697 million property purchase, 2014/2015 sale-leaseback prices or the $575 million portfolio sale into facility capital investment is rejected because the first is unbounded, deed prices are asset transfers and the portfolio price has no site allocation. Construction candidate: the rejected $5,000 right-of-way application cannot be summed or multiplied, and the opening-era retrofit lacks issued-permit value, audited outlay, asset mix, duration, workers, hours, payroll and local residence. Supplier/indirect candidate: applying an input-output multiplier or transferred local-purchase share is rejected because no eligible direct-spend base, paid vendor amount, multiplier vintage/geography or channel separation exists. Operations/household candidate: multiplying a current vacancy or 24/7 staffing language by its advertised wage band, interpolating corporate employment, or transferring county occupational wages is rejected because no facility headcount, annual-average FTE, occupation mix, payroll, residence or selected-building allocation exists. Leaving these metrics as gaps is more accurate and decision-useful than fabricated category totals."
+      "notes": "Investment candidate: converting 'multimillion-dollar,' the 2011 $2.697 million property purchase, 2014/2015 sale-leaseback prices or the $575 million portfolio sale into facility capital investment is rejected because the first is unbounded, deed prices are asset transfers and the portfolio price has no site allocation. Construction candidate: the rejected $5,000 right-of-way application cannot be summed or multiplied, and the opening-era retrofit lacks issued-permit value, audited outlay, asset mix, duration, workers, hours, payroll and local residence. Supplier/indirect candidate: applying an input-output multiplier or transferred local-purchase share is rejected because no eligible direct-spend base, paid vendor amount, multiplier vintage/geography or channel separation exists. Operations candidate: the 2012 release says the onsite NOC was staffed 24/7/365 and current specifications promise 24x7x365 onsite support/security. If these words proved one continuously occupied local post, the zero-leave arithmetic floor would be 8,760 coverage hours / (40 hours x 52 weeks) = 4.2115 FTE; a practical relief factor would increase it for leave, training, breaks and overlap. The model is rejected because the sources do not establish one dedicated occupied post, distinguish shared security/NOC/remote-hands functions, show whether coverage is local employees or contractors, or provide scheduled hours, relief factor, headcount, occupation mix, payroll or residence. A current vacancy and advertised wage band cannot fill those inputs. Leaving the operations/household metrics as gaps is more accurate than publishing a false staffing minimum."
     },
     {
       "project_id": "prj_study_im3_building_00388148510",
       "source_id": "src_study_little_rock_finance_search_2026",
       "as_of": "2026-09-07",
       "title": "Fiscal, public-cost, resource and community-model decisions — no same-scope base survives",
-      "notes": "Fiscal candidate: aggregating or annualizing assessed values, deed prices, state RST fees or the 2025 $82,440.85 Amount Due is rejected because value stocks and fees are different metrics, the tax charge is not a cash receipt, recipient distributions are missing and personal property is unobserved. A public-service-cost break-even identity is also rejected: unlike a verified same-period contribution, an unpaid amount due cannot define a same-recipient revenue threshold, so no positive or negative net fiscal result is supportable. Incentive counterfactuals are rejected because the company-level entries and headquarters QACF payments have no selected-project agreement/allocation. Resource candidates that apply utilization factors to generator capacity, 48-hour backup duration or diesel-tank volume are rejected because the equipment is emergency backup and no load, runtime, deliveries, efficiency, meter or cooling inputs exist. Community annualization is rejected because no Little Rock recipient amount or complete giving ledger was found. No synthesis fragment is added."
+      "notes": "Fiscal candidate: signed Pulaski tables were opened for 2011-2025 and state millage reports for 2023-2025. Code 03/33 resolves the parcel to Little Rock city / Pulaski County Special School District. School/city/county/overall components are 40.7/15.6/8.5/64.8 mills in 2011, 40.7/15.2/8.5/64.4 in 2012, 40.7/15.1/8.5/64.3 in 2017-2020, 40.7/15.6/8.5/64.8 in 2021, and 40.7/15.1/8.5/64.3 in 2022-2026. Applying each rate to the canonical taxable values would yield modeled real-property bills of $31,912.70 (2011), $28,358.54 (2012), $31,146.28 (2017), $33,978.05 (2018), $36,809.82 (2019), $39,641.59 (2020), $42,803.64 (2021), $46,721.02 (2022), $50,968.68 (2023), $96,643.03 (2024) and $89,797.97 (2026). The last exactly matches the Assessor's current estimate, but the observed 2025 $82,440.85 Amount Due implies a $1,282,128.30 rate base at 64.3 mills, a base not present in the retained valuation history; applying 2024's $1,503,002 taxable value would overstate that charge by $14,202.18 (17.23%). Because 2025 valuation revisions are unresolved, receipts/payment status and personal-property accounts are missing, and the recipient table allocates a levy rather than cash receipts, the apparently mechanical series fails the requested 2025 calibration and is not published as contribution or distribution. A public-service-cost break-even identity is also rejected because an unpaid charge is not verified same-recipient revenue. Incentive counterfactuals remain unallocated; community annualization lacks a recipient amount. No synthesis fragment is added."
     },
     {
       "project_id": "prj_study_im3_building_00388148510",
