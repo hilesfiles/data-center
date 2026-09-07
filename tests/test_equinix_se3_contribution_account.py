@@ -30,18 +30,18 @@ class EquinixSe3ContributionAccountTest(unittest.TestCase):
     def test_scoped_counts_and_basis_split(self):
         self.assertEqual(self.fragment["project_id"], PROJECT)
         self.assertEqual(self.model_fragment["project_id"], PROJECT)
-        self.assertEqual(len(self.fragment["sources"]), 18)
-        self.assertEqual(len(self.fragment["records"]), 20)
+        self.assertEqual(len(self.fragment["sources"]), 21)
+        self.assertEqual(len(self.fragment["records"]), 21)
         self.assertEqual(len(self.fragment["project_updates"]), 12)
-        self.assertEqual(len(self.model_fragment["estimates"]), 2)
+        self.assertEqual(len(self.model_fragment["estimates"]), 3)
         self.assertTrue(all(row["project_id"] == PROJECT for row in self.fragment["records"]))
         self.assertTrue(
             all(row["project_id"] == PROJECT for row in self.fragment["project_updates"])
         )
 
         merged = [row for row in self.evidence["records"] if row["project_id"] == PROJECT]
-        self.assertEqual(len(merged), 21)
-        self.assertEqual(sum(row["basis"] == "reported_actual" for row in merged), 19)
+        self.assertEqual(len(merged), 22)
+        self.assertEqual(sum(row["basis"] == "reported_actual" for row in merged), 20)
         self.assertEqual(sum(row["basis"] == "source_projection" for row in merged), 2)
         models = {row["metric_code"]: row for row in self.models_by_project[PROJECT]}
         self.assertEqual(
@@ -49,6 +49,7 @@ class EquinixSe3ContributionAccountTest(unittest.TestCase):
             {
                 "study.modeled_facility_electricity_consumption",
                 "study.modeled_annual_local_service_cost_break_even",
+                "study.modeled_construction_labor_income_direct",
             },
         )
 
@@ -76,6 +77,10 @@ class EquinixSe3ContributionAccountTest(unittest.TestCase):
 
     def test_direct_records_preserve_scope_and_payment_timing(self):
         records = {row["claim_id"]: row for row in self.fragment["records"]}
+        investment = records["clm_study_digital_realty_2020_fifth_jv_cash_2011"]
+        self.assertEqual(investment["value"], 4100000)
+        self.assertEqual(investment["value_qualifier"], "approximately")
+        self.assertIn("50%", investment["scope"]["label"])
         self.assertEqual(
             records["clm_study_equinix_se3_permit_value_6229374"]["value"], 8846783
         )
@@ -123,6 +128,10 @@ class EquinixSe3ContributionAccountTest(unittest.TestCase):
             "recipient-confirmed",
             "County employment: reject",
             "county GDP: reject",
+            "data.seattle.gov/resource/76t5-zqzr.json",
+            "6294137-CN",
+            "Printed pages 16-17",
+            "$27.38 Seattle-Bellevue-Everett",
         ]:
             self.assertIn(marker, notes)
 
@@ -141,6 +150,15 @@ class EquinixSe3ContributionAccountTest(unittest.TestCase):
         self.assertTrue(
             any("not an estimate of actual public cost" in row for row in threshold["limitations"])
         )
+        labor = models["study.modeled_construction_labor_income_direct"]
+        self.assertEqual(
+            (labor["interval"]["low"], labor["value"], labor["interval"]["high"]),
+            (1036647.87, 1382197.16, 1727746.45),
+        )
+        self.assertEqual(labor["parameters"][0]["value"], 50482)
+        self.assertEqual(labor["parameters"][1]["value"], 27.38)
+        self.assertEqual(labor["confidence"], "low")
+        self.assertTrue(any("Not certified payroll" in row for row in labor["limitations"]))
 
 
 if __name__ == "__main__":
