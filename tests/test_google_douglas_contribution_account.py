@@ -45,17 +45,17 @@ class GoogleDouglasContributionAccountTest(unittest.TestCase):
 
     def test_fragment_counts_and_project_identity(self):
         self.assertEqual(len(self.fragment["sources"]), 35)
-        self.assertEqual(len(self.fragment["records"]), 26)
+        self.assertEqual(len(self.fragment["records"]), 30)
         self.assertEqual(len(self.fragment["project_updates"]), 12)
         self.assertEqual(
-            sum(row["basis"] == "reported_actual" for row in self.fragment["records"]), 24
+            sum(row["basis"] == "reported_actual" for row in self.fragment["records"]), 28
         )
         self.assertEqual(
             sum(row["basis"] == "source_projection" for row in self.fragment["records"]), 2
         )
         self.assertEqual(self.detail["county_fips"], "13097")
-        self.assertEqual(self.detail["economic_record_count"], 30)
-        self.assertEqual(self.detail["reported_actual_count"], 28)
+        self.assertEqual(self.detail["economic_record_count"], 34)
+        self.assertEqual(self.detail["reported_actual_count"], 32)
         self.assertEqual(self.detail["projection_count"], 2)
         self.assertEqual(self.detail["modeled_synthesis_count"], 8)
 
@@ -119,6 +119,26 @@ class GoogleDouglasContributionAccountTest(unittest.TestCase):
             records["clm_study_google_douglas_mercer_workforce_grant_2022"]["value"], 42_000
         )
 
+        utility = {
+            row["claim_id"]: row
+            for row in records.values()
+            if row["metric_code"] == "study.utility_service_payments"
+        }
+        self.assertEqual(
+            {claim_id: row["value"] for claim_id, row in utility.items()},
+            {
+                "clm_study_google_ddcwsa_water_service_payments_2007": 207_277,
+                "clm_study_google_ddcwsa_sewer_service_payments_2007": 168_332,
+                "clm_study_google_ddcwsa_sewer_service_payments_2016": 349_787,
+                "clm_study_google_ddcwsa_stormwater_service_payments_2016": 20_327,
+            },
+        )
+        self.assertTrue(all(row["pdf_page"] == 80 for row in utility.values()))
+        self.assertTrue(all(row["printed_page"] == "76" for row in utility.values()))
+        self.assertTrue(all(row["scope"]["inventory_allocation"] == "unallocated" for row in utility.values()))
+        self.assertTrue(all("not an infrastructure-fund payment" in row["notes"] for row in utility.values()))
+        self.assertTrue(all("complete utility total" in row["notes"] for row in utility.values()))
+
     def test_audit_log_covers_required_families_and_negative_results(self):
         text = " ".join(
             row["title"] + " " + row["notes"] for row in self.fragment["project_updates"]
@@ -147,6 +167,8 @@ class GoogleDouglasContributionAccountTest(unittest.TestCase):
             "docket 55378",
             "form 990",
             "superseded",
+            "utility-service-payment metric",
+            "user to complete the captcha",
         ]:
             self.assertIn(phrase, text)
 
@@ -178,6 +200,10 @@ class GoogleDouglasContributionAccountTest(unittest.TestCase):
         self.assertNotIn("study.property_taxes_paid", metrics)
         self.assertNotIn("study.property_taxes_billed", metrics)
         self.assertNotIn("study.incentive_payments", metrics)
+        self.assertIn("study.utility_service_payments", metrics)
+        self.assertNotEqual(
+            "study.utility_service_payments", "study.infrastructure_company_payments"
+        )
 
     def test_bounded_unallocated_models_keep_observations_and_scenarios_separate(self):
         rows = self.grouped[PROJECT]

@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "project_id": "prj_study_im3_campus_00578435601",
   "reviewed_on": "2026-09-07",
-  "scope_note": "Directed fourth-pass project-scoped evidence audit of Google's Douglas County data-center campus at 300 Riverside Parkway SW. The selected IM3 object is a campus, and the public record resolves a Development Authority real-property parcel, two Google-linked personal-property accounts, two assessor-classified data-center buildings, a utility building, later permit work, utility-customer history, a permitted discharge facility, and off-site supporting solar infrastructure; no record is allocated below its published scope. Twenty-six observations are added: twenty-four reported actuals and two source projections. County taxpayer totals and account-level assessed values overlap and must not be summed; exempt assessed value is not taxable value or tax avoided, appraised real-property value is not investment, permit value is not spending, contracted solar capacity is not facility load, and community amounts have distinct recipients and periods. Direct tax payments, executed incentive schedules, utility bills, observed establishment payroll, worker residence, local supplier payments, same-scope public-service costs, and causal county outcomes remain unresolved rather than zero.",
+  "scope_note": "Directed fourth-pass project-scoped evidence audit of Google's Douglas County data-center campus at 300 Riverside Parkway SW. The selected IM3 object is a campus, and the public record resolves a Development Authority real-property parcel, two Google-linked personal-property accounts, two assessor-classified data-center buildings, a utility building, later permit work, historical public-utility customer revenue, a permitted discharge facility, and off-site supporting solar infrastructure; no record is allocated below its published scope. Thirty observations are added: twenty-eight reported actuals and two source projections. County taxpayer totals and account-level assessed values overlap and must not be summed; exempt assessed value is not taxable value or tax avoided, appraised real-property value is not investment, permit value is not spending, utility service revenue is not an infrastructure-fund payment or physical-use measure, contracted solar capacity is not facility load, and community amounts have distinct recipients and periods. Direct tax payments, executed incentive schedules, complete/current utility bills, observed establishment payroll, worker residence, local supplier payments, same-scope public-service costs, and causal county outcomes remain unresolved rather than zero.",
   "sources": [
     {
       "source_id": "src_study_im3_google_douglas_boundary_2026",
@@ -321,7 +321,7 @@
       "publication_date": {"precision": "year", "year": 2015},
       "retrieved_on": "2026-09-07",
       "review_method": "web_pdf_text",
-      "notes": "Table 15 names Google Inc. as a fiscal-year 2014 customer and reports $432,873 water revenue, $318,018 sewer revenue, and $19,508 stormwater revenue. These are authority service revenues, not infrastructure-fund payments, physical use, tariff determinants, or proof of payer identity; the evidence registry has no compatible direct service-payment metric, so no quantitative record is created."
+      "notes": "Table 15 names Google Inc. as a fiscal-year 2014 customer and reports $432,873 water revenue, $318,018 sewer revenue, and $19,508 stormwater revenue. These are authority service revenues, not infrastructure-fund payments, physical use, tariff determinants, or proof of payer identity. They remain source context in this directed correction, which records the four specifically requested comparative observations from the 2016 ACFR rather than widening the extraction to a second report."
     },
     {
       "source_id": "src_study_ddcwsa_acfr_2016",
@@ -332,7 +332,7 @@
       "publication_date": {"precision": "year", "year": 2017},
       "retrieved_on": "2026-09-07",
       "review_method": "web_pdf_text",
-      "notes": "Table 15 reports Google customer revenues of $207,277 water and $168,332 sewer in fiscal 2007 and $349,787 sewer and $20,327 stormwater in fiscal 2016; absence from the 2016 water top-ten is not zero. Table 11 names Google as Douglas County's seventh-ranked principal employer in 2016 with 300 employees and a 0.5% share. The customer revenues remain source context because no compatible direct service-payment metric exists."
+      "notes": "Table 15 reports Google customer revenues of $207,277 water and $168,332 sewer in fiscal 2007 and $349,787 sewer and $20,327 stormwater in fiscal 2016; the four service/year observations are recorded under the distinct utility-service-payment metric. Absence from the 2016 water top-ten and other unreported services is not zero, so the recorded rows do not form complete annual totals. Table 11 names Google as Douglas County's seventh-ranked principal employer in 2016 with 300 employees and a 0.5% share."
     },
     {
       "source_id": "src_study_ddcwsa_data_center_demands_2023",
@@ -810,6 +810,78 @@
       "notes": "Local-government principal-employer snapshot sourced to development and school-system contacts. It differs from the operator's more-than-350 facility employees reported in June 2015, so definitions and timing are not assumed comparable. It is not annual-average FTE, payroll employment, current employment, worker residence, or a selected-building count.",
       "review_status": "source_checked",
       "reviewed_on": "2026-09-07"
+    },
+    {
+      "claim_id": "clm_study_google_ddcwsa_water_service_payments_2007",
+      "project_id": "prj_study_im3_campus_00578435601",
+      "metric_code": "study.utility_service_payments",
+      "value": 207277,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {"kind": "fiscal_year", "year": 2007, "label": "DDCWSA fiscal year 2007 comparative customer-revenue table"},
+      "scope": {"level": "company_county", "label": "Google water-service customer revenue reported by DDCWSA", "county_fips": "13097", "inventory_allocation": "unallocated"},
+      "source_id": "src_study_ddcwsa_acfr_2016",
+      "source_locator": "Table 15, Principal Water Customers, Google Inc., fiscal year 2007 revenue column",
+      "pdf_page": 80,
+      "printed_page": "76",
+      "notes": "Utility-reported water-service customer revenue for Google, treated as the public authority's direct observation. It is not an infrastructure-fund payment, physical water use, a tariff calculation, tax revenue, proof of cash payer, or a campus-building allocation. Do not sum it with the same year's sewer row as a complete utility total because stormwater and other service coverage are not established; do not sum across years.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "google_ddcwsa_water_service_payments"
+    },
+    {
+      "claim_id": "clm_study_google_ddcwsa_sewer_service_payments_2007",
+      "project_id": "prj_study_im3_campus_00578435601",
+      "metric_code": "study.utility_service_payments",
+      "value": 168332,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {"kind": "fiscal_year", "year": 2007, "label": "DDCWSA fiscal year 2007 comparative customer-revenue table"},
+      "scope": {"level": "company_county", "label": "Google sewer-service customer revenue reported by DDCWSA", "county_fips": "13097", "inventory_allocation": "unallocated"},
+      "source_id": "src_study_ddcwsa_acfr_2016",
+      "source_locator": "Table 15, Principal Sewer Customers, Google Inc., fiscal year 2007 revenue column",
+      "pdf_page": 80,
+      "printed_page": "76",
+      "notes": "Utility-reported sewer-service customer revenue for Google, treated as the public authority's direct observation. It is not an infrastructure-fund payment, discharge volume, a tariff calculation, tax revenue, proof of cash payer, or a campus-building allocation. Do not sum it with the same year's water row as a complete utility total because stormwater and other service coverage are not established; do not sum across years.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "google_ddcwsa_sewer_service_payments"
+    },
+    {
+      "claim_id": "clm_study_google_ddcwsa_sewer_service_payments_2016",
+      "project_id": "prj_study_im3_campus_00578435601",
+      "metric_code": "study.utility_service_payments",
+      "value": 349787,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {"kind": "fiscal_year", "year": 2016, "label": "DDCWSA fiscal year 2016 customer-revenue table"},
+      "scope": {"level": "company_county", "label": "Google sewer-service customer revenue reported by DDCWSA", "county_fips": "13097", "inventory_allocation": "unallocated"},
+      "source_id": "src_study_ddcwsa_acfr_2016",
+      "source_locator": "Table 15, Principal Sewer Customers, Google Inc., fiscal year 2016 revenue column",
+      "pdf_page": 80,
+      "printed_page": "76",
+      "notes": "Utility-reported sewer-service customer revenue for Google, treated as the public authority's direct observation. It is not an infrastructure-fund payment, discharge volume, a tariff calculation, tax revenue, proof of cash payer, or a campus-building allocation. Do not sum it with the 2016 stormwater row as a complete utility total because Google is absent from the water top-ten and absence is not zero; do not sum across years.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "google_ddcwsa_sewer_service_payments"
+    },
+    {
+      "claim_id": "clm_study_google_ddcwsa_stormwater_service_payments_2016",
+      "project_id": "prj_study_im3_campus_00578435601",
+      "metric_code": "study.utility_service_payments",
+      "value": 20327,
+      "value_qualifier": "exact",
+      "basis": "reported_actual",
+      "period": {"kind": "fiscal_year", "year": 2016, "label": "DDCWSA fiscal year 2016 customer-revenue table"},
+      "scope": {"level": "company_county", "label": "Google stormwater-service customer revenue reported by DDCWSA", "county_fips": "13097", "inventory_allocation": "unallocated"},
+      "source_id": "src_study_ddcwsa_acfr_2016",
+      "source_locator": "Table 15, Principal Stormwater Customers, Google Inc., fiscal year 2016 revenue column",
+      "pdf_page": 80,
+      "printed_page": "76",
+      "notes": "Utility-reported stormwater-service customer revenue for Google, treated as the public authority's direct observation. It is not an infrastructure-fund payment, stormwater volume, an ERU or tariff calculation, tax revenue, proof of cash payer, or a campus-building allocation. Do not sum it with the 2016 sewer row as a complete utility total because Google is absent from the water top-ten and absence is not zero; do not sum across years.",
+      "review_status": "source_checked",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "google_ddcwsa_stormwater_service_payments"
     }
   ],
   "project_updates": [
@@ -833,7 +905,7 @@
       "source_id": "src_study_douglas_tax_payment_portal_2026",
       "as_of": "2026-09-07",
       "title": "Tax-bill and payment search remains blocked after account resolution",
-      "notes": "Repositories and routes checked: Tax Commissioner pages and reports, Georgia DOR payment routing and 2023-2025 millage files, GovernmentWindow tax.html and its select_bill.html GET workflow, qPublic histories, County ACFR tax collections/millage exhibits, document-center search, and indexed exact queries for P79020, P88150, 08741820001, Google, DADC, and 300 Riverside Parkway. The portal exposes tax years 2017-2026 and map/parcel/property-ID, bill-number, address, and owner modes, but Cloudflare Turnstile guards the search; the CAPTCHA was not solved or bypassed, and alternate indexed queries yielded no bill. Assessed or exempt value is not called tax avoided, billed, paid, collected, delinquent, or distributed. Two county-M&O gross-levy counterfactuals are modeled from published inputs, explicitly not payment or realized abatement."
+      "notes": "Repositories and routes checked: Tax Commissioner pages and reports, Georgia DOR payment routing and 2023-2025 millage files, GovernmentWindow tax.html and its select_bill.html GET workflow, qPublic histories, County ACFR tax collections/millage exhibits, document-center search, and indexed exact queries for P79020, P88150, 08741820001, Google, DADC, and 300 Riverside Parkway. The portal exposes tax years 2017-2026 and map/parcel/property-ID, bill-number, address, and owner modes, but Cloudflare Turnstile guards the search; the CAPTCHA was not solved or bypassed, and alternate indexed queries yielded no bill. Closing the remaining bill/payment gap requires a user to complete the CAPTCHA for account P79020 (and separately P88150) through tax.html/select_bill.html; no bypass is attempted. Assessed or exempt value is not called tax avoided, billed, paid, collected, delinquent, or distributed. Historical DDCWSA utility-service revenue is separate from property tax. Two county-M&O gross-levy counterfactuals are modeled from published inputs, explicitly not payment or realized abatement."
     },
     {
       "project_id": "prj_study_im3_campus_00578435601",
@@ -854,7 +926,7 @@
       "source_id": "src_study_google_environmental_report_2025_douglas",
       "as_of": "2024-12-31",
       "title": "Water, sewer, electricity, and environmental search resolves location water only",
-      "notes": "Repositories and routes checked: Google 2023-2025 environmental/impact disclosures; DDCWSA 2014, 2016, and 2025 financial reports, work-session agendas, rates, and capital/bond materials; Georgia EPD NPDES notices, air records, orders, complaints, and DMR routing; EPA ECHO facility report for GA0038920/FRS 110061650100; Georgia Power/PSC tariffs and Docket 55378; and operator energy disclosures. WSA tables report Google customer revenue in 2007, 2014, and 2016, but these service revenues do not fit the infrastructure-payment metric and do not reveal meters, volumes, or payer identity. ECHO displays 0.18 MGD average facility flow in 2026, annualized with a rounding band in modeled synthesis. Google water consumption, off-site 78.8 MW contracted solar, PUE, DMR flow, generic rates, bills, and public infrastructure are kept distinct. No meter, Google bill, tier/ERU inputs, peak-day demand, campus kWh/load, interconnection cost, selected-building allocation, or Google-specific capital obligation was found."
+      "notes": "Repositories and routes checked: Google 2023-2025 environmental/impact disclosures; DDCWSA 2014, 2016, and 2025 financial reports, work-session agendas, rates, and capital/bond materials; Georgia EPD NPDES notices, air records, orders, complaints, and DMR routing; EPA ECHO facility report for GA0038920/FRS 110061650100; Georgia Power/PSC tariffs and Docket 55378; and operator energy disclosures. The 2016 WSA comparative table supports four direct service/year observations: 2007 water and sewer, plus 2016 sewer and stormwater customer revenue. They use the utility-service-payment metric, never the infrastructure-fund metric, and remain incomplete annual coverage; 2016 water top-ten absence is not zero. ECHO displays 0.18 MGD average facility flow in 2026, annualized with a rounding band in modeled synthesis. Utility revenue, Google water consumption, off-site 78.8 MW contracted solar, PUE, DMR flow, generic rates, bills, and public infrastructure are kept distinct. No meter, complete/current Google bill, tier/ERU inputs, peak-day demand, campus kWh/load, interconnection cost, selected-building allocation, or Google-specific capital obligation was found."
     },
     {
       "project_id": "prj_study_im3_campus_00578435601",
