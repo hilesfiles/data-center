@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "study_release": "private-sector-study-1.52.0",
-  "generated_at": "2026-09-07T00:47:58Z",
+  "generated_at": "2026-09-07T01:11:02Z",
   "queue_status": "corrective_model_b_in_progress",
   "ranking_method": "Descending covered contribution-account category count, then descending sourced economic-record count, then ascending project_id.",
   "worker_research_contract": {
@@ -19,7 +19,7 @@
   },
   "corrective_model_eligibility_queue": {
     "status": "corrective_model_b_in_progress",
-    "reason": "These published projects are marked account_research_complete but analytically incomplete and have zero modeled syntheses. Each requires a dedicated last-resort, candidate-by-candidate modeling audit under worker-research-contract 2.0.0; a model may be retained only when defensible, and every rejection must be documented rather than asserted as a blanket conclusion.",
+    "reason": "Previously completed projects must be re-audited when their public-source search trail or model eligibility record does not satisfy worker-research-contract 2.0.0. This includes analytically incomplete projects with zero modeled syntheses and the three foundational full-modeled accounts created before the strengthened contract. A model may be retained only when defensible, and every rejection or retention must be documented candidate by candidate rather than asserted as a blanket conclusion.",
     "batches": [
       {
         "batch": "corrective_model_a",
@@ -73,6 +73,39 @@
           "01a07955-a715-74f0-baa2-e06482bcb5de"
         ],
         "launch_commit": "00bfcbce18054f8301c7c53fed5a075c357f5c58"
+      },
+      {
+        "batch": "foundational_full_account_reaudit",
+        "setup_state": "queued_after_corrective_model_b_before_batch_7",
+        "reason": "Apple Mesa, Switch Citadel, and Digital Crossroad Hammond pass the mechanical full-modeled-account coverage gate but predate contract 2.0.0. Their published project trails contain no explicit candidate-by-candidate search-exhaustion decisions, and 74 of their combined 104 models are low-confidence; each account therefore requires renewed direct-evidence discovery and independent retention/removal review before ordinary project batching resumes.",
+        "project_ids": [
+          "prj_study_im3_building_00300974499",
+          "prj_study_im3_point_06685432442",
+          "prj_study_im3_building_00978934687"
+        ],
+        "published_baseline": [
+          {
+            "project_name": "Apple Mesa",
+            "source_count": 16,
+            "research_update_count": 5,
+            "modeled_synthesis_count": 27,
+            "low_confidence_model_count": 20
+          },
+          {
+            "project_name": "Switch Citadel / Tahoe Reno 1",
+            "source_count": 8,
+            "research_update_count": 8,
+            "modeled_synthesis_count": 34,
+            "low_confidence_model_count": 20
+          },
+          {
+            "project_name": "Digital Crossroad DX-1, Hammond",
+            "source_count": 35,
+            "research_update_count": 30,
+            "modeled_synthesis_count": 43,
+            "low_confidence_model_count": 34
+          }
+        ]
       }
     ]
   },
