@@ -1,0 +1,117 @@
+{
+  "schema_version": "1.0.0",
+  "project_id": "prj_study_im3_campus_00578435601",
+  "reviewed_on": "2026-09-07",
+  "scope_note": "Second-pass model review retains only three presentation-preserving unit conversions of Google-reported Douglas County water consumption for 2022-2024. Each estimate converts a displayed million-gallon location value to gallons and carries the source's 0.1-million-gallon rounding precision; no withdrawal, discharge, meter, campus-building, or cost allocation is introduced. Direct searches of operator, water-authority, Georgia EPD, EPA, assessor, permit, utility, workforce, supplier, fiscal, and county-outcome sources did not support any other eligible model. No transferred multiplier, payroll estimate, supplier-retention assumption, energy proxy, fiscal result, public-cost threshold, investment allocation, or causal county outcome is modeled.",
+  "sources": [
+    {
+      "source_id": "src_study_google_georgia_impact_2024",
+      "title": "Economic impact of Google data centers in Georgia",
+      "url": "https://www.gstatic.com/marketing-cms/75/20/d0461aea49dd9a1d3e3aab2d68cd/2024-impact-study-georgia.pdf",
+      "publisher": "Google LLC and Deloitte",
+      "source_type": "operator_release",
+      "publication_date": {"precision": "year", "year": 2024},
+      "retrieved_on": "2026-09-07",
+      "review_method": "web_pdf_text",
+      "notes": "The Douglas County sustainability page reports water consumption of 305.2 million gallons in 2022 and 345.6 million gallons in 2023. The values are location-level, rounded, and not allocated to an individual building or meter."
+    },
+    {
+      "source_id": "src_study_google_environmental_report_2025_douglas",
+      "title": "Google 2025 Environmental Report",
+      "url": "https://www.gstatic.com/gumdrop/sustainability/google-2025-environmental-report.pdf",
+      "publisher": "Google LLC",
+      "source_type": "operator_release",
+      "publication_date": {"precision": "month", "date": "2025-06-01"},
+      "retrieved_on": "2026-09-07",
+      "review_method": "web_pdf_text",
+      "notes": "The assured location table reports Douglas County 2024 water consumption of 366.9 million gallons, calculated as 444.1 million gallons withdrawal minus 77.2 million gallons discharge. Displayed values are rounded; no building allocation, bill, tariff, or cost is published."
+    }
+  ],
+  "estimates": [
+    {
+      "estimate_id": "est_study_google_douglas_water_consumption_2022",
+      "project_id": "prj_study_im3_campus_00578435601",
+      "metric_code": "study.modeled_annual_water_consumption",
+      "label": "Unallocated Douglas County location water consumption",
+      "category": "resources",
+      "unit": "gallons_per_year",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 305200000,
+      "period": {"kind": "calendar_year", "year": 2022, "label": "Calendar-year 2022 Google Douglas County location"},
+      "scope": {"level": "company_county", "label": "Google Douglas County location total; no building or meter allocation", "county_fips": "13097", "inventory_allocation": "unallocated"},
+      "interval": {"kind": "reported_band", "low": 305150000, "central": 305200000, "high": 305250000, "interpretation": "Deterministic rounding envelope for a value displayed to the nearest 0.1 million gallons; it is not a confidence interval."},
+      "contribution_channel": "not_applicable",
+      "aggregation": {"aggregation_id": "google_douglas_location_water_2022", "role": "standalone", "overlap_policy": "do_not_sum_outside_declared_total"},
+      "parameters": [
+        {"name": "reported_location_water_consumption", "value": 305.2, "unit": "million_gallons_per_year", "provenance": {"kind": "source", "reference_id": "src_study_google_georgia_impact_2024", "detail": "Douglas County 2022 water consumption"}, "transformation": "Multiply by 1,000,000 gallons per million gallons"}
+      ],
+      "confidence": "medium",
+      "confidence_rationale": "The operator-commissioned location study directly publishes the annual consumption value, but it is rounded and no independent utility bill, meter record, or building allocation was public.",
+      "decision_relevance": "Preserves a comparable annual operating-resource magnitude for the Douglas County location without inventing a campus-building allocation or cost.",
+      "evidence_search": {"direct_observation_status": "partial", "source_projection_status": "not_applicable", "remaining_evidence_gap": "A compatible canonical direct-water metric, utility or campus meter records, bill and rate data, peak-day use, withdrawal and discharge components, and a defensible building allocation"},
+      "derivation": {"method": "engineering_estimate", "model_version": "google-douglas-account-1.0.0", "formula": "305.2 million gallons x 1,000,000", "input_claim_ids": [], "input_source_ids": ["src_study_google_georgia_impact_2024"], "assumptions": ["The published Douglas County location label and unit are accurate.", "The result remains unallocated across the campus and inventory objects.", "The displayed value is rounded to the nearest 0.1 million gallons."]},
+      "limitations": ["No utility bill or meter-level corroboration is public.", "No campus-building allocation is defensible.", "The source does not publish 2022 potable/reclaimed, withdrawal, or discharge components on the study page.", "The interval is a rounding envelope, not statistical uncertainty."],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Retained only because the evidence registry has no compatible canonical observed-water metric. This is a unit conversion of a source-reported location total, not an independently estimated physical use or selected-building value.",
+      "reviewed_on": "2026-09-07"
+    },
+    {
+      "estimate_id": "est_study_google_douglas_water_consumption_2023",
+      "project_id": "prj_study_im3_campus_00578435601",
+      "metric_code": "study.modeled_annual_water_consumption",
+      "label": "Unallocated Douglas County location water consumption",
+      "category": "resources",
+      "unit": "gallons_per_year",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 345600000,
+      "period": {"kind": "calendar_year", "year": 2023, "label": "Calendar-year 2023 Google Douglas County location"},
+      "scope": {"level": "company_county", "label": "Google Douglas County location total; no building or meter allocation", "county_fips": "13097", "inventory_allocation": "unallocated"},
+      "interval": {"kind": "reported_band", "low": 345550000, "central": 345600000, "high": 345650000, "interpretation": "Deterministic rounding envelope for a value displayed to the nearest 0.1 million gallons; it is not a confidence interval."},
+      "contribution_channel": "not_applicable",
+      "aggregation": {"aggregation_id": "google_douglas_location_water_2023", "role": "standalone", "overlap_policy": "do_not_sum_outside_declared_total"},
+      "parameters": [
+        {"name": "reported_location_water_consumption", "value": 345.6, "unit": "million_gallons_per_year", "provenance": {"kind": "source", "reference_id": "src_study_google_georgia_impact_2024", "detail": "Douglas County 2023 water consumption"}, "transformation": "Multiply by 1,000,000 gallons per million gallons"}
+      ],
+      "confidence": "medium",
+      "confidence_rationale": "The operator-commissioned location study directly publishes the annual consumption value and says more than 90% of withdrawal was reclaimed wastewater, but the value is rounded and no independent utility bill, meter record, or building allocation was public.",
+      "decision_relevance": "Preserves a comparable annual operating-resource magnitude for the Douglas County location without inventing a campus-building allocation or cost.",
+      "evidence_search": {"direct_observation_status": "partial", "source_projection_status": "not_applicable", "remaining_evidence_gap": "A compatible canonical direct-water metric, utility or campus meter records, bill and rate data, peak-day use, discharge measurement detail, and a defensible building allocation"},
+      "derivation": {"method": "engineering_estimate", "model_version": "google-douglas-account-1.0.0", "formula": "345.6 million gallons x 1,000,000", "input_claim_ids": [], "input_source_ids": ["src_study_google_georgia_impact_2024"], "assumptions": ["The published Douglas County location label and unit are accurate.", "The result remains unallocated across the campus and inventory objects.", "The displayed value is rounded to the nearest 0.1 million gallons."]},
+      "limitations": ["No utility bill or meter-level corroboration is public.", "No campus-building allocation is defensible.", "The result does not separately quantify potable and reclaimed consumption after discharge.", "The interval is a rounding envelope, not statistical uncertainty."],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Retained only because the evidence registry has no compatible canonical observed-water metric. This is a unit conversion of a source-reported location total, not an independently estimated physical use or selected-building value.",
+      "reviewed_on": "2026-09-07"
+    },
+    {
+      "estimate_id": "est_study_google_douglas_water_consumption_2024",
+      "project_id": "prj_study_im3_campus_00578435601",
+      "metric_code": "study.modeled_annual_water_consumption",
+      "label": "Unallocated Douglas County location water consumption",
+      "category": "resources",
+      "unit": "gallons_per_year",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 366900000,
+      "period": {"kind": "calendar_year", "year": 2024, "label": "Calendar-year 2024 Google Douglas County location"},
+      "scope": {"level": "company_county", "label": "Google Douglas County location total; no building or meter allocation", "county_fips": "13097", "inventory_allocation": "unallocated"},
+      "interval": {"kind": "reported_band", "low": 366800000, "central": 366900000, "high": 367000000, "interpretation": "Conservative deterministic envelope from independently rounding withdrawal and discharge to the nearest 0.1 million gallons; it is not a confidence interval."},
+      "contribution_channel": "not_applicable",
+      "aggregation": {"aggregation_id": "google_douglas_location_water_2024", "role": "standalone", "overlap_policy": "do_not_sum_outside_declared_total"},
+      "parameters": [
+        {"name": "location_water_withdrawal", "value": 444100000, "unit": "gallons_per_year", "provenance": {"kind": "source", "reference_id": "src_study_google_environmental_report_2025_douglas", "detail": "2024 Douglas County withdrawal converted from 444.1 million gallons"}, "transformation": "Subtract discharge"},
+        {"name": "location_water_discharge", "value": 77200000, "unit": "gallons_per_year", "provenance": {"kind": "source", "reference_id": "src_study_google_environmental_report_2025_douglas", "detail": "2024 Douglas County discharge converted from 77.2 million gallons"}, "transformation": "Subtract from withdrawal"}
+      ],
+      "confidence": "medium",
+      "confidence_rationale": "The operator publishes assured location-level withdrawal, discharge, and consumption values, but displayed values are rounded, discharge methodology is not meter-resolved here, and no building allocation is available.",
+      "decision_relevance": "Preserves the latest direct public location-level operating-resource magnitude in a compatible unit without allocating it to an inventory object.",
+      "evidence_search": {"direct_observation_status": "partial", "source_projection_status": "not_applicable", "remaining_evidence_gap": "A compatible canonical direct-water metric, utility or campus meter records, bills and rate data, peak-day use, discharge measurement detail, cooling-process allocation, and a defensible building allocation"},
+      "derivation": {"method": "engineering_estimate", "model_version": "google-douglas-account-1.0.0", "formula": "444,100,000 gallons withdrawal - 77,200,000 gallons discharge", "input_claim_ids": [], "input_source_ids": ["src_study_google_environmental_report_2025_douglas"], "assumptions": ["The published Douglas County location label and units are accurate.", "The result remains unallocated across the campus and inventory objects.", "Each displayed input is rounded to the nearest 0.1 million gallons."]},
+      "limitations": ["No utility bill or meter-level corroboration is public.", "No campus-building allocation is defensible.", "The result does not separately quantify potable and reclaimed consumption after discharge.", "The interval is a rounding envelope, not statistical uncertainty."],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Retained after direct-evidence review because the operator publishes the location inputs and identity but the evidence registry has no compatible canonical direct-water metric. Do not present it as selected-building consumption or utility-billed volume.",
+      "reviewed_on": "2026-09-07"
+    }
+  ]
+}
