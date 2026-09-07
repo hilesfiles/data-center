@@ -30,10 +30,10 @@ class EquinixSe3ContributionAccountTest(unittest.TestCase):
     def test_scoped_counts_and_basis_split(self):
         self.assertEqual(self.fragment["project_id"], PROJECT)
         self.assertEqual(self.model_fragment["project_id"], PROJECT)
-        self.assertEqual(len(self.fragment["sources"]), 21)
+        self.assertEqual(len(self.fragment["sources"]), 27)
         self.assertEqual(len(self.fragment["records"]), 21)
         self.assertEqual(len(self.fragment["project_updates"]), 12)
-        self.assertEqual(len(self.model_fragment["estimates"]), 3)
+        self.assertEqual(len(self.model_fragment["estimates"]), 8)
         self.assertTrue(all(row["project_id"] == PROJECT for row in self.fragment["records"]))
         self.assertTrue(
             all(row["project_id"] == PROJECT for row in self.fragment["project_updates"])
@@ -50,6 +50,11 @@ class EquinixSe3ContributionAccountTest(unittest.TestCase):
                 "study.modeled_facility_electricity_consumption",
                 "study.modeled_annual_local_service_cost_break_even",
                 "study.modeled_construction_labor_income_direct",
+                "study.modeled_construction_value_award_category",
+                "study.modeled_minimum_continuous_coverage_fte_equivalent",
+                "study.modeled_minimum_continuous_security_wage_cost",
+                "study.modeled_electricity_cost_benchmark",
+                "study.modeled_location_based_electricity_emissions",
             },
         )
 
@@ -132,6 +137,10 @@ class EquinixSe3ContributionAccountTest(unittest.TestCase):
             "6294137-CN",
             "Printed pages 16-17",
             "$27.38 Seattle-Bellevue-Everett",
+            "$50 million-$100 million private-building award category",
+            "Supplier/non-labor residual: reject",
+            "$17.18 near-opening",
+            "635.267 lb CO2e/MWh",
         ]:
             self.assertIn(marker, notes)
 
@@ -159,6 +168,58 @@ class EquinixSe3ContributionAccountTest(unittest.TestCase):
         self.assertEqual(labor["parameters"][1]["value"], 27.38)
         self.assertEqual(labor["confidence"], "low")
         self.assertTrue(any("Not certified payroll" in row for row in labor["limitations"]))
+
+        construction = models["study.modeled_construction_value_award_category"]
+        self.assertEqual(
+            (
+                construction["interval"]["low"],
+                construction["value"],
+                construction["interval"]["high"],
+            ),
+            (50000000, 75000000, 100000000),
+        )
+        self.assertTrue(any("Not an exact or audited" in row for row in construction["limitations"]))
+
+        coverage = models["study.modeled_minimum_continuous_coverage_fte_equivalent"]
+        self.assertEqual(
+            (
+                coverage["interval"]["low"],
+                coverage["value"],
+                coverage["interval"]["high"],
+            ),
+            (4.2115384615, 4.8432692308, 5.475),
+        )
+        self.assertTrue(any("Not observed headcount" in row for row in coverage["limitations"]))
+
+        wage_cost = models["study.modeled_minimum_continuous_security_wage_cost"]
+        self.assertEqual(
+            (
+                wage_cost["interval"]["low"],
+                wage_cost["value"],
+                wage_cost["interval"]["high"],
+            ),
+            (150496.8, 229586.46, 259532.52),
+        )
+        self.assertEqual(wage_cost["parameters"][1]["value"], 17.18)
+        self.assertEqual(wage_cost["parameters"][2]["value"], 22.79)
+
+        electricity_cost = models["study.modeled_electricity_cost_benchmark"]
+        self.assertEqual(
+            (
+                electricity_cost["interval"]["low"],
+                electricity_cost["value"],
+                electricity_cost["interval"]["high"],
+            ),
+            (1200339, 2605662, 10777428),
+        )
+        self.assertTrue(any("Not an observed bill" in row for row in electricity_cost["limitations"]))
+
+        emissions = models["study.modeled_location_based_electricity_emissions"]
+        self.assertAlmostEqual(emissions["interval"]["low"], 5679.4811256599)
+        self.assertAlmostEqual(emissions["value"], 11358.9622513199)
+        self.assertAlmostEqual(emissions["interval"]["high"], 22717.9245026397)
+        self.assertEqual(emissions["parameters"][3]["value"], 635.267)
+        self.assertTrue(any("Not measured site emissions" in row for row in emissions["limitations"]))
 
 
 if __name__ == "__main__":
