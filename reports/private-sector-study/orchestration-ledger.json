@@ -1,8 +1,8 @@
 {
   "schema_version": "1.0.0",
   "study_release": "private-sector-study-1.56.0",
-  "generated_at": "2026-09-07T16:40:32Z",
-  "queue_status": "batch_8_reconciled_validation",
+  "generated_at": "2026-09-07T17:08:00Z",
+  "queue_status": "batch_8_published_batch_9_ready",
   "ranking_method": "Descending covered contribution-account category count, then descending sourced economic-record count, then ascending project_id.",
   "worker_research_contract": {
     "version": "2.0.0",
@@ -18,23 +18,23 @@
     "completion_rule": "A worker commit is a handoff candidate; only an independently audited handoff may be reconciled or published."
   },
   "latest_publication": {
-    "batch": 7,
-    "release_id": "private-sector-study-1.55.0",
-    "commit": "cc4ef25ead516bcd18a39aff35c7af44373a76d2",
+    "batch": 8,
+    "release_id": "private-sector-study-1.56.0",
+    "commit": "69766823116d872203e6eb2360a99e70e4f581aa",
     "remote_branch": "origin/main",
     "reconciled_counts": {
-      "economic_records": 1046,
-      "reported_actual_records": 940,
-      "source_forecast_records": 106,
-      "modeled_synthesis_records": 116,
+      "economic_records": 1091,
+      "reported_actual_records": 980,
+      "source_forecast_records": 111,
+      "modeled_synthesis_records": 125,
       "full_modeled_county_accounts": 0,
-      "research_complete_projects": 24
+      "research_complete_projects": 27
     },
-    "validation_result": "Passed 151 repository tests, the complete 65-schema data-contract validation, TypeScript compilation, the production build, the complete browser suite, desktop and mobile completed-project inspection, all 24 completed-project description/order checks, map population, direct project and county navigation, legacy-index fallback, and preview-process shutdown.",
-    "validate_and_build_run": "https://github.com/hilesfiles/data-center/actions/runs/34135912535",
-    "pages_deploy_run": "https://github.com/hilesfiles/data-center/actions/runs/34135912527",
+    "validation_result": "Passed 168 repository tests, the complete 65-schema data-contract validation, TypeScript compilation, the production build, the complete browser suite, desktop Apple Maiden and mobile Quicken inspection, all 27 completed-project description/order checks, all 27 map entries, direct project and county navigation, legacy-index fallback, and preview-process shutdown.",
+    "validate_and_build_run": "https://github.com/hilesfiles/data-center/actions/runs/34146107044",
+    "pages_deploy_run": "https://github.com/hilesfiles/data-center/actions/runs/34146107055",
     "live_manifest": "https://hilesfiles.github.io/data-center/data/v1/study/manifest.json",
-    "verified_at": "2026-09-07T15:01:00Z"
+    "verified_at": "2026-09-07T17:08:00Z"
   },
   "corrective_model_eligibility_queue": {
     "status": "foundational_full_account_reaudit_published",
@@ -1242,12 +1242,12 @@
       "worker_task_id": "01a07c66-150d-7880-98c3-772bace6765b",
       "worker_branch": "detached-worktree-814c",
       "worker_commit_sha": "c876a38",
-      "status": "accepted_reconciled_validation",
+      "status": "integrated_validated_published",
       "source_record_additions": 30,
       "forecast_additions": 4,
       "modeled_record_additions": 0,
       "validation_result": "Accepted after independent audit of the 30-source scoped fragment, exact building/campus boundary, candidate-by-candidate model rejections, one compliant description, and 10 passing scoped tests. The worker corrected a three-versus-four projection count discrepancy in c876a38 before acceptance.",
-      "integration_commit": null,
+      "integration_commit": "69766823116d872203e6eb2360a99e70e4f581aa",
       "remaining_unresolved_analytical_limits": [
         "Campuswide investment, employment, electricity, taxes, incentives and permits cannot be allocated to the selected IM3 building without an unsupported share.",
         "Supplier spending, community transfers, payroll and worker residence, parcel tax payments, Town incentive payments, utility bills, water volumes, and complete financing/construction ledgers remain unavailable.",
@@ -1289,12 +1289,12 @@
       "worker_task_id": "01a07c66-2b41-7b90-8682-d32fdf61b2a1",
       "worker_branch": "detached-worktree-433e",
       "worker_commit_sha": "7ef53ec6ed68b97ae4046b8e90b1b336289a7199",
-      "status": "accepted_reconciled_validation",
+      "status": "integrated_validated_published",
       "source_record_additions": 11,
       "forecast_additions": 0,
       "modeled_record_additions": 7,
       "validation_result": "Accepted only after rejecting the 19-source zero-model first pass and completing directed third-pass remediation. Independent audit verified 23 retained sources, 18 combined direct records, seven bounded models, one compliant description, clean building/customer/later-expansion boundaries, exact parcel-tax and resource arithmetic, seven scoped tests, and all 98 contribution-account tests.",
-      "integration_commit": null,
+      "integration_commit": "69766823116d872203e6eb2360a99e70e4f581aa",
       "remaining_unresolved_analytical_limits": [
         "Parcel tax and water accounts remain unallocated between the original building, shared infrastructure, and later development; payer incidence and recipient cash timing are unresolved.",
         "The 28 MW electricity, rolling water, and 24x7 coverage values are explicitly modeled sensitivities or conversions, not observed building use or onsite employment.",
@@ -1336,12 +1336,12 @@
       "worker_task_id": "01a07c66-3e55-74b1-beb7-7ef972ff24d5",
       "worker_branch": "detached-worktree-59ec",
       "worker_commit_sha": "99aab13",
-      "status": "accepted_reconciled_validation",
+      "status": "integrated_validated_published",
       "source_record_additions": 4,
       "forecast_additions": 1,
       "modeled_record_additions": 2,
       "validation_result": "Accepted only after rejecting the 11-source zero-model first pass and completing directed third-pass remediation. Independent audit verified the parcel and personal-property separation, four-predecessor lineage, full 2018 subsidy-report review, resolution of the ambiguous contractor-page value, two low-confidence bounded models, one compliant description, six scoped tests, and all 51 private-sector study tests.",
-      "integration_commit": null,
+      "integration_commit": "69766823116d872203e6eb2360a99e70e4f581aa",
       "remaining_unresolved_analytical_limits": [
         "The mixed-use property and separate personal-property accounts cannot be allocated to Quicken/Rocket's partial tenancy or data-center function, and bills, payments, exemptions, and same-scope fiscal costs remain unavailable.",
         "The electricity and electrician-payroll values are low-confidence sensitivities, not metered consumption or certified payroll, and they exclude tenant allocation, other trades, benefits, overtime, and worker residence.",
