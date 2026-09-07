@@ -41,7 +41,7 @@ class OrchestrationAcceptanceContractTests(unittest.TestCase):
         rows = {row["queue_position"]: row for row in self.ledger["queue"]}
         for position in (25, 26, 27):
             with self.subTest(queue_position=position):
-                self.assertEqual(rows[position]["status"], "accepted_reconciled_validation")
+                self.assertEqual(rows[position]["status"], "integrated_validated_published")
                 self.assertTrue(rows[position]["candidate_commit_sha"])
                 self.assertTrue(rows[position]["corrective_commit_sha"])
                 self.assertTrue(rows[position]["worker_commit_sha"])
