@@ -2,6 +2,7 @@ import json
 import math
 import statistics
 import unittest
+from decimal import Decimal
 from pathlib import Path
 
 from scripts.build_private_sector_study import build_products
@@ -47,7 +48,9 @@ class MetaFortWorthContributionAccountTest(unittest.TestCase):
         )
         cls.project = next(row for row in details if row["project_id"] == PROJECT_ID)
         cls.fragment = json.loads(EVIDENCE_FRAGMENT.read_text(encoding="utf-8"))
+        cls.synthesis = json.loads(MODEL_FRAGMENT.read_text(encoding="utf-8"))
         cls.evidence = load_evidence()
+        cls.modeled = load_synthesis()
         cls.panels = panels
         cls.study_counties = {row["county_fips"] for row in config["candidates"]}
 
@@ -57,6 +60,11 @@ class MetaFortWorthContributionAccountTest(unittest.TestCase):
         issues = ContractValidator(ROOT / "schemas/v1").validate_record(
             self.evidence,
             ROOT / "schemas/v1/study-economic-evidence.schema.json",
+        )
+        self.assertEqual(issues, [])
+        issues = ContractValidator(ROOT / "schemas/v1").validate_record(
+            self.modeled,
+            ROOT / "schemas/v1/study-modeled-synthesis.schema.json",
         )
         self.assertEqual(issues, [])
 
@@ -70,7 +78,7 @@ class MetaFortWorthContributionAccountTest(unittest.TestCase):
             ),
             (102, 97, 5),
         )
-        self.assertEqual(project["modeled_synthesis_count"], 0)
+        self.assertEqual(project["modeled_synthesis_count"], 15)
         self.assertEqual(project["model_completeness"]["status"], "incomplete")
         self.assertEqual(project["model_completeness"]["missing_categories"], [])
         self.assertEqual(
@@ -81,7 +89,158 @@ class MetaFortWorthContributionAccountTest(unittest.TestCase):
                 "study.modeled_county_wage_comparison_gap",
             ],
         )
-        self.assertFalse(MODEL_FRAGMENT.exists())
+        self.assertTrue(MODEL_FRAGMENT.exists())
+        self.assertEqual(len(self.synthesis["estimates"]), 15)
+
+    def test_retained_estimates_have_governed_inputs_formulas_and_separation(self):
+        direct_claims = {row["claim_id"] for row in self.fragment["records"]}
+        source_ids = {
+            row["source_id"] for row in [*self.fragment["sources"], *self.synthesis["sources"]]
+        }
+        for estimate in self.synthesis["estimates"]:
+            self.assertEqual(estimate["basis"], "modeled_synthesis")
+            self.assertEqual(estimate["presentation"], "modeled_not_observed_or_audited")
+            self.assertEqual(estimate["value"], estimate["interval"]["central"])
+            self.assertTrue(estimate["derivation"]["formula"])
+            self.assertTrue(set(estimate["derivation"]["input_claim_ids"]) <= direct_claims)
+            self.assertTrue(set(estimate["derivation"]["input_source_ids"]) <= source_ids)
+            self.assertEqual(estimate["aggregation"]["role"], "standalone")
+            self.assertEqual(
+                estimate["aggregation"]["overlap_policy"],
+                "do_not_sum_outside_declared_total",
+            )
+            self.assertIn("do not", estimate["notes"].lower())
+            self.assertTrue(
+                all("_mmi_" not in claim_id.lower() for claim_id in estimate["derivation"]["input_claim_ids"])
+            )
+
+    def test_winner_annual_tax_aggregations_exactly_reproduce_direct_claims(self):
+        expected = {
+            2017: Decimal("5961155.22"),
+            2018: Decimal("27172295.80"),
+            2019: Decimal("40271670.49"),
+            2020: Decimal("45111350.33"),
+            2021: Decimal("47228800.29"),
+            2022: Decimal("46952856.36"),
+            2023: Decimal("43554824.02"),
+            2024: Decimal("47013023.30"),
+            2025: Decimal("49013588.14"),
+        }
+        estimates = {
+            row["period"]["year"]: row for row in self.synthesis["estimates"]
+            if row["metric_code"] == "study.modeled_combined_property_tax_paid"
+        }
+        self.assertEqual(set(estimates), set(expected))
+        records = self.fragment["records"]
+        for year, value in expected.items():
+            inputs = [
+                row for row in records
+                if row["metric_code"] == "study.property_taxes_paid"
+                and row["period"]["year"] == year
+                and row["scope"]["label"].startswith("Winner LLC")
+            ]
+            self.assertEqual(len(inputs), 2 if year == 2017 else 4)
+            estimate = estimates[year]
+            self.assertEqual(
+                set(estimate["derivation"]["input_claim_ids"]),
+                {row["claim_id"] for row in inputs},
+            )
+            self.assertEqual(sum(Decimal(str(row["value"])) for row in inputs), value)
+            self.assertEqual(Decimal(str(estimate["value"])), value)
+            self.assertIn("direct component", estimate["notes"])
+            self.assertIn("top-taxpayer", estimate["notes"])
+        self.assertEqual(sum(expected.values()), Decimal("352279563.95"))
+
+    def test_break_even_and_abatement_counterfactual_are_scope_aligned(self):
+        by_metric = {row["metric_code"]: row for row in self.synthesis["estimates"]}
+        break_even = by_metric["study.modeled_annual_local_service_cost_break_even"]
+        latest_tax = next(
+            row for row in self.synthesis["estimates"]
+            if row["metric_code"] == "study.modeled_combined_property_tax_paid"
+            and row["period"]["year"] == 2025
+        )
+        self.assertEqual(break_even["value"], 49_013_588.14)
+        self.assertEqual(
+            set(break_even["derivation"]["input_claim_ids"]),
+            set(latest_tax["derivation"]["input_claim_ids"]),
+        )
+        self.assertIn("not an observed or estimated public cost", " ".join(break_even["derivation"]["assumptions"]))
+        self.assertIn("Do not sum", break_even["notes"])
+
+        counterfactual = by_metric["study.modeled_gross_property_tax_before_realized_abatement"]
+        records = {row["claim_id"]: row for row in self.fragment["records"]}
+        inputs = counterfactual["derivation"]["input_claim_ids"]
+        paid_2018 = next(
+            row for row in self.synthesis["estimates"]
+            if row["metric_code"] == "study.modeled_combined_property_tax_paid"
+            and row["period"]["year"] == 2018
+        )
+        credit_ids = {
+            "clm_study_meta_fort_worth_county_tax_abatement_2018",
+            "clm_study_meta_fort_worth_hospital_tax_abatement_2018",
+        }
+        self.assertEqual(set(inputs), set(paid_2018["derivation"]["input_claim_ids"]) | credit_ids)
+        self.assertTrue(credit_ids.isdisjoint(paid_2018["derivation"]["input_claim_ids"]))
+        self.assertEqual(
+            sum(Decimal(str(records[claim_id]["value"])) for claim_id in inputs),
+            Decimal("29593063.86"),
+        )
+        self.assertEqual(counterfactual["interval"]["kind"], "deterministic_counterfactual")
+        self.assertEqual(
+            {records[claim_id]["period"]["year"] for claim_id in inputs},
+            {2018},
+        )
+        self.assertIn("added exactly once", " ".join(counterfactual["derivation"]["assumptions"]))
+        self.assertIn("Do not sum", counterfactual["notes"])
+
+    def test_payroll_sensitivity_preserves_count_wage_and_capture_limits(self):
+        payroll = next(
+            row for row in self.synthesis["estimates"]
+            if row["metric_code"] == "study.modeled_operating_payroll_sensitivity"
+        )
+        self.assertEqual(payroll["value"], 14_631_000)
+        self.assertEqual(
+            (payroll["interval"]["low"], payroll["interval"]["high"]),
+            (8_428_500, 24_327_000),
+        )
+        params = {row["name"]: row["value"] for row in payroll["parameters"]}
+        self.assertEqual(params["reported_people_floor"], 150)
+        self.assertEqual(
+            [params["low_all_occupations_wage"], params["central_computer_math_wage"], params["high_computer_information_systems_manager_wage"]],
+            [56_190, 97_540, 162_180],
+        )
+        text = json.dumps(payroll).lower()
+        for term in ("contractor", "benefits", "residence", "local-capture", "not meta payroll"):
+            self.assertIn(term, text)
+
+    def test_resource_syntheses_reproduce_latest_kwh_without_claiming_bill_or_peak(self):
+        by_metric = {row["metric_code"]: row for row in self.synthesis["estimates"]}
+        cost = by_metric["study.modeled_annual_electricity_cost_sensitivity"]
+        self.assertEqual(
+            (cost["interval"]["low"], cost["value"], cost["interval"]["high"]),
+            (67_871_044.80, 73_194_264, 94_819_842),
+        )
+        self.assertIn("not meta's electricity bill", " ".join(cost["limitations"]).lower())
+        self.assertIn("Retail provider", cost["evidence_search"]["remaining_evidence_gap"])
+
+        load = by_metric["study.modeled_average_electric_load"]
+        self.assertAlmostEqual(load["value"], 1_109_004_000 / 8_784 / 1_000, places=12)
+        self.assertIn("peak demand", load["notes"])
+
+        emissions = by_metric["study.modeled_location_based_electricity_emissions"]
+        self.assertAlmostEqual(
+            emissions["value"],
+            1_109_004 * 736.629 / 2_204.62262185,
+            places=9,
+        )
+        self.assertAlmostEqual(
+            emissions["interval"]["high"],
+            1_109_004 * 771.2 / 2_204.62262185,
+            places=9,
+        )
+        text = json.dumps(emissions).lower()
+        for term in ("location-based", "market-based", "grid-loss", "renewable"):
+            self.assertIn(term, text)
 
     def test_corrective_account_inventory_values_exemptions_and_tax_payments(self):
         records = self.fragment["records"]
@@ -278,6 +437,19 @@ class MetaFortWorthContributionAccountTest(unittest.TestCase):
         self.assertIn("14100 Park Vista", descriptions[0])
         self.assertEqual(len(updates), 30)
         self.assertIn("candidate_pending_adversarial_review", updates[-1]["notes"])
+        for gap in (
+            "atomic coding",
+            "CSC 46728",
+            "state sales-tax exemption",
+            "actual-water metric-catalog support",
+            "selected-building crosswalk",
+            "supplier payments",
+            "actual payroll",
+            "actual electricity bill",
+            "market-based emissions",
+            "marginal public-service costs",
+        ):
+            self.assertIn(gap, updates[-1]["notes"])
         search_log = " ".join(row["notes"].lower() for row in updates)
         for term in (
             "assessor",
