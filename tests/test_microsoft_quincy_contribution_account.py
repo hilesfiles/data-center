@@ -51,7 +51,7 @@ class MicrosoftQuincyContributionAccountTest(unittest.TestCase):
             (45, 1),
         )
         validate_evidence(self.evidence, self.config["candidates"])
-        self.assertEqual(len(self.synthesis_fragment["estimates"]), 29)
+        self.assertEqual(len(self.synthesis_fragment["estimates"]), 41)
         self.assertEqual(
             (
                 self.project["economic_record_count"],
@@ -59,7 +59,7 @@ class MicrosoftQuincyContributionAccountTest(unittest.TestCase):
                 self.project["projection_count"],
                 self.project["modeled_synthesis_count"],
             ),
-            (47, 46, 1, 29),
+            (47, 46, 1, 41),
         )
         self.assertIn("candidate_pending_adversarial_review", self.fragment["project_updates"][-1]["notes"])
         self.assertIn("all unaccepted pending adversarial review", self.fragment["project_updates"][-1]["notes"])
@@ -252,6 +252,54 @@ class MicrosoftQuincyContributionAccountTest(unittest.TestCase):
         for token in ("exactly six pre-periods", "leave-one-out", "zero selected donor FIPS", "Causal interpretation fails"):
             self.assertIn(token, audit)
 
+    def test_each_industry_chart_output_is_individually_retained_and_nonadditive(self):
+        rows = [
+            row for row in self.synthesis_fragment["estimates"]
+            if row["metric_code"].startswith("study.modeled_additional_jobs_industry_")
+        ]
+        expected = {
+            "security": 200,
+            "power_generation_transmission": 167,
+            "employment_other_services": 114,
+            "maintenance_repair": 99,
+            "retail": 62,
+            "healthcare_other": 56,
+            "restaurants": 47,
+            "other_real_estate": 46,
+            "support_services": 42,
+            "professional_technical": 31,
+            "transportation_warehousing": 17,
+            "manufacturing": 3,
+        }
+        self.assertEqual(len(rows), 12)
+        self.assertEqual(
+            {row["metric_code"].removeprefix("study.modeled_additional_jobs_industry_"): row["value"] for row in rows},
+            expected,
+        )
+        self.assertEqual(sum(row["value"] for row in rows), 884)
+        headline = next(row for row in self.synthesis_fragment["estimates"] if row["metric_code"] == "study.modeled_additional_operational_jobs_supported")
+        self.assertEqual(headline["value"], 855)
+        self.assertTrue(all(row["scope"]["level"] == "multi_county" for row in rows))
+        self.assertTrue(all(row["category"] == "operations" for row in rows))
+        self.assertTrue(all(row["presentation"] == "modeled_not_observed_or_audited" for row in rows))
+        self.assertTrue(all(row["derivation"]["method"] == "benchmark_application" for row in rows))
+        for row in rows:
+            text = " ".join(row["limitations"] + [row["notes"]])
+            for token in ("non-additive", "855", "287", "every other chart category", "884-versus-855"):
+                self.assertIn(token, text)
+
+        audit = " ".join(row["notes"] for row in self.fragment["project_updates"])
+        for token in (
+            "study.modeled_community_people_impacted",
+            "structurally unsuitable",
+            "unique-person deduplication",
+            "catalog's missing people unit is secondary",
+            "explicitly rejected as a separate metric/model",
+            "855 / 377 = 2.2679",
+            "2 × 377 = 754",
+        ):
+            self.assertIn(token, audit)
+
     def test_search_audit_and_metric_model_dispositions_are_complete(self):
         updates = self.fragment["project_updates"]
         titles = [row["title"] for row in updates]
@@ -301,7 +349,7 @@ class MicrosoftQuincyContributionAccountTest(unittest.TestCase):
             "causal county-effect",
         ):
             self.assertIn(rejected_model, decisions)
-        self.assertIn("Model tally: 29 estimates total", decisions)
+        self.assertIn("Model tally: 41 estimates total", decisions)
         self.assertIn("four 2022-2025 equal-cost identities", decisions)
         self.assertEqual(
             self.project["model_completeness"]["missing_categories"],
