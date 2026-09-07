@@ -1,0 +1,187 @@
+{
+  "schema_version": "1.0.0",
+  "project_id": "prj_study_im3_building_00978934687",
+  "reviewed_on": "2026-09-06",
+  "scope_note": "Corrective residual synthesis for Digital Crossroad DX-1 under study-modeling-policy-1.3.0. Of 43 legacy estimates, none is retained unchanged: 41 are directed for removal and two are revised using the complete 2024-pay-2025 paid-tax base for the leasehold real account and DX Hammond JV LLC personal-property account. The revised contribution is an exact account-level aggregation across local taxing authorities, and the companion public-service-cost estimate is only the equal-cost break-even identity; neither is an audited recipient receipt, observed public cost or net fiscal result. New estimate IDs prevent silent mutation of the legacy base and their notes identify the superseded estimates for orchestrator reconciliation.",
+  "sources": [],
+  "estimates": [
+    {
+      "estimate_id": "est_study_dx_hammond_latest_local_tax_contribution_reaudit_2026",
+      "project_id": "prj_study_im3_building_00978934687",
+      "metric_code": "study.modeled_latest_project_linked_local_tax_contribution",
+      "label": "Complete 2024-pay-2025 project-linked local property-tax contribution",
+      "category": "fiscal",
+      "unit": "USD_per_year",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 1662655.90,
+      "period": {
+        "kind": "tax_year",
+        "year": 2024,
+        "label": "Assessment year 2024, payable 2025; both installments paid on both included accounts"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Digital Crossroad DX-1 leasehold real-property account and DX Hammond JV LLC personal-property account at 100 Digital Crossroad(s) Drive across Lake County taxing authorities",
+        "county_fips": "18089",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "point_estimate",
+        "low": 1662655.90,
+        "central": 1662655.90,
+        "high": 1662655.90,
+        "interpretation": "Exact arithmetic sum of two separately reported, fully paid account-level property-tax claims for the same assessment/payable year."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "dx_hammond_latest_local_tax_contribution_reaudit_2026",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "leasehold_real_property_tax_paid",
+          "value": 641685.14,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_digital_crossroad_property_taxes_paid_2024",
+            "detail": "Complete 2024-pay-2025 paid property tax for leasehold parcel 45-01-36-176-005.000-023"
+          },
+          "transformation": "Included once without adjustment"
+        },
+        {
+          "name": "dx_jv_personal_property_tax_paid",
+          "value": 1020970.76,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_dx_hammond_jv_personal_taxes_paid_2024",
+            "detail": "Complete 2024-pay-2025 paid property tax for personal-property account 45-123-00809-00"
+          },
+          "transformation": "Included once without adjustment"
+        }
+      ],
+      "confidence": "medium",
+      "confidence_rationale": "Both account payments and arithmetic are exact, but recipient cash timing, the universe of tenant accounts and selected-building allocation are not independently audited.",
+      "decision_relevance": "Provides the latest complete annual local property-tax contribution linked to the operating owner/leasehold accounts without mixing partial 2026 payments, gross distributions, credits, state incentives or the failed 301 expansion.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Recipient-government cash reconciliation, certified completeness of all project-linked tenant accounts, and selected-building allocation"
+      },
+      "derivation": {
+        "method": "allocation",
+        "model_version": "dx-hammond-corrective-account-1.0.0",
+        "formula": "$641,685.14 leasehold real property paid + $1,020,970.76 DX JV personal property paid = $1,662,655.90",
+        "input_claim_ids": [
+          "clm_study_digital_crossroad_property_taxes_paid_2024",
+          "clm_study_dx_hammond_jv_personal_taxes_paid_2024"
+        ],
+        "input_source_ids": [
+          "src_study_lake_county_digital_crossroad_tax_2026",
+          "src_study_lake_county_dx_hammond_personal_property_tax_2026"
+        ],
+        "assumptions": [
+          "The leasehold real-property and DX Hammond JV LLC personal-property accounts are distinct project-linked accounts at the operating 100-address facility.",
+          "The two account payments cover the same assessment/payable year and are mutually exclusive.",
+          "CoreWeave account 45-123-00990-00 is excluded because its 301-address equipment cannot be located inside the selected DX-1 building from the public record.",
+          "MS4 charges, gross distributions, credits, cap savings, TIF flows, state incentives and partial 2026 payments are excluded to prevent scope and timing mismatch."
+        ]
+      },
+      "limitations": [
+        "This is an aggregation of two account-level payment claims, not an audited government-wide receipt total or net benefit.",
+        "The amount spans multiple taxing authorities and does not identify recipient cash dates.",
+        "The account scope is unallocated to the selected inventory building and excludes an unresolved CoreWeave tenant account at 301 Digital Crossroads.",
+        "Indirect taxes, fees, incentives, public financing and public-service costs are not added or subtracted."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Supersedes est_study_full_dx_hammond_latest_local_tax_contribution during orchestrator reconciliation. Do not sum this estimate with either input claim or with the superseded $641,685.14 real-only estimate.",
+      "reviewed_on": "2026-09-06"
+    },
+    {
+      "estimate_id": "est_study_dx_hammond_service_cost_break_even_reaudit_2026",
+      "project_id": "prj_study_im3_building_00978934687",
+      "metric_code": "study.modeled_annual_local_service_cost_break_even",
+      "label": "2024-pay-2025 two-account annual local service-cost break-even threshold",
+      "category": "public_costs",
+      "unit": "USD_per_year",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 1662655.90,
+      "period": {
+        "kind": "tax_year",
+        "year": 2024,
+        "label": "Assessment year 2024, payable 2025; equal-cost threshold for both included paid-tax accounts"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Digital Crossroad DX-1 leasehold real-property account and DX Hammond JV LLC personal-property account at 100 Digital Crossroad(s) Drive across Lake County taxing authorities",
+        "county_fips": "18089",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "point_estimate",
+        "low": 1662655.90,
+        "central": 1662655.90,
+        "high": 1662655.90,
+        "interpretation": "The threshold equals the complete same-year two-account paid-tax aggregation by definition; it is not an estimate of actual public cost."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "dx_hammond_service_cost_break_even_reaudit_2026",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "same_scope_paid_property_tax",
+          "value": 1662655.90,
+          "unit": "USD",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Exact arithmetic identity from the two input claims used by the companion corrective local-tax-contribution estimate"
+          },
+          "transformation": "Used unchanged as the equal-cost threshold"
+        }
+      ],
+      "confidence": "medium",
+      "confidence_rationale": "The threshold identity and underlying account payments are exact, while actual same-scope marginal costs and recipient cash reconciliation remain unknown.",
+      "decision_relevance": "States the annual local public-cost level that would exactly offset the complete 2024-pay-2025 project-linked paid-tax base without fabricating service costs or claiming a fiscal surplus.",
+      "evidence_search": {
+        "direct_observation_status": "not_found",
+        "source_projection_status": "not_found",
+        "remaining_evidence_gap": "Annual marginal fire, police, road, water, wastewater, administrative, infrastructure and financing costs aligned to the same two accounts, recipient jurisdictions and tax year"
+      },
+      "derivation": {
+        "method": "allocation",
+        "model_version": "dx-hammond-corrective-account-1.0.0",
+        "formula": "same-scope annual marginal public-service cost at break-even = $641,685.14 real property paid + $1,020,970.76 personal property paid = $1,662,655.90",
+        "input_claim_ids": [
+          "clm_study_digital_crossroad_property_taxes_paid_2024",
+          "clm_study_dx_hammond_jv_personal_taxes_paid_2024"
+        ],
+        "input_source_ids": [
+          "src_study_lake_county_digital_crossroad_tax_2026",
+          "src_study_lake_county_dx_hammond_personal_property_tax_2026"
+        ],
+        "assumptions": [
+          "The threshold is an identity, not an observed or estimated public cost.",
+          "The hypothetical cost threshold uses the same account, jurisdiction and tax-year scope as the companion paid-tax aggregation.",
+          "No public financing principal, interest, tax reduction, state incentive, utility cost, MS4 charge or expansion promise is treated as marginal annual service cost.",
+          "No positive or negative fiscal margin is asserted without observed same-scope costs."
+        ]
+      },
+      "limitations": [
+        "This is not an estimate of actual public-service cost.",
+        "The input is an account-level paid-tax aggregation, not an audited recipient revenue ledger.",
+        "The account scope is unallocated to the selected inventory building and does not resolve all tenant property.",
+        "A fiscal margin is positive only if actual same-scope marginal costs are below the threshold and negative only if they are above it; neither condition is established."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Supersedes est_study_full_dx_hammond_annual_local_service_cost_break_even during orchestrator reconciliation. Do not sum this threshold with the companion tax-contribution estimate or present it as a public cost or net fiscal result.",
+      "reviewed_on": "2026-09-06"
+    }
+  ]
+}
