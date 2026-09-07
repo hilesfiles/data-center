@@ -56,7 +56,7 @@ class ApplePrinevilleContributionAccountTest(unittest.TestCase):
         self.assertEqual(Counter(row["basis"] for row in self.fragment["records"]), {"reported_actual": 40, "source_projection": 4})
         self.assertEqual(self.project["economic_record_count"], 45)
         self.assertEqual((self.project["reported_actual_count"], self.project["projection_count"]), (41, 4))
-        self.assertEqual(self.project["modeled_synthesis_count"], 0)
+        self.assertEqual(self.project["modeled_synthesis_count"], 5)
         self.assertEqual(self.project["model_completeness"]["missing_categories"], ["community", "construction", "suppliers"])
 
     def test_electricity_and_abatement_series_preserve_source_years(self):
@@ -155,17 +155,52 @@ class ApplePrinevilleContributionAccountTest(unittest.TestCase):
         ):
             self.assertIn(identifier, trail)
 
-    def test_last_resort_modeling_gate_rejects_every_candidate(self):
-        self.assertEqual(self.model_fragment["sources"], [])
-        self.assertEqual(self.model_fragment["estimates"], [])
+    def test_corrective_modeling_gate_retains_five_narrow_syntheses(self):
+        self.assertEqual(len(self.model_fragment["sources"]), 7)
+        self.assertEqual(len(self.model_fragment["estimates"]), 5)
+        rows = {row["estimate_id"]: row for row in self.model_fragment["estimates"]}
+
+        threshold = rows["est_study_apple_prineville_account_19494_service_cost_break_even_2025"]
+        self.assertEqual(threshold["value"], 31_334.07)
+        self.assertIn("not an estimate of actual public-service cost", threshold["interval"]["interpretation"])
+
+        payroll = rows["est_study_apple_prineville_operating_payroll_sensitivity_2018"]
+        self.assertEqual(
+            (payroll["interval"]["low"], payroll["value"], payroll["interval"]["high"]),
+            (4_372_000, 7_730_000, 11_800_000),
+        )
+        self.assertEqual(payroll["derivation"]["method"], "sensitivity_analysis")
+        self.assertIn("not observed payroll", payroll["interval"]["interpretation"])
+
+        electricity_cost = rows["est_study_apple_prineville_electricity_cost_sensitivity_fy2025"]
+        self.assertEqual(
+            (electricity_cost["interval"]["low"], electricity_cost["value"], electricity_cost["interval"]["high"]),
+            (21_493_500, 22_107_600, 28_195_200),
+        )
+        self.assertIn("not Apple's tariff calculation", electricity_cost["interval"]["interpretation"])
+        self.assertTrue(any("Schedule 748 cannot be calculated" in item for item in electricity_cost["limitations"]))
+
+        average_load = rows["est_study_apple_prineville_average_electric_load_fy2025"]
+        self.assertAlmostEqual(average_load["value"], 267_000_000 / 8_760 / 1_000)
+        self.assertIn("not peak demand", average_load["interval"]["interpretation"])
+
+        emissions = rows["est_study_apple_prineville_location_based_electricity_emissions_fy2025"]
+        self.assertAlmostEqual(emissions["interval"]["low"], 267_000 * 365 / 2_204.62262185)
+        self.assertAlmostEqual(emissions["value"], 267_000 * 635.267 / 2_204.62262185)
+        self.assertIn("100 percent renewable", json.dumps(emissions))
+
+        self.assertTrue(all(row["scope"]["inventory_allocation"] == "unallocated" for row in rows.values()))
+        self.assertTrue(all(row["presentation"] == "modeled_not_observed_or_audited" for row in rows.values()))
+
         decisions = self.fragment["project_updates"][-1]["notes"]
         for candidate in (
-            "Investment", "Construction", "Suppliers", "Operations", "Fiscal", "Public costs", "Resources",
-            "Community", "County employment", "County wages", "County GDP",
+            "Investment: rejected", "Construction: rejected", "Suppliers: rejected", "Operations: retained",
+            "Fiscal: net result rejected", "Public costs: retained", "Resources: retained", "Community: rejected",
+            "County employment: rejected", "County wages: rejected", "County GDP: rejected",
         ):
-            self.assertIn(f"{candidate}: rejected", decisions)
-        self.assertIn("Modeled additions: zero", decisions)
-        self.assertIn("direct forecasts added: four", decisions)
+            self.assertIn(candidate, decisions)
+        self.assertIn("Modeled additions: five", decisions)
+        self.assertIn("direct forecasts remain four", decisions)
 
 
 if __name__ == "__main__":
