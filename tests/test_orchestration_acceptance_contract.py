@@ -5,6 +5,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 LEDGER = ROOT / "reports" / "private-sector-study" / "orchestration-ledger.json"
+EVIDENCE = ROOT / "config" / "v1" / "study-economic-evidence.json"
 
 
 class OrchestrationAcceptanceContractTests(unittest.TestCase):
@@ -43,6 +44,16 @@ class OrchestrationAcceptanceContractTests(unittest.TestCase):
                 self.assertNotIn("accepted", rows[position]["status"])
                 self.assertNotIn("integrated", rows[position]["status"])
                 self.assertIsNone(rows[position]["worker_commit_sha"])
+
+    def test_public_utility_payments_have_a_distinct_direct_metric(self):
+        evidence = json.loads(EVIDENCE.read_text(encoding="utf-8"))
+        metrics = {metric["metric_code"]: metric for metric in evidence["metrics"]}
+        utility = metrics["study.utility_service_payments"]
+        self.assertEqual(utility["category"], "fiscal")
+        self.assertEqual(utility["unit"], "USD")
+        self.assertNotEqual(
+            utility["metric_code"], "study.infrastructure_company_payments"
+        )
 
 
 if __name__ == "__main__":
