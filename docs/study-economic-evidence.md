@@ -1,6 +1,6 @@
 # Economic evidence acquisition and review
 
-Reviewed 8 September 2026. Application study release `private-sector-study-1.58.0` publishes 1,487 source records (1,354 reported and 133 source projections) and separately publishes 221 modeled syntheses. Thirty-three projects have completed scoped research audits and are map-eligible. No account passes the separate full contribution-account gate under `study-modeling-policy-1.3.0`; audited accounts remain intentionally incomplete where persistent public-source review cannot defensibly bound material gaps.
+Reviewed 8 September 2026. Application study release `private-sector-study-1.59.0` publishes 1,700 source records (1,539 reported and 161 source projections) and separately publishes 278 modeled syntheses. All 36 projects have completed scoped research audits and are map-eligible. Google Berkeley County passes the mechanical full contribution-account coverage gate; all other audited accounts remain intentionally incomplete where persistent public-source review cannot defensibly bound material gaps.
 
 ## Modeled synthesis boundary
 

@@ -10,7 +10,7 @@ const url = process.env.STUDY_PREVIEW_URL || "http://127.0.0.1:5173/";
 const out = path.resolve(process.env.STUDY_BROWSER_REPORT_DIR || "reports/application-remediation");
 await mkdir(out, { recursive: true });
 const browser = await chromium.launch({ headless: true, args: ["--enable-unsafe-swiftshader"] });
-const page = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
+let page = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
 const errors = [];
 const checks = [];
 page.on("pageerror", error => errors.push(error.message));
@@ -219,12 +219,15 @@ try {
   await page.goto(`${url}#/project/prj_study_im3_building_00610827836`);
   await openDetails(".evidence-ledger");
   await page.getByRole("heading", { name: "Economic evidence", exact: true }).waitFor();
-  assert.equal(await page.getByRole("tab", { name: /Plans & forecasts/ }).getAttribute("aria-selected"), "true");
+  assert.equal(await page.getByRole("tab", { name: /Reported activity/ }).getAttribute("aria-selected"), "true");
+  assert.equal(await page.locator(".economic-record").count(), 20);
+  assert.match(await page.locator(".economic-record-list").innerText(), /power usage effectiveness|carbon-free energy|water/i);
+  await page.getByRole("tab", { name: /Plans & forecasts/ }).click();
+  assert.equal(await page.locator(".economic-record").count(), 4);
   assert.match(await page.locator(".economic-record-list").innerText(), /\$1,300,000,000/);
-  await page.getByRole("tab", { name: /Reported activity/ }).click();
-  assert.equal(await page.locator(".economic-record").count(), 0);
-  assert.match(await page.locator("#economic-records").innerText(), /No reported activity collected/);
-  check("a forecast-only project never displays its plan as reported activity");
+  await page.getByRole("tab", { name: /Modeled synthesis/ }).click();
+  assert.equal(await page.locator(".modeled-record").count(), 12);
+  check("Berkeley keeps reported statewide environmental evidence, project forecasts and last-resort models separate");
 
   await page.goto(`${url}#/project/prj_study_im3_building_00460089167`);
   await openDetails(".evidence-ledger");
@@ -438,19 +441,22 @@ try {
   await googleTaxBase.screenshot({ path: path.join(out, "calendar-tax-base-mobile.png") });
   check("calendar-year assessed values preserve the reported decline and later increase");
 
-  for (const [id, text, count] of [
-    ["campus_00009474864", /\$6,800,000/, 1],
+  for (const [id, text, actualCount, planCount, modelCount] of [
+    ["campus_00009474864", /\$6,800,000/, 82, 17, 15],
   ]) {
     await page.goto(`${url}#/project/prj_study_im3_${id}`);
   await openDetails(".evidence-ledger");
     await page.getByRole("heading", { name: "Economic evidence", exact: true }).waitFor();
-    assert.equal(await page.getByRole("tab", { name: /Plans & forecasts/ }).getAttribute("aria-selected"), "true");
-    assert.equal(await page.locator(".economic-record").count(), count);
+    assert.equal(await page.getByRole("tab", { name: /Reported activity/ }).getAttribute("aria-selected"), "true");
+    assert.equal(await page.locator(".economic-record").count(), actualCount);
+    await page.getByRole("tab", { name: /Plans & forecasts/ }).click();
+    assert.equal(await page.locator(".economic-record").count(), planCount);
     assert.match(await page.locator(".economic-record-list").innerText(), text);
-    await page.getByRole("tab", { name: /Reported activity/ }).click();
-    assert.equal(await page.locator(".economic-record").count(), 0);
+    await page.getByRole("tab", { name: /Modeled synthesis/ }).click();
+    assert.equal(await page.locator(".modeled-record").count(), modelCount);
     await noOverflow();
   }
+  check("Lenoir keeps direct source records, plans and residual modeled synthesis distinct");
   await page.goto(`${url}#/project/prj_study_im3_building_00844389014`);
   await openDetails(".evidence-ledger");
   await page.getByRole("heading", { name: "Economic evidence", exact: true }).waitFor();
@@ -861,6 +867,10 @@ try {
   check("project and register at mobile width");
 
   await page.setViewportSize({ width: 1440, height: 1000 });
+  await page.close();
+  page = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
+  page.on("pageerror", error => errors.push(error.message));
+  page.setDefaultTimeout(20000);
   await page.evaluate(() => performance.clearResourceTimings());
   await page.goto(`${url}#/map`);
   await page.locator("canvas").waitFor();
@@ -869,7 +879,7 @@ try {
     sidebar: getComputedStyle(document.querySelector(".sidebar")).backgroundColor,
     map: getComputedStyle(document.querySelector(".map-section")).backgroundColor,
   })), { sidebar: "rgb(11, 14, 20)", map: "rgb(16, 23, 27)" });
-  assert.match(await page.locator(".review-key").innerText(), /completed project audits \(33\)/i);
+  assert.match(await page.locator(".review-key").innerText(), /completed project audits \(36\)/i);
   assert.doesNotMatch(await page.locator(".legend").innerText(), /IM3|pending|merged|queued/i);
   await page.getByLabel("Research-complete project markers").selectOption("Colocation");
   assert.match(await page.locator(".review-key").innerText(), /completed project audits \(12\)/i);
@@ -883,8 +893,8 @@ try {
   const response = await page.request.get(`${url}data/v1/study/index.json`);
   const study = await response.json();
   assert.equal(study.projects.length, 36);
-  assert.equal(study.projects.filter(p => p.research_completion_status === "account_research_complete").length, 33);
-  assert.equal(study.projects.filter(p => p.model_completeness.status === "full_modeled_account").length, 0);
+  assert.equal(study.projects.filter(p => p.research_completion_status === "account_research_complete").length, 36);
+  assert.equal(study.projects.filter(p => p.model_completeness.status === "full_modeled_account").length, 1);
   const descriptionPage = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
   for (const completed of study.projects.filter(project => project.research_completion_status === "account_research_complete")) {
     await descriptionPage.goto(`${url}#/project/${completed.project_id}`);
@@ -898,7 +908,24 @@ try {
     ), `${completed.name} must render the project description before the study rationale`);
   }
   await descriptionPage.close();
-  check("all thirty-three completed project pages render one description above the study rationale");
+  check("all thirty-six completed project pages render one description above the study rationale");
+  await page.goto(`${url}#/project/prj_study_im3_building_00610827836`);
+  await page.getByRole("heading", { name: "Google Berkeley County", exact: true }).waitFor();
+  await page.getByRole("heading", { name: "About this project", exact: true }).waitFor();
+  await page.locator(".account-count").getByText("24 sourced records · 12 modeled syntheses", { exact: true }).waitFor();
+  await page.screenshot({ path: path.join(out, "google-berkeley-final-batch-desktop.png") });
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto(`${url}#/project/prj_study_im3_campus_00009474864`);
+  await page.getByRole("heading", { name: "Google Lenoir", exact: true }).waitFor();
+  await page.getByRole("heading", { name: "About this project", exact: true }).waitFor();
+  await page.locator(".account-count").getByText("99 sourced records · 15 modeled syntheses", { exact: true }).waitFor();
+  await noOverflow();
+  await page.screenshot({ path: path.join(out, "google-lenoir-final-batch-mobile.png") });
+  await page.setViewportSize({ width: 1440, height: 1000 });
+  check("final-batch Berkeley desktop and Lenoir mobile pages render audited accounts and descriptions");
+  await page.goto(`${url}#/map`);
+  await page.locator("canvas").waitFor();
+  await page.waitForFunction(() => !document.querySelector(".map-message") && !document.querySelector(".map-loading"), undefined, { timeout: 45000 });
   const target = study.projects.find(p => p.name === "Apple Mesa");
   const canvas = await page.locator("canvas").boundingBox();
   const world = 512 * 2 ** 3.25;
@@ -935,7 +962,7 @@ try {
   await page.mouse.click(targetX, targetY);
   await page.waitForURL(`**/project/${target.project_id}`);
   await page.getByRole("heading", { name: "Sources & research history" }).waitFor();
-  check("map preserves all thirty-three completed project audits while keeping analytical completeness separate");
+  check("map preserves all thirty-six completed project audits while keeping analytical completeness separate");
 
   const legacyPage = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
   await legacyPage.route("**/data/v1/study/index.json?*", async route => {
@@ -944,8 +971,8 @@ try {
     await route.fulfill({ json: legacyStudy });
   });
   await legacyPage.goto(`${url}#/map`, { waitUntil: "domcontentloaded" });
-  await legacyPage.getByText("28 completed project research accounts are mapped.", { exact: false }).waitFor();
-  assert.match(await legacyPage.locator(".review-key").innerText(), /completed project audits \(28\)/i);
+  await legacyPage.getByText("31 completed project research accounts are mapped.", { exact: false }).waitFor();
+  assert.match(await legacyPage.locator(".review-key").innerText(), /completed project audits \(31\)/i);
   await legacyPage.close();
   check("map remains populated when a browser holds an index without the research-completion field");
 

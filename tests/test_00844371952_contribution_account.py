@@ -48,12 +48,12 @@ class GoogleBridgeportContributionAccountTest(unittest.TestCase):
     def test_identity_counts_and_actual_projection_split(self):
         self.assertEqual(self.fragment["project_id"], PROJECT)
         self.assertEqual(self.model_fragment["project_id"], PROJECT)
-        self.assertEqual(len(self.fragment["records"]), 75)
-        self.assertEqual(len(self.detail["economic_records"]), 76)
-        self.assertEqual(self.detail["economic_record_count"], 76)
-        self.assertEqual(self.detail["reported_actual_count"], 69)
-        self.assertEqual(self.detail["projection_count"], 7)
-        self.assertEqual(self.detail["modeled_synthesis_count"], 42)
+        self.assertEqual(len(self.fragment["records"]), 92)
+        self.assertEqual(len(self.detail["economic_records"]), 93)
+        self.assertEqual(self.detail["economic_record_count"], 93)
+        self.assertEqual(self.detail["reported_actual_count"], 83)
+        self.assertEqual(self.detail["projection_count"], 10)
+        self.assertEqual(self.detail["modeled_synthesis_count"], 30)
         self.assertEqual(self.detail["county_fips"], "01071")
 
         projections = [
@@ -63,7 +63,7 @@ class GoogleBridgeportContributionAccountTest(unittest.TestCase):
         self.assertTrue(all(row["period"]["kind"] == "projection_horizon" for row in projections))
         self.assertEqual(
             {row["value"] for row in projections},
-            {100_000, 100, 600_000_000, 1_000, 2_000_000, 550_000, 1_500_000_000},
+            {60, 100_000, 100, 350, 93_600_000, 600_000_000, 1_000, 2_000_000, 550_000, 1_500_000_000},
         )
 
     def test_three_account_2020_2025_fiscal_series_and_exclusions(self):
@@ -152,7 +152,7 @@ class GoogleBridgeportContributionAccountTest(unittest.TestCase):
         self.assertFalse(any("labor_income" in claim_id for claim_id in evidence_ids))
 
     def test_water_pue_and_cfe_keep_location_scope_and_rounding(self):
-        models = {row["estimate_id"]: row for row in self.grouped[PROJECT]}
+        records = {row["claim_id"]: row for row in self.detail["economic_records"]}
         withdrawal = next(
             row for row in self.detail["economic_records"]
             if row["claim_id"] == "clm_study_google_bridgeport_water_withdrawal_2024"
@@ -162,21 +162,25 @@ class GoogleBridgeportContributionAccountTest(unittest.TestCase):
         self.assertEqual(withdrawal["pdf_page"], 110)
 
         for year, expected in {2021: 1.13, 2022: 1.12, 2023: 1.10, 2024: 1.10}.items():
-            row = models[f"est_study_google_bridgeport_pue_{year}"]
+            row = records[f"clm_study_google_bridgeport_pue_{year}"]
             self.assertEqual(row["value"], expected)
             self.assertEqual(row["scope"]["inventory_allocation"], "unallocated")
 
-        consumption = models["est_study_google_bridgeport_water_consumption_2024"]
-        discharge = models["est_study_google_bridgeport_water_discharge_2024"]
+        consumption = records["clm_study_google_bridgeport_water_consumption_2024"]
+        discharge = records["clm_study_google_bridgeport_water_discharge_2024"]
         self.assertEqual(consumption["value"], 182_800_000)
         self.assertEqual(discharge["value"], 18_800_000)
-        self.assertEqual(consumption["interval"]["low"], 182_750_000)
-        self.assertEqual(consumption["interval"]["high"], 182_850_000)
+        self.assertEqual(consumption["value_qualifier"], "approximately")
+        self.assertEqual(consumption["pdf_page"], 110)
         self.assertEqual(
-            {models[f"est_study_google_bridgeport_cfe_{kind}_{year}"]["value"]
+            {records[f"clm_study_google_bridgeport_cfe_{kind}_{year}"]["value"]
              for kind in ("site", "grid") for year in (2022, 2023)},
             {52, 53, 63, 65},
         )
+        self.assertFalse(any(
+            any(token in row["estimate_id"] for token in ("_pue_", "_cfe_site_", "_cfe_grid_", "_water_consumption_", "_water_discharge_"))
+            for row in self.grouped[PROJECT]
+        ))
 
     def test_descriptive_county_comparisons_are_not_causal_effects(self):
         models = {row["estimate_id"]: row for row in self.grouped[PROJECT]}

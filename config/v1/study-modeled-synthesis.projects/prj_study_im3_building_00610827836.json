@@ -130,32 +130,6 @@
       "limitations": ["Actual marginal public cost is unobserved.", "Taxing-unit costs differ.", "One-parcel scope is incomplete."], "presentation": "modeled_not_observed_or_audited", "notes": "Never report as actual cost, net benefit, fiscal surplus, or additive to the tax contribution.", "reviewed_on": "2026-09-08"
     },
     {
-      "estimate_id": "est_study_google_sc_water_consumption_2022",
-      "project_id": "prj_study_im3_building_00610827836", "metric_code": "study.modeled_annual_water_consumption", "label": "Source-reported South Carolina data-center water consumption", "category": "resources", "unit": "gallons_per_year", "measure_type": "flow", "basis": "modeled_synthesis", "value": 662100000,
-      "period": {"kind": "calendar_year", "year": 2022, "label": "Calendar-year 2022 source reporting boundary"},
-      "scope": {"level": "state", "label": "Google South Carolina data-center reporting boundary", "state_abbr": "SC", "inventory_allocation": "unallocated"},
-      "interval": {"kind": "point_estimate", "low": 662100000, "central": 662100000, "high": 662100000, "interpretation": "Arithmetic unit expansion of the source's rounded 662.1 million gallons; no statistical interval."},
-      "contribution_channel": "not_applicable", "aggregation": {"aggregation_id": "google_sc_water_consumption_2022", "role": "standalone", "overlap_policy": "do_not_sum_outside_declared_total"},
-      "parameters": [{"name": "reported_million_gallons", "value": 662.1, "unit": "million_gallons_per_year", "provenance": {"kind": "source", "reference_id": "src_study_google_sc_impact_2024", "detail": "2022 data-center water consumption"}, "transformation": "Multiplied by 1,000,000"}],
-      "confidence": "medium", "confidence_rationale": "Operator-supplied annual figure is rounded and unallocated but directly reported in the commissioned study.", "decision_relevance": "Preserves resource-use magnitude without confusing groundwater withdrawal, consumption, or building use.",
-      "evidence_search": {"direct_observation_status": "partial", "source_projection_status": "not_found", "remaining_evidence_gap": "Meter coverage, withdrawal and discharge identity, potable/reclaimed split, monthly peaks, cooling process, cost, and building allocation"},
-      "derivation": {"method": "engineering_estimate", "model_version": "google-berkeley-account-1.0.0", "formula": "662.1 million gallons × 1,000,000 = 662,100,000 gallons", "input_claim_ids": [], "input_source_ids": ["src_study_google_sc_impact_2024"], "assumptions": ["The source unit and reporting boundary are reproduced as published.", "No selected-building allocation is made."]},
-      "limitations": ["Operator-supplied rounded value.", "State/data-center reporting boundary is not selected-building scope.", "Not interchangeable with groundwater withdrawal."], "presentation": "modeled_not_observed_or_audited", "notes": "Modeled register is used because the direct-evidence catalog lacks annual water consumption; exact catalog proposal appears in the evidence ledger.", "reviewed_on": "2026-09-08"
-    },
-    {
-      "estimate_id": "est_study_google_sc_water_consumption_2023",
-      "project_id": "prj_study_im3_building_00610827836", "metric_code": "study.modeled_annual_water_consumption", "label": "Source-reported South Carolina data-center water consumption", "category": "resources", "unit": "gallons_per_year", "measure_type": "flow", "basis": "modeled_synthesis", "value": 763400000,
-      "period": {"kind": "calendar_year", "year": 2023, "label": "Calendar-year 2023 source reporting boundary"},
-      "scope": {"level": "state", "label": "Google South Carolina data-center reporting boundary", "state_abbr": "SC", "inventory_allocation": "unallocated"},
-      "interval": {"kind": "point_estimate", "low": 763400000, "central": 763400000, "high": 763400000, "interpretation": "Arithmetic unit expansion of the source's rounded 763.4 million gallons; no statistical interval."},
-      "contribution_channel": "not_applicable", "aggregation": {"aggregation_id": "google_sc_water_consumption_2023", "role": "standalone", "overlap_policy": "do_not_sum_outside_declared_total"},
-      "parameters": [{"name": "reported_million_gallons", "value": 763.4, "unit": "million_gallons_per_year", "provenance": {"kind": "source", "reference_id": "src_study_google_sc_impact_2024", "detail": "2023 data-center water consumption"}, "transformation": "Multiplied by 1,000,000"}],
-      "confidence": "medium", "confidence_rationale": "Operator-supplied annual figure is rounded and unallocated but directly reported in the commissioned study.", "decision_relevance": "Preserves resource-use magnitude without confusing groundwater withdrawal, consumption, or building use.",
-      "evidence_search": {"direct_observation_status": "partial", "source_projection_status": "not_found", "remaining_evidence_gap": "Meter coverage, withdrawal and discharge identity, potable/reclaimed split, monthly peaks, cooling process, cost, and building allocation"},
-      "derivation": {"method": "engineering_estimate", "model_version": "google-berkeley-account-1.0.0", "formula": "763.4 million gallons × 1,000,000 = 763,400,000 gallons", "input_claim_ids": [], "input_source_ids": ["src_study_google_sc_impact_2024"], "assumptions": ["The source unit and reporting boundary are reproduced as published.", "No selected-building allocation is made."]},
-      "limitations": ["Operator-supplied rounded value.", "State/data-center reporting boundary is not selected-building scope.", "Not interchangeable with groundwater withdrawal."], "presentation": "modeled_not_observed_or_audited", "notes": "Modeled register is used because the direct-evidence catalog lacks annual water consumption; exact catalog proposal appears in the evidence ledger.", "reviewed_on": "2026-09-08"
-    },
-    {
       "estimate_id": "est_study_google_berkeley_county_employment_gap_2024",
       "project_id": "prj_study_im3_building_00610827836", "metric_code": "study.modeled_county_employment_comparison_gap", "label": "Modeled Berkeley County employment comparison gap", "category": "county_outcome", "unit": "percent", "measure_type": "change", "basis": "modeled_synthesis", "value": 53.03727335590227,
       "period": {"kind": "calendar_year", "year": 2024, "label": "2024 host-county outcome relative to a mechanically matched benchmark; 2007 operating anchor"},

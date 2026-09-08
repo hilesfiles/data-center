@@ -4,7 +4,7 @@
 
 ## Current state and target boundary
 
-Study release `private-sector-study-1.58.0` contains 36 selected projects across 35 counties and 23 states. Thirty-three projects have completed scoped research audits and remain visible on the community map. No project currently passes the separate completed-contribution-account analytical gate; unbounded supplier, community, construction, operating, resource, public-cost, or county-outcome gaps are not filled merely to pass it. The current release contains 1,487 source records and 221 separately governed modeled syntheses, but no pooled estimate and no causal estimate.
+Study release `private-sector-study-1.59.0` contains 36 selected projects across 35 counties and 23 states. All 36 projects have completed scoped research audits and remain visible on the community map. Google Berkeley County passes the mechanical completed-contribution-account coverage gate; unbounded supplier, community, construction, operating, resource, public-cost, or county-outcome gaps in other projects are not filled merely to pass it. The current release contains 1,700 source records and 278 separately governed modeled syntheses, but no pooled estimate and no causal estimate.
 
 The pooled model will not replace the project and county accounts. Those accounts establish the exposure inputs, evidence state, scope, timing, uncertainty, and unresolved gaps. The pooled layer will evaluate whether consistent relationships appear across communities after projects and phases are aligned at a common county-year grain.
 
@@ -181,7 +181,7 @@ National compute capacity and security implications remain a separate interpreti
 
 ## Implementation sequence
 
-1. Complete the common facility-year account contract for the remaining 33 projects while preserving explicit missingness.
+1. Maintain the completed common facility-year account contract for all 36 projects while preserving explicit missingness and later source revisions.
 2. Add schemas and builders for facility-year and county-year exposure, including overlap and evidence-state validation.
 3. Research and version comparison-pool exposure screens using the preserved national inventory and project histories.
 4. Register outcome-specific Level 0 and Level 1 definitions and run statistical power and influence simulations before publication.

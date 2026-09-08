@@ -52,7 +52,10 @@ def validate_evidence(evidence, candidates):
         ids.add(r["claim_id"])
         if r["project_id"] not in projects or r["metric_code"] not in metrics or r["source_id"] not in sources:
             raise ValueError("Unknown economic project, metric or source")
-        if r["scope"]["county_fips"] != projects[r["project_id"]]["county_fips"]:
+        if r["scope"]["level"] == "state":
+            if r["scope"]["state_abbr"] != projects[r["project_id"]]["state_abbr"]:
+                raise ValueError("Economic evidence host state mismatch")
+        elif r["scope"]["county_fips"] != projects[r["project_id"]]["county_fips"]:
             raise ValueError("Economic evidence host county mismatch")
         if not math.isfinite(r["value"]):
             raise ValueError("Economic value must be finite")

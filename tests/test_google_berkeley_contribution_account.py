@@ -42,10 +42,10 @@ class GoogleBerkeleyContributionAccountTest(unittest.TestCase):
 
     def test_account_counts_identity_and_full_gate(self):
         self.assertEqual(self.detail["county_fips"], "45015")
-        self.assertEqual(self.detail["economic_record_count"], 18)
-        self.assertEqual(self.detail["reported_actual_count"], 14)
+        self.assertEqual(self.detail["economic_record_count"], 24)
+        self.assertEqual(self.detail["reported_actual_count"], 20)
         self.assertEqual(self.detail["projection_count"], 4)
-        self.assertEqual(self.detail["modeled_synthesis_count"], 14)
+        self.assertEqual(self.detail["modeled_synthesis_count"], 12)
         gate = self.detail["model_completeness"]
         self.assertEqual(gate["status"], "full_modeled_account")
         self.assertEqual(gate["missing_categories"], [])
@@ -68,9 +68,7 @@ class GoogleBerkeleyContributionAccountTest(unittest.TestCase):
         self.assertTrue(all(row["period"]["kind"] == "projection_horizon" for row in projections))
 
     def test_tax_break_even_and_water_identity_are_exactly_reproducible(self):
-        models = {row["metric_code"]: row for row in self.grouped[PROJECT] if row["metric_code"] not in {
-            "study.modeled_annual_water_consumption",
-        }}
+        models = {row["metric_code"]: row for row in self.grouped[PROJECT]}
         tax = models["study.modeled_latest_project_linked_local_tax_contribution"]
         threshold = models["study.modeled_annual_local_service_cost_break_even"]
         self.assertEqual(tax["value"], 90_266.72)
@@ -79,12 +77,19 @@ class GoogleBerkeleyContributionAccountTest(unittest.TestCase):
         self.assertIn("not observed cost", threshold["derivation"]["assumptions"][0].lower())
 
         water = sorted(
-            (row["period"]["year"], row["value"], row["parameters"][0]["value"])
-            for row in self.grouped[PROJECT]
-            if row["metric_code"] == "study.modeled_annual_water_consumption"
+            (row["period"]["year"], row["value"])
+            for row in self.detail["economic_records"]
+            if row["metric_code"] == "study.annual_water_consumption"
         )
-        self.assertEqual(water, [(2022, 662_100_000, 662.1), (2023, 763_400_000, 763.4)])
-        self.assertTrue(all(value == source_mg * 1_000_000 for _, value, source_mg in water))
+        self.assertEqual(water, [(2022, 662_100_000), (2023, 763_400_000)])
+        direct = [row for row in self.detail["economic_records"] if row["metric_code"] in {
+            "study.annual_water_consumption", "study.data_center_pue",
+            "study.hourly_carbon_free_energy_share",
+        }]
+        self.assertEqual(len(direct), 6)
+        self.assertTrue(all(row["scope"]["level"] == "state" for row in direct))
+        self.assertTrue(all(row["scope"]["state_abbr"] == "SC" for row in direct))
+        self.assertFalse(any(row["metric_code"] == "study.modeled_annual_water_consumption" for row in self.grouped[PROJECT]))
 
     def test_multiplier_channels_and_source_contribution_outputs_are_protected(self):
         rows = self.grouped[PROJECT]
@@ -127,7 +132,7 @@ class GoogleBerkeleyContributionAccountTest(unittest.TestCase):
             "assessor", "permit", "filot", "supplier", "payroll", "water", "electricity",
             "wastewater", "emissions", "cooling", "community", "gdp", "not a google effect",
             "cloudflare", "no complete annual grant ledger", "candidate_pending_adversarial_review",
-            "adversarial_review_complete_corrected_provisional",
+            "adversarial_review_complete_reconciled",
         ):
             self.assertIn(term, text)
         proposal = next(row for row in updates if row["title"] == "Corrected environmental catalog, scope, claim, and regression proposal")

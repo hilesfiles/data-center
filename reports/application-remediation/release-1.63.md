@@ -1,0 +1,13 @@
+# Application release 1.63
+
+Application release 1.63 advances the generated study data to `private-sector-study-1.59.0` and publishes the independently audited Google Berkeley County, Google Bridgeport/Jackson County, and Google Lenoir accounts. This is the final three-project batch in the frozen 33-project research queue.
+
+The batch adds 213 source records—185 reported observations and 28 source projections—and 57 separately governed last-resort or source-model syntheses. The study now contains 1,700 source records—1,539 reported and 161 projected—and 278 modeled syntheses. All 36 completed research audits are map-eligible; Google Berkeley County passes the separate mechanical full-account coverage gate while every remaining analytical gap stays explicit.
+
+Google Berkeley County adds 23 project-scoped source records and 12 retained syntheses. Six 2022–2023 water-consumption, PUE, and hourly carbon-free-energy observations are canonical at their reported South Carolina data-center scope. Two deterministic water transcriptions were removed from modeled synthesis; commissioned statewide contribution-analysis outputs remain visibly source-modeled.
+
+Google Bridgeport/Jackson County adds 92 project-scoped source records and 30 retained syntheses. The account preserves three exact-address taxpayer histories, direct community transfers, separate 350-, approximately 465-, and 566-acre boundaries, a per-facility 60 MW design projection, and a greater-than-$93.6 million 20-year direct-payroll projection. Twelve source-reported water, PUE, and carbon-free-energy rows were moved from modeled synthesis into direct evidence; Deloitte/Google IMPLAN outputs, tax aggregations, the equal-cost threshold, and descriptive county comparisons remain modeled and noncausal.
+
+Google Lenoir adds 98 project-scoped source records and 15 retained syntheses. Direct records include property and abatement histories, water consumption and discharge, PUE, hourly carbon-free-energy share, LNR4A floor area and design capacity, 2019–2023 pollutant-specific actual emissions, and the withdrawn JDIG application's 200-job condition. Three deterministic water transcriptions were retired from modeled synthesis; residual models are limited to assessed-value aggregation, the explicitly contradicted historical payroll counterfactual, and descriptive county comparisons.
+
+Each project contains exactly one factual project description. The project pages render “About this project” above “Why this project is in the study,” and publication verification covers all 36 map markers plus direct project and county navigation.

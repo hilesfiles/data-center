@@ -1,8 +1,8 @@
 {
   "schema_version": "1.0.0",
-  "study_release": "private-sector-study-1.58.0",
-  "generated_at": "2026-09-08T00:03:23Z",
-  "queue_status": "batch_10_validated_pending_push_approval",
+  "study_release": "private-sector-study-1.59.0",
+  "generated_at": "2026-09-08T02:45:39Z",
+  "queue_status": "batch_11_validated_pending_push",
   "ranking_method": "Descending covered contribution-account category count, then descending sourced economic-record count, then ascending project_id.",
   "worker_research_contract": {
     "version": "3.1.0",
@@ -23,27 +23,10 @@
     "ui_safety_rule": "Workers use noninteractive retrieval only and must not invoke file pickers, save or print dialogs, visible computer control, browser download flows, or the user's Downloads directory."
   },
   "latest_publication": {
-    "batch": 9,
-    "release_id": "private-sector-study-1.57.0",
-    "commit": "772659ecea6460d0bd0a8e677bd16f96ae050ac9",
-    "remote_branch": "origin/main",
-    "reconciled_counts": {
-      "economic_records": 1230,
-      "reported_actual_records": 1112,
-      "source_forecast_records": 118,
-      "modeled_synthesis_records": 146,
-      "full_modeled_county_accounts": 0,
-      "research_complete_projects": 30
-    },
-    "validation_result": "Passed 188 repository tests, the complete 65-schema data-contract validation, TypeScript compilation, the production build, the complete browser suite, desktop and mobile completed-project inspection, all 30 completed-project description/order checks, all 30 map entries, direct project and county navigation, legacy-index fallback, and confirmed preview-process shutdown. The live manifest independently resolved to private-sector-study-1.57.0.",
-    "validate_and_build_run": "https://github.com/hilesfiles/data-center/actions/runs/34159360710",
-    "pages_deploy_run": "https://github.com/hilesfiles/data-center/actions/runs/34159360747",
-    "live_manifest": "https://hilesfiles.github.io/data-center/data/v1/study/manifest.json",
-    "verified_at": "2026-09-07T20:27:00Z"
-  },
-  "pending_publication": {
     "batch": 10,
     "release_id": "private-sector-study-1.58.0",
+    "commit": "df63e07a2409ebfd8a2797533323a4c1ae04d03c",
+    "remote_branch": "origin/codex/orchestration-batch-1",
     "reconciled_counts": {
       "economic_records": 1487,
       "reported_actual_records": 1354,
@@ -52,8 +35,21 @@
       "full_modeled_county_accounts": 0,
       "research_complete_projects": 33
     },
-    "validation_result": "Passed 225 repository tests, the complete 65-schema data-contract validation, TypeScript compilation, the production build, the complete browser suite, desktop and mobile Meta Altoona inspection, all 33 completed-project description/order checks, all 33 map entries, direct project and county navigation, legacy-index fallback, and confirmed preview-process shutdown.",
-    "push_status": "awaiting_explicit_user_approval_after_host_sensitive-ledger_egress_warning"
+    "validation_result": "Passed 225 repository tests, the complete 65-schema data-contract validation, TypeScript compilation, production build, full browser suite, desktop/mobile project inspection, all 33 completed-project description/order checks, all 33 map entries, direct project/county navigation, legacy-index fallback, and preview-process shutdown."
+  },
+  "pending_publication": {
+    "batch": 11,
+    "release_id": "private-sector-study-1.59.0",
+    "reconciled_counts": {
+      "economic_records": 1700,
+      "reported_actual_records": 1539,
+      "source_forecast_records": 161,
+      "modeled_synthesis_records": 278,
+      "full_modeled_county_accounts": 1,
+      "research_complete_projects": 36
+    },
+    "validation_result": "Passed 247 repository tests, the complete 65-schema data-contract validation, TypeScript compilation, production build, full browser suite, desktop Berkeley and mobile Lenoir inspection, all 36 completed-project description/order checks, all 36 map entries, direct project/county navigation, legacy-index fallback, and preview-process shutdown.",
+    "push_status": "ready_to_push"
   },
   "corrective_model_eligibility_queue": {
     "status": "foundational_full_account_reaudit_published",
@@ -1705,16 +1701,22 @@
           "study.modeled_county_wage_comparison_gap"
         ]
       },
-      "worker_task_id": null,
-      "worker_branch": null,
-      "worker_commit_sha": null,
-      "status": "queued",
-      "source_record_additions": 0,
-      "forecast_additions": 0,
-      "modeled_record_additions": 0,
-      "validation_result": null,
-      "integration_commit": null,
-      "remaining_unresolved_analytical_limits": []
+      "worker_task_id": "01a07e72-8ec2-7000-80a0-d6f5c2f165fd",
+      "worker_branch": "detached-worktree-da85",
+      "worker_commit_sha": "97bd94b152b4781faa9ffbc65b06113e5493136b",
+      "independent_acceptance_audit": "Accepted after an orchestrator review of the worker correction and a central source-versus-model audit. The audit promoted six source-reported statewide environmental observations into direct evidence, retired two duplicate water transcriptions from modeled synthesis, verified one compliant project description, and reran the eight project-scoped tests plus the 22-test final-batch suite.",
+      "status": "accepted_integrated_validated_pending_push",
+      "source_record_additions": 23,
+      "forecast_additions": 3,
+      "modeled_record_additions": 12,
+      "validation_result": "Independently audited; 24 merged source records (20 reported actuals, four projections) and 12 syntheses. Six state-scope environmental observations were promoted to direct evidence and two duplicate water models retired. Eight worker tests and the 22-test final-batch focused suite pass.",
+      "integration_commit": "39e387f/fb62c4e plus central direct-metric reconciliation pending final release commit",
+      "remaining_unresolved_analytical_limits": [
+        "Operating-campus and personal-property account universe, realized FILOT and credit schedules, complete recipient receipts, observed payroll and supplier ledgers, facility electricity and utility bills, wastewater, generators, emissions, marginal public-service costs, annual community reconciliation and causal county effects remain unresolved.",
+        "State-scope water, PUE and hourly carbon-free-energy observations are not allocated to the selected building."
+      ],
+      "candidate_commit_sha": "85aee8317134b1a5ceac164bceb5038b9d7589d3",
+      "corrective_commit_sha": "97bd94b152b4781faa9ffbc65b06113e5493136b"
     },
     {
       "queue_position": 32,
@@ -1747,16 +1749,22 @@
           "study.modeled_county_wage_comparison_gap"
         ]
       },
-      "worker_task_id": null,
-      "worker_branch": null,
-      "worker_commit_sha": null,
-      "status": "queued",
-      "source_record_additions": 0,
-      "forecast_additions": 0,
-      "modeled_record_additions": 0,
-      "validation_result": null,
-      "integration_commit": null,
-      "remaining_unresolved_analytical_limits": []
+      "worker_task_id": "01a07e72-b17e-79c3-b709-962ac7bce3d6",
+      "worker_branch": "detached-worktree-fa57",
+      "worker_commit_sha": "dd147d4087abf6cb25d1907a38c5424f8d74cc2b",
+      "independent_acceptance_audit": "Accepted after an orchestrator review of the worker correction and a central source-versus-model audit. The audit promoted twelve source-reported environmental records and the source-supported site, facility-power and payroll boundaries into direct evidence, retired twelve environmental transcriptions from modeled synthesis, verified one compliant project description, and reran the nine project-scoped tests plus the 22-test final-batch suite.",
+      "status": "accepted_integrated_validated_pending_push",
+      "source_record_additions": 92,
+      "forecast_additions": 9,
+      "modeled_record_additions": 30,
+      "validation_result": "Independently audited; 93 merged source records (83 reported actuals, ten projections) and 30 residual syntheses. Twelve source-reported environmental rows were promoted to direct evidence and retired from models. Nine worker tests and the 22-test final-batch focused suite pass.",
+      "integration_commit": "d1ce637/929da76 plus central direct-metric reconciliation pending final release commit",
+      "remaining_unresolved_analytical_limits": [
+        "Executed incentive agreement, complete campus account universe, permits and building dimensions, supplier payments, actual payroll, facility bills and load, environmental permits, same-scope public costs, grant overlap reconciliation and causal design remain unresolved.",
+        "The $129 million 20-year economic-impact projection remains uncataloged because the source does not define the measure."
+      ],
+      "candidate_commit_sha": "e3a0b32ae0954ed38c9875674d3c1238144b6a6a",
+      "corrective_commit_sha": "dd147d4087abf6cb25d1907a38c5424f8d74cc2b"
     },
     {
       "queue_position": 33,
@@ -1789,16 +1797,22 @@
           "study.modeled_county_wage_comparison_gap"
         ]
       },
-      "worker_task_id": null,
-      "worker_branch": null,
-      "worker_commit_sha": null,
-      "status": "queued",
-      "source_record_additions": 0,
-      "forecast_additions": 0,
-      "modeled_record_additions": 0,
-      "validation_result": null,
-      "integration_commit": null,
-      "remaining_unresolved_analytical_limits": []
+      "worker_task_id": "01a07e72-a173-7062-96aa-cd2dcb10cdbd",
+      "worker_branch": "detached-worktree-047d",
+      "worker_commit_sha": "f5bfe9a0a14f79463c63a9d6c16cdf2048679657",
+      "independent_acceptance_audit": "Accepted after an orchestrator review of the worker correction and a central source-versus-model audit. The audit promoted forty-five source-reported resource, design and emissions records plus the JDIG job condition into direct evidence, retired three duplicate water transcriptions from modeled synthesis, verified one compliant project description, and reran the eleven project-scoped tests plus the 22-test final-batch suite.",
+      "status": "accepted_integrated_validated_pending_push",
+      "source_record_additions": 98,
+      "forecast_additions": 16,
+      "modeled_record_additions": 15,
+      "validation_result": "Independently audited; 99 merged source records (82 reported actuals, 17 projections) and 15 residual syntheses. Forty-five resource/design/emissions records plus the JDIG job condition were promoted to direct evidence and three duplicate water models retired. Eleven worker tests and the 22-test final-batch focused suite pass.",
+      "integration_commit": "ade47d1/3dddc59 plus central direct-metric reconciliation pending final release commit",
+      "remaining_unresolved_analytical_limits": [
+        "Actual annual-average FTE and payroll, supplier payments and geography, customer electricity and utility bills, complete local tax receipts and incentives, same-scope marginal public-service costs and causal county outcomes remain unresolved.",
+        "The LNR4A floor area and design capacity remain source projections; emissions and environmental values are unallocated across individual campus buildings."
+      ],
+      "candidate_commit_sha": "9577455c65b8944b2d445e9ad1a8ffb2dd9b197c",
+      "corrective_commit_sha": "f5bfe9a0a14f79463c63a9d6c16cdf2048679657"
     }
   ]
 }

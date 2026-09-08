@@ -62,25 +62,25 @@ class GoogleLenoirContributionAccountTest(unittest.TestCase):
         )
         self.assertEqual(issues, [])
         self.assertEqual(len(self.fragment["sources"]), 33)
-        self.assertEqual(len(self.fragment["records"]), 52)
-        self.assertEqual(len(self.fragment["project_updates"]), 15)
+        self.assertEqual(len(self.fragment["records"]), 98)
+        self.assertEqual(len(self.fragment["project_updates"]), 16)
         self.assertEqual(
-            sum(row["basis"] == "reported_actual" for row in self.fragment["records"]), 39
+            sum(row["basis"] == "reported_actual" for row in self.fragment["records"]), 82
         )
         self.assertEqual(
-            sum(row["basis"] == "source_projection" for row in self.fragment["records"]), 13
+            sum(row["basis"] == "source_projection" for row in self.fragment["records"]), 16
         )
-        self.assertEqual(len(self.synthesis_fragment["estimates"]), 18)
-        self.assertEqual(self.project["economic_record_count"], 53)
-        self.assertEqual(self.project["reported_actual_count"], 39)
-        self.assertEqual(self.project["projection_count"], 14)
-        self.assertEqual(self.project["modeled_synthesis_count"], 18)
+        self.assertEqual(len(self.synthesis_fragment["estimates"]), 15)
+        self.assertEqual(self.project["economic_record_count"], 99)
+        self.assertEqual(self.project["reported_actual_count"], 82)
+        self.assertEqual(self.project["projection_count"], 17)
+        self.assertEqual(self.project["modeled_synthesis_count"], 15)
         self.assertEqual(
             self.fragment["project_updates"][-1]["title"],
-            "Independent acceptance audit after adversarial continuation",
+            "Orchestrator adopted direct resource, design, emissions and incentive records",
         )
         self.assertIn(
-            "accepted_after_adversarial_review",
+            "water consumption and discharge",
             self.fragment["project_updates"][-1]["notes"],
         )
 
@@ -206,15 +206,16 @@ class GoogleLenoirContributionAccountTest(unittest.TestCase):
         )
         self.assertIn("not realized", " ".join(payroll["limitations"]).lower())
 
-    def test_water_models_have_rounding_bands_and_no_false_additivity(self):
+    def test_source_reported_water_is_direct_and_not_duplicated_as_modeled(self):
         water = sorted(
-            (row for row in self.synthesis_fragment["estimates"] if row["metric_code"] == "study.modeled_annual_water_consumption"),
+            (row for row in self.fragment["records"] if row["metric_code"] == "study.annual_water_consumption"),
             key=lambda row: row["period"]["year"],
         )
         self.assertEqual([(row["period"]["year"], row["value"]) for row in water], [(2022, 320_500_000), (2023, 336_800_000), (2024, 327_800_000)])
-        self.assertTrue(all(row["interval"]["high"] - row["interval"]["low"] == 100_000 for row in water))
+        self.assertTrue(all(row["value_qualifier"] == "approximately" for row in water))
         self.assertTrue(all(row["scope"]["inventory_allocation"] == "unallocated" for row in water))
-        self.assertTrue(all("not" in " ".join(row["limitations"]).lower() for row in water))
+        self.assertTrue(all("not withdrawal or discharge" in row["notes"].lower() for row in water))
+        self.assertFalse(any(row["metric_code"] == "study.modeled_annual_water_consumption" for row in self.synthesis_fragment["estimates"]))
 
     def _matched(self, metric, k=5):
         treated = self.panels["37027"]
