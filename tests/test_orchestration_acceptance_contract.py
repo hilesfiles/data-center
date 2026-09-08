@@ -6,6 +6,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 LEDGER = ROOT / "reports" / "private-sector-study" / "orchestration-ledger.json"
 EVIDENCE = ROOT / "config" / "v1" / "study-economic-evidence.json"
+POOLED = ROOT / "data" / "silver" / "study" / "pooled"
 
 
 class OrchestrationAcceptanceContractTests(unittest.TestCase):
@@ -66,6 +67,42 @@ class OrchestrationAcceptanceContractTests(unittest.TestCase):
         self.assertNotEqual(
             utility["metric_code"], "study.infrastructure_company_payments"
         )
+
+    def test_modeling_synthesis_checkpoint_matches_governed_artifacts(self):
+        checkpoint = self.ledger["modeling_synthesis_checkpoint"]
+        portfolio = json.loads(
+            (POOLED / "portfolio-level-0-synthesis.json").read_text(encoding="utf-8")
+        )
+        derived = json.loads(
+            (POOLED / "derived-parameter-screen.json").read_text(encoding="utf-8")
+        )
+        reassessment = json.loads(
+            (POOLED / "synthesis-reassessment.json").read_text(encoding="utf-8")
+        )
+        facility_year = json.loads(
+            (POOLED / "facility-year-exposures.json").read_text(encoding="utf-8")
+        )
+
+        self.assertEqual(checkpoint["status"], "level_0_portfolio_published_shift_ready")
+        self.assertEqual(checkpoint["scope"]["projects"], portfolio["scope"]["project_count"])
+        self.assertEqual(checkpoint["scope"]["host_counties"], portfolio["scope"]["county_count"])
+        self.assertEqual(
+            checkpoint["derived_and_exposure_state"]["derived_parameter_observations"],
+            derived["counts"]["derived_observations"],
+        )
+        self.assertEqual(
+            checkpoint["derived_and_exposure_state"]["authorized_transferable_calibration_parameters"],
+            derived["counts"]["calibration_authorized_parameters"],
+        )
+        self.assertEqual(
+            checkpoint["derived_and_exposure_state"]["facility_year_rows"],
+            facility_year["counts"]["project_years"],
+        )
+        self.assertEqual(
+            checkpoint["modeled_synthesis_dispositions"],
+            reassessment["counts"]["substantive_dispositions"],
+        )
+        self.assertTrue((ROOT / checkpoint["artifacts"]["readable_checkpoint"]).is_file())
 
 
 if __name__ == "__main__":

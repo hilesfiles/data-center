@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "study_release": "private-sector-study-1.60.0",
-  "generated_at": "2026-09-08T17:23:01Z",
+  "generated_at": "2026-09-08T22:48:03Z",
   "queue_status": "batch_11_published",
   "ranking_method": "Descending covered contribution-account category count, then descending sourced economic-record count, then ascending project_id.",
   "worker_research_contract": {
@@ -39,6 +39,89 @@
     "validation_result": "Passed all 259 repository tests, the complete 65-schema data-contract validation, study validation, TypeScript compilation, production build, complete browser suite, Berkeley desktop and Lenoir mobile inspection, all 36 completed-project description/order checks, all 36 map entries, direct project/county navigation, legacy-index fallback, and preview-process shutdown."
   },
   "pending_publication": null,
+  "modeling_synthesis_checkpoint": {
+    "recorded_at": "2026-09-08T22:48:03Z",
+    "status": "level_0_portfolio_published_shift_ready",
+    "branch": "codex/pooled-model-foundation",
+    "analytical_state_commit": "98ca7bd5c0807f86daa3bb082588c3d1cd4d5de4",
+    "scope": {
+      "projects": 36,
+      "host_counties": 35,
+      "states": 23,
+      "analysis_years": "2001-2024",
+      "national_comparison_counties_in_current_synthesis": 0
+    },
+    "project_evidence": {
+      "reported_actual_records": 1818,
+      "source_projection_records": 162,
+      "modeled_synthesis_records": 304,
+      "project_metric_cells": 659,
+      "explicit_project_category_gap_entries": 288,
+      "gap_status_counts": {
+        "partial": 184,
+        "projections_only": 16,
+        "not_yet_collected": 88
+      }
+    },
+    "host_county_outcome_baseline": {
+      "county_year_rows": 840,
+      "observations": 3360,
+      "observed_observations": 3360,
+      "metrics": [
+        "economic.gdp.real",
+        "demographic.population",
+        "economic.employment.total",
+        "economic.wages.average_weekly.nominal"
+      ],
+      "status": "complete_for_all_35_hosts"
+    },
+    "derived_and_exposure_state": {
+      "facility_year_rows": 864,
+      "annual_reported_components": 1245,
+      "annual_modeled_components": 225,
+      "excluded_nonannual_or_out_of_range_records": 814,
+      "derived_parameter_definitions": 12,
+      "derived_parameter_observations": 235,
+      "authorized_transferable_calibration_parameters": 0,
+      "strict_reported_cohorts": 55,
+      "largest_strict_cohort_projects": 7,
+      "retained_level_0_modeled_identities": 48,
+      "authorized_cross_project_totals": 0
+    },
+    "modeled_synthesis_dispositions": {
+      "retain": 66,
+      "restrict_to_sensitivity": 194,
+      "migrate_to_pooled_outcome_framework": 44
+    },
+    "evidence_interpretation": [
+      "The 35-host county outcome baseline is complete; current modeling limits arise from exposure harmonization and identification rather than missing host-county GDP, population, employment, or wage histories.",
+      "Fiscal evidence dominates the comparable reported cohorts; electricity and incentive cohorts are small, and no investment, construction, supplier, operating-employment, or community metric clears the strict same-year and same-definition cohort screen.",
+      "Tax-to-value ratios are reproducible but jurisdiction-specific and are not transferable project parameters.",
+      "No exact-scope empirical calibration is available for electricity per operating MW, water per kWh, employees per MW, or employees per 100,000 square feet.",
+      "The evidence supports Level 0 descriptive synthesis only; it does not support a portfolio benefit total, universal multiplier, pooled association, attributable effect, or causal estimate. This limit is not evidence of zero impact."
+    ],
+    "active_gates": {
+      "portfolio_totals": "blocked_no_overlap_adjudicated_cross_project_sum",
+      "empirical_transfer_model": "blocked_zero_authorized_transferable_parameters",
+      "pooled_association": "outside_current_level_0_scope",
+      "causal_estimation": "outside_current_level_0_scope"
+    },
+    "restart_contract": {
+      "state": "paused_for_new_user_direction",
+      "preserve": "All project evidence, model records, source projections, project descriptions, release metadata, counts, manifests, and orchestration history through the analytical_state_commit.",
+      "scope_guard": "Do not treat the stored national county panel as the current analytical population. The current synthesis is exactly 36 projects and 35 host counties; any comparison-pool expansion requires a separate explicit decision.",
+      "modeling_guard": "Modeled synthesis remains a last resort after direct-source avenues and exact derived matches are exhausted. Missing evidence is never zero."
+    },
+    "artifacts": {
+      "readable_checkpoint": "reports/private-sector-study/modeling-synthesis-current-state-2026-09-08.md",
+      "level_0_report": "reports/private-sector-study/portfolio-level-0-synthesis-1.0.md",
+      "level_0_data": "data/silver/study/pooled/portfolio-level-0-synthesis.json",
+      "derived_parameter_screen": "data/silver/study/pooled/derived-parameter-screen.json",
+      "synthesis_reassessment": "data/silver/study/pooled/synthesis-reassessment.json",
+      "facility_year_exposures": "data/silver/study/pooled/facility-year-exposures.json",
+      "county_year_exposures": "data/silver/study/pooled/county-year-exposures.json"
+    }
+  },
   "corrective_model_eligibility_queue": {
     "status": "foundational_full_account_reaudit_published",
     "reason": "Previously completed projects must be re-audited when their public-source search trail or model eligibility record does not satisfy worker-research-contract 2.0.0. This includes analytically incomplete projects with zero modeled syntheses and the three foundational full-modeled accounts created before the strengthened contract. A model may be retained only when defensible, and every rejection or retention must be documented candidate by candidate rather than asserted as a blanket conclusion.",

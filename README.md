@@ -26,7 +26,10 @@ The implementation sequence and remaining work are documented in
 `docs/application-remediation-plan.md` and
 `docs/revised-private-sector-economic-study-plan.md`. The statistical target state,
 including the county-year exposure contract and pooled-model publication gates, is in
-`docs/pooled-county-impact-model.md`.
+`docs/pooled-county-impact-model.md`. The durable handoff boundary for changing
+workstreams is recorded in
+`reports/private-sector-study/modeling-synthesis-current-state-2026-09-08.md`
+and mirrored in the orchestration ledger under `modeling_synthesis_checkpoint`.
 
 Rebuild the private-sector study release from its versioned candidate and economic-evidence inputs:
 
