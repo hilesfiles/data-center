@@ -51,3 +51,5 @@ Modeled inputs that survive reassessment enter later county-year aggregation thr
 ## Publication gate
 
 The foundation may publish coverage, Level 0 descriptive identities, and readiness diagnostics only. It must contain no pooled association, attributable effect, causal label, net-fiscal claim, or composite benefit score. The national comparison register covers all 3,144 panel counties but currently identifies zero eligible comparison counties: 35 are study hosts, 19 non-host counties are reviewed but unresolved, 166 non-host counties remain in the resolution queue, and 2,924 are unscreened. Statistical estimation therefore remains blocked pending county first-entry and exposure-history verification, outcome definitions, and diagnostics.
+
+The current portfolio publication does not use or extend that national register. Its analytical population is exactly the 36 selected projects and 35 host counties. National comparison screening is outside the current Level 0 scope and requires a separate approved expansion.

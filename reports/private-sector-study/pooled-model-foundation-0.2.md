@@ -28,4 +28,6 @@ Project-level chronology coverage is complete, but county first-entry histories 
 
 ## Next authorized decision point
 
-The next decision is whether to authorize the separate, evidence-intensive national exposure-screening program needed to create a defensible comparison pool. No Level 1 association or causal model should run while the eligible comparison count is zero.
+The immediate continuation is the Level 0 portfolio synthesis for the 36 selected projects and their 35 host counties. It publishes project/metric coverage, exact same-year reported-observation distributions, the separately labeled retained modeled identities, and explicit gaps. It does not use the national comparison register, fit a pooled association, or authorize a causal claim.
+
+Any future national exposure-screening program is a separate analytical expansion requiring its own plan and approval. No Level 1 association or causal model should run under the current scope.

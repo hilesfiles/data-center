@@ -867,6 +867,21 @@ try {
   check("project and register at mobile width");
 
   await page.setViewportSize({ width: 1440, height: 1000 });
+  await page.goto(`${url}#/portfolio`);
+  await page.getByRole("heading", { name: /What the 36 accounts/ }).waitFor();
+  const portfolioCoverage = page.getByLabel("Portfolio synthesis coverage");
+  assert.match(await portfolioCoverage.innerText(), /36[\s\S]*projects[\s\S]*35[\s\S]*host counties[\s\S]*55[\s\S]*strict reported cohorts[\s\S]*0[\s\S]*authorized totals/i);
+  assert.equal(await page.locator(".coverage-grid > article").count(), 8);
+  assert.equal(await page.locator(".portfolio-matrix tbody tr").count(), 36);
+  await page.getByRole("heading", { name: "Coverage and remaining gaps", exact: true }).waitFor();
+  await noOverflow();
+  await page.screenshot({ path: path.join(out, "portfolio-level-0-desktop.png") });
+  await page.setViewportSize({ width: 390, height: 844 });
+  await noOverflow();
+  await page.screenshot({ path: path.join(out, "portfolio-level-0-mobile.png") });
+  check("Level 0 portfolio route publishes the 36-project boundary, strict cohorts and complete gap matrix");
+
+  await page.setViewportSize({ width: 1440, height: 1000 });
   await page.close();
   page = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
   page.on("pageerror", error => errors.push(error.message));

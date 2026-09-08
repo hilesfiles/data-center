@@ -183,11 +183,14 @@ National compute capacity and security implications remain a separate interpreti
 
 1. Maintain the completed common facility-year account contract for all 36 projects while preserving explicit missingness and later source revisions.
 2. Add schemas and builders for facility-year and county-year exposure, including overlap and evidence-state validation.
-3. Research and version comparison-pool exposure screens using the preserved national inventory and project histories.
-4. Register outcome-specific Level 0 and Level 1 definitions and run statistical power and influence simulations before publication.
-5. Publish descriptive trajectories and pooled associations with uncertainty propagation.
-6. Advance eligible outcomes to event, matched, or hierarchical designs only after their diagnostic gates pass.
-7. Add pooled results to the application with drill-down to county and project evidence.
+3. Publish the Level 0 evidence matrix, coverage, gaps, and timing-aligned descriptive distributions for the 36 projects and 35 host counties.
+4. Stop at that boundary unless a separate comparison-pool expansion is planned and approved.
+5. If approved later, research and version comparison-pool exposure screens using the preserved national inventory and project histories.
+6. Register outcome-specific Level 1 definitions and run statistical power and influence simulations before any associative publication.
+7. Advance eligible outcomes to event, matched, or hierarchical designs only after their diagnostic gates pass.
+8. Add eligible later results to the application with drill-down to county and project evidence.
+
+The current authorized scope ends after step 3. The national comparison universe described elsewhere in this target-state document is a future design requirement, not part of the 36-project Level 0 synthesis.
 
 ## Target-state acceptance criteria
 

@@ -9,22 +9,18 @@ a complete or lifecycle-verified operating-facility inventory.
 The private-sector study includes a searchable register of 36 provisional projects
 across 35 counties and 23 states, including five campus-linked candidates. The default
 page is the project register; `#/project/{project_id}` opens a sourced history and
-economic-evidence checklist, and existing `#/county/{FIPS}` links remain available.
-`#/map` presents only the six projects that pass the full modeled county-account gate:
-Apple Mesa, Switch Citadel, Digital Crossroad Hammond, Meta Forest City, Microsoft San
-Antonio, and EdgeConneX DET01. The legacy national inventory, county datasets, and incomplete
-research candidates remain stored for future use but are excluded from the rendered map.
-First-entry decisions are retained as a separate research question. Study release 1.44
-publishes 595 economic source records linked to all 36 candidates: 539 reported records
-and 56 projections, plus 154 separately labeled modeled syntheses across six completed
-contribution accounts.
-The six completed contribution accounts separate directly reported anchors, transferred
-construction and operating benchmarks, recurring project-linked local property taxes,
-the public-cost break-even threshold, public support and tax treatment, infrastructure
-and environmental demand, and descriptive county comparisons. They do not assert a net
-fiscal result without same-scope public-cost evidence and do not present county comparison
-gaps as causal effects. Project profiles retain the complete source, forecast, model,
-assumption, limitation, and remaining-evidence ledger for audit.
+economic-evidence checklist, `#/county/{FIPS}` opens the host-county account, and
+`#/portfolio` presents the governed Level 0 cross-project synthesis. `#/map` presents all
+36 research-complete project audits. The legacy national inventory and other county datasets
+remain stored for future use but are excluded from the study markers and current portfolio
+analysis. First-entry decisions remain a separate research question.
+
+Study release 1.60 publishes 1,980 economic source records: 1,818 reported observations
+and 162 source projections, plus 304 separately labeled modeled syntheses. The Level 0
+portfolio publication is restricted to the 36 selected projects and their 35 host counties.
+It reports evidence coverage, strict same-year reported-observation distributions, retained
+modeled identities, and explicit gaps. It creates no portfolio benefit total, transferable
+calibration parameter, pooled association, attributable effect, or causal estimate.
 
 The implementation sequence and remaining work are documented in
 `docs/application-remediation-plan.md` and
@@ -36,8 +32,10 @@ Rebuild the private-sector study release from its versioned candidate and econom
 
 ```powershell
 python scripts/build_private_sector_study.py
+python scripts/build_pooled_model_foundation.py
+python scripts/build_portfolio_level0.py
 python scripts/validate_data_contract.py
-python -m unittest discover -s tests -p test_private_sector_study.py
+python -m unittest discover -s tests
 ```
 
 The builder reuses inventory identifiers and preserves date wording and uncertainty.

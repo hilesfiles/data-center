@@ -6197,6 +6197,8 @@ def validate_pooled_foundation(
         "facility_year_exposure": pooled_dir / "facility-year-exposures.json",
         "county_year_exposure": pooled_dir / "county-year-exposures.json",
         "pooled_foundation_manifest": pooled_dir / "manifest.json",
+        "portfolio_level_0_synthesis": pooled_dir / "portfolio-level-0-synthesis.json",
+        "portfolio_level_0_manifest": pooled_dir / "portfolio-level-0-manifest.json",
     }
     payloads: dict[str, Any] = {}
     for schema_name, path in artifacts.items():
@@ -6219,6 +6221,8 @@ def validate_pooled_foundation(
     facility_year = payloads["facility_year_exposure"]
     county_year = payloads["county_year_exposure"]
     foundation_manifest = payloads["pooled_foundation_manifest"]
+    portfolio = payloads["portfolio_level_0_synthesis"]
+    portfolio_manifest = payloads["portfolio_level_0_manifest"]
     study_index = load_json(PUBLIC_DATA_DIR / "study" / "index.json")
     synthesis = load_json(DATA_DIR / "silver" / "study" / "modeled-syntheses.json")
     project_ids = {row["project_id"] for row in study_index["projects"]}
@@ -6323,6 +6327,55 @@ def validate_pooled_foundation(
     }
     if registered_ids != project_ids:
         issues.append(Issue("pooled_foundation", "county-year-exposures.json.county_years", "registered county-year projects do not match the 36-project set"))
+
+    public_portfolio_path = PUBLIC_DATA_DIR / "study" / "pooled" / "portfolio-level-0-synthesis.json"
+    if not public_portfolio_path.is_file():
+        issues.append(Issue("pooled_foundation", public_portfolio_path.name, "public Level 0 portfolio artifact is missing"))
+    else:
+        public_portfolio = load_json(public_portfolio_path)
+        for issue in validator.validate_record(public_portfolio, schema_paths["portfolio_level_0_synthesis"]):
+            issues.append(Issue("pooled_foundation", f"public/{public_portfolio_path.name}{issue.path[1:]}", issue.message))
+        if public_portfolio != portfolio:
+            issues.append(Issue("pooled_foundation", public_portfolio_path.name, "public and silver Level 0 portfolio artifacts must be identical"))
+
+    portfolio_project_ids = [row.get("project_id") for row in portfolio["project_matrix"]]
+    if len(portfolio_project_ids) != len(set(portfolio_project_ids)) or set(portfolio_project_ids) != project_ids:
+        issues.append(Issue("pooled_foundation", "portfolio-level-0-synthesis.json.project_matrix", "must represent every selected project exactly once"))
+    if set(portfolio["scope"]["county_fips"]) != county_ids:
+        issues.append(Issue("pooled_foundation", "portfolio-level-0-synthesis.json.scope", "must contain only the 35 selected host counties"))
+    expected_categories = {"investment", "construction", "suppliers", "operations", "fiscal", "public_costs", "resources", "community"}
+    for row in portfolio["project_matrix"]:
+        categories = [cell.get("category") for cell in row["categories"]]
+        if len(categories) != len(set(categories)) or set(categories) != expected_categories:
+            issues.append(Issue("pooled_foundation", "portfolio-level-0-synthesis.json.project_matrix", "each project must contain exactly the eight account categories"))
+            break
+    gap_keys = [(row.get("project_id"), row.get("category")) for row in portfolio["gap_register"]]
+    if len(gap_keys) != len(project_ids) * len(expected_categories) or len(gap_keys) != len(set(gap_keys)):
+        issues.append(Issue("pooled_foundation", "portfolio-level-0-synthesis.json.gap_register", "must contain one explicit gap row per project and account category"))
+    claims_by_id = {
+        claim["claim_id"]: claim
+        for project in study_index["projects"]
+        for claim in load_json(PUBLIC_DATA_DIR / "study" / project["detail_path"])["economic_records"]
+    }
+    for cohort in portfolio["timing_aligned_reported_cohorts"]:
+        if cohort["project_count"] != len(cohort["project_values"]) or cohort["county_count"] != len({row["county_fips"] for row in cohort["project_values"]}):
+            issues.append(Issue("pooled_foundation", "portfolio-level-0-synthesis.json.timing_aligned_reported_cohorts", "cohort project or county counts are inconsistent"))
+            break
+        for value in cohort["project_values"]:
+            for claim_id in value["claim_ids"]:
+                claim = claims_by_id.get(claim_id)
+                if claim is None or claim.get("value") != value["value"] or claim.get("project_id") != value["project_id"]:
+                    issues.append(Issue("pooled_foundation", "portfolio-level-0-synthesis.json.timing_aligned_reported_cohorts", "cohort values must trace exactly to their reported source claims"))
+                    break
+    portfolio_estimate_ids = {
+        estimate_id
+        for row in portfolio["modeled_level_0_identities"]
+        for estimate_id in row["estimate_ids"]
+    }
+    if portfolio_estimate_ids != exposure_estimate_ids:
+        issues.append(Issue("pooled_foundation", "portfolio-level-0-synthesis.json.modeled_level_0_identities", "must account exactly for the retained Level 0 modeled identities"))
+    if portfolio["counts"]["authorized_portfolio_totals"] != 0 or portfolio["methodology"]["new_modeled_values_created"]:
+        issues.append(Issue("pooled_foundation", "portfolio-level-0-synthesis.json.publication_gate", "Level 0 portfolio synthesis cannot create a total or new modeled value"))
     for section in ("builder", "inputs", "outputs"):
         entries = [foundation_manifest[section]] if section == "builder" else foundation_manifest[section]
         for index, entry in enumerate(entries):
@@ -6333,6 +6386,16 @@ def validate_pooled_foundation(
             payload = artifact_path.read_bytes()
             if entry["byte_size"] != len(payload) or entry["sha256"] != hashlib.sha256(payload).hexdigest():
                 issues.append(Issue("pooled_foundation", f"manifest.json.{section}[{index}]", "manifest hash or byte size does not match the artifact"))
+    for section in ("builder", "inputs", "outputs"):
+        entries = [portfolio_manifest[section]] if section == "builder" else portfolio_manifest[section]
+        for index, entry in enumerate(entries):
+            artifact_path = (ROOT / entry["path"]).resolve()
+            if not artifact_path.is_relative_to(ROOT) or not artifact_path.is_file():
+                issues.append(Issue("pooled_foundation", f"portfolio-level-0-manifest.json.{section}[{index}]", "manifest path is missing or outside the repository"))
+                continue
+            payload = artifact_path.read_bytes()
+            if entry["byte_size"] != len(payload) or entry["sha256"] != hashlib.sha256(payload).hexdigest():
+                issues.append(Issue("pooled_foundation", f"portfolio-level-0-manifest.json.{section}[{index}]", "manifest hash or byte size does not match the artifact"))
     return issues
 
 

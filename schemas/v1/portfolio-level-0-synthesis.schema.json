@@ -1,0 +1,181 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dccio.org/schemas/v1/portfolio-level-0-synthesis.schema.json",
+  "title": "Level 0 project-portfolio synthesis",
+  "type": "object",
+  "required": ["schema_version", "artifact_version", "generated_at", "source_release", "status", "scope", "methodology", "counts", "synthesis_policy", "publication_gate", "category_coverage", "metric_profiles", "timing_aligned_reported_cohorts", "modeled_level_0_identities", "project_matrix", "gap_register"],
+  "properties": {
+    "schema_version": { "const": "1.0.0" },
+    "artifact_version": { "const": "portfolio-level-0-synthesis-1.0.0" },
+    "generated_at": { "type": "string", "format": "date-time" },
+    "source_release": { "type": "string", "minLength": 1 },
+    "status": { "const": "level_0_descriptive_portfolio_synthesis" },
+    "scope": {
+      "type": "object",
+      "required": ["project_count", "county_count", "state_count", "project_ids", "county_fips", "boundary"],
+      "properties": {
+        "project_count": { "const": 36 },
+        "county_count": { "const": 35 },
+        "state_count": { "type": "integer", "minimum": 1 },
+        "project_ids": { "type": "array", "minItems": 36, "maxItems": 36, "uniqueItems": true, "items": { "$ref": "#/$defs/project_id" } },
+        "county_fips": { "type": "array", "minItems": 35, "maxItems": 35, "uniqueItems": true, "items": { "$ref": "#/$defs/county_fips" } },
+        "boundary": { "type": "string", "minLength": 1 }
+      },
+      "additionalProperties": false
+    },
+    "methodology": {
+      "type": "object",
+      "required": ["reported_actual_only_for_distributions", "source_projections_kept_separate", "modeled_syntheses_kept_separate", "missing_is_not_zero", "same_year_exact_signature_required", "minimum_projects_per_distribution", "minimum_counties_per_distribution", "cross_project_totals_authorized", "new_modeled_values_created", "causal_or_attributable_claims"],
+      "properties": {
+        "reported_actual_only_for_distributions": { "const": true },
+        "source_projections_kept_separate": { "const": true },
+        "modeled_syntheses_kept_separate": { "const": true },
+        "missing_is_not_zero": { "const": true },
+        "same_year_exact_signature_required": { "const": true },
+        "minimum_projects_per_distribution": { "const": 3 },
+        "minimum_counties_per_distribution": { "const": 3 },
+        "cross_project_totals_authorized": { "const": false },
+        "new_modeled_values_created": { "const": false },
+        "causal_or_attributable_claims": { "const": false }
+      },
+      "additionalProperties": false
+    },
+    "counts": {
+      "type": "object",
+      "required": ["reported_actual_records", "source_projection_records", "modeled_syntheses", "project_metric_cells", "reported_metric_profiles", "timing_aligned_reported_cohorts", "ambiguous_project_cohort_groups_excluded", "direct_evidence_gap_entries", "direct_evidence_gap_status_counts", "retained_modeled_level_0_identities", "authorized_portfolio_totals", "authorized_transferable_calibration_parameters"],
+      "properties": {
+        "reported_actual_records": { "type": "integer", "minimum": 0 },
+        "source_projection_records": { "type": "integer", "minimum": 0 },
+        "modeled_syntheses": { "type": "integer", "minimum": 0 },
+        "project_metric_cells": { "type": "integer", "minimum": 0 },
+        "reported_metric_profiles": { "type": "integer", "minimum": 0 },
+        "timing_aligned_reported_cohorts": { "type": "integer", "minimum": 0 },
+        "ambiguous_project_cohort_groups_excluded": { "type": "integer", "minimum": 0 },
+        "direct_evidence_gap_entries": { "const": 288 },
+        "direct_evidence_gap_status_counts": { "type": "object", "additionalProperties": { "type": "integer", "minimum": 0 } },
+        "retained_modeled_level_0_identities": { "type": "integer", "minimum": 0 },
+        "authorized_portfolio_totals": { "const": 0 },
+        "authorized_transferable_calibration_parameters": { "const": 0 }
+      },
+      "additionalProperties": false
+    },
+    "synthesis_policy": {
+      "type": "object",
+      "required": ["reassessment_count", "substantive_dispositions", "retained_metric_rules", "rule_status_counts", "modeled_use"],
+      "properties": {
+        "reassessment_count": { "type": "integer", "minimum": 0 },
+        "substantive_dispositions": { "type": "object", "additionalProperties": { "type": "integer", "minimum": 0 } },
+        "retained_metric_rules": { "type": "integer", "minimum": 0 },
+        "rule_status_counts": { "type": "object", "additionalProperties": { "type": "integer", "minimum": 0 } },
+        "modeled_use": { "type": "string", "minLength": 1 }
+      },
+      "additionalProperties": false
+    },
+    "publication_gate": {
+      "type": "object",
+      "required": ["project_coverage", "reported_timing_aligned_distributions", "modeled_identity_inventory", "portfolio_totals", "empirical_transfer_model", "pooled_association", "causal_estimation"],
+      "properties": {
+        "project_coverage": { "const": "ready_36_projects_35_host_counties" },
+        "reported_timing_aligned_distributions": { "const": "ready_descriptive_only" },
+        "modeled_identity_inventory": { "const": "ready_separate_from_reported_distributions" },
+        "portfolio_totals": { "const": "blocked_no_overlap_adjudicated_cross_project_sum" },
+        "empirical_transfer_model": { "const": "blocked_zero_authorized_transferable_parameters" },
+        "pooled_association": { "const": "outside_current_level_0_scope" },
+        "causal_estimation": { "const": "outside_current_level_0_scope" }
+      },
+      "additionalProperties": false
+    },
+    "category_coverage": { "type": "array", "minItems": 8, "maxItems": 8, "items": { "$ref": "#/$defs/category_coverage" } },
+    "metric_profiles": { "type": "array", "items": { "$ref": "#/$defs/metric_profile" } },
+    "timing_aligned_reported_cohorts": { "type": "array", "items": { "$ref": "#/$defs/cohort" } },
+    "modeled_level_0_identities": { "type": "array", "items": { "$ref": "#/$defs/modeled_identity" } },
+    "project_matrix": { "type": "array", "minItems": 36, "maxItems": 36, "items": { "$ref": "#/$defs/project_row" } },
+    "gap_register": { "type": "array", "minItems": 288, "maxItems": 288, "items": { "$ref": "#/$defs/gap" } }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "project_id": { "type": "string", "pattern": "^prj_study_[a-z0-9_]+$" },
+    "county_fips": { "type": "string", "pattern": "^[0-9]{5}$" },
+    "metric_code": { "type": "string", "pattern": "^study\\.[a-z0-9_]+$" },
+    "category": { "enum": ["investment", "construction", "suppliers", "operations", "fiscal", "public_costs", "resources", "community", "county_outcome", "strategic_infrastructure"] },
+    "category_coverage": {
+      "type": "object",
+      "required": ["category", "label", "project_count", "projects_with_reported_actual", "reported_actual_coverage_rate", "projects_with_source_projection", "projects_with_modeled_synthesis", "reported_actual_record_count", "source_projection_record_count", "modeled_synthesis_count", "direct_evidence_status_counts"],
+      "properties": {
+        "category": { "$ref": "#/$defs/category" }, "label": { "type": "string", "minLength": 1 },
+        "project_count": { "const": 36 }, "projects_with_reported_actual": { "type": "integer", "minimum": 0, "maximum": 36 },
+        "reported_actual_coverage_rate": { "type": "number", "minimum": 0, "maximum": 1 },
+        "projects_with_source_projection": { "type": "integer", "minimum": 0, "maximum": 36 },
+        "projects_with_modeled_synthesis": { "type": "integer", "minimum": 0, "maximum": 36 },
+        "reported_actual_record_count": { "type": "integer", "minimum": 0 }, "source_projection_record_count": { "type": "integer", "minimum": 0 }, "modeled_synthesis_count": { "type": "integer", "minimum": 0 },
+        "direct_evidence_status_counts": { "type": "object", "additionalProperties": { "type": "integer", "minimum": 0 } }
+      }, "additionalProperties": false
+    },
+    "metric_profile": {
+      "type": "object",
+      "required": ["metric_code", "category", "unit", "measure_type", "reported_actual_record_count", "project_count", "county_count", "explicit_year_count", "earliest_year", "latest_year", "period_kinds", "scope_levels", "project_ids"],
+      "properties": {
+        "metric_code": { "$ref": "#/$defs/metric_code" }, "category": { "$ref": "#/$defs/category" }, "unit": { "type": "string", "minLength": 1 }, "measure_type": { "type": "string", "minLength": 1 },
+        "reported_actual_record_count": { "type": "integer", "minimum": 1 }, "project_count": { "type": "integer", "minimum": 1, "maximum": 36 }, "county_count": { "type": "integer", "minimum": 1, "maximum": 35 }, "explicit_year_count": { "type": "integer", "minimum": 0 },
+        "earliest_year": { "type": ["integer", "null"] }, "latest_year": { "type": ["integer", "null"] },
+        "period_kinds": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "type": "string", "minLength": 1 } },
+        "scope_levels": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "type": "string", "minLength": 1 } },
+        "project_ids": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "$ref": "#/$defs/project_id" } }
+      }, "additionalProperties": false
+    },
+    "distribution": {
+      "type": "object", "required": ["minimum", "p25", "median", "p75", "maximum"],
+      "properties": { "minimum": { "type": "number" }, "p25": { "type": "number" }, "median": { "type": "number" }, "p75": { "type": "number" }, "maximum": { "type": "number" } }, "additionalProperties": false
+    },
+    "project_value": {
+      "type": "object", "required": ["project_id", "project_name", "county_fips", "value", "claim_ids", "scope_labels"],
+      "properties": {
+        "project_id": { "$ref": "#/$defs/project_id" }, "project_name": { "type": "string", "minLength": 1 }, "county_fips": { "$ref": "#/$defs/county_fips" }, "value": { "type": "number" },
+        "claim_ids": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "type": "string", "minLength": 1 } },
+        "scope_labels": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "type": "string", "minLength": 1 } }
+      }, "additionalProperties": false
+    },
+    "cohort": {
+      "type": "object", "required": ["cohort_id", "metric_code", "category", "unit", "measure_type", "period_kind", "year", "scope_level", "inventory_allocation", "project_count", "county_count", "observation_count", "project_values", "distribution", "interpretation", "limitations"],
+      "properties": {
+        "cohort_id": { "type": "string", "pattern": "^cohort_[a-f0-9]{16}$" }, "metric_code": { "$ref": "#/$defs/metric_code" }, "category": { "$ref": "#/$defs/category" }, "unit": { "type": "string", "minLength": 1 }, "measure_type": { "type": "string", "minLength": 1 }, "period_kind": { "type": "string", "minLength": 1 }, "year": { "type": "integer" }, "scope_level": { "type": "string", "minLength": 1 }, "inventory_allocation": { "type": "string", "minLength": 1 },
+        "project_count": { "type": "integer", "minimum": 3, "maximum": 36 }, "county_count": { "type": "integer", "minimum": 3, "maximum": 35 }, "observation_count": { "type": "integer", "minimum": 3 },
+        "project_values": { "type": "array", "minItems": 3, "items": { "$ref": "#/$defs/project_value" } }, "distribution": { "$ref": "#/$defs/distribution" },
+        "interpretation": { "type": "string", "minLength": 1 }, "limitations": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } }
+      }, "additionalProperties": false
+    },
+    "modeled_identity": {
+      "type": "object", "required": ["metric_code", "category", "unit", "measure_type", "exposure_count", "project_count", "county_count", "earliest_year", "latest_year", "project_ids", "estimate_ids", "aggregation_status"],
+      "properties": {
+        "metric_code": { "$ref": "#/$defs/metric_code" }, "category": { "$ref": "#/$defs/category" }, "unit": { "type": "string", "minLength": 1 }, "measure_type": { "type": "string", "minLength": 1 },
+        "exposure_count": { "type": "integer", "minimum": 1 }, "project_count": { "type": "integer", "minimum": 1, "maximum": 36 }, "county_count": { "type": "integer", "minimum": 1, "maximum": 35 }, "earliest_year": { "type": "integer" }, "latest_year": { "type": "integer" },
+        "project_ids": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "$ref": "#/$defs/project_id" } }, "estimate_ids": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "type": "string", "minLength": 1 } },
+        "aggregation_status": { "const": "identity_only_not_summed_or_used_in_reported_distributions" }
+      }, "additionalProperties": false
+    },
+    "category_cell": {
+      "type": "object", "required": ["category", "reported_actual_count", "source_projection_count", "modeled_synthesis_count", "direct_evidence_status", "reported_metric_codes", "projection_metric_codes", "modeled_metric_codes"],
+      "properties": {
+        "category": { "$ref": "#/$defs/category" }, "reported_actual_count": { "type": "integer", "minimum": 0 }, "source_projection_count": { "type": "integer", "minimum": 0 }, "modeled_synthesis_count": { "type": "integer", "minimum": 0 },
+        "direct_evidence_status": { "enum": ["partial", "projections_only", "not_yet_collected"] },
+        "reported_metric_codes": { "type": "array", "uniqueItems": true, "items": { "$ref": "#/$defs/metric_code" } }, "projection_metric_codes": { "type": "array", "uniqueItems": true, "items": { "$ref": "#/$defs/metric_code" } }, "modeled_metric_codes": { "type": "array", "uniqueItems": true, "items": { "$ref": "#/$defs/metric_code" } }
+      }, "additionalProperties": false
+    },
+    "metric_cell": {
+      "type": "object", "required": ["metric_code", "category", "reported_actual_count", "source_projection_count", "modeled_synthesis_count", "modeled_dispositions"],
+      "properties": { "metric_code": { "$ref": "#/$defs/metric_code" }, "category": { "$ref": "#/$defs/category" }, "reported_actual_count": { "type": "integer", "minimum": 0 }, "source_projection_count": { "type": "integer", "minimum": 0 }, "modeled_synthesis_count": { "type": "integer", "minimum": 0 }, "modeled_dispositions": { "type": "object", "additionalProperties": { "type": "integer", "minimum": 0 } } }, "additionalProperties": false
+    },
+    "project_row": {
+      "type": "object", "required": ["project_id", "project_name", "operator_label", "study_group", "county_fips", "county_name", "state_abbr", "reported_actual_count", "source_projection_count", "modeled_synthesis_count", "categories", "metrics"],
+      "properties": {
+        "project_id": { "$ref": "#/$defs/project_id" }, "project_name": { "type": "string", "minLength": 1 }, "operator_label": { "type": "string", "minLength": 1 }, "study_group": { "type": "string", "minLength": 1 }, "county_fips": { "$ref": "#/$defs/county_fips" }, "county_name": { "type": "string", "minLength": 1 }, "state_abbr": { "type": "string", "pattern": "^[A-Z]{2}$" },
+        "reported_actual_count": { "type": "integer", "minimum": 0 }, "source_projection_count": { "type": "integer", "minimum": 0 }, "modeled_synthesis_count": { "type": "integer", "minimum": 0 },
+        "categories": { "type": "array", "minItems": 8, "maxItems": 8, "items": { "$ref": "#/$defs/category_cell" } }, "metrics": { "type": "array", "items": { "$ref": "#/$defs/metric_cell" } }
+      }, "additionalProperties": false
+    },
+    "gap": {
+      "type": "object", "required": ["project_id", "project_name", "county_fips", "category", "label", "status", "needed"],
+      "properties": { "project_id": { "$ref": "#/$defs/project_id" }, "project_name": { "type": "string", "minLength": 1 }, "county_fips": { "$ref": "#/$defs/county_fips" }, "category": { "$ref": "#/$defs/category" }, "label": { "type": "string", "minLength": 1 }, "status": { "enum": ["partial", "projections_only", "not_yet_collected"] }, "needed": { "type": "string", "minLength": 1 } }, "additionalProperties": false
+    }
+  }
+}
