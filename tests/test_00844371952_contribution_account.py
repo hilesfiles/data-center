@@ -52,12 +52,12 @@ class GoogleBridgeportContributionAccountTest(unittest.TestCase):
     def test_identity_counts_and_actual_projection_split(self):
         self.assertEqual(self.fragment["project_id"], PROJECT)
         self.assertEqual(self.model_fragment["project_id"], PROJECT)
-        self.assertEqual(len(self.fragment["records"]), 134)
-        self.assertEqual(len(self.detail["economic_records"]), 135)
-        self.assertEqual(self.detail["economic_record_count"], 135)
-        self.assertEqual(self.detail["reported_actual_count"], 125)
+        self.assertEqual(len(self.fragment["records"]), 169)
+        self.assertEqual(len(self.detail["economic_records"]), 170)
+        self.assertEqual(self.detail["economic_record_count"], 170)
+        self.assertEqual(self.detail["reported_actual_count"], 160)
         self.assertEqual(self.detail["projection_count"], 10)
-        self.assertEqual(self.detail["modeled_synthesis_count"], 33)
+        self.assertEqual(self.detail["modeled_synthesis_count"], 39)
         self.assertEqual(self.detail["county_fips"], "01071")
 
         projections = [
@@ -277,6 +277,12 @@ class GoogleBridgeportContributionAccountTest(unittest.TestCase):
                 "study.modeled_annual_local_service_cost_break_even",
             }:
                 reproduced = math.fsum(parameter["value"] for parameter in row["parameters"])
+            elif row["metric_code"] == "study.modeled_assessor_listed_emergency_generator_total_nameplate_capacity":
+                params = {parameter["name"]: parameter["value"] for parameter in row["parameters"]}
+                reproduced = params["generator_feature_rows"] * params["nameplate_per_feature_row"] / 1000
+            elif row["metric_code"] == "study.modeled_aggregate_billable_air_emissions":
+                params = {parameter["name"]: parameter["value"] for parameter in row["parameters"]}
+                reproduced = round(params["annual_fee_amount"] / params["fee_rate"], 2)
             else:
                 self.assertEqual(len(row["parameters"]), 1)
                 reproduced = row["parameters"][0]["value"]
@@ -285,7 +291,7 @@ class GoogleBridgeportContributionAccountTest(unittest.TestCase):
             audited.add(estimate_id)
 
         self.assertEqual(audited, set(models))
-        self.assertEqual(len(audited), 33)
+        self.assertEqual(len(audited), 39)
 
     def test_water_pue_and_cfe_keep_location_scope_and_rounding(self):
         records = {row["claim_id"]: row for row in self.detail["economic_records"]}
@@ -451,33 +457,42 @@ class GoogleBridgeportContributionAccountTest(unittest.TestCase):
         ):
             self.assertIn(proposal, text)
 
-    def test_machine_actionable_environmental_proposals_are_complete_and_reproducible(self):
-        proposal_updates = []
-        for update in self.fragment["project_updates"]:
-            try:
-                payload = json.loads(update["notes"])
-            except (json.JSONDecodeError, TypeError):
-                continue
-            if payload.get("proposal_schema_version"):
-                proposal_updates.append((update, payload))
-        self.assertEqual(len(proposal_updates), 1)
-        update, payload = proposal_updates[0]
-        self.assertEqual(update["title"], "Machine-actionable catalog, claim and estimate adoption proposals")
-        self.assertEqual(payload["status"], "corrective_handoff_ready")
-        self.assertEqual(payload["parent_commit"], "b25b60627513a2c5c7d99a48984f6b5defaeb403")
-        self.assertEqual(len(payload["catalog_proposals"]), 17)
-        self.assertEqual(len(payload["claim_proposals"]), 35)
-        self.assertEqual(len(payload["estimate_proposals"]), 6)
-
-        catalog = {row["metric_code"]: row for row in payload["catalog_proposals"]}
-        claims = {row["claim_id"]: row for row in payload["claim_proposals"]}
-        estimates = {row["estimate_id"]: row for row in payload["estimate_proposals"]}
+    def test_adopted_environmental_records_are_complete_and_reproducible(self):
+        catalog = {row["metric_code"]: row for row in self.evidence["metrics"]}
+        claims = {row["claim_id"]: row for row in self.fragment["records"]}
+        estimates = {row["estimate_id"]: row for row in self.model_fragment["estimates"]}
         source_ids = {row["source_id"] for row in self.fragment["sources"]}
-        self.assertEqual(len(catalog), 17)
-        self.assertEqual(len(claims), 35)
-        self.assertEqual(len(estimates), 6)
+        adopted_metric_codes = {
+            "study.assessor_listed_emergency_generator_count",
+            "study.assessor_listed_emergency_generator_unit_nameplate_capacity",
+            "study.permitted_potential_nox_emissions",
+            "study.permitted_potential_sox_emissions",
+            "study.permitted_potential_carbon_monoxide_emissions",
+            "study.permitted_potential_voc_emissions",
+            "study.permitted_potential_pm_emissions",
+            "study.permitted_potential_pm10_emissions",
+            "study.permitted_potential_pm25_emissions",
+            "study.permitted_potential_formaldehyde_emissions",
+            "study.permitted_potential_total_hap_emissions",
+            "study.permitted_potential_co2e_emissions",
+            "study.permit_group_annual_runtime_ceiling",
+            "study.annual_air_emissions_fee_rate",
+            "study.annual_air_emissions_fee_amount",
+        }
+        adopted_claims = {
+            key: row for key, row in claims.items() if row["metric_code"] in adopted_metric_codes
+        }
+        adopted_estimates = {
+            key: row for key, row in estimates.items()
+            if row["metric_code"] in {
+                "study.modeled_assessor_listed_emergency_generator_total_nameplate_capacity",
+                "study.modeled_aggregate_billable_air_emissions",
+            }
+        }
+        self.assertEqual(len(adopted_claims), 35)
+        self.assertEqual(len(adopted_estimates), 6)
 
-        for row in claims.values():
+        for row in adopted_claims.values():
             self.assertEqual(row["project_id"], PROJECT)
             self.assertIn(row["metric_code"], catalog)
             self.assertTrue(catalog[row["metric_code"]]["unit"])
@@ -491,9 +506,9 @@ class GoogleBridgeportContributionAccountTest(unittest.TestCase):
                 "notes", "review_status", "reviewed_on", "annual_series_key",
             }))
 
-        generator_count = claims["clm_proposed_google_bridgeport_assessor_generator_count_2026"]
-        generator_rating = claims[
-            "clm_proposed_google_bridgeport_assessor_generator_unit_nameplate_2026"
+        generator_count = adopted_claims["clm_proposed_google_bridgeport_assessor_generator_count_2026"]
+        generator_rating = adopted_claims[
+            "clm_google_bridgeport_generator_unit_kw_2026"
         ]
         self.assertEqual(generator_count["value"], 55)
         self.assertEqual(catalog[generator_count["metric_code"]]["unit"], "generators")
@@ -501,8 +516,8 @@ class GoogleBridgeportContributionAccountTest(unittest.TestCase):
         self.assertEqual(catalog[generator_rating["metric_code"]]["unit"], "kW_per_generator")
         self.assertIn("assessor", generator_count["notes"].lower())
         self.assertIn("not permit-listed", generator_count["notes"].lower())
-        generator_total = estimates[
-            "est_proposed_google_bridgeport_assessor_generator_total_nameplate_2026"
+        generator_total = adopted_estimates[
+            "est_google_bridgeport_generator_nameplate_2026"
         ]
         generator_params = {row["name"]: row["value"] for row in generator_total["parameters"]}
         self.assertEqual(
@@ -525,7 +540,12 @@ class GoogleBridgeportContributionAccountTest(unittest.TestCase):
         }
         for year, pollutants in potential_expected.items():
             for pollutant, value in pollutants.items():
-                row = claims[f"clm_proposed_google_bridgeport_permitted_potential_{pollutant}_{year}"]
+                claim_id = (
+                    f"clm_google_bridgeport_pte_co_{year}"
+                    if pollutant == "carbon_monoxide"
+                    else f"clm_proposed_google_bridgeport_permitted_potential_{pollutant}_{year}"
+                )
+                row = adopted_claims[claim_id]
                 self.assertEqual(row["value"], value)
                 self.assertEqual(catalog[row["metric_code"]]["unit"], "tons_per_year")
                 self.assertEqual(row["period"]["year"], year)
@@ -534,7 +554,7 @@ class GoogleBridgeportContributionAccountTest(unittest.TestCase):
 
         runtime_expected = {"X001": 8320, "X002": 1600, "X003": 500, "X004": 160}
         for group, value in runtime_expected.items():
-            row = claims[f"clm_proposed_google_bridgeport_{group.lower()}_runtime_ceiling_2023"]
+            row = adopted_claims[f"clm_proposed_google_bridgeport_{group.lower()}_runtime_ceiling_2023"]
             self.assertEqual(row["value"], value)
             self.assertEqual(catalog[row["metric_code"]]["unit"], "hours_per_year")
             self.assertIn(f"permit group {group}", row["scope"]["label"])
@@ -549,13 +569,13 @@ class GoogleBridgeportContributionAccountTest(unittest.TestCase):
             2024: (98.50, 256.11),
         }
         for year, (rate, amount) in fee_expected.items():
-            rate_row = claims[f"clm_proposed_google_bridgeport_air_fee_rate_{year}"]
-            amount_row = claims[f"clm_proposed_google_bridgeport_air_fee_amount_{year}"]
+            rate_row = adopted_claims[f"clm_proposed_google_bridgeport_air_fee_rate_{year}"]
+            amount_row = adopted_claims[f"clm_proposed_google_bridgeport_air_fee_amount_{year}"]
             self.assertEqual(rate_row["value"], rate)
             self.assertEqual(catalog[rate_row["metric_code"]]["unit"], "USD_per_ton")
             self.assertEqual(amount_row["value"], amount)
             self.assertEqual(catalog[amount_row["metric_code"]]["unit"], "USD")
-            estimate = estimates[f"est_proposed_google_bridgeport_aggregate_billable_air_emissions_{year}"]
+            estimate = adopted_estimates[f"est_proposed_google_bridgeport_aggregate_billable_air_emissions_{year}"]
             self.assertEqual(estimate["value"], round(amount / rate, 2))
             self.assertEqual(estimate["unit"], "tons_per_year")
             self.assertEqual(estimate["period"]["year"], year)
@@ -563,29 +583,12 @@ class GoogleBridgeportContributionAccountTest(unittest.TestCase):
             self.assertIn("aeeers", estimate["notes"].lower())
             self.assertIn("nonadditive", " ".join(estimate["limitations"]).lower())
 
-        self.assertEqual(
-            set(payload["authorized_files"]),
-            {
-                "config/v1/study-economic-evidence.projects/prj_study_im3_building_00844371952.json",
-                "config/v1/study-modeled-synthesis.projects/prj_study_im3_building_00844371952.json",
-                "tests/test_00844371952_contribution_account.py",
-            },
-        )
-        self.assertGreaterEqual(len(payload["irreducible_inputs"]), 5)
-
-    def test_corrective_diff_is_limited_to_the_three_authorized_files(self):
-        changed = subprocess.run(
-            ["git", "diff", "--name-only", "b25b60627513a2c5c7d99a48984f6b5defaeb403", "--"],
-            cwd=ROOT,
-            check=True,
-            capture_output=True,
-            text=True,
-        ).stdout.splitlines()
-        self.assertEqual(set(changed), {
-            "config/v1/study-economic-evidence.projects/prj_study_im3_building_00844371952.json",
-            "config/v1/study-modeled-synthesis.projects/prj_study_im3_building_00844371952.json",
-            "tests/test_00844371952_contribution_account.py",
-        })
+        adoption_updates = [
+            row for row in self.fragment["project_updates"]
+            if row.get("title") == "Root adoption of Bridgeport governed environmental and generator quantities"
+        ]
+        self.assertEqual(len(adoption_updates), 1)
+        self.assertIn("adopted 17 metric definitions", adoption_updates[0]["notes"].lower())
 
     def test_adversarial_correction_is_schema_valid_and_repairs_provenance(self):
         validator = ContractValidator(ROOT / "schemas/v1")

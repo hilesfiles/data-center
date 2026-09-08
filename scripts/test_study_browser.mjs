@@ -220,13 +220,13 @@ try {
   await openDetails(".evidence-ledger");
   await page.getByRole("heading", { name: "Economic evidence", exact: true }).waitFor();
   assert.equal(await page.getByRole("tab", { name: /Reported activity/ }).getAttribute("aria-selected"), "true");
-  assert.equal(await page.locator(".economic-record").count(), 20);
+  assert.equal(await page.locator(".economic-record").count(), 159);
   assert.match(await page.locator(".economic-record-list").innerText(), /power usage effectiveness|carbon-free energy|water/i);
   await page.getByRole("tab", { name: /Plans & forecasts/ }).click();
-  assert.equal(await page.locator(".economic-record").count(), 4);
+  assert.equal(await page.locator(".economic-record").count(), 5);
   assert.match(await page.locator(".economic-record-list").innerText(), /\$1,300,000,000/);
   await page.getByRole("tab", { name: /Modeled synthesis/ }).click();
-  assert.equal(await page.locator(".modeled-record").count(), 12);
+  assert.equal(await page.locator(".modeled-record").count(), 27);
   check("Berkeley keeps reported statewide environmental evidence, project forecasts and last-resort models separate");
 
   await page.goto(`${url}#/project/prj_study_im3_building_00460089167`);
@@ -442,7 +442,7 @@ try {
   check("calendar-year assessed values preserve the reported decline and later increase");
 
   for (const [id, text, actualCount, planCount, modelCount] of [
-    ["campus_00009474864", /\$6,800,000/, 82, 17, 15],
+    ["campus_00009474864", /\$6,800,000/, 145, 17, 17],
   ]) {
     await page.goto(`${url}#/project/prj_study_im3_${id}`);
   await openDetails(".evidence-ledger");
@@ -894,7 +894,7 @@ try {
   const study = await response.json();
   assert.equal(study.projects.length, 36);
   assert.equal(study.projects.filter(p => p.research_completion_status === "account_research_complete").length, 36);
-  assert.equal(study.projects.filter(p => p.model_completeness.status === "full_modeled_account").length, 1);
+  assert.equal(study.projects.filter(p => p.model_completeness.status === "full_modeled_account").length, 0);
   const descriptionPage = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
   for (const completed of study.projects.filter(project => project.research_completion_status === "account_research_complete")) {
     await descriptionPage.goto(`${url}#/project/${completed.project_id}`);
@@ -912,13 +912,13 @@ try {
   await page.goto(`${url}#/project/prj_study_im3_building_00610827836`);
   await page.getByRole("heading", { name: "Google Berkeley County", exact: true }).waitFor();
   await page.getByRole("heading", { name: "About this project", exact: true }).waitFor();
-  await page.locator(".account-count").getByText("24 sourced records · 12 modeled syntheses", { exact: true }).waitFor();
+  await page.locator(".account-count").getByText("164 sourced records · 27 modeled syntheses", { exact: true }).waitFor();
   await page.screenshot({ path: path.join(out, "google-berkeley-final-batch-desktop.png") });
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto(`${url}#/project/prj_study_im3_campus_00009474864`);
   await page.getByRole("heading", { name: "Google Lenoir", exact: true }).waitFor();
   await page.getByRole("heading", { name: "About this project", exact: true }).waitFor();
-  await page.locator(".account-count").getByText("99 sourced records · 15 modeled syntheses", { exact: true }).waitFor();
+  await page.locator(".account-count").getByText("162 sourced records · 17 modeled syntheses", { exact: true }).waitFor();
   await noOverflow();
   await page.screenshot({ path: path.join(out, "google-lenoir-final-batch-mobile.png") });
   await page.setViewportSize({ width: 1440, height: 1000 });

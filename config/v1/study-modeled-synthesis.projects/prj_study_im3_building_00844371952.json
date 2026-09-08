@@ -2573,11 +2573,591 @@
       ],
       "notes": "Deterministic aggregation of 11 accepted 2025 paid-tax claims. All six tax-year models now include the eligible real-account scope; 2020-2024 use governed annual paid rollups and 2025 preserves eight parcel-level paid claims. Separately retained billed records are not model inputs."
     },
-    {"project_id":"prj_study_im3_building_00844371952","basis":"modeled_synthesis","confidence_rationale":"The tax-source arithmetic is explicit; the result is only an equal-cost identity because observed same-period marginal public-service cost is unavailable.","evidence_search":{"direct_observation_status":"partial","source_projection_status":"available_separately","remaining_evidence_gap":"Observed same-recipient marginal public-service cost and complete tax reconciliation."},"presentation":"modeled_not_observed_or_audited","reviewed_on":"2026-09-08","estimate_id":"est_study_google_bridgeport_service_cost_break_even_2020","metric_code":"study.modeled_annual_local_service_cost_break_even","label":"Annual same-scope public-service cost break-even threshold","category":"public_costs","unit":"USD_per_year","measure_type":"flow","value":654482.84,"period":{"kind":"tax_year","year":2020,"label":"Jackson County tax year 2020; three exact-address personal accounts and seven eligible linked real parcels paid"},"scope":{"level":"company_county","label":"Google, Design and Wiessner personal-property accounts at 48809 AL Hwy 277 plus seven eligible Wiessner-linked real parcels","county_fips":"01071","inventory_allocation":"unallocated"},"interval":{"kind":"point_estimate","low":654482.84,"central":654482.84,"high":654482.84,"interpretation":"Exact source arithmetic or reported point; not a statistical estimate."},"contribution_channel":"not_applicable","aggregation":{"aggregation_id":"google_bridgeport_service_cost_break_even_2020","role":"standalone","overlap_policy":"do_not_sum_outside_declared_total"},"parameters":[{"name":"google_account_tax_paid","value":892.32,"unit":"USD","provenance":{"kind":"claim","reference_id":"clm_study_google_bridgeport_google_tax_paid_2020","detail":"Tax paid by exact-address account in 2020"},"transformation":"Summed across three personal accounts and the eligible real-parcel paid rollup"},{"name":"design_account_tax_paid","value":109983.64,"unit":"USD","provenance":{"kind":"claim","reference_id":"clm_study_google_bridgeport_design_tax_paid_2020","detail":"Tax paid by exact-address account in 2020"},"transformation":"Summed across three personal accounts and the eligible real-parcel paid rollup"},{"name":"wiessner_account_tax_paid","value":668.08,"unit":"USD","provenance":{"kind":"claim","reference_id":"clm_study_google_bridgeport_wiessner_tax_paid_2020","detail":"Tax paid by exact-address account in 2020"},"transformation":"Summed across three personal accounts and the eligible real-parcel paid rollup"},{"name":"wiessner_real_parcels_tax_paid","value":542938.8,"unit":"USD","provenance":{"kind":"claim","reference_id":"clm_study_google_bridgeport_wiessner_real_tax_paid_2020","detail":"Paid-tax rollup for the seven eligible Wiessner real parcels in tax year 2020"},"transformation":"Direct annual rollup; the separately retained billed claim is not added"}],"confidence":"medium","decision_relevance":"Shows the cost level that would exactly offset recurring 2020 paid taxes.","derivation":{"method":"allocation","model_version":"google-bridgeport-account-1.2.0","formula":"break-even annual cost = aggregated 2020 project-linked property taxes paid","input_claim_ids":["clm_study_google_bridgeport_google_tax_paid_2020","clm_study_google_bridgeport_design_tax_paid_2020","clm_study_google_bridgeport_wiessner_tax_paid_2020","clm_study_google_bridgeport_wiessner_real_tax_paid_2020"],"input_source_ids":["src_study_jackson_property_google_151335","src_study_jackson_property_design_151342","src_study_jackson_property_wiessner_151344","src_study_jackson_property_wiessner_real_98353"],"assumptions":["Threshold is an identity, not a cost estimate."]},"limitations":["Not actual public cost or net fiscal impact.","Positive margin only if same-scope costs are below threshold; negative if above.","Incentives and multi-period support remain unmatched."],"notes":"Required same-period fiscal counterpart for 2020; nonadditive with its tax total and no net result asserted."},
-    {"project_id":"prj_study_im3_building_00844371952","basis":"modeled_synthesis","confidence_rationale":"The tax-source arithmetic is explicit; the result is only an equal-cost identity because observed same-period marginal public-service cost is unavailable.","evidence_search":{"direct_observation_status":"partial","source_projection_status":"available_separately","remaining_evidence_gap":"Observed same-recipient marginal public-service cost and complete tax reconciliation."},"presentation":"modeled_not_observed_or_audited","reviewed_on":"2026-09-08","estimate_id":"est_study_google_bridgeport_service_cost_break_even_2021","metric_code":"study.modeled_annual_local_service_cost_break_even","label":"Annual same-scope public-service cost break-even threshold","category":"public_costs","unit":"USD_per_year","measure_type":"flow","value":2100005.38,"period":{"kind":"tax_year","year":2021,"label":"Jackson County tax year 2021; three exact-address personal accounts and eight linked real parcels paid"},"scope":{"level":"company_county","label":"Google, Design and Wiessner personal-property accounts at 48809 AL Hwy 277 plus eight Wiessner-linked real parcels","county_fips":"01071","inventory_allocation":"unallocated"},"interval":{"kind":"point_estimate","low":2100005.38,"central":2100005.38,"high":2100005.38,"interpretation":"Exact source arithmetic or reported point; not a statistical estimate."},"contribution_channel":"not_applicable","aggregation":{"aggregation_id":"google_bridgeport_service_cost_break_even_2021","role":"standalone","overlap_policy":"do_not_sum_outside_declared_total"},"parameters":[{"name":"google_account_tax_paid","value":5157.62,"unit":"USD","provenance":{"kind":"claim","reference_id":"clm_study_google_bridgeport_google_tax_paid_2021","detail":"Tax paid by exact-address account in 2021"},"transformation":"Summed across three personal accounts and the real-parcel paid rollup"},{"name":"design_account_tax_paid","value":766668.5,"unit":"USD","provenance":{"kind":"claim","reference_id":"clm_study_google_bridgeport_design_tax_paid_2021","detail":"Tax paid by exact-address account in 2021"},"transformation":"Summed across three personal accounts and the real-parcel paid rollup"},{"name":"wiessner_account_tax_paid","value":941694.26,"unit":"USD","provenance":{"kind":"claim","reference_id":"clm_study_google_bridgeport_wiessner_tax_paid_2021","detail":"Tax paid by exact-address account in 2021"},"transformation":"Summed across three personal accounts and the real-parcel paid rollup"},{"name":"wiessner_real_parcels_tax_paid","value":386485,"unit":"USD","provenance":{"kind":"claim","reference_id":"clm_study_google_bridgeport_wiessner_real_tax_paid_2021","detail":"Paid-tax rollup for eight Wiessner real parcels in tax year 2021"},"transformation":"Direct annual rollup; the separately retained billed claim is not added"}],"confidence":"medium","decision_relevance":"Shows the cost level that would exactly offset recurring 2021 paid taxes.","derivation":{"method":"allocation","model_version":"google-bridgeport-account-1.2.0","formula":"break-even annual cost = aggregated 2021 project-linked property taxes paid","input_claim_ids":["clm_study_google_bridgeport_google_tax_paid_2021","clm_study_google_bridgeport_design_tax_paid_2021","clm_study_google_bridgeport_wiessner_tax_paid_2021","clm_study_google_bridgeport_wiessner_real_tax_paid_2021"],"input_source_ids":["src_study_jackson_property_google_151335","src_study_jackson_property_design_151342","src_study_jackson_property_wiessner_151344","src_study_jackson_property_wiessner_real_98353"],"assumptions":["Threshold is an identity, not a cost estimate."]},"limitations":["Not actual public cost or net fiscal impact.","Positive margin only if same-scope costs are below threshold; negative if above.","Incentives and multi-period support remain unmatched."],"notes":"Required same-period fiscal counterpart for 2021; nonadditive with its tax total and no net result asserted."},
-    {"project_id":"prj_study_im3_building_00844371952","basis":"modeled_synthesis","confidence_rationale":"The tax-source arithmetic is explicit; the result is only an equal-cost identity because observed same-period marginal public-service cost is unavailable.","evidence_search":{"direct_observation_status":"partial","source_projection_status":"available_separately","remaining_evidence_gap":"Observed same-recipient marginal public-service cost and complete tax reconciliation."},"presentation":"modeled_not_observed_or_audited","reviewed_on":"2026-09-08","estimate_id":"est_study_google_bridgeport_service_cost_break_even_2022","metric_code":"study.modeled_annual_local_service_cost_break_even","label":"Annual same-scope public-service cost break-even threshold","category":"public_costs","unit":"USD_per_year","measure_type":"flow","value":1943560.46,"period":{"kind":"tax_year","year":2022,"label":"Jackson County tax year 2022; three exact-address personal accounts and eight linked real parcels paid"},"scope":{"level":"company_county","label":"Google, Design and Wiessner personal-property accounts at 48809 AL Hwy 277 plus eight Wiessner-linked real parcels","county_fips":"01071","inventory_allocation":"unallocated"},"interval":{"kind":"point_estimate","low":1943560.46,"central":1943560.46,"high":1943560.46,"interpretation":"Exact source arithmetic or reported point; not a statistical estimate."},"contribution_channel":"not_applicable","aggregation":{"aggregation_id":"google_bridgeport_service_cost_break_even_2022","role":"standalone","overlap_policy":"do_not_sum_outside_declared_total"},"parameters":[{"name":"google_account_tax_paid","value":6299.02,"unit":"USD","provenance":{"kind":"claim","reference_id":"clm_study_google_bridgeport_google_tax_paid_2022","detail":"Tax paid by exact-address account in 2022"},"transformation":"Summed across three personal accounts and the real-parcel paid rollup"},{"name":"design_account_tax_paid","value":558964.64,"unit":"USD","provenance":{"kind":"claim","reference_id":"clm_study_google_bridgeport_design_tax_paid_2022","detail":"Tax paid by exact-address account in 2022"},"transformation":"Summed across three personal accounts and the real-parcel paid rollup"},{"name":"wiessner_account_tax_paid","value":963215.5,"unit":"USD","provenance":{"kind":"claim","reference_id":"clm_study_google_bridgeport_wiessner_tax_paid_2022","detail":"Tax paid by exact-address account in 2022"},"transformation":"Summed across three personal accounts and the real-parcel paid rollup"},{"name":"wiessner_real_parcels_tax_paid","value":415081.3,"unit":"USD","provenance":{"kind":"claim","reference_id":"clm_study_google_bridgeport_wiessner_real_tax_paid_2022","detail":"Paid-tax rollup for eight Wiessner real parcels in tax year 2022"},"transformation":"Direct annual rollup; the separately retained billed claim is not added"}],"confidence":"medium","decision_relevance":"Shows the cost level that would exactly offset recurring 2022 paid taxes.","derivation":{"method":"allocation","model_version":"google-bridgeport-account-1.2.0","formula":"break-even annual cost = aggregated 2022 project-linked property taxes paid","input_claim_ids":["clm_study_google_bridgeport_google_tax_paid_2022","clm_study_google_bridgeport_design_tax_paid_2022","clm_study_google_bridgeport_wiessner_tax_paid_2022","clm_study_google_bridgeport_wiessner_real_tax_paid_2022"],"input_source_ids":["src_study_jackson_property_google_151335","src_study_jackson_property_design_151342","src_study_jackson_property_wiessner_151344","src_study_jackson_property_wiessner_real_98353"],"assumptions":["Threshold is an identity, not a cost estimate."]},"limitations":["Not actual public cost or net fiscal impact.","Positive margin only if same-scope costs are below threshold; negative if above.","Incentives and multi-period support remain unmatched."],"notes":"Required same-period fiscal counterpart for 2022; nonadditive with its tax total and no net result asserted."},
-    {"project_id":"prj_study_im3_building_00844371952","basis":"modeled_synthesis","confidence_rationale":"The tax-source arithmetic is explicit; the result is only an equal-cost identity because observed same-period marginal public-service cost is unavailable.","evidence_search":{"direct_observation_status":"partial","source_projection_status":"available_separately","remaining_evidence_gap":"Observed same-recipient marginal public-service cost and complete tax reconciliation."},"presentation":"modeled_not_observed_or_audited","reviewed_on":"2026-09-08","estimate_id":"est_study_google_bridgeport_service_cost_break_even_2023","metric_code":"study.modeled_annual_local_service_cost_break_even","label":"Annual same-scope public-service cost break-even threshold","category":"public_costs","unit":"USD_per_year","measure_type":"flow","value":2520548.5,"period":{"kind":"tax_year","year":2023,"label":"Jackson County tax year 2023; three exact-address personal accounts and eight linked real parcels paid"},"scope":{"level":"company_county","label":"Google, Design and Wiessner personal-property accounts at 48809 AL Hwy 277 plus eight Wiessner-linked real parcels","county_fips":"01071","inventory_allocation":"unallocated"},"interval":{"kind":"point_estimate","low":2520548.5,"central":2520548.5,"high":2520548.5,"interpretation":"Exact source arithmetic or reported point; not a statistical estimate."},"contribution_channel":"not_applicable","aggregation":{"aggregation_id":"google_bridgeport_service_cost_break_even_2023","role":"standalone","overlap_policy":"do_not_sum_outside_declared_total"},"parameters":[{"name":"google_account_tax_paid","value":7407.4,"unit":"USD","provenance":{"kind":"claim","reference_id":"clm_study_google_bridgeport_google_tax_paid_2023","detail":"Tax paid by exact-address account in 2023"},"transformation":"Summed across three personal accounts and the real-parcel paid rollup"},{"name":"design_account_tax_paid","value":1162992.22,"unit":"USD","provenance":{"kind":"claim","reference_id":"clm_study_google_bridgeport_design_tax_paid_2023","detail":"Tax paid by exact-address account in 2023"},"transformation":"Summed across three personal accounts and the real-parcel paid rollup"},{"name":"wiessner_account_tax_paid","value":935007.58,"unit":"USD","provenance":{"kind":"claim","reference_id":"clm_study_google_bridgeport_wiessner_tax_paid_2023","detail":"Tax paid by exact-address account in 2023"},"transformation":"Summed across three personal accounts and the real-parcel paid rollup"},{"name":"wiessner_real_parcels_tax_paid","value":415141.3,"unit":"USD","provenance":{"kind":"claim","reference_id":"clm_study_google_bridgeport_wiessner_real_tax_paid_2023","detail":"Paid-tax rollup for eight Wiessner real parcels in tax year 2023"},"transformation":"Direct annual rollup; the separately retained billed claim is not added"}],"confidence":"medium","decision_relevance":"Shows the cost level that would exactly offset recurring 2023 paid taxes.","derivation":{"method":"allocation","model_version":"google-bridgeport-account-1.2.0","formula":"break-even annual cost = aggregated 2023 project-linked property taxes paid","input_claim_ids":["clm_study_google_bridgeport_google_tax_paid_2023","clm_study_google_bridgeport_design_tax_paid_2023","clm_study_google_bridgeport_wiessner_tax_paid_2023","clm_study_google_bridgeport_wiessner_real_tax_paid_2023"],"input_source_ids":["src_study_jackson_property_google_151335","src_study_jackson_property_design_151342","src_study_jackson_property_wiessner_151344","src_study_jackson_property_wiessner_real_98353"],"assumptions":["Threshold is an identity, not a cost estimate."]},"limitations":["Not actual public cost or net fiscal impact.","Positive margin only if same-scope costs are below threshold; negative if above.","Incentives and multi-period support remain unmatched."],"notes":"Required same-period fiscal counterpart for 2023; nonadditive with its tax total and no net result asserted."},
-    {"project_id":"prj_study_im3_building_00844371952","basis":"modeled_synthesis","confidence_rationale":"The tax-source arithmetic is explicit; the result is only an equal-cost identity because observed same-period marginal public-service cost is unavailable.","evidence_search":{"direct_observation_status":"partial","source_projection_status":"available_separately","remaining_evidence_gap":"Observed same-recipient marginal public-service cost and complete tax reconciliation."},"presentation":"modeled_not_observed_or_audited","reviewed_on":"2026-09-08","estimate_id":"est_study_google_bridgeport_service_cost_break_even_2024","metric_code":"study.modeled_annual_local_service_cost_break_even","label":"Annual same-scope public-service cost break-even threshold","category":"public_costs","unit":"USD_per_year","measure_type":"flow","value":3035462.66,"period":{"kind":"tax_year","year":2024,"label":"Jackson County tax year 2024; three exact-address personal accounts and eight linked real parcels paid"},"scope":{"level":"company_county","label":"Google, Design and Wiessner personal-property accounts at 48809 AL Hwy 277 plus eight Wiessner-linked real parcels","county_fips":"01071","inventory_allocation":"unallocated"},"interval":{"kind":"point_estimate","low":3035462.66,"central":3035462.66,"high":3035462.66,"interpretation":"Exact source arithmetic or reported point; not a statistical estimate."},"contribution_channel":"not_applicable","aggregation":{"aggregation_id":"google_bridgeport_service_cost_break_even_2024","role":"standalone","overlap_policy":"do_not_sum_outside_declared_total"},"parameters":[{"name":"google_account_tax_paid","value":5259.2,"unit":"USD","provenance":{"kind":"claim","reference_id":"clm_study_google_bridgeport_google_tax_paid_2024","detail":"Tax paid by exact-address account in 2024"},"transformation":"Summed across three personal accounts and the real-parcel paid rollup"},{"name":"design_account_tax_paid","value":1686550.24,"unit":"USD","provenance":{"kind":"claim","reference_id":"clm_study_google_bridgeport_design_tax_paid_2024","detail":"Tax paid by exact-address account in 2024"},"transformation":"Summed across three personal accounts and the real-parcel paid rollup"},{"name":"wiessner_account_tax_paid","value":928511.92,"unit":"USD","provenance":{"kind":"claim","reference_id":"clm_study_google_bridgeport_wiessner_tax_paid_2024","detail":"Tax paid by exact-address account in 2024"},"transformation":"Summed across three personal accounts and the real-parcel paid rollup"},{"name":"wiessner_real_parcels_tax_paid","value":415141.3,"unit":"USD","provenance":{"kind":"claim","reference_id":"clm_study_google_bridgeport_wiessner_real_tax_paid_2024","detail":"Paid-tax rollup for eight Wiessner real parcels in tax year 2024"},"transformation":"Direct annual rollup; the separately retained billed claim is not added"}],"confidence":"medium","decision_relevance":"Shows the cost level that would exactly offset recurring 2024 paid taxes.","derivation":{"method":"allocation","model_version":"google-bridgeport-account-1.2.0","formula":"break-even annual cost = aggregated 2024 project-linked property taxes paid","input_claim_ids":["clm_study_google_bridgeport_google_tax_paid_2024","clm_study_google_bridgeport_design_tax_paid_2024","clm_study_google_bridgeport_wiessner_tax_paid_2024","clm_study_google_bridgeport_wiessner_real_tax_paid_2024"],"input_source_ids":["src_study_jackson_property_google_151335","src_study_jackson_property_design_151342","src_study_jackson_property_wiessner_151344","src_study_jackson_property_wiessner_real_98353"],"assumptions":["Threshold is an identity, not a cost estimate."]},"limitations":["Not actual public cost or net fiscal impact.","Positive margin only if same-scope costs are below threshold; negative if above.","Incentives and multi-period support remain unmatched."],"notes":"Required same-period fiscal counterpart for 2024; nonadditive with its tax total and no net result asserted."},
+    {
+      "project_id": "prj_study_im3_building_00844371952",
+      "basis": "modeled_synthesis",
+      "confidence_rationale": "The tax-source arithmetic is explicit; the result is only an equal-cost identity because observed same-period marginal public-service cost is unavailable.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Observed same-recipient marginal public-service cost and complete tax reconciliation."
+      },
+      "presentation": "modeled_not_observed_or_audited",
+      "reviewed_on": "2026-09-08",
+      "estimate_id": "est_study_google_bridgeport_service_cost_break_even_2020",
+      "metric_code": "study.modeled_annual_local_service_cost_break_even",
+      "label": "Annual same-scope public-service cost break-even threshold",
+      "category": "public_costs",
+      "unit": "USD_per_year",
+      "measure_type": "flow",
+      "value": 654482.84,
+      "period": {
+        "kind": "tax_year",
+        "year": 2020,
+        "label": "Jackson County tax year 2020; three exact-address personal accounts and seven eligible linked real parcels paid"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Google, Design and Wiessner personal-property accounts at 48809 AL Hwy 277 plus seven eligible Wiessner-linked real parcels",
+        "county_fips": "01071",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "point_estimate",
+        "low": 654482.84,
+        "central": 654482.84,
+        "high": 654482.84,
+        "interpretation": "Exact source arithmetic or reported point; not a statistical estimate."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "google_bridgeport_service_cost_break_even_2020",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "google_account_tax_paid",
+          "value": 892.32,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_google_bridgeport_google_tax_paid_2020",
+            "detail": "Tax paid by exact-address account in 2020"
+          },
+          "transformation": "Summed across three personal accounts and the eligible real-parcel paid rollup"
+        },
+        {
+          "name": "design_account_tax_paid",
+          "value": 109983.64,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_google_bridgeport_design_tax_paid_2020",
+            "detail": "Tax paid by exact-address account in 2020"
+          },
+          "transformation": "Summed across three personal accounts and the eligible real-parcel paid rollup"
+        },
+        {
+          "name": "wiessner_account_tax_paid",
+          "value": 668.08,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_google_bridgeport_wiessner_tax_paid_2020",
+            "detail": "Tax paid by exact-address account in 2020"
+          },
+          "transformation": "Summed across three personal accounts and the eligible real-parcel paid rollup"
+        },
+        {
+          "name": "wiessner_real_parcels_tax_paid",
+          "value": 542938.8,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_google_bridgeport_wiessner_real_tax_paid_2020",
+            "detail": "Paid-tax rollup for the seven eligible Wiessner real parcels in tax year 2020"
+          },
+          "transformation": "Direct annual rollup; the separately retained billed claim is not added"
+        }
+      ],
+      "confidence": "medium",
+      "decision_relevance": "Shows the cost level that would exactly offset recurring 2020 paid taxes.",
+      "derivation": {
+        "method": "allocation",
+        "model_version": "google-bridgeport-account-1.2.0",
+        "formula": "break-even annual cost = aggregated 2020 project-linked property taxes paid",
+        "input_claim_ids": [
+          "clm_study_google_bridgeport_google_tax_paid_2020",
+          "clm_study_google_bridgeport_design_tax_paid_2020",
+          "clm_study_google_bridgeport_wiessner_tax_paid_2020",
+          "clm_study_google_bridgeport_wiessner_real_tax_paid_2020"
+        ],
+        "input_source_ids": [
+          "src_study_jackson_property_google_151335",
+          "src_study_jackson_property_design_151342",
+          "src_study_jackson_property_wiessner_151344",
+          "src_study_jackson_property_wiessner_real_98353"
+        ],
+        "assumptions": [
+          "Threshold is an identity, not a cost estimate."
+        ]
+      },
+      "limitations": [
+        "Not actual public cost or net fiscal impact.",
+        "Positive margin only if same-scope costs are below threshold; negative if above.",
+        "Incentives and multi-period support remain unmatched."
+      ],
+      "notes": "Required same-period fiscal counterpart for 2020; nonadditive with its tax total and no net result asserted."
+    },
+    {
+      "project_id": "prj_study_im3_building_00844371952",
+      "basis": "modeled_synthesis",
+      "confidence_rationale": "The tax-source arithmetic is explicit; the result is only an equal-cost identity because observed same-period marginal public-service cost is unavailable.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Observed same-recipient marginal public-service cost and complete tax reconciliation."
+      },
+      "presentation": "modeled_not_observed_or_audited",
+      "reviewed_on": "2026-09-08",
+      "estimate_id": "est_study_google_bridgeport_service_cost_break_even_2021",
+      "metric_code": "study.modeled_annual_local_service_cost_break_even",
+      "label": "Annual same-scope public-service cost break-even threshold",
+      "category": "public_costs",
+      "unit": "USD_per_year",
+      "measure_type": "flow",
+      "value": 2100005.38,
+      "period": {
+        "kind": "tax_year",
+        "year": 2021,
+        "label": "Jackson County tax year 2021; three exact-address personal accounts and eight linked real parcels paid"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Google, Design and Wiessner personal-property accounts at 48809 AL Hwy 277 plus eight Wiessner-linked real parcels",
+        "county_fips": "01071",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "point_estimate",
+        "low": 2100005.38,
+        "central": 2100005.38,
+        "high": 2100005.38,
+        "interpretation": "Exact source arithmetic or reported point; not a statistical estimate."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "google_bridgeport_service_cost_break_even_2021",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "google_account_tax_paid",
+          "value": 5157.62,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_google_bridgeport_google_tax_paid_2021",
+            "detail": "Tax paid by exact-address account in 2021"
+          },
+          "transformation": "Summed across three personal accounts and the real-parcel paid rollup"
+        },
+        {
+          "name": "design_account_tax_paid",
+          "value": 766668.5,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_google_bridgeport_design_tax_paid_2021",
+            "detail": "Tax paid by exact-address account in 2021"
+          },
+          "transformation": "Summed across three personal accounts and the real-parcel paid rollup"
+        },
+        {
+          "name": "wiessner_account_tax_paid",
+          "value": 941694.26,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_google_bridgeport_wiessner_tax_paid_2021",
+            "detail": "Tax paid by exact-address account in 2021"
+          },
+          "transformation": "Summed across three personal accounts and the real-parcel paid rollup"
+        },
+        {
+          "name": "wiessner_real_parcels_tax_paid",
+          "value": 386485,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_google_bridgeport_wiessner_real_tax_paid_2021",
+            "detail": "Paid-tax rollup for eight Wiessner real parcels in tax year 2021"
+          },
+          "transformation": "Direct annual rollup; the separately retained billed claim is not added"
+        }
+      ],
+      "confidence": "medium",
+      "decision_relevance": "Shows the cost level that would exactly offset recurring 2021 paid taxes.",
+      "derivation": {
+        "method": "allocation",
+        "model_version": "google-bridgeport-account-1.2.0",
+        "formula": "break-even annual cost = aggregated 2021 project-linked property taxes paid",
+        "input_claim_ids": [
+          "clm_study_google_bridgeport_google_tax_paid_2021",
+          "clm_study_google_bridgeport_design_tax_paid_2021",
+          "clm_study_google_bridgeport_wiessner_tax_paid_2021",
+          "clm_study_google_bridgeport_wiessner_real_tax_paid_2021"
+        ],
+        "input_source_ids": [
+          "src_study_jackson_property_google_151335",
+          "src_study_jackson_property_design_151342",
+          "src_study_jackson_property_wiessner_151344",
+          "src_study_jackson_property_wiessner_real_98353"
+        ],
+        "assumptions": [
+          "Threshold is an identity, not a cost estimate."
+        ]
+      },
+      "limitations": [
+        "Not actual public cost or net fiscal impact.",
+        "Positive margin only if same-scope costs are below threshold; negative if above.",
+        "Incentives and multi-period support remain unmatched."
+      ],
+      "notes": "Required same-period fiscal counterpart for 2021; nonadditive with its tax total and no net result asserted."
+    },
+    {
+      "project_id": "prj_study_im3_building_00844371952",
+      "basis": "modeled_synthesis",
+      "confidence_rationale": "The tax-source arithmetic is explicit; the result is only an equal-cost identity because observed same-period marginal public-service cost is unavailable.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Observed same-recipient marginal public-service cost and complete tax reconciliation."
+      },
+      "presentation": "modeled_not_observed_or_audited",
+      "reviewed_on": "2026-09-08",
+      "estimate_id": "est_study_google_bridgeport_service_cost_break_even_2022",
+      "metric_code": "study.modeled_annual_local_service_cost_break_even",
+      "label": "Annual same-scope public-service cost break-even threshold",
+      "category": "public_costs",
+      "unit": "USD_per_year",
+      "measure_type": "flow",
+      "value": 1943560.46,
+      "period": {
+        "kind": "tax_year",
+        "year": 2022,
+        "label": "Jackson County tax year 2022; three exact-address personal accounts and eight linked real parcels paid"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Google, Design and Wiessner personal-property accounts at 48809 AL Hwy 277 plus eight Wiessner-linked real parcels",
+        "county_fips": "01071",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "point_estimate",
+        "low": 1943560.46,
+        "central": 1943560.46,
+        "high": 1943560.46,
+        "interpretation": "Exact source arithmetic or reported point; not a statistical estimate."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "google_bridgeport_service_cost_break_even_2022",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "google_account_tax_paid",
+          "value": 6299.02,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_google_bridgeport_google_tax_paid_2022",
+            "detail": "Tax paid by exact-address account in 2022"
+          },
+          "transformation": "Summed across three personal accounts and the real-parcel paid rollup"
+        },
+        {
+          "name": "design_account_tax_paid",
+          "value": 558964.64,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_google_bridgeport_design_tax_paid_2022",
+            "detail": "Tax paid by exact-address account in 2022"
+          },
+          "transformation": "Summed across three personal accounts and the real-parcel paid rollup"
+        },
+        {
+          "name": "wiessner_account_tax_paid",
+          "value": 963215.5,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_google_bridgeport_wiessner_tax_paid_2022",
+            "detail": "Tax paid by exact-address account in 2022"
+          },
+          "transformation": "Summed across three personal accounts and the real-parcel paid rollup"
+        },
+        {
+          "name": "wiessner_real_parcels_tax_paid",
+          "value": 415081.3,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_google_bridgeport_wiessner_real_tax_paid_2022",
+            "detail": "Paid-tax rollup for eight Wiessner real parcels in tax year 2022"
+          },
+          "transformation": "Direct annual rollup; the separately retained billed claim is not added"
+        }
+      ],
+      "confidence": "medium",
+      "decision_relevance": "Shows the cost level that would exactly offset recurring 2022 paid taxes.",
+      "derivation": {
+        "method": "allocation",
+        "model_version": "google-bridgeport-account-1.2.0",
+        "formula": "break-even annual cost = aggregated 2022 project-linked property taxes paid",
+        "input_claim_ids": [
+          "clm_study_google_bridgeport_google_tax_paid_2022",
+          "clm_study_google_bridgeport_design_tax_paid_2022",
+          "clm_study_google_bridgeport_wiessner_tax_paid_2022",
+          "clm_study_google_bridgeport_wiessner_real_tax_paid_2022"
+        ],
+        "input_source_ids": [
+          "src_study_jackson_property_google_151335",
+          "src_study_jackson_property_design_151342",
+          "src_study_jackson_property_wiessner_151344",
+          "src_study_jackson_property_wiessner_real_98353"
+        ],
+        "assumptions": [
+          "Threshold is an identity, not a cost estimate."
+        ]
+      },
+      "limitations": [
+        "Not actual public cost or net fiscal impact.",
+        "Positive margin only if same-scope costs are below threshold; negative if above.",
+        "Incentives and multi-period support remain unmatched."
+      ],
+      "notes": "Required same-period fiscal counterpart for 2022; nonadditive with its tax total and no net result asserted."
+    },
+    {
+      "project_id": "prj_study_im3_building_00844371952",
+      "basis": "modeled_synthesis",
+      "confidence_rationale": "The tax-source arithmetic is explicit; the result is only an equal-cost identity because observed same-period marginal public-service cost is unavailable.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Observed same-recipient marginal public-service cost and complete tax reconciliation."
+      },
+      "presentation": "modeled_not_observed_or_audited",
+      "reviewed_on": "2026-09-08",
+      "estimate_id": "est_study_google_bridgeport_service_cost_break_even_2023",
+      "metric_code": "study.modeled_annual_local_service_cost_break_even",
+      "label": "Annual same-scope public-service cost break-even threshold",
+      "category": "public_costs",
+      "unit": "USD_per_year",
+      "measure_type": "flow",
+      "value": 2520548.5,
+      "period": {
+        "kind": "tax_year",
+        "year": 2023,
+        "label": "Jackson County tax year 2023; three exact-address personal accounts and eight linked real parcels paid"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Google, Design and Wiessner personal-property accounts at 48809 AL Hwy 277 plus eight Wiessner-linked real parcels",
+        "county_fips": "01071",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "point_estimate",
+        "low": 2520548.5,
+        "central": 2520548.5,
+        "high": 2520548.5,
+        "interpretation": "Exact source arithmetic or reported point; not a statistical estimate."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "google_bridgeport_service_cost_break_even_2023",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "google_account_tax_paid",
+          "value": 7407.4,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_google_bridgeport_google_tax_paid_2023",
+            "detail": "Tax paid by exact-address account in 2023"
+          },
+          "transformation": "Summed across three personal accounts and the real-parcel paid rollup"
+        },
+        {
+          "name": "design_account_tax_paid",
+          "value": 1162992.22,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_google_bridgeport_design_tax_paid_2023",
+            "detail": "Tax paid by exact-address account in 2023"
+          },
+          "transformation": "Summed across three personal accounts and the real-parcel paid rollup"
+        },
+        {
+          "name": "wiessner_account_tax_paid",
+          "value": 935007.58,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_google_bridgeport_wiessner_tax_paid_2023",
+            "detail": "Tax paid by exact-address account in 2023"
+          },
+          "transformation": "Summed across three personal accounts and the real-parcel paid rollup"
+        },
+        {
+          "name": "wiessner_real_parcels_tax_paid",
+          "value": 415141.3,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_google_bridgeport_wiessner_real_tax_paid_2023",
+            "detail": "Paid-tax rollup for eight Wiessner real parcels in tax year 2023"
+          },
+          "transformation": "Direct annual rollup; the separately retained billed claim is not added"
+        }
+      ],
+      "confidence": "medium",
+      "decision_relevance": "Shows the cost level that would exactly offset recurring 2023 paid taxes.",
+      "derivation": {
+        "method": "allocation",
+        "model_version": "google-bridgeport-account-1.2.0",
+        "formula": "break-even annual cost = aggregated 2023 project-linked property taxes paid",
+        "input_claim_ids": [
+          "clm_study_google_bridgeport_google_tax_paid_2023",
+          "clm_study_google_bridgeport_design_tax_paid_2023",
+          "clm_study_google_bridgeport_wiessner_tax_paid_2023",
+          "clm_study_google_bridgeport_wiessner_real_tax_paid_2023"
+        ],
+        "input_source_ids": [
+          "src_study_jackson_property_google_151335",
+          "src_study_jackson_property_design_151342",
+          "src_study_jackson_property_wiessner_151344",
+          "src_study_jackson_property_wiessner_real_98353"
+        ],
+        "assumptions": [
+          "Threshold is an identity, not a cost estimate."
+        ]
+      },
+      "limitations": [
+        "Not actual public cost or net fiscal impact.",
+        "Positive margin only if same-scope costs are below threshold; negative if above.",
+        "Incentives and multi-period support remain unmatched."
+      ],
+      "notes": "Required same-period fiscal counterpart for 2023; nonadditive with its tax total and no net result asserted."
+    },
+    {
+      "project_id": "prj_study_im3_building_00844371952",
+      "basis": "modeled_synthesis",
+      "confidence_rationale": "The tax-source arithmetic is explicit; the result is only an equal-cost identity because observed same-period marginal public-service cost is unavailable.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Observed same-recipient marginal public-service cost and complete tax reconciliation."
+      },
+      "presentation": "modeled_not_observed_or_audited",
+      "reviewed_on": "2026-09-08",
+      "estimate_id": "est_study_google_bridgeport_service_cost_break_even_2024",
+      "metric_code": "study.modeled_annual_local_service_cost_break_even",
+      "label": "Annual same-scope public-service cost break-even threshold",
+      "category": "public_costs",
+      "unit": "USD_per_year",
+      "measure_type": "flow",
+      "value": 3035462.66,
+      "period": {
+        "kind": "tax_year",
+        "year": 2024,
+        "label": "Jackson County tax year 2024; three exact-address personal accounts and eight linked real parcels paid"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Google, Design and Wiessner personal-property accounts at 48809 AL Hwy 277 plus eight Wiessner-linked real parcels",
+        "county_fips": "01071",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "point_estimate",
+        "low": 3035462.66,
+        "central": 3035462.66,
+        "high": 3035462.66,
+        "interpretation": "Exact source arithmetic or reported point; not a statistical estimate."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "google_bridgeport_service_cost_break_even_2024",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "google_account_tax_paid",
+          "value": 5259.2,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_google_bridgeport_google_tax_paid_2024",
+            "detail": "Tax paid by exact-address account in 2024"
+          },
+          "transformation": "Summed across three personal accounts and the real-parcel paid rollup"
+        },
+        {
+          "name": "design_account_tax_paid",
+          "value": 1686550.24,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_google_bridgeport_design_tax_paid_2024",
+            "detail": "Tax paid by exact-address account in 2024"
+          },
+          "transformation": "Summed across three personal accounts and the real-parcel paid rollup"
+        },
+        {
+          "name": "wiessner_account_tax_paid",
+          "value": 928511.92,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_google_bridgeport_wiessner_tax_paid_2024",
+            "detail": "Tax paid by exact-address account in 2024"
+          },
+          "transformation": "Summed across three personal accounts and the real-parcel paid rollup"
+        },
+        {
+          "name": "wiessner_real_parcels_tax_paid",
+          "value": 415141.3,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_google_bridgeport_wiessner_real_tax_paid_2024",
+            "detail": "Paid-tax rollup for eight Wiessner real parcels in tax year 2024"
+          },
+          "transformation": "Direct annual rollup; the separately retained billed claim is not added"
+        }
+      ],
+      "confidence": "medium",
+      "decision_relevance": "Shows the cost level that would exactly offset recurring 2024 paid taxes.",
+      "derivation": {
+        "method": "allocation",
+        "model_version": "google-bridgeport-account-1.2.0",
+        "formula": "break-even annual cost = aggregated 2024 project-linked property taxes paid",
+        "input_claim_ids": [
+          "clm_study_google_bridgeport_google_tax_paid_2024",
+          "clm_study_google_bridgeport_design_tax_paid_2024",
+          "clm_study_google_bridgeport_wiessner_tax_paid_2024",
+          "clm_study_google_bridgeport_wiessner_real_tax_paid_2024"
+        ],
+        "input_source_ids": [
+          "src_study_jackson_property_google_151335",
+          "src_study_jackson_property_design_151342",
+          "src_study_jackson_property_wiessner_151344",
+          "src_study_jackson_property_wiessner_real_98353"
+        ],
+        "assumptions": [
+          "Threshold is an identity, not a cost estimate."
+        ]
+      },
+      "limitations": [
+        "Not actual public cost or net fiscal impact.",
+        "Positive margin only if same-scope costs are below threshold; negative if above.",
+        "Incentives and multi-period support remain unmatched."
+      ],
+      "notes": "Required same-period fiscal counterpart for 2024; nonadditive with its tax total and no net result asserted."
+    },
     {
       "project_id": "prj_study_im3_building_00844371952",
       "basis": "modeled_synthesis",
@@ -2811,6 +3391,551 @@
       ],
       "presentation": "modeled_not_observed_or_audited",
       "notes": "No causal_design metadata is attached. Baseline national, 2018-anchor, k=20 specification reproduces 2.3730703601% with 0.5261815298% pre-period RMSE. Across the declared grid the gap remains positive (0.9526% to 6.3641%) and maximum RMSE is 1.5479%; employment and GDP comparisons are retired because their signs reverse.",
+      "reviewed_on": "2026-09-08"
+    },
+    {
+      "estimate_id": "est_google_bridgeport_generator_nameplate_2026",
+      "project_id": "prj_study_im3_building_00844371952",
+      "metric_code": "study.modeled_assessor_listed_emergency_generator_total_nameplate_capacity",
+      "label": "Assessor-listed diesel-generator total nameplate capacity",
+      "category": "resources",
+      "unit": "MW",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 55,
+      "period": {
+        "kind": "source_year",
+        "year": 2026,
+        "label": "2026 assessor feature inventory"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Assessor account 98353, PIN 48579, four campus improvements and 55 distinct generator feature rows",
+        "county_fips": "01071",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "point_estimate",
+        "low": 55,
+        "central": 55,
+        "high": 55,
+        "interpretation": "Deterministic source arithmetic with the published display rounded as stated; not statistical confidence."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "google_bridgeport_assessor_generator_total_nameplate_2026",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "generator_feature_rows",
+          "value": 55,
+          "unit": "generators",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_proposed_google_bridgeport_assessor_generator_count_2026",
+            "detail": "55 distinct assessor feature rows"
+          },
+          "transformation": "Multiplied by per-row rating"
+        },
+        {
+          "name": "nameplate_per_feature_row",
+          "value": 1000,
+          "unit": "kW_per_generator",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_google_bridgeport_generator_unit_kw_2026",
+            "detail": "Each distinct row reports 1,000 kW"
+          },
+          "transformation": "Converted from kW to MW"
+        }
+      ],
+      "confidence": "medium",
+      "confidence_rationale": "Exact public inputs and formula; interpretation is limited by source definition and missing underlying itemization.",
+      "decision_relevance": "Makes the source arithmetic machine-actionable without treating it as operation, load, or pollutant-resolved actual emissions.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "not_applicable",
+        "remaining_evidence_gap": "Underlying equipment reconciliation or AEEERS pollutant-itemized actual-emissions report, as applicable."
+      },
+      "derivation": {
+        "method": "allocation",
+        "model_version": "google-bridgeport-account-proposal-1.0.0",
+        "formula": "55 generator feature rows * 1000 kW per row / 1000 kW per MW = 55 MW",
+        "input_claim_ids": [
+          "clm_proposed_google_bridgeport_assessor_generator_count_2026",
+          "clm_google_bridgeport_generator_unit_kw_2026"
+        ],
+        "input_source_ids": [
+          "src_study_jackson_property_wiessner_real_98353"
+        ],
+        "assumptions": [
+          "No allocation to the selected inventory building.",
+          "No aggregation with another estimate unless explicitly declared."
+        ]
+      },
+      "limitations": [
+        "Not operating output, facility load, peak demand, energy consumption, runtime, fuel use, emissions, or permit-listed equipment.",
+        "Permit groups do not enumerate member engines, so this result cannot reconcile equipment to X001-X004."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Exact nameplate arithmetic from 55 distinct assessor feature rows; installed/assessor-listed capacity only.",
+      "reviewed_on": "2026-09-08"
+    },
+    {
+      "estimate_id": "est_proposed_google_bridgeport_aggregate_billable_air_emissions_2020",
+      "project_id": "prj_study_im3_building_00844371952",
+      "metric_code": "study.modeled_aggregate_billable_air_emissions",
+      "label": "Aggregate billable air emissions reconstructed from annual fee packet",
+      "category": "resources",
+      "unit": "tons_per_year",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 26.48,
+      "period": {
+        "kind": "source_year",
+        "year": 2020,
+        "label": "2020 ADEM annual-emissions fee packet"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Widows Creek Data Center ADEM facility 705-0057",
+        "county_fips": "01071",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "point_estimate",
+        "low": 26.48,
+        "central": 26.48,
+        "high": 26.48,
+        "interpretation": "Deterministic source arithmetic with the published display rounded as stated; not statistical confidence."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "google_bridgeport_aggregate_billable_air_emissions_2020",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "annual_fee_amount",
+          "value": 2052.21,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_proposed_google_bridgeport_air_fee_amount_2020",
+            "detail": "ADEM eFile document 104670143 total-fee field"
+          },
+          "transformation": "Used as numerator"
+        },
+        {
+          "name": "fee_rate",
+          "value": 77.5,
+          "unit": "USD_per_ton",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_proposed_google_bridgeport_air_fee_rate_2020",
+            "detail": "ADEM eFile document 104670143 fee-rate field"
+          },
+          "transformation": "Used as denominator"
+        }
+      ],
+      "confidence": "medium",
+      "confidence_rationale": "Exact public inputs and formula; interpretation is limited by source definition and missing underlying itemization.",
+      "decision_relevance": "Makes the source arithmetic machine-actionable without treating it as operation, load, or pollutant-resolved actual emissions.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "not_applicable",
+        "remaining_evidence_gap": "Underlying equipment reconciliation or AEEERS pollutant-itemized actual-emissions report, as applicable."
+      },
+      "derivation": {
+        "method": "allocation",
+        "model_version": "google-bridgeport-account-proposal-1.0.0",
+        "formula": "2052.21 USD / 77.50 USD_per_ton = 26.480129032258066 tons; publish 26.48 tons/year",
+        "input_claim_ids": [
+          "clm_proposed_google_bridgeport_air_fee_amount_2020",
+          "clm_proposed_google_bridgeport_air_fee_rate_2020"
+        ],
+        "input_source_ids": [
+          "src_study_adem_efile_google_jackson_2026"
+        ],
+        "assumptions": [
+          "No allocation to the selected inventory building.",
+          "No aggregation with another estimate unless explicitly declared."
+        ]
+      },
+      "limitations": [
+        "Not pollutant-resolved and not interchangeable with facility potential-to-emit ceilings.",
+        "The public packet states that AEEERS reports itemize actual emissions; those reports are unavailable, so no pollutant allocation is made.",
+        "Nonadditive across pollutants and not allocated to engines, permit groups, buildings, load, or production."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Approximate aggregate billable tons; unrounded quotient 26.480129032258066, displayed to 0.01 ton. AEEERS itemization remains unavailable.",
+      "reviewed_on": "2026-09-08"
+    },
+    {
+      "estimate_id": "est_proposed_google_bridgeport_aggregate_billable_air_emissions_2021",
+      "project_id": "prj_study_im3_building_00844371952",
+      "metric_code": "study.modeled_aggregate_billable_air_emissions",
+      "label": "Aggregate billable air emissions reconstructed from annual fee packet",
+      "category": "resources",
+      "unit": "tons_per_year",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 9.64,
+      "period": {
+        "kind": "source_year",
+        "year": 2021,
+        "label": "2021 ADEM annual-emissions fee packet"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Widows Creek Data Center ADEM facility 705-0057",
+        "county_fips": "01071",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "point_estimate",
+        "low": 9.64,
+        "central": 9.64,
+        "high": 9.64,
+        "interpretation": "Deterministic source arithmetic with the published display rounded as stated; not statistical confidence."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "google_bridgeport_aggregate_billable_air_emissions_2021",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "annual_fee_amount",
+          "value": 915.8,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_proposed_google_bridgeport_air_fee_amount_2021",
+            "detail": "ADEM eFile document 104896688 total-fee field"
+          },
+          "transformation": "Used as numerator"
+        },
+        {
+          "name": "fee_rate",
+          "value": 95,
+          "unit": "USD_per_ton",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_proposed_google_bridgeport_air_fee_rate_2021",
+            "detail": "ADEM eFile document 104896688 fee-rate field"
+          },
+          "transformation": "Used as denominator"
+        }
+      ],
+      "confidence": "medium",
+      "confidence_rationale": "Exact public inputs and formula; interpretation is limited by source definition and missing underlying itemization.",
+      "decision_relevance": "Makes the source arithmetic machine-actionable without treating it as operation, load, or pollutant-resolved actual emissions.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "not_applicable",
+        "remaining_evidence_gap": "Underlying equipment reconciliation or AEEERS pollutant-itemized actual-emissions report, as applicable."
+      },
+      "derivation": {
+        "method": "allocation",
+        "model_version": "google-bridgeport-account-proposal-1.0.0",
+        "formula": "915.80 USD / 95.00 USD_per_ton = 9.639999999999999 tons; publish 9.64 tons/year",
+        "input_claim_ids": [
+          "clm_proposed_google_bridgeport_air_fee_amount_2021",
+          "clm_proposed_google_bridgeport_air_fee_rate_2021"
+        ],
+        "input_source_ids": [
+          "src_study_adem_efile_google_jackson_2026"
+        ],
+        "assumptions": [
+          "No allocation to the selected inventory building.",
+          "No aggregation with another estimate unless explicitly declared."
+        ]
+      },
+      "limitations": [
+        "Not pollutant-resolved and not interchangeable with facility potential-to-emit ceilings.",
+        "The public packet states that AEEERS reports itemize actual emissions; those reports are unavailable, so no pollutant allocation is made.",
+        "Nonadditive across pollutants and not allocated to engines, permit groups, buildings, load, or production."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Approximate aggregate billable tons; unrounded quotient 9.639999999999999, displayed to 0.01 ton. AEEERS itemization remains unavailable.",
+      "reviewed_on": "2026-09-08"
+    },
+    {
+      "estimate_id": "est_proposed_google_bridgeport_aggregate_billable_air_emissions_2022",
+      "project_id": "prj_study_im3_building_00844371952",
+      "metric_code": "study.modeled_aggregate_billable_air_emissions",
+      "label": "Aggregate billable air emissions reconstructed from annual fee packet",
+      "category": "resources",
+      "unit": "tons_per_year",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 11.48,
+      "period": {
+        "kind": "source_year",
+        "year": 2022,
+        "label": "2022 ADEM annual-emissions fee packet"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Widows Creek Data Center ADEM facility 705-0057",
+        "county_fips": "01071",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "point_estimate",
+        "low": 11.48,
+        "central": 11.48,
+        "high": 11.48,
+        "interpretation": "Deterministic source arithmetic with the published display rounded as stated; not statistical confidence."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "google_bridgeport_aggregate_billable_air_emissions_2022",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "annual_fee_amount",
+          "value": 1033.2,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_proposed_google_bridgeport_air_fee_amount_2022",
+            "detail": "ADEM eFile document 105244021 total-fee field"
+          },
+          "transformation": "Used as numerator"
+        },
+        {
+          "name": "fee_rate",
+          "value": 90,
+          "unit": "USD_per_ton",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_proposed_google_bridgeport_air_fee_rate_2022",
+            "detail": "ADEM eFile document 105244021 fee-rate field"
+          },
+          "transformation": "Used as denominator"
+        }
+      ],
+      "confidence": "medium",
+      "confidence_rationale": "Exact public inputs and formula; interpretation is limited by source definition and missing underlying itemization.",
+      "decision_relevance": "Makes the source arithmetic machine-actionable without treating it as operation, load, or pollutant-resolved actual emissions.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "not_applicable",
+        "remaining_evidence_gap": "Underlying equipment reconciliation or AEEERS pollutant-itemized actual-emissions report, as applicable."
+      },
+      "derivation": {
+        "method": "allocation",
+        "model_version": "google-bridgeport-account-proposal-1.0.0",
+        "formula": "1033.20 USD / 90.00 USD_per_ton = 11.48 tons; publish 11.48 tons/year",
+        "input_claim_ids": [
+          "clm_proposed_google_bridgeport_air_fee_amount_2022",
+          "clm_proposed_google_bridgeport_air_fee_rate_2022"
+        ],
+        "input_source_ids": [
+          "src_study_adem_efile_google_jackson_2026"
+        ],
+        "assumptions": [
+          "No allocation to the selected inventory building.",
+          "No aggregation with another estimate unless explicitly declared."
+        ]
+      },
+      "limitations": [
+        "Not pollutant-resolved and not interchangeable with facility potential-to-emit ceilings.",
+        "The public packet states that AEEERS reports itemize actual emissions; those reports are unavailable, so no pollutant allocation is made.",
+        "Nonadditive across pollutants and not allocated to engines, permit groups, buildings, load, or production."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Approximate aggregate billable tons; unrounded quotient 11.48, displayed to 0.01 ton. AEEERS itemization remains unavailable.",
+      "reviewed_on": "2026-09-08"
+    },
+    {
+      "estimate_id": "est_proposed_google_bridgeport_aggregate_billable_air_emissions_2023",
+      "project_id": "prj_study_im3_building_00844371952",
+      "metric_code": "study.modeled_aggregate_billable_air_emissions",
+      "label": "Aggregate billable air emissions reconstructed from annual fee packet",
+      "category": "resources",
+      "unit": "tons_per_year",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 2.66,
+      "period": {
+        "kind": "source_year",
+        "year": 2023,
+        "label": "2023 ADEM annual-emissions fee packet"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Widows Creek Data Center ADEM facility 705-0057",
+        "county_fips": "01071",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "point_estimate",
+        "low": 2.66,
+        "central": 2.66,
+        "high": 2.66,
+        "interpretation": "Deterministic source arithmetic with the published display rounded as stated; not statistical confidence."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "google_bridgeport_aggregate_billable_air_emissions_2023",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "annual_fee_amount",
+          "value": 244.72,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_proposed_google_bridgeport_air_fee_amount_2023",
+            "detail": "ADEM eFile document 105555398 total-fee field"
+          },
+          "transformation": "Used as numerator"
+        },
+        {
+          "name": "fee_rate",
+          "value": 92,
+          "unit": "USD_per_ton",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_proposed_google_bridgeport_air_fee_rate_2023",
+            "detail": "ADEM eFile document 105555398 fee-rate field"
+          },
+          "transformation": "Used as denominator"
+        }
+      ],
+      "confidence": "medium",
+      "confidence_rationale": "Exact public inputs and formula; interpretation is limited by source definition and missing underlying itemization.",
+      "decision_relevance": "Makes the source arithmetic machine-actionable without treating it as operation, load, or pollutant-resolved actual emissions.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "not_applicable",
+        "remaining_evidence_gap": "Underlying equipment reconciliation or AEEERS pollutant-itemized actual-emissions report, as applicable."
+      },
+      "derivation": {
+        "method": "allocation",
+        "model_version": "google-bridgeport-account-proposal-1.0.0",
+        "formula": "244.72 USD / 92.00 USD_per_ton = 2.66 tons; publish 2.66 tons/year",
+        "input_claim_ids": [
+          "clm_proposed_google_bridgeport_air_fee_amount_2023",
+          "clm_proposed_google_bridgeport_air_fee_rate_2023"
+        ],
+        "input_source_ids": [
+          "src_study_adem_efile_google_jackson_2026"
+        ],
+        "assumptions": [
+          "No allocation to the selected inventory building.",
+          "No aggregation with another estimate unless explicitly declared."
+        ]
+      },
+      "limitations": [
+        "Not pollutant-resolved and not interchangeable with facility potential-to-emit ceilings.",
+        "The public packet states that AEEERS reports itemize actual emissions; those reports are unavailable, so no pollutant allocation is made.",
+        "Nonadditive across pollutants and not allocated to engines, permit groups, buildings, load, or production."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Approximate aggregate billable tons; unrounded quotient 2.66, displayed to 0.01 ton. AEEERS itemization remains unavailable.",
+      "reviewed_on": "2026-09-08"
+    },
+    {
+      "estimate_id": "est_proposed_google_bridgeport_aggregate_billable_air_emissions_2024",
+      "project_id": "prj_study_im3_building_00844371952",
+      "metric_code": "study.modeled_aggregate_billable_air_emissions",
+      "label": "Aggregate billable air emissions reconstructed from annual fee packet",
+      "category": "resources",
+      "unit": "tons_per_year",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 2.6,
+      "period": {
+        "kind": "source_year",
+        "year": 2024,
+        "label": "2024 ADEM annual-emissions fee packet"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Widows Creek Data Center ADEM facility 705-0057",
+        "county_fips": "01071",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "point_estimate",
+        "low": 2.6,
+        "central": 2.6,
+        "high": 2.6,
+        "interpretation": "Deterministic source arithmetic with the published display rounded as stated; not statistical confidence."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "google_bridgeport_aggregate_billable_air_emissions_2024",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "annual_fee_amount",
+          "value": 256.11,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_proposed_google_bridgeport_air_fee_amount_2024",
+            "detail": "ADEM eFile document 105837319 total-fee field"
+          },
+          "transformation": "Used as numerator"
+        },
+        {
+          "name": "fee_rate",
+          "value": 98.5,
+          "unit": "USD_per_ton",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_proposed_google_bridgeport_air_fee_rate_2024",
+            "detail": "ADEM eFile document 105837319 fee-rate field"
+          },
+          "transformation": "Used as denominator"
+        }
+      ],
+      "confidence": "medium",
+      "confidence_rationale": "Exact public inputs and formula; interpretation is limited by source definition and missing underlying itemization.",
+      "decision_relevance": "Makes the source arithmetic machine-actionable without treating it as operation, load, or pollutant-resolved actual emissions.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "not_applicable",
+        "remaining_evidence_gap": "Underlying equipment reconciliation or AEEERS pollutant-itemized actual-emissions report, as applicable."
+      },
+      "derivation": {
+        "method": "allocation",
+        "model_version": "google-bridgeport-account-proposal-1.0.0",
+        "formula": "256.11 USD / 98.50 USD_per_ton = 2.60010152284264 tons; publish 2.60 tons/year",
+        "input_claim_ids": [
+          "clm_proposed_google_bridgeport_air_fee_amount_2024",
+          "clm_proposed_google_bridgeport_air_fee_rate_2024"
+        ],
+        "input_source_ids": [
+          "src_study_adem_efile_google_jackson_2026"
+        ],
+        "assumptions": [
+          "No allocation to the selected inventory building.",
+          "No aggregation with another estimate unless explicitly declared."
+        ]
+      },
+      "limitations": [
+        "Not pollutant-resolved and not interchangeable with facility potential-to-emit ceilings.",
+        "The public packet states that AEEERS reports itemize actual emissions; those reports are unavailable, so no pollutant allocation is made.",
+        "Nonadditive across pollutants and not allocated to engines, permit groups, buildings, load, or production."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Approximate aggregate billable tons; unrounded quotient 2.60010152284264, displayed to 0.01 ton. AEEERS itemization remains unavailable.",
       "reviewed_on": "2026-09-08"
     }
   ]

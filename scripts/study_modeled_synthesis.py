@@ -83,6 +83,8 @@ def modeled_products(payload, candidates, evidence, policy=None):
                 raise ValueError(f"Unknown or undeclared parameter claim: {estimate_id}")
             if provenance["kind"] == "source" and (reference not in source_ids or reference not in derivation["input_source_ids"]):
                 raise ValueError(f"Unknown or undeclared parameter source: {estimate_id}")
+            if provenance["kind"] == "model" and reference not in estimate_ids:
+                raise ValueError(f"Unknown parameter model: {estimate_id}")
 
         method = derivation["method"]
         if method in CAUSAL_METHODS and "causal_design" not in row:

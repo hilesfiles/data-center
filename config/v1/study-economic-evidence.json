@@ -803,6 +803,142 @@
       "unit": "USD",
       "measure_type": "flow",
       "aggregation": "none"
+    },
+    {
+      "metric_code": "study.assessor_listed_emergency_generator_count",
+      "label": "Assessor-listed diesel emergency-generator feature count",
+      "category": "resources",
+      "unit": "generators",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "metric_code": "study.assessor_listed_emergency_generator_unit_nameplate_capacity",
+      "label": "Assessor-listed diesel emergency-generator per-row nameplate rating",
+      "category": "resources",
+      "unit": "kW_per_generator",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "metric_code": "study.modeled_assessor_listed_emergency_generator_total_nameplate_capacity",
+      "label": "Modeled assessor-listed diesel emergency-generator total nameplate capacity",
+      "category": "resources",
+      "unit": "MW",
+      "measure_type": "stock",
+      "aggregation": "none"
+    },
+    {
+      "metric_code": "study.permitted_potential_nox_emissions",
+      "label": "Facility permitted potential-to-emit ceiling - nitrogen oxides",
+      "category": "resources",
+      "unit": "tons_per_year",
+      "measure_type": "rate",
+      "aggregation": "none"
+    },
+    {
+      "metric_code": "study.permitted_potential_sox_emissions",
+      "label": "Facility permitted potential-to-emit ceiling - sulfur oxides",
+      "category": "resources",
+      "unit": "tons_per_year",
+      "measure_type": "rate",
+      "aggregation": "none"
+    },
+    {
+      "metric_code": "study.permitted_potential_carbon_monoxide_emissions",
+      "label": "Facility permitted potential-to-emit ceiling - carbon monoxide",
+      "category": "resources",
+      "unit": "tons_per_year",
+      "measure_type": "rate",
+      "aggregation": "none"
+    },
+    {
+      "metric_code": "study.permitted_potential_voc_emissions",
+      "label": "Facility permitted potential-to-emit ceiling - volatile organic compounds",
+      "category": "resources",
+      "unit": "tons_per_year",
+      "measure_type": "rate",
+      "aggregation": "none"
+    },
+    {
+      "metric_code": "study.permitted_potential_pm_emissions",
+      "label": "Facility permitted potential-to-emit ceiling - particulate matter",
+      "category": "resources",
+      "unit": "tons_per_year",
+      "measure_type": "rate",
+      "aggregation": "none"
+    },
+    {
+      "metric_code": "study.permitted_potential_pm10_emissions",
+      "label": "Facility permitted potential-to-emit ceiling - PM10",
+      "category": "resources",
+      "unit": "tons_per_year",
+      "measure_type": "rate",
+      "aggregation": "none"
+    },
+    {
+      "metric_code": "study.permitted_potential_pm25_emissions",
+      "label": "Facility permitted potential-to-emit ceiling - PM2.5",
+      "category": "resources",
+      "unit": "tons_per_year",
+      "measure_type": "rate",
+      "aggregation": "none"
+    },
+    {
+      "metric_code": "study.permitted_potential_formaldehyde_emissions",
+      "label": "Facility permitted potential-to-emit ceiling - formaldehyde",
+      "category": "resources",
+      "unit": "tons_per_year",
+      "measure_type": "rate",
+      "aggregation": "none"
+    },
+    {
+      "metric_code": "study.permitted_potential_total_hap_emissions",
+      "label": "Facility permitted potential-to-emit ceiling - total hazardous air pollutants",
+      "category": "resources",
+      "unit": "tons_per_year",
+      "measure_type": "rate",
+      "aggregation": "none"
+    },
+    {
+      "metric_code": "study.permitted_potential_co2e_emissions",
+      "label": "Facility permitted potential-to-emit ceiling - carbon-dioxide equivalent",
+      "category": "resources",
+      "unit": "tons_per_year",
+      "measure_type": "rate",
+      "aggregation": "none"
+    },
+    {
+      "metric_code": "study.permit_group_annual_runtime_ceiling",
+      "label": "Permit-group annual operating-hours ceiling",
+      "category": "resources",
+      "unit": "hours_per_year",
+      "measure_type": "rate",
+      "aggregation": "none"
+    },
+    {
+      "metric_code": "study.annual_air_emissions_fee_rate",
+      "label": "Annual air-emissions fee rate",
+      "category": "resources",
+      "unit": "USD_per_ton",
+      "measure_type": "rate",
+      "aggregation": "none"
+    },
+    {
+      "metric_code": "study.annual_air_emissions_fee_amount",
+      "label": "Annual air-emissions fee amount",
+      "category": "resources",
+      "unit": "USD",
+      "measure_type": "flow",
+      "aggregation": "none"
+    },
+    {
+      "metric_code": "study.modeled_aggregate_billable_air_emissions",
+      "label": "Modeled aggregate billable air emissions reconstructed from fee packet",
+      "category": "resources",
+      "unit": "tons_per_year",
+      "measure_type": "flow",
+      "aggregation": "none"
     }
   ],
   "sources": [
@@ -864,9 +1000,9 @@
     },
     {
       "source_id": "src_study_econ_nv_apple_2024",
-      "title": "Apple expansion application \u2014 Nevada GOED board packet, July 25, 2024",
+      "title": "Apple expansion application — Nevada GOED board packet, July 25, 2024",
       "url": "https://goed.nv.gov/wp-content/uploads/2024/07/7-B.-Apple-Inc.-Board-Packet.pdf",
-      "publisher": "Nevada Governor\u2019s Office of Economic Development",
+      "publisher": "Nevada Governor’s Office of Economic Development",
       "source_type": "state_record",
       "publication_date": {
         "precision": "day",
@@ -894,7 +1030,7 @@
     },
     {
       "source_id": "src_study_econ_mecklenburg_2026",
-      "title": "Mecklenburg County FY2025\u20132026 Recommended Budget",
+      "title": "Mecklenburg County FY2025–2026 Recommended Budget",
       "url": "https://www.mecklenburgva.com/DocumentCenter/View/932/FY-2025-2026-Proposed-Budget-PDF",
       "publisher": "Mecklenburg County",
       "source_type": "local_government_record",
@@ -908,7 +1044,7 @@
     },
     {
       "source_id": "src_study_crook_fy2026_budget",
-      "title": "Crook County Adopted Budget FY2025\u20132026",
+      "title": "Crook County Adopted Budget FY2025–2026",
       "url": "https://crookcountyor.gov/DocumentCenter/View/816/Crook-County-ADOPTED-Budget-2025-2026",
       "publisher": "Crook County",
       "source_type": "local_government_record",
@@ -1005,7 +1141,7 @@
     },
     {
       "source_id": "src_study_google_jackson_expansion_2026",
-      "title": "We\u2019re strengthening our presence in Alabama through new investments and community support",
+      "title": "We’re strengthening our presence in Alabama through new investments and community support",
       "url": "https://blog.google/innovation-and-ai/infrastructure-and-cloud/global-network/alabama-investment-june-2026/",
       "publisher": "Google",
       "source_type": "operator_release",
@@ -1029,7 +1165,7 @@
       },
       "retrieved_on": "2026-09-03",
       "review_method": "pdf_text_and_page_image",
-      "notes": "Note 13 is part of the financial-statement notes. Table 7 is a statistical table sourced to the county Revenue Department; it is not independently audited by this review. Note 13 does not name its taxpayer. The project link is inferred from the Andale (Facebook) identification on PDF page 11, tax-concentration tables and the recurring 85% real/95% personal-property incentive description through 2040. Tax-year share wording does not consistently match the same report\u2019s fiscal-year table; this remains unresolved. Amounts retain their explicit fiscal-year labels. Download, relevant text, table headings and page images checked.",
+      "notes": "Note 13 is part of the financial-statement notes. Table 7 is a statistical table sourced to the county Revenue Department; it is not independently audited by this review. Note 13 does not name its taxpayer. The project link is inferred from the Andale (Facebook) identification on PDF page 11, tax-concentration tables and the recurring 85% real/95% personal-property incentive description through 2040. Tax-year share wording does not consistently match the same report’s fiscal-year table; this remains unresolved. Amounts retain their explicit fiscal-year labels. Download, relevant text, table headings and page images checked.",
       "artifact_sha256": "7942d2f6863a9e6b50145df09b47403d90af7b422c2ee07dac1d3fb7200e55b4"
     },
     {
@@ -1044,7 +1180,7 @@
       },
       "retrieved_on": "2026-09-03",
       "review_method": "pdf_text_and_page_image",
-      "notes": "Note 13 is part of the financial-statement notes. Table 7 is a statistical table sourced to the county Revenue Department; it is not independently audited by this review. Note 13 does not name its taxpayer. The project link is inferred from the Andale (Facebook) identification on PDF page 11, tax-concentration tables and the recurring 85% real/95% personal-property incentive description through 2040. Tax-year share wording does not consistently match the same report\u2019s fiscal-year table; this remains unresolved. Amounts retain their explicit fiscal-year labels. Download, relevant text, table headings and page images checked.",
+      "notes": "Note 13 is part of the financial-statement notes. Table 7 is a statistical table sourced to the county Revenue Department; it is not independently audited by this review. Note 13 does not name its taxpayer. The project link is inferred from the Andale (Facebook) identification on PDF page 11, tax-concentration tables and the recurring 85% real/95% personal-property incentive description through 2040. Tax-year share wording does not consistently match the same report’s fiscal-year table; this remains unresolved. Amounts retain their explicit fiscal-year labels. Download, relevant text, table headings and page images checked.",
       "artifact_sha256": "4be34275fc8d402fcbd1baf8bfbd314600540304e7d064fe060fe4a512ad48c4"
     },
     {
@@ -1059,7 +1195,7 @@
       },
       "retrieved_on": "2026-09-03",
       "review_method": "pdf_text_and_page_image",
-      "notes": "Note 13 is part of the financial-statement notes. Table 7 is a statistical table sourced to the county Revenue Department; it is not independently audited by this review. Note 13 does not name its taxpayer. The project link is inferred from the Andale (Facebook) identification on PDF page 10, tax-concentration tables and the recurring 85% real/95% personal-property incentive description through 2040. Tax-year share wording does not consistently match the same report\u2019s fiscal-year table; this remains unresolved. Amounts retain their explicit fiscal-year labels. Download, relevant text, table headings and page images checked.",
+      "notes": "Note 13 is part of the financial-statement notes. Table 7 is a statistical table sourced to the county Revenue Department; it is not independently audited by this review. Note 13 does not name its taxpayer. The project link is inferred from the Andale (Facebook) identification on PDF page 10, tax-concentration tables and the recurring 85% real/95% personal-property incentive description through 2040. Tax-year share wording does not consistently match the same report’s fiscal-year table; this remains unresolved. Amounts retain their explicit fiscal-year labels. Download, relevant text, table headings and page images checked.",
       "artifact_sha256": "5cfd7358483206d40ea8e5d3df40d562b1a5596212704979f3ad0566ff9ec4ae"
     },
     {
@@ -1074,7 +1210,7 @@
       },
       "retrieved_on": "2026-09-03",
       "review_method": "pdf_text_and_page_image",
-      "notes": "Note 13 is part of the financial-statement notes. Table 7 is a statistical table sourced to the county Revenue Department; it is not independently audited by this review. Note 13 does not name its taxpayer. The project link is inferred from the Andale (Facebook) identification on PDF page 10, tax-concentration tables and the recurring 85% real/95% personal-property incentive description through 2040. Tax-year share wording does not consistently match the same report\u2019s fiscal-year table; this remains unresolved. Amounts retain their explicit fiscal-year labels. Download, relevant text, table headings and page images checked.",
+      "notes": "Note 13 is part of the financial-statement notes. Table 7 is a statistical table sourced to the county Revenue Department; it is not independently audited by this review. Note 13 does not name its taxpayer. The project link is inferred from the Andale (Facebook) identification on PDF page 10, tax-concentration tables and the recurring 85% real/95% personal-property incentive description through 2040. Tax-year share wording does not consistently match the same report’s fiscal-year table; this remains unresolved. Amounts retain their explicit fiscal-year labels. Download, relevant text, table headings and page images checked.",
       "artifact_sha256": "efc8b9072a9724adbe704da007f5567fafbcbd94e53369f0a6bc81d39894b6c1"
     },
     {
@@ -1089,12 +1225,12 @@
       },
       "retrieved_on": "2026-09-03",
       "review_method": "pdf_text_and_page_image",
-      "notes": "Note 13 is part of the financial-statement notes. Table 7 is a statistical table sourced to the county Revenue Department; it is not independently audited by this review. Note 13 does not name its taxpayer. The project link is inferred from the Andale (Facebook) identification on PDF page 10, tax-concentration tables and the recurring 85% real/95% personal-property incentive description through 2040. Tax-year share wording does not consistently match the same report\u2019s fiscal-year table; this remains unresolved. Amounts retain their explicit fiscal-year labels. Download, relevant text, table headings and page images checked.",
+      "notes": "Note 13 is part of the financial-statement notes. Table 7 is a statistical table sourced to the county Revenue Department; it is not independently audited by this review. Note 13 does not name its taxpayer. The project link is inferred from the Andale (Facebook) identification on PDF page 10, tax-concentration tables and the recurring 85% real/95% personal-property incentive description through 2040. Tax-year share wording does not consistently match the same report’s fiscal-year table; this remains unresolved. Amounts retain their explicit fiscal-year labels. Download, relevant text, table headings and page images checked.",
       "artifact_sha256": "e95820ccfa01e7e6525713cee951a1fd4001e40b9e3b0ed03d29befd2b196c03"
     },
     {
       "source_id": "src_study_san_antonio_microsoft_2013",
-      "title": "San Antonio City Council File 13-926 \u2014 Microsoft expansion agreement",
+      "title": "San Antonio City Council File 13-926 — Microsoft expansion agreement",
       "url": "https://sanantonio.legistar.com/LegislationDetail.aspx?From=RSS&FullText=1&GUID=A81ED9E9-D99F-4DE1-A59E-A1BB6B8C6527&ID=1520550",
       "publisher": "City of San Antonio",
       "source_type": "local_government_record",
@@ -1118,7 +1254,7 @@
       },
       "retrieved_on": "2026-09-03",
       "review_method": "pdf_text_and_page_image",
-      "notes": "Cover identifies this as a preliminary statement dated August 30, 2023, despite the URL filename suggesting final/September 1. Page 35 recounts the 2015 Markley proposal and says Phase I is completed. It does not verify the entire proposal\u2019s investment or hires. The 20-year tax projection is the project agreement horizon, not a new 20-year period beginning in 2023.",
+      "notes": "Cover identifies this as a preliminary statement dated August 30, 2023, despite the URL filename suggesting final/September 1. Page 35 recounts the 2015 Markley proposal and says Phase I is completed. It does not verify the entire proposal’s investment or hires. The 20-year tax projection is the project agreement horizon, not a new 20-year period beginning in 2023.",
       "artifact_sha256": "b5415739728861ac38f096f803c68042ac965cccc44b9c1f1cfc02062a626ac7"
     },
     {
@@ -1442,7 +1578,7 @@
     },
     {
       "source_id": "src_study_iowa_ieda_google_award_2022",
-      "title": "Iowa Economic Development Authority Investment Summary \u2014 October 21, 2022",
+      "title": "Iowa Economic Development Authority Investment Summary — October 21, 2022",
       "url": "https://www.iowaeda.com/UserDocs/oct22awards.pdf",
       "publisher": "Iowa Economic Development Authority",
       "source_type": "state_record",
@@ -1516,7 +1652,7 @@
     },
     {
       "source_id": "src_study_mahwah_nyse_parcel_identity_2023",
-      "title": "Mahwah Board of Adjustment Minutes \u2014 July 5, 2023",
+      "title": "Mahwah Board of Adjustment Minutes — July 5, 2023",
       "url": "https://www.mahwahtwp.org/AgendaCenter/ViewFile/Minutes/_07052023-2411",
       "publisher": "Township of Mahwah, New Jersey",
       "source_type": "local_government_record",
@@ -1530,7 +1666,7 @@
     },
     {
       "source_id": "src_study_johnson_county_state_farm_tax_account_2026",
-      "title": "Johnson County Property Tax Office \u2014 State Farm data-center parcel R662349",
+      "title": "Johnson County Property Tax Office — State Farm data-center parcel R662349",
       "url": "https://taxbill.jocogov.org/Property-Detail/PropertyQuickRefID/R662349/PartyQuickRefID/O0584821",
       "publisher": "Johnson County, Kansas Property Tax Office",
       "source_type": "assessor_record",
@@ -1539,7 +1675,7 @@
       },
       "retrieved_on": "2026-09-03",
       "review_method": "web_page",
-      "notes": "The official parcel page identifies owner HMC Data Center 2 LLC, situs 24400 W Valley Parkway, quick reference R662349 and real-estate tax ID DP69210000 0001. Its commercial-building section names STATE FARM MUTUAL AUTOMOBILE INSURANCE CO and classifies the structure as a computer data center. Value History reports 2021\u20132025 appraised and assessed totals. Bills report 2019\u20132025 total taxes due, equal amounts paid and zero balances; the 2025 installments show payment dates December 4, 2025 and May 19, 2026. Tax totals cover all listed taxing entities and are not allocated here to city, county, schools or other recipients."
+      "notes": "The official parcel page identifies owner HMC Data Center 2 LLC, situs 24400 W Valley Parkway, quick reference R662349 and real-estate tax ID DP69210000 0001. Its commercial-building section names STATE FARM MUTUAL AUTOMOBILE INSURANCE CO and classifies the structure as a computer data center. Value History reports 2021–2025 appraised and assessed totals. Bills report 2019–2025 total taxes due, equal amounts paid and zero balances; the 2025 installments show payment dates December 4, 2025 and May 19, 2026. Tax totals cover all listed taxing entities and are not allocated here to city, county, schools or other recipients."
     },
     {
       "source_id": "src_study_sec_state_farm_olathe_2025",
@@ -1557,7 +1693,7 @@
     },
     {
       "source_id": "src_study_maricopa_apple_bpp_2026",
-      "title": "Maricopa County Assessor \u2014 Apple Inc. business personal property account 9372704",
+      "title": "Maricopa County Assessor — Apple Inc. business personal property account 9372704",
       "url": "https://mcassessor.maricopa.gov/mcs/?q=9372704&mod=bpp-account",
       "publisher": "Maricopa County Assessor's Office",
       "source_type": "assessor_record",
@@ -1566,11 +1702,11 @@
       },
       "retrieved_on": "2026-09-03",
       "review_method": "web_page",
-      "notes": "The official account names Apple Inc., account 9372704, at 3740 S Signal Butte Road, Mesa. It reports tax-year 2023\u20132026 full cash value (FCV), FCV assessed value, limited property value (LPV) and LPV assessed value. FCV and LPV, and their assessed amounts, are equal in every displayed year. The account is business personal property and remains separate from the real-property parcel at the same address."
+      "notes": "The official account names Apple Inc., account 9372704, at 3740 S Signal Butte Road, Mesa. It reports tax-year 2023–2026 full cash value (FCV), FCV assessed value, limited property value (LPV) and LPV assessed value. FCV and LPV, and their assessed amounts, are equal in every displayed year. The account is business personal property and remains separate from the real-property parcel at the same address."
     },
     {
       "source_id": "src_study_maricopa_apple_real_parcel_2026",
-      "title": "Maricopa County Assessor \u2014 3740 S Signal Butte Road parcel 304-33-005S",
+      "title": "Maricopa County Assessor — 3740 S Signal Butte Road parcel 304-33-005S",
       "url": "https://mcassessor.maricopa.gov/mcs/?q=30433005S&mod=pd",
       "publisher": "Maricopa County Assessor's Office",
       "source_type": "assessor_record",
@@ -1583,7 +1719,7 @@
     },
     {
       "source_id": "src_study_maricopa_treasurer_apple_bpp_2026",
-      "title": "Maricopa County Treasurer \u2014 Apple Inc. account 993-72-704",
+      "title": "Maricopa County Treasurer — Apple Inc. account 993-72-704",
       "url": "https://treasurer.maricopa.gov/PropertyTaxInformation/?Parcel=99372704",
       "publisher": "Maricopa County Treasurer's Office",
       "source_type": "local_government_record",
@@ -1592,11 +1728,11 @@
       },
       "retrieved_on": "2026-09-03",
       "review_method": "web_page",
-      "notes": "The official Treasurer account names Apple Inc. and links to assessor business-personal-property account 9372704. Activity records mark tax years 2016\u20132025 Paid with zero total due. Expanded annual details report assessed tax; the 2025 summary independently reports Full Year and Taxes Paid of $966,899.82. The totals cover all listed taxing districts and are not allocated here to Mesa, Maricopa County, schools or other recipients."
+      "notes": "The official Treasurer account names Apple Inc. and links to assessor business-personal-property account 9372704. Activity records mark tax years 2016–2025 Paid with zero total due. Expanded annual details report assessed tax; the 2025 summary independently reports Full Year and Taxes Paid of $966,899.82. The totals cover all listed taxing districts and are not allocated here to Mesa, Maricopa County, schools or other recipients."
     },
     {
       "source_id": "src_study_maricopa_treasurer_apple_real_2026",
-      "title": "Maricopa County Treasurer \u2014 Platypus Development LLC parcel 304-33-005S",
+      "title": "Maricopa County Treasurer — Platypus Development LLC parcel 304-33-005S",
       "url": "https://treasurer.maricopa.gov/PropertyTaxInformation/?Parcel=30433005S",
       "publisher": "Maricopa County Treasurer's Office",
       "source_type": "local_government_record",
@@ -1605,11 +1741,11 @@
       },
       "retrieved_on": "2026-09-03",
       "review_method": "web_page",
-      "notes": "The official Treasurer account identifies Platypus Development LLC at 3740 S Signal Butte Road and gives the mailing address 1 Infinite Loop, Cupertino. Activity records mark tax years 2016\u20132025 Paid with zero total due. Expanded annual details report assessed tax; the 2025 summary independently reports Full Year and Taxes Paid of $906,476.10. These parcel taxes remain separate from Apple Inc. business-personal-property account 993-72-704 and are not allocated among recipient governments."
+      "notes": "The official Treasurer account identifies Platypus Development LLC at 3740 S Signal Butte Road and gives the mailing address 1 Infinite Loop, Cupertino. Activity records mark tax years 2016–2025 Paid with zero total due. Expanded annual details report assessed tax; the 2025 summary independently reports Full Year and Taxes Paid of $906,476.10. These parcel taxes remain separate from Apple Inc. business-personal-property account 993-72-704 and are not allocated among recipient governments."
     },
     {
       "source_id": "src_study_lake_county_digital_crossroad_assessor_2026",
-      "title": "Lake County Assessor \u2014 100 Digital Crossroads Drive parcel 45-01-36-176-005.000-023",
+      "title": "Lake County Assessor — 100 Digital Crossroads Drive parcel 45-01-36-176-005.000-023",
       "url": "https://engage.xsoftinc.com/lake/Map/GetParcelList?searchString=45-01-36-176-005.000-023",
       "publisher": "Lake County, Indiana Assessor",
       "source_type": "assessor_record",
@@ -1618,11 +1754,11 @@
       },
       "retrieved_on": "2026-09-03",
       "review_method": "web_page",
-      "notes": "The official assessor search identifies the City of Hammond Redevelopment Commission account at 100 Digital Crossroads Drive, parcel 45-01-36-176-005.000-023. The Valuation List reports land, improvement and total assessed values for assessment years 2021\u20132025. The account is a lease-area real-property parcel; equipment or tenant personal-property accounts are not included."
+      "notes": "The official assessor search identifies the City of Hammond Redevelopment Commission account at 100 Digital Crossroads Drive, parcel 45-01-36-176-005.000-023. The Valuation List reports land, improvement and total assessed values for assessment years 2021–2025. The account is a lease-area real-property parcel; equipment or tenant personal-property accounts are not included."
     },
     {
       "source_id": "src_study_lake_county_digital_crossroad_tax_2026",
-      "title": "Lake County Property Tax Division \u2014 100 Digital Crossroads Drive account",
+      "title": "Lake County Property Tax Division — 100 Digital Crossroads Drive account",
       "url": "https://in-lake.publicaccessnow.com/PropertyTax/TaxSearch/Account.aspx?p=450136176005000023&a=45-01-36-176-005.000-023",
       "publisher": "Lake County, Indiana Property Tax Division",
       "source_type": "local_government_record",
@@ -1649,7 +1785,7 @@
     },
     {
       "source_id": "src_study_storey_switch_cm001611_2026",
-      "title": "Storey County Property Tax Inquiry \u2014 Switch Ltd. account CM001611",
+      "title": "Storey County Property Tax Inquiry — Switch Ltd. account CM001611",
       "url": "https://storeynv.devnetwedge.com/personalproperty/view/CM001611/2026",
       "publisher": "Storey County, Nevada",
       "source_type": "assessor_record",
@@ -1658,7 +1794,7 @@
       },
       "retrieved_on": "2026-09-03",
       "review_method": "web_page",
-      "notes": "The official account identifies Switch, Ltd., personal-property account CM001611, at 1 Superloop Circle. Tax-year pages 2016\u20132026 report total asset cost, taxable value and assessed value; the fiscal-year billing and payment history reports 2015\u20132016 through 2025\u20132026. Fiscal 2018\u20132019 shows zero tax on the 2019 page and no paid-history row. The future 2027 assessment is excluded. Data updated September 2, 2026."
+      "notes": "The official account identifies Switch, Ltd., personal-property account CM001611, at 1 Superloop Circle. Tax-year pages 2016–2026 report total asset cost, taxable value and assessed value; the fiscal-year billing and payment history reports 2015–2016 through 2025–2026. Fiscal 2018–2019 shows zero tax on the 2019 page and no paid-history row. The future 2027 assessment is excluded. Data updated September 2, 2026."
     },
     {
       "source_id": "src_study_storey_switch_investment_statement_2015",
@@ -1773,7 +1909,7 @@
     },
     {
       "source_id": "src_study_mecklenburg_cl4_property_record_2026",
-      "title": "Mecklenburg County property record \u2014 1805 Center Park Drive parcel 14106108",
+      "title": "Mecklenburg County property record — 1805 Center Park Drive parcel 14106108",
       "url": "https://property.spatialest.com/nc/mecklenburg/#/property/152319",
       "publisher": "Mecklenburg County Assessor's Office",
       "source_type": "assessor_record",
@@ -1786,7 +1922,7 @@
     },
     {
       "source_id": "src_study_mecklenburg_cl4_tax_bill_2013",
-      "title": "Mecklenburg County Property Tax Collections \u2014 parcel 14106108 tax year 2013",
+      "title": "Mecklenburg County Property Tax Collections — parcel 14106108 tax year 2013",
       "url": "https://taxbill.co.mecklenburg.nc.us/publicwebaccess/BillDetails.aspx?BillPk=9409218",
       "publisher": "Mecklenburg County Tax Collector",
       "source_type": "local_government_record",
@@ -1799,7 +1935,7 @@
     },
     {
       "source_id": "src_study_mecklenburg_cl4_tax_bill_2014",
-      "title": "Mecklenburg County Property Tax Collections \u2014 parcel 14106108 tax year 2014",
+      "title": "Mecklenburg County Property Tax Collections — parcel 14106108 tax year 2014",
       "url": "https://taxbill.co.mecklenburg.nc.us/publicwebaccess/BillDetails.aspx?BillPk=10031152",
       "publisher": "Mecklenburg County Tax Collector",
       "source_type": "local_government_record",
@@ -1812,7 +1948,7 @@
     },
     {
       "source_id": "src_study_mecklenburg_cl4_tax_bill_2015",
-      "title": "Mecklenburg County Property Tax Collections \u2014 parcel 14106108 tax year 2015",
+      "title": "Mecklenburg County Property Tax Collections — parcel 14106108 tax year 2015",
       "url": "https://taxbill.co.mecklenburg.nc.us/publicwebaccess/BillDetails.aspx?BillPk=10521096",
       "publisher": "Mecklenburg County Tax Collector",
       "source_type": "local_government_record",
@@ -1825,7 +1961,7 @@
     },
     {
       "source_id": "src_study_mecklenburg_cl4_tax_bill_2016",
-      "title": "Mecklenburg County Property Tax Collections \u2014 parcel 14106108 tax year 2016",
+      "title": "Mecklenburg County Property Tax Collections — parcel 14106108 tax year 2016",
       "url": "https://taxbill.co.mecklenburg.nc.us/publicwebaccess/BillDetails.aspx?BillPk=10954408",
       "publisher": "Mecklenburg County Tax Collector",
       "source_type": "local_government_record",
@@ -1838,7 +1974,7 @@
     },
     {
       "source_id": "src_study_mecklenburg_cl4_tax_bill_2017",
-      "title": "Mecklenburg County Property Tax Collections \u2014 parcel 14106108 tax year 2017",
+      "title": "Mecklenburg County Property Tax Collections — parcel 14106108 tax year 2017",
       "url": "https://taxbill.co.mecklenburg.nc.us/publicwebaccess/BillDetails.aspx?BillPk=11361931",
       "publisher": "Mecklenburg County Tax Collector",
       "source_type": "local_government_record",
@@ -1851,7 +1987,7 @@
     },
     {
       "source_id": "src_study_mecklenburg_cl4_tax_bill_2018",
-      "title": "Mecklenburg County Property Tax Collections \u2014 parcel 14106108 tax year 2018",
+      "title": "Mecklenburg County Property Tax Collections — parcel 14106108 tax year 2018",
       "url": "https://taxbill.co.mecklenburg.nc.us/publicwebaccess/BillDetails.aspx?BillPk=11814931",
       "publisher": "Mecklenburg County Tax Collector",
       "source_type": "local_government_record",
@@ -1864,7 +2000,7 @@
     },
     {
       "source_id": "src_study_mecklenburg_cl4_tax_bill_2019",
-      "title": "Mecklenburg County Property Tax Collections \u2014 parcel 14106108 tax year 2019",
+      "title": "Mecklenburg County Property Tax Collections — parcel 14106108 tax year 2019",
       "url": "https://taxbill.co.mecklenburg.nc.us/publicwebaccess/BillDetails.aspx?BillPk=12234586",
       "publisher": "Mecklenburg County Tax Collector",
       "source_type": "local_government_record",
@@ -1877,7 +2013,7 @@
     },
     {
       "source_id": "src_study_mecklenburg_cl4_tax_bill_2020",
-      "title": "Mecklenburg County Property Tax Collections \u2014 parcel 14106108 tax year 2020",
+      "title": "Mecklenburg County Property Tax Collections — parcel 14106108 tax year 2020",
       "url": "https://taxbill.co.mecklenburg.nc.us/publicwebaccess/BillDetails.aspx?BillPk=12718402",
       "publisher": "Mecklenburg County Tax Collector",
       "source_type": "local_government_record",
@@ -1890,7 +2026,7 @@
     },
     {
       "source_id": "src_study_mecklenburg_cl4_tax_bill_2021",
-      "title": "Mecklenburg County Property Tax Collections \u2014 parcel 14106108 tax year 2021",
+      "title": "Mecklenburg County Property Tax Collections — parcel 14106108 tax year 2021",
       "url": "https://taxbill.co.mecklenburg.nc.us/publicwebaccess/BillDetails.aspx?BillPk=13168592",
       "publisher": "Mecklenburg County Tax Collector",
       "source_type": "local_government_record",
@@ -1903,7 +2039,7 @@
     },
     {
       "source_id": "src_study_mecklenburg_cl4_tax_bill_2022",
-      "title": "Mecklenburg County Property Tax Collections \u2014 parcel 14106108 tax year 2022",
+      "title": "Mecklenburg County Property Tax Collections — parcel 14106108 tax year 2022",
       "url": "https://taxbill.co.mecklenburg.nc.us/publicwebaccess/BillDetails.aspx?BillPk=13621248",
       "publisher": "Mecklenburg County Tax Collector",
       "source_type": "local_government_record",
@@ -1916,7 +2052,7 @@
     },
     {
       "source_id": "src_study_mecklenburg_cl4_tax_bill_2023",
-      "title": "Mecklenburg County Property Tax Collections \u2014 parcel 14106108 tax year 2023",
+      "title": "Mecklenburg County Property Tax Collections — parcel 14106108 tax year 2023",
       "url": "https://taxbill.co.mecklenburg.nc.us/publicwebaccess/BillDetails.aspx?BillPk=14308758",
       "publisher": "Mecklenburg County Tax Collector",
       "source_type": "local_government_record",
@@ -1929,7 +2065,7 @@
     },
     {
       "source_id": "src_study_mecklenburg_cl4_tax_bill_2024",
-      "title": "Mecklenburg County Property Tax Collections \u2014 parcel 14106108 tax year 2024",
+      "title": "Mecklenburg County Property Tax Collections — parcel 14106108 tax year 2024",
       "url": "https://taxbill.co.mecklenburg.nc.us/publicwebaccess/BillDetails.aspx?BillPk=14355305",
       "publisher": "Mecklenburg County Tax Collector",
       "source_type": "local_government_record",
@@ -1942,7 +2078,7 @@
     },
     {
       "source_id": "src_study_mecklenburg_cl4_tax_bill_2025",
-      "title": "Mecklenburg County Property Tax Collections \u2014 parcel 14106108 tax year 2025",
+      "title": "Mecklenburg County Property Tax Collections — parcel 14106108 tax year 2025",
       "url": "https://taxbill.co.mecklenburg.nc.us/publicwebaccess/BillDetails.aspx?BillPk=15262501",
       "publisher": "Mecklenburg County Tax Collector",
       "source_type": "local_government_record",
@@ -1955,7 +2091,7 @@
     },
     {
       "source_id": "src_study_mecklenburg_cl4_tax_bill_2026",
-      "title": "Mecklenburg County Property Tax Collections \u2014 parcel 14106108 tax year 2026",
+      "title": "Mecklenburg County Property Tax Collections — parcel 14106108 tax year 2026",
       "url": "https://taxbill.co.mecklenburg.nc.us/publicwebaccess/BillDetails.aspx?BillPk=15619573",
       "publisher": "Mecklenburg County Tax Collector",
       "source_type": "local_government_record",
@@ -1968,7 +2104,7 @@
     },
     {
       "source_id": "src_study_pulaski_tierpoint_parcel_2026",
-      "title": "Pulaski County Assessor \u2014 TierPoint Properties LLC parcel 44L0750200100",
+      "title": "Pulaski County Assessor — TierPoint Properties LLC parcel 44L0750200100",
       "url": "https://www.arcountydata.com/parcel.asp?County=Pulaski&ParcelID=44L0750200100",
       "publisher": "Pulaski County Assessor's Office / ARCountyData",
       "source_type": "assessor_record",
@@ -1981,7 +2117,7 @@
     },
     {
       "source_id": "src_study_pulaski_tierpoint_valuation_history_2026",
-      "title": "Pulaski County Assessor \u2014 parcel 44L0750200100 valuation history",
+      "title": "Pulaski County Assessor — parcel 44L0750200100 valuation history",
       "url": "https://www.arcountydata.com/reports/valuation.asp?parcelkey=2949461&CountyCode=PULTAX",
       "publisher": "Pulaski County Assessor's Office / ARCountyData",
       "source_type": "assessor_record",
@@ -1994,7 +2130,7 @@
     },
     {
       "source_id": "src_study_pulaski_tierpoint_tax_inquiry_2026",
-      "title": "Pulaski County Treasurer mobile tax inquiry \u2014 parcel 44L0750200100",
+      "title": "Pulaski County Treasurer mobile tax inquiry — parcel 44L0750200100",
       "url": "https://public.pulaskicountytreasurer.net/mobile/pulaski/",
       "publisher": "Pulaski County Treasurer",
       "source_type": "local_government_record",
@@ -2007,7 +2143,7 @@
     },
     {
       "source_id": "src_study_stream_houston_operator_2026",
-      "title": "Stream Data Centers \u2014 Houston I data center",
+      "title": "Stream Data Centers — Houston I data center",
       "url": "https://www.streamdatacenters.com/locations/houston-the-woodlands/",
       "publisher": "Stream Data Centers",
       "source_type": "operator_release",
@@ -2020,7 +2156,7 @@
     },
     {
       "source_id": "src_study_mcad_stream_houston_accounts_2026",
-      "title": "Montgomery Central Appraisal District property search \u2014 Stream Houston real and business-personal-property accounts",
+      "title": "Montgomery Central Appraisal District property search — Stream Houston real and business-personal-property accounts",
       "url": "https://mcad-tx.org/property-search/",
       "publisher": "Montgomery Central Appraisal District",
       "source_type": "assessor_record",
@@ -2029,11 +2165,11 @@
       },
       "retrieved_on": "2026-09-03",
       "review_method": "structured_data",
-      "notes": "The public appraisal search identifies real-property parcel 9714-07-00103 at 4001 Technology Forest Drive and reports annual land, improvement, market and appraised values. It separately identifies IP Stream Houston LLC business-personal-property account P454338 for tanks, generators, machinery and equipment. The personal-property account has no displayed situs; its 2015\u20132023 legal descriptions call it a disaster recovery center at 4001 Research Forest. Only value-ready 2014\u20132025 real-property rows and 2015\u20132025 personal-property rows are retained; the unfinished 2027 row is excluded."
+      "notes": "The public appraisal search identifies real-property parcel 9714-07-00103 at 4001 Technology Forest Drive and reports annual land, improvement, market and appraised values. It separately identifies IP Stream Houston LLC business-personal-property account P454338 for tanks, generators, machinery and equipment. The personal-property account has no displayed situs; its 2015–2023 legal descriptions call it a disaster recovery center at 4001 Research Forest. Only value-ready 2014–2025 real-property rows and 2015–2025 personal-property rows are retained; the unfinished 2027 row is excluded."
     },
     {
       "source_id": "src_study_montgomery_stream_real_tax_payments_2026",
-      "title": "Montgomery County Tax Office \u2014 Stream Houston real-property payment history",
+      "title": "Montgomery County Tax Office — Stream Houston real-property payment history",
       "url": "https://actweb.acttax.com/act_webdev/montgomery/reports/paymentinfo.jsp?can=0097140700103&ownerno=0",
       "publisher": "Montgomery County Tax Office",
       "source_type": "local_government_record",
@@ -2042,11 +2178,11 @@
       },
       "retrieved_on": "2026-09-03",
       "review_method": "web_page",
-      "notes": "The official payment history for real-property tax account 0097140700103 reports payment date, amount and tax year. The account detail identifies the 4001 Technology Forest site, parcel 9714-07-00103, and zero current amount due. The retained 2014\u20132025 payments are account transactions, not recipient-level government receipts or proof that Stream itself remitted each payment."
+      "notes": "The official payment history for real-property tax account 0097140700103 reports payment date, amount and tax year. The account detail identifies the 4001 Technology Forest site, parcel 9714-07-00103, and zero current amount due. The retained 2014–2025 payments are account transactions, not recipient-level government receipts or proof that Stream itself remitted each payment."
     },
     {
       "source_id": "src_study_montgomery_stream_personal_tax_payments_2026",
-      "title": "Montgomery County Tax Office \u2014 IP Stream Houston business-personal-property payment history",
+      "title": "Montgomery County Tax Office — IP Stream Houston business-personal-property payment history",
       "url": "https://actweb.acttax.com/act_webdev/montgomery/reports/paymentinfo.jsp?can=1310000507453&ownerno=0",
       "publisher": "Montgomery County Tax Office",
       "source_type": "local_government_record",
@@ -2055,7 +2191,7 @@
       },
       "retrieved_on": "2026-09-03",
       "review_method": "web_page",
-      "notes": "The official payment history for tax account 1310000507453 reports payment date, amount and tax year. The account detail names IP Stream Houston LLC and business personal property consisting of tanks, generators, machinery and equipment. The retained 2015\u20132025 payments are account transactions, not recipient-level government receipts."
+      "notes": "The official payment history for tax account 1310000507453 reports payment date, amount and tax year. The account detail names IP Stream Houston LLC and business personal property consisting of tanks, generators, machinery and equipment. The retained 2015–2025 payments are account transactions, not recipient-level government receipts."
     },
     {
       "source_id": "src_study_southfield_edgeconnex_accounts_2026",
@@ -2200,7 +2336,7 @@
     },
     {
       "source_id": "src_study_detroit_quicken_parcel_2026",
-      "title": "City of Detroit Parcels Current \u2014 1401 Rosa Parks Boulevard parcel 08008283-303",
+      "title": "City of Detroit Parcels Current — 1401 Rosa Parks Boulevard parcel 08008283-303",
       "url": "https://services2.arcgis.com/qvkbeam7Wirps6zC/arcgis/rest/services/Parcels_Current/FeatureServer/0",
       "publisher": "City of Detroit Office of the Assessor",
       "source_type": "assessor_record",
@@ -2295,7 +2431,7 @@
     },
     {
       "source_id": "src_study_nipsco_2021_irp_digital_crossroad",
-      "title": "NIPSCO 2021 Integrated Resource Plan \u2014 Supporting Economic Growth",
+      "title": "NIPSCO 2021 Integrated Resource Plan — Supporting Economic Growth",
       "url": "https://www.in.gov/iurc/files/NIPSCO_2021-Integrated-Resource-Plan-Document-1.pdf",
       "publisher": "Northern Indiana Public Service Company LLC",
       "source_type": "other",
@@ -2310,7 +2446,7 @@
     },
     {
       "source_id": "src_study_hammond_2026_budget_largest_taxpayers",
-      "title": "City of Hammond 2026 Budget \u2014 Largest Taxpayers, 2023 Payable 2024",
+      "title": "City of Hammond 2026 Budget — Largest Taxpayers, 2023 Payable 2024",
       "url": "https://www.gohammond.com/document_library/city_council_ordinances_and_resolutions/ordinances/2025/ordinance_9683.pdf",
       "publisher": "City of Hammond, Indiana",
       "source_type": "local_government_record",
@@ -2383,7 +2519,7 @@
     },
     {
       "source_id": "src_study_principal_digital_real_estate_2023",
-      "title": "Principal Digital Real Estate Fund 2023 Annual Report \u2014 Audited Financial Statements",
+      "title": "Principal Digital Real Estate Fund 2023 Annual Report — Audited Financial Statements",
       "url": "https://www.principal.cl/sites/default/files/2024-03/23q4-principal-digital-real-estate-fund.pdf",
       "publisher": "Principal Real Estate Investors, LLC",
       "source_type": "other",
@@ -2393,12 +2529,12 @@
       },
       "retrieved_on": "2026-09-04",
       "review_method": "pdf_text_and_page_image",
-      "notes": "Audited fund statements describe the Hammond TIF bond and mirror loan, including the $8.04 million principal, 4% interest rate, 2044 maturity and 2022\u20132023 project TIF revenues applied to repayment. The arrangement is eliminated in the fund's consolidated statements.",
+      "notes": "Audited fund statements describe the Hammond TIF bond and mirror loan, including the $8.04 million principal, 4% interest rate, 2044 maturity and 2022–2023 project TIF revenues applied to repayment. The arrangement is eliminated in the fund's consolidated statements.",
       "artifact_sha256": "8802b10c1260b689d34032e5dedc4fadaf3f809787352a618a1ba0261858e88f"
     },
     {
       "source_id": "src_study_principal_digital_real_estate_2025",
-      "title": "Principal Digital Real Estate Fund (A), LP 2025 Annual Report \u2014 Audited Financial Statements",
+      "title": "Principal Digital Real Estate Fund (A), LP 2025 Annual Report — Audited Financial Statements",
       "url": "https://www.principal.cl/sites/default/files/2026-03/PrinRE_Digital_Real_Estate_Fund_(A)_2025_Annual_Report.pdf",
       "publisher": "Principal Real Estate Investors, LLC",
       "source_type": "other",
@@ -2427,7 +2563,7 @@
     },
     {
       "source_id": "src_study_hammond_council_minutes_2025_06_09",
-      "title": "Hammond Common Council Meeting Minutes \u2014 June 9, 2025",
+      "title": "Hammond Common Council Meeting Minutes — June 9, 2025",
       "url": "https://www.gohammond.com/document_library/meeting_minutes_and_agendas/city_council/2025/06-09-25_minutes.pdf",
       "publisher": "City of Hammond, Indiana",
       "source_type": "local_government_record",
@@ -2442,7 +2578,7 @@
     },
     {
       "source_id": "src_study_hammond_eid_ordinance_9496_2021",
-      "title": "Hammond Ordinance 9496 \u2014 DX Hammond Economic Improvement District",
+      "title": "Hammond Ordinance 9496 — DX Hammond Economic Improvement District",
       "url": "https://www.gohammond.com/document_library/city_council_ordinances_and_resolutions/ordinances/2021/ordinance_9496.pdf",
       "publisher": "City of Hammond, Indiana",
       "source_type": "local_government_record",
@@ -2888,7 +3024,7 @@
     },
     {
       "source_id": "src_study_storey_switch_parcel_00501223_2026",
-      "title": "Storey County Property Tax Inquiry \u2014 NV RNO 1, LLC parcel 005-012-23",
+      "title": "Storey County Property Tax Inquiry — NV RNO 1, LLC parcel 005-012-23",
       "url": "https://storeynv.devnetwedge.com/parcel/view/00501223/2026",
       "publisher": "Storey County, Nevada",
       "source_type": "assessor_record",
@@ -2897,7 +3033,7 @@
       },
       "retrieved_on": "2026-09-05",
       "review_method": "web_page",
-      "notes": "The official parcel is 1 Superloop Circle and describes three Switch data-center modules: MODs 2 and 3 with 354,825 square feet built in 2016 and MOD 1 with 221,160 square feet built in 2020. The owner is NV RNO 1, LLC at Switch's legal address; deed history records the August 2024 transfer through Switch BBF entities to NV RNO 1, LLC. Selected tax-year pages 2024\u20132026 report real-property values, bills and payment history. The parcel page separately lists numerous data-center tenant-equipment accounts and Switch commercial-personal-property account CM001611, so those accounts are not consolidated here."
+      "notes": "The official parcel is 1 Superloop Circle and describes three Switch data-center modules: MODs 2 and 3 with 354,825 square feet built in 2016 and MOD 1 with 221,160 square feet built in 2020. The owner is NV RNO 1, LLC at Switch's legal address; deed history records the August 2024 transfer through Switch BBF entities to NV RNO 1, LLC. Selected tax-year pages 2024–2026 report real-property values, bills and payment history. The parcel page separately lists numerous data-center tenant-equipment accounts and Switch commercial-personal-property account CM001611, so those accounts are not consolidated here."
     },
     {
       "source_id": "src_study_storey_switch_fire_donation_2025_04",
@@ -2931,7 +3067,7 @@
     },
     {
       "source_id": "src_study_storey_fire_cip_2026",
-      "title": "2026\u20132031 Storey County Fire Protection District Capital Improvement Plan",
+      "title": "2026–2031 Storey County Fire Protection District Capital Improvement Plan",
       "url": "https://www.storeycounty.org/AgendaCenter/ViewFile/Agenda/_02032026-1372",
       "publisher": "Storey County Fire Protection District",
       "source_type": "local_government_record",
@@ -2942,7 +3078,7 @@
       "retrieved_on": "2026-09-05",
       "review_method": "pdf_text_and_page_image",
       "artifact_sha256": "e1d63d132b2a3ba34fb8374d2a5a3e38be7633668411fd2b9efe0fcb2790acd3",
-      "notes": "The Fire District capital plan budgets $100,000 in fiscal 2026\u20132027 to equip new Pierce Truck 75 and notes that the truck was purchased by Switch. This is a planned public cost for equipping the donated vehicle, not a Switch payment or a realized district expense."
+      "notes": "The Fire District capital plan budgets $100,000 in fiscal 2026–2027 to equip new Pierce Truck 75 and notes that the truck was purchased by Switch. This is a planned public cost for equipping the donated vehicle, not a Switch payment or a realized district expense."
     },
     {
       "source_id": "src_study_apple_environment_2018",
@@ -3153,7 +3289,7 @@
       },
       "scope": {
         "level": "company_county",
-        "label": "Apple, Inc. taxpayer account \u2014 Catawba County",
+        "label": "Apple, Inc. taxpayer account — Catawba County",
         "county_fips": "37035",
         "inventory_allocation": "unallocated"
       },
@@ -3179,7 +3315,7 @@
       },
       "scope": {
         "level": "company_county",
-        "label": "Apple, Inc. taxpayer account \u2014 Catawba County",
+        "label": "Apple, Inc. taxpayer account — Catawba County",
         "county_fips": "37035",
         "inventory_allocation": "unallocated"
       },
@@ -3205,7 +3341,7 @@
       },
       "scope": {
         "level": "company_county",
-        "label": "Apple, Inc. taxpayer account \u2014 Catawba County",
+        "label": "Apple, Inc. taxpayer account — Catawba County",
         "county_fips": "37035",
         "inventory_allocation": "unallocated"
       },
@@ -3231,7 +3367,7 @@
       },
       "scope": {
         "level": "company_county",
-        "label": "Apple, Inc. taxpayer account \u2014 Catawba County",
+        "label": "Apple, Inc. taxpayer account — Catawba County",
         "county_fips": "37035",
         "inventory_allocation": "unallocated"
       },
@@ -3257,7 +3393,7 @@
       },
       "scope": {
         "level": "company_county",
-        "label": "Apple, Inc. taxpayer account \u2014 Catawba County",
+        "label": "Apple, Inc. taxpayer account — Catawba County",
         "county_fips": "37035",
         "inventory_allocation": "unallocated"
       },
@@ -3283,7 +3419,7 @@
       },
       "scope": {
         "level": "company_county",
-        "label": "Apple, Inc. taxpayer account \u2014 Catawba County",
+        "label": "Apple, Inc. taxpayer account — Catawba County",
         "county_fips": "37035",
         "inventory_allocation": "unallocated"
       },
@@ -3309,7 +3445,7 @@
       },
       "scope": {
         "level": "company_county",
-        "label": "Apple, Inc. taxpayer account \u2014 Catawba County",
+        "label": "Apple, Inc. taxpayer account — Catawba County",
         "county_fips": "37035",
         "inventory_allocation": "unallocated"
       },
@@ -3335,7 +3471,7 @@
       },
       "scope": {
         "level": "company_county",
-        "label": "Apple, Inc. taxpayer account \u2014 Catawba County",
+        "label": "Apple, Inc. taxpayer account — Catawba County",
         "county_fips": "37035",
         "inventory_allocation": "unallocated"
       },
@@ -3412,7 +3548,7 @@
       },
       "scope": {
         "level": "campus",
-        "label": "Apple Washoe County expansion \u2014 equipment purchases",
+        "label": "Apple Washoe County expansion — equipment purchases",
         "county_fips": "32031",
         "inventory_allocation": "unallocated"
       },
@@ -3438,7 +3574,7 @@
       },
       "scope": {
         "level": "campus",
-        "label": "Apple Washoe County expansion \u2014 Nevada sales/use taxes",
+        "label": "Apple Washoe County expansion — Nevada sales/use taxes",
         "county_fips": "32031",
         "inventory_allocation": "unallocated"
       },
@@ -3446,7 +3582,7 @@
       "pdf_page": 1,
       "printed_page": "cover",
       "source_locator": "Tax abatements, total estimated abatement over 10 years",
-      "notes": "Estimated tax reduction, not a cash payment or realized abatement. Based on the packet\u2019s separate ten-year equipment forecast. Recipient jurisdictions are not allocated; do not subtract from receipts already net of abatements.",
+      "notes": "Estimated tax reduction, not a cash payment or realized abatement. Based on the packet’s separate ten-year equipment forecast. Recipient jurisdictions are not allocated; do not subtract from receipts already net of abatements.",
       "review_status": "source_checked",
       "reviewed_on": "2026-09-03"
     },
@@ -3569,7 +3705,7 @@
         "inventory_allocation": "unallocated"
       },
       "source_id": "src_study_crook_fy2026_budget",
-      "source_locator": "Principal Property Taxpayers in Crook County | 2023 \u2014 Apple Inc row",
+      "source_locator": "Principal Property Taxpayers in Crook County | 2023 — Apple Inc row",
       "notes": "County taxpayer account value, not the full campus investment or tax receipts. Exempt property and other taxpayer entities are not reconciled. One source year does not establish tax-base growth.",
       "review_status": "source_checked",
       "reviewed_on": "2026-09-03",
@@ -3595,7 +3731,7 @@
         "inventory_allocation": "unallocated"
       },
       "source_id": "src_study_crook_fy2026_budget",
-      "source_locator": "Principal Employers in Crook County | 2023 \u2014 Meta Platforms, Inc. - Facebook Data Center row",
+      "source_locator": "Principal Employers in Crook County | 2023 — Meta Platforms, Inc. - Facebook Data Center row",
       "notes": "County employer table reports 350 employees. Direct/contractor mix, FTE status, worker residence and exact measurement date are not defined. Not new jobs, annual average employment or a 2026 count.",
       "review_status": "source_checked",
       "reviewed_on": "2026-09-03",
@@ -3764,7 +3900,7 @@
         "inventory_allocation": "unallocated"
       },
       "source_id": "src_study_meta_altoona_factsheet",
-      "source_locator": "Page 1 \u2014 skilled trade workers on site at peak construction",
+      "source_locator": "Page 1 — skilled trade workers on site at peak construction",
       "notes": "Operator-reported peak on-site construction workforce for this established campus. Exact peak date, duration and phase are unspecified. Not a current workforce count, annual employment, local-resident count or job-years.",
       "review_status": "source_checked",
       "reviewed_on": "2026-09-03",
@@ -3789,7 +3925,7 @@
         "inventory_allocation": "unallocated"
       },
       "source_id": "src_study_meta_fort_worth_factsheet",
-      "source_locator": "Page 1 \u2014 skilled trade workers on site at peak construction",
+      "source_locator": "Page 1 — skilled trade workers on site at peak construction",
       "notes": "Operator-reported peak on-site construction workforce for this established campus. Exact peak date, duration and phase are unspecified. Not a current workforce count, annual employment, local-resident count or job-years.",
       "review_status": "source_checked",
       "reviewed_on": "2026-09-03",
@@ -3814,7 +3950,7 @@
         "inventory_allocation": "unallocated"
       },
       "source_id": "src_study_meta_prineville_factsheet",
-      "source_locator": "Page 1 \u2014 skilled trade workers on site at peak construction",
+      "source_locator": "Page 1 — skilled trade workers on site at peak construction",
       "notes": "Operator-reported peak on-site construction workforce for this established campus. Exact peak date, duration and phase are unspecified. Not a current workforce count, annual employment, local-resident count or job-years.",
       "review_status": "source_checked",
       "reviewed_on": "2026-09-03",
@@ -3865,7 +4001,7 @@
         "inventory_allocation": "unallocated"
       },
       "source_id": "src_study_google_jackson_expansion_2026",
-      "source_locator": "Opening paragraph \u2014 Jackson County campus expansion",
+      "source_locator": "Opening paragraph — Jackson County campus expansion",
       "notes": "Two-calendar-year announced investment, not two years from the announcement date. No annual split, verified expenditure, local purchasing share or completed expansion is asserted.",
       "review_status": "source_checked",
       "reviewed_on": "2026-09-03"
@@ -3889,7 +4025,7 @@
         "inventory_allocation": "unallocated"
       },
       "source_id": "src_study_rutherford_acfr_2021",
-      "source_locator": "Table 7 \u2014 Andale Inc. FKA, current fiscal-year column",
+      "source_locator": "Table 7 — Andale Inc. FKA, current fiscal-year column",
       "notes": "County taxpayer account; reported in thousands of dollars and multiplied by 1,000. Includes source rounding. Not construction spending, cash tax receipts or a causal estimate. Declines and increases are retained; the basis of valuation changes is not decomposed.",
       "review_status": "source_checked",
       "reviewed_on": "2026-09-03",
@@ -3916,7 +4052,7 @@
         "inventory_allocation": "unallocated"
       },
       "source_id": "src_study_rutherford_acfr_2021",
-      "source_locator": "Note 13 \u2014 Concentration of Tax Base",
+      "source_locator": "Note 13 — Concentration of Tax Base",
       "notes": "Taxpayer identity is inferred from cross-references, not named in Note 13. The note reports both taxes collected and separate incentive payments for this fiscal year. This is county context; no allocation to a mapped building. Gross collected taxes precede the separately disclosed incentives; do not describe this amount alone as retained revenue. Other jurisdictions and service costs are outside this record.",
       "review_status": "source_checked",
       "reviewed_on": "2026-09-03",
@@ -3943,7 +4079,7 @@
         "inventory_allocation": "unallocated"
       },
       "source_id": "src_study_rutherford_acfr_2021",
-      "source_locator": "Note 13 \u2014 Concentration of Tax Base",
+      "source_locator": "Note 13 — Concentration of Tax Base",
       "notes": "Taxpayer identity is inferred from cross-references, not named in Note 13. The note reports both taxes collected and separate incentive payments for this fiscal year. This is county context; no allocation to a mapped building. Payments back to the taxpayer reduce retained county revenue. Not a forecast or a second deduction from receipts already net of incentives. Other public costs and fiscal timing remain unreviewed.",
       "review_status": "source_checked",
       "reviewed_on": "2026-09-03",
@@ -3970,7 +4106,7 @@
         "inventory_allocation": "unallocated"
       },
       "source_id": "src_study_rutherford_acfr_2022",
-      "source_locator": "Table 7 \u2014 Andale Inc. FKA, current fiscal-year column",
+      "source_locator": "Table 7 — Andale Inc. FKA, current fiscal-year column",
       "notes": "County taxpayer account; reported in thousands of dollars and multiplied by 1,000. Includes source rounding. Not construction spending, cash tax receipts or a causal estimate. Declines and increases are retained; the basis of valuation changes is not decomposed.",
       "review_status": "source_checked",
       "reviewed_on": "2026-09-03",
@@ -3997,7 +4133,7 @@
         "inventory_allocation": "unallocated"
       },
       "source_id": "src_study_rutherford_acfr_2022",
-      "source_locator": "Note 13 \u2014 Concentration of Tax Base",
+      "source_locator": "Note 13 — Concentration of Tax Base",
       "notes": "Taxpayer identity is inferred from cross-references, not named in Note 13. The note reports both taxes collected and separate incentive payments for this fiscal year. This is county context; no allocation to a mapped building. Gross collected taxes precede the separately disclosed incentives; do not describe this amount alone as retained revenue. Other jurisdictions and service costs are outside this record.",
       "review_status": "source_checked",
       "reviewed_on": "2026-09-03",
@@ -4024,7 +4160,7 @@
         "inventory_allocation": "unallocated"
       },
       "source_id": "src_study_rutherford_acfr_2022",
-      "source_locator": "Note 13 \u2014 Concentration of Tax Base",
+      "source_locator": "Note 13 — Concentration of Tax Base",
       "notes": "Taxpayer identity is inferred from cross-references, not named in Note 13. The note reports both taxes collected and separate incentive payments for this fiscal year. This is county context; no allocation to a mapped building. Payments back to the taxpayer reduce retained county revenue. Not a forecast or a second deduction from receipts already net of incentives. Other public costs and fiscal timing remain unreviewed.",
       "review_status": "source_checked",
       "reviewed_on": "2026-09-03",
@@ -4051,7 +4187,7 @@
         "inventory_allocation": "unallocated"
       },
       "source_id": "src_study_rutherford_acfr_2023",
-      "source_locator": "Table 7 \u2014 Andale Inc. FKA, current fiscal-year column",
+      "source_locator": "Table 7 — Andale Inc. FKA, current fiscal-year column",
       "notes": "County taxpayer account; reported in thousands of dollars and multiplied by 1,000. Includes source rounding. Not construction spending, cash tax receipts or a causal estimate. Declines and increases are retained; the basis of valuation changes is not decomposed.",
       "review_status": "source_checked",
       "reviewed_on": "2026-09-03",
@@ -4078,7 +4214,7 @@
         "inventory_allocation": "unallocated"
       },
       "source_id": "src_study_rutherford_acfr_2023",
-      "source_locator": "Note 13 \u2014 Concentration of Tax Base",
+      "source_locator": "Note 13 — Concentration of Tax Base",
       "notes": "Taxpayer identity is inferred from cross-references, not named in Note 13. The note reports both taxes collected and separate incentive payments for this fiscal year. This is county context; no allocation to a mapped building. Gross collected taxes precede the separately disclosed incentives; do not describe this amount alone as retained revenue. Other jurisdictions and service costs are outside this record.",
       "review_status": "source_checked",
       "reviewed_on": "2026-09-03",
@@ -4105,7 +4241,7 @@
         "inventory_allocation": "unallocated"
       },
       "source_id": "src_study_rutherford_acfr_2023",
-      "source_locator": "Note 13 \u2014 Concentration of Tax Base",
+      "source_locator": "Note 13 — Concentration of Tax Base",
       "notes": "Taxpayer identity is inferred from cross-references, not named in Note 13. The note reports both taxes collected and separate incentive payments for this fiscal year. This is county context; no allocation to a mapped building. Payments back to the taxpayer reduce retained county revenue. Not a forecast or a second deduction from receipts already net of incentives. Other public costs and fiscal timing remain unreviewed.",
       "review_status": "source_checked",
       "reviewed_on": "2026-09-03",
@@ -4132,7 +4268,7 @@
         "inventory_allocation": "unallocated"
       },
       "source_id": "src_study_rutherford_acfr_2024",
-      "source_locator": "Table 7 \u2014 Andale Inc. FKA, current fiscal-year column",
+      "source_locator": "Table 7 — Andale Inc. FKA, current fiscal-year column",
       "notes": "County taxpayer account; reported in thousands of dollars and multiplied by 1,000. Includes source rounding. Not construction spending, cash tax receipts or a causal estimate. Declines and increases are retained; the basis of valuation changes is not decomposed.",
       "review_status": "source_checked",
       "reviewed_on": "2026-09-03",
@@ -4159,7 +4295,7 @@
         "inventory_allocation": "unallocated"
       },
       "source_id": "src_study_rutherford_acfr_2024",
-      "source_locator": "Note 13 \u2014 Concentration of Tax Base",
+      "source_locator": "Note 13 — Concentration of Tax Base",
       "notes": "Taxpayer identity is inferred from cross-references, not named in Note 13. The note reports both taxes collected and separate incentive payments for this fiscal year. This is county context; no allocation to a mapped building. Gross collected taxes precede the separately disclosed incentives; do not describe this amount alone as retained revenue. Other jurisdictions and service costs are outside this record.",
       "review_status": "source_checked",
       "reviewed_on": "2026-09-03",
@@ -4186,7 +4322,7 @@
         "inventory_allocation": "unallocated"
       },
       "source_id": "src_study_rutherford_acfr_2024",
-      "source_locator": "Note 13 \u2014 Concentration of Tax Base",
+      "source_locator": "Note 13 — Concentration of Tax Base",
       "notes": "Taxpayer identity is inferred from cross-references, not named in Note 13. The note reports both taxes collected and separate incentive payments for this fiscal year. This is county context; no allocation to a mapped building. Payments back to the taxpayer reduce retained county revenue. Not a forecast or a second deduction from receipts already net of incentives. Other public costs and fiscal timing remain unreviewed.",
       "review_status": "source_checked",
       "reviewed_on": "2026-09-03",
@@ -4213,7 +4349,7 @@
         "inventory_allocation": "unallocated"
       },
       "source_id": "src_study_rutherford_acfr_2025",
-      "source_locator": "Table 7 \u2014 Andale Inc. FKA, current fiscal-year column",
+      "source_locator": "Table 7 — Andale Inc. FKA, current fiscal-year column",
       "notes": "County taxpayer account; reported in thousands of dollars and multiplied by 1,000. Includes source rounding. Not construction spending, cash tax receipts or a causal estimate. Declines and increases are retained; the basis of valuation changes is not decomposed.",
       "review_status": "source_checked",
       "reviewed_on": "2026-09-03",
@@ -4240,7 +4376,7 @@
         "inventory_allocation": "unallocated"
       },
       "source_id": "src_study_rutherford_acfr_2025",
-      "source_locator": "Note 13 \u2014 Concentration of Tax Base",
+      "source_locator": "Note 13 — Concentration of Tax Base",
       "notes": "Taxpayer identity is inferred from cross-references, not named in Note 13. The note reports both taxes collected and separate incentive payments for this fiscal year. This is county context; no allocation to a mapped building. Gross collected taxes precede the separately disclosed incentives; do not describe this amount alone as retained revenue. Other jurisdictions and service costs are outside this record.",
       "review_status": "source_checked",
       "reviewed_on": "2026-09-03",
@@ -4267,7 +4403,7 @@
         "inventory_allocation": "unallocated"
       },
       "source_id": "src_study_rutherford_acfr_2025",
-      "source_locator": "Note 13 \u2014 Concentration of Tax Base",
+      "source_locator": "Note 13 — Concentration of Tax Base",
       "notes": "Taxpayer identity is inferred from cross-references, not named in Note 13. The note reports both taxes collected and separate incentive payments for this fiscal year. This is county context; no allocation to a mapped building. Payments back to the taxpayer reduce retained county revenue. Not a forecast or a second deduction from receipts already net of incentives. Other public costs and fiscal timing remain unreviewed.",
       "review_status": "source_checked",
       "reviewed_on": "2026-09-03",
@@ -4294,7 +4430,7 @@
         "inventory_allocation": "unallocated"
       },
       "source_id": "src_study_san_antonio_microsoft_2013",
-      "source_locator": "Background Information \u2014 results of the 2007 agreement",
+      "source_locator": "Background Information — results of the 2007 agreement",
       "notes": "City reports more than $840 million invested in real and personal property. Not spending in 2013 alone, local supplier purchases or the later expansion forecast. Individual buildings and phases remain unallocated.",
       "review_status": "source_checked",
       "reviewed_on": "2026-09-03"
@@ -4319,7 +4455,7 @@
         "inventory_allocation": "unallocated"
       },
       "source_id": "src_study_san_antonio_microsoft_2013",
-      "source_locator": "Background Information \u2014 proposed expansion",
+      "source_locator": "Background Information — proposed expansion",
       "notes": "Proposed real and personal property investment; no realized annual spending or local share established.",
       "review_status": "source_checked",
       "reviewed_on": "2026-09-03"
@@ -4343,7 +4479,7 @@
         "inventory_allocation": "unallocated"
       },
       "source_id": "src_study_san_antonio_microsoft_2013",
-      "source_locator": "Posting Language and Background Information \u2014 expansion jobs",
+      "source_locator": "Posting Language and Background Information — expansion jobs",
       "notes": "Planned high-wage job creation. Existing global Microsoft employment is not included. Actual hires, wages, residency and fulfillment are unverified.",
       "review_status": "source_checked",
       "reviewed_on": "2026-09-03"
@@ -4368,7 +4504,7 @@
         "inventory_allocation": "unallocated"
       },
       "source_id": "src_study_san_antonio_microsoft_2013",
-      "source_locator": "Fiscal Impact \u2014 Total row",
+      "source_locator": "Fiscal Impact — Total row",
       "notes": "Original staff forecast, not realized fiscal revenue. Revenue includes property taxes, sales taxes and the city share of CPS Energy revenue. Net equals the source revenue forecast less its modeled incentive; it is not a complete community benefit-cost account. The potential approximately 63% reimbursement scenario and other costs are not established by this total. Do not add gross and net estimates together.",
       "review_status": "source_checked",
       "reviewed_on": "2026-09-03"
@@ -4393,7 +4529,7 @@
         "inventory_allocation": "unallocated"
       },
       "source_id": "src_study_san_antonio_microsoft_2013",
-      "source_locator": "Fiscal Impact \u2014 Total row",
+      "source_locator": "Fiscal Impact — Total row",
       "notes": "Original staff forecast, not realized fiscal revenue. Revenue includes property taxes, sales taxes and the city share of CPS Energy revenue. Net equals the source revenue forecast less its modeled incentive; it is not a complete community benefit-cost account. The potential approximately 63% reimbursement scenario and other costs are not established by this total. Do not add gross and net estimates together.",
       "review_status": "source_checked",
       "reviewed_on": "2026-09-03"
@@ -4418,7 +4554,7 @@
         "inventory_allocation": "unallocated"
       },
       "source_id": "src_study_san_antonio_microsoft_2013",
-      "source_locator": "Fiscal Impact \u2014 Total row",
+      "source_locator": "Fiscal Impact — Total row",
       "notes": "Original staff forecast, not realized fiscal revenue. Revenue includes property taxes, sales taxes and the city share of CPS Energy revenue. Net equals the source revenue forecast less its modeled incentive; it is not a complete community benefit-cost account. The potential approximately 63% reimbursement scenario and other costs are not established by this total. Do not add gross and net estimates together.",
       "review_status": "source_checked",
       "reviewed_on": "2026-09-03"
@@ -4442,8 +4578,8 @@
         "inventory_allocation": "unallocated"
       },
       "source_id": "src_study_lowell_markley_statement_2023",
-      "source_locator": "Former Prince Spaghetti site \u2014 Markley development paragraph",
-      "notes": "Approximately $200 million for the overall proposal. Completion of Phase I does not establish full realized expenditure. The plan\u2019s up-to-100 jobs remain unclassified by construction/operating role and are not ingested as permanent employment.",
+      "source_locator": "Former Prince Spaghetti site — Markley development paragraph",
+      "notes": "Approximately $200 million for the overall proposal. Completion of Phase I does not establish full realized expenditure. The plan’s up-to-100 jobs remain unclassified by construction/operating role and are not ingested as permanent employment.",
       "review_status": "source_checked",
       "reviewed_on": "2026-09-03",
       "pdf_page": 35,
@@ -4469,8 +4605,8 @@
         "inventory_allocation": "unallocated"
       },
       "source_id": "src_study_lowell_markley_statement_2023",
-      "source_locator": "Former Prince Spaghetti site \u2014 20-year tax estimate",
-      "notes": "City estimates taxes above baseline over the agreement\u2019s term, not actual receipts or a complete net fiscal balance. Do not also sum the rounded annual average in the source. Tax concessions, service costs and realized collections remain uncollected.",
+      "source_locator": "Former Prince Spaghetti site — 20-year tax estimate",
+      "notes": "City estimates taxes above baseline over the agreement’s term, not actual receipts or a complete net fiscal balance. Do not also sum the rounded annual average in the source. Tax concessions, service costs and realized collections remain uncollected.",
       "review_status": "source_checked",
       "reviewed_on": "2026-09-03",
       "pdf_page": 35,
@@ -4489,7 +4625,7 @@
       },
       "scope": {
         "level": "supporting_infrastructure",
-        "label": "Quincy Water Reuse Utility serving Microsoft\u2019s connected campus",
+        "label": "Quincy Water Reuse Utility serving Microsoft’s connected campus",
         "county_fips": "53025",
         "inventory_allocation": "unallocated"
       },
@@ -5280,7 +5416,7 @@
         "inventory_allocation": "unallocated"
       },
       "source_id": "src_study_nj_modiv_mahwah_2022",
-      "source_locator": "Bergen22re.txt; district 0233, block 00139, lot 00004; Net Value positions 439\u2013447",
+      "source_locator": "Bergen22re.txt; district 0233, block 00139, lot 00004; Net Value positions 439–447",
       "notes": "The state record reports land value of $8,932,900, improvement value of $93,067,100 and net value of $102,000,000 for property class 4A. This claim retains the source's Net Value field as an assessed-property stock for the assessment-list year. It is not construction spending, a tax receipt or an attributable change. Township minutes independently link NYSE Group, Inc. to the address and parcel; the amount is not allocated to the individual mapped building.",
       "review_status": "source_checked",
       "reviewed_on": "2026-09-03",
@@ -5305,7 +5441,7 @@
         "inventory_allocation": "unallocated"
       },
       "source_id": "src_study_nj_modiv_mahwah_2023",
-      "source_locator": "Bergen23re.txt; district 0233, block 00139, lot 00004; Net Value positions 439\u2013447",
+      "source_locator": "Bergen23re.txt; district 0233, block 00139, lot 00004; Net Value positions 439–447",
       "notes": "The state record reports land value of $8,932,900, improvement value of $93,067,100 and net value of $102,000,000 for property class 4A. This claim retains the source's Net Value field as an assessed-property stock for the assessment-list year. It is not construction spending, a tax receipt or an attributable change. Township minutes independently link NYSE Group, Inc. to the address and parcel; the amount is not allocated to the individual mapped building.",
       "review_status": "source_checked",
       "reviewed_on": "2026-09-03",
@@ -5330,7 +5466,7 @@
         "inventory_allocation": "unallocated"
       },
       "source_id": "src_study_nj_modiv_mahwah_2024",
-      "source_locator": "2024 Property Assessment files/Bergen 24re.txt; district 0233, block 00139, lot 00004; Net Value positions 439\u2013447",
+      "source_locator": "2024 Property Assessment files/Bergen 24re.txt; district 0233, block 00139, lot 00004; Net Value positions 439–447",
       "notes": "The state record reports land value of $8,932,900, improvement value of $93,067,100 and net value of $102,000,000 for property class 4A. This claim retains the source's Net Value field as an assessed-property stock for the assessment-list year. It is not construction spending, a tax receipt or an attributable change. Township minutes independently link NYSE Group, Inc. to the address and parcel; the amount is not allocated to the individual mapped building.",
       "review_status": "source_checked",
       "reviewed_on": "2026-09-03",
@@ -5355,7 +5491,7 @@
         "inventory_allocation": "unallocated"
       },
       "source_id": "src_study_nj_modiv_mahwah_2025",
-      "source_locator": "BergenRE.txt; district 0233, block 00139, lot 00004; Net Value positions 439\u2013447",
+      "source_locator": "BergenRE.txt; district 0233, block 00139, lot 00004; Net Value positions 439–447",
       "notes": "The state record reports land value of $8,932,900, improvement value of $93,067,100 and net value of $102,000,000 for property class 4A. This claim retains the source's Net Value field as an assessed-property stock for the assessment-list year. It is not construction spending, a tax receipt or an attributable change. Township minutes independently link NYSE Group, Inc. to the address and parcel; the amount is not allocated to the individual mapped building.",
       "review_status": "source_checked",
       "reviewed_on": "2026-09-03",
@@ -5380,7 +5516,7 @@
         "inventory_allocation": "unallocated"
       },
       "source_id": "src_study_nj_modiv_mahwah_2023",
-      "source_locator": "Bergen23re.txt; district 0233, block 00139, lot 00004; Last-Year Tax positions 601\u2013609",
+      "source_locator": "Bergen23re.txt; district 0233, block 00139, lot 00004; Last-Year Tax positions 601–609",
       "notes": "The 2023 state record stores 201144000 in the signed, implied-two-decimal Last-Year Tax field; the official layout decodes this as $2,011,440.00 and the field is assigned to the preceding tax year. This is the parcel tax charge reported by the state, not verified municipal cash collection or a net fiscal benefit. The zero-filled Current-Year Tax placeholder is not used as evidence. The parcel is not allocated to the individual mapped building.",
       "review_status": "source_checked",
       "reviewed_on": "2026-09-03",
@@ -5405,7 +5541,7 @@
         "inventory_allocation": "unallocated"
       },
       "source_id": "src_study_nj_modiv_mahwah_2024",
-      "source_locator": "2024 Property Assessment files/Bergen 24re.txt; district 0233, block 00139, lot 00004; Last-Year Tax positions 601\u2013609",
+      "source_locator": "2024 Property Assessment files/Bergen 24re.txt; district 0233, block 00139, lot 00004; Last-Year Tax positions 601–609",
       "notes": "The 2024 state record stores 207774000 in the signed, implied-two-decimal Last-Year Tax field; the official layout decodes this as $2,077,740.00 and the field is assigned to the preceding tax year. This is the parcel tax charge reported by the state, not verified municipal cash collection or a net fiscal benefit. The zero-filled Current-Year Tax placeholder is not used as evidence. The parcel is not allocated to the individual mapped building.",
       "review_status": "source_checked",
       "reviewed_on": "2026-09-03",
@@ -5430,7 +5566,7 @@
         "inventory_allocation": "unallocated"
       },
       "source_id": "src_study_nj_modiv_mahwah_2025",
-      "source_locator": "BergenRE.txt; district 0233, block 00139, lot 00004; Last-Year Tax positions 601\u2013609",
+      "source_locator": "BergenRE.txt; district 0233, block 00139, lot 00004; Last-Year Tax positions 601–609",
       "notes": "The 2025 state record stores 210528000 in the signed, implied-two-decimal Last-Year Tax field; the official layout decodes this as $2,105,280.00 and the field is assigned to the preceding tax year. This is the parcel tax charge reported by the state, not verified municipal cash collection or a net fiscal benefit. The zero-filled Current-Year Tax placeholder is not used as evidence. The parcel is not allocated to the individual mapped building.",
       "review_status": "source_checked",
       "reviewed_on": "2026-09-03",
@@ -6279,7 +6415,7 @@
         "inventory_allocation": "unallocated"
       },
       "source_id": "src_study_maricopa_apple_real_parcel_2026",
-      "source_locator": "Valuation Information, tax years 2023\u20132026, 2023 Full Cash Value",
+      "source_locator": "Valuation Information, tax years 2023–2026, 2023 Full Cash Value",
       "notes": "The assessor reports the parcel's full cash value. The owner mailing address and Computer Center improvement support the Apple-site crosswalk. Full cash value is a stock and does not measure Apple spending or net community benefit.",
       "review_status": "source_checked",
       "reviewed_on": "2026-09-03",
@@ -6304,7 +6440,7 @@
         "inventory_allocation": "unallocated"
       },
       "source_id": "src_study_maricopa_apple_real_parcel_2026",
-      "source_locator": "Valuation Information, tax years 2023\u20132026, 2024 Full Cash Value",
+      "source_locator": "Valuation Information, tax years 2023–2026, 2024 Full Cash Value",
       "notes": "The assessor reports the parcel's full cash value. The owner mailing address and Computer Center improvement support the Apple-site crosswalk. Full cash value is a stock and does not measure Apple spending or net community benefit.",
       "review_status": "source_checked",
       "reviewed_on": "2026-09-03",
@@ -6329,7 +6465,7 @@
         "inventory_allocation": "unallocated"
       },
       "source_id": "src_study_maricopa_apple_real_parcel_2026",
-      "source_locator": "Valuation Information, tax years 2023\u20132026, 2025 Full Cash Value",
+      "source_locator": "Valuation Information, tax years 2023–2026, 2025 Full Cash Value",
       "notes": "The assessor reports the parcel's full cash value. The owner mailing address and Computer Center improvement support the Apple-site crosswalk. Full cash value is a stock and does not measure Apple spending or net community benefit.",
       "review_status": "source_checked",
       "reviewed_on": "2026-09-03",
@@ -6354,7 +6490,7 @@
         "inventory_allocation": "unallocated"
       },
       "source_id": "src_study_maricopa_apple_real_parcel_2026",
-      "source_locator": "Valuation Information, tax years 2023\u20132026, 2026 Full Cash Value",
+      "source_locator": "Valuation Information, tax years 2023–2026, 2026 Full Cash Value",
       "notes": "The assessor reports the parcel's full cash value. The owner mailing address and Computer Center improvement support the Apple-site crosswalk. Full cash value is a stock and does not measure Apple spending or net community benefit.",
       "review_status": "source_checked",
       "reviewed_on": "2026-09-03",
@@ -6379,7 +6515,7 @@
         "inventory_allocation": "unallocated"
       },
       "source_id": "src_study_maricopa_apple_real_parcel_2026",
-      "source_locator": "Valuation Information, tax years 2023\u20132026, 2023 Assessed LPV",
+      "source_locator": "Valuation Information, tax years 2023–2026, 2023 Assessed LPV",
       "notes": "The assessor reports assessed LPV for a foreign-trade-zone parcel at a 5% assessment ratio. This is the taxable assessment base shown by the assessor, not full cash value, a tax receipt or an estimate of foregone taxes under a counterfactual regime.",
       "review_status": "source_checked",
       "reviewed_on": "2026-09-03",
@@ -6404,7 +6540,7 @@
         "inventory_allocation": "unallocated"
       },
       "source_id": "src_study_maricopa_apple_real_parcel_2026",
-      "source_locator": "Valuation Information, tax years 2023\u20132026, 2024 Assessed LPV",
+      "source_locator": "Valuation Information, tax years 2023–2026, 2024 Assessed LPV",
       "notes": "The assessor reports assessed LPV for a foreign-trade-zone parcel at a 5% assessment ratio. This is the taxable assessment base shown by the assessor, not full cash value, a tax receipt or an estimate of foregone taxes under a counterfactual regime.",
       "review_status": "source_checked",
       "reviewed_on": "2026-09-03",
@@ -6429,7 +6565,7 @@
         "inventory_allocation": "unallocated"
       },
       "source_id": "src_study_maricopa_apple_real_parcel_2026",
-      "source_locator": "Valuation Information, tax years 2023\u20132026, 2025 Assessed LPV",
+      "source_locator": "Valuation Information, tax years 2023–2026, 2025 Assessed LPV",
       "notes": "The assessor reports assessed LPV for a foreign-trade-zone parcel at a 5% assessment ratio. This is the taxable assessment base shown by the assessor, not full cash value, a tax receipt or an estimate of foregone taxes under a counterfactual regime.",
       "review_status": "source_checked",
       "reviewed_on": "2026-09-03",
@@ -6454,7 +6590,7 @@
         "inventory_allocation": "unallocated"
       },
       "source_id": "src_study_maricopa_apple_real_parcel_2026",
-      "source_locator": "Valuation Information, tax years 2023\u20132026, 2026 Assessed LPV",
+      "source_locator": "Valuation Information, tax years 2023–2026, 2026 Assessed LPV",
       "notes": "The assessor reports assessed LPV for a foreign-trade-zone parcel at a 5% assessment ratio. This is the taxable assessment base shown by the assessor, not full cash value, a tax receipt or an estimate of foregone taxes under a counterfactual regime.",
       "review_status": "source_checked",
       "reviewed_on": "2026-09-03",
@@ -7722,7 +7858,7 @@
       },
       "scope": {
         "level": "company_county",
-        "label": "Gross 2025-pay-2026 distribution for the Digital Crossroad DX-1 parcel \u2014 Lake County",
+        "label": "Gross 2025-pay-2026 distribution for the Digital Crossroad DX-1 parcel — Lake County",
         "county_fips": "18089",
         "inventory_allocation": "unallocated"
       },
@@ -7746,7 +7882,7 @@
       },
       "scope": {
         "level": "company_county",
-        "label": "Gross 2025-pay-2026 distribution for the Digital Crossroad DX-1 parcel \u2014 North Township",
+        "label": "Gross 2025-pay-2026 distribution for the Digital Crossroad DX-1 parcel — North Township",
         "county_fips": "18089",
         "inventory_allocation": "unallocated"
       },
@@ -7770,7 +7906,7 @@
       },
       "scope": {
         "level": "company_county",
-        "label": "Gross 2025-pay-2026 distribution for the Digital Crossroad DX-1 parcel \u2014 School City of Hammond",
+        "label": "Gross 2025-pay-2026 distribution for the Digital Crossroad DX-1 parcel — School City of Hammond",
         "county_fips": "18089",
         "inventory_allocation": "unallocated"
       },
@@ -7794,7 +7930,7 @@
       },
       "scope": {
         "level": "company_county",
-        "label": "Gross 2025-pay-2026 distribution for the Digital Crossroad DX-1 parcel \u2014 City of Hammond",
+        "label": "Gross 2025-pay-2026 distribution for the Digital Crossroad DX-1 parcel — City of Hammond",
         "county_fips": "18089",
         "inventory_allocation": "unallocated"
       },
@@ -7818,7 +7954,7 @@
       },
       "scope": {
         "level": "company_county",
-        "label": "Gross 2025-pay-2026 distribution for the Digital Crossroad DX-1 parcel \u2014 Hammond Public Library",
+        "label": "Gross 2025-pay-2026 distribution for the Digital Crossroad DX-1 parcel — Hammond Public Library",
         "county_fips": "18089",
         "inventory_allocation": "unallocated"
       },
@@ -7842,7 +7978,7 @@
       },
       "scope": {
         "level": "company_county",
-        "label": "Gross 2025-pay-2026 distribution for the Digital Crossroad DX-1 parcel \u2014 special districts",
+        "label": "Gross 2025-pay-2026 distribution for the Digital Crossroad DX-1 parcel — special districts",
         "county_fips": "18089",
         "inventory_allocation": "unallocated"
       },
@@ -8735,7 +8871,7 @@
       "period": {
         "kind": "tax_year",
         "year": 2016,
-        "label": "Storey County fiscal year 2015\u20132016"
+        "label": "Storey County fiscal year 2015–2016"
       },
       "scope": {
         "level": "campus",
@@ -8745,7 +8881,7 @@
       },
       "source_id": "src_study_storey_switch_cm001611_2026",
       "source_locator": "Tax Year 2016 page, Total Tax Fiscal Year (2015 - 2016)",
-      "notes": "The account reports total tax for this fiscal year. Fiscal 2018\u20132019 is explicitly zero despite assessed personal property; the source does not identify the cause on the account page. Amounts cover the account taxing bodies and are not assigned wholly to Storey County.",
+      "notes": "The account reports total tax for this fiscal year. Fiscal 2018–2019 is explicitly zero despite assessed personal property; the source does not identify the cause on the account page. Amounts cover the account taxing bodies and are not assigned wholly to Storey County.",
       "review_status": "source_checked",
       "reviewed_on": "2026-09-03",
       "annual_series_key": "switch_citadel_property_taxes_billed"
@@ -8760,7 +8896,7 @@
       "period": {
         "kind": "tax_year",
         "year": 2017,
-        "label": "Storey County fiscal year 2016\u20132017"
+        "label": "Storey County fiscal year 2016–2017"
       },
       "scope": {
         "level": "campus",
@@ -8770,7 +8906,7 @@
       },
       "source_id": "src_study_storey_switch_cm001611_2026",
       "source_locator": "Tax Year 2017 page, Total Tax Fiscal Year (2016 - 2017)",
-      "notes": "The account reports total tax for this fiscal year. Fiscal 2018\u20132019 is explicitly zero despite assessed personal property; the source does not identify the cause on the account page. Amounts cover the account taxing bodies and are not assigned wholly to Storey County.",
+      "notes": "The account reports total tax for this fiscal year. Fiscal 2018–2019 is explicitly zero despite assessed personal property; the source does not identify the cause on the account page. Amounts cover the account taxing bodies and are not assigned wholly to Storey County.",
       "review_status": "source_checked",
       "reviewed_on": "2026-09-03",
       "annual_series_key": "switch_citadel_property_taxes_billed"
@@ -8785,7 +8921,7 @@
       "period": {
         "kind": "tax_year",
         "year": 2018,
-        "label": "Storey County fiscal year 2017\u20132018"
+        "label": "Storey County fiscal year 2017–2018"
       },
       "scope": {
         "level": "campus",
@@ -8795,7 +8931,7 @@
       },
       "source_id": "src_study_storey_switch_cm001611_2026",
       "source_locator": "Tax Year 2018 page, Total Tax Fiscal Year (2017 - 2018)",
-      "notes": "The account reports total tax for this fiscal year. Fiscal 2018\u20132019 is explicitly zero despite assessed personal property; the source does not identify the cause on the account page. Amounts cover the account taxing bodies and are not assigned wholly to Storey County.",
+      "notes": "The account reports total tax for this fiscal year. Fiscal 2018–2019 is explicitly zero despite assessed personal property; the source does not identify the cause on the account page. Amounts cover the account taxing bodies and are not assigned wholly to Storey County.",
       "review_status": "source_checked",
       "reviewed_on": "2026-09-03",
       "annual_series_key": "switch_citadel_property_taxes_billed"
@@ -8810,7 +8946,7 @@
       "period": {
         "kind": "tax_year",
         "year": 2019,
-        "label": "Storey County fiscal year 2018\u20132019"
+        "label": "Storey County fiscal year 2018–2019"
       },
       "scope": {
         "level": "campus",
@@ -8820,7 +8956,7 @@
       },
       "source_id": "src_study_storey_switch_cm001611_2026",
       "source_locator": "Tax Year 2019 page, Total Tax Fiscal Year (2018 - 2019)",
-      "notes": "The account reports total tax for this fiscal year. Fiscal 2018\u20132019 is explicitly zero despite assessed personal property; the source does not identify the cause on the account page. Amounts cover the account taxing bodies and are not assigned wholly to Storey County.",
+      "notes": "The account reports total tax for this fiscal year. Fiscal 2018–2019 is explicitly zero despite assessed personal property; the source does not identify the cause on the account page. Amounts cover the account taxing bodies and are not assigned wholly to Storey County.",
       "review_status": "source_checked",
       "reviewed_on": "2026-09-03",
       "annual_series_key": "switch_citadel_property_taxes_billed"
@@ -8835,7 +8971,7 @@
       "period": {
         "kind": "tax_year",
         "year": 2020,
-        "label": "Storey County fiscal year 2019\u20132020"
+        "label": "Storey County fiscal year 2019–2020"
       },
       "scope": {
         "level": "campus",
@@ -8845,7 +8981,7 @@
       },
       "source_id": "src_study_storey_switch_cm001611_2026",
       "source_locator": "Tax Year 2020 page, Total Tax Fiscal Year (2019 - 2020)",
-      "notes": "The account reports total tax for this fiscal year. Fiscal 2018\u20132019 is explicitly zero despite assessed personal property; the source does not identify the cause on the account page. Amounts cover the account taxing bodies and are not assigned wholly to Storey County.",
+      "notes": "The account reports total tax for this fiscal year. Fiscal 2018–2019 is explicitly zero despite assessed personal property; the source does not identify the cause on the account page. Amounts cover the account taxing bodies and are not assigned wholly to Storey County.",
       "review_status": "source_checked",
       "reviewed_on": "2026-09-03",
       "annual_series_key": "switch_citadel_property_taxes_billed"
@@ -8860,7 +8996,7 @@
       "period": {
         "kind": "tax_year",
         "year": 2021,
-        "label": "Storey County fiscal year 2020\u20132021"
+        "label": "Storey County fiscal year 2020–2021"
       },
       "scope": {
         "level": "campus",
@@ -8870,7 +9006,7 @@
       },
       "source_id": "src_study_storey_switch_cm001611_2026",
       "source_locator": "Tax Year 2021 page, Total Tax Fiscal Year (2020 - 2021)",
-      "notes": "The account reports total tax for this fiscal year. Fiscal 2018\u20132019 is explicitly zero despite assessed personal property; the source does not identify the cause on the account page. Amounts cover the account taxing bodies and are not assigned wholly to Storey County.",
+      "notes": "The account reports total tax for this fiscal year. Fiscal 2018–2019 is explicitly zero despite assessed personal property; the source does not identify the cause on the account page. Amounts cover the account taxing bodies and are not assigned wholly to Storey County.",
       "review_status": "source_checked",
       "reviewed_on": "2026-09-03",
       "annual_series_key": "switch_citadel_property_taxes_billed"
@@ -8885,7 +9021,7 @@
       "period": {
         "kind": "tax_year",
         "year": 2022,
-        "label": "Storey County fiscal year 2021\u20132022"
+        "label": "Storey County fiscal year 2021–2022"
       },
       "scope": {
         "level": "campus",
@@ -8895,7 +9031,7 @@
       },
       "source_id": "src_study_storey_switch_cm001611_2026",
       "source_locator": "Tax Year 2022 page, Total Tax Fiscal Year (2021 - 2022)",
-      "notes": "The account reports total tax for this fiscal year. Fiscal 2018\u20132019 is explicitly zero despite assessed personal property; the source does not identify the cause on the account page. Amounts cover the account taxing bodies and are not assigned wholly to Storey County.",
+      "notes": "The account reports total tax for this fiscal year. Fiscal 2018–2019 is explicitly zero despite assessed personal property; the source does not identify the cause on the account page. Amounts cover the account taxing bodies and are not assigned wholly to Storey County.",
       "review_status": "source_checked",
       "reviewed_on": "2026-09-03",
       "annual_series_key": "switch_citadel_property_taxes_billed"
@@ -8910,7 +9046,7 @@
       "period": {
         "kind": "tax_year",
         "year": 2023,
-        "label": "Storey County fiscal year 2022\u20132023"
+        "label": "Storey County fiscal year 2022–2023"
       },
       "scope": {
         "level": "campus",
@@ -8920,7 +9056,7 @@
       },
       "source_id": "src_study_storey_switch_cm001611_2026",
       "source_locator": "Tax Year 2023 page, Total Tax Fiscal Year (2022 - 2023)",
-      "notes": "The account reports total tax for this fiscal year. Fiscal 2018\u20132019 is explicitly zero despite assessed personal property; the source does not identify the cause on the account page. Amounts cover the account taxing bodies and are not assigned wholly to Storey County.",
+      "notes": "The account reports total tax for this fiscal year. Fiscal 2018–2019 is explicitly zero despite assessed personal property; the source does not identify the cause on the account page. Amounts cover the account taxing bodies and are not assigned wholly to Storey County.",
       "review_status": "source_checked",
       "reviewed_on": "2026-09-03",
       "annual_series_key": "switch_citadel_property_taxes_billed"
@@ -8935,7 +9071,7 @@
       "period": {
         "kind": "tax_year",
         "year": 2024,
-        "label": "Storey County fiscal year 2023\u20132024"
+        "label": "Storey County fiscal year 2023–2024"
       },
       "scope": {
         "level": "campus",
@@ -8945,7 +9081,7 @@
       },
       "source_id": "src_study_storey_switch_cm001611_2026",
       "source_locator": "Tax Year 2024 page, Total Tax Fiscal Year (2023 - 2024)",
-      "notes": "The account reports total tax for this fiscal year. Fiscal 2018\u20132019 is explicitly zero despite assessed personal property; the source does not identify the cause on the account page. Amounts cover the account taxing bodies and are not assigned wholly to Storey County.",
+      "notes": "The account reports total tax for this fiscal year. Fiscal 2018–2019 is explicitly zero despite assessed personal property; the source does not identify the cause on the account page. Amounts cover the account taxing bodies and are not assigned wholly to Storey County.",
       "review_status": "source_checked",
       "reviewed_on": "2026-09-03",
       "annual_series_key": "switch_citadel_property_taxes_billed"
@@ -8960,7 +9096,7 @@
       "period": {
         "kind": "tax_year",
         "year": 2025,
-        "label": "Storey County fiscal year 2024\u20132025"
+        "label": "Storey County fiscal year 2024–2025"
       },
       "scope": {
         "level": "campus",
@@ -8970,7 +9106,7 @@
       },
       "source_id": "src_study_storey_switch_cm001611_2026",
       "source_locator": "Tax Year 2025 page, Total Tax Fiscal Year (2024 - 2025)",
-      "notes": "The account reports total tax for this fiscal year. Fiscal 2018\u20132019 is explicitly zero despite assessed personal property; the source does not identify the cause on the account page. Amounts cover the account taxing bodies and are not assigned wholly to Storey County.",
+      "notes": "The account reports total tax for this fiscal year. Fiscal 2018–2019 is explicitly zero despite assessed personal property; the source does not identify the cause on the account page. Amounts cover the account taxing bodies and are not assigned wholly to Storey County.",
       "review_status": "source_checked",
       "reviewed_on": "2026-09-03",
       "annual_series_key": "switch_citadel_property_taxes_billed"
@@ -8985,7 +9121,7 @@
       "period": {
         "kind": "tax_year",
         "year": 2026,
-        "label": "Storey County fiscal year 2025\u20132026"
+        "label": "Storey County fiscal year 2025–2026"
       },
       "scope": {
         "level": "campus",
@@ -8995,7 +9131,7 @@
       },
       "source_id": "src_study_storey_switch_cm001611_2026",
       "source_locator": "Tax Year 2026 page, Total Tax Fiscal Year (2025 - 2026)",
-      "notes": "The account reports total tax for this fiscal year. Fiscal 2018\u20132019 is explicitly zero despite assessed personal property; the source does not identify the cause on the account page. Amounts cover the account taxing bodies and are not assigned wholly to Storey County.",
+      "notes": "The account reports total tax for this fiscal year. Fiscal 2018–2019 is explicitly zero despite assessed personal property; the source does not identify the cause on the account page. Amounts cover the account taxing bodies and are not assigned wholly to Storey County.",
       "review_status": "source_checked",
       "reviewed_on": "2026-09-03",
       "annual_series_key": "switch_citadel_property_taxes_billed"
@@ -9010,7 +9146,7 @@
       "period": {
         "kind": "tax_year",
         "year": 2016,
-        "label": "Storey County fiscal year 2015\u20132016; account paid with zero unpaid balance"
+        "label": "Storey County fiscal year 2015–2016; account paid with zero unpaid balance"
       },
       "scope": {
         "level": "campus",
@@ -9035,7 +9171,7 @@
       "period": {
         "kind": "tax_year",
         "year": 2017,
-        "label": "Storey County fiscal year 2016\u20132017; account paid with zero unpaid balance"
+        "label": "Storey County fiscal year 2016–2017; account paid with zero unpaid balance"
       },
       "scope": {
         "level": "campus",
@@ -9060,7 +9196,7 @@
       "period": {
         "kind": "tax_year",
         "year": 2018,
-        "label": "Storey County fiscal year 2017\u20132018; account paid with zero unpaid balance"
+        "label": "Storey County fiscal year 2017–2018; account paid with zero unpaid balance"
       },
       "scope": {
         "level": "campus",
@@ -9085,7 +9221,7 @@
       "period": {
         "kind": "tax_year",
         "year": 2020,
-        "label": "Storey County fiscal year 2019\u20132020; account paid with zero unpaid balance"
+        "label": "Storey County fiscal year 2019–2020; account paid with zero unpaid balance"
       },
       "scope": {
         "level": "campus",
@@ -9110,7 +9246,7 @@
       "period": {
         "kind": "tax_year",
         "year": 2021,
-        "label": "Storey County fiscal year 2020\u20132021; account paid with zero unpaid balance"
+        "label": "Storey County fiscal year 2020–2021; account paid with zero unpaid balance"
       },
       "scope": {
         "level": "campus",
@@ -9135,7 +9271,7 @@
       "period": {
         "kind": "tax_year",
         "year": 2022,
-        "label": "Storey County fiscal year 2021\u20132022; account paid with zero unpaid balance"
+        "label": "Storey County fiscal year 2021–2022; account paid with zero unpaid balance"
       },
       "scope": {
         "level": "campus",
@@ -9160,7 +9296,7 @@
       "period": {
         "kind": "tax_year",
         "year": 2023,
-        "label": "Storey County fiscal year 2022\u20132023; account paid with zero unpaid balance"
+        "label": "Storey County fiscal year 2022–2023; account paid with zero unpaid balance"
       },
       "scope": {
         "level": "campus",
@@ -9185,7 +9321,7 @@
       "period": {
         "kind": "tax_year",
         "year": 2024,
-        "label": "Storey County fiscal year 2023\u20132024; account paid with zero unpaid balance"
+        "label": "Storey County fiscal year 2023–2024; account paid with zero unpaid balance"
       },
       "scope": {
         "level": "campus",
@@ -9210,7 +9346,7 @@
       "period": {
         "kind": "tax_year",
         "year": 2025,
-        "label": "Storey County fiscal year 2024\u20132025; account paid with zero unpaid balance"
+        "label": "Storey County fiscal year 2024–2025; account paid with zero unpaid balance"
       },
       "scope": {
         "level": "campus",
@@ -9235,7 +9371,7 @@
       "period": {
         "kind": "tax_year",
         "year": 2026,
-        "label": "Storey County fiscal year 2025\u20132026; account paid with zero unpaid balance"
+        "label": "Storey County fiscal year 2025–2026; account paid with zero unpaid balance"
       },
       "scope": {
         "level": "campus",
@@ -14396,7 +14532,7 @@
       "source_id": "src_study_hammond_2026_budget_largest_taxpayers",
       "pdf_page": 13,
       "printed_page": "3",
-      "source_locator": "Largest Taxpayers \u2014 2023 Payable 2024 Assessed Values",
+      "source_locator": "Largest Taxpayers — 2023 Payable 2024 Assessed Values",
       "notes": "The city table, sourced to the Lake County Auditor, reports personal property only and identifies it as 0.95% of Hammond total assessed value. This is distinct from the leasehold real-property parcel, property-tax liability, receipts, equipment cost and investment.",
       "review_status": "source_checked",
       "reviewed_on": "2026-09-04"
@@ -14422,7 +14558,7 @@
       "source_id": "src_study_dx_hammond_iurc_testimony_2025",
       "pdf_page": 2,
       "printed_page": "2",
-      "source_locator": "Direct testimony, lines 16\u201318",
+      "source_locator": "Direct testimony, lines 16–18",
       "notes": "The company witness states that DX Hammond owns and operates a 20 MW data center. MW is facility capacity, not measured annual electricity consumption, peak demand, load growth or an incremental expansion amount.",
       "review_status": "source_checked",
       "reviewed_on": "2026-09-04"
@@ -16842,7 +16978,7 @@
       "period": {
         "kind": "tax_year",
         "year": 2024,
-        "label": "Storey County fiscal year 2024\u20132025 parcel tax billed"
+        "label": "Storey County fiscal year 2024–2025 parcel tax billed"
       },
       "scope": {
         "level": "campus",
@@ -16867,7 +17003,7 @@
       "period": {
         "kind": "tax_year",
         "year": 2025,
-        "label": "Storey County fiscal year 2025\u20132026 parcel tax billed"
+        "label": "Storey County fiscal year 2025–2026 parcel tax billed"
       },
       "scope": {
         "level": "campus",
@@ -16892,7 +17028,7 @@
       "period": {
         "kind": "tax_year",
         "year": 2026,
-        "label": "Storey County fiscal year 2026\u20132027 parcel tax billed"
+        "label": "Storey County fiscal year 2026–2027 parcel tax billed"
       },
       "scope": {
         "level": "campus",
@@ -16917,7 +17053,7 @@
       "period": {
         "kind": "tax_year",
         "year": 2024,
-        "label": "Storey County fiscal year 2024\u20132025; parcel paid with zero unpaid balance"
+        "label": "Storey County fiscal year 2024–2025; parcel paid with zero unpaid balance"
       },
       "scope": {
         "level": "campus",
@@ -16942,7 +17078,7 @@
       "period": {
         "kind": "tax_year",
         "year": 2025,
-        "label": "Storey County fiscal year 2025\u20132026; parcel paid with zero unpaid balance"
+        "label": "Storey County fiscal year 2025–2026; parcel paid with zero unpaid balance"
       },
       "scope": {
         "level": "campus",
@@ -16967,7 +17103,7 @@
       "period": {
         "kind": "reported_snapshot",
         "report_date": "2026-09-05",
-        "label": "Fiscal 2026\u20132027 partial-year payment through review date; first installment paid"
+        "label": "Fiscal 2026–2027 partial-year payment through review date; first installment paid"
       },
       "scope": {
         "level": "campus",
@@ -17044,7 +17180,7 @@
         "kind": "projection_horizon",
         "report_date": "2026-02-03",
         "horizon_years": 1,
-        "label": "Fire District fiscal 2026\u20132027 capital plan"
+        "label": "Fire District fiscal 2026–2027 capital plan"
       },
       "scope": {
         "level": "supporting_infrastructure",
@@ -17804,7 +17940,7 @@
       "source_id": "src_study_lake_county_digital_crossroad_tax_2026",
       "as_of": "2026-09-03",
       "title": "County account resolves the existing DX-1 leasehold parcel",
-      "notes": "Lake County identifies the real-property account at 100 Digital Crossroads Drive as parcel 45-01-36-176-005.000-023 in the Hammond taxing unit. The account supplies the assessment, liability, credit, distribution and payment records. It covers the lease-area real property and remains separate from the personal-property value later collected from the city\u2019s largest-taxpayer table."
+      "notes": "Lake County identifies the real-property account at 100 Digital Crossroads Drive as parcel 45-01-36-176-005.000-023 in the Hammond taxing unit. The account supplies the assessment, liability, credit, distribution and payment records. It covers the lease-area real property and remains separate from the personal-property value later collected from the city’s largest-taxpayer table."
     },
     {
       "project_id": "prj_study_im3_point_06685432442",
@@ -17902,14 +18038,14 @@
       "source_id": "src_study_nipsco_2021_irp_digital_crossroad",
       "as_of": "2021-11-15",
       "title": "Utility filing adds a qualified realized-investment descriptor",
-      "notes": "NIPSCO\u2019s 2021 plan describes the operating Hammond facility as more than $50 million. The study records this as a qualified cumulative facility amount and leaves the 2018 initial-phase and full-build amounts in forecasts."
+      "notes": "NIPSCO’s 2021 plan describes the operating Hammond facility as more than $50 million. The study records this as a qualified cumulative facility amount and leaves the 2018 initial-phase and full-build amounts in forecasts."
     },
     {
       "project_id": "prj_study_im3_building_00978934687",
       "source_id": "src_study_hammond_2026_budget_largest_taxpayers",
       "as_of": "2025-10-27",
       "title": "City budget adds a separate personal-property assessment",
-      "notes": "Hammond\u2019s adopted budget identifies DX Hammond JV LLC personal property at $30,328,680 for 2023 payable 2024, equal to 0.95% of city assessed value. It remains separate from the lease-area real-property series."
+      "notes": "Hammond’s adopted budget identifies DX Hammond JV LLC personal property at $30,328,680 for 2023 payable 2024, equal to 0.95% of city assessed value. It remains separate from the lease-area real-property series."
     },
     {
       "project_id": "prj_study_im3_building_00978934687",
@@ -18056,7 +18192,7 @@
       "source_id": "src_study_hammond_redevelopment_document_archive_2026",
       "as_of": "2026-09-04",
       "title": "Quarterly local-labor submissions remain a public-evidence gap",
-      "notes": "The 2018 agreement required quarterly reporting to the Redevelopment Commission on compliance with its Hammond, Lake County and Indiana contractor and worker priorities. No named filing was located in the City\u2019s indexed public document archive, whose Redevelopment Commission categories begin in 2021. This is an unresolved public-evidence gap, not evidence of noncompliance or zero local participation. The study does not solicit records and uses only already-public evidence and explicitly labeled proxy scenarios."
+      "notes": "The 2018 agreement required quarterly reporting to the Redevelopment Commission on compliance with its Hammond, Lake County and Indiana contractor and worker priorities. No named filing was located in the City’s indexed public document archive, whose Redevelopment Commission categories begin in 2021. This is an unresolved public-evidence gap, not evidence of noncompliance or zero local participation. The study does not solicit records and uses only already-public evidence and explicitly labeled proxy scenarios."
     },
     {
       "project_id": "prj_study_im3_point_06685432442",
@@ -18070,7 +18206,7 @@
       "source_id": "src_study_storey_switch_parcel_00501223_2026",
       "as_of": "2026-09-05",
       "title": "Core Citadel parcel adds real-estate values and completed tax payments",
-      "notes": "Storey County parcel 005-012-23 identifies 1 Superloop Circle and three data-center modules totaling 575,985 listed square feet. The release adds separate 2024\u20132026 real-property value stocks, three parcel tax bills, two completed fiscal-year payments and the first paid installment of the open 2026\u20132027 year. Tenant-equipment accounts and CM001611 remain separate to prevent double counting."
+      "notes": "Storey County parcel 005-012-23 identifies 1 Superloop Circle and three data-center modules totaling 575,985 listed square feet. The release adds separate 2024–2026 real-property value stocks, three parcel tax bills, two completed fiscal-year payments and the first paid installment of the open 2026–2027 year. Tenant-equipment accounts and CM001611 remain separate to prevent double counting."
     },
     {
       "project_id": "prj_study_im3_point_06685432442",
@@ -18091,7 +18227,7 @@
       "source_id": "src_study_storey_fire_cip_2026",
       "as_of": "2026-09-05",
       "title": "Fire capital plan exposes a public cost paired with the donated truck",
-      "notes": "The Fire District plans $100,000 in fiscal 2026\u20132027 to equip Pierce Truck 75 and identifies the truck as purchased by Switch. The application records the district amount as a forecast public cost, preserving both sides of the transaction without netting unlike periods."
+      "notes": "The Fire District plans $100,000 in fiscal 2026–2027 to equip Pierce Truck 75 and identifies the truck as purchased by Switch. The application records the district amount as a forecast public cost, preserving both sides of the transaction without netting unlike periods."
     },
     {
       "project_id": "prj_study_im3_building_00300974499",

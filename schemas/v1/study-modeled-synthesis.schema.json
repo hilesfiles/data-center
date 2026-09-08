@@ -18,7 +18,7 @@
     "unit": {
       "enum": [
         "USD", "USD_per_year", "USD_per_FTE", "USD_per_hour", "FTE", "job_years", "employees", "workers", "jobs",
-        "kWh_per_year", "MWh_per_year", "MW", "percent", "ratio", "PUE_ratio", "WUE_liters_per_kWh",
+        "kWh_per_year", "MWh_per_year", "MW", "percent", "ratio", "PUE_ratio", "WUE_liters_per_kWh", "tons_per_year",
         "gallons_per_year", "gallons_per_day", "million_gallons_per_day", "metric_tons_co2e_per_year",
         "acre_feet_per_year", "square_feet", "establishments", "index_points", "percentage_points"
       ]
@@ -27,7 +27,7 @@
       "type": "object",
       "required": ["kind", "label"],
       "properties": {
-        "kind": { "enum": ["calendar_year", "fiscal_year", "tax_year", "source_year", "construction_period", "historical_peak", "cumulative", "projection_horizon"] },
+        "kind": { "enum": ["calendar_year", "fiscal_year", "tax_year", "source_year", "reported_snapshot", "construction_period", "historical_peak", "cumulative", "projection_horizon"] },
         "year": { "type": "integer", "minimum": 1800, "maximum": 2200 },
         "start_date": { "type": "string", "format": "date" },
         "end_date": { "type": "string", "format": "date" },
@@ -38,7 +38,7 @@
       "allOf": [
         { "if": { "properties": { "kind": { "enum": ["calendar_year", "fiscal_year", "tax_year", "source_year"] } } }, "then": { "required": ["year"] } },
         { "if": { "properties": { "kind": { "const": "construction_period" } } }, "then": { "required": ["start_date", "end_date"] } },
-        { "if": { "properties": { "kind": { "enum": ["historical_peak", "cumulative"] } } }, "then": { "required": ["report_date"] } },
+        { "if": { "properties": { "kind": { "enum": ["reported_snapshot", "historical_peak", "cumulative"] } } }, "then": { "required": ["report_date"] } },
         { "if": { "properties": { "kind": { "const": "projection_horizon" } } }, "then": { "required": ["report_date", "horizon_years"] } }
       ],
       "additionalProperties": false
@@ -81,12 +81,12 @@
       "type": "object",
       "required": ["kind", "detail"],
       "properties": {
-        "kind": { "enum": ["claim", "source", "assumption"] },
+        "kind": { "enum": ["claim", "source", "model", "assumption"] },
         "reference_id": { "$ref": "common.schema.json#/$defs/entity_id" },
         "detail": { "type": "string", "minLength": 1 }
       },
       "allOf": [
-        { "if": { "properties": { "kind": { "enum": ["claim", "source"] } } }, "then": { "required": ["reference_id"] } }
+        { "if": { "properties": { "kind": { "enum": ["claim", "source", "model"] } } }, "then": { "required": ["reference_id"] } }
       ],
       "additionalProperties": false
     },
@@ -194,6 +194,7 @@
         "derivation": { "$ref": "#/$defs/derivation" },
         "multiplier_provenance": { "$ref": "#/$defs/multiplier_provenance" },
         "causal_design": { "$ref": "#/$defs/causal_design" },
+        "reproducibility_manifest": { "type": "object" },
         "limitations": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } },
         "presentation": { "const": "modeled_not_observed_or_audited" },
         "notes": { "type": "string", "minLength": 1 },

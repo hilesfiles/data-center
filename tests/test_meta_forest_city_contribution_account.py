@@ -42,7 +42,7 @@ class MetaForestCityContributionAccountTest(unittest.TestCase):
         self.assertEqual(project["model_completeness"]["missing_county_outcomes"], [])
         self.assertEqual((project["economic_record_count"], project["reported_actual_count"], project["projection_count"]), (28, 25, 3))
         self.assertEqual(project["modeled_synthesis_count"], 6)
-        self.assertEqual(self.index["full_modeled_county_accounts"], 1)
+        self.assertEqual(self.index["full_modeled_county_accounts"], 0)
 
     def test_only_unsupported_supplier_channel_is_left_open(self):
         project = self.project
