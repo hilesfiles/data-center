@@ -6,6 +6,7 @@ from pathlib import Path
 from scripts.build_private_sector_study import CONFIG, MODELING_POLICY, PUBLIC, build_products, read
 from scripts.study_economic_evidence import load_evidence, validate_evidence
 from scripts.study_modeled_synthesis import load_synthesis, modeled_products
+from scripts.validate_data_contract import ContractValidator
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -217,8 +218,54 @@ class GoogleBridgeportContributionAccountTest(unittest.TestCase):
             "study.community_program_participants",
             "study.volunteer_hours",
             "study.recipient_program_expenditure",
+            "study.direct_payroll_projection",
+            "study.projected_economic_impact",
+            "study.household_income_equivalents",
+            "study.pue_overhead_reduction_vs_industry",
         ):
             self.assertIn(proposal, text)
+
+    def test_adversarial_correction_is_schema_valid_and_repairs_provenance(self):
+        validator = ContractValidator(ROOT / "schemas/v1")
+        self.assertEqual(
+            validator.validate_record(
+                self.evidence, ROOT / "schemas/v1/study-economic-evidence.schema.json"
+            ),
+            [],
+        )
+        self.assertEqual(
+            validator.validate_record(
+                self.synthesis, ROOT / "schemas/v1/study-modeled-synthesis.schema.json"
+            ),
+            [],
+        )
+
+        models = {row["estimate_id"]: row for row in self.grouped[PROJECT]}
+        self.assertNotIn("est_study_google_bridgeport_households_2021_2023", models)
+        payroll = models["est_study_google_bridgeport_annualized_direct_payroll_projection"]
+        self.assertEqual(payroll["value"], 4_680_000)
+        self.assertEqual(payroll["period"]["horizon_years"], 20)
+        self.assertIn("lower-bound", payroll["interval"]["interpretation"])
+        self.assertFalse(any("gap" in row for row in models.values()))
+
+        threshold = models["est_study_google_bridgeport_service_cost_break_even_2025"]
+        params = {row["provenance"]["reference_id"]: row["value"] for row in threshold["parameters"]}
+        self.assertEqual(params, {
+            "clm_study_google_bridgeport_google_tax_paid_2025": 3_994.82,
+            "clm_study_google_bridgeport_design_tax_paid_2025": 1_905_083.88,
+            "clm_study_google_bridgeport_wiessner_tax_paid_2025": 839_956.44,
+        })
+
+        sources = {row["source_id"] for row in self.fragment["sources"]}
+        self.assertTrue({
+            "src_study_alabama_commerce_project_spike_2016",
+            "src_study_naec_google_expansion_2026",
+        }.issubset(sources))
+        updates = " ".join(row["notes"] for row in self.fragment["project_updates"]).lower()
+        self.assertIn("contract 3.1.0", updates)
+        self.assertIn("e3a0b32ae0954ed38c9875674d3c1238144b6a6a", updates)
+        self.assertIn("epa/echo", updates)
+        self.assertIn("ferc", updates)
 
     def test_native_scope_nonadditivity_and_chronology_conflict(self):
         records = self.detail["economic_records"]

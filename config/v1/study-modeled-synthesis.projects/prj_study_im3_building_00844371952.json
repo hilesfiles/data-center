@@ -33,6 +33,20 @@
       "notes": "Official location tables provide 2021-2024 Jackson County PUE and 2024 withdrawal/discharge/consumption; water is rounded to nearest 0.1 million gallons and subject to third-party limited assurance."
     },
     {
+      "source_id": "src_study_alabama_commerce_project_spike_2016",
+      "title": "How Google’s Search Ended in Alabama",
+      "url": "https://www.madeinalabama.com/2016/09/googling-in-alabama/",
+      "publisher": "Alabama Department of Commerce",
+      "source_type": "state_record",
+      "publication_date": {
+        "precision": "day",
+        "date": "2016-09-27"
+      },
+      "retrieved_on": "2026-09-07",
+      "review_method": "web_page",
+      "notes": "State profile reports a greater-than-$93.6 million direct-wage projection over 20 years. The annualized model is a deterministic lower-bound conversion, not actual payroll or an exact forecast."
+    },
+    {
       "source_id": "src_study_jackson_property_google_151335",
       "title": "Jackson County property and tax history — Google LLC account 151335",
       "url": "https://jacksonproperty.countygovservices.com/Property/Search?taxyear=2026",
@@ -147,7 +161,6 @@
       ],
       "confidence": "medium",
       "decision_relevance": "Preserves the study's direct channel without treating it as observed.",
-      "gap": "Observed project payroll, employment, supplier purchases, building allocation and independently verified model inputs.",
       "derivation": {
         "method": "contribution_analysis",
         "model_version": "google-bridgeport-account-1.0.0",
@@ -234,7 +247,6 @@
       ],
       "confidence": "medium",
       "decision_relevance": "Preserves the study's indirect channel without treating it as observed.",
-      "gap": "Observed project payroll, employment, supplier purchases, building allocation and independently verified model inputs.",
       "derivation": {
         "method": "contribution_analysis",
         "model_version": "google-bridgeport-account-1.0.0",
@@ -321,7 +333,6 @@
       ],
       "confidence": "medium",
       "decision_relevance": "Preserves the study's induced channel without treating it as observed.",
-      "gap": "Observed project payroll, employment, supplier purchases, building allocation and independently verified model inputs.",
       "derivation": {
         "method": "contribution_analysis",
         "model_version": "google-bridgeport-account-1.0.0",
@@ -435,7 +446,6 @@
       ],
       "confidence": "medium",
       "decision_relevance": "Preserves the study's total channel without treating it as observed.",
-      "gap": "Observed project payroll, employment, supplier purchases, building allocation and independently verified model inputs.",
       "derivation": {
         "method": "contribution_analysis",
         "model_version": "google-bridgeport-account-1.0.0",
@@ -522,7 +532,6 @@
       ],
       "confidence": "medium",
       "decision_relevance": "Preserves the study's direct channel without treating it as observed.",
-      "gap": "Observed project payroll, employment, supplier purchases, building allocation and independently verified model inputs.",
       "derivation": {
         "method": "contribution_analysis",
         "model_version": "google-bridgeport-account-1.0.0",
@@ -609,7 +618,6 @@
       ],
       "confidence": "medium",
       "decision_relevance": "Preserves the study's indirect channel without treating it as observed.",
-      "gap": "Observed project payroll, employment, supplier purchases, building allocation and independently verified model inputs.",
       "derivation": {
         "method": "contribution_analysis",
         "model_version": "google-bridgeport-account-1.0.0",
@@ -696,7 +704,6 @@
       ],
       "confidence": "medium",
       "decision_relevance": "Preserves the study's induced channel without treating it as observed.",
-      "gap": "Observed project payroll, employment, supplier purchases, building allocation and independently verified model inputs.",
       "derivation": {
         "method": "contribution_analysis",
         "model_version": "google-bridgeport-account-1.0.0",
@@ -810,7 +817,6 @@
       ],
       "confidence": "medium",
       "decision_relevance": "Preserves the study's total channel without treating it as observed.",
-      "gap": "Observed project payroll, employment, supplier purchases, building allocation and independently verified model inputs.",
       "derivation": {
         "method": "contribution_analysis",
         "model_version": "google-bridgeport-account-1.0.0",
@@ -897,7 +903,6 @@
       ],
       "confidence": "medium",
       "decision_relevance": "Preserves the study's direct channel without treating it as observed.",
-      "gap": "Observed project payroll, employment, supplier purchases, building allocation and independently verified model inputs.",
       "derivation": {
         "method": "contribution_analysis",
         "model_version": "google-bridgeport-account-1.0.0",
@@ -984,7 +989,6 @@
       ],
       "confidence": "medium",
       "decision_relevance": "Preserves the study's indirect channel without treating it as observed.",
-      "gap": "Observed project payroll, employment, supplier purchases, building allocation and independently verified model inputs.",
       "derivation": {
         "method": "contribution_analysis",
         "model_version": "google-bridgeport-account-1.0.0",
@@ -1071,7 +1075,6 @@
       ],
       "confidence": "medium",
       "decision_relevance": "Preserves the study's induced channel without treating it as observed.",
-      "gap": "Observed project payroll, employment, supplier purchases, building allocation and independently verified model inputs.",
       "derivation": {
         "method": "contribution_analysis",
         "model_version": "google-bridgeport-account-1.0.0",
@@ -1185,7 +1188,6 @@
       ],
       "confidence": "medium",
       "decision_relevance": "Preserves the study's total channel without treating it as observed.",
-      "gap": "Observed project payroll, employment, supplier purchases, building allocation and independently verified model inputs.",
       "derivation": {
         "method": "contribution_analysis",
         "model_version": "google-bridgeport-account-1.0.0",
@@ -1216,81 +1218,94 @@
       "notes": "PDF page 3; total channels must not be summed outside the declared total."
     },
     {
+      "estimate_id": "est_study_google_bridgeport_annualized_direct_payroll_projection",
       "project_id": "prj_study_im3_building_00844371952",
+      "metric_code": "study.modeled_annualized_direct_payroll_projection",
+      "label": "Annualized direct-wage projection floor",
+      "category": "operations",
+      "unit": "USD_per_year",
+      "measure_type": "flow",
       "basis": "modeled_synthesis",
-      "confidence_rationale": "The calculation is reproducible, but attribution, scope completeness or comparison design remains weak.",
-      "evidence_search": {
-        "direct_observation_status": "partial",
-        "source_projection_status": "available_separately",
-        "remaining_evidence_gap": "Observed household recipients, income definition, residence and a governed households unit."
-      },
-      "presentation": "modeled_not_observed_or_audited",
-      "reviewed_on": "2026-09-07",
-      "estimate_id": "est_study_google_bridgeport_households_2021_2023",
-      "metric_code": "study.modeled_household_income_equivalents",
-      "label": "Source-modeled household-income equivalents",
-      "category": "community",
-      "unit": "jobs",
-      "measure_type": "stock",
-      "value": 790,
+      "value": 4680000,
       "period": {
-        "kind": "source_year",
-        "year": 2023,
-        "label": "Source-reported annual average across 2021-2023"
+        "kind": "projection_horizon",
+        "report_date": "2016-09-27",
+        "horizon_years": 20,
+        "label": "Alabama Commerce 20-year Project Spike projection horizon"
       },
       "scope": {
-        "level": "state",
-        "label": "Google digital-infrastructure contribution in Alabama",
+        "level": "company_county",
+        "label": "Google Project Spike/Jackson County direct-wage projection",
         "county_fips": "01071",
         "inventory_allocation": "unallocated"
       },
       "interval": {
-        "kind": "reported_band",
-        "low": 787.5,
-        "central": 790,
-        "high": 792.5,
-        "interpretation": "Approximate source figure; rounding envelope only."
+        "kind": "point_estimate",
+        "low": 4680000,
+        "central": 4680000,
+        "high": 4680000,
+        "interpretation": "Deterministic annualized lower-bound threshold: greater than $93.6 million divided by 20 years; not an exact payroll forecast."
       },
-      "contribution_channel": "total",
+      "contribution_channel": "direct",
       "aggregation": {
-        "aggregation_id": "google_bridgeport_households",
+        "aggregation_id": "google_bridgeport_annualized_direct_payroll_projection",
         "role": "standalone",
         "overlap_policy": "do_not_sum_outside_declared_total"
       },
       "parameters": [
         {
-          "name": "reported_source_model_value",
-          "value": 790,
-          "unit": "jobs",
+          "name": "projected_direct_wages_floor",
+          "value": 93600000,
+          "unit": "USD",
           "provenance": {
             "kind": "source",
-            "reference_id": "src_study_google_alabama_impact_2024",
-            "detail": "Reported annual household equivalents"
+            "reference_id": "src_study_alabama_commerce_project_spike_2016",
+            "detail": "State-reported direct-wage projection exceeds $93.6 million over 20 years"
           },
-          "transformation": "Retained without extrapolation"
+          "transformation": "Divided by 20"
+        },
+        {
+          "name": "projection_horizon_years",
+          "value": 20,
+          "unit": "years",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_alabama_commerce_project_spike_2016",
+            "detail": "State-reported projection horizon"
+          },
+          "transformation": "Annualization denominator"
         }
       ],
       "confidence": "low",
-      "decision_relevance": "Preserves the reported equivalence without treatment as actual households or jobs.",
-      "gap": "Observed household recipients, income definition, residence and a governed households unit.",
+      "confidence_rationale": "The arithmetic and source horizon are explicit, but the source value is a lower-bound projection with no realized payroll, annual schedule or selected-building allocation.",
+      "decision_relevance": "Converts the state’s explicit cumulative wage projection floor to a comparable annual floor without treating it as actual payroll.",
+      "evidence_search": {
+        "direct_observation_status": "not_found",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Actual annual facility payroll, employees, occupations, contractor compensation, residence and projection methodology."
+      },
       "derivation": {
-        "method": "benchmark_application",
-        "model_version": "google-bridgeport-account-1.0.0",
-        "formula": "source-reported annual household-equivalent result",
+        "method": "allocation",
+        "model_version": "google-bridgeport-account-1.1.0",
+        "formula": "$93.6 million projected direct-wage floor ÷ 20 years = $4.68 million per year floor",
         "input_claim_ids": [],
         "input_source_ids": [
-          "src_study_google_alabama_impact_2024"
+          "src_study_alabama_commerce_project_spike_2016"
         ],
         "assumptions": [
-          "No extrapolation or building allocation is applied."
+          "The source projection is spread evenly only for presentation; actual annual timing is unknown.",
+          "Because the source says wages top $93.6 million, $4.68 million is a lower-bound threshold, not an exact central forecast."
         ]
       },
       "limitations": [
-        "Not a count of actual households, jobs or beneficiaries.",
-        "Statewide model scope and rounded value.",
-        "Schema lacks a households unit; catalog proposal is required."
+        "Source projection, not observed payroll.",
+        "Smooth annualization hides timing and wage escalation.",
+        "Direct-wage definition and employee/contractor coverage are not disclosed.",
+        "Unallocated to the selected building."
       ],
-      "notes": "Catalog proposal: add households as a modeled unit."
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "The separate $129 million 20-year economic-impact projection is not annualized because the source does not define its measure.",
+      "reviewed_on": "2026-09-07"
     },
     {
       "project_id": "prj_study_im3_building_00844371952",
@@ -1349,7 +1364,6 @@
       ],
       "confidence": "low",
       "decision_relevance": "Retains the source-modeled clean-energy contribution.",
-      "gap": "Observed renewable-project transactions and geographic allocation.",
       "derivation": {
         "method": "contribution_analysis",
         "model_version": "google-bridgeport-account-1.0.0",
@@ -1435,7 +1449,6 @@
       ],
       "confidence": "low",
       "decision_relevance": "Retains the source-modeled clean-energy labor-income contribution.",
-      "gap": "Observed renewable-project payroll and geographic allocation.",
       "derivation": {
         "method": "contribution_analysis",
         "model_version": "google-bridgeport-account-1.0.0",
@@ -1521,7 +1534,6 @@
       ],
       "confidence": "low",
       "decision_relevance": "Preserves the sponsor's directional metric without treating it as audited benefit.",
-      "gap": "Recipient outcomes, valuation method, counterfactual, duration and sensitivity inputs.",
       "derivation": {
         "method": "benchmark_application",
         "model_version": "google-bridgeport-account-1.0.0",
@@ -1598,7 +1610,6 @@
       ],
       "confidence": "low",
       "decision_relevance": "Preserves source-model sector composition.",
-      "gap": "Observed sector transactions and independently reproducible allocation.",
       "derivation": {
         "method": "benchmark_application",
         "model_version": "google-bridgeport-account-1.0.0",
@@ -1674,7 +1685,6 @@
       ],
       "confidence": "low",
       "decision_relevance": "Preserves source-model sector composition.",
-      "gap": "Observed sector transactions and independently reproducible allocation.",
       "derivation": {
         "method": "benchmark_application",
         "model_version": "google-bridgeport-account-1.0.0",
@@ -1750,7 +1760,6 @@
       ],
       "confidence": "low",
       "decision_relevance": "Preserves the descriptive growth comparison without attribution.",
-      "gap": "Observed sector transactions and independently reproducible allocation.",
       "derivation": {
         "method": "benchmark_application",
         "model_version": "google-bridgeport-account-1.0.0",
@@ -1826,7 +1835,6 @@
       ],
       "confidence": "low",
       "decision_relevance": "Preserves the descriptive growth comparison without attribution.",
-      "gap": "Observed sector transactions and independently reproducible allocation.",
       "derivation": {
         "method": "benchmark_application",
         "model_version": "google-bridgeport-account-1.0.0",
@@ -1902,7 +1910,6 @@
       ],
       "confidence": "medium",
       "decision_relevance": "Provides reported energy-efficiency context without estimating electricity use.",
-      "gap": "Facility electricity meter and building-level PUE.",
       "derivation": {
         "method": "engineering_estimate",
         "model_version": "google-bridgeport-account-1.0.0",
@@ -1979,7 +1986,6 @@
       ],
       "confidence": "medium",
       "decision_relevance": "Provides reported energy-efficiency context without estimating electricity use.",
-      "gap": "Facility electricity meter and building-level PUE.",
       "derivation": {
         "method": "engineering_estimate",
         "model_version": "google-bridgeport-account-1.0.0",
@@ -2056,7 +2062,6 @@
       ],
       "confidence": "medium",
       "decision_relevance": "Provides reported energy-efficiency context without estimating electricity use.",
-      "gap": "Facility electricity meter and building-level PUE.",
       "derivation": {
         "method": "engineering_estimate",
         "model_version": "google-bridgeport-account-1.0.0",
@@ -2133,7 +2138,6 @@
       ],
       "confidence": "medium",
       "decision_relevance": "Provides reported energy-efficiency context without estimating electricity use.",
-      "gap": "Facility electricity meter and building-level PUE.",
       "derivation": {
         "method": "engineering_estimate",
         "model_version": "google-bridgeport-account-1.0.0",
@@ -2210,7 +2214,6 @@
       ],
       "confidence": "medium",
       "decision_relevance": "Preserves hourly CFE context separately from annual renewable matching and load.",
-      "gap": "Metered hourly facility load, contract settlement and selected-building allocation.",
       "derivation": {
         "method": "benchmark_application",
         "model_version": "google-bridgeport-account-1.0.0",
@@ -2286,7 +2289,6 @@
       ],
       "confidence": "medium",
       "decision_relevance": "Preserves hourly CFE context separately from annual renewable matching and load.",
-      "gap": "Metered hourly facility load, contract settlement and selected-building allocation.",
       "derivation": {
         "method": "benchmark_application",
         "model_version": "google-bridgeport-account-1.0.0",
@@ -2362,7 +2364,6 @@
       ],
       "confidence": "medium",
       "decision_relevance": "Preserves hourly CFE context separately from annual renewable matching and load.",
-      "gap": "Metered hourly facility load, contract settlement and selected-building allocation.",
       "derivation": {
         "method": "benchmark_application",
         "model_version": "google-bridgeport-account-1.0.0",
@@ -2438,7 +2439,6 @@
       ],
       "confidence": "medium",
       "decision_relevance": "Preserves hourly CFE context separately from annual renewable matching and load.",
-      "gap": "Metered hourly facility load, contract settlement and selected-building allocation.",
       "derivation": {
         "method": "benchmark_application",
         "model_version": "google-bridgeport-account-1.0.0",
@@ -2514,7 +2514,6 @@
       ],
       "confidence": "medium",
       "decision_relevance": "Retains reported location resource use at native scope.",
-      "gap": "Selected-building meter, source/rate/payment and process allocation.",
       "derivation": {
         "method": "engineering_estimate",
         "model_version": "google-bridgeport-account-1.0.0",
@@ -2591,7 +2590,6 @@
       ],
       "confidence": "medium",
       "decision_relevance": "Retains reported location resource use at native scope.",
-      "gap": "Selected-building meter, source/rate/payment and process allocation.",
       "derivation": {
         "method": "engineering_estimate",
         "model_version": "google-bridgeport-account-1.0.0",
@@ -2668,7 +2666,6 @@
       ],
       "confidence": "medium",
       "decision_relevance": "Retains reported location resource use at native scope.",
-      "gap": "Selected-building meter, source/rate/payment and process allocation.",
       "derivation": {
         "method": "engineering_estimate",
         "model_version": "google-bridgeport-account-1.0.0",
@@ -2745,7 +2742,6 @@
       ],
       "confidence": "medium",
       "decision_relevance": "Retains reported location resource use at native scope.",
-      "gap": "Selected-building meter, source/rate/payment and process allocation.",
       "derivation": {
         "method": "engineering_estimate",
         "model_version": "google-bridgeport-account-1.0.0",
@@ -2844,7 +2840,6 @@
       ],
       "confidence": "medium",
       "decision_relevance": "Provides exact annual recurring project-linked tax arithmetic without asserting recipient distribution or net benefit.",
-      "gap": "Audited affiliate/account completeness, real-property accounts and recipient reconciliation.",
       "derivation": {
         "method": "allocation",
         "model_version": "google-bridgeport-account-1.0.0",
@@ -2950,7 +2945,6 @@
       ],
       "confidence": "medium",
       "decision_relevance": "Provides exact annual recurring project-linked tax arithmetic without asserting recipient distribution or net benefit.",
-      "gap": "Audited affiliate/account completeness, real-property accounts and recipient reconciliation.",
       "derivation": {
         "method": "allocation",
         "model_version": "google-bridgeport-account-1.0.0",
@@ -3056,7 +3050,6 @@
       ],
       "confidence": "medium",
       "decision_relevance": "Provides exact annual recurring project-linked tax arithmetic without asserting recipient distribution or net benefit.",
-      "gap": "Audited affiliate/account completeness, real-property accounts and recipient reconciliation.",
       "derivation": {
         "method": "allocation",
         "model_version": "google-bridgeport-account-1.0.0",
@@ -3162,7 +3155,6 @@
       ],
       "confidence": "medium",
       "decision_relevance": "Provides exact annual recurring project-linked tax arithmetic without asserting recipient distribution or net benefit.",
-      "gap": "Audited affiliate/account completeness, real-property accounts and recipient reconciliation.",
       "derivation": {
         "method": "allocation",
         "model_version": "google-bridgeport-account-1.0.0",
@@ -3268,7 +3260,6 @@
       ],
       "confidence": "medium",
       "decision_relevance": "Provides exact annual recurring project-linked tax arithmetic without asserting recipient distribution or net benefit.",
-      "gap": "Audited affiliate/account completeness, real-property accounts and recipient reconciliation.",
       "derivation": {
         "method": "allocation",
         "model_version": "google-bridgeport-account-1.0.0",
@@ -3374,7 +3365,6 @@
       ],
       "confidence": "medium",
       "decision_relevance": "Provides exact annual recurring project-linked tax arithmetic without asserting recipient distribution or net benefit.",
-      "gap": "Audited affiliate/account completeness, real-property accounts and recipient reconciliation.",
       "derivation": {
         "method": "allocation",
         "model_version": "google-bridgeport-account-1.0.0",
@@ -3445,20 +3435,41 @@
       },
       "parameters": [
         {
-          "name": "aggregated_2025_property_tax_paid",
-          "value": 2749035.14,
+          "name": "google_account_tax_paid",
+          "value": 3994.82,
           "unit": "USD",
           "provenance": {
             "kind": "claim",
             "reference_id": "clm_study_google_bridgeport_google_tax_paid_2025",
-            "detail": "Three-account total also reproduced in companion estimate"
+            "detail": "Google LLC account 151335 tax paid in 2025"
           },
-          "transformation": "Sets equal-cost threshold"
+          "transformation": "Included in three-account tax sum"
+        },
+        {
+          "name": "design_account_tax_paid",
+          "value": 1905083.88,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_google_bridgeport_design_tax_paid_2025",
+            "detail": "Design LLC account 151342 tax paid in 2025"
+          },
+          "transformation": "Included in three-account tax sum"
+        },
+        {
+          "name": "wiessner_account_tax_paid",
+          "value": 839956.44,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_google_bridgeport_wiessner_tax_paid_2025",
+            "detail": "Wiessner Enterprises LLC account 151344 tax paid in 2025"
+          },
+          "transformation": "Included in three-account tax sum and used as equal-cost threshold"
         }
       ],
       "confidence": "medium",
       "decision_relevance": "Shows the cost level that would exactly offset recurring 2025 paid taxes.",
-      "gap": "Observed same-recipient marginal public-service cost and complete tax reconciliation.",
       "derivation": {
         "method": "allocation",
         "model_version": "google-bridgeport-account-1.0.0",
