@@ -1,6 +1,6 @@
 # Cross-project synthesis reassessment contract
 
-8 September 2026. This contract governs the portfolio-wide reassessment of the 304 modeled syntheses published in `private-sector-study-1.60.0`. It implements the first gate of the pooled county-impact model without changing a source observation, treating a projection as realized, imputing a missing category, or fitting a pooled estimate.
+8 September 2026. This contract governs the portfolio-wide reassessment of the 304 modeled syntheses published in `private-sector-study-1.60.0`. It implements the first gate of the pooled county-impact model without changing a source observation, treating a projection as realized, imputing a missing category, or fitting a pooled estimate. The portfolio-policy adjudication is now complete; empirical calibration, numeric county-year aggregation, and pooled estimation remain blocked.
 
 ## Evidence hierarchy
 
@@ -24,6 +24,8 @@ Machine triage is an inventory aid, not an acceptance decision. Every synthesis 
 
 No disposition may be selected to make an account appear complete. Superseded records remain traceable through version history and successor identifiers.
 
+The completed adjudication retains 66 transparent project-level arithmetic aggregations as candidates for later metric-specific exposure aggregation, restricts 194 assumption-dependent results to project sensitivity or counterfactual roles, and directs 44 project-scoped county comparisons to the future county-year framework. A retained record is not yet a pooled input: all 66 remain blocked on overlap, geography, period, contribution-channel, and aggregation rules.
+
 ## Empirical calibration gate
 
 A metric family becomes eligible for parameter estimation only after review confirms:
@@ -37,6 +39,8 @@ A metric family becomes eligible for parameter estimation only after review conf
 - the resulting sample and exclusions are published.
 
 The preferred estimator is a robust empirical distribution or hierarchical partial-pooling model stratified by defensible project characteristics. Cross-validation is leave-one-project-out. Sparse families remain descriptive and do not generate imputations.
+
+The observed-data screen evaluates twelve same-project, same-year ratio definitions. It produced 235 reproducible derived observations. Five tax/value ratios clear the three-project count floor but remain descriptive because assessment bases and effective tax regimes are jurisdiction-specific. The remaining seven definitions—two other tax/value ratios and five operational or resource ratios—do not clear the independent-project floor under exact scope matching. Consequently, the current calibration library contains zero authorized transferable parameters. This is a failed calibration gate, not permission to fall back to the older transferred benchmarks.
 
 ## Pooled-exposure boundary
 

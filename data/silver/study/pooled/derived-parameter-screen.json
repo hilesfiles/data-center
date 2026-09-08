@@ -1,0 +1,4773 @@
+{
+  "schema_version": "1.0.0",
+  "artifact_version": "derived-parameter-screen-0.1.0",
+  "generated_at": "2026-09-08T17:29:22+00:00",
+  "source_release": "private-sector-study-1.60.0",
+  "status": "descriptive_derived_data_complete_no_calibration_authorized",
+  "policy": {
+    "reported_actual_only": true,
+    "same_project_year_required": true,
+    "exact_scope_identity_required": true,
+    "independent_project_minimum": 3,
+    "repeated_years_collapsed_to_project_medians": true,
+    "leave_one_project_out_required_for_future_estimation": true
+  },
+  "counts": {
+    "parameter_definitions": 12,
+    "derived_observations": 235,
+    "calibration_authorized_parameters": 0,
+    "status_counts": {
+      "blocked_insufficient_independent_projects": 7,
+      "descriptive_only_jurisdiction_specific": 5
+    }
+  },
+  "parameters": [
+    {
+      "parameter_code": "effective_tax_paid_per_account_assessed_value",
+      "label": "Property taxes paid per dollar of account assessed value",
+      "numerator_metric_code": "study.property_taxes_paid",
+      "denominator_metric_code": "study.account_assessed_value",
+      "unit": "ratio",
+      "transferability": "jurisdiction_specific",
+      "match_policy": "same_project_year_exact_scope_label_level_county_and_inventory_allocation",
+      "observation_count": 82,
+      "project_count": 11,
+      "project_ids": [
+        "prj_study_im3_building_00300974499",
+        "prj_study_im3_building_00472761713",
+        "prj_study_im3_building_00499403180",
+        "prj_study_im3_building_00500820007",
+        "prj_study_im3_building_00598261190",
+        "prj_study_im3_building_00838817907",
+        "prj_study_im3_building_00844371952",
+        "prj_study_im3_building_00978934687",
+        "prj_study_im3_building_01073720208",
+        "prj_study_im3_campus_00578435601",
+        "prj_study_im3_point_06685432442"
+      ],
+      "ambiguous_match_count": 0,
+      "project_median_distribution": {
+        "minimum": 0.009359629075,
+        "p25": 0.011296707304,
+        "median": 0.02064,
+        "p75": 0.032986920797,
+        "maximum": 0.118668000045
+      },
+      "calibration_status": "descriptive_only_jurisdiction_specific",
+      "calibration_authorized": false,
+      "screening_reason": "The ratio is derived reproducibly, but tax rates and assessment bases are jurisdiction-specific and cannot be transferred across projects as a national parameter."
+    },
+    {
+      "parameter_code": "effective_tax_billed_per_account_assessed_value",
+      "label": "Property taxes billed per dollar of account assessed value",
+      "numerator_metric_code": "study.property_taxes_billed",
+      "denominator_metric_code": "study.account_assessed_value",
+      "unit": "ratio",
+      "transferability": "jurisdiction_specific",
+      "match_policy": "same_project_year_exact_scope_label_level_county_and_inventory_allocation",
+      "observation_count": 49,
+      "project_count": 10,
+      "project_ids": [
+        "prj_study_im3_building_00300974499",
+        "prj_study_im3_building_00472761713",
+        "prj_study_im3_building_00598261190",
+        "prj_study_im3_building_00838817907",
+        "prj_study_im3_building_00844371952",
+        "prj_study_im3_building_00978934687",
+        "prj_study_im3_building_01073720208",
+        "prj_study_im3_campus_00231769626",
+        "prj_study_im3_campus_00578435601",
+        "prj_study_im3_point_06685432442"
+      ],
+      "ambiguous_match_count": 0,
+      "project_median_distribution": {
+        "minimum": 0.00198656662,
+        "p25": 0.012200924174,
+        "median": 0.018050749927,
+        "p75": 0.033428381002,
+        "maximum": 0.118668000045
+      },
+      "calibration_status": "descriptive_only_jurisdiction_specific",
+      "calibration_authorized": false,
+      "screening_reason": "The ratio is derived reproducibly, but tax rates and assessment bases are jurisdiction-specific and cannot be transferred across projects as a national parameter."
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_taxable_assessed_value",
+      "label": "Property taxes paid per dollar of taxable assessed value",
+      "numerator_metric_code": "study.property_taxes_paid",
+      "denominator_metric_code": "study.taxable_assessed_value",
+      "unit": "ratio",
+      "transferability": "jurisdiction_specific",
+      "match_policy": "same_project_year_exact_scope_label_level_county_and_inventory_allocation",
+      "observation_count": 0,
+      "project_count": 0,
+      "project_ids": [],
+      "ambiguous_match_count": 0,
+      "project_median_distribution": null,
+      "calibration_status": "blocked_insufficient_independent_projects",
+      "calibration_authorized": false,
+      "screening_reason": "Fewer than three independent projects have an unambiguous same-year, exact-scope numerator and denominator."
+    },
+    {
+      "parameter_code": "effective_tax_billed_per_taxable_assessed_value",
+      "label": "Property taxes billed per dollar of taxable assessed value",
+      "numerator_metric_code": "study.property_taxes_billed",
+      "denominator_metric_code": "study.taxable_assessed_value",
+      "unit": "ratio",
+      "transferability": "jurisdiction_specific",
+      "match_policy": "same_project_year_exact_scope_label_level_county_and_inventory_allocation",
+      "observation_count": 2,
+      "project_count": 2,
+      "project_ids": [
+        "prj_study_im3_building_00397914434",
+        "prj_study_im3_campus_00019988712"
+      ],
+      "ambiguous_match_count": 0,
+      "project_median_distribution": {
+        "minimum": 0.015709999495,
+        "p25": 0.015730699438,
+        "median": 0.015751399381,
+        "p75": 0.015772099324,
+        "maximum": 0.015792799267
+      },
+      "calibration_status": "blocked_insufficient_independent_projects",
+      "calibration_authorized": false,
+      "screening_reason": "Fewer than three independent projects have an unambiguous same-year, exact-scope numerator and denominator."
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_appraised_value",
+      "label": "Property taxes paid per dollar of appraised value",
+      "numerator_metric_code": "study.property_taxes_paid",
+      "denominator_metric_code": "study.appraised_property_value",
+      "unit": "ratio",
+      "transferability": "jurisdiction_specific",
+      "match_policy": "same_project_year_exact_scope_label_level_county_and_inventory_allocation",
+      "observation_count": 45,
+      "project_count": 3,
+      "project_ids": [
+        "prj_study_im3_building_00598261190",
+        "prj_study_im3_building_00844371952",
+        "prj_study_im3_point_09190480200"
+      ],
+      "ambiguous_match_count": 0,
+      "project_median_distribution": {
+        "minimum": 0.002600000216,
+        "p25": 0.012640999775,
+        "median": 0.022681999334,
+        "p75": 0.026174500329,
+        "maximum": 0.029667001323
+      },
+      "calibration_status": "descriptive_only_jurisdiction_specific",
+      "calibration_authorized": false,
+      "screening_reason": "The ratio is derived reproducibly, but tax rates and assessment bases are jurisdiction-specific and cannot be transferred across projects as a national parameter."
+    },
+    {
+      "parameter_code": "effective_tax_billed_per_appraised_value",
+      "label": "Property taxes billed per dollar of appraised value",
+      "numerator_metric_code": "study.property_taxes_billed",
+      "denominator_metric_code": "study.appraised_property_value",
+      "unit": "ratio",
+      "transferability": "jurisdiction_specific",
+      "match_policy": "same_project_year_exact_scope_label_level_county_and_inventory_allocation",
+      "observation_count": 34,
+      "project_count": 4,
+      "project_ids": [
+        "prj_study_im3_building_00598261190",
+        "prj_study_im3_building_00844371952",
+        "prj_study_im3_building_00844389014",
+        "prj_study_im3_campus_00578435601"
+      ],
+      "ambiguous_match_count": 0,
+      "project_median_distribution": {
+        "minimum": 0.0,
+        "p25": 0.0,
+        "median": 0.001506270119,
+        "p75": 0.009676155509,
+        "maximum": 0.029667001323
+      },
+      "calibration_status": "descriptive_only_jurisdiction_specific",
+      "calibration_authorized": false,
+      "screening_reason": "The ratio is derived reproducibly, but tax rates and assessment bases are jurisdiction-specific and cannot be transferred across projects as a national parameter."
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_taxable_property_value",
+      "label": "Property taxes paid per dollar of taxable property value",
+      "numerator_metric_code": "study.property_taxes_paid",
+      "denominator_metric_code": "study.taxable_property_value",
+      "unit": "ratio",
+      "transferability": "jurisdiction_specific",
+      "match_policy": "same_project_year_exact_scope_label_level_county_and_inventory_allocation",
+      "observation_count": 23,
+      "project_count": 4,
+      "project_ids": [
+        "prj_study_im3_building_00377585075",
+        "prj_study_im3_building_00610827836",
+        "prj_study_im3_building_01073720208",
+        "prj_study_im3_point_06685432442"
+      ],
+      "ambiguous_match_count": 36,
+      "project_median_distribution": {
+        "minimum": 0.003275870176,
+        "p25": 0.012145866279,
+        "median": 0.026389778382,
+        "p75": 0.045147208547,
+        "maximum": 0.067557758837
+      },
+      "calibration_status": "descriptive_only_jurisdiction_specific",
+      "calibration_authorized": false,
+      "screening_reason": "The ratio is derived reproducibly, but tax rates and assessment bases are jurisdiction-specific and cannot be transferred across projects as a national parameter."
+    },
+    {
+      "parameter_code": "electricity_use_per_operating_mw",
+      "label": "Annual electricity use per operating MW",
+      "numerator_metric_code": "study.annual_electricity_use",
+      "denominator_metric_code": "study.operating_power_capacity",
+      "unit": "kWh_per_year_per_MW",
+      "transferability": "operational_intensity",
+      "match_policy": "same_project_year_exact_scope_label_level_county_and_inventory_allocation",
+      "observation_count": 0,
+      "project_count": 0,
+      "project_ids": [],
+      "ambiguous_match_count": 0,
+      "project_median_distribution": null,
+      "calibration_status": "blocked_insufficient_independent_projects",
+      "calibration_authorized": false,
+      "screening_reason": "Fewer than three independent projects have an unambiguous same-year, exact-scope numerator and denominator."
+    },
+    {
+      "parameter_code": "water_withdrawal_per_kwh",
+      "label": "Annual water withdrawal per kWh of annual electricity use",
+      "numerator_metric_code": "study.annual_water_withdrawal",
+      "denominator_metric_code": "study.annual_electricity_use",
+      "unit": "gallons_per_kWh",
+      "transferability": "operational_intensity",
+      "match_policy": "same_project_year_exact_scope_label_level_county_and_inventory_allocation",
+      "observation_count": 0,
+      "project_count": 0,
+      "project_ids": [],
+      "ambiguous_match_count": 0,
+      "project_median_distribution": null,
+      "calibration_status": "blocked_insufficient_independent_projects",
+      "calibration_authorized": false,
+      "screening_reason": "Fewer than three independent projects have an unambiguous same-year, exact-scope numerator and denominator."
+    },
+    {
+      "parameter_code": "water_consumption_per_kwh",
+      "label": "Annual water consumption per kWh of annual electricity use",
+      "numerator_metric_code": "study.annual_water_consumption",
+      "denominator_metric_code": "study.annual_electricity_use",
+      "unit": "gallons_per_kWh",
+      "transferability": "operational_intensity",
+      "match_policy": "same_project_year_exact_scope_label_level_county_and_inventory_allocation",
+      "observation_count": 0,
+      "project_count": 0,
+      "project_ids": [],
+      "ambiguous_match_count": 0,
+      "project_median_distribution": null,
+      "calibration_status": "blocked_insufficient_independent_projects",
+      "calibration_authorized": false,
+      "screening_reason": "Fewer than three independent projects have an unambiguous same-year, exact-scope numerator and denominator."
+    },
+    {
+      "parameter_code": "operating_employees_per_mw",
+      "label": "Operating employees per operating MW",
+      "numerator_metric_code": "study.operating_employees",
+      "denominator_metric_code": "study.operating_power_capacity",
+      "unit": "employees_per_MW",
+      "transferability": "operational_intensity",
+      "match_policy": "same_project_year_exact_scope_label_level_county_and_inventory_allocation",
+      "observation_count": 0,
+      "project_count": 0,
+      "project_ids": [],
+      "ambiguous_match_count": 0,
+      "project_median_distribution": null,
+      "calibration_status": "blocked_insufficient_independent_projects",
+      "calibration_authorized": false,
+      "screening_reason": "Fewer than three independent projects have an unambiguous same-year, exact-scope numerator and denominator."
+    },
+    {
+      "parameter_code": "operating_employees_per_100k_square_feet",
+      "label": "Operating employees per 100,000 square feet",
+      "numerator_metric_code": "study.operating_employees",
+      "denominator_metric_code": "study.operating_property_floor_area",
+      "unit": "employees_per_100000_square_feet",
+      "transferability": "operational_intensity",
+      "match_policy": "same_project_year_exact_scope_label_level_county_and_inventory_allocation",
+      "observation_count": 0,
+      "project_count": 0,
+      "project_ids": [],
+      "ambiguous_match_count": 0,
+      "project_median_distribution": null,
+      "calibration_status": "blocked_insufficient_independent_projects",
+      "calibration_authorized": false,
+      "screening_reason": "Fewer than three independent projects have an unambiguous same-year, exact-scope numerator and denominator."
+    }
+  ],
+  "observations": [
+    {
+      "parameter_code": "effective_tax_billed_per_account_assessed_value",
+      "project_id": "prj_study_im3_building_00300974499",
+      "year": 2023,
+      "scope_level": "company_county",
+      "scope_label": "Apple Inc. business personal property, Treasurer account 993-72-704 / assessor account 9372704, 3740 S Signal Butte Road",
+      "county_fips": "04013",
+      "inventory_allocation": "unallocated",
+      "value": 0.094245999652,
+      "unit": "ratio",
+      "numerator_value": 1354526.88,
+      "denominator_value": 14372248.0,
+      "numerator_claim_ids": [
+        "clm_study_apple_mesa_bpp_property_taxes_billed_2023"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_apple_mesa_bpp_assessed_value_2023"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_billed_per_account_assessed_value",
+      "project_id": "prj_study_im3_building_00300974499",
+      "year": 2023,
+      "scope_level": "company_county",
+      "scope_label": "Platypus Development LLC real-property parcel 304-33-005S, Apple-associated computer center at 3740 S Signal Butte Road",
+      "county_fips": "04013",
+      "inventory_allocation": "unallocated",
+      "value": 0.095782001055,
+      "unit": "ratio",
+      "numerator_value": 878242.6,
+      "denominator_value": 9169182.0,
+      "numerator_claim_ids": [
+        "clm_study_apple_mesa_real_property_taxes_billed_2023"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_apple_mesa_real_assessed_value_2023"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_billed_per_account_assessed_value",
+      "project_id": "prj_study_im3_building_00300974499",
+      "year": 2024,
+      "scope_level": "company_county",
+      "scope_label": "Apple Inc. business personal property, Treasurer account 993-72-704 / assessor account 9372704, 3740 S Signal Butte Road",
+      "county_fips": "04013",
+      "inventory_allocation": "unallocated",
+      "value": 0.089231001991,
+      "unit": "ratio",
+      "numerator_value": 1052763.78,
+      "denominator_value": 11798184.0,
+      "numerator_claim_ids": [
+        "clm_study_apple_mesa_bpp_property_taxes_billed_2024"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_apple_mesa_bpp_assessed_value_2024"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_billed_per_account_assessed_value",
+      "project_id": "prj_study_im3_building_00300974499",
+      "year": 2024,
+      "scope_level": "company_county",
+      "scope_label": "Platypus Development LLC real-property parcel 304-33-005S, Apple-associated computer center at 3740 S Signal Butte Road",
+      "county_fips": "04013",
+      "inventory_allocation": "unallocated",
+      "value": 0.090701003496,
+      "unit": "ratio",
+      "numerator_value": 873236.7,
+      "denominator_value": 9627641.0,
+      "numerator_claim_ids": [
+        "clm_study_apple_mesa_real_property_taxes_billed_2024"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_apple_mesa_real_assessed_value_2024"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_billed_per_account_assessed_value",
+      "project_id": "prj_study_im3_building_00472761713",
+      "year": 2022,
+      "scope_level": "company_county",
+      "scope_label": "NYSE Group, Inc. / ICE Global Network parcel, 1700 MacArthur Boulevard, block 139 lot 4",
+      "county_fips": "34003",
+      "inventory_allocation": "unallocated",
+      "value": 0.01972,
+      "unit": "ratio",
+      "numerator_value": 2011440.0,
+      "denominator_value": 102000000.0,
+      "numerator_claim_ids": [
+        "clm_study_nyse_mahwah_property_taxes_billed_2022"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_nyse_mahwah_assessed_value_2022"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_billed_per_account_assessed_value",
+      "project_id": "prj_study_im3_building_00472761713",
+      "year": 2023,
+      "scope_level": "company_county",
+      "scope_label": "NYSE Group, Inc. / ICE Global Network parcel, 1700 MacArthur Boulevard, block 139 lot 4",
+      "county_fips": "34003",
+      "inventory_allocation": "unallocated",
+      "value": 0.02037,
+      "unit": "ratio",
+      "numerator_value": 2077740.0,
+      "denominator_value": 102000000.0,
+      "numerator_claim_ids": [
+        "clm_study_nyse_mahwah_property_taxes_billed_2023"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_nyse_mahwah_assessed_value_2023"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_billed_per_account_assessed_value",
+      "project_id": "prj_study_im3_building_00472761713",
+      "year": 2024,
+      "scope_level": "company_county",
+      "scope_label": "NYSE Group, Inc. / ICE Global Network parcel, 1700 MacArthur Boulevard, block 139 lot 4",
+      "county_fips": "34003",
+      "inventory_allocation": "unallocated",
+      "value": 0.02064,
+      "unit": "ratio",
+      "numerator_value": 2105280.0,
+      "denominator_value": 102000000.0,
+      "numerator_claim_ids": [
+        "clm_study_nyse_mahwah_property_taxes_billed_2024"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_nyse_mahwah_assessed_value_2024"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_billed_per_account_assessed_value",
+      "project_id": "prj_study_im3_building_00598261190",
+      "year": 2021,
+      "scope_level": "company_county",
+      "scope_label": "HMC Data Center 2 LLC / State Farm parcel, 24400 W Valley Parkway, quick ref R662349",
+      "county_fips": "20091",
+      "inventory_allocation": "unallocated",
+      "value": 0.125009999937,
+      "unit": "ratio",
+      "numerator_value": 2010360.94,
+      "denominator_value": 16081601.0,
+      "numerator_claim_ids": [
+        "clm_study_state_farm_olathe_property_taxes_billed_2021"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_state_farm_olathe_assessed_value_2021"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_billed_per_account_assessed_value",
+      "project_id": "prj_study_im3_building_00598261190",
+      "year": 2022,
+      "scope_level": "company_county",
+      "scope_label": "HMC Data Center 2 LLC / State Farm parcel, 24400 W Valley Parkway, quick ref R662349",
+      "county_fips": "20091",
+      "inventory_allocation": "unallocated",
+      "value": 0.120319000058,
+      "unit": "ratio",
+      "numerator_value": 1908311.8,
+      "denominator_value": 15860436.0,
+      "numerator_claim_ids": [
+        "clm_study_state_farm_olathe_property_taxes_billed_2022"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_state_farm_olathe_assessed_value_2022"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_billed_per_account_assessed_value",
+      "project_id": "prj_study_im3_building_00598261190",
+      "year": 2023,
+      "scope_level": "company_county",
+      "scope_label": "HMC Data Center 2 LLC / State Farm parcel, 24400 W Valley Parkway, quick ref R662349",
+      "county_fips": "20091",
+      "inventory_allocation": "unallocated",
+      "value": 0.117017000031,
+      "unit": "ratio",
+      "numerator_value": 2352477.94,
+      "denominator_value": 20103728.0,
+      "numerator_claim_ids": [
+        "clm_study_state_farm_olathe_property_taxes_billed_2023"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_state_farm_olathe_assessed_value_2023"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_billed_per_account_assessed_value",
+      "project_id": "prj_study_im3_building_00598261190",
+      "year": 2024,
+      "scope_level": "company_county",
+      "scope_label": "HMC Data Center 2 LLC / State Farm parcel, 24400 W Valley Parkway, quick ref R662349",
+      "county_fips": "20091",
+      "inventory_allocation": "unallocated",
+      "value": 0.116448000155,
+      "unit": "ratio",
+      "numerator_value": 2661273.6,
+      "denominator_value": 22853751.0,
+      "numerator_claim_ids": [
+        "clm_study_state_farm_olathe_property_taxes_billed_2024"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_state_farm_olathe_assessed_value_2024"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_billed_per_account_assessed_value",
+      "project_id": "prj_study_im3_building_00838817907",
+      "year": 2013,
+      "scope_level": "campus",
+      "scope_label": "Real-property parcel 141-061-08, 1805 Center Park Drive; TierPoint CL4 tenant-occupied building",
+      "county_fips": "37119",
+      "inventory_allocation": "unallocated",
+      "value": 0.012843997004,
+      "unit": "ratio",
+      "numerator_value": 22294.61,
+      "denominator_value": 1735800.0,
+      "numerator_claim_ids": [
+        "clm_study_tierpoint_cl4_property_taxes_billed_2013"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_tierpoint_cl4_assessed_value_2013"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_billed_per_account_assessed_value",
+      "project_id": "prj_study_im3_building_00838817907",
+      "year": 2014,
+      "scope_level": "campus",
+      "scope_label": "Real-property parcel 141-061-08, 1805 Center Park Drive; TierPoint CL4 tenant-occupied building",
+      "county_fips": "37119",
+      "inventory_allocation": "unallocated",
+      "value": 0.012843997004,
+      "unit": "ratio",
+      "numerator_value": 22294.61,
+      "denominator_value": 1735800.0,
+      "numerator_claim_ids": [
+        "clm_study_tierpoint_cl4_property_taxes_billed_2014"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_tierpoint_cl4_assessed_value_2014"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_billed_per_account_assessed_value",
+      "project_id": "prj_study_im3_building_00838817907",
+      "year": 2015,
+      "scope_level": "campus",
+      "scope_label": "Real-property parcel 141-061-08, 1805 Center Park Drive; TierPoint CL4 tenant-occupied building",
+      "county_fips": "37119",
+      "inventory_allocation": "unallocated",
+      "value": 0.012943997004,
+      "unit": "ratio",
+      "numerator_value": 22468.19,
+      "denominator_value": 1735800.0,
+      "numerator_claim_ids": [
+        "clm_study_tierpoint_cl4_property_taxes_billed_2015"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_tierpoint_cl4_assessed_value_2015"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_billed_per_account_assessed_value",
+      "project_id": "prj_study_im3_building_00838817907",
+      "year": 2016,
+      "scope_level": "campus",
+      "scope_label": "Real-property parcel 141-061-08, 1805 Center Park Drive; TierPoint CL4 tenant-occupied building",
+      "county_fips": "37119",
+      "inventory_allocation": "unallocated",
+      "value": 0.012943997004,
+      "unit": "ratio",
+      "numerator_value": 22468.19,
+      "denominator_value": 1735800.0,
+      "numerator_claim_ids": [
+        "clm_study_tierpoint_cl4_property_taxes_billed_2016"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_tierpoint_cl4_assessed_value_2016"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_billed_per_account_assessed_value",
+      "project_id": "prj_study_im3_building_00838817907",
+      "year": 2017,
+      "scope_level": "campus",
+      "scope_label": "Real-property parcel 141-061-08, 1805 Center Park Drive; TierPoint CL4 tenant-occupied building",
+      "county_fips": "37119",
+      "inventory_allocation": "unallocated",
+      "value": 0.012943997004,
+      "unit": "ratio",
+      "numerator_value": 22468.19,
+      "denominator_value": 1735800.0,
+      "numerator_claim_ids": [
+        "clm_study_tierpoint_cl4_property_taxes_billed_2017"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_tierpoint_cl4_assessed_value_2017"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_billed_per_account_assessed_value",
+      "project_id": "prj_study_im3_building_00838817907",
+      "year": 2018,
+      "scope_level": "campus",
+      "scope_label": "Real-property parcel 141-061-08, 1805 Center Park Drive; TierPoint CL4 tenant-occupied building",
+      "county_fips": "37119",
+      "inventory_allocation": "unallocated",
+      "value": 0.013118999885,
+      "unit": "ratio",
+      "numerator_value": 22771.96,
+      "denominator_value": 1735800.0,
+      "numerator_claim_ids": [
+        "clm_study_tierpoint_cl4_property_taxes_billed_2018"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_tierpoint_cl4_assessed_value_2018"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_billed_per_account_assessed_value",
+      "project_id": "prj_study_im3_building_00838817907",
+      "year": 2019,
+      "scope_level": "campus",
+      "scope_label": "Real-property parcel 141-061-08, 1805 Center Park Drive; TierPoint CL4 tenant-occupied building",
+      "county_fips": "37119",
+      "inventory_allocation": "unallocated",
+      "value": 0.00965,
+      "unit": "ratio",
+      "numerator_value": 63684.21,
+      "denominator_value": 6599400.0,
+      "numerator_claim_ids": [
+        "clm_study_tierpoint_cl4_property_taxes_billed_2019"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_tierpoint_cl4_assessed_value_2019"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_billed_per_account_assessed_value",
+      "project_id": "prj_study_im3_building_00838817907",
+      "year": 2020,
+      "scope_level": "campus",
+      "scope_label": "Real-property parcel 141-061-08, 1805 Center Park Drive; TierPoint CL4 tenant-occupied building",
+      "county_fips": "37119",
+      "inventory_allocation": "unallocated",
+      "value": 0.00965,
+      "unit": "ratio",
+      "numerator_value": 63684.21,
+      "denominator_value": 6599400.0,
+      "numerator_claim_ids": [
+        "clm_study_tierpoint_cl4_property_taxes_billed_2020"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_tierpoint_cl4_assessed_value_2020"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_billed_per_account_assessed_value",
+      "project_id": "prj_study_im3_building_00838817907",
+      "year": 2021,
+      "scope_level": "campus",
+      "scope_label": "Real-property parcel 141-061-08, 1805 Center Park Drive; TierPoint CL4 tenant-occupied building",
+      "county_fips": "37119",
+      "inventory_allocation": "unallocated",
+      "value": 0.00965,
+      "unit": "ratio",
+      "numerator_value": 63684.21,
+      "denominator_value": 6599400.0,
+      "numerator_claim_ids": [
+        "clm_study_tierpoint_cl4_property_taxes_billed_2021"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_tierpoint_cl4_assessed_value_2021"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_billed_per_account_assessed_value",
+      "project_id": "prj_study_im3_building_00838817907",
+      "year": 2022,
+      "scope_level": "campus",
+      "scope_label": "Real-property parcel 141-061-08, 1805 Center Park Drive; TierPoint CL4 tenant-occupied building",
+      "county_fips": "37119",
+      "inventory_allocation": "unallocated",
+      "value": 0.00965,
+      "unit": "ratio",
+      "numerator_value": 63684.21,
+      "denominator_value": 6599400.0,
+      "numerator_claim_ids": [
+        "clm_study_tierpoint_cl4_property_taxes_billed_2022"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_tierpoint_cl4_assessed_value_2022"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_billed_per_account_assessed_value",
+      "project_id": "prj_study_im3_building_00838817907",
+      "year": 2023,
+      "scope_level": "campus",
+      "scope_label": "Real-property parcel 141-061-08, 1805 Center Park Drive; TierPoint CL4 tenant-occupied building",
+      "county_fips": "37119",
+      "inventory_allocation": "unallocated",
+      "value": 0.007335000125,
+      "unit": "ratio",
+      "numerator_value": 88042.74,
+      "denominator_value": 12003100.0,
+      "numerator_claim_ids": [
+        "clm_study_tierpoint_cl4_property_taxes_billed_2023"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_tierpoint_cl4_assessed_value_2023"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_billed_per_account_assessed_value",
+      "project_id": "prj_study_im3_building_00838817907",
+      "year": 2024,
+      "scope_level": "campus",
+      "scope_label": "Real-property parcel 141-061-08, 1805 Center Park Drive; TierPoint CL4 tenant-occupied building",
+      "county_fips": "37119",
+      "inventory_allocation": "unallocated",
+      "value": 0.007572000567,
+      "unit": "ratio",
+      "numerator_value": 90887.48,
+      "denominator_value": 12003100.0,
+      "numerator_claim_ids": [
+        "clm_study_tierpoint_cl4_property_taxes_billed_2024"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_tierpoint_cl4_assessed_value_2024"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_billed_per_account_assessed_value",
+      "project_id": "prj_study_im3_building_00844371952",
+      "year": 2020,
+      "scope_level": "campus",
+      "scope_label": "Eight Wiessner real parcels in account 98353",
+      "county_fips": "01071",
+      "inventory_allocation": "unallocated",
+      "value": 0.03,
+      "unit": "ratio",
+      "numerator_value": 542938.8,
+      "denominator_value": 18097960.0,
+      "numerator_claim_ids": [
+        "clm_study_google_bridgeport_wiessner_real_tax_billed_2020"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_google_bridgeport_wiessner_real_assessed_2020"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_billed_per_account_assessed_value",
+      "project_id": "prj_study_im3_building_00844371952",
+      "year": 2021,
+      "scope_level": "campus",
+      "scope_label": "Eight Wiessner real parcels in account 98353",
+      "county_fips": "01071",
+      "inventory_allocation": "unallocated",
+      "value": 0.01506619638,
+      "unit": "ratio",
+      "numerator_value": 386485.0,
+      "denominator_value": 25652460.0,
+      "numerator_claim_ids": [
+        "clm_study_google_bridgeport_wiessner_real_tax_billed_2021"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_google_bridgeport_wiessner_real_assessed_2021"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_billed_per_account_assessed_value",
+      "project_id": "prj_study_im3_building_00844371952",
+      "year": 2022,
+      "scope_level": "campus",
+      "scope_label": "Eight Wiessner real parcels in account 98353",
+      "county_fips": "01071",
+      "inventory_allocation": "unallocated",
+      "value": 0.015061617163,
+      "unit": "ratio",
+      "numerator_value": 415081.3,
+      "denominator_value": 27558880.0,
+      "numerator_claim_ids": [
+        "clm_study_google_bridgeport_wiessner_real_tax_billed_2022"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_google_bridgeport_wiessner_real_assessed_2022"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_billed_per_account_assessed_value",
+      "project_id": "prj_study_im3_building_00844371952",
+      "year": 2023,
+      "scope_level": "campus",
+      "scope_label": "Eight Wiessner real parcels in account 98353",
+      "county_fips": "01071",
+      "inventory_allocation": "unallocated",
+      "value": 0.015062701191,
+      "unit": "ratio",
+      "numerator_value": 415141.3,
+      "denominator_value": 27560880.0,
+      "numerator_claim_ids": [
+        "clm_study_google_bridgeport_wiessner_real_tax_billed_2023"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_google_bridgeport_wiessner_real_assessed_2023"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_billed_per_account_assessed_value",
+      "project_id": "prj_study_im3_building_00844371952",
+      "year": 2024,
+      "scope_level": "campus",
+      "scope_label": "Eight Wiessner real parcels in account 98353",
+      "county_fips": "01071",
+      "inventory_allocation": "unallocated",
+      "value": 0.015062701191,
+      "unit": "ratio",
+      "numerator_value": 415141.3,
+      "denominator_value": 27560880.0,
+      "numerator_claim_ids": [
+        "clm_study_google_bridgeport_wiessner_real_tax_billed_2024"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_google_bridgeport_wiessner_real_assessed_2024"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_billed_per_account_assessed_value",
+      "project_id": "prj_study_im3_building_00978934687",
+      "year": 2024,
+      "scope_level": "company_county",
+      "scope_label": "DX Hammond JV LLC personal-property account 45-123-00809-00, 100 Digital Crossroad Drive",
+      "county_fips": "18089",
+      "inventory_allocation": "unallocated",
+      "value": 0.032103999814,
+      "unit": "ratio",
+      "numerator_value": 1020970.76,
+      "denominator_value": 31801980.0,
+      "numerator_claim_ids": [
+        "clm_study_dx_hammond_jv_personal_taxes_billed_2024"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_dx_hammond_jv_personal_assessed_value_2024"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_billed_per_account_assessed_value",
+      "project_id": "prj_study_im3_building_00978934687",
+      "year": 2024,
+      "scope_level": "company_county",
+      "scope_label": "Digital Crossroad DX-1 leasehold parcel 45-01-36-176-005.000-023, 100 Digital Crossroads Drive",
+      "county_fips": "18089",
+      "inventory_allocation": "unallocated",
+      "value": 0.032104000961,
+      "unit": "ratio",
+      "numerator_value": 641685.14,
+      "denominator_value": 19987700.0,
+      "numerator_claim_ids": [
+        "clm_study_digital_crossroad_property_taxes_billed_2024"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_digital_crossroad_assessed_value_2024"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_billed_per_account_assessed_value",
+      "project_id": "prj_study_im3_building_01073720208",
+      "year": 2024,
+      "scope_level": "company_county",
+      "scope_label": "Tetra LLC industrial parcel 744411476005, 1430 Veterans Memorial Highway",
+      "county_fips": "19155",
+      "inventory_allocation": "unallocated",
+      "value": 0.033869841207,
+      "unit": "ratio",
+      "numerator_value": 2063852.0,
+      "denominator_value": 60934800.0,
+      "numerator_claim_ids": [
+        "clm_study_google_tetra_property_taxes_billed_2024"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_google_tetra_assessed_value_2024"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_billed_per_account_assessed_value",
+      "project_id": "prj_study_im3_campus_00231769626",
+      "year": 2023,
+      "scope_level": "company_county",
+      "scope_label": "DESIGN LLC / Wasco County taxpayer party 130136",
+      "county_fips": "41065",
+      "inventory_allocation": "unallocated",
+      "value": 0.001751876086,
+      "unit": "ratio",
+      "numerator_value": 1729539.14,
+      "denominator_value": 987249700.0,
+      "numerator_claim_ids": [
+        "clm_study_wasco_130136_property_taxes_billed_2023"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_wasco_130136_account_assessed_value_2023"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_billed_per_account_assessed_value",
+      "project_id": "prj_study_im3_campus_00231769626",
+      "year": 2023,
+      "scope_level": "company_county",
+      "scope_label": "GOOGLE LLC / Wasco County taxpayer party 155421",
+      "county_fips": "41065",
+      "inventory_allocation": "unallocated",
+      "value": 0.003412806053,
+      "unit": "ratio",
+      "numerator_value": 3100433.28,
+      "denominator_value": 908470400.0,
+      "numerator_claim_ids": [
+        "clm_study_wasco_155421_property_taxes_billed_2023"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_wasco_155421_account_assessed_value_2023"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_billed_per_account_assessed_value",
+      "project_id": "prj_study_im3_campus_00231769626",
+      "year": 2024,
+      "scope_level": "company_county",
+      "scope_label": "DESIGN LLC / Wasco County taxpayer party 130136",
+      "county_fips": "41065",
+      "inventory_allocation": "unallocated",
+      "value": 0.001260338671,
+      "unit": "ratio",
+      "numerator_value": 1716154.44,
+      "denominator_value": 1361661337.0,
+      "numerator_claim_ids": [
+        "clm_study_wasco_130136_property_taxes_billed_2024"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_wasco_130136_account_assessed_value_2024"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_billed_per_account_assessed_value",
+      "project_id": "prj_study_im3_campus_00231769626",
+      "year": 2024,
+      "scope_level": "company_county",
+      "scope_label": "GOOGLE LLC / Wasco County taxpayer party 155421",
+      "county_fips": "41065",
+      "inventory_allocation": "unallocated",
+      "value": 0.002221257153,
+      "unit": "ratio",
+      "numerator_value": 1980648.69,
+      "denominator_value": 891679150.0,
+      "numerator_claim_ids": [
+        "clm_study_wasco_155421_property_taxes_billed_2024"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_wasco_155421_account_assessed_value_2024"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_billed_per_account_assessed_value",
+      "project_id": "prj_study_im3_campus_00578435601",
+      "year": 2023,
+      "scope_level": "campus",
+      "scope_label": "Development Authority / Google personal-property account P79020 at 300 Riverside Parkway",
+      "county_fips": "13097",
+      "inventory_allocation": "unallocated",
+      "value": 0.0,
+      "unit": "ratio",
+      "numerator_value": 0.0,
+      "denominator_value": 173177910.0,
+      "numerator_claim_ids": [
+        "clm_study_google_douglas_p79020_property_taxes_billed_2023"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_google_douglas_p79020_exempt_assessed_2023"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_billed_per_account_assessed_value",
+      "project_id": "prj_study_im3_campus_00578435601",
+      "year": 2023,
+      "scope_level": "campus",
+      "scope_label": "Google Inc. personal-property account P88150 at 300 Riverside Parkway",
+      "county_fips": "13097",
+      "inventory_allocation": "unallocated",
+      "value": 0.031802999834,
+      "unit": "ratio",
+      "numerator_value": 365273.45,
+      "denominator_value": 11485503.0,
+      "numerator_claim_ids": [
+        "clm_study_google_douglas_p88150_property_taxes_billed_2023"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_google_douglas_p88150_assessed_2023"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_billed_per_account_assessed_value",
+      "project_id": "prj_study_im3_campus_00578435601",
+      "year": 2024,
+      "scope_level": "campus",
+      "scope_label": "Development Authority / Google personal-property account P79020 at 300 Riverside Parkway",
+      "county_fips": "13097",
+      "inventory_allocation": "unallocated",
+      "value": 0.0,
+      "unit": "ratio",
+      "numerator_value": 0.0,
+      "denominator_value": 127839404.0,
+      "numerator_claim_ids": [
+        "clm_study_google_douglas_p79020_property_taxes_billed_2024"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_google_douglas_p79020_exempt_assessed_2024"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_billed_per_account_assessed_value",
+      "project_id": "prj_study_im3_campus_00578435601",
+      "year": 2024,
+      "scope_level": "campus",
+      "scope_label": "Google Inc. personal-property account P88150 at 300 Riverside Parkway",
+      "county_fips": "13097",
+      "inventory_allocation": "unallocated",
+      "value": 0.031462999709,
+      "unit": "ratio",
+      "numerator_value": 346072.42,
+      "denominator_value": 10999346.0,
+      "numerator_claim_ids": [
+        "clm_study_google_douglas_p88150_property_taxes_billed_2024"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_google_douglas_p88150_assessed_2024"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_billed_per_account_assessed_value",
+      "project_id": "prj_study_im3_point_06685432442",
+      "year": 2016,
+      "scope_level": "campus",
+      "scope_label": "Switch Ltd. personal-property account CM001611, 1 Superloop Circle, Citadel campus",
+      "county_fips": "32029",
+      "inventory_allocation": "unallocated",
+      "value": 0.471182700265,
+      "unit": "ratio",
+      "numerator_value": 1964.29,
+      "denominator_value": 4168.85,
+      "numerator_claim_ids": [
+        "clm_study_switch_citadel_property_taxes_billed_2016"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_switch_citadel_assessed_value_2016"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_billed_per_account_assessed_value",
+      "project_id": "prj_study_im3_point_06685432442",
+      "year": 2017,
+      "scope_level": "campus",
+      "scope_label": "Switch Ltd. personal-property account CM001611, 1 Superloop Circle, Citadel campus",
+      "county_fips": "32029",
+      "inventory_allocation": "unallocated",
+      "value": 2.077101428208,
+      "unit": "ratio",
+      "numerator_value": 2857.78,
+      "denominator_value": 1375.85,
+      "numerator_claim_ids": [
+        "clm_study_switch_citadel_property_taxes_billed_2017"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_switch_citadel_assessed_value_2017"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_billed_per_account_assessed_value",
+      "project_id": "prj_study_im3_point_06685432442",
+      "year": 2018,
+      "scope_level": "campus",
+      "scope_label": "Switch Ltd. personal-property account CM001611, 1 Superloop Circle, Citadel campus",
+      "county_fips": "32029",
+      "inventory_allocation": "unallocated",
+      "value": 0.013429189051,
+      "unit": "ratio",
+      "numerator_value": 176884.49,
+      "denominator_value": 13171643.45,
+      "numerator_claim_ids": [
+        "clm_study_switch_citadel_property_taxes_billed_2018"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_switch_citadel_assessed_value_2018"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_billed_per_account_assessed_value",
+      "project_id": "prj_study_im3_point_06685432442",
+      "year": 2019,
+      "scope_level": "campus",
+      "scope_label": "Switch Ltd. personal-property account CM001611, 1 Superloop Circle, Citadel campus",
+      "county_fips": "32029",
+      "inventory_allocation": "unallocated",
+      "value": 0.0,
+      "unit": "ratio",
+      "numerator_value": 0.0,
+      "denominator_value": 10956667.05,
+      "numerator_claim_ids": [
+        "clm_study_switch_citadel_property_taxes_billed_2019"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_switch_citadel_assessed_value_2019"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_billed_per_account_assessed_value",
+      "project_id": "prj_study_im3_point_06685432442",
+      "year": 2020,
+      "scope_level": "campus",
+      "scope_label": "Switch Ltd. personal-property account CM001611, 1 Superloop Circle, Citadel campus",
+      "county_fips": "32029",
+      "inventory_allocation": "unallocated",
+      "value": 0.009359629075,
+      "unit": "ratio",
+      "numerator_value": 439449.67,
+      "denominator_value": 46951611.7,
+      "numerator_claim_ids": [
+        "clm_study_switch_citadel_property_taxes_billed_2020"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_switch_citadel_assessed_value_2020"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_billed_per_account_assessed_value",
+      "project_id": "prj_study_im3_point_06685432442",
+      "year": 2021,
+      "scope_level": "campus",
+      "scope_label": "Switch Ltd. personal-property account CM001611, 1 Superloop Circle, Citadel campus",
+      "county_fips": "32029",
+      "inventory_allocation": "unallocated",
+      "value": 0.00865175071,
+      "unit": "ratio",
+      "numerator_value": 529328.71,
+      "denominator_value": 61181687.7,
+      "numerator_claim_ids": [
+        "clm_study_switch_citadel_property_taxes_billed_2021"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_switch_citadel_assessed_value_2021"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_billed_per_account_assessed_value",
+      "project_id": "prj_study_im3_point_06685432442",
+      "year": 2022,
+      "scope_level": "campus",
+      "scope_label": "Switch Ltd. personal-property account CM001611, 1 Superloop Circle, Citadel campus",
+      "county_fips": "32029",
+      "inventory_allocation": "unallocated",
+      "value": 0.008651139747,
+      "unit": "ratio",
+      "numerator_value": 765788.23,
+      "denominator_value": 88518767.75,
+      "numerator_claim_ids": [
+        "clm_study_switch_citadel_property_taxes_billed_2022"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_switch_citadel_assessed_value_2022"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_billed_per_account_assessed_value",
+      "project_id": "prj_study_im3_point_06685432442",
+      "year": 2023,
+      "scope_level": "campus",
+      "scope_label": "Switch Ltd. personal-property account CM001611, 1 Superloop Circle, Citadel campus",
+      "county_fips": "32029",
+      "inventory_allocation": "unallocated",
+      "value": 0.008651738451,
+      "unit": "ratio",
+      "numerator_value": 1007641.84,
+      "denominator_value": 116466978.95,
+      "numerator_claim_ids": [
+        "clm_study_switch_citadel_property_taxes_billed_2023"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_switch_citadel_assessed_value_2023"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_billed_per_account_assessed_value",
+      "project_id": "prj_study_im3_point_06685432442",
+      "year": 2024,
+      "scope_level": "campus",
+      "scope_label": "NV RNO 1, LLC real-property parcel 005-012-23, 1 Superloop Circle Citadel data-center buildings",
+      "county_fips": "32029",
+      "inventory_allocation": "unallocated",
+      "value": 0.03241676231,
+      "unit": "ratio",
+      "numerator_value": 2239229.35,
+      "denominator_value": 69076280.0,
+      "numerator_claim_ids": [
+        "clm_study_switch_citadel_real_property_taxes_billed_2024"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_switch_citadel_real_assessed_value_2024"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_billed_per_account_assessed_value",
+      "project_id": "prj_study_im3_point_06685432442",
+      "year": 2024,
+      "scope_level": "campus",
+      "scope_label": "Switch Ltd. personal-property account CM001611, 1 Superloop Circle, Citadel campus",
+      "county_fips": "32029",
+      "inventory_allocation": "unallocated",
+      "value": 0.008651749086,
+      "unit": "ratio",
+      "numerator_value": 1567523.17,
+      "denominator_value": 181179915.7,
+      "numerator_claim_ids": [
+        "clm_study_switch_citadel_property_taxes_billed_2024"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_switch_citadel_assessed_value_2024"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_billed_per_appraised_value",
+      "project_id": "prj_study_im3_building_00598261190",
+      "year": 2021,
+      "scope_level": "company_county",
+      "scope_label": "HMC Data Center 2 LLC / State Farm parcel, 24400 W Valley Parkway, quick ref R662349",
+      "county_fips": "20091",
+      "inventory_allocation": "unallocated",
+      "value": 0.031252501928,
+      "unit": "ratio",
+      "numerator_value": 2010360.94,
+      "denominator_value": 64326400.0,
+      "numerator_claim_ids": [
+        "clm_study_state_farm_olathe_property_taxes_billed_2021"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_state_farm_olathe_appraised_value_2021"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_billed_per_appraised_value",
+      "project_id": "prj_study_im3_building_00598261190",
+      "year": 2022,
+      "scope_level": "company_county",
+      "scope_label": "HMC Data Center 2 LLC / State Farm parcel, 24400 W Valley Parkway, quick ref R662349",
+      "county_fips": "20091",
+      "inventory_allocation": "unallocated",
+      "value": 0.030079751911,
+      "unit": "ratio",
+      "numerator_value": 1908311.8,
+      "denominator_value": 63441740.0,
+      "numerator_claim_ids": [
+        "clm_study_state_farm_olathe_property_taxes_billed_2022"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_state_farm_olathe_appraised_value_2022"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_billed_per_appraised_value",
+      "project_id": "prj_study_im3_building_00598261190",
+      "year": 2023,
+      "scope_level": "company_county",
+      "scope_label": "HMC Data Center 2 LLC / State Farm parcel, 24400 W Valley Parkway, quick ref R662349",
+      "county_fips": "20091",
+      "inventory_allocation": "unallocated",
+      "value": 0.029254250735,
+      "unit": "ratio",
+      "numerator_value": 2352477.94,
+      "denominator_value": 80414910.0,
+      "numerator_claim_ids": [
+        "clm_study_state_farm_olathe_property_taxes_billed_2023"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_state_farm_olathe_appraised_value_2023"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_billed_per_appraised_value",
+      "project_id": "prj_study_im3_building_00598261190",
+      "year": 2024,
+      "scope_level": "company_county",
+      "scope_label": "HMC Data Center 2 LLC / State Farm parcel, 24400 W Valley Parkway, quick ref R662349",
+      "county_fips": "20091",
+      "inventory_allocation": "unallocated",
+      "value": 0.029112001313,
+      "unit": "ratio",
+      "numerator_value": 2661273.6,
+      "denominator_value": 91415000.0,
+      "numerator_claim_ids": [
+        "clm_study_state_farm_olathe_property_taxes_billed_2024"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_state_farm_olathe_appraised_value_2024"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_billed_per_appraised_value",
+      "project_id": "prj_study_im3_building_00844371952",
+      "year": 2020,
+      "scope_level": "campus",
+      "scope_label": "Eight Wiessner real parcels in account 98353",
+      "county_fips": "01071",
+      "inventory_allocation": "unallocated",
+      "value": 0.006,
+      "unit": "ratio",
+      "numerator_value": 542938.8,
+      "denominator_value": 90489800.0,
+      "numerator_claim_ids": [
+        "clm_study_google_bridgeport_wiessner_real_tax_billed_2020"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_google_bridgeport_wiessner_real_appraised_2020"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_billed_per_appraised_value",
+      "project_id": "prj_study_im3_building_00844371952",
+      "year": 2021,
+      "scope_level": "campus",
+      "scope_label": "Eight Wiessner real parcels in account 98353",
+      "county_fips": "01071",
+      "inventory_allocation": "unallocated",
+      "value": 0.003013239276,
+      "unit": "ratio",
+      "numerator_value": 386485.0,
+      "denominator_value": 128262300.0,
+      "numerator_claim_ids": [
+        "clm_study_google_bridgeport_wiessner_real_tax_billed_2021"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_google_bridgeport_wiessner_real_appraised_2021"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_billed_per_appraised_value",
+      "project_id": "prj_study_im3_building_00844371952",
+      "year": 2022,
+      "scope_level": "campus",
+      "scope_label": "Eight Wiessner real parcels in account 98353",
+      "county_fips": "01071",
+      "inventory_allocation": "unallocated",
+      "value": 0.003012323433,
+      "unit": "ratio",
+      "numerator_value": 415081.3,
+      "denominator_value": 137794400.0,
+      "numerator_claim_ids": [
+        "clm_study_google_bridgeport_wiessner_real_tax_billed_2022"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_google_bridgeport_wiessner_real_appraised_2022"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_billed_per_appraised_value",
+      "project_id": "prj_study_im3_building_00844371952",
+      "year": 2023,
+      "scope_level": "campus",
+      "scope_label": "Eight Wiessner real parcels in account 98353",
+      "county_fips": "01071",
+      "inventory_allocation": "unallocated",
+      "value": 0.003012540238,
+      "unit": "ratio",
+      "numerator_value": 415141.3,
+      "denominator_value": 137804400.0,
+      "numerator_claim_ids": [
+        "clm_study_google_bridgeport_wiessner_real_tax_billed_2023"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_google_bridgeport_wiessner_real_appraised_2023"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_billed_per_appraised_value",
+      "project_id": "prj_study_im3_building_00844371952",
+      "year": 2024,
+      "scope_level": "campus",
+      "scope_label": "Eight Wiessner real parcels in account 98353",
+      "county_fips": "01071",
+      "inventory_allocation": "unallocated",
+      "value": 0.003012540238,
+      "unit": "ratio",
+      "numerator_value": 415141.3,
+      "denominator_value": 137804400.0,
+      "numerator_claim_ids": [
+        "clm_study_google_bridgeport_wiessner_real_tax_billed_2024"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_google_bridgeport_wiessner_real_appraised_2024"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_billed_per_appraised_value",
+      "project_id": "prj_study_im3_building_00844389014",
+      "year": 2020,
+      "scope_level": "campus",
+      "scope_label": "Foxman LLC/IDB personal-property account 110059 at 1000 Solar Way",
+      "county_fips": "47125",
+      "inventory_allocation": "unallocated",
+      "value": 0.0,
+      "unit": "ratio",
+      "numerator_value": 0.0,
+      "denominator_value": 48562497.0,
+      "numerator_claim_ids": [
+        "clm_study_google_clarksville_foxman_personal_tax_levy_2020"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_google_clarksville_foxman_personal_appraised_2020"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_billed_per_appraised_value",
+      "project_id": "prj_study_im3_building_00844389014",
+      "year": 2020,
+      "scope_level": "campus",
+      "scope_label": "Google LLC personal-property account 110128 at 1000 Solar Way",
+      "county_fips": "47125",
+      "inventory_allocation": "unallocated",
+      "value": 0.0,
+      "unit": "ratio",
+      "numerator_value": 0.0,
+      "denominator_value": 773873.0,
+      "numerator_claim_ids": [
+        "clm_study_google_clarksville_google_personal_tax_levy_2020"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_google_clarksville_google_personal_appraised_2020"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_billed_per_appraised_value",
+      "project_id": "prj_study_im3_building_00844389014",
+      "year": 2020,
+      "scope_level": "campus",
+      "scope_label": "IDB real-property account 3422, parcel 009 01401 000 at 1000 Boolean Drive",
+      "county_fips": "47125",
+      "inventory_allocation": "unallocated",
+      "value": 0.0,
+      "unit": "ratio",
+      "numerator_value": 0.0,
+      "denominator_value": 285404200.0,
+      "numerator_claim_ids": [
+        "clm_study_google_clarksville_idb_real_tax_levy_2020"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_google_clarksville_idb_real_appraised_2020"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_billed_per_appraised_value",
+      "project_id": "prj_study_im3_building_00844389014",
+      "year": 2021,
+      "scope_level": "campus",
+      "scope_label": "Foxman LLC/IDB personal-property account 110059 at 1000 Solar Way",
+      "county_fips": "47125",
+      "inventory_allocation": "unallocated",
+      "value": 0.0,
+      "unit": "ratio",
+      "numerator_value": 0.0,
+      "denominator_value": 179188120.0,
+      "numerator_claim_ids": [
+        "clm_study_google_clarksville_foxman_personal_tax_levy_2021"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_google_clarksville_foxman_personal_appraised_2021"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_billed_per_appraised_value",
+      "project_id": "prj_study_im3_building_00844389014",
+      "year": 2021,
+      "scope_level": "campus",
+      "scope_label": "Google LLC personal-property account 110128 at 1000 Solar Way",
+      "county_fips": "47125",
+      "inventory_allocation": "unallocated",
+      "value": 0.0,
+      "unit": "ratio",
+      "numerator_value": 0.0,
+      "denominator_value": 1189050.0,
+      "numerator_claim_ids": [
+        "clm_study_google_clarksville_google_personal_tax_levy_2021"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_google_clarksville_google_personal_appraised_2021"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_billed_per_appraised_value",
+      "project_id": "prj_study_im3_building_00844389014",
+      "year": 2021,
+      "scope_level": "campus",
+      "scope_label": "IDB real-property account 3422, parcel 009 01401 000 at 1000 Boolean Drive",
+      "county_fips": "47125",
+      "inventory_allocation": "unallocated",
+      "value": 0.0,
+      "unit": "ratio",
+      "numerator_value": 0.0,
+      "denominator_value": 316736200.0,
+      "numerator_claim_ids": [
+        "clm_study_google_clarksville_idb_real_tax_levy_2021"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_google_clarksville_idb_real_appraised_2021"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_billed_per_appraised_value",
+      "project_id": "prj_study_im3_building_00844389014",
+      "year": 2022,
+      "scope_level": "campus",
+      "scope_label": "Foxman LLC/IDB personal-property account 110059 at 1000 Solar Way",
+      "county_fips": "47125",
+      "inventory_allocation": "unallocated",
+      "value": 0.0,
+      "unit": "ratio",
+      "numerator_value": 0.0,
+      "denominator_value": 224926429.0,
+      "numerator_claim_ids": [
+        "clm_study_google_clarksville_foxman_personal_tax_levy_2022"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_google_clarksville_foxman_personal_appraised_2022"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_billed_per_appraised_value",
+      "project_id": "prj_study_im3_building_00844389014",
+      "year": 2022,
+      "scope_level": "campus",
+      "scope_label": "Google LLC personal-property account 110128 at 1000 Solar Way",
+      "county_fips": "47125",
+      "inventory_allocation": "unallocated",
+      "value": 0.0,
+      "unit": "ratio",
+      "numerator_value": 0.0,
+      "denominator_value": 1265876.0,
+      "numerator_claim_ids": [
+        "clm_study_google_clarksville_google_personal_tax_levy_2022"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_google_clarksville_google_personal_appraised_2022"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_billed_per_appraised_value",
+      "project_id": "prj_study_im3_building_00844389014",
+      "year": 2022,
+      "scope_level": "campus",
+      "scope_label": "IDB real-property account 3422, parcel 009 01401 000 at 1000 Boolean Drive",
+      "county_fips": "47125",
+      "inventory_allocation": "unallocated",
+      "value": 0.0,
+      "unit": "ratio",
+      "numerator_value": 0.0,
+      "denominator_value": 316736200.0,
+      "numerator_claim_ids": [
+        "clm_study_google_clarksville_idb_real_tax_levy_2022"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_google_clarksville_idb_real_appraised_2022"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_billed_per_appraised_value",
+      "project_id": "prj_study_im3_building_00844389014",
+      "year": 2023,
+      "scope_level": "campus",
+      "scope_label": "Foxman LLC/IDB personal-property account 110059 at 1000 Solar Way",
+      "county_fips": "47125",
+      "inventory_allocation": "unallocated",
+      "value": 0.0,
+      "unit": "ratio",
+      "numerator_value": 0.0,
+      "denominator_value": 201386606.0,
+      "numerator_claim_ids": [
+        "clm_study_google_clarksville_foxman_personal_tax_levy_2023"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_google_clarksville_foxman_personal_appraised_2023"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_billed_per_appraised_value",
+      "project_id": "prj_study_im3_building_00844389014",
+      "year": 2023,
+      "scope_level": "campus",
+      "scope_label": "Google LLC personal-property account 110128 at 1000 Solar Way",
+      "county_fips": "47125",
+      "inventory_allocation": "unallocated",
+      "value": 0.0,
+      "unit": "ratio",
+      "numerator_value": 0.0,
+      "denominator_value": 14797766.0,
+      "numerator_claim_ids": [
+        "clm_study_google_clarksville_google_personal_tax_levy_2023"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_google_clarksville_google_personal_appraised_2023"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_billed_per_appraised_value",
+      "project_id": "prj_study_im3_building_00844389014",
+      "year": 2023,
+      "scope_level": "campus",
+      "scope_label": "IDB real-property account 3422, parcel 009 01401 000 at 1000 Boolean Drive",
+      "county_fips": "47125",
+      "inventory_allocation": "unallocated",
+      "value": 0.0,
+      "unit": "ratio",
+      "numerator_value": 0.0,
+      "denominator_value": 317517200.0,
+      "numerator_claim_ids": [
+        "clm_study_google_clarksville_idb_real_tax_levy_2023"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_google_clarksville_idb_real_appraised_2023"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_billed_per_appraised_value",
+      "project_id": "prj_study_im3_building_00844389014",
+      "year": 2024,
+      "scope_level": "campus",
+      "scope_label": "Foxman LLC/IDB personal-property account 110059 at 1000 Solar Way",
+      "county_fips": "47125",
+      "inventory_allocation": "unallocated",
+      "value": 0.0,
+      "unit": "ratio",
+      "numerator_value": 0.0,
+      "denominator_value": 164301411.0,
+      "numerator_claim_ids": [
+        "clm_study_google_clarksville_foxman_personal_tax_levy_2024"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_google_clarksville_foxman_personal_appraised_2024"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_billed_per_appraised_value",
+      "project_id": "prj_study_im3_building_00844389014",
+      "year": 2024,
+      "scope_level": "campus",
+      "scope_label": "Google LLC personal-property account 110128 at 1000 Solar Way",
+      "county_fips": "47125",
+      "inventory_allocation": "unallocated",
+      "value": 0.0,
+      "unit": "ratio",
+      "numerator_value": 0.0,
+      "denominator_value": 13658283.0,
+      "numerator_claim_ids": [
+        "clm_study_google_clarksville_google_personal_tax_levy_2024"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_google_clarksville_google_personal_appraised_2024"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_billed_per_appraised_value",
+      "project_id": "prj_study_im3_building_00844389014",
+      "year": 2024,
+      "scope_level": "campus",
+      "scope_label": "IDB real-property account 3422, parcel 009 01401 000 at 1000 Boolean Drive",
+      "county_fips": "47125",
+      "inventory_allocation": "unallocated",
+      "value": 0.0,
+      "unit": "ratio",
+      "numerator_value": 0.0,
+      "denominator_value": 360220600.0,
+      "numerator_claim_ids": [
+        "clm_study_google_clarksville_idb_real_tax_levy_2024"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_google_clarksville_idb_real_appraised_2024"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_billed_per_appraised_value",
+      "project_id": "prj_study_im3_campus_00578435601",
+      "year": 2015,
+      "scope_level": "campus",
+      "scope_label": "Development Authority / Google personal-property account P79020 at 300 Riverside Parkway",
+      "county_fips": "13097",
+      "inventory_allocation": "unallocated",
+      "value": 0.0,
+      "unit": "ratio",
+      "numerator_value": 0.0,
+      "denominator_value": 17139513.0,
+      "numerator_claim_ids": [
+        "clm_study_google_douglas_p79020_property_taxes_billed_2015"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_google_douglas_p79020_statement_fmv_2015"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_billed_per_appraised_value",
+      "project_id": "prj_study_im3_campus_00578435601",
+      "year": 2016,
+      "scope_level": "campus",
+      "scope_label": "Development Authority / Google personal-property account P79020 at 300 Riverside Parkway",
+      "county_fips": "13097",
+      "inventory_allocation": "unallocated",
+      "value": 0.0,
+      "unit": "ratio",
+      "numerator_value": 0.0,
+      "denominator_value": 359479633.0,
+      "numerator_claim_ids": [
+        "clm_study_google_douglas_p79020_property_taxes_billed_2016"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_google_douglas_p79020_statement_fmv_2016"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_billed_per_appraised_value",
+      "project_id": "prj_study_im3_campus_00578435601",
+      "year": 2017,
+      "scope_level": "campus",
+      "scope_label": "Development Authority / Google personal-property account P79020 at 300 Riverside Parkway",
+      "county_fips": "13097",
+      "inventory_allocation": "unallocated",
+      "value": 0.0,
+      "unit": "ratio",
+      "numerator_value": 0.0,
+      "denominator_value": 350441118.0,
+      "numerator_claim_ids": [
+        "clm_study_google_douglas_p79020_property_taxes_billed_2017"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_google_douglas_p79020_statement_fmv_2017"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_billed_per_appraised_value",
+      "project_id": "prj_study_im3_campus_00578435601",
+      "year": 2018,
+      "scope_level": "campus",
+      "scope_label": "Development Authority / Google personal-property account P79020 at 300 Riverside Parkway",
+      "county_fips": "13097",
+      "inventory_allocation": "unallocated",
+      "value": 0.0,
+      "unit": "ratio",
+      "numerator_value": 0.0,
+      "denominator_value": 436020112.0,
+      "numerator_claim_ids": [
+        "clm_study_google_douglas_p79020_property_taxes_billed_2018"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_google_douglas_p79020_statement_fmv_2018"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_billed_per_appraised_value",
+      "project_id": "prj_study_im3_campus_00578435601",
+      "year": 2019,
+      "scope_level": "campus",
+      "scope_label": "Development Authority / Google personal-property account P79020 at 300 Riverside Parkway",
+      "county_fips": "13097",
+      "inventory_allocation": "unallocated",
+      "value": 0.0,
+      "unit": "ratio",
+      "numerator_value": 0.0,
+      "denominator_value": 530949065.0,
+      "numerator_claim_ids": [
+        "clm_study_google_douglas_p79020_property_taxes_billed_2019"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_google_douglas_p79020_statement_fmv_2019"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_billed_per_appraised_value",
+      "project_id": "prj_study_im3_campus_00578435601",
+      "year": 2020,
+      "scope_level": "campus",
+      "scope_label": "Development Authority / Google personal-property account P79020 at 300 Riverside Parkway",
+      "county_fips": "13097",
+      "inventory_allocation": "unallocated",
+      "value": 0.0,
+      "unit": "ratio",
+      "numerator_value": 0.0,
+      "denominator_value": 725905854.0,
+      "numerator_claim_ids": [
+        "clm_study_google_douglas_p79020_property_taxes_billed_2020"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_google_douglas_p79020_statement_fmv_2020"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_billed_per_appraised_value",
+      "project_id": "prj_study_im3_campus_00578435601",
+      "year": 2021,
+      "scope_level": "campus",
+      "scope_label": "Development Authority / Google personal-property account P79020 at 300 Riverside Parkway",
+      "county_fips": "13097",
+      "inventory_allocation": "unallocated",
+      "value": 0.0,
+      "unit": "ratio",
+      "numerator_value": 0.0,
+      "denominator_value": 708973338.0,
+      "numerator_claim_ids": [
+        "clm_study_google_douglas_p79020_property_taxes_billed_2021"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_google_douglas_p79020_statement_fmv_2021"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_billed_per_appraised_value",
+      "project_id": "prj_study_im3_campus_00578435601",
+      "year": 2022,
+      "scope_level": "campus",
+      "scope_label": "Development Authority / Google personal-property account P79020 at 300 Riverside Parkway",
+      "county_fips": "13097",
+      "inventory_allocation": "unallocated",
+      "value": 0.0,
+      "unit": "ratio",
+      "numerator_value": 0.0,
+      "denominator_value": 632465858.0,
+      "numerator_claim_ids": [
+        "clm_study_google_douglas_p79020_property_taxes_billed_2022"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_google_douglas_p79020_statement_fmv_2022"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_billed_per_appraised_value",
+      "project_id": "prj_study_im3_campus_00578435601",
+      "year": 2023,
+      "scope_level": "campus",
+      "scope_label": "Development Authority / Google personal-property account P79020 at 300 Riverside Parkway",
+      "county_fips": "13097",
+      "inventory_allocation": "unallocated",
+      "value": 0.0,
+      "unit": "ratio",
+      "numerator_value": 0.0,
+      "denominator_value": 432944775.0,
+      "numerator_claim_ids": [
+        "clm_study_google_douglas_p79020_property_taxes_billed_2023"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_google_douglas_p79020_statement_fmv_2023"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_billed_per_appraised_value",
+      "project_id": "prj_study_im3_campus_00578435601",
+      "year": 2024,
+      "scope_level": "campus",
+      "scope_label": "Development Authority / Google personal-property account P79020 at 300 Riverside Parkway",
+      "county_fips": "13097",
+      "inventory_allocation": "unallocated",
+      "value": 0.0,
+      "unit": "ratio",
+      "numerator_value": 0.0,
+      "denominator_value": 319598509.0,
+      "numerator_claim_ids": [
+        "clm_study_google_douglas_p79020_property_taxes_billed_2024"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_google_douglas_p79020_statement_fmv_2024"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_billed_per_taxable_assessed_value",
+      "project_id": "prj_study_im3_building_00397914434",
+      "year": 2024,
+      "scope_level": "company_county",
+      "scope_label": "Apple Inc. taxable property in Crook County",
+      "county_fips": "41013",
+      "inventory_allocation": "unallocated",
+      "value": 0.015709999495,
+      "unit": "ratio",
+      "numerator_value": 167888.68,
+      "denominator_value": 10686740.0,
+      "numerator_claim_ids": [
+        "clm_study_apple_prineville_property_tax_billed_2024"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_apple_prineville_taxable_assessed_2024"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_billed_per_taxable_assessed_value",
+      "project_id": "prj_study_im3_campus_00019988712",
+      "year": 2024,
+      "scope_level": "company_county",
+      "scope_label": "Vitesse LLC taxable property in Crook County",
+      "county_fips": "41013",
+      "inventory_allocation": "unallocated",
+      "value": 0.015792799267,
+      "unit": "ratio",
+      "numerator_value": 165478.53,
+      "denominator_value": 10478100.0,
+      "numerator_claim_ids": [
+        "clm_study_meta_prineville_property_tax_billed_2024"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_meta_prineville_taxable_assessed_2024"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_account_assessed_value",
+      "project_id": "prj_study_im3_building_00300974499",
+      "year": 2023,
+      "scope_level": "company_county",
+      "scope_label": "Apple Inc. business personal property, Treasurer account 993-72-704 / assessor account 9372704, 3740 S Signal Butte Road",
+      "county_fips": "04013",
+      "inventory_allocation": "unallocated",
+      "value": 0.094245999652,
+      "unit": "ratio",
+      "numerator_value": 1354526.88,
+      "denominator_value": 14372248.0,
+      "numerator_claim_ids": [
+        "clm_study_apple_mesa_bpp_property_taxes_paid_2023"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_apple_mesa_bpp_assessed_value_2023"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_account_assessed_value",
+      "project_id": "prj_study_im3_building_00300974499",
+      "year": 2023,
+      "scope_level": "company_county",
+      "scope_label": "Platypus Development LLC real-property parcel 304-33-005S, Apple-associated computer center at 3740 S Signal Butte Road",
+      "county_fips": "04013",
+      "inventory_allocation": "unallocated",
+      "value": 0.095782001055,
+      "unit": "ratio",
+      "numerator_value": 878242.6,
+      "denominator_value": 9169182.0,
+      "numerator_claim_ids": [
+        "clm_study_apple_mesa_real_property_taxes_paid_2023"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_apple_mesa_real_assessed_value_2023"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_account_assessed_value",
+      "project_id": "prj_study_im3_building_00300974499",
+      "year": 2024,
+      "scope_level": "company_county",
+      "scope_label": "Apple Inc. business personal property, Treasurer account 993-72-704 / assessor account 9372704, 3740 S Signal Butte Road",
+      "county_fips": "04013",
+      "inventory_allocation": "unallocated",
+      "value": 0.089231001991,
+      "unit": "ratio",
+      "numerator_value": 1052763.78,
+      "denominator_value": 11798184.0,
+      "numerator_claim_ids": [
+        "clm_study_apple_mesa_bpp_property_taxes_paid_2024"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_apple_mesa_bpp_assessed_value_2024"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_account_assessed_value",
+      "project_id": "prj_study_im3_building_00300974499",
+      "year": 2024,
+      "scope_level": "company_county",
+      "scope_label": "Platypus Development LLC real-property parcel 304-33-005S, Apple-associated computer center at 3740 S Signal Butte Road",
+      "county_fips": "04013",
+      "inventory_allocation": "unallocated",
+      "value": 0.090701003496,
+      "unit": "ratio",
+      "numerator_value": 873236.7,
+      "denominator_value": 9627641.0,
+      "numerator_claim_ids": [
+        "clm_study_apple_mesa_real_property_taxes_paid_2024"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_apple_mesa_real_assessed_value_2024"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_account_assessed_value",
+      "project_id": "prj_study_im3_building_00472761713",
+      "year": 2024,
+      "scope_level": "company_county",
+      "scope_label": "NYSE Group, Inc. / ICE Global Network parcel, 1700 MacArthur Boulevard, block 139 lot 4",
+      "county_fips": "34003",
+      "inventory_allocation": "unallocated",
+      "value": 0.02064,
+      "unit": "ratio",
+      "numerator_value": 2105280.0,
+      "denominator_value": 102000000.0,
+      "numerator_claim_ids": [
+        "clm_study_nyse_mahwah_property_taxes_paid_2024"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_nyse_mahwah_assessed_value_2024"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_account_assessed_value",
+      "project_id": "prj_study_im3_building_00499403180",
+      "year": 2022,
+      "scope_level": "campus",
+      "scope_label": "Microsoft MWH personal-property account 84139 at 1515 NW Port Industrial Parkway",
+      "county_fips": "53025",
+      "inventory_allocation": "unallocated",
+      "value": 0.009995794089,
+      "unit": "ratio",
+      "numerator_value": 9053300.42,
+      "denominator_value": 905710976.0,
+      "numerator_claim_ids": [
+        "clm_study_msft_mwh_personal_tax_paid_2022"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_msft_mwh_personal_assessed_2022"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_account_assessed_value",
+      "project_id": "prj_study_im3_building_00499403180",
+      "year": 2022,
+      "scope_level": "campus",
+      "scope_label": "Microsoft MWH real-property account 72793, parcel 313769000",
+      "county_fips": "53025",
+      "inventory_allocation": "unallocated",
+      "value": 0.005217883778,
+      "unit": "ratio",
+      "numerator_value": 4726301.86,
+      "denominator_value": 905789025.0,
+      "numerator_claim_ids": [
+        "clm_study_msft_mwh_real_tax_paid_2022"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_msft_mwh_real_assessed_2022"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_account_assessed_value",
+      "project_id": "prj_study_im3_building_00499403180",
+      "year": 2023,
+      "scope_level": "campus",
+      "scope_label": "Microsoft MWH personal-property account 84139 at 1515 NW Port Industrial Parkway",
+      "county_fips": "53025",
+      "inventory_allocation": "unallocated",
+      "value": 0.006674558327,
+      "unit": "ratio",
+      "numerator_value": 7447741.9,
+      "denominator_value": 1115840410.0,
+      "numerator_claim_ids": [
+        "clm_study_msft_mwh_personal_tax_paid_2023"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_msft_mwh_personal_assessed_2023"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_account_assessed_value",
+      "project_id": "prj_study_im3_building_00499403180",
+      "year": 2023,
+      "scope_level": "campus",
+      "scope_label": "Microsoft MWH real-property account 72793, parcel 313769000",
+      "county_fips": "53025",
+      "inventory_allocation": "unallocated",
+      "value": 0.010503176287,
+      "unit": "ratio",
+      "numerator_value": 7448428.2,
+      "denominator_value": 709159591.0,
+      "numerator_claim_ids": [
+        "clm_study_msft_mwh_real_tax_paid_2023"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_msft_mwh_real_assessed_2023"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_account_assessed_value",
+      "project_id": "prj_study_im3_building_00499403180",
+      "year": 2024,
+      "scope_level": "campus",
+      "scope_label": "Microsoft MWH personal-property account 84139 at 1515 NW Port Industrial Parkway",
+      "county_fips": "53025",
+      "inventory_allocation": "unallocated",
+      "value": 0.0087434269,
+      "unit": "ratio",
+      "numerator_value": 9047479.78,
+      "denominator_value": 1034775024.0,
+      "numerator_claim_ids": [
+        "clm_study_msft_mwh_personal_tax_paid_2024"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_msft_mwh_personal_assessed_2024"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_account_assessed_value",
+      "project_id": "prj_study_im3_building_00499403180",
+      "year": 2024,
+      "scope_level": "campus",
+      "scope_label": "Microsoft MWH real-property account 72793, parcel 313769000",
+      "county_fips": "53025",
+      "inventory_allocation": "unallocated",
+      "value": 0.010703274953,
+      "unit": "ratio",
+      "numerator_value": 5750066.63,
+      "denominator_value": 537224976.0,
+      "numerator_claim_ids": [
+        "clm_study_msft_mwh_real_tax_paid_2024"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_msft_mwh_real_assessed_2024"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_account_assessed_value",
+      "project_id": "prj_study_im3_building_00500820007",
+      "year": 2017,
+      "scope_level": "campus",
+      "scope_label": "Winner LLC personal-property account 14401610 at 4500 Like Way",
+      "county_fips": "48439",
+      "inventory_allocation": "unallocated",
+      "value": 0.014328890019,
+      "unit": "ratio",
+      "numerator_value": 2922339.42,
+      "denominator_value": 203947369.0,
+      "numerator_claim_ids": [
+        "clm_study_meta_fort_worth_personal_14401610_tarrant_tax_paid_2017"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_meta_fort_worth_personal_14401610_assessed_2017"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_account_assessed_value",
+      "project_id": "prj_study_im3_building_00500820007",
+      "year": 2018,
+      "scope_level": "campus",
+      "scope_label": "Winner LLC personal-property account 14401610 at 4500 Like Way",
+      "county_fips": "48439",
+      "inventory_allocation": "unallocated",
+      "value": 0.010903874752,
+      "unit": "ratio",
+      "numerator_value": 8632808.98,
+      "denominator_value": 791719382.0,
+      "numerator_claim_ids": [
+        "clm_study_meta_fort_worth_personal_14401610_tarrant_tax_paid_2018"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_meta_fort_worth_personal_14401610_assessed_2018"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_account_assessed_value",
+      "project_id": "prj_study_im3_building_00500820007",
+      "year": 2018,
+      "scope_level": "campus",
+      "scope_label": "Winner LLC real-property account 42324937 at 4500 Like Way",
+      "county_fips": "48439",
+      "inventory_allocation": "unallocated",
+      "value": 0.010911920619,
+      "unit": "ratio",
+      "numerator_value": 2850529.48,
+      "denominator_value": 261230775.0,
+      "numerator_claim_ids": [
+        "clm_study_meta_fort_worth_real_42324937_tarrant_tax_paid_2018"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_meta_fort_worth_real_42324937_assessed_2018"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_account_assessed_value",
+      "project_id": "prj_study_im3_building_00500820007",
+      "year": 2019,
+      "scope_level": "company_county",
+      "scope_label": "MMI Southwest LLC personal-property account 14628223 co-located at 4500 Like Way; not attributed to Meta",
+      "county_fips": "48439",
+      "inventory_allocation": "unallocated",
+      "value": 0.013647990437,
+      "unit": "ratio",
+      "numerator_value": 140028.3,
+      "denominator_value": 10259994.0,
+      "numerator_claim_ids": [
+        "clm_study_meta_fort_worth_mmi_14628223_tarrant_tax_paid_2019"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_meta_fort_worth_mmi_14628223_assessed_2019"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_account_assessed_value",
+      "project_id": "prj_study_im3_building_00500820007",
+      "year": 2019,
+      "scope_level": "campus",
+      "scope_label": "Winner LLC personal-property account 14401610 at 4500 Like Way",
+      "county_fips": "48439",
+      "inventory_allocation": "unallocated",
+      "value": 0.011346416106,
+      "unit": "ratio",
+      "numerator_value": 13393480.12,
+      "denominator_value": 1180415031.0,
+      "numerator_claim_ids": [
+        "clm_study_meta_fort_worth_personal_14401610_tarrant_tax_paid_2019"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_meta_fort_worth_personal_14401610_assessed_2019"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_account_assessed_value",
+      "project_id": "prj_study_im3_building_00500820007",
+      "year": 2019,
+      "scope_level": "campus",
+      "scope_label": "Winner LLC real-property account 42324937 at 4500 Like Way",
+      "county_fips": "48439",
+      "inventory_allocation": "unallocated",
+      "value": 0.011441749989,
+      "unit": "ratio",
+      "numerator_value": 4514049.95,
+      "denominator_value": 394524435.0,
+      "numerator_claim_ids": [
+        "clm_study_meta_fort_worth_real_42324937_tarrant_tax_paid_2019"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_meta_fort_worth_real_42324937_assessed_2019"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_account_assessed_value",
+      "project_id": "prj_study_im3_building_00500820007",
+      "year": 2020,
+      "scope_level": "company_county",
+      "scope_label": "MMI Southwest LLC personal-property account 14628223 co-located at 4500 Like Way; not attributed to Meta",
+      "county_fips": "48439",
+      "inventory_allocation": "unallocated",
+      "value": 0.013647990336,
+      "unit": "ratio",
+      "numerator_value": 137244.3,
+      "denominator_value": 10056008.0,
+      "numerator_claim_ids": [
+        "clm_study_meta_fort_worth_mmi_14628223_tarrant_tax_paid_2020"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_meta_fort_worth_mmi_14628223_assessed_2020"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_account_assessed_value",
+      "project_id": "prj_study_im3_building_00500820007",
+      "year": 2020,
+      "scope_level": "campus",
+      "scope_label": "Winner LLC personal-property account 14401610 at 4500 Like Way",
+      "county_fips": "48439",
+      "inventory_allocation": "unallocated",
+      "value": 0.01134758222,
+      "unit": "ratio",
+      "numerator_value": 14329999.17,
+      "denominator_value": 1262824000.0,
+      "numerator_claim_ids": [
+        "clm_study_meta_fort_worth_personal_14401610_tarrant_tax_paid_2020"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_meta_fort_worth_personal_14401610_assessed_2020"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_account_assessed_value",
+      "project_id": "prj_study_im3_building_00500820007",
+      "year": 2020,
+      "scope_level": "campus",
+      "scope_label": "Winner LLC real-property account 42324937 at 4500 Like Way",
+      "county_fips": "48439",
+      "inventory_allocation": "unallocated",
+      "value": 0.011413385439,
+      "unit": "ratio",
+      "numerator_value": 6405987.25,
+      "denominator_value": 561269685.0,
+      "numerator_claim_ids": [
+        "clm_study_meta_fort_worth_real_42324937_tarrant_tax_paid_2020"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_meta_fort_worth_real_42324937_assessed_2020"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_account_assessed_value",
+      "project_id": "prj_study_im3_building_00500820007",
+      "year": 2021,
+      "scope_level": "company_county",
+      "scope_label": "MMI Southwest LLC personal-property account 14628223 co-located at 4500 Like Way; not attributed to Meta",
+      "county_fips": "48439",
+      "inventory_allocation": "unallocated",
+      "value": 0.01344789316,
+      "unit": "ratio",
+      "numerator_value": 727.02,
+      "denominator_value": 54062.0,
+      "numerator_claim_ids": [
+        "clm_study_meta_fort_worth_mmi_14628223_tarrant_tax_paid_2021"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_meta_fort_worth_mmi_14628223_assessed_2021"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_account_assessed_value",
+      "project_id": "prj_study_im3_building_00500820007",
+      "year": 2021,
+      "scope_level": "campus",
+      "scope_label": "Winner LLC personal-property account 14401610 at 4500 Like Way",
+      "county_fips": "48439",
+      "inventory_allocation": "unallocated",
+      "value": 0.011176888935,
+      "unit": "ratio",
+      "numerator_value": 15424106.73,
+      "denominator_value": 1380000000.0,
+      "numerator_claim_ids": [
+        "clm_study_meta_fort_worth_personal_14401610_tarrant_tax_paid_2021"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_meta_fort_worth_personal_14401610_assessed_2021"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_account_assessed_value",
+      "project_id": "prj_study_im3_building_00500820007",
+      "year": 2021,
+      "scope_level": "campus",
+      "scope_label": "Winner LLC real-property account 42324937 at 4500 Like Way",
+      "county_fips": "48439",
+      "inventory_allocation": "unallocated",
+      "value": 0.011240546078,
+      "unit": "ratio",
+      "numerator_value": 6501826.68,
+      "denominator_value": 578426229.0,
+      "numerator_claim_ids": [
+        "clm_study_meta_fort_worth_real_42324937_tarrant_tax_paid_2021"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_meta_fort_worth_real_42324937_assessed_2021"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_account_assessed_value",
+      "project_id": "prj_study_im3_building_00500820007",
+      "year": 2022,
+      "scope_level": "company_county",
+      "scope_label": "MMI Southwest LLC personal-property account 14628223 co-located at 4500 Like Way; not attributed to Meta",
+      "county_fips": "48439",
+      "inventory_allocation": "unallocated",
+      "value": 0.013179988543,
+      "unit": "ratio",
+      "numerator_value": 53653.73,
+      "denominator_value": 4070848.0,
+      "numerator_claim_ids": [
+        "clm_study_meta_fort_worth_mmi_14628223_tarrant_tax_paid_2022"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_meta_fort_worth_mmi_14628223_assessed_2022"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_account_assessed_value",
+      "project_id": "prj_study_im3_building_00500820007",
+      "year": 2022,
+      "scope_level": "campus",
+      "scope_label": "Winner LLC personal-property account 14401610 at 4500 Like Way",
+      "county_fips": "48439",
+      "inventory_allocation": "unallocated",
+      "value": 0.010938304847,
+      "unit": "ratio",
+      "numerator_value": 15087582.1,
+      "denominator_value": 1379334578.0,
+      "numerator_claim_ids": [
+        "clm_study_meta_fort_worth_personal_14401610_tarrant_tax_paid_2022"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_meta_fort_worth_personal_14401610_assessed_2022"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_account_assessed_value",
+      "project_id": "prj_study_im3_building_00500820007",
+      "year": 2022,
+      "scope_level": "campus",
+      "scope_label": "Winner LLC real-property account 42324937 at 4500 Like Way",
+      "county_fips": "48439",
+      "inventory_allocation": "unallocated",
+      "value": 0.01099925795,
+      "unit": "ratio",
+      "numerator_value": 6616749.91,
+      "denominator_value": 601563300.0,
+      "numerator_claim_ids": [
+        "clm_study_meta_fort_worth_real_42324937_tarrant_tax_paid_2022"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_meta_fort_worth_real_42324937_assessed_2022"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_account_assessed_value",
+      "project_id": "prj_study_im3_building_00500820007",
+      "year": 2023,
+      "scope_level": "company_county",
+      "scope_label": "MMI Southwest LLC personal-property account 14628223 co-located at 4500 Like Way; not attributed to Meta",
+      "county_fips": "48439",
+      "inventory_allocation": "unallocated",
+      "value": 0.012003698355,
+      "unit": "ratio",
+      "numerator_value": 48860.55,
+      "denominator_value": 4070458.0,
+      "numerator_claim_ids": [
+        "clm_study_meta_fort_worth_mmi_14628223_tarrant_tax_paid_2023"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_meta_fort_worth_mmi_14628223_assessed_2023"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_account_assessed_value",
+      "project_id": "prj_study_im3_building_00500820007",
+      "year": 2023,
+      "scope_level": "campus",
+      "scope_label": "Winner LLC personal-property account 14401610 at 4500 Like Way",
+      "county_fips": "48439",
+      "inventory_allocation": "unallocated",
+      "value": 0.010058726746,
+      "unit": "ratio",
+      "numerator_value": 14835054.72,
+      "denominator_value": 1474844192.0,
+      "numerator_claim_ids": [
+        "clm_study_meta_fort_worth_personal_14401610_tarrant_tax_paid_2023"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_meta_fort_worth_personal_14401610_assessed_2023"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_account_assessed_value",
+      "project_id": "prj_study_im3_building_00500820007",
+      "year": 2023,
+      "scope_level": "campus",
+      "scope_label": "Winner LLC real-property account 42324937 at 4500 Like Way",
+      "county_fips": "48439",
+      "inventory_allocation": "unallocated",
+      "value": 0.010111612228,
+      "unit": "ratio",
+      "numerator_value": 6082774.82,
+      "denominator_value": 601563300.0,
+      "numerator_claim_ids": [
+        "clm_study_meta_fort_worth_real_42324937_tarrant_tax_paid_2023"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_meta_fort_worth_real_42324937_assessed_2023"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_account_assessed_value",
+      "project_id": "prj_study_im3_building_00500820007",
+      "year": 2024,
+      "scope_level": "company_county",
+      "scope_label": "MMI Southwest LLC personal-property account 14628223 co-located at 4500 Like Way; not attributed to Meta",
+      "county_fips": "48439",
+      "inventory_allocation": "unallocated",
+      "value": 0.011814799472,
+      "unit": "ratio",
+      "numerator_value": 95513.45,
+      "denominator_value": 8084221.0,
+      "numerator_claim_ids": [
+        "clm_study_meta_fort_worth_mmi_14628223_tarrant_tax_paid_2024"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_meta_fort_worth_mmi_14628223_assessed_2024"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_account_assessed_value",
+      "project_id": "prj_study_im3_building_00500820007",
+      "year": 2024,
+      "scope_level": "campus",
+      "scope_label": "Winner LLC personal-property account 14401610 at 4500 Like Way",
+      "county_fips": "48439",
+      "inventory_allocation": "unallocated",
+      "value": 0.009959823962,
+      "unit": "ratio",
+      "numerator_value": 16014340.98,
+      "denominator_value": 1607893979.0,
+      "numerator_claim_ids": [
+        "clm_study_meta_fort_worth_personal_14401610_tarrant_tax_paid_2024"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_meta_fort_worth_personal_14401610_assessed_2024"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_account_assessed_value",
+      "project_id": "prj_study_im3_building_00500820007",
+      "year": 2024,
+      "scope_level": "campus",
+      "scope_label": "Winner LLC real-property account 42324937 at 4500 Like Way",
+      "county_fips": "48439",
+      "inventory_allocation": "unallocated",
+      "value": 0.010006742958,
+      "unit": "ratio",
+      "numerator_value": 6471166.03,
+      "denominator_value": 646680549.0,
+      "numerator_claim_ids": [
+        "clm_study_meta_fort_worth_real_42324937_tarrant_tax_paid_2024"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_meta_fort_worth_real_42324937_assessed_2024"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_account_assessed_value",
+      "project_id": "prj_study_im3_building_00598261190",
+      "year": 2021,
+      "scope_level": "company_county",
+      "scope_label": "HMC Data Center 2 LLC / State Farm parcel, 24400 W Valley Parkway, quick ref R662349",
+      "county_fips": "20091",
+      "inventory_allocation": "unallocated",
+      "value": 0.125009999937,
+      "unit": "ratio",
+      "numerator_value": 2010360.94,
+      "denominator_value": 16081601.0,
+      "numerator_claim_ids": [
+        "clm_study_state_farm_olathe_property_taxes_paid_2021"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_state_farm_olathe_assessed_value_2021"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_account_assessed_value",
+      "project_id": "prj_study_im3_building_00598261190",
+      "year": 2022,
+      "scope_level": "company_county",
+      "scope_label": "HMC Data Center 2 LLC / State Farm parcel, 24400 W Valley Parkway, quick ref R662349",
+      "county_fips": "20091",
+      "inventory_allocation": "unallocated",
+      "value": 0.120319000058,
+      "unit": "ratio",
+      "numerator_value": 1908311.8,
+      "denominator_value": 15860436.0,
+      "numerator_claim_ids": [
+        "clm_study_state_farm_olathe_property_taxes_paid_2022"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_state_farm_olathe_assessed_value_2022"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_account_assessed_value",
+      "project_id": "prj_study_im3_building_00598261190",
+      "year": 2023,
+      "scope_level": "company_county",
+      "scope_label": "HMC Data Center 2 LLC / State Farm parcel, 24400 W Valley Parkway, quick ref R662349",
+      "county_fips": "20091",
+      "inventory_allocation": "unallocated",
+      "value": 0.117017000031,
+      "unit": "ratio",
+      "numerator_value": 2352477.94,
+      "denominator_value": 20103728.0,
+      "numerator_claim_ids": [
+        "clm_study_state_farm_olathe_property_taxes_paid_2023"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_state_farm_olathe_assessed_value_2023"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_account_assessed_value",
+      "project_id": "prj_study_im3_building_00598261190",
+      "year": 2024,
+      "scope_level": "company_county",
+      "scope_label": "HMC Data Center 2 LLC / State Farm parcel, 24400 W Valley Parkway, quick ref R662349",
+      "county_fips": "20091",
+      "inventory_allocation": "unallocated",
+      "value": 0.116448000155,
+      "unit": "ratio",
+      "numerator_value": 2661273.6,
+      "denominator_value": 22853751.0,
+      "numerator_claim_ids": [
+        "clm_study_state_farm_olathe_property_taxes_paid_2024"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_state_farm_olathe_assessed_value_2024"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_account_assessed_value",
+      "project_id": "prj_study_im3_building_00838817907",
+      "year": 2013,
+      "scope_level": "campus",
+      "scope_label": "Real-property parcel 141-061-08, 1805 Center Park Drive; TierPoint CL4 tenant-occupied building",
+      "county_fips": "37119",
+      "inventory_allocation": "unallocated",
+      "value": 0.012843997004,
+      "unit": "ratio",
+      "numerator_value": 22294.61,
+      "denominator_value": 1735800.0,
+      "numerator_claim_ids": [
+        "clm_study_tierpoint_cl4_property_taxes_paid_2013"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_tierpoint_cl4_assessed_value_2013"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_account_assessed_value",
+      "project_id": "prj_study_im3_building_00838817907",
+      "year": 2014,
+      "scope_level": "campus",
+      "scope_label": "Real-property parcel 141-061-08, 1805 Center Park Drive; TierPoint CL4 tenant-occupied building",
+      "county_fips": "37119",
+      "inventory_allocation": "unallocated",
+      "value": 0.012843997004,
+      "unit": "ratio",
+      "numerator_value": 22294.61,
+      "denominator_value": 1735800.0,
+      "numerator_claim_ids": [
+        "clm_study_tierpoint_cl4_property_taxes_paid_2014"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_tierpoint_cl4_assessed_value_2014"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_account_assessed_value",
+      "project_id": "prj_study_im3_building_00838817907",
+      "year": 2015,
+      "scope_level": "campus",
+      "scope_label": "Real-property parcel 141-061-08, 1805 Center Park Drive; TierPoint CL4 tenant-occupied building",
+      "county_fips": "37119",
+      "inventory_allocation": "unallocated",
+      "value": 0.012943997004,
+      "unit": "ratio",
+      "numerator_value": 22468.19,
+      "denominator_value": 1735800.0,
+      "numerator_claim_ids": [
+        "clm_study_tierpoint_cl4_property_taxes_paid_2015"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_tierpoint_cl4_assessed_value_2015"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_account_assessed_value",
+      "project_id": "prj_study_im3_building_00838817907",
+      "year": 2016,
+      "scope_level": "campus",
+      "scope_label": "Real-property parcel 141-061-08, 1805 Center Park Drive; TierPoint CL4 tenant-occupied building",
+      "county_fips": "37119",
+      "inventory_allocation": "unallocated",
+      "value": 0.012943997004,
+      "unit": "ratio",
+      "numerator_value": 22468.19,
+      "denominator_value": 1735800.0,
+      "numerator_claim_ids": [
+        "clm_study_tierpoint_cl4_property_taxes_paid_2016"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_tierpoint_cl4_assessed_value_2016"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_account_assessed_value",
+      "project_id": "prj_study_im3_building_00838817907",
+      "year": 2017,
+      "scope_level": "campus",
+      "scope_label": "Real-property parcel 141-061-08, 1805 Center Park Drive; TierPoint CL4 tenant-occupied building",
+      "county_fips": "37119",
+      "inventory_allocation": "unallocated",
+      "value": 0.012943997004,
+      "unit": "ratio",
+      "numerator_value": 22468.19,
+      "denominator_value": 1735800.0,
+      "numerator_claim_ids": [
+        "clm_study_tierpoint_cl4_property_taxes_paid_2017"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_tierpoint_cl4_assessed_value_2017"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_account_assessed_value",
+      "project_id": "prj_study_im3_building_00838817907",
+      "year": 2018,
+      "scope_level": "campus",
+      "scope_label": "Real-property parcel 141-061-08, 1805 Center Park Drive; TierPoint CL4 tenant-occupied building",
+      "county_fips": "37119",
+      "inventory_allocation": "unallocated",
+      "value": 0.013118999885,
+      "unit": "ratio",
+      "numerator_value": 22771.96,
+      "denominator_value": 1735800.0,
+      "numerator_claim_ids": [
+        "clm_study_tierpoint_cl4_property_taxes_paid_2018"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_tierpoint_cl4_assessed_value_2018"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_account_assessed_value",
+      "project_id": "prj_study_im3_building_00838817907",
+      "year": 2019,
+      "scope_level": "campus",
+      "scope_label": "Real-property parcel 141-061-08, 1805 Center Park Drive; TierPoint CL4 tenant-occupied building",
+      "county_fips": "37119",
+      "inventory_allocation": "unallocated",
+      "value": 0.00965,
+      "unit": "ratio",
+      "numerator_value": 63684.21,
+      "denominator_value": 6599400.0,
+      "numerator_claim_ids": [
+        "clm_study_tierpoint_cl4_property_taxes_paid_2019"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_tierpoint_cl4_assessed_value_2019"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_account_assessed_value",
+      "project_id": "prj_study_im3_building_00838817907",
+      "year": 2020,
+      "scope_level": "campus",
+      "scope_label": "Real-property parcel 141-061-08, 1805 Center Park Drive; TierPoint CL4 tenant-occupied building",
+      "county_fips": "37119",
+      "inventory_allocation": "unallocated",
+      "value": 0.00965,
+      "unit": "ratio",
+      "numerator_value": 63684.21,
+      "denominator_value": 6599400.0,
+      "numerator_claim_ids": [
+        "clm_study_tierpoint_cl4_property_taxes_paid_2020"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_tierpoint_cl4_assessed_value_2020"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_account_assessed_value",
+      "project_id": "prj_study_im3_building_00838817907",
+      "year": 2021,
+      "scope_level": "campus",
+      "scope_label": "Real-property parcel 141-061-08, 1805 Center Park Drive; TierPoint CL4 tenant-occupied building",
+      "county_fips": "37119",
+      "inventory_allocation": "unallocated",
+      "value": 0.00965,
+      "unit": "ratio",
+      "numerator_value": 63684.21,
+      "denominator_value": 6599400.0,
+      "numerator_claim_ids": [
+        "clm_study_tierpoint_cl4_property_taxes_paid_2021"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_tierpoint_cl4_assessed_value_2021"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_account_assessed_value",
+      "project_id": "prj_study_im3_building_00838817907",
+      "year": 2022,
+      "scope_level": "campus",
+      "scope_label": "Real-property parcel 141-061-08, 1805 Center Park Drive; TierPoint CL4 tenant-occupied building",
+      "county_fips": "37119",
+      "inventory_allocation": "unallocated",
+      "value": 0.00965,
+      "unit": "ratio",
+      "numerator_value": 63684.21,
+      "denominator_value": 6599400.0,
+      "numerator_claim_ids": [
+        "clm_study_tierpoint_cl4_property_taxes_paid_2022"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_tierpoint_cl4_assessed_value_2022"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_account_assessed_value",
+      "project_id": "prj_study_im3_building_00838817907",
+      "year": 2023,
+      "scope_level": "campus",
+      "scope_label": "Real-property parcel 141-061-08, 1805 Center Park Drive; TierPoint CL4 tenant-occupied building",
+      "county_fips": "37119",
+      "inventory_allocation": "unallocated",
+      "value": 0.007335000125,
+      "unit": "ratio",
+      "numerator_value": 88042.74,
+      "denominator_value": 12003100.0,
+      "numerator_claim_ids": [
+        "clm_study_tierpoint_cl4_property_taxes_paid_2023"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_tierpoint_cl4_assessed_value_2023"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_account_assessed_value",
+      "project_id": "prj_study_im3_building_00838817907",
+      "year": 2024,
+      "scope_level": "campus",
+      "scope_label": "Real-property parcel 141-061-08, 1805 Center Park Drive; TierPoint CL4 tenant-occupied building",
+      "county_fips": "37119",
+      "inventory_allocation": "unallocated",
+      "value": 0.007572000567,
+      "unit": "ratio",
+      "numerator_value": 90887.48,
+      "denominator_value": 12003100.0,
+      "numerator_claim_ids": [
+        "clm_study_tierpoint_cl4_property_taxes_paid_2024"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_tierpoint_cl4_assessed_value_2024"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_account_assessed_value",
+      "project_id": "prj_study_im3_building_00844371952",
+      "year": 2020,
+      "scope_level": "campus",
+      "scope_label": "Design LLC personal-property account 151342 (PPIN 50327) at 48809 AL Hwy 277",
+      "county_fips": "01071",
+      "inventory_allocation": "unallocated",
+      "value": 0.013,
+      "unit": "ratio",
+      "numerator_value": 109983.64,
+      "denominator_value": 8460280.0,
+      "numerator_claim_ids": [
+        "clm_study_google_bridgeport_design_tax_paid_2020"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_google_bridgeport_design_assessed_2020"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_account_assessed_value",
+      "project_id": "prj_study_im3_building_00844371952",
+      "year": 2020,
+      "scope_level": "campus",
+      "scope_label": "Eight Wiessner real parcels in account 98353",
+      "county_fips": "01071",
+      "inventory_allocation": "unallocated",
+      "value": 0.03,
+      "unit": "ratio",
+      "numerator_value": 542938.8,
+      "denominator_value": 18097960.0,
+      "numerator_claim_ids": [
+        "clm_study_google_bridgeport_wiessner_real_tax_paid_2020"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_google_bridgeport_wiessner_real_assessed_2020"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_account_assessed_value",
+      "project_id": "prj_study_im3_building_00844371952",
+      "year": 2020,
+      "scope_level": "campus",
+      "scope_label": "Google LLC personal-property account 151335 (PPIN 50326) at 48809 AL Hwy 277",
+      "county_fips": "01071",
+      "inventory_allocation": "unallocated",
+      "value": 0.013,
+      "unit": "ratio",
+      "numerator_value": 892.32,
+      "denominator_value": 68640.0,
+      "numerator_claim_ids": [
+        "clm_study_google_bridgeport_google_tax_paid_2020"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_google_bridgeport_google_assessed_2020"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_account_assessed_value",
+      "project_id": "prj_study_im3_building_00844371952",
+      "year": 2020,
+      "scope_level": "campus",
+      "scope_label": "Wiessner Enterprises LLC personal-property account 151344 (PPIN 50328) at 48809 AL Hwy 277",
+      "county_fips": "01071",
+      "inventory_allocation": "unallocated",
+      "value": 0.028,
+      "unit": "ratio",
+      "numerator_value": 668.08,
+      "denominator_value": 23860.0,
+      "numerator_claim_ids": [
+        "clm_study_google_bridgeport_wiessner_tax_paid_2020"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_google_bridgeport_wiessner_assessed_2020"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_account_assessed_value",
+      "project_id": "prj_study_im3_building_00844371952",
+      "year": 2021,
+      "scope_level": "campus",
+      "scope_label": "Design LLC personal-property account 151342 (PPIN 50327) at 48809 AL Hwy 277",
+      "county_fips": "01071",
+      "inventory_allocation": "unallocated",
+      "value": 0.013,
+      "unit": "ratio",
+      "numerator_value": 766668.5,
+      "denominator_value": 58974500.0,
+      "numerator_claim_ids": [
+        "clm_study_google_bridgeport_design_tax_paid_2021"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_google_bridgeport_design_assessed_2021"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_account_assessed_value",
+      "project_id": "prj_study_im3_building_00844371952",
+      "year": 2021,
+      "scope_level": "campus",
+      "scope_label": "Eight Wiessner real parcels in account 98353",
+      "county_fips": "01071",
+      "inventory_allocation": "unallocated",
+      "value": 0.01506619638,
+      "unit": "ratio",
+      "numerator_value": 386485.0,
+      "denominator_value": 25652460.0,
+      "numerator_claim_ids": [
+        "clm_study_google_bridgeport_wiessner_real_tax_paid_2021"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_google_bridgeport_wiessner_real_assessed_2021"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_account_assessed_value",
+      "project_id": "prj_study_im3_building_00844371952",
+      "year": 2021,
+      "scope_level": "campus",
+      "scope_label": "Google LLC personal-property account 151335 (PPIN 50326) at 48809 AL Hwy 277",
+      "county_fips": "01071",
+      "inventory_allocation": "unallocated",
+      "value": 0.013,
+      "unit": "ratio",
+      "numerator_value": 5157.62,
+      "denominator_value": 396740.0,
+      "numerator_claim_ids": [
+        "clm_study_google_bridgeport_google_tax_paid_2021"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_google_bridgeport_google_assessed_2021"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_account_assessed_value",
+      "project_id": "prj_study_im3_building_00844371952",
+      "year": 2021,
+      "scope_level": "campus",
+      "scope_label": "Wiessner Enterprises LLC personal-property account 151344 (PPIN 50328) at 48809 AL Hwy 277",
+      "county_fips": "01071",
+      "inventory_allocation": "unallocated",
+      "value": 0.013,
+      "unit": "ratio",
+      "numerator_value": 941694.26,
+      "denominator_value": 72438020.0,
+      "numerator_claim_ids": [
+        "clm_study_google_bridgeport_wiessner_tax_paid_2021"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_google_bridgeport_wiessner_assessed_2021"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_account_assessed_value",
+      "project_id": "prj_study_im3_building_00844371952",
+      "year": 2022,
+      "scope_level": "campus",
+      "scope_label": "Design LLC personal-property account 151342 (PPIN 50327) at 48809 AL Hwy 277",
+      "county_fips": "01071",
+      "inventory_allocation": "unallocated",
+      "value": 0.013,
+      "unit": "ratio",
+      "numerator_value": 558964.64,
+      "denominator_value": 42997280.0,
+      "numerator_claim_ids": [
+        "clm_study_google_bridgeport_design_tax_paid_2022"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_google_bridgeport_design_assessed_2022"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_account_assessed_value",
+      "project_id": "prj_study_im3_building_00844371952",
+      "year": 2022,
+      "scope_level": "campus",
+      "scope_label": "Eight Wiessner real parcels in account 98353",
+      "county_fips": "01071",
+      "inventory_allocation": "unallocated",
+      "value": 0.015061617163,
+      "unit": "ratio",
+      "numerator_value": 415081.3,
+      "denominator_value": 27558880.0,
+      "numerator_claim_ids": [
+        "clm_study_google_bridgeport_wiessner_real_tax_paid_2022"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_google_bridgeport_wiessner_real_assessed_2022"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_account_assessed_value",
+      "project_id": "prj_study_im3_building_00844371952",
+      "year": 2022,
+      "scope_level": "campus",
+      "scope_label": "Google LLC personal-property account 151335 (PPIN 50326) at 48809 AL Hwy 277",
+      "county_fips": "01071",
+      "inventory_allocation": "unallocated",
+      "value": 0.013,
+      "unit": "ratio",
+      "numerator_value": 6299.02,
+      "denominator_value": 484540.0,
+      "numerator_claim_ids": [
+        "clm_study_google_bridgeport_google_tax_paid_2022"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_google_bridgeport_google_assessed_2022"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_account_assessed_value",
+      "project_id": "prj_study_im3_building_00844371952",
+      "year": 2022,
+      "scope_level": "campus",
+      "scope_label": "Wiessner Enterprises LLC personal-property account 151344 (PPIN 50328) at 48809 AL Hwy 277",
+      "county_fips": "01071",
+      "inventory_allocation": "unallocated",
+      "value": 0.013,
+      "unit": "ratio",
+      "numerator_value": 963215.5,
+      "denominator_value": 74093500.0,
+      "numerator_claim_ids": [
+        "clm_study_google_bridgeport_wiessner_tax_paid_2022"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_google_bridgeport_wiessner_assessed_2022"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_account_assessed_value",
+      "project_id": "prj_study_im3_building_00844371952",
+      "year": 2023,
+      "scope_level": "campus",
+      "scope_label": "Design LLC personal-property account 151342 (PPIN 50327) at 48809 AL Hwy 277",
+      "county_fips": "01071",
+      "inventory_allocation": "unallocated",
+      "value": 0.013,
+      "unit": "ratio",
+      "numerator_value": 1162992.22,
+      "denominator_value": 89460940.0,
+      "numerator_claim_ids": [
+        "clm_study_google_bridgeport_design_tax_paid_2023"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_google_bridgeport_design_assessed_2023"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_account_assessed_value",
+      "project_id": "prj_study_im3_building_00844371952",
+      "year": 2023,
+      "scope_level": "campus",
+      "scope_label": "Eight Wiessner real parcels in account 98353",
+      "county_fips": "01071",
+      "inventory_allocation": "unallocated",
+      "value": 0.015062701191,
+      "unit": "ratio",
+      "numerator_value": 415141.3,
+      "denominator_value": 27560880.0,
+      "numerator_claim_ids": [
+        "clm_study_google_bridgeport_wiessner_real_tax_paid_2023"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_google_bridgeport_wiessner_real_assessed_2023"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_account_assessed_value",
+      "project_id": "prj_study_im3_building_00844371952",
+      "year": 2023,
+      "scope_level": "campus",
+      "scope_label": "Google LLC personal-property account 151335 (PPIN 50326) at 48809 AL Hwy 277",
+      "county_fips": "01071",
+      "inventory_allocation": "unallocated",
+      "value": 0.013,
+      "unit": "ratio",
+      "numerator_value": 7407.4,
+      "denominator_value": 569800.0,
+      "numerator_claim_ids": [
+        "clm_study_google_bridgeport_google_tax_paid_2023"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_google_bridgeport_google_assessed_2023"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_account_assessed_value",
+      "project_id": "prj_study_im3_building_00844371952",
+      "year": 2023,
+      "scope_level": "campus",
+      "scope_label": "Wiessner Enterprises LLC personal-property account 151344 (PPIN 50328) at 48809 AL Hwy 277",
+      "county_fips": "01071",
+      "inventory_allocation": "unallocated",
+      "value": 0.013,
+      "unit": "ratio",
+      "numerator_value": 935007.58,
+      "denominator_value": 71923660.0,
+      "numerator_claim_ids": [
+        "clm_study_google_bridgeport_wiessner_tax_paid_2023"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_google_bridgeport_wiessner_assessed_2023"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_account_assessed_value",
+      "project_id": "prj_study_im3_building_00844371952",
+      "year": 2024,
+      "scope_level": "campus",
+      "scope_label": "Design LLC personal-property account 151342 (PPIN 50327) at 48809 AL Hwy 277",
+      "county_fips": "01071",
+      "inventory_allocation": "unallocated",
+      "value": 0.01299981501,
+      "unit": "ratio",
+      "numerator_value": 1686550.24,
+      "denominator_value": 129736480.0,
+      "numerator_claim_ids": [
+        "clm_study_google_bridgeport_design_tax_paid_2024"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_google_bridgeport_design_assessed_2024"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_account_assessed_value",
+      "project_id": "prj_study_im3_building_00844371952",
+      "year": 2024,
+      "scope_level": "campus",
+      "scope_label": "Eight Wiessner real parcels in account 98353",
+      "county_fips": "01071",
+      "inventory_allocation": "unallocated",
+      "value": 0.015062701191,
+      "unit": "ratio",
+      "numerator_value": 415141.3,
+      "denominator_value": 27560880.0,
+      "numerator_claim_ids": [
+        "clm_study_google_bridgeport_wiessner_real_tax_paid_2024"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_google_bridgeport_wiessner_real_assessed_2024"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_account_assessed_value",
+      "project_id": "prj_study_im3_building_00844371952",
+      "year": 2024,
+      "scope_level": "campus",
+      "scope_label": "Google LLC personal-property account 151335 (PPIN 50326) at 48809 AL Hwy 277",
+      "county_fips": "01071",
+      "inventory_allocation": "unallocated",
+      "value": 0.012940944882,
+      "unit": "ratio",
+      "numerator_value": 5259.2,
+      "denominator_value": 406400.0,
+      "numerator_claim_ids": [
+        "clm_study_google_bridgeport_google_tax_paid_2024"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_google_bridgeport_google_assessed_2024"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_account_assessed_value",
+      "project_id": "prj_study_im3_building_00844371952",
+      "year": 2024,
+      "scope_level": "campus",
+      "scope_label": "Wiessner Enterprises LLC personal-property account 151344 (PPIN 50328) at 48809 AL Hwy 277",
+      "county_fips": "01071",
+      "inventory_allocation": "unallocated",
+      "value": 0.012999663987,
+      "unit": "ratio",
+      "numerator_value": 928511.92,
+      "denominator_value": 71425840.0,
+      "numerator_claim_ids": [
+        "clm_study_google_bridgeport_wiessner_tax_paid_2024"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_google_bridgeport_wiessner_assessed_2024"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_account_assessed_value",
+      "project_id": "prj_study_im3_building_00978934687",
+      "year": 2024,
+      "scope_level": "company_county",
+      "scope_label": "DX Hammond JV LLC personal-property account 45-123-00809-00, 100 Digital Crossroad Drive",
+      "county_fips": "18089",
+      "inventory_allocation": "unallocated",
+      "value": 0.032103999814,
+      "unit": "ratio",
+      "numerator_value": 1020970.76,
+      "denominator_value": 31801980.0,
+      "numerator_claim_ids": [
+        "clm_study_dx_hammond_jv_personal_taxes_paid_2024"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_dx_hammond_jv_personal_assessed_value_2024"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_account_assessed_value",
+      "project_id": "prj_study_im3_building_00978934687",
+      "year": 2024,
+      "scope_level": "company_county",
+      "scope_label": "Digital Crossroad DX-1 leasehold parcel 45-01-36-176-005.000-023, 100 Digital Crossroads Drive",
+      "county_fips": "18089",
+      "inventory_allocation": "unallocated",
+      "value": 0.032104000961,
+      "unit": "ratio",
+      "numerator_value": 641685.14,
+      "denominator_value": 19987700.0,
+      "numerator_claim_ids": [
+        "clm_study_digital_crossroad_property_taxes_paid_2024"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_digital_crossroad_assessed_value_2024"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_account_assessed_value",
+      "project_id": "prj_study_im3_building_01073720208",
+      "year": 2024,
+      "scope_level": "company_county",
+      "scope_label": "Tetra LLC industrial parcel 744411476005, 1430 Veterans Memorial Highway",
+      "county_fips": "19155",
+      "inventory_allocation": "unallocated",
+      "value": 0.033869841207,
+      "unit": "ratio",
+      "numerator_value": 2063852.0,
+      "denominator_value": 60934800.0,
+      "numerator_claim_ids": [
+        "clm_study_google_tetra_property_taxes_paid_2024"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_google_tetra_assessed_value_2024"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_account_assessed_value",
+      "project_id": "prj_study_im3_campus_00578435601",
+      "year": 2023,
+      "scope_level": "campus",
+      "scope_label": "Google Inc. personal-property account P88150 at 300 Riverside Parkway",
+      "county_fips": "13097",
+      "inventory_allocation": "unallocated",
+      "value": 0.031802999834,
+      "unit": "ratio",
+      "numerator_value": 365273.45,
+      "denominator_value": 11485503.0,
+      "numerator_claim_ids": [
+        "clm_study_google_douglas_p88150_property_taxes_paid_2023"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_google_douglas_p88150_assessed_2023"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_account_assessed_value",
+      "project_id": "prj_study_im3_campus_00578435601",
+      "year": 2024,
+      "scope_level": "campus",
+      "scope_label": "Google Inc. personal-property account P88150 at 300 Riverside Parkway",
+      "county_fips": "13097",
+      "inventory_allocation": "unallocated",
+      "value": 0.031462999709,
+      "unit": "ratio",
+      "numerator_value": 346072.42,
+      "denominator_value": 10999346.0,
+      "numerator_claim_ids": [
+        "clm_study_google_douglas_p88150_property_taxes_paid_2024"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_google_douglas_p88150_assessed_2024"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_account_assessed_value",
+      "project_id": "prj_study_im3_point_06685432442",
+      "year": 2016,
+      "scope_level": "campus",
+      "scope_label": "Switch Ltd. personal-property account CM001611, 1 Superloop Circle, Citadel campus",
+      "county_fips": "32029",
+      "inventory_allocation": "unallocated",
+      "value": 0.471182700265,
+      "unit": "ratio",
+      "numerator_value": 1964.29,
+      "denominator_value": 4168.85,
+      "numerator_claim_ids": [
+        "clm_study_switch_citadel_property_taxes_paid_2016"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_switch_citadel_assessed_value_2016"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_account_assessed_value",
+      "project_id": "prj_study_im3_point_06685432442",
+      "year": 2017,
+      "scope_level": "campus",
+      "scope_label": "Switch Ltd. personal-property account CM001611, 1 Superloop Circle, Citadel campus",
+      "county_fips": "32029",
+      "inventory_allocation": "unallocated",
+      "value": 2.077101428208,
+      "unit": "ratio",
+      "numerator_value": 2857.78,
+      "denominator_value": 1375.85,
+      "numerator_claim_ids": [
+        "clm_study_switch_citadel_property_taxes_paid_2017"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_switch_citadel_assessed_value_2017"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_account_assessed_value",
+      "project_id": "prj_study_im3_point_06685432442",
+      "year": 2018,
+      "scope_level": "campus",
+      "scope_label": "Switch Ltd. personal-property account CM001611, 1 Superloop Circle, Citadel campus",
+      "county_fips": "32029",
+      "inventory_allocation": "unallocated",
+      "value": 0.013429189051,
+      "unit": "ratio",
+      "numerator_value": 176884.49,
+      "denominator_value": 13171643.45,
+      "numerator_claim_ids": [
+        "clm_study_switch_citadel_property_taxes_paid_2018"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_switch_citadel_assessed_value_2018"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_account_assessed_value",
+      "project_id": "prj_study_im3_point_06685432442",
+      "year": 2020,
+      "scope_level": "campus",
+      "scope_label": "Switch Ltd. personal-property account CM001611, 1 Superloop Circle, Citadel campus",
+      "county_fips": "32029",
+      "inventory_allocation": "unallocated",
+      "value": 0.009359629075,
+      "unit": "ratio",
+      "numerator_value": 439449.67,
+      "denominator_value": 46951611.7,
+      "numerator_claim_ids": [
+        "clm_study_switch_citadel_property_taxes_paid_2020"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_switch_citadel_assessed_value_2020"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_account_assessed_value",
+      "project_id": "prj_study_im3_point_06685432442",
+      "year": 2021,
+      "scope_level": "campus",
+      "scope_label": "Switch Ltd. personal-property account CM001611, 1 Superloop Circle, Citadel campus",
+      "county_fips": "32029",
+      "inventory_allocation": "unallocated",
+      "value": 0.00865175071,
+      "unit": "ratio",
+      "numerator_value": 529328.71,
+      "denominator_value": 61181687.7,
+      "numerator_claim_ids": [
+        "clm_study_switch_citadel_property_taxes_paid_2021"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_switch_citadel_assessed_value_2021"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_account_assessed_value",
+      "project_id": "prj_study_im3_point_06685432442",
+      "year": 2022,
+      "scope_level": "campus",
+      "scope_label": "Switch Ltd. personal-property account CM001611, 1 Superloop Circle, Citadel campus",
+      "county_fips": "32029",
+      "inventory_allocation": "unallocated",
+      "value": 0.008651139747,
+      "unit": "ratio",
+      "numerator_value": 765788.23,
+      "denominator_value": 88518767.75,
+      "numerator_claim_ids": [
+        "clm_study_switch_citadel_property_taxes_paid_2022"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_switch_citadel_assessed_value_2022"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_account_assessed_value",
+      "project_id": "prj_study_im3_point_06685432442",
+      "year": 2023,
+      "scope_level": "campus",
+      "scope_label": "Switch Ltd. personal-property account CM001611, 1 Superloop Circle, Citadel campus",
+      "county_fips": "32029",
+      "inventory_allocation": "unallocated",
+      "value": 0.008651738451,
+      "unit": "ratio",
+      "numerator_value": 1007641.84,
+      "denominator_value": 116466978.95,
+      "numerator_claim_ids": [
+        "clm_study_switch_citadel_property_taxes_paid_2023"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_switch_citadel_assessed_value_2023"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_account_assessed_value",
+      "project_id": "prj_study_im3_point_06685432442",
+      "year": 2024,
+      "scope_level": "campus",
+      "scope_label": "NV RNO 1, LLC real-property parcel 005-012-23, 1 Superloop Circle Citadel data-center buildings",
+      "county_fips": "32029",
+      "inventory_allocation": "unallocated",
+      "value": 0.03241676231,
+      "unit": "ratio",
+      "numerator_value": 2239229.35,
+      "denominator_value": 69076280.0,
+      "numerator_claim_ids": [
+        "clm_study_switch_citadel_real_property_taxes_paid_2024"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_switch_citadel_real_assessed_value_2024"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_account_assessed_value",
+      "project_id": "prj_study_im3_point_06685432442",
+      "year": 2024,
+      "scope_level": "campus",
+      "scope_label": "Switch Ltd. personal-property account CM001611, 1 Superloop Circle, Citadel campus",
+      "county_fips": "32029",
+      "inventory_allocation": "unallocated",
+      "value": 0.008651749086,
+      "unit": "ratio",
+      "numerator_value": 1567523.17,
+      "denominator_value": 181179915.7,
+      "numerator_claim_ids": [
+        "clm_study_switch_citadel_property_taxes_paid_2024"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_switch_citadel_assessed_value_2024"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_appraised_value",
+      "project_id": "prj_study_im3_building_00598261190",
+      "year": 2021,
+      "scope_level": "company_county",
+      "scope_label": "HMC Data Center 2 LLC / State Farm parcel, 24400 W Valley Parkway, quick ref R662349",
+      "county_fips": "20091",
+      "inventory_allocation": "unallocated",
+      "value": 0.031252501928,
+      "unit": "ratio",
+      "numerator_value": 2010360.94,
+      "denominator_value": 64326400.0,
+      "numerator_claim_ids": [
+        "clm_study_state_farm_olathe_property_taxes_paid_2021"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_state_farm_olathe_appraised_value_2021"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_appraised_value",
+      "project_id": "prj_study_im3_building_00598261190",
+      "year": 2022,
+      "scope_level": "company_county",
+      "scope_label": "HMC Data Center 2 LLC / State Farm parcel, 24400 W Valley Parkway, quick ref R662349",
+      "county_fips": "20091",
+      "inventory_allocation": "unallocated",
+      "value": 0.030079751911,
+      "unit": "ratio",
+      "numerator_value": 1908311.8,
+      "denominator_value": 63441740.0,
+      "numerator_claim_ids": [
+        "clm_study_state_farm_olathe_property_taxes_paid_2022"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_state_farm_olathe_appraised_value_2022"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_appraised_value",
+      "project_id": "prj_study_im3_building_00598261190",
+      "year": 2023,
+      "scope_level": "company_county",
+      "scope_label": "HMC Data Center 2 LLC / State Farm parcel, 24400 W Valley Parkway, quick ref R662349",
+      "county_fips": "20091",
+      "inventory_allocation": "unallocated",
+      "value": 0.029254250735,
+      "unit": "ratio",
+      "numerator_value": 2352477.94,
+      "denominator_value": 80414910.0,
+      "numerator_claim_ids": [
+        "clm_study_state_farm_olathe_property_taxes_paid_2023"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_state_farm_olathe_appraised_value_2023"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_appraised_value",
+      "project_id": "prj_study_im3_building_00598261190",
+      "year": 2024,
+      "scope_level": "company_county",
+      "scope_label": "HMC Data Center 2 LLC / State Farm parcel, 24400 W Valley Parkway, quick ref R662349",
+      "county_fips": "20091",
+      "inventory_allocation": "unallocated",
+      "value": 0.029112001313,
+      "unit": "ratio",
+      "numerator_value": 2661273.6,
+      "denominator_value": 91415000.0,
+      "numerator_claim_ids": [
+        "clm_study_state_farm_olathe_property_taxes_paid_2024"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_state_farm_olathe_appraised_value_2024"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_appraised_value",
+      "project_id": "prj_study_im3_building_00844371952",
+      "year": 2020,
+      "scope_level": "campus",
+      "scope_label": "Design LLC personal-property account 151342 (PPIN 50327) at 48809 AL Hwy 277",
+      "county_fips": "01071",
+      "inventory_allocation": "unallocated",
+      "value": 0.002600002581,
+      "unit": "ratio",
+      "numerator_value": 109983.64,
+      "denominator_value": 42301358.0,
+      "numerator_claim_ids": [
+        "clm_study_google_bridgeport_design_tax_paid_2020"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_google_bridgeport_design_appraised_2020"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_appraised_value",
+      "project_id": "prj_study_im3_building_00844371952",
+      "year": 2020,
+      "scope_level": "campus",
+      "scope_label": "Eight Wiessner real parcels in account 98353",
+      "county_fips": "01071",
+      "inventory_allocation": "unallocated",
+      "value": 0.006,
+      "unit": "ratio",
+      "numerator_value": 542938.8,
+      "denominator_value": 90489800.0,
+      "numerator_claim_ids": [
+        "clm_study_google_bridgeport_wiessner_real_tax_paid_2020"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_google_bridgeport_wiessner_real_appraised_2020"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_appraised_value",
+      "project_id": "prj_study_im3_building_00844371952",
+      "year": 2020,
+      "scope_level": "campus",
+      "scope_label": "Google LLC personal-property account 151335 (PPIN 50326) at 48809 AL Hwy 277",
+      "county_fips": "01071",
+      "inventory_allocation": "unallocated",
+      "value": 0.002600340954,
+      "unit": "ratio",
+      "numerator_value": 892.32,
+      "denominator_value": 343155.0,
+      "numerator_claim_ids": [
+        "clm_study_google_bridgeport_google_tax_paid_2020"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_google_bridgeport_google_appraised_2020"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_appraised_value",
+      "project_id": "prj_study_im3_building_00844371952",
+      "year": 2020,
+      "scope_level": "campus",
+      "scope_label": "Wiessner Enterprises LLC personal-property account 151344 (PPIN 50328) at 48809 AL Hwy 277",
+      "county_fips": "01071",
+      "inventory_allocation": "unallocated",
+      "value": 0.005601596432,
+      "unit": "ratio",
+      "numerator_value": 668.08,
+      "denominator_value": 119266.0,
+      "numerator_claim_ids": [
+        "clm_study_google_bridgeport_wiessner_tax_paid_2020"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_google_bridgeport_wiessner_appraised_2020"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_appraised_value",
+      "project_id": "prj_study_im3_building_00844371952",
+      "year": 2021,
+      "scope_level": "campus",
+      "scope_label": "Design LLC personal-property account 151342 (PPIN 50327) at 48809 AL Hwy 277",
+      "county_fips": "01071",
+      "inventory_allocation": "unallocated",
+      "value": 0.002600000123,
+      "unit": "ratio",
+      "numerator_value": 766668.5,
+      "denominator_value": 294872486.0,
+      "numerator_claim_ids": [
+        "clm_study_google_bridgeport_design_tax_paid_2021"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_google_bridgeport_design_appraised_2021"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_appraised_value",
+      "project_id": "prj_study_im3_building_00844371952",
+      "year": 2021,
+      "scope_level": "campus",
+      "scope_label": "Eight Wiessner real parcels in account 98353",
+      "county_fips": "01071",
+      "inventory_allocation": "unallocated",
+      "value": 0.003013239276,
+      "unit": "ratio",
+      "numerator_value": 386485.0,
+      "denominator_value": 128262300.0,
+      "numerator_claim_ids": [
+        "clm_study_google_bridgeport_wiessner_real_tax_paid_2021"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_google_bridgeport_wiessner_real_appraised_2021"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_appraised_value",
+      "project_id": "prj_study_im3_building_00844371952",
+      "year": 2021,
+      "scope_level": "campus",
+      "scope_label": "Google LLC personal-property account 151335 (PPIN 50326) at 48809 AL Hwy 277",
+      "county_fips": "01071",
+      "inventory_allocation": "unallocated",
+      "value": 0.002599984272,
+      "unit": "ratio",
+      "numerator_value": 5157.62,
+      "denominator_value": 1983712.0,
+      "numerator_claim_ids": [
+        "clm_study_google_bridgeport_google_tax_paid_2021"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_google_bridgeport_google_appraised_2021"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_appraised_value",
+      "project_id": "prj_study_im3_building_00844371952",
+      "year": 2021,
+      "scope_level": "campus",
+      "scope_label": "Wiessner Enterprises LLC personal-property account 151344 (PPIN 50328) at 48809 AL Hwy 277",
+      "county_fips": "01071",
+      "inventory_allocation": "unallocated",
+      "value": 0.002600000144,
+      "unit": "ratio",
+      "numerator_value": 941694.26,
+      "denominator_value": 362190080.0,
+      "numerator_claim_ids": [
+        "clm_study_google_bridgeport_wiessner_tax_paid_2021"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_google_bridgeport_wiessner_appraised_2021"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_appraised_value",
+      "project_id": "prj_study_im3_building_00844371952",
+      "year": 2022,
+      "scope_level": "campus",
+      "scope_label": "Design LLC personal-property account 151342 (PPIN 50327) at 48809 AL Hwy 277",
+      "county_fips": "01071",
+      "inventory_allocation": "unallocated",
+      "value": 0.002600000435,
+      "unit": "ratio",
+      "numerator_value": 558964.64,
+      "denominator_value": 214986364.0,
+      "numerator_claim_ids": [
+        "clm_study_google_bridgeport_design_tax_paid_2022"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_google_bridgeport_design_appraised_2022"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_appraised_value",
+      "project_id": "prj_study_im3_building_00844371952",
+      "year": 2022,
+      "scope_level": "campus",
+      "scope_label": "Eight Wiessner real parcels in account 98353",
+      "county_fips": "01071",
+      "inventory_allocation": "unallocated",
+      "value": 0.003012323433,
+      "unit": "ratio",
+      "numerator_value": 415081.3,
+      "denominator_value": 137794400.0,
+      "numerator_claim_ids": [
+        "clm_study_google_bridgeport_wiessner_real_tax_paid_2022"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_google_bridgeport_wiessner_real_appraised_2022"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_appraised_value",
+      "project_id": "prj_study_im3_building_00844371952",
+      "year": 2022,
+      "scope_level": "campus",
+      "scope_label": "Google LLC personal-property account 151335 (PPIN 50326) at 48809 AL Hwy 277",
+      "county_fips": "01071",
+      "inventory_allocation": "unallocated",
+      "value": 0.002599982829,
+      "unit": "ratio",
+      "numerator_value": 6299.02,
+      "denominator_value": 2422716.0,
+      "numerator_claim_ids": [
+        "clm_study_google_bridgeport_google_tax_paid_2022"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_google_bridgeport_google_appraised_2022"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_appraised_value",
+      "project_id": "prj_study_im3_building_00844371952",
+      "year": 2022,
+      "scope_level": "campus",
+      "scope_label": "Wiessner Enterprises LLC personal-property account 151344 (PPIN 50328) at 48809 AL Hwy 277",
+      "county_fips": "01071",
+      "inventory_allocation": "unallocated",
+      "value": 0.002600000288,
+      "unit": "ratio",
+      "numerator_value": 963215.5,
+      "denominator_value": 370467459.0,
+      "numerator_claim_ids": [
+        "clm_study_google_bridgeport_wiessner_tax_paid_2022"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_google_bridgeport_wiessner_appraised_2022"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_appraised_value",
+      "project_id": "prj_study_im3_building_00844371952",
+      "year": 2023,
+      "scope_level": "campus",
+      "scope_label": "Design LLC personal-property account 151342 (PPIN 50327) at 48809 AL Hwy 277",
+      "county_fips": "01071",
+      "inventory_allocation": "unallocated",
+      "value": 0.002599999872,
+      "unit": "ratio",
+      "numerator_value": 1162992.22,
+      "denominator_value": 447304722.0,
+      "numerator_claim_ids": [
+        "clm_study_google_bridgeport_design_tax_paid_2023"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_google_bridgeport_design_appraised_2023"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_appraised_value",
+      "project_id": "prj_study_im3_building_00844371952",
+      "year": 2023,
+      "scope_level": "campus",
+      "scope_label": "Eight Wiessner real parcels in account 98353",
+      "county_fips": "01071",
+      "inventory_allocation": "unallocated",
+      "value": 0.003012540238,
+      "unit": "ratio",
+      "numerator_value": 415141.3,
+      "denominator_value": 137804400.0,
+      "numerator_claim_ids": [
+        "clm_study_google_bridgeport_wiessner_real_tax_paid_2023"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_google_bridgeport_wiessner_real_appraised_2023"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_appraised_value",
+      "project_id": "prj_study_im3_building_00844371952",
+      "year": 2023,
+      "scope_level": "campus",
+      "scope_label": "Google LLC personal-property account 151335 (PPIN 50326) at 48809 AL Hwy 277",
+      "county_fips": "01071",
+      "inventory_allocation": "unallocated",
+      "value": 0.002599973535,
+      "unit": "ratio",
+      "numerator_value": 7407.4,
+      "denominator_value": 2849029.0,
+      "numerator_claim_ids": [
+        "clm_study_google_bridgeport_google_tax_paid_2023"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_google_bridgeport_google_appraised_2023"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_appraised_value",
+      "project_id": "prj_study_im3_building_00844371952",
+      "year": 2023,
+      "scope_level": "campus",
+      "scope_label": "Wiessner Enterprises LLC personal-property account 151344 (PPIN 50328) at 48809 AL Hwy 277",
+      "county_fips": "01071",
+      "inventory_allocation": "unallocated",
+      "value": 0.002599999834,
+      "unit": "ratio",
+      "numerator_value": 935007.58,
+      "denominator_value": 359618323.0,
+      "numerator_claim_ids": [
+        "clm_study_google_bridgeport_wiessner_tax_paid_2023"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_google_bridgeport_wiessner_appraised_2023"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_appraised_value",
+      "project_id": "prj_study_im3_building_00844371952",
+      "year": 2024,
+      "scope_level": "campus",
+      "scope_label": "Design LLC personal-property account 151342 (PPIN 50327) at 48809 AL Hwy 277",
+      "county_fips": "01071",
+      "inventory_allocation": "unallocated",
+      "value": 0.002599962894,
+      "unit": "ratio",
+      "numerator_value": 1686550.24,
+      "denominator_value": 648682427.0,
+      "numerator_claim_ids": [
+        "clm_study_google_bridgeport_design_tax_paid_2024"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_google_bridgeport_design_appraised_2024"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_appraised_value",
+      "project_id": "prj_study_im3_building_00844371952",
+      "year": 2024,
+      "scope_level": "campus",
+      "scope_label": "Eight Wiessner real parcels in account 98353",
+      "county_fips": "01071",
+      "inventory_allocation": "unallocated",
+      "value": 0.003012540238,
+      "unit": "ratio",
+      "numerator_value": 415141.3,
+      "denominator_value": 137804400.0,
+      "numerator_claim_ids": [
+        "clm_study_google_bridgeport_wiessner_real_tax_paid_2024"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_google_bridgeport_wiessner_real_appraised_2024"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_appraised_value",
+      "project_id": "prj_study_im3_building_00844371952",
+      "year": 2024,
+      "scope_level": "campus",
+      "scope_label": "Google LLC personal-property account 151335 (PPIN 50326) at 48809 AL Hwy 277",
+      "county_fips": "01071",
+      "inventory_allocation": "unallocated",
+      "value": 0.002588243747,
+      "unit": "ratio",
+      "numerator_value": 5259.2,
+      "denominator_value": 2031957.0,
+      "numerator_claim_ids": [
+        "clm_study_google_bridgeport_google_tax_paid_2024"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_google_bridgeport_google_appraised_2024"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_appraised_value",
+      "project_id": "prj_study_im3_building_00844371952",
+      "year": 2024,
+      "scope_level": "campus",
+      "scope_label": "Wiessner Enterprises LLC personal-property account 151344 (PPIN 50328) at 48809 AL Hwy 277",
+      "county_fips": "01071",
+      "inventory_allocation": "unallocated",
+      "value": 0.002599932528,
+      "unit": "ratio",
+      "numerator_value": 928511.92,
+      "denominator_value": 357129237.0,
+      "numerator_claim_ids": [
+        "clm_study_google_bridgeport_wiessner_tax_paid_2024"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_google_bridgeport_wiessner_appraised_2024"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_appraised_value",
+      "project_id": "prj_study_im3_point_09190480200",
+      "year": 2014,
+      "scope_level": "campus",
+      "scope_label": "Real-property parcel 9714-07-00103 / tax account 0097140700103, 4001 Technology Forest Drive",
+      "county_fips": "48339",
+      "inventory_allocation": "unallocated",
+      "value": 0.025473,
+      "unit": "ratio",
+      "numerator_value": 216520.5,
+      "denominator_value": 8500000.0,
+      "numerator_claim_ids": [
+        "clm_study_stream_houston_real_property_taxes_paid_2014"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_stream_houston_real_appraised_value_2014"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_appraised_value",
+      "project_id": "prj_study_im3_point_09190480200",
+      "year": 2015,
+      "scope_level": "campus",
+      "scope_label": "IP Stream Houston LLC business-personal-property account P454338 / tax account 1310000507453; no situs displayed; older legal description names 4001 Research Forest disaster recovery center",
+      "county_fips": "48339",
+      "inventory_allocation": "unallocated",
+      "value": 0.024856,
+      "unit": "ratio",
+      "numerator_value": 9942.4,
+      "denominator_value": 400000.0,
+      "numerator_claim_ids": [
+        "clm_study_stream_houston_personal_property_taxes_paid_2015"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_stream_houston_personal_appraised_value_2015"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_appraised_value",
+      "project_id": "prj_study_im3_point_09190480200",
+      "year": 2015,
+      "scope_level": "campus",
+      "scope_label": "Real-property parcel 9714-07-00103 / tax account 0097140700103, 4001 Technology Forest Drive",
+      "county_fips": "48339",
+      "inventory_allocation": "unallocated",
+      "value": 0.024855999908,
+      "unit": "ratio",
+      "numerator_value": 302690.65,
+      "denominator_value": 12177770.0,
+      "numerator_claim_ids": [
+        "clm_study_stream_houston_real_property_taxes_paid_2015"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_stream_houston_real_appraised_value_2015"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_appraised_value",
+      "project_id": "prj_study_im3_point_09190480200",
+      "year": 2016,
+      "scope_level": "campus",
+      "scope_label": "IP Stream Houston LLC business-personal-property account P454338 / tax account 1310000507453; no situs displayed; older legal description names 4001 Research Forest disaster recovery center",
+      "county_fips": "48339",
+      "inventory_allocation": "unallocated",
+      "value": 0.02411,
+      "unit": "ratio",
+      "numerator_value": 9644.0,
+      "denominator_value": 400000.0,
+      "numerator_claim_ids": [
+        "clm_study_stream_houston_personal_property_taxes_paid_2016"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_stream_houston_personal_appraised_value_2016"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_appraised_value",
+      "project_id": "prj_study_im3_point_09190480200",
+      "year": 2016,
+      "scope_level": "campus",
+      "scope_label": "Real-property parcel 9714-07-00103 / tax account 0097140700103, 4001 Technology Forest Drive",
+      "county_fips": "48339",
+      "inventory_allocation": "unallocated",
+      "value": 0.02411,
+      "unit": "ratio",
+      "numerator_value": 313430.0,
+      "denominator_value": 13000000.0,
+      "numerator_claim_ids": [
+        "clm_study_stream_houston_real_property_taxes_paid_2016"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_stream_houston_real_appraised_value_2016"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_appraised_value",
+      "project_id": "prj_study_im3_point_09190480200",
+      "year": 2017,
+      "scope_level": "campus",
+      "scope_label": "IP Stream Houston LLC business-personal-property account P454338 / tax account 1310000507453; no situs displayed; older legal description names 4001 Research Forest disaster recovery center",
+      "county_fips": "48339",
+      "inventory_allocation": "unallocated",
+      "value": 0.026024911111,
+      "unit": "ratio",
+      "numerator_value": 11711.21,
+      "denominator_value": 450000.0,
+      "numerator_claim_ids": [
+        "clm_study_stream_houston_personal_property_taxes_paid_2017"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_stream_houston_personal_appraised_value_2017"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_appraised_value",
+      "project_id": "prj_study_im3_point_09190480200",
+      "year": 2017,
+      "scope_level": "campus",
+      "scope_label": "Real-property parcel 9714-07-00103 / tax account 0097140700103, 4001 Technology Forest Drive",
+      "county_fips": "48339",
+      "inventory_allocation": "unallocated",
+      "value": 0.023659000597,
+      "unit": "ratio",
+      "numerator_value": 304062.4,
+      "denominator_value": 12851870.0,
+      "numerator_claim_ids": [
+        "clm_study_stream_houston_real_property_taxes_paid_2017"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_stream_houston_real_appraised_value_2017"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_appraised_value",
+      "project_id": "prj_study_im3_point_09190480200",
+      "year": 2018,
+      "scope_level": "campus",
+      "scope_label": "IP Stream Houston LLC business-personal-property account P454338 / tax account 1310000507453; no situs displayed; older legal description names 4001 Research Forest disaster recovery center",
+      "county_fips": "48339",
+      "inventory_allocation": "unallocated",
+      "value": 0.023417,
+      "unit": "ratio",
+      "numerator_value": 10537.65,
+      "denominator_value": 450000.0,
+      "numerator_claim_ids": [
+        "clm_study_stream_houston_personal_property_taxes_paid_2018"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_stream_houston_personal_appraised_value_2018"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_appraised_value",
+      "project_id": "prj_study_im3_point_09190480200",
+      "year": 2018,
+      "scope_level": "campus",
+      "scope_label": "Real-property parcel 9714-07-00103 / tax account 0097140700103, 4001 Technology Forest Drive",
+      "county_fips": "48339",
+      "inventory_allocation": "unallocated",
+      "value": 0.023417000277,
+      "unit": "ratio",
+      "numerator_value": 298085.3,
+      "denominator_value": 12729440.0,
+      "numerator_claim_ids": [
+        "clm_study_stream_houston_real_property_taxes_paid_2018"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_stream_houston_real_appraised_value_2018"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_appraised_value",
+      "project_id": "prj_study_im3_point_09190480200",
+      "year": 2019,
+      "scope_level": "campus",
+      "scope_label": "IP Stream Houston LLC business-personal-property account P454338 / tax account 1310000507453; no situs displayed; older legal description names 4001 Research Forest disaster recovery center",
+      "county_fips": "48339",
+      "inventory_allocation": "unallocated",
+      "value": 0.022682,
+      "unit": "ratio",
+      "numerator_value": 10206.9,
+      "denominator_value": 450000.0,
+      "numerator_claim_ids": [
+        "clm_study_stream_houston_personal_property_taxes_paid_2019"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_stream_houston_personal_appraised_value_2019"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_appraised_value",
+      "project_id": "prj_study_im3_point_09190480200",
+      "year": 2019,
+      "scope_level": "campus",
+      "scope_label": "Real-property parcel 9714-07-00103 / tax account 0097140700103, 4001 Technology Forest Drive",
+      "county_fips": "48339",
+      "inventory_allocation": "unallocated",
+      "value": 0.022681999334,
+      "unit": "ratio",
+      "numerator_value": 286560.07,
+      "denominator_value": 12633810.0,
+      "numerator_claim_ids": [
+        "clm_study_stream_houston_real_property_taxes_paid_2019"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_stream_houston_real_appraised_value_2019"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_appraised_value",
+      "project_id": "prj_study_im3_point_09190480200",
+      "year": 2020,
+      "scope_level": "campus",
+      "scope_label": "IP Stream Houston LLC business-personal-property account P454338 / tax account 1310000507453; no situs displayed; older legal description names 4001 Research Forest disaster recovery center",
+      "county_fips": "48339",
+      "inventory_allocation": "unallocated",
+      "value": 0.022234,
+      "unit": "ratio",
+      "numerator_value": 10005.3,
+      "denominator_value": 450000.0,
+      "numerator_claim_ids": [
+        "clm_study_stream_houston_personal_property_taxes_paid_2020"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_stream_houston_personal_appraised_value_2020"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_appraised_value",
+      "project_id": "prj_study_im3_point_09190480200",
+      "year": 2020,
+      "scope_level": "campus",
+      "scope_label": "Real-property parcel 9714-07-00103 / tax account 0097140700103, 4001 Technology Forest Drive",
+      "county_fips": "48339",
+      "inventory_allocation": "unallocated",
+      "value": 0.022234001489,
+      "unit": "ratio",
+      "numerator_value": 278326.12,
+      "denominator_value": 12518040.0,
+      "numerator_claim_ids": [
+        "clm_study_stream_houston_real_property_taxes_paid_2020"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_stream_houston_real_appraised_value_2020"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_appraised_value",
+      "project_id": "prj_study_im3_point_09190480200",
+      "year": 2021,
+      "scope_level": "campus",
+      "scope_label": "IP Stream Houston LLC business-personal-property account P454338 / tax account 1310000507453; no situs displayed; older legal description names 4001 Research Forest disaster recovery center",
+      "county_fips": "48339",
+      "inventory_allocation": "unallocated",
+      "value": 0.021519,
+      "unit": "ratio",
+      "numerator_value": 9683.55,
+      "denominator_value": 450000.0,
+      "numerator_claim_ids": [
+        "clm_study_stream_houston_personal_property_taxes_paid_2021"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_stream_houston_personal_appraised_value_2021"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_appraised_value",
+      "project_id": "prj_study_im3_point_09190480200",
+      "year": 2021,
+      "scope_level": "campus",
+      "scope_label": "Real-property parcel 9714-07-00103 / tax account 0097140700103, 4001 Technology Forest Drive",
+      "county_fips": "48339",
+      "inventory_allocation": "unallocated",
+      "value": 0.021519000569,
+      "unit": "ratio",
+      "numerator_value": 266884.24,
+      "denominator_value": 12402260.0,
+      "numerator_claim_ids": [
+        "clm_study_stream_houston_real_property_taxes_paid_2021"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_stream_houston_real_appraised_value_2021"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_appraised_value",
+      "project_id": "prj_study_im3_point_09190480200",
+      "year": 2022,
+      "scope_level": "campus",
+      "scope_label": "IP Stream Houston LLC business-personal-property account P454338 / tax account 1310000507453; no situs displayed; older legal description names 4001 Research Forest disaster recovery center",
+      "county_fips": "48339",
+      "inventory_allocation": "unallocated",
+      "value": 0.019918,
+      "unit": "ratio",
+      "numerator_value": 8963.1,
+      "denominator_value": 450000.0,
+      "numerator_claim_ids": [
+        "clm_study_stream_houston_personal_property_taxes_paid_2022"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_stream_houston_personal_appraised_value_2022"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_appraised_value",
+      "project_id": "prj_study_im3_point_09190480200",
+      "year": 2022,
+      "scope_level": "campus",
+      "scope_label": "Real-property parcel 9714-07-00103 / tax account 0097140700103, 4001 Technology Forest Drive",
+      "county_fips": "48339",
+      "inventory_allocation": "unallocated",
+      "value": 0.019918,
+      "unit": "ratio",
+      "numerator_value": 276262.66,
+      "denominator_value": 13870000.0,
+      "numerator_claim_ids": [
+        "clm_study_stream_houston_real_property_taxes_paid_2022"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_stream_houston_real_appraised_value_2022"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_appraised_value",
+      "project_id": "prj_study_im3_point_09190480200",
+      "year": 2023,
+      "scope_level": "campus",
+      "scope_label": "IP Stream Houston LLC business-personal-property account P454338 / tax account 1310000507453; no situs displayed; older legal description names 4001 Research Forest disaster recovery center",
+      "county_fips": "48339",
+      "inventory_allocation": "unallocated",
+      "value": 0.017821,
+      "unit": "ratio",
+      "numerator_value": 9801.55,
+      "denominator_value": 550000.0,
+      "numerator_claim_ids": [
+        "clm_study_stream_houston_personal_property_taxes_paid_2023"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_stream_houston_personal_appraised_value_2023"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_appraised_value",
+      "project_id": "prj_study_im3_point_09190480200",
+      "year": 2023,
+      "scope_level": "campus",
+      "scope_label": "Real-property parcel 9714-07-00103 / tax account 0097140700103, 4001 Technology Forest Drive",
+      "county_fips": "48339",
+      "inventory_allocation": "unallocated",
+      "value": 0.017821,
+      "unit": "ratio",
+      "numerator_value": 247177.27,
+      "denominator_value": 13870000.0,
+      "numerator_claim_ids": [
+        "clm_study_stream_houston_real_property_taxes_paid_2023"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_stream_houston_real_appraised_value_2023"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_appraised_value",
+      "project_id": "prj_study_im3_point_09190480200",
+      "year": 2024,
+      "scope_level": "campus",
+      "scope_label": "IP Stream Houston LLC business-personal-property account P454338 / tax account 1310000507453; no situs displayed; older legal description names 4001 Research Forest disaster recovery center",
+      "county_fips": "48339",
+      "inventory_allocation": "unallocated",
+      "value": 0.017573,
+      "unit": "ratio",
+      "numerator_value": 9665.15,
+      "denominator_value": 550000.0,
+      "numerator_claim_ids": [
+        "clm_study_stream_houston_personal_property_taxes_paid_2024"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_stream_houston_personal_appraised_value_2024"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_appraised_value",
+      "project_id": "prj_study_im3_point_09190480200",
+      "year": 2024,
+      "scope_level": "campus",
+      "scope_label": "Real-property parcel 9714-07-00103 / tax account 0097140700103, 4001 Technology Forest Drive",
+      "county_fips": "48339",
+      "inventory_allocation": "unallocated",
+      "value": 0.017573,
+      "unit": "ratio",
+      "numerator_value": 223177.1,
+      "denominator_value": 12700000.0,
+      "numerator_claim_ids": [
+        "clm_study_stream_houston_real_property_taxes_paid_2024"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_stream_houston_real_appraised_value_2024"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_taxable_property_value",
+      "project_id": "prj_study_im3_building_00377585075",
+      "year": 2023,
+      "scope_level": "campus",
+      "scope_label": "EdgeConneX former-IFT commercial-personal account 76-99-43-004-025 at 21005 Lahser Road",
+      "county_fips": "26125",
+      "inventory_allocation": "unallocated",
+      "value": 0.066788592737,
+      "unit": "ratio",
+      "numerator_value": 140775.66,
+      "denominator_value": 2107780.0,
+      "numerator_claim_ids": [
+        "clm_study_edgeconnex_pp_taxes_paid_2023"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_edgeconnex_pp_taxable_value_2023"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_taxable_property_value",
+      "project_id": "prj_study_im3_building_00377585075",
+      "year": 2023,
+      "scope_level": "campus",
+      "scope_label": "EdgeConneX real-property parcel 76-24-33-476-055 / account 019890-001 at 21005 Lahser Road",
+      "county_fips": "26125",
+      "inventory_allocation": "unallocated",
+      "value": 0.068903728861,
+      "unit": "ratio",
+      "numerator_value": 131668.48,
+      "denominator_value": 1910905.0,
+      "numerator_claim_ids": [
+        "clm_study_edgeconnex_real_taxes_paid_2023"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_edgeconnex_real_taxable_value_2023"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_taxable_property_value",
+      "project_id": "prj_study_im3_building_00377585075",
+      "year": 2024,
+      "scope_level": "campus",
+      "scope_label": "EdgeConneX former-IFT commercial-personal account 76-99-43-004-025 at 21005 Lahser Road",
+      "county_fips": "26125",
+      "inventory_allocation": "unallocated",
+      "value": 0.064907164486,
+      "unit": "ratio",
+      "numerator_value": 109747.63,
+      "denominator_value": 1690840.0,
+      "numerator_claim_ids": [
+        "clm_study_edgeconnex_pp_taxes_paid_2024"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_edgeconnex_pp_taxable_value_2024"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_taxable_property_value",
+      "project_id": "prj_study_im3_building_00377585075",
+      "year": 2024,
+      "scope_level": "campus",
+      "scope_label": "EdgeConneX real-property parcel 76-24-33-476-055 / account 019890-001 at 21005 Lahser Road",
+      "county_fips": "26125",
+      "inventory_allocation": "unallocated",
+      "value": 0.068326924936,
+      "unit": "ratio",
+      "numerator_value": 134306.82,
+      "denominator_value": 1965650.0,
+      "numerator_claim_ids": [
+        "clm_study_edgeconnex_real_taxes_paid_2024"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_edgeconnex_real_taxable_value_2024"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_taxable_property_value",
+      "project_id": "prj_study_im3_building_00610827836",
+      "year": 2024,
+      "scope_level": "company_county",
+      "scope_label": "Arum Composites LLC real-property account TMS 210-00-00-215",
+      "county_fips": "45015",
+      "inventory_allocation": "unallocated",
+      "value": 0.015102531646,
+      "unit": "ratio",
+      "numerator_value": 119.31,
+      "denominator_value": 7900.0,
+      "numerator_claim_ids": [
+        "clm_berk_a_2100000215_tax_2024"
+      ],
+      "denominator_claim_ids": [
+        "clm_berk_a_2100000215_tv_2024"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_taxable_property_value",
+      "project_id": "prj_study_im3_building_00610827836",
+      "year": 2024,
+      "scope_level": "company_county",
+      "scope_label": "Arum Composites LLC real-property account TMS 211-00-02-080",
+      "county_fips": "45015",
+      "inventory_allocation": "unallocated",
+      "value": 0.0204,
+      "unit": "ratio",
+      "numerator_value": 28.56,
+      "denominator_value": 1400.0,
+      "numerator_claim_ids": [
+        "clm_berk_a_2110002080_tax_2024"
+      ],
+      "denominator_claim_ids": [
+        "clm_berk_a_2110002080_tv_2024"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_taxable_property_value",
+      "project_id": "prj_study_im3_building_00610827836",
+      "year": 2024,
+      "scope_level": "company_county",
+      "scope_label": "Arum Composites LLC real-property account TMS 211-00-02-081",
+      "county_fips": "45015",
+      "inventory_allocation": "unallocated",
+      "value": 0.018286363636,
+      "unit": "ratio",
+      "numerator_value": 40.23,
+      "denominator_value": 2200.0,
+      "numerator_claim_ids": [
+        "clm_berk_a_2110002081_tax_2024"
+      ],
+      "denominator_claim_ids": [
+        "clm_berk_a_2110002081_tv_2024"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_taxable_property_value",
+      "project_id": "prj_study_im3_building_00610827836",
+      "year": 2024,
+      "scope_level": "company_county",
+      "scope_label": "Arum Composites LLC real-property account TMS 211-00-02-083",
+      "county_fips": "45015",
+      "inventory_allocation": "unallocated",
+      "value": 0.018184615385,
+      "unit": "ratio",
+      "numerator_value": 47.28,
+      "denominator_value": 2600.0,
+      "numerator_claim_ids": [
+        "clm_berk_a_2110002083_tax_2024"
+      ],
+      "denominator_claim_ids": [
+        "clm_berk_a_2110002083_tv_2024"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_taxable_property_value",
+      "project_id": "prj_study_im3_building_00610827836",
+      "year": 2024,
+      "scope_level": "company_county",
+      "scope_label": "Arum Composites LLC real-property account TMS 211-00-02-084",
+      "county_fips": "45015",
+      "inventory_allocation": "unallocated",
+      "value": 0.013964316442,
+      "unit": "ratio",
+      "numerator_value": 103227.02,
+      "denominator_value": 7392200.0,
+      "numerator_claim_ids": [
+        "clm_berk_a_2110002084_tax_2024"
+      ],
+      "denominator_claim_ids": [
+        "clm_berk_a_2110002084_tv_2024"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_taxable_property_value",
+      "project_id": "prj_study_im3_building_00610827836",
+      "year": 2024,
+      "scope_level": "company_county",
+      "scope_label": "Arum Composites LLC real-property account TMS 211-00-02-086",
+      "county_fips": "45015",
+      "inventory_allocation": "unallocated",
+      "value": 0.014297295515,
+      "unit": "ratio",
+      "numerator_value": 2167.47,
+      "denominator_value": 151600.0,
+      "numerator_claim_ids": [
+        "clm_berk_a_2110002086_tax_2024"
+      ],
+      "denominator_claim_ids": [
+        "clm_berk_a_2110002086_tv_2024"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_taxable_property_value",
+      "project_id": "prj_study_im3_building_00610827836",
+      "year": 2024,
+      "scope_level": "company_county",
+      "scope_label": "Arum Composites LLC real-property account TMS 211-00-02-089",
+      "county_fips": "45015",
+      "inventory_allocation": "unallocated",
+      "value": 0.013964858365,
+      "unit": "ratio",
+      "numerator_value": 94061.7,
+      "denominator_value": 6735600.0,
+      "numerator_claim_ids": [
+        "clm_berk_a_2110002089_tax_2024"
+      ],
+      "denominator_claim_ids": [
+        "clm_berk_a_2110002089_tv_2024"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_taxable_property_value",
+      "project_id": "prj_study_im3_building_00610827836",
+      "year": 2024,
+      "scope_level": "company_county",
+      "scope_label": "Arum Composites LLC real-property account TMS 211-00-02-090",
+      "county_fips": "45015",
+      "inventory_allocation": "unallocated",
+      "value": 0.015281944444,
+      "unit": "ratio",
+      "numerator_value": 110.03,
+      "denominator_value": 7200.0,
+      "numerator_claim_ids": [
+        "clm_berk_a_2110002090_tax_2024"
+      ],
+      "denominator_claim_ids": [
+        "clm_berk_a_2110002090_tv_2024"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_taxable_property_value",
+      "project_id": "prj_study_im3_building_00610827836",
+      "year": 2024,
+      "scope_level": "company_county",
+      "scope_label": "Arum Composites LLC real-property account TMS 211-00-02-091",
+      "county_fips": "45015",
+      "inventory_allocation": "unallocated",
+      "value": 0.013965848691,
+      "unit": "ratio",
+      "numerator_value": 71993.95,
+      "denominator_value": 5155000.0,
+      "numerator_claim_ids": [
+        "clm_berk_a_2110002091_tax_2024"
+      ],
+      "denominator_claim_ids": [
+        "clm_berk_a_2110002091_tv_2024"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_taxable_property_value",
+      "project_id": "prj_study_im3_building_01073720208",
+      "year": 2024,
+      "scope_level": "company_county",
+      "scope_label": "Tetra LLC industrial parcel 744411476005, 1430 Veterans Memorial Highway",
+      "county_fips": "19155",
+      "inventory_allocation": "unallocated",
+      "value": 0.037677025117,
+      "unit": "ratio",
+      "numerator_value": 2063852.0,
+      "denominator_value": 54777467.0,
+      "numerator_claim_ids": [
+        "clm_study_google_tetra_property_taxes_paid_2024"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_google_tetra_taxable_value_2024"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_taxable_property_value",
+      "project_id": "prj_study_im3_point_06685432442",
+      "year": 2016,
+      "scope_level": "campus",
+      "scope_label": "Switch Ltd. personal-property account CM001611, 1 Superloop Circle, Citadel campus",
+      "county_fips": "32029",
+      "inventory_allocation": "unallocated",
+      "value": 0.164913945093,
+      "unit": "ratio",
+      "numerator_value": 1964.29,
+      "denominator_value": 11911.0,
+      "numerator_claim_ids": [
+        "clm_study_switch_citadel_property_taxes_paid_2016"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_switch_citadel_taxable_value_2016"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_taxable_property_value",
+      "project_id": "prj_study_im3_point_06685432442",
+      "year": 2017,
+      "scope_level": "campus",
+      "scope_label": "Switch Ltd. personal-property account CM001611, 1 Superloop Circle, Citadel campus",
+      "county_fips": "32029",
+      "inventory_allocation": "unallocated",
+      "value": 0.726985499873,
+      "unit": "ratio",
+      "numerator_value": 2857.78,
+      "denominator_value": 3931.0,
+      "numerator_claim_ids": [
+        "clm_study_switch_citadel_property_taxes_paid_2017"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_switch_citadel_taxable_value_2017"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_taxable_property_value",
+      "project_id": "prj_study_im3_point_06685432442",
+      "year": 2018,
+      "scope_level": "campus",
+      "scope_label": "Switch Ltd. personal-property account CM001611, 1 Superloop Circle, Citadel campus",
+      "county_fips": "32029",
+      "inventory_allocation": "unallocated",
+      "value": 0.004700216168,
+      "unit": "ratio",
+      "numerator_value": 176884.49,
+      "denominator_value": 37633267.0,
+      "numerator_claim_ids": [
+        "clm_study_switch_citadel_property_taxes_paid_2018"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_switch_citadel_taxable_value_2018"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_taxable_property_value",
+      "project_id": "prj_study_im3_point_06685432442",
+      "year": 2020,
+      "scope_level": "campus",
+      "scope_label": "Switch Ltd. personal-property account CM001611, 1 Superloop Circle, Citadel campus",
+      "county_fips": "32029",
+      "inventory_allocation": "unallocated",
+      "value": 0.003275870176,
+      "unit": "ratio",
+      "numerator_value": 439449.67,
+      "denominator_value": 134147462.0,
+      "numerator_claim_ids": [
+        "clm_study_switch_citadel_property_taxes_paid_2020"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_switch_citadel_taxable_value_2020"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_taxable_property_value",
+      "project_id": "prj_study_im3_point_06685432442",
+      "year": 2021,
+      "scope_level": "campus",
+      "scope_label": "Switch Ltd. personal-property account CM001611, 1 Superloop Circle, Citadel campus",
+      "county_fips": "32029",
+      "inventory_allocation": "unallocated",
+      "value": 0.003028112749,
+      "unit": "ratio",
+      "numerator_value": 529328.71,
+      "denominator_value": 174804822.0,
+      "numerator_claim_ids": [
+        "clm_study_switch_citadel_property_taxes_paid_2021"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_switch_citadel_taxable_value_2021"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_taxable_property_value",
+      "project_id": "prj_study_im3_point_06685432442",
+      "year": 2022,
+      "scope_level": "campus",
+      "scope_label": "Switch Ltd. personal-property account CM001611, 1 Superloop Circle, Citadel campus",
+      "county_fips": "32029",
+      "inventory_allocation": "unallocated",
+      "value": 0.003027898911,
+      "unit": "ratio",
+      "numerator_value": 765788.23,
+      "denominator_value": 252910765.0,
+      "numerator_claim_ids": [
+        "clm_study_switch_citadel_property_taxes_paid_2022"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_switch_citadel_taxable_value_2022"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_taxable_property_value",
+      "project_id": "prj_study_im3_point_06685432442",
+      "year": 2023,
+      "scope_level": "campus",
+      "scope_label": "Switch Ltd. personal-property account CM001611, 1 Superloop Circle, Citadel campus",
+      "county_fips": "32029",
+      "inventory_allocation": "unallocated",
+      "value": 0.003028108458,
+      "unit": "ratio",
+      "numerator_value": 1007641.84,
+      "denominator_value": 332762797.0,
+      "numerator_claim_ids": [
+        "clm_study_switch_citadel_property_taxes_paid_2023"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_switch_citadel_taxable_value_2023"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_taxable_property_value",
+      "project_id": "prj_study_im3_point_06685432442",
+      "year": 2024,
+      "scope_level": "campus",
+      "scope_label": "NV RNO 1, LLC real-property parcel 005-012-23, 1 Superloop Circle Citadel data-center buildings",
+      "county_fips": "32029",
+      "inventory_allocation": "unallocated",
+      "value": 0.011345866808,
+      "unit": "ratio",
+      "numerator_value": 2239229.35,
+      "denominator_value": 197360800.0,
+      "numerator_claim_ids": [
+        "clm_study_switch_citadel_real_property_taxes_paid_2024"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_switch_citadel_real_taxable_value_2024"
+      ]
+    },
+    {
+      "parameter_code": "effective_tax_paid_per_taxable_property_value",
+      "project_id": "prj_study_im3_point_06685432442",
+      "year": 2024,
+      "scope_level": "campus",
+      "scope_label": "Switch Ltd. personal-property account CM001611, 1 Superloop Circle, Citadel campus",
+      "county_fips": "32029",
+      "inventory_allocation": "unallocated",
+      "value": 0.00302811218,
+      "unit": "ratio",
+      "numerator_value": 1567523.17,
+      "denominator_value": 517656902.0,
+      "numerator_claim_ids": [
+        "clm_study_switch_citadel_property_taxes_paid_2024"
+      ],
+      "denominator_claim_ids": [
+        "clm_study_switch_citadel_taxable_value_2024"
+      ]
+    }
+  ]
+}

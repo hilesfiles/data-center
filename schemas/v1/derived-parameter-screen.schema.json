@@ -1,0 +1,104 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dccio.org/schemas/v1/derived-parameter-screen.schema.json",
+  "title": "Observed derived-parameter compatibility screen",
+  "type": "object",
+  "required": ["schema_version", "artifact_version", "generated_at", "source_release", "status", "policy", "counts", "parameters", "observations"],
+  "properties": {
+    "schema_version": { "const": "1.0.0" },
+    "artifact_version": { "type": "string", "minLength": 1 },
+    "generated_at": { "type": "string", "format": "date-time" },
+    "source_release": { "type": "string", "minLength": 1 },
+    "status": { "const": "descriptive_derived_data_complete_no_calibration_authorized" },
+    "policy": {
+      "type": "object",
+      "required": ["reported_actual_only", "same_project_year_required", "exact_scope_identity_required", "independent_project_minimum", "repeated_years_collapsed_to_project_medians", "leave_one_project_out_required_for_future_estimation"],
+      "properties": {
+        "reported_actual_only": { "const": true },
+        "same_project_year_required": { "const": true },
+        "exact_scope_identity_required": { "const": true },
+        "independent_project_minimum": { "const": 3 },
+        "repeated_years_collapsed_to_project_medians": { "const": true },
+        "leave_one_project_out_required_for_future_estimation": { "const": true }
+      },
+      "additionalProperties": false
+    },
+    "counts": {
+      "type": "object",
+      "required": ["parameter_definitions", "derived_observations", "calibration_authorized_parameters", "status_counts"],
+      "properties": {
+        "parameter_definitions": { "type": "integer", "minimum": 1 },
+        "derived_observations": { "type": "integer", "minimum": 0 },
+        "calibration_authorized_parameters": { "const": 0 },
+        "status_counts": { "type": "object", "additionalProperties": { "type": "integer", "minimum": 0 } }
+      },
+      "additionalProperties": false
+    },
+    "parameters": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["parameter_code", "label", "numerator_metric_code", "denominator_metric_code", "unit", "transferability", "match_policy", "observation_count", "project_count", "project_ids", "ambiguous_match_count", "project_median_distribution", "calibration_status", "calibration_authorized", "screening_reason"],
+        "properties": {
+          "parameter_code": { "type": "string", "pattern": "^[a-z0-9_]+$" },
+          "label": { "type": "string", "minLength": 1 },
+          "numerator_metric_code": { "type": "string", "pattern": "^study\\.[a-z0-9_]+$" },
+          "denominator_metric_code": { "type": "string", "pattern": "^study\\.[a-z0-9_]+$" },
+          "unit": { "type": "string", "minLength": 1 },
+          "transferability": { "enum": ["jurisdiction_specific", "operational_intensity"] },
+          "match_policy": { "const": "same_project_year_exact_scope_label_level_county_and_inventory_allocation" },
+          "observation_count": { "type": "integer", "minimum": 0 },
+          "project_count": { "type": "integer", "minimum": 0 },
+          "project_ids": { "type": "array", "uniqueItems": true, "items": { "type": "string", "pattern": "^prj_study_[a-z0-9_]+$" } },
+          "ambiguous_match_count": { "type": "integer", "minimum": 0 },
+          "project_median_distribution": {
+            "oneOf": [
+              { "type": "null" },
+              {
+                "type": "object",
+                "required": ["minimum", "p25", "median", "p75", "maximum"],
+                "properties": {
+                  "minimum": { "type": "number" },
+                  "p25": { "type": "number" },
+                  "median": { "type": "number" },
+                  "p75": { "type": "number" },
+                  "maximum": { "type": "number" }
+                },
+                "additionalProperties": false
+              }
+            ]
+          },
+          "calibration_status": { "enum": ["blocked_insufficient_independent_projects", "descriptive_only_jurisdiction_specific", "blocked_pending_definition_and_scope_harmonization"] },
+          "calibration_authorized": { "const": false },
+          "screening_reason": { "type": "string", "minLength": 1 }
+        },
+        "additionalProperties": false
+      }
+    },
+    "observations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["parameter_code", "project_id", "year", "scope_level", "scope_label", "county_fips", "inventory_allocation", "value", "unit", "numerator_value", "denominator_value", "numerator_claim_ids", "denominator_claim_ids"],
+        "properties": {
+          "parameter_code": { "type": "string", "pattern": "^[a-z0-9_]+$" },
+          "project_id": { "type": "string", "pattern": "^prj_study_[a-z0-9_]+$" },
+          "year": { "type": "integer", "minimum": 2001, "maximum": 2024 },
+          "scope_level": { "type": "string", "minLength": 1 },
+          "scope_label": { "type": "string", "minLength": 1 },
+          "county_fips": { "type": ["string", "null"], "pattern": "^[0-9]{5}$" },
+          "inventory_allocation": { "type": "string", "minLength": 1 },
+          "value": { "type": "number" },
+          "unit": { "type": "string", "minLength": 1 },
+          "numerator_value": { "type": "number" },
+          "denominator_value": { "type": "number", "exclusiveMinimum": 0 },
+          "numerator_claim_ids": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "type": "string", "minLength": 1 } },
+          "denominator_claim_ids": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "type": "string", "minLength": 1 } }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

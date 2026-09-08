@@ -80,7 +80,7 @@
         "inventory_allocation": { "enum": ["allocated", "unallocated", "not_applicable"] },
         "contribution_channel": { "type": "string", "minLength": 1 },
         "aggregation_identity": { "type": "string", "minLength": 1 },
-        "analysis_eligibility": { "enum": ["reported_component_requires_overlap_review", "projection_scenario_only", "modeled_input_requires_repeated_draw_and_overlap_review", "excluded_existing_project_county_comparison"] }
+        "analysis_eligibility": { "enum": ["reported_component_requires_overlap_review", "projection_scenario_only", "candidate_pending_metric_aggregation_contract", "excluded_shared_county_outcome", "excluded_counterfactual_not_observed_exposure", "excluded_threshold_not_observed_cost", "excluded_from_pooled_exposure"] }
       },
       "additionalProperties": false
     },

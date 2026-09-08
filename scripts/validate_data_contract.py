@@ -6190,6 +6190,7 @@ def validate_pooled_foundation(
     pooled_dir = DATA_DIR / "silver" / "study" / "pooled"
     artifacts = {
         "pooled_synthesis_reassessment": pooled_dir / "synthesis-reassessment.json",
+        "derived_parameter_screen": pooled_dir / "derived-parameter-screen.json",
         "facility_year_exposure": pooled_dir / "facility-year-exposures.json",
         "county_year_exposure": pooled_dir / "county-year-exposures.json",
         "pooled_foundation_manifest": pooled_dir / "manifest.json",
@@ -6208,6 +6209,7 @@ def validate_pooled_foundation(
         return issues
 
     reassessment = payloads["pooled_synthesis_reassessment"]
+    derived_screen = payloads["derived_parameter_screen"]
     facility_year = payloads["facility_year_exposure"]
     county_year = payloads["county_year_exposure"]
     foundation_manifest = payloads["pooled_foundation_manifest"]
@@ -6220,8 +6222,24 @@ def validate_pooled_foundation(
     synthesis_ids = {row["estimate_id"] for row in synthesis["estimates"]}
     if len(reassessment_ids) != len(set(reassessment_ids)) or set(reassessment_ids) != synthesis_ids:
         issues.append(Issue("pooled_foundation", "synthesis-reassessment.json.records", "must contain every current modeled synthesis exactly once"))
-    if any(row.get("final_recommendation") for row in reassessment["records"]):
-        issues.append(Issue("pooled_foundation", "synthesis-reassessment.json.records", "machine triage cannot issue final recommendations"))
+    if any(not row.get("final_recommendation") for row in reassessment["records"]):
+        issues.append(Issue("pooled_foundation", "synthesis-reassessment.json.records", "every synthesis must have a final portfolio-policy recommendation"))
+    if any(row.get("review_status") != "portfolio_policy_adjudicated" for row in reassessment["records"]):
+        issues.append(Issue("pooled_foundation", "synthesis-reassessment.json.records", "every synthesis must complete portfolio-policy adjudication"))
+
+    claim_ids = {
+        row["claim_id"]
+        for row in load_json(DATA_DIR / "silver" / "study" / "economic-claims.json")
+    }
+    parameter_codes = {row["parameter_code"] for row in derived_screen["parameters"]}
+    if any(row.get("calibration_authorized") for row in derived_screen["parameters"]):
+        issues.append(Issue("pooled_foundation", "derived-parameter-screen.json.parameters", "foundation cannot authorize empirical calibration"))
+    for row in derived_screen["observations"]:
+        if row.get("parameter_code") not in parameter_codes:
+            issues.append(Issue("pooled_foundation", "derived-parameter-screen.json.observations", "observation references an unknown parameter"))
+        referenced_claims = set(row.get("numerator_claim_ids", [])) | set(row.get("denominator_claim_ids", []))
+        if not referenced_claims <= claim_ids:
+            issues.append(Issue("pooled_foundation", "derived-parameter-screen.json.observations", "observation references an unknown evidence claim"))
 
     summaries = facility_year["project_summaries"]
     summary_ids = [row.get("project_id") for row in summaries]
