@@ -665,50 +665,6 @@ def validate_project_config(
     ):
         issues.append(Issue("config_validation", resolution_policy_path.name, "first-entry resolution weights, tracks, regional frame, or tranche constraints are inconsistent"))
 
-    comparison_batch_path = CONFIG_DIR / "comparison-pool-screening-batches.json"
-    comparison_batch_policy = load_json(comparison_batch_path)
-    for issue in validator.validate_record(
-        comparison_batch_policy, schema_paths["comparison_pool_screening_batches"]
-    ):
-        issues.append(Issue("config_validation", f"{comparison_batch_path.name}{issue.path[1:]}", issue.message))
-    resolution_registry = load_json(
-        DATA_DIR / "silver" / "treatments" / "county-first-entry-resolution-priority-v1.json"
-    )
-    resolution_by_id = {
-        row["resolution_candidate_id"]: row
-        for row in resolution_registry["collections"]["first_entry_resolution_candidate"]
-    }
-    selected_ids: list[str] = []
-    selected_fips: list[str] = []
-    for batch in comparison_batch_policy.get("batches", []):
-        batch_ranks = [row.get("batch_rank") for row in batch.get("counties", [])]
-        if batch_ranks != list(range(1, len(batch_ranks) + 1)):
-            issues.append(Issue("config_validation", f"{comparison_batch_path.name}.{batch.get('batch_id')}", "batch ranks must be contiguous and ordered"))
-        for selected in batch.get("counties", []):
-            candidate_id = selected.get("resolution_candidate_id")
-            county_fips = selected.get("county_fips")
-            selected_ids.append(candidate_id)
-            selected_fips.append(county_fips)
-            candidate = resolution_by_id.get(candidate_id)
-            if candidate is None or any(
-                selected.get(field) != candidate.get(field)
-                for field in (
-                    "county_fips", "county_name", "state_abbr", "census_region",
-                    "national_rank", "priority_score", "active_canonical_facility_count",
-                )
-            ):
-                issues.append(Issue("config_validation", f"{comparison_batch_path.name}.{batch.get('batch_id')}.{county_fips}", "selected county does not match the governed resolution queue"))
-                continue
-            if (
-                candidate.get("resolution_status") != "queued"
-                or candidate.get("priority_tier") != "resolution_ready"
-                or not candidate.get("gate_status", {}).get("both_model_gates_pass")
-                or "candidate_anchor" not in candidate
-            ):
-                issues.append(Issue("config_validation", f"{comparison_batch_path.name}.{batch.get('batch_id')}.{county_fips}", "selected county does not pass the registered batch-eligibility gate"))
-    if len(selected_ids) != len(set(selected_ids)) or len(selected_fips) != len(set(selected_fips)):
-        issues.append(Issue("config_validation", comparison_batch_path.name, "a county or resolution candidate may appear in only one screening batch"))
-
     first_entry_source_path = CONFIG_DIR / "first-entry-anchor-evidence-sources.json"
     first_entry_source_document = load_json(first_entry_source_path)
     first_entry_sources = first_entry_source_document.get("records", [])

@@ -272,18 +272,6 @@ documented earlier county operations and fifteen remain unresolved. Their queue 
 `resolution_status: evidence_collected`; the remaining 193 records stay `queued`. None is verified,
 so no treatment date, comparison status, or model authorization is produced.
 
-### Comparison-pool continuation batches
-
-After the immutable 24-county resolution tranche, further research is dispatched in independently
-scoped batches of three under `comparison-pool-screening-batches.json`. Selection is limited to
-queued `resolution_ready` counties with an exact dated anchor and both registered model-window
-gates passed; it favors manageable inventories and rotates regions. Each worker must complete the
-same four search rounds, cover government, utility, telecom, education, healthcare, finance,
-enterprise, and commercial facility classes, and log negative searches and access failures.
-Workers cannot write shared tranche, public, manifest, or pooled files. Their county-scoped evidence
-is reconciled centrally and must pass the complete repository contract before another batch starts.
-Unknown exposure remains unknown, and modeled synthesis is prohibited in this screening program.
-
 ## Lifecycle verification pilot
 
 The first historical-reconstruction increment is a governed 24-facility research queue.
