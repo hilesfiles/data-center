@@ -1,0 +1,92 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dccio.org/schemas/v1/comparison-pool-screening-batches.schema.json",
+  "title": "Comparison-pool screening batch policy",
+  "type": "object",
+  "required": ["schema_version", "policy_id", "policy_version", "source_resolution_policy_id", "source_dataset_id", "objective", "execution", "eligibility", "research_contract", "batches", "publication_gate", "created_at", "updated_at", "record_status"],
+  "properties": {
+    "schema_version": { "$ref": "common.schema.json#/$defs/schema_version" },
+    "policy_id": { "$ref": "common.schema.json#/$defs/entity_id" },
+    "policy_version": { "type": "string", "minLength": 1 },
+    "source_resolution_policy_id": { "$ref": "common.schema.json#/$defs/entity_id" },
+    "source_dataset_id": { "const": "county_first_entry_resolution_priority_v1" },
+    "objective": { "type": "string", "minLength": 1 },
+    "execution": {
+      "type": "object",
+      "required": ["worker_batch_size", "reconcile_before_next_batch", "independent_county_scope", "shared_artifact_writes_by_workers", "full_validation_before_next_batch"],
+      "properties": {
+        "worker_batch_size": { "const": 3 },
+        "reconcile_before_next_batch": { "const": true },
+        "independent_county_scope": { "const": true },
+        "shared_artifact_writes_by_workers": { "const": false },
+        "full_validation_before_next_batch": { "const": true }
+      },
+      "additionalProperties": false
+    },
+    "eligibility": { "type": "object", "additionalProperties": { "type": ["string", "boolean"] } },
+    "research_contract": {
+      "type": "object",
+      "required": ["required_search_rounds", "minimum_authoritative_source_types", "inventory_domains", "negative_searches_must_be_logged", "access_failures_must_be_logged", "modeled_synthesis_allowed", "unknown_exposure_may_be_classified_unexposed", "first_entry_verification_requires_all_findings_resolved"],
+      "properties": {
+        "required_search_rounds": { "const": ["local_official_record", "operator_and_corporate_history", "contemporaneous_discovery", "county_inventory_closure"] },
+        "minimum_authoritative_source_types": { "type": "integer", "minimum": 2 },
+        "inventory_domains": { "type": "array", "minItems": 9, "uniqueItems": true, "items": { "type": "string", "minLength": 1 } },
+        "negative_searches_must_be_logged": { "const": true },
+        "access_failures_must_be_logged": { "const": true },
+        "modeled_synthesis_allowed": { "const": false },
+        "unknown_exposure_may_be_classified_unexposed": { "const": false },
+        "first_entry_verification_requires_all_findings_resolved": { "const": true }
+      },
+      "additionalProperties": false
+    },
+    "batches": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["batch_id", "status", "selected_at", "selection_note", "counties"],
+        "properties": {
+          "batch_id": { "$ref": "common.schema.json#/$defs/entity_id" },
+          "status": { "enum": ["planned", "in_research", "ready_for_reconciliation", "reconciled"] },
+          "selected_at": { "$ref": "common.schema.json#/$defs/timestamp" },
+          "selection_note": { "type": "string", "minLength": 1 },
+          "counties": {
+            "type": "array",
+            "minItems": 3,
+            "maxItems": 3,
+            "items": {
+              "type": "object",
+              "required": ["batch_rank", "resolution_candidate_id", "county_fips", "county_name", "state_abbr", "census_region", "national_rank", "priority_score", "active_canonical_facility_count"],
+              "properties": {
+                "batch_rank": { "type": "integer", "minimum": 1, "maximum": 3 },
+                "resolution_candidate_id": { "$ref": "common.schema.json#/$defs/entity_id" },
+                "county_fips": { "$ref": "common.schema.json#/$defs/county_fips" },
+                "county_name": { "type": "string", "minLength": 1 },
+                "state_abbr": { "$ref": "common.schema.json#/$defs/state_abbr" },
+                "census_region": { "enum": ["Northeast", "Midwest", "South", "West"] },
+                "national_rank": { "type": "integer", "minimum": 1 },
+                "priority_score": { "type": "number", "minimum": 0, "maximum": 100 },
+                "active_canonical_facility_count": { "type": "integer", "minimum": 1 }
+              },
+              "additionalProperties": false
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "publication_gate": {
+      "type": "object",
+      "required": ["level_1_model_authorized", "authorization_condition"],
+      "properties": {
+        "level_1_model_authorized": { "const": false },
+        "authorization_condition": { "type": "string", "minLength": 1 }
+      },
+      "additionalProperties": false
+    },
+    "created_at": { "$ref": "common.schema.json#/$defs/timestamp" },
+    "updated_at": { "$ref": "common.schema.json#/$defs/timestamp" },
+    "record_status": { "const": "active" }
+  },
+  "additionalProperties": false
+}

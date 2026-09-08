@@ -1,0 +1,98 @@
+{
+  "schema_version": "1.0.0",
+  "policy_id": "pol_comparison_pool_screening_batches_20260908",
+  "policy_version": "1.0.0",
+  "source_resolution_policy_id": "pol_first_entry_resolution_20260903",
+  "source_dataset_id": "county_first_entry_resolution_priority_v1",
+  "objective": "Establish defensible county exposure histories for a national comparison pool without treating unknown exposure as absence.",
+  "execution": {
+    "worker_batch_size": 3,
+    "reconcile_before_next_batch": true,
+    "independent_county_scope": true,
+    "shared_artifact_writes_by_workers": false,
+    "full_validation_before_next_batch": true
+  },
+  "eligibility": {
+    "resolution_status": "queued",
+    "priority_tier": "resolution_ready",
+    "both_model_gates_pass": true,
+    "dated_exact_facility_anchor_required": true,
+    "selection_prefers_manageable_inventory": true,
+    "regional_rotation_required": true
+  },
+  "research_contract": {
+    "required_search_rounds": [
+      "local_official_record",
+      "operator_and_corporate_history",
+      "contemporaneous_discovery",
+      "county_inventory_closure"
+    ],
+    "minimum_authoritative_source_types": 2,
+    "inventory_domains": [
+      "county_and_municipal_government",
+      "state_government_and_procurement",
+      "utilities_and_regulators",
+      "telecommunications_and_network_operations",
+      "education",
+      "healthcare",
+      "financial_services",
+      "major_enterprise_facilities",
+      "commercial_colocation_and_cloud"
+    ],
+    "negative_searches_must_be_logged": true,
+    "access_failures_must_be_logged": true,
+    "modeled_synthesis_allowed": false,
+    "unknown_exposure_may_be_classified_unexposed": false,
+    "first_entry_verification_requires_all_findings_resolved": true
+  },
+  "batches": [
+    {
+      "batch_id": "cpb_comparison_pool_001",
+      "status": "in_research",
+      "selected_at": "2026-09-08T00:00:00Z",
+      "selection_note": "First continuation batch chooses one high-readiness county from the Midwest, South, and West with a dated exact-facility anchor, a passing panel window, and a comparatively manageable registered inventory. Northeast receives priority in the next regional rotation.",
+      "counties": [
+        {
+          "batch_rank": 1,
+          "resolution_candidate_id": "frc_2c1672ef55c00cae4d22",
+          "county_fips": "39061",
+          "county_name": "Hamilton County",
+          "state_abbr": "OH",
+          "census_region": "Midwest",
+          "national_rank": 14,
+          "priority_score": 83.32,
+          "active_canonical_facility_count": 2
+        },
+        {
+          "batch_rank": 2,
+          "resolution_candidate_id": "frc_560ae976473d6b6d423a",
+          "county_fips": "13135",
+          "county_name": "Gwinnett County",
+          "state_abbr": "GA",
+          "census_region": "South",
+          "national_rank": 27,
+          "priority_score": 81.62,
+          "active_canonical_facility_count": 3
+        },
+        {
+          "batch_rank": 3,
+          "resolution_candidate_id": "frc_88f994cc34f86eaf5735",
+          "county_fips": "30017",
+          "county_name": "Custer County",
+          "state_abbr": "MT",
+          "census_region": "West",
+          "national_rank": 35,
+          "priority_score": 80.22,
+          "active_canonical_facility_count": 1
+        }
+      ]
+    }
+  ],
+  "publication_gate": {
+    "level_1_model_authorized": false,
+    "authorization_condition": "At least one outcome-specific comparison set must pass exposure, timing, overlap, and diagnostic registration after county research is reconciled."
+  },
+  "created_at": "2026-09-08T00:00:00Z",
+  "updated_at": "2026-09-08T00:00:00Z",
+  "record_status": "active"
+}
