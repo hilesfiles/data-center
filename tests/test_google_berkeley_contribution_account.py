@@ -42,8 +42,8 @@ class GoogleBerkeleyContributionAccountTest(unittest.TestCase):
 
     def test_account_counts_identity_and_full_gate(self):
         self.assertEqual(self.detail["county_fips"], "45015")
-        self.assertEqual(self.detail["economic_record_count"], 20)
-        self.assertEqual(self.detail["reported_actual_count"], 16)
+        self.assertEqual(self.detail["economic_record_count"], 18)
+        self.assertEqual(self.detail["reported_actual_count"], 14)
         self.assertEqual(self.detail["projection_count"], 4)
         self.assertEqual(self.detail["modeled_synthesis_count"], 14)
         gate = self.detail["model_completeness"]
@@ -60,6 +60,8 @@ class GoogleBerkeleyContributionAccountTest(unittest.TestCase):
         self.assertEqual(rows["clm_study_google_arum_property_taxes_paid_2025"]["value"], 90_266.72)
         self.assertEqual(rows["clm_study_google_berkeley_electric_contribution_2025"]["value"], 250_000)
         self.assertEqual(rows["clm_study_google_berkeley_people_working_2018"]["value_qualifier"], "greater_than")
+        self.assertNotIn("clm_study_google_berkeley_cumulative_investment_2018", rows)
+        self.assertNotIn("clm_study_google_berkeley_cumulative_investment_2021", rows)
         self.assertTrue(all(row["scope"]["inventory_allocation"] == "unallocated" for row in rows.values()))
         projections = [row for row in rows.values() if row["basis"] == "source_projection"]
         self.assertEqual(len(projections), 4)
@@ -102,14 +104,17 @@ class GoogleBerkeleyContributionAccountTest(unittest.TestCase):
             for row in rows
             if row["derivation"]["model_version"] == "google-deloitte-south-carolina-impact-2024"
         }
-        self.assertEqual(impacts["study.modeled_operating_fte_total"]["value"], 6_430)
-        self.assertEqual(impacts["study.modeled_operating_labor_income_total"]["value"], 411_000_000)
-        self.assertEqual(impacts["study.modeled_operating_regional_gdp_contribution"]["value"], 626_000_000)
+        self.assertEqual(impacts["study.modeled_annual_data_center_jobs_supported_total"]["value"], 6_430)
+        self.assertEqual(impacts["study.modeled_annual_data_center_labor_income_total"]["value"], 411_000_000)
+        self.assertEqual(impacts["study.modeled_annual_data_center_gdp_contribution_total"]["value"], 626_000_000)
         self.assertTrue(all(row["scope"]["level"] == "state" for row in impacts.values()))
         self.assertTrue(all(row["presentation"] == "modeled_not_observed_or_audited" for row in impacts.values()))
-        jobs = {parameter["name"]: parameter["value"] for parameter in impacts["study.modeled_operating_fte_total"]["parameters"]}
+        jobs_model = impacts["study.modeled_annual_data_center_jobs_supported_total"]
+        self.assertEqual((jobs_model["unit"], jobs_model["measure_type"]), ("jobs", "flow"))
+        jobs = {parameter["name"]: parameter["value"] for parameter in jobs_model["parameters"]}
         self.assertEqual(jobs, {"direct_jobs": 985, "indirect_jobs": 3970, "induced_jobs": 1480})
-        self.assertNotEqual(sum(jobs.values()), impacts["study.modeled_operating_fte_total"]["value"])
+        self.assertNotEqual(sum(jobs.values()), jobs_model["value"])
+        self.assertFalse(any("modeled_operating" in row["metric_code"] for row in impacts.values()))
 
     def test_search_matrix_description_and_schema_proposals_are_complete(self):
         updates = [row for row in self.evidence["project_updates"] if row["project_id"] == PROJECT]
@@ -122,16 +127,21 @@ class GoogleBerkeleyContributionAccountTest(unittest.TestCase):
             "assessor", "permit", "filot", "supplier", "payroll", "water", "electricity",
             "wastewater", "emissions", "cooling", "community", "gdp", "not a google effect",
             "cloudflare", "no complete annual grant ledger", "candidate_pending_adversarial_review",
+            "adversarial_review_complete_corrected_provisional",
         ):
             self.assertIn(term, text)
-        proposal = next(row for row in updates if row["title"] == "Exact environmental metric proposals preserve unsupported source fields")
+        proposal = next(row for row in updates if row["title"] == "Corrected environmental catalog, scope, claim, and regression proposal")
         payload = json.loads(proposal["notes"])
-        self.assertEqual(payload["proposal_status"], "not_adopted_catalog_support_missing")
+        self.assertEqual(payload["proposal_status"], "not_adopted_requires_catalog_and_scope_schema_change")
+        self.assertEqual(payload["scope_schema_payload"]["add_level"], "state")
         self.assertEqual(
             [row["metric_code"] for row in payload["catalog_payloads"]],
             ["study.annual_water_consumption", "study.data_center_pue", "study.carbon_free_energy_match"],
         )
-        self.assertEqual(payload["regression_expectations"]["annual_water_consumption_values"], [662_100_000, 763_400_000])
+        self.assertEqual(len(payload["claim_payloads"]), 6)
+        self.assertTrue(all(row["scope"]["level"] == "state" for row in payload["claim_payloads"]))
+        self.assertEqual(payload["regression_expectations"]["water_values"], [662_100_000, 763_400_000])
+        self.assertEqual(payload["regression_expectations"]["post_adoption_merged_record_count"], 24)
 
     def _matched(self, metric, k=5):
         treated = self.panels["45015"]
