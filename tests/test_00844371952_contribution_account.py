@@ -1,5 +1,7 @@
 import json
 import math
+import statistics
+import subprocess
 import unittest
 from pathlib import Path
 
@@ -34,6 +36,8 @@ class GoogleBridgeportContributionAccountTest(unittest.TestCase):
             for path in (PUBLIC / "panels/county-economic-history/by-state").glob("*.json")
             for row in read(path)
         }
+        cls.panels = panels
+        cls.study_counties = {row["county_fips"] for row in cls.candidates["candidates"]}
         _, details, _ = build_products(
             cls.candidates,
             inventory,
@@ -48,12 +52,12 @@ class GoogleBridgeportContributionAccountTest(unittest.TestCase):
     def test_identity_counts_and_actual_projection_split(self):
         self.assertEqual(self.fragment["project_id"], PROJECT)
         self.assertEqual(self.model_fragment["project_id"], PROJECT)
-        self.assertEqual(len(self.fragment["records"]), 92)
-        self.assertEqual(len(self.detail["economic_records"]), 93)
-        self.assertEqual(self.detail["economic_record_count"], 93)
-        self.assertEqual(self.detail["reported_actual_count"], 83)
+        self.assertEqual(len(self.fragment["records"]), 134)
+        self.assertEqual(len(self.detail["economic_records"]), 135)
+        self.assertEqual(self.detail["economic_record_count"], 135)
+        self.assertEqual(self.detail["reported_actual_count"], 125)
         self.assertEqual(self.detail["projection_count"], 10)
-        self.assertEqual(self.detail["modeled_synthesis_count"], 30)
+        self.assertEqual(self.detail["modeled_synthesis_count"], 33)
         self.assertEqual(self.detail["county_fips"], "01071")
 
         projections = [
@@ -66,7 +70,7 @@ class GoogleBridgeportContributionAccountTest(unittest.TestCase):
             {60, 100_000, 100, 350, 93_600_000, 600_000_000, 1_000, 2_000_000, 550_000, 1_500_000_000},
         )
 
-    def test_three_account_2020_2025_fiscal_series_and_exclusions(self):
+    def test_personal_and_real_account_series_are_payment_verified(self):
         records = {row["claim_id"]: row for row in self.detail["economic_records"]}
         expected_tax = {
             2020: (892.32, 109_983.64, 668.08),
@@ -88,6 +92,57 @@ class GoogleBridgeportContributionAccountTest(unittest.TestCase):
                     records[f"clm_study_google_bridgeport_{slug}_tax_paid_{year}"]["notes"],
                 )
 
+        real_tax_claims = {
+            "48579": 440_505,
+            "39706": 2_497.20,
+            "3787": 133.30,
+            "3732": 174,
+            "42409": 120,
+            "3742": 15,
+            "3733": 450,
+            "3716": 3,
+        }
+        for pin, value in real_tax_claims.items():
+            self.assertEqual(
+                records[f"clm_study_google_bridgeport_wiessner_pin{pin}_tax_paid_2025"]["value"],
+                value,
+            )
+        self.assertAlmostEqual(math.fsum(real_tax_claims.values()), 443_897.50, places=2)
+
+        real_rollups = {
+            2020: (90_489_800, 18_097_960, 542_938.80, 542_938.80),
+            2021: (128_262_300, 25_652_460, 386_485, 386_485),
+            2022: (137_794_400, 27_558_880, 415_081.30, 415_081.30),
+            2023: (137_804_400, 27_560_880, 415_141.30, 415_141.30),
+            2024: (137_804_400, 27_560_880, 415_141.30, 415_141.30),
+        }
+        for year, (appraised, assessed, billed, paid) in real_rollups.items():
+            self.assertEqual(
+                records[f"clm_study_google_bridgeport_wiessner_real_appraised_{year}"]["value"],
+                appraised,
+            )
+            self.assertEqual(
+                records[f"clm_study_google_bridgeport_wiessner_real_assessed_{year}"]["value"],
+                assessed,
+            )
+            self.assertEqual(
+                records[f"clm_study_google_bridgeport_wiessner_real_tax_billed_{year}"]["value"],
+                billed,
+            )
+            paid_row = records[f"clm_study_google_bridgeport_wiessner_real_tax_paid_{year}"]
+            self.assertEqual(paid_row["value"], paid)
+            self.assertIn("billed", paid_row["notes"].lower())
+            self.assertIn("add", paid_row["notes"].lower())
+
+        self.assertEqual(
+            records["clm_study_google_bridgeport_wiessner_real_assessed_2025"]["value"],
+            29_480_020,
+        )
+        self.assertEqual(
+            records["clm_study_google_bridgeport_wiessner_real_tax_billed_2025"]["value"],
+            443_897.50,
+        )
+
         fragment_text = EVIDENCE_PATH.read_text(encoding="utf-8").lower()
         self.assertIn("unpaid 2026 estimate", fragment_text)
         self.assertIn("adp", fragment_text)
@@ -105,12 +160,12 @@ class GoogleBridgeportContributionAccountTest(unittest.TestCase):
     def test_tax_aggregation_and_break_even_reproduce_exact_arithmetic(self):
         models = {row["estimate_id"]: row for row in self.grouped[PROJECT]}
         expected = {
-            2020: 111_544.04,
-            2021: 1_713_520.38,
-            2022: 1_528_479.16,
-            2023: 2_105_407.20,
-            2024: 2_620_321.36,
-            2025: 2_749_035.14,
+            2020: 654_482.84,
+            2021: 2_100_005.38,
+            2022: 1_943_560.46,
+            2023: 2_520_548.50,
+            2024: 3_035_462.66,
+            2025: 3_192_932.64,
         }
         records = {row["claim_id"]: row for row in self.detail["economic_records"]}
         for year, total in expected.items():
@@ -119,14 +174,51 @@ class GoogleBridgeportContributionAccountTest(unittest.TestCase):
                 records[f"clm_study_google_bridgeport_{slug}_tax_paid_{year}"]["value"]
                 for slug in ("google", "design", "wiessner")
             ]
+            if year == 2025:
+                inputs.extend(
+                    row["value"] for claim_id, row in records.items()
+                    if claim_id.startswith("clm_study_google_bridgeport_wiessner_pin")
+                    and claim_id.endswith("_tax_paid_2025")
+                )
+            else:
+                inputs.append(
+                    records[f"clm_study_google_bridgeport_wiessner_real_tax_paid_{year}"]["value"]
+                )
             self.assertAlmostEqual(math.fsum(inputs), total, places=2)
             self.assertEqual(row["value"], total)
+            self.assertAlmostEqual(
+                math.fsum(parameter["value"] for parameter in row["parameters"]),
+                total,
+                places=2,
+            )
+            self.assertFalse(any(
+                "tax_billed" in parameter.get("provenance", {}).get("reference_id", "")
+                for parameter in row["parameters"]
+            ))
             self.assertEqual(row["derivation"]["method"], "allocation")
             self.assertEqual(row["interval"]["kind"], "point_estimate")
 
-        threshold = models["est_study_google_bridgeport_service_cost_break_even_2025"]
-        self.assertEqual(threshold["value"], expected[2025])
-        self.assertIn("not actual public cost", " ".join(threshold["limitations"]).lower())
+            threshold = models[f"est_study_google_bridgeport_service_cost_break_even_{year}"]
+            self.assertEqual(threshold["value"], total)
+            self.assertEqual(threshold["period"], row["period"])
+            self.assertEqual(threshold["scope"], row["scope"])
+            self.assertAlmostEqual(
+                math.fsum(parameter["value"] for parameter in threshold["parameters"]),
+                total,
+                places=2,
+            )
+            self.assertEqual(threshold["aggregation"]["role"], "standalone")
+            self.assertEqual(
+                threshold["aggregation"]["overlap_policy"],
+                "do_not_sum_outside_declared_total",
+            )
+            self.assertNotEqual(
+                threshold["aggregation"]["aggregation_id"],
+                row["aggregation"]["aggregation_id"],
+            )
+            self.assertIn("not actual public cost", " ".join(threshold["limitations"]).lower())
+            self.assertIn("nonadditive", threshold["notes"].lower())
+
         self.assertFalse(any("net_fiscal" in row["metric_code"] for row in models.values()))
 
     def test_source_modeled_channels_and_rounding_are_not_direct_actuals(self):
@@ -150,6 +242,50 @@ class GoogleBridgeportContributionAccountTest(unittest.TestCase):
         evidence_ids = {row["claim_id"] for row in self.detail["economic_records"]}
         self.assertFalse(any("gdp_contribution" in claim_id for claim_id in evidence_ids))
         self.assertFalse(any("labor_income" in claim_id for claim_id in evidence_ids))
+
+    def test_every_surviving_model_is_independently_reproduced_and_provenanced(self):
+        models = {row["estimate_id"]: row for row in self.grouped[PROJECT]}
+        claim_ids = {row["claim_id"] for row in self.fragment["records"]}
+        source_ids = {
+            row["source_id"]
+            for fragment in (self.fragment, self.model_fragment)
+            for row in fragment["sources"]
+        }
+        audited = set()
+
+        for estimate_id, row in models.items():
+            derivation = row["derivation"]
+            self.assertTrue(set(derivation["input_claim_ids"]).issubset(claim_ids))
+            self.assertTrue(set(derivation["input_source_ids"]).issubset(source_ids))
+            for parameter in row["parameters"]:
+                provenance = parameter["provenance"]
+                if provenance["kind"] == "claim":
+                    self.assertIn(provenance["reference_id"], claim_ids)
+                elif "reference_id" in provenance:
+                    self.assertIn(provenance["reference_id"], source_ids)
+
+            if estimate_id == "est_study_google_bridgeport_annualized_direct_payroll_projection":
+                params = {parameter["name"]: parameter["value"] for parameter in row["parameters"]}
+                reproduced = params["projected_direct_wages_floor"] / params["projection_horizon_years"]
+            elif estimate_id == "est_study_google_bridgeport_county_wage_comparison_2024":
+                params = {parameter["name"]: parameter["value"] for parameter in row["parameters"]}
+                reproduced = 100 * (
+                    params["host_2024_value"] - params["comparison_2024_value"]
+                ) / params["comparison_2024_value"]
+            elif row["aggregation"]["role"] == "total" or row["metric_code"] in {
+                "study.modeled_annual_project_linked_property_taxes_paid",
+                "study.modeled_annual_local_service_cost_break_even",
+            }:
+                reproduced = math.fsum(parameter["value"] for parameter in row["parameters"])
+            else:
+                self.assertEqual(len(row["parameters"]), 1)
+                reproduced = row["parameters"][0]["value"]
+
+            self.assertAlmostEqual(row["value"], reproduced, places=2, msg=estimate_id)
+            audited.add(estimate_id)
+
+        self.assertEqual(audited, set(models))
+        self.assertEqual(len(audited), 33)
 
     def test_water_pue_and_cfe_keep_location_scope_and_rounding(self):
         records = {row["claim_id"]: row for row in self.detail["economic_records"]}
@@ -182,21 +318,107 @@ class GoogleBridgeportContributionAccountTest(unittest.TestCase):
             for row in self.grouped[PROJECT]
         ))
 
-    def test_descriptive_county_comparisons_are_not_causal_effects(self):
+    def _county_specification(self, metric, treatment, universe="national", k=20, omit=None):
+        years = list(range(treatment - 8, treatment))
+        treated = {row["year"]: row for row in self.panels["01071"]["years"]}
+        southeast = {"01", "05", "12", "13", "21", "22", "28", "37", "45", "47", "51", "54"}
+
+        def features(series):
+            values = [series[year][metric] for year in years]
+            growth = [math.log(values[index] / values[index - 1]) for index in range(1, len(values))]
+            return (
+                math.log(values[-1]),
+                math.log(values[-1] / values[0]) / (len(values) - 1),
+                statistics.pstdev(growth),
+            )
+
+        target = features(treated)
+        candidates = []
+        for fips, county in self.panels.items():
+            if fips in self.study_counties or (universe == "southeast" and fips[:2] not in southeast):
+                continue
+            series = {row["year"]: row for row in county["years"]}
+            if not all(
+                year in series and series[year].get(metric) and series[year][metric] > 0
+                for year in years + [2024]
+            ):
+                continue
+            candidate = features(series)
+            distance = (
+                (candidate[0] - target[0]) ** 2
+                + ((candidate[1] - target[1]) / 0.03) ** 2
+                + ((candidate[2] - target[2]) / 0.03) ** 2
+            )
+            candidates.append((distance, fips, series))
+        selected = sorted(candidates, key=lambda row: (row[0], row[1]))[:k]
+        if omit:
+            selected = [row for row in selected if row[1] != omit]
+        weights = [1 / (math.sqrt(row[0]) + 0.05) for row in selected]
+
+        def prediction(year):
+            return sum(
+                weight * row[2][year][metric] for weight, row in zip(weights, selected)
+            ) / sum(weights)
+
+        comparison = prediction(2024)
+        gap = 100 * (treated[2024][metric] - comparison) / comparison
+        pre_errors = [
+            100 * (treated[year][metric] - prediction(year)) / prediction(year)
+            for year in years
+        ]
+        return gap, math.sqrt(statistics.mean(error * error for error in pre_errors)), [
+            row[1] for row in selected
+        ]
+
+    def test_county_sensitivity_gate_reproduces_retention_and_retirement(self):
         models = {row["estimate_id"]: row for row in self.grouped[PROJECT]}
-        expected = {
-            "employment": (-0.91, -8.90, 7.09),
-            "wage": (2.37, -2.63, 7.37),
-            "gdp": (-1.41, -7.37, 4.54),
-        }
-        for key, (value, low, high) in expected.items():
-            row = models[f"est_study_google_bridgeport_county_{key}_comparison_2024"]
-            self.assertEqual(row["value"], value)
-            self.assertEqual((row["interval"]["low"], row["interval"]["high"]), (low, high))
-            self.assertEqual(row["derivation"]["method"], "benchmark_application")
-            self.assertNotIn("causal_design", row)
-            self.assertIn("descriptive", " ".join(row["limitations"]).lower())
-            self.assertIn("fit sensitivity", row["interval"]["interpretation"])
+        for retired in ("employment", "gdp"):
+            self.assertNotIn(
+                f"est_study_google_bridgeport_county_{retired}_comparison_2024",
+                models,
+            )
+
+        diagnostics = {}
+        for metric in (
+            "annual_avg_covered_employment",
+            "annual_avg_weekly_wage_nominal_usd",
+            "real_gdp_usd",
+        ):
+            results = []
+            for treatment in (2018, 2019):
+                for universe in ("national", "southeast"):
+                    for k in (3, 5, 10, 20):
+                        results.append(self._county_specification(metric, treatment, universe, k)[:2])
+                _, _, donors = self._county_specification(metric, treatment)
+                results.extend(
+                    self._county_specification(metric, treatment, omit=donor)[:2]
+                    for donor in donors
+                )
+            diagnostics[metric] = {
+                "low": min(gap for gap, _ in results),
+                "high": max(gap for gap, _ in results),
+                "rmse": max(rmse for _, rmse in results),
+                "stable": all(gap > 0 for gap, _ in results) or all(gap < 0 for gap, _ in results),
+            }
+
+        self.assertFalse(diagnostics["annual_avg_covered_employment"]["stable"])
+        self.assertFalse(diagnostics["real_gdp_usd"]["stable"])
+        wage_diagnostic = diagnostics["annual_avg_weekly_wage_nominal_usd"]
+        self.assertTrue(wage_diagnostic["stable"])
+        self.assertLess(wage_diagnostic["rmse"], 5)
+
+        wage = models["est_study_google_bridgeport_county_wage_comparison_2024"]
+        baseline_gap, baseline_rmse, _ = self._county_specification(
+            "annual_avg_weekly_wage_nominal_usd", 2018
+        )
+        self.assertAlmostEqual(wage["value"], baseline_gap, places=2)
+        self.assertAlmostEqual(wage["parameters"][2]["value"], baseline_rmse, places=12)
+        self.assertAlmostEqual(wage["interval"]["low"], wage_diagnostic["low"], places=12)
+        self.assertAlmostEqual(wage["interval"]["high"], wage_diagnostic["high"], places=12)
+        self.assertAlmostEqual(wage["parameters"][3]["value"], wage_diagnostic["rmse"], places=12)
+        self.assertEqual(wage["derivation"]["method"], "benchmark_application")
+        self.assertNotIn("causal_design", wage)
+        self.assertIn("descriptive", " ".join(wage["limitations"]).lower())
 
     def test_search_trail_description_and_catalog_proposals(self):
         updates = self.fragment["project_updates"]
@@ -210,7 +432,7 @@ class GoogleBridgeportContributionAccountTest(unittest.TestCase):
         for token in (
             "assessor", "permit", "incentive", "public-cost", "debt", "utility",
             "generation", "water", "workforce", "supplier", "community recipient",
-            "gdp", "employment", "wage", "no real-property", "no project-specific",
+            "gdp", "employment", "wage", "eight wiessner real parcels", "facility 705-0057",
             "catalog-and-record proposals", "adversarial",
         ):
             self.assertIn(token, text)
@@ -228,6 +450,142 @@ class GoogleBridgeportContributionAccountTest(unittest.TestCase):
             "study.pue_overhead_reduction_vs_industry",
         ):
             self.assertIn(proposal, text)
+
+    def test_machine_actionable_environmental_proposals_are_complete_and_reproducible(self):
+        proposal_updates = []
+        for update in self.fragment["project_updates"]:
+            try:
+                payload = json.loads(update["notes"])
+            except (json.JSONDecodeError, TypeError):
+                continue
+            if payload.get("proposal_schema_version"):
+                proposal_updates.append((update, payload))
+        self.assertEqual(len(proposal_updates), 1)
+        update, payload = proposal_updates[0]
+        self.assertEqual(update["title"], "Machine-actionable catalog, claim and estimate adoption proposals")
+        self.assertEqual(payload["status"], "corrective_handoff_ready")
+        self.assertEqual(payload["parent_commit"], "b25b60627513a2c5c7d99a48984f6b5defaeb403")
+        self.assertEqual(len(payload["catalog_proposals"]), 17)
+        self.assertEqual(len(payload["claim_proposals"]), 35)
+        self.assertEqual(len(payload["estimate_proposals"]), 6)
+
+        catalog = {row["metric_code"]: row for row in payload["catalog_proposals"]}
+        claims = {row["claim_id"]: row for row in payload["claim_proposals"]}
+        estimates = {row["estimate_id"]: row for row in payload["estimate_proposals"]}
+        source_ids = {row["source_id"] for row in self.fragment["sources"]}
+        self.assertEqual(len(catalog), 17)
+        self.assertEqual(len(claims), 35)
+        self.assertEqual(len(estimates), 6)
+
+        for row in claims.values():
+            self.assertEqual(row["project_id"], PROJECT)
+            self.assertIn(row["metric_code"], catalog)
+            self.assertTrue(catalog[row["metric_code"]]["unit"])
+            self.assertIn(row["source_id"], source_ids)
+            self.assertEqual(row["scope"]["county_fips"], "01071")
+            self.assertEqual(row["scope"]["inventory_allocation"], "unallocated")
+            self.assertTrue(row["source_locator"])
+            self.assertTrue(set(row).issubset({
+                "claim_id", "project_id", "metric_code", "value", "value_qualifier", "basis",
+                "period", "scope", "source_id", "pdf_page", "printed_page", "source_locator",
+                "notes", "review_status", "reviewed_on", "annual_series_key",
+            }))
+
+        generator_count = claims["clm_proposed_google_bridgeport_assessor_generator_count_2026"]
+        generator_rating = claims[
+            "clm_proposed_google_bridgeport_assessor_generator_unit_nameplate_2026"
+        ]
+        self.assertEqual(generator_count["value"], 55)
+        self.assertEqual(catalog[generator_count["metric_code"]]["unit"], "generators")
+        self.assertEqual(generator_rating["value"], 1000)
+        self.assertEqual(catalog[generator_rating["metric_code"]]["unit"], "kW_per_generator")
+        self.assertIn("assessor", generator_count["notes"].lower())
+        self.assertIn("not permit-listed", generator_count["notes"].lower())
+        generator_total = estimates[
+            "est_proposed_google_bridgeport_assessor_generator_total_nameplate_2026"
+        ]
+        generator_params = {row["name"]: row["value"] for row in generator_total["parameters"]}
+        self.assertEqual(
+            generator_params["generator_feature_rows"]
+            * generator_params["nameplate_per_feature_row"] / 1000,
+            generator_total["value"],
+        )
+        self.assertEqual((generator_total["value"], generator_total["unit"]), (55, "MW"))
+        self.assertIn("not operating output", " ".join(generator_total["limitations"]).lower())
+
+        potential_expected = {
+            2018: {"nox": 245.92, "carbon_monoxide": 45.27, "voc": 5.08},
+            2019: {"nox": 248.51, "carbon_monoxide": 47.15, "voc": 5.82},
+            2020: {"nox": 249.20, "carbon_monoxide": 47.33, "voc": 5.95},
+            2022: {
+                "nox": 249, "sox": 0.23, "carbon_monoxide": 48.12, "voc": 5.95,
+                "pm": 0.67, "pm10": 0.67, "pm25": 0.67, "formaldehyde": 0.013,
+                "total_hap": 0.28, "co2e": 24_693,
+            },
+        }
+        for year, pollutants in potential_expected.items():
+            for pollutant, value in pollutants.items():
+                row = claims[f"clm_proposed_google_bridgeport_permitted_potential_{pollutant}_{year}"]
+                self.assertEqual(row["value"], value)
+                self.assertEqual(catalog[row["metric_code"]]["unit"], "tons_per_year")
+                self.assertEqual(row["period"]["year"], year)
+                self.assertIn("permitting maximum", row["notes"].lower())
+                self.assertIn("never actual emissions", row["notes"].lower())
+
+        runtime_expected = {"X001": 8320, "X002": 1600, "X003": 500, "X004": 160}
+        for group, value in runtime_expected.items():
+            row = claims[f"clm_proposed_google_bridgeport_{group.lower()}_runtime_ceiling_2023"]
+            self.assertEqual(row["value"], value)
+            self.assertEqual(catalog[row["metric_code"]]["unit"], "hours_per_year")
+            self.assertIn(f"permit group {group}", row["scope"]["label"])
+            self.assertIn("non-equivalent", row["notes"].lower())
+            self.assertIn("55 assessor", row["notes"].lower())
+
+        fee_expected = {
+            2020: (77.50, 2052.21),
+            2021: (95, 915.80),
+            2022: (90, 1033.20),
+            2023: (92, 244.72),
+            2024: (98.50, 256.11),
+        }
+        for year, (rate, amount) in fee_expected.items():
+            rate_row = claims[f"clm_proposed_google_bridgeport_air_fee_rate_{year}"]
+            amount_row = claims[f"clm_proposed_google_bridgeport_air_fee_amount_{year}"]
+            self.assertEqual(rate_row["value"], rate)
+            self.assertEqual(catalog[rate_row["metric_code"]]["unit"], "USD_per_ton")
+            self.assertEqual(amount_row["value"], amount)
+            self.assertEqual(catalog[amount_row["metric_code"]]["unit"], "USD")
+            estimate = estimates[f"est_proposed_google_bridgeport_aggregate_billable_air_emissions_{year}"]
+            self.assertEqual(estimate["value"], round(amount / rate, 2))
+            self.assertEqual(estimate["unit"], "tons_per_year")
+            self.assertEqual(estimate["period"]["year"], year)
+            self.assertIn(str(amount), estimate["derivation"]["formula"])
+            self.assertIn("aeeers", estimate["notes"].lower())
+            self.assertIn("nonadditive", " ".join(estimate["limitations"]).lower())
+
+        self.assertEqual(
+            set(payload["authorized_files"]),
+            {
+                "config/v1/study-economic-evidence.projects/prj_study_im3_building_00844371952.json",
+                "config/v1/study-modeled-synthesis.projects/prj_study_im3_building_00844371952.json",
+                "tests/test_00844371952_contribution_account.py",
+            },
+        )
+        self.assertGreaterEqual(len(payload["irreducible_inputs"]), 5)
+
+    def test_corrective_diff_is_limited_to_the_three_authorized_files(self):
+        changed = subprocess.run(
+            ["git", "diff", "--name-only", "b25b60627513a2c5c7d99a48984f6b5defaeb403", "--"],
+            cwd=ROOT,
+            check=True,
+            capture_output=True,
+            text=True,
+        ).stdout.splitlines()
+        self.assertEqual(set(changed), {
+            "config/v1/study-economic-evidence.projects/prj_study_im3_building_00844371952.json",
+            "config/v1/study-modeled-synthesis.projects/prj_study_im3_building_00844371952.json",
+            "tests/test_00844371952_contribution_account.py",
+        })
 
     def test_adversarial_correction_is_schema_valid_and_repairs_provenance(self):
         validator = ContractValidator(ROOT / "schemas/v1")
@@ -258,18 +616,50 @@ class GoogleBridgeportContributionAccountTest(unittest.TestCase):
             "clm_study_google_bridgeport_google_tax_paid_2025": 3_994.82,
             "clm_study_google_bridgeport_design_tax_paid_2025": 1_905_083.88,
             "clm_study_google_bridgeport_wiessner_tax_paid_2025": 839_956.44,
+            "src_study_jackson_property_wiessner_real_98353": 443_897.50,
         })
 
         sources = {row["source_id"] for row in self.fragment["sources"]}
         self.assertTrue({
             "src_study_alabama_commerce_project_spike_2016",
             "src_study_naec_google_expansion_2026",
+            "src_study_jackson_county_minutes_wiessner_mpa_2015",
+            "src_study_jackson_property_wiessner_real_98353",
+            "src_study_adem_wiessner_title_v_2023",
+            "src_study_adem_wiessner_air_applications_2018_2022",
+            "src_study_epa_echo_bridgeport_facilities_2026",
+            "src_study_epa_echo_wiessner_dfr_2026",
+            "src_study_adem_bridgeport_cwsrf_2025",
         }.issubset(sources))
         updates = " ".join(row["notes"] for row in self.fragment["project_updates"]).lower()
         self.assertIn("contract 3.1.0", updates)
         self.assertIn("e3a0b32ae0954ed38c9875674d3c1238144b6a6a", updates)
         self.assertIn("epa/echo", updates)
         self.assertIn("ferc", updates)
+        self.assertIn("candidate_pending_adversarial_review", updates)
+        self.assertIn("f66c3073fb679b7f3fe34012a5cb4926cac54534", updates)
+        self.assertIn("corrective_handoff_ready", updates)
+
+    def test_corrective_direct_facts_and_rejected_inferences(self):
+        records = {row["claim_id"]: row for row in self.detail["economic_records"]}
+        self.assertEqual(records["clm_study_google_bridgeport_poured_pad_area_2017"]["value"], 100)
+        self.assertEqual(
+            {
+                records["clm_study_google_bridgeport_wiessner_building_a_floor_area_2026"]["value"],
+                records["clm_study_google_bridgeport_wiessner_building_b_floor_area_2026"]["value"],
+                records["clm_study_google_bridgeport_wiessner_office_floor_area_2026"]["value"],
+            },
+            {318_096, 319_600, 67_200},
+        )
+        text = EVIDENCE_PATH.read_text(encoding="utf-8").lower()
+        self.assertIn("55 diesel", text)
+        self.assertIn("potential-to-emit", text)
+        self.assertIn("aggregate billable actual tons", text)
+        self.assertIn("aeeers", text)
+        self.assertIn("full $7 million is not cataloged", text)
+        self.assertIn("$129 million", text)
+        self.assertIn("no worksheet defining", text)
+        self.assertNotIn("clm_study_google_bridgeport_permitted_generators", text)
 
     def test_native_scope_nonadditivity_and_chronology_conflict(self):
         records = self.detail["economic_records"]

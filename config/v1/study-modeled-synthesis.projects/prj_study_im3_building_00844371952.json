@@ -1,8 +1,8 @@
 {
   "schema_version": "1.0.0",
   "project_id": "prj_study_im3_building_00844371952",
-  "reviewed_on": "2026-09-07",
-  "scope_note": "Thirty residual modeled syntheses remain after the Google Bridgeport evidence audit. They retain published Deloitte/Google IMPLAN channels as source-modeled outputs, the lower-bound payroll annualization, exact annual paid-tax aggregations plus a 2025 equal-cost threshold, and three low-confidence descriptive county comparison gaps. Source-reported environmental values now live in the governed direct-evidence catalog. The models do not allocate campus/state results to the selected building, invent supplier spend/payroll/public costs, convert workers to job-years, estimate incentives or net fiscal impact, or treat source projections as actuals.",
+  "reviewed_on": "2026-09-08",
+  "scope_note": "Thirty-three residual modeled syntheses remain after the second adversarial continuation. They retain published Deloitte/Google IMPLAN channels as source-modeled outputs, the lower-bound payroll annualization, six exact annual paid-tax aggregations, six same-period equal-cost identities, and one sensitivity-qualified descriptive county wage comparison. Employment and GDP county gaps remain retired because sign stability and pre-period-fit gates fail. Assessor-generator, permit-potential, permit-runtime, fee-input and billable-emissions quantities are encoded in the single machine-actionable adoption proposal because the current catalog lacks correctly scoped metrics or units. The models do not allocate campus/state results to the selected building, invent supplier spend/payroll/public costs, convert workers to job-years, estimate incentives or net fiscal impact, or treat source projections as actuals.",
   "sources": [
     {
       "source_id": "src_study_google_alabama_impact_2024",
@@ -1860,33 +1860,33 @@
       "evidence_search": {
         "direct_observation_status": "partial",
         "source_projection_status": "available_separately",
-        "remaining_evidence_gap": "Audited affiliate/account completeness, real-property accounts and recipient reconciliation."
+        "remaining_evidence_gap": "Audited affiliate/account completeness and recipient reconciliation beyond the three exact-address personal accounts and seven eligible Wiessner real parcels located for tax year 2020."
       },
       "presentation": "modeled_not_observed_or_audited",
-      "reviewed_on": "2026-09-07",
+      "reviewed_on": "2026-09-08",
       "estimate_id": "est_study_google_bridgeport_property_tax_total_2020",
       "metric_code": "study.modeled_annual_project_linked_property_taxes_paid",
       "label": "Aggregated project-linked property taxes paid",
       "category": "fiscal",
       "unit": "USD_per_year",
       "measure_type": "flow",
-      "value": 111544.04,
+      "value": 654482.84,
       "period": {
         "kind": "tax_year",
         "year": 2020,
-        "label": "Jackson County tax year 2020; three exact-address accounts paid"
+        "label": "Jackson County tax year 2020; three exact-address personal accounts and seven eligible linked real parcels paid"
       },
       "scope": {
         "level": "company_county",
-        "label": "Google, Design and Wiessner personal-property accounts at 48809 AL Hwy 277",
+        "label": "Google, Design and Wiessner personal-property accounts at 48809 AL Hwy 277 plus seven eligible Wiessner-linked real parcels",
         "county_fips": "01071",
         "inventory_allocation": "unallocated"
       },
       "interval": {
         "kind": "point_estimate",
-        "low": 111544.04,
-        "central": 111544.04,
-        "high": 111544.04,
+        "low": 654482.84,
+        "central": 654482.84,
+        "high": 654482.84,
         "interpretation": "Exact source arithmetic or reported point; not a statistical estimate."
       },
       "contribution_channel": "not_applicable",
@@ -1905,7 +1905,7 @@
             "reference_id": "clm_study_google_bridgeport_google_tax_paid_2020",
             "detail": "Tax paid by exact-address account in 2020"
           },
-          "transformation": "Summed across three accounts"
+          "transformation": "Summed across three personal accounts and the eligible real-parcel paid rollup"
         },
         {
           "name": "design_account_tax_paid",
@@ -1916,7 +1916,7 @@
             "reference_id": "clm_study_google_bridgeport_design_tax_paid_2020",
             "detail": "Tax paid by exact-address account in 2020"
           },
-          "transformation": "Summed across three accounts"
+          "transformation": "Summed across three personal accounts and the eligible real-parcel paid rollup"
         },
         {
           "name": "wiessner_account_tax_paid",
@@ -1927,36 +1927,50 @@
             "reference_id": "clm_study_google_bridgeport_wiessner_tax_paid_2020",
             "detail": "Tax paid by exact-address account in 2020"
           },
-          "transformation": "Summed across three accounts"
+          "transformation": "Summed across three personal accounts and the eligible real-parcel paid rollup"
+        },
+        {
+          "name": "wiessner_real_parcels_tax_paid",
+          "value": 542938.8,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_google_bridgeport_wiessner_real_tax_paid_2020",
+            "detail": "Paid-tax rollup for the seven eligible Wiessner real parcels in tax year 2020"
+          },
+          "transformation": "Direct annual rollup; the separately retained billed claim is not added"
         }
       ],
       "confidence": "medium",
       "decision_relevance": "Provides exact annual recurring project-linked tax arithmetic without asserting recipient distribution or net benefit.",
       "derivation": {
         "method": "allocation",
-        "model_version": "google-bridgeport-account-1.0.0",
-        "formula": "Google account + Design account + Wiessner account",
+        "model_version": "google-bridgeport-account-1.2.0",
+        "formula": "Google personal account + Design personal account + Wiessner personal account + eligible Wiessner real-parcel paid rollup",
         "input_claim_ids": [
           "clm_study_google_bridgeport_google_tax_paid_2020",
           "clm_study_google_bridgeport_design_tax_paid_2020",
-          "clm_study_google_bridgeport_wiessner_tax_paid_2020"
+          "clm_study_google_bridgeport_wiessner_tax_paid_2020",
+          "clm_study_google_bridgeport_wiessner_real_tax_paid_2020"
         ],
         "input_source_ids": [
           "src_study_jackson_property_google_151335",
           "src_study_jackson_property_design_151342",
-          "src_study_jackson_property_wiessner_151344"
+          "src_study_jackson_property_wiessner_151344",
+          "src_study_jackson_property_wiessner_real_98353"
         ],
         "assumptions": [
           "Account 151344 is linked by Google-named payment memos, not assumed ownership.",
-          "No 2026 estimate or unrelated address account is included."
+          "No 2026 estimate or unrelated address account is included.",
+          "The paid rollup is counted once; the same-year billed record is retained only as a reconciliation fact."
         ]
       },
       "limitations": [
         "Not a government-wide net fiscal measure.",
-        "Account set may omit real property or other affiliates.",
+        "The public search may still omit affiliates or project-linked parcels, and recipient distributions are not reconciled.",
         "Does not measure abatements, indirect taxes or public costs."
       ],
-      "notes": "Deterministic aggregation of accepted paid-tax claims."
+      "notes": "Deterministic aggregation of four accepted paid-tax claims; billed records are not model inputs. PIN 3787 is excluded in 2020 because the portal showed an unrelated owner for that year."
     },
     {
       "project_id": "prj_study_im3_building_00844371952",
@@ -1965,33 +1979,33 @@
       "evidence_search": {
         "direct_observation_status": "partial",
         "source_projection_status": "available_separately",
-        "remaining_evidence_gap": "Audited affiliate/account completeness, real-property accounts and recipient reconciliation."
+        "remaining_evidence_gap": "Audited affiliate/account completeness and recipient reconciliation beyond the three exact-address personal accounts and eight linked real parcels located for tax year 2021."
       },
       "presentation": "modeled_not_observed_or_audited",
-      "reviewed_on": "2026-09-07",
+      "reviewed_on": "2026-09-08",
       "estimate_id": "est_study_google_bridgeport_property_tax_total_2021",
       "metric_code": "study.modeled_annual_project_linked_property_taxes_paid",
       "label": "Aggregated project-linked property taxes paid",
       "category": "fiscal",
       "unit": "USD_per_year",
       "measure_type": "flow",
-      "value": 1713520.38,
+      "value": 2100005.38,
       "period": {
         "kind": "tax_year",
         "year": 2021,
-        "label": "Jackson County tax year 2021; three exact-address accounts paid"
+        "label": "Jackson County tax year 2021; three exact-address personal accounts and eight linked real parcels paid"
       },
       "scope": {
         "level": "company_county",
-        "label": "Google, Design and Wiessner personal-property accounts at 48809 AL Hwy 277",
+        "label": "Google, Design and Wiessner personal-property accounts at 48809 AL Hwy 277 plus eight Wiessner-linked real parcels",
         "county_fips": "01071",
         "inventory_allocation": "unallocated"
       },
       "interval": {
         "kind": "point_estimate",
-        "low": 1713520.38,
-        "central": 1713520.38,
-        "high": 1713520.38,
+        "low": 2100005.38,
+        "central": 2100005.38,
+        "high": 2100005.38,
         "interpretation": "Exact source arithmetic or reported point; not a statistical estimate."
       },
       "contribution_channel": "not_applicable",
@@ -2010,7 +2024,7 @@
             "reference_id": "clm_study_google_bridgeport_google_tax_paid_2021",
             "detail": "Tax paid by exact-address account in 2021"
           },
-          "transformation": "Summed across three accounts"
+          "transformation": "Summed across three personal accounts and the real-parcel paid rollup"
         },
         {
           "name": "design_account_tax_paid",
@@ -2021,7 +2035,7 @@
             "reference_id": "clm_study_google_bridgeport_design_tax_paid_2021",
             "detail": "Tax paid by exact-address account in 2021"
           },
-          "transformation": "Summed across three accounts"
+          "transformation": "Summed across three personal accounts and the real-parcel paid rollup"
         },
         {
           "name": "wiessner_account_tax_paid",
@@ -2032,36 +2046,50 @@
             "reference_id": "clm_study_google_bridgeport_wiessner_tax_paid_2021",
             "detail": "Tax paid by exact-address account in 2021"
           },
-          "transformation": "Summed across three accounts"
+          "transformation": "Summed across three personal accounts and the real-parcel paid rollup"
+        },
+        {
+          "name": "wiessner_real_parcels_tax_paid",
+          "value": 386485,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_google_bridgeport_wiessner_real_tax_paid_2021",
+            "detail": "Paid-tax rollup for eight Wiessner real parcels in tax year 2021"
+          },
+          "transformation": "Direct annual rollup; the separately retained billed claim is not added"
         }
       ],
       "confidence": "medium",
       "decision_relevance": "Provides exact annual recurring project-linked tax arithmetic without asserting recipient distribution or net benefit.",
       "derivation": {
         "method": "allocation",
-        "model_version": "google-bridgeport-account-1.0.0",
-        "formula": "Google account + Design account + Wiessner account",
+        "model_version": "google-bridgeport-account-1.2.0",
+        "formula": "Google personal account + Design personal account + Wiessner personal account + Wiessner real-parcel paid rollup",
         "input_claim_ids": [
           "clm_study_google_bridgeport_google_tax_paid_2021",
           "clm_study_google_bridgeport_design_tax_paid_2021",
-          "clm_study_google_bridgeport_wiessner_tax_paid_2021"
+          "clm_study_google_bridgeport_wiessner_tax_paid_2021",
+          "clm_study_google_bridgeport_wiessner_real_tax_paid_2021"
         ],
         "input_source_ids": [
           "src_study_jackson_property_google_151335",
           "src_study_jackson_property_design_151342",
-          "src_study_jackson_property_wiessner_151344"
+          "src_study_jackson_property_wiessner_151344",
+          "src_study_jackson_property_wiessner_real_98353"
         ],
         "assumptions": [
           "Account 151344 is linked by Google-named payment memos, not assumed ownership.",
-          "No 2026 estimate or unrelated address account is included."
+          "No 2026 estimate or unrelated address account is included.",
+          "The paid rollup is counted once; the same-year billed record is retained only as a reconciliation fact."
         ]
       },
       "limitations": [
         "Not a government-wide net fiscal measure.",
-        "Account set may omit real property or other affiliates.",
+        "The public search may still omit affiliates or project-linked parcels, and recipient distributions are not reconciled.",
         "Does not measure abatements, indirect taxes or public costs."
       ],
-      "notes": "Deterministic aggregation of accepted paid-tax claims."
+      "notes": "Deterministic aggregation of four accepted paid-tax claims; billed records are not model inputs."
     },
     {
       "project_id": "prj_study_im3_building_00844371952",
@@ -2070,33 +2098,33 @@
       "evidence_search": {
         "direct_observation_status": "partial",
         "source_projection_status": "available_separately",
-        "remaining_evidence_gap": "Audited affiliate/account completeness, real-property accounts and recipient reconciliation."
+        "remaining_evidence_gap": "Audited affiliate/account completeness and recipient reconciliation beyond the three exact-address personal accounts and eight linked real parcels located for tax year 2022."
       },
       "presentation": "modeled_not_observed_or_audited",
-      "reviewed_on": "2026-09-07",
+      "reviewed_on": "2026-09-08",
       "estimate_id": "est_study_google_bridgeport_property_tax_total_2022",
       "metric_code": "study.modeled_annual_project_linked_property_taxes_paid",
       "label": "Aggregated project-linked property taxes paid",
       "category": "fiscal",
       "unit": "USD_per_year",
       "measure_type": "flow",
-      "value": 1528479.16,
+      "value": 1943560.46,
       "period": {
         "kind": "tax_year",
         "year": 2022,
-        "label": "Jackson County tax year 2022; three exact-address accounts paid"
+        "label": "Jackson County tax year 2022; three exact-address personal accounts and eight linked real parcels paid"
       },
       "scope": {
         "level": "company_county",
-        "label": "Google, Design and Wiessner personal-property accounts at 48809 AL Hwy 277",
+        "label": "Google, Design and Wiessner personal-property accounts at 48809 AL Hwy 277 plus eight Wiessner-linked real parcels",
         "county_fips": "01071",
         "inventory_allocation": "unallocated"
       },
       "interval": {
         "kind": "point_estimate",
-        "low": 1528479.16,
-        "central": 1528479.16,
-        "high": 1528479.16,
+        "low": 1943560.46,
+        "central": 1943560.46,
+        "high": 1943560.46,
         "interpretation": "Exact source arithmetic or reported point; not a statistical estimate."
       },
       "contribution_channel": "not_applicable",
@@ -2115,7 +2143,7 @@
             "reference_id": "clm_study_google_bridgeport_google_tax_paid_2022",
             "detail": "Tax paid by exact-address account in 2022"
           },
-          "transformation": "Summed across three accounts"
+          "transformation": "Summed across three personal accounts and the real-parcel paid rollup"
         },
         {
           "name": "design_account_tax_paid",
@@ -2126,7 +2154,7 @@
             "reference_id": "clm_study_google_bridgeport_design_tax_paid_2022",
             "detail": "Tax paid by exact-address account in 2022"
           },
-          "transformation": "Summed across three accounts"
+          "transformation": "Summed across three personal accounts and the real-parcel paid rollup"
         },
         {
           "name": "wiessner_account_tax_paid",
@@ -2137,36 +2165,50 @@
             "reference_id": "clm_study_google_bridgeport_wiessner_tax_paid_2022",
             "detail": "Tax paid by exact-address account in 2022"
           },
-          "transformation": "Summed across three accounts"
+          "transformation": "Summed across three personal accounts and the real-parcel paid rollup"
+        },
+        {
+          "name": "wiessner_real_parcels_tax_paid",
+          "value": 415081.3,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_google_bridgeport_wiessner_real_tax_paid_2022",
+            "detail": "Paid-tax rollup for eight Wiessner real parcels in tax year 2022"
+          },
+          "transformation": "Direct annual rollup; the separately retained billed claim is not added"
         }
       ],
       "confidence": "medium",
       "decision_relevance": "Provides exact annual recurring project-linked tax arithmetic without asserting recipient distribution or net benefit.",
       "derivation": {
         "method": "allocation",
-        "model_version": "google-bridgeport-account-1.0.0",
-        "formula": "Google account + Design account + Wiessner account",
+        "model_version": "google-bridgeport-account-1.2.0",
+        "formula": "Google personal account + Design personal account + Wiessner personal account + Wiessner real-parcel paid rollup",
         "input_claim_ids": [
           "clm_study_google_bridgeport_google_tax_paid_2022",
           "clm_study_google_bridgeport_design_tax_paid_2022",
-          "clm_study_google_bridgeport_wiessner_tax_paid_2022"
+          "clm_study_google_bridgeport_wiessner_tax_paid_2022",
+          "clm_study_google_bridgeport_wiessner_real_tax_paid_2022"
         ],
         "input_source_ids": [
           "src_study_jackson_property_google_151335",
           "src_study_jackson_property_design_151342",
-          "src_study_jackson_property_wiessner_151344"
+          "src_study_jackson_property_wiessner_151344",
+          "src_study_jackson_property_wiessner_real_98353"
         ],
         "assumptions": [
           "Account 151344 is linked by Google-named payment memos, not assumed ownership.",
-          "No 2026 estimate or unrelated address account is included."
+          "No 2026 estimate or unrelated address account is included.",
+          "The paid rollup is counted once; the same-year billed record is retained only as a reconciliation fact."
         ]
       },
       "limitations": [
         "Not a government-wide net fiscal measure.",
-        "Account set may omit real property or other affiliates.",
+        "The public search may still omit affiliates or project-linked parcels, and recipient distributions are not reconciled.",
         "Does not measure abatements, indirect taxes or public costs."
       ],
-      "notes": "Deterministic aggregation of accepted paid-tax claims."
+      "notes": "Deterministic aggregation of four accepted paid-tax claims; billed records are not model inputs."
     },
     {
       "project_id": "prj_study_im3_building_00844371952",
@@ -2175,33 +2217,33 @@
       "evidence_search": {
         "direct_observation_status": "partial",
         "source_projection_status": "available_separately",
-        "remaining_evidence_gap": "Audited affiliate/account completeness, real-property accounts and recipient reconciliation."
+        "remaining_evidence_gap": "Audited affiliate/account completeness and recipient reconciliation beyond the three exact-address personal accounts and eight linked real parcels located for tax year 2023."
       },
       "presentation": "modeled_not_observed_or_audited",
-      "reviewed_on": "2026-09-07",
+      "reviewed_on": "2026-09-08",
       "estimate_id": "est_study_google_bridgeport_property_tax_total_2023",
       "metric_code": "study.modeled_annual_project_linked_property_taxes_paid",
       "label": "Aggregated project-linked property taxes paid",
       "category": "fiscal",
       "unit": "USD_per_year",
       "measure_type": "flow",
-      "value": 2105407.2,
+      "value": 2520548.5,
       "period": {
         "kind": "tax_year",
         "year": 2023,
-        "label": "Jackson County tax year 2023; three exact-address accounts paid"
+        "label": "Jackson County tax year 2023; three exact-address personal accounts and eight linked real parcels paid"
       },
       "scope": {
         "level": "company_county",
-        "label": "Google, Design and Wiessner personal-property accounts at 48809 AL Hwy 277",
+        "label": "Google, Design and Wiessner personal-property accounts at 48809 AL Hwy 277 plus eight Wiessner-linked real parcels",
         "county_fips": "01071",
         "inventory_allocation": "unallocated"
       },
       "interval": {
         "kind": "point_estimate",
-        "low": 2105407.2,
-        "central": 2105407.2,
-        "high": 2105407.2,
+        "low": 2520548.5,
+        "central": 2520548.5,
+        "high": 2520548.5,
         "interpretation": "Exact source arithmetic or reported point; not a statistical estimate."
       },
       "contribution_channel": "not_applicable",
@@ -2220,7 +2262,7 @@
             "reference_id": "clm_study_google_bridgeport_google_tax_paid_2023",
             "detail": "Tax paid by exact-address account in 2023"
           },
-          "transformation": "Summed across three accounts"
+          "transformation": "Summed across three personal accounts and the real-parcel paid rollup"
         },
         {
           "name": "design_account_tax_paid",
@@ -2231,7 +2273,7 @@
             "reference_id": "clm_study_google_bridgeport_design_tax_paid_2023",
             "detail": "Tax paid by exact-address account in 2023"
           },
-          "transformation": "Summed across three accounts"
+          "transformation": "Summed across three personal accounts and the real-parcel paid rollup"
         },
         {
           "name": "wiessner_account_tax_paid",
@@ -2242,36 +2284,50 @@
             "reference_id": "clm_study_google_bridgeport_wiessner_tax_paid_2023",
             "detail": "Tax paid by exact-address account in 2023"
           },
-          "transformation": "Summed across three accounts"
+          "transformation": "Summed across three personal accounts and the real-parcel paid rollup"
+        },
+        {
+          "name": "wiessner_real_parcels_tax_paid",
+          "value": 415141.3,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_google_bridgeport_wiessner_real_tax_paid_2023",
+            "detail": "Paid-tax rollup for eight Wiessner real parcels in tax year 2023"
+          },
+          "transformation": "Direct annual rollup; the separately retained billed claim is not added"
         }
       ],
       "confidence": "medium",
       "decision_relevance": "Provides exact annual recurring project-linked tax arithmetic without asserting recipient distribution or net benefit.",
       "derivation": {
         "method": "allocation",
-        "model_version": "google-bridgeport-account-1.0.0",
-        "formula": "Google account + Design account + Wiessner account",
+        "model_version": "google-bridgeport-account-1.2.0",
+        "formula": "Google personal account + Design personal account + Wiessner personal account + Wiessner real-parcel paid rollup",
         "input_claim_ids": [
           "clm_study_google_bridgeport_google_tax_paid_2023",
           "clm_study_google_bridgeport_design_tax_paid_2023",
-          "clm_study_google_bridgeport_wiessner_tax_paid_2023"
+          "clm_study_google_bridgeport_wiessner_tax_paid_2023",
+          "clm_study_google_bridgeport_wiessner_real_tax_paid_2023"
         ],
         "input_source_ids": [
           "src_study_jackson_property_google_151335",
           "src_study_jackson_property_design_151342",
-          "src_study_jackson_property_wiessner_151344"
+          "src_study_jackson_property_wiessner_151344",
+          "src_study_jackson_property_wiessner_real_98353"
         ],
         "assumptions": [
           "Account 151344 is linked by Google-named payment memos, not assumed ownership.",
-          "No 2026 estimate or unrelated address account is included."
+          "No 2026 estimate or unrelated address account is included.",
+          "The paid rollup is counted once; the same-year billed record is retained only as a reconciliation fact."
         ]
       },
       "limitations": [
         "Not a government-wide net fiscal measure.",
-        "Account set may omit real property or other affiliates.",
+        "The public search may still omit affiliates or project-linked parcels, and recipient distributions are not reconciled.",
         "Does not measure abatements, indirect taxes or public costs."
       ],
-      "notes": "Deterministic aggregation of accepted paid-tax claims."
+      "notes": "Deterministic aggregation of four accepted paid-tax claims; billed records are not model inputs."
     },
     {
       "project_id": "prj_study_im3_building_00844371952",
@@ -2280,33 +2336,33 @@
       "evidence_search": {
         "direct_observation_status": "partial",
         "source_projection_status": "available_separately",
-        "remaining_evidence_gap": "Audited affiliate/account completeness, real-property accounts and recipient reconciliation."
+        "remaining_evidence_gap": "Audited affiliate/account completeness and recipient reconciliation beyond the three exact-address personal accounts and eight linked real parcels located for tax year 2024."
       },
       "presentation": "modeled_not_observed_or_audited",
-      "reviewed_on": "2026-09-07",
+      "reviewed_on": "2026-09-08",
       "estimate_id": "est_study_google_bridgeport_property_tax_total_2024",
       "metric_code": "study.modeled_annual_project_linked_property_taxes_paid",
       "label": "Aggregated project-linked property taxes paid",
       "category": "fiscal",
       "unit": "USD_per_year",
       "measure_type": "flow",
-      "value": 2620321.36,
+      "value": 3035462.66,
       "period": {
         "kind": "tax_year",
         "year": 2024,
-        "label": "Jackson County tax year 2024; three exact-address accounts paid"
+        "label": "Jackson County tax year 2024; three exact-address personal accounts and eight linked real parcels paid"
       },
       "scope": {
         "level": "company_county",
-        "label": "Google, Design and Wiessner personal-property accounts at 48809 AL Hwy 277",
+        "label": "Google, Design and Wiessner personal-property accounts at 48809 AL Hwy 277 plus eight Wiessner-linked real parcels",
         "county_fips": "01071",
         "inventory_allocation": "unallocated"
       },
       "interval": {
         "kind": "point_estimate",
-        "low": 2620321.36,
-        "central": 2620321.36,
-        "high": 2620321.36,
+        "low": 3035462.66,
+        "central": 3035462.66,
+        "high": 3035462.66,
         "interpretation": "Exact source arithmetic or reported point; not a statistical estimate."
       },
       "contribution_channel": "not_applicable",
@@ -2325,7 +2381,7 @@
             "reference_id": "clm_study_google_bridgeport_google_tax_paid_2024",
             "detail": "Tax paid by exact-address account in 2024"
           },
-          "transformation": "Summed across three accounts"
+          "transformation": "Summed across three personal accounts and the real-parcel paid rollup"
         },
         {
           "name": "design_account_tax_paid",
@@ -2336,7 +2392,7 @@
             "reference_id": "clm_study_google_bridgeport_design_tax_paid_2024",
             "detail": "Tax paid by exact-address account in 2024"
           },
-          "transformation": "Summed across three accounts"
+          "transformation": "Summed across three personal accounts and the real-parcel paid rollup"
         },
         {
           "name": "wiessner_account_tax_paid",
@@ -2347,36 +2403,50 @@
             "reference_id": "clm_study_google_bridgeport_wiessner_tax_paid_2024",
             "detail": "Tax paid by exact-address account in 2024"
           },
-          "transformation": "Summed across three accounts"
+          "transformation": "Summed across three personal accounts and the real-parcel paid rollup"
+        },
+        {
+          "name": "wiessner_real_parcels_tax_paid",
+          "value": 415141.3,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_google_bridgeport_wiessner_real_tax_paid_2024",
+            "detail": "Paid-tax rollup for eight Wiessner real parcels in tax year 2024"
+          },
+          "transformation": "Direct annual rollup; the separately retained billed claim is not added"
         }
       ],
       "confidence": "medium",
       "decision_relevance": "Provides exact annual recurring project-linked tax arithmetic without asserting recipient distribution or net benefit.",
       "derivation": {
         "method": "allocation",
-        "model_version": "google-bridgeport-account-1.0.0",
-        "formula": "Google account + Design account + Wiessner account",
+        "model_version": "google-bridgeport-account-1.2.0",
+        "formula": "Google personal account + Design personal account + Wiessner personal account + Wiessner real-parcel paid rollup",
         "input_claim_ids": [
           "clm_study_google_bridgeport_google_tax_paid_2024",
           "clm_study_google_bridgeport_design_tax_paid_2024",
-          "clm_study_google_bridgeport_wiessner_tax_paid_2024"
+          "clm_study_google_bridgeport_wiessner_tax_paid_2024",
+          "clm_study_google_bridgeport_wiessner_real_tax_paid_2024"
         ],
         "input_source_ids": [
           "src_study_jackson_property_google_151335",
           "src_study_jackson_property_design_151342",
-          "src_study_jackson_property_wiessner_151344"
+          "src_study_jackson_property_wiessner_151344",
+          "src_study_jackson_property_wiessner_real_98353"
         ],
         "assumptions": [
           "Account 151344 is linked by Google-named payment memos, not assumed ownership.",
-          "No 2026 estimate or unrelated address account is included."
+          "No 2026 estimate or unrelated address account is included.",
+          "The paid rollup is counted once; the same-year billed record is retained only as a reconciliation fact."
         ]
       },
       "limitations": [
         "Not a government-wide net fiscal measure.",
-        "Account set may omit real property or other affiliates.",
+        "The public search may still omit affiliates or project-linked parcels, and recipient distributions are not reconciled.",
         "Does not measure abatements, indirect taxes or public costs."
       ],
-      "notes": "Deterministic aggregation of accepted paid-tax claims."
+      "notes": "Deterministic aggregation of four accepted paid-tax claims; billed records are not model inputs."
     },
     {
       "project_id": "prj_study_im3_building_00844371952",
@@ -2385,33 +2455,33 @@
       "evidence_search": {
         "direct_observation_status": "partial",
         "source_projection_status": "available_separately",
-        "remaining_evidence_gap": "Audited affiliate/account completeness, real-property accounts and recipient reconciliation."
+        "remaining_evidence_gap": "Audited affiliate/account completeness and recipient reconciliation beyond the three exact-address personal accounts and eight linked real parcels located in the 2026 assessor search."
       },
       "presentation": "modeled_not_observed_or_audited",
-      "reviewed_on": "2026-09-07",
+      "reviewed_on": "2026-09-08",
       "estimate_id": "est_study_google_bridgeport_property_tax_total_2025",
       "metric_code": "study.modeled_annual_project_linked_property_taxes_paid",
       "label": "Aggregated project-linked property taxes paid",
       "category": "fiscal",
       "unit": "USD_per_year",
       "measure_type": "flow",
-      "value": 2749035.14,
+      "value": 3192932.64,
       "period": {
         "kind": "tax_year",
         "year": 2025,
-        "label": "Jackson County tax year 2025; three exact-address accounts paid"
+        "label": "Jackson County tax year 2025; three exact-address personal accounts and eight linked real parcels paid"
       },
       "scope": {
         "level": "company_county",
-        "label": "Google, Design and Wiessner personal-property accounts at 48809 AL Hwy 277",
+        "label": "Google, Design and Wiessner personal-property accounts at 48809 AL Hwy 277 plus eight Wiessner-linked real parcels",
         "county_fips": "01071",
         "inventory_allocation": "unallocated"
       },
       "interval": {
         "kind": "point_estimate",
-        "low": 2749035.14,
-        "central": 2749035.14,
-        "high": 2749035.14,
+        "low": 3192932.64,
+        "central": 3192932.64,
+        "high": 3192932.64,
         "interpretation": "Exact source arithmetic or reported point; not a statistical estimate."
       },
       "contribution_channel": "not_applicable",
@@ -2430,7 +2500,7 @@
             "reference_id": "clm_study_google_bridgeport_google_tax_paid_2025",
             "detail": "Tax paid by exact-address account in 2025"
           },
-          "transformation": "Summed across three accounts"
+          "transformation": "Summed across three personal accounts and eight real parcels"
         },
         {
           "name": "design_account_tax_paid",
@@ -2441,7 +2511,7 @@
             "reference_id": "clm_study_google_bridgeport_design_tax_paid_2025",
             "detail": "Tax paid by exact-address account in 2025"
           },
-          "transformation": "Summed across three accounts"
+          "transformation": "Summed across three personal accounts and eight real parcels"
         },
         {
           "name": "wiessner_account_tax_paid",
@@ -2452,37 +2522,62 @@
             "reference_id": "clm_study_google_bridgeport_wiessner_tax_paid_2025",
             "detail": "Tax paid by exact-address account in 2025"
           },
-          "transformation": "Summed across three accounts"
+          "transformation": "Summed across three personal accounts and eight real parcels"
+        },
+        {
+          "name": "wiessner_real_parcels_tax_paid",
+          "value": 443897.5,
+          "unit": "USD",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_jackson_property_wiessner_real_98353",
+            "detail": "Sum of eight accepted 2025 paid-tax claims for Wiessner real-property account 98353"
+          },
+          "transformation": "440505 + 2497.20 + 133.30 + 174 + 120 + 15 + 450 + 3"
         }
       ],
       "confidence": "medium",
       "decision_relevance": "Provides exact annual recurring project-linked tax arithmetic without asserting recipient distribution or net benefit.",
       "derivation": {
         "method": "allocation",
-        "model_version": "google-bridgeport-account-1.0.0",
-        "formula": "Google account + Design account + Wiessner account",
+        "model_version": "google-bridgeport-account-1.1.0",
+        "formula": "Google personal account + Design personal account + Wiessner personal account + eight Wiessner real parcels",
         "input_claim_ids": [
           "clm_study_google_bridgeport_google_tax_paid_2025",
           "clm_study_google_bridgeport_design_tax_paid_2025",
-          "clm_study_google_bridgeport_wiessner_tax_paid_2025"
+          "clm_study_google_bridgeport_wiessner_tax_paid_2025",
+          "clm_study_google_bridgeport_wiessner_pin48579_tax_paid_2025",
+          "clm_study_google_bridgeport_wiessner_pin39706_tax_paid_2025",
+          "clm_study_google_bridgeport_wiessner_pin3787_tax_paid_2025",
+          "clm_study_google_bridgeport_wiessner_pin3732_tax_paid_2025",
+          "clm_study_google_bridgeport_wiessner_pin42409_tax_paid_2025",
+          "clm_study_google_bridgeport_wiessner_pin3742_tax_paid_2025",
+          "clm_study_google_bridgeport_wiessner_pin3733_tax_paid_2025",
+          "clm_study_google_bridgeport_wiessner_pin3716_tax_paid_2025"
         ],
         "input_source_ids": [
           "src_study_jackson_property_google_151335",
           "src_study_jackson_property_design_151342",
-          "src_study_jackson_property_wiessner_151344"
+          "src_study_jackson_property_wiessner_151344",
+          "src_study_jackson_property_wiessner_real_98353"
         ],
         "assumptions": [
-          "Account 151344 is linked by Google-named payment memos, not assumed ownership.",
-          "No 2026 estimate or unrelated address account is included."
+          "Account 151344 and the eight Wiessner real parcels are linked by exact address, project-site improvements, payer memos and the 2015 master-project resolutions; ownership by Google is not assumed.",
+          "No 2026 unpaid estimate or unrelated address/company account is included."
         ]
       },
       "limitations": [
         "Not a government-wide net fiscal measure.",
-        "Account set may omit real property or other affiliates.",
+        "The public search may still omit affiliates or project-linked parcels, and parcel-level recipient distributions are not reconciled.",
         "Does not measure abatements, indirect taxes or public costs."
       ],
-      "notes": "Deterministic aggregation of accepted paid-tax claims."
+      "notes": "Deterministic aggregation of 11 accepted 2025 paid-tax claims. All six tax-year models now include the eligible real-account scope; 2020-2024 use governed annual paid rollups and 2025 preserves eight parcel-level paid claims. Separately retained billed records are not model inputs."
     },
+    {"project_id":"prj_study_im3_building_00844371952","basis":"modeled_synthesis","confidence_rationale":"The tax-source arithmetic is explicit; the result is only an equal-cost identity because observed same-period marginal public-service cost is unavailable.","evidence_search":{"direct_observation_status":"partial","source_projection_status":"available_separately","remaining_evidence_gap":"Observed same-recipient marginal public-service cost and complete tax reconciliation."},"presentation":"modeled_not_observed_or_audited","reviewed_on":"2026-09-08","estimate_id":"est_study_google_bridgeport_service_cost_break_even_2020","metric_code":"study.modeled_annual_local_service_cost_break_even","label":"Annual same-scope public-service cost break-even threshold","category":"public_costs","unit":"USD_per_year","measure_type":"flow","value":654482.84,"period":{"kind":"tax_year","year":2020,"label":"Jackson County tax year 2020; three exact-address personal accounts and seven eligible linked real parcels paid"},"scope":{"level":"company_county","label":"Google, Design and Wiessner personal-property accounts at 48809 AL Hwy 277 plus seven eligible Wiessner-linked real parcels","county_fips":"01071","inventory_allocation":"unallocated"},"interval":{"kind":"point_estimate","low":654482.84,"central":654482.84,"high":654482.84,"interpretation":"Exact source arithmetic or reported point; not a statistical estimate."},"contribution_channel":"not_applicable","aggregation":{"aggregation_id":"google_bridgeport_service_cost_break_even_2020","role":"standalone","overlap_policy":"do_not_sum_outside_declared_total"},"parameters":[{"name":"google_account_tax_paid","value":892.32,"unit":"USD","provenance":{"kind":"claim","reference_id":"clm_study_google_bridgeport_google_tax_paid_2020","detail":"Tax paid by exact-address account in 2020"},"transformation":"Summed across three personal accounts and the eligible real-parcel paid rollup"},{"name":"design_account_tax_paid","value":109983.64,"unit":"USD","provenance":{"kind":"claim","reference_id":"clm_study_google_bridgeport_design_tax_paid_2020","detail":"Tax paid by exact-address account in 2020"},"transformation":"Summed across three personal accounts and the eligible real-parcel paid rollup"},{"name":"wiessner_account_tax_paid","value":668.08,"unit":"USD","provenance":{"kind":"claim","reference_id":"clm_study_google_bridgeport_wiessner_tax_paid_2020","detail":"Tax paid by exact-address account in 2020"},"transformation":"Summed across three personal accounts and the eligible real-parcel paid rollup"},{"name":"wiessner_real_parcels_tax_paid","value":542938.8,"unit":"USD","provenance":{"kind":"claim","reference_id":"clm_study_google_bridgeport_wiessner_real_tax_paid_2020","detail":"Paid-tax rollup for the seven eligible Wiessner real parcels in tax year 2020"},"transformation":"Direct annual rollup; the separately retained billed claim is not added"}],"confidence":"medium","decision_relevance":"Shows the cost level that would exactly offset recurring 2020 paid taxes.","derivation":{"method":"allocation","model_version":"google-bridgeport-account-1.2.0","formula":"break-even annual cost = aggregated 2020 project-linked property taxes paid","input_claim_ids":["clm_study_google_bridgeport_google_tax_paid_2020","clm_study_google_bridgeport_design_tax_paid_2020","clm_study_google_bridgeport_wiessner_tax_paid_2020","clm_study_google_bridgeport_wiessner_real_tax_paid_2020"],"input_source_ids":["src_study_jackson_property_google_151335","src_study_jackson_property_design_151342","src_study_jackson_property_wiessner_151344","src_study_jackson_property_wiessner_real_98353"],"assumptions":["Threshold is an identity, not a cost estimate."]},"limitations":["Not actual public cost or net fiscal impact.","Positive margin only if same-scope costs are below threshold; negative if above.","Incentives and multi-period support remain unmatched."],"notes":"Required same-period fiscal counterpart for 2020; nonadditive with its tax total and no net result asserted."},
+    {"project_id":"prj_study_im3_building_00844371952","basis":"modeled_synthesis","confidence_rationale":"The tax-source arithmetic is explicit; the result is only an equal-cost identity because observed same-period marginal public-service cost is unavailable.","evidence_search":{"direct_observation_status":"partial","source_projection_status":"available_separately","remaining_evidence_gap":"Observed same-recipient marginal public-service cost and complete tax reconciliation."},"presentation":"modeled_not_observed_or_audited","reviewed_on":"2026-09-08","estimate_id":"est_study_google_bridgeport_service_cost_break_even_2021","metric_code":"study.modeled_annual_local_service_cost_break_even","label":"Annual same-scope public-service cost break-even threshold","category":"public_costs","unit":"USD_per_year","measure_type":"flow","value":2100005.38,"period":{"kind":"tax_year","year":2021,"label":"Jackson County tax year 2021; three exact-address personal accounts and eight linked real parcels paid"},"scope":{"level":"company_county","label":"Google, Design and Wiessner personal-property accounts at 48809 AL Hwy 277 plus eight Wiessner-linked real parcels","county_fips":"01071","inventory_allocation":"unallocated"},"interval":{"kind":"point_estimate","low":2100005.38,"central":2100005.38,"high":2100005.38,"interpretation":"Exact source arithmetic or reported point; not a statistical estimate."},"contribution_channel":"not_applicable","aggregation":{"aggregation_id":"google_bridgeport_service_cost_break_even_2021","role":"standalone","overlap_policy":"do_not_sum_outside_declared_total"},"parameters":[{"name":"google_account_tax_paid","value":5157.62,"unit":"USD","provenance":{"kind":"claim","reference_id":"clm_study_google_bridgeport_google_tax_paid_2021","detail":"Tax paid by exact-address account in 2021"},"transformation":"Summed across three personal accounts and the real-parcel paid rollup"},{"name":"design_account_tax_paid","value":766668.5,"unit":"USD","provenance":{"kind":"claim","reference_id":"clm_study_google_bridgeport_design_tax_paid_2021","detail":"Tax paid by exact-address account in 2021"},"transformation":"Summed across three personal accounts and the real-parcel paid rollup"},{"name":"wiessner_account_tax_paid","value":941694.26,"unit":"USD","provenance":{"kind":"claim","reference_id":"clm_study_google_bridgeport_wiessner_tax_paid_2021","detail":"Tax paid by exact-address account in 2021"},"transformation":"Summed across three personal accounts and the real-parcel paid rollup"},{"name":"wiessner_real_parcels_tax_paid","value":386485,"unit":"USD","provenance":{"kind":"claim","reference_id":"clm_study_google_bridgeport_wiessner_real_tax_paid_2021","detail":"Paid-tax rollup for eight Wiessner real parcels in tax year 2021"},"transformation":"Direct annual rollup; the separately retained billed claim is not added"}],"confidence":"medium","decision_relevance":"Shows the cost level that would exactly offset recurring 2021 paid taxes.","derivation":{"method":"allocation","model_version":"google-bridgeport-account-1.2.0","formula":"break-even annual cost = aggregated 2021 project-linked property taxes paid","input_claim_ids":["clm_study_google_bridgeport_google_tax_paid_2021","clm_study_google_bridgeport_design_tax_paid_2021","clm_study_google_bridgeport_wiessner_tax_paid_2021","clm_study_google_bridgeport_wiessner_real_tax_paid_2021"],"input_source_ids":["src_study_jackson_property_google_151335","src_study_jackson_property_design_151342","src_study_jackson_property_wiessner_151344","src_study_jackson_property_wiessner_real_98353"],"assumptions":["Threshold is an identity, not a cost estimate."]},"limitations":["Not actual public cost or net fiscal impact.","Positive margin only if same-scope costs are below threshold; negative if above.","Incentives and multi-period support remain unmatched."],"notes":"Required same-period fiscal counterpart for 2021; nonadditive with its tax total and no net result asserted."},
+    {"project_id":"prj_study_im3_building_00844371952","basis":"modeled_synthesis","confidence_rationale":"The tax-source arithmetic is explicit; the result is only an equal-cost identity because observed same-period marginal public-service cost is unavailable.","evidence_search":{"direct_observation_status":"partial","source_projection_status":"available_separately","remaining_evidence_gap":"Observed same-recipient marginal public-service cost and complete tax reconciliation."},"presentation":"modeled_not_observed_or_audited","reviewed_on":"2026-09-08","estimate_id":"est_study_google_bridgeport_service_cost_break_even_2022","metric_code":"study.modeled_annual_local_service_cost_break_even","label":"Annual same-scope public-service cost break-even threshold","category":"public_costs","unit":"USD_per_year","measure_type":"flow","value":1943560.46,"period":{"kind":"tax_year","year":2022,"label":"Jackson County tax year 2022; three exact-address personal accounts and eight linked real parcels paid"},"scope":{"level":"company_county","label":"Google, Design and Wiessner personal-property accounts at 48809 AL Hwy 277 plus eight Wiessner-linked real parcels","county_fips":"01071","inventory_allocation":"unallocated"},"interval":{"kind":"point_estimate","low":1943560.46,"central":1943560.46,"high":1943560.46,"interpretation":"Exact source arithmetic or reported point; not a statistical estimate."},"contribution_channel":"not_applicable","aggregation":{"aggregation_id":"google_bridgeport_service_cost_break_even_2022","role":"standalone","overlap_policy":"do_not_sum_outside_declared_total"},"parameters":[{"name":"google_account_tax_paid","value":6299.02,"unit":"USD","provenance":{"kind":"claim","reference_id":"clm_study_google_bridgeport_google_tax_paid_2022","detail":"Tax paid by exact-address account in 2022"},"transformation":"Summed across three personal accounts and the real-parcel paid rollup"},{"name":"design_account_tax_paid","value":558964.64,"unit":"USD","provenance":{"kind":"claim","reference_id":"clm_study_google_bridgeport_design_tax_paid_2022","detail":"Tax paid by exact-address account in 2022"},"transformation":"Summed across three personal accounts and the real-parcel paid rollup"},{"name":"wiessner_account_tax_paid","value":963215.5,"unit":"USD","provenance":{"kind":"claim","reference_id":"clm_study_google_bridgeport_wiessner_tax_paid_2022","detail":"Tax paid by exact-address account in 2022"},"transformation":"Summed across three personal accounts and the real-parcel paid rollup"},{"name":"wiessner_real_parcels_tax_paid","value":415081.3,"unit":"USD","provenance":{"kind":"claim","reference_id":"clm_study_google_bridgeport_wiessner_real_tax_paid_2022","detail":"Paid-tax rollup for eight Wiessner real parcels in tax year 2022"},"transformation":"Direct annual rollup; the separately retained billed claim is not added"}],"confidence":"medium","decision_relevance":"Shows the cost level that would exactly offset recurring 2022 paid taxes.","derivation":{"method":"allocation","model_version":"google-bridgeport-account-1.2.0","formula":"break-even annual cost = aggregated 2022 project-linked property taxes paid","input_claim_ids":["clm_study_google_bridgeport_google_tax_paid_2022","clm_study_google_bridgeport_design_tax_paid_2022","clm_study_google_bridgeport_wiessner_tax_paid_2022","clm_study_google_bridgeport_wiessner_real_tax_paid_2022"],"input_source_ids":["src_study_jackson_property_google_151335","src_study_jackson_property_design_151342","src_study_jackson_property_wiessner_151344","src_study_jackson_property_wiessner_real_98353"],"assumptions":["Threshold is an identity, not a cost estimate."]},"limitations":["Not actual public cost or net fiscal impact.","Positive margin only if same-scope costs are below threshold; negative if above.","Incentives and multi-period support remain unmatched."],"notes":"Required same-period fiscal counterpart for 2022; nonadditive with its tax total and no net result asserted."},
+    {"project_id":"prj_study_im3_building_00844371952","basis":"modeled_synthesis","confidence_rationale":"The tax-source arithmetic is explicit; the result is only an equal-cost identity because observed same-period marginal public-service cost is unavailable.","evidence_search":{"direct_observation_status":"partial","source_projection_status":"available_separately","remaining_evidence_gap":"Observed same-recipient marginal public-service cost and complete tax reconciliation."},"presentation":"modeled_not_observed_or_audited","reviewed_on":"2026-09-08","estimate_id":"est_study_google_bridgeport_service_cost_break_even_2023","metric_code":"study.modeled_annual_local_service_cost_break_even","label":"Annual same-scope public-service cost break-even threshold","category":"public_costs","unit":"USD_per_year","measure_type":"flow","value":2520548.5,"period":{"kind":"tax_year","year":2023,"label":"Jackson County tax year 2023; three exact-address personal accounts and eight linked real parcels paid"},"scope":{"level":"company_county","label":"Google, Design and Wiessner personal-property accounts at 48809 AL Hwy 277 plus eight Wiessner-linked real parcels","county_fips":"01071","inventory_allocation":"unallocated"},"interval":{"kind":"point_estimate","low":2520548.5,"central":2520548.5,"high":2520548.5,"interpretation":"Exact source arithmetic or reported point; not a statistical estimate."},"contribution_channel":"not_applicable","aggregation":{"aggregation_id":"google_bridgeport_service_cost_break_even_2023","role":"standalone","overlap_policy":"do_not_sum_outside_declared_total"},"parameters":[{"name":"google_account_tax_paid","value":7407.4,"unit":"USD","provenance":{"kind":"claim","reference_id":"clm_study_google_bridgeport_google_tax_paid_2023","detail":"Tax paid by exact-address account in 2023"},"transformation":"Summed across three personal accounts and the real-parcel paid rollup"},{"name":"design_account_tax_paid","value":1162992.22,"unit":"USD","provenance":{"kind":"claim","reference_id":"clm_study_google_bridgeport_design_tax_paid_2023","detail":"Tax paid by exact-address account in 2023"},"transformation":"Summed across three personal accounts and the real-parcel paid rollup"},{"name":"wiessner_account_tax_paid","value":935007.58,"unit":"USD","provenance":{"kind":"claim","reference_id":"clm_study_google_bridgeport_wiessner_tax_paid_2023","detail":"Tax paid by exact-address account in 2023"},"transformation":"Summed across three personal accounts and the real-parcel paid rollup"},{"name":"wiessner_real_parcels_tax_paid","value":415141.3,"unit":"USD","provenance":{"kind":"claim","reference_id":"clm_study_google_bridgeport_wiessner_real_tax_paid_2023","detail":"Paid-tax rollup for eight Wiessner real parcels in tax year 2023"},"transformation":"Direct annual rollup; the separately retained billed claim is not added"}],"confidence":"medium","decision_relevance":"Shows the cost level that would exactly offset recurring 2023 paid taxes.","derivation":{"method":"allocation","model_version":"google-bridgeport-account-1.2.0","formula":"break-even annual cost = aggregated 2023 project-linked property taxes paid","input_claim_ids":["clm_study_google_bridgeport_google_tax_paid_2023","clm_study_google_bridgeport_design_tax_paid_2023","clm_study_google_bridgeport_wiessner_tax_paid_2023","clm_study_google_bridgeport_wiessner_real_tax_paid_2023"],"input_source_ids":["src_study_jackson_property_google_151335","src_study_jackson_property_design_151342","src_study_jackson_property_wiessner_151344","src_study_jackson_property_wiessner_real_98353"],"assumptions":["Threshold is an identity, not a cost estimate."]},"limitations":["Not actual public cost or net fiscal impact.","Positive margin only if same-scope costs are below threshold; negative if above.","Incentives and multi-period support remain unmatched."],"notes":"Required same-period fiscal counterpart for 2023; nonadditive with its tax total and no net result asserted."},
+    {"project_id":"prj_study_im3_building_00844371952","basis":"modeled_synthesis","confidence_rationale":"The tax-source arithmetic is explicit; the result is only an equal-cost identity because observed same-period marginal public-service cost is unavailable.","evidence_search":{"direct_observation_status":"partial","source_projection_status":"available_separately","remaining_evidence_gap":"Observed same-recipient marginal public-service cost and complete tax reconciliation."},"presentation":"modeled_not_observed_or_audited","reviewed_on":"2026-09-08","estimate_id":"est_study_google_bridgeport_service_cost_break_even_2024","metric_code":"study.modeled_annual_local_service_cost_break_even","label":"Annual same-scope public-service cost break-even threshold","category":"public_costs","unit":"USD_per_year","measure_type":"flow","value":3035462.66,"period":{"kind":"tax_year","year":2024,"label":"Jackson County tax year 2024; three exact-address personal accounts and eight linked real parcels paid"},"scope":{"level":"company_county","label":"Google, Design and Wiessner personal-property accounts at 48809 AL Hwy 277 plus eight Wiessner-linked real parcels","county_fips":"01071","inventory_allocation":"unallocated"},"interval":{"kind":"point_estimate","low":3035462.66,"central":3035462.66,"high":3035462.66,"interpretation":"Exact source arithmetic or reported point; not a statistical estimate."},"contribution_channel":"not_applicable","aggregation":{"aggregation_id":"google_bridgeport_service_cost_break_even_2024","role":"standalone","overlap_policy":"do_not_sum_outside_declared_total"},"parameters":[{"name":"google_account_tax_paid","value":5259.2,"unit":"USD","provenance":{"kind":"claim","reference_id":"clm_study_google_bridgeport_google_tax_paid_2024","detail":"Tax paid by exact-address account in 2024"},"transformation":"Summed across three personal accounts and the real-parcel paid rollup"},{"name":"design_account_tax_paid","value":1686550.24,"unit":"USD","provenance":{"kind":"claim","reference_id":"clm_study_google_bridgeport_design_tax_paid_2024","detail":"Tax paid by exact-address account in 2024"},"transformation":"Summed across three personal accounts and the real-parcel paid rollup"},{"name":"wiessner_account_tax_paid","value":928511.92,"unit":"USD","provenance":{"kind":"claim","reference_id":"clm_study_google_bridgeport_wiessner_tax_paid_2024","detail":"Tax paid by exact-address account in 2024"},"transformation":"Summed across three personal accounts and the real-parcel paid rollup"},{"name":"wiessner_real_parcels_tax_paid","value":415141.3,"unit":"USD","provenance":{"kind":"claim","reference_id":"clm_study_google_bridgeport_wiessner_real_tax_paid_2024","detail":"Paid-tax rollup for eight Wiessner real parcels in tax year 2024"},"transformation":"Direct annual rollup; the separately retained billed claim is not added"}],"confidence":"medium","decision_relevance":"Shows the cost level that would exactly offset recurring 2024 paid taxes.","derivation":{"method":"allocation","model_version":"google-bridgeport-account-1.2.0","formula":"break-even annual cost = aggregated 2024 project-linked property taxes paid","input_claim_ids":["clm_study_google_bridgeport_google_tax_paid_2024","clm_study_google_bridgeport_design_tax_paid_2024","clm_study_google_bridgeport_wiessner_tax_paid_2024","clm_study_google_bridgeport_wiessner_real_tax_paid_2024"],"input_source_ids":["src_study_jackson_property_google_151335","src_study_jackson_property_design_151342","src_study_jackson_property_wiessner_151344","src_study_jackson_property_wiessner_real_98353"],"assumptions":["Threshold is an identity, not a cost estimate."]},"limitations":["Not actual public cost or net fiscal impact.","Positive margin only if same-scope costs are below threshold; negative if above.","Incentives and multi-period support remain unmatched."],"notes":"Required same-period fiscal counterpart for 2024; nonadditive with its tax total and no net result asserted."},
     {
       "project_id": "prj_study_im3_building_00844371952",
       "basis": "modeled_synthesis",
@@ -2493,30 +2588,30 @@
         "remaining_evidence_gap": "Observed same-recipient marginal public-service cost and complete tax reconciliation."
       },
       "presentation": "modeled_not_observed_or_audited",
-      "reviewed_on": "2026-09-07",
+      "reviewed_on": "2026-09-08",
       "estimate_id": "est_study_google_bridgeport_service_cost_break_even_2025",
       "metric_code": "study.modeled_annual_local_service_cost_break_even",
       "label": "Annual same-scope public-service cost break-even threshold",
       "category": "public_costs",
       "unit": "USD_per_year",
       "measure_type": "flow",
-      "value": 2749035.14,
+      "value": 3192932.64,
       "period": {
         "kind": "tax_year",
         "year": 2025,
-        "label": "Jackson County tax year 2025 three-account paid-tax scope"
+        "label": "Jackson County tax year 2025; three exact-address personal accounts and eight linked real parcels paid"
       },
       "scope": {
         "level": "company_county",
-        "label": "Same scope as 2025 Google, Design and Wiessner personal-property tax aggregation",
+        "label": "Google, Design and Wiessner personal-property accounts at 48809 AL Hwy 277 plus eight Wiessner-linked real parcels",
         "county_fips": "01071",
         "inventory_allocation": "unallocated"
       },
       "interval": {
         "kind": "point_estimate",
-        "low": 2749035.14,
-        "central": 2749035.14,
-        "high": 2749035.14,
+        "low": 3192932.64,
+        "central": 3192932.64,
+        "high": 3192932.64,
         "interpretation": "Exact source arithmetic or reported point; not a statistical estimate."
       },
       "contribution_channel": "not_applicable",
@@ -2535,7 +2630,7 @@
             "reference_id": "clm_study_google_bridgeport_google_tax_paid_2025",
             "detail": "Google LLC account 151335 tax paid in 2025"
           },
-          "transformation": "Included in three-account tax sum"
+          "transformation": "Included in eleven-account tax sum"
         },
         {
           "name": "design_account_tax_paid",
@@ -2546,7 +2641,7 @@
             "reference_id": "clm_study_google_bridgeport_design_tax_paid_2025",
             "detail": "Design LLC account 151342 tax paid in 2025"
           },
-          "transformation": "Included in three-account tax sum"
+          "transformation": "Included in eleven-account tax sum"
         },
         {
           "name": "wiessner_account_tax_paid",
@@ -2557,24 +2652,44 @@
             "reference_id": "clm_study_google_bridgeport_wiessner_tax_paid_2025",
             "detail": "Wiessner Enterprises LLC account 151344 tax paid in 2025"
           },
-          "transformation": "Included in three-account tax sum and used as equal-cost threshold"
+          "transformation": "Included in eleven-account tax sum and used as equal-cost threshold"
+        },
+        {
+          "name": "wiessner_real_parcels_tax_paid",
+          "value": 443897.5,
+          "unit": "USD",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_jackson_property_wiessner_real_98353",
+            "detail": "Sum of eight accepted 2025 paid-tax claims for Wiessner real-property account 98353"
+          },
+          "transformation": "Included in eleven-account tax sum and used as equal-cost threshold"
         }
       ],
       "confidence": "medium",
       "decision_relevance": "Shows the cost level that would exactly offset recurring 2025 paid taxes.",
       "derivation": {
         "method": "allocation",
-        "model_version": "google-bridgeport-account-1.0.0",
+        "model_version": "google-bridgeport-account-1.1.0",
         "formula": "break-even annual cost = aggregated 2025 project-linked property taxes paid",
         "input_claim_ids": [
           "clm_study_google_bridgeport_google_tax_paid_2025",
           "clm_study_google_bridgeport_design_tax_paid_2025",
-          "clm_study_google_bridgeport_wiessner_tax_paid_2025"
+          "clm_study_google_bridgeport_wiessner_tax_paid_2025",
+          "clm_study_google_bridgeport_wiessner_pin48579_tax_paid_2025",
+          "clm_study_google_bridgeport_wiessner_pin39706_tax_paid_2025",
+          "clm_study_google_bridgeport_wiessner_pin3787_tax_paid_2025",
+          "clm_study_google_bridgeport_wiessner_pin3732_tax_paid_2025",
+          "clm_study_google_bridgeport_wiessner_pin42409_tax_paid_2025",
+          "clm_study_google_bridgeport_wiessner_pin3742_tax_paid_2025",
+          "clm_study_google_bridgeport_wiessner_pin3733_tax_paid_2025",
+          "clm_study_google_bridgeport_wiessner_pin3716_tax_paid_2025"
         ],
         "input_source_ids": [
           "src_study_jackson_property_google_151335",
           "src_study_jackson_property_design_151342",
-          "src_study_jackson_property_wiessner_151344"
+          "src_study_jackson_property_wiessner_151344",
+          "src_study_jackson_property_wiessner_real_98353"
         ],
         "assumptions": [
           "Threshold is an identity, not a cost estimate."
@@ -2585,107 +2700,7 @@
         "Positive margin only if same-scope costs are below threshold; negative if above.",
         "Incentives and multi-period support remain unmatched."
       ],
-      "notes": "Required fiscal pair; no net result asserted."
-    },
-    {
-      "estimate_id": "est_study_google_bridgeport_county_employment_comparison_2024",
-      "project_id": "prj_study_im3_building_00844371952",
-      "metric_code": "study.modeled_county_employment_comparison_gap",
-      "label": "Modeled county total employment comparison gap",
-      "category": "county_outcome",
-      "unit": "percent",
-      "measure_type": "change",
-      "basis": "modeled_synthesis",
-      "value": -0.91,
-      "period": {
-        "kind": "calendar_year",
-        "year": 2024,
-        "label": "2024 Jackson County outcome relative to a mechanically matched benchmark; 2018 opening anchor"
-      },
-      "scope": {
-        "level": "county",
-        "label": "Jackson County",
-        "county_fips": "01071",
-        "inventory_allocation": "not_applicable"
-      },
-      "interval": {
-        "kind": "sensitivity_envelope",
-        "low": -8.9,
-        "central": -0.91,
-        "high": 7.09,
-        "interpretation": "Envelope is plus or minus the greater of five percentage points or twice 2010-2017 pre-period RMSE; fit sensitivity, not statistical confidence."
-      },
-      "contribution_channel": "not_applicable",
-      "aggregation": {
-        "aggregation_id": "google_bridgeport_county_employment_comparison",
-        "role": "standalone",
-        "overlap_policy": "do_not_sum_outside_declared_total"
-      },
-      "parameters": [
-        {
-          "name": "host_2024_value",
-          "value": 15446,
-          "unit": "jobs",
-          "provenance": {
-            "kind": "source",
-            "reference_id": "src_study_county_economic_core_2001_2024_jackson",
-            "detail": "Jackson County 2024 employment outcome"
-          },
-          "transformation": "Compared with weighted benchmark"
-        },
-        {
-          "name": "comparison_2024_value",
-          "value": 15587.098278118203,
-          "unit": "jobs",
-          "provenance": {
-            "kind": "source",
-            "reference_id": "src_study_county_economic_core_2001_2024_jackson",
-            "detail": "Inverse-distance weighted 20-county benchmark"
-          },
-          "transformation": "Subtracted from host and used as denominator"
-        },
-        {
-          "name": "pre_period_rmse_percent",
-          "value": 3.9978697410570736,
-          "unit": "percent",
-          "provenance": {
-            "kind": "assumption",
-            "detail": "Fit diagnostic over 2010-2017"
-          },
-          "transformation": "Sets fit-sensitivity width"
-        }
-      ],
-      "confidence": "low",
-      "confidence_rationale": "The benchmark is reproducible, but timing, attribution and donor contamination remain unresolved.",
-      "decision_relevance": "Shows Jackson County's 2024 divergence without assigning it to Google.",
-      "evidence_search": {
-        "direct_observation_status": "partial",
-        "source_projection_status": "available_separately",
-        "remaining_evidence_gap": "Causal design with isolated timing, complete exposure history, verified controls, placebos, spillover rules and robustness diagnostics."
-      },
-      "derivation": {
-        "method": "benchmark_application",
-        "model_version": "google-bridgeport-account-1.0.0",
-        "formula": "100 × (host 2024 outcome − inverse-distance-weighted benchmark) ÷ benchmark",
-        "input_claim_ids": [],
-        "input_source_ids": [
-          "src_study_county_economic_core_2001_2024_jackson"
-        ],
-        "assumptions": [
-          "Matching uses 2010-2017 log level, average log growth and growth volatility.",
-          "All selected study counties are excluded from donors.",
-          "Disputed 2018/2019 chronology is not assumed to isolate treatment."
-        ]
-      },
-      "limitations": [
-        "Descriptive comparison, not a data-center effect.",
-        "Construction, expansion and concurrent county changes are not isolated.",
-        "Donor screen cannot exclude every unobserved treatment.",
-        "Interval is fit sensitivity, not statistical confidence."
-      ],
-      "presentation": "modeled_not_observed_or_audited",
-      "notes": "No causal_design metadata is attached.",
-      "reviewed_on": "2026-09-07"
+      "notes": "Required same-period fiscal counterpart for 2025; nonadditive with its tax total and no net result asserted."
     },
     {
       "estimate_id": "est_study_google_bridgeport_county_wage_comparison_2024",
@@ -2710,10 +2725,10 @@
       },
       "interval": {
         "kind": "sensitivity_envelope",
-        "low": -2.63,
+        "low": 0.9525851746773008,
         "central": 2.37,
-        "high": 7.37,
-        "interpretation": "Envelope is plus or minus the greater of five percentage points or twice 2010-2017 pre-period RMSE; fit sensitivity, not statistical confidence."
+        "high": 6.364111432082025,
+        "interpretation": "Observed range across 2018/2019 anchors, national/Southeast donor universes, k = 3/5/10/20, and national leave-one-donor-out checks; sensitivity, not statistical confidence."
       },
       "contribution_channel": "not_applicable",
       "aggregation": {
@@ -2753,110 +2768,20 @@
             "detail": "Fit diagnostic over 2010-2017"
           },
           "transformation": "Sets fit-sensitivity width"
-        }
-      ],
-      "confidence": "low",
-      "confidence_rationale": "The benchmark is reproducible, but timing, attribution and donor contamination remain unresolved.",
-      "decision_relevance": "Shows Jackson County's 2024 divergence without assigning it to Google.",
-      "evidence_search": {
-        "direct_observation_status": "partial",
-        "source_projection_status": "available_separately",
-        "remaining_evidence_gap": "Causal design with isolated timing, complete exposure history, verified controls, placebos, spillover rules and robustness diagnostics."
-      },
-      "derivation": {
-        "method": "benchmark_application",
-        "model_version": "google-bridgeport-account-1.0.0",
-        "formula": "100 × (host 2024 outcome − inverse-distance-weighted benchmark) ÷ benchmark",
-        "input_claim_ids": [],
-        "input_source_ids": [
-          "src_study_county_economic_core_2001_2024_jackson"
-        ],
-        "assumptions": [
-          "Matching uses 2010-2017 log level, average log growth and growth volatility.",
-          "All selected study counties are excluded from donors.",
-          "Disputed 2018/2019 chronology is not assumed to isolate treatment."
-        ]
-      },
-      "limitations": [
-        "Descriptive comparison, not a data-center effect.",
-        "Construction, expansion and concurrent county changes are not isolated.",
-        "Donor screen cannot exclude every unobserved treatment.",
-        "Interval is fit sensitivity, not statistical confidence."
-      ],
-      "presentation": "modeled_not_observed_or_audited",
-      "notes": "No causal_design metadata is attached.",
-      "reviewed_on": "2026-09-07"
-    },
-    {
-      "estimate_id": "est_study_google_bridgeport_county_gdp_comparison_2024",
-      "project_id": "prj_study_im3_building_00844371952",
-      "metric_code": "study.modeled_county_gdp_comparison_gap",
-      "label": "Modeled county real GDP comparison gap",
-      "category": "county_outcome",
-      "unit": "percent",
-      "measure_type": "change",
-      "basis": "modeled_synthesis",
-      "value": -1.41,
-      "period": {
-        "kind": "calendar_year",
-        "year": 2024,
-        "label": "2024 Jackson County outcome relative to a mechanically matched benchmark; 2018 opening anchor"
-      },
-      "scope": {
-        "level": "county",
-        "label": "Jackson County",
-        "county_fips": "01071",
-        "inventory_allocation": "not_applicable"
-      },
-      "interval": {
-        "kind": "sensitivity_envelope",
-        "low": -7.37,
-        "central": -1.41,
-        "high": 4.54,
-        "interpretation": "Envelope is plus or minus the greater of five percentage points or twice 2010-2017 pre-period RMSE; fit sensitivity, not statistical confidence."
-      },
-      "contribution_channel": "not_applicable",
-      "aggregation": {
-        "aggregation_id": "google_bridgeport_county_gdp_comparison",
-        "role": "standalone",
-        "overlap_policy": "do_not_sum_outside_declared_total"
-      },
-      "parameters": [
-        {
-          "name": "host_2024_value",
-          "value": 1637868000,
-          "unit": "USD",
-          "provenance": {
-            "kind": "source",
-            "reference_id": "src_study_county_economic_core_2001_2024_jackson",
-            "detail": "Jackson County 2024 gdp outcome"
-          },
-          "transformation": "Compared with weighted benchmark"
         },
         {
-          "name": "comparison_2024_value",
-          "value": 1661330841.7397885,
-          "unit": "USD",
-          "provenance": {
-            "kind": "source",
-            "reference_id": "src_study_county_economic_core_2001_2024_jackson",
-            "detail": "Inverse-distance weighted 20-county benchmark"
-          },
-          "transformation": "Subtracted from host and used as denominator"
-        },
-        {
-          "name": "pre_period_rmse_percent",
-          "value": 2.9766099090108242,
+          "name": "maximum_sensitivity_rmse_percent",
+          "value": 1.5479258179134627,
           "unit": "percent",
           "provenance": {
             "kind": "assumption",
-            "detail": "Fit diagnostic over 2010-2017"
+            "detail": "Maximum pre-period RMSE across the full declared sensitivity grid"
           },
-          "transformation": "Sets fit-sensitivity width"
+          "transformation": "Compared with the five-percent retention gate"
         }
       ],
       "confidence": "low",
-      "confidence_rationale": "The benchmark is reproducible, but timing, attribution and donor contamination remain unresolved.",
+      "confidence_rationale": "The benchmark is reproducible and passes the declared sign-stability and maximum pre-period-RMSE gates across the full sensitivity grid, but timing, attribution and donor contamination remain unresolved.",
       "decision_relevance": "Shows Jackson County's 2024 divergence without assigning it to Google.",
       "evidence_search": {
         "direct_observation_status": "partial",
@@ -2865,7 +2790,7 @@
       },
       "derivation": {
         "method": "benchmark_application",
-        "model_version": "google-bridgeport-account-1.0.0",
+        "model_version": "google-bridgeport-account-1.1.0",
         "formula": "100 × (host 2024 outcome − inverse-distance-weighted benchmark) ÷ benchmark",
         "input_claim_ids": [],
         "input_source_ids": [
@@ -2874,7 +2799,8 @@
         "assumptions": [
           "Matching uses 2010-2017 log level, average log growth and growth volatility.",
           "All selected study counties are excluded from donors.",
-          "Disputed 2018/2019 chronology is not assumed to isolate treatment."
+          "Disputed 2018/2019 chronology is not assumed to isolate treatment.",
+          "Retention requires the comparison gap to keep the same sign across every declared specification and maximum pre-period RMSE to remain below five percent."
         ]
       },
       "limitations": [
@@ -2884,8 +2810,8 @@
         "Interval is fit sensitivity, not statistical confidence."
       ],
       "presentation": "modeled_not_observed_or_audited",
-      "notes": "No causal_design metadata is attached.",
-      "reviewed_on": "2026-09-07"
+      "notes": "No causal_design metadata is attached. Baseline national, 2018-anchor, k=20 specification reproduces 2.3730703601% with 0.5261815298% pre-period RMSE. Across the declared grid the gap remains positive (0.9526% to 6.3641%) and maximum RMSE is 1.5479%; employment and GDP comparisons are retired because their signs reverse.",
+      "reviewed_on": "2026-09-08"
     }
   ]
 }
