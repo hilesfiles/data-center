@@ -1,0 +1,94 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dccio.org/schemas/v1/pooled-synthesis-reassessment.schema.json",
+  "title": "Pooled-model synthesis reassessment inventory",
+  "type": "object",
+  "required": ["schema_version", "artifact_version", "generated_at", "source_release", "status", "policy", "counts", "empirical_metric_candidates", "records"],
+  "properties": {
+    "schema_version": { "const": "1.0.0" },
+    "artifact_version": { "type": "string", "minLength": 1 },
+    "generated_at": { "type": "string", "format": "date-time" },
+    "source_release": { "type": "string", "minLength": 1 },
+    "status": { "const": "machine_inventory_complete_substantive_reassessment_pending" },
+    "policy": {
+      "type": "object",
+      "required": ["observations_first", "source_projections_excluded_from_empirical_calibration", "modeled_outputs_excluded_from_empirical_calibration", "leave_one_project_out_required", "no_automatic_model_replacement"],
+      "properties": {
+        "observations_first": { "const": true },
+        "source_projections_excluded_from_empirical_calibration": { "const": true },
+        "modeled_outputs_excluded_from_empirical_calibration": { "const": true },
+        "leave_one_project_out_required": { "const": true },
+        "no_automatic_model_replacement": { "const": true }
+      },
+      "additionalProperties": false
+    },
+    "counts": {
+      "type": "object",
+      "required": ["registered_projects", "modeled_projects", "modeled_syntheses", "empirical_metric_candidates", "screening_dispositions"],
+      "properties": {
+        "registered_projects": { "type": "integer", "minimum": 1 },
+        "modeled_projects": { "type": "integer", "minimum": 0 },
+        "modeled_syntheses": { "type": "integer", "minimum": 0 },
+        "empirical_metric_candidates": { "type": "integer", "minimum": 0 },
+        "screening_dispositions": { "type": "object", "additionalProperties": { "type": "integer", "minimum": 0 } }
+      },
+      "additionalProperties": false
+    },
+    "empirical_metric_candidates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["metric_code", "label", "category", "unit", "measure_type", "reported_observation_count", "project_count", "project_ids", "first_year", "last_year", "scope_levels", "calibration_status", "input_policy"],
+        "properties": {
+          "metric_code": { "type": "string", "pattern": "^study\\.[a-z0-9_]+$" },
+          "label": { "type": "string", "minLength": 1 },
+          "category": { "type": "string", "minLength": 1 },
+          "unit": { "type": "string", "minLength": 1 },
+          "measure_type": { "type": "string", "minLength": 1 },
+          "reported_observation_count": { "type": "integer", "minimum": 1 },
+          "project_count": { "type": "integer", "minimum": 3 },
+          "project_ids": { "type": "array", "minItems": 3, "uniqueItems": true, "items": { "type": "string", "pattern": "^prj_study_[a-z0-9_]+$" } },
+          "first_year": { "type": "integer", "minimum": 2001, "maximum": 2024 },
+          "last_year": { "type": "integer", "minimum": 2001, "maximum": 2024 },
+          "scope_levels": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "type": "string", "minLength": 1 } },
+          "calibration_status": { "const": "candidate_requires_scope_period_and_definition_harmonization" },
+          "input_policy": { "const": "reported_actual_only_leave_one_project_out" }
+        },
+        "additionalProperties": false
+      }
+    },
+    "records": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["estimate_id", "project_id", "metric_code", "category", "method", "interval_kind", "confidence", "parameter_provenance_counts", "screening_disposition", "screening_reason", "review_status", "final_recommendation"],
+        "properties": {
+          "estimate_id": { "type": "string", "minLength": 1 },
+          "project_id": { "type": "string", "pattern": "^prj_study_[a-z0-9_]+$" },
+          "metric_code": { "type": "string", "pattern": "^study\\.[a-z0-9_]+$" },
+          "category": { "type": "string", "minLength": 1 },
+          "method": { "type": "string", "minLength": 1 },
+          "interval_kind": { "type": "string", "minLength": 1 },
+          "confidence": { "enum": ["low", "medium", "high"] },
+          "parameter_provenance_counts": {
+            "type": "object",
+            "required": ["claim", "source", "model", "assumption"],
+            "properties": {
+              "claim": { "type": "integer", "minimum": 0 },
+              "source": { "type": "integer", "minimum": 0 },
+              "model": { "type": "integer", "minimum": 0 },
+              "assumption": { "type": "integer", "minimum": 0 }
+            },
+            "additionalProperties": false
+          },
+          "screening_disposition": { "enum": ["migrate_to_pooled_outcome_framework", "cross_project_calibration_required", "cross_project_calibration_candidate", "retain_scope_audit_required", "manual_reassessment_required"] },
+          "screening_reason": { "type": "string", "minLength": 1 },
+          "review_status": { "const": "machine_triaged_pending_substantive_review" },
+          "final_recommendation": { "const": false }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

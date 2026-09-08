@@ -1,0 +1,100 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dccio.org/schemas/v1/county-year-exposure.schema.json",
+  "title": "County-year pooled exposure foundation",
+  "type": "object",
+  "required": ["schema_version", "artifact_version", "generated_at", "source_release", "analysis_years", "status", "counts", "shared_counties", "publication_gate", "county_years"],
+  "properties": {
+    "schema_version": { "const": "1.0.0" },
+    "artifact_version": { "type": "string", "minLength": 1 },
+    "generated_at": { "type": "string", "format": "date-time" },
+    "source_release": { "type": "string", "minLength": 1 },
+    "analysis_years": {
+      "type": "object",
+      "required": ["start", "end"],
+      "properties": {
+        "start": { "const": 2001 },
+        "end": { "const": 2024 }
+      },
+      "additionalProperties": false
+    },
+    "status": { "const": "level_0_foundation_only_no_pooled_estimates" },
+    "counts": {
+      "type": "object",
+      "required": ["project_count", "county_count", "county_year_count", "national_panel_counties", "national_panel_years", "national_panel_observations", "comparison_resolution_records", "comparison_resolution_evidence_collected", "comparison_resolution_queued", "pooled_estimation_eligible_county_years"],
+      "properties": {
+        "project_count": { "type": "integer", "minimum": 1 },
+        "county_count": { "type": "integer", "minimum": 1 },
+        "county_year_count": { "type": "integer", "minimum": 1 },
+        "national_panel_counties": { "type": "integer", "minimum": 1 },
+        "national_panel_years": { "type": "integer", "minimum": 1 },
+        "national_panel_observations": { "type": "integer", "minimum": 1 },
+        "comparison_resolution_records": { "type": "integer", "minimum": 0 },
+        "comparison_resolution_evidence_collected": { "type": "integer", "minimum": 0 },
+        "comparison_resolution_queued": { "type": "integer", "minimum": 0 },
+        "pooled_estimation_eligible_county_years": { "const": 0 }
+      },
+      "additionalProperties": false
+    },
+    "shared_counties": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "array",
+        "minItems": 2,
+        "uniqueItems": true,
+        "items": { "type": "string", "pattern": "^prj_study_[a-z0-9_]+$" }
+      }
+    },
+    "publication_gate": {
+      "type": "object",
+      "required": ["level_0_component_coverage", "numeric_county_year_aggregation", "pooled_association", "causal_estimation"],
+      "properties": {
+        "level_0_component_coverage": { "const": "ready" },
+        "numeric_county_year_aggregation": { "const": "blocked_pending_metric_rules" },
+        "pooled_association": { "const": "blocked_pending_exposure_and_comparison_registration" },
+        "causal_estimation": { "const": "blocked_pending_treatment_comparison_and_diagnostics" }
+      },
+      "additionalProperties": false
+    },
+    "county_years": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["county_fips", "year", "registered_project_ids", "evidence_project_ids", "component_counts", "observed_county_outcomes", "aggregation_status", "pooled_estimation_eligible", "ineligibility_reasons"],
+        "properties": {
+          "county_fips": { "type": "string", "pattern": "^[0-9]{5}$" },
+          "year": { "type": "integer", "minimum": 2001, "maximum": 2024 },
+          "registered_project_ids": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "type": "string", "pattern": "^prj_study_[a-z0-9_]+$" } },
+          "evidence_project_ids": { "type": "array", "uniqueItems": true, "items": { "type": "string", "pattern": "^prj_study_[a-z0-9_]+$" } },
+          "component_counts": {
+            "type": "object",
+            "required": ["reported_actual", "source_projection", "modeled_synthesis"],
+            "properties": {
+              "reported_actual": { "type": "integer", "minimum": 0 },
+              "source_projection": { "type": "integer", "minimum": 0 },
+              "modeled_synthesis": { "type": "integer", "minimum": 0 }
+            },
+            "additionalProperties": false
+          },
+          "observed_county_outcomes": {
+            "type": "object",
+            "required": ["real_gdp_usd", "population", "annual_avg_covered_employment", "annual_avg_weekly_wage_nominal_usd", "coverage_status"],
+            "properties": {
+              "real_gdp_usd": { "type": ["number", "null"] },
+              "population": { "type": ["number", "null"] },
+              "annual_avg_covered_employment": { "type": ["number", "null"] },
+              "annual_avg_weekly_wage_nominal_usd": { "type": ["number", "null"] },
+              "coverage_status": { "type": "string", "minLength": 1 }
+            },
+            "additionalProperties": false
+          },
+          "aggregation_status": { "const": "component_inventory_only_no_compatible_totals_computed" },
+          "pooled_estimation_eligible": { "const": false },
+          "ineligibility_reasons": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

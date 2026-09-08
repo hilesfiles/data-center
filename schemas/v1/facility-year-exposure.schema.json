@@ -1,0 +1,120 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dccio.org/schemas/v1/facility-year-exposure.schema.json",
+  "title": "Facility-year exposure component inventory",
+  "type": "object",
+  "required": ["schema_version", "artifact_version", "generated_at", "source_release", "analysis_years", "status", "counts", "project_summaries", "project_years"],
+  "properties": {
+    "schema_version": { "const": "1.0.0" },
+    "artifact_version": { "type": "string", "minLength": 1 },
+    "generated_at": { "type": "string", "format": "date-time" },
+    "source_release": { "type": "string", "minLength": 1 },
+    "analysis_years": { "$ref": "#/$defs/year_range" },
+    "status": { "const": "component_inventory_only_no_imputation_or_aggregation" },
+    "counts": {
+      "type": "object",
+      "required": ["projects", "project_years", "projects_with_annual_components", "reported_actual_components", "source_projection_components", "modeled_components", "excluded_nonannual_or_out_of_range_records", "excluded_period_kinds"],
+      "properties": {
+        "projects": { "type": "integer", "minimum": 1 },
+        "project_years": { "type": "integer", "minimum": 1 },
+        "projects_with_annual_components": { "type": "integer", "minimum": 0 },
+        "reported_actual_components": { "type": "integer", "minimum": 0 },
+        "source_projection_components": { "type": "integer", "minimum": 0 },
+        "modeled_components": { "type": "integer", "minimum": 0 },
+        "excluded_nonannual_or_out_of_range_records": { "type": "integer", "minimum": 0 },
+        "excluded_period_kinds": { "type": "object", "additionalProperties": { "type": "integer", "minimum": 0 } }
+      },
+      "additionalProperties": false
+    },
+    "project_summaries": { "type": "array", "items": { "$ref": "#/$defs/project_summary" } },
+    "project_years": { "type": "array", "items": { "$ref": "#/$defs/project_year" } }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "year_range": {
+      "type": "object",
+      "required": ["start", "end"],
+      "properties": {
+        "start": { "const": 2001 },
+        "end": { "const": 2024 }
+      },
+      "additionalProperties": false
+    },
+    "component_counts": {
+      "type": "object",
+      "required": ["reported_actual", "source_projection", "modeled_synthesis"],
+      "properties": {
+        "reported_actual": { "type": "integer", "minimum": 0 },
+        "source_projection": { "type": "integer", "minimum": 0 },
+        "modeled_synthesis": { "type": "integer", "minimum": 0 }
+      },
+      "additionalProperties": false
+    },
+    "interval": {
+      "type": "object",
+      "required": ["kind", "low", "central", "high"],
+      "properties": {
+        "kind": { "type": "string", "minLength": 1 },
+        "low": { "type": "number" },
+        "central": { "type": "number" },
+        "high": { "type": "number" },
+        "confidence_level": { "type": "number" },
+        "interpretation": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "component": {
+      "type": "object",
+      "required": ["origin_kind", "origin_id", "metric_code", "category", "unit", "measure_type", "period_kind", "value", "interval", "scope_level", "inventory_allocation", "contribution_channel", "aggregation_identity", "analysis_eligibility"],
+      "properties": {
+        "origin_kind": { "enum": ["reported_actual", "source_projection", "modeled_synthesis"] },
+        "origin_id": { "type": "string", "minLength": 1 },
+        "metric_code": { "type": "string", "pattern": "^study\\.[a-z0-9_]+$" },
+        "category": { "type": "string", "minLength": 1 },
+        "unit": { "type": "string", "minLength": 1 },
+        "measure_type": { "type": "string", "minLength": 1 },
+        "period_kind": { "type": "string", "minLength": 1 },
+        "value": { "type": "number" },
+        "interval": { "$ref": "#/$defs/interval" },
+        "scope_level": { "type": "string", "minLength": 1 },
+        "inventory_allocation": { "enum": ["allocated", "unallocated", "not_applicable"] },
+        "contribution_channel": { "type": "string", "minLength": 1 },
+        "aggregation_identity": { "type": "string", "minLength": 1 },
+        "analysis_eligibility": { "enum": ["reported_component_requires_overlap_review", "projection_scenario_only", "modeled_input_requires_repeated_draw_and_overlap_review", "excluded_existing_project_county_comparison"] }
+      },
+      "additionalProperties": false
+    },
+    "project_summary": {
+      "type": "object",
+      "required": ["project_id", "project_name", "county_fips", "history_status", "documented_timing", "years_with_components", "annual_component_count", "reported_actual_component_count", "source_projection_component_count", "modeled_component_count", "chronology_gate"],
+      "properties": {
+        "project_id": { "type": "string", "pattern": "^prj_study_[a-z0-9_]+$" },
+        "project_name": { "type": "string", "minLength": 1 },
+        "county_fips": { "type": "string", "pattern": "^[0-9]{5}$" },
+        "history_status": { "type": "string", "minLength": 1 },
+        "documented_timing": { "type": "string", "minLength": 1 },
+        "years_with_components": { "type": "integer", "minimum": 0 },
+        "annual_component_count": { "type": "integer", "minimum": 0 },
+        "reported_actual_component_count": { "type": "integer", "minimum": 0 },
+        "source_projection_component_count": { "type": "integer", "minimum": 0 },
+        "modeled_component_count": { "type": "integer", "minimum": 0 },
+        "chronology_gate": { "enum": ["requires_commissioning_reconstruction", "documented_anchor_requires_event_contract_review"] }
+      },
+      "additionalProperties": false
+    },
+    "project_year": {
+      "type": "object",
+      "required": ["project_id", "project_name", "county_fips", "year", "component_counts", "components", "exposure_status"],
+      "properties": {
+        "project_id": { "type": "string", "pattern": "^prj_study_[a-z0-9_]+$" },
+        "project_name": { "type": "string", "minLength": 1 },
+        "county_fips": { "type": "string", "pattern": "^[0-9]{5}$" },
+        "year": { "type": "integer", "minimum": 2001, "maximum": 2024 },
+        "component_counts": { "$ref": "#/$defs/component_counts" },
+        "components": { "type": "array", "items": { "$ref": "#/$defs/component" } },
+        "exposure_status": { "const": "component_inventory_only_no_aggregation" }
+      },
+      "additionalProperties": false
+    }
+  }
+}

@@ -4,7 +4,7 @@
 
 ## Current state and target boundary
 
-Study release `private-sector-study-1.59.0` contains 36 selected projects across 35 counties and 23 states. All 36 projects have completed scoped research audits and remain visible on the community map. Google Berkeley County passes the mechanical completed-contribution-account coverage gate; unbounded supplier, community, construction, operating, resource, public-cost, or county-outcome gaps in other projects are not filled merely to pass it. The current release contains 1,700 source records and 278 separately governed modeled syntheses, but no pooled estimate and no causal estimate.
+Study release `private-sector-study-1.60.0` contains 36 selected projects across 35 counties and 23 states. All 36 projects have completed scoped research audits and remain visible on the community map. Unbounded supplier, community, construction, operating, resource, public-cost, or county-outcome gaps are not filled merely to pass a completeness gate. The current release contains 1,980 source records—1,818 reported observations and 162 source projections—and 304 separately governed modeled syntheses, but no pooled estimate and no causal estimate.
 
 The pooled model will not replace the project and county accounts. Those accounts establish the exposure inputs, evidence state, scope, timing, uncertainty, and unresolved gaps. The pooled layer will evaluate whether consistent relationships appear across communities after projects and phases are aligned at a common county-year grain.
 

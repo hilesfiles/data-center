@@ -6182,6 +6182,92 @@ def validate_public_data(
     return issues
 
 
+def validate_pooled_foundation(
+    validator: ContractValidator, schema_paths: dict[str, Path]
+) -> list[Issue]:
+    """Validate the non-estimating pooled-model foundation and its invariants."""
+    issues: list[Issue] = []
+    pooled_dir = DATA_DIR / "silver" / "study" / "pooled"
+    artifacts = {
+        "pooled_synthesis_reassessment": pooled_dir / "synthesis-reassessment.json",
+        "facility_year_exposure": pooled_dir / "facility-year-exposures.json",
+        "county_year_exposure": pooled_dir / "county-year-exposures.json",
+        "pooled_foundation_manifest": pooled_dir / "manifest.json",
+    }
+    payloads: dict[str, Any] = {}
+    for schema_name, path in artifacts.items():
+        if not path.is_file():
+            issues.append(Issue("pooled_foundation", path.name, "required pooled-foundation artifact is missing"))
+            continue
+        payload = load_json(path)
+        payloads[schema_name] = payload
+        for issue in validator.validate_record(payload, schema_paths[schema_name]):
+            issues.append(Issue("pooled_foundation", f"{path.name}{issue.path[1:]}", issue.message))
+
+    if len(payloads) != len(artifacts):
+        return issues
+
+    reassessment = payloads["pooled_synthesis_reassessment"]
+    facility_year = payloads["facility_year_exposure"]
+    county_year = payloads["county_year_exposure"]
+    foundation_manifest = payloads["pooled_foundation_manifest"]
+    study_index = load_json(PUBLIC_DATA_DIR / "study" / "index.json")
+    synthesis = load_json(DATA_DIR / "silver" / "study" / "modeled-syntheses.json")
+    project_ids = {row["project_id"] for row in study_index["projects"]}
+    county_ids = {row["county_fips"] for row in study_index["projects"]}
+
+    reassessment_ids = [row.get("estimate_id") for row in reassessment["records"]]
+    synthesis_ids = {row["estimate_id"] for row in synthesis["estimates"]}
+    if len(reassessment_ids) != len(set(reassessment_ids)) or set(reassessment_ids) != synthesis_ids:
+        issues.append(Issue("pooled_foundation", "synthesis-reassessment.json.records", "must contain every current modeled synthesis exactly once"))
+    if any(row.get("final_recommendation") for row in reassessment["records"]):
+        issues.append(Issue("pooled_foundation", "synthesis-reassessment.json.records", "machine triage cannot issue final recommendations"))
+
+    summaries = facility_year["project_summaries"]
+    summary_ids = [row.get("project_id") for row in summaries]
+    if len(summary_ids) != len(set(summary_ids)) or set(summary_ids) != project_ids:
+        issues.append(Issue("pooled_foundation", "facility-year-exposures.json.project_summaries", "must represent every selected project exactly once"))
+    project_years = facility_year["project_years"]
+    project_year_keys = [(row.get("project_id"), row.get("year")) for row in project_years]
+    expected_project_years = len(project_ids) * 24
+    if len(project_year_keys) != expected_project_years or len(project_year_keys) != len(set(project_year_keys)):
+        issues.append(Issue("pooled_foundation", "facility-year-exposures.json.project_years", "must contain one row per selected project and year from 2001 through 2024"))
+    for row in project_years:
+        actual_counts = Counter(component.get("origin_kind") for component in row["components"])
+        for basis in ("reported_actual", "source_projection", "modeled_synthesis"):
+            if row["component_counts"].get(basis) != actual_counts.get(basis, 0):
+                issues.append(Issue("pooled_foundation", "facility-year-exposures.json.project_years", "component basis counts do not match components"))
+                break
+
+    county_years = county_year["county_years"]
+    county_year_keys = [(row.get("county_fips"), row.get("year")) for row in county_years]
+    expected_county_years = len(county_ids) * 24
+    if len(county_year_keys) != expected_county_years or len(county_year_keys) != len(set(county_year_keys)):
+        issues.append(Issue("pooled_foundation", "county-year-exposures.json.county_years", "must contain one row per selected county and year from 2001 through 2024"))
+    if {row.get("county_fips") for row in county_years} != county_ids:
+        issues.append(Issue("pooled_foundation", "county-year-exposures.json.county_years", "county-year spine does not match selected project counties"))
+    if any(row.get("pooled_estimation_eligible") for row in county_years):
+        issues.append(Issue("pooled_foundation", "county-year-exposures.json.county_years", "foundation rows must remain ineligible for pooled estimation"))
+    registered_ids = {
+        project_id
+        for row in county_years
+        for project_id in row.get("registered_project_ids", [])
+    }
+    if registered_ids != project_ids:
+        issues.append(Issue("pooled_foundation", "county-year-exposures.json.county_years", "registered county-year projects do not match the 36-project set"))
+    for section in ("builder", "inputs", "outputs"):
+        entries = [foundation_manifest[section]] if section == "builder" else foundation_manifest[section]
+        for index, entry in enumerate(entries):
+            artifact_path = (ROOT / entry["path"]).resolve()
+            if not artifact_path.is_relative_to(ROOT) or not artifact_path.is_file():
+                issues.append(Issue("pooled_foundation", f"manifest.json.{section}[{index}]", "manifest path is missing or outside the repository"))
+                continue
+            payload = artifact_path.read_bytes()
+            if entry["byte_size"] != len(payload) or entry["sha256"] != hashlib.sha256(payload).hexdigest():
+                issues.append(Issue("pooled_foundation", f"manifest.json.{section}[{index}]", "manifest hash or byte size does not match the artifact"))
+    return issues
+
+
 def main() -> int:
     validator = ContractValidator(SCHEMA_DIR)
     catalog = load_json(SCHEMA_DIR / "catalog.json")
@@ -6223,6 +6309,8 @@ def main() -> int:
 
     project_issues = validate_project_config(validator, schema_paths)
     project_issues.extend(validate_public_data(validator, schema_paths))
+    project_issues.extend(validate_pooled_foundation(validator, schema_paths))
+    project_issues.extend(validate_pooled_foundation(validator, schema_paths))
     if __package__:
         from .validate_private_sector_study import validate_study
     else:
