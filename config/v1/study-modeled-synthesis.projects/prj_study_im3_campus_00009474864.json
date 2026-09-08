@@ -1,8 +1,8 @@
 {
   "schema_version": "1.0.0",
   "project_id": "prj_study_im3_campus_00009474864",
-  "reviewed_on": "2026-09-07",
-  "scope_note": "Fifteen unallocated modeled syntheses retained only after direct-evidence exhaustion: twelve exact same-year assessed-value aggregations, one source-projection payroll counterfactual, and two noncausal matched-county comparisons. Source-reported water, efficiency, carbon-free-energy, design and emissions values are direct governed records, not models. Supplier, electricity-use, tax-receipt, net-fiscal, public-cost, construction-payroll, social-return, and county-GDP candidates fail the project-anchor, scope, or sensitivity gates and remain documented gaps.",
+  "reviewed_on": "2026-09-08",
+  "scope_note": "Seventeen unallocated modeled syntheses remain after the second 2026-09-08 corrective pass: twelve exact same-year Google-plus-Tapaha taxpayer aggregations, one exact tax-year-2027 sum of nine Tapaha real-property parcels, one exact FY2018-FY2025 cumulative City Technology Business abatement total, one source-projection payroll counterfactual, and two noncausal matched-county comparisons. Source-reported water, efficiency, carbon-free-energy, design, emissions, deferred-contract balance, individual parcel values and annual abatements are direct governed records, not models. The abatement total is a non-additive convenience synthesis of eight annual flows; it excludes the separately retained adjacent FY2017 amount and does not resolve the notes' unnamed-taxpayer attribution limitation. The 2027 parcel sum excludes Google business-personal property and is not a tax, payment, investment or continuation of the ACFR taxpayer series. Supplier, electricity-use, utility-bill, tax-receipt, net-fiscal, public-cost, construction-payroll, social-return, remediation-cost and county-GDP candidates remain rejected for explicitly missing project inputs or unstable sensitivity. Status remains gap_closure_in_progress pending independent re-audit.",
   "sources": [],
   "estimates": [
     {
@@ -81,7 +81,7 @@
       "evidence_search": {
         "direct_observation_status": "partial",
         "source_projection_status": "available_separately",
-        "remaining_evidence_gap": "Observed annual-average FTE, payroll, benefits, occupations, contractors, employee residence and current workforce; the available December 2008 count is only a point-in-time snapshot"
+        "remaining_evidence_gap": "Google/NC Commerce/NCGA/City-Caldwell workforce searches for 2007-2026 still lack annual-average FTE, realized wages, benefits, occupations, contractor split and worker residence; the December 2008 count is a point snapshot only."
       },
       "derivation": {
         "method": "benchmark_application",
@@ -110,8 +110,8 @@
         "Do not add to Deloitte labor-income estimates."
       ],
       "presentation": "modeled_not_observed_or_audited",
-      "notes": "Source-projection product only; do not present as a realized operating contribution.",
-      "reviewed_on": "2026-09-07"
+      "notes": "Retained only as the arithmetic scale implied by the contemporaneous 210-job and $48,300 salary projections after direct workforce/payroll searches; it is a counterfactual announcement product, not observed payroll, and it must not be reconciled to the approximately 50 employees reported in December 2008.",
+      "reviewed_on": "2026-09-08"
     },
     {
       "estimate_id": "est_study_google_lenoir_county_employment_gap_2024",
@@ -139,7 +139,7 @@
         "low": -2.5236087500496773,
         "central": 3.0603180297358534,
         "high": 13.211765751397131,
-        "interpretation": "Envelope across national K3/K10, North Carolina K5 and five leave-one-out estimates; not a confidence interval or facility effect."
+        "interpretation": "Envelope across national K3/K10, North Carolina K5, five leave-one-out estimates and 2006/2008 treatment-anchor sensitivities; not a confidence interval or facility effect."
       },
       "contribution_channel": "not_applicable",
       "aggregation": {
@@ -189,6 +189,20 @@
             "detail": "Group log-path RMSE over 2001-2007"
           },
           "transformation": "Diagnostic only"
+        },
+        {
+          "name": "treatment_anchor_2006_gap_percent",
+          "value": 3.7627406203491143,
+          "unit": "percent",
+          "provenance": {"kind": "assumption", "detail": "Sensitivity using 2001-2006 preperiod and 2006 anchor"},
+          "transformation": "Treatment-chronology sensitivity only"
+        },
+        {
+          "name": "treatment_anchor_2008_gap_percent",
+          "value": 3.4050635887949765,
+          "unit": "percent",
+          "provenance": {"kind": "assumption", "detail": "Sensitivity using 2001-2008 preperiod and 2008 anchor"},
+          "transformation": "Potentially post-opening-contaminated treatment-chronology sensitivity only"
         }
       ],
       "confidence": "low",
@@ -197,11 +211,11 @@
       "evidence_search": {
         "direct_observation_status": "partial",
         "source_projection_status": "not_applicable",
-        "remaining_evidence_gap": "Project-specific causal design, exposure intensity, concurrent shocks, worker residence and establishment-level employment"
+        "remaining_evidence_gap": "BLS QCEW/Census 2001-2024 supplies county outcomes but no Google exposure intensity, establishment employment, worker residence, concurrent-shock controls or project-specific causal identification."
       },
       "derivation": {
         "method": "benchmark_application",
-        "model_version": "google-lenoir-county-comparison-1.0.0",
+        "model_version": "google-lenoir-county-comparison-1.1.0",
         "formula": "100 × {exp[ln(Caldwell 2024/Caldwell 2007) − mean donor ln(2024/2007)] − 1}",
         "input_claim_ids": [],
         "input_source_ids": [
@@ -218,11 +232,12 @@
       "limitations": [
         "Great Recession, furniture-sector decline and later campus expansions confound attribution.",
         "North Carolina-only sensitivity is 13.211765751397131 percent.",
+        "Treatment-anchor sensitivities are 3.7627406203491143 percent for 2006 and 3.4050635887949765 percent for 2008; the latter may already include opening effects.",
         "The envelope crosses zero."
       ],
       "presentation": "modeled_not_observed_or_audited",
-      "notes": "Descriptive county comparison only; do not present as a Google employment effect.",
-      "reviewed_on": "2026-09-07"
+      "notes": "Retained as a descriptive county comparison only after direct project-employment searches; not Google jobs and not a causal effect.",
+      "reviewed_on": "2026-09-08"
     },
     {
       "estimate_id": "est_study_google_lenoir_county_wage_gap_2024",
@@ -249,8 +264,8 @@
         "kind": "sensitivity_envelope",
         "low": 0.6408050745801308,
         "central": 3.7300979826653924,
-        "high": 6.203854349987781,
-        "interpretation": "Envelope across national K3/K10, North Carolina K5 and five leave-one-out estimates; not a confidence interval or facility effect."
+        "high": 9.600412546339765,
+        "interpretation": "Envelope across national K3/K10, North Carolina K5, five leave-one-out estimates and 2006/2008 treatment-anchor sensitivities; not a confidence interval or facility effect."
       },
       "contribution_channel": "not_applicable",
       "aggregation": {
@@ -300,6 +315,20 @@
             "detail": "Group log-path RMSE over 2001-2007"
           },
           "transformation": "Diagnostic only"
+        },
+        {
+          "name": "treatment_anchor_2006_gap_percent",
+          "value": 5.672393186571467,
+          "unit": "percent",
+          "provenance": {"kind": "assumption", "detail": "Sensitivity using 2001-2006 preperiod and 2006 anchor"},
+          "transformation": "Treatment-chronology sensitivity only"
+        },
+        {
+          "name": "treatment_anchor_2008_gap_percent",
+          "value": 9.600412546339765,
+          "unit": "percent",
+          "provenance": {"kind": "assumption", "detail": "Sensitivity using 2001-2008 preperiod and 2008 anchor"},
+          "transformation": "Potentially post-opening-contaminated treatment-chronology sensitivity only"
         }
       ],
       "confidence": "low",
@@ -308,11 +337,11 @@
       "evidence_search": {
         "direct_observation_status": "partial",
         "source_projection_status": "available_separately",
-        "remaining_evidence_gap": "Google wage distribution, occupation mix, worker residence, establishment payroll and project-specific causal design"
+        "remaining_evidence_gap": "BLS QCEW/Census 2001-2024 supplies county wages but no Google wage distribution, occupation mix, establishment payroll, worker residence, exposure intensity or project-specific causal design."
       },
       "derivation": {
         "method": "benchmark_application",
-        "model_version": "google-lenoir-county-comparison-1.0.0",
+        "model_version": "google-lenoir-county-comparison-1.1.0",
         "formula": "100 × {exp[ln(Caldwell 2024/Caldwell 2007) − mean donor ln(2024/2007)] − 1}",
         "input_claim_ids": [],
         "input_source_ids": [
@@ -329,11 +358,12 @@
       "limitations": [
         "Nominal all-industry wages are not data-center wages or resident earnings.",
         "Concurrent industrial restructuring and later expansions confound attribution.",
+        "Treatment-anchor sensitivity ranges from 3.7300979826653924 percent at 2007 to 9.600412546339765 percent at 2008; 2008 may already include opening effects.",
         "Matching does not establish parallel untreated potential outcomes."
       ],
       "presentation": "modeled_not_observed_or_audited",
-      "notes": "Descriptive county comparison only; do not present as a Google wage effect or payroll.",
-      "reviewed_on": "2026-09-07"
+      "notes": "Retained as a descriptive county comparison only after direct payroll/wage searches; not Google payroll and not a causal effect.",
+      "reviewed_on": "2026-09-08"
     },
     {
       "estimate_id": "est_study_google_lenoir_combined_assessed_2011",
@@ -399,7 +429,7 @@
       "evidence_search": {
         "direct_observation_status": "partial",
         "source_projection_status": "not_applicable",
-        "remaining_evidence_gap": "Parcel/account reconciliation, taxable versus exempt split, tax bill, payment and incentive allocation"
+        "remaining_evidence_gap": "Caldwell ACFR FY2011 supplies distinct Google and Tapaha taxpayer rows; TaxView accounts 132226/137489 and NCPIN queries resolve current real-property boundaries but not historical account reconciliation, levy, exemptions, tax bill, payment or incentive allocation."
       },
       "derivation": {
         "method": "benchmark_application",
@@ -424,8 +454,8 @@
         "Do not add to either component."
       ],
       "presentation": "modeled_not_observed_or_audited",
-      "notes": "Exact two-component aggregation only; do not treat as a canonical assessed-value claim.",
-      "reviewed_on": "2026-09-07",
+      "notes": "Exact arithmetic aggregation of two official same-year taxpayer rows only. It is not a tax, payment, investment or additional contribution, and the current TaxView parcel total must not be substituted for either historical component.",
+      "reviewed_on": "2026-09-08",
       "annual_series_key": "google_lenoir_combined_assessed_value"
     },
     {
@@ -492,7 +522,7 @@
       "evidence_search": {
         "direct_observation_status": "partial",
         "source_projection_status": "not_applicable",
-        "remaining_evidence_gap": "Account reconciliation, bills and payments"
+        "remaining_evidence_gap": "Caldwell ACFR FY2013 supplies distinct Google and Tapaha taxpayer rows; TaxView accounts 132226/137489 and NCPIN queries resolve current real-property boundaries but not historical account reconciliation, levy, exemptions, tax bill, payment or incentive allocation."
       },
       "derivation": {
         "method": "benchmark_application",
@@ -517,8 +547,8 @@
         "Do not add to components."
       ],
       "presentation": "modeled_not_observed_or_audited",
-      "notes": "Exact aggregation only; do not treat as canonical.",
-      "reviewed_on": "2026-09-07",
+      "notes": "Exact arithmetic aggregation of two official same-year taxpayer rows only. It is not a tax, payment, investment or additional contribution, and the current TaxView parcel total must not be substituted for either historical component.",
+      "reviewed_on": "2026-09-08",
       "annual_series_key": "google_lenoir_combined_assessed_value"
     },
     {
@@ -585,7 +615,7 @@
       "evidence_search": {
         "direct_observation_status": "partial",
         "source_projection_status": "not_applicable",
-        "remaining_evidence_gap": "Bills and account reconciliation"
+        "remaining_evidence_gap": "Caldwell ACFR FY2015 supplies distinct Google and Tapaha taxpayer rows; TaxView accounts 132226/137489 and NCPIN queries resolve current real-property boundaries but not historical account reconciliation, levy, exemptions, tax bill, payment or incentive allocation."
       },
       "derivation": {
         "method": "benchmark_application",
@@ -610,8 +640,8 @@
         "Do not add to components."
       ],
       "presentation": "modeled_not_observed_or_audited",
-      "notes": "Exact aggregation only; do not treat as canonical.",
-      "reviewed_on": "2026-09-07",
+      "notes": "Exact arithmetic aggregation of two official same-year taxpayer rows only. It is not a tax, payment, investment or additional contribution, and the current TaxView parcel total must not be substituted for either historical component.",
+      "reviewed_on": "2026-09-08",
       "annual_series_key": "google_lenoir_combined_assessed_value"
     },
     {
@@ -678,7 +708,7 @@
       "evidence_search": {
         "direct_observation_status": "partial",
         "source_projection_status": "not_applicable",
-        "remaining_evidence_gap": "Bills and account reconciliation"
+        "remaining_evidence_gap": "Caldwell ACFR FY2016 supplies distinct Google and Tapaha taxpayer rows; TaxView accounts 132226/137489 and NCPIN queries resolve current real-property boundaries but not historical account reconciliation, levy, exemptions, tax bill, payment or incentive allocation."
       },
       "derivation": {
         "method": "benchmark_application",
@@ -703,8 +733,8 @@
         "Do not add to components."
       ],
       "presentation": "modeled_not_observed_or_audited",
-      "notes": "Exact aggregation only; do not treat as canonical.",
-      "reviewed_on": "2026-09-07",
+      "notes": "Exact arithmetic aggregation of two official same-year taxpayer rows only. It is not a tax, payment, investment or additional contribution, and the current TaxView parcel total must not be substituted for either historical component.",
+      "reviewed_on": "2026-09-08",
       "annual_series_key": "google_lenoir_combined_assessed_value"
     },
     {
@@ -771,7 +801,7 @@
       "evidence_search": {
         "direct_observation_status": "partial",
         "source_projection_status": "not_applicable",
-        "remaining_evidence_gap": "Bills and account reconciliation"
+        "remaining_evidence_gap": "Caldwell ACFR FY2017 supplies distinct Google and Tapaha taxpayer rows; TaxView accounts 132226/137489 and NCPIN queries resolve current real-property boundaries but not historical account reconciliation, levy, exemptions, tax bill, payment or incentive allocation."
       },
       "derivation": {
         "method": "benchmark_application",
@@ -796,8 +826,8 @@
         "Do not add to components."
       ],
       "presentation": "modeled_not_observed_or_audited",
-      "notes": "Exact aggregation only; do not treat as canonical.",
-      "reviewed_on": "2026-09-07",
+      "notes": "Exact arithmetic aggregation of two official same-year taxpayer rows only. It is not a tax, payment, investment or additional contribution, and the current TaxView parcel total must not be substituted for either historical component.",
+      "reviewed_on": "2026-09-08",
       "annual_series_key": "google_lenoir_combined_assessed_value"
     },
     {
@@ -864,7 +894,7 @@
       "evidence_search": {
         "direct_observation_status": "partial",
         "source_projection_status": "not_applicable",
-        "remaining_evidence_gap": "Bills and account reconciliation"
+        "remaining_evidence_gap": "Caldwell ACFR FY2018 supplies distinct Google and Tapaha taxpayer rows; TaxView accounts 132226/137489 and NCPIN queries resolve current real-property boundaries but not historical account reconciliation, levy, exemptions, tax bill, payment or incentive allocation."
       },
       "derivation": {
         "method": "benchmark_application",
@@ -889,8 +919,8 @@
         "Do not add to components."
       ],
       "presentation": "modeled_not_observed_or_audited",
-      "notes": "Exact aggregation only; do not treat as canonical.",
-      "reviewed_on": "2026-09-07",
+      "notes": "Exact arithmetic aggregation of two official same-year taxpayer rows only. It is not a tax, payment, investment or additional contribution, and the current TaxView parcel total must not be substituted for either historical component.",
+      "reviewed_on": "2026-09-08",
       "annual_series_key": "google_lenoir_combined_assessed_value"
     },
     {
@@ -957,7 +987,7 @@
       "evidence_search": {
         "direct_observation_status": "partial",
         "source_projection_status": "not_applicable",
-        "remaining_evidence_gap": "Bills and account reconciliation"
+        "remaining_evidence_gap": "Caldwell ACFR FY2019 supplies distinct Google and Tapaha taxpayer rows; TaxView accounts 132226/137489 and NCPIN queries resolve current real-property boundaries but not historical account reconciliation, levy, exemptions, tax bill, payment or incentive allocation."
       },
       "derivation": {
         "method": "benchmark_application",
@@ -982,8 +1012,8 @@
         "Do not add to components."
       ],
       "presentation": "modeled_not_observed_or_audited",
-      "notes": "Exact aggregation only; do not treat as canonical.",
-      "reviewed_on": "2026-09-07",
+      "notes": "Exact arithmetic aggregation of two official same-year taxpayer rows only. It is not a tax, payment, investment or additional contribution, and the current TaxView parcel total must not be substituted for either historical component.",
+      "reviewed_on": "2026-09-08",
       "annual_series_key": "google_lenoir_combined_assessed_value"
     },
     {
@@ -1050,7 +1080,7 @@
       "evidence_search": {
         "direct_observation_status": "partial",
         "source_projection_status": "not_applicable",
-        "remaining_evidence_gap": "Bills and account reconciliation"
+        "remaining_evidence_gap": "Caldwell ACFR FY2020 supplies distinct Google and Tapaha taxpayer rows; TaxView accounts 132226/137489 and NCPIN queries resolve current real-property boundaries but not historical account reconciliation, levy, exemptions, tax bill, payment or incentive allocation."
       },
       "derivation": {
         "method": "benchmark_application",
@@ -1075,8 +1105,8 @@
         "Do not add to components."
       ],
       "presentation": "modeled_not_observed_or_audited",
-      "notes": "Exact aggregation only; do not treat as canonical.",
-      "reviewed_on": "2026-09-07",
+      "notes": "Exact arithmetic aggregation of two official same-year taxpayer rows only. It is not a tax, payment, investment or additional contribution, and the current TaxView parcel total must not be substituted for either historical component.",
+      "reviewed_on": "2026-09-08",
       "annual_series_key": "google_lenoir_combined_assessed_value"
     },
     {
@@ -1143,7 +1173,7 @@
       "evidence_search": {
         "direct_observation_status": "partial",
         "source_projection_status": "not_applicable",
-        "remaining_evidence_gap": "Bills and account reconciliation"
+        "remaining_evidence_gap": "Caldwell ACFR FY2021 supplies distinct Google and Tapaha taxpayer rows; TaxView accounts 132226/137489 and NCPIN queries resolve current real-property boundaries but not historical account reconciliation, levy, exemptions, tax bill, payment or incentive allocation."
       },
       "derivation": {
         "method": "benchmark_application",
@@ -1168,8 +1198,8 @@
         "Do not add to components."
       ],
       "presentation": "modeled_not_observed_or_audited",
-      "notes": "Exact aggregation only; do not treat as canonical.",
-      "reviewed_on": "2026-09-07",
+      "notes": "Exact arithmetic aggregation of two official same-year taxpayer rows only. It is not a tax, payment, investment or additional contribution, and the current TaxView parcel total must not be substituted for either historical component.",
+      "reviewed_on": "2026-09-08",
       "annual_series_key": "google_lenoir_combined_assessed_value"
     },
     {
@@ -1236,7 +1266,7 @@
       "evidence_search": {
         "direct_observation_status": "partial",
         "source_projection_status": "not_applicable",
-        "remaining_evidence_gap": "Bills and account reconciliation"
+        "remaining_evidence_gap": "Caldwell ACFR FY2023 supplies distinct Google and Tapaha taxpayer rows; TaxView accounts 132226/137489 and NCPIN queries resolve current real-property boundaries but not historical account reconciliation, levy, exemptions, tax bill, payment or incentive allocation."
       },
       "derivation": {
         "method": "benchmark_application",
@@ -1261,8 +1291,8 @@
         "Do not add to components."
       ],
       "presentation": "modeled_not_observed_or_audited",
-      "notes": "Exact aggregation only; do not treat as canonical.",
-      "reviewed_on": "2026-09-07",
+      "notes": "Exact arithmetic aggregation of two official same-year taxpayer rows only. It is not a tax, payment, investment or additional contribution, and the current TaxView parcel total must not be substituted for either historical component.",
+      "reviewed_on": "2026-09-08",
       "annual_series_key": "google_lenoir_combined_assessed_value"
     },
     {
@@ -1329,7 +1359,7 @@
       "evidence_search": {
         "direct_observation_status": "partial",
         "source_projection_status": "not_applicable",
-        "remaining_evidence_gap": "Bills and account reconciliation"
+        "remaining_evidence_gap": "Caldwell ACFR FY2024 supplies distinct Google and Tapaha taxpayer rows; TaxView accounts 132226/137489 and NCPIN queries resolve current real-property boundaries but not historical account reconciliation, levy, exemptions, tax bill, payment or incentive allocation."
       },
       "derivation": {
         "method": "benchmark_application",
@@ -1354,8 +1384,8 @@
         "Do not add to components."
       ],
       "presentation": "modeled_not_observed_or_audited",
-      "notes": "Exact aggregation only; do not treat as canonical.",
-      "reviewed_on": "2026-09-07",
+      "notes": "Exact arithmetic aggregation of two official same-year taxpayer rows only. It is not a tax, payment, investment or additional contribution, and the current TaxView parcel total must not be substituted for either historical component.",
+      "reviewed_on": "2026-09-08",
       "annual_series_key": "google_lenoir_combined_assessed_value"
     },
     {
@@ -1422,7 +1452,7 @@
       "evidence_search": {
         "direct_observation_status": "partial",
         "source_projection_status": "not_applicable",
-        "remaining_evidence_gap": "Bills and account reconciliation"
+        "remaining_evidence_gap": "Caldwell ACFR FY2025 supplies distinct Google and Tapaha taxpayer rows; TaxView accounts 132226/137489 and NCPIN queries resolve current real-property boundaries but not historical account reconciliation, levy, exemptions, tax bill, payment or incentive allocation."
       },
       "derivation": {
         "method": "benchmark_application",
@@ -1447,9 +1477,228 @@
         "Do not add to components."
       ],
       "presentation": "modeled_not_observed_or_audited",
-      "notes": "Exact aggregation only; do not treat as canonical.",
-      "reviewed_on": "2026-09-07",
+      "notes": "Exact arithmetic aggregation of two official same-year taxpayer rows only. It is not a tax, payment, investment or additional contribution, and the current TaxView parcel total must not be substituted for either historical component.",
+      "reviewed_on": "2026-09-08",
       "annual_series_key": "google_lenoir_combined_assessed_value"
+    },
+    {
+      "estimate_id": "est_study_google_lenoir_cumulative_city_abatement_2018_2025",
+      "project_id": "prj_study_im3_campus_00009474864",
+      "metric_code": "study.modeled_cumulative_incentive_payments",
+      "label": "Cumulative City Technology Business taxes abated, FY2018-FY2025",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 52896864,
+      "period": {
+        "kind": "cumulative",
+        "report_date": "2025-06-30",
+        "label": "Fiscal years 2018 through 2025"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "City of Lenoir Technology Business tax-abatement agreement associated with Google/Tapaha",
+        "county_fips": "37027",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "point_estimate",
+        "low": 52896864,
+        "central": 52896864,
+        "high": 52896864,
+        "interpretation": "Exact arithmetic sum of the eight City-reported annual abatement flows for FY2018-FY2025; the point interval expresses arithmetic identity, not independent certainty about taxpayer attribution."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "google_lenoir_cumulative_city_abatement_2018_2025",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "fy2018_abatement",
+          "value": 4616262,
+          "unit": "USD",
+          "provenance": {"kind": "claim", "reference_id": "clm_study_google_lenoir_city_abatement_2018", "detail": "FY2018 Technology Business taxes abated"},
+          "transformation": "Added once"
+        },
+        {
+          "name": "fy2019_abatement",
+          "value": 5619341,
+          "unit": "USD",
+          "provenance": {"kind": "claim", "reference_id": "clm_study_google_lenoir_city_abatement_2019", "detail": "FY2019 Technology Business taxes abated"},
+          "transformation": "Added once"
+        },
+        {
+          "name": "fy2020_abatement",
+          "value": 8449681,
+          "unit": "USD",
+          "provenance": {"kind": "claim", "reference_id": "clm_study_google_lenoir_city_abatement_2020", "detail": "FY2020 Technology Business taxes abated"},
+          "transformation": "Added once"
+        },
+        {
+          "name": "fy2021_abatement",
+          "value": 8068908,
+          "unit": "USD",
+          "provenance": {"kind": "claim", "reference_id": "clm_study_google_lenoir_city_abatement_2021", "detail": "FY2021 Technology Business taxes abated"},
+          "transformation": "Added once"
+        },
+        {
+          "name": "fy2022_abatement",
+          "value": 7269371,
+          "unit": "USD",
+          "provenance": {"kind": "claim", "reference_id": "clm_study_google_lenoir_city_abatement_2022", "detail": "FY2022 Technology Business taxes abated"},
+          "transformation": "Added once"
+        },
+        {
+          "name": "fy2023_abatement",
+          "value": 6670769,
+          "unit": "USD",
+          "provenance": {"kind": "claim", "reference_id": "clm_study_google_lenoir_city_abatement_2023", "detail": "FY2023 Technology Business taxes abated"},
+          "transformation": "Added once"
+        },
+        {
+          "name": "fy2024_abatement",
+          "value": 6500013,
+          "unit": "USD",
+          "provenance": {"kind": "claim", "reference_id": "clm_study_google_lenoir_city_abatement_2024", "detail": "FY2024 Technology Business taxes abated"},
+          "transformation": "Added once"
+        },
+        {
+          "name": "fy2025_abatement",
+          "value": 5702519,
+          "unit": "USD",
+          "provenance": {"kind": "claim", "reference_id": "clm_study_google_lenoir_city_abatement_2025", "detail": "FY2025 Technology Business taxes abated"},
+          "transformation": "Added once"
+        }
+      ],
+      "confidence": "medium",
+      "confidence_rationale": "All eight fiscal-year values and arithmetic are exact in official City ACFRs. Confidence is limited because the GASB 77 notes name only Technology Business, while Google/Tapaha attribution relies on the separately documented agreement.",
+      "decision_relevance": "Provides the reproducible cumulative City abatement scale for the requested FY2018-FY2025 window without converting annual flows into receipts or a net-fiscal result.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "not_applicable",
+        "remaining_evidence_gap": "The annual notes do not name the taxpayer; County incentives, gross project tax receipts and same-scope marginal public costs remain incomplete."
+      },
+      "derivation": {
+        "method": "benchmark_application",
+        "model_version": "google-lenoir-city-abatement-cumulative-2.0.0",
+        "formula": "$4,616,262 + $5,619,341 + $8,449,681 + $8,068,908 + $7,269,371 + $6,670,769 + $6,500,013 + $5,702,519 = $52,896,864",
+        "input_claim_ids": [
+          "clm_study_google_lenoir_city_abatement_2018",
+          "clm_study_google_lenoir_city_abatement_2019",
+          "clm_study_google_lenoir_city_abatement_2020",
+          "clm_study_google_lenoir_city_abatement_2021",
+          "clm_study_google_lenoir_city_abatement_2022",
+          "clm_study_google_lenoir_city_abatement_2023",
+          "clm_study_google_lenoir_city_abatement_2024",
+          "clm_study_google_lenoir_city_abatement_2025"
+        ],
+        "input_source_ids": [
+          "src_study_lenoir_acfr_2018",
+          "src_study_lenoir_acfr_2019",
+          "src_study_lenoir_acfr_2020",
+          "src_study_lenoir_acfr_2021",
+          "src_study_lenoir_acfr_2022",
+          "src_study_lenoir_acfr_2023",
+          "src_study_lenoir_acfr_2024",
+          "src_study_lenoir_acfr_2025"
+        ],
+        "assumptions": [
+          "Each component is included exactly once and refers to a distinct fiscal year.",
+          "The scope follows the City Technology Business series and separately disclosed Google/Tapaha agreement attribution.",
+          "The adjacent FY2017 amount is excluded because the requested cumulative window begins in FY2018.",
+          "City-wide release schedules, County incentives, gross taxes, the $6.88 million deferred-contract balance and all assessed-value stocks are excluded."
+        ]
+      },
+      "limitations": [
+        "The GASB 77 notes do not name the taxpayer.",
+        "This is a sum of abatements, not taxes paid, government receipts, public cost or net fiscal contribution.",
+        "FY2017 is a separate adjacent direct observation outside this model's period.",
+        "Do not add this cumulative total to any of its annual components."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Exact, noncanonical arithmetic convenience total for FY2018-FY2025. It is non-additive with the eight annual claims and does not close the County incentive, gross-receipt, marginal-cost or net-fiscal gaps.",
+      "reviewed_on": "2026-09-08"
+    },
+    {
+      "estimate_id": "est_study_tapaha_lenoir_real_property_assessed_2027",
+      "project_id": "prj_study_im3_campus_00009474864",
+      "metric_code": "study.modeled_combined_assessed_value",
+      "label": "Tapaha real-property taxable value across nine public appraisal parcels",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "stock",
+      "basis": "modeled_synthesis",
+      "value": 533883600,
+      "period": {"kind": "tax_year", "year": 2027, "label": "Tax year 2027"},
+      "scope": {"level": "campus", "label": "Nine Tapaha Dynamics real-property parcels on Caldwell County accounts 132226 and 137489", "county_fips": "37027", "inventory_allocation": "unallocated"},
+      "interval": {"kind": "point_estimate", "low": 533883600, "central": 533883600, "high": 533883600, "interpretation": "Exact arithmetic sum of nine same-tax-year parcel values; not a tax, bill, payment, investment or market valuation."},
+      "contribution_channel": "not_applicable",
+      "aggregation": {"aggregation_id": "tapaha_lenoir_real_property_assessed_2027", "role": "standalone", "overlap_policy": "do_not_sum_outside_declared_total"},
+      "parameters": [
+        {
+          "name": "account_132226_six_parcel_subtotal",
+          "value": 446161900,
+          "unit": "USD",
+          "provenance": {"kind": "assumption", "detail": "Exact sum of the six tax-year-2027 direct parcel claims on account 132226"},
+          "transformation": "Added to the account 137489 subtotal"
+        },
+        {
+          "name": "account_137489_three_parcel_subtotal",
+          "value": 87721700,
+          "unit": "USD",
+          "provenance": {"kind": "assumption", "detail": "Exact sum of the three tax-year-2027 direct parcel claims on account 137489"},
+          "transformation": "Added to the account 132226 subtotal"
+        }
+      ],
+      "confidence": "high",
+      "confidence_rationale": "All nine components are exact same-tax-year values from official Caldwell County appraisal cards and reproduce both account subtotals and the overall sum.",
+      "decision_relevance": "Provides the current public real-property taxable-value boundary for the Tapaha-owned campus and adjacent expansion parcels while keeping Google business-personal property and tax flows separate.",
+      "evidence_search": {"direct_observation_status": "partial", "source_projection_status": "not_applicable", "remaining_evidence_gap": "The public cards do not disclose Google business-personal property, parcel-level levy, City jurisdiction, exemptions, tax bill, payment status or historical continuity with ACFR taxpayer rows."},
+      "derivation": {
+        "method": "benchmark_application",
+        "model_version": "google-lenoir-assessed-sum-1.1.0",
+        "formula": "$446,161,900 account 132226 parcel subtotal + $87,721,700 account 137489 parcel subtotal = $533,883,600",
+        "input_claim_ids": [
+          "clm_study_tapaha_parcel_2748674403_assessed_2027",
+          "clm_study_tapaha_parcel_2748675303_assessed_2027",
+          "clm_study_tapaha_parcel_2749515252_assessed_2027",
+          "clm_study_tapaha_parcel_2749407243_assessed_2027",
+          "clm_study_tapaha_parcel_2748588021_assessed_2027",
+          "clm_study_tapaha_parcel_2748673488_assessed_2027",
+          "clm_study_tapaha_parcel_2748394394_assessed_2027",
+          "clm_study_tapaha_parcel_2748492502_assessed_2027",
+          "clm_study_tapaha_parcel_2748287853_assessed_2027"
+        ],
+        "input_source_ids": [
+          "src_study_caldwell_appraisal_2748674403_2027",
+          "src_study_caldwell_appraisal_2748675303_2027",
+          "src_study_caldwell_appraisal_2749515252_2027",
+          "src_study_caldwell_appraisal_2749407243_2027",
+          "src_study_caldwell_appraisal_2748588021_2027",
+          "src_study_caldwell_appraisal_2748673488_2027",
+          "src_study_caldwell_appraisal_2748394394_2027",
+          "src_study_caldwell_appraisal_2748492502_2027",
+          "src_study_caldwell_appraisal_2748287853_2027"
+        ],
+        "assumptions": [
+          "The nine public parcel rows are distinct and exhaust the Tapaha-named rows returned for accounts 132226 and 137489 on the retrieval date.",
+          "Every component states tax year 2027.",
+          "No Google business-personal property or non-Tapaha parcel is added.",
+          "The sum is not a tax, bill, payment, investment or building allocation."
+        ]
+      },
+      "limitations": [
+        "Real-property parcels only; Google business-personal property is excluded.",
+        "The cards do not establish levy, exemption, City jurisdiction, bill or payment status.",
+        "The 914 Virginia appraisal is not equated with LNR4A because the public floor-area figures differ and no crosswalk was found.",
+        "Do not add this parcel total to historical ACFR Google-plus-Tapaha totals."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Exact arithmetic convenience total for the nine tax-year-2027 Tapaha real-property parcel claims. It is not a tax, payment, investment or continuation of the historical combined taxpayer series.",
+      "reviewed_on": "2026-09-08"
     }
   ]
 }

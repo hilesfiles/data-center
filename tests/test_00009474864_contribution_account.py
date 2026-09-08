@@ -61,28 +61,37 @@ class GoogleLenoirContributionAccountTest(unittest.TestCase):
             self.synthesis, ROOT / "schemas/v1/study-modeled-synthesis.schema.json"
         )
         self.assertEqual(issues, [])
-        self.assertEqual(len(self.fragment["sources"]), 33)
-        self.assertEqual(len(self.fragment["records"]), 98)
-        self.assertEqual(len(self.fragment["project_updates"]), 16)
+        self.assertEqual(len(self.fragment["sources"]), 53)
+        self.assertEqual(len(self.fragment["records"]), 161)
+        self.assertEqual(len(self.fragment["project_updates"]), 33)
         self.assertEqual(
-            sum(row["basis"] == "reported_actual" for row in self.fragment["records"]), 82
+            sum(row["basis"] == "reported_actual" for row in self.fragment["records"]), 145
         )
         self.assertEqual(
             sum(row["basis"] == "source_projection" for row in self.fragment["records"]), 16
         )
-        self.assertEqual(len(self.synthesis_fragment["estimates"]), 15)
-        self.assertEqual(self.project["economic_record_count"], 99)
-        self.assertEqual(self.project["reported_actual_count"], 82)
+        self.assertEqual(len(self.synthesis_fragment["estimates"]), 17)
+        self.assertEqual(self.project["economic_record_count"], 162)
+        self.assertEqual(self.project["reported_actual_count"], 145)
         self.assertEqual(self.project["projection_count"], 17)
-        self.assertEqual(self.project["modeled_synthesis_count"], 15)
+        self.assertEqual(self.project["modeled_synthesis_count"], 17)
         self.assertEqual(
             self.fragment["project_updates"][-1]["title"],
-            "Orchestrator adopted direct resource, design, emissions and incentive records",
+            "Second corrective handoff ready for independent re-audit",
         )
         self.assertIn(
-            "water consumption and discharge",
+            "corrective_handoff_ready",
             self.fragment["project_updates"][-1]["notes"],
         )
+        self.assertIn(
+            "status=gap_closure_in_progress",
+            self.fragment["project_updates"][-1]["notes"],
+        )
+        self.assertIn(
+            "9ae8fbd8dfd55b435f340f58c03eab23b48bb782",
+            self.fragment["project_updates"][-1]["notes"],
+        )
+        self.assertIn("does not claim project completion", self.fragment["project_updates"][-1]["notes"])
 
     def test_one_project_description_and_auditable_search_matrix(self):
         descriptions = [
@@ -120,10 +129,207 @@ class GoogleLenoirContributionAccountTest(unittest.TestCase):
             "2748394394",
             "2748287853",
             "lnr4a",
+            "taxviewpublic",
+            "account 132226",
+            "shoulder tap",
+            "e-7 sub 989",
+            "ncg01",
+            "laserfiche",
             "no same-scope marginal",
             "sign reversal",
         ):
             self.assertIn(term, text)
+
+    def test_corrective_matrix_and_metric_ledger_are_structured_and_complete(self):
+        updates = {row["title"]: row for row in self.fragment["project_updates"]}
+        matrix = json.loads(updates["Corrective reopening direct-evidence family matrix"]["notes"])
+        self.assertEqual(matrix["contract"], "3.1.0")
+        self.assertIn("gap_closure_in_progress", matrix["status"])
+        self.assertEqual(len(matrix["families"]), 8)
+        self.assertIn("Shoulder Tap LLC", matrix["boundary"]["entities_identifiers"])
+        for family in matrix["families"]:
+            self.assertTrue(family["portals_collections"])
+            self.assertTrue(family["queries_entities_dates"])
+            self.assertTrue(family["records_opened"])
+            self.assertIn("outcome_alternates_negative_limit", family)
+
+        ledger = json.loads(updates["Corrective reopening metric disposition ledger"]["notes"])
+        self.assertIn("gap_closure_in_progress", ledger["status"])
+        self.assertEqual(len(ledger["dispositions"]), 26)
+        self.assertEqual(
+            {row["metric"] for row in ledger["dispositions"]},
+            {
+                "campus investment",
+                "construction cost",
+                "construction workers and payroll",
+                "LNR4A floor area and design capacity",
+                "annual-average operating FTE",
+                "operating payroll and benefits",
+                "supplier payments",
+                "supplier geography/local share",
+                "assessed value",
+                "local tax receipts/payments",
+                "City abatements",
+                "County and Project Cardinal incentives",
+                "JDIG",
+                "same-scope marginal public-service cost",
+                "net fiscal contribution",
+                "electricity consumption and peak load",
+                "electric utility bill",
+                "water withdrawal/consumption/discharge",
+                "water/sewer utility bill",
+                "PUE and carbon-free-energy share",
+                "air emissions",
+                "brownfield/remediation cost",
+                "community transfers",
+                "county employment comparison",
+                "county wage comparison",
+                "county GDP comparison",
+            },
+        )
+        for disposition in ledger["dispositions"]:
+            self.assertTrue(disposition["repositories_identifiers_years"])
+            self.assertTrue(disposition["model"])
+            self.assertTrue(disposition["gap_or_rejection"])
+        city_abatements = next(
+            row for row in ledger["dispositions"] if row["metric"] == "City abatements"
+        )
+        self.assertIn("nine Technology Business", city_abatements["retained"])
+        self.assertIn("$52,896,864", city_abatements["model"])
+        self.assertIn("No annual gap remains", city_abatements["gap_or_rejection"])
+
+        source_ids = {row["source_id"] for row in self.fragment["sources"]}
+        self.assertTrue(
+            {
+                "src_study_caldwell_taxview_arcgis_2026",
+                "src_study_lenoir_acfr_2017",
+                "src_study_lenoir_acfr_2021",
+                "src_study_ncdeq_tapaha_air_review_2017",
+                "src_study_ncdeq_tapaha_air_review_2021",
+                "src_study_ncdeq_singer_emp_2014",
+                "src_study_ncuc_duke_rate_order_2012",
+                "src_study_caldwell_department_list_2017",
+                "src_study_nc_labor_google_elevator_26169",
+                "src_study_caldwell_appraisal_2749515252_2027",
+                "src_study_caldwell_appraisal_2748394394_2027",
+                "src_study_ncdeq_construction_cocs_2026",
+                "src_study_cccti_connect_grant_2021",
+            }
+            <= source_ids
+        )
+        prior = next(
+            row
+            for row in self.fragment["project_updates"]
+            if row["title"] == "Superseded prior acceptance audit after adversarial continuation"
+        )
+        self.assertIn("superseded_acceptance", prior["notes"])
+
+    def test_second_corrective_sources_preserve_archive_and_fixed_width_urls(self):
+        sources = {row["source_id"]: row for row in self.fragment["sources"]}
+        fy2021 = sources["src_study_lenoir_acfr_2021"]
+        self.assertEqual(
+            fy2021["url"],
+            "https://cityoflenoir.com/Archive/ViewFile/Item/109",
+        )
+        self.assertEqual(
+            fy2021["artifact_sha256"],
+            "7374854c8ac10ed236727e6f5821f82b1aad9d1aed26ce9768b7593040d6cac7",
+        )
+        expected_urls = {
+            "2748674403": "06121%20%201%20%207",
+            "2748675303": "06121%20%201%20%208",
+            "2749515252": "06161%20%201%20%201",
+            "2749407243": "06161%20%201%20%201C",
+            "2748588021": "06161%20%201%20%201B",
+            "2748673488": "06121%20%201%2010A",
+            "2748394394": "06162%20%201%20%201A",
+            "2748492502": "06162%20%201%20%203",
+            "2748287853": "06162%20%201%20%201C",
+        }
+        for ncpin, encoded_pid in expected_urls.items():
+            source = sources[f"src_study_caldwell_appraisal_{ncpin}_2027"]
+            self.assertEqual(
+                source["url"],
+                "https://gis.caldwellcountync.org/itspublic/"
+                f"AppraisalCard.aspx?id={encoded_pid}",
+            )
+            self.assertEqual(len(source["artifact_sha256"]), 64)
+            self.assertIn("fixed-width PID", source["notes"])
+            self.assertIn("tax year 2027", source["notes"].lower())
+        challenge = next(
+            row
+            for row in self.fragment["project_updates"]
+            if row["title"].startswith("Adversarial challenge 01")
+        )
+        self.assertIn("approximately 647-byte HTML wrappers", challenge["notes"])
+        replay = next(
+            row
+            for row in self.fragment["project_updates"]
+            if row["title"] == "Second corrective City Finance archive and tax-schedule replay"
+        )
+        self.assertIn("$8,068,908", replay["notes"])
+        self.assertIn("$5,702,923", replay["notes"])
+        self.assertIn("city-wide", replay["notes"].lower())
+
+    def test_adversarial_challenge_reports_are_complete_and_dispositive(self):
+        reports = [
+            row
+            for row in self.fragment["project_updates"]
+            if row["title"].startswith("Adversarial challenge ")
+        ]
+        self.assertEqual(len(reports), 11)
+        self.assertEqual(
+            {int(row["title"].split()[2]) for row in reports}, set(range(1, 12))
+        )
+        for report in reports:
+            for label in (
+                "Repositories:",
+                "Query terms/date range:",
+                "Material records:",
+                "Alternate routes:",
+                "Resulting claim/model/rejection:",
+            ):
+                self.assertIn(label, report["notes"])
+        corpus = " ".join(row["notes"] for row in reports).lower()
+        for term in (
+            "tax year 2027",
+            "department 6574",
+            "december 19 2006",
+            "ncc242598",
+            "annual-average fte",
+            "supplier-payment",
+            "sawmill 100kv",
+            "meter volumes",
+            "fiscal break-even threshold",
+            "$100,000 2020",
+            "treatment-anchor",
+        ):
+            self.assertIn(term, corpus)
+
+    def test_air_emissions_history_is_direct_and_facility_unallocated(self):
+        emission_records = [
+            row
+            for row in self.fragment["records"]
+            if row["metric_code"].startswith("study.actual_")
+            and row["metric_code"].endswith("_emissions")
+        ]
+        expected_years = {2010, *range(2013, 2024)}
+        self.assertEqual({row["period"]["year"] for row in emission_records}, expected_years)
+        self.assertEqual(len(emission_records), 7 * len(expected_years))
+        self.assertTrue(all(row["basis"] == "reported_actual" for row in emission_records))
+        self.assertTrue(
+            all(row["scope"]["inventory_allocation"] == "unallocated" for row in emission_records)
+        )
+        nox = {
+            row["period"]["year"]: row["value"]
+            for row in emission_records
+            if row["metric_code"] == "study.actual_nox_emissions"
+        }
+        self.assertEqual(nox[2010], 2.49)
+        self.assertEqual(nox[2015], 37.71)
+        self.assertEqual(nox[2016], 30.48)
+        self.assertEqual(nox[2018], 11.07)
+        self.assertEqual(nox[2023], 20.51)
 
     def test_direct_series_preserve_property_and_incentive_meaning(self):
         records = {row["claim_id"]: row for row in self.fragment["records"]}
@@ -149,18 +355,29 @@ class GoogleLenoirContributionAccountTest(unittest.TestCase):
         self.assertEqual(
             abatements,
             {
+                2017: 3_978_500,
                 2018: 4_616_262,
                 2019: 5_619_341,
                 2020: 8_449_681,
+                2021: 8_068_908,
                 2022: 7_269_371,
                 2023: 6_670_769,
                 2024: 6_500_013,
                 2025: 5_702_519,
             },
         )
-        self.assertNotIn(2021, abatements)
         self.assertTrue(all(row["metric_code"] == "study.incentive_payments" for row in records.values() if row.get("annual_series_key") == "google_lenoir_city_tax_abatement"))
+        fy2021 = records["clm_study_google_lenoir_city_abatement_2021"]
+        self.assertEqual((fy2021["pdf_page"], fy2021["printed_page"]), (79, "67"))
         self.assertEqual(records["clm_study_google_lenoir_water_reserve_fee_2024"]["value"], 6_880_000)
+        deferred = records["clm_study_google_lenoir_deferred_water_contract_balance_2025"]
+        self.assertEqual(deferred["value"], 6_880_000)
+        self.assertEqual(deferred["metric_code"], "study.infrastructure_company_payments")
+        self.assertIn("must not be added", deferred["notes"].lower())
+        city_taxpayer = records["clm_study_google_lenoir_city_principal_taxpayer_assessed_2024"]
+        self.assertEqual(city_taxpayer["value"], 1_758_599_206)
+        self.assertEqual(city_taxpayer["period"]["kind"], "source_year")
+        self.assertIn("not substituted for or added", city_taxpayer["notes"].lower())
         self.assertEqual(records["clm_study_google_lenoir_permitted_generators_2025"]["value"], 163)
         self.assertEqual(records["clm_study_google_lenoir_water_withdrawal_2024"]["value"], 351_700_000)
         workforce = records["clm_study_google_lenoir_operating_employees_2008"]
@@ -168,6 +385,19 @@ class GoogleLenoirContributionAccountTest(unittest.TestCase):
         self.assertEqual(workforce["value_qualifier"], "approximately")
         self.assertEqual(workforce["period"]["kind"], "source_year")
         self.assertNotIn("annual_series_key", workforce)
+        parcel_rows = [
+            row
+            for row in records.values()
+            if row["claim_id"].startswith("clm_study_tapaha_parcel_")
+            and row["claim_id"].endswith("_assessed_2027")
+        ]
+        self.assertEqual(len(parcel_rows), 9)
+        self.assertTrue(all(row["period"] == {"kind": "tax_year", "year": 2027, "label": "Tax year 2027"} for row in parcel_rows))
+        self.assertEqual(sum(row["value"] for row in parcel_rows), 533_883_600)
+        self.assertTrue(all("not google business-personal property" in row["notes"].lower() for row in parcel_rows))
+        connect = records["clm_study_google_lenoir_cccti_connect_grant_2020"]
+        self.assertEqual(connect["value"], 100_000)
+        self.assertIn("must not be added", connect["notes"].lower())
 
     def test_exact_assessed_aggregations_and_projection_payroll(self):
         records = {row["claim_id"]: row for row in self.fragment["records"]}
@@ -190,13 +420,14 @@ class GoogleLenoirContributionAccountTest(unittest.TestCase):
             row["period"]["year"]: row
             for row in models.values()
             if row["metric_code"] == "study.modeled_combined_assessed_value"
+            and row["period"]["kind"] == "fiscal_year"
         }
         self.assertEqual({year: row["value"] for year, row in assessed.items()}, expected)
         for year, model in assessed.items():
             claim_values = [records[claim_id]["value"] for claim_id in model["derivation"]["input_claim_ids"]]
             self.assertEqual(sum(claim_values), expected[year])
             self.assertEqual(model["value"], model["interval"]["central"])
-            self.assertIn("do not", model["notes"].lower())
+            self.assertIn("not a tax", model["notes"].lower())
         payroll = models["est_study_google_lenoir_projected_payroll_2007"]
         self.assertEqual(payroll["value"], 210 * 48_300)
         self.assertIn("not observed payroll", payroll["interval"]["interpretation"].lower())
@@ -205,6 +436,35 @@ class GoogleLenoirContributionAccountTest(unittest.TestCase):
             payroll["derivation"]["input_claim_ids"],
         )
         self.assertIn("not realized", " ".join(payroll["limitations"]).lower())
+        parcel_model = models["est_study_tapaha_lenoir_real_property_assessed_2027"]
+        self.assertEqual(parcel_model["value"], 533_883_600)
+        self.assertEqual(parcel_model["period"]["kind"], "tax_year")
+        self.assertEqual(
+            sum(records[claim_id]["value"] for claim_id in parcel_model["derivation"]["input_claim_ids"]),
+            parcel_model["value"],
+        )
+        self.assertIn("not a tax", parcel_model["interval"]["interpretation"].lower())
+        cumulative = models[
+            "est_study_google_lenoir_cumulative_city_abatement_2018_2025"
+        ]
+        self.assertEqual(cumulative["value"], 52_896_864)
+        self.assertEqual(cumulative["period"]["kind"], "cumulative")
+        self.assertEqual(
+            sum(
+                records[claim_id]["value"]
+                for claim_id in cumulative["derivation"]["input_claim_ids"]
+            ),
+            cumulative["value"],
+        )
+        self.assertNotIn(
+            "clm_study_google_lenoir_city_abatement_2017",
+            cumulative["derivation"]["input_claim_ids"],
+        )
+        self.assertEqual(
+            cumulative["aggregation"]["overlap_policy"],
+            "do_not_sum_outside_declared_total",
+        )
+        self.assertIn("do not add", " ".join(cumulative["limitations"]).lower())
 
     def test_source_reported_water_is_direct_and_not_duplicated_as_modeled(self):
         water = sorted(
@@ -217,11 +477,10 @@ class GoogleLenoirContributionAccountTest(unittest.TestCase):
         self.assertTrue(all("not withdrawal or discharge" in row["notes"].lower() for row in water))
         self.assertFalse(any(row["metric_code"] == "study.modeled_annual_water_consumption" for row in self.synthesis_fragment["estimates"]))
 
-    def _matched(self, metric, k=5):
+    def _matched(self, metric, k=5, base=2007):
         treated = self.panels["37027"]
         treated_years = {row["year"]: row for row in treated["years"]}
-        pre = list(range(2001, 2008))
-        base = 2007
+        pre = list(range(2001, base + 1))
         candidates = []
         for county in self.panels.values():
             if county["county_fips"] in self.study_counties or county["county_fips"] == "37027":
@@ -270,11 +529,15 @@ class GoogleLenoirContributionAccountTest(unittest.TestCase):
                 ["36053", "26059", "47099", "28081", "23013"],
                 3.7300979826653924,
                 0.6408050745801308,
-                6.203854349987781,
+                9.600412546339765,
             ),
         }
         for panel_metric, (metric_code, donors, central, low, high) in cases.items():
             actual_donors, actual, actual_low, actual_high, _ = self._matched(panel_metric)
+            anchor_2006 = self._matched(panel_metric, base=2006)[1]
+            anchor_2008 = self._matched(panel_metric, base=2008)[1]
+            actual_low = min(actual_low, anchor_2006, anchor_2008)
+            actual_high = max(actual_high, anchor_2006, anchor_2008)
             self.assertEqual(actual_donors, donors)
             self.assertAlmostEqual(actual, central, places=12)
             self.assertAlmostEqual(actual_low, low, places=12)
@@ -285,6 +548,9 @@ class GoogleLenoirContributionAccountTest(unittest.TestCase):
             self.assertAlmostEqual(model["interval"]["high"], actual_high, places=12)
             self.assertIn("descriptive", json.dumps(model).lower())
             self.assertIn("not a causal effect", json.dumps(model).lower())
+            parameters = {row["name"]: row["value"] for row in model["parameters"]}
+            self.assertAlmostEqual(parameters["treatment_anchor_2006_gap_percent"], anchor_2006, places=12)
+            self.assertAlmostEqual(parameters["treatment_anchor_2008_gap_percent"], anchor_2008, places=12)
         _, gdp, _, _, gdp_nc = self._matched("real_gdp_usd")
         self.assertAlmostEqual(gdp, -21.579899825908132, places=12)
         self.assertAlmostEqual(gdp_nc, 4.7195124775265995, places=12)
