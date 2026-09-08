@@ -1,0 +1,3788 @@
+{
+  "schema_version": "1.0.0",
+  "project_id": "prj_study_im3_building_00844371952",
+  "reviewed_on": "2026-09-07",
+  "scope_note": "Residual modeled synthesis after the Google Bridgeport evidence audit. It retains published Deloitte/Google IMPLAN channels as source-modeled outputs, deterministic presentation of uncataloged direct environmental series, exact annual paid-tax aggregations plus a 2025 equal-cost threshold, and three low-confidence descriptive county comparison gaps. It does not allocate campus/state results to the selected building, invent supplier spend/payroll/public costs, convert workers to job-years, estimate incentives or net fiscal impact, or treat source projections as actuals.",
+  "sources": [
+    {
+      "source_id": "src_study_google_alabama_impact_2024",
+      "title": "Google's Data Center Impact in Alabama — 2024 Impact Study",
+      "url": "https://www.gstatic.com/marketing-cms/ae/56/521546c244c9938c1e7d8413cca9/2024-impact-study-alabama.pdf",
+      "publisher": "Google LLC and Deloitte Consulting LLP",
+      "source_type": "operator_release",
+      "publication_date": {
+        "precision": "year",
+        "year": 2024
+      },
+      "retrieved_on": "2026-09-07",
+      "review_method": "pdf_text_and_page_image",
+      "notes": "Deloitte-prepared, Google-sponsored 2021-2023 IMPLAN contribution study and 2022-2023 environmental/social summary; inputs were not independently verified. Reported GDP/labor values are rounded to nearest $1 million and jobs/households to nearest five."
+    },
+    {
+      "source_id": "src_study_google_environmental_report_2025_bridgeport",
+      "title": "Google 2025 Environmental Report",
+      "url": "https://www.gstatic.com/gumdrop/sustainability/google-2025-environmental-report.pdf",
+      "publisher": "Google LLC",
+      "source_type": "operator_release",
+      "publication_date": {
+        "precision": "year",
+        "year": 2025
+      },
+      "retrieved_on": "2026-09-07",
+      "review_method": "pdf_text_and_page_image",
+      "notes": "Official location tables provide 2021-2024 Jackson County PUE and 2024 withdrawal/discharge/consumption; water is rounded to nearest 0.1 million gallons and subject to third-party limited assurance."
+    },
+    {
+      "source_id": "src_study_jackson_property_google_151335",
+      "title": "Jackson County property and tax history — Google LLC account 151335",
+      "url": "https://jacksonproperty.countygovservices.com/Property/Search?taxyear=2026",
+      "publisher": "Jackson County Revenue Commissioner",
+      "source_type": "assessor_record",
+      "publication_date": {
+        "precision": "day",
+        "date": "2026-09-07"
+      },
+      "retrieved_on": "2026-09-07",
+      "review_method": "structured_data",
+      "notes": "Official live personal-property account history supplies exact 2020-2025 paid tax, appraised and assessed values; unpaid 2026 estimate excluded."
+    },
+    {
+      "source_id": "src_study_jackson_property_design_151342",
+      "title": "Jackson County property and tax history — Design LLC account 151342",
+      "url": "https://jacksonproperty.countygovservices.com/Property/Search?taxyear=2026",
+      "publisher": "Jackson County Revenue Commissioner",
+      "source_type": "assessor_record",
+      "publication_date": {
+        "precision": "day",
+        "date": "2026-09-07"
+      },
+      "retrieved_on": "2026-09-07",
+      "review_method": "structured_data",
+      "notes": "Official live personal-property account history supplies exact 2020-2025 paid tax, appraised and assessed values; unpaid 2026 estimate excluded."
+    },
+    {
+      "source_id": "src_study_jackson_property_wiessner_151344",
+      "title": "Jackson County property and tax history — Wiessner Enterprises LLC account 151344",
+      "url": "https://jacksonproperty.countygovservices.com/Property/Search?taxyear=2026",
+      "publisher": "Jackson County Revenue Commissioner",
+      "source_type": "assessor_record",
+      "publication_date": {
+        "precision": "day",
+        "date": "2026-09-07"
+      },
+      "retrieved_on": "2026-09-07",
+      "review_method": "structured_data",
+      "notes": "Official live personal-property account history supplies exact 2020-2025 paid tax, appraised and assessed values; unpaid 2026 estimate excluded."
+    },
+    {
+      "source_id": "src_study_county_economic_core_2001_2024_jackson",
+      "title": "County Economic Core Panel, 2001-2024",
+      "url": "https://apps.bea.gov/regional/downloadzip.htm",
+      "publisher": "U.S. Bureau of Economic Analysis and U.S. Bureau of Labor Statistics",
+      "source_type": "other",
+      "publication_date": {
+        "precision": "year",
+        "year": 2026
+      },
+      "retrieved_on": "2026-09-07",
+      "review_method": "structured_data",
+      "notes": "Repository panel compiled from official annual county real GDP, covered employment and nominal average-weekly-wage series. The descriptive model uses 2010-2017 pre-period observations and 2024 outcomes."
+    }
+  ],
+  "estimates": [
+    {
+      "project_id": "prj_study_im3_building_00844371952",
+      "basis": "modeled_synthesis",
+      "confidence_rationale": "The source and arithmetic are explicit, but the underlying study inputs were not independently verified or the account set has not been audited for completeness.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Observed project payroll, employment, supplier purchases, building allocation and independently verified model inputs."
+      },
+      "presentation": "modeled_not_observed_or_audited",
+      "reviewed_on": "2026-09-07",
+      "estimate_id": "est_study_google_bridgeport_gdp_direct_2021_2023",
+      "metric_code": "study.modeled_annual_gdp_contribution",
+      "label": "Source-modeled annual GDP contribution — direct",
+      "category": "operations",
+      "unit": "USD_per_year",
+      "measure_type": "flow",
+      "value": 42000000,
+      "period": {
+        "kind": "source_year",
+        "year": 2023,
+        "label": "Source-reported annual average across 2021-2023"
+      },
+      "scope": {
+        "level": "state",
+        "label": "Google digital-infrastructure contribution in Alabama",
+        "county_fips": "01071",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "reported_band",
+        "low": 41500000,
+        "central": 42000000,
+        "high": 42500000,
+        "interpretation": "Source rounding envelope (nearest $1 million); not statistical."
+      },
+      "contribution_channel": "direct",
+      "aggregation": {
+        "aggregation_id": "google_bridgeport_gdp_2021_2023",
+        "role": "component",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "reported_direct_gdp",
+          "value": 42000000,
+          "unit": "USD_per_year",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_google_alabama_impact_2024",
+            "detail": "Reported direct component"
+          },
+          "transformation": "Retained without added multiplier"
+        }
+      ],
+      "confidence": "medium",
+      "decision_relevance": "Preserves the study's direct channel without treating it as observed.",
+      "gap": "Observed project payroll, employment, supplier purchases, building allocation and independently verified model inputs.",
+      "derivation": {
+        "method": "contribution_analysis",
+        "model_version": "google-bridgeport-account-1.0.0",
+        "formula": "source-reported direct IMPLAN output",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_google_alabama_impact_2024"
+        ],
+        "assumptions": [
+          "Transcribes the published source model and applies no new multiplier.",
+          "Annual average covers 2021-2023 and is not assigned to a single year."
+        ]
+      },
+      "multiplier_provenance": {
+        "source_id": "src_study_google_alabama_impact_2024",
+        "model_name": "IMPLAN input-output contribution model reported by Deloitte for Google",
+        "model_version": "Not disclosed",
+        "geography": "Alabama; Google digital-infrastructure contribution",
+        "vintage": "Modeled years 2021-2023; underlying IMPLAN data vintage not disclosed",
+        "local_purchase_assumption": "Deloitte/Google do not disclose the modeled local-purchase assumptions; this account adds none.",
+        "channel_separation": "direct_indirect_induced_reported_separately"
+      },
+      "limitations": [
+        "IMPLAN result, not an observed or causal effect.",
+        "Statewide digital-infrastructure scope cannot be allocated to the selected building.",
+        "Published values are rounded and underlying inputs were not independently verified."
+      ],
+      "notes": "PDF page 3; direct channels must not be summed outside the declared total."
+    },
+    {
+      "project_id": "prj_study_im3_building_00844371952",
+      "basis": "modeled_synthesis",
+      "confidence_rationale": "The source and arithmetic are explicit, but the underlying study inputs were not independently verified or the account set has not been audited for completeness.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Observed project payroll, employment, supplier purchases, building allocation and independently verified model inputs."
+      },
+      "presentation": "modeled_not_observed_or_audited",
+      "reviewed_on": "2026-09-07",
+      "estimate_id": "est_study_google_bridgeport_gdp_indirect_2021_2023",
+      "metric_code": "study.modeled_annual_gdp_contribution",
+      "label": "Source-modeled annual GDP contribution — indirect",
+      "category": "operations",
+      "unit": "USD_per_year",
+      "measure_type": "flow",
+      "value": 19000000,
+      "period": {
+        "kind": "source_year",
+        "year": 2023,
+        "label": "Source-reported annual average across 2021-2023"
+      },
+      "scope": {
+        "level": "state",
+        "label": "Google digital-infrastructure contribution in Alabama",
+        "county_fips": "01071",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "reported_band",
+        "low": 18500000,
+        "central": 19000000,
+        "high": 19500000,
+        "interpretation": "Source rounding envelope (nearest $1 million); not statistical."
+      },
+      "contribution_channel": "indirect",
+      "aggregation": {
+        "aggregation_id": "google_bridgeport_gdp_2021_2023",
+        "role": "component",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "reported_indirect_gdp",
+          "value": 19000000,
+          "unit": "USD_per_year",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_google_alabama_impact_2024",
+            "detail": "Reported indirect component"
+          },
+          "transformation": "Retained without added multiplier"
+        }
+      ],
+      "confidence": "medium",
+      "decision_relevance": "Preserves the study's indirect channel without treating it as observed.",
+      "gap": "Observed project payroll, employment, supplier purchases, building allocation and independently verified model inputs.",
+      "derivation": {
+        "method": "contribution_analysis",
+        "model_version": "google-bridgeport-account-1.0.0",
+        "formula": "source-reported indirect IMPLAN output",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_google_alabama_impact_2024"
+        ],
+        "assumptions": [
+          "Transcribes the published source model and applies no new multiplier.",
+          "Annual average covers 2021-2023 and is not assigned to a single year."
+        ]
+      },
+      "multiplier_provenance": {
+        "source_id": "src_study_google_alabama_impact_2024",
+        "model_name": "IMPLAN input-output contribution model reported by Deloitte for Google",
+        "model_version": "Not disclosed",
+        "geography": "Alabama; Google digital-infrastructure contribution",
+        "vintage": "Modeled years 2021-2023; underlying IMPLAN data vintage not disclosed",
+        "local_purchase_assumption": "Deloitte/Google do not disclose the modeled local-purchase assumptions; this account adds none.",
+        "channel_separation": "direct_indirect_induced_reported_separately"
+      },
+      "limitations": [
+        "IMPLAN result, not an observed or causal effect.",
+        "Statewide digital-infrastructure scope cannot be allocated to the selected building.",
+        "Published values are rounded and underlying inputs were not independently verified."
+      ],
+      "notes": "PDF page 3; indirect channels must not be summed outside the declared total."
+    },
+    {
+      "project_id": "prj_study_im3_building_00844371952",
+      "basis": "modeled_synthesis",
+      "confidence_rationale": "The source and arithmetic are explicit, but the underlying study inputs were not independently verified or the account set has not been audited for completeness.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Observed project payroll, employment, supplier purchases, building allocation and independently verified model inputs."
+      },
+      "presentation": "modeled_not_observed_or_audited",
+      "reviewed_on": "2026-09-07",
+      "estimate_id": "est_study_google_bridgeport_gdp_induced_2021_2023",
+      "metric_code": "study.modeled_annual_gdp_contribution",
+      "label": "Source-modeled annual GDP contribution — induced",
+      "category": "operations",
+      "unit": "USD_per_year",
+      "measure_type": "flow",
+      "value": 16000000,
+      "period": {
+        "kind": "source_year",
+        "year": 2023,
+        "label": "Source-reported annual average across 2021-2023"
+      },
+      "scope": {
+        "level": "state",
+        "label": "Google digital-infrastructure contribution in Alabama",
+        "county_fips": "01071",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "reported_band",
+        "low": 15500000,
+        "central": 16000000,
+        "high": 16500000,
+        "interpretation": "Source rounding envelope (nearest $1 million); not statistical."
+      },
+      "contribution_channel": "induced",
+      "aggregation": {
+        "aggregation_id": "google_bridgeport_gdp_2021_2023",
+        "role": "component",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "reported_induced_gdp",
+          "value": 16000000,
+          "unit": "USD_per_year",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_google_alabama_impact_2024",
+            "detail": "Reported induced component"
+          },
+          "transformation": "Retained without added multiplier"
+        }
+      ],
+      "confidence": "medium",
+      "decision_relevance": "Preserves the study's induced channel without treating it as observed.",
+      "gap": "Observed project payroll, employment, supplier purchases, building allocation and independently verified model inputs.",
+      "derivation": {
+        "method": "contribution_analysis",
+        "model_version": "google-bridgeport-account-1.0.0",
+        "formula": "source-reported induced IMPLAN output",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_google_alabama_impact_2024"
+        ],
+        "assumptions": [
+          "Transcribes the published source model and applies no new multiplier.",
+          "Annual average covers 2021-2023 and is not assigned to a single year."
+        ]
+      },
+      "multiplier_provenance": {
+        "source_id": "src_study_google_alabama_impact_2024",
+        "model_name": "IMPLAN input-output contribution model reported by Deloitte for Google",
+        "model_version": "Not disclosed",
+        "geography": "Alabama; Google digital-infrastructure contribution",
+        "vintage": "Modeled years 2021-2023; underlying IMPLAN data vintage not disclosed",
+        "local_purchase_assumption": "Deloitte/Google do not disclose the modeled local-purchase assumptions; this account adds none.",
+        "channel_separation": "direct_indirect_induced_reported_separately"
+      },
+      "limitations": [
+        "IMPLAN result, not an observed or causal effect.",
+        "Statewide digital-infrastructure scope cannot be allocated to the selected building.",
+        "Published values are rounded and underlying inputs were not independently verified."
+      ],
+      "notes": "PDF page 3; induced channels must not be summed outside the declared total."
+    },
+    {
+      "project_id": "prj_study_im3_building_00844371952",
+      "basis": "modeled_synthesis",
+      "confidence_rationale": "The source and arithmetic are explicit, but the underlying study inputs were not independently verified or the account set has not been audited for completeness.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Observed project payroll, employment, supplier purchases, building allocation and independently verified model inputs."
+      },
+      "presentation": "modeled_not_observed_or_audited",
+      "reviewed_on": "2026-09-07",
+      "estimate_id": "est_study_google_bridgeport_gdp_total_2021_2023",
+      "metric_code": "study.modeled_annual_gdp_contribution",
+      "label": "Source-modeled annual GDP contribution — total",
+      "category": "operations",
+      "unit": "USD_per_year",
+      "measure_type": "flow",
+      "value": 77000000,
+      "period": {
+        "kind": "source_year",
+        "year": 2023,
+        "label": "Source-reported annual average across 2021-2023"
+      },
+      "scope": {
+        "level": "state",
+        "label": "Google digital-infrastructure contribution in Alabama",
+        "county_fips": "01071",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "reported_band",
+        "low": 76500000,
+        "central": 77000000,
+        "high": 77500000,
+        "interpretation": "Source rounding envelope (nearest $1 million); not statistical."
+      },
+      "contribution_channel": "total",
+      "aggregation": {
+        "aggregation_id": "google_bridgeport_gdp_2021_2023",
+        "role": "total",
+        "component_estimate_ids": [
+          "est_study_google_bridgeport_gdp_direct_2021_2023",
+          "est_study_google_bridgeport_gdp_indirect_2021_2023",
+          "est_study_google_bridgeport_gdp_induced_2021_2023"
+        ],
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "direct_gdp",
+          "value": 42000000,
+          "unit": "USD_per_year",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_google_alabama_impact_2024",
+            "detail": "Reported direct component"
+          },
+          "transformation": "Summed to cross-check total"
+        },
+        {
+          "name": "indirect_gdp",
+          "value": 19000000,
+          "unit": "USD_per_year",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_google_alabama_impact_2024",
+            "detail": "Reported indirect component"
+          },
+          "transformation": "Summed to cross-check total"
+        },
+        {
+          "name": "induced_gdp",
+          "value": 16000000,
+          "unit": "USD_per_year",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_google_alabama_impact_2024",
+            "detail": "Reported induced component"
+          },
+          "transformation": "Summed to cross-check total"
+        }
+      ],
+      "confidence": "medium",
+      "decision_relevance": "Preserves the study's total channel without treating it as observed.",
+      "gap": "Observed project payroll, employment, supplier purchases, building allocation and independently verified model inputs.",
+      "derivation": {
+        "method": "contribution_analysis",
+        "model_version": "google-bridgeport-account-1.0.0",
+        "formula": "reported total; component cross-check = direct + indirect + induced",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_google_alabama_impact_2024"
+        ],
+        "assumptions": [
+          "Transcribes the published source model and applies no new multiplier.",
+          "Annual average covers 2021-2023 and is not assigned to a single year."
+        ]
+      },
+      "multiplier_provenance": {
+        "source_id": "src_study_google_alabama_impact_2024",
+        "model_name": "IMPLAN input-output contribution model reported by Deloitte for Google",
+        "model_version": "Not disclosed",
+        "geography": "Alabama; Google digital-infrastructure contribution",
+        "vintage": "Modeled years 2021-2023; underlying IMPLAN data vintage not disclosed",
+        "local_purchase_assumption": "Deloitte/Google do not disclose the modeled local-purchase assumptions; this account adds none.",
+        "channel_separation": "direct_indirect_induced_reported_separately"
+      },
+      "limitations": [
+        "IMPLAN result, not an observed or causal effect.",
+        "Statewide digital-infrastructure scope cannot be allocated to the selected building.",
+        "Published values are rounded and underlying inputs were not independently verified."
+      ],
+      "notes": "PDF page 3; total channels must not be summed outside the declared total."
+    },
+    {
+      "project_id": "prj_study_im3_building_00844371952",
+      "basis": "modeled_synthesis",
+      "confidence_rationale": "The source and arithmetic are explicit, but the underlying study inputs were not independently verified or the account set has not been audited for completeness.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Observed project payroll, employment, supplier purchases, building allocation and independently verified model inputs."
+      },
+      "presentation": "modeled_not_observed_or_audited",
+      "reviewed_on": "2026-09-07",
+      "estimate_id": "est_study_google_bridgeport_jobs_direct_2021_2023",
+      "metric_code": "study.modeled_annual_jobs_supported",
+      "label": "Source-modeled annual jobs supported — direct",
+      "category": "operations",
+      "unit": "jobs",
+      "measure_type": "stock",
+      "value": 255,
+      "period": {
+        "kind": "source_year",
+        "year": 2023,
+        "label": "Source-reported annual average across 2021-2023"
+      },
+      "scope": {
+        "level": "state",
+        "label": "Google digital-infrastructure contribution in Alabama",
+        "county_fips": "01071",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "reported_band",
+        "low": 252.5,
+        "central": 255,
+        "high": 257.5,
+        "interpretation": "Source rounding envelope (nearest five); not statistical."
+      },
+      "contribution_channel": "direct",
+      "aggregation": {
+        "aggregation_id": "google_bridgeport_jobs_2021_2023",
+        "role": "component",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "reported_direct_jobs",
+          "value": 255,
+          "unit": "jobs",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_google_alabama_impact_2024",
+            "detail": "Reported direct component"
+          },
+          "transformation": "Retained without added multiplier"
+        }
+      ],
+      "confidence": "medium",
+      "decision_relevance": "Preserves the study's direct channel without treating it as observed.",
+      "gap": "Observed project payroll, employment, supplier purchases, building allocation and independently verified model inputs.",
+      "derivation": {
+        "method": "contribution_analysis",
+        "model_version": "google-bridgeport-account-1.0.0",
+        "formula": "source-reported direct IMPLAN output",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_google_alabama_impact_2024"
+        ],
+        "assumptions": [
+          "Transcribes the published source model and applies no new multiplier.",
+          "Annual average covers 2021-2023 and is not assigned to a single year."
+        ]
+      },
+      "multiplier_provenance": {
+        "source_id": "src_study_google_alabama_impact_2024",
+        "model_name": "IMPLAN input-output contribution model reported by Deloitte for Google",
+        "model_version": "Not disclosed",
+        "geography": "Alabama; Google digital-infrastructure contribution",
+        "vintage": "Modeled years 2021-2023; underlying IMPLAN data vintage not disclosed",
+        "local_purchase_assumption": "Deloitte/Google do not disclose the modeled local-purchase assumptions; this account adds none.",
+        "channel_separation": "direct_indirect_induced_reported_separately"
+      },
+      "limitations": [
+        "IMPLAN result, not an observed or causal effect.",
+        "Statewide digital-infrastructure scope cannot be allocated to the selected building.",
+        "Published values are rounded and underlying inputs were not independently verified."
+      ],
+      "notes": "PDF page 3; direct channels must not be summed outside the declared total."
+    },
+    {
+      "project_id": "prj_study_im3_building_00844371952",
+      "basis": "modeled_synthesis",
+      "confidence_rationale": "The source and arithmetic are explicit, but the underlying study inputs were not independently verified or the account set has not been audited for completeness.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Observed project payroll, employment, supplier purchases, building allocation and independently verified model inputs."
+      },
+      "presentation": "modeled_not_observed_or_audited",
+      "reviewed_on": "2026-09-07",
+      "estimate_id": "est_study_google_bridgeport_jobs_indirect_2021_2023",
+      "metric_code": "study.modeled_annual_jobs_supported",
+      "label": "Source-modeled annual jobs supported — indirect",
+      "category": "operations",
+      "unit": "jobs",
+      "measure_type": "stock",
+      "value": 270,
+      "period": {
+        "kind": "source_year",
+        "year": 2023,
+        "label": "Source-reported annual average across 2021-2023"
+      },
+      "scope": {
+        "level": "state",
+        "label": "Google digital-infrastructure contribution in Alabama",
+        "county_fips": "01071",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "reported_band",
+        "low": 267.5,
+        "central": 270,
+        "high": 272.5,
+        "interpretation": "Source rounding envelope (nearest five); not statistical."
+      },
+      "contribution_channel": "indirect",
+      "aggregation": {
+        "aggregation_id": "google_bridgeport_jobs_2021_2023",
+        "role": "component",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "reported_indirect_jobs",
+          "value": 270,
+          "unit": "jobs",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_google_alabama_impact_2024",
+            "detail": "Reported indirect component"
+          },
+          "transformation": "Retained without added multiplier"
+        }
+      ],
+      "confidence": "medium",
+      "decision_relevance": "Preserves the study's indirect channel without treating it as observed.",
+      "gap": "Observed project payroll, employment, supplier purchases, building allocation and independently verified model inputs.",
+      "derivation": {
+        "method": "contribution_analysis",
+        "model_version": "google-bridgeport-account-1.0.0",
+        "formula": "source-reported indirect IMPLAN output",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_google_alabama_impact_2024"
+        ],
+        "assumptions": [
+          "Transcribes the published source model and applies no new multiplier.",
+          "Annual average covers 2021-2023 and is not assigned to a single year."
+        ]
+      },
+      "multiplier_provenance": {
+        "source_id": "src_study_google_alabama_impact_2024",
+        "model_name": "IMPLAN input-output contribution model reported by Deloitte for Google",
+        "model_version": "Not disclosed",
+        "geography": "Alabama; Google digital-infrastructure contribution",
+        "vintage": "Modeled years 2021-2023; underlying IMPLAN data vintage not disclosed",
+        "local_purchase_assumption": "Deloitte/Google do not disclose the modeled local-purchase assumptions; this account adds none.",
+        "channel_separation": "direct_indirect_induced_reported_separately"
+      },
+      "limitations": [
+        "IMPLAN result, not an observed or causal effect.",
+        "Statewide digital-infrastructure scope cannot be allocated to the selected building.",
+        "Published values are rounded and underlying inputs were not independently verified."
+      ],
+      "notes": "PDF page 3; indirect channels must not be summed outside the declared total."
+    },
+    {
+      "project_id": "prj_study_im3_building_00844371952",
+      "basis": "modeled_synthesis",
+      "confidence_rationale": "The source and arithmetic are explicit, but the underlying study inputs were not independently verified or the account set has not been audited for completeness.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Observed project payroll, employment, supplier purchases, building allocation and independently verified model inputs."
+      },
+      "presentation": "modeled_not_observed_or_audited",
+      "reviewed_on": "2026-09-07",
+      "estimate_id": "est_study_google_bridgeport_jobs_induced_2021_2023",
+      "metric_code": "study.modeled_annual_jobs_supported",
+      "label": "Source-modeled annual jobs supported — induced",
+      "category": "operations",
+      "unit": "jobs",
+      "measure_type": "stock",
+      "value": 165,
+      "period": {
+        "kind": "source_year",
+        "year": 2023,
+        "label": "Source-reported annual average across 2021-2023"
+      },
+      "scope": {
+        "level": "state",
+        "label": "Google digital-infrastructure contribution in Alabama",
+        "county_fips": "01071",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "reported_band",
+        "low": 162.5,
+        "central": 165,
+        "high": 167.5,
+        "interpretation": "Source rounding envelope (nearest five); not statistical."
+      },
+      "contribution_channel": "induced",
+      "aggregation": {
+        "aggregation_id": "google_bridgeport_jobs_2021_2023",
+        "role": "component",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "reported_induced_jobs",
+          "value": 165,
+          "unit": "jobs",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_google_alabama_impact_2024",
+            "detail": "Reported induced component"
+          },
+          "transformation": "Retained without added multiplier"
+        }
+      ],
+      "confidence": "medium",
+      "decision_relevance": "Preserves the study's induced channel without treating it as observed.",
+      "gap": "Observed project payroll, employment, supplier purchases, building allocation and independently verified model inputs.",
+      "derivation": {
+        "method": "contribution_analysis",
+        "model_version": "google-bridgeport-account-1.0.0",
+        "formula": "source-reported induced IMPLAN output",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_google_alabama_impact_2024"
+        ],
+        "assumptions": [
+          "Transcribes the published source model and applies no new multiplier.",
+          "Annual average covers 2021-2023 and is not assigned to a single year."
+        ]
+      },
+      "multiplier_provenance": {
+        "source_id": "src_study_google_alabama_impact_2024",
+        "model_name": "IMPLAN input-output contribution model reported by Deloitte for Google",
+        "model_version": "Not disclosed",
+        "geography": "Alabama; Google digital-infrastructure contribution",
+        "vintage": "Modeled years 2021-2023; underlying IMPLAN data vintage not disclosed",
+        "local_purchase_assumption": "Deloitte/Google do not disclose the modeled local-purchase assumptions; this account adds none.",
+        "channel_separation": "direct_indirect_induced_reported_separately"
+      },
+      "limitations": [
+        "IMPLAN result, not an observed or causal effect.",
+        "Statewide digital-infrastructure scope cannot be allocated to the selected building.",
+        "Published values are rounded and underlying inputs were not independently verified."
+      ],
+      "notes": "PDF page 3; induced channels must not be summed outside the declared total."
+    },
+    {
+      "project_id": "prj_study_im3_building_00844371952",
+      "basis": "modeled_synthesis",
+      "confidence_rationale": "The source and arithmetic are explicit, but the underlying study inputs were not independently verified or the account set has not been audited for completeness.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Observed project payroll, employment, supplier purchases, building allocation and independently verified model inputs."
+      },
+      "presentation": "modeled_not_observed_or_audited",
+      "reviewed_on": "2026-09-07",
+      "estimate_id": "est_study_google_bridgeport_jobs_total_2021_2023",
+      "metric_code": "study.modeled_annual_jobs_supported",
+      "label": "Source-modeled annual jobs supported — total",
+      "category": "operations",
+      "unit": "jobs",
+      "measure_type": "stock",
+      "value": 690,
+      "period": {
+        "kind": "source_year",
+        "year": 2023,
+        "label": "Source-reported annual average across 2021-2023"
+      },
+      "scope": {
+        "level": "state",
+        "label": "Google digital-infrastructure contribution in Alabama",
+        "county_fips": "01071",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "reported_band",
+        "low": 687.5,
+        "central": 690,
+        "high": 692.5,
+        "interpretation": "Source rounding envelope (nearest five); not statistical."
+      },
+      "contribution_channel": "total",
+      "aggregation": {
+        "aggregation_id": "google_bridgeport_jobs_2021_2023",
+        "role": "total",
+        "component_estimate_ids": [
+          "est_study_google_bridgeport_jobs_direct_2021_2023",
+          "est_study_google_bridgeport_jobs_indirect_2021_2023",
+          "est_study_google_bridgeport_jobs_induced_2021_2023"
+        ],
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "direct_jobs",
+          "value": 255,
+          "unit": "jobs",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_google_alabama_impact_2024",
+            "detail": "Reported direct component"
+          },
+          "transformation": "Summed to cross-check total"
+        },
+        {
+          "name": "indirect_jobs",
+          "value": 270,
+          "unit": "jobs",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_google_alabama_impact_2024",
+            "detail": "Reported indirect component"
+          },
+          "transformation": "Summed to cross-check total"
+        },
+        {
+          "name": "induced_jobs",
+          "value": 165,
+          "unit": "jobs",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_google_alabama_impact_2024",
+            "detail": "Reported induced component"
+          },
+          "transformation": "Summed to cross-check total"
+        }
+      ],
+      "confidence": "medium",
+      "decision_relevance": "Preserves the study's total channel without treating it as observed.",
+      "gap": "Observed project payroll, employment, supplier purchases, building allocation and independently verified model inputs.",
+      "derivation": {
+        "method": "contribution_analysis",
+        "model_version": "google-bridgeport-account-1.0.0",
+        "formula": "reported total; component cross-check = direct + indirect + induced",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_google_alabama_impact_2024"
+        ],
+        "assumptions": [
+          "Transcribes the published source model and applies no new multiplier.",
+          "Annual average covers 2021-2023 and is not assigned to a single year."
+        ]
+      },
+      "multiplier_provenance": {
+        "source_id": "src_study_google_alabama_impact_2024",
+        "model_name": "IMPLAN input-output contribution model reported by Deloitte for Google",
+        "model_version": "Not disclosed",
+        "geography": "Alabama; Google digital-infrastructure contribution",
+        "vintage": "Modeled years 2021-2023; underlying IMPLAN data vintage not disclosed",
+        "local_purchase_assumption": "Deloitte/Google do not disclose the modeled local-purchase assumptions; this account adds none.",
+        "channel_separation": "direct_indirect_induced_reported_separately"
+      },
+      "limitations": [
+        "IMPLAN result, not an observed or causal effect.",
+        "Statewide digital-infrastructure scope cannot be allocated to the selected building.",
+        "Published values are rounded and underlying inputs were not independently verified."
+      ],
+      "notes": "PDF page 3; total channels must not be summed outside the declared total."
+    },
+    {
+      "project_id": "prj_study_im3_building_00844371952",
+      "basis": "modeled_synthesis",
+      "confidence_rationale": "The source and arithmetic are explicit, but the underlying study inputs were not independently verified or the account set has not been audited for completeness.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Observed project payroll, employment, supplier purchases, building allocation and independently verified model inputs."
+      },
+      "presentation": "modeled_not_observed_or_audited",
+      "reviewed_on": "2026-09-07",
+      "estimate_id": "est_study_google_bridgeport_labor_income_direct_2021_2023",
+      "metric_code": "study.modeled_annual_labor_income",
+      "label": "Source-modeled annual labor income — direct",
+      "category": "operations",
+      "unit": "USD_per_year",
+      "measure_type": "flow",
+      "value": 19000000,
+      "period": {
+        "kind": "source_year",
+        "year": 2023,
+        "label": "Source-reported annual average across 2021-2023"
+      },
+      "scope": {
+        "level": "state",
+        "label": "Google digital-infrastructure contribution in Alabama",
+        "county_fips": "01071",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "reported_band",
+        "low": 18500000,
+        "central": 19000000,
+        "high": 19500000,
+        "interpretation": "Source rounding envelope (nearest $1 million); not statistical."
+      },
+      "contribution_channel": "direct",
+      "aggregation": {
+        "aggregation_id": "google_bridgeport_labor_income_2021_2023",
+        "role": "component",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "reported_direct_labor_income",
+          "value": 19000000,
+          "unit": "USD_per_year",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_google_alabama_impact_2024",
+            "detail": "Reported direct component"
+          },
+          "transformation": "Retained without added multiplier"
+        }
+      ],
+      "confidence": "medium",
+      "decision_relevance": "Preserves the study's direct channel without treating it as observed.",
+      "gap": "Observed project payroll, employment, supplier purchases, building allocation and independently verified model inputs.",
+      "derivation": {
+        "method": "contribution_analysis",
+        "model_version": "google-bridgeport-account-1.0.0",
+        "formula": "source-reported direct IMPLAN output",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_google_alabama_impact_2024"
+        ],
+        "assumptions": [
+          "Transcribes the published source model and applies no new multiplier.",
+          "Annual average covers 2021-2023 and is not assigned to a single year."
+        ]
+      },
+      "multiplier_provenance": {
+        "source_id": "src_study_google_alabama_impact_2024",
+        "model_name": "IMPLAN input-output contribution model reported by Deloitte for Google",
+        "model_version": "Not disclosed",
+        "geography": "Alabama; Google digital-infrastructure contribution",
+        "vintage": "Modeled years 2021-2023; underlying IMPLAN data vintage not disclosed",
+        "local_purchase_assumption": "Deloitte/Google do not disclose the modeled local-purchase assumptions; this account adds none.",
+        "channel_separation": "direct_indirect_induced_reported_separately"
+      },
+      "limitations": [
+        "IMPLAN result, not an observed or causal effect.",
+        "Statewide digital-infrastructure scope cannot be allocated to the selected building.",
+        "Published values are rounded and underlying inputs were not independently verified."
+      ],
+      "notes": "PDF page 3; direct channels must not be summed outside the declared total."
+    },
+    {
+      "project_id": "prj_study_im3_building_00844371952",
+      "basis": "modeled_synthesis",
+      "confidence_rationale": "The source and arithmetic are explicit, but the underlying study inputs were not independently verified or the account set has not been audited for completeness.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Observed project payroll, employment, supplier purchases, building allocation and independently verified model inputs."
+      },
+      "presentation": "modeled_not_observed_or_audited",
+      "reviewed_on": "2026-09-07",
+      "estimate_id": "est_study_google_bridgeport_labor_income_indirect_2021_2023",
+      "metric_code": "study.modeled_annual_labor_income",
+      "label": "Source-modeled annual labor income — indirect",
+      "category": "operations",
+      "unit": "USD_per_year",
+      "measure_type": "flow",
+      "value": 20000000,
+      "period": {
+        "kind": "source_year",
+        "year": 2023,
+        "label": "Source-reported annual average across 2021-2023"
+      },
+      "scope": {
+        "level": "state",
+        "label": "Google digital-infrastructure contribution in Alabama",
+        "county_fips": "01071",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "reported_band",
+        "low": 19500000,
+        "central": 20000000,
+        "high": 20500000,
+        "interpretation": "Source rounding envelope (nearest $1 million); not statistical."
+      },
+      "contribution_channel": "indirect",
+      "aggregation": {
+        "aggregation_id": "google_bridgeport_labor_income_2021_2023",
+        "role": "component",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "reported_indirect_labor_income",
+          "value": 20000000,
+          "unit": "USD_per_year",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_google_alabama_impact_2024",
+            "detail": "Reported indirect component"
+          },
+          "transformation": "Retained without added multiplier"
+        }
+      ],
+      "confidence": "medium",
+      "decision_relevance": "Preserves the study's indirect channel without treating it as observed.",
+      "gap": "Observed project payroll, employment, supplier purchases, building allocation and independently verified model inputs.",
+      "derivation": {
+        "method": "contribution_analysis",
+        "model_version": "google-bridgeport-account-1.0.0",
+        "formula": "source-reported indirect IMPLAN output",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_google_alabama_impact_2024"
+        ],
+        "assumptions": [
+          "Transcribes the published source model and applies no new multiplier.",
+          "Annual average covers 2021-2023 and is not assigned to a single year."
+        ]
+      },
+      "multiplier_provenance": {
+        "source_id": "src_study_google_alabama_impact_2024",
+        "model_name": "IMPLAN input-output contribution model reported by Deloitte for Google",
+        "model_version": "Not disclosed",
+        "geography": "Alabama; Google digital-infrastructure contribution",
+        "vintage": "Modeled years 2021-2023; underlying IMPLAN data vintage not disclosed",
+        "local_purchase_assumption": "Deloitte/Google do not disclose the modeled local-purchase assumptions; this account adds none.",
+        "channel_separation": "direct_indirect_induced_reported_separately"
+      },
+      "limitations": [
+        "IMPLAN result, not an observed or causal effect.",
+        "Statewide digital-infrastructure scope cannot be allocated to the selected building.",
+        "Published values are rounded and underlying inputs were not independently verified."
+      ],
+      "notes": "PDF page 3; indirect channels must not be summed outside the declared total."
+    },
+    {
+      "project_id": "prj_study_im3_building_00844371952",
+      "basis": "modeled_synthesis",
+      "confidence_rationale": "The source and arithmetic are explicit, but the underlying study inputs were not independently verified or the account set has not been audited for completeness.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Observed project payroll, employment, supplier purchases, building allocation and independently verified model inputs."
+      },
+      "presentation": "modeled_not_observed_or_audited",
+      "reviewed_on": "2026-09-07",
+      "estimate_id": "est_study_google_bridgeport_labor_income_induced_2021_2023",
+      "metric_code": "study.modeled_annual_labor_income",
+      "label": "Source-modeled annual labor income — induced",
+      "category": "operations",
+      "unit": "USD_per_year",
+      "measure_type": "flow",
+      "value": 8000000,
+      "period": {
+        "kind": "source_year",
+        "year": 2023,
+        "label": "Source-reported annual average across 2021-2023"
+      },
+      "scope": {
+        "level": "state",
+        "label": "Google digital-infrastructure contribution in Alabama",
+        "county_fips": "01071",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "reported_band",
+        "low": 7500000,
+        "central": 8000000,
+        "high": 8500000,
+        "interpretation": "Source rounding envelope (nearest $1 million); not statistical."
+      },
+      "contribution_channel": "induced",
+      "aggregation": {
+        "aggregation_id": "google_bridgeport_labor_income_2021_2023",
+        "role": "component",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "reported_induced_labor_income",
+          "value": 8000000,
+          "unit": "USD_per_year",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_google_alabama_impact_2024",
+            "detail": "Reported induced component"
+          },
+          "transformation": "Retained without added multiplier"
+        }
+      ],
+      "confidence": "medium",
+      "decision_relevance": "Preserves the study's induced channel without treating it as observed.",
+      "gap": "Observed project payroll, employment, supplier purchases, building allocation and independently verified model inputs.",
+      "derivation": {
+        "method": "contribution_analysis",
+        "model_version": "google-bridgeport-account-1.0.0",
+        "formula": "source-reported induced IMPLAN output",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_google_alabama_impact_2024"
+        ],
+        "assumptions": [
+          "Transcribes the published source model and applies no new multiplier.",
+          "Annual average covers 2021-2023 and is not assigned to a single year."
+        ]
+      },
+      "multiplier_provenance": {
+        "source_id": "src_study_google_alabama_impact_2024",
+        "model_name": "IMPLAN input-output contribution model reported by Deloitte for Google",
+        "model_version": "Not disclosed",
+        "geography": "Alabama; Google digital-infrastructure contribution",
+        "vintage": "Modeled years 2021-2023; underlying IMPLAN data vintage not disclosed",
+        "local_purchase_assumption": "Deloitte/Google do not disclose the modeled local-purchase assumptions; this account adds none.",
+        "channel_separation": "direct_indirect_induced_reported_separately"
+      },
+      "limitations": [
+        "IMPLAN result, not an observed or causal effect.",
+        "Statewide digital-infrastructure scope cannot be allocated to the selected building.",
+        "Published values are rounded and underlying inputs were not independently verified."
+      ],
+      "notes": "PDF page 3; induced channels must not be summed outside the declared total."
+    },
+    {
+      "project_id": "prj_study_im3_building_00844371952",
+      "basis": "modeled_synthesis",
+      "confidence_rationale": "The source and arithmetic are explicit, but the underlying study inputs were not independently verified or the account set has not been audited for completeness.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Observed project payroll, employment, supplier purchases, building allocation and independently verified model inputs."
+      },
+      "presentation": "modeled_not_observed_or_audited",
+      "reviewed_on": "2026-09-07",
+      "estimate_id": "est_study_google_bridgeport_labor_income_total_2021_2023",
+      "metric_code": "study.modeled_annual_labor_income",
+      "label": "Source-modeled annual labor income — total",
+      "category": "operations",
+      "unit": "USD_per_year",
+      "measure_type": "flow",
+      "value": 47000000,
+      "period": {
+        "kind": "source_year",
+        "year": 2023,
+        "label": "Source-reported annual average across 2021-2023"
+      },
+      "scope": {
+        "level": "state",
+        "label": "Google digital-infrastructure contribution in Alabama",
+        "county_fips": "01071",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "reported_band",
+        "low": 46500000,
+        "central": 47000000,
+        "high": 47500000,
+        "interpretation": "Source rounding envelope (nearest $1 million); not statistical."
+      },
+      "contribution_channel": "total",
+      "aggregation": {
+        "aggregation_id": "google_bridgeport_labor_income_2021_2023",
+        "role": "total",
+        "component_estimate_ids": [
+          "est_study_google_bridgeport_labor_income_direct_2021_2023",
+          "est_study_google_bridgeport_labor_income_indirect_2021_2023",
+          "est_study_google_bridgeport_labor_income_induced_2021_2023"
+        ],
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "direct_labor_income",
+          "value": 19000000,
+          "unit": "USD_per_year",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_google_alabama_impact_2024",
+            "detail": "Reported direct component"
+          },
+          "transformation": "Summed to cross-check total"
+        },
+        {
+          "name": "indirect_labor_income",
+          "value": 20000000,
+          "unit": "USD_per_year",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_google_alabama_impact_2024",
+            "detail": "Reported indirect component"
+          },
+          "transformation": "Summed to cross-check total"
+        },
+        {
+          "name": "induced_labor_income",
+          "value": 8000000,
+          "unit": "USD_per_year",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_google_alabama_impact_2024",
+            "detail": "Reported induced component"
+          },
+          "transformation": "Summed to cross-check total"
+        }
+      ],
+      "confidence": "medium",
+      "decision_relevance": "Preserves the study's total channel without treating it as observed.",
+      "gap": "Observed project payroll, employment, supplier purchases, building allocation and independently verified model inputs.",
+      "derivation": {
+        "method": "contribution_analysis",
+        "model_version": "google-bridgeport-account-1.0.0",
+        "formula": "reported total; component cross-check = direct + indirect + induced",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_google_alabama_impact_2024"
+        ],
+        "assumptions": [
+          "Transcribes the published source model and applies no new multiplier.",
+          "Annual average covers 2021-2023 and is not assigned to a single year."
+        ]
+      },
+      "multiplier_provenance": {
+        "source_id": "src_study_google_alabama_impact_2024",
+        "model_name": "IMPLAN input-output contribution model reported by Deloitte for Google",
+        "model_version": "Not disclosed",
+        "geography": "Alabama; Google digital-infrastructure contribution",
+        "vintage": "Modeled years 2021-2023; underlying IMPLAN data vintage not disclosed",
+        "local_purchase_assumption": "Deloitte/Google do not disclose the modeled local-purchase assumptions; this account adds none.",
+        "channel_separation": "direct_indirect_induced_reported_separately"
+      },
+      "limitations": [
+        "IMPLAN result, not an observed or causal effect.",
+        "Statewide digital-infrastructure scope cannot be allocated to the selected building.",
+        "Published values are rounded and underlying inputs were not independently verified."
+      ],
+      "notes": "PDF page 3; total channels must not be summed outside the declared total."
+    },
+    {
+      "project_id": "prj_study_im3_building_00844371952",
+      "basis": "modeled_synthesis",
+      "confidence_rationale": "The calculation is reproducible, but attribution, scope completeness or comparison design remains weak.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Observed household recipients, income definition, residence and a governed households unit."
+      },
+      "presentation": "modeled_not_observed_or_audited",
+      "reviewed_on": "2026-09-07",
+      "estimate_id": "est_study_google_bridgeport_households_2021_2023",
+      "metric_code": "study.modeled_household_income_equivalents",
+      "label": "Source-modeled household-income equivalents",
+      "category": "community",
+      "unit": "jobs",
+      "measure_type": "stock",
+      "value": 790,
+      "period": {
+        "kind": "source_year",
+        "year": 2023,
+        "label": "Source-reported annual average across 2021-2023"
+      },
+      "scope": {
+        "level": "state",
+        "label": "Google digital-infrastructure contribution in Alabama",
+        "county_fips": "01071",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "reported_band",
+        "low": 787.5,
+        "central": 790,
+        "high": 792.5,
+        "interpretation": "Approximate source figure; rounding envelope only."
+      },
+      "contribution_channel": "total",
+      "aggregation": {
+        "aggregation_id": "google_bridgeport_households",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "reported_source_model_value",
+          "value": 790,
+          "unit": "jobs",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_google_alabama_impact_2024",
+            "detail": "Reported annual household equivalents"
+          },
+          "transformation": "Retained without extrapolation"
+        }
+      ],
+      "confidence": "low",
+      "decision_relevance": "Preserves the reported equivalence without treatment as actual households or jobs.",
+      "gap": "Observed household recipients, income definition, residence and a governed households unit.",
+      "derivation": {
+        "method": "benchmark_application",
+        "model_version": "google-bridgeport-account-1.0.0",
+        "formula": "source-reported annual household-equivalent result",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_google_alabama_impact_2024"
+        ],
+        "assumptions": [
+          "No extrapolation or building allocation is applied."
+        ]
+      },
+      "limitations": [
+        "Not a count of actual households, jobs or beneficiaries.",
+        "Statewide model scope and rounded value.",
+        "Schema lacks a households unit; catalog proposal is required."
+      ],
+      "notes": "Catalog proposal: add households as a modeled unit."
+    },
+    {
+      "project_id": "prj_study_im3_building_00844371952",
+      "basis": "modeled_synthesis",
+      "confidence_rationale": "The calculation is reproducible, but attribution, scope completeness or comparison design remains weak.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Observed renewable-project transactions and geographic allocation."
+      },
+      "presentation": "modeled_not_observed_or_audited",
+      "reviewed_on": "2026-09-07",
+      "estimate_id": "est_study_google_bridgeport_cfe_gdp_2021_2023",
+      "metric_code": "study.modeled_cfe_annual_gdp",
+      "label": "Source-modeled carbon-free-energy annual GDP",
+      "category": "resources",
+      "unit": "USD_per_year",
+      "measure_type": "flow",
+      "value": 520000,
+      "period": {
+        "kind": "source_year",
+        "year": 2023,
+        "label": "Source-reported annual average across 2021-2023"
+      },
+      "scope": {
+        "level": "state",
+        "label": "Google digital-infrastructure contribution in Alabama",
+        "county_fips": "01071",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "reported_band",
+        "low": 519500,
+        "central": 520000,
+        "high": 520500,
+        "interpretation": "Approximate source figure; rounding envelope only."
+      },
+      "contribution_channel": "total",
+      "aggregation": {
+        "aggregation_id": "google_bridgeport_cfe_gdp",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "reported_source_model_value",
+          "value": 520000,
+          "unit": "USD_per_year",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_google_alabama_impact_2024",
+            "detail": "Carbon-free-energy spotlight GDP"
+          },
+          "transformation": "Retained without extrapolation"
+        }
+      ],
+      "confidence": "low",
+      "decision_relevance": "Retains the source-modeled clean-energy contribution.",
+      "gap": "Observed renewable-project transactions and geographic allocation.",
+      "derivation": {
+        "method": "contribution_analysis",
+        "model_version": "google-bridgeport-account-1.0.0",
+        "formula": "source-reported clean-energy contribution output",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_google_alabama_impact_2024"
+        ],
+        "assumptions": [
+          "No extrapolation or building allocation is applied."
+        ]
+      },
+      "limitations": [
+        "Source model, not observed or causal.",
+        "State scope is not allocated to campus.",
+        "Inputs and construction-versus-maintenance split are undisclosed."
+      ],
+      "notes": "PDF page 3; visual has a Jobs label but no numeric jobs value.",
+      "multiplier_provenance": {
+        "source_id": "src_study_google_alabama_impact_2024",
+        "model_name": "IMPLAN input-output contribution model reported by Deloitte for Google",
+        "model_version": "Not disclosed",
+        "geography": "Alabama; Google digital-infrastructure contribution",
+        "vintage": "Modeled years 2021-2023; underlying IMPLAN data vintage not disclosed",
+        "local_purchase_assumption": "Deloitte/Google do not disclose the modeled local-purchase assumptions; this account adds none.",
+        "channel_separation": "direct_indirect_induced_reported_separately"
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_00844371952",
+      "basis": "modeled_synthesis",
+      "confidence_rationale": "The calculation is reproducible, but attribution, scope completeness or comparison design remains weak.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Observed renewable-project payroll and geographic allocation."
+      },
+      "presentation": "modeled_not_observed_or_audited",
+      "reviewed_on": "2026-09-07",
+      "estimate_id": "est_study_google_bridgeport_cfe_labor_2021_2023",
+      "metric_code": "study.modeled_cfe_annual_labor_income",
+      "label": "Source-modeled carbon-free-energy annual labor income",
+      "category": "resources",
+      "unit": "USD_per_year",
+      "measure_type": "flow",
+      "value": 230000,
+      "period": {
+        "kind": "source_year",
+        "year": 2023,
+        "label": "Source-reported annual average across 2021-2023"
+      },
+      "scope": {
+        "level": "state",
+        "label": "Google digital-infrastructure contribution in Alabama",
+        "county_fips": "01071",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "reported_band",
+        "low": 229500,
+        "central": 230000,
+        "high": 230500,
+        "interpretation": "Approximate source figure; rounding envelope only."
+      },
+      "contribution_channel": "total",
+      "aggregation": {
+        "aggregation_id": "google_bridgeport_cfe_labor",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "reported_source_model_value",
+          "value": 230000,
+          "unit": "USD_per_year",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_google_alabama_impact_2024",
+            "detail": "Carbon-free-energy spotlight labor income"
+          },
+          "transformation": "Retained without extrapolation"
+        }
+      ],
+      "confidence": "low",
+      "decision_relevance": "Retains the source-modeled clean-energy labor-income contribution.",
+      "gap": "Observed renewable-project payroll and geographic allocation.",
+      "derivation": {
+        "method": "contribution_analysis",
+        "model_version": "google-bridgeport-account-1.0.0",
+        "formula": "source-reported clean-energy contribution output",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_google_alabama_impact_2024"
+        ],
+        "assumptions": [
+          "No extrapolation or building allocation is applied."
+        ]
+      },
+      "limitations": [
+        "Source model, not observed or causal.",
+        "State scope is not allocated to campus.",
+        "Inputs are undisclosed."
+      ],
+      "notes": "PDF page 3.",
+      "multiplier_provenance": {
+        "source_id": "src_study_google_alabama_impact_2024",
+        "model_name": "IMPLAN input-output contribution model reported by Deloitte for Google",
+        "model_version": "Not disclosed",
+        "geography": "Alabama; Google digital-infrastructure contribution",
+        "vintage": "Modeled years 2021-2023; underlying IMPLAN data vintage not disclosed",
+        "local_purchase_assumption": "Deloitte/Google do not disclose the modeled local-purchase assumptions; this account adds none.",
+        "channel_separation": "direct_indirect_induced_reported_separately"
+      }
+    },
+    {
+      "project_id": "prj_study_im3_building_00844371952",
+      "basis": "modeled_synthesis",
+      "confidence_rationale": "The calculation is reproducible, but attribution, scope completeness or comparison design remains weak.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Recipient outcomes, valuation method, counterfactual, duration and sensitivity inputs."
+      },
+      "presentation": "modeled_not_observed_or_audited",
+      "reviewed_on": "2026-09-07",
+      "estimate_id": "est_study_google_bridgeport_social_benefit_ratio_2023",
+      "metric_code": "study.modeled_social_benefit_per_dollar",
+      "label": "Source-modeled NACC social benefit per Google-invested dollar",
+      "category": "community",
+      "unit": "ratio",
+      "measure_type": "rate",
+      "value": 2.4,
+      "period": {
+        "kind": "source_year",
+        "year": 2023,
+        "label": "Directional social-value calculation for NACC STEM program"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "NACC STEM program serving northeast Alabama",
+        "county_fips": "01071",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "reported_band",
+        "low": 2.35,
+        "central": 2.4,
+        "high": 2.45,
+        "interpretation": "Approximate source presentation; rounding sensitivity only."
+      },
+      "contribution_channel": "total",
+      "aggregation": {
+        "aggregation_id": "google_bridgeport_social_benefit_ratio",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "reported_social_benefit_ratio",
+          "value": 2.4,
+          "unit": "USD_social_value_per_USD",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_google_alabama_impact_2024",
+            "detail": "Directional ratio on PDF pages 2 and 5"
+          },
+          "transformation": "Retained without extrapolation"
+        }
+      ],
+      "confidence": "low",
+      "decision_relevance": "Preserves the sponsor's directional metric without treating it as audited benefit.",
+      "gap": "Recipient outcomes, valuation method, counterfactual, duration and sensitivity inputs.",
+      "derivation": {
+        "method": "benchmark_application",
+        "model_version": "google-bridgeport-account-1.0.0",
+        "formula": "source-reported directional social benefit per invested dollar",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_google_alabama_impact_2024"
+        ],
+        "assumptions": [
+          "No benefit-dollar total is calculated."
+        ]
+      },
+      "limitations": [
+        "Directional sponsor calculation, not an observed return or benefit-cost ratio.",
+        "Dependent on undisclosed valuation assumptions.",
+        "Do not apply to other grants."
+      ],
+      "notes": "The source itself calls the calculation directional."
+    },
+    {
+      "project_id": "prj_study_im3_building_00844371952",
+      "basis": "modeled_synthesis",
+      "confidence_rationale": "The calculation is reproducible, but attribution, scope completeness or comparison design remains weak.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Observed sector transactions and independently reproducible allocation."
+      },
+      "presentation": "modeled_not_observed_or_audited",
+      "reviewed_on": "2026-09-07",
+      "estimate_id": "est_study_google_bridgeport_gdp_share_proftech",
+      "metric_code": "study.modeled_gdp_share_professional_technical",
+      "label": "Source-modeled professional/scientific/technical GDP share",
+      "category": "operations",
+      "unit": "percent",
+      "measure_type": "rate",
+      "value": 42,
+      "period": {
+        "kind": "source_year",
+        "year": 2023,
+        "label": "2021-2023 source comparison"
+      },
+      "scope": {
+        "level": "state",
+        "label": "Google digital-infrastructure contribution in Alabama",
+        "county_fips": "01071",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "point_estimate",
+        "low": 42,
+        "central": 42,
+        "high": 42,
+        "interpretation": "Source-reported percentage point."
+      },
+      "contribution_channel": "total",
+      "aggregation": {
+        "aggregation_id": "google_bridgeport_gdp_share_proftech",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "reported_percentage",
+          "value": 42,
+          "unit": "percent",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_google_alabama_impact_2024",
+            "detail": "PDF page 3 percentage"
+          },
+          "transformation": "Retained without recomputation"
+        }
+      ],
+      "confidence": "low",
+      "decision_relevance": "Preserves source-model sector composition.",
+      "gap": "Observed sector transactions and independently reproducible allocation.",
+      "derivation": {
+        "method": "benchmark_application",
+        "model_version": "google-bridgeport-account-1.0.0",
+        "formula": "source-reported percentage",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_google_alabama_impact_2024"
+        ],
+        "assumptions": [
+          "No additional calculation or building allocation."
+        ]
+      },
+      "limitations": [
+        "Sponsor model/context, not an observed selected-building effect.",
+        "Underlying annual values and sector allocation are not disclosed."
+      ],
+      "notes": "Sector shares sum to 100%; growth figures are not causal effects."
+    },
+    {
+      "project_id": "prj_study_im3_building_00844371952",
+      "basis": "modeled_synthesis",
+      "confidence_rationale": "The calculation is reproducible, but attribution, scope completeness or comparison design remains weak.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Observed sector transactions and independently reproducible allocation."
+      },
+      "presentation": "modeled_not_observed_or_audited",
+      "reviewed_on": "2026-09-07",
+      "estimate_id": "est_study_google_bridgeport_gdp_share_other",
+      "metric_code": "study.modeled_gdp_share_other_sectors",
+      "label": "Source-modeled other-sector GDP share",
+      "category": "operations",
+      "unit": "percent",
+      "measure_type": "rate",
+      "value": 58,
+      "period": {
+        "kind": "source_year",
+        "year": 2023,
+        "label": "2021-2023 source comparison"
+      },
+      "scope": {
+        "level": "state",
+        "label": "Google digital-infrastructure contribution in Alabama",
+        "county_fips": "01071",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "point_estimate",
+        "low": 58,
+        "central": 58,
+        "high": 58,
+        "interpretation": "Source-reported percentage point."
+      },
+      "contribution_channel": "total",
+      "aggregation": {
+        "aggregation_id": "google_bridgeport_gdp_share_other",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "reported_percentage",
+          "value": 58,
+          "unit": "percent",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_google_alabama_impact_2024",
+            "detail": "PDF page 3 percentage"
+          },
+          "transformation": "Retained without recomputation"
+        }
+      ],
+      "confidence": "low",
+      "decision_relevance": "Preserves source-model sector composition.",
+      "gap": "Observed sector transactions and independently reproducible allocation.",
+      "derivation": {
+        "method": "benchmark_application",
+        "model_version": "google-bridgeport-account-1.0.0",
+        "formula": "source-reported percentage",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_google_alabama_impact_2024"
+        ],
+        "assumptions": [
+          "No additional calculation or building allocation."
+        ]
+      },
+      "limitations": [
+        "Sponsor model/context, not an observed selected-building effect.",
+        "Underlying annual values and sector allocation are not disclosed."
+      ],
+      "notes": "Sector shares sum to 100%; growth figures are not causal effects."
+    },
+    {
+      "project_id": "prj_study_im3_building_00844371952",
+      "basis": "modeled_synthesis",
+      "confidence_rationale": "The calculation is reproducible, but attribution, scope completeness or comparison design remains weak.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Observed sector transactions and independently reproducible allocation."
+      },
+      "presentation": "modeled_not_observed_or_audited",
+      "reviewed_on": "2026-09-07",
+      "estimate_id": "est_study_google_bridgeport_gdp_growth",
+      "metric_code": "study.modeled_gdp_contribution_growth_2021_2023",
+      "label": "Source-modeled Google GDP-contribution growth",
+      "category": "county_outcome",
+      "unit": "percent",
+      "measure_type": "change",
+      "value": 21,
+      "period": {
+        "kind": "source_year",
+        "year": 2023,
+        "label": "2021-2023 source comparison"
+      },
+      "scope": {
+        "level": "state",
+        "label": "Google digital-infrastructure contribution in Alabama",
+        "county_fips": "01071",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "reported_band",
+        "low": 20.5,
+        "central": 21,
+        "high": 21.5,
+        "interpretation": "Approximate whole-percent source value; rounding envelope only."
+      },
+      "contribution_channel": "total",
+      "aggregation": {
+        "aggregation_id": "google_bridgeport_gdp_growth",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "reported_percentage",
+          "value": 21,
+          "unit": "percent",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_google_alabama_impact_2024",
+            "detail": "PDF page 3 percentage"
+          },
+          "transformation": "Retained without recomputation"
+        }
+      ],
+      "confidence": "low",
+      "decision_relevance": "Preserves the descriptive growth comparison without attribution.",
+      "gap": "Observed sector transactions and independently reproducible allocation.",
+      "derivation": {
+        "method": "benchmark_application",
+        "model_version": "google-bridgeport-account-1.0.0",
+        "formula": "source-reported percentage",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_google_alabama_impact_2024"
+        ],
+        "assumptions": [
+          "No additional calculation or building allocation."
+        ]
+      },
+      "limitations": [
+        "Sponsor model/context, not an observed selected-building effect.",
+        "Underlying annual values and sector allocation are not disclosed."
+      ],
+      "notes": "Sector shares sum to 100%; growth figures are not causal effects."
+    },
+    {
+      "project_id": "prj_study_im3_building_00844371952",
+      "basis": "modeled_synthesis",
+      "confidence_rationale": "The calculation is reproducible, but attribution, scope completeness or comparison design remains weak.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Observed sector transactions and independently reproducible allocation."
+      },
+      "presentation": "modeled_not_observed_or_audited",
+      "reviewed_on": "2026-09-07",
+      "estimate_id": "est_study_google_bridgeport_state_gdp_growth",
+      "metric_code": "study.modeled_alabama_gdp_growth_benchmark_2021_2023",
+      "label": "Source-reported Alabama GDP-growth benchmark",
+      "category": "county_outcome",
+      "unit": "percent",
+      "measure_type": "change",
+      "value": 8,
+      "period": {
+        "kind": "source_year",
+        "year": 2023,
+        "label": "2021-2023 source comparison"
+      },
+      "scope": {
+        "level": "state",
+        "label": "Google digital-infrastructure contribution in Alabama",
+        "county_fips": "01071",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "reported_band",
+        "low": 7.5,
+        "central": 8,
+        "high": 8.5,
+        "interpretation": "Approximate whole-percent source value; rounding envelope only."
+      },
+      "contribution_channel": "total",
+      "aggregation": {
+        "aggregation_id": "google_bridgeport_state_gdp_growth",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "reported_percentage",
+          "value": 8,
+          "unit": "percent",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_google_alabama_impact_2024",
+            "detail": "PDF page 3 percentage"
+          },
+          "transformation": "Retained without recomputation"
+        }
+      ],
+      "confidence": "low",
+      "decision_relevance": "Preserves the descriptive growth comparison without attribution.",
+      "gap": "Observed sector transactions and independently reproducible allocation.",
+      "derivation": {
+        "method": "benchmark_application",
+        "model_version": "google-bridgeport-account-1.0.0",
+        "formula": "source-reported percentage",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_google_alabama_impact_2024"
+        ],
+        "assumptions": [
+          "No additional calculation or building allocation."
+        ]
+      },
+      "limitations": [
+        "Sponsor model/context, not an observed selected-building effect.",
+        "Underlying annual values and sector allocation are not disclosed."
+      ],
+      "notes": "Sector shares sum to 100%; growth figures are not causal effects."
+    },
+    {
+      "project_id": "prj_study_im3_building_00844371952",
+      "basis": "modeled_synthesis",
+      "confidence_rationale": "The source and arithmetic are explicit, but scope completeness or underlying inputs are not independently audited.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Facility electricity meter and building-level PUE."
+      },
+      "presentation": "modeled_not_observed_or_audited",
+      "reviewed_on": "2026-09-07",
+      "estimate_id": "est_study_google_bridgeport_pue_2021",
+      "metric_code": "study.modeled_power_usage_effectiveness",
+      "label": "Reported Jackson County power usage effectiveness",
+      "category": "resources",
+      "unit": "PUE_ratio",
+      "measure_type": "rate",
+      "value": 1.13,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2021,
+        "label": "Jackson County data-center PUE 2021"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Google Jackson County data-center location",
+        "county_fips": "01071",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "point_estimate",
+        "low": 1.13,
+        "central": 1.13,
+        "high": 1.13,
+        "interpretation": "Exact source arithmetic or reported point; not a statistical estimate."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "google_bridgeport_pue_2021",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "reported_pue",
+          "value": 1.13,
+          "unit": "PUE_ratio",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_google_environmental_report_2025_bridgeport",
+            "detail": "Environmental report location table 2021"
+          },
+          "transformation": "Transcribed because direct catalog lacks PUE"
+        }
+      ],
+      "confidence": "medium",
+      "decision_relevance": "Provides reported energy-efficiency context without estimating electricity use.",
+      "gap": "Facility electricity meter and building-level PUE.",
+      "derivation": {
+        "method": "engineering_estimate",
+        "model_version": "google-bridgeport-account-1.0.0",
+        "formula": "reported PUE value; no transformation",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_google_environmental_report_2025_bridgeport"
+        ],
+        "assumptions": [
+          "No allocation across campus buildings."
+        ]
+      },
+      "limitations": [
+        "Direct operator metric presented here because direct catalog lacks PUE.",
+        "Not total electricity or renewable supply.",
+        "Campus scope is unallocated."
+      ],
+      "notes": "PDF page 109; catalog proposal study.power_usage_effectiveness would permit direct treatment."
+    },
+    {
+      "project_id": "prj_study_im3_building_00844371952",
+      "basis": "modeled_synthesis",
+      "confidence_rationale": "The source and arithmetic are explicit, but scope completeness or underlying inputs are not independently audited.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Facility electricity meter and building-level PUE."
+      },
+      "presentation": "modeled_not_observed_or_audited",
+      "reviewed_on": "2026-09-07",
+      "estimate_id": "est_study_google_bridgeport_pue_2022",
+      "metric_code": "study.modeled_power_usage_effectiveness",
+      "label": "Reported Jackson County power usage effectiveness",
+      "category": "resources",
+      "unit": "PUE_ratio",
+      "measure_type": "rate",
+      "value": 1.12,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2022,
+        "label": "Jackson County data-center PUE 2022"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Google Jackson County data-center location",
+        "county_fips": "01071",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "point_estimate",
+        "low": 1.12,
+        "central": 1.12,
+        "high": 1.12,
+        "interpretation": "Exact source arithmetic or reported point; not a statistical estimate."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "google_bridgeport_pue_2022",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "reported_pue",
+          "value": 1.12,
+          "unit": "PUE_ratio",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_google_environmental_report_2025_bridgeport",
+            "detail": "Environmental report location table 2022"
+          },
+          "transformation": "Transcribed because direct catalog lacks PUE"
+        }
+      ],
+      "confidence": "medium",
+      "decision_relevance": "Provides reported energy-efficiency context without estimating electricity use.",
+      "gap": "Facility electricity meter and building-level PUE.",
+      "derivation": {
+        "method": "engineering_estimate",
+        "model_version": "google-bridgeport-account-1.0.0",
+        "formula": "reported PUE value; no transformation",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_google_environmental_report_2025_bridgeport"
+        ],
+        "assumptions": [
+          "No allocation across campus buildings."
+        ]
+      },
+      "limitations": [
+        "Direct operator metric presented here because direct catalog lacks PUE.",
+        "Not total electricity or renewable supply.",
+        "Campus scope is unallocated."
+      ],
+      "notes": "PDF page 109; catalog proposal study.power_usage_effectiveness would permit direct treatment."
+    },
+    {
+      "project_id": "prj_study_im3_building_00844371952",
+      "basis": "modeled_synthesis",
+      "confidence_rationale": "The source and arithmetic are explicit, but scope completeness or underlying inputs are not independently audited.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Facility electricity meter and building-level PUE."
+      },
+      "presentation": "modeled_not_observed_or_audited",
+      "reviewed_on": "2026-09-07",
+      "estimate_id": "est_study_google_bridgeport_pue_2023",
+      "metric_code": "study.modeled_power_usage_effectiveness",
+      "label": "Reported Jackson County power usage effectiveness",
+      "category": "resources",
+      "unit": "PUE_ratio",
+      "measure_type": "rate",
+      "value": 1.1,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2023,
+        "label": "Jackson County data-center PUE 2023"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Google Jackson County data-center location",
+        "county_fips": "01071",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "point_estimate",
+        "low": 1.1,
+        "central": 1.1,
+        "high": 1.1,
+        "interpretation": "Exact source arithmetic or reported point; not a statistical estimate."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "google_bridgeport_pue_2023",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "reported_pue",
+          "value": 1.1,
+          "unit": "PUE_ratio",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_google_environmental_report_2025_bridgeport",
+            "detail": "Environmental report location table 2023"
+          },
+          "transformation": "Transcribed because direct catalog lacks PUE"
+        }
+      ],
+      "confidence": "medium",
+      "decision_relevance": "Provides reported energy-efficiency context without estimating electricity use.",
+      "gap": "Facility electricity meter and building-level PUE.",
+      "derivation": {
+        "method": "engineering_estimate",
+        "model_version": "google-bridgeport-account-1.0.0",
+        "formula": "reported PUE value; no transformation",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_google_environmental_report_2025_bridgeport"
+        ],
+        "assumptions": [
+          "No allocation across campus buildings."
+        ]
+      },
+      "limitations": [
+        "Direct operator metric presented here because direct catalog lacks PUE.",
+        "Not total electricity or renewable supply.",
+        "Campus scope is unallocated."
+      ],
+      "notes": "PDF page 109; catalog proposal study.power_usage_effectiveness would permit direct treatment."
+    },
+    {
+      "project_id": "prj_study_im3_building_00844371952",
+      "basis": "modeled_synthesis",
+      "confidence_rationale": "The source and arithmetic are explicit, but scope completeness or underlying inputs are not independently audited.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Facility electricity meter and building-level PUE."
+      },
+      "presentation": "modeled_not_observed_or_audited",
+      "reviewed_on": "2026-09-07",
+      "estimate_id": "est_study_google_bridgeport_pue_2024",
+      "metric_code": "study.modeled_power_usage_effectiveness",
+      "label": "Reported Jackson County power usage effectiveness",
+      "category": "resources",
+      "unit": "PUE_ratio",
+      "measure_type": "rate",
+      "value": 1.1,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2024,
+        "label": "Jackson County data-center PUE 2024"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Google Jackson County data-center location",
+        "county_fips": "01071",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "point_estimate",
+        "low": 1.1,
+        "central": 1.1,
+        "high": 1.1,
+        "interpretation": "Exact source arithmetic or reported point; not a statistical estimate."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "google_bridgeport_pue_2024",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "reported_pue",
+          "value": 1.1,
+          "unit": "PUE_ratio",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_google_environmental_report_2025_bridgeport",
+            "detail": "Environmental report location table 2024"
+          },
+          "transformation": "Transcribed because direct catalog lacks PUE"
+        }
+      ],
+      "confidence": "medium",
+      "decision_relevance": "Provides reported energy-efficiency context without estimating electricity use.",
+      "gap": "Facility electricity meter and building-level PUE.",
+      "derivation": {
+        "method": "engineering_estimate",
+        "model_version": "google-bridgeport-account-1.0.0",
+        "formula": "reported PUE value; no transformation",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_google_environmental_report_2025_bridgeport"
+        ],
+        "assumptions": [
+          "No allocation across campus buildings."
+        ]
+      },
+      "limitations": [
+        "Direct operator metric presented here because direct catalog lacks PUE.",
+        "Not total electricity or renewable supply.",
+        "Campus scope is unallocated."
+      ],
+      "notes": "PDF page 109; catalog proposal study.power_usage_effectiveness would permit direct treatment."
+    },
+    {
+      "project_id": "prj_study_im3_building_00844371952",
+      "basis": "modeled_synthesis",
+      "confidence_rationale": "The source and arithmetic are explicit, but scope completeness or underlying inputs are not independently audited.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Metered hourly facility load, contract settlement and selected-building allocation."
+      },
+      "presentation": "modeled_not_observed_or_audited",
+      "reviewed_on": "2026-09-07",
+      "estimate_id": "est_study_google_bridgeport_cfe_site_2022",
+      "metric_code": "study.modeled_hourly_cfe_match",
+      "label": "Reported hourly carbon-free-energy match",
+      "category": "resources",
+      "unit": "percent",
+      "measure_type": "rate",
+      "value": 63,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2022,
+        "label": "2022 Google Alabama location CFE percentage"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Google Alabama data-center location",
+        "county_fips": "01071",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "point_estimate",
+        "low": 63,
+        "central": 63,
+        "high": 63,
+        "interpretation": "Exact source arithmetic or reported point; not a statistical estimate."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "google_bridgeport_cfe_site_2022",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "reported_cfe_percentage",
+          "value": 63,
+          "unit": "percent",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_google_alabama_impact_2024",
+            "detail": "Impact study page 4 2022 site percentage"
+          },
+          "transformation": "Transcribed without allocation"
+        }
+      ],
+      "confidence": "medium",
+      "decision_relevance": "Preserves hourly CFE context separately from annual renewable matching and load.",
+      "gap": "Metered hourly facility load, contract settlement and selected-building allocation.",
+      "derivation": {
+        "method": "benchmark_application",
+        "model_version": "google-bridgeport-account-1.0.0",
+        "formula": "source-reported CFE percentage",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_google_alabama_impact_2024"
+        ],
+        "assumptions": [
+          "Site and grid percentages are kept separate and not subtracted into an effect."
+        ]
+      },
+      "limitations": [
+        "Operator environmental metric, not an electricity quantity.",
+        "No selected-building allocation or causal interpretation."
+      ],
+      "notes": "Catalog proposals study.hourly_cfe_match and study.regional_grid_cfe_share would permit direct/context records."
+    },
+    {
+      "project_id": "prj_study_im3_building_00844371952",
+      "basis": "modeled_synthesis",
+      "confidence_rationale": "The source and arithmetic are explicit, but scope completeness or underlying inputs are not independently audited.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Metered hourly facility load, contract settlement and selected-building allocation."
+      },
+      "presentation": "modeled_not_observed_or_audited",
+      "reviewed_on": "2026-09-07",
+      "estimate_id": "est_study_google_bridgeport_cfe_grid_2022",
+      "metric_code": "study.modeled_regional_grid_cfe_share",
+      "label": "Reported regional-grid carbon-free-energy benchmark",
+      "category": "resources",
+      "unit": "percent",
+      "measure_type": "rate",
+      "value": 52,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2022,
+        "label": "2022 regional grid CFE percentage"
+      },
+      "scope": {
+        "level": "utility_service_area",
+        "label": "Tennessee Valley regional grid",
+        "county_fips": "01071",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "point_estimate",
+        "low": 52,
+        "central": 52,
+        "high": 52,
+        "interpretation": "Exact source arithmetic or reported point; not a statistical estimate."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "google_bridgeport_cfe_grid_2022",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "reported_cfe_percentage",
+          "value": 52,
+          "unit": "percent",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_google_alabama_impact_2024",
+            "detail": "Impact study page 4 2022 grid percentage"
+          },
+          "transformation": "Transcribed without allocation"
+        }
+      ],
+      "confidence": "medium",
+      "decision_relevance": "Preserves hourly CFE context separately from annual renewable matching and load.",
+      "gap": "Metered hourly facility load, contract settlement and selected-building allocation.",
+      "derivation": {
+        "method": "benchmark_application",
+        "model_version": "google-bridgeport-account-1.0.0",
+        "formula": "source-reported CFE percentage",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_google_alabama_impact_2024"
+        ],
+        "assumptions": [
+          "Site and grid percentages are kept separate and not subtracted into an effect."
+        ]
+      },
+      "limitations": [
+        "Operator environmental metric, not an electricity quantity.",
+        "No selected-building allocation or causal interpretation."
+      ],
+      "notes": "Catalog proposals study.hourly_cfe_match and study.regional_grid_cfe_share would permit direct/context records."
+    },
+    {
+      "project_id": "prj_study_im3_building_00844371952",
+      "basis": "modeled_synthesis",
+      "confidence_rationale": "The source and arithmetic are explicit, but scope completeness or underlying inputs are not independently audited.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Metered hourly facility load, contract settlement and selected-building allocation."
+      },
+      "presentation": "modeled_not_observed_or_audited",
+      "reviewed_on": "2026-09-07",
+      "estimate_id": "est_study_google_bridgeport_cfe_site_2023",
+      "metric_code": "study.modeled_hourly_cfe_match",
+      "label": "Reported hourly carbon-free-energy match",
+      "category": "resources",
+      "unit": "percent",
+      "measure_type": "rate",
+      "value": 65,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2023,
+        "label": "2023 Google Alabama location CFE percentage"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Google Alabama data-center location",
+        "county_fips": "01071",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "point_estimate",
+        "low": 65,
+        "central": 65,
+        "high": 65,
+        "interpretation": "Exact source arithmetic or reported point; not a statistical estimate."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "google_bridgeport_cfe_site_2023",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "reported_cfe_percentage",
+          "value": 65,
+          "unit": "percent",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_google_alabama_impact_2024",
+            "detail": "Impact study page 4 2023 site percentage"
+          },
+          "transformation": "Transcribed without allocation"
+        }
+      ],
+      "confidence": "medium",
+      "decision_relevance": "Preserves hourly CFE context separately from annual renewable matching and load.",
+      "gap": "Metered hourly facility load, contract settlement and selected-building allocation.",
+      "derivation": {
+        "method": "benchmark_application",
+        "model_version": "google-bridgeport-account-1.0.0",
+        "formula": "source-reported CFE percentage",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_google_alabama_impact_2024"
+        ],
+        "assumptions": [
+          "Site and grid percentages are kept separate and not subtracted into an effect."
+        ]
+      },
+      "limitations": [
+        "Operator environmental metric, not an electricity quantity.",
+        "No selected-building allocation or causal interpretation."
+      ],
+      "notes": "Catalog proposals study.hourly_cfe_match and study.regional_grid_cfe_share would permit direct/context records."
+    },
+    {
+      "project_id": "prj_study_im3_building_00844371952",
+      "basis": "modeled_synthesis",
+      "confidence_rationale": "The source and arithmetic are explicit, but scope completeness or underlying inputs are not independently audited.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Metered hourly facility load, contract settlement and selected-building allocation."
+      },
+      "presentation": "modeled_not_observed_or_audited",
+      "reviewed_on": "2026-09-07",
+      "estimate_id": "est_study_google_bridgeport_cfe_grid_2023",
+      "metric_code": "study.modeled_regional_grid_cfe_share",
+      "label": "Reported regional-grid carbon-free-energy benchmark",
+      "category": "resources",
+      "unit": "percent",
+      "measure_type": "rate",
+      "value": 53,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2023,
+        "label": "2023 regional grid CFE percentage"
+      },
+      "scope": {
+        "level": "utility_service_area",
+        "label": "Tennessee Valley regional grid",
+        "county_fips": "01071",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "point_estimate",
+        "low": 53,
+        "central": 53,
+        "high": 53,
+        "interpretation": "Exact source arithmetic or reported point; not a statistical estimate."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "google_bridgeport_cfe_grid_2023",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "reported_cfe_percentage",
+          "value": 53,
+          "unit": "percent",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_google_alabama_impact_2024",
+            "detail": "Impact study page 4 2023 grid percentage"
+          },
+          "transformation": "Transcribed without allocation"
+        }
+      ],
+      "confidence": "medium",
+      "decision_relevance": "Preserves hourly CFE context separately from annual renewable matching and load.",
+      "gap": "Metered hourly facility load, contract settlement and selected-building allocation.",
+      "derivation": {
+        "method": "benchmark_application",
+        "model_version": "google-bridgeport-account-1.0.0",
+        "formula": "source-reported CFE percentage",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_google_alabama_impact_2024"
+        ],
+        "assumptions": [
+          "Site and grid percentages are kept separate and not subtracted into an effect."
+        ]
+      },
+      "limitations": [
+        "Operator environmental metric, not an electricity quantity.",
+        "No selected-building allocation or causal interpretation."
+      ],
+      "notes": "Catalog proposals study.hourly_cfe_match and study.regional_grid_cfe_share would permit direct/context records."
+    },
+    {
+      "project_id": "prj_study_im3_building_00844371952",
+      "basis": "modeled_synthesis",
+      "confidence_rationale": "The source and arithmetic are explicit, but scope completeness or underlying inputs are not independently audited.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Selected-building meter, source/rate/payment and process allocation."
+      },
+      "presentation": "modeled_not_observed_or_audited",
+      "reviewed_on": "2026-09-07",
+      "estimate_id": "est_study_google_bridgeport_water_consumption_2022",
+      "metric_code": "study.modeled_annual_water_consumption",
+      "label": "Reported annual water consumption",
+      "category": "resources",
+      "unit": "gallons_per_year",
+      "measure_type": "flow",
+      "value": 94000000,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2022,
+        "label": "Jackson County data-center water consumption 2022"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Google Jackson County data-center location",
+        "county_fips": "01071",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "reported_band",
+        "low": 93950000,
+        "central": 94000000,
+        "high": 94050000,
+        "interpretation": "Source rounded to nearest 0.1 million gallons; rounding envelope only."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "google_bridgeport_water_consumption_2022",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "reported_water_consumption",
+          "value": 94000000,
+          "unit": "gallons_per_year",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_google_alabama_impact_2024",
+            "detail": "2022 location value"
+          },
+          "transformation": "Million gallons multiplied by 1,000,000"
+        }
+      ],
+      "confidence": "medium",
+      "decision_relevance": "Retains reported location resource use at native scope.",
+      "gap": "Selected-building meter, source/rate/payment and process allocation.",
+      "derivation": {
+        "method": "engineering_estimate",
+        "model_version": "google-bridgeport-account-1.0.0",
+        "formula": "reported million gallons × 1,000,000",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_google_alabama_impact_2024"
+        ],
+        "assumptions": [
+          "Deterministic unit conversion; no building allocation."
+        ]
+      },
+      "limitations": [
+        "Direct location metric presented here because direct catalog lacks consumption/discharge.",
+        "Rounded and campus-unallocated.",
+        "Consumption differs from withdrawal; discharge is not a permit limit."
+      ],
+      "notes": "Catalog proposal study.annual_water_consumption would permit direct treatment."
+    },
+    {
+      "project_id": "prj_study_im3_building_00844371952",
+      "basis": "modeled_synthesis",
+      "confidence_rationale": "The source and arithmetic are explicit, but scope completeness or underlying inputs are not independently audited.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Selected-building meter, source/rate/payment and process allocation."
+      },
+      "presentation": "modeled_not_observed_or_audited",
+      "reviewed_on": "2026-09-07",
+      "estimate_id": "est_study_google_bridgeport_water_consumption_2023",
+      "metric_code": "study.modeled_annual_water_consumption",
+      "label": "Reported annual water consumption",
+      "category": "resources",
+      "unit": "gallons_per_year",
+      "measure_type": "flow",
+      "value": 142200000,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2023,
+        "label": "Jackson County data-center water consumption 2023"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Google Jackson County data-center location",
+        "county_fips": "01071",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "reported_band",
+        "low": 142150000,
+        "central": 142200000,
+        "high": 142250000,
+        "interpretation": "Source rounded to nearest 0.1 million gallons; rounding envelope only."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "google_bridgeport_water_consumption_2023",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "reported_water_consumption",
+          "value": 142200000,
+          "unit": "gallons_per_year",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_google_alabama_impact_2024",
+            "detail": "2023 location value"
+          },
+          "transformation": "Million gallons multiplied by 1,000,000"
+        }
+      ],
+      "confidence": "medium",
+      "decision_relevance": "Retains reported location resource use at native scope.",
+      "gap": "Selected-building meter, source/rate/payment and process allocation.",
+      "derivation": {
+        "method": "engineering_estimate",
+        "model_version": "google-bridgeport-account-1.0.0",
+        "formula": "reported million gallons × 1,000,000",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_google_alabama_impact_2024"
+        ],
+        "assumptions": [
+          "Deterministic unit conversion; no building allocation."
+        ]
+      },
+      "limitations": [
+        "Direct location metric presented here because direct catalog lacks consumption/discharge.",
+        "Rounded and campus-unallocated.",
+        "Consumption differs from withdrawal; discharge is not a permit limit."
+      ],
+      "notes": "Catalog proposal study.annual_water_consumption would permit direct treatment."
+    },
+    {
+      "project_id": "prj_study_im3_building_00844371952",
+      "basis": "modeled_synthesis",
+      "confidence_rationale": "The source and arithmetic are explicit, but scope completeness or underlying inputs are not independently audited.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Selected-building meter, source/rate/payment and process allocation."
+      },
+      "presentation": "modeled_not_observed_or_audited",
+      "reviewed_on": "2026-09-07",
+      "estimate_id": "est_study_google_bridgeport_water_consumption_2024",
+      "metric_code": "study.modeled_annual_water_consumption",
+      "label": "Reported annual water consumption",
+      "category": "resources",
+      "unit": "gallons_per_year",
+      "measure_type": "flow",
+      "value": 182800000,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2024,
+        "label": "Jackson County data-center water consumption 2024"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Google Jackson County data-center location",
+        "county_fips": "01071",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "reported_band",
+        "low": 182750000,
+        "central": 182800000,
+        "high": 182850000,
+        "interpretation": "Source rounded to nearest 0.1 million gallons; rounding envelope only."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "google_bridgeport_water_consumption_2024",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "reported_water_consumption",
+          "value": 182800000,
+          "unit": "gallons_per_year",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_google_environmental_report_2025_bridgeport",
+            "detail": "2024 location value"
+          },
+          "transformation": "Million gallons multiplied by 1,000,000"
+        }
+      ],
+      "confidence": "medium",
+      "decision_relevance": "Retains reported location resource use at native scope.",
+      "gap": "Selected-building meter, source/rate/payment and process allocation.",
+      "derivation": {
+        "method": "engineering_estimate",
+        "model_version": "google-bridgeport-account-1.0.0",
+        "formula": "reported million gallons × 1,000,000",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_google_environmental_report_2025_bridgeport"
+        ],
+        "assumptions": [
+          "Deterministic unit conversion; no building allocation."
+        ]
+      },
+      "limitations": [
+        "Direct location metric presented here because direct catalog lacks consumption/discharge.",
+        "Rounded and campus-unallocated.",
+        "Consumption differs from withdrawal; discharge is not a permit limit."
+      ],
+      "notes": "Catalog proposal study.annual_water_consumption would permit direct treatment."
+    },
+    {
+      "project_id": "prj_study_im3_building_00844371952",
+      "basis": "modeled_synthesis",
+      "confidence_rationale": "The source and arithmetic are explicit, but scope completeness or underlying inputs are not independently audited.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Selected-building meter, source/rate/payment and process allocation."
+      },
+      "presentation": "modeled_not_observed_or_audited",
+      "reviewed_on": "2026-09-07",
+      "estimate_id": "est_study_google_bridgeport_water_discharge_2024",
+      "metric_code": "study.modeled_annual_wastewater_discharge",
+      "label": "Reported annual water discharge",
+      "category": "resources",
+      "unit": "gallons_per_year",
+      "measure_type": "flow",
+      "value": 18800000,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2024,
+        "label": "Jackson County data-center water discharge 2024"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Google Jackson County data-center location",
+        "county_fips": "01071",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "reported_band",
+        "low": 18750000,
+        "central": 18800000,
+        "high": 18850000,
+        "interpretation": "Source rounded to nearest 0.1 million gallons; rounding envelope only."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "google_bridgeport_water_discharge_2024",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "reported_water_discharge",
+          "value": 18800000,
+          "unit": "gallons_per_year",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_google_environmental_report_2025_bridgeport",
+            "detail": "2024 location value"
+          },
+          "transformation": "Million gallons multiplied by 1,000,000"
+        }
+      ],
+      "confidence": "medium",
+      "decision_relevance": "Retains reported location resource use at native scope.",
+      "gap": "Selected-building meter, source/rate/payment and process allocation.",
+      "derivation": {
+        "method": "engineering_estimate",
+        "model_version": "google-bridgeport-account-1.0.0",
+        "formula": "reported million gallons × 1,000,000",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_google_environmental_report_2025_bridgeport"
+        ],
+        "assumptions": [
+          "Deterministic unit conversion; no building allocation."
+        ]
+      },
+      "limitations": [
+        "Direct location metric presented here because direct catalog lacks consumption/discharge.",
+        "Rounded and campus-unallocated.",
+        "Consumption differs from withdrawal; discharge is not a permit limit."
+      ],
+      "notes": "Catalog proposal study.annual_water_discharge would permit direct treatment."
+    },
+    {
+      "project_id": "prj_study_im3_building_00844371952",
+      "basis": "modeled_synthesis",
+      "confidence_rationale": "The source and arithmetic are explicit, but scope completeness or underlying inputs are not independently audited.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Audited affiliate/account completeness, real-property accounts and recipient reconciliation."
+      },
+      "presentation": "modeled_not_observed_or_audited",
+      "reviewed_on": "2026-09-07",
+      "estimate_id": "est_study_google_bridgeport_property_tax_total_2020",
+      "metric_code": "study.modeled_annual_project_linked_property_taxes_paid",
+      "label": "Aggregated project-linked property taxes paid",
+      "category": "fiscal",
+      "unit": "USD_per_year",
+      "measure_type": "flow",
+      "value": 111544.04,
+      "period": {
+        "kind": "tax_year",
+        "year": 2020,
+        "label": "Jackson County tax year 2020; three exact-address accounts paid"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Google, Design and Wiessner personal-property accounts at 48809 AL Hwy 277",
+        "county_fips": "01071",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "point_estimate",
+        "low": 111544.04,
+        "central": 111544.04,
+        "high": 111544.04,
+        "interpretation": "Exact source arithmetic or reported point; not a statistical estimate."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "google_bridgeport_property_tax_total_2020",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "google_account_tax_paid",
+          "value": 892.32,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_google_bridgeport_google_tax_paid_2020",
+            "detail": "Tax paid by exact-address account in 2020"
+          },
+          "transformation": "Summed across three accounts"
+        },
+        {
+          "name": "design_account_tax_paid",
+          "value": 109983.64,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_google_bridgeport_design_tax_paid_2020",
+            "detail": "Tax paid by exact-address account in 2020"
+          },
+          "transformation": "Summed across three accounts"
+        },
+        {
+          "name": "wiessner_account_tax_paid",
+          "value": 668.08,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_google_bridgeport_wiessner_tax_paid_2020",
+            "detail": "Tax paid by exact-address account in 2020"
+          },
+          "transformation": "Summed across three accounts"
+        }
+      ],
+      "confidence": "medium",
+      "decision_relevance": "Provides exact annual recurring project-linked tax arithmetic without asserting recipient distribution or net benefit.",
+      "gap": "Audited affiliate/account completeness, real-property accounts and recipient reconciliation.",
+      "derivation": {
+        "method": "allocation",
+        "model_version": "google-bridgeport-account-1.0.0",
+        "formula": "Google account + Design account + Wiessner account",
+        "input_claim_ids": [
+          "clm_study_google_bridgeport_google_tax_paid_2020",
+          "clm_study_google_bridgeport_design_tax_paid_2020",
+          "clm_study_google_bridgeport_wiessner_tax_paid_2020"
+        ],
+        "input_source_ids": [
+          "src_study_jackson_property_google_151335",
+          "src_study_jackson_property_design_151342",
+          "src_study_jackson_property_wiessner_151344"
+        ],
+        "assumptions": [
+          "Account 151344 is linked by Google-named payment memos, not assumed ownership.",
+          "No 2026 estimate or unrelated address account is included."
+        ]
+      },
+      "limitations": [
+        "Not a government-wide net fiscal measure.",
+        "Account set may omit real property or other affiliates.",
+        "Does not measure abatements, indirect taxes or public costs."
+      ],
+      "notes": "Deterministic aggregation of accepted paid-tax claims."
+    },
+    {
+      "project_id": "prj_study_im3_building_00844371952",
+      "basis": "modeled_synthesis",
+      "confidence_rationale": "The source and arithmetic are explicit, but scope completeness or underlying inputs are not independently audited.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Audited affiliate/account completeness, real-property accounts and recipient reconciliation."
+      },
+      "presentation": "modeled_not_observed_or_audited",
+      "reviewed_on": "2026-09-07",
+      "estimate_id": "est_study_google_bridgeport_property_tax_total_2021",
+      "metric_code": "study.modeled_annual_project_linked_property_taxes_paid",
+      "label": "Aggregated project-linked property taxes paid",
+      "category": "fiscal",
+      "unit": "USD_per_year",
+      "measure_type": "flow",
+      "value": 1713520.38,
+      "period": {
+        "kind": "tax_year",
+        "year": 2021,
+        "label": "Jackson County tax year 2021; three exact-address accounts paid"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Google, Design and Wiessner personal-property accounts at 48809 AL Hwy 277",
+        "county_fips": "01071",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "point_estimate",
+        "low": 1713520.38,
+        "central": 1713520.38,
+        "high": 1713520.38,
+        "interpretation": "Exact source arithmetic or reported point; not a statistical estimate."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "google_bridgeport_property_tax_total_2021",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "google_account_tax_paid",
+          "value": 5157.62,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_google_bridgeport_google_tax_paid_2021",
+            "detail": "Tax paid by exact-address account in 2021"
+          },
+          "transformation": "Summed across three accounts"
+        },
+        {
+          "name": "design_account_tax_paid",
+          "value": 766668.5,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_google_bridgeport_design_tax_paid_2021",
+            "detail": "Tax paid by exact-address account in 2021"
+          },
+          "transformation": "Summed across three accounts"
+        },
+        {
+          "name": "wiessner_account_tax_paid",
+          "value": 941694.26,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_google_bridgeport_wiessner_tax_paid_2021",
+            "detail": "Tax paid by exact-address account in 2021"
+          },
+          "transformation": "Summed across three accounts"
+        }
+      ],
+      "confidence": "medium",
+      "decision_relevance": "Provides exact annual recurring project-linked tax arithmetic without asserting recipient distribution or net benefit.",
+      "gap": "Audited affiliate/account completeness, real-property accounts and recipient reconciliation.",
+      "derivation": {
+        "method": "allocation",
+        "model_version": "google-bridgeport-account-1.0.0",
+        "formula": "Google account + Design account + Wiessner account",
+        "input_claim_ids": [
+          "clm_study_google_bridgeport_google_tax_paid_2021",
+          "clm_study_google_bridgeport_design_tax_paid_2021",
+          "clm_study_google_bridgeport_wiessner_tax_paid_2021"
+        ],
+        "input_source_ids": [
+          "src_study_jackson_property_google_151335",
+          "src_study_jackson_property_design_151342",
+          "src_study_jackson_property_wiessner_151344"
+        ],
+        "assumptions": [
+          "Account 151344 is linked by Google-named payment memos, not assumed ownership.",
+          "No 2026 estimate or unrelated address account is included."
+        ]
+      },
+      "limitations": [
+        "Not a government-wide net fiscal measure.",
+        "Account set may omit real property or other affiliates.",
+        "Does not measure abatements, indirect taxes or public costs."
+      ],
+      "notes": "Deterministic aggregation of accepted paid-tax claims."
+    },
+    {
+      "project_id": "prj_study_im3_building_00844371952",
+      "basis": "modeled_synthesis",
+      "confidence_rationale": "The source and arithmetic are explicit, but scope completeness or underlying inputs are not independently audited.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Audited affiliate/account completeness, real-property accounts and recipient reconciliation."
+      },
+      "presentation": "modeled_not_observed_or_audited",
+      "reviewed_on": "2026-09-07",
+      "estimate_id": "est_study_google_bridgeport_property_tax_total_2022",
+      "metric_code": "study.modeled_annual_project_linked_property_taxes_paid",
+      "label": "Aggregated project-linked property taxes paid",
+      "category": "fiscal",
+      "unit": "USD_per_year",
+      "measure_type": "flow",
+      "value": 1528479.16,
+      "period": {
+        "kind": "tax_year",
+        "year": 2022,
+        "label": "Jackson County tax year 2022; three exact-address accounts paid"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Google, Design and Wiessner personal-property accounts at 48809 AL Hwy 277",
+        "county_fips": "01071",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "point_estimate",
+        "low": 1528479.16,
+        "central": 1528479.16,
+        "high": 1528479.16,
+        "interpretation": "Exact source arithmetic or reported point; not a statistical estimate."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "google_bridgeport_property_tax_total_2022",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "google_account_tax_paid",
+          "value": 6299.02,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_google_bridgeport_google_tax_paid_2022",
+            "detail": "Tax paid by exact-address account in 2022"
+          },
+          "transformation": "Summed across three accounts"
+        },
+        {
+          "name": "design_account_tax_paid",
+          "value": 558964.64,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_google_bridgeport_design_tax_paid_2022",
+            "detail": "Tax paid by exact-address account in 2022"
+          },
+          "transformation": "Summed across three accounts"
+        },
+        {
+          "name": "wiessner_account_tax_paid",
+          "value": 963215.5,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_google_bridgeport_wiessner_tax_paid_2022",
+            "detail": "Tax paid by exact-address account in 2022"
+          },
+          "transformation": "Summed across three accounts"
+        }
+      ],
+      "confidence": "medium",
+      "decision_relevance": "Provides exact annual recurring project-linked tax arithmetic without asserting recipient distribution or net benefit.",
+      "gap": "Audited affiliate/account completeness, real-property accounts and recipient reconciliation.",
+      "derivation": {
+        "method": "allocation",
+        "model_version": "google-bridgeport-account-1.0.0",
+        "formula": "Google account + Design account + Wiessner account",
+        "input_claim_ids": [
+          "clm_study_google_bridgeport_google_tax_paid_2022",
+          "clm_study_google_bridgeport_design_tax_paid_2022",
+          "clm_study_google_bridgeport_wiessner_tax_paid_2022"
+        ],
+        "input_source_ids": [
+          "src_study_jackson_property_google_151335",
+          "src_study_jackson_property_design_151342",
+          "src_study_jackson_property_wiessner_151344"
+        ],
+        "assumptions": [
+          "Account 151344 is linked by Google-named payment memos, not assumed ownership.",
+          "No 2026 estimate or unrelated address account is included."
+        ]
+      },
+      "limitations": [
+        "Not a government-wide net fiscal measure.",
+        "Account set may omit real property or other affiliates.",
+        "Does not measure abatements, indirect taxes or public costs."
+      ],
+      "notes": "Deterministic aggregation of accepted paid-tax claims."
+    },
+    {
+      "project_id": "prj_study_im3_building_00844371952",
+      "basis": "modeled_synthesis",
+      "confidence_rationale": "The source and arithmetic are explicit, but scope completeness or underlying inputs are not independently audited.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Audited affiliate/account completeness, real-property accounts and recipient reconciliation."
+      },
+      "presentation": "modeled_not_observed_or_audited",
+      "reviewed_on": "2026-09-07",
+      "estimate_id": "est_study_google_bridgeport_property_tax_total_2023",
+      "metric_code": "study.modeled_annual_project_linked_property_taxes_paid",
+      "label": "Aggregated project-linked property taxes paid",
+      "category": "fiscal",
+      "unit": "USD_per_year",
+      "measure_type": "flow",
+      "value": 2105407.2,
+      "period": {
+        "kind": "tax_year",
+        "year": 2023,
+        "label": "Jackson County tax year 2023; three exact-address accounts paid"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Google, Design and Wiessner personal-property accounts at 48809 AL Hwy 277",
+        "county_fips": "01071",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "point_estimate",
+        "low": 2105407.2,
+        "central": 2105407.2,
+        "high": 2105407.2,
+        "interpretation": "Exact source arithmetic or reported point; not a statistical estimate."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "google_bridgeport_property_tax_total_2023",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "google_account_tax_paid",
+          "value": 7407.4,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_google_bridgeport_google_tax_paid_2023",
+            "detail": "Tax paid by exact-address account in 2023"
+          },
+          "transformation": "Summed across three accounts"
+        },
+        {
+          "name": "design_account_tax_paid",
+          "value": 1162992.22,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_google_bridgeport_design_tax_paid_2023",
+            "detail": "Tax paid by exact-address account in 2023"
+          },
+          "transformation": "Summed across three accounts"
+        },
+        {
+          "name": "wiessner_account_tax_paid",
+          "value": 935007.58,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_google_bridgeport_wiessner_tax_paid_2023",
+            "detail": "Tax paid by exact-address account in 2023"
+          },
+          "transformation": "Summed across three accounts"
+        }
+      ],
+      "confidence": "medium",
+      "decision_relevance": "Provides exact annual recurring project-linked tax arithmetic without asserting recipient distribution or net benefit.",
+      "gap": "Audited affiliate/account completeness, real-property accounts and recipient reconciliation.",
+      "derivation": {
+        "method": "allocation",
+        "model_version": "google-bridgeport-account-1.0.0",
+        "formula": "Google account + Design account + Wiessner account",
+        "input_claim_ids": [
+          "clm_study_google_bridgeport_google_tax_paid_2023",
+          "clm_study_google_bridgeport_design_tax_paid_2023",
+          "clm_study_google_bridgeport_wiessner_tax_paid_2023"
+        ],
+        "input_source_ids": [
+          "src_study_jackson_property_google_151335",
+          "src_study_jackson_property_design_151342",
+          "src_study_jackson_property_wiessner_151344"
+        ],
+        "assumptions": [
+          "Account 151344 is linked by Google-named payment memos, not assumed ownership.",
+          "No 2026 estimate or unrelated address account is included."
+        ]
+      },
+      "limitations": [
+        "Not a government-wide net fiscal measure.",
+        "Account set may omit real property or other affiliates.",
+        "Does not measure abatements, indirect taxes or public costs."
+      ],
+      "notes": "Deterministic aggregation of accepted paid-tax claims."
+    },
+    {
+      "project_id": "prj_study_im3_building_00844371952",
+      "basis": "modeled_synthesis",
+      "confidence_rationale": "The source and arithmetic are explicit, but scope completeness or underlying inputs are not independently audited.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Audited affiliate/account completeness, real-property accounts and recipient reconciliation."
+      },
+      "presentation": "modeled_not_observed_or_audited",
+      "reviewed_on": "2026-09-07",
+      "estimate_id": "est_study_google_bridgeport_property_tax_total_2024",
+      "metric_code": "study.modeled_annual_project_linked_property_taxes_paid",
+      "label": "Aggregated project-linked property taxes paid",
+      "category": "fiscal",
+      "unit": "USD_per_year",
+      "measure_type": "flow",
+      "value": 2620321.36,
+      "period": {
+        "kind": "tax_year",
+        "year": 2024,
+        "label": "Jackson County tax year 2024; three exact-address accounts paid"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Google, Design and Wiessner personal-property accounts at 48809 AL Hwy 277",
+        "county_fips": "01071",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "point_estimate",
+        "low": 2620321.36,
+        "central": 2620321.36,
+        "high": 2620321.36,
+        "interpretation": "Exact source arithmetic or reported point; not a statistical estimate."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "google_bridgeport_property_tax_total_2024",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "google_account_tax_paid",
+          "value": 5259.2,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_google_bridgeport_google_tax_paid_2024",
+            "detail": "Tax paid by exact-address account in 2024"
+          },
+          "transformation": "Summed across three accounts"
+        },
+        {
+          "name": "design_account_tax_paid",
+          "value": 1686550.24,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_google_bridgeport_design_tax_paid_2024",
+            "detail": "Tax paid by exact-address account in 2024"
+          },
+          "transformation": "Summed across three accounts"
+        },
+        {
+          "name": "wiessner_account_tax_paid",
+          "value": 928511.92,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_google_bridgeport_wiessner_tax_paid_2024",
+            "detail": "Tax paid by exact-address account in 2024"
+          },
+          "transformation": "Summed across three accounts"
+        }
+      ],
+      "confidence": "medium",
+      "decision_relevance": "Provides exact annual recurring project-linked tax arithmetic without asserting recipient distribution or net benefit.",
+      "gap": "Audited affiliate/account completeness, real-property accounts and recipient reconciliation.",
+      "derivation": {
+        "method": "allocation",
+        "model_version": "google-bridgeport-account-1.0.0",
+        "formula": "Google account + Design account + Wiessner account",
+        "input_claim_ids": [
+          "clm_study_google_bridgeport_google_tax_paid_2024",
+          "clm_study_google_bridgeport_design_tax_paid_2024",
+          "clm_study_google_bridgeport_wiessner_tax_paid_2024"
+        ],
+        "input_source_ids": [
+          "src_study_jackson_property_google_151335",
+          "src_study_jackson_property_design_151342",
+          "src_study_jackson_property_wiessner_151344"
+        ],
+        "assumptions": [
+          "Account 151344 is linked by Google-named payment memos, not assumed ownership.",
+          "No 2026 estimate or unrelated address account is included."
+        ]
+      },
+      "limitations": [
+        "Not a government-wide net fiscal measure.",
+        "Account set may omit real property or other affiliates.",
+        "Does not measure abatements, indirect taxes or public costs."
+      ],
+      "notes": "Deterministic aggregation of accepted paid-tax claims."
+    },
+    {
+      "project_id": "prj_study_im3_building_00844371952",
+      "basis": "modeled_synthesis",
+      "confidence_rationale": "The source and arithmetic are explicit, but scope completeness or underlying inputs are not independently audited.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Audited affiliate/account completeness, real-property accounts and recipient reconciliation."
+      },
+      "presentation": "modeled_not_observed_or_audited",
+      "reviewed_on": "2026-09-07",
+      "estimate_id": "est_study_google_bridgeport_property_tax_total_2025",
+      "metric_code": "study.modeled_annual_project_linked_property_taxes_paid",
+      "label": "Aggregated project-linked property taxes paid",
+      "category": "fiscal",
+      "unit": "USD_per_year",
+      "measure_type": "flow",
+      "value": 2749035.14,
+      "period": {
+        "kind": "tax_year",
+        "year": 2025,
+        "label": "Jackson County tax year 2025; three exact-address accounts paid"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Google, Design and Wiessner personal-property accounts at 48809 AL Hwy 277",
+        "county_fips": "01071",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "point_estimate",
+        "low": 2749035.14,
+        "central": 2749035.14,
+        "high": 2749035.14,
+        "interpretation": "Exact source arithmetic or reported point; not a statistical estimate."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "google_bridgeport_property_tax_total_2025",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "google_account_tax_paid",
+          "value": 3994.82,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_google_bridgeport_google_tax_paid_2025",
+            "detail": "Tax paid by exact-address account in 2025"
+          },
+          "transformation": "Summed across three accounts"
+        },
+        {
+          "name": "design_account_tax_paid",
+          "value": 1905083.88,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_google_bridgeport_design_tax_paid_2025",
+            "detail": "Tax paid by exact-address account in 2025"
+          },
+          "transformation": "Summed across three accounts"
+        },
+        {
+          "name": "wiessner_account_tax_paid",
+          "value": 839956.44,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_google_bridgeport_wiessner_tax_paid_2025",
+            "detail": "Tax paid by exact-address account in 2025"
+          },
+          "transformation": "Summed across three accounts"
+        }
+      ],
+      "confidence": "medium",
+      "decision_relevance": "Provides exact annual recurring project-linked tax arithmetic without asserting recipient distribution or net benefit.",
+      "gap": "Audited affiliate/account completeness, real-property accounts and recipient reconciliation.",
+      "derivation": {
+        "method": "allocation",
+        "model_version": "google-bridgeport-account-1.0.0",
+        "formula": "Google account + Design account + Wiessner account",
+        "input_claim_ids": [
+          "clm_study_google_bridgeport_google_tax_paid_2025",
+          "clm_study_google_bridgeport_design_tax_paid_2025",
+          "clm_study_google_bridgeport_wiessner_tax_paid_2025"
+        ],
+        "input_source_ids": [
+          "src_study_jackson_property_google_151335",
+          "src_study_jackson_property_design_151342",
+          "src_study_jackson_property_wiessner_151344"
+        ],
+        "assumptions": [
+          "Account 151344 is linked by Google-named payment memos, not assumed ownership.",
+          "No 2026 estimate or unrelated address account is included."
+        ]
+      },
+      "limitations": [
+        "Not a government-wide net fiscal measure.",
+        "Account set may omit real property or other affiliates.",
+        "Does not measure abatements, indirect taxes or public costs."
+      ],
+      "notes": "Deterministic aggregation of accepted paid-tax claims."
+    },
+    {
+      "project_id": "prj_study_im3_building_00844371952",
+      "basis": "modeled_synthesis",
+      "confidence_rationale": "The source and arithmetic are explicit, but scope completeness or underlying inputs are not independently audited.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Observed same-recipient marginal public-service cost and complete tax reconciliation."
+      },
+      "presentation": "modeled_not_observed_or_audited",
+      "reviewed_on": "2026-09-07",
+      "estimate_id": "est_study_google_bridgeport_service_cost_break_even_2025",
+      "metric_code": "study.modeled_annual_local_service_cost_break_even",
+      "label": "Annual same-scope public-service cost break-even threshold",
+      "category": "public_costs",
+      "unit": "USD_per_year",
+      "measure_type": "flow",
+      "value": 2749035.14,
+      "period": {
+        "kind": "tax_year",
+        "year": 2025,
+        "label": "Jackson County tax year 2025 three-account paid-tax scope"
+      },
+      "scope": {
+        "level": "company_county",
+        "label": "Same scope as 2025 Google, Design and Wiessner personal-property tax aggregation",
+        "county_fips": "01071",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "point_estimate",
+        "low": 2749035.14,
+        "central": 2749035.14,
+        "high": 2749035.14,
+        "interpretation": "Exact source arithmetic or reported point; not a statistical estimate."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "google_bridgeport_service_cost_break_even",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "aggregated_2025_property_tax_paid",
+          "value": 2749035.14,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_google_bridgeport_google_tax_paid_2025",
+            "detail": "Three-account total also reproduced in companion estimate"
+          },
+          "transformation": "Sets equal-cost threshold"
+        }
+      ],
+      "confidence": "medium",
+      "decision_relevance": "Shows the cost level that would exactly offset recurring 2025 paid taxes.",
+      "gap": "Observed same-recipient marginal public-service cost and complete tax reconciliation.",
+      "derivation": {
+        "method": "allocation",
+        "model_version": "google-bridgeport-account-1.0.0",
+        "formula": "break-even annual cost = aggregated 2025 project-linked property taxes paid",
+        "input_claim_ids": [
+          "clm_study_google_bridgeport_google_tax_paid_2025",
+          "clm_study_google_bridgeport_design_tax_paid_2025",
+          "clm_study_google_bridgeport_wiessner_tax_paid_2025"
+        ],
+        "input_source_ids": [
+          "src_study_jackson_property_google_151335",
+          "src_study_jackson_property_design_151342",
+          "src_study_jackson_property_wiessner_151344"
+        ],
+        "assumptions": [
+          "Threshold is an identity, not a cost estimate."
+        ]
+      },
+      "limitations": [
+        "Not actual public cost or net fiscal impact.",
+        "Positive margin only if same-scope costs are below threshold; negative if above.",
+        "Incentives and multi-period support remain unmatched."
+      ],
+      "notes": "Required fiscal pair; no net result asserted."
+    },
+    {
+      "estimate_id": "est_study_google_bridgeport_county_employment_comparison_2024",
+      "project_id": "prj_study_im3_building_00844371952",
+      "metric_code": "study.modeled_county_employment_comparison_gap",
+      "label": "Modeled county total employment comparison gap",
+      "category": "county_outcome",
+      "unit": "percent",
+      "measure_type": "change",
+      "basis": "modeled_synthesis",
+      "value": -0.91,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2024,
+        "label": "2024 Jackson County outcome relative to a mechanically matched benchmark; 2018 opening anchor"
+      },
+      "scope": {
+        "level": "county",
+        "label": "Jackson County",
+        "county_fips": "01071",
+        "inventory_allocation": "not_applicable"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": -8.9,
+        "central": -0.91,
+        "high": 7.09,
+        "interpretation": "Envelope is plus or minus the greater of five percentage points or twice 2010-2017 pre-period RMSE; fit sensitivity, not statistical confidence."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "google_bridgeport_county_employment_comparison",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "host_2024_value",
+          "value": 15446,
+          "unit": "jobs",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_county_economic_core_2001_2024_jackson",
+            "detail": "Jackson County 2024 employment outcome"
+          },
+          "transformation": "Compared with weighted benchmark"
+        },
+        {
+          "name": "comparison_2024_value",
+          "value": 15587.098278118203,
+          "unit": "jobs",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_county_economic_core_2001_2024_jackson",
+            "detail": "Inverse-distance weighted 20-county benchmark"
+          },
+          "transformation": "Subtracted from host and used as denominator"
+        },
+        {
+          "name": "pre_period_rmse_percent",
+          "value": 3.9978697410570736,
+          "unit": "percent",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Fit diagnostic over 2010-2017"
+          },
+          "transformation": "Sets fit-sensitivity width"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The benchmark is reproducible, but timing, attribution and donor contamination remain unresolved.",
+      "decision_relevance": "Shows Jackson County's 2024 divergence without assigning it to Google.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Causal design with isolated timing, complete exposure history, verified controls, placebos, spillover rules and robustness diagnostics."
+      },
+      "derivation": {
+        "method": "benchmark_application",
+        "model_version": "google-bridgeport-account-1.0.0",
+        "formula": "100 × (host 2024 outcome − inverse-distance-weighted benchmark) ÷ benchmark",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_county_economic_core_2001_2024_jackson"
+        ],
+        "assumptions": [
+          "Matching uses 2010-2017 log level, average log growth and growth volatility.",
+          "All selected study counties are excluded from donors.",
+          "Disputed 2018/2019 chronology is not assumed to isolate treatment."
+        ]
+      },
+      "limitations": [
+        "Descriptive comparison, not a data-center effect.",
+        "Construction, expansion and concurrent county changes are not isolated.",
+        "Donor screen cannot exclude every unobserved treatment.",
+        "Interval is fit sensitivity, not statistical confidence."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "No causal_design metadata is attached.",
+      "reviewed_on": "2026-09-07"
+    },
+    {
+      "estimate_id": "est_study_google_bridgeport_county_wage_comparison_2024",
+      "project_id": "prj_study_im3_building_00844371952",
+      "metric_code": "study.modeled_county_wage_comparison_gap",
+      "label": "Modeled county average weekly wage comparison gap",
+      "category": "county_outcome",
+      "unit": "percent",
+      "measure_type": "change",
+      "basis": "modeled_synthesis",
+      "value": 2.37,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2024,
+        "label": "2024 Jackson County outcome relative to a mechanically matched benchmark; 2018 opening anchor"
+      },
+      "scope": {
+        "level": "county",
+        "label": "Jackson County",
+        "county_fips": "01071",
+        "inventory_allocation": "not_applicable"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": -2.63,
+        "central": 2.37,
+        "high": 7.37,
+        "interpretation": "Envelope is plus or minus the greater of five percentage points or twice 2010-2017 pre-period RMSE; fit sensitivity, not statistical confidence."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "google_bridgeport_county_wage_comparison",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "host_2024_value",
+          "value": 950,
+          "unit": "USD_per_week",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_county_economic_core_2001_2024_jackson",
+            "detail": "Jackson County 2024 wage outcome"
+          },
+          "transformation": "Compared with weighted benchmark"
+        },
+        {
+          "name": "comparison_2024_value",
+          "value": 927.9784191859944,
+          "unit": "USD_per_week",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_county_economic_core_2001_2024_jackson",
+            "detail": "Inverse-distance weighted 20-county benchmark"
+          },
+          "transformation": "Subtracted from host and used as denominator"
+        },
+        {
+          "name": "pre_period_rmse_percent",
+          "value": 0.5261815297868199,
+          "unit": "percent",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Fit diagnostic over 2010-2017"
+          },
+          "transformation": "Sets fit-sensitivity width"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The benchmark is reproducible, but timing, attribution and donor contamination remain unresolved.",
+      "decision_relevance": "Shows Jackson County's 2024 divergence without assigning it to Google.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Causal design with isolated timing, complete exposure history, verified controls, placebos, spillover rules and robustness diagnostics."
+      },
+      "derivation": {
+        "method": "benchmark_application",
+        "model_version": "google-bridgeport-account-1.0.0",
+        "formula": "100 × (host 2024 outcome − inverse-distance-weighted benchmark) ÷ benchmark",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_county_economic_core_2001_2024_jackson"
+        ],
+        "assumptions": [
+          "Matching uses 2010-2017 log level, average log growth and growth volatility.",
+          "All selected study counties are excluded from donors.",
+          "Disputed 2018/2019 chronology is not assumed to isolate treatment."
+        ]
+      },
+      "limitations": [
+        "Descriptive comparison, not a data-center effect.",
+        "Construction, expansion and concurrent county changes are not isolated.",
+        "Donor screen cannot exclude every unobserved treatment.",
+        "Interval is fit sensitivity, not statistical confidence."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "No causal_design metadata is attached.",
+      "reviewed_on": "2026-09-07"
+    },
+    {
+      "estimate_id": "est_study_google_bridgeport_county_gdp_comparison_2024",
+      "project_id": "prj_study_im3_building_00844371952",
+      "metric_code": "study.modeled_county_gdp_comparison_gap",
+      "label": "Modeled county real GDP comparison gap",
+      "category": "county_outcome",
+      "unit": "percent",
+      "measure_type": "change",
+      "basis": "modeled_synthesis",
+      "value": -1.41,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2024,
+        "label": "2024 Jackson County outcome relative to a mechanically matched benchmark; 2018 opening anchor"
+      },
+      "scope": {
+        "level": "county",
+        "label": "Jackson County",
+        "county_fips": "01071",
+        "inventory_allocation": "not_applicable"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": -7.37,
+        "central": -1.41,
+        "high": 4.54,
+        "interpretation": "Envelope is plus or minus the greater of five percentage points or twice 2010-2017 pre-period RMSE; fit sensitivity, not statistical confidence."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "google_bridgeport_county_gdp_comparison",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "host_2024_value",
+          "value": 1637868000,
+          "unit": "USD",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_county_economic_core_2001_2024_jackson",
+            "detail": "Jackson County 2024 gdp outcome"
+          },
+          "transformation": "Compared with weighted benchmark"
+        },
+        {
+          "name": "comparison_2024_value",
+          "value": 1661330841.7397885,
+          "unit": "USD",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_county_economic_core_2001_2024_jackson",
+            "detail": "Inverse-distance weighted 20-county benchmark"
+          },
+          "transformation": "Subtracted from host and used as denominator"
+        },
+        {
+          "name": "pre_period_rmse_percent",
+          "value": 2.9766099090108242,
+          "unit": "percent",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Fit diagnostic over 2010-2017"
+          },
+          "transformation": "Sets fit-sensitivity width"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "The benchmark is reproducible, but timing, attribution and donor contamination remain unresolved.",
+      "decision_relevance": "Shows Jackson County's 2024 divergence without assigning it to Google.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Causal design with isolated timing, complete exposure history, verified controls, placebos, spillover rules and robustness diagnostics."
+      },
+      "derivation": {
+        "method": "benchmark_application",
+        "model_version": "google-bridgeport-account-1.0.0",
+        "formula": "100 × (host 2024 outcome − inverse-distance-weighted benchmark) ÷ benchmark",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_county_economic_core_2001_2024_jackson"
+        ],
+        "assumptions": [
+          "Matching uses 2010-2017 log level, average log growth and growth volatility.",
+          "All selected study counties are excluded from donors.",
+          "Disputed 2018/2019 chronology is not assumed to isolate treatment."
+        ]
+      },
+      "limitations": [
+        "Descriptive comparison, not a data-center effect.",
+        "Construction, expansion and concurrent county changes are not isolated.",
+        "Donor screen cannot exclude every unobserved treatment.",
+        "Interval is fit sensitivity, not statistical confidence."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "No causal_design metadata is attached.",
+      "reviewed_on": "2026-09-07"
+    }
+  ]
+}
