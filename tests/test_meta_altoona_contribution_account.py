@@ -40,7 +40,7 @@ class MetaAltoonaContributionAccountTest(unittest.TestCase):
         project = self.project
         self.assertEqual(
             (project["economic_record_count"], project["reported_actual_count"], project["projection_count"]),
-            (101, 92, 9),
+            (106, 97, 9),
         )
         self.assertEqual(project["modeled_synthesis_count"], 17)
         self.assertTrue(MODEL_FRAGMENT.exists())
@@ -219,7 +219,7 @@ class MetaAltoonaContributionAccountTest(unittest.TestCase):
         metric_text = notes.split("WATER_METRIC_PROPOSAL_JSON=", 1)[1].split("; WATER_RECORDS_PROPOSAL_JSON=", 1)[0]
         records_and_expectation = notes.split("; WATER_RECORDS_PROPOSAL_JSON=", 1)[1]
         records_text, expectation_tail = records_and_expectation.split("; WATER_REGRESSION_EXPECTATION_JSON=", 1)
-        expectation_text = expectation_tail.split(". Until that catalog change", 1)[0]
+        expectation_text = expectation_tail.split(". The orchestrator adopted", 1)[0]
         metric = json.loads(metric_text)
         records = json.loads(records_text)
         expectation = json.loads(expectation_text)["after_catalog_addition"]
@@ -239,6 +239,21 @@ class MetaAltoonaContributionAccountTest(unittest.TestCase):
         self.assertEqual([row["value"] for row in records], series_values_gallons)
         self.assertTrue(all(row["value_qualifier"] == "approximately" for row in records))
         self.assertTrue(all(row["annual_series_key"] == "meta_altoona_water_withdrawal" for row in records))
+        canonical = [
+            row for row in self.fragment["records"]
+            if row["metric_code"] == "study.annual_water_withdrawal"
+        ]
+        core_fields = (
+            "claim_id", "project_id", "metric_code", "value", "value_qualifier",
+            "basis", "period", "scope", "source_id",
+            "review_status", "reviewed_on", "annual_series_key",
+        )
+        self.assertTrue(all((row["pdf_page"], row["printed_page"]) == (8, "I") for row in canonical))
+        self.assertEqual(
+            [{key: row[key] for key in core_fields} for row in canonical],
+            [{key: row[key] for key in core_fields} for row in records],
+        )
+        self.assertTrue(all("inherit the source whole-ML rounding" in row["notes"] for row in canonical))
         for source_value, record in zip(source_values_megaliters, records, strict=True):
             self.assertIn("Section 3.1, Water Withdrawal by Facility table", record["source_locator"])
             self.assertIn("PDF page 8 (printed page I)", record["source_locator"])
@@ -260,6 +275,7 @@ class MetaAltoonaContributionAccountTest(unittest.TestCase):
             (expectation["fragment_record_count"], expectation["merged_economic_record_count"], expectation["modeled_synthesis_count"]),
             (105, 106, 17),
         )
+        self.assertIn("adopted the metric and all five records into canonical evidence", notes)
 
     def test_description_search_matrix_and_candidate_status_are_explicit(self):
         updates = self.fragment["project_updates"]

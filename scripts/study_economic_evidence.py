@@ -73,8 +73,14 @@ def validate_evidence(evidence, candidates):
             raise ValueError("Duplicate scoped source fact")
         source_facts.add(fact)
         if key := r.get("annual_series_key"):
-            if r["basis"] != "reported_actual" or period["kind"] not in ANNUAL_PERIODS or r.get("value_qualifier", "exact") != "exact":
-                raise ValueError("Annual series requires exact reported actual fiscal, calendar, tax or source-year evidence")
+            # Rounded source tables can still form a governed annual series when
+            # every point preserves the source's approximation qualifier. Bounds
+            # and one-sided thresholds remain ineligible because they are not
+            # comparable point observations.
+            if (r["basis"] != "reported_actual"
+                    or period["kind"] not in ANNUAL_PERIODS
+                    or r.get("value_qualifier", "exact") not in ("exact", "approximately")):
+                raise ValueError("Annual series requires exact or approximate reported actual fiscal, calendar, tax or source-year evidence")
             signature = (r["project_id"], r["metric_code"], json.dumps(r["scope"], sort_keys=True), period["kind"])
             if key in series_signatures and series_signatures[key] != signature:
                 raise ValueError("Annual series mixes metrics or subject scopes or year bases")

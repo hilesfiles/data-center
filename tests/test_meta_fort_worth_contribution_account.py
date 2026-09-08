@@ -56,7 +56,7 @@ class MetaFortWorthContributionAccountTest(unittest.TestCase):
 
     def test_fragment_and_merged_evidence_pass_contract_validation(self):
         self.assertEqual(len(self.fragment["sources"]), 38)
-        self.assertEqual(len(self.fragment["records"]), 101)
+        self.assertEqual(len(self.fragment["records"]), 106)
         issues = ContractValidator(ROOT / "schemas/v1").validate_record(
             self.evidence,
             ROOT / "schemas/v1/study-economic-evidence.schema.json",
@@ -76,7 +76,7 @@ class MetaFortWorthContributionAccountTest(unittest.TestCase):
                 project["reported_actual_count"],
                 project["projection_count"],
             ),
-            (102, 97, 5),
+            (107, 102, 5),
         )
         self.assertEqual(project["modeled_synthesis_count"], 17)
         self.assertEqual(project["model_completeness"]["status"], "incomplete")
@@ -342,12 +342,12 @@ class MetaFortWorthContributionAccountTest(unittest.TestCase):
         )
         self.assertEqual(update["source_id"], "src_study_nist_us_gallon_conversion_2009")
         proposal = json.loads(update["notes"])
-        self.assertEqual(proposal["proposal_status"], "pending_orchestrator_catalog_adoption")
+        self.assertEqual(proposal["proposal_status"], "adopted_in_canonical_evidence")
         self.assertEqual(
             proposal["catalog_payload"],
             {
                 "metric_code": "study.annual_water_withdrawal",
-                "label": "Actual annual water withdrawal",
+                "label": "Reported annual facility water withdrawal",
                 "category": "resources",
                 "unit": "gallons_per_year",
                 "measure_type": "flow",
@@ -390,12 +390,21 @@ class MetaFortWorthContributionAccountTest(unittest.TestCase):
             self.assertIn(f"{source_ml} ML", claim["source_locator"])
             self.assertEqual(claim["annual_series_key"], "meta_fort_worth_annual_water_withdrawal")
 
-        self.assertFalse(
-            any(row["metric_code"] == "study.annual_water_withdrawal" for row in self.fragment["records"])
+        canonical = [
+            row for row in self.fragment["records"]
+            if row["metric_code"] == "study.annual_water_withdrawal"
+        ]
+        core_fields = (
+            "claim_id", "project_id", "metric_code", "value", "value_qualifier",
+            "basis", "period", "scope", "source_id", "pdf_page", "printed_page",
+            "review_status", "reviewed_on", "annual_series_key",
         )
+        self.assertEqual(
+            [{key: row[key] for key in core_fields} for row in canonical],
+            [{key: row[key] for key in core_fields} for row in proposal["claim_payloads"]],
+        )
+        self.assertTrue(all("inherit that rounding" in row["notes"] for row in canonical))
         proposed_evidence = json.loads(json.dumps(self.evidence))
-        proposed_evidence["metrics"].append(proposal["catalog_payload"])
-        proposed_evidence["records"].extend(proposal["claim_payloads"])
         issues = ContractValidator(ROOT / "schemas/v1").validate_record(
             proposed_evidence,
             ROOT / "schemas/v1/study-economic-evidence.schema.json",

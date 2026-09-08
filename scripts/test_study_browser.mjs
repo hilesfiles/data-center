@@ -96,10 +96,17 @@ try {
   check("empty state, reset and undated campus profile");
 
   await page.goto(`${url}#/project/prj_study_im3_building_00438078069`);
+  await page.getByRole("heading", { name: "About this project", exact: true }).waitFor();
+  await page.getByRole("heading", { name: "Why this project is in the study", exact: true }).waitFor();
+  await page.screenshot({ path: path.join(out, "meta-altoona-batch10-desktop.png") });
+  await page.setViewportSize({ width: 390, height: 844 });
+  await noOverflow();
+  await page.screenshot({ path: path.join(out, "meta-altoona-batch10-mobile.png") });
+  await page.setViewportSize({ width: 1440, height: 1000 });
   await openDetails(".evidence-ledger");
   await page.getByRole("heading", { name: "Sources & research history" }).waitFor();
   assert.match(await page.locator(".facility-evidence-summary").innerText(), /Construction[\s\S]*Peak construction workforce[\s\S]*1,300 workers/i);
-  assert.equal(await page.locator(".facility-evidence-table tbody tr").count(), 1);
+  assert.equal(await page.locator(".facility-evidence-table tbody tr").count(), 30);
   await page.getByText("Inventory identity and earlier first-entry research", { exact: true }).click();
   assert.match(await page.locator(".research-details").filter({ hasText: "Inventory identity and earlier first-entry research" }).innerText(), /cannot be the county's first entry/);
   await page.getByRole("link", { name: /Polk County, IA · View county account/ }).click();
@@ -377,14 +384,22 @@ try {
   check("cumulative investment and the city's modeled net fiscal forecast retain distinct timing and basis");
 
   await page.goto(`${url}#/project/prj_study_im3_building_00499403180`);
+  await page.locator(".account-count").getByText("47 sourced records · 41 modeled syntheses", { exact: true }).waitFor();
   await openDetails(".evidence-ledger");
   await page.getByRole("heading", { name: "Economic evidence", exact: true }).waitFor();
-  assert.match(await page.locator(".record-scope").innerText(), /Supporting infrastructure/);
-  await page.locator(".economic-record summary").click();
-  assert.match(await page.locator(".economic-record details").innerText(), /financing to Microsoft/);
-  assert.equal(await page.locator(".history-bar-row").count(), 0);
+  assert.match(await page.locator(".record-scope").first().innerText(), /Supporting infrastructure/);
+  await page.locator(".economic-record summary").first().click();
+  assert.match(await page.locator(".economic-record details").first().innerText(), /financing to Microsoft/);
+  assert((await page.locator(".history-bar-row").count()) > 0);
   await noOverflow();
-  check("water-reuse infrastructure cost preserves payer, system scope and non-annual timing");
+  check("Quincy preserves supporting-infrastructure scope while publishing the reconciled contribution account");
+
+  await page.goto(`${url}#/project/prj_study_im3_building_00500820007`);
+  await page.locator(".account-count").getByText("107 sourced records · 17 modeled syntheses", { exact: true }).waitFor();
+  await openDetails(".evidence-ledger");
+  assert.match(await page.locator(".economic-record-list").innerText(), /Reported annual facility water withdrawal/i);
+  await noOverflow();
+  check("Fort Worth publishes approximately qualified actual-water records without selected-building allocation");
 
   await page.goto(`${url}#/project/prj_study_im3_campus_00231769626`);
   await openDetails(".evidence-ledger");
@@ -854,7 +869,7 @@ try {
     sidebar: getComputedStyle(document.querySelector(".sidebar")).backgroundColor,
     map: getComputedStyle(document.querySelector(".map-section")).backgroundColor,
   })), { sidebar: "rgb(11, 14, 20)", map: "rgb(16, 23, 27)" });
-  assert.match(await page.locator(".review-key").innerText(), /completed project audits \(30\)/i);
+  assert.match(await page.locator(".review-key").innerText(), /completed project audits \(33\)/i);
   assert.doesNotMatch(await page.locator(".legend").innerText(), /IM3|pending|merged|queued/i);
   await page.getByLabel("Research-complete project markers").selectOption("Colocation");
   assert.match(await page.locator(".review-key").innerText(), /completed project audits \(12\)/i);
@@ -868,7 +883,7 @@ try {
   const response = await page.request.get(`${url}data/v1/study/index.json`);
   const study = await response.json();
   assert.equal(study.projects.length, 36);
-  assert.equal(study.projects.filter(p => p.research_completion_status === "account_research_complete").length, 30);
+  assert.equal(study.projects.filter(p => p.research_completion_status === "account_research_complete").length, 33);
   assert.equal(study.projects.filter(p => p.model_completeness.status === "full_modeled_account").length, 0);
   const descriptionPage = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
   for (const completed of study.projects.filter(project => project.research_completion_status === "account_research_complete")) {
@@ -883,7 +898,7 @@ try {
     ), `${completed.name} must render the project description before the study rationale`);
   }
   await descriptionPage.close();
-  check("all thirty completed project pages render one description above the study rationale");
+  check("all thirty-three completed project pages render one description above the study rationale");
   const target = study.projects.find(p => p.name === "Apple Mesa");
   const canvas = await page.locator("canvas").boundingBox();
   const world = 512 * 2 ** 3.25;
@@ -920,7 +935,7 @@ try {
   await page.mouse.click(targetX, targetY);
   await page.waitForURL(`**/project/${target.project_id}`);
   await page.getByRole("heading", { name: "Sources & research history" }).waitFor();
-  check("map preserves all thirty completed project audits while keeping analytical completeness separate");
+  check("map preserves all thirty-three completed project audits while keeping analytical completeness separate");
 
   const legacyPage = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
   await legacyPage.route("**/data/v1/study/index.json?*", async route => {
@@ -929,8 +944,8 @@ try {
     await route.fulfill({ json: legacyStudy });
   });
   await legacyPage.goto(`${url}#/map`, { waitUntil: "domcontentloaded" });
-  await legacyPage.getByText("25 completed project research accounts are mapped.", { exact: false }).waitFor();
-  assert.match(await legacyPage.locator(".review-key").innerText(), /completed project audits \(25\)/i);
+  await legacyPage.getByText("28 completed project research accounts are mapped.", { exact: false }).waitFor();
+  assert.match(await legacyPage.locator(".review-key").innerText(), /completed project audits \(28\)/i);
   await legacyPage.close();
   check("map remains populated when a browser holds an index without the research-completion field");
 

@@ -15,7 +15,7 @@ class OrchestrationAcceptanceContractTests(unittest.TestCase):
 
     def test_batch_nine_uses_mandatory_adversarial_contract(self):
         contract = self.ledger["worker_research_contract"]
-        self.assertEqual(contract["version"], "3.0.0")
+        self.assertEqual(contract["version"], "3.1.0")
         self.assertLessEqual(contract["effective_batch"], 9)
         self.assertIn("candidate_pending_adversarial_review", contract["required_phases"])
         self.assertIn("mandatory_adversarial_continuation", contract["required_phases"])
@@ -42,6 +42,16 @@ class OrchestrationAcceptanceContractTests(unittest.TestCase):
         for position in (25, 26, 27):
             with self.subTest(queue_position=position):
                 self.assertEqual(rows[position]["status"], "integrated_validated_published")
+                self.assertTrue(rows[position]["candidate_commit_sha"])
+                self.assertTrue(rows[position]["corrective_commit_sha"])
+                self.assertTrue(rows[position]["worker_commit_sha"])
+                self.assertTrue(rows[position]["independent_acceptance_audit"])
+
+    def test_batch_ten_acceptance_records_correction_and_independent_audit(self):
+        rows = {row["queue_position"]: row for row in self.ledger["queue"]}
+        for position in (28, 29, 30):
+            with self.subTest(queue_position=position):
+                self.assertIn("accepted", rows[position]["status"])
                 self.assertTrue(rows[position]["candidate_commit_sha"])
                 self.assertTrue(rows[position]["corrective_commit_sha"])
                 self.assertTrue(rows[position]["worker_commit_sha"])
