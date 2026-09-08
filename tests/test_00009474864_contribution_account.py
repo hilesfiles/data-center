@@ -61,20 +61,28 @@ class GoogleLenoirContributionAccountTest(unittest.TestCase):
             self.synthesis, ROOT / "schemas/v1/study-modeled-synthesis.schema.json"
         )
         self.assertEqual(issues, [])
-        self.assertEqual(len(self.fragment["sources"]), 32)
-        self.assertEqual(len(self.fragment["records"]), 51)
-        self.assertEqual(len(self.fragment["project_updates"]), 13)
+        self.assertEqual(len(self.fragment["sources"]), 33)
+        self.assertEqual(len(self.fragment["records"]), 52)
+        self.assertEqual(len(self.fragment["project_updates"]), 15)
         self.assertEqual(
-            sum(row["basis"] == "reported_actual" for row in self.fragment["records"]), 38
+            sum(row["basis"] == "reported_actual" for row in self.fragment["records"]), 39
         )
         self.assertEqual(
             sum(row["basis"] == "source_projection" for row in self.fragment["records"]), 13
         )
         self.assertEqual(len(self.synthesis_fragment["estimates"]), 18)
-        self.assertEqual(self.project["economic_record_count"], 52)
-        self.assertEqual(self.project["reported_actual_count"], 38)
+        self.assertEqual(self.project["economic_record_count"], 53)
+        self.assertEqual(self.project["reported_actual_count"], 39)
         self.assertEqual(self.project["projection_count"], 14)
         self.assertEqual(self.project["modeled_synthesis_count"], 18)
+        self.assertEqual(
+            self.fragment["project_updates"][-1]["title"],
+            "Independent acceptance audit after adversarial continuation",
+        )
+        self.assertIn(
+            "accepted_after_adversarial_review",
+            self.fragment["project_updates"][-1]["notes"],
+        )
 
     def test_one_project_description_and_auditable_search_matrix(self):
         descriptions = [
@@ -155,6 +163,11 @@ class GoogleLenoirContributionAccountTest(unittest.TestCase):
         self.assertEqual(records["clm_study_google_lenoir_water_reserve_fee_2024"]["value"], 6_880_000)
         self.assertEqual(records["clm_study_google_lenoir_permitted_generators_2025"]["value"], 163)
         self.assertEqual(records["clm_study_google_lenoir_water_withdrawal_2024"]["value"], 351_700_000)
+        workforce = records["clm_study_google_lenoir_operating_employees_2008"]
+        self.assertEqual(workforce["value"], 50)
+        self.assertEqual(workforce["value_qualifier"], "approximately")
+        self.assertEqual(workforce["period"]["kind"], "source_year")
+        self.assertNotIn("annual_series_key", workforce)
 
     def test_exact_assessed_aggregations_and_projection_payroll(self):
         records = {row["claim_id"]: row for row in self.fragment["records"]}
@@ -187,6 +200,11 @@ class GoogleLenoirContributionAccountTest(unittest.TestCase):
         payroll = models["est_study_google_lenoir_projected_payroll_2007"]
         self.assertEqual(payroll["value"], 210 * 48_300)
         self.assertIn("not observed payroll", payroll["interval"]["interpretation"].lower())
+        self.assertIn(
+            "clm_study_google_lenoir_operating_employees_2008",
+            payroll["derivation"]["input_claim_ids"],
+        )
+        self.assertIn("not realized", " ".join(payroll["limitations"]).lower())
 
     def test_water_models_have_rounding_bands_and_no_false_additivity(self):
         water = sorted(
@@ -278,6 +296,15 @@ class GoogleLenoirContributionAccountTest(unittest.TestCase):
         self.assertEqual(len(proposal["catalog_payloads"]), 7)
         self.assertEqual(proposal["air_emissions_tpy"]["2023"]["nox"], 20.51)
         self.assertEqual(proposal["air_emissions_tpy"]["2019"]["total_hap"], 0.0108)
+        jdig_update = next(
+            row
+            for row in self.fragment["project_updates"]
+            if row["title"] == "Proposed withdrawn JDIG performance condition"
+        )
+        jdig = json.loads(jdig_update["notes"])
+        self.assertEqual(jdig["claim_payload"]["value"], 200)
+        self.assertEqual(jdig["claim_payload"]["period"]["horizon_years"], 4)
+        self.assertIn("withdrawn", jdig["outcome"].lower())
         direct_claims = {row["claim_id"] for row in self.fragment["records"]}
         source_ids = {row["source_id"] for row in self.evidence["sources"]} | {
             row["source_id"] for row in self.synthesis["sources"]

@@ -62,15 +62,26 @@
             "detail": "Original planned average annual salary"
           },
           "transformation": "Multiplied by planned jobs"
+        },
+        {
+          "name": "observed_employee_snapshot",
+          "value": 50,
+          "unit": "employees",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_google_lenoir_operating_employees_2008",
+            "detail": "Approximate December 2008 point-in-time employee count"
+          },
+          "transformation": "Diagnostic only; excluded from projected-payroll arithmetic"
         }
       ],
       "confidence": "medium",
-      "confidence_rationale": "Arithmetic is exact and same-source, but both inputs are 2007 projections and no later payroll reconciliation was found.",
+      "confidence_rationale": "Arithmetic is exact and same-source, but both inputs are 2007 projections; a state-reported December 2008 snapshot of approximately 50 employees shows the 210-job scale had not been realized then, and no later payroll reconciliation was found.",
       "decision_relevance": "Provides the annual wage-bill scale implicit in the original jobs and salary announcement without relabeling it as realized payroll.",
       "evidence_search": {
-        "direct_observation_status": "not_found",
+        "direct_observation_status": "partial",
         "source_projection_status": "available_separately",
-        "remaining_evidence_gap": "Observed annual-average FTE, payroll, benefits, occupations, contractors, employee residence and current workforce"
+        "remaining_evidence_gap": "Observed annual-average FTE, payroll, benefits, occupations, contractors, employee residence and current workforce; the available December 2008 count is only a point-in-time snapshot"
       },
       "derivation": {
         "method": "benchmark_application",
@@ -78,19 +89,23 @@
         "formula": "210 planned jobs × $48,300 planned average annual salary = $10,143,000 per year",
         "input_claim_ids": [
           "clm_study_google_lenoir_jobs_projection_2007",
-          "clm_study_google_lenoir_salary_projection_2007"
+          "clm_study_google_lenoir_salary_projection_2007",
+          "clm_study_google_lenoir_operating_employees_2008"
         ],
         "input_source_ids": [
-          "src_study_datacenterknowledge_google_lenoir_2007"
+          "src_study_datacenterknowledge_google_lenoir_2007",
+          "src_study_ncga_finance_law_google_lenoir_2009"
         ],
         "assumptions": [
           "The two projections use a compatible full-build employment scope.",
           "A job is treated as one annual salary position only to reproduce the plan's implicit scale.",
+          "The approximately 50-employee December 2008 snapshot is a diagnostic constraint and is not multiplied by the planned salary.",
           "Benefits, equity, contractors, vacancies, turnover and residence effects are excluded."
         ]
       },
       "limitations": [
         "Not observed or current Google payroll.",
+        "The 210 planned jobs were not realized by the December 2008 snapshot, when the state reported approximately 50 employees and a withdrawn JDIG application.",
         "The source did not define annual-average FTE or compensation components.",
         "Do not add to Deloitte labor-income estimates."
       ],
