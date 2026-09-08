@@ -20,13 +20,19 @@ except ImportError:
 
 
 ROOT = Path(__file__).resolve().parents[1]
+CANDIDATE_CONFIG = ROOT / "config/v1/private-sector-study-candidates.json"
 STUDY_INDEX = ROOT / "site/public/data/v1/study/index.json"
 STUDY_MANIFEST = ROOT / "site/public/data/v1/study/manifest.json"
 PANEL_REPORT = ROOT / "data/silver/panels/county-economic-core-2001-2024.processing-report.json"
+PANEL_INDEX = ROOT / "site/public/data/v1/panels/county-economic-history/index.json"
 TREATMENT_INDEX = ROOT / "site/public/data/v1/treatments/county-first-entry-resolution/index.json"
+TREATMENT_DIR = ROOT / "site/public/data/v1/treatments"
 OUTPUT_DIR = ROOT / "data/silver/study/pooled"
 REASSESSMENT = OUTPUT_DIR / "synthesis-reassessment.json"
 DERIVED_SCREEN = OUTPUT_DIR / "derived-parameter-screen.json"
+AGGREGATION_RULES = OUTPUT_DIR / "metric-aggregation-rules.json"
+CHRONOLOGY_SCREEN = OUTPUT_DIR / "project-chronology-screen.json"
+COMPARISON_SCREEN = OUTPUT_DIR / "comparison-pool-readiness.json"
 FACILITY_YEAR = OUTPUT_DIR / "facility-year-exposures.json"
 COUNTY_YEAR = OUTPUT_DIR / "county-year-exposures.json"
 FOUNDATION_MANIFEST = OUTPUT_DIR / "manifest.json"
@@ -146,6 +152,56 @@ TRANSPARENT_ROLLUP_METRICS = {
     "study.modeled_aggregate_billable_air_emissions",
     "study.modeled_assessor_listed_emergency_generator_total_nameplate_capacity",
     "study.modeled_identified_lvl_infrastructure_fund_expenditure",
+}
+
+CHRONOLOGY_OVERRIDES = {
+    "prj_study_im3_campus_00019988712": {
+        "documented_timing": "Opened on 2011-04-07 (day precision; operator announcement)",
+        "anchor": {"date": "2011-04-07", "precision": "day"},
+        "event_class": "opening",
+        "chronology_status": "registered_from_existing_documented_timing",
+        "source_id": "src_meta_prineville_open_compute_20110407",
+        "source_title": "Facebook Launches Open Compute Project",
+        "source_url": "https://www.prnewswire.com/news-releases/facebook-launches-open-compute-project-to-share-custom-engineered-highly-efficient-server-and-data-center-technology-with-the-world-119415214.html",
+        "source_basis": "operator announcement",
+    },
+    "prj_study_im3_campus_00675108684": {
+        "documented_timing": "Operating since 2010 (year precision; operator ten-year retrospective published in 2020)",
+        "anchor": {"year": 2010, "precision": "year"},
+        "event_class": "operational_no_later_than",
+        "chronology_status": "registered_from_existing_documented_timing",
+        "source_id": "src_microsoft_boydton_ten_years_2020",
+        "source_title": "Celebrating 10 years in Boydton",
+        "source_url": "https://local.microsoft.com/blog/celebrating-10-years-in-boydton/",
+        "source_basis": "operator retrospective",
+    },
+    "prj_study_im3_campus_00009474864": {
+        "documented_timing": "Opened in 2008 (year precision; Google-supplied campus history)",
+        "anchor": {"year": 2008, "precision": "year"},
+        "event_class": "opening",
+        "source_id": "src_pooled_google_us_datacenter_history_2018",
+        "source_title": "The Economic Impact of Google Data Centers in the United States",
+        "source_url": "https://oeservices.oxfordeconomics.com/publication/open/297800",
+        "source_basis": "Google LLC campus history reproduced by Oxford Economics",
+    },
+    "prj_study_im3_campus_00231769626": {
+        "documented_timing": "Opened in 2006 (year precision; operator location history)",
+        "anchor": {"year": 2006, "precision": "year"},
+        "event_class": "opening",
+        "source_id": "src_pooled_google_dalles_location_history",
+        "source_title": "The Dalles, Oregon — Google Data Center Location",
+        "source_url": "https://www.datacenters.google/locations/oregon/",
+        "source_basis": "Google operator location history",
+    },
+    "prj_study_im3_campus_00578435601": {
+        "documented_timing": "Opened in 2006 (year precision; Google-supplied campus history)",
+        "anchor": {"year": 2006, "precision": "year"},
+        "event_class": "opening",
+        "source_id": "src_pooled_google_us_datacenter_history_2018",
+        "source_title": "The Economic Impact of Google Data Centers in the United States",
+        "source_url": "https://oeservices.oxfordeconomics.com/publication/open/297800",
+        "source_basis": "Google LLC campus history reproduced by Oxford Economics",
+    },
 }
 
 
@@ -517,6 +573,255 @@ def build_derived_parameter_screen(evidence: dict, release_id: str, generated_at
     }
 
 
+def build_metric_aggregation_rules(reassessment: dict, synthesis: dict, release_id: str, generated_at: str) -> dict:
+    retained_ids = {
+        row["estimate_id"]
+        for row in reassessment["records"]
+        if row["substantive_disposition"] == "retain"
+    }
+    retained = [row for row in synthesis["estimates"] if row["estimate_id"] in retained_ids]
+    by_metric = defaultdict(list)
+    for row in retained:
+        by_metric[row["metric_code"]].append(row)
+
+    rules = []
+    for metric_code, rows in sorted(by_metric.items()):
+        period_kinds = sorted({row["period"]["kind"] for row in rows})
+        scope_levels = sorted({row["scope"]["level"] for row in rows})
+        annual_rows = [
+            row for row in rows
+            if row["period"].get("year") is not None
+            and START_YEAR <= row["period"]["year"] <= END_YEAR
+        ]
+        if period_kinds == ["cumulative"]:
+            status = "excluded_nonannual_cumulative"
+            operator = "exclude_from_annual_panel"
+            reason = "A cumulative total cannot be allocated across years without a sourced annual schedule."
+        elif not annual_rows:
+            status = "blocked_missing_explicit_panel_year"
+            operator = "exclude_until_period_is_resolved"
+            reason = "The retained stock has a report date but no registered panel year; no year is inferred."
+        else:
+            status = "registered_level_0_single_component_only"
+            operator = "identity_if_single_component"
+            reason = "One retained component may be carried into a county-year Level 0 record; multiple same-metric components block aggregation pending record-level overlap adjudication."
+        rules.append(
+            {
+                "metric_code": metric_code,
+                "category": rows[0]["category"],
+                "unit": rows[0]["unit"],
+                "measure_type": rows[0]["measure_type"],
+                "retained_estimate_count": len(rows),
+                "panel_range_estimate_count": len(annual_rows),
+                "allowed_period_kinds": period_kinds,
+                "allowed_scope_levels": scope_levels,
+                "aggregation_operator": operator,
+                "within_project_overlap_policy": "honor_declared_total_and_do_not_sum_inputs_or_nested_components",
+                "cross_project_overlap_policy": "block_if_more_than_one_component_for_same_county_year_metric",
+                "evidence_precedence": ["reported_actual", "retained_transparent_synthesis"],
+                "status": status,
+                "rule_reason": reason,
+                "eligible_estimate_ids": sorted(row["estimate_id"] for row in annual_rows),
+            }
+        )
+    status_counts = Counter(rule["status"] for rule in rules)
+    return {
+        "schema_version": "1.0.0",
+        "artifact_version": "metric-aggregation-rules-0.1.0",
+        "generated_at": generated_at,
+        "source_release": release_id,
+        "status": "level_0_single_component_rules_registered",
+        "policy": {
+            "reported_actual_precedence": True,
+            "nested_components_not_additive": True,
+            "cross_project_sums_require_overlap_adjudication": True,
+            "cumulative_values_not_annualized": True,
+            "snapshots_without_panel_year_not_aligned": True,
+        },
+        "counts": {
+            "retained_syntheses": len(retained),
+            "metric_rules": len(rules),
+            "panel_range_single_component_candidates": sum(rule["panel_range_estimate_count"] for rule in rules),
+            "status_counts": dict(sorted(status_counts.items())),
+        },
+        "rules": rules,
+    }
+
+
+def classify_chronology_event(documented_timing: str) -> str:
+    timing = documented_timing.lower()
+    if "opening" in timing or "opened" in timing:
+        return "opening"
+    if "operational" in timing or "operation" in timing:
+        return "operational_no_later_than"
+    if "completion" in timing or "completed" in timing:
+        return "completion"
+    if "lease" in timing:
+        return "lease"
+    if "announcement" in timing or "announced" in timing:
+        return "announcement"
+    return "documented_project_anchor"
+
+
+def build_chronology_screen(candidate_config: dict, projects: list[dict], release_id: str, generated_at: str) -> dict:
+    candidates = {row["project_id"]: row for row in candidate_config["candidates"]}
+    records = []
+    override_sources = []
+    for project in projects:
+        project_id = project["project_id"]
+        candidate = candidates[project_id]
+        override = CHRONOLOGY_OVERRIDES.get(project_id)
+        if override:
+            anchor = override["anchor"]
+            event_class = override["event_class"]
+            chronology_status = override.get(
+                "chronology_status", "reconstructed_from_operator_supplied_campus_history"
+            )
+            source_ids = [override["source_id"]]
+            source_urls = [override["source_url"]]
+            override_sources.append(
+                {
+                    "source_id": override["source_id"],
+                    "title": override["source_title"],
+                    "url": override["source_url"],
+                    "source_role": override["source_basis"],
+                }
+            )
+            chronology_note = override["documented_timing"]
+        else:
+            anchor = candidate["original_anchor"]
+            event_class = classify_chronology_event(candidate["documented_timing"])
+            chronology_status = "registered_existing_project_anchor"
+            source_ids = [
+                row.get("source_id")
+                or f"src_candidate_{hashlib.sha1(row['url'].encode('utf-8')).hexdigest()[:16]}"
+                for row in candidate.get("evidence_sources", [])
+            ]
+            source_urls = [row["url"] for row in candidate.get("evidence_sources", [])]
+            chronology_note = candidate["documented_timing"]
+        records.append(
+            {
+                "project_id": project_id,
+                "project_name": project["name"],
+                "county_fips": project["county_fips"],
+                "anchor": anchor,
+                "event_class": event_class,
+                "chronology_status": chronology_status,
+                "chronology_note": chronology_note,
+                "source_ids": sorted(set(source_ids)),
+                "source_urls": sorted(set(source_urls)),
+                "project_anchor_registered": True,
+                "county_treatment_status": "blocked_county_first_entry_unverified",
+                "county_first_entry_verified": False,
+            }
+        )
+    status_counts = Counter(row["chronology_status"] for row in records)
+    return {
+        "schema_version": "1.0.0",
+        "artifact_version": "project-chronology-screen-0.1.0",
+        "generated_at": generated_at,
+        "source_release": release_id,
+        "status": "project_chronology_complete_county_treatment_unverified",
+        "policy": {
+            "project_anchor_is_not_county_first_entry": True,
+            "county_treatment_requires_separate_inventory_closure": True,
+            "no_anchor_date_imputation": True,
+        },
+        "counts": {
+            "projects": len(records),
+            "project_anchors_registered": sum(row["project_anchor_registered"] for row in records),
+            "reconstructed_project_anchors": status_counts.get("reconstructed_from_operator_supplied_campus_history", 0),
+            "county_first_entry_verified": 0,
+            "chronology_status_counts": dict(sorted(status_counts.items())),
+        },
+        "override_sources": sorted(
+            {row["source_id"]: row for row in override_sources}.values(),
+            key=lambda row: row["source_id"],
+        ),
+        "records": records,
+    }
+
+
+def load_partition_records(index: dict, base_dir: Path) -> tuple[list[dict], list[Path]]:
+    records = []
+    paths = []
+    for part in index["partitions"]:
+        path = base_dir / part["path"]
+        paths.append(path)
+        records.extend(read(path))
+    return records, paths
+
+
+def build_comparison_readiness(
+    panel_counties: list[dict],
+    projects: list[dict],
+    resolution_candidates: list[dict],
+    adjudications: dict,
+    release_id: str,
+    generated_at: str,
+) -> dict:
+    study_counties = {row["county_fips"] for row in projects}
+    resolution_by_county = {row["county_fips"]: row for row in resolution_candidates}
+    adjudication_by_county = {row["county_fips"]: row for row in adjudications["records"]}
+    records = []
+    for county in sorted(panel_counties, key=lambda row: row["county_fips"]):
+        county_fips = county["county_fips"]
+        candidate = resolution_by_county.get(county_fips)
+        adjudication = adjudication_by_county.get(county_fips)
+        if county_fips in study_counties:
+            readiness_status = "excluded_study_host_county"
+            reason = "Selected-project host counties cannot serve as untreated comparisons."
+        elif adjudication is not None:
+            readiness_status = "blocked_reviewed_but_unresolved"
+            reason = "Completed review did not verify a county first-entry history or untreated status."
+        elif candidate is not None:
+            readiness_status = "blocked_resolution_queued"
+            reason = "County is in the first-entry resolution queue but research is not complete."
+        else:
+            readiness_status = "blocked_national_exposure_unscreened"
+            reason = "County has not been screened for qualifying historical data-center exposure."
+        records.append(
+            {
+                "county_fips": county_fips,
+                "county_name": county["county_name"],
+                "state_abbr": county["state_abbr"],
+                "panel_coverage_status": county["coverage_status"],
+                "study_host_county": county_fips in study_counties,
+                "resolution_candidate_id": candidate.get("resolution_candidate_id") if candidate else None,
+                "resolution_status": candidate.get("resolution_status") if candidate else None,
+                "adjudication_id": adjudication.get("resolution_adjudication_id") if adjudication else None,
+                "county_first_entry_verified": bool(adjudication and adjudication.get("county_first_entry_verified")),
+                "readiness_status": readiness_status,
+                "comparison_eligible": False,
+                "ineligibility_reason": reason,
+            }
+        )
+    counts = Counter(row["readiness_status"] for row in records)
+    return {
+        "schema_version": "1.0.0",
+        "artifact_version": "comparison-pool-readiness-0.1.0",
+        "generated_at": generated_at,
+        "source_release": release_id,
+        "status": "national_register_complete_zero_verified_comparisons",
+        "policy": {
+            "study_host_counties_excluded": True,
+            "untreated_status_requires_exposure_screening": True,
+            "unresolved_or_queued_counties_ineligible": True,
+            "no_absence_inference_from_missing_inventory": True,
+        },
+        "counts": {
+            "national_panel_counties": len(records),
+            "study_host_counties": len(study_counties),
+            "resolution_candidates": len(resolution_candidates),
+            "reviewed_adjudications": len(adjudications["records"]),
+            "county_first_entry_verified": sum(row["county_first_entry_verified"] for row in records),
+            "comparison_eligible_counties": 0,
+            "readiness_status_counts": dict(sorted(counts.items())),
+        },
+        "records": records,
+    }
+
+
 def annual_component(row: dict, metric: dict, origin_kind: str, origin_id: str) -> dict:
     if origin_kind == "modeled_synthesis":
         interval = row["interval"]
@@ -555,7 +860,14 @@ def annual_component(row: dict, metric: dict, origin_kind: str, origin_id: str) 
     }
 
 
-def build_facility_year(evidence: dict, synthesis: dict, projects: list[dict], release_id: str, generated_at: str) -> dict:
+def build_facility_year(
+    evidence: dict,
+    synthesis: dict,
+    projects: list[dict],
+    chronology_screen: dict,
+    release_id: str,
+    generated_at: str,
+) -> dict:
     metrics = {metric["metric_code"]: metric for metric in evidence["metrics"]}
     by_project_year: dict[tuple[str, int], list[dict]] = defaultdict(list)
     excluded_period_kinds = Counter()
@@ -588,6 +900,9 @@ def build_facility_year(evidence: dict, synthesis: dict, projects: list[dict], r
 
     years = []
     project_summaries = []
+    chronology_by_project = {row["project_id"]: row for row in chronology_screen["records"]}
+    if set(chronology_by_project) != {row["project_id"] for row in projects}:
+        raise ValueError("chronology screen must cover every selected project exactly once")
     for project in projects:
         project_id = project["project_id"]
         project_component_count = 0
@@ -634,17 +949,13 @@ def build_facility_year(evidence: dict, synthesis: dict, projects: list[dict], r
                 "reported_actual_component_count": observed_count,
                 "source_projection_component_count": projection_count,
                 "modeled_component_count": modeled_count,
-                "chronology_gate": (
-                    "requires_commissioning_reconstruction"
-                    if project["history_status"] == "needs_research"
-                    else "documented_anchor_requires_event_contract_review"
-                ),
+                "chronology_gate": "project_anchor_registered_county_first_entry_unverified",
             }
         )
 
     return {
         "schema_version": "1.0.0",
-        "artifact_version": "facility-year-exposures-0.1.0",
+        "artifact_version": "facility-year-exposures-0.2.0",
         "generated_at": generated_at,
         "source_release": release_id,
         "analysis_years": {"start": START_YEAR, "end": END_YEAR},
@@ -684,7 +995,16 @@ def load_county_outcomes(projects: list[dict]) -> dict[tuple[str, int], dict]:
     return outcomes
 
 
-def build_county_year(facility_year: dict, projects: list[dict], panel_report: dict, treatment_index: dict, release_id: str, generated_at: str) -> dict:
+def build_county_year(
+    facility_year: dict,
+    projects: list[dict],
+    panel_report: dict,
+    treatment_index: dict,
+    aggregation_rules: dict,
+    comparison_readiness: dict,
+    release_id: str,
+    generated_at: str,
+) -> dict:
     projects_by_county = defaultdict(list)
     for project in projects:
         projects_by_county[project["county_fips"]].append(project["project_id"])
@@ -693,7 +1013,10 @@ def build_county_year(facility_year: dict, projects: list[dict], panel_report: d
     project_year_lookup = {
         (row["project_id"], row["year"]): row for row in facility_year["project_years"]
     }
+    rules_by_metric = {row["metric_code"]: row for row in aggregation_rules["rules"]}
     county_years = []
+    metric_exposure_count = 0
+    overlap_block_count = 0
     for county_fips in sorted(projects_by_county):
         registered_projects = sorted(projects_by_county[county_fips])
         for year in range(START_YEAR, END_YEAR + 1):
@@ -705,6 +1028,46 @@ def build_county_year(facility_year: dict, projects: list[dict], panel_report: d
             evidence_projects = sorted(
                 row["project_id"] for row in rows if sum(row["component_counts"].values()) > 0
             )
+            candidates_by_metric = defaultdict(list)
+            for row in rows:
+                for component in row["components"]:
+                    rule = rules_by_metric.get(component["metric_code"])
+                    if (
+                        component["origin_kind"] == "modeled_synthesis"
+                        and rule is not None
+                        and rule["status"] == "registered_level_0_single_component_only"
+                        and component["origin_id"] in rule["eligible_estimate_ids"]
+                    ):
+                        candidates_by_metric[component["metric_code"]].append((row["project_id"], component))
+            metric_exposures = []
+            for metric_code, candidate_components in sorted(candidates_by_metric.items()):
+                if len(candidate_components) != 1:
+                    overlap_block_count += 1
+                    continue
+                project_id, component = candidate_components[0]
+                metric_exposures.append(
+                    {
+                        "metric_code": metric_code,
+                        "category": component["category"],
+                        "unit": component["unit"],
+                        "measure_type": component["measure_type"],
+                        "value": component["value"],
+                        "interval": component["interval"],
+                        "contributing_project_ids": [project_id],
+                        "contributing_estimate_ids": [component["origin_id"]],
+                        "aggregation_identities": [component["aggregation_identity"]],
+                        "aggregation_method": "identity_single_component",
+                        "evidence_basis": "retained_transparent_synthesis",
+                        "rule_status": "registered_level_0_single_component_only",
+                        "pooled_model_eligible": False,
+                        "limitations": [
+                            "Level 0 descriptive exposure only; no cross-project summation was performed.",
+                            "Modeled interval is retained and must be propagated in any future model.",
+                            "No comparison counties have passed the national exposure screen.",
+                        ],
+                    }
+                )
+            metric_exposure_count += len(metric_exposures)
             county_years.append(
                 {
                     "county_fips": county_fips,
@@ -712,13 +1075,18 @@ def build_county_year(facility_year: dict, projects: list[dict], panel_report: d
                     "registered_project_ids": registered_projects,
                     "evidence_project_ids": evidence_projects,
                     "component_counts": counts,
+                    "metric_exposures": metric_exposures,
                     "observed_county_outcomes": outcomes[(county_fips, year)],
-                    "aggregation_status": "component_inventory_only_no_compatible_totals_computed",
+                    "aggregation_status": (
+                        "level_0_single_component_exposure_registered"
+                        if metric_exposures
+                        else "no_level_0_metric_exposure"
+                    ),
                     "pooled_estimation_eligible": False,
                     "ineligibility_reasons": [
-                        "metric-specific aggregation and overlap rules are not yet registered",
-                        "project treatment and phase histories are not yet complete",
-                        "national comparison-pool exposure screening is not yet complete",
+                        "project anchors do not establish county first-entry treatment histories",
+                        "national comparison-pool screen contains no eligible comparison counties",
+                        "Level 1 association and causal estimation are not authorized",
                     ],
                 }
             )
@@ -730,7 +1098,7 @@ def build_county_year(facility_year: dict, projects: list[dict], panel_report: d
     }
     return {
         "schema_version": "1.0.0",
-        "artifact_version": "county-year-exposures-0.1.0",
+        "artifact_version": "county-year-exposures-0.2.0",
         "generated_at": generated_at,
         "source_release": release_id,
         "analysis_years": {"start": START_YEAR, "end": END_YEAR},
@@ -745,13 +1113,16 @@ def build_county_year(facility_year: dict, projects: list[dict], panel_report: d
             "comparison_resolution_records": treatment_index["record_count"],
             "comparison_resolution_evidence_collected": treatment_index["resolution_status_counts"].get("evidence_collected", 0),
             "comparison_resolution_queued": treatment_index["resolution_status_counts"].get("queued", 0),
+            "level_0_metric_exposures": metric_exposure_count,
+            "blocked_same_county_year_metric_overlaps": overlap_block_count,
+            "comparison_eligible_counties": comparison_readiness["counts"]["comparison_eligible_counties"],
             "pooled_estimation_eligible_county_years": 0,
         },
         "shared_counties": duplicate_counties,
         "publication_gate": {
             "level_0_component_coverage": "ready",
-            "numeric_county_year_aggregation": "blocked_pending_metric_rules",
-            "pooled_association": "blocked_pending_exposure_and_comparison_registration",
+            "numeric_county_year_aggregation": "partial_level_0_single_component_only",
+            "pooled_association": "blocked_zero_verified_comparison_counties",
             "causal_estimation": "blocked_pending_treatment_comparison_and_diagnostics",
         },
         "county_years": county_years,
@@ -759,10 +1130,20 @@ def build_county_year(facility_year: dict, projects: list[dict], panel_report: d
 
 
 def main() -> None:
+    candidate_config = read(CANDIDATE_CONFIG)
     study_index = read(STUDY_INDEX)
     manifest = read(STUDY_MANIFEST)
     panel_report = read(PANEL_REPORT)
+    panel_index = read(PANEL_INDEX)
     treatment_index = read(TREATMENT_INDEX)
+    adjudications_path = TREATMENT_DIR / treatment_index["adjudications_path"]
+    adjudications = read(adjudications_path)
+    panel_counties, panel_partition_paths = load_partition_records(
+        panel_index, ROOT / "site/public/data/v1/panels"
+    )
+    resolution_candidates, treatment_partition_paths = load_partition_records(
+        treatment_index, TREATMENT_DIR
+    )
     evidence = load_evidence()
     synthesis = load_synthesis()
     projects = sorted(study_index["projects"], key=lambda row: row["project_id"])
@@ -771,12 +1152,38 @@ def main() -> None:
 
     reassessment = build_reassessment(evidence, synthesis, projects, release_id, generated_at)
     derived_screen = build_derived_parameter_screen(evidence, release_id, generated_at)
-    facility_year = build_facility_year(evidence, synthesis, projects, release_id, generated_at)
+    aggregation_rules = build_metric_aggregation_rules(
+        reassessment, synthesis, release_id, generated_at
+    )
+    chronology_screen = build_chronology_screen(
+        candidate_config, projects, release_id, generated_at
+    )
+    comparison_screen = build_comparison_readiness(
+        panel_counties,
+        projects,
+        resolution_candidates,
+        adjudications,
+        release_id,
+        generated_at,
+    )
+    facility_year = build_facility_year(
+        evidence, synthesis, projects, chronology_screen, release_id, generated_at
+    )
     county_year = build_county_year(
-        facility_year, projects, panel_report, treatment_index, release_id, generated_at
+        facility_year,
+        projects,
+        panel_report,
+        treatment_index,
+        aggregation_rules,
+        comparison_screen,
+        release_id,
+        generated_at,
     )
     write(REASSESSMENT, reassessment)
     write(DERIVED_SCREEN, derived_screen)
+    write(AGGREGATION_RULES, aggregation_rules)
+    write(CHRONOLOGY_SCREEN, chronology_screen)
+    write(COMPARISON_SCREEN, comparison_screen)
     write(FACILITY_YEAR, facility_year)
     write(COUNTY_YEAR, county_year)
     input_paths = [
@@ -784,27 +1191,30 @@ def main() -> None:
         *sorted((ROOT / "config/v1/study-economic-evidence.projects").glob("*.json")),
         ROOT / "config/v1/study-modeled-synthesis.json",
         *sorted((ROOT / "config/v1/study-modeled-synthesis.projects").glob("*.json")),
+        CANDIDATE_CONFIG,
         STUDY_INDEX,
         STUDY_MANIFEST,
         PANEL_REPORT,
+        PANEL_INDEX,
+        *panel_partition_paths,
         TREATMENT_INDEX,
-        ROOT / "site/public/data/v1/panels/county-economic-history/index.json",
-        *[
-            ROOT / f"site/public/data/v1/panels/county-economic-history/by-state/{state}.json"
-            for state in sorted({project["state_abbr"].lower() for project in projects})
-        ],
+        *treatment_partition_paths,
+        adjudications_path,
         Path(__file__).resolve(),
     ]
     foundation_manifest = {
         "schema_version": "1.0.0",
-        "artifact_version": "pooled-model-foundation-0.1.0",
+        "artifact_version": "pooled-model-foundation-0.2.0",
         "generated_at": generated_at,
         "source_release": release_id,
         "builder": file_record(Path(__file__).resolve()),
-        "inputs": [file_record(path) for path in sorted(input_paths)],
+        "inputs": [file_record(path) for path in sorted(set(input_paths))],
         "outputs": [
             file_record(REASSESSMENT, len(reassessment["records"])),
             file_record(DERIVED_SCREEN, len(derived_screen["observations"])),
+            file_record(AGGREGATION_RULES, len(aggregation_rules["rules"])),
+            file_record(CHRONOLOGY_SCREEN, len(chronology_screen["records"])),
+            file_record(COMPARISON_SCREEN, len(comparison_screen["records"])),
             file_record(FACILITY_YEAR, len(facility_year["project_years"])),
             file_record(COUNTY_YEAR, len(county_year["county_years"])),
         ],
@@ -818,6 +1228,10 @@ def main() -> None:
                 "empirical_metric_candidates": reassessment["counts"]["empirical_metric_candidates"],
                 "derived_parameter_observations": derived_screen["counts"]["derived_observations"],
                 "calibration_authorized_parameters": 0,
+                "aggregation_rules": aggregation_rules["counts"]["metric_rules"],
+                "project_anchors_registered": chronology_screen["counts"]["project_anchors_registered"],
+                "comparison_eligible_counties": comparison_screen["counts"]["comparison_eligible_counties"],
+                "level_0_metric_exposures": county_year["counts"]["level_0_metric_exposures"],
                 "project_years": facility_year["counts"]["project_years"],
                 "county_years": county_year["counts"]["county_year_count"],
                 "pooled_estimates": 0,

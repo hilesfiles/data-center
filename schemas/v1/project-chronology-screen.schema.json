@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dccio.org/schemas/v1/project-chronology-screen.schema.json",
+  "title": "Selected-project chronology screen",
+  "type": "object",
+  "required": ["schema_version", "artifact_version", "generated_at", "source_release", "status", "policy", "counts", "override_sources", "records"],
+  "properties": {
+    "schema_version": { "const": "1.0.0" },
+    "artifact_version": { "type": "string", "minLength": 1 },
+    "generated_at": { "type": "string", "format": "date-time" },
+    "source_release": { "type": "string", "minLength": 1 },
+    "status": { "const": "project_chronology_complete_county_treatment_unverified" },
+    "policy": {
+      "type": "object",
+      "required": ["project_anchor_is_not_county_first_entry", "county_treatment_requires_separate_inventory_closure", "no_anchor_date_imputation"],
+      "properties": {
+        "project_anchor_is_not_county_first_entry": { "const": true },
+        "county_treatment_requires_separate_inventory_closure": { "const": true },
+        "no_anchor_date_imputation": { "const": true }
+      },
+      "additionalProperties": false
+    },
+    "counts": {
+      "type": "object",
+      "required": ["projects", "project_anchors_registered", "reconstructed_project_anchors", "county_first_entry_verified", "chronology_status_counts"],
+      "properties": {
+        "projects": { "type": "integer", "minimum": 1 },
+        "project_anchors_registered": { "type": "integer", "minimum": 1 },
+        "reconstructed_project_anchors": { "type": "integer", "minimum": 0 },
+        "county_first_entry_verified": { "const": 0 },
+        "chronology_status_counts": { "type": "object", "additionalProperties": { "type": "integer", "minimum": 0 } }
+      },
+      "additionalProperties": false
+    },
+    "override_sources": { "type": "array", "uniqueItems": true, "items": { "$ref": "#/$defs/source" } },
+    "records": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/record" } }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "source": {
+      "type": "object",
+      "required": ["source_id", "title", "url", "source_role"],
+      "properties": {
+        "source_id": { "type": "string", "minLength": 1 },
+        "title": { "type": "string", "minLength": 1 },
+        "url": { "type": "string", "format": "uri" },
+        "source_role": { "type": "string", "minLength": 1 }
+      },
+      "additionalProperties": false
+    },
+    "record": {
+      "type": "object",
+      "required": ["project_id", "project_name", "county_fips", "anchor", "event_class", "chronology_status", "chronology_note", "source_ids", "source_urls", "project_anchor_registered", "county_treatment_status", "county_first_entry_verified"],
+      "properties": {
+        "project_id": { "type": "string", "pattern": "^prj_study_[a-z0-9_]+$" },
+        "project_name": { "type": "string", "minLength": 1 },
+        "county_fips": { "type": "string", "pattern": "^[0-9]{5}$" },
+        "anchor": {
+          "type": "object",
+          "required": ["precision"],
+          "properties": {
+            "date": { "type": "string", "format": "date" },
+            "year": { "type": "integer", "minimum": 1900, "maximum": 2026 },
+            "precision": { "enum": ["day", "month", "year"] }
+          },
+          "additionalProperties": false
+        },
+        "event_class": { "enum": ["opening", "operational_no_later_than", "completion", "lease", "announcement", "documented_project_anchor"] },
+        "chronology_status": { "enum": ["registered_existing_project_anchor", "registered_from_existing_documented_timing", "reconstructed_from_operator_supplied_campus_history"] },
+        "chronology_note": { "type": "string", "minLength": 1 },
+        "source_ids": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "type": "string", "minLength": 1 } },
+        "source_urls": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "type": "string", "format": "uri" } },
+        "project_anchor_registered": { "const": true },
+        "county_treatment_status": { "const": "blocked_county_first_entry_unverified" },
+        "county_first_entry_verified": { "const": false }
+      },
+      "additionalProperties": false
+    }
+  }
+}

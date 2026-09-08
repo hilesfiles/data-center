@@ -9,10 +9,14 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
 from scripts.build_pooled_model_foundation import (  # noqa: E402
+    build_chronology_screen,
+    build_comparison_readiness,
     build_county_year,
     build_derived_parameter_screen,
     build_facility_year,
+    build_metric_aggregation_rules,
     build_reassessment,
+    load_partition_records,
 )
 from scripts.study_project_fragments import load_evidence, load_synthesis  # noqa: E402
 from scripts.validate_data_contract import ContractValidator  # noqa: E402
@@ -33,11 +37,23 @@ class PooledModelFoundationTests(unittest.TestCase):
         cls.treatment_index = read(
             "site/public/data/v1/treatments/county-first-entry-resolution/index.json"
         )
+        cls.candidate_config = read("config/v1/private-sector-study-candidates.json")
+        cls.panel_index = read("site/public/data/v1/panels/county-economic-history/index.json")
+        cls.adjudications = read("site/public/data/v1/treatments/county-first-entry-resolution/adjudications.json")
+        cls.panel_counties, _ = load_partition_records(
+            cls.panel_index, ROOT / "site/public/data/v1/panels"
+        )
+        cls.resolution_candidates, _ = load_partition_records(
+            cls.treatment_index, ROOT / "site/public/data/v1/treatments"
+        )
         cls.evidence = load_evidence()
         cls.synthesis = load_synthesis()
         cls.projects = sorted(cls.index["projects"], key=lambda row: row["project_id"])
         cls.reassessment = read("data/silver/study/pooled/synthesis-reassessment.json")
         cls.derived_screen = read("data/silver/study/pooled/derived-parameter-screen.json")
+        cls.aggregation_rules = read("data/silver/study/pooled/metric-aggregation-rules.json")
+        cls.chronology_screen = read("data/silver/study/pooled/project-chronology-screen.json")
+        cls.comparison_screen = read("data/silver/study/pooled/comparison-pool-readiness.json")
         cls.facility_year = read("data/silver/study/pooled/facility-year-exposures.json")
         cls.county_year = read("data/silver/study/pooled/county-year-exposures.json")
         cls.foundation_manifest = read("data/silver/study/pooled/manifest.json")
@@ -47,6 +63,9 @@ class PooledModelFoundationTests(unittest.TestCase):
         pairs = [
             (self.reassessment, "pooled-synthesis-reassessment.schema.json"),
             (self.derived_screen, "derived-parameter-screen.schema.json"),
+            (self.aggregation_rules, "metric-aggregation-rules.schema.json"),
+            (self.chronology_screen, "project-chronology-screen.schema.json"),
+            (self.comparison_screen, "comparison-pool-readiness.schema.json"),
             (self.facility_year, "facility-year-exposure.schema.json"),
             (self.county_year, "county-year-exposure.schema.json"),
             (self.foundation_manifest, "pooled-foundation-manifest.schema.json"),
@@ -168,6 +187,23 @@ class PooledModelFoundationTests(unittest.TestCase):
         self.assertTrue(
             all(not row["pooled_estimation_eligible"] for row in self.county_year["county_years"])
         )
+        exposures = [
+            exposure
+            for row in self.county_year["county_years"]
+            for exposure in row["metric_exposures"]
+        ]
+        self.assertEqual(len(exposures), 48)
+        self.assertEqual(self.county_year["counts"]["blocked_same_county_year_metric_overlaps"], 0)
+        self.assertTrue(all(len(row["contributing_project_ids"]) == 1 for row in exposures))
+
+    def test_chronology_and_comparison_gates_remain_conservative(self):
+        self.assertEqual(len(self.chronology_screen["records"]), 36)
+        self.assertEqual(self.chronology_screen["counts"]["project_anchors_registered"], 36)
+        self.assertEqual(self.chronology_screen["counts"]["reconstructed_project_anchors"], 3)
+        self.assertTrue(all(not row["county_first_entry_verified"] for row in self.chronology_screen["records"]))
+        self.assertEqual(len(self.comparison_screen["records"]), 3144)
+        self.assertEqual(self.comparison_screen["counts"]["comparison_eligible_counties"], 0)
+        self.assertTrue(all(not row["comparison_eligible"] for row in self.comparison_screen["records"]))
         self.assertTrue(
             all(
                 set(row["observed_county_outcomes"])
@@ -191,19 +227,38 @@ class PooledModelFoundationTests(unittest.TestCase):
         derived_screen = build_derived_parameter_screen(
             self.evidence, release_id, generated_at
         )
+        aggregation_rules = build_metric_aggregation_rules(
+            reassessment, self.synthesis, release_id, generated_at
+        )
+        chronology_screen = build_chronology_screen(
+            self.candidate_config, self.projects, release_id, generated_at
+        )
+        comparison_screen = build_comparison_readiness(
+            self.panel_counties,
+            self.projects,
+            self.resolution_candidates,
+            self.adjudications,
+            release_id,
+            generated_at,
+        )
         facility_year = build_facility_year(
-            self.evidence, self.synthesis, self.projects, release_id, generated_at
+            self.evidence, self.synthesis, self.projects, chronology_screen, release_id, generated_at
         )
         county_year = build_county_year(
             facility_year,
             self.projects,
             self.panel_report,
             self.treatment_index,
+            aggregation_rules,
+            comparison_screen,
             release_id,
             generated_at,
         )
         self.assertEqual(reassessment, self.reassessment)
         self.assertEqual(derived_screen, self.derived_screen)
+        self.assertEqual(aggregation_rules, self.aggregation_rules)
+        self.assertEqual(chronology_screen, self.chronology_screen)
+        self.assertEqual(comparison_screen, self.comparison_screen)
         self.assertEqual(facility_year, self.facility_year)
         self.assertEqual(county_year, self.county_year)
 

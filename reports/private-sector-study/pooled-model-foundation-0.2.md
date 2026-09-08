@@ -1,4 +1,4 @@
-# Pooled model foundation 0.1
+# Pooled model foundation 0.2
 
 Built from `private-sector-study-1.60.0` after completion of the 36-project research register. This is a non-estimating analytical foundation. It changes no project evidence or modeled synthesis and publishes no pooled or causal result.
 
@@ -13,16 +13,19 @@ Built from `private-sector-study-1.60.0` after completion of the 36-project rese
 - Annual-range components remain separated as 1,245 reported observations, zero source projections, and 225 modeled syntheses. Another 814 records have nonannual periods or years outside the 2001–2024 outcome panel and are excluded from this initial annual spine rather than allocated.
 - The comparison-readiness record preserves the current 217-county resolution queue: 24 have evidence collected and 193 remain queued.
 - Existing project-page synthesis values are unchanged by this audit. `retain` means eligible for later metric-rule review, not eligible for immediate summation; `restrict_to_sensitivity` means the result cannot become a pooled exposure; and `migrate_to_pooled_outcome_framework` requires a future registered county-year replacement.
+- Twelve metric-specific rules now cover all 66 retained syntheses. Six rules permit only an identity carry-forward when exactly one retained component exists for a county, year, and metric; one excludes a cumulative value; and five block records without an explicit panel year. This produces 48 Level 0 descriptive exposures and zero cross-project sums or overlap conflicts.
+- All 36 projects now have a sourced project chronology anchor. The three former commissioning exceptions—Google Lenoir (2008), Google The Dalles (2006), and Google Douglas County (2006)—were reconstructed at year precision from operator or operator-supplied campus history. Meta Prineville and Microsoft Boydton retain their already documented 2011 and 2010 anchors, respectively. No project anchor is treated as proof of county first entry.
+- The national readiness register now classifies all 3,144 panel counties: 35 study hosts are excluded, 19 non-host counties are reviewed but unresolved, 166 non-host counties remain queued, and 2,924 counties are unscreened for historical data-center exposure. No county is currently eligible as a comparison.
 
 ## Active gates
 
 - Component coverage: ready for substantive review.
-- Numeric county-year aggregation: blocked pending metric-specific aggregation and overlap rules.
-- Pooled association: blocked pending exposure definitions and comparison-pool registration.
+- Numeric county-year aggregation: partially ready for 48 Level 0 single-component identities only; no cross-project summation is authorized.
+- Pooled association: blocked because the national register contains zero verified comparison counties.
 - Causal estimation: blocked pending treatment histories, comparison eligibility, pre-trend and robustness diagnostics.
 
-The three chronology exceptions remain Google Lenoir, Google The Dalles, and Google Douglas County. Their commissioning histories require focused reconstruction before an opening-event model can consider them eligible.
+Project-level chronology coverage is complete, but county first-entry histories remain unresolved. A documented project opening cannot establish that no earlier qualifying facility operated elsewhere in the county.
 
 ## Next authorized decision point
 
-Review the completed adjudication and failed calibration gate. If approved, the next implementation package should register metric-specific aggregation and overlap rules for the 66 retained candidates, complete commissioning histories for Lenoir, The Dalles, and Douglas County, and advance the national first-entry comparison screen. No Level 1 association or causal model should run before those gates are complete.
+The next decision is whether to authorize the separate, evidence-intensive national exposure-screening program needed to create a defensible comparison pool. No Level 1 association or causal model should run while the eligible comparison count is zero.

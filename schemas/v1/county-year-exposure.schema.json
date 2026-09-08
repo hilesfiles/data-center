@@ -21,7 +21,7 @@
     "status": { "const": "level_0_foundation_only_no_pooled_estimates" },
     "counts": {
       "type": "object",
-      "required": ["project_count", "county_count", "county_year_count", "national_panel_counties", "national_panel_years", "national_panel_observations", "comparison_resolution_records", "comparison_resolution_evidence_collected", "comparison_resolution_queued", "pooled_estimation_eligible_county_years"],
+      "required": ["project_count", "county_count", "county_year_count", "national_panel_counties", "national_panel_years", "national_panel_observations", "comparison_resolution_records", "comparison_resolution_evidence_collected", "comparison_resolution_queued", "level_0_metric_exposures", "blocked_same_county_year_metric_overlaps", "comparison_eligible_counties", "pooled_estimation_eligible_county_years"],
       "properties": {
         "project_count": { "type": "integer", "minimum": 1 },
         "county_count": { "type": "integer", "minimum": 1 },
@@ -32,6 +32,9 @@
         "comparison_resolution_records": { "type": "integer", "minimum": 0 },
         "comparison_resolution_evidence_collected": { "type": "integer", "minimum": 0 },
         "comparison_resolution_queued": { "type": "integer", "minimum": 0 },
+        "level_0_metric_exposures": { "type": "integer", "minimum": 0 },
+        "blocked_same_county_year_metric_overlaps": { "type": "integer", "minimum": 0 },
+        "comparison_eligible_counties": { "const": 0 },
         "pooled_estimation_eligible_county_years": { "const": 0 }
       },
       "additionalProperties": false
@@ -50,8 +53,8 @@
       "required": ["level_0_component_coverage", "numeric_county_year_aggregation", "pooled_association", "causal_estimation"],
       "properties": {
         "level_0_component_coverage": { "const": "ready" },
-        "numeric_county_year_aggregation": { "const": "blocked_pending_metric_rules" },
-        "pooled_association": { "const": "blocked_pending_exposure_and_comparison_registration" },
+        "numeric_county_year_aggregation": { "const": "partial_level_0_single_component_only" },
+        "pooled_association": { "const": "blocked_zero_verified_comparison_counties" },
         "causal_estimation": { "const": "blocked_pending_treatment_comparison_and_diagnostics" }
       },
       "additionalProperties": false
@@ -60,7 +63,7 @@
       "type": "array",
       "items": {
         "type": "object",
-        "required": ["county_fips", "year", "registered_project_ids", "evidence_project_ids", "component_counts", "observed_county_outcomes", "aggregation_status", "pooled_estimation_eligible", "ineligibility_reasons"],
+        "required": ["county_fips", "year", "registered_project_ids", "evidence_project_ids", "component_counts", "metric_exposures", "observed_county_outcomes", "aggregation_status", "pooled_estimation_eligible", "ineligibility_reasons"],
         "properties": {
           "county_fips": { "type": "string", "pattern": "^[0-9]{5}$" },
           "year": { "type": "integer", "minimum": 2001, "maximum": 2024 },
@@ -76,6 +79,7 @@
             },
             "additionalProperties": false
           },
+          "metric_exposures": { "type": "array", "items": { "$ref": "#/$defs/metric_exposure" } },
           "observed_county_outcomes": {
             "type": "object",
             "required": ["real_gdp_usd", "population", "annual_avg_covered_employment", "annual_avg_weekly_wage_nominal_usd", "coverage_status"],
@@ -88,7 +92,7 @@
             },
             "additionalProperties": false
           },
-          "aggregation_status": { "const": "component_inventory_only_no_compatible_totals_computed" },
+          "aggregation_status": { "enum": ["level_0_single_component_exposure_registered", "no_level_0_metric_exposure"] },
           "pooled_estimation_eligible": { "const": false },
           "ineligibility_reasons": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } }
         },
@@ -96,5 +100,40 @@
       }
     }
   },
-  "additionalProperties": false
+  "additionalProperties": false,
+  "$defs": {
+    "metric_exposure": {
+      "type": "object",
+      "required": ["metric_code", "category", "unit", "measure_type", "value", "interval", "contributing_project_ids", "contributing_estimate_ids", "aggregation_identities", "aggregation_method", "evidence_basis", "rule_status", "pooled_model_eligible", "limitations"],
+      "properties": {
+        "metric_code": { "type": "string", "pattern": "^study\\.[a-z0-9_]+$" },
+        "category": { "type": "string", "minLength": 1 },
+        "unit": { "type": "string", "minLength": 1 },
+        "measure_type": { "type": "string", "minLength": 1 },
+        "value": { "type": "number" },
+        "interval": {
+          "type": "object",
+          "required": ["kind", "low", "central", "high"],
+          "properties": {
+            "kind": { "type": "string", "minLength": 1 },
+            "low": { "type": "number" },
+            "central": { "type": "number" },
+            "high": { "type": "number" },
+            "confidence_level": { "type": "number" },
+            "interpretation": { "type": "string" }
+          },
+          "additionalProperties": false
+        },
+        "contributing_project_ids": { "type": "array", "minItems": 1, "maxItems": 1, "uniqueItems": true, "items": { "type": "string", "pattern": "^prj_study_[a-z0-9_]+$" } },
+        "contributing_estimate_ids": { "type": "array", "minItems": 1, "maxItems": 1, "uniqueItems": true, "items": { "type": "string", "minLength": 1 } },
+        "aggregation_identities": { "type": "array", "minItems": 1, "maxItems": 1, "uniqueItems": true, "items": { "type": "string", "minLength": 1 } },
+        "aggregation_method": { "const": "identity_single_component" },
+        "evidence_basis": { "const": "retained_transparent_synthesis" },
+        "rule_status": { "const": "registered_level_0_single_component_only" },
+        "pooled_model_eligible": { "const": false },
+        "limitations": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } }
+      },
+      "additionalProperties": false
+    }
+  }
 }

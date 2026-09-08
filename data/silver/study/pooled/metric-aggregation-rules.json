@@ -1,0 +1,371 @@
+{
+  "schema_version": "1.0.0",
+  "artifact_version": "metric-aggregation-rules-0.1.0",
+  "generated_at": "2026-09-08T17:29:22+00:00",
+  "source_release": "private-sector-study-1.60.0",
+  "status": "level_0_single_component_rules_registered",
+  "policy": {
+    "reported_actual_precedence": true,
+    "nested_components_not_additive": true,
+    "cross_project_sums_require_overlap_adjudication": true,
+    "cumulative_values_not_annualized": true,
+    "snapshots_without_panel_year_not_aligned": true
+  },
+  "counts": {
+    "retained_syntheses": 66,
+    "metric_rules": 12,
+    "panel_range_single_component_candidates": 48,
+    "status_counts": {
+      "blocked_missing_explicit_panel_year": 5,
+      "excluded_nonannual_cumulative": 1,
+      "registered_level_0_single_component_only": 6
+    }
+  },
+  "rules": [
+    {
+      "metric_code": "study.modeled_aggregate_billable_air_emissions",
+      "category": "resources",
+      "unit": "tons_per_year",
+      "measure_type": "flow",
+      "retained_estimate_count": 5,
+      "panel_range_estimate_count": 5,
+      "allowed_period_kinds": [
+        "source_year"
+      ],
+      "allowed_scope_levels": [
+        "campus"
+      ],
+      "aggregation_operator": "identity_if_single_component",
+      "within_project_overlap_policy": "honor_declared_total_and_do_not_sum_inputs_or_nested_components",
+      "cross_project_overlap_policy": "block_if_more_than_one_component_for_same_county_year_metric",
+      "evidence_precedence": [
+        "reported_actual",
+        "retained_transparent_synthesis"
+      ],
+      "status": "registered_level_0_single_component_only",
+      "rule_reason": "One retained component may be carried into a county-year Level 0 record; multiple same-metric components block aggregation pending record-level overlap adjudication.",
+      "eligible_estimate_ids": [
+        "est_proposed_google_bridgeport_aggregate_billable_air_emissions_2020",
+        "est_proposed_google_bridgeport_aggregate_billable_air_emissions_2021",
+        "est_proposed_google_bridgeport_aggregate_billable_air_emissions_2022",
+        "est_proposed_google_bridgeport_aggregate_billable_air_emissions_2023",
+        "est_proposed_google_bridgeport_aggregate_billable_air_emissions_2024"
+      ]
+    },
+    {
+      "metric_code": "study.modeled_annual_project_linked_property_taxes_paid",
+      "category": "fiscal",
+      "unit": "USD_per_year",
+      "measure_type": "flow",
+      "retained_estimate_count": 16,
+      "panel_range_estimate_count": 14,
+      "allowed_period_kinds": [
+        "tax_year"
+      ],
+      "allowed_scope_levels": [
+        "company_county"
+      ],
+      "aggregation_operator": "identity_if_single_component",
+      "within_project_overlap_policy": "honor_declared_total_and_do_not_sum_inputs_or_nested_components",
+      "cross_project_overlap_policy": "block_if_more_than_one_component_for_same_county_year_metric",
+      "evidence_precedence": [
+        "reported_actual",
+        "retained_transparent_synthesis"
+      ],
+      "status": "registered_level_0_single_component_only",
+      "rule_reason": "One retained component may be carried into a county-year Level 0 record; multiple same-metric components block aggregation pending record-level overlap adjudication.",
+      "eligible_estimate_ids": [
+        "est_google_berkeley_tax_payments_partial_2016",
+        "est_google_berkeley_tax_payments_partial_2017",
+        "est_google_berkeley_tax_payments_partial_2018",
+        "est_google_berkeley_tax_payments_partial_2019",
+        "est_google_berkeley_tax_payments_partial_2020",
+        "est_google_berkeley_tax_payments_partial_2021",
+        "est_google_berkeley_tax_payments_partial_2022",
+        "est_google_berkeley_tax_payments_partial_2023",
+        "est_google_berkeley_tax_payments_partial_2024",
+        "est_study_google_bridgeport_property_tax_total_2020",
+        "est_study_google_bridgeport_property_tax_total_2021",
+        "est_study_google_bridgeport_property_tax_total_2022",
+        "est_study_google_bridgeport_property_tax_total_2023",
+        "est_study_google_bridgeport_property_tax_total_2024"
+      ]
+    },
+    {
+      "metric_code": "study.modeled_assessor_listed_emergency_generator_total_nameplate_capacity",
+      "category": "resources",
+      "unit": "MW",
+      "measure_type": "flow",
+      "retained_estimate_count": 1,
+      "panel_range_estimate_count": 0,
+      "allowed_period_kinds": [
+        "source_year"
+      ],
+      "allowed_scope_levels": [
+        "campus"
+      ],
+      "aggregation_operator": "exclude_until_period_is_resolved",
+      "within_project_overlap_policy": "honor_declared_total_and_do_not_sum_inputs_or_nested_components",
+      "cross_project_overlap_policy": "block_if_more_than_one_component_for_same_county_year_metric",
+      "evidence_precedence": [
+        "reported_actual",
+        "retained_transparent_synthesis"
+      ],
+      "status": "blocked_missing_explicit_panel_year",
+      "rule_reason": "The retained stock has a report date but no registered panel year; no year is inferred.",
+      "eligible_estimate_ids": []
+    },
+    {
+      "metric_code": "study.modeled_combined_assessed_value",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "stock",
+      "retained_estimate_count": 12,
+      "panel_range_estimate_count": 11,
+      "allowed_period_kinds": [
+        "fiscal_year"
+      ],
+      "allowed_scope_levels": [
+        "campus"
+      ],
+      "aggregation_operator": "identity_if_single_component",
+      "within_project_overlap_policy": "honor_declared_total_and_do_not_sum_inputs_or_nested_components",
+      "cross_project_overlap_policy": "block_if_more_than_one_component_for_same_county_year_metric",
+      "evidence_precedence": [
+        "reported_actual",
+        "retained_transparent_synthesis"
+      ],
+      "status": "registered_level_0_single_component_only",
+      "rule_reason": "One retained component may be carried into a county-year Level 0 record; multiple same-metric components block aggregation pending record-level overlap adjudication.",
+      "eligible_estimate_ids": [
+        "est_study_google_lenoir_combined_assessed_2011",
+        "est_study_google_lenoir_combined_assessed_2013",
+        "est_study_google_lenoir_combined_assessed_2015",
+        "est_study_google_lenoir_combined_assessed_2016",
+        "est_study_google_lenoir_combined_assessed_2017",
+        "est_study_google_lenoir_combined_assessed_2018",
+        "est_study_google_lenoir_combined_assessed_2019",
+        "est_study_google_lenoir_combined_assessed_2020",
+        "est_study_google_lenoir_combined_assessed_2021",
+        "est_study_google_lenoir_combined_assessed_2023",
+        "est_study_google_lenoir_combined_assessed_2024"
+      ]
+    },
+    {
+      "metric_code": "study.modeled_combined_property_tax_paid",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "flow",
+      "retained_estimate_count": 20,
+      "panel_range_estimate_count": 16,
+      "allowed_period_kinds": [
+        "fiscal_year",
+        "tax_year"
+      ],
+      "allowed_scope_levels": [
+        "campus",
+        "company_county"
+      ],
+      "aggregation_operator": "identity_if_single_component",
+      "within_project_overlap_policy": "honor_declared_total_and_do_not_sum_inputs_or_nested_components",
+      "cross_project_overlap_policy": "block_if_more_than_one_component_for_same_county_year_metric",
+      "evidence_precedence": [
+        "reported_actual",
+        "retained_transparent_synthesis"
+      ],
+      "status": "registered_level_0_single_component_only",
+      "rule_reason": "One retained component may be carried into a county-year Level 0 record; multiple same-metric components block aggregation pending record-level overlap adjudication.",
+      "eligible_estimate_ids": [
+        "est_study_meta_altoona_combined_active_real_property_tax_paid_2020",
+        "est_study_meta_altoona_combined_active_real_property_tax_paid_2021",
+        "est_study_meta_altoona_combined_active_real_property_tax_paid_2022",
+        "est_study_meta_altoona_combined_active_real_property_tax_paid_2023",
+        "est_study_meta_altoona_combined_active_real_property_tax_paid_2024",
+        "est_study_meta_fort_worth_combined_property_tax_paid_2017",
+        "est_study_meta_fort_worth_combined_property_tax_paid_2018",
+        "est_study_meta_fort_worth_combined_property_tax_paid_2019",
+        "est_study_meta_fort_worth_combined_property_tax_paid_2020",
+        "est_study_meta_fort_worth_combined_property_tax_paid_2021",
+        "est_study_meta_fort_worth_combined_property_tax_paid_2022",
+        "est_study_meta_fort_worth_combined_property_tax_paid_2023",
+        "est_study_meta_fort_worth_combined_property_tax_paid_2024",
+        "est_study_msft_mwh_combined_property_tax_paid_2022",
+        "est_study_msft_mwh_combined_property_tax_paid_2023",
+        "est_study_msft_mwh_combined_property_tax_paid_2024"
+      ]
+    },
+    {
+      "metric_code": "study.modeled_cumulative_incentive_payments",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "flow",
+      "retained_estimate_count": 1,
+      "panel_range_estimate_count": 0,
+      "allowed_period_kinds": [
+        "cumulative"
+      ],
+      "allowed_scope_levels": [
+        "company_county"
+      ],
+      "aggregation_operator": "exclude_from_annual_panel",
+      "within_project_overlap_policy": "honor_declared_total_and_do_not_sum_inputs_or_nested_components",
+      "cross_project_overlap_policy": "block_if_more_than_one_component_for_same_county_year_metric",
+      "evidence_precedence": [
+        "reported_actual",
+        "retained_transparent_synthesis"
+      ],
+      "status": "excluded_nonannual_cumulative",
+      "rule_reason": "A cumulative total cannot be allocated across years without a sourced annual schedule.",
+      "eligible_estimate_ids": []
+    },
+    {
+      "metric_code": "study.modeled_current_taxable_assessed_value_total",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "stock",
+      "retained_estimate_count": 3,
+      "panel_range_estimate_count": 0,
+      "allowed_period_kinds": [
+        "reported_snapshot"
+      ],
+      "allowed_scope_levels": [
+        "company_county"
+      ],
+      "aggregation_operator": "exclude_until_period_is_resolved",
+      "within_project_overlap_policy": "honor_declared_total_and_do_not_sum_inputs_or_nested_components",
+      "cross_project_overlap_policy": "block_if_more_than_one_component_for_same_county_year_metric",
+      "evidence_precedence": [
+        "reported_actual",
+        "retained_transparent_synthesis"
+      ],
+      "status": "blocked_missing_explicit_panel_year",
+      "rule_reason": "The retained stock has a report date but no registered panel year; no year is inferred.",
+      "eligible_estimate_ids": []
+    },
+    {
+      "metric_code": "study.modeled_identified_lvl_infrastructure_fund_expenditure",
+      "category": "strategic_infrastructure",
+      "unit": "USD",
+      "measure_type": "flow",
+      "retained_estimate_count": 2,
+      "panel_range_estimate_count": 1,
+      "allowed_period_kinds": [
+        "fiscal_year"
+      ],
+      "allowed_scope_levels": [
+        "supporting_infrastructure"
+      ],
+      "aggregation_operator": "identity_if_single_component",
+      "within_project_overlap_policy": "honor_declared_total_and_do_not_sum_inputs_or_nested_components",
+      "cross_project_overlap_policy": "block_if_more_than_one_component_for_same_county_year_metric",
+      "evidence_precedence": [
+        "reported_actual",
+        "retained_transparent_synthesis"
+      ],
+      "status": "registered_level_0_single_component_only",
+      "rule_reason": "One retained component may be carried into a county-year Level 0 record; multiple same-metric components block aggregation pending record-level overlap adjudication.",
+      "eligible_estimate_ids": [
+        "est_study_msft_boydton_identified_lvl_fund301_expenditure_fy2024"
+      ]
+    },
+    {
+      "metric_code": "study.modeled_latest_project_linked_local_tax_contribution",
+      "category": "fiscal",
+      "unit": "USD_per_year",
+      "measure_type": "flow",
+      "retained_estimate_count": 3,
+      "panel_range_estimate_count": 1,
+      "allowed_period_kinds": [
+        "fiscal_year",
+        "tax_year"
+      ],
+      "allowed_scope_levels": [
+        "company_county"
+      ],
+      "aggregation_operator": "identity_if_single_component",
+      "within_project_overlap_policy": "honor_declared_total_and_do_not_sum_inputs_or_nested_components",
+      "cross_project_overlap_policy": "block_if_more_than_one_component_for_same_county_year_metric",
+      "evidence_precedence": [
+        "reported_actual",
+        "retained_transparent_synthesis"
+      ],
+      "status": "registered_level_0_single_component_only",
+      "rule_reason": "One retained component may be carried into a county-year Level 0 record; multiple same-metric components block aggregation pending record-level overlap adjudication.",
+      "eligible_estimate_ids": [
+        "est_study_dx_hammond_latest_local_tax_contribution_reaudit_2026"
+      ]
+    },
+    {
+      "metric_code": "study.modeled_real_property_city_levy_allocation",
+      "category": "fiscal",
+      "unit": "USD_per_year",
+      "measure_type": "flow",
+      "retained_estimate_count": 1,
+      "panel_range_estimate_count": 0,
+      "allowed_period_kinds": [
+        "tax_year"
+      ],
+      "allowed_scope_levels": [
+        "company_county"
+      ],
+      "aggregation_operator": "exclude_until_period_is_resolved",
+      "within_project_overlap_policy": "honor_declared_total_and_do_not_sum_inputs_or_nested_components",
+      "cross_project_overlap_policy": "block_if_more_than_one_component_for_same_county_year_metric",
+      "evidence_precedence": [
+        "reported_actual",
+        "retained_transparent_synthesis"
+      ],
+      "status": "blocked_missing_explicit_panel_year",
+      "rule_reason": "The retained stock has a report date but no registered panel year; no year is inferred.",
+      "eligible_estimate_ids": []
+    },
+    {
+      "metric_code": "study.modeled_real_property_county_levy_allocation",
+      "category": "fiscal",
+      "unit": "USD_per_year",
+      "measure_type": "flow",
+      "retained_estimate_count": 1,
+      "panel_range_estimate_count": 0,
+      "allowed_period_kinds": [
+        "tax_year"
+      ],
+      "allowed_scope_levels": [
+        "company_county"
+      ],
+      "aggregation_operator": "exclude_until_period_is_resolved",
+      "within_project_overlap_policy": "honor_declared_total_and_do_not_sum_inputs_or_nested_components",
+      "cross_project_overlap_policy": "block_if_more_than_one_component_for_same_county_year_metric",
+      "evidence_precedence": [
+        "reported_actual",
+        "retained_transparent_synthesis"
+      ],
+      "status": "blocked_missing_explicit_panel_year",
+      "rule_reason": "The retained stock has a report date but no registered panel year; no year is inferred.",
+      "eligible_estimate_ids": []
+    },
+    {
+      "metric_code": "study.modeled_real_property_school_levy_allocation",
+      "category": "fiscal",
+      "unit": "USD_per_year",
+      "measure_type": "flow",
+      "retained_estimate_count": 1,
+      "panel_range_estimate_count": 0,
+      "allowed_period_kinds": [
+        "tax_year"
+      ],
+      "allowed_scope_levels": [
+        "company_county"
+      ],
+      "aggregation_operator": "exclude_until_period_is_resolved",
+      "within_project_overlap_policy": "honor_declared_total_and_do_not_sum_inputs_or_nested_components",
+      "cross_project_overlap_policy": "block_if_more_than_one_component_for_same_county_year_metric",
+      "evidence_precedence": [
+        "reported_actual",
+        "retained_transparent_synthesis"
+      ],
+      "status": "blocked_missing_explicit_panel_year",
+      "rule_reason": "The retained stock has a report date but no registered panel year; no year is inferred.",
+      "eligible_estimate_ids": []
+    }
+  ]
+}

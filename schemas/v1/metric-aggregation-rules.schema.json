@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dccio.org/schemas/v1/metric-aggregation-rules.schema.json",
+  "title": "Retained synthesis metric aggregation rules",
+  "type": "object",
+  "required": ["schema_version", "artifact_version", "generated_at", "source_release", "status", "policy", "counts", "rules"],
+  "properties": {
+    "schema_version": { "const": "1.0.0" },
+    "artifact_version": { "type": "string", "minLength": 1 },
+    "generated_at": { "type": "string", "format": "date-time" },
+    "source_release": { "type": "string", "minLength": 1 },
+    "status": { "const": "level_0_single_component_rules_registered" },
+    "policy": {
+      "type": "object",
+      "required": ["reported_actual_precedence", "nested_components_not_additive", "cross_project_sums_require_overlap_adjudication", "cumulative_values_not_annualized", "snapshots_without_panel_year_not_aligned"],
+      "properties": {
+        "reported_actual_precedence": { "const": true },
+        "nested_components_not_additive": { "const": true },
+        "cross_project_sums_require_overlap_adjudication": { "const": true },
+        "cumulative_values_not_annualized": { "const": true },
+        "snapshots_without_panel_year_not_aligned": { "const": true }
+      },
+      "additionalProperties": false
+    },
+    "counts": {
+      "type": "object",
+      "required": ["retained_syntheses", "metric_rules", "panel_range_single_component_candidates", "status_counts"],
+      "properties": {
+        "retained_syntheses": { "type": "integer", "minimum": 1 },
+        "metric_rules": { "type": "integer", "minimum": 1 },
+        "panel_range_single_component_candidates": { "type": "integer", "minimum": 0 },
+        "status_counts": { "type": "object", "additionalProperties": { "type": "integer", "minimum": 0 } }
+      },
+      "additionalProperties": false
+    },
+    "rules": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["metric_code", "category", "unit", "measure_type", "retained_estimate_count", "panel_range_estimate_count", "allowed_period_kinds", "allowed_scope_levels", "aggregation_operator", "within_project_overlap_policy", "cross_project_overlap_policy", "evidence_precedence", "status", "rule_reason", "eligible_estimate_ids"],
+        "properties": {
+          "metric_code": { "type": "string", "pattern": "^study\\.[a-z0-9_]+$" },
+          "category": { "type": "string", "minLength": 1 },
+          "unit": { "type": "string", "minLength": 1 },
+          "measure_type": { "type": "string", "minLength": 1 },
+          "retained_estimate_count": { "type": "integer", "minimum": 1 },
+          "panel_range_estimate_count": { "type": "integer", "minimum": 0 },
+          "allowed_period_kinds": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "type": "string", "minLength": 1 } },
+          "allowed_scope_levels": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "type": "string", "minLength": 1 } },
+          "aggregation_operator": { "enum": ["identity_if_single_component", "exclude_from_annual_panel", "exclude_until_period_is_resolved"] },
+          "within_project_overlap_policy": { "const": "honor_declared_total_and_do_not_sum_inputs_or_nested_components" },
+          "cross_project_overlap_policy": { "const": "block_if_more_than_one_component_for_same_county_year_metric" },
+          "evidence_precedence": { "const": ["reported_actual", "retained_transparent_synthesis"] },
+          "status": { "enum": ["registered_level_0_single_component_only", "excluded_nonannual_cumulative", "blocked_missing_explicit_panel_year"] },
+          "rule_reason": { "type": "string", "minLength": 1 },
+          "eligible_estimate_ids": { "type": "array", "uniqueItems": true, "items": { "type": "string", "minLength": 1 } }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

@@ -6191,6 +6191,9 @@ def validate_pooled_foundation(
     artifacts = {
         "pooled_synthesis_reassessment": pooled_dir / "synthesis-reassessment.json",
         "derived_parameter_screen": pooled_dir / "derived-parameter-screen.json",
+        "metric_aggregation_rules": pooled_dir / "metric-aggregation-rules.json",
+        "project_chronology_screen": pooled_dir / "project-chronology-screen.json",
+        "comparison_pool_readiness": pooled_dir / "comparison-pool-readiness.json",
         "facility_year_exposure": pooled_dir / "facility-year-exposures.json",
         "county_year_exposure": pooled_dir / "county-year-exposures.json",
         "pooled_foundation_manifest": pooled_dir / "manifest.json",
@@ -6210,6 +6213,9 @@ def validate_pooled_foundation(
 
     reassessment = payloads["pooled_synthesis_reassessment"]
     derived_screen = payloads["derived_parameter_screen"]
+    aggregation_rules = payloads["metric_aggregation_rules"]
+    chronology_screen = payloads["project_chronology_screen"]
+    comparison_screen = payloads["comparison_pool_readiness"]
     facility_year = payloads["facility_year_exposure"]
     county_year = payloads["county_year_exposure"]
     foundation_manifest = payloads["pooled_foundation_manifest"]
@@ -6226,6 +6232,42 @@ def validate_pooled_foundation(
         issues.append(Issue("pooled_foundation", "synthesis-reassessment.json.records", "every synthesis must have a final portfolio-policy recommendation"))
     if any(row.get("review_status") != "portfolio_policy_adjudicated" for row in reassessment["records"]):
         issues.append(Issue("pooled_foundation", "synthesis-reassessment.json.records", "every synthesis must complete portfolio-policy adjudication"))
+
+    retained_ids = {
+        row["estimate_id"]
+        for row in reassessment["records"]
+        if row.get("substantive_disposition") == "retain"
+    }
+    rule_metric_codes = [row.get("metric_code") for row in aggregation_rules["rules"]]
+    retained_metric_codes = {
+        row["metric_code"]
+        for row in synthesis["estimates"]
+        if row["estimate_id"] in retained_ids
+    }
+    if len(rule_metric_codes) != len(set(rule_metric_codes)) or set(rule_metric_codes) != retained_metric_codes:
+        issues.append(Issue("pooled_foundation", "metric-aggregation-rules.json.rules", "must contain exactly one rule for every retained synthesis metric"))
+    if sum(row["retained_estimate_count"] for row in aggregation_rules["rules"]) != len(retained_ids):
+        issues.append(Issue("pooled_foundation", "metric-aggregation-rules.json.counts", "rule counts must account for every retained synthesis"))
+    eligible_rule_ids = {
+        estimate_id
+        for row in aggregation_rules["rules"]
+        for estimate_id in row["eligible_estimate_ids"]
+    }
+    if not eligible_rule_ids <= retained_ids:
+        issues.append(Issue("pooled_foundation", "metric-aggregation-rules.json.rules", "eligible rule IDs must be retained syntheses"))
+
+    chronology_ids = [row.get("project_id") for row in chronology_screen["records"]]
+    if len(chronology_ids) != len(set(chronology_ids)) or set(chronology_ids) != project_ids:
+        issues.append(Issue("pooled_foundation", "project-chronology-screen.json.records", "must register one chronology anchor for every selected project"))
+    if any(not row.get("project_anchor_registered") or row.get("county_first_entry_verified") for row in chronology_screen["records"]):
+        issues.append(Issue("pooled_foundation", "project-chronology-screen.json.records", "project anchors must be registered without being promoted to county first entry"))
+
+    comparison_records = comparison_screen["records"]
+    comparison_ids = [row.get("county_fips") for row in comparison_records]
+    if len(comparison_ids) != 3144 or len(comparison_ids) != len(set(comparison_ids)):
+        issues.append(Issue("pooled_foundation", "comparison-pool-readiness.json.records", "must represent all 3,144 national panel counties exactly once"))
+    if any(row.get("comparison_eligible") or row.get("county_first_entry_verified") for row in comparison_records):
+        issues.append(Issue("pooled_foundation", "comparison-pool-readiness.json.records", "no county may be eligible before first-entry screening verifies the comparison pool"))
 
     claim_ids = {
         row["claim_id"]
@@ -6266,6 +6308,14 @@ def validate_pooled_foundation(
         issues.append(Issue("pooled_foundation", "county-year-exposures.json.county_years", "county-year spine does not match selected project counties"))
     if any(row.get("pooled_estimation_eligible") for row in county_years):
         issues.append(Issue("pooled_foundation", "county-year-exposures.json.county_years", "foundation rows must remain ineligible for pooled estimation"))
+    exposure_estimate_ids = {
+        estimate_id
+        for row in county_years
+        for exposure in row.get("metric_exposures", [])
+        for estimate_id in exposure.get("contributing_estimate_ids", [])
+    }
+    if exposure_estimate_ids != eligible_rule_ids:
+        issues.append(Issue("pooled_foundation", "county-year-exposures.json.county_years", "Level 0 exposures must account exactly for every panel-year-eligible retained synthesis"))
     registered_ids = {
         project_id
         for row in county_years
@@ -6327,7 +6377,6 @@ def main() -> int:
 
     project_issues = validate_project_config(validator, schema_paths)
     project_issues.extend(validate_public_data(validator, schema_paths))
-    project_issues.extend(validate_pooled_foundation(validator, schema_paths))
     project_issues.extend(validate_pooled_foundation(validator, schema_paths))
     if __package__:
         from .validate_private_sector_study import validate_study

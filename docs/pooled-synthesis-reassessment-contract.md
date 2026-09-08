@@ -1,6 +1,6 @@
 # Cross-project synthesis reassessment contract
 
-8 September 2026. This contract governs the portfolio-wide reassessment of the 304 modeled syntheses published in `private-sector-study-1.60.0`. It implements the first gate of the pooled county-impact model without changing a source observation, treating a projection as realized, imputing a missing category, or fitting a pooled estimate. The portfolio-policy adjudication is now complete; empirical calibration, numeric county-year aggregation, and pooled estimation remain blocked.
+8 September 2026. This contract governs the portfolio-wide reassessment of the 304 modeled syntheses published in `private-sector-study-1.60.0`. It implements the pre-model gates without changing a source observation, treating a projection as realized, imputing a missing category, or fitting a pooled estimate. Portfolio-policy adjudication and conservative metric-rule registration are complete; empirical calibration failed its gate, numeric aggregation is limited to single-component Level 0 identities, and pooled estimation remains blocked.
 
 ## Evidence hierarchy
 
@@ -24,7 +24,7 @@ Machine triage is an inventory aid, not an acceptance decision. Every synthesis 
 
 No disposition may be selected to make an account appear complete. Superseded records remain traceable through version history and successor identifiers.
 
-The completed adjudication retains 66 transparent project-level arithmetic aggregations as candidates for later metric-specific exposure aggregation, restricts 194 assumption-dependent results to project sensitivity or counterfactual roles, and directs 44 project-scoped county comparisons to the future county-year framework. A retained record is not yet a pooled input: all 66 remain blocked on overlap, geography, period, contribution-channel, and aggregation rules.
+The completed adjudication retains 66 transparent project-level arithmetic aggregations as candidates for metric-specific exposure aggregation, restricts 194 assumption-dependent results to project sensitivity or counterfactual roles, and directs 44 project-scoped county comparisons to the future county-year framework. The subsequent rule gate registers 12 metric rules. Forty-eight explicitly dated records can enter the county-year layer only as Level 0 single-component identities; no same-county/year/metric sum is currently authorized. One cumulative record is excluded from annual allocation and 17 records across five metric rules remain blocked because they lack an explicit panel year.
 
 ## Empirical calibration gate
 
@@ -44,10 +44,10 @@ The observed-data screen evaluates twelve same-project, same-year ratio definiti
 
 ## Pooled-exposure boundary
 
-The facility-year and county-year foundation initially inventories components only. It does not sum values until every metric has registered aggregation, overlap, phase, temporal-alignment, geography, and uncertainty rules. Existing project-specific county GDP, employment, and wage comparisons are excluded from pooled inputs because projects in one county share those outcomes.
+The facility-year foundation inventories components without aggregation. The county-year layer may carry forward one retained synthesis unchanged only when its registered metric rule permits Level 0 identity aggregation and no second component shares the county, year, and metric. Multiple components block the result rather than being summed. Existing project-specific county GDP, employment, and wage comparisons are excluded from pooled inputs because projects in one county share those outcomes.
 
 Modeled inputs that survive reassessment enter later county-year aggregation through repeated draws consistent with their registered interval kind. Point calculations may be degenerate draws, but uncertainty about attribution or completeness remains a separate sensitivity or eligibility condition.
 
 ## Publication gate
 
-The first foundation release may publish coverage and readiness diagnostics only. It must contain no pooled association, attributable effect, causal label, net-fiscal claim, or composite benefit score. Statistical estimation remains blocked until numeric aggregation rules, treatment histories, comparison-pool screening, outcome definitions, and diagnostics have been registered and validated.
+The foundation may publish coverage, Level 0 descriptive identities, and readiness diagnostics only. It must contain no pooled association, attributable effect, causal label, net-fiscal claim, or composite benefit score. The national comparison register covers all 3,144 panel counties but currently identifies zero eligible comparison counties: 35 are study hosts, 19 non-host counties are reviewed but unresolved, 166 non-host counties remain in the resolution queue, and 2,924 are unscreened. Statistical estimation therefore remains blocked pending county first-entry and exposure-history verification, outcome definitions, and diagnostics.

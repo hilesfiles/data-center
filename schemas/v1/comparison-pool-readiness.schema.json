@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dccio.org/schemas/v1/comparison-pool-readiness.schema.json",
+  "title": "National comparison-pool readiness register",
+  "type": "object",
+  "required": ["schema_version", "artifact_version", "generated_at", "source_release", "status", "policy", "counts", "records"],
+  "properties": {
+    "schema_version": { "const": "1.0.0" },
+    "artifact_version": { "type": "string", "minLength": 1 },
+    "generated_at": { "type": "string", "format": "date-time" },
+    "source_release": { "type": "string", "minLength": 1 },
+    "status": { "const": "national_register_complete_zero_verified_comparisons" },
+    "policy": {
+      "type": "object",
+      "required": ["study_host_counties_excluded", "untreated_status_requires_exposure_screening", "unresolved_or_queued_counties_ineligible", "no_absence_inference_from_missing_inventory"],
+      "properties": {
+        "study_host_counties_excluded": { "const": true },
+        "untreated_status_requires_exposure_screening": { "const": true },
+        "unresolved_or_queued_counties_ineligible": { "const": true },
+        "no_absence_inference_from_missing_inventory": { "const": true }
+      },
+      "additionalProperties": false
+    },
+    "counts": {
+      "type": "object",
+      "required": ["national_panel_counties", "study_host_counties", "resolution_candidates", "reviewed_adjudications", "county_first_entry_verified", "comparison_eligible_counties", "readiness_status_counts"],
+      "properties": {
+        "national_panel_counties": { "type": "integer", "minimum": 1 },
+        "study_host_counties": { "type": "integer", "minimum": 1 },
+        "resolution_candidates": { "type": "integer", "minimum": 0 },
+        "reviewed_adjudications": { "type": "integer", "minimum": 0 },
+        "county_first_entry_verified": { "const": 0 },
+        "comparison_eligible_counties": { "const": 0 },
+        "readiness_status_counts": { "type": "object", "additionalProperties": { "type": "integer", "minimum": 0 } }
+      },
+      "additionalProperties": false
+    },
+    "records": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["county_fips", "county_name", "state_abbr", "panel_coverage_status", "study_host_county", "resolution_candidate_id", "resolution_status", "adjudication_id", "county_first_entry_verified", "readiness_status", "comparison_eligible", "ineligibility_reason"],
+        "properties": {
+          "county_fips": { "type": "string", "pattern": "^[0-9]{5}$" },
+          "county_name": { "type": "string", "minLength": 1 },
+          "state_abbr": { "type": "string", "pattern": "^[A-Z]{2}$" },
+          "panel_coverage_status": { "type": "string", "minLength": 1 },
+          "study_host_county": { "type": "boolean" },
+          "resolution_candidate_id": { "type": ["string", "null"] },
+          "resolution_status": { "type": ["string", "null"] },
+          "adjudication_id": { "type": ["string", "null"] },
+          "county_first_entry_verified": { "const": false },
+          "readiness_status": { "enum": ["excluded_study_host_county", "blocked_reviewed_but_unresolved", "blocked_resolution_queued", "blocked_national_exposure_unscreened"] },
+          "comparison_eligible": { "const": false },
+          "ineligibility_reason": { "type": "string", "minLength": 1 }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}
