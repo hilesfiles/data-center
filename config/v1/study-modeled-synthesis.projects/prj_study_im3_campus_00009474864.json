@@ -1,0 +1,1677 @@
+{
+  "schema_version": "1.0.0",
+  "project_id": "prj_study_im3_campus_00009474864",
+  "reviewed_on": "2026-09-07",
+  "scope_note": "Eighteen unallocated modeled syntheses retained only after direct-evidence exhaustion: twelve exact same-year assessed-value aggregations, one exact source-projection payroll product, three source-value water-consumption carry-throughs with rounding bands, and two noncausal matched-county comparisons. All remain separate from canonical observations, realized-benefit totals, and each other unless an aggregation explicitly says otherwise. Supplier, electricity-use, tax-receipt, net-fiscal, public-cost, construction-payroll, social-return, and county-GDP candidates fail the project-anchor, scope, or sensitivity gates and remain documented gaps.",
+  "sources": [],
+  "estimates": [
+    {
+      "estimate_id": "est_study_google_lenoir_projected_payroll_2007",
+      "project_id": "prj_study_im3_campus_00009474864",
+      "metric_code": "study.modeled_operating_payroll",
+      "label": "Original planned annual payroll product",
+      "category": "operations",
+      "unit": "USD_per_year",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 10143000,
+      "period": {
+        "kind": "projection_horizon",
+        "report_date": "2007-01-19",
+        "horizon_years": 4,
+        "label": "Original Lenoir employment plan"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Original Google Lenoir campus employment plan",
+        "county_fips": "37027",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "deterministic_counterfactual",
+        "low": 10143000,
+        "central": 10143000,
+        "high": 10143000,
+        "interpretation": "Exact product of two source projections; this is not observed payroll and the point interval does not represent statistical certainty."
+      },
+      "contribution_channel": "direct",
+      "aggregation": {
+        "aggregation_id": "google_lenoir_projected_payroll_2007",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "planned_operating_jobs",
+          "value": 210,
+          "unit": "jobs",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_google_lenoir_jobs_projection_2007",
+            "detail": "Original planned full-build jobs"
+          },
+          "transformation": "Multiplied by planned average annual salary"
+        },
+        {
+          "name": "planned_average_annual_salary",
+          "value": 48300,
+          "unit": "USD_per_year",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_google_lenoir_salary_projection_2007",
+            "detail": "Original planned average annual salary"
+          },
+          "transformation": "Multiplied by planned jobs"
+        }
+      ],
+      "confidence": "medium",
+      "confidence_rationale": "Arithmetic is exact and same-source, but both inputs are 2007 projections and no later payroll reconciliation was found.",
+      "decision_relevance": "Provides the annual wage-bill scale implicit in the original jobs and salary announcement without relabeling it as realized payroll.",
+      "evidence_search": {
+        "direct_observation_status": "not_found",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Observed annual-average FTE, payroll, benefits, occupations, contractors, employee residence and current workforce"
+      },
+      "derivation": {
+        "method": "benchmark_application",
+        "model_version": "google-lenoir-account-1.0.0",
+        "formula": "210 planned jobs × $48,300 planned average annual salary = $10,143,000 per year",
+        "input_claim_ids": [
+          "clm_study_google_lenoir_jobs_projection_2007",
+          "clm_study_google_lenoir_salary_projection_2007"
+        ],
+        "input_source_ids": [
+          "src_study_datacenterknowledge_google_lenoir_2007"
+        ],
+        "assumptions": [
+          "The two projections use a compatible full-build employment scope.",
+          "A job is treated as one annual salary position only to reproduce the plan's implicit scale.",
+          "Benefits, equity, contractors, vacancies, turnover and residence effects are excluded."
+        ]
+      },
+      "limitations": [
+        "Not observed or current Google payroll.",
+        "The source did not define annual-average FTE or compensation components.",
+        "Do not add to Deloitte labor-income estimates."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Source-projection product only; do not present as a realized operating contribution.",
+      "reviewed_on": "2026-09-07"
+    },
+    {
+      "estimate_id": "est_study_google_lenoir_water_consumption_2022",
+      "project_id": "prj_study_im3_campus_00009474864",
+      "metric_code": "study.modeled_annual_water_consumption",
+      "label": "Reported Lenoir water consumption carried through",
+      "category": "resources",
+      "unit": "gallons_per_year",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 320500000,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2022,
+        "label": "Calendar year 2022"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Google North Carolina data-center reporting boundary; no building allocation",
+        "county_fips": "37027",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "reported_band",
+        "low": 320450000,
+        "central": 320500000,
+        "high": 320550000,
+        "interpretation": "Nearest-tenth-million-gallon source rounding band; not a confidence interval."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "google_lenoir_water_consumption_2022",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "reported_water_consumption",
+          "value": 320.5,
+          "unit": "million_gallons_per_year",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_google_nc_impact_2024",
+            "detail": "2022 North Carolina data-center water consumption"
+          },
+          "transformation": "Multiply by 1,000,000 gallons per million gallons"
+        }
+      ],
+      "confidence": "high",
+      "confidence_rationale": "Operator/Deloitte source directly reports the location/state data-center value, with disclosed rounding and no evidence of another North Carolina data center in the period.",
+      "decision_relevance": "Preserves an annual resource-use value while the direct catalog lacks a consumption metric.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "not_applicable",
+        "remaining_evidence_gap": "Underlying meter records, withdrawal/discharge reconciliation, utility bill and building allocation"
+      },
+      "derivation": {
+        "method": "engineering_estimate",
+        "model_version": "google-lenoir-account-1.0.0",
+        "formula": "320.5 million gallons × 1,000,000",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_google_nc_impact_2024"
+        ],
+        "assumptions": [
+          "The published unit is million U.S. gallons per year.",
+          "The displayed value is rounded to the nearest 0.1 million gallons.",
+          "No sub-campus allocation is attempted."
+        ]
+      },
+      "limitations": [
+        "Not a utility bill or withdrawal value.",
+        "The report states state-level data-center reporting where applicable.",
+        "Do not add to withdrawal."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Unit carry-through only; do not present as an independently audited meter total.",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "google_lenoir_modeled_water_consumption"
+    },
+    {
+      "estimate_id": "est_study_google_lenoir_water_consumption_2023",
+      "project_id": "prj_study_im3_campus_00009474864",
+      "metric_code": "study.modeled_annual_water_consumption",
+      "label": "Reported Lenoir water consumption carried through",
+      "category": "resources",
+      "unit": "gallons_per_year",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 336800000,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2023,
+        "label": "Calendar year 2023"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Google North Carolina data-center reporting boundary; no building allocation",
+        "county_fips": "37027",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "reported_band",
+        "low": 336750000,
+        "central": 336800000,
+        "high": 336850000,
+        "interpretation": "Nearest-tenth-million-gallon source rounding band; not a confidence interval."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "google_lenoir_water_consumption_2023",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "reported_water_consumption",
+          "value": 336.8,
+          "unit": "million_gallons_per_year",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_google_nc_impact_2024",
+            "detail": "2023 North Carolina data-center water consumption"
+          },
+          "transformation": "Multiply by 1,000,000 gallons per million gallons"
+        }
+      ],
+      "confidence": "high",
+      "confidence_rationale": "Operator/Deloitte source directly reports the location/state data-center value, with disclosed rounding and no evidence of another North Carolina data center in the period.",
+      "decision_relevance": "Preserves an annual resource-use value while the direct catalog lacks a consumption metric.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "not_applicable",
+        "remaining_evidence_gap": "Underlying meter records, withdrawal/discharge reconciliation, utility bill and building allocation"
+      },
+      "derivation": {
+        "method": "engineering_estimate",
+        "model_version": "google-lenoir-account-1.0.0",
+        "formula": "336.8 million gallons × 1,000,000",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_google_nc_impact_2024"
+        ],
+        "assumptions": [
+          "The published unit is million U.S. gallons per year.",
+          "The displayed value is rounded to the nearest 0.1 million gallons.",
+          "No sub-campus allocation is attempted."
+        ]
+      },
+      "limitations": [
+        "Not a utility bill or withdrawal value.",
+        "The report states state-level data-center reporting where applicable.",
+        "Do not add to withdrawal."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Unit carry-through only; do not present as an independently audited meter total.",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "google_lenoir_modeled_water_consumption"
+    },
+    {
+      "estimate_id": "est_study_google_lenoir_water_consumption_2024",
+      "project_id": "prj_study_im3_campus_00009474864",
+      "metric_code": "study.modeled_annual_water_consumption",
+      "label": "Reported Lenoir water consumption carried through",
+      "category": "resources",
+      "unit": "gallons_per_year",
+      "measure_type": "flow",
+      "basis": "modeled_synthesis",
+      "value": 327800000,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2024,
+        "label": "Calendar year 2024"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Google Lenoir data-center reporting boundary; no building allocation",
+        "county_fips": "37027",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "reported_band",
+        "low": 327750000,
+        "central": 327800000,
+        "high": 327850000,
+        "interpretation": "Nearest-tenth-million-gallon source rounding band; not a confidence interval."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "google_lenoir_water_consumption_2024",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "reported_water_consumption",
+          "value": 327.8,
+          "unit": "million_gallons_per_year",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_google_environmental_report_2025_lenoir",
+            "detail": "2024 Lenoir water consumption"
+          },
+          "transformation": "Multiply by 1,000,000 gallons per million gallons"
+        }
+      ],
+      "confidence": "high",
+      "confidence_rationale": "Operator report directly identifies Lenoir and marks the value as within limited-assurance procedures, with disclosed rounding.",
+      "decision_relevance": "Preserves an annual resource-use value while the direct catalog lacks a consumption metric.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "not_applicable",
+        "remaining_evidence_gap": "Underlying meter records, utility bill, process split and building allocation"
+      },
+      "derivation": {
+        "method": "engineering_estimate",
+        "model_version": "google-lenoir-account-1.0.0",
+        "formula": "327.8 million gallons × 1,000,000",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_google_environmental_report_2025_lenoir"
+        ],
+        "assumptions": [
+          "The published unit is million U.S. gallons per year.",
+          "The displayed value is rounded to the nearest 0.1 million gallons.",
+          "No sub-campus allocation is attempted."
+        ]
+      },
+      "limitations": [
+        "Not a utility bill.",
+        "Consumption equals withdrawal less discharge at the reporting boundary and must not be added to either.",
+        "No building allocation."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Unit carry-through only; do not present as a separately observed canonical claim.",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "google_lenoir_modeled_water_consumption"
+    },
+    {
+      "estimate_id": "est_study_google_lenoir_county_employment_gap_2024",
+      "project_id": "prj_study_im3_campus_00009474864",
+      "metric_code": "study.modeled_county_employment_comparison_gap",
+      "label": "Caldwell County employment gap versus matched counties",
+      "category": "county_outcome",
+      "unit": "percent",
+      "measure_type": "change",
+      "basis": "modeled_synthesis",
+      "value": 3.0603180297358534,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2024,
+        "label": "2024 versus 2007 anchor"
+      },
+      "scope": {
+        "level": "county",
+        "label": "Caldwell County descriptive comparison",
+        "county_fips": "37027",
+        "inventory_allocation": "not_applicable"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": -2.5236087500496773,
+        "central": 3.0603180297358534,
+        "high": 13.211765751397131,
+        "interpretation": "Envelope across national K3/K10, North Carolina K5 and five leave-one-out estimates; not a confidence interval or facility effect."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "google_lenoir_county_employment_gap_2024",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "host_2024_employment",
+          "value": 25506,
+          "unit": "jobs",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_county_economic_core_2001_2024",
+            "detail": "Caldwell County 2024 covered employment"
+          },
+          "transformation": "Compared with equal-weight matched benchmark"
+        },
+        {
+          "name": "matched_benchmark_2024_employment",
+          "value": 24748.613712448267,
+          "unit": "jobs",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_county_economic_core_2001_2024",
+            "detail": "2007-anchored equal-weight growth benchmark from five donors"
+          },
+          "transformation": "Denominator and comparison value"
+        },
+        {
+          "name": "selected_donor_mean_pretrend_rmse_percent",
+          "value": 1.5682997056867019,
+          "unit": "percent",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Mean donor log-path RMSE over 2001-2007"
+          },
+          "transformation": "Diagnostic only"
+        },
+        {
+          "name": "equal_weight_group_pretrend_rmse_percent",
+          "value": 0.7294574979564481,
+          "unit": "percent",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Group log-path RMSE over 2001-2007"
+          },
+          "transformation": "Diagnostic only"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "National matched fit is usable but the sensitivity envelope crosses zero and North Carolina-only donors produce a materially larger gap.",
+      "decision_relevance": "Shows Caldwell's long-run employment path relative to explicitly selected comparisons without attributing the difference to Google.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "not_applicable",
+        "remaining_evidence_gap": "Project-specific causal design, exposure intensity, concurrent shocks, worker residence and establishment-level employment"
+      },
+      "derivation": {
+        "method": "benchmark_application",
+        "model_version": "google-lenoir-county-comparison-1.0.0",
+        "formula": "100 × {exp[ln(Caldwell 2024/Caldwell 2007) − mean donor ln(2024/2007)] − 1}",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_google_lenoir_opening_2008",
+          "src_study_county_economic_core_2001_2024"
+        ],
+        "assumptions": [
+          "Treatment chronology uses the May 2008 opening, with 2001-2007 preperiod and 2007 anchor.",
+          "Eligible non-study counties have complete 2001-2024 data and 2007 population between 0.35 and 2.5 times Caldwell.",
+          "Five lowest pretrend-RMSE donors are 01017, 45067, 37165, 26059 and 39119.",
+          "The result is descriptive and not a causal effect."
+        ]
+      },
+      "limitations": [
+        "Great Recession, furniture-sector decline and later campus expansions confound attribution.",
+        "North Carolina-only sensitivity is 13.211765751397131 percent.",
+        "The envelope crosses zero."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Descriptive county comparison only; do not present as a Google employment effect.",
+      "reviewed_on": "2026-09-07"
+    },
+    {
+      "estimate_id": "est_study_google_lenoir_county_wage_gap_2024",
+      "project_id": "prj_study_im3_campus_00009474864",
+      "metric_code": "study.modeled_county_wage_comparison_gap",
+      "label": "Caldwell County wage gap versus matched counties",
+      "category": "county_outcome",
+      "unit": "percent",
+      "measure_type": "change",
+      "basis": "modeled_synthesis",
+      "value": 3.7300979826653924,
+      "period": {
+        "kind": "calendar_year",
+        "year": 2024,
+        "label": "2024 versus 2007 anchor"
+      },
+      "scope": {
+        "level": "county",
+        "label": "Caldwell County descriptive comparison",
+        "county_fips": "37027",
+        "inventory_allocation": "not_applicable"
+      },
+      "interval": {
+        "kind": "sensitivity_envelope",
+        "low": 0.6408050745801308,
+        "central": 3.7300979826653924,
+        "high": 6.203854349987781,
+        "interpretation": "Envelope across national K3/K10, North Carolina K5 and five leave-one-out estimates; not a confidence interval or facility effect."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "google_lenoir_county_wage_gap_2024",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "host_2024_weekly_wage",
+          "value": 973,
+          "unit": "USD_per_week",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_county_economic_core_2001_2024",
+            "detail": "Caldwell County 2024 nominal average weekly wage"
+          },
+          "transformation": "Compared with equal-weight matched benchmark"
+        },
+        {
+          "name": "matched_benchmark_2024_weekly_wage",
+          "value": 938.0112608807143,
+          "unit": "USD_per_week",
+          "provenance": {
+            "kind": "source",
+            "reference_id": "src_study_county_economic_core_2001_2024",
+            "detail": "2007-anchored equal-weight growth benchmark from five donors"
+          },
+          "transformation": "Denominator and comparison value"
+        },
+        {
+          "name": "selected_donor_mean_pretrend_rmse_percent",
+          "value": 1.1840709380146326,
+          "unit": "percent",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Mean donor log-path RMSE over 2001-2007"
+          },
+          "transformation": "Diagnostic only"
+        },
+        {
+          "name": "equal_weight_group_pretrend_rmse_percent",
+          "value": 1.02584290507755,
+          "unit": "percent",
+          "provenance": {
+            "kind": "assumption",
+            "detail": "Group log-path RMSE over 2001-2007"
+          },
+          "transformation": "Diagnostic only"
+        }
+      ],
+      "confidence": "low",
+      "confidence_rationale": "Sensitivity stays positive but nominal county wages span all covered industries and cannot isolate the campus or resident workers.",
+      "decision_relevance": "Shows Caldwell's long-run wage path relative to explicit comparisons without treating county wage growth as Google payroll or causation.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "available_separately",
+        "remaining_evidence_gap": "Google wage distribution, occupation mix, worker residence, establishment payroll and project-specific causal design"
+      },
+      "derivation": {
+        "method": "benchmark_application",
+        "model_version": "google-lenoir-county-comparison-1.0.0",
+        "formula": "100 × {exp[ln(Caldwell 2024/Caldwell 2007) − mean donor ln(2024/2007)] − 1}",
+        "input_claim_ids": [],
+        "input_source_ids": [
+          "src_study_google_lenoir_opening_2008",
+          "src_study_county_economic_core_2001_2024"
+        ],
+        "assumptions": [
+          "Treatment chronology uses the May 2008 opening, with 2001-2007 preperiod and 2007 anchor.",
+          "Eligible non-study counties have complete 2001-2024 data and 2007 population between 0.35 and 2.5 times Caldwell.",
+          "Five lowest pretrend-RMSE donors are 36053, 26059, 47099, 28081 and 23013.",
+          "The result is descriptive and not a causal effect."
+        ]
+      },
+      "limitations": [
+        "Nominal all-industry wages are not data-center wages or resident earnings.",
+        "Concurrent industrial restructuring and later expansions confound attribution.",
+        "Matching does not establish parallel untreated potential outcomes."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Descriptive county comparison only; do not present as a Google wage effect or payroll.",
+      "reviewed_on": "2026-09-07"
+    },
+    {
+      "estimate_id": "est_study_google_lenoir_combined_assessed_2011",
+      "project_id": "prj_study_im3_campus_00009474864",
+      "metric_code": "study.modeled_combined_assessed_value",
+      "label": "Combined Google and Tapaha county assessed value",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "stock",
+      "basis": "modeled_synthesis",
+      "value": 154896592,
+      "period": {
+        "kind": "fiscal_year",
+        "year": 2011,
+        "label": "Fiscal year ended June 30, 2011"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Google business-personal plus Tapaha real property in Caldwell County",
+        "county_fips": "37027",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "point_estimate",
+        "low": 154896592,
+        "central": 154896592,
+        "high": 154896592,
+        "interpretation": "Exact sum of two same-year, separately named taxpayer-table components; not an uncertainty interval or tax bill."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "google_lenoir_combined_assessed_2011",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "google_assessed_value",
+          "value": 73958292,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_google_lenoir_assessed_2011",
+            "detail": "Google component"
+          },
+          "transformation": "Added"
+        },
+        {
+          "name": "tapaha_assessed_value",
+          "value": 80938300,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_tapaha_lenoir_assessed_2011",
+            "detail": "Tapaha component"
+          },
+          "transformation": "Added"
+        }
+      ],
+      "confidence": "high",
+      "confidence_rationale": "Official table reports two distinct taxpayer rows for the same fiscal year.",
+      "decision_relevance": "Provides a noncanonical campus-associated assessed-base scale while keeping legal taxpayers visible.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "not_applicable",
+        "remaining_evidence_gap": "Parcel/account reconciliation, taxable versus exempt split, tax bill, payment and incentive allocation"
+      },
+      "derivation": {
+        "method": "benchmark_application",
+        "model_version": "google-lenoir-assessed-sum-1.0.0",
+        "formula": "$73,958,292 + $80,938,300",
+        "input_claim_ids": [
+          "clm_study_google_lenoir_assessed_2011",
+          "clm_study_tapaha_lenoir_assessed_2011"
+        ],
+        "input_source_ids": [
+          "src_study_caldwell_acfr_2011"
+        ],
+        "assumptions": [
+          "The two named taxpayer rows are distinct.",
+          "No other Google-linked account is added.",
+          "The sum is not treated as tax, investment or market value."
+        ]
+      },
+      "limitations": [
+        "Principal-taxpayer table, not account ledger.",
+        "No bill or payment.",
+        "Do not add to either component."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Exact two-component aggregation only; do not treat as a canonical assessed-value claim.",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "google_lenoir_combined_assessed_value"
+    },
+    {
+      "estimate_id": "est_study_google_lenoir_combined_assessed_2013",
+      "project_id": "prj_study_im3_campus_00009474864",
+      "metric_code": "study.modeled_combined_assessed_value",
+      "label": "Combined Google and Tapaha county assessed value",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "stock",
+      "basis": "modeled_synthesis",
+      "value": 283716383,
+      "period": {
+        "kind": "fiscal_year",
+        "year": 2013,
+        "label": "Fiscal year ended June 30, 2013"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Google business-personal plus Tapaha real property in Caldwell County",
+        "county_fips": "37027",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "point_estimate",
+        "low": 283716383,
+        "central": 283716383,
+        "high": 283716383,
+        "interpretation": "Exact sum of two same-year taxpayer-table components; not an uncertainty interval or tax bill."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "google_lenoir_combined_assessed_2013",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "google_assessed_value",
+          "value": 163942083,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_google_lenoir_assessed_2013",
+            "detail": "Google component"
+          },
+          "transformation": "Added"
+        },
+        {
+          "name": "tapaha_assessed_value",
+          "value": 119774300,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_tapaha_lenoir_assessed_2013",
+            "detail": "Tapaha component"
+          },
+          "transformation": "Added"
+        }
+      ],
+      "confidence": "high",
+      "confidence_rationale": "Official table reports distinct rows in one year.",
+      "decision_relevance": "Campus-associated assessed-base scale.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "not_applicable",
+        "remaining_evidence_gap": "Account reconciliation, bills and payments"
+      },
+      "derivation": {
+        "method": "benchmark_application",
+        "model_version": "google-lenoir-assessed-sum-1.0.0",
+        "formula": "$163,942,083 + $119,774,300",
+        "input_claim_ids": [
+          "clm_study_google_lenoir_assessed_2013",
+          "clm_study_tapaha_lenoir_assessed_2013"
+        ],
+        "input_source_ids": [
+          "src_study_caldwell_acfr_2013"
+        ],
+        "assumptions": [
+          "Rows are distinct.",
+          "No other account is added.",
+          "Sum is not tax or investment."
+        ]
+      },
+      "limitations": [
+        "Taxpayer table only.",
+        "No bill.",
+        "Do not add to components."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Exact aggregation only; do not treat as canonical.",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "google_lenoir_combined_assessed_value"
+    },
+    {
+      "estimate_id": "est_study_google_lenoir_combined_assessed_2015",
+      "project_id": "prj_study_im3_campus_00009474864",
+      "metric_code": "study.modeled_combined_assessed_value",
+      "label": "Combined Google and Tapaha county assessed value",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "stock",
+      "basis": "modeled_synthesis",
+      "value": 754989369,
+      "period": {
+        "kind": "fiscal_year",
+        "year": 2015,
+        "label": "Fiscal year ended June 30, 2015"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Google business-personal plus Tapaha real property in Caldwell County",
+        "county_fips": "37027",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "point_estimate",
+        "low": 754989369,
+        "central": 754989369,
+        "high": 754989369,
+        "interpretation": "Exact sum of same-year components; not tax."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "google_lenoir_combined_assessed_2015",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "google_assessed_value",
+          "value": 548640869,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_google_lenoir_assessed_2015",
+            "detail": "Google component"
+          },
+          "transformation": "Added"
+        },
+        {
+          "name": "tapaha_assessed_value",
+          "value": 206348500,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_tapaha_lenoir_assessed_2015",
+            "detail": "Tapaha component"
+          },
+          "transformation": "Added"
+        }
+      ],
+      "confidence": "high",
+      "confidence_rationale": "Official distinct rows.",
+      "decision_relevance": "Assessed-base scale.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "not_applicable",
+        "remaining_evidence_gap": "Bills and account reconciliation"
+      },
+      "derivation": {
+        "method": "benchmark_application",
+        "model_version": "google-lenoir-assessed-sum-1.0.0",
+        "formula": "$548,640,869 + $206,348,500",
+        "input_claim_ids": [
+          "clm_study_google_lenoir_assessed_2015",
+          "clm_study_tapaha_lenoir_assessed_2015"
+        ],
+        "input_source_ids": [
+          "src_study_caldwell_acfr_2015"
+        ],
+        "assumptions": [
+          "Rows distinct.",
+          "No other account added.",
+          "Not tax or investment."
+        ]
+      },
+      "limitations": [
+        "Taxpayer table only.",
+        "No bill.",
+        "Do not add to components."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Exact aggregation only; do not treat as canonical.",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "google_lenoir_combined_assessed_value"
+    },
+    {
+      "estimate_id": "est_study_google_lenoir_combined_assessed_2016",
+      "project_id": "prj_study_im3_campus_00009474864",
+      "metric_code": "study.modeled_combined_assessed_value",
+      "label": "Combined Google and Tapaha county assessed value",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "stock",
+      "basis": "modeled_synthesis",
+      "value": 859287910,
+      "period": {
+        "kind": "fiscal_year",
+        "year": 2016,
+        "label": "Fiscal year ended June 30, 2016"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Google business-personal plus Tapaha real property in Caldwell County",
+        "county_fips": "37027",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "point_estimate",
+        "low": 859287910,
+        "central": 859287910,
+        "high": 859287910,
+        "interpretation": "Exact sum of same-year components; not tax."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "google_lenoir_combined_assessed_2016",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "google_assessed_value",
+          "value": 600773510,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_google_lenoir_assessed_2016",
+            "detail": "Google component"
+          },
+          "transformation": "Added"
+        },
+        {
+          "name": "tapaha_assessed_value",
+          "value": 258514400,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_tapaha_lenoir_assessed_2016",
+            "detail": "Tapaha component"
+          },
+          "transformation": "Added"
+        }
+      ],
+      "confidence": "high",
+      "confidence_rationale": "Official distinct rows.",
+      "decision_relevance": "Assessed-base scale.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "not_applicable",
+        "remaining_evidence_gap": "Bills and account reconciliation"
+      },
+      "derivation": {
+        "method": "benchmark_application",
+        "model_version": "google-lenoir-assessed-sum-1.0.0",
+        "formula": "$600,773,510 + $258,514,400",
+        "input_claim_ids": [
+          "clm_study_google_lenoir_assessed_2016",
+          "clm_study_tapaha_lenoir_assessed_2016"
+        ],
+        "input_source_ids": [
+          "src_study_caldwell_acfr_2016"
+        ],
+        "assumptions": [
+          "Rows distinct.",
+          "No other account added.",
+          "Not tax or investment."
+        ]
+      },
+      "limitations": [
+        "Taxpayer table only.",
+        "No bill.",
+        "Do not add to components."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Exact aggregation only; do not treat as canonical.",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "google_lenoir_combined_assessed_value"
+    },
+    {
+      "estimate_id": "est_study_google_lenoir_combined_assessed_2017",
+      "project_id": "prj_study_im3_campus_00009474864",
+      "metric_code": "study.modeled_combined_assessed_value",
+      "label": "Combined Google and Tapaha county assessed value",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "stock",
+      "basis": "modeled_synthesis",
+      "value": 890916390,
+      "period": {
+        "kind": "fiscal_year",
+        "year": 2017,
+        "label": "Fiscal year ended June 30, 2017"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Google business-personal plus Tapaha real property in Caldwell County",
+        "county_fips": "37027",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "point_estimate",
+        "low": 890916390,
+        "central": 890916390,
+        "high": 890916390,
+        "interpretation": "Exact sum of same-year components; not tax."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "google_lenoir_combined_assessed_2017",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "google_assessed_value",
+          "value": 535316090,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_google_lenoir_assessed_2017",
+            "detail": "Google component"
+          },
+          "transformation": "Added"
+        },
+        {
+          "name": "tapaha_assessed_value",
+          "value": 355600300,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_tapaha_lenoir_assessed_2017",
+            "detail": "Tapaha component"
+          },
+          "transformation": "Added"
+        }
+      ],
+      "confidence": "high",
+      "confidence_rationale": "Official distinct rows.",
+      "decision_relevance": "Assessed-base scale.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "not_applicable",
+        "remaining_evidence_gap": "Bills and account reconciliation"
+      },
+      "derivation": {
+        "method": "benchmark_application",
+        "model_version": "google-lenoir-assessed-sum-1.0.0",
+        "formula": "$535,316,090 + $355,600,300",
+        "input_claim_ids": [
+          "clm_study_google_lenoir_assessed_2017",
+          "clm_study_tapaha_lenoir_assessed_2017"
+        ],
+        "input_source_ids": [
+          "src_study_caldwell_acfr_2017"
+        ],
+        "assumptions": [
+          "Rows distinct.",
+          "No other account added.",
+          "Not tax or investment."
+        ]
+      },
+      "limitations": [
+        "Taxpayer table only.",
+        "No bill.",
+        "Do not add to components."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Exact aggregation only; do not treat as canonical.",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "google_lenoir_combined_assessed_value"
+    },
+    {
+      "estimate_id": "est_study_google_lenoir_combined_assessed_2018",
+      "project_id": "prj_study_im3_campus_00009474864",
+      "metric_code": "study.modeled_combined_assessed_value",
+      "label": "Combined Google and Tapaha county assessed value",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "stock",
+      "basis": "modeled_synthesis",
+      "value": 867028558,
+      "period": {
+        "kind": "fiscal_year",
+        "year": 2018,
+        "label": "Fiscal year ended June 30, 2018"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Google business-personal plus Tapaha real property in Caldwell County",
+        "county_fips": "37027",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "point_estimate",
+        "low": 867028558,
+        "central": 867028558,
+        "high": 867028558,
+        "interpretation": "Exact sum of same-year components; not tax."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "google_lenoir_combined_assessed_2018",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "google_assessed_value",
+          "value": 511421258,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_google_lenoir_assessed_2018",
+            "detail": "Google component"
+          },
+          "transformation": "Added"
+        },
+        {
+          "name": "tapaha_assessed_value",
+          "value": 355607300,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_tapaha_lenoir_assessed_2018",
+            "detail": "Tapaha component"
+          },
+          "transformation": "Added"
+        }
+      ],
+      "confidence": "high",
+      "confidence_rationale": "Official distinct rows.",
+      "decision_relevance": "Assessed-base scale.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "not_applicable",
+        "remaining_evidence_gap": "Bills and account reconciliation"
+      },
+      "derivation": {
+        "method": "benchmark_application",
+        "model_version": "google-lenoir-assessed-sum-1.0.0",
+        "formula": "$511,421,258 + $355,607,300",
+        "input_claim_ids": [
+          "clm_study_google_lenoir_assessed_2018",
+          "clm_study_tapaha_lenoir_assessed_2018"
+        ],
+        "input_source_ids": [
+          "src_study_caldwell_acfr_2018"
+        ],
+        "assumptions": [
+          "Rows distinct.",
+          "No other account added.",
+          "Not tax or investment."
+        ]
+      },
+      "limitations": [
+        "Taxpayer table only.",
+        "No bill.",
+        "Do not add to components."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Exact aggregation only; do not treat as canonical.",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "google_lenoir_combined_assessed_value"
+    },
+    {
+      "estimate_id": "est_study_google_lenoir_combined_assessed_2019",
+      "project_id": "prj_study_im3_campus_00009474864",
+      "metric_code": "study.modeled_combined_assessed_value",
+      "label": "Combined Google and Tapaha county assessed value",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "stock",
+      "basis": "modeled_synthesis",
+      "value": 1041015522,
+      "period": {
+        "kind": "fiscal_year",
+        "year": 2019,
+        "label": "Fiscal year ended June 30, 2019"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Google business-personal plus Tapaha real property in Caldwell County",
+        "county_fips": "37027",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "point_estimate",
+        "low": 1041015522,
+        "central": 1041015522,
+        "high": 1041015522,
+        "interpretation": "Exact sum of same-year components; not tax."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "google_lenoir_combined_assessed_2019",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "google_assessed_value",
+          "value": 685408222,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_google_lenoir_assessed_2019",
+            "detail": "Google component"
+          },
+          "transformation": "Added"
+        },
+        {
+          "name": "tapaha_assessed_value",
+          "value": 355607300,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_tapaha_lenoir_assessed_2019",
+            "detail": "Tapaha component"
+          },
+          "transformation": "Added"
+        }
+      ],
+      "confidence": "high",
+      "confidence_rationale": "Official distinct rows.",
+      "decision_relevance": "Assessed-base scale.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "not_applicable",
+        "remaining_evidence_gap": "Bills and account reconciliation"
+      },
+      "derivation": {
+        "method": "benchmark_application",
+        "model_version": "google-lenoir-assessed-sum-1.0.0",
+        "formula": "$685,408,222 + $355,607,300",
+        "input_claim_ids": [
+          "clm_study_google_lenoir_assessed_2019",
+          "clm_study_tapaha_lenoir_assessed_2019"
+        ],
+        "input_source_ids": [
+          "src_study_caldwell_acfr_2019"
+        ],
+        "assumptions": [
+          "Rows distinct.",
+          "No other account added.",
+          "Not tax or investment."
+        ]
+      },
+      "limitations": [
+        "Taxpayer table only.",
+        "No bill.",
+        "Do not add to components."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Exact aggregation only; do not treat as canonical.",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "google_lenoir_combined_assessed_value"
+    },
+    {
+      "estimate_id": "est_study_google_lenoir_combined_assessed_2020",
+      "project_id": "prj_study_im3_campus_00009474864",
+      "metric_code": "study.modeled_combined_assessed_value",
+      "label": "Combined Google and Tapaha county assessed value",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "stock",
+      "basis": "modeled_synthesis",
+      "value": 1529005368,
+      "period": {
+        "kind": "fiscal_year",
+        "year": 2020,
+        "label": "Fiscal year ended June 30, 2020"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Google business-personal plus Tapaha real property in Caldwell County",
+        "county_fips": "37027",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "point_estimate",
+        "low": 1529005368,
+        "central": 1529005368,
+        "high": 1529005368,
+        "interpretation": "Exact sum of same-year components; not tax."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "google_lenoir_combined_assessed_2020",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "google_assessed_value",
+          "value": 1173397868,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_google_lenoir_assessed_2020",
+            "detail": "Google component"
+          },
+          "transformation": "Added"
+        },
+        {
+          "name": "tapaha_assessed_value",
+          "value": 355607500,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_tapaha_lenoir_assessed_2020",
+            "detail": "Tapaha component"
+          },
+          "transformation": "Added"
+        }
+      ],
+      "confidence": "high",
+      "confidence_rationale": "Official distinct rows.",
+      "decision_relevance": "Assessed-base scale.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "not_applicable",
+        "remaining_evidence_gap": "Bills and account reconciliation"
+      },
+      "derivation": {
+        "method": "benchmark_application",
+        "model_version": "google-lenoir-assessed-sum-1.0.0",
+        "formula": "$1,173,397,868 + $355,607,500",
+        "input_claim_ids": [
+          "clm_study_google_lenoir_assessed_2020",
+          "clm_study_tapaha_lenoir_assessed_2020"
+        ],
+        "input_source_ids": [
+          "src_study_caldwell_acfr_2020"
+        ],
+        "assumptions": [
+          "Rows distinct.",
+          "No other account added.",
+          "Not tax or investment."
+        ]
+      },
+      "limitations": [
+        "Taxpayer table only.",
+        "No bill.",
+        "Do not add to components."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Exact aggregation only; do not treat as canonical.",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "google_lenoir_combined_assessed_value"
+    },
+    {
+      "estimate_id": "est_study_google_lenoir_combined_assessed_2021",
+      "project_id": "prj_study_im3_campus_00009474864",
+      "metric_code": "study.modeled_combined_assessed_value",
+      "label": "Combined Google and Tapaha county assessed value",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "stock",
+      "basis": "modeled_synthesis",
+      "value": 1463354889,
+      "period": {
+        "kind": "fiscal_year",
+        "year": 2021,
+        "label": "Fiscal year ended June 30, 2021"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Google business-personal plus Tapaha real property in Caldwell County",
+        "county_fips": "37027",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "point_estimate",
+        "low": 1463354889,
+        "central": 1463354889,
+        "high": 1463354889,
+        "interpretation": "Exact sum of same-year components; not tax."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "google_lenoir_combined_assessed_2021",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "google_assessed_value",
+          "value": 1107747389,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_google_lenoir_assessed_2021",
+            "detail": "Google component"
+          },
+          "transformation": "Added"
+        },
+        {
+          "name": "tapaha_assessed_value",
+          "value": 355607500,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_tapaha_lenoir_assessed_2021",
+            "detail": "Tapaha component"
+          },
+          "transformation": "Added"
+        }
+      ],
+      "confidence": "high",
+      "confidence_rationale": "Official distinct rows.",
+      "decision_relevance": "Assessed-base scale.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "not_applicable",
+        "remaining_evidence_gap": "Bills and account reconciliation"
+      },
+      "derivation": {
+        "method": "benchmark_application",
+        "model_version": "google-lenoir-assessed-sum-1.0.0",
+        "formula": "$1,107,747,389 + $355,607,500",
+        "input_claim_ids": [
+          "clm_study_google_lenoir_assessed_2021",
+          "clm_study_tapaha_lenoir_assessed_2021"
+        ],
+        "input_source_ids": [
+          "src_study_caldwell_acfr_2021"
+        ],
+        "assumptions": [
+          "Rows distinct.",
+          "No other account added.",
+          "Not tax or investment."
+        ]
+      },
+      "limitations": [
+        "Taxpayer table only.",
+        "No bill.",
+        "Do not add to components."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Exact aggregation only; do not treat as canonical.",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "google_lenoir_combined_assessed_value"
+    },
+    {
+      "estimate_id": "est_study_google_lenoir_combined_assessed_2023",
+      "project_id": "prj_study_im3_campus_00009474864",
+      "metric_code": "study.modeled_combined_assessed_value",
+      "label": "Combined Google and Tapaha county assessed value",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "stock",
+      "basis": "modeled_synthesis",
+      "value": 1251076686,
+      "period": {
+        "kind": "fiscal_year",
+        "year": 2023,
+        "label": "Fiscal year ended June 30, 2023"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Google business-personal plus Tapaha real property in Caldwell County",
+        "county_fips": "37027",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "point_estimate",
+        "low": 1251076686,
+        "central": 1251076686,
+        "high": 1251076686,
+        "interpretation": "Exact sum of same-year components; not tax."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "google_lenoir_combined_assessed_2023",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "google_assessed_value",
+          "value": 847268686,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_google_lenoir_assessed_2023",
+            "detail": "Google component"
+          },
+          "transformation": "Added"
+        },
+        {
+          "name": "tapaha_assessed_value",
+          "value": 403808000,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_tapaha_lenoir_assessed_2023",
+            "detail": "Tapaha component"
+          },
+          "transformation": "Added"
+        }
+      ],
+      "confidence": "high",
+      "confidence_rationale": "Official distinct rows.",
+      "decision_relevance": "Assessed-base scale.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "not_applicable",
+        "remaining_evidence_gap": "Bills and account reconciliation"
+      },
+      "derivation": {
+        "method": "benchmark_application",
+        "model_version": "google-lenoir-assessed-sum-1.0.0",
+        "formula": "$847,268,686 + $403,808,000",
+        "input_claim_ids": [
+          "clm_study_google_lenoir_assessed_2023",
+          "clm_study_tapaha_lenoir_assessed_2023"
+        ],
+        "input_source_ids": [
+          "src_study_caldwell_acfr_2023"
+        ],
+        "assumptions": [
+          "Rows distinct.",
+          "No other account added.",
+          "Not tax or investment."
+        ]
+      },
+      "limitations": [
+        "Taxpayer table only.",
+        "No bill.",
+        "Do not add to components."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Exact aggregation only; do not treat as canonical.",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "google_lenoir_combined_assessed_value"
+    },
+    {
+      "estimate_id": "est_study_google_lenoir_combined_assessed_2024",
+      "project_id": "prj_study_im3_campus_00009474864",
+      "metric_code": "study.modeled_combined_assessed_value",
+      "label": "Combined Google and Tapaha county assessed value",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "stock",
+      "basis": "modeled_synthesis",
+      "value": 1221114836,
+      "period": {
+        "kind": "fiscal_year",
+        "year": 2024,
+        "label": "Fiscal year ended June 30, 2024"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Google business-personal plus Tapaha real property in Caldwell County",
+        "county_fips": "37027",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "point_estimate",
+        "low": 1221114836,
+        "central": 1221114836,
+        "high": 1221114836,
+        "interpretation": "Exact sum of same-year components; not tax."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "google_lenoir_combined_assessed_2024",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "google_assessed_value",
+          "value": 817306836,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_google_lenoir_assessed_2024",
+            "detail": "Google component"
+          },
+          "transformation": "Added"
+        },
+        {
+          "name": "tapaha_assessed_value",
+          "value": 403808000,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_tapaha_lenoir_assessed_2024",
+            "detail": "Tapaha component"
+          },
+          "transformation": "Added"
+        }
+      ],
+      "confidence": "high",
+      "confidence_rationale": "Official distinct rows.",
+      "decision_relevance": "Assessed-base scale.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "not_applicable",
+        "remaining_evidence_gap": "Bills and account reconciliation"
+      },
+      "derivation": {
+        "method": "benchmark_application",
+        "model_version": "google-lenoir-assessed-sum-1.0.0",
+        "formula": "$817,306,836 + $403,808,000",
+        "input_claim_ids": [
+          "clm_study_google_lenoir_assessed_2024",
+          "clm_study_tapaha_lenoir_assessed_2024"
+        ],
+        "input_source_ids": [
+          "src_study_caldwell_acfr_2024"
+        ],
+        "assumptions": [
+          "Rows distinct.",
+          "No other account added.",
+          "Not tax or investment."
+        ]
+      },
+      "limitations": [
+        "Taxpayer table only.",
+        "No bill.",
+        "Do not add to components."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Exact aggregation only; do not treat as canonical.",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "google_lenoir_combined_assessed_value"
+    },
+    {
+      "estimate_id": "est_study_google_lenoir_combined_assessed_2025",
+      "project_id": "prj_study_im3_campus_00009474864",
+      "metric_code": "study.modeled_combined_assessed_value",
+      "label": "Combined Google and Tapaha county assessed value",
+      "category": "fiscal",
+      "unit": "USD",
+      "measure_type": "stock",
+      "basis": "modeled_synthesis",
+      "value": 1081203603,
+      "period": {
+        "kind": "fiscal_year",
+        "year": 2025,
+        "label": "Fiscal year ended June 30, 2025"
+      },
+      "scope": {
+        "level": "campus",
+        "label": "Google business-personal plus Tapaha real property in Caldwell County",
+        "county_fips": "37027",
+        "inventory_allocation": "unallocated"
+      },
+      "interval": {
+        "kind": "point_estimate",
+        "low": 1081203603,
+        "central": 1081203603,
+        "high": 1081203603,
+        "interpretation": "Exact sum of same-year components; not tax."
+      },
+      "contribution_channel": "not_applicable",
+      "aggregation": {
+        "aggregation_id": "google_lenoir_combined_assessed_2025",
+        "role": "standalone",
+        "overlap_policy": "do_not_sum_outside_declared_total"
+      },
+      "parameters": [
+        {
+          "name": "google_assessed_value",
+          "value": 677395603,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_google_lenoir_assessed_2025",
+            "detail": "Google component"
+          },
+          "transformation": "Added"
+        },
+        {
+          "name": "tapaha_assessed_value",
+          "value": 403808000,
+          "unit": "USD",
+          "provenance": {
+            "kind": "claim",
+            "reference_id": "clm_study_tapaha_lenoir_assessed_2025",
+            "detail": "Tapaha component"
+          },
+          "transformation": "Added"
+        }
+      ],
+      "confidence": "high",
+      "confidence_rationale": "Official distinct rows.",
+      "decision_relevance": "Assessed-base scale.",
+      "evidence_search": {
+        "direct_observation_status": "partial",
+        "source_projection_status": "not_applicable",
+        "remaining_evidence_gap": "Bills and account reconciliation"
+      },
+      "derivation": {
+        "method": "benchmark_application",
+        "model_version": "google-lenoir-assessed-sum-1.0.0",
+        "formula": "$677,395,603 + $403,808,000",
+        "input_claim_ids": [
+          "clm_study_google_lenoir_assessed_2025",
+          "clm_study_tapaha_lenoir_assessed_2025"
+        ],
+        "input_source_ids": [
+          "src_study_caldwell_acfr_2025"
+        ],
+        "assumptions": [
+          "Rows distinct.",
+          "No other account added.",
+          "Not tax or investment."
+        ]
+      },
+      "limitations": [
+        "Taxpayer table only.",
+        "No bill.",
+        "Do not add to components."
+      ],
+      "presentation": "modeled_not_observed_or_audited",
+      "notes": "Exact aggregation only; do not treat as canonical.",
+      "reviewed_on": "2026-09-07",
+      "annual_series_key": "google_lenoir_combined_assessed_value"
+    }
+  ]
+}
