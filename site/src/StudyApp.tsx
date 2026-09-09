@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import App from "./App";
 import { EconomicAccounts } from "./EconomicAccounts";
 import { StudyNav } from "./StudyNav";
-import type { StudyIndex, StudyProject, StudyProjectSummary } from "./studyTypes";
+import type { ProjectMediaTimeline, ProjectMediaTimelineDataset, StudyIndex, StudyProject, StudyProjectSummary } from "./studyTypes";
 
 const base = `${import.meta.env.BASE_URL}data/v1/study/`;
 
@@ -66,8 +66,36 @@ function ProjectCard({ project: p }: { project: StudyProjectSummary }) {
   </article>;
 }
 
+const timelineCategoryLabels: Record<ProjectMediaTimeline["events"][number]["presentation_category"], string> = {
+  announcement: "Announcement",
+  milestone: "Milestone",
+  expansion: "Expansion",
+  ownership: "Ownership",
+  incident: "Incident",
+  controversy: "Controversy",
+};
+
+function PublicProjectTimeline({ timeline, datasetNote }: { timeline: ProjectMediaTimeline; datasetNote: string }) {
+  return <>
+    <p className="timeline-coverage-note">{timeline.coverage_note}</p>
+    <ol className="project-timeline media-timeline">{timeline.events.map(event => <li className={`timeline-${event.presentation_category}`} key={event.event_id}>
+      <span className="timeline-dot" />
+      <div className="media-timeline-entry">
+        <div className="timeline-meta"><time dateTime={event.sort_date}>{event.date_label}</time><span>{timelineCategoryLabels[event.presentation_category]}</span>{event.resolution_status !== "resolved" && <span className="timeline-resolution">{event.resolution_status}</span>}</div>
+        <strong>{event.title}</strong>
+        <p>{event.summary}</p>
+        {event.scope_note && <p className="timeline-scope-note">Scope: {event.scope_note}</p>}
+        <div className="timeline-sources" aria-label={`Sources for ${event.title}`}>{event.sources.map(source => <a href={source.url} target="_blank" rel="noreferrer" key={source.source_id}><strong>{source.title}</strong><span>{source.publisher} · {source.source_role === "primary" ? "Read source" : source.source_role} ↗</span></a>)}</div>
+      </div>
+    </li>)}</ol>
+    <div className="timeline-dataset-note"><p>{datasetNote}</p><a href={`${base}project-media-timelines.json`} download="project-media-timelines.json">Download timeline data ↓</a></div>
+  </>;
+}
+
 function ProjectProfile({ summary, release, generatedAt }: { summary: StudyProjectSummary; release: string; generatedAt: string }) {
   const [detail, setDetail] = useState<StudyProject | null>(null);
+  const [timeline, setTimeline] = useState<ProjectMediaTimeline | null>(null);
+  const [timelineDatasetNote, setTimelineDatasetNote] = useState("");
   const [error, setError] = useState<string | null>(null);
   useEffect(() => {
     let active = true;
@@ -80,6 +108,26 @@ function ProjectProfile({ summary, release, generatedAt }: { summary: StudyProje
     }).catch((reason: unknown) => { if (active) setError(reason instanceof Error ? reason.message : "Unable to load project."); });
     return () => { active = false; };
   }, [summary, release, generatedAt]);
+  useEffect(() => {
+    let active = true;
+    setTimeline(null);
+    setTimelineDatasetNote("");
+    fetch(`${base}project-media-timelines.json`).then(async response => {
+      if (!response.ok) return null;
+      return await response.json() as ProjectMediaTimelineDataset;
+    }).then(dataset => {
+      if (!active || !dataset) return;
+      setTimeline(dataset.timelines.find(candidate => candidate.project_id === summary.project_id) ?? null);
+      setTimelineDatasetNote(dataset.scope_note);
+    }).catch(() => { if (active) setTimeline(null); });
+    return () => { active = false; };
+  }, [summary.project_id]);
+  const projectSources = useMemo(() => {
+    const byUrl = new Map<string, { source_id: string; title: string; url: string }>();
+    for (const source of detail?.sources ?? []) byUrl.set(source.url, source);
+    for (const event of timeline?.events ?? []) for (const source of event.sources) byUrl.set(source.url, source);
+    return [...byUrl.values()];
+  }, [detail, timeline]);
   return <article className="project-profile">
     <a className="back-link" href="#/study">← Project register</a>
     <header className="project-heading"><span className="eyebrow">{summary.study_group} · {summary.state_abbr}</span><h2>{summary.name}</h2><a href={`#/county/${summary.county_fips}`}>{summary.county_name}, {summary.state_abbr} · View county account ↗</a><div className="project-tags"><span>{summary.research_completion_status === "account_research_complete" ? "Research complete" : "Research candidate"}</span><span>{summary.inventory_entity_type === "campus" ? "Campus-linked project" : "Facility-linked project"}</span><span>Private-sector study</span></div></header>
@@ -90,14 +138,14 @@ function ProjectProfile({ summary, release, generatedAt }: { summary: StudyProje
       <details className="project-research-ledger" open={summary.model_completeness.status === "full_modeled_account" ? undefined : true}>
         <summary><span>Development chronology and research notes</span><small>{detail.research_updates.length} research updates</small></summary>
         <div className="project-research-ledger-body">
-          <section className="project-section" aria-labelledby="timeline-title"><div className="section-heading"><div><span className="eyebrow">Development history</span><h3 id="timeline-title">What the evidence establishes</h3></div><a href="#project-sources" onClick={e => { e.preventDefault(); document.getElementById("project-sources")?.scrollIntoView({ behavior: "smooth" }); }}>Inspect sources ↓</a></div>
-            <ol className="project-timeline"><li><span className="timeline-dot" /><div><strong>{detail.history.description}</strong><p>{detail.history.date_note}</p>{detail.history.anchor && <small>Stored anchor precision: {detail.history.anchor.precision}</small>}</div></li><li className="timeline-pending"><span className="timeline-dot" /><div><strong>Complete the construction, operating and expansion history</strong><p>Additional phase dates, ownership history, and annual financial records need review. Unrecorded milestones are not assumed to have occurred.</p></div></li></ol>
+          <section className="project-section" aria-labelledby="timeline-title"><div className="section-heading"><div><span className="eyebrow">Project timeline</span><h3 id="timeline-title">Announcements, milestones, and public debate</h3></div><a href="#project-sources" onClick={e => { e.preventDefault(); document.getElementById("project-sources")?.scrollIntoView({ behavior: "smooth" }); }}>Inspect source ledger ↓</a></div>
+            {timeline ? <PublicProjectTimeline timeline={timeline} datasetNote={timelineDatasetNote} /> : <ol className="project-timeline"><li><span className="timeline-dot" /><div><strong>{detail.history.description}</strong><p>{detail.history.date_note}</p>{detail.history.anchor && <small>Stored anchor precision: {detail.history.anchor.precision}</small>}</div></li><li className="timeline-pending"><span className="timeline-dot" /><div><strong>Complete the construction, operating and expansion history</strong><p>Additional phase dates, ownership history, public reporting, and annual financial records need review. Unrecorded milestones are not assumed to have occurred.</p></div></li></ol>}
           </section>
           {detail.research_updates.map(update => <aside className="project-research-update" key={`${update.source_id}-${update.as_of}`}><span className="eyebrow">Research update · {update.as_of}</span><h3>{update.title}</h3><p>{update.notes}</p><a href={update.source.url} target="_blank" rel="noreferrer">{update.source.title} ↗</a><small>Source checked {update.source.retrieved_on}</small></aside>)}
         </div>
       </details>
-      <section className="project-section" id="project-sources"><div className="section-heading"><h3>Sources & research history</h3><a href={`${base}${summary.detail_path}`} download={`${summary.project_id}.json`}>Download project JSON ↓</a></div><p className="study-muted">The economic account links individual reported anchors directly. This complete bibliography supports the wider project history and audit trail.</p>
-        <details className="source-ledger" open={summary.model_completeness.status === "full_modeled_account" ? undefined : true}><summary><span>View cited sources</span><small>{detail.sources.length} sources</small></summary><ol className="source-list">{detail.sources.map((s, i) => <li key={`${s.source_id}-${i}`}><a href={s.url} target="_blank" rel="noreferrer">{s.title} ↗</a><small>{new URL(s.url).hostname}</small></li>)}</ol></details>
+      <section className="project-section" id="project-sources"><div className="section-heading"><h3>Sources & research history</h3><a href={`${base}${summary.detail_path}`} download={`${summary.project_id}.json`}>Download core project JSON ↓</a></div><p className="study-muted">The source ledger combines the core study bibliography with the linked public reporting used in the project timeline.</p>
+        <details className="source-ledger" open={summary.model_completeness.status === "full_modeled_account" ? undefined : true}><summary><span>View cited sources</span><small>{projectSources.length} sources</small></summary><ol className="source-list">{projectSources.map((s, i) => <li key={`${s.source_id}-${i}`}><a href={s.url} target="_blank" rel="noreferrer">{s.title} ↗</a><small>{new URL(s.url).hostname}</small></li>)}</ol></details>
         <details className="research-details"><summary>Inventory identity and earlier first-entry research</summary><p>Inventory name: {detail.inventory_name}</p><p className="identity-id">{detail.inventory_entity_id}</p><p>{detail.legacy_first_entry_note ?? "This candidate was added through a campus record. A complete project and phase history remains to be assembled."}</p><p>Earlier adjudications retain their original meaning. This profile does not assign a county-first-entry date.</p></details>
       </section>
     </>}

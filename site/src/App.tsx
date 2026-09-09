@@ -85,6 +85,9 @@ function countyTrendValue(key: CountyTrendKey, value: number | null) {
 }
 
 function CountyHistory({ history }: { history: CountyEconomicHistory }) {
+  const firstYear = history.years[0]?.year;
+  const lastYear = history.years.at(-1)?.year;
+  const yearMarkers = history.years.filter(row => row.year === firstYear || row.year === lastYear || row.year % 5 === 0);
   return <section className="county-history-section" aria-labelledby="county-history-title">
     <div className="section-heading"><div><span className="eyebrow">County context · 2001–2024</span><h3 id="county-history-title">How the host economy changed</h3></div><span className="account-count">Descriptive county data</span></div>
     <p className="study-intro">These are observed county totals. They show the economic setting before and after development, but they do not by themselves assign the change to the data center.</p>
@@ -94,12 +97,18 @@ function CountyHistory({ history }: { history: CountyEconomicHistory }) {
       const values = available.map(row => row.value);
       const min = Math.min(...values), max = Math.max(...values);
       const span = max - min || 1;
-      const points = available.map(row => `${10 + row.index / Math.max(history.years.length - 1, 1) * 300},${82 - (row.value - min) / span * 68}`).join(" ");
+      const annualPoints = available.map(row => ({
+        ...row,
+        x: 10 + row.index / Math.max(history.years.length - 1, 1) * 300,
+        y: 82 - (row.value - min) / span * 68,
+      }));
+      const points = annualPoints.map(row => `${row.x},${row.y}`).join(" ");
       const start = available[0], end = available[available.length - 1];
       const change = percentChange(start.value, end.value);
       return <figure className="county-trend" key={definition.key}>
         <figcaption><div><strong>{definition.label}</strong><span>{definition.note}</span></div><em>{formatPercentChange(change)}</em></figcaption>
-        <svg viewBox="0 0 320 92" role="img" aria-label={`${definition.label}: ${countyTrendValue(definition.key, start.value)} in ${start.year}; ${countyTrendValue(definition.key, end.value)} in ${end.year}`} preserveAspectRatio="none"><line x1="10" y1="82" x2="310" y2="82" /><polyline points={points} /><circle cx="10" cy={82 - (start.value - min) / span * 68} r="3" /><circle cx="310" cy={82 - (end.value - min) / span * 68} r="3" /></svg>
+        <svg viewBox="0 0 320 92" role="img" aria-label={`${definition.label}: ${countyTrendValue(definition.key, start.value)} in ${start.year}; ${countyTrendValue(definition.key, end.value)} in ${end.year}`} preserveAspectRatio="none"><line x1="10" y1="82" x2="310" y2="82" /><polyline points={points} />{annualPoints.map((row, index) => <circle className={`county-trend-point${index === 0 || index === annualPoints.length - 1 ? " endpoint" : ""}`} data-year={row.year} cx={row.x} cy={row.y} r={index === 0 || index === annualPoints.length - 1 ? 3.2 : 1.8} key={row.year}><title>{row.year}: {countyTrendValue(definition.key, row.value)}</title></circle>)}</svg>
+        <div className="county-trend-years" aria-label="Year markers">{yearMarkers.map(row => <span style={{ left: `${(row.year - (firstYear ?? row.year)) / Math.max((lastYear ?? row.year) - (firstYear ?? row.year), 1) * 100}%` }} key={row.year}>{row.year}</span>)}</div>
         <div className="county-trend-values"><span>{start.year}<strong>{countyTrendValue(definition.key, start.value)}</strong></span><span>{end.year}<strong>{countyTrendValue(definition.key, end.value)}</strong></span></div>
       </figure>;
     })}</div>

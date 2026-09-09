@@ -26,6 +26,16 @@ fiscal result without same-scope public-cost evidence and do not present county 
 gaps as causal effects. Project profiles retain the complete source, forecast, model,
 assumption, limitation, and remaining-evidence ledger for audit.
 
+A standalone public-media chronology pilot covers Apple Mesa, Switch Citadel, and
+Digital Crossroad Hammond. It keeps announcements, operating milestones, expansions,
+ownership changes, incidents, and controversies as dated events with one or more linked
+sources. Rebuild or verify it without rebuilding the main study release:
+
+```powershell
+python scripts/build_project_media_timelines.py
+python scripts/build_project_media_timelines.py --check
+```
+
 The implementation sequence and remaining work are documented in
 `docs/application-remediation-plan.md` and
 `docs/revised-private-sector-economic-study-plan.md`. The statistical target state,

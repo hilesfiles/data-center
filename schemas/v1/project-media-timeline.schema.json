@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dccio.org/schemas/v1/project-media-timeline.schema.json",
+  "title": "Sourced public project chronology",
+  "type": "object",
+  "required": ["schema_version", "dataset_version", "reviewed_on", "scope_note", "timelines"],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "dataset_version": {"type": "string", "minLength": 1},
+    "reviewed_on": {"type": "string", "format": "date"},
+    "scope_note": {"type": "string", "minLength": 1},
+    "timelines": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/timeline"}
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "source": {
+      "type": "object",
+      "required": ["source_id", "title", "publisher", "url", "source_type", "source_role"],
+      "properties": {
+        "source_id": {"$ref": "common.schema.json#/$defs/entity_id"},
+        "title": {"type": "string", "minLength": 1},
+        "publisher": {"type": "string", "minLength": 1},
+        "url": {"type": "string", "format": "uri", "pattern": "^https://"},
+        "published_on": {"type": "string", "format": "date"},
+        "source_type": {"enum": ["operator_release", "company_report", "local_news", "national_news", "trade_press", "government_release", "regulatory_record"]},
+        "source_role": {"enum": ["primary", "corroborating", "context"]}
+      },
+      "additionalProperties": false
+    },
+    "event": {
+      "type": "object",
+      "required": ["event_id", "when", "sort_date", "date_label", "event_type", "presentation_category", "title", "summary", "resolution_status", "sources"],
+      "properties": {
+        "event_id": {"$ref": "common.schema.json#/$defs/entity_id"},
+        "when": {"$ref": "common.schema.json#/$defs/temporal_extent"},
+        "sort_date": {"type": "string", "format": "date"},
+        "date_label": {"type": "string", "minLength": 1},
+        "event_type": {
+          "enum": ["announced", "construction_started", "operational", "expansion_announced", "expansion_construction_started", "acquired", "incident", "legal_challenge", "public_discussion", "agreement_expired"]
+        },
+        "presentation_category": {"enum": ["announcement", "milestone", "expansion", "ownership", "incident", "controversy"]},
+        "title": {"type": "string", "minLength": 1},
+        "summary": {"type": "string", "minLength": 1},
+        "scope_note": {"type": "string", "minLength": 1},
+        "resolution_status": {"enum": ["resolved", "reported", "disputed", "unresolved"]},
+        "sources": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/source"}}
+      },
+      "additionalProperties": false
+    },
+    "timeline": {
+      "type": "object",
+      "required": ["project_id", "coverage_status", "coverage_note", "events"],
+      "properties": {
+        "project_id": {"type": "string", "pattern": "^prj_study_[a-z0-9_]+$"},
+        "coverage_status": {"const": "pilot_reviewed"},
+        "coverage_note": {"type": "string", "minLength": 1},
+        "events": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/event"}}
+      },
+      "additionalProperties": false
+    }
+  }
+}

@@ -86,6 +86,45 @@ export interface StudyProject extends StudyProjectSummary {
   scope_note: string;
 }
 
+export interface ProjectMediaTimelineSource {
+  source_id: string;
+  title: string;
+  publisher: string;
+  url: string;
+  published_on?: string;
+  source_type: "operator_release" | "company_report" | "local_news" | "national_news" | "trade_press" | "government_release" | "regulatory_record";
+  source_role: "primary" | "corroborating" | "context";
+}
+
+export interface ProjectMediaTimelineEvent {
+  event_id: string;
+  when: { date?: string; year?: number; precision: string };
+  sort_date: string;
+  date_label: string;
+  event_type: string;
+  presentation_category: "announcement" | "milestone" | "expansion" | "ownership" | "incident" | "controversy";
+  title: string;
+  summary: string;
+  scope_note?: string;
+  resolution_status: "resolved" | "reported" | "disputed" | "unresolved";
+  sources: ProjectMediaTimelineSource[];
+}
+
+export interface ProjectMediaTimeline {
+  project_id: string;
+  coverage_status: "pilot_reviewed";
+  coverage_note: string;
+  events: ProjectMediaTimelineEvent[];
+}
+
+export interface ProjectMediaTimelineDataset {
+  schema_version: "1.0.0";
+  dataset_version: string;
+  reviewed_on: string;
+  scope_note: string;
+  timelines: ProjectMediaTimeline[];
+}
+
 export interface EconomicSource {
   source_id: string; title: string; url: string; publisher: string;
   retrieved_on: string; notes: string;

@@ -830,13 +830,37 @@ try {
   assert.doesNotMatch(await countyImpact.innerText(), /Construction-period contribution|County outcome comparison/);
   await page.getByRole("heading", { name: "How the host economy changed", exact: true }).waitFor();
   assert.equal(await page.locator(".county-trend").count(), 4);
+  assert.equal(await page.locator(".county-trend-point").count(), 96);
+  assert.equal(await page.locator('.county-trend-point[data-year="2012"]').count(), 4);
+  assert.equal(await page.locator(".county-trend-point.endpoint").count(), 8);
+  assert.equal(await page.locator(".county-trend-years span").count(), 24);
   assert.equal(await page.locator(".county-history-table tbody tr").count(), 24);
   assert.doesNotMatch(await page.locator(".county-profile-page").innerText(), /IM3 source records|Analysis readiness|Annual-account coverage/);
   await page.locator(".county-study-account").screenshot({ path: path.join(out, "lake-county-impact-account-desktop.png") });
   await page.setViewportSize({ width: 390, height: 844 });
   await noOverflow();
   await page.locator(".county-history-section").screenshot({ path: path.join(out, "lake-county-history-mobile.png") });
-  check("completed county page presents the facility account and observed 2001–2024 county trends");
+  check("completed county page presents annual markers across observed 2001–2024 county trends");
+
+  const timelinePilots = [
+    ["prj_study_im3_building_00300974499", "Apple Mesa", 5],
+    ["prj_study_im3_point_06685432442", "Switch Citadel / Tahoe Reno 1", 5],
+    ["prj_study_im3_building_00978934687", "Digital Crossroad DX-1, Hammond", 6],
+  ];
+  for (const [projectId, projectName, eventCount] of timelinePilots) {
+    await page.setViewportSize({ width: 1440, height: 1000 });
+    await page.goto(`${url}#/project/${projectId}`);
+    await page.getByRole("heading", { name: projectName, exact: true }).waitFor();
+    await page.locator(".media-timeline").waitFor({ state: "attached" });
+    await openDetails(".project-research-ledger");
+    assert.equal(await page.locator(".media-timeline > li").count(), eventCount);
+    assert.equal(await page.locator(".media-timeline .timeline-sources a").count() >= eventCount, true);
+    const timelineLinks = await page.locator(".media-timeline .timeline-sources a").evaluateAll(links => links.map(link => link.href));
+    const ledgerLinks = await page.locator(".source-ledger .source-list a").evaluateAll(links => links.map(link => link.href));
+    assert.equal(timelineLinks.every(link => ledgerLinks.includes(link)), true);
+  }
+  assert.match(await page.locator(".media-timeline").innerText(), /ground[\s\S]*completed[\s\S]*expansion[\s\S]*public questions[\s\S]*expires/i);
+  check("three pilot project pages present sourced announcement, milestone, expansion, ownership, incident, and controversy events");
 
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto(`${url}#/study`);
