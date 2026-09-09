@@ -1,4 +1,4 @@
-"""Build the rejected/private-proposal comparison registry and public projections."""
+"""Build the rejected data-center proposal registry and public projections."""
 
 from __future__ import annotations
 
@@ -218,7 +218,7 @@ def main() -> int:
     generated_at = args.generated_at or datetime.now(timezone.utc).replace(microsecond=0).isoformat()
     products = build_products(read(CONFIG), generated_at)
     publish(*products)
-    print(f"Published {products[0]['counts']['projects']} rejected/private proposal records")
+    print(f"Published {products[0]['counts']['projects']} rejected data-center proposal records")
     return 0
 
 

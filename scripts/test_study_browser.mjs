@@ -877,11 +877,11 @@ try {
   await page.setViewportSize({ width: 1440, height: 1000 });
   await page.goto(`${url}#/rejected`);
   await page.getByRole("heading", { name: "Rejected & withdrawn proposals", exact: true }).waitFor();
-  assert.equal(await page.locator(".rejected-project-card").count(), 8);
-  assert.match(await page.locator(".rejected-counts").innerText(), /8[\s\S]*verified proposals[\s\S]*8[\s\S]*affected counties/i);
+  assert.equal(await page.locator(".rejected-project-card").count(), 7);
+  assert.match(await page.locator(".rejected-counts").innerText(), /7[\s\S]*verified proposals[\s\S]*68[\s\S]*cited sources[\s\S]*49[\s\S]*sourced events/i);
   await page.getByRole("link", { name: "Etheridge Lakes Data Center", exact: true }).click();
   await page.getByRole("heading", { name: "Proposal, opposition, decision, and aftermath", exact: true }).waitFor();
-  assert.equal(await page.locator(".rejected-timeline > li").count(), 4);
+  assert.equal(await page.locator(".rejected-timeline > li").count(), 8);
   assert.match(await page.locator(".proposal-scale-grid").innerText(), /350,000 square feet[\s\S]*22.6 acres/i);
   assert.match(await page.locator(".site-afterlife").innerText(), /Interpretation boundary/i);
   await page.setViewportSize({ width: 390, height: 844 });
@@ -898,7 +898,7 @@ try {
     sidebar: getComputedStyle(document.querySelector(".sidebar")).backgroundColor,
     map: getComputedStyle(document.querySelector(".map-section")).backgroundColor,
   })), { sidebar: "rgb(11, 14, 20)", map: "rgb(16, 23, 27)" });
-  assert.match(await page.locator(".review-key").innerText(), /operating project audit \(30\)[\s\S]*rejected \/ withdrawn \(8\)/i);
+  assert.match(await page.locator(".review-key").innerText(), /operating project audit \(30\)[\s\S]*rejected \/ withdrawn \(7\)/i);
   assert.doesNotMatch(await page.locator(".legend").innerText(), /IM3|pending|merged|queued/i);
   await page.getByLabel("Research-complete project markers").selectOption("Colocation");
   assert.match(await page.locator(".review-key").innerText(), /operating project audit \(12\)/i);
@@ -973,7 +973,7 @@ try {
     await route.fulfill({ json: legacyStudy });
   });
   await legacyPage.goto(`${url}#/map`, { waitUntil: "domcontentloaded" });
-  await legacyPage.getByText("25 completed project accounts and 8 rejected or withdrawn proposals are mapped.", { exact: false }).waitFor();
+  await legacyPage.getByText("25 completed project accounts and 7 rejected or withdrawn proposals are mapped.", { exact: false }).waitFor();
   assert.match(await legacyPage.locator(".review-key").innerText(), /operating project audit \(25\)/i);
   await legacyPage.close();
   check("map remains populated when a browser holds an index without the research-completion field");

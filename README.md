@@ -39,8 +39,8 @@ python scripts/build_project_media_timelines.py
 python scripts/build_project_media_timelines.py --check
 ```
 
-A separate rejected-and-withdrawn proposal register publishes eight verified comparison
-cases without adding nonexistent facilities to the operating inventory. `#/rejected`
+A separate rejected-and-withdrawn proposal register publishes seven verified data-center
+comparison cases without adding nonexistent facilities to the operating inventory. `#/rejected`
 shows the case cards, `#/rejected/{project_id}` opens the sourced chronology, and `#/map`
 uses amber markers and county shading alongside the cyan operating-project cohort. Mixed
 counties retain cyan shading with amber hatching. Disposition, community role, finality,

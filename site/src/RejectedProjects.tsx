@@ -44,7 +44,7 @@ export function RejectedProjectRegister({ registry }: { registry: RejectedProjec
   ), [registry, search, disposition, readiness, state]);
   return <>
     <section className="study-hero rejected-hero">
-      <div><span className="eyebrow">Private proposals that did not proceed</span>
+      <div><span className="eyebrow">Data-center proposals that did not proceed</span>
         <h2>What happened<br />when communities said no?</h2>
         <p>Follow verified denials and withdrawals from proposal through public review, decision, litigation, redesign, and site aftermath. A stopped proposal is a documented event—not automatically proof of an economic gain or loss.</p>
         <a className="study-map-link" href="#/map">Compare both cohorts on the map <span aria-hidden="true">↗</span></a>
