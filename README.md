@@ -26,10 +26,13 @@ fiscal result without same-scope public-cost evidence and do not present county 
 gaps as causal effects. Project profiles retain the complete source, forecast, model,
 assumption, limitation, and remaining-evidence ledger for audit.
 
-A standalone public-media chronology pilot covers Apple Mesa, Switch Citadel, and
-Digital Crossroad Hammond. It keeps announcements, operating milestones, expansions,
-ownership changes, incidents, and controversies as dated events with one or more linked
-sources. Rebuild or verify it without rebuilding the main study release:
+A standalone public-media chronology now covers all 36 active study projects. Its 207
+dated events link to 310 source references across 286 distinct public URLs, covering
+announcements, operating milestones, expansions, ownership changes, incentives,
+infrastructure, incidents, controversies, and abandoned proposals. Coverage notes identify
+projects whose public record is comparatively sparse; the dataset does not pad those
+histories or treat missing coverage as evidence that no other event occurred. Rebuild or
+verify it without rebuilding the main study release:
 
 ```powershell
 python scripts/build_project_media_timelines.py

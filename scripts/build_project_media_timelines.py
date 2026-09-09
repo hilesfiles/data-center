@@ -34,6 +34,9 @@ def validate(data, index):
     unknown = sorted(set(timeline_ids) - project_ids)
     if unknown:
         raise ValueError(f"Project media timeline references unknown study projects: {', '.join(unknown)}")
+    missing = sorted(project_ids - set(timeline_ids))
+    if missing:
+        raise ValueError(f"Project media timeline is missing study projects: {', '.join(missing)}")
 
     event_ids = []
     for timeline in data["timelines"]:

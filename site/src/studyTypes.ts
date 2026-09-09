@@ -112,7 +112,7 @@ export interface ProjectMediaTimelineEvent {
 
 export interface ProjectMediaTimeline {
   project_id: string;
-  coverage_status: "pilot_reviewed";
+  coverage_status: "pilot_reviewed" | "research_reviewed";
   coverage_note: string;
   events: ProjectMediaTimelineEvent[];
 }

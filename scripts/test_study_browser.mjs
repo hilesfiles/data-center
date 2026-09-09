@@ -92,8 +92,10 @@ try {
   await page.getByRole("link", { name: "Google Lenoir", exact: true }).click();
   await page.getByRole("heading", { name: "Sources & research history" }).waitFor();
   assert.match(await page.locator(".project-tags").innerText(), /Campus-linked project/);
-  assert.match(await page.locator(".project-timeline").innerText(), /chronology needs reconstruction/);
-  check("empty state, reset and undated campus profile");
+  await page.locator(".media-timeline").waitFor({ state: "attached" });
+  assert.equal(await page.locator(".media-timeline > li").count(), 6);
+  assert.match(await page.locator(".media-timeline").innerText(), /announces a Lenoir data center[\s\S]*opens the first Lenoir data center[\s\S]*further growth/i);
+  check("empty state, reset and reconstructed campus chronology");
 
   await page.goto(`${url}#/project/prj_study_im3_building_00438078069`);
   await openDetails(".evidence-ledger");
@@ -842,12 +844,15 @@ try {
   await page.locator(".county-history-section").screenshot({ path: path.join(out, "lake-county-history-mobile.png") });
   check("completed county page presents annual markers across observed 2001–2024 county trends");
 
-  const timelinePilots = [
-    ["prj_study_im3_building_00300974499", "Apple Mesa", 5],
-    ["prj_study_im3_point_06685432442", "Switch Citadel / Tahoe Reno 1", 5],
-    ["prj_study_im3_building_00978934687", "Digital Crossroad DX-1, Hammond", 6],
+  const timelineDataset = await page.evaluate(async () => (await fetch("/data/v1/study/project-media-timelines.json")).json());
+  assert.equal(timelineDataset.timelines.length, 36);
+  assert.equal(timelineDataset.timelines.every(timeline => timeline.events.length >= 2), true);
+  const representativeTimelines = [
+    ["prj_study_im3_building_00300974499", "Apple Mesa", 9],
+    ["prj_study_im3_point_06685432442", "Switch Citadel / Tahoe Reno 1", 9],
+    ["prj_study_im3_building_00978934687", "Digital Crossroad DX-1, Hammond", 11],
   ];
-  for (const [projectId, projectName, eventCount] of timelinePilots) {
+  for (const [projectId, projectName, eventCount] of representativeTimelines) {
     await page.setViewportSize({ width: 1440, height: 1000 });
     await page.goto(`${url}#/project/${projectId}`);
     await page.getByRole("heading", { name: projectName, exact: true }).waitFor();
@@ -860,7 +865,7 @@ try {
     assert.equal(timelineLinks.every(link => ledgerLinks.includes(link)), true);
   }
   assert.match(await page.locator(".media-timeline").innerText(), /ground[\s\S]*completed[\s\S]*expansion[\s\S]*public questions[\s\S]*expires/i);
-  check("three pilot project pages present sourced announcement, milestone, expansion, ownership, incident, and controversy events");
+  check("all project pages have timeline data and representative pages render sourced activity events");
 
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto(`${url}#/study`);

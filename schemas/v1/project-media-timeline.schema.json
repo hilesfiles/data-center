@@ -39,7 +39,7 @@
         "sort_date": {"type": "string", "format": "date"},
         "date_label": {"type": "string", "minLength": 1},
         "event_type": {
-          "enum": ["announced", "construction_started", "operational", "expansion_announced", "expansion_construction_started", "acquired", "incident", "legal_challenge", "public_discussion", "agreement_expired"]
+          "enum": ["announced", "construction_started", "operational", "expansion_announced", "expansion_construction_started", "expansion_completed", "acquired", "ownership_changed", "incident", "bankruptcy", "financing_closed", "partnership_announced", "renewable_energy_completed", "water_infrastructure_completed", "circular_economy_started", "community_investment", "permit_issued", "incentive_approved", "legal_challenge", "public_discussion", "agreement_approved", "agreement_expired"]
         },
         "presentation_category": {"enum": ["announcement", "milestone", "expansion", "ownership", "incident", "controversy"]},
         "title": {"type": "string", "minLength": 1},
@@ -55,7 +55,7 @@
       "required": ["project_id", "coverage_status", "coverage_note", "events"],
       "properties": {
         "project_id": {"type": "string", "pattern": "^prj_study_[a-z0-9_]+$"},
-        "coverage_status": {"const": "pilot_reviewed"},
+        "coverage_status": {"enum": ["pilot_reviewed", "research_reviewed"]},
         "coverage_note": {"type": "string", "minLength": 1},
         "events": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/event"}}
       },
