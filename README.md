@@ -68,15 +68,27 @@ python scripts/validate_data_contract.py
 ```
 
 The same page publishes a separate host-to-comparison match register for all 35 active-project
-host counties. Each host receives five ranked counties with zero linked records across both
-the repository inventory and a pinned CC BY 4.0 SueDataCenters/Compute Atlas national registry,
+host counties. Each host receives a 12-county analytical reserve, with the five strongest
+preliminary matches shown on the site, drawn from counties with zero linked records across the
+repository inventory and two pinned CC BY 4.0 external registries: SueDataCenters/Compute
+Atlas and the DEPLOY open facility registry,
 using a disclosed five-year baseline, weighted standardized economic features, and Census-
-geography adjustments. Every candidate remains `local_facility_absence_review_required`;
-match rank is economic similarity, not proof that both national sources captured every site.
+geography adjustments. A governed candidate-specific evidence layer currently removes 57 additional
+counties with documented facilities, proposals, or developer approaches missed by those national
+screens. Every surviving candidate remains `local_facility_absence_review_required`; match rank is
+economic similarity, not proof that the screens captured every site. The build also publishes a
+priority-ordered verification queue covering all seven required local negative-evidence domains.
+The distinct `county-data-center-exposure-v1` policy separates literal zero documented exposure
+from accessory/institutional, commercial edge/colocation, and economically material commercial
+exposure. A second generated queue preserves all stored project dates as candidate evidence and
+publishes the first five host-county adjudication decisions without overstating readiness: Jackson County has a provisional construction anchor, Maricopa and Pulaski reject the selected project as first exposure, Santa Clara is left-censored before the panel, and Douglas lacks the required pre-period. The remaining 30 counties are unresolved and none is yet causal-ready.
 
 ```powershell
+python scripts/acquire_deploy_data_center_facilities.py
 python scripts/build_county_comparison_matches.py
+python scripts/build_county_treatment_anchor_review.py
 python -m unittest tests.test_county_comparison_matches
+python -m unittest tests.test_county_treatment_anchor_review
 ```
 
 The implementation sequence and remaining work are documented in

@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dccio.org/schemas/v1/public-county-treatment-anchor-review.schema.json",
+  "title": "Public county treatment anchor review",
+  "type": "object",
+  "required": ["schema_version", "release_id", "generated_at", "as_of", "exposure_policy_id", "scope", "counts", "warning", "required_review_domains", "counties"],
+  "properties": {
+    "schema_version": {"$ref": "common.schema.json#/$defs/schema_version"},
+    "release_id": {"type": "string", "const": "county-treatment-anchor-review-1.0.0"},
+    "generated_at": {"$ref": "common.schema.json#/$defs/timestamp"},
+    "as_of": {"type": "string", "format": "date"},
+    "exposure_policy_id": {"type": "string", "const": "county-data-center-exposure-v1"},
+    "scope": {"type": "string", "minLength": 1},
+    "counts": {"type": "object", "required": ["host_counties", "host_projects", "adjudicated_counties", "causal_ready_counties", "unresolved_counties"], "properties": {"host_counties": {"type": "integer", "const": 35}, "host_projects": {"type": "integer", "const": 36}, "adjudicated_counties": {"type": "integer", "const": 5}, "causal_ready_counties": {"type": "integer", "const": 0}, "unresolved_counties": {"type": "integer", "const": 30}}, "additionalProperties": false},
+    "warning": {"type": "string", "minLength": 1},
+    "required_review_domains": {"type": "array", "minItems": 7, "maxItems": 7, "items": {"$ref": "#/$defs/domain"}},
+    "counties": {"type": "array", "minItems": 35, "maxItems": 35, "items": {"$ref": "#/$defs/county"}}
+  },
+  "$defs": {
+    "source": {"type": "object", "required": ["title", "publisher", "url"], "properties": {"title": {"type": "string", "minLength": 1}, "publisher": {"type": "string", "minLength": 1}, "url": {"type": "string", "format": "uri"}}, "additionalProperties": false},
+    "domain": {"type": "object", "required": ["code", "label"], "properties": {"code": {"type": "string", "minLength": 1}, "label": {"type": "string", "minLength": 1}}, "additionalProperties": false},
+    "domain_review": {"type": "object", "required": ["code", "label", "status", "sources"], "properties": {"code": {"type": "string", "minLength": 1}, "label": {"type": "string", "minLength": 1}, "status": {"type": "string", "const": "not_reviewed"}, "sources": {"type": "array", "maxItems": 0}}, "additionalProperties": false},
+    "stored_anchor": {"type": "object", "required": ["anchor_date", "anchor_year", "precision", "history_description", "date_note", "status"], "properties": {"anchor_date": {"type": ["string", "null"], "format": "date"}, "anchor_year": {"type": ["integer", "null"], "minimum": 1900}, "precision": {"type": ["string", "null"]}, "history_description": {"type": ["string", "null"]}, "date_note": {"type": ["string", "null"]}, "status": {"type": "string", "const": "candidate_project_anchor_only"}}, "additionalProperties": false},
+    "timeline_event": {"type": "object", "required": ["event_id", "sort_date", "date_label", "event_type", "title", "sources"], "properties": {"event_id": {"type": "string", "minLength": 1}, "sort_date": {"type": "string", "format": "date"}, "date_label": {"type": "string", "minLength": 1}, "event_type": {"type": "string", "minLength": 1}, "title": {"type": "string", "minLength": 1}, "sources": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/source"}}}, "additionalProperties": false},
+    "project": {"type": "object", "required": ["project_id", "project_name", "stored_history_anchor", "candidate_timeline_events"], "properties": {"project_id": {"type": "string", "minLength": 1}, "project_name": {"type": "string", "minLength": 1}, "stored_history_anchor": {"$ref": "#/$defs/stored_anchor"}, "candidate_timeline_events": {"type": "array", "maxItems": 6, "items": {"$ref": "#/$defs/timeline_event"}}}, "additionalProperties": false},
+    "county": {
+      "type": "object",
+      "required": ["county_fips", "county_name", "state_abbr", "projects", "exposure_tier_target", "county_first_material_exposure_status", "adjudicated_date", "anticipation_date", "known_exposure_no_later_than", "date_precision", "causal_use_status", "adjudication_rationale", "adjudication_sources", "unresolved_questions", "review_domains", "required_next_step"],
+      "properties": {
+        "county_fips": {"$ref": "common.schema.json#/$defs/county_fips"},
+        "county_name": {"type": "string", "minLength": 1},
+        "state_abbr": {"$ref": "common.schema.json#/$defs/state_abbr"},
+        "projects": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/project"}},
+        "exposure_tier_target": {"type": "string", "const": "E3"},
+        "county_first_material_exposure_status": {"type": "string", "enum": ["unresolved", "provisional_anchor_pending_first_exposure_confirmation", "selected_project_rejected_earlier_material_exposure_unresolved", "left_censored_before_economic_panel", "insufficient_preperiod_for_first_entry_design"]},
+        "adjudicated_date": {"type": ["string", "null"], "format": "date"},
+        "anticipation_date": {"type": ["string", "null"], "format": "date"},
+        "known_exposure_no_later_than": {"type": ["string", "null"], "format": "date"},
+        "date_precision": {"type": ["string", "null"], "enum": ["day", "year", null]},
+        "causal_use_status": {"type": "string", "enum": ["not_ready", "not_ready_first_entry_predates_panel", "not_ready_insufficient_preperiod"]},
+        "adjudication_rationale": {"type": ["string", "null"]},
+        "adjudication_sources": {"type": "array", "items": {"$ref": "#/$defs/source"}},
+        "unresolved_questions": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+        "review_domains": {"type": "array", "minItems": 7, "maxItems": 7, "items": {"$ref": "#/$defs/domain_review"}},
+        "required_next_step": {"type": "string", "minLength": 1}
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

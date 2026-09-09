@@ -1,0 +1,82 @@
+{
+  "schema_version": "1.0.0",
+  "dataset_id": "county-treatment-anchor-adjudications-v1",
+  "as_of": "2026-09-09",
+  "scope": "Governed decisions for active-project host counties where candidate project dates have been checked against earlier county exposure and panel availability.",
+  "adjudications": [
+    {
+      "county_fips": "01071",
+      "county_first_material_exposure_status": "provisional_anchor_pending_first_exposure_confirmation",
+      "adjudicated_date": "2018-04-09",
+      "anticipation_date": "2015-06-25",
+      "known_exposure_no_later_than": "2018-04-09",
+      "date_precision": "day",
+      "causal_use_status": "not_ready",
+      "rationale": "Google's $600 million construction start is the first documented economically material physical-investment milestone. The 2015 site selection begins the anticipation window. Existing national screens and Google history have not yet established that no earlier E3 exposure occurred anywhere in Jackson County, so the date is provisional and cannot enter estimation.",
+      "sources": [
+        {"title": "Google kicks off construction on $600M Alabama data center", "publisher": "Made in Alabama", "url": "https://www.madeinalabama.com/2018/04/google-kicks-off-construction-on-alabama-data-center/"},
+        {"title": "Coming home to Alabama", "publisher": "Google", "url": "https://blog.google/company-news/outreach-and-initiatives/environment/coming-home-alabama/"},
+        {"title": "Jackson County, Alabama data center location", "publisher": "Google", "url": "https://www.datacenters.google/locations/alabama/"}
+      ],
+      "unresolved_questions": ["Complete all seven county-history domains and exclude earlier material industrial, telecom, institutional, or enterprise computing facilities.", "Determine whether any 2015-2018 site preparation or public spending warrants an earlier treatment onset than groundbreaking."]
+    },
+    {
+      "county_fips": "04013",
+      "county_first_material_exposure_status": "selected_project_rejected_earlier_material_exposure_unresolved",
+      "adjudicated_date": null,
+      "anticipation_date": null,
+      "known_exposure_no_later_than": "2016-11-30",
+      "date_precision": null,
+      "causal_use_status": "not_ready",
+      "rationale": "Apple Mesa is not Maricopa County's first material exposure. H5's November 2016 announcement describes expansion of an existing 180,000-square-foot, 26 MW Phoenix facility, and Digital Realty's 2016 property schedule documents the 508,000-square-foot PHX15 campus. The true first E3 date remains earlier and unresolved.",
+      "sources": [
+        {"title": "H5 Data Centers announces expansion at its Phoenix data center", "publisher": "H5 Data Centers", "url": "https://h5datacenters.com/h5-announces-second-quarter-growth-phoenix.html"},
+        {"title": "Digital Realty 2016 Form 10-K property schedule", "publisher": "U.S. Securities and Exchange Commission", "url": "https://www.sec.gov/Archives/edgar/data/1297996/000129799617000020/dlr12311610k.htm"}
+      ],
+      "unresolved_questions": ["Identify the earliest material Phoenix-area facility and its construction or operating date.", "Reconstruct pre-2016 facility scale before selecting a county-level event-study anchor."]
+    },
+    {
+      "county_fips": "05119",
+      "county_first_material_exposure_status": "selected_project_rejected_earlier_material_exposure_unresolved",
+      "adjudicated_date": null,
+      "anticipation_date": null,
+      "known_exposure_no_later_than": "2011-12-31",
+      "date_precision": null,
+      "causal_use_status": "not_ready",
+      "rationale": "The 2012 Windstream/TierPoint opening is not Pulaski County's first exposure because Acxiom's 2011 annual report already identifies an operating Little Rock data center. The Acxiom facility's original commissioning date and economic materiality have not yet been resolved.",
+      "sources": [
+        {"title": "Acxiom Corporation 2011 annual report", "publisher": "Acxiom Corporation", "url": "https://www.annualreports.com/HostedData/AnnualReportArchive/a/NASDAQ_ACXM_2011.pdf"},
+        {"title": "Windstream opens Little Rock data center", "publisher": "Windstream", "url": "https://www.globenewswire.com/news-release/2012/04/12/473083/12294/en/windstream-opens-little-rock-data-center.html"}
+      ],
+      "unresolved_questions": ["Date Acxiom's Little Rock facility opening and establish its E1-E3 materiality.", "Search for still-earlier telecom, government, university, and enterprise facilities in Pulaski County."]
+    },
+    {
+      "county_fips": "06085",
+      "county_first_material_exposure_status": "left_censored_before_economic_panel",
+      "adjudicated_date": null,
+      "anticipation_date": null,
+      "known_exposure_no_later_than": "2000-03-31",
+      "date_precision": null,
+      "causal_use_status": "not_ready_first_entry_predates_panel",
+      "rationale": "Equinix's SEC filing states that its original San Jose IBX opened in March 2000. Santa Clara County therefore had commercial colocation exposure before the 2001 economic panel begins, and NTT SV1 cannot support a county first-entry design. A later expansion design would require a different estimand and saturated-market controls.",
+      "sources": [
+        {"title": "Equinix S-4/A: San Jose IBX opened in March 2000", "publisher": "U.S. Securities and Exchange Commission", "url": "https://investor.equinix.com/sec-filings/all-sec-filings/content/0001012870-00-002248/0001012870-00-002248.pdf"}
+      ],
+      "unresolved_questions": ["Correct or replace the legacy investor-hosted SEC document URL if the issuer path remains unavailable.", "Define a separate marginal-expansion estimand if Santa Clara County is retained analytically."]
+    },
+    {
+      "county_fips": "13097",
+      "county_first_material_exposure_status": "insufficient_preperiod_for_first_entry_design",
+      "adjudicated_date": "2007-12-31",
+      "anticipation_date": "2003-12-31",
+      "known_exposure_no_later_than": "2007-12-31",
+      "date_precision": "year",
+      "causal_use_status": "not_ready_insufficient_preperiod",
+      "rationale": "Google reports establishing its Douglas County presence in 2003 and building and opening the data center in 2007. With the county panel beginning in 2001, only two pre-anticipation calendar years exist, which is insufficient for the prespecified five-year baseline and meaningful pretrend diagnostics.",
+      "sources": [
+        {"title": "Georgia data center location", "publisher": "Google", "url": "https://www.datacenters.google/locations/georgia/"}
+      ],
+      "unresolved_questions": ["Determine whether activity began earlier than Google's year-level 2003 presence milestone.", "Use a later disclosed expansion only under a separately specified marginal-expansion design."]
+    }
+  ]
+}

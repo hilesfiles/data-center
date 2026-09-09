@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dccio.org/schemas/v1/county-treatment-anchor-adjudications.schema.json",
+  "title": "County treatment anchor adjudications",
+  "type": "object",
+  "required": ["schema_version", "dataset_id", "as_of", "scope", "adjudications"],
+  "properties": {
+    "schema_version": {"$ref": "common.schema.json#/$defs/schema_version"},
+    "dataset_id": {"type": "string", "const": "county-treatment-anchor-adjudications-v1"},
+    "as_of": {"type": "string", "format": "date"},
+    "scope": {"type": "string", "minLength": 1},
+    "adjudications": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"$ref": "#/$defs/adjudication"}}
+  },
+  "$defs": {
+    "source": {"type": "object", "required": ["title", "publisher", "url"], "properties": {"title": {"type": "string", "minLength": 1}, "publisher": {"type": "string", "minLength": 1}, "url": {"type": "string", "format": "uri"}}, "additionalProperties": false},
+    "adjudication": {
+      "type": "object",
+      "required": ["county_fips", "county_first_material_exposure_status", "adjudicated_date", "anticipation_date", "known_exposure_no_later_than", "date_precision", "causal_use_status", "rationale", "sources", "unresolved_questions"],
+      "properties": {
+        "county_fips": {"$ref": "common.schema.json#/$defs/county_fips"},
+        "county_first_material_exposure_status": {"type": "string", "enum": ["provisional_anchor_pending_first_exposure_confirmation", "selected_project_rejected_earlier_material_exposure_unresolved", "left_censored_before_economic_panel", "insufficient_preperiod_for_first_entry_design"]},
+        "adjudicated_date": {"type": ["string", "null"], "format": "date"},
+        "anticipation_date": {"type": ["string", "null"], "format": "date"},
+        "known_exposure_no_later_than": {"type": "string", "format": "date"},
+        "date_precision": {"type": ["string", "null"], "enum": ["day", "year", null]},
+        "causal_use_status": {"type": "string", "enum": ["not_ready", "not_ready_first_entry_predates_panel", "not_ready_insufficient_preperiod"]},
+        "rationale": {"type": "string", "minLength": 1},
+        "sources": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"$ref": "#/$defs/source"}},
+        "unresolved_questions": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1}}
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

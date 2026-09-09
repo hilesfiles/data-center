@@ -12,13 +12,20 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 POLICY_PATH = ROOT / "config" / "v1" / "county-comparison-matching-policy.json"
+EXPOSURE_FINDINGS_PATH = ROOT / "config" / "v1" / "county-comparison-exposure-findings.json"
+CONTROL_POLICY_PATH = ROOT / "config" / "v1" / "county-control-eligibility-policy.json"
 HISTORY_DIR = ROOT / "site" / "public" / "data" / "v1" / "panels" / "county-economic-history" / "by-state"
 LIFECYCLE_PATH = ROOT / "site" / "public" / "data" / "v1" / "counties" / "lifecycle-national-tranche-6-coverage.json"
 COUNTY_MAP_PATH = ROOT / "site" / "public" / "data" / "v1" / "maps" / "counties.geojson"
-EXTERNAL_REGISTRY_PATH = ROOT / "data" / "bronze" / "external" / "suedatacenters-data-centers-v1.32.0.json"
+EXTERNAL_REGISTRY_PATHS = [
+    ROOT / "data" / "bronze" / "external" / "suedatacenters-data-centers-v1.32.0.json",
+    ROOT / "data" / "bronze" / "external" / "deploy-data-center-facilities-2026-09-09.json",
+]
 STUDY_DIR = ROOT / "site" / "public" / "data" / "v1" / "study"
 PUBLIC_PATH = ROOT / "site" / "public" / "data" / "v1" / "analysis" / "county-comparison-matches" / "index.json"
 SILVER_PATH = ROOT / "data" / "silver" / "analysis" / "county-comparison-matches.json"
+VERIFICATION_QUEUE_PUBLIC_PATH = ROOT / "site" / "public" / "data" / "v1" / "analysis" / "county-comparison-matches" / "verification-queue.json"
+VERIFICATION_QUEUE_SILVER_PATH = ROOT / "data" / "silver" / "analysis" / "county-comparison-verification-queue.json"
 GENERATED_AT = "2026-09-09T00:00:00+00:00"
 
 
@@ -101,27 +108,47 @@ def normalize_county_name(value: str) -> str:
 
 
 def external_registry_counties() -> tuple[dict[str, int], dict]:
-    registry = read(EXTERNAL_REGISTRY_PATH)
     county_map = read(COUNTY_MAP_PATH)
     boundaries = [(feature["properties"]["county_fips"], geometry_bbox(feature["geometry"]), feature["geometry"]) for feature in county_map["features"]]
     names = {(feature["properties"]["state_abbr"], normalize_county_name(feature["properties"]["county_name"])): feature["properties"]["county_fips"] for feature in county_map["features"]}
     counts: dict[str, int] = defaultdict(int)
     unmatched = []
-    for facility in registry["facilities"]:
-        longitude, latitude = facility.get("longitude"), facility.get("latitude")
-        matched = None
-        if longitude is not None and latitude is not None:
-            for fips, (min_x, min_y, max_x, max_y), geometry in boundaries:
-                if min_x <= longitude <= max_x and min_y <= latitude <= max_y and geometry_contains(geometry, longitude, latitude):
-                    matched = fips
-                    break
-        if not matched and facility.get("county") and facility.get("state"):
-            matched = names.get((facility["state"], normalize_county_name(facility["county"])))
-        if matched:
-            counts[matched] += 1
-        else:
-            unmatched.append(facility["id"])
-    return counts, {"registry": registry, "unmatched_ids": unmatched}
+    registries = []
+    for registry_path in EXTERNAL_REGISTRY_PATHS:
+        registry = read(registry_path)
+        registry_key = registry_path.stem
+        matched_count = 0
+        direct_matches: dict[str, str] = {}
+        location_counties: dict[str, set[str]] = defaultdict(set)
+        for facility in registry["facilities"]:
+            longitude = facility.get("longitude", facility.get("lng"))
+            latitude = facility.get("latitude", facility.get("lat"))
+            matched = None
+            if longitude is not None and latitude is not None:
+                for fips, (min_x, min_y, max_x, max_y), geometry in boundaries:
+                    if min_x <= longitude <= max_x and min_y <= latitude <= max_y and geometry_contains(geometry, longitude, latitude):
+                        matched = fips
+                        break
+            if not matched and facility.get("county") and facility.get("state"):
+                matched = names.get((facility["state"], normalize_county_name(facility["county"])))
+            if matched:
+                direct_matches[facility["id"]] = matched
+                if facility.get("locationId"):
+                    location_counties[facility["locationId"]].add(matched)
+        for facility in registry["facilities"]:
+            matched_fips = set()
+            if facility["id"] in direct_matches:
+                matched_fips.add(direct_matches[facility["id"]])
+            elif facility.get("locationId"):
+                matched_fips.update(location_counties.get(facility["locationId"], set()))
+            if matched_fips:
+                for matched in matched_fips:
+                    counts[matched] += 1
+                matched_count += 1
+            else:
+                unmatched.append(f"{registry_key}:{facility['id']}")
+        registries.append({"path": registry_path, "document": registry, "matched_count": matched_count})
+    return counts, {"registries": registries, "unmatched_ids": unmatched}
 
 
 def growth(first: float, last: float, periods: int) -> float:
@@ -181,6 +208,7 @@ def robust_scales(vectors: list[dict[str, float]], keys: list[str]) -> dict[str,
 
 def build_products(generated_at: str = GENERATED_AT) -> dict:
     policy = read(POLICY_PATH)
+    exposure_findings = read(EXPOSURE_FINDINGS_PATH)
     history = load_history()
     lifecycle = {record["county_fips"]: record for record in read(LIFECYCLE_PATH)}
     external_counts, external_meta = external_registry_counties()
@@ -201,9 +229,21 @@ def build_products(generated_at: str = GENERATED_AT) -> dict:
     candidate_count = policy["candidate_count_per_host"]
     weights = policy["feature_weights"]
     geography_adjustments = policy["geography_adjustments"]
+    positive_exposure_fips = set()
+    for finding in exposure_findings["findings"]:
+        fips = finding["county_fips"]
+        if fips not in history:
+            raise ValueError(f"positive exposure finding references unknown county {fips}")
+        county = history[fips]
+        if county["county_name"] != finding["county_name"] or county["state_abbr"] != finding["state_abbr"]:
+            raise ValueError(f"positive exposure finding has inconsistent county identity for {fips}")
+        positive_exposure_fips.add(fips)
     candidate_fips = sorted(
         fips for fips, record in lifecycle.items()
-        if record["active_canonical_facility_count"] == 0 and external_counts.get(fips, 0) == 0 and fips not in host_fips
+        if record["active_canonical_facility_count"] == 0
+        and external_counts.get(fips, 0) == 0
+        and fips not in positive_exposure_fips
+        and fips not in host_fips
     )
 
     hosts = []
@@ -249,7 +289,7 @@ def build_products(generated_at: str = GENERATED_AT) -> dict:
                 "rank": rank, "county_fips": candidate, "county_name": record["county_name"], "state_abbr": record["state_abbr"],
                 "census_region": region, "census_division": division, "same_census_region": region == host_region, "same_census_division": division == host_division,
                 "match_score": round(100 / (1 + distance), 2), "standardized_distance": round(distance, 6),
-                "facility_screen_status": "zero_known_records_across_two_national_registries", "verification_status": "local_facility_absence_review_required",
+                "facility_screen_status": "zero_known_records_across_three_national_registries", "verification_status": "local_facility_absence_review_required",
                 "features": features, "history_path": f"panels/county-economic-history/by-state/{record['state_abbr']}.json",
             })
         county = history[fips]
@@ -264,14 +304,24 @@ def build_products(generated_at: str = GENERATED_AT) -> dict:
     return {
         "schema_version": "1.0.0", "release_id": "county-comparison-matches-1.0.0", "generated_at": generated_at,
         "as_of": policy["as_of"], "policy_id": policy["policy_id"], "scope": policy["purpose"],
-        "counts": {"host_counties": len(hosts), "host_projects": len(study["projects"]), "comparison_candidates": sum(len(host["comparison_candidates"]) for host in hosts), "unique_comparison_counties": len(unique_comparisons), "screened_candidate_pool_count": len(candidate_fips), "externally_verified_absent": 0},
+        "counts": {"host_counties": len(hosts), "host_projects": len(study["projects"]), "comparison_candidates": sum(len(host["comparison_candidates"]) for host in hosts), "analytical_candidates_per_host": candidate_count, "presentation_candidates_per_host": policy["presentation_candidate_count"], "unique_comparison_counties": len(unique_comparisons), "screened_candidate_pool_count": len(candidate_fips), "candidate_specific_positive_exclusions": len(positive_exposure_fips), "externally_verified_absent": 0},
         "screening_sources": [
             {"source_id": "repository_active_canonical_facility_inventory", "title": "DCCIO active canonical-facility inventory", "version": "lifecycle-national-tranche-6", "record_count": len(lifecycle), "url": None, "license": None, "retrieved_on": policy["as_of"], "sha256": hashlib.sha256(LIFECYCLE_PATH.read_bytes()).hexdigest()},
-            {"source_id": "suedatacenters_registry_v1_32_0", "title": external_meta["registry"]["name"], "version": external_meta["registry"]["basedOn"]["version"], "record_count": external_meta["registry"]["count"], "url": external_meta["registry"]["documentation"], "license": external_meta["registry"]["license"], "retrieved_on": external_meta["registry"]["retrieved"], "sha256": hashlib.sha256(EXTERNAL_REGISTRY_PATH.read_bytes()).hexdigest()},
+            {"source_id": "suedatacenters_registry_v1_32_0", "title": external_meta["registries"][0]["document"]["name"], "version": external_meta["registries"][0]["document"]["basedOn"]["version"], "record_count": external_meta["registries"][0]["document"]["count"], "url": external_meta["registries"][0]["document"]["documentation"], "license": external_meta["registries"][0]["document"]["license"], "retrieved_on": external_meta["registries"][0]["document"]["retrieved"], "sha256": hashlib.sha256(EXTERNAL_REGISTRY_PATHS[0].read_bytes()).hexdigest()},
+            {"source_id": "deploy_facility_registry_2026_09_09", "title": external_meta["registries"][1]["document"]["name"], "version": "2026-09-09 snapshot", "record_count": external_meta["registries"][1]["document"]["count"], "url": external_meta["registries"][1]["document"]["documentation"], "license": external_meta["registries"][1]["document"]["license"], "retrieved_on": external_meta["registries"][1]["document"]["retrieved"], "sha256": hashlib.sha256(EXTERNAL_REGISTRY_PATHS[1].read_bytes()).hexdigest()},
         ],
+        "positive_exposure_findings": {
+            "dataset_id": exposure_findings["dataset_id"],
+            "path": "config/v1/county-comparison-exposure-findings.json",
+            "record_count": len(exposure_findings["findings"]),
+            "excluded_count": len(positive_exposure_fips),
+            "qualifying_rule": exposure_findings["qualifying_rule"],
+            "interpretation_note": exposure_findings["interpretation_note"],
+            "sha256": hashlib.sha256(EXPOSURE_FINDINGS_PATH.read_bytes()).hexdigest(),
+        },
         "external_registry_unmatched_coordinate_ids": external_meta["unmatched_ids"],
         "method": {
-            "candidate_pool": "Counties outside the 35-host cohort with zero linked records in both the repository active-facility inventory and the pinned external national registry, plus complete baseline features.",
+            "candidate_pool": "Counties outside the 35-host cohort with zero linked records in the repository active-facility inventory and two pinned external national registries, no governed candidate-specific positive exposure finding, and complete baseline features.",
             "distance": "Square root of the weighted sum of squared feature differences standardized by candidate-pool interquartile ranges, plus disclosed Census-geography penalties.",
             "score": "100 / (1 + standardized distance). Scores rank candidates within a host specification and are not probabilities.",
             "baseline_rule": "Use five years before the earliest documented study-project anchor when available; otherwise use the labeled 2001–2005 structural window.",
@@ -281,11 +331,75 @@ def build_products(generated_at: str = GENERATED_AT) -> dict:
     }
 
 
+def build_verification_queue(product: dict) -> dict:
+    control_policy = read(CONTROL_POLICY_PATH)
+    candidates: dict[str, dict] = {}
+    for host in product["hosts"]:
+        for candidate in host["comparison_candidates"]:
+            record = candidates.setdefault(candidate["county_fips"], {
+                "county_fips": candidate["county_fips"],
+                "county_name": candidate["county_name"],
+                "state_abbr": candidate["state_abbr"],
+                "host_matches": [],
+            })
+            record["host_matches"].append({
+                "host_county_fips": host["county_fips"],
+                "host_county_name": host["county_name"],
+                "host_state_abbr": host["state_abbr"],
+                "candidate_rank": candidate["rank"],
+                "match_score": candidate["match_score"],
+            })
+    ordered = sorted(
+        candidates.values(),
+        key=lambda item: (
+            -len(item["host_matches"]),
+            min(match["candidate_rank"] for match in item["host_matches"]),
+            -max(match["match_score"] for match in item["host_matches"]),
+            item["county_fips"],
+        ),
+    )
+    domains = control_policy["required_negative_search_domains"]
+    for priority, record in enumerate(ordered, 1):
+        record["priority"] = priority
+        record["candidate_slot_count"] = len(record["host_matches"])
+        record["best_match_rank"] = min(match["candidate_rank"] for match in record["host_matches"])
+        record["best_match_score"] = max(match["match_score"] for match in record["host_matches"])
+        record["mean_match_score"] = round(statistics.fmean(match["match_score"] for match in record["host_matches"]), 2)
+        record["host_matches"].sort(key=lambda match: (match["candidate_rank"], -match["match_score"], match["host_county_fips"]))
+        record["review_status"] = "local_facility_absence_review_required"
+        record["domain_reviews"] = [
+            {"code": domain["code"], "label": domain["label"], "status": "not_reviewed", "sources": []}
+            for domain in domains
+        ]
+        record["required_next_step"] = "Audit every required domain through each linked host county's treatment year; record dated sources and spillover checks before any causal use."
+    return {
+        "schema_version": "1.0.0",
+        "release_id": "county-comparison-verification-queue-1.0.0",
+        "generated_at": product["generated_at"],
+        "as_of": product["as_of"],
+        "policy_id": control_policy["policy_id"],
+        "scope": "Prioritized local absence-verification queue for the unique counties appearing in the current expanded host-to-comparison analytical reserve.",
+        "counts": {
+            "unique_candidates": len(ordered),
+            "candidate_slots": sum(record["candidate_slot_count"] for record in ordered),
+            "locally_verified_absent": 0,
+            "local_absence_review_required": len(ordered),
+        },
+        "priority_rule": "Audit counties used by the most host matches first, then best candidate rank, best match score, and county FIPS.",
+        "required_negative_search_domains": domains,
+        "candidates": ordered,
+    }
+
+
 def main() -> int:
     product = build_products()
+    queue = build_verification_queue(product)
     write(PUBLIC_PATH, product)
     write(SILVER_PATH, product)
+    write(VERIFICATION_QUEUE_PUBLIC_PATH, queue)
+    write(VERIFICATION_QUEUE_SILVER_PATH, queue)
     print(json.dumps(product["counts"], indent=2, sort_keys=True))
+    print(json.dumps(queue["counts"], indent=2, sort_keys=True))
     return 0
 
 

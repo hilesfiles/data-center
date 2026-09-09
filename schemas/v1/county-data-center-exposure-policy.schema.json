@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dccio.org/schemas/v1/county-data-center-exposure-policy.schema.json",
+  "title": "County data-center exposure policy",
+  "type": "object",
+  "required": ["schema_version", "policy_id", "as_of", "purpose", "tiers", "materiality_indicators", "adjudication_rule", "strict_control_rule", "sensitivity_control_rule", "prohibited_shortcuts"],
+  "properties": {
+    "schema_version": {"$ref": "common.schema.json#/$defs/schema_version"},
+    "policy_id": {"type": "string", "const": "county-data-center-exposure-v1"},
+    "as_of": {"type": "string", "format": "date"},
+    "purpose": {"type": "string", "minLength": 1},
+    "tiers": {"type": "array", "minItems": 4, "maxItems": 4, "items": {"type": "object", "required": ["code", "label", "definition", "causal_role"], "properties": {"code": {"type": "string", "enum": ["E0", "E1", "E2", "E3"]}, "label": {"type": "string", "minLength": 1}, "definition": {"type": "string", "minLength": 1}, "causal_role": {"type": "string", "minLength": 1}}, "additionalProperties": false}},
+    "materiality_indicators": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+    "adjudication_rule": {"type": "string", "minLength": 1},
+    "strict_control_rule": {"type": "string", "minLength": 1},
+    "sensitivity_control_rule": {"type": "string", "minLength": 1},
+    "prohibited_shortcuts": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}}
+  },
+  "additionalProperties": false
+}

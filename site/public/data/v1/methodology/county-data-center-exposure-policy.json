@@ -1,0 +1,49 @@
+{
+  "adjudication_rule": "Thresholds are evidence flags, not automatic truth. Reviewers must resolve conflicting scope, phase and geography evidence and cite the determination. Unknown values cannot be treated as zero.",
+  "as_of": "2026-09-09",
+  "materiality_indicators": [
+    "Documented hyperscale, wholesale, AI/HPC, cloud-region or multi-building campus use",
+    "Nameplate or planned critical load of at least 10 megawatts",
+    "Documented capital investment of at least 100 million nominal dollars",
+    "At least 100,000 square feet of dedicated data-center development",
+    "Project-specific tax abatement, bond, utility agreement or public infrastructure commitment",
+    "Evidence of construction activity or employment large enough to plausibly affect county outcomes"
+  ],
+  "policy_id": "county-data-center-exposure-v1",
+  "prohibited_shortcuts": [
+    "Do not infer E0 from absence in a national registry.",
+    "Do not use a project announcement, opening ceremony, lease date or page-history anchor as the county's first material exposure without adjudication.",
+    "Do not classify a headquarters address as a data-center facility without facility evidence.",
+    "Do not convert missing megawatts, investment, square footage, incentives or dates to zero."
+  ],
+  "purpose": "Separate literal evidence of any dedicated data-center activity from economically material commercial treatment so the study can publish a strict control specification and a disclosed sensitivity specification.",
+  "schema_version": "1.0.0",
+  "sensitivity_control_rule": "A separately reported sensitivity model may admit E1 counties only when the documented facility predates the baseline, is not marketed commercially, lacks evidence of material economic scale and passes spillover review.",
+  "strict_control_rule": "Only E0 counties with completed dated negative-evidence reviews through the treated county's event date may enter the primary donor pool.",
+  "tiers": [
+    {
+      "causal_role": "Eligible for the strict donor pool only after all negative-evidence domains and regional spillover checks are complete.",
+      "code": "E0",
+      "definition": "No operating, construction, permitted, proposed, cancelled, pre or site-specific developer-approach evidence found through the required search domains as of the applicable treatment date.",
+      "label": "No documented dedicated data-center exposure"
+    },
+    {
+      "causal_role": "Excluded from the strict donor pool; may enter a prespecified sensitivity pool after spillover and scale review.",
+      "code": "E1",
+      "definition": "A separately identified government, education, health-care or enterprise-computing facility is documented, but no evidence establishes a marketed colocation operation or economically material commercial development.",
+      "label": "Accessory or institutional exposure only"
+    },
+    {
+      "causal_role": "Excluded from strict and sensitivity donor pools.",
+      "code": "E2",
+      "definition": "A dedicated commercial hosting, colocation or edge facility is documented, without evidence sufficient to classify it as a major campus-scale investment.",
+      "label": "Commercial edge or colocation exposure"
+    },
+    {
+      "causal_role": "Treatment exposure; requires a separately adjudicated county first-material-exposure date.",
+      "code": "E3",
+      "definition": "A hyperscale, wholesale, AI/HPC or campus-scale development is documented, or public evidence establishes material capital investment, utility load, land/building scale, incentives or construction activity capable of affecting county outcomes.",
+      "label": "Economically material commercial exposure"
+    }
+  ]
+}

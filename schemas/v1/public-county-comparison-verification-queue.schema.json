@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dccio.org/schemas/v1/public-county-comparison-verification-queue.schema.json",
+  "title": "Public county comparison verification queue",
+  "type": "object",
+  "required": ["schema_version", "release_id", "generated_at", "as_of", "policy_id", "scope", "counts", "priority_rule", "required_negative_search_domains", "candidates"],
+  "properties": {
+    "schema_version": {"$ref": "common.schema.json#/$defs/schema_version"},
+    "release_id": {"type": "string", "const": "county-comparison-verification-queue-1.0.0"},
+    "generated_at": {"$ref": "common.schema.json#/$defs/timestamp"},
+    "as_of": {"type": "string", "format": "date"},
+    "policy_id": {"type": "string", "const": "county-control-eligibility-v1"},
+    "scope": {"type": "string", "minLength": 1},
+    "counts": {
+      "type": "object",
+      "required": ["unique_candidates", "candidate_slots", "locally_verified_absent", "local_absence_review_required"],
+      "properties": {
+        "unique_candidates": {"type": "integer", "minimum": 1},
+        "candidate_slots": {"type": "integer", "const": 420},
+        "locally_verified_absent": {"type": "integer", "const": 0},
+        "local_absence_review_required": {"type": "integer", "minimum": 1}
+      },
+      "additionalProperties": false
+    },
+    "priority_rule": {"type": "string", "minLength": 1},
+    "required_negative_search_domains": {"type": "array", "minItems": 7, "maxItems": 7, "items": {"$ref": "#/$defs/domain"}},
+    "candidates": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/candidate"}}
+  },
+  "$defs": {
+    "domain": {
+      "type": "object",
+      "required": ["code", "label"],
+      "properties": {"code": {"type": "string", "minLength": 1}, "label": {"type": "string", "minLength": 1}},
+      "additionalProperties": false
+    },
+    "host_match": {
+      "type": "object",
+      "required": ["host_county_fips", "host_county_name", "host_state_abbr", "candidate_rank", "match_score"],
+      "properties": {
+        "host_county_fips": {"$ref": "common.schema.json#/$defs/county_fips"},
+        "host_county_name": {"type": "string", "minLength": 1},
+        "host_state_abbr": {"$ref": "common.schema.json#/$defs/state_abbr"},
+        "candidate_rank": {"type": "integer", "minimum": 1, "maximum": 12},
+        "match_score": {"type": "number", "minimum": 0, "maximum": 100}
+      },
+      "additionalProperties": false
+    },
+    "domain_review": {
+      "type": "object",
+      "required": ["code", "label", "status", "sources"],
+      "properties": {
+        "code": {"type": "string", "minLength": 1},
+        "label": {"type": "string", "minLength": 1},
+        "status": {"type": "string", "const": "not_reviewed"},
+        "sources": {"type": "array", "maxItems": 0}
+      },
+      "additionalProperties": false
+    },
+    "candidate": {
+      "type": "object",
+      "required": ["county_fips", "county_name", "state_abbr", "host_matches", "priority", "candidate_slot_count", "best_match_rank", "best_match_score", "mean_match_score", "review_status", "domain_reviews", "required_next_step"],
+      "properties": {
+        "county_fips": {"$ref": "common.schema.json#/$defs/county_fips"},
+        "county_name": {"type": "string", "minLength": 1},
+        "state_abbr": {"$ref": "common.schema.json#/$defs/state_abbr"},
+        "host_matches": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/host_match"}},
+        "priority": {"type": "integer", "minimum": 1},
+        "candidate_slot_count": {"type": "integer", "minimum": 1},
+        "best_match_rank": {"type": "integer", "minimum": 1, "maximum": 12},
+        "best_match_score": {"type": "number", "minimum": 0, "maximum": 100},
+        "mean_match_score": {"type": "number", "minimum": 0, "maximum": 100},
+        "review_status": {"type": "string", "const": "local_facility_absence_review_required"},
+        "domain_reviews": {"type": "array", "minItems": 7, "maxItems": 7, "items": {"$ref": "#/$defs/domain_review"}},
+        "required_next_step": {"type": "string", "minLength": 1}
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

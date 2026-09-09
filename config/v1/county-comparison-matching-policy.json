@@ -2,8 +2,9 @@
   "schema_version": "1.0.0",
   "policy_id": "county-comparison-matching-v1",
   "as_of": "2026-09-09",
-  "purpose": "Identify economically comparable counties for each of the 35 active-project host counties using counties with zero known data-center facility or project records across the repository inventory and the pinned external national registry.",
-  "candidate_count_per_host": 5,
+  "purpose": "Identify economically comparable counties for each of the 35 active-project host counties using counties with zero known data-center facility or project records across the repository inventory, two pinned external national registries, and governed candidate-specific positive-exposure findings.",
+  "candidate_count_per_host": 12,
+  "presentation_candidate_count": 5,
   "baseline_year_count": 5,
   "fallback_baseline": {"start_year": 2001, "end_year": 2005},
   "feature_weights": {
@@ -21,7 +22,8 @@
   "geography_adjustments": {"different_census_region_penalty": 0.35, "different_census_division_penalty": 0.12},
   "selection_rules": [
     "Exclude every county with one or more active canonical facilities in the current repository inventory.",
-    "Exclude every county linked to any operating, construction, permitted, proposed, or cancelled record in the pinned external national registry; these records are treated only as contamination screens, not as a separate analytical cohort.",
+    "Exclude every county linked to any operating, construction, permitted, proposed, or cancelled record in either pinned external national registry; these records are treated only as contamination screens, not as a separate analytical cohort.",
+    "Exclude every county with a governed candidate-specific positive-exposure finding supported by a cited operator, government, institutional, industry-directory, or research source.",
     "Exclude all 35 active-project host counties from every comparison pool.",
     "Require complete observations for every feature in the applicable five-year baseline window.",
     "Use a project-anchor pre-period when available; otherwise use the labeled 2001–2005 structural-comparison window.",
@@ -29,7 +31,7 @@
   ],
   "interpretation_limits": [
     "A high match score means economic similarity under this specification; it does not verify absence of an unrecorded data center.",
-    "Two national inventories reduce false negatives but do not prove absence, so every candidate still requires local facility-absence research before analytical use.",
+    "Three national inventories plus candidate-specific positive findings reduce false negatives but do not prove absence, so every surviving candidate still requires local facility-absence research before analytical use.",
     "The available national panel does not yet include industry mix, urban-rural classification, electricity-market structure, tax policy, water conditions, or major concurrent investments.",
     "These are descriptive comparison candidates, not causal estimates or finalized donor pools."
   ]

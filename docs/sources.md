@@ -111,14 +111,41 @@ county profiles lazy-load only their selected state partition.
   Compute Atlas v1.32.0, retrieved 2026-09-09, CC BY 4.0
 - External documentation: `https://suedatacenters.org/data-centers/data`
 - Pinned input: `data/bronze/external/suedatacenters-data-centers-v1.32.0.json`
+- External exposure screen: DEPLOY open data-center facility registry, 3,431 reviewed
+  facility-tier records retrieved 2026-09-09, CC BY 4.0
+- External documentation: `https://registry.deploy.report/open-data-center-registry`
+- API endpoint: `https://registry.deploy.report/v1/datacenters/facilities`
+- Pinned input: `data/bronze/external/deploy-data-center-facilities-2026-09-09.json`
+- Acquisition script: `scripts/acquire_deploy_data_center_facilities.py`
+- Candidate-specific positive evidence: `config/v1/county-comparison-exposure-findings.json`
+- Candidate-specific evidence schema: `schemas/v1/county-comparison-exposure-findings.schema.json`
+- Exposure tiers and causal-use rules: `config/v1/county-data-center-exposure-policy.json`
+- Published exposure policy: `site/public/data/v1/methodology/county-data-center-exposure-policy.json`
 - Builder: `scripts/build_county_comparison_matches.py`
+- Published local verification queue:
+  `site/public/data/v1/analysis/county-comparison-matches/verification-queue.json`
+- Host-county first-material-exposure review:
+  `site/public/data/v1/analysis/county-treatment-anchor-review/index.json`
+- Treatment-anchor builder: `scripts/build_county_treatment_anchor_review.py`
+- Governed treatment decisions: `config/v1/county-treatment-anchor-adjudications.json`
 
-The external registry is spatially joined to the 2025 Census county boundaries, with a
+The external registries are spatially joined to the 2025 Census county boundaries, with a
 normalized state/county-name fallback for points outside simplified boundary geometry.
 Every operating, construction, permitted, proposed, or cancelled record is used only as
-a conservative contamination screen. Rejected projects remain in their existing study;
-they are not a comparison cohort here. A county clearing both national sources remains a
-local-review candidate, not proof that no unrecorded facility exists.
+a conservative contamination screen. Candidate-specific research can also disqualify a county when
+cited evidence documents a dedicated facility, colocation operation, separately identified
+institutional data center, formal proposal, pre-application, or site-specific developer approach.
+Those findings are exclusions only and do not enter the active-project inventory. Rejected projects
+remain in their existing study; they are not a comparison cohort here. A county clearing the national
+and positive-evidence screens remains a local-review candidate, not proof that no unrecorded facility
+or proposal exists. The verification queue leaves all seven negative-evidence domains visibly
+unreviewed until dated local research is recorded.
+
+The public match register carries 12 ranked candidates per host so local disqualifications and
+pre-trend diagnostics do not immediately exhaust the donor reserve; the site presents only the
+strongest five. The treatment-anchor review is intentionally separate. Existing project-history
+anchors and sourced timeline events are retained as candidate evidence, but all 35 county-level
+first-material-exposure dates remain unresolved and unavailable for causal estimation.
 
 ## Governed county first-entry treatment registry
 

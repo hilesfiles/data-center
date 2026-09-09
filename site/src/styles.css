@@ -869,6 +869,8 @@ a { color: var(--aqua); }
 .control-warning strong { color: #f0d5a6; }
 .control-warning p { margin: 7px 0 0; font-size: .77rem; line-height: 1.65; }
 .comparison-matches { margin: 0 0 48px; padding: 34px; border: 1px solid #2a3b40; border-radius: 10px; background: linear-gradient(145deg, #0d171a, #0b1117 55%); }
+.comparison-downloads { display: flex; flex: 0 0 auto; flex-direction: column; align-items: flex-end; gap: 5px; }
+.comparison-downloads a { color: var(--aqua); font-size: .68rem; text-decoration: none; }
 .comparison-summary { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1px; margin: 22px 0; border: 1px solid #29373c; border-radius: 7px; overflow: hidden; background: #29373c; }
 .comparison-summary div { padding: 16px; background: #0e161a; }
 .comparison-summary strong { display: block; color: #eaf4f3; font: 600 1.15rem "DM Mono", monospace; }
@@ -996,6 +998,7 @@ a { color: var(--aqua); }
   .control-method ol { columns: 1; }
   .control-filters, .control-next ul { grid-template-columns: 1fr; }
   .comparison-matches { padding: 20px 14px; }
+  .comparison-downloads { align-items: flex-start; }
   .comparison-summary { grid-template-columns: 1fr; }
   .comparison-host-select { grid-template-columns: 1fr; gap: 7px; }
   .comparison-host-heading { flex-direction: column; }
