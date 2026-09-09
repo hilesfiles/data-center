@@ -28,16 +28,45 @@
   ],
   "site_afterlife": "Parcel-level reuse has not yet been established in this dataset. Current Port of Cascade Locks tenant information documents continuing industrial activity in the community but is not treated as proof of reuse of the exact proposed parcel.",
   "evidence_note": "Cross-sector comparison. The longer post-period is useful descriptively, but differences in water use, labor, utilities, and tax treatment prevent a direct one-for-one comparison with a data center.",
+  "unresolved_questions": [
+    "What became of the exact proposed bottling-plant parcel after the vote?",
+    "Did any water-right or exchange proceeding survive the county prohibition?",
+    "Which contemporaneous fiscal and employment projections can be reconciled to realized county outcomes?"
+  ],
   "timeline": [
+    {
+      "event_id": "cascade_2010_proposal",
+      "date": "2010-01-01",
+      "date_label": "2010",
+      "category": "proposal",
+      "title": "Bottling proposal and water exchange enter public review",
+      "summary": "Nestlé's Cascade Locks proposal contemplated a large bottling facility supplied through a spring-water exchange with the city.",
+      "source_ids": [
+        "cascade_osu_report",
+        "cascade_bark_history"
+      ]
+    },
     {
       "event_id": "cascade_2013_review",
       "date": "2013-10-14",
       "date_label": "October 2013",
       "category": "government_review",
       "title": "Independent preliminary review describes the proposal",
-      "summary": "An Oregon State University report summarized the proposed facility, water exchange, and open economic and environmental questions.",
+      "summary": "An Oregon State University report summarized a roughly $50 million, 250,000-square-foot facility, possible enterprise-zone benefits, employment claims, and unresolved economic and environmental questions.",
       "source_ids": [
         "cascade_osu_report"
+      ]
+    },
+    {
+      "event_id": "cascade_2015_petition",
+      "date": "2015-01-01",
+      "date_label": "2015",
+      "category": "public_opposition",
+      "title": "County prohibition qualifies for the ballot process",
+      "summary": "Local organizers advanced a county charter measure prohibiting commercial water bottling, turning the long-running dispute into a countywide vote.",
+      "source_ids": [
+        "cascade_ballot_archive",
+        "cascade_bark_history"
       ]
     },
     {
@@ -46,9 +75,22 @@
       "date_label": "May 17, 2016",
       "category": "decision",
       "title": "County voters adopt water-bottling prohibition",
-      "summary": "The countywide vote prohibited commercial water bottling and stopped the proposed plant from proceeding on its planned basis.",
+      "summary": "Measure 14-55 passed with roughly two-thirds support and stopped the proposed plant from proceeding on its planned basis.",
       "source_ids": [
-        "cascade_ap_vote"
+        "cascade_ap_vote",
+        "cascade_ballot_archive",
+        "cascade_courthouse_vote"
+      ]
+    },
+    {
+      "event_id": "cascade_2019_retrospective",
+      "date": "2019-06-10",
+      "date_label": "June 10, 2019",
+      "category": "site_afterlife",
+      "title": "Retrospective documents the coalition and continuing legal history",
+      "summary": "A later case history describes the countywide coalition, the vote, and disputes that continued after the measure passed.",
+      "source_ids": [
+        "cascade_shareable_retrospective"
       ]
     },
     {
@@ -83,6 +125,40 @@
       "source_role": "corroborating"
     },
     {
+      "source_id": "cascade_ballot_archive",
+      "title": "Elections Archive — May 17, 2016 Primary",
+      "publisher": "Hood River County",
+      "url": "https://www.hoodrivercounty.gov/?SEC=B3760B28-AC32-4807-B236-6309313184F8",
+      "source_type": "government_record",
+      "source_role": "primary"
+    },
+    {
+      "source_id": "cascade_bark_history",
+      "title": "Nestlé Water Bottling Proposal",
+      "publisher": "Bark",
+      "url": "https://bark-out.org/project/nestle-water-bottling-proposal/",
+      "source_type": "research",
+      "source_role": "context"
+    },
+    {
+      "source_id": "cascade_courthouse_vote",
+      "title": "Oregon Voters Reject Nestlé's Water Grab",
+      "publisher": "Courthouse News Service",
+      "url": "https://www.courthousenews.com/oregon-voters-rejectnestles-water-grab/",
+      "published_on": "2016-05-18",
+      "source_type": "national_news",
+      "source_role": "corroborating"
+    },
+    {
+      "source_id": "cascade_shareable_retrospective",
+      "title": "Hood River County water protection measure",
+      "publisher": "Shareable",
+      "url": "https://www.shareable.net/hood-river-county-water-protection-measure/",
+      "published_on": "2019-06-10",
+      "source_type": "research",
+      "source_role": "context"
+    },
+    {
       "source_id": "cascade_port_tenants",
       "title": "Port Tenants",
       "publisher": "Port of Cascade Locks",
@@ -91,7 +167,35 @@
       "source_role": "primary"
     }
   ],
+  "county_outcome_context": {
+    "history_path": "panels/county-economic-history/by-state/or.json",
+    "history_start_year": 2001,
+    "history_end_year": 2024,
+    "decision_year": 2016,
+    "last_full_pre_year": 2015,
+    "first_full_post_year": 2017,
+    "full_post_years_available": 8,
+    "analysis_status": "descriptive_only",
+    "baseline_metrics": {
+      "year": 2015,
+      "real_gdp_usd": 1059082000,
+      "annual_avg_covered_employment": 12984,
+      "population": 23270,
+      "annual_avg_weekly_wage_nominal_usd": 672
+    },
+    "latest_metrics": {
+      "year": 2024,
+      "real_gdp_usd": 1405739000,
+      "annual_avg_covered_employment": 13815,
+      "population": 23764,
+      "annual_avg_weekly_wage_nominal_usd": 1004
+    },
+    "note": "Hood River County is the only case in this release with a meaningful full-year post-decision window: eight complete years from 2017 through 2024. The county series is descriptive and cannot isolate the prohibition from tourism, migration, the pandemic, or unrelated business activity."
+  },
   "detail_path": "rejected-projects/projects/prj_rejected_cascade_locks_nestle.json",
-  "source_count": 3,
-  "timeline_event_count": 3
+  "source_count": 7,
+  "primary_source_count": 2,
+  "timeline_event_count": 6,
+  "timeline_start_date": "2010-01-01",
+  "timeline_end_date": "2026-08-01"
 }

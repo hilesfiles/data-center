@@ -11,7 +11,7 @@
     "reviewed_on": {"$ref": "common.schema.json#/$defs/calendar_date"},
     "scope": {"type": "string", "minLength": 1},
     "selection_basis": {"type": "string", "minLength": 1},
-    "counts": {"type": "object", "required": ["projects", "counties", "states", "by_disposition", "by_readiness"], "properties": {"projects": {"type": "integer", "minimum": 0}, "counties": {"type": "integer", "minimum": 0}, "states": {"type": "integer", "minimum": 0}, "by_disposition": {"type": "object", "additionalProperties": {"type": "integer", "minimum": 0}}, "by_readiness": {"type": "object", "additionalProperties": {"type": "integer", "minimum": 0}}}, "additionalProperties": false},
+    "counts": {"type": "object", "required": ["projects", "counties", "states", "sources", "primary_sources", "timeline_events", "counties_with_full_post_years", "by_disposition", "by_readiness"], "properties": {"projects": {"type": "integer", "minimum": 0}, "counties": {"type": "integer", "minimum": 0}, "states": {"type": "integer", "minimum": 0}, "sources": {"type": "integer", "minimum": 0}, "primary_sources": {"type": "integer", "minimum": 0}, "timeline_events": {"type": "integer", "minimum": 0}, "counties_with_full_post_years": {"type": "integer", "minimum": 0}, "by_disposition": {"type": "object", "additionalProperties": {"type": "integer", "minimum": 0}}, "by_readiness": {"type": "object", "additionalProperties": {"type": "integer", "minimum": 0}}}, "additionalProperties": false},
     "projects": {"type": "array", "items": {"$ref": "public-rejected-project.schema.json#/$defs/summary"}}
   },
   "additionalProperties": false

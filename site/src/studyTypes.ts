@@ -83,7 +83,10 @@ export interface RejectedProjectSummary {
   detail_path: string;
   summary: string;
   source_count: number;
+  primary_source_count: number;
   timeline_event_count: number;
+  timeline_start_date: string;
+  timeline_end_date: string;
 }
 
 export interface RejectedProjectSource {
@@ -111,8 +114,30 @@ export interface RejectedProject extends RejectedProjectSummary {
   proposed_scale: { label: string; value: string; source_id: string }[];
   site_afterlife: string;
   evidence_note: string;
+  county_outcome_context: {
+    history_path: string;
+    history_start_year: number;
+    history_end_year: number;
+    decision_year: number;
+    last_full_pre_year: number;
+    first_full_post_year: number;
+    full_post_years_available: number;
+    analysis_status: "descriptive_only";
+    baseline_metrics: RejectedCountyMetrics;
+    latest_metrics: RejectedCountyMetrics;
+    note: string;
+  };
+  unresolved_questions: string[];
   timeline: RejectedProjectTimelineEvent[];
   sources: RejectedProjectSource[];
+}
+
+export interface RejectedCountyMetrics {
+  year: number;
+  real_gdp_usd: number | null;
+  annual_avg_covered_employment: number | null;
+  population: number | null;
+  annual_avg_weekly_wage_nominal_usd: number | null;
 }
 
 export interface RejectedProjectIndex {
@@ -126,6 +151,10 @@ export interface RejectedProjectIndex {
     projects: number;
     counties: number;
     states: number;
+    sources: number;
+    primary_sources: number;
+    timeline_events: number;
+    counties_with_full_post_years: number;
     by_disposition: Record<string, number>;
     by_readiness: Record<string, number>;
   };

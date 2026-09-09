@@ -3,7 +3,7 @@
   "site_id": "pst_proposed_catlett_data_center",
   "name": "Catlett Data Center Campus",
   "proposal_sector": "data_center",
-  "developer_label": "Catlett Data Center applicant",
+  "developer_label": "Headwaters Site Development LLC / Catlett Station II LLC",
   "county_fips": "51061",
   "county_name": "Fauquier County",
   "state_abbr": "VA",
@@ -18,16 +18,32 @@
   "coordinate_precision": "municipality",
   "coordinate_source_id": "catlett_county_referral",
   "summary": "The applicant withdrew a rezoning for a large data-center campus after organized opposition. Later warehouse preapplication activity means the site should be tracked as redesigned, not treated as permanently undeveloped.",
-  "proposal_description": "The application sought to rezone roughly 60 acres in the Catlett Service District for a multi-building data-center campus and associated electrical infrastructure.",
+  "proposal_description": "Headwaters Site Development sought to rezone 68.27 acres in the Catlett Service District for a multi-building data-center campus, aboveground water storage, a substation, and a nearly three-mile transmission connection.",
   "proposed_scale": [
     {
       "label": "Proposed campus",
-      "value": "Approximately 1.4 million square feet on 60 acres",
-      "source_id": "catlett_pec_update"
+      "value": "Up to approximately 1.4 million square feet",
+      "source_id": "catlett_county_agenda"
+    },
+    {
+      "label": "Rezoning area",
+      "value": "68.27 acres, with proffers covering approximately 80 acres",
+      "source_id": "catlett_county_agenda"
+    },
+    {
+      "label": "Concept alternatives",
+      "value": "Three campus options with proposed building heights of 45 to 65 feet",
+      "source_id": "catlett_county_agenda"
     }
   ],
   "site_afterlife": "Fauquier reporting identifies later preapplication material for a non-distributing warehouse concept. The site is therefore classified as redesigned rather than a clean no-development outcome.",
   "evidence_note": "The official record verifies withdrawal. Advocacy reporting supports a contributing community role, while the exact causal weight of opposition versus applicant economics remains unquantified.",
+  "unresolved_questions": [
+    "Did the applicant sell, retain, or redesign every parcel covered by the withdrawn applications?",
+    "What is the relationship between the data-center parcels, the later warehouse concept, and the 2026 Catlett Farm federal review?",
+    "What electrical interconnection work, if any, continued after withdrawal?",
+    "What fiscal-impact analysis exists outside the county land-use file?"
+  ],
   "timeline": [
     {
       "event_id": "catlett_2023_application",
@@ -35,9 +51,33 @@
       "date_label": "2023",
       "category": "proposal",
       "title": "Rezoning enters county review",
-      "summary": "County materials describe a request to rezone 60 acres for data-center uses in the Catlett Service District.",
+      "summary": "County materials describe requests for a data-center campus and water-storage exception in the Catlett Service District.",
       "source_ids": [
-        "catlett_county_referral"
+        "catlett_county_referral",
+        "catlett_county_agenda"
+      ]
+    },
+    {
+      "event_id": "catlett_2024_work_session",
+      "date": "2024-05-16",
+      "date_label": "May 16, 2024",
+      "category": "government_review",
+      "title": "Planning Commission receives a project update",
+      "summary": "Commission minutes record a work-session update while staff and the applicant continued reviewing the campus concept.",
+      "source_ids": [
+        "catlett_pc_minutes"
+      ]
+    },
+    {
+      "event_id": "catlett_2024_opposition",
+      "date": "2024-06-24",
+      "date_label": "June 24, 2024",
+      "category": "public_opposition",
+      "title": "Community group files detailed objections",
+      "summary": "Citizens for Fauquier County published objections involving land-use policy, historic resources, noise, water, power infrastructure, and community compatibility.",
+      "source_ids": [
+        "catlett_cffc_comments",
+        "catlett_pec_detailed"
       ]
     },
     {
@@ -45,10 +85,11 @@
       "date": "2024-07-18",
       "date_label": "July 18, 2024",
       "category": "withdrawal",
-      "title": "County agenda records application withdrawal",
-      "summary": "The Planning Commission agenda was amended to reflect withdrawal of the rezoning and special-exception applications.",
+      "title": "Applicant withdraws both applications",
+      "summary": "The official agenda request records withdrawal of REZN-23-020206 and SPEX-23-020207 before the scheduled hearing.",
       "source_ids": [
-        "catlett_county_withdrawal"
+        "catlett_county_withdrawal",
+        "catlett_county_agenda"
       ]
     },
     {
@@ -60,6 +101,17 @@
       "summary": "A later non-distributing warehouse concept indicates potential redesign of the site rather than a stable untreated parcel.",
       "source_ids": [
         "catlett_pec_update"
+      ]
+    },
+    {
+      "event_id": "catlett_2026_federal_review",
+      "date": "2026-03-03",
+      "date_label": "March 3, 2026",
+      "category": "site_afterlife",
+      "title": "Federal notice documents later Catlett Farm industrial activity",
+      "summary": "A U.S. Army Corps public notice describes three proposed warehouses, wetland and stream impacts, and adverse effects on historic properties. It directly identifies Catlett Station II LLC but does not prove that every parcel matches the withdrawn campus boundary.",
+      "source_ids": [
+        "catlett_usace_notice"
       ]
     }
   ],
@@ -82,6 +134,41 @@
       "source_role": "primary"
     },
     {
+      "source_id": "catlett_county_agenda",
+      "title": "Planning Commission agenda request — Catlett applications withdrawn",
+      "publisher": "Fauquier County",
+      "url": "https://d2kbkoa27fdvtw.cloudfront.net/fauquier-va/bd96e5cb691764d3b438e0aec4b661b40.pdf",
+      "published_on": "2024-07-18",
+      "source_type": "government_record",
+      "source_role": "primary"
+    },
+    {
+      "source_id": "catlett_pc_minutes",
+      "title": "Planning Commission minutes — May 16, 2024",
+      "publisher": "Fauquier County",
+      "url": "https://www.fauquiercounty.gov/home/showpublisheddocument/41961/638549071081630000",
+      "published_on": "2024-05-16",
+      "source_type": "government_record",
+      "source_role": "primary"
+    },
+    {
+      "source_id": "catlett_cffc_comments",
+      "title": "Catlett Data Center public comments",
+      "publisher": "Citizens for Fauquier County",
+      "url": "https://www.citizensforfauquier.org/_files/ugd/f1ecdb_7f5b7e7f4ffb4eebabe366874bb26d29.pdf",
+      "published_on": "2024-06-24",
+      "source_type": "research",
+      "source_role": "context"
+    },
+    {
+      "source_id": "catlett_pec_detailed",
+      "title": "Update on data center development and transmission lines in Fauquier",
+      "publisher": "Piedmont Environmental Council",
+      "url": "https://www.pecva.org/region/fauquier/update-on-data-center-development-and-transmission-lines-in-fauquier/",
+      "source_type": "research",
+      "source_role": "corroborating"
+    },
+    {
       "source_id": "catlett_pec_update",
       "title": "Fauquier County 2025 Updates",
       "publisher": "Piedmont Environmental Council",
@@ -89,9 +176,46 @@
       "published_on": "2025-12-01",
       "source_type": "research",
       "source_role": "corroborating"
+    },
+    {
+      "source_id": "catlett_usace_notice",
+      "title": "NAO-2025-01458 Catlett Farm",
+      "publisher": "U.S. Army Corps of Engineers, Norfolk District",
+      "url": "https://www.nao.usace.army.mil/Media/News-Stories/Article/4419935/nao-2025-01458-catlett-farm-fauquier-virginia/",
+      "published_on": "2026-03-03",
+      "source_type": "government_record",
+      "source_role": "primary"
     }
   ],
+  "county_outcome_context": {
+    "history_path": "panels/county-economic-history/by-state/va.json",
+    "history_start_year": 2001,
+    "history_end_year": 2024,
+    "decision_year": 2024,
+    "last_full_pre_year": 2023,
+    "first_full_post_year": 2025,
+    "full_post_years_available": 0,
+    "analysis_status": "descriptive_only",
+    "baseline_metrics": {
+      "year": 2023,
+      "real_gdp_usd": 3045293000,
+      "annual_avg_covered_employment": 22942,
+      "population": 75256,
+      "annual_avg_weekly_wage_nominal_usd": 1210
+    },
+    "latest_metrics": {
+      "year": 2024,
+      "real_gdp_usd": 3227177000,
+      "annual_avg_covered_employment": 23810,
+      "population": 75865,
+      "annual_avg_weekly_wage_nominal_usd": 1257
+    },
+    "note": "The county panel ends in 2024, the decision year, so it contains no full post-withdrawal year. Fauquier's 2024 values are context only; the site also has later industrial activity, preventing a simple untreated-county interpretation."
+  },
   "detail_path": "rejected-projects/projects/prj_rejected_catlett_data_center.json",
-  "source_count": 3,
-  "timeline_event_count": 3
+  "source_count": 8,
+  "primary_source_count": 5,
+  "timeline_event_count": 6,
+  "timeline_start_date": "2023-06-01",
+  "timeline_end_date": "2026-03-03"
 }

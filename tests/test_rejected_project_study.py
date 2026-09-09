@@ -23,6 +23,26 @@ class RejectedProjectStudyTest(unittest.TestCase):
         index, _, _, _ = build_products(self.config, "2026-09-09T00:00:00+00:00")
         self.assertEqual(index["counts"]["by_readiness"].get("comparison_ready", 0), 0)
 
+    def test_enrichment_has_depth_and_primary_records(self):
+        index, details, _, _ = build_products(self.config, "2026-09-09T00:00:00+00:00")
+        self.assertGreaterEqual(index["counts"]["sources"], 70)
+        self.assertGreaterEqual(index["counts"]["primary_sources"], 30)
+        self.assertGreaterEqual(index["counts"]["timeline_events"], 50)
+        for detail in details:
+            self.assertGreaterEqual(detail["source_count"], 7, detail["project_id"])
+            self.assertGreaterEqual(detail["timeline_event_count"], 6, detail["project_id"])
+            self.assertGreaterEqual(detail["primary_source_count"], 2, detail["project_id"])
+            self.assertGreaterEqual(len(detail["unresolved_questions"]), 3, detail["project_id"])
+            self.assertTrue(any(event["category"] == "site_afterlife" for event in detail["timeline"]))
+
+    def test_county_outcome_windows_are_explicit(self):
+        index, details, _, _ = build_products(self.config, "2026-09-09T00:00:00+00:00")
+        contexts = {detail["county_fips"]: detail["county_outcome_context"] for detail in details}
+        self.assertEqual(index["counts"]["counties_with_full_post_years"], 1)
+        self.assertEqual(contexts["41027"]["full_post_years_available"], 8)
+        self.assertTrue(all(context["history_end_year"] == 2024 for context in contexts.values()))
+        self.assertTrue(all(context["analysis_status"] == "descriptive_only" for context in contexts.values()))
+
     def test_every_timeline_event_and_scale_claim_resolves_to_source(self):
         _, details, _, _ = build_products(self.config, "2026-09-09T00:00:00+00:00")
         for detail in details:

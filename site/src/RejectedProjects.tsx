@@ -9,6 +9,9 @@ import type {
 const studyBase = `${import.meta.env.BASE_URL}data/v1/study/`;
 
 const words = (value: string) => value.replaceAll("_", " ");
+const integer = new Intl.NumberFormat("en-US", { maximumFractionDigits: 0 });
+const dollars = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 });
+const compactDollars = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", notation: "compact", maximumFractionDigits: 1 });
 
 const readinessLabels: Record<RejectedProjectSummary["outcome_readiness"], string> = {
   disposition_verified: "Disposition verified",
@@ -48,9 +51,9 @@ export function RejectedProjectRegister({ registry }: { registry: RejectedProjec
       </div>
       <div className="study-counts rejected-counts" aria-label="Rejected proposal coverage">
         <div><strong>{registry.counts.projects}</strong><span>verified proposals</span></div>
-        <div><strong>{registry.counts.counties}</strong><span>affected counties</span></div>
-        <div><strong>{registry.counts.states}</strong><span>states represented</span></div>
-        <p>Curated comparison register · {registry.counts.by_disposition.rejected ?? 0} denied · {registry.counts.by_disposition.withdrawn ?? 0} withdrawn<br />Readiness is assessed separately for every proposal.</p>
+        <div><strong>{registry.counts.sources}</strong><span>cited sources</span></div>
+        <div><strong>{registry.counts.timeline_events}</strong><span>sourced events</span></div>
+        <p>{registry.counts.primary_sources} primary records · {registry.counts.counties} counties in {registry.counts.states} states · {registry.counts.counties_with_full_post_years} case with a complete post-decision window<br />Readiness is assessed separately for every proposal.</p>
       </div>
     </section>
     <section className="study-register rejected-register" aria-labelledby="rejected-register-title">
@@ -75,7 +78,7 @@ function RejectedProjectCard({ project }: { project: RejectedProjectSummary }) {
     <h3><a href={`#/rejected/${project.project_id}`}>{project.name}</a></h3>
     <a className="card-county" href={`#/county/${project.county_fips}`}>{project.county_name}, {project.state_abbr} ↗</a>
     <p className="card-history">{project.summary}</p>
-    <p className="card-economics has-evidence">{project.source_count} cited sources · {project.timeline_event_count} timeline events</p>
+    <p className="card-economics has-evidence">{project.source_count} sources ({project.primary_source_count} primary) · {project.timeline_event_count} events · {project.timeline_start_date.slice(0, 4)}–{project.timeline_end_date.slice(0, 4)}</p>
     <dl className="rejected-card-facts"><div><dt>Disposition</dt><dd>{words(project.disposition)}</dd></div><div><dt>Finality</dt><dd>{words(project.finality)}</dd></div><div><dt>Community role</dt><dd>{words(project.community_role)}</dd></div></dl>
     <div className="card-bottom"><span className={`outcome-badge readiness-${project.outcome_readiness}`}>{readinessLabels[project.outcome_readiness]}</span><a href={`#/rejected/${project.project_id}`} aria-label={`View ${project.name}`}>View case →</a></div>
   </article>;
@@ -108,8 +111,10 @@ export function RejectedProjectProfile({ summary }: { summary: RejectedProjectSu
       </div>
       <section className="project-section"><div className="section-heading"><div><span className="eyebrow">Proposal claims</span><h3>Promised scale and economics</h3></div><span className="projection-flag">Projections · not realized</span></div><div className="proposal-scale-grid">{detail.proposed_scale.map(item => { const source = sources.get(item.source_id); return <article key={`${item.label}-${item.source_id}`}><span>{item.label}</span><strong>{item.value}</strong>{source && <a href={source.url} target="_blank" rel="noreferrer">Source ↗</a>}</article>; })}</div></section>
       <section className="project-section"><div className="section-heading"><div><span className="eyebrow">Chronological record</span><h3>Proposal, opposition, decision, and aftermath</h3></div><span className="account-count">{detail.timeline_event_count} sourced events</span></div><ol className="project-timeline rejected-timeline">{detail.timeline.map(event => <li className={`timeline-${event.category}`} key={event.event_id}><span className="timeline-dot" /><div className="media-timeline-entry"><div className="timeline-meta"><time dateTime={event.date}>{event.date_label}</time><span>{categoryLabels[event.category]}</span></div><strong>{event.title}</strong><p>{event.summary}</p><div className="timeline-sources">{event.source_ids.map(sourceId => { const source = sources.get(sourceId); return source ? <a href={source.url} target="_blank" rel="noreferrer" key={sourceId}><strong>{source.title}</strong><span>{source.publisher} · {source.source_role} ↗</span></a> : null; })}</div></div></li>)}</ol></section>
+      <section className="project-section county-outcome-section"><div className="section-heading"><div><span className="eyebrow">County evidence window</span><h3>What can be measured after the decision?</h3></div><span className="account-count">Descriptive only</span></div><p>{detail.county_outcome_context.note}</p><div className="proposal-scale-grid county-outcome-grid"><article><span>Full post-decision years</span><strong>{detail.county_outcome_context.full_post_years_available}</strong><small>{detail.county_outcome_context.full_post_years_available ? `${detail.county_outcome_context.first_full_post_year}–${detail.county_outcome_context.history_end_year}` : `Panel ends ${detail.county_outcome_context.history_end_year}`}</small></article><article><span>Latest county snapshot</span><strong>{detail.county_outcome_context.latest_metrics.year}</strong><small>{integer.format(detail.county_outcome_context.latest_metrics.population ?? 0)} residents · {integer.format(detail.county_outcome_context.latest_metrics.annual_avg_covered_employment ?? 0)} covered jobs</small></article><article><span>Latest real GDP / weekly wage</span><strong>{compactDollars.format(detail.county_outcome_context.latest_metrics.real_gdp_usd ?? 0)}</strong><small>{dollars.format(detail.county_outcome_context.latest_metrics.annual_avg_weekly_wage_nominal_usd ?? 0)} average weekly wage</small></article></div><a className="county-evidence-link" href={`#/county/${detail.county_fips}`}>Open the complete 2001–2024 county series →</a></section>
       <section className="project-section site-afterlife"><span className="eyebrow">What happened afterward</span><h3>Site and community tracking</h3><p>{detail.site_afterlife}</p><aside><strong>Interpretation boundary</strong><p>{detail.evidence_note}</p></aside></section>
-      <section className="project-section" id="rejected-sources"><div className="section-heading"><h3>Source ledger</h3><a href={`${studyBase}${summary.detail_path}`} download={`${summary.project_id}.json`}>Download case JSON ↓</a></div><ol className="source-list">{detail.sources.map(source => <li key={source.source_id}><a href={source.url} target="_blank" rel="noreferrer">{source.title} ↗</a><small>{source.publisher} · {source.source_role}</small></li>)}</ol></section>
+      <section className="project-section unresolved-questions"><span className="eyebrow">Known evidence gaps</span><h3>What still needs to be established</h3><ul>{detail.unresolved_questions.map(question => <li key={question}>{question}</li>)}</ul></section>
+      <section className="project-section" id="rejected-sources"><div className="section-heading"><div><h3>Source ledger</h3><span className="account-count">{detail.source_count} sources · {detail.primary_source_count} primary records</span></div><a href={`${studyBase}${summary.detail_path}`} download={`${summary.project_id}.json`}>Download case JSON ↓</a></div><ol className="source-list">{detail.sources.map(source => <li key={source.source_id}><a href={source.url} target="_blank" rel="noreferrer">{source.title} ↗</a><small>{source.publisher} · {source.source_role}{source.published_on ? ` · ${source.published_on}` : " · current page"}</small></li>)}</ol></section>
     </>}
   </article>;
 }

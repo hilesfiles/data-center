@@ -33,6 +33,12 @@
   ],
   "site_afterlife": "No verified replacement development on the parcel is published here. Chesapeake subsequently developed broader data-center policy, a distinct citywide outcome that should not be confused with parcel reuse.",
   "evidence_note": "The denial is final for the reviewed rezoning. Community testimony is well documented, but the record also cites land-use compatibility and availability of other viable uses.",
+  "unresolved_questions": [
+    "What is the current ownership and entitlement status of the Etheridge Lakes parcel?",
+    "Did the applicant pursue a permitted alternative use after denial?",
+    "Were utility-capacity reservations or interconnection requests released?",
+    "How many future applications were altered or deterred by Chesapeake's 2026 ordinance?"
+  ],
   "timeline": [
     {
       "event_id": "chesapeake_2025_application",
@@ -46,14 +52,26 @@
       ]
     },
     {
+      "event_id": "chesapeake_2025_referral",
+      "date": "2025-03-11",
+      "date_label": "March 11, 2025",
+      "category": "government_review",
+      "title": "Council refers the application through public review",
+      "summary": "Official work-session and meeting records place the rezoning into the city's hearing process.",
+      "source_ids": [
+        "chesapeake_march_minutes"
+      ]
+    },
+    {
       "event_id": "chesapeake_2025_planning",
       "date": "2025-05-15",
       "date_label": "May 15, 2025",
       "category": "government_review",
       "title": "Planning Commission recommends denial",
-      "summary": "The commission recommended against the rezoning after extensive written opposition and public concern.",
+      "summary": "The commission recommended denial after extensive written opposition and testimony about compatibility, noise, traffic, power, and nearby homes.",
       "source_ids": [
-        "chesapeake_whro"
+        "chesapeake_whro",
+        "chesapeake_pc_minutes"
       ]
     },
     {
@@ -62,10 +80,45 @@
       "date_label": "June 17, 2025",
       "category": "decision",
       "title": "City Council unanimously denies rezoning",
-      "summary": "Council denied the application 7–0 after public testimony, citing incompatibility with the location and community.",
+      "summary": "Council first declined the applicant's requested continuance and then denied the rezoning 7–0.",
       "source_ids": [
         "chesapeake_minutes",
+        "chesapeake_agenda"
+      ]
+    },
+    {
+      "event_id": "chesapeake_2025_hearing",
+      "date": "2025-06-17",
+      "date_label": "June 17, 2025",
+      "category": "public_opposition",
+      "title": "Residents press their case at the council hearing",
+      "summary": "The public record documents substantial opposition while staff recommended approval and the Planning Commission recommended denial.",
+      "source_ids": [
+        "chesapeake_agenda",
+        "chesapeake_minutes"
+      ]
+    },
+    {
+      "event_id": "chesapeake_2026_initiation",
+      "date": "2026-01-13",
+      "date_label": "January 13, 2026",
+      "category": "government_review",
+      "title": "Council initiates citywide data-center rules",
+      "summary": "Council adopted an initiating resolution for ordinance and policy changes governing future data-center siting.",
+      "source_ids": [
         "chesapeake_policy"
+      ]
+    },
+    {
+      "event_id": "chesapeake_2026_pause",
+      "date": "2026-07-21",
+      "date_label": "July 21, 2026",
+      "category": "government_review",
+      "title": "Council pauses new applications during policy work",
+      "summary": "The city imposed an eight-month application pause as it completed revised zoning controls.",
+      "source_ids": [
+        "chesapeake_policy",
+        "chesapeake_vpm_pause"
       ]
     },
     {
@@ -76,7 +129,8 @@
       "title": "City adopts a broader data-center ordinance",
       "summary": "The city later adopted an ordinance governing future data-center siting. This is tracked as a policy consequence, not an economic effect of the rejected parcel.",
       "source_ids": [
-        "chesapeake_policy"
+        "chesapeake_policy",
+        "chesapeake_policy_release"
       ]
     }
   ],
@@ -100,6 +154,33 @@
       "source_role": "corroborating"
     },
     {
+      "source_id": "chesapeake_march_minutes",
+      "title": "City Council minutes — March 11, 2025",
+      "publisher": "City of Chesapeake",
+      "url": "https://chesapeake.granicus.com/MinutesViewer.php?clip_id=9764&doc_id=c95bf6a6-00de-11f0-ab6a-005056a89546&view_id=29",
+      "published_on": "2025-03-11",
+      "source_type": "government_record",
+      "source_role": "primary"
+    },
+    {
+      "source_id": "chesapeake_pc_minutes",
+      "title": "Planning Commission minutes — May 14, 2025",
+      "publisher": "City of Chesapeake",
+      "url": "https://chesapeake.granicus.com/MinutesViewer.php?clip_id=9798&doc_id=30a72d01-4854-11f0-b7f5-005056a89546&view_id=36",
+      "published_on": "2025-05-14",
+      "source_type": "government_record",
+      "source_role": "primary"
+    },
+    {
+      "source_id": "chesapeake_agenda",
+      "title": "City Council agenda — June 17, 2025",
+      "publisher": "City of Chesapeake",
+      "url": "https://chesapeake.granicus.com/DocumentViewer.php?file=chesapeake_b98cbe4cec0b79d1581ea550bc9d5a46.pdf&view=1",
+      "published_on": "2025-06-17",
+      "source_type": "government_record",
+      "source_role": "primary"
+    },
+    {
       "source_id": "chesapeake_minutes",
       "title": "City Council minutes — June 17, 2025",
       "publisher": "City of Chesapeake",
@@ -115,9 +196,55 @@
       "url": "https://www.cityofchesapeake.net/3783/Data-Center-Ordinance-and-Policy",
       "source_type": "government_record",
       "source_role": "primary"
+    },
+    {
+      "source_id": "chesapeake_vpm_pause",
+      "title": "Chesapeake puts data center applications on hold",
+      "publisher": "VPM / WHRO",
+      "url": "https://www.vpm.org/news/2026-07-22/chesapeake-city-council-data-center-application-hold-lindley-newins-whro/",
+      "published_on": "2026-07-22",
+      "source_type": "local_news",
+      "source_role": "corroborating"
+    },
+    {
+      "source_id": "chesapeake_policy_release",
+      "title": "Chesapeake adopts modified data center ordinance",
+      "publisher": "City of Chesapeake",
+      "url": "https://cityofchesapeake.net/m/newsflash/Home/Detail/769",
+      "published_on": "2026-08-21",
+      "source_type": "government_record",
+      "source_role": "primary"
     }
   ],
+  "county_outcome_context": {
+    "history_path": "panels/county-economic-history/by-state/va.json",
+    "history_start_year": 2001,
+    "history_end_year": 2024,
+    "decision_year": 2025,
+    "last_full_pre_year": 2024,
+    "first_full_post_year": 2026,
+    "full_post_years_available": 0,
+    "analysis_status": "descriptive_only",
+    "baseline_metrics": {
+      "year": 2024,
+      "real_gdp_usd": 11925555000,
+      "annual_avg_covered_employment": 104662,
+      "population": 254997,
+      "annual_avg_weekly_wage_nominal_usd": 1131
+    },
+    "latest_metrics": {
+      "year": 2024,
+      "real_gdp_usd": 11925555000,
+      "annual_avg_covered_employment": 104662,
+      "population": 254997,
+      "annual_avg_weekly_wage_nominal_usd": 1131
+    },
+    "note": "The city-county panel ends in 2024, before the June 2025 denial, leaving zero full post-decision years. Chesapeake's later citywide ordinance is an institutional outcome, but it cannot yet be translated into a measured economic effect."
+  },
   "detail_path": "rejected-projects/projects/prj_rejected_chesapeake_etheridge_lakes.json",
-  "source_count": 4,
-  "timeline_event_count": 4
+  "source_count": 9,
+  "primary_source_count": 7,
+  "timeline_event_count": 8,
+  "timeline_start_date": "2025-01-27",
+  "timeline_end_date": "2026-08-18"
 }

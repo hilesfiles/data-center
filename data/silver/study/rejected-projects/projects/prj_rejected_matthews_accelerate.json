@@ -38,17 +38,34 @@
   ],
   "site_afterlife": "The withdrawal left options open. No stable alternative use or sufficiently long post-period is established in this release.",
   "evidence_note": "Recent disposition; map and timeline eligible, economic comparison not ready. The developer described the withdrawal as allowing time to explore options.",
+  "unresolved_questions": [
+    "Will the applicant resubmit a smaller campus or pursue another use on the East John Street parcels?",
+    "What tax-incentive assumptions underlay the developer's fiscal projections?",
+    "Did Duke Energy reserve or study 600 MW for the project, and what happened to that request?",
+    "Can town-level permits, tax base, and employment be tracked separately from Mecklenburg County totals?"
+  ],
   "timeline": [
     {
-      "event_id": "matthews_2025_proposal",
-      "date": "2025-09-01",
-      "date_label": "September 2025",
+      "event_id": "matthews_2025_submission",
+      "date": "2025-06-02",
+      "date_label": "June 2, 2025",
       "category": "proposal",
-      "title": "Project Accelerate enters public review",
-      "summary": "A large campus proposal on East John Street generated immediate public interest and concern.",
+      "title": "Rezoning application is submitted",
+      "summary": "Project plans identify a five-building campus proposed by Matthews DC LLC and related development entities.",
       "source_ids": [
-        "matthews_town",
-        "matthews_wfae"
+        "matthews_plans"
+      ]
+    },
+    {
+      "event_id": "matthews_2025_review",
+      "date": "2025-09-08",
+      "date_label": "September 8, 2025",
+      "category": "government_review",
+      "title": "Town publishes its staff review",
+      "summary": "The staff report placed the industrial rezoning, infrastructure, and land-use questions before the Board of Commissioners.",
+      "source_ids": [
+        "matthews_staff_report",
+        "matthews_town"
       ]
     },
     {
@@ -57,10 +74,23 @@
       "date_label": "September 24, 2025",
       "category": "public_opposition",
       "title": "Organized opposition grows",
-      "summary": "Residents raised concerns about power, water, noise, and town character and organized a large petition.",
+      "summary": "Residents raised concerns about power, water, noise, and town character; petition signatures grew from hundreds to more than 2,700 by withdrawal reporting.",
       "source_ids": [
         "matthews_wfae",
+        "matthews_observer_opposition",
         "matthews_observer"
+      ]
+    },
+    {
+      "event_id": "matthews_2025_meeting",
+      "date": "2025-10-02",
+      "date_label": "October 2, 2025",
+      "category": "public_opposition",
+      "title": "Packed community meeting tests the developer's case",
+      "summary": "A public meeting focused on the project's scale, utilities, fiscal claims, and neighborhood effects shortly before withdrawal.",
+      "source_ids": [
+        "matthews_observer_meeting",
+        "matthews_developer_faq"
       ]
     },
     {
@@ -69,10 +99,24 @@
       "date_label": "October 7, 2025",
       "category": "withdrawal",
       "title": "Developers withdraw rezoning request",
-      "summary": "The project was pulled before a scheduled decision after the mayor indicated it faced defeat.",
+      "summary": "The project was pulled before the scheduled hearing after the mayor said commissioners were prepared to reject it unanimously.",
       "source_ids": [
+        "matthews_town",
         "matthews_observer",
-        "matthews_wunc"
+        "matthews_wunc",
+        "matthews_ap",
+        "matthews_dcd"
+      ]
+    },
+    {
+      "event_id": "matthews_2026_tracking",
+      "date": "2026-08-16",
+      "date_label": "Current tracking · August 2026",
+      "category": "site_afterlife",
+      "title": "Project remains listed as cancelled; parcel outcome is unresolved",
+      "summary": "A current project tracker still lists the campus as cancelled but does not establish a replacement use or permanent restriction on resubmittal.",
+      "source_ids": [
+        "matthews_tracker"
       ]
     }
   ],
@@ -87,11 +131,55 @@
       "source_role": "primary"
     },
     {
+      "source_id": "matthews_staff_report",
+      "title": "Project Accelerate staff report",
+      "publisher": "Town of Matthews",
+      "url": "https://www.matthewsnc.gov/docview.aspx?docid=36347",
+      "published_on": "2025-09-08",
+      "source_type": "government_record",
+      "source_role": "primary"
+    },
+    {
+      "source_id": "matthews_plans",
+      "title": "Project Accelerate rezoning plans",
+      "publisher": "Town of Matthews",
+      "url": "https://www.matthewsnc.gov/docview.aspx?docid=36209",
+      "published_on": "2025-09-19",
+      "source_type": "government_record",
+      "source_role": "primary"
+    },
+    {
+      "source_id": "matthews_developer_faq",
+      "title": "Project Accelerate frequently asked questions",
+      "publisher": "Project Accelerate",
+      "url": "https://www.projectacceleratenc.com/faq",
+      "source_type": "company_record",
+      "source_role": "primary"
+    },
+    {
       "source_id": "matthews_wfae",
       "title": "Matthews data center proposal draws pushback",
       "publisher": "WFAE",
       "url": "https://www.wfae.org/business/2025-09-24/matthews-data-center-proposal-draws-pushback",
       "published_on": "2025-09-24",
+      "source_type": "local_news",
+      "source_role": "corroborating"
+    },
+    {
+      "source_id": "matthews_observer_opposition",
+      "title": "Matthews data center opposition grows",
+      "publisher": "The Charlotte Observer",
+      "url": "https://www.charlotteobserver.com/news/local/article312216706.html",
+      "published_on": "2025-09-23",
+      "source_type": "local_news",
+      "source_role": "corroborating"
+    },
+    {
+      "source_id": "matthews_observer_meeting",
+      "title": "Matthews residents crowd data center meeting",
+      "publisher": "The Charlotte Observer",
+      "url": "https://www.charlotteobserver.com/news/local/article312362754.html",
+      "published_on": "2025-10-03",
       "source_type": "local_news",
       "source_role": "corroborating"
     },
@@ -112,9 +200,64 @@
       "published_on": "2025-10-09",
       "source_type": "local_news",
       "source_role": "corroborating"
+    },
+    {
+      "source_id": "matthews_ap",
+      "title": "Data center opposition forces developers to pull North Carolina proposal",
+      "publisher": "Associated Press",
+      "url": "https://apnews.com/article/21fa7b957664d5dca6788e35ab43b88e",
+      "published_on": "2025-10-09",
+      "source_type": "national_news",
+      "source_role": "corroborating"
+    },
+    {
+      "source_id": "matthews_dcd",
+      "title": "Project Accelerate data center proposal withdrawn",
+      "publisher": "Data Center Dynamics",
+      "url": "https://www.datacenterdynamics.com/en/news/project-accelerate-data-center-proposal-withdrawn/",
+      "published_on": "2025-10-09",
+      "source_type": "trade_press",
+      "source_role": "corroborating"
+    },
+    {
+      "source_id": "matthews_tracker",
+      "title": "Crosland Southeast Matthews Project Accelerate",
+      "publisher": "SueDataCenters",
+      "url": "https://suedatacenters.org/data-centers/crosland-southeast-matthews-project-accelerate-nc",
+      "published_on": "2026-08-16",
+      "source_type": "research",
+      "source_role": "context"
     }
   ],
+  "county_outcome_context": {
+    "history_path": "panels/county-economic-history/by-state/nc.json",
+    "history_start_year": 2001,
+    "history_end_year": 2024,
+    "decision_year": 2025,
+    "last_full_pre_year": 2024,
+    "first_full_post_year": 2026,
+    "full_post_years_available": 0,
+    "analysis_status": "descriptive_only",
+    "baseline_metrics": {
+      "year": 2024,
+      "real_gdp_usd": 146152496000,
+      "annual_avg_covered_employment": 788436,
+      "population": 1206285,
+      "annual_avg_weekly_wage_nominal_usd": 1694
+    },
+    "latest_metrics": {
+      "year": 2024,
+      "real_gdp_usd": 146152496000,
+      "annual_avg_covered_employment": 788436,
+      "population": 1206285,
+      "annual_avg_weekly_wage_nominal_usd": 1694
+    },
+    "note": "The withdrawal occurred in 2025, after the 2024 panel endpoint, leaving zero full post-decision years. Mecklenburg County is a very large, diversified economy, so county aggregates will be especially insensitive to a single unbuilt Matthews proposal."
+  },
   "detail_path": "rejected-projects/projects/prj_rejected_matthews_accelerate.json",
-  "source_count": 4,
-  "timeline_event_count": 3
+  "source_count": 12,
+  "primary_source_count": 4,
+  "timeline_event_count": 6,
+  "timeline_start_date": "2025-06-02",
+  "timeline_end_date": "2026-08-16"
 }

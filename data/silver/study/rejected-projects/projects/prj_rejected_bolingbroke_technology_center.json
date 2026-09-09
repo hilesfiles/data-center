@@ -3,7 +3,7 @@
   "site_id": "pst_proposed_bolingbroke_technology_center",
   "name": "Bolingbroke Technology Center",
   "proposal_sector": "data_center",
-  "developer_label": "Bolingbroke Technology Center applicant",
+  "developer_label": "Bolingbroke Technology Center / property-owner applicants",
   "county_fips": "13171",
   "county_name": "Monroe County",
   "state_abbr": "GA",
@@ -38,6 +38,13 @@
   ],
   "site_afterlife": "The denial was followed by litigation reported against the county. Until the legal and parcel status are resolved, no stable post-decision economic comparison should be made.",
   "evidence_note": "Disposition verified, but litigation makes the treatment date and finality unsuitable for causal modeling.",
+  "unresolved_questions": [
+    "What is the current procedural status and requested remedy in the property owners' lawsuit?",
+    "Has a named end user or purchaser ever been identified for the Bolingbroke site?",
+    "Which acreage figure—approximately 903 or 970 acres—corresponds to the final application boundary?",
+    "Did any utility, transmission, or water-capacity reservation survive denial?",
+    "How does the county's later data-center ordinance affect possible resubmission?"
+  ],
   "timeline": [
     {
       "event_id": "bolingbroke_2025_proposal",
@@ -45,9 +52,11 @@
       "date_label": "July 2025",
       "category": "proposal",
       "title": "Large campus rezoning reaches public hearings",
-      "summary": "The proposal sought rezoning of rural residential land for a gigawatt-scale campus.",
+      "summary": "The proposal sought rezoning of rural residential land for a campus described as roughly 1.1 to 1.2 GW with a reported $5.8 billion investment.",
       "source_ids": [
-        "bolingbroke_gpb"
+        "bolingbroke_gpb",
+        "bolingbroke_dcd",
+        "bolingbroke_project_site"
       ]
     },
     {
@@ -70,18 +79,53 @@
       "summary": "The commission issued the final local denial of the reviewed rezoning proposal.",
       "source_ids": [
         "bolingbroke_minutes",
+        "bolingbroke_gpb_denial",
         "bolingbroke_dcd"
       ]
     },
     {
-      "event_id": "bolingbroke_2026_litigation",
-      "date": "2026-05-01",
-      "date_label": "Tracked in 2026",
-      "category": "litigation",
-      "title": "Property owners challenge the denial",
-      "summary": "Reported litigation means the rejected status remains legally contested.",
+      "event_id": "bolingbroke_2025_hearing",
+      "date": "2025-08-05",
+      "date_label": "August 5, 2025",
+      "category": "public_opposition",
+      "title": "Commission hears competing project claims and resident objections",
+      "summary": "Official minutes record the applicant's employment, tax, water, and power representations alongside extensive public opposition.",
       "source_ids": [
-        "bolingbroke_tracker"
+        "bolingbroke_minutes"
+      ]
+    },
+    {
+      "event_id": "bolingbroke_2025_litigation",
+      "date": "2025-09-03",
+      "date_label": "September 3, 2025",
+      "category": "litigation",
+      "title": "Property owners sue to challenge the denial",
+      "summary": "Three owners filed suit alleging the rezoning denial was unlawful and arbitrary; no resolution is established in the reviewed record.",
+      "source_ids": [
+        "bolingbroke_macon_lawsuit"
+      ]
+    },
+    {
+      "event_id": "bolingbroke_2026_policy",
+      "date": "2026-03-03",
+      "date_label": "March 3, 2026",
+      "category": "government_review",
+      "title": "County continues work on broader data-center rules",
+      "summary": "Commission minutes document continued county discussion of data-center regulation while the Bolingbroke litigation remains unresolved in this dataset.",
+      "source_ids": [
+        "bolingbroke_march_minutes"
+      ]
+    },
+    {
+      "event_id": "bolingbroke_2026_tracking",
+      "date": "2026-04-07",
+      "date_label": "April 7, 2026",
+      "category": "site_afterlife",
+      "title": "Ordinance amendment and other county proposals complicate follow-up",
+      "summary": "The county published a data-center ordinance amendment, while current tracking identifies separate activity elsewhere in Monroe County. Neither establishes reuse of the Bolingbroke parcel.",
+      "source_ids": [
+        "bolingbroke_ordinance",
+        "bolingbroke_county_tracker"
       ]
     }
   ],
@@ -105,6 +149,15 @@
       "source_role": "corroborating"
     },
     {
+      "source_id": "bolingbroke_gpb_denial",
+      "title": "Despite promise of millions every year, Monroe County says no to data center",
+      "publisher": "Georgia Public Broadcasting",
+      "url": "https://www.gpb.org/news/2025/08/06/despite-the-promise-of-millions-of-dollars-every-year-monroe-county-says-no-data",
+      "published_on": "2025-08-06",
+      "source_type": "local_news",
+      "source_role": "corroborating"
+    },
+    {
       "source_id": "bolingbroke_dcd",
       "title": "Land rezoning proposal denied for 1.2GW campus outside Macon",
       "publisher": "Data Center Dynamics",
@@ -114,15 +167,78 @@
       "source_role": "corroborating"
     },
     {
-      "source_id": "bolingbroke_tracker",
-      "title": "Stopped data center projects",
+      "source_id": "bolingbroke_macon_lawsuit",
+      "title": "Property owners sue Monroe County over data center denial",
+      "publisher": "The Macon Telegraph",
+      "url": "https://www.macon.com/news/article311989293.html",
+      "published_on": "2025-09-05",
+      "source_type": "local_news",
+      "source_role": "corroborating"
+    },
+    {
+      "source_id": "bolingbroke_project_site",
+      "title": "Bolingbroke Technology Center project information",
+      "publisher": "Bolingbroke Technology Center",
+      "url": "https://bolingbroketech.com/",
+      "source_type": "company_record",
+      "source_role": "primary"
+    },
+    {
+      "source_id": "bolingbroke_march_minutes",
+      "title": "Board of Commissioners minutes — March 3, 2026",
+      "publisher": "Monroe County",
+      "url": "https://www.monroecoga.org/wp-content/uploads/2026/03/03-03-2026-Regular-Meeting-minutes.pdf",
+      "published_on": "2026-03-03",
+      "source_type": "government_record",
+      "source_role": "primary"
+    },
+    {
+      "source_id": "bolingbroke_ordinance",
+      "title": "Data center ordinance amendment",
+      "publisher": "Monroe County",
+      "url": "https://www.monroecoga.org/document/data-center-ordinance-amendment/",
+      "published_on": "2026-04-07",
+      "source_type": "government_record",
+      "source_role": "primary"
+    },
+    {
+      "source_id": "bolingbroke_county_tracker",
+      "title": "Monroe County, Georgia data center tracker",
       "publisher": "Is a Data Center Coming",
-      "url": "https://isadatacentercoming.com/stopped",
+      "url": "https://isadatacentercoming.com/ga/monroe-county",
       "source_type": "research",
       "source_role": "context"
     }
   ],
+  "county_outcome_context": {
+    "history_path": "panels/county-economic-history/by-state/ga.json",
+    "history_start_year": 2001,
+    "history_end_year": 2024,
+    "decision_year": 2025,
+    "last_full_pre_year": 2024,
+    "first_full_post_year": 2026,
+    "full_post_years_available": 0,
+    "analysis_status": "descriptive_only",
+    "baseline_metrics": {
+      "year": 2024,
+      "real_gdp_usd": 497526000,
+      "annual_avg_covered_employment": 4461,
+      "population": 20690,
+      "annual_avg_weekly_wage_nominal_usd": 973
+    },
+    "latest_metrics": {
+      "year": 2024,
+      "real_gdp_usd": 497526000,
+      "annual_avg_covered_employment": 4461,
+      "population": 20690,
+      "annual_avg_weekly_wage_nominal_usd": 973
+    },
+    "note": "The denial occurred in 2025, after the panel's 2024 endpoint, so there are zero full post-decision years. Monroe County also has other data-center policy and project activity; litigation further prevents treating the local denial as a settled treatment date."
+  },
   "detail_path": "rejected-projects/projects/prj_rejected_bolingbroke_technology_center.json",
-  "source_count": 4,
-  "timeline_event_count": 4
+  "source_count": 9,
+  "primary_source_count": 4,
+  "timeline_event_count": 7,
+  "timeline_start_date": "2025-07-01",
+  "timeline_end_date": "2026-04-07"
 }
