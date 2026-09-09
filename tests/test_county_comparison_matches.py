@@ -1,6 +1,6 @@
 import unittest
 
-from scripts.build_county_comparison_matches import EXPOSURE_FINDINGS_PATH, POLICY_PATH, ROOT, build_products, build_verification_queue, read
+from scripts.build_county_comparison_matches import ABSENCE_ADJUDICATIONS_PATH, EXPOSURE_FINDINGS_PATH, POLICY_PATH, ROOT, build_products, build_verification_queue, read
 from scripts.validate_data_contract import ContractValidator
 
 
@@ -29,9 +29,12 @@ class CountyComparisonMatchesTest(unittest.TestCase):
                 self.assertEqual(candidate["facility_screen_status"], "zero_known_records_across_three_national_registries")
 
     def test_nothing_is_falsely_presented_as_verified_absent(self):
-        self.assertEqual(self.product["counts"]["externally_verified_absent"], 0)
-        statuses = {candidate["verification_status"] for host in self.product["hosts"] for candidate in host["comparison_candidates"]}
-        self.assertEqual(statuses, {"local_facility_absence_review_required"})
+        adjudications = {record["county_fips"]: record for record in read(ABSENCE_ADJUDICATIONS_PATH)["adjudications"]}
+        candidate_fips = {candidate["county_fips"] for host in self.product["hosts"] for candidate in host["comparison_candidates"]}
+        expected = {fips for fips, record in adjudications.items() if record["review_status"] == "verified_no_qualifying_exposure_found"} & candidate_fips
+        surfaced = {candidate["county_fips"] for host in self.product["hosts"] for candidate in host["comparison_candidates"] if candidate["verification_status"] == "eligible_verified_no_known_project"}
+        self.assertEqual(surfaced, expected)
+        self.assertEqual(self.product["counts"]["externally_verified_absent"], len(expected))
 
     def test_three_pinned_sources_screen_the_candidate_pool(self):
         self.assertEqual(len(self.product["screening_sources"]), 3)
@@ -56,15 +59,16 @@ class CountyComparisonMatchesTest(unittest.TestCase):
     def test_verification_queue_prioritizes_reused_candidates_without_claiming_absence(self):
         self.assertEqual(self.queue["counts"]["candidate_slots"], 420)
         self.assertEqual(self.queue["counts"]["unique_candidates"], self.product["counts"]["unique_comparison_counties"])
-        self.assertEqual(self.queue["counts"]["locally_verified_absent"], 0)
+        self.assertEqual(self.queue["counts"]["locally_verified_absent"], self.product["counts"]["externally_verified_absent"])
         self.assertEqual([candidate["priority"] for candidate in self.queue["candidates"]], list(range(1, len(self.queue["candidates"]) + 1)))
         self.assertTrue(all(len(candidate["domain_reviews"]) == 7 for candidate in self.queue["candidates"]))
-        self.assertTrue(all(domain["status"] == "not_reviewed" for candidate in self.queue["candidates"] for domain in candidate["domain_reviews"]))
+        self.assertTrue(all(domain["status"] in {"not_reviewed", "review_incomplete", "reviewed_no_qualifying_evidence", "qualifying_evidence_found"} for candidate in self.queue["candidates"] for domain in candidate["domain_reviews"]))
 
     def test_policy_and_product_validate(self):
         cases = [
             (read(POLICY_PATH), "county-comparison-matching-policy.schema.json"),
             (read(EXPOSURE_FINDINGS_PATH), "county-comparison-exposure-findings.schema.json"),
+            (read(ABSENCE_ADJUDICATIONS_PATH), "county-comparison-absence-adjudications.schema.json"),
             (self.product, "public-county-comparison-match-index.schema.json"),
             (self.queue, "public-county-comparison-verification-queue.schema.json"),
         ]

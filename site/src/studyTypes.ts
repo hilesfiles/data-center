@@ -232,7 +232,9 @@ export interface CountyComparisonCandidate {
   match_score: number;
   standardized_distance: number;
   facility_screen_status: "zero_known_records_across_three_national_registries";
-  verification_status: "local_facility_absence_review_required";
+  verification_status: "local_facility_absence_review_required" | "eligible_verified_no_known_project";
+  absence_adjudication_id: string | null;
+  absence_reviewed_through: string | null;
   features: CountyComparisonFeatures;
   history_path: string;
 }
@@ -260,6 +262,7 @@ export interface CountyComparisonIndex {
     counts: { host_counties: number; host_projects: number; comparison_candidates: number; analytical_candidates_per_host: number; presentation_candidates_per_host: number; unique_comparison_counties: number; screened_candidate_pool_count: number; candidate_specific_positive_exclusions: number; externally_verified_absent: number };
     screening_sources: { source_id: string; title: string; version: string; record_count: number; url: string | null; license: string | null; retrieved_on: string; sha256: string }[];
     positive_exposure_findings: { dataset_id: string; path: string; record_count: number; excluded_count: number; qualifying_rule: string; interpretation_note: string; sha256: string };
+    absence_adjudications: { dataset_id: string; path: string; record_count: number; verified_candidate_count: number; decision_rule: string; sha256: string };
   external_registry_unmatched_coordinate_ids: string[];
   method: { candidate_pool: string; distance: string; score: string; baseline_rule: string; features: string[]; feature_weights: Record<string, number>; geography_adjustments: Record<string, number> };
   interpretation_limits: string[];

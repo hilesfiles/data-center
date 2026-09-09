@@ -1,412 +1,155 @@
 # U.S. Data Center Community Impact Observatory
 
-This repository contains the governed data and static application for the Observatory.
-County boundaries and identity fields come from the authoritative 2025 Census TIGERweb
-release. The legacy national facility seed is a provisional, OSM-derived projection of
-IM3 Atlas v2026.02.09 source records. It remains available for future research but is not
-a complete or lifecycle-verified operating-facility inventory.
+The Observatory is a governed public-data project and static web application for examining how data-center projects interact with local economies. It keeps reported facts, forecasts, modeled estimates, and unresolved evidence gaps separate so the site does not turn incomplete public records into causal claims.
 
-The private-sector study includes a searchable register of 36 provisional projects
-across 35 counties and 23 states, including five campus-linked candidates. The default
-page is the project register; `#/project/{project_id}` opens a sourced history and
-economic-evidence checklist, and existing `#/county/{FIPS}` links remain available.
-`#/map` presents only the six projects that pass the full modeled county-account gate:
-Apple Mesa, Switch Citadel, Digital Crossroad Hammond, Meta Forest City, Microsoft San
-Antonio, and EdgeConneX DET01. The legacy national inventory, county datasets, and incomplete
-research candidates remain stored for future use but are excluded from the rendered map.
-First-entry decisions are retained as a separate research question. Study release 1.44
-publishes 595 economic source records linked to all 36 candidates: 539 reported records
-and 56 projections, plus 154 separately labeled modeled syntheses across six completed
-contribution accounts.
-The six completed contribution accounts separate directly reported anchors, transferred
-construction and operating benchmarks, recurring project-linked local property taxes,
-the public-cost break-even threshold, public support and tax treatment, infrastructure
-and environmental demand, and descriptive county comparisons. They do not assert a net
-fiscal result without same-scope public-cost evidence and do not present county comparison
-gaps as causal effects. Project profiles retain the complete source, forecast, model,
-assumption, limitation, and remaining-evidence ledger for audit.
+## What the site contains
 
-A standalone public-media chronology now covers all 36 active study projects. Its 332
-dated events link to 467 source references across 412 distinct public URLs, covering
-announcements, operating milestones, expansions, ownership changes, incentives,
-infrastructure, incidents, controversies, and abandoned proposals. Coverage notes identify
-projects whose public record is comparatively sparse; the dataset does not pad those
-histories or treat missing coverage as evidence that no other event occurred. Rebuild or
-verify it without rebuilding the main study release:
+- **Active-project study:** 36 provisional private-sector projects across 35 U.S. counties. Each project profile presents its public chronology, economic evidence, projections, assumptions, limitations, and remaining research gaps.
+- **Completed contribution accounts:** six projects currently pass the full modeled county-account gate: Apple Mesa, Switch Citadel, Digital Crossroad Hammond, Meta Forest City, Microsoft San Antonio, and EdgeConneX DET01.
+- **Rejected and withdrawn proposals:** seven verified cases are stored separately from operating facilities and shown with their own status, chronology, map treatment, and comparison-readiness fields.
+- **County histories:** shareable county pages provide annual 2001–2024 trends for real GDP, population, covered employment, and nominal average weekly wages.
+- **Comparison-county register:** every active-project host county has a 12-county analytical reserve, with its five strongest preliminary matches shown on the site.
+- **Project media timelines:** all 36 active projects have sourced, dated public-event chronologies covering announcements, milestones, ownership changes, incentives, infrastructure, incidents, controversies, and abandoned plans.
+
+Primary routes:
+
+| Route | Purpose |
+| --- | --- |
+| `#/` | Active-project register |
+| `#/project/{project_id}` | Project evidence and chronology |
+| `#/county/{FIPS}` | County economic history |
+| `#/map` | Completed active accounts plus rejected-proposal overlay |
+| `#/rejected` | Rejected and withdrawn proposal register |
+| `#/rejected/{project_id}` | Rejected-proposal case profile |
+| `#/controls` | National eligibility and host-to-comparison registers |
+
+## Analytical guardrails
+
+- Register membership does not verify that a project is operating or authorize an impact estimate.
+- Reported observations, forecasts, and modeled syntheses remain separate data products.
+- Missing evidence is never converted to zero.
+- County economic comparisons are descriptive benchmarks, not causal estimates.
+- No net fiscal result is asserted without same-scope public-revenue and public-cost evidence.
+- A county is not a verified control merely because no project appears in one inventory.
+
+The comparison workflow screens the repository inventory and two pinned external registries, then applies governed county-specific findings. The current generated artifact removes 108 counties with documented facilities, proposals, or developer approaches that the national screens missed. Its 250 surviving candidates remain unresolved: none has yet completed the required seven-domain absence adjudication. Economic match rank therefore measures baseline similarity, not proof of no data-center exposure.
+
+The seven required absence-review domains are planning and zoning, incentives and economic development, utility infrastructure, environmental permitting, property and site control, company and trade reporting, and local news or public debate. A county can be cleared only by a current, documented, completed review across all seven domains. Partial reviews remain unresolved.
+
+## Quick start
+
+Run the full contract validator:
+
+```powershell
+python scripts/validate_data_contract.py
+```
+
+Build and run the site:
+
+```powershell
+cd site
+pnpm install --frozen-lockfile
+pnpm run build
+pnpm run dev
+```
+
+The browser suite runs against an existing preview:
+
+```powershell
+$env:STUDY_PREVIEW_URL = "http://127.0.0.1:5173/"
+node scripts/test_study_browser.mjs
+```
+
+Set `PLAYWRIGHT_MODULE` when using a bundled Playwright installation. Browser reports are written under `reports/application-remediation/` unless `STUDY_BROWSER_REPORT_DIR` is set.
+
+## Canonical rebuild workflows
+
+Private-sector study:
+
+```powershell
+python scripts/build_private_sector_study.py
+python -m unittest discover -s tests -p test_private_sector_study.py
+```
+
+Project media chronologies:
 
 ```powershell
 python scripts/build_project_media_timelines.py
 python scripts/build_project_media_timelines.py --check
 ```
 
-A separate rejected-and-withdrawn proposal register publishes seven verified data-center
-comparison cases without adding nonexistent facilities to the operating inventory. `#/rejected`
-shows the case cards, `#/rejected/{project_id}` opens the sourced chronology, and `#/map`
-uses amber markers and county shading alongside the cyan operating-project cohort. Mixed
-counties retain cyan shading with amber hatching. Disposition, community role, finality,
-and outcome readiness remain separate fields; no current case is labeled comparison-ready.
-Rebuild the public register and its canonical project/proposed-site entities with:
+Rejected and withdrawn proposals:
 
 ```powershell
 python scripts/build_rejected_project_study.py
 python -m unittest tests.test_rejected_project_study
 ```
 
-The national comparison-county screen covers all 3,144 county economic panels at
-`#/controls`. It currently excludes 231 counties with a known active-facility inventory
-record or stopped data-center proposal and leaves 2,913 counties in
-`unresolved_negative_evidence`; zero are labeled verified controls. This distinction is
-intentional: an absent repository record is not evidence that a project was never considered.
-The registry is partitioned by state, exposes the required negative-search domains, and
-defers matching until a treated project's event year so post-treatment values cannot leak
-into donor selection. Rebuild and verify it with:
+National control eligibility, comparison matches, and treatment anchors:
 
 ```powershell
 python scripts/build_county_control_eligibility.py
-python -m unittest tests.test_county_control_eligibility
-python scripts/validate_data_contract.py
-```
-
-The same page publishes a separate host-to-comparison match register for all 35 active-project
-host counties. Each host receives a 12-county analytical reserve, with the five strongest
-preliminary matches shown on the site, drawn from counties with zero linked records across the
-repository inventory and two pinned CC BY 4.0 external registries: SueDataCenters/Compute
-Atlas and the DEPLOY open facility registry,
-using a disclosed five-year baseline, weighted standardized economic features, and Census-
-geography adjustments. A governed candidate-specific evidence layer currently removes 57 additional
-counties with documented facilities, proposals, or developer approaches missed by those national
-screens. Every surviving candidate remains `local_facility_absence_review_required`; match rank is
-economic similarity, not proof that the screens captured every site. The build also publishes a
-priority-ordered verification queue covering all seven required local negative-evidence domains.
-The distinct `county-data-center-exposure-v1` policy separates literal zero documented exposure
-from accessory/institutional, commercial edge/colocation, and economically material commercial
-exposure. A second generated queue preserves all stored project dates as candidate evidence and
-publishes the first five host-county adjudication decisions without overstating readiness: Jackson County has a provisional construction anchor, Maricopa and Pulaski reject the selected project as first exposure, Santa Clara is left-censored before the panel, and Douglas lacks the required pre-period. The remaining 30 counties are unresolved and none is yet causal-ready.
-
-```powershell
-python scripts/acquire_deploy_data_center_facilities.py
 python scripts/build_county_comparison_matches.py
 python scripts/build_county_treatment_anchor_review.py
+python -m unittest tests.test_county_control_eligibility
 python -m unittest tests.test_county_comparison_matches
 python -m unittest tests.test_county_treatment_anchor_review
 ```
 
-The implementation sequence and remaining work are documented in
-`docs/application-remediation-plan.md` and
-`docs/revised-private-sector-economic-study-plan.md`. The statistical target state,
-including the county-year exposure contract and pooled-model publication gates, is in
-`docs/pooled-county-impact-model.md`.
-
-Rebuild the private-sector study release from its versioned candidate and economic-evidence inputs:
-
-```powershell
-python scripts/build_private_sector_study.py
-python scripts/validate_data_contract.py
-python -m unittest discover -s tests -p test_private_sector_study.py
-```
-
-The builder reuses inventory identifiers and preserves date wording and uncertainty.
-It emits provisional project entities, a compact register, individually loaded project
-profiles, and a hash manifest. The original advisory screen was imported once into
-`config/v1/private-sector-study-candidates.json`; subsequent research should update that
-versioned input explicitly. Register membership does not verify operation or authorize
-an impact model. `config/v1/study-economic-evidence.json` defines scoped measures,
-source metadata and reviewed facts. The builder also materializes the existing source
-and claim contracts in `data/silver/study/economic-sources.json` and
-`economic-claims.json`. Claims with unresolved campus/building allocation or snapshot
-timing are not promoted into annual project observations. `config/v1/study-modeled-synthesis.json`
-separately registers formulas, named parameters with provenance, explicitly typed intervals,
-contribution channels, anti-overlap aggregation identities, assumptions, limitations and confidence;
-`config/v1/study-modeling-policy.json` governs study-wide eligibility and publication separation.
-Modeled estimates never enter the canonical source-claim artifact. The remaining evidence gaps
-are explicit, never zero-filled. See `docs/study-economic-evidence.md` for review rules
-and the first batch’s scope.
-
-Browser checks are available in `scripts/test_study_browser.mjs` against a running
-preview. Set `STUDY_PREVIEW_URL` for its URL and `PLAYWRIGHT_MODULE` if using a bundled
-Playwright installation. Screenshots and check results are written under
-`reports/application-remediation/`.
-
-The initial deliverables are:
-
-- a conceptual data model in `docs/data-model.md`;
-- a JSON-only persistence and publication contract in `docs/json-storage-contract.md`;
-- versioned JSON Schemas in `schemas/v1/`;
-- difficult-case fixtures in `fixtures/v1/`;
-- schema and referential-integrity validation in `scripts/validate_data_contract.py`.
-- versioned research configuration in `config/v1/`;
-- a React, TypeScript, Vite, and MapLibre GitHub Pages site in `site/`;
-- GitHub Actions for contract validation, site build, and Pages deployment.
-
-Run validation with the bundled or system Python interpreter:
-
-```powershell
-python scripts/validate_data_contract.py
-```
-
-Rebuild the national county geography from the Census TIGERweb API:
+County economic data:
 
 ```powershell
 python scripts/acquire_census_counties.py
-```
-
-That adapter has no third-party dependency and writes only JSON-family artifacts: an
-acquisition manifest, normalized geography JSON, a dataset manifest, and the compact
-GeoJSON consumed by the browser.
-
-Rebuild the provisional IM3 facility seed:
-
-```powershell
-python scripts/acquire_im3_facilities.py
-```
-
-The pinned GeoPackage is used only as a temporary transport input and is deleted after
-processing. Durable bronze, silver, provenance, observation, manifest, and public outputs
-are JSON or GeoJSON.
-
-Rebuild the BEA 2024 county economic baseline:
-
-```powershell
 python scripts/acquire_bea_county_economic_baseline.py
-```
-
-The adapter pins BEA's February 5, 2026 CAGDP1 and CAINC1 releases, uses the ZIP
-and CSV files only as temporary transport inputs, and publishes governed JSON for
-real GDP, nominal personal income, population, and nominal per-capita personal income.
-BEA combined geographies are not allocated to individual Census counties.
-
-Rebuild the BLS QCEW 2025 county employment and wage baseline:
-
-```powershell
 python scripts/acquire_bls_qcew_county_baseline.py
-```
-
-The adapter pins the final official annual-by-area archive, uses ZIP and CSV only as
-temporary transport formats, and publishes governed JSON for annual-average covered
-employment, establishments, nominal total and weekly wages, and private construction
-employment. Disclosure-protected cells remain suppressed rather than becoming zero.
-
-Rebuild the BEA–BLS county-year history panel:
-
-```powershell
 python scripts/build_county_economic_history_panel.py
 ```
 
-The panel materializes 2001–2024 observations and schema-valid panel-row references for
-real GDP, population, annual-average covered employment, and nominal average weekly wages.
-Its history can support the configured seven-pre/three-post windows and remains descriptive
-rather than model-ready.
-The public history is split into 51 state/DC JSON partitions. The browser loads a partition
-only after a county in that state is selected, and `#/county/{FIPS}` provides a shareable
-county profile without requiring thousands of duplicate HTML pages.
-
-Rebuild the governed county first-entry treatment registry:
+Facility identity and lifecycle research:
 
 ```powershell
-python scripts/build_county_first_entry_treatments.py
-```
-
-The registry evaluates reviewed dated operational events against the configured evidence
-and panel-window rules, then requires a separate explicit verification that the event is the
-county's first data-center entry. It publishes 51 lazy-loaded state/DC JSON partitions.
-The current evidence contains 172 reviewed dated facility events. One hundred seven pass the evidence
-gate, 95 pass the panel-window gate, and 68 pass both; zero have verified county-first-entry status, so model readiness is
-`insufficient_eligible_treatments` and no model run is authorized. Absence of a reviewed event
-is never interpreted as never treated.
-
-Rebuild the governed county first-entry research queue:
-
-```powershell
-python scripts/build_first_entry_research_queue.py
-```
-
-The queue contains 217 counties that have at least one active canonical facility and all 24
-years of core panel history. A deterministic policy selects a 24-county initial tranche with
-six counties per Census region and no more than two per state. Scores order evidence work
-only; they do not assign a treatment date, first-entry status, or comparison-group status.
-The browser lazy-loads the queue through 51 state/DC JSON partitions.
-
-Rebuild the append-only first-entry resolution queue:
-
-```powershell
-python scripts/build_first_entry_resolution_queue.py
-```
-
-The successor registry carries all 217 completed research records forward without changing
-their adjudications. It separates 59 documented predecessor promotions, 113 retained dated
-anchors, and 45 counties that still need an anchor. Its first 24-county tranche is balanced
-six per Census region and no more than two per state, with JSON-only state partitions for
-static hosting. All 24 initial-tranche candidates now have append-only successor adjudications:
-nine candidate anchors are rejected by documented earlier county operations and fifteen remain
-unresolved. The other 193 successor records remain queued; no treatment date was assigned.
-
-Rebuild the conservative IM3 identity-resolution layer from those JSON artifacts:
-
-```powershell
+python scripts/acquire_im3_facilities.py
 python scripts/resolve_im3_entities.py
-```
-
-This offline step links only unambiguous campus containment, normalizes operator strings
-only for Unicode/case/whitespace equivalence, and emits ambiguous spatial matches as a
-JSON review queue. It does not merge physical source records.
-
-Apply the curated candidate adjudications and rebuild the reviewed public overlays:
-
-```powershell
 python scripts/adjudicate_im3_candidates.py
-```
-
-The adjudication input is itself versioned JSON under `config/v1/`. Source records are
-never deleted: reviewed duplicates redirect to a canonical facility, while separately
-operated sites inside larger buildings receive an explicit containment relationship.
-
-Acquire the official OSM histories and resolve the two final boundary escalations:
-
-```powershell
 python scripts/acquire_osm_boundary_histories.py
 python scripts/finalize_im3_boundary_reviews.py
-```
-
-The acquisition retains only JSON. Finalization is offline and downstream: it preserves
-the initial adjudication, marks the two earlier escalation decisions superseded, and emits
-the final static review projections consumed by the site.
-
-Build the deterministic lifecycle-verification pilot from the final identity snapshot:
-
-```powershell
 python scripts/build_lifecycle_verification_pilot.py
-```
-
-The governed JSON policy selects 24 canonical facilities—three in each of the eight
-highest-density counties—and publishes a static research queue plus national county
-coverage. Selection changes research priority only; all lifecycle statuses remain unknown
-until source claims are reviewed.
-
-Acquire the current Prince William County GIS evidence snapshot and rebuild the first
-governed evidence tranche:
-
-```powershell
-python scripts/acquire_pwc_lifecycle_gis.py
-python scripts/adjudicate_lifecycle_tranche_1.py
-python scripts/adjudicate_lifecycle_tranche_2.py
-```
-
-The downstream tranches keep earlier queue snapshots immutable, record source claims and
-human review decisions in JSON, and publish separate verified, partial, disputed, and
-remaining-queue states. Tranche two completes the governed review of the pilot.
-
-Build the governed national lifecycle priority index and balanced first tranche:
-
-```powershell
 python scripts/build_national_lifecycle_queue.py
 ```
 
-The national policy converts the pilot findings into explicit JSON rules for evidence
-precedence, exact-building attribution, source conflicts, stop conditions, scoring, and
-regional/operator diversity. It ranks all 1,327 facilities whose status remains unknown
-and selects a 48-facility first tranche with twelve records from each Census region.
+All acquisition adapters retain durable outputs as JSON or GeoJSON. Temporary source transport files are not part of the published data contract.
 
-Adjudicate the first eight records in that national tranche from the governed evidence
-metadata and review decisions:
+## Repository layout
 
-```powershell
-python scripts/adjudicate_national_lifecycle_tranche_1.py
-python scripts/adjudicate_national_lifecycle_tranche_2.py
-python scripts/adjudicate_national_lifecycle_tranche_3.py
-python scripts/adjudicate_national_lifecycle_tranche_4.py
-python scripts/adjudicate_national_lifecycle_tranche_5.py
-python scripts/adjudicate_national_lifecycle_tranche_6.py
-```
+| Path | Contents |
+| --- | --- |
+| `config/v1/` | Versioned research policies, inputs, findings, and adjudications |
+| `schemas/v1/` | Draft 2020-12 JSON Schemas and schema catalog |
+| `data/bronze/` | Source-shaped durable JSON records |
+| `data/silver/` | Normalized and analytical JSON products |
+| `site/public/data/v1/` | Static public projections consumed by the browser |
+| `site/src/` | React, TypeScript, Vite, and MapLibre application |
+| `scripts/` | Acquisition, build, validation, and browser-check tooling |
+| `tests/` | Deterministic data and presentation tests |
+| `docs/` | Data model, study design, evidence rules, and remediation plans |
 
-These downstream builds preserve the original 48-record tranche, publish all forty-eight reviewed
-results and an empty remaining queue, and roll the verified, unresolved, and disputed states into
-national county coverage. All generated artifacts remain JSON.
+## Current research status
 
-Build the static site:
+- The county-year panel contains 2001–2024 observations for real GDP, population, annual-average covered employment, and nominal average weekly wages.
+- The national control registry covers all 3,144 county and county-equivalent panels; zero counties are presently labeled verified controls.
+- County first-entry treatment remains unresolved. No county is currently authorized as treatment-eligible for a causal model.
+- The six completed contribution accounts publish bounded fiscal and infrastructure scenarios but do not claim a net community effect.
+- No causal estimate or public impact index is published.
 
-```powershell
-cd site
-pnpm install --frozen-lockfile
-pnpm run build
-```
+The main next step is to complete candidate-specific seven-domain absence reviews, then apply treatment-year and spillover gates before any matched-county causal design is attempted. In parallel, the completed contribution accounts need host-region input-output estimates and same-scope marginal public-service or infrastructure costs wherever reproducible public inputs exist.
 
-Run it locally with `pnpm run dev` from `site/`.
+## Methodology and design documents
 
-The validator has no third-party runtime dependency. It checks JSON parsing, schema
-catalog integrity, local `$ref` resolution, required top-level fields, fixture
-referential integrity, and expected valid/invalid fixture outcomes. Full JSON Schema
-validation can be added later to CI with a standards-compliant Draft 2020-12 validator.
+- [`docs/data-model.md`](docs/data-model.md) — conceptual entities and relationships
+- [`docs/json-storage-contract.md`](docs/json-storage-contract.md) — persistence and publication contract
+- [`docs/study-economic-evidence.md`](docs/study-economic-evidence.md) — evidence review rules
+- [`docs/revised-private-sector-economic-study-plan.md`](docs/revised-private-sector-economic-study-plan.md) — study scope and implementation plan
+- [`docs/pooled-county-impact-model.md`](docs/pooled-county-impact-model.md) — county exposure contract and future model gates
+- [`docs/application-remediation-plan.md`](docs/application-remediation-plan.md) — application remediation history and remaining work
 
-## Current coverage
-
-- JSON-only domain and analytical contracts: implemented as schema v1.0.0.
-- Configuration and taxonomy validation: implemented.
-- Static map/application build: implemented with authoritative geography and markers for
-  the six full modeled county accounts. The provisional IM3 map projection remains stored
-  under `site/public/data/v1/maps/` for future research but is not requested by the map UI.
-- National Census boundaries: implemented for 3,144 county and county-equivalent records
-  across the 50 states and District of Columbia, January 1, 2025 vintage.
-- PNNL/IM3 facility seed: implemented from v2026.02.09 with 1,479 source rows, 1,472
-  in-scope source objects, 1,340 provisional facility candidates, and 132 campuses.
-- Facility coverage: 249 counties have one or more source records; absence from the source
-  is not interpreted as zero facilities.
-- Entity resolution: 255 facility-to-campus links and 953 source-backed operator
-  relationships are represented as provisional governed decisions. All sixteen spatial
-  candidates are resolved: four source-record merges, eight distinct contained sites,
-  two accepted campus links, and two rejected campus links. No candidate remains pending.
-- Lifecycle verification: all 24 pilot facilities and all 48 records in the balanced initial
-  national tranche have been reviewed. The final batch resolves Flexential Alpharetta, Switch
-  Las Vegas 7, Bloomberg Orangeburg, the IU Bloomington Data Center, and QTS ATL1 DC1 as
-  operational, and the former Flexential Allentown operation as closed. The small Comcast and
-  Verizon-labeled footprints remain in research because reviewed evidence does not establish
-  data-center operation at either exact building. Cumulative verified facilities now total 47,
-  twenty-one remain in research, four are disputed or need review, and 1,290 statuses remain
-  unknown. The immutable initial national tranche spans 23 states, 37 counties, and 32 known
-  operators; no record remains queued.
-- Economic observations: BEA 2024 real GDP, nominal personal income, population, and
-  nominal per-capita personal income are implemented for 3,091 exact current Census
-  counties. Fifty-three nonmatching or BEA-combined county equivalents are retained as
-  unavailable, never zero. These are descriptive source observations, not impact estimates.
-- Employment and wage observations: BLS QCEW 2025 annual totals are implemented for
-  3,143 counties, with Kalawao County unavailable. Private construction employment is
-  complete for 2,207 counties; 922 disclosure-protected cells remain suppressed and
-  fourteen additional county construction rows are absent. Suppressed values are never zero.
-- Historical panel: the BEA–BLS core panel contains 75,456 county-year rows and
-  301,824 governed observations for 2001–2024. It is complete for 3,064 counties, partial
-  for 79, and unavailable for Kalawao County. It is research infrastructure, not a model run.
-- County first-entry treatment: all 3,144 counties have governed assessments and 172 dated
-  candidates have been evaluated. Of those, 107 pass the evidence gate, 95 pass the history-window
-  gate, and 68 pass both. Fifty-nine dated anchors were rejected after earlier operations were
-  documented, while 113 remain unresolved. Zero counties are currently treatment-eligible and
-  no county is classified as never treated.
-- County first-entry research: 217 facility counties meet the complete-history prerequisite.
-  Research is complete for all 217: 59 have a rejected dated anchor with a documented predecessor,
-  113 retain an unresolved dated anchor, and 45 still lack an adjudicated dated anchor. Nine
-  additional facility counties lack a complete 24-year panel.
-- County first-entry resolution: the append-only successor queue contains the same 217 counties.
-  The first balanced resolution tranche contains 24 counties and the national backlog contains
-  193. Evidence has been collected for ranks 1–8: Oakland MI, Waukesha WI, and San Francisco CA
-  have rejected successor anchors, while Cumberland ME, Sarpy NE, Frederick MD, Strafford NH,
-  and Lake IN remain unresolved. Forty-nine successor candidates currently pass both quantitative
-  gates, but none is a verified county first entry. Queue membership is not evidence of treatment eligibility.
-- Completed contribution accounts: implemented for Apple Mesa / Maricopa County, Switch
-  Citadel / Storey County, Digital Crossroad Hammond / Lake County, Meta Forest City /
-  Rutherford County, Microsoft San Antonio / Bexar County, and EdgeConneX DET01 / Oakland
-  County. Fiscal presentation
-  reports project-linked local property taxes and a same-scope public-cost break-even
-  threshold; it does not infer service cost as a share of revenue or claim a net fiscal result.
-- Utility and environmental models: labeled electricity, water, wastewater, and emissions
-  engineering scenarios are published for the six completed accounts; direct metered
-  observations and attributable system costs remain gaps where the public evidence lacks them.
-- Causal estimates and public indices: none published. County GDP, employment, and wage
-  comparison gaps are descriptive benchmark comparisons and must not be interpreted as
-  data-center effects.
-
-## Next priority
-
-Improve the six completed accounts by replacing transferred contribution coefficients
-with host-region input-output estimates when reproducible public inputs are available, and
-by adding same-scope marginal public-service and infrastructure costs where published.
-Until those inputs exist, retain the fiscal break-even presentation and the explicit
-noncausal status of county comparisons. Expand the completed-study set only through the
-same governed source, synthesis, and presentation contract.
+The full validator checks JSON parsing, schema-catalog integrity, local references, required fields, configuration, public projections, referential integrity, and expected valid/invalid fixtures.

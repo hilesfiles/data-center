@@ -5,10 +5,10 @@ from __future__ import annotations
 from pathlib import Path
 
 if __package__:
-    from .build_county_comparison_matches import EXPOSURE_FINDINGS_PATH, POLICY_PATH, PUBLIC_PATH, SILVER_PATH, VERIFICATION_QUEUE_PUBLIC_PATH, VERIFICATION_QUEUE_SILVER_PATH, build_products, build_verification_queue, read
+    from .build_county_comparison_matches import ABSENCE_ADJUDICATIONS_PATH, EXPOSURE_FINDINGS_PATH, POLICY_PATH, PUBLIC_PATH, SILVER_PATH, VERIFICATION_QUEUE_PUBLIC_PATH, VERIFICATION_QUEUE_SILVER_PATH, build_products, build_verification_queue, read
     from .build_county_treatment_anchor_review import ADJUDICATIONS_PATH, EXPOSURE_POLICY_PATH, EXPOSURE_POLICY_PUBLIC_PATH, PUBLIC_PATH as ANCHOR_PUBLIC_PATH, SILVER_PATH as ANCHOR_SILVER_PATH, build_product as build_anchor_product
 else:
-    from build_county_comparison_matches import EXPOSURE_FINDINGS_PATH, POLICY_PATH, PUBLIC_PATH, SILVER_PATH, VERIFICATION_QUEUE_PUBLIC_PATH, VERIFICATION_QUEUE_SILVER_PATH, build_products, build_verification_queue, read
+    from build_county_comparison_matches import ABSENCE_ADJUDICATIONS_PATH, EXPOSURE_FINDINGS_PATH, POLICY_PATH, PUBLIC_PATH, SILVER_PATH, VERIFICATION_QUEUE_PUBLIC_PATH, VERIFICATION_QUEUE_SILVER_PATH, build_products, build_verification_queue, read
     from build_county_treatment_anchor_review import ADJUDICATIONS_PATH, EXPOSURE_POLICY_PATH, EXPOSURE_POLICY_PUBLIC_PATH, PUBLIC_PATH as ANCHOR_PUBLIC_PATH, SILVER_PATH as ANCHOR_SILVER_PATH, build_product as build_anchor_product
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -26,6 +26,7 @@ def validate_comparison_matches(validator) -> list[str]:
     for value, schema, label in [
         (read(POLICY_PATH), "county-comparison-matching-policy.schema.json", "comparison policy"),
         (read(EXPOSURE_FINDINGS_PATH), "county-comparison-exposure-findings.schema.json", "comparison exposure findings"),
+        (read(ABSENCE_ADJUDICATIONS_PATH), "county-comparison-absence-adjudications.schema.json", "comparison absence adjudications"),
         (read(EXPOSURE_POLICY_PATH), "county-data-center-exposure-policy.schema.json", "county exposure policy"),
         (read(ADJUDICATIONS_PATH), "county-treatment-anchor-adjudications.schema.json", "county treatment-anchor adjudications"),
         (product, "public-county-comparison-match-index.schema.json", "comparison index"),

@@ -13,6 +13,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 POLICY_PATH = ROOT / "config" / "v1" / "county-comparison-matching-policy.json"
 EXPOSURE_FINDINGS_PATH = ROOT / "config" / "v1" / "county-comparison-exposure-findings.json"
+ABSENCE_ADJUDICATIONS_PATH = ROOT / "config" / "v1" / "county-comparison-absence-adjudications.json"
 CONTROL_POLICY_PATH = ROOT / "config" / "v1" / "county-control-eligibility-policy.json"
 HISTORY_DIR = ROOT / "site" / "public" / "data" / "v1" / "panels" / "county-economic-history" / "by-state"
 LIFECYCLE_PATH = ROOT / "site" / "public" / "data" / "v1" / "counties" / "lifecycle-national-tranche-6-coverage.json"
@@ -206,10 +207,59 @@ def robust_scales(vectors: list[dict[str, float]], keys: list[str]) -> dict[str,
     return result
 
 
+def load_absence_adjudications(history: dict[str, dict], exposure_findings: dict, control_policy: dict) -> tuple[dict[str, dict], dict]:
+    document = read(ABSENCE_ADJUDICATIONS_PATH)
+    if document["as_of"] != control_policy["as_of"]:
+        raise ValueError("absence adjudication and control-policy as-of dates must match")
+    required_domains = [domain["code"] for domain in control_policy["required_negative_search_domains"]]
+    exposure_ids = {finding["finding_id"] for finding in exposure_findings["findings"]}
+    records: dict[str, dict] = {}
+    for adjudication in document["adjudications"]:
+        fips = adjudication["county_fips"]
+        if fips in records:
+            raise ValueError(f"duplicate absence adjudication for county {fips}")
+        if fips not in history:
+            raise ValueError(f"absence adjudication references unknown county {fips}")
+        county = history[fips]
+        if county["county_name"] != adjudication["county_name"] or county["state_abbr"] != adjudication["state_abbr"]:
+            raise ValueError(f"absence adjudication has inconsistent county identity for {fips}")
+        domain_codes = [domain["code"] for domain in adjudication["domain_reviews"]]
+        if domain_codes != required_domains:
+            raise ValueError(f"absence adjudication domains must follow policy order for {fips}")
+        statuses = [domain["status"] for domain in adjudication["domain_reviews"]]
+        status = adjudication["review_status"]
+        eligibility = adjudication["control_eligibility"]
+        if status == "verified_no_qualifying_exposure_found":
+            if eligibility != "eligible_verified_no_known_project":
+                raise ValueError(f"verified absence adjudication has inconsistent eligibility for {fips}")
+            if adjudication["record_status"] != "final" or not adjudication["completed_on"]:
+                raise ValueError(f"verified absence adjudication must be final and completed for {fips}")
+            if adjudication["reviewed_through"] < document["as_of"]:
+                raise ValueError(f"verified absence adjudication is stale for {fips}")
+            if set(statuses) != {"reviewed_no_qualifying_evidence"}:
+                raise ValueError(f"verified absence adjudication must clear all domains for {fips}")
+            if adjudication["exposure_finding_ids"]:
+                raise ValueError(f"verified absence adjudication cannot reference positive findings for {fips}")
+            for domain in adjudication["domain_reviews"]:
+                if not domain["repositories"] or not domain["queries"] or not domain["sources"]:
+                    raise ValueError(f"verified domain review lacks documented search evidence for {fips}:{domain['code']}")
+        elif status == "qualifying_exposure_found":
+            if eligibility != "excluded_known_exposure" or "qualifying_evidence_found" not in statuses:
+                raise ValueError(f"positive absence adjudication has inconsistent decision for {fips}")
+            if not adjudication["exposure_finding_ids"] or not set(adjudication["exposure_finding_ids"]).issubset(exposure_ids):
+                raise ValueError(f"positive absence adjudication lacks governed exposure finding for {fips}")
+        elif eligibility != "unresolved_negative_evidence":
+            raise ValueError(f"unresolved absence adjudication has inconsistent eligibility for {fips}")
+        records[fips] = adjudication
+    return records, document
+
+
 def build_products(generated_at: str = GENERATED_AT) -> dict:
     policy = read(POLICY_PATH)
     exposure_findings = read(EXPOSURE_FINDINGS_PATH)
+    control_policy = read(CONTROL_POLICY_PATH)
     history = load_history()
+    absence_adjudications, absence_document = load_absence_adjudications(history, exposure_findings, control_policy)
     lifecycle = {record["county_fips"]: record for record in read(LIFECYCLE_PATH)}
     external_counts, external_meta = external_registry_counties()
     study = read(STUDY_DIR / "index.json")
@@ -285,11 +335,15 @@ def build_products(generated_at: str = GENERATED_AT) -> dict:
         scored.sort(key=lambda item: (item[0], item[1]))
         comparisons = []
         for rank, (distance, candidate, record, region, division, features) in enumerate(scored[:candidate_count], 1):
+            adjudication = absence_adjudications.get(candidate)
+            verified = bool(adjudication and adjudication["review_status"] == "verified_no_qualifying_exposure_found")
             comparisons.append({
                 "rank": rank, "county_fips": candidate, "county_name": record["county_name"], "state_abbr": record["state_abbr"],
                 "census_region": region, "census_division": division, "same_census_region": region == host_region, "same_census_division": division == host_division,
                 "match_score": round(100 / (1 + distance), 2), "standardized_distance": round(distance, 6),
-                "facility_screen_status": "zero_known_records_across_three_national_registries", "verification_status": "local_facility_absence_review_required",
+                "facility_screen_status": "zero_known_records_across_three_national_registries", "verification_status": "eligible_verified_no_known_project" if verified else "local_facility_absence_review_required",
+                "absence_adjudication_id": adjudication["adjudication_id"] if adjudication else None,
+                "absence_reviewed_through": adjudication["reviewed_through"] if adjudication else None,
                 "features": features, "history_path": f"panels/county-economic-history/by-state/{record['state_abbr']}.json",
             })
         county = history[fips]
@@ -301,10 +355,11 @@ def build_products(generated_at: str = GENERATED_AT) -> dict:
             "features": host_features, "comparison_candidates": comparisons,
         })
     unique_comparisons = {candidate["county_fips"] for host in hosts for candidate in host["comparison_candidates"]}
+    verified_comparisons = {fips for fips in unique_comparisons if fips in absence_adjudications and absence_adjudications[fips]["review_status"] == "verified_no_qualifying_exposure_found"}
     return {
         "schema_version": "1.0.0", "release_id": "county-comparison-matches-1.0.0", "generated_at": generated_at,
         "as_of": policy["as_of"], "policy_id": policy["policy_id"], "scope": policy["purpose"],
-        "counts": {"host_counties": len(hosts), "host_projects": len(study["projects"]), "comparison_candidates": sum(len(host["comparison_candidates"]) for host in hosts), "analytical_candidates_per_host": candidate_count, "presentation_candidates_per_host": policy["presentation_candidate_count"], "unique_comparison_counties": len(unique_comparisons), "screened_candidate_pool_count": len(candidate_fips), "candidate_specific_positive_exclusions": len(positive_exposure_fips), "externally_verified_absent": 0},
+        "counts": {"host_counties": len(hosts), "host_projects": len(study["projects"]), "comparison_candidates": sum(len(host["comparison_candidates"]) for host in hosts), "analytical_candidates_per_host": candidate_count, "presentation_candidates_per_host": policy["presentation_candidate_count"], "unique_comparison_counties": len(unique_comparisons), "screened_candidate_pool_count": len(candidate_fips), "candidate_specific_positive_exclusions": len(positive_exposure_fips), "externally_verified_absent": len(verified_comparisons)},
         "screening_sources": [
             {"source_id": "repository_active_canonical_facility_inventory", "title": "DCCIO active canonical-facility inventory", "version": "lifecycle-national-tranche-6", "record_count": len(lifecycle), "url": None, "license": None, "retrieved_on": policy["as_of"], "sha256": hashlib.sha256(LIFECYCLE_PATH.read_bytes()).hexdigest()},
             {"source_id": "suedatacenters_registry_v1_32_0", "title": external_meta["registries"][0]["document"]["name"], "version": external_meta["registries"][0]["document"]["basedOn"]["version"], "record_count": external_meta["registries"][0]["document"]["count"], "url": external_meta["registries"][0]["document"]["documentation"], "license": external_meta["registries"][0]["document"]["license"], "retrieved_on": external_meta["registries"][0]["document"]["retrieved"], "sha256": hashlib.sha256(EXTERNAL_REGISTRY_PATHS[0].read_bytes()).hexdigest()},
@@ -318,6 +373,14 @@ def build_products(generated_at: str = GENERATED_AT) -> dict:
             "qualifying_rule": exposure_findings["qualifying_rule"],
             "interpretation_note": exposure_findings["interpretation_note"],
             "sha256": hashlib.sha256(EXPOSURE_FINDINGS_PATH.read_bytes()).hexdigest(),
+        },
+        "absence_adjudications": {
+            "dataset_id": absence_document["dataset_id"],
+            "path": "config/v1/county-comparison-absence-adjudications.json",
+            "record_count": len(absence_document["adjudications"]),
+            "verified_candidate_count": len(verified_comparisons),
+            "decision_rule": absence_document["decision_rule"],
+            "sha256": hashlib.sha256(ABSENCE_ADJUDICATIONS_PATH.read_bytes()).hexdigest(),
         },
         "external_registry_unmatched_coordinate_ids": external_meta["unmatched_ids"],
         "method": {
@@ -333,6 +396,8 @@ def build_products(generated_at: str = GENERATED_AT) -> dict:
 
 def build_verification_queue(product: dict) -> dict:
     control_policy = read(CONTROL_POLICY_PATH)
+    absence_document = read(ABSENCE_ADJUDICATIONS_PATH)
+    adjudications = {record["county_fips"]: record for record in absence_document["adjudications"]}
     candidates: dict[str, dict] = {}
     for host in product["hosts"]:
         for candidate in host["comparison_candidates"]:
@@ -360,18 +425,30 @@ def build_verification_queue(product: dict) -> dict:
     )
     domains = control_policy["required_negative_search_domains"]
     for priority, record in enumerate(ordered, 1):
+        adjudication = adjudications.get(record["county_fips"])
         record["priority"] = priority
         record["candidate_slot_count"] = len(record["host_matches"])
         record["best_match_rank"] = min(match["candidate_rank"] for match in record["host_matches"])
         record["best_match_score"] = max(match["match_score"] for match in record["host_matches"])
         record["mean_match_score"] = round(statistics.fmean(match["match_score"] for match in record["host_matches"]), 2)
         record["host_matches"].sort(key=lambda match: (match["candidate_rank"], -match["match_score"], match["host_county_fips"]))
-        record["review_status"] = "local_facility_absence_review_required"
-        record["domain_reviews"] = [
-            {"code": domain["code"], "label": domain["label"], "status": "not_reviewed", "sources": []}
-            for domain in domains
-        ]
-        record["required_next_step"] = "Audit every required domain through each linked host county's treatment year; record dated sources and spillover checks before any causal use."
+        verified = bool(adjudication and adjudication["review_status"] == "verified_no_qualifying_exposure_found")
+        record["review_status"] = "eligible_verified_no_known_project" if verified else "local_facility_absence_review_required"
+        record["absence_adjudication_id"] = adjudication["adjudication_id"] if adjudication else None
+        record["absence_reviewed_through"] = adjudication["reviewed_through"] if adjudication else None
+        if adjudication:
+            reviews = {domain["code"]: domain for domain in adjudication["domain_reviews"]}
+            record["domain_reviews"] = [
+                {**reviews[domain["code"]], "code": domain["code"], "label": domain["label"]}
+                for domain in domains
+            ]
+        else:
+            record["domain_reviews"] = [
+                {"code": domain["code"], "label": domain["label"], "status": "not_reviewed", "repositories": [], "queries": [], "coverage_statement": "Not reviewed.", "finding": "No determination.", "limitations": ["Required county-specific review has not been completed."], "sources": []}
+                for domain in domains
+            ]
+        record["required_next_step"] = "Run treatment-year-specific spillover and pre-trend diagnostics before causal use." if verified else "Audit every required domain through each linked host county's treatment year; record dated sources and spillover checks before any causal use."
+    verified_count = sum(record["review_status"] == "eligible_verified_no_known_project" for record in ordered)
     return {
         "schema_version": "1.0.0",
         "release_id": "county-comparison-verification-queue-1.0.0",
@@ -382,8 +459,8 @@ def build_verification_queue(product: dict) -> dict:
         "counts": {
             "unique_candidates": len(ordered),
             "candidate_slots": sum(record["candidate_slot_count"] for record in ordered),
-            "locally_verified_absent": 0,
-            "local_absence_review_required": len(ordered),
+            "locally_verified_absent": verified_count,
+            "local_absence_review_required": len(ordered) - verified_count,
         },
         "priority_rule": "Audit counties used by the most host matches first, then best candidate rank, best match score, and county FIPS.",
         "required_negative_search_domains": domains,

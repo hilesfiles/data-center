@@ -839,7 +839,7 @@ try {
   assert.equal(await page.locator(".county-history-table tbody tr").count(), 24);
   await page.getByRole("heading", { name: "Comparable counties without known data-center records", exact: true }).waitFor();
   assert.equal(await page.locator(".county-comparison-list article").count(), 5);
-  assert.match(await page.locator(".county-comparison-section").innerText(), /three national data-center screens[\s\S]*require local absence verification/i);
+  assert.match(await page.locator(".county-comparison-section").innerText(), /three national data-center screens[\s\S]*seven-domain review status is retained/i);
   assert.doesNotMatch(await page.locator(".county-profile-page").innerText(), /IM3 source records|Analysis readiness|Annual-account coverage/);
   await page.locator(".county-study-account").screenshot({ path: path.join(out, "lake-county-impact-account-desktop.png") });
   await page.setViewportSize({ width: 390, height: 844 });
@@ -895,10 +895,10 @@ try {
   await page.setViewportSize({ width: 1440, height: 1000 });
   await page.goto(`${url}#/controls`);
   await page.getByRole("heading", { name: /Comparable communities/ }).waitFor();
-  assert.match(await page.locator(".comparison-summary").innerText(), /35[\s\S]*420[\s\S]*251[\s\S]*2,422/);
-  assert.match(await page.locator(".comparison-caveat").innerText(), /91 counties surfaced by candidate-specific research were removed/i);
+  assert.match(await page.locator(".comparison-summary").innerText(), /35[\s\S]*420[\s\S]*250[\s\S]*2,405/);
+  assert.match(await page.locator(".comparison-caveat").innerText(), /108 counties surfaced by candidate-specific research were removed/i);
   assert.equal(await page.locator(".comparison-candidate").count(), 5);
-  assert.equal(await page.locator(".comparison-candidate-title em").allTextContents().then(values => values.every(value => /Absence review required/i.test(value))), true);
+  assert.equal(await page.locator(".comparison-candidate-title em").allTextContents().then(values => values.every(value => /Absence review required|Seven-domain review cleared/i.test(value))), true);
   await page.locator(".comparison-host-select select").selectOption("04013");
   await page.getByRole("heading", { name: "Maricopa County, AZ" }).waitFor();
   assert.equal(await page.locator(".comparison-candidate").count(), 5);
