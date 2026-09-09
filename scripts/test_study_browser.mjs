@@ -93,7 +93,7 @@ try {
   await page.getByRole("heading", { name: "Sources & research history" }).waitFor();
   assert.match(await page.locator(".project-tags").innerText(), /Campus-linked project/);
   await page.locator(".media-timeline").waitFor({ state: "attached" });
-  assert.equal(await page.locator(".media-timeline > li").count(), 6);
+  assert.equal(await page.locator(".media-timeline > li").count(), 7);
   assert.match(await page.locator(".media-timeline").innerText(), /announces a Lenoir data center[\s\S]*opens the first Lenoir data center[\s\S]*further growth/i);
   check("empty state, reset and reconstructed campus chronology");
 
@@ -848,8 +848,8 @@ try {
   assert.equal(timelineDataset.timelines.length, 36);
   assert.equal(timelineDataset.timelines.every(timeline => timeline.events.length >= 2), true);
   const representativeTimelines = [
-    ["prj_study_im3_building_00300974499", "Apple Mesa", 9],
-    ["prj_study_im3_point_06685432442", "Switch Citadel / Tahoe Reno 1", 9],
+    ["prj_study_im3_building_00300974499", "Apple Mesa", 12],
+    ["prj_study_im3_point_06685432442", "Switch Citadel / Tahoe Reno 1", 11],
     ["prj_study_im3_building_00978934687", "Digital Crossroad DX-1, Hammond", 11],
   ];
   for (const [projectId, projectName, eventCount] of representativeTimelines) {
@@ -875,6 +875,21 @@ try {
   check("project and register at mobile width");
 
   await page.setViewportSize({ width: 1440, height: 1000 });
+  await page.goto(`${url}#/rejected`);
+  await page.getByRole("heading", { name: "Rejected & withdrawn proposals", exact: true }).waitFor();
+  assert.equal(await page.locator(".rejected-project-card").count(), 8);
+  assert.match(await page.locator(".rejected-counts").innerText(), /8[\s\S]*verified proposals[\s\S]*8[\s\S]*affected counties/i);
+  await page.getByRole("link", { name: "Etheridge Lakes Data Center", exact: true }).click();
+  await page.getByRole("heading", { name: "Proposal, opposition, decision, and aftermath", exact: true }).waitFor();
+  assert.equal(await page.locator(".rejected-timeline > li").count(), 4);
+  assert.match(await page.locator(".proposal-scale-grid").innerText(), /350,000 square feet[\s\S]*22.6 acres/i);
+  assert.match(await page.locator(".site-afterlife").innerText(), /Interpretation boundary/i);
+  await page.setViewportSize({ width: 390, height: 844 });
+  await noOverflow();
+  await page.screenshot({ path: path.join(out, "rejected-project-mobile.png") });
+  check("rejected proposal register and sourced case profile render without overflow");
+
+  await page.setViewportSize({ width: 1440, height: 1000 });
   await page.evaluate(() => performance.clearResourceTimings());
   await page.goto(`${url}#/map`);
   await page.locator("canvas").waitFor();
@@ -883,10 +898,10 @@ try {
     sidebar: getComputedStyle(document.querySelector(".sidebar")).backgroundColor,
     map: getComputedStyle(document.querySelector(".map-section")).backgroundColor,
   })), { sidebar: "rgb(11, 14, 20)", map: "rgb(16, 23, 27)" });
-  assert.match(await page.locator(".review-key").innerText(), /completed project audits \(30\)/i);
+  assert.match(await page.locator(".review-key").innerText(), /operating project audit \(30\)[\s\S]*rejected \/ withdrawn \(8\)/i);
   assert.doesNotMatch(await page.locator(".legend").innerText(), /IM3|pending|merged|queued/i);
   await page.getByLabel("Research-complete project markers").selectOption("Colocation");
-  assert.match(await page.locator(".review-key").innerText(), /completed project audits \(12\)/i);
+  assert.match(await page.locator(".review-key").innerText(), /operating project audit \(12\)/i);
   await page.getByLabel("Research-complete project markers").selectOption("");
   await page.screenshot({ path: path.join(out, "map-desktop.png") });
   assert.doesNotMatch(await page.locator(".sidebar").innerText(), /Source records|Building records|Campus records|Observed footprint|First-entry research/i);
@@ -958,8 +973,8 @@ try {
     await route.fulfill({ json: legacyStudy });
   });
   await legacyPage.goto(`${url}#/map`, { waitUntil: "domcontentloaded" });
-  await legacyPage.getByText("25 completed project research accounts are mapped.", { exact: false }).waitFor();
-  assert.match(await legacyPage.locator(".review-key").innerText(), /completed project audits \(25\)/i);
+  await legacyPage.getByText("25 completed project accounts and 8 rejected or withdrawn proposals are mapped.", { exact: false }).waitFor();
+  assert.match(await legacyPage.locator(".review-key").innerText(), /operating project audit \(25\)/i);
   await legacyPage.close();
   check("map remains populated when a browser holds an index without the research-completion field");
 

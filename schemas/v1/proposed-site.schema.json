@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dccio.org/schemas/v1/proposed-site.schema.json",
+  "title": "Proposed Site",
+  "type": "object",
+  "required": ["schema_version", "site_id", "canonical_name", "coordinates", "coordinate_source_id", "geography_assignments", "created_at", "updated_at", "record_status"],
+  "properties": {
+    "schema_version": {"$ref": "common.schema.json#/$defs/schema_version"},
+    "site_id": {"$ref": "common.schema.json#/$defs/entity_id"},
+    "canonical_name": {"type": "string", "minLength": 1},
+    "coordinates": {"$ref": "common.schema.json#/$defs/coordinates"},
+    "coordinate_source_id": {"type": "string", "minLength": 1},
+    "geography_assignments": {"type": "array", "minItems": 1, "items": {"$ref": "common.schema.json#/$defs/geography_assignment"}},
+    "site_status": {"type": "string", "enum": ["proposed", "application_withdrawn", "approval_denied", "cancelled", "litigated", "alternative_use", "unknown"]},
+    "created_at": {"$ref": "common.schema.json#/$defs/timestamp"},
+    "updated_at": {"$ref": "common.schema.json#/$defs/timestamp"},
+    "record_status": {"type": "string", "enum": ["active", "provisional", "superseded", "withdrawn"]}
+  },
+  "additionalProperties": false
+}

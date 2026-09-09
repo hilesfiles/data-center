@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dccio.org/schemas/v1/public-rejected-project-index.schema.json",
+  "title": "Public Rejected Project Index",
+  "type": "object",
+  "required": ["schema_version", "release_id", "generated_at", "reviewed_on", "scope", "selection_basis", "counts", "projects"],
+  "properties": {
+    "schema_version": {"$ref": "common.schema.json#/$defs/schema_version"},
+    "release_id": {"type": "string", "minLength": 1},
+    "generated_at": {"$ref": "common.schema.json#/$defs/timestamp"},
+    "reviewed_on": {"$ref": "common.schema.json#/$defs/calendar_date"},
+    "scope": {"type": "string", "minLength": 1},
+    "selection_basis": {"type": "string", "minLength": 1},
+    "counts": {"type": "object", "required": ["projects", "counties", "states", "by_disposition", "by_readiness"], "properties": {"projects": {"type": "integer", "minimum": 0}, "counties": {"type": "integer", "minimum": 0}, "states": {"type": "integer", "minimum": 0}, "by_disposition": {"type": "object", "additionalProperties": {"type": "integer", "minimum": 0}}, "by_readiness": {"type": "object", "additionalProperties": {"type": "integer", "minimum": 0}}}, "additionalProperties": false},
+    "projects": {"type": "array", "items": {"$ref": "public-rejected-project.schema.json#/$defs/summary"}}
+  },
+  "additionalProperties": false
+}

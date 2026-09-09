@@ -56,6 +56,82 @@ export interface StudyIndex {
   projects: StudyProjectSummary[];
 }
 
+export type RejectedProjectDisposition = "rejected" | "withdrawn" | "cancelled";
+export type RejectedProjectFinality = "final" | "litigated" | "resubmittable" | "relocated" | "redesigned";
+export type RejectedProjectReadiness = "disposition_verified" | "post_decision_tracking" | "early_outcome_evidence" | "comparison_ready";
+export type RejectedProjectCommunityRole = "decisive" | "contributing" | "unclear";
+
+export interface RejectedProjectSummary {
+  project_id: string;
+  site_id: string;
+  name: string;
+  proposal_sector: "data_center" | "industrial" | "energy" | "manufacturing" | "extractive" | "other";
+  developer_label: string;
+  county_fips: string;
+  county_name: string;
+  state_abbr: string;
+  disposition: RejectedProjectDisposition;
+  decision_date: string;
+  decision_label: string;
+  community_role: RejectedProjectCommunityRole;
+  finality: RejectedProjectFinality;
+  outcome_readiness: RejectedProjectReadiness;
+  latitude: number;
+  longitude: number;
+  coordinate_precision: "site" | "parcel" | "municipality" | "county";
+  coordinate_source_id: string;
+  detail_path: string;
+  summary: string;
+  source_count: number;
+  timeline_event_count: number;
+}
+
+export interface RejectedProjectSource {
+  source_id: string;
+  title: string;
+  publisher: string;
+  url: string;
+  published_on?: string;
+  source_type: "government_record" | "local_news" | "national_news" | "trade_press" | "company_record" | "research";
+  source_role: "primary" | "corroborating" | "context";
+}
+
+export interface RejectedProjectTimelineEvent {
+  event_id: string;
+  date: string;
+  date_label: string;
+  category: "proposal" | "public_opposition" | "government_review" | "decision" | "withdrawal" | "litigation" | "site_afterlife";
+  title: string;
+  summary: string;
+  source_ids: string[];
+}
+
+export interface RejectedProject extends RejectedProjectSummary {
+  proposal_description: string;
+  proposed_scale: { label: string; value: string; source_id: string }[];
+  site_afterlife: string;
+  evidence_note: string;
+  timeline: RejectedProjectTimelineEvent[];
+  sources: RejectedProjectSource[];
+}
+
+export interface RejectedProjectIndex {
+  schema_version: "1.0.0";
+  release_id: string;
+  generated_at: string;
+  reviewed_on: string;
+  scope: string;
+  selection_basis: string;
+  counts: {
+    projects: number;
+    counties: number;
+    states: number;
+    by_disposition: Record<string, number>;
+    by_readiness: Record<string, number>;
+  };
+  projects: RejectedProjectSummary[];
+}
+
 export interface StudyProject extends StudyProjectSummary {
   schema_version: "1.0.0";
   release_id: string;

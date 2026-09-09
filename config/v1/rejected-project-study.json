@@ -1,0 +1,323 @@
+{
+  "schema_version": "1.0.0",
+  "dataset_version": "rejected-project-study-1.0.0",
+  "reviewed_on": "2026-09-09",
+  "scope": "Verified U.S. private-sector proposals stopped through a local denial, withdrawal, or prohibition after documented public opposition. Inclusion records disposition; it does not by itself establish a causal economic effect.",
+  "selection_basis": "A case requires a named proposal, a defensible location, a dated disposition, and linked evidence for both the government or developer action and the public-opposition context. Relocation, redesign, litigation, and weak post-decision windows remain explicit.",
+  "projects": [
+    {
+      "project_id": "prj_rejected_cascade_locks_nestle",
+      "site_id": "pst_proposed_cascade_locks_nestle",
+      "name": "Nestlé Cascade Locks Bottling Plant",
+      "proposal_sector": "industrial",
+      "developer_label": "Nestlé Waters North America",
+      "county_fips": "41027",
+      "county_name": "Hood River County",
+      "state_abbr": "OR",
+      "disposition": "rejected",
+      "decision_date": "2016-05-17",
+      "decision_label": "County voters prohibited commercial water bottling",
+      "community_role": "decisive",
+      "finality": "final",
+      "outcome_readiness": "early_outcome_evidence",
+      "latitude": 45.6698,
+      "longitude": -121.8906,
+      "coordinate_precision": "municipality",
+      "coordinate_source_id": "cascade_osu_report",
+      "summary": "A proposed bottled-water plant was stopped after Hood River County voters adopted a commercial water-bottling prohibition. This cross-sector case provides a longer post-decision window but is not a data-center analogue.",
+      "proposal_description": "Nestlé sought to develop a bottling operation in Cascade Locks using spring water associated with a proposed water-right exchange. The proposal became a countywide dispute over public water, employment, and local control.",
+      "proposed_scale": [
+        {"label": "Proposed water use", "value": "More than 100 million gallons per year discussed in the proposal", "source_id": "cascade_osu_report"}
+      ],
+      "site_afterlife": "Parcel-level reuse has not yet been established in this dataset. Current Port of Cascade Locks tenant information documents continuing industrial activity in the community but is not treated as proof of reuse of the exact proposed parcel.",
+      "evidence_note": "Cross-sector comparison. The longer post-period is useful descriptively, but differences in water use, labor, utilities, and tax treatment prevent a direct one-for-one comparison with a data center.",
+      "timeline": [
+        {"event_id": "cascade_2013_review", "date": "2013-10-14", "date_label": "October 2013", "category": "government_review", "title": "Independent preliminary review describes the proposal", "summary": "An Oregon State University report summarized the proposed facility, water exchange, and open economic and environmental questions.", "source_ids": ["cascade_osu_report"]},
+        {"event_id": "cascade_2016_vote", "date": "2016-05-17", "date_label": "May 17, 2016", "category": "decision", "title": "County voters adopt water-bottling prohibition", "summary": "The countywide vote prohibited commercial water bottling and stopped the proposed plant from proceeding on its planned basis.", "source_ids": ["cascade_ap_vote"]},
+        {"event_id": "cascade_2026_tracking", "date": "2026-08-01", "date_label": "Current tracking · 2026", "category": "site_afterlife", "title": "Community-level activity is documented; parcel reuse remains unresolved", "summary": "The port lists current industrial tenants, including pFriem operations, but this release does not equate those premises with the exact Nestlé proposal site.", "source_ids": ["cascade_port_tenants"]}
+      ],
+      "sources": [
+        {"source_id": "cascade_osu_report", "title": "The Proposed Bottled Water Facility in Cascade Locks: A Preliminary Economic Impact Analysis", "publisher": "Oregon State University", "url": "https://agsci.oregonstate.edu/sites/agsci.oregonstate.edu/files/bottled_water_report_101413.pdf", "published_on": "2013-10-14", "source_type": "research", "source_role": "context"},
+        {"source_id": "cascade_ap_vote", "title": "Oregon County Says No to Nestle Bottling Plant", "publisher": "Associated Press / Industrial Equipment News", "url": "https://www.ien.com/operations/news/20780560/oregon-county-says-no-to-nestle-bottling-plant-in-cascade-locks", "published_on": "2016-05-18", "source_type": "national_news", "source_role": "corroborating"},
+        {"source_id": "cascade_port_tenants", "title": "Port Tenants", "publisher": "Port of Cascade Locks", "url": "https://www.portofcascadelocks.gov/port-tenants", "source_type": "government_record", "source_role": "primary"}
+      ]
+    },
+    {
+      "project_id": "prj_rejected_catlett_data_center",
+      "site_id": "pst_proposed_catlett_data_center",
+      "name": "Catlett Data Center Campus",
+      "proposal_sector": "data_center",
+      "developer_label": "Catlett Data Center applicant",
+      "county_fips": "51061",
+      "county_name": "Fauquier County",
+      "state_abbr": "VA",
+      "disposition": "withdrawn",
+      "decision_date": "2024-07-18",
+      "decision_label": "Rezoning and special-exception applications withdrawn",
+      "community_role": "contributing",
+      "finality": "redesigned",
+      "outcome_readiness": "post_decision_tracking",
+      "latitude": 38.6537,
+      "longitude": -77.6405,
+      "coordinate_precision": "municipality",
+      "coordinate_source_id": "catlett_county_referral",
+      "summary": "The applicant withdrew a rezoning for a large data-center campus after organized opposition. Later warehouse preapplication activity means the site should be tracked as redesigned, not treated as permanently undeveloped.",
+      "proposal_description": "The application sought to rezone roughly 60 acres in the Catlett Service District for a multi-building data-center campus and associated electrical infrastructure.",
+      "proposed_scale": [
+        {"label": "Proposed campus", "value": "Approximately 1.4 million square feet on 60 acres", "source_id": "catlett_pec_update"}
+      ],
+      "site_afterlife": "Fauquier reporting identifies later preapplication material for a non-distributing warehouse concept. The site is therefore classified as redesigned rather than a clean no-development outcome.",
+      "evidence_note": "The official record verifies withdrawal. Advocacy reporting supports a contributing community role, while the exact causal weight of opposition versus applicant economics remains unquantified.",
+      "timeline": [
+        {"event_id": "catlett_2023_application", "date": "2023-06-01", "date_label": "2023", "category": "proposal", "title": "Rezoning enters county review", "summary": "County materials describe a request to rezone 60 acres for data-center uses in the Catlett Service District.", "source_ids": ["catlett_county_referral"]},
+        {"event_id": "catlett_2024_withdrawal", "date": "2024-07-18", "date_label": "July 18, 2024", "category": "withdrawal", "title": "County agenda records application withdrawal", "summary": "The Planning Commission agenda was amended to reflect withdrawal of the rezoning and special-exception applications.", "source_ids": ["catlett_county_withdrawal"]},
+        {"event_id": "catlett_2025_afterlife", "date": "2025-12-01", "date_label": "December 2025", "category": "site_afterlife", "title": "Warehouse concept appears in preapplication material", "summary": "A later non-distributing warehouse concept indicates potential redesign of the site rather than a stable untreated parcel.", "source_ids": ["catlett_pec_update"]}
+      ],
+      "sources": [
+        {"source_id": "catlett_county_referral", "title": "Fauquier County Parks and Recreation referral materials", "publisher": "Fauquier County", "url": "https://www.fauquiercounty.gov/home/showpublisheddocument/31748/638221653221770000", "source_type": "government_record", "source_role": "primary"},
+        {"source_id": "catlett_county_withdrawal", "title": "Planning Commission Public Hearing — amended for Catlett withdrawal", "publisher": "Fauquier County", "url": "https://www.fauquiercounty.gov/Home/Components/Calendar/Event/49378/3640", "published_on": "2024-07-18", "source_type": "government_record", "source_role": "primary"},
+        {"source_id": "catlett_pec_update", "title": "Fauquier County 2025 Updates", "publisher": "Piedmont Environmental Council", "url": "https://www.pecva.org/region/fauquier/fauquier-county-2025-updates/", "published_on": "2025-12-01", "source_type": "research", "source_role": "corroborating"}
+      ]
+    },
+    {
+      "project_id": "prj_rejected_louisa_aws_third_campus",
+      "site_id": "pst_proposed_louisa_aws_third_campus",
+      "name": "AWS Third Louisa County Campus",
+      "proposal_sector": "data_center",
+      "developer_label": "Amazon Web Services",
+      "county_fips": "51109",
+      "county_name": "Louisa County",
+      "state_abbr": "VA",
+      "disposition": "withdrawn",
+      "decision_date": "2025-07-24",
+      "decision_label": "Conditional-use application withdrawn",
+      "community_role": "contributing",
+      "finality": "resubmittable",
+      "outcome_readiness": "post_decision_tracking",
+      "latitude": 37.9993,
+      "longitude": -77.9967,
+      "coordinate_precision": "county",
+      "coordinate_source_id": "louisa_county_overview",
+      "summary": "AWS withdrew a third Louisa County campus application after public resistance. Two other AWS campuses continued, making this a within-county siting contrast rather than a county without data-center investment.",
+      "proposal_description": "AWS applied for a conditional-use permit for a third campus concept in Louisa County. The proposal was materially larger than a single building and sat within a county already hosting other AWS development.",
+      "proposed_scale": [
+        {"label": "Proposed building area", "value": "Approximately 7.2 million square feet reported", "source_id": "louisa_va_business"},
+        {"label": "Proposed land area", "value": "Approximately 1,370 acres reported", "source_id": "louisa_timeline"}
+      ],
+      "site_afterlife": "No verified alternative use for the exact proposed site is published here. Other AWS campuses in Louisa County remain separate operating-project observations.",
+      "evidence_note": "This is not a never-treated county. Any causal design must separate the rejected third campus from other AWS and EdgeCore activity in the same county.",
+      "timeline": [
+        {"event_id": "louisa_2025_application", "date": "2025-06-01", "date_label": "June 2025", "category": "proposal", "title": "AWS files for a third campus", "summary": "Louisa County materials identify a conditional-use application for another campus concept.", "source_ids": ["louisa_county_overview"]},
+        {"event_id": "louisa_2025_opposition", "date": "2025-07-15", "date_label": "July 2025", "category": "public_opposition", "title": "Residents organize against the proposal", "summary": "Public reporting documented strong resistance during the application period.", "source_ids": ["louisa_va_business"]},
+        {"event_id": "louisa_2025_withdrawal", "date": "2025-07-24", "date_label": "July 24, 2025", "category": "withdrawal", "title": "AWS withdraws the application", "summary": "The third-campus application was withdrawn before approval.", "source_ids": ["louisa_county_overview", "louisa_va_business"]},
+        {"event_id": "louisa_2026_tracking", "date": "2026-04-01", "date_label": "Current tracking · 2026", "category": "site_afterlife", "title": "County remains exposed to other data-center development", "summary": "The rejected proposal must be analyzed alongside the county's other active campus projects, not as removal of the entire sector.", "source_ids": ["louisa_timeline"]}
+      ],
+      "sources": [
+        {"source_id": "louisa_county_overview", "title": "Data Centers in Louisa County", "publisher": "Louisa County", "url": "https://www.louisacounty.gov/DocumentCenter/View/11955/Data-Centers-in-Louisa-County", "published_on": "2025-08-01", "source_type": "government_record", "source_role": "primary"},
+        {"source_id": "louisa_va_business", "title": "Amazon cancels data center in Louisa County", "publisher": "Virginia Business", "url": "https://virginiabusiness.com/amazon-cancels-data-center-in-louisa-county/", "published_on": "2025-07-28", "source_type": "local_news", "source_role": "corroborating"},
+        {"source_id": "louisa_timeline", "title": "Timeline for Louisa County Data-Center Projects", "publisher": "Lake Anna Online", "url": "https://lakeanna.online/timeline-for-louisa-county-data%E2%80%91center-projects-lake-anna-beyond/", "published_on": "2025-08-01", "source_type": "local_news", "source_role": "context"}
+      ]
+    },
+    {
+      "project_id": "prj_rejected_chesterton_brassie",
+      "site_id": "pst_proposed_chesterton_brassie",
+      "name": "Provident Brassie Data Center",
+      "proposal_sector": "data_center",
+      "developer_label": "Provident Realty Advisors",
+      "county_fips": "18127",
+      "county_name": "Porter County",
+      "state_abbr": "IN",
+      "disposition": "withdrawn",
+      "decision_date": "2024-06-10",
+      "decision_label": "PUD and annexation petitions withdrawn",
+      "community_role": "decisive",
+      "finality": "redesigned",
+      "outcome_readiness": "post_decision_tracking",
+      "latitude": 41.6106,
+      "longitude": -87.0642,
+      "coordinate_precision": "municipality",
+      "coordinate_source_id": "chesterton_council_statement",
+      "summary": "Provident withdrew its former Brassie Golf Course data-center proposal after resident opposition and the Town Council declared the scale and location unacceptable. Subsequent planning shifted toward other development concepts.",
+      "proposal_description": "Provident proposed eight large data-center buildings and related generator, switching, and substation areas on and near the former Brassie Golf Course property.",
+      "proposed_scale": [
+        {"label": "Proposed investment", "value": "$1.3 billion reported", "source_id": "chesterton_dcd"},
+        {"label": "Proposed buildout", "value": "Eight buildings on approximately 200 acres", "source_id": "chesterton_council_statement"}
+      ],
+      "site_afterlife": "Town records in 2025 describe the development team shifting away from a data center and soliciting community input on a future development opportunity. The final alternative use is not yet fixed in this release.",
+      "evidence_note": "The developer withdrawal and council position are primary-record facts. The site is classified as redesigned because development planning continued after the data-center concept ended.",
+      "timeline": [
+        {"event_id": "chesterton_2024_proposal", "date": "2024-05-16", "date_label": "May 16, 2024", "category": "proposal", "title": "Plan Commission receives the large-campus concept", "summary": "Provident presented a multi-building data-center concept for the former golf-course property.", "source_ids": ["chesterton_council_statement"]},
+        {"event_id": "chesterton_2024_council", "date": "2024-06-07", "date_label": "June 7, 2024", "category": "government_review", "title": "Town Council rejects the proposal's scale and location", "summary": "The council said it could not support the project at its current scale and location and required extensive further review if pursued.", "source_ids": ["chesterton_council_statement"]},
+        {"event_id": "chesterton_2024_withdrawal", "date": "2024-06-10", "date_label": "June 10, 2024", "category": "withdrawal", "title": "Provident formally withdraws both petitions", "summary": "The developer withdrew the planned-unit-development and annexation petitions.", "source_ids": ["chesterton_withdrawal", "chesterton_minutes"]},
+        {"event_id": "chesterton_2025_afterlife", "date": "2025-03-21", "date_label": "March 2025", "category": "site_afterlife", "title": "Town solicits input on a different development opportunity", "summary": "The former Brassie property remained in planning, so the case is tracked as a redesign rather than permanent nondevelopment.", "source_ids": ["chesterton_future_use"]}
+      ],
+      "sources": [
+        {"source_id": "chesterton_council_statement", "title": "Town Council releases statement on proposed data center on former Brassie Golf Course", "publisher": "Town of Chesterton", "url": "https://www.chestertonin.org/DocumentCenter/View/14945/Chesterton-Town-Council-releases-statement-on-proposed-data-center-on-former-Brassie-Golf-Course-property", "published_on": "2024-06-07", "source_type": "government_record", "source_role": "primary"},
+        {"source_id": "chesterton_withdrawal", "title": "Provident withdraws petitions for proposed data center", "publisher": "Town of Chesterton", "url": "https://www.chestertonin.org/DocumentCenter/View/14954/Provident-withdraws-petitions-for-proposed-data-center-on-former-Brassie-property", "published_on": "2024-06-10", "source_type": "government_record", "source_role": "primary"},
+        {"source_id": "chesterton_minutes", "title": "Town Council meeting minutes — June 10, 2024", "publisher": "Town of Chesterton", "url": "https://www.chestertonin.org/DocumentCenter/View/15057/Town-Council-Meeting-Minutes-6102024", "published_on": "2024-06-10", "source_type": "government_record", "source_role": "primary"},
+        {"source_id": "chesterton_dcd", "title": "Application for $1.3bn data center in Chesterton withdrawn", "publisher": "Data Center Dynamics", "url": "https://www.datacenterdynamics.com/en/news/application-for-13bn-data-center-in-chesterton-indiana-withdrawn/", "published_on": "2024-06-14", "source_type": "trade_press", "source_role": "corroborating"},
+        {"source_id": "chesterton_future_use", "title": "Provide input on future development opportunity at former Brassie Golf Course", "publisher": "Town of Chesterton", "url": "https://www.chestertonin.org/CivicAlerts.asp?AID=286&ARC=506", "published_on": "2025-03-21", "source_type": "government_record", "source_role": "primary"}
+      ]
+    },
+    {
+      "project_id": "prj_rejected_chesapeake_etheridge_lakes",
+      "site_id": "pst_proposed_chesapeake_etheridge_lakes",
+      "name": "Etheridge Lakes Data Center",
+      "proposal_sector": "data_center",
+      "developer_label": "Emerald Lake Estates I, Inc.",
+      "county_fips": "51550",
+      "county_name": "Chesapeake city",
+      "state_abbr": "VA",
+      "disposition": "rejected",
+      "decision_date": "2025-06-17",
+      "decision_label": "City Council denied rezoning 7–0",
+      "community_role": "contributing",
+      "finality": "final",
+      "outcome_readiness": "post_decision_tracking",
+      "latitude": 36.6497,
+      "longitude": -76.2169,
+      "coordinate_precision": "parcel",
+      "coordinate_source_id": "chesapeake_application",
+      "summary": "Chesapeake City Council unanimously denied the Etheridge Lakes rezoning after extensive public comment and an earlier Planning Commission recommendation against it.",
+      "proposal_description": "The applicant sought to rezone a 22.6-acre parcel near Centerville Turnpike and Etheridge Manor Boulevard for a two-story data center.",
+      "proposed_scale": [
+        {"label": "Proposed building area", "value": "Approximately 350,000 square feet", "source_id": "chesapeake_application"},
+        {"label": "Proposed site", "value": "Approximately 22.6 acres", "source_id": "chesapeake_minutes"}
+      ],
+      "site_afterlife": "No verified replacement development on the parcel is published here. Chesapeake subsequently developed broader data-center policy, a distinct citywide outcome that should not be confused with parcel reuse.",
+      "evidence_note": "The denial is final for the reviewed rezoning. Community testimony is well documented, but the record also cites land-use compatibility and availability of other viable uses.",
+      "timeline": [
+        {"event_id": "chesapeake_2025_application", "date": "2025-01-27", "date_label": "January 2025", "category": "proposal", "title": "Rezoning application begins review", "summary": "The city opened review of a proposal for a data center adjacent to established residential and agricultural uses.", "source_ids": ["chesapeake_application"]},
+        {"event_id": "chesapeake_2025_planning", "date": "2025-05-15", "date_label": "May 15, 2025", "category": "government_review", "title": "Planning Commission recommends denial", "summary": "The commission recommended against the rezoning after extensive written opposition and public concern.", "source_ids": ["chesapeake_whro"]},
+        {"event_id": "chesapeake_2025_denial", "date": "2025-06-17", "date_label": "June 17, 2025", "category": "decision", "title": "City Council unanimously denies rezoning", "summary": "Council denied the application 7–0 after public testimony, citing incompatibility with the location and community.", "source_ids": ["chesapeake_minutes", "chesapeake_policy"]},
+        {"event_id": "chesapeake_2026_policy", "date": "2026-08-18", "date_label": "August 18, 2026", "category": "site_afterlife", "title": "City adopts a broader data-center ordinance", "summary": "The city later adopted an ordinance governing future data-center siting. This is tracked as a policy consequence, not an economic effect of the rejected parcel.", "source_ids": ["chesapeake_policy"]}
+      ],
+      "sources": [
+        {"source_id": "chesapeake_application", "title": "PLN-REZ-2025-002 Etheridge Lakes Data Center attachments", "publisher": "City of Chesapeake", "url": "https://www.cityofchesapeake.net/DocumentCenter/View/24054/PLN-REZ-2025-002---Etheridge-Lakes-Data-Centerpdf", "published_on": "2025-05-01", "source_type": "government_record", "source_role": "primary"},
+        {"source_id": "chesapeake_whro", "title": "Chesapeake's Planning Commission says no to data center proposal", "publisher": "WHRO", "url": "https://www.whro.org/business-growth/2025-05-15/chesapeakes-planning-commission-says-no-to-data-center-proposal", "published_on": "2025-05-15", "source_type": "local_news", "source_role": "corroborating"},
+        {"source_id": "chesapeake_minutes", "title": "City Council minutes — June 17, 2025", "publisher": "City of Chesapeake", "url": "https://chesapeake.granicus.com/MinutesViewer.php?clip_id=9808&doc_id=0f164040-4c63-11f0-b7f5-005056a89546&view_id=29", "published_on": "2025-06-17", "source_type": "government_record", "source_role": "primary"},
+        {"source_id": "chesapeake_policy", "title": "Data Center Ordinance and Policy", "publisher": "City of Chesapeake", "url": "https://www.cityofchesapeake.net/3783/Data-Center-Ordinance-and-Policy", "source_type": "government_record", "source_role": "primary"}
+      ]
+    },
+    {
+      "project_id": "prj_rejected_matthews_accelerate",
+      "site_id": "pst_proposed_matthews_accelerate",
+      "name": "Project Accelerate",
+      "proposal_sector": "data_center",
+      "developer_label": "Crosland Southeast / Engineered Land Solutions",
+      "county_fips": "37119",
+      "county_name": "Mecklenburg County",
+      "state_abbr": "NC",
+      "disposition": "withdrawn",
+      "decision_date": "2025-10-07",
+      "decision_label": "Rezoning petition withdrawn before scheduled vote",
+      "community_role": "decisive",
+      "finality": "resubmittable",
+      "outcome_readiness": "disposition_verified",
+      "latitude": 35.1168,
+      "longitude": -80.7237,
+      "coordinate_precision": "municipality",
+      "coordinate_source_id": "matthews_town",
+      "summary": "Developers withdrew the five-building Project Accelerate rezoning after sustained public opposition and an indication that town commissioners would reject it.",
+      "proposal_description": "The proposal sought industrial rezoning for a multi-building data-center campus on East John Street near Interstate 485 in Matthews.",
+      "proposed_scale": [
+        {"label": "Proposed site", "value": "Approximately 123 acres", "source_id": "matthews_observer"},
+        {"label": "Proposed electricity request", "value": "Up to 600 MW reported; not built capacity", "source_id": "matthews_observer"},
+        {"label": "Proposed buildout", "value": "Five two-story buildings", "source_id": "matthews_observer"}
+      ],
+      "site_afterlife": "The withdrawal left options open. No stable alternative use or sufficiently long post-period is established in this release.",
+      "evidence_note": "Recent disposition; map and timeline eligible, economic comparison not ready. The developer described the withdrawal as allowing time to explore options.",
+      "timeline": [
+        {"event_id": "matthews_2025_proposal", "date": "2025-09-01", "date_label": "September 2025", "category": "proposal", "title": "Project Accelerate enters public review", "summary": "A large campus proposal on East John Street generated immediate public interest and concern.", "source_ids": ["matthews_town", "matthews_wfae"]},
+        {"event_id": "matthews_2025_opposition", "date": "2025-09-24", "date_label": "September 24, 2025", "category": "public_opposition", "title": "Organized opposition grows", "summary": "Residents raised concerns about power, water, noise, and town character and organized a large petition.", "source_ids": ["matthews_wfae", "matthews_observer"]},
+        {"event_id": "matthews_2025_withdrawal", "date": "2025-10-07", "date_label": "October 7, 2025", "category": "withdrawal", "title": "Developers withdraw rezoning request", "summary": "The project was pulled before a scheduled decision after the mayor indicated it faced defeat.", "source_ids": ["matthews_observer", "matthews_wunc"]}
+      ],
+      "sources": [
+        {"source_id": "matthews_town", "title": "Project Accelerate Rezoning Update", "publisher": "Town of Matthews", "url": "https://www.matthewsnc.gov/newsview.aspx?nid=7118", "published_on": "2025-09-01", "source_type": "government_record", "source_role": "primary"},
+        {"source_id": "matthews_wfae", "title": "Matthews data center proposal draws pushback", "publisher": "WFAE", "url": "https://www.wfae.org/business/2025-09-24/matthews-data-center-proposal-draws-pushback", "published_on": "2025-09-24", "source_type": "local_news", "source_role": "corroborating"},
+        {"source_id": "matthews_observer", "title": "Matthews data center project withdrawn, mayor confirms", "publisher": "The Charlotte Observer", "url": "https://www.charlotteobserver.com/news/local/article312427810.html", "published_on": "2025-10-08", "source_type": "local_news", "source_role": "corroborating"},
+        {"source_id": "matthews_wunc", "title": "Data center developers withdraw plans for Matthews project", "publisher": "WUNC", "url": "https://www.wunc.org/2025-10-09/data-center-developers-withdraw-plans-for-matthews-project", "published_on": "2025-10-09", "source_type": "local_news", "source_role": "corroborating"}
+      ]
+    },
+    {
+      "project_id": "prj_rejected_peculiar_harper_road",
+      "site_id": "pst_proposed_peculiar_harper_road",
+      "name": "Harper Road Technology Park",
+      "proposal_sector": "data_center",
+      "developer_label": "Diode Ventures",
+      "county_fips": "29037",
+      "county_name": "Cass County",
+      "state_abbr": "MO",
+      "disposition": "rejected",
+      "decision_date": "2024-10-21",
+      "decision_label": "Board removed data centers from the zoning code",
+      "community_role": "decisive",
+      "finality": "final",
+      "outcome_readiness": "post_decision_tracking",
+      "latitude": 38.7192,
+      "longitude": -94.4586,
+      "coordinate_precision": "municipality",
+      "coordinate_source_id": "peculiar_april_packet",
+      "summary": "Peculiar reversed its zoning approach and removed data centers as a permitted use after organized local opposition, blocking Diode Ventures' planned Harper Road campus.",
+      "proposal_description": "Diode Ventures discussed a hyperscale technology park near Harper Road. The city's review moved from enabling language to a moratorium and then removal of data centers from the zoning code.",
+      "proposed_scale": [
+        {"label": "Reported investment", "value": "$1.5 billion", "source_id": "peculiar_dcd"},
+        {"label": "Reported site", "value": "Approximately 508 acres", "source_id": "peculiar_dcd"}
+      ],
+      "site_afterlife": "No verified replacement use for the proposed site is included. Citywide zoning treatment should be tracked separately from parcel-level economic outcomes.",
+      "evidence_note": "The policy action is verified in the city's agenda packet. The causal link to one developer's final investment decision requires continued company and parcel research.",
+      "timeline": [
+        {"event_id": "peculiar_2024_proposal", "date": "2024-04-11", "date_label": "April 2024", "category": "proposal", "title": "Technology-park concept enters public discussion", "summary": "Diode presented data-center development material during local planning review.", "source_ids": ["peculiar_april_packet"]},
+        {"event_id": "peculiar_2024_moratorium", "date": "2024-08-19", "date_label": "August 19, 2024", "category": "government_review", "title": "Board adopts a data-center application moratorium", "summary": "The city paused applications while reviewing health, safety, welfare, and zoning implications.", "source_ids": ["peculiar_moratorium"]},
+        {"event_id": "peculiar_2024_code", "date": "2024-10-21", "date_label": "October 21, 2024", "category": "decision", "title": "Board removes data centers from the zoning code", "summary": "The ordinance eliminated the use category that would have enabled the project.", "source_ids": ["peculiar_board_packet", "peculiar_dcd"]}
+      ],
+      "sources": [
+        {"source_id": "peculiar_april_packet", "title": "Planning Commission packet — April 11, 2024", "publisher": "City of Peculiar", "url": "https://files.municipalone.com/peculiar-mo/PlanningCommissionPacket04-11-24112235040824AM1722.pdf", "published_on": "2024-04-11", "source_type": "government_record", "source_role": "primary"},
+        {"source_id": "peculiar_moratorium", "title": "Report on 100-day moratorium on data center applications", "publisher": "City of Peculiar", "url": "https://files.municipalone.com/peculiar-mo/PlanningCommissionPacket09-12-24060013090624PM1722.pdf", "published_on": "2024-09-12", "source_type": "government_record", "source_role": "primary"},
+        {"source_id": "peculiar_board_packet", "title": "Board of Aldermen packet — October 21, 2024", "publisher": "City of Peculiar", "url": "https://files.municipalone.com/peculiar-mo/BoardofAldermenPacket10-21-24041404101824PM1725.pdf", "published_on": "2024-10-21", "source_type": "government_record", "source_role": "primary"},
+        {"source_id": "peculiar_dcd", "title": "Peculiar officials remove data centers from ordinance, blocking Diode project", "publisher": "Data Center Dynamics", "url": "https://www.datacenterdynamics.com/en/news/peculiar-officials-in-missouri-remove-data-centers-from-ordinance-blocking-15bn-diode-project/", "published_on": "2024-10-22", "source_type": "trade_press", "source_role": "corroborating"}
+      ]
+    },
+    {
+      "project_id": "prj_rejected_bolingbroke_technology_center",
+      "site_id": "pst_proposed_bolingbroke_technology_center",
+      "name": "Bolingbroke Technology Center",
+      "proposal_sector": "data_center",
+      "developer_label": "Bolingbroke Technology Center applicant",
+      "county_fips": "13171",
+      "county_name": "Monroe County",
+      "state_abbr": "GA",
+      "disposition": "rejected",
+      "decision_date": "2025-08-05",
+      "decision_label": "County Commission unanimously denied rezoning",
+      "community_role": "contributing",
+      "finality": "litigated",
+      "outcome_readiness": "disposition_verified",
+      "latitude": 32.9485,
+      "longitude": -83.8041,
+      "coordinate_precision": "municipality",
+      "coordinate_source_id": "bolingbroke_minutes",
+      "summary": "Monroe County's planning board and County Commission unanimously rejected rezoning for the proposed Bolingbroke campus after large public turnout. Later litigation prevents treatment as a settled final outcome.",
+      "proposal_description": "The application sought commercial rezoning for a large, multi-building technology campus on mostly undeveloped land near U.S. 41, Wadley Road, and I-475.",
+      "proposed_scale": [
+        {"label": "Proposed investment", "value": "$5.8 billion reported", "source_id": "bolingbroke_dcd"},
+        {"label": "Proposed power demand", "value": "Up to 1.2 GW reported", "source_id": "bolingbroke_dcd"},
+        {"label": "Rezoning area", "value": "Approximately 970 acres", "source_id": "bolingbroke_dcd"}
+      ],
+      "site_afterlife": "The denial was followed by litigation reported against the county. Until the legal and parcel status are resolved, no stable post-decision economic comparison should be made.",
+      "evidence_note": "Disposition verified, but litigation makes the treatment date and finality unsuitable for causal modeling.",
+      "timeline": [
+        {"event_id": "bolingbroke_2025_proposal", "date": "2025-07-01", "date_label": "July 2025", "category": "proposal", "title": "Large campus rezoning reaches public hearings", "summary": "The proposal sought rezoning of rural residential land for a gigawatt-scale campus.", "source_ids": ["bolingbroke_gpb"]},
+        {"event_id": "bolingbroke_2025_planning", "date": "2025-07-28", "date_label": "July 28, 2025", "category": "government_review", "title": "Planning and Zoning Board recommends denial", "summary": "The board voted 5–0 against the rezoning after public testimony and concerns about compatibility and noise.", "source_ids": ["bolingbroke_gpb"]},
+        {"event_id": "bolingbroke_2025_denial", "date": "2025-08-05", "date_label": "August 5, 2025", "category": "decision", "title": "County Commission unanimously denies rezoning", "summary": "The commission issued the final local denial of the reviewed rezoning proposal.", "source_ids": ["bolingbroke_minutes", "bolingbroke_dcd"]},
+        {"event_id": "bolingbroke_2026_litigation", "date": "2026-05-01", "date_label": "Tracked in 2026", "category": "litigation", "title": "Property owners challenge the denial", "summary": "Reported litigation means the rejected status remains legally contested.", "source_ids": ["bolingbroke_tracker"]}
+      ],
+      "sources": [
+        {"source_id": "bolingbroke_minutes", "title": "Board of Commissioners approved minutes — August 5, 2025", "publisher": "Monroe County", "url": "https://www.monroecoga.org/wp-content/uploads/2025/09/08-05-2025-Regular-Meeting-minutes.pdf", "published_on": "2025-08-05", "source_type": "government_record", "source_role": "primary"},
+        {"source_id": "bolingbroke_gpb", "title": "Monroe County data center loses zoning vote in face of community opposition", "publisher": "Georgia Public Broadcasting", "url": "https://www.gpb.org/news/2025/07/29/monroe-county-data-center-loses-zoning-vote-in-face-of-community-opposition", "published_on": "2025-07-29", "source_type": "local_news", "source_role": "corroborating"},
+        {"source_id": "bolingbroke_dcd", "title": "Land rezoning proposal denied for 1.2GW campus outside Macon", "publisher": "Data Center Dynamics", "url": "https://www.datacenterdynamics.com/en/news/land-rezoning-proposal-denied-for-12gw-campus-outside-macon-georgia/", "published_on": "2025-08-06", "source_type": "trade_press", "source_role": "corroborating"},
+        {"source_id": "bolingbroke_tracker", "title": "Stopped data center projects", "publisher": "Is a Data Center Coming", "url": "https://isadatacentercoming.com/stopped", "source_type": "research", "source_role": "context"}
+      ]
+    }
+  ]
+}

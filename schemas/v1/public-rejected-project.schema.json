@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dccio.org/schemas/v1/public-rejected-project.schema.json",
+  "title": "Public Rejected Project",
+  "$defs": {
+    "summary": {
+      "type": "object",
+      "required": ["project_id", "site_id", "name", "proposal_sector", "developer_label", "county_fips", "county_name", "state_abbr", "disposition", "decision_date", "decision_label", "community_role", "finality", "outcome_readiness", "latitude", "longitude", "coordinate_precision", "coordinate_source_id", "detail_path", "summary", "source_count", "timeline_event_count"],
+      "properties": {
+        "project_id": {"$ref": "common.schema.json#/$defs/entity_id"},
+        "site_id": {"$ref": "common.schema.json#/$defs/entity_id"},
+        "name": {"type": "string", "minLength": 1},
+        "proposal_sector": {"type": "string", "enum": ["data_center", "industrial", "energy", "manufacturing", "extractive", "other"]},
+        "developer_label": {"type": "string", "minLength": 1},
+        "county_fips": {"$ref": "common.schema.json#/$defs/county_fips"},
+        "county_name": {"type": "string", "minLength": 1},
+        "state_abbr": {"$ref": "common.schema.json#/$defs/state_abbr"},
+        "disposition": {"type": "string", "enum": ["rejected", "withdrawn", "cancelled"]},
+        "decision_date": {"$ref": "common.schema.json#/$defs/calendar_date"},
+        "decision_label": {"type": "string", "minLength": 1},
+        "community_role": {"type": "string", "enum": ["decisive", "contributing", "unclear"]},
+        "finality": {"type": "string", "enum": ["final", "litigated", "resubmittable", "relocated", "redesigned"]},
+        "outcome_readiness": {"type": "string", "enum": ["disposition_verified", "post_decision_tracking", "early_outcome_evidence", "comparison_ready"]},
+        "latitude": {"type": "number", "minimum": -90, "maximum": 90},
+        "longitude": {"type": "number", "minimum": -180, "maximum": 180},
+        "coordinate_precision": {"type": "string", "enum": ["site", "parcel", "municipality", "county"]},
+        "coordinate_source_id": {"type": "string", "minLength": 1},
+        "detail_path": {"type": "string", "pattern": "^rejected-projects/projects/[a-z0-9_]+\\.json$"},
+        "summary": {"type": "string", "minLength": 1},
+        "source_count": {"type": "integer", "minimum": 1},
+        "timeline_event_count": {"type": "integer", "minimum": 1}
+      }
+    }
+  },
+  "allOf": [
+    {"$ref": "#/$defs/summary"},
+    {
+      "type": "object",
+      "required": ["proposal_description", "proposed_scale", "site_afterlife", "evidence_note", "timeline", "sources"],
+      "properties": {
+        "proposal_description": {"type": "string", "minLength": 1},
+        "proposed_scale": {"type": "array", "items": {"type": "object", "required": ["label", "value", "source_id"], "properties": {"label": {"type": "string", "minLength": 1}, "value": {"type": "string", "minLength": 1}, "source_id": {"type": "string", "minLength": 1}}, "additionalProperties": false}},
+        "site_afterlife": {"type": "string", "minLength": 1},
+        "evidence_note": {"type": "string", "minLength": 1},
+        "timeline": {"type": "array", "minItems": 1, "items": {"type": "object", "required": ["event_id", "date", "date_label", "category", "title", "summary", "source_ids"], "properties": {"event_id": {"type": "string", "minLength": 1}, "date": {"$ref": "common.schema.json#/$defs/calendar_date"}, "date_label": {"type": "string", "minLength": 1}, "category": {"type": "string", "enum": ["proposal", "public_opposition", "government_review", "decision", "withdrawal", "litigation", "site_afterlife"]}, "title": {"type": "string", "minLength": 1}, "summary": {"type": "string", "minLength": 1}, "source_ids": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1}}}, "additionalProperties": false}},
+        "sources": {"type": "array", "minItems": 1, "items": {"type": "object", "required": ["source_id", "title", "publisher", "url", "source_type", "source_role"], "properties": {"source_id": {"type": "string", "minLength": 1}, "title": {"type": "string", "minLength": 1}, "publisher": {"type": "string", "minLength": 1}, "url": {"type": "string", "format": "uri", "pattern": "^https://"}, "published_on": {"$ref": "common.schema.json#/$defs/calendar_date"}, "source_type": {"type": "string", "enum": ["government_record", "local_news", "national_news", "trade_press", "company_record", "research"]}, "source_role": {"type": "string", "enum": ["primary", "corroborating", "context"]}}, "additionalProperties": false}}
+      }
+    }
+  ],
+  "unevaluatedProperties": false
+}

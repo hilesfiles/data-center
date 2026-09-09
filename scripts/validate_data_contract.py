@@ -6228,6 +6228,11 @@ def main() -> int:
     else:
         from validate_private_sector_study import validate_study
     failures.extend(validate_study(validator))
+    if __package__:
+        from .validate_rejected_project_study import validate_rejected_study
+    else:
+        from validate_rejected_project_study import validate_rejected_study
+    failures.extend(validate_rejected_study(validator))
     if project_issues:
         failures.append("Project configuration or public data failed:")
         failures.extend(f"  {issue}" for issue in project_issues)

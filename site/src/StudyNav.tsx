@@ -2,9 +2,10 @@ import type { StudyIndex } from "./studyTypes";
 
 export function StudyNav() {
   const hash = window.location.hash;
-  const active = hash.startsWith("#/county/") || hash === "#/map" ? "map" : hash === "#/methodology" ? "methodology" : "study";
+  const active = hash.startsWith("#/county/") || hash === "#/map" ? "map" : hash.startsWith("#/rejected") ? "rejected" : hash === "#/methodology" ? "methodology" : "study";
   return <nav className="study-nav" aria-label="Main navigation">
     <a href="#/study" aria-current={active === "study" ? "page" : undefined}>Project study</a>
+    <a href="#/rejected" aria-current={active === "rejected" ? "page" : undefined}>Rejected proposals</a>
     <a href="#/map" aria-current={active === "map" ? "page" : undefined}>Map & communities</a>
     <a href="#/methodology" aria-current={active === "methodology" ? "page" : undefined}>Evidence & methodology</a>
   </nav>;

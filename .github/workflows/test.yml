@@ -21,6 +21,9 @@ jobs:
       - name: Check private-sector study regression cases
         run: python -m unittest discover -s tests -p test_private_sector_study.py
 
+      - name: Check rejected-proposal registry cases
+        run: python -m unittest tests.test_rejected_project_study
+
       - uses: pnpm/action-setup@v4
         with:
           version: 11.19.0

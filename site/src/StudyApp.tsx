@@ -2,7 +2,8 @@ import { useEffect, useMemo, useState } from "react";
 import App from "./App";
 import { EconomicAccounts } from "./EconomicAccounts";
 import { StudyNav } from "./StudyNav";
-import type { ProjectMediaTimeline, ProjectMediaTimelineDataset, StudyIndex, StudyProject, StudyProjectSummary } from "./studyTypes";
+import { RejectedProjectProfile, RejectedProjectRegister } from "./RejectedProjects";
+import type { ProjectMediaTimeline, ProjectMediaTimelineDataset, RejectedProjectIndex, StudyIndex, StudyProject, StudyProjectSummary } from "./studyTypes";
 
 const base = `${import.meta.env.BASE_URL}data/v1/study/`;
 
@@ -166,7 +167,9 @@ function Methodology({ study }: { study: StudyIndex }) {
 export default function StudyApp() {
   const [hash, setHash] = useState(() => window.location.hash);
   const [study, setStudy] = useState<StudyIndex | null>(null);
+  const [rejected, setRejected] = useState<RejectedProjectIndex | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [rejectedError, setRejectedError] = useState<string | null>(null);
   useEffect(() => {
     const onRoute = () => { setHash(window.location.hash); window.scrollTo(0, 0); };
     window.addEventListener("hashchange", onRoute);
@@ -181,13 +184,24 @@ export default function StudyApp() {
     }).catch((reason: unknown) => { if (active) setError(reason instanceof Error ? reason.message : "Unable to load study register."); });
     return () => { active = false; };
   }, []);
+  useEffect(() => {
+    let active = true;
+    fetch(`${base}rejected-projects/index.json?cache_bust=${Date.now()}`, { cache: "no-store" }).then(async response => {
+      if (!response.ok) throw new Error("The rejected-proposal register could not be loaded.");
+      const result = await response.json() as RejectedProjectIndex;
+      if (active) setRejected(result);
+    }).catch((reason: unknown) => { if (active) setRejectedError(reason instanceof Error ? reason.message : "Unable to load rejected proposals."); });
+    return () => { active = false; };
+  }, []);
   const projectId = hash.match(/^#\/project\/([a-z0-9_]+)$/)?.[1];
+  const rejectedProjectId = hash.match(/^#\/rejected\/([a-z0-9_]+)$/)?.[1];
   const selected = study?.projects.find(p => p.project_id === projectId);
-  useEffect(() => { document.title = `${selected?.name ?? "Data Center Community Impact Observatory"} · Economic study`; }, [selected]);
-  if (hash === "#/map" || /^#\/county\/\d{5}$/.test(hash)) return <App study={study} studyError={error} />;
-  const known = !hash || hash === "#/study" || hash === "#/methodology" || selected;
+  const selectedRejected = rejected?.projects.find(project => project.project_id === rejectedProjectId);
+  useEffect(() => { document.title = `${selected?.name ?? selectedRejected?.name ?? "Data Center Community Impact Observatory"} · Economic study`; }, [selected, selectedRejected]);
+  if (hash === "#/map" || /^#\/county\/\d{5}$/.test(hash)) return <App study={study} studyError={error} rejected={rejected} rejectedError={rejectedError} />;
+  const known = !hash || hash === "#/study" || hash === "#/rejected" || hash === "#/methodology" || selected || selectedRejected;
   return <div className="app-shell study-shell"><header className="topbar"><div className="brand-block"><span className="eyebrow">U.S. community economics</span><h1>Data Center Community Impact Observatory</h1></div><div className="version-block"><span className="status-dot" /><span>Research in progress</span></div></header><StudyNav />
-    <main className="study-main">{error ? <div className="error-panel" role="alert">{error}</div> : !study ? <p className="study-loading" role="status">Loading the project register…</p> : !known ? <div className="study-empty"><h2>Project or page not found</h2><p>This link does not identify a project in the current study register.</p><a href="#/study">Return to project register →</a></div> : selected ? <ProjectProfile summary={selected} release={study.release_id} generatedAt={study.generated_at} /> : hash === "#/methodology" ? <Methodology study={study} /> : <StudyRegister study={study} />}</main>
+    <main className="study-main">{hash.startsWith("#/rejected") ? rejectedError ? <div className="error-panel" role="alert">{rejectedError}</div> : !rejected ? <p className="study-loading" role="status">Loading the rejected-proposal register…</p> : selectedRejected ? <RejectedProjectProfile summary={selectedRejected} /> : rejectedProjectId ? <div className="study-empty"><h2>Proposal not found</h2><a href="#/rejected">Return to rejected proposals →</a></div> : <RejectedProjectRegister registry={rejected} /> : error ? <div className="error-panel" role="alert">{error}</div> : !study ? <p className="study-loading" role="status">Loading the project register…</p> : !known ? <div className="study-empty"><h2>Project or page not found</h2><p>This link does not identify a project in the current study register.</p><a href="#/study">Return to project register →</a></div> : selected ? <ProjectProfile summary={selected} release={study.release_id} generatedAt={study.generated_at} /> : hash === "#/methodology" ? <Methodology study={study} /> : <StudyRegister study={study} />}</main>
     <footer className="study-footer"><span>Historical evidence · Transparent assumptions · Community outcomes</span><span>{study ? `Candidate screen ${study.screen_date}` : "Loading release"}</span></footer>
   </div>;
 }

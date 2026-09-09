@@ -26,8 +26,8 @@ fiscal result without same-scope public-cost evidence and do not present county 
 gaps as causal effects. Project profiles retain the complete source, forecast, model,
 assumption, limitation, and remaining-evidence ledger for audit.
 
-A standalone public-media chronology now covers all 36 active study projects. Its 207
-dated events link to 310 source references across 286 distinct public URLs, covering
+A standalone public-media chronology now covers all 36 active study projects. Its 332
+dated events link to 467 source references across 412 distinct public URLs, covering
 announcements, operating milestones, expansions, ownership changes, incentives,
 infrastructure, incidents, controversies, and abandoned proposals. Coverage notes identify
 projects whose public record is comparatively sparse; the dataset does not pad those
@@ -37,6 +37,19 @@ verify it without rebuilding the main study release:
 ```powershell
 python scripts/build_project_media_timelines.py
 python scripts/build_project_media_timelines.py --check
+```
+
+A separate rejected-and-withdrawn proposal register publishes eight verified comparison
+cases without adding nonexistent facilities to the operating inventory. `#/rejected`
+shows the case cards, `#/rejected/{project_id}` opens the sourced chronology, and `#/map`
+uses amber markers and county shading alongside the cyan operating-project cohort. Mixed
+counties retain cyan shading with amber hatching. Disposition, community role, finality,
+and outcome readiness remain separate fields; no current case is labeled comparison-ready.
+Rebuild the public register and its canonical project/proposed-site entities with:
+
+```powershell
+python scripts/build_rejected_project_study.py
+python -m unittest tests.test_rejected_project_study
 ```
 
 The implementation sequence and remaining work are documented in

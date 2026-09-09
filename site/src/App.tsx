@@ -1,7 +1,7 @@
 import { lazy, Suspense, useEffect, useMemo, useState } from "react";
 import { ImpactAccount } from "./EconomicAccounts";
 import { CountyStudyProjects, StudyNav } from "./StudyNav";
-import type { StudyIndex, StudyProject, StudyProjectSummary } from "./studyTypes";
+import type { RejectedProjectIndex, RejectedProjectSummary, StudyIndex, StudyProject, StudyProjectSummary } from "./studyTypes";
 import type {
   CountyEntityAdjudicationCoverage,
   CountyEconomicHistory,
@@ -68,6 +68,17 @@ function CountyStudyAccount({ summary, release, generatedAt }: { summary: StudyP
   </section>;
 }
 
+function CountyRejectedProjects({ projects, error }: { projects: RejectedProjectSummary[]; error: string | null }) {
+  if (error) return <section className="county-rejected-study"><h3>Rejected & withdrawn proposals</h3><p role="alert">{error}</p></section>;
+  if (!projects.length) return null;
+  return <section className="county-rejected-study" aria-label="Rejected and withdrawn proposals in this county">
+    <h3>Rejected & withdrawn proposals</h3>
+    <p>These cases are separate from operating facilities and proposal projections are not realized outcomes.</p>
+    <ul>{projects.map(project => <li key={project.project_id}><a href={`#/rejected/${project.project_id}`}>{project.name} <span aria-hidden="true">↗</span></a><small>{project.decision_label} · {project.decision_date}</small></li>)}</ul>
+    <a className="profile-link" href="#/rejected">Explore the comparison register →</a>
+  </section>;
+}
+
 type CountyTrendKey = "real_gdp_usd" | "annual_avg_covered_employment" | "population" | "annual_avg_weekly_wage_nominal_usd";
 
 const countyTrends: Array<{ key: CountyTrendKey; label: string; note: string }> = [
@@ -121,7 +132,7 @@ const countyFipsFromHash = () => {
   return match?.[1] ?? null;
 };
 
-export default function App({ study, studyError }: { study: StudyIndex | null; studyError: string | null }) {
+export default function App({ study, studyError, rejected, rejectedError }: { study: StudyIndex | null; studyError: string | null; rejected: RejectedProjectIndex | null; rejectedError: string | null }) {
   const [metadata, setMetadata] = useState<SiteMetadata | null>(null);
   const [counties, setCounties] = useState<FacilitySourceCoverage[]>([]);
   const [economic, setEconomic] = useState<CountyEconomicBaseline[]>([]);
@@ -139,6 +150,8 @@ export default function App({ study, studyError }: { study: StudyIndex | null; s
   const [adjudication, setAdjudication] = useState<CountyEntityAdjudicationCoverage[]>([]);
   const [lifecycle, setLifecycle] = useState<CountyLifecycleVerificationCoverage[]>([]);
   const [studyGroup, setStudyGroup] = useState("");
+  const [showOperating, setShowOperating] = useState(true);
+  const [showRejected, setShowRejected] = useState(true);
   const completedProjects = useMemo(
     () => study?.projects.filter(project =>
       project.research_completion_status === "account_research_complete" ||
@@ -149,9 +162,10 @@ export default function App({ study, studyError }: { study: StudyIndex | null; s
     [study],
   );
   const mappedProjects = useMemo(
-    () => completedProjects.filter(project => !studyGroup || project.study_group === studyGroup),
-    [completedProjects, studyGroup],
+    () => showOperating ? completedProjects.filter(project => !studyGroup || project.study_group === studyGroup) : [],
+    [completedProjects, showOperating, studyGroup],
   );
+  const mappedRejectedProjects = useMemo(() => showRejected ? rejected?.projects ?? [] : [], [rejected, showRejected]);
   const completedGroups = useMemo(
     () => [...new Set(completedProjects.map(project => project.study_group))].sort(),
     [completedProjects],
@@ -206,10 +220,11 @@ export default function App({ study, studyError }: { study: StudyIndex | null; s
   }, [profileFips]);
 
   useEffect(() => {
-    if (profileFips == null && mappedProjects.length > 0 && !mappedProjects.some(project => project.county_fips === selectedFips)) {
-      setSelectedFips(mappedProjects[0].county_fips);
+    const visible = [...mappedProjects, ...mappedRejectedProjects];
+    if (profileFips == null && visible.length > 0 && !visible.some(project => project.county_fips === selectedFips)) {
+      setSelectedFips(visible[0].county_fips);
     }
-  }, [mappedProjects, profileFips, selectedFips]);
+  }, [mappedProjects, mappedRejectedProjects, profileFips, selectedFips]);
 
   useEffect(() => {
     const syncRoute = () => {
@@ -228,6 +243,10 @@ export default function App({ study, studyError }: { study: StudyIndex | null; s
   const selectedCompletedProject = useMemo(
     () => completedProjects.find(project => project.county_fips === selectedFips) ?? null,
     [completedProjects, selectedFips],
+  );
+  const selectedRejectedProjects = useMemo(
+    () => rejected?.projects.filter(project => project.county_fips === selectedFips) ?? [],
+    [rejected, selectedFips],
   );
   useEffect(() => {
     const stateAbbr = selectedCounty?.state_abbr;
@@ -413,6 +432,7 @@ export default function App({ study, studyError }: { study: StudyIndex | null; s
                 <span className="quality-badge grade-p">{selectedCompletedProject ? "Completed study" : "County context"}</span>
               </div>
               <CountyStudyProjects study={study} fips={selectedCounty.county_fips} error={studyError} />
+              <CountyRejectedProjects projects={selectedRejectedProjects} error={rejectedError} />
               {selectedCompletedProject && study && <CountyStudyAccount summary={selectedCompletedProject} release={study.release_id} generatedAt={study.generated_at} />}
               <section className="county-baseline-section" aria-labelledby="county-baseline-title">
                 <div className="section-heading"><div><span className="eyebrow">Current county baseline</span><h3 id="county-baseline-title">Scale of the host economy</h3></div></div>
@@ -480,31 +500,33 @@ export default function App({ study, studyError }: { study: StudyIndex | null; s
 
       <StudyNav />
       <div className="fixture-banner" role="status">
-        {study ? <><strong>{completedProjects.length} completed project research accounts are mapped.</strong> Analytical completeness remains separately identified on each project page. The broader {study.counts.projects}-project research register and legacy national inventory remain preserved off-map for future study.</> : studyError ?? "Loading the private-sector project register…"}
+        {study ? <><strong>{completedProjects.length} completed project accounts and {rejected?.counts.projects ?? 0} rejected or withdrawn proposals are mapped.</strong> Marker color and county shading distinguish the cohorts; readiness remains separately identified on every case.</> : studyError ?? "Loading the private-sector project register…"}
       </div>
 
       <main className="workspace">
         <aside className="sidebar">
           <section className="control-section">
-            <label className="study-map-filter" htmlFor="study-map-type">Research-complete project markers</label>
-            <select id="study-map-type" value={studyGroup} onChange={e => setStudyGroup(e.target.value)}><option value="">All completed research</option>{completedGroups.map(group => <option key={group}>{group}</option>)}</select>
-            <p className="control-note">Projects appear after their scoped evidence audit is reconciled, whether or not they pass the separate full modeled-account gate. Unresearched candidates and the legacy inventory remain stored off-map.</p>
+            <fieldset className="map-layer-controls"><legend>Map layers</legend><label><input type="checkbox" checked={showOperating} onChange={event => setShowOperating(event.target.checked)} /> Operating-project research</label><label><input type="checkbox" checked={showRejected} onChange={event => setShowRejected(event.target.checked)} /> Rejected & withdrawn proposals</label></fieldset>
+            <label className="study-map-filter" htmlFor="study-map-type">Operating-project type</label>
+            <select id="study-map-type" aria-label="Research-complete project markers" value={studyGroup} onChange={e => setStudyGroup(e.target.value)}><option value="">All completed research</option>{completedGroups.map(group => <option key={group}>{group}</option>)}</select>
+            <p className="control-note">Cyan shows completed operating-project research. Amber shows verified proposals that were denied or withdrawn. Mixed counties carry cyan shading with amber hatching.</p>
           </section>
 
           <section className="county-section" aria-live="polite">
             {studyError && <div className="error-panel">{studyError}</div>}
-            {!studyError && !selectedCompletedProject && <div className="empty-panel">Select a completed study on the map.</div>}
-            {selectedCompletedProject && (
+            {!studyError && !selectedCompletedProject && selectedRejectedProjects.length === 0 && <div className="empty-panel">Select a researched county on the map.</div>}
+            {(selectedCompletedProject || selectedRejectedProjects.length > 0) && (
               <>
                 <div className="county-heading">
                   <div>
-                    <span className="eyebrow">Completed project research</span>
-                    <h2>{selectedCompletedProject.county_name}</h2>
-                    <p>{selectedCompletedProject.state_abbr} · FIPS {selectedCompletedProject.county_fips}</p>
+                    <span className="eyebrow">Community research</span>
+                    <h2>{selectedCompletedProject?.county_name ?? selectedRejectedProjects[0].county_name}</h2>
+                    <p>{selectedCompletedProject?.state_abbr ?? selectedRejectedProjects[0].state_abbr} · FIPS {selectedCompletedProject?.county_fips ?? selectedRejectedProjects[0].county_fips}</p>
                   </div>
-                  <span className="quality-badge grade-p">Research complete</span>
+                  <span className={`quality-badge ${selectedCompletedProject ? "grade-p" : "grade-rejected"}`}>{selectedCompletedProject && selectedRejectedProjects.length ? "Both cohorts" : selectedCompletedProject ? "Operating study" : "Rejected proposal"}</span>
                 </div>
-                <CountyStudyProjects study={study} fips={selectedCompletedProject.county_fips} error={studyError} completedOnly />
+                {selectedCompletedProject && <CountyStudyProjects study={study} fips={selectedCompletedProject.county_fips} error={studyError} completedOnly />}
+                <CountyRejectedProjects projects={selectedRejectedProjects} error={rejectedError} />
               </>
             )}
           </section>
@@ -512,12 +534,12 @@ export default function App({ study, studyError }: { study: StudyIndex | null; s
 
         <section className="map-section">
           <Suspense fallback={<div className="map-loading">Preparing interactive map…</div>}>
-            <MapPanel selectedFips={selectedFips} onSelectCounty={setSelectedFips} studyProjects={mappedProjects} />
+            <MapPanel selectedFips={selectedFips} onSelectCounty={setSelectedFips} studyProjects={mappedProjects} rejectedProjects={mappedRejectedProjects} />
           </Suspense>
           <div className="map-caption">
             <span>Census boundaries · Jan. 1, 2025</span>
-            {study && <span>{completedProjects.length} completed project audits · release {study.release_id}</span>}
-            <span>Legacy inventory and county datasets retained off-map</span>
+            {study && <span>{completedProjects.length} operating audits · {rejected?.counts.projects ?? 0} stopped proposals</span>}
+            <span>Proposal benefits remain labeled projections</span>
           </div>
         </section>
       </main>
