@@ -102,6 +102,24 @@ data slices. Only temporary ZIP/CSV transport inputs are used, and durable data 
 The public projection is delivered as 51 state/DC partitions with a hash-and-size index;
 county profiles lazy-load only their selected state partition.
 
+## County comparison-candidate screening
+
+- Host cohort: 35 counties containing the 36 active private-sector study projects
+- Economic panel: the governed 2001–2024 BEA–BLS county history described above
+- Repository exposure screen: lifecycle-national-tranche-6 active canonical facilities
+- External exposure screen: SueDataCenters.org U.S. Data Center Registry, based on
+  Compute Atlas v1.32.0, retrieved 2026-09-09, CC BY 4.0
+- External documentation: `https://suedatacenters.org/data-centers/data`
+- Pinned input: `data/bronze/external/suedatacenters-data-centers-v1.32.0.json`
+- Builder: `scripts/build_county_comparison_matches.py`
+
+The external registry is spatially joined to the 2025 Census county boundaries, with a
+normalized state/county-name fallback for points outside simplified boundary geometry.
+Every operating, construction, permitted, proposed, or cancelled record is used only as
+a conservative contamination screen. Rejected projects remain in their existing study;
+they are not a comparison cohort here. A county clearing both national sources remains a
+local-review candidate, not proof that no unrecorded facility exists.
+
 ## Governed county first-entry treatment registry
 
 - Treatment definition: `trt_first_entry_v1`

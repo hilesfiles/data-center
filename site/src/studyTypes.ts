@@ -207,6 +207,64 @@ export interface CountyControlIndex {
   states: { state_abbr: string; path: string; records: number; by_exposure_status: Record<string, number>; by_control_eligibility: Record<string, number> }[];
 }
 
+export interface CountyComparisonFeatures {
+  population_mean: number;
+  real_gdp_usd_mean: number;
+  covered_employment_mean: number;
+  weekly_wage_usd_mean: number;
+  real_gdp_per_capita_mean: number;
+  covered_employment_per_100_residents_mean: number;
+  population_growth_rate: number;
+  real_gdp_growth_rate: number;
+  covered_employment_growth_rate: number;
+  weekly_wage_growth_rate: number;
+}
+
+export interface CountyComparisonCandidate {
+  rank: number;
+  county_fips: string;
+  county_name: string;
+  state_abbr: string;
+  census_region: string;
+  census_division: string;
+  same_census_region: boolean;
+  same_census_division: boolean;
+  match_score: number;
+  standardized_distance: number;
+  facility_screen_status: "zero_known_records_across_two_national_registries";
+  verification_status: "local_facility_absence_review_required";
+  features: CountyComparisonFeatures;
+  history_path: string;
+}
+
+export interface CountyComparisonHost {
+  county_fips: string;
+  county_name: string;
+  state_abbr: string;
+  census_region: string;
+  census_division: string;
+  project_ids: string[];
+  project_names: string[];
+  baseline: { start_year: number; end_year: number; strategy: "pre_documented_project_anchor" | "common_early_panel_window"; anchor_year: number | null; note: string };
+  features: CountyComparisonFeatures;
+  comparison_candidates: CountyComparisonCandidate[];
+}
+
+export interface CountyComparisonIndex {
+  schema_version: "1.0.0";
+  release_id: string;
+  generated_at: string;
+  as_of: string;
+  policy_id: string;
+  scope: string;
+  counts: { host_counties: number; host_projects: number; comparison_candidates: number; unique_comparison_counties: number; screened_candidate_pool_count: number; externally_verified_absent: number };
+  screening_sources: { source_id: string; title: string; version: string; record_count: number; url: string | null; license: string | null; retrieved_on: string; sha256: string }[];
+  external_registry_unmatched_coordinate_ids: string[];
+  method: { candidate_pool: string; distance: string; score: string; baseline_rule: string; features: string[]; feature_weights: Record<string, number>; geography_adjustments: Record<string, number> };
+  interpretation_limits: string[];
+  hosts: CountyComparisonHost[];
+}
+
 export interface StudyProject extends StudyProjectSummary {
   schema_version: "1.0.0";
   release_id: string;

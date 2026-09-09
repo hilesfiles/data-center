@@ -1,6 +1,7 @@
 import { lazy, Suspense, useEffect, useMemo, useState } from "react";
 import { ImpactAccount } from "./EconomicAccounts";
 import { CountyStudyProjects, StudyNav } from "./StudyNav";
+import { CountyComparisonSummary } from "./ControlRegistry";
 import type { RejectedProjectIndex, RejectedProjectSummary, StudyIndex, StudyProject, StudyProjectSummary } from "./studyTypes";
 import type {
   CountyEntityAdjudicationCoverage,
@@ -470,6 +471,7 @@ export default function App({ study, studyError, rejected, rejectedError }: { st
                 </div>
               </section>
               {!historyLoaded ? <p className="study-loading" role="status">Loading county history…</p> : selectedEconomicHistory && <CountyHistory history={selectedEconomicHistory} />}
+              <CountyComparisonSummary fips={selectedCounty.county_fips} />
               <details className="research-details">
                 <summary>Historical treatment and inventory notes</summary>
                 <p>First-entry treatment: {!treatmentLoaded ? "Loading…" : treatmentStatus}</p>

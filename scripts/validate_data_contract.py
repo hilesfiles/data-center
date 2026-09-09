@@ -6238,6 +6238,11 @@ def main() -> int:
     else:
         from validate_county_control_eligibility import validate_control_registry
     failures.extend(validate_control_registry(validator))
+    if __package__:
+        from .validate_county_comparison_matches import validate_comparison_matches
+    else:
+        from validate_county_comparison_matches import validate_comparison_matches
+    failures.extend(validate_comparison_matches(validator))
     if project_issues:
         failures.append("Project configuration or public data failed:")
         failures.extend(f"  {issue}" for issue in project_issues)

@@ -845,6 +845,16 @@ a { color: var(--aqua); }
 .county-history-table td { padding: 9px 12px; border-top: 1px solid #252e38; color: #b8c4ca; font-size: .7rem; text-align: right; }
 .county-history-table th:first-child { text-align: left; }
 .county-history-table thead th { color: #74828d; font: 500 .6rem "DM Mono", monospace; letter-spacing: .04em; text-transform: uppercase; }
+.county-comparison-section { padding: 30px 0; border-top: 1px solid var(--line); }
+.county-comparison-section > .section-heading h3 { margin: 5px 0 0; color: #f4f7f9; font-size: 1.35rem; letter-spacing: -.035em; }
+.county-comparison-list { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; margin: 19px 0 13px; }
+.county-comparison-list article { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 9px; align-items: start; padding: 13px; border: 1px solid #29373d; border-radius: 6px; background: #0e1519; }
+.county-comparison-list article > span { color: #687a80; font: .58rem "DM Mono", monospace; }
+.county-comparison-list strong { display: block; font-size: .72rem; line-height: 1.35; }
+.county-comparison-list strong a { color: #dfe9ec; text-decoration: none; }
+.county-comparison-list small { display: block; margin-top: 4px; color: #6f8086; font-size: .54rem; line-height: 1.35; }
+.county-comparison-list em { color: var(--aqua); font: 600 .68rem "DM Mono", monospace; font-style: normal; text-align: right; }
+.county-comparison-list em small { color: #65777d; font-size: .45rem; text-transform: uppercase; }
 
 .control-registry { padding-bottom: 70px; }
 .control-hero { max-width: 850px; padding: 64px 0 34px; }
@@ -858,6 +868,45 @@ a { color: var(--aqua); }
 .control-warning { margin: 22px 0 44px; padding: 18px 20px; border-left: 3px solid #d4a65d; background: #211a11; color: #cbb893; }
 .control-warning strong { color: #f0d5a6; }
 .control-warning p { margin: 7px 0 0; font-size: .77rem; line-height: 1.65; }
+.comparison-matches { margin: 0 0 48px; padding: 34px; border: 1px solid #2a3b40; border-radius: 10px; background: linear-gradient(145deg, #0d171a, #0b1117 55%); }
+.comparison-summary { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1px; margin: 22px 0; border: 1px solid #29373c; border-radius: 7px; overflow: hidden; background: #29373c; }
+.comparison-summary div { padding: 16px; background: #0e161a; }
+.comparison-summary strong { display: block; color: #eaf4f3; font: 600 1.15rem "DM Mono", monospace; }
+.comparison-summary span { display: block; margin-top: 4px; color: #788a8f; font-size: .61rem; }
+.comparison-host-select { display: grid; grid-template-columns: auto minmax(260px, 1fr); align-items: center; gap: 16px; max-width: 650px; color: #84949b; font: .62rem "DM Mono", monospace; letter-spacing: .04em; text-transform: uppercase; }
+.comparison-host-select select { min-width: 0; padding: 11px 34px 11px 12px; border: 1px solid #334249; border-radius: 5px; background: #10191d; color: #e0eaed; font: .76rem system-ui, sans-serif; }
+.comparison-host-heading { display: flex; justify-content: space-between; gap: 24px; margin-top: 27px; padding: 23px; border-left: 3px solid var(--aqua); background: #101b1e; }
+.comparison-host-heading h4 { margin: 5px 0 4px; font-size: 1.35rem; }
+.comparison-host-heading h4 a { color: #edf5f5; text-decoration: none; }
+.comparison-host-heading p { margin: 0; color: #88999f; font-size: .72rem; }
+.comparison-host-heading aside { flex: 0 0 auto; text-align: right; }
+.comparison-host-heading aside strong, .comparison-host-heading aside span { display: block; }
+.comparison-host-heading aside strong { color: var(--aqua); font: 600 .88rem "DM Mono", monospace; }
+.comparison-host-heading aside span { margin-top: 5px; color: #78898e; font-size: .61rem; }
+.comparison-baseline-note { margin: 10px 0 18px; color: #728388; font-size: .66rem; line-height: 1.55; }
+.comparison-candidate-grid { display: grid; gap: 10px; }
+.comparison-candidate { display: grid; grid-template-columns: 82px minmax(0, 1fr); border: 1px solid #2a383e; border-radius: 7px; overflow: hidden; background: #0d1418; }
+.comparison-rank { display: flex; flex-direction: column; align-items: center; justify-content: center; border-right: 1px solid #2a383e; background: #101a1d; }
+.comparison-rank span { color: #687b81; font: .6rem "DM Mono", monospace; }
+.comparison-rank strong { margin-top: 5px; color: var(--aqua); font: 600 1.15rem "DM Mono", monospace; }
+.comparison-rank small { color: #64757b; font-size: .52rem; }
+.comparison-candidate-body { min-width: 0; padding: 15px 17px; }
+.comparison-candidate-title { display: flex; align-items: flex-start; justify-content: space-between; gap: 15px; }
+.comparison-candidate-title h5 { margin: 0; font-size: .88rem; }
+.comparison-candidate-title h5 a { color: #e5edef; text-decoration: none; }
+.comparison-candidate-title span { display: block; margin-top: 4px; color: #718188; font-size: .58rem; }
+.comparison-candidate-title em { flex: 0 0 auto; padding: 4px 6px; border: 1px solid #6b542f; border-radius: 3px; color: #d4b373; font: 500 .52rem "DM Mono", monospace; font-style: normal; text-transform: uppercase; }
+.comparison-metrics { display: grid; grid-template-columns: 1.2fr repeat(5, minmax(105px, 1fr)); margin: 14px 0 0; border-top: 1px solid #26343a; }
+.comparison-metrics > div { min-width: 0; padding: 9px 10px 0 0; }
+.comparison-metrics dt { color: #687a80; font-size: .54rem; line-height: 1.35; text-transform: uppercase; }
+.comparison-metrics dd { display: flex; justify-content: space-between; gap: 6px; margin: 5px 0 0; color: #b8c7cb; font: .58rem "DM Mono", monospace; }
+.comparison-metrics dd span:last-child { color: #e5edef; }
+.comparison-metric-head dd { color: #6d7e84; }
+.comparison-caveat { margin-top: 18px; padding: 14px 16px; border-left: 3px solid #d4a65d; background: #1d1811; }
+.comparison-caveat strong { color: #e7c88d; font-size: .72rem; }
+.comparison-caveat p { margin: 5px 0 0; color: #a79575; font-size: .64rem; line-height: 1.6; }
+.comparison-caveat div { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 9px; }
+.comparison-caveat a, .comparison-caveat div span { color: #c8ad78; font: .56rem "DM Mono", monospace; }
 .control-method { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); gap: 50px; padding: 42px 0; border-top: 1px solid var(--line); }
 .control-method h3, .control-browser h3, .control-next h3 { margin: 6px 0 13px; color: #edf3f6; font-size: 1.45rem; letter-spacing: -.035em; }
 .control-method p, .control-next p { color: #8796a0; font-size: .78rem; line-height: 1.75; }
@@ -909,11 +958,16 @@ a { color: var(--aqua); }
   .impact-table tbody td > span { grid-column: 2; }
   .impact-table tbody td > strong + span { margin-top: -8px; }
   .county-trend-grid { grid-template-columns: 1fr; }
+  .county-comparison-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .control-counts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .control-counts div:nth-child(2) { border-right: 0; }
   .control-counts div:nth-child(-n+2) { border-bottom: 1px solid #2b3640; }
   .control-method { grid-template-columns: 1fr; gap: 20px; }
   .control-cards { grid-template-columns: 1fr; }
+  .comparison-matches { padding: 24px 20px; }
+  .comparison-summary { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .comparison-metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .comparison-metric-head { grid-column: 1 / -1; }
   .timeline-dataset-note { flex-direction: column; gap: 10px; }
   .account-heading-meta { justify-items: start; text-align: left; }
   .evidence-ledger > summary,
@@ -941,4 +995,14 @@ a { color: var(--aqua); }
   .control-counts div:last-child { border-bottom: 0; }
   .control-method ol { columns: 1; }
   .control-filters, .control-next ul { grid-template-columns: 1fr; }
+  .comparison-matches { padding: 20px 14px; }
+  .comparison-summary { grid-template-columns: 1fr; }
+  .comparison-host-select { grid-template-columns: 1fr; gap: 7px; }
+  .comparison-host-heading { flex-direction: column; }
+  .comparison-host-heading aside { text-align: left; }
+  .comparison-candidate { grid-template-columns: 58px minmax(0, 1fr); }
+  .comparison-candidate-title { flex-direction: column; }
+  .comparison-metrics { grid-template-columns: 1fr; }
+  .comparison-metric-head { grid-column: auto; }
+  .county-comparison-list { grid-template-columns: 1fr; }
 }

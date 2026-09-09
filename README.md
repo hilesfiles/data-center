@@ -67,6 +67,18 @@ python -m unittest tests.test_county_control_eligibility
 python scripts/validate_data_contract.py
 ```
 
+The same page publishes a separate host-to-comparison match register for all 35 active-project
+host counties. Each host receives five ranked counties with zero linked records across both
+the repository inventory and a pinned CC BY 4.0 SueDataCenters/Compute Atlas national registry,
+using a disclosed five-year baseline, weighted standardized economic features, and Census-
+geography adjustments. Every candidate remains `local_facility_absence_review_required`;
+match rank is economic similarity, not proof that both national sources captured every site.
+
+```powershell
+python scripts/build_county_comparison_matches.py
+python -m unittest tests.test_county_comparison_matches
+```
+
 The implementation sequence and remaining work are documented in
 `docs/application-remediation-plan.md` and
 `docs/revised-private-sector-economic-study-plan.md`. The statistical target state,
