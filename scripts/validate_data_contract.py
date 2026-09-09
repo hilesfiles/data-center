@@ -6233,6 +6233,11 @@ def main() -> int:
     else:
         from validate_rejected_project_study import validate_rejected_study
     failures.extend(validate_rejected_study(validator))
+    if __package__:
+        from .validate_county_control_eligibility import validate_control_registry
+    else:
+        from validate_county_control_eligibility import validate_control_registry
+    failures.extend(validate_control_registry(validator))
     if project_issues:
         failures.append("Project configuration or public data failed:")
         failures.extend(f"  {issue}" for issue in project_issues)

@@ -161,6 +161,52 @@ export interface RejectedProjectIndex {
   projects: RejectedProjectSummary[];
 }
 
+export interface CountyControlRecord {
+  schema_version: "1.0.0";
+  control_screening_id: string;
+  county_fips: string;
+  county_name: string;
+  state_abbr: string;
+  as_of: string;
+  exposure_status: "known_facility_inventory" | "known_facility_and_stopped_proposal" | "known_stopped_proposal_only" | "no_known_project_record";
+  control_eligibility: "excluded_known_exposure" | "unresolved_negative_evidence" | "eligible_verified_no_known_project";
+  negative_evidence_status: "not_applicable" | "not_audited" | "audited_no_known_project";
+  known_evidence: {
+    active_canonical_facility_count: number;
+    facility_review_status: string;
+    first_entry_candidate_event_count: number;
+    first_entry_verified: boolean;
+    stopped_proposal_ids: string[];
+    study_project_ids: string[];
+  };
+  panel: { start_year: number; end_year: number; complete_year_count: number; coverage_status: "complete" | "partial" | "unavailable"; history_path: string };
+  latest_metrics: { year: 2024; real_gdp_usd: number | null; population: number | null; annual_avg_covered_employment: number | null; annual_avg_weekly_wage_nominal_usd: number | null };
+  matching_readiness: "predictor_panel_available" | "panel_incomplete";
+  exclusion_reasons: string[];
+  required_next_step: string;
+  policy_id: string;
+}
+
+export interface CountyControlIndex {
+  schema_version: "1.0.0";
+  release_id: string;
+  generated_at: string;
+  as_of: string;
+  policy_id: string;
+  scope: string;
+  interpretation_warning: string;
+  counts: {
+    counties: number;
+    states: number;
+    by_exposure_status: Record<string, number>;
+    by_control_eligibility: Record<string, number>;
+    by_matching_readiness: Record<string, number>;
+  };
+  required_negative_search_domains: { code: string; label: string }[];
+  future_matching_requirements: string[];
+  states: { state_abbr: string; path: string; records: number; by_exposure_status: Record<string, number>; by_control_eligibility: Record<string, number> }[];
+}
+
 export interface StudyProject extends StudyProjectSummary {
   schema_version: "1.0.0";
   release_id: string;

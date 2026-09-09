@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0.0",
+  "policy_id": "county-control-eligibility-v1",
+  "as_of": "2026-09-09",
+  "purpose": "Screen every county economic panel record for later treatment-year-specific comparison research without treating an inventory absence as proof that no data-center project was considered.",
+  "review_scope": "Known exposure is derived from the repository's active canonical-facility inventory and the data-center-only stopped-proposal registry. No county-wide negative-evidence audit has yet been completed.",
+  "negative_evidence_rule": "A county with no linked facility or stopped proposal remains unresolved_negative_evidence. It must not be described as never considered, never treated, untreated, or eligible for a causal donor pool.",
+  "eligibility_rule": "Control eligibility is treatment-year-specific. A county can become eligible only after the required evidence domains are audited through the applicable treatment year and pre-treatment panel diagnostics pass.",
+  "required_negative_search_domains": [
+    {"code": "planning_zoning", "label": "County and municipal planning, zoning, and land-use records"},
+    {"code": "economic_development_incentives", "label": "Economic-development agreements, incentives, bonds, and tax abatements"},
+    {"code": "utility_infrastructure", "label": "Utility, grid-interconnection, transmission, water, and wastewater records"},
+    {"code": "environmental_permitting", "label": "Air, water, environmental, and generator permitting records"},
+    {"code": "property_site_control", "label": "Deeds, options, site-control records, and named development parcels"},
+    {"code": "company_trade_reporting", "label": "Company announcements and data-center trade reporting"},
+    {"code": "local_news_public_debate", "label": "Local news, public meetings, petitions, litigation, and organized opposition"}
+  ],
+  "future_matching_requirements": [
+    "Use only values observed before the treated county's event year.",
+    "Require adequate outcome coverage and comparable pre-treatment levels and trends.",
+    "Screen adjacent counties, shared utility territories, and regional labor markets for spillovers.",
+    "Record major contemporaneous shocks and competing large developments.",
+    "Re-evaluate eligibility separately for every treated county and outcome geography."
+  ]
+}

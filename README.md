@@ -52,6 +52,21 @@ python scripts/build_rejected_project_study.py
 python -m unittest tests.test_rejected_project_study
 ```
 
+The national comparison-county screen covers all 3,144 county economic panels at
+`#/controls`. It currently excludes 231 counties with a known active-facility inventory
+record or stopped data-center proposal and leaves 2,913 counties in
+`unresolved_negative_evidence`; zero are labeled verified controls. This distinction is
+intentional: an absent repository record is not evidence that a project was never considered.
+The registry is partitioned by state, exposes the required negative-search domains, and
+defers matching until a treated project's event year so post-treatment values cannot leak
+into donor selection. Rebuild and verify it with:
+
+```powershell
+python scripts/build_county_control_eligibility.py
+python -m unittest tests.test_county_control_eligibility
+python scripts/validate_data_contract.py
+```
+
 The implementation sequence and remaining work are documented in
 `docs/application-remediation-plan.md` and
 `docs/revised-private-sector-economic-study-plan.md`. The statistical target state,

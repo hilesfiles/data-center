@@ -1,0 +1,723 @@
+{
+  "as_of": "2026-09-09",
+  "counts": {
+    "by_control_eligibility": {
+      "excluded_known_exposure": 231,
+      "unresolved_negative_evidence": 2913
+    },
+    "by_exposure_status": {
+      "known_facility_and_stopped_proposal": 2,
+      "known_facility_inventory": 224,
+      "known_stopped_proposal_only": 5,
+      "no_known_project_record": 2913
+    },
+    "by_matching_readiness": {
+      "panel_incomplete": 80,
+      "predictor_panel_available": 3064
+    },
+    "counties": 3144,
+    "states": 51
+  },
+  "future_matching_requirements": [
+    "Use only values observed before the treated county's event year.",
+    "Require adequate outcome coverage and comparable pre-treatment levels and trends.",
+    "Screen adjacent counties, shared utility territories, and regional labor markets for spillovers.",
+    "Record major contemporaneous shocks and competing large developments.",
+    "Re-evaluate eligibility separately for every treated county and outcome geography."
+  ],
+  "generated_at": "2026-09-09T00:00:00+00:00",
+  "interpretation_warning": "A county with no linked facility or stopped proposal remains unresolved_negative_evidence. It must not be described as never considered, never treated, untreated, or eligible for a causal donor pool.",
+  "policy_id": "county-control-eligibility-v1",
+  "release_id": "county-control-eligibility-1.0.0",
+  "required_negative_search_domains": [
+    {
+      "code": "planning_zoning",
+      "label": "County and municipal planning, zoning, and land-use records"
+    },
+    {
+      "code": "economic_development_incentives",
+      "label": "Economic-development agreements, incentives, bonds, and tax abatements"
+    },
+    {
+      "code": "utility_infrastructure",
+      "label": "Utility, grid-interconnection, transmission, water, and wastewater records"
+    },
+    {
+      "code": "environmental_permitting",
+      "label": "Air, water, environmental, and generator permitting records"
+    },
+    {
+      "code": "property_site_control",
+      "label": "Deeds, options, site-control records, and named development parcels"
+    },
+    {
+      "code": "company_trade_reporting",
+      "label": "Company announcements and data-center trade reporting"
+    },
+    {
+      "code": "local_news_public_debate",
+      "label": "Local news, public meetings, petitions, litigation, and organized opposition"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "scope": "Known exposure is derived from the repository's active canonical-facility inventory and the data-center-only stopped-proposal registry. No county-wide negative-evidence audit has yet been completed.",
+  "states": [
+    {
+      "by_control_eligibility": {
+        "unresolved_negative_evidence": 30
+      },
+      "by_exposure_status": {
+        "no_known_project_record": 30
+      },
+      "path": "by-state/AK.json",
+      "records": 30,
+      "state_abbr": "AK"
+    },
+    {
+      "by_control_eligibility": {
+        "excluded_known_exposure": 3,
+        "unresolved_negative_evidence": 64
+      },
+      "by_exposure_status": {
+        "known_facility_inventory": 3,
+        "no_known_project_record": 64
+      },
+      "path": "by-state/AL.json",
+      "records": 67,
+      "state_abbr": "AL"
+    },
+    {
+      "by_control_eligibility": {
+        "excluded_known_exposure": 2,
+        "unresolved_negative_evidence": 73
+      },
+      "by_exposure_status": {
+        "known_facility_inventory": 2,
+        "no_known_project_record": 73
+      },
+      "path": "by-state/AR.json",
+      "records": 75,
+      "state_abbr": "AR"
+    },
+    {
+      "by_control_eligibility": {
+        "excluded_known_exposure": 3,
+        "unresolved_negative_evidence": 12
+      },
+      "by_exposure_status": {
+        "known_facility_inventory": 3,
+        "no_known_project_record": 12
+      },
+      "path": "by-state/AZ.json",
+      "records": 15,
+      "state_abbr": "AZ"
+    },
+    {
+      "by_control_eligibility": {
+        "excluded_known_exposure": 13,
+        "unresolved_negative_evidence": 45
+      },
+      "by_exposure_status": {
+        "known_facility_inventory": 13,
+        "no_known_project_record": 45
+      },
+      "path": "by-state/CA.json",
+      "records": 58,
+      "state_abbr": "CA"
+    },
+    {
+      "by_control_eligibility": {
+        "excluded_known_exposure": 6,
+        "unresolved_negative_evidence": 58
+      },
+      "by_exposure_status": {
+        "known_facility_inventory": 6,
+        "no_known_project_record": 58
+      },
+      "path": "by-state/CO.json",
+      "records": 64,
+      "state_abbr": "CO"
+    },
+    {
+      "by_control_eligibility": {
+        "excluded_known_exposure": 4,
+        "unresolved_negative_evidence": 5
+      },
+      "by_exposure_status": {
+        "known_facility_inventory": 4,
+        "no_known_project_record": 5
+      },
+      "path": "by-state/CT.json",
+      "records": 9,
+      "state_abbr": "CT"
+    },
+    {
+      "by_control_eligibility": {
+        "excluded_known_exposure": 1
+      },
+      "by_exposure_status": {
+        "known_facility_inventory": 1
+      },
+      "path": "by-state/DC.json",
+      "records": 1,
+      "state_abbr": "DC"
+    },
+    {
+      "by_control_eligibility": {
+        "unresolved_negative_evidence": 3
+      },
+      "by_exposure_status": {
+        "no_known_project_record": 3
+      },
+      "path": "by-state/DE.json",
+      "records": 3,
+      "state_abbr": "DE"
+    },
+    {
+      "by_control_eligibility": {
+        "excluded_known_exposure": 7,
+        "unresolved_negative_evidence": 60
+      },
+      "by_exposure_status": {
+        "known_facility_inventory": 7,
+        "no_known_project_record": 60
+      },
+      "path": "by-state/FL.json",
+      "records": 67,
+      "state_abbr": "FL"
+    },
+    {
+      "by_control_eligibility": {
+        "excluded_known_exposure": 9,
+        "unresolved_negative_evidence": 150
+      },
+      "by_exposure_status": {
+        "known_facility_inventory": 8,
+        "known_stopped_proposal_only": 1,
+        "no_known_project_record": 150
+      },
+      "path": "by-state/GA.json",
+      "records": 159,
+      "state_abbr": "GA"
+    },
+    {
+      "by_control_eligibility": {
+        "unresolved_negative_evidence": 5
+      },
+      "by_exposure_status": {
+        "no_known_project_record": 5
+      },
+      "path": "by-state/HI.json",
+      "records": 5,
+      "state_abbr": "HI"
+    },
+    {
+      "by_control_eligibility": {
+        "excluded_known_exposure": 6,
+        "unresolved_negative_evidence": 93
+      },
+      "by_exposure_status": {
+        "known_facility_inventory": 6,
+        "no_known_project_record": 93
+      },
+      "path": "by-state/IA.json",
+      "records": 99,
+      "state_abbr": "IA"
+    },
+    {
+      "by_control_eligibility": {
+        "excluded_known_exposure": 3,
+        "unresolved_negative_evidence": 41
+      },
+      "by_exposure_status": {
+        "known_facility_inventory": 3,
+        "no_known_project_record": 41
+      },
+      "path": "by-state/ID.json",
+      "records": 44,
+      "state_abbr": "ID"
+    },
+    {
+      "by_control_eligibility": {
+        "excluded_known_exposure": 6,
+        "unresolved_negative_evidence": 96
+      },
+      "by_exposure_status": {
+        "known_facility_inventory": 6,
+        "no_known_project_record": 96
+      },
+      "path": "by-state/IL.json",
+      "records": 102,
+      "state_abbr": "IL"
+    },
+    {
+      "by_control_eligibility": {
+        "excluded_known_exposure": 5,
+        "unresolved_negative_evidence": 87
+      },
+      "by_exposure_status": {
+        "known_facility_inventory": 4,
+        "known_stopped_proposal_only": 1,
+        "no_known_project_record": 87
+      },
+      "path": "by-state/IN.json",
+      "records": 92,
+      "state_abbr": "IN"
+    },
+    {
+      "by_control_eligibility": {
+        "excluded_known_exposure": 2,
+        "unresolved_negative_evidence": 103
+      },
+      "by_exposure_status": {
+        "known_facility_inventory": 2,
+        "no_known_project_record": 103
+      },
+      "path": "by-state/KS.json",
+      "records": 105,
+      "state_abbr": "KS"
+    },
+    {
+      "by_control_eligibility": {
+        "excluded_known_exposure": 2,
+        "unresolved_negative_evidence": 118
+      },
+      "by_exposure_status": {
+        "known_facility_inventory": 2,
+        "no_known_project_record": 118
+      },
+      "path": "by-state/KY.json",
+      "records": 120,
+      "state_abbr": "KY"
+    },
+    {
+      "by_control_eligibility": {
+        "excluded_known_exposure": 1,
+        "unresolved_negative_evidence": 63
+      },
+      "by_exposure_status": {
+        "known_facility_inventory": 1,
+        "no_known_project_record": 63
+      },
+      "path": "by-state/LA.json",
+      "records": 64,
+      "state_abbr": "LA"
+    },
+    {
+      "by_control_eligibility": {
+        "excluded_known_exposure": 2,
+        "unresolved_negative_evidence": 12
+      },
+      "by_exposure_status": {
+        "known_facility_inventory": 2,
+        "no_known_project_record": 12
+      },
+      "path": "by-state/MA.json",
+      "records": 14,
+      "state_abbr": "MA"
+    },
+    {
+      "by_control_eligibility": {
+        "excluded_known_exposure": 7,
+        "unresolved_negative_evidence": 17
+      },
+      "by_exposure_status": {
+        "known_facility_inventory": 7,
+        "no_known_project_record": 17
+      },
+      "path": "by-state/MD.json",
+      "records": 24,
+      "state_abbr": "MD"
+    },
+    {
+      "by_control_eligibility": {
+        "excluded_known_exposure": 1,
+        "unresolved_negative_evidence": 15
+      },
+      "by_exposure_status": {
+        "known_facility_inventory": 1,
+        "no_known_project_record": 15
+      },
+      "path": "by-state/ME.json",
+      "records": 16,
+      "state_abbr": "ME"
+    },
+    {
+      "by_control_eligibility": {
+        "excluded_known_exposure": 6,
+        "unresolved_negative_evidence": 77
+      },
+      "by_exposure_status": {
+        "known_facility_inventory": 6,
+        "no_known_project_record": 77
+      },
+      "path": "by-state/MI.json",
+      "records": 83,
+      "state_abbr": "MI"
+    },
+    {
+      "by_control_eligibility": {
+        "excluded_known_exposure": 7,
+        "unresolved_negative_evidence": 80
+      },
+      "by_exposure_status": {
+        "known_facility_inventory": 7,
+        "no_known_project_record": 80
+      },
+      "path": "by-state/MN.json",
+      "records": 87,
+      "state_abbr": "MN"
+    },
+    {
+      "by_control_eligibility": {
+        "excluded_known_exposure": 7,
+        "unresolved_negative_evidence": 108
+      },
+      "by_exposure_status": {
+        "known_facility_inventory": 6,
+        "known_stopped_proposal_only": 1,
+        "no_known_project_record": 108
+      },
+      "path": "by-state/MO.json",
+      "records": 115,
+      "state_abbr": "MO"
+    },
+    {
+      "by_control_eligibility": {
+        "excluded_known_exposure": 1,
+        "unresolved_negative_evidence": 81
+      },
+      "by_exposure_status": {
+        "known_facility_inventory": 1,
+        "no_known_project_record": 81
+      },
+      "path": "by-state/MS.json",
+      "records": 82,
+      "state_abbr": "MS"
+    },
+    {
+      "by_control_eligibility": {
+        "excluded_known_exposure": 2,
+        "unresolved_negative_evidence": 54
+      },
+      "by_exposure_status": {
+        "known_facility_inventory": 2,
+        "no_known_project_record": 54
+      },
+      "path": "by-state/MT.json",
+      "records": 56,
+      "state_abbr": "MT"
+    },
+    {
+      "by_control_eligibility": {
+        "excluded_known_exposure": 5,
+        "unresolved_negative_evidence": 95
+      },
+      "by_exposure_status": {
+        "known_facility_and_stopped_proposal": 1,
+        "known_facility_inventory": 4,
+        "no_known_project_record": 95
+      },
+      "path": "by-state/NC.json",
+      "records": 100,
+      "state_abbr": "NC"
+    },
+    {
+      "by_control_eligibility": {
+        "excluded_known_exposure": 1,
+        "unresolved_negative_evidence": 52
+      },
+      "by_exposure_status": {
+        "known_facility_inventory": 1,
+        "no_known_project_record": 52
+      },
+      "path": "by-state/ND.json",
+      "records": 53,
+      "state_abbr": "ND"
+    },
+    {
+      "by_control_eligibility": {
+        "excluded_known_exposure": 2,
+        "unresolved_negative_evidence": 91
+      },
+      "by_exposure_status": {
+        "known_facility_inventory": 2,
+        "no_known_project_record": 91
+      },
+      "path": "by-state/NE.json",
+      "records": 93,
+      "state_abbr": "NE"
+    },
+    {
+      "by_control_eligibility": {
+        "excluded_known_exposure": 2,
+        "unresolved_negative_evidence": 8
+      },
+      "by_exposure_status": {
+        "known_facility_inventory": 2,
+        "no_known_project_record": 8
+      },
+      "path": "by-state/NH.json",
+      "records": 10,
+      "state_abbr": "NH"
+    },
+    {
+      "by_control_eligibility": {
+        "excluded_known_exposure": 10,
+        "unresolved_negative_evidence": 11
+      },
+      "by_exposure_status": {
+        "known_facility_inventory": 10,
+        "no_known_project_record": 11
+      },
+      "path": "by-state/NJ.json",
+      "records": 21,
+      "state_abbr": "NJ"
+    },
+    {
+      "by_control_eligibility": {
+        "excluded_known_exposure": 4,
+        "unresolved_negative_evidence": 29
+      },
+      "by_exposure_status": {
+        "known_facility_inventory": 4,
+        "no_known_project_record": 29
+      },
+      "path": "by-state/NM.json",
+      "records": 33,
+      "state_abbr": "NM"
+    },
+    {
+      "by_control_eligibility": {
+        "excluded_known_exposure": 3,
+        "unresolved_negative_evidence": 14
+      },
+      "by_exposure_status": {
+        "known_facility_inventory": 3,
+        "no_known_project_record": 14
+      },
+      "path": "by-state/NV.json",
+      "records": 17,
+      "state_abbr": "NV"
+    },
+    {
+      "by_control_eligibility": {
+        "excluded_known_exposure": 10,
+        "unresolved_negative_evidence": 52
+      },
+      "by_exposure_status": {
+        "known_facility_inventory": 10,
+        "no_known_project_record": 52
+      },
+      "path": "by-state/NY.json",
+      "records": 62,
+      "state_abbr": "NY"
+    },
+    {
+      "by_control_eligibility": {
+        "excluded_known_exposure": 13,
+        "unresolved_negative_evidence": 75
+      },
+      "by_exposure_status": {
+        "known_facility_inventory": 13,
+        "no_known_project_record": 75
+      },
+      "path": "by-state/OH.json",
+      "records": 88,
+      "state_abbr": "OH"
+    },
+    {
+      "by_control_eligibility": {
+        "excluded_known_exposure": 4,
+        "unresolved_negative_evidence": 73
+      },
+      "by_exposure_status": {
+        "known_facility_inventory": 4,
+        "no_known_project_record": 73
+      },
+      "path": "by-state/OK.json",
+      "records": 77,
+      "state_abbr": "OK"
+    },
+    {
+      "by_control_eligibility": {
+        "excluded_known_exposure": 11,
+        "unresolved_negative_evidence": 25
+      },
+      "by_exposure_status": {
+        "known_facility_inventory": 11,
+        "no_known_project_record": 25
+      },
+      "path": "by-state/OR.json",
+      "records": 36,
+      "state_abbr": "OR"
+    },
+    {
+      "by_control_eligibility": {
+        "excluded_known_exposure": 4,
+        "unresolved_negative_evidence": 63
+      },
+      "by_exposure_status": {
+        "known_facility_inventory": 4,
+        "no_known_project_record": 63
+      },
+      "path": "by-state/PA.json",
+      "records": 67,
+      "state_abbr": "PA"
+    },
+    {
+      "by_control_eligibility": {
+        "unresolved_negative_evidence": 5
+      },
+      "by_exposure_status": {
+        "no_known_project_record": 5
+      },
+      "path": "by-state/RI.json",
+      "records": 5,
+      "state_abbr": "RI"
+    },
+    {
+      "by_control_eligibility": {
+        "excluded_known_exposure": 2,
+        "unresolved_negative_evidence": 44
+      },
+      "by_exposure_status": {
+        "known_facility_inventory": 2,
+        "no_known_project_record": 44
+      },
+      "path": "by-state/SC.json",
+      "records": 46,
+      "state_abbr": "SC"
+    },
+    {
+      "by_control_eligibility": {
+        "excluded_known_exposure": 1,
+        "unresolved_negative_evidence": 65
+      },
+      "by_exposure_status": {
+        "known_facility_inventory": 1,
+        "no_known_project_record": 65
+      },
+      "path": "by-state/SD.json",
+      "records": 66,
+      "state_abbr": "SD"
+    },
+    {
+      "by_control_eligibility": {
+        "excluded_known_exposure": 7,
+        "unresolved_negative_evidence": 88
+      },
+      "by_exposure_status": {
+        "known_facility_inventory": 7,
+        "no_known_project_record": 88
+      },
+      "path": "by-state/TN.json",
+      "records": 95,
+      "state_abbr": "TN"
+    },
+    {
+      "by_control_eligibility": {
+        "excluded_known_exposure": 13,
+        "unresolved_negative_evidence": 241
+      },
+      "by_exposure_status": {
+        "known_facility_inventory": 13,
+        "no_known_project_record": 241
+      },
+      "path": "by-state/TX.json",
+      "records": 254,
+      "state_abbr": "TX"
+    },
+    {
+      "by_control_eligibility": {
+        "excluded_known_exposure": 4,
+        "unresolved_negative_evidence": 25
+      },
+      "by_exposure_status": {
+        "known_facility_inventory": 4,
+        "no_known_project_record": 25
+      },
+      "path": "by-state/UT.json",
+      "records": 29,
+      "state_abbr": "UT"
+    },
+    {
+      "by_control_eligibility": {
+        "excluded_known_exposure": 9,
+        "unresolved_negative_evidence": 124
+      },
+      "by_exposure_status": {
+        "known_facility_and_stopped_proposal": 1,
+        "known_facility_inventory": 6,
+        "known_stopped_proposal_only": 2,
+        "no_known_project_record": 124
+      },
+      "path": "by-state/VA.json",
+      "records": 133,
+      "state_abbr": "VA"
+    },
+    {
+      "by_control_eligibility": {
+        "unresolved_negative_evidence": 14
+      },
+      "by_exposure_status": {
+        "no_known_project_record": 14
+      },
+      "path": "by-state/VT.json",
+      "records": 14,
+      "state_abbr": "VT"
+    },
+    {
+      "by_control_eligibility": {
+        "excluded_known_exposure": 8,
+        "unresolved_negative_evidence": 31
+      },
+      "by_exposure_status": {
+        "known_facility_inventory": 8,
+        "no_known_project_record": 31
+      },
+      "path": "by-state/WA.json",
+      "records": 39,
+      "state_abbr": "WA"
+    },
+    {
+      "by_control_eligibility": {
+        "excluded_known_exposure": 9,
+        "unresolved_negative_evidence": 63
+      },
+      "by_exposure_status": {
+        "known_facility_inventory": 9,
+        "no_known_project_record": 63
+      },
+      "path": "by-state/WI.json",
+      "records": 72,
+      "state_abbr": "WI"
+    },
+    {
+      "by_control_eligibility": {
+        "excluded_known_exposure": 1,
+        "unresolved_negative_evidence": 54
+      },
+      "by_exposure_status": {
+        "known_facility_inventory": 1,
+        "no_known_project_record": 54
+      },
+      "path": "by-state/WV.json",
+      "records": 55,
+      "state_abbr": "WV"
+    },
+    {
+      "by_control_eligibility": {
+        "excluded_known_exposure": 2,
+        "unresolved_negative_evidence": 21
+      },
+      "by_exposure_status": {
+        "known_facility_inventory": 2,
+        "no_known_project_record": 21
+      },
+      "path": "by-state/WY.json",
+      "records": 23,
+      "state_abbr": "WY"
+    }
+  ]
+}

@@ -882,12 +882,26 @@ try {
   await page.getByRole("link", { name: "Etheridge Lakes Data Center", exact: true }).click();
   await page.getByRole("heading", { name: "Proposal, opposition, decision, and aftermath", exact: true }).waitFor();
   assert.equal(await page.locator(".rejected-timeline > li").count(), 8);
-  assert.match(await page.locator(".proposal-scale-grid").innerText(), /350,000 square feet[\s\S]*22.6 acres/i);
+  assert.match(await page.locator(".proposal-scale-grid:not(.county-outcome-grid)").innerText(), /350,000 square feet[\s\S]*22.6 acres/i);
   assert.match(await page.locator(".site-afterlife").innerText(), /Interpretation boundary/i);
   await page.setViewportSize({ width: 390, height: 844 });
   await noOverflow();
   await page.screenshot({ path: path.join(out, "rejected-project-mobile.png") });
   check("rejected proposal register and sourced case profile render without overflow");
+
+  await page.setViewportSize({ width: 1440, height: 1000 });
+  await page.goto(`${url}#/controls`);
+  await page.getByRole("heading", { name: /Comparison counties,/ }).waitFor();
+  assert.match(await page.locator(".control-counts").innerText(), /3,144[\s\S]*231[\s\S]*2,913[\s\S]*0/);
+  assert.match(await page.locator(".control-warning").innerText(), /does not mean “never considered/i);
+  await page.locator(".control-filters select").selectOption("VA");
+  await page.getByRole("heading", { name: "Fauquier County, VA" }).waitFor();
+  assert.equal(await page.locator(".control-card").count(), 133);
+  assert.match(await page.getByRole("heading", { name: "Fauquier County, VA" }).locator("xpath=..").innerText(), /Facility \+ stopped proposal/i);
+  await page.setViewportSize({ width: 390, height: 844 });
+  await noOverflow();
+  await page.screenshot({ path: path.join(out, "comparison-counties-mobile.png") });
+  check("comparison-county screen preserves unresolved absence and state-partitioned records");
 
   await page.setViewportSize({ width: 1440, height: 1000 });
   await page.evaluate(() => performance.clearResourceTimings());

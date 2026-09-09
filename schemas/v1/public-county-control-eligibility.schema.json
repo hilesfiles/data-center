@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dccio.org/schemas/v1/public-county-control-eligibility.schema.json",
+  "title": "Public county control eligibility screening record",
+  "type": "object",
+  "required": ["schema_version", "control_screening_id", "county_fips", "county_name", "state_abbr", "as_of", "exposure_status", "control_eligibility", "negative_evidence_status", "known_evidence", "panel", "latest_metrics", "matching_readiness", "exclusion_reasons", "required_next_step", "policy_id"],
+  "properties": {
+    "schema_version": {"$ref": "common.schema.json#/$defs/schema_version"},
+    "control_screening_id": {"type": "string", "pattern": "^ccs_[a-f0-9]{20}$"},
+    "county_fips": {"$ref": "common.schema.json#/$defs/county_fips"},
+    "county_name": {"type": "string", "minLength": 1},
+    "state_abbr": {"$ref": "common.schema.json#/$defs/state_abbr"},
+    "as_of": {"type": "string", "format": "date"},
+    "exposure_status": {"type": "string", "enum": ["known_facility_inventory", "known_facility_and_stopped_proposal", "known_stopped_proposal_only", "no_known_project_record"]},
+    "control_eligibility": {"type": "string", "enum": ["excluded_known_exposure", "unresolved_negative_evidence", "eligible_verified_no_known_project"]},
+    "negative_evidence_status": {"type": "string", "enum": ["not_applicable", "not_audited", "audited_no_known_project"]},
+    "known_evidence": {"type": "object", "required": ["active_canonical_facility_count", "facility_review_status", "first_entry_candidate_event_count", "first_entry_verified", "stopped_proposal_ids", "study_project_ids"], "properties": {
+      "active_canonical_facility_count": {"type": "integer", "minimum": 0},
+      "facility_review_status": {"type": "string", "minLength": 1},
+      "first_entry_candidate_event_count": {"type": "integer", "minimum": 0},
+      "first_entry_verified": {"type": "boolean"},
+      "stopped_proposal_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+      "study_project_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}}
+    }, "additionalProperties": false},
+    "panel": {"type": "object", "required": ["start_year", "end_year", "complete_year_count", "coverage_status", "history_path"], "properties": {
+      "start_year": {"type": "integer", "const": 2001}, "end_year": {"type": "integer", "const": 2024},
+      "complete_year_count": {"type": "integer", "minimum": 0, "maximum": 24},
+      "coverage_status": {"type": "string", "enum": ["complete", "partial", "unavailable"]},
+      "history_path": {"type": "string", "minLength": 1}
+    }, "additionalProperties": false},
+    "latest_metrics": {"type": "object", "required": ["year", "real_gdp_usd", "population", "annual_avg_covered_employment", "annual_avg_weekly_wage_nominal_usd"], "properties": {
+      "year": {"type": "integer", "const": 2024},
+      "real_gdp_usd": {"type": ["integer", "null"], "minimum": 0}, "population": {"type": ["integer", "null"], "minimum": 0},
+      "annual_avg_covered_employment": {"type": ["integer", "null"], "minimum": 0}, "annual_avg_weekly_wage_nominal_usd": {"type": ["integer", "null"], "minimum": 0}
+    }, "additionalProperties": false},
+    "matching_readiness": {"type": "string", "enum": ["predictor_panel_available", "panel_incomplete"]},
+    "exclusion_reasons": {"type": "array", "items": {"type": "string", "minLength": 1}},
+    "required_next_step": {"type": "string", "minLength": 1},
+    "policy_id": {"type": "string", "const": "county-control-eligibility-v1"}
+  },
+  "additionalProperties": false
+}
