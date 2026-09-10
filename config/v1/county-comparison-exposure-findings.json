@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "dataset_id": "county-comparison-exposure-findings-v1",
-  "as_of": "2026-09-09",
+  "as_of": "2026-09-10",
   "purpose": "Record candidate-specific evidence of qualifying data-center exposure that is absent from the three national screening inventories, so contaminated counties cannot enter comparison sets.",
   "qualifying_rule": "Exclude a county when a credible source documents a dedicated data-center facility, colocation operation, separately identified institutional data-center building, formal proposal, pre-application, or site-specific developer approach in that county. Ordinary server rooms, accessory IT closets, headquarters without a documented facility, generic policy debate, and facilities merely serving the county from another county do not qualify.",
   "interpretation_note": "These findings are conservative contamination exclusions only. They do not add facilities or projects to the active study inventory and do not imply that public or institutional facilities are comparable to hyperscale projects.",
@@ -2191,6 +2191,514 @@
         }
       ],
       "notes": "The land agreement was non-binding and local reporting later said no application had yet been filed. The company-specific, location-specific LOI still defeats a never-considered designation without implying approval or construction."
+    },
+    {
+      "finding_id": "comparison-exposure-36091-saratoga-county-it-data-center",
+      "county_fips": "36091",
+      "county_name": "Saratoga County",
+      "state_abbr": "NY",
+      "facility_name": "Saratoga County IT Data Center",
+      "operator": "Saratoga County",
+      "facility_category": "government_data_center",
+      "determination": "documented_qualifying_data_center_exposure",
+      "evidence_summary": "Saratoga County technology-committee records describe a 2021 refresh of the county data center first implemented in 2015, including replacement hosts, storage, switches, firewall equipment, and migration to a newly stood-up environment.",
+      "sources": [
+        {
+          "title": "Technology Committee minutes and Data Center Refresh Project request, January 2021",
+          "publisher": "Saratoga County",
+          "url": "https://www.saratogacountyny.gov/wp/wp-content/uploads/2021/01/Technology-Minutes-2021Jan28.pdf",
+          "source_class": "government_record",
+          "published_on": "2021-01-28",
+          "accessed_on": "2026-09-10"
+        }
+      ],
+      "notes": "This is a county IT facility and a conservative contamination exclusion only; it is not treated as comparable to a commercial hyperscale campus."
+    },
+    {
+      "finding_id": "comparison-exposure-10005-georgetown-data-center",
+      "county_fips": "10005",
+      "county_name": "Sussex County",
+      "state_abbr": "DE",
+      "facility_name": "Georgetown Data Center",
+      "operator": "State of Delaware",
+      "facility_category": "government_data_center",
+      "determination": "documented_qualifying_data_center_exposure",
+      "evidence_summary": "A Delaware state telecommunications procurement inventory identifies the Georgetown Data Center at 22215 DuPont Highway in Georgetown with a 10 Gbps connection; Sussex County records separately document colocation in the county's own data center.",
+      "sources": [
+        {
+          "title": "State of Delaware telecommunications and data services RFP",
+          "publisher": "State of Delaware Office of Management and Budget",
+          "url": "https://bidcondocs.delaware.gov/GSS/GSS_17580TeldataSvc_rfp.pdf",
+          "source_class": "government_record",
+          "accessed_on": "2026-09-10"
+        },
+        {
+          "title": "Sussex County Council public packet, August 11, 2020",
+          "publisher": "Sussex County",
+          "url": "https://sussexcountyde.gov/sites/default/files/packets/SCC.Public.Packet.081120.pdf",
+          "source_class": "government_record",
+          "published_on": "2020-08-11",
+          "accessed_on": "2026-09-10"
+        }
+      ],
+      "notes": "The state and county records establish government data-center exposure; neither record is used to imply hyperscale capacity."
+    },
+    {
+      "finding_id": "comparison-exposure-26111-dow-data-center",
+      "county_fips": "26111",
+      "county_name": "Midland County",
+      "state_abbr": "MI",
+      "facility_name": "Dow Data Center",
+      "operator": "Dow",
+      "facility_category": "enterprise_data_center",
+      "determination": "documented_qualifying_data_center_exposure",
+      "evidence_summary": "An energy-services contractor publicly documented completed server, processing, cooling, utility, capacity, and efficiency upgrades for the Dow Data Center in Midland, reporting approximately 2.8 GWh in annual electric savings.",
+      "sources": [
+        {
+          "title": "Dow Data Center energy-efficiency and capacity upgrades",
+          "publisher": "Development Solutions Midwest",
+          "url": "https://www.linkedin.com/posts/development-solutions-midwest_a-heartfeltcongratulationsto-the-dow-data-activity-7442036415070334976-CWaq",
+          "source_class": "operator_primary",
+          "accessed_on": "2026-09-10"
+        },
+        {
+          "title": "How Midland and Bay City would approve data centers",
+          "publisher": "Midland Daily News",
+          "url": "https://www.michigansthumb.com/news/article/midland-bay-city-data-centers-21250339.php",
+          "source_class": "news_report",
+          "accessed_on": "2026-09-10"
+        }
+      ],
+      "notes": "The positive finding is limited to Dow's documented enterprise facility. Current local reporting says no hyperscale project is planned or under inquiry in the city or county."
+    },
+    {
+      "finding_id": "comparison-exposure-36065-ais-data-center",
+      "county_fips": "36065",
+      "county_name": "Oneida County",
+      "state_abbr": "NY",
+      "facility_name": "AIS Data Center",
+      "operator": "Assured Information Security, Inc.",
+      "facility_category": "enterprise_data_center",
+      "determination": "documented_qualifying_data_center_exposure",
+      "evidence_summary": "New York State economic-development records identify the AIS Data Center project at Assured Information Security's 153 Brooks Road headquarters in Rome and a public grant for facility upgrades.",
+      "sources": [
+        {
+          "title": "AIS Data Center project record",
+          "publisher": "New York State Regional Economic Development Councils",
+          "url": "https://regionalcouncils.ny.gov/cfa/project/384493",
+          "source_class": "government_record",
+          "accessed_on": "2026-09-10"
+        },
+        {
+          "title": "AIS Data Center Capital legal notice",
+          "publisher": "Empire State Development",
+          "url": "https://esd.ny.gov/sites/default/files/media/document/AISDataCenterCapitalLEGALNOTICE.pdf",
+          "source_class": "government_record",
+          "published_on": "2025-09-04",
+          "accessed_on": "2026-09-10"
+        }
+      ],
+      "notes": "The project concerns a separately named enterprise data-center capability at a cybersecurity headquarters; no hyperscale equivalence is inferred."
+    },
+    {
+      "finding_id": "comparison-exposure-51770-aep-roanoke-data-center",
+      "county_fips": "51770",
+      "county_name": "Roanoke city",
+      "state_abbr": "VA",
+      "facility_name": "American Electric Power Data Center",
+      "operator": "American Electric Power",
+      "facility_category": "enterprise_data_center",
+      "determination": "documented_qualifying_data_center_exposure",
+      "evidence_summary": "A City of Roanoke building permit documents an existing American Electric Power data center at 40 Franklin Road SW, including a 2026 project that reconfigured approximately 3,800 square feet of data-center space and replaced cooling equipment.",
+      "sources": [
+        {
+          "title": "Commercial building permit CBLD26-0067: American Electric Power Data Center",
+          "publisher": "City of Roanoke",
+          "url": "https://trakit.roanokeva.gov/etrakit/Search/Permit.aspx?ActivityNo=CBLD26-0067",
+          "source_class": "government_record",
+          "published_on": "2026-05-11",
+          "accessed_on": "2026-09-10"
+        }
+      ],
+      "notes": "This finding is confined to the independent City of Roanoke and does not rely on projects in neighboring Roanoke or Botetourt counties."
+    },
+    {
+      "finding_id": "comparison-exposure-44003-rhode-island-state-data-center",
+      "county_fips": "44003",
+      "county_name": "Kent County",
+      "state_abbr": "RI",
+      "facility_name": "Rhode Island State Data Center",
+      "operator": "State of Rhode Island",
+      "facility_category": "government_data_center",
+      "determination": "documented_qualifying_data_center_exposure",
+      "evidence_summary": "State procurement and university infrastructure records identify an operating Rhode Island Department of Information Technology data center in Warwick that provides power, cooling, physical security, hosting, and colocation services.",
+      "sources": [
+        {
+          "title": "State of Rhode Island procurement Q&A describing the Warwick data center",
+          "publisher": "State of Rhode Island Division of Purchases",
+          "url": "https://purchasing.ri.gov/RIVIP/stateagencybids/7594594a2.pdf",
+          "source_class": "government_record",
+          "accessed_on": "2026-09-10"
+        },
+        {
+          "title": "Data Center service description",
+          "publisher": "University of Rhode Island Information Technology Services",
+          "url": "https://its.uri.edu/2025/05/21/data-center/",
+          "source_class": "institutional_primary",
+          "published_on": "2025-05-21",
+          "accessed_on": "2026-09-10"
+        }
+      ],
+      "notes": "The state facility is a conservative government exposure exclusion, not a commercial hyperscale comparison."
+    },
+    {
+      "finding_id": "comparison-exposure-55035-eau-claire-colocation",
+      "county_fips": "55035",
+      "county_name": "Eau Claire County",
+      "state_abbr": "WI",
+      "facility_name": "Eau Claire Data Center",
+      "operator": "Data Holdings / WIN Technology",
+      "facility_category": "colocation_data_center",
+      "determination": "documented_qualifying_data_center_exposure",
+      "evidence_summary": "Operator sources identify a Tier III colocation data center at 800 Wisconsin Street in Eau Claire, offering cabinets, suites, redundant power and cooling, disaster recovery, and 24-hour technical support.",
+      "sources": [
+        {
+          "title": "Milwaukee and Eau Claire data centers",
+          "publisher": "Data Holdings",
+          "url": "https://dataholdings.com/data-holdings-colocation-locations",
+          "source_class": "operator_primary",
+          "accessed_on": "2026-09-10"
+        },
+        {
+          "title": "Why choose colocation from WIN Technology",
+          "publisher": "WIN Technology",
+          "url": "https://www.wintechnology.com/what-we-do/co-location/why-choose-co-location-from-win/",
+          "source_class": "operator_primary",
+          "accessed_on": "2026-09-10"
+        }
+      ],
+      "notes": "This is an operating regional colocation facility, independently sufficient to exclude the county from the never-exposed reserve."
+    },
+    {
+      "finding_id": "comparison-exposure-10001-william-penn-data-center",
+      "county_fips": "10001",
+      "county_name": "Kent County",
+      "state_abbr": "DE",
+      "facility_name": "William Penn Data Center",
+      "operator": "State of Delaware",
+      "facility_category": "government_data_center",
+      "determination": "documented_qualifying_data_center_exposure",
+      "evidence_summary": "A Delaware state procurement document identifies the William Penn Data Center at 801 Silver Lake Boulevard in Dover as a primary telecommunications hub site.",
+      "sources": [
+        {
+          "title": "State of Delaware data cabling RFP",
+          "publisher": "State of Delaware Office of Management and Budget",
+          "url": "https://bidcondocs.delaware.gov/GSS/GSS_21441A_DataCbl_rfp.pdf",
+          "source_class": "government_record",
+          "accessed_on": "2026-09-10"
+        }
+      ],
+      "notes": "The state government facility is a conservative contamination exclusion and is not treated as evidence of hyperscale development."
+    },
+    {
+      "finding_id": "comparison-exposure-39025-lexisnexis-miami-township",
+      "county_fips": "39025",
+      "county_name": "Clermont County",
+      "state_abbr": "OH",
+      "facility_name": "LexisNexis Miami Township Data Center",
+      "operator": "LexisNexis",
+      "facility_category": "enterprise_data_center",
+      "determination": "documented_qualifying_data_center_exposure",
+      "evidence_summary": "Trade reporting on a completed property sale identifies a LexisNexis-occupied data-center asset in Clermont County's Miami Township and quotes the purchaser describing it expressly as a data-center asset.",
+      "sources": [
+        {
+          "title": "LexisNexis-occupied data center sold in Ohio",
+          "publisher": "Data Center Dynamics",
+          "url": "https://www.datacenterdynamics.com/en/news/lexisnexis-occupied-data-center-sold-in-ohio/",
+          "source_class": "news_report",
+          "accessed_on": "2026-09-10"
+        }
+      ],
+      "notes": "The operating enterprise asset is sufficient to fail the never-exposed criterion; no claim is made that it is hyperscale."
+    },
+    {
+      "finding_id": "comparison-exposure-22109-brainhub-ai-data-centers",
+      "county_fips": "22109",
+      "county_name": "Terrebonne Parish",
+      "state_abbr": "LA",
+      "facility_name": "BrainHUB AI data-center phases",
+      "operator": "Neuro.io / MindMaze AI",
+      "facility_category": "proposed_data_center",
+      "determination": "documented_qualifying_data_center_exposure",
+      "evidence_summary": "Louisiana Economic Development announced Neuro.io's $100 million BrainHUB campus in Houma and states that later phases anticipated through 2035 include development of AI data centers, engineering clusters, and cognitive laboratories.",
+      "sources": [
+        {
+          "title": "Neuro.io Announces $100 Million Innovation Campus in Houma",
+          "publisher": "Louisiana Economic Development",
+          "url": "https://www.opportunitylouisiana.gov/news/neuro-io-announces-100-million-innovation-campus-in-houma-positioning-louisianas-bayou-region-at-the-forefront-of-ai-development-and-application",
+          "source_class": "government_record",
+          "published_on": "2025-06-26",
+          "accessed_on": "2026-09-10"
+        }
+      ],
+      "notes": "The data-center component is a later-phase plan within a broader innovation campus. The record does not establish that those phases are approved, financed, or under construction."
+    },
+    {
+      "finding_id": "comparison-exposure-06007-butte-county-data-center",
+      "county_fips": "06007",
+      "county_name": "Butte County",
+      "state_abbr": "CA",
+      "facility_name": "Butte County main data center",
+      "operator": "Butte County",
+      "facility_category": "government_data_center",
+      "determination": "documented_qualifying_data_center_exposure",
+      "evidence_summary": "Butte County's capital budget identifies a $949,000 project to relocate, reconfigure, and replace HVAC equipment for the county's main server room and data center at 308 Nelson Avenue.",
+      "sources": [
+        {
+          "title": "Fiscal Year 2021-22 Recommended Budget: Capital Assets",
+          "publisher": "Butte County",
+          "url": "https://www.buttecounty.net/DocumentCenter/View/1307/Butte-County-Recommended-Budget-Fiscal-Year-2021-to-2022---Capital-Assets-PDF?bidId=",
+          "source_class": "government_record",
+          "accessed_on": "2026-09-10"
+        },
+        {
+          "title": "Butte County has no plans for AI data centers — at least not yet",
+          "publisher": "North State Public Radio",
+          "url": "https://www.mynspr.org/news/2026-08-07/butte-county-has-no-plans-for-ai-data-centers-at-least-not-yet",
+          "source_class": "news_report",
+          "published_on": "2026-08-07",
+          "accessed_on": "2026-09-10"
+        }
+      ],
+      "notes": "The positive finding is limited to a dedicated county IT facility. Current reporting says no AI data-center proposal has been submitted to the county, so no hyperscale proposal is implied."
+    },
+    {
+      "finding_id": "comparison-exposure-04027-yuma-developer-interest",
+      "county_fips": "04027",
+      "county_name": "Yuma County",
+      "state_abbr": "AZ",
+      "facility_name": "Undisclosed Yuma-area data-center approaches",
+      "operator": "Undisclosed developers",
+      "facility_category": "proposed_data_center",
+      "determination": "documented_qualifying_data_center_exposure",
+      "evidence_summary": "City officials and the Greater Yuma Economic Development Corporation publicly acknowledged active data-center developer interest and discussions in Yuma during 2026, while emphasizing that no application, named company, or definite project had yet been filed.",
+      "sources": [
+        {
+          "title": "City Council meeting presentation and minutes, April 1, 2026",
+          "publisher": "City of Yuma",
+          "url": "https://yuma-az.legistar.com/View.ashx?GUID=C3E0B9DC-2996-478B-84A4-A0DD9C22DAC6&ID=1355116&M=PA",
+          "source_class": "government_record",
+          "published_on": "2026-04-01",
+          "accessed_on": "2026-09-10"
+        },
+        {
+          "title": "Data centers may come to Yuma, Arizona, says mayor",
+          "publisher": "Data Center Dynamics",
+          "url": "https://www.datacenterdynamics.com/en/news/data-centers-may-come-to-yuma-arizona-says-mayor/",
+          "source_class": "news_report",
+          "published_on": "2026-04-07",
+          "accessed_on": "2026-09-10"
+        }
+      ],
+      "notes": "This is an early-stage, location-specific developer approach only. It excludes Yuma from a never-considered control pool but does not establish an application, site, approval, operator, or construction."
+    },
+    {
+      "finding_id": "comparison-exposure-47163-bank-of-tennessee-data-center",
+      "county_fips": "47163",
+      "county_name": "Sullivan County",
+      "state_abbr": "TN",
+      "facility_name": "Bank of Tennessee primary data center",
+      "operator": "Bank of Tennessee",
+      "facility_category": "enterprise_data_center",
+      "determination": "documented_qualifying_data_center_exposure",
+      "evidence_summary": "A City of Kingsport-hosted regional economic-development report states that Bank of Tennessee moved into its expanded data center in a Sullivan County business park; a disaster-recovery provider later described its own facility as failover protection for the bank's primary data center.",
+      "sources": [
+        {"title": "A Joint Economic Development Partnership", "publisher": "City of Kingsport", "url": "https://www.kingsporttn.gov/wp-content/uploads/default/nettn06ap.pdf", "source_class": "government_record", "accessed_on": "2026-09-10"},
+        {"title": "OnePartner ATAC enables Bank of Tennessee Disaster Recovery", "publisher": "OnePartner", "url": "https://www.onepartner.com/news/onepartner-atac-enables-bank-of-tennessee-disaster-recovery/", "source_class": "operator_primary", "published_on": "2008-10-24", "accessed_on": "2026-09-10"}
+      ],
+      "notes": "The sources establish an enterprise banking data center, not a hyperscale or colocation campus."
+    },
+    {
+      "finding_id": "comparison-exposure-36093-schenectady-county-data-centers",
+      "county_fips": "36093",
+      "county_name": "Schenectady County",
+      "state_abbr": "NY",
+      "facility_name": "Schenectady County data centers",
+      "operator": "Schenectady County",
+      "facility_category": "government_data_center",
+      "determination": "documented_qualifying_data_center_exposure",
+      "evidence_summary": "Schenectady County's adopted capital program expressly identifies two county data centers and funds replacement UPS and power-distribution equipment; New York ITS separately identifies its Balltown Road Data Center in Schenectady.",
+      "sources": [
+        {"title": "2023-2028 Adopted Capital Improvement Program", "publisher": "Schenectady County", "url": "https://www.schenectadycountyny.gov/sites/default/files/2022-12/2023%20Adopted%20Capital%20Budget.pdf", "source_class": "government_record", "accessed_on": "2026-09-10"},
+        {"title": "C000538 HVAC Maintenance Part 1", "publisher": "New York State Office of Information Technology Services", "url": "https://its.ny.gov/c000538-hvac-maintenance-part-1", "source_class": "government_record", "accessed_on": "2026-09-10"}
+      ],
+      "notes": "These public-sector facilities are conservative exposure exclusions and are not treated as hyperscale equivalents."
+    },
+    {
+      "finding_id": "comparison-exposure-05131-arcbest-data-center",
+      "county_fips": "05131",
+      "county_name": "Sebastian County",
+      "state_abbr": "AR",
+      "facility_name": "ArcBest Fort Smith headquarters data center",
+      "operator": "ArcBest",
+      "facility_category": "enterprise_data_center",
+      "determination": "documented_qualifying_data_center_exposure",
+      "evidence_summary": "ArcBest's SEC filing describes its primary data center and on-site data centers with redundant telecommunications, power generation, and fire suppression. Contemporaneous reporting placed the data-center functions in the basement of the company's new Fort Smith headquarters.",
+      "sources": [
+        {"title": "ArcBest 2025 Form 10-K", "publisher": "U.S. Securities and Exchange Commission", "url": "https://www.sec.gov/Archives/edgar/data/894405/000110465926019699/arcb-20251231x10k.htm", "source_class": "government_record", "accessed_on": "2026-09-10"},
+        {"title": "ArcBest Corp. to Build New HQ in Fort Smith", "publisher": "Arkansas Business", "url": "https://www.arkansasbusiness.com/article/arcbest-corp-to-build-new-hq-in-fort-smith/", "source_class": "news_report", "published_on": "2014-05-30", "accessed_on": "2026-09-10"},
+        {"title": "ArcBest Breaks Ground on New Headquarters", "publisher": "ArcBest", "url": "https://arcb.com/blog/arcbest-breaks-ground-on-new-headquarters", "source_class": "operator_primary", "published_on": "2015-04-15", "accessed_on": "2026-09-10"}
+      ],
+      "notes": "The evidence concerns enterprise computing infrastructure at a corporate campus, not a merchant colocation or hyperscale facility."
+    },
+    {
+      "finding_id": "comparison-exposure-39103-lightspeed-medina-dc1",
+      "county_fips": "39103",
+      "county_name": "Medina County",
+      "state_abbr": "OH",
+      "facility_name": "LightSpeed Medina DC1",
+      "operator": "LightSpeed Hosting",
+      "facility_category": "colocation_data_center",
+      "determination": "documented_qualifying_data_center_exposure",
+      "evidence_summary": "A Medina County resolution packet incorporates LightSpeed's proposal describing its operating Medina Data Center, completed first phase in 2016, near-1 MW power capacity, redundant backup systems, county fiber connectivity, and colocation service.",
+      "sources": [
+        {"title": "Medina County resolutions and LightSpeed Hosting proposal", "publisher": "Medina County", "url": "https://www.medinaco.org/wp-content/uploads/Resolutions_2.11.25.pdf", "source_class": "government_record", "published_on": "2025-02-11", "accessed_on": "2026-09-10"},
+        {"title": "Medina County's largest data center about to open", "publisher": "LightSpeed Hosting", "url": "https://www.lightspeedhosting.com/blog/medina-counties-largest-data-center-about-to-open", "source_class": "operator_primary", "accessed_on": "2026-09-10"},
+        {"title": "LightSpeed Hosting LLC Medina DC1", "publisher": "Datacenters.com", "url": "https://www.datacenters.com/lightspeed-hosting-llc-medina-dc1", "source_class": "industry_directory", "accessed_on": "2026-09-10"}
+      ],
+      "notes": "An operating regional colocation facility independently defeats the never-exposed criterion."
+    },
+    {
+      "finding_id": "comparison-exposure-18067-kokomo-developer-interest",
+      "county_fips": "18067",
+      "county_name": "Howard County",
+      "state_abbr": "IN",
+      "facility_name": "Undisclosed Kokomo-area data-center approaches",
+      "operator": "Undisclosed developers",
+      "facility_category": "proposed_data_center",
+      "determination": "documented_qualifying_data_center_exposure",
+      "evidence_summary": "Kokomo's mayor told WRTV that developers had shown data-center interest in Howard County after the city established and annexed a 700-acre industrial park, while stressing that no company, site plan, or project application was before the city.",
+      "sources": [
+        {"title": "Kokomo considers zoning change allowing data centers on industrial sites", "publisher": "WRTV", "url": "https://www.wrtv.com/i-team/kokomo-considers-zoning-change-allowing-data-centers-on-industrial-sites/", "source_class": "news_report", "published_on": "2026-08-24", "accessed_on": "2026-09-10"},
+        {"title": "City entertaining data center regulations", "publisher": "Kokomo Lantern", "url": "https://www.kokomolantern.com/blog/c/0/i/97693314/city-entertaining-data-center-regulations", "source_class": "news_report", "published_on": "2026-08-14", "accessed_on": "2026-09-10"}
+      ],
+      "notes": "This records publicly acknowledged county-specific developer interest only. It does not establish a named developer, parcel, application, approval, or definite project."
+    },
+    {
+      "finding_id": "comparison-exposure-06047-uc-merced-data-center",
+      "county_fips": "06047",
+      "county_name": "Merced County",
+      "state_abbr": "CA",
+      "facility_name": "UC Merced Research Server Facility",
+      "operator": "University of California, Merced",
+      "facility_category": "institutional_data_center",
+      "determination": "documented_qualifying_data_center_exposure",
+      "evidence_summary": "UC Merced identifies a completed containerized Research Server Facility and describes its Borg Cube modular data-center building as a 1,448-square-foot, 20-rack facility with 400 kW redundant power and dedicated cooling.",
+      "sources": [
+        {"title": "Research Server Facility", "publisher": "University of California, Merced", "url": "https://merced2020.ucmerced.edu/researchserver", "source_class": "institutional_primary", "accessed_on": "2026-09-10"},
+        {"title": "Campus clusters: Borg Cube", "publisher": "University of California, Merced Information Technology", "url": "https://ucm-it.github.io/hpc_docs/docs/hpcdocs/HPC-clusters/campus-clusters/", "source_class": "institutional_primary", "accessed_on": "2026-09-10"},
+        {"title": "Bid Opportunities", "publisher": "City of Merced", "url": "https://www.cityofmerced.gov/business-and-development/bid-opportunities/-npage-3/-sortn-RFPTitle/-sortd-asc", "source_class": "government_record", "accessed_on": "2026-09-10"}
+      ],
+      "notes": "The university's separately identified modular facility is sufficient for conservative exclusion; no hyperscale equivalence is implied."
+    },
+    {
+      "finding_id": "comparison-exposure-46103-sequitor-edge-rapid-city",
+      "county_fips": "46103",
+      "county_name": "Pennington County",
+      "state_abbr": "SD",
+      "facility_name": "Sequitor Edge Rapid City data center",
+      "operator": "Sequitor Edge",
+      "facility_category": "proposed_data_center",
+      "determination": "documented_qualifying_data_center_exposure",
+      "evidence_summary": "Sequitor Edge and Elevate Rapid City announced a Tier 3 edge-computing data center planned for approximately 10 acres in Rapid City's Black Hills Industrial Center.",
+      "sources": [
+        {"title": "Sequitor Edge Expands Services to Rapid City with New Tier 3 Edge Computing Facility", "publisher": "Elevate Rapid City", "url": "https://www.elevaterapidcity.com/news/2026/02/11/press-release/sequitor-edge-expands-services-to-rapid-city-with-new-tier-3-edge-computing-facility/", "source_class": "institutional_primary", "published_on": "2026-02-11", "accessed_on": "2026-09-10"},
+        {"title": "Sequitor Edge Data Center Coming to Rapid City", "publisher": "Sequitor Edge", "url": "https://sequitoredge.com/news/", "source_class": "operator_primary", "published_on": "2026-03-02", "accessed_on": "2026-09-10"}
+      ],
+      "notes": "The proposal is announced but the reviewed sources do not establish a building permit, construction start, or operating date."
+    },
+    {
+      "finding_id": "comparison-exposure-28047-hancock-bank-technology-center",
+      "county_fips": "28047",
+      "county_name": "Harrison County",
+      "state_abbr": "MS",
+      "facility_name": "Hancock Bank Technology Center",
+      "operator": "Hancock Whitney",
+      "facility_category": "enterprise_data_center",
+      "determination": "documented_qualifying_data_center_exposure",
+      "evidence_summary": "Hancock Bank announced and dedicated a hardened technology center in west Harrison County after Hurricane Katrina. The project contractor identifies the Gulfport facility as a 37,000-square-foot Tier III data center with Tier IV components and standalone power capability.",
+      "sources": [
+        {"title": "Hancock Bank Dedicates New Technology Center On Katrina Anniversary", "publisher": "Hancock Whitney Corporation", "url": "https://investors.hancockwhitney.com/news-market-data/press-releases/press-release/2007/Photo-Release----Hancock-Bank-Dedicates-New-Technology-Center-On-Katrina-Anniversary/default.aspx", "source_class": "operator_primary", "published_on": "2007-08-29", "accessed_on": "2026-09-10"},
+        {"title": "Hancock Bank Data Center", "publisher": "Yates Construction", "url": "https://www.wgyates.com/projects/hancock-bank-data-center/", "source_class": "operator_primary", "accessed_on": "2026-09-10"},
+        {"title": "Hancock Bank", "publisher": "Computerworld", "url": "https://www.computerworld.com/article/1684571/hancock-bank.html", "source_class": "news_report", "published_on": "2008-03-31", "accessed_on": "2026-09-10"}
+      ],
+      "notes": "The operating enterprise banking facility is not a hyperscale campus, but it is a dedicated data center."
+    },
+    {
+      "finding_id": "comparison-exposure-13153-robins-afb-data-centers",
+      "county_fips": "13153",
+      "county_name": "Houston County",
+      "state_abbr": "GA",
+      "facility_name": "Robins Air Force Base data centers and AI lease opportunity",
+      "operator": "United States Department of the Air Force",
+      "facility_category": "government_data_center",
+      "determination": "documented_qualifying_data_center_exposure",
+      "evidence_summary": "Robins AFB described a base-wide data-center consolidation initiative in 2011, and a 2026 federal solicitation references Building 228 as a data center. The Air Force also selected Robins as one of five installations where private entities could propose commercial AI data centers on leased federal land.",
+      "sources": [
+        {"title": "Base computer network to get internal audit", "publisher": "Robins Air Force Base", "url": "https://www.robins.af.mil/News/Article-Display/Article/378211/base-computer-network-to-get-internal-audit/", "source_class": "government_record", "published_on": "2011-03-25", "accessed_on": "2026-09-10"},
+        {"title": "Artificial Intelligence Data Center Frequently Asked Questions", "publisher": "United States Department of the Air Force", "url": "https://www.robins.af.mil/Portals/59/documents/CE/AI%20Data%20Centers%20FAQ_FINAL1.pdf?ver=FNUEBDy88MgQAXeGWJDWCQ%3D%3D", "source_class": "government_record", "accessed_on": "2026-09-10"},
+        {"title": "Robins AFB intrusion-detection solicitation vendor Q&A", "publisher": "United States Department of the Air Force", "url": "https://govtribe.com/file/government-file/fa850126q0061-solicitation-fa850126q0061-vendor-qna-dot-pdf", "source_class": "government_record", "published_on": "2026-08-31", "accessed_on": "2026-09-10"}
+      ],
+      "notes": "Existing government data-center infrastructure and a separate formal private-development solicitation both defeat a never-considered designation; neither proves that a commercial AI campus was awarded or built."
+    },
+    {
+      "finding_id": "comparison-exposure-53015-tc-kerr-data-center",
+      "county_fips": "53015",
+      "county_name": "Cowlitz County",
+      "state_abbr": "WA",
+      "facility_name": "TC KERR Data Center",
+      "operator": "Undisclosed developer",
+      "facility_category": "proposed_data_center",
+      "determination": "documented_qualifying_data_center_exposure",
+      "evidence_summary": "A BPA-derived interconnection-queue record identifies the active TC KERR Data Center load request in Cowlitz County at the Longview Substation, with 240 MW requested and a December 2025 queue date. Cowlitz PUD's contemporaneous board packet independently reports five active data-center or cryptocurrency load inquiries.",
+      "sources": [
+        {"title": "TC KERR Data Center (L0677)", "publisher": "Interconnection.fyi", "url": "https://www.interconnection.fyi/project/bpa-l0677", "source_class": "research_report", "accessed_on": "2026-09-10"},
+        {"title": "Cowlitz PUD Board of Commissioners packet", "publisher": "Cowlitz County Public Utility District", "url": "https://www.cowlitzpud.org/wp-content/uploads/20251209-Board-Packet.pdf", "source_class": "government_record", "published_on": "2025-12-09", "accessed_on": "2026-09-10"}
+      ],
+      "notes": "The queue filing is an early-stage load request, not proof of site control, approval, construction, or operation."
+    },
+    {
+      "finding_id": "comparison-exposure-20045-ku-price-computing-center",
+      "county_fips": "20045",
+      "county_name": "Douglas County",
+      "state_abbr": "KS",
+      "facility_name": "KU Price Computing Center",
+      "operator": "University of Kansas",
+      "facility_category": "institutional_data_center",
+      "determination": "documented_qualifying_data_center_exposure",
+      "evidence_summary": "KU identifies Price Computing Center in Lawrence as its central hardened computing facility and one of two redundant campus data and network locations, with redundant utility feeds, cooling, a 750 kW generator, twin UPS systems, and a continuously staffed network operations center.",
+      "sources": [
+        {"title": "Data Centers and Network", "publisher": "University of Kansas Information Technology", "url": "https://technology.ku.edu/research/data-centers-network", "source_class": "institutional_primary", "accessed_on": "2026-09-10"},
+        {"title": "Data Center and Server Room Policy", "publisher": "University of Kansas", "url": "https://services.ku.edu/TDClient/818/Portal/KB/PrintArticle?ID=20998", "source_class": "institutional_primary", "accessed_on": "2026-09-10"}
+      ],
+      "notes": "The separately identified university computing facility is a conservative institutional exposure exclusion, not a hyperscale analogue."
+    },
+    {
+      "finding_id": "comparison-exposure-26121-muskegon-mi-tech-hub",
+      "county_fips": "26121",
+      "county_name": "Muskegon County",
+      "state_abbr": "MI",
+      "facility_name": "Muskegon County MI Tech Hub data-center site",
+      "operator": "Muskegon County",
+      "facility_category": "proposed_data_center",
+      "determination": "documented_qualifying_data_center_exposure",
+      "evidence_summary": "Muskegon County reports that it is marketing a specific county-owned wastewater property for data-center development. The site's marketing document says the county commissioned a data-center consultant to validate the location's potential for a colocation facility and identifies 642 acres, dual transmission feeds, fiber, and reclaimed cooling water.",
+      "sources": [
+        {"title": "County of Muskegon annual financial report", "publisher": "Muskegon County", "url": "https://co.muskegon.mi.us/Archive.aspx?ADID=226", "source_class": "government_record", "accessed_on": "2026-09-10"},
+        {"title": "MI Tech Hub marketing profile", "publisher": "Muskegon County", "url": "https://media.mlive.com/chronicle/news_impact/other/MI-Data-Hub-Marketing-Piece-2%200%20DRAFT%20%28002%29.pdf", "source_class": "government_record", "accessed_on": "2026-09-10"},
+        {"title": "Why Active-Active Data Centers Fit the Bill for Local Governments", "publisher": "StateTech Magazine", "url": "https://statetechmagazine.com/article/2020/04/why-active-active-data-centers-fit-bill-local-governments", "source_class": "news_report", "accessed_on": "2026-09-10"}
+      ],
+      "notes": "This is a county-sponsored, site-specific marketing and validation effort rather than a disclosed private developer application. The distinction is preserved, but the county cannot be described as never considered for data-center development."
     }
   ]
 }
