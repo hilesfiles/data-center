@@ -14,11 +14,11 @@ class CountyTreatmentAnchorReviewTest(unittest.TestCase):
     def test_adjudication_tranches_are_explicit_and_not_causal_ready(self):
         self.assertEqual(self.product["counts"]["host_counties"], 35)
         self.assertEqual(self.product["counts"]["host_projects"], 36)
-        self.assertEqual(self.product["counts"]["adjudicated_counties"], 11)
+        self.assertEqual(self.product["counts"]["adjudicated_counties"], 12)
         self.assertEqual(self.product["counts"]["causal_ready_counties"], 0)
-        self.assertEqual(self.product["counts"]["unresolved_counties"], 24)
+        self.assertEqual(self.product["counts"]["unresolved_counties"], 23)
         reviewed = [county for county in self.product["counties"] if county["county_first_material_exposure_status"] != "unresolved"]
-        self.assertEqual(len(reviewed), 11)
+        self.assertEqual(len(reviewed), 12)
         self.assertTrue(all(county["causal_use_status"].startswith("not_ready") for county in reviewed))
         self.assertTrue(all(county["adjudication_sources"] for county in reviewed))
 
@@ -58,8 +58,14 @@ class CountyTreatmentAnchorReviewTest(unittest.TestCase):
         )
         self.assertEqual(counties["32029"]["adjudicated_date"], "2015-09-15")
         self.assertEqual(counties["32029"]["anticipation_date"], "2015-01-16")
+        self.assertEqual(
+            counties["35061"]["county_first_material_exposure_status"],
+            "provisional_anchor_pending_first_exposure_confirmation",
+        )
+        self.assertEqual(counties["35061"]["adjudicated_date"], "2016-10-11")
+        self.assertEqual(counties["35061"]["anticipation_date"], "2016-06-23")
 
-    def test_five_counties_preserve_full_seven_domain_audits(self):
+    def test_six_counties_preserve_full_seven_domain_audits(self):
         counties = {county["county_fips"]: county for county in self.product["counties"]}
         expected_codes = [
             "preexisting_facilities",
@@ -70,7 +76,7 @@ class CountyTreatmentAnchorReviewTest(unittest.TestCase):
             "local_reporting",
             "phase_scope",
         ]
-        for county_fips in ("01071", "32029", "47125", "48339", "49049"):
+        for county_fips in ("01071", "32029", "35061", "47125", "48339", "49049"):
             reviews = counties[county_fips]["review_domains"]
             self.assertEqual([review["code"] for review in reviews], expected_codes)
             self.assertTrue(all(review["status"] != "not_reviewed" for review in reviews))
