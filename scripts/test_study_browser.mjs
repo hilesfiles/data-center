@@ -895,8 +895,8 @@ try {
   await page.setViewportSize({ width: 1440, height: 1000 });
   await page.goto(`${url}#/controls`);
   await page.getByRole("heading", { name: /Comparable communities/ }).waitFor();
-  assert.match(await page.locator(".comparison-summary").innerText(), /35[\s\S]*420[\s\S]*232[\s\S]*2,291/);
-  assert.match(await page.locator(".comparison-caveat").innerText(), /222 counties surfaced by candidate-specific research were removed/i);
+  assert.match(await page.locator(".comparison-summary").innerText(), /35[\s\S]*420[\s\S]*233[\s\S]*2,290/);
+  assert.match(await page.locator(".comparison-caveat").innerText(), /223 counties surfaced by candidate-specific research were removed/i);
   assert.equal(await page.locator(".comparison-candidate").count(), 5);
   assert.equal(await page.locator(".comparison-candidate-title em").allTextContents().then(values => values.every(value => /Absence review required|Seven-domain review cleared/i.test(value))), true);
   await page.locator(".comparison-host-select select").selectOption("04013");

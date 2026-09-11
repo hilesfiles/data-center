@@ -37,6 +37,7 @@ def validate_comparison_matches(validator) -> list[str]:
             issues.append(f"{label}{issue.path}: {issue.message}")
     host_fips = {host["county_fips"] for host in product["hosts"]}
     positive_exposure_fips = {finding["county_fips"] for finding in read(EXPOSURE_FINDINGS_PATH)["findings"]}
+    absence_adjudications = {record["county_fips"]: record for record in read(ABSENCE_ADJUDICATIONS_PATH)["adjudications"]}
     for host in product["hosts"]:
         ranks = [candidate["rank"] for candidate in host["comparison_candidates"]]
         if ranks != list(range(1, 13)):
@@ -48,8 +49,14 @@ def validate_comparison_matches(validator) -> list[str]:
                 issues.append(f"{host['county_fips']}: documented positive-exposure county entered candidate pool")
             if candidate["facility_screen_status"] != "zero_known_records_across_three_national_registries":
                 issues.append(f"{host['county_fips']}: candidate failed active-facility screen")
-            if candidate["verification_status"] != "local_facility_absence_review_required":
-                issues.append(f"{host['county_fips']}: candidate was presented as locally verified")
+            adjudication = absence_adjudications.get(candidate["county_fips"])
+            expected_status = (
+                "eligible_verified_no_known_project"
+                if adjudication and adjudication["review_status"] == "verified_no_qualifying_exposure_found"
+                else "local_facility_absence_review_required"
+            )
+            if candidate["verification_status"] != expected_status:
+                issues.append(f"{host['county_fips']}: candidate verification status disagrees with its governed absence adjudication")
     if not PUBLIC_PATH.is_file() or read(PUBLIC_PATH) != product:
         issues.append("published county comparison index is missing or stale; run build_county_comparison_matches.py")
     if not SILVER_PATH.is_file() or read(SILVER_PATH) != product:
