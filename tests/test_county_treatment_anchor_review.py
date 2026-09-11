@@ -36,11 +36,42 @@ class CountyTreatmentAnchorReviewTest(unittest.TestCase):
             counties["48029"]["county_first_material_exposure_status"],
             "selected_project_rejected_earlier_material_exposure_unresolved",
         )
+        self.assertEqual(
+            counties["48339"]["county_first_material_exposure_status"],
+            "selected_project_rejected_earlier_material_exposure_unresolved",
+        )
+        self.assertEqual(counties["48339"]["known_exposure_no_later_than"], "2007-12-13")
+        self.assertIsNone(counties["48339"]["adjudicated_date"])
+        self.assertEqual(
+            counties["49049"]["county_first_material_exposure_status"],
+            "selected_project_rejected_earlier_material_exposure_unresolved",
+        )
+        self.assertEqual(counties["49049"]["known_exposure_no_later_than"], "2010-05-28")
+        self.assertIsNone(counties["49049"]["adjudicated_date"])
+        self.assertEqual(
+            counties["47125"]["county_first_material_exposure_status"],
+            "provisional_anchor_pending_first_exposure_confirmation",
+        )
+
+    def test_three_counties_preserve_full_seven_domain_audits(self):
+        counties = {county["county_fips"]: county for county in self.product["counties"]}
+        expected_codes = [
+            "preexisting_facilities",
+            "planning_permits",
+            "incentives_financing",
+            "utility_service",
+            "operator_operations",
+            "local_reporting",
+            "phase_scope",
+        ]
         for county_fips in ("47125", "48339", "49049"):
-            self.assertEqual(
-                counties[county_fips]["county_first_material_exposure_status"],
-                "provisional_anchor_pending_first_exposure_confirmation",
-            )
+            reviews = counties[county_fips]["review_domains"]
+            self.assertEqual([review["code"] for review in reviews], expected_codes)
+            self.assertTrue(all(review["status"] != "not_reviewed" for review in reviews))
+            self.assertTrue(all(review["repositories"] for review in reviews))
+            self.assertTrue(all(review["queries"] for review in reviews))
+            self.assertTrue(all(review["limitations"] for review in reviews))
+            self.assertTrue(all(review["sources"] for review in reviews))
 
     def test_exposure_policy_and_queue_validate(self):
         cases = [

@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "dataset_id": "county-treatment-anchor-adjudications-v1",
-  "as_of": "2026-09-10",
+  "as_of": "2026-09-11",
   "scope": "Governed decisions for active-project host counties where candidate project dates have been checked against earlier county exposure and panel availability.",
   "adjudications": [
     {
@@ -86,13 +86,114 @@
       "known_exposure_no_later_than": "2019-12-31",
       "date_precision": "year",
       "causal_use_status": "not_ready",
-      "rationale": "Tennessee's December 2015 announcement establishes a $600 million Google commitment and the beginning of the public anticipation window; Google and state records place the Clarksville facility in operation in 2019. A 2026 Tennessee legislative fiscal memorandum lists one Clarksville data center, which is consistent with Google being the city's only current facility, but it does not prove the absence of earlier countywide E3 exposure. The 2019 operational date is therefore provisional pending the full seven-domain county-history review.",
+      "rationale": "Tennessee's December 2015 announcement establishes a $600 million Google commitment and the beginning of the public anticipation window; Google reports that the facility was built in 2018 and officially opened in 2019. The seven-domain review found earlier communications and institutional-computing leads, including Clarksville's 2007-2009 municipal fiber build, but no reviewed record establishes an earlier E3-scale data center in Montgomery County. Fort Campbell's Regional Network Enterprise Center is located at 95 Bastogne Avenue in Kentucky and therefore cannot establish Tennessee-county exposure. Because historical university, hospital, banking, telecom-facility and address-indexed permit inventories remain incomplete, Google's 2019 date remains provisional rather than causal-ready.",
       "sources": [
         {"title": "Governor Haslam, Commissioner Boyd Announce Google to Locate New Data Center in Clarksville", "publisher": "Tennessee Department of Economic and Community Development", "url": "https://www.tn.gov/ecd/news/2015/12/22/governor-haslam-commissioner-boyd-announce-google-to-locate-new-data-center.html"},
         {"title": "Google Data Center in Montgomery County, Tennessee", "publisher": "Google", "url": "https://www.datacenters.google/locations/tennessee/"},
+        {"title": "Regional Network Enterprise Center - Bluegrass", "publisher": "United States Army, Fort Campbell", "url": "https://home.army.mil/campbell/units/tenants/rnec"},
+        {"title": "Clarksville Department of Electricity performance audit", "publisher": "Tennessee Comptroller of the Treasury", "url": "https://www.clarksvilledowntownmarket.com/Archive/ViewFile/Item/1367"},
         {"title": "Fiscal Memorandum for HB 1461", "publisher": "Tennessee General Assembly Fiscal Review Committee", "url": "https://www.capitol.tn.gov/Archives/Dashboard/HR%20Scanned%20Fiscal%20Memos/HB1461_%28014501%29.pdf"}
       ],
-      "unresolved_questions": ["Complete all seven county-history domains, including Fort Campbell, utility, institutional and enterprise-computing records, before treating Google as Montgomery County's first E3 exposure.", "Resolve the exact energization and customer-service date within 2019 rather than treating the year-end placeholder as a day-level event."]
+      "domain_reviews": [
+        {
+          "code": "preexisting_facilities",
+          "status": "review_incomplete",
+          "repositories": ["Tennessee Comptroller municipal-utility audits", "Fort Campbell tenant directory", "Austin Peay State University indexed records", "Clarksville-Montgomery County technology plans", "National and industry data-center searches"],
+          "queries": ["Montgomery County Tennessee data center before Google", "Clarksville colocation data center", "Austin Peay data center", "Fort Campbell data center location", "CDE Lightband headend data center"],
+          "coverage_statement": "Reviewed countywide commercial, telecom, university, municipal and military leads available online through September 11, 2026.",
+          "finding": "Clarksville built a citywide fiber network from 2007 through 2009 and operated broadband hub infrastructure, but the reviewed records do not establish a marketed colocation or campus-scale data center. Fort Campbell's current Regional Network Enterprise Center is physically addressed in Kentucky, outside Montgomery County, Tennessee. No earlier E3 facility was identified.",
+          "limitations": ["The online record does not provide a complete historical inventory of Austin Peay, hospital, banking, school-system, telecom central-office or enterprise server facilities.", "Absence in national facility searches and a current legislative count cannot prove historical countywide absence."],
+          "sources": [
+            {"title": "Clarksville Department of Electricity performance audit", "publisher": "Tennessee Comptroller of the Treasury", "url": "https://www.clarksvilledowntownmarket.com/Archive/ViewFile/Item/1367", "source_class": "government_record", "accessed_on": "2026-09-11"},
+            {"title": "Regional Network Enterprise Center - Bluegrass", "publisher": "United States Army, Fort Campbell", "url": "https://home.army.mil/campbell/units/tenants/rnec", "source_class": "government_record", "accessed_on": "2026-09-11"},
+            {"title": "Clarksville-Montgomery County Technology Action Plan", "publisher": "Clarksville-Montgomery County Economic Development Council", "url": "https://clarksvillepartnership.com/clientuploads/Clarksville-Montgomery%20County%20Tennessee%20Technology%20Action%20Plan_%20Final2.pdf", "source_class": "institutional_primary", "accessed_on": "2026-09-11"},
+            {"title": "Fiscal Memorandum for HB 1461", "publisher": "Tennessee General Assembly Fiscal Review Committee", "url": "https://www.capitol.tn.gov/Archives/Dashboard/HR%20Scanned%20Fiscal%20Memos/HB1461_%28014501%29.pdf", "source_class": "government_record", "accessed_on": "2026-09-11"}
+          ]
+        },
+        {
+          "code": "planning_permits",
+          "status": "review_incomplete",
+          "repositories": ["Clarksville-Montgomery County Regional Planning Commission", "City of Clarksville resolution archive", "Montgomery County commission archive", "Tennessee economic-development announcements", "Local approval reporting"],
+          "queries": ["Google Clarksville former Hemlock site planning approval", "Foxman LLC Clarksville permit", "Montgomery County Google resolution 2015", "Clarksville Google data center building permit"],
+          "coverage_statement": "Reviewed indexed city, county, regional-planning, state-development and local approval records through September 11, 2026.",
+          "finding": "City and county governing bodies approved the Google transaction on December 21, 2015, and the state announced acquisition and conversion of the former Hemlock Semiconductor site the next day. Construction was publicly underway by 2018.",
+          "limitations": ["The searchable archives did not yield the complete 2015 city and county approval packets or a dated sequence of site, demolition and building permits.", "Reuse of the former Hemlock industrial site complicates distinguishing inherited infrastructure from Google-specific construction."],
+          "sources": [
+            {"title": "Governor Haslam, Commissioner Boyd Announce Google to Locate New Data Center in Clarksville", "publisher": "Tennessee Department of Economic and Community Development", "url": "https://www.tn.gov/ecd/news/2015/12/22/governor-haslam-commissioner-boyd-announce-google-to-locate-new-data-center.html", "source_class": "government_record", "published_on": "2015-12-22", "accessed_on": "2026-09-11"},
+            {"title": "Confirmed: Google announces plans to build data center in Clarksville", "publisher": "Clarksville Now", "url": "https://clarksvillenow.com/local/confirmed-google-announces-plans-to-build-data-center-in-clarksville/", "source_class": "news_report", "published_on": "2015-12-22", "accessed_on": "2026-09-11"},
+            {"title": "CYP learns more about Google coming to Clarksville", "publisher": "Clarksville Now", "url": "https://clarksvillenow.com/local/cyp-learns-more-about-google-coming-to-clarksville/", "source_class": "news_report", "published_on": "2018-05-02", "accessed_on": "2026-09-11"}
+          ]
+        },
+        {
+          "code": "incentives_financing",
+          "status": "relevant_evidence_found",
+          "repositories": ["Tennessee economic-development announcements", "Industrial Development Board reporting", "Tennessee open-government review", "Montgomery County financial disclosures"],
+          "queries": ["Google Clarksville PILOT agreement", "Foxman LLC industrial revenue bonds", "Montgomery County IDB Google 2015", "Google Clarksville tax incentive"],
+          "coverage_statement": "Reviewed public descriptions of the acquisition, PILOT and industrial-revenue-bond structure through September 11, 2026.",
+          "finding": "The Industrial Development Board entered a PILOT agreement with Google's Foxman LLC on December 22, 2015 and authorized up to $2 billion in industrial revenue bonds; the announced private investment was $600 million with 70 expected jobs.",
+          "limitations": ["The reviewed copy-level reporting states that material PILOT terms and the cost-benefit analysis were redacted as trade secrets.", "A complete executed agreement and subsequent compliance schedule were not recovered from the indexed government archive."],
+          "sources": [
+            {"title": "Governor Haslam, Commissioner Boyd Announce Google to Locate New Data Center in Clarksville", "publisher": "Tennessee Department of Economic and Community Development", "url": "https://www.tn.gov/ecd/news/2015/12/22/governor-haslam-commissioner-boyd-announce-google-to-locate-new-data-center.html", "source_class": "government_record", "published_on": "2015-12-22", "accessed_on": "2026-09-11"},
+            {"title": "Google's secrecy agreement with the Montgomery County IDB should be undone", "publisher": "Tennessee Coalition for Open Government", "url": "https://tcog.info/google-secrecy-agreement-with-the-montgomery-county-industrial-development-board-should-be-undone/", "source_class": "news_report", "published_on": "2018-09-30", "accessed_on": "2026-09-11"}
+          ]
+        },
+        {
+          "code": "utility_service",
+          "status": "relevant_evidence_found",
+          "repositories": ["Tennessee Valley Authority-linked state announcement", "Google energy announcements", "CDE Lightband utility records", "Middle Tennessee Industrial Development Association reporting"],
+          "queries": ["Google Clarksville TVA power agreement", "Google Tennessee Alabama 413 MW solar", "CDE Google data center electric service", "Clarksville Google renewable energy day one"],
+          "coverage_statement": "Reviewed electric-provider, renewable-procurement and local utility infrastructure evidence through September 11, 2026.",
+          "finding": "The state announcement identifies TVA as a project partner. Google reported a 413 MW portfolio of new solar purchases to match the annual electricity consumption of its Tennessee and Alabama data centers from day one; the facility was fully functioning by November 2019.",
+          "limitations": ["The 413 MW portfolio serves two Google campuses and cannot be allocated to Clarksville as facility load.", "No public energization order, substation agreement, water-service schedule or meter-level load was recovered."],
+          "sources": [
+            {"title": "Governor Haslam, Commissioner Boyd Announce Google to Locate New Data Center in Clarksville", "publisher": "Tennessee Department of Economic and Community Development", "url": "https://www.tn.gov/ecd/news/2015/12/22/governor-haslam-commissioner-boyd-announce-google-to-locate-new-data-center.html", "source_class": "government_record", "published_on": "2015-12-22", "accessed_on": "2026-09-11"},
+            {"title": "Why we're putting 1.6 million solar panels in Tennessee and Alabama", "publisher": "Google", "url": "https://blog.google/company-news/outreach-and-initiatives/sustainability/why-were-putting-16-million-solar-panels-tennessee-and-alabama/", "source_class": "operator_primary", "published_on": "2019-01-16", "accessed_on": "2026-09-11"},
+            {"title": "Google Data Center Officially Up and Running in Clarksville", "publisher": "Middle Tennessee Industrial Development Association", "url": "https://www.mtida.org/images/uploads/content_files/MTIDA_Newsletter_January_2020_FINAL.pdf", "source_class": "institutional_primary", "accessed_on": "2026-09-11"}
+          ]
+        },
+        {
+          "code": "operator_operations",
+          "status": "relevant_evidence_found",
+          "repositories": ["Google data-center location history", "Google energy announcements", "Tennessee economic-development archive", "Regional economic-development reporting"],
+          "queries": ["Google Montgomery County Tennessee built 2018 opened 2019", "Google Clarksville construction opening", "Google Clarksville first facility operational"],
+          "coverage_statement": "Reviewed operator and government statements separating announcement, build and opening milestones through September 11, 2026.",
+          "finding": "The public commitment occurred December 22, 2015; Google now describes the data center as built in 2018 and its milestone history states that it officially opened in 2019. Regional reporting identifies November 2019 as the fully functioning milestone.",
+          "limitations": ["Google provides year-level rather than day-level build and opening dates.", "The reviewed record does not distinguish first energization, first server deployment and first customer-serving workload."],
+          "sources": [
+            {"title": "Montgomery County, Tennessee", "publisher": "Google Data Centers", "url": "https://www.datacenters.google/locations/tennessee/", "source_class": "operator_primary", "accessed_on": "2026-09-11"},
+            {"title": "Google Data Center Officially Up and Running in Clarksville", "publisher": "Middle Tennessee Industrial Development Association", "url": "https://www.mtida.org/images/uploads/content_files/MTIDA_Newsletter_January_2020_FINAL.pdf", "source_class": "institutional_primary", "accessed_on": "2026-09-11"}
+          ]
+        },
+        {
+          "code": "local_reporting",
+          "status": "relevant_evidence_found",
+          "repositories": ["Clarksville Now archive", "Clarksville Area Chamber of Commerce", "Middle Tennessee Industrial Development Association", "Clarksville-Montgomery County planning materials"],
+          "queries": ["site:clarksvillenow.com Google data center 2015 Clarksville", "site:clarksvillenow.com Google construction opening 2018 2019", "Montgomery County Google data center local approval"],
+          "coverage_statement": "Reviewed contemporaneous local announcement, construction, workforce and opening coverage through September 11, 2026.",
+          "finding": "Local reporting corroborates December 2015 city and county approval, active construction and hiring in May 2018, and a fully functioning facility in November 2019.",
+          "limitations": ["Local coverage does not close the pre-2015 county facility inventory.", "Some transaction details were unavailable to reporters because of the project's nondisclosure and trade-secret provisions."],
+          "sources": [
+            {"title": "Confirmed: Google announces plans to build data center in Clarksville", "publisher": "Clarksville Now", "url": "https://clarksvillenow.com/local/confirmed-google-announces-plans-to-build-data-center-in-clarksville/", "source_class": "news_report", "published_on": "2015-12-22", "accessed_on": "2026-09-11"},
+            {"title": "CYP learns more about Google coming to Clarksville", "publisher": "Clarksville Now", "url": "https://clarksvillenow.com/local/cyp-learns-more-about-google-coming-to-clarksville/", "source_class": "news_report", "published_on": "2018-05-02", "accessed_on": "2026-09-11"},
+            {"title": "Google Data Center Officially Up and Running in Clarksville", "publisher": "Middle Tennessee Industrial Development Association", "url": "https://www.mtida.org/images/uploads/content_files/MTIDA_Newsletter_January_2020_FINAL.pdf", "source_class": "institutional_primary", "accessed_on": "2026-09-11"}
+          ]
+        },
+        {
+          "code": "phase_scope",
+          "status": "review_incomplete",
+          "repositories": ["Google data-center location history", "Tennessee economic-development announcements", "Clarksville construction reporting", "Montgomery County bond and fiscal disclosures"],
+          "queries": ["Google Clarksville 750000 square feet", "Google Clarksville first building phase", "Google Clarksville expansion construction", "former Hemlock site data center acreage"],
+          "coverage_statement": "Reviewed campus-level investment, inherited-site, construction and opening descriptions through September 11, 2026.",
+          "finding": "The governed evidence establishes a $600 million campus conversion at the former Hemlock site, construction activity by 2018 and operation in 2019, but does not identify the first building's commissioning date or allocate the announced investment among inherited land, structures, electrical infrastructure and new data-center phases.",
+          "limitations": ["A later county financial disclosure describes a 750,000-square-foot completed campus, but the underlying building and phase schedule was not recovered in this pass.", "The precise treatment onset could differ under commitment, construction, energization and operation estimands."],
+          "sources": [
+            {"title": "Governor Haslam, Commissioner Boyd Announce Google to Locate New Data Center in Clarksville", "publisher": "Tennessee Department of Economic and Community Development", "url": "https://www.tn.gov/ecd/news/2015/12/22/governor-haslam-commissioner-boyd-announce-google-to-locate-new-data-center.html", "source_class": "government_record", "published_on": "2015-12-22", "accessed_on": "2026-09-11"},
+            {"title": "CYP learns more about Google coming to Clarksville", "publisher": "Clarksville Now", "url": "https://clarksvillenow.com/local/cyp-learns-more-about-google-coming-to-clarksville/", "source_class": "news_report", "published_on": "2018-05-02", "accessed_on": "2026-09-11"},
+            {"title": "Montgomery County, Tennessee", "publisher": "Google Data Centers", "url": "https://www.datacenters.google/locations/tennessee/", "source_class": "operator_primary", "accessed_on": "2026-09-11"}
+          ]
+        }
+      ],
+      "unresolved_questions": ["Recover the executed 2015 PILOT, industrial-revenue-bond documents, city and county approval packets, and Google permit sequence without relying on redacted summaries.", "Complete address-level Austin Peay, hospital, banking, school-system, telecom and enterprise-computing inventories before confirming Google as the county's first E3 exposure.", "Resolve first energization, server deployment and customer-service timing within 2018-2019 rather than treating the year-end placeholder as a day-level event."]
     },
     {
       "county_fips": "48029",
@@ -112,19 +213,124 @@
     },
     {
       "county_fips": "48339",
-      "county_first_material_exposure_status": "provisional_anchor_pending_first_exposure_confirmation",
-      "adjudicated_date": "2013-06-11",
-      "anticipation_date": "2012-01-10",
-      "known_exposure_no_later_than": "2013-06-11",
-      "date_precision": "day",
+      "county_first_material_exposure_status": "selected_project_rejected_earlier_material_exposure_unresolved",
+      "adjudicated_date": null,
+      "anticipation_date": null,
+      "known_exposure_no_later_than": "2007-12-13",
+      "date_precision": null,
       "causal_use_status": "not_ready",
-      "rationale": "Stream announced the Montgomery County site on January 10, 2012 as a 72,500-square-foot, 4.5 MW development and reported commissioning Houston I on June 11, 2013. Stream's current facility page confirms continuous operations since 2013. These sources establish a defensible project chronology but do not prove that no earlier material data center operated elsewhere in Montgomery County, so the commissioning date remains provisional for county first-entry analysis.",
+      "rationale": "Stream Houston I is not Montgomery County's first data-center exposure. A January 2003 contemporaneous account identifies the Jarvis Data Center in the Westlin bunker as already providing commercial colocation and hosted storage, and 2006 reporting documents county and corporate data users there. On December 13, 2007, local and trade reports document groundbreaking for a major Westland expansion planned to add 100,000 square feet of data-center space plus 320,000-330,000 square feet of business-continuity offices. That construction-scale event establishes E3 exposure no later than December 13, 2007 and rejects Stream's 2013 commissioning as the county anchor. The original bunker's opening date, historical power, investment and E2-versus-E3 classification remain unresolved, as does the completed scope of the 2007 expansion, so no exact first-E3 date is assigned and the county is not causal-ready.",
       "sources": [
-        {"title": "Stream Data Centers Announces New Private Data Center Development in Houston", "publisher": "Stream Data Centers via PR Newswire", "url": "https://www.prnewswire.com/news-releases/stream-data-centers-announces-new-private-data-center-development-in-houston-137017573.html"},
-        {"title": "Stream Data Centers commissions Houston-area Private Data Center", "publisher": "Stream Data Centers via PR Newswire", "url": "https://www.prnewswire.com/news-releases/stream-data-centers-commissions-houston-area-private-data-center-211061741.html"},
-        {"title": "Houston I - The Woodlands", "publisher": "Stream Data Centers", "url": "https://www.streamdatacenters.com/locations/houston-the-woodlands/"}
+        {"title": "Del Lago Resort Takes Wireless High Speed Broadband to the Golf Course and the Lake!", "publisher": "Hotel Online", "url": "https://www.hotel-online.com/news/del-lago-resort-takes-wireless-high-speed-broadband-to-the-golf-course-and-the-lake-march-2003"},
+        {"title": "Montgomery County moves emergency center to bunker", "publisher": "Houston Chronicle", "url": "https://www.chron.com/neighborhood/woodlands-news/article/Montgomery-County-moves-emergency-center-to-bunker-1864194.php"},
+        {"title": "Bunker to become centerpiece of 5-building campus", "publisher": "Houston Community Newspapers", "url": "https://www.chron.com/neighborhood/article/Bunker-to-become-centerpiece-of-5-building-campus-9628704.php"},
+        {"title": "Large expansion for Houston data bunker", "publisher": "Data Center Dynamics", "url": "https://www.datacenterdynamics.com/en/news/large-expansion-for-houston-data-bunker/"},
+        {"title": "Commissioners' Court docket, June 18, 2007", "publisher": "Montgomery County, Texas", "url": "https://cms1files.revize.com/montgomerycountytx/document_center/2007%20Commissioner%20Court%20Minutes/06182007.pdf"}
       ],
-      "unresolved_questions": ["Complete all seven county-history domains, including Conroe, telecom, institutional, enterprise and emergency-services facilities outside The Woodlands.", "Distinguish June 2013 commissioning from first tenant occupancy and customer service if a more precise operational event exists."]
+      "domain_reviews": [
+        {
+          "code": "preexisting_facilities",
+          "status": "relevant_evidence_found",
+          "repositories": ["Contemporaneous Houston-area reporting", "Data Center Dynamics archive", "Computerworld archive", "Montgomery County Commissioners Court archive", "Consolidated Communications annual reports"],
+          "queries": ["Jarvis Data Center Westlin bunker Montgomery Texas", "Westlin bunker data storage Montgomery County", "Montgomery Westland data center 2003 2004 2007", "Conroe office and data center Consolidated Communications"],
+          "coverage_statement": "Reviewed exact-facility aliases, county records, contemporaneous news and trade reporting, and a telecom property schedule for evidence predating Stream through September 11, 2026.",
+          "finding": "The same Montgomery bunker was commercially hosting data no later than January 2003; by October 2006 several companies and Montgomery County stored data there. Consolidated Communications also reported a separate 14,700-square-foot Conroe office and data center as of December 31, 2006.",
+          "limitations": ["No contemporaneous permit, operator financial statement or utility record recovered in this pass fixes the bunker's first day of commercial service.", "The reviewed evidence does not disclose enough historical power, capital or dedicated floor-area detail to classify the 2003 bunker operation conclusively as E2 or E3."],
+          "sources": [
+            {"title": "Del Lago Resort Takes Wireless High Speed Broadband to the Golf Course and the Lake!", "publisher": "Hotel Online", "url": "https://www.hotel-online.com/news/del-lago-resort-takes-wireless-high-speed-broadband-to-the-golf-course-and-the-lake-march-2003", "source_class": "news_report", "published_on": "2003-01-30", "accessed_on": "2026-09-11"},
+            {"title": "Montgomery County moves emergency center to bunker", "publisher": "Houston Chronicle", "url": "https://www.chron.com/neighborhood/woodlands-news/article/Montgomery-County-moves-emergency-center-to-bunker-1864194.php", "source_class": "news_report", "published_on": "2006-10-18", "accessed_on": "2026-09-11"},
+            {"title": "Consolidated Communications Holdings 2006 annual report", "publisher": "Consolidated Communications Holdings", "url": "https://www.annualreports.com/HostedData/AnnualReportArchive/c/NASDAQ_CNSL_2006.pdf", "source_class": "operator_primary", "accessed_on": "2026-09-11"},
+            {"title": "Underground bunker to extend datacenter footprint", "publisher": "Data Center Dynamics", "url": "https://www.datacenterdynamics.com/en/news/underground-bunker-to-extend-datacenter-footprint-2/", "source_class": "industry_report", "published_on": "2008-05-21", "accessed_on": "2026-09-11"}
+          ]
+        },
+        {
+          "code": "planning_permits",
+          "status": "review_incomplete",
+          "repositories": ["Montgomery County Commissioners Court archive", "Texas Department of Licensing and Regulation Architectural Barriers archive", "City of Montgomery public-record search", "Contemporaneous local reporting"],
+          "queries": ["550 Club Drive Westlin building permit", "Montgomery Westland construction permit", "Westland bunker TDLR", "Cross Development Montgomery LP Westlin lease"],
+          "coverage_statement": "Reviewed indexed county minutes, the state architectural-barriers project search, city-domain results and local reports through September 11, 2026.",
+          "finding": "County minutes document transfer of the county's Westlin office lease to Cross Development/Montgomery effective April 3, 2007, while contemporaneous reporting documents the December 13, 2007 expansion groundbreaking. The state registry documents a separate 2025 $25 million, 79,704-square-foot alteration, not the original conversion or 2007 expansion.",
+          "limitations": ["The reviewed online municipal and state archives did not yield the original bunker-conversion permit or the 2007 expansion permit set.", "A property-address permit history may require a direct records request to the City of Montgomery or Montgomery County."],
+          "sources": [
+            {"title": "Commissioners' Court docket, June 18, 2007", "publisher": "Montgomery County, Texas", "url": "https://cms1files.revize.com/montgomerycountytx/document_center/2007%20Commissioner%20Court%20Minutes/06182007.pdf", "source_class": "government_record", "published_on": "2007-06-18", "accessed_on": "2026-09-11"},
+            {"title": "Bunker to become centerpiece of 5-building campus", "publisher": "Houston Community Newspapers", "url": "https://www.chron.com/neighborhood/article/Bunker-to-become-centerpiece-of-5-building-campus-9628704.php", "source_class": "news_report", "published_on": "2007-12-13", "accessed_on": "2026-09-11"},
+            {"title": "Westland Bunker: TABS2025017148", "publisher": "Texas Department of Licensing and Regulation", "url": "https://www.tdlr.texas.gov/TABS/Projects/TABS2025017148", "source_class": "government_record", "accessed_on": "2026-09-11"}
+          ]
+        },
+        {
+          "code": "incentives_financing",
+          "status": "review_incomplete",
+          "repositories": ["Montgomery County Commissioners Court archive", "Texas Comptroller data-center registry", "Montgomery Economic Development Corporation indexed records", "Contemporaneous project reporting"],
+          "queries": ["Montgomery Westland tax abatement", "Westlin bunker incentive agreement", "Cross Development Montgomery financing", "Jarvis Data Center economic development"],
+          "coverage_statement": "Reviewed indexed county, state-program, local-development and project-reporting results through September 11, 2026.",
+          "finding": "No project-specific tax abatement, bond, Chapter 313 agreement or public financing package for the original bunker conversion or 2007 expansion was identified in the reviewed online record. County documents instead establish a customer lease relationship.",
+          "limitations": ["Absence from the modern Texas qualifying-data-center list cannot establish absence before that program existed.", "Historical local incentive records and private acquisition financing were not available as a complete address-indexed archive."],
+          "sources": [
+            {"title": "Commissioners' Court docket, June 18, 2007", "publisher": "Montgomery County, Texas", "url": "https://cms1files.revize.com/montgomerycountytx/document_center/2007%20Commissioner%20Court%20Minutes/06182007.pdf", "source_class": "government_record", "published_on": "2007-06-18", "accessed_on": "2026-09-11"},
+            {"title": "Texas data center lists", "publisher": "Texas Comptroller of Public Accounts", "url": "https://comptroller.texas.gov/taxes/data-centers/data-center-lists.php", "source_class": "government_record", "accessed_on": "2026-09-11"}
+          ]
+        },
+        {
+          "code": "utility_service",
+          "status": "review_incomplete",
+          "repositories": ["Entergy Texas public materials", "Contemporaneous local reporting", "Computerworld facility reporting", "Texas Department of Licensing and Regulation project record"],
+          "queries": ["Montgomery Westland Entergy power", "Westland bunker generator UPS 57000 gallons", "Westlin bunker electrical service", "550 Club Drive data center power"],
+          "coverage_statement": "Reviewed operator-location reporting, utility identity, backup-power descriptions and indexed regulatory project records through September 11, 2026.",
+          "finding": "The site is served by Entergy Texas on the MISO grid. By May 2008 reporting described conditioned utility power, UPS equipment and 57,000 gallons of backup fuel; 2009 reporting described redundant power and backup generators for 33,000 square feet of rack-ready space.",
+          "limitations": ["No dated Entergy service agreement, interconnection milestone, transformer rating or historical megawatt load was recovered.", "Backup-power descriptions establish operational capability but not the facility's economic materiality by load."],
+          "sources": [
+            {"title": "Beyond bunker mentality", "publisher": "Houston Community Newspapers", "url": "https://www.chron.com/neighborhood/article/Beyond-bunker-mentality-9316684.php", "source_class": "news_report", "published_on": "2008-05-20", "accessed_on": "2026-09-11"},
+            {"title": "Data centers go underground", "publisher": "Computerworld", "url": "https://www.computerworld.com/article/1550748/data-centers-go-underground.html", "source_class": "industry_report", "published_on": "2009-07-28", "accessed_on": "2026-09-11"},
+            {"title": "Nuclear bomb shelter in Montgomery now serves as data center bunker", "publisher": "Houston Chronicle", "url": "https://www.houstonchronicle.com/neighborhood/moco/news/article/montgomery-bomb-shelter-data-center-19620302.php", "source_class": "news_report", "published_on": "2024-08-08", "accessed_on": "2026-09-11"}
+          ]
+        },
+        {
+          "code": "operator_operations",
+          "status": "relevant_evidence_found",
+          "repositories": ["Contemporaneous service announcement archive", "Montgomery County Commissioners Court archive", "Data Center Dynamics archive", "Computerworld archive", "Stream Data Centers newsroom"],
+          "queries": ["Jarvis Data Center hosted storage 2003", "Westlin selected emergency operations center 2006", "Montgomery Westland in business since", "Stream Houston I announcement commissioning"],
+          "coverage_statement": "Reviewed operating, tenant, construction and commissioning evidence for Westlin/Jarvis/Westland and Stream through September 11, 2026.",
+          "finding": "Commercial hosting was represented as operating by January 2003; county and corporate users were documented in 2006; a materially scaled expansion broke ground in December 2007; and a rack-ready operating footprint was documented after Hurricane Ike. Stream's 2012-2013 chronology is real but later.",
+          "limitations": ["The 2003 item does not identify first customer service or separate the original 40,000-square-foot bunker from the data-ready portion.", "The 2007 expansion announcement and groundbreaking do not by themselves prove that every planned building was completed."],
+          "sources": [
+            {"title": "Del Lago Resort Takes Wireless High Speed Broadband to the Golf Course and the Lake!", "publisher": "Hotel Online", "url": "https://www.hotel-online.com/news/del-lago-resort-takes-wireless-high-speed-broadband-to-the-golf-course-and-the-lake-march-2003", "source_class": "news_report", "published_on": "2003-01-30", "accessed_on": "2026-09-11"},
+            {"title": "Large expansion for Houston data bunker", "publisher": "Data Center Dynamics", "url": "https://www.datacenterdynamics.com/en/news/large-expansion-for-houston-data-bunker/", "source_class": "industry_report", "published_on": "2007-12-13", "accessed_on": "2026-09-11"},
+            {"title": "Data centers go underground", "publisher": "Computerworld", "url": "https://www.computerworld.com/article/1550748/data-centers-go-underground.html", "source_class": "industry_report", "published_on": "2009-07-28", "accessed_on": "2026-09-11"},
+            {"title": "Stream Data Centers commissions Houston-area Private Data Center", "publisher": "Stream Data Centers via PR Newswire", "url": "https://www.prnewswire.com/news-releases/stream-data-centers-commissions-houston-area-private-data-center-211061741.html", "source_class": "operator_primary", "published_on": "2013-06-11", "accessed_on": "2026-09-11"}
+          ]
+        },
+        {
+          "code": "local_reporting",
+          "status": "relevant_evidence_found",
+          "repositories": ["Houston Chronicle archive", "Houston Community Newspapers archive", "Montgomery County Commissioners Court archive"],
+          "queries": ["site:chron.com Westlin bunker Montgomery data", "site:chron.com Montgomery Westland data center", "site:montgomerycountytx.gov Westlin", "site:montgomerycountytx.gov Montgomery Westland"],
+          "coverage_statement": "Reviewed available local reporting and indexed county meeting records from the conversion era through September 11, 2026.",
+          "finding": "Local coverage independently documents active county and corporate data use in 2006, transfer of the county lease in 2007, the December 2007 campus groundbreaking, and a workforce of more than 50 people building out the bunker in May 2008.",
+          "limitations": ["Some early local articles rely on operator statements and do not publish permits, invoices or load records.", "Searchable online minutes do not constitute a complete review of every municipal packet or exhibit."],
+          "sources": [
+            {"title": "Montgomery County moves emergency center to bunker", "publisher": "Houston Chronicle", "url": "https://www.chron.com/neighborhood/woodlands-news/article/Montgomery-County-moves-emergency-center-to-bunker-1864194.php", "source_class": "news_report", "published_on": "2006-10-18", "accessed_on": "2026-09-11"},
+            {"title": "Bunker to become centerpiece of 5-building campus", "publisher": "Houston Community Newspapers", "url": "https://www.chron.com/neighborhood/article/Bunker-to-become-centerpiece-of-5-building-campus-9628704.php", "source_class": "news_report", "published_on": "2007-12-13", "accessed_on": "2026-09-11"},
+            {"title": "Beyond bunker mentality", "publisher": "Houston Community Newspapers", "url": "https://www.chron.com/neighborhood/article/Beyond-bunker-mentality-9316684.php", "source_class": "news_report", "published_on": "2008-05-20", "accessed_on": "2026-09-11"},
+            {"title": "Commissioners' Court docket, June 18, 2007", "publisher": "Montgomery County, Texas", "url": "https://cms1files.revize.com/montgomerycountytx/document_center/2007%20Commissioner%20Court%20Minutes/06182007.pdf", "source_class": "government_record", "published_on": "2007-06-18", "accessed_on": "2026-09-11"}
+          ]
+        },
+        {
+          "code": "phase_scope",
+          "status": "review_incomplete",
+          "repositories": ["Contemporaneous local reporting", "Data Center Dynamics archive", "Computerworld facility comparison", "Current Texas architectural-barriers record"],
+          "queries": ["Montgomery Westland 100000 square foot data center expansion", "Westland bunker 33000 rack ready", "Westland bunker 140000 data storage", "Westland bunker expansion completed"],
+          "coverage_statement": "Compared original-bunker, data-ready, office, announced-expansion and current-renovation scopes reported from 2003 through September 11, 2026.",
+          "finding": "The original bunker was roughly 38,000-40,000 square feet, with 33,000 square feet later reported rack-ready. The December 2007 plan added two 50,000-square-foot underground data centers and 320,000-330,000 square feet of business-continuity offices; the construction-scale announcement and groundbreaking support an E3 upper bound, but they cannot be treated as proof that the full planned campus opened.",
+          "limitations": ["Later marketing materials report 140,000 square feet of underground data storage, but the reviewed record does not reconcile whether that total reflects completed 2007 phases or later reclassification.", "No certificate of occupancy or operator capital schedule was recovered for each announced phase."],
+          "sources": [
+            {"title": "Large expansion for Houston data bunker", "publisher": "Data Center Dynamics", "url": "https://www.datacenterdynamics.com/en/news/large-expansion-for-houston-data-bunker/", "source_class": "industry_report", "published_on": "2007-12-13", "accessed_on": "2026-09-11"},
+            {"title": "Bunker to become centerpiece of 5-building campus", "publisher": "Houston Community Newspapers", "url": "https://www.chron.com/neighborhood/article/Bunker-to-become-centerpiece-of-5-building-campus-9628704.php", "source_class": "news_report", "published_on": "2007-12-13", "accessed_on": "2026-09-11"},
+            {"title": "Data centers go underground", "publisher": "Computerworld", "url": "https://www.computerworld.com/article/1550748/data-centers-go-underground.html", "source_class": "industry_report", "published_on": "2009-07-28", "accessed_on": "2026-09-11"},
+            {"title": "Westland Bunker: TABS2025017148", "publisher": "Texas Department of Licensing and Regulation", "url": "https://www.tdlr.texas.gov/TABS/Projects/TABS2025017148", "source_class": "government_record", "accessed_on": "2026-09-11"}
+          ]
+        }
+      ],
+      "unresolved_questions": ["Recover a contemporaneous operator, permit, property or utility record that fixes the Jarvis/Westlin bunker's first commercial-service date and historical scale.", "Determine whether the 2003 commercial bunker operation itself meets E3 materiality or remains E2 colocation under the governed policy.", "Reconcile the announced 2007 two-bunker expansion with completed floor area, capital spending, power and occupancy before assigning an exact first-E3 date.", "Search offline or request address-indexed City of Montgomery permits and historical Entergy service records for 550 Club Drive."]
     },
     {
       "county_fips": "48439",
@@ -143,19 +349,126 @@
     },
     {
       "county_fips": "49049",
-      "county_first_material_exposure_status": "provisional_anchor_pending_first_exposure_confirmation",
-      "adjudicated_date": "2021-07-14",
-      "anticipation_date": "2018-05-30",
-      "known_exposure_no_later_than": "2021-07-14",
-      "date_precision": "day",
+      "county_first_material_exposure_status": "selected_project_rejected_earlier_material_exposure_unresolved",
+      "adjudicated_date": null,
+      "anticipation_date": null,
+      "known_exposure_no_later_than": "2010-05-28",
+      "date_precision": null,
       "causal_use_status": "not_ready",
-      "rationale": "Meta announced the Eagle Mountain campus and began construction in May 2018, then reported the site online on July 14, 2021. Utah County was not facility-free before Meta: Fibernet reports building a 40,000-square-foot Orem colocation facility in 2002 with more than 1 MW of power, and a 2004 SEC filing documents both a hosted primary data center in Lindon and an accessory backup facility in Orem. Those earlier facilities appear closer to E2 commercial colocation or E1 accessory computing than the study's E3 treatment, but their historical scale and economic materiality are unresolved. Meta's date is therefore only a provisional first-E3 anchor.",
+      "rationale": "Meta Eagle Mountain is not Utah County's first economically material data-center exposure. The NSA awarded a multi-million-dollar Utah Data Center utility-infrastructure contract on May 28, 2010 for power, water, sewer and storm drainage at Camp Williams. The U.S. Army Corps of Engineers then broke ground on January 6, 2011 on a $1.2 billion, one-million-square-foot campus expected to create 5,000-10,000 construction jobs and 100-200 permanent jobs. Utah environmental records explicitly place the operating facility in Utah County and document 62 standby generators. These facts satisfy multiple E3 materiality indicators and reject Meta's 2018/2021 chronology as a county first-entry anchor. Fibernet's 2002 Orem colocation facility, a hosted Lindon center, C7's 2007 Lindon facility and the incomplete institutional and enterprise inventory leave the true first E3 date unresolved, so May 28, 2010 is retained only as a documented upper bound.",
       "sources": [
-        {"title": "Utah County, We Are Online!", "publisher": "Meta", "url": "https://datacenters.atmeta.com/2021/07/utah-county-we-are-online/"},
+        {"title": "NSA awards Utah Data Center utilities infrastructure contract", "publisher": "National Security Agency", "url": "https://www.nsa.gov/Press-Room/Press-Releases-Statements/Press-Release-View/Article/1629584/nsa-awards-a-multi-year-idiq-umbrella-contract-and-the-1st-technical-task-order/"},
+        {"title": "Groundbreaking ceremony held for $1.2 billion Utah Data Center", "publisher": "U.S. Army Corps of Engineers", "url": "https://www.spk.usace.army.mil/Media/News-Releases/Article/479232/groundbreaking-ceremony-held-for-12-billion-utah-data-center/"},
+        {"title": "National Security Agency - Utah Data Center approval order", "publisher": "Utah Division of Air Quality", "url": "https://daqpermitting.utah.gov/DocViewer?IntDocID=146702&contentType=application%2Fpdf"},
         {"title": "Utah Data Center and Colocation Services", "publisher": "Fibernet", "url": "https://www.fiber.net/colocation-services/utah-colocation/"},
         {"title": "Q Comm International Form 10-KSB/A for 2004", "publisher": "U.S. Securities and Exchange Commission", "url": "https://www.sec.gov/Archives/edgar/data/1102901/000109690605000429/qcomm10ksba123104.htm"}
       ],
-      "unresolved_questions": ["Classify Fibernet's 2002 Orem facility and the hosted Lindon center under the E1-E3 policy using contemporaneous power, investment, jobs, tenant and expansion evidence.", "Search Novell, BYU, municipal, utility and other enterprise or institutional histories for a still-earlier economically material county facility.", "Confirm whether May 30, 2018 is the earliest material public commitment, site work or infrastructure-spending milestone for Meta."]
+      "domain_reviews": [
+        {
+          "code": "preexisting_facilities",
+          "status": "relevant_evidence_found",
+          "repositories": ["Fibernet operator history", "U.S. Securities and Exchange Commission filings", "National Security Agency archive", "U.S. Army Corps of Engineers archive", "C7 and industry reporting", "Utah County land records"],
+          "queries": ["Utah County data center before Meta", "Fibernet Orem data center 2002", "Lindon hosted primary data center", "C7 Lindon data center 2007", "NSA Utah Data Center county"],
+          "coverage_statement": "Reviewed commercial colocation, hosted, federal, municipal, institutional and enterprise leads predating Meta through September 11, 2026.",
+          "finding": "Fibernet reports a 40,000-square-foot, greater-than-1 MW Orem colocation facility built in 2002; a 2004 SEC filing documents hosted Lindon and accessory Orem facilities; C7 opened a 10,500-square-foot Lindon colocation facility in 2007; and the NSA began material Utah Data Center infrastructure work in 2010.",
+          "limitations": ["Current operator histories do not provide contemporaneous capital, tenant or build-out evidence sufficient to classify the 2002 Orem facility beyond E2.", "The historical Novell, BYU, WordPerfect, government, health-care and financial-enterprise facility inventory remains incomplete."],
+          "sources": [
+            {"title": "Utah Data Center and Colocation Services", "publisher": "Fibernet", "url": "https://www.fiber.net/colocation-services/utah-colocation/", "source_class": "operator_primary", "accessed_on": "2026-09-11"},
+            {"title": "Q Comm International Form 10-KSB/A for 2004", "publisher": "U.S. Securities and Exchange Commission", "url": "https://www.sec.gov/Archives/edgar/data/1102901/000109690605000429/qcomm10ksba123104.htm", "source_class": "government_record", "accessed_on": "2026-09-11"},
+            {"title": "Center 7 expands in Utah", "publisher": "Network Computing", "url": "https://www.networkcomputing.com/data-center-networking/center-7-expands-in-utah", "source_class": "industry_report", "published_on": "2007-11-16", "accessed_on": "2026-09-11"},
+            {"title": "Groundbreaking ceremony held for $1.2 billion Utah Data Center", "publisher": "U.S. Army Corps of Engineers", "url": "https://www.spk.usace.army.mil/Media/News-Releases/Article/479232/groundbreaking-ceremony-held-for-12-billion-utah-data-center/", "source_class": "government_record", "published_on": "2011-01-06", "accessed_on": "2026-09-11"}
+          ]
+        },
+        {
+          "code": "planning_permits",
+          "status": "relevant_evidence_found",
+          "repositories": ["Utah Public Notice Website", "Utah County land records", "U.S. Army Corps of Engineers environmental records", "Utah Division of Air Quality", "Eagle Mountain municipal records"],
+          "queries": ["Utah Data Center annexation 2010 Bluffdale", "NSA Data Center Utah County land record", "Utah Data Center environmental assessment", "Eagle Mountain Meta data center approval 2018"],
+          "coverage_statement": "Reviewed annexation, land, federal environmental, air-permit and municipal development records through September 11, 2026.",
+          "finding": "A 2010 public notice describes the Utah Data Center property and county boundary; federal records place original construction in 2010-2013 on a roughly 330-acre campus; Utah County land records retain the NSA Data Center annexation; and the state air record identifies the operating source in Utah County.",
+          "limitations": ["Federal security restrictions prevent a conventional local building-permit chronology for the NSA campus.", "The reviewed annexation and environmental documents do not establish whether any pre-2010 site work independently crossed the material-exposure threshold."],
+          "sources": [
+            {"title": "Utah Data Center annexation public notice", "publisher": "Utah Public Notice Website", "url": "https://www.utah.gov/pmn/sitemap/notice/80651.html", "source_class": "government_record", "accessed_on": "2026-09-11"},
+            {"title": "NSA Data Center annexation abstract", "publisher": "Utah County", "url": "https://www.utahcounty.gov/landrecords/Abstract.asp?av_serial=580040039", "source_class": "government_record", "accessed_on": "2026-09-11"},
+            {"title": "Environmental Assessment for the Utah Data Center Campus Expansion", "publisher": "U.S. Army Corps of Engineers", "url": "https://www.spk.usace.army.mil/Portals/12/documents/military/NSA_UDC_DraftEA_Feb2025.pdf?ver=k0TcUnGuN8MnKYCH15EOQQ%3D%3D", "source_class": "government_record", "accessed_on": "2026-09-11"},
+            {"title": "National Security Agency - Utah Data Center approval order", "publisher": "Utah Division of Air Quality", "url": "https://daqpermitting.utah.gov/DocViewer?IntDocID=146702&contentType=application%2Fpdf", "source_class": "government_record", "accessed_on": "2026-09-11"}
+          ]
+        },
+        {
+          "code": "incentives_financing",
+          "status": "relevant_evidence_found",
+          "repositories": ["National Security Agency contract archive", "U.S. Army Corps of Engineers project archive", "Congressional appropriations records", "Eagle Mountain adopted budgets"],
+          "queries": ["Utah Data Center utility contract May 2010", "Utah Data Center $1.2 billion appropriation", "IC CNCI Data Center Camp Williams appropriation", "Eagle Mountain Facebook tax incentive 2018"],
+          "coverage_statement": "Reviewed federal contract, project-cost, appropriation and municipal incentive records through September 11, 2026.",
+          "finding": "NSA awarded a multi-million-dollar utility contract in May 2010; USACE announced a $1.2 billion campus in January 2011; congressional records document incremental federal appropriations; and Eagle Mountain's FY2019 budget reports significant Meta tax breaks and more than $100 million of infrastructure investment.",
+          "limitations": ["Classified federal program costs and task orders prevent a complete county-year expenditure schedule.", "The Eagle Mountain budget does not quantify the full present value of Meta's tax incentive."],
+          "sources": [
+            {"title": "NSA awards Utah Data Center utilities infrastructure contract", "publisher": "National Security Agency", "url": "https://www.nsa.gov/Press-Room/Press-Releases-Statements/Press-Release-View/Article/1629584/nsa-awards-a-multi-year-idiq-umbrella-contract-and-the-1st-technical-task-order/", "source_class": "government_record", "published_on": "2010-05-28", "accessed_on": "2026-09-11"},
+            {"title": "Groundbreaking ceremony held for $1.2 billion Utah Data Center", "publisher": "U.S. Army Corps of Engineers", "url": "https://www.spk.usace.army.mil/Media/News-Releases/Article/479232/groundbreaking-ceremony-held-for-12-billion-utah-data-center/", "source_class": "government_record", "published_on": "2011-01-06", "accessed_on": "2026-09-11"},
+            {"title": "Military Construction and Veterans Affairs Appropriation Bill, 2012", "publisher": "United States Congress", "url": "https://www.congress.gov/congressional-report/112th-congress/senate-report/29/1", "source_class": "government_record", "accessed_on": "2026-09-11"},
+            {"title": "Eagle Mountain City FY2019 budget", "publisher": "Eagle Mountain City", "url": "https://eaglemountain.gov/wp-content/uploads/2024/10/finance-budget-2019.pdf", "source_class": "government_record", "accessed_on": "2026-09-11"}
+          ]
+        },
+        {
+          "code": "utility_service",
+          "status": "relevant_evidence_found",
+          "repositories": ["National Security Agency contract archive", "Utah Division of Air Quality", "U.S. Army Corps of Engineers environmental records", "Eagle Mountain municipal budgets"],
+          "queries": ["NSA Utah Data Center power water sewer storm drainage contract", "Utah Data Center standby generators", "Utah Data Center utility infrastructure 2010", "Meta Eagle Mountain infrastructure investment"],
+          "coverage_statement": "Reviewed primary utility-planning, emergency-generation, environmental and municipal infrastructure evidence through September 11, 2026.",
+          "finding": "NSA's May 2010 task order initiated planning and execution for power, water, sewer and storm drainage needed to operate the Utah Data Center. The current state permit documents 62 diesel standby generators, while federal environmental records describe the 24/7 operating campus.",
+          "limitations": ["The multi-million-dollar utility task order does not publish the original design load or service dates.", "Current generator counts may reflect modifications after original commissioning and cannot be backcast without permit history."],
+          "sources": [
+            {"title": "NSA awards Utah Data Center utilities infrastructure contract", "publisher": "National Security Agency", "url": "https://www.nsa.gov/Press-Room/Press-Releases-Statements/Press-Release-View/Article/1629584/nsa-awards-a-multi-year-idiq-umbrella-contract-and-the-1st-technical-task-order/", "source_class": "government_record", "published_on": "2010-05-28", "accessed_on": "2026-09-11"},
+            {"title": "National Security Agency - Utah Data Center approval order", "publisher": "Utah Division of Air Quality", "url": "https://daqpermitting.utah.gov/DocViewer?IntDocID=146702&contentType=application%2Fpdf", "source_class": "government_record", "accessed_on": "2026-09-11"},
+            {"title": "Environmental Assessment for the Utah Data Center Campus Expansion", "publisher": "U.S. Army Corps of Engineers", "url": "https://www.spk.usace.army.mil/Portals/12/documents/military/NSA_UDC_DraftEA_Feb2025.pdf?ver=k0TcUnGuN8MnKYCH15EOQQ%3D%3D", "source_class": "government_record", "accessed_on": "2026-09-11"}
+          ]
+        },
+        {
+          "code": "operator_operations",
+          "status": "relevant_evidence_found",
+          "repositories": ["National Security Agency archive", "U.S. Army Corps of Engineers archive", "Utah Division of Air Quality", "Meta Data Centers newsroom", "Fibernet operator history"],
+          "queries": ["NSA Utah Data Center construction operation", "Utah Data Center 24 hours 365 days", "Meta Utah County online 2021", "Fibernet Orem built 2002"],
+          "coverage_statement": "Reviewed operator and government evidence separating infrastructure commitment, groundbreaking, construction, operation and later Meta commissioning through September 11, 2026.",
+          "finding": "NSA initiated utility planning in May 2010; USACE broke ground in January 2011; a later federal assessment dates original construction to 2010-2013 and identifies continuous 24/7 operation. Meta's Eagle Mountain campus did not come online until July 2021.",
+          "limitations": ["The federal record does not disclose a precise first-workload or commissioning day for the NSA facility.", "Construction beginning in 2010 and the January 2011 ceremonial groundbreaking are distinct milestones and should not be collapsed."],
+          "sources": [
+            {"title": "NSA awards Utah Data Center utilities infrastructure contract", "publisher": "National Security Agency", "url": "https://www.nsa.gov/Press-Room/Press-Releases-Statements/Press-Release-View/Article/1629584/nsa-awards-a-multi-year-idiq-umbrella-contract-and-the-1st-technical-task-order/", "source_class": "government_record", "published_on": "2010-05-28", "accessed_on": "2026-09-11"},
+            {"title": "Groundbreaking ceremony held for $1.2 billion Utah Data Center", "publisher": "U.S. Army Corps of Engineers", "url": "https://www.spk.usace.army.mil/Media/News-Releases/Article/479232/groundbreaking-ceremony-held-for-12-billion-utah-data-center/", "source_class": "government_record", "published_on": "2011-01-06", "accessed_on": "2026-09-11"},
+            {"title": "Environmental Assessment for the Utah Data Center Campus Expansion", "publisher": "U.S. Army Corps of Engineers", "url": "https://www.spk.usace.army.mil/Portals/12/documents/military/NSA_UDC_DraftEA_Feb2025.pdf?ver=k0TcUnGuN8MnKYCH15EOQQ%3D%3D", "source_class": "government_record", "accessed_on": "2026-09-11"},
+            {"title": "Utah County, We Are Online!", "publisher": "Meta", "url": "https://datacenters.atmeta.com/2021/07/utah-county-we-are-online/", "source_class": "operator_primary", "published_on": "2021-07-14", "accessed_on": "2026-09-11"}
+          ]
+        },
+        {
+          "code": "local_reporting",
+          "status": "relevant_evidence_found",
+          "repositories": ["Eagle Mountain municipal records", "Utah Public Notice Website", "Salt Lake Tribune archive", "Utah County land records", "State environmental records"],
+          "queries": ["Utah Data Center Bluffdale Utah County local reporting", "NSA data center Camp Williams annexation", "Meta Eagle Mountain data center 2018 deal", "Utah County data center local history"],
+          "coverage_statement": "Reviewed local-government records and contemporaneous Utah reporting for the NSA and Meta projects through September 11, 2026.",
+          "finding": "Local records corroborate the NSA property's annexation and Utah County location, while Eagle Mountain's adopted budget documents the June 2018 Meta agreement, tax relief and planned infrastructure investment.",
+          "limitations": ["Much contemporaneous NSA reporting discusses Bluffdale without naming the county, so geography was resolved from state and county records instead.", "Local reporting does not provide a complete inventory of pre-2010 private enterprise and institutional facilities."],
+          "sources": [
+            {"title": "Why the NSA put a data center in Utah", "publisher": "The Salt Lake Tribune", "url": "https://archive.sltrib.com/article.php?id=56472070&itype=CMSID", "source_class": "news_report", "published_on": "2013-06-29", "accessed_on": "2026-09-11"},
+            {"title": "NSA Data Center annexation abstract", "publisher": "Utah County", "url": "https://www.utahcounty.gov/landrecords/Abstract.asp?av_serial=580040039", "source_class": "government_record", "accessed_on": "2026-09-11"},
+            {"title": "Eagle Mountain City FY2019 budget", "publisher": "Eagle Mountain City", "url": "https://eaglemountain.gov/wp-content/uploads/2024/10/finance-budget-2019.pdf", "source_class": "government_record", "accessed_on": "2026-09-11"}
+          ]
+        },
+        {
+          "code": "phase_scope",
+          "status": "review_incomplete",
+          "repositories": ["U.S. Army Corps of Engineers project and environmental records", "National Security Agency archive", "Utah Division of Air Quality", "Fibernet and C7 operator histories", "Meta Data Centers newsroom"],
+          "queries": ["Utah Data Center one million square feet 330 acres", "Utah Data Center construction 2010 2013", "NSA Utah Data Center four data halls", "Meta Eagle Mountain first phase online"],
+          "coverage_statement": "Compared the NSA utility, construction, operating-campus and generator scopes with earlier colocation facilities and Meta's later campus through September 11, 2026.",
+          "finding": "The NSA project was announced as a one-million-square-foot, $1.2 billion campus and later federal records describe a roughly 330-acre, continuously operating high-performance data center constructed in 2010-2013. This is materially distinct from the earlier 40,000-square-foot Fibernet and 10,500-square-foot C7 colocation facilities and predates Meta.",
+          "limitations": ["The reviewed federal record does not allocate square footage, capital and commissioning dates among individual data halls and support buildings.", "The exact first date at which irreversible construction spending crossed the E3 threshold may precede the May 2010 public utility contract."],
+          "sources": [
+            {"title": "Groundbreaking ceremony held for $1.2 billion Utah Data Center", "publisher": "U.S. Army Corps of Engineers", "url": "https://www.spk.usace.army.mil/Media/News-Releases/Article/479232/groundbreaking-ceremony-held-for-12-billion-utah-data-center/", "source_class": "government_record", "published_on": "2011-01-06", "accessed_on": "2026-09-11"},
+            {"title": "Environmental Assessment for the Utah Data Center Campus Expansion", "publisher": "U.S. Army Corps of Engineers", "url": "https://www.spk.usace.army.mil/Portals/12/documents/military/NSA_UDC_DraftEA_Feb2025.pdf?ver=k0TcUnGuN8MnKYCH15EOQQ%3D%3D", "source_class": "government_record", "accessed_on": "2026-09-11"},
+            {"title": "National Security Agency - Utah Data Center approval order", "publisher": "Utah Division of Air Quality", "url": "https://daqpermitting.utah.gov/DocViewer?IntDocID=146702&contentType=application%2Fpdf", "source_class": "government_record", "accessed_on": "2026-09-11"},
+            {"title": "Utah County, We Are Online!", "publisher": "Meta", "url": "https://datacenters.atmeta.com/2021/07/utah-county-we-are-online/", "source_class": "operator_primary", "published_on": "2021-07-14", "accessed_on": "2026-09-11"}
+          ]
+        }
+      ],
+      "unresolved_questions": ["Determine whether any pre-May-2010 Novell, BYU, WordPerfect, financial, health-care, municipal or commercial facility crossed E3 materiality before the NSA utility commitment.", "Recover the original NSA task-order values, construction notice to proceed and commissioning record to distinguish public commitment, physical treatment and operation dates.", "Classify Fibernet's 2002 Orem facility and the hosted Lindon center using contemporaneous power, capital, jobs, tenant and expansion evidence rather than current marketing alone.", "Treat Meta only as a later private-campus expansion unless a separate marginal-expansion estimand is specified."]
     }
   ]
 }

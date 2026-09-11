@@ -13,6 +13,34 @@
   },
   "$defs": {
     "source": {"type": "object", "required": ["title", "publisher", "url"], "properties": {"title": {"type": "string", "minLength": 1}, "publisher": {"type": "string", "minLength": 1}, "url": {"type": "string", "format": "uri"}}, "additionalProperties": false},
+    "review_source": {
+      "type": "object",
+      "required": ["title", "publisher", "url", "source_class", "accessed_on"],
+      "properties": {
+        "title": {"type": "string", "minLength": 1},
+        "publisher": {"type": "string", "minLength": 1},
+        "url": {"type": "string", "format": "uri"},
+        "source_class": {"type": "string", "enum": ["government_record", "utility_record", "operator_primary", "institutional_primary", "industry_report", "news_report"]},
+        "published_on": {"type": "string", "format": "date"},
+        "accessed_on": {"type": "string", "format": "date"}
+      },
+      "additionalProperties": false
+    },
+    "domain_review": {
+      "type": "object",
+      "required": ["code", "status", "repositories", "queries", "coverage_statement", "finding", "limitations", "sources"],
+      "properties": {
+        "code": {"type": "string", "enum": ["preexisting_facilities", "planning_permits", "incentives_financing", "utility_service", "operator_operations", "local_reporting", "phase_scope"]},
+        "status": {"type": "string", "enum": ["not_reviewed", "review_incomplete", "reviewed_no_relevant_evidence", "relevant_evidence_found"]},
+        "repositories": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+        "queries": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+        "coverage_statement": {"type": "string", "minLength": 1},
+        "finding": {"type": "string", "minLength": 1},
+        "limitations": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+        "sources": {"type": "array", "items": {"$ref": "#/$defs/review_source"}}
+      },
+      "additionalProperties": false
+    },
     "adjudication": {
       "type": "object",
       "required": ["county_fips", "county_first_material_exposure_status", "adjudicated_date", "anticipation_date", "known_exposure_no_later_than", "date_precision", "causal_use_status", "rationale", "sources", "unresolved_questions"],
@@ -26,6 +54,7 @@
         "causal_use_status": {"type": "string", "enum": ["not_ready", "not_ready_first_entry_predates_panel", "not_ready_insufficient_preperiod"]},
         "rationale": {"type": "string", "minLength": 1},
         "sources": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"$ref": "#/$defs/source"}},
+        "domain_reviews": {"type": "array", "minItems": 7, "maxItems": 7, "uniqueItems": true, "items": {"$ref": "#/$defs/domain_review"}},
         "unresolved_questions": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1}}
       },
       "additionalProperties": false

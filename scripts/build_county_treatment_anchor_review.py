@@ -15,7 +15,7 @@ ADJUDICATIONS_PATH = ROOT / "config" / "v1" / "county-treatment-anchor-adjudicat
 EXPOSURE_POLICY_PUBLIC_PATH = ROOT / "site" / "public" / "data" / "v1" / "methodology" / "county-data-center-exposure-policy.json"
 PUBLIC_PATH = ROOT / "site" / "public" / "data" / "v1" / "analysis" / "county-treatment-anchor-review" / "index.json"
 SILVER_PATH = ROOT / "data" / "silver" / "analysis" / "county-treatment-anchor-review.json"
-GENERATED_AT = "2026-09-09T00:00:00+00:00"
+GENERATED_AT = "2026-09-11T00:00:00+00:00"
 
 REQUIRED_REVIEW_DOMAINS = [
     {"code": "preexisting_facilities", "label": "Earlier operating, construction, colocation, institutional and enterprise facilities in the county"},
@@ -71,6 +71,36 @@ def candidate_timeline_events(timeline: dict | None) -> list[dict]:
     return useful[:6]
 
 
+def review_domains(adjudication: dict | None) -> list[dict]:
+    raw_reviews = (adjudication or {}).get("domain_reviews", [])
+    stored = {review["code"]: review for review in raw_reviews}
+    expected = {domain["code"] for domain in REQUIRED_REVIEW_DOMAINS}
+    if len(stored) != len(raw_reviews):
+        raise ValueError("treatment review domains must have unique codes")
+    unknown = sorted(set(stored) - expected)
+    if unknown:
+        raise ValueError(f"unknown treatment review domains: {unknown}")
+    missing = sorted(expected - set(stored))
+    if raw_reviews and missing:
+        raise ValueError(f"treatment domain review is incomplete: {missing}")
+    reviews = []
+    for domain in REQUIRED_REVIEW_DOMAINS:
+        review = stored.get(domain["code"])
+        if review is None:
+            review = {
+                "code": domain["code"],
+                "status": "not_reviewed",
+                "repositories": [],
+                "queries": [],
+                "coverage_statement": "No county-specific review has been recorded for this domain.",
+                "finding": "No domain-level determination made.",
+                "limitations": ["This required domain remains unreviewed."],
+                "sources": [],
+            }
+        reviews.append({"label": domain["label"], **review})
+    return reviews
+
+
 def build_product(generated_at: str = GENERATED_AT) -> dict:
     study = read(STUDY_DIR / "index.json")
     timelines = {timeline["project_id"]: timeline for timeline in read(TIMELINES_PATH)["timelines"]}
@@ -108,7 +138,7 @@ def build_product(generated_at: str = GENERATED_AT) -> dict:
             "adjudication_rationale": adjudication["rationale"] if adjudication else None,
             "adjudication_sources": adjudication["sources"] if adjudication else [],
             "unresolved_questions": adjudication["unresolved_questions"] if adjudication else [],
-            "review_domains": [{**domain, "status": "not_reviewed", "sources": []} for domain in REQUIRED_REVIEW_DOMAINS],
+            "review_domains": review_domains(adjudication),
             "required_next_step": "Resolve the documented adjudication questions and complete every review domain before causal use." if adjudication else "Determine whether an earlier economically material county exposure exists, then distinguish announcement, construction, energization and operating dates with cited evidence.",
         })
     unknown_adjudications = sorted(set(adjudications) - set(grouped))
@@ -118,7 +148,7 @@ def build_product(generated_at: str = GENERATED_AT) -> dict:
         "schema_version": "1.0.0",
         "release_id": "county-treatment-anchor-review-1.0.0",
         "generated_at": generated_at,
-        "as_of": exposure_policy["as_of"],
+        "as_of": adjudication_source["as_of"],
         "exposure_policy_id": exposure_policy["policy_id"],
         "scope": "Adjudication queue for the first economically material E3 data-center exposure in each active-project host county.",
         "counts": {
