@@ -35,7 +35,9 @@ class PrivateSectorStudyTest(unittest.TestCase):
     def test_rejected_first_entry_remains_a_candidate(self):
         _, details, entities = self.build()
         altoona = next(r for r in details if r["name"] == "Meta Altoona")
-        self.assertIn("cannot be the county's first entry", altoona["legacy_first_entry_note"])
+        self.assertIn("cannot be Polk County's first literal data-center operation", altoona["legacy_first_entry_note"])
+        self.assertIn("LightEdge", altoona["legacy_first_entry_note"])
+        self.assertNotIn("Microsoft documents opening", altoona["legacy_first_entry_note"])
         self.assertEqual(altoona["membership_status"], "research_candidate")
         self.assertEqual(altoona["analysis_readiness"]["causal"], "not_assessed")
         self.assertEqual(next(e for e in entities if e["project_id"] == altoona["project_id"])["current_status"], "unknown")
