@@ -6295,8 +6295,8 @@
     "county_fips": "19155",
     "county_name": "Pottawattamie County",
     "state_abbr": "IA",
-    "resolution_state": "unresolved",
-    "decision": "continue_research",
+    "resolution_state": "candidate_rejected_first_entry",
+    "decision": "reject_candidate_as_first_entry",
     "county_first_entry_verified": false,
     "inventory_completeness_status": "not_established",
     "earlier_operations_search_status": "documented_incomplete",
@@ -6304,21 +6304,38 @@
       "earliest_dated_operational_event": "partial",
       "exact_facility_identity_for_earliest_event": "resolved",
       "county_inventory_completeness": "unresolved",
-      "documented_search_for_earlier_operations": "partial"
+      "documented_search_for_earlier_operations": "resolved"
     },
-    "earlier_operational_findings": [],
+    "earlier_operational_findings": [
+      {
+        "facility_id": "fac_infousa_carter_lake_historic",
+        "canonical_name": "infoUSA Carter Lake data center",
+        "temporal_relation": "operational_no_later_than",
+        "when": {
+          "year": 2001,
+          "precision": "year"
+        },
+        "source_ids": [
+          "src_sec_infousa_carter_lake_2001"
+        ],
+        "finding": "infoUSA's annual report identifies an operating Carter Lake Data Center that housed business and consumer order-fulfillment systems, with an IBM AS/400 and individual Dell and Sun servers.",
+        "confidence": 0.99
+      }
+    ],
     "source_ids": [
       "src_google_iowa_datacenter_2009",
+      "src_sec_infousa_carter_lake_2001",
       "src_im3_atlas_20260209"
     ],
     "authoritative_source_types": [
       "operator_release",
+      "sec_filing",
       "federal_dataset"
     ],
-    "rationale": "Google identifies 2009 as the year Iowa became home to its data center, and the mapped Council Bluffs campus contains multiple Google data-center footprints. The evidence does not establish which footprint entered service first or exclude earlier government, telecom, utility, financial, healthcare, or enterprise computing operations in Pottawattamie County.",
+    "rationale": "Google cannot be Pottawattamie County's first literal data-center operation because infoUSA documented its Carter Lake enterprise data center before Google's project. The earlier operation was an enterprise-computing and order-fulfillment facility rather than a hyperscale or marketed colocation campus; its disclosed systems do not establish E3 materiality. A separate governed review therefore treats Google's 2007 construction as the provisional first economically material exposure while the broader historical inventory remains incomplete.",
     "created_at": "2026-09-03T18:00:00Z",
-    "updated_at": "2026-09-03T18:00:00Z",
-    "record_status": "provisional"
+    "updated_at": "2026-09-11T23:00:00Z",
+    "record_status": "active"
   },
   {
     "schema_version": "1.0.0",

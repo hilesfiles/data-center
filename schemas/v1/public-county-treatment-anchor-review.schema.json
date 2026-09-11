@@ -11,7 +11,7 @@
     "as_of": {"type": "string", "format": "date"},
     "exposure_policy_id": {"type": "string", "const": "county-data-center-exposure-v1"},
     "scope": {"type": "string", "minLength": 1},
-    "counts": {"type": "object", "required": ["host_counties", "host_projects", "adjudicated_counties", "causal_ready_counties", "unresolved_counties"], "properties": {"host_counties": {"type": "integer", "const": 35}, "host_projects": {"type": "integer", "const": 36}, "adjudicated_counties": {"type": "integer", "const": 14}, "causal_ready_counties": {"type": "integer", "const": 0}, "unresolved_counties": {"type": "integer", "const": 21}}, "additionalProperties": false},
+    "counts": {"type": "object", "required": ["host_counties", "host_projects", "adjudicated_counties", "causal_ready_counties", "unresolved_counties"], "properties": {"host_counties": {"type": "integer", "const": 35}, "host_projects": {"type": "integer", "const": 36}, "adjudicated_counties": {"type": "integer", "const": 15}, "causal_ready_counties": {"type": "integer", "const": 0}, "unresolved_counties": {"type": "integer", "const": 20}}, "additionalProperties": false},
     "warning": {"type": "string", "minLength": 1},
     "required_review_domains": {"type": "array", "minItems": 7, "maxItems": 7, "items": {"$ref": "#/$defs/domain"}},
     "counties": {"type": "array", "minItems": 35, "maxItems": 35, "items": {"$ref": "#/$defs/county"}}
