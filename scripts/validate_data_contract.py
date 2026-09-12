@@ -798,7 +798,7 @@ def validate_project_config(
         "08005": "continue_research",
         "13217": "continue_research",
         "17037": "continue_research",
-        "20091": "continue_research",
+        "20091": "reject_candidate_as_first_entry",
         "31055": "reject_candidate_as_first_entry",
         "37035": "continue_research",
         "39041": "continue_research",
@@ -1618,7 +1618,7 @@ def validate_public_data(
         "19153", "32031", "34035", "39049", "39089", "41013", "47037", "53017", "56021",
     }
     new_adjudicated_rejections = {
-        county_fips: (1 if county_fips in {"19153", "19155", "31055", "36063", "39089", "41013", "48201", "48453"} else 0)
+        county_fips: (1 if county_fips in {"19153", "19155", "20091", "31055", "36063", "39089", "41013", "48201", "48453"} else 0)
         for county_fips in new_adjudicated_expected
     }
     new_adjudicated_assessments = [
@@ -3359,14 +3359,14 @@ def validate_public_data(
         },
         "37035": {
             "facility_id": "fac_im3_building_00116005354",
-            "source_id": "src_catawba_cafr_apple_operational_2012",
-            "when": {"precision": "year", "year": 2012},
-            "data_quality_score": 75.26,
-            "available_pre_periods": 11,
-            "available_post_periods": 12,
-            "evidence_threshold_status": "failed",
+            "source_id": "src_apple_maiden_open_201006",
+            "when": {"date": "2010-06-01", "precision": "month"},
+            "data_quality_score": 93.11,
+            "available_pre_periods": 9,
+            "available_post_periods": 14,
+            "evidence_threshold_status": "passed",
             "period_requirement_status": "passed",
-            "exclusion_reasons": ["evidence_threshold_not_met", "county_first_entry_not_verified"],
+            "exclusion_reasons": ["county_first_entry_not_verified"],
         },
         "20091": {
             "facility_id": "fac_im3_building_00598261190",
@@ -3377,7 +3377,7 @@ def validate_public_data(
             "available_post_periods": 8,
             "evidence_threshold_status": "passed",
             "period_requirement_status": "passed",
-            "exclusion_reasons": ["county_first_entry_not_verified"],
+            "exclusion_reasons": ["candidate_event_not_county_first_entry"],
         },
         "19155": {
             "facility_id": "fac_im3_building_01073720208",
@@ -3576,7 +3576,7 @@ def validate_public_data(
             or actual.get("evidence_threshold_status") != expected["evidence_threshold_status"]
             or actual.get("period_requirement_status") != expected["period_requirement_status"]
             or actual.get("first_entry_verification_status") != (
-                "not_verified" if county_fips in {"08005", "13217", "17037", "20091", "26163", "29165", "32029", "32031", "34035", "37035", "39041", "39049", "40101", "41017", "41049", "41067", "47037", "48139", "51061", "53017", "55015", "55101", "56021"} else
+                "not_verified" if county_fips in {"08005", "13217", "17037", "26163", "29165", "32029", "32031", "34035", "37035", "39041", "39049", "40101", "41017", "41049", "41067", "47037", "48139", "51061", "53017", "55015", "55101", "56021"} else
                 "not_verified" if county_fips in {"01069", "05145", "06055", "06095", "08001", "18089", "21071", "30017", "33015", "34017", "34039", "35049", "36047", "36085", "39017", "39045", "39165", "40013", "41005", "41047", "41051", "42003", "42077", "45051", "46099", "47157", "48475", "49047", "01071", "55133", "12031", "21111", "24003", "26045", "34013", "08031", "13135", "29510", "34031", "41059", "48029", "48121", "53053", "36001", "36061", "37161", "47165", "53063", "55079", "13215", "13097", "37183", "39035", "47125", "51087", "29047", "01089", "06001", "06067", "19181", "24510", "35061", "47187", "49035", "53025", "06073", "27053", "40143", "08035", "12095", "29095", "36029", "39061", "48339", "55025", "08041", "12086", "48439", "19049", "39159", "45015", "49049", "04003", "04019", "24021", "24027", "25009", "26049", "33017"} else "rejected_as_first_entry"
             )
             or actual.get("eligibility_status") != "excluded"
@@ -3649,10 +3649,10 @@ def validate_public_data(
         or treatment_report.get("panel_years") != {"start": 2001, "end": 2024}
         or treatment_report.get("period_requirements") != {"minimum_pre_periods": 7, "minimum_post_periods": 3}
         or treatment_report.get("reviewed_dated_operational_event_count") != 172
-        or treatment_report.get("evidence_threshold_pass_count") != 107
+        or treatment_report.get("evidence_threshold_pass_count") != 108
         or treatment_report.get("period_requirement_pass_count") != 95
         or treatment_report.get("first_entry_verified_event_count") != 0
-        or treatment_report.get("candidate_rejected_as_first_entry_count") != 60
+        or treatment_report.get("candidate_rejected_as_first_entry_count") != 61
         or treatment_report.get("eligible_treatment_event_count") != 0
         or treatment_report.get("eligible_county_count") != 0
         or treatment_report.get("assessment_status_counts") != {"candidate_events_not_first_entry": 172, "no_reviewed_dated_operational_event": 2972}
@@ -3677,7 +3677,7 @@ def validate_public_data(
         treatment_manifest_total += part.get("record_count", 0)
         if part.get("byte_size") != len(payload) or part.get("sha256") != hashlib.sha256(payload).hexdigest():
             issues.append(Issue("public_data_validation", f"{treatment_manifest_path.name}.parts[{index}]", "byte size or SHA-256 does not match the artifact"))
-    if treatment_manifest.get("record_count") != 7301 or treatment_manifest_total != 7301:
+    if treatment_manifest.get("record_count") != 7310 or treatment_manifest_total != 7310:
         issues.append(Issue("public_data_validation", treatment_manifest_path.name, "county first-entry manifest record count is inconsistent"))
 
     research_path = DATA_DIR / "silver" / "treatments" / "county-first-entry-research-priority-v1.json"
@@ -3833,7 +3833,7 @@ def validate_public_data(
         or research_report.get("exclusion_counts") != {"no_active_canonical_facility": 2918, "incomplete_24_year_panel": 9, "already_eligible_treatment": 0}
         or research_report.get("priority_tier_counts") != {"first_entry_deferred": 21, "first_entry_high": 146, "first_entry_standard": 50}
         or research_report.get("initial_tranche_region_counts") != {"Midwest": 6, "Northeast": 6, "South": 6, "West": 6}
-        or research_report.get("adjudication_status_counts") != {"candidate_rejected_first_entry": 60, "not_adjudicated": 45, "unresolved": 112}
+        or research_report.get("adjudication_status_counts") != {"candidate_rejected_first_entry": 61, "not_adjudicated": 45, "unresolved": 111}
         or research_report.get("treatment_effect") != {"treatment_dates_assigned": 0, "eligible_treatment_count_changed": False, "model_run_authorized": False}
     ):
         issues.append(Issue("public_data_validation", research_report_path.name, "first-entry research processing diagnostics are inconsistent"))
@@ -3897,7 +3897,7 @@ def validate_public_data(
         or set(resolution_fips) != set(research_fips)
         or [record.get("national_rank") for record in resolution_candidates] != list(range(1, 218))
         or resolution_queue_counts != Counter({"national_backlog": 193, "initial_tranche": 24})
-        or resolution_track_counts != Counter({"resolve_existing_anchor": 112, "promote_predecessor": 60, "establish_anchor": 45})
+        or resolution_track_counts != Counter({"resolve_existing_anchor": 111, "promote_predecessor": 61, "establish_anchor": 45})
         or resolution_tier_counts != Counter({"resolution_standard": 90, "resolution_ready": 73, "resolution_foundational": 54})
         or resolution_region_counts != Counter({"South": 67, "Midwest": 63, "West": 58, "Northeast": 29})
         or resolution_initial_region_counts != Counter({"Northeast": 6, "Midwest": 6, "South": 6, "West": 6})
@@ -4096,7 +4096,7 @@ def validate_public_data(
         or resolution_report.get("resolution_candidate_count") != 217
         or resolution_report.get("initial_tranche_count") != 24
         or resolution_report.get("national_backlog_count") != 193
-        or resolution_report.get("resolution_track_counts") != {"establish_anchor": 45, "promote_predecessor": 60, "resolve_existing_anchor": 112}
+        or resolution_report.get("resolution_track_counts") != {"establish_anchor": 45, "promote_predecessor": 61, "resolve_existing_anchor": 111}
         or resolution_report.get("model_gate_counts") != {"both_passed": 49, "not_both_passed": 168}
         or resolution_report.get("priority_tier_counts") != {"resolution_foundational": 54, "resolution_ready": 73, "resolution_standard": 90}
         or resolution_report.get("initial_tranche_region_counts") != {"Midwest": 6, "Northeast": 6, "South": 6, "West": 6}

@@ -2,6 +2,12 @@
 
 5 September 2026. This document defines the target analytical layer that will connect the private-sector project register to cross-community statistical findings. It is a specification, not a claim that a pooled model currently exists.
 
+Execution order is governed by the [primary workstream roadmap](primary-workstream-roadmap.md).
+In particular, the national treated-county universe must be normalized, deduplicated,
+classified, geographically resolved, and ranked before manual county histories become the
+default activity. The 36-project register remains a curated case-study cohort and does not
+define the complete population for pooled analysis.
+
 ## Current state and target boundary
 
 Study release `private-sector-study-1.57.0` contains 36 selected projects across 35 counties and 23 states. Thirty projects have completed scoped research audits and remain visible on the community map. No project currently passes the separate completed-contribution-account analytical gate; unbounded supplier, community, construction, operating, resource, public-cost, or county-outcome gaps are not filled merely to pass it. The current release contains 1,230 source records and 146 separately governed modeled syntheses, but no pooled estimate and no causal estimate.
@@ -181,13 +187,18 @@ National compute capacity and security implications remain a separate interpreti
 
 ## Implementation sequence
 
-1. Complete the common facility-year account contract for the remaining 33 projects while preserving explicit missingness.
-2. Add schemas and builders for facility-year and county-year exposure, including overlap and evidence-state validation.
-3. Research and version comparison-pool exposure screens using the preserved national inventory and project histories.
-4. Register outcome-specific Level 0 and Level 1 definitions and run statistical power and influence simulations before publication.
-5. Publish descriptive trajectories and pooled associations with uncertainty propagation.
-6. Advance eligible outcomes to event, matched, or hierarchical designs only after their diagnostic gates pass.
-7. Add pooled results to the application with drill-down to county and project evidence.
+1. Complete roadmap Steps 1–4: normalize, deduplicate, classify, and geographically resolve the full national facility-source universe.
+2. Complete roadmap Steps 5–6: materialize the national county-exposure cohorts and publish baseline pages for qualifying counties.
+3. Complete roadmap Steps 7–8: rank the full treated-county universe and adjudicate timing histories in bounded, published tranches.
+4. Complete roadmap Step 9: construct treatment-year- and outcome-specific control samples and pass balance, pre-trend, spillover, and contamination gates.
+5. Add schemas and builders for facility-year and county-year exposure, including overlap and evidence-state validation.
+6. Register outcome-specific definitions and run statistical power and influence simulations before publication.
+7. Publish descriptive trajectories and pooled associations with uncertainty propagation.
+8. Advance eligible outcomes to event, matched, synthetic, or hierarchical designs only after their diagnostic gates pass.
+9. Add pooled results to the application with drill-down to county, facility, event, project, and source evidence.
+
+Completing individual contribution accounts remains valuable but is a secondary evidence
+track unless a specific account supplies an input required by the active model definition.
 
 ## Target-state acceptance criteria
 

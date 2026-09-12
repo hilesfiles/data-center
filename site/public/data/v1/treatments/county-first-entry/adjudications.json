@@ -6220,10 +6220,10 @@
   },
   {
     "schema_version": "1.0.0",
-    "county_first_entry_adjudication_id": "fea_37035_apple_maiden_2012_unresolved",
+    "county_first_entry_adjudication_id": "fea_37035_apple_maiden_201006_unresolved",
     "first_entry_research_candidate_id": "fer_e0cf988672f09076e31e",
     "treatment_definition_id": "trt_first_entry_v1",
-    "candidate_event_evaluation_id": "tev_c5ae5e9f9fa03e963d38",
+    "candidate_event_evaluation_id": "tev_8fa0c57c0119cc9b6a45",
     "county_fips": "37035",
     "county_name": "Catawba County",
     "state_abbr": "NC",
@@ -6240,16 +6240,22 @@
     },
     "earlier_operational_findings": [],
     "source_ids": [
+      "src_apple_maiden_open_201006",
+      "src_catawba_apple_agreement_20090706",
+      "src_nc_commerce_apple_maiden_20091229",
+      "src_siteselection_apple_maiden_200909",
       "src_catawba_cafr_apple_operational_2012",
       "src_im3_atlas_20260209"
     ],
     "authoritative_source_types": [
+      "operator_release",
       "local_government_record",
+      "state_record",
       "federal_dataset"
     ],
-    "rationale": "Catawba County's FY2012 report and the large Maiden data-center footprint establish Apple's facility as constructed, supporting iCloud services, and operational no later than 2012. The evidence does not exclude earlier county government, telecom, university, healthcare, financial, utility, or enterprise computing facilities.",
+    "rationale": "Apple directly dates the Maiden data center's opening to June 2010, replacing the prior FY2012 upper-bound proxy. County and state records date the county-specific public commitment and incentive approval to July 6, 2009, and contemporaneous reporting dates grading to August 14, 2009. Searches of county financial, meeting, development, permit, utility, institutional, healthcare, telecom, and major-enterprise materials did not surface an earlier dedicated facility, but those public records do not establish a complete pre-Apple inventory; county first operational entry therefore remains unresolved.",
     "created_at": "2026-09-03T17:00:00Z",
-    "updated_at": "2026-09-03T17:00:00Z",
+    "updated_at": "2026-09-12T03:00:00Z",
     "record_status": "provisional"
   },
   {
@@ -6261,8 +6267,8 @@
     "county_fips": "20091",
     "county_name": "Johnson County",
     "state_abbr": "KS",
-    "resolution_state": "unresolved",
-    "decision": "continue_research",
+    "resolution_state": "candidate_rejected_first_entry",
+    "decision": "reject_candidate_as_first_entry",
     "county_first_entry_verified": false,
     "inventory_completeness_status": "not_established",
     "earlier_operations_search_status": "documented_incomplete",
@@ -6270,21 +6276,43 @@
       "earliest_dated_operational_event": "partial",
       "exact_facility_identity_for_earliest_event": "resolved",
       "county_inventory_completeness": "unresolved",
-      "documented_search_for_earlier_operations": "partial"
+      "documented_search_for_earlier_operations": "resolved"
     },
-    "earlier_operational_findings": [],
+    "earlier_operational_findings": [
+      {
+        "facility_id": "fac_qts_overland_park_historic",
+        "canonical_name": "QTS J. Williams Technology Center",
+        "temporal_relation": "operational_no_later_than",
+        "when": {
+          "year": 2003,
+          "precision": "year"
+        },
+        "source_ids": [
+          "src_sec_qts_overland_park_20140310"
+        ],
+        "finding": "QTS's SEC filing identifies its 33,000-square-foot Overland Park facility as a data center acquired in 2003, with approximately 8,000 operating net rentable square feet, 2,500 square feet of raised floor and about 1 MW of utility power.",
+        "confidence": 0.99
+      }
+    ],
     "source_ids": [
       "src_sec_state_farm_olathe_20250203",
+      "src_sec_qts_overland_park_20140310",
+      "src_ks_commerce_erc_overland_park_1999",
+      "src_ks_leg_cavern_20200212",
+      "src_dck_cavern_expansion_20141230",
+      "src_wiredre_cavern_expansion_20131126",
       "src_im3_atlas_20260209"
     ],
     "authoritative_source_types": [
       "sec_filing",
+      "state_record",
+      "legislative_record",
       "federal_dataset"
     ],
-    "rationale": "The SEC filing and exact mapped address establish the Olathe State Farm Data Center as built in 2016, leased from November 3, 2016, and still fully occupied in 2025. Johnson County's six mapped records do not establish a complete historical inventory or rule out earlier government, telecom, financial, healthcare, university, utility, or enterprise operations.",
+    "rationale": "State Farm cannot be Johnson County's first data-center operation. QTS's SEC filing documents its commercial Overland Park data center from 2003, and Kansas records describe an Employers Reinsurance Corporation central data-center consolidation in Overland Park in 1999 without proving completion timing. Cavern then operated commercial colocation in Lenexa from 2007 and exceeded 100,000 square feet after its late-2014 commissioned expansion. State Farm's 2015-2016 project is therefore later than both the first documented commercial exposure and the provisional first E3 material exposure. The complete pre-2003 county inventory remains unestablished, so no causal-ready first-entry date is assigned.",
     "created_at": "2026-09-03T17:00:00Z",
-    "updated_at": "2026-09-03T17:00:00Z",
-    "record_status": "provisional"
+    "updated_at": "2026-09-12T01:00:00Z",
+    "record_status": "active"
   },
   {
     "schema_version": "1.0.0",

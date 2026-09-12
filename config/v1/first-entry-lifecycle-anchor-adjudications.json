@@ -6519,8 +6519,8 @@
       "resolution_state": "resolved",
       "decision": "accept",
       "resolved_current_status": "operational",
-      "confidence": 0.96,
-      "rationale": "The selected 564,402-square-foot Maiden footprint is a data-center building whose map history identifies it as Apple Data Center. Catawba County's FY2012 financial report describes Apple's constructed 500,000-square-foot facility as housing its iCloud services and already supporting permanent operational employment.",
+      "confidence": 0.99,
+      "rationale": "The selected 564,402-square-foot Maiden footprint is a data-center building whose map history identifies it as Apple Data Center. Apple directly dates the Maiden data center's opening to June 2010; Catawba County's FY2012 financial report independently describes the constructed 500,000-square-foot facility as housing iCloud services and supporting permanent operational employment.",
       "evidence": [
         {
           "source_id": "src_osm_catawba_way_116005354_20260903",
@@ -6529,6 +6529,14 @@
           "finding": "The mapped footprint and revision history identify the large Maiden building as part of Apple's data-center campus.",
           "disposition": "supporting",
           "claim_confidence": 0.93
+        },
+        {
+          "source_id": "src_apple_maiden_open_201006",
+          "attribute_path": "event.operational",
+          "raw_value": { "type": "date", "value": { "date": "2010-06-01", "precision": "month" } },
+          "finding": "Apple reports that the Maiden data center opened in June 2010.",
+          "disposition": "supporting",
+          "claim_confidence": 0.99
         },
         {
           "source_id": "src_catawba_cafr_apple_operational_2012",
@@ -6542,10 +6550,10 @@
       "events": [
         {
           "event_type": "operational",
-          "when": { "year": 2012, "precision": "year" },
-          "source_id": "src_catawba_cafr_apple_operational_2012",
-          "confidence": 0.96,
-          "notes": "Operational no later than the county's FY2012 report; this is not asserted as the opening year."
+          "when": { "date": "2010-06-01", "precision": "month" },
+          "source_id": "src_apple_maiden_open_201006",
+          "confidence": 0.99,
+          "notes": "Apple directly reports a June 2010 opening; day precision is not claimed."
         }
       ],
       "record_status": "active"

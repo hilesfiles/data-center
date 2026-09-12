@@ -2,6 +2,11 @@
 
 7 September 2026. Revised research and implementation sequence. Release `private-sector-study-1.57.0` combines 1,230 economic source records across all 36 candidates—1,112 reported observations and 118 projections—with 146 separately governed syntheses. The selected register spans 35 counties and 23 states. Thirty projects have completed scoped research audits and are mapped; none currently passes the separate completed-contribution-account analytical gate. The versioned modeling policy requires auditable public-source exhaustion before last-resort synthesis, separate forecasts, reproducible parameters, explicit interval kinds, defensible scope, contribution-channel separation, anti-overlap aggregation and method-specific causal or multiplier metadata. The current release publishes no pooled or causal estimate and makes no net-fiscal claim without same-scope public-cost evidence.
 
+The [primary workstream roadmap](primary-workstream-roadmap.md) governs current execution
+order. This study plan defines research scope and evidence requirements, while the roadmap
+requires national source normalization and treated-county expansion before further serial
+project or county enrichment becomes the default primary activity.
+
 ## Purpose and central revision
 
 Measure how identifiable private-sector data-center development contributes to host communities over time: capital investment, construction employment and payroll, local supplier activity, household spending, permanent employment, tax-base growth, public revenue, and subsequent investment. Determine where the documented benefits exceed the associated costs, with the beneficiary, geography, and time period stated.

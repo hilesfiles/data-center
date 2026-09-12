@@ -43,6 +43,11 @@ class PrivateSectorStudyTest(unittest.TestCase):
         self.assertEqual(next(e for e in entities if e["project_id"] == altoona["project_id"])["current_status"], "unknown")
         council_bluffs = next(r for r in details if r["name"] == "Google Council Bluffs")
         self.assertIn("cannot be Pottawattamie County's first literal data-center operation", council_bluffs["legacy_first_entry_note"])
+        state_farm = next(
+            row for row in details
+            if row["project_id"] == "prj_study_im3_building_00598261190"
+        )
+        self.assertIn("not Johnson County's first data-center operation", state_farm["legacy_first_entry_note"])
         self.assertIn("infoUSA", council_bluffs["legacy_first_entry_note"])
         self.assertIn("provisional first-E3 anchor", council_bluffs["legacy_first_entry_note"])
 

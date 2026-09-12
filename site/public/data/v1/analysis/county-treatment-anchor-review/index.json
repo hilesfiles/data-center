@@ -3082,17 +3082,48 @@
       ]
     },
     {
-      "adjudicated_date": null,
-      "adjudication_rationale": null,
-      "adjudication_sources": [],
-      "anticipation_date": null,
+      "adjudicated_date": "2014-12-31",
+      "adjudication_rationale": "State Farm's Olathe project is not Johnson County's first literal or economically material data-center exposure. Kansas records describe an Employers Reinsurance Corporation central-data-center consolidation in Overland Park in 1999, although they do not prove completion. QTS's SEC filing establishes a 33,000-square-foot commercial Overland Park data center from 2003, and Kansas legislative testimony places Cavern's Lenexa commercial launch in 2007. Cavern announced a 100,000-square-foot expansion on November 26, 2013 and Data Center Knowledge reported on December 30, 2014 that a 60,000-square-foot, 2.5 MW phase had been commissioned the prior week, raising completed tenant space from 65,000 to about 125,000 square feet. That late-2014 milestone crosses the policy's 100,000-square-foot E3 indicator before State Farm's 2015 permit and 2016 lease. December 31, 2014 is a conservative year-precision upper bound, not an exact commissioning or construction-start date. The incomplete pre-2003 inventory and missing original Cavern permit and utility chronology prevent causal-ready use.",
+      "adjudication_sources": [
+        {
+          "publisher": "Kansas Department of Commerce & Housing",
+          "title": "Kansas Department of Commerce & Housing 1999 Annual Report",
+          "url": "https://kgi.contentdm.oclc.org/digital/api/collection/p16884coll7/id/27/download"
+        },
+        {
+          "publisher": "U.S. Securities and Exchange Commission",
+          "title": "QTS Realty Trust 2013 Form 10-K",
+          "url": "https://www.sec.gov/Archives/edgar/data/1577368/000119312514089455/d650220d10k.htm"
+        },
+        {
+          "publisher": "Kansas Legislature",
+          "title": "Testimony of Cavern Technologies in Support of SB 339",
+          "url": "https://kslegislature.gov/li_2020/b2019_20/committees/ctte_s_utils_1/documents/testimony/20200212_07.pdf"
+        },
+        {
+          "publisher": "Wired Real Estate Group",
+          "title": "Cavern Technologies' Additional Build Will Make Data Center Midwest's Largest",
+          "url": "https://wiredre.com/cavern-technologies-kansas-data-center-q4-2013/"
+        },
+        {
+          "publisher": "Data Center Knowledge",
+          "title": "Cavern Doubles Size of Underground Data Center Near Kansas City",
+          "url": "https://www.datacenterknowledge.com/business/cavern-doubles-size-of-underground-data-center-near-kansas-city"
+        },
+        {
+          "publisher": "U.S. Securities and Exchange Commission",
+          "title": "Benchmark 2025-V13 Free Writing Prospectus",
+          "url": "https://www.sec.gov/Archives/edgar/data/2049534/000153949725000258/n4807-x5_ts.htm"
+        }
+      ],
+      "anticipation_date": "2013-11-26",
       "causal_use_status": "not_ready",
       "county_fips": "20091",
-      "county_first_material_exposure_status": "unresolved",
+      "county_first_material_exposure_status": "provisional_anchor_pending_first_exposure_confirmation",
       "county_name": "Johnson County",
-      "date_precision": null,
+      "date_precision": "year",
       "exposure_tier_target": "E3",
-      "known_exposure_no_later_than": null,
+      "known_exposure_no_later_than": "2014-12-31",
       "projects": [
         {
           "candidate_timeline_events": [
@@ -3173,108 +3204,379 @@
             "anchor_date": "2016-11-03",
             "anchor_year": 2016,
             "date_note": "This is a stored historical observation. Completion, grand opening, lease and operating-by dates are not automatically commissioning dates. Campus timing does not date every building.",
-            "history_description": "2016 construction; lease began 2016-11-03",
+            "history_description": "2015 construction permit; lease began 2016-11-03; county commercial data-center activity documented by 2003 and E3 scale by late 2014",
             "precision": "day",
             "status": "candidate_project_anchor_only"
           }
         }
       ],
-      "required_next_step": "Determine whether an earlier economically material county exposure exists, then distinguish announcement, construction, energization and operating dates with cited evidence.",
+      "required_next_step": "Resolve the documented adjudication questions and complete every review domain before causal use.",
       "review_domains": [
         {
           "code": "preexisting_facilities",
-          "coverage_statement": "No county-specific review has been recorded for this domain.",
-          "finding": "No domain-level determination made.",
+          "coverage_statement": "Reviewed state, SEC, legislative, operator, telecom-regulatory and trade evidence for dedicated Johnson County computing facilities before State Farm through September 11, 2026.",
+          "finding": "The 1999 Kansas report describes ERC consolidating three international data centers into one Overland Park center but does not prove when it became operational. QTS's SEC filing establishes a commercial 33,000-square-foot Overland Park data center from 2003 with about 1 MW of utility power. Cavern launched commercial colocation in Lenexa in 2007, initially operating roughly 60,000-65,000 square feet, and expanded above 100,000 square feet in late 2014. Regulatory evidence also places Sprint network-operations control centers in Overland Park and Lenexa in the 1990s, but a control-center label alone is not treated as a dedicated data center.",
           "label": "Earlier operating, construction, colocation, institutional and enterprise facilities in the county",
           "limitations": [
-            "This required domain remains unreviewed."
+            "ERC's project-completion date, address, dedicated area, load and capital remain unresolved.",
+            "The Sprint control-center records do not establish dedicated data-center floor area or E3 materiality.",
+            "Complete historical inventories remain unavailable for county and municipal government, hospitals, financial institutions, utilities, schools, Johnson County Community College, Garmin, Sprint and other large enterprises."
           ],
-          "queries": [],
-          "repositories": [],
-          "sources": [],
-          "status": "not_reviewed"
+          "queries": [
+            "Johnson County Kansas data center before State Farm",
+            "Employers Reinsurance Overland Park data center",
+            "QTS Overland Park original data center 2003",
+            "Cavern Technologies Lenexa 2007",
+            "Sprint Overland Park Lenexa network operations data center"
+          ],
+          "repositories": [
+            "Kansas Department of Commerce historical reports",
+            "SEC property filings",
+            "Kansas legislative testimony",
+            "operator and trade archives",
+            "Johnson County and municipal facility searches"
+          ],
+          "sources": [
+            {
+              "accessed_on": "2026-09-11",
+              "publisher": "Kansas Department of Commerce & Housing",
+              "source_class": "government_record",
+              "title": "Kansas Department of Commerce & Housing 1999 Annual Report",
+              "url": "https://kgi.contentdm.oclc.org/digital/api/collection/p16884coll7/id/27/download"
+            },
+            {
+              "accessed_on": "2026-09-11",
+              "published_on": "2014-03-10",
+              "publisher": "U.S. Securities and Exchange Commission",
+              "source_class": "government_record",
+              "title": "QTS Realty Trust 2013 Form 10-K",
+              "url": "https://www.sec.gov/Archives/edgar/data/1577368/000119312514089455/d650220d10k.htm"
+            },
+            {
+              "accessed_on": "2026-09-11",
+              "published_on": "2020-02-12",
+              "publisher": "Kansas Legislature",
+              "source_class": "government_record",
+              "title": "Testimony of Cavern Technologies in Support of SB 339",
+              "url": "https://kslegislature.gov/li_2020/b2019_20/committees/ctte_s_utils_1/documents/testimony/20200212_07.pdf"
+            }
+          ],
+          "status": "relevant_evidence_found"
         },
         {
           "code": "planning_permits",
-          "coverage_statement": "No county-specific review has been recorded for this domain.",
-          "finding": "No domain-level determination made.",
+          "coverage_statement": "Reviewed indexed municipal development, permit, property and public-safety records for the earlier QTS and Cavern sites and the later State Farm project through September 11, 2026.",
+          "finding": "Olathe's permit reporting documents State Farm construction in 2015 and a 75,650-square-foot tenant finish in 2017. Lenexa records locate Cavern within the three-million-square-foot Meritex cave complex, and trade reporting documents the 2013 expansion plan and late-2014 commissioning.",
           "label": "Planning, zoning, building-permit and land-development records",
           "limitations": [
-            "This required domain remains unreviewed."
+            "The original 2007 Cavern occupancy, mechanical, electrical and fire permits and the 2013-2014 expansion permit packet were not recovered.",
+            "The QTS 2003 conversion or occupancy approvals were not recovered.",
+            "The indexed records do not reveal the first irreversible Cavern expansion work date."
           ],
-          "queries": [],
-          "repositories": [],
-          "sources": [],
-          "status": "not_reviewed"
+          "queries": [
+            "Cavern Technologies Lenexa permit 2007",
+            "Cavern Technologies Lenexa expansion permit 2013 2014",
+            "17501 West 98th Street building permit",
+            "State Farm Olathe data center permit 2015",
+            "QTS 12851 Foster Street data center permit"
+          ],
+          "repositories": [
+            "City of Lenexa council and development archives",
+            "City of Olathe permit reports",
+            "Johnson County property records",
+            "Lenexa Fire Department risk assessment",
+            "commercial construction archives"
+          ],
+          "sources": [
+            {
+              "accessed_on": "2026-09-11",
+              "publisher": "City of Olathe",
+              "source_class": "government_record",
+              "title": "City of Olathe permit report",
+              "url": "https://www.olatheks.gov/home/showpublisheddocument/972/637794756822830000"
+            },
+            {
+              "accessed_on": "2026-09-11",
+              "published_on": "2017-12-31",
+              "publisher": "City of Olathe",
+              "source_class": "government_record",
+              "title": "City of Olathe 2017 Year in Review",
+              "url": "https://www.olatheks.gov/home/showpublisheddocument/3567/637794754068400000"
+            },
+            {
+              "accessed_on": "2026-09-11",
+              "publisher": "City of Lenexa",
+              "source_class": "government_record",
+              "title": "Lenexa Fire Department Community Risk Assessment",
+              "url": "https://www.lenexa.com/files/sharedassets/city/v/2/government/departments-divisions/fire/documents/lfd-2020-community-risk-assessment-standards-of-cover.pdf"
+            }
+          ],
+          "status": "review_incomplete"
         },
         {
           "code": "incentives_financing",
-          "coverage_statement": "No county-specific review has been recorded for this domain.",
-          "finding": "No domain-level determination made.",
+          "coverage_statement": "Reviewed state training and incentive records, legislative testimony and SEC financing disclosures for ERC, QTS, Cavern and State Farm through September 11, 2026.",
+          "finding": "Kansas's 1999 report records $100,000 of state retraining support and $244,000 of company matching funds for ERC's consolidation affecting 425 workers. Cavern's 2020 testimony sought generally available electric-rate incentives but does not establish an original project award. Kansas's HPIP transparency entry later reports a $282.1 million Total Capital Investment field for State Farm, while SEC filings document the build-to-suit real estate and financing.",
           "label": "Incentive agreements, bonds, abatements and economic-development records",
           "limitations": [
-            "This required domain remains unreviewed."
+            "Training expenditures do not measure ERC data-center capital or prove operation.",
+            "No original Cavern incentive agreement, tax-abatement schedule or recipient-level realized benefit was recovered.",
+            "State Farm financing and HPIP values are not evidence that its later project was county first entry."
           ],
-          "queries": [],
-          "repositories": [],
-          "sources": [],
-          "status": "not_reviewed"
+          "queries": [
+            "ERC Overland Park Kansas retraining 1999 data center",
+            "Cavern Technologies Kansas incentives",
+            "Cavern Technologies SB339 electricity incentive",
+            "State Farm Olathe HPIP capital investment",
+            "QTS Overland Park financing data center"
+          ],
+          "repositories": [
+            "Kansas Commerce annual and transparency reports",
+            "Kansas legislative records",
+            "SEC property and securitization filings",
+            "Lenexa and Olathe economic-development reports"
+          ],
+          "sources": [
+            {
+              "accessed_on": "2026-09-11",
+              "publisher": "Kansas Department of Commerce & Housing",
+              "source_class": "government_record",
+              "title": "Kansas Department of Commerce & Housing 1999 Annual Report",
+              "url": "https://kgi.contentdm.oclc.org/digital/api/collection/p16884coll7/id/27/download"
+            },
+            {
+              "accessed_on": "2026-09-11",
+              "publisher": "Kansas Department of Commerce",
+              "source_class": "government_record",
+              "title": "Kansas Commerce legacy HPIP transparency table",
+              "url": "https://www.kansascommerce.gov/programs-services/transparency-database-old/hpip-kansas-commerce-transparency-database/"
+            },
+            {
+              "accessed_on": "2026-09-11",
+              "published_on": "2020-02-12",
+              "publisher": "Kansas Legislature",
+              "source_class": "government_record",
+              "title": "Testimony of Cavern Technologies in Support of SB 339",
+              "url": "https://kslegislature.gov/li_2020/b2019_20/committees/ctte_s_utils_1/documents/testimony/20200212_07.pdf"
+            }
+          ],
+          "status": "relevant_evidence_found"
         },
         {
           "code": "utility_service",
-          "coverage_statement": "No county-specific review has been recorded for this domain.",
-          "finding": "No domain-level determination made.",
+          "coverage_statement": "Reviewed public power-capacity and utility evidence for QTS, Cavern and State Farm and searched Kansas regulatory records for customer-specific service milestones through September 11, 2026.",
+          "finding": "QTS reported about 1 MW of utility service at its Overland Park facility. Cavern's newly commissioned late-2014 pod carried 2.5 MW and the site had up to 50 MW of potential power, while its 2020 testimony describes power pricing as central to its commercial growth. State Farm's later facility disclosed 6.66 MW of critical IT load in 2017 financing records.",
           "label": "Electric, transmission, water, wastewater and generator-service milestones",
           "limitations": [
-            "This required domain remains unreviewed."
+            "Potential site power is not realized load and cannot be backdated to 2007 or 2014.",
+            "No customer-specific KCP&L or Evergy service agreement, feeder or substation chronology, energization date or interval-load series was recovered.",
+            "The E3 determination rests on completed dedicated area, not an unsupported assumption that Cavern used 10 MW."
           ],
-          "queries": [],
-          "repositories": [],
-          "sources": [],
-          "status": "not_reviewed"
+          "queries": [
+            "QTS Overland Park 1 MW Kansas City Power Light",
+            "Cavern Lenexa 2.5 MW expansion 50 MW",
+            "Cavern Evergy service agreement",
+            "State Farm Olathe critical load 6.66 MW",
+            "Johnson County data center electric service"
+          ],
+          "repositories": [
+            "SEC facility disclosures",
+            "Kansas legislative utility testimony",
+            "Kansas Corporation Commission and Evergy records",
+            "trade commissioning reports"
+          ],
+          "sources": [
+            {
+              "accessed_on": "2026-09-11",
+              "published_on": "2014-03-10",
+              "publisher": "U.S. Securities and Exchange Commission",
+              "source_class": "government_record",
+              "title": "QTS Realty Trust 2013 Form 10-K",
+              "url": "https://www.sec.gov/Archives/edgar/data/1577368/000119312514089455/d650220d10k.htm"
+            },
+            {
+              "accessed_on": "2026-09-11",
+              "published_on": "2014-12-30",
+              "publisher": "Data Center Knowledge",
+              "source_class": "industry_report",
+              "title": "Cavern Doubles Size of Underground Data Center Near Kansas City",
+              "url": "https://www.datacenterknowledge.com/business/cavern-doubles-size-of-underground-data-center-near-kansas-city"
+            },
+            {
+              "accessed_on": "2026-09-11",
+              "published_on": "2017-01-17",
+              "publisher": "U.S. Securities and Exchange Commission",
+              "source_class": "government_record",
+              "title": "Citigroup Commercial Mortgage Trust 2017-C4 Free Writing Prospectus",
+              "url": "https://www.sec.gov/Archives/edgar/data/1258361/000153949717000008/n840_ts-x3.htm"
+            }
+          ],
+          "status": "relevant_evidence_found"
         },
         {
           "code": "operator_operations",
-          "coverage_statement": "No county-specific review has been recorded for this domain.",
-          "finding": "No domain-level determination made.",
+          "coverage_statement": "Reviewed records separating facility acquisition, commercial operation, expansion commissioning, lease commencement and later occupancy through September 11, 2026.",
+          "finding": "QTS's commercial Overland Park operation dates to 2003. Cavern's own legislative testimony dates its launch to 2007, and contemporaneous reporting says the Lenexa facility had operated since 2007 before a 60,000-square-foot phase was commissioned in late December 2014, lifting completed space from 65,000 to about 125,000 square feet. State Farm's lease commenced November 3, 2016 after 2015 construction activity.",
           "label": "Operator evidence distinguishing announcement, construction, energization and customer service",
           "limitations": [
-            "This required domain remains unreviewed."
+            "QTS's SEC filing provides year rather than exact first-service date.",
+            "Cavern's exact 2007 opening day, 2014 commissioning day and first customer workload dates were not recovered.",
+            "State Farm lease commencement remains a proxy rather than a commissioning announcement."
           ],
-          "queries": [],
-          "repositories": [],
-          "sources": [],
-          "status": "not_reviewed"
+          "queries": [
+            "QTS Overland Park data center acquired 2003",
+            "Cavern opened data center doors 2007",
+            "Cavern 60,000 square foot commissioned December 2014",
+            "State Farm Olathe lease commencement November 2016",
+            "Johnson County first commercial data center"
+          ],
+          "repositories": [
+            "QTS SEC filings",
+            "Cavern legislative testimony",
+            "Cavern operator releases",
+            "Data Center Knowledge archive",
+            "State Farm collateral filings"
+          ],
+          "sources": [
+            {
+              "accessed_on": "2026-09-11",
+              "published_on": "2014-03-10",
+              "publisher": "U.S. Securities and Exchange Commission",
+              "source_class": "government_record",
+              "title": "QTS Realty Trust 2013 Form 10-K",
+              "url": "https://www.sec.gov/Archives/edgar/data/1577368/000119312514089455/d650220d10k.htm"
+            },
+            {
+              "accessed_on": "2026-09-11",
+              "published_on": "2020-02-12",
+              "publisher": "Kansas Legislature",
+              "source_class": "government_record",
+              "title": "Testimony of Cavern Technologies in Support of SB 339",
+              "url": "https://kslegislature.gov/li_2020/b2019_20/committees/ctte_s_utils_1/documents/testimony/20200212_07.pdf"
+            },
+            {
+              "accessed_on": "2026-09-11",
+              "published_on": "2014-12-30",
+              "publisher": "Data Center Knowledge",
+              "source_class": "industry_report",
+              "title": "Cavern Doubles Size of Underground Data Center Near Kansas City",
+              "url": "https://www.datacenterknowledge.com/business/cavern-doubles-size-of-underground-data-center-near-kansas-city"
+            }
+          ],
+          "status": "relevant_evidence_found"
         },
         {
           "code": "local_reporting",
-          "coverage_statement": "No county-specific review has been recorded for this domain.",
-          "finding": "No domain-level determination made.",
+          "coverage_statement": "Reviewed indexed regional, trade, municipal and state reporting for the Johnson County data-center sequence through September 11, 2026.",
+          "finding": "The reporting sequence corroborates earlier enterprise activity, QTS's small commercial operation, Cavern's 2007 market entry, the announced 2013 expansion, late-2014 commissioning and State Farm's later build. It supports a layered E1-to-E2-to-E3 history rather than a 2016 first-entry claim.",
           "label": "Contemporaneous local reporting and public-meeting records",
           "limitations": [
-            "This required domain remains unreviewed."
+            "Subscription and historical newspaper archives do not expose every 1990s-2014 local article or municipal hearing.",
+            "Trade reports rely partly on operator statements and do not substitute for original permits or metered load.",
+            "No local source established an earlier E3 facility before Cavern's expansion."
           ],
-          "queries": [],
-          "repositories": [],
-          "sources": [],
-          "status": "not_reviewed"
+          "queries": [
+            "Johnson County Kansas data center history",
+            "Cavern Technologies Lenexa expansion 2013",
+            "Cavern doubles underground data center 2014",
+            "QTS Overland Park original data center",
+            "State Farm Olathe data center construction"
+          ],
+          "repositories": [
+            "Kansas City regional business and technology archives",
+            "Data Center Knowledge archive",
+            "Lenexa public records",
+            "Olathe development reports",
+            "Kansas historical publications"
+          ],
+          "sources": [
+            {
+              "accessed_on": "2026-09-11",
+              "published_on": "2013-11-26",
+              "publisher": "Wired Real Estate Group",
+              "source_class": "industry_report",
+              "title": "Cavern Technologies' Additional Build Will Make Data Center Midwest's Largest",
+              "url": "https://wiredre.com/cavern-technologies-kansas-data-center-q4-2013/"
+            },
+            {
+              "accessed_on": "2026-09-11",
+              "published_on": "2014-12-30",
+              "publisher": "Data Center Knowledge",
+              "source_class": "industry_report",
+              "title": "Cavern Doubles Size of Underground Data Center Near Kansas City",
+              "url": "https://www.datacenterknowledge.com/business/cavern-doubles-size-of-underground-data-center-near-kansas-city"
+            },
+            {
+              "accessed_on": "2026-09-11",
+              "published_on": "2017-12-31",
+              "publisher": "City of Olathe",
+              "source_class": "government_record",
+              "title": "City of Olathe 2017 Year in Review",
+              "url": "https://www.olatheks.gov/home/showpublisheddocument/3567/637794754068400000"
+            }
+          ],
+          "status": "relevant_evidence_found"
         },
         {
           "code": "phase_scope",
-          "coverage_statement": "No county-specific review has been recorded for this domain.",
-          "finding": "No domain-level determination made.",
+          "coverage_statement": "Separated Cavern's original operation, announced expansion, commissioned phase and later planned space from State Farm's distinct build through September 11, 2026.",
+          "finding": "Cavern operated about 60,000-65,000 completed square feet before expansion, below the policy's 100,000-square-foot E3 indicator. A November 2013 report described a planned additional 100,000 square feet. Data Center Knowledge then reported that a 60,000-square-foot phase had been commissioned the week before December 30, 2014, bringing completed space to about 125,000 square feet. The remaining 40,000-square-foot planned phase and later 160,000-square-foot reports are excluded from the 2014 anchor. State Farm's separate 193,953-square-foot property is not backcast into Cavern's scope.",
           "label": "Campus, building and phase boundaries needed to identify the first economically material exposure",
           "limitations": [
-            "This required domain remains unreviewed."
+            "Contemporaneous sources differ between 120,000 and 125,000 total completed square feet because they report a 60,000 or 65,000-square-foot pre-expansion base.",
+            "The exact start and completion dates for each Cavern expansion pod remain unresolved.",
+            "Gross underground complex area, undeveloped expansion capacity and 50 MW potential are not treated as completed dedicated data-center scope."
           ],
-          "queries": [],
-          "repositories": [],
-          "sources": [],
-          "status": "not_reviewed"
+          "queries": [
+            "Cavern original 60,000 square feet 2007",
+            "Cavern additional 100,000 square feet 2013",
+            "Cavern commissioned 60,000 square feet December 2014",
+            "Cavern total 120,000 125,000 square feet",
+            "State Farm Olathe 193,953 square feet 2016"
+          ],
+          "repositories": [
+            "Cavern operator and trade archives",
+            "Lenexa permit records",
+            "SEC facility reports",
+            "Kansas legislative records",
+            "State Farm financing records"
+          ],
+          "sources": [
+            {
+              "accessed_on": "2026-09-11",
+              "published_on": "2013-11-26",
+              "publisher": "Wired Real Estate Group",
+              "source_class": "industry_report",
+              "title": "Cavern Technologies' Additional Build Will Make Data Center Midwest's Largest",
+              "url": "https://wiredre.com/cavern-technologies-kansas-data-center-q4-2013/"
+            },
+            {
+              "accessed_on": "2026-09-11",
+              "published_on": "2014-12-30",
+              "publisher": "Data Center Knowledge",
+              "source_class": "industry_report",
+              "title": "Cavern Doubles Size of Underground Data Center Near Kansas City",
+              "url": "https://www.datacenterknowledge.com/business/cavern-doubles-size-of-underground-data-center-near-kansas-city"
+            },
+            {
+              "accessed_on": "2026-09-11",
+              "published_on": "2025-02-03",
+              "publisher": "U.S. Securities and Exchange Commission",
+              "source_class": "government_record",
+              "title": "Benchmark 2025-V13 Free Writing Prospectus",
+              "url": "https://www.sec.gov/Archives/edgar/data/2049534/000153949725000258/n4807-x5_ts.htm"
+            }
+          ],
+          "status": "review_incomplete"
         }
       ],
       "state_abbr": "KS",
-      "unresolved_questions": []
+      "unresolved_questions": [
+        "Recover ERC's exact Overland Park facility identity, completion date, dedicated area, load and capital and determine whether the 1999 consolidation ever crossed E3 materiality.",
+        "Recover QTS's original 2003 conversion and occupancy records and complete the pre-2003 inventory across Sprint, government, healthcare, education, utilities, finance and major enterprises.",
+        "Recover Cavern's 2007 original permits and 2013-2014 expansion permits, construction notice to proceed, utility-service milestones and exact commissioning date.",
+        "Resolve the 120,000-versus-125,000-square-foot contemporaneous scope difference without importing planned or later-built capacity."
+      ]
     },
     {
       "adjudicated_date": null,
@@ -6085,49 +6387,94 @@
       "unresolved_questions": []
     },
     {
-      "adjudicated_date": null,
-      "adjudication_rationale": null,
-      "adjudication_sources": [],
-      "anticipation_date": null,
+      "adjudicated_date": "2009-08-14",
+      "adjudication_rationale": "Catawba County and North Carolina records date the county-specific Apple announcement and conditional incentive approval to July 6, 2009. Contemporaneous Site Selection reporting quotes Maiden's town manager that Apple closed on the site and began grading on August 14, 2009. A $1 billion, approximately 500,000-square-foot campus clearly meets the policy's E3 material-exposure scale, so that grading date is the first documented irreversible physical milestone and the provisional E3 anchor. Apple's own environmental reporting dates opening to June 2010, superseding the prior FY2012 operational upper-bound proxy. Searches found pre-2009 county data-processing activity and a technology-heavy enterprise base but no earlier dedicated facility with documented E3 scale. Because public records do not close the historical inventories of government, healthcare, education, finance, utilities, telecom manufacturers, and other enterprises\u2014and because the original permit, electrical-service, and commissioning sequence remains incomplete\u2014the 2009 anchor is not causal-ready.",
+      "adjudication_sources": [
+        {
+          "publisher": "Catawba County",
+          "title": "Catawba County and Town of Maiden special meeting minutes",
+          "url": "https://www.catawbacountync.gov/commish/Minutes/070609spec.pdf"
+        },
+        {
+          "publisher": "North Carolina Department of Commerce",
+          "title": "Sync archive, December 29, 2009",
+          "url": "https://www.commerce.nc.gov/sync-archive-12292009/open"
+        },
+        {
+          "publisher": "Site Selection",
+          "title": "North Carolina: Tar Heel Transition",
+          "url": "https://siteselection.com/features/2009/sep/North-Carolina/"
+        },
+        {
+          "publisher": "Catawba County",
+          "title": "Catawba County FY2010-11 Adopted Budget",
+          "url": "https://catawbacountync.gov/site/assets/files/3944/fy_2010-11_adopted_budget.pdf"
+        },
+        {
+          "publisher": "Apple",
+          "title": "Apple Environmental Progress Report 2023",
+          "url": "https://www.apple.com/environment/pdf/Apple_Environmental_Progress_Report_2023.pdf"
+        },
+        {
+          "publisher": "Catawba County",
+          "title": "Comprehensive Annual Financial Report for Fiscal Year 2012",
+          "url": "https://catawbacountync.gov/site/assets/files/2549/cafr-2012.pdf"
+        }
+      ],
+      "anticipation_date": "2009-07-06",
       "causal_use_status": "not_ready",
       "county_fips": "37035",
-      "county_first_material_exposure_status": "unresolved",
+      "county_first_material_exposure_status": "provisional_anchor_pending_first_exposure_confirmation",
       "county_name": "Catawba County",
-      "date_precision": null,
+      "date_precision": "day",
       "exposure_tier_target": "E3",
-      "known_exposure_no_later_than": null,
+      "known_exposure_no_later_than": "2009-08-14",
       "projects": [
         {
           "candidate_timeline_events": [
             {
-              "date_label": "2009",
-              "event_id": "evt_apple_maiden_announced_2009",
+              "date_label": "July 6, 2009",
+              "event_id": "evt_apple_maiden_announced_20090706",
               "event_type": "announced",
-              "sort_date": "2009-12-31",
+              "sort_date": "2009-07-06",
               "sources": [
                 {
-                  "publisher": "North Carolina General Assembly",
-                  "title": "One North Carolina Fund approved projects",
-                  "url": "https://webservices.ncleg.gov/ViewDocSiteFile/11281"
+                  "publisher": "Catawba County",
+                  "title": "Catawba County and Town of Maiden special meeting minutes",
+                  "url": "https://www.catawbacountync.gov/commish/Minutes/070609spec.pdf"
                 },
                 {
-                  "publisher": "Catawba County",
-                  "title": "Catawba County recommended budget and development profile",
-                  "url": "https://www.catawbacountync.gov/site/assets/files/2209/recommended_public_final_4_0.pdf"
+                  "publisher": "North Carolina Department of Commerce",
+                  "title": "Sync archive, December 29, 2009",
+                  "url": "https://www.commerce.nc.gov/sync-archive-12292009/open"
                 }
               ],
-              "title": "Catawba County recruits Apple's Maiden data center"
+              "title": "Apple and local governments announce the Maiden data center"
+            },
+            {
+              "date_label": "Aug. 14, 2009",
+              "event_id": "evt_apple_maiden_grading_20090814",
+              "event_type": "construction_started",
+              "sort_date": "2009-08-14",
+              "sources": [
+                {
+                  "publisher": "Site Selection",
+                  "title": "North Carolina: Tar Heel Transition",
+                  "url": "https://siteselection.com/features/2009/sep/North-Carolina/"
+                }
+              ],
+              "title": "Apple closes on the site and grading begins"
             },
             {
               "date_label": "June 2010",
               "event_id": "evt_apple_maiden_opened_201006",
               "event_type": "operational",
-              "sort_date": "2010-06-30",
+              "sort_date": "2010-06-01",
               "sources": [
                 {
                   "publisher": "Apple",
-                  "title": "Apple Environmental Progress Report 2026",
-                  "url": "https://www.apple.com/environment/pdf/Apple_Environmental_Progress_Report_2026.pdf"
+                  "title": "Apple Environmental Progress Report 2023",
+                  "url": "https://www.apple.com/environment/pdf/Apple_Environmental_Progress_Report_2023.pdf"
                 }
               ],
               "title": "Maiden begins operation"
@@ -6183,130 +6530,390 @@
                 }
               ],
               "title": "Apple commits another $448 million to Maiden"
-            },
-            {
-              "date_label": "Feb. 24, 2025",
-              "event_id": "evt_apple_maiden_expansion_20250224",
-              "event_type": "expansion_announced",
-              "sort_date": "2025-02-24",
-              "sources": [
-                {
-                  "publisher": "Axios Charlotte",
-                  "title": "Apple's $500B U.S. expansion plans include North Carolina",
-                  "url": "https://www.axios.com/local/charlotte/2025/02/24/apple-expansion-north-carolina"
-                }
-              ],
-              "title": "Apple includes Maiden capacity in a new U.S. expansion plan"
             }
           ],
           "project_id": "prj_study_im3_building_00116005354",
           "project_name": "Apple Maiden",
           "stored_history_anchor": {
-            "anchor_date": null,
-            "anchor_year": 2012,
+            "anchor_date": "2010-06-01",
+            "anchor_year": 2010,
             "date_note": "This is a stored historical observation. Completion, grand opening, lease and operating-by dates are not automatically commissioning dates. Campus timing does not date every building.",
-            "history_description": "Operating by 2012",
-            "precision": "year",
+            "history_description": "County-specific announcement 2009-07-06; grading began 2009-08-14; opened 2010-06",
+            "precision": "month",
             "status": "candidate_project_anchor_only"
           }
         }
       ],
-      "required_next_step": "Determine whether an earlier economically material county exposure exists, then distinguish announcement, construction, energization and operating dates with cited evidence.",
+      "required_next_step": "Resolve the documented adjudication questions and complete every review domain before causal use.",
       "review_domains": [
         {
           "code": "preexisting_facilities",
-          "coverage_statement": "No county-specific review has been recorded for this domain.",
-          "finding": "No domain-level determination made.",
+          "coverage_statement": "Reviewed indexed county, municipal, institutional, enterprise, telecom-manufacturing, directory, and trade materials for dedicated Catawba County computing facilities before Apple through September 11, 2026.",
+          "finding": "The FY2009 county financial report records municipal data-processing services, and county facilities contain ordinary computer rooms, but those labels do not establish a dedicated data-center facility or E3 scale. CommScope and other large telecom manufacturers had long operated in the county, yet the located corporate histories describe manufacturing, headquarters, and network-product activity rather than a dated dedicated local data center. No pre-August-2009 Catawba facility with documented 100,000-square-foot, 10 MW, hyperscale, or equivalent investment evidence was found.",
           "label": "Earlier operating, construction, colocation, institutional and enterprise facilities in the county",
           "limitations": [
-            "This required domain remains unreviewed."
+            "Functional data processing and an equipment room are not automatically dedicated data centers under the exposure policy.",
+            "Complete pre-2009 facility inventories were not recovered for county and municipal government, hospitals, banks, utilities, schools, colleges, CommScope, Corning, and other major enterprises.",
+            "Unindexed building, fire, electrical, archival-newspaper, and private enterprise records could reveal earlier E1 or E2 facilities even if they do not displace the E3 anchor."
           ],
-          "queries": [],
-          "repositories": [],
-          "sources": [],
-          "status": "not_reviewed"
+          "queries": [
+            "Catawba County data center before Apple 2009",
+            "Hickory North Carolina data center 2000 2008",
+            "Catawba County computer room data processing",
+            "Catawba Valley Medical Center data center history",
+            "Catawba Valley Community College computer center",
+            "CommScope Hickory dedicated data center"
+          ],
+          "repositories": [
+            "Catawba County financial and budget archives",
+            "Catawba County commission minutes",
+            "City of Hickory records",
+            "Catawba Valley Medical Center and education searches",
+            "CommScope and regional telecom-industry archives",
+            "commercial data-center directories and trade archives"
+          ],
+          "sources": [
+            {
+              "accessed_on": "2026-09-11",
+              "published_on": "2009-06-30",
+              "publisher": "Catawba County",
+              "source_class": "government_record",
+              "title": "Catawba County Comprehensive Annual Financial Report for FY2009",
+              "url": "https://www.catawbacountync.gov/site/assets/files/2546/cafr.pdf"
+            },
+            {
+              "accessed_on": "2026-09-11",
+              "publisher": "CommScope",
+              "source_class": "operator_primary",
+              "title": "CommScope broadband catalog and company history",
+              "url": "https://memorial.bellsystem.com/pdf/commscope_broadbandcatalog_0206.pdf"
+            },
+            {
+              "accessed_on": "2026-09-11",
+              "published_on": "2009-09-01",
+              "publisher": "Site Selection",
+              "source_class": "industry_report",
+              "title": "North Carolina: Tar Heel Transition",
+              "url": "https://siteselection.com/features/2009/sep/North-Carolina/"
+            }
+          ],
+          "status": "review_incomplete"
         },
         {
           "code": "planning_permits",
-          "coverage_statement": "No county-specific review has been recorded for this domain.",
-          "finding": "No domain-level determination made.",
+          "coverage_statement": "Reviewed indexed local minutes, budgets, permit references, parcel materials, and contemporaneous construction reporting for the original Maiden project through September 11, 2026.",
+          "finding": "Site Selection reports that Apple closed on the property and began grading August 14, 2009. The county's FY2010-11 budget independently attributes a roughly $500,000 improvement in FY2009-10 permit revenue largely to Apple construction. September 8, 2009 commission minutes describe a planned water loop providing municipal water and fire protection to the Apple site.",
           "label": "Planning, zoning, building-permit and land-development records",
           "limitations": [
-            "This required domain remains unreviewed."
+            "The original erosion-control, grading, building, electrical, mechanical, fire, occupancy, and certificate-of-compliance records were not recovered as a complete permit packet.",
+            "The contemporaneous grading date is attributed to Maiden's town manager through industry reporting rather than an original permit image.",
+            "Permit revenue confirms construction activity but does not identify the exact notice-to-proceed, foundation, enclosure, or completion date."
           ],
-          "queries": [],
-          "repositories": [],
-          "sources": [],
-          "status": "not_reviewed"
+          "queries": [
+            "Apple Maiden original data center building permit 2009",
+            "5977 Startown Road grading permit 2009",
+            "Apple Maiden construction began August 14 2009",
+            "Catawba County Apple building permit revenue 2010",
+            "Project Dolphin Maiden permit"
+          ],
+          "repositories": [
+            "Catawba County commission minutes",
+            "Catawba County building-services and budget archives",
+            "Town of Maiden records",
+            "Catawba County parcel and e-permit searches",
+            "contemporary construction reporting"
+          ],
+          "sources": [
+            {
+              "accessed_on": "2026-09-11",
+              "published_on": "2009-09-01",
+              "publisher": "Site Selection",
+              "source_class": "industry_report",
+              "title": "North Carolina: Tar Heel Transition",
+              "url": "https://siteselection.com/features/2009/sep/North-Carolina/"
+            },
+            {
+              "accessed_on": "2026-09-11",
+              "publisher": "Catawba County",
+              "source_class": "government_record",
+              "title": "Catawba County FY2010-11 Adopted Budget",
+              "url": "https://catawbacountync.gov/site/assets/files/3944/fy_2010-11_adopted_budget.pdf"
+            },
+            {
+              "accessed_on": "2026-09-11",
+              "published_on": "2009-09-08",
+              "publisher": "Catawba County",
+              "source_class": "government_record",
+              "title": "Catawba County Board of Commissioners minutes, September 8, 2009",
+              "url": "https://www.catawbacountync.gov/commish/Minutes/090809min.pdf"
+            }
+          ],
+          "status": "relevant_evidence_found"
         },
         {
           "code": "incentives_financing",
-          "coverage_statement": "No county-specific review has been recorded for this domain.",
-          "finding": "No domain-level determination made.",
+          "coverage_statement": "Reviewed local agreement terms, state recruitment records, legislative grant reporting, and county fiscal evidence for the original Apple commitment through September 11, 2026.",
+          "finding": "The July 6, 2009 joint meeting approved conditional local grants tied to at least $1 billion of cumulative expenditure and 50 direct jobs, using formulas capped at 50 percent of incremental real-property taxes and 85 percent of incremental personal-property taxes. North Carolina Commerce confirms the announcement followed those approvals. The agreement defines commitments and formulas, not realized net public cost or proof that construction had already begun.",
           "label": "Incentive agreements, bonds, abatements and economic-development records",
           "limitations": [
-            "This required domain remains unreviewed."
+            "The complete annual Maiden and county payment series and tax-expenditure counterfactual are not established here.",
+            "State tax changes, One North Carolina Fund support, local grants, and infrastructure financing must not be summed without resolving overlap and realization.",
+            "Incentive authorization is the anticipation milestone, not the physical-treatment date."
           ],
-          "queries": [],
-          "repositories": [],
-          "sources": [],
-          "status": "not_reviewed"
+          "queries": [
+            "Apple Maiden July 6 2009 economic development agreement",
+            "Catawba County Apple 50 percent 85 percent incentive",
+            "Apple North Carolina data center tax incentive 2009",
+            "One North Carolina Fund Apple Maiden",
+            "Project Dolphin Catawba incentives"
+          ],
+          "repositories": [
+            "Catawba County and Town of Maiden agreement records",
+            "North Carolina Commerce archives",
+            "North Carolina legislative grant records",
+            "county financial reports",
+            "incentive-accountability archives"
+          ],
+          "sources": [
+            {
+              "accessed_on": "2026-09-11",
+              "published_on": "2009-07-06",
+              "publisher": "Catawba County",
+              "source_class": "government_record",
+              "title": "Catawba County and Town of Maiden special meeting minutes",
+              "url": "https://www.catawbacountync.gov/commish/Minutes/070609spec.pdf"
+            },
+            {
+              "accessed_on": "2026-09-11",
+              "published_on": "2009-12-29",
+              "publisher": "North Carolina Department of Commerce",
+              "source_class": "government_record",
+              "title": "Sync archive, December 29, 2009",
+              "url": "https://www.commerce.nc.gov/sync-archive-12292009/open"
+            },
+            {
+              "accessed_on": "2026-09-11",
+              "publisher": "Catawba County",
+              "source_class": "government_record",
+              "title": "Comprehensive Annual Financial Report for Fiscal Year 2012",
+              "url": "https://catawbacountync.gov/site/assets/files/2549/cafr-2012.pdf"
+            }
+          ],
+          "status": "relevant_evidence_found"
         },
         {
           "code": "utility_service",
-          "coverage_statement": "No county-specific review has been recorded for this domain.",
-          "finding": "No domain-level determination made.",
+          "coverage_statement": "Reviewed local water and fire-protection approvals, utility-company reporting, state-regulatory searches, and operator environmental disclosures through September 11, 2026.",
+          "finding": "County minutes approved a $2.74 million Blackburn-Plateau water-loop construction contract on September 8, 2009 and expressly included municipal water and fire protection for the planned Apple site among its purposes. Duke Energy's 2009-10 sustainability report describes its role recruiting Apple. Apple later documents the operating campus's substantial energy use and cooling systems.",
           "label": "Electric, transmission, water, wastewater and generator-service milestones",
           "limitations": [
-            "This required domain remains unreviewed."
+            "The water loop served multiple public and private purposes and cannot be allocated wholly to Apple.",
+            "No customer-specific electric-service agreement, substation or feeder authorization, energization date, interval load, water connection date, or wastewater commissioning record was recovered for the original phase.",
+            "Later annual electricity consumption cannot be backcast to the August 2009 physical-exposure date."
           ],
-          "queries": [],
-          "repositories": [],
-          "sources": [],
-          "status": "not_reviewed"
+          "queries": [
+            "Apple Maiden water loop September 2009",
+            "Apple Maiden Duke Energy substation energization",
+            "Apple Maiden electric service 2010",
+            "Apple Maiden water wastewater service",
+            "5977 Startown utility infrastructure"
+          ],
+          "repositories": [
+            "Catawba County utility and commission records",
+            "Town of Maiden utility records",
+            "City of Hickory water records",
+            "Duke Energy reports",
+            "North Carolina Utilities Commission searches",
+            "Apple environmental reports"
+          ],
+          "sources": [
+            {
+              "accessed_on": "2026-09-11",
+              "published_on": "2009-09-08",
+              "publisher": "Catawba County",
+              "source_class": "government_record",
+              "title": "Catawba County Board of Commissioners minutes, September 8, 2009",
+              "url": "https://www.catawbacountync.gov/commish/Minutes/090809min.pdf"
+            },
+            {
+              "accessed_on": "2026-09-11",
+              "publisher": "Duke Energy",
+              "source_class": "utility_record",
+              "title": "Duke Energy 2009-2010 Sustainability Report",
+              "url": "https://www.responsibilityreports.com/HostedData/ResponsibilityReportArchive/d/NYSE_DUK_2009.pdf"
+            },
+            {
+              "accessed_on": "2026-09-11",
+              "published_on": "2023-04-18",
+              "publisher": "Apple",
+              "source_class": "operator_primary",
+              "title": "Apple Environmental Progress Report 2023",
+              "url": "https://www.apple.com/environment/pdf/Apple_Environmental_Progress_Report_2023.pdf"
+            }
+          ],
+          "status": "review_incomplete"
         },
         {
           "code": "operator_operations",
-          "coverage_statement": "No county-specific review has been recorded for this domain.",
-          "finding": "No domain-level determination made.",
+          "coverage_statement": "Reviewed operator, county, state, and contemporaneous industry evidence separating announcement, grading, construction, opening, and later service descriptions through September 11, 2026.",
+          "finding": "Apple states that its Maiden data center opened in June 2010. The FY2012 county report later describes the 500,000-square-foot facility as constructed, housing iCloud services, and supporting more than 100 Apple-badged jobs plus about 150 permanent contract workers. The June 2010 operator date replaces 2012 as the operational anchor while remaining separate from the August 2009 construction exposure.",
           "label": "Operator evidence distinguishing announcement, construction, energization and customer service",
           "limitations": [
-            "This required domain remains unreviewed."
+            "Apple reports month rather than an exact opening or first-workload day.",
+            "Opening does not identify when construction employment, vendor spending, tax-base placement, or utility demand first became economically material.",
+            "Later iCloud service attribution should not be assumed to describe the exact workload at opening."
           ],
-          "queries": [],
-          "repositories": [],
-          "sources": [],
-          "status": "not_reviewed"
+          "queries": [
+            "Apple Maiden opened June 2010",
+            "Apple Maiden operational 2010",
+            "Apple Maiden iCloud operation FY2012",
+            "Apple Maiden opening date",
+            "Apple Maiden data center construction 2009 2010"
+          ],
+          "repositories": [
+            "Apple environmental reports",
+            "Apple and county economic-development reporting",
+            "Catawba County financial reports",
+            "North Carolina Commerce archives",
+            "contemporary data-center trade archives"
+          ],
+          "sources": [
+            {
+              "accessed_on": "2026-09-11",
+              "published_on": "2023-04-18",
+              "publisher": "Apple",
+              "source_class": "operator_primary",
+              "title": "Apple Environmental Progress Report 2023",
+              "url": "https://www.apple.com/environment/pdf/Apple_Environmental_Progress_Report_2023.pdf"
+            },
+            {
+              "accessed_on": "2026-09-11",
+              "publisher": "Catawba County",
+              "source_class": "government_record",
+              "title": "Comprehensive Annual Financial Report for Fiscal Year 2012",
+              "url": "https://catawbacountync.gov/site/assets/files/2549/cafr-2012.pdf"
+            },
+            {
+              "accessed_on": "2026-09-11",
+              "published_on": "2010-12-28",
+              "publisher": "North Carolina Department of Commerce",
+              "source_class": "government_record",
+              "title": "Sync archive, December 28, 2010",
+              "url": "https://www.commerce.nc.gov/sync-archive-12282010/open"
+            }
+          ],
+          "status": "relevant_evidence_found"
         },
         {
           "code": "local_reporting",
-          "coverage_statement": "No county-specific review has been recorded for this domain.",
-          "finding": "No domain-level determination made.",
+          "coverage_statement": "Reviewed indexed local, regional, trade, county, and state reporting for the original Apple chronology and its retrospective interpretation through September 11, 2026.",
+          "finding": "Contemporaneous sources consistently separate June's unnamed statewide commitment, the July 6 county-specific announcement and approvals, August site work, construction through 2010, and subsequent operation. Retrospective reporting describes Apple as the county's first hyperscale anchor and catalyst for a regional data-center corridor, but those narratives are not causal estimates and do not prove absence of every smaller predecessor facility.",
           "label": "Contemporaneous local reporting and public-meeting records",
           "limitations": [
-            "This required domain remains unreviewed."
+            "Historical Hickory Daily Record and Charlotte Observer coverage is only partly indexed or accessible.",
+            "Retrospective economic-development narratives may reflect selection and attribution bias.",
+            "No local report supplies a complete pre-2009 institutional and enterprise facility census or a causal counterfactual."
           ],
-          "queries": [],
-          "repositories": [],
-          "sources": [],
-          "status": "not_reviewed"
+          "queries": [
+            "Apple Maiden site grading August 14 2009",
+            "Apple Catawba County announcement July 6 2009",
+            "Apple Maiden data center opened June 2010",
+            "Apple Maiden changed community economy",
+            "Project Dolphin Catawba timeline"
+          ],
+          "repositories": [
+            "Site Selection archive",
+            "Data Center Knowledge archive",
+            "Charlotte and Triangle regional reporting",
+            "Catawba County and EDC publications",
+            "North Carolina Commerce archives"
+          ],
+          "sources": [
+            {
+              "accessed_on": "2026-09-11",
+              "published_on": "2009-09-01",
+              "publisher": "Site Selection",
+              "source_class": "industry_report",
+              "title": "North Carolina: Tar Heel Transition",
+              "url": "https://siteselection.com/features/2009/sep/North-Carolina/"
+            },
+            {
+              "accessed_on": "2026-09-11",
+              "published_on": "2009-06-29",
+              "publisher": "Data Center Knowledge",
+              "source_class": "industry_report",
+              "title": "Apple iDataCenter Set for Maiden, NC",
+              "url": "https://www.datacenterknowledge.com/hyperscalers/apple-idatacenter-set-for-maiden-nc"
+            },
+            {
+              "accessed_on": "2026-09-11",
+              "published_on": "2018-07-08",
+              "publisher": "The News & Observer",
+              "source_class": "news_report",
+              "title": "Apple came to NC almost a decade ago. Here's how it changed one community.",
+              "url": "https://www.newsobserver.com/news/business/article214062219.html"
+            }
+          ],
+          "status": "relevant_evidence_found"
         },
         {
           "code": "phase_scope",
-          "coverage_statement": "No county-specific review has been recorded for this domain.",
-          "finding": "No domain-level determination made.",
+          "coverage_statement": "Separated the original $1 billion approximately 500,000-square-foot facility from proposed duplicate capacity, renewable-energy assets, the 2012 tactical building, the 2022 MDN.06 building, and later expansion activity through September 11, 2026.",
+          "finding": "The governed 2009 physical anchor applies to the original large Maiden data-center project: local approvals required at least $1 billion of cumulative expenditures, and county reporting describes a constructed 500,000-square-foot facility. Planned second-building concepts, solar and fuel-cell assets, a smaller tactical building, the 2022 237,600-square-foot MDN.06 permit record, and Apple's 2025 capacity expansion are distinct phases and are not imported into the original E3 threshold.",
           "label": "Campus, building and phase boundaries needed to identify the first economically material exposure",
           "limitations": [
-            "This required domain remains unreviewed."
+            "The public record does not allocate the full $1 billion commitment among land, the original building, equipment, utility work, later improvements, and operating expenses.",
+            "The selected IM3 roof footprint is 564,402 square feet while county reporting describes the original facility as 500,000 square feet; those measures are not assumed identical without plans.",
+            "Original permit valuations, phase-specific completion certificates, equipment-installation dates, and commissioning records remain incomplete."
           ],
-          "queries": [],
-          "repositories": [],
-          "sources": [],
-          "status": "not_reviewed"
+          "queries": [
+            "Apple Maiden original 500000 square feet phase",
+            "Apple Maiden two identical data centers plan",
+            "Apple Maiden tactical data center 2012",
+            "Apple Maiden 448 million expansion 2022",
+            "Apple Maiden original campus versus solar phases"
+          ],
+          "repositories": [
+            "Catawba County agreements and financial reports",
+            "Apple environmental reports",
+            "original construction reporting",
+            "Catawba County permit records",
+            "later campus-expansion records"
+          ],
+          "sources": [
+            {
+              "accessed_on": "2026-09-11",
+              "published_on": "2009-07-06",
+              "publisher": "Catawba County",
+              "source_class": "government_record",
+              "title": "Catawba County and Town of Maiden special meeting minutes",
+              "url": "https://www.catawbacountync.gov/commish/Minutes/070609spec.pdf"
+            },
+            {
+              "accessed_on": "2026-09-11",
+              "publisher": "Catawba County",
+              "source_class": "government_record",
+              "title": "Comprehensive Annual Financial Report for Fiscal Year 2012",
+              "url": "https://catawbacountync.gov/site/assets/files/2549/cafr-2012.pdf"
+            },
+            {
+              "accessed_on": "2026-09-11",
+              "publisher": "WSOC-TV",
+              "source_class": "news_report",
+              "title": "Expansion at Apple site in Maiden",
+              "url": "https://www.wsoctv.com/news/local/expansion-apple-site-maiden/329606205/"
+            }
+          ],
+          "status": "review_incomplete"
         }
       ],
       "state_abbr": "NC",
-      "unresolved_questions": []
+      "unresolved_questions": [
+        "Complete the pre-August-2009 dedicated-facility inventory across local government, hospitals, education, finance, utilities, CommScope, Corning, and other major enterprises and classify any predecessors by E1, E2, and E3.",
+        "Recover the original Apple grading, erosion-control, building, electrical, mechanical, fire, occupancy, utility-service, and commissioning records and determine whether an irreversible E3 milestone predates August 14, 2009.",
+        "Recover the phase-allocation record for the $1 billion commitment and reconcile the selected 564,402-square-foot IM3 footprint with the county-reported 500,000-square-foot original facility.",
+        "Establish treatment-year-specific contamination and anticipation windows before causal use, including the regional Google recruitment context and concurrent recession-era economic shock."
+      ]
     },
     {
       "adjudicated_date": null,
@@ -10593,11 +11200,11 @@
     }
   ],
   "counts": {
-    "adjudicated_counties": 15,
+    "adjudicated_counties": 17,
     "causal_ready_counties": 0,
     "host_counties": 35,
     "host_projects": 36,
-    "unresolved_counties": 20
+    "unresolved_counties": 18
   },
   "exposure_policy_id": "county-data-center-exposure-v1",
   "generated_at": "2026-09-11T00:00:00+00:00",
